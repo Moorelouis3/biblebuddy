@@ -80,9 +80,11 @@ And exposure is often the first mercy God gives before real healing begins.`,
 
   `## Genesis 42:1-2 - Jacob Forces Movement
 
-> **1** When Jacob learned that there was grain for sale in Egypt, he said to his sons, "Why do you look at one another?"
+> Genesis 42:1
+> When Jacob learned that there was grain for sale in Egypt, he said to his sons, "Why do you look at one another?"
 
-> **2** And he said, "Behold, I have heard that there is grain for sale in Egypt; go down and buy grain for us there, that we may live and not die."
+> Genesis 42:2
+> And he said, "Behold, I have heard that there is grain for sale in Egypt; go down and buy grain for us there, that we may live and not die."
 
 ### Jacob's Frustration
 
@@ -153,11 +155,14 @@ This is survival language.`,
 
   `## Genesis 42:3-5 - Ten Brothers Go, Benjamin Stays
 
-> **3** So ten of Joseph's brothers went down to buy grain in Egypt.
+> Genesis 42:3
+> So ten of Joseph's brothers went down to buy grain in Egypt.
 
-> **4** But Jacob did not send Benjamin, Joseph's brother, with his brothers, for he feared that harm might happen to him.
+> Genesis 42:4
+> But Jacob did not send Benjamin, Joseph's brother, with his brothers, for he feared that harm might happen to him.
 
-> **5** Thus the sons of Israel came to buy among the others who came, for the famine was in the land of Canaan.
+> Genesis 42:5
+> Thus the sons of Israel came to buy among the others who came, for the famine was in the land of Canaan.
 
 ### The Journey Begins
 
@@ -248,13 +253,17 @@ And now, without realizing it, the brothers are walking straight into the fulfil
 
   `## Genesis 42:6-9 - Joseph Sees Them, and the Dream Lives Again
 
-> **6** Now Joseph was governor over the land. He was the one who sold to all the people of the land. And Joseph's brothers came and bowed themselves before him with their faces to the ground.
+> Genesis 42:6
+> Now Joseph was governor over the land. He was the one who sold to all the people of the land. And Joseph's brothers came and bowed themselves before him with their faces to the ground.
 
-> **7** Joseph saw his brothers and recognized them, but he treated them like strangers and spoke roughly to them...
+> Genesis 42:7
+> Joseph saw his brothers and recognized them, but he treated them like strangers and spoke roughly to them...
 
-> **8** And Joseph recognized his brothers, but they did not recognize him.
+> Genesis 42:8
+> And Joseph recognized his brothers, but they did not recognize him.
 
-> **9** And Joseph remembered the dreams that he had dreamed of them...
+> Genesis 42:9
+> And Joseph remembered the dreams that he had dreamed of them...
 
 ### Joseph the Governor
 
@@ -420,19 +429,26 @@ He is revealing them.`,
 
   `## Genesis 42:10-17 - The Brothers Defend Themselves, Joseph Applies Pressure
 
-> **10** They said to him, "No, my lord, your servants have come to buy food.
+> Genesis 42:10
+> They said to him, "No, my lord, your servants have come to buy food.
 
-> **11** We are all sons of one man. We are honest men. Your servants have never been spies."
+> Genesis 42:11
+> We are all sons of one man. We are honest men. Your servants have never been spies."
 
-> **12** He said to them, "No, it is the nakedness of the land that you have come to see."
+> Genesis 42:12
+> He said to them, "No, it is the nakedness of the land that you have come to see."
 
-> **13** And they said, "We, your servants, are twelve brothers..."
+> Genesis 42:13
+> And they said, "We, your servants, are twelve brothers..."
 
-> **14** Joseph said to them, "It is as I said to you. You are spies.
+> Genesis 42:14
+> Joseph said to them, "It is as I said to you. You are spies.
 
-> **15** By this you shall be tested...
+> Genesis 42:15
+> By this you shall be tested...
 
-> **16-17** Joseph says one brother must go get Benjamin and puts them in custody for three days.
+> Genesis 42:16-17
+> Joseph says one brother must go get Benjamin and puts them in custody for three days.
 
 ### "We Are Honest Men"
 
@@ -498,11 +514,14 @@ The three days become part of the exposure process.`,
 
   `## Genesis 42:18-20 - Joseph Adjusts the Plan
 
-> **18** On the third day Joseph said to them, "Do this and you will live, for I fear God:
+> Genesis 42:18
+> On the third day Joseph said to them, "Do this and you will live, for I fear God:
 
-> **19** if you are honest men, let one of your brothers remain confined where you are in custody, and let the rest go and carry grain for the famine of your households,
+> Genesis 42:19
+> if you are honest men, let one of your brothers remain confined where you are in custody, and let the rest go and carry grain for the famine of your households,
 
-> **20** and bring your youngest brother to me. So your words will be verified, and you shall not die."
+> Genesis 42:20
+> and bring your youngest brother to me. So your words will be verified, and you shall not die."
 
 After three days, Joseph softens the plan.
 
@@ -558,13 +577,17 @@ This is pressure with restraint.`,
 
   `## Genesis 42:21-24 - Guilt Starts Talking
 
-> **21** Then they said to one another, "In truth we are guilty concerning our brother..."
+> Genesis 42:21
+> Then they said to one another, "In truth we are guilty concerning our brother..."
 
-> **22** And Reuben answered them, "Did I not tell you not to sin against the boy?"
+> Genesis 42:22
+> And Reuben answered them, "Did I not tell you not to sin against the boy?"
 
-> **23** They did not know that Joseph understood them, for there was an interpreter between them.
+> Genesis 42:23
+> They did not know that Joseph understood them, for there was an interpreter between them.
 
-> **24** Then he turned away from them and wept...
+> Genesis 42:24
+> Then he turned away from them and wept...
 
 ### "In Truth We Are Guilty"
 
@@ -647,11 +670,14 @@ This is a man standing face to face with the first cracks of possible change in 
 
   `## Simeon Is Bound, and the Money Is Returned
 
-> **24** ...And he returned to them and spoke to them. And he took Simeon from them and bound him before their eyes.
+> Genesis 42:24
+> ...And he returned to them and spoke to them. And he took Simeon from them and bound him before their eyes.
 
-> **25** And Joseph gave orders to fill their bags with grain, and to replace every man's money in his sack...
+> Genesis 42:25
+> And Joseph gave orders to fill their bags with grain, and to replace every man's money in his sack...
 
-> **26-28** The brothers leave, discover the returned money, and their hearts fail them in fear.
+> Genesis 42:26-28
+> The brothers leave, discover the returned money, and their hearts fail them in fear.
 
 ### Why Simeon?
 
@@ -713,15 +739,20 @@ God.`,
 
   `## Genesis 42:29-38 - Jacob Hears the Report and Refuses Benjamin
 
-> **29-34** The brothers tell Jacob everything that happened in Egypt.
+> Genesis 42:29-34
+> The brothers tell Jacob everything that happened in Egypt.
 
-> **35** As they emptied their sacks, each man's bundle of money was in his sack. And when they and their father saw their bundles of money, they were afraid.
+> Genesis 42:35
+> As they emptied their sacks, each man's bundle of money was in his sack. And when they and their father saw their bundles of money, they were afraid.
 
-> **36** And Jacob their father said to them, "You have bereaved me of my children: Joseph is no more, and Simeon is no more, and now you would take Benjamin..."
+> Genesis 42:36
+> And Jacob their father said to them, "You have bereaved me of my children: Joseph is no more, and Simeon is no more, and now you would take Benjamin..."
 
-> **37** Then Reuben said to his father, "Kill my two sons if I do not bring him back to you..."
+> Genesis 42:37
+> Then Reuben said to his father, "Kill my two sons if I do not bring him back to you..."
 
-> **38** But he said, "My son shall not go down with you..."
+> Genesis 42:38
+> But he said, "My son shall not go down with you..."
 
 ### The Brothers Tell the Story
 

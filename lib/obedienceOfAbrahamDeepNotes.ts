@@ -13,11 +13,6 @@ type AbrahamChapterNote = {
   lesson: string;
 };
 
-function renderVerseRange(reference: string) {
-  const match = reference.match(/^Genesis\s+\d+:(.+)$/);
-  return match ? `**${match[1]}**` : reference;
-}
-
 const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   {
     chapter: 11,
@@ -602,7 +597,9 @@ ${note.flow.map((item) => `* ${item}`).join("\n\n")}
 
 ${note.sections
   .map(
-    (section) => `## ${renderVerseRange(section.reference)} ${section.title}
+    (section) => `${section.reference}
+
+## ${section.title}
 
 ${section.points.join("\n\n")}`,
   )

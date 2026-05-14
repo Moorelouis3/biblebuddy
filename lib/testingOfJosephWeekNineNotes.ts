@@ -98,11 +98,14 @@ He is now a man who can hold pain and providence in the same sentence.`,
 
   `## 📍 Genesis 45:1-3 - Joseph Reveals Himself
 
-> **1** Then Joseph could not refrain himself before all them that stood by him...
+> Genesis 45:1
+> Then Joseph could not refrain himself before all them that stood by him...
 
-> **2** And he wept aloud: and the Egyptians and the house of Pharaoh heard.
+> Genesis 45:2
+> And he wept aloud: and the Egyptians and the house of Pharaoh heard.
 
-> **3** And Joseph said unto his brethren, I am Joseph...
+> Genesis 45:3
+> And Joseph said unto his brethren, I am Joseph...
 
 This is the emotional breaking point.
 
@@ -200,11 +203,14 @@ Because sometimes grace is most terrifying at first when the person you wronged 
 
   `## 📍 Genesis 45:4-8 - "You Sold Me... God Sent Me"
 
-> **4** Come near to me, I pray you...
+> Genesis 45:4
+> Come near to me, I pray you...
 
-> **5** Now therefore be not grieved, nor angry with yourselves, that ye sold me hither: for God did send me before you to preserve life.
+> Genesis 45:5
+> Now therefore be not grieved, nor angry with yourselves, that ye sold me hither: for God did send me before you to preserve life.
 
-> **7-8** And God sent me before you to preserve you a posterity in the earth...
+> Genesis 45:7-8
+> And God sent me before you to preserve you a posterity in the earth...
 
 Joseph says something remarkable here.
 
@@ -297,13 +303,17 @@ It means God was building something larger than Joseph could see when he was in 
 
   `## 📍 Genesis 45:9-15 - Joseph Calls for Jacob and Embraces His Brothers
 
-> **9** Haste ye, and go up to my father...
+> Genesis 45:9
+> Haste ye, and go up to my father...
 
-> **10** And thou shalt dwell in the land of Goshen...
+> Genesis 45:10
+> And thou shalt dwell in the land of Goshen...
 
-> **14** And he fell upon his brother Benjamin's neck, and wept...
+> Genesis 45:14
+> And he fell upon his brother Benjamin's neck, and wept...
 
-> **15** Moreover he kissed all his brethren, and wept upon them...
+> Genesis 45:15
+> Moreover he kissed all his brethren, and wept upon them...
 
 Once Joseph reveals himself, he does not linger in abstraction.
 
@@ -367,11 +377,14 @@ Only then can conversation begin.`,
 
   `## 📍 Genesis 45:16-20 - Pharaoh Enters the Story with Favor
 
-> **16** And the fame thereof was heard in Pharaoh's house, saying, Joseph's brethren are come...
+> Genesis 45:16
+> And the fame thereof was heard in Pharaoh's house, saying, Joseph's brethren are come...
 
-> **17-18** Say unto thy brethren... Take your father and your households, and come unto me...
+> Genesis 45:17-18
+> Say unto thy brethren... Take your father and your households, and come unto me...
 
-> **19-20** Also regard not your stuff; for the good of all the land of Egypt is yours.
+> Genesis 45:19-20
+> Also regard not your stuff; for the good of all the land of Egypt is yours.
 
 This part is easy to skim past, but it matters.
 
@@ -423,11 +436,14 @@ Sometimes God’s next provision requires leaving behind what once felt necessar
 
   `## 📍 Genesis 45:21-24 - Provision for the Journey and One Final Warning
 
-> **21** And the children of Israel did so: and Joseph gave them wagons...
+> Genesis 45:21
+> And the children of Israel did so: and Joseph gave them wagons...
 
-> **22** To all of them he gave each man changes of raiment; but to Benjamin he gave three hundred pieces of silver...
+> Genesis 45:22
+> To all of them he gave each man changes of raiment; but to Benjamin he gave three hundred pieces of silver...
 
-> **24** So he sent his brethren away... and he said unto them, See that ye fall not out by the way.
+> Genesis 45:24
+> So he sent his brethren away... and he said unto them, See that ye fall not out by the way.
 
 Joseph sends them away with provision.
 
@@ -480,13 +496,17 @@ It also pays attention to what could quietly poison the next stage.`,
 
   `## 📍 Genesis 45:25-28 - Jacob Hears the News and His Spirit Revives
 
-> **25** And they went up out of Egypt, and came into the land of Canaan unto Jacob their father,
+> Genesis 45:25
+> And they went up out of Egypt, and came into the land of Canaan unto Jacob their father,
 
-> **26** And told him, saying, Joseph is yet alive...
+> Genesis 45:26
+> And told him, saying, Joseph is yet alive...
 
-> **27** ...the spirit of Jacob their father revived:
+> Genesis 45:27
+> ...the spirit of Jacob their father revived:
 
-> **28** And Israel said, It is enough; Joseph my son is yet alive...
+> Genesis 45:28
+> And Israel said, It is enough; Joseph my son is yet alive...
 
 Imagine this moment.
 

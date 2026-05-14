@@ -83,7 +83,8 @@ the palace moment only makes sense because of the years that came before it.`,
 
   `## Genesis 41:1 - After Two Whole Years
 
-> **1** After two whole years, Pharaoh dreamed that he was standing by the Nile.
+> Genesis 41:1
+> After two whole years, Pharaoh dreamed that he was standing by the Nile.
 
 This verse connects directly back to Genesis 40.
 
@@ -166,11 +167,14 @@ He is stepping into Egypt's confidence system and shaking it from the inside.`,
 
   `## Genesis 41:2-4 - The Cows from the Nile
 
-> **2** And behold, there came up out of the Nile seven cows, attractive and plump, and they fed in the reed grass.
+> Genesis 41:2
+> And behold, there came up out of the Nile seven cows, attractive and plump, and they fed in the reed grass.
 
-> **3** And behold, seven other cows, ugly and thin, came up out of the Nile after them...
+> Genesis 41:3
+> And behold, seven other cows, ugly and thin, came up out of the Nile after them...
 
-> **4** And the ugly, thin cows ate up the seven attractive, plump cows. And Pharaoh awoke.
+> Genesis 41:4
+> And the ugly, thin cows ate up the seven attractive, plump cows. And Pharaoh awoke.
 
 ### Cows Meant More Than Livestock
 
@@ -238,11 +242,14 @@ God is sending a message Pharaoh cannot shake off.`,
 
   `## Genesis 41:5-7 - The Grain Dream Confirms the First
 
-> **5** And he fell asleep and dreamed a second time. And behold, seven ears of grain, plump and good, were growing on one stalk.
+> Genesis 41:5
+> And he fell asleep and dreamed a second time. And behold, seven ears of grain, plump and good, were growing on one stalk.
 
-> **6** And behold, after them sprouted seven ears, thin and blighted by the east wind.
+> Genesis 41:6
+> And behold, after them sprouted seven ears, thin and blighted by the east wind.
 
-> **7** And the thin ears swallowed up the seven plump, full ears...
+> Genesis 41:7
+> And the thin ears swallowed up the seven plump, full ears...
 
 ### A Second Dream Means Confirmation
 
@@ -315,7 +322,8 @@ It feels like warning.`,
 
   `## Genesis 41:8 - Egypt's Best Minds Fail
 
-> **8** So in the morning his spirit was troubled, and he sent and called for all the magicians of Egypt and all its wise men... but there was none who could interpret them to Pharaoh.
+> Genesis 41:8
+> So in the morning his spirit was troubled, and he sent and called for all the magicians of Egypt and all its wise men... but there was none who could interpret them to Pharaoh.
 
 ### A Troubled Spirit
 
@@ -366,15 +374,20 @@ And at this moment, he is still in prison.`,
 
   `## Genesis 41:9-13 - The Cupbearer Finally Remembers
 
-> **9** Then the chief cupbearer said to Pharaoh, "I remember my offenses today."
+> Genesis 41:9
+> Then the chief cupbearer said to Pharaoh, "I remember my offenses today."
 
-> **10** "When Pharaoh was angry with his servants..."
+> Genesis 41:10
+> "When Pharaoh was angry with his servants..."
 
-> **11** "we dreamed on the same night..."
+> Genesis 41:11
+> "we dreamed on the same night..."
 
-> **12** "A young Hebrew was there with us..."
+> Genesis 41:12
+> "A young Hebrew was there with us..."
 
-> **13** "And as he interpreted to us, so it came about..."
+> Genesis 41:13
+> "And as he interpreted to us, so it came about..."
 
 ### "I Remember My Offenses Today"
 
@@ -423,7 +436,8 @@ The man Pharaoh has never met has already been authenticated by fulfilled interp
 
   `## Genesis 41:14 - Joseph Is Brought Out Quickly
 
-> **14** Then Pharaoh sent and called Joseph, and they quickly brought him out of the pit. And when he had shaved himself and changed his clothes, he came in before Pharaoh.
+> Genesis 41:14
+> Then Pharaoh sent and called Joseph, and they quickly brought him out of the pit. And when he had shaved himself and changed his clothes, he came in before Pharaoh.
 
 ### Suddenly, Everything Changes
 
@@ -477,9 +491,11 @@ And his first words will tell us everything about who he has become in the waiti
 
   `## Genesis 41:15-16 - Joseph Gives God the Credit First
 
-> **15** And Pharaoh said to Joseph, "I have had a dream, and there is no one who can interpret it. I have heard it said of you that when you hear a dream you can interpret it."
+> Genesis 41:15
+> And Pharaoh said to Joseph, "I have had a dream, and there is no one who can interpret it. I have heard it said of you that when you hear a dream you can interpret it."
 
-> **16** Joseph answered Pharaoh, "It is not in me; God will give Pharaoh a favorable answer."
+> Genesis 41:16
+> Joseph answered Pharaoh, "It is not in me; God will give Pharaoh a favorable answer."
 
 ### Power Meets Humility
 
@@ -550,9 +566,11 @@ Joseph has been prepared by suffering to speak with clean confidence.`,
 
   `## Genesis 41:17-24 - Pharaoh Repeats the Dream
 
-> **17** Then Pharaoh said to Joseph, "Behold, in my dream I was standing on the banks of the Nile..."
+> Genesis 41:17
+> Then Pharaoh said to Joseph, "Behold, in my dream I was standing on the banks of the Nile..."
 
-> **18-24** Pharaoh recounts the cows, the grain, the swallowing, and the failure of Egypt's magicians.
+> Genesis 41:18-24
+> Pharaoh recounts the cows, the grain, the swallowing, and the failure of Egypt's magicians.
 
 Pharaoh now retells every detail.
 
@@ -597,11 +615,14 @@ And what he says will change the course of nations.`,
 
   `## Genesis 41:25-32 - Seven Years of Plenty, Seven Years of Famine
 
-> **25** Then Joseph said to Pharaoh, "The dreams of Pharaoh are one; God has revealed to Pharaoh what he is about to do."
+> Genesis 41:25
+> Then Joseph said to Pharaoh, "The dreams of Pharaoh are one; God has revealed to Pharaoh what he is about to do."
 
-> **26-27** The seven good cows and the seven good ears are seven years; the lean cows and thin ears are seven years of famine.
+> Genesis 41:26-27
+> The seven good cows and the seven good ears are seven years; the lean cows and thin ears are seven years of famine.
 
-> **28-32** God has shown what He is about to do, the famine will be severe, and the doubling of the dream means the thing is fixed by God and will happen soon.
+> Genesis 41:28-32
+> God has shown what He is about to do, the famine will be severe, and the doubling of the dream means the thing is fixed by God and will happen soon.
 
 ### Joseph Interprets Clearly
 
@@ -663,11 +684,14 @@ He moves from revelation to administration.`,
 
   `## Genesis 41:33-36 - Joseph Gives Pharaoh a Plan
 
-> **33** "Now therefore let Pharaoh select a discerning and wise man, and set him over the land of Egypt."
+> Genesis 41:33
+> "Now therefore let Pharaoh select a discerning and wise man, and set him over the land of Egypt."
 
-> **34** "Let Pharaoh proceed to appoint overseers... and take one fifth of the produce..."
+> Genesis 41:34
+> "Let Pharaoh proceed to appoint overseers... and take one fifth of the produce..."
 
-> **35-36** Joseph lays out a storage strategy so Egypt will survive the famine.
+> Genesis 41:35-36
+> Joseph lays out a storage strategy so Egypt will survive the famine.
 
 ### Joseph Shifts from Interpreter to Leader
 
@@ -735,13 +759,17 @@ He is serving.`,
 
   `## Genesis 41:37-43 - Joseph Is Raised Over Egypt
 
-> **37** This proposal pleased Pharaoh and all his servants.
+> Genesis 41:37
+> This proposal pleased Pharaoh and all his servants.
 
-> **38** And Pharaoh said... "Can we find a man like this, in whom is the Spirit of God?"
+> Genesis 41:38
+> And Pharaoh said... "Can we find a man like this, in whom is the Spirit of God?"
 
-> **39-41** Pharaoh says no one is as discerning and wise as Joseph and sets him over Egypt.
+> Genesis 41:39-41
+> Pharaoh says no one is as discerning and wise as Joseph and sets him over Egypt.
 
-> **42-43** Pharaoh gives Joseph the signet ring, linen garments, a gold chain, and the second chariot.
+> Genesis 41:42-43
+> Pharaoh gives Joseph the signet ring, linen garments, a gold chain, and the second chariot.
 
 ### Pharaoh Recognizes God's Hand
 
@@ -794,13 +822,17 @@ Genesis 41 reminds us that when God moves, He does not move halfway.`,
 
   `## Genesis 41:44-49 - Joseph Leads with Wisdom
 
-> **44** Pharaoh said... "without your consent no one shall lift up hand or foot in all the land of Egypt."
+> Genesis 41:44
+> Pharaoh said... "without your consent no one shall lift up hand or foot in all the land of Egypt."
 
-> **45** Pharaoh names Joseph Zaphenath-paneah and gives him Asenath in marriage.
+> Genesis 41:45
+> Pharaoh names Joseph Zaphenath-paneah and gives him Asenath in marriage.
 
-> **46** Joseph was thirty years old when he entered Pharaoh's service.
+> Genesis 41:46
+> Joseph was thirty years old when he entered Pharaoh's service.
 
-> **47-49** Joseph gathers grain in abundance until it cannot be measured.
+> Genesis 41:47-49
+> Joseph gathers grain in abundance until it cannot be measured.
 
 ### Total Authority
 
@@ -867,11 +899,14 @@ God's blessing on obedient planning.`,
 
   `## Genesis 41:50-52 - Manasseh and Ephraim
 
-> **50** Before the year of famine came, two sons were born to Joseph...
+> Genesis 41:50
+> Before the year of famine came, two sons were born to Joseph...
 
-> **51** Joseph called the name of the firstborn Manasseh...
+> Genesis 41:51
+> Joseph called the name of the firstborn Manasseh...
 
-> **52** The name of the second he called Ephraim...
+> Genesis 41:52
+> The name of the second he called Ephraim...
 
 ### God Gives Joseph a Family
 
@@ -931,15 +966,20 @@ He is living from gratitude.`,
 
   `## Genesis 41:53-57 - The Famine Comes, and Joseph Opens the Storehouses
 
-> **53** The seven years of plenty... came to an end,
+> Genesis 41:53
+> The seven years of plenty... came to an end,
 
-> **54** and the seven years of famine began to come, as Joseph had said...
+> Genesis 41:54
+> and the seven years of famine began to come, as Joseph had said...
 
-> **55** Pharaoh said to all the Egyptians, "Go to Joseph. What he says to you, do."
+> Genesis 41:55
+> Pharaoh said to all the Egyptians, "Go to Joseph. What he says to you, do."
 
-> **56** Joseph opened all the storehouses...
+> Genesis 41:56
+> Joseph opened all the storehouses...
 
-> **57** all the earth came to Egypt to Joseph to buy grain...
+> Genesis 41:57
+> all the earth came to Egypt to Joseph to buy grain...
 
 ### God's Word Comes to Pass
 

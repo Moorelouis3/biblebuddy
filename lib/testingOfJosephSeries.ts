@@ -140,7 +140,8 @@ And it starts here:
 
 ## Genesis 37:1 - Jacob in the Land of Promise
 
-> **1** Jacob lived in the land of his father's sojournings, in the land of Canaan.
+> Genesis 37:1
+> Jacob lived in the land of his father's sojournings, in the land of Canaan.
 
 The Hebrew word for sojournings is **gur**.
 
@@ -160,7 +161,8 @@ Same promise. Same waiting. Same tension between what God said and what they cur
 
 ## Genesis 37:2 - Joseph Steps Into the Story
 
-> **2** These are the generations of Jacob.
+> Genesis 37:2
+> These are the generations of Jacob.
 >
 > Joseph, being seventeen years old, was pasturing the flock with his brothers... and Joseph brought a bad report of them to their father.
 
@@ -194,9 +196,11 @@ That does not justify the brothers' later violence, but it helps explain why res
 
 ## Genesis 37:3-4 - Israel Loved Joseph More
 
-> **3** Now Israel loved Joseph more than all his children, because he was the son of his old age: and he made him a coat of many colours.
+> Genesis 37:3
+> Now Israel loved Joseph more than all his children, because he was the son of his old age: and he made him a coat of many colours.
 
-> **4** And when his brethren saw that their father loved him more than all his brethren, they hated him, and could not speak peaceably unto him.
+> Genesis 37:4
+> And when his brethren saw that their father loved him more than all his brethren, they hated him, and could not speak peaceably unto him.
 
 The name Israel is still Jacob, but it emphasizes covenant identity after his encounter with God in Genesis 32.
 
@@ -232,35 +236,48 @@ That is a lesson by itself.
 
 Everything God shows you is not meant to be announced immediately.
 
-> **5** And Joseph dreamed a dream, and he told it his brethren: and they hated him yet the more.
+> Genesis 37:5
+> And Joseph dreamed a dream, and he told it his brethren: and they hated him yet the more.
 
-> **6** And he said unto them, Hear, I pray you, this dream which I have dreamed:
+> Genesis 37:6
+> And he said unto them, Hear, I pray you, this dream which I have dreamed:
 
-> **7** For, behold, we were binding sheaves in the field, and, lo, my sheaf arose, and also stood upright; and, behold, your sheaves stood round about, and made obeisance to my sheaf.
+> Genesis 37:7
+> For, behold, we were binding sheaves in the field, and, lo, my sheaf arose, and also stood upright; and, behold, your sheaves stood round about, and made obeisance to my sheaf.
 
-> **8** And his brethren said to him, Shalt thou indeed reign over us? or shalt thou indeed have dominion over us? And they hated him yet the more for his dreams, and for his words.
+> Genesis 37:8
+> And his brethren said to him, Shalt thou indeed reign over us? or shalt thou indeed have dominion over us? And they hated him yet the more for his dreams, and for his words.
 
-> **9** And he dreamed yet another dream, and told it his brethren, and said, Behold, I have dreamed a dream more; and, behold, the sun and the moon and the eleven stars made obeisance to me.
+> Genesis 37:9
+> And he dreamed yet another dream, and told it his brethren, and said, Behold, I have dreamed a dream more; and, behold, the sun and the moon and the eleven stars made obeisance to me.
 
-> **10** And he told it to his father, and to his brethren: and his father rebuked him, and said unto him, What is this dream that thou hast dreamed? Shall I and thy mother and thy brethren indeed come to bow down ourselves to thee to the earth?
+> Genesis 37:10
+> And he told it to his father, and to his brethren: and his father rebuked him, and said unto him, What is this dream that thou hast dreamed? Shall I and thy mother and thy brethren indeed come to bow down ourselves to thee to the earth?
 
-> **11** And his brethren envied him; but his father observed the saying.
+> Genesis 37:11
+> And his brethren envied him; but his father observed the saying.
 
 ## Jacob Sends Joseph
 
 Joseph is sent from Hebron toward Shechem and then farther to Dothan to check on his brothers and the flock.
 
-> **12** And his brethren went to feed their father's flock in Shechem.
+> Genesis 37:12
+> And his brethren went to feed their father's flock in Shechem.
 
-> **13** And Israel said unto Joseph, Do not thy brethren feed the flock in Shechem? come, and I will send thee unto them. And he said to him, Here am I.
+> Genesis 37:13
+> And Israel said unto Joseph, Do not thy brethren feed the flock in Shechem? come, and I will send thee unto them. And he said to him, Here am I.
 
-> **14** And he said to him, Go, I pray thee, see whether it be well with thy brethren, and well with the flocks; and bring me word again. So he sent him out of the vale of Hebron, and he came to Shechem.
+> Genesis 37:14
+> And he said to him, Go, I pray thee, see whether it be well with thy brethren, and well with the flocks; and bring me word again. So he sent him out of the vale of Hebron, and he came to Shechem.
 
-> **15** And a certain man found him, and, behold, he was wandering in the field: and the man asked him, saying, What seekest thou?
+> Genesis 37:15
+> And a certain man found him, and, behold, he was wandering in the field: and the man asked him, saying, What seekest thou?
 
-> **16** And he said, I seek my brethren: tell me, I pray thee, where they feed their flocks.
+> Genesis 37:16
+> And he said, I seek my brethren: tell me, I pray thee, where they feed their flocks.
 
-> **17** And the man said, They are departed hence; for I heard them say, Let us go to Dothan. And Joseph went after his brethren, and found them in Dothan.
+> Genesis 37:17
+> And the man said, They are departed hence; for I heard them say, Let us go to Dothan. And Joseph went after his brethren, and found them in Dothan.
 
 That was not a casual errand. It was oversight.
 
@@ -272,19 +289,26 @@ Favor put a robe on his back, but it also painted a target there.
 
 The brothers see him from far away and conspire before he even arrives.
 
-> **18** And when they saw him afar off, even before he came near unto them, they conspired against him to slay him.
+> Genesis 37:18
+> And when they saw him afar off, even before he came near unto them, they conspired against him to slay him.
 
-> **19** And they said one to another, Behold, this dreamer cometh.
+> Genesis 37:19
+> And they said one to another, Behold, this dreamer cometh.
 
-> **20** Come now therefore, and let us slay him, and cast him into some pit, and we will say, Some evil beast hath devoured him: and we shall see what will become of his dreams.
+> Genesis 37:20
+> Come now therefore, and let us slay him, and cast him into some pit, and we will say, Some evil beast hath devoured him: and we shall see what will become of his dreams.
 
-> **21** And Reuben heard it, and he delivered him out of their hands; and said, Let us not kill him.
+> Genesis 37:21
+> And Reuben heard it, and he delivered him out of their hands; and said, Let us not kill him.
 
-> **22** And Reuben said unto them, Shed no blood, but cast him into this pit that is in the wilderness, and lay no hand upon him; that he might rid him out of their hands, to deliver him to his father again.
+> Genesis 37:22
+> And Reuben said unto them, Shed no blood, but cast him into this pit that is in the wilderness, and lay no hand upon him; that he might rid him out of their hands, to deliver him to his father again.
 
-> **23** And it came to pass, when Joseph was come unto his brethren, that they stript Joseph out of his coat, his coat of many colours that was on him;
+> Genesis 37:23
+> And it came to pass, when Joseph was come unto his brethren, that they stript Joseph out of his coat, his coat of many colours that was on him;
 
-> **24** And they took him, and cast him into a pit: and the pit was empty, there was no water in it.
+> Genesis 37:24
+> And they took him, and cast him into a pit: and the pit was empty, there was no water in it.
 
 They call him "this dreamer."
 
@@ -300,13 +324,17 @@ That matters because they are attacking the symbol of favor before they attack t
 
 Then comes one of the coldest details in the chapter: they sit down to eat.
 
-> **25** And they sat down to eat bread: and they lifted up their eyes and looked, and, behold, a company of Ishmeelites came from Gilead with their camels bearing spicery and balm and myrrh, going to carry it down to Egypt.
+> Genesis 37:25
+> And they sat down to eat bread: and they lifted up their eyes and looked, and, behold, a company of Ishmeelites came from Gilead with their camels bearing spicery and balm and myrrh, going to carry it down to Egypt.
 
-> **26** And Judah said unto his brethren, What profit is it if we slay our brother, and conceal his blood?
+> Genesis 37:26
+> And Judah said unto his brethren, What profit is it if we slay our brother, and conceal his blood?
 
-> **27** Come, and let us sell him to the Ishmeelites, and let not our hand be upon him; for he is our brother and our flesh. And his brethren were content.
+> Genesis 37:27
+> Come, and let us sell him to the Ishmeelites, and let not our hand be upon him; for he is our brother and our flesh. And his brethren were content.
 
-> **28** Then there passed by Midianites merchantmen; and they drew and lifted up Joseph out of the pit, and sold Joseph to the Ishmeelites for twenty pieces of silver: and they brought Joseph into Egypt.
+> Genesis 37:28
+> Then there passed by Midianites merchantmen; and they drew and lifted up Joseph out of the pit, and sold Joseph to the Ishmeelites for twenty pieces of silver: and they brought Joseph into Egypt.
 
 Joseph is in the pit, and they are having lunch.
 
@@ -322,15 +350,20 @@ God is actually moving Joseph directly into the place where the dreams will even
 
 The brothers dip the robe in blood and bring it to Jacob.
 
-> **31** And they took Joseph's coat, and killed a kid of the goats, and dipped the coat in the blood;
+> Genesis 37:31
+> And they took Joseph's coat, and killed a kid of the goats, and dipped the coat in the blood;
 
-> **32** And they sent the coat of many colours, and they brought it to their father; and said, This have we found: know now whether it be thy son's coat or no.
+> Genesis 37:32
+> And they sent the coat of many colours, and they brought it to their father; and said, This have we found: know now whether it be thy son's coat or no.
 
-> **33** And he knew it, and said, It is my son's coat; an evil beast hath devoured him; Joseph is without doubt rent in pieces.
+> Genesis 37:33
+> And he knew it, and said, It is my son's coat; an evil beast hath devoured him; Joseph is without doubt rent in pieces.
 
-> **34** And Jacob rent his clothes, and put sackcloth upon his loins, and mourned for his son many days.
+> Genesis 37:34
+> And Jacob rent his clothes, and put sackcloth upon his loins, and mourned for his son many days.
 
-> **35** And all his sons and all his daughters rose up to comfort him; but he refused to be comforted; and he said, For I will go down into the grave unto my son mourning. Thus his father wept for him.
+> Genesis 37:35
+> And all his sons and all his daughters rose up to comfort him; but he refused to be comforted; and he said, For I will go down into the grave unto my son mourning. Thus his father wept for him.
 
 They do not even say Joseph is dead directly. They let Jacob identify the robe and say the words himself.
 
@@ -344,7 +377,8 @@ In other words, he believes this grief will stay with him until death.
 
 The chapter ends with Joseph sold again, now into the house of Potiphar in Egypt.
 
-> **36** Meanwhile the Midianites had sold him in Egypt to Potiphar, an officer of Pharaoh, the captain of the guard.
+> Genesis 37:36
+> Meanwhile the Midianites had sold him in Egypt to Potiphar, an officer of Pharaoh, the captain of the guard.
 
 */
 export const TESTING_OF_JOSEPH: SeriesWeekLesson[] = [

@@ -89,13 +89,17 @@ Now the family has to travel into the future God has prepared.`,
 
   `## 📍 Genesis 46:1-4 - God Meets Jacob at Beersheba
 
-> **1** And Israel took his journey with all that he had, and came to Beersheba, and offered sacrifices unto the God of his father Isaac.
+> Genesis 46:1
+> And Israel took his journey with all that he had, and came to Beersheba, and offered sacrifices unto the God of his father Isaac.
 
-> **2** And God spake unto Israel in the visions of the night, and said, Jacob, Jacob...
+> Genesis 46:2
+> And God spake unto Israel in the visions of the night, and said, Jacob, Jacob...
 
-> **3** Fear not to go down into Egypt; for I will there make of thee a great nation:
+> Genesis 46:3
+> Fear not to go down into Egypt; for I will there make of thee a great nation:
 
-> **4** I will go down with thee into Egypt; and I will also surely bring thee up again...
+> Genesis 46:4
+> I will go down with thee into Egypt; and I will also surely bring thee up again...
 
 Jacob does not rush blindly into Egypt.
 
@@ -218,11 +222,14 @@ That is mercy.`,
 
   `## 📍 Genesis 46:5-7 - The Family Moves with Everything They Have
 
-> **5** And Jacob rose up from Beersheba: and the sons of Israel carried Jacob their father...
+> Genesis 46:5
+> And Jacob rose up from Beersheba: and the sons of Israel carried Jacob their father...
 
-> **6** And they took their cattle, and their goods, which they had gotten in the land of Canaan, and came into Egypt...
+> Genesis 46:6
+> And they took their cattle, and their goods, which they had gotten in the land of Canaan, and came into Egypt...
 
-> **7** His sons, and his sons' sons with him, his daughters, and his sons' daughters...
+> Genesis 46:7
+> His sons, and his sons' sons with him, his daughters, and his sons' daughters...
 
 After God speaks, Jacob moves.
 
@@ -276,9 +283,11 @@ Embodied.`,
 
   `## 📍 Genesis 46:8-27 - Why the Genealogy Matters
 
-> **8** And these are the names of the children of Israel, which came into Egypt...
+> Genesis 46:8
+> And these are the names of the children of Israel, which came into Egypt...
 
-> **26-27** All the souls that came with Jacob into Egypt... were threescore and six...
+> Genesis 46:26-27
+> All the souls that came with Jacob into Egypt... were threescore and six...
 
 This is the part many people skim.
 
@@ -334,11 +343,14 @@ And that matters to us too.`,
 
   `## 📍 Genesis 46:28-30 - Judah Goes Ahead, and Jacob Sees Joseph Again
 
-> **28** And he sent Judah before him unto Joseph, to direct his face unto Goshen...
+> Genesis 46:28
+> And he sent Judah before him unto Joseph, to direct his face unto Goshen...
 
-> **29** And Joseph made ready his chariot, and went up to meet Israel his father...
+> Genesis 46:29
+> And Joseph made ready his chariot, and went up to meet Israel his father...
 
-> **30** And Israel said unto Joseph, Now let me die, since I have seen thy face, because thou art yet alive.
+> Genesis 46:30
+> And Israel said unto Joseph, Now let me die, since I have seen thy face, because thou art yet alive.
 
 This section is pure emotion.
 
@@ -408,9 +420,11 @@ The grief story he lived under for years has been broken open by joy.`,
 
   `## 📍 Genesis 46:31-34 - Joseph Prepares the Family for Pharaoh
 
-> **31** And Joseph said unto his brethren, and unto his father's house, I will go up, and shew Pharaoh...
+> Genesis 46:31
+> And Joseph said unto his brethren, and unto his father's house, I will go up, and shew Pharaoh...
 
-> **33-34** And it shall come to pass, when Pharaoh shall call you... ye shall say, Thy servants' trade hath been about cattle...
+> Genesis 46:33-34
+> And it shall come to pass, when Pharaoh shall call you... ye shall say, Thy servants' trade hath been about cattle...
 
 Even in reunion, Joseph is still wise.
 

@@ -116,8 +116,10 @@ So let this section examine more than your understanding. Let it examine your pa
 And that is why Genesis ${chapter} still speaks so clearly. It gives us a faith that can survive more than easy moments. It gives us wisdom for family pain, hidden waiting, unfair treatment, leadership pressure, delayed answers, and the long work of forgiveness.`;
 }
 
-function renderSection(_chapter: number, section: JosephSection) {
-  return `## 📖 **${section.range}** ${section.heading}
+function renderSection(chapter: number, section: JosephSection) {
+  return `## 📖 Genesis ${chapter}:${section.range}
+
+## ${section.heading}
 
 ${renderEmojiList(section.focus)}
 

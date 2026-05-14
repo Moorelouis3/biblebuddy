@@ -83,13 +83,17 @@ That is a big part of the testing too.`,
 
   `## 📍 Genesis 47:1-6 - Joseph Settles the Family in Goshen
 
-> **1** Then Joseph came and told Pharaoh, and said, My father and my brethren... are come out of the land of Canaan...
+> Genesis 47:1
+> Then Joseph came and told Pharaoh, and said, My father and my brethren... are come out of the land of Canaan...
 
-> **2** And he took some of his brethren, even five men, and presented them unto Pharaoh.
+> Genesis 47:2
+> And he took some of his brethren, even five men, and presented them unto Pharaoh.
 
-> **3-4** And Pharaoh said unto his brethren, What is your occupation?...
+> Genesis 47:3-4
+> And Pharaoh said unto his brethren, What is your occupation?...
 
-> **6** The land of Egypt is before thee... in the land of Goshen let them dwell...
+> Genesis 47:6
+> The land of Egypt is before thee... in the land of Goshen let them dwell...
 
 Joseph does exactly what he said he would do.
 
@@ -168,11 +172,14 @@ Years of quiet faithfulness are now creating space for an entire household to li
 
   `## 📍 Genesis 47:7-10 - Jacob Stands Before Pharaoh
 
-> **7** And Joseph brought in Jacob his father, and set him before Pharaoh...
+> Genesis 47:7
+> And Joseph brought in Jacob his father, and set him before Pharaoh...
 
-> **9** And Jacob said unto Pharaoh, The days of the years of my pilgrimage are an hundred and thirty years...
+> Genesis 47:9
+> And Jacob said unto Pharaoh, The days of the years of my pilgrimage are an hundred and thirty years...
 
-> **10** And Jacob blessed Pharaoh, and went out from before Pharaoh.
+> Genesis 47:10
+> And Jacob blessed Pharaoh, and went out from before Pharaoh.
 
 This scene is short, but it carries real weight.
 
@@ -247,9 +254,11 @@ You can acknowledge God’s faithfulness and still say,
 
   `## 📍 Genesis 47:11-12 - Joseph Provides for the Household
 
-> **11** And Joseph placed his father and his brethren, and gave them a possession in the land of Egypt...
+> Genesis 47:11
+> And Joseph placed his father and his brethren, and gave them a possession in the land of Egypt...
 
-> **12** And Joseph nourished his father, and his brethren, and all his father's household, with bread...
+> Genesis 47:12
+> And Joseph nourished his father, and his brethren, and all his father's household, with bread...
 
 These verses are easy to pass quickly, but they matter deeply.
 
@@ -292,15 +301,20 @@ That tension will matter more and more as the Bible story moves forward.`,
 
   `## 📍 Genesis 47:13-26 - Joseph Manages the Famine with Real Policy
 
-> **13** And there was no bread in all the land; for the famine was very sore...
+> Genesis 47:13
+> And there was no bread in all the land; for the famine was very sore...
 
-> **14** And Joseph gathered up all the money that was found in the land...
+> Genesis 47:14
+> And Joseph gathered up all the money that was found in the land...
 
-> **16-17** Give your cattle...
+> Genesis 47:16-17
+> Give your cattle...
 
-> **20** And Joseph bought all the land of Egypt for Pharaoh...
+> Genesis 47:20
+> And Joseph bought all the land of Egypt for Pharaoh...
 
-> **23-24** Then Joseph said unto the people... ye shall give the fifth part unto Pharaoh...
+> Genesis 47:23-24
+> Then Joseph said unto the people... ye shall give the fifth part unto Pharaoh...
 
 This is where many readers get uncomfortable.
 
@@ -392,7 +406,8 @@ That is a different kind of maturity.`,
 
   `## 📍 Genesis 47:27 - Israel Grows in Goshen
 
-> **27** And Israel dwelt in the land of Egypt, in the country of Goshen; and they had possessions therein, and grew, and multiplied exceedingly.
+> Genesis 47:27
+> And Israel dwelt in the land of Egypt, in the country of Goshen; and they had possessions therein, and grew, and multiplied exceedingly.
 
 This verse is huge.
 
@@ -422,13 +437,17 @@ God can multiply His people even in a place that is not their ultimate home.`,
 
   `## 📍 Genesis 47:28-31 - Jacob Makes Joseph Swear
 
-> **28** And Jacob lived in the land of Egypt seventeen years...
+> Genesis 47:28
+> And Jacob lived in the land of Egypt seventeen years...
 
-> **29** And the time drew nigh that Israel must die...
+> Genesis 47:29
+> And the time drew nigh that Israel must die...
 
-> **30** But I will lie with my fathers... bury me not, I pray thee, in Egypt.
+> Genesis 47:30
+> But I will lie with my fathers... bury me not, I pray thee, in Egypt.
 
-> **31** And he said, Swear unto me...
+> Genesis 47:31
+> And he said, Swear unto me...
 
 The chapter ends with Jacob looking past Egypt.
 
