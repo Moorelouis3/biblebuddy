@@ -5,6 +5,7 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 const CHAPTER_JOURNEY_TASK_TOTAL = 6;
 const CHAPTER_JOURNEY_TITLES = new Set([
   "The Obedience of Abraham",
+  "The Rise of Esther",
   "The Testing of Joseph",
   "The Wisdom of Proverbs",
 ]);

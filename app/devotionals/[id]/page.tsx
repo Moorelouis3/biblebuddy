@@ -12,7 +12,7 @@ function getCoverImage(title: string): string | null {
   if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
   if (title === "The Transforming of Paul") return "/transformingofpauldevotional.png";
   if (title === "The Courage of Daniel") return "/courageofdaniel.png";
-  if (title === "The Rise of Esther") return "/RiseofEsther.png";
+  if (title === "The Rise of Esther") return "/theriseofester.png";
   return null;
 }
 
@@ -100,13 +100,19 @@ type ChapterTaskProgress = {
 const WISDOM_TASK_TOTAL = 6;
 
 function isChapterJourneyStudyTitle(title: string | null | undefined) {
-  return title === "The Wisdom of Proverbs" || title === "The Testing of Joseph" || title === "The Obedience of Abraham";
+  return (
+    title === "The Wisdom of Proverbs" ||
+    title === "The Testing of Joseph" ||
+    title === "The Obedience of Abraham" ||
+    title === "The Rise of Esther"
+  );
 }
 
 function getChapterJourneyProgressLabel(title: string | null | undefined, currentDay: number, totalDays: number) {
   if (title === "The Wisdom of Proverbs") return `Proverbs ${currentDay} of ${totalDays}`;
   if (title === "The Testing of Joseph") return `Genesis ${currentDay + 36} of 50`;
   if (title === "The Obedience of Abraham") return `Genesis ${currentDay + 10} of 25`;
+  if (title === "The Rise of Esther") return `Esther ${currentDay} of ${totalDays}`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 

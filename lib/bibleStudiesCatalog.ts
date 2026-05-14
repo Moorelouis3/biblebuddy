@@ -20,6 +20,15 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
       "A chapter-by-chapter Bible study through Genesis 11-25 with intro, reading, notes, trivia, Scrambled, and reflection centered on Abraham's call, waiting, covenant, testing, and legacy.",
   },
   {
+    key: "rise_of_esther",
+    title: "The Rise of Esther",
+    subtitle: "10-chapter Bible study",
+    totalWeeks: 10,
+    image: "/theriseofester.png",
+    description:
+      "A chapter-by-chapter Bible study through Esther 1-10 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, hidden identity, palace pressure, providence, reversal, and legacy.",
+  },
+  {
     key: "testing_of_joseph",
     title: "The Testing of Joseph",
     subtitle: "14-chapter Bible study",

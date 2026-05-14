@@ -62,6 +62,7 @@ const HIDDEN_DEVOTIONAL_TITLES = new Set([
 
 const FEATURED_STUDY_ORDER = [
   "The Obedience of Abraham",
+  "The Rise of Esther",
   "The Testing of Joseph",
   "The Wisdom of Proverbs",
 ];
@@ -226,7 +227,7 @@ export default function DevotionalsPage() {
       return "/courageofdaniel.png";
     }
     if (title === "The Rise of Esther") {
-      return "/RiseofEsther.png";
+      return "/theriseofester.png";
     }
     return null;
   };
