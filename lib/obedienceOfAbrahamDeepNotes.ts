@@ -1533,7 +1533,7 @@ function renderRebuiltNote(note: AbrahamChapterNote) {
     comments.push(...textSpecificNotes);
     comments.push(...wordNotes);
 
-    return `### Verse ${verse.verse}
+    return `## 🔎 Verse ${verse.verse}
 
 ${comments.join("\n\n")}`;
   };
@@ -1541,7 +1541,7 @@ ${comments.join("\n\n")}`;
   const renderVerseBreakdowns = (section: AbrahamSection) => {
     const verses = getSectionVerses(section);
     if (verses.length === 0) return "";
-    return `### Walking Through The Verses
+    return `## 🧠 Walking Through The Verses
 
 ${verses.map((verse) => explainVerseText(verse, section)).join("\n\n")}`;
   };
@@ -1662,41 +1662,36 @@ ${verses.map((verse) => explainVerseText(verse, section)).join("\n\n")}`;
       ];
     };
     const [ancientLine, modernLine, covenantLine] = sectionTexture();
-    const keyDetails = [
-      `📍 The setting of **${title}** matters because place, movement, and timing shape the whole scene.`,
-      `👀 Watch what people see, want, fear, or assume before they act.`,
-      `🧬 Notice how the covenant promise is either being protected, tested, clarified, or carried forward.`,
-      `💔 Pay attention to the human cost. Abraham's story includes family pressure, waiting, grief, and weakness.`,
-      `🙏 Look for worship, obedience, prayer, or surrender in the middle of the pressure.`,
-    ];
 
-    return `### What Is Happening
+    const sectionWords = [
+      ...new Set(
+        verses.flatMap((verse) => inlineWordNotes(verse).map((line) => line.replace(/^\*\*(.+?)\*\*:.*$/, "$1"))),
+      ),
+    ];
+    const wordList =
+      sectionWords.length > 0
+        ? sectionWords.map((word) => `- 📖 **${word}** - ${explainKjvWord(word, note.chapter)}`).join("\n")
+        : "- 📖 Important words and older KJV phrases are explained directly as the verses are broken down.";
+
+    return `## 🧭 What This Section Is Showing
 
 ${section.points.join("\n\n")}
 
-### Key Details To Notice
+## 📖 Key Words And Phrases
 
-${keyDetails.map((item) => `* ${item}`).join("\n\n")}
+${wordList}
 
-### Why This Section Matters
-
-In **${title}**, Genesis is not throwing in background information. It is showing the pressure around Abraham's obedience and the world in which the promise is developing.
-
-${section.points[0]}
-
-### What Ancient Readers Would Notice
+## 🏺 The World Behind The Scene
 
 ${ancientLine}
 
-That matters because Abraham's world is not modern, private, and individualistic. Family, land, name, household, servants, animals, city gates, wells, altars, and children all carried spiritual and social weight.
+Abraham's world was built around family, land, tents, servants, animals, water, inheritance, honor, and survival.
 
-### What Modern Readers Often Miss
+So when Genesis names a place, a family line, a famine, a well, a field, a tent, an altar, or a child, it is not filler.
 
-${modernLine}
+It is helping us feel the real life pressure around faith.
 
-The old words and customs are different from our world, but the heart pressure is familiar. People still want security. Waiting still hurts. Fear still makes people reach for control. Family tension still exposes what people really trust.
-
-### How This Moves the Covenant Story
+## 🧬 How This Moves The Covenant Story
 
 ${chapterFrame}
 
@@ -1706,7 +1701,13 @@ ${pressureFrame}
 
 ${covenantLine}
 
-The verses in this section (${verseList}) move the covenant story forward by showing promise under pressure. God is forming Abraham on roads, beside altars, inside family conflict, in foreign places, and in moments where obedience costs something.
+## 🧠 What To Understand Before Moving On
+
+Verses ${verseList} belong together.
+
+They show the movement of the scene before we zoom in on each verse.
+
+${modernLine}
 
 ${renderVerseBreakdowns(section)}`;
   };
@@ -1789,7 +1790,7 @@ ${chapterFocus.join("\n\n")}`;
 
 ${chapterFocus.map((item) => `* ${item}`).join("\n\n")}`;
 
-  const renderSection = (section: AbrahamSection) => `## ${cleanSectionTitle(section.title)}
+  const renderSection = (section: AbrahamSection) => `## 📖 ${cleanSectionTitle(section.title)}
 
 ${renderVerseCallout(section)}
 
@@ -2100,7 +2101,7 @@ ${note.intro}
 
 ${note.lesson}
 
-## Chapter Overview
+## 📍 The Chapter Flow
 
 ${note.flow.map((item, index) => `* ${["📖", "👀", "🧬", "🏕️", "🙏"][index % 5]} ${item}`).join("\n\n")}
 
