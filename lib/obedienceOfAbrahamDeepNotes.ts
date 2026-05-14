@@ -1,4 +1,4 @@
-type AbrahamSection = {
+﻿type AbrahamSection = {
   reference: string;
   title: string;
   points: string[];
@@ -424,14 +424,14 @@ const GENESIS_KJV_VERSES: Record<number, GenesisVerse[]> = {
 const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   {
     chapter: 11,
-    title: "🧳 Genesis 11 — The Road Before The Call",
+    title: "ðŸ§³ Genesis 11 â€” The Road Before The Call",
     intro:
       "Genesis 11 sets the ground under Abraham's story. Before Abram hears God say, \"Go,\" the chapter shows a world trying to build its own security at Babel and then narrows into one family line moving toward Canaan but stopping in Haran. That matters because Abraham's obedience does not appear out of nowhere. It rises out of a real family, a real world, and an unfinished road.",
     flow: ["Babel shows pride trying to make a name without God.", "Shem's line narrows the story toward Abram.", "Terah's family begins moving toward Canaan but settles short of the destination."],
     sections: [
       {
         reference: "Genesis 11:1-9",
-        title: "🏙️ A world trying to build without God",
+        title: "ðŸ™ï¸ A world trying to build without God",
         points: [
           "Babel is not just a building project. It is a picture of humanity trying to create safety, fame, and unity without surrender. They say, \"let us make us a name,\" and that line sits in sharp contrast to Genesis 12, where God says He will make Abram's name great.",
           "That contrast is important. Human pride tries to climb upward and secure itself. Faith receives identity from God. Babel reaches for heaven on its own terms, but Abraham will be called to walk with God on God's terms.",
@@ -440,7 +440,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 11:10-26",
-        title: "🧬 The story narrows toward one family",
+        title: "ðŸ§¬ The story narrows toward one family",
         points: [
           "The genealogy can feel slow, but it is doing something important. Scripture is tracing the line forward until Abram comes into view. The Bible is teaching us that God works through generations, names, families, and time.",
           "This reminds us that Abraham's story is connected to a bigger story. God is not making a random choice. He is carrying forward His plan through ordinary human history.",
@@ -449,7 +449,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 11:27-32",
-        title: "🛣️ An unfinished journey",
+        title: "ðŸ›£ï¸ An unfinished journey",
         points: [
           "Terah's household leaves Ur and heads toward Canaan, but they settle in Haran. The destination is named before the calling is fully spoken. That gives Genesis 12 a sense of holy continuation. God will call Abram to finish a road already begun.",
           "Sarai's barrenness is also named here. That detail is not random. The very promise God will give Abram will press against the deepest impossibility in his household.",
@@ -462,14 +462,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 12,
-    title: "📣 Genesis 12 — The Call To Leave",
+    title: "ðŸ“£ Genesis 12 â€” The Call To Leave",
     intro:
       "Genesis 12 is the great turning point. God speaks to Abram and calls him away from the familiar into a future that depends entirely on God's promise. But the same chapter also shows Abram's fear in Egypt, so the Bible introduces him honestly: obedient, chosen, and still deeply in need of growth.",
     flow: ["God calls Abram to leave and promises blessing.", "Abram enters the land and builds altars.", "Famine exposes fear and self-protection."],
     sections: [
       {
         reference: "Genesis 12:1-9",
-        title: "🛣️ Obedience before the full map",
+        title: "ðŸ›£ï¸ Obedience before the full map",
         points: [
           "God tells Abram to leave country, kindred, and father's house. That is not a small request. God is asking Abram to loosen his grip on identity, security, inheritance, and the world he understands.",
           "The promise is bigger than Abram's personal comfort. God promises land, nation, blessing, a great name, and blessing for all families of the earth. Abram's obedience becomes part of God's mercy reaching outward.",
@@ -478,7 +478,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 12:10-16",
-        title: "🌾 Famine after obedience",
+        title: "ðŸŒ¾ Famine after obedience",
         points: [
           "The famine matters because it comes after Abram obeys. Sometimes people assume obedience should immediately make life easier, but Abram's first chapter of faith includes pressure.",
           "In Egypt, fear bends Abram's judgment. He tells Sarai to say she is his sister, protecting himself while placing her at risk. The Bible does not hide this. Abram is a man of faith, but fear still knows how to speak loudly in him.",
@@ -487,7 +487,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 12:17-20",
-        title: "🛡️ God protects the promise",
+        title: "ðŸ›¡ï¸ God protects the promise",
         points: [
           "God intervenes to protect Sarai and the promise. Abram's failure could have caused deep damage, but God's faithfulness is stronger than Abram's poor decision.",
           "This does not excuse Abram. It magnifies God's mercy. The future of the promise rests on God, not on Abram's perfect performance.",
@@ -500,14 +500,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 13,
-    title: "🤝 Genesis 13 — Faith That Does Not Have To Grab",
+    title: "ðŸ¤ Genesis 13 â€” Faith That Does Not Have To Grab",
     intro:
       "Genesis 13 brings Abram back from Egypt and places him in a quieter but very real test. Blessing has grown, space is limited, and conflict is rising. This chapter shows whether Abram believes God's promise enough to choose peace instead of grasping.",
     flow: ["Abram returns to the place of worship.", "Conflict rises between Abram and Lot's households.", "Lot chooses by sight while Abram receives the renewed promise."],
     sections: [
       {
         reference: "Genesis 13:1-7",
-        title: "🪨 Returning to the altar",
+        title: "ðŸª¨ Returning to the altar",
         points: [
           "Abram comes back to the place where he had built an altar. That detail matters after Egypt. The story quietly brings him back to worship, back to the place of calling, back to dependence on God.",
           "But blessing creates pressure. Abram and Lot both have possessions, herds, and households. The land cannot carry them together easily. Sometimes the test is not lack. Sometimes the test is what blessing does to relationships.",
@@ -516,7 +516,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 13:8-13",
-        title: "👀 Lot chooses by sight",
+        title: "ðŸ‘€ Lot chooses by sight",
         points: [
           "Abram gives Lot the first choice. This is beautiful because Abram is the elder and the one who received the promise, yet he refuses to force his advantage.",
           "Lot lifts his eyes and sees the well-watered plain. The land looks like Eden and Egypt. That comparison is not accidental. Lot is drawn by what looks immediately profitable, but the text warns us that Sodom is spiritually dangerous.",
@@ -525,7 +525,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 13:14-18",
-        title: "📜 Promise after surrender",
+        title: "ðŸ“œ Promise after surrender",
         points: [
           "After Lot separates, God tells Abram to lift his eyes. Lot lifted his eyes to choose for himself. Abram lifts his eyes because God is showing him promise.",
           "God expands the promise in every direction. Abram gave up the right to grab, but he did not lose the future. Faith can be generous because it trusts God to provide what selfishness cannot secure.",
@@ -538,14 +538,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 14,
-    title: "⚔️ Genesis 14 — Courage Under God Most High",
+    title: "âš”ï¸ Genesis 14 â€” Courage Under God Most High",
     intro:
       "Genesis 14 feels different from the chapters around it. Kings go to war, Lot is captured, and Abram acts with courage. But the chapter is not only about battle. It is about rescue, worship, and refusing to let anyone but God define Abram's blessing.",
     flow: ["War reaches Lot's life near Sodom.", "Abram rescues Lot with courage.", "Melchizedek blesses Abram, and Abram refuses Sodom's reward."],
     sections: [
       {
         reference: "Genesis 14:1-12",
-        title: "🌃 Lot's direction creates danger",
+        title: "ðŸŒƒ Lot's direction creates danger",
         points: [
           "Lot had moved toward Sodom in Genesis 13. Now the consequences of that direction begin to show. He is swept into a conflict larger than himself.",
           "This is one of Proverbs' themes before Proverbs is ever written: paths matter. Where Lot chose to settle shaped the dangers that reached his household.",
@@ -554,7 +554,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 14:13-16",
-        title: "🛡️ Abram acts to rescue",
+        title: "ðŸ›¡ï¸ Abram acts to rescue",
         points: [
           "Abram does not shrug and say Lot made his choice. He gathers trained men and moves to rescue him. Faith is not passive when love requires action.",
           "This shows a strong side of Abram. He is not merely a pilgrim building altars. He is also responsible, brave, and willing to risk himself for family.",
@@ -563,7 +563,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 14:17-24",
-        title: "🙌 Victory stays under worship",
+        title: "ðŸ™Œ Victory stays under worship",
         points: [
           "Melchizedek appears as priest of God Most High and blesses Abram. Abram gives him a tenth, recognizing that victory belongs under God's authority.",
           "Then Abram refuses the king of Sodom's offer. He does not want Sodom to say, \"I made Abram rich.\" That refusal protects the clarity of his testimony.",
@@ -576,14 +576,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 15,
-    title: "🌌 Genesis 15 — Believing God In The Waiting",
+    title: "ðŸŒŒ Genesis 15 â€” Believing God In The Waiting",
     intro:
       "Genesis 15 brings us inside Abram's heart. He has obeyed, fought, worshiped, and refused compromise, but he still has no son. This chapter shows faith not as fake confidence, but as honest trust placed in God's word.",
     flow: ["God comforts Abram's fear.", "Abram names the ache of delay.", "God gives stars, righteousness, covenant, and future hope."],
     sections: [
       {
         reference: "Genesis 15:1-6",
-        title: "🛡️ Do not fear",
+        title: "ðŸ›¡ï¸ Do not fear",
         points: [
           "God begins with comfort: \"Fear not.\" That tells us Abram's courage in chapter 14 did not erase every fear inside him. Brave people can still need reassurance.",
           "Abram answers honestly. He has no child. The promise of descendants is beautiful, but his house still feels empty. Biblical faith has room to bring that ache before God.",
@@ -592,7 +592,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 15:7-16",
-        title: "📜 Promise with a long timeline",
+        title: "ðŸ“œ Promise with a long timeline",
         points: [
           "God promises land, but He also reveals that Abram's descendants will suffer in a foreign land before deliverance. This is a wide view of history.",
           "That means God's promise does not avoid all pain. The promise is not shallow. It moves through time, suffering, judgment, deliverance, and return.",
@@ -601,7 +601,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 15:17-21",
-        title: "🔥 God binds Himself to the promise",
+        title: "ðŸ”¥ God binds Himself to the promise",
         points: [
           "The covenant ceremony is powerful because God passes through as smoking fire and flame. Abram is not the one walking through to prove he can hold everything together.",
           "God takes the weight of the promise upon Himself. The future rests on divine commitment, not human strength.",
@@ -614,14 +614,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 16,
-    title: "⚠️ Genesis 16 — When Waiting Turns Into Control",
+    title: "âš ï¸ Genesis 16 â€” When Waiting Turns Into Control",
     intro:
       "Genesis 16 is one of the most painful chapters in Abraham's story because delay becomes pressure and pressure becomes human control. The chapter is honest about how impatience can harm real people.",
     flow: ["Sarai and Abram try to force the promise.", "Hagar suffers inside the household conflict.", "God sees Hagar in the wilderness."],
     sections: [
       {
         reference: "Genesis 16:1-6",
-        title: "⏳ A shortcut that wounds",
+        title: "â³ A shortcut that wounds",
         points: [
           "Sarai's pain is real. She is barren, the promise is delayed, and the years are heavy. But pain does not make every plan wise.",
           "Abram listens and takes Hagar. The result is not peace but contempt, jealousy, blame, and harsh treatment. A human shortcut creates a household wound.",
@@ -630,7 +630,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 16:7-12",
-        title: "👁️ God sees the mistreated",
+        title: "ðŸ‘ï¸ God sees the mistreated",
         points: [
           "Hagar runs into the wilderness, and the Angel of the Lord finds her. That word matters. People may overlook her, use her, or mistreat her, but God sees her.",
           "God speaks to Hagar personally about her child and her future. She is not a disposable side character to Him.",
@@ -639,7 +639,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 16:13-16",
-        title: "🏜️ The God who sees",
+        title: "ðŸœï¸ The God who sees",
         points: [
           "Hagar names God, \"You are the God who sees me.\" This is one of the most tender moments in Genesis.",
           "The promise to Abraham is still moving, but Genesis makes space to show God's mercy toward Hagar and Ishmael too.",
@@ -652,14 +652,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 17,
-    title: "🪪 Genesis 17 — New Names And Covenant Identity",
+    title: "ðŸªª Genesis 17 â€” New Names And Covenant Identity",
     intro:
       "Genesis 17 gives Abram and Sarai new names. God is not only promising a future; He is naming them according to that future while the evidence still looks impossible.",
     flow: ["God reveals Himself as Almighty.", "Abram becomes Abraham and Sarai becomes Sarah.", "Circumcision marks the covenant, and Isaac is promised."],
     sections: [
       {
         reference: "Genesis 17:1-8",
-        title: "🙇 Walk before Me",
+        title: "ðŸ™‡ Walk before Me",
         points: [
           "God introduces Himself as God Almighty and calls Abram to walk before Him. Covenant is not just receiving promises. It is living before God with a whole life.",
           "Abram falls on his face. That posture fits the moment. God is speaking identity, nations, kings, land, and everlasting covenant over a man who still cannot produce the promised son.",
@@ -668,7 +668,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 17:9-14",
-        title: "📜 A covenant marked in the body",
+        title: "ðŸ“œ A covenant marked in the body",
         points: [
           "Circumcision marks the covenant physically. This is not casual spirituality. God is placing covenant identity on Abraham's household in a visible and costly way.",
           "The sign does not create the promise, but it marks belonging to the promise. Abraham's family is being set apart.",
@@ -677,7 +677,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 17:15-27",
-        title: "😂 Promise that sounds impossible",
+        title: "ðŸ˜‚ Promise that sounds impossible",
         points: [
           "Sarai becomes Sarah, and God says she will bear Isaac. Abraham laughs because the promise feels biologically impossible.",
           "God does not cancel the promise because Abraham struggles to grasp it. He names Isaac and fixes the time. The promise rests on God's power, not Abraham's imagination.",
@@ -690,14 +690,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 18,
-    title: "🏕️ Genesis 18 — Near Enough To Hear And Pray",
+    title: "ðŸ•ï¸ Genesis 18 â€” Near Enough To Hear And Pray",
     intro:
       "Genesis 18 shows Abraham in closeness with God. He welcomes visitors, hears the promise of Isaac again, and then stands before the Lord in bold intercession for Sodom.",
     flow: ["Abraham receives divine visitors.", "Sarah hears the impossible promise.", "Abraham intercedes for Sodom."],
     sections: [
       {
         reference: "Genesis 18:1-8",
-        title: "🤲 Hospitality as holy attention",
+        title: "ðŸ¤² Hospitality as holy attention",
         points: [
           "Abraham runs to welcome the visitors. The chapter moves with urgency, honor, food, water, and rest. This is not cold religion. It is a life ready to receive what God is doing.",
           "Hospitality in Scripture is often more than manners. It is openness, humility, and attention to the person in front of you.",
@@ -706,7 +706,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 18:9-15",
-        title: "❓ Is anything too hard for the Lord?",
+        title: "â“ Is anything too hard for the Lord?",
         points: [
           "Sarah laughs inside the tent. Her laughter is quiet, but God hears it. Hidden reactions are not hidden from Him.",
           "The question, \"Is anything too hard for the Lord?\" is the heart of the chapter. It confronts the limits Sarah has placed around possibility.",
@@ -715,7 +715,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 18:16-33",
-        title: "🙏 Reverent boldness",
+        title: "ðŸ™ Reverent boldness",
         points: [
           "God lets Abraham into the conversation about Sodom. That is astonishing. Abraham is being treated as a covenant friend, not merely a servant receiving orders.",
           "Abraham pleads with humility and courage. He cares about justice, mercy, and the righteous caught in a wicked place.",
@@ -728,14 +728,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 19,
-    title: "🔥 Genesis 19 — Mercy Pulling People From Judgment",
+    title: "ðŸ”¥ Genesis 19 â€” Mercy Pulling People From Judgment",
     intro:
       "Genesis 19 is heavy. It shows Sodom's wickedness, Lot's compromised position, God's mercy, and the serious reality of judgment. It sits near Abraham's story as a warning about direction and holiness.",
     flow: ["The angels enter Sodom.", "Lot is rescued by mercy.", "The chapter ends with painful consequences."],
     sections: [
       {
         reference: "Genesis 19:1-11",
-        title: "🌃 A city showing its heart",
+        title: "ðŸŒƒ A city showing its heart",
         points: [
           "The wickedness of Sodom is not vague in this chapter. The city reveals a violent, predatory heart, and Lot's home becomes the pressure point.",
           "Lot is called righteous elsewhere in Scripture, but Genesis shows him deeply entangled in a dangerous place. Sitting in the gate suggests belonging and influence, yet he cannot heal the city.",
@@ -744,7 +744,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 19:12-22",
-        title: "🤲 Mercy that drags the hesitant",
+        title: "ðŸ¤² Mercy that drags the hesitant",
         points: [
           "Lot warns his family, but his sons-in-law think he is joking. That is tragic. A compromised witness can make urgent truth sound unbelievable.",
           "Lot lingers even as judgment approaches. The angels seize him and his family by the hand because the Lord is merciful.",
@@ -753,7 +753,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 19:23-38",
-        title: "💔 Rescue does not erase damage",
+        title: "ðŸ’” Rescue does not erase damage",
         points: [
           "Sodom falls. Lot's wife looks back and becomes a warning. The chapter wants us to feel the seriousness of divided affection.",
           "The ending with Lot's daughters is disturbing and sad. It shows that leaving Sodom physically did not mean Sodom's damage had fully left the family.",
@@ -766,14 +766,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 20,
-    title: "🔁 Genesis 20 — The Fear That Came Back",
+    title: "ðŸ” Genesis 20 â€” The Fear That Came Back",
     intro:
       "Genesis 20 is sobering because Abraham repeats an old failure. After years of walking with God, receiving covenant, and interceding for Sodom, fear still bends his behavior.",
     flow: ["Abraham repeats the sister lie.", "God protects Sarah through a dream.", "Abraham is corrected and restored."],
     sections: [
       {
         reference: "Genesis 20:1-7",
-        title: "😟 Old fear in a new place",
+        title: "ðŸ˜Ÿ Old fear in a new place",
         points: [
           "Abraham says Sarah is his sister again. The pattern from Egypt returns, showing that old fears can survive many spiritual experiences if they are not deeply healed.",
           "Abimelech takes Sarah, but God intervenes in a dream. Once again, God protects the promise from Abraham's fear-driven failure.",
@@ -782,7 +782,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 20:8-13",
-        title: "🪞 A painful explanation",
+        title: "ðŸªž A painful explanation",
         points: [
           "Abraham explains that he thought there was no fear of God in the place. The irony is sharp because Abimelech acts with more integrity in the moment than Abraham does.",
           "Abraham's explanation reveals a settled strategy of fear. This was not a one-time panic. It was a plan he and Sarah had carried from place to place.",
@@ -791,7 +791,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 20:14-18",
-        title: "🩹 Grace that corrects",
+        title: "ðŸ©¹ Grace that corrects",
         points: [
           "Abimelech restores Sarah and gives gifts, and Abraham prays for his household. The chapter ends with healing, but it does not pretend the failure was small.",
           "God's grace protects the promise and corrects Abraham at the same time. Grace is not permission to stay careless. It is mercy that keeps forming the person God called.",
@@ -804,14 +804,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 21,
-    title: "👶 Genesis 21 — Promise In The Arms",
+    title: "ðŸ‘¶ Genesis 21 â€” Promise In The Arms",
     intro:
       "Genesis 21 finally places Isaac in Abraham and Sarah's arms. The promise becomes visible, laughter changes tone, and the story proves that delay was never denial.",
     flow: ["Isaac is born just as God said.", "Hagar and Ishmael are sent away but not abandoned by God.", "Abraham worships the everlasting God."],
     sections: [
       {
         reference: "Genesis 21:1-7",
-        title: "😂 Laughter turned to joy",
+        title: "ðŸ˜‚ Laughter turned to joy",
         points: [
           "The repeated phrase is that God did as He had spoken. That is the foundation of the scene. Isaac's birth is not luck, biology, or human achievement. It is promise fulfilled.",
           "Sarah laughs again, but now the laughter is joy. The very place of disbelief becomes a place of praise.",
@@ -820,7 +820,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 21:8-21",
-        title: "💔 Fulfillment with complicated pain",
+        title: "ðŸ’” Fulfillment with complicated pain",
         points: [
           "The celebration around Isaac does not erase the pain connected to Hagar and Ishmael. Earlier compromise has consequences that now have to be faced.",
           "Hagar is sent away, and the scene in the wilderness is heartbreaking. Yet God hears the boy and opens Hagar's eyes to water.",
@@ -829,7 +829,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 21:22-34",
-        title: "🌳 Calling on the everlasting God",
+        title: "ðŸŒ³ Calling on the everlasting God",
         points: [
           "Abraham makes peace with Abimelech and plants a tree at Beersheba. The chapter ends with stability, worship, and the name of the Everlasting God.",
           "That name matters after a chapter about long waiting. Abraham has learned that God's timeline is larger than his own impatience.",
@@ -842,14 +842,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 22,
-    title: "⛰️ Genesis 22 — The Promise On The Altar",
+    title: "â›°ï¸ Genesis 22 â€” The Promise On The Altar",
     intro:
       "Genesis 22 is the deepest test in Abraham's life. Isaac is not only Abraham's beloved son; he is the visible future of the promise. God asks Abraham to surrender the gift back to the Giver.",
     flow: ["God tests Abraham.", "Abraham walks the long road of surrender.", "God provides the ram and renews the promise."],
     sections: [
       {
         reference: "Genesis 22:1-8",
-        title: "🪵 The long walk",
+        title: "ðŸªµ The long walk",
         points: [
           "The chapter names Isaac with emotional weight: your son, your only son, whom you love. The test is not abstract. God names what Abraham treasures most.",
           "Abraham rises early. That does not mean the command was easy. It means his obedience is serious enough to move even when the emotional weight is crushing.",
@@ -858,7 +858,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 22:9-14",
-        title: "🐏 Provision at the point of surrender",
+        title: "ðŸ Provision at the point of surrender",
         points: [
           "The altar scene is tense because obedience has reached the edge. Abraham stretches out his hand, and then God stops him.",
           "The ram appears in the thicket. God provides the sacrifice. Isaac is spared, and Abraham names the place, \"The Lord will provide.\"",
@@ -867,7 +867,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 22:15-24",
-        title: "📜 Promise after surrender",
+        title: "ðŸ“œ Promise after surrender",
         points: [
           "After the test, God reaffirms the blessing. Abraham's surrender did not destroy the promise. It clarified that the promise belongs to God.",
           "This chapter also points forward. The beloved son, the wood, the mountain, and the substitute all prepare the reader to recognize deeper patterns of sacrifice and provision in Scripture.",
@@ -880,14 +880,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 23,
-    title: "🪦 Genesis 23 — Grief Inside The Promise",
+    title: "ðŸª¦ Genesis 23 â€” Grief Inside The Promise",
     intro:
       "Genesis 23 slows the story down. Sarah dies, Abraham mourns, and the first clear piece of land he owns in Canaan is a burial place. The chapter is quiet, but it is deeply important.",
     flow: ["Sarah dies and Abraham mourns.", "Abraham buys Machpelah honorably.", "Sarah is buried in the land of promise."],
     sections: [
       {
         reference: "Genesis 23:1-2",
-        title: "😭 Faith still weeps",
+        title: "ðŸ˜­ Faith still weeps",
         points: [
           "The Bible says Abraham came to mourn and weep for Sarah. It does not rush past his grief because he is a man of faith.",
           "That matters. Faith does not make a person less human. Abraham has walked with God for years, but death still hurts.",
@@ -896,7 +896,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 23:3-16",
-        title: "⚖️ Honorable dealings",
+        title: "âš–ï¸ Honorable dealings",
         points: [
           "Abraham negotiates publicly and respectfully for the cave of Machpelah. He refuses to take the land as a vague favor and insists on paying the full price.",
           "This shows integrity. Abraham's faith affects how he handles business, grief, and public reputation.",
@@ -905,7 +905,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 23:17-20",
-        title: "📍 A grave in the promised land",
+        title: "ðŸ“ A grave in the promised land",
         points: [
           "The first owned piece of the promised land is not a palace, field, or city. It is a tomb.",
           "That is emotionally powerful. Abraham owns a burial place before he sees the land filled with descendants.",
@@ -918,14 +918,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 24,
-    title: "💧 Genesis 24 — Guidance For The Promise",
+    title: "ðŸ’§ Genesis 24 â€” Guidance For The Promise",
     intro:
       "Genesis 24 turns toward the next generation. Abraham is old, Isaac needs a wife, and the promise must continue without Isaac being pulled back to the old life.",
     flow: ["Abraham sends his servant with covenant priorities.", "The servant prays and watches for God's guidance.", "Rebekah responds, and Isaac's future is established."],
     sections: [
       {
         reference: "Genesis 24:1-9",
-        title: "🧭 The next generation must not go backward",
+        title: "ðŸ§­ The next generation must not go backward",
         points: [
           "Abraham is clear that Isaac must not return to the land Abraham left. The promise is tied to God's direction, not nostalgia.",
           "This is mature faith. Abraham is thinking beyond his own lifetime and protecting Isaac's future direction.",
@@ -934,7 +934,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 24:10-27",
-        title: "🙏 Prayer beside the well",
+        title: "ðŸ™ Prayer beside the well",
         points: [
           "The servant prays specifically and humbly. He is not trying to control God; he is asking for guidance that matches covenant kindness.",
           "Rebekah's response reveals character. She offers water not only to the servant but also to the camels, showing generosity, strength, and hospitality.",
@@ -943,7 +943,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 24:28-67",
-        title: "💍 A willing step into the promise",
+        title: "ðŸ’ A willing step into the promise",
         points: [
           "The story is retold in the household because testimony matters. The servant explains how God led him.",
           "Rebekah is asked whether she will go, and she says yes. Her willingness echoes Abraham's earlier obedience in a new generation.",
@@ -956,14 +956,14 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
   },
   {
     chapter: 25,
-    title: "🌅 Genesis 25 — Full Of Years",
+    title: "ðŸŒ… Genesis 25 â€” Full Of Years",
     intro:
       "Genesis 25 closes Abraham's earthly story. He dies old and full of years, but the promise does not die with him. The chapter moves from Abraham's final family lines into Isaac's generation.",
     flow: ["Abraham's later descendants are named.", "Abraham dies and is buried by Isaac and Ishmael.", "The story turns toward Jacob and Esau."],
     sections: [
       {
         reference: "Genesis 25:1-11",
-        title: "🕊️ A life completed, not a promise completed",
+        title: "ðŸ•Šï¸ A life completed, not a promise completed",
         points: [
           "Abraham has more descendants through Keturah, but Isaac remains the covenant son. Genesis is careful to distinguish family expansion from covenant line.",
           "Abraham dies at a good old age, full of years. That phrase carries a sense of completion. His life was not perfect, but it was deeply lived before God.",
@@ -972,7 +972,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 25:12-18",
-        title: "📜 God remembers Ishmael",
+        title: "ðŸ“œ God remembers Ishmael",
         points: [
           "Ishmael's line is recorded. This matters because God had promised Hagar and Abraham that Ishmael would become a great nation.",
           "The covenant line goes through Isaac, but Scripture still pauses to show that God kept His word concerning Ishmael.",
@@ -981,7 +981,7 @@ const ABRAHAM_CHAPTER_NOTES: AbrahamChapterNote[] = [
       },
       {
         reference: "Genesis 25:19-34",
-        title: "🌱 The next generation begins with tension",
+        title: "ðŸŒ± The next generation begins with tension",
         points: [
           "Isaac and Rebekah face barrenness, and Isaac prays. The next generation immediately learns that promise still requires dependence.",
           "Jacob and Esau struggle even before birth. The story of promise continues, but it is not simple or tidy.",
@@ -999,7 +999,7 @@ function renderNote(note: AbrahamChapterNote) {
 
 ${note.intro}
 
-📍 The Chapter Flow
+ðŸ“ The Chapter Flow
 
 ${note.flow.map((item) => `* ${item}`).join("\n\n")}
 
@@ -1013,7 +1013,7 @@ ${section.points.join("\n\n")}`,
   )
   .join("\n\n")}
 
-💡 The Big Lesson of Genesis ${note.chapter}
+ðŸ’¡ The Big Lesson of Genesis ${note.chapter}
 
 ${note.lesson}`;
 }
@@ -1190,21 +1190,7 @@ function explainKjvWord(word: string, chapter: number) {
 
 function renderRebuiltNote(note: AbrahamChapterNote) {
   const chapterFocus = chapterSpecificFocus[note.chapter] || [];
-  const cleanLeadingIcon = (title: string) => {
-    const parts = title.trim().split(/\s+/);
-    if (parts.length > 1 && /[^\x20-\x7E]/.test(parts[0])) {
-      return parts.slice(1).join(" ");
-    }
-    return title.trim();
-  };
-  const cleanSectionTitle = (title: string) => cleanLeadingIcon(title).replace(/^[^A-Za-z0-9"]+\s*/, "").trim();
-  const cleanChapterHeading = () => {
-    const cleaned = cleanLeadingIcon(note.title).replace(/—/g, "-").replace(/�/g, "-");
-    const match = cleaned.match(/Genesis\s+\d+\s+-\s+(.+)/i);
-    const subtitle = match ? match[1].trim() : cleaned.replace(/^Genesis\s+\d+\s*/i, "").trim();
-    return `# Genesis ${note.chapter}\n\n# ${subtitle}`;
-  };
-
+  const cleanSectionTitle = (title: string) => title.replace(/^[^\w"]+\s*/, "").trim();
   const parseReference = (reference: string) => {
     const match = reference.match(/Genesis\s+(\d+):(\d+)(?:-(\d+))?/i);
     if (!match) return null;
@@ -1230,221 +1216,56 @@ function renderRebuiltNote(note: AbrahamChapterNote) {
 > Read this section slowly. Notice who moves, who speaks, what is promised, what is feared, and how God keeps the covenant story moving.`;
     }
 
-    return verses.map((verse) => `> **${verse.verse}** ${verse.text.replace(/\*/g, "")}`).join("\n\n");
-  };
-
-  const inlineWordNotes = (verse: GenesisVerse) => {
-    const lower = verse.text.toLowerCase();
-    const notes: string[] = [];
-    const words = chapterKjvWords[note.chapter] || [];
-
-    for (const word of words) {
-      const key = word.toLowerCase();
-      const appears =
-        (key === "ram" ? /\bram\b/.test(lower) : lower.includes(key)) ||
-        (key === "pitch his tent" && lower.includes("pitched")) ||
-        (key === "full of years" && lower.includes("full")) ||
-        (key === "god most high" && lower.includes("most high")) ||
-        (key === "only son" && lower.includes("only son")) ||
-        (key === "burnt offering" && lower.includes("burnt offering")) ||
-        (key === "jehovah-jireh" && lower.includes("jehovahjireh")) ||
-        (key === "everlasting god" && lower.includes("everlasting")) ||
-        (key === "pillar of salt" && lower.includes("pillar")) ||
-        (key === "covering of the eyes" && lower.includes("covering"));
-
-      if (appears) {
-        notes.push(`**${word}**: ${explainKjvWord(word, note.chapter)}`);
-      }
-    }
-
-    return notes;
-  };
-
-  const verseLead = (verse: GenesisVerse) => {
-    const lower = verse.text.toLowerCase();
-    if (lower.includes("went up out of egypt")) return "Genesis starts this chapter by moving Abram out of Egypt. He is coming away from the place where fear shaped his choices, and that makes the return feel like a reset.";
-    if (lower.includes("very rich")) return "Abram has real wealth now. Cattle, silver, and gold sound like blessing, but wealth will soon create pressure inside the family camp.";
-    if (lower.includes("went on his journeys")) return "Abram retraces his road back toward Bethel. The journey language helps us feel his life as a moving camp, not a settled kingdom.";
-    if (lower.includes("place of the altar")) return "The altar brings Abram back to worship. After Egypt, this detail matters because the story returns him to the place where he had called on the Lord before.";
-    if (lower.includes("flocks") || lower.includes("herds")) return "The animals are not background decoration. In nomadic life, flocks and herds meant food, wealth, labor, and survival.";
-    if (lower.includes("land was not able to bear")) return "The land itself becomes part of the tension. Two large households need pasture and water, and there is not enough room for peace.";
-    if (lower.includes("strife between the herdmen")) return "The conflict begins with the workers, but it threatens the whole family. Household tension often starts in daily pressure before it becomes a major break.";
-    if (lower.includes("no strife")) return "Abram steps in before the conflict destroys the relationship. He chooses peace while he still has power to demand his own way.";
-    if (lower.includes("whole land before thee")) return "Abram gives Lot first choice. That is a major faith moment because Abram is trusting God's promise instead of controlling the outcome.";
-    if (lower.includes("lifted up his eyes")) return "Lot makes his choice by sight. Genesis wants us to notice what looks attractive and what is spiritually dangerous.";
-    if (lower.includes("toward sodom")) return "This is the warning line. Lot does not have to move into Sodom all at once; he starts by pitching his tent toward it.";
-    if (lower.includes("wicked and sinners")) return "Genesis tells us the truth about Sodom before Lot's story gets worse. The place may look rich, but it is morally sick.";
-    if (lower.includes("look from the place where thou art")) return "God tells Abram to look after Lot has left. Lot looked to choose for himself, but Abram looks because God is showing him promise.";
-    if (lower.includes("i will make thy seed")) return "God speaks about descendants again while Abram still has no child. The promise is still larger than what Abram can see.";
-    if (lower.includes("walk through the land")) return "God tells Abram to walk the land like a man learning the promise with his feet. The land is not fully possessed yet, but it is already named by God.";
-    if (lower.includes("king") && lower.includes("war")) return "The Abraham story suddenly widens into international conflict. Lot's family is now caught near powers far bigger than one household.";
-    if (lower.includes("served") && lower.includes("rebelled")) return "This is the language of ancient politics. Smaller kings served a stronger king, then rebelled when they wanted freedom.";
-    if (lower.includes("slimepits")) return "The battlefield is dangerous even before swords are counted. Slimepits were tar or bitumen pits that could trap fleeing soldiers.";
-    if (lower.includes("took lot")) return "Lot's earlier choice now becomes personal danger. He is not just near Sodom anymore; he is captured with Sodom.";
-    if (lower.includes("abram the hebrew")) return "Abram is called the Hebrew here, marking him as a distinct outsider in the land. He is connected to the region, but he is not swallowed by it.";
-    if (lower.includes("trained servants")) return "Abram's household is large and organized enough to have trained men. He is a pilgrim, but he is not helpless.";
-    if (lower.includes("by night")) return "The rescue happens with strategy. Abram divides his men and attacks at night, showing courage joined with wisdom.";
-    if (lower.includes("brought back")) return "The rescue is complete. Abram brings back Lot, the goods, the women, and the people.";
-    if (lower.includes("melchizedek")) return "Melchizedek steps into the story suddenly as both king and priest. His blessing turns the victory into a worship moment.";
-    if (lower.includes("bread and wine")) return "Bread and wine are hospitality and refreshment after battle. The scene feels peaceful after the violence of war.";
-    if (lower.includes("tithes")) return "A tithe is a tenth. Abram gives a tenth to Melchizedek as a sign that victory belongs under God's authority.";
-    if (lower.includes("thread") || lower.includes("shoelatchet")) return "Abram refuses even the smallest reward from Sodom. He does not want anyone confusing God's blessing with Sodom's wealth.";
-    if (lower.includes("fear not")) return "God starts by speaking to Abram's fear. That means Abram's courage in chapter 14 did not remove every anxious place inside him.";
-    if (lower.includes("childless")) return "Abram names the ache plainly: he has no child. Faith here is honest, not fake.";
-    if (lower.includes("believed in the lord")) return "This is one of the foundation verses of the Bible. Abram trusts God's word before he sees the child.";
-    if (lower.includes("heifer") || lower.includes("she goat") || lower.includes("turtledove")) return "The animals prepare the covenant ceremony. Ancient readers would feel the seriousness of a promise sealed this way.";
-    if (lower.includes("horror of great darkness")) return "The scene grows heavy because the future will include suffering. Promise does not mean the road will be easy.";
-    if (lower.includes("smoking furnace") || lower.includes("burning lamp")) return "God appears in fire and smoke, passing through the covenant pieces Himself. The weight of the promise rests on Him.";
-    if (lower.includes("sarai") && lower.includes("hagar")) return "Sarai and Hagar are now placed inside the pain of waiting. The promise has not come yet, and the household begins to strain.";
-    if (lower.includes("dealt hardly")) return "Sarai's pain turns into harsh treatment. Genesis does not pretend impatience is harmless.";
-    if (lower.includes("angel of the lord found")) return "Hagar may be running away, but she is not outside God's sight. The Lord meets her in the wilderness.";
-    if (lower.includes("thou god seest me")) return "Hagar names God from her wound. She has been used and mistreated, but the Lord has seen her.";
-    if (lower.includes("walk before me")) return "God calls Abraham to a whole-life faithfulness. Covenant is not only a promise to receive; it is a life walked before God.";
-    if (lower.includes("abraham") && lower.includes("father of many")) return "The new name asks Abraham to live inside a promise he still cannot fully see.";
-    if (lower.includes("circumcised")) return "The covenant sign is obeyed in Abraham's household. The promise now marks daily identity.";
-    if (lower.includes("sarah") && lower.includes("son")) return "Sarah is not a side character in the promise. God names her as the woman through whom Isaac will come.";
-    if (lower.includes("laughed") || lower.includes("laugh")) return "The laughter exposes how impossible the promise feels from the human side.";
-    if (lower.includes("three men")) return "The visitors arrive quietly, but the chapter will reveal that this is a holy encounter.";
-    if (lower.includes("fine meal") || lower.includes("calf")) return "Abraham prepares generous hospitality. Food, water, shade, and rest were acts of honor and protection.";
-    if (lower.includes("too hard for the lord")) return "This question is the center of the chapter. Sarah's body may be old, but the Lord's power is not limited by age.";
-    if (lower.includes("shall not the judge")) return "Abraham appeals to God's justice. He is asking a huge question with reverence: will the Judge of all the earth do right?";
-    if (lower.includes("sat in the gate")) return "Lot sitting in the gate shows public connection to Sodom. He is no longer only near the city; he has become part of its life.";
-    if (lower.includes("linger")) return "Lot lingers even while judgment is coming. That hesitation shows how deeply Sodom has wrapped around his life.";
-    if (lower.includes("pillar of salt")) return "Lot's wife looks back and becomes a sign of divided attachment. Her body leaves Sodom, but her heart turns back.";
-    if (lower.includes("remembered abraham")) return "Lot's rescue is tied to God's mercy and Abraham's place in the story. Judgment does not erase covenant concern.";
-    if (lower.includes("she is my sister")) return "Abraham repeats the old fear pattern. This is painful because he has walked with God for years and still carries weakness.";
-    if (lower.includes("prophet")) return "God calls Abraham a prophet even while correcting the situation. His calling is real, but his failure is real too.";
-    if (lower.includes("visited sarah")) return "The Lord visits Sarah by doing exactly what He promised. The waiting has an appointed time.";
-    if (lower.includes("weaned")) return "Weaning marked a child surviving the fragile early years. The feast celebrates that Isaac is growing.";
-    if (lower.includes("god heard the voice of the lad")) return "God hears Ishmael in the wilderness. The covenant line is Isaac, but Ishmael is not ignored.";
-    if (lower.includes("opened her eyes")) return "God does not create a new well in the sentence; He opens Hagar's eyes to see provision near her.";
-    if (lower.includes("tempt abraham")) return "Tempt here means test. God is not luring Abraham into evil; He is testing the trust that has been growing for years.";
-    if (lower.includes("only son isaac")) return "God names Isaac in the most painful way possible: the beloved promised son. The test touches Abraham's deepest love.";
-    if (lower.includes("where is the lamb")) return "Isaac's question brings the hidden tension into the open. He sees the wood and fire, but no sacrifice.";
-    if (lower.includes("god will provide")) return "Abraham does not explain the mechanics. He speaks trust where he cannot yet see the answer.";
-    if (lower.includes("caught in a thicket")) return "The substitute is already there when God opens Abraham's eyes to it. Isaac lives because God provides.";
-    if (lower.includes("sarah died")) return "The promise story stops to let grief speak. Abraham does not rush past Sarah's death.";
-    if (lower.includes("bury my dead")) return "Abraham needs a real burial place in the land God promised. Grief now meets land promise.";
-    if (lower.includes("gate of his city")) return "The city gate makes the purchase public and witnessed. Abraham wants this transaction recognized by the people of the land.";
-    if (lower.includes("machpelah")) return "Machpelah becomes the first owned piece of Canaan connected to Abraham's family.";
-    if (lower.includes("make thee swear")) return "Abraham treats Isaac's marriage as covenant responsibility. The next generation must not be careless with the promise.";
-    if (lower.includes("well of water")) return "The well becomes the meeting place where need, prayer, and providence come together.";
-    if (lower.includes("rebekah")) return "Rebekah enters the story as the woman who will carry the covenant line forward with Isaac.";
-    if (lower.includes("i will go")) return "Rebekah's answer is short but brave. Like Abraham, she leaves family and home for a future she cannot fully see.";
-    if (lower.includes("isaac brought her")) return "Isaac receives Rebekah into Sarah's tent. The story moves from grief toward a new household.";
-    if (lower.includes("gave all that he had unto isaac")) return "The inheritance line is made clear. Abraham has other children, but Isaac carries the covenant promise.";
-    if (lower.includes("full of years")) return "Abraham's life is complete, but the promise is not finished. Genesis is preparing us to follow the next generation.";
-    if (lower.includes("isaac and ishmael")) return "Isaac and Ishmael bury Abraham together. The family story is complicated, but both sons stand at his death.";
-    if (lower.includes("intreated the lord")) return "Isaac prays because Rebekah is barren. The next generation begins with the same impossible ache.";
-    if (lower.includes("two nations")) return "God tells Rebekah the struggle is larger than pregnancy. Two peoples are already represented in the twins.";
-    if (lower.includes("sold his birthright")) return "Esau trades lasting inheritance for immediate hunger. Genesis wants us to feel how foolish that exchange is.";
-    return "";
+    return verses.map((verse) => `> **${verse.verse}** ${verse.text}`).join("\n\n");
   };
 
   const explainVerseText = (verse: GenesisVerse, section: AbrahamSection) => {
+    const lower = verse.text.toLowerCase();
     const comments: string[] = [];
-    const wordNotes = inlineWordNotes(verse);
-    const opening = verseLead(verse);
-    if (opening) comments.push(opening);
 
-    if (!opening && note.chapter === 13) {
-      if (verse.verse <= 4) comments.push("Abram is coming back from Egypt. That matters because Egypt exposed his fear. Returning to the altar shows him coming back to the place where worship had first marked his walk in Canaan.");
-      else if (verse.verse <= 7) comments.push("The blessing has become heavy enough to create conflict. Abram and Lot have flocks, herds, tents, and workers, but the land cannot support both households in peace.");
-      else if (verse.verse <= 13) comments.push("Lot chooses what looks best to his eyes. The plain looks watered and rich, but the text warns us that Sodom is spiritually dangerous. Genesis wants us to feel the difference between attractive land and wise direction.");
-      else comments.push("After Lot leaves, God repeats the promise to Abram. Abram gave up first choice, but he did not lose the future. God tells him to look, walk, and trust the land promise again.");
-    } else if (!opening && note.chapter === 14) {
-      if (verse.verse <= 12) comments.push("The chapter opens with kings and war because Lot's move toward Sodom has placed him inside a dangerous world. Abram's family is now touched by the politics and violence around Sodom.");
-      else if (verse.verse <= 16) comments.push("Abram acts with courage. He does not leave Lot to suffer the consequences of his own choice. He gathers trained men and rescues the captives.");
-      else if (verse.verse <= 20) comments.push("Melchizedek enters the story as king and priest. He points Abram's victory back to God Most High, so Abram does not walk away thinking his strength saved the day.");
-      else comments.push("Abram refuses the king of Sodom's reward. He will not let Sodom say it made Abram rich. This protects the clarity of God's blessing.");
-    } else if (!opening && note.chapter === 15) {
-      if (verse.verse <= 6) comments.push("Abram is honest about the ache of having no son. God does not crush that honesty. He answers with a promise bigger than Abram can count.");
-      else if (verse.verse <= 11) comments.push("The land promise moves into covenant language. The animal pieces may feel strange now, but ancient readers would recognize a serious covenant ceremony.");
-      else if (verse.verse <= 16) comments.push("God tells Abram the promise will move through suffering, waiting, and deliverance. The Exodus story is already being planted here.");
-      else comments.push("The smoking furnace and burning lamp show God taking the covenant burden on Himself. Abram watches while God confirms the promise.");
-    } else if (!opening && note.chapter === 16) {
-      if (verse.verse <= 6) comments.push("Waiting has become painful, and Sarai tries to force the promise through Hagar. The plan may fit ancient household customs, but Genesis shows the damage it causes.");
-      else if (verse.verse <= 12) comments.push("Hagar runs into the wilderness, but God finds her there. She is not invisible to Him, even when the household has treated her like a tool.");
-      else comments.push("Hagar names God as the One who sees. That is one of the tender surprises of Abraham's story: God sees the wounded person inside the covenant family's failure.");
-    } else if (!opening && note.chapter === 17) {
-      if (verse.verse <= 8) comments.push("God gives Abram a new name before the child arrives. Abraham must now live with a name that sounds larger than his visible life.");
-      else if (verse.verse <= 14) comments.push("Circumcision marks the covenant in the body. This is not a private idea only; Abraham's household is being visibly set apart.");
-      else comments.push("Sarah is named in the promise, and Isaac is promised through her. Abraham laughs, but God keeps the promise tied to Sarah's impossible womb.");
-    } else if (!opening && note.chapter === 18) {
-      if (verse.verse <= 8) comments.push("Abraham receives the visitors with urgent hospitality. In the ancient world, welcoming travelers meant honor, protection, food, water, and rest.");
-      else if (verse.verse <= 15) comments.push("Sarah hears the promise and laughs inside herself. The question, 'Is any thing too hard for the LORD?' becomes the center of the moment.");
-      else comments.push("Abraham is pulled into intercession for Sodom. He cares about justice and mercy, and he speaks with reverent boldness before God.");
-    } else if (!opening && note.chapter === 19) {
-      if (verse.verse <= 11) comments.push("Lot is sitting in the gate of Sodom, which shows he is deeply connected to city life there. The chapter quickly reveals how violent and corrupt Sodom has become.");
-      else if (verse.verse <= 22) comments.push("The messengers have to press Lot to leave. Mercy does not look gentle here; it grabs him because he is hesitating in a place under judgment.");
-      else if (verse.verse <= 29) comments.push("Sodom falls under judgment, but God remembers Abraham and rescues Lot. The rescue is real, but the damage of Lot's choices remains.");
-      else comments.push("The final scene with Lot's daughters is painful and dark. Genesis does not sanitize what life near Sodom has done to this family.");
-    } else if (!opening && note.chapter === 20) {
-      if (verse.verse <= 7) comments.push("Abraham repeats the sister lie. This is important because faith has not erased his old fear pattern. God still protects Sarah because Isaac's birth is near.");
-      else if (verse.verse <= 13) comments.push("Abimelech confronts Abraham, and the outsider sees the problem clearly. Genesis lets Abraham be corrected instead of making him look perfect.");
-      else comments.push("God restores the household after Sarah is returned. The covenant continues, but Abraham's fear has again created danger for others.");
-    } else if (!opening && note.chapter === 21) {
-      if (verse.verse <= 7) comments.push("Isaac is finally born. The chapter wants us to hear the joy: God did what He said, at the time He said.");
-      else if (verse.verse <= 21) comments.push("The birth of Isaac does not erase the pain around Hagar and Ishmael. The promise line is clear, but God still hears the boy in the wilderness.");
-      else comments.push("The well at Beersheba shows Abraham living publicly in the land. Peace, witness, water, and worship all matter here.");
-    } else if (!opening && note.chapter === 22) {
-      if (verse.verse <= 8) comments.push("The test touches the promise itself. God names Isaac with painful care, and Abraham walks into obedience without being told how God will resolve it.");
-      else if (verse.verse <= 14) comments.push("The knife is stopped, and the ram is provided. Isaac is spared because God provides the substitute.");
-      else comments.push("After the test, the promise is repeated. Abraham's obedience has shown that he trusts the Giver more than the gift.");
-    } else if (!opening && note.chapter === 23) {
-      if (verse.verse <= 2) comments.push("Sarah dies, and Abraham mourns. Genesis lets grief stand inside the promise instead of rushing past it.");
-      else if (verse.verse <= 16) comments.push("Abraham negotiates publicly for a burial place. The city gate and witnesses matter because this purchase must be recognized by the people of the land.");
-      else comments.push("The cave of Machpelah becomes the first piece of Canaan Abraham legally owns. It is a tomb, which means promise and grief meet in the same field.");
-    } else if (!opening && note.chapter === 24) {
-      if (verse.verse <= 9) comments.push("Abraham is protecting the covenant line. Isaac must not be pulled back into the old land, but his wife must come from the family line Abraham trusts.");
-      else if (verse.verse <= 27) comments.push("The servant prays at the well, and Rebekah appears with generous strength. Providence works through timing, character, and ordinary kindness.");
-      else if (verse.verse <= 61) comments.push("The family negotiations show how marriage was a household and covenant matter, not only a private romance.");
-      else comments.push("Rebekah leaves her home and comes to Isaac. Her movement echoes Abraham's earlier leaving: she steps into a future she cannot fully see.");
-    } else if (!opening && note.chapter === 25) {
-      if (verse.verse <= 11) comments.push("Abraham's life closes, but the promise does not. His burial with Sarah ties his story to the land God promised.");
-      else if (verse.verse <= 18) comments.push("Ishmael's descendants are named because God kept His word to Hagar and Abraham. The covenant line is Isaac, but Ishmael is not forgotten.");
-      else comments.push("The next generation begins with barrenness, prayer, twins, struggle, and a birthright crisis. Genesis is already moving from Abraham to Jacob and Esau.");
-    } else if (!opening) {
-      comments.push(section.points[0] || "This verse moves the story forward.");
+    if (lower.includes("land")) {
+      comments.push("The land detail matters because Abraham's story is always moving between promise and possession. God names a future before Abraham can fully hold it.");
+    }
+    if (lower.includes("seed") || lower.includes("son") || lower.includes("child") || lower.includes("begat")) {
+      comments.push("The family or seed language keeps the covenant line in view. Genesis is asking readers to watch how God preserves the promised future through real households.");
+    }
+    if (lower.includes("altar") || lower.includes("lord") || lower.includes("god") || lower.includes("pray") || lower.includes("called")) {
+      comments.push("The worship language keeps this from being only family history. God is present, speaking, judging, providing, or being called upon in the middle of ordinary life.");
+    }
+    if (lower.includes("tent") || lower.includes("sojourn") || lower.includes("journey") || lower.includes("went") || lower.includes("departed")) {
+      comments.push("The movement language reminds us that Abraham's faith is lived on the road. Tents, journeys, and departures make the promise feel unfinished but active.");
+    }
+    if (lower.includes("sodom") || lower.includes("egypt") || lower.includes("pharaoh") || lower.includes("king")) {
+      comments.push("The political and geographic setting matters. Abraham's family is living near real powers, real cities, real dangers, and real temptations.");
+    }
+    if (lower.includes("wife") || lower.includes("sarah") || lower.includes("sarai") || lower.includes("hagar") || lower.includes("rebekah") || lower.includes("lot") || lower.includes("ishmael") || lower.includes("isaac")) {
+      comments.push("The family names keep the story personal. Covenant promise never floats above human relationships; it moves through marriage, kinship, conflict, grief, and responsibility.");
+    }
+    if (lower.includes("servant") || lower.includes("maidservant") || lower.includes("menservants") || lower.includes("bondwoman")) {
+      comments.push("The household language reflects the ancient world of servants, dependents, labor, and family authority. Modern readers can miss how much vulnerability lived inside these structures.");
+    }
+    if (lower.includes("covenant") || lower.includes("circumcis")) {
+      comments.push("The covenant language marks binding relationship. God is not merely giving Abraham religious ideas; He is shaping identity, family, body, and future.");
+    }
+    if (lower.includes("famine") || lower.includes("fear") || lower.includes("wept") || lower.includes("mourn") || lower.includes("died") || lower.includes("bury")) {
+      comments.push("The emotional pressure is part of the teaching. Genesis shows faith inside hunger, fear, grief, death, and uncertainty.");
     }
 
-    const lower = verse.text.toLowerCase();
-    const textSpecificNotes: string[] = [];
-    if (lower.includes("sojourn")) textSpecificNotes.push("Sojourn means to live somewhere as a temporary resident. Abram is in the land connected to promise, but he still lives like a traveler.");
-    if (lower.includes("altar")) textSpecificNotes.push("An altar was a place of worship and sacrifice. When Abraham builds one, he is marking the place as a meeting point with the Lord.");
-    if (lower.includes("covenant")) textSpecificNotes.push("Covenant means a binding promise relationship. In Abraham's story, the covenant depends on God's faithfulness, not Abraham's perfection.");
-    if (lower.includes("seed")) textSpecificNotes.push("Seed means descendants. It can sound small, but in Genesis it carries the whole future of Abraham's family and the blessing promised through them.");
-    if (lower.includes("barren")) textSpecificNotes.push("Barren means unable to have children. In this story, barrenness is not a side detail; it is the impossible place where God's promise will have to work.");
-    if (lower.includes("circumcis")) textSpecificNotes.push("Circumcision was the covenant sign placed on the male body. It marked Abraham's household as belonging to God's promise.");
-    if (lower.includes("bondwoman")) textSpecificNotes.push("Bondwoman means an enslaved or servant woman. Hagar's status makes the scene painful because she has far less power than Abram and Sarai.");
-    if (lower.includes("concubine")) textSpecificNotes.push("A concubine was a secondary wife with lower status. Genesis names this because family lines and inheritance were carefully distinguished.");
-    if (lower.includes("gate")) textSpecificNotes.push("The city gate was where leaders sat, business was witnessed, and legal matters were handled. Sitting there shows public connection to the city.");
-    if (lower.includes("heifer")) textSpecificNotes.push("A heifer is a young female cow. In Genesis 15 it is part of a solemn covenant ceremony that ancient readers would recognize as serious.");
-    if (/\bram\b/.test(lower)) textSpecificNotes.push("A ram is an adult male sheep. In Genesis 22 the ram matters because God provides it as a substitute for Isaac.");
-    if (lower.includes("thicket")) textSpecificNotes.push("A thicket is thick brush. The ram caught there shows provision that Abraham did not arrange for himself.");
-    if (lower.includes("sepulchre")) textSpecificNotes.push("Sepulchre means a burial place or tomb. Abraham is not only buying property; he is making a place for grief inside the promised land.");
-    if (lower.includes("weigh")) textSpecificNotes.push("Weighing silver was how payment was measured before minted coins were common. Abraham's purchase is careful, public, and legal.");
-    if (lower.includes("birthright")) textSpecificNotes.push("Birthright was the firstborn son's inheritance privilege and family leadership place. Esau treats something lasting like it is small.");
-    if (lower.includes("lentiles")) textSpecificNotes.push("Lentiles are small beans used for stew. The detail makes Esau's choice feel painfully ordinary: a meal now for an inheritance later.");
-    if (lower.includes("famine")) textSpecificNotes.push("A famine means severe lack of food. In Genesis, famine often tests whether God's people will trust the Lord when survival feels pressured.");
-    if (lower.includes("laughed") || lower.includes("laugh")) textSpecificNotes.push("Laughter in Abraham's story is complicated. Sometimes it is joy, sometimes disbelief, and sometimes the shock of hearing an impossible promise.");
-    if (lower.includes("wilderness")) textSpecificNotes.push("The wilderness is a place away from settled safety. It often exposes need, fear, thirst, and dependence on God.");
-    if (lower.includes("well")) textSpecificNotes.push("A well meant life in a dry land. Water could shape travel, survival, peace, and family futures.");
-    if (lower.includes("oath")) textSpecificNotes.push("An oath was a solemn promise made before God. Breaking it would not be treated as a small thing.");
-    if (lower.includes("damsel")) textSpecificNotes.push("Damsel means young woman. The KJV word is old, but the story is showing Rebekah's age, family setting, and character.");
-    if (lower.includes("full of years")) textSpecificNotes.push("Full of years means a life brought to completion. Abraham dies, but the covenant promise keeps moving into the next generation.");
-    comments.push(...textSpecificNotes);
-    comments.push(...wordNotes);
+    if (comments.length === 0) {
+      comments.push("This verse carries the section forward by adding a concrete action, detail, or consequence. Genesis teaches through small movements as much as through dramatic speeches.");
+    }
 
     return `### Verse ${verse.verse}
 
-${comments.join("\n\n")}`;
+${comments.join("\n\n")}
+
+In the flow of **${cleanSectionTitle(section.title)}**, this verse should be read slowly. Ask what it reveals about obedience, waiting, family pressure, covenant promise, or the visible world Abraham is learning to navigate.`;
   };
 
   const renderVerseBreakdowns = (section: AbrahamSection) => {
     const verses = getSectionVerses(section);
     if (verses.length === 0) return "";
-    return `### Walking Through The Verses
+    return `### Verse-By-Verse Breakdown
 
 ${verses.map((verse) => explainVerseText(verse, section)).join("\n\n")}`;
   };
@@ -1453,87 +1274,258 @@ ${verses.map((verse) => explainVerseText(verse, section)).join("\n\n")}`;
 
 ${section.points.join("\n\n")}
 
-${renderVerseBreakdowns(section)}`;
+${renderVerseBreakdowns(section)}
+
+This is the first layer of the passage: the story itself. Genesis wants the reader to see real people making real decisions under real pressure. Abraham's world is not abstract. It is made of roads, tents, livestock, servants, land disputes, family wounds, kings, famine, fear, laughter, grief, and worship.
+
+### Why It Matters
+
+This moment matters because it either pressures, clarifies, protects, or advances the covenant promise. In Abraham's life, God is forming faith slowly. The promise does not arrive fully packaged. It develops through repeated words from God, repeated tests, and repeated moments where Abraham must decide whether God's word is safer than visible control.
+
+Modern readers often want the Bible to move quickly from problem to answer, but Genesis is comfortable with long waiting. It lets decades pass. It lets tension sit. It lets people make painful choices. That is part of the teaching. Abraham's faith is not instant maturity. It is a long obedience where God keeps meeting him, correcting him, reassuring him, and calling him deeper.
+
+### What Ancient Readers Would Have Understood
+
+Ancient readers would hear this passage inside a world of household survival. Family was not merely emotional; it was economic, legal, defensive, and generational. Land meant future. Children meant inheritance. Wells meant life. Altars meant worship and witness. Burial places meant belonging. Marriage arrangements protected covenant continuity.
+
+So when Genesis mentions travel, livestock, servants, tents, famine, kings, wells, or burial fields, those are not throwaway details. They are the places where faith had to become visible. Abraham's obedience had to enter ordinary life, not just private belief.
+
+### What Modern Readers Often Miss
+
+Modern readers often flatten Abraham into either a perfect hero or a distant religious symbol. Genesis refuses both. Abraham is faithful, but he is also afraid. He obeys, but he also repeats failures. He builds altars, but he also makes decisions that wound Sarah and Hagar. He believes God, but he still has questions.
+
+That honesty is spiritually important. The Bible is not saying God uses perfect people. It is showing that God binds Himself to His promise and patiently forms imperfect people inside that promise.
+
+### Covenant And Emotional Movement
+
+The covenant thread in this section is not only theological; it is emotional. Promise presses against uncertainty. Blessing creates responsibility. Waiting exposes fear. Family tension reveals what people trust. Worship becomes the way Abraham keeps returning to God when the road is unclear.
+
+This is why Abraham's story becomes foundational for the rest of Scripture. It teaches readers how faith grows: not by skipping testing, but by meeting God inside testing.
+
+### Slow Walk Through The Movement
+
+One of the most important things to notice in this section is the pace. Genesis does not rush Abraham's formation. The story lets us watch trust develop through repeated scenes instead of one instant transformation. That matters because Abraham is not being used as a flat moral example. He is being formed as a covenant person.
+
+The first movement in this section is practical. Something happens in the visible world: a journey, a conflict, a conversation, a threat, a family decision, a promise, a loss, or an act of worship. Genesis always starts with real life. Abraham's faith is not practiced in a quiet room away from pressure. It is practiced while people are watching, while family members are affected, and while the future feels uncertain.
+
+The second movement is spiritual. Beneath the visible event is a deeper question: will Abraham trust God's word, or will he grasp for control? Sometimes he trusts beautifully. Sometimes he hesitates. Sometimes he acts courageously. Sometimes fear speaks louder than faith. The power of Genesis is that it does not hide any of this. It lets us see faith as a living thing that grows under pressure.
+
+The third movement is covenantal. Every section of Abraham's story touches the promise in some way. If land is involved, the land promise is being tested. If children are involved, the seed promise is being tested. If blessing or danger is involved, the promise to bless and protect Abraham's line is being tested. If nations or kings are involved, the promise that Abraham's family will matter for the world is already being hinted at.
+
+The fourth movement is emotional. Abraham's story includes fear, silence, waiting, grief, longing, relief, worship, family pain, and awe. These emotions are not distractions from theology. They are where theology becomes personal. It is one thing to say God keeps promises. It is another thing to wait years with an empty tent, an aging body, a wounded household, and no visible answer yet.
+
+That is why this section should not be read quickly. It teaches the reader how God works with imperfect people over time. God does not merely announce a covenant and then disappear. He keeps coming near. He corrects. He reassures. He protects. He exposes fear. He receives worship. He provides. He keeps the promise moving even when Abraham does not fully understand how.
+
+### What This Teaches About Abraham
+
+This section helps us understand Abraham as a real human being. He is not simply "the father of faith" as a title. He becomes the father of faith through a long history of hearing, moving, waiting, failing, returning, and surrendering. His obedience is meaningful because it costs him something.
+
+Abraham's life also shows that faith and weakness can exist in the same person. That does not excuse the weakness. It simply tells the truth. The Bible's honesty about Abraham makes God's faithfulness more visible. The covenant survives because God is faithful, not because Abraham performs perfectly in every scene.
+
+In that way, Abraham's story is deeply pastoral. It gives readers permission to take growth seriously without pretending growth is instant. It warns us not to romanticize fear, impatience, or harmful decisions. But it also encourages us that God can keep forming a person who is still learning how to trust.
+
+### How This Connects To The Larger Bible Story
+
+The rest of the Bible keeps returning to Abraham because these chapters are roots. Israel will remember Abraham when thinking about land, promise, covenant, circumcision, worship, family identity, and God's faithfulness. The prophets will appeal to Abraham and Sarah as the small beginning God blessed. The New Testament will return to Abraham when explaining faith, righteousness, promise, and blessing to the nations.
+
+So this section is not merely ancient biography. It is part of the foundation under Exodus, Israel, David, the prophets, and the gospel. The promise that begins with Abraham keeps widening until the blessing reaches the nations through Christ.
+
+When you understand this section, you understand a little more of how Genesis works: God chooses, promises, tests, protects, and provides. Human beings are flawed, but God's covenant purpose keeps moving.`;
 
   const renderMajorChapterAddendum = () => {
     if (note.chapter === 15) {
-      return `## Why Genesis 15 Goes So Deep
+      return `## Extra Deep Study: Genesis 15 As The Covenant Center
 
-Genesis 15 is not just another promise chapter.
+Genesis 15 deserves extra attention because it gives us the inner architecture of Abraham's faith. The chapter begins with God saying, "Fear not." That means Abram's heart is not calm just because he has obeyed. He has left home. He has built altars. He has rescued Lot. He has refused Sodom's reward. But after all of that, he still has no son.
 
-It lets us hear Abram's ache.
+That detail is vital. Faith does not mean Abram has stopped feeling the ache of delay. He can believe God and still ask honest questions. He can be counted righteous and still be waiting. This is one reason Genesis 15 feels so spiritually mature: it does not shame Abram for bringing his ache to God.
 
-He has obeyed.
+When God brings Abram outside and points him to the stars, He is not giving Abram a small comfort. He is expanding Abram's imagination. The tent is too small a place to measure the promise. Abram has been looking at an empty household. God makes him look at the sky. The point is not astronomy. The point is scale. God's promise is larger than Abram's present evidence.
 
-He has worshiped.
+Then Genesis says Abram believed the Lord, and it was counted to him for righteousness. This sentence becomes one of the most important lines in the Bible. Paul uses it to show that Abraham was counted righteous by faith before circumcision, before Sinai, before the law, and before Isaac was born. Abraham's right standing rests on trusting the God who promises.
 
-He has rescued Lot.
+The covenant ceremony that follows is solemn and strange to modern readers, but ancient readers would have understood the weight. Animals are cut. Pieces are arranged. Darkness falls. God speaks about suffering, bondage, judgment, deliverance, and return. Then the smoking furnace and burning lamp pass between the pieces. Abram watches. God acts.
 
-He has refused Sodom's reward.
+This means the covenant rests finally on God's own commitment. Abram will obey, but Abram is not the ultimate guarantor of the promise. God binds Himself to His word. That is why Genesis 15 is so massive. The chapter teaches that the promise survives because God takes responsibility for it.
 
-But he still has no son.
+It also prepares readers for the Exodus. Abram's descendants will be strangers in a land that is not theirs. They will be afflicted. They will come out with great substance. The Abraham story is already pointing forward to Moses before Moses is born.
 
-That is why his question matters. Abram is not being fake. He brings the empty place in his life directly to God.
+Genesis 15 is therefore not only about one man receiving reassurance. It is about the God who sees centuries ahead and still speaks personally to a frightened man in the night.
 
-And God answers with the stars.
+Another detail to notice is the movement from fear to faith to covenant. God does not begin by scolding Abram. He begins by comforting him. That tells us something about God's pastoral care. Abram's fear is not treated as the end of faith. It becomes the place where God speaks again.
 
-Then God answers with covenant.
+Abram's question about Eliezer is also important. He is not rejecting God's promise; he is trying to understand it through the only visible option he has. A servant-heir would have made sense in the ancient world if a man had no son. Abram is asking whether the promise will be fulfilled through a household arrangement rather than a biological child. God answers clearly: the heir will come from Abram's own body.
 
-The divided animals, the darkness, the birds of prey, and the smoking fire all tell us this promise is serious. God is binding Himself to what He has spoken.
+The stars scene teaches the reader that God's promise requires a different scale of imagination. Abram's present reality is small: one aging couple, no child, a tent in the land, and a promise still unseen. God's spoken future is vast: descendants beyond counting, land beyond Abram's possession, and a story that will reach nations. Faith is Abram learning to let God's word define reality more deeply than his present lack.
 
-This chapter also reaches forward to the Exodus. Abram's family will suffer in a land that is not theirs, but God will bring them out. The promise is bigger than one lifetime.
+The darkness in the covenant ceremony also matters. Genesis says a horror of great darkness fell upon Abram. Covenant is holy, but it is not lightweight. God reveals that Abram's descendants will suffer before they inherit. This guards readers from thinking promise means immediate ease. God's covenant plan includes affliction, waiting, judgment, deliverance, and return.
 
-That is why Genesis 15 becomes so important later in the Bible. Abram believed God before Isaac was born, before circumcision, and before the law. Faith means trusting the God who speaks while the answer is still unseen.`;
+This chapter also helps explain why Abraham's faith matters so much later in Scripture. He believes before the sign of circumcision. He believes before the law. He believes before Isaac. He believes while still physically unable to produce the future God described. That is why Paul can say Abraham is the father of all who believe.
+
+Genesis 15 does not make faith vague. Abram believes the Lord. The object of faith is not optimism, destiny, or inner strength. The object of faith is the God who speaks.
+
+The land promise in Genesis 15 also deserves careful attention. Abram asks, "Lord GOD, whereby shall I know that I shall inherit it?" That question is not unbelief in the cheap sense. It is covenant longing. Abram is living in the land as a sojourner, but he does not own it. He has walked through it, built altars in it, and heard God promise it, but the visible situation still says he is a resident foreigner.
+
+God answers that question with covenant ritual instead of a simple explanation. That matters. God does not merely give Abram information; He gives Abram a solemn sign. The divided animals, the waiting, the birds of prey, the darkness, the prophecy, and the fire all communicate that the promise is holy, costly, and guaranteed by God Himself.
+
+The birds of prey coming down on the carcasses is a small but vivid detail. Abram drives them away. The scene feels exposed and tense. Before the covenant sign is complete, there is waiting and threat. That little image fits the whole Abraham story: promise sits in the open while forces try to consume hope, and Abram must remain present.
+
+The prophecy of four hundred years also teaches readers that God's timing is not shallow. Abram wants to know about inheritance, and God speaks about generations. Abram wants assurance for his life, and God reveals a story that will stretch far beyond his death. Faith must learn to trust a God whose timeline is larger than one lifespan.
+
+The phrase about the Amorites' iniquity not yet being full is easy to skip, but it matters. God is not handing out land through random favoritism or impulsive judgment. He is patient even with wicked nations. Judgment comes when iniquity reaches its fullness. This teaches that God's justice is measured, moral, and never careless.
+
+The smoking furnace and burning lamp are not explained in a neat way because the imagery is meant to overwhelm. Fire and smoke often mark divine presence in Scripture. Later Israel will see smoke and fire at Sinai and in the wilderness. Here, before Israel exists as a nation, Abram sees God's presence pass through the pieces.
+
+This makes Genesis 15 a chapter about assurance. Abram does not leave with Isaac in his arms. He does not leave with full ownership of Canaan. He leaves with God's covenant word. That is the shape of much biblical faith: not possession yet, but promise made certain by the character of God.
+
+For modern readers, Genesis 15 is a needed correction. We often think faith means never asking questions, but Abram asks. We often think assurance means immediate fulfillment, but Abram receives a covenant sign about a future he will not fully see. We often think waiting means God is inactive, but Genesis 15 shows God speaking, revealing, promising, and binding Himself to the future while Abram still waits.
+
+That is why this chapter must be one of the deepest in Abraham's journey. It teaches faith, righteousness, covenant, land, descendants, suffering, deliverance, judgment, and divine commitment all in one night scene.
+
+## Extra Deep Study: The Two Promises In Genesis 15
+
+Genesis 15 holds two promises together: the promise of seed and the promise of land. Abram needs both clarified. If he has land but no son, the covenant future has no heir. If he has a son but no land, the family remains unanchored. God speaks to both because the covenant is not vague spirituality. It is embodied history.
+
+The seed promise is answered first. Abram says, "I go childless." That phrase is heartbreaking. It is not only a theological problem; it is the ache of an aging man whose household future feels empty. Ancient readers would feel the vulnerability immediately. A great household without an heir is fragile. Wealth cannot solve it. Military courage cannot solve it. Abram's servants cannot make the promise come true unless God allows that path, and God says clearly that Eliezer is not the promised heir.
+
+Then God takes Abram outside. This movement matters. Inside the tent, Abram can measure absence. Outside under the sky, God gives him a picture of abundance. Abram cannot count the stars. That is the point. The promise is beyond his ability to calculate. Faith is being trained to look beyond the present household and trust the God who speaks futures into being.
+
+The land promise is answered second. Abram asks how he will know he will inherit the land. God answers with animals, blood, darkness, prophecy, and divine fire. Modern readers may wish God had simply given a signed statement. Ancient readers understood that covenant signs carried solemn force. The ritual says the promise is not casual. God is binding Himself to what He has spoken.
+
+This chapter also teaches that covenant promise and suffering can belong to the same story. Abram's descendants will be afflicted before they inherit. That means God's plan includes rescue, but not avoidance of every hard road. The Exodus is already hidden inside Abraham's covenant night.
+
+Genesis 15 also corrects shallow ideas of faith. Faith is not pretending the facts are easy. Abram's facts are hard: no child, no possession of the land, aging body, uncertain future. Faith is receiving God's word as truer than the visible shortage. Abram believes the Lord, not because the situation looks promising, but because the Lord is trustworthy.
+
+This is why Genesis 15 becomes so important for Paul. If Abraham is counted righteous here, then righteousness is not based on circumcision, law-keeping, national privilege, or visible fulfillment. It is based on trusting God's promise. That does not make obedience unnecessary. Abraham's life will keep showing obedience. But the root is faith in the God who promises.
+
+Genesis 15 is not just a chapter to understand. It is a chapter to sit inside: a man under the night sky, a promise too large to count, a covenant too holy to domesticate, and a God who takes responsibility for what He has spoken.`;
     }
 
     if (note.chapter === 22) {
-      return `## Why Genesis 22 Is The Climactic Test
+      return `## Extra Deep Study: Genesis 22 And The Test Of The Promise
 
-Genesis 22 is the hardest test because Isaac is not just Abraham's son.
+Genesis 22 is one of the most emotionally intense chapters in Scripture because the test touches the promise itself. God does not ask Abraham for something peripheral. He names Isaac: thy son, thine only son Isaac, whom thou lovest. The wording slows the reader down so the cost cannot be avoided.
 
-Isaac is the promised son.
+The test is not about God learning information He lacks. It reveals, proves, and displays the matured reality of Abraham's trust. Earlier in the story Abraham struggled to trust God with safety, timing, and family pressure. Here the question becomes deeper: can Abraham trust God with the promised son himself?
 
-He is the child born after years of waiting.
+Mount Moriah matters because the place becomes loaded with biblical meaning. Later Scripture associates Moriah with the temple region. The mountain of testing becomes connected to worship, sacrifice, provision, and the place where God's people will later bring offerings.
 
-He is the laughter God turned into life.
+Isaac carrying the wood is one of the most haunting details in Genesis. The promised son carries the material for the sacrifice. Abraham carries fire and knife. The silence between father and son is heavy. Then Isaac asks the question that pierces the chapter: where is the lamb?
 
-So when God asks Abraham to offer Isaac, the test touches everything Abraham has been waiting for.
+Abraham's answer is the theological heart of the scene: God will provide Himself a lamb. Abraham may not understand exactly how, but he has learned enough of God to speak provision into the unknown. Hebrews later says Abraham reasoned that God was able to raise Isaac from the dead. Whether Abraham understood resurrection fully or not, the point is clear: he believed the promise could not die even if obedience led into the impossible.
 
-The chapter does not make obedience feel easy. It makes it feel costly.
+The ram caught in the thicket becomes substitutionary provision. Isaac is spared. The ram dies in his place. Abraham names the place by God's provision. The chapter does not merely celebrate Abraham's obedience. It reveals the Lord as the One who provides what obedience cannot create.
 
-The three-day journey gives Abraham time to think.
+Christian readers naturally hear echoes that move toward the gospel: beloved son, wood, mountain, sacrifice, substitution, provision. Genesis 22 is not the crucifixion, but it prepares the biblical imagination for understanding costly obedience and God's provided substitute.
 
-Isaac carrying the wood makes the scene heavier.
+This is why Genesis 22 must be read slowly. It is not a simple moral lesson about proving devotion. It is a painful, holy chapter about surrendering the gift back to the Giver and discovering that God's provision is already waiting on the mountain.
 
-The question, "Where is the lamb?" brings the pain into the open.
+The phrase "after these things" matters because Genesis 22 comes after years of promise, failure, waiting, correction, laughter, birth, and household pain. Abraham is not being tested at the beginning of his walk. He is being tested after a long history with God. The test reveals matured faith.
 
-And Abraham's answer, "God will provide," shows how far his faith has grown.
+The three-day journey matters too. Abraham does not obey in one emotional rush and finish immediately. He has time to think. Time to look at Isaac. Time to remember the promise. Time to feel the weight of what God asked. Delayed obedience can be harder than instant obedience because the heart has more time to wrestle.
 
-The ram in the thicket is the turning point. God provides the substitute. Isaac lives. The promise continues.
+Isaac's role should not be flattened. He is not merely an object in Abraham's test. He is the beloved son, the covenant child, the visible answer to decades of waiting. The entire promise seems bound up with him. That is why the test is so deep: Abraham must trust the God of the promise more than the visible form of the promise.
 
-This chapter is not only about Abraham proving devotion. It is about the Lord who provides on the mountain of surrender.`;
+Abraham's statement to the servants, "I and the lad will go yonder and worship, and come again to you," is full of faith. However much Abraham understands, he speaks as though Isaac will return. The promise has taught him something about God. He has learned that God can be trusted beyond what the present moment explains.
+
+When the angel stops Abraham, the chapter turns from testing to provision. The knife does not fall on Isaac. God provides the ram. The emotional relief of the chapter depends on the terror that came before it. Genesis wants the reader to feel both the cost of surrender and the mercy of provision.
+
+The renewed blessing at the end matters because obedience confirms Abraham's covenant role. The promise of seed, enemies' gates, and blessing to the nations is repeated. Genesis 22 does not end with private relief only. It ends with the covenant future still moving forward.
+
+The word "test" must be understood carefully. Genesis is not saying God is cruel or confused. A test reveals what is real. Earlier chapters have tested Abraham through leaving home, famine, conflict, warfare, delay, household pain, circumcision, and repeated fear. Genesis 22 is the climactic test because it touches what Abraham loves most and what God Himself promised.
+
+That is why Isaac is named so carefully. "Thy son, thine only son Isaac, whom thou lovest" is not wasted language. Each phrase tightens the emotional weight. The son is personal. The son is unique. The son is named. The son is loved. The test is not vague spirituality. It is obedience with a face.
+
+The journey to Moriah also forces readers to sit with Abraham's silence. Genesis does not give us a long speech from Abraham. It gives us action: he rises early, saddles the donkey, takes servants and Isaac, cuts wood, travels, sees the place, leaves the servants, takes fire and knife, and walks with his son. The restraint makes the scene heavier. Sometimes the Bible says less so the reader feels more.
+
+Isaac's question, "Where is the lamb?" may be the most painful sentence in the chapter. It shows Isaac's awareness. He knows worship. He knows sacrifice. He sees fire and wood. Something is missing. His question brings the hidden tension into the open.
+
+Abraham's answer is both faith and agony: God will provide. He does not say he has a plan. He does not say he understands. He does not explain the mechanics. He speaks God's provision into the place where his own understanding ends.
+
+The binding of Isaac is also significant. Isaac is old enough to carry wood, which means he is not a tiny infant in the scene. The text does not emphasize a struggle. The silence of Isaac has made many readers wonder about his own submission. At minimum, the scene shows father and son together inside a moment neither can control.
+
+When the angel calls Abraham's name twice, the interruption is urgent. "Abraham, Abraham." The test reaches the edge, but God stops the knife. The Lord never intended Isaac to be the final sacrifice. The point is revealed in the provision: God gives the ram.
+
+The ram caught in the thicket matters because it is specific provision. Abraham does not provide the substitute. Isaac does not provide it. The mountain does not naturally solve the problem. God provides. The name Jehovah-jireh is therefore not a slogan about convenience; it is a testimony born at the edge of surrender.
+
+This chapter also deepens the meaning of worship. Abraham told the servants, "We will worship." Worship here is not a song or a comfortable feeling. Worship is surrender to God when the cost is terrifying. Yet the chapter also teaches that true worship rests on God's character. Abraham obeys because he trusts the God who gave the promise.
+
+For the rest of Scripture, Genesis 22 becomes one of the great patterns of costly faith and divine provision. It trains readers to understand sacrifice, substitution, beloved son language, mountain worship, and the Lord's provision. Christian readers cannot help hearing echoes that become clearer in Christ, but even before making that connection, the chapter stands as a thunderous testimony: the God who tests is also the God who provides.
+
+Genesis 22 is not meant to make obedience look easy. It is meant to show that mature faith may be asked to surrender even the gift it waited years to receive. Abraham's obedience matters because he has learned that the promise is safest in God's hands.
+
+## Extra Deep Study: Why Genesis 22 Is The Climactic Test
+
+Genesis 22 is climactic because every earlier promise seems to converge on Isaac. God promised seed. Isaac is the seed through Sarah. God promised nations. Isaac is the child through whom that line will continue. God promised blessing to the nations. Isaac is the visible beginning of that covenant future. To place Isaac on the altar is to place the visible promise itself before God.
+
+That is why the chapter feels almost unbearable. Abraham is not surrendering a random possession. He is surrendering the child born after decades of waiting. He is surrendering laughter turned into flesh. He is surrendering the one whose birth proved that nothing is too hard for the Lord. The test asks whether Abraham's trust rests in Isaac as the gift or in God as the Giver.
+
+The phrase "God did tempt Abraham" uses older English where tempt can mean test. This is crucial. God is not enticing Abraham into evil. He is testing, proving, and revealing faith. The difference matters because Scripture's God is not morally confused. The chapter is about the reality of Abraham's trust being brought into the light.
+
+The repeated "Here am I" also matters. Abraham says it to God, to Isaac, and to the angel. The phrase shows availability. Abraham is present to God, present to his son, and present to correction when God stops him. Obedience is not only movement; it is attentiveness.
+
+Isaac's question exposes the emotional center: "Where is the lamb?" The reader knows the tension. Abraham knows the command. Isaac sees the missing sacrifice. The answer, "God will provide himself a lamb," becomes one of the great statements of faith in Genesis. Abraham speaks provision before he sees provision.
+
+When the ram appears, the chapter reveals that surrender and provision meet on the mountain. Abraham does not discover God's provision by staying at the bottom. He discovers it in the place of obedience. That does not mean people should manufacture tests or romanticize pain. It means Genesis 22 wants readers to know that God's provision is deeper than Abraham's understanding.
+
+The covenant blessing after the test repeats seed, multiplication, victory, and blessing to the nations. This ending is important because the test is not an isolated private spirituality moment. Abraham's obedience confirms the covenant path through which the nations will be blessed.
+
+Genesis 22 is therefore about more than Abraham proving devotion. It is about the God who provides, the promise that cannot be killed by obedience, and the mature faith that trusts God even when the command feels impossible to reconcile with the promise.`;
     }
 
     return "";
   };
 
-  const renderDeepTakeaways = () => `## Bible Buddy Deep Takeaways
+  const renderBibleBuddyDeepTakeaways = () => `## Bible Buddy Deep Takeaways
 
-${note.sections
-  .map((section) => {
-    const title = cleanSectionTitle(section.title);
-    const point = section.points[0] || note.lesson;
-    return `* **${title}** - ${point}`;
-  })
-  .join("\n\n")}
+The first takeaway from Genesis ${note.chapter} is that covenant faith is lived in the middle of unfinished things. Abraham is almost always between promise and fulfillment. He is between the land God names and the land he owns. He is between the son God promises and the son he can hold. He is between God's word and the visible evidence. That in-between space is where the Bible teaches faith.
 
-Genesis ${note.chapter} matters because it moves Abraham's story forward in a real place, with real pressure, and with real consequences. Do not read this chapter like Abraham already understands everything. Watch what he sees, what he misses, what he fears, what he obeys, and what God keeps protecting.`;
+The second takeaway is that obedience is not always dramatic, but it is always concrete. Sometimes obedience is walking away from Haran. Sometimes it is building an altar. Sometimes it is refusing Sodom's reward. Sometimes it is listening to correction. Sometimes it is buying a burial place. Sometimes it is sending a servant to protect the next generation. Genesis teaches that faith becomes real when it enters decisions.
 
-  const renderCarryForward = () => `## What To Carry Forward
+The third takeaway is that family tension does not cancel God's purpose. Abraham's household carries barrenness, fear, conflict, impatience, hierarchy, grief, rivalry, and consequences. The Bible does not hide those wounds. It shows them because God's covenant is not carried forward through a clean fantasy family. It is carried through real people who need mercy, correction, patience, and formation.
+
+The fourth takeaway is that worship keeps re-centering the story. Abraham builds altars, calls on the name of the Lord, receives blessing, gives a tithe, obeys covenant signs, and names places after what God reveals. Worship is how Abraham remembers that the promise belongs to God. Without worship, blessing can become pride, waiting can become despair, and fear can become control.
+
+The fifth takeaway is that Abraham's story teaches the whole Bible how to think about promise. Later Israel will look back to Abraham when they need to remember where they came from. The prophets will remember Abraham and Sarah as the small beginning God blessed. Paul will use Abraham to explain righteousness by faith. Hebrews will use Abraham to explain obedience that trusts beyond sight. James will use Abraham to show that real faith moves into action.
+
+So Genesis ${note.chapter} is not just one chapter in an ancient biography. It is part of the Bible's foundation for understanding God, faith, covenant, waiting, obedience, and blessing to the nations. If you read it slowly, Abraham becomes less distant. You can feel the road under his feet, the silence in the tent, the ache of delay, the danger of fear, and the holiness of a promise God refuses to abandon.
+
+The personal question is simple but deep: where is God asking you to trust Him before everything looks finished? Abraham's life does not tell you that waiting is easy. It tells you God is faithful in the waiting. It does not tell you obedience never hurts. It tells you obedience is held by the God who provides. It does not tell you family stories are simple. It tells you God works through real households with real pain.
+
+That is why Abraham matters. His obedience becomes a doorway into the rest of Scripture. Through him, readers learn that God's promises can be trusted across decades, across weakness, across failure, across impossible bodies, across grief, and across generations.`;
+
+  const renderCarryForward = () => `## What To Carry Forward From Genesis ${note.chapter}
+
+Carry forward the covenant thread. Ask how this chapter develops land, seed, blessing, worship, testing, or the nations. Abraham's story is not a set of disconnected scenes. Each chapter adds another layer to the promise God is building.
+
+Carry forward the human thread. Notice what Abraham understands and what he still does not understand. Notice Sarah's experience, Lot's choices, Hagar's vulnerability, Isaac's place in the promise, and the way the next generation begins with its own pressures. Genesis is honest about people because God works with people as they actually are.
+
+Carry forward the emotional thread. Do not read Abraham like a statue. Read him like a man who has to wake up the next morning and keep walking. He has to live with decisions, wait through silence, love his family, face fear, grieve loss, and worship God without seeing the whole future.
+
+Carry forward the worship thread. When Abraham builds an altar, calls on the Lord, receives a covenant sign, names a place, or acts honorably in public, he is declaring that God owns the future. Worship is not an escape from the story. Worship is how Abraham stays oriented inside the story.
+
+Carry forward the gospel thread. The promise to Abraham will not stop with Abraham. It will move through Isaac, Jacob, Judah, Israel, David, exile, return, and ultimately Christ. That means every Abraham chapter is part of the long road toward blessing for the nations.`;
+
+  const renderChapterCovenantStudy = () => `## Covenant Development In Genesis ${note.chapter}
 
 ${chapterFocus.map((item) => `* ${item}`).join("\n\n")}
 
-Carry this chapter forward because the next scene grows out of this one. Genesis is not giving random Abraham stories. It is showing how choices, promises, family pain, worship, and waiting keep shaping the covenant road.`;
+The Abrahamic covenant is one of the great foundations of the Bible. It includes land, seed, blessing, name, and blessing for the nations. But Genesis does not present those promises as a theology chart. It puts them inside a man's actual life.
+
+That means every chapter matters. The covenant develops through movement, delay, correction, worship, birth, sacrifice, grief, marriage, and death. Abraham learns God over time. Sarah learns God over time. The household carries both promise and pain. God keeps speaking into the mess without pretending the mess is harmless.
+
+When the New Testament returns to Abraham, especially in Romans, Galatians, Hebrews, and James, it is returning to these chapters. Abraham becomes a picture of faith because he trusted God's word before he saw the fulfillment. He becomes a picture of obedience because his faith eventually moves his feet, his household, his worship, and even his willingness to surrender Isaac.
+
+So read Genesis ${note.chapter} as part of the long covenant road. Ask: what has God promised so far? What threatens the promise here? What does Abraham understand? What does he still not understand? How is God proving Himself faithful?`;
+
+  const renderKjvStudy = () => {
+    const words = chapterKjvWords[note.chapter] || ["covenant", "seed", "sojourn"];
+    return `## KJV Words And Bible Vocabulary
+
+${words.map((word) => `* **${word}** - ${explainKjvWord(word, note.chapter)}`).join("\n\n")}
+
+These word studies matter because older Bible language often carries emotional and cultural weight. If we skip the words, we often miss the world of the text. Abraham's faith is lived through covenant, seed, sojourning, altars, family status, sacrifice, and inheritance.`;
+  };
 
   const renderSection = (section: AbrahamSection) => `## ${cleanSectionTitle(section.title)}
 
@@ -1541,277 +1533,43 @@ ${renderVerseCallout(section)}
 
 ${renderSectionDeepDive(section)}`;
 
-  const makeSection = (reference: string, title: string, points: string[]): AbrahamSection => ({ reference, title, points });
-  const getStudySections = (): AbrahamSection[] => {
-    const sectionsByChapter: Record<number, AbrahamSection[]> = {
-      13: [
-        makeSection("Genesis 13:1-4", "Abram Returns to Worship", [
-          "Abram comes back from Egypt to the place where he had built an altar before. After fear and failure in Egypt, the road brings him back to worship.",
-          "This matters because Abraham's faith is not perfect, but he keeps returning to the Lord. The altar shows the story being re-centered after a weak moment.",
-        ]),
-        makeSection("Genesis 13:5-9", "Conflict Between Abram and Lot", [
-          "Abram and Lot have both grown wealthy, and their households can no longer live easily in the same space.",
-          "Abram chooses peace instead of control. He gives Lot the first choice because he trusts God's promise more than he trusts grabbing land for himself.",
-        ]),
-        makeSection("Genesis 13:10-13", "Lot Chooses by Sight", [
-          "Lot sees the well-watered plain and chooses what looks best. The land looks like Eden and Egypt, but it is near Sodom.",
-          "Genesis is teaching us that good-looking choices can still pull a person toward danger.",
-        ]),
-        makeSection("Genesis 13:14-18", "God Repeats the Promise", [
-          "After Lot separates, God tells Abram to look in every direction. Abram gave up first choice, but he did not lose the promise.",
-          "The chapter ends with Abram building another altar. His future is still anchored in God's word, not in Lot's decision.",
-        ]),
-      ],
-      14: [
-        makeSection("Genesis 14:1-12", "War Reaches Lot", [
-          "Lot's move toward Sodom has placed him inside a dangerous world of kings, rebellion, raids, and captivity.",
-          "The names and places may feel distant, but the point is close: Lot's chosen direction now has consequences.",
-        ]),
-        makeSection("Genesis 14:13-16", "Abram Rescues Lot", [
-          "Abram does not abandon Lot. He gathers trained men from his household and moves with courage to rescue him.",
-          "This shows another side of Abram's obedience. Faith can build altars, but it can also act bravely when family is in danger.",
-        ]),
-        makeSection("Genesis 14:17-20", "Melchizedek Blesses Abram", [
-          "Melchizedek appears as both king and priest. He brings bread and wine and blesses Abram in the name of God Most High.",
-          "This keeps the victory under worship. Abram's success is not treated as human greatness; it is received under God's authority.",
-        ]),
-        makeSection("Genesis 14:21-24", "Abram Refuses Sodom's Reward", [
-          "The king of Sodom offers goods, but Abram refuses to let Sodom claim credit for his blessing.",
-          "This is wisdom after victory. Abram will not let a corrupt city define the source of his future.",
-        ]),
-      ],
-      15: [
-        makeSection("Genesis 15:1-6", "Abram Believes God", [
-          "God tells Abram not to fear, and Abram answers honestly about having no child.",
-          "The stars become a picture of promise, and Abram believes the Lord before he can see the fulfillment.",
-        ]),
-        makeSection("Genesis 15:7-11", "Abram Asks About the Land", [
-          "God reminds Abram that He brought him from Ur to give him the land.",
-          "The animals prepare for a covenant ceremony. Ancient readers would understand that this is serious, binding promise language.",
-        ]),
-        makeSection("Genesis 15:12-16", "The Long Future Revealed", [
-          "Abram hears that his descendants will suffer in a foreign land before they return.",
-          "The promise is real, but it will move through waiting, oppression, judgment, and deliverance.",
-        ]),
-        makeSection("Genesis 15:17-21", "The Covenant Ceremony", [
-          "God passes through the pieces as fire and smoke. Abram watches while God confirms the covenant.",
-          "The land promise is named clearly. The future rests on God's commitment to His word.",
-        ]),
-      ],
-      16: [
-        makeSection("Genesis 16:1-3", "Sarai Tries to Force the Promise", [
-          "Sarai is still barren, and the waiting has become painful. She gives Hagar to Abram in an attempt to build the family herself.",
-          "The plan may fit ancient household practice, but Genesis shows the emotional damage it creates.",
-        ]),
-        makeSection("Genesis 16:4-6", "Hagar Is Mistreated", [
-          "Hagar conceives, tension rises, and Sarai deals harshly with her.",
-          "This is not a clean faith moment. It is a household wounded by impatience, power, shame, and fear.",
-        ]),
-        makeSection("Genesis 16:7-12", "God Finds Hagar", [
-          "Hagar runs into the wilderness, but the angel of the Lord finds her there.",
-          "God speaks to a vulnerable servant woman and names a future for her son.",
-        ]),
-        makeSection("Genesis 16:13-16", "The God Who Sees", [
-          "Hagar names the Lord as the God who sees her.",
-          "The chapter ends with Ishmael's birth, but the deeper lesson is that God sees the wounded people inside Abraham's family failure.",
-        ]),
-      ],
-      17: [
-        makeSection("Genesis 17:1-8", "Abram Becomes Abraham", [
-          "God appears when Abram is ninety-nine and calls him to walk before Him.",
-          "The new name Abraham means his identity must now match a promise larger than his visible life.",
-        ]),
-        makeSection("Genesis 17:9-14", "Circumcision as the Covenant Sign", [
-          "Circumcision becomes the visible sign of the covenant in Abraham's household.",
-          "The promise is not only an idea. It marks identity, family, body, and belonging.",
-        ]),
-        makeSection("Genesis 17:15-22", "Sarah and Isaac Are Named", [
-          "God names Sarah in the promise and says Isaac will be born through her.",
-          "Abraham laughs, and God still makes the promise plain. The covenant child will come through the impossible place.",
-        ]),
-        makeSection("Genesis 17:23-27", "Abraham Obeys That Same Day", [
-          "Abraham circumcises the males of his household that same day.",
-          "His obedience is immediate and public inside the household God is setting apart.",
-        ]),
-      ],
-      18: [
-        makeSection("Genesis 18:1-8", "Abraham Welcomes the Visitors", [
-          "Abraham receives the visitors with urgency, food, water, shade, and honor.",
-          "In the ancient world, hospitality was protection and respect, not just friendliness.",
-        ]),
-        makeSection("Genesis 18:9-15", "Sarah Laughs", [
-          "Sarah hears the promise of a son and laughs within herself.",
-          "God answers with the question that sits over the whole Abraham story: is anything too hard for the Lord?",
-        ]),
-        makeSection("Genesis 18:16-21", "The Lord Looks Toward Sodom", [
-          "The scene turns from promise in the tent to judgment over Sodom.",
-          "God draws Abraham into the moral weight of what is about to happen.",
-        ]),
-        makeSection("Genesis 18:22-33", "Abraham Intercedes", [
-          "Abraham speaks with bold humility, asking whether the Judge of all the earth will do right.",
-          "This is not bargaining with a weak God. It is intercession rooted in God's justice and mercy.",
-        ]),
-      ],
-      19: [
-        makeSection("Genesis 19:1-11", "Sodom's Violence Is Exposed", [
-          "Lot is sitting in Sodom's gate, showing how deeply connected he has become to the city.",
-          "The men of Sodom reveal the city's corruption through violent intent toward the visitors.",
-        ]),
-        makeSection("Genesis 19:12-22", "Mercy Pulls Lot Out", [
-          "The messengers warn Lot, but he lingers.",
-          "God's mercy has to pull him away from the place he should have left long before.",
-        ]),
-        makeSection("Genesis 19:23-29", "Sodom Falls", [
-          "Judgment falls on Sodom and Gomorrah.",
-          "Lot is rescued because God remembers Abraham, but rescue does not erase all the damage.",
-        ]),
-        makeSection("Genesis 19:30-38", "Lot's Family After Sodom", [
-          "The final scene is dark and painful.",
-          "Genesis shows what compromise has done to Lot's household without pretending the rescue made everything whole.",
-        ]),
-      ],
-      20: [
-        makeSection("Genesis 20:1-7", "Abraham Repeats the Lie", [
-          "Abraham again says Sarah is his sister, this time before Abimelech.",
-          "The repeated failure matters because fear can survive inside a life of real faith.",
-        ]),
-        makeSection("Genesis 20:8-13", "Abimelech Confronts Abraham", [
-          "Abimelech responds with urgency and confronts Abraham's deception.",
-          "Genesis lets the outsider see the problem clearly, which keeps Abraham from looking fake-perfect.",
-        ]),
-        makeSection("Genesis 20:14-18", "Sarah Is Restored", [
-          "Abimelech returns Sarah and gives gifts.",
-          "God heals the household, and the promise is protected even after Abraham's fear created danger.",
-        ]),
-      ],
-      21: [
-        makeSection("Genesis 21:1-7", "Isaac Is Born", [
-          "God visits Sarah as He promised, and Isaac is born at the set time.",
-          "The laughter of disbelief becomes the laughter of joy.",
-        ]),
-        makeSection("Genesis 21:8-13", "The Household Conflict Breaks Open", [
-          "Isaac's celebration leads to conflict with Hagar and Ishmael.",
-          "The promise line is clarified, but the family pain is real.",
-        ]),
-        makeSection("Genesis 21:14-21", "God Hears Ishmael", [
-          "Hagar and Ishmael are sent into the wilderness, and the water runs out.",
-          "God hears the boy and opens Hagar's eyes to a well. The covenant line is Isaac, but Ishmael is not invisible to God.",
-        ]),
-        makeSection("Genesis 21:22-34", "Abraham and Abimelech Make Peace", [
-          "Abraham and Abimelech make a covenant over the well at Beersheba.",
-          "Water, witness, peace, and worship all matter as Abraham continues living in the land.",
-        ]),
-      ],
-      22: [
-        makeSection("Genesis 22:1-8", "God Tests Abraham", [
-          "God tests Abraham by naming Isaac, the beloved promised son.",
-          "The command touches the promise itself, and Abraham begins the journey without being told how God will resolve it.",
-        ]),
-        makeSection("Genesis 22:9-14", "God Provides the Ram", [
-          "Abraham reaches the altar, but God stops the knife.",
-          "The ram becomes God's substitute provision, and Abraham names the place by what the Lord has revealed.",
-        ]),
-        makeSection("Genesis 22:15-19", "The Promise Is Repeated", [
-          "After the test, God repeats the blessing, seed, victory, and nations promise.",
-          "Abraham's obedience shows that he trusts the Giver more than the gift.",
-        ]),
-        makeSection("Genesis 22:20-24", "The Next Family Line Appears", [
-          "The chapter ends by naming Rebekah's family line.",
-          "This small genealogy prepares the way for Isaac's future wife and the next stage of the covenant story.",
-        ]),
-      ],
-      23: [
-        makeSection("Genesis 23:1-2", "Sarah Dies", [
-          "Sarah dies in Hebron, and Abraham mourns and weeps for her.",
-          "Genesis lets grief stand inside the promise. Faith does not make Abraham less human.",
-        ]),
-        makeSection("Genesis 23:3-16", "Abraham Buys the Field", [
-          "Abraham negotiates publicly with the sons of Heth for a burial place.",
-          "The city gate and witnesses matter because this land purchase must be legally recognized.",
-        ]),
-        makeSection("Genesis 23:17-20", "Machpelah Becomes Abraham's First Land", [
-          "The field and cave of Machpelah become Abraham's first owned piece of Canaan.",
-          "It is a burial place, so promise and grief meet in the same field.",
-        ]),
-      ],
-      24: [
-        makeSection("Genesis 24:1-9", "Abraham Sends His Servant", [
-          "Abraham sends his servant to find a wife for Isaac from his own family line.",
-          "Isaac must not be taken back to the old land. The covenant future must move forward.",
-        ]),
-        makeSection("Genesis 24:10-27", "The Prayer at the Well", [
-          "The servant prays for guidance, and Rebekah appears at the well.",
-          "Her kindness and strength show through ordinary action: she gives water generously.",
-        ]),
-        makeSection("Genesis 24:28-49", "Rebekah's Household Hears the Story", [
-          "The servant tells the story carefully so the family can see God's guidance.",
-          "Marriage here is personal, family-centered, and covenant-shaped.",
-        ]),
-        makeSection("Genesis 24:50-61", "Rebekah Chooses to Go", [
-          "Rebekah is blessed and chooses to leave her home.",
-          "Her journey echoes Abraham's earlier leaving: she steps toward a future she cannot fully see.",
-        ]),
-        makeSection("Genesis 24:62-67", "Isaac Receives Rebekah", [
-          "Isaac meets Rebekah, brings her into Sarah's tent, and loves her.",
-          "The covenant line continues through comfort after grief and a new household beginning.",
-        ]),
-      ],
-      25: [
-        makeSection("Genesis 25:1-6", "Abraham's Other Children", [
-          "Abraham has other sons through Keturah, and Genesis names them honestly.",
-          "But Isaac remains the covenant heir, so Abraham sends the other sons eastward with gifts.",
-        ]),
-        makeSection("Genesis 25:7-11", "Abraham Dies and Is Buried", [
-          "Abraham dies full of years and is buried by Isaac and Ishmael.",
-          "His story closes, but the promise continues through Isaac.",
-        ]),
-        makeSection("Genesis 25:12-18", "Ishmael's Line", [
-          "Ishmael's descendants are listed because God kept His word about him too.",
-          "The covenant line is Isaac, but Ishmael is not erased from the story.",
-        ]),
-        makeSection("Genesis 25:19-26", "Jacob and Esau Are Born", [
-          "Rebekah is barren, Isaac prays, and twins struggle in her womb.",
-          "The next generation begins with the same themes: prayer, promise, conflict, and God's choice.",
-        ]),
-        makeSection("Genesis 25:27-34", "Esau Sells the Birthright", [
-          "Esau trades his birthright for stew.",
-          "The chapter ends by showing how lightly Esau treats what should have been treasured.",
-        ]),
-      ],
-    };
-    return sectionsByChapter[note.chapter] || note.sections;
-  };
-
-  const sectionNotes = getStudySections()
+  const sectionNotes = note.sections
     .map(renderSection)
     .join("\n\n");
 
-  return `${cleanChapterHeading()}
+  return `${note.title}
 
 ${note.intro}
 
-## Why This Chapter Matters
+# Deep Chapter Notes
 
-${note.lesson}
-
-## Chapter Overview
+## The Chapter Flow
 
 ${note.flow.map((item) => `* ${item}`).join("\n\n")}
 
-# Deep Chapter Notes
+${renderChapterCovenantStudy()}
 
 ${sectionNotes}
 
 ${renderMajorChapterAddendum()}
 
-${renderDeepTakeaways()}
+${renderKjvStudy()}
+
+${renderBibleBuddyDeepTakeaways()}
 
 ${renderCarryForward()}
 
-## The Big Lesson of Genesis ${note.chapter}
+## Abraham As A Real Person
+
+Abraham's obedience matters because it is costly and uneven. He leaves, worships, rescues, believes, laughs, fears, grieves, bargains, waits, and surrenders. That range is important. Genesis does not present faith as instant perfection. It presents faith as a long obedience shaped by repeated encounters with God.
+
+If this chapter feels slow, remember that much of Abraham's life was slow. Years pass between promises. Roads stretch across unknown land. Family tensions grow before they resolve. The promised child does not arrive quickly. The land is promised long before it is possessed. Abraham learns God through movement, delay, correction, and surrender.
+
+## The Big Lesson Of Genesis ${note.chapter}
 
 ${note.lesson}`;
 }
+
 const GENESIS_11_DEEP_NOTES = `# Genesis 11
 
 # The Road Before the Call
@@ -1850,11 +1608,11 @@ It is the road before the call.
 
 Genesis 11 shows us three major things.
 
-- 🏙️ Babel shows humanity trying to build life without God.
+- ðŸ™ï¸ Babel shows humanity trying to build life without God.
 
-- 🧬 Shem's family line moves the story toward Abram.
+- ðŸ§¬ Shem's family line moves the story toward Abram.
 
-- 🛣️ Terah's family starts toward Canaan but stops in Haran.
+- ðŸ›£ï¸ Terah's family starts toward Canaan but stops in Haran.
 
 That last detail matters.
 
@@ -1958,13 +1716,13 @@ They say:
 
 That means:
 
-- 👑 Let us become great.
+- ðŸ‘‘ Let us become great.
 
-- 🏙️ Let us build our own security.
+- ðŸ™ï¸ Let us build our own security.
 
-- 📣 Let us make sure people remember us.
+- ðŸ“£ Let us make sure people remember us.
 
-- 🧱 Let us create something that proves who we are.
+- ðŸ§± Let us create something that proves who we are.
 
 This is pride.
 
@@ -2396,11 +2154,11 @@ Genesis uses this phrase to organize the book.
 
 It tells the reader:
 
-- 📖 A new section is starting.
+- ðŸ“– A new section is starting.
 
-- 🧬 A family line is being traced.
+- ðŸ§¬ A family line is being traced.
 
-- 🛣️ The story is moving forward.
+- ðŸ›£ï¸ The story is moving forward.
 
 So this is not just a list.
 
@@ -2566,13 +2324,13 @@ In that culture, barrenness was not just personal sadness.
 
 It affected everything.
 
-- 👶 No child meant no heir.
+- ðŸ‘¶ No child meant no heir.
 
-- 🏕️ No heir meant no family future.
+- ðŸ•ï¸ No heir meant no family future.
 
-- 📜 No family future meant no visible path for the promise.
+- ðŸ“œ No family future meant no visible path for the promise.
 
-- 😔 It also carried deep emotional shame and grief.
+- ðŸ˜” It also carried deep emotional shame and grief.
 
 So when God later promises Abram seed, the promise lands directly on the most painful place in the family.
 
