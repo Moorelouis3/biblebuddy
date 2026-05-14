@@ -8,6 +8,7 @@ import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
+import GuidedChapterLimitModal from "./GuidedChapterLimitModal";
 
 type LevelInfo = {
   level: number;
@@ -967,6 +968,7 @@ export default function DashboardJourneyExperience({
   const [isSavingDevotional, setIsSavingDevotional] = useState(false);
   const [isResettingDevotional, setIsResettingDevotional] = useState(false);
   const [devotionalSettingsMessage, setDevotionalSettingsMessage] = useState<string | null>(null);
+  const [guidedLimitModal, setGuidedLimitModal] = useState<"completed" | "locked" | null>(null);
 
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
   const visibleTasks = checklistData?.tasks ?? [];
@@ -981,7 +983,7 @@ export default function DashboardJourneyExperience({
       : null;
   const currentDevotionalTask = visibleTasks.find((task) => task.kind === "devotional") ?? null;
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
-  const isPaidUser = profile?.is_paid === true;
+  const isPaidUser = profile?.is_paid === true || checklistData?.guidedAccess.isPro === true;
   const remainingTasks = Math.max(totalTasks - completedTasks, 0);
   const completedChapterLabel =
     visibleTasks.find((task) => task.kind === "reading")?.chapterLabel ||
@@ -1284,6 +1286,10 @@ export default function DashboardJourneyExperience({
 
   useEffect(() => {
     if (!checklistData?.tasks.length || isLoadingChecklist) return;
+
+    if (checklistData.guidedAccess.justCompletedFreeChapter) {
+      setGuidedLimitModal("completed");
+    }
 
     const currentDoneByKind = checklistData.tasks.reduce<Record<string, boolean>>((acc, task) => {
       acc[task.kind] = task.done;
@@ -1683,6 +1689,7 @@ export default function DashboardJourneyExperience({
                 const taskCopy = getTaskCardCopy(task, index);
                 const isCelebrating = Boolean(celebratingTasks[task.kind]);
                 const isLockedByOrder = !task.done && nextActionTaskIndex >= 0 && index > nextActionTaskIndex;
+                const isGuidedLimitLocked = Boolean(task.lockedByGuidedLimit);
                 const isCardDisabled = Boolean(task.disabled || isLockedByOrder);
                 const isNextActionTask = task.kind === nextActionTaskKind && !isCardDisabled;
                 const remainingTaskCount = visibleTasks.filter((dailyTask) => !dailyTask.done).length;
@@ -1697,10 +1704,14 @@ export default function DashboardJourneyExperience({
                   key={task.kind}
                   type="button"
                   onClick={() => {
+                    if (isGuidedLimitLocked) {
+                      setGuidedLimitModal("locked");
+                      return;
+                    }
                     if (isCardDisabled) return;
                     onTaskClick(task);
                   }}
-                  disabled={isCardDisabled}
+                  disabled={isCardDisabled && !isGuidedLimitLocked}
                   className={`relative w-full overflow-hidden rounded-xl border px-3.5 py-3 text-left shadow-sm transition sm:px-4 ${
                     isCelebrating ? "task-complete-pop" : ""
                   } ${
@@ -1709,7 +1720,7 @@ export default function DashboardJourneyExperience({
                     task.done
                       ? "border-green-200 bg-gradient-to-r from-green-50 via-white to-green-50 hover:bg-green-50"
                       : isCardDisabled
-                        ? "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400 opacity-75"
+                        ? `${isGuidedLimitLocked ? "cursor-pointer next-task-pulse" : "cursor-not-allowed"} border-gray-200 bg-gray-100 text-gray-400 opacity-75`
                         : "border-gray-200 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 text-gray-500 hover:shadow-md"
                   }`}
                 >
@@ -1772,7 +1783,7 @@ export default function DashboardJourneyExperience({
                       </div>
                       <div className="mt-1.5 flex items-end justify-between gap-3">
                         <p className={`min-w-0 flex-1 text-xs leading-5 sm:text-sm ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
-                        {task.timeEstimateLabel ? (
+                        {!task.done && task.timeEstimateLabel ? (
                           <p className="shrink-0 whitespace-nowrap text-right text-[11px] font-black text-gray-950">
                             Takes about {task.timeEstimateLabel}
                           </p>
@@ -1976,6 +1987,13 @@ export default function DashboardJourneyExperience({
           </div>
         </div>
       </ModalShell>
+      <GuidedChapterLimitModal
+        isOpen={guidedLimitModal !== null}
+        variant={guidedLimitModal || "locked"}
+        unlocksInLabel={checklistData?.guidedAccess.unlockLabel}
+        onClose={() => setGuidedLimitModal(null)}
+        onBackToDashboard={() => setGuidedLimitModal(null)}
+      />
     </div>
   );
 }

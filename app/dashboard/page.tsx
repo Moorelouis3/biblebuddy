@@ -3065,7 +3065,7 @@ export default function DashboardPage() {
   }
 
   function handleDailyJourneyTaskClick(task: TaskState) {
-    if (task.disabled) return;
+    if (task.disabled && !task.lockedByGuidedLimit) return;
     setSelectedDashboardTask(task);
   }
 
@@ -3099,16 +3099,6 @@ export default function DashboardPage() {
       emoji: "👥",
       accent: "border-[#b8ddb8] bg-[#d4ecd4]",
       onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "bible_study_hub", "/study-groups"),
-    },
-    {
-      key: "tools",
-      title: "Bible Study Tools",
-      subtitle: "A collection of Bible study tools",
-      href: "/guided-studies",
-      eyebrow: "Study Tools",
-      emoji: "🛠️",
-      accent: "border-[#e8aeb5] bg-[#f6d6d9]",
-      onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "guided_studies", "/guided-studies"),
     },
     {
       key: "tv",
@@ -4025,20 +4015,37 @@ export default function DashboardPage() {
             <div className="flex justify-center">
               <LouisAvatar mood="stareyes" size={72} />
             </div>
-            <h2 className="mt-4 text-3xl font-bold text-[#21304f]">Chapter Complete!</h2>
+            <h2 className="mt-4 text-3xl font-bold text-[#21304f]">
+              {dailyChecklistData?.guidedAccess.isPro ? "Chapter Complete!" : "Today's Chapter Complete"}
+            </h2>
             <p className="mt-3 text-base font-semibold text-[#355487]">
-              You completed {completedChapterLabel}.
+              {dailyChecklistData?.guidedAccess.isPro
+                ? `You completed ${completedChapterLabel}.`
+                : "You completed today's guided Bible study chapter."}
             </p>
-              <p className="mt-2 text-sm leading-6 text-[#58709d]">
-                Great work. {nextChapterLabel} is ready when you are.
-              </p>
-            <button
-              type="button"
-              onClick={() => void closeDailyTaskCelebrationModal({ advanceToNextChapter: true })}
-              className="mt-5 inline-flex rounded-full bg-[#7aa7df] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
-            >
-              OK
-            </button>
+            <p className="mt-2 text-sm leading-6 text-[#58709d]">
+              {dailyChecklistData?.guidedAccess.isPro
+                ? `Great work. ${nextChapterLabel} is ready when you are.`
+                : "Come back tomorrow to continue your Bible journey for free, or upgrade to Bible Buddy Pro to continue studying now."}
+            </p>
+            <div className="mt-5 grid gap-3">
+              {!dailyChecklistData?.guidedAccess.isPro ? (
+                <button
+                  type="button"
+                  onClick={() => router.push("/upgrade")}
+                  className="rounded-full bg-[#7aa7df] px-5 py-2.5 text-sm font-black text-white shadow-sm transition hover:bg-[#5f93d3]"
+                >
+                  Upgrade to Pro
+                </button>
+              ) : null}
+              <button
+                type="button"
+                onClick={() => void closeDailyTaskCelebrationModal({ advanceToNextChapter: true })}
+                className="rounded-full border border-[#d7e4f7] bg-white px-5 py-2.5 text-sm font-black text-[#355487] shadow-sm transition hover:bg-[#f8fbff]"
+              >
+                {dailyChecklistData?.guidedAccess.isPro ? "OK" : "Back to Dashboard"}
+              </button>
+            </div>
           </div>
         </div>
       </ModalShell>
