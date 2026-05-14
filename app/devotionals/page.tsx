@@ -181,7 +181,7 @@ export default function DevotionalsPage() {
       return "/heartofdaviddevotional.png";
     }
     if (title === "The Obedience of Abraham") {
-      return "/obedienceofabraham.png";
+      return "/TheobedienceofAbraham.png";
     }
     if (title === "The Transforming of Paul") {
       return "/transformingofpauldevotional.png";

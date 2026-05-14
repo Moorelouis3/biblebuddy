@@ -139,6 +139,8 @@ interface TopBuddy {
   score: number;
 }
 
+const TOP_BUDDIES_BOARD_VERSION = "score-v2-2026-05-14";
+
 interface TopBuddiesEngagement {
   totalClicks: number;
   uniqueClickers: number;
@@ -158,9 +160,9 @@ interface TopBuddiesEngagement {
 function getWeeklyBoardRangeLabel() {
   const now = new Date();
   const day = now.getDay();
-  const daysSinceThursday = (day + 3) % 7;
+  const daysSinceFriday = (day + 2) % 7;
   const start = new Date(now);
-  start.setDate(now.getDate() - daysSinceThursday);
+  start.setDate(now.getDate() - daysSinceFriday);
   const end = new Date(start);
   end.setDate(start.getDate() + 6);
   const format = (date: Date) => date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
@@ -2685,7 +2687,7 @@ export default function GroupChatPage() {
 
   async function loadTopBuddies() {
     if (!group) return;
-    const cacheKey = `top-buddies-cache:${group.id}`;
+    const cacheKey = `top-buddies-cache:${group.id}:${TOP_BUDDIES_BOARD_VERSION}`;
     let showedCachedBoard = false;
 
     try {
@@ -2754,7 +2756,7 @@ export default function GroupChatPage() {
 
   useEffect(() => {
     if (!group?.id) return;
-    setHasOpenedTopBuddiesCard(localStorage.getItem(`top-buddies-opened:${group.id}`) === "true");
+    setHasOpenedTopBuddiesCard(localStorage.getItem(`top-buddies-opened:${group.id}:${TOP_BUDDIES_BOARD_VERSION}`) === "true");
   }, [group?.id]);
 
   async function trackTopBuddiesClick(action: "open" | "modal") {
@@ -2781,7 +2783,7 @@ export default function GroupChatPage() {
       const next = !current;
       if (next) {
         setHasOpenedTopBuddiesCard(true);
-        if (group?.id) localStorage.setItem(`top-buddies-opened:${group.id}`, "true");
+        if (group?.id) localStorage.setItem(`top-buddies-opened:${group.id}:${TOP_BUDDIES_BOARD_VERSION}`, "true");
         void trackTopBuddiesClick("open");
       }
       return next;
@@ -2863,7 +2865,7 @@ export default function GroupChatPage() {
             <div className="mb-3 rounded-2xl border border-[#dbe7f0] bg-white px-3 py-3">
               <p className="text-xs font-black uppercase tracking-[0.14em] text-[#4f8fb7]">How weekly Top Buddies are calculated</p>
               <p className="mt-1 text-xs font-semibold leading-5 text-[#516173]">
-                Real Bible work counts most: readings, notes, trivia rounds, Scrambled rounds, and reflections. Group replies and posts count with caps. Opens, board views, and random clicks do not count. XP only breaks ties.
+                Bible study tasks count the most: reading intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
               </p>
             </div>
 
@@ -2897,7 +2899,7 @@ export default function GroupChatPage() {
                           <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                         </div>
                         <p className="mt-0.5 text-[11px] font-semibold text-[#718096]">
-                          {buddy.actions || 0} actions · {buddy.scoreBreakdown?.community || 0} community pts · {buddy.appXp || 0} XP tie-breaker
+                          {buddy.actions || 0} Bible tasks · {buddy.scoreBreakdown?.community || 0} community pts
                         </p>
                       </div>
                       <div className="text-right">
@@ -6980,7 +6982,7 @@ export default function GroupChatPage() {
                   <h2 className="text-2xl font-bold text-gray-900 mt-2">Top Members</h2>
                   <p className="text-sm text-gray-500 mt-1">Top 10 this week by completed Bible work.</p>
                   <div className="mt-3 rounded-2xl border border-gray-100 bg-gray-50 px-3 py-2 text-xs font-semibold leading-5 text-gray-600">
-                    Readings, notes, trivia rounds, Scrambled rounds, and reflections count most. Community replies count with caps. Random opens and clicks do not count.
+                    Bible study tasks count the most: reading intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
                   </div>
                 </div>
                 <button
@@ -7024,7 +7026,7 @@ export default function GroupChatPage() {
                             <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                           </div>
                           <p className="mt-1 text-xs text-gray-500">
-                            {buddy.actions || 0} actions · {buddy.appXp || 0} XP tie-breaker
+                            {buddy.actions || 0} Bible tasks · {buddy.scoreBreakdown?.community || 0} community pts
                           </p>
                         </div>
                         <div className="text-right">

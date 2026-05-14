@@ -121,7 +121,7 @@ const COVER_BY_STUDY_TITLE: Record<string, string> = {
   "The Faith of Job": "/faithofjob.png",
   "The Calling of Moses": "/callingofmosesdevotional.png",
   "The Heart of David": "/heartofdaviddevotional.png",
-  "The Obedience of Abraham": "/obedienceofabraham.png",
+  "The Obedience of Abraham": "/TheobedienceofAbraham.png",
   "The Transforming of Paul": "/transformingofpauldevotional.png",
   "The Courage of Daniel": "/courageofdaniel.png",
   "The Rise of Esther": "/RiseofEsther.png",

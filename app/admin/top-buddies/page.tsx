@@ -174,13 +174,13 @@ export default function TopBuddiesAdminPage() {
 
   const buddies = useMemo(() => {
     const rows = data?.buddies || [];
-    if (filter === "tasks") return [...rows].sort((a, b) => b.totalActions - a.totalActions || b.weightedXp - a.weightedXp);
-    if (filter === "community") return [...rows].sort((a, b) => b.communityEngagement - a.communityEngagement || b.weightedXp - a.weightedXp);
+    if (filter === "tasks") return [...rows].sort((a, b) => b.tasksDone - a.tasksDone || b.score - a.score);
+    if (filter === "community") return [...rows].sort((a, b) => b.communityEngagement - a.communityEngagement || b.tasksDone - a.tasksDone);
     if (filter === "games") {
       return [...rows].sort(
         (a, b) =>
           b.triviaCorrect + b.scrambledWords - (a.triviaCorrect + a.scrambledWords) ||
-          b.totalActions - a.totalActions,
+          b.tasksDone - a.tasksDone,
       );
     }
     return rows;
@@ -208,7 +208,7 @@ export default function TopBuddiesAdminPage() {
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#4f8fb7]">Owner Analytics</p>
             <h1 className="mt-2 text-3xl font-black text-gray-950 md:text-4xl">Top Buddies</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-gray-600">
-              Ranked by real completed Bible work first, with XP used only as a tie-breaker.
+              Ranked by real Bible study work first, with community engagement counting at about half weight.
             </p>
           </div>
 
@@ -281,7 +281,6 @@ export default function TopBuddiesAdminPage() {
                     <th className="px-4 py-4">Buddy</th>
                     <th className="px-4 py-4">Buddy Score</th>
                     <th className="px-4 py-4">Level</th>
-                    <th className="px-4 py-4">XP</th>
                     <th className="px-4 py-4">Tasks</th>
                     <th className="px-4 py-4">Bible</th>
                     <th className="px-4 py-4">Trivia</th>
@@ -319,13 +318,12 @@ export default function TopBuddiesAdminPage() {
                       </td>
                       <td className="px-4 py-4">
                         <p className="text-lg font-black text-gray-950">{formatNumber(buddy.score)}</p>
-                        <p className="text-xs font-semibold text-gray-500">{formatNumber(buddy.totalActions)} actions · {formatNumber(buddy.weightedXp)} XP</p>
+                        <p className="text-xs font-semibold text-gray-500">{formatNumber(buddy.tasksDone)} Bible tasks · {formatNumber(buddy.communityEngagement)} community pts</p>
                       </td>
                       <td className="px-4 py-4">
                         <p className="text-sm font-black text-gray-950">Level {buddy.currentLevel}</p>
                         <p className="text-xs font-semibold text-orange-600">{buddy.currentStreak} day streak</p>
                       </td>
-                      <td className="px-4 py-4 text-sm font-bold text-gray-800">{formatNumber(buddy.weightedXp)}</td>
                       <td className="px-4 py-4 text-sm font-bold text-gray-800">{formatNumber(buddy.tasksDone)}</td>
                       <td className="px-4 py-4">
                         <p className="text-sm font-bold text-gray-900">{formatNumber(buddy.chaptersRead)} chapters</p>

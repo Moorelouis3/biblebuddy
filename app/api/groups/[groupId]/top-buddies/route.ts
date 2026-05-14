@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 1000;
 const LEADERBOARD_CACHE_MS = 10 * 60 * 1000;
+const DAY_MS = 24 * 60 * 60 * 1000;
 const PROFILE_SELECT =
   "user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, total_actions, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at";
 
@@ -116,20 +117,21 @@ const COMMUNITY_ACTIONS = new Set([
 ]);
 
 const BUDDY_SCORE_WEIGHTS: Record<string, number> = {
-  devotional_day_completed: 5,
+  devotional_day_completed: 10,
   chapter_completed: 10,
   reading_plan_chapter_completed: 10,
   chapter_notes_reviewed: 10,
-  trivia_chapter_completed: 8,
-  scrambled_chapter_completed: 8,
-  devotional_reflection_saved: 12,
+  trivia_chapter_completed: 10,
+  scrambled_chapter_completed: 10,
+  devotional_reflection_saved: 10,
+  louis_daily_task_bonus: 10,
 };
 
 const COMMUNITY_SCORE_WEIGHTS = {
   post: 5,
-  comment: 3,
-  articleComment: 3,
-  like: 1,
+  comment: 5,
+  articleComment: 5,
+  like: 2,
   maxPosts: 20,
   maxComments: 30,
   maxArticleComments: 30,
@@ -165,9 +167,21 @@ function getActionPoints(action: ActionRow) {
   return (ACTION_POINT_WEIGHTS[action.action_type as keyof typeof ACTION_POINT_WEIGHTS] ?? 0) + getManualBonusPoints(action.action_label);
 }
 
+function getWeeklyBoardWindow(now = new Date()) {
+  const utcMidnight = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const day = new Date(utcMidnight).getUTCDay();
+  const daysSinceFriday = (day + 2) % 7;
+  const startMs = utcMidnight - daysSinceFriday * DAY_MS;
+  const endMs = startMs + 7 * DAY_MS;
+  return {
+    start: new Date(startMs).toISOString(),
+    end: new Date(endMs).toISOString(),
+  };
+}
+
 function getWindowStart(scope: "week" | "allTime") {
   if (scope === "allTime") return null;
-  return new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+  return getWeeklyBoardWindow().start;
 }
 
 function safeNumber(value: unknown) {
@@ -239,6 +253,7 @@ function buildLeaderboard(options: {
   scope: "week" | "allTime";
 }) {
   const sinceIso = getWindowStart(options.scope);
+  const endIso = options.scope === "week" ? getWeeklyBoardWindow().end : null;
   const stats = new Map<string, {
     points: number;
     appXp: number;
@@ -295,6 +310,7 @@ function buildLeaderboard(options: {
   options.actions.forEach((action) => {
     if (!action.user_id || !action.action_type) return;
     if (sinceIso && (!action.created_at || action.created_at < sinceIso)) return;
+    if (endIso && (!action.created_at || action.created_at >= endIso)) return;
     if (action.action_type === "study_group_feed_viewed" && action.action_label?.startsWith("top_buddies_")) return;
     const current = ensure(action.user_id);
     const points = getActionPoints(action);
@@ -317,21 +333,28 @@ function buildLeaderboard(options: {
   options.completedChapters.forEach((row) => {
     if (!row.user_id) return;
     if (sinceIso && (!row.completed_at || row.completed_at < sinceIso)) return;
+    if (endIso && (!row.completed_at || row.completed_at >= endIso)) return;
     ensure(row.user_id).bibleActions += 1;
   });
 
   options.articleComments.forEach((comment) => {
     if (!comment.user_id) return;
     if (sinceIso && (!comment.created_at || comment.created_at < sinceIso)) return;
+    if (endIso && (!comment.created_at || comment.created_at >= endIso)) return;
     const current = ensure(comment.user_id);
     current.articleComments += 1;
     current.communityActions += 1;
-    if ((comment.article_slug || "").startsWith("bible-chapter-")) current.reflections += 1;
+    if ((comment.article_slug || "").startsWith("bible-chapter-")) {
+      current.reflections += 1;
+      current.taskActions += 1;
+      current.buddyScore += BUDDY_SCORE_WEIGHTS.devotional_reflection_saved;
+    }
   });
 
   options.groupPosts.forEach((post) => {
     if (!post.user_id) return;
     if (sinceIso && (!post.created_at || post.created_at < sinceIso)) return;
+    if (endIso && (!post.created_at || post.created_at >= endIso)) return;
     const current = ensure(post.user_id);
     if (post.parent_post_id) {
       current.comments += 1;
@@ -343,6 +366,7 @@ function buildLeaderboard(options: {
   options.groupLikes.forEach((like) => {
     if (!like.user_id) return;
     if (sinceIso && (!like.created_at || like.created_at < sinceIso)) return;
+    if (endIso && (!like.created_at || like.created_at >= endIso)) return;
     const current = ensure(like.user_id);
     current.likes += 1;
   });
@@ -359,6 +383,7 @@ function buildLeaderboard(options: {
         Math.min(entry.comments, COMMUNITY_SCORE_WEIGHTS.maxComments) * COMMUNITY_SCORE_WEIGHTS.comment +
         Math.min(entry.articleComments, COMMUNITY_SCORE_WEIGHTS.maxArticleComments) * COMMUNITY_SCORE_WEIGHTS.articleComment +
         Math.min(entry.likes, COMMUNITY_SCORE_WEIGHTS.maxLikes) * COMMUNITY_SCORE_WEIGHTS.like;
+      const bibleTaskCount = entry.taskActions + entry.reflections;
       const score = Math.round(entry.buddyScore + communityScore);
 
       return {
@@ -374,18 +399,18 @@ function buildLeaderboard(options: {
         comments: entry.comments,
         likes: entry.likes,
         appXp: entry.appXp,
-        actions: entry.actions,
+        actions: bibleTaskCount,
         buddyScore: score,
         score: Math.max(0, score),
         scoreBreakdown: {
           bibleTasks: entry.buddyScore,
           community: communityScore,
-          xpTieBreaker: entry.appXp,
+          xpTieBreaker: 0,
         },
       };
     })
     .filter((buddy) => buddy.score > 0 || buddy.actions > 0 || buddy.appXp > 0)
-    .sort((a, b) => b.score - a.score || b.appXp - a.appXp || b.actions - a.actions || (b.currentLevel || 0) - (a.currentLevel || 0))
+    .sort((a, b) => b.score - a.score || b.actions - a.actions || (b.scoreBreakdown?.community || 0) - (a.scoreBreakdown?.community || 0) || (b.currentLevel || 0) - (a.currentLevel || 0))
     .slice(0, 10)
     .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 }
@@ -446,24 +471,66 @@ export async function GET(
     if (useFastMode && leaderboardCache && leaderboardCache.expiresAt > Date.now()) {
       weeklyBuddies = leaderboardCache.weeklyBuddies;
     } else if (useFastMode) {
-      const weekStart = getWindowStart("week");
-      const weeklyActions = await fetchPaged<ActionRow>((from, to) =>
-        supabaseAdmin
-          .from("master_actions")
-          .select("user_id, action_type, action_label, created_at")
-          .gte("created_at", weekStart || new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString())
-          .order("created_at", { ascending: false })
-          .range(from, to),
-      );
-      const weeklyUserIds = weeklyActions.map((action) => action.user_id || "").filter(Boolean);
+      const weeklyWindow = getWeeklyBoardWindow();
+      const [weeklyActions, weeklyChapters, weeklyComments, weeklyPosts, weeklyLikes] = await Promise.all([
+        fetchPaged<ActionRow>((from, to) =>
+          supabaseAdmin
+            .from("master_actions")
+            .select("user_id, action_type, action_label, created_at")
+            .gte("created_at", weeklyWindow.start)
+            .lt("created_at", weeklyWindow.end)
+            .order("created_at", { ascending: false })
+            .range(from, to),
+        ),
+        fetchPaged<CompletedChapterRow>((from, to) =>
+          supabaseAdmin
+            .from("completed_chapters")
+            .select("user_id, completed_at")
+            .gte("completed_at", weeklyWindow.start)
+            .lt("completed_at", weeklyWindow.end)
+            .range(from, to),
+        ),
+        fetchPaged<ArticleCommentRow>((from, to) =>
+          supabaseAdmin
+            .from("article_comments")
+            .select("user_id, article_slug, created_at")
+            .eq("is_deleted", false)
+            .gte("created_at", weeklyWindow.start)
+            .lt("created_at", weeklyWindow.end)
+            .range(from, to),
+        ),
+        fetchPaged<GroupPostRow>((from, to) =>
+          supabaseAdmin
+            .from("group_posts")
+            .select("id, user_id, created_at, parent_post_id")
+            .gte("created_at", weeklyWindow.start)
+            .lt("created_at", weeklyWindow.end)
+            .range(from, to),
+        ),
+        fetchPaged<GroupLikeRow>((from, to) =>
+          supabaseAdmin
+            .from("group_post_likes")
+            .select("user_id, created_at")
+            .gte("created_at", weeklyWindow.start)
+            .lt("created_at", weeklyWindow.end)
+            .range(from, to),
+        ),
+      ]);
+      const weeklyUserIds = [
+        ...weeklyActions.map((action) => action.user_id || ""),
+        ...weeklyChapters.map((row) => row.user_id || ""),
+        ...weeklyComments.map((row) => row.user_id || ""),
+        ...weeklyPosts.map((row) => row.user_id || ""),
+        ...weeklyLikes.map((row) => row.user_id || ""),
+      ].filter(Boolean);
       const weeklyProfiles = await fetchProfilesForUserIds(supabaseAdmin, weeklyUserIds);
       weeklyBuddies = buildLeaderboard({
         profiles: weeklyProfiles,
         actions: weeklyActions,
-        completedChapters: [],
-        articleComments: [],
-        groupPosts: [],
-        groupLikes: [],
+        completedChapters: weeklyChapters,
+        articleComments: weeklyComments,
+        groupPosts: weeklyPosts,
+        groupLikes: weeklyLikes,
         scope: "week",
       });
     } else if (forceRefresh || !leaderboardCache || leaderboardCache.expiresAt <= Date.now()) {
@@ -514,7 +581,8 @@ export async function GET(
       };
     }
 
-    weeklyBuddies = weeklyBuddies || [];
+      weeklyBuddies = weeklyBuddies || [];
+    const weeklyWindow = getWeeklyBoardWindow();
 
     const clickLabelPrefix = `top_buddies_card_opened:${groupId}`;
     const { data: clickRows, error: clickError } = await supabaseAdmin
@@ -565,18 +633,20 @@ export async function GET(
         clickers,
       },
       scoring: {
-        summary: "Weekly Top Buddies are ranked by completed Bible work first: readings, notes, trivia rounds, Scrambled rounds, reflections, and capped community replies. Opens and random clicks do not count. XP is only a tie-breaker.",
+        summary: "Weekly Top Buddies are based mostly on Bible study tasks: reading intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.",
         periodDays: 7,
+        periodStart: weeklyWindow.start,
+        periodEnd: weeklyWindow.end,
         weights: {
-          introCompleted: 5,
+          introCompleted: 10,
           chapterRead: 10,
           notesCompleted: 10,
-          triviaCompleted: 8,
-          scrambledCompleted: 8,
-          reflection: 12,
+          triviaCompleted: 10,
+          scrambledCompleted: 10,
+          reflection: 10,
           post: 5,
-          comment: 3,
-          like: 1,
+          comment: 5,
+          like: 2,
           maxCommunityComments: COMMUNITY_SCORE_WEIGHTS.maxComments,
           maxCommunityLikes: COMMUNITY_SCORE_WEIGHTS.maxLikes,
         },

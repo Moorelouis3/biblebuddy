@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 const PAGE_SIZE = 1000;
+const DAY_MS = 24 * 60 * 60 * 1000;
 
 const TASK_ACTIONS = new Set([
   "devotional_day_completed",
@@ -113,20 +114,21 @@ function createStats(userId: string): MutableStats {
 }
 
 const BUDDY_SCORE_WEIGHTS: Record<string, number> = {
-  devotional_day_completed: 5,
+  devotional_day_completed: 10,
   chapter_completed: 10,
   reading_plan_chapter_completed: 10,
   chapter_notes_reviewed: 10,
-  trivia_chapter_completed: 8,
-  scrambled_chapter_completed: 8,
-  devotional_reflection_saved: 12,
+  trivia_chapter_completed: 10,
+  scrambled_chapter_completed: 10,
+  devotional_reflection_saved: 10,
+  louis_daily_task_bonus: 10,
 };
 
 const COMMUNITY_SCORE_WEIGHTS = {
   post: 5,
-  comment: 3,
-  articleComment: 3,
-  like: 1,
+  comment: 5,
+  articleComment: 5,
+  like: 2,
   maxPosts: 20,
   maxComments: 30,
   maxArticleComments: 30,
@@ -149,11 +151,23 @@ function normalizeLimit(value: string | null) {
 }
 
 function getSinceIso(windowValue: string | null) {
+  if (windowValue === "7d") return getWeeklyBoardWindow().start;
   const now = Date.now();
-  if (windowValue === "7d") return new Date(now - 7 * 24 * 60 * 60 * 1000).toISOString();
   if (windowValue === "30d") return new Date(now - 30 * 24 * 60 * 60 * 1000).toISOString();
   if (windowValue === "90d") return new Date(now - 90 * 24 * 60 * 60 * 1000).toISOString();
   return null;
+}
+
+function getWeeklyBoardWindow(now = new Date()) {
+  const utcMidnight = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const day = new Date(utcMidnight).getUTCDay();
+  const daysSinceFriday = (day + 2) % 7;
+  const startMs = utcMidnight - daysSinceFriday * DAY_MS;
+  const endMs = startMs + 7 * DAY_MS;
+  return {
+    start: new Date(startMs).toISOString(),
+    end: new Date(endMs).toISOString(),
+  };
 }
 
 async function fetchPaged<T>(
@@ -203,7 +217,9 @@ export async function GET(request: NextRequest) {
 
   const url = new URL(request.url);
   const limit = normalizeLimit(url.searchParams.get("limit"));
-  const sinceIso = getSinceIso(url.searchParams.get("window"));
+  const windowValue = url.searchParams.get("window");
+  const sinceIso = getSinceIso(windowValue);
+  const untilIso = windowValue === "7d" ? getWeeklyBoardWindow().end : null;
 
   const supabaseAdmin = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
@@ -227,11 +243,13 @@ export async function GET(request: NextRequest) {
           .order("created_at", { ascending: false })
           .range(from, to);
         if (sinceIso) query = query.gte("created_at", sinceIso);
+        if (untilIso) query = query.lt("created_at", untilIso);
         return query;
       }),
       fetchPaged<{ user_id: string | null }>((from, to) => {
         let query = supabaseAdmin.from("completed_chapters").select("user_id, completed_at").range(from, to);
         if (sinceIso) query = query.gte("completed_at", sinceIso);
+        if (untilIso) query = query.lt("completed_at", untilIso);
         return query;
       }),
       fetchPaged<{ user_id: string | null; article_slug: string | null; created_at: string | null }>((from, to) => {
@@ -241,16 +259,19 @@ export async function GET(request: NextRequest) {
           .eq("is_deleted", false)
           .range(from, to);
         if (sinceIso) query = query.gte("created_at", sinceIso);
+        if (untilIso) query = query.lt("created_at", untilIso);
         return query;
       }),
       fetchPaged<{ user_id: string | null; parent_post_id: string | null; created_at: string | null }>((from, to) => {
         let query = supabaseAdmin.from("group_posts").select("user_id, parent_post_id, created_at").range(from, to);
         if (sinceIso) query = query.gte("created_at", sinceIso);
+        if (untilIso) query = query.lt("created_at", untilIso);
         return query;
       }),
       fetchPaged<{ user_id: string | null; created_at: string | null }>((from, to) => {
         let query = supabaseAdmin.from("group_post_likes").select("user_id, created_at").range(from, to);
         if (sinceIso) query = query.gte("created_at", sinceIso);
+        if (untilIso) query = query.lt("created_at", untilIso);
         return query;
       }),
     ]);
@@ -292,7 +313,11 @@ export async function GET(request: NextRequest) {
       const stats = getStats(statsMap, comment.user_id);
       stats.articleComments += 1;
       stats.communityActions += 1;
-      if ((comment.article_slug || "").startsWith("bible-chapter-")) stats.reflections += 1;
+      if ((comment.article_slug || "").startsWith("bible-chapter-")) {
+        stats.reflections += 1;
+        stats.taskActions += 1;
+        stats.buddyScore += BUDDY_SCORE_WEIGHTS.devotional_reflection_saved;
+      }
     });
 
     groupPosts.forEach((post) => {
@@ -324,8 +349,8 @@ export async function GET(request: NextRequest) {
           Math.min(stats.groupComments, COMMUNITY_SCORE_WEIGHTS.maxComments) * COMMUNITY_SCORE_WEIGHTS.comment +
           Math.min(stats.articleComments, COMMUNITY_SCORE_WEIGHTS.maxArticleComments) * COMMUNITY_SCORE_WEIGHTS.articleComment +
           Math.min(stats.groupLikes, COMMUNITY_SCORE_WEIGHTS.maxLikes) * COMMUNITY_SCORE_WEIGHTS.like;
-        const taskScore = stats.taskActions + stats.triviaCompleted + stats.scrambledCompleted;
         const score = Math.round(stats.buddyScore + communityScore);
+        const bibleTaskCount = stats.taskActions + stats.reflections;
 
         return {
           userId: stats.userId,
@@ -339,7 +364,7 @@ export async function GET(request: NextRequest) {
           weightedXp: stats.weightedXp,
           score,
           totalActions: stats.totalActions,
-          tasksDone: stats.totalActions,
+          tasksDone: bibleTaskCount,
           chaptersRead,
           notesReviewed,
           triviaAnswered,
@@ -352,7 +377,7 @@ export async function GET(request: NextRequest) {
           scoreBreakdown: {
             bibleTasks: stats.buddyScore,
             community: communityScore,
-            xpTieBreaker: stats.weightedXp,
+            xpTieBreaker: 0,
           },
           groupPosts: stats.groupPosts,
           groupComments: stats.groupComments,
@@ -366,14 +391,14 @@ export async function GET(request: NextRequest) {
         };
       })
       .filter((buddy) => buddy.totalActions > 0 || buddy.weightedXp > 0)
-      .sort((a, b) => b.score - a.score || b.weightedXp - a.weightedXp || b.totalActions - a.totalActions || b.currentLevel - a.currentLevel)
+      .sort((a, b) => b.score - a.score || b.tasksDone - a.tasksDone || b.communityEngagement - a.communityEngagement || b.currentLevel - a.currentLevel)
       .slice(0, limit)
       .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 
     const totals = {
       usersRanked: statsMap.size,
       totalActions: buddies.reduce((sum, buddy) => sum + buddy.totalActions, 0),
-      totalTasks: buddies.reduce((sum, buddy) => sum + buddy.totalActions, 0),
+      totalTasks: buddies.reduce((sum, buddy) => sum + buddy.tasksDone, 0),
       totalCommunity: buddies.reduce((sum, buddy) => sum + buddy.communityEngagement, 0),
       topScore: buddies[0]?.score || 0,
     };
@@ -383,17 +408,17 @@ export async function GET(request: NextRequest) {
       totals,
       scoring: {
         summary:
-          "Top Buddies are ranked by a weekly Buddy Score: completed Bible readings, notes, trivia rounds, Scrambled rounds, reflections, and capped community replies/posts. Opens and random clicks do not count. XP is only a tie-breaker.",
+          "Top Buddies are based mostly on Bible study tasks: reading intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.",
         weights: {
-          introCompleted: 5,
+          introCompleted: 10,
           chapterRead: 10,
           notesCompleted: 10,
-          triviaCompleted: 8,
-          scrambledCompleted: 8,
-          reflection: 12,
+          triviaCompleted: 10,
+          scrambledCompleted: 10,
+          reflection: 10,
           post: 5,
-          comment: 3,
-          like: 1,
+          comment: 5,
+          like: 2,
           maxCommunityComments: COMMUNITY_SCORE_WEIGHTS.maxComments,
           maxCommunityLikes: COMMUNITY_SCORE_WEIGHTS.maxLikes,
         },
