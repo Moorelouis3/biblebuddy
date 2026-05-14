@@ -243,7 +243,7 @@ export default function LandingPage() {
         <section className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-6 px-4 pb-6 pt-3 sm:px-5 md:pb-8 md:pt-4 lg:min-h-[560px] lg:grid-cols-[0.86fr_1.14fr] lg:gap-8 lg:pt-6">
           <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left">
             <h1 className="text-[42px] font-black leading-[0.98] tracking-tight text-slate-950 sm:text-5xl md:text-7xl">
-              Making Bible reading easier.
+              Making Bible study easier.
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-slate-600 md:mt-7 md:text-xl md:leading-8 lg:mx-0">
               Bible Buddy helps you build a daily Bible study rhythm, grow closer to God, know where to start, understand what you read, and keep coming back without feeling rushed.
