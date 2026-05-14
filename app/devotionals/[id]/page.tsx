@@ -98,14 +98,33 @@ type ChapterTaskProgress = {
 };
 
 const WISDOM_TASK_TOTAL = 6;
+const CHAPTER_JOURNEY_STUDY_TITLES = new Set([
+  "The Wisdom of Proverbs",
+  "The Testing of Joseph",
+  "The Obedience of Abraham",
+  "The Rise of Esther",
+]);
 
 function isChapterJourneyStudyTitle(title: string | null | undefined) {
-  return title === "The Wisdom of Proverbs" || title === "The Testing of Joseph";
+  return Boolean(title && CHAPTER_JOURNEY_STUDY_TITLES.has(title));
 }
 
-function getChapterJourneyProgressLabel(title: string | null | undefined, currentDay: number, totalDays: number) {
+function getDevotionalDayChapterLabel(day: Pick<DevotionalDay, "bible_reading_book" | "bible_reading_chapter" | "day_number">) {
+  if (day.bible_reading_book && day.bible_reading_chapter) {
+    return `${day.bible_reading_book} ${day.bible_reading_chapter}`;
+  }
+  return `Day ${day.day_number}`;
+}
+
+function getChapterJourneyProgressLabel(
+  title: string | null | undefined,
+  currentDay: number,
+  totalDays: number,
+  currentDayRow?: DevotionalDay,
+) {
   if (title === "The Wisdom of Proverbs") return `Proverbs ${currentDay} of ${totalDays}`;
   if (title === "The Testing of Joseph") return `Genesis ${currentDay + 36} of 50`;
+  if (currentDayRow) return `Current chapter: ${getDevotionalDayChapterLabel(currentDayRow)}`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 
@@ -139,7 +158,7 @@ function buildLouisDayStartMessage(devotional: Devotional, day: DevotionalDay) {
   const topic = getLouisDayTopic(day);
   const snippet = getLouisDaySnippet(day);
   const isChapterJourney = isChapterJourneyStudyTitle(devotional.title);
-  const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
+  const chapterLabel = getDevotionalDayChapterLabel(day);
 
   return [
     isChapterJourney ? "this is your next Bible study chapter" : "this is your next Bible study section",
@@ -426,6 +445,7 @@ export default function DevotionalDetailPage() {
   };
 
   const currentDay = getCurrentDay();
+  const currentDayEntry = days.find((day) => day.day_number === currentDay);
   const isChapterJourneyStudy = isChapterJourneyStudyTitle(devotional?.title);
   const completedDays = isChapterJourneyStudy
     ? Array.from(chapterTaskProgress.values()).filter((p) => p.completed >= p.total).length
@@ -1077,7 +1097,7 @@ export default function DevotionalDetailPage() {
         <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">
-              {isChapterJourneyStudy ? getChapterJourneyProgressLabel(devotional.title, currentDay, devotional.total_days) : `Day ${currentDay} of ${devotional.total_days}`}
+              {isChapterJourneyStudy ? getChapterJourneyProgressLabel(devotional.title, currentDay, devotional.total_days, currentDayEntry) : `Day ${currentDay} of ${devotional.total_days}`}
             </span>
             <span className="text-sm text-gray-500">
               {isChapterJourneyStudy ? `${completedDays} chapters complete` : `${completedDays} completed`}
@@ -1107,7 +1127,7 @@ export default function DevotionalDetailPage() {
               const taskProgress = chapterTaskProgress.get(day.day_number) || { completed: 0, total: WISDOM_TASK_TOTAL };
               const isUnlocked = isDayUnlocked(day.day_number);
               const isCompleted = isChapterJourneyStudy ? taskProgress.completed >= taskProgress.total : dayProgress?.is_completed === true;
-              const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
+              const chapterLabel = getDevotionalDayChapterLabel(day);
               const remainingTasks = Math.max(taskProgress.total - taskProgress.completed, 0);
 
               return (

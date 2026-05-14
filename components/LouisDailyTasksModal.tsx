@@ -119,7 +119,12 @@ function formatCompletedAtLabel(iso: string | null | undefined) {
 }
 
 function isChapterJourneyStudyTitle(title: string | null | undefined) {
-  return title === "The Wisdom of Proverbs" || title === "The Testing of Joseph";
+  return (
+    title === "The Wisdom of Proverbs" ||
+    title === "The Testing of Joseph" ||
+    title === "The Obedience of Abraham" ||
+    title === "The Rise of Esther"
+  );
 }
 
 function parseCompletedScore(actionLabel: string | null | undefined) {
