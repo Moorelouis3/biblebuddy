@@ -1207,7 +1207,7 @@ export default function DashboardPage() {
         <section className="space-y-2">
           <h2 className="text-lg md:text-xl font-semibold text-gray-900">👥 Bible Study Group</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            This is where you interact with other Bible Buddies inside of the app. We study the Bible together in the weekly series and daily conversations.
+            This is where you interact with other Bible Buddies inside of the app. We study the Bible together through Bible studies and daily conversations.
           </p>
         </section>
 

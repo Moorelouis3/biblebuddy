@@ -1430,7 +1430,7 @@ This is just the beginning. We're building something special here in Hope Nation
       },
       {
         id: "w5q10",
-        question: "What is the central takeaway of this entire 5-week series on the Temptation of Jesus?",
+        question: "What is the central takeaway of this entire 5-part Bible study on the Temptation of Jesus?",
         options: [
           { label: "A", text: "Jesus was uniquely divine and His experience has little application to our daily lives" },
           { label: "B", text: "Temptation can be avoided if you are disciplined enough" },

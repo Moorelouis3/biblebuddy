@@ -217,7 +217,7 @@ export async function GET(
 
     bibleStudySeriesSnapshot = {
       groupId,
-      seriesTitle: currentSeriesResult.data.title || "Bible Study Series",
+      seriesTitle: currentSeriesResult.data.title || "Bible Study",
       seriesStartAt: resolveSeriesStart(schedule),
       totalWeeks: currentSeriesResult.data.total_weeks ?? null,
     };

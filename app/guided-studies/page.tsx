@@ -19,7 +19,7 @@ const tools = [
     bg: "bg-emerald-100 border-emerald-200",
     emoji: "📖",
     title: "Bible Studies",
-    desc: "Weekly Bible study series through Joseph, Jesus, and Proverbs",
+    desc: "Chapter-based Bible studies through Joseph, Abraham, Proverbs, and more",
   },
   {
     href: "/reading-plans",
