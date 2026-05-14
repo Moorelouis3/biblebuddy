@@ -109,6 +109,46 @@ function applyInlineHtml(text: string): string {
   return inner;
 }
 
+const emojiTokenPattern =
+  /(?:\d\uFE0F?\u20E3|[\p{Extended_Pictographic}\p{Emoji_Presentation}](?:\uFE0F|\uFE0E)?(?:\u200D[\p{Extended_Pictographic}\p{Emoji_Presentation}](?:\uFE0F|\uFE0E)?)*)/gu;
+const leadingEmojiPattern = /^\s*(?:[\p{Extended_Pictographic}\p{Emoji_Presentation}]|\d\uFE0F?\u20E3)/u;
+
+function splitInlineEmojiList(text: string): string[] {
+  const trimmed = normalizeKnownArtifacts(text).trim();
+  if (!trimmed || /^[-*]\s+/.test(trimmed) || /^#{1,6}\s+/.test(trimmed)) return [];
+  if (/[.!?:;]/.test(trimmed)) return [];
+
+  const matches = Array.from(trimmed.matchAll(emojiTokenPattern));
+  if (matches.length < 2) return [];
+
+  const items = matches
+    .map((match, index) => {
+      const start = match.index ?? 0;
+      const end = matches[index + 1]?.index ?? trimmed.length;
+      return trimmed.slice(start, end).trim();
+    })
+    .filter((item) => item.length > 2 && item.length <= 80);
+
+  const coveredText = items.join(" ").replace(/\s+/g, " ").trim();
+  const originalText = trimmed.replace(/\s+/g, " ").trim();
+
+  return items.length >= 2 && originalText.startsWith(items[0]) && coveredText.length >= originalText.length - 4
+    ? items
+    : [];
+}
+
+function renderSoftEmojiList(items: string[]): string {
+  const listItems = items
+    .map((item) => {
+      const html = applyInlineHtml(addLeadingEmojiIfHelpful(item.replace(/^[-*]\s+/, "")));
+      return `<li style="display:flex;gap:0.5rem;align-items:flex-start;padding:0.15rem 0;font-size:0.875rem;color:#374151;line-height:1.6">` +
+        `<span style="min-width:0">${html}</span></li>`;
+    })
+    .join("");
+
+  return `<ul style="list-style:none;margin:0.5rem 0;padding:0;display:flex;flex-direction:column;gap:0.1rem">${listItems}</ul>`;
+}
+
 export function parseSeriesNotesToHTML(intro: string): string {
   const blocks = intro.split("\n\n");
   const parts: string[] = [];
@@ -165,6 +205,19 @@ export function parseSeriesNotesToHTML(intro: string): string {
           `<span style="flex-shrink:0;line-height:1.6">&bull;</span><span>${html}</span></li>`;
       }).join("");
       parts.push(`<ul style="list-style:none;margin:0.5rem 0;padding:0;display:flex;flex-direction:column;gap:0.1rem">${items}</ul>`);
+      continue;
+    }
+
+    if (lines.length === 1) {
+      const inlineEmojiItems = splitInlineEmojiList(lines[0]);
+      if (inlineEmojiItems.length >= 2) {
+        parts.push(renderSoftEmojiList(inlineEmojiItems));
+        continue;
+      }
+    }
+
+    if (lines.length >= 2 && lines.every((l) => leadingEmojiPattern.test(normalizeKnownArtifacts(l)))) {
+      parts.push(renderSoftEmojiList(lines));
       continue;
     }
 

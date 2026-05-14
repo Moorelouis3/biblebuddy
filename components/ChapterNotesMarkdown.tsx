@@ -8,6 +8,8 @@ type ChapterNotesMarkdownProps = {
 };
 
 const leadingEmojiPattern = /^[\s]*(?:[\p{Extended_Pictographic}\p{Emoji_Presentation}]|\d\uFE0F?\u20E3)/u;
+const emojiTokenPattern =
+  /(?:\d\uFE0F?\u20E3|[\p{Extended_Pictographic}\p{Emoji_Presentation}](?:\uFE0F|\uFE0E)?(?:\u200D[\p{Extended_Pictographic}\p{Emoji_Presentation}](?:\uFE0F|\uFE0E)?)*)/gu;
 
 function getTextFromNode(node: ReactNode): string {
   if (typeof node === "string" || typeof node === "number") return String(node);
@@ -17,6 +19,69 @@ function getTextFromNode(node: ReactNode): string {
     return getTextFromNode(element.props?.children);
   }
   return "";
+}
+
+function splitInlineEmojiList(line: string): string[] {
+  const trimmed = line.trim();
+  if (!trimmed || /^[-*]\s+/.test(trimmed) || /^#{1,6}\s+/.test(trimmed)) return [];
+  if (/[.!?:;]/.test(trimmed)) return [];
+
+  const matches = Array.from(trimmed.matchAll(emojiTokenPattern));
+  if (matches.length < 2) return [];
+
+  const items = matches
+    .map((match, index) => {
+      const start = match.index ?? 0;
+      const end = matches[index + 1]?.index ?? trimmed.length;
+      return trimmed.slice(start, end).trim();
+    })
+    .filter((item) => item.length > 2 && item.length <= 80);
+
+  const coveredText = items.join(" ").replace(/\s+/g, " ").trim();
+  const originalText = trimmed.replace(/\s+/g, " ").trim();
+
+  return items.length >= 2 && originalText.startsWith(items[0]) && coveredText.length >= originalText.length - 4
+    ? items
+    : [];
+}
+
+function normalizeEmojiLists(markdown: string): string {
+  const lines = markdown.replace(/\r\n/g, "\n").split("\n");
+  const output: string[] = [];
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const inlineItems = splitInlineEmojiList(lines[index]);
+    if (inlineItems.length >= 2) {
+      output.push(...inlineItems.map((item) => `- ${item}`));
+      continue;
+    }
+
+    if (!leadingEmojiPattern.test(lines[index]) || /^[-*]\s+/.test(lines[index].trim())) {
+      output.push(lines[index]);
+      continue;
+    }
+
+    const run: string[] = [];
+    let cursor = index;
+    while (
+      cursor < lines.length &&
+      leadingEmojiPattern.test(lines[cursor]) &&
+      !/^[-*]\s+/.test(lines[cursor].trim()) &&
+      !/^#{1,6}\s+/.test(lines[cursor].trim())
+    ) {
+      run.push(lines[cursor].trim());
+      cursor += 1;
+    }
+
+    if (run.length >= 2) {
+      output.push(...run.map((item) => `- ${item}`));
+      index = cursor - 1;
+    } else {
+      output.push(lines[index]);
+    }
+  }
+
+  return output.join("\n");
 }
 
 export default function ChapterNotesMarkdown({ children }: ChapterNotesMarkdownProps) {
@@ -67,7 +132,7 @@ export default function ChapterNotesMarkdown({ children }: ChapterNotesMarkdownP
           hr: ({ ...props }) => <hr className="my-7 border-gray-200" {...props} />,
         }}
       >
-        {children}
+        {normalizeEmojiLists(children)}
       </ReactMarkdown>
     </div>
   );

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { normalizeCustomMemberBadge } from "@/lib/userBadges";
+import { normalizeCustomMemberBadge, resolveUserBadge } from "@/lib/userBadges";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 
@@ -23,6 +23,10 @@ type AdminComment = {
   userName: string;
   userImage: string | null;
   userProfileHref: string | null;
+  userLevel?: number;
+  userBadgeLabel?: string | null;
+  userBadgeEmoji?: string | null;
+  userBadgeClassName?: string | null;
   content: string;
   createdAt: string;
   parentId: string | null;
@@ -30,6 +34,7 @@ type AdminComment = {
   isReply: boolean;
   replyCount: number;
   hasMyReply: boolean;
+  hasModeratorReply?: boolean;
   isMine?: boolean;
 };
 
@@ -142,7 +147,21 @@ function articleHrefFromSlug(slug: string) {
 }
 
 function clipText(value: unknown, max = 700) {
-  const normalized = typeof value === "string" ? value.replace(/\s+/g, " ").trim() : "";
+  const normalized =
+    typeof value === "string"
+      ? value
+          .replace(/<br\s*\/?>/gi, " ")
+          .replace(/<\/(p|div|h[1-6]|li|blockquote)>/gi, " ")
+          .replace(/<[^>]*>/g, " ")
+          .replace(/&nbsp;/gi, " ")
+          .replace(/&amp;/gi, "&")
+          .replace(/&quot;/gi, '"')
+          .replace(/&#39;/gi, "'")
+          .replace(/&rsquo;/gi, "'")
+          .replace(/&ldquo;|&rdquo;/gi, '"')
+          .replace(/\s+/g, " ")
+          .trim()
+      : "";
   return normalized.length > max ? `${normalized.slice(0, max).trim()}...` : normalized;
 }
 
@@ -196,11 +215,15 @@ function describeAction(actionType: string, actionLabel: string | null | undefin
 }
 
 function buildStats(comments: AdminComment[], requesterId: string, allCommentsForReplyStats = comments, timezoneOffsetMinutes = 0) {
-  const today = todayKey(new Date(), timezoneOffsetMinutes);
-  const todayComments = comments.filter((comment) => todayKey(new Date(comment.createdAt), timezoneOffsetMinutes) === today);
-  const myRepliesToday = allCommentsForReplyStats.filter((comment) => todayKey(new Date(comment.createdAt), timezoneOffsetMinutes) === today && comment.userId === requesterId && comment.isReply);
-  const needsReply = comments.filter((comment) => !comment.isReply && comment.userId !== requesterId && !comment.hasMyReply);
+  const since24h = Date.now() - 24 * 60 * 60 * 1000;
+  const todayComments = comments.filter((comment) => new Date(comment.createdAt).getTime() >= since24h);
+  const myRepliesToday = allCommentsForReplyStats.filter((comment) => new Date(comment.createdAt).getTime() >= since24h && comment.userId === requesterId && comment.isReply);
+  const needsReply = comments.filter((comment) => !comment.isReply && comment.userId !== requesterId && !comment.hasModeratorReply && !comment.hasMyReply);
   const bySource = comments.reduce<Record<string, number>>((acc, comment) => {
+    acc[comment.source] = (acc[comment.source] || 0) + 1;
+    return acc;
+  }, {});
+  const bySource24h = todayComments.reduce<Record<string, number>>((acc, comment) => {
     acc[comment.source] = (acc[comment.source] || 0) + 1;
     return acc;
   }, {});
@@ -211,6 +234,7 @@ function buildStats(comments: AdminComment[], requesterId: string, allCommentsFo
     myRepliesToday: myRepliesToday.length,
     needsReply: needsReply.length,
     bySource,
+    bySource24h,
   };
 }
 
@@ -435,34 +459,69 @@ export async function GET(request: NextRequest) {
     return comment;
   });
 
-  const visibleUserIds = [...new Set(withContext.map((comment) => comment.userId).filter(Boolean) as string[])];
-  const { data: profileRows } = visibleUserIds.length
-    ? await admin
-        .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url")
-        .in("user_id", visibleUserIds)
-    : { data: [] as any[] };
-  const profileMap = new Map((profileRows || []).map((profile: any) => [profile.user_id, profile]));
-  const enrichedWithProfiles = withContext.map((comment) => {
-    const profile = comment.userId ? profileMap.get(comment.userId) : null;
-    return {
-      ...comment,
-      userName: profile?.display_name || profile?.username || comment.userName,
-      userImage: profile?.profile_image_url || null,
-      userProfileHref: comment.userId ? `/profile/${comment.userId}` : null,
-    };
-  });
-
   const normalizedForStats = enrichedWithReplies.map((comment) => {
     if (comment.kind !== "group_feed_comment" || !comment.parentId) return comment;
     const parent = groupMap.get(comment.parentId);
     return { ...comment, isReply: Boolean(parent?.parent_post_id) };
   });
 
+  const visibleUserIds = [
+    ...new Set([
+      ...(withContext.map((comment) => comment.userId).filter(Boolean) as string[]),
+      ...(normalizedForStats.map((comment) => comment.userId).filter(Boolean) as string[]),
+    ]),
+  ];
+  const { data: profileRows } = visibleUserIds.length
+    ? await admin
+        .from("profile_stats")
+        .select("user_id, display_name, username, profile_image_url, current_level, member_badge, is_paid, pro_trial_expires_at")
+        .in("user_id", visibleUserIds)
+    : { data: [] as any[] };
+  const profileMap = new Map((profileRows || []).map((profile: any) => [profile.user_id, profile]));
+  const isStaffReply = (userId: string | null | undefined) => {
+    if (!userId) return false;
+    if (userId === requester.id) return true;
+    const profile = profileMap.get(userId);
+    const badge = normalizeCustomMemberBadge(profile?.member_badge);
+    return badge === "moderator" || badge === "founder_buddy" || badge === "teacher";
+  };
+  const enrichedWithProfiles = withContext.map((comment) => {
+    const profile = comment.userId ? profileMap.get(comment.userId) : null;
+    const resolvedBadge = resolveUserBadge({
+      customBadge: profile?.member_badge,
+      isPaid: profile?.is_paid,
+      proExpiresAt: profile?.pro_trial_expires_at,
+    });
+    const replies = normalizedForStats.filter((reply) => {
+      if (!reply.isReply || reply.kind !== comment.kind) return false;
+      return reply.parentId === comment.id;
+    });
+    const hasModeratorReply = replies.some((reply) => isStaffReply(reply.userId));
+    return {
+      ...comment,
+      userName: profile?.display_name || profile?.username || comment.userName,
+      userImage: profile?.profile_image_url || null,
+      userProfileHref: comment.userId ? `/profile/${comment.userId}` : null,
+      userLevel: profile?.current_level ?? 1,
+      userBadgeLabel: resolvedBadge?.label ?? null,
+      userBadgeEmoji: resolvedBadge?.emoji ?? null,
+      userBadgeClassName: resolvedBadge?.className ?? null,
+      content: clipText(comment.content, 900),
+      contextContent: clipText(comment.contextContent, 900),
+      contextTitle: clipText(comment.contextTitle, 160),
+      sourceLabel: clipText(comment.sourceLabel, 120),
+      replyCount: replies.length || comment.replyCount,
+      hasModeratorReply,
+      hasMyReply: comment.hasMyReply || hasModeratorReply,
+    };
+  });
+
   const [signupRes, actionRes, activeRes] = await Promise.all([
     admin
       .from("profile_stats")
       .select("user_id, display_name, username, profile_image_url, created_at")
+      .gte("created_at", todayRange.startIso)
+      .lt("created_at", todayRange.endIso)
       .order("created_at", { ascending: false })
       .limit(12),
     admin
@@ -489,7 +548,7 @@ export async function GET(request: NextRequest) {
   if (missingProfileIds.length > 0) {
     const { data: dashboardProfiles } = await admin
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url")
+        .select("user_id, display_name, username, profile_image_url, current_level, member_badge, is_paid, pro_trial_expires_at")
       .in("user_id", missingProfileIds);
 
     (dashboardProfiles || []).forEach((profile: any) => profileMap.set(profile.user_id, profile));
@@ -513,6 +572,7 @@ export async function GET(request: NextRequest) {
       id: requester.id,
       name: auth.requesterName,
       image: auth.requesterImage,
+      canAutoReply: true,
     },
     comments: enrichedWithProfiles,
     recentSignups: (signupRes.data || []).map((row: any) => ({
@@ -554,12 +614,11 @@ export async function GET(request: NextRequest) {
         lastActiveAt: row.last_active_at || row.last_active_date || null,
       })),
     },
-    stats: buildStats(normalizedForStats.filter((comment) => {
-      if (comment.isReply) return false;
-      if (comment.kind !== "group_feed_comment" || !comment.parentId) return true;
-      const parent = groupMap.get(comment.parentId);
-      return !parent?.parent_post_id;
-    }), requester.id, normalizedForStats, timezoneOffsetMinutes),
+    stats: {
+      ...buildStats(enrichedWithProfiles, requester.id, normalizedForStats, timezoneOffsetMinutes),
+      signups24h: signupRes.data?.length ?? 0,
+      actions24h: actionRes.data?.length ?? 0,
+    },
   });
 }
 
