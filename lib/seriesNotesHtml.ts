@@ -116,6 +116,7 @@ const leadingEmojiPattern = /^\s*(?:[\p{Extended_Pictographic}\p{Emoji_Presentat
 function splitInlineEmojiList(text: string): string[] {
   const trimmed = normalizeKnownArtifacts(text).trim();
   if (!trimmed || /^[-*]\s+/.test(trimmed) || /^#{1,6}\s+/.test(trimmed)) return [];
+  if (/[.!?:;]/.test(trimmed)) return [];
 
   const matches = Array.from(trimmed.matchAll(emojiTokenPattern));
   if (matches.length < 2) return [];
@@ -126,7 +127,7 @@ function splitInlineEmojiList(text: string): string[] {
       const end = matches[index + 1]?.index ?? trimmed.length;
       return trimmed.slice(start, end).trim();
     })
-    .filter((item) => item.length > 2 && item.length <= 180);
+    .filter((item) => item.length > 2 && item.length <= 80);
 
   const coveredText = items.join(" ").replace(/\s+/g, " ").trim();
   const originalText = trimmed.replace(/\s+/g, " ").trim();

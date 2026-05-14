@@ -12,7 +12,7 @@ function getCoverImage(title: string): string | null {
   if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
   if (title === "The Transforming of Paul") return "/transformingofpauldevotional.png";
   if (title === "The Courage of Daniel") return "/courageofdaniel.png";
-  if (title === "The Rise of Esther") return "/theriseofester.png";
+  if (title === "The Rise of Esther") return "/RiseofEsther.png";
   return null;
 }
 

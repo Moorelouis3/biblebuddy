@@ -64,7 +64,6 @@ const FEATURED_STUDY_ORDER = [
   "The Obedience of Abraham",
   "The Testing of Joseph",
   "The Wisdom of Proverbs",
-  "The Rise of Esther",
 ];
 const FEATURED_STUDY_ORDER_INDEX = new Map(
   FEATURED_STUDY_ORDER.map((title, index) => [title, index]),
@@ -227,7 +226,7 @@ export default function DevotionalsPage() {
       return "/courageofdaniel.png";
     }
     if (title === "The Rise of Esther") {
-      return "/theriseofester.png";
+      return "/RiseofEsther.png";
     }
     return null;
   };
