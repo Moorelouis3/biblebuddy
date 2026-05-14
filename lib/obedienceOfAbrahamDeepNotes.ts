@@ -1190,6 +1190,7 @@ function explainKjvWord(word: string, chapter: number) {
 
 function renderRebuiltNote(note: AbrahamChapterNote) {
   const chapterFocus = chapterSpecificFocus[note.chapter] || [];
+  const cleanSectionTitle = (title: string) => title.replace(/^[^\w"]+\s*/, "").trim();
   const parseReference = (reference: string) => {
     const match = reference.match(/Genesis\s+(\d+):(\d+)(?:-(\d+))?/i);
     if (!match) return null;
@@ -1258,7 +1259,7 @@ function renderRebuiltNote(note: AbrahamChapterNote) {
 
 ${comments.join("\n\n")}
 
-In the flow of **${section.title.replace(/^[^\w]+/, "")}**, this verse should be read slowly. Ask what it reveals about obedience, waiting, family pressure, covenant promise, or the visible world Abraham is learning to navigate.`;
+In the flow of **${cleanSectionTitle(section.title)}**, this verse should be read slowly. Ask what it reveals about obedience, waiting, family pressure, covenant promise, or the visible world Abraham is learning to navigate.`;
   };
 
   const renderVerseBreakdowns = (section: AbrahamSection) => {
@@ -1297,13 +1298,13 @@ That honesty is spiritually important. The Bible is not saying God uses perfect 
 
 ### Covenant And Emotional Movement
 
-The covenant thread in ${section.reference} is not only theological; it is emotional. Promise presses against uncertainty. Blessing creates responsibility. Waiting exposes fear. Family tension reveals what people trust. Worship becomes the way Abraham keeps returning to God when the road is unclear.
+The covenant thread in this section is not only theological; it is emotional. Promise presses against uncertainty. Blessing creates responsibility. Waiting exposes fear. Family tension reveals what people trust. Worship becomes the way Abraham keeps returning to God when the road is unclear.
 
 This is why Abraham's story becomes foundational for the rest of Scripture. It teaches readers how faith grows: not by skipping testing, but by meeting God inside testing.
 
 ### Slow Walk Through The Movement
 
-One of the most important things to notice in ${section.reference} is the pace. Genesis does not rush Abraham's formation. The story lets us watch trust develop through repeated scenes instead of one instant transformation. That matters because Abraham is not being used as a flat moral example. He is being formed as a covenant person.
+One of the most important things to notice in this section is the pace. Genesis does not rush Abraham's formation. The story lets us watch trust develop through repeated scenes instead of one instant transformation. That matters because Abraham is not being used as a flat moral example. He is being formed as a covenant person.
 
 The first movement in this section is practical. Something happens in the visible world: a journey, a conflict, a conversation, a threat, a family decision, a promise, a loss, or an act of worship. Genesis always starts with real life. Abraham's faith is not practiced in a quiet room away from pressure. It is practiced while people are watching, while family members are affected, and while the future feels uncertain.
 
@@ -1313,7 +1314,7 @@ The third movement is covenantal. Every section of Abraham's story touches the p
 
 The fourth movement is emotional. Abraham's story includes fear, silence, waiting, grief, longing, relief, worship, family pain, and awe. These emotions are not distractions from theology. They are where theology becomes personal. It is one thing to say God keeps promises. It is another thing to wait years with an empty tent, an aging body, a wounded household, and no visible answer yet.
 
-That is why ${section.reference} should not be read quickly. It teaches the reader how God works with imperfect people over time. God does not merely announce a covenant and then disappear. He keeps coming near. He corrects. He reassures. He protects. He exposes fear. He receives worship. He provides. He keeps the promise moving even when Abraham does not fully understand how.
+That is why this section should not be read quickly. It teaches the reader how God works with imperfect people over time. God does not merely announce a covenant and then disappear. He keeps coming near. He corrects. He reassures. He protects. He exposes fear. He receives worship. He provides. He keeps the promise moving even when Abraham does not fully understand how.
 
 ### What This Teaches About Abraham
 
@@ -1327,7 +1328,7 @@ In that way, Abraham's story is deeply pastoral. It gives readers permission to 
 
 The rest of the Bible keeps returning to Abraham because these chapters are roots. Israel will remember Abraham when thinking about land, promise, covenant, circumcision, worship, family identity, and God's faithfulness. The prophets will appeal to Abraham and Sarah as the small beginning God blessed. The New Testament will return to Abraham when explaining faith, righteousness, promise, and blessing to the nations.
 
-So ${section.reference} is not merely ancient biography. It is part of the foundation under Exodus, Israel, David, the prophets, and the gospel. The promise that begins with Abraham keeps widening until the blessing reaches the nations through Christ.
+So this section is not merely ancient biography. It is part of the foundation under Exodus, Israel, David, the prophets, and the gospel. The promise that begins with Abraham keeps widening until the blessing reaches the nations through Christ.
 
 When you understand this section, you understand a little more of how Genesis works: God chooses, promises, tests, protects, and provides. Human beings are flawed, but God's covenant purpose keeps moving.`;
 
@@ -1526,7 +1527,7 @@ ${words.map((word) => `* **${word}** - ${explainKjvWord(word, note.chapter)}`).j
 These word studies matter because older Bible language often carries emotional and cultural weight. If we skip the words, we often miss the world of the text. Abraham's faith is lived through covenant, seed, sojourning, altars, family status, sacrifice, and inheritance.`;
   };
 
-  const renderSection = (section: AbrahamSection) => `## ${section.reference} - ${section.title}
+  const renderSection = (section: AbrahamSection) => `## ${cleanSectionTitle(section.title)}
 
 ${renderVerseCallout(section)}
 
@@ -1620,8 +1621,6 @@ Because Genesis 12 will begin with God calling Abram to keep going.
 His family started the road.
 
 But Abram will have to walk it by faith.
-
-# Genesis 11:1 to 4
 
 # The Tower of Babel Begins
 
@@ -1767,8 +1766,6 @@ Abram will learn greatness through obedience.
 
 That is why Genesis puts these stories side by side.
 
-# Genesis 11:5 to 9
-
 # God Comes Down
 
 > **5** And the LORD came down to see the city and the tower, which the children of men builded.
@@ -1870,8 +1867,6 @@ God making His promise.
 Not pride reaching upward.
 
 Faith walking forward.
-
-# Genesis 11:10 to 26
 
 # The Story Narrows Toward Abram
 
@@ -2241,8 +2236,6 @@ God is narrowing the story.
 
 The world may be scattered at Babel, but God is still guiding the promise forward.
 
-# Genesis 11:27 to 30
-
 # Abram's Family Comes Into View
 
 > **27** Now these are the generations of Terah: Terah begat Abram, Nahor, and Haran; and Haran begat Lot.
@@ -2350,8 +2343,6 @@ That is a major part of Abraham's story.
 God's promise will not depend on what Abram and Sarai can naturally produce.
 
 It will depend on what God can do.
-
-# Genesis 11:31 to 32
 
 # The Journey Starts But Stops Short
 
@@ -2717,8 +2708,6 @@ That contrast matters.
 
 - Abram walks away in obedience.
 
-# Genesis 12:1
-
 # God Calls Abram
 
 > **1** Now the LORD had said unto Abram, Get thee out of thy country, and from thy kindred, and from thy father's house, unto a land that I will shew thee:
@@ -2780,8 +2769,6 @@ That is the beginning of biblical faith.
 Faith is not always having the full blueprint.
 
 Sometimes faith is taking the next step because God's word is enough for the next step.
-
-# Genesis 12:2 to 3
 
 # The Great Promise
 
@@ -2887,8 +2874,6 @@ Genesis 12 is not the narrowing of God's love.
 
 It is the beginning of the road by which God's blessing will go wide.
 
-# Genesis 12:4 to 5
-
 # Abram Obeys
 
 > **4** So Abram departed, as the LORD had spoken unto him; and Lot went with him: and Abram was seventy and five years old when he departed out of Haran.
@@ -2984,8 +2969,6 @@ That difference matters.
 He is in the promised land, but he does not own it yet.
 
 He has reached the place of promise, but the promise is still unfolding.
-
-# Genesis 12:6 to 9
 
 # Abram Arrives in Canaan
 
@@ -3101,8 +3084,6 @@ It is ongoing movement.
 
 Faith keeps walking.
 
-# Genesis 12:10
-
 # Famine Hits the Promise
 
 > **10** And there was a famine in the land: and Abram went down into Egypt to sojourn there; for the famine was grievous in the land.
@@ -3146,8 +3127,6 @@ Abram is not moving to Egypt permanently.
 He is trying to survive the famine.
 
 But temporary pressure can still create deep spiritual danger.
-
-# Genesis 12:11 to 13
 
 # Abram's Fear
 
@@ -3215,8 +3194,6 @@ Genesis does not hide this.
 
 Abram's fear puts his wife in danger.
 
-# Genesis 12:14 to 16
-
 # Sarai Taken Into Pharaoh's House
 
 > **14** And it came to pass, that, when Abram was come into Egypt, the Egyptians beheld the woman that she was very fair.
@@ -3274,8 +3251,6 @@ This is not blessing in its pure form.
 This is wealth tangled with compromise.
 
 Genesis wants us to feel the discomfort.
-
-# Genesis 12:17 to 20
 
 # God Protects Sarai
 
@@ -3486,6 +3461,7 @@ This is the moment where one man's obedience becomes the doorway into the rest o
 export const OBEDIENCE_OF_ABRAHAM_DEEP_NOTES = ABRAHAM_CHAPTER_NOTES.map((note) =>
   note.chapter === 11 ? GENESIS_11_DEEP_NOTES : note.chapter === 12 ? GENESIS_12_DEEP_NOTES : renderRebuiltNote(note),
 );
+
 
 
 
