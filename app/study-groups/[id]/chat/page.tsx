@@ -139,7 +139,7 @@ interface TopBuddy {
   score: number;
 }
 
-const TOP_BUDDIES_BOARD_VERSION = "score-v2-2026-05-14";
+const TOP_BUDDIES_BOARD_VERSION = "score-v3-2026-05-15";
 
 interface TopBuddiesEngagement {
   totalClicks: number;
@@ -158,15 +158,7 @@ interface TopBuddiesEngagement {
 }
 
 function getWeeklyBoardRangeLabel() {
-  const now = new Date();
-  const day = now.getDay();
-  const daysSinceFriday = (day + 2) % 7;
-  const start = new Date(now);
-  start.setDate(now.getDate() - daysSinceFriday);
-  const end = new Date(start);
-  end.setDate(start.getDate() + 6);
-  const format = (date: Date) => date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  return `Week of ${format(start)} - ${format(end)}`;
+  return "Check out the top Bible Buddies";
 }
 
 function getFriendlyPostErrorMessage(error: unknown, fallback: string) {
@@ -2865,7 +2857,7 @@ export default function GroupChatPage() {
             <div className="mb-3 rounded-2xl border border-[#dbe7f0] bg-white px-3 py-3">
               <p className="text-xs font-black uppercase tracking-[0.14em] text-[#4f8fb7]">How weekly Top Buddies are calculated</p>
               <p className="mt-1 text-xs font-semibold leading-5 text-[#516173]">
-                Bible study tasks count the most: reading intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
+                Bible study tasks count the most: study intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
               </p>
             </div>
 
@@ -5625,7 +5617,7 @@ export default function GroupChatPage() {
                                     <div>
                                       <p className="font-semibold text-gray-900 mb-1">??? Weekly release rhythm</p>
                                       <p className="text-sm text-gray-700 leading-relaxed">
-                                        Once the series starts, a new Bible study will release each week. The goal is for all of us to move through the same study together, reflect on the same reading, and discuss what we are learning as a group.
+                                        Once the series starts, a new Bible study will release each week. The goal is for all of us to move through the same study together, reflect on the same study, and discuss what we are learning as a group.
                                       </p>
                                     </div>
                                   </div>
@@ -5658,7 +5650,7 @@ export default function GroupChatPage() {
                                     <div>
                                       <p className="font-semibold text-gray-900 mb-1">?? How this group study works</p>
                                       <p className="text-sm text-gray-700 leading-relaxed">
-                                        Each week includes the chapter reading, detailed notes, trivia questions, reflection prompts, and group discussion so we can slow down and really understand the story instead of rushing past it.
+                                        Each week includes the chapter study, detailed notes, trivia questions, reflection prompts, and group discussion so we can slow down and really understand the story instead of rushing past it.
                                       </p>
                                     </div>
 
@@ -5688,7 +5680,7 @@ export default function GroupChatPage() {
                                   </p>
                                   <div className="space-y-1.5 pt-1">
                                     {[
-                                      "?? Weekly Bible reading",
+                                      "?? Weekly Bible study",
                                       "?? Detailed study notes",
                                       "?? Trivia and reflection prompts",
                                       "?? Shared group discussion",
@@ -6982,7 +6974,7 @@ export default function GroupChatPage() {
                   <h2 className="text-2xl font-bold text-gray-900 mt-2">Top Members</h2>
                   <p className="text-sm text-gray-500 mt-1">Top 10 this week by completed Bible work.</p>
                   <div className="mt-3 rounded-2xl border border-gray-100 bg-gray-50 px-3 py-2 text-xs font-semibold leading-5 text-gray-600">
-                    Bible study tasks count the most: reading intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
+                    Bible study tasks count the most: study intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
                   </div>
                 </div>
                 <button

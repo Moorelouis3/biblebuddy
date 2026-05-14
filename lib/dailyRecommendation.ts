@@ -852,7 +852,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         category: "reference",
         cardEyebrow: "Bible Reference",
         cardTitle: "Try the Bible word tools",
-        cardSubtitle: "Tap into the people, places, and keyword databases to make your reading easier to follow.",
+        cardSubtitle: "Tap into the people, places, and keyword databases to make your Bible study easier to follow.",
         cardTheme: "purple",
       }));
     }

@@ -8,6 +8,7 @@ export const dynamic = "force-dynamic";
 const PAGE_SIZE = 1000;
 const LEADERBOARD_CACHE_MS = 10 * 60 * 1000;
 const DAY_MS = 24 * 60 * 60 * 1000;
+const LOUIS_EMAIL = "moorelouis3@gmail.com";
 const PROFILE_SELECT =
   "user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, total_actions, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at";
 
@@ -15,6 +16,8 @@ let leaderboardCache: {
   expiresAt: number;
   weeklyBuddies: ReturnType<typeof buildLeaderboard>;
 } | null = null;
+
+let founderUserIdCache: string | null | undefined;
 
 type ProfileRow = {
   user_id: string;
@@ -69,6 +72,12 @@ type ArticleCommentRow = {
 
 type LeaderboardBuddy = ReturnType<typeof buildLeaderboard>[number];
 
+function removeExcludedBuddies(buddies: LeaderboardBuddy[] | null | undefined, excludedUserIds: Set<string>) {
+  return (buddies || [])
+    .filter((buddy) => !excludedUserIds.has(buddy.userId))
+    .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
+}
+
 async function fetchProfilesForUserIds(supabaseAdmin: any, userIds: string[]) {
   const ids = Array.from(new Set(userIds.filter(Boolean)));
   if (ids.length === 0) return [] as ProfileRow[];
@@ -83,6 +92,37 @@ async function fetchProfilesForUserIds(supabaseAdmin: any, userIds: string[]) {
     rows.push(...((data || []) as ProfileRow[]));
   }
   return rows;
+}
+
+async function resolveFounderUserId(supabaseAdmin: any, supabaseUrl: string, serviceKey: string) {
+  if (founderUserIdCache !== undefined) return founderUserIdCache;
+  if (process.env.LOUIS_USER_ID) {
+    founderUserIdCache = process.env.LOUIS_USER_ID;
+    return founderUserIdCache;
+  }
+
+  try {
+    const response = await fetch(
+      `${supabaseUrl}/auth/v1/admin/users?filter=${encodeURIComponent(`email=="${LOUIS_EMAIL}"`)}`,
+      { headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` } },
+    );
+    if (response.ok) {
+      const json = await response.json();
+      const found = (json?.users ?? []).find((user: any) => user.email === LOUIS_EMAIL);
+      founderUserIdCache = found?.id ?? null;
+      return founderUserIdCache;
+    }
+  } catch {}
+
+  try {
+    const { data } = await supabaseAdmin.auth.admin.listUsers({ page: 1, perPage: 1000 });
+    const found = data?.users?.find((user: any) => user.email === LOUIS_EMAIL);
+    founderUserIdCache = found?.id ?? null;
+    return founderUserIdCache;
+  } catch {
+    founderUserIdCache = null;
+    return founderUserIdCache;
+  }
 }
 
 const TASK_ACTIONS = new Set([
@@ -251,6 +291,7 @@ function buildLeaderboard(options: {
   groupPosts: GroupPostRow[];
   groupLikes: GroupLikeRow[];
   scope: "week" | "allTime";
+  excludedUserIds?: Set<string>;
 }) {
   const sinceIso = getWindowStart(options.scope);
   const endIso = options.scope === "week" ? getWeeklyBoardWindow().end : null;
@@ -276,6 +317,9 @@ function buildLeaderboard(options: {
   }>();
 
   function ensure(userId: string) {
+    if (options.excludedUserIds?.has(userId)) {
+      return null;
+    }
     let current = stats.get(userId);
     if (!current) {
       current = {
@@ -309,10 +353,12 @@ function buildLeaderboard(options: {
 
   options.actions.forEach((action) => {
     if (!action.user_id || !action.action_type) return;
+    if (options.excludedUserIds?.has(action.user_id)) return;
     if (sinceIso && (!action.created_at || action.created_at < sinceIso)) return;
     if (endIso && (!action.created_at || action.created_at >= endIso)) return;
     if (action.action_type === "study_group_feed_viewed" && action.action_label?.startsWith("top_buddies_")) return;
     const current = ensure(action.user_id);
+    if (!current) return;
     const points = getActionPoints(action);
     current.points += points;
     current.appXp += points;
@@ -332,16 +378,20 @@ function buildLeaderboard(options: {
 
   options.completedChapters.forEach((row) => {
     if (!row.user_id) return;
+    if (options.excludedUserIds?.has(row.user_id)) return;
     if (sinceIso && (!row.completed_at || row.completed_at < sinceIso)) return;
     if (endIso && (!row.completed_at || row.completed_at >= endIso)) return;
-    ensure(row.user_id).bibleActions += 1;
+    const current = ensure(row.user_id);
+    if (current) current.bibleActions += 1;
   });
 
   options.articleComments.forEach((comment) => {
     if (!comment.user_id) return;
+    if (options.excludedUserIds?.has(comment.user_id)) return;
     if (sinceIso && (!comment.created_at || comment.created_at < sinceIso)) return;
     if (endIso && (!comment.created_at || comment.created_at >= endIso)) return;
     const current = ensure(comment.user_id);
+    if (!current) return;
     current.articleComments += 1;
     current.communityActions += 1;
     if ((comment.article_slug || "").startsWith("bible-chapter-")) {
@@ -353,9 +403,11 @@ function buildLeaderboard(options: {
 
   options.groupPosts.forEach((post) => {
     if (!post.user_id) return;
+    if (options.excludedUserIds?.has(post.user_id)) return;
     if (sinceIso && (!post.created_at || post.created_at < sinceIso)) return;
     if (endIso && (!post.created_at || post.created_at >= endIso)) return;
     const current = ensure(post.user_id);
+    if (!current) return;
     if (post.parent_post_id) {
       current.comments += 1;
     } else {
@@ -365,13 +417,19 @@ function buildLeaderboard(options: {
 
   options.groupLikes.forEach((like) => {
     if (!like.user_id) return;
+    if (options.excludedUserIds?.has(like.user_id)) return;
     if (sinceIso && (!like.created_at || like.created_at < sinceIso)) return;
     if (endIso && (!like.created_at || like.created_at >= endIso)) return;
     const current = ensure(like.user_id);
+    if (!current) return;
     current.likes += 1;
   });
 
-  const profileMap = new Map(options.profiles.map((profile) => [profile.user_id, profile]));
+  const profileMap = new Map(
+    options.profiles
+      .filter((profile) => !options.excludedUserIds?.has(profile.user_id))
+      .map((profile) => [profile.user_id, profile]),
+  );
 
   return Array.from(stats.entries())
     .map(([userId, entry]) => {
@@ -446,6 +504,8 @@ export async function GET(
   const supabaseAdmin = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
+  const founderUserId = await resolveFounderUserId(supabaseAdmin, supabaseUrl, serviceKey);
+  const excludedUserIds = new Set([founderUserId].filter(Boolean) as string[]);
 
   const { data: groupRow, error: groupError } = await supabaseAdmin
     .from("study_groups")
@@ -466,10 +526,10 @@ export async function GET(
     const mode = url.searchParams.get("mode");
     const useFastMode = mode === "fast";
     const forceRefresh = mode === "refresh";
-    let weeklyBuddies = leaderboardCache?.weeklyBuddies || null;
+    let weeklyBuddies = removeExcludedBuddies(leaderboardCache?.weeklyBuddies, excludedUserIds) || null;
 
     if (useFastMode && leaderboardCache && leaderboardCache.expiresAt > Date.now()) {
-      weeklyBuddies = leaderboardCache.weeklyBuddies;
+      weeklyBuddies = removeExcludedBuddies(leaderboardCache.weeklyBuddies, excludedUserIds);
     } else if (useFastMode) {
       const weeklyWindow = getWeeklyBoardWindow();
       const [weeklyActions, weeklyChapters, weeklyComments, weeklyPosts, weeklyLikes] = await Promise.all([
@@ -532,6 +592,7 @@ export async function GET(
         groupPosts: weeklyPosts,
         groupLikes: weeklyLikes,
         scope: "week",
+        excludedUserIds,
       });
     } else if (forceRefresh || !leaderboardCache || leaderboardCache.expiresAt <= Date.now()) {
       const [profiles, actions, completedChapters, articleComments, postRows, likeRows] = await Promise.all([
@@ -574,6 +635,7 @@ export async function GET(
         groupPosts: postRows,
         groupLikes: likeRows,
         scope: "week",
+        excludedUserIds,
       });
       leaderboardCache = {
         expiresAt: Date.now() + LEADERBOARD_CACHE_MS,
@@ -581,7 +643,7 @@ export async function GET(
       };
     }
 
-      weeklyBuddies = weeklyBuddies || [];
+      weeklyBuddies = removeExcludedBuddies(weeklyBuddies, excludedUserIds);
     const weeklyWindow = getWeeklyBoardWindow();
 
     const clickLabelPrefix = `top_buddies_card_opened:${groupId}`;
@@ -633,7 +695,7 @@ export async function GET(
         clickers,
       },
       scoring: {
-        summary: "Weekly Top Buddies are based mostly on Bible study tasks: reading intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.",
+        summary: "Weekly Top Buddies are based mostly on Bible study tasks: study intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.",
         periodDays: 7,
         periodStart: weeklyWindow.start,
         periodEnd: weeklyWindow.end,
