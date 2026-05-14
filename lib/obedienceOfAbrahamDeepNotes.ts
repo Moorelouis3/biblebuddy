@@ -1084,4 +1084,896 @@ If this chapter feels slow, remember that much of Abraham's life was slow. Years
 ${note.lesson}`;
 }
 
-export const OBEDIENCE_OF_ABRAHAM_DEEP_NOTES = ABRAHAM_CHAPTER_NOTES.map(renderRebuiltNote);
+const GENESIS_11_DEEP_NOTES = `# Genesis 11
+
+# The Road Before the Call
+
+Genesis 11 is the chapter right before God calls Abram.
+
+And that matters.
+
+Because Abraham does not just appear out of nowhere.
+
+Before God says, "Go," Genesis shows us the kind of world Abram is coming from.
+
+A world full of pride.
+
+A world trying to build its own name.
+
+A world still broken after the flood.
+
+A world where people want security without surrender.
+
+And then the story narrows.
+
+From the nations.
+
+To one family.
+
+To one man.
+
+Abram.
+
+Genesis 11 is not just background information.
+
+It is the road before the call.
+
+## Why Genesis 11 Matters
+
+Genesis 11 shows us three major things.
+
+- 🏙️ Babel shows humanity trying to build life without God.
+
+- 🧬 Shem's family line moves the story toward Abram.
+
+- 🛣️ Terah's family starts toward Canaan but stops in Haran.
+
+That last detail matters.
+
+Because Genesis 12 will begin with God calling Abram to keep going.
+
+His family started the road.
+
+But Abram will have to walk it by faith.
+
+# Genesis 11:1 to 4
+
+# The Tower of Babel Begins
+
+> **Genesis 11:1 to 4**
+>
+> 1 And the whole earth was of one language, and of one speech.
+>
+> 2 And it came to pass, as they journeyed from the east, that they found a plain in the land of Shinar; and they dwelt there.
+>
+> 3 And they said one to another, Go to, let us make brick, and burn them throughly. And they had brick for stone, and slime had they for morter.
+>
+> 4 And they said, Go to, let us build us a city and a tower, whose top may reach unto heaven; and let us make us a name, lest we be scattered abroad upon the face of the whole earth.
+
+### One Language
+
+Genesis 11 opens with humanity united.
+
+One language.
+
+One speech.
+
+One people moving together.
+
+At first, that sounds like a good thing.
+
+Unity sounds good.
+
+Teamwork sounds good.
+
+But unity is only good when it is pointed in the right direction.
+
+Here, humanity is united in pride.
+
+They are not gathering to worship God.
+
+They are gathering to build something without God.
+
+### The Land of Shinar
+
+The people settle in Shinar.
+
+That location matters.
+
+Shinar is connected to Babylon.
+
+And Babylon becomes a major symbol later in the Bible.
+
+Not just a city.
+
+A symbol of human pride.
+
+A symbol of rebellion.
+
+A symbol of people trying to build greatness without surrendering to God.
+
+So already, Genesis is showing us something.
+
+This is not just architecture.
+
+This is the beginning of a spiritual pattern.
+
+### Brick Instead of Stone
+
+Verse 3 says they made brick and used slime for mortar.
+
+That sounds like a random construction detail, but it is not.
+
+They are building with human-made materials.
+
+They are organizing.
+
+Planning.
+
+Engineering.
+
+Creating strength.
+
+There is nothing wrong with building.
+
+There is nothing wrong with technology.
+
+There is nothing wrong with cities.
+
+The problem is not what they are building.
+
+The problem is why they are building it.
+
+### "Let Us Make Us a Name"
+
+This is the heart of Babel.
+
+They say:
+
+> "Let us make us a name."
+
+That means:
+
+- 👑 Let us become great.
+
+- 🏙️ Let us build our own security.
+
+- 📣 Let us make sure people remember us.
+
+- 🧱 Let us create something that proves who we are.
+
+This is pride.
+
+Not confidence.
+
+Not leadership.
+
+Pride.
+
+They are trying to create identity without God.
+
+They are trying to reach heaven on their own terms.
+
+They are trying to secure their future without trusting the Lord.
+
+### Why This Connects to Abraham
+
+This line is important because Genesis 12 will answer it.
+
+At Babel, humans say:
+
+> "Let us make us a name."
+
+But in Genesis 12, God says to Abram:
+
+> "I will make thy name great."
+
+That is the contrast.
+
+Babel tries to take a name.
+
+Abram receives a name from God.
+
+Babel reaches upward in pride.
+
+Abram will walk forward by faith.
+
+Babel wants greatness without obedience.
+
+Abram will learn greatness through obedience.
+
+That is why Genesis puts these stories side by side.
+
+# Genesis 11:5 to 9
+
+# God Comes Down
+
+> **Genesis 11:5 to 9**
+>
+> 5 And the LORD came down to see the city and the tower, which the children of men builded.
+>
+> 6 And the LORD said, Behold, the people is one, and they have all one language; and this they begin to do: and now nothing will be restrained from them, which they have imagined to do.
+>
+> 7 Go to, let us go down, and there confound their language, that they may not understand one another's speech.
+>
+> 8 So the LORD scattered them abroad from thence upon the face of all the earth: and they left off to build the city.
+>
+> 9 Therefore is the name of it called Babel; because the LORD did there confound the language of all the earth: and from thence did the LORD scatter them abroad upon the face of all the earth.
+
+### The Lord Came Down
+
+This is almost funny when you slow down.
+
+The people are building a tower "to heaven."
+
+But God has to come down to see it.
+
+That shows how small human pride really is.
+
+They think they are reaching heaven.
+
+But from God's view, it is tiny.
+
+That is how pride works.
+
+It feels huge to us.
+
+But before God, it is nothing.
+
+### Why God Stops Babel
+
+God sees that humanity is united in rebellion.
+
+If they keep going, their pride will grow stronger.
+
+Their false unity will harden.
+
+Their rebellion will become organized.
+
+So God interrupts it.
+
+He confuses their language.
+
+Now they cannot understand each other.
+
+The project falls apart.
+
+The city stops.
+
+The people scatter.
+
+### Was This Judgment or Mercy?
+
+It was judgment.
+
+But it was also mercy.
+
+God was not just punishing them.
+
+He was preventing their rebellion from becoming worse.
+
+Sometimes God scatters what we are building because what we are building would destroy us.
+
+That is a hard truth.
+
+Babel teaches us that God is not impressed by big things built with proud hearts.
+
+A tower can be impressive and still be rebellion.
+
+A city can look successful and still be spiritually empty.
+
+### What Babel Teaches Us
+
+Babel is what happens when people try to build life around themselves.
+
+No surrender.
+
+No worship.
+
+No trust.
+
+Just ambition.
+
+And that is why Genesis 11 matters so much.
+
+Because right after Babel, God is going to call one man.
+
+Abram.
+
+And through him, God will start a different kind of story.
+
+Not people making their own name.
+
+God making His promise.
+
+Not pride reaching upward.
+
+Faith walking forward.
+
+# Genesis 11:10 to 26
+
+# The Story Narrows Toward Abram
+
+> **Genesis 11:10**
+>
+> 10 These are the generations of Shem: Shem was an hundred years old, and begat Arphaxad two years after the flood:
+
+This section can feel boring if you read it too fast.
+
+It is a genealogy.
+
+Names.
+
+Ages.
+
+Fathers.
+
+Sons.
+
+Years.
+
+But genealogies in Genesis are not filler.
+
+They are how the Bible says:
+
+> "God has not lost the thread."
+
+### Why Genealogies Matter
+
+After Babel, the nations are scattered.
+
+Humanity is divided.
+
+Languages are confused.
+
+People are spread across the earth.
+
+But then Genesis zooms in.
+
+Not on a kingdom.
+
+Not on a tower.
+
+Not on a famous empire.
+
+On a family line.
+
+Shem's line.
+
+And that line leads to Abram.
+
+This is how Genesis works.
+
+The story starts wide.
+
+Creation.
+
+Humanity.
+
+The flood.
+
+The nations.
+
+Then it narrows.
+
+One family.
+
+One man.
+
+One promise.
+
+### "These Are the Generations"
+
+This phrase matters.
+
+In Hebrew, this connects to the word **toledot**.
+
+It means the generations.
+
+The family record.
+
+The story of what came from someone.
+
+Genesis uses this phrase to organize the book.
+
+It tells the reader:
+
+- 📖 A new section is starting.
+
+- 🧬 A family line is being traced.
+
+- 🛣️ The story is moving forward.
+
+So this is not just a list.
+
+This is a bridge.
+
+From Noah's world.
+
+To Abraham's story.
+
+### God Works Through Time
+
+This genealogy also teaches patience.
+
+God does not rush.
+
+Generations pass.
+
+People are born.
+
+People die.
+
+Names come and go.
+
+But God is still moving.
+
+That matters because Abraham's story will also require patience.
+
+God will give promises that take years to unfold.
+
+A land promise.
+
+A seed promise.
+
+A blessing promise.
+
+But before Abram ever waits on God, the reader already sees that God works through long stretches of time.
+
+God is not slow because He forgot.
+
+God is patient because He is building something bigger than one moment.
+
+### The Line Keeps Moving
+
+Every name in this list is like another step toward Abram.
+
+Shem.
+
+Arphaxad.
+
+Salah.
+
+Eber.
+
+Peleg.
+
+Reu.
+
+Serug.
+
+Nahor.
+
+Terah.
+
+Abram.
+
+It is easy to skip those names.
+
+But do not miss what they represent.
+
+God is preserving a line.
+
+God is moving history.
+
+God is narrowing the story.
+
+The world may be scattered at Babel, but God is still guiding the promise forward.
+
+# Genesis 11:27 to 30
+
+# Abram's Family Comes Into View
+
+> **Genesis 11:27 to 30**
+>
+> 27 Now these are the generations of Terah: Terah begat Abram, Nahor, and Haran; and Haran begat Lot.
+>
+> 28 And Haran died before his father Terah in the land of his nativity, in Ur of the Chaldees.
+>
+> 29 And Abram and Nahor took them wives: the name of Abram's wife was Sarai; and the name of Nahor's wife, Milcah, the daughter of Haran, the father of Milcah, and the father of Iscah.
+>
+> 30 But Sarai was barren; she had no child.
+
+### Terah's Family
+
+Now the story zooms in even closer.
+
+We meet Terah.
+
+Then his sons.
+
+Abram.
+
+Nahor.
+
+Haran.
+
+And we also meet Lot.
+
+Lot matters because he will travel with Abram later.
+
+That means Genesis 11 is already setting up future tension.
+
+Lot is not random.
+
+He will become part of Abram's journey.
+
+Part of Abram's decisions.
+
+Part of Abram's testing.
+
+### Haran Dies
+
+Verse 28 tells us Haran died before his father Terah.
+
+That means Terah buried his own son.
+
+Abram lost a brother.
+
+Lot lost his father.
+
+Before Abram is ever called by God, this family already knows grief.
+
+That matters.
+
+Because sometimes we read Bible characters like they are statues.
+
+But Abram was a real man in a real family with real pain.
+
+His story begins with loss in the background.
+
+### Sarai Is Introduced
+
+Then we meet Sarai.
+
+Abram's wife.
+
+And immediately, Genesis tells us something painful.
+
+Sarai was barren.
+
+She had no child.
+
+That detail is not random.
+
+It is one of the most important details in the entire Abraham story.
+
+Because in Genesis 12, God will promise Abram descendants.
+
+But Genesis 11 already told us the problem.
+
+His wife cannot have children.
+
+So before the promise is even spoken, the impossibility is already named.
+
+### Why Sarai's Barrenness Matters
+
+In that culture, barrenness was not just personal sadness.
+
+It affected everything.
+
+- 👶 No child meant no heir.
+
+- 🏕️ No heir meant no family future.
+
+- 📜 No family future meant no visible path for the promise.
+
+- 😔 It also carried deep emotional shame and grief.
+
+So when God later promises Abram seed, the promise lands directly on the most painful place in the family.
+
+God does not avoid the impossibility.
+
+He speaks into it.
+
+That is a major part of Abraham's story.
+
+God's promise will not depend on what Abram and Sarai can naturally produce.
+
+It will depend on what God can do.
+
+# Genesis 11:31 to 32
+
+# The Journey Starts But Stops Short
+
+> **Genesis 11:31 to 32**
+>
+> 31 And Terah took Abram his son, and Lot the son of Haran his son's son, and Sarai his daughter in law, his son Abram's wife; and they went forth with them from Ur of the Chaldees, to go into the land of Canaan; and they came unto Haran, and dwelt there.
+>
+> 32 And the days of Terah were two hundred and five years: and Terah died in Haran.
+
+### They Leave Ur
+
+This is huge.
+
+Terah takes his family and leaves Ur of the Chaldees.
+
+Their destination is Canaan.
+
+That should make your ears perk up.
+
+Because Canaan is the land God will later promise to Abram.
+
+So the road toward the promised land actually begins before Genesis 12.
+
+Abram's family is already moving.
+
+But they do not finish the journey.
+
+### They Stop in Haran
+
+Verse 31 says they came to Haran and dwelt there.
+
+That means they settled.
+
+They stopped.
+
+They did not reach Canaan.
+
+They started toward the destination, but they stopped short.
+
+That is one of the most important ideas in Genesis 11.
+
+The road began.
+
+But it was unfinished.
+
+And Genesis 12 will begin with God calling Abram to leave Haran and keep going.
+
+### The Call Comes in an Unfinished Place
+
+This is powerful.
+
+God calls Abram from a place where the family journey stopped.
+
+Abram does not begin from a clean, perfect place.
+
+He begins from an unfinished place.
+
+A place of grief.
+
+A place of delay.
+
+A place of family history.
+
+A place between where they came from and where God is sending him.
+
+That is often where calling begins.
+
+Not when everything is perfect.
+
+But when something is unfinished.
+
+### Terah Dies in Haran
+
+Genesis 11 ends with Terah's death.
+
+The chapter closes with Abram still in Haran.
+
+Not yet in Canaan.
+
+Not yet walking fully in the promise.
+
+Not yet hearing the famous call.
+
+The chapter ends in waiting.
+
+But that is exactly why Genesis 12 hits so hard.
+
+Because after the tower falls, the nations scatter, the family line narrows, Sarai's barrenness is named, and Terah dies in Haran...
+
+God speaks.
+
+# KJV Words and Bible Vocabulary
+
+### Begat
+
+Begat means fathered or became the ancestor of.
+
+Genesis uses this word a lot in genealogies.
+
+It reminds us that the Bible is tracing family lines carefully.
+
+These names matter because God's promise moves through real generations.
+
+### Generations
+
+Generations connects to the Hebrew idea of **toledot**.
+
+It means family record or the story of what came from someone.
+
+Genesis uses this phrase to move from one major section to another.
+
+### Barren
+
+Barren means unable to have children.
+
+For Sarai, this was not just a medical detail.
+
+It was emotional pain.
+
+Social pressure.
+
+Family uncertainty.
+
+And a direct obstacle to God's future promise.
+
+### Confound
+
+Confound means confuse or mix up.
+
+At Babel, God confounds the language of the people so they can no longer understand each other.
+
+### Scattered
+
+Scattered means spread out.
+
+The people feared being scattered, but God scattered them anyway.
+
+They wanted control.
+
+God forced movement.
+
+### Kindred
+
+Kindred means extended family or relatives.
+
+This will matter in Genesis 12 when God calls Abram to leave his country, his kindred, and his father's house.
+
+That means Abram's obedience will not just be geographical.
+
+It will be personal.
+
+He will have to leave the world that shaped him.
+
+# The Big Picture of Genesis 11
+
+Genesis 11 is a chapter about two kinds of movement.
+
+At Babel, people move together in pride.
+
+With Abram's family, the story moves toward promise.
+
+Babel says:
+
+> "We will make ourselves great."
+
+God says through Abram's story:
+
+> "I will make your name great."
+
+Babel builds upward.
+
+Abram will walk forward.
+
+Babel tries to avoid being scattered.
+
+Abram will leave because God calls him.
+
+Babel is about self-made security.
+
+Abram's story will be about faith.
+
+That is why Genesis 11 matters.
+
+It sets the stage for everything that comes next.
+
+# Bible Buddy Deep Takeaways
+
+Genesis 11 teaches us that pride often hides behind the desire for security.
+
+The people of Babel were afraid of being scattered, so they built a city and a tower.
+
+But fear mixed with pride can become rebellion.
+
+Sometimes what we call "protecting ourselves" is really us refusing to trust God.
+
+Genesis 11 also teaches that God's plan moves through ordinary people and long family lines.
+
+A genealogy may feel slow, but it reminds us that God works through time.
+
+He does not forget the promise.
+
+He does not lose track of the story.
+
+He knows exactly where He is taking history.
+
+Genesis 11 also shows us that God often calls people from unfinished places.
+
+Abram's family was headed to Canaan, but they stopped in Haran.
+
+That unfinished journey becomes the place where God's call will meet Abram.
+
+Sometimes your calling begins in the place where your family stopped.
+
+Sometimes God calls you to continue what never got completed before you.
+
+And Sarai's barrenness matters too.
+
+Because God lets us see the impossibility before He gives the promise.
+
+That means the promise is not built on human ability.
+
+It is built on God's faithfulness.
+
+# What To Carry Forward From Genesis 11
+
+Carry forward Babel.
+
+Because Babel shows what happens when people try to build life without God.
+
+Carry forward the contrast.
+
+Babel says, "Let us make us a name."
+
+God will say to Abram, "I will make thy name great."
+
+Carry forward Sarai's barrenness.
+
+Because the promise of descendants will land directly on the place of impossibility.
+
+Carry forward Haran.
+
+Because Abram's family stopped short of Canaan.
+
+And God will call Abram to keep walking.
+
+Carry forward the bigger story.
+
+Genesis 11 is not the end.
+
+It is the setup.
+
+The nations have scattered.
+
+The family line has narrowed.
+
+The road has started.
+
+The promise is about to be spoken.
+
+And Abram is about to hear the word that changes everything.
+
+# The Big Lesson of Genesis 11
+
+Genesis 11 teaches that God's call often begins after human pride fails and human plans stop short.
+
+Babel shows what people build when they want greatness without God.
+
+Haran shows what it looks like when a journey begins but does not reach the destination.
+
+And Abram stands between both worlds.
+
+Behind him is Babel.
+
+A world trying to make its own name.
+
+Ahead of him is Canaan.
+
+A land God will promise.
+
+And in the middle is the call of God.
+
+That is the setup.
+
+Before Abram obeys, Genesis shows us what he is being called out of.
+
+Pride.
+
+Fear.
+
+Delay.
+
+Family history.
+
+Unfinished roads.
+
+And that is what makes Genesis 12 so powerful.
+
+Because when God says, "Go," Abram is not just leaving a place.
+
+He is stepping into a whole new way of trusting God.`;
+
+export const OBEDIENCE_OF_ABRAHAM_DEEP_NOTES = ABRAHAM_CHAPTER_NOTES.map((note) =>
+  note.chapter === 11 ? GENESIS_11_DEEP_NOTES : renderRebuiltNote(note),
+);
