@@ -97,6 +97,15 @@ function bibleChapterSlugToTitle(slug: string) {
   return `${slugToTitle(match[1])} ${match[2]}`;
 }
 
+function bibleChapterReflectionContext(slug: string) {
+  const sourceLabel = bibleChapterSlugToTitle(slug);
+  return {
+    sourceLabel,
+    contextTitle: `${sourceLabel} Reflection Question`,
+    contextContent: `Reflection question: What stands out to you most in ${sourceLabel}?`,
+  };
+}
+
 function clipText(value: unknown, max = 700) {
   const normalized = typeof value === "string" ? value.replace(/\s+/g, " ").trim() : "";
   return normalized.length > max ? `${normalized.slice(0, max).trim()}...` : normalized;
@@ -124,11 +133,11 @@ function todayKey(date = new Date()) {
   return date.toISOString().slice(0, 10);
 }
 
-function buildStats(comments: AdminComment[], requesterId: string) {
+function buildStats(comments: AdminComment[], requesterId: string, allCommentsForReplyStats = comments) {
   const today = todayKey();
   const todayComments = comments.filter((comment) => comment.createdAt?.slice(0, 10) === today);
-  const myRepliesToday = todayComments.filter((comment) => comment.userId === requesterId && comment.isReply);
-  const needsReply = comments.filter((comment) => comment.userId !== requesterId && !comment.hasMyReply);
+  const myRepliesToday = allCommentsForReplyStats.filter((comment) => comment.createdAt?.slice(0, 10) === today && comment.userId === requesterId && comment.isReply);
+  const needsReply = comments.filter((comment) => !comment.isReply && comment.userId !== requesterId && !comment.hasMyReply);
   const bySource = comments.reduce<Record<string, number>>((acc, comment) => {
     acc[comment.source] = (acc[comment.source] || 0) + 1;
     return acc;
@@ -151,35 +160,42 @@ export async function GET(request: NextRequest) {
   const limit = Math.min(Number(request.nextUrl.searchParams.get("limit") || 30), 100);
 
   const [
-    articleRes,
-    feedRes,
+    articleTopRes,
+    articleReplyRes,
+    feedTopRes,
+    feedReplyRes,
     groupFeedRes,
-    seriesPostRes,
-    reflectionRes,
+    seriesPostTopRes,
+    seriesPostReplyRes,
+    reflectionTopRes,
+    reflectionReplyRes,
   ] = await Promise.all([
-    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at").order("created_at", { ascending: false }).limit(limit),
-    admin.from("feed_post_comments").select("id, post_id, user_id, parent_comment_id, content, created_at").order("created_at", { ascending: false }).limit(limit),
-    admin.from("group_posts").select("id, group_id, user_id, display_name, category, content, parent_post_id, created_at").not("parent_post_id", "is", null).order("created_at", { ascending: false }).limit(limit),
-    admin.from("group_series_post_comments").select("id, group_id, post_id, user_id, display_name, content, parent_comment_id, created_at").order("created_at", { ascending: false }).limit(limit),
-    admin.from("series_reflections").select("id, series_id, week_number, user_id, display_name, content, parent_reflection_id, created_at").order("created_at", { ascending: false }).limit(limit),
+    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at").eq("is_deleted", false).is("parent_id", null).order("created_at", { ascending: false }).limit(limit),
+    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at").eq("is_deleted", false).not("parent_id", "is", null).order("created_at", { ascending: false }).limit(limit * 4),
+    admin.from("feed_post_comments").select("id, post_id, user_id, parent_comment_id, content, created_at").is("parent_comment_id", null).order("created_at", { ascending: false }).limit(limit),
+    admin.from("feed_post_comments").select("id, post_id, user_id, parent_comment_id, content, created_at").not("parent_comment_id", "is", null).order("created_at", { ascending: false }).limit(limit * 4),
+    admin.from("group_posts").select("id, group_id, user_id, display_name, category, title, content, parent_post_id, created_at").not("parent_post_id", "is", null).order("created_at", { ascending: false }).limit(limit * 5),
+    admin.from("group_series_post_comments").select("id, group_id, post_id, user_id, display_name, content, parent_comment_id, created_at").is("parent_comment_id", null).order("created_at", { ascending: false }).limit(limit),
+    admin.from("group_series_post_comments").select("id, group_id, post_id, user_id, display_name, content, parent_comment_id, created_at").not("parent_comment_id", "is", null).order("created_at", { ascending: false }).limit(limit * 4),
+    admin.from("series_reflections").select("id, series_id, week_number, user_id, display_name, content, parent_reflection_id, created_at").is("parent_reflection_id", null).order("created_at", { ascending: false }).limit(limit),
+    admin.from("series_reflections").select("id, series_id, week_number, user_id, display_name, content, parent_reflection_id, created_at").not("parent_reflection_id", "is", null).order("created_at", { ascending: false }).limit(limit * 4),
   ]);
 
   const comments: AdminComment[] = [];
 
-  (articleRes.data || []).forEach((row: any) => {
+  [...(articleTopRes.data || []), ...(articleReplyRes.data || [])].forEach((row: any) => {
     const slug = row.article_slug || "";
     const isBibleChapter = slug.startsWith("bible-chapter-");
-    const sourceLabel = isBibleChapter ? bibleChapterSlugToTitle(slug) : slugToTitle(slug);
+    const bibleContext = isBibleChapter ? bibleChapterReflectionContext(slug) : null;
+    const sourceLabel = bibleContext?.sourceLabel ?? slugToTitle(slug);
     comments.push({
       id: row.id,
       kind: "article_comment",
       source: isBibleChapter ? "Bible Chapters" : "Articles",
       sourceLabel,
       href: isBibleChapter ? slug.replace(/^bible-chapter-/, "/Bible/").replace(/-(\d+)$/, "/$1") : slug || "/bible-study-hub",
-      contextTitle: isBibleChapter ? `${sourceLabel} reflection` : sourceLabel,
-      contextContent: isBibleChapter
-        ? `This comment was posted under the Bible chapter reflection for ${sourceLabel}.`
-        : `This comment was posted under the article or discussion page: ${sourceLabel}.`,
+      contextTitle: bibleContext?.contextTitle ?? sourceLabel,
+      contextContent: bibleContext?.contextContent ?? `This comment was posted under the article or discussion page: ${sourceLabel}.`,
       userId: row.user_id,
       userName: row.user_name || "Anonymous",
       content: row.content || "",
@@ -192,7 +208,7 @@ export async function GET(request: NextRequest) {
     });
   });
 
-  (feedRes.data || []).forEach((row: any) => {
+  [...(feedTopRes.data || []), ...(feedReplyRes.data || [])].forEach((row: any) => {
     comments.push({
       id: row.id,
       kind: "feed_post_comment",
@@ -228,13 +244,13 @@ export async function GET(request: NextRequest) {
       createdAt: row.created_at,
       parentId: row.parent_post_id,
       rootId: row.group_id,
-      isReply: true,
+      isReply: false,
       replyCount: 0,
       hasMyReply: false,
     });
   });
 
-  (seriesPostRes.data || []).forEach((row: any) => {
+  [...(seriesPostTopRes.data || []), ...(seriesPostReplyRes.data || [])].forEach((row: any) => {
     comments.push({
       id: row.id,
       kind: "series_post_comment",
@@ -255,7 +271,7 @@ export async function GET(request: NextRequest) {
     });
   });
 
-  (reflectionRes.data || []).forEach((row: any) => {
+  [...(reflectionTopRes.data || []), ...(reflectionReplyRes.data || [])].forEach((row: any) => {
     comments.push({
       id: row.id,
       kind: "series_reflection",
@@ -276,13 +292,13 @@ export async function GET(request: NextRequest) {
     });
   });
 
-  const enriched = addReplyMetadata(comments, requester.id).sort(
+  const enrichedWithReplies = addReplyMetadata(comments, requester.id).sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
 
-  const visibleComments = enriched.slice(0, limit);
+  const visibleComments = enrichedWithReplies.filter((comment) => !comment.isReply).slice(0, limit);
   const feedPostIds = [...new Set(visibleComments.filter((comment) => comment.kind === "feed_post_comment" && comment.rootId).map((comment) => comment.rootId as string))];
-  const groupParentIds = [...new Set(visibleComments.filter((comment) => comment.kind === "group_feed_comment" && comment.parentId).map((comment) => comment.parentId as string))];
+  const groupParentIds = [...new Set(enrichedWithReplies.filter((comment) => comment.kind === "group_feed_comment" && comment.parentId).map((comment) => comment.parentId as string))];
   const seriesPostIds = [...new Set(visibleComments.filter((comment) => comment.kind === "series_post_comment" && comment.rootId).map((comment) => comment.rootId as string))];
 
   const [feedPostContext, groupPostContext, seriesPostContext] = await Promise.all([
@@ -290,7 +306,7 @@ export async function GET(request: NextRequest) {
       ? admin.from("feed_posts").select("id, title, content, post_type").in("id", feedPostIds)
       : Promise.resolve({ data: [] as any[] }),
     groupParentIds.length
-      ? admin.from("group_posts").select("id, category, title, content").in("id", groupParentIds)
+      ? admin.from("group_posts").select("id, parent_post_id, category, title, content").in("id", groupParentIds)
       : Promise.resolve({ data: [] as any[] }),
     seriesPostIds.length
       ? admin.from("group_series_posts").select("id, title, content").in("id", seriesPostIds)
@@ -300,7 +316,13 @@ export async function GET(request: NextRequest) {
   const feedMap = new Map((feedPostContext.data || []).map((row: any) => [row.id, row]));
   const groupMap = new Map((groupPostContext.data || []).map((row: any) => [row.id, row]));
   const seriesMap = new Map((seriesPostContext.data || []).map((row: any) => [row.id, row]));
-  const withContext = visibleComments.map((comment) => {
+  const topLevelVisibleComments = visibleComments.filter((comment) => {
+    if (comment.kind !== "group_feed_comment" || !comment.parentId) return true;
+    const parent = groupMap.get(comment.parentId);
+    return !parent?.parent_post_id;
+  });
+
+  const withContext = topLevelVisibleComments.map((comment) => {
     if (comment.kind === "feed_post_comment" && comment.rootId) {
       const post = feedMap.get(comment.rootId);
       return {
@@ -315,6 +337,7 @@ export async function GET(request: NextRequest) {
       const post = groupMap.get(comment.parentId);
       return {
         ...comment,
+        isReply: Boolean(post?.parent_post_id),
         sourceLabel: post?.title || post?.category || comment.sourceLabel,
         contextTitle: post?.title || post?.category || "Group Feed post",
         contextContent: clipText(post?.content),
@@ -334,9 +357,20 @@ export async function GET(request: NextRequest) {
     return comment;
   });
 
+  const normalizedForStats = enrichedWithReplies.map((comment) => {
+    if (comment.kind !== "group_feed_comment" || !comment.parentId) return comment;
+    const parent = groupMap.get(comment.parentId);
+    return { ...comment, isReply: Boolean(parent?.parent_post_id) };
+  });
+
   return NextResponse.json({
     comments: withContext,
-    stats: buildStats(enriched, requester.id),
+    stats: buildStats(normalizedForStats.filter((comment) => {
+      if (comment.isReply) return false;
+      if (comment.kind !== "group_feed_comment" || !comment.parentId) return true;
+      const parent = groupMap.get(comment.parentId);
+      return !parent?.parent_post_id;
+    }), requester.id, normalizedForStats),
   });
 }
 

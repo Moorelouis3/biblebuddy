@@ -34,8 +34,15 @@ const HIDDEN_DEVOTIONAL_TITLES = new Set([
   "The Calling of Moses",
 ]);
 
-const FEATURED_DEVOTIONAL_TITLE = "The Testing of Joseph";
-const CHAPTER_JOURNEY_TITLES = new Set(["The Wisdom of Proverbs", "The Testing of Joseph"]);
+const FEATURED_STUDY_ORDER = [
+  "The Obedience of Abraham",
+  "The Testing of Joseph",
+  "The Wisdom of Proverbs",
+];
+const FEATURED_STUDY_ORDER_INDEX = new Map(
+  FEATURED_STUDY_ORDER.map((title, index) => [title, index]),
+);
+const CHAPTER_JOURNEY_TITLES = new Set(FEATURED_STUDY_ORDER);
 const CHAPTER_JOURNEY_TASK_TOTAL = 6;
 
 function isChapterJourney(title: string) {
@@ -231,8 +238,13 @@ export default function DevotionalsPage() {
   const visibleDevotionals = useMemo(() => devotionals
     .filter((devotional) => !HIDDEN_DEVOTIONAL_TITLES.has(devotional.title))
     .sort((a, b) => {
-      if (a.title === FEATURED_DEVOTIONAL_TITLE) return -1;
-      if (b.title === FEATURED_DEVOTIONAL_TITLE) return 1;
+      const aOrder = FEATURED_STUDY_ORDER_INDEX.get(a.title);
+      const bOrder = FEATURED_STUDY_ORDER_INDEX.get(b.title);
+
+      if (aOrder !== undefined || bOrder !== undefined) {
+        return (aOrder ?? Number.MAX_SAFE_INTEGER) - (bOrder ?? Number.MAX_SAFE_INTEGER);
+      }
+
       return 0;
     }), [devotionals]);
 

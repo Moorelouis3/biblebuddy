@@ -15,6 +15,7 @@ import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { LouisAvatar } from "./LouisAvatar";
 import { SELECTED_BUDDY_STORAGE_KEY, normalizeBuddyAvatarId } from "../lib/buddyAvatars";
+import { normalizeCustomMemberBadge } from "../lib/userBadges";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profileName";
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
@@ -195,6 +196,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [headerGraceDays, setHeaderGraceDays] = useState<number>(0);
   const [headerProfileImageUrl, setHeaderProfileImageUrl] = useState<string | null>(null);
   const [headerProfileName, setHeaderProfileName] = useState<string>("You");
+  const [headerMemberBadge, setHeaderMemberBadge] = useState<string | null>(null);
   const [headerProfileImageFailed, setHeaderProfileImageFailed] = useState(false);
   const [graceReward, setGraceReward] = useState<{ streak: number; graceDays: number; earnedGraceDays?: number; isBackfill?: boolean } | null>(null);
   const [graceUsePrompt, setGraceUsePrompt] = useState<{
@@ -328,14 +330,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function loadHeaderDashboardStats(currentUserId: string) {
     let { data, error }: { data: any; error: any } = await supabase
       .from("profile_stats")
-      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username, selected_buddy_avatar")
+      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username, selected_buddy_avatar, member_badge")
       .eq("user_id", currentUserId)
       .maybeSingle();
 
     if (error && /grace_days_count|last_grace_day_earned_at|selected_buddy_avatar/i.test(error.message || "")) {
       const fallback = await supabase
         .from("profile_stats")
-        .select("current_level, current_streak, profile_image_url, display_name, username")
+        .select("current_level, current_streak, profile_image_url, display_name, username, member_badge")
         .eq("user_id", currentUserId)
         .maybeSingle();
       data = fallback.data;
@@ -378,6 +380,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       }
     }
     setHeaderProfileImageUrl(typeof data?.profile_image_url === "string" && data.profile_image_url.trim() ? data.profile_image_url : null);
+    setHeaderMemberBadge(typeof data?.member_badge === "string" ? data.member_badge : null);
     setHeaderProfileImageFailed(false);
     setHeaderProfileName(
       typeof data?.display_name === "string" && data.display_name.trim()
@@ -1365,6 +1368,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded;
 
   const isAdmin = isLoggedIn && userEmail === "moorelouis3@gmail.com";
+  const isModerator = normalizeCustomMemberBadge(headerMemberBadge) === "moderator";
 
   const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && !pathname.startsWith("/dashboard");
   const breadcrumbItems = buildBreadcrumbs(pathname);
@@ -2437,51 +2441,58 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
 
                     {/* ANALYTICS (ADMIN ONLY) */}
-                    {isAdmin && (
+                    {(isAdmin || isModerator) && (
                       <>
-                        <Link
-                          href="/admin/analytics"
-                          onClick={() => setIsProfileMenuOpen(false)}
-                          className={`block px-4 py-2 text-sm ${
-                            pathname?.startsWith("/admin/analytics")
-                              ? "bg-sky-100 text-black font-medium"
-                              : "text-gray-700 hover:bg-gray-100"
-                          }`}
-                        >
-                          Analytics
-                        </Link>
-                        <Link
-                          href="/admin/top-buddies"
-                          onClick={() => setIsProfileMenuOpen(false)}
-                          className={`block px-4 py-2 text-sm ${
-                            pathname?.startsWith("/admin/top-buddies")
-                              ? "bg-sky-100 text-black font-medium"
-                              : "text-gray-700 hover:bg-gray-100"
-                          }`}
-                        >
-                          Top Buddies
-                        </Link>
-                        <Link
-                          href="/admin/little-louis"
-                          onClick={() => setIsProfileMenuOpen(false)}
-                          className={`block px-4 py-2 text-sm ${
-                            pathname?.startsWith("/admin/little-louis")
-                              ? "bg-sky-100 text-black font-medium"
-                              : "text-gray-700 hover:bg-gray-100"
-                          }`}
-                        >
-                          Little Louis
-                        </Link>
+                        {isAdmin && (
+                          <>
+                            <Link
+                              href="/admin/analytics"
+                              onClick={() => setIsProfileMenuOpen(false)}
+                              className={`block px-4 py-2 text-sm ${
+                                pathname?.startsWith("/admin/analytics")
+                                  ? "bg-sky-100 text-black font-medium"
+                                  : "text-gray-700 hover:bg-gray-100"
+                              }`}
+                            >
+                              Analytics
+                            </Link>
+                            <Link
+                              href="/admin/top-buddies"
+                              onClick={() => setIsProfileMenuOpen(false)}
+                              className={`block px-4 py-2 text-sm ${
+                                pathname?.startsWith("/admin/top-buddies")
+                                  ? "bg-sky-100 text-black font-medium"
+                                  : "text-gray-700 hover:bg-gray-100"
+                              }`}
+                            >
+                              Top Buddies
+                            </Link>
+                            <Link
+                              href="/admin/little-louis"
+                              onClick={() => setIsProfileMenuOpen(false)}
+                              className={`block px-4 py-2 text-sm ${
+                                pathname?.startsWith("/admin/little-louis")
+                                  ? "bg-sky-100 text-black font-medium"
+                                  : "text-gray-700 hover:bg-gray-100"
+                              }`}
+                            >
+                              Little Louis
+                            </Link>
+                          </>
+                        )}
                         <Link
                           href="/comments-admin"
                           onClick={() => setIsProfileMenuOpen(false)}
-                          className={`block px-4 py-2 text-sm ${
+                          className={`flex items-center justify-between gap-3 px-4 py-2 text-sm ${
                             pathname === "/comments-admin"
                               ? "bg-sky-100 text-black font-medium"
                               : "text-gray-700 hover:bg-gray-100"
                           }`}
                         >
-                          Comments Admin
+                          <span>Comments Admin</span>
+                          <span className="rounded-full bg-red-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-white shadow-sm animate-pulse">
+                            New
+                          </span>
                         </Link>
                       </>
                     )}

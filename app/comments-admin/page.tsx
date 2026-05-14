@@ -60,13 +60,13 @@ function formatTime(value: string) {
 function kindLabel(kind: CommentKind) {
   switch (kind) {
     case "article_comment":
-      return "Article";
+      return "Comment";
     case "feed_post_comment":
-      return "Feed";
+      return "Group Feed";
     case "group_feed_comment":
-      return "Group";
+      return "Group Feed";
     case "series_post_comment":
-      return "Study";
+      return "Bible Study";
     case "series_reflection":
       return "Reflection";
     default:
@@ -80,7 +80,7 @@ export default function CommentsAdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedSource, setSelectedSource] = useState("All");
-  const [selectedQueue, setSelectedQueue] = useState<"all" | "today" | "needsReply" | "mine" | "replies">("all");
+  const [selectedQueue, setSelectedQueue] = useState<"all" | "today" | "needsReply" | "mine">("all");
   const [hideMyComments, setHideMyComments] = useState(true);
   const [search, setSearch] = useState("");
   const [selectedComment, setSelectedComment] = useState<AdminComment | null>(null);
@@ -140,7 +140,6 @@ export default function CommentsAdminPage() {
       if (selectedQueue === "today" && comment.createdAt?.slice(0, 10) !== new Date().toISOString().slice(0, 10)) return false;
       if (selectedQueue === "needsReply" && (comment.hasMyReply || comment.userId === null)) return false;
       if (selectedQueue === "mine" && !comment.isMine && !comment.hasMyReply) return false;
-      if (selectedQueue === "replies" && !comment.isReply) return false;
       if (!needle) return true;
       return [comment.userName, comment.content, comment.source, comment.sourceLabel, comment.contextTitle, comment.contextContent]
         .join(" ")
@@ -197,7 +196,8 @@ export default function CommentsAdminPage() {
     }
 
     setReplyText("");
-    setStatusMessage("Reply posted.");
+    setStatusMessage("You replied to this comment. No need to reply again.");
+    setSelectedComment((previous) => previous ? { ...previous, hasMyReply: true } : previous);
     await loadComments();
   }
 
@@ -228,10 +228,10 @@ export default function CommentsAdminPage() {
   }
 
   const metricCards = [
-    { label: "All comments", value: stats?.total ?? 0, tone: "bg-white", queue: "all" as const },
-    { label: "Today", value: stats?.today ?? 0, tone: "bg-[#f4faf5]", queue: "today" as const },
+    { label: "Latest comments", value: stats?.total ?? 0, tone: "bg-white", queue: "all" as const },
+    { label: "Today's comments", value: stats?.today ?? 0, tone: "bg-[#f4faf5]", queue: "today" as const },
     { label: "I replied today", value: stats?.myRepliesToday ?? 0, tone: "bg-[#f7f5ff]", queue: "mine" as const },
-    { label: "Needs reply", value: stats?.needsReply ?? 0, tone: "bg-[#fff8ed]", queue: "needsReply" as const },
+    { label: "Needs my reply", value: stats?.needsReply ?? 0, tone: "bg-[#fff8ed]", queue: "needsReply" as const },
   ];
 
   return (
@@ -242,7 +242,7 @@ export default function CommentsAdminPage() {
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#6d8f57]">Moderator dashboard</p>
             <h1 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">Comments Admin</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-600">
-              Track public comments, replies, reflections, and study discussions from one action list.
+              Track top-level public comments from the group feed, Bible chapters, and articles so moderators can reply fast.
             </p>
           </div>
           <button
@@ -296,8 +296,8 @@ export default function CommentsAdminPage() {
             <div className="border-b border-gray-100 p-4">
               <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
                 <div>
-                  <h2 className="text-xl font-black">All Comments</h2>
-                  <p className="text-xs text-gray-500">Newest {filteredComments.length} comments loaded for speed</p>
+                  <h2 className="text-xl font-black">Comment Action List</h2>
+                  <p className="text-xs text-gray-500">Newest {filteredComments.length} top-level comments loaded for speed</p>
                 </div>
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                   <label className="flex h-10 items-center gap-2 rounded-full border border-gray-200 bg-white px-4 text-sm font-bold text-gray-700">
@@ -320,11 +320,10 @@ export default function CommentsAdminPage() {
                     onChange={(event) => setSelectedQueue(event.target.value as typeof selectedQueue)}
                     className="h-10 rounded-full border border-gray-200 px-4 text-sm font-bold outline-none focus:border-[#6d8f57] focus:ring-2 focus:ring-[#dbead1]"
                   >
-                    <option value="all">All comments</option>
+                    <option value="all">Latest comments</option>
                     <option value="today">Today</option>
                     <option value="needsReply">Needs reply</option>
                     <option value="mine">Replied by me</option>
-                    <option value="replies">Replies only</option>
                   </select>
                 </div>
               </div>
@@ -360,15 +359,15 @@ export default function CommentsAdminPage() {
                           <div className="flex flex-wrap items-center gap-2">
                             <span className="font-black text-gray-950">{comment.userName || "Buddy"}</span>
                             <span className={`rounded-full border px-2 py-0.5 text-[11px] font-black ${style.bg}`}>
-                              {kindLabel(comment.kind)}
+                              {comment.source === "Bible Chapters" ? "Bible Chapter" : kindLabel(comment.kind)}
                             </span>
                             {comment.isReply && (
                               <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-bold text-gray-500">Reply</span>
                             )}
                             {comment.hasMyReply ? (
-                              <span className="rounded-full bg-green-50 px-2 py-0.5 text-[11px] font-bold text-green-700">Answered</span>
+                              <span className="rounded-full bg-green-50 px-2 py-0.5 text-[11px] font-bold text-green-700">Replied</span>
                             ) : (
-                              <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-bold text-amber-700">Open</span>
+                              <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-bold text-amber-700">Needs reply</span>
                             )}
                           </div>
                           <p className="mt-1 text-xs font-semibold text-gray-500">
@@ -398,7 +397,7 @@ export default function CommentsAdminPage() {
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6d8f57]">Action panel</p>
                 <h2 className="mt-2 text-2xl font-black">Pick a comment</h2>
                 <p className="mt-2 text-sm leading-6 text-gray-600">
-                  Select any row to reply, open its source, or remove it from the public conversation.
+                  Select a top-level comment to reply, preview the source, or remove it from the public conversation.
                 </p>
                 {statusMessage && <p className="mt-4 rounded-2xl bg-gray-50 p-3 text-sm font-semibold text-gray-700">{statusMessage}</p>}
               </div>
@@ -439,6 +438,11 @@ export default function CommentsAdminPage() {
                   <p className="text-xs font-black uppercase tracking-[0.14em] text-gray-500">Comment</p>
                   <p className="whitespace-pre-wrap text-sm leading-7 text-gray-800">{selectedComment.content || "No comment text"}</p>
                 </div>
+                {selectedComment.hasMyReply ? (
+                  <div className="mt-4 rounded-2xl border border-green-100 bg-green-50 p-4 text-sm font-bold leading-6 text-green-800">
+                    You replied to this comment. No need to reply again.
+                  </div>
+                ) : null}
 
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   <button
@@ -446,7 +450,7 @@ export default function CommentsAdminPage() {
                     onClick={() => setOpenPreviewComment(selectedComment)}
                     className="rounded-full border border-gray-200 px-4 py-2 text-center text-sm font-black text-gray-700 hover:bg-gray-50"
                   >
-                    Open
+                    Preview
                   </button>
                   <button
                     type="button"

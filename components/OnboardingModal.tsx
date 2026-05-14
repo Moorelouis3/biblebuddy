@@ -75,16 +75,22 @@ const GOAL_OPTIONS: ChoiceOption[] = [
 
 const STARTER_STUDIES: StudyOption[] = [
   {
-    title: "The Wisdom of Proverbs",
-    cover: "/Wisdomofproverbsnewcover.png",
+    title: "The Obedience of Abraham",
+    cover: "/TheobedienceofAbraham.png",
     description:
-      "Study Proverbs chapter by chapter and learn how wisdom shapes speech, decisions, relationships, money, discipline, and daily life.",
+      "Walk through Abraham's call, waiting, covenant, testing, and legacy across Genesis 11-25.",
   },
   {
     title: "The Testing of Joseph",
     cover: "/newtesting.png",
     description:
-      "Walk through Joseph’s story of betrayal, waiting, testing, forgiveness, and God’s faithfulness through every chapter.",
+      "Walk through Joseph's story of betrayal, waiting, testing, forgiveness, and God's faithfulness through every chapter.",
+  },
+  {
+    title: "The Wisdom of Proverbs",
+    cover: "/Wisdomofproverbsnewcover.png",
+    description:
+      "Study Proverbs chapter by chapter and learn how wisdom shapes speech, decisions, relationships, money, discipline, and daily life.",
   },
   {
     title: "The Heart of David",
@@ -111,6 +117,15 @@ const STARTER_STUDIES: StudyOption[] = [
       "Follow Paul from opposition to transformation and mission, seeing how grace can redirect a life completely.",
   },
 ];
+
+const STUDY_PICKER_ORDER = [
+  "The Obedience of Abraham",
+  "The Testing of Joseph",
+  "The Wisdom of Proverbs",
+];
+const STUDY_PICKER_ORDER_INDEX = new Map(
+  STUDY_PICKER_ORDER.map((title, index) => [title, index]),
+);
 
 const COVER_BY_STUDY_TITLE: Record<string, string> = {
   "The Tempting of Jesus": "/newtempting.png",
@@ -457,8 +472,13 @@ export function OnboardingModal({
           };
         })
     ).sort((a, b) => {
-      if (a.title === "The Wisdom of Proverbs") return -1;
-      if (b.title === "The Wisdom of Proverbs") return 1;
+      const aOrder = STUDY_PICKER_ORDER_INDEX.get(a.title);
+      const bOrder = STUDY_PICKER_ORDER_INDEX.get(b.title);
+
+      if (aOrder !== undefined || bOrder !== undefined) {
+        return (aOrder ?? Number.MAX_SAFE_INTEGER) - (bOrder ?? Number.MAX_SAFE_INTEGER);
+      }
+
       return 0;
     });
 
