@@ -1140,13 +1140,19 @@ But Abram will have to walk it by faith.
 
 # The Tower of Babel Begins
 
-> **Genesis 11:1 to 4**
+> **Genesis 11:1**
 >
 > 1 And the whole earth was of one language, and of one speech.
+
+> **Genesis 11:2**
 >
 > 2 And it came to pass, as they journeyed from the east, that they found a plain in the land of Shinar; and they dwelt there.
+
+> **Genesis 11:3**
 >
 > 3 And they said one to another, Go to, let us make brick, and burn them throughly. And they had brick for stone, and slime had they for morter.
+
+> **Genesis 11:4**
 >
 > 4 And they said, Go to, let us build us a city and a tower, whose top may reach unto heaven; and let us make us a name, lest we be scattered abroad upon the face of the whole earth.
 
@@ -1288,15 +1294,23 @@ That is why Genesis puts these stories side by side.
 
 # God Comes Down
 
-> **Genesis 11:5 to 9**
+> **Genesis 11:5**
 >
 > 5 And the LORD came down to see the city and the tower, which the children of men builded.
+
+> **Genesis 11:6**
 >
 > 6 And the LORD said, Behold, the people is one, and they have all one language; and this they begin to do: and now nothing will be restrained from them, which they have imagined to do.
+
+> **Genesis 11:7**
 >
 > 7 Go to, let us go down, and there confound their language, that they may not understand one another's speech.
+
+> **Genesis 11:8**
 >
 > 8 So the LORD scattered them abroad from thence upon the face of all the earth: and they left off to build the city.
+
+> **Genesis 11:9**
 >
 > 9 Therefore is the name of it called Babel; because the LORD did there confound the language of all the earth: and from thence did the LORD scatter them abroad upon the face of all the earth.
 
@@ -1564,13 +1578,19 @@ The world may be scattered at Babel, but God is still guiding the promise forwar
 
 # Abram's Family Comes Into View
 
-> **Genesis 11:27 to 30**
+> **Genesis 11:27**
 >
 > 27 Now these are the generations of Terah: Terah begat Abram, Nahor, and Haran; and Haran begat Lot.
+
+> **Genesis 11:28**
 >
 > 28 And Haran died before his father Terah in the land of his nativity, in Ur of the Chaldees.
+
+> **Genesis 11:29**
 >
 > 29 And Abram and Nahor took them wives: the name of Abram's wife was Sarai; and the name of Nahor's wife, Milcah, the daughter of Haran, the father of Milcah, and the father of Iscah.
+
+> **Genesis 11:30**
 >
 > 30 But Sarai was barren; she had no child.
 
@@ -1676,9 +1696,11 @@ It will depend on what God can do.
 
 # The Journey Starts But Stops Short
 
-> **Genesis 11:31 to 32**
+> **Genesis 11:31**
 >
 > 31 And Terah took Abram his son, and Lot the son of Haran his son's son, and Sarai his daughter in law, his son Abram's wife; and they went forth with them from Ur of the Chaldees, to go into the land of Canaan; and they came unto Haran, and dwelt there.
+
+> **Genesis 11:32**
 >
 > 32 And the days of Terah were two hundred and five years: and Terah died in Haran.
 
