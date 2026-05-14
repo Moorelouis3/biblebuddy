@@ -196,6 +196,23 @@ function getBibleChapterWordCount(content: unknown) {
   return verses.reduce((total, verse) => total + countWords(verse?.text), 0);
 }
 
+function queryWithTimeout<T>(query: PromiseLike<T>, label: string, timeoutMs = 8000): Promise<T | { data: null; error: null; timedOut: true }> {
+  return Promise.race([
+    Promise.resolve(query),
+    new Promise<{ data: null; error: null; timedOut: true }>((resolve) => {
+      window.setTimeout(() => {
+        console.warn(`[LOUIS DAILY TASKS] ${label} timed out; showing dashboard with available data.`);
+        resolve({ data: null, error: null, timedOut: true });
+      }, timeoutMs);
+    }),
+  ]);
+}
+
+function logSoftChecklistError(label: string, error: unknown) {
+  if (!error) return;
+  console.warn(`[LOUIS DAILY TASKS] ${label} failed; showing dashboard with available data.`, error);
+}
+
 function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
   return {
     title: "Bible Study",
@@ -457,72 +474,94 @@ export async function fetchLouisDailyChecklistData(
   const reflectionSlug = `bible-chapter-${day.bible_reading_book.toLowerCase().replace(/\s+/g, "-")}-${day.bible_reading_chapter}`;
 
   const [todayProgressRes, actionsRes, completedChapterRes, notesHistoryRes, reflectionRes, chapterContentRes, notesContentRes] = await Promise.all([
-    supabase
-      .from("devotional_progress")
-      .select("devotional_id, day_number, is_completed, reading_completed, completed_at")
-      .eq("user_id", userId)
-      .eq("devotional_id", activeDevotional.id)
-      .eq("day_number", nextDayNumber)
-      .maybeSingle(),
-    supabase
-      .from("master_actions")
-      .select("action_type, action_label, created_at")
-      .eq("user_id", userId)
-      .in("action_type", [
-        ACTION_TYPE.devotional_bible_reading_opened,
-        ACTION_TYPE.chapter_completed,
-        ACTION_TYPE.bible_chapter_viewed,
-        ACTION_TYPE.trivia_chapter_completed,
-        ACTION_TYPE.scrambled_chapter_completed,
-      ])
-      .order("created_at", { ascending: false }),
-    supabase
-      .from("completed_chapters")
-      .select("id, completed_at")
-      .eq("user_id", userId)
-      .eq("book", day.bible_reading_book.toLowerCase().trim())
-      .eq("chapter", day.bible_reading_chapter)
-      .limit(1)
-      .maybeSingle(),
-    supabase
-      .from("master_actions")
-      .select("action_type, action_label, created_at")
-      .eq("user_id", userId)
-      .in("action_type", [ACTION_TYPE.chapter_notes_reviewed, ACTION_TYPE.chapter_notes_viewed])
-      .eq("action_label", reviewOpenedLabel)
-      .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle(),
-    supabase
-      .from("article_comments")
-      .select("id, created_at")
-      .eq("user_id", userId)
-      .eq("article_slug", reflectionSlug)
-      .eq("is_deleted", false)
-      .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle(),
-    supabase
-      .from("bible_chapters")
-      .select("content_json")
-      .eq("book", day.bible_reading_book.toLowerCase().trim())
-      .eq("chapter", day.bible_reading_chapter)
-      .maybeSingle(),
-    supabase
-      .from("bible_notes")
-      .select("notes_text")
-      .eq("book", day.bible_reading_book.toLowerCase().trim())
-      .eq("chapter", day.bible_reading_chapter)
-      .maybeSingle(),
+    queryWithTimeout(
+      supabase
+        .from("devotional_progress")
+        .select("devotional_id, day_number, is_completed, reading_completed, completed_at")
+        .eq("user_id", userId)
+        .eq("devotional_id", activeDevotional.id)
+        .eq("day_number", nextDayNumber)
+        .maybeSingle(),
+      "daily progress",
+    ),
+    queryWithTimeout(
+      supabase
+        .from("master_actions")
+        .select("action_type, action_label, created_at")
+        .eq("user_id", userId)
+        .in("action_type", [
+          ACTION_TYPE.devotional_bible_reading_opened,
+          ACTION_TYPE.chapter_completed,
+          ACTION_TYPE.bible_chapter_viewed,
+          ACTION_TYPE.trivia_chapter_completed,
+          ACTION_TYPE.scrambled_chapter_completed,
+        ])
+        .order("created_at", { ascending: false })
+        .limit(500),
+      "recent task actions",
+    ),
+    queryWithTimeout(
+      supabase
+        .from("completed_chapters")
+        .select("id, completed_at")
+        .eq("user_id", userId)
+        .eq("book", day.bible_reading_book.toLowerCase().trim())
+        .eq("chapter", day.bible_reading_chapter)
+        .limit(1)
+        .maybeSingle(),
+      "completed chapter",
+    ),
+    queryWithTimeout(
+      supabase
+        .from("master_actions")
+        .select("action_type, action_label, created_at")
+        .eq("user_id", userId)
+        .in("action_type", [ACTION_TYPE.chapter_notes_reviewed, ACTION_TYPE.chapter_notes_viewed])
+        .eq("action_label", reviewOpenedLabel)
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle(),
+      "notes history",
+    ),
+    queryWithTimeout(
+      supabase
+        .from("article_comments")
+        .select("id, created_at")
+        .eq("user_id", userId)
+        .eq("article_slug", reflectionSlug)
+        .eq("is_deleted", false)
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle(),
+      "reflection response",
+    ),
+    queryWithTimeout(
+      supabase
+        .from("bible_chapters")
+        .select("content_json")
+        .eq("book", day.bible_reading_book.toLowerCase().trim())
+        .eq("chapter", day.bible_reading_chapter)
+        .maybeSingle(),
+      "chapter estimate",
+    ),
+    queryWithTimeout(
+      supabase
+        .from("bible_notes")
+        .select("notes_text")
+        .eq("book", day.bible_reading_book.toLowerCase().trim())
+        .eq("chapter", day.bible_reading_chapter)
+        .maybeSingle(),
+      "notes estimate",
+    ),
   ]);
 
-  if (todayProgressRes.error) throw todayProgressRes.error;
-  if (actionsRes.error) throw actionsRes.error;
-  if (completedChapterRes.error) throw completedChapterRes.error;
-  if (notesHistoryRes.error) throw notesHistoryRes.error;
-  if (reflectionRes.error) throw reflectionRes.error;
-  if (chapterContentRes.error) console.error("[LOUIS DAILY TASKS] Could not load chapter estimate:", chapterContentRes.error);
-  if (notesContentRes.error) console.error("[LOUIS DAILY TASKS] Could not load notes estimate:", notesContentRes.error);
+  logSoftChecklistError("daily progress", (todayProgressRes as any).error);
+  logSoftChecklistError("recent task actions", (actionsRes as any).error);
+  logSoftChecklistError("completed chapter", (completedChapterRes as any).error);
+  logSoftChecklistError("notes history", (notesHistoryRes as any).error);
+  logSoftChecklistError("reflection response", (reflectionRes as any).error);
+  logSoftChecklistError("chapter estimate", (chapterContentRes as any).error);
+  logSoftChecklistError("notes estimate", (notesContentRes as any).error);
 
   const readingMinutes = estimateMinutesFromWords(getBibleChapterWordCount((chapterContentRes.data as any)?.content_json) || 650, 160, 2, 12);
   const notesMinutes = estimateMinutesFromWords(countWords((notesContentRes.data as any)?.notes_text), 220, 5, 24);
