@@ -234,7 +234,27 @@ export default function DevotionalDayModal({
   const isRiseOfEsther =
     (devotionalTitle || "").toLowerCase().includes("rise of esther") ||
     (devotionalId || "").toLowerCase().includes("rise-of-esther");
-  const useSeriesLikeProverbsLayout = isWisdomOfProverbs || isTestingOfJoseph || isObedienceOfAbraham || isRiseOfEsther;
+  const isCourageOfDaniel =
+    (devotionalTitle || "").toLowerCase().includes("courage of daniel") ||
+    (devotionalId || "").toLowerCase().includes("courage-of-daniel");
+  const isFaithOfJob =
+    (devotionalTitle || "").toLowerCase().includes("faith of job") ||
+    (devotionalId || "").toLowerCase().includes("faith-of-job");
+  const isHeartOfDavid =
+    (devotionalTitle || "").toLowerCase().includes("heart of david") ||
+    (devotionalId || "").toLowerCase().includes("heart-of-david");
+  const isTransformingOfPaul =
+    (devotionalTitle || "").toLowerCase().includes("transforming of paul") ||
+    (devotionalId || "").toLowerCase().includes("transforming-of-paul");
+  const useSeriesLikeProverbsLayout =
+    isWisdomOfProverbs ||
+    isTestingOfJoseph ||
+    isObedienceOfAbraham ||
+    isRiseOfEsther ||
+    isCourageOfDaniel ||
+    isFaithOfJob ||
+    isHeartOfDavid ||
+    isTransformingOfPaul;
   const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
   const bookKey = normalizeBookKey(day.bible_reading_book || "");
   const triviaBook = useMemo(() => getTriviaBook(bookKey), [bookKey]);
