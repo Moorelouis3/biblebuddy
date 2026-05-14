@@ -1593,7 +1593,7 @@ export default function StudyGroupSchedulerPage() {
           if (!cancelled) {
             setSeriesSnapshot({
               groupId,
-              seriesTitle: currentSeries.title || "Bible Study",
+              seriesTitle: currentSeries.title || "Bible Study Series",
               seriesStartAt: scheduleData?.start_at || (scheduleData?.start_date ? `${scheduleData.start_date}T00:00:00` : null),
               totalWeeks: currentSeries.total_weeks ?? null,
             });

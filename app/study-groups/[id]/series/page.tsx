@@ -419,9 +419,9 @@ export default function SeriesOverviewPage() {
         </nav>
 
         <div className="mb-6">
-          <p className="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-1">Bible Study</p>
+          <p className="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-1">Bible Study Series</p>
           <h1 className="text-2xl font-bold text-gray-900">{seriesTitle}</h1>
-          <p className="text-sm text-gray-500 mt-1">Chapter-based Bible study</p>
+          <p className="text-sm text-gray-500 mt-1">5-week series · New lesson every week</p>
         </div>
 
         <div className="flex flex-col gap-4">

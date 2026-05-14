@@ -5553,7 +5553,7 @@ export default function GroupChatPage() {
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex-1">
                             <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: seriesAccent.mutedText }}>
-                              {selectedSeriesWeekCount}-part Bible study
+                              {selectedSeriesWeekCount}-week group study
                             </p>
                             <h3 className="text-lg font-bold text-gray-900 mt-1">{selectedSeries.title}</h3>
                           </div>
@@ -5569,7 +5569,7 @@ export default function GroupChatPage() {
                             <p className="text-sm font-bold" style={{ color: "#d62828" }}>
                               {new Date(seriesStartDate).getTime() > nowTs
                                 ? `Bible Study starts in ${formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}`
-                                : "Bible Study started"}
+                                : "Bible Study Series started"}
                             </p>
                             <p className="text-sm text-gray-500 mt-1">
                               {formatDateTimeLabel(seriesStartDate)}
@@ -5936,16 +5936,20 @@ export default function GroupChatPage() {
                     statusTone = "current";
 
                     if (currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() <= nowTs) {
-                      detail = `${planned.title} is open now. Click here to continue the Bible study.`;
+                      const startTs = new Date(currentSeriesStartAt).getTime();
+                      const totalWeeks = liveSeries?.total_weeks ?? 1;
+                      const weeksSinceStart = Math.floor((nowTs - startTs) / (7 * 24 * 60 * 60 * 1000));
+                      const liveWeek = Math.min(totalWeeks, weeksSinceStart + 1);
+                      detail = `${planned.title} Week ${liveWeek} Now Live. Click here to complete this week's Bible study.`;
                     } else if (startCountdown) {
                       detail = `Study starts in ${startCountdown}${startLabel ? ` · ${startLabel}` : ""}`;
                     } else {
                       detail = "Start date coming soon";
                     }
                   } else if (isJosephSeries && josephCountdown) {
-                    statusLabel = "Coming Soon";
+                    statusLabel = "Starts Saturday";
                     statusTone = "upcoming";
-                    detail = `Bible study starts in ${josephCountdown} · ${josephStartLabel}`;
+                    detail = `Week 1 starts in ${josephCountdown} · ${josephStartLabel}`;
                   } else if (canOpen) {
                     statusLabel = "Preview";
                     statusTone = "preview";
@@ -5954,7 +5958,7 @@ export default function GroupChatPage() {
                   } else {
                     statusLabel = "Locked";
                     statusTone = "locked";
-                    detail = "Locked until this Bible study is released";
+                    detail = "Locked until this series is released";
                     footerRight = "Locked";
                   }
 

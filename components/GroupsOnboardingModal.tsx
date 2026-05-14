@@ -79,163 +79,205 @@ export function GroupsOnboardingModal({ isOpen, userId, onFinished }: GroupsOnbo
 
       <ModalShell isOpen={isOpen} zIndex="z-[200]" backdropColor="bg-black/70">
         <div
-          className="groups-modal-enter relative w-full max-w-3xl rounded-[32px] bg-white p-2 shadow-2xl shadow-black/30 ring-1 ring-black/10 md:p-3"
+          className="groups-modal-enter relative w-full max-w-3xl rounded-[32px] bg-white shadow-2xl shadow-black/30 ring-1 ring-black/10 p-2 md:p-3"
           role="dialog"
           aria-modal="true"
           aria-label="Bible Study Groups introduction"
         >
-          <div className="flex flex-col justify-center rounded-3xl bg-gradient-to-b from-emerald-50 to-green-50/40 px-5 py-8 md:px-8 md:py-10">
+          <div className="rounded-3xl bg-gradient-to-b from-emerald-50 to-green-50/40 px-5 md:px-8 py-8 md:py-10 flex flex-col justify-center">
             <div className="absolute right-7 top-6 text-xs font-medium text-gray-500">{progressText}</div>
 
-            <div className="mx-auto w-full">
-              <div className="mx-auto max-h-[58vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-green-100 bg-white/80 px-5 py-6 md:px-7">
+            <div className="w-full mx-auto">
+              <div className="w-full max-w-2xl mx-auto rounded-2xl border border-green-100 bg-white/80 px-5 md:px-7 py-6 max-h-[58vh] overflow-y-auto">
+
+                {/* ── Step 1 — What are Bible Study Groups ──────────────────── */}
                 {currentStep === 1 && (
                   <div className="space-y-5">
                     <div className="flex justify-center">
-                      <span className="groups-icon-float text-5xl">BB</span>
+                      <span className="groups-icon-float text-5xl">🤝</span>
                     </div>
-                    <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 text-center">
                       Welcome to Bible Study Groups
                     </h2>
-                    <div className="mx-auto max-w-xl space-y-4 text-sm leading-7 text-gray-600 md:text-[15px]">
+                    <div className="space-y-4 text-sm md:text-[15px] text-gray-600 leading-7 max-w-xl mx-auto">
                       <p>
-                        Bible has always been better together. Bible Study Groups give you a dedicated community to
-                        read, discuss, and grow through Scripture alongside others who are serious about the Word.
+                        Bible has always been better together. Bible Study Groups give you a dedicated community to read, discuss, and grow through Scripture alongside others who are just as serious about the Word.
                       </p>
                       <p>
-                        Each group runs structured Bible studies, so you are never just reading alone. You study,
-                        reflect, and discuss as a group in a shared space designed for it.
+                        Each group runs structured weekly Bible studies — so you&apos;re never just reading alone. You study, reflect, and discuss as a group, week by week, in a shared space designed for it.
                       </p>
                       <p>
-                        Think of it as a small group built directly into your Bible study tool, so everything stays in
-                        one place.
+                        Think of it as a small group — but built directly into your Bible study tool, so everything stays in one place.
                       </p>
                     </div>
                   </div>
                 )}
 
+                {/* ── Step 2 — Hope Nation (beta) ─────────────────────────── */}
                 {currentStep === 2 && (
                   <div className="space-y-5">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
                         Meet Hope Nation
                       </h2>
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-700">
-                        <span className="beta-dot inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                      <span className="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                        <span className="beta-dot inline-block w-1.5 h-1.5 rounded-full bg-emerald-500" />
                         Beta
                       </span>
                     </div>
-                    <p className="max-w-xl text-sm leading-7 text-gray-600 md:text-[15px]">
-                      As this feature is in beta, <strong className="text-gray-800">Hope Nation is the first and only active group</strong> on the platform right now.
-                      More groups are coming, but this is where it all starts.
+                    <p className="text-sm md:text-[15px] text-gray-600 leading-7 max-w-xl">
+                      As this feature is in beta, <strong className="text-gray-800">Hope Nation is the first and only active group</strong> on the platform right now. More groups are coming — but this is where it all starts.
                     </p>
-                    <p className="max-w-xl text-sm leading-7 text-gray-600 md:text-[15px]">
-                      Hope Nation features Bible studies that walk through books and stories in Scripture with
-                      readings, reflections, and group discussion:
+                    <p className="text-sm md:text-[15px] text-gray-600 leading-7 max-w-xl">
+                      Hope Nation runs four weekly Bible study series. Each series walks through a different book or story in Scripture, week by week, with readings, reflections, and group discussion:
                     </p>
 
-                    <div className="max-w-xl space-y-3">
-                      {[
-                        ["The Testing of Joseph", "14 chapters - Genesis 37-50"],
-                        ["The Temptation of Jesus", "Bible study - Matthew 4, Luke 4"],
-                        ["The Faith of Job", "Bible study - The Book of Job"],
-                        ["The Wisdom of Proverbs", "31 chapters - The Book of Proverbs"],
-                      ].map(([title, subtitle], index) => (
-                        <div
-                          key={title}
-                          className={`groups-row-${index + 1} flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3`}
-                        >
-                          <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-sm font-black text-emerald-700">
-                            {index + 1}
-                          </span>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-800">{title}</p>
-                            <p className="text-xs text-gray-500">{subtitle}</p>
-                          </div>
+                    <div className="space-y-3 max-w-xl">
+                      <div className="groups-row-1 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 flex items-center gap-3">
+                        <span className="text-xl flex-shrink-0">🔥</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">The Testing of Joseph</p>
+                          <p className="text-xs text-gray-500">21 weeks · Genesis 37–50</p>
                         </div>
-                      ))}
+                      </div>
+                      <div className="groups-row-2 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 flex items-center gap-3">
+                        <span className="text-xl flex-shrink-0">✝️</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">The Temptation of Jesus</p>
+                          <p className="text-xs text-gray-500">Weekly series · Matthew 4, Luke 4</p>
+                        </div>
+                      </div>
+                      <div className="groups-row-3 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 flex items-center gap-3">
+                        <span className="text-xl flex-shrink-0">🕊️</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">The Faith of Job</p>
+                          <p className="text-xs text-gray-500">Weekly series · The Book of Job</p>
+                        </div>
+                      </div>
+                      <div className="groups-row-4 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 flex items-center gap-3">
+                        <span className="text-xl flex-shrink-0">📜</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">The Wisdom of Proverbs</p>
+                          <p className="text-xs text-gray-500">Weekly series · The Book of Proverbs</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
 
+                {/* ── Step 3 — Community & Tabs ────────────────────────────── */}
                 {currentStep === 3 && (
                   <div className="space-y-5">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
-                      More than a study
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+                      More than a study — it&apos;s a community
                     </h2>
-                    <p className="max-w-xl text-sm leading-7 text-gray-600 md:text-[15px]">
-                      When you join a group, you get access to a full community space, not just the Bible study. Every
-                      group has dedicated channels to keep connection and conversation going.
+                    <p className="text-sm md:text-[15px] text-gray-600 leading-7 max-w-xl">
+                      When you join a group, you get access to a full community space — not just the weekly study. Every group has dedicated channels to keep connection and conversation going all week long.
                     </p>
-                    <div className="max-w-xl space-y-2.5">
-                      {[
-                        ["Home", "Group overview, announcements, and Bible study progress"],
-                        ["General", "Open conversation to share, encourage, and connect with the group"],
-                        ["Bible Studies", "Bible study content to read, reflect, and discuss as a group"],
-                        ["Updates", "News and posts from the group leader"],
-                        ["Prayer", "Share prayer requests and lift one another up in faith"],
-                        ["Q&A", "Ask questions, dig into Scripture, and get answers from the group"],
-                      ].map(([title, subtitle], index) => (
-                        <div
-                          key={title}
-                          className={`groups-row-${index + 1} flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3`}
-                        >
-                          <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-white text-xs font-black text-emerald-700">
-                            {index + 1}
-                          </span>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-800">{title}</p>
-                            <p className="text-xs text-gray-500">{subtitle}</p>
-                          </div>
+                    <div className="space-y-2.5 max-w-xl">
+                      <div className="groups-row-1 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 flex items-center gap-3">
+                        <span className="text-lg w-7 text-center flex-shrink-0">🏠</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">Home</p>
+                          <p className="text-xs text-gray-500">Group overview, announcements, and current series progress</p>
                         </div>
-                      ))}
+                      </div>
+                      <div className="groups-row-2 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 flex items-center gap-3">
+                        <span className="text-lg w-7 text-center flex-shrink-0">💬</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">General</p>
+                          <p className="text-xs text-gray-500">Open conversation — share, encourage, and connect with the group</p>
+                        </div>
+                      </div>
+                      <div className="groups-row-3 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 flex items-center gap-3">
+                        <span className="text-lg w-7 text-center flex-shrink-0">📚</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">Bible Studies</p>
+                          <p className="text-xs text-gray-500">Weekly series content — read, reflect, and discuss as a group</p>
+                        </div>
+                      </div>
+                      <div className="groups-row-4 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 flex items-center gap-3">
+                        <span className="text-lg w-7 text-center flex-shrink-0">📢</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">Updates</p>
+                          <p className="text-xs text-gray-500">News and posts from the group leader</p>
+                        </div>
+                      </div>
+                      <div className="groups-row-5 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 flex items-center gap-3">
+                        <span className="text-lg w-7 text-center flex-shrink-0">🙏</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">Prayer</p>
+                          <p className="text-xs text-gray-500">Share prayer requests and lift one another up in faith</p>
+                        </div>
+                      </div>
+                      <div className="groups-row-6 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 flex items-center gap-3">
+                        <span className="text-lg w-7 text-center flex-shrink-0">❓</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">Q&A</p>
+                          <p className="text-xs text-gray-500">Ask questions, dig into Scripture, and get answers from the group</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
 
+                {/* ── Step 4 — How to Join ─────────────────────────────────── */}
                 {currentStep === 4 && (
                   <div className="space-y-5">
                     <div className="flex justify-center">
-                      <span className="groups-icon-float text-5xl">Go</span>
+                      <span className="groups-icon-float text-5xl">🚪</span>
                     </div>
-                    <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 text-center">
                       Ready to join?
                     </h2>
-                    <p className="mx-auto max-w-xl text-center text-sm leading-7 text-gray-600 md:text-[15px]">
-                      Joining a group is simple. Here is how it works:
+                    <p className="text-sm md:text-[15px] text-gray-600 leading-7 max-w-xl mx-auto text-center">
+                      Joining a group is simple. Here&apos;s how it works:
                     </p>
-                    <div className="mx-auto max-w-xl space-y-4">
-                      {[
-                        ["Find a group", "Browse the groups listed on this page and tap one to learn more about it."],
-                        ["Request to join", "Send a join request, and the group leader will review and approve it."],
-                        ["Get approved and dive in", "Once approved, you get full access to the group's community, Bible studies, and all channels."],
-                        ["Study together", "Work through Bible studies at your own pace and share your reflections with the group."],
-                      ].map(([title, subtitle], index) => (
-                        <div key={title} className={`groups-row-${index + 1} flex items-start gap-4`}>
-                          <span className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-sm font-bold text-emerald-700">
-                            {index + 1}
-                          </span>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-800">{title}</p>
-                            <p className="mt-0.5 text-xs text-gray-500">{subtitle}</p>
-                          </div>
+                    <div className="space-y-4 max-w-xl mx-auto">
+                      <div className="groups-row-1 flex items-start gap-4">
+                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm flex items-center justify-center mt-0.5">1</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">Find a group</p>
+                          <p className="text-xs text-gray-500 mt-0.5">Browse the groups listed on this page and tap one to learn more about it.</p>
                         </div>
-                      ))}
+                      </div>
+                      <div className="groups-row-2 flex items-start gap-4">
+                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm flex items-center justify-center mt-0.5">2</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">Request to join</p>
+                          <p className="text-xs text-gray-500 mt-0.5">Send a join request — the group leader will review and approve it.</p>
+                        </div>
+                      </div>
+                      <div className="groups-row-3 flex items-start gap-4">
+                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm flex items-center justify-center mt-0.5">3</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">Get approved &amp; dive in</p>
+                          <p className="text-xs text-gray-500 mt-0.5">Once approved, you&apos;ll get full access to the group&apos;s community, weekly studies, and all channels.</p>
+                        </div>
+                      </div>
+                      <div className="groups-row-4 flex items-start gap-4">
+                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm flex items-center justify-center mt-0.5">4</span>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-800">Study together, every week</p>
+                          <p className="text-xs text-gray-500 mt-0.5">New content drops weekly. Work through it at your own pace and share your reflections with the group.</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
+
               </div>
             </div>
 
-            {error && <p className="mt-4 text-center text-sm text-red-600">{error}</p>}
+            {error && <p className="mt-4 text-sm text-red-600 text-center">{error}</p>}
 
-            <div className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-between gap-3 sm:flex-nowrap">
+            <div className="mt-8 flex items-center justify-between gap-3 max-w-2xl mx-auto flex-wrap sm:flex-nowrap">
               {currentStep > 1 ? (
                 <button
                   type="button"
                   onClick={() => setCurrentStep((s) => Math.max(1, s - 1))}
                   disabled={isSaving}
-                  className="rounded-2xl border border-gray-300 bg-white px-4 py-4 text-sm font-semibold text-gray-700 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60 md:text-base"
+                  className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold border border-gray-300 text-gray-700 bg-white hover:bg-gray-100 transition disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   Back
                 </button>
@@ -247,9 +289,13 @@ export function GroupsOnboardingModal({ isOpen, userId, onFinished }: GroupsOnbo
                 type="button"
                 onClick={handleContinue}
                 disabled={isSaving}
-                className="rounded-2xl bg-emerald-600 px-6 py-4 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-emerald-300 md:text-base"
+                className="px-6 py-4 rounded-2xl text-sm md:text-base font-semibold bg-emerald-600 text-white shadow-sm hover:bg-emerald-700 transition disabled:bg-emerald-300 disabled:cursor-not-allowed"
               >
-                {isSaving ? "Saving..." : currentStep === TOTAL_STEPS ? "Let's Go" : "Continue"}
+                {isSaving
+                  ? "Saving..."
+                  : currentStep === TOTAL_STEPS
+                  ? "Let's Go"
+                  : "Continue"}
               </button>
             </div>
           </div>

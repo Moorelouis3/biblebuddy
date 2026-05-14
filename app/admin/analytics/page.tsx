@@ -2047,7 +2047,7 @@ export default function AnalyticsPage() {
         } else if (isSeriesWeekNotesActionEvent(action.action_type, action.action_label)) {
           const text = action.action_label
             ? `On ${formattedDate} at ${formattedTime}, ${username} opened ${action.action_label}.${counterText}`
-            : `On ${formattedDate} at ${formattedTime}, ${username} opened Bible study notes.${counterText}`;
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened weekly Bible study notes.${counterText}`;
           actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "series_week_notes_opened", url: "/groups" });
         }
         // Ignore all other action types

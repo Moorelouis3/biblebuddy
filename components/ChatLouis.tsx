@@ -1121,7 +1121,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
       kind: "study",
       category: "group",
       score: 6 + (context.strongestPreference === "group" ? 8 : 0),
-      summaryLines: [`Your best move today is to start ${context.currentSeriesTitle}.`],
+      summaryLines: [`Your best move today is to start week 1 of ${context.currentSeriesTitle}.`],
       whyLine: "The Bible Study Group is one of the best ways to stay consistent because you are not doing this alone.",
       question: "Want to jump in?",
       href: "/study-groups",
@@ -1311,7 +1311,7 @@ function summarizeLastMasterAction(action: {
     return {
       summary: `Last time you were in ${label}.`,
       followUp: "Do you want to continue?",
-      continueLabel: "Open Bible Study",
+      continueLabel: "Open Bible Study Series",
       continueHref: "/study-groups",
     };
   }
@@ -1549,7 +1549,7 @@ function buildLouisJourneyRecommendation({
           ? "You said you wanted to study with other Bible Buddies, and you've got enough momentum now to add community."
           : "Seven days in a row is not random anymore. That is consistency.",
       recommendationLine:
-        "You do not have to do this alone. Check out the Bible Study Group and see the Bible studies and daily discussion flow.",
+        "You do not have to do this alone. Check out the Bible Study Group and see the current weekly series and daily discussion flow.",
       primaryButtonText: "Show me the group",
       primaryButtonHref: "/study-groups",
       level: 1,

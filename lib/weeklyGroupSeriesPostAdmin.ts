@@ -93,7 +93,7 @@ async function loadBibleStudySeriesSnapshot(
 
   return {
     groupId,
-    seriesTitle: currentSeries.title || "Bible Study",
+    seriesTitle: currentSeries.title || "Bible Study Series",
     seriesStartAt: resolveSeriesStart(schedule),
     totalWeeks: currentSeries.total_weeks ?? null,
   };
@@ -291,7 +291,7 @@ export async function ensureWeeklyGroupSeriesPost(
     .eq("week_key", weekKey)
     .maybeSingle();
 
-  if (existingError) throw new Error(existingError.message || "Could not check Bible study post.");
+  if (existingError) throw new Error(existingError.message || "Could not check weekly series post.");
   if (existing) {
     const existingPostStillPresent = await syncExistingSeriesOwnership(
       supabaseAdmin,

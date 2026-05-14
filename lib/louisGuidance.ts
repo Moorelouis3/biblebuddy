@@ -122,7 +122,7 @@ export function buildLouisGuideChatMessage(
       return [
         `hey ${name}, this is the Bible study group`,
         "this is where you can connect with other Bible Buddies and grow together",
-        "we also run Bible studies and daily faith conversations here",
+        "we also run weekly Bible studies and daily faith conversations here",
         "don’t just read alone, be part of something",
       ].join("\n\n");
     case "bible_references":
