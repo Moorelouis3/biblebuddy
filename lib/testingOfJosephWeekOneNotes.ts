@@ -1,7 +1,5 @@
 export const TESTING_OF_JOSEPH_WEEK_ONE_NOTES = [
-  `![Joseph Week 1 Header](/Joseph01Header.png)
-
-Let Me Be Real With You,
+  `Let Me Be Real With You,
 
 The first time I read Joseph's story, it didn't hit me.
 

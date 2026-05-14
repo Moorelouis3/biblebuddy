@@ -24,7 +24,6 @@ function getTextFromNode(node: ReactNode): string {
 function splitInlineEmojiList(line: string): string[] {
   const trimmed = line.trim();
   if (!trimmed || /^[-*]\s+/.test(trimmed) || /^#{1,6}\s+/.test(trimmed)) return [];
-  if (/[.!?:;]/.test(trimmed)) return [];
 
   const matches = Array.from(trimmed.matchAll(emojiTokenPattern));
   if (matches.length < 2) return [];
@@ -35,7 +34,7 @@ function splitInlineEmojiList(line: string): string[] {
       const end = matches[index + 1]?.index ?? trimmed.length;
       return trimmed.slice(start, end).trim();
     })
-    .filter((item) => item.length > 2 && item.length <= 80);
+    .filter((item) => item.length > 2 && item.length <= 180);
 
   const coveredText = items.join(" ").replace(/\s+/g, " ").trim();
   const originalText = trimmed.replace(/\s+/g, " ").trim();
