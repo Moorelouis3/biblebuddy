@@ -54,8 +54,8 @@ import DevotionalDayModal from "../../../components/DevotionalDayModal";
 import DevotionalDayCompletionModal from "../../../components/DevotionalDayCompletionModal";
 import BibleReadingModal from "../../../components/BibleReadingModal";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
+import { consumeCreditAction } from "../../../lib/creditClient";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
-import { hasProAccess } from "../../../lib/proAccess";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../lib/triviaCatalog";
 import { getTriviaChapter } from "../../../lib/triviaGameData";
 import { getScrambledChapter } from "../../../lib/scrambledGameData";
@@ -219,7 +219,7 @@ export default function DevotionalDetailPage() {
       if (user?.id) {
         const { data: stats } = await supabase
           .from("profile_stats")
-          .select("is_paid, member_badge, pro_expires_at, free_devotional_id, feature_tours")
+          .select("is_paid, free_devotional_id, feature_tours")
           .eq("user_id", user.id)
           .maybeSingle();
         setProfileStats(stats);
@@ -493,7 +493,7 @@ export default function DevotionalDetailPage() {
       }).catch((error) => console.error("[NAV] Failed to track devotional day click:", error));
     }
 
-    const isFreeUser = !hasProAccess(profileStats) && userEmail !== "moorelouis3@gmail.com";
+    const isFreeUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
     const shouldOpenFullPage = isChapterJourneyStudyTitle(devotional?.title);
     const openDay = () => {
       if (shouldOpenFullPage) {
@@ -521,6 +521,25 @@ export default function DevotionalDetailPage() {
     }
 
     // Paid user (or owner) — existing consume-credit logic
+    const dayProgress = progress.get(day.day_number);
+    const dayTaskProgress = chapterTaskProgress.get(day.day_number);
+    const isCompleted = shouldOpenFullPage
+      ? dayTaskProgress?.completed === dayTaskProgress?.total
+      : dayProgress?.is_completed === true;
+
+    if (isCompleted) {
+      setShowCreditBlocked(false);
+      openDay();
+      return;
+    }
+
+    const creditResult = await consumeCreditAction(ACTION_TYPE.devotional_day_viewed, { userId });
+    if (creditResult.ok === false) {
+      setShowCreditBlocked(true);
+      openDay();
+      return;
+    }
+
     setShowCreditBlocked(false);
     openDay();
   };
@@ -1002,7 +1021,7 @@ export default function DevotionalDetailPage() {
 
   // Pro lock for specific devotional
   const PRO_DEVOTIONAL_UUID = "20b36b11-73df-4863-a4c3-8371a5ff511a";
-  const isProLocked = devotional?.id === PRO_DEVOTIONAL_UUID && !hasProAccess(profileStats);
+  const isProLocked = devotional?.id === PRO_DEVOTIONAL_UUID && profileStats?.is_paid === false;
 
   useEffect(() => {
     if (isProLocked) setShowProModal(true);

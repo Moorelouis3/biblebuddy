@@ -15,16 +15,8 @@ import {
   rememberLouisChapterJourneyBonusAwarded,
   rememberLouisDailyTaskTarget,
 } from "../lib/louisDailyFlow";
-import {
-  completeGuidedChapterAccess,
-  ensureGuidedChapterStarted,
-  formatGuidedUnlockCountdown,
-  getGuidedChapterAccessState,
-} from "../lib/guidedChapterAccess";
-import { getProAccess } from "../lib/proAccess";
 import { LouisAvatar } from "./LouisAvatar";
 import { triggerPoints } from "./PointsPop";
-import GuidedChapterLimitModal from "./GuidedChapterLimitModal";
 
 type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
 
@@ -37,9 +29,6 @@ export type TaskState = {
   href: string | null;
   done: boolean;
   disabled?: boolean;
-  lockedByGuidedLimit?: boolean;
-  guidedUnlocksAt?: string | null;
-  guidedUnlockLabel?: string | null;
   completedAtLabel?: string | null;
   devotionalId?: string | null;
   devotionalTitle?: string | null;
@@ -59,9 +48,6 @@ type ProfileStatsDevotionalRow = {
   free_devotional_id?: string | null;
   louis_primary_devotional_id?: string | null;
   louis_primary_devotional_day?: number | null;
-  is_paid?: boolean | null;
-  member_badge?: string | null;
-  pro_expires_at?: string | null;
 };
 
 type DevotionalDayRow = {
@@ -95,13 +81,6 @@ export type ChecklistData = {
   bonusAwarded: boolean;
   journeyKey: string | null;
   nextJourneyTarget: { devotionalId: string; dayNumber: number } | null;
-  guidedAccess: {
-    isPro: boolean;
-    isLocked: boolean;
-    lockedUntil: string | null;
-    unlockLabel: string | null;
-    justCompletedFreeChapter: boolean;
-  };
 };
 
 const PREFERRED_DEVOTIONAL_MATCHERS = [/tempt/i, /joseph/i, /proverbs/i, /job/i, /moses/i];
@@ -256,13 +235,6 @@ function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
     bonusAwarded: false,
     journeyKey: null,
     nextJourneyTarget: null,
-    guidedAccess: {
-      isPro: false,
-      isLocked: false,
-      lockedUntil: null,
-      unlockLabel: null,
-      justCompletedFreeChapter: false,
-    },
   };
 }
 
@@ -279,7 +251,7 @@ export async function fetchLouisDailyChecklistData(
       .order("completed_at", { ascending: false }),
     supabase
       .from("profile_stats")
-      .select("free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, is_paid, member_badge, pro_expires_at")
+      .select("free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day")
       .eq("user_id", userId)
       .maybeSingle(),
   ]);
@@ -345,7 +317,7 @@ export async function fetchLouisDailyChecklistData(
 
   const activeTotalDays = Math.max(1, activeDevotional.total_days || 1);
   const computedNextDay = Math.min(Math.max(maxStartedByDevotional.get(activeDevotional.id) ?? 1, 1), activeTotalDays);
-  let nextDayNumber =
+  const nextDayNumber =
     dbTarget?.devotionalId === activeDevotional.id &&
     dbTarget.dayNumber >= 1 &&
     dbTarget.dayNumber <= activeTotalDays
@@ -355,30 +327,6 @@ export async function fetchLouisDailyChecklistData(
           storedTarget.dayNumber <= activeTotalDays
       ? storedTarget.dayNumber
       : computedNextDay;
-  const profileStats = profileStatsRow as ProfileStatsDevotionalRow | null;
-  const proAccess = getProAccess(profileStats);
-
-  if (!proAccess.hasAccess && nextDayNumber < activeTotalDays) {
-    const { data: latestGuidedRows, error: latestGuidedError } = await supabase
-      .from("guided_chapter_access")
-      .select("devotional_id, day_number, unlocks_at, status")
-      .eq("user_id", userId)
-      .eq("devotional_id", activeDevotional.id)
-      .eq("day_number", nextDayNumber)
-      .eq("status", "completed_locked")
-      .order("created_at", { ascending: false })
-      .limit(1);
-
-    if (latestGuidedError) {
-      console.error("[LOUIS DAILY TASKS] Could not check guided chapter lock:", latestGuidedError);
-    } else {
-      const lockedCompletedRow = latestGuidedRows?.[0];
-      const unlockTime = lockedCompletedRow?.unlocks_at ? new Date(lockedCompletedRow.unlocks_at).getTime() : 0;
-      if (unlockTime > Date.now()) {
-        nextDayNumber += 1;
-      }
-    }
-  }
 
   if (!storedTarget || storedTarget.devotionalId !== activeDevotional.id || storedTarget.dayNumber !== nextDayNumber) {
     rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
@@ -419,21 +367,6 @@ export async function fetchLouisDailyChecklistData(
 
   const day = dayRow as DevotionalDayRow;
   const chapterLabel = buildChapterLabel(day.bible_reading_book, day.bible_reading_chapter);
-  const guidedTarget = {
-    devotionalId: activeDevotional.id,
-    dayNumber: nextDayNumber,
-    bibleReadingBook: day.bible_reading_book,
-    bibleReadingChapter: day.bible_reading_chapter,
-  };
-  const guidedAccessState = await getGuidedChapterAccessState({
-    supabase,
-    userId,
-    profile: profileStats,
-    target: guidedTarget,
-  });
-  const guidedUnlockLabel = guidedAccessState.lockedUntil
-    ? formatGuidedUnlockCountdown(guidedAccessState.lockedUntil)
-    : null;
   const reviewOpenedLabel = `${chapterLabel} Review Opened`;
   const resolvedBookKey = normalizeBookKey(day.bible_reading_book);
   const triviaRouteSlug =
@@ -561,7 +494,7 @@ export async function fetchLouisDailyChecklistData(
   const scrambledDone = Boolean(scrambledAction);
   const reflectionDone = Boolean(reflectionRes.data);
 
-  let tasks: TaskState[] = [
+  const tasks: TaskState[] = [
     {
       kind: "devotional",
       title: `Read Chapter Intro for ${chapterLabel}`,
@@ -674,38 +607,6 @@ export async function fetchLouisDailyChecklistData(
     },
   ];
 
-  const rawCompletedCount = tasks.filter((task) => task.done).length;
-  const rawAllDone = rawCompletedCount === tasks.length;
-  let justCompletedFreeChapter = false;
-
-  if (guidedAccessState.isLocked) {
-    tasks = tasks.map((task) => ({
-      ...task,
-      done: false,
-      disabled: true,
-      lockedByGuidedLimit: true,
-      guidedUnlocksAt: guidedAccessState.lockedUntil,
-      guidedUnlockLabel,
-      pointsLabel: "Locked",
-      completedAtLabel: null,
-    }));
-  } else if (rawAllDone) {
-    const completedRow = await completeGuidedChapterAccess({
-      supabase,
-      userId,
-      profile: profileStats,
-      target: guidedTarget,
-    });
-    justCompletedFreeChapter = Boolean(completedRow?.unlocks_at);
-  } else {
-    await ensureGuidedChapterStarted({
-      supabase,
-      userId,
-      profile: profileStats,
-      target: guidedTarget,
-    });
-  }
-
   const completedCount = tasks.filter((task) => task.done).length;
   const allDone = completedCount === tasks.length;
   const nextTaskTitle = tasks.find((task) => !task.done)?.title ?? null;
@@ -722,40 +623,25 @@ export async function fetchLouisDailyChecklistData(
       currentStreak > 0
         ? `You are on a ${currentStreak} day streak right now.`
         : "Today still counts. Let’s build momentum again.",
-    contextLine: guidedAccessState.isLocked
-      ? `${chapterLabel} is ready next. Free members unlock one guided chapter per day.`
-      : `${chapterLabel} is your focus right now.`,
+    contextLine: `${chapterLabel} is your focus right now.`,
     timeLeftLabel: "",
-    progressLabel: guidedAccessState.isLocked && guidedUnlockLabel
-      ? `Unlocks in ${guidedUnlockLabel}`
-      : `${completedCount} out of ${tasks.length} completed`,
+    progressLabel: `${completedCount} out of ${tasks.length} completed`,
     summaryLine:
-      guidedAccessState.isLocked && guidedUnlockLabel
-        ? `Next chapter unlocks in ${guidedUnlockLabel}.`
-        : allDone
+      allDone
         ? `You completed the ${chapterLabel} chapter journey.`
         : completedCount === 0
           ? `Start ${chapterLabel} when you are ready.`
           : `${completedCount} done, ${tasks.length - completedCount} to go for ${chapterLabel}.`,
-    bonusLine: guidedAccessState.isLocked
-      ? "Upgrade to Pro to keep studying now."
-      : bonusAwarded
+    bonusLine: bonusAwarded
       ? "Chapter completion reward locked in."
       : "Finish this chapter journey to unlock the next step.",
-    nextTaskTitle: guidedAccessState.isLocked ? "Next Chapter Locked" : nextTaskTitle,
+    nextTaskTitle,
     tasks,
     completedCount,
     allDone,
     bonusAwarded,
     journeyKey,
     nextJourneyTarget,
-    guidedAccess: {
-      isPro: guidedAccessState.isPro,
-      isLocked: guidedAccessState.isLocked,
-      lockedUntil: guidedAccessState.lockedUntil,
-      unlockLabel: guidedUnlockLabel,
-      justCompletedFreeChapter,
-    },
   };
 }
 
@@ -786,7 +672,6 @@ export default function LouisDailyTasksModal({
   const [notesText, setNotesText] = useState("");
   const [notesError, setNotesError] = useState<string | null>(null);
   const [notesMarkedComplete, setNotesMarkedComplete] = useState(false);
-  const [guidedLimitModal, setGuidedLimitModal] = useState<"completed" | "locked" | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -845,10 +730,6 @@ export default function LouisDailyTasksModal({
   }, [open, userId, data]);
 
   function handleOpenTask(task: TaskState) {
-    if (task.lockedByGuidedLimit) {
-      setGuidedLimitModal("locked");
-      return;
-    }
     if (!task.href || task.disabled) return;
     if (task.devotionalId && task.devotionalDayNumber && isChapterJourneyStudyTitle(task.devotionalTitle)) {
       onClose();
@@ -865,11 +746,6 @@ export default function LouisDailyTasksModal({
     onClose();
     router.push(task.href);
   }
-
-  useEffect(() => {
-    if (!open || !data?.guidedAccess.justCompletedFreeChapter) return;
-    setGuidedLimitModal("completed");
-  }, [open, data?.guidedAccess.justCompletedFreeChapter]);
 
   useEffect(() => {
     let cancelled = false;
@@ -1171,7 +1047,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                         {task.done ? "✓" : "•"}
                       </div>
                       <p className="truncate text-base font-bold text-[#21304f]">{task.title}</p>
-                      {!task.done && task.timeEstimateLabel ? (
+                      {task.timeEstimateLabel ? (
                         <p className="mt-1 text-xs font-black text-[#5a76af]">
                           {task.timeEstimateLabel} - {task.timeEstimateDetail || "Estimated time"}
                         </p>
@@ -1271,16 +1147,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           </div>
         </div>
       </ModalShell>
-      <GuidedChapterLimitModal
-        isOpen={guidedLimitModal !== null}
-        variant={guidedLimitModal || "locked"}
-        unlocksInLabel={data?.guidedAccess.unlockLabel}
-        onClose={() => setGuidedLimitModal(null)}
-        onBackToDashboard={() => {
-          setGuidedLimitModal(null);
-          onClose();
-        }}
-      />
     </ModalShell>
   );
 }

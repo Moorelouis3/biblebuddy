@@ -110,15 +110,8 @@ export async function POST(req: NextRequest) {
     });
 
     // Determine update data based on code type
-    let updateData: {
-      user_id: string;
-      is_paid: boolean;
-      membership_status: string;
-      member_badge?: string | null;
-      pro_expires_at?: string | null;
-    } = {
+    let updateData: { user_id: string; membership_status: string; pro_expires_at?: string | null } = {
       user_id: user.id,
-      is_paid: true,
       membership_status: "pro",
     };
 
@@ -127,12 +120,10 @@ export async function POST(req: NextRequest) {
       const expiresAt = new Date();
       expiresAt.setDate(expiresAt.getDate() + 30);
       updateData.pro_expires_at = expiresAt.toISOString();
-      updateData.member_badge = "pro_trial";
       console.log(`[PROMO_CODE] 🔄 Updating membership_status to 'pro' with 30-day expiration for user ${user.id}`);
     } else {
       // Lifetime Pro: no expiration
       updateData.pro_expires_at = null;
-      updateData.member_badge = null;
       console.log(`[PROMO_CODE] 🔄 Updating membership_status to 'pro' (lifetime) for user ${user.id}`);
     }
     
@@ -141,7 +132,7 @@ export async function POST(req: NextRequest) {
       .upsert(updateData, {
         onConflict: "user_id",
       })
-      .select("is_paid, membership_status, member_badge, pro_expires_at")
+      .select("membership_status, pro_expires_at")
       .single();
 
     if (updateError) {

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { consumeCredit } from "@/lib/consumeCredit";
 import { ACTION_TYPE, isActionType } from "@/lib/actionTypes";
@@ -86,6 +87,35 @@ export async function POST(req: NextRequest) {
       { ok: false, error: "Unauthorized" },
       { status: 401 }
     );
+  }
+
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+
+  if (serviceKey && url) {
+    const supabaseAdmin = createClient(url, serviceKey, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    });
+
+    const { data: profileStats } = await supabaseAdmin
+      .from("profile_stats")
+      .select("daily_credits, last_credit_reset")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (profileStats && profileStats.daily_credits === null) {
+      const today = new Date().toISOString().slice(0, 10);
+      await supabaseAdmin
+        .from("profile_stats")
+        .update({
+          daily_credits: 5,
+          last_credit_reset: profileStats.last_credit_reset ?? today,
+        })
+        .eq("user_id", user.id);
+    }
   }
 
   const result = await consumeCredit(user.id, actionType, actionLabel);

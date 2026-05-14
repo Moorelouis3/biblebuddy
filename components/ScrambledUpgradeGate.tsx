@@ -7,7 +7,6 @@ import {
   FREE_SCRAMBLED_BOOK_KEYS,
   FREE_SCRAMBLED_PERSON_KEYS,
 } from "@/lib/bibleStudyGameCatalog";
-import { hasProAccess } from "@/lib/proAccess";
 import { supabase } from "@/lib/supabaseClient";
 
 type ScrambledUpgradeGateProps = {
@@ -51,12 +50,12 @@ export default function ScrambledUpgradeGate({
 
       const { data: profileStats } = await supabase
         .from("profile_stats")
-        .select("is_paid, member_badge, pro_expires_at")
+        .select("is_paid")
         .eq("user_id", user.id)
         .maybeSingle();
 
       if (!isMounted) return;
-      const paid = hasProAccess(profileStats);
+      const paid = profileStats?.is_paid === true;
       setIsPaid(paid);
       setShowUpgradeModal(!paid);
       setLoading(false);

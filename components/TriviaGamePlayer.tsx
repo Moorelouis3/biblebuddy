@@ -13,7 +13,6 @@ import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
 import { FREE_TRIVIA_BOOK_KEYS } from "@/lib/bibleStudyGameCatalog";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { dispatchLouisMoment } from "@/lib/louisMoments";
-import { hasProAccess } from "@/lib/proAccess";
 
 type TriviaGamePlayerProps = {
   bookName: string;
@@ -90,11 +89,11 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
 
       const { data: profileStats } = await supabase
         .from("profile_stats")
-        .select("is_paid, member_badge, pro_expires_at")
+        .select("is_paid")
         .eq("user_id", user.id)
         .maybeSingle();
 
-      const paid = hasProAccess(profileStats);
+      const paid = profileStats?.is_paid === true;
       setIsPaid(paid);
 
       if (!paid && shouldGateUpgrade) {
