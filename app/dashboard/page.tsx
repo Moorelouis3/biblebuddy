@@ -7,7 +7,7 @@ import Link from "next/link";
 import confetti from "canvas-confetti";
 import "../../styles/pulse.css";
 import DashboardDailyWelcomeModal from "../../components/DashboardDailyWelcomeModal";
-import LouisDailyTasksModal, { fetchLouisDailyChecklistData, type ChecklistData, type TaskState } from "../../components/LouisDailyTasksModal";
+import LouisDailyTasksModal, { buildChooseDevotionalChecklistData, fetchLouisDailyChecklistData, type ChecklistData, type TaskState } from "../../components/LouisDailyTasksModal";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
@@ -2701,9 +2701,9 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
-    const existingCycle = getLouisDailyTaskCycleStartedAt(userId);
-    if (existingCycle) {
-      setLouisDailyTaskCycleStartedAt(existingCycle);
+    const cycleStartedAt = getLouisDailyTaskCycleStartedAt(userId) ?? ensureLouisDailyTaskCycle(userId);
+    if (cycleStartedAt) {
+      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
     }
   }, [userId]);
 
@@ -2794,7 +2794,7 @@ export default function DashboardPage() {
   }, [showDailyTaskCelebrationModal]);
 
   const loadDailyTaskSummary = useCallback(async (options: { force?: boolean; silent?: boolean } = {}) => {
-    if (!userId || !hasProfileLoaded || !louisDailyTaskCycleStartedAt) {
+    if (!userId) {
       setIsLoadingDailyTaskSummary(false);
       setDailyChecklistData(null);
       dailyChecklistDataRef.current = null;
@@ -2805,7 +2805,31 @@ export default function DashboardPage() {
       return;
     }
 
-    const loadKey = `${userId}:${louisDailyTaskCycleStartedAt}:${currentStreak}`;
+    if (!hasProfileLoaded) {
+      return;
+    }
+
+    const activeCycleStartedAt =
+      louisDailyTaskCycleStartedAt ??
+      (typeof window !== "undefined" ? ensureLouisDailyTaskCycle(userId) : null);
+
+    if (activeCycleStartedAt && activeCycleStartedAt !== louisDailyTaskCycleStartedAt) {
+      setLouisDailyTaskCycleStartedAt(activeCycleStartedAt);
+    }
+
+    if (!activeCycleStartedAt) {
+      const fallbackData = buildChooseDevotionalChecklistData(userId);
+      setIsLoadingDailyTaskSummary(false);
+      setDailyChecklistData(fallbackData);
+      dailyChecklistDataRef.current = fallbackData;
+      setDailyTaskCompletedCount(fallbackData.completedCount);
+      setDailyTaskTotalCount(fallbackData.tasks.length || 5);
+      setDailyTaskNextTitle(fallbackData.nextTaskTitle);
+      setDailyTaskSummaryLine(fallbackData.summaryLine);
+      return;
+    }
+
+    const loadKey = `${userId}:${activeCycleStartedAt}:${currentStreak}`;
 
     if (dailyTaskSummaryInFlightRef.current?.key === loadKey) {
       return dailyTaskSummaryInFlightRef.current.promise;
@@ -2825,7 +2849,7 @@ export default function DashboardPage() {
       const checklistData = await fetchLouisDailyChecklistData(
         userId,
         currentStreak,
-        louisDailyTaskCycleStartedAt,
+        activeCycleStartedAt,
       );
       setDailyChecklistData(checklistData);
       dailyChecklistDataRef.current = checklistData;
@@ -2851,12 +2875,13 @@ export default function DashboardPage() {
       await loadPromise;
     } catch (error) {
       console.error("[DASHBOARD] Could not load daily task summary:", error);
-      setDailyChecklistData(null);
-      dailyChecklistDataRef.current = null;
-      setDailyTaskCompletedCount(0);
-      setDailyTaskTotalCount(5);
-      setDailyTaskNextTitle(null);
-      setDailyTaskSummaryLine(null);
+      const fallbackData = buildChooseDevotionalChecklistData(userId);
+      setDailyChecklistData(fallbackData);
+      dailyChecklistDataRef.current = fallbackData;
+      setDailyTaskCompletedCount(fallbackData.completedCount);
+      setDailyTaskTotalCount(fallbackData.tasks.length || 5);
+      setDailyTaskNextTitle(fallbackData.nextTaskTitle);
+      setDailyTaskSummaryLine(fallbackData.summaryLine);
     } finally {
       if (dailyTaskSummaryInFlightRef.current?.key === loadKey) {
         dailyTaskSummaryInFlightRef.current = null;

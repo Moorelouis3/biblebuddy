@@ -164,7 +164,7 @@ function getBibleChapterWordCount(content: unknown) {
   return verses.reduce((total, verse) => total + countWords(verse?.text), 0);
 }
 
-function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
+export function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
   return {
     title: "Bible Study",
     streakLine: "Today still counts. Let’s build momentum again.",
@@ -243,7 +243,8 @@ export async function fetchLouisDailyChecklistData(
       .from("devotional_progress")
       .select("devotional_id, day_number, is_completed, reading_completed, completed_at")
       .eq("user_id", userId)
-      .order("completed_at", { ascending: false }),
+      .order("completed_at", { ascending: false })
+      .limit(500),
     supabase
       .from("profile_stats")
       .select("free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day")
@@ -395,7 +396,8 @@ export async function fetchLouisDailyChecklistData(
         ACTION_TYPE.trivia_chapter_completed,
         ACTION_TYPE.scrambled_chapter_completed,
       ])
-      .order("created_at", { ascending: false }),
+      .order("created_at", { ascending: false })
+      .limit(500),
     supabase
       .from("completed_chapters")
       .select("id, completed_at")
