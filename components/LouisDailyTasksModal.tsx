@@ -20,6 +20,8 @@ import {
   ensureGuidedChapterStarted,
   formatGuidedUnlockCountdown,
   getGuidedChapterAccessState,
+  isGuidedChapterAccessUnavailable,
+  noteGuidedChapterAccessError,
 } from "../lib/guidedChapterAccess";
 import { getProAccess } from "../lib/proAccess";
 import { LouisAvatar } from "./LouisAvatar";
@@ -362,7 +364,7 @@ export async function fetchLouisDailyChecklistData(
   const profileStats = profileStatsRow as ProfileStatsDevotionalRow | null;
   const proAccess = getProAccess(profileStats);
 
-  if (!proAccess.hasAccess && nextDayNumber < activeTotalDays) {
+  if (!proAccess.hasAccess && nextDayNumber < activeTotalDays && !isGuidedChapterAccessUnavailable()) {
     const { data: latestGuidedRows, error: latestGuidedError } = await supabase
       .from("guided_chapter_access")
       .select("devotional_id, day_number, unlocks_at, status")
@@ -374,7 +376,9 @@ export async function fetchLouisDailyChecklistData(
       .limit(1);
 
     if (latestGuidedError) {
-      console.error("[LOUIS DAILY TASKS] Could not check guided chapter lock:", latestGuidedError);
+      if (!noteGuidedChapterAccessError(latestGuidedError)) {
+        console.error("[LOUIS DAILY TASKS] Could not check guided chapter lock:", latestGuidedError);
+      }
     } else {
       const lockedCompletedRow = latestGuidedRows?.[0];
       const unlockTime = lockedCompletedRow?.unlocks_at ? new Date(lockedCompletedRow.unlocks_at).getTime() : 0;

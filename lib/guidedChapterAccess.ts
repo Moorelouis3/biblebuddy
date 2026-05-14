@@ -40,8 +40,35 @@ type SupabaseLike = {
   from: (table: string) => any;
 };
 
+let guidedChapterAccessTableUnavailable = false;
+
 function addHours(date: Date, hours: number) {
   return new Date(date.getTime() + hours * 60 * 60 * 1000);
+}
+
+export function isGuidedChapterAccessUnavailable() {
+  return guidedChapterAccessTableUnavailable;
+}
+
+export function isGuidedChapterAccessTableMissingError(error: unknown) {
+  const typed = error as { code?: string | null; message?: string | null } | null | undefined;
+  const message = String(typed?.message || "").toLowerCase();
+  return (
+    typed?.code === "PGRST205" ||
+    typed?.code === "42P01" ||
+    message.includes("guided_chapter_access") && (
+      message.includes("could not find the table") ||
+      message.includes("does not exist") ||
+      message.includes("schema cache")
+    )
+  );
+}
+
+export function noteGuidedChapterAccessError(error: unknown) {
+  if (!isGuidedChapterAccessTableMissingError(error)) return false;
+  guidedChapterAccessTableUnavailable = true;
+  console.warn("[GUIDED_CHAPTER_ACCESS] Table is unavailable; guided locks are temporarily bypassed.");
+  return true;
 }
 
 function isSameTarget(row: GuidedChapterAccessRow | null | undefined, target: GuidedChapterTarget) {
@@ -66,6 +93,8 @@ export function formatGuidedUnlockCountdown(unlocksAt: string | null | undefined
 }
 
 async function fetchBlockingGuidedRows(supabase: SupabaseLike, userId: string) {
+  if (guidedChapterAccessTableUnavailable) return [] as GuidedChapterAccessRow[];
+
   const { data, error } = await supabase
     .from("guided_chapter_access")
     .select("*")
@@ -75,6 +104,7 @@ async function fetchBlockingGuidedRows(supabase: SupabaseLike, userId: string) {
     .limit(5);
 
   if (error) {
+    if (noteGuidedChapterAccessError(error)) return [] as GuidedChapterAccessRow[];
     console.error("[GUIDED_CHAPTER_ACCESS] Could not read guided access rows:", error);
     return [] as GuidedChapterAccessRow[];
   }
@@ -156,6 +186,7 @@ export async function ensureGuidedChapterStarted({
   target: GuidedChapterTarget;
 }) {
   if (getProAccess(profile).hasAccess) return null;
+  if (guidedChapterAccessTableUnavailable) return null;
 
   const now = new Date().toISOString();
   const payload = {
@@ -176,6 +207,7 @@ export async function ensureGuidedChapterStarted({
     .maybeSingle();
 
   if (error) {
+    if (noteGuidedChapterAccessError(error)) return null;
     console.error("[GUIDED_CHAPTER_ACCESS] Could not start guided chapter:", error);
     return null;
   }
@@ -197,6 +229,7 @@ export async function completeGuidedChapterAccess({
   now?: Date;
 }) {
   if (getProAccess(profile).hasAccess) return null;
+  if (guidedChapterAccessTableUnavailable) return null;
 
   const completedAt = now.toISOString();
   const unlocksAt = addHours(now, GUIDED_CHAPTER_UNLOCK_HOURS).toISOString();
@@ -221,6 +254,7 @@ export async function completeGuidedChapterAccess({
     .maybeSingle();
 
   if (error) {
+    if (noteGuidedChapterAccessError(error)) return null;
     console.error("[GUIDED_CHAPTER_ACCESS] Could not complete guided chapter:", error);
     return null;
   }
