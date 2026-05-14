@@ -80,11 +80,9 @@ And still, he keeps showing up.`,
 
   `## Genesis 40:1-2 - Pharaoh's Inner Circle Falls
 
-> Genesis 40:1
-> Some time after this, the cupbearer of the king of Egypt and his baker committed an offense against their lord the king of Egypt.
+> **1** Some time after this, the cupbearer of the king of Egypt and his baker committed an offense against their lord the king of Egypt.
 
-> Genesis 40:2
-> And Pharaoh was angry with his two officers, the chief cupbearer and the chief baker.
+> **2** And Pharaoh was angry with his two officers, the chief cupbearer and the chief baker.
 
 ### "Some Time After This"
 
@@ -155,11 +153,9 @@ Pharaoh is separating loyalty from betrayal inside his closest circle.`,
 
   `## Genesis 40:3-4 - Joseph Is Assigned to Pharaoh's Officers
 
-> Genesis 40:3
-> And he put them in custody in the house of the captain of the guard, in the prison where Joseph was confined.
+> **3** And he put them in custody in the house of the captain of the guard, in the prison where Joseph was confined.
 
-> Genesis 40:4
-> The captain of the guard appointed Joseph to be with them, and he attended them. They continued for some time in custody.
+> **4** The captain of the guard appointed Joseph to be with them, and he attended them. They continued for some time in custody.
 
 ### The Prison of the Captain of the Guard
 
@@ -234,11 +230,9 @@ Delay is doing work we cannot see.`,
 
   `## Genesis 40:5-6 - Two Dreams in One Night
 
-> Genesis 40:5
-> And one night they both dreamed—the cupbearer and the baker of the king of Egypt, who were confined in the prison—each his own dream, and each dream with its own interpretation.
+> **5** And one night they both dreamed—the cupbearer and the baker of the king of Egypt, who were confined in the prison—each his own dream, and each dream with its own interpretation.
 
-> Genesis 40:6
-> When Joseph came to them in the morning, he saw that they were troubled.
+> **6** When Joseph came to them in the morning, he saw that they were troubled.
 
 ### Two Dreams in One Night
 
@@ -308,11 +302,9 @@ And that attentiveness becomes the doorway for the next stage of God's plan.`,
 
   `## Genesis 40:7-8 - Joseph Gives Credit to God
 
-> Genesis 40:7
-> So he asked Pharaoh's officers who were with him in custody in his master's house, "Why are your faces downcast today?"
+> **7** So he asked Pharaoh's officers who were with him in custody in his master's house, "Why are your faces downcast today?"
 
-> Genesis 40:8
-> They said to him, "We have had dreams, and there is no one to interpret them." And Joseph said to them, "Do not interpretations belong to God? Please tell them to me."
+> **8** They said to him, "We have had dreams, and there is no one to interpret them." And Joseph said to them, "Do not interpretations belong to God? Please tell them to me."
 
 Joseph does not wait for them to start the conversation.
 
@@ -381,26 +373,19 @@ That is a powerful model for spiritual gifts, wisdom, and influence.`,
 
   `## Genesis 40:9-15 - The Cupbearer's Dream and Joseph's Honest Longing
 
-> Genesis 40:9
-> So the chief cupbearer told his dream to Joseph...
+> **9** So the chief cupbearer told his dream to Joseph...
 
-> Genesis 40:10
-> and on the vine there were three branches...
+> **10** and on the vine there were three branches...
 
-> Genesis 40:11
-> Pharaoh's cup was in my hand...
+> **11** Pharaoh's cup was in my hand...
 
-> Genesis 40:12
-> Then Joseph said to him, "This is its interpretation: the three branches are three days.
+> **12** Then Joseph said to him, "This is its interpretation: the three branches are three days.
 
-> Genesis 40:13
-> In three days Pharaoh will lift up your head and restore you to your office...
+> **13** In three days Pharaoh will lift up your head and restore you to your office...
 
-> Genesis 40:14
-> Only remember me, when it is well with you...
+> **14** Only remember me, when it is well with you...
 
-> Genesis 40:15
-> For I was indeed stolen out of the land of the Hebrews, and here also I have done nothing that they should put me into the pit.
+> **15** For I was indeed stolen out of the land of the Hebrews, and here also I have done nothing that they should put me into the pit.
 
 ### The Cupbearer's Dream
 
@@ -489,17 +474,13 @@ Those two can coexist.`,
 
   `## Genesis 40:16-19 - The Baker's Dream and the Hard Word
 
-> Genesis 40:16
-> When the chief baker saw that the interpretation was favorable, he said to Joseph, "I also had a dream..."
+> **16** When the chief baker saw that the interpretation was favorable, he said to Joseph, "I also had a dream..."
 
-> Genesis 40:17
-> ...the birds were eating it out of the basket on my head.
+> **17** ...the birds were eating it out of the basket on my head.
 
-> Genesis 40:18
-> And Joseph answered and said, "This is its interpretation: the three baskets are three days.
+> **18** And Joseph answered and said, "This is its interpretation: the three baskets are three days.
 
-> Genesis 40:19
-> In three days Pharaoh will lift up your head—from you!—and hang you on a tree..."
+> **19** In three days Pharaoh will lift up your head—from you!—and hang you on a tree..."
 
 ### The Baker Hopes for the Same Outcome
 
@@ -561,17 +542,13 @@ He is trying to be faithful.`,
 
   `## Genesis 40:20-23 - The Interpretation Comes True, and Joseph Is Forgotten
 
-> Genesis 40:20
-> On the third day, which was Pharaoh's birthday, he made a feast...
+> **20** On the third day, which was Pharaoh's birthday, he made a feast...
 
-> Genesis 40:21
-> He restored the chief cupbearer to his position...
+> **21** He restored the chief cupbearer to his position...
 
-> Genesis 40:22
-> But he hanged the chief baker, as Joseph had interpreted to them.
+> **22** But he hanged the chief baker, as Joseph had interpreted to them.
 
-> Genesis 40:23
-> Yet the chief cupbearer did not remember Joseph, but forgot him.
+> **23** Yet the chief cupbearer did not remember Joseph, but forgot him.
 
 Everything happens exactly as Joseph said.
 

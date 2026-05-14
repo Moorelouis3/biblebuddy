@@ -84,11 +84,9 @@ And that matters, because no family gets to healing without somebody eventually 
 
   `## Genesis 43:1-2 - The Famine Forces the Issue
 
-> Genesis 43:1
-> And the famine was sore in the land.
+> **1** And the famine was sore in the land.
 
-> Genesis 43:2
-> And it came to pass, when they had eaten up the corn which they had brought out of Egypt, their father said unto them, Go again, buy us a little food.
+> **2** And it came to pass, when they had eaten up the corn which they had brought out of Egypt, their father said unto them, Go again, buy us a little food.
 
 The chapter opens with pressure, not emotion.
 
@@ -145,14 +143,11 @@ It strips pride down fast.`,
 
   `## Genesis 43:3-5 - Judah Speaks with New Weight
 
-> Genesis 43:3
-> And Judah spake unto him, saying, The man did solemnly protest unto us, saying, Ye shall not see my face, except your brother be with you.
+> **3** And Judah spake unto him, saying, The man did solemnly protest unto us, saying, Ye shall not see my face, except your brother be with you.
 
-> Genesis 43:4
-> If thou wilt send our brother with us, we will go down and buy thee food:
+> **4** If thou wilt send our brother with us, we will go down and buy thee food:
 
-> Genesis 43:5
-> But if thou wilt not send him, we will not go down: for the man said unto us, Ye shall not see my face, except your brother be with you.
+> **5** But if thou wilt not send him, we will not go down: for the man said unto us, Ye shall not see my face, except your brother be with you.
 
 Judah speaks now.
 
@@ -204,20 +199,15 @@ And that matters because Genesis is quietly showing us his transformation before
 
   `## Genesis 43:6-10 - Jacob Blames, Judah Takes Responsibility
 
-> Genesis 43:6
-> And Israel said, Wherefore dealt ye so ill with me, as to tell the man whether ye had yet a brother?
+> **6** And Israel said, Wherefore dealt ye so ill with me, as to tell the man whether ye had yet a brother?
 
-> Genesis 43:7
-> And they said, The man asked us straitly of our state, and of our kindred...
+> **7** And they said, The man asked us straitly of our state, and of our kindred...
 
-> Genesis 43:8
-> And Judah said unto Israel his father, Send the lad with me...
+> **8** And Judah said unto Israel his father, Send the lad with me...
 
-> Genesis 43:9
-> I will be surety for him; of my hand shalt thou require him...
+> **9** I will be surety for him; of my hand shalt thou require him...
 
-> Genesis 43:10
-> For except we had lingered, surely now we had returned this second time.
+> **10** For except we had lingered, surely now we had returned this second time.
 
 Jacob's first instinct is blame.
 
@@ -302,17 +292,13 @@ And sometimes the thing we think is protecting us is actually draining us.`,
 
   `## Genesis 43:11-14 - Jacob Lets Go, But Not Lightly
 
-> Genesis 43:11
-> And their father Israel said unto them, If it must be so now, do this...
+> **11** And their father Israel said unto them, If it must be so now, do this...
 
-> Genesis 43:12
-> And take double money in your hand...
+> **12** And take double money in your hand...
 
-> Genesis 43:13
-> Take also your brother, and arise, go again unto the man:
+> **13** Take also your brother, and arise, go again unto the man:
 
-> Genesis 43:14
-> And God Almighty give you mercy before the man...
+> **14** And God Almighty give you mercy before the man...
 
 This is Jacob's surrender moment.
 
@@ -399,14 +385,11 @@ And sometimes that is exactly where real trust begins.`,
 
   `## Genesis 43:15-18 - The Brothers Return and Fear the House
 
-> Genesis 43:15
-> And the men took that present, and they took double money in their hand, and Benjamin; and rose up, and went down to Egypt, and stood before Joseph.
+> **15** And the men took that present, and they took double money in their hand, and Benjamin; and rose up, and went down to Egypt, and stood before Joseph.
 
-> Genesis 43:16
-> And when Joseph saw Benjamin with them, he said to the ruler of his house, Bring these men home...
+> **16** And when Joseph saw Benjamin with them, he said to the ruler of his house, Bring these men home...
 
-> Genesis 43:17-18
-> ...and the men were afraid, because they were brought into Joseph's house...
+> **17-18** ...and the men were afraid, because they were brought into Joseph's house...
 
 The brothers obey.
 They go down.
@@ -468,14 +451,11 @@ They have no category yet for the possibility that this ruler is moving toward t
 
   `## Genesis 43:19-25 - The Steward Calms Them, But They Still Do Not Understand
 
-> Genesis 43:19
-> And they came near to the steward of Joseph's house...
+> **19** And they came near to the steward of Joseph's house...
 
-> Genesis 43:21-22
-> ...we opened our sacks, and, behold, every man's money was in the mouth of his sack...
+> **21-22** ...we opened our sacks, and, behold, every man's money was in the mouth of his sack...
 
-> Genesis 43:23
-> And he said, Peace be to you, fear not...
+> **23** And he said, Peace be to you, fear not...
 
 The brothers do something wise here.
 
@@ -522,17 +502,13 @@ They stand in the tension between fear and mercy, not yet understanding either o
 
   `## Genesis 43:26-30 - Joseph Sees Benjamin and Has to Leave the Room
 
-> Genesis 43:26
-> And when Joseph came home, they brought him the present...
+> **26** And when Joseph came home, they brought him the present...
 
-> Genesis 43:28
-> And they answered, Thy servant our father is in good health...
+> **28** And they answered, Thy servant our father is in good health...
 
-> Genesis 43:29
-> And he lifted up his eyes, and saw his brother Benjamin...
+> **29** And he lifted up his eyes, and saw his brother Benjamin...
 
-> Genesis 43:30
-> And Joseph made haste; for his bowels did yearn upon his brother... and he sought where to weep; and he entered into his chamber, and wept there.
+> **30** And Joseph made haste; for his bowels did yearn upon his brother... and he sought where to weep; and he entered into his chamber, and wept there.
 
 This is one of the most human moments in Joseph's whole story.
 
@@ -581,17 +557,13 @@ Sometimes wisdom looks like knowing when you need a private room before you can 
 
   `## Genesis 43:31-34 - The Table Is Set, and Benjamin Is Tested
 
-> Genesis 43:31
-> And he washed his face, and went out, and refrained himself...
+> **31** And he washed his face, and went out, and refrained himself...
 
-> Genesis 43:32
-> And they set on for him by himself, and for them by themselves...
+> **32** And they set on for him by himself, and for them by themselves...
 
-> Genesis 43:33
-> And they sat before him, the firstborn according to his birthright...
+> **33** And they sat before him, the firstborn according to his birthright...
 
-> Genesis 43:34
-> And he took and sent messes unto them from before him: but Benjamin's mess was five times so much as any of theirs...
+> **34** And he took and sent messes unto them from before him: but Benjamin's mess was five times so much as any of theirs...
 
 Joseph comes back composed.
 

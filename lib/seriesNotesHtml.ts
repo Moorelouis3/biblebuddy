@@ -188,7 +188,21 @@ export function parseSeriesNotesToHTML(intro: string): string {
     }
 
     if (lines.every((l) => l.startsWith("> "))) {
-      const quoteLines = lines.map((l) => applyInlineHtml(l.slice(2))).join("<br>");
+      const quoteParts = lines.map((l) => l.slice(2));
+      const normalizedQuoteParts: string[] = [];
+
+      for (let index = 0; index < quoteParts.length; index += 1) {
+        const current = quoteParts[index]?.trim() ?? "";
+        const next = quoteParts[index + 1]?.trim() ?? "";
+        if (/^\*\*\d+(?:-\d+)?\*\*$/.test(current) && next) {
+          normalizedQuoteParts.push(`${current} ${next}`);
+          index += 1;
+        } else {
+          normalizedQuoteParts.push(current);
+        }
+      }
+
+      const quoteLines = normalizedQuoteParts.map((l) => applyInlineHtml(l)).join("<br>");
       parts.push(
         `<div style="border-left:4px solid #f97316;padding:0.6rem 0.8rem;margin:0.5rem 0;background:#fff7ed;border-radius:0 0.5rem 0.5rem 0">` +
           `<p style="font-size:0.875rem;font-style:italic;color:#374151;line-height:1.6;margin:0">${quoteLines}</p>` +

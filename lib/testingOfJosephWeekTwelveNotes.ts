@@ -84,14 +84,11 @@ Those are the questions in the room.`,
 
   `## 📍 Genesis 48:1-4 - Jacob Remembers the God Who Appeared to Him
 
-> Genesis 48:1
-> And it came to pass after these things, that one told Joseph, Behold, thy father is sick...
+> **1** And it came to pass after these things, that one told Joseph, Behold, thy father is sick...
 
-> Genesis 48:2
-> And one told Jacob, and said, Behold, thy son Joseph cometh unto thee...
+> **2** And one told Jacob, and said, Behold, thy son Joseph cometh unto thee...
 
-> Genesis 48:3-4
-> And Jacob said unto Joseph, God Almighty appeared unto me at Luz in the land of Canaan, and blessed me...
+> **3-4** And Jacob said unto Joseph, God Almighty appeared unto me at Luz in the land of Canaan, and blessed me...
 
 The chapter opens with illness.
 
@@ -150,14 +147,11 @@ It is about divine continuity.`,
 
   `## 📍 Genesis 48:5-7 - Ephraim and Manasseh Are Counted as Jacob's Sons
 
-> Genesis 48:5
-> And now thy two sons, Ephraim and Manasseh... are mine; as Reuben and Simeon, they shall be mine.
+> **5** And now thy two sons, Ephraim and Manasseh... are mine; as Reuben and Simeon, they shall be mine.
 
-> Genesis 48:6
-> And thy issue, which thou begettest after them, shall be thine...
+> **6** And thy issue, which thou begettest after them, shall be thine...
 
-> Genesis 48:7
-> And as for me, when I came from Padan, Rachel died by me...
+> **7** And as for me, when I came from Padan, Rachel died by me...
 
 These verses are huge.
 
@@ -212,14 +206,11 @@ Rachel is still present in the emotional background of this moment.`,
 
   `## 📍 Genesis 48:8-14 - Jacob Crosses His Hands
 
-> Genesis 48:8
-> And Israel beheld Joseph's sons, and said, Who are these?
+> **8** And Israel beheld Joseph's sons, and said, Who are these?
 
-> Genesis 48:10
-> Now the eyes of Israel were dim for age...
+> **10** Now the eyes of Israel were dim for age...
 
-> Genesis 48:13-14
-> And Joseph took them both... but Israel stretched out his right hand, and laid it upon Ephraim's head... guiding his hands wittingly...
+> **13-14** And Joseph took them both... but Israel stretched out his right hand, and laid it upon Ephraim's head... guiding his hands wittingly...
 
 This is the center of the chapter.
 
@@ -284,11 +275,9 @@ And God still crosses what we arranged because He sees something we do not.`,
 
   `## 📍 Genesis 48:15-16 - Jacob Blesses Joseph Through the Boys
 
-> Genesis 48:15
-> And he blessed Joseph, and said, God, before whom my fathers Abraham and Isaac did walk...
+> **15** And he blessed Joseph, and said, God, before whom my fathers Abraham and Isaac did walk...
 
-> Genesis 48:16
-> The Angel which redeemed me from all evil, bless the lads...
+> **16** The Angel which redeemed me from all evil, bless the lads...
 
 This blessing is beautiful because Jacob is blessing Joseph through his sons.
 
@@ -343,17 +332,13 @@ And now he asks that same redeeming God to bless the boys.`,
 
   `## 📍 Genesis 48:17-20 - Joseph Tries to Correct Him, and Jacob Refuses
 
-> Genesis 48:17
-> And when Joseph saw that his father laid his right hand upon the head of Ephraim, it displeased him...
+> **17** And when Joseph saw that his father laid his right hand upon the head of Ephraim, it displeased him...
 
-> Genesis 48:18
-> Not so, my father: for this is the firstborn...
+> **18** Not so, my father: for this is the firstborn...
 
-> Genesis 48:19
-> And his father refused, and said, I know it, my son, I know it...
+> **19** And his father refused, and said, I know it, my son, I know it...
 
-> Genesis 48:20
-> And he blessed them that day...
+> **20** And he blessed them that day...
 
 Joseph sees what Jacob is doing, and he tries to fix it.
 
@@ -418,11 +403,9 @@ These boys become a lasting point of reference inside the covenant people.`,
 
   `## 📍 Genesis 48:21-22 - Joseph Gets a Word About the Future
 
-> Genesis 48:21
-> And Israel said unto Joseph, Behold, I die: but God shall be with you, and bring you again unto the land of your fathers.
+> **21** And Israel said unto Joseph, Behold, I die: but God shall be with you, and bring you again unto the land of your fathers.
 
-> Genesis 48:22
-> Moreover I have given to thee one portion above thy brethren...
+> **22** Moreover I have given to thee one portion above thy brethren...
 
 Jacob ends by speaking directly to Joseph again.
 

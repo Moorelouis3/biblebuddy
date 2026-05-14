@@ -92,11 +92,9 @@ what would your pattern sound like if somebody spoke it out loud?`,
 
   `## 📍 Genesis 49:1-2 - Jacob Calls the Sons Together
 
-> Genesis 49:1
-> And Jacob called unto his sons, and said, Gather yourselves together, that I may tell you that which shall befall you in the last days.
+> **1** And Jacob called unto his sons, and said, Gather yourselves together, that I may tell you that which shall befall you in the last days.
 
-> Genesis 49:2
-> Gather yourselves together, and hear, ye sons of Jacob; and hearken unto Israel your father.
+> **2** Gather yourselves together, and hear, ye sons of Jacob; and hearken unto Israel your father.
 
 The chapter opens with seriousness.
 
@@ -140,11 +138,9 @@ The father who lived the mess is now speaking as the covenant head over the futu
 
   `## 📍 Genesis 49:3-4 - Reuben: Privilege Lost Through Instability
 
-> Genesis 49:3
-> Reuben, thou art my firstborn, my might, and the beginning of my strength...
+> **3** Reuben, thou art my firstborn, my might, and the beginning of my strength...
 
-> Genesis 49:4
-> Unstable as water, thou shalt not excel...
+> **4** Unstable as water, thou shalt not excel...
 
 Jacob begins with Reuben.
 
@@ -203,14 +199,11 @@ It is a warning for anyone who assumes opportunity is enough without character.`
 
   `## 📍 Genesis 49:5-7 - Simeon and Levi: Violence Leaves a Mark
 
-> Genesis 49:5
-> Simeon and Levi are brethren; instruments of cruelty are in their habitations.
+> **5** Simeon and Levi are brethren; instruments of cruelty are in their habitations.
 
-> Genesis 49:6
-> O my soul, come not thou into their secret...
+> **6** O my soul, come not thou into their secret...
 
-> Genesis 49:7
-> I will divide them in Jacob, and scatter them in Israel.
+> **7** I will divide them in Jacob, and scatter them in Israel.
 
 Jacob addresses Simeon and Levi together.
 
@@ -268,14 +261,11 @@ violent character leaves generational consequences.`,
 
   `## 📍 Genesis 49:8-12 - Judah: Praise, Rule, and the Scepter
 
-> Genesis 49:8
-> Judah, thou art he whom thy brethren shall praise...
+> **8** Judah, thou art he whom thy brethren shall praise...
 
-> Genesis 49:10
-> The sceptre shall not depart from Judah, nor a lawgiver from between his feet...
+> **10** The sceptre shall not depart from Judah, nor a lawgiver from between his feet...
 
-> Genesis 49:10
-> ...until Shiloh come; and unto him shall the gathering of the people be.
+> **10** ...until Shiloh come; and unto him shall the gathering of the people be.
 
 This is the centerpiece of the chapter.
 
@@ -357,9 +347,7 @@ It shows that repentance, responsibility, and God’s purpose can redirect a lif
 
   `## 📍 Genesis 49:13-21 - Zebulun, Issachar, Dan, Gad, Asher, Naphtali
 
-> Genesis 49:13-21
-
-Jacob moves through the next sons more quickly, but not carelessly.
+**13-21** Jacob moves through the next sons more quickly, but not carelessly.
 
 Each word carries shape.
 
@@ -412,14 +400,11 @@ But each one is still spoken into with intention.`,
 
   `## 📍 Genesis 49:22-26 - Joseph: Fruitfulness Through Affliction
 
-> Genesis 49:22
-> Joseph is a fruitful bough, even a fruitful bough by a well...
+> **22** Joseph is a fruitful bough, even a fruitful bough by a well...
 
-> Genesis 49:23
-> The archers have sorely grieved him, and shot at him, and hated him:
+> **23** The archers have sorely grieved him, and shot at him, and hated him:
 
-> Genesis 49:24
-> But his bow abode in strength...
+> **24** But his bow abode in strength...
 
 Jacob’s words over Joseph are rich.
 
@@ -477,8 +462,7 @@ That is one of the clearest summaries of the whole Joseph story.`,
 
   `## 📍 Genesis 49:27 - Benjamin
 
-> Genesis 49:27
-> Benjamin shall ravin as a wolf...
+> **27** Benjamin shall ravin as a wolf...
 
 Benjamin receives a brief but intense word.
 
@@ -494,14 +478,11 @@ It is about what their lines will become.`,
 
   `## 📍 Genesis 49:28-33 - Jacob Finishes, Gives Burial Instructions, and Dies
 
-> Genesis 49:28
-> All these are the twelve tribes of Israel...
+> **28** All these are the twelve tribes of Israel...
 
-> Genesis 49:29
-> I am to be gathered unto my people: bury me with my fathers...
+> **29** I am to be gathered unto my people: bury me with my fathers...
 
-> Genesis 49:33
-> And when Jacob had made an end of commanding his sons... he yielded up the ghost...
+> **33** And when Jacob had made an end of commanding his sons... he yielded up the ghost...
 
 After all the words are spoken, the text steps back and says:
 

@@ -113,8 +113,7 @@ It is one of the clearest reminders in Genesis that God's redemptive plan keeps 
 
   `## Genesis 38:1 - Judah Goes Down
 
-> Genesis 38:1
-> It came to pass at that time, that Judah went down from his brethren, and turned in to a certain Adullamite, whose name was Hirah.
+> **1** It came to pass at that time, that Judah went down from his brethren, and turned in to a certain Adullamite, whose name was Hirah.
 
 This verse is short.
 But it is heavy.
@@ -221,8 +220,7 @@ If you keep running from the right people long enough, you will eventually start
 
   `## Genesis 38:2 - A Dangerous Alignment
 
-> Genesis 38:2
-> And Judah saw there a daughter of a certain Canaanite, whose name was Shuah; and he took her, and went in unto her.
+> **2** And Judah saw there a daughter of a certain Canaanite, whose name was Shuah; and he took her, and went in unto her.
 
 This verse moves fast.
 
@@ -319,14 +317,11 @@ That is why the chapter lands so hard.`,
 
   `## Genesis 38:3-5 - Judah's House Is Built in Canaan
 
-> Genesis 38:3
-> And she conceived, and bare a son; and he called his name Er.
+> **3** And she conceived, and bare a son; and he called his name Er.
 
-> Genesis 38:4
-> And she conceived again, and bare a son; and she called his name Onan.
+> **4** And she conceived again, and bare a son; and she called his name Onan.
 
-> Genesis 38:5
-> And she yet again conceived, and bare a son; and called his name Shelah: and he was at Chezib, when she bare him.
+> **5** And she yet again conceived, and bare a son; and called his name Shelah: and he was at Chezib, when she bare him.
 
 This section is quietly doing something important.
 
@@ -379,23 +374,17 @@ But it does shape the atmosphere people breathe in every day.`,
 
   `## Genesis 38:6-11 - Tamar, Er, Onan, and a Promise Delayed
 
-> Genesis 38:6
-> And Judah took a wife for Er his firstborn, whose name was Tamar.
+> **6** And Judah took a wife for Er his firstborn, whose name was Tamar.
 
-> Genesis 38:7
-> And Er, Judah's firstborn, was wicked in the sight of the LORD; and the LORD slew him.
+> **7** And Er, Judah's firstborn, was wicked in the sight of the LORD; and the LORD slew him.
 
-> Genesis 38:8
-> And Judah said unto Onan, Go in unto thy brother's wife, and marry her, and raise up seed to thy brother.
+> **8** And Judah said unto Onan, Go in unto thy brother's wife, and marry her, and raise up seed to thy brother.
 
-> Genesis 38:9
-> And Onan knew that the seed should not be his...
+> **9** And Onan knew that the seed should not be his...
 
-> Genesis 38:10
-> And the thing which he did displeased the LORD: wherefore he slew him also.
+> **10** And the thing which he did displeased the LORD: wherefore he slew him also.
 
-> Genesis 38:11
-> Then said Judah to Tamar his daughter in law, Remain a widow at thy father's house, till Shelah my son be grown...
+> **11** Then said Judah to Tamar his daughter in law, Remain a widow at thy father's house, till Shelah my son be grown...
 
 ### Judah Takes a Wife for Er
 
@@ -534,14 +523,11 @@ The structure of the situation already says it.`,
 
   `## Genesis 38:12-14 - Tamar's Breaking Point
 
-> Genesis 38:12
-> And in process of time the daughter of Shuah Judah's wife died...
+> **12** And in process of time the daughter of Shuah Judah's wife died...
 
-> Genesis 38:13
-> And it was told Tamar, saying, Behold thy father in law goeth up to Timnath to shear his sheep.
+> **13** And it was told Tamar, saying, Behold thy father in law goeth up to Timnath to shear his sheep.
 
-> Genesis 38:14
-> And she put her widow's garments off from her, and covered her with a vail...
+> **14** And she put her widow's garments off from her, and covered her with a vail...
 
 ### Judah Loses His Wife
 
@@ -636,20 +622,15 @@ Eventually the whole house becomes unstable.`,
 
   `## Genesis 38:15-19 - Judah and Tamar at the Crossroads
 
-> Genesis 38:15
-> When Judah saw her, he thought her to be an harlot; because she had covered her face.
+> **15** When Judah saw her, he thought her to be an harlot; because she had covered her face.
 
-> Genesis 38:16
-> And he turned unto her by the way...
+> **16** And he turned unto her by the way...
 
-> Genesis 38:17
-> And he said, I will send thee a kid from the flock...
+> **17** And he said, I will send thee a kid from the flock...
 
-> Genesis 38:18
-> What pledge shall I give thee?... Thy signet, and thy bracelets, and thy staff...
+> **18** What pledge shall I give thee?... Thy signet, and thy bracelets, and thy staff...
 
-> Genesis 38:19
-> And she arose, and went away, and laid by her vail from her...
+> **19** And she arose, and went away, and laid by her vail from her...
 
 ### Why Judah Misreads the Moment So Quickly
 
@@ -747,17 +728,13 @@ And Judah has no idea the truth is already on its way toward him.`,
 
   `## Genesis 38:20-23 - The Missing Prostitute and Judah's Real Fear
 
-> Genesis 38:20
-> And Judah sent the kid by the hand of his friend the Adullamite, to receive his pledge from the woman's hand: but he found her not.
+> **20** And Judah sent the kid by the hand of his friend the Adullamite, to receive his pledge from the woman's hand: but he found her not.
 
-> Genesis 38:21
-> Then he asked the men of that place, saying, Where is the harlot, that was openly by the way side? And they said, There was no harlot in this place.
+> **21** Then he asked the men of that place, saying, Where is the harlot, that was openly by the way side? And they said, There was no harlot in this place.
 
-> Genesis 38:22
-> And he returned to Judah, and said, I cannot find her...
+> **22** And he returned to Judah, and said, I cannot find her...
 
-> Genesis 38:23
-> And Judah said, Let her take it to her, lest we be shamed...
+> **23** And Judah said, Let her take it to her, lest we be shamed...
 
 ### Judah Sends Hirah
 
@@ -809,14 +786,11 @@ He still has no idea exposure is coming in a much deeper form.`,
 
   `## Genesis 38:24-26 - Tamar Exposes Judah, and Judah Finally Tells the Truth
 
-> Genesis 38:24
-> And it came to pass about three months after, that it was told Judah, saying, Tamar thy daughter in law hath played the harlot; and also, behold, she is with child by whoredom. And Judah said, Bring her forth, and let her be burnt.
+> **24** And it came to pass about three months after, that it was told Judah, saying, Tamar thy daughter in law hath played the harlot; and also, behold, she is with child by whoredom. And Judah said, Bring her forth, and let her be burnt.
 
-> Genesis 38:25
-> When she was brought forth, she sent to her father in law, saying, By the man, whose these are, am I with child...
+> **25** When she was brought forth, she sent to her father in law, saying, By the man, whose these are, am I with child...
 
-> Genesis 38:26
-> And Judah acknowledged them, and said, She hath been more righteous than I; because that I gave her not to Shelah my son...
+> **26** And Judah acknowledged them, and said, She hath been more righteous than I; because that I gave her not to Shelah my son...
 
 ### Three Months Later
 
@@ -892,17 +866,13 @@ But because exposure has finally broken through denial.`,
 
   `## Genesis 38:27-30 - Perez, Zerah, and the Breach That Opens the Future
 
-> Genesis 38:27
-> And it came to pass in the time of her travail, that, behold, twins were in her womb.
+> **27** And it came to pass in the time of her travail, that, behold, twins were in her womb.
 
-> Genesis 38:28
-> And it came to pass, when she travailed, that the one put out his hand: and the midwife took and bound upon his hand a scarlet thread, saying, This came out first.
+> **28** And it came to pass, when she travailed, that the one put out his hand: and the midwife took and bound upon his hand a scarlet thread, saying, This came out first.
 
-> Genesis 38:29
-> And it came to pass, as he drew back his hand, that, behold, his brother came out: and she said, How hast thou broken forth? this breach be upon thee: therefore his name was called Pharez.
+> **29** And it came to pass, as he drew back his hand, that, behold, his brother came out: and she said, How hast thou broken forth? this breach be upon thee: therefore his name was called Pharez.
 
-> Genesis 38:30
-> And afterward came out his brother, that had the scarlet thread upon his hand: and his name was called Zarah.
+> **30** And afterward came out his brother, that had the scarlet thread upon his hand: and his name was called Zarah.
 
 ### A Strange Birth
 

@@ -100,14 +100,11 @@ Joseph is about to find out that the men standing before him are no longer the e
 
   `## 📍 Genesis 44:1-5 - Joseph Sets the Final Test
 
-> Genesis 44:1
-> And he commanded the steward of his house, saying, Fill the men's sacks with food, as much as they can carry...
+> **1** And he commanded the steward of his house, saying, Fill the men's sacks with food, as much as they can carry...
 
-> Genesis 44:2
-> And put my cup, the silver cup, in the sack's mouth of the youngest...
+> **2** And put my cup, the silver cup, in the sack's mouth of the youngest...
 
-> Genesis 44:4-5
-> Up, follow after the men... Wherefore have ye rewarded evil for good?
+> **4-5** Up, follow after the men... Wherefore have ye rewarded evil for good?
 
 Joseph moves quickly.
 
@@ -188,14 +185,11 @@ This is the final exam.`,
 
   `## 📍 Genesis 44:6-10 - The Brothers Speak with Confidence
 
-> Genesis 44:6
-> And he overtook them, and he spake unto them these same words.
+> **6** And he overtook them, and he spake unto them these same words.
 
-> Genesis 44:7
-> And they said unto him, Wherefore saith my lord these words? God forbid that thy servants should do according to this thing:
+> **7** And they said unto him, Wherefore saith my lord these words? God forbid that thy servants should do according to this thing:
 
-> Genesis 44:9
-> With whomsoever of thy servants it be found, both let him die, and we also will be my lord's bondmen.
+> **9** With whomsoever of thy servants it be found, both let him die, and we also will be my lord's bondmen.
 
 When the steward catches up, the brothers respond immediately.
 
@@ -257,14 +251,11 @@ This is about whether they will abandon another brother when the cost gets high.
 
   `## 📍 Genesis 44:11-13 - The Cup Is Found, and the Brothers Tear Their Clothes
 
-> Genesis 44:11
-> Then they speedily took down every man his sack to the ground...
+> **11** Then they speedily took down every man his sack to the ground...
 
-> Genesis 44:12
-> And he searched, and began at the eldest, and left at the youngest: and the cup was found in Benjamin's sack.
+> **12** And he searched, and began at the eldest, and left at the youngest: and the cup was found in Benjamin's sack.
 
-> Genesis 44:13
-> Then they rent their clothes, and laded every man his ass, and returned to the city.
+> **13** Then they rent their clothes, and laded every man his ass, and returned to the city.
 
 This scene is brutal.
 
@@ -332,14 +323,11 @@ That alone already tells us this family is not where it was in Genesis 37.`,
 
   `## 📍 Genesis 44:14-17 - Judah Draws Near
 
-> Genesis 44:14
-> And Judah and his brethren came to Joseph's house...
+> **14** And Judah and his brethren came to Joseph's house...
 
-> Genesis 44:16
-> And Judah said, What shall we say unto my lord? what shall we speak? or how shall we clear ourselves? God hath found out the iniquity of thy servants...
+> **16** And Judah said, What shall we say unto my lord? what shall we speak? or how shall we clear ourselves? God hath found out the iniquity of thy servants...
 
-> Genesis 44:17
-> ...the man in whose hand the cup is found, he shall be my servant; and as for you, get you up in peace unto your father.
+> **17** ...the man in whose hand the cup is found, he shall be my servant; and as for you, get you up in peace unto your father.
 
 This section is huge.
 
@@ -399,14 +387,11 @@ And now Judah has to answer it.`,
 
   `## 📍 Genesis 44:18-29 - Judah's Plea Begins
 
-> Genesis 44:18
-> Then Judah came near unto him, and said...
+> **18** Then Judah came near unto him, and said...
 
-> Genesis 44:19-20
-> My lord asked his servants, saying, Have ye a father, or a brother?
+> **19-20** My lord asked his servants, saying, Have ye a father, or a brother?
 
-> Genesis 44:27-28
-> And thy servant my father said unto us, Ye know that my wife bare me two sons...
+> **27-28** And thy servant my father said unto us, Ye know that my wife bare me two sons...
 
 This is one of the longest speeches in Genesis.
 
@@ -457,17 +442,13 @@ That is evidence of transformation.`,
 
   `## 📍 Genesis 44:30-34 - Judah Offers Himself Instead
 
-> Genesis 44:30
-> Now therefore when I come to thy servant my father, and the lad be not with us...
+> **30** Now therefore when I come to thy servant my father, and the lad be not with us...
 
-> Genesis 44:32
-> For thy servant became surety for the lad unto my father...
+> **32** For thy servant became surety for the lad unto my father...
 
-> Genesis 44:33
-> Now therefore, I pray thee, let thy servant abide instead of the lad a bondman to my lord...
+> **33** Now therefore, I pray thee, let thy servant abide instead of the lad a bondman to my lord...
 
-> Genesis 44:34
-> For how shall I go up to my father, and the lad be not with me?
+> **34** For how shall I go up to my father, and the lad be not with me?
 
 This is the turning point.
 
