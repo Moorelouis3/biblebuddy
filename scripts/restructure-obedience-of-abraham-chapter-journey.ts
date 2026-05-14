@@ -492,7 +492,7 @@ async function restructureObedienceOfAbraham() {
   const { error: updateDevotionalError } = await supabase
     .from("devotionals")
     .update({
-      subtitle: "A 15-Chapter Journey",
+      subtitle: "A 15-Day Chapter Journey",
       description:
         "A 15-chapter Bible study through Genesis 11-25. Each chapter follows the full Bible Buddy flow: intro, Bible reading, notes, trivia, Scrambled, and reflection, so Abraham's call, waiting, covenant, mistakes, obedience, and legacy stay centered on the same passage.",
       total_days: abrahamDays.length,
@@ -522,7 +522,7 @@ async function restructureObedienceOfAbraham() {
     console.log(`Upserted day ${day.day_number}: ${day.day_title} (${day.bible_reading_book} ${day.bible_reading_chapter})`);
   }
 
-  console.log(`The Obedience of Abraham is now a ${abrahamDays.length}-chapter journey.`);
+  console.log(`The Obedience of Abraham is now a ${abrahamDays.length}-day chapter journey.`);
 }
 
 restructureObedienceOfAbraham().catch((error) => {
