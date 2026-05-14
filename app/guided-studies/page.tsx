@@ -44,7 +44,7 @@ const tools = [
   },
 ];
 
-const hiddenToolHrefs = new Set(["/bible-studies", "/reading-plans"]);
+const hiddenToolHrefs = new Set(["/devotionals", "/bible-studies", "/reading-plans"]);
 const visibleTools = tools.filter((tool) => !hiddenToolHrefs.has(tool.href));
 
 export default function GuidedStudiesPage() {
