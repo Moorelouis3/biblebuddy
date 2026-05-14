@@ -578,7 +578,7 @@ async function restructureTestingOfJoseph() {
   const { error: updateDevotionalError } = await supabase
     .from("devotionals")
     .update({
-      subtitle: "A 14-Day Chapter Journey",
+      subtitle: "A 14-Chapter Journey",
       description:
         "A 14-chapter Bible study through Genesis 37-50. Each chapter follows the full Bible Buddy flow: intro, Bible reading, notes, trivia, Scrambled, and reflection, so Joseph's testing, waiting, wisdom, reconciliation, and God's providence stay centered on the same passage.",
       total_days: josephDays.length,
@@ -608,7 +608,7 @@ async function restructureTestingOfJoseph() {
     console.log(`Upserted day ${day.day_number}: ${day.day_title} (${day.bible_reading_book} ${day.bible_reading_chapter})`);
   }
 
-  console.log(`The Testing of Joseph is now a ${josephDays.length}-day chapter journey.`);
+  console.log(`The Testing of Joseph is now a ${josephDays.length}-chapter journey.`);
 }
 
 restructureTestingOfJoseph().catch((error) => {

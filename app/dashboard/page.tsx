@@ -2035,11 +2035,12 @@ export default function DashboardPage() {
 
   async function handleCardClick(
     event: MouseEvent<HTMLAnchorElement>,
-    tourKey: FeatureTourKey | "bible_buddy_tv" | "recommendation",
+    tourKey: FeatureTourKey | "bible_buddy_tv" | "bible_studies" | "recommendation",
     path: string
   ) {
-    const dashboardCardLabelMap: Partial<Record<FeatureTourKey | "bible_buddy_tv" | "recommendation", string>> = {
+    const dashboardCardLabelMap: Partial<Record<FeatureTourKey | "bible_buddy_tv" | "bible_studies" | "recommendation", string>> = {
       bible: "The Bible",
+      bible_studies: "Bible Studies",
       bible_study_hub: "Bible Study Group",
       guided_studies: "Bible Study Tools",
       bible_buddy_tv: "Bible Buddy TV",
@@ -3078,6 +3079,16 @@ export default function DashboardPage() {
       emoji: "📖",
       accent: "border-blue-200 bg-blue-100",
       onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "bible", "/reading"),
+    },
+    {
+      key: "bible_studies",
+      title: "Bible Studies",
+      subtitle: "Guided chapter studies with reading, notes, games, and reflection",
+      href: "/devotionals",
+      eyebrow: "Chapter Journeys",
+      emoji: "🌅",
+      accent: "border-teal-200 bg-teal-100",
+      onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "bible_studies", "/devotionals"),
     },
     {
       key: "group",

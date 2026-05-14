@@ -223,8 +223,8 @@ function CollapsibleTask({
           <p className="text-xs font-black uppercase tracking-[0.24em] text-gray-700">Task {taskNumber}</p>
           <h2 className="mt-1 text-xl font-black text-gray-950">{title}</h2>
           {estimate ? (
-            <p className="mt-2 inline-flex rounded-full bg-[#eef6fd] px-3 py-1 text-xs font-black text-[#3f6f91]">
-              {estimate.label} - {estimate.detail}
+            <p className="mt-2 text-xs font-black text-gray-950">
+              Takes about {estimate.label} - {estimate.detail}
             </p>
           ) : null}
         </div>
@@ -330,7 +330,10 @@ export default function ProverbsStudyDayPage() {
         2,
         12,
       );
-      const notesMinutes = estimateMinutesFromWords(notesWords, 220, 5, 24);
+      const notesMinutesBase = estimateMinutesFromWords(notesWords, 220, 5, 30);
+      const notesMinutes = devotional?.title === "The Testing of Joseph"
+        ? Math.max(20, notesMinutesBase)
+        : notesMinutesBase;
       const triviaMinutes = Math.max(3, Math.ceil((triviaQuestionCount * 45) / 60));
       const scrambledMinutes = Math.max(3, Math.ceil((scrambledQuestionCount * 50) / 60));
 
@@ -351,7 +354,7 @@ export default function ProverbsStudyDayPage() {
     return () => {
       cancelled = true;
     };
-  }, [chapterLabel, day, scrambledChapter, triviaChapter]);
+  }, [chapterLabel, day, devotional?.title, scrambledChapter, triviaChapter]);
 
   async function loadAll() {
     setLoading(true);

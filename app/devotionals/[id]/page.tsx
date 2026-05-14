@@ -2,7 +2,7 @@
 
 function getCoverImage(title: string): string | null {
   if (title === "The Tempting of Jesus") return "/newtempting.png";
-  if (title === "The Testing of Joseph") return "/newtesting.png";
+  if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
   if (title === "The Disciples of Jesus") return "/disciplesofjesusdevotional.png";
   if (title === "Women of the Bible") return "/womenofthebible.png";
   if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
@@ -21,7 +21,7 @@ function getPreviewDescription(title: string, fallback: string): string {
     "The Tempting of Jesus":
       "Jesus walks into the wilderness alone, hungry, and led by the Spirit. What follows is not a small private struggle, but a direct showdown between the Son of God and the voice of temptation. This Bible study follows that tension closely, showing how Jesus answered pressure with truth instead of impulse. You will see the enemy's strategy, the power of Scripture, and the strength of obedience when no one else is watching. If you have ever felt tired, tempted, or spiritually stretched, this story will hit close to home.",
     "The Testing of Joseph":
-      "Joseph's life turns from favored son to betrayed brother, from slave to prisoner, and from forgotten man to ruler in Egypt. Every chapter feels like another sharp turn in a story that should have broken him. This Bible study lets you walk through the loneliness, injustice, waiting, and unexpected mercy that shaped Joseph's life. It is about dreams that seem delayed, suffering that makes no sense, and the quiet faithfulness that God still uses. If you have ever wondered what God is doing in a long painful season, Joseph's story speaks right into that question.",
+      "Joseph's life turns fast.\n\nHe moves from favored son to betrayed brother, from slave to prisoner, and from forgotten man to ruler in Egypt.\n\nThis 14-chapter journey walks through:\n\n🧥 the coat and family tension\n🌙 the dreams that made everything louder\n🕳️ the pit, betrayal, and Egypt\n🔒 prison, waiting, and hidden faithfulness\n🌾 famine, wisdom, and promotion\n🤝 forgiveness, reunion, and God's providence\n\nEvery chapter keeps the same Bible Buddy flow: intro, Bible reading, notes, trivia, Scrambled, and reflection.\n\nIf you have ever wondered what God is doing in a long painful season, Joseph's story speaks right into that question.",
     "The Disciples of Jesus":
       "These men were not polished heroes when Jesus called them. They were ordinary, rough, unsure, and often slower to understand than they should have been. This Bible study follows their lives as Jesus teaches, corrects, stretches, and changes them from the inside out. You will watch fear turn into faith, confusion turn into conviction, and ordinary people become the foundation of a movement that changed the world. It is a story about calling, failure, growth, and what happens when people stay close to Jesus long enough to be transformed.",
     "Women of the Bible":
@@ -138,10 +138,12 @@ function getLouisDaySnippet(day: DevotionalDay) {
 function buildLouisDayStartMessage(devotional: Devotional, day: DevotionalDay) {
   const topic = getLouisDayTopic(day);
   const snippet = getLouisDaySnippet(day);
+  const isChapterJourney = isChapterJourneyStudyTitle(devotional.title);
+  const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
 
   return [
-    "this is your Bible study for today",
-    `Day ${day.day_number} of ${devotional.title} is about ${topic}.`,
+    isChapterJourney ? "this is your next Bible study chapter" : "this is your next Bible study section",
+    isChapterJourney ? `${chapterLabel} in ${devotional.title} is about ${topic}.` : `Part ${day.day_number} of ${devotional.title} is about ${topic}.`,
     snippet,
     "take your time reading through it and really think about what it means",
     "this isn’t about rushing, it’s about building consistency and understanding",
@@ -428,13 +430,9 @@ export default function DevotionalDetailPage() {
   const completedDays = isChapterJourneyStudy
     ? Array.from(chapterTaskProgress.values()).filter((p) => p.completed >= p.total).length
     : Array.from(progress.values()).filter((p) => p.is_completed).length;
-  const totalChapterTasks = isChapterJourneyStudy ? (devotional?.total_days || 0) * WISDOM_TASK_TOTAL : devotional?.total_days || 0;
-  const completedChapterTasks = isChapterJourneyStudy
-    ? Array.from(chapterTaskProgress.values()).reduce((sum, p) => sum + p.completed, 0)
-    : completedDays;
   const progressPercent = devotional
     ? isChapterJourneyStudy
-      ? (completedChapterTasks / Math.max(totalChapterTasks, 1)) * 100
+      ? (completedDays / Math.max(devotional.total_days, 1)) * 100
       : (completedDays / devotional.total_days) * 100
     : 0;
   const previewDescription = devotional

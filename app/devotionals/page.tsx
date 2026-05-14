@@ -34,7 +34,7 @@ const HIDDEN_DEVOTIONAL_TITLES = new Set([
   "The Calling of Moses",
 ]);
 
-const FEATURED_DEVOTIONAL_TITLE = "The Wisdom of Proverbs";
+const FEATURED_DEVOTIONAL_TITLE = "The Testing of Joseph";
 const CHAPTER_JOURNEY_TITLES = new Set(["The Wisdom of Proverbs", "The Testing of Joseph"]);
 const CHAPTER_JOURNEY_TASK_TOTAL = 6;
 
@@ -160,7 +160,7 @@ export default function DevotionalsPage() {
       return "/newtempting.png";
     }
     if (title === "The Testing of Joseph") {
-      return "/newtesting.png";
+      return "/TheTestingofJospehnewcover.png";
     }
     if (title === "The Disciples of Jesus") {
       return "/disciplesofjesusdevotional.png";
@@ -316,7 +316,6 @@ export default function DevotionalsPage() {
           const devotionalDays = days.filter((day) => day.devotional_id === devotional.id);
 
           if (isChapterJourney(devotional.title)) {
-            let completedSteps = 0;
             let completedDays = 0;
 
             devotionalDays.forEach((day) => {
@@ -349,20 +348,19 @@ export default function DevotionalsPage() {
                 hasReflection,
               ].filter(Boolean).length;
 
-              completedSteps += daySteps;
               if (daySteps >= CHAPTER_JOURNEY_TASK_TOTAL) completedDays += 1;
             });
 
-            const totalSteps = Math.max(1, devotional.total_days * CHAPTER_JOURNEY_TASK_TOTAL);
-            const percent = clampPercent((completedSteps / totalSteps) * 100);
+            const totalChapters = Math.max(1, devotional.total_days);
+            const percent = clampPercent((completedDays / totalChapters) * 100);
 
             nextProgress[devotional.id] = {
-              completedSteps,
-              totalSteps,
+              completedSteps: completedDays,
+              totalSteps: totalChapters,
               completedDays,
               totalDays: devotional.total_days,
               percent,
-              isComplete: completedSteps >= totalSteps,
+              isComplete: completedDays >= devotional.total_days,
               label: `${completedDays}/${devotional.total_days} chapters`,
             };
             return;
@@ -484,7 +482,7 @@ export default function DevotionalsPage() {
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Step 1: Read the Bible Study Intro</p>
                     <p className="text-gray-700 leading-relaxed text-sm">
-                      Start by reading the daily narrative. This sets the theme and helps you understand what's happening and why it matters.
+                      Start by reading the chapter intro. This sets the theme and helps you understand what's happening and why it matters.
                     </p>
                   </div>
 
@@ -504,7 +502,7 @@ export default function DevotionalsPage() {
                 </div>
 
                 <p className="text-gray-700 leading-relaxed text-sm italic">
-                  I recommend spending about 30 minutes a day.
+                  I recommend spending about 30 minutes on each full chapter session.
                 </p>
 
                 <p className="text-gray-700 leading-relaxed text-sm">
@@ -574,7 +572,7 @@ export default function DevotionalsPage() {
                           ) : null}
                         </div>
                         <p className="mt-1 text-xs font-bold text-gray-500">
-                          {isChapterJourney(devotional.title) ? `${devotional.total_days} chapter journey` : `${devotional.total_days} day study`}
+                          {isChapterJourney(devotional.title) ? `${devotional.total_days} chapter journey` : `${devotional.total_days} part study`}
                         </p>
                       </div>
                       <div className="mt-4">

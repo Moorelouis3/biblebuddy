@@ -15,7 +15,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     title: "The Testing of Joseph",
     subtitle: "14-chapter Bible study",
     totalWeeks: 14,
-    image: "/newtesting.png",
+    image: "/TheTestingofJospehnewcover.png",
     description:
       "A chapter-by-chapter Bible study through Genesis 37-50 with intro, reading, notes, trivia, Scrambled, and reflection all centered on Joseph's story.",
   },
