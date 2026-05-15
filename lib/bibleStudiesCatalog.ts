@@ -33,7 +33,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     title: "The Courage of Daniel",
     subtitle: "6-chapter Bible study",
     totalWeeks: 6,
-    image: "/courageofdaniel.png",
+    image: "/thecourageofdaniel.png",
     description:
       "A chapter-by-chapter Bible study through Daniel 1-6 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, identity, prayer, wisdom, pressure, persecution, and faithfulness in Babylon.",
   },

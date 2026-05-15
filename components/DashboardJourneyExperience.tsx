@@ -1084,6 +1084,7 @@ export default function DashboardJourneyExperience({
   const [celebratingTasks, setCelebratingTasks] = useState<Record<string, number>>({});
   const [progressCelebrationKey, setProgressCelebrationKey] = useState(0);
   const [showCompletionPanel, setShowCompletionPanel] = useState(false);
+  const [completedTasksExpanded, setCompletedTasksExpanded] = useState(false);
   const [isLoadingNextChapter, setIsLoadingNextChapter] = useState(false);
   const [isNewChapterDropping, setIsNewChapterDropping] = useState(false);
   const [preloadedNextChapter, setPreloadedNextChapter] = useState<{
@@ -1455,6 +1456,7 @@ export default function DashboardJourneyExperience({
     if (previousJourneyKeyRef.current && previousJourneyKeyRef.current !== currentJourneyKey) {
       setIsLoadingNextChapter(false);
       setShowCompletionPanel(false);
+      setCompletedTasksExpanded(false);
       setPreloadedNextChapter(null);
       setIsNewChapterDropping(true);
       window.setTimeout(() => setIsNewChapterDropping(false), 1050);
@@ -2174,12 +2176,30 @@ export default function DashboardJourneyExperience({
             )}
 
             {!isLoadingNextChapter && completedTrackerTasks.length > 0 ? (
-              <div className="rounded-2xl border border-emerald-100 bg-white/75 px-3 py-3 shadow-sm">
-                <div className="mb-2 flex items-center justify-between gap-3 px-1">
-                  <p className="text-xs font-black uppercase tracking-[0.14em] text-emerald-700">Completed</p>
-                  <p className="text-[11px] font-bold text-gray-400">{completedTrackerTasks.length} done</p>
-                </div>
-                <div className="grid gap-2 sm:grid-cols-2">
+              <div className="overflow-hidden rounded-2xl border border-emerald-100 bg-white/80 shadow-sm">
+                <button
+                  type="button"
+                  onClick={() => setCompletedTasksExpanded((prev) => !prev)}
+                  className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition hover:bg-emerald-50/50"
+                  aria-expanded={completedTasksExpanded}
+                >
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-black text-gray-950">
+                      Completed Study Tasks for {activeChapterLabel}
+                    </p>
+                    <p className="mt-0.5 text-[11px] font-bold text-emerald-700">
+                      {completedTrackerTasks.length} of {visibleTasks.length} tasks done
+                    </p>
+                  </div>
+                  <span
+                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full bg-emerald-100 text-lg font-black text-emerald-700 transition ${completedTasksExpanded ? "rotate-180" : ""}`}
+                    aria-hidden="true"
+                  >
+                    v
+                  </span>
+                </button>
+                {completedTasksExpanded ? (
+                <div className="grid gap-2 border-t border-emerald-100 px-3 pb-3 pt-3 sm:grid-cols-2">
                   {completedTrackerTasks.map((task) => {
                     const originalTaskIndex = visibleTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
                     const taskCopy = getTaskCardCopy(task, originalTaskIndex >= 0 ? originalTaskIndex : 0);
@@ -2196,13 +2216,17 @@ export default function DashboardJourneyExperience({
                         <span className="min-w-0 flex-1 truncate text-xs font-black text-gray-800">
                           {taskCopy.title}
                         </span>
-                        <span className="text-base leading-none text-emerald-700 opacity-60 transition group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden="true">
+                        <span className="whitespace-nowrap text-[11px] font-bold text-gray-500">
+                          {task.completedAtLabel || "Completed"}
+                        </span>
+                        <span className="hidden">
                           ›
                         </span>
                       </button>
                     );
                   })}
                 </div>
+                ) : null}
               </div>
             ) : null}
 
