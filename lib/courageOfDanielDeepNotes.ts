@@ -1,3 +1,5 @@
+import { DANIEL_KJV_VERSES } from "./danielKjvVerses";
+
 type DanielSection = {
   range: string;
   title: string;
@@ -17,16 +19,22 @@ type DanielChapterNote = {
   lesson: string;
 };
 
-function verseList(verses: number[]) {
-  return verses.map((verse) => `> **${verse}**`).join("\n\n");
+function getVerseText(chapter: number, verse: number) {
+  return DANIEL_KJV_VERSES[chapter]?.find((item) => item.verse === verse)?.text || "";
 }
 
-function buildSection(section: DanielSection) {
-  return `## ${section.range}\n\n# ${section.title}\n\n${verseList(section.verses.map(Number))}\n\n${section.notes.join("\n\n")}`;
+function verseList(chapter: number, verses: number[]) {
+  return verses
+    .map((verse) => `> **${verse}** ${getVerseText(chapter, verse)}`.trim())
+    .join("\n\n");
+}
+
+function buildSection(chapter: number, section: DanielSection) {
+  return `## ${section.range}\n\n# ${section.title}\n\n${verseList(chapter, section.verses.map(Number))}\n\n${section.notes.join("\n\n")}`;
 }
 
 function buildDanielNotes(chapter: DanielChapterNote) {
-  return `# Daniel ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Daniel ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `* ${item}`).join("\n\n")}\n\n# Deep Chapter Notes\n\n${chapter.sections.map(buildSection).join("\n\n")}\n\n# Bible Buddy Deep Takeaways\n\n${chapter.takeaways.map((item) => `* ${item}`).join("\n\n")}\n\n# What To Carry Forward\n\n${chapter.carry.map((item) => `* ${item}`).join("\n\n")}\n\n# The Big Lesson of Daniel ${chapter.chapter}\n\n${chapter.lesson}`;
+  return `# Daniel ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Daniel ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `* ${item}`).join("\n\n")}\n\n## Chapter Flow\n\n${chapter.sections.map((section) => `* 📍 ${section.title}`).join("\n\n")}\n\n# Deep Chapter Notes\n\n${chapter.sections.map((section) => buildSection(chapter.chapter, section)).join("\n\n")}\n\n# Final Thought on Daniel ${chapter.chapter}\n\n${chapter.takeaways.map((item) => `* ${item}`).join("\n\n")}\n\n# Pause and Reflect\n\n${chapter.carry.map((item) => `* ${item}`).join("\n\n")}\n\n# The Big Lesson of Daniel ${chapter.chapter}\n\n${chapter.lesson}`;
 }
 
 const danielNotes: DanielChapterNote[] = [
