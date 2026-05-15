@@ -1174,6 +1174,7 @@ export default function DashboardJourneyExperience({
   const currentDevotionalTask = visibleTasks.find((task) => task.kind === "devotional") ?? null;
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
   const currentDevotionalTitle = currentDevotionalTask?.devotionalTitle || null;
+  const currentStudyCover = getDashboardStudyCover(currentDevotionalTitle);
   const nextStudyHandoff = getBibleJourneyHandoff(currentDevotionalTitle);
   const isPaidUser = profile?.is_paid === true;
   const remainingTasks = Math.max(totalTasks - completedTasks, 0);
@@ -1213,6 +1214,7 @@ export default function DashboardJourneyExperience({
       : chapterTask?.chapterLabel ||
     visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "Your Chapter";
+  const currentStudySummary = getDashboardStudySummary(currentDevotionalTitle, null);
   const queueTasks = visibleTasks.filter((task) => !task.done || celebratingTasks[task.kind]);
   const completedTrackerTasks = visibleTasks.filter((task) => task.done && !celebratingTasks[task.kind]);
   const displayTasks = isLoadingNextChapter && (preloadedNextChapter?.tasks.length || preloadedNextStudy?.tasks.length)
@@ -2528,6 +2530,36 @@ export default function DashboardJourneyExperience({
                   })}
                 </div>
                 ) : null}
+              </div>
+            ) : null}
+
+            {currentDevotionalTitle ? (
+              <div className="overflow-hidden rounded-2xl border border-[#dbe7f4] bg-white/90 p-3 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <div className="h-20 w-14 shrink-0 overflow-hidden rounded-xl bg-[#eef6ff] shadow-sm">
+                    {currentStudyCover ? (
+                      <img src={currentStudyCover} alt="" className="h-full w-full object-cover" />
+                    ) : (
+                      <div className="grid h-full w-full place-items-center text-2xl" aria-hidden="true">
+                        📖
+                      </div>
+                    )}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#2f7fe8]">
+                      Current Study
+                    </p>
+                    <p className="mt-1 truncate text-base font-black text-gray-950">
+                      {currentDevotionalTitle}
+                    </p>
+                    <p className="mt-0.5 text-xs font-bold text-gray-600">
+                      {activeChapterLabel}
+                    </p>
+                    <p className="mt-1 line-clamp-2 text-[11px] font-medium leading-4 text-gray-500">
+                      {currentStudySummary}
+                    </p>
+                  </div>
+                </div>
               </div>
             ) : null}
 

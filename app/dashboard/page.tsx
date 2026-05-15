@@ -1890,20 +1890,13 @@ export default function DashboardPage() {
     const renderGreetingAndStreakCard = () => (
       <>
           <div className="mx-auto w-full max-w-xl px-1">
-            <div className="flex items-end gap-3 sm:gap-4">
-              <img
-                src="/louis/newlouisreading.png"
-                alt="Louis reading"
-                className="h-28 w-auto shrink-0 object-contain drop-shadow-[0_10px_18px_rgba(37,65,99,0.18)] sm:h-36"
-              />
-              <div className="min-w-0 pb-4 sm:pb-6">
-                <h1 className="text-xl font-black leading-tight text-gray-950 sm:text-2xl">
-                  {getDashboardGreeting()}, {greetingName}
-                </h1>
-                <p className="mt-0.5 text-sm font-medium leading-5 text-gray-500 sm:text-[15px]">
-                  {nextStudyLine}
-                </p>
-              </div>
+            <div className="min-w-0">
+              <h1 className="text-2xl font-black leading-tight text-gray-950 sm:text-3xl">
+                {getDashboardGreeting()}, {greetingName}
+              </h1>
+              <p className="mt-1 text-sm font-medium leading-5 text-gray-500 sm:text-[15px]">
+                {nextStudyLine}
+              </p>
             </div>
             <button
               type="button"
