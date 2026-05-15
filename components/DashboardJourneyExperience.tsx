@@ -149,6 +149,28 @@ function getTaskStatusLine(task: TaskState) {
   return "Not started";
 }
 
+function parseTaskEstimateMinutes(label: string | null | undefined) {
+  if (!label) return 0;
+  const hoursMatch = label.match(/(\d+(?:\.\d+)?)\s*h/i);
+  const minutesMatch = label.match(/(\d+)\s*m/i);
+  const plainNumberMatch = label.match(/(\d+)/);
+  if (hoursMatch) {
+    return Math.round(Number(hoursMatch[1]) * 60) + (minutesMatch ? Number(minutesMatch[1]) : 0);
+  }
+  if (minutesMatch) return Number(minutesMatch[1]);
+  return plainNumberMatch ? Number(plainNumberMatch[1]) : 0;
+}
+
+function formatStudyEstimate(minutes: number) {
+  if (minutes <= 0) return "Est Study Time: --";
+  if (minutes >= 60) {
+    const hours = Math.floor(minutes / 60);
+    const remaining = minutes % 60;
+    return remaining ? `Est Study Time: ${hours}h ${remaining}m` : `Est Study Time: ${hours}h`;
+  }
+  return `Est Study Time: ${minutes} mins`;
+}
+
 function normalizeDashboardBookKey(book: string) {
   const rawBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
   return rawBookKey === "songofsolomon" ? "songofsongs" : rawBookKey;
@@ -1154,6 +1176,10 @@ export default function DashboardJourneyExperience({
     displayNextActionTaskIndex >= 0 && displayTasks[displayNextActionTaskIndex] && !displayTasks[displayNextActionTaskIndex].disabled
       ? displayTasks[displayNextActionTaskIndex].kind
       : null;
+  const estimatedStudyMinutes = displayTasks
+    .filter((task) => !task.done)
+    .reduce((total, task) => total + parseTaskEstimateMinutes(task.timeEstimateLabel), 0);
+  const estimatedStudyTimeLabel = formatStudyEstimate(estimatedStudyMinutes);
   const shouldShowCompletionPanel =
     !isChecklistSyncing &&
     allDone &&
@@ -1759,8 +1785,11 @@ export default function DashboardJourneyExperience({
       >
         <section className={`w-full shrink-0 snap-start px-1 ${activePage === 0 ? "" : "h-0 overflow-hidden"}`}>
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-            <div className="flex items-center justify-between px-1">
-              <h2 className="text-base font-black text-gray-950">Continue Your Study of {activeChapterLabel}</h2>
+            <div className="flex items-center justify-between gap-3 px-1">
+              <h2 className="min-w-0 text-base font-black text-gray-950">Continue Your Study of {activeChapterLabel}</h2>
+              <p className="shrink-0 rounded-full bg-white/80 px-3 py-1 text-[11px] font-black text-gray-700 shadow-sm">
+                {estimatedStudyTimeLabel}
+              </p>
             </div>
             {false ? (
             <div

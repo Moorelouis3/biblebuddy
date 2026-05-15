@@ -734,6 +734,8 @@ export default function DashboardPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [currentMatthewStep, setCurrentMatthewStep] = useState(0);
   const [totalCompletedChapters, setTotalCompletedChapters] = useState<number>(0);
+  const [isLoadingBibleCompletion, setIsLoadingBibleCompletion] = useState(true);
+  const [animatedBibleCompletionPercent, setAnimatedBibleCompletionPercent] = useState(3);
   const [currentBook, setCurrentBook] = useState<string | null>(null);
   const [isLoadingLevel, setIsLoadingLevel] = useState<boolean>(true);
   const [levelInfo, setLevelInfo] = useState<{
@@ -1712,6 +1714,9 @@ export default function DashboardPage() {
       0,
       Math.min(100, Math.round((totalCompletedChapters / Math.max(TOTAL_BIBLE_CHAPTERS, 1)) * 100)),
     );
+    const displayedBibleCompletionPercent = isLoadingBibleCompletion
+      ? animatedBibleCompletionPercent
+      : bibleCompletionPercent;
     const greetingName = getFirstDashboardName(profile?.display_name || profile?.username || userName);
     const nextStudyLine = buildDashboardNextStudyLine(dailyChecklistData);
     const streakFlameDuration = Math.max(0.85, 7 - Math.min(29, Math.max(0, streakValue)) * 0.2);
@@ -1723,7 +1728,7 @@ export default function DashboardPage() {
       {
         key: "completion",
         label: "Completion",
-        value: `${bibleCompletionPercent}%`,
+        value: `${displayedBibleCompletionPercent}%`,
         icon: "📖",
         tones: "bg-gray-100 border-gray-200",
       },
@@ -3125,7 +3130,10 @@ export default function DashboardPage() {
   useEffect(() => {
     async function loadOtherDashboardData() {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!user) {
+        setIsLoadingBibleCompletion(false);
+        return;
+      }
 
       try {
         // Get current active book (for other dashboard features)
@@ -3137,11 +3145,26 @@ export default function DashboardPage() {
         setTotalCompletedChapters(totalCount);
       } catch (err) {
         console.warn("Error loading other dashboard data:", err);
+      } finally {
+        setIsLoadingBibleCompletion(false);
       }
     }
 
     loadOtherDashboardData();
   }, []);
+
+  useEffect(() => {
+    if (!isLoadingBibleCompletion) return;
+
+    const values = [1, 3, 7, 12, 4, 9, 2, 6];
+    let index = 0;
+    const timer = window.setInterval(() => {
+      index = (index + 1) % values.length;
+      setAnimatedBibleCompletionPercent(values[index]);
+    }, 140);
+
+    return () => window.clearInterval(timer);
+  }, [isLoadingBibleCompletion]);
 
   // subtitle for reading card (based on preloaded progress)
   const readingSubtitle = totalCompletedChapters === 0
