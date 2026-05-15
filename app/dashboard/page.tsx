@@ -1867,7 +1867,7 @@ export default function DashboardPage() {
               setShowStreakMotivationTaskPrompt(false);
               setShowStreakMotivationModal(true);
             }}
-            className="mx-auto block w-full max-w-xl rounded-2xl border border-[#9dcff0] bg-gradient-to-br from-[#e8f5fd] via-[#f8fcff] to-[#c7e6f8] p-4 text-left shadow-sm transition hover:shadow-md"
+            className="mx-auto block w-full max-w-xl rounded-2xl border border-amber-200 bg-gradient-to-br from-[#fff6dc] via-[#fffdf7] to-[#fce8aa] p-4 text-left shadow-sm transition hover:shadow-md"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="w-full">
@@ -1883,7 +1883,7 @@ export default function DashboardPage() {
                     {streakValue} day streak
                   </p>
                 </div>
-                <p className="mt-2 text-center text-sm font-bold leading-5 text-[#2f6f9c] sm:text-base">
+                <p className="mt-2 text-center text-sm font-bold leading-5 text-[#7a5a12] sm:text-base">
                   {getDashboardStreakEncouragement(streakValue)}
                 </p>
               </div>
