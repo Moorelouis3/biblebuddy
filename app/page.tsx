@@ -180,7 +180,7 @@ export default function LandingPage() {
     );
   }
 
-  async function handleOAuthSignIn(provider: "google" | "apple") {
+  async function handleOAuthSignIn(provider: "google") {
     setLoading(true);
     setError(null);
 
@@ -563,14 +563,6 @@ export default function LandingPage() {
                 className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-bold text-gray-900 transition hover:bg-gray-50 disabled:opacity-60"
               >
                 Continue with Google
-              </button>
-              <button
-                type="button"
-                onClick={() => void handleOAuthSignIn("apple")}
-                disabled={loading}
-                className="w-full rounded-lg border border-gray-900 bg-gray-950 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-gray-800 disabled:opacity-60"
-              >
-                Continue with Apple
               </button>
             </div>
 
