@@ -1166,6 +1166,7 @@ export default function DashboardJourneyExperience({
     visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "Your Chapter";
   const queueTasks = visibleTasks.filter((task) => !task.done || celebratingTasks[task.kind]);
+  const completedTrackerTasks = visibleTasks.filter((task) => task.done && !celebratingTasks[task.kind]);
   const displayTasks = isLoadingNextChapter && preloadedNextChapter?.tasks.length
     ? preloadedNextChapter.tasks
     : queueTasks;
@@ -2186,6 +2187,39 @@ export default function DashboardJourneyExperience({
                 );
               })
             )}
+
+            {!isLoadingNextChapter && completedTrackerTasks.length > 0 ? (
+              <div className="rounded-2xl border border-emerald-100 bg-white/75 px-3 py-3 shadow-sm">
+                <div className="mb-2 flex items-center justify-between gap-3 px-1">
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-emerald-700">Completed</p>
+                  <p className="text-[11px] font-bold text-gray-400">{completedTrackerTasks.length} done</p>
+                </div>
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {completedTrackerTasks.map((task) => {
+                    const originalTaskIndex = visibleTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
+                    const taskCopy = getTaskCardCopy(task, originalTaskIndex >= 0 ? originalTaskIndex : 0);
+                    return (
+                      <button
+                        key={`completed-${task.kind}`}
+                        type="button"
+                        onClick={() => onTaskClick(task)}
+                        className="group flex min-h-10 items-center gap-2 rounded-xl border border-emerald-100 bg-emerald-50/70 px-3 py-2 text-left transition hover:border-emerald-200 hover:bg-emerald-50 hover:shadow-sm"
+                      >
+                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-emerald-500 text-[11px] font-black text-white shadow-sm" aria-hidden="true">
+                          ✓
+                        </span>
+                        <span className="min-w-0 flex-1 truncate text-xs font-black text-gray-800">
+                          {taskCopy.title}
+                        </span>
+                        <span className="text-base leading-none text-emerald-700 opacity-60 transition group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden="true">
+                          ›
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
 
           </div>
         </section>
