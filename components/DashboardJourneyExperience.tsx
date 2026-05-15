@@ -2087,7 +2087,7 @@ export default function DashboardJourneyExperience({
                     onTaskClick(task);
                   }}
                   disabled={isCardDisabled}
-                  className={`relative w-full overflow-hidden rounded-xl border px-3.5 py-3 text-left shadow-sm transition-all duration-300 sm:px-4 ${
+                  className={`relative w-full overflow-hidden rounded-xl border px-3.5 pb-7 pt-3 text-left shadow-sm transition-all duration-300 sm:px-4 ${
                     isCelebrating ? "task-complete-pop" : ""
                   } ${
                     isNewChapterDropping ? "chapter-card-drop" : ""
@@ -2162,7 +2162,7 @@ export default function DashboardJourneyExperience({
                         </span>
                         </div>
                       </div>
-                      <div className="mt-2 flex items-center justify-center">
+                      <div className="pointer-events-none absolute bottom-3 left-0 right-0 flex items-center justify-center">
                         <p className="hidden">{taskCopy.subtitle}</p>
                         {task.timeEstimateLabel ? (
                           <p className="whitespace-nowrap text-center text-[11px] font-black text-gray-950">
