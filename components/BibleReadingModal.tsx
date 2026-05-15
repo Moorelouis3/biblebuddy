@@ -53,7 +53,6 @@ type BibleApiResponse = {
 };
 
 const CHAPTER_LOOKUP_TIMEOUT_MS = 8000;
-const BIBLE_API_TIMEOUT_MS = 12000;
 
 // Helper function to normalize book names for display/API references.
 function normalizeBookDisplay(book: string): string {
@@ -62,21 +61,6 @@ function normalizeBookDisplay(book: string): string {
     .split(/\s+/)
     .map((word) => (/^\d+$/.test(word) ? word : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()))
     .join(" ");
-}
-
-function buildBibleApiUrl(book: string, chapter: number): string {
-  return `https://bible-api.com/${encodeURIComponent(`${normalizeBookDisplay(book)} ${chapter}`)}?translation=kjv`;
-}
-
-async function fetchBibleApiChapter(apiUrl: string): Promise<Response> {
-  const controller = new AbortController();
-  const timeoutId = window.setTimeout(() => controller.abort(), BIBLE_API_TIMEOUT_MS);
-
-  try {
-    return await fetch(apiUrl, { signal: controller.signal });
-  } finally {
-    window.clearTimeout(timeoutId);
-  }
 }
 
 async function withTimeout<T>(promise: PromiseLike<T>, ms: number, label: string): Promise<T> {
@@ -339,59 +323,10 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
           }
         }
 
-        // Step D: If NOT found in Supabase, fetch from bible-api.com
-        const apiUrl = buildBibleApiUrl(book, chapter);
-
-        const response = await fetchBibleApiChapter(apiUrl);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch: ${response.statusText}`);
-        }
-
-        const apiData: BibleApiResponse = await response.json();
-        if (!apiData.verses?.length) {
-          throw new Error(`No chapter text found for ${bookDisplay} ${chapter}.`);
-        }
-
-        setSections(convertToSections(apiData.verses, bookDisplay));
-        setLoading(false);
-        loadingRef.current = false;
-
-        // Step E: Save raw chapter first so the reading popup can open quickly next time.
-        const { data: existingCheck } = await supabase
-          .from("bible_chapters")
-          .select("id")
-          .eq("book", bookParam)
-          .eq("chapter", chapter)
-          .maybeSingle();
-
-        if (!existingCheck) {
-          await supabase
-            .from("bible_chapters")
-            .insert([
-              {
-                book: bookParam,
-                chapter: chapter,
-                content_json: apiData,
-              },
-            ]);
-        }
-
-        // Step F: Generate enriched_content in the background.
-        enrichBibleVerses(apiData.verses)
-          .then(async (enriched) => {
-            setEnrichedContent(enriched);
-            await supabase
-              .from("bible_chapters")
-              .update({ enriched_content: enriched })
-              .eq("book", bookParam)
-              .eq("chapter", chapter);
-          })
-          .catch((error) => console.error("[BIBLE_READING_MODAL] Background enrichment failed:", error));
-        return;
+        throw new Error(`${bookDisplay} ${chapter} is not loaded in Bible Buddy's KJV chapter library yet.`);
       } catch (err) {
         console.error("Error loading chapter:", err);
-        const isTimeout = err instanceof Error && err.name === "AbortError";
-        setError(isTimeout ? `Timed out loading ${normalizeBookDisplay(book)} ${chapter}. Please try again.` : err instanceof Error ? err.message : "Failed to load chapter");
+        setError(err instanceof Error ? err.message : "Failed to load chapter");
       } finally {
         setLoading(false);
         loadingRef.current = false;
