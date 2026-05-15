@@ -1805,11 +1805,11 @@ export default function DashboardJourneyExperience({
       >
         <section className={`w-full shrink-0 snap-start px-1 ${activePage === 0 ? "" : "h-0 overflow-hidden"}`}>
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-            <div className="flex items-center justify-between gap-3 px-1">
+            <div className="px-1">
               <h2 className="min-w-0 whitespace-nowrap text-[clamp(13px,3.8vw,16px)] font-black leading-tight text-gray-950">
                 Continue Studying {activeChapterLabel}
               </h2>
-              <p className="shrink-0 text-[11px] font-black text-gray-700">
+              <p className="mt-0.5 text-[10px] font-bold leading-tight text-gray-600">
                 {estimatedStudyTimeLabel}
               </p>
             </div>
