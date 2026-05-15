@@ -29,6 +29,15 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
       "A chapter-by-chapter Bible study through Esther 1-10 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, hidden identity, palace pressure, providence, reversal, and legacy.",
   },
   {
+    key: "courage_of_daniel",
+    title: "The Courage of Daniel",
+    subtitle: "6-chapter Bible study",
+    totalWeeks: 6,
+    image: "/courageofdaniel.png",
+    description:
+      "A chapter-by-chapter Bible study through Daniel 1-6 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, identity, prayer, wisdom, pressure, persecution, and faithfulness in Babylon.",
+  },
+  {
     key: "testing_of_joseph",
     title: "The Testing of Joseph",
     subtitle: "14-chapter Bible study",

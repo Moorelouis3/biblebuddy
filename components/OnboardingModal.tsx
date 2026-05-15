@@ -163,7 +163,7 @@ const ONBOARDING_STUDY_DESCRIPTION_BY_TITLE: Record<string, string> = {
   "The Obedience of Abraham":
     "A 15-chapter journey through Genesis 11-25, following Abraham's call, waiting, covenant, testing, and legacy.",
   "The Courage of Daniel":
-    "A chapter by chapter journey through Daniel's life in exile and the courage to stay faithful when culture pushes against God.",
+    "A 6-chapter journey through Daniel 1-6, following exile, identity pressure, wisdom, fire, pride, judgment, prayer, and the lions' den.",
   "The Rise of Esther":
     "A chapter by chapter journey through Esther's story of courage, timing, identity, and God working even when His name is hidden.",
 };

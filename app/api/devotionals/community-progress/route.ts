@@ -6,6 +6,7 @@ const CHAPTER_JOURNEY_TASK_TOTAL = 6;
 const CHAPTER_JOURNEY_TITLES = new Set([
   "The Obedience of Abraham",
   "The Rise of Esther",
+  "The Courage of Daniel",
   "The Testing of Joseph",
   "The Wisdom of Proverbs",
 ]);

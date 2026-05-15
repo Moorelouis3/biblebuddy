@@ -39,7 +39,7 @@ function getPreviewDescription(title: string, fallback: string): string {
     "The Transforming of Paul":
       "Paul's story begins with violence, certainty, and religious zeal aimed in the wrong direction. Then Jesus meets him, blinds him, remakes him, and sends him into a life of preaching, suffering, prison, endurance, and deep spiritual fire. This Bible study follows the whole arc, from Saul the persecutor to Paul the apostle who finished his race still holding to Christ. You will walk through the road to Damascus, the missionary journeys, the beatings, the prison songs, the shipwrecks, and the final steady faith that marked his end. It is a story about how radically Jesus can change a life and keep changing it through every next season.",
     "The Courage of Daniel":
-      "Most people know Daniel for the lions' den, but that was only one scene in a lifetime of faith under pressure. This Bible study follows him from exile and identity testing to royal courts, impossible dreams, jealous enemies, and visions that reach all the way into the future. Daniel's life shows what it looks like to stay loyal to God inside a foreign system that keeps trying to reshape you. His courage is not built in one dramatic moment. It is built over years of prayer, wisdom, pressure, and unwavering devotion. If you want to see what steady faith looks like in a hostile world, Daniel's life gives that picture in full.",
+      "Most people know Daniel for the lions' den, but that was only one scene in a lifetime of faith under pressure. This 6-chapter Bible study walks through Daniel 1-6 as one focused narrative journey: exile, identity testing, palace pressure, impossible dreams, the fiery furnace, proud kings, the writing on the wall, and prayer that stays steady when it becomes dangerous. Daniel 7-12 will be handled later as a separate vision study, so this journey stays centered on courage, obedience, wisdom, public faith, and consistency in Babylon.",
     "The Rise of Esther":
       "Esther's story begins in exile, in loss, and in a world where powerful men make decisions that can crush whole peoples at once. She rises from hiddenness into the palace, but her real story begins when favor turns into responsibility and silence becomes dangerous. This Bible study follows the tension, timing, fear, strategy, and courage that shaped her rise from orphan girl to the woman who stood for her people. It is full of reversals, sleepless nights, political danger, and providence moving in ways no one in the room can fully see. Esther's life proves that sometimes the place God gives you becomes holy the moment you finally use it with courage.",
   };
@@ -104,7 +104,8 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Wisdom of Proverbs" ||
     title === "The Testing of Joseph" ||
     title === "The Obedience of Abraham" ||
-    title === "The Rise of Esther"
+    title === "The Rise of Esther" ||
+    title === "The Courage of Daniel"
   );
 }
 
@@ -113,6 +114,7 @@ function getChapterJourneyProgressLabel(title: string | null | undefined, curren
   if (title === "The Testing of Joseph") return `Genesis ${currentDay + 36} of 50`;
   if (title === "The Obedience of Abraham") return `Genesis ${currentDay + 10} of 25`;
   if (title === "The Rise of Esther") return `Esther ${currentDay} of ${totalDays}`;
+  if (title === "The Courage of Daniel") return `Daniel ${currentDay} of ${totalDays}`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 

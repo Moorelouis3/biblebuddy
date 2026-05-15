@@ -2190,6 +2190,10 @@ That does not mean the wilderness felt easy. It means faithful obedience produce
 export function getSeriesKeyFromTitle(seriesTitle?: string | null) {
   const normalized = (seriesTitle || "").toLowerCase();
   if (normalized.includes("joseph")) return "testing_of_joseph" as const;
+  if (normalized.includes("abraham")) return "obedience_of_abraham" as const;
+  if (normalized.includes("esther")) return "rise_of_esther" as const;
+  if (normalized.includes("daniel")) return "courage_of_daniel" as const;
+  if (normalized.includes("proverbs")) return "wisdom_of_proverbs" as const;
   return "temptation_of_jesus" as const;
 }
 
