@@ -1796,15 +1796,8 @@ export default function DashboardPage() {
     const renderGreetingAndStreakCard = () => (
       <>
           <div className="mx-auto flex max-w-xl items-center gap-3 px-1">
-            <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full border border-white bg-white shadow-sm">
-              {profile?.profile_image_url ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={profile.profile_image_url} alt="" className="h-full w-full object-cover" />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center bg-[#d7eaf7] text-xl font-black text-[#3d789f]">
-                  {greetingName.charAt(0).toUpperCase()}
-                </div>
-              )}
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white bg-white p-1 shadow-sm">
+              <LouisAvatar mood="wave" size={42} />
             </div>
             <div className="min-w-0">
               <h1 className="text-lg font-black text-gray-950 sm:text-2xl">
