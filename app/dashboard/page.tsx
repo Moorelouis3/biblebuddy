@@ -1816,49 +1816,49 @@ export default function DashboardPage() {
               setShowStreakMotivationTaskPrompt(false);
               setShowStreakMotivationModal(true);
             }}
-            className="mx-auto block w-full max-w-xl rounded-2xl border border-amber-200 bg-gradient-to-br from-[#fff7df] via-white to-[#fff3cf] p-4 text-left shadow-sm transition hover:shadow-md"
+            className="mx-auto block w-full max-w-xl rounded-2xl border border-amber-200 bg-gradient-to-br from-[#fff6dc] via-[#fffdf7] to-[#fce8aa] p-4 text-left shadow-sm transition hover:shadow-md"
           >
             <div className="flex items-start justify-between gap-4">
-              <div>
+              <div className="w-full">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`inline-block text-2xl leading-none ${streakFlameClass}`}
+                    className={`inline-block text-4xl leading-none sm:text-5xl ${streakFlameClass}`}
                     style={{ animationDuration: `${streakFlameDuration}s` }}
                     aria-hidden="true"
                   >
                     🔥
                   </span>
-                  <p className="text-sm font-black text-gray-950 sm:text-base">
+                  <p className="text-2xl font-black leading-none text-gray-950 sm:text-3xl">
                     {streakValue} day streak
                   </p>
                 </div>
-                <p className="mt-1 text-xs font-medium leading-5 text-gray-500 sm:text-sm">
+                <p className="mt-2 text-center text-sm font-bold leading-5 text-[#7a5a12] sm:text-base">
                   {getDashboardStreakEncouragement(streakValue)}
                 </p>
               </div>
             </div>
 
-            <div className="mx-auto mt-4 grid max-w-md grid-cols-7 gap-1 rounded-2xl border border-amber-100 bg-white/65 p-1.5 shadow-inner shadow-amber-100/60">
+            <div className="mx-auto mt-4 grid w-full grid-cols-7 gap-1.5 rounded-2xl border border-amber-200 bg-white/70 p-2 shadow-inner shadow-amber-100/70 sm:gap-2 sm:p-3">
               {dashboardLastSevenDays.map((day, index) => {
                 const completedByStreak = index >= 7 - Math.min(7, streakValue);
                 const isCompleted = day.completed || day.isToday || completedByStreak;
                 return (
                 <div
                   key={day.date}
-                  className={`rounded-xl px-1 py-2 text-center transition ${
-                    isCompleted ? "bg-emerald-50" : "bg-white/70"
-                  } ${day.isToday ? "ring-2 ring-emerald-200" : ""}`}
+                  className={`rounded-xl px-1 py-2.5 text-center transition sm:py-3 ${
+                    isCompleted ? "bg-[#e6f5f2]" : "bg-[#fff9e8]"
+                  } ${day.isToday ? "ring-2 ring-[#0f8f86]/25" : ""}`}
                 >
-                  <p className={`mb-1.5 text-[10px] font-black ${isCompleted ? "text-emerald-700" : "text-gray-500"}`}>
+                  <p className={`mb-2 text-[11px] font-black sm:text-xs ${isCompleted ? "text-[#0f766e]" : "text-[#8a6a1c]"}`}>
                     {getDashboardDayAbbr(day.date)}
                   </p>
                   <span
-                    className={`mx-auto grid h-7 w-7 place-items-center rounded-full border text-[11px] font-black transition ${
+                    className={`mx-auto grid h-9 w-9 place-items-center rounded-full border text-sm font-black transition sm:h-10 sm:w-10 ${
                       isCompleted
                         ? day.isToday
-                          ? "animate-pulse border-emerald-400 bg-emerald-400 text-white shadow-[0_0_0_5px_rgba(52,211,153,0.18)]"
-                          : "border-emerald-300 bg-emerald-400 text-white shadow-sm"
-                        : "border-gray-300 bg-gray-50 text-transparent"
+                          ? "animate-pulse border-[#0f766e] bg-[#0f766e] text-white shadow-[0_0_0_6px_rgba(15,118,110,0.16)]"
+                          : "border-[#0f766e]/35 bg-[#0f766e] text-white shadow-sm"
+                        : "border-amber-200 bg-white text-transparent"
                     }`}
                     aria-label={`${day.date} ${isCompleted ? "active" : "inactive"}`}
                   >
