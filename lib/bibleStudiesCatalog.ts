@@ -11,6 +11,15 @@ export const BIBLE_STUDY_GROUP_ID = "165bada5-0900-44f1-963b-54e86fe64b39";
 
 export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
+    key: "creation_of_the_world",
+    title: "The Creation of the World",
+    subtitle: "2-chapter Bible study",
+    totalWeeks: 2,
+    image: "/creationoftheworld.png",
+    description:
+      "A chapter-by-chapter Bible study through Genesis 1-2 with intro, reading, notes, trivia, Scrambled, and reflection centered on creation, order, Eden, humanity in God's image, purpose, rest, and relationship with God.",
+  },
+  {
     key: "obedience_of_abraham",
     title: "The Obedience of Abraham",
     subtitle: "15-chapter Bible study",

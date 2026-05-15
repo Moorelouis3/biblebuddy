@@ -119,6 +119,7 @@ const STARTER_STUDIES: StudyOption[] = [
 ];
 
 const STUDY_PICKER_ORDER = [
+  "The Creation of the World",
   "The Obedience of Abraham",
   "The Testing of Joseph",
   "The Wisdom of Proverbs",
@@ -140,6 +141,7 @@ const COVER_BY_STUDY_TITLE: Record<string, string> = {
   "The Transforming of Paul": "/transformingofpauldevotional.png",
   "The Courage of Daniel": "/thecourageofdaniel.png",
   "The Rise of Esther": "/theriseofester.png",
+  "The Creation of the World": "/creationoftheworld.png",
 };
 
 const ONBOARDING_STUDY_DESCRIPTION_BY_TITLE: Record<string, string> = {
@@ -166,6 +168,8 @@ const ONBOARDING_STUDY_DESCRIPTION_BY_TITLE: Record<string, string> = {
     "A 6-chapter journey through Daniel 1-6, following exile, identity pressure, wisdom, fire, pride, judgment, prayer, and the lions' den.",
   "The Rise of Esther":
     "A chapter by chapter journey through Esther's story of courage, timing, identity, and God working even when His name is hidden.",
+  "The Creation of the World":
+    "A 2-chapter journey through Genesis 1-2, following creation, order, Eden, humanity in God's image, purpose, rest, and relationship with God.",
 };
 
 function normalizeGoalValue(goal: string | null | undefined) {

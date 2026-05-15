@@ -13,6 +13,7 @@ function getCoverImage(title: string): string | null {
   if (title === "The Transforming of Paul") return "/transformingofpauldevotional.png";
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
   if (title === "The Rise of Esther") return "/theriseofester.png";
+  if (title === "The Creation of the World") return "/creationoftheworld.png";
   return null;
 }
 
@@ -42,6 +43,8 @@ function getPreviewDescription(title: string, fallback: string): string {
       "Most people know Daniel for the lions' den, but that was only one scene in a lifetime of faith under pressure. This 6-chapter Bible study walks through Daniel 1-6 as one focused narrative journey: exile, identity testing, palace pressure, impossible dreams, the fiery furnace, proud kings, the writing on the wall, and prayer that stays steady when it becomes dangerous. Daniel 7-12 will be handled later as a separate vision study, so this journey stays centered on courage, obedience, wisdom, public faith, and consistency in Babylon.",
     "The Rise of Esther":
       "Esther's story begins in exile, in loss, and in a world where powerful men make decisions that can crush whole peoples at once. She rises from hiddenness into the palace, but her real story begins when favor turns into responsibility and silence becomes dangerous. This Bible study follows the tension, timing, fear, strategy, and courage that shaped her rise from orphan girl to the woman who stood for her people. It is full of reversals, sleepless nights, political danger, and providence moving in ways no one in the room can fully see. Esther's life proves that sometimes the place God gives you becomes holy the moment you finally use it with courage.",
+    "The Creation of the World":
+      "Genesis begins before nations, kings, cities, temples, or human history as we know it. This 2-chapter Bible study walks slowly through Genesis 1-2 as the foundation of the Bible: God creating, ordering, blessing, resting, forming Adam from dust, planting Eden, giving a command, and creating the first human relationship. You will see why creation is good, what it means to be made in God's image, why work and rest matter, and how Eden shows humanity's original life with God before sin enters the story.",
   };
 
   return descriptions[title] ?? fallback;
@@ -105,7 +108,8 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Testing of Joseph" ||
     title === "The Obedience of Abraham" ||
     title === "The Rise of Esther" ||
-    title === "The Courage of Daniel"
+    title === "The Courage of Daniel" ||
+    title === "The Creation of the World"
   );
 }
 
@@ -115,6 +119,7 @@ function getChapterJourneyProgressLabel(title: string | null | undefined, curren
   if (title === "The Obedience of Abraham") return `Genesis ${currentDay + 10} of 25`;
   if (title === "The Rise of Esther") return `Esther ${currentDay} of ${totalDays}`;
   if (title === "The Courage of Daniel") return `Daniel ${currentDay} of ${totalDays}`;
+  if (title === "The Creation of the World") return `Genesis ${currentDay} of 2`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 

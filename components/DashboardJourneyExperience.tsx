@@ -70,6 +70,7 @@ type DevotionalOption = {
 };
 
 function getDashboardStudyCover(title: string | null | undefined) {
+  if (title === "The Creation of the World") return "/creationoftheworld.png";
   if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
   if (title === "The Rise of Esther") return "/theriseofester.png";
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
@@ -83,6 +84,7 @@ function getDashboardStudyCover(title: string | null | undefined) {
 }
 
 function getDashboardStudySummary(title: string | null | undefined, totalDays: number | null | undefined) {
+  if (title === "The Creation of the World") return "Study Genesis 1-2 through creation, Eden, image of God, purpose, rest, and relationship.";
   if (title === "The Obedience of Abraham") return "Walk Genesis 11-25 through Abraham's call, waiting, covenant, testing, and legacy.";
   if (title === "The Rise of Esther") return "Follow Esther 1-10 through palace pressure, hidden identity, courage, providence, and reversal.";
   if (title === "The Courage of Daniel") return "Study Daniel 1-6 through exile, courage, wisdom, prayer, pressure, and the lions' den.";

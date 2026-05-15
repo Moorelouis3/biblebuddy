@@ -124,7 +124,8 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Testing of Joseph" ||
     title === "The Obedience of Abraham" ||
     title === "The Rise of Esther" ||
-    title === "The Courage of Daniel"
+    title === "The Courage of Daniel" ||
+    title === "The Creation of the World"
   );
 }
 

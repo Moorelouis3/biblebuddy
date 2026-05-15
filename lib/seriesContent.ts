@@ -2189,6 +2189,7 @@ That does not mean the wilderness felt easy. It means faithful obedience produce
 
 export function getSeriesKeyFromTitle(seriesTitle?: string | null) {
   const normalized = (seriesTitle || "").toLowerCase();
+  if (normalized.includes("creation")) return "creation_of_the_world" as const;
   if (normalized.includes("joseph")) return "testing_of_joseph" as const;
   if (normalized.includes("abraham")) return "obedience_of_abraham" as const;
   if (normalized.includes("esther")) return "rise_of_esther" as const;
@@ -2198,9 +2199,14 @@ export function getSeriesKeyFromTitle(seriesTitle?: string | null) {
 }
 
 export function getSeriesTotalWeeks(seriesTitle?: string | null) {
-  return getSeriesKeyFromTitle(seriesTitle) === "testing_of_joseph"
-    ? TESTING_OF_JOSEPH.length
-    : TEMPTATION_OF_JESUS.length;
+  const key = getSeriesKeyFromTitle(seriesTitle);
+  if (key === "creation_of_the_world") return 2;
+  if (key === "obedience_of_abraham") return 15;
+  if (key === "rise_of_esther") return 10;
+  if (key === "courage_of_daniel") return 6;
+  if (key === "wisdom_of_proverbs") return 31;
+  if (key === "testing_of_joseph") return TESTING_OF_JOSEPH.length;
+  return TEMPTATION_OF_JESUS.length;
 }
 
 export function getSeriesWeekLesson(
