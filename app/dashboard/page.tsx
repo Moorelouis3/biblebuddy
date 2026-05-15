@@ -1816,7 +1816,7 @@ export default function DashboardPage() {
               setShowStreakMotivationTaskPrompt(false);
               setShowStreakMotivationModal(true);
             }}
-            className="mx-auto block w-full max-w-xl rounded-2xl border border-gray-200 bg-white p-4 text-left shadow-sm transition hover:shadow-md"
+            className="mx-auto block w-full max-w-xl rounded-2xl border border-amber-200 bg-gradient-to-br from-[#fff7df] via-white to-[#fff3cf] p-4 text-left shadow-sm transition hover:shadow-md"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -1838,22 +1838,35 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-7 gap-2">
-              {dashboardLastSevenDays.map((day) => (
-                <div key={day.date} className="text-center">
-                  <p className="mb-2 text-[10px] font-semibold text-gray-500">{getDashboardDayAbbr(day.date)}</p>
+            <div className="mx-auto mt-4 grid max-w-md grid-cols-7 gap-1 rounded-2xl border border-amber-100 bg-white/65 p-1.5 shadow-inner shadow-amber-100/60">
+              {dashboardLastSevenDays.map((day, index) => {
+                const completedByStreak = index >= 7 - Math.min(7, streakValue);
+                const isCompleted = day.completed || day.isToday || completedByStreak;
+                return (
+                <div
+                  key={day.date}
+                  className={`rounded-xl px-1 py-2 text-center transition ${
+                    isCompleted ? "bg-emerald-50" : "bg-white/70"
+                  } ${day.isToday ? "ring-2 ring-emerald-200" : ""}`}
+                >
+                  <p className={`mb-1.5 text-[10px] font-black ${isCompleted ? "text-emerald-700" : "text-gray-500"}`}>
+                    {getDashboardDayAbbr(day.date)}
+                  </p>
                   <span
-                    className={`mx-auto block h-5 w-5 rounded-full border transition ${
-                      day.completed || day.isToday
+                    className={`mx-auto grid h-7 w-7 place-items-center rounded-full border text-[11px] font-black transition ${
+                      isCompleted
                         ? day.isToday
-                          ? "animate-pulse border-emerald-400 bg-emerald-400 shadow-[0_0_0_5px_rgba(52,211,153,0.18)]"
-                          : "border-emerald-400 bg-emerald-400"
-                        : "border-gray-300 bg-gray-50"
+                          ? "animate-pulse border-emerald-400 bg-emerald-400 text-white shadow-[0_0_0_5px_rgba(52,211,153,0.18)]"
+                          : "border-emerald-300 bg-emerald-400 text-white shadow-sm"
+                        : "border-gray-300 bg-gray-50 text-transparent"
                     }`}
-                    aria-label={`${day.date} ${day.completed || day.isToday ? "active" : "inactive"}`}
-                  />
+                    aria-label={`${day.date} ${isCompleted ? "active" : "inactive"}`}
+                  >
+                    {isCompleted ? "✓" : "•"}
+                  </span>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </button>
       </>
