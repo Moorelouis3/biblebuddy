@@ -2427,7 +2427,6 @@ export default function DashboardJourneyExperience({
             )}
 
             {!isLoadingNextChapter && completedTrackerTasks.length > 0 ? (
-              <>
               <div className="overflow-hidden rounded-2xl border border-emerald-100 bg-white/80 shadow-sm">
                 <button
                   type="button"
@@ -2480,20 +2479,20 @@ export default function DashboardJourneyExperience({
                 </div>
                 ) : null}
               </div>
-              <div className="flex justify-center">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowJourneyHelp(false);
-                    setShowDevotionalSettings(true);
-                  }}
-                  className="text-sm font-black text-gray-950 transition hover:text-[#5f99bf]"
-                >
-                  Set New Bible Study
-                </button>
-              </div>
-              </>
             ) : null}
+
+            <div className="flex justify-center">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowJourneyHelp(false);
+                  setShowDevotionalSettings(true);
+                }}
+                className="text-sm font-black text-gray-950 transition hover:text-[#5f99bf]"
+              >
+                Set New Bible Study
+              </button>
+            </div>
 
           </div>
         </section>
