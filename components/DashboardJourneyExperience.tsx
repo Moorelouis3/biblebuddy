@@ -69,6 +69,18 @@ type DevotionalOption = {
   total_days: number | null;
 };
 
+type NextStudyRecommendation = {
+  targetKey: string;
+  devotionalId: string;
+  dayNumber: number;
+  title: string;
+  subtitle: string;
+  cover: string;
+  description: string;
+  chapterLabel: string;
+  tasks: TaskState[];
+};
+
 const HIDDEN_STUDY_SWITCHER_TITLES = new Set([
   "The Tempting of Jesus",
   "The Disciples of Jesus",
@@ -99,6 +111,20 @@ function getDashboardStudySummary(title: string | null | undefined, totalDays: n
   if (title === "The Testing of Joseph") return "Walk Genesis 37-50 through betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
   if (title === "The Wisdom of Proverbs") return "Study Proverbs chapter by chapter for practical wisdom in speech, choices, discipline, and daily life.";
   return `${Math.max(1, totalDays || 1)} part Bible study designed to help you keep growing with structure and consistency.`;
+}
+
+function getBibleJourneyHandoff(title: string | null | undefined) {
+  if (title === "The Creation of the World") {
+    return {
+      nextTitle: "The Fall of Man",
+      subtitle: "Genesis 3-4",
+      cover: "/thefallofman.png",
+      description:
+        "Next, Genesis 3-4 shows what happens when sin enters the story: temptation, shame, exile, Cain and Abel, and the first signs of humanity's need for redemption.",
+    };
+  }
+
+  return null;
 }
 
 function getTaskStatusCopy(task: TaskState) {
@@ -1124,6 +1150,7 @@ export default function DashboardJourneyExperience({
     chapterLabel: string;
     tasks: TaskState[];
   } | null>(null);
+  const [preloadedNextStudy, setPreloadedNextStudy] = useState<NextStudyRecommendation | null>(null);
   const [showDevotionalSettings, setShowDevotionalSettings] = useState(false);
   const [showJourneyHelp, setShowJourneyHelp] = useState(false);
   const [devotionalOptions, setDevotionalOptions] = useState<DevotionalOption[]>([]);
@@ -1146,6 +1173,8 @@ export default function DashboardJourneyExperience({
       : null;
   const currentDevotionalTask = visibleTasks.find((task) => task.kind === "devotional") ?? null;
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
+  const currentDevotionalTitle = currentDevotionalTask?.devotionalTitle || null;
+  const nextStudyHandoff = getBibleJourneyHandoff(currentDevotionalTitle);
   const isPaidUser = profile?.is_paid === true;
   const remainingTasks = Math.max(totalTasks - completedTasks, 0);
   const completedChapterLabel =
@@ -1153,6 +1182,7 @@ export default function DashboardJourneyExperience({
     visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "this chapter";
   const nextChapterLabel = (() => {
+    if (preloadedNextStudy?.chapterLabel) return preloadedNextStudy.chapterLabel;
     if (preloadedNextChapter?.chapterLabel) return preloadedNextChapter.chapterLabel;
     const chapterTask = visibleTasks.find((task) => task.book && task.chapter);
     if (!chapterTask?.book || !chapterTask.chapter || !checklistData?.nextJourneyTarget) return "the next chapter";
@@ -1178,15 +1208,17 @@ export default function DashboardJourneyExperience({
   const readingTask = visibleTasks.find((task) => task.kind === "reading") ?? null;
   const chapterTask = readingTask || visibleTasks.find((task) => task.book && task.chapter) || null;
   const activeChapterLabel =
-    isLoadingNextChapter && preloadedNextChapter?.chapterLabel
-      ? preloadedNextChapter.chapterLabel
+    isLoadingNextChapter && (preloadedNextChapter?.chapterLabel || preloadedNextStudy?.chapterLabel)
+      ? preloadedNextChapter?.chapterLabel || preloadedNextStudy?.chapterLabel || "Your Chapter"
       : chapterTask?.chapterLabel ||
     visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "Your Chapter";
   const queueTasks = visibleTasks.filter((task) => !task.done || celebratingTasks[task.kind]);
   const completedTrackerTasks = visibleTasks.filter((task) => task.done && !celebratingTasks[task.kind]);
-  const displayTasks = isLoadingNextChapter && preloadedNextChapter?.tasks.length
-    ? preloadedNextChapter.tasks
+  const displayTasks = isLoadingNextChapter && (preloadedNextChapter?.tasks.length || preloadedNextStudy?.tasks.length)
+    ? preloadedNextChapter?.tasks.length
+      ? preloadedNextChapter.tasks
+      : preloadedNextStudy?.tasks || queueTasks
     : queueTasks;
   const displayNextActionTaskIndex = displayTasks.findIndex((task) => !task.done);
   const displayNextActionTaskKind =
@@ -1439,6 +1471,55 @@ export default function DashboardJourneyExperience({
   async function handleCompletedStudyAction() {
     if (!allDone) return;
 
+    if (userId && cycleStartedAt && preloadedNextStudy?.devotionalId) {
+      setShowCompletionPanel(false);
+      setIsLoadingNextChapter(true);
+      setPreloadedNextChapter({
+        targetKey: preloadedNextStudy.targetKey,
+        chapterLabel: preloadedNextStudy.chapterLabel,
+        tasks: preloadedNextStudy.tasks,
+      });
+      setIsNewChapterDropping(true);
+      window.setTimeout(() => setIsNewChapterDropping(false), 1050);
+
+      const { error } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            free_devotional_id: preloadedNextStudy.devotionalId,
+            louis_primary_devotional_id: preloadedNextStudy.devotionalId,
+            louis_primary_devotional_day: preloadedNextStudy.dayNumber,
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (error) {
+        console.error("[DASHBOARD] Could not sync next Bible Study:", error);
+        setIsLoadingNextChapter(false);
+        return;
+      }
+
+      await supabase.from("devotional_progress").upsert(
+        {
+          user_id: userId,
+          devotional_id: preloadedNextStudy.devotionalId,
+          day_number: preloadedNextStudy.dayNumber,
+          is_completed: false,
+          reading_completed: false,
+        },
+        { onConflict: "user_id,devotional_id,day_number" },
+      );
+
+      rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
+        devotionalId: preloadedNextStudy.devotionalId,
+        dayNumber: preloadedNextStudy.dayNumber,
+      });
+      setShowDevotionalSettings(false);
+      onDevotionalChanged();
+      return;
+    }
+
     if (userId && cycleStartedAt && checklistData?.nextJourneyTarget) {
       setShowCompletionPanel(false);
       setIsLoadingNextChapter(true);
@@ -1494,6 +1575,7 @@ export default function DashboardJourneyExperience({
       setShowCompletionPanel(false);
       setCompletedTasksExpanded(false);
       setPreloadedNextChapter(null);
+      setPreloadedNextStudy(null);
       setIsNewChapterDropping(true);
       window.setTimeout(() => setIsNewChapterDropping(false), 1050);
     }
@@ -1612,6 +1694,80 @@ export default function DashboardJourneyExperience({
     checklistData?.nextJourneyTarget?.dayNumber,
     currentDevotionalTask?.devotionalTitle,
     preloadedNextChapter?.targetKey,
+  ]);
+
+  useEffect(() => {
+    if (!allDone || checklistData?.nextJourneyTarget || !nextStudyHandoff) {
+      setPreloadedNextStudy(null);
+      return;
+    }
+
+    const handoff = nextStudyHandoff;
+    const targetKey = `${currentDevotionalId || "current"}:${handoff.nextTitle}`;
+    if (preloadedNextStudy?.targetKey === targetKey) return;
+
+    let cancelled = false;
+
+    async function preloadNextStudy() {
+      const { data: devotional, error: devotionalError } = await supabase
+        .from("devotionals")
+        .select("id, title")
+        .eq("title", handoff.nextTitle)
+        .maybeSingle();
+
+      if (cancelled) return;
+      if (devotionalError || !devotional?.id) {
+        if (devotionalError) console.error("[DASHBOARD] Could not preload next Bible Study:", devotionalError);
+        return;
+      }
+
+      const { data: day, error: dayError } = await supabase
+        .from("devotional_days")
+        .select("bible_reading_book, bible_reading_chapter")
+        .eq("devotional_id", devotional.id)
+        .eq("day_number", 1)
+        .maybeSingle();
+
+      if (cancelled) return;
+      if (dayError || !day) {
+        if (dayError) console.error("[DASHBOARD] Could not preload next Bible Study chapter:", dayError);
+        return;
+      }
+
+      const book = String((day as any).bible_reading_book || "");
+      const chapter = Number((day as any).bible_reading_chapter || 0);
+      if (!book || !chapter) return;
+
+      setPreloadedNextStudy({
+        targetKey,
+        devotionalId: devotional.id,
+        dayNumber: 1,
+        title: handoff.nextTitle,
+        subtitle: handoff.subtitle,
+        cover: handoff.cover,
+        description: handoff.description,
+        chapterLabel: buildDashboardChapterLabel(book, chapter),
+        tasks: buildPreloadedNextChapterTasks({
+          devotionalId: devotional.id,
+          devotionalTitle: handoff.nextTitle,
+          dayNumber: 1,
+          book,
+          chapter,
+        }),
+      });
+    }
+
+    void preloadNextStudy();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    allDone,
+    checklistData?.nextJourneyTarget,
+    currentDevotionalId,
+    nextStudyHandoff?.nextTitle,
+    preloadedNextStudy?.targetKey,
   ]);
 
   useEffect(() => {
@@ -2063,7 +2219,7 @@ export default function DashboardJourneyExperience({
             </div>
             ) : null}
 
-            {isChecklistSyncing || (isLoadingNextChapter && !preloadedNextChapter?.tasks.length) ? (
+            {isChecklistSyncing || (isLoadingNextChapter && !preloadedNextChapter?.tasks.length && !preloadedNextStudy?.tasks.length) ? (
               skeletonTasks.map((task, index) => (
                 <div
                   key={task.title}
@@ -2104,17 +2260,47 @@ export default function DashboardJourneyExperience({
                 <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-full">
                   <LouisAvatar mood="stareyes" size={72} />
                 </div>
-                <p className="relative mt-4 text-2xl font-black text-gray-950">🎉 Congratulations!</p>
-                <p className="mt-2 text-base font-bold text-gray-800">You completed {completedChapterLabel}.</p>
-                <p className="mt-1 text-sm font-medium leading-6 text-gray-500">
-                  Ready to continue to {nextChapterLabel}?
-                </p>
+                {preloadedNextStudy ? (
+                  <>
+                    <p className="relative mt-4 text-2xl font-black text-gray-950">Bible Study Complete!</p>
+                    <p className="mt-2 text-base font-bold text-gray-800">
+                      You completed {currentDevotionalTitle || "this Bible study"}.
+                    </p>
+                    <div className="mx-auto mt-5 flex max-w-md items-center gap-4 rounded-2xl border border-[#dbe7f3] bg-white/85 p-3 text-left shadow-sm">
+                      <img
+                        src={preloadedNextStudy.cover}
+                        alt=""
+                        className="h-20 w-16 shrink-0 rounded-xl object-cover shadow-sm"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5e8eb0]">
+                          Next Bible Study
+                        </p>
+                        <p className="mt-1 text-lg font-black leading-tight text-gray-950">
+                          {preloadedNextStudy.title}
+                        </p>
+                        <p className="text-sm font-bold text-gray-600">{preloadedNextStudy.subtitle}</p>
+                      </div>
+                    </div>
+                    <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-6 text-gray-600">
+                      {preloadedNextStudy.description}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="relative mt-4 text-2xl font-black text-gray-950">🎉 Congratulations!</p>
+                    <p className="mt-2 text-base font-bold text-gray-800">You completed {completedChapterLabel}.</p>
+                    <p className="mt-1 text-sm font-medium leading-6 text-gray-500">
+                      Ready to continue to {nextChapterLabel}?
+                    </p>
+                  </>
+                )}
                 <button
                   type="button"
                   onClick={() => void handleCompletedStudyAction()}
                   className="mt-5 inline-flex min-w-40 justify-center rounded-full bg-[#7BAFD4] px-6 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc] focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
                 >
-                  Continue
+                  {preloadedNextStudy ? `Start ${preloadedNextStudy.title}` : "Continue"}
                 </button>
               </div>
             ) : (
