@@ -1762,44 +1762,54 @@ export default function DashboardPage() {
     const badgesLoading = badgeProgress.length === 0;
     const greetingName = getFirstDashboardName(profile?.display_name || profile?.username || userName);
     const nextStudyLine = buildDashboardNextStudyLine(dailyChecklistData);
+    const activeChapterLabel =
+      dailyChecklistData?.tasks.find((task) => task.kind === "reading")?.chapterLabel ||
+      dailyChecklistData?.tasks.find((task) => task.chapterLabel)?.chapterLabel ||
+      "Your Chapter";
     const streakFlameDuration = Math.max(0.85, 7 - Math.min(29, Math.max(0, streakValue)) * 0.2);
     const streakFlameClass =
       streakValue >= 30
         ? "streak-flame-earned"
         : "streak-flame-building";
+    const nextLevelPercent = Math.max(0, Math.min(100, levelInfo?.progressPercent ?? 0));
     const personalStats = [
       {
         key: "completion",
-        label: "Completion",
+        label: "Bible Progress",
+        sublabel: "Overall",
         value: `${displayedBibleCompletionPercent}%`,
         icon: "📖",
-        tones: "border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100",
+        tones: "border-[#dbe7f4] bg-gradient-to-br from-white via-[#f8fbff] to-[#eef7ff]",
         onClick: () => setShowBibleProgressModal(true),
       },
       {
         key: "grace",
         label: "Grace Days",
+        sublabel: "Available",
         value: graceDaysLoading
           ? animatedDashboardStats.grace
           : Math.max(0, Math.min(5, Number(profile?.grace_days_count ?? 0))),
         icon: "💎",
-        tones: "border-blue-200 bg-gradient-to-br from-white via-blue-50 to-blue-100",
+        tones: "border-[#dbe7f4] bg-gradient-to-br from-white via-[#f7fbff] to-[#edf6ff]",
         onClick: () => setShowGraceDaysInfoModal(true),
       },
       {
         key: "level",
         label: "Level",
+        sublabel: `${levelInfo?.pointsToNextLevel ?? 0} XP to next level`,
         value: levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1,
         icon: "🛡️",
-        tones: "border-emerald-200 bg-gradient-to-br from-white via-emerald-50 to-emerald-100",
+        tones: "border-[#dbe7f4] bg-gradient-to-br from-white via-[#f8fbff] to-[#edf6ff]",
         onClick: openLevelInfoModal,
+        progress: nextLevelPercent,
       },
       {
         key: "badges",
-        label: "Badges",
+        label: "Badges Earned",
+        sublabel: "",
         value: badgesLoading ? animatedDashboardStats.badges : earnedBadgeCount,
         icon: "🏅",
-        tones: "border-rose-200 bg-gradient-to-br from-white via-rose-50 to-rose-100",
+        tones: "border-[#dbe7f4] bg-gradient-to-br from-white via-[#f8fbff] to-[#fff6e8]",
         onClick: () => setShowBadgesModal(true),
       },
     ];
@@ -1808,13 +1818,15 @@ export default function DashboardPage() {
       cards: Array<{
         key?: string;
         label: string;
+        sublabel?: string;
         value: number | string;
         icon?: string;
         tones: string;
         onClick?: () => void;
+        progress?: number;
       }>
     ) => (
-      <div className="mx-auto grid max-w-xl grid-cols-4 gap-2.5 rounded-2xl border border-slate-200 bg-gradient-to-br from-white via-slate-50/70 to-white p-2 shadow-sm">
+      <div className="mx-auto grid max-w-xl grid-cols-4 gap-2 rounded-[24px] border border-[#dbe7f4] bg-white/80 p-2 shadow-[0_12px_34px_rgba(38,63,99,0.08)] backdrop-blur">
         {cards.map((card) => {
           const CardTag = card.onClick ? "button" : "div";
           return (
@@ -1822,15 +1834,25 @@ export default function DashboardPage() {
               key={card.key ?? card.label}
               type={card.onClick ? "button" : undefined}
               onClick={card.onClick}
-              className={`rounded-xl border px-1.5 py-2 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] transition sm:px-3 sm:py-4 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-sm" : ""} ${card.tones}`}
+              className={`min-h-[88px] rounded-[18px] border px-1.5 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition sm:min-h-[106px] sm:px-3 sm:py-3 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-md" : ""} ${card.tones}`}
             >
-              <p className="text-lg font-black text-gray-900 sm:text-2xl">
-                <span className="mr-1 align-middle text-base" aria-hidden="true">{card.icon}</span>
-                {card.value}
+              <p className="text-base font-black leading-none text-gray-950 sm:text-2xl">
+                <span className="mr-1 align-middle text-sm" aria-hidden="true">{card.icon}</span>
+                <span>{card.value}</span>
               </p>
-              <p className="mt-1 text-[9px] font-medium leading-tight text-gray-700 sm:text-xs">
+              <p className="mt-2 text-[9px] font-black leading-tight text-gray-800 sm:text-xs">
                 {card.label}
               </p>
+              {card.sublabel ? (
+                <p className="mt-0.5 text-[8px] font-semibold leading-tight text-gray-500 sm:text-[10px]">
+                  {card.sublabel}
+                </p>
+              ) : null}
+              {typeof card.progress === "number" ? (
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-[#dce8f7]">
+                  <div className="h-full rounded-full bg-[#2f7fe8]" style={{ width: `${card.progress}%` }} />
+                </div>
+              ) : null}
             </CardTag>
           );
         })}
@@ -1846,9 +1868,13 @@ export default function DashboardPage() {
 
     const renderGreetingAndStreakCard = () => (
       <>
-          <div className="mx-auto flex max-w-xl items-center gap-3 px-1">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white bg-white p-1 shadow-sm">
-              <LouisAvatar mood="wave" size={42} />
+          <div className="mx-auto grid max-w-xl grid-cols-[86px,1fr] items-center gap-3 px-1 sm:grid-cols-[112px,1fr]">
+            <div className="row-span-2 flex items-end justify-center">
+              <img
+                src="/louis/newlouisreading.png"
+                alt="Louis reading"
+                className="h-24 w-auto object-contain drop-shadow-[0_10px_18px_rgba(37,65,99,0.18)] sm:h-32"
+              />
             </div>
             <div className="min-w-0">
               <h1 className="text-lg font-black text-gray-950 sm:text-2xl">
@@ -1858,6 +1884,23 @@ export default function DashboardPage() {
                 {nextStudyLine}
               </p>
             </div>
+            <button
+              type="button"
+              onClick={() => {
+                const task = dailyChecklistData?.tasks.find((item) => !item.done && !item.disabled) || dailyChecklistData?.tasks[0];
+                if (task?.href) {
+                  window.location.href = task.href;
+                }
+              }}
+              className="flex min-h-[56px] items-center justify-between gap-3 rounded-[18px] border border-[#dbe7f4] bg-white px-3 py-2 text-left shadow-[0_10px_28px_rgba(38,63,99,0.08)] transition hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#eef6ff] text-xl">📘</span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-sm font-black text-gray-950">{activeChapterLabel}</span>
+                <span className="block text-[11px] font-semibold text-gray-500">Today's Focus</span>
+              </span>
+              <span className="text-xl text-gray-400" aria-hidden="true">›</span>
+            </button>
           </div>
 
           <button
@@ -1867,7 +1910,7 @@ export default function DashboardPage() {
               setShowStreakMotivationTaskPrompt(false);
               setShowStreakMotivationModal(true);
             }}
-            className="mx-auto block w-full max-w-xl rounded-2xl border border-amber-200 bg-gradient-to-br from-[#fff6dc] via-[#fffdf7] to-[#fce8aa] p-4 text-left shadow-sm transition hover:shadow-md"
+            className="mx-auto block w-full max-w-xl rounded-[24px] border border-[#e6edf7] bg-white p-4 text-left shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition hover:shadow-md"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="w-full">
@@ -1883,33 +1926,33 @@ export default function DashboardPage() {
                     {streakValue} day streak
                   </p>
                 </div>
-                <p className="mt-2 text-center text-sm font-bold leading-5 text-[#7a5a12] sm:text-base">
+                <p className="mt-1 text-sm font-semibold leading-5 text-gray-500 sm:text-base">
                   {getDashboardStreakEncouragement(streakValue)}
                 </p>
               </div>
             </div>
 
-            <div className="mx-auto mt-4 grid w-full grid-cols-7 gap-1.5 rounded-2xl border border-[#9dcff0] bg-white/75 p-2 shadow-inner shadow-[#b7dcf4]/70 sm:gap-2 sm:p-3">
+            <div className="mx-auto mt-4 grid w-full grid-cols-7 gap-1.5 sm:gap-2">
               {dashboardLastSevenDays.map((day, index) => {
                 const completedByStreak = index >= 7 - Math.min(7, streakValue);
                 const isCompleted = day.completed || day.isToday || completedByStreak;
                 return (
                 <div
                   key={day.date}
-                  className={`rounded-xl px-1 py-2.5 text-center transition sm:py-3 ${
-                    isCompleted ? "bg-[#cfeafa]" : "bg-[#eaf6fd]"
+                  className={`rounded-2xl px-1 py-2 text-center transition sm:py-2.5 ${
+                    isCompleted ? "bg-[#eef6ff]" : "bg-[#f8fafc]"
                   } ${day.isToday ? "ring-2 ring-[#4B9CD3]/30" : ""}`}
                 >
-                  <p className={`mb-2 text-[11px] font-black sm:text-xs ${isCompleted ? "text-[#236fa5]" : "text-[#477fa7]"}`}>
+                  <p className={`mb-2 text-[11px] font-black sm:text-xs ${isCompleted ? "text-[#2f7fe8]" : "text-gray-500"}`}>
                     {getDashboardDayAbbr(day.date)}
                   </p>
                   <span
                     className={`mx-auto grid h-9 w-9 place-items-center rounded-full border text-sm font-black transition sm:h-10 sm:w-10 ${
                       isCompleted
                         ? day.isToday
-                          ? "animate-pulse border-[#2f7fb8] bg-[#2f7fb8] text-white shadow-[0_0_0_6px_rgba(75,156,211,0.18)]"
-                          : "border-[#4B9CD3]/40 bg-[#4B9CD3] text-white shadow-sm"
-                        : "border-[#9dcff0] bg-white text-transparent"
+                          ? "animate-pulse border-[#2f7fe8] bg-[#2f7fe8] text-white shadow-[0_0_0_6px_rgba(47,127,232,0.15)]"
+                          : "border-[#2f7fe8] bg-[#2f7fe8] text-white shadow-sm"
+                        : "border-[#d9e3ef] bg-white text-transparent"
                     }`}
                     aria-label={`${day.date} ${isCompleted ? "active" : "inactive"}`}
                   >
@@ -1918,6 +1961,12 @@ export default function DashboardPage() {
                 </div>
                 );
               })}
+            </div>
+            <div className="mt-4 flex items-center gap-3 rounded-2xl bg-[#f7fbff] px-3 py-2">
+              <p className="min-w-0 flex-1 text-[11px] font-bold text-gray-600">
+                One more day to unlock another Grace Day
+              </p>
+              <span className="dashboard-diamond-glow text-xl" aria-hidden="true">💎</span>
             </div>
           </button>
       </>
@@ -3636,8 +3685,31 @@ export default function DashboardPage() {
           animation: streak-flame-earned 1.15s ease-in-out infinite;
           transform-origin: center bottom;
         }
+        @keyframes dashboard-diamond-glow {
+          0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(47,127,232,0)); opacity: 0.88; }
+          50% { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(47,127,232,0.45)); opacity: 1; }
+        }
+        .dashboard-diamond-glow {
+          display: inline-block;
+          animation: dashboard-diamond-glow 2.2s ease-in-out infinite;
+        }
+        .bb-dashboard-dark .dashboard-shell {
+          background: linear-gradient(180deg,#101827 0%,#172033 52%,#111827 100%);
+        }
+        .bb-dashboard-dark .dashboard-shell h1,
+        .bb-dashboard-dark .dashboard-shell h2,
+        .bb-dashboard-dark .dashboard-shell .text-gray-950,
+        .bb-dashboard-dark .dashboard-shell .text-gray-900 {
+          color: #f8fafc;
+        }
+        .bb-dashboard-dark .dashboard-shell .text-gray-800,
+        .bb-dashboard-dark .dashboard-shell .text-gray-700,
+        .bb-dashboard-dark .dashboard-shell .text-gray-600,
+        .bb-dashboard-dark .dashboard-shell .text-gray-500 {
+          color: #cbd5e1;
+        }
       `}</style>
-      <div className="min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">
+      <div className="dashboard-shell min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
       <div className="hidden lg:flex max-w-7xl mx-auto px-4 mt-8 gap-6">
         {/* LEFT AD SLOT (Desktop Only) */}
@@ -3773,7 +3845,7 @@ export default function DashboardPage() {
         <div className="lg:hidden h-20" />
       )}
 
-      {showSwipeHintOverlay && (
+      {false && showSwipeHintOverlay && (
         <div
           className="fixed inset-0 z-[70] flex items-center justify-center bg-black/62 px-6 text-white backdrop-blur-[2px]"
           role="button"

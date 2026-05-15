@@ -108,6 +108,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const profileMenuRef = useRef<HTMLDivElement>(null);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null);
+  const [dashboardTheme, setDashboardTheme] = useState<"light" | "dark">("light");
   
   // Feedback system state
   const [userId, setUserId] = useState<string | null>(null);
@@ -130,6 +131,25 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [fullNameLast, setFullNameLast] = useState("");
   const [fullNameSaving, setFullNameSaving] = useState(false);
   const [fullNameError, setFullNameError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const savedTheme = window.localStorage.getItem("bb:dashboard-theme");
+    const resolvedTheme = savedTheme === "dark" ? "dark" : "light";
+    setDashboardTheme(resolvedTheme);
+    document.documentElement.classList.toggle("bb-dashboard-dark", resolvedTheme === "dark");
+  }, []);
+
+  function toggleDashboardTheme() {
+    setDashboardTheme((current) => {
+      const next = current === "dark" ? "light" : "dark";
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem("bb:dashboard-theme", next);
+        document.documentElement.classList.toggle("bb-dashboard-dark", next === "dark");
+      }
+      return next;
+    });
+  }
 
   // Global update modal state
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -1982,6 +2002,27 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     </span>
                   </button>
                 </>
+              )}
+
+              {isLoggedIn && pathname === "/dashboard" && (
+                <button
+                  type="button"
+                  onClick={toggleDashboardTheme}
+                  className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 text-gray-700 transition-colors hover:bg-gray-300"
+                  aria-label={dashboardTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                  title={dashboardTheme === "dark" ? "Light mode" : "Dark mode"}
+                >
+                  {dashboardTheme === "dark" ? (
+                    <svg className="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4" />
+                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                    </svg>
+                  ) : (
+                    <svg className="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.7 6.7 0 0 0 21 12.8Z" />
+                    </svg>
+                  )}
+                </button>
               )}
 
               {/* NOTIFICATION BELL */}

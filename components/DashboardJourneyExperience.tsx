@@ -1812,8 +1812,10 @@ export default function DashboardJourneyExperience({
     setActivePage(index);
   }
 
+  const studyProgressPercent = Math.round((studyProgressCompleted / Math.max(studyProgressTotal, 1)) * 100);
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pb-24">
       <style>{`
         @keyframes task-complete-pop {
           0% {
@@ -1967,36 +1969,56 @@ export default function DashboardJourneyExperience({
       `}</style>
       <div
         ref={containerRef}
-        className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="[scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        <section className={`w-full shrink-0 snap-start px-1 ${activePage === 0 ? "" : "h-0 overflow-hidden"}`}>
+        <section className="w-full px-1">
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-            <div className="px-1">
-              <h2 className="min-w-0 whitespace-nowrap text-[clamp(13px,3.8vw,16px)] font-black leading-tight text-gray-950">
-                Continue Studying {activeChapterLabel}
-              </h2>
-              <p className="mt-0.5 text-[10px] font-bold leading-tight text-gray-600">
-                {estimatedStudyTimeLabel}
-              </p>
-              <div className="mt-2 flex items-center gap-2">
-                <div className="flex gap-1.5" aria-hidden="true">
-                  {Array.from({ length: studyProgressTotal }).map((_, index) => {
-                    const isDone = index < studyProgressCompleted;
-                    return (
-                      <span
-                        key={`study-progress-${index}`}
-                        className={`h-2.5 w-5 rounded-full border transition-all duration-300 ${
-                          isDone
-                            ? "border-emerald-400 bg-emerald-400 shadow-[0_0_0_3px_rgba(52,211,153,0.16)]"
-                            : "border-slate-200 bg-slate-200/80"
-                        }`}
-                      />
-                    );
-                  })}
+            <div className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)]">
+              <div className="mb-3 flex items-start justify-between gap-3">
+                <div>
+                  <h2 className="min-w-0 whitespace-nowrap text-[clamp(16px,4.8vw,20px)] font-black leading-tight text-gray-950">
+                    Continue Your Study
+                  </h2>
+                  <p className="mt-1 text-[11px] font-bold leading-tight text-gray-500">
+                    {estimatedStudyTimeLabel}
+                  </p>
                 </div>
-                <p className="text-[10px] font-black leading-none text-gray-600">
-                  {studyProgressLabel}
-                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowJourneyHelp(false);
+                    setShowDevotionalSettings(true);
+                  }}
+                  className="rounded-full bg-[#f2f7ff] px-3 py-1.5 text-[11px] font-black text-[#2f7fe8] transition hover:bg-[#e7f1ff]"
+                >
+                  Change Study
+                </button>
+              </div>
+              <div className="flex items-center gap-4">
+                <div
+                  className="grid h-16 w-16 shrink-0 place-items-center rounded-full"
+                  style={{
+                    background: `conic-gradient(#2f7fe8 ${studyProgressPercent}%, #e6edf7 0)`,
+                  }}
+                >
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-white text-sm font-black text-[#2f7fe8]">
+                    {studyProgressCompleted}/{studyProgressTotal}
+                  </div>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-black text-gray-950">{activeChapterLabel}</p>
+                  <p className="mt-0.5 text-xs font-semibold text-gray-500">Study Progress</p>
+                  <div className="mt-3 flex items-center gap-3">
+                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-[#e6edf7]">
+                      <div
+                        className="h-full rounded-full bg-[#2f7fe8] transition-all duration-500"
+                        style={{ width: `${studyProgressPercent}%` }}
+                      />
+                    </div>
+                    <span className="text-[11px] font-bold text-gray-500">{studyProgressPercent}%</span>
+                  </div>
+                </div>
+                <span className="text-xl text-gray-400" aria-hidden="true">›</span>
               </div>
             </div>
             {false ? (
@@ -2353,7 +2375,7 @@ export default function DashboardJourneyExperience({
                     onTaskClick(task);
                   }}
                   disabled={isCardDisabled}
-                  className={`relative w-full overflow-hidden rounded-xl border px-3.5 pb-6 pt-2.5 text-left shadow-sm transition-all duration-300 sm:px-4 ${
+                  className={`relative w-full overflow-hidden rounded-[18px] border px-3.5 py-3 text-left shadow-sm transition-all duration-300 sm:px-4 ${
                     isCelebrating ? "task-complete-pop" : ""
                   } ${
                     isNewChapterDropping ? "chapter-card-drop" : ""
@@ -2363,14 +2385,14 @@ export default function DashboardJourneyExperience({
                     task.done
                       ? "border-green-200 bg-gradient-to-r from-green-50 via-white to-green-50 hover:bg-green-50"
                       : isCardDisabled
-                        ? "cursor-not-allowed border-gray-200 bg-gradient-to-r from-white via-emerald-50/60 to-white text-gray-700 opacity-95"
-                        : "border-green-200 bg-gradient-to-r from-white via-emerald-50 to-white text-gray-700 hover:shadow-md"
+                        ? "cursor-not-allowed border-[#e2e8f0] bg-gradient-to-r from-white via-[#f7fbff] to-white text-gray-700 opacity-95"
+                        : "border-[#dbe7f4] bg-gradient-to-r from-white via-[#fbfdff] to-white text-gray-700 hover:shadow-md"
                   }`}
                   style={isNewChapterDropping ? { animationDelay: `${index * 85}ms` } : undefined}
                 >
                   {isCardDisabled ? (
                     <span
-                      className="absolute bottom-3 right-3 text-base opacity-70"
+                      className="absolute bottom-3 right-4 text-base opacity-70"
                       aria-label="Locked"
                       title="Complete the task above to unlock this."
                     >
@@ -2397,7 +2419,7 @@ export default function DashboardJourneyExperience({
                           <p className={`mt-0.5 text-xs leading-4 sm:text-[13px] ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
                         </div>
                         <div className="flex shrink-0 flex-col items-end gap-1">
-                        <span className={`px-1 py-1 text-xs font-black ${task.done ? "text-green-700" : "text-gray-800"}`}>
+                        <span className={`px-1 py-1 text-xs font-black ${task.done ? "text-green-700" : "text-[#2f7fe8]"}`}>
                           {pointsPillLabel}
                         </span>
                         <span className={`hidden ${
@@ -2428,10 +2450,10 @@ export default function DashboardJourneyExperience({
                         </span>
                         </div>
                       </div>
-                      <div className="pointer-events-none absolute bottom-2.5 left-0 right-0 flex items-center justify-center">
+                      <div className="mt-2 flex justify-center">
                         <p className="hidden">{taskCopy.subtitle}</p>
                         {task.timeEstimateLabel ? (
-                          <p className="whitespace-nowrap text-center text-[11px] font-black text-gray-950">
+                          <p className="whitespace-nowrap text-center text-[11px] font-black text-gray-700">
                             Takes about {task.timeEstimateLabel}
                           </p>
                         ) : null}
@@ -2522,6 +2544,26 @@ export default function DashboardJourneyExperience({
               </button>
             </div>
 
+            <div className="overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div className="flex gap-3">
+                {[
+                  { title: "Weekly Challenge", subtitle: "Keep your study rhythm moving.", icon: "🎯" },
+                  { title: "Bible Buddy Encouragement", subtitle: "Small steps daily build strong faith.", icon: "💙" },
+                  { title: "Trivia Stats", subtitle: "Review what is sticking from your studies.", icon: "🧠" },
+                  { title: "Grace Day Reminder", subtitle: "Grace Days protect your streak when life gets busy.", icon: "💎" },
+                ].map((card) => (
+                  <div
+                    key={card.title}
+                    className="min-w-[210px] rounded-[20px] border border-[#dbe7f4] bg-white p-4 shadow-[0_10px_28px_rgba(38,63,99,0.06)]"
+                  >
+                    <div className="text-2xl" aria-hidden="true">{card.icon}</div>
+                    <p className="mt-2 text-sm font-black text-gray-950">{card.title}</p>
+                    <p className="mt-1 text-xs font-medium leading-5 text-gray-500">{card.subtitle}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -2548,6 +2590,36 @@ export default function DashboardJourneyExperience({
           </div>
         </section>
       </div>
+
+      <nav className="fixed inset-x-0 bottom-3 z-40 mx-auto w-[min(94vw,430px)] rounded-[24px] border border-[#dbe7f4] bg-white/95 px-3 py-2 shadow-[0_16px_42px_rgba(38,63,99,0.18)] backdrop-blur">
+        <div className="grid grid-cols-5 items-end gap-1 text-center">
+          {[
+            { label: "Home", href: "/dashboard", icon: "⌂", active: true },
+            { label: "Bible", href: "/reading", icon: "📖" },
+            { label: "Community", href: "/study-groups", icon: "👥" },
+            { label: "TV", href: "/biblebuddy-tv", icon: "▶" },
+            { label: "Games", href: "/bible-study-games", icon: "🎮" },
+          ].map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={`flex flex-col items-center justify-center gap-0.5 rounded-2xl px-1.5 py-1.5 text-[10px] font-black transition ${
+                item.active ? "text-[#2f7fe8]" : "text-gray-500 hover:bg-[#f4f8ff] hover:text-gray-900"
+              }`}
+            >
+              <span
+                className={`grid h-8 w-8 place-items-center rounded-full text-base ${
+                  item.active ? "bg-[#2f7fe8] text-white shadow-sm" : "bg-transparent"
+                }`}
+                aria-hidden="true"
+              >
+                {item.icon}
+              </span>
+              <span>{item.label}</span>
+            </Link>
+          ))}
+        </div>
+      </nav>
 
       <ModalShell
         isOpen={showDevotionalSettings}
