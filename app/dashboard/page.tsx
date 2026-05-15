@@ -11,7 +11,7 @@ import LouisDailyTasksModal, { buildChooseDevotionalChecklistData, fetchLouisDai
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
-import { getBookTotalChapters, getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
+import { getBookTotalChapters, getCurrentBook, getCompletedChapters } from "../../lib/readingProgress";
 import { getProfileStats, syncCurrentStreakToProfileStats } from "../../lib/profileStats";
 import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
 import { buildLouisRecommendationHandoff, storeLouisRouteHandoff } from "../../lib/louisRouteHandoff";
@@ -88,6 +88,20 @@ type BadgeProgressInput = {
   likesGiven: number;
   tvVideosStarted: number;
   booksCompleted: number;
+};
+
+type BibleBookProgress = {
+  book: string;
+  completed: number;
+  total: number;
+  chapters: number[];
+};
+
+type DashboardAnimatedStats = {
+  completion: number;
+  grace: number;
+  level: number;
+  badges: number;
 };
 
 type DashboardLouisNudge = {
@@ -735,7 +749,13 @@ export default function DashboardPage() {
   const [currentMatthewStep, setCurrentMatthewStep] = useState(0);
   const [totalCompletedChapters, setTotalCompletedChapters] = useState<number>(0);
   const [isLoadingBibleCompletion, setIsLoadingBibleCompletion] = useState(true);
-  const [animatedBibleCompletionPercent, setAnimatedBibleCompletionPercent] = useState(3);
+  const [animatedDashboardStats, setAnimatedDashboardStats] = useState<DashboardAnimatedStats>({
+    completion: 3,
+    grace: 2,
+    level: 4,
+    badges: 6,
+  });
+  const [bibleBookProgress, setBibleBookProgress] = useState<BibleBookProgress[]>([]);
   const [currentBook, setCurrentBook] = useState<string | null>(null);
   const [isLoadingLevel, setIsLoadingLevel] = useState<boolean>(true);
   const [levelInfo, setLevelInfo] = useState<{
@@ -752,6 +772,7 @@ export default function DashboardPage() {
   const [showLevelInfoModal, setShowLevelInfoModal] = useState(false);
   const [showBadgesModal, setShowBadgesModal] = useState(false);
   const [showGraceDaysInfoModal, setShowGraceDaysInfoModal] = useState(false);
+  const [showBibleProgressModal, setShowBibleProgressModal] = useState(false);
   const [badgeProgress, setBadgeProgress] = useState<BadgeProgress[]>([]);
   const [selectedBadge, setSelectedBadge] = useState<BadgeProgress | null>(null);
   const [earnedBadgeQueue, setEarnedBadgeQueue] = useState<BadgeProgress[]>([]);
@@ -1715,8 +1736,11 @@ export default function DashboardPage() {
       Math.min(100, Math.round((totalCompletedChapters / Math.max(TOTAL_BIBLE_CHAPTERS, 1)) * 100)),
     );
     const displayedBibleCompletionPercent = isLoadingBibleCompletion
-      ? animatedBibleCompletionPercent
+      ? animatedDashboardStats.completion
       : bibleCompletionPercent;
+    const graceDaysLoading = !profile;
+    const levelLoading = isLoadingLevel || !levelInfo;
+    const badgesLoading = badgeProgress.length === 0;
     const greetingName = getFirstDashboardName(profile?.display_name || profile?.username || userName);
     const nextStudyLine = buildDashboardNextStudyLine(dailyChecklistData);
     const streakFlameDuration = Math.max(0.85, 7 - Math.min(29, Math.max(0, streakValue)) * 0.2);
@@ -1731,11 +1755,14 @@ export default function DashboardPage() {
         value: `${displayedBibleCompletionPercent}%`,
         icon: "📖",
         tones: "bg-gray-100 border-gray-200",
+        onClick: () => setShowBibleProgressModal(true),
       },
       {
         key: "grace",
         label: "Grace Days",
-        value: Math.max(0, Math.min(5, Number(profile?.grace_days_count ?? 0))),
+        value: graceDaysLoading
+          ? animatedDashboardStats.grace
+          : Math.max(0, Math.min(5, Number(profile?.grace_days_count ?? 0))),
         icon: "💎",
         tones: "bg-blue-100 border-blue-200",
         onClick: () => setShowGraceDaysInfoModal(true),
@@ -1743,7 +1770,7 @@ export default function DashboardPage() {
       {
         key: "level",
         label: "Level",
-        value: levelInfo?.level ?? 1,
+        value: levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1,
         icon: "🛡️",
         tones: "bg-emerald-100 border-emerald-200",
         onClick: openLevelInfoModal,
@@ -1751,7 +1778,7 @@ export default function DashboardPage() {
       {
         key: "badges",
         label: "Badges",
-        value: earnedBadgeCount,
+        value: badgesLoading ? animatedDashboardStats.badges : earnedBadgeCount,
         icon: "🏅",
         tones: "bg-red-100 border-red-200",
         onClick: () => setShowBadgesModal(true),
@@ -3140,9 +3167,19 @@ export default function DashboardPage() {
         const activeBook = await getCurrentBook(user.id, BOOKS);
         setCurrentBook(activeBook);
 
-        // Get total completed chapters (for other dashboard features)
-        const totalCount = await getTotalCompletedChapters(user.id, BOOKS);
-        setTotalCompletedChapters(totalCount);
+        const progressRows = await Promise.all(
+          BOOKS.map(async (book) => {
+            const chapters = await getCompletedChapters(user.id, book);
+            return {
+              book,
+              completed: chapters.length,
+              total: getBookTotalChapters(book),
+              chapters,
+            };
+          }),
+        );
+        setBibleBookProgress(progressRows);
+        setTotalCompletedChapters(progressRows.reduce((sum, row) => sum + row.completed, 0));
       } catch (err) {
         console.warn("Error loading other dashboard data:", err);
       } finally {
@@ -3154,17 +3191,31 @@ export default function DashboardPage() {
   }, []);
 
   useEffect(() => {
-    if (!isLoadingBibleCompletion) return;
+    const shouldAnimate =
+      isLoadingBibleCompletion ||
+      !profile ||
+      isLoadingLevel ||
+      !levelInfo ||
+      badgeProgress.length === 0;
 
-    const values = [1, 3, 7, 12, 4, 9, 2, 6];
+    if (!shouldAnimate) return;
+
+    const values: DashboardAnimatedStats[] = [
+      { completion: 1, grace: 1, level: 2, badges: 3 },
+      { completion: 4, grace: 3, level: 7, badges: 9 },
+      { completion: 9, grace: 5, level: 4, badges: 12 },
+      { completion: 2, grace: 0, level: 11, badges: 5 },
+      { completion: 7, grace: 4, level: 6, badges: 16 },
+      { completion: 3, grace: 2, level: 9, badges: 8 },
+    ];
     let index = 0;
     const timer = window.setInterval(() => {
       index = (index + 1) % values.length;
-      setAnimatedBibleCompletionPercent(values[index]);
-    }, 140);
+      setAnimatedDashboardStats(values[index]);
+    }, 115);
 
     return () => window.clearInterval(timer);
-  }, [isLoadingBibleCompletion]);
+  }, [badgeProgress.length, isLoadingBibleCompletion, isLoadingLevel, levelInfo, profile]);
 
   // subtitle for reading card (based on preloaded progress)
   const readingSubtitle = totalCompletedChapters === 0
@@ -3865,6 +3916,141 @@ export default function DashboardPage() {
         onClose={() => setSelectedDashboardTask(null)}
         onProgressUpdated={handleDashboardTaskProgressUpdated}
       />
+
+      <ModalShell
+        isOpen={showBibleProgressModal}
+        onClose={() => setShowBibleProgressModal(false)}
+        backdropColor="bg-black/45"
+      >
+        {(() => {
+          const bibleCompletionPercent = Math.max(
+            0,
+            Math.min(100, Math.round((totalCompletedChapters / Math.max(TOTAL_BIBLE_CHAPTERS, 1)) * 100)),
+          );
+          const rows = bibleBookProgress.length
+            ? bibleBookProgress
+            : BOOKS.map((book) => ({
+                book,
+                completed: 0,
+                total: getBookTotalChapters(book),
+                chapters: [] as number[],
+              }));
+          const completedBooks = rows.filter((row) => row.completed >= row.total).length;
+          const inProgressBooks = rows.filter((row) => row.completed > 0 && row.completed < row.total).length;
+
+          return (
+            <div className="relative mx-3 my-5 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+              <div className="border-b border-[#dbe7f6] bg-gradient-to-br from-[#edf7ff] via-white to-[#fff7df] px-5 py-5 sm:px-7">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white text-3xl shadow-sm">
+                      📖
+                    </div>
+                    <div>
+                      <p className="text-xs font-black uppercase tracking-[0.22em] text-[#5f86bd]">
+                        Bible Progress
+                      </p>
+                      <h2 className="mt-1 text-2xl font-black text-[#1f2a44]">Your Bible collection</h2>
+                      <p className="mt-1 text-sm font-semibold leading-5 text-[#5b6f92]">
+                        {totalCompletedChapters} of {TOTAL_BIBLE_CHAPTERS} chapters completed
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowBibleProgressModal(false)}
+                    className="rounded-full px-2 py-1 text-2xl font-bold leading-none text-[#1f2a44] transition hover:bg-white"
+                    aria-label="Close Bible progress"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div className="mt-5 rounded-3xl border border-white/80 bg-white/80 p-4 shadow-sm">
+                  <div className="flex flex-wrap items-end justify-between gap-3">
+                    <div>
+                      <p className="text-4xl font-black leading-none text-[#1f2a44]">{bibleCompletionPercent}%</p>
+                      <p className="mt-1 text-sm font-bold text-[#5b6f92]">of the Bible completed</p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-center text-xs font-black text-[#1f2a44] sm:grid-cols-3">
+                      <div className="rounded-2xl bg-[#eef7ff] px-3 py-2">
+                        <div className="text-lg">{completedBooks}</div>
+                        <div className="font-semibold text-[#5b6f92]">Books done</div>
+                      </div>
+                      <div className="rounded-2xl bg-[#fff3d7] px-3 py-2">
+                        <div className="text-lg">{inProgressBooks}</div>
+                        <div className="font-semibold text-[#5b6f92]">Started</div>
+                      </div>
+                      <div className="rounded-2xl bg-[#eefbf4] px-3 py-2">
+                        <div className="text-lg">{BOOKS.length}</div>
+                        <div className="font-semibold text-[#5b6f92]">Bible books</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-4 h-3 overflow-hidden rounded-full bg-slate-200">
+                    <div
+                      className="h-full rounded-full bg-[#7BAFD4] transition-all duration-500"
+                      style={{ width: `${bibleCompletionPercent}%` }}
+                    />
+                  </div>
+                  <p className="mt-3 text-sm font-semibold leading-6 text-[#4f678e]">
+                    This tracks full Bible chapters you have completed across Bible Buddy. Every finished chapter adds to your Bible completion percentage.
+                  </p>
+                </div>
+              </div>
+
+              <div className="overflow-y-auto px-4 py-4 sm:px-6 sm:py-5">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {rows.map((row) => {
+                    const percent = Math.max(0, Math.min(100, Math.round((row.completed / Math.max(row.total, 1)) * 100)));
+                    const isComplete = row.completed >= row.total;
+                    const hasStarted = row.completed > 0;
+                    const statusText = isComplete ? "Complete" : hasStarted ? "In progress" : "Not started";
+                    const statusTone = isComplete
+                      ? "bg-[#dff8e8] text-[#116b35]"
+                      : hasStarted
+                        ? "bg-[#fff3d7] text-[#8a5a00]"
+                        : "bg-slate-100 text-slate-500";
+
+                    return (
+                      <div
+                        key={row.book}
+                        className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm"
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <h3 className="text-sm font-black text-[#1f2a44]">{row.book}</h3>
+                            <p className="mt-0.5 text-xs font-semibold text-[#5b6f92]">
+                              {row.completed} of {row.total} chapters
+                            </p>
+                          </div>
+                          <span className={`rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${statusTone}`}>
+                            {statusText}
+                          </span>
+                        </div>
+                        <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                          <div
+                            className={`h-full rounded-full ${isComplete ? "bg-[#19c463]" : "bg-[#7BAFD4]"}`}
+                            style={{ width: `${percent}%` }}
+                          />
+                        </div>
+                        <div className="mt-2 flex items-center justify-between text-[11px] font-bold text-[#5b6f92]">
+                          <span>{percent}%</span>
+                          <span>
+                            {row.chapters.length > 0
+                              ? `Ch. ${row.chapters.slice(0, 6).join(", ")}${row.chapters.length > 6 ? "..." : ""}`
+                              : "No chapters yet"}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+      </ModalShell>
 
       <ModalShell
         isOpen={showGraceDaysInfoModal}
