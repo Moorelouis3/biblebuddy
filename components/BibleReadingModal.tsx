@@ -52,9 +52,45 @@ type BibleApiResponse = {
   verses: BibleApiVerse[];
 };
 
-// Helper function to normalize book names for API
-function normalizeBookName(book: string): string {
-  return book.toLowerCase().replace(/\s+/g, "");
+const CHAPTER_LOOKUP_TIMEOUT_MS = 8000;
+const BIBLE_API_TIMEOUT_MS = 12000;
+
+// Helper function to normalize book names for display/API references.
+function normalizeBookDisplay(book: string): string {
+  return book
+    .trim()
+    .split(/\s+/)
+    .map((word) => (/^\d+$/.test(word) ? word : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()))
+    .join(" ");
+}
+
+function buildBibleApiUrl(book: string, chapter: number): string {
+  return `https://bible-api.com/${encodeURIComponent(`${normalizeBookDisplay(book)} ${chapter}`)}?translation=kjv`;
+}
+
+async function fetchBibleApiChapter(apiUrl: string): Promise<Response> {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), BIBLE_API_TIMEOUT_MS);
+
+  try {
+    return await fetch(apiUrl, { signal: controller.signal });
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+async function withTimeout<T>(promise: PromiseLike<T>, ms: number, label: string): Promise<T> {
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    timeoutId = setTimeout(() => reject(new Error(`${label} timed out`)), ms);
+  });
+
+  try {
+    return await Promise.race([promise, timeoutPromise]);
+  } finally {
+    if (timeoutId) clearTimeout(timeoutId);
+  }
 }
 
 // Helper function to convert verses to sections
@@ -240,18 +276,29 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
 
         // Normalize book name
         const bookParam = book.toLowerCase().trim();
-        const bookDisplay = book
-          .split(" ")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-          .join(" ");
+        const bookDisplay = normalizeBookDisplay(book);
 
         // Step A: Check Supabase table bible_chapters FIRST
-        const { data: supabaseData, error: supabaseError } = await supabase
-          .from("bible_chapters")
-          .select("content_json, enriched_content")
-          .eq("book", bookParam)
-          .eq("chapter", chapter)
-          .maybeSingle();
+        let supabaseData: any = null;
+        let supabaseError: any = null;
+
+        try {
+          const chapterLookup = await withTimeout(
+            supabase
+              .from("bible_chapters")
+              .select("content_json, enriched_content")
+              .eq("book", bookParam)
+              .eq("chapter", chapter)
+              .maybeSingle(),
+            CHAPTER_LOOKUP_TIMEOUT_MS,
+            `${bookDisplay} ${chapter} chapter lookup`,
+          );
+
+          supabaseData = chapterLookup.data;
+          supabaseError = chapterLookup.error;
+        } catch (lookupError) {
+          console.warn("[BIBLE_READING_MODAL] Supabase chapter lookup did not finish; falling back to Bible API:", lookupError);
+        }
 
         if (supabaseData && !supabaseError) {
           // Step B: If enriched_content exists, use it directly
@@ -293,15 +340,17 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
         }
 
         // Step D: If NOT found in Supabase, fetch from bible-api.com
-        const normalizedBook = normalizeBookName(book);
-        const apiUrl = `https://bible-api.com/${normalizedBook}+${chapter}`;
+        const apiUrl = buildBibleApiUrl(book, chapter);
 
-        const response = await fetch(apiUrl);
+        const response = await fetchBibleApiChapter(apiUrl);
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.statusText}`);
         }
 
         const apiData: BibleApiResponse = await response.json();
+        if (!apiData.verses?.length) {
+          throw new Error(`No chapter text found for ${bookDisplay} ${chapter}.`);
+        }
 
         setSections(convertToSections(apiData.verses, bookDisplay));
         setLoading(false);
@@ -341,7 +390,8 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
         return;
       } catch (err) {
         console.error("Error loading chapter:", err);
-        setError(err instanceof Error ? err.message : "Failed to load chapter");
+        const isTimeout = err instanceof Error && err.name === "AbortError";
+        setError(isTimeout ? `Timed out loading ${normalizeBookDisplay(book)} ${chapter}. Please try again.` : err instanceof Error ? err.message : "Failed to load chapter");
       } finally {
         setLoading(false);
         loadingRef.current = false;
