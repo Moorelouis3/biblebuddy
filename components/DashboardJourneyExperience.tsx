@@ -1344,7 +1344,7 @@ export default function DashboardJourneyExperience({
             });
             return next;
           });
-        }, 1800);
+        }, 840);
       }
     }
 
@@ -1364,7 +1364,7 @@ export default function DashboardJourneyExperience({
 
     const timer = window.setTimeout(() => {
       setShowCompletionPanel(true);
-    }, 420);
+    }, 70);
 
     return () => window.clearTimeout(timer);
   }, [allDone, isChecklistSyncing, isLoadingNextChapter, queueTasks.length]);
@@ -1449,9 +1449,21 @@ export default function DashboardJourneyExperience({
         }
 
         @keyframes completion-panel-enter {
-          0% { opacity: 0; transform: translateY(18px) scale(0.96); }
-          72% { opacity: 1; transform: translateY(-3px) scale(1.015); }
+          0% { opacity: 0; transform: translateY(10px) scale(0.98); }
+          72% { opacity: 1; transform: translateY(-2px) scale(1.01); }
           100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes chapter-confetti-pop {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(0deg); }
+          14% { opacity: 1; }
+          100% { opacity: 0; transform: translate(calc(-50% + var(--confetti-x)), calc(-50% + var(--confetti-y))) scale(1) rotate(var(--confetti-rotate)); }
+        }
+
+        @keyframes chapter-firework-ring {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+          20% { opacity: 0.6; }
+          100% { opacity: 0; transform: translate(-50%, -50%) scale(2.35); }
         }
 
         @keyframes chapter-card-drop {
@@ -1508,7 +1520,16 @@ export default function DashboardJourneyExperience({
           pointer-events: none;
         }
         .task-smoke span { animation: task-smoke-puff 740ms ease-out forwards; }
-        .completion-panel-enter { animation: completion-panel-enter 520ms cubic-bezier(0.16, 0.9, 0.22, 1) both; }
+        .completion-panel-enter { animation: completion-panel-enter 260ms cubic-bezier(0.16, 0.9, 0.22, 1) both; }
+        .chapter-confetti span { animation: chapter-confetti-pop 920ms ease-out both; }
+        .chapter-firework-ring { animation: chapter-firework-ring 780ms ease-out both; }
+        .chapter-confetti span:nth-child(2) { animation-delay: 35ms; }
+        .chapter-confetti span:nth-child(3) { animation-delay: 70ms; }
+        .chapter-confetti span:nth-child(4) { animation-delay: 105ms; }
+        .chapter-confetti span:nth-child(5) { animation-delay: 140ms; }
+        .chapter-confetti span:nth-child(6) { animation-delay: 175ms; }
+        .chapter-confetti span:nth-child(7) { animation-delay: 210ms; }
+        .chapter-confetti span:nth-child(8) { animation-delay: 245ms; }
         .chapter-card-drop { animation: chapter-card-drop 560ms cubic-bezier(0.2, 0.9, 0.18, 1.15) both; }
         .chapter-card-drop::after {
           content: "";
@@ -1791,11 +1812,22 @@ export default function DashboardJourneyExperience({
                 </div>
               ))
             ) : shouldShowCompletionPanel ? (
-              <div className="completion-panel-enter rounded-[24px] border border-green-200 bg-gradient-to-br from-[#edfff3] via-white to-[#eaf7ff] px-5 py-7 text-center shadow-sm">
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-white p-1 shadow-sm">
+              <div className="completion-panel-enter relative overflow-hidden px-5 py-7 text-center">
+                <div className="chapter-firework-ring pointer-events-none absolute left-1/2 top-16 h-24 w-24 rounded-full border-4 border-emerald-300/45" aria-hidden="true" />
+                <div className="chapter-confetti pointer-events-none absolute left-1/2 top-16" aria-hidden="true">
+                  <span className="absolute h-2 w-3 rounded-sm bg-amber-400 [--confetti-rotate:160deg] [--confetti-x:-104px] [--confetti-y:-78px]" />
+                  <span className="absolute h-2 w-2 rounded-full bg-sky-400 [--confetti-rotate:-120deg] [--confetti-x:86px] [--confetti-y:-92px]" />
+                  <span className="absolute h-3 w-2 rounded-sm bg-emerald-400 [--confetti-rotate:210deg] [--confetti-x:-72px] [--confetti-y:52px]" />
+                  <span className="absolute h-2 w-3 rounded-sm bg-rose-400 [--confetti-rotate:-190deg] [--confetti-x:108px] [--confetti-y:36px]" />
+                  <span className="absolute h-2 w-2 rounded-full bg-violet-400 [--confetti-rotate:140deg] [--confetti-x:-28px] [--confetti-y:-118px]" />
+                  <span className="absolute h-3 w-2 rounded-sm bg-lime-400 [--confetti-rotate:-155deg] [--confetti-x:30px] [--confetti-y:76px]" />
+                  <span className="absolute h-2 w-3 rounded-sm bg-orange-400 [--confetti-rotate:190deg] [--confetti-x:-126px] [--confetti-y:4px]" />
+                  <span className="absolute h-2 w-2 rounded-full bg-cyan-400 [--confetti-rotate:-130deg] [--confetti-x:132px] [--confetti-y:-22px]" />
+                </div>
+                <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-full">
                   <LouisAvatar mood="stareyes" size={72} />
                 </div>
-                <p className="mt-4 text-2xl font-black text-gray-950">🎉 Congratulations!</p>
+                <p className="relative mt-4 text-2xl font-black text-gray-950">🎉 Congratulations!</p>
                 <p className="mt-2 text-base font-bold text-gray-800">You completed {completedChapterLabel}.</p>
                 <p className="mt-1 text-sm font-medium leading-6 text-gray-500">
                   Ready to continue to {nextChapterLabel}?
