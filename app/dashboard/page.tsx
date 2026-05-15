@@ -1867,7 +1867,7 @@ export default function DashboardPage() {
               setShowStreakMotivationTaskPrompt(false);
               setShowStreakMotivationModal(true);
             }}
-            className="mx-auto block w-full max-w-xl rounded-2xl border border-amber-200 bg-gradient-to-br from-[#fff6dc] via-[#fffdf7] to-[#fce8aa] p-4 text-left shadow-sm transition hover:shadow-md"
+            className="mx-auto block w-full max-w-xl rounded-2xl border border-[#9dcff0] bg-gradient-to-br from-[#e8f5fd] via-[#f8fcff] to-[#c7e6f8] p-4 text-left shadow-sm transition hover:shadow-md"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="w-full">
@@ -1883,13 +1883,13 @@ export default function DashboardPage() {
                     {streakValue} day streak
                   </p>
                 </div>
-                <p className="mt-2 text-center text-sm font-bold leading-5 text-[#7a5a12] sm:text-base">
+                <p className="mt-2 text-center text-sm font-bold leading-5 text-[#2f6f9c] sm:text-base">
                   {getDashboardStreakEncouragement(streakValue)}
                 </p>
               </div>
             </div>
 
-            <div className="mx-auto mt-4 grid w-full grid-cols-7 gap-1.5 rounded-2xl border border-amber-200 bg-white/70 p-2 shadow-inner shadow-amber-100/70 sm:gap-2 sm:p-3">
+            <div className="mx-auto mt-4 grid w-full grid-cols-7 gap-1.5 rounded-2xl border border-[#9dcff0] bg-white/75 p-2 shadow-inner shadow-[#b7dcf4]/70 sm:gap-2 sm:p-3">
               {dashboardLastSevenDays.map((day, index) => {
                 const completedByStreak = index >= 7 - Math.min(7, streakValue);
                 const isCompleted = day.completed || day.isToday || completedByStreak;
@@ -1897,19 +1897,19 @@ export default function DashboardPage() {
                 <div
                   key={day.date}
                   className={`rounded-xl px-1 py-2.5 text-center transition sm:py-3 ${
-                    isCompleted ? "bg-[#e6f5f2]" : "bg-[#fff9e8]"
-                  } ${day.isToday ? "ring-2 ring-[#0f8f86]/25" : ""}`}
+                    isCompleted ? "bg-[#cfeafa]" : "bg-[#eaf6fd]"
+                  } ${day.isToday ? "ring-2 ring-[#4B9CD3]/30" : ""}`}
                 >
-                  <p className={`mb-2 text-[11px] font-black sm:text-xs ${isCompleted ? "text-[#0f766e]" : "text-[#8a6a1c]"}`}>
+                  <p className={`mb-2 text-[11px] font-black sm:text-xs ${isCompleted ? "text-[#236fa5]" : "text-[#477fa7]"}`}>
                     {getDashboardDayAbbr(day.date)}
                   </p>
                   <span
                     className={`mx-auto grid h-9 w-9 place-items-center rounded-full border text-sm font-black transition sm:h-10 sm:w-10 ${
                       isCompleted
                         ? day.isToday
-                          ? "animate-pulse border-[#0f766e] bg-[#0f766e] text-white shadow-[0_0_0_6px_rgba(15,118,110,0.16)]"
-                          : "border-[#0f766e]/35 bg-[#0f766e] text-white shadow-sm"
-                        : "border-amber-200 bg-white text-transparent"
+                          ? "animate-pulse border-[#2f7fb8] bg-[#2f7fb8] text-white shadow-[0_0_0_6px_rgba(75,156,211,0.18)]"
+                          : "border-[#4B9CD3]/40 bg-[#4B9CD3] text-white shadow-sm"
+                        : "border-[#9dcff0] bg-white text-transparent"
                     }`}
                     aria-label={`${day.date} ${isCompleted ? "active" : "inactive"}`}
                   >
