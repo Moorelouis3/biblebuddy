@@ -1435,6 +1435,10 @@ export default function DashboardJourneyExperience({
       >
         <section className={`w-full shrink-0 snap-start px-1 ${activePage === 0 ? "" : "h-0 overflow-hidden"}`}>
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+            <div className="flex items-center justify-between px-1">
+              <h2 className="text-base font-black text-gray-950">Continue Your Study</h2>
+            </div>
+            {false ? (
             <div
               className={`relative w-full overflow-visible rounded-[26px] border text-left shadow-sm transition hover:shadow-md ${getDailyStudyCardClasses(allDone)}`}
             >
@@ -1653,6 +1657,7 @@ export default function DashboardJourneyExperience({
                 </div>
               ) : null}
             </div>
+            ) : null}
 
             {isChecklistSyncing ? (
               skeletonTasks.map((task, index) => (

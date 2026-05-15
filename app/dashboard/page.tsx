@@ -11,7 +11,7 @@ import LouisDailyTasksModal, { buildChooseDevotionalChecklistData, fetchLouisDai
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
-import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
+import { getBookTotalChapters, getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { getProfileStats, syncCurrentStreakToProfileStats } from "../../lib/profileStats";
 import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
 import { buildLouisRecommendationHandoff, storeLouisRouteHandoff } from "../../lib/louisRouteHandoff";
@@ -647,6 +647,85 @@ const BOOKS = [
   "Revelation",
 ];
 
+const TOTAL_BIBLE_CHAPTERS = BOOKS.reduce((total, book) => total + getBookTotalChapters(book), 0);
+
+function getDashboardLocalDateKey(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function getDashboardDayAbbr(dateKey: string) {
+  const date = new Date(`${dateKey}T00:00:00`);
+  return ["S", "M", "T", "W", "T", "F", "S"][date.getDay()] || "";
+}
+
+function buildLastSevenDashboardDays(activeDates: Set<string> = new Set()) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return Array.from({ length: 7 }, (_, index) => {
+    const date = new Date(today);
+    date.setDate(today.getDate() - (6 - index));
+    const dateKey = getDashboardLocalDateKey(date);
+    return {
+      date: dateKey,
+      completed: activeDates.has(dateKey),
+      isToday: index === 6,
+    };
+  });
+}
+
+function getDashboardGreeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+}
+
+function getFirstDashboardName(name: string) {
+  const cleanName = name.trim();
+  if (!cleanName || cleanName.toLowerCase() === "buddy") return "Buddy";
+  return cleanName.split(/\s+/)[0] || "Buddy";
+}
+
+function getDashboardStreakEncouragement(streak: number) {
+  const safeStreak = Math.max(1, Math.floor(streak || 1));
+  if (safeStreak === 1) return "Every good thing starts with day one.";
+  if (safeStreak < 7) return "Keep showing up. This is how the rhythm starts.";
+  if (safeStreak === 7) return "One full week. That is real momentum.";
+  if (safeStreak < 15) return "You are building a steady Bible study habit.";
+  if (safeStreak === 15) return "Keep going. Two more weeks and the fire badge is close.";
+  if (safeStreak < 30) return `${30 - safeStreak} ${30 - safeStreak === 1 ? "day" : "days"} until the fire badge stays lit.`;
+  return "Fire badge earned. Keep the flame moving.";
+}
+
+function buildDashboardNextStudyLine(checklistData: ChecklistData | null) {
+  const tasks = checklistData?.tasks ?? [];
+  const nextTask = tasks.find((task) => !task.done) ?? null;
+  const chapterLabel =
+    nextTask?.chapterLabel ||
+    tasks.find((task) => task.chapterLabel)?.chapterLabel ||
+    "today's chapter";
+
+  if (checklistData?.allDone) {
+    return `Great job. Start the next chapter study when you are ready.`;
+  }
+
+  if (!nextTask) {
+    return `Let's start ${chapterLabel} today.`;
+  }
+
+  if (nextTask.kind === "devotional") return `Let's start ${chapterLabel} today.`;
+  if (nextTask.kind === "reading") return `Let's read ${chapterLabel} today.`;
+  if (nextTask.kind === "notes") return `Let's finish the notes for ${chapterLabel} today.`;
+  if (nextTask.kind === "trivia") return `Let's finish trivia for ${chapterLabel} today.`;
+  if (nextTask.kind === "scrambled") return `Let's finish the word game for ${chapterLabel} today.`;
+  if (nextTask.kind === "reflection") return `Let's finish the reflection for ${chapterLabel} today.`;
+  return `Let's finish ${chapterLabel} today.`;
+}
+
 export default function DashboardPage() {
   // All useState declarations appear first, before any useEffect
   const router = useRouter();
@@ -700,6 +779,7 @@ export default function DashboardPage() {
   const [dailyTaskNextTitle, setDailyTaskNextTitle] = useState<string | null>(null);
   const [dailyTaskSummaryLine, setDailyTaskSummaryLine] = useState<string | null>(null);
   const [selectedDashboardTask, setSelectedDashboardTask] = useState<TaskState | null>(null);
+  const [dashboardLastSevenDays, setDashboardLastSevenDays] = useState(buildLastSevenDashboardDays());
   const dailyTaskPopupOpenRef = useRef(false);
   const dailyChecklistDataRef = useRef<ChecklistData | null>(null);
   const dailyTaskSummaryLoadedKeyRef = useRef<string | null>(null);
@@ -1627,44 +1707,47 @@ export default function DashboardPage() {
 
   function renderDashboardStatsRow() {
     const earnedBadgeCount = badgeProgress.filter((badge) => badge.current >= badge.target).length;
-    const streakValue = profile?.current_streak ?? 0;
+    const streakValue = Math.max(1, profile?.current_streak ?? 1);
+    const bibleCompletionPercent = Math.max(
+      0,
+      Math.min(100, Math.round((totalCompletedChapters / Math.max(TOTAL_BIBLE_CHAPTERS, 1)) * 100)),
+    );
+    const greetingName = getFirstDashboardName(profile?.display_name || profile?.username || userName);
+    const nextStudyLine = buildDashboardNextStudyLine(dailyChecklistData);
     const streakFlameDuration = Math.max(0.85, 7 - Math.min(29, Math.max(0, streakValue)) * 0.2);
     const streakFlameClass =
       streakValue >= 30
         ? "streak-flame-earned"
-        : streakValue <= 1
-          ? "streak-flame-locked"
-          : "streak-flame-building";
+        : "streak-flame-building";
     const personalStats = [
       {
-        key: "streak",
-        label: "Streak",
-        value: streakValue,
-        tones: "bg-gray-100 border-gray-200",
-        onClick: () => {
-          setStreakMotivationModalMode("daily");
-          setShowStreakMotivationTaskPrompt(false);
-          setShowStreakMotivationModal(true);
-        },
+        key: "completion",
+        label: "Completion",
+        value: `${bibleCompletionPercent}%`,
+        icon: "📖",
+        tones: "bg-white border-gray-200",
       },
       {
         key: "grace",
-        label: "💎 Grace Days",
+        label: "Grace Days",
         value: Math.max(0, Math.min(5, Number(profile?.grace_days_count ?? 0))),
+        icon: "💎",
         tones: "bg-blue-100 border-blue-200",
         onClick: () => setShowGraceDaysInfoModal(true),
       },
       {
         key: "level",
-        label: "🛡️ Level",
+        label: "Level",
         value: levelInfo?.level ?? 1,
+        icon: "🛡️",
         tones: "bg-emerald-100 border-emerald-200",
         onClick: openLevelInfoModal,
       },
       {
         key: "badges",
-        label: "🏅 Badges",
+        label: "Badges",
         value: earnedBadgeCount,
+        icon: "🏅",
         tones: "bg-red-100 border-red-200",
         onClick: () => setShowBadgesModal(true),
       },
@@ -1675,11 +1758,12 @@ export default function DashboardPage() {
         key?: string;
         label: string;
         value: number | string;
+        icon?: string;
         tones: string;
         onClick?: () => void;
       }>
     ) => (
-      <div className="mx-auto grid max-w-xl grid-cols-4 gap-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm sm:gap-3 sm:p-3">
+      <div className="mx-auto grid max-w-xl grid-cols-4 gap-0 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm">
         {cards.map((card) => {
           const CardTag = card.onClick ? "button" : "div";
           return (
@@ -1687,26 +1771,14 @@ export default function DashboardPage() {
               key={card.key ?? card.label}
               type={card.onClick ? "button" : undefined}
               onClick={card.onClick}
-              className={`rounded-xl border px-1.5 py-2 text-center transition sm:px-3 sm:py-4 ${card.onClick ? "hover:shadow-sm" : ""} ${card.tones}`}
+              className={`border-r border-gray-200 px-1.5 py-2 text-center transition last:border-r-0 sm:px-3 ${card.onClick ? "hover:bg-gray-50" : ""}`}
             >
-              <p className="text-lg font-bold text-gray-900 sm:text-2xl">
+              <p className="text-lg font-black text-gray-900 sm:text-2xl">
+                <span className="mr-1 align-middle text-base" aria-hidden="true">{card.icon}</span>
                 {card.value}
               </p>
               <p className="mt-1 text-[9px] font-medium leading-tight text-gray-700 sm:text-xs">
-                {card.key === "streak" ? (
-                  <>
-                    <span
-                      className={`mr-1 inline-block ${streakFlameClass}`}
-                      style={{ animationDuration: `${streakFlameDuration}s` }}
-                      aria-hidden="true"
-                    >
-                      🔥
-                    </span>
-                    {card.label}
-                  </>
-                ) : (
-                  card.label
-                )}
+                {card.label}
               </p>
             </CardTag>
           );
@@ -1723,7 +1795,76 @@ export default function DashboardPage() {
 
     if (!isOwnerDashboard) {
       return (
-        <div className="mb-4">
+        <div className="mb-4 space-y-4">
+          <div className="mx-auto flex max-w-xl items-center gap-3 px-1">
+            <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full border border-white bg-white shadow-sm">
+              {profile?.profile_image_url ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={profile.profile_image_url} alt="" className="h-full w-full object-cover" />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-[#d7eaf7] text-xl font-black text-[#3d789f]">
+                  {greetingName.charAt(0).toUpperCase()}
+                </div>
+              )}
+            </div>
+            <div className="min-w-0">
+              <h1 className="text-lg font-black text-gray-950 sm:text-2xl">
+                {getDashboardGreeting()}, {greetingName}
+              </h1>
+              <p className="mt-0.5 text-sm font-medium leading-5 text-gray-500">
+                {nextStudyLine}
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              setStreakMotivationModalMode("daily");
+              setShowStreakMotivationTaskPrompt(false);
+              setShowStreakMotivationModal(true);
+            }}
+            className="mx-auto block w-full max-w-xl rounded-2xl border border-gray-200 bg-white p-4 text-left shadow-sm transition hover:shadow-md"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`inline-block text-2xl leading-none ${streakFlameClass}`}
+                    style={{ animationDuration: `${streakFlameDuration}s` }}
+                    aria-hidden="true"
+                  >
+                    🔥
+                  </span>
+                  <p className="text-sm font-black text-gray-950 sm:text-base">
+                    {streakValue} day streak
+                  </p>
+                </div>
+                <p className="mt-1 text-xs font-medium leading-5 text-gray-500 sm:text-sm">
+                  {getDashboardStreakEncouragement(streakValue)}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-4 grid grid-cols-7 gap-2">
+              {dashboardLastSevenDays.map((day) => (
+                <div key={day.date} className="text-center">
+                  <p className="mb-2 text-[10px] font-semibold text-gray-500">{getDashboardDayAbbr(day.date)}</p>
+                  <span
+                    className={`mx-auto block h-5 w-5 rounded-full border transition ${
+                      day.completed || day.isToday
+                        ? day.isToday
+                          ? "animate-pulse border-emerald-400 bg-emerald-400 shadow-[0_0_0_5px_rgba(52,211,153,0.18)]"
+                          : "border-emerald-400 bg-emerald-400"
+                        : "border-gray-300 bg-gray-50"
+                    }`}
+                    aria-label={`${day.date} ${day.completed || day.isToday ? "active" : "inactive"}`}
+                  />
+                </div>
+              ))}
+            </div>
+          </button>
+
           {renderStatCards(personalStats)}
         </div>
       );
@@ -2204,7 +2345,7 @@ export default function DashboardPage() {
         ] = await Promise.all([
           supabase
             .from("master_actions")
-            .select("action_type, action_label")
+            .select("action_type, action_label, created_at")
             .eq("user_id", userId),
           supabase
             .from("group_posts")
@@ -2235,6 +2376,15 @@ export default function DashboardPage() {
         const actionRows = actionsResult.data || [];
         const countActions = (...types: string[]) =>
           actionRows.filter((row) => types.includes(row?.action_type || "")).length;
+        const activeLoginDates = new Set<string>();
+        actionRows.forEach((row: { action_type?: string | null; created_at?: string | null }) => {
+          if (row?.action_type !== ACTION_TYPE.user_login || !row.created_at) return;
+          activeLoginDates.add(getDashboardLocalDateKey(new Date(row.created_at)));
+        });
+        activeLoginDates.add(getDashboardLocalDateKey(new Date()));
+        if (!didCancel) {
+          setDashboardLastSevenDays(buildLastSevenDashboardDays(activeLoginDates));
+        }
 
         const adminBonusActionRows = actionRows.filter((row) =>
           row?.action_label === JESSICA_BONUS_ACTION_LABEL,
@@ -3362,14 +3512,19 @@ export default function DashboardPage() {
     <>
       <style>{`
         @keyframes streak-flame-build {
-          0%, 72%, 100% {
+          0%, 58%, 100% {
             filter: grayscale(1);
             opacity: 0.45;
           }
-          82%, 92% {
+          68%, 92% {
             filter: grayscale(0);
             opacity: 1;
           }
+        }
+        @keyframes streak-flame-earned {
+          0%, 100% { transform: translateY(0) scale(1) rotate(-2deg); }
+          35% { transform: translateY(-1px) scale(1.08) rotate(2deg); }
+          70% { transform: translateY(0) scale(1.02) rotate(-1deg); }
         }
         .streak-flame-locked {
           filter: grayscale(1);
@@ -3384,6 +3539,8 @@ export default function DashboardPage() {
         .streak-flame-earned {
           filter: grayscale(0);
           opacity: 1;
+          animation: streak-flame-earned 1.15s ease-in-out infinite;
+          transform-origin: center bottom;
         }
       `}</style>
       <div className="min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">
