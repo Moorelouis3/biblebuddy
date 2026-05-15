@@ -821,6 +821,7 @@ export default function DashboardPage() {
   const [dailyTaskNextTitle, setDailyTaskNextTitle] = useState<string | null>(null);
   const [dailyTaskSummaryLine, setDailyTaskSummaryLine] = useState<string | null>(null);
   const [selectedDashboardTask, setSelectedDashboardTask] = useState<TaskState | null>(null);
+  const [showChapterFocusPreview, setShowChapterFocusPreview] = useState(false);
   const [dashboardLastSevenDays, setDashboardLastSevenDays] = useState(buildLastSevenDashboardDays());
   const dailyTaskPopupOpenRef = useRef(false);
   const dailyChecklistDataRef = useRef<ChecklistData | null>(null);
@@ -1093,6 +1094,22 @@ export default function DashboardPage() {
   function getChapterPreviewLine(task: TaskState | null) {
     const book = String(task?.book || "").toLowerCase();
     const chapter = task?.chapter ?? null;
+
+    if (book === "genesis" && chapter === 1) {
+      return "Genesis 1 opens the Bible with God speaking creation into order, filling the world with life, and making humanity in His image.";
+    }
+
+    if (book === "genesis" && chapter === 2) {
+      return "Genesis 2 slows down and brings us into Eden, where God forms humanity, gives purpose, and shows why relationship and rest matter.";
+    }
+
+    if (book === "genesis" && chapter === 3) {
+      return "Genesis 3 shows temptation entering Eden, Adam and Eve hiding in shame, God confronting sin, and the first promise that evil will not win forever.";
+    }
+
+    if (book === "genesis" && chapter === 4) {
+      return "Genesis 4 follows Cain and Abel as jealousy turns into violence, showing how quickly sin spreads through the human heart and the family.";
+    }
 
     if (book === "genesis" && chapter === 39) {
       return "Joseph serves faithfully in Potiphar's house, refuses temptation, and stays faithful even after being falsely accused.";
@@ -1762,10 +1779,14 @@ export default function DashboardPage() {
     const badgesLoading = badgeProgress.length === 0;
     const greetingName = getFirstDashboardName(profile?.display_name || profile?.username || userName);
     const nextStudyLine = buildDashboardNextStudyLine(dailyChecklistData);
+    const activeChapterFocusTask =
+      dailyChecklistData?.tasks.find((task) => task.kind === "reading") ||
+      dailyChecklistData?.tasks.find((task) => task.chapterLabel) ||
+      null;
     const activeChapterLabel =
-      dailyChecklistData?.tasks.find((task) => task.kind === "reading")?.chapterLabel ||
-      dailyChecklistData?.tasks.find((task) => task.chapterLabel)?.chapterLabel ||
+      activeChapterFocusTask?.chapterLabel ||
       "Your Chapter";
+    const activeChapterPreviewLine = getChapterPreviewLine(activeChapterFocusTask);
     const streakFlameDuration = Math.max(0.85, 7 - Math.min(29, Math.max(0, streakValue)) * 0.2);
     const streakFlameClass =
       streakValue >= 30
@@ -1868,39 +1889,40 @@ export default function DashboardPage() {
 
     const renderGreetingAndStreakCard = () => (
       <>
-          <div className="mx-auto grid max-w-xl grid-cols-[92px,1fr] items-center gap-3 px-1 sm:grid-cols-[120px,1fr]">
-            <div className="row-span-2 flex h-full items-end justify-start self-end overflow-visible">
+          <div className="mx-auto w-full max-w-xl px-1">
+            <div className="flex items-end gap-3 sm:gap-4">
               <img
                 src="/louis/newlouisreading.png"
                 alt="Louis reading"
-                className="-mb-3 h-28 w-auto object-contain drop-shadow-[0_10px_18px_rgba(37,65,99,0.18)] sm:h-36"
+                className="h-28 w-auto shrink-0 object-contain drop-shadow-[0_10px_18px_rgba(37,65,99,0.18)] sm:h-36"
               />
-            </div>
-            <div className="min-w-0 self-end pt-1">
-              <h1 className="text-lg font-black text-gray-950 sm:text-2xl">
-                {getDashboardGreeting()}, {greetingName}
-              </h1>
-              <p className="mt-0.5 text-sm font-medium leading-5 text-gray-500 sm:text-[15px]">
-                {nextStudyLine}
-              </p>
+              <div className="min-w-0 pb-4 sm:pb-6">
+                <h1 className="text-xl font-black leading-tight text-gray-950 sm:text-2xl">
+                  {getDashboardGreeting()}, {greetingName}
+                </h1>
+                <p className="mt-0.5 text-sm font-medium leading-5 text-gray-500 sm:text-[15px]">
+                  {nextStudyLine}
+                </p>
+              </div>
             </div>
             <button
               type="button"
-              onClick={() => {
-                const task = dailyChecklistData?.tasks.find((item) => !item.done && !item.disabled) || dailyChecklistData?.tasks[0];
-                if (task?.href) {
-                  window.location.href = task.href;
-                }
-              }}
-              className="flex min-h-[58px] items-center justify-between gap-3 rounded-[18px] border border-[#dbe7f4] bg-[#fbfdff] px-3 py-2 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              onClick={() => setShowChapterFocusPreview((value) => !value)}
+              className="mt-2 flex min-h-[58px] w-full items-center justify-between gap-3 rounded-[18px] border border-[#dbe7f4] bg-[#fbfdff] px-3 py-2 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              aria-expanded={showChapterFocusPreview}
             >
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#eef6ff] text-xl">📘</span>
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-black text-gray-950">{activeChapterLabel}</span>
                 <span className="block text-[11px] font-semibold text-gray-500">Today's Focus</span>
               </span>
-              <span className="text-xl text-gray-400" aria-hidden="true">›</span>
+              <span className={`text-xl text-gray-400 transition ${showChapterFocusPreview ? "rotate-90" : ""}`} aria-hidden="true">›</span>
             </button>
+            {showChapterFocusPreview ? (
+              <div className="mt-2 rounded-[18px] border border-[#dbe7f4] bg-white/90 px-4 py-3 text-sm font-medium leading-6 text-gray-600 shadow-sm">
+                {activeChapterPreviewLine}
+              </div>
+            ) : null}
           </div>
 
           <button
