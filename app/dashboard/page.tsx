@@ -2,7 +2,7 @@
 "use client";
 export const dynamic = 'force-dynamic';
 
-import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import confetti from "canvas-confetti";
 import "../../styles/pulse.css";
@@ -2983,13 +2983,18 @@ export default function DashboardPage() {
   ]);
 
   const currentStreak = profile?.current_streak ?? 0;
+  const dashboardChecklistData = useMemo(
+    () => dailyChecklistData ?? buildChooseDevotionalChecklistData(userId || "dashboard-fallback"),
+    [dailyChecklistData, userId],
+  );
+  const dashboardChecklistLoading = isLoadingDailyTaskSummary && Boolean(dailyChecklistData);
   const completedChapterLabel =
-    dailyChecklistData?.tasks.find((task) => task.kind === "reading")?.chapterLabel ||
-    dailyChecklistData?.tasks.find((task) => task.chapterLabel)?.chapterLabel ||
+    dashboardChecklistData.tasks.find((task) => task.kind === "reading")?.chapterLabel ||
+    dashboardChecklistData.tasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "this chapter";
   const nextChapterLabel = (() => {
-    const chapterTask = dailyChecklistData?.tasks.find((task) => task.book && task.chapter);
-    if (!chapterTask?.book || !chapterTask.chapter || !dailyChecklistData?.nextJourneyTarget) return "the next chapter";
+    const chapterTask = dashboardChecklistData.tasks.find((task) => task.book && task.chapter);
+    if (!chapterTask?.book || !chapterTask.chapter || !dashboardChecklistData.nextJourneyTarget) return "the next chapter";
     return `${chapterTask.book} ${chapterTask.chapter + 1}`;
   })();
   useEffect(() => {
@@ -3428,8 +3433,8 @@ export default function DashboardPage() {
 
   const streakMotivation = getStreakMotivation(profile?.current_streak ?? 0);
   const dailyStreakButtonText = getDailyStreakButtonText(profile?.current_streak ?? 0);
-  const dailyStreakTaskIntro = buildDailyStreakTaskIntro(dailyChecklistData);
-  const compactDashboardCheckIn = buildCompactDashboardCheckIn(dailyChecklistData, userName);
+  const dailyStreakTaskIntro = buildDailyStreakTaskIntro(dashboardChecklistData);
+  const compactDashboardCheckIn = buildCompactDashboardCheckIn(dashboardChecklistData, userName);
   const displayedDashboardNudge = louisDashboardNudge ?? {
     id: "fallback-checkin",
     eyebrow: "Bible Study Check-In",
@@ -3658,8 +3663,8 @@ export default function DashboardPage() {
           profile={profile}
           levelInfo={levelInfo}
           primaryRecommendation={primaryRecommendation}
-          checklistData={dailyChecklistData}
-          isLoadingChecklist={isLoadingDailyTaskSummary}
+          checklistData={dashboardChecklistData}
+          isLoadingChecklist={dashboardChecklistLoading}
           dailyTaskTimeLeftLabel={dailyTaskTimeLeftLabel}
           membershipStatus={membershipStatus}
           daysRemaining={daysRemaining}
@@ -3703,8 +3708,8 @@ export default function DashboardPage() {
           profile={profile}
           levelInfo={levelInfo}
           primaryRecommendation={primaryRecommendation}
-          checklistData={dailyChecklistData}
-          isLoadingChecklist={isLoadingDailyTaskSummary}
+          checklistData={dashboardChecklistData}
+          isLoadingChecklist={dashboardChecklistLoading}
           dailyTaskTimeLeftLabel={dailyTaskTimeLeftLabel}
           membershipStatus={membershipStatus}
           daysRemaining={daysRemaining}
