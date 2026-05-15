@@ -58,6 +58,9 @@ type StudyCommunityModal = {
 
 const HIDDEN_DEVOTIONAL_TITLES = new Set([
   "The Calling of Moses",
+  "The Tempting of Jesus",
+  "The Disciples of Jesus",
+  "Women of the Bible",
 ]);
 
 const FEATURED_STUDY_ORDER = [

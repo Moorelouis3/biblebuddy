@@ -69,6 +69,12 @@ type DevotionalOption = {
   total_days: number | null;
 };
 
+const HIDDEN_STUDY_SWITCHER_TITLES = new Set([
+  "The Tempting of Jesus",
+  "The Disciples of Jesus",
+  "Women of the Bible",
+]);
+
 function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Creation of the World") return "/creationoftheworld.png";
   if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
@@ -1274,7 +1280,7 @@ export default function DashboardJourneyExperience({
   const louisMessage = buildLouisNextStepMessage();
 
   useEffect(() => {
-    if (!showDevotionalSettings || !isPaidUser) return;
+    if (!showDevotionalSettings) return;
 
     let cancelled = false;
 
@@ -1295,7 +1301,9 @@ export default function DashboardJourneyExperience({
         setDevotionalSettingsMessage("Louis could not load the Bible study list. Try again in a moment.");
         setDevotionalOptions([]);
       } else {
-        const options = (data || []) as DevotionalOption[];
+        const options = ((data || []) as DevotionalOption[]).filter(
+          (option) => !HIDDEN_STUDY_SWITCHER_TITLES.has(option.title),
+        );
         setDevotionalOptions(options);
         setSelectedDevotionalId(currentDevotionalId || options[0]?.id || "");
       }
@@ -1308,10 +1316,10 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [showDevotionalSettings, isPaidUser, currentDevotionalId]);
+  }, [showDevotionalSettings, currentDevotionalId]);
 
   async function handleSaveDevotionalSetting() {
-    if (!userId || !cycleStartedAt || !selectedDevotionalId || !isPaidUser) return;
+    if (!userId || !selectedDevotionalId) return;
 
     const selected = devotionalOptions.find((devotional) => devotional.id === selectedDevotionalId);
     setIsSavingDevotional(true);
@@ -1347,10 +1355,12 @@ export default function DashboardJourneyExperience({
 
       if (targetError) throw targetError;
 
-      rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
-        devotionalId: selectedDevotionalId,
-        dayNumber: nextDay,
-      });
+      if (cycleStartedAt) {
+        rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
+          devotionalId: selectedDevotionalId,
+          dayNumber: nextDay,
+        });
+      }
 
       setDevotionalSettingsMessage(`${selected?.title || "Your Bible study"} is set for your daily tasks.`);
       onDevotionalChanged();
@@ -2323,6 +2333,116 @@ export default function DashboardJourneyExperience({
           </div>
         </section>
       </div>
+
+      <ModalShell
+        isOpen={showDevotionalSettings}
+        onClose={() => setShowDevotionalSettings(false)}
+        backdropColor="bg-black/45"
+        scrollable={true}
+        zIndex="z-[80]"
+      >
+        <div className="mx-4 w-full max-w-md rounded-[28px] border border-[#cfe4f3] bg-white p-5 text-left shadow-2xl">
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start gap-3">
+              <div className="shrink-0 rounded-full bg-[#e8f4ff] p-1 shadow-sm">
+                <LouisAvatar mood="wave" size={46} />
+              </div>
+              <div>
+                <p className="text-base font-black text-gray-950">Want to do a different Bible study?</p>
+                <p className="mt-1 text-xs font-medium leading-5 text-gray-500">
+                  Pick the study you want Louis to keep on your dashboard.
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowDevotionalSettings(false)}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-lg font-bold text-gray-500 transition hover:bg-gray-200"
+              aria-label="Close Bible study settings"
+            >
+              x
+            </button>
+          </div>
+
+          <div className="mt-4 space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
+              Bible Study
+            </p>
+            <div className="max-h-80 space-y-2 overflow-y-auto pr-1">
+              {isLoadingDevotionalOptions ? (
+                <div className="rounded-2xl border border-gray-200 bg-gray-50 px-3 py-4 text-sm font-bold text-gray-500">
+                  Loading Bible studies...
+                </div>
+              ) : devotionalOptions.length === 0 ? (
+                <div className="rounded-2xl border border-gray-200 bg-gray-50 px-3 py-4 text-sm font-bold text-gray-500">
+                  No Bible studies found yet.
+                </div>
+              ) : (
+                devotionalOptions.map((devotional) => {
+                  const cover = getDashboardStudyCover(devotional.title);
+                  const selected = selectedDevotionalId === devotional.id;
+                  return (
+                    <button
+                      key={devotional.id}
+                      type="button"
+                      onClick={() => setSelectedDevotionalId(devotional.id)}
+                      className={`flex w-full items-center gap-3 rounded-2xl border p-2 text-left transition ${
+                        selected
+                          ? "border-[#7BAFD4] bg-[#eef7ff] shadow-sm"
+                          : "border-gray-200 bg-white hover:border-[#b8d9ef] hover:bg-[#f7fbff]"
+                      }`}
+                    >
+                      <div className="h-14 w-11 shrink-0 overflow-hidden rounded-lg bg-gray-100 shadow-sm">
+                        {cover ? (
+                          <img src={cover} alt="" className="h-full w-full object-cover" />
+                        ) : (
+                          <div className="grid h-full w-full place-items-center text-lg">📖</div>
+                        )}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-black text-gray-950">{devotional.title}</p>
+                        <p className="mt-0.5 line-clamp-2 text-[11px] font-medium leading-4 text-gray-500">
+                          {getDashboardStudySummary(devotional.title, devotional.total_days)}
+                        </p>
+                      </div>
+                    </button>
+                  );
+                })
+              )}
+            </div>
+            <p className="text-xs leading-5 text-gray-500">
+              Louis will continue from your next unfinished chapter in the Bible study you choose.
+            </p>
+            {devotionalSettingsMessage ? (
+              <p className="rounded-xl bg-[#f4f9fd] px-3 py-2 text-xs font-medium text-[#315f7d]">
+                {devotionalSettingsMessage}
+              </p>
+            ) : null}
+            <button
+              type="button"
+              onClick={handleSaveDevotionalSetting}
+              disabled={!selectedDevotionalId || isSavingDevotional || isLoadingDevotionalOptions || isResettingDevotional}
+              className="w-full rounded-full bg-[#7BAFD4] px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {isSavingDevotional ? "Saving..." : "Set Bible Study"}
+            </button>
+            <div className="rounded-2xl border border-gray-200 bg-gray-50 p-3">
+              <p className="text-xs font-bold text-gray-900">Reset selected Bible Study</p>
+              <p className="mt-1 text-xs leading-5 text-gray-500">
+                Restart this Bible Study from the beginning. This only clears this study's progress.
+              </p>
+              <button
+                type="button"
+                onClick={handleResetCurrentDevotional}
+                disabled={!(selectedDevotionalId || currentDevotionalId) || isSavingDevotional || isResettingDevotional}
+                className="mt-3 w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-bold text-gray-800 shadow-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isResettingDevotional ? "Resetting..." : "Reset selected Bible Study"}
+              </button>
+            </div>
+          </div>
+        </div>
+      </ModalShell>
 
       <ModalShell
         isOpen={showJourneyHelp}
