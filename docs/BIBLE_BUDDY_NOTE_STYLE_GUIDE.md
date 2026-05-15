@@ -40,10 +40,37 @@ Every chapter note should use this movement:
 8. Word and culture explanations where they appear
 9. Bigger Bible story connections
 10. Final Thought
-11. Reflection Questions
-12. Extra Louis Style Deep Dive
-13. Pause and Reflect
-14. The Big Lesson
+11. Pause and Reflect
+12. The Big Lesson
+
+Do not force extra final sections that are not part of the Genesis 37 style.
+
+## Formatting Rhythm
+
+The notes should not become long blocks of text.
+
+Use the Genesis 37 pattern:
+
+- Short paragraphs, often one to three lines
+- Emoji teaching lists to make details easy to scan
+- Smaller H3 headers that explain one part of a verse or idea
+- Verse callouts followed by focused teaching sections
+- Cultural, historical, Hebrew, and KJV word explanations directly under the verse or scene where they matter
+- Human examples only when they help the reader feel the text
+- Clear emotional movement from scene to scene
+
+Good small headers look like:
+
+- 📖 The Hebrew Word for Sojourning
+- 🌍 Quick Recap
+- 🧠 A Helpful Reading Tip
+- 🎨 The Robe of Many Colors
+- 🐅 What Wild Animals Were In Canaan?
+- 📜 The Laws Of The Persians And The Medes
+
+The goal is not to decorate the notes.
+
+The goal is to help the reader stop, see the details, understand the culture, and feel the story.
 
 ## Verse Callout Rule
 
@@ -97,6 +124,8 @@ Before finalizing a chapter, check:
 - Are every verse callouts present?
 - Are hard words explained in place?
 - Did I remove robotic repeated phrases?
+- Does the formatting use emoji lists, small teaching headers, and short paragraphs?
+- Did I avoid long unbroken blocks of text?
 - Does the chapter connect to the bigger Bible story?
 - Does it feel like Louis teaching, not an AI template?
 

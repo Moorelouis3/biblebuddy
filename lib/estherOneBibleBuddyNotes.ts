@@ -915,19 +915,7 @@ The empire thinks it has solved a problem.
 
 But God is quietly preparing a rescue no one in the palace can see yet.
 
-# Reflection Questions
-
-* Where do you see power in this chapter looking strong on the outside but weak on the inside?
-
-* Why do you think the court reacts so strongly to Vashti's refusal?
-
-* What does Ahasuerus' anger teach us about the danger of pride mixed with authority?
-
-* How does this chapter prepare you to understand Esther's danger later?
-
-* Where might God be working quietly in a situation that looks only political, messy, or unfair?
-
-# Extra Louis Style Deep Dive For Esther 1
+### 🕯️ God Is Hidden, But Not Absent
 
 One of the deepest things about Esther 1 is that God is hidden, but not absent.
 
