@@ -3014,7 +3014,7 @@ export default function DashboardPage() {
         !previousChecklistData.allDone &&
         checklistData.allDone
       ) {
-        scheduleChapterCompleteCelebration(checklistData.journeyKey, { force: true });
+        // The dashboard task area now handles chapter completion inline.
       }
     })();
 
@@ -3486,7 +3486,7 @@ export default function DashboardPage() {
       });
 
       if (completedJourneyKey) {
-        scheduleChapterCompleteCelebration(completedJourneyKey, { force: true });
+        // The dashboard task area now handles chapter completion inline.
       }
     }
 

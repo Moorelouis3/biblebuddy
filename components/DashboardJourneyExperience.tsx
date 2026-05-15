@@ -956,9 +956,13 @@ export default function DashboardJourneyExperience({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
   const previousCompletedCountRef = useRef<number | null>(null);
+  const previousJourneyKeyRef = useRef<string | null>(null);
   const [activePage, setActivePage] = useState(0);
   const [celebratingTasks, setCelebratingTasks] = useState<Record<string, number>>({});
   const [progressCelebrationKey, setProgressCelebrationKey] = useState(0);
+  const [showCompletionPanel, setShowCompletionPanel] = useState(false);
+  const [isLoadingNextChapter, setIsLoadingNextChapter] = useState(false);
+  const [isNewChapterDropping, setIsNewChapterDropping] = useState(false);
   const [showDevotionalSettings, setShowDevotionalSettings] = useState(false);
   const [showJourneyHelp, setShowJourneyHelp] = useState(false);
   const [devotionalOptions, setDevotionalOptions] = useState<DevotionalOption[]>([]);
@@ -1015,6 +1019,13 @@ export default function DashboardJourneyExperience({
     chapterTask?.chapterLabel ||
     visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "Your Chapter";
+  const queueTasks = visibleTasks.filter((task) => !task.done || celebratingTasks[task.kind]);
+  const shouldShowCompletionPanel =
+    !isChecklistSyncing &&
+    allDone &&
+    queueTasks.length === 0 &&
+    !isLoadingNextChapter &&
+    showCompletionPanel;
   const greetingName = userName && userName !== "buddy" ? userName : "buddy";
   function buildLouisMessage() {
     const streakLine = `Hey ${greetingName}, you are on a ${streak} day streak.`;
@@ -1248,6 +1259,8 @@ export default function DashboardJourneyExperience({
     if (!allDone) return;
 
     if (userId && cycleStartedAt && checklistData?.nextJourneyTarget) {
+      setShowCompletionPanel(false);
+      setIsLoadingNextChapter(true);
       const { error } = await supabase
         .from("profile_stats")
         .upsert(
@@ -1262,6 +1275,7 @@ export default function DashboardJourneyExperience({
 
       if (error) {
         console.error("[DASHBOARD] Could not sync next Bible Study chapter:", error);
+        setIsLoadingNextChapter(false);
         return;
       }
 
@@ -1288,6 +1302,15 @@ export default function DashboardJourneyExperience({
 
   useEffect(() => {
     if (!checklistData?.tasks.length || isLoadingChecklist) return;
+
+    const currentJourneyKey = checklistData.journeyKey || null;
+    if (previousJourneyKeyRef.current && previousJourneyKeyRef.current !== currentJourneyKey) {
+      setIsLoadingNextChapter(false);
+      setShowCompletionPanel(false);
+      setIsNewChapterDropping(true);
+      window.setTimeout(() => setIsNewChapterDropping(false), 1050);
+    }
+    previousJourneyKeyRef.current = currentJourneyKey;
 
     const currentDoneByKind = checklistData.tasks.reduce<Record<string, boolean>>((acc, task) => {
       acc[task.kind] = task.done;
@@ -1334,6 +1357,19 @@ export default function DashboardJourneyExperience({
   }, [checklistData, isLoadingChecklist]);
 
   useEffect(() => {
+    if (isChecklistSyncing || !allDone || queueTasks.length > 0 || isLoadingNextChapter) {
+      setShowCompletionPanel(false);
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setShowCompletionPanel(true);
+    }, 420);
+
+    return () => window.clearTimeout(timer);
+  }, [allDone, isChecklistSyncing, isLoadingNextChapter, queueTasks.length]);
+
+  useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
@@ -1371,16 +1407,64 @@ export default function DashboardJourneyExperience({
     <div className="space-y-4">
       <style>{`
         @keyframes task-complete-pop {
-          0% { transform: scale(1); box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08); }
-          30% { transform: scale(1.035); box-shadow: 0 20px 42px rgba(34, 185, 95, 0.3); }
-          58% { transform: scale(0.992); box-shadow: 0 10px 26px rgba(34, 185, 95, 0.18); }
-          100% { transform: scale(1); box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08); }
+          0% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            max-height: 220px;
+            margin-bottom: 0;
+            filter: blur(0);
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+          }
+          16% {
+            opacity: 1;
+            transform: scale(1.02) translateY(0);
+            box-shadow: 0 18px 38px rgba(34, 185, 95, 0.28), 0 0 0 5px rgba(34, 185, 95, 0.1);
+          }
+          46% {
+            opacity: 0.9;
+            transform: scale(0.9) translateY(-3px);
+            filter: blur(0.2px);
+          }
+          78% {
+            opacity: 0;
+            transform: scale(0.66) translateY(-12px);
+            max-height: 220px;
+            filter: blur(1.4px);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(0.56) translateY(-18px);
+            max-height: 0;
+            margin-bottom: -16px;
+            padding-top: 0;
+            padding-bottom: 0;
+            filter: blur(2px);
+          }
         }
 
-        @keyframes task-firework {
-          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
-          18% { opacity: 1; }
-          100% { opacity: 0; transform: translate(var(--spark-x), var(--spark-y)) scale(1.18); }
+        @keyframes task-smoke-puff {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); filter: blur(0); }
+          18% { opacity: 0.52; }
+          100% { opacity: 0; transform: translate(calc(-50% + var(--smoke-x)), calc(-50% + var(--smoke-y))) scale(1.3); filter: blur(4px); }
+        }
+
+        @keyframes completion-panel-enter {
+          0% { opacity: 0; transform: translateY(18px) scale(0.96); }
+          72% { opacity: 1; transform: translateY(-3px) scale(1.015); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes chapter-card-drop {
+          0% { opacity: 0; transform: translateY(-86px) scale(1.015); filter: blur(1px); }
+          62% { opacity: 1; transform: translateY(7px) scale(0.995); filter: blur(0); }
+          82% { transform: translateY(-3px) scale(1.004); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes impact-dust {
+          0%, 48% { opacity: 0; transform: translateX(-50%) scaleX(0.2); }
+          64% { opacity: 0.32; transform: translateX(-50%) scaleX(1); }
+          100% { opacity: 0; transform: translateX(-50%) scaleX(1.35); }
         }
 
         @keyframes done-sparkle {
@@ -1418,8 +1502,26 @@ export default function DashboardJourneyExperience({
           50% { opacity: 0.45; transform: translateY(-1px); }
         }
 
-        .task-complete-pop { animation: task-complete-pop 980ms cubic-bezier(0.2, 0.85, 0.25, 1); }
-        .task-firework span { animation: task-firework 1050ms ease-out forwards; }
+        .task-complete-pop {
+          animation: task-complete-pop 760ms cubic-bezier(0.16, 0.9, 0.22, 1) forwards;
+          transform-origin: center;
+          pointer-events: none;
+        }
+        .task-smoke span { animation: task-smoke-puff 740ms ease-out forwards; }
+        .completion-panel-enter { animation: completion-panel-enter 520ms cubic-bezier(0.16, 0.9, 0.22, 1) both; }
+        .chapter-card-drop { animation: chapter-card-drop 560ms cubic-bezier(0.2, 0.9, 0.18, 1.15) both; }
+        .chapter-card-drop::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          bottom: 4px;
+          width: 46%;
+          height: 8px;
+          border-radius: 999px;
+          background: radial-gradient(ellipse at center, rgba(148, 163, 184, 0.32), rgba(148, 163, 184, 0));
+          animation: impact-dust 560ms ease-out both;
+          pointer-events: none;
+        }
         .done-sparkle span { animation: done-sparkle 1.8s ease-in-out infinite; }
         .done-sparkle span:nth-child(2) { animation-delay: 0.45s; }
         .done-sparkle span:nth-child(3) { animation-delay: 0.9s; }
@@ -1663,11 +1765,12 @@ export default function DashboardJourneyExperience({
             </div>
             ) : null}
 
-            {isChecklistSyncing ? (
+            {isChecklistSyncing || isLoadingNextChapter ? (
               skeletonTasks.map((task, index) => (
                 <div
                   key={task.title}
-                  className="rounded-xl border border-[#d8e4f6] bg-gradient-to-r from-white via-white to-[#f7fbff] px-3.5 py-3.5 shadow-sm sm:px-4"
+                  className={`relative rounded-xl border border-[#d8e4f6] bg-gradient-to-r from-white via-white to-[#f7fbff] px-3.5 py-3.5 shadow-sm sm:px-4 ${isLoadingNextChapter ? "chapter-card-drop" : ""}`}
+                  style={isLoadingNextChapter ? { animationDelay: `${index * 90}ms` } : undefined}
                 >
                   <div className="flex items-center gap-3">
                     <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#d7eaff] to-[#eef6ff] text-2xl opacity-80 shadow-sm">
@@ -1687,16 +1790,36 @@ export default function DashboardJourneyExperience({
                   </div>
                 </div>
               ))
+            ) : shouldShowCompletionPanel ? (
+              <div className="completion-panel-enter rounded-[24px] border border-green-200 bg-gradient-to-br from-[#edfff3] via-white to-[#eaf7ff] px-5 py-7 text-center shadow-sm">
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-white p-1 shadow-sm">
+                  <LouisAvatar mood="stareyes" size={72} />
+                </div>
+                <p className="mt-4 text-2xl font-black text-gray-950">🎉 Congratulations!</p>
+                <p className="mt-2 text-base font-bold text-gray-800">You completed {completedChapterLabel}.</p>
+                <p className="mt-1 text-sm font-medium leading-6 text-gray-500">
+                  Ready to continue to {nextChapterLabel}?
+                </p>
+                <button
+                  type="button"
+                  onClick={() => void handleCompletedStudyAction()}
+                  className="mt-5 inline-flex min-w-40 justify-center rounded-full bg-[#7BAFD4] px-6 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc] focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
+                >
+                  Continue
+                </button>
+              </div>
             ) : (
-              visibleTasks.map((task, index) => {
-                const taskCopy = getTaskCardCopy(task, index);
+              queueTasks.map((task, index) => {
+                const originalTaskIndex = visibleTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
+                const taskIndex = originalTaskIndex >= 0 ? originalTaskIndex : index;
+                const taskCopy = getTaskCardCopy(task, taskIndex);
                 const isCelebrating = Boolean(celebratingTasks[task.kind]);
-                const isLockedByOrder = !task.done && nextActionTaskIndex >= 0 && index > nextActionTaskIndex;
+                const isLockedByOrder = !task.done && nextActionTaskIndex >= 0 && taskIndex > nextActionTaskIndex;
                 const isCardDisabled = Boolean(task.disabled || isLockedByOrder);
                 const isNextActionTask = task.kind === nextActionTaskKind && !isCardDisabled;
                 const remainingTaskCount = visibleTasks.filter((dailyTask) => !dailyTask.done).length;
                 const activeTaskPrompt = isNextActionTask
-                  ? getActiveTaskPrompt(task, remainingTaskCount, `${userId || "guest"}:${cycleStartedAt || "today"}:${index}`)
+                  ? getActiveTaskPrompt(task, remainingTaskCount, `${userId || "guest"}:${cycleStartedAt || "today"}:${taskIndex}`)
                   : null;
                 const pointsPillLabel = isCardDisabled ? "Locked" : task.pointsLabel;
                 const taskStatusLabel = isCardDisabled ? "Locked" : getTaskStatusLine(task);
@@ -1710,8 +1833,10 @@ export default function DashboardJourneyExperience({
                     onTaskClick(task);
                   }}
                   disabled={isCardDisabled}
-                  className={`relative w-full overflow-hidden rounded-xl border px-3.5 py-3 text-left shadow-sm transition sm:px-4 ${
+                  className={`relative w-full overflow-hidden rounded-xl border px-3.5 py-3 text-left shadow-sm transition-all duration-300 sm:px-4 ${
                     isCelebrating ? "task-complete-pop" : ""
+                  } ${
+                    isNewChapterDropping ? "chapter-card-drop" : ""
                   } ${
                     isNextActionTask ? "next-task-pulse" : ""
                   } ${
@@ -1721,6 +1846,7 @@ export default function DashboardJourneyExperience({
                         ? "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400 opacity-75"
                         : "border-gray-200 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 text-gray-500 hover:shadow-md"
                   }`}
+                  style={isNewChapterDropping ? { animationDelay: `${index * 85}ms` } : undefined}
                 >
                   {isCardDisabled ? (
                     <span
@@ -1791,12 +1917,11 @@ export default function DashboardJourneyExperience({
                     <span className="shrink-0 text-xl leading-none text-gray-400" aria-hidden="true">›</span>
                   </div>
                   {isCelebrating ? (
-                    <div className="task-firework pointer-events-none absolute left-[52px] top-[48px]" aria-hidden="true">
-                      <span className="spark-a absolute text-sm text-amber-400">✦</span>
-                      <span className="spark-b absolute text-xs text-green-400">✧</span>
-                      <span className="spark-c absolute text-sm text-sky-400">✦</span>
-                      <span className="spark-d absolute text-xs text-amber-400">✧</span>
-                      <span className="spark-e absolute text-sm text-green-400">✦</span>
+                    <div className="task-smoke pointer-events-none absolute left-1/2 top-1/2" aria-hidden="true">
+                      <span className="absolute h-8 w-8 rounded-full bg-slate-300/40 [--smoke-x:-42px] [--smoke-y:-20px]" />
+                      <span className="absolute h-7 w-7 rounded-full bg-slate-300/35 [--smoke-x:34px] [--smoke-y:-24px]" />
+                      <span className="absolute h-6 w-6 rounded-full bg-slate-400/25 [--smoke-x:-8px] [--smoke-y:18px]" />
+                      <span className="absolute h-5 w-5 rounded-full bg-slate-300/30 [--smoke-x:54px] [--smoke-y:10px]" />
                     </div>
                   ) : null}
                 </button>
