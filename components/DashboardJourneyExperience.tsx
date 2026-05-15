@@ -69,6 +69,28 @@ type DevotionalOption = {
   total_days: number | null;
 };
 
+function getDashboardStudyCover(title: string | null | undefined) {
+  if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
+  if (title === "The Rise of Esther") return "/theriseofester.png";
+  if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
+  if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
+  if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
+  if (title === "The Heart of David") return "/heartofdaviddevotional.png";
+  if (title === "The Faith of Job") return "/faithofjob.png";
+  if (title === "The Calling of Moses") return "/callingofmosesdevotional.png";
+  if (title === "The Transforming of Paul") return "/transformingofpauldevotional.png";
+  return null;
+}
+
+function getDashboardStudySummary(title: string | null | undefined, totalDays: number | null | undefined) {
+  if (title === "The Obedience of Abraham") return "Walk Genesis 11-25 through Abraham's call, waiting, covenant, testing, and legacy.";
+  if (title === "The Rise of Esther") return "Follow Esther 1-10 through palace pressure, hidden identity, courage, providence, and reversal.";
+  if (title === "The Courage of Daniel") return "Study Daniel 1-6 through exile, courage, wisdom, prayer, pressure, and the lions' den.";
+  if (title === "The Testing of Joseph") return "Walk Genesis 37-50 through betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
+  if (title === "The Wisdom of Proverbs") return "Study Proverbs chapter by chapter for practical wisdom in speech, choices, discipline, and daily life.";
+  return `${Math.max(1, totalDays || 1)} part Bible study designed to help you keep growing with structure and consistency.`;
+}
+
 function getTaskStatusCopy(task: TaskState) {
   if (task.done) return task.completedAtLabel || "Completed";
   if (task.disabled) return "Finish the earlier task first.";
@@ -1892,11 +1914,16 @@ export default function DashboardJourneyExperience({
                   onClick={(event) => event.stopPropagation()}
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-sm font-bold text-gray-950">Daily Bible Study</p>
+                    <div className="flex items-start gap-3">
+                      <div className="shrink-0 rounded-full bg-[#e8f4ff] p-1 shadow-sm">
+                        <LouisAvatar mood="wave" size={42} />
+                      </div>
+                      <div>
+                      <p className="text-sm font-bold text-gray-950">Want to do a different Bible study?</p>
                       <p className="mt-1 text-xs leading-5 text-gray-500">
-                        Choose which Bible study Louis uses for your daily task flow.
+                        Pick the study you want Louis to keep on your dashboard.
                       </p>
+                      </div>
                     </div>
                     <button
                       type="button"
@@ -1910,25 +1937,47 @@ export default function DashboardJourneyExperience({
 
                   {isPaidUser ? (
                     <div className="mt-4 space-y-3">
-                      <label className="block text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
                         Bible Study
-                      </label>
-                      <select
-                        value={selectedDevotionalId}
-                        onChange={(event) => setSelectedDevotionalId(event.target.value)}
-                        disabled={isLoadingDevotionalOptions || isSavingDevotional}
-                        className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm font-medium text-gray-900 outline-none transition focus:border-[#7BAFD4] focus:ring-2 focus:ring-[#7BAFD4]/25 disabled:opacity-60"
-                      >
+                      </p>
+                      <div className="max-h-72 space-y-2 overflow-y-auto pr-1">
                         {isLoadingDevotionalOptions ? (
-                          <option>Loading Bible studies...</option>
+                          <div className="rounded-2xl border border-gray-200 bg-gray-50 px-3 py-4 text-sm font-bold text-gray-500">
+                            Loading Bible studies...
+                          </div>
                         ) : (
-                          devotionalOptions.map((devotional) => (
-                            <option key={devotional.id} value={devotional.id}>
-                              {devotional.title}
-                            </option>
-                          ))
+                          devotionalOptions.map((devotional) => {
+                            const cover = getDashboardStudyCover(devotional.title);
+                            const selected = selectedDevotionalId === devotional.id;
+                            return (
+                              <button
+                                key={devotional.id}
+                                type="button"
+                                onClick={() => setSelectedDevotionalId(devotional.id)}
+                                className={`flex w-full items-center gap-3 rounded-2xl border p-2 text-left transition ${
+                                  selected
+                                    ? "border-[#7BAFD4] bg-[#eef7ff] shadow-sm"
+                                    : "border-gray-200 bg-white hover:border-[#b8d9ef] hover:bg-[#f7fbff]"
+                                }`}
+                              >
+                                <div className="h-14 w-11 shrink-0 overflow-hidden rounded-lg bg-gray-100 shadow-sm">
+                                  {cover ? (
+                                    <img src={cover} alt="" className="h-full w-full object-cover" />
+                                  ) : (
+                                    <div className="grid h-full w-full place-items-center text-lg">📖</div>
+                                  )}
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <p className="truncate text-sm font-black text-gray-950">{devotional.title}</p>
+                                  <p className="mt-0.5 line-clamp-2 text-[11px] font-medium leading-4 text-gray-500">
+                                    {getDashboardStudySummary(devotional.title, devotional.total_days)}
+                                  </p>
+                                </div>
+                              </button>
+                            );
+                          })
                         )}
-                      </select>
+                      </div>
                       <p className="text-xs leading-5 text-gray-500">
                         Louis will continue from your next unfinished chapter in the Bible study you choose.
                       </p>
@@ -2176,6 +2225,7 @@ export default function DashboardJourneyExperience({
             )}
 
             {!isLoadingNextChapter && completedTrackerTasks.length > 0 ? (
+              <>
               <div className="overflow-hidden rounded-2xl border border-emerald-100 bg-white/80 shadow-sm">
                 <button
                   type="button"
@@ -2228,6 +2278,19 @@ export default function DashboardJourneyExperience({
                 </div>
                 ) : null}
               </div>
+              <div className="flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowJourneyHelp(false);
+                    setShowDevotionalSettings(true);
+                  }}
+                  className="text-sm font-black text-gray-950 transition hover:text-[#5f99bf]"
+                >
+                  Set New Bible Study
+                </button>
+              </div>
+              </>
             ) : null}
 
           </div>
