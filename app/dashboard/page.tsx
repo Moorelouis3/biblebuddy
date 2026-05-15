@@ -54,6 +54,7 @@ const ZORIAN_RESTORATION_ACTION_LABEL = "admin_bonus_points:1000:zorian-login-re
 const ZORIAN_RESTORATION_POPUP_KEY = "bb:bonus-popup:zorian-login-restoration-1000:v1";
 const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
 const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 4 * 60 * 60 * 1000;
+const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -114,6 +115,24 @@ type DashboardLouisNudge = {
   action: "daily-tasks" | "route" | "dismiss";
   href?: string;
 };
+
+function withDashboardTimeout<T>(promise: Promise<T>, timeoutMs: number, label: string): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timeoutId = window.setTimeout(() => {
+      reject(new Error(`${label} timed out`));
+    }, timeoutMs);
+
+    promise
+      .then((value) => {
+        window.clearTimeout(timeoutId);
+        resolve(value);
+      })
+      .catch((error) => {
+        window.clearTimeout(timeoutId);
+        reject(error);
+      });
+  });
+}
 
 const BADGE_TONE_CLASSES: Record<BadgeTone, { tile: string; progress: string; glow: string }> = {
   blue: {
@@ -3043,10 +3062,14 @@ export default function DashboardPage() {
 
     const loadPromise = (async () => {
       const previousChecklistData = dailyChecklistDataRef.current;
-      const checklistData = await fetchLouisDailyChecklistData(
-        userId,
-        currentStreak,
-        activeCycleStartedAt,
+      const checklistData = await withDashboardTimeout(
+        fetchLouisDailyChecklistData(
+          userId,
+          currentStreak,
+          activeCycleStartedAt,
+        ),
+        DAILY_TASK_SUMMARY_TIMEOUT_MS,
+        "Dashboard Bible Study tasks",
       );
       setDailyChecklistData(checklistData);
       dailyChecklistDataRef.current = checklistData;
