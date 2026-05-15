@@ -2992,8 +2992,6 @@ export default function DashboardPage() {
     if (!chapterTask?.book || !chapterTask.chapter || !dailyChecklistData?.nextJourneyTarget) return "the next chapter";
     return `${chapterTask.book} ${chapterTask.chapter + 1}`;
   })();
-  const hasProfileLoaded = Boolean(profile);
-
   useEffect(() => {
     if (!showDailyTaskCelebrationModal) return;
 
@@ -3018,10 +3016,6 @@ export default function DashboardPage() {
       setDailyTaskTotalCount(5);
       setDailyTaskNextTitle(null);
       setDailyTaskSummaryLine(null);
-      return;
-    }
-
-    if (!hasProfileLoaded) {
       return;
     }
 
@@ -3108,7 +3102,7 @@ export default function DashboardPage() {
       }
       setIsLoadingDailyTaskSummary(false);
     }
-  }, [currentStreak, hasProfileLoaded, louisDailyTaskCycleStartedAt, userId]);
+  }, [currentStreak, louisDailyTaskCycleStartedAt, userId]);
 
   useEffect(() => {
     void loadDailyTaskSummary();
