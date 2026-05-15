@@ -1786,7 +1786,7 @@ export default function DashboardJourneyExperience({
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
             <div className="flex items-center justify-between gap-3 px-1">
               <h2 className="min-w-0 text-base font-black text-gray-950">Continue Your Study of {activeChapterLabel}</h2>
-              <p className="shrink-0 rounded-full bg-white/80 px-3 py-1 text-[11px] font-black text-gray-700 shadow-sm">
+              <p className="shrink-0 text-[11px] font-black text-gray-700">
                 {estimatedStudyTimeLabel}
               </p>
             </div>
