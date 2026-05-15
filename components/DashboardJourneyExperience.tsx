@@ -2187,42 +2187,6 @@ export default function DashboardJourneyExperience({
         </section>
       </div>
 
-      <div className="mx-auto flex max-w-xl flex-col items-center justify-center gap-2">
-        <div className="flex items-center justify-center gap-2">
-          {[0, 1].map((index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => snapToPage(index)}
-              className={`h-2.5 rounded-full transition-all ${
-                activePage === index ? "w-10 bg-[#7BAFD4]" : "w-2.5 bg-[#cfe4f3]"
-              }`}
-              aria-label={index === 0 ? "Open Daily Bible Study" : "Open Explore"}
-            />
-          ))}
-        </div>
-        <div className="flex items-center justify-center gap-2">
-          <button
-            type="button"
-            onClick={() => snapToPage(0)}
-            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-              activePage === 0 ? "bg-[#7BAFD4] text-slate-950 shadow-sm" : "bg-white text-gray-700 shadow-sm"
-            }`}
-          >
-            Daily Bible Study
-          </button>
-          <button
-            type="button"
-            onClick={() => snapToPage(1)}
-            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-              activePage === 1 ? "bg-[#7BAFD4] text-slate-950 shadow-sm" : "bg-white text-gray-700 shadow-sm"
-            }`}
-          >
-            Explore
-          </button>
-        </div>
-      </div>
-
       <ModalShell
         isOpen={showJourneyHelp}
         onClose={() => setShowJourneyHelp(false)}
