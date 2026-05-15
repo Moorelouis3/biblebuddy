@@ -1793,9 +1793,8 @@ export default function DashboardPage() {
       { key: "total", label: "Total Users", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.totalUsers, tones: "bg-red-100 border-red-200" },
     ];
 
-    if (!isOwnerDashboard) {
-      return (
-        <div className="mb-4 space-y-4">
+    const renderGreetingAndStreakCard = () => (
+      <>
           <div className="mx-auto flex max-w-xl items-center gap-3 px-1">
             <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full border border-white bg-white shadow-sm">
               {profile?.profile_image_url ? (
@@ -1864,7 +1863,13 @@ export default function DashboardPage() {
               ))}
             </div>
           </button>
+      </>
+    );
 
+    if (!isOwnerDashboard) {
+      return (
+        <div className="mb-4 space-y-4">
+          {renderGreetingAndStreakCard()}
           {renderStatCards(personalStats)}
         </div>
       );
@@ -1872,7 +1877,7 @@ export default function DashboardPage() {
 
     return (
       <div
-        className="mb-4"
+        className="mb-4 space-y-4"
         onTouchStart={(event) => {
           dashboardStatsTouchStartXRef.current = event.touches[0]?.clientX ?? null;
         }}
@@ -1886,6 +1891,7 @@ export default function DashboardPage() {
           setDashboardStatsPane(deltaX < 0 ? 1 : 0);
         }}
       >
+        {renderGreetingAndStreakCard()}
         <div className="mx-auto max-w-xl overflow-hidden">
           <div
             className="flex transition-transform duration-300 ease-out"
