@@ -2100,7 +2100,7 @@ export default function DashboardPage() {
   }, [userId]);
 
   useEffect(() => {
-    if (hasBlockingDashboardOverlay || activeEarnedBadge || earnedBadgeQueue.length === 0) return;
+    if ((hasBlockingDashboardOverlay && !pendingDailyStreakSequence) || activeEarnedBadge || earnedBadgeQueue.length === 0) return;
     if (typeof window !== "undefined" && userId) {
       const lastCheckInShownAt = Number(window.localStorage.getItem(getDashboardLouisCheckInLastShownKey(userId)) || "0");
       const lastBadgeShownAt = Number(window.localStorage.getItem(getDashboardBadgeLastShownKey(userId)) || "0");
@@ -2113,9 +2113,14 @@ export default function DashboardPage() {
     const [nextBadge, ...remainingBadges] = earnedBadgeQueue;
     setEarnedBadgeQueue(remainingBadges);
     setActiveEarnedBadge(nextBadge);
+    setPendingDailyStreakSequence(false);
+    setShowStreakMotivationModal(false);
+    setShowStreakMotivationTaskPrompt(false);
+    setLouisDashboardNudge(null);
     if (typeof window !== "undefined" && userId) {
       writePendingBadgeQueue(userId, remainingBadges);
       window.localStorage.setItem(getDashboardBadgeLastShownKey(userId), String(Date.now()));
+      window.localStorage.setItem(getDashboardLouisCheckInLastShownKey(userId), String(Date.now()));
     }
 
     window.setTimeout(() => {
@@ -2126,7 +2131,7 @@ export default function DashboardPage() {
         colors: ["#7BAFD4", "#f7c948", "#22c55e", "#ffffff"],
       });
     }, 240);
-  }, [activeEarnedBadge, earnedBadgeQueue, hasBlockingDashboardOverlay, userId]);
+  }, [activeEarnedBadge, earnedBadgeQueue, hasBlockingDashboardOverlay, pendingDailyStreakSequence, userId]);
 
   async function completeSwipeHint(options: { openExplore?: boolean } = {}) {
     if (isSavingSwipeHint) return;
@@ -2770,6 +2775,18 @@ export default function DashboardPage() {
       !profile ||
       !pendingDailyStreakSequence ||
       showVerseOfTheDayModal ||
+      activeEarnedBadge ||
+      earnedBadgeQueue.length > 0 ||
+      showLevelInfoModal ||
+      showStreakBadgeModal ||
+      showBadgesModal ||
+      showCommunityModal ||
+      showLouisDailyTasksModal ||
+      showDailyTaskCelebrationModal ||
+      showJessicaBonusModal ||
+      showZorianRestorationModal ||
+      Boolean(selectedDashboardTask) ||
+      Boolean(activeTourKey) ||
       typeof window === "undefined"
     ) return;
     const cycleStartedAt = hasActiveLouisDailyTaskCycle(userId)
@@ -2891,7 +2908,26 @@ export default function DashboardPage() {
     return () => {
       cancelled = true;
     };
-  }, [userId, userName, profile, pendingDailyStreakSequence, showVerseOfTheDayModal, dailyChecklistData]);
+  }, [
+    activeEarnedBadge,
+    activeTourKey,
+    dailyChecklistData,
+    earnedBadgeQueue.length,
+    pendingDailyStreakSequence,
+    profile,
+    selectedDashboardTask,
+    showBadgesModal,
+    showCommunityModal,
+    showDailyTaskCelebrationModal,
+    showJessicaBonusModal,
+    showLevelInfoModal,
+    showLouisDailyTasksModal,
+    showStreakBadgeModal,
+    showVerseOfTheDayModal,
+    showZorianRestorationModal,
+    userId,
+    userName,
+  ]);
 
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
@@ -4107,7 +4143,7 @@ export default function DashboardPage() {
           const completionLine = getBadgeCompletionLine(activeEarnedBadge.description);
 
           return (
-            <div className="w-full max-w-md overflow-hidden rounded-[32px] border border-[#d7e4f7] bg-white shadow-2xl">
+            <div className="mx-4 w-full max-w-sm overflow-hidden rounded-[24px] border border-[#d7e4f7] bg-white shadow-2xl">
               <style>{`
                 @keyframes badge-color-pop {
                   0% { filter: grayscale(1); transform: scale(0.82) rotate(-4deg); opacity: 0.75; }
@@ -4127,29 +4163,34 @@ export default function DashboardPage() {
                 .badge-earned-shine { animation: badge-earned-shine 1150ms ease-out 280ms both; }
                 .badge-float-spark { animation: badge-float-spark 1.7s ease-in-out infinite; }
               `}</style>
-              <div className="relative overflow-hidden bg-gradient-to-br from-[#edf7ff] via-white to-[#f8fbff] px-6 py-7 text-center">
+              <div className="relative overflow-hidden bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-5 py-5 text-center">
                 <div className="pointer-events-none absolute left-8 top-9 text-xl badge-float-spark">✦</div>
                 <div className="pointer-events-none absolute right-10 top-16 text-lg badge-float-spark" style={{ animationDelay: "0.35s" }}>✧</div>
                 <div className="pointer-events-none absolute bottom-16 left-12 text-lg badge-float-spark" style={{ animationDelay: "0.7s" }}>✦</div>
 
-                <div className="flex items-center justify-center">
-                  <LouisAvatar mood="hands" size={76} />
+                <div className="flex justify-center">
+                  <div className="relative rounded-full bg-white/75 p-1 shadow-sm">
+                    <LouisAvatar mood="hands" size={66} />
+                  </div>
                 </div>
 
-                <h2 className="mt-4 text-3xl font-black leading-tight text-[#1f2a44]">You earned a new badge!</h2>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
+                  Badge Unlocked
+                </p>
+                <h2 className="mt-3 text-3xl font-bold leading-tight text-[#21304f]">You earned a new badge!</h2>
 
-                <div className="mt-6 flex justify-center">
-                  <div className={`badge-color-pop relative flex h-36 w-36 items-center justify-center overflow-hidden rounded-[36px] border-2 text-center ${tone.tile} ${tone.glow}`}>
-                    <span className="text-7xl" aria-hidden="true">{activeEarnedBadge.emoji}</span>
+                <div className="mt-5 flex justify-center">
+                  <div className={`badge-color-pop relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-[28px] border-2 text-center ${tone.tile} ${tone.glow}`}>
+                    <span className="text-6xl" aria-hidden="true">{activeEarnedBadge.emoji}</span>
                     <span className="badge-earned-shine pointer-events-none absolute inset-y-0 left-0 w-12 bg-white/70 blur-sm" />
-                    <span className="absolute -right-2 -top-2 flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-[#19c463] text-base font-black text-white shadow-md">
+                    <span className="absolute -right-2 -top-2 flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-[#19c463] text-sm font-black text-white shadow-md">
                       ✓
                     </span>
                   </div>
                 </div>
 
-                <h3 className="mt-5 text-2xl font-black text-[#1f2a44]">{activeEarnedBadge.title}</h3>
-                <div className="mx-auto mt-4 flex max-w-sm items-start gap-3 rounded-2xl border border-emerald-100 bg-white/80 px-4 py-3 text-left shadow-sm">
+                <h3 className="mt-4 text-2xl font-black text-[#21304f]">{activeEarnedBadge.title}</h3>
+                <div className="mx-auto mt-4 flex max-w-sm items-start gap-3 rounded-2xl border border-[#d7e8f8] bg-white/80 px-4 py-3 text-left shadow-sm">
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#19c463] text-xs font-black text-white">
                     ✓
                   </span>
@@ -4159,7 +4200,7 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              <div className="px-6 pb-6 pt-4">
+              <div className="bg-white px-5 pb-5 pt-4">
                 <button
                   type="button"
                   onClick={() => setActiveEarnedBadge(null)}
