@@ -81,12 +81,10 @@ function getTaskPillClasses(task: TaskState) {
   return "bg-gray-200 text-gray-600";
 }
 
-function getTaskCardCopy(task: TaskState, index: number) {
-  const number = index + 1;
-
+function getTaskCardCopy(task: TaskState, _index: number) {
   if (task.kind === "devotional") {
     return {
-      title: `${number}. Read Chapter Intro`,
+      title: "Read Chapter Intro",
       subtitle: "Understand what you are about to read before you begin the chapter.",
       emoji: "📕",
       doneAccent: "from-[#4fc877] to-[#34b866]",
@@ -96,7 +94,7 @@ function getTaskCardCopy(task: TaskState, index: number) {
 
   if (task.kind === "reading") {
     return {
-      title: `${number}. ${task.title}`,
+      title: task.title,
       subtitle: "Read today's Bible chapter and reflect on it.",
       emoji: "✝️",
       doneAccent: "from-[#4fc877] to-[#34b866]",
@@ -106,7 +104,7 @@ function getTaskCardCopy(task: TaskState, index: number) {
 
   if (task.kind === "notes") {
     return {
-      title: `${number}. ${task.title}`,
+      title: task.title,
       subtitle: "Read and study the notes to understand more deeply.",
       emoji: "📝",
       doneAccent: "from-[#4fc877] to-[#34b866]",
@@ -116,7 +114,7 @@ function getTaskCardCopy(task: TaskState, index: number) {
 
   if (task.kind === "trivia") {
     return {
-      title: `${number}. ${task.title}`,
+      title: task.title,
       subtitle: "Test your understanding with 5 quick questions.",
       emoji: "🧠",
       doneAccent: "from-[#4fc877] to-[#34b866]",
@@ -126,7 +124,7 @@ function getTaskCardCopy(task: TaskState, index: number) {
 
   if (task.kind === "reflection") {
     return {
-      title: `${number}. Answer The Reflection Question`,
+      title: "Answer The Reflection Question",
       subtitle: "Share what this chapter is stirring in you.",
       emoji: "âœï¸",
       doneAccent: "from-[#4fc877] to-[#34b866]",
@@ -135,7 +133,7 @@ function getTaskCardCopy(task: TaskState, index: number) {
   }
 
   return {
-    title: `${number}. ${task.title}`,
+    title: task.title,
     subtitle: "Unscramble words from today's chapter.",
     emoji: "🔤",
     doneAccent: "from-[#4fc877] to-[#34b866]",
