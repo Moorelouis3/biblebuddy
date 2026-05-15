@@ -2878,54 +2878,21 @@ export default function DashboardPage() {
   }, [selectedDashboardTask, showLouisDailyTasksModal]);
 
   useEffect(() => {
-    if (
-      !pendingDailyTaskCelebrationModal ||
-      dailyTaskPopupOpenRef.current ||
-      showStreakMotivationModal ||
-      showVerseOfTheDayModal ||
-      !userId ||
-      !dailyChecklistData?.journeyKey ||
-      (!pendingChapterCelebrationForceRef.current &&
-        hasSeenLouisChapterJourneyCelebration(userId, dailyChecklistData.journeyKey))
-    ) {
-      return;
-    }
-
+    if (!pendingDailyTaskCelebrationModal) return;
     setPendingDailyTaskCelebrationModal(false);
     pendingChapterCelebrationForceRef.current = false;
-    setDailyTaskCelebrationJourneyKey(dailyChecklistData.journeyKey);
-    setShowDailyTaskCelebrationModal(true);
+    setDailyTaskCelebrationJourneyKey(null);
+    setShowDailyTaskCelebrationModal(false);
   }, [
     pendingDailyTaskCelebrationModal,
-    selectedDashboardTask,
-    showLouisDailyTasksModal,
-    showStreakMotivationModal,
-    showVerseOfTheDayModal,
-    userId,
-    dailyChecklistData?.journeyKey,
   ]);
 
   useEffect(() => {
-    const journeyKey = dailyChecklistData?.journeyKey;
-    if (
-      !userId ||
-      !journeyKey ||
-      !dailyChecklistData?.allDone ||
-      showDailyTaskCelebrationModal ||
-      pendingDailyTaskCelebrationModal ||
-      hasSeenLouisChapterJourneyCelebration(userId, journeyKey) ||
-      chapterCelebrationScheduledKeyRef.current === journeyKey
-    ) {
-      return;
+    if (showDailyTaskCelebrationModal) {
+      setShowDailyTaskCelebrationModal(false);
     }
-
-    scheduleChapterCompleteCelebration(journeyKey);
   }, [
-    userId,
-    dailyChecklistData?.allDone,
-    dailyChecklistData?.journeyKey,
     showDailyTaskCelebrationModal,
-    pendingDailyTaskCelebrationModal,
   ]);
 
   const currentStreak = profile?.current_streak ?? 0;
@@ -3369,9 +3336,6 @@ export default function DashboardPage() {
 
   function scheduleChapterCompleteCelebration(journeyKey: string | null | undefined, options?: { force?: boolean }) {
     if (!userId || !journeyKey) return;
-    if (!options?.force && hasSeenLouisChapterJourneyCelebration(userId, journeyKey)) return;
-    if (chapterCelebrationScheduledKeyRef.current === journeyKey) return;
-    chapterCelebrationScheduledKeyRef.current = journeyKey;
 
     if (!hasLouisChapterJourneyBonusAwarded(userId, journeyKey)) {
       rememberLouisChapterJourneyBonusAwarded(userId, journeyKey);
@@ -3380,28 +3344,14 @@ export default function DashboardPage() {
 
     if (chapterCelebrationTimerRef.current !== null) {
       window.clearTimeout(chapterCelebrationTimerRef.current);
-    }
-
-    chapterCelebrationTimerRef.current = window.setTimeout(() => {
       chapterCelebrationTimerRef.current = null;
-
-      if (
-        dailyTaskPopupOpenRef.current ||
-        showStreakMotivationModal ||
-        showVerseOfTheDayModal
-      ) {
-        pendingChapterCelebrationForceRef.current = Boolean(options?.force);
-        setPendingDailyTaskCelebrationModal(true);
-        chapterCelebrationScheduledKeyRef.current = null;
-        return;
-      }
-
-      if (options?.force || !hasSeenLouisChapterJourneyCelebration(userId, journeyKey)) {
-        setDailyTaskCelebrationJourneyKey(journeyKey);
-        setShowDailyTaskCelebrationModal(true);
-      }
-      chapterCelebrationScheduledKeyRef.current = null;
-    }, 2600);
+    }
+    rememberLouisChapterJourneyCelebrationSeen(userId, journeyKey);
+    pendingChapterCelebrationForceRef.current = false;
+    chapterCelebrationScheduledKeyRef.current = null;
+    setPendingDailyTaskCelebrationModal(false);
+    setDailyTaskCelebrationJourneyKey(null);
+    setShowDailyTaskCelebrationModal(false);
   }
 
   async function closeDailyTaskCelebrationModal(options?: { advanceToNextChapter?: boolean }) {
@@ -4210,7 +4160,7 @@ export default function DashboardPage() {
       </ModalShell>
 
       <ModalShell
-        isOpen={showDailyTaskCelebrationModal}
+        isOpen={false}
         onClose={() => void closeDailyTaskCelebrationModal()}
         backdropColor="bg-black/45"
       >
