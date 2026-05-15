@@ -2137,7 +2137,7 @@ export default function DashboardJourneyExperience({
                     onTaskClick(task);
                   }}
                   disabled={isCardDisabled}
-                  className={`relative w-full overflow-hidden rounded-xl border px-3.5 pb-7 pt-3 text-left shadow-sm transition-all duration-300 sm:px-4 ${
+                  className={`relative w-full overflow-hidden rounded-xl border px-3.5 pb-6 pt-2.5 text-left shadow-sm transition-all duration-300 sm:px-4 ${
                     isCelebrating ? "task-complete-pop" : ""
                   } ${
                     isNewChapterDropping ? "chapter-card-drop" : ""
@@ -2161,9 +2161,9 @@ export default function DashboardJourneyExperience({
                       {"\uD83D\uDD12"}
                     </span>
                   ) : null}
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-2.5">
                     <div
-                      className={`relative mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-2xl shadow-sm ${
+                      className={`relative mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-xl shadow-sm ${
                         task.done ? taskCopy.doneAccent : taskCopy.idleAccent
                       }`}
                     >
@@ -2177,8 +2177,8 @@ export default function DashboardJourneyExperience({
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0 flex-1">
-                          <p className={`text-[15px] font-bold leading-tight sm:text-base ${task.done ? "text-gray-950" : "text-gray-800"}`}>{taskCopy.title}</p>
-                          <p className={`mt-0.5 text-xs leading-5 sm:text-sm ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
+                          <p className={`text-[14px] font-bold leading-tight sm:text-[15px] ${task.done ? "text-gray-950" : "text-gray-800"}`}>{taskCopy.title}</p>
+                          <p className={`mt-0.5 text-xs leading-4 sm:text-[13px] ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
                         </div>
                         <div className="flex shrink-0 flex-col items-end gap-1">
                         <span className={`px-1 py-1 text-xs font-black ${task.done ? "text-green-700" : "text-gray-800"}`}>
@@ -2212,7 +2212,7 @@ export default function DashboardJourneyExperience({
                         </span>
                         </div>
                       </div>
-                      <div className="pointer-events-none absolute bottom-3 left-0 right-0 flex items-center justify-center">
+                      <div className="pointer-events-none absolute bottom-2.5 left-0 right-0 flex items-center justify-center">
                         <p className="hidden">{taskCopy.subtitle}</p>
                         {task.timeEstimateLabel ? (
                           <p className="whitespace-nowrap text-center text-[11px] font-black text-gray-950">
