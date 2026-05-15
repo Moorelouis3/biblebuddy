@@ -2076,7 +2076,7 @@ export default function DashboardJourneyExperience({
                 >
                   {isCardDisabled ? (
                     <span
-                      className="absolute right-3 top-3 text-base opacity-70"
+                      className="absolute bottom-3 right-3 text-base opacity-70"
                       aria-label="Locked"
                       title="Complete the task above to unlock this."
                     >
@@ -2103,7 +2103,7 @@ export default function DashboardJourneyExperience({
                           <p className={`mt-0.5 text-xs leading-5 sm:text-sm ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
                         </div>
                         <div className="flex shrink-0 flex-col items-end gap-1">
-                        <span className={`rounded-full px-3 py-1 text-xs font-bold ${getTaskPillClasses(task)}`}>
+                        <span className={`px-1 py-1 text-xs font-black ${task.done ? "text-green-700" : "text-gray-800"}`}>
                           {pointsPillLabel}
                         </span>
                         <span className={`hidden ${
