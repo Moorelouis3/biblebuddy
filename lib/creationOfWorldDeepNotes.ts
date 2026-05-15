@@ -630,4 +630,12 @@ const creationNotes: CreationChapterNote[] = [
   },
 ];
 
-export const CREATION_OF_WORLD_DEEP_NOTES = creationNotes.map(buildCreationNotes);
+function buildCreationNotesWithBigLessonFirst(chapter: CreationChapterNote) {
+  const chapterFlow = chapter.sections.map((section) => `- 📍 ${section.title}`).join("\n");
+  const finalThought = chapter.finalThought.map((item) => `- ${item}`).join("\n");
+  const pause = chapter.pause.map((item) => `- ${item}`).join("\n");
+
+  return `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map((section) => buildSection(chapter.chapter, section)).join("\n\n")}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
+}
+
+export const CREATION_OF_WORLD_DEEP_NOTES = creationNotes.map(buildCreationNotesWithBigLessonFirst);

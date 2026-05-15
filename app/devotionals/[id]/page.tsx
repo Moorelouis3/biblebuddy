@@ -453,24 +453,6 @@ export default function DevotionalDetailPage() {
     ? getPreviewDescription(devotional.title, devotional.description)
     : "";
 
-  useEffect(() => {
-    if (loading || !devotional || !isChapterJourneyStudy || days.length === 0) return;
-    if (devotional.title !== "The Creation of the World") return;
-    if (searchParams.get("overview") === "1") return;
-    if (searchParams.get("day")) return;
-
-    router.replace(`/devotionals/${devotionalId}/day/${currentDay}`);
-  }, [
-    currentDay,
-    days.length,
-    devotional,
-    devotionalId,
-    isChapterJourneyStudy,
-    loading,
-    router,
-    searchParams,
-  ]);
-
   const isDayUnlocked = (dayNumber: number) => {
     if (userEmail === "moorelouis3@gmail.com") return true;
     if (dayNumber === 1) return true;
