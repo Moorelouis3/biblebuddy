@@ -1229,6 +1229,14 @@ export default function DashboardJourneyExperience({
     .filter((task) => !task.done)
     .reduce((total, task) => total + parseTaskEstimateMinutes(task.timeEstimateLabel), 0);
   const estimatedStudyTimeLabel = formatStudyEstimate(estimatedStudyMinutes);
+  const studyProgressTotal = Math.max(6, visibleTasks.length || displayTasks.length || 0);
+  const studyProgressCompleted = Math.min(
+    studyProgressTotal,
+    visibleTasks.filter((task) => task.done).length,
+  );
+  const studyProgressLabel = `${studyProgressCompleted}/${studyProgressTotal} study ${
+    studyProgressCompleted === 1 ? "task" : "tasks"
+  } done`;
   const shouldShowCompletionPanel =
     !isChecklistSyncing &&
     allDone &&
@@ -1970,6 +1978,26 @@ export default function DashboardJourneyExperience({
               <p className="mt-0.5 text-[10px] font-bold leading-tight text-gray-600">
                 {estimatedStudyTimeLabel}
               </p>
+              <div className="mt-2 flex items-center gap-2">
+                <div className="flex gap-1.5" aria-hidden="true">
+                  {Array.from({ length: studyProgressTotal }).map((_, index) => {
+                    const isDone = index < studyProgressCompleted;
+                    return (
+                      <span
+                        key={`study-progress-${index}`}
+                        className={`h-2.5 w-5 rounded-full border transition-all duration-300 ${
+                          isDone
+                            ? "border-emerald-400 bg-emerald-400 shadow-[0_0_0_3px_rgba(52,211,153,0.16)]"
+                            : "border-slate-200 bg-slate-200/80"
+                        }`}
+                      />
+                    );
+                  })}
+                </div>
+                <p className="text-[10px] font-black leading-none text-gray-600">
+                  {studyProgressLabel}
+                </p>
+              </div>
             </div>
             {false ? (
             <div
