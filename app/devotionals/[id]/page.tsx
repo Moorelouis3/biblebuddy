@@ -14,6 +14,7 @@ function getCoverImage(title: string): string | null {
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
   if (title === "The Rise of Esther") return "/theriseofester.png";
   if (title === "The Creation of the World") return "/creationoftheworld.png";
+  if (title === "The Fall of Man") return "/thefallofman.png";
   return null;
 }
 
@@ -45,6 +46,8 @@ function getPreviewDescription(title: string, fallback: string): string {
       "Esther's story begins in exile, in loss, and in a world where powerful men make decisions that can crush whole peoples at once. She rises from hiddenness into the palace, but her real story begins when favor turns into responsibility and silence becomes dangerous. This Bible study follows the tension, timing, fear, strategy, and courage that shaped her rise from orphan girl to the woman who stood for her people. It is full of reversals, sleepless nights, political danger, and providence moving in ways no one in the room can fully see. Esther's life proves that sometimes the place God gives you becomes holy the moment you finally use it with courage.",
     "The Creation of the World":
       "Genesis begins before nations, kings, cities, temples, or human history as we know it. This 2-chapter Bible study walks slowly through Genesis 1-2 as the foundation of the Bible: God creating, ordering, blessing, resting, forming Adam from dust, planting Eden, giving a command, and creating the first human relationship. You will see why creation is good, what it means to be made in God's image, why work and rest matter, and how Eden shows humanity's original life with God before sin enters the story.",
+    "The Fall of Man":
+      "Genesis 3-4 shows the collapse after Eden. This 2-chapter Bible study walks slowly through temptation, shame, hiding, blame, judgment, exile, Cain and Abel, anger, murder, violence spreading through generations, and the first signs of hope after humanity breaks trust with God.",
   };
 
   return descriptions[title] ?? fallback;
@@ -109,7 +112,8 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Obedience of Abraham" ||
     title === "The Rise of Esther" ||
     title === "The Courage of Daniel" ||
-    title === "The Creation of the World"
+    title === "The Creation of the World" ||
+    title === "The Fall of Man"
   );
 }
 
@@ -120,6 +124,7 @@ function getChapterJourneyProgressLabel(title: string | null | undefined, curren
   if (title === "The Rise of Esther") return `Esther ${currentDay} of ${totalDays}`;
   if (title === "The Courage of Daniel") return `Daniel ${currentDay} of ${totalDays}`;
   if (title === "The Creation of the World") return `Genesis ${currentDay} of 2`;
+  if (title === "The Fall of Man") return `Genesis ${currentDay + 2} of 4`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 

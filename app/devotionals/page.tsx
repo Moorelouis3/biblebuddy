@@ -65,6 +65,7 @@ const HIDDEN_DEVOTIONAL_TITLES = new Set([
 
 const FEATURED_STUDY_ORDER = [
   "The Creation of the World",
+  "The Fall of Man",
   "The Obedience of Abraham",
   "The Rise of Esther",
   "The Courage of Daniel",
@@ -236,6 +237,9 @@ export default function DevotionalsPage() {
     }
     if (title === "The Creation of the World") {
       return "/creationoftheworld.png";
+    }
+    if (title === "The Fall of Man") {
+      return "/thefallofman.png";
     }
     return null;
   };

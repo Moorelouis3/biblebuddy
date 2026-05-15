@@ -11,6 +11,15 @@ export const BIBLE_STUDY_GROUP_ID = "165bada5-0900-44f1-963b-54e86fe64b39";
 
 export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
+    key: "fall_of_man",
+    title: "The Fall of Man",
+    subtitle: "2-chapter Bible study",
+    totalWeeks: 2,
+    image: "/thefallofman.png",
+    description:
+      "A chapter-by-chapter Bible study through Genesis 3-4 with intro, reading, notes, trivia, Scrambled, and reflection centered on temptation, shame, sin, blame, violence, exile, and the need for redemption.",
+  },
+  {
     key: "creation_of_the_world",
     title: "The Creation of the World",
     subtitle: "2-chapter Bible study",
