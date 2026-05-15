@@ -1815,7 +1815,7 @@ export default function DashboardJourneyExperience({
   const studyProgressPercent = Math.round((studyProgressCompleted / Math.max(studyProgressTotal, 1)) * 100);
 
   return (
-    <div className="space-y-4 pb-24">
+    <div className="space-y-4 pb-28">
       <style>{`
         @keyframes task-complete-pop {
           0% {
@@ -2544,26 +2544,6 @@ export default function DashboardJourneyExperience({
               </button>
             </div>
 
-            <div className="overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              <div className="flex gap-3">
-                {[
-                  { title: "Weekly Challenge", subtitle: "Keep your study rhythm moving.", icon: "🎯" },
-                  { title: "Bible Buddy Encouragement", subtitle: "Small steps daily build strong faith.", icon: "💙" },
-                  { title: "Trivia Stats", subtitle: "Review what is sticking from your studies.", icon: "🧠" },
-                  { title: "Grace Day Reminder", subtitle: "Grace Days protect your streak when life gets busy.", icon: "💎" },
-                ].map((card) => (
-                  <div
-                    key={card.title}
-                    className="min-w-[210px] rounded-[20px] border border-[#dbe7f4] bg-white p-4 shadow-[0_10px_28px_rgba(38,63,99,0.06)]"
-                  >
-                    <div className="text-2xl" aria-hidden="true">{card.icon}</div>
-                    <p className="mt-2 text-sm font-black text-gray-950">{card.title}</p>
-                    <p className="mt-1 text-xs font-medium leading-5 text-gray-500">{card.subtitle}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
           </div>
         </section>
 
@@ -2591,8 +2571,8 @@ export default function DashboardJourneyExperience({
         </section>
       </div>
 
-      <nav className="fixed inset-x-0 bottom-3 z-40 mx-auto w-[min(94vw,430px)] rounded-[24px] border border-[#dbe7f4] bg-white/95 px-3 py-2 shadow-[0_16px_42px_rgba(38,63,99,0.18)] backdrop-blur">
-        <div className="grid grid-cols-5 items-end gap-1 text-center">
+      <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-[#dbe7f4] bg-white/96 px-3 pb-[calc(env(safe-area-inset-bottom,0px)+8px)] pt-2 shadow-[0_-12px_34px_rgba(38,63,99,0.12)] backdrop-blur">
+        <div className="mx-auto grid max-w-md grid-cols-5 items-end gap-1 text-center">
           {[
             { label: "Home", href: "/dashboard", icon: "⌂", active: true },
             { label: "Bible", href: "/reading", icon: "📖" },

@@ -1868,19 +1868,19 @@ export default function DashboardPage() {
 
     const renderGreetingAndStreakCard = () => (
       <>
-          <div className="mx-auto grid max-w-xl grid-cols-[86px,1fr] items-center gap-3 px-1 sm:grid-cols-[112px,1fr]">
-            <div className="row-span-2 flex items-end justify-center">
+          <div className="mx-auto grid max-w-xl grid-cols-[104px,1fr] items-center gap-3 rounded-[26px] border border-[#dbe7f4] bg-white px-3 py-3 shadow-[0_12px_34px_rgba(38,63,99,0.08)] sm:grid-cols-[132px,1fr] sm:px-4">
+            <div className="row-span-2 flex h-full items-end justify-center self-end overflow-visible">
               <img
                 src="/louis/newlouisreading.png"
                 alt="Louis reading"
-                className="h-24 w-auto object-contain drop-shadow-[0_10px_18px_rgba(37,65,99,0.18)] sm:h-32"
+                className="-mb-3 h-28 w-auto object-contain drop-shadow-[0_10px_18px_rgba(37,65,99,0.18)] sm:h-36"
               />
             </div>
-            <div className="min-w-0">
+            <div className="min-w-0 pt-1">
               <h1 className="text-lg font-black text-gray-950 sm:text-2xl">
                 {getDashboardGreeting()}, {greetingName}
               </h1>
-              <p className="mt-0.5 text-sm font-medium leading-5 text-gray-500">
+              <p className="mt-0.5 text-sm font-medium leading-5 text-gray-500 sm:text-[15px]">
                 {nextStudyLine}
               </p>
             </div>
@@ -1892,7 +1892,7 @@ export default function DashboardPage() {
                   window.location.href = task.href;
                 }
               }}
-              className="flex min-h-[56px] items-center justify-between gap-3 rounded-[18px] border border-[#dbe7f4] bg-white px-3 py-2 text-left shadow-[0_10px_28px_rgba(38,63,99,0.08)] transition hover:-translate-y-0.5 hover:shadow-md"
+              className="flex min-h-[58px] items-center justify-between gap-3 rounded-[18px] border border-[#dbe7f4] bg-[#fbfdff] px-3 py-2 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
             >
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#eef6ff] text-xl">📘</span>
               <span className="min-w-0 flex-1">
