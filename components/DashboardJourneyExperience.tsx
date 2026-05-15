@@ -149,6 +149,124 @@ function getTaskStatusLine(task: TaskState) {
   return "Not started";
 }
 
+function normalizeDashboardBookKey(book: string) {
+  const rawBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
+  return rawBookKey === "songofsolomon" ? "songofsongs" : rawBookKey;
+}
+
+function buildDashboardChapterLabel(book: string, chapter: number) {
+  return `${book} ${chapter}`;
+}
+
+function buildPreloadedNextChapterTasks({
+  devotionalId,
+  devotionalTitle,
+  dayNumber,
+  book,
+  chapter,
+}: {
+  devotionalId: string;
+  devotionalTitle: string | null | undefined;
+  dayNumber: number;
+  book: string;
+  chapter: number;
+}): TaskState[] {
+  const chapterLabel = buildDashboardChapterLabel(book, chapter);
+  const bookKey = normalizeDashboardBookKey(book);
+
+  return [
+    {
+      kind: "devotional",
+      title: `Read Chapter Intro for ${chapterLabel}`,
+      pointsLabel: "+5 pts",
+      timeEstimateLabel: "2 min",
+      href: `/devotionals/${devotionalId}?day=${dayNumber}&from=louis-daily-task`,
+      done: false,
+      devotionalId,
+      devotionalTitle,
+      devotionalDayNumber: dayNumber,
+      book,
+      chapter,
+      chapterLabel,
+    },
+    {
+      kind: "reading",
+      title: `Read ${chapterLabel}`,
+      pointsLabel: "+5 pts",
+      timeEstimateLabel: "4 min",
+      href: `/Bible/${encodeURIComponent(book)}/${chapter}?from=louis-daily-task`,
+      done: false,
+      disabled: true,
+      devotionalId,
+      devotionalTitle,
+      devotionalDayNumber: dayNumber,
+      book,
+      chapter,
+      chapterLabel,
+    },
+    {
+      kind: "notes",
+      title: `Review ${chapterLabel} Notes`,
+      pointsLabel: "+5 pts",
+      timeEstimateLabel: "12 min",
+      href: `/Bible/${encodeURIComponent(book)}/${chapter}?notes=1&from=louis-daily-task`,
+      done: false,
+      disabled: true,
+      devotionalId,
+      devotionalTitle,
+      devotionalDayNumber: dayNumber,
+      book,
+      chapter,
+      chapterLabel,
+    },
+    {
+      kind: "trivia",
+      title: `Play Trivia for ${chapterLabel}`,
+      pointsLabel: "Up to +5",
+      timeEstimateLabel: "4 min",
+      href: `/bible-trivia/${bookKey}/${chapter}?from=louis-daily-task`,
+      done: false,
+      disabled: true,
+      devotionalId,
+      devotionalTitle,
+      devotionalDayNumber: dayNumber,
+      book,
+      chapter,
+      chapterLabel,
+    },
+    {
+      kind: "scrambled",
+      title: `Play Scrambled for ${chapterLabel}`,
+      pointsLabel: "Up to +5",
+      timeEstimateLabel: "4 min",
+      href: `/bible-study-games/scrambled/${bookKey}/${chapter}?from=louis-daily-task`,
+      done: false,
+      disabled: true,
+      devotionalId,
+      devotionalTitle,
+      devotionalDayNumber: dayNumber,
+      book,
+      chapter,
+      chapterLabel,
+    },
+    {
+      kind: "reflection",
+      title: "Answer The Reflection Question",
+      pointsLabel: "+5 pts",
+      timeEstimateLabel: "3 min",
+      href: `/devotionals/${devotionalId}?day=${dayNumber}&from=louis-daily-task-reflection`,
+      done: false,
+      disabled: true,
+      devotionalId,
+      devotionalTitle,
+      devotionalDayNumber: dayNumber,
+      book,
+      chapter,
+      chapterLabel,
+    },
+  ];
+}
+
 type ActiveTaskPrompt = {
   lineOne: string;
   lineTwo: string;
@@ -963,6 +1081,11 @@ export default function DashboardJourneyExperience({
   const [showCompletionPanel, setShowCompletionPanel] = useState(false);
   const [isLoadingNextChapter, setIsLoadingNextChapter] = useState(false);
   const [isNewChapterDropping, setIsNewChapterDropping] = useState(false);
+  const [preloadedNextChapter, setPreloadedNextChapter] = useState<{
+    targetKey: string;
+    chapterLabel: string;
+    tasks: TaskState[];
+  } | null>(null);
   const [showDevotionalSettings, setShowDevotionalSettings] = useState(false);
   const [showJourneyHelp, setShowJourneyHelp] = useState(false);
   const [devotionalOptions, setDevotionalOptions] = useState<DevotionalOption[]>([]);
@@ -992,6 +1115,7 @@ export default function DashboardJourneyExperience({
     visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "this chapter";
   const nextChapterLabel = (() => {
+    if (preloadedNextChapter?.chapterLabel) return preloadedNextChapter.chapterLabel;
     const chapterTask = visibleTasks.find((task) => task.book && task.chapter);
     if (!chapterTask?.book || !chapterTask.chapter || !checklistData?.nextJourneyTarget) return "the next chapter";
     return `${chapterTask.book} ${chapterTask.chapter + 1}`;
@@ -1016,10 +1140,20 @@ export default function DashboardJourneyExperience({
   const readingTask = visibleTasks.find((task) => task.kind === "reading") ?? null;
   const chapterTask = readingTask || visibleTasks.find((task) => task.book && task.chapter) || null;
   const activeChapterLabel =
-    chapterTask?.chapterLabel ||
+    isLoadingNextChapter && preloadedNextChapter?.chapterLabel
+      ? preloadedNextChapter.chapterLabel
+      : chapterTask?.chapterLabel ||
     visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "Your Chapter";
   const queueTasks = visibleTasks.filter((task) => !task.done || celebratingTasks[task.kind]);
+  const displayTasks = isLoadingNextChapter && preloadedNextChapter?.tasks.length
+    ? preloadedNextChapter.tasks
+    : queueTasks;
+  const displayNextActionTaskIndex = displayTasks.findIndex((task) => !task.done);
+  const displayNextActionTaskKind =
+    displayNextActionTaskIndex >= 0 && displayTasks[displayNextActionTaskIndex] && !displayTasks[displayNextActionTaskIndex].disabled
+      ? displayTasks[displayNextActionTaskIndex].kind
+      : null;
   const shouldShowCompletionPanel =
     !isChecklistSyncing &&
     allDone &&
@@ -1261,6 +1395,10 @@ export default function DashboardJourneyExperience({
     if (userId && cycleStartedAt && checklistData?.nextJourneyTarget) {
       setShowCompletionPanel(false);
       setIsLoadingNextChapter(true);
+      if (preloadedNextChapter?.tasks.length) {
+        setIsNewChapterDropping(true);
+        window.setTimeout(() => setIsNewChapterDropping(false), 1050);
+      }
       const { error } = await supabase
         .from("profile_stats")
         .upsert(
@@ -1307,6 +1445,7 @@ export default function DashboardJourneyExperience({
     if (previousJourneyKeyRef.current && previousJourneyKeyRef.current !== currentJourneyKey) {
       setIsLoadingNextChapter(false);
       setShowCompletionPanel(false);
+      setPreloadedNextChapter(null);
       setIsNewChapterDropping(true);
       window.setTimeout(() => setIsNewChapterDropping(false), 1050);
     }
@@ -1368,6 +1507,64 @@ export default function DashboardJourneyExperience({
 
     return () => window.clearTimeout(timer);
   }, [allDone, isChecklistSyncing, isLoadingNextChapter, queueTasks.length]);
+
+  useEffect(() => {
+    const target = checklistData?.nextJourneyTarget;
+    if (!allDone || !target) {
+      setPreloadedNextChapter(null);
+      return;
+    }
+
+    const targetKey = `${target.devotionalId}:${target.dayNumber}`;
+    if (preloadedNextChapter?.targetKey === targetKey) return;
+    const targetDevotionalId = target.devotionalId;
+    const targetDayNumber = target.dayNumber;
+
+    let cancelled = false;
+
+    async function preloadNextChapter() {
+      const { data, error } = await supabase
+        .from("devotional_days")
+        .select("bible_reading_book, bible_reading_chapter")
+        .eq("devotional_id", targetDevotionalId)
+        .eq("day_number", targetDayNumber)
+        .maybeSingle();
+
+      if (cancelled) return;
+      if (error || !data) {
+        if (error) console.error("[DASHBOARD] Could not preload next chapter cards:", error);
+        return;
+      }
+
+      const book = String((data as any).bible_reading_book || "");
+      const chapter = Number((data as any).bible_reading_chapter || 0);
+      if (!book || !chapter) return;
+
+      setPreloadedNextChapter({
+        targetKey,
+        chapterLabel: buildDashboardChapterLabel(book, chapter),
+        tasks: buildPreloadedNextChapterTasks({
+          devotionalId: targetDevotionalId,
+          devotionalTitle: currentDevotionalTask?.devotionalTitle,
+          dayNumber: targetDayNumber,
+          book,
+          chapter,
+        }),
+      });
+    }
+
+    void preloadNextChapter();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    allDone,
+    checklistData?.nextJourneyTarget?.devotionalId,
+    checklistData?.nextJourneyTarget?.dayNumber,
+    currentDevotionalTask?.devotionalTitle,
+    preloadedNextChapter?.targetKey,
+  ]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -1786,7 +1983,7 @@ export default function DashboardJourneyExperience({
             </div>
             ) : null}
 
-            {isChecklistSyncing || isLoadingNextChapter ? (
+            {isChecklistSyncing || (isLoadingNextChapter && !preloadedNextChapter?.tasks.length) ? (
               skeletonTasks.map((task, index) => (
                 <div
                   key={task.title}
@@ -1841,20 +2038,17 @@ export default function DashboardJourneyExperience({
                 </button>
               </div>
             ) : (
-              queueTasks.map((task, index) => {
-                const originalTaskIndex = visibleTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
+              displayTasks.map((task, index) => {
+                const originalTaskIndex = displayTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
                 const taskIndex = originalTaskIndex >= 0 ? originalTaskIndex : index;
                 const taskCopy = getTaskCardCopy(task, taskIndex);
                 const isCelebrating = Boolean(celebratingTasks[task.kind]);
-                const isLockedByOrder = !task.done && nextActionTaskIndex >= 0 && taskIndex > nextActionTaskIndex;
+                const isLockedByOrder = !task.done && displayNextActionTaskIndex >= 0 && taskIndex > displayNextActionTaskIndex;
                 const isCardDisabled = Boolean(task.disabled || isLockedByOrder);
-                const isNextActionTask = task.kind === nextActionTaskKind && !isCardDisabled;
-                const remainingTaskCount = visibleTasks.filter((dailyTask) => !dailyTask.done).length;
-                const activeTaskPrompt = isNextActionTask
-                  ? getActiveTaskPrompt(task, remainingTaskCount, `${userId || "guest"}:${cycleStartedAt || "today"}:${taskIndex}`)
-                  : null;
-                const pointsPillLabel = isCardDisabled ? "Locked" : task.pointsLabel;
-                const taskStatusLabel = isCardDisabled ? "Locked" : getTaskStatusLine(task);
+                const isNextActionTask = task.kind === displayNextActionTaskKind && !isCardDisabled;
+                const pointsPillLabel = task.pointsLabel;
+                const activeTaskPrompt = null as ActiveTaskPrompt | null;
+                const taskStatusLabel = getTaskStatusLine(task);
 
                 return (
                 <button
@@ -1875,8 +2069,8 @@ export default function DashboardJourneyExperience({
                     task.done
                       ? "border-green-200 bg-gradient-to-r from-green-50 via-white to-green-50 hover:bg-green-50"
                       : isCardDisabled
-                        ? "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400 opacity-75"
-                        : "border-gray-200 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 text-gray-500 hover:shadow-md"
+                        ? "cursor-not-allowed border-gray-200 bg-gradient-to-r from-white via-emerald-50/60 to-white text-gray-700 opacity-95"
+                        : "border-green-200 bg-gradient-to-r from-white via-emerald-50 to-white text-gray-700 hover:shadow-md"
                   }`}
                   style={isNewChapterDropping ? { animationDelay: `${index * 85}ms` } : undefined}
                 >
@@ -1889,13 +2083,13 @@ export default function DashboardJourneyExperience({
                       {"\uD83D\uDD12"}
                     </span>
                   ) : null}
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-start gap-3">
                     <div
-                      className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-2xl shadow-sm ${
-                        task.done ? taskCopy.doneAccent : "from-gray-200 to-gray-300"
+                      className={`relative mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-2xl shadow-sm ${
+                        task.done ? taskCopy.doneAccent : taskCopy.idleAccent
                       }`}
                     >
-                      <span className={`drop-shadow-sm ${task.done ? "" : "grayscale opacity-45"}`} aria-hidden="true">{getTaskEmoji(task)}</span>
+                      <span className={`drop-shadow-sm ${isCardDisabled ? "opacity-75" : ""}`} aria-hidden="true">{getTaskEmoji(task)}</span>
                       {task.done ? (
                         <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#22b95f] text-xs font-black text-white ring-2 ring-white">
                           ✓
@@ -1904,12 +2098,15 @@ export default function DashboardJourneyExperience({
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-2">
-                        <p className={`min-w-0 flex-1 text-[15px] font-bold leading-tight sm:text-base ${task.done ? "text-gray-950" : "text-gray-600"}`}>{taskCopy.title}</p>
+                        <div className="min-w-0 flex-1">
+                          <p className={`text-[15px] font-bold leading-tight sm:text-base ${task.done ? "text-gray-950" : "text-gray-800"}`}>{taskCopy.title}</p>
+                          <p className={`mt-0.5 text-xs leading-5 sm:text-sm ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
+                        </div>
                         <div className="flex shrink-0 flex-col items-end gap-1">
                         <span className={`rounded-full px-3 py-1 text-xs font-bold ${getTaskPillClasses(task)}`}>
                           {pointsPillLabel}
                         </span>
-                        <span className={`relative flex items-center gap-1 text-[10px] ${
+                        <span className={`hidden ${
                           task.done
                             ? "font-medium text-green-700"
                             : isNextActionTask
@@ -1937,16 +2134,18 @@ export default function DashboardJourneyExperience({
                         </span>
                         </div>
                       </div>
-                      <div className="mt-1.5 flex items-end justify-between gap-3">
-                        <p className={`min-w-0 flex-1 text-xs leading-5 sm:text-sm ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
+                      <div className="mt-2 flex items-center justify-center">
+                        <p className="hidden">{taskCopy.subtitle}</p>
                         {task.timeEstimateLabel ? (
-                          <p className="shrink-0 whitespace-nowrap text-right text-[11px] font-black text-gray-950">
+                          <p className="whitespace-nowrap text-center text-[11px] font-black text-gray-950">
                             Takes about {task.timeEstimateLabel}
                           </p>
                         ) : null}
                       </div>
                     </div>
-                    <span className="shrink-0 text-xl leading-none text-gray-400" aria-hidden="true">›</span>
+                    {!isCardDisabled ? (
+                      <span className="mt-5 shrink-0 text-xl leading-none text-gray-400" aria-hidden="true">›</span>
+                    ) : null}
                   </div>
                   {isCelebrating ? (
                     <div className="task-smoke pointer-events-none absolute left-1/2 top-1/2" aria-hidden="true">
