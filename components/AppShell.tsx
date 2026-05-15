@@ -1169,7 +1169,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       setIsLoggedIn(!!session);
       setUserEmail(session?.user?.email ?? null);
-      setIsEmailConfirmed(session?.user ? isSupabaseEmailConfirmed(session.user) : true);
+      setIsEmailConfirmed(true);
+      setShowEmailConfirmationGate(false);
       
       // Set userId and username for feedback system
       if (session?.user?.id) {
@@ -1225,7 +1226,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       async (_event, session) => {
         setIsLoggedIn(!!session);
         setUserEmail(session?.user?.email ?? null);
-        setIsEmailConfirmed(session?.user ? isSupabaseEmailConfirmed(session.user) : true);
+        setIsEmailConfirmed(true);
+        setShowEmailConfirmationGate(false);
         
         // Set userId and username for feedback system
         if (session?.user?.id) {
@@ -1622,15 +1624,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (HIDDEN_ROUTES.includes(pathname)) return;
     router.replace("/dashboard");
   }, [isLoggedIn, userId, showOnboardingModal, pathname, router]);
-
-  useEffect(() => {
-    if (!isLoggedIn || !userId || isEmailConfirmed || showOnboardingModal) return;
-    if (!pathname) return;
-    if (pathname === "/dashboard") return;
-    if (HIDDEN_ROUTES.includes(pathname)) return;
-    setShowEmailConfirmationGate(true);
-    router.replace("/dashboard");
-  }, [isLoggedIn, userId, isEmailConfirmed, showOnboardingModal, pathname, router]);
 
   return (
     <FeatureRenderPriorityProvider value={{ featureToursEnabled }}>

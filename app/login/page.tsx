@@ -83,6 +83,22 @@ export default function LoginPage() {
     window.location.href = "/dashboard";
   }
 
+  async function handleOAuthSignIn(provider: "google" | "apple") {
+    setLoading(true);
+    setError(null);
+
+    const redirectTo = typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined;
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: redirectTo ? { redirectTo } : undefined,
+    });
+
+    if (error) {
+      setLoading(false);
+      setError(error.message);
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* HEADER (Top Bar) */}
@@ -122,6 +138,31 @@ export default function LoginPage() {
           <p className="text-sm text-gray-600 mb-6 text-center">
             Pick up where you left off in Matthew.
           </p>
+
+          <div className="grid gap-2">
+            <button
+              type="button"
+              onClick={() => void handleOAuthSignIn("google")}
+              disabled={loading}
+              className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-bold text-gray-900 transition hover:bg-gray-50 disabled:opacity-60"
+            >
+              Continue with Google
+            </button>
+            <button
+              type="button"
+              onClick={() => void handleOAuthSignIn("apple")}
+              disabled={loading}
+              className="w-full rounded-xl border border-gray-900 bg-gray-950 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-gray-800 disabled:opacity-60"
+            >
+              Continue with Apple
+            </button>
+          </div>
+
+          <div className="my-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
+            <span className="h-px flex-1 bg-gray-200" />
+            or
+            <span className="h-px flex-1 bg-gray-200" />
+          </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

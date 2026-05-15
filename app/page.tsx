@@ -59,13 +59,10 @@ export default function LandingPage() {
   const router = useRouter();
   const [isChecking, setIsChecking] = useState(true);
   const [showSignupModal, setShowSignupModal] = useState(false);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [heroFocus, setHeroFocus] = useState(0);
 
   useEffect(() => {
@@ -100,16 +97,18 @@ export default function LandingPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    setShowSuccessModal(false);
+    const normalizedEmail = email.trim().toLowerCase();
+    const displayName = normalizedEmail.split("@")[0] || "New User";
 
     const { data, error } = await supabase.auth.signUp({
-      email: email.trim(),
+      email: normalizedEmail,
       password: password.trim(),
       options: {
         emailRedirectTo: typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined,
         data: {
-          first_name: firstName,
-          last_name: lastName,
+          firstName: displayName,
+          first_name: displayName,
+          display_name: displayName,
         },
       },
     });
@@ -137,10 +136,9 @@ export default function LandingPage() {
     }
 
     try {
-      const username = firstName.trim() || user.email?.split("@")[0] || "New User";
       await supabase.from("master_actions").insert({
         user_id: user.id,
-        username,
+        username: displayName,
         action_type: ACTION_TYPE.user_signup,
         action_label: "Signed up for Bible Buddy",
         created_at: new Date().toISOString(),
@@ -153,24 +151,49 @@ export default function LandingPage() {
       await fetch("/api/send-welcome-dm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: user.id, firstName: firstName.trim(), lastName: lastName.trim() }),
+        body: JSON.stringify({ userId: user.id, firstName: displayName, lastName: "" }),
       });
     } catch (err) {
       console.error("Welcome DM failed (non-blocking):", err);
     }
 
-    setLoading(false);
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
-
     if (data.session) {
-      router.push("/dashboard");
+      window.location.href = "/dashboard";
       return;
     }
 
-    setShowSuccessModal(true);
+    const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
+      email: normalizedEmail,
+      password: password.trim(),
+    });
+
+    if (loginData.session) {
+      window.location.href = "/dashboard";
+      return;
+    }
+
+    setLoading(false);
+    setError(
+      loginError?.message?.toLowerCase().includes("email not confirmed")
+        ? "Your account was created, but Supabase email confirmation is still turned on. Turn it off in Supabase Auth so new users can start onboarding right away."
+        : loginError?.message || "Account created, but Bible Buddy could not start your session yet. Try logging in."
+    );
+  }
+
+  async function handleOAuthSignIn(provider: "google" | "apple") {
+    setLoading(true);
+    setError(null);
+
+    const redirectTo = typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined;
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: redirectTo ? { redirectTo } : undefined,
+    });
+
+    if (error) {
+      setLoading(false);
+      setError(error.message);
+    }
   }
 
   if (isChecking) {
@@ -532,32 +555,32 @@ export default function LandingPage() {
             <h2 className="mb-1 text-center text-xl font-bold text-gray-900 md:text-2xl">Create your free Bible Buddy account</h2>
             <p className="mb-4 text-center text-xs text-gray-500">Free to use. No credit card required.</p>
 
-            <form onSubmit={handleSubmit} className="mt-2 space-y-3">
-              <div className="flex gap-2">
-                <div className="flex-1">
-                  <label className="mb-1.5 block text-xs font-semibold text-gray-700">First Name</label>
-                  <input
-                    type="text"
-                    required
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    placeholder="First name"
-                  />
-                </div>
-                <div className="flex-1">
-                  <label className="mb-1.5 block text-xs font-semibold text-gray-700">Last Name</label>
-                  <input
-                    type="text"
-                    required
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    placeholder="Last name"
-                  />
-                </div>
-              </div>
+            <div className="grid gap-2">
+              <button
+                type="button"
+                onClick={() => void handleOAuthSignIn("google")}
+                disabled={loading}
+                className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-bold text-gray-900 transition hover:bg-gray-50 disabled:opacity-60"
+              >
+                Continue with Google
+              </button>
+              <button
+                type="button"
+                onClick={() => void handleOAuthSignIn("apple")}
+                disabled={loading}
+                className="w-full rounded-lg border border-gray-900 bg-gray-950 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-gray-800 disabled:opacity-60"
+              >
+                Continue with Apple
+              </button>
+            </div>
 
+            <div className="my-4 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
+              <span className="h-px flex-1 bg-gray-200" />
+              or
+              <span className="h-px flex-1 bg-gray-200" />
+            </div>
+
+            <form onSubmit={handleSubmit} className="mt-2 space-y-3">
               <div>
                 <label className="mb-1.5 block text-xs font-semibold text-gray-700">Email</label>
                 <input
@@ -596,33 +619,6 @@ export default function LandingPage() {
                 <Link href="/privacy" className="underline underline-offset-2 hover:text-[#7BAFD4]">privacy policy</Link>.
               </p>
             </form>
-          </div>
-        </div>
-      )}
-
-      {showSuccessModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 text-slate-950 shadow-xl">
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-                <svg className="h-6 w-6 text-green-600" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h2 className="mb-2 text-2xl font-bold text-gray-900">Account created successfully!</h2>
-              <p className="mb-6 text-sm leading-6 text-gray-600">
-                Check your email to confirm your account. If Bible Buddy does not open automatically, confirm first and then log in.
-              </p>
-              <button
-                onClick={() => {
-                  setShowSuccessModal(false);
-                  setShowSignupModal(false);
-                }}
-                className="w-full rounded-xl bg-[#7BAFD4] px-6 py-3 font-black text-[#05111f] transition hover:bg-[#91c2df]"
-              >
-                Got it
-              </button>
-            </div>
           </div>
         </div>
       )}
