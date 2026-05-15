@@ -1763,7 +1763,7 @@ export default function DashboardPage() {
         onClick?: () => void;
       }>
     ) => (
-      <div className="mx-auto grid max-w-xl grid-cols-4 gap-0 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm">
+      <div className="mx-auto grid max-w-xl grid-cols-4 gap-3 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm">
         {cards.map((card) => {
           const CardTag = card.onClick ? "button" : "div";
           return (
