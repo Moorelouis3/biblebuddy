@@ -1754,7 +1754,7 @@ export default function DashboardPage() {
         label: "Completion",
         value: `${displayedBibleCompletionPercent}%`,
         icon: "📖",
-        tones: "bg-gray-100 border-gray-200",
+        tones: "border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100",
         onClick: () => setShowBibleProgressModal(true),
       },
       {
@@ -1764,7 +1764,7 @@ export default function DashboardPage() {
           ? animatedDashboardStats.grace
           : Math.max(0, Math.min(5, Number(profile?.grace_days_count ?? 0))),
         icon: "💎",
-        tones: "bg-blue-100 border-blue-200",
+        tones: "border-blue-200 bg-gradient-to-br from-white via-blue-50 to-blue-100",
         onClick: () => setShowGraceDaysInfoModal(true),
       },
       {
@@ -1772,7 +1772,7 @@ export default function DashboardPage() {
         label: "Level",
         value: levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1,
         icon: "🛡️",
-        tones: "bg-emerald-100 border-emerald-200",
+        tones: "border-emerald-200 bg-gradient-to-br from-white via-emerald-50 to-emerald-100",
         onClick: openLevelInfoModal,
       },
       {
@@ -1780,7 +1780,7 @@ export default function DashboardPage() {
         label: "Badges",
         value: badgesLoading ? animatedDashboardStats.badges : earnedBadgeCount,
         icon: "🏅",
-        tones: "bg-red-100 border-red-200",
+        tones: "border-rose-200 bg-gradient-to-br from-white via-rose-50 to-rose-100",
         onClick: () => setShowBadgesModal(true),
       },
     ];
@@ -1795,7 +1795,7 @@ export default function DashboardPage() {
         onClick?: () => void;
       }>
     ) => (
-      <div className="mx-auto grid max-w-xl grid-cols-4 gap-3 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm">
+      <div className="mx-auto grid max-w-xl grid-cols-4 gap-2.5 rounded-2xl border border-slate-200 bg-gradient-to-br from-white via-slate-50/70 to-white p-2 shadow-sm">
         {cards.map((card) => {
           const CardTag = card.onClick ? "button" : "div";
           return (
@@ -1803,7 +1803,7 @@ export default function DashboardPage() {
               key={card.key ?? card.label}
               type={card.onClick ? "button" : undefined}
               onClick={card.onClick}
-              className={`rounded-xl border px-1.5 py-2 text-center transition sm:px-3 sm:py-4 ${card.onClick ? "hover:shadow-sm" : ""} ${card.tones}`}
+              className={`rounded-xl border px-1.5 py-2 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] transition sm:px-3 sm:py-4 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-sm" : ""} ${card.tones}`}
             >
               <p className="text-lg font-black text-gray-900 sm:text-2xl">
                 <span className="mr-1 align-middle text-base" aria-hidden="true">{card.icon}</span>
@@ -1819,10 +1819,10 @@ export default function DashboardPage() {
     );
 
     const ownerAnalyticsStats = [
-      { key: "signups", label: "Signups 24h", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.signups24h, tones: "bg-gray-100 border-gray-200" },
-      { key: "active", label: "Active 24h", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.activeUsers24h, tones: "bg-blue-100 border-blue-200" },
-      { key: "upgrades", label: "Upgrades", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.upgrades24h, tones: "bg-emerald-100 border-emerald-200" },
-      { key: "total", label: "Total Users", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.totalUsers, tones: "bg-red-100 border-red-200" },
+      { key: "signups", label: "Signups 24h", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.signups24h, tones: "border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100" },
+      { key: "active", label: "Active 24h", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.activeUsers24h, tones: "border-blue-200 bg-gradient-to-br from-white via-blue-50 to-blue-100" },
+      { key: "upgrades", label: "Upgrades", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.upgrades24h, tones: "border-emerald-200 bg-gradient-to-br from-white via-emerald-50 to-emerald-100" },
+      { key: "total", label: "Total Users", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.totalUsers, tones: "border-rose-200 bg-gradient-to-br from-white via-rose-50 to-rose-100" },
     ];
 
     const renderGreetingAndStreakCard = () => (
