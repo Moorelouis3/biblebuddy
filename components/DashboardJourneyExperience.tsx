@@ -1011,6 +1011,10 @@ export default function DashboardJourneyExperience({
   const devotionalTask = visibleTasks.find((task) => task.kind === "devotional") ?? null;
   const readingTask = visibleTasks.find((task) => task.kind === "reading") ?? null;
   const chapterTask = readingTask || visibleTasks.find((task) => task.book && task.chapter) || null;
+  const activeChapterLabel =
+    chapterTask?.chapterLabel ||
+    visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
+    "Your Chapter";
   const greetingName = userName && userName !== "buddy" ? userName : "buddy";
   function buildLouisMessage() {
     const streakLine = `Hey ${greetingName}, you are on a ${streak} day streak.`;
@@ -1436,7 +1440,7 @@ export default function DashboardJourneyExperience({
         <section className={`w-full shrink-0 snap-start px-1 ${activePage === 0 ? "" : "h-0 overflow-hidden"}`}>
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
             <div className="flex items-center justify-between px-1">
-              <h2 className="text-base font-black text-gray-950">Continue Your Study</h2>
+              <h2 className="text-base font-black text-gray-950">Continue Your Study of {activeChapterLabel}</h2>
             </div>
             {false ? (
             <div

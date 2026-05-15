@@ -1725,7 +1725,7 @@ export default function DashboardPage() {
         label: "Completion",
         value: `${bibleCompletionPercent}%`,
         icon: "📖",
-        tones: "bg-white border-gray-200",
+        tones: "bg-gray-100 border-gray-200",
       },
       {
         key: "grace",
@@ -1771,7 +1771,7 @@ export default function DashboardPage() {
               key={card.key ?? card.label}
               type={card.onClick ? "button" : undefined}
               onClick={card.onClick}
-              className={`border-r border-gray-200 px-1.5 py-2 text-center transition last:border-r-0 sm:px-3 ${card.onClick ? "hover:bg-gray-50" : ""}`}
+              className={`rounded-xl border px-1.5 py-2 text-center transition sm:px-3 sm:py-4 ${card.onClick ? "hover:shadow-sm" : ""} ${card.tones}`}
             >
               <p className="text-lg font-black text-gray-900 sm:text-2xl">
                 <span className="mr-1 align-middle text-base" aria-hidden="true">{card.icon}</span>
