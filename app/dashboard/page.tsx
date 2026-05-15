@@ -3935,27 +3935,24 @@ export default function DashboardPage() {
                 total: getBookTotalChapters(book),
                 chapters: [] as number[],
               }));
+          const sortedRows = [...rows].sort((a, b) => {
+            const completedDifference = b.completed - a.completed;
+            if (completedDifference !== 0) return completedDifference;
+
+            const aPercent = a.completed / Math.max(a.total, 1);
+            const bPercent = b.completed / Math.max(b.total, 1);
+            const percentDifference = bPercent - aPercent;
+            if (percentDifference !== 0) return percentDifference;
+
+            return BOOKS.indexOf(a.book) - BOOKS.indexOf(b.book);
+          });
           const completedBooks = rows.filter((row) => row.completed >= row.total).length;
           const inProgressBooks = rows.filter((row) => row.completed > 0 && row.completed < row.total).length;
 
           return (
             <div className="relative mx-3 my-5 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
               <div className="border-b border-[#dbe7f6] bg-gradient-to-br from-[#edf7ff] via-white to-[#fff7df] px-5 py-5 sm:px-7">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white text-3xl shadow-sm">
-                      📖
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-[0.22em] text-[#5f86bd]">
-                        Bible Progress
-                      </p>
-                      <h2 className="mt-1 text-2xl font-black text-[#1f2a44]">Your Bible collection</h2>
-                      <p className="mt-1 text-sm font-semibold leading-5 text-[#5b6f92]">
-                        {totalCompletedChapters} of {TOTAL_BIBLE_CHAPTERS} chapters completed
-                      </p>
-                    </div>
-                  </div>
+                <div className="flex justify-end">
                   <button
                     type="button"
                     onClick={() => setShowBibleProgressModal(false)}
@@ -3966,42 +3963,39 @@ export default function DashboardPage() {
                   </button>
                 </div>
 
-                <div className="mt-5 rounded-3xl border border-white/80 bg-white/80 p-4 shadow-sm">
-                  <div className="flex flex-wrap items-end justify-between gap-3">
-                    <div>
-                      <p className="text-4xl font-black leading-none text-[#1f2a44]">{bibleCompletionPercent}%</p>
-                      <p className="mt-1 text-sm font-bold text-[#5b6f92]">of the Bible completed</p>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 text-center text-xs font-black text-[#1f2a44] sm:grid-cols-3">
-                      <div className="rounded-2xl bg-[#eef7ff] px-3 py-2">
-                        <div className="text-lg">{completedBooks}</div>
-                        <div className="font-semibold text-[#5b6f92]">Books done</div>
-                      </div>
-                      <div className="rounded-2xl bg-[#fff3d7] px-3 py-2">
-                        <div className="text-lg">{inProgressBooks}</div>
-                        <div className="font-semibold text-[#5b6f92]">Started</div>
-                      </div>
-                      <div className="rounded-2xl bg-[#eefbf4] px-3 py-2">
-                        <div className="text-lg">{BOOKS.length}</div>
-                        <div className="font-semibold text-[#5b6f92]">Bible books</div>
-                      </div>
-                    </div>
+                <div className="rounded-3xl border border-white/80 bg-white/80 p-4 shadow-sm">
+                  <div className="text-center">
+                    <p className="text-5xl font-black leading-none text-[#1f2a44]">{bibleCompletionPercent}%</p>
+                    <p className="mt-1 text-sm font-bold text-[#5b6f92]">of the Bible completed</p>
                   </div>
+
                   <div className="mt-4 h-3 overflow-hidden rounded-full bg-slate-200">
                     <div
                       className="h-full rounded-full bg-[#7BAFD4] transition-all duration-500"
                       style={{ width: `${bibleCompletionPercent}%` }}
                     />
                   </div>
-                  <p className="mt-3 text-sm font-semibold leading-6 text-[#4f678e]">
-                    This tracks full Bible chapters you have completed across Bible Buddy. Every finished chapter adds to your Bible completion percentage.
-                  </p>
+
+                  <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs font-black text-[#1f2a44]">
+                    <div className="rounded-2xl bg-[#eef7ff] px-2 py-3">
+                      <div className="text-xl">{completedBooks}</div>
+                      <div className="mt-0.5 font-semibold text-[#5b6f92]">Books read</div>
+                    </div>
+                    <div className="rounded-2xl bg-[#fff3d7] px-2 py-3">
+                      <div className="text-xl">{totalCompletedChapters}</div>
+                      <div className="mt-0.5 font-semibold text-[#5b6f92]">Chapters read</div>
+                    </div>
+                    <div className="rounded-2xl bg-[#eefbf4] px-2 py-3">
+                      <div className="text-xl">{inProgressBooks}</div>
+                      <div className="mt-0.5 font-semibold text-[#5b6f92]">Books started</div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <div className="overflow-y-auto px-4 py-4 sm:px-6 sm:py-5">
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {rows.map((row) => {
+                  {sortedRows.map((row) => {
                     const percent = Math.max(0, Math.min(100, Math.round((row.completed / Math.max(row.total, 1)) * 100)));
                     const isComplete = row.completed >= row.total;
                     const hasStarted = row.completed > 0;
