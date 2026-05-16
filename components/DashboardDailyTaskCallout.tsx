@@ -21,6 +21,7 @@ type Props = {
   userId: string | null;
   onClose: () => void;
   onProgressUpdated: (completedTask?: TaskState) => void;
+  variant?: "modal" | "inline";
 };
 
 type DevotionalRow = {
@@ -128,7 +129,7 @@ function getScrambledSlugFromTask(task: TaskState) {
   };
 }
 
-export default function DashboardDailyTaskCallout({ task, userId, onClose, onProgressUpdated }: Props) {
+export default function DashboardDailyTaskCallout({ task, userId, onClose, onProgressUpdated, variant = "modal" }: Props) {
   const [devotional, setDevotional] = useState<DevotionalRow | null>(null);
   const [devotionalDay, setDevotionalDay] = useState<DevotionalDayRow | null>(null);
   const [dayProgress, setDayProgress] = useState<DayProgressRow | undefined>(undefined);
@@ -419,27 +420,41 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   if (!task) return null;
 
+  const isInline = variant === "inline";
+  const inlineFrame = (children: ReactNode, className = "") => (
+    <div className={`dashboard-inline-task mt-3 overflow-hidden rounded-[22px] border border-[#d7e4f7] bg-white shadow-sm ${className}`}>
+      {children}
+    </div>
+  );
+
   if (task.kind === "reading" && task.book && task.chapter) {
     const chapterLabel = task.chapterLabel || `${task.book} ${task.chapter}`;
     const readerPath = `/Bible/${encodeURIComponent(task.book)}/${task.chapter}?from=louis-daily-task&embedded=chapter-text`;
+    const readerPanel = (
+      <div className={`relative flex w-full flex-col overflow-hidden bg-white ${isInline ? "h-[78vh] min-h-[560px]" : "h-[92vh]"}`}>
+          <button
+            type="button"
+            onClick={() => void closeReadingAndRefresh()}
+            className="absolute right-3 top-3 z-20 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gray-200 bg-white/95 text-2xl font-light leading-none text-gray-700 shadow-lg backdrop-blur transition hover:border-gray-300 hover:bg-gray-50 hover:text-gray-950"
+            aria-label="Close Bible reader"
+          >
+            x
+          </button>
+        <iframe
+          src={readerPath}
+          title={`${chapterLabel} Bible reader`}
+          className="min-h-0 flex-1 border-0 bg-white"
+          loading="eager"
+        />
+      </div>
+    );
+
+    if (isInline) return inlineFrame(readerPanel);
 
     return (
       <ModalShell isOpen={true} onClose={() => void closeReadingAndRefresh()} backdropColor="bg-black/65" closeOnBackdrop={false}>
         <div className="relative mx-2 flex h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-[26px] border border-[#d7e4f7] bg-white shadow-2xl sm:mx-4">
-            <button
-              type="button"
-              onClick={() => void closeReadingAndRefresh()}
-              className="absolute right-3 top-3 z-20 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gray-200 bg-white/95 text-2xl font-light leading-none text-gray-700 shadow-lg backdrop-blur transition hover:border-gray-300 hover:bg-gray-50 hover:text-gray-950"
-              aria-label="Close Bible reader"
-            >
-              x
-            </button>
-          <iframe
-            src={readerPath}
-            title={`${chapterLabel} Bible reader`}
-            className="min-h-0 flex-1 border-0 bg-white"
-            loading="eager"
-          />
+          {readerPanel}
         </div>
       </ModalShell>
     );
@@ -450,6 +465,39 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       const chapterLabel = `${devotionalDay.bible_reading_book} ${devotionalDay.bible_reading_chapter}`;
 
       if (task.kind === "reflection") {
+        if (isInline) {
+          return inlineFrame(
+            <div className="relative bg-white">
+              <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-[#4f8fb7]">Task 6</p>
+                  <h2 className="text-lg font-bold text-gray-900">Answer The Reflection Question</h2>
+                  <p className="mt-1 text-sm text-gray-600">{chapterLabel}</p>
+                </div>
+                <button type="button" onClick={closeOnly} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close reflection">
+                  Ã—
+                </button>
+              </div>
+              <div className="px-6 py-5">
+                <p className="mb-5 text-xl font-black leading-snug text-gray-950">
+                  {devotionalDay.reflection_question || "What stood out to you from this chapter?"}
+                </p>
+                <CommentSection
+                  articleSlug={chapterSlug(devotionalDay.bible_reading_book, devotionalDay.bible_reading_chapter)}
+                  headingText=""
+                  placeholderText="Start Typing Here"
+                  submitButtonText="Post Reflection"
+                  variant="plain"
+                  onPosted={() => {
+                    void markReflectionComplete();
+                    closeAndRefresh(true);
+                  }}
+                />
+              </div>
+            </div>,
+          );
+        }
+
         return (
           <ModalShell isOpen={true} onClose={closeOnly} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
             <div className="relative my-6 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
@@ -484,6 +532,28 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
         );
       }
 
+      if (isInline) {
+        return inlineFrame(
+          <div className="relative bg-white">
+            <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#4f8fb7]">Task 1</p>
+                <h2 className="text-lg font-bold text-gray-900">Read Chapter Intro</h2>
+                <p className="mt-1 text-sm font-semibold text-gray-700">
+                  {chapterLabel}: {devotionalDay.day_title}
+                </p>
+              </div>
+              <button type="button" onClick={() => void closeIntroAndRefresh()} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close intro">
+                Ã—
+              </button>
+            </div>
+            <div className="px-6 py-5">
+              <ChapterNotesMarkdown>{devotionalDay.devotional_text}</ChapterNotesMarkdown>
+            </div>
+          </div>,
+        );
+      }
+
       return (
         <ModalShell isOpen={true} onClose={() => void closeIntroAndRefresh()} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
           <div className="relative my-6 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
@@ -507,6 +577,14 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       );
     }
 
+    if (isInline) {
+      return inlineFrame(
+        <div className="p-6 text-center">
+          <p className="text-sm font-semibold text-gray-900">{devotionalLoading ? "Loading Bible Study..." : devotionalError || "Could not open this task."}</p>
+        </div>,
+      );
+    }
+
     return (
       <ModalShell isOpen={true} onClose={closeOnly} backdropColor="bg-black/45" closeOnBackdrop={false}>
         <div className="mx-4 w-full max-w-md rounded-3xl bg-white p-6 text-center shadow-2xl">
@@ -517,6 +595,33 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   }
 
   if (task.kind === "notes") {
+    if (isInline) {
+      return inlineFrame(
+        <div className="relative bg-white">
+          <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600">Chapter Notes</p>
+              <h2 className="text-base font-bold text-gray-900">{task.chapterLabel || task.title}</h2>
+            </div>
+            <button type="button" onClick={() => void closeNotesAndRefresh()} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close notes">
+              Ã—
+            </button>
+          </div>
+          <div className="px-6 py-5">
+            {notesLoading ? (
+              <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p>
+            ) : notesError ? (
+              <p className="py-10 text-center text-sm text-red-500">{notesError}</p>
+            ) : (
+              <div className="max-w-none text-gray-800">
+                <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
+              </div>
+            )}
+          </div>
+        </div>,
+      );
+    }
+
     return (
       <ModalShell isOpen={true} onClose={() => void closeNotesAndRefresh()} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
         <div className="relative my-6 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
@@ -546,6 +651,21 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   }
 
   if (task.kind === "trivia" && triviaPack) {
+    if (isInline) {
+      return inlineFrame(
+        <TaskPlayerErrorBoundary taskKey={`${task.kind}:${task.href || task.chapterLabel || task.title}`} onClose={closeOnly}>
+          <TriviaGamePlayer
+            bookName={triviaPack.book.name}
+            bookSlug={triviaPack.book.routeSlug}
+            chapter={triviaPack.chapter}
+            onClose={() => closeAndRefresh(interactiveTaskCompleted)}
+            onComplete={markInteractiveTaskComplete}
+            skipUpgradeGate
+          />
+        </TaskPlayerErrorBoundary>,
+      );
+    }
+
     return (
       <ModalShell isOpen={true} onClose={closeOnly} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
         <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
@@ -565,6 +685,18 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   }
 
   if (task.kind === "scrambled" && scrambledPack) {
+    if (isInline) {
+      return inlineFrame(
+        <ScrambledGamePlayer
+          bookName={scrambledPack.book.name}
+          bookSlug={scrambledPack.book.slug}
+          chapter={scrambledPack.chapter}
+          onClose={() => closeAndRefresh(interactiveTaskCompleted)}
+          onComplete={markInteractiveTaskComplete}
+        />,
+      );
+    }
+
     return (
       <ModalShell isOpen={true} onClose={closeOnly} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
         <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
@@ -577,6 +709,14 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
           />
         </div>
       </ModalShell>
+    );
+  }
+
+  if (isInline) {
+    return inlineFrame(
+      <div className="p-6 text-center">
+        <p className="text-sm font-semibold text-gray-900">This task could not be opened here.</p>
+      </div>,
     );
   }
 

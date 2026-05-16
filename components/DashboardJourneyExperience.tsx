@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
+import DashboardDailyTaskCallout from "./DashboardDailyTaskCallout";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
@@ -69,6 +70,9 @@ type Props = {
   onOpenStreakInfo: () => void;
   onOpenDailyTasks: () => void;
   onTaskClick: (task: TaskState) => void;
+  activeTask: TaskState | null;
+  onActiveTaskClose: () => void;
+  onActiveTaskProgressUpdated: (completedTask?: TaskState) => void;
   cycleStartedAt: string | null;
   studySettingsOpenRequest?: number;
   homeHeader?: ReactNode;
@@ -1323,6 +1327,9 @@ export default function DashboardJourneyExperience({
   onOpenStreakInfo,
   onOpenDailyTasks,
   onTaskClick,
+  activeTask,
+  onActiveTaskClose,
+  onActiveTaskProgressUpdated,
   cycleStartedAt,
   studySettingsOpenRequest = 0,
   homeHeader,
@@ -3112,10 +3119,14 @@ export default function DashboardJourneyExperience({
                 const pointsPillLabel = task.pointsLabel;
                 const activeTaskPrompt = null as ActiveTaskPrompt | null;
                 const taskStatusLabel = getTaskStatusLine(task);
+                const isActiveInlineTask =
+                  activeTask?.kind === task.kind &&
+                  (activeTask.href || "") === (task.href || "") &&
+                  (activeTask.chapterLabel || "") === (task.chapterLabel || "");
 
                 return (
+                <div key={task.kind} className="w-full">
                 <button
-                  key={task.kind}
                   type="button"
                   onClick={() => {
                     if (isCardDisabled) return;
@@ -3219,6 +3230,16 @@ export default function DashboardJourneyExperience({
                     </div>
                   ) : null}
                 </button>
+                {isActiveInlineTask ? (
+                  <DashboardDailyTaskCallout
+                    task={activeTask}
+                    userId={userId}
+                    onClose={onActiveTaskClose}
+                    onProgressUpdated={onActiveTaskProgressUpdated}
+                    variant="inline"
+                  />
+                ) : null}
+                </div>
                 );
               })
             )}

@@ -1228,4 +1228,3804 @@ function buildFloodNotes(chapter: FloodChapterNote) {
   return `${base}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
 }
 
-export const FLOOD_OF_NOAH_DEEP_NOTES = floodNotes.map(buildFloodNotes);
+const GENESIS_5_STANDARD_NOTES = `# Genesis 5
+
+# Death Moving Through the Generations
+
+Genesis 5 can look like a list of names at first.
+
+But it is much heavier than that.
+
+Genesis 1 showed humanity made in God's image. Genesis 3 showed sin entering the world. Genesis 4 showed sin moving into worship, family, anger, murder, culture, and generations.
+
+Now Genesis 5 shows death spreading through the human family.
+
+The repeated phrase is simple:
+
+\`and he died\`
+
+That sentence is the drumbeat of the chapter.
+
+## Why Genesis 5 Matters
+
+- ⚰️ It shows death spreading after the fall.
+- 🧬 It traces the line from Adam to Noah.
+- 👤 It reminds us that humanity still carries God's image.
+- 🚶 It makes Enoch's walk with God stand out.
+- 🌊 It prepares us for the flood story.
+- 🌱 It shows hope continuing even in a chapter full of death.
+
+## Chapter Flow
+
+- 📍 Adam, Image, Family, and Death
+- 📍 Seth and Enos Carry the Line Forward
+- 📍 Cainan, Mahalaleel, and Jared Continue the Pattern
+- 📍 Enoch Walked With God
+- 📍 Methuselah and Lamech Bring Us Toward Noah
+- 📍 Noah Is Born Into a Tired World
+
+# Deep Chapter Notes
+
+## Genesis 5:1 to 5
+
+# Adam, Image, Family, and Death
+
+> **1** This is the book of the generations of Adam. In the day that God created man, in the likeness of God made he him;
+
+> **2** Male and female created he them; and blessed them, and called their name Adam, in the day when they were created.
+
+> **3** And Adam lived an hundred and thirty years, and begat a son in his own likeness, after his image; and called his name Seth:
+
+> **4** And the days of Adam after he had begotten Seth were eight hundred years: and he begat sons and daughters:
+
+> **5** And all the days that Adam lived were nine hundred and thirty years: and he died.
+
+Genesis 5 begins by reaching back to creation.
+
+That matters because the chapter is not only about death.
+
+It begins by reminding us what humans were made to be.
+
+### 📜 The Book of the Generations
+
+The phrase \`book of the generations\` means this is an ordered family record.
+
+Ancient readers would not hear this as filler.
+
+Genealogies preserved:
+
+- 🧬 family identity
+- 📖 memory
+- 👤 inheritance
+- 🌍 where the story was moving
+- 🙏 the line through which God was still working
+
+Genesis is tracing the line from Adam toward Noah.
+
+That means this chapter is already preparing us for the flood.
+
+### 👤 In the Likeness of God
+
+Verse 1 says God created man in His likeness.
+
+That echoes Genesis 1.
+
+Even after sin enters the world, human beings still matter because they were made by God.
+
+The image of God is wounded by sin, but not erased.
+
+That matters before the flood story.
+
+God is not judging something worthless.
+
+He is judging a world of image-bearers that has become corrupt and violent.
+
+That makes the judgment more serious, not less.
+
+### 👥 Male and Female Created He Them
+
+Verse 2 repeats that God created male and female.
+
+Both are included in creation dignity.
+
+Both are included in God's blessing.
+
+Genesis is reminding us that humanity began with blessing before the chapter becomes filled with death.
+
+That contrast is painful.
+
+Humans were made for life.
+
+Humans were blessed.
+
+Humans were given purpose.
+
+But now the family record is going to keep ending with death.
+
+### 🧬 Begat
+
+The KJV word \`begat\` means fathered.
+
+Adam fathers Seth in his own likeness, after his image.
+
+That phrase is deep.
+
+Genesis 1 said Adam was made in God's image.
+
+Genesis 5 says Adam has a son in his own image.
+
+So life is still being passed down.
+
+The image of God is still present.
+
+But Adam is now a fallen man living outside Eden.
+
+Seth is born into a world where sin has already entered, Abel has already been murdered, and Cain has already gone east of Eden.
+
+The family line continues, but it continues in a broken world.
+
+### ⚰️ And He Died
+
+Verse 5 ends with the sentence that shapes the whole chapter:
+
+\`and he died\`
+
+Adam lived 930 years.
+
+That sounds incredibly long to us.
+
+But Genesis does not let the long lifespan become the main point.
+
+The main point is that Adam still dies.
+
+God said in Genesis 3:
+
+\`dust thou art, and unto dust shalt thou return\`
+
+Genesis 5 shows that word becoming reality.
+
+Long life is not eternal life.
+
+Many years are not Eden restored.
+
+Adam's line continues.
+
+That is mercy.
+
+Adam dies.
+
+That is the curse.
+
+## Genesis 5:6 to 10
+
+# Seth and Enos Carry the Line Forward
+
+> **6** And Seth lived an hundred and five years, and begat Enos:
+
+> **7** And Seth lived after he begat Enos eight hundred and seven years, and begat sons and daughters:
+
+> **8** And all the days of Seth were nine hundred and twelve years: and he died.
+
+> **9** And Enos lived ninety years, and begat Cainan:
+
+> **10** And Enos lived after he begat Cainan eight hundred and fifteen years, and begat sons and daughters:
+
+Genesis now follows Seth's line.
+
+That matters because Genesis 4 ended with Seth being born after Abel's death.
+
+Cain's line moved toward city-building, culture, pride, and violence.
+
+Seth's line is the line Genesis follows toward Noah.
+
+### 🌱 Seth After Abel
+
+Seth was born after Abel was murdered.
+
+Eve said God appointed another seed instead of Abel.
+
+That word \`seed\` matters because Genesis 3 promised conflict between the serpent's seed and the woman's seed.
+
+Abel is dead.
+
+Cain is exiled.
+
+But the promise is not dead.
+
+God preserves a line.
+
+### 🧬 Sons and Daughters
+
+The repeated phrase \`sons and daughters\` reminds us that this genealogy is bigger than the named men.
+
+Whole households are being born.
+
+Families are growing.
+
+Human life is multiplying.
+
+But multiplication does not solve the fall.
+
+More people does not automatically mean more righteousness.
+
+Genesis is showing life spreading and death spreading at the same time.
+
+### ⚰️ The Pattern Repeats
+
+Seth lives.
+
+Seth fathers.
+
+Seth has sons and daughters.
+
+Then Seth dies.
+
+Enos begins the same pattern.
+
+The names change, but the rhythm continues.
+
+That repetition is the point.
+
+Genesis wants us to feel death becoming ordinary.
+
+Not because death is good.
+
+But because sin has entered the family record.
+
+## Genesis 5:11 to 15
+
+# Cainan and Mahalaleel Under the Same Shadow
+
+> **11** And all the days of Enos were nine hundred and five years: and he died.
+
+> **12** And Cainan lived seventy years, and begat Mahalaleel:
+
+> **13** And Cainan lived after he begat Mahalaleel eight hundred and forty years, and begat sons and daughters:
+
+> **14** And all the days of Cainan were nine hundred and ten years: and he died.
+
+> **15** And Mahalaleel lived sixty and five years, and begat Jared:
+
+Genesis keeps the same rhythm moving.
+
+This can feel slow to modern readers, but the slowness is part of the teaching.
+
+The chapter is making us sit with the weight of generation after generation.
+
+### ⚰️ Death in the Ordinary Places
+
+Death is not only shown through dramatic scenes.
+
+Genesis 4 showed death through murder.
+
+Genesis 5 shows death through ordinary family records.
+
+Birth.
+
+Children.
+
+Years.
+
+More children.
+
+Death.
+
+That is sobering.
+
+The curse is not only visible in violence.
+
+It is also visible in aging, endings, graves, and family memory.
+
+### 📖 Why Genealogies Teach
+
+A genealogy is not just a list.
+
+In Scripture, genealogies teach through movement.
+
+They show where the story came from and where it is going.
+
+Here, the story is moving toward Noah.
+
+But before Noah appears, Genesis makes us feel the long road of death after Adam.
+
+### ⏳ Long Lifespans
+
+The long lifespans in Genesis 5 are strange to modern readers.
+
+Bible readers have understood them in different ways.
+
+But inside the story, one thing is clear:
+
+even the longest lives still end.
+
+Genesis is not mainly saying, "Look how long they lived."
+
+It is saying, "Even after all those years, they died."
+
+That is the shadow over the chapter.
+
+## Genesis 5:16 to 20
+
+# Jared and the Line Moving Toward Enoch
+
+> **16** And Mahalaleel lived after he begat Jared eight hundred and thirty years, and begat sons and daughters:
+
+> **17** And all the days of Mahalaleel were eight hundred ninety and five years: and he died.
+
+> **18** And Jared lived an hundred sixty and two years, and he begat Enoch:
+
+> **19** And Jared lived after he begat Enoch eight hundred years, and begat sons and daughters:
+
+> **20** And all the days of Jared were nine hundred sixty and two years: and he died.
+
+This section keeps the death pattern going, but it also brings us close to Enoch.
+
+That matters because Enoch will interrupt the pattern.
+
+### 🔁 The Weight of Repetition
+
+The repeated structure is almost uncomfortable:
+
+He lived.
+
+He begat.
+
+He lived more years.
+
+He had sons and daughters.
+
+He died.
+
+That is not lazy writing.
+
+That is literary weight.
+
+Genesis is letting the curse echo.
+
+Again.
+
+Again.
+
+Again.
+
+### 🧬 Jared Begat Enoch
+
+Jared fathers Enoch.
+
+At first, that sounds like one more name.
+
+But Enoch will become the surprise of the chapter.
+
+Genesis has trained us to expect the same ending.
+
+Then Enoch comes, and the pattern changes.
+
+That makes Enoch stand out.
+
+### ⚰️ Death Still Rules Natural Life
+
+Mahalaleel dies.
+
+Jared dies.
+
+The line keeps moving, but death keeps appearing.
+
+That is the tension.
+
+God is preserving life.
+
+But humanity still needs rescue from death itself.
+
+Genesis 5 is preparing us to understand that the human problem is deeper than needing more years.
+
+Humanity needs deliverance.
+
+## Genesis 5:21 to 24
+
+# Enoch Walked With God
+
+> **21** And Enoch lived sixty and five years, and begat Methuselah:
+
+> **22** And Enoch walked with God after he begat Methuselah three hundred years, and begat sons and daughters:
+
+> **23** And all the days of Enoch were three hundred sixty and five years:
+
+> **24** And Enoch walked with God: and he was not; for God took him.
+
+Enoch is the great interruption in Genesis 5.
+
+The chapter has repeated death again and again.
+
+Then suddenly, Enoch does not receive the normal ending.
+
+### 🚶 Walked With God
+
+The phrase \`walked with God\` is the heart of this section.
+
+It means Enoch's life was marked by nearness, fellowship, faithfulness, and movement with God.
+
+It does not mean Enoch was sinless.
+
+It means his life was oriented toward God in a world where death was still spreading.
+
+That phrase matters because Noah will later be described in a similar way.
+
+Genesis 6:9 says Noah walked with God.
+
+Enoch prepares us to recognize Noah.
+
+### 🌑 Faithfulness in a Dark World
+
+Enoch lives in the same world as everyone else in Genesis 5.
+
+He is not outside the fallen world.
+
+He has a family.
+
+He has sons and daughters.
+
+He lives under the same shadow of death.
+
+But he walks with God.
+
+That matters.
+
+Genesis is showing that even after Eden, fellowship with God is still possible.
+
+The garden is lost, but God is not unreachable.
+
+### ✨ God Took Him
+
+Verse 24 says:
+
+\`and he was not; for God took him\`
+
+That sentence is mysterious and beautiful.
+
+Enoch does not receive the repeated phrase \`and he died\`.
+
+The pattern breaks.
+
+Death is real in Genesis 5.
+
+But death is not stronger than God.
+
+Enoch becomes a flash of hope in a chapter full of graves.
+
+### 📖 Why Enoch Matters
+
+Enoch teaches that Genesis 5 is not only about death.
+
+It is also about walking with God in a dying world.
+
+That is important before the flood.
+
+When the world becomes corrupt, the question will not only be, "Who is alive?"
+
+The question will be, "Who walks with God?"
+
+## Genesis 5:25 to 27
+
+# Methuselah and the Longest Life
+
+> **25** And Methuselah lived an hundred eighty and seven years, and begat Lamech:
+
+> **26** And Methuselah lived after he begat Lamech seven hundred eighty and two years, and begat sons and daughters:
+
+> **27** And all the days of Methuselah were nine hundred sixty and nine years: and he died.
+
+Methuselah is remembered for the longest lifespan recorded in Scripture.
+
+But Genesis does not turn him into trivia.
+
+His life still ends with the same sentence.
+
+### ⏳ Nine Hundred Sixty and Nine Years
+
+Methuselah lives 969 years.
+
+That is the longest life named in the Bible.
+
+But the chapter's message does not change.
+
+He dies.
+
+That is the point.
+
+The longest human life is still not eternal life.
+
+A long life is a gift.
+
+But it is not salvation.
+
+### ⚰️ And He Died Again
+
+The phrase returns:
+
+\`and he died\`
+
+After Enoch, that sentence feels heavy again.
+
+Enoch's story gave us a flash of hope.
+
+Methuselah's ending brings us back to the repeated reality.
+
+Death is still active.
+
+The curse is still present.
+
+Humanity is still waiting for something more than long years.
+
+### 🌊 Near the Edge of Judgment
+
+Methuselah stands close to the flood story.
+
+The generations are moving toward Noah.
+
+Judgment is coming, but Genesis does not rush there.
+
+It lets time pass.
+
+That matters because God's judgment is not impulsive.
+
+The flood comes after generations.
+
+God is patient, but He is not indifferent.
+
+## Genesis 5:28 to 32
+
+# Noah Is Born Into a Tired World
+
+> **28** And Lamech lived an hundred eighty and two years, and begat a son:
+
+> **29** And he called his name Noah, saying, This same shall comfort us concerning our work and toil of our hands, because of the ground which the LORD hath cursed.
+
+> **30** And Lamech lived after he begat Noah five hundred ninety and five years, and begat sons and daughters:
+
+> **31** And all the days of Lamech were seven hundred seventy and seven years: and he died.
+
+> **32** And Noah was five hundred years old: and Noah begat Shem, Ham, and Japheth.
+
+The chapter ends by introducing Noah.
+
+That is not random.
+
+Genesis 5 has been moving toward him the whole time.
+
+### 🛶 Noah Before the Flood
+
+Noah appears before the flood begins.
+
+His name is connected to comfort, rest, or relief.
+
+Lamech looks at his son and speaks about work, toil, and the cursed ground.
+
+That reaches back to Genesis 3.
+
+Adam's sin brought curse to the ground.
+
+Now generations later, Lamech still feels the pain of that curse.
+
+### 🌱 Work and Toil
+
+Lamech says Noah will comfort them concerning their work and toil.
+
+\`Toil\` means painful labor, weariness, hardship, and struggle.
+
+This is life outside Eden.
+
+The ground resists.
+
+Work is hard.
+
+Death keeps repeating.
+
+The world feels tired.
+
+Noah is born into that tired world.
+
+### ⚰️ Lamech Also Dies
+
+Even Lamech, the father who names Noah with hope, dies.
+
+Genesis does not let us forget the pattern.
+
+Hope appears, but death is still present.
+
+That is why Noah is not the final Savior.
+
+Noah will be used by God to preserve life through judgment.
+
+But Noah cannot remove the curse completely.
+
+### 🌍 Shem, Ham, and Japheth
+
+Verse 32 names Noah's sons:
+
+Shem.
+
+Ham.
+
+Japheth.
+
+Those names matter because the world after the flood will be traced through them.
+
+Genesis 10 will describe the nations that come from Noah's sons.
+
+So Genesis 5 ends by preparing the next major movement:
+
+- 🌊 the flood
+- 🛶 the ark
+- 🕊️ preservation
+- 🌈 covenant
+- 🌍 the nations after judgment
+
+Genesis 5 began with Adam.
+
+It ends with Noah.
+
+The world is about to change.
+
+# The Big Lesson of Genesis 5
+
+Genesis 5 teaches that the fall did not stay in Eden.
+
+It moved into time.
+
+Into families.
+
+Into generations.
+
+Into ordinary life.
+
+The chapter repeats \`and he died\` because death has become part of the human story.
+
+But Genesis 5 also shows that God is still preserving hope.
+
+Seth's line continues.
+
+Enoch walks with God.
+
+Noah is born.
+
+Death is real, but God is still moving the story toward rescue.
+
+# Final Thought on Genesis 5
+
+- Genesis 5 is not just a genealogy.
+- It is the sound of death spreading after the fall.
+- It teaches that long life is not the same as eternal life.
+- It shows that walking with God is still possible.
+- It introduces Noah before judgment arrives.
+- It reminds us that God preserves hope even in a chapter filled with graves.
+
+# Pause and Reflect
+
+- Why do you think Genesis repeats \`and he died\` so many times?
+- What does Enoch teach you about walking with God in a broken world?
+- How does Noah's name prepare you for the flood story?
+- Where do you see the difference between simply surviving and truly walking with God?`;
+
+const GENESIS_6_STANDARD_NOTES = `# Genesis 6
+
+# Corruption, Grief, and the Ark of Rescue
+
+Genesis 6 is where the flood story begins to feel heavy.
+
+Humanity has multiplied, but the world has not become more righteous.
+
+Sin has grown from distrust in Eden, to murder in Cain's field, to generations of death, and now to a world filled with corruption and violence.
+
+But Genesis 6 is not only about judgment.
+
+It is also about grace.
+
+Before the flood waters rise, Noah finds grace in the eyes of the LORD.
+
+## Why Genesis 6 Matters
+
+- 🌍 It shows humanity multiplying but becoming deeply corrupt.
+- 💔 It reveals God's grief over human wickedness.
+- ⚖️ It explains why judgment becomes necessary.
+- 🛶 It introduces the ark as God's commanded way of rescue.
+- 🙏 It shows Noah walking with God in a violent generation.
+- 🧵 It introduces covenant language before the flood begins.
+
+## Chapter Flow
+
+- 📍 The Sons of God and the Daughters of Men
+- 📍 God Sees the Wickedness of the Human Heart
+- 📍 Noah Walked With God
+- 📍 The Ark Is Commanded
+- 📍 Judgment and Rescue Are Announced
+
+# Deep Chapter Notes
+
+## Genesis 6:1 to 4
+
+# A World Growing Darker
+
+> **1** And it came to pass, when men began to multiply on the face of the earth, and daughters were born unto them,
+
+> **2** That the sons of God saw the daughters of men that they were fair; and they took them wives of all which they chose.
+
+> **3** And the LORD said, My spirit shall not always strive with man, for that he also is flesh: yet his days shall be an hundred and twenty years.
+
+> **4** There were giants in the earth in those days; and also after that, when the sons of God came in unto the daughters of men, and they bare children to them, the same became mighty men which were of old, men of renown.
+
+Genesis 6 begins with humanity multiplying.
+
+That should sound like blessing.
+
+God told humanity to be fruitful and multiply.
+
+But here, multiplication does not lead to righteousness.
+
+The world is growing, but the heart of humanity is darkening.
+
+### 🌍 Men Began to Multiply
+
+Verse 1 says people began to multiply on the face of the earth.
+
+This connects back to creation.
+
+God wanted the earth filled with image-bearers.
+
+But Genesis is showing a painful truth:
+
+more people does not automatically mean more goodness.
+
+Humanity can grow in number while also growing in corruption.
+
+### 👀 Saw That They Were Fair
+
+Verse 2 says the sons of God saw the daughters of men that they were fair and took wives of all which they chose.
+
+That phrase \`saw... fair... took\` should make us pause.
+
+It echoes earlier patterns of desire.
+
+Eve saw the fruit was pleasant and took it.
+
+Now powerful figures see and take.
+
+Genesis often shows sin moving through disordered desire.
+
+Seeing becomes wanting.
+
+Wanting becomes taking.
+
+Taking becomes corruption.
+
+### 📖 Sons of God
+
+The phrase \`sons of God\` is difficult.
+
+Bible readers have understood it in a few ways.
+
+Some think it refers to heavenly beings who rebelled.
+
+Some think it refers to powerful rulers.
+
+Some think it refers to the line of Seth mixing with the line of Cain.
+
+Bible Buddy should be careful here.
+
+The main point of the passage is not curiosity.
+
+The main point is corruption.
+
+Whoever these figures are, the story is showing a world where power, desire, and rebellion are crossing boundaries.
+
+### ⚠️ My Spirit Shall Not Always Strive
+
+God says His Spirit will not always strive with man.
+
+\`Strive\` means contend, struggle, plead, or remain in conflict with.
+
+This shows God's patience, but also His limit.
+
+God is not indifferent.
+
+He is not ignoring human corruption forever.
+
+There is mercy in the delay.
+
+But there is also a coming judgment.
+
+### 🧍 He Also Is Flesh
+
+God says man is flesh.
+
+That means humanity is weak, mortal, and morally frail.
+
+Genesis 5 already showed death spreading through generations.
+
+Now Genesis 6 shows why the world is headed toward judgment.
+
+Human beings are not becoming gods.
+
+They are flesh.
+
+They are limited.
+
+They are corrupt.
+
+They need mercy.
+
+### 🧌 Giants and Mighty Men
+
+The KJV says \`giants\`.
+
+The Hebrew word is often called Nephilim.
+
+This word has been debated for a long time.
+
+The safest way to read the passage is to focus on what Genesis emphasizes: these were mighty figures, men of renown, connected to a violent and corrupted world.
+
+Genesis is not inviting us to chase speculation.
+
+It is showing that human power has become dangerous.
+
+Fame, strength, and reputation do not mean righteousness.
+
+A world can admire mighty people and still be morally ruined.
+
+## Genesis 6:5 to 8
+
+# God Sees the Human Heart
+
+> **5** And GOD saw that the wickedness of man was great in the earth, and that every imagination of the thoughts of his heart was only evil continually.
+
+> **6** And it repented the LORD that he had made man on the earth, and it grieved him at his heart.
+
+> **7** And the LORD said, I will destroy man whom I have created from the face of the earth; both man, and beast, and the creeping thing, and the fowls of the air; for it repenteth me that I have made them.
+
+> **8** But Noah found grace in the eyes of the LORD.
+
+This is one of the darkest sections in Genesis.
+
+God looks at the earth and sees not just bad behavior, but a corrupted heart.
+
+The problem is deep.
+
+### 👁️ God Saw
+
+Verse 5 says God saw.
+
+That matters.
+
+Human evil is not hidden from God.
+
+Violence may be ignored by people.
+
+Corruption may be normalized by culture.
+
+But God sees clearly.
+
+Genesis 1 repeatedly said God saw that creation was good.
+
+Now Genesis 6 says God saw wickedness.
+
+That contrast is painful.
+
+The good world has become corrupt.
+
+### 🧠 Every Imagination
+
+The verse says every imagination of the thoughts of man's heart was only evil continually.
+
+That is not a light statement.
+
+Genesis is describing inner corruption.
+
+Not just hands.
+
+Not just actions.
+
+The imagination.
+
+The thoughts.
+
+The heart.
+
+The direction of desire.
+
+The inside of humanity has become bent away from God.
+
+### 💔 It Grieved Him at His Heart
+
+The KJV says it \`repented the LORD\`.
+
+This does not mean God sinned or made a mistake.
+
+It means God was grieved, sorrowful, and deeply pained over what humanity had become.
+
+The verse says it grieved Him at His heart.
+
+That is important.
+
+God's judgment is not cold.
+
+God is not amused by evil.
+
+God is not numb to violence.
+
+The flood comes from a holy God who sees evil and grieves what sin has done to His world.
+
+### ⚖️ Judgment Is Announced
+
+God says He will destroy man from the face of the earth.
+
+This is terrifying.
+
+The judgment includes humans and animals because the whole created order is affected by human corruption.
+
+Genesis already showed that Adam's sin affected the ground.
+
+Now human wickedness has filled the earth so deeply that judgment will touch the world humanity was meant to steward.
+
+### 🌱 But Noah Found Grace
+
+Verse 8 is the first bright sentence after the darkness.
+
+\`But Noah found grace in the eyes of the LORD.\`
+
+That word \`grace\` means favor.
+
+Noah is not introduced as someone who saves himself.
+
+He is a man who finds grace.
+
+That matters.
+
+The flood story is not only about judgment.
+
+It is about judgment and mercy happening at the same time.
+
+The world is corrupt.
+
+But God is already preparing rescue.
+
+## Genesis 6:9 to 12
+
+# Noah Walked With God
+
+> **9** These are the generations of Noah: Noah was a just man and perfect in his generations, and Noah walked with God.
+
+> **10** And Noah begat three sons, Shem, Ham, and Japheth.
+
+> **11** The earth also was corrupt before God, and the earth was filled with violence.
+
+> **12** And God looked upon the earth, and, behold, it was corrupt; for all flesh had corrupted his way upon the earth.
+
+Genesis now narrows from the whole earth to Noah.
+
+That is how the Bible often moves.
+
+Wide view.
+
+Then one person.
+
+One family.
+
+One line of mercy.
+
+### 📜 These Are the Generations
+
+The phrase \`these are the generations\` marks a new movement in Genesis.
+
+Just like Genesis 5 traced Adam's line, Genesis 6 now focuses on Noah.
+
+The story is narrowing.
+
+Noah will become the person through whom God preserves life.
+
+### ⚖️ Just and Perfect
+
+Noah is called a just man.
+
+\`Just\` means righteous.
+
+He is also called \`perfect in his generations\`.
+
+That does not mean Noah was sinless.
+
+It means he was blameless, whole, or upright compared with the corruption around him.
+
+Genesis is not saying Noah earned salvation by being flawless.
+
+Verse 8 already said Noah found grace.
+
+Grace comes first.
+
+Then Noah's life shows faithfulness.
+
+### 🚶 Noah Walked With God
+
+This phrase connects Noah to Enoch.
+
+Genesis 5 said Enoch walked with God.
+
+Now Genesis 6 says Noah walked with God.
+
+That is not accidental.
+
+In a world full of violence, Noah's life moves in a different direction.
+
+To walk with God means nearness, trust, obedience, and steady faithfulness.
+
+Noah does not merely believe something privately.
+
+He lives in step with God.
+
+### 👨‍👦 Shem, Ham, and Japheth
+
+Noah's sons are named again: Shem, Ham, and Japheth.
+
+They matter because the world after the flood will come through them.
+
+God is not only preserving Noah.
+
+He is preserving a future.
+
+The nations after the flood are already present in seed form inside Noah's family.
+
+### 🩸 Filled With Violence
+
+Verse 11 says the earth was filled with violence.
+
+That phrase is heavy.
+
+The earth was supposed to be filled with image-bearers.
+
+Now it is filled with violence.
+
+The Hebrew idea behind violence includes bloodshed, cruelty, oppression, and destructive injustice.
+
+This is not a small moral problem.
+
+Human society has become unsafe.
+
+### 🧫 Corrupt Before God
+
+The word \`corrupt\` means ruined, spoiled, decayed, or twisted away from its intended purpose.
+
+Genesis repeats it three times in this short section.
+
+The earth was corrupt.
+
+God saw it was corrupt.
+
+All flesh had corrupted his way.
+
+That repetition matters.
+
+Genesis wants us to understand why the flood happens.
+
+God is not overreacting.
+
+The world is ruined by violence and corruption.
+
+## Genesis 6:13 to 16
+
+# The Ark Is Commanded
+
+> **13** And God said unto Noah, The end of all flesh is come before me; for the earth is filled with violence through them; and behold, I will destroy them with the earth.
+
+> **14** Make thee an ark of gopher wood; rooms shalt thou make in the ark, and shalt pitch it within and without with pitch.
+
+> **15** And this is the fashion which thou shalt make it of: The length of the ark shall be three hundred cubits, the breadth of it fifty cubits, and the height of it thirty cubits.
+
+> **16** A window shalt thou make to the ark, and in a cubit shalt thou finish it above; and the door of the ark shalt thou set in the side thereof; with lower, second, and third stories shalt thou make it.
+
+God now speaks directly to Noah.
+
+The announcement of judgment becomes a command to build.
+
+That is important.
+
+God does not only tell Noah what is coming.
+
+He tells Noah what obedience looks like.
+
+### ⚖️ The End of All Flesh
+
+God says the end of all flesh has come before Him.
+
+This means judgment has reached its appointed moment.
+
+The reason is repeated again:
+
+the earth is filled with violence.
+
+Genesis wants that reason clear.
+
+The flood is connected to moral corruption.
+
+Human violence has filled the world God made good.
+
+### 🛶 Make Thee an Ark
+
+God tells Noah to make an ark.
+
+The ark is not Noah's idea.
+
+It is God's command.
+
+That matters because rescue comes by God's instruction.
+
+Noah does not invent his own way through judgment.
+
+He listens.
+
+He builds.
+
+He obeys.
+
+### 🌲 Gopher Wood
+
+The KJV says \`gopher wood\`.
+
+We do not know with certainty what exact kind of wood this was.
+
+That is okay.
+
+The point is not that modern readers must identify the tree.
+
+The point is that God gives Noah specific instructions.
+
+The ark is not vague inspiration.
+
+It is obedience with materials, measurements, rooms, covering, a window, a door, and levels.
+
+### 🧱 Rooms and Pitch
+
+God tells Noah to make rooms in the ark.
+
+The ark will carry ordered life through judgment.
+
+This is not chaos.
+
+It is preservation.
+
+The word \`pitch\` refers to a covering or sealing material.
+
+The ark must be covered within and without.
+
+That detail matters.
+
+The vessel of rescue must be protected from the waters of judgment.
+
+### 📏 Cubits
+
+A \`cubit\` was an ancient measurement based roughly on the distance from the elbow to the fingertip.
+
+It is often estimated around eighteen inches, though exact measures could vary.
+
+The ark is massive.
+
+This is not a little storybook boat.
+
+It is a huge survival vessel.
+
+Genesis gives measurements because Noah's obedience is practical.
+
+Faith here looks like building what God said to build.
+
+### 🚪 The Door in the Side
+
+God tells Noah where to place the door.
+
+That detail is easy to pass over, but it matters.
+
+The ark has one appointed entrance.
+
+Rescue is not random.
+
+There is a way in.
+
+Noah must build according to the word of God.
+
+## Genesis 6:17 to 21
+
+# Judgment, Covenant, and Rescue
+
+> **17** And, behold, I, even I, do bring a flood of waters upon the earth, to destroy all flesh, wherein is the breath of life, from under heaven; and every thing that is in the earth shall die.
+
+> **18** But with thee will I establish my covenant; and thou shalt come into the ark, thou, and thy sons, and thy wife, and thy sons' wives with thee.
+
+> **19** And of every living thing of all flesh, two of every sort shalt thou bring into the ark, to keep them alive with thee; they shall be male and female.
+
+> **20** Of fowls after their kind, and of cattle after their kind, of every creeping thing of the earth after his kind, two of every sort shall come unto thee, to keep them alive.
+
+> **21** And take thou unto thee of all food that is eaten, and thou shalt gather it to thee; and it shall be for food for thee, and for them.
+
+This section holds judgment and mercy together.
+
+God announces the flood.
+
+But He also announces covenant.
+
+That is the heart of Genesis 6.
+
+### 🌊 Flood of Waters
+
+God says He will bring a flood of waters upon the earth.
+
+The waters will destroy all flesh with the breath of life.
+
+This is terrifying language.
+
+Genesis does not make judgment cute.
+
+The flood is death, loss, and devastation.
+
+The story should feel heavy.
+
+### 🧵 My Covenant
+
+Verse 18 introduces one of the most important words in the Bible:
+
+\`covenant\`
+
+A covenant is a solemn relationship promise.
+
+This is the first time the word appears in Scripture.
+
+That matters.
+
+Before the flood begins, God speaks covenant.
+
+Before Noah enters the ark, God promises preservation.
+
+Judgment is coming, but God is not abandoning His purpose.
+
+### 👨‍👩‍👦 Noah's Household
+
+God tells Noah that he, his sons, his wife, and his sons' wives will come into the ark.
+
+This is family preservation.
+
+Noah's obedience will affect his household.
+
+The same chapter that shows the world filled with violence also shows one family being preserved by grace.
+
+### 🐦 After Their Kind
+
+The animals are described after their kind.
+
+That phrase reaches back to Genesis 1.
+
+Creation language is returning.
+
+Genesis 1 showed God filling the world with creatures after their kind.
+
+Genesis 6 shows God preserving creatures after their kind.
+
+The flood is judgment, but it is not the end of creation.
+
+God is carrying life through the waters.
+
+### 🍞 Food for Thee and for Them
+
+Noah must gather food.
+
+Again, the details are practical.
+
+The ark is not magic.
+
+Noah must obey in real ways.
+
+He must build.
+
+He must gather.
+
+He must prepare.
+
+He must trust God's word before the flood arrives.
+
+## Genesis 6:22
+
+# Noah Obeys
+
+> **22** Thus did Noah; according to all that God commanded him, so did he.
+
+Genesis 6 ends with obedience.
+
+After all the corruption, grief, judgment, measurements, covenant promises, and ark instructions, the chapter lands on Noah doing what God said.
+
+### 🙏 According to All That God Commanded
+
+Verse 22 is one of the most important verses in Noah's story.
+
+\`Thus did Noah; according to all that God commanded him, so did he.\`
+
+Noah obeys.
+
+Not partly.
+
+Not symbolically.
+
+Not only emotionally.
+
+He does what God commands.
+
+That is what faith looks like here.
+
+### 🛠️ Faith That Builds
+
+Noah believes God enough to build before rain begins.
+
+He obeys before judgment is visible.
+
+He prepares before the world understands why preparation matters.
+
+That is why Noah stands out in his generation.
+
+The chapter does not end by saying Noah understood everything.
+
+It ends by saying Noah obeyed.
+
+# The Big Lesson of Genesis 6
+
+Genesis 6 teaches that God sees corruption clearly.
+
+He sees violence.
+
+He sees the human heart.
+
+He grieves what sin has done to His world.
+
+But Genesis 6 also teaches that God gives grace before judgment falls.
+
+Noah finds grace.
+
+Noah walks with God.
+
+Noah receives covenant promise.
+
+Noah obeys.
+
+The ark begins as a command before it becomes a shelter.
+
+Judgment is real.
+
+But mercy is already being built.
+
+# Final Thought on Genesis 6
+
+- Genesis 6 explains why the flood happens.
+- It shows that human violence matters deeply to God.
+- It teaches that God's grief is holy, not weakness.
+- It shows grace appearing in a corrupt generation.
+- It introduces covenant before the flood begins.
+- It shows Noah obeying God before he sees the waters.
+
+# Pause and Reflect
+
+- What does Genesis 6 teach you about how seriously God sees violence?
+- Why does it matter that Noah found grace before he built the ark?
+- Where do you see judgment and mercy standing together in this chapter?
+- What would it look like to obey God before you can see the outcome?`;
+
+const GENESIS_7_STANDARD_NOTES = `# Genesis 7
+
+# The Door Shuts and the Waters Rise
+
+Genesis 7 is the chapter where warning becomes reality.
+
+Noah has built the ark.
+
+The animals are gathered.
+
+The command of God has been given.
+
+Now the door closes, the flood begins, and the world that was filled with violence is covered by the waters of judgment.
+
+This chapter should feel serious.
+
+It is not a cute boat story.
+
+It is a chapter about obedience, rescue, death, and the terrifying reality that God does not ignore corruption forever.
+
+## Why Genesis 7 Matters
+
+- It shows Noah obeying God when judgment finally arrives.
+- It explains the difference between clean and unclean animals before the law of Moses.
+- It shows the ark as the place of rescue through judgment.
+- It describes the flood with heavy, world-changing language.
+- It forces the reader to feel the cost of human corruption.
+- It prepares the way for mercy and covenant in Genesis 8 and 9.
+
+## Chapter Flow
+
+- 📍 Noah Is Commanded to Enter the Ark
+- 📍 Clean and Unclean Animals Are Preserved
+- 📍 The Flood Begins on a Real Day
+- 📍 The LORD Shuts Noah In
+- 📍 The Waters Prevail Over the Earth
+- 📍 Life Outside the Ark Dies
+
+# Deep Chapter Notes
+
+## Genesis 7:1 to 5
+
+# Come Into the Ark
+
+> **1** And the LORD said unto Noah, Come thou and all thy house into the ark; for thee have I seen righteous before me in this generation.
+
+> **2** Of every clean beast thou shalt take to thee by sevens, the male and his female: and of beasts that are not clean by two, the male and his female.
+
+> **3** Of fowls also of the air by sevens, the male and the female; to keep seed alive upon the face of all the earth.
+
+> **4** For yet seven days, and I will cause it to rain upon the earth forty days and forty nights; and every living substance that I have made will I destroy from off the face of the earth.
+
+> **5** And Noah did according unto all that the LORD commanded him.
+
+Genesis 7 begins with an invitation and a warning.
+
+God does not simply say, "Go into the ark."
+
+He says, "Come."
+
+That word matters.
+
+The ark is not only a project Noah built.
+
+It is the place God is calling him into.
+
+### Come Thou and All Thy House
+
+The command begins with Noah's household.
+
+Noah is not saved as a disconnected individual.
+
+His family enters with him.
+
+That does not mean every person in a family is righteous because one person is righteous.
+
+But in this story, Noah's obedience becomes the path through which his household is preserved.
+
+The flood story keeps showing that faith is never only private.
+
+Noah's trust in God changes what happens to the people closest to him.
+
+### Righteous Before Me
+
+God says, "thee have I seen righteous before me in this generation."
+
+That phrase is important.
+
+Noah is righteous before God, not merely impressive before people.
+
+Genesis 6 already told us Noah found grace.
+
+So righteousness here does not mean Noah rescued himself by being perfect.
+
+It means Noah lived faithfully in a corrupt generation.
+
+He walked with God when the world around him was filled with violence.
+
+### Clean and Unclean Beasts
+
+Verse 2 mentions clean and unclean animals.
+
+This is before Moses.
+
+That can surprise modern readers because we often think clean and unclean categories begin in Leviticus.
+
+But Genesis shows that the idea was already known in some form.
+
+Clean animals would later be connected to sacrifice and worship.
+
+That matters because Noah will offer sacrifices after the flood.
+
+God is not only preserving animal life.
+
+He is also preparing for worship after judgment.
+
+### To Keep Seed Alive
+
+Verse 3 says the animals are preserved "to keep seed alive upon the face of all the earth."
+
+That phrase carries the hope of continuation.
+
+The flood will destroy, but it will not erase God's creation purpose.
+
+Life is being carried through judgment.
+
+Seed means future.
+
+Seed means the story continues.
+
+Seed means the flood is not the final word.
+
+### Forty Days and Forty Nights
+
+God gives a specific time: forty days and forty nights.
+
+In the Bible, forty often becomes connected with testing, judgment, waiting, and preparation.
+
+Israel will later spend forty years in the wilderness.
+
+Moses will spend forty days on the mountain.
+
+Jesus will be tested forty days in the wilderness.
+
+Here, forty marks the period when the waters fall and the old violent world is judged.
+
+### Noah Did All That God Commanded
+
+Verse 5 repeats the obedience pattern from Genesis 6.
+
+Noah did what God commanded.
+
+Genesis wants us to feel the steadiness of Noah's obedience.
+
+He does not argue.
+
+He does not redesign the ark.
+
+He does not wait for proof.
+
+When God speaks, Noah obeys.
+
+That is the center of his faith.
+
+## Genesis 7:6 to 10
+
+# Waiting Inside the Warning
+
+> **6** And Noah was six hundred years old when the flood of waters was upon the earth.
+
+> **7** And Noah went in, and his sons, and his wife, and his sons' wives with him, into the ark, because of the waters of the flood.
+
+> **8** Of clean beasts, and of beasts that are not clean, and of fowls, and of every thing that creepeth upon the earth,
+
+> **9** There went in two and two unto Noah into the ark, the male and the female, as God had commanded Noah.
+
+> **10** And it came to pass after seven days, that the waters of the flood were upon the earth.
+
+This section slows the story down.
+
+The flood is coming, but it has not arrived yet.
+
+Noah enters.
+
+His family enters.
+
+The animals enter.
+
+Then seven days pass.
+
+That waiting matters.
+
+### Noah Was Six Hundred Years Old
+
+Genesis gives Noah's age because this is not written like a vague legend.
+
+The chapter anchors the flood in time.
+
+Noah's long life connects him to Genesis 5, where the repeated pattern was birth, years, children, and death.
+
+Now Noah's life becomes the hinge point between the old world and the world after the flood.
+
+### Into the Ark Because of the Waters
+
+Verse 7 says Noah went into the ark "because of the waters of the flood."
+
+The ark is not decoration.
+
+It is shelter.
+
+It is separation.
+
+It is obedience before danger fully arrives.
+
+Faith often enters the place of obedience before the crisis is visible to everyone else.
+
+### Two and Two
+
+The animals enter two and two.
+
+This phrase teaches order.
+
+The flood is chaotic water, but God's preservation is not chaotic.
+
+Creation is being gathered carefully.
+
+Male and female language reaches back to Genesis 1.
+
+God is preserving life in pairs so life can continue after the waters recede.
+
+### As God Had Commanded Noah
+
+This phrase returns again.
+
+Genesis keeps connecting Noah's safety to God's command.
+
+The ark works because it is God's appointed means of rescue.
+
+Noah's role is not to invent a better plan.
+
+His role is to trust and obey the plan God gave.
+
+### After Seven Days
+
+There are seven days between entering and the flood arriving.
+
+That delay would have felt heavy.
+
+Imagine being inside the ark, waiting for the sky to change.
+
+Noah has obeyed, but the judgment has not visibly begun.
+
+This is a hard kind of faith:
+
+- waiting after obedience
+- trusting before fulfillment
+- staying where God told you to stay
+- believing God's word while the world looks unchanged
+
+## Genesis 7:11 to 16
+
+# The Flood Breaks Open
+
+> **11** In the six hundredth year of Noah's life, in the second month, the seventeenth day of the month, the same day were all the fountains of the great deep broken up, and the windows of heaven were opened.
+
+> **12** And the rain was upon the earth forty days and forty nights.
+
+> **13** In the selfsame day entered Noah, and Shem, and Ham, and Japheth, the sons of Noah, and Noah's wife, and the three wives of his sons with them, into the ark;
+
+> **14** They, and every beast after his kind, and all the cattle after their kind, and every creeping thing that creepeth upon the earth after his kind, and every fowl after his kind, every bird of every sort.
+
+> **15** And they went in unto Noah into the ark, two and two of all flesh, wherein is the breath of life.
+
+> **16** And they that went in, went in male and female of all flesh, as God had commanded him: and the LORD shut him in.
+
+Now the flood begins.
+
+The language is massive.
+
+The waters do not only fall from above.
+
+The deep breaks open below.
+
+The whole created order feels like it is being undone.
+
+### The Same Day
+
+Verse 11 gives a date: the second month, the seventeenth day.
+
+Genesis wants the reader to feel that judgment arrives at an appointed moment.
+
+For years, Noah had been building.
+
+For seven days, Noah had been waiting.
+
+Then the day came.
+
+That is sobering.
+
+God's patience is real, but it is not endless postponement.
+
+### Fountains of the Great Deep
+
+The KJV says "the fountains of the great deep."
+
+This refers to waters from below, pictured as the deep places of the earth bursting open.
+
+Genesis 1 began with waters, darkness, and God's Spirit moving over the face of the deep.
+
+Genesis 7 feels like creation being overwhelmed by water again.
+
+The ordered world is being judged through a return of watery chaos.
+
+### Windows of Heaven
+
+The KJV says "the windows of heaven were opened."
+
+This is ancient picture language for rain pouring from above.
+
+The point is not that the sky has literal glass windows.
+
+The point is totality.
+
+Water comes from below and above.
+
+The flood is not a normal storm.
+
+It is cosmic judgment language.
+
+### After His Kind
+
+Verse 14 repeats "after his kind."
+
+That phrase reaches straight back to Genesis 1.
+
+God created living creatures after their kind.
+
+Now God preserves living creatures after their kind.
+
+This is why the flood is not only destruction.
+
+It is also preservation.
+
+The Creator is still committed to the life He made.
+
+### Breath of Life
+
+Verse 15 says the animals have the breath of life.
+
+That phrase matters because Genesis 2 described God breathing life into man.
+
+Life belongs to God.
+
+Breath is gift.
+
+The flood will show how fragile creaturely life is when separated from God's mercy.
+
+### The LORD Shut Him In
+
+This is one of the most powerful lines in the chapter.
+
+Noah does not shut the door himself.
+
+The LORD shuts him in.
+
+That means rescue is secured by God.
+
+It also means the time of warning is over.
+
+The door that was open is now closed.
+
+The same door that protects Noah also separates the ark from the judged world outside.
+
+## Genesis 7:17 to 20
+
+# The Waters Prevail
+
+> **17** And the flood was forty days upon the earth; and the waters increased, and bare up the ark, and it was lift up above the earth.
+
+> **18** And the waters prevailed, and were increased greatly upon the earth; and the ark went upon the face of the waters.
+
+> **19** And the waters prevailed exceedingly upon the earth; and all the high hills, that were under the whole heaven, were covered.
+
+> **20** Fifteen cubits upward did the waters prevail; and the mountains were covered.
+
+The repeated word in this section is "prevailed."
+
+The waters rise.
+
+The ark lifts.
+
+The hills disappear.
+
+The mountains are covered.
+
+Genesis wants the reader to feel the unstoppable force of judgment.
+
+### Bare Up the Ark
+
+The waters that destroy the world also lift the ark.
+
+That is a powerful image.
+
+The same judgment that brings death outside becomes the means through which the ark rises above destruction.
+
+Noah is not saved because the flood is weak.
+
+Noah is saved because God provided shelter strong enough to carry him through it.
+
+### The Ark Went Upon the Face of the Waters
+
+This phrase sounds lonely and massive.
+
+The ark moves over the face of the waters.
+
+The old world is underneath.
+
+The future is inside.
+
+Noah's family and the preserved animals are carried through a world being unmade.
+
+### All the High Hills
+
+The language of covered hills and mountains shows complete judgment.
+
+In the ancient world, mountains often symbolized stability, height, safety, and nearness to heaven.
+
+But even the mountains are covered.
+
+There is no natural refuge high enough.
+
+Only the ark preserves life.
+
+### Fifteen Cubits Upward
+
+A cubit was an ancient measurement roughly based on the distance from the elbow to the fingertip.
+
+Verse 20 says the waters rose fifteen cubits above the mountains.
+
+The detail emphasizes that the ark was not scraping against the peaks.
+
+The waters fully covered the land.
+
+The judgment is complete.
+
+### Prevailing Water
+
+The repeated word "prevailed" means the waters were strong, dominant, and overpowering.
+
+Human violence had filled the earth.
+
+Now floodwaters fill the earth.
+
+Genesis is showing a terrible reversal.
+
+The world that refused God's order is covered by waters of judgment.
+
+## Genesis 7:21 to 24
+
+# Every Living Substance Was Destroyed
+
+> **21** And all flesh died that moved upon the earth, both of fowl, and of cattle, and of beast, and of every creeping thing that creepeth upon the earth, and every man:
+
+> **22** All in whose nostrils was the breath of life, of all that was in the dry land, died.
+
+> **23** And every living substance was destroyed which was upon the face of the ground, both man, and cattle, and the creeping things, and the fowl of the heaven; and they were destroyed from the earth: and Noah only remained alive, and they that were with him in the ark.
+
+> **24** And the waters prevailed upon the earth an hundred and fifty days.
+
+This is the hardest part of Genesis 7.
+
+The chapter does not soften the judgment.
+
+It tells us plainly that life outside the ark died.
+
+That should feel heavy.
+
+### All Flesh Died
+
+Verse 21 says all flesh died that moved upon the earth.
+
+Genesis lists birds, cattle, beasts, creeping things, and man.
+
+That list echoes creation language.
+
+The creatures God made in Genesis 1 are now named in judgment.
+
+Sin has touched the world humanity was called to steward.
+
+### Breath in the Nostrils
+
+Verse 22 says all in whose nostrils was the breath of life died.
+
+That phrase reaches back to Genesis 2.
+
+God breathed life into man.
+
+Now the breath of life is lost outside the ark.
+
+This is meant to make us feel the seriousness of life as gift.
+
+Breath is not something humanity owns.
+
+It is received from God.
+
+### Every Living Substance
+
+The KJV says "every living substance."
+
+That phrase means the living things on the face of the ground.
+
+Genesis piles up language because it wants the reader to understand the scope.
+
+This is not inconvenience.
+
+This is not a bad season.
+
+This is judgment over a world filled with corruption.
+
+### Noah Only Remained Alive
+
+The sentence narrows sharply.
+
+After all the death language, Genesis says Noah only remained alive, and they that were with him in the ark.
+
+The ark is the dividing line.
+
+Inside is preservation.
+
+Outside is judgment.
+
+That is not because the wood was magical.
+
+It is because God had appointed the ark as the place of rescue.
+
+### An Hundred and Fifty Days
+
+The waters prevailed one hundred and fifty days.
+
+This means the judgment was not a quick passing storm.
+
+Noah's family had to wait.
+
+They had to live inside rescue while surrounded by loss.
+
+The flood story teaches that salvation does not always feel comfortable while you are inside it.
+
+Sometimes rescue feels like waiting in a closed ark while the waters remain high.
+
+# The Big Lesson of Genesis 7
+
+Genesis 7 teaches that God's warnings are serious.
+
+The corruption of the earth has reached the moment of judgment.
+
+Noah enters the ark by faith.
+
+God shuts the door.
+
+The waters rise.
+
+The old violent world is judged.
+
+But life is preserved inside the place God provided.
+
+The chapter is terrifying, but it is not hopeless.
+
+Even while the waters prevail, the ark floats.
+
+# Final Thought on Genesis 7
+
+- Genesis 7 shows obedience before judgment becomes visible.
+- It teaches that God's patience has a real limit.
+- It shows the ark as the place of preservation through judgment.
+- It makes the flood feel as serious as Scripture presents it.
+- It reminds us that life is a gift from God.
+- It prepares us to see mercy when the waters finally begin to recede.
+
+# Pause and Reflect
+
+- What stands out to you about Noah obeying before the flood began?
+- Why does it matter that the LORD shut Noah into the ark?
+- How does Genesis 7 change the way you think about the flood?
+- Where do you need to trust God's command before you can see the outcome?`;
+
+const GENESIS_8_STANDARD_NOTES = `# Genesis 8
+
+# Remembered by God
+
+Genesis 8 begins with one of the most comforting sentences in the flood story:
+
+God remembered Noah.
+
+The waters have prevailed.
+
+The earth has been covered.
+
+The ark has been floating over a judged world.
+
+But Noah has not been forgotten.
+
+This chapter moves slowly from judgment toward restoration.
+
+The waters recede.
+
+The ark rests.
+
+The birds go out.
+
+Noah waits.
+
+Then God calls him into a washed world and Noah's first recorded act outside the ark is worship.
+
+## Why Genesis 8 Matters
+
+- It shows that God's judgment does not mean God forgets His people.
+- It connects the flood story back to creation through wind, waters, dry land, and living creatures.
+- It teaches patience while waiting for God's timing.
+- It shows Noah worshiping before rebuilding life.
+- It introduces God's mercy after judgment.
+- It prepares the covenant promise of Genesis 9.
+
+## Chapter Flow
+
+- 📍 God Remembers Noah
+- 📍 The Waters Begin to Recede
+- 📍 The Raven and Dove Are Sent Out
+- 📍 Noah Waits Until God Speaks
+- 📍 Life Comes Out of the Ark
+- 📍 Noah Builds an Altar
+- 📍 God Promises Stability for the Earth
+
+# Deep Chapter Notes
+
+## Genesis 8:1 to 5
+
+# The Waters Begin to Go Down
+
+> **1** And God remembered Noah, and every living thing, and all the cattle that was with him in the ark: and God made a wind to pass over the earth, and the waters asswaged;
+
+> **2** The fountains also of the deep and the windows of heaven were stopped, and the rain from heaven was restrained;
+
+> **3** And the waters returned from off the earth continually: and after the end of the hundred and fifty days the waters were abated.
+
+> **4** And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat.
+
+> **5** And the waters decreased continually until the tenth month: in the tenth month, on the first day of the month, were the tops of the mountains seen.
+
+Genesis 8 opens like a sunrise after a long night.
+
+The flood is still present.
+
+The ark is still surrounded by water.
+
+But the direction has changed.
+
+The waters are no longer rising.
+
+They are receding.
+
+### God Remembered Noah
+
+When the Bible says God remembered Noah, it does not mean God had forgotten and suddenly recalled him.
+
+In Scripture, "remembered" often means God turns His covenant attention toward someone and acts faithfully.
+
+God remembered Noah means God is now moving the story from judgment toward restoration.
+
+Noah has been hidden inside the ark, but he has never been hidden from God.
+
+### Every Living Thing
+
+God remembers Noah and every living thing with him.
+
+That matters.
+
+The flood story is not only about human survival.
+
+God cares about the creatures He made.
+
+Genesis 1 showed God delighting in living things.
+
+Genesis 8 shows God preserving them through judgment.
+
+### A Wind Over the Earth
+
+God makes a wind pass over the earth.
+
+That should remind us of Genesis 1, where the Spirit of God moved over the face of the waters.
+
+The Hebrew word for wind, breath, or spirit is closely connected.
+
+Genesis 8 feels like a new creation moment.
+
+The waters are being pushed back.
+
+The world is being made habitable again.
+
+### Waters Asswaged
+
+The KJV says the waters "asswaged."
+
+That means they decreased, subsided, or calmed down.
+
+The floodwaters are losing their dominance.
+
+In Genesis 7, the waters prevailed.
+
+In Genesis 8, the waters recede.
+
+Judgment is still real, but mercy is now moving the story.
+
+### Fountains and Windows Stopped
+
+Genesis 7 said the fountains of the deep broke open and the windows of heaven opened.
+
+Genesis 8 says they are stopped and restrained.
+
+The same God who allowed the waters to rise now commands them to withdraw.
+
+Creation is not out of His control.
+
+The flood is terrifying, but it is not chaos beyond God's authority.
+
+### The Ark Rested
+
+Verse 4 says the ark rested on the mountains of Ararat.
+
+That word "rested" matters in Noah's story.
+
+Noah's name is connected to rest and comfort.
+
+The ark now comes to rest after the storm.
+
+The world is not fully ready yet, but the first sign of stability has appeared.
+
+### Tops of the Mountains Seen
+
+Verse 5 says the tops of the mountains were seen.
+
+In Genesis 7, mountains were covered.
+
+Now they reappear.
+
+The world is coming back into view.
+
+This is how restoration often feels:
+
+not all at once, but first with signs.
+
+A mountain top.
+
+A resting place.
+
+A slow decrease.
+
+Hope returning piece by piece.
+
+## Genesis 8:6 to 10
+
+# Waiting for Dry Ground
+
+> **6** And it came to pass at the end of forty days, that Noah opened the window of the ark which he had made:
+
+> **7** And he sent forth a raven, which went forth to and fro, until the waters were dried up from off the earth.
+
+> **8** Also he sent forth a dove from him, to see if the waters were abated from off the face of the ground;
+
+> **9** But the dove found no rest for the sole of her foot, and she returned unto him into the ark, for the waters were on the face of the whole earth: then he put forth his hand, and took her, and pulled her in unto him into the ark.
+
+> **10** And he stayed yet other seven days; and again he sent forth the dove out of the ark;
+
+Noah now begins to test the condition of the earth.
+
+This section is quiet, patient, and emotional.
+
+The flood is ending, but Noah still cannot leave.
+
+He must wait.
+
+### Noah Opened the Window
+
+The window was part of God's original ark instructions.
+
+Now that window becomes the place Noah looks for signs of restoration.
+
+The same ark that protected him from judgment also gives him a view toward the future.
+
+Noah is not controlling the timing.
+
+He is watching carefully.
+
+### The Raven
+
+The raven goes forth to and fro.
+
+Ravens are strong birds and can feed in harsher conditions.
+
+The text does not say the raven returns in the same way the dove does.
+
+It moves back and forth until the waters are dried.
+
+The raven shows that the earth is changing, but it does not give Noah the tender sign he needs.
+
+### The Dove
+
+The dove is sent to see if the waters were abated from the face of the ground.
+
+The dove becomes a gentle sign in the story.
+
+It searches for rest.
+
+It looks for a place to land.
+
+It helps Noah know whether the world outside is ready for life again.
+
+### No Rest for Her Foot
+
+Verse 9 says the dove found no rest for the sole of her foot.
+
+That phrase is simple but powerful.
+
+The waters are lower, but the earth is not ready.
+
+Noah can see signs, but he cannot rush the process.
+
+There is a difference between hope appearing and the right time arriving.
+
+### Noah Pulled Her In
+
+Noah puts forth his hand and pulls the dove back into the ark.
+
+That detail feels tender.
+
+The ark is still shelter.
+
+Even while restoration begins outside, the dove must return to safety.
+
+Sometimes waiting is not lack of faith.
+
+Sometimes waiting is obedience until God opens the next step.
+
+### He Stayed Yet Other Seven Days
+
+Noah waits seven more days.
+
+Genesis repeats waiting because waiting is part of the flood story.
+
+Noah waited before the waters came.
+
+Now he waits before leaving the ark.
+
+Obedience is not only building and entering.
+
+Obedience is also staying until God says go.
+
+## Genesis 8:11 to 12
+
+# The Olive Leaf
+
+> **11** And the dove came in to him in the evening; and, lo, in her mouth was an olive leaf pluckt off: so Noah knew that the waters were abated from off the earth.
+
+> **12** And he stayed yet other seven days; and sent forth the dove; which returned not again unto him any more.
+
+This small section carries huge emotional weight.
+
+The dove returns with an olive leaf.
+
+For the first time, Noah has a sign that living plants are visible again.
+
+The earth is not only drying.
+
+It is becoming fruitful.
+
+### Lo, in Her Mouth
+
+The word "lo" means look, behold, pay attention.
+
+The verse wants us to notice the olive leaf.
+
+After all the death and water, a small green leaf becomes a sign of hope.
+
+Genesis does not need to shout here.
+
+The image teaches quietly.
+
+Life is returning.
+
+### Olive Leaf Pluckt Off
+
+The KJV says "pluckt off," meaning freshly picked or torn from the plant.
+
+This means the leaf did not merely float from before the flood.
+
+It was connected to new growth.
+
+Noah can now know that the waters have gone down enough for vegetation to appear.
+
+Judgment has not destroyed God's purpose for the earth.
+
+### Noah Knew
+
+The olive leaf gives Noah knowledge.
+
+Faith does not mean ignoring signs.
+
+Noah watches, waits, and understands what God is doing through the world around him.
+
+He is not impatient, and he is not careless.
+
+He is attentive.
+
+### The Dove Returned Not Again
+
+The final sending shows that the dove has found a place outside the ark.
+
+That is a major turning point.
+
+The ark has been necessary, but it is not meant to be permanent.
+
+Rescue carries life through judgment so life can fill the earth again.
+
+## Genesis 8:13 to 17
+
+# God Says Go Forth
+
+> **13** And it came to pass in the six hundredth and first year, in the first month, the first day of the month, the waters were dried up from off the earth: and Noah removed the covering of the ark, and looked, and, behold, the face of the ground was dry.
+
+> **14** And in the second month, on the seven and twentieth day of the month, was the earth dried.
+
+> **15** And God spake unto Noah, saying,
+
+> **16** Go forth of the ark, thou, and thy wife, and thy sons, and thy sons' wives with thee.
+
+> **17** Bring forth with thee every living thing that is with thee, of all flesh, both of fowl, and of cattle, and of every creeping thing that creepeth upon the earth; that they may breed abundantly in the earth, and be fruitful, and multiply upon the earth.
+
+The ground is dry, but Noah still waits for God's word.
+
+That is important.
+
+Noah does not leave only because the conditions look better.
+
+He leaves when God speaks.
+
+### Noah Removed the Covering
+
+Noah removes the covering of the ark and looks.
+
+He sees dry ground.
+
+The language echoes discovery.
+
+After months inside the ark, the world is visible again.
+
+But seeing dry ground is not the same as receiving God's command.
+
+Noah is still under the word of God.
+
+### God Spake Unto Noah
+
+Verse 15 changes the movement of the chapter.
+
+God speaks.
+
+The same God who said "Come into the ark" now says "Go forth."
+
+That balance matters.
+
+God brings Noah in.
+
+God sends Noah out.
+
+The life of faith is not self-directed survival.
+
+It is movement under God's word.
+
+### Thou and Thy House
+
+God names Noah's family again.
+
+His wife, sons, and sons' wives come out with him.
+
+The household that entered the ark now enters the cleansed world.
+
+Genesis wants us to feel continuity.
+
+God preserved a family through whom humanity would continue.
+
+### Bring Forth Every Living Thing
+
+The animals must come out too.
+
+The ark was never meant to become a cage.
+
+It was a vessel of preservation.
+
+Now preserved life must return to the earth.
+
+### Be Fruitful and Multiply
+
+Verse 17 echoes Genesis 1.
+
+The language of fruitfulness and multiplication returns after judgment.
+
+This is new creation language.
+
+God's purpose for life on earth continues.
+
+The flood has judged corruption, but it has not cancelled the blessing of life.
+
+## Genesis 8:18 to 19
+
+# Life Leaves the Ark
+
+> **18** And Noah went forth, and his sons, and his wife, and his sons' wives with him:
+
+> **19** Every beast, every creeping thing, and every fowl, and whatsoever creepeth upon the earth, after their kinds, went forth out of the ark.
+
+Noah now obeys the command to go out.
+
+The chapter that began with Noah hidden inside the ark now shows life stepping back onto the earth.
+
+### Noah Went Forth
+
+Just like Noah entered when God commanded, he exits when God commands.
+
+The pattern remains the same:
+
+God speaks.
+
+Noah obeys.
+
+The obedience after the flood matters as much as the obedience before it.
+
+### After Their Kinds
+
+The animals go out after their kinds.
+
+Again, Genesis reaches back to creation.
+
+This is not random survival.
+
+This is ordered preservation.
+
+God is filling the earth again with the living creatures He carried through the waters.
+
+### A World Washed and Waiting
+
+Imagine the silence of this moment.
+
+The old world is gone.
+
+The ground is dry.
+
+The animals are moving again.
+
+Noah's family stands in a world that feels both familiar and completely changed.
+
+Genesis is teaching us that rescue can lead into responsibility.
+
+Noah has survived, but now he must live faithfully in the world after judgment.
+
+## Genesis 8:20 to 22
+
+# Worship After the Flood
+
+> **20** And Noah builded an altar unto the LORD; and took of every clean beast, and of every clean fowl, and offered burnt offerings on the altar.
+
+> **21** And the LORD smelled a sweet savour; and the LORD said in his heart, I will not again curse the ground any more for man's sake; for the imagination of man's heart is evil from his youth; neither will I again smite any more every thing living, as I have done.
+
+> **22** While the earth remaineth, seedtime and harvest, and cold and heat, and summer and winter, and day and night shall not cease.
+
+Noah's first recorded act after leaving the ark is worship.
+
+That matters deeply.
+
+He does not first build a house.
+
+He does not first map the land.
+
+He builds an altar to the LORD.
+
+### Noah Builded an Altar
+
+An altar is a place of worship, sacrifice, surrender, and thanksgiving.
+
+Noah has just come through judgment alive.
+
+His worship is not casual.
+
+It is the response of a rescued man.
+
+### Clean Beast and Clean Fowl
+
+Now the earlier detail about clean animals makes sense.
+
+God told Noah to bring more clean animals into the ark.
+
+Here Noah offers burnt offerings.
+
+The flood story preserved worship as well as life.
+
+Noah does not use survival as an excuse to forget God.
+
+He responds to mercy with sacrifice.
+
+### Sweet Savour
+
+The KJV says the LORD smelled a "sweet savour."
+
+This is worship language.
+
+It does not mean God needed the smell of smoke.
+
+It means Noah's offering was pleasing to God.
+
+The sacrifice represents gratitude, surrender, and restored relationship.
+
+### The Human Heart Is Still Broken
+
+God says the imagination of man's heart is evil from his youth.
+
+That is sobering.
+
+The flood judged the corrupt world, but it did not remove sin from the human heart.
+
+This prepares us for the rest of Genesis.
+
+Noah is saved, but humanity still needs deeper redemption.
+
+### Seedtime and Harvest
+
+God promises that while the earth remains, the rhythms of life will continue:
+
+- seedtime and harvest
+- cold and heat
+- summer and winter
+- day and night
+
+This is mercy.
+
+The flood has disrupted the world, but God promises stability.
+
+The seasons will continue.
+
+Life can be rebuilt.
+
+The future can begin.
+
+# The Big Lesson of Genesis 8
+
+Genesis 8 teaches that God remembers His people in the middle of judgment.
+
+The waters recede because God acts.
+
+The ark rests because God preserves.
+
+Noah waits because obedience includes patience.
+
+Noah worships because rescue should lead to surrender.
+
+And God promises stability even though the human heart is still broken.
+
+Genesis 8 is hope after terror.
+
+It is the first green leaf after the flood.
+
+# Final Thought on Genesis 8
+
+- Genesis 8 shows God remembering Noah and the living creatures.
+- It uses creation language to show the world being restored.
+- It teaches the difference between seeing signs and waiting for God's command.
+- It shows Noah worshiping before rebuilding his life.
+- It reveals that the flood judged sin but did not erase sin from the heart.
+- It ends with mercy, stability, and hope.
+
+# Pause and Reflect
+
+- What does "God remembered Noah" teach you about waiting?
+- Why do you think Noah waited for God's command before leaving the ark?
+- What does Noah's altar teach you about responding to rescue?
+- Where do you need to trust God's timing instead of rushing ahead?`;
+
+const GENESIS_9_STANDARD_NOTES = `# Genesis 9
+
+# Covenant, Blood, and the Rainbow
+
+Genesis 9 begins with blessing.
+
+Noah and his sons step into a washed world, and God speaks words that sound like Genesis 1:
+
+Be fruitful.
+
+Multiply.
+
+Fill the earth.
+
+But the chapter also reminds us that the flood did not remove sin from the human heart.
+
+There is covenant and hope.
+
+There is blood and human dignity.
+
+There is the rainbow.
+
+And then there is Noah's failure, family shame, and the beginning of new tensions that will shape the nations.
+
+## Why Genesis 9 Matters
+
+- It restates the creation blessing after the flood.
+- It teaches the sacred value of human life because people bear God's image.
+- It introduces God's covenant sign with Noah and every living creature.
+- It explains the rainbow as a sign of mercy after judgment.
+- It shows that sin continues after the flood.
+- It prepares the story of the nations through Noah's sons.
+
+## Chapter Flow
+
+- 📍 God Blesses Noah and His Sons
+- 📍 Blood and Human Life Are Treated as Sacred
+- 📍 God Establishes His Covenant
+- 📍 The Rainbow Becomes the Covenant Sign
+- 📍 Noah's Failure Exposes Family Shame
+- 📍 Blessing and Consequences Move Into the Nations
+
+# Deep Chapter Notes
+
+## Genesis 9:1 to 4
+
+# A New Beginning With Old Echoes
+
+> **1** And God blessed Noah and his sons, and said unto them, Be fruitful, and multiply, and replenish the earth.
+
+> **2** And the fear of you and the dread of you shall be upon every beast of the earth, and upon every fowl of the air, upon all that moveth upon the earth, and upon all the fishes of the sea; into your hand are they delivered.
+
+> **3** Every moving thing that liveth shall be meat for you; even as the green herb have I given you all things.
+
+> **4** But flesh with the life thereof, which is the blood thereof, shall ye not eat.
+
+Genesis 9 begins like a second start.
+
+God blesses Noah and his sons.
+
+The flood has ended, but God's purpose for humanity has not ended.
+
+### God Blessed Noah and His Sons
+
+Blessing is the first note after the flood covenant movement begins.
+
+That matters.
+
+God does not only speak warnings.
+
+He speaks life.
+
+The same God who judged corruption now blesses the family through whom the earth will be filled again.
+
+### Be Fruitful and Multiply
+
+This phrase reaches back to Genesis 1.
+
+God is renewing humanity's creation calling.
+
+Noah's family is not meant to hide forever in survival mode.
+
+They are called to live, multiply, build, and spread across the earth.
+
+The flood did not cancel the human vocation.
+
+It reset the world around it.
+
+### Replenish the Earth
+
+The KJV says "replenish."
+
+Here it means fill.
+
+God is commanding humanity to fill the earth again.
+
+This will become important when Babel appears later.
+
+God wants humanity to spread across the earth.
+
+But people will later try to gather in one place and build a name for themselves.
+
+### Fear and Dread
+
+Verse 2 says fear and dread will fall upon the animals.
+
+Humanity still has authority, but the relationship with animals now carries fear.
+
+### Meat for You
+
+God now explicitly permits animals for food.
+
+Every moving thing that lives may be meat, just as green herbs were given before.
+
+This permission is not careless violence.
+
+It comes with a boundary.
+
+Life must still be treated as sacred.
+
+### Blood as Life
+
+Verse 4 says not to eat flesh with its life, which is the blood.
+
+In Scripture, blood represents life.
+
+This does not mean blood is magical.
+
+It means life belongs to God.
+
+## Genesis 9:5 to 7
+
+# The Image of God Still Matters
+
+> **5** And surely your blood of your lives will I require; at the hand of every beast will I require it, and at the hand of man; at the hand of every man's brother will I require the life of man.
+
+> **6** Whoso sheddeth man's blood, by man shall his blood be shed: for in the image of God made he man.
+
+> **7** And you, be ye fruitful, and multiply; bring forth abundantly in the earth, and multiply therein.
+
+This section is about the sacredness of human life.
+
+Genesis has already shown murder in Cain.
+
+### Your Blood of Your Lives
+
+God says He will require the blood of human lives.
+
+That means God holds creatures and people accountable for taking human life.
+
+Violence is not a small thing to God.
+
+Bloodshed cries out because life belongs to Him.
+
+### At the Hand of Man
+
+The phrase "at the hand" means accountability.
+
+God is saying that human beings cannot destroy one another and pretend it does not matter.
+
+The flood came because violence filled the earth.
+
+Now God makes clear that the new world must not treat murder as normal.
+
+### In the Image of God
+
+Verse 6 gives the reason:
+
+man is made in the image of God.
+
+This reaches back to Genesis 1.
+
+The image of God was not erased by the fall.
+
+It was not erased by the flood.
+
+Even in a broken world, human life carries sacred dignity.
+
+That is why murder is so serious.
+
+To attack a human life is to attack one who bears God's image.
+
+### Fruitfulness Repeated
+
+Verse 7 repeats the command to be fruitful and multiply.
+
+The chapter holds two truths together:
+
+- life is to be protected
+- life is to be multiplied
+
+God wants the earth filled, but not filled with violence.
+
+He wants humanity to live under blessing, dignity, and responsibility.
+
+## Genesis 9:8 to 11
+
+# God Establishes His Covenant
+
+> **8** And God spake unto Noah, and to his sons with him, saying,
+
+> **9** And I, behold, I establish my covenant with you, and with your seed after you;
+
+> **10** And with every living creature that is with you, of the fowl, of the cattle, and of every beast of the earth with you; from all that go out of the ark, to every beast of the earth.
+
+> **11** And I will establish my covenant with you; neither shall all flesh be cut off any more by the waters of a flood; neither shall there any more be a flood to destroy the earth.
+
+God now speaks covenant.
+
+### I Establish My Covenant
+
+A covenant is a solemn promise that creates a relationship of commitment.
+
+Here, God is the One establishing it.
+
+Noah is not bargaining with God.
+
+The animals are not negotiating.
+
+God graciously commits Himself to the future of the earth.
+
+### With Your Seed After You
+
+"Seed" means descendants.
+
+God's promise is bigger than Noah's lifetime.
+
+It reaches forward into generations.
+
+### Every Living Creature
+
+The covenant includes birds, cattle, beasts, and every creature that came out of the ark.
+
+This is beautiful.
+
+The Creator cares about the living world He made.
+
+The flood judged corruption, but God's covenant speaks preservation over creation.
+
+### No More Flood to Destroy the Earth
+
+God promises that all flesh will not again be cut off by floodwaters.
+
+This does not mean there will never be local floods or suffering.
+
+It means God will not again destroy the earth in the same flood judgment.
+
+The promise gives stability to the world after terror.
+
+## Genesis 9:12 to 15
+
+# The Bow in the Cloud
+
+> **12** And God said, This is the token of the covenant which I make between me and you and every living creature that is with you, for perpetual generations:
+
+> **13** I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth.
+
+> **14** And it shall come to pass, when I bring a cloud over the earth, that the bow shall be seen in the cloud:
+
+> **15** And I will remember my covenant, which is between me and you and every living creature of all flesh; and the waters shall no more become a flood to destroy all flesh.
+
+God gives a sign.
+
+The rainbow becomes the visible reminder of covenant mercy.
+
+After the terrifying flood, clouds will no longer only mean danger.
+
+They will also carry a sign of promise.
+
+### Token of the Covenant
+
+The KJV word "token" means sign.
+
+A covenant sign is something visible that points to the promise.
+
+The rainbow does not create the covenant.
+
+God creates the covenant.
+
+The rainbow points back to what God promised.
+
+### My Bow
+
+The word "bow" can also refer to a weapon bow.
+
+That image matters.
+
+The bow is set in the cloud, but it is not aimed at the earth.
+
+The sign of judgment becomes a sign of mercy.
+
+The sky that once poured judgment now displays promise.
+
+### When I Bring a Cloud
+
+God does not say clouds will disappear.
+
+He says when clouds come, the bow will be seen.
+
+The sign of covenant appears in the place where fear could return.
+
+Mercy does not pretend storms never come.
+
+Mercy speaks promise into the middle of the clouds.
+
+### I Will Remember My Covenant
+
+Again, "remember" does not mean God might forget.
+
+It means God acts according to His promise.
+
+The rainbow is not mainly about humans remembering God.
+
+In the text, God says He will remember His covenant.
+
+That makes the sign even stronger.
+
+The stability of the world rests on God's faithfulness, not human memory.
+
+## Genesis 9:16 to 17
+
+# An Everlasting Covenant
+
+> **16** And the bow shall be in the cloud; and I will look upon it, that I may remember the everlasting covenant between God and every living creature of all flesh that is upon the earth.
+
+> **17** And God said unto Noah, This is the token of the covenant, which I have established between me and all flesh that is upon the earth.
+
+These verses repeat the covenant sign because repetition is part of the teaching.
+
+Genesis wants the promise to settle deeply into the reader.
+
+After the flood, God speaks assurance again and again.
+
+### Everlasting Covenant
+
+The covenant is called everlasting.
+
+That means it is enduring and reliable.
+
+### Between God and Every Living Creature
+
+This phrase keeps widening the promise.
+
+The covenant is not narrow.
+
+The God of Genesis is not careless with creation.
+
+He is Judge, but He is also Sustainer.
+
+### Established by God
+
+Verse 17 says God established the covenant.
+
+The strength of the covenant is God's own word.
+
+Noah's obedience matters, but the promise does not depend on Noah becoming perfect.
+
+God's faithfulness is stronger than human failure.
+
+## Genesis 9:18 to 21
+
+# Noah's Failure After the Flood
+
+> **18** And the sons of Noah, that went forth of the ark, were Shem, and Ham, and Japheth: and Ham is the father of Canaan.
+
+> **19** These are the three sons of Noah: and of them was the whole earth overspread.
+
+> **20** And Noah began to be an husbandman, and he planted a vineyard:
+
+> **21** And he drank of the wine, and was drunken; and he was uncovered within his tent.
+
+The chapter now turns sharply.
+
+After covenant and rainbow, we see Noah drunk and uncovered.
+
+That contrast matters.
+
+The flood judged the world, but it did not remove sin from Noah's family.
+
+### Shem, Ham, and Japheth
+
+The sons are named because they will become the family lines of the nations.
+
+Genesis 10 will trace the nations through them.
+
+This family is not a side detail.
+
+The future world is inside these names.
+
+### Ham Is the Father of Canaan
+
+Genesis specifically mentions Canaan.
+
+That prepares the reader for what comes next and for later biblical history.
+
+Israel's story will involve the land of Canaan and the Canaanite peoples.
+
+Genesis is planting seeds that will matter later.
+
+### Husbandman
+
+The KJV says Noah became an "husbandman."
+
+That means a man who works the ground, a farmer or vine dresser.
+
+Noah plants a vineyard.
+
+This is normal post-flood life:
+
+cultivation, land, work, fruitfulness.
+
+But even good gifts can be misused.
+
+### Drunken and Uncovered
+
+Noah drinks wine and becomes drunk.
+
+Then he is uncovered in his tent.
+
+The Bible does not hide the failures of its faithful people.
+
+Noah was righteous in his generation, but he was not sinless.
+
+The story is honest.
+
+The rescued man still needs grace.
+
+### Sin After Rescue
+
+This scene is meant to sober us.
+
+Surviving judgment does not automatically make the human heart pure.
+
+Noah can build an ark, offer sacrifice, receive covenant promise, and still fall into shame.
+
+Genesis keeps telling the truth about humanity.
+
+We need more than a cleaned earth.
+
+We need redeemed hearts.
+
+## Genesis 9:22 to 23
+
+# Shame, Honor, and Family Response
+
+> **22** And Ham, the father of Canaan, saw the nakedness of his father, and told his two brethren without.
+
+> **23** And Shem and Japheth took a garment, and laid it upon both their shoulders, and went backward, and covered the nakedness of their father; and their faces were backward, and they saw not their father's nakedness.
+
+This section is about more than accidental seeing.
+
+The language points to shame, dishonor, and family response.
+
+Ham exposes shame.
+
+Shem and Japheth cover it.
+
+### Saw the Nakedness
+
+"Saw the nakedness" is a serious phrase in Scripture.
+
+At minimum, Ham dishonors his father by looking upon his shame and then telling his brothers.
+
+Some readers have debated whether more happened, but Genesis does not spell that out clearly here.
+
+Bible Buddy should stay careful.
+
+The clear point is dishonor.
+
+Ham treats his father's shame wrongly.
+
+### Told His Two Brethren
+
+Ham goes outside and tells his brothers.
+
+This makes the shame public.
+
+Instead of covering or protecting, he exposes.
+
+Genesis has already shown how sin spreads through speech, desire, and family conflict.
+
+Here the family after the flood is already fractured by dishonor.
+
+### Shem and Japheth Took a Garment
+
+Shem and Japheth respond differently.
+
+They take a garment and walk backward to cover their father.
+
+They refuse to stare at his shame.
+
+They act with honor without pretending the failure did not happen.
+
+### Covered the Nakedness
+
+Covering is an important biblical idea.
+
+In Genesis 3, God covered Adam and Eve after their shame.
+
+Here Shem and Japheth cover Noah's shame.
+
+This does not excuse Noah's drunkenness.
+
+But it shows a different spirit than exposure.
+
+There is a way to tell the truth about sin without delighting in someone's disgrace.
+
+## Genesis 9:24 to 27
+
+# Blessing and Consequence
+
+> **24** And Noah awoke from his wine, and knew what his younger son had done unto him.
+
+> **25** And he said, Cursed be Canaan; a servant of servants shall he be unto his brethren.
+
+> **26** And he said, Blessed be the LORD God of Shem; and Canaan shall be his servant.
+
+> **27** God shall enlarge Japheth, and he shall dwell in the tents of Shem; and Canaan shall be his servant.
+
+Noah wakes and speaks words that reach beyond the immediate family moment.
+
+These verses are difficult and have been badly misused in history.
+
+We need to read them carefully and honestly.
+
+### Noah Awoke From His Wine
+
+Noah's drunkenness ends, but the consequences remain.
+
+Sin often works this way.
+
+A moment passes, but the damage continues.
+
+Noah now knows something dishonoring has happened in his family.
+
+### Cursed Be Canaan
+
+The curse falls on Canaan, not on all descendants of Ham.
+
+That is important.
+
+This passage has been wickedly misused to justify racism and slavery.
+
+Genesis is speaking about Canaan in connection with later Canaanite history, not creating permission to oppress people.
+
+### Servant of Servants
+
+The phrase means a lowly servant.
+
+It describes humiliation and subjection.
+
+This is family consequence language that will echo into the story of nations.
+
+Genesis is showing how sin and dishonor can ripple outward through generations.
+
+### Blessed Be the LORD God of Shem
+
+Noah blesses the LORD, the God of Shem.
+
+This is important because the covenant line will move through Shem.
+
+Abram will later come from the line of Shem.
+
+Genesis is beginning to aim the story toward the family through whom blessing will come to the nations.
+
+### Japheth Enlarged
+
+Noah says God shall enlarge Japheth.
+
+This likely points to expansion, space, and growth.
+
+The nations from Japheth will spread widely.
+
+## Genesis 9:28 to 29
+
+# Noah Dies
+
+> **28** And Noah lived after the flood three hundred and fifty years.
+
+> **29** And all the days of Noah were nine hundred and fifty years: and he died.
+
+Genesis 9 ends by returning to the sound of Genesis 5.
+
+Noah lived many years.
+
+Then he died.
+
+### After the Flood
+
+Noah lives three hundred and fifty years after the flood.
+
+That means his life stretches across two worlds:
+
+- the world before the flood
+- the world after the flood
+
+He is a bridge figure in Genesis.
+
+### And He Died
+
+This phrase brings back the repeated rhythm of Genesis 5.
+
+Noah found grace.
+
+Noah walked with God.
+
+Noah built the ark.
+
+Noah survived the flood.
+
+Noah worshiped.
+
+Noah received covenant promise.
+
+And Noah died.
+
+The Bible is teaching us that even the best rescue in Genesis points forward to the need for a greater rescue from death itself.
+
+# The Big Lesson of Genesis 9
+
+Genesis 9 teaches that God gives mercy and covenant after judgment.
+
+The rainbow is a sign that God will preserve the earth.
+
+Human life is sacred because people bear the image of God.
+
+But the chapter also shows that sin still lives in the human heart.
+
+Noah is rescued, but he is not sinless.
+
+The nations will come from his sons, but family shame and consequence are already present.
+
+Genesis 9 gives hope, but it also keeps us longing for deeper redemption.
+
+# Final Thought on Genesis 9
+
+- Genesis 9 renews the creation blessing after the flood.
+- It teaches that blood and human life are sacred to God.
+- It establishes the rainbow as the covenant sign.
+- It shows God's mercy reaching every living creature.
+- It refuses to hide Noah's failure.
+- It reminds us that the flood judged sin but did not remove sin from the heart.
+
+# Pause and Reflect
+
+- What does the rainbow teach you about God's mercy after judgment?
+- Why does Genesis connect human dignity to the image of God?
+- What does Noah's failure teach you about the need for grace after rescue?
+- How can you respond to another person's shame with truth and honor instead of exposure?`;
+
+const GENESIS_10_STANDARD_NOTES = `# Genesis 10
+
+# The Nations After the Flood
+
+Genesis 10 can look like a list of names at first.
+
+But it is doing something much bigger.
+
+This chapter shows the world being repopulated after the flood.
+
+Noah's sons become family lines.
+
+Family lines become peoples.
+
+Peoples become lands, languages, cities, and nations.
+
+Genesis 10 is often called the Table of Nations because it maps the spread of humanity after the flood and prepares the way for Babel in Genesis 11.
+
+## Why Genesis 10 Matters
+
+- It shows that the flood story leads into the history of nations.
+- It connects Noah's sons to peoples, lands, languages, and kingdoms.
+- It introduces names and places that will matter later in Scripture.
+- It shows early kingdom-building through Nimrod and Babel.
+- It prepares for Genesis 11, where humanity resists scattering.
+- It reminds us that God cares about nations, not only individuals.
+
+## Chapter Flow
+
+- 📍 Japheth's Line Spreads Toward the Coastlands
+- 📍 Ham's Line Includes Egypt, Canaan, and Nimrod
+- 📍 Early Kingdoms Begin in Shinar
+- 📍 Canaanite Peoples Are Named
+- 📍 Shem's Line Moves Toward Eber
+- 📍 The Nations Are Divided After the Flood
+
+# Deep Chapter Notes
+
+## Genesis 10:1 to 5
+
+# Japheth and the Coastlands
+
+> **1** Now these are the generations of the sons of Noah, Shem, Ham, and Japheth: and unto them were sons born after the flood.
+
+> **2** The sons of Japheth; Gomer, and Magog, and Madai, and Javan, and Tubal, and Meshech, and Tiras.
+
+> **3** And the sons of Gomer; Ashkenaz, and Riphath, and Togarmah.
+
+> **4** And the sons of Javan; Elishah, and Tarshish, Kittim, and Dodanim.
+
+> **5** By these were the isles of the Gentiles divided in their lands; every one after his tongue, after their families, in their nations.
+
+Genesis 10 begins with the generations of Noah's sons.
+
+That phrase tells us this is not filler.
+
+It is the next movement in the story.
+
+The flood did not end humanity.
+
+Humanity is spreading again.
+
+### These Are the Generations
+
+This phrase is one of Genesis's major structure markers.
+
+It means the book is moving into a new family record.
+
+Genesis is tracing how God's world is filled after the flood.
+
+The chapter is teaching history through family lines.
+
+### Sons Born After the Flood
+
+The phrase "after the flood" matters.
+
+These are post-judgment generations.
+
+The world has been reset, but it is still populated through ordinary family life.
+
+God preserves life through births, households, and descendants.
+
+### Japheth's Line
+
+Japheth's descendants are listed first.
+
+Many of these names are connected with peoples who spread toward regions north and west of Israel's later location.
+
+The point is not that we can identify every name with perfect certainty.
+
+The point is that the nations have roots.
+
+They are not random.
+
+Genesis sees the peoples of the earth as connected to one human family.
+
+### Isles of the Gentiles
+
+The KJV says "isles of the Gentiles."
+
+This can refer to coastlands or distant maritime regions.
+
+"Gentiles" here means nations or peoples.
+
+The verse pictures spreading into lands, languages, families, and nations.
+
+### Lands, Tongues, Families, Nations
+
+Verse 5 gives four categories:
+
+- lands
+- tongues
+- families
+- nations
+
+That structure matters.
+
+Genesis is not only listing names.
+
+It is describing how people become organized across geography, language, kinship, and national identity.
+
+This prepares us for Babel, where language becomes central.
+
+## Genesis 10:6 to 10
+
+# Ham, Nimrod, and the First Kingdoms
+
+> **6** And the sons of Ham; Cush, and Mizraim, and Phut, and Canaan.
+
+> **7** And the sons of Cush; Seba, and Havilah, and Sabtah, and Raamah, and Sabtechah: and the sons of Raamah; Sheba, and Dedan.
+
+> **8** And Cush begat Nimrod: he began to be a mighty one in the earth.
+
+> **9** He was a mighty hunter before the LORD: wherefore it is said, Even as Nimrod the mighty hunter before the LORD.
+
+> **10** And the beginning of his kingdom was Babel, and Erech, and Accad, and Calneh, in the land of Shinar.
+
+Ham's line includes names that will become very important later:
+
+Egypt, Canaan, and Babel-connected kingdoms.
+
+Genesis is quietly setting up future Bible history.
+
+### Cush, Mizraim, Phut, and Canaan
+
+Mizraim is the Hebrew name often associated with Egypt.
+
+Canaan will become central because Israel's later story happens in the land of Canaan.
+
+These names are not random ancient trivia.
+
+They are roots of future conflict, geography, and promise.
+
+### Nimrod
+
+Nimrod is singled out from the list.
+
+That means Genesis wants us to pay attention.
+
+He is described as a mighty one in the earth.
+
+The word "mighty" can sound impressive, but in Genesis we should read it carefully.
+
+Genesis 6 already used mighty language in a violent world.
+
+Power is not automatically righteousness.
+
+### Mighty Hunter Before the LORD
+
+This phrase has been understood in different ways.
+
+It may describe Nimrod's strength, fame, and dominance.
+
+"Before the LORD" can mean in God's sight.
+
+The important point is that Nimrod becomes a known figure of power.
+
+Genesis is beginning to show the rise of human kingdom-building after the flood.
+
+### The Beginning of His Kingdom
+
+Verse 10 is the first clear kingdom language in the Bible.
+
+That is huge.
+
+Human organization is becoming political and imperial.
+
+The chapter moves from families to nations to kingdoms.
+
+This is part of humanity multiplying, but it also carries danger when power is used for pride.
+
+### Babel and Shinar
+
+Nimrod's kingdom begins with Babel in the land of Shinar.
+
+That name should ring loudly.
+
+Genesis 11 will focus on Babel.
+
+So Genesis 10 is already preparing the reader.
+
+The nations are spreading, but human pride is also gathering strength.
+
+## Genesis 10:11 to 14
+
+# Cities and Peoples Grow
+
+> **11** Out of that land went forth Asshur, and builded Nineveh, and the city Rehoboth, and Calah,
+
+> **12** And Resen between Nineveh and Calah: the same is a great city.
+
+> **13** And Mizraim begat Ludim, and Anamim, and Lehabim, and Naphtuhim,
+
+> **14** And Pathrusim, and Casluhim, (out of whom came Philistim,) and Caphtorim.
+
+This section shows cities and peoples multiplying.
+
+The world after the flood is becoming organized, settled, and complex.
+
+But some of these names will later carry spiritual weight in the Bible story.
+
+### Nineveh
+
+Nineveh is named here very early.
+
+Later in Scripture, Nineveh will become the great city associated with Assyria and the prophet Jonah.
+
+That means Genesis is planting names that will grow in importance over time.
+
+The Bible's story is connected across generations.
+
+### Great City
+
+Verse 12 calls Resen a great city.
+
+Cities in Genesis are complicated.
+
+They can represent culture, protection, and organization.
+
+But they can also become centers of pride, violence, and rebellion.
+
+Cain's line already built a city in Genesis 4.
+
+Babel will soon become a city of human self-exaltation.
+
+Genesis is not anti-city, but it is very honest about what people do with concentrated power.
+
+### Mizraim and Egypt
+
+Mizraim points toward Egypt.
+
+Egypt will later become a place of both refuge and oppression in the Bible.
+
+Abraham will go there during famine.
+
+Joseph will rise there.
+
+Israel will be enslaved there.
+
+The Exodus will happen from there.
+
+Genesis 10 quietly introduces future biblical geography.
+
+### Philistim
+
+The KJV says "Philistim," referring to the Philistines.
+
+They will later become major enemies of Israel in the days of Samson, Saul, and David.
+
+Again, Genesis is showing roots.
+
+The nations that later surround Israel are not appearing from nowhere.
+
+They are part of the post-flood spread of humanity.
+
+## Genesis 10:15 to 20
+
+# Canaan and the Land Ahead
+
+> **15** And Canaan begat Sidon his firstborn, and Heth,
+
+> **16** And the Jebusite, and the Amorite, and the Girgasite,
+
+> **17** And the Hivite, and the Arkite, and the Sinite,
+
+> **18** And the Arvadite, and the Zemarite, and the Hamathite: and afterward were the families of the Canaanites spread abroad.
+
+> **19** And the border of the Canaanites was from Sidon, as thou comest to Gerar, unto Gaza; as thou goest, unto Sodom, and Gomorrah, and Admah, and Zeboim, even unto Lasha.
+
+> **20** These are the sons of Ham, after their families, after their tongues, in their countries, and in their nations.
+
+Canaan's descendants receive special attention because Canaan will matter deeply in the rest of the Bible.
+
+The promised land will be called Canaan.
+
+Israel will later be called to live there under God's covenant.
+
+### Canaan Begat
+
+The line of Canaan is not just family trivia.
+
+It prepares the reader for the land promise to Abraham.
+
+When God later promises land to Abram's descendants, these are the peoples connected to that land.
+
+Genesis is building the map before the promise is announced.
+
+### Jebusite, Amorite, Hivite
+
+These names will return later in the Old Testament.
+
+They represent people groups living in the land.
+
+Modern readers can skim them quickly, but ancient readers would hear geography, memory, and future conflict.
+
+The Bible is teaching through names.
+
+### Spread Abroad
+
+The families of the Canaanites spread abroad.
+
+This continues the chapter's theme:
+
+families become peoples, peoples occupy lands, and lands become part of the biblical story.
+
+The post-flood world is filling again.
+
+### Borders of Canaan
+
+Verse 19 gives border language.
+
+Sidon, Gerar, Gaza, Sodom, Gomorrah, Admah, Zeboim, and Lasha are named.
+
+This matters because Genesis is becoming geographic.
+
+The story is not floating in the air.
+
+It is tied to lands and places.
+
+### Sodom and Gomorrah
+
+Sodom and Gomorrah are named before their judgment story in Genesis 19.
+
+That creates anticipation.
+
+The reader is being introduced to places that will later reveal deep wickedness and divine judgment.
+
+The flood is over, but human sin will continue in the nations.
+
+## Genesis 10:21 to 25
+
+# Shem, Eber, and the Line of Promise
+
+> **21** Unto Shem also, the father of all the children of Eber, the brother of Japheth the elder, even to him were children born.
+
+> **22** The children of Shem; Elam, and Asshur, and Arphaxad, and Lud, and Aram.
+
+> **23** And the children of Aram; Uz, and Hul, and Gether, and Mash.
+
+> **24** And Arphaxad begat Salah; and Salah begat Eber.
+
+> **25** And unto Eber were born two sons: the name of one was Peleg; for in his days was the earth divided; and his brother's name was Joktan.
+
+Now Genesis turns to Shem.
+
+This line matters because the covenant story will move through Shem toward Abram.
+
+Genesis is narrowing again.
+
+### Father of the Children of Eber
+
+Eber is highlighted because his line becomes important.
+
+Many connect the word Hebrew with Eber.
+
+Whether or not every detail is simple, Genesis clearly wants us to notice that Shem's line is moving toward a special family line.
+
+The story of all nations will soon narrow to one man, Abram, through whom all nations will be blessed.
+
+### Arphaxad, Salah, and Eber
+
+These names may feel unfamiliar, but they are stepping stones in the promise line.
+
+Genesis often teaches through names that do not look exciting at first.
+
+The story of redemption moves through generations.
+
+God works through family history, not only dramatic moments.
+
+### Peleg
+
+Peleg's name is connected with division because "in his days was the earth divided."
+
+This likely points toward the division of peoples, possibly connected with the Babel event that follows in Genesis 11.
+
+Genesis 10 gives the map.
+
+Genesis 11 gives the reason for the language scattering.
+
+### The Earth Divided
+
+The phrase does not need to be overcomplicated.
+
+The chapter has already talked about lands, tongues, families, and nations.
+
+Humanity is being divided into peoples across the earth.
+
+This division is part of the post-flood world.
+
+It will become clearer when God scatters Babel.
+
+## Genesis 10:26 to 30
+
+# Joktan's Descendants
+
+> **26** And Joktan begat Almodad, and Sheleph, and Hazar-maveth, and Jerah,
+
+> **27** And Hadoram, and Uzal, and Diklah,
+
+> **28** And Obal, and Abimael, and Sheba,
+
+> **29** And Ophir, and Havilah, and Jobab: all these were the sons of Joktan.
+
+> **30** And their dwelling was from Mesha, as thou goest unto Sephar a mount of the east.
+
+This section continues Shem's family line through Joktan.
+
+The names may feel distant, but they serve the same purpose:
+
+they show humanity spreading into real peoples and real places.
+
+### Names That Preserve Memory
+
+Ancient genealogies preserved memory.
+
+They told people where they came from.
+
+They connected lands, families, and identities.
+
+In our modern reading, names can feel like interruptions.
+
+In the ancient world, names were anchors.
+
+### Sheba and Havilah
+
+Some names, like Sheba and Havilah, appear elsewhere in biblical geography.
+
+These names remind us that Genesis is building a world.
+
+The Bible is not only telling private spiritual lessons.
+
+It is tracing nations, trade regions, and peoples.
+
+### Dwelling From Mesha to Sephar
+
+Verse 30 gives a dwelling range.
+
+This means the family line is connected to territory.
+
+Again, the chapter keeps tying people to place.
+
+The nations after the flood are not abstract.
+
+They live somewhere.
+
+They speak languages.
+
+They form communities.
+
+### A Wide World Before Abram
+
+Genesis 10 makes the world feel wide before Genesis 12 narrows the story to Abram.
+
+That matters.
+
+God's promise to Abram will not be small.
+
+When God says all families of the earth will be blessed, Genesis has already shown us those families spreading across the earth.
+
+## Genesis 10:31 to 32
+
+# The Nations Divided After the Flood
+
+> **31** These are the sons of Shem, after their families, after their tongues, in their lands, after their nations.
+
+> **32** These are the families of the sons of Noah, after their generations, in their nations: and by these were the nations divided in the earth after the flood.
+
+The chapter ends by summarizing the whole movement.
+
+Noah's sons become families.
+
+Families become nations.
+
+The earth is divided after the flood.
+
+### Families, Tongues, Lands, Nations
+
+Genesis repeats the same categories:
+
+- families
+- tongues
+- lands
+- nations
+
+That repetition is teaching.
+
+Human identity is becoming layered.
+
+People belong to households, languages, places, and nations.
+
+The world after the flood is becoming organized and diverse.
+
+### After Their Generations
+
+Generations matter in Genesis.
+
+God's story moves through time.
+
+He works through parents, children, grandchildren, and descendants.
+
+The Bible is not rushing.
+
+It is showing how history unfolds.
+
+### Nations Divided in the Earth
+
+The nations are divided in the earth after the flood.
+
+This prepares us directly for Genesis 11.
+
+Genesis 10 shows the result.
+
+Genesis 11 will show the rebellion at Babel and the scattering of languages.
+
+The two chapters belong together.
+
+### God Sees the Nations
+
+This chapter teaches that God sees nations.
+
+He knows peoples, lands, languages, and families.
+
+Later, when God calls Abram, the promise will be for all families of the earth.
+
+Genesis 10 makes that promise feel huge.
+
+The Bible's mission story begins earlier than many readers realize.
+
+# The Big Lesson of Genesis 10
+
+Genesis 10 teaches that the flood did not end God's purpose for humanity.
+
+The sons of Noah become the roots of nations.
+
+The earth fills again with families, languages, lands, and peoples.
+
+But the chapter also introduces kingdoms, Babel, Canaan, Egypt, Nineveh, and other names that will carry spiritual weight later.
+
+The world is growing again.
+
+And God is preparing the stage for the call of Abram, through whom all families of the earth will be blessed.
+
+# Final Thought on Genesis 10
+
+- Genesis 10 is not filler.
+- It shows the nations spreading after the flood.
+- It connects names to future Bible places and people groups.
+- It introduces Babel before the tower story.
+- It shows the line of Shem moving toward the promise family.
+- It reminds us that God's plan is bigger than one nation, even when He later chooses one family.
+
+# Pause and Reflect
+
+- Why do you think Genesis spends time naming nations and families?
+- How does Genesis 10 prepare the story for Babel?
+- What does this chapter teach you about God's concern for all peoples?
+- How does knowing the nations come from one family change the way you read the Bible's story?`;
+
+const builtFloodNotes = floodNotes.map(buildFloodNotes);
+builtFloodNotes[0] = GENESIS_5_STANDARD_NOTES;
+builtFloodNotes[1] = GENESIS_6_STANDARD_NOTES;
+builtFloodNotes[2] = GENESIS_7_STANDARD_NOTES;
+builtFloodNotes[3] = GENESIS_8_STANDARD_NOTES;
+builtFloodNotes[4] = GENESIS_9_STANDARD_NOTES;
+builtFloodNotes[5] = GENESIS_10_STANDARD_NOTES;
+
+export const FLOOD_OF_NOAH_DEEP_NOTES = builtFloodNotes;

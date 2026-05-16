@@ -5,7 +5,6 @@ dotenv.config({ path: resolve(process.cwd(), ".env.local") });
 
 import { createClient } from "@supabase/supabase-js";
 import { OBEDIENCE_OF_ABRAHAM_DEEP_NOTES } from "../lib/obedienceOfAbrahamDeepNotes";
-import { parseSeriesNotesToHTML } from "../lib/seriesNotesHtml";
 
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -25,13 +24,6 @@ const weekNotes = chapters.map((chapter, index) => ({
   notes_text: OBEDIENCE_OF_ABRAHAM_DEEP_NOTES[index],
 }));
 
-const rows = weekNotes.map((note) => ({
-  series_key: "obedience_of_abraham",
-  week_number: note.week_number,
-  notes_text: note.notes_text,
-  notes_html: parseSeriesNotesToHTML(note.notes_text),
-}));
-
 const bibleNoteRows = weekNotes.map((note) => ({
   book: "genesis",
   chapter: note.chapter,
@@ -39,15 +31,6 @@ const bibleNoteRows = weekNotes.map((note) => ({
 }));
 
 async function main() {
-  const { error } = await supabase
-    .from("series_week_notes")
-    .upsert(rows, { onConflict: "series_key,week_number" });
-
-  if (error) {
-    console.error("Failed to upsert Abraham series notes:", error);
-    process.exit(1);
-  }
-
   const { error: bibleNotesError } = await supabase
     .from("bible_notes")
     .upsert(bibleNoteRows, { onConflict: "book,chapter" });
@@ -57,7 +40,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("Seeded Obedience of Abraham week notes 1-15 into series_week_notes and Genesis 11-25 into bible_notes.");
+  console.log("Seeded Obedience of Abraham Genesis 11-25 Bible Study notes into bible_notes.");
 }
 
 main().catch((error) => {

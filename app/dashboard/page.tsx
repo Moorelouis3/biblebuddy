@@ -40,7 +40,6 @@ import AdSlot from "../../components/AdSlot";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import DashboardJourneyExperience from "../../components/DashboardJourneyExperience";
-import DashboardDailyTaskCallout from "../../components/DashboardDailyTaskCallout";
 import {
   buildPersistedFeatureTours,
   DEFAULT_FEATURE_TOURS,
@@ -3795,6 +3794,13 @@ export default function DashboardPage() {
         .bb-dashboard-dark .dashboard-shell .text-gray-500 {
           color: #cbd5e1;
         }
+        @keyframes dashboard-inline-task-slide {
+          from { opacity: 0; transform: translateY(-8px); max-height: 0; }
+          to { opacity: 1; transform: translateY(0); max-height: 1400px; }
+        }
+        .dashboard-inline-task {
+          animation: dashboard-inline-task-slide 260ms ease-out both;
+        }
       `}</style>
       <div className="dashboard-shell min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
@@ -3834,6 +3840,9 @@ export default function DashboardPage() {
           }}
           onOpenDailyTasks={handleOpenDailyTasksModal}
           onTaskClick={handleDailyJourneyTaskClick}
+          activeTask={selectedDashboardTask}
+          onActiveTaskClose={() => setSelectedDashboardTask(null)}
+          onActiveTaskProgressUpdated={handleDashboardTaskProgressUpdated}
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
@@ -3879,6 +3888,9 @@ export default function DashboardPage() {
           }}
           onOpenDailyTasks={handleOpenDailyTasksModal}
           onTaskClick={handleDailyJourneyTaskClick}
+          activeTask={selectedDashboardTask}
+          onActiveTaskClose={() => setSelectedDashboardTask(null)}
+          onActiveTaskProgressUpdated={handleDashboardTaskProgressUpdated}
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
@@ -4125,13 +4137,6 @@ export default function DashboardPage() {
         userId={userId}
         currentStreak={profile?.current_streak ?? 0}
         cycleStartedAt={louisDailyTaskCycleStartedAt}
-      />
-
-      <DashboardDailyTaskCallout
-        task={selectedDashboardTask}
-        userId={userId}
-        onClose={() => setSelectedDashboardTask(null)}
-        onProgressUpdated={handleDashboardTaskProgressUpdated}
       />
 
       <ModalShell

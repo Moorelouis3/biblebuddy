@@ -1685,31 +1685,69 @@ ${wordList}
 
 ${ancientLine}
 
-Abraham's world was built around family, land, tents, servants, animals, water, inheritance, honor, and survival.
-
-So when Genesis names a place, a family line, a famine, a well, a field, a tent, an altar, or a child, it is not filler.
-
-It is helping us feel the real life pressure around faith.
-
 ## 🧬 How This Moves The Covenant Story
-
-${chapterFrame}
-
-${covenantFrame}
-
-${pressureFrame}
 
 ${covenantLine}
 
 ## 🧠 What To Understand Before Moving On
 
-Verses ${verseList} belong together.
+${modernLine}`;
+  };
 
-They show the movement of the scene before we zoom in on each verse.
+  const miniTitleFromVerse = (verse: GenesisVerse) => {
+    const lower = verse.text.toLowerCase();
+    if (lower.includes("sarah was an hundred")) return "Sarah's Years";
+    if (lower.includes("sarah died")) return "Sarah Dies in Canaan";
+    if (lower.includes("stood up from before his dead")) return "Abraham Stands Up From Grief";
+    if (lower.includes("stranger and a sojourner")) return "A Stranger and a Sojourner";
+    if (lower.includes("mighty prince")) return "Honored, But Still Without Land";
+    if (lower.includes("bowed himself")) return "Abraham Deals Honorably";
+    if (lower.includes("cave of machpelah")) return "The Cave of Machpelah";
+    if (lower.includes("gate of his city")) return "The City Gate";
+    if (lower.includes("i will give thee money")) return "Abraham Refuses a Vague Gift";
+    if (lower.includes("four hundred shekels")) return "Four Hundred Shekels of Silver";
+    if (lower.includes("weighed to ephron")) return "Silver Weighed Publicly";
+    if (lower.includes("were made sure")) return "The Land Is Made Sure";
+    if (lower.includes("buried sarah")) return "Sarah Buried in the Promise Land";
+    if (lower.includes("possession of a buryingplace")) return "A Possession for Burial";
+    if (lower.includes("get thee out")) return "Get Thee Out";
+    if (lower.includes("i will make of thee")) return "I Will Make";
+    if (lower.includes("all families of the earth")) return "All Families of the Earth";
+    if (lower.includes("so abram departed")) return "Abram Departed";
+    if (lower.includes("built an altar")) return "The Altar";
+    if (lower.includes("famine")) return "Famine in the Land";
+    if (lower.includes("she is my sister")) return "She Is My Sister";
+    if (lower.includes("believed in the lord")) return "Abram Believed";
+    if (lower.includes("counted it to him for righteousness")) return "Counted for Righteousness";
+    if (lower.includes("covenant")) return "The Covenant";
+    if (lower.includes("circumcis")) return "The Covenant Sign";
+    if (lower.includes("isaac")) return "Isaac and the Promise";
+    if (lower.includes("hagar")) return "Hagar in the Story";
+    if (lower.includes("ishmael")) return "Ishmael Is Not Forgotten";
+    if (lower.includes("lot")) return "Lot and the Family Story";
+    if (lower.includes("melchizedek")) return "Melchizedek";
+    if (lower.includes("sodom")) return "Sodom";
+    if (lower.includes("rebekah")) return "Rebekah";
+    if (lower.includes("birthright")) return "The Birthright";
 
-${modernLine}
+    return `Verse ${verse.verse}`;
+  };
 
-${renderVerseBreakdowns(section)}`;
+  const renderGenesisStyleDeepDive = (section: AbrahamSection) => {
+    const verses = getSectionVerses(section);
+    const opening = section.points.join("\n\n");
+    const breakdowns = verses
+      .map((verse) => {
+        const lead = verseLead(verse);
+        const wordNotes = inlineWordNotes(verse).map((line) => line.replace(/^\*\*(.+?)\*\*: /, "`$1`: "));
+        const body = [lead, ...wordNotes].filter(Boolean).join("\n\n");
+        if (!body.trim()) return "";
+        return `### ${miniTitleFromVerse(verse)}\n\n${body}`;
+      })
+      .filter(Boolean)
+      .join("\n\n");
+
+    return `${opening}\n\n${breakdowns}`;
   };
 
   const renderMajorChapterAddendum = () => {
@@ -1795,6 +1833,34 @@ ${chapterFocus.map((item) => `* ${item}`).join("\n\n")}`;
 ${renderVerseCallout(section)}
 
 ${renderSectionDeepDive(section)}`;
+
+  const formatReferenceHeading = (reference: string) => reference.replace(/:(\d+)-(\d+)/, ":$1 to $2");
+
+  const renderStandardSection = (section: AbrahamSection) => `## ${formatReferenceHeading(section.reference)}
+
+# ${cleanSectionTitle(section.title)}
+
+${renderVerseCallout(section)}
+
+${renderGenesisStyleDeepDive(section)}`;
+
+  const splitLongSection = (section: AbrahamSection): AbrahamSection[] => {
+    const verses = getSectionVerses(section);
+    if (verses.length <= 5) return [section];
+
+    const chunks: AbrahamSection[] = [];
+    for (let index = 0; index < verses.length; index += 5) {
+      const chunk = verses.slice(index, index + 5);
+      const firstVerse = chunk[0]?.verse;
+      const lastVerse = chunk[chunk.length - 1]?.verse;
+      if (firstVerse == null || lastVerse == null) continue;
+      chunks.push({
+        ...section,
+        reference: `Genesis ${note.chapter}:${firstVerse}-${lastVerse}`,
+      });
+    }
+    return chunks;
+  };
 
   const makeSection = (reference: string, title: string, points: string[]): AbrahamSection => ({ reference, title, points });
   const getStudySections = (): AbrahamSection[] => {
@@ -2090,7 +2156,8 @@ ${renderSectionDeepDive(section)}`;
   };
 
   const sectionNotes = getStudySections()
-    .map(renderSection)
+    .flatMap(splitLongSection)
+    .map(renderStandardSection)
     .join("\n\n");
 
   return `${cleanChapterHeading()}
@@ -4007,7 +4074,2998 @@ But God keeps moving the story forward anyway.
 
 This is the moment where one man's obedience becomes the doorway into the rest of the Bible.`;
 
-export const OBEDIENCE_OF_ABRAHAM_DEEP_NOTES = ABRAHAM_CHAPTER_NOTES.map(renderRebuiltNote);
+const GENESIS_11_STANDARD_NOTES = `# Genesis 11
+
+# 🏙️ Babel, Scattered Pride, and the Road to Abram
+
+Genesis 11 is the chapter right before God calls Abram.
+
+That matters.
+
+Before Abraham's obedience begins, Genesis shows us the world he is being called out of.
+
+Humanity gathers in one place.
+
+They build a city.
+
+They build a tower.
+
+They try to make themselves a name.
+
+Then God scatters them.
+
+After that, the chapter narrows from the nations to one family line, and finally to Abram, Sarai, Lot, and an unfinished journey toward Canaan.
+
+## Why Genesis 11 Matters
+
+🏙️ It shows human pride gathering at Babel.
+
+🧱 It shows people using skill and unity without surrender to God.
+
+🗣️ It explains the confusion of languages.
+
+🌍 It shows God scattering humanity across the earth.
+
+🧬 It traces Shem's line toward Abram.
+
+🚶 It ends with a family journey that stops short in Haran.
+
+## Chapter Flow
+
+🗣️ The whole earth has one language.
+
+🧱 Babel begins building a city and tower.
+
+👑 Humanity tries to make a name for itself.
+
+⬇️ The LORD comes down and confounds their speech.
+
+🌍 The people are scattered across the earth.
+
+🧬 Shem's genealogy narrows toward Abram.
+
+🏕️ Terah's family begins toward Canaan but settles in Haran.
+
+# Deep Chapter Notes
+
+## Genesis 11:1 to 4
+
+# 🏙️ The Tower of Babel Begins
+
+> **1** And the whole earth was of one language, and of one speech.
+
+> **2** And it came to pass, as they journeyed from the east, that they found a plain in the land of Shinar; and they dwelt there.
+
+> **3** And they said one to another, Go to, let us make brick, and burn them throughly. And they had brick for stone, and slime had they for morter.
+
+> **4** And they said, Go to, let us build us a city and a tower, whose top may reach unto heaven; and let us make us a name, lest we be scattered abroad upon the face of the whole earth.
+
+Genesis 11 begins with humanity united.
+
+One language.
+
+One speech.
+
+One place.
+
+One building project.
+
+But unity is not automatically holy.
+
+Here, human unity is bending toward pride.
+
+🗣️ One language becomes organized ambition.
+
+🧱 Brick and mortar become tools of self-protection.
+
+🏙️ The city becomes a symbol of human security.
+
+🗼 The tower becomes a symbol of reaching upward without surrender.
+
+👑 The people want to make their own name.
+
+### 🗣️ One Language and One Speech
+
+The chapter opens by saying the whole earth had one language and one speech.
+
+That sounds beautiful at first.
+
+Shared language can create understanding, cooperation, and community.
+
+But Genesis immediately shows that shared language can also become dangerous when the human heart is proud.
+
+The issue is not language itself.
+
+The issue is what people do with their unity.
+
+### 📍 The Land of Shinar
+
+The people settle in the land of Shinar.
+
+Shinar connects the reader to the region later associated with Babylon.
+
+That matters because Babylon becomes one of the Bible's major pictures of proud human power.
+
+Genesis is already planting that theme here.
+
+The place where people try to build their own name becomes the beginning of a long biblical pattern.
+
+### 🧱 Let Us Make Brick
+
+The people say, "Go to, let us make brick."
+
+The KJV phrase "Go to" means something like "come now" or "let us begin."
+
+The brick detail matters.
+
+Building is not the sin.
+
+Skill is not the sin.
+
+Technology is not the sin.
+
+The problem is what the heart is trying to build with those gifts.
+
+### 🏙️ A City and a Tower
+
+They want a city and a tower.
+
+In the ancient world, a city could mean protection, economy, identity, and power.
+
+A tower reaching toward heaven sounds spiritual, but the story exposes the motive.
+
+They are not building to worship God.
+
+They are building to secure themselves.
+
+### 👑 Let Us Make Us a Name
+
+This is the center of Babel.
+
+They say, "let us make us a name."
+
+That means they want identity, greatness, reputation, and permanence on their own terms.
+
+Genesis 12 will answer this directly.
+
+Babel says, "Let us make us a name."
+
+God will say to Abram, "I will make thy name great."
+
+That contrast is everything.
+
+One name is grabbed by pride.
+
+The other name is received by promise.
+
+### 🌍 Lest We Be Scattered
+
+The people do not want to be scattered abroad.
+
+But God had blessed humanity to fill the earth.
+
+Their fear of scattering is really resistance to God's creation purpose.
+
+They want safety through staying together under their own name.
+
+God is about to interrupt that.
+
+## Genesis 11:5 to 9
+
+# ⬇️ God Comes Down
+
+> **5** And the LORD came down to see the city and the tower, which the children of men builded.
+
+> **6** And the LORD said, Behold, the people is one, and they have all one language; and this they begin to do: and now nothing will be restrained from them, which they have imagined to do.
+
+> **7** Go to, let us go down, and there confound their language, that they may not understand one another's speech.
+
+> **8** So the LORD scattered them abroad from thence upon the face of all the earth: and they left off to build the city.
+
+> **9** Therefore is the name of it called Babel; because the LORD did there confound the language of all the earth: and from thence did the LORD scatter them abroad upon the face of all the earth.
+
+The people think their tower can reach heaven.
+
+But Genesis gives us a sharp irony:
+
+the LORD has to come down to see it.
+
+Their tower feels huge to them.
+
+Before God, it is small.
+
+⬇️ God comes down to inspect human pride.
+
+🧠 God sees what organized rebellion can become.
+
+🗣️ God confounds the language.
+
+🌍 God scatters the people.
+
+🏙️ Babel becomes remembered for confusion, not greatness.
+
+### ⬇️ The LORD Came Down
+
+This line is almost humorous, but it is also serious.
+
+The people build upward.
+
+The LORD comes down.
+
+Their tower does not force its way into heaven.
+
+God remains God.
+
+Human pride may look impressive on earth, but it does not make humanity equal with the LORD.
+
+### 🧠 What They Imagined to Do
+
+God says nothing will be restrained from what they have imagined to do.
+
+This does not mean God is afraid of people.
+
+It means God sees the danger of organized pride.
+
+When sinful hearts unite around self-exaltation, the damage can spread quickly.
+
+God's judgment here is also mercy.
+
+He stops the rebellion before it hardens further.
+
+### 🗣️ Confound Their Language
+
+The KJV word "confound" means confuse, mix up, or disrupt.
+
+God confuses their speech so they cannot understand one another.
+
+The same language that helped them build becomes the place God interrupts them.
+
+Their unity breaks because their communication breaks.
+
+### 🌍 The LORD Scattered Them
+
+The people feared being scattered.
+
+Then God scattered them anyway.
+
+This is important.
+
+Their attempt to avoid God's purpose becomes the very place where God enforces it.
+
+Human pride cannot cancel God's command to fill the earth.
+
+### 🏙️ Babel
+
+The city is called Babel because the LORD confounded the language there.
+
+Babel becomes a name of confusion.
+
+The people wanted a great name.
+
+Instead, the place is remembered for scattered speech and interrupted pride.
+
+That is the warning.
+
+When people build identity without God, the name they create may become the sign of their confusion.
+
+## Genesis 11:10 to 14
+
+# 🧬 The Story Narrows to Shem
+
+> **10** These are the generations of Shem: Shem was an hundred years old, and begat Arphaxad two years after the flood:
+
+> **11** And Shem lived after he begat Arphaxad five hundred years, and begat sons and daughters.
+
+> **12** And Arphaxad lived five and thirty years, and begat Salah:
+
+> **13** And Arphaxad lived after he begat Salah four hundred and three years, and begat sons and daughters.
+
+> **14** And Salah lived thirty years, and begat Eber:
+
+After Babel scatters the nations, Genesis narrows the camera.
+
+The story moves from the whole earth to one family line.
+
+This is how Genesis often works.
+
+Wide world.
+
+Then one line.
+
+Many nations.
+
+Then one family.
+
+🌍 Babel shows the scattered nations.
+
+🧬 Shem's line carries the story forward.
+
+📜 Genealogy preserves memory and promise.
+
+👶 Births keep moving the story through time.
+
+🚶 The line is quietly walking toward Abram.
+
+### 📜 These Are the Generations
+
+The phrase "these are the generations" is one of Genesis's major markers.
+
+It means we are entering a family record.
+
+Ancient readers did not treat genealogies as filler.
+
+They preserved identity, inheritance, memory, and the path of the story.
+
+### 🧬 Shem
+
+Shem matters because the covenant line will move through him.
+
+Genesis 10 already named Shem as one of Noah's sons.
+
+Now Genesis follows his line more closely.
+
+The story of Abram will not appear out of nowhere.
+
+It is being carried through generations.
+
+### 👶 Begat
+
+The KJV word "begat" means fathered or became the ancestor of.
+
+That word repeats because Genesis is tracing descent.
+
+To modern readers, repetition can feel slow.
+
+But in Genesis, repetition often teaches patience.
+
+God works through real families across real time.
+
+### ⏳ After the Flood
+
+Verse 10 says Arphaxad was born two years after the flood.
+
+That detail connects Genesis 11 back to Noah.
+
+The flood is still close in the memory of the chapter.
+
+Humanity has already been judged once for corruption, and yet Babel shows pride rising again.
+
+The human heart still needs more than a new start.
+
+## Genesis 11:15 to 20
+
+# 🧬 The Line Keeps Moving
+
+> **15** And Salah lived after he begat Eber four hundred and three years, and begat sons and daughters.
+
+> **16** And Eber lived four and thirty years, and begat Peleg:
+
+> **17** And Eber lived after he begat Peleg four hundred and thirty years, and begat sons and daughters.
+
+> **18** And Peleg lived thirty years, and begat Reu:
+
+> **19** And Peleg lived after he begat Reu two hundred and nine years, and begat sons and daughters.
+
+> **20** And Reu lived two and thirty years, and begat Serug:
+
+This section keeps the family line moving.
+
+Names appear quickly.
+
+Years pass.
+
+Sons and daughters are born.
+
+The story keeps narrowing toward Abram.
+
+🧬 Eber stands inside the line that will matter later.
+
+👶 Sons and daughters remind us these are real households.
+
+⏳ Lifespans are long, but time is moving forward.
+
+📜 The promise story is being preserved through genealogy.
+
+🙏 God is working before anyone in the chapter fully sees the plan.
+
+### 🧬 Eber
+
+Eber is an important name.
+
+Many connect the word Hebrew with Eber.
+
+Whether every detail is simple or not, Genesis clearly slows enough for us to notice this line.
+
+Abram's story is being prepared through family history.
+
+### 👶 Sons and Daughters
+
+Genesis keeps saying these men begat sons and daughters.
+
+That means the named line is not the only family life happening.
+
+There are households around the covenant line.
+
+Genesis is focusing the camera, not saying no one else existed.
+
+### ⏳ Years Passing
+
+The repeated years make us feel time.
+
+God's plan does not always look dramatic while it is happening.
+
+Sometimes it looks like generations being born, growing old, having children, and passing the story forward.
+
+### 🚶 Moving Toward Abram
+
+The reader knows Abram is coming.
+
+But the genealogy makes us wait.
+
+That waiting matters.
+
+Genesis is teaching us that God's call often has a long background before the person hears it clearly.
+
+## Genesis 11:21 to 26
+
+# 👶 Abram Comes Into View
+
+> **21** And Reu lived after he begat Serug two hundred and seven years, and begat sons and daughters.
+
+> **22** And Serug lived thirty years, and begat Nahor:
+
+> **23** And Serug lived after he begat Nahor two hundred years, and begat sons and daughters.
+
+> **24** And Nahor lived nine and twenty years, and begat Terah:
+
+> **25** And Nahor lived after he begat Terah an hundred and nineteen years, and begat sons and daughters.
+
+> **26** And Terah lived seventy years, and begat Abram, Nahor, and Haran.
+
+Now Abram finally appears.
+
+The whole chapter has been moving here.
+
+After Babel, after Shem, after generations, after repeated births and years, Genesis names Abram.
+
+👶 Abram enters the story through Terah's family.
+
+🧬 The line narrows from nations to one household.
+
+📜 The genealogy prepares the covenant story.
+
+⏳ God's plan has been moving before Abram speaks a word.
+
+🌱 Promise is about to begin in a new way.
+
+### 👶 Terah Begat Abram
+
+Verse 26 names Abram, Nahor, and Haran.
+
+Abram is not yet called Abraham.
+
+He has not yet received the covenant promises.
+
+He is introduced first as part of a family.
+
+That matters because God's call comes into real family history.
+
+### 🧬 One Family From the Nations
+
+Genesis 10 showed nations spreading.
+
+Genesis 11 showed Babel scattered.
+
+Now the story narrows to one family.
+
+This does not mean God has stopped caring about the nations.
+
+It means God is preparing one family through whom blessing will eventually reach the nations.
+
+### 🌱 Before the Call
+
+Abram appears before Genesis 12's famous call.
+
+That is important.
+
+God's work in Abram's life begins before Abram understands the whole story.
+
+The background matters.
+
+The family matters.
+
+The road matters.
+
+## Genesis 11:27 to 30
+
+# 🏕️ Abram's Family Comes Into View
+
+> **27** Now these are the generations of Terah: Terah begat Abram, Nahor, and Haran; and Haran begat Lot.
+
+> **28** And Haran died before his father Terah in the land of his nativity, in Ur of the Chaldees.
+
+> **29** And Abram and Nahor took them wives: the name of Abram's wife was Sarai; and the name of Nahor's wife, Milcah, the daughter of Haran, the father of Milcah, and the father of Iscah.
+
+> **30** But Sarai was barren; she had no child.
+
+Genesis now zooms in even closer.
+
+This is no longer only genealogy.
+
+Now there is grief.
+
+Marriage.
+
+Barrenness.
+
+Family pain.
+
+The promise story is about to begin inside a wounded household.
+
+🏕️ Terah's household becomes the focus.
+
+💔 Haran dies before his father.
+
+👶 Lot enters the story as Haran's son.
+
+💍 Abram marries Sarai.
+
+😢 Sarai is barren and has no child.
+
+### 📜 The Generations of Terah
+
+The phrase "generations of Terah" marks a new focus.
+
+Genesis is not merely listing names anymore.
+
+It is bringing Abram's household into view.
+
+The story is becoming personal.
+
+### 💔 Haran Died
+
+Haran dies before his father Terah.
+
+That means this family knows grief before Abram ever receives the call.
+
+Lot grows up with the loss of his father.
+
+Terah buries a son.
+
+Abram loses a brother.
+
+The life of faith does not begin in a perfect family story.
+
+### 🌆 Ur of the Chaldees
+
+Haran dies in Ur of the Chaldees.
+
+Ur was a significant city in Mesopotamia.
+
+Abram's story begins in a real place with real culture, family ties, and history.
+
+When God later calls Abram to leave, that leaving will be costly.
+
+### 💍 Sarai
+
+Abram's wife is named Sarai.
+
+She is not a side character.
+
+The promise of a child will land directly on her life and body.
+
+Genesis names her before the promise because her pain will become one of the central impossibilities God addresses.
+
+### 😢 Sarai Was Barren
+
+Verse 30 is one of the most important lines in the Abraham story.
+
+Sarai was barren.
+
+She had no child.
+
+That means the promise of descendants will not be easy, natural, or humanly simple.
+
+Before God promises a great nation, Genesis names the impossibility.
+
+That is how the chapter prepares us for grace.
+
+## Genesis 11:31 to 32
+
+# 🚶 The Journey Starts But Stops Short
+
+> **31** And Terah took Abram his son, and Lot the son of Haran his son's son, and Sarai his daughter in law, his son Abram's wife; and they went forth with them from Ur of the Chaldees, to go into the land of Canaan; and they came unto Haran, and dwelt there.
+
+> **32** And the days of Terah were two hundred and five years: and Terah died in Haran.
+
+Genesis 11 ends with movement.
+
+Terah's family leaves Ur.
+
+They are going toward Canaan.
+
+But they stop in Haran.
+
+The road begins, but it is unfinished.
+
+🚶 The family leaves Ur.
+
+🗺️ The destination is Canaan.
+
+⏸️ The journey stops in Haran.
+
+💔 Terah dies there.
+
+🌅 Genesis 12 will open with God's call to Abram to keep going.
+
+### 🚶 They Went Forth
+
+The family goes out from Ur of the Chaldees.
+
+This matters because Abram's journey toward Canaan begins before Genesis 12.
+
+There is already movement in the family story.
+
+But the movement is not yet complete.
+
+### 🗺️ To Go Into the Land of Canaan
+
+The destination is named:
+
+Canaan.
+
+That is the land God will promise Abram's descendants.
+
+Before Abram hears the direct call, the road toward promise is already appearing in the story.
+
+### ⏸️ They Came Unto Haran and Dwelt There
+
+The family stops in Haran.
+
+They dwell there.
+
+That means the journey pauses short of Canaan.
+
+This is a powerful ending.
+
+Genesis 11 closes with an unfinished road.
+
+### 💔 Terah Died in Haran
+
+Terah dies in Haran.
+
+The chapter ends with death and incompletion.
+
+That makes Genesis 12 feel even stronger.
+
+After Babel's pride, after the scattered nations, after the genealogy, after family grief, after Sarai's barrenness, after the stopped journey, God speaks.
+
+The call of Abram begins where Genesis 11 leaves us:
+
+in an unfinished place.
+
+# The Big Lesson of Genesis 11
+
+Genesis 11 teaches that human pride cannot build its way into blessing.
+
+Babel tries to make a name without God.
+
+God scatters that pride.
+
+Then Genesis narrows the story toward Abram, showing that God's answer to scattered humanity will not come through human empire.
+
+It will come through covenant promise.
+
+Genesis 11 also teaches that God's call often has a long background.
+
+Before Abram hears "Go," there is Babel, Shem's line, family grief, Sarai's barrenness, and a journey that stops short.
+
+God is already preparing the road before Abram understands the destination.
+
+# Final Thought on Genesis 11
+
+🏙️ Babel shows pride trying to build security without God.
+
+🗣️ Confused language shows God interrupting organized rebellion.
+
+🌍 Scattering shows God's purpose moving forward despite human resistance.
+
+🧬 Shem's genealogy shows God preserving the line toward Abram.
+
+😢 Sarai's barrenness shows the impossible place where promise will land.
+
+🚶 Haran shows an unfinished road waiting for God's call.
+
+# Pause and Reflect
+
+🏙️ Where do people still try to build a name without God?
+
+🗣️ What does Babel teach you about unity without surrender?
+
+🧬 Why do genealogies matter in the story of God's promise?
+
+😢 How does Sarai's barrenness prepare you for the Abraham story?
+
+🚶 What unfinished place might God use as the beginning of obedience?`;
+
+const GENESIS_12_STANDARD_NOTES = `# Genesis 12
+
+# 🚶 Abram Is Called, Tested, and Preserved
+
+Genesis 12 is where Abram's journey begins in full.
+
+God speaks.
+
+Abram leaves.
+
+The promise is given.
+
+The land is shown.
+
+Altars are built.
+
+Then famine comes.
+
+That matters because Genesis does not present faith like a perfect straight line. Abram obeys God in a real way, but fear still rises when survival feels threatened.
+
+Genesis 12 shows both obedience and weakness in the same chapter.
+
+It also shows that God's promise is stronger than Abram's fear.
+
+## Why Genesis 12 Matters
+
+📣 It introduces God's direct call to Abram.
+
+🚶 It shows obedience before Abram has the full map.
+
+🧬 It gives the promise of nation, blessing, name, land, and worldwide blessing.
+
+🪨 It shows Abram building altars in the land.
+
+🌾 It shows famine testing faith immediately after obedience.
+
+😨 It shows Abram's fear in Egypt.
+
+🛡️ It shows God protecting Sarai and the promise.
+
+## Chapter Flow
+
+📣 God calls Abram to leave country, kindred, and father's house.
+
+🧬 God promises nation, blessing, name, and blessing for all families of the earth.
+
+🚶 Abram departs with Sarai, Lot, and his household.
+
+🪨 Abram builds altars in Canaan.
+
+🌾 Famine drives Abram down into Egypt.
+
+😨 Fear leads Abram into deception.
+
+🛡️ God protects Sarai and sends Abram out of Egypt.
+
+# Deep Chapter Notes
+
+## Genesis 12:1 to 3
+
+# 📣 God Calls Abram
+
+> **1** Now the LORD had said unto Abram, Get thee out of thy country, and from thy kindred, and from thy father's house, unto a land that I will shew thee:
+
+> **2** And I will make of thee a great nation, and I will bless thee, and make thy name great; and thou shalt be a blessing:
+
+> **3** And I will bless them that bless thee, and curse him that curseth thee: and in thee shall all families of the earth be blessed.
+
+Genesis 12 begins with the voice of God.
+
+After Babel, after scattered languages, after generations, after Terah's unfinished road, the LORD speaks to Abram.
+
+The call is personal.
+
+The promise is massive.
+
+And the obedience will be costly.
+
+📣 God calls Abram out of the familiar.
+
+🏠 Abram must leave country, kindred, and father's house.
+
+🗺️ God promises a land Abram has not yet seen.
+
+🧬 God promises a great nation to a man whose wife is barren.
+
+🌍 God promises blessing for all families of the earth.
+
+### 📣 Get Thee Out
+
+God tells Abram, "Get thee out."
+
+That means Abram must leave.
+
+Faith begins here with movement.
+
+Abram is not given every detail first.
+
+He is given God's word.
+
+That is the foundation of the journey.
+
+### 🏠 Country, Kindred, and Father's House
+
+God names three layers Abram must leave:
+
+country, kindred, and father's house.
+
+This is not a small move.
+
+In the ancient world, family and land meant protection, identity, inheritance, support, and belonging.
+
+Abram is being called away from the structures that made life feel secure.
+
+### 🗺️ Unto a Land That I Will Shew Thee
+
+God does not give Abram a full map.
+
+He says He will show him the land.
+
+That means Abram has to obey with partial information.
+
+Faith is not pretending to know everything.
+
+Faith is trusting the God who knows the destination.
+
+### 🧬 I Will Make of Thee a Great Nation
+
+This promise sounds impossible already.
+
+Genesis 11 told us Sarai was barren.
+
+Now God promises Abram a great nation.
+
+That means the promise lands directly on the impossible place.
+
+God's word is bigger than what Abram can produce.
+
+### 👑 Make Thy Name Great
+
+Babel tried to make a name for itself.
+
+God promises to make Abram's name great.
+
+This contrast matters.
+
+Greatness grabbed by pride becomes confusion.
+
+Greatness received from God becomes blessing.
+
+### 🌍 All Families of the Earth
+
+God says all families of the earth will be blessed in Abram.
+
+This is global from the beginning.
+
+God is not choosing Abram because He stopped caring about the nations.
+
+He is choosing Abram as the family through whom blessing will move toward the nations.
+
+The Bible's mission story is already starting here.
+
+## Genesis 12:4 to 5
+
+# 🚶 Abram Departs
+
+> **4** So Abram departed, as the LORD had spoken unto him; and Lot went with him: and Abram was seventy and five years old when he departed out of Haran.
+
+> **5** And Abram took Sarai his wife, and Lot his brother's son, and all their substance that they had gathered, and the souls that they had gotten in Haran; and they went forth to go into the land of Canaan; and into the land of Canaan they came.
+
+Abram responds to God's word with movement.
+
+The chapter does not say Abram understood everything.
+
+It says he departed.
+
+That is important.
+
+Faith becomes visible through obedience.
+
+🚶 Abram leaves because God spoke.
+
+👴 Abram is seventy-five years old.
+
+👨‍👩‍👧 The journey includes Sarai, Lot, servants, and household life.
+
+🎒 They take gathered substance with them.
+
+🗺️ They go toward Canaan and arrive there.
+
+### 🚶 So Abram Departed
+
+This is one of the clearest obedience lines in the chapter.
+
+God speaks.
+
+Abram goes.
+
+The obedience is simple to read, but not simple to live.
+
+Abram is leaving behind a known world for a promised future.
+
+### 👴 Seventy and Five Years Old
+
+Abram is seventy-five.
+
+That matters.
+
+This is not a teenager running toward adventure.
+
+This is an older man with a wife, a household, possessions, responsibilities, and history.
+
+God's call can come when life already feels established.
+
+### 👨‍👩‍👧 Sarai and Lot
+
+Abram does not travel alone.
+
+Sarai goes with him.
+
+Lot goes with him.
+
+This matters because obedience affects a household.
+
+Abram's faith will shape the lives of the people traveling with him.
+
+### 🎒 Substance and Souls
+
+The KJV says Abram took all their substance and the souls they had gotten in Haran.
+
+"Substance" means possessions, livestock, goods, and resources.
+
+"Souls" means people connected to Abram's household, such as servants, workers, and dependents.
+
+Abram is not moving like a lone wanderer.
+
+He is leading a household.
+
+### 🗺️ Into the Land of Canaan
+
+The text says they went into the land of Canaan, and into the land of Canaan they came.
+
+The repetition makes the arrival feel important.
+
+Genesis 11 ended with the journey stopping short.
+
+Genesis 12 shows Abram arriving where the earlier road did not finish.
+
+## Genesis 12:6 to 9
+
+# 🪨 Altars in the Land
+
+> **6** And Abram passed through the land unto the place of Sichem, unto the plain of Moreh. And the Canaanite was then in the land.
+
+> **7** And the LORD appeared unto Abram, and said, Unto thy seed will I give this land: and there builded he an altar unto the LORD, who appeared unto him.
+
+> **8** And he removed from thence unto a mountain on the east of Bethel, and pitched his tent, having Bethel on the west, and Hai on the east: and there he builded an altar unto the LORD, and called upon the name of the LORD.
+
+> **9** And Abram journeyed, going on still toward the south.
+
+Abram arrives in Canaan, but the promise is not simple.
+
+The Canaanite is already in the land.
+
+God promises land while Abram can see that other people live there.
+
+So Abram worships before he possesses.
+
+📍 Abram passes through real places in Canaan.
+
+👀 The Canaanite is already in the land.
+
+🧬 God promises the land to Abram's seed.
+
+🪨 Abram builds altars.
+
+🏕️ Abram lives in tents while trusting the promise.
+
+### 📍 Sichem and Moreh
+
+Abram passes through Sichem, also known as Shechem, and the plain of Moreh.
+
+These place names matter because the promise is becoming geographic.
+
+God's word is not floating in the air.
+
+Abram is standing in a real land with real locations.
+
+### 👀 The Canaanite Was Then in the Land
+
+This line creates tension.
+
+God is promising land, but the land is occupied.
+
+Abram's faith is immediately asked to live with visible obstacles.
+
+Promise does not mean there are no complications.
+
+It means God's word is still true in the middle of them.
+
+### 🧬 Unto Thy Seed
+
+God says, "Unto thy seed will I give this land."
+
+"Seed" means offspring or descendants.
+
+This is powerful because Abram still has no child.
+
+The land promise and the child promise are tied together, and both require God's power.
+
+### 🪨 He Builded an Altar
+
+Abram builds an altar to the LORD.
+
+An altar is a place of worship, sacrifice, remembrance, and encounter with God.
+
+Abram does not own the land yet, but he worships the God who promised it.
+
+That is faith.
+
+### 🏕️ Tent and Altar
+
+Verse 8 shows Abram pitching his tent and building another altar.
+
+The tent says he is not settled yet.
+
+The altar says he is anchored in God.
+
+That combination matters.
+
+Abram's life is temporary on the ground, but steady in worship.
+
+## Genesis 12:10 to 13
+
+# 🌾 Famine and Fear
+
+> **10** And there was a famine in the land: and Abram went down into Egypt to sojourn there; for the famine was grievous in the land.
+
+> **11** And it came to pass, when he was come near to enter into Egypt, that he said unto Sarai his wife, Behold now, I know that thou art a fair woman to look upon:
+
+> **12** Therefore it shall come to pass, when the Egyptians shall see thee, that they shall say, This is his wife: and they will kill me, but they will save thee alive.
+
+> **13** Say, I pray thee, thou art my sister: that it may be well with me for thy sake; and my soul shall live because of thee.
+
+The chapter turns quickly.
+
+Abram obeyed.
+
+Abram arrived.
+
+Abram worshiped.
+
+Then famine came.
+
+That is very honest.
+
+Obedience does not mean life becomes easy immediately.
+
+🌾 Famine tests Abram in the promised land.
+
+⬇️ Abram goes down into Egypt.
+
+😨 Fear grows as he nears Egypt.
+
+👀 Sarai's beauty becomes part of Abram's fear.
+
+🗣️ Abram asks Sarai to say she is his sister.
+
+### 🌾 Famine in the Land
+
+Famine means severe lack of food.
+
+This is a shock because it happens in the land connected to promise.
+
+Abram is obeying God, and the land still becomes difficult.
+
+That teaches us something important.
+
+Testing can come after obedience, not only after disobedience.
+
+### ⬇️ Went Down Into Egypt
+
+Abram goes down into Egypt to sojourn there.
+
+"Sojourn" means to live somewhere temporarily as a resident foreigner.
+
+Egypt looks like survival in the moment.
+
+But Egypt will also become a place where Abram's fear is exposed.
+
+### 👀 A Fair Woman
+
+Abram says Sarai is a fair woman to look upon.
+
+"Fair" means beautiful.
+
+In the ancient world, beauty near power could become dangerous, especially around kings and royal households.
+
+Abram's concern is not random, but his plan becomes wrong.
+
+### 😨 They Will Kill Me
+
+Abram imagines that the Egyptians will kill him to take Sarai.
+
+Fear begins shaping the story.
+
+Abram is not trusting God's protection clearly here.
+
+He is calculating survival.
+
+Fear often makes people treat self-protection like wisdom.
+
+### 🗣️ Thou Art My Sister
+
+Abram tells Sarai to say she is his sister.
+
+This is a half-truth that functions as deception.
+
+Genesis 20 later tells us Sarai is related to Abram, but that does not make the plan righteous here.
+
+Abram is using a technical truth to hide the deeper truth.
+
+## Genesis 12:14 to 16
+
+# 🏛️ Sarai Is Taken Into Pharaoh's House
+
+> **14** And it came to pass, that, when Abram was come into Egypt, the Egyptians beheld the woman that she was very fair.
+
+> **15** The princes also of Pharaoh saw her, and commended her before Pharaoh: and the woman was taken into Pharaoh's house.
+
+> **16** And he entreated Abram well for her sake: and he had sheep, and oxen, and he asses, and menservants, and maidservants, and she asses, and camels.
+
+Abram's plan does not protect Sarai.
+
+It places her in danger.
+
+The thing Abram feared now happens in a different form.
+
+Sarai is taken into Pharaoh's house, and Abram benefits materially because of her.
+
+👀 The Egyptians notice Sarai's beauty.
+
+🏛️ Pharaoh's princes commend her.
+
+😢 Sarai is taken into Pharaoh's house.
+
+💰 Abram receives wealth because of her.
+
+⚠️ The promise is now in danger.
+
+### 👀 The Egyptians Beheld Her
+
+Verse 14 says the Egyptians saw that Sarai was very fair.
+
+Abram predicted this part correctly.
+
+But seeing danger correctly does not mean his response was faithful.
+
+Fear can diagnose a risk and still choose a wrong solution.
+
+### 🏛️ Pharaoh's House
+
+Sarai is taken into Pharaoh's house.
+
+This is dangerous because Sarai is the woman through whom the promise will later move.
+
+If Sarai is absorbed into Pharaoh's house, the promise story is threatened.
+
+Abram's fear has created a crisis.
+
+### 💰 He Entreated Abram Well
+
+Pharaoh treats Abram well for Sarai's sake.
+
+Abram receives animals and servants.
+
+This wealth is uncomfortable because it comes through compromise.
+
+Genesis is not asking us to celebrate this moment.
+
+It is showing how fear can bring gain while creating moral danger.
+
+### ⚠️ Prosperity Tangled With Compromise
+
+Abram leaves this scene with more possessions, but that does not mean his choice was right.
+
+The Bible is honest enough to show that wrong choices can sometimes appear profitable for a moment.
+
+But the promise is safer in God's hands than in Abram's fearful strategy.
+
+## Genesis 12:17 to 20
+
+# 🛡️ God Protects Sarai
+
+> **17** And the LORD plagued Pharaoh and his house with great plagues because of Sarai Abram's wife.
+
+> **18** And Pharaoh called Abram, and said, What is this that thou hast done unto me? why didst thou not tell me that she was thy wife?
+
+> **19** Why saidst thou, She is my sister? so I might have taken her to me to wife: now therefore behold thy wife, take her, and go thy way.
+
+> **20** And Pharaoh commanded his men concerning him: and they sent him away, and his wife, and all that he had.
+
+God intervenes.
+
+Abram's plan has failed morally.
+
+Sarai is in danger.
+
+The promise is threatened.
+
+But the LORD protects what Abram endangered.
+
+🛡️ The LORD protects Sarai.
+
+⚠️ Pharaoh's house is plagued.
+
+🗣️ Pharaoh rebukes Abram.
+
+😔 Abram's fear is exposed.
+
+🚪 Abram is sent away with Sarai and all he has.
+
+### 🛡️ The LORD Plagued Pharaoh
+
+The LORD sends great plagues on Pharaoh and his house because of Sarai.
+
+This is God protecting Sarai and the promise.
+
+Abram did not rescue the situation.
+
+God did.
+
+The covenant story continues because God is faithful, not because Abram handled Egypt well.
+
+### ❓ What Is This That Thou Hast Done?
+
+Pharaoh asks Abram, "What is this that thou hast done unto me?"
+
+That question is painful.
+
+The outsider sees the wrong clearly.
+
+The man of promise is being rebuked by a foreign king.
+
+Genesis does not make Abram look fake-perfect.
+
+### 🗣️ Why Saidst Thou, She Is My Sister?
+
+Pharaoh names the deception.
+
+Abram's half-truth is exposed.
+
+This matters because fear often wants to hide behind careful wording.
+
+But God brings the truth into the open.
+
+### 🚪 Take Her, and Go Thy Way
+
+Pharaoh returns Sarai and sends Abram away.
+
+That is mercy.
+
+The danger is ended.
+
+The promise is preserved.
+
+But Abram leaves Egypt with his weakness exposed.
+
+### 🎒 All That He Had
+
+Abram leaves with his wife and all that he had.
+
+God has protected the promise despite Abram's fear.
+
+This does not excuse Abram's failure.
+
+It magnifies God's faithfulness.
+
+Genesis 12 ends with Abram preserved by grace.
+
+# The Big Lesson of Genesis 12
+
+Genesis 12 teaches that faith begins with God's word.
+
+Abram leaves because God speaks.
+
+He walks toward a promise he cannot yet see.
+
+He worships in a land he does not yet own.
+
+But Genesis 12 also teaches that real faith can still have real fear.
+
+Abram obeys in one scene and compromises in another.
+
+The good news is that God's promise does not collapse under Abram's weakness.
+
+God protects Sarai.
+
+God preserves the promise.
+
+And the journey continues.
+
+# Final Thought on Genesis 12
+
+📣 God's call asks Abram to leave the familiar.
+
+🚶 Abram obeys before he has the full map.
+
+🧬 The promise reaches toward all families of the earth.
+
+🪨 Abram worships before he owns the land.
+
+🌾 Famine tests faith in the promised place.
+
+😨 Fear leads Abram into deception.
+
+🛡️ God protects what Abram endangered.
+
+# Pause and Reflect
+
+📣 What part of God's call requires trust before clarity?
+
+🚶 Where do you need obedience with feet, not only belief in your mind?
+
+🌾 How do you respond when testing comes after obedience?
+
+😨 Where does fear tempt you to protect yourself in the wrong way?
+
+🛡️ How does Genesis 12 help you see God's faithfulness in human weakness?`;
+
+const GENESIS_13_STANDARD_NOTES = `# Genesis 13
+
+# 🏕️ Abram Lets Go and God Repeats the Promise
+
+Genesis 13 shows Abram coming back from Egypt.
+
+He returns with Sarai.
+
+He returns with Lot.
+
+He returns with wealth.
+
+But he also returns from a chapter where fear shaped his choices.
+
+So Genesis 13 begins like a reset.
+
+Abram goes back to the place of the altar.
+
+He calls on the name of the LORD again.
+
+Then a new test comes.
+
+This time, the test is not famine.
+
+It is prosperity, conflict, and whether Abram will grasp for the best-looking land or trust God's promise enough to let Lot choose first.
+
+## Why Genesis 13 Matters
+
+🔁 It shows Abram returning from Egypt to worship.
+
+💰 It shows blessing creating pressure between Abram and Lot.
+
+🤝 It shows Abram choosing peace instead of control.
+
+👀 It shows Lot choosing by sight.
+
+⚠️ It warns that good-looking land can still pull a person toward danger.
+
+🧬 It shows God repeating the land and seed promise after Abram lets go.
+
+🪨 It ends with Abram building another altar.
+
+## Chapter Flow
+
+🔁 Abram returns from Egypt to Bethel.
+
+🪨 Abram calls on the name of the LORD.
+
+💰 Abram and Lot have too many possessions to stay together.
+
+🤝 Abram gives Lot first choice.
+
+👀 Lot chooses the well-watered plain toward Sodom.
+
+🧬 God repeats the promise to Abram.
+
+🪨 Abram settles near Hebron and builds an altar.
+
+# Deep Chapter Notes
+
+## Genesis 13:1 to 4
+
+# 🔁 Abram Returns to Worship
+
+> **1** And Abram went up out of Egypt, he, and his wife, and all that he had, and Lot with him, into the south.
+
+> **2** And Abram was very rich in cattle, in silver, and in gold.
+
+> **3** And he went on his journeys from the south even to Bethel, unto the place where his tent had been at the beginning, between Bethel and Hai;
+
+> **4** Unto the place of the altar, which he had made there at the first: and there Abram called on the name of the LORD.
+
+Genesis 13 begins with Abram leaving Egypt.
+
+That matters because Egypt was the place where fear took over in Genesis 12.
+
+Abram is not finished.
+
+God has preserved him.
+
+Now he returns to the land and to the altar.
+
+🔁 Abram comes back from Egypt.
+
+👨‍👩‍👧 Sarai, Lot, and the household are still with him.
+
+💰 Abram is very rich.
+
+🏕️ He returns to the place where his tent had been.
+
+🪨 He comes back to the altar and calls on the LORD.
+
+### 🔁 Went Up Out of Egypt
+
+Verse 1 says Abram went up out of Egypt.
+
+This is more than travel.
+
+It feels like return after failure.
+
+Egypt exposed Abram's fear, but it did not end Abram's story.
+
+The road back matters.
+
+God's people sometimes have to return to the place of worship after a season where fear led them poorly.
+
+### 👨‍👩‍👧 He, His Wife, Lot, and All That He Had
+
+The text names the people and possessions with Abram.
+
+Sarai is still with him.
+
+Lot is still with him.
+
+All that he had is still with him.
+
+This shows God's preservation after Egypt.
+
+Abram's failure was real, but God's mercy carried the household forward.
+
+### 💰 Very Rich in Cattle, Silver, and Gold
+
+Abram is described as very rich.
+
+This wealth includes cattle, silver, and gold.
+
+That sounds like blessing, but Genesis will immediately show that wealth can create pressure.
+
+Blessing must be carried with wisdom.
+
+More possessions can mean more responsibility, more conflict, and more decisions.
+
+### 🏕️ Where His Tent Had Been at the Beginning
+
+Abram returns to the place where his tent had been at the beginning.
+
+The word "tent" matters in Abraham's story.
+
+It shows that Abram is still a pilgrim.
+
+He is in the promised land, but he is not settled like a king.
+
+He is still living by faith.
+
+### 🪨 The Place of the Altar
+
+Verse 4 says Abram comes back to the place of the altar.
+
+That is beautiful.
+
+After Egypt, the story does not bring Abram first to strategy.
+
+It brings him back to worship.
+
+The altar becomes a spiritual landmark.
+
+Abram calls on the name of the LORD again.
+
+## Genesis 13:5 to 9
+
+# 🤝 Abram Chooses Peace
+
+> **5** And Lot also, which went with Abram, had flocks, and herds, and tents.
+
+> **6** And the land was not able to bear them, that they might dwell together: for their substance was great, so that they could not dwell together.
+
+> **7** And there was a strife between the herdmen of Abram's cattle and the herdmen of Lot's cattle: and the Canaanite and the Perizzite dwelled then in the land.
+
+> **8** And Abram said unto Lot, Let there be no strife, I pray thee, between me and thee, and between my herdmen and thy herdmen; for we be brethren.
+
+> **9** Is not the whole land before thee? separate thyself, I pray thee, from me: if thou wilt take the left hand, then I will go to the right; or if thou depart to the right hand, then I will go to the left.
+
+Prosperity now creates pressure.
+
+Abram and Lot both have large households.
+
+Their animals need pasture.
+
+Their workers need space.
+
+The land cannot easily carry both camps together.
+
+So conflict rises.
+
+💰 Lot also has flocks, herds, and tents.
+
+🏞️ The land cannot support both households together.
+
+😠 Strife rises between the herdsmen.
+
+👥 Other peoples are still living in the land.
+
+🤝 Abram chooses peace and gives Lot first choice.
+
+### 💰 Flocks, Herds, and Tents
+
+Lot has flocks, herds, and tents too.
+
+This means Lot has grown with Abram.
+
+The blessing around Abram has affected Lot's household.
+
+But shared blessing can still produce tension when there is not enough room.
+
+### 🏞️ The Land Was Not Able to Bear Them
+
+The phrase means the land could not support both groups living together.
+
+This is practical.
+
+Animals need grazing land.
+
+Households need water.
+
+Workers need space.
+
+Genesis is showing ordinary pressure inside a faith story.
+
+### 😠 Strife Between the Herdmen
+
+The strife begins between the herdsmen.
+
+That matters.
+
+Family conflict often starts in daily pressure before it becomes a major break.
+
+Abram sees the conflict early and moves toward peace before it damages the relationship further.
+
+### 👥 The Canaanite and the Perizzite
+
+Verse 7 says the Canaanite and Perizzite were dwelling in the land.
+
+This detail increases the pressure.
+
+Abram and Lot are not alone in open empty territory.
+
+They are trying to live faithfully in land where other peoples already live.
+
+Their conflict is happening in public.
+
+### 🤝 Let There Be No Strife
+
+Abram says, "Let there be no strife."
+
+That is a strong faith moment.
+
+Abram could have used his senior position to choose first.
+
+Instead, he values peace over control.
+
+He calls Lot "brethren," reminding him that relationship matters more than winning the best-looking option.
+
+### 🧭 If Thou Wilt Take the Left Hand
+
+Abram gives Lot first choice.
+
+This is not weakness.
+
+It is trust.
+
+Abram can let go because the promise does not depend on grabbing.
+
+God has already spoken.
+
+Faith frees Abram from frantic self-protection.
+
+## Genesis 13:10 to 13
+
+# 👀 Lot Chooses by Sight
+
+> **10** And Lot lifted up his eyes, and beheld all the plain of Jordan, that it was well watered every where, before the LORD destroyed Sodom and Gomorrah, even as the garden of the LORD, like the land of Egypt, as thou comest unto Zoar.
+
+> **11** Then Lot chose him all the plain of Jordan; and Lot journeyed east: and they separated themselves the one from the other.
+
+> **12** Abram dwelled in the land of Canaan, and Lot dwelled in the cities of the plain, and pitched his tent toward Sodom.
+
+> **13** But the men of Sodom were wicked and sinners before the LORD exceedingly.
+
+Lot now chooses.
+
+He lifts his eyes and sees land that looks rich, watered, and promising.
+
+But Genesis lets the reader see more than Lot sees.
+
+The land looks good.
+
+But it is near Sodom.
+
+👀 Lot lifts his eyes and chooses by sight.
+
+💧 The plain of Jordan looks well-watered.
+
+🌿 It is compared to the garden of the LORD.
+
+⬅️ Lot journeys east.
+
+⚠️ Lot pitches his tent toward Sodom.
+
+😡 Sodom is wicked before the LORD.
+
+### 👀 Lot Lifted Up His Eyes
+
+Lot looks and chooses.
+
+This phrase matters because Genesis often cares about what people see and desire.
+
+Eve saw the fruit.
+
+The sons of God saw the daughters of men.
+
+Lot sees the well-watered plain.
+
+Seeing is not wrong by itself, but sight can become dangerous when it is disconnected from wisdom.
+
+### 💧 Well Watered Every Where
+
+The plain looks well-watered.
+
+That would be very attractive in a world of flocks, herds, and survival needs.
+
+Lot chooses what looks like security.
+
+But visible abundance is not the same as spiritual safety.
+
+### 🌿 Like the Garden of the LORD
+
+The land is compared to the garden of the LORD.
+
+That sounds beautiful.
+
+But Genesis adds a warning by mentioning Sodom and Gomorrah before their destruction.
+
+The place looks like Eden, but it is morally dangerous.
+
+Good-looking land can still be spiritually deadly.
+
+### ⬅️ Lot Journeyed East
+
+Lot journeys east.
+
+That direction matters in Genesis.
+
+Adam and Eve were driven east of Eden.
+
+Cain went east of Eden.
+
+The people of Babel journeyed east.
+
+Lot's eastward movement feels like another step toward danger.
+
+### ⚠️ Toward Sodom
+
+Lot pitches his tent toward Sodom.
+
+That line is quiet but heavy.
+
+He is not fully inside Sodom yet, but his direction has changed.
+
+Many dangerous choices begin this way:
+
+not all at once, but by pitching the tent toward what will later pull the heart.
+
+### 😡 Wicked and Sinners Before the LORD
+
+Verse 13 tells us the truth about Sodom.
+
+The men of Sodom were wicked and sinners before the LORD exceedingly.
+
+Lot sees water.
+
+God sees wickedness.
+
+That contrast is the warning of the chapter.
+
+## Genesis 13:14 to 18
+
+# 🧬 God Repeats the Promise
+
+> **14** And the LORD said unto Abram, after that Lot was separated from him, Lift up now thine eyes, and look from the place where thou art northward, and southward, and eastward, and westward:
+
+> **15** For all the land which thou seest, to thee will I give it, and to thy seed for ever.
+
+> **16** And I will make thy seed as the dust of the earth: so that if a man can number the dust of the earth, then shall thy seed also be numbered.
+
+> **17** Arise, walk through the land in the length of it and in the breadth of it; for I will give it unto thee.
+
+> **18** Then Abram removed his tent, and came and dwelt in the plain of Mamre, which is in Hebron, and built there an altar unto the LORD.
+
+After Lot leaves, God speaks again.
+
+That timing matters.
+
+Abram has let go of first choice.
+
+He has chosen peace.
+
+He has trusted God instead of grasping.
+
+Then the LORD tells Abram to lift up his eyes.
+
+🧭 God tells Abram to look in every direction.
+
+🗺️ God promises all the land Abram sees.
+
+🧬 God promises descendants like dust.
+
+🚶 God tells Abram to walk through the land.
+
+🪨 Abram builds another altar.
+
+### 🧭 Lift Up Now Thine Eyes
+
+Lot lifted up his eyes to choose for himself.
+
+Now God tells Abram to lift up his eyes.
+
+That contrast matters.
+
+Lot looks by desire.
+
+Abram looks by promise.
+
+The same action can come from very different hearts.
+
+### 🗺️ Northward, Southward, Eastward, and Westward
+
+God tells Abram to look in every direction.
+
+This is a full promise.
+
+Abram gave Lot first choice, but Abram did not lose the promise.
+
+Letting go did not make him poor in God's plan.
+
+### 🧬 To Thy Seed for Ever
+
+God repeats the seed promise.
+
+"Seed" means descendants.
+
+Abram still has no child, but God keeps speaking about his future family.
+
+That repetition builds faith.
+
+God does not only call once and then stay silent.
+
+He repeats promise when Abram needs to keep walking.
+
+### 🌾 As the Dust of the Earth
+
+God compares Abram's descendants to the dust of the earth.
+
+This is a picture of number beyond counting.
+
+It is also deeply earthy.
+
+Abram is walking on the very ground that becomes a symbol of the family God will give him.
+
+### 🚶 Walk Through the Land
+
+God tells Abram to walk through the land.
+
+This is not ownership by force.
+
+It is faith learning the promise with his feet.
+
+Abram is invited to move through what God has spoken over him.
+
+### 🪨 Built There an Altar
+
+Genesis 13 ends with another altar.
+
+Abram settles near Mamre in Hebron and builds an altar to the LORD.
+
+This is the right ending.
+
+Lot chooses by sight and moves toward Sodom.
+
+Abram receives promise and worships.
+
+# The Big Lesson of Genesis 13
+
+Genesis 13 teaches that faith can let go because God has already spoken.
+
+Abram does not have to grasp for the best-looking land.
+
+He does not have to control Lot.
+
+He does not have to secure the promise by force.
+
+He chooses peace.
+
+Lot chooses by sight.
+
+And God repeats the promise to Abram.
+
+The chapter asks a simple but searching question:
+
+Do we trust God's promise enough to release what looks like advantage?
+
+# Final Thought on Genesis 13
+
+🔁 Abram returns to worship after Egypt.
+
+💰 Blessing can create pressure if the heart is not guarded.
+
+🤝 Abram chooses peace instead of control.
+
+👀 Lot chooses by sight.
+
+⚠️ Direction matters before disaster arrives.
+
+🧬 God repeats the promise after Abram lets go.
+
+🪨 Abram answers promise with worship.
+
+# Pause and Reflect
+
+🤝 Where do you need to choose peace instead of control?
+
+👀 What good-looking choice might still be spiritually dangerous?
+
+🏕️ What does Lot's tent toward Sodom warn you about?
+
+🧬 How does God's repeated promise help Abram let go?
+
+🪨 Where do you need to return to worship after a hard decision?`;
+
+const GENESIS_14_STANDARD_NOTES = `# Genesis 14
+
+# ⚔️ Abram Rescues Lot and Refuses Sodom's Reward
+
+Genesis 14 brings Abram into a world of kings, war, raids, rescue, blessing, and temptation.
+
+This chapter feels very different from Genesis 13.
+
+Genesis 13 was about family conflict and Lot choosing by sight.
+
+Genesis 14 shows the consequences of Lot's direction.
+
+Lot has moved near Sodom, and now Sodom's war becomes Lot's danger.
+
+Abram steps into the crisis, rescues Lot, receives blessing from Melchizedek, and then refuses to let the king of Sodom define the source of his future.
+
+## Why Genesis 14 Matters
+
+⚔️ It shows the violent political world around Abram.
+
+🏙️ It shows Lot's connection to Sodom becoming dangerous.
+
+🛡️ It shows Abram acting with courage to rescue family.
+
+🍞 It introduces Melchizedek, king of Salem and priest of the most high God.
+
+🙏 It shows Abram honoring God after victory.
+
+💰 It shows Abram refusing Sodom's reward.
+
+🧬 It protects the promise from being confused with corrupt wealth.
+
+## Chapter Flow
+
+👑 Kings go to war.
+
+⚔️ Rebellion leads to battle.
+
+🏙️ Sodom falls and Lot is captured.
+
+🛡️ Abram gathers trained servants and rescues Lot.
+
+🍞 Melchizedek blesses Abram.
+
+🙏 Abram gives tithes.
+
+💰 Abram refuses the king of Sodom's goods.
+
+# Deep Chapter Notes
+
+## Genesis 14:1 to 4
+
+# 👑 Kings and Rebellion
+
+> **1** And it came to pass in the days of Amraphel king of Shinar, Arioch king of Ellasar, Chedorlaomer king of Elam, and Tidal king of nations;
+
+> **2** That these made war with Bera king of Sodom, and with Birsha king of Gomorrah, Shinab king of Admah, and Shemeber king of Zeboiim, and the king of Bela, which is Zoar.
+
+> **3** All these were joined together in the vale of Siddim, which is the salt sea.
+
+> **4** Twelve years they served Chedorlaomer, and in the thirteenth year they rebelled.
+
+Genesis 14 opens with kings and war.
+
+The story suddenly widens.
+
+Abram's family story is now surrounded by regional conflict, political power, tribute, rebellion, and violence.
+
+👑 Kings are named because real powers are moving.
+
+⚔️ War breaks out between coalitions.
+
+🏙️ Sodom and Gomorrah are involved.
+
+📍 The battle gathers around the vale of Siddim.
+
+🔥 Rebellion follows years of serving Chedorlaomer.
+
+### 👑 The Kings Are Named
+
+The chapter begins by naming kings.
+
+That can feel distant to modern readers, but it matters.
+
+Abram is not living in a quiet empty land.
+
+He is living among rulers, cities, alliances, and conflict.
+
+The promise of God is moving through a real world with real political pressure.
+
+### 🏙️ Sodom and Gomorrah
+
+Sodom appears again.
+
+Genesis 13 already warned us that Sodom was wicked before the LORD.
+
+Now Sodom is part of a war.
+
+Lot chose the plain near Sodom because it looked good.
+
+But the place he moved toward is not spiritually safe or politically safe.
+
+### 📍 Vale of Siddim
+
+The kings gather in the vale of Siddim.
+
+The text says this is the salt sea area.
+
+Genesis is locating the battle in a real region.
+
+This is not abstract conflict.
+
+The war is tied to land, cities, kings, and survival.
+
+### 🔥 Served and Rebelled
+
+Verse 4 says the kings served Chedorlaomer twelve years, and rebelled in the thirteenth.
+
+This is ancient politics.
+
+Smaller kings could serve a stronger king by paying tribute or living under his control.
+
+Rebellion meant they refused that arrangement.
+
+War follows.
+
+## Genesis 14:5 to 9
+
+# ⚔️ The Battle Expands
+
+> **5** And in the fourteenth year came Chedorlaomer, and the kings that were with him, and smote the Rephaims in Ashteroth Karnaim, and the Zuzims in Ham, and the Emims in Shaveh Kiriathaim,
+
+> **6** And the Horites in their mount Seir, unto Elparan, which is by the wilderness.
+
+> **7** And they returned, and came to Enmishpat, which is Kadesh, and smote all the country of the Amalekites, and also the Amorites, that dwelt in Hazezontamar.
+
+> **8** And there went out the king of Sodom, and the king of Gomorrah, and the king of Admah, and the king of Zeboiim, and the king of Bela (the same is Zoar;) and they joined battle with them in the vale of Siddim;
+
+> **9** With Chedorlaomer the king of Elam, and with Tidal king of nations, and Amraphel king of Shinar, and Arioch king of Ellasar; four kings with five.
+
+The war spreads through many peoples and regions.
+
+Genesis gives names that sound unfamiliar, but the point is clear:
+
+this is a powerful military campaign.
+
+The four kings are sweeping through the land before facing the five kings.
+
+⚔️ Chedorlaomer and his allies strike multiple peoples.
+
+🏜️ The campaign reaches wilderness regions.
+
+🏙️ Sodom and its allies finally come out to battle.
+
+4️⃣ Four kings fight against five.
+
+😨 Lot's chosen neighborhood is being swallowed by war.
+
+### ⚔️ Smote the Rephaims
+
+The KJV says the kings "smote" several peoples.
+
+"Smote" means struck, defeated, or attacked.
+
+Genesis is showing military force moving through the region.
+
+The war is not small.
+
+It is sweeping across peoples and places.
+
+### 🏜️ By the Wilderness
+
+Verse 6 mentions the wilderness.
+
+The campaign is moving through harsh territory.
+
+Ancient warfare involved long travel, supply problems, fear, and devastation.
+
+This helps us feel the scale of the danger.
+
+### 🏙️ Sodom Enters the Battle
+
+The king of Sodom and the other local kings come out to fight.
+
+This matters because Lot is connected to Sodom now.
+
+Lot's direction in Genesis 13 has placed him near a city caught in violent conflict.
+
+Choices about direction can bring later exposure.
+
+### 4️⃣ Four Kings With Five
+
+The text summarizes the battle as four kings against five.
+
+The numbers help the reader feel the coalition.
+
+This is not one angry ruler.
+
+It is organized conflict between regional powers.
+
+Abram's family will soon be pulled into the consequences.
+
+## Genesis 14:10 to 12
+
+# 🏙️ Lot Is Captured
+
+> **10** And the vale of Siddim was full of slimepits; and the kings of Sodom and Gomorrah fled, and fell there; and they that remained fled to the mountain.
+
+> **11** And they took all the goods of Sodom and Gomorrah, and all their victuals, and went their way.
+
+> **12** And they took Lot, Abram's brother's son, who dwelt in Sodom, and his goods, and departed.
+
+The battle goes badly for Sodom and Gomorrah.
+
+The kings flee.
+
+Goods are taken.
+
+Food is taken.
+
+And then the sentence lands:
+
+Lot is taken.
+
+🕳️ The vale is full of slimepits.
+
+🏃 The kings of Sodom and Gomorrah flee.
+
+💰 Goods and victuals are taken.
+
+😨 Lot is captured.
+
+⚠️ Lot is now dwelling in Sodom.
+
+### 🕳️ Slimepits
+
+The KJV word "slimepits" refers to tar or bitumen pits.
+
+These pits made the battlefield dangerous.
+
+The kings of Sodom and Gomorrah flee and fall there.
+
+The land itself becomes part of the disaster.
+
+### 💰 Goods and Victuals
+
+"Victuals" means food or provisions.
+
+The invading kings take the goods and food of Sodom and Gomorrah.
+
+This is what ancient raids did.
+
+They stripped cities of resources and carried away what gave life and security.
+
+### 😨 They Took Lot
+
+This is the emotional center of the section.
+
+Lot is captured.
+
+Genesis reminds us he is Abram's brother's son.
+
+Lot may have moved toward Sodom, but he is still family.
+
+Abram will not treat him as disposable.
+
+### ⚠️ Who Dwelt in Sodom
+
+This line shows movement from Genesis 13.
+
+Lot first pitched his tent toward Sodom.
+
+Now he is dwelling in Sodom.
+
+That is sobering.
+
+Small directional choices can become settled positions.
+
+## Genesis 14:13 to 16
+
+# 🛡️ Abram Rescues Lot
+
+> **13** And there came one that had escaped, and told Abram the Hebrew; for he dwelt in the plain of Mamre the Amorite, brother of Eshcol, and brother of Aner: and these were confederate with Abram.
+
+> **14** And when Abram heard that his brother was taken captive, he armed his trained servants, born in his own house, three hundred and eighteen, and pursued them unto Dan.
+
+> **15** And he divided himself against them, he and his servants, by night, and smote them, and pursued them unto Hobah, which is on the left hand of Damascus.
+
+> **16** And he brought back all the goods, and also brought again his brother Lot, and his goods, and the women also, and the people.
+
+Abram now acts.
+
+He hears that Lot has been taken captive.
+
+He gathers trained servants from his household.
+
+He pursues.
+
+He attacks by night.
+
+He brings Lot back.
+
+🧍 Abram is called the Hebrew.
+
+🛡️ He arms trained servants from his household.
+
+🌙 He attacks by night with strategy.
+
+🏃 He pursues the enemy.
+
+🎒 He brings back Lot, goods, women, and people.
+
+### 🧍 Abram the Hebrew
+
+This is the first time Abram is called "the Hebrew."
+
+The title marks him as distinct.
+
+He is living among other peoples, but he is not simply absorbed into them.
+
+Abram belongs to God's promise while still navigating real alliances and dangers.
+
+### 🛡️ Trained Servants
+
+Abram has trained servants born in his own house.
+
+That shows his household is large, organized, and capable.
+
+Abram is a pilgrim, but he is not helpless.
+
+Faith does not mean passivity when someone vulnerable needs rescue.
+
+### 🌙 By Night
+
+Abram attacks by night.
+
+That shows strategy.
+
+He does not rush foolishly.
+
+He acts with courage and wisdom.
+
+The rescue is not random emotion.
+
+It is disciplined action.
+
+### 🎒 He Brought Back All
+
+Verse 16 repeats what Abram brings back:
+
+goods, Lot, Lot's goods, women, and people.
+
+The rescue is complete.
+
+Abram acts not only for Lot but for others affected by the raid.
+
+This is faith moving outward in courageous protection.
+
+## Genesis 14:17 to 20
+
+# 🍞 Melchizedek Blesses Abram
+
+> **17** And the king of Sodom went out to meet him after his return from the slaughter of Chedorlaomer, and of the kings that were with him, at the valley of Shaveh, which is the king's dale.
+
+> **18** And Melchizedek king of Salem brought forth bread and wine: and he was the priest of the most high God.
+
+> **19** And he blessed him, and said, Blessed be Abram of the most high God, possessor of heaven and earth:
+
+> **20** And blessed be the most high God, which hath delivered thine enemies into thy hand. And he gave him tithes of all.
+
+After the battle, two kings come into view.
+
+The king of Sodom comes out.
+
+But before he speaks, Melchizedek appears.
+
+This is one of the most mysterious and important moments in Abraham's story.
+
+👑 The king of Sodom comes to meet Abram.
+
+🍞 Melchizedek brings bread and wine.
+
+🙏 Melchizedek is priest of the most high God.
+
+🙌 He blesses Abram.
+
+🧾 Abram gives him tithes.
+
+### 👑 King of Salem
+
+Melchizedek is king of Salem.
+
+Salem is often connected with Jerusalem.
+
+His name is commonly understood to mean king of righteousness.
+
+He appears suddenly, but his role is weighty.
+
+He is both king and priest.
+
+### 🍞 Bread and Wine
+
+Melchizedek brings bread and wine.
+
+In the immediate story, this is provision, hospitality, and refreshment after battle.
+
+The scene feels peaceful after violence.
+
+Abram has fought, rescued, and returned.
+
+Now bread and wine meet him in blessing.
+
+### 🙏 Priest of the Most High God
+
+Melchizedek is called priest of the most high God.
+
+That means true worship of God is present before Israel exists as a nation.
+
+Abram is not the only person in Genesis who knows God.
+
+Melchizedek stands as a surprising priestly figure in the land.
+
+### 🙌 Blessed Be Abram
+
+Melchizedek blesses Abram of the most high God, possessor of heaven and earth.
+
+This blessing puts Abram's victory in the right frame.
+
+Abram is not self-made.
+
+Abram belongs under the God who owns heaven and earth.
+
+### 🧾 Tithes of All
+
+Abram gives Melchizedek tithes of all.
+
+"Tithe" means a tenth.
+
+This is before the law of Moses.
+
+Abram gives as an act of honor and worship.
+
+Victory leads him to recognize God's authority.
+
+## Genesis 14:21 to 24
+
+# 💰 Abram Refuses Sodom's Reward
+
+> **21** And the king of Sodom said unto Abram, Give me the persons, and take the goods to thyself.
+
+> **22** And Abram said to the king of Sodom, I have lift up mine hand unto the LORD, the most high God, the possessor of heaven and earth,
+
+> **23** That I will not take from a thread even to a shoelatchet, and that I will not take any thing that is thine, lest thou shouldest say, I have made Abram rich:
+
+> **24** Save only that which the young men have eaten, and the portion of the men which went with me, Aner, Eshcol, and Mamre; let them take their portion.
+
+The king of Sodom now offers Abram the goods.
+
+This is a test after victory.
+
+Abram has already received blessing from Melchizedek.
+
+Now he refuses Sodom's reward.
+
+💰 Sodom offers Abram goods.
+
+✋ Abram lifts his hand to the LORD.
+
+🧵 He refuses even a thread or shoelatchet.
+
+⚠️ He will not let Sodom claim credit for his wealth.
+
+🤝 He still allows his allies to receive their portion.
+
+### 💰 Take the Goods to Thyself
+
+The king of Sodom offers Abram the goods.
+
+This could look like opportunity.
+
+Abram has won the battle.
+
+He could enrich himself.
+
+But Abram sees the spiritual danger.
+
+Not every reward should be received.
+
+### ✋ I Have Lift Up Mine Hand
+
+Abram says he has lifted up his hand to the LORD.
+
+This is oath language.
+
+Abram is saying he has made a solemn commitment before God.
+
+His decision is not random.
+
+It is rooted in worship and loyalty to the LORD.
+
+### 🧵 From a Thread Even to a Shoelatchet
+
+Abram refuses even the smallest item.
+
+A thread is tiny.
+
+A shoelatchet is a sandal strap.
+
+Abram is saying he will not take anything that belongs to Sodom.
+
+He wants no confusion about who made him rich.
+
+### ⚠️ Lest Thou Shouldest Say
+
+This is the key reason.
+
+Abram does not want the king of Sodom saying, "I have made Abram rich."
+
+God promised to bless Abram.
+
+Abram refuses a reward that would make a corrupt king seem like the source of the blessing.
+
+### 🤝 Let Them Take Their Portion
+
+Abram does not force his personal conviction onto his allies.
+
+He refuses for himself, but he allows Aner, Eshcol, and Mamre to receive their portion.
+
+This shows wisdom.
+
+Abram is firm about his own obedience and fair toward those who helped him.
+
+# The Big Lesson of Genesis 14
+
+Genesis 14 teaches that faith can be courageous in crisis and discerning after victory.
+
+Abram rescues Lot.
+
+He acts with strategy and strength.
+
+He receives blessing from Melchizedek.
+
+He gives tithes in worship.
+
+Then he refuses Sodom's reward.
+
+That last moment matters.
+
+Sometimes the test after victory is whether we will let the wrong source take credit for what God has promised.
+
+# Final Thought on Genesis 14
+
+⚔️ The world around Abram is violent and politically unstable.
+
+🏙️ Lot's connection to Sodom brings real danger.
+
+🛡️ Abram acts courageously to rescue family.
+
+🍞 Melchizedek brings blessing after battle.
+
+🙏 Abram honors God with tithes.
+
+💰 Abram refuses Sodom's reward.
+
+🧬 God's promise must not be confused with corrupt wealth.
+
+# Pause and Reflect
+
+⚔️ What does Genesis 14 teach you about courage in crisis?
+
+🏙️ How does Lot's capture warn you about direction and compromise?
+
+🍞 What stands out to you about Melchizedek blessing Abram?
+
+💰 Why did Abram refuse the king of Sodom's goods?
+
+🙏 Where do you need discernment after a victory?`;
+
+const GENESIS_23_STANDARD_NOTES = `# Genesis 23
+
+# 🕯️ Grief Inside the Promise
+
+Genesis 23 slows Abraham's story down.
+
+Sarah dies.
+
+Abraham mourns.
+
+And the first piece of land Abraham clearly owns in Canaan is not a palace, a city, or a field for farming.
+
+It is a burial place.
+
+That matters.
+
+Genesis 23 teaches that faith does not pretend grief is small. Abraham still believes God's promise, but he still weeps over Sarah. The promise of land is real, but the first owned piece of that land is connected to death, memory, family, and hope.
+
+## Why Genesis 23 Matters
+
+🕯️ It shows Sarah's death and Abraham's honest grief.
+
+😢 It teaches that faith does not erase mourning.
+
+🏕️ It shows Abraham living as a stranger and sojourner in the promised land.
+
+📜 It records Abraham's first legal possession in Canaan.
+
+🪦 It connects land promise with burial, family, and covenant hope.
+
+🤝 It shows Abraham dealing honorably and publicly with the people of the land.
+
+## Chapter Flow
+
+🕯️ Sarah dies in Hebron.
+
+😢 Abraham mourns and weeps.
+
+🪦 Abraham asks for a buryingplace.
+
+🏞️ Ephron offers the field and cave.
+
+⚖️ Abraham pays the full price.
+
+📍 Sarah is buried in Machpelah.
+
+# Deep Chapter Notes
+
+## Genesis 23:1 to 2
+
+# 🕯️ Sarah Dies
+
+> **1** And Sarah was an hundred and seven and twenty years old: these were the years of the life of Sarah.
+
+> **2** And Sarah died in Kirjatharba; the same is Hebron in the land of Canaan: and Abraham came to mourn for Sarah, and to weep for her.
+
+Genesis 23 begins with Sarah's death.
+
+That is not a side note.
+
+Sarah has been part of the promise story from the beginning. She left with Abraham. She lived through famine, fear, waiting, barrenness, laughter, covenant promise, and finally Isaac's birth.
+
+Now Genesis pauses to honor her life and name her death.
+
+🕯️ Sarah's death is named directly.
+
+😢 Abraham's grief is shown openly.
+
+📍 The location is tied to Canaan.
+
+🧬 Sarah's life is honored inside the covenant story.
+
+🙏 Faith is allowed to mourn.
+
+### 📅 Sarah's Years
+
+The text gives Sarah's age carefully:
+
+one hundred and twenty-seven years.
+
+That detail slows the reader down.
+
+Sarah is the only woman in Scripture whose age at death is recorded this way. Genesis is not treating her as background. Her life mattered inside the covenant story.
+
+### 📍 Kirjatharba and Hebron
+
+The KJV says Sarah died in Kirjatharba, the same is Hebron.
+
+This tells us where the grief happens.
+
+Hebron will become a major place in the Bible. It is connected to Abraham, burial, covenant memory, and later David's early kingship.
+
+Here, before any throne or kingdom, Hebron is first a place of mourning.
+
+### 😢 Abraham Came to Mourn
+
+The verse says Abraham came to mourn for Sarah and to weep for her.
+
+That matters deeply.
+
+Faith does not make Abraham emotionless.
+
+He is the man of promise, but he is also a husband standing before death.
+
+Genesis lets grief be grief.
+
+It does not rush him past it.
+
+It does not shame his tears.
+
+### 💧 To Weep for Her
+
+The word "weep" makes the scene personal.
+
+Abraham is not only handling a burial arrangement.
+
+He is grieving Sarah.
+
+This is important because Genesis 23 will soon become legal and public, with negotiations, witnesses, land, and silver. But before the transaction, there are tears.
+
+The business of burial grows out of real love and real loss.
+
+## Genesis 23:3 to 7
+
+# 🪦 Abraham Asks for a Burial Place
+
+> **3** And Abraham stood up from before his dead, and spake unto the sons of Heth, saying,
+
+> **4** I am a stranger and a sojourner with you: give me a possession of a buryingplace with you, that I may bury my dead out of my sight.
+
+> **5** And the children of Heth answered Abraham, saying unto him,
+
+> **6** Hear us, my lord: thou art a mighty prince among us: in the choice of our sepulchres bury thy dead; none of us shall withhold from thee his sepulchre, but that thou mayest bury thy dead.
+
+> **7** And Abraham stood up, and bowed himself to the people of the land, even to the children of Heth.
+
+Abraham now moves from private grief into public action.
+
+Sarah must be buried, and Abraham needs a place in Canaan.
+
+That is where the land promise becomes very practical.
+
+😢 Abraham moves from mourning into action.
+
+🏕️ He admits he is still a stranger and sojourner.
+
+🪦 He asks for a real burial place.
+
+📜 He wants legal possession, not vague permission.
+
+🤝 He deals with the people of the land honorably.
+
+### 🧍 Abraham Stood Up From Before His Dead
+
+This line is tender and heavy.
+
+Abraham has been before Sarah's body.
+
+Then he stands up.
+
+Grief is still there, but love now has work to do.
+
+Sometimes faith looks like worship. Sometimes faith looks like waiting. Here, faith looks like standing up through tears to honor the dead rightly.
+
+### 🏕️ Stranger and Sojourner
+
+Abraham says, "I am a stranger and a sojourner with you."
+
+'Stranger' means he is not native to the land.
+
+'Sojourner' means he lives there as a temporary resident.
+
+This is powerful because God has promised Abraham the land, but Abraham does not yet possess it fully.
+
+He is living inside a promise that is real but not fully visible.
+
+### 📜 A Possession of a Buryingplace
+
+Abraham asks for a possession of a buryingplace.
+
+'Possession' means legally owned property.
+
+'Buryingplace' means a place for burial.
+
+Abraham is not asking for a temporary favor. He wants a real, recognized place where Sarah can be buried and where the family can be anchored in the land God promised.
+
+### 👑 Mighty Prince
+
+The sons of Heth call Abraham a mighty prince.
+
+That shows respect.
+
+Abraham is a foreign resident, but he is not treated like a nobody.
+
+Still, respect is not the same as ownership.
+
+That tension matters. Abraham is honored in the land, but he still needs to secure a burial place.
+
+### 🪦 Sepulchres
+
+The KJV word 'sepulchre' means tomb or burial place.
+
+The sons of Heth offer Abraham access to their tombs.
+
+That sounds generous, but Abraham wants something clearer than borrowed space.
+
+He wants a possession that cannot be disputed later.
+
+### 🙇 Abraham Bowed Himself
+
+Abraham bows to the people of the land.
+
+This shows humility, honor, and public respect.
+
+He does not grab.
+
+He does not demand.
+
+He does not use God's promise as an excuse to treat people dishonorably.
+
+Abraham believes the land is promised, but he still deals justly with the people in front of him.
+
+## Genesis 23:8 to 12
+
+# 🪨 The Cave of Machpelah
+
+> **8** And he communed with them, saying, If it be your mind that I should bury my dead out of my sight; hear me, and intreat for me to Ephron the son of Zohar,
+
+> **9** That he may give me the cave of Machpelah, which he hath, which is in the end of his field; for as much money as it is worth he shall give it me for a possession of a buryingplace amongst you.
+
+> **10** And Ephron dwelt among the children of Heth: and Ephron the Hittite answered Abraham in the audience of the children of Heth, even of all that went in at the gate of his city, saying,
+
+> **11** Nay, my lord, hear me: the field give I thee, and the cave that is therein, I give it thee; in the presence of the sons of my people give I it thee: bury thy dead.
+
+> **12** And Abraham bowed down himself before the people of the land.
+
+Abraham now names the place he wants:
+
+the cave of Machpelah.
+
+The story becomes specific because covenant faith is not vague here. It is tied to a real cave, a real field, a real owner, a real price, and real witnesses.
+
+🗣️ Abraham negotiates publicly.
+
+🪨 Machpelah becomes the named burial place.
+
+🏞️ The cave is connected to a field.
+
+🏛️ The city gate gives the moment public witness.
+
+🙇 Abraham keeps showing honor while grieving.
+
+### 🗣️ He Communed With Them
+
+The KJV says Abraham "communed" with them.
+
+That means he spoke, discussed, or negotiated.
+
+This is not a private emotional decision. It is a public conversation because land ownership had to be recognized by the community.
+
+### 🪨 The Cave of Machpelah
+
+Machpelah is the cave near Mamre and Hebron that becomes the family burial place.
+
+Sarah will be buried there.
+
+Later Abraham will be buried there too.
+
+Isaac, Rebekah, Jacob, and Leah will also be connected to this burial place.
+
+So this cave becomes more than a tomb.
+
+It becomes covenant memory in the land.
+
+### ⚖️ As Much Money As It Is Worth
+
+Abraham says he wants to pay what it is worth.
+
+This matters.
+
+He does not want future generations saying the land was only borrowed, gifted casually, or disputed.
+
+He wants the purchase to be clean.
+
+Faith does not have to be sloppy.
+
+Abraham's trust in God makes him careful, honorable, and public.
+
+### 🏛️ The Gate of His City
+
+Verse 10 says the conversation happens before all who went in at the gate of the city.
+
+The city gate was where legal matters, public decisions, and business were witnessed.
+
+This means Abraham's purchase is not hidden.
+
+Everyone important can hear what is being said.
+
+### 🎁 I Give It Thee
+
+Ephron says he gives Abraham the field and cave.
+
+In ancient negotiation, language like this could be polite and formal. It does not necessarily mean Ephron expects Abraham to take it for free.
+
+Abraham understands the moment carefully.
+
+He will not leave Sarah's burial place resting on unclear generosity.
+
+### 🙇 Abraham Bowed Down Again
+
+Abraham bows again before the people.
+
+The repetition matters.
+
+He is grieving, but he is not rude.
+
+He is promised the land, but he is not arrogant.
+
+He is negotiating, but he remains honorable.
+
+## Genesis 23:13 to 16
+
+# ⚖️ Abraham Pays the Full Price
+
+> **13** And he spake unto Ephron in the audience of the people of the land, saying, But if thou wilt give it, I pray thee, hear me: I will give thee money for the field; take it of me, and I will bury my dead there.
+
+> **14** And Ephron answered Abraham, saying unto him
+
+> **15** My lord, hearken unto me: the land is worth four hundred shekels of silver; what is that betwixt me and thee? bury therefore thy dead.
+
+> **16** And Abraham hearkened unto Ephron; and Abraham weighed to Ephron the silver, which he had named in the audience of the sons of Heth, four hundred shekels of silver, current money with the merchant.
+
+This is the heart of the transaction.
+
+Abraham insists on paying.
+
+The price is named.
+
+The silver is weighed.
+
+The witnesses hear it.
+
+The burial place becomes legally secure.
+
+👥 The agreement happens before witnesses.
+
+💰 Abraham insists on paying money.
+
+🪙 Ephron names the silver price.
+
+⚖️ Abraham weighs the payment publicly.
+
+📜 The purchase becomes clean, clear, and recognized.
+
+### 👥 In the Audience of the People
+
+Abraham speaks in the audience of the people of the land.
+
+That means this is public.
+
+Public witness matters because Abraham is establishing a recognized claim to the burial place.
+
+The promise of God does not make Abraham careless with human processes.
+
+He honors both faith and public integrity.
+
+### 💰 I Will Give Thee Money
+
+Abraham clearly says he will give money for the field.
+
+He refuses to leave the matter vague.
+
+This is not pride.
+
+It is wisdom.
+
+He wants Sarah's burial place to be settled without confusion.
+
+### 🪙 Four Hundred Shekels of Silver
+
+Ephron names the price:
+
+four hundred shekels of silver.
+
+A shekel was a weight measure used for payment before minted coins were common.
+
+The amount is significant, but Abraham does not bargain it down in the text.
+
+He pays.
+
+### ⚖️ Abraham Weighed the Silver
+
+Verse 16 says Abraham weighed the silver.
+
+That means the payment was measured out according to recognized standards.
+
+The KJV says it was "current money with the merchant."
+
+That means acceptable payment in normal trade.
+
+Again, Genesis is emphasizing that this purchase is legal, witnessed, and complete.
+
+### 🕯️ Grief and Integrity
+
+Abraham is grieving, but he still acts with integrity.
+
+That is worth noticing.
+
+Pain can make people careless, desperate, or harsh.
+
+But Abraham honors Sarah by handling the burial place rightly.
+
+## Genesis 23:17 to 20
+
+# 🪦 Sarah Is Buried in Machpelah
+
+> **17** And the field of Ephron, which was in Machpelah, which was before Mamre, the field, and the cave which was therein, and all the trees that were in the field, that were in all the borders round about, were made sure
+
+> **18** Unto Abraham for a possession in the presence of the children of Heth, before all that went in at the gate of his city.
+
+> **19** And after this, Abraham buried Sarah his wife in the cave of the field of Machpelah before Mamre: the same is Hebron in the land of Canaan.
+
+> **20** And the field, and the cave that is therein, were made sure unto Abraham for a possession of a buryingplace by the sons of Heth.
+
+The chapter ends by confirming the purchase and the burial.
+
+The language sounds repetitive because the legal point matters:
+
+the field, the cave, the trees, the borders, the witnesses, and the possession are all named.
+
+📜 The land is made sure.
+
+🌳 The field, cave, trees, and borders are named.
+
+👥 The witnesses confirm the purchase.
+
+🪦 Sarah is buried in the promised land.
+
+🧬 The family is anchored in Canaan even through death.
+
+### 📜 Made Sure
+
+The phrase "made sure" means confirmed, established, or legally secured.
+
+Genesis repeats this because Abraham's ownership must be clear.
+
+This is the first clear piece of Canaan that Abraham owns.
+
+And it is a grave.
+
+### 🌳 The Field, the Cave, and the Trees
+
+Verse 17 names the field, cave, trees, and borders.
+
+That level of detail matters in a land purchase.
+
+Abraham is not buying a vague idea.
+
+He is buying a specific piece of land in the place God promised.
+
+### 👥 In the Presence of the Children of Heth
+
+The witnesses are named again.
+
+This protects the purchase from later dispute.
+
+The people of the land know the field belongs to Abraham.
+
+### 🕯️ Abraham Buried Sarah His Wife
+
+After all the negotiation, the chapter returns to the personal reason for it:
+
+Sarah.
+
+Abraham buries his wife.
+
+The legal transaction serves love, grief, and covenant hope.
+
+### 🗺️ In the Land of Canaan
+
+Verse 19 says Hebron is in the land of Canaan.
+
+That phrase pulls the whole chapter back into the promise.
+
+Sarah is buried in the land God promised to Abraham's descendants.
+
+Abraham does not yet own the whole land.
+
+But this grave says the family belongs to God's promise even in death.
+
+# The Big Lesson of Genesis 23
+
+Genesis 23 teaches that faith does not deny grief.
+
+Abraham mourns Sarah honestly.
+
+He weeps.
+
+He stands up.
+
+He negotiates.
+
+He pays.
+
+He buries.
+
+And he does all of it in the land God promised.
+
+The first owned piece of Canaan is a tomb, which means the promise is not detached from real life. It enters grief, death, land, memory, and family.
+
+# Final Thought on Genesis 23
+
+🕯️ Sarah's life matters in the covenant story.
+
+💧 Abraham's tears matter.
+
+🙏 Faith does not erase mourning.
+
+🪨 The cave of Machpelah becomes covenant memory.
+
+🤝 Abraham acts honorably in public.
+
+🪦 The promise of land begins with a burial place.
+
+# Pause and Reflect
+
+😢 What does Abraham's grief teach you about faith and mourning?
+
+⚖️ Why does it matter that Abraham paid publicly for the cave?
+
+🪨 How does Machpelah connect grief with God's promise?
+
+🙏 Where do you need to trust God while still walking through real loss?`;
+
+const builtAbrahamNotes = ABRAHAM_CHAPTER_NOTES.map(renderRebuiltNote);
+builtAbrahamNotes[0] = GENESIS_11_STANDARD_NOTES;
+builtAbrahamNotes[1] = GENESIS_12_STANDARD_NOTES;
+builtAbrahamNotes[2] = GENESIS_13_STANDARD_NOTES;
+builtAbrahamNotes[3] = GENESIS_14_STANDARD_NOTES;
+builtAbrahamNotes[12] = GENESIS_23_STANDARD_NOTES;
+
+export const OBEDIENCE_OF_ABRAHAM_DEEP_NOTES = builtAbrahamNotes;
 
 
 
