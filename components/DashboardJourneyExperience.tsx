@@ -264,6 +264,19 @@ function getTaskStatusLine(task: TaskState) {
   return "Not started";
 }
 
+function getDashboardGreeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+}
+
+function getFirstDashboardName(name: string) {
+  const cleanName = name.trim();
+  if (!cleanName || cleanName.toLowerCase() === "buddy") return "Buddy";
+  return cleanName.split(/\s+/)[0] || "Buddy";
+}
+
 function parseTaskEstimateMinutes(label: string | null | undefined) {
   if (!label) return 0;
   const hoursMatch = label.match(/(\d+(?:\.\d+)?)\s*h/i);
@@ -1432,7 +1445,7 @@ export default function DashboardJourneyExperience({
     let cancelled = false;
 
     async function loadCommunityGroup() {
-      if (embeddedCommunityGroupId || embeddedCommunityLoading) return;
+      if (embeddedCommunityGroupId) return;
       setEmbeddedCommunityLoading(true);
       setEmbeddedCommunityError(null);
 
@@ -1465,7 +1478,7 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [embeddedCommunityGroupId, embeddedCommunityLoading, safeActivePage]);
+  }, [embeddedCommunityGroupId, safeActivePage]);
 
   const nextTask = visibleTasks.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = visibleTasks.findIndex((task) => !task.done);
@@ -2625,6 +2638,129 @@ export default function DashboardJourneyExperience({
     </section>
   );
 
+  const renderCurrentStudyHeader = () => {
+    const greetingName = getFirstDashboardName(profile?.display_name || profile?.username || userName);
+
+    return (
+      <div className="mx-auto w-full max-w-xl px-1">
+        <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
+          {getDashboardGreeting()}, {greetingName}
+        </h1>
+
+        <div className="mt-2 overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2.5 shadow-sm transition">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                if (!currentDevotionalId) return;
+                setShowCurrentStudyDetails((current) => !current);
+              }}
+              disabled={!currentDevotionalId}
+              aria-expanded={showCurrentStudyDetails}
+              className="flex min-w-0 flex-1 items-center gap-3 text-left"
+            >
+              <span className="h-16 w-12 shrink-0 overflow-hidden rounded-xl bg-[var(--bb-surface-soft,#eef6ff)] shadow-sm">
+                {currentStudyCover ? (
+                  <img src={currentStudyCover} alt="" className="h-full w-full object-cover" />
+                ) : (
+                  <span className="grid h-full w-full place-items-center text-xl" aria-hidden="true">📖</span>
+                )}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Current Study</span>
+                <span className="mt-0.5 block truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                  {currentDevotionalTitle || "Choose Your Bible Study"}
+                </span>
+                <span className="mt-0.5 block truncate text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">{activeChapterLabel}</span>
+                <span className="mt-0.5 block line-clamp-1 text-[11px] font-medium text-[var(--bb-text-muted,#6b7280)]">{currentStudySummary}</span>
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                setShowJourneyHelp(false);
+                if (isPaidUser || canFreeUserChooseNewStudy) {
+                  setShowDevotionalSettings(true);
+                } else {
+                  setFreePlanGate({ kind: "study" });
+                }
+              }}
+              className="shrink-0 rounded-full bg-[var(--bb-accent-soft,#f2f7ff)] px-3 py-1.5 text-[11px] font-black text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-95"
+            >
+              Change Study
+            </button>
+          </div>
+
+          {showCurrentStudyDetails && currentDevotionalId ? (
+            <div className="dashboard-inline-task mt-3 border-t border-[var(--bb-card-border,#dbe7f4)] pt-3">
+              <div className="flex gap-3">
+                {currentStudyCover ? (
+                  <img src={currentStudyCover} alt="" className="h-24 w-16 shrink-0 rounded-2xl object-cover shadow-sm" />
+                ) : null}
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Study Details</p>
+                  <h3 className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">{currentDevotionalTitle}</h3>
+                  <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{currentStudySummary}</p>
+                </div>
+              </div>
+
+              <div className="mt-3 grid gap-2">
+                {currentStudyChapters.map((studyChapter) => {
+                  const chapterLabel =
+                    studyChapter.bible_reading_book && studyChapter.bible_reading_chapter
+                      ? `${studyChapter.bible_reading_book} ${studyChapter.bible_reading_chapter}`
+                      : studyChapter.day_title || `Chapter ${studyChapter.day_number}`;
+                  const currentDayNumber = currentDevotionalTask?.devotionalDayNumber ?? 1;
+                  const isCurrent = studyChapter.day_number === currentDayNumber;
+                  const isPastOrCurrent = studyChapter.day_number <= currentDayNumber;
+                  const isLocked = !isPaidUser && !isPastOrCurrent;
+
+                  return (
+                    <button
+                      key={studyChapter.day_number}
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        if (isLocked) return;
+                        void switchCurrentStudyChapter(studyChapter.day_number);
+                      }}
+                      disabled={isCurrent || isLocked || switchingStudyChapter !== null}
+                      className={`flex items-center justify-between gap-3 rounded-2xl border px-3 py-3 text-left transition ${
+                        isCurrent
+                          ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)]"
+                          : isPastOrCurrent
+                            ? "border-emerald-200 bg-emerald-50 hover:border-emerald-300"
+                            : isLocked
+                              ? "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] opacity-70"
+                              : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] hover:border-[var(--bb-accent)]"
+                      } disabled:opacity-70`}
+                    >
+                      <span className="min-w-0">
+                        <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">{chapterLabel}</span>
+                        <span className="mt-0.5 block text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                          {studyChapter.day_title || `Chapter ${studyChapter.day_number}`}
+                        </span>
+                      </span>
+                      <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
+                        {isLocked ? "🔒" : isCurrent ? "Loaded" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
+                      </span>
+                    </button>
+                  );
+                })}
+                {!currentStudyChapters.length ? (
+                  <p className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4 text-sm font-bold text-[var(--bb-text-muted,#6b7280)]">
+                    Loading study chapters...
+                  </p>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    );
+  };
+
   const renderEmbeddedSharePage = () => {
     const shareUrl = "https://thebiblestudybuddy.com";
     return (
@@ -2725,6 +2861,13 @@ export default function DashboardJourneyExperience({
           100% { opacity: 0; transform: translate(-50%, -50%) scale(2.35); }
         }
 
+        @keyframes completion-side-firework {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(0deg); }
+          16% { opacity: 1; }
+          76% { opacity: 0.85; }
+          100% { opacity: 0; transform: translate(calc(-50% + var(--fx-x)), calc(-50% + var(--fx-y))) scale(1) rotate(var(--fx-r)); }
+        }
+
         @keyframes chapter-card-drop {
           0% { opacity: 0; transform: translateY(-86px) scale(1.015); filter: blur(1px); }
           62% { opacity: 1; transform: translateY(7px) scale(0.995); filter: blur(0); }
@@ -2789,6 +2932,12 @@ export default function DashboardJourneyExperience({
         .chapter-confetti span:nth-child(6) { animation-delay: 175ms; }
         .chapter-confetti span:nth-child(7) { animation-delay: 210ms; }
         .chapter-confetti span:nth-child(8) { animation-delay: 245ms; }
+        .completion-side-firework span { animation: completion-side-firework 1.6s ease-out infinite; }
+        .completion-side-firework span:nth-child(2) { animation-delay: 180ms; }
+        .completion-side-firework span:nth-child(3) { animation-delay: 360ms; }
+        .completion-side-firework span:nth-child(4) { animation-delay: 540ms; }
+        .completion-side-firework span:nth-child(5) { animation-delay: 720ms; }
+        .completion-side-firework span:nth-child(6) { animation-delay: 900ms; }
         .chapter-card-drop { animation: chapter-card-drop 560ms cubic-bezier(0.2, 0.9, 0.18, 1.15) both; }
         @keyframes dashboard-task-extension-open {
           from { opacity: 0; transform: translateY(-8px); clip-path: inset(0 0 100% 0); }
@@ -2838,22 +2987,11 @@ export default function DashboardJourneyExperience({
         <div className={getSlideClass(0)}>
         <section className="w-full px-1">
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+            {renderCurrentStudyHeader()}
             {homeHeader}
+            {!shouldShowCompletionPanel ? (
             <div
-              className={`rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition ${
-                currentDevotionalId ? "cursor-pointer hover:border-[var(--bb-accent)] hover:shadow-[0_16px_42px_rgba(38,63,99,0.14)]" : ""
-              }`}
-              role={currentDevotionalId ? "button" : undefined}
-              tabIndex={currentDevotionalId ? 0 : undefined}
-              onClick={() => {
-                if (!currentDevotionalId) return;
-                setShowCurrentStudyDetails((current) => !current);
-              }}
-              onKeyDown={(event) => {
-                if (!currentDevotionalId || (event.key !== "Enter" && event.key !== " ")) return;
-                event.preventDefault();
-                setShowCurrentStudyDetails((current) => !current);
-              }}
+              className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition"
             >
               <div className="mb-3 flex items-start justify-between gap-3">
                 <div>
@@ -2894,18 +3032,8 @@ export default function DashboardJourneyExperience({
                 </div>
                 <span className="text-xl text-gray-400" aria-hidden="true">›</span>
               </div>
-              {showCurrentStudyDetails && currentDevotionalId ? (
-                <div className="dashboard-task-card-extension mt-4 border-t border-[var(--bb-card-border)] pt-4">
-                  <div className="flex gap-4">
-                    {currentStudyCover ? (
-                      <img src={currentStudyCover} alt="" className="h-28 w-20 shrink-0 rounded-2xl object-cover shadow-sm" />
-                    ) : null}
-                    <div className="min-w-0 flex-1">
-                      <p className="bb-accent text-xs font-black uppercase tracking-[0.16em]">Current Study</p>
-                      <h3 className="bb-text-primary mt-1 text-xl font-black leading-tight">{currentDevotionalTitle}</h3>
-                      <p className="bb-text-secondary mt-2 text-sm font-semibold leading-6">{currentStudySummary}</p>
-                    </div>
-                  </div>
+              {false ? (
+                <div className="hidden">
                   <div className="mt-4 grid gap-2">
                     {currentStudyChapters.map((studyChapter) => {
                       const chapterLabel =
@@ -2959,6 +3087,7 @@ export default function DashboardJourneyExperience({
                 </div>
               ) : null}
             </div>
+            ) : null}
             {false ? (
             <div
               className={`relative w-full overflow-visible rounded-[26px] border text-left shadow-sm transition hover:shadow-md ${getDailyStudyCardClasses(allDone)}`}
@@ -3233,7 +3362,7 @@ export default function DashboardJourneyExperience({
                 </div>
               ))
             ) : shouldShowCompletionPanel ? (
-              <div className="completion-panel-enter relative overflow-hidden px-5 py-7 text-center">
+              <div className="completion-panel-enter relative overflow-hidden rounded-[28px] border border-[#dbe7f4] bg-white/90 px-5 pb-5 pt-7 text-center shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
                 <div className="chapter-firework-ring pointer-events-none absolute left-1/2 top-16 h-24 w-24 rounded-full border-4 border-emerald-300/45" aria-hidden="true" />
                 <div className="chapter-confetti pointer-events-none absolute left-1/2 top-16" aria-hidden="true">
                   <span className="absolute h-2 w-3 rounded-sm bg-amber-400 [--confetti-rotate:160deg] [--confetti-x:-104px] [--confetti-y:-78px]" />
@@ -3245,8 +3374,24 @@ export default function DashboardJourneyExperience({
                   <span className="absolute h-2 w-3 rounded-sm bg-orange-400 [--confetti-rotate:190deg] [--confetti-x:-126px] [--confetti-y:4px]" />
                   <span className="absolute h-2 w-2 rounded-full bg-cyan-400 [--confetti-rotate:-130deg] [--confetti-x:132px] [--confetti-y:-22px]" />
                 </div>
-                <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-full">
-                  <LouisAvatar mood="stareyes" size={72} />
+                <div className="completion-side-firework pointer-events-none absolute left-12 top-24" aria-hidden="true">
+                  <span className="absolute h-2 w-3 rounded-sm bg-amber-400 [--fx-r:140deg] [--fx-x:-42px] [--fx-y:-42px]" />
+                  <span className="absolute h-2 w-2 rounded-full bg-sky-400 [--fx-r:-160deg] [--fx-x:34px] [--fx-y:-50px]" />
+                  <span className="absolute h-3 w-2 rounded-sm bg-emerald-400 [--fx-r:210deg] [--fx-x:-28px] [--fx-y:42px]" />
+                  <span className="absolute h-2 w-3 rounded-sm bg-rose-400 [--fx-r:-190deg] [--fx-x:48px] [--fx-y:24px]" />
+                  <span className="absolute h-2 w-2 rounded-full bg-violet-400 [--fx-r:120deg] [--fx-x:4px] [--fx-y:-64px]" />
+                  <span className="absolute h-3 w-2 rounded-sm bg-lime-400 [--fx-r:-130deg] [--fx-x:10px] [--fx-y:54px]" />
+                </div>
+                <div className="completion-side-firework pointer-events-none absolute right-12 top-24" aria-hidden="true">
+                  <span className="absolute h-2 w-3 rounded-sm bg-orange-400 [--fx-r:-150deg] [--fx-x:42px] [--fx-y:-42px]" />
+                  <span className="absolute h-2 w-2 rounded-full bg-cyan-400 [--fx-r:160deg] [--fx-x:-34px] [--fx-y:-50px]" />
+                  <span className="absolute h-3 w-2 rounded-sm bg-emerald-400 [--fx-r:-210deg] [--fx-x:28px] [--fx-y:42px]" />
+                  <span className="absolute h-2 w-3 rounded-sm bg-rose-400 [--fx-r:190deg] [--fx-x:-48px] [--fx-y:24px]" />
+                  <span className="absolute h-2 w-2 rounded-full bg-violet-400 [--fx-r:-120deg] [--fx-x:-4px] [--fx-y:-64px]" />
+                  <span className="absolute h-3 w-2 rounded-sm bg-lime-400 [--fx-r:130deg] [--fx-x:-10px] [--fx-y:54px]" />
+                </div>
+                <div className="relative mx-auto flex h-24 w-24 items-center justify-center rounded-full">
+                  <LouisAvatar mood="stareyes" size={90} />
                 </div>
                 {preloadedNextStudy ? (
                   <>
@@ -3254,20 +3399,22 @@ export default function DashboardJourneyExperience({
                     <p className="mt-2 text-base font-bold text-gray-800">
                       You completed {currentDevotionalTitle || "this Bible study"}.
                     </p>
-                    <div className="mx-auto mt-5 flex max-w-md items-center gap-4 rounded-2xl border border-[#dbe7f3] bg-white/85 p-3 text-left shadow-sm">
-                      <img
-                        src={preloadedNextStudy.cover}
-                        alt=""
-                        className="h-20 w-16 shrink-0 rounded-xl object-cover shadow-sm"
-                      />
-                      <div className="min-w-0">
-                        <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5e8eb0]">
-                          Next Bible Study
+                    <div className="mx-auto mt-5 flex max-w-md items-stretch gap-3 rounded-2xl border border-[#dbe7f3] bg-white/85 p-2 text-left shadow-sm">
+                      <div className="h-32 w-24 shrink-0 overflow-hidden rounded-xl bg-[#f4f8ff] shadow-sm">
+                        <img
+                          src={preloadedNextStudy.cover}
+                          alt={preloadedNextStudy.title}
+                          className="h-full w-full object-contain"
+                        />
+                      </div>
+                      <div className="flex min-w-0 flex-1 flex-col justify-center pr-2">
+                        <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#5e8eb0]">
+                          Next Bible Series
                         </p>
-                        <p className="mt-1 text-lg font-black leading-tight text-gray-950">
+                        <p className="mt-1 text-base font-black leading-tight text-gray-950">
                           {preloadedNextStudy.title}
                         </p>
-                        <p className="text-sm font-bold text-gray-600">{preloadedNextStudy.subtitle}</p>
+                        <p className="mt-1 text-xs font-bold leading-5 text-gray-600">{preloadedNextStudy.subtitle}</p>
                       </div>
                     </div>
                     <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-6 text-gray-600">
@@ -3438,7 +3585,7 @@ export default function DashboardJourneyExperience({
               })
             )}
 
-            {!isLoadingNextChapter && completedTrackerTasks.length > 0 ? (
+            {!shouldShowCompletionPanel && !isLoadingNextChapter && completedTrackerTasks.length > 0 ? (
               <div className="overflow-hidden rounded-2xl border border-emerald-100 bg-white/80 shadow-sm">
                 <button
                   type="button"

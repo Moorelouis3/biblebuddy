@@ -1816,18 +1816,6 @@ export default function DashboardPage() {
     const graceDaysLoading = !profile;
     const levelLoading = isLoadingLevel || !levelInfo;
     const badgesLoading = badgeProgress.length === 0;
-    const greetingName = getFirstDashboardName(profile?.display_name || profile?.username || userName);
-    const nextStudyLine = buildDashboardNextStudyLine(dailyChecklistData);
-    const activeChapterFocusTask =
-      dailyChecklistData?.tasks.find((task) => task.kind === "reading") ||
-      dailyChecklistData?.tasks.find((task) => task.chapterLabel) ||
-      null;
-    const activeChapterLabel =
-      activeChapterFocusTask?.chapterLabel ||
-      "Your Chapter";
-    const currentStudyTask = dailyChecklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
-    const currentStudyTitle = currentStudyTask?.devotionalTitle || null;
-    const currentStudyCover = getDashboardStudyCover(currentStudyTitle);
     const streakFlameDuration = Math.max(0.85, 7 - Math.min(29, Math.max(0, streakValue)) * 0.2);
     const streakFlameClass =
       streakValue >= 30
@@ -1930,48 +1918,6 @@ export default function DashboardPage() {
 
     const renderGreetingAndStreakCard = () => (
       <>
-          <div className="mx-auto w-full max-w-xl px-1">
-            <div className="min-w-0">
-              <h1 className="text-2xl font-black leading-tight text-gray-950 sm:text-3xl">
-                {getDashboardGreeting()}, {greetingName}
-              </h1>
-            </div>
-            <div className="mt-2 overflow-hidden rounded-[18px] border border-[#dbe7f4] bg-white/90 px-3 py-2.5 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="h-16 w-12 shrink-0 overflow-hidden rounded-xl bg-[#eef6ff] shadow-sm">
-                  {currentStudyCover ? (
-                    <img src={currentStudyCover} alt="" className="h-full w-full object-cover" />
-                  ) : (
-                    <div className="grid h-full w-full place-items-center text-xl" aria-hidden="true">
-                      📖
-                    </div>
-                  )}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#2f7fe8]">
-                    Current Study
-                  </p>
-                  <p className="mt-0.5 truncate text-sm font-black text-gray-950">
-                    {currentStudyTitle || "Choose Your Bible Study"}
-                  </p>
-                  <p className="mt-0.5 truncate text-xs font-bold text-gray-600">
-                    {activeChapterLabel}
-                  </p>
-                  <p className="mt-0.5 line-clamp-1 text-[11px] font-medium text-gray-500">
-                    {getDashboardStudySummary(currentStudyTitle)}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setStudySettingsOpenRequest((value) => value + 1)}
-                  className="shrink-0 rounded-full bg-[#f2f7ff] px-3 py-1.5 text-[11px] font-black text-[#2f7fe8] transition hover:bg-[#e7f1ff]"
-                >
-                  Change Study
-                </button>
-              </div>
-            </div>
-          </div>
-
           <button
             type="button"
             onClick={() => {
