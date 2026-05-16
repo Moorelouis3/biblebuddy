@@ -26,6 +26,12 @@ import {
   rememberLouisChapterJourneyCelebrationSeen,
   rememberLouisDailyTaskTarget,
 } from "../../lib/louisDailyFlow";
+import {
+  canFreeUserUnlockChapter,
+  formatFreePlanCountdown,
+  getNextLocalDayStartMs,
+  rememberFreeChapterUnlock,
+} from "../../lib/freePlanGating";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import { ModalShell } from "../../components/ModalShell";
 import { triggerPoints } from "../../components/PointsPop";
@@ -836,6 +842,8 @@ export default function DashboardPage() {
   const [showDailyTaskCelebrationModal, setShowDailyTaskCelebrationModal] = useState(false);
   const [pendingDailyTaskCelebrationModal, setPendingDailyTaskCelebrationModal] = useState(false);
   const [dailyTaskCelebrationJourneyKey, setDailyTaskCelebrationJourneyKey] = useState<string | null>(null);
+  const [freeChapterGateLabel, setFreeChapterGateLabel] = useState<string | null>(null);
+  const [freeChapterCountdown, setFreeChapterCountdown] = useState(() => formatFreePlanCountdown(getNextLocalDayStartMs() - Date.now()));
   const [showJessicaBonusModal, setShowJessicaBonusModal] = useState(false);
   const [hasJessicaBonusAward, setHasJessicaBonusAward] = useState(false);
   const [showZorianRestorationModal, setShowZorianRestorationModal] = useState(false);
@@ -3096,6 +3104,17 @@ export default function DashboardPage() {
     if (!chapterTask?.book || !chapterTask.chapter || !dashboardChecklistData.nextJourneyTarget) return "the next chapter";
     return `${chapterTask.book} ${chapterTask.chapter + 1}`;
   })();
+
+  useEffect(() => {
+    if (!freeChapterGateLabel) return;
+    const updateCountdown = () => {
+      setFreeChapterCountdown(formatFreePlanCountdown(getNextLocalDayStartMs() - Date.now()));
+    };
+    updateCountdown();
+    const interval = window.setInterval(updateCountdown, 30000);
+    return () => window.clearInterval(interval);
+  }, [freeChapterGateLabel]);
+
   useEffect(() => {
     if (!showDailyTaskCelebrationModal) return;
 
@@ -3601,6 +3620,17 @@ export default function DashboardPage() {
       return;
     }
 
+    const nextChapterUnlockTarget = {
+      ...nextJourneyTarget,
+      chapterLabel: nextChapterLabel,
+    };
+    const isFreeUser = membershipStatus !== "pro" && profile?.is_paid !== true;
+    if (isFreeUser && !canFreeUserUnlockChapter(userId, nextChapterUnlockTarget)) {
+      setFreeChapterCountdown(formatFreePlanCountdown(getNextLocalDayStartMs() - Date.now()));
+      setFreeChapterGateLabel(nextChapterLabel);
+      return;
+    }
+
     const { error } = await supabase
       .from("profile_stats")
       .upsert(
@@ -3630,6 +3660,7 @@ export default function DashboardPage() {
     );
 
     rememberLouisDailyTaskTarget(userId, louisDailyTaskCycleStartedAt, nextJourneyTarget);
+    rememberFreeChapterUnlock(userId, nextChapterUnlockTarget);
     void loadDailyTaskSummary({ force: true, silent: true });
   }
 
@@ -4572,6 +4603,47 @@ export default function DashboardPage() {
               className="mt-5 inline-flex rounded-full bg-[#7aa7df] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
             >
               OK
+            </button>
+          </div>
+        </div>
+      </ModalShell>
+
+      <ModalShell
+        isOpen={freeChapterGateLabel !== null}
+        onClose={() => setFreeChapterGateLabel(null)}
+        backdropColor="bg-black/55"
+      >
+        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#f0d7b3] bg-white shadow-2xl">
+          <div className="bg-gradient-to-br from-[#fff8ef] via-white to-[#eef7ff] px-6 py-7 text-center">
+            <div className="flex justify-center">
+              <LouisAvatar mood="wave" size={72} />
+            </div>
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Free Bible Buddy</p>
+            <h2 className="mt-2 text-2xl font-black text-[#21304f]">Your next chapter opens soon</h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-[#58709d]">
+              Hey, as a free Bible Buddy, you get one new Bible study chapter each day.
+            </p>
+            <div className="mt-4 rounded-2xl bg-white/80 px-4 py-4 shadow-sm">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5b6f92]">
+                {freeChapterGateLabel || "Your next chapter"} opens in
+              </p>
+              <p className="mt-1 text-2xl font-black text-[#17213d]">{freeChapterCountdown}</p>
+            </div>
+            <p className="mt-4 text-sm font-semibold leading-6 text-[#58709d]">
+              Do not want to wait? Upgrade now for unlimited chapters.
+            </p>
+            <Link
+              href="/upgrade"
+              className="mt-5 inline-flex w-full justify-center rounded-full bg-[#7BAFD4] px-5 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+            >
+              Upgrade now
+            </Link>
+            <button
+              type="button"
+              onClick={() => setFreeChapterGateLabel(null)}
+              className="mt-2 inline-flex w-full justify-center rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-black text-gray-700 transition hover:bg-gray-50"
+            >
+              Keep waiting
             </button>
           </div>
         </div>

@@ -33,7 +33,7 @@ type ChoiceOption = {
 
 type LouisMood = "wave" | "stareyes" | "think" | "pray" | "sheesh" | "bible" | "smile" | "cool" | "hands" | "salute" | "sideeye";
 
-const TOTAL_SLIDES = 13;
+const TOTAL_SLIDES = 14;
 
 const SOURCE_OPTIONS: ChoiceOption[] = [
   { label: "Instagram", icon: "📸" },
@@ -1185,8 +1185,8 @@ export function OnboardingModal({
           <div className="mt-4 rounded-full border border-[#f4d77e] bg-white/70 px-4 py-2 text-center text-sm font-black text-[#8a6100]">
             65+ guided studies • Full Bible journey
           </div>
-          <PrimaryButton onClick={() => void finishWithStudyTitle("The Creation of the World")} disabled={isSaving}>
-            {isSaving ? "Starting journey..." : "Start Journey  ›"}
+          <PrimaryButton onClick={() => goToSlide(11)} disabled={isSaving}>
+            Start Journey  ›
           </PrimaryButton>
         </div>
 
@@ -1203,7 +1203,7 @@ export function OnboardingModal({
           </div>
           <button
             type="button"
-            onClick={() => goToSlide(11)}
+            onClick={() => goToSlide(12)}
             className="mt-5 w-full rounded-2xl border border-[#9fc6ff] bg-white px-5 py-3 text-base font-black text-[#2457b8] shadow-sm transition hover:bg-[#f4f9ff]"
           >
             Choose My Own Studies  ›
@@ -1218,7 +1218,65 @@ export function OnboardingModal({
         </div>
       </OnboardingShell>,
 
-      <OnboardingShell key="free-books" activeIndex={11} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
+      <OnboardingShell key="journey-explainer" activeIndex={11} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
+        <Headline>
+          Your journey starts
+          <br />
+          in Genesis 1
+        </Headline>
+        <Subtitle>Bible Buddy will guide you through the Bible one chapter at a time.</Subtitle>
+
+        <div className="mt-7 rounded-[28px] border border-[#dbe7f4] bg-white p-5 text-left shadow-[0_14px_34px_rgba(38,63,99,0.10)]">
+          <div className="flex items-center gap-4">
+            <Image src="/creationoftheworld.png" alt="" width={88} height={118} className="h-28 w-20 shrink-0 rounded-2xl object-cover shadow-sm" />
+            <div className="min-w-0">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">First study</p>
+              <h2 className="mt-1 text-2xl font-black leading-tight text-[#111827]">The Creation of the World</h2>
+              <p className="mt-1 text-sm font-bold text-[#5d667a]">Genesis 1-2</p>
+            </div>
+          </div>
+
+          <div className="mt-5 space-y-3 text-sm font-semibold leading-6 text-[#4b5563]">
+            <p>
+              You are not just opening random studies. You are starting a guided Bible Study Journey.
+            </p>
+            <p>
+              If you show up each day, Bible Buddy will help you move through Scripture chapter by chapter.
+            </p>
+            <p>
+              Most chapters are built to be done one per day. You can go slower when life is busy, or faster if you have more time.
+            </p>
+          </div>
+
+          <div className="mt-5 rounded-2xl bg-[#f6f9ff] p-4">
+            <p className="text-sm font-black text-[#17213d]">Each chapter gives you 6 simple steps:</p>
+            <div className="mt-3 grid grid-cols-2 gap-2 text-xs font-black text-[#26344f]">
+              {[
+                "Chapter intro",
+                "Bible reading",
+                "Deep notes",
+                "Trivia",
+                "Scrambled",
+                "Reflection",
+              ].map((task, index) => (
+                <div key={task} className="rounded-xl bg-white px-3 py-2 shadow-sm">
+                  {index + 1}. {task}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="mt-4 text-center text-xs font-bold leading-5 text-[#6b7280]">
+            Finish the steps, grow your streak, and keep walking through the Bible with Louis.
+          </p>
+        </div>
+
+        <PrimaryButton onClick={() => void finishWithStudyTitle("The Creation of the World")} disabled={isSaving}>
+          {isSaving ? "Starting Genesis 1..." : "Start Genesis 1  ›"}
+        </PrimaryButton>
+      </OnboardingShell>,
+
+      <OnboardingShell key="free-books" activeIndex={12} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <Headline>
           Choose a book
           <br />
@@ -1232,7 +1290,7 @@ export function OnboardingModal({
               type="button"
               onClick={() => {
                 setSelectedFreeBookKey(book.key);
-                goToSlide(12);
+                goToSlide(13);
               }}
               className={`min-h-[86px] rounded-2xl border px-3 py-3 text-left text-sm shadow-sm transition hover:scale-[1.01] hover:shadow-md ${getBibleBookAccent(book.key)}`}
             >
@@ -1243,7 +1301,7 @@ export function OnboardingModal({
         </div>
       </OnboardingShell>,
 
-      <OnboardingShell key="free-studies" activeIndex={12} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
+      <OnboardingShell key="free-studies" activeIndex={13} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <Headline>
           {selectedFreeBook.title}
           <br />
@@ -1252,7 +1310,7 @@ export function OnboardingModal({
         <Subtitle>Choose the study you want to begin. We&apos;ll connect it to your dashboard right away.</Subtitle>
         <button
           type="button"
-          onClick={() => goToSlide(11)}
+          onClick={() => goToSlide(12)}
           className="mx-auto mt-5 block rounded-full bg-[#eef6ff] px-4 py-2 text-sm font-black text-[#2f80ed]"
         >
           ← Pick another book

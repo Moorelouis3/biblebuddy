@@ -8,6 +8,13 @@ import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
+import {
+  canFreeUserUnlockChapter,
+  formatFreePlanCountdown,
+  getNextLocalDayStartMs,
+  rememberFreeChapterUnlock,
+  type FreeChapterUnlockTarget,
+} from "../lib/freePlanGating";
 
 type LevelInfo = {
   level: number;
@@ -1234,6 +1241,8 @@ export default function DashboardJourneyExperience({
   const [isSavingDevotional, setIsSavingDevotional] = useState(false);
   const [isResettingDevotional, setIsResettingDevotional] = useState(false);
   const [devotionalSettingsMessage, setDevotionalSettingsMessage] = useState<string | null>(null);
+  const [freePlanGate, setFreePlanGate] = useState<{ kind: "chapter" | "study"; chapterLabel?: string | null } | null>(null);
+  const [freePlanCountdown, setFreePlanCountdown] = useState(() => formatFreePlanCountdown(getNextLocalDayStartMs() - Date.now()));
 
   const dashboardPageKeys = ["home", "bible", "group", "tv", "games", "share"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
@@ -1261,18 +1270,24 @@ export default function DashboardJourneyExperience({
     { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
     { key: "share", label: "Share", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
   ];
-
-  useEffect(() => {
-    if (studySettingsOpenRequest <= 0) return;
-    setShowJourneyHelp(false);
-    setShowDevotionalSettings(true);
-  }, [studySettingsOpenRequest]);
+  const isPaidUser = profile?.is_paid === true || membershipStatus === "pro";
 
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
   const visibleTasks = checklistData?.tasks ?? [];
   const totalTasks = visibleTasks.length || 5;
   const completedTasks = checklistData?.completedCount ?? 0;
   const allDone = checklistData?.allDone ?? false;
+  const canFreeUserChooseNewStudy = !isPaidUser && allDone && !checklistData?.nextJourneyTarget;
+
+  useEffect(() => {
+    if (studySettingsOpenRequest <= 0) return;
+    setShowJourneyHelp(false);
+    if (isPaidUser || canFreeUserChooseNewStudy) {
+      setShowDevotionalSettings(true);
+    } else {
+      setFreePlanGate({ kind: "study" });
+    }
+  }, [canFreeUserChooseNewStudy, isPaidUser, studySettingsOpenRequest]);
   const nextTask = visibleTasks.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = visibleTasks.findIndex((task) => !task.done);
   const nextActionTaskKind =
@@ -1284,7 +1299,6 @@ export default function DashboardJourneyExperience({
   const currentDevotionalTitle = currentDevotionalTask?.devotionalTitle || null;
   const currentStudyCover = getDashboardStudyCover(currentDevotionalTitle);
   const nextStudyHandoff = getBibleJourneyHandoff(currentDevotionalTitle);
-  const isPaidUser = profile?.is_paid === true;
   const remainingTasks = Math.max(totalTasks - completedTasks, 0);
   const completedChapterLabel =
     visibleTasks.find((task) => task.kind === "reading")?.chapterLabel ||
@@ -1322,6 +1336,14 @@ export default function DashboardJourneyExperience({
       : chapterTask?.chapterLabel ||
     visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "Your Chapter";
+  const currentChapterUnlockTarget: FreeChapterUnlockTarget | null =
+    currentDevotionalId && currentDevotionalTask?.devotionalDayNumber
+      ? {
+          devotionalId: currentDevotionalId,
+          dayNumber: currentDevotionalTask.devotionalDayNumber,
+          chapterLabel: activeChapterLabel,
+        }
+      : null;
   const currentStudySummary = getDashboardStudySummary(currentDevotionalTitle, null);
   const queueTasks = visibleTasks.filter((task) => !task.done || celebratingTasks[task.kind]);
   const completedTrackerTasks = visibleTasks.filter((task) => task.done && !celebratingTasks[task.kind]);
@@ -1442,6 +1464,39 @@ export default function DashboardJourneyExperience({
   const louisMessage = buildLouisNextStepMessage();
 
   useEffect(() => {
+    if (!isPaidUser && currentChapterUnlockTarget && canFreeUserUnlockChapter(userId, currentChapterUnlockTarget)) {
+      rememberFreeChapterUnlock(userId, currentChapterUnlockTarget);
+    }
+  }, [
+    currentChapterUnlockTarget?.chapterLabel,
+    currentChapterUnlockTarget?.dayNumber,
+    currentChapterUnlockTarget?.devotionalId,
+    isPaidUser,
+    userId,
+  ]);
+
+  useEffect(() => {
+    if (freePlanGate?.kind !== "chapter") return;
+    const updateCountdown = () => {
+      setFreePlanCountdown(formatFreePlanCountdown(getNextLocalDayStartMs() - Date.now()));
+    };
+    updateCountdown();
+    const interval = window.setInterval(updateCountdown, 30000);
+    return () => window.clearInterval(interval);
+  }, [freePlanGate?.kind]);
+
+  function showFreeChapterLimit(target: FreeChapterUnlockTarget) {
+    setFreePlanCountdown(formatFreePlanCountdown(getNextLocalDayStartMs() - Date.now()));
+    setFreePlanGate({ kind: "chapter", chapterLabel: target.chapterLabel || "your next chapter" });
+  }
+
+  function freeUserCanStartChapter(target: FreeChapterUnlockTarget) {
+    if (isPaidUser || canFreeUserUnlockChapter(userId, target)) return true;
+    showFreeChapterLimit(target);
+    return false;
+  }
+
+  useEffect(() => {
     if (!showDevotionalSettings) return;
 
     let cancelled = false;
@@ -1482,6 +1537,11 @@ export default function DashboardJourneyExperience({
 
   async function handleSaveDevotionalSetting() {
     if (!userId || !selectedDevotionalId) return;
+    if (!isPaidUser && !canFreeUserChooseNewStudy && selectedDevotionalId !== currentDevotionalId) {
+      setShowDevotionalSettings(false);
+      setFreePlanGate({ kind: "study" });
+      return;
+    }
 
     const selected = devotionalOptions.find((devotional) => devotional.id === selectedDevotionalId);
     setIsSavingDevotional(true);
@@ -1502,6 +1562,16 @@ export default function DashboardJourneyExperience({
       const maxCompletedDay = completedDays.length ? Math.max(...completedDays) : 0;
       const totalDays = Math.max(1, selected?.total_days || 1);
       const nextDay = Math.min(maxCompletedDay + 1, totalDays);
+      const nextTarget = {
+        devotionalId: selectedDevotionalId,
+        dayNumber: nextDay,
+        chapterLabel: `${selected?.title || "Your Bible study"} chapter ${nextDay}`,
+      };
+
+      if (!isPaidUser && !freeUserCanStartChapter(nextTarget)) {
+        setShowDevotionalSettings(false);
+        return;
+      }
 
       const { error: targetError } = await supabase
         .from("profile_stats")
@@ -1523,6 +1593,7 @@ export default function DashboardJourneyExperience({
           dayNumber: nextDay,
         });
       }
+      rememberFreeChapterUnlock(userId, nextTarget);
 
       setDevotionalSettingsMessage(`${selected?.title || "Your Bible study"} is set for your daily tasks.`);
       onDevotionalChanged();
@@ -1600,6 +1671,13 @@ export default function DashboardJourneyExperience({
     if (!allDone) return;
 
     if (userId && cycleStartedAt && preloadedNextStudy?.devotionalId) {
+      const nextTarget = {
+        devotionalId: preloadedNextStudy.devotionalId,
+        dayNumber: preloadedNextStudy.dayNumber,
+        chapterLabel: preloadedNextStudy.chapterLabel,
+      };
+      if (!freeUserCanStartChapter(nextTarget)) return;
+
       setShowCompletionPanel(false);
       setIsLoadingNextChapter(true);
       setPreloadedNextChapter({
@@ -1643,12 +1721,19 @@ export default function DashboardJourneyExperience({
         devotionalId: preloadedNextStudy.devotionalId,
         dayNumber: preloadedNextStudy.dayNumber,
       });
+      rememberFreeChapterUnlock(userId, nextTarget);
       setShowDevotionalSettings(false);
       onDevotionalChanged();
       return;
     }
 
     if (userId && cycleStartedAt && checklistData?.nextJourneyTarget) {
+      const nextTarget = {
+        ...checklistData.nextJourneyTarget,
+        chapterLabel: preloadedNextChapter?.chapterLabel || nextChapterLabel,
+      };
+      if (!freeUserCanStartChapter(nextTarget)) return;
+
       setShowCompletionPanel(false);
       setIsLoadingNextChapter(true);
       if (preloadedNextChapter?.tasks.length) {
@@ -1685,6 +1770,7 @@ export default function DashboardJourneyExperience({
       );
 
       rememberLouisDailyTaskTarget(userId, cycleStartedAt, checklistData.nextJourneyTarget);
+      rememberFreeChapterUnlock(userId, nextTarget);
       setShowDevotionalSettings(false);
       onDevotionalChanged();
       return;
@@ -2905,6 +2991,7 @@ export default function DashboardJourneyExperience({
             </button>
           </div>
 
+          {isPaidUser || canFreeUserChooseNewStudy ? (
           <div className="mt-4 space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
               Bible Study
@@ -2981,6 +3068,87 @@ export default function DashboardJourneyExperience({
                 {isResettingDevotional ? "Resetting..." : "Reset selected Bible Study"}
               </button>
             </div>
+          </div>
+          ) : (
+            <div className="mt-4 rounded-2xl border border-[#f0d7b3] bg-[#fff8ef] p-4">
+              <p className="text-sm font-bold text-gray-950">One active Bible study at a time</p>
+              <p className="mt-2 text-sm leading-6 text-gray-700">
+                As a free Bible Buddy, you can follow one Bible study at a time. Finish your current study first, or upgrade to Pro to switch studies whenever you want.
+              </p>
+              <Link
+                href="/upgrade"
+                className="mt-4 inline-flex w-full justify-center rounded-full bg-[#7BAFD4] px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+              >
+                Upgrade for unlimited studies
+              </Link>
+            </div>
+          )}
+        </div>
+      </ModalShell>
+
+      <ModalShell
+        isOpen={freePlanGate !== null}
+        onClose={() => setFreePlanGate(null)}
+        backdropColor="bg-black/55"
+        scrollable={true}
+        zIndex="z-[90]"
+      >
+        <div className="mx-4 w-full max-w-md rounded-[28px] border border-[#f0d7b3] bg-white p-5 text-left shadow-2xl">
+          <div className="flex items-start gap-3">
+            <div className="shrink-0 rounded-full bg-[#e8f4ff] p-1 shadow-sm">
+              <LouisAvatar mood="wave" size={48} />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Free Bible Buddy</p>
+              <h2 className="mt-1 text-xl font-black leading-tight text-gray-950">
+                {freePlanGate?.kind === "study" ? "One Bible study at a time" : "Your next chapter opens soon"}
+              </h2>
+            </div>
+            <button
+              type="button"
+              onClick={() => setFreePlanGate(null)}
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100 text-lg font-bold text-gray-500 transition hover:bg-gray-200"
+              aria-label="Close free plan message"
+            >
+              x
+            </button>
+          </div>
+
+          {freePlanGate?.kind === "study" ? (
+            <p className="mt-4 text-sm font-semibold leading-6 text-gray-700">
+              You can follow one Bible study at a time on the free plan. Finish your current study first, or upgrade to Pro to switch studies whenever you want.
+            </p>
+          ) : (
+            <div className="mt-4 space-y-3">
+              <p className="text-sm font-semibold leading-6 text-gray-700">
+                Hey, as a free Bible Buddy, you get one new Bible study chapter each day.
+              </p>
+              <div className="rounded-2xl bg-[#f6f9ff] p-4 text-center">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5b6f92]">
+                  {freePlanGate?.chapterLabel || "Your next chapter"} opens in
+                </p>
+                <p className="mt-1 text-2xl font-black text-[#17213d]">{freePlanCountdown}</p>
+              </div>
+              <p className="text-sm font-semibold leading-6 text-gray-700">
+                Do not want to wait? Upgrade now and get unlimited chapters.
+              </p>
+            </div>
+          )}
+
+          <div className="mt-5 grid gap-2">
+            <Link
+              href="/upgrade"
+              className="inline-flex w-full justify-center rounded-full bg-[#7BAFD4] px-4 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+            >
+              Upgrade now
+            </Link>
+            <button
+              type="button"
+              onClick={() => setFreePlanGate(null)}
+              className="w-full rounded-full border border-gray-200 bg-white px-4 py-3 text-sm font-black text-gray-700 transition hover:bg-gray-50"
+            >
+              Keep waiting
+            </button>
           </div>
         </div>
       </ModalShell>

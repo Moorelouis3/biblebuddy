@@ -11,15 +11,6 @@ export const BIBLE_STUDY_GROUP_ID = "165bada5-0900-44f1-963b-54e86fe64b39";
 
 export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
-    key: "fall_of_man",
-    title: "The Fall of Man",
-    subtitle: "2-chapter Bible study",
-    totalWeeks: 2,
-    image: "/thefallofman.png",
-    description:
-      "A chapter-by-chapter Bible study through Genesis 3-4 with intro, reading, notes, trivia, Scrambled, and reflection centered on temptation, shame, sin, blame, violence, exile, and the need for redemption.",
-  },
-  {
     key: "creation_of_the_world",
     title: "The Creation of the World",
     subtitle: "2-chapter Bible study",
@@ -29,6 +20,15 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
       "A chapter-by-chapter Bible study through Genesis 1-2 with intro, reading, notes, trivia, Scrambled, and reflection centered on creation, order, Eden, humanity in God's image, purpose, rest, and relationship with God.",
   },
   {
+    key: "fall_of_man",
+    title: "The Fall of Man",
+    subtitle: "2-chapter Bible study",
+    totalWeeks: 2,
+    image: "/thefallofman.png",
+    description:
+      "A chapter-by-chapter Bible study through Genesis 3-4 with intro, reading, notes, trivia, Scrambled, and reflection centered on temptation, shame, sin, blame, violence, exile, and the need for redemption.",
+  },
+  {
     key: "obedience_of_abraham",
     title: "The Obedience of Abraham",
     subtitle: "15-chapter Bible study",
@@ -36,24 +36,6 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     image: "/TheobedienceofAbraham.png",
     description:
       "A chapter-by-chapter Bible study through Genesis 11-25 with intro, reading, notes, trivia, Scrambled, and reflection centered on Abraham's call, waiting, covenant, testing, and legacy.",
-  },
-  {
-    key: "rise_of_esther",
-    title: "The Rise of Esther",
-    subtitle: "10-chapter Bible study",
-    totalWeeks: 10,
-    image: "/theriseofester.png",
-    description:
-      "A chapter-by-chapter Bible study through Esther 1-10 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, hidden identity, palace pressure, providence, reversal, and legacy.",
-  },
-  {
-    key: "courage_of_daniel",
-    title: "The Courage of Daniel",
-    subtitle: "6-chapter Bible study",
-    totalWeeks: 6,
-    image: "/thecourageofdaniel.png",
-    description:
-      "A chapter-by-chapter Bible study through Daniel 1-6 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, identity, prayer, wisdom, pressure, persecution, and faithfulness in Babylon.",
   },
   {
     key: "testing_of_joseph",
@@ -72,6 +54,24 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     image: "/Wisdomofproverbsnewcover.png",
     description:
       "A practical weekly Bible study through Proverbs focused on wisdom, speech, relationships, self-control, money, and daily decision making.",
+  },
+  {
+    key: "rise_of_esther",
+    title: "The Rise of Esther",
+    subtitle: "10-chapter Bible study",
+    totalWeeks: 10,
+    image: "/theriseofester.png",
+    description:
+      "A chapter-by-chapter Bible study through Esther 1-10 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, hidden identity, palace pressure, providence, reversal, and legacy.",
+  },
+  {
+    key: "courage_of_daniel",
+    title: "The Courage of Daniel",
+    subtitle: "6-chapter Bible study",
+    totalWeeks: 6,
+    image: "/thecourageofdaniel.png",
+    description:
+      "A chapter-by-chapter Bible study through Daniel 1-6 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, identity, prayer, wisdom, pressure, persecution, and faithfulness in Babylon.",
   },
   {
     key: "temptation_of_jesus",
