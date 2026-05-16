@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
@@ -70,6 +70,7 @@ type Props = {
   onTaskClick: (task: TaskState) => void;
   cycleStartedAt: string | null;
   studySettingsOpenRequest?: number;
+  homeHeader?: ReactNode;
   onDevotionalChanged: () => void;
 };
 
@@ -1287,6 +1288,7 @@ export default function DashboardJourneyExperience({
   onTaskClick,
   cycleStartedAt,
   studySettingsOpenRequest = 0,
+  homeHeader,
   onDevotionalChanged,
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -2538,6 +2540,7 @@ export default function DashboardJourneyExperience({
         <div className="w-full shrink-0">
         <section className="w-full px-1">
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+            {homeHeader}
             <div className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)]">
               <div className="mb-3 flex items-start justify-between gap-3">
                 <div>

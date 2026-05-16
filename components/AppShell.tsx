@@ -2051,7 +2051,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               )}
 
               {isLoggedIn && (
-                <label className="relative flex h-9 items-center rounded-full border px-2 text-xs font-bold shadow-sm bb-theme-picker">
+                <label className="relative flex h-9 items-center px-1 text-xs font-bold bb-theme-picker">
                   <span className="sr-only">Choose app theme</span>
                   <select
                     value={appThemeId}

@@ -147,12 +147,16 @@ html {
 }
 
 [data-bb-theme] .bb-theme-picker {
-  background-color: var(--bb-surface-soft);
-  border-color: var(--bb-card-border);
+  background-color: transparent;
+  border-color: transparent;
   color: var(--bb-text-secondary);
 }
 
-[data-bb-theme] .bb-theme-picker select,
+[data-bb-theme] .bb-theme-picker select {
+  background-color: transparent;
+  color: var(--bb-text-primary);
+}
+
 [data-bb-theme] .bb-theme-picker option {
   background-color: var(--bb-surface);
   color: var(--bb-text-primary);

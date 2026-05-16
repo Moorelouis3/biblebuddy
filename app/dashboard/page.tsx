@@ -3808,8 +3808,6 @@ export default function DashboardPage() {
 
         {/* MAIN CONTENT â€“ CENTERED COLUMN */}
         <div className="flex-1 max-w-2xl mx-auto">
-        {renderDashboardStatsRow()}
-
         <DashboardJourneyExperience
           userId={userId}
           userName={userName}
@@ -3832,6 +3830,7 @@ export default function DashboardPage() {
           onTaskClick={handleDailyJourneyTaskClick}
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
+          homeHeader={renderDashboardStatsRow()}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
           }}
@@ -3854,8 +3853,6 @@ export default function DashboardPage() {
 
       {/* MOBILE LAYOUT: Content Only (Ads shown at bottom) */}
       <div className="lg:hidden max-w-2xl mx-auto px-4 mt-4">
-        {renderDashboardStatsRow()}
-
         <DashboardJourneyExperience
           userId={userId}
           userName={userName}
@@ -3878,6 +3875,7 @@ export default function DashboardPage() {
           onTaskClick={handleDailyJourneyTaskClick}
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
+          homeHeader={renderDashboardStatsRow()}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
           }}

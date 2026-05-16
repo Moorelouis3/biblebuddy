@@ -6,6 +6,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import { BIBLE_STUDY_SERIES_CATALOG } from "@/lib/bibleStudiesCatalog";
 
 const taskSteps = [
   {
@@ -121,6 +122,14 @@ const dashboardPreviewPages = [
   },
 ];
 
+const landingStudySeries = BIBLE_STUDY_SERIES_CATALOG.map((series) => {
+  const chapterMatch = series.description.match(/through ([^,]+?) with/i);
+  return {
+    ...series,
+    chapters: chapterMatch?.[1] ?? series.subtitle,
+  };
+});
+
 export default function LandingPage() {
   const router = useRouter();
   const [isChecking, setIsChecking] = useState(true);
@@ -130,6 +139,8 @@ export default function LandingPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [heroFocus, setHeroFocus] = useState(0);
+  const [studyCarouselIndex, setStudyCarouselIndex] = useState(0);
+  const focusedSeries = landingStudySeries[studyCarouselIndex] ?? landingStudySeries[0];
 
   useEffect(() => {
     const checkSession = async () => {
@@ -379,70 +390,78 @@ export default function LandingPage() {
               </div>
 
               <div className="bg-[#eef4ff] p-3 sm:p-5">
-                <div className="rounded-[22px] border border-[#dbe7f6] bg-white p-3 shadow-sm sm:rounded-[26px] sm:p-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#5f95bd] sm:text-xs">Dashboard</p>
-                      <h3 className="mt-1 text-xl font-black leading-tight text-slate-950 sm:text-2xl">Today&apos;s study</h3>
-                      <p className="mt-1 text-xs font-semibold text-slate-500 sm:text-sm">Genesis to Revelation, one chapter at a time.</p>
+                <div className="grid grid-cols-4 gap-2">
+                  {[
+                    ["1", "Streak", "#fff6e8"],
+                    ["5", "Grace", "#eaf6ff"],
+                    ["12", "Level", "#eefdf4"],
+                    ["14", "Badges", "#fff0f0"],
+                  ].map((stat, index) => (
+                    <div key={stat[1]} className={`rounded-2xl border border-white px-2 py-3 text-center shadow-sm ${heroFocus === index ? "ring-4 ring-[#7BAFD4]/35" : ""}`} style={{ backgroundColor: stat[2] }}>
+                      <p className="text-lg font-black text-slate-950 sm:text-2xl">{stat[0]}</p>
+                      <p className="mt-1 text-[10px] font-black text-slate-500 sm:text-xs">{stat[1]}</p>
                     </div>
-                    <div className="rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] px-3 py-2 text-center">
-                      <p className="text-lg font-black text-slate-950">5</p>
-                      <p className="text-[10px] font-bold text-slate-500">Level</p>
+                  ))}
+                </div>
+
+                <div className="landing-card mt-3 rounded-[24px] border border-[#ecd8b2] bg-gradient-to-br from-[#fff6e8] via-[#fffaf2] to-[#fff2db] p-3 shadow-sm sm:mt-4 sm:p-4">
+                  <div className="flex items-start gap-3">
+                    <Image src="/louis/louis-stareyes.png" alt="Louis" width={52} height={52} className="h-12 w-12 shrink-0 rounded-full bg-white object-contain ring-4 ring-white/70" />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#946327]">Next Bible Study Step</p>
+                      <h3 className="mt-1 text-xl font-black leading-tight text-slate-950 sm:text-2xl">The Rise of Esther</h3>
+                      <p className="mt-1 text-sm font-bold leading-5 text-slate-600">Esther 2 is ready. Keep going through the story one chapter at a time.</p>
                     </div>
                   </div>
 
-                  <div className="mt-3 grid grid-cols-[1fr_auto] gap-3 rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] p-3 sm:mt-4 sm:p-4">
+                  <div className="mt-4 grid grid-cols-[78px_1fr] gap-3">
+                    <div className="overflow-visible rounded-2xl bg-white/65 p-1 shadow-sm">
+                      <img src="/theriseofester.png" alt="The Rise of Esther cover" className="aspect-[3/4] w-full object-contain drop-shadow-sm" />
+                    </div>
                     <div className="min-w-0">
-                      <p className="text-xs font-black text-slate-500">Next up</p>
-                      <p className="mt-1 text-base font-black text-slate-950 sm:text-lg">Read Esther 2</p>
-                      <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-[#d7eaff]">
+                      <div className="flex items-center justify-between text-xs font-black text-slate-700">
+                        <span>4 of 6 tasks</span>
+                        <span>67%</span>
+                      </div>
+                      <div className="mt-2 h-3 overflow-hidden rounded-full bg-white">
                         <div className="landing-progress h-full rounded-full bg-[#7BAFD4]" />
                       </div>
-                      <p className="mt-2 text-xs font-bold text-slate-500">4 of 6 daily tasks complete</p>
-                    </div>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full border-[8px] border-[#7BAFD4] bg-white text-sm font-black text-slate-950 sm:h-20 sm:w-20">
-                      67%
+                      <div className="mt-3 grid gap-2">
+                        {["Read Esther 2", "Review Notes", "Play Trivia"].map((task, index) => (
+                          <div key={task} className="flex items-center gap-2 rounded-2xl border border-white/80 bg-white/80 px-3 py-2 shadow-sm">
+                            <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-black ${index < 2 ? "bg-emerald-500 text-white" : "bg-[#d7eaff] text-[#1f5278]"}`}>
+                              {index < 2 ? "✓" : index + 1}
+                            </span>
+                            <span className="min-w-0 truncate text-xs font-black text-slate-800 sm:text-sm">{task}</span>
+                            <span className="ml-auto whitespace-nowrap text-[10px] font-black text-slate-500">+5 pts</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="mt-3 overflow-hidden rounded-2xl border border-[#dbe7f6] bg-white sm:mt-4">
-                    <div className="flex transition-transform duration-300 ease-out" style={{ transform: `translateX(-${heroFocus * 100}%)` }}>
-                      {dashboardPreviewPages.map((page) => (
-                        <div key={page.key} className="w-full shrink-0 p-3 sm:p-4">
-                          <div className="flex items-center gap-3">
-                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#d9ecff] text-lg font-black text-[#1f5278] sm:h-12 sm:w-12">
-                              {page.icon}
-                            </div>
-                            <div className="min-w-0">
-                              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#5f95bd] sm:text-xs">{page.eyebrow}</p>
-                              <h4 className="truncate text-lg font-black text-slate-950 sm:text-xl">{page.title}</h4>
-                            </div>
-                          </div>
-                          <p className="mt-3 min-h-[48px] text-sm font-semibold leading-6 text-slate-600 sm:text-base">{page.copy}</p>
-                          <div className="mt-4 flex items-center justify-between gap-3">
-                            <span className="rounded-full bg-[#d7eaff] px-3 py-1 text-xs font-black text-[#1f5278]">Swipe preview</span>
-                            <span className="rounded-full bg-[#7BAFD4] px-4 py-2 text-xs font-black text-[#05111f] shadow-sm">{page.action}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="mt-4 grid grid-cols-3 gap-2">
+                    {["Fire streak", "Grace days", "Chapter path"].map((label) => (
+                      <div key={label} className="rounded-2xl bg-white/75 px-2 py-2 text-center text-[10px] font-black text-slate-600 shadow-sm">
+                        {label}
+                      </div>
+                    ))}
                   </div>
+                </div>
 
-                  <div className="mt-3 overflow-hidden rounded-[22px] border border-[#dbe7f6] bg-[#fbfdff] p-2">
-                    <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                      {dashboardPreviewPages.map((page, index) => (
-                        <span
-                          key={page.key}
-                          className={`flex min-w-[86px] flex-col items-center gap-1 rounded-2xl px-3 py-2 text-center transition sm:min-w-[96px] ${
-                            heroFocus === index ? "bg-[#d7eaff] text-[#1f5278] ring-1 ring-[#7BAFD4]/45" : "bg-white text-slate-500"
-                          }`}
-                        >
-                          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-current/10 text-xs font-black">{page.icon}</span>
-                          <span className="text-[10px] font-black leading-tight sm:text-xs">{page.label}</span>
-                        </span>
-                      ))}
-                    </div>
+                <div className="mt-3 overflow-hidden rounded-[22px] border border-[#dbe7f6] bg-[#fbfdff] p-2">
+                  <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    {dashboardPreviewPages.map((page, index) => (
+                      <span
+                        key={page.key}
+                        className={`flex min-w-[86px] flex-col items-center gap-1 rounded-2xl px-3 py-2 text-center transition sm:min-w-[96px] ${
+                          heroFocus === index ? "bg-[#d7eaff] text-[#1f5278] ring-1 ring-[#7BAFD4]/45" : "bg-white text-slate-500"
+                        }`}
+                      >
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-current/10 text-xs font-black">{page.icon}</span>
+                        <span className="text-[10px] font-black leading-tight sm:text-xs">{page.label}</span>
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -504,6 +523,76 @@ export default function LandingPage() {
                   <p className="mt-3 text-sm leading-6 text-slate-600 md:mt-4 md:text-base md:leading-7">{step.copy}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8 overflow-hidden rounded-[28px] border border-[#dbe7f6] bg-white/85 py-5 shadow-[0_20px_60px_rgba(42,88,125,0.12)] md:mt-10 md:rounded-[34px] md:py-7">
+              <div className="mx-auto max-w-4xl px-5 text-center">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#5f95bd]">Detailed Bible study series</p>
+                <h3 className="mt-2 text-2xl font-black leading-tight text-slate-950 md:text-4xl">
+                  Study the Bible with 65+ guided series.
+                </h3>
+                <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-6 text-slate-600 md:text-base md:leading-7">
+                  Bible Buddy is built to walk you through the Bible with detailed chapter-by-chapter studies. Swipe through the series, see what chapters they cover, and follow the story in order.
+                </p>
+              </div>
+
+              <div className="relative mt-5 overflow-hidden py-4 md:mt-7">
+                <div
+                  className="flex gap-4 transition-transform duration-500 ease-out"
+                  style={{ transform: `translateX(calc(50% - ${studyCarouselIndex * 176 + 88}px))` }}
+                >
+                  {landingStudySeries.map((series, index) => {
+                    const active = index === studyCarouselIndex;
+                    return (
+                      <button
+                        key={series.key}
+                        type="button"
+                        onClick={() => setStudyCarouselIndex(index)}
+                        className={`w-[160px] shrink-0 text-left transition duration-300 ${
+                          active ? "scale-105" : "scale-95 opacity-65 hover:opacity-100"
+                        }`}
+                      >
+                        <div className={`overflow-visible rounded-[22px] border bg-[#f8fbff] p-2 shadow-sm transition ${
+                          active ? "border-[#7BAFD4] shadow-[0_18px_42px_rgba(123,175,212,0.28)]" : "border-[#dbe7f6]"
+                        }`}>
+                          <img src={series.image} alt={`${series.title} cover`} className="aspect-[3/4] w-full object-contain drop-shadow-sm" />
+                        </div>
+                        <p className="mt-3 line-clamp-2 text-center text-sm font-black leading-tight text-slate-950">{series.title}</p>
+                        <p className="mt-1 text-center text-xs font-bold text-[#5f95bd]">{series.chapters}</p>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="mx-auto grid max-w-4xl gap-4 px-5 md:grid-cols-[1fr_auto] md:items-center">
+                <div className="rounded-3xl border border-[#dbe7f6] bg-[#f8fbff] p-5 text-left">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#5f95bd]">Featured in the center</p>
+                  <h4 className="mt-2 text-2xl font-black text-slate-950">{focusedSeries.title}</h4>
+                  <p className="mt-1 text-sm font-black text-[#3f6f91]">{focusedSeries.chapters}</p>
+                  <p className="mt-3 text-sm font-semibold leading-6 text-slate-600 md:text-base">
+                    {focusedSeries.description.split(". ").slice(0, 2).join(". ").replace(/\.$/, "")}.
+                  </p>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setStudyCarouselIndex((index) => (index - 1 + landingStudySeries.length) % landingStudySeries.length)}
+                    className="grid h-11 w-11 place-items-center rounded-full border border-[#dbe7f6] bg-white text-xl font-black text-[#3f6f91] shadow-sm transition hover:bg-[#eef6ff]"
+                    aria-label="Previous Bible study series"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setStudyCarouselIndex((index) => (index + 1) % landingStudySeries.length)}
+                    className="grid h-11 w-11 place-items-center rounded-full border border-[#dbe7f6] bg-white text-xl font-black text-[#3f6f91] shadow-sm transition hover:bg-[#eef6ff]"
+                    aria-label="Next Bible study series"
+                  >
+                    ›
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
