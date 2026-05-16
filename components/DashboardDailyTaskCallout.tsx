@@ -284,7 +284,7 @@ function DashboardInlineBibleReader({
   }
 
   return (
-    <div className="dashboard-inline-reader mt-4 px-1 pb-2">
+    <div className="dashboard-task-card-extension mt-4 border-t border-[var(--bb-card-border)] px-1 pb-2 pt-4">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="bb-text-muted text-xs font-black uppercase tracking-[0.18em]">Read The Scripture</p>
@@ -309,14 +309,6 @@ function DashboardInlineBibleReader({
               </option>
             ))}
           </select>
-          <button
-            type="button"
-            onClick={onClose}
-            className="grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border)] bg-transparent text-xl leading-none text-[var(--bb-text-secondary)] transition hover:border-[var(--bb-accent)] hover:text-[var(--bb-text-primary)]"
-            aria-label="Close Bible reader"
-          >
-            x
-          </button>
         </div>
       </div>
 
@@ -357,7 +349,7 @@ function DashboardInlineBibleReader({
             disabled={markingDone}
             className="rounded-full bg-[var(--bb-button)] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text)] transition hover:brightness-95 disabled:opacity-60"
           >
-            {markingDone ? "Saving..." : "Mark Chapter Read"}
+            {markingDone ? "Saving..." : "Mark as Completed"}
           </button>
         </div>
       ) : null}
@@ -678,7 +670,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   const isInline = variant === "inline";
   const inlineFrame = (children: ReactNode, className = "") => (
-    <div className={`dashboard-inline-task mt-3 overflow-hidden rounded-[22px] border border-[#d7e4f7] bg-white shadow-sm ${className}`}>
+    <div className={`dashboard-task-card-extension mt-3 overflow-hidden border-t border-[var(--bb-card-border)] pt-3 ${className}`}>
       {children}
     </div>
   );
@@ -802,12 +794,12 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
       if (isInline) {
         return inlineFrame(
-          <div className="relative bg-white">
-            <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
+          <div className="relative">
+            <div className="flex items-start justify-between gap-4 px-1 pb-3">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-[#4f8fb7]">Task 1</p>
-                <h2 className="text-lg font-bold text-gray-900">Read Chapter Intro</h2>
-                <p className="mt-1 text-sm font-semibold text-gray-700">
+                <p className="bb-accent text-xs font-black uppercase tracking-widest">Task 1</p>
+                <h2 className="bb-text-primary text-lg font-black">Read Chapter Intro</h2>
+                <p className="bb-text-secondary mt-1 text-sm font-semibold">
                   {chapterLabel}: {devotionalDay.day_title}
                 </p>
               </div>
@@ -815,8 +807,17 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                 Ã—
               </button>
             </div>
-            <div className="px-6 py-5">
+            <div className="px-1 py-3">
               <ChapterNotesMarkdown>{devotionalDay.devotional_text}</ChapterNotesMarkdown>
+            </div>
+            <div className="flex justify-end px-1 pb-1 pt-3">
+              <button
+                type="button"
+                onClick={() => void closeIntroAndRefresh()}
+                className="rounded-full bg-[var(--bb-button)] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text)] transition hover:brightness-95"
+              >
+                Mark as Completed
+              </button>
             </div>
           </div>,
         );
@@ -865,17 +866,17 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   if (task.kind === "notes") {
     if (isInline) {
       return inlineFrame(
-        <div className="relative bg-white">
-          <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
+        <div className="relative">
+          <div className="flex items-center justify-between px-1 pb-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600">Chapter Notes</p>
-              <h2 className="text-base font-bold text-gray-900">{task.chapterLabel || task.title}</h2>
+              <p className="bb-accent text-xs font-black uppercase tracking-widest">Chapter Notes</p>
+              <h2 className="bb-text-primary text-base font-black">{task.chapterLabel || task.title}</h2>
             </div>
             <button type="button" onClick={() => void closeNotesAndRefresh()} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close notes">
               Ã—
             </button>
           </div>
-          <div className="px-6 py-5">
+          <div className="px-1 py-3">
             {notesLoading ? (
               <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p>
             ) : notesError ? (
@@ -886,6 +887,17 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
               </div>
             )}
           </div>
+          {!notesLoading && !notesError ? (
+            <div className="flex justify-end px-1 pb-1 pt-3">
+              <button
+                type="button"
+                onClick={() => void closeNotesAndRefresh()}
+                className="rounded-full bg-[var(--bb-button)] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text)] transition hover:brightness-95"
+              >
+                Mark as Completed
+              </button>
+            </div>
+          ) : null}
         </div>,
       );
     }

@@ -85,6 +85,13 @@ type DevotionalOption = {
   total_days: number | null;
 };
 
+type CurrentStudyChapter = {
+  day_number: number;
+  day_title: string | null;
+  bible_reading_book: string | null;
+  bible_reading_chapter: number | null;
+};
+
 type NextStudyRecommendation = {
   targetKey: string;
   devotionalId: string;
@@ -1355,6 +1362,9 @@ export default function DashboardJourneyExperience({
   const [preloadedNextStudy, setPreloadedNextStudy] = useState<NextStudyRecommendation | null>(null);
   const [showDevotionalSettings, setShowDevotionalSettings] = useState(false);
   const [showJourneyHelp, setShowJourneyHelp] = useState(false);
+  const [showCurrentStudyDetails, setShowCurrentStudyDetails] = useState(false);
+  const [currentStudyChapters, setCurrentStudyChapters] = useState<CurrentStudyChapter[]>([]);
+  const [switchingStudyChapter, setSwitchingStudyChapter] = useState<number | null>(null);
   const [devotionalOptions, setDevotionalOptions] = useState<DevotionalOption[]>([]);
   const [selectedDevotionalId, setSelectedDevotionalId] = useState("");
   const [isLoadingDevotionalOptions, setIsLoadingDevotionalOptions] = useState(false);
@@ -1427,6 +1437,39 @@ export default function DashboardJourneyExperience({
   const currentStudyCover = getDashboardStudyCover(currentDevotionalTitle);
   const nextStudyHandoff = getBibleJourneyHandoff(currentDevotionalTitle);
   const remainingTasks = Math.max(totalTasks - completedTasks, 0);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadCurrentStudyChapters() {
+      if (!currentDevotionalId || !showCurrentStudyDetails) {
+        if (!showCurrentStudyDetails) setCurrentStudyChapters([]);
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("devotional_days")
+        .select("day_number, day_title, bible_reading_book, bible_reading_chapter")
+        .eq("devotional_id", currentDevotionalId)
+        .order("day_number", { ascending: true });
+
+      if (cancelled) return;
+      if (error) {
+        console.error("[DASHBOARD] Could not load current study chapters:", error);
+        setCurrentStudyChapters([]);
+        return;
+      }
+
+      setCurrentStudyChapters((data || []) as CurrentStudyChapter[]);
+    }
+
+    void loadCurrentStudyChapters();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [currentDevotionalId, showCurrentStudyDetails]);
+
   const completedChapterLabel =
     visibleTasks.find((task) => task.kind === "reading")?.chapterLabel ||
     visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
@@ -2170,6 +2213,56 @@ export default function DashboardJourneyExperience({
     }, 0);
   }
 
+  async function switchCurrentStudyChapter(dayNumber: number) {
+    if (!userId || !currentDevotionalId || switchingStudyChapter) return;
+    const currentDayNumber = currentDevotionalTask?.devotionalDayNumber ?? 1;
+    if (!isPaidUser && dayNumber > currentDayNumber) return;
+    const targetChapter = currentStudyChapters.find((chapter) => chapter.day_number === dayNumber);
+    if (!targetChapter) return;
+
+    setSwitchingStudyChapter(dayNumber);
+    setShowCurrentStudyDetails(false);
+    try {
+      const { error } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            free_devotional_id: currentDevotionalId,
+            louis_primary_devotional_id: currentDevotionalId,
+            louis_primary_devotional_day: dayNumber,
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (error) throw error;
+
+      await supabase.from("devotional_progress").upsert(
+        {
+          user_id: userId,
+          devotional_id: currentDevotionalId,
+          day_number: dayNumber,
+          is_completed: false,
+          reading_completed: false,
+        },
+        { onConflict: "user_id,devotional_id,day_number" },
+      );
+
+      if (cycleStartedAt) {
+        rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
+          devotionalId: currentDevotionalId,
+          dayNumber,
+        });
+      }
+
+      onDevotionalChanged();
+    } catch (error) {
+      console.error("[DASHBOARD] Could not switch current study chapter:", error);
+    } finally {
+      setSwitchingStudyChapter(null);
+    }
+  }
+
   function handleSwipeStart(event: React.TouchEvent<HTMLDivElement>) {
     swipeStartXRef.current = event.touches[0]?.clientX ?? null;
   }
@@ -2631,6 +2724,16 @@ export default function DashboardJourneyExperience({
         .chapter-confetti span:nth-child(7) { animation-delay: 210ms; }
         .chapter-confetti span:nth-child(8) { animation-delay: 245ms; }
         .chapter-card-drop { animation: chapter-card-drop 560ms cubic-bezier(0.2, 0.9, 0.18, 1.15) both; }
+        @keyframes dashboard-task-extension-open {
+          from { opacity: 0; transform: translateY(-8px); clip-path: inset(0 0 100% 0); }
+          to { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
+        }
+        .dashboard-task-card-extension {
+          animation: dashboard-task-extension-open 260ms cubic-bezier(0.16, 0.9, 0.22, 1) both;
+        }
+        .dashboard-task-shell-open {
+          transform: translateY(-1px);
+        }
         .chapter-card-drop::after {
           content: "";
           position: absolute;
@@ -2670,7 +2773,22 @@ export default function DashboardJourneyExperience({
         <section className="w-full px-1">
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
             {homeHeader}
-            <div className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)]">
+            <div
+              className={`rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition ${
+                currentDevotionalId ? "cursor-pointer hover:border-[var(--bb-accent)] hover:shadow-[0_16px_42px_rgba(38,63,99,0.14)]" : ""
+              }`}
+              role={currentDevotionalId ? "button" : undefined}
+              tabIndex={currentDevotionalId ? 0 : undefined}
+              onClick={() => {
+                if (!currentDevotionalId) return;
+                setShowCurrentStudyDetails((current) => !current);
+              }}
+              onKeyDown={(event) => {
+                if (!currentDevotionalId || (event.key !== "Enter" && event.key !== " ")) return;
+                event.preventDefault();
+                setShowCurrentStudyDetails((current) => !current);
+              }}
+            >
               <div className="mb-3 flex items-start justify-between gap-3">
                 <div>
                   <h2 className="min-w-0 whitespace-nowrap text-[clamp(16px,4.8vw,20px)] font-black leading-tight text-gray-950">
@@ -2688,10 +2806,10 @@ export default function DashboardJourneyExperience({
                 <div
                   className="grid h-16 w-16 shrink-0 place-items-center rounded-full"
                   style={{
-                    background: `conic-gradient(#2f7fe8 ${studyProgressPercent}%, #e6edf7 0)`,
+                    background: `conic-gradient(var(--bb-accent) ${studyProgressPercent}%, var(--bb-progress-track) 0)`,
                   }}
                 >
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-white text-sm font-black text-[#2f7fe8]">
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-[var(--bb-card)] text-sm font-black text-[var(--bb-accent)]">
                     {studyProgressCompleted}/{studyProgressTotal}
                   </div>
                 </div>
@@ -2699,9 +2817,9 @@ export default function DashboardJourneyExperience({
                   <p className="truncate text-sm font-black text-gray-950">{activeChapterLabel}</p>
                   <p className="mt-0.5 text-xs font-semibold leading-5 text-gray-500">{studyProgressMotivation}</p>
                   <div className="mt-3 flex items-center gap-3">
-                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-[#e6edf7]">
+                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
                       <div
-                        className="h-full rounded-full bg-[#2f7fe8] transition-all duration-500"
+                        className="h-full rounded-full bg-[var(--bb-accent)] transition-all duration-500"
                         style={{ width: `${studyProgressPercent}%` }}
                       />
                     </div>
@@ -2710,6 +2828,70 @@ export default function DashboardJourneyExperience({
                 </div>
                 <span className="text-xl text-gray-400" aria-hidden="true">›</span>
               </div>
+              {showCurrentStudyDetails && currentDevotionalId ? (
+                <div className="dashboard-task-card-extension mt-4 border-t border-[var(--bb-card-border)] pt-4">
+                  <div className="flex gap-4">
+                    {currentStudyCover ? (
+                      <img src={currentStudyCover} alt="" className="h-28 w-20 shrink-0 rounded-2xl object-cover shadow-sm" />
+                    ) : null}
+                    <div className="min-w-0 flex-1">
+                      <p className="bb-accent text-xs font-black uppercase tracking-[0.16em]">Current Study</p>
+                      <h3 className="bb-text-primary mt-1 text-xl font-black leading-tight">{currentDevotionalTitle}</h3>
+                      <p className="bb-text-secondary mt-2 text-sm font-semibold leading-6">{currentStudySummary}</p>
+                    </div>
+                  </div>
+                  <div className="mt-4 grid gap-2">
+                    {currentStudyChapters.map((studyChapter) => {
+                      const chapterLabel =
+                        studyChapter.bible_reading_book && studyChapter.bible_reading_chapter
+                          ? `${studyChapter.bible_reading_book} ${studyChapter.bible_reading_chapter}`
+                          : studyChapter.day_title || `Chapter ${studyChapter.day_number}`;
+                      const currentDayNumber = currentDevotionalTask?.devotionalDayNumber ?? 1;
+                      const isCurrent = studyChapter.day_number === currentDayNumber;
+                      const isUnlockedForFree = studyChapter.day_number <= currentDayNumber;
+                      const isLocked = !isPaidUser && !isUnlockedForFree;
+                      const isPastOrCurrent = studyChapter.day_number <= currentDayNumber;
+
+                      return (
+                        <button
+                          key={studyChapter.day_number}
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            if (isLocked) return;
+                            void switchCurrentStudyChapter(studyChapter.day_number);
+                          }}
+                          disabled={isCurrent || isLocked || switchingStudyChapter !== null}
+                          className={`flex items-center justify-between gap-3 rounded-2xl border px-3 py-3 text-left transition ${
+                            isCurrent
+                              ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)]"
+                              : isPastOrCurrent
+                                ? "border-emerald-200 bg-emerald-50 hover:border-emerald-300"
+                                : isLocked
+                                  ? "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] opacity-70"
+                                  : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] hover:border-[var(--bb-accent)]"
+                          } disabled:opacity-70`}
+                        >
+                          <span className="min-w-0">
+                            <span className="bb-text-primary block text-sm font-black">{chapterLabel}</span>
+                            <span className="bb-text-muted mt-0.5 block text-xs font-bold">
+                              {studyChapter.day_title || `Chapter ${studyChapter.day_number}`}
+                            </span>
+                          </span>
+                          <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-emerald-700" : "bb-accent"}`}>
+                            {isLocked ? "🔒" : isCurrent ? "Loaded" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
+                          </span>
+                        </button>
+                      );
+                    })}
+                    {!currentStudyChapters.length ? (
+                      <p className="bb-text-muted rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-4 py-4 text-sm font-bold">
+                        Loading study chapters...
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+              ) : null}
             </div>
             {false ? (
             <div
@@ -3060,8 +3242,28 @@ export default function DashboardJourneyExperience({
                   (activeTask.href || "") === (task.href || "") &&
                   (activeTask.chapterLabel || "") === (task.chapterLabel || "");
 
+                const taskShellClasses = task.done
+                  ? "border-green-200 bg-gradient-to-r from-green-50 via-white to-green-50 hover:bg-green-50"
+                  : isCardDisabled
+                    ? "cursor-not-allowed border-[#e2e8f0] bg-gradient-to-r from-white via-[#f7fbff] to-white text-gray-700 opacity-95"
+                    : isActiveInlineTask
+                      ? "border-[var(--bb-accent)] bg-[var(--bb-card)] text-[var(--bb-text-primary)] shadow-[0_16px_40px_rgba(38,63,99,0.16)]"
+                      : "border-[#dbe7f4] bg-gradient-to-r from-white via-[#fbfdff] to-white text-gray-700 hover:shadow-md";
+
                 return (
-                <div key={task.kind} className="w-full">
+                <div
+                  key={task.kind}
+                  className={`dashboard-task-shell relative w-full overflow-hidden rounded-[18px] border shadow-sm transition-all duration-300 ${
+                    isCelebrating ? "task-complete-pop" : ""
+                  } ${
+                    isNewChapterDropping ? "chapter-card-drop" : ""
+                  } ${
+                    isNextActionTask ? "next-task-pulse" : ""
+                  } ${
+                    isActiveInlineTask ? "dashboard-task-shell-open" : ""
+                  } ${taskShellClasses}`}
+                  style={isNewChapterDropping ? { animationDelay: `${index * 85}ms` } : undefined}
+                >
                 <button
                   type="button"
                   onClick={() => {
@@ -3069,20 +3271,8 @@ export default function DashboardJourneyExperience({
                     onTaskClick(task);
                   }}
                   disabled={isCardDisabled}
-                  className={`relative w-full overflow-hidden rounded-[18px] border px-3.5 py-3 text-left shadow-sm transition-all duration-300 sm:px-4 ${
-                    isCelebrating ? "task-complete-pop" : ""
-                  } ${
-                    isNewChapterDropping ? "chapter-card-drop" : ""
-                  } ${
-                    isNextActionTask ? "next-task-pulse" : ""
-                  } ${
-                    task.done
-                      ? "border-green-200 bg-gradient-to-r from-green-50 via-white to-green-50 hover:bg-green-50"
-                      : isCardDisabled
-                        ? "cursor-not-allowed border-[#e2e8f0] bg-gradient-to-r from-white via-[#f7fbff] to-white text-gray-700 opacity-95"
-                        : "border-[#dbe7f4] bg-gradient-to-r from-white via-[#fbfdff] to-white text-gray-700 hover:shadow-md"
-                  }`}
-                  style={isNewChapterDropping ? { animationDelay: `${index * 85}ms` } : undefined}
+                  className="relative w-full px-3.5 py-3 text-left transition-all duration-300 sm:px-4"
+                  aria-expanded={isActiveInlineTask}
                 >
                   {isCardDisabled ? (
                     <span
@@ -3167,13 +3357,15 @@ export default function DashboardJourneyExperience({
                   ) : null}
                 </button>
                 {isActiveInlineTask ? (
-                  <DashboardDailyTaskCallout
-                    task={activeTask}
-                    userId={userId}
-                    onClose={onActiveTaskClose}
-                    onProgressUpdated={onActiveTaskProgressUpdated}
-                    variant="inline"
-                  />
+                  <div className="px-3.5 pb-3 sm:px-4">
+                    <DashboardDailyTaskCallout
+                      task={activeTask}
+                      userId={userId}
+                      onClose={onActiveTaskClose}
+                      onProgressUpdated={onActiveTaskProgressUpdated}
+                      variant="inline"
+                    />
+                  </div>
                 ) : null}
                 </div>
                 );

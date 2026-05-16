@@ -346,6 +346,15 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
               No new points this run (you already earned points for these questions before).
             </p>
           )}
+          {onClose ? (
+            <button
+              type="button"
+              onClick={onClose}
+              className="mt-8 rounded-full bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
+            >
+              Mark as Completed
+            </button>
+          ) : null}
           {!onClose ? (
             <div className="mt-8 space-y-3">
               <Link

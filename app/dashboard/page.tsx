@@ -3475,7 +3475,13 @@ export default function DashboardPage() {
 
   function handleDailyJourneyTaskClick(task: TaskState) {
     if (task.disabled) return;
-    setSelectedDashboardTask(task);
+    setSelectedDashboardTask((current) => {
+      const isSameTask =
+        current?.kind === task.kind &&
+        (current.href || "") === (task.href || "") &&
+        (current.chapterLabel || "") === (task.chapterLabel || "");
+      return isSameTask ? null : task;
+    });
   }
 
   const exploreLinks = [
@@ -3671,6 +3677,7 @@ export default function DashboardPage() {
 
   function handleDashboardTaskProgressUpdated(completedTask?: TaskState) {
     if (completedTask?.kind) {
+      setSelectedDashboardTask(null);
       let completedJourneyKey: string | null | undefined = null;
       setDailyChecklistData((current) => {
         if (!current?.tasks.length) return current;
