@@ -661,6 +661,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             onClose={() => closeAndRefresh(interactiveTaskCompleted)}
             onComplete={markInteractiveTaskComplete}
             skipUpgradeGate
+            compact
           />
         </TaskPlayerErrorBoundary>,
       );
@@ -693,6 +694,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
           chapter={scrambledPack.chapter}
           onClose={() => closeAndRefresh(interactiveTaskCompleted)}
           onComplete={markInteractiveTaskComplete}
+          compact
         />,
       );
     }

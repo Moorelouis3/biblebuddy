@@ -21,6 +21,7 @@ type TriviaGamePlayerProps = {
   onClose?: () => void;
   onComplete?: () => void;
   skipUpgradeGate?: boolean;
+  compact?: boolean;
 };
 
 async function fetchVerseText(reference: string) {
@@ -40,7 +41,7 @@ async function fetchVerseText(reference: string) {
   }
 }
 
-export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose, onComplete, skipUpgradeGate = false }: TriviaGamePlayerProps) {
+export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose, onComplete, skipUpgradeGate = false, compact = false }: TriviaGamePlayerProps) {
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -130,7 +131,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
 
   if (isPaid === false && shouldGateUpgrade) {
     return (
-      <div className="min-h-screen bg-gray-50 px-4 py-10">
+      <div className={`${compact ? "bg-white px-3 py-4" : "min-h-screen bg-gray-50 px-4 py-10"}`}>
         <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
           <h1 className="text-2xl font-bold text-gray-900">Trivia Pro Feature</h1>
           <p className="mt-3 text-gray-700">
@@ -305,7 +306,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
           ? "Good progress. Keep going and this chapter will get clearer."
           : "You finished the round, and that still counts. Review it once more and the chapter will land better.";
     return (
-      <div className={`${isEmbedded ? "bg-white px-4 py-6" : "min-h-screen bg-[#f5f7fb] px-4 py-8"}`}>
+      <div className={`${isEmbedded || compact ? "bg-white px-3 py-4" : "min-h-screen bg-[#f5f7fb] px-4 py-8"}`}>
         <div
           className={`relative mx-auto max-w-xl text-center ${
             isEmbedded
@@ -373,7 +374,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-8">
+    <div className={`${compact ? "bg-white px-3 py-4" : "min-h-screen bg-gray-50 px-4 py-8"}`}>
       <div className="mx-auto max-w-2xl">
         <div className="mb-6 flex items-center justify-between gap-4">
           {onClose ? (
@@ -409,6 +410,24 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
               const isSelected = selectedAnswer === option.label;
               const isRightOption = !!selectedAnswer && option.label === currentQuestion.correctAnswer;
               const isWrongSelection = isSelected && option.label !== currentQuestion.correctAnswer;
+              const answerStyle = isRightOption
+                ? {
+                    backgroundColor: "#BBF7D0",
+                    borderColor: "#16A34A",
+                    boxShadow: "0 0 0 2px rgba(22, 163, 74, 0.14)",
+                  }
+                : isWrongSelection
+                  ? {
+                      backgroundColor: "#FECACA",
+                      borderColor: "#DC2626",
+                      boxShadow: "0 0 0 2px rgba(220, 38, 38, 0.12)",
+                    }
+                  : isSelected
+                    ? {
+                        backgroundColor: "#F1F5F9",
+                        borderColor: "#64748B",
+                      }
+                    : undefined;
 
               return (
                 <button
@@ -416,12 +435,13 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
                   type="button"
                   onClick={() => void handleAnswerSelect(option.label)}
                   disabled={!!selectedAnswer}
+                  style={answerStyle}
                   className={`w-full rounded-xl border px-4 py-3 text-left transition ${
                     isRightOption
-                      ? "border-green-400 bg-green-50"
+                      ? "border-green-600 bg-green-200 disabled:opacity-100"
                       : isWrongSelection
-                        ? "border-red-400 bg-red-50"
-                        : "border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50"
+                        ? "border-red-600 bg-red-200 disabled:opacity-100"
+                        : "border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50 disabled:opacity-100"
                   }`}
                 >
                   <span className="font-semibold text-gray-900">{option.label}.</span>{" "}

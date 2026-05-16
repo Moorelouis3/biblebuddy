@@ -73,12 +73,14 @@ export default function ScrambledGamePlayer({
   chapter,
   onClose,
   onComplete,
+  compact = false,
 }: {
   bookName: string;
   bookSlug: string;
   chapter: ScrambledChapterPack;
   onClose?: () => void;
   onComplete?: () => void;
+  compact?: boolean;
 }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [bankLetters, setBankLetters] = useState<LetterTile[]>([]);
@@ -580,7 +582,7 @@ export default function ScrambledGamePlayer({
           : "Good first pass. Play it again and the words will lock in faster.";
 
   if (!progressLoaded) {
-    return <div className="min-h-screen bg-[#f5f7fb] px-4 py-14 text-center text-sm text-gray-500">Loading Scrambled...</div>;
+    return <div className={`${compact ? "bg-white" : "min-h-screen bg-[#f5f7fb]"} px-4 py-8 text-center text-sm text-gray-500`}>Loading Scrambled...</div>;
   }
 
   if (showResults) {
@@ -801,8 +803,8 @@ export default function ScrambledGamePlayer({
 
   return (
     <>
-      <div className={`${isEmbedded ? "h-[82vh] min-h-[620px] overflow-y-auto" : "min-h-screen"} bg-[#f5f7fb] pb-14`}>
-        <div className="mx-auto flex max-w-3xl flex-col gap-5 px-4 pt-6 sm:px-6">
+      <div className={`${compact ? "bg-white pb-6" : isEmbedded ? "h-[82vh] min-h-[620px] overflow-y-auto bg-[#f5f7fb] pb-14" : "min-h-screen bg-[#f5f7fb] pb-14"}`}>
+        <div className={`mx-auto flex max-w-3xl flex-col gap-5 px-4 ${compact ? "py-4" : "pt-6"} sm:px-6`}>
           <div className="flex items-center justify-between gap-4">
             {onClose ? (
               <button type="button" onClick={onClose} className="text-sm font-semibold text-[#4768af] hover:text-[#35508a]">
