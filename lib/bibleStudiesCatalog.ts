@@ -47,15 +47,6 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
       "A chapter-by-chapter Bible study through Genesis 37-50 with intro, reading, notes, trivia, Scrambled, and reflection all centered on Joseph's story.",
   },
   {
-    key: "wisdom_of_proverbs",
-    title: "The Wisdom of Proverbs",
-    subtitle: "31-week group study",
-    totalWeeks: 31,
-    image: "/Wisdomofproverbsnewcover.png",
-    description:
-      "A practical weekly Bible study through Proverbs focused on wisdom, speech, relationships, self-control, money, and daily decision making.",
-  },
-  {
     key: "rise_of_esther",
     title: "The Rise of Esther",
     subtitle: "10-chapter Bible study",
@@ -63,6 +54,15 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     image: "/theriseofester.png",
     description:
       "A chapter-by-chapter Bible study through Esther 1-10 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, hidden identity, palace pressure, providence, reversal, and legacy.",
+  },
+  {
+    key: "wisdom_of_proverbs",
+    title: "The Wisdom of Proverbs",
+    subtitle: "31-week group study",
+    totalWeeks: 31,
+    image: "/Wisdomofproverbsnewcover.png",
+    description:
+      "A practical weekly Bible study through Proverbs focused on wisdom, speech, relationships, self-control, money, and daily decision making.",
   },
   {
     key: "courage_of_daniel",

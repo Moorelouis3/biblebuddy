@@ -71,7 +71,24 @@
 :root {
   /* background = the light color from your screenshot */
   --background: #f5f7fa;
-  --foreground: #000000;
+  --foreground: #111827;
+  --bb-background: #f5f7fa;
+  --bb-surface: #ffffff;
+  --bb-surface-soft: #f3f4f6;
+  --bb-card: #ffffff;
+  --bb-card-border: #e5e7eb;
+  --bb-text-primary: #111827;
+  --bb-text-secondary: #374151;
+  --bb-text-muted: #6b7280;
+  --bb-accent: #4a9b6f;
+  --bb-accent-soft: #eef7f1;
+  --bb-button: #4a9b6f;
+  --bb-button-text: #ffffff;
+  --bb-nav-background: #ffffff;
+  --bb-nav-active: #2563eb;
+  --bb-nav-inactive: #6b7280;
+  --bb-progress-track: #e5e7eb;
+  --bb-progress-fill: #4a9b6f;
 }
 
 @theme inline {
@@ -109,6 +126,206 @@ html {
 /* ✅ Any page wrapper using bg-gray-50 will match the global background */
 .bg-gray-50 {
   background-color: var(--background) !important;
+}
+
+[data-bb-theme] body {
+  background-color: var(--bb-background);
+  color: var(--bb-text-primary);
+}
+
+[data-bb-theme] input,
+[data-bb-theme] textarea,
+[data-bb-theme] select {
+  background-color: var(--bb-card);
+  border-color: var(--bb-card-border);
+  color: var(--bb-text-primary);
+}
+
+[data-bb-theme] input::placeholder,
+[data-bb-theme] textarea::placeholder {
+  color: var(--bb-text-muted);
+}
+
+[data-bb-theme] .bb-theme-picker {
+  background-color: var(--bb-surface-soft);
+  border-color: var(--bb-card-border);
+  color: var(--bb-text-secondary);
+}
+
+[data-bb-theme] .bb-theme-picker select,
+[data-bb-theme] .bb-theme-picker option {
+  background-color: var(--bb-surface);
+  color: var(--bb-text-primary);
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) .bg-gray-50,
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#f4f8ff"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#f5f7fa"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#f4f9fd"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#f5f9fc"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#f6f9ff"] {
+  background-color: var(--bb-background) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) .bg-white,
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-white/"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#fff"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#fb"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-gradient-to"] {
+  background: var(--bb-card) !important;
+  background-color: var(--bb-card) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) .bg-gray-100,
+[data-bb-theme]:not([data-bb-theme="light"]) .bg-gray-200,
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-blue-50"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-blue-100"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-sky-100"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-emerald-50"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-emerald-100"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-green-50"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-green-100"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-teal-100"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-violet-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-amber-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-red-50"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#eef"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#edf"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#eaf"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#dbe"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#d7"] {
+  background-color: var(--bb-surface-soft) !important;
+  background: var(--bb-surface-soft) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="border-gray-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="border-blue-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="border-sky-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="border-emerald-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="border-green-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="border-teal-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="border-violet-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="border-red-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="border-[#"] {
+  border-color: var(--bb-card-border) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-gray-950"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-gray-900"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-slate-950"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-black"] {
+  color: var(--bb-text-primary) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-gray-800"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-gray-700"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-slate-700"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-blue-800"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-emerald-800"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-green-800"] {
+  color: var(--bb-text-secondary) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-gray-600"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-gray-500"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-gray-400"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-slate-500"] {
+  color: var(--bb-text-muted) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-blue-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-sky-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#2f7fe8"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#4f8fb7"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#5a76af"] {
+  color: var(--bb-accent) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#7BAFD4"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#2878f0"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#3f6fb2"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#2f7fe8"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-blue-600"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-emerald-500"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-emerald-600"] {
+  background: var(--bb-button) !important;
+  background-color: var(--bb-button) !important;
+  color: var(--bb-button-text) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#9dc1ee"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#d8aa57"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#9fce85"] {
+  background: var(--bb-progress-fill) !important;
+  background-color: var(--bb-progress-fill) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="hover:bg-gray-50"]:hover,
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="hover:bg-gray-100"]:hover,
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="hover:bg-gray-200"]:hover,
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="hover:bg-blue-"]:hover,
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="hover:bg-[#"]:hover {
+  background-color: var(--bb-surface-soft) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) header,
+[data-bb-theme]:not([data-bb-theme="light"]) nav,
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="sticky bottom"] {
+  background-color: var(--bb-nav-background) !important;
+  border-color: var(--bb-card-border) !important;
+  color: var(--bb-nav-inactive) !important;
+}
+
+.bb-card {
+  background-color: var(--bb-card);
+  border-color: var(--bb-card-border);
+  color: var(--bb-text-primary);
+}
+
+.bb-surface {
+  background-color: var(--bb-surface);
+  border-color: var(--bb-card-border);
+  color: var(--bb-text-primary);
+}
+
+.bb-surface-soft {
+  background-color: var(--bb-surface-soft);
+  border-color: var(--bb-card-border);
+  color: var(--bb-text-secondary);
+}
+
+.bb-text-primary {
+  color: var(--bb-text-primary);
+}
+
+.bb-text-secondary {
+  color: var(--bb-text-secondary);
+}
+
+.bb-text-muted {
+  color: var(--bb-text-muted);
+}
+
+.bb-accent {
+  color: var(--bb-accent);
+}
+
+.bb-accent-soft {
+  background-color: var(--bb-accent-soft);
+  border-color: var(--bb-card-border);
+}
+
+.bb-button {
+  background-color: var(--bb-button);
+  color: var(--bb-button-text);
+}
+
+.bb-progress-track {
+  background-color: var(--bb-progress-track);
+}
+
+.bb-progress-fill {
+  background-color: var(--bb-progress-fill);
 }
 
 /* Upgrade page animations */
@@ -187,17 +404,12 @@ html {
   }
 }
 
-/* ✅ Force all Tailwind text colors (text-gray-500, text-sky-700, etc.) to be jet black */
-[class*="text-"] {
-  color: #000000 !important;
-}
-
-/* Headings are black too (kept from before) */
+/* Headings follow the active app theme. */
 h1,
 h2,
 h3,
 h4 {
-  color: #000000;
+  color: var(--bb-text-primary);
 }
 
 /* Links use the same text color unless you style them differently later */

@@ -1247,7 +1247,6 @@ export default function DashboardJourneyExperience({
   const dashboardPageKeys = ["home", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
-  const activeDashboardPageKey: DashboardPageKey = dashboardPageKeys[safeActivePage];
   const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
   const dashboardPageLinks = {
     bible: exploreLinkByKey("bible"),
@@ -2013,6 +2012,11 @@ export default function DashboardJourneyExperience({
   function snapToPage(index: number) {
     const nextIndex = Math.max(0, Math.min(index, dashboardPageKeys.length - 1));
     setActivePage(nextIndex);
+    window.setTimeout(() => {
+      document
+        .querySelector(`[data-dashboard-nav-key="${dashboardPageKeys[nextIndex]}"]`)
+        ?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }, 0);
   }
 
   function handleSwipeStart(event: React.TouchEvent<HTMLDivElement>) {
@@ -2278,9 +2282,13 @@ export default function DashboardJourneyExperience({
         ref={containerRef}
         onTouchStart={handleSwipeStart}
         onTouchEnd={handleSwipeEnd}
-        className="[scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="overflow-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {activeDashboardPageKey === "home" ? (
+        <div
+          className="flex transition-transform duration-300 ease-out"
+          style={{ transform: `translateX(-${safeActivePage * 100}%)` }}
+        >
+        <div className="w-full shrink-0">
         <section className="w-full px-1">
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
             <div className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)]">
@@ -2880,67 +2888,67 @@ export default function DashboardJourneyExperience({
           </div>
         </section>
 
-        ) : null}
+        </div>
 
-        {activeDashboardPageKey === "bible"
-          ? renderDashboardFeaturePage("bible", dashboardPageLinks.bible, {
+        <div className="w-full shrink-0">
+          {renderDashboardFeaturePage("bible", dashboardPageLinks.bible, {
               title: "The Bible",
               subtitle: "Read the complete Bible here",
               href: "/reading",
               emoji: "\uD83D\uDCD6",
               eyebrow: "Scripture",
-            })
-          : null}
+            })}
+        </div>
 
-        {activeDashboardPageKey === "bible_studies"
-          ? renderDashboardFeaturePage("bible_studies", dashboardPageLinks.bible_studies, {
+        <div className="w-full shrink-0">
+          {renderDashboardFeaturePage("bible_studies", dashboardPageLinks.bible_studies, {
               title: "Bible Studies",
               subtitle: "Guided chapter studies with reading, notes, games, and reflection",
               href: "/devotionals",
               emoji: "\uD83C\uDF05",
               eyebrow: "Chapter Journeys",
-            })
-          : null}
+            })}
+        </div>
 
-        {activeDashboardPageKey === "group"
-          ? renderDashboardFeaturePage("group", dashboardPageLinks.group, {
+        <div className="w-full shrink-0">
+          {renderDashboardFeaturePage("group", dashboardPageLinks.group, {
               title: "Community",
               subtitle: "Study the Bible with us",
               href: "/study-groups",
               emoji: "\uD83D\uDC65",
               eyebrow: "Community",
-            })
-          : null}
+            })}
+        </div>
 
-        {activeDashboardPageKey === "tv"
-          ? renderDashboardFeaturePage("tv", dashboardPageLinks.tv, {
+        <div className="w-full shrink-0">
+          {renderDashboardFeaturePage("tv", dashboardPageLinks.tv, {
               title: "Bible Buddy TV",
               subtitle: "Stream Bible shows, movies, sermons, and more",
               href: "/biblebuddy-tv",
               emoji: "\u25B6",
               eyebrow: "Watch",
-            })
-          : null}
+            })}
+        </div>
 
-        {activeDashboardPageKey === "games"
-          ? renderDashboardFeaturePage("games", dashboardPageLinks.games, {
+        <div className="w-full shrink-0">
+          {renderDashboardFeaturePage("games", dashboardPageLinks.games, {
               title: "Bible Study Games",
               subtitle: "Play our Bible-based games",
               href: "/bible-study-games",
               emoji: "\uD83C\uDFAE",
               eyebrow: "Play",
-            })
-          : null}
+            })}
+        </div>
 
-        {activeDashboardPageKey === "share"
-          ? renderDashboardFeaturePage("share", dashboardPageLinks.share, {
+        <div className="w-full shrink-0">
+          {renderDashboardFeaturePage("share", dashboardPageLinks.share, {
               title: "Share Bible Buddy",
               subtitle: "Share by text, WhatsApp, or copy link.",
               href: "#share-bible-buddy",
               emoji: "\u2197",
               eyebrow: "Invite",
-            })
-          : null}
+            })}
+        </div>
 
         {false ? (
         <section className={`w-full shrink-0 snap-start px-1 ${activePage === 1 ? "" : "h-0 overflow-hidden"}`}>
@@ -2966,6 +2974,7 @@ export default function DashboardJourneyExperience({
           </div>
         </section>
         ) : null}
+        </div>
       </div>
 
       <nav className="sticky bottom-2 z-40 mx-auto max-w-xl rounded-[22px] border border-[#dbe7f4] bg-white/95 px-2 pb-1.5 pt-1.5 shadow-[0_12px_28px_rgba(38,63,99,0.14)] backdrop-blur">
@@ -2977,13 +2986,13 @@ export default function DashboardJourneyExperience({
             return (
               <Link
                 key={item.key}
+                data-dashboard-nav-key={item.key}
                 href={item.href}
                 onClick={(event) => {
                   event.preventDefault();
                   snapToPage(index);
                 }}
-                onMouseEnter={() => setActivePage(index)}
-                className={`flex min-w-[74px] flex-col items-center justify-center gap-0.5 rounded-2xl px-2 py-1 text-[9px] font-black transition sm:min-w-[88px] sm:text-[10px] ${
+                className={`flex min-w-[96px] flex-col items-center justify-center gap-0.5 rounded-2xl px-3 py-1.5 text-[9px] font-black transition sm:min-w-[112px] sm:text-[10px] ${
                   isActive ? "text-[#2f7fe8]" : "text-gray-500 hover:bg-[#f4f8ff] hover:text-gray-900"
                 }`}
               >

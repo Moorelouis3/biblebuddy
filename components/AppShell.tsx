@@ -20,6 +20,14 @@ import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profil
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
+import {
+  APP_THEME_STORAGE_KEY,
+  APP_THEMES,
+  applyAppThemeToDocument,
+  getAppTheme,
+  normalizeAppThemeId,
+  type AppThemeId,
+} from "../lib/appThemes";
 import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
 import StreakFlameBadge from "./StreakFlameBadge";
@@ -108,7 +116,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const profileMenuRef = useRef<HTMLDivElement>(null);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null);
-  const [dashboardTheme, setDashboardTheme] = useState<"light" | "dark">("light");
+  const [appThemeId, setAppThemeId] = useState<AppThemeId>("light");
   
   // Feedback system state
   const [userId, setUserId] = useState<string | null>(null);
@@ -134,21 +142,57 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const savedTheme = window.localStorage.getItem("bb:dashboard-theme");
-    const resolvedTheme = savedTheme === "dark" ? "dark" : "light";
-    setDashboardTheme(resolvedTheme);
-    document.documentElement.classList.toggle("bb-dashboard-dark", resolvedTheme === "dark");
+    const resolvedTheme = normalizeAppThemeId(
+      window.localStorage.getItem(APP_THEME_STORAGE_KEY) ||
+        window.localStorage.getItem("bb:dashboard-theme"),
+    );
+    setAppThemeId(resolvedTheme);
+    applyAppThemeToDocument(resolvedTheme);
   }, []);
 
-  function toggleDashboardTheme() {
-    setDashboardTheme((current) => {
-      const next = current === "dark" ? "light" : "dark";
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem("bb:dashboard-theme", next);
-        document.documentElement.classList.toggle("bb-dashboard-dark", next === "dark");
-      }
-      return next;
-    });
+  function applyThemeLocally(themeId: AppThemeId) {
+    setAppThemeId(themeId);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
+      window.localStorage.setItem("bb:dashboard-theme", themeId === "dark" ? "dark" : "light");
+    }
+    applyAppThemeToDocument(themeId);
+  }
+
+  async function loadSavedTheme(currentUserId: string) {
+    const { data, error } = await supabase
+      .from("profile_stats")
+      .select("app_theme")
+      .eq("user_id", currentUserId)
+      .maybeSingle();
+
+    if (error) {
+      console.warn("[THEME] Could not load saved profile theme; using local theme.", error.message);
+      return;
+    }
+
+    const savedTheme = normalizeAppThemeId(data?.app_theme);
+    applyThemeLocally(savedTheme);
+  }
+
+  async function saveThemeToProfile(themeId: AppThemeId) {
+    if (!userId) return;
+
+    const { error } = await supabase
+      .from("profile_stats")
+      .update({ app_theme: themeId })
+      .eq("user_id", userId);
+
+    if (error) {
+      console.warn("[THEME] Theme saved locally, but profile theme could not be saved.", error.message);
+    }
+  }
+
+  function handleThemeChange(themeId: AppThemeId) {
+    const theme = getAppTheme(themeId);
+    if (theme.isLocked) return;
+    applyThemeLocally(theme.id);
+    void saveThemeToProfile(theme.id);
   }
 
   // Global update modal state
@@ -1208,6 +1252,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           void checkDailyRecommendation(session.user.id);
         }
         void loadHeaderDashboardStats(session.user.id);
+        void loadSavedTheme(session.user.id);
         void fetchNotifications(session.user.id);
         void refreshUnreadMessageCount(session.user.id);
       } else {
@@ -1262,6 +1307,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           void checkOnboardingStatus(session.user.id);
           void checkUpdateStatus(session.user.id);
           void loadHeaderDashboardStats(session.user.id);
+          void loadSavedTheme(session.user.id);
           void fetchNotifications(session.user.id);
           void refreshUnreadMessageCount(session.user.id);
         } else {
@@ -1711,7 +1757,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               onClick={() => void handleSaveRequiredFullName()}
               disabled={fullNameSaving}
               className="mt-5 w-full rounded-2xl px-4 py-3 text-sm font-semibold text-white transition disabled:opacity-60"
-              style={{ backgroundColor: "#4a9b6f" }}
+              style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
             >
               {fullNameSaving ? "Saving..." : "Save full name"}
             </button>
@@ -2004,25 +2050,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 </>
               )}
 
-              {isLoggedIn && pathname === "/dashboard" && (
-                <button
-                  type="button"
-                  onClick={toggleDashboardTheme}
-                  className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 text-gray-700 transition-colors hover:bg-gray-300"
-                  aria-label={dashboardTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                  title={dashboardTheme === "dark" ? "Light mode" : "Dark mode"}
-                >
-                  {dashboardTheme === "dark" ? (
-                    <svg className="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="4" />
-                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-                    </svg>
-                  ) : (
-                    <svg className="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.7 6.7 0 0 0 21 12.8Z" />
-                    </svg>
-                  )}
-                </button>
+              {isLoggedIn && (
+                <label className="relative flex h-9 items-center rounded-full border px-2 text-xs font-bold shadow-sm bb-theme-picker">
+                  <span className="sr-only">Choose app theme</span>
+                  <select
+                    value={appThemeId}
+                    onChange={(event) => handleThemeChange(normalizeAppThemeId(event.target.value))}
+                    className="h-full max-w-[96px] bg-transparent text-xs font-bold outline-none"
+                    aria-label="Choose app theme"
+                  >
+                    {APP_THEMES.map((theme) => (
+                      <option key={theme.id} value={theme.id} disabled={theme.isLocked}>
+                        {theme.name}{theme.isLocked && theme.unlockRequirement ? ` - ${theme.unlockRequirement}` : ""}
+                      </option>
+                    ))}
+                  </select>
+                </label>
               )}
 
               {/* NOTIFICATION BELL */}
@@ -2079,7 +2122,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 onClick={handleEnablePushAlerts}
                                 disabled={pushLoading}
                                 className="px-3 py-2 rounded-lg text-xs font-semibold text-white transition disabled:opacity-60"
-                                style={{ backgroundColor: "#4a9b6f" }}
+                                style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
                               >
                                 {pushLoading ? "Saving..." : "Enable"}
                               </button>
@@ -2142,7 +2185,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                       disabled={isLoading}
                                       onClick={() => handleBuddyRequestAccept(notif)}
                                       className="flex-1 py-1.5 rounded-lg text-xs font-semibold text-white transition disabled:opacity-60"
-                                      style={{ backgroundColor: "#4a9b6f" }}
+                                      style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
                                     >
                                       {isLoading ? "..." : "Accept"}
                                     </button>
@@ -2213,7 +2256,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     {unreadMessageCount > 0 && (
                       <span
                         className="absolute -top-1.5 -right-1.5 min-w-[1.1rem] h-[1.1rem] px-1 rounded-full border-2 border-white text-[10px] leading-none font-bold flex items-center justify-center text-white"
-                        style={{ backgroundColor: "#4a9b6f" }}
+                        style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
                         aria-label={`${unreadMessageCount} unread message${unreadMessageCount === 1 ? "" : "s"}`}
                       >
                         {unreadMessageCount > 99 ? "99+" : unreadMessageCount}
@@ -2329,7 +2372,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                   </div>
 
                                   {convo.hasUnread && (
-                                    <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#4a9b6f" }} />
+                                    <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--bb-accent)" }} />
                                   )}
                                 </div>
                               </div>
