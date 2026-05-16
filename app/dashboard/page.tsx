@@ -1979,11 +1979,11 @@ export default function DashboardPage() {
 
             <div className="mt-3 rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-3 py-2.5">
               <div className="flex items-center justify-between gap-3">
-                <p className="text-xs font-black text-gray-800">
-                  Level {levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1}
-                </p>
                 <p className="text-[11px] font-black text-[#2f7fe8]">
                   {levelInfo?.pointsToNextLevel ?? 0} XP to next level
+                </p>
+                <p className="text-[11px] font-black text-gray-600">
+                  {Math.round(nextLevelPercent)}%
                 </p>
               </div>
               <div className="mt-2 h-2 overflow-hidden rounded-full bg-[#dce8f7]">
