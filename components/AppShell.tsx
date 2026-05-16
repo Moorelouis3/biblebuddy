@@ -832,6 +832,38 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined" || !("serviceWorker" in navigator)) return;
+
+    let cancelled = false;
+    let hasReloadedForNewWorker = false;
+    const hadController = Boolean(navigator.serviceWorker.controller);
+
+    const handleControllerChange = () => {
+      if (!hadController || hasReloadedForNewWorker) return;
+      hasReloadedForNewWorker = true;
+      window.location.reload();
+    };
+
+    navigator.serviceWorker.addEventListener("controllerchange", handleControllerChange);
+
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration) => {
+        if (cancelled) return;
+        registration.waiting?.postMessage({ type: "SKIP_WAITING" });
+        void registration.update();
+      })
+      .catch((error) => {
+        console.warn("[PWA] Could not register mobile app shell.", error);
+      });
+
+    return () => {
+      cancelled = true;
+      navigator.serviceWorker.removeEventListener("controllerchange", handleControllerChange);
+    };
+  }, []);
+
+  useEffect(() => {
     if (typeof window === "undefined") return;
     const supported = "Notification" in window && "serviceWorker" in navigator && "PushManager" in window;
     setPushSupported(supported);

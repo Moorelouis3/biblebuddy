@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Bible Buddy Offline</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #eef6ff;
+        --card: #ffffff;
+        --text: #10233c;
+        --muted: #55708f;
+        --accent: #2563eb;
+        --border: #c8ddf6;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      main {
+        width: min(100%, 420px);
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        background: var(--card);
+        padding: 28px 22px;
+        text-align: center;
+        box-shadow: 0 18px 45px rgba(38, 99, 235, 0.12);
+      }
+
+      img {
+        width: 92px;
+        height: 92px;
+        object-fit: contain;
+      }
+
+      h1 {
+        margin: 16px 0 8px;
+        font-size: 28px;
+        line-height: 1.1;
+      }
+
+      p {
+        margin: 0 auto;
+        max-width: 320px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.55;
+        font-weight: 700;
+      }
+
+      a {
+        display: inline-flex;
+        margin-top: 18px;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #ffffff;
+        padding: 0 18px;
+        font-size: 14px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src="/Newlouisreading.png" alt="" />
+      <h1>Bible Buddy needs internet</h1>
+      <p>Your mobile app shell is ready, but the dashboard needs a connection to load your study progress.</p>
+      <a href="/dashboard">Try again</a>
+    </main>
+  </body>
+</html>

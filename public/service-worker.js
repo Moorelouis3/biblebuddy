@@ -1,7 +1,8 @@
-const CACHE_VERSION = "v6-2026-05-16";
+const CACHE_VERSION = "v7-2026-05-16-mobile-shell";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
+  "/offline.html",
   "/manifest.json",
   "/louis/NewNewBibleBuddyIcon.png",
   "/icons/icon-192.png",
@@ -23,16 +24,27 @@ self.addEventListener('activate', event => {
   );
 });
 
+self.addEventListener("message", (event) => {
+  if (event.data?.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
+
 self.addEventListener('fetch', event => {
   const req = event.request;
-  // Network-first for navigation (HTML)
+  // Network-first for navigation (HTML). This keeps the installed mobile app
+  // from getting stuck on an old dashboard shell after a deploy.
   if (req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept')?.includes('text/html'))) {
     event.respondWith(
       fetch(req)
-        .then(res => {
-          return res;
+        .then(res => res)
+        .catch(async () => {
+          const offline = await caches.match('/offline.html');
+          return offline || new Response("Bible Buddy is offline. Reconnect and try again.", {
+            status: 503,
+            headers: { "Content-Type": "text/plain; charset=utf-8" },
+          });
         })
-        .catch(() => caches.match('/offline.html'))
     );
     return;
   }
