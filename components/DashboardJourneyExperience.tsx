@@ -2815,8 +2815,8 @@ export default function DashboardJourneyExperience({
         ) : null}
       </div>
 
-      <nav className="sticky bottom-3 z-40 mx-auto max-w-xl rounded-[24px] border border-[#dbe7f4] bg-white/95 px-2 pb-[calc(env(safe-area-inset-bottom,0px)+8px)] pt-2 shadow-[0_14px_34px_rgba(38,63,99,0.16)] backdrop-blur">
-        <div className="mx-auto mb-1 h-1 w-12 rounded-full bg-[#dbe7f4]" aria-hidden="true" />
+      <nav className="sticky bottom-2 z-40 mx-auto max-w-xl rounded-[22px] border border-[#dbe7f4] bg-white/95 px-2 pb-1.5 pt-1.5 shadow-[0_12px_28px_rgba(38,63,99,0.14)] backdrop-blur">
+        <div className="mx-auto mb-0.5 h-1 w-10 rounded-full bg-[#dbe7f4]" aria-hidden="true" />
         <div className="grid grid-cols-6 items-end gap-1 text-center">
           {dashboardNavItems.map((item, index) => {
             const isActive = index === safeActivePage;
@@ -2826,12 +2826,12 @@ export default function DashboardJourneyExperience({
                 href={item.href}
                 onClick={item.onClick}
                 onMouseEnter={() => setActivePage(index)}
-                className={`flex min-w-0 flex-col items-center justify-center gap-0.5 rounded-2xl px-1 py-1.5 text-[9px] font-black transition sm:text-[10px] ${
+                className={`flex min-w-0 flex-col items-center justify-center gap-0.5 rounded-2xl px-1 py-1 text-[9px] font-black transition sm:text-[10px] ${
                   isActive ? "text-[#2f7fe8]" : "text-gray-500 hover:bg-[#f4f8ff] hover:text-gray-900"
                 }`}
               >
                 <span
-                  className={`grid h-8 w-8 place-items-center rounded-full text-base ${
+                  className={`grid h-7 w-7 place-items-center rounded-full text-sm ${
                     isActive ? "bg-[#2f7fe8] text-white shadow-sm" : "bg-transparent"
                   }`}
                   aria-hidden="true"
