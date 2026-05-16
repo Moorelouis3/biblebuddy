@@ -1383,7 +1383,7 @@ export default function DashboardPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg md:text-xl font-semibold text-gray-900">👥 Bible Study Group</h2>
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">👥 Community</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
             This is where you interact with other Bible Buddies inside of the app. We study the Bible together in the weekly series and daily conversations.
           </p>
@@ -2362,7 +2362,7 @@ export default function DashboardPage() {
     const dashboardCardLabelMap: Partial<Record<FeatureTourKey | "bible_buddy_tv" | "bible_studies" | "recommendation", string>> = {
       bible: "The Bible",
       bible_studies: "Bible Studies",
-      bible_study_hub: "Bible Study Group",
+      bible_study_hub: "Community",
       guided_studies: "Bible Study Tools",
       bible_buddy_tv: "Bible Buddy TV",
       bible_trivia: "Bible Study Games",
@@ -3507,8 +3507,8 @@ export default function DashboardPage() {
     },
     {
       key: "group",
-      title: "Bible Study Group",
-      subtitle: "Study the Bible with us",
+      title: "Community",
+      subtitle: "Study, pray, ask questions, and grow with Bible Buddies",
       href: "/study-groups",
       eyebrow: "Community",
       emoji: "👥",

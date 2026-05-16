@@ -1066,7 +1066,7 @@ function GroupCommentSection({
           article_slug: `/study-groups/${groupId}/chat`,
           post_id: post.id,
           comment_id: insertedId,
-          message: `${displayName} mentioned you in a comment in The Bible Study Group.`,
+          message: `${displayName} mentioned you in a comment in Community.`,
         }));
 
         const { error: notificationError } = await supabase
@@ -1571,6 +1571,7 @@ export default function GroupChatPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const groupId = params.id as string;
+  const isDashboardEmbed = searchParams.get("embedded") === "dashboard";
 
   // Core state
   const [group, setGroup] = useState<StudyGroup | null>(null);
@@ -2373,7 +2374,7 @@ export default function GroupChatPage() {
       setCurrentSeriesPreview(featuredPreview.preview);
       setCurrentSeriesStartAt(featuredPreview.startAt);
 
-      // Handle ?tab=bible_studies and optional ?series=... deep link
+      // Handle ?tab=... and optional ?series=... deep link
       const tabParam = searchParams.get("tab");
       const seriesParam = searchParams.get("series");
       if (tabParam === "bible_studies") {
@@ -2389,6 +2390,8 @@ export default function GroupChatPage() {
           setSelectedSeries(matchedSeries);
           setSelectedSeriesWeek(null);
         }
+      } else if (tabParam && ["home", "general", "updates", "prayer", "qa", "members"].includes(tabParam)) {
+        setActiveTab(tabParam);
       }
     }
 
@@ -4645,7 +4648,7 @@ export default function GroupChatPage() {
         selectedPost.title,
         selectedPost.content,
         selectedPost.content,
-        group.name || "Bible Study Group",
+        "Community",
       );
       setNewCommentText(draft);
     } catch (error) {
@@ -4784,7 +4787,7 @@ export default function GroupChatPage() {
     );
   }
 
-  const coverColor = group.cover_color || "#d4ecd4";
+  const coverColor = isDashboardEmbed ? "#f8fbff" : group.cover_color || "#d4ecd4";
   const activeFeedPost = selectedFeedPost ? (posts.find((post) => post.id === selectedFeedPost.id) ?? selectedFeedPost) : null;
   const activeFeedPollSet = activeFeedPost ? weeklyPollByPostId[activeFeedPost.id] : undefined;
   const activeFeedTriviaSet = activeFeedPost ? weeklyTriviaByPostId[activeFeedPost.id] : undefined;
@@ -4798,23 +4801,27 @@ export default function GroupChatPage() {
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
   const SAGE = "#5a9a5a";
-  const displayGroupName = group.name === "Hope Nation" ? "Bible Buddy Study Group" : group.name;
+  const displayGroupName = group.name === "Hope Nation" || group.name === "Bible Buddy Study Group" ? "Community" : group.name;
   const selectedSeriesAccent = selectedSeries?.title.toLowerCase().includes("tempt")
     ? { buttonBg: "#b7794d" }
     : { buttonBg: SAGE };
   // â”€â”€ Render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className={`${isDashboardEmbed ? "min-h-full bg-[#f8fbff]" : "min-h-screen bg-gray-50"} flex flex-col`}>
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div className="sticky top-0 z-20" style={{ backgroundColor: coverColor }}>
+      <div className="sticky top-0 z-20 border-b border-[#dbe7f4]/80" style={{ backgroundColor: coverColor }}>
         <div className="max-w-2xl mx-auto px-4 py-4">
           <div className="flex items-center gap-1 text-xs text-gray-600 font-medium mb-2 flex-wrap">
-            <Link href="/dashboard" className="hover:text-gray-900 hover:underline transition">
-              Dashboard
-            </Link>
-            <span>/</span>
-            <span className="text-gray-900">Bible Study Group</span>
+            {!isDashboardEmbed && (
+              <>
+                <Link href="/dashboard" className="hover:text-gray-900 hover:underline transition">
+                  Dashboard
+                </Link>
+                <span>/</span>
+              </>
+            )}
+            <span className="text-gray-900">Community</span>
             {selectedSeries && (
               <>
                 <span>/</span>
@@ -4845,15 +4852,18 @@ export default function GroupChatPage() {
             )}
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-xl">{group.cover_emoji || "??"}</span>
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#dbe7f4] bg-white text-xl shadow-sm">{group.cover_emoji || "👥"}</span>
             <div className="flex-1 min-w-0">
               <h1 className="text-lg font-bold text-gray-900 truncate">{displayGroupName}</h1>
+              {isDashboardEmbed && (
+                <p className="mt-0.5 text-xs font-semibold text-gray-500">Study posts, prayer, questions, and buddies in one place.</p>
+              )}
               <div className="flex items-center gap-3 flex-wrap">
                 <button
                   onClick={() => setShowGroupInfoModal(true)}
                   className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
                 >
-                  About Group
+                  About Community
                 </button>
               <button
                 onClick={() => {
@@ -4911,10 +4921,6 @@ export default function GroupChatPage() {
                         key={tab.key}
                         type="button"
                         onClick={() => {
-                          if (tab.key === "bible_studies") {
-                            router.push("/bible-studies");
-                            return;
-                          }
                           setSelectedHubItem(null);
                           setActiveTab(tab.key);
                           setShowMoreNav(false);
@@ -6618,7 +6624,7 @@ export default function GroupChatPage() {
               <div className="bg-white rounded-3xl shadow-xl w-full max-w-2xl max-h-[92vh] overflow-y-auto modal-panel-in" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between px-6 py-5 border-b border-[#efe5d9]">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Bible Buddy Study Group</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Community</p>
                     <h2 className="text-xl font-bold text-gray-900 mt-1">{editingFeedPost ? "Edit Post" : "Create a Post"}</h2>
                   </div>
                   <button
@@ -6970,8 +6976,8 @@ export default function GroupChatPage() {
             <div className="px-6 py-5 border-b border-gray-100">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Bible Study Group</p>
-                  <h2 className="text-2xl font-bold text-gray-900 mt-2">Top Members</h2>
+                  <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Community</p>
+                  <h2 className="text-2xl font-bold text-gray-900 mt-2">Top Buddies</h2>
                   <p className="text-sm text-gray-500 mt-1">Top 10 this week by completed Bible work.</p>
                   <div className="mt-3 rounded-2xl border border-gray-100 bg-gray-50 px-3 py-2 text-xs font-semibold leading-5 text-gray-600">
                     Bible study tasks count the most: study intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
@@ -6990,7 +6996,7 @@ export default function GroupChatPage() {
               {loadingTopBuddies ? (
                 <p className="text-sm text-gray-400 text-center py-8">Loading top members...</p>
               ) : modalTopBuddies.length === 0 ? (
-                <p className="text-sm text-gray-500 text-center py-8">No top member activity yet.</p>
+                      <p className="text-sm text-gray-500 text-center py-8">No top buddy activity yet.</p>
               ) : (
                 <div className="space-y-3">
                   {modalTopBuddies.map((buddy) => (
@@ -7055,8 +7061,8 @@ export default function GroupChatPage() {
             </div>
             <div className="px-6 py-5 space-y-4">
               <div className="rounded-xl border border-green-100 bg-green-50 px-4 py-3">
-                <p className="text-xs font-bold uppercase tracking-wide text-green-700">Official Group</p>
-                <p className="text-sm text-green-900 mt-1">This is the official Bible Buddy study group for the whole app.</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-green-700">Official Community</p>
+                <p className="text-sm text-green-900 mt-1">This is the official Bible Buddy community for the whole app.</p>
               </div>
               {group.description && (
                 <div>

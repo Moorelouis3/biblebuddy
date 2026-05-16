@@ -1377,6 +1377,9 @@ export default function DashboardJourneyExperience({
   const [embeddedBibleAlphabetical, setEmbeddedBibleAlphabetical] = useState(false);
   const [embeddedBibleCompletedChapters, setEmbeddedBibleCompletedChapters] = useState<number[]>([]);
   const [embeddedBibleReading, setEmbeddedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
+  const [embeddedCommunityGroupId, setEmbeddedCommunityGroupId] = useState<string | null>(null);
+  const [embeddedCommunityLoading, setEmbeddedCommunityLoading] = useState(false);
+  const [embeddedCommunityError, setEmbeddedCommunityError] = useState<string | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
 
   const dashboardPageKeys = ["home", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
@@ -1424,6 +1427,45 @@ export default function DashboardJourneyExperience({
       setFreePlanGate({ kind: "study" });
     }
   }, [canFreeUserChooseNewStudy, isPaidUser, studySettingsOpenRequest]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadCommunityGroup() {
+      if (embeddedCommunityGroupId || embeddedCommunityLoading) return;
+      setEmbeddedCommunityLoading(true);
+      setEmbeddedCommunityError(null);
+
+      try {
+        const { data, error } = await supabase
+          .from("study_groups")
+          .select("id")
+          .in("name", ["Bible Buddy Study Group", "Hope Nation"])
+          .limit(1)
+          .maybeSingle();
+
+        if (cancelled) return;
+        if (error || !data?.id) {
+          setEmbeddedCommunityError("Community could not be loaded right now.");
+          return;
+        }
+
+        setEmbeddedCommunityGroupId(data.id);
+      } catch {
+        if (!cancelled) setEmbeddedCommunityError("Community could not be loaded right now.");
+      } finally {
+        if (!cancelled) setEmbeddedCommunityLoading(false);
+      }
+    }
+
+    if (dashboardPageKeys[safeActivePage] === "group") {
+      void loadCommunityGroup();
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [embeddedCommunityGroupId, embeddedCommunityLoading, safeActivePage]);
 
   const nextTask = visibleTasks.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = visibleTasks.findIndex((task) => !task.done);
@@ -2482,25 +2524,49 @@ export default function DashboardJourneyExperience({
 
   const renderEmbeddedCommunityPage = () => (
     <section className="w-full px-1">
-      <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-        <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Community</p>
-          <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">Study With Others</h2>
-          <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
-            Join the Bible Buddy community flow without leaving the dashboard shell.
-          </p>
-          <div className="mt-5 grid gap-3">
-            {[
-              ["Official Study Group", "Weekly Bible study posts, finishers, and discussion.", "/study-groups"],
-              ["Bible Buddies", "See other Bible Buddies and keep growing together.", "/bible-buddies"],
-              ["Messages", "Continue your faith conversations.", "/messages"],
-            ].map(([title, subtitle, href]) => (
-              <Link key={title} href={href} className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-4 py-4 transition hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm">
-                <p className="text-base font-black text-gray-950">{title}</p>
-                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">{subtitle}</p>
-              </Link>
-            ))}
+      <div className="mx-auto flex max-w-xl flex-col gap-3 pb-7">
+        <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
+          <div className="border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#f8fbff)] px-4 py-4 sm:px-5">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Community</p>
+            <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Community</h2>
+            <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
+              The real group feed, study posts, prayer, questions, and buddies stay right here in your dashboard.
+            </p>
           </div>
+
+          {embeddedCommunityLoading ? (
+            <div className="grid min-h-[520px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
+              <div>
+                <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-[var(--bb-accent,#2f7fe8)] border-t-transparent" />
+                <p className="mt-4 text-sm font-black text-[var(--bb-text-primary,#111827)]">Loading Community...</p>
+              </div>
+            </div>
+          ) : embeddedCommunityError ? (
+            <div className="grid min-h-[420px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
+              <div>
+                <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">Community needs a refresh.</p>
+                <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">{embeddedCommunityError}</p>
+                <Link
+                  href="/study-groups"
+                  className="mt-5 inline-flex rounded-full bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)]"
+                >
+                  Open Community
+                </Link>
+              </div>
+            </div>
+          ) : embeddedCommunityGroupId ? (
+            <iframe
+              key={embeddedCommunityGroupId}
+              src={`/study-groups/${embeddedCommunityGroupId}/chat?embedded=dashboard&tab=home`}
+              title="Bible Buddy Community"
+              className="block w-full border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
+              style={{ height: "calc(100vh - 188px)", minHeight: 680 }}
+            />
+          ) : (
+            <div className="grid min-h-[520px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
+              <p className="text-sm font-black text-[var(--bb-text-secondary,#5f6368)]">Open Community from the menu to load the group.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -3258,7 +3324,7 @@ export default function DashboardJourneyExperience({
                   } ${
                     isNewChapterDropping ? "chapter-card-drop" : ""
                   } ${
-                    isNextActionTask ? "next-task-pulse" : ""
+                    isNextActionTask && !isActiveInlineTask ? "next-task-pulse" : ""
                   } ${
                     isActiveInlineTask ? "dashboard-task-shell-open" : ""
                   } ${taskShellClasses}`}
@@ -3343,7 +3409,7 @@ export default function DashboardJourneyExperience({
                         ) : null}
                       </div>
                     </div>
-                    {!isCardDisabled ? (
+                    {!isCardDisabled && !isActiveInlineTask ? (
                       <span className="mt-5 shrink-0 text-xl leading-none text-gray-400" aria-hidden="true">›</span>
                     ) : null}
                   </div>

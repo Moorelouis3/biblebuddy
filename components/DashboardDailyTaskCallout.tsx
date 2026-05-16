@@ -976,6 +976,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
           onComplete={markInteractiveTaskComplete}
           compact
         />,
+        "mt-0 border-t-0 pt-0",
       );
     }
 

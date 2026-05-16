@@ -28,7 +28,7 @@ export const APP_NAV_ITEMS: AppNavItem[] = [
     hoverClasses: "text-gray-700 hover:bg-blue-50 hover:text-blue-600 active:scale-[0.98]",
   },
   {
-    label: "Bible Study Group",
+    label: "Community",
     href: "/study-groups",
     activePrefixes: ["/study-groups"],
     activeClasses: "bg-green-50 text-green-700 font-medium cursor-not-allowed",
@@ -62,7 +62,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   reading: "The Bible",
   Bible: "The Bible",
   books: "Books",
-  "study-groups": "Bible Study Group",
+  "study-groups": "Community",
   "guided-studies": "Bible Study Tools",
   devotionals: "Bible Studies",
   "bible-studies": "Bible Studies",

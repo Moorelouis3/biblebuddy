@@ -582,7 +582,7 @@ export default function ScrambledGamePlayer({
           : "Good first pass. Play it again and the words will lock in faster.";
 
   if (!progressLoaded) {
-    return <div className={`${compact ? "bg-white" : "min-h-screen bg-[#f5f7fb]"} px-4 py-8 text-center text-sm text-gray-500`}>Loading Scrambled...</div>;
+    return <div className={`${compact ? "bg-transparent" : "min-h-screen bg-[#f5f7fb]"} px-4 py-8 text-center text-sm text-gray-500`}>Loading Scrambled...</div>;
   }
 
   if (showResults) {
@@ -808,10 +808,32 @@ export default function ScrambledGamePlayer({
     );
   }
 
+  const pageClassName = compact
+    ? "bg-transparent pb-0"
+    : isEmbedded
+      ? "h-[82vh] min-h-[620px] overflow-y-auto bg-[#f5f7fb] pb-14"
+      : "min-h-screen bg-[#f5f7fb] pb-14";
+  const contentClassName = compact
+    ? "mx-auto flex max-w-3xl flex-col gap-4 px-0 py-0"
+    : "mx-auto flex max-w-3xl flex-col gap-5 px-4 pt-6 sm:px-6";
+  const introCardClassName = compact
+    ? "px-0 py-0"
+    : "rounded-[30px] border border-[#d8e4fb] bg-white px-5 py-5 shadow-sm";
+  const avatarFrameClassName = compact
+    ? ""
+    : "rounded-full border border-[#d7e2f8] bg-[#f4f8ff] p-1 shadow-sm";
+  const louieLineClassName = compact
+    ? "mt-3"
+    : "mt-3 rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-4 py-3";
+  const gameCardClassName = compact
+    ? "px-0 py-0"
+    : "rounded-[30px] border border-[#d8e4fb] bg-white px-5 py-5 shadow-sm";
+
   return (
     <>
-      <div className={`${compact ? "bg-white pb-6" : isEmbedded ? "h-[82vh] min-h-[620px] overflow-y-auto bg-[#f5f7fb] pb-14" : "min-h-screen bg-[#f5f7fb] pb-14"}`}>
-        <div className={`mx-auto flex max-w-3xl flex-col gap-5 px-4 ${compact ? "py-4" : "pt-6"} sm:px-6`}>
+      <div className={pageClassName}>
+        <div className={contentClassName}>
+          {!compact ? (
           <div className="flex items-center justify-between gap-4">
             {onClose ? (
               <button type="button" onClick={onClose} className="text-sm font-semibold text-[#4768af] hover:text-[#35508a]">
@@ -838,24 +860,25 @@ export default function ScrambledGamePlayer({
               )}
             </div>
           </div>
+          ) : null}
 
-          <div className="rounded-[30px] border border-[#d8e4fb] bg-white px-5 py-5 shadow-sm">
+          <div className={introCardClassName}>
             <div className="flex items-start gap-4">
-              <div className="rounded-full border border-[#d7e2f8] bg-[#f4f8ff] p-1 shadow-sm">
+              <div className={avatarFrameClassName}>
                 <LouisAvatar mood={status === "correct" ? "stareyes" : hintCount > 0 ? "think" : "bible"} size={58} />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Scrambled</p>
                 <h1 className="mt-1 text-3xl font-bold tracking-tight text-gray-900">{bookName} {chapter.chapter}</h1>
                 <p className="mt-1 text-sm font-medium text-[#5d7fc0]">{question.reference}</p>
-                <div className="mt-3 rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-4 py-3">
+                <div className={louieLineClassName}>
                   <p className="text-sm leading-7 text-[#35508a]">{louieLine}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="rounded-[30px] border border-[#d8e4fb] bg-white px-5 py-5 shadow-sm">
+          <div className={gameCardClassName}>
             <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-gray-700">
               <p className="font-semibold">Word {currentQuestionIndex + 1} of {chapter.questions.length}</p>
               <p>Number of words correct: {scoredSolveCount}</p>
