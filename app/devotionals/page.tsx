@@ -137,7 +137,12 @@ function clampPercent(value: number) {
   return Math.min(100, Math.max(0, Math.round(value)));
 }
 
-export default function DevotionalsPage() {
+type DevotionalsPageProps = {
+  embedded?: boolean;
+  onStudySelect?: (devotionalId: string) => void;
+};
+
+export default function DevotionalsPage({ embedded = false, onStudySelect }: DevotionalsPageProps = {}) {
   const router = useRouter();
   const [devotionals, setDevotionals] = useState<Devotional[]>([]);
   const [loading, setLoading] = useState(true);
@@ -287,7 +292,7 @@ export default function DevotionalsPage() {
           <img
             src={coverImage}
             alt={`${devotional.title} cover`}
-            className="aspect-[3/4] w-full object-contain drop-shadow-sm transition duration-300"
+            className="aspect-[3/4] w-full max-w-[86px] object-contain drop-shadow-sm transition duration-300 sm:max-w-[104px]"
             style={{
               objectPosition:
                 devotional.title === "The Testing of Joseph"
@@ -324,6 +329,20 @@ export default function DevotionalsPage() {
 
       return 0;
     }), [devotionals]);
+
+  const bibleStudyStats = useMemo(() => {
+    const completed = visibleDevotionals.filter((study) => progressByDevotional[study.id]?.isComplete).length;
+    const started = visibleDevotionals.filter((study) => {
+      const progress = progressByDevotional[study.id];
+      return progress && progress.percent > 0;
+    }).length;
+
+    return {
+      studies: visibleDevotionals.length,
+      completed,
+      started,
+    };
+  }, [progressByDevotional, visibleDevotionals]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -577,25 +596,6 @@ export default function DevotionalsPage() {
                 Pick a study, finish each chapter step by step, and watch your shelf fill up as completed.
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-2 text-center">
-              <div className="rounded-2xl bg-[#eaf6ff] px-4 py-3">
-                <p className="text-xl font-black text-gray-950">{visibleDevotionals.length}</p>
-                <p className="text-[11px] font-bold text-gray-600">Studies</p>
-              </div>
-              <div className="rounded-2xl bg-[#eafff2] px-4 py-3">
-                <p className="text-xl font-black text-gray-950">{visibleDevotionals.filter((study) => progressByDevotional[study.id]?.isComplete).length}</p>
-                <p className="text-[11px] font-bold text-gray-600">Done</p>
-              </div>
-              <div className="rounded-2xl bg-[#fff5df] px-4 py-3">
-                <p className="text-xl font-black text-gray-950">
-                  {visibleDevotionals.filter((study) => {
-                    const progress = progressByDevotional[study.id];
-                    return progress && progress.percent > 0 && !progress.isComplete;
-                  }).length}
-                </p>
-                <p className="text-[11px] font-bold text-gray-600">Started</p>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -605,67 +605,102 @@ export default function DevotionalsPage() {
           <button
             type="button"
             onClick={handleToggleInstructions}
-            className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-[#f3f9ff] transition"
+            className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left hover:bg-[#f3f9ff] transition sm:px-6"
           >
-            <h2 className="text-lg font-semibold text-gray-900">📖 About Our Bible Studies</h2>
-            <svg
-              className={`w-5 h-5 text-gray-600 transition-transform ${isInstructionsExpanded ? '' : 'transform -rotate-90'}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            <div className="min-w-0 flex-1">
+              <h2 className="text-lg font-semibold text-gray-900">📖 About Our Bible Studies</h2>
+              <div className="mt-3 grid max-w-sm grid-cols-3 gap-2 text-center">
+                <div className="rounded-2xl bg-[#eaf6ff] px-3 py-2">
+                  <p className="text-lg font-black text-gray-950">{bibleStudyStats.studies}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wide text-gray-600">Studies</p>
+                </div>
+                <div className="rounded-2xl bg-[#eafff2] px-3 py-2">
+                  <p className="text-lg font-black text-gray-950">{bibleStudyStats.completed}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wide text-gray-600">Done</p>
+                </div>
+                <div className="rounded-2xl bg-[#fff5df] px-3 py-2">
+                  <p className="text-lg font-black text-gray-950">{bibleStudyStats.started}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wide text-gray-600">Started</p>
+                </div>
+              </div>
+            </div>
+            <span className="shrink-0">
+              <svg
+                className={`w-5 h-5 text-gray-600 transition-transform ${isInstructionsExpanded ? '' : 'transform -rotate-90'}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </span>
           </button>
 
           {/* CONTENT - Collapsible */}
           {isInstructionsExpanded && (
             <div className="px-6 pb-6 border-t border-blue-200/50">
               <div className="pt-4 space-y-4">
-                <h3 className="text-base font-semibold text-gray-900">How to Use These Bible Studies</h3>
+                <h3 className="text-base font-semibold text-gray-900">A Journey Through The Bible</h3>
 
                 <p className="text-gray-700 leading-relaxed">
-                  Bible Buddy studies are built to walk you through the whole Bible over time. Start with the first study, <strong>The Creation of the World</strong>, then keep moving forward study by study so the story of Scripture builds in order instead of feeling like random pieces.
+                  Bible Buddy studies are built as one connected journey through Scripture. Start with <strong>The Creation of the World</strong>, then keep moving study by study so the Bible unfolds in order instead of feeling like random pieces.
                 </p>
 
                 <p className="text-gray-700 leading-relaxed">
-                  Each chapter has six simple sections: study intro, Bible reading, study notes, trivia, Scrambled, and reflection. Most people can finish a full chapter session in under 45 minutes, but you can also spread the sections across multiple days when life is busy.
+                  Every study has chapters, and every chapter has the same six-task flow. You can finish a chapter in one sitting, or spread the tasks out across different days.
                 </p>
 
                 <div className="space-y-3">
                   <div>
-                    <p className="font-semibold text-gray-900 mb-1">Step 1: Start with the intro</p>
+                    <p className="font-semibold text-gray-900 mb-1">1. Chapter Intro</p>
                     <p className="text-gray-700 leading-relaxed text-sm">
-                      Start by reading the chapter intro. This sets the theme and helps you understand what's happening and why it matters.
+                      The intro sets the scene before you read. It shows where the chapter begins, why it matters, and what to watch for.
                     </p>
                   </div>
 
                   <div>
-                    <p className="font-semibold text-gray-900 mb-1">Step 2: Read the Bible chapter</p>
+                    <p className="font-semibold text-gray-900 mb-1">2. Read The Scripture</p>
                     <p className="text-gray-700 leading-relaxed text-sm">
-                      The study is here to help, but the center is always God's Word. Read the passage slowly and let the chapter speak first.
+                      This is where you read the actual Bible chapter. The study helps you understand it, but Scripture stays at the center.
                     </p>
                   </div>
 
                   <div>
-                    <p className="font-semibold text-gray-900 mb-1">Step 3: Finish the learning path</p>
+                    <p className="font-semibold text-gray-900 mb-1">3. Deep Chapter Notes</p>
                     <p className="text-gray-700 leading-relaxed text-sm">
-                      Review the notes, test what stuck with trivia, practice key words in Scrambled, and answer the reflection when you are ready.
+                      The notes slow down and teach the chapter section by section. They explain verses, words, history, themes, and why the chapter matters.
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">4. Trivia Questions</p>
+                    <p className="text-gray-700 leading-relaxed text-sm">
+                      Trivia checks what you understood from the chapter. It helps the main events, people, and ideas stick.
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">5. Scrambled Word Game</p>
+                    <p className="text-gray-700 leading-relaxed text-sm">
+                      Scrambled helps you practice important Bible words from the chapter. It turns names, places, and key ideas into quick memory work.
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">6. Reflection</p>
+                    <p className="text-gray-700 leading-relaxed text-sm">
+                      Reflection helps you respond personally to what you studied. It gives you space to think, pray, and apply the chapter to real life.
                     </p>
                   </div>
                 </div>
 
-                <p className="text-gray-700 leading-relaxed text-sm italic">
-                  Do one chapter in a day, or break it up. The goal is consistency and understanding, not rushing.
-                </p>
-
                 <p className="text-gray-700 leading-relaxed text-sm">
-                  If you keep going from study to study, you will not just finish a shelf of studies. You will steadily walk through the entire Bible with context, practice, and reflection.
+                  The goal is not to rush through a list. The goal is to walk through the whole Bible with order, context, practice, and real understanding.
                 </p>
 
                 {/* FOOTER CONTROLS */}
@@ -708,9 +743,9 @@ export default function DevotionalsPage() {
                 <div className={`group h-full rounded-3xl border p-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl md:p-4 ${
                   isComplete ? "border-emerald-200 bg-[#effdf4]" : "border-gray-200 bg-white"
                 }`}>
-                  <div className="grid grid-cols-[96px_1fr] gap-3 sm:grid-cols-[132px_1fr] md:gap-5">
+                  <div className="grid grid-cols-[86px_1fr] gap-3 sm:grid-cols-[104px_1fr] md:gap-4">
                     <div>{getDevotionalVisual(devotional)}</div>
-                    <div className="flex min-w-0 flex-col justify-between">
+                    <div className="flex min-w-0 flex-col">
                       <div>
                         <div className="flex items-start justify-between gap-2">
                           <div className="text-base font-black leading-tight text-gray-950 md:text-lg">
@@ -726,7 +761,7 @@ export default function DevotionalsPage() {
                           {getStudyScriptureRange(devotional.title) ?? (isChapterJourney(devotional.title) ? `${devotional.total_days} chapter journey` : `${devotional.total_days} part study`)}
                         </p>
                       </div>
-                      <div className="mt-4">
+                      <div className="mt-3">
                         <div className="flex items-center justify-between text-xs font-black text-gray-700">
                           <span>{progress.label}</span>
                           <span>{progress.percent}%</span>
@@ -799,7 +834,11 @@ export default function DevotionalsPage() {
                         dedupeKey: `devotional-opened:${devotional.id}`,
                       }).catch((error) => console.error("[NAV] Failed to track devotional click:", error));
                     }
-                    router.push(`/bible-studies/${devotional.id}`);
+                    if (embedded && onStudySelect) {
+                      onStudySelect(devotional.id);
+                    } else {
+                      router.push(`/bible-studies/${devotional.id}`);
+                    }
                   }}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
@@ -813,7 +852,11 @@ export default function DevotionalsPage() {
                           dedupeKey: `devotional-opened:${devotional.id}`,
                         }).catch((error) => console.error("[NAV] Failed to track devotional click:", error));
                       }
-                      router.push(`/bible-studies/${devotional.id}`);
+                      if (embedded && onStudySelect) {
+                        onStudySelect(devotional.id);
+                      } else {
+                        router.push(`/bible-studies/${devotional.id}`);
+                      }
                     }
                   }}
                 >

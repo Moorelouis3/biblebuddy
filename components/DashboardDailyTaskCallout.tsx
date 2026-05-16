@@ -24,6 +24,7 @@ type Props = {
   onClose: () => void;
   onProgressUpdated: (completedTask?: TaskState) => void;
   variant?: "modal" | "inline";
+  enableDashboardSkip?: boolean;
 };
 
 type DevotionalRow = {
@@ -377,7 +378,7 @@ function getScrambledSlugFromTask(task: TaskState) {
   };
 }
 
-export default function DashboardDailyTaskCallout({ task, userId, onClose, onProgressUpdated, variant = "modal" }: Props) {
+export default function DashboardDailyTaskCallout({ task, userId, onClose, onProgressUpdated, variant = "modal", enableDashboardSkip = false }: Props) {
   const [devotional, setDevotional] = useState<DevotionalRow | null>(null);
   const [devotionalDay, setDevotionalDay] = useState<DevotionalDayRow | null>(null);
   const [dayProgress, setDayProgress] = useState<DayProgressRow | undefined>(undefined);
@@ -942,8 +943,10 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             onComplete={markInteractiveTaskComplete}
             skipUpgradeGate
             compact
+            enableDashboardSkip={enableDashboardSkip}
           />
         </TaskPlayerErrorBoundary>,
+        "mt-0 border-t-0 pt-0",
       );
     }
 

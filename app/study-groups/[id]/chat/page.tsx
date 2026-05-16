@@ -2254,6 +2254,7 @@ export default function GroupChatPage() {
   const [submittingNewSeriesPost, setSubmittingNewSeriesPost] = useState(false);
 
   const feedRef = useRef<HTMLDivElement>(null);
+  const communityRootRef = useRef<HTMLDivElement>(null);
   const postEditor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -3157,6 +3158,45 @@ export default function GroupChatPage() {
       window.removeEventListener("scroll", updateMoreMenuPosition, true);
     };
   }, [showMoreNav]);
+
+  useEffect(() => {
+    if (!isDashboardEmbed || typeof window === "undefined") return;
+
+    let frame = 0;
+    const postHeight = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const height = Math.max(
+          communityRootRef.current?.scrollHeight ?? 0,
+          document.documentElement.scrollHeight,
+          document.body.scrollHeight,
+        );
+        window.parent?.postMessage({ type: "bb-community-height", height: height + 16 }, window.location.origin);
+      });
+    };
+
+    postHeight();
+
+    const observer = new ResizeObserver(postHeight);
+    if (communityRootRef.current) observer.observe(communityRootRef.current);
+    observer.observe(document.body);
+    const interval = window.setInterval(postHeight, 800);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.clearInterval(interval);
+    };
+  }, [
+    isDashboardEmbed,
+    activeTab,
+    selectedHubItem,
+    posts.length,
+    hubCategories.length,
+    selectedSeries?.id,
+    selectedPost?.id,
+    members.length,
+  ]);
 
   useEffect(() => {
     return () => {
@@ -4807,7 +4847,7 @@ export default function GroupChatPage() {
     : { buttonBg: SAGE };
   // â”€â”€ Render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
-    <div className={`${isDashboardEmbed ? "min-h-full bg-[#f8fbff]" : "min-h-screen bg-gray-50"} flex flex-col`}>
+    <div ref={communityRootRef} className={`${isDashboardEmbed ? "min-h-full bg-[#f8fbff]" : "min-h-screen bg-gray-50"} flex flex-col`}>
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="sticky top-0 z-20 border-b border-[#dbe7f4]/80" style={{ backgroundColor: coverColor }}>
@@ -4901,18 +4941,15 @@ export default function GroupChatPage() {
         <div className="max-w-2xl mx-auto px-4 pb-3">
           {(() => {
             const primaryTabs = [
-              { key: "home", label: "Home" },
-              ...(!isDashboardEmbed ? [{ key: "bible_studies", label: "Bible Studies" }] : []),
-            ];
-            const moreItems = [
-              { key: "prayer", label: "Prayer Request", isHub: false },
-              { key: "qa", label: "Q&A", isHub: false },
+              { key: "home", label: "Home", isHub: false },
+              ...(!isDashboardEmbed ? [{ key: "bible_studies", label: "Bible Studies", isHub: false }] : []),
               ...hubCategories.map((cat) => ({
                 key: cat.id,
                 label: `${cat.emoji} ${cat.name}`,
                 isHub: true,
               })),
             ];
+            const moreItems: Array<{ key: string; label: string; isHub: boolean }> = [];
             const moreIsActive = activeTab === "prayer" || activeTab === "qa" || hubCategories.some((cat) => cat.id === activeTab);
             return (
               <div className="relative">
@@ -4926,6 +4963,7 @@ export default function GroupChatPage() {
                         onClick={() => {
                           setSelectedHubItem(null);
                           setActiveTab(tab.key);
+                          if (tab.isHub) setHubView("articles");
                           setShowMoreNav(false);
                         }}
                         className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition"
@@ -5016,7 +5054,7 @@ export default function GroupChatPage() {
 
 
       {/* â”€â”€ Feed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div ref={feedRef} className="flex-1 overflow-y-auto pb-32">
+      <div ref={feedRef} className={isDashboardEmbed ? "pb-32" : "flex-1 overflow-y-auto pb-32"}>
 
         {/* â”€â”€ Hub article viewer (iframe, full-width, no padding) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {selectedHubItem && (

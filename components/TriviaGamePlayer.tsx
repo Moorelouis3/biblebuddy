@@ -22,6 +22,7 @@ type TriviaGamePlayerProps = {
   onComplete?: () => void;
   skipUpgradeGate?: boolean;
   compact?: boolean;
+  enableDashboardSkip?: boolean;
 };
 
 async function fetchVerseText(reference: string) {
@@ -41,7 +42,16 @@ async function fetchVerseText(reference: string) {
   }
 }
 
-export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose, onComplete, skipUpgradeGate = false, compact = false }: TriviaGamePlayerProps) {
+export default function TriviaGamePlayer({
+  bookName,
+  bookSlug,
+  chapter,
+  onClose,
+  onComplete,
+  skipUpgradeGate = false,
+  compact = false,
+  enableDashboardSkip = false,
+}: TriviaGamePlayerProps) {
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -51,6 +61,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
   const [verseText, setVerseText] = useState("");
   const [loadingVerseText, setLoadingVerseText] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState<boolean | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const completionNotifiedRef = useRef(false);
@@ -65,6 +76,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
   const questions = chapter?.questions ?? [];
   const currentQuestion = questions[currentQuestionIndex] ?? null;
   const isCorrect = Boolean(currentQuestion && selectedAnswer === currentQuestion.correctAnswer);
+  const showOwnerDashboardSkip = compact && (enableDashboardSkip || userEmail?.toLowerCase() === "moorelouis3@gmail.com");
 
   useEffect(() => {
     let cancelled = false;
@@ -87,6 +99,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
       }
 
       setUserId(user.id);
+      setUserEmail(user.email ?? null);
 
       const { data: profileStats } = await supabase
         .from("profile_stats")
@@ -222,6 +235,15 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
     setShowResults(true);
   }
 
+  function handleOwnerSkip() {
+    setCorrectCount(questions.length);
+    setEarnedCorrectCount(0);
+    setSelectedAnswer(null);
+    setVerseText("");
+    setCurrentQuestionIndex(Math.max(0, questions.length - 1));
+    setShowResults(true);
+  }
+
   useEffect(() => {
     if (!showResults || !userId) return;
 
@@ -346,7 +368,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
               No new points this run (you already earned points for these questions before).
             </p>
           )}
-          {onClose ? (
+          {onClose && !compact ? (
             <button
               type="button"
               onClick={onClose}
@@ -383,21 +405,32 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
   }
 
   return (
-    <div className={`${compact ? "bg-white px-3 py-4" : "min-h-screen bg-gray-50 px-4 py-8"}`}>
+    <div className={`${compact ? "bg-white px-0 py-2" : "min-h-screen bg-gray-50 px-4 py-8"}`}>
       <div className="mx-auto max-w-2xl">
-        <div className="mb-6 flex items-center justify-between gap-4">
+        <div className={`${compact ? "mb-4 justify-end" : "mb-6 justify-between"} flex items-center gap-4`}>
           {onClose ? (
             <button type="button" onClick={onClose} className="text-sm text-gray-600 transition hover:text-gray-900">
               ← Close
             </button>
-          ) : (
+          ) : !onClose ? (
             <Link href={`/bible-trivia/${bookSlug}`} className="text-sm text-gray-600 transition hover:text-gray-900">
               Back to chapters
             </Link>
-          )}
-          <p className="text-sm text-gray-600">
-            Question {currentQuestionIndex + 1} of {questions.length}
-          </p>
+          ) : null}
+          <div className={`flex items-center gap-3 ${compact ? "ml-auto" : ""}`}>
+            <p className="text-sm font-medium text-gray-600">
+              Question {currentQuestionIndex + 1} of {questions.length}
+            </p>
+            {showOwnerDashboardSkip ? (
+              <button
+                type="button"
+                onClick={handleOwnerSkip}
+                className="rounded-full bg-blue-50 px-3 py-1.5 text-xs font-black uppercase tracking-[0.14em] text-blue-700 transition hover:bg-blue-100 hover:text-blue-900"
+              >
+                Skip
+              </button>
+            ) : null}
+          </div>
         </div>
 
         <div className="mb-4 flex items-start gap-3">

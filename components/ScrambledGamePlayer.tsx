@@ -95,6 +95,7 @@ export default function ScrambledGamePlayer({
   const [showHelp, setShowHelp] = useState(false);
   const [hintCount, setHintCount] = useState(0);
   const [userId, setUserId] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [celebrateKey, setCelebrateKey] = useState(0);
   const [louieLine, setLouieLine] = useState("Tap the letters below and let's solve this word together.");
@@ -119,6 +120,7 @@ export default function ScrambledGamePlayer({
     if (!bookPack) return null;
     return bookPack.chapters.find((entry) => entry.chapter === chapter.chapter + 1) ?? null;
   }, [bookSlug, chapter.chapter]);
+  const showOwnerDashboardSkip = compact && userEmail?.toLowerCase() === "moorelouis3@gmail.com";
 
   const confettiPieces = useMemo(
     () =>
@@ -157,6 +159,7 @@ export default function ScrambledGamePlayer({
     void supabase.auth.getUser().then(({ data }) => {
       if (!mounted) return;
       setUserId(data.user?.id ?? null);
+      setUserEmail(data.user?.email ?? null);
       const meta: any = data.user?.user_metadata || {};
       const nextUsername =
         meta.firstName ||
@@ -371,6 +374,15 @@ export default function ScrambledGamePlayer({
     }
 
     setCurrentQuestionIndex((value) => value + 1);
+  };
+
+  const handleOwnerSkip = () => {
+    setCompletedSolveCount(chapter.questions.length);
+    setScoredSolveCount(chapter.questions.length);
+    setEarnedSolveCount(0);
+    setCurrentQuestionIndex(Math.max(0, chapter.questions.length - 1));
+    setStatus("correct");
+    setShowResults(true);
   };
 
   const markCorrect = (revealedCount = revealedLetters) => {
@@ -833,6 +845,17 @@ export default function ScrambledGamePlayer({
     <>
       <div className={pageClassName}>
         <div className={contentClassName}>
+          {showOwnerDashboardSkip ? (
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={handleOwnerSkip}
+                className="text-xs font-black uppercase tracking-[0.14em] text-[#4768af] transition hover:text-[#35508a]"
+              >
+                Skip
+              </button>
+            </div>
+          ) : null}
           {!compact ? (
           <div className="flex items-center justify-between gap-4">
             {onClose ? (

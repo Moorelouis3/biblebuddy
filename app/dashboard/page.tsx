@@ -3806,6 +3806,7 @@ export default function DashboardPage() {
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
+          isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
           }}
@@ -3854,6 +3855,7 @@ export default function DashboardPage() {
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
+          isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
           }}

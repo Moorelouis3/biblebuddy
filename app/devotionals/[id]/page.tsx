@@ -216,11 +216,17 @@ function getDevotionalReadingGameConfig(day: DevotionalDay) {
   };
 }
 
-export default function DevotionalDetailPage() {
+type DevotionalDetailPageProps = {
+  devotionalIdOverride?: string;
+  embedded?: boolean;
+  onBack?: () => void;
+};
+
+export default function DevotionalDetailPage({ devotionalIdOverride, embedded = false, onBack }: DevotionalDetailPageProps = {}) {
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const devotionalId = params.id as string;
+  const devotionalId = devotionalIdOverride ?? (params.id as string);
 
   const [devotional, setDevotional] = useState<Devotional | null>(null);
   const [days, setDays] = useState<DevotionalDay[]>([]);
@@ -313,7 +319,11 @@ export default function DevotionalDetailPage() {
 
         if (devotionalError || !devotionalData) {
           console.error("Error loading devotional:", devotionalError);
-          router.push("/bible-studies");
+          if (embedded) {
+            onBack?.();
+          } else {
+            router.push("/bible-studies");
+          }
           return;
         }
 
@@ -527,7 +537,7 @@ export default function DevotionalDetailPage() {
     }
 
     const isFreeUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
-    const shouldOpenFullPage = isChapterJourneyStudyTitle(devotional?.title);
+    const shouldOpenFullPage = isChapterJourneyStudyTitle(devotional?.title) && !embedded;
     const openDay = () => {
       if (shouldOpenFullPage) {
         router.push(`/bible-studies/${devotionalId}/day/${day.day_number}`);
@@ -628,7 +638,7 @@ export default function DevotionalDetailPage() {
     setShowChooseFreeModal(false);
     if (pendingDayClick) {
       setShowCreditBlocked(false);
-      if (isChapterJourneyStudyTitle(devotional?.title)) {
+      if (isChapterJourneyStudyTitle(devotional?.title) && !embedded) {
         router.push(`/bible-studies/${devotionalId}/day/${pendingDayClick.day_number}`);
       } else {
         setSelectedDay(pendingDayClick);
@@ -1063,7 +1073,7 @@ export default function DevotionalDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className={embedded ? "bg-transparent" : "min-h-screen bg-gray-50"}>
         <div className="max-w-5xl mx-auto px-4 py-8">
           <div className="text-gray-500">Loading Bible study...</div>
         </div>
@@ -1083,7 +1093,11 @@ export default function DevotionalDetailPage() {
         onPrimary={() => router.push('/upgrade')}
         onClose={() => {
           setShowProModal(false);
-          router.push('/bible-studies');
+          if (embedded) {
+            onBack?.();
+          } else {
+            router.push('/bible-studies');
+          }
         }}
       />
     );
@@ -1091,24 +1105,36 @@ export default function DevotionalDetailPage() {
 
   if (!devotional) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className={embedded ? "bg-transparent" : "min-h-screen bg-gray-50"}>
         <div className="max-w-5xl mx-auto px-4 py-8">
           <div className="text-gray-500">Bible study not found.</div>
+          {embedded ? (
+            <button type="button" onClick={onBack} className="text-blue-600 hover:underline mt-4 inline-block">
+              Back to Bible Studies
+            </button>
+          ) : (
           <Link href="/bible-studies" className="text-blue-600 hover:underline mt-4 inline-block">
             ← Back to Bible Studies
           </Link>
+          )}
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-12">
-      <div className="max-w-5xl mx-auto px-4 py-8">
+    <div className={embedded ? "bg-transparent pb-8" : "min-h-screen bg-gray-50 pb-12"}>
+      <div className={`${embedded ? "px-0 py-0" : "px-4 py-8"} max-w-5xl mx-auto`}>
         {/* HEADER */}
+        {embedded ? (
+          <button type="button" onClick={onBack} className="mb-4 inline-flex rounded-full bg-blue-50 px-4 py-2 text-sm font-black text-blue-700 transition hover:bg-blue-100">
+            Back to Bible Studies
+          </button>
+        ) : (
         <Link href="/bible-studies" className="text-blue-600 hover:underline mb-4 inline-block">
           ← Back to Bible Studies
         </Link>
+        )}
 
         <h1 className="text-3xl font-bold mb-2">{devotional.title}</h1>
         <p className="text-gray-600 mb-4">{scriptureRange ?? devotional.subtitle}</p>

@@ -7,6 +7,7 @@ import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
 import DashboardDailyTaskCallout from "./DashboardDailyTaskCallout";
 import BibleStudiesLibraryPage from "../app/devotionals/page";
+import BibleStudyDetailPage from "../app/devotionals/[id]/page";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
@@ -77,6 +78,7 @@ type Props = {
   studySettingsOpenRequest?: number;
   homeHeader?: ReactNode;
   onDevotionalChanged: () => void;
+  isOwnerDashboard?: boolean;
 };
 
 type DevotionalOption = {
@@ -1354,6 +1356,7 @@ export default function DashboardJourneyExperience({
   studySettingsOpenRequest = 0,
   homeHeader,
   onDevotionalChanged,
+  isOwnerDashboard = false,
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const swipeStartXRef = useRef<number | null>(null);
@@ -1362,6 +1365,7 @@ export default function DashboardJourneyExperience({
   const previousJourneyKeyRef = useRef<string | null>(null);
   const [activePage, setActivePage] = useState(0);
   const [celebratingTasks, setCelebratingTasks] = useState<Record<string, number>>({});
+  const [clearedDoneTaskKinds, setClearedDoneTaskKinds] = useState<Record<string, boolean>>({});
   const [progressCelebrationKey, setProgressCelebrationKey] = useState(0);
   const [showCompletionPanel, setShowCompletionPanel] = useState(false);
   const [suppressCompletionPanelForLoadedChapter, setSuppressCompletionPanelForLoadedChapter] = useState(false);
@@ -1391,9 +1395,11 @@ export default function DashboardJourneyExperience({
   const [embeddedBibleAlphabetical, setEmbeddedBibleAlphabetical] = useState(false);
   const [embeddedBibleCompletedChapters, setEmbeddedBibleCompletedChapters] = useState<number[]>([]);
   const [embeddedBibleReading, setEmbeddedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
+  const [embeddedBibleStudyId, setEmbeddedBibleStudyId] = useState<string | null>(null);
   const [embeddedCommunityGroupId, setEmbeddedCommunityGroupId] = useState<string | null>(null);
   const [embeddedCommunityLoading, setEmbeddedCommunityLoading] = useState(false);
   const [embeddedCommunityError, setEmbeddedCommunityError] = useState<string | null>(null);
+  const [embeddedCommunityHeight, setEmbeddedCommunityHeight] = useState(900);
   const [shareCopied, setShareCopied] = useState(false);
 
   const dashboardPageKeys = ["home", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
@@ -1480,6 +1486,21 @@ export default function DashboardJourneyExperience({
       cancelled = true;
     };
   }, [embeddedCommunityGroupId, safeActivePage]);
+
+  useEffect(() => {
+    function handleEmbeddedCommunityHeight(event: MessageEvent) {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data as { type?: string; height?: number } | null;
+      if (!data || data.type !== "bb-community-height") return;
+
+      const nextHeight = Number(data.height);
+      if (!Number.isFinite(nextHeight)) return;
+      setEmbeddedCommunityHeight(Math.max(680, Math.ceil(nextHeight)));
+    }
+
+    window.addEventListener("message", handleEmbeddedCommunityHeight);
+    return () => window.removeEventListener("message", handleEmbeddedCommunityHeight);
+  }, []);
 
   const nextTask = visibleTasks.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = visibleTasks.findIndex((task) => !task.done);
@@ -1573,11 +1594,25 @@ export default function DashboardJourneyExperience({
   const currentStudySummary = getDashboardStudySummary(currentDevotionalTitle, null);
   const queueTasks = visibleTasks.filter((task) => !task.done || celebratingTasks[task.kind]);
   const completedTrackerTasks = visibleTasks.filter((task) => task.done && !celebratingTasks[task.kind]);
-  const displayTasks = isLoadingNextChapter && (preloadedNextChapter?.tasks.length || preloadedNextStudy?.tasks.length)
+  const activeCompletedTrackerTask = activeTask
+    ? completedTrackerTasks.find(
+        (task) =>
+          task.kind === activeTask.kind &&
+          (task.href || "") === (activeTask.href || "") &&
+          (task.chapterLabel || "") === (activeTask.chapterLabel || ""),
+      ) ?? null
+    : null;
+  const baseDisplayTasks = isLoadingNextChapter && (preloadedNextChapter?.tasks.length || preloadedNextStudy?.tasks.length)
     ? preloadedNextChapter?.tasks.length
       ? preloadedNextChapter.tasks
       : preloadedNextStudy?.tasks || visibleTasks
     : visibleTasks;
+  const displayTasks = baseDisplayTasks.filter((task) => !clearedDoneTaskKinds[task.kind] || celebratingTasks[task.kind]);
+  const hasClearableDoneTaskCards =
+    suppressCompletionPanelForLoadedChapter &&
+    !isLoadingNextChapter &&
+    visibleTasks.some((task) => task.done && !clearedDoneTaskKinds[task.kind]) &&
+    visibleTasks.some((task) => !task.done);
   const displayNextActionTaskIndex = displayTasks.findIndex((task) => !task.done);
   const displayNextActionTaskKind =
     displayNextActionTaskIndex >= 0 && displayTasks[displayNextActionTaskIndex] && !displayTasks[displayNextActionTaskIndex].disabled
@@ -2015,6 +2050,7 @@ export default function DashboardJourneyExperience({
       setIsLoadingNextChapter(false);
       setShowCompletionPanel(false);
       setCompletedTasksExpanded(false);
+      setClearedDoneTaskKinds({});
       setPreloadedNextChapter(null);
       setPreloadedNextStudy(null);
       setIsNewChapterDropping(true);
@@ -2285,6 +2321,7 @@ export default function DashboardJourneyExperience({
     setShowCurrentStudyDetails(false);
     setShowCompletionPanel(false);
     setSuppressCompletionPanelForLoadedChapter(true);
+    setClearedDoneTaskKinds({});
     try {
       const { error } = await supabase
         .from("profile_stats")
@@ -2313,6 +2350,41 @@ export default function DashboardJourneyExperience({
     } finally {
       setSwitchingStudyChapter(null);
     }
+  }
+
+  function handleClearDoneTaskCards() {
+    const doneKinds = visibleTasks
+      .filter((task) => task.done && !clearedDoneTaskKinds[task.kind])
+      .map((task) => task.kind);
+    if (!doneKinds.length) return;
+
+    const celebrationId = Date.now();
+    setCelebratingTasks((prev) => {
+      const next = { ...prev };
+      doneKinds.forEach((kind) => {
+        next[kind] = celebrationId;
+      });
+      return next;
+    });
+
+    window.setTimeout(() => {
+      setClearedDoneTaskKinds((prev) => {
+        const next = { ...prev };
+        doneKinds.forEach((kind) => {
+          next[kind] = true;
+        });
+        return next;
+      });
+      setCelebratingTasks((prev) => {
+        const next = { ...prev };
+        doneKinds.forEach((kind) => {
+          if (next[kind] === celebrationId) {
+            delete next[kind];
+          }
+        });
+        return next;
+      });
+    }, 840);
   }
 
   function handleSwipeStart(event: React.TouchEvent<HTMLDivElement>) {
@@ -2527,7 +2599,15 @@ export default function DashboardJourneyExperience({
   const renderEmbeddedBibleStudiesPage = () => (
     <section className="w-full px-1">
       <div className="mx-auto max-w-xl overflow-hidden rounded-[28px]">
-        <BibleStudiesLibraryPage />
+        {embeddedBibleStudyId ? (
+          <BibleStudyDetailPage
+            devotionalIdOverride={embeddedBibleStudyId}
+            embedded
+            onBack={() => setEmbeddedBibleStudyId(null)}
+          />
+        ) : (
+          <BibleStudiesLibraryPage embedded onStudySelect={setEmbeddedBibleStudyId} />
+        )}
       </div>
     </section>
   );
@@ -2568,8 +2648,9 @@ export default function DashboardJourneyExperience({
               key={embeddedCommunityGroupId}
               src={`/study-groups/${embeddedCommunityGroupId}/chat?embedded=dashboard&tab=home`}
               title="Bible Buddy Community"
-              className="block w-full border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
-              style={{ height: "calc(100vh - 188px)", minHeight: 680 }}
+              className="block w-full overflow-hidden border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
+              scrolling="no"
+              style={{ height: embeddedCommunityHeight, minHeight: 680 }}
             />
           ) : (
             <div className="grid min-h-[520px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
@@ -3424,7 +3505,8 @@ export default function DashboardJourneyExperience({
                 </button>
               </div>
             ) : (
-              displayTasks.map((task, index) => {
+              <>
+              {displayTasks.map((task, index) => {
                 const originalTaskIndex = displayTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
                 const taskIndex = originalTaskIndex >= 0 ? originalTaskIndex : index;
                 const taskCopy = getTaskCardCopy(task, taskIndex);
@@ -3562,15 +3644,26 @@ export default function DashboardJourneyExperience({
                       onClose={onActiveTaskClose}
                       onProgressUpdated={onActiveTaskProgressUpdated}
                       variant="inline"
+                      enableDashboardSkip={isOwnerDashboard}
                     />
                   </div>
                 ) : null}
                 </div>
                 );
-              })
+              })}
+              {hasClearableDoneTaskCards ? (
+                <button
+                  type="button"
+                  onClick={handleClearDoneTaskCards}
+                  className="mx-auto -mt-1 mb-1 block px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-75"
+                >
+                  Clear done Bible study task cards
+                </button>
+              ) : null}
+              </>
             )}
 
-            {!shouldShowCompletionPanel && !isLoadingNextChapter && displayTasks.length < visibleTasks.length && completedTrackerTasks.length > 0 ? (
+            {!suppressCompletionPanelForLoadedChapter && !shouldShowCompletionPanel && !isLoadingNextChapter && displayTasks.length < visibleTasks.length && completedTrackerTasks.length > 0 ? (
               <div className="overflow-hidden rounded-2xl border border-emerald-100 bg-white/80 shadow-sm">
                 <button
                   type="button"
@@ -3594,17 +3687,30 @@ export default function DashboardJourneyExperience({
                   </span>
                 </button>
                 {completedTasksExpanded ? (
+                <>
                 <div className="grid gap-2 border-t border-emerald-100 px-3 pb-3 pt-3 sm:grid-cols-2">
                   {completedTrackerTasks.map((task) => {
                     const originalTaskIndex = visibleTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
                     const taskCopy = getTaskCardCopy(task, originalTaskIndex >= 0 ? originalTaskIndex : 0);
+                    const isActiveCompletedTask =
+                      activeTask?.kind === task.kind &&
+                      (activeTask.href || "") === (task.href || "") &&
+                      (activeTask.chapterLabel || "") === (task.chapterLabel || "");
                     return (
-                      <button
+                      <div
                         key={`completed-${task.kind}`}
-                        type="button"
-                        onClick={() => onTaskClick(task)}
-                        className="group flex min-h-10 items-center gap-2 rounded-xl border border-emerald-100 bg-emerald-50/70 px-3 py-2 text-left transition hover:border-emerald-200 hover:bg-emerald-50 hover:shadow-sm"
+                        className={`overflow-hidden rounded-xl border transition ${
+                          isActiveCompletedTask
+                            ? "border-[var(--bb-accent,#2f7fe8)] bg-white shadow-sm sm:col-span-2"
+                            : "border-emerald-100 bg-emerald-50/70 hover:border-emerald-200 hover:bg-emerald-50 hover:shadow-sm"
+                        }`}
                       >
+                        <button
+                          type="button"
+                          onClick={() => onTaskClick(task)}
+                          className="group flex min-h-10 w-full items-center gap-2 px-3 py-2 text-left transition"
+                          aria-expanded={isActiveCompletedTask}
+                        >
                         <span className="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-emerald-500 text-[11px] font-black text-white shadow-sm" aria-hidden="true">
                           ✓
                         </span>
@@ -3617,10 +3723,24 @@ export default function DashboardJourneyExperience({
                         <span className="hidden">
                           ›
                         </span>
-                      </button>
+                        </button>
+                      </div>
                     );
                   })}
                 </div>
+                {activeCompletedTrackerTask ? (
+                  <div className="border-t border-emerald-100 px-3 pb-3">
+                    <DashboardDailyTaskCallout
+                      task={activeTask}
+                      userId={userId}
+                      onClose={onActiveTaskClose}
+                      onProgressUpdated={onActiveTaskProgressUpdated}
+                      variant="inline"
+                      enableDashboardSkip={isOwnerDashboard}
+                    />
+                  </div>
+                ) : null}
+                </>
                 ) : null}
               </div>
             ) : null}
