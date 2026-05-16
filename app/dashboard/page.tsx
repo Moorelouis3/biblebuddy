@@ -1966,44 +1966,44 @@ export default function DashboardPage() {
               setShowStreakMotivationTaskPrompt(false);
               setShowStreakMotivationModal(true);
             }}
-            className="mx-auto block w-full max-w-xl rounded-[24px] border border-[#e6edf7] bg-white p-4 text-left shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition hover:shadow-md"
+            className="mx-auto block w-full max-w-xl rounded-[22px] border border-[#e6edf7] bg-white p-3 text-left shadow-[0_10px_26px_rgba(38,63,99,0.08)] transition hover:shadow-md sm:p-3.5"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="w-full">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`inline-block text-4xl leading-none sm:text-5xl ${streakFlameClass}`}
+                    className={`inline-block text-3xl leading-none sm:text-4xl ${streakFlameClass}`}
                     style={{ animationDuration: `${streakFlameDuration}s` }}
                     aria-hidden="true"
                   >
                     🔥
                   </span>
-                  <p className="text-2xl font-black leading-none text-gray-950 sm:text-3xl">
+                  <p className="text-xl font-black leading-none text-gray-950 sm:text-2xl">
                     {streakValue} day streak
                   </p>
                 </div>
-                <p className="mt-1 text-sm font-semibold leading-5 text-gray-500 sm:text-base">
+                <p className="mt-1 text-xs font-semibold leading-5 text-gray-500 sm:text-sm">
                   {getDashboardStreakEncouragement(streakValue)}
                 </p>
               </div>
             </div>
 
-            <div className="mx-auto mt-4 grid w-full grid-cols-7 gap-1.5 sm:gap-2">
+            <div className="mx-auto mt-3 grid w-full grid-cols-7 gap-1.5">
               {dashboardLastSevenDays.map((day, index) => {
                 const completedByStreak = index >= 7 - Math.min(7, streakValue);
                 const isCompleted = day.completed || day.isToday || completedByStreak;
                 return (
                 <div
                   key={day.date}
-                  className={`rounded-2xl px-1 py-2 text-center transition sm:py-2.5 ${
+                  className={`rounded-2xl px-1 py-1.5 text-center transition sm:py-2 ${
                     isCompleted ? "bg-[#eef6ff]" : "bg-[#f8fafc]"
                   } ${day.isToday ? "ring-2 ring-[#4B9CD3]/30" : ""}`}
                 >
-                  <p className={`mb-2 text-[11px] font-black sm:text-xs ${isCompleted ? "text-[#2f7fe8]" : "text-gray-500"}`}>
+                  <p className={`mb-1.5 text-[10px] font-black sm:text-[11px] ${isCompleted ? "text-[#2f7fe8]" : "text-gray-500"}`}>
                     {getDashboardDayAbbr(day.date)}
                   </p>
                   <span
-                    className={`mx-auto grid h-9 w-9 place-items-center rounded-full border text-sm font-black transition sm:h-10 sm:w-10 ${
+                    className={`mx-auto grid h-8 w-8 place-items-center rounded-full border text-sm font-black transition sm:h-9 sm:w-9 ${
                       isCompleted
                         ? day.isToday
                           ? "animate-pulse border-[#2f7fe8] bg-[#2f7fe8] text-white shadow-[0_0_0_6px_rgba(47,127,232,0.15)]"
@@ -2017,12 +2017,6 @@ export default function DashboardPage() {
                 </div>
                 );
               })}
-            </div>
-            <div className="mt-4 flex items-center gap-3 rounded-2xl bg-[#f7fbff] px-3 py-2">
-              <p className="min-w-0 flex-1 text-[11px] font-bold text-gray-600">
-                One more day to unlock another Grace Day
-              </p>
-              <span className="dashboard-diamond-glow text-xl" aria-hidden="true">💎</span>
             </div>
           </button>
       </>

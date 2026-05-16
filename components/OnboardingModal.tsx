@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode 
 import { supabase } from "../lib/supabaseClient";
 import { ensureLouisDailyTaskCycle, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { LouisAvatar } from "./LouisAvatar";
+import { BIBLE_GAME_BOOKS } from "../lib/bibleStudyGameCatalog";
 
 type OnboardingModalProps = {
   isOpen: boolean;
@@ -32,7 +33,7 @@ type ChoiceOption = {
 
 type LouisMood = "wave" | "stareyes" | "think" | "pray" | "sheesh" | "bible" | "smile" | "cool" | "hands" | "salute" | "sideeye";
 
-const TOTAL_SLIDES = 11;
+const TOTAL_SLIDES = 13;
 
 const SOURCE_OPTIONS: ChoiceOption[] = [
   { label: "Instagram", icon: "📸" },
@@ -121,7 +122,10 @@ const STARTER_STUDIES: StudyOption[] = [
 const STUDY_PICKER_ORDER = [
   "The Creation of the World",
   "The Fall of Man",
+  "The Flood of Noah",
   "The Obedience of Abraham",
+  "The Covenant Through Isaac",
+  "The Wrestling of Jacob",
   "The Testing of Joseph",
   "The Wisdom of Proverbs",
 ];
@@ -144,6 +148,9 @@ const COVER_BY_STUDY_TITLE: Record<string, string> = {
   "The Rise of Esther": "/theriseofester.png",
   "The Creation of the World": "/creationoftheworld.png",
   "The Fall of Man": "/thefallofman.png",
+  "The Flood of Noah": "/thefallofman.png",
+  "The Covenant Through Isaac": "/TheobedienceofAbraham.png",
+  "The Wrestling of Jacob": "/TheobedienceofAbraham.png",
 };
 
 const ONBOARDING_STUDY_DESCRIPTION_BY_TITLE: Record<string, string> = {
@@ -174,7 +181,48 @@ const ONBOARDING_STUDY_DESCRIPTION_BY_TITLE: Record<string, string> = {
     "A 2-chapter journey through Genesis 1-2, following creation, order, Eden, humanity in God's image, purpose, rest, and relationship with God.",
   "The Fall of Man":
     "A 2-chapter journey through Genesis 3-4, following temptation, shame, blame, Cain and Abel, violence, exile, and the need for redemption.",
+  "The Flood of Noah":
+    "A guided journey through Noah, judgment, mercy, the ark, covenant, and God's preservation of creation.",
+  "The Covenant Through Isaac":
+    "A guided journey through the promise continuing through Isaac, showing how God's covenant keeps moving across generations.",
+  "The Wrestling of Jacob":
+    "A guided journey through Jacob's family, struggle, transformation, and the God who stays faithful through messy stories.",
 };
+
+const STUDY_BOOK_BY_TITLE: Record<string, string> = {
+  "The Creation of the World": "Genesis",
+  "The Fall of Man": "Genesis",
+  "The Flood of Noah": "Genesis",
+  "The Obedience of Abraham": "Genesis",
+  "The Covenant Through Isaac": "Genesis",
+  "The Wrestling of Jacob": "Genesis",
+  "The Testing of Joseph": "Genesis",
+  "The Wisdom of Proverbs": "Proverbs",
+  "The Rise of Esther": "Esther",
+  "The Courage of Daniel": "Daniel",
+  "The Faith of Job": "Job",
+  "The Calling of Moses": "Exodus",
+  "The Heart of David": "1 Samuel",
+  "The Disciples of Jesus": "Matthew",
+  "The Tempting of Jesus": "Matthew",
+  "The Transforming of Paul": "Acts",
+  "Women of the Bible": "Genesis",
+};
+
+const POPULAR_FREE_MODE_BOOK_KEYS = new Set(["genesis", "exodus", "psalms", "proverbs", "matthew", "romans"]);
+
+function getBibleBookAccent(bookKey: string) {
+  const accents = [
+    "border-[#c9d8f0] bg-[#dce7f7]",
+    "border-emerald-200 bg-emerald-100",
+    "border-amber-200 bg-amber-100",
+    "border-violet-200 bg-[#efe7ff]",
+    "border-rose-200 bg-rose-100",
+    "border-teal-200 bg-teal-100",
+  ];
+  const index = BIBLE_GAME_BOOKS.findIndex((book) => book.key === bookKey);
+  return accents[Math.max(0, index) % accents.length];
+}
 
 function normalizeGoalValue(goal: string | null | undefined) {
   if (!goal) return null;
@@ -394,6 +442,18 @@ function ChoiceCards({
   );
 }
 
+function JourneyStepBadge({ icon, title, subtitle }: { icon: string; title: string; subtitle: string }) {
+  return (
+    <div className="min-w-[72px] text-center">
+      <div className="mx-auto grid h-12 w-12 place-items-center rounded-full border border-[#f2cb63] bg-[#fff6d9] text-2xl shadow-sm">
+        {icon}
+      </div>
+      <p className="mt-2 text-[11px] font-black leading-3 text-[#17213d]">{title}</p>
+      <p className="mt-0.5 text-[10px] font-semibold leading-3 text-[#5d667a]">{subtitle}</p>
+    </div>
+  );
+}
+
 export function OnboardingModal({
   isOpen,
   userId,
@@ -416,6 +476,7 @@ export function OnboardingModal({
   const [selectedPlan, setSelectedPlan] = useState<"monthly" | "yearly">("yearly");
   const [selectedStudyIndex, setSelectedStudyIndex] = useState(0);
   const [studies, setStudies] = useState<StudyOption[]>(STARTER_STUDIES);
+  const [selectedFreeBookKey, setSelectedFreeBookKey] = useState("genesis");
   const avatarInputRef = useRef<HTMLInputElement>(null);
   const onboardingSwipeStartX = useRef<number | null>(null);
   const onboardingSwipeStartY = useRef<number | null>(null);
@@ -424,6 +485,10 @@ export function OnboardingModal({
   const checkoutStartedPaidRef = useRef(false);
 
   const selectedStudy = studies[selectedStudyIndex] ?? studies[0];
+  const selectedFreeBook = BIBLE_GAME_BOOKS.find((book) => book.key === selectedFreeBookKey) ?? BIBLE_GAME_BOOKS[0];
+  const popularFreeModeBooks = BIBLE_GAME_BOOKS.filter((book) => POPULAR_FREE_MODE_BOOK_KEYS.has(book.key));
+  const remainingFreeModeBooks = BIBLE_GAME_BOOKS.filter((book) => !POPULAR_FREE_MODE_BOOK_KEYS.has(book.key));
+  const selectedBookStudies = studies.filter((study) => STUDY_BOOK_BY_TITLE[study.title] === selectedFreeBook.title);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -458,9 +523,10 @@ export function OnboardingModal({
     const devotionalQuery = supabase.from("devotionals").select("id, title, description").order("created_at", {
       ascending: false,
     });
+    const onboardingStudyTitles = Array.from(new Set([...STARTER_STUDIES.map((study) => study.title), ...STUDY_PICKER_ORDER]));
     const { data: devotionalRows } = isPaid
       ? await devotionalQuery
-      : await devotionalQuery.in("title", STARTER_STUDIES.map((study) => study.title));
+      : await devotionalQuery.in("title", onboardingStudyTitles);
 
     if (!devotionalRows?.length) return;
 
@@ -471,14 +537,17 @@ export function OnboardingModal({
           description: row.description?.trim() || `${row.title} is a guided Bible Study inside Bible Buddy.`,
           id: row.id,
         }))
-      : STARTER_STUDIES.map((study) => {
-          const row = devotionalRows.find((item) => item.title === study.title);
+      : onboardingStudyTitles.map((title) => {
+          const fallbackStudy = STARTER_STUDIES.find((study) => study.title === title);
+          const row = devotionalRows.find((item) => item.title === title);
+          if (!row && !fallbackStudy) return null;
           return {
-            ...study,
+            title,
+            cover: getStudyCover(title),
+            description: row?.description?.trim() || fallbackStudy?.description || ONBOARDING_STUDY_DESCRIPTION_BY_TITLE[title] || `${title} is a guided Bible Study inside Bible Buddy.`,
             id: row?.id,
-            description: row?.description?.trim() || study.description,
           };
-        })
+        }).filter(Boolean) as StudyOption[]
     ).sort((a, b) => {
       const aOrder = STUDY_PICKER_ORDER_INDEX.get(a.title);
       const bOrder = STUDY_PICKER_ORDER_INDEX.get(b.title);
@@ -700,18 +769,19 @@ export function OnboardingModal({
     }
   }
 
-  async function finishWithStudy() {
-    if (!selectedStudy) return;
+  async function finishWithStudy(studyOverride?: StudyOption) {
+    const targetStudy = studyOverride ?? selectedStudy;
+    if (!targetStudy) return;
 
     setIsSaving(true);
     setError(null);
     try {
-      let studyId = selectedStudy.id ?? null;
+      let studyId = targetStudy.id ?? null;
       if (!studyId) {
         const { data, error: lookupError } = await supabase
           .from("devotionals")
           .select("id")
-          .eq("title", selectedStudy.title)
+          .eq("title", targetStudy.title)
           .maybeSingle();
         if (lookupError) throw lookupError;
         studyId = data?.id ?? null;
@@ -748,6 +818,15 @@ export function OnboardingModal({
     } finally {
       setIsSaving(false);
     }
+  }
+
+  async function finishWithStudyTitle(title: string) {
+    const study = studies.find((item) => item.title === title) ?? {
+      title,
+      cover: getStudyCover(title),
+      description: ONBOARDING_STUDY_DESCRIPTION_BY_TITLE[title] ?? `${title} is a guided Bible Study inside Bible Buddy.`,
+    };
+    await finishWithStudy(study);
   }
 
   function beginOnboardingSwipe(clientX: number, clientY: number) {
@@ -1048,7 +1127,7 @@ export function OnboardingModal({
         <Subtitle>
           You now have full access to every Bible Study inside Bible Buddy.
           <br />
-          Let’s pick where you want to start.
+          Let’s set up your Bible Study Journey.
         </Subtitle>
         <div className="mx-auto mt-7 max-w-[330px] rounded-3xl border border-[#cce7d5] bg-[#f0fff5] px-5 py-5 text-center shadow-[0_14px_32px_rgba(39,174,96,0.12)]">
           <p className="text-4xl">🎉</p>
@@ -1058,58 +1137,154 @@ export function OnboardingModal({
           </p>
         </div>
         <PrimaryButton onClick={() => goToSlide(10)}>
-          Pick my Bible Study
+          Set up my journey
         </PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="study" activeIndex={10} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
-        <LouisHero mood="smile" />
+      <OnboardingShell key="journey-choice" activeIndex={10} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <Headline>
-          Pick your first
+          Let&apos;s get ready to start
           <br />
-          Bible study
+          your <span className="text-[#2f66d6]">Bible study journey.</span>
         </Headline>
-        <Subtitle>
-          Now that that’s out of the way,
-          <br />
-          choose which Bible study you wanna start with first.
-        </Subtitle>
+        <Subtitle>Choose how you want to study and grow through Scripture.</Subtitle>
 
-        <div className="mt-4">
-          <select
-            id="first-bible-study"
-            value={selectedStudyIndex}
-            onChange={(event) => setSelectedStudyIndex(Number(event.target.value))}
-            className="w-full rounded-2xl border border-[#d8e3f1] bg-white px-4 py-3 text-base font-extrabold text-[#18213a] shadow-sm outline-none transition focus:border-[#2f80ed] focus:ring-4 focus:ring-[#2f80ed]/15"
-          >
-            {studies.map((study, index) => (
-              <option key={`${study.id ?? study.title}-${index}`} value={index}>
-                {study.title}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="mt-4 flex justify-center">
-          <div className="rounded-xl bg-white p-2 shadow-xl ring-1 ring-[#e6ebf3]">
-            <Image
-              src={selectedStudy.cover}
-              alt={`${selectedStudy.title} cover`}
-              width={190}
-              height={285}
-              className="h-[232px] w-auto rounded-lg object-contain"
-              priority
-            />
+        <div className="mt-7 rounded-[28px] border border-[#f4d77e] bg-gradient-to-br from-[#fff8df] via-white to-[#fff7d7] p-4 text-left shadow-[0_16px_34px_rgba(214,158,46,0.18)]">
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-[#ffe8a3] px-3 py-1 text-xs font-black uppercase text-[#9a6500]">
+            <span>★</span>
+            Recommended
           </div>
+          <div className="flex gap-4">
+            <div className="hidden h-44 w-28 shrink-0 overflow-hidden rounded-2xl bg-[#fff2bf] shadow-sm sm:block">
+              <Image src="/creationoftheworld.png" alt="" width={160} height={220} className="h-full w-full object-cover" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-3">
+                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#ffe59a] text-3xl shadow-sm">📖</span>
+                <div>
+                  <h2 className="text-2xl font-black leading-tight text-[#0f172a]">Bible Buddy Journey</h2>
+                  <p className="text-sm font-black text-[#b77900]">Recommended</p>
+                </div>
+              </div>
+              <p className="mt-4 text-lg font-black leading-6 text-[#101828]">
+                Follow a guided path through the Bible one study at a time.
+              </p>
+              <p className="mt-3 text-sm font-semibold leading-6 text-[#556071]">
+                Start in Genesis and progress through Scripture with chapter intros, Bible reading, deep notes, trivia, Scrambled, reflection, and community discussion.
+              </p>
+            </div>
+          </div>
+          <div className="mt-5 overflow-x-auto pb-1">
+            <div className="flex min-w-max items-start justify-between gap-3">
+              <JourneyStepBadge icon="🌎" title="Genesis" subtitle="Creation" />
+              <JourneyStepBadge icon="🍎" title="The Fall" subtitle="of Man" />
+              <JourneyStepBadge icon="🌊" title="The Flood" subtitle="of Noah" />
+              <JourneyStepBadge icon="🐪" title="Abraham" subtitle="Obedience" />
+            </div>
+          </div>
+          <div className="mt-4 rounded-full border border-[#f4d77e] bg-white/70 px-4 py-2 text-center text-sm font-black text-[#8a6100]">
+            65+ guided studies • Full Bible journey
+          </div>
+          <PrimaryButton onClick={() => void finishWithStudyTitle("The Creation of the World")} disabled={isSaving}>
+            {isSaving ? "Starting journey..." : "Start Journey  ›"}
+          </PrimaryButton>
         </div>
 
-        <p className="mx-auto mt-4 max-w-[330px] text-center text-sm font-semibold leading-6 text-[#3d465c]">
-          {getOnboardingStudyDescription(selectedStudy)}
-        </p>
+        <div className="mt-5 rounded-[28px] border border-[#bdd7ff] bg-gradient-to-br from-[#eef7ff] via-white to-[#eaf4ff] p-4 text-left shadow-[0_12px_28px_rgba(47,127,232,0.12)]">
+          <div className="flex items-center gap-4">
+            <div className="grid h-20 w-20 shrink-0 place-items-center rounded-3xl bg-[#d8eaff] text-4xl shadow-sm">🧭</div>
+            <div>
+              <h2 className="text-2xl font-black text-[#101828]">Free Mode</h2>
+              <p className="text-sm font-black text-[#2457b8]">Choose Your Own Path</p>
+              <p className="mt-3 text-sm font-semibold leading-6 text-[#556071]">
+                Pick any book of the Bible and jump into available Bible studies instantly.
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => goToSlide(11)}
+            className="mt-5 w-full rounded-2xl border border-[#9fc6ff] bg-white px-5 py-3 text-base font-black text-[#2457b8] shadow-sm transition hover:bg-[#f4f9ff]"
+          >
+            Choose My Own Studies  ›
+          </button>
+        </div>
 
-        <PrimaryButton onClick={() => void finishWithStudy()} disabled={isSaving}>
-          Pick this Bible study
-        </PrimaryButton>
+        <div className="mx-auto mt-6 flex max-w-[330px] items-center gap-3 rounded-3xl bg-[#f4f7fb] px-4 py-3 text-left">
+          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-white text-xl">🛡️</span>
+          <p className="text-xs font-bold leading-5 text-[#5d667a]">
+            Either way, we&apos;ll help you build your streak, earn rewards, and stay consistent in God&apos;s Word.
+          </p>
+        </div>
+      </OnboardingShell>,
+
+      <OnboardingShell key="free-books" activeIndex={11} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
+        <Headline>
+          Choose a book
+          <br />
+          of the Bible
+        </Headline>
+        <Subtitle>Pick where you want to start, then choose from the Bible studies connected to that book.</Subtitle>
+        <div className="mt-7 grid grid-cols-2 gap-3">
+          {[...popularFreeModeBooks, ...remainingFreeModeBooks].map((book) => (
+            <button
+              key={book.key}
+              type="button"
+              onClick={() => {
+                setSelectedFreeBookKey(book.key);
+                goToSlide(12);
+              }}
+              className={`min-h-[86px] rounded-2xl border px-3 py-3 text-left text-sm shadow-sm transition hover:scale-[1.01] hover:shadow-md ${getBibleBookAccent(book.key)}`}
+            >
+              <p className="font-black text-[#111827]">{book.title}</p>
+              <p className="mt-1 text-[11px] font-semibold leading-4 text-[#4b5563]">View available studies</p>
+            </button>
+          ))}
+        </div>
+      </OnboardingShell>,
+
+      <OnboardingShell key="free-studies" activeIndex={12} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
+        <Headline>
+          {selectedFreeBook.title}
+          <br />
+          Bible studies
+        </Headline>
+        <Subtitle>Choose the study you want to begin. We&apos;ll connect it to your dashboard right away.</Subtitle>
+        <button
+          type="button"
+          onClick={() => goToSlide(11)}
+          className="mx-auto mt-5 block rounded-full bg-[#eef6ff] px-4 py-2 text-sm font-black text-[#2f80ed]"
+        >
+          ← Pick another book
+        </button>
+        <div className="mt-5 space-y-3">
+          {selectedBookStudies.length > 0 ? (
+            selectedBookStudies.map((study) => (
+              <button
+                key={study.id ?? study.title}
+                type="button"
+                onClick={() => void finishWithStudy(study)}
+                disabled={isSaving}
+                className="flex w-full gap-3 rounded-2xl border border-[#e0e8f4] bg-white p-3 text-left shadow-sm transition hover:border-[#9fc6ff] hover:shadow-md disabled:opacity-60"
+              >
+                <Image src={study.cover} alt="" width={56} height={78} className="h-20 w-14 shrink-0 rounded-xl object-cover" />
+                <span className="min-w-0 flex-1">
+                  <span className="block text-base font-black text-[#111827]">{study.title}</span>
+                  <span className="mt-1 line-clamp-3 block text-xs font-semibold leading-5 text-[#5d667a]">
+                    {getOnboardingStudyDescription(study)}
+                  </span>
+                </span>
+              </button>
+            ))
+          ) : (
+            <div className="rounded-2xl border border-[#dbe7f4] bg-[#f7fbff] px-4 py-5 text-center">
+              <p className="text-sm font-black text-[#17213d]">No guided studies for {selectedFreeBook.title} yet.</p>
+              <p className="mt-2 text-xs font-semibold leading-5 text-[#5d667a]">
+                More Bible Study Journey paths are being added over time. Try Genesis, Proverbs, Esther, Daniel, or Job.
+              </p>
+            </div>
+          )}
+        </div>
       </OnboardingShell>,
     ],
     [
