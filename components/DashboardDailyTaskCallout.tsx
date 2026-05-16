@@ -799,9 +799,9 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             <div className="flex items-start justify-between gap-4 px-1 pb-3">
               <div>
                 <p className="bb-accent text-xs font-black uppercase tracking-widest">Task 1</p>
-                <h2 className="bb-text-primary text-lg font-black">Read Chapter Intro</h2>
+                <h2 className="bb-text-primary text-lg font-black">{chapterLabel}</h2>
                 <p className="bb-text-secondary mt-1 text-sm font-semibold">
-                  {chapterLabel}: {devotionalDay.day_title}
+                  {devotionalDay.day_title}
                 </p>
               </div>
               <button type="button" onClick={() => void closeIntroAndRefresh()} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close intro">
@@ -830,9 +830,9 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-[#4f8fb7]">Task 1</p>
-                <h2 className="text-lg font-bold text-gray-900">Read Chapter Intro</h2>
+                <h2 className="text-lg font-bold text-gray-900">{chapterLabel}</h2>
                 <p className="mt-1 text-sm font-semibold text-gray-700">
-                  {chapterLabel}: {devotionalDay.day_title}
+                  {devotionalDay.day_title}
                 </p>
               </div>
               <button type="button" onClick={() => void closeIntroAndRefresh()} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close intro">

@@ -195,7 +195,7 @@ function getTaskStatusCopy(task: TaskState) {
 }
 
 function getTaskPillClasses(task: TaskState) {
-  if (task.done) return "bg-green-100 text-green-700";
+  if (task.done) return "bg-[#eaf5ff] text-[#2f6685]";
   if (task.disabled) return "bg-gray-200 text-gray-500";
   return "bg-gray-200 text-gray-600";
 }
@@ -206,7 +206,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
       title: "Read Chapter Intro",
       subtitle: "Understand what you are about to read before you begin the chapter.",
       emoji: "📕",
-      doneAccent: "from-[#4fc877] to-[#34b866]",
+      doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
     };
   }
@@ -216,7 +216,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
       title: task.title,
       subtitle: "Read today's Bible chapter and reflect on it.",
       emoji: "✝️",
-      doneAccent: "from-[#4fc877] to-[#34b866]",
+      doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
     };
   }
@@ -226,7 +226,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
       title: task.title,
       subtitle: "Read and study the notes to understand more deeply.",
       emoji: "📝",
-      doneAccent: "from-[#4fc877] to-[#34b866]",
+      doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
     };
   }
@@ -236,7 +236,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
       title: task.title,
       subtitle: "Test your understanding with 5 quick questions.",
       emoji: "🧠",
-      doneAccent: "from-[#4fc877] to-[#34b866]",
+      doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
     };
   }
@@ -246,7 +246,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
       title: "Answer The Reflection Question",
       subtitle: "Share what this chapter is stirring in you.",
       emoji: "âœï¸",
-      doneAccent: "from-[#4fc877] to-[#34b866]",
+      doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
     };
   }
@@ -255,7 +255,7 @@ function getTaskCardCopy(task: TaskState, _index: number) {
     title: task.title,
     subtitle: "Unscramble words from today's chapter.",
     emoji: "🔤",
-    doneAccent: "from-[#4fc877] to-[#34b866]",
+    doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
     idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
   };
 }
@@ -588,7 +588,7 @@ function getTaskEmoji(task: TaskState) {
 
 function getDailyStudyCardClasses(allDone: boolean) {
   if (allDone) {
-    return "border-green-200 bg-gradient-to-br from-[#ecfff2] via-[#f8fffb] to-[#e7f8ee]";
+    return "border-[#b9dcf4] bg-gradient-to-br from-[#eaf5ff] via-[#f8fcff] to-[#dff0fb]";
   }
 
   return "border-[#ecd8b2] bg-gradient-to-br from-[#fff6e8] via-[#fffaf2] to-[#fff2db]";
@@ -1607,7 +1607,12 @@ export default function DashboardJourneyExperience({
       ? preloadedNextChapter.tasks
       : preloadedNextStudy?.tasks || visibleTasks
     : visibleTasks;
-  const displayTasks = baseDisplayTasks.filter((task) => !clearedDoneTaskKinds[task.kind] || celebratingTasks[task.kind]);
+  const displayTasks = baseDisplayTasks.filter(
+    (task) =>
+      !task.done ||
+      Boolean(celebratingTasks[task.kind]) ||
+      Boolean(previousDoneByKindRef.current && !previousDoneByKindRef.current[task.kind]),
+  );
   const hasClearableDoneTaskCards =
     suppressCompletionPanelForLoadedChapter &&
     !isLoadingNextChapter &&
@@ -2352,6 +2357,73 @@ export default function DashboardJourneyExperience({
     }
   }
 
+  async function loadEmbeddedBibleStudyChapter({
+    devotionalId,
+    devotionalTitle,
+    dayNumber,
+    book,
+    chapter,
+  }: {
+    devotionalId: string;
+    devotionalTitle: string;
+    dayNumber: number;
+    book: string;
+    chapter: number;
+  }) {
+    if (!userId || switchingStudyChapter) return;
+
+    const chapterLabel = buildDashboardChapterLabel(book, chapter);
+    setSwitchingStudyChapter(dayNumber);
+    setEmbeddedBibleStudyId(null);
+    setShowCompletionPanel(false);
+    setSuppressCompletionPanelForLoadedChapter(true);
+    setClearedDoneTaskKinds({});
+    setPreloadedNextStudy(null);
+    setPreloadedNextChapter({
+      targetKey: `${devotionalId}:${dayNumber}`,
+      chapterLabel,
+      tasks: buildPreloadedNextChapterTasks({
+        devotionalId,
+        devotionalTitle,
+        dayNumber,
+        book,
+        chapter,
+      }),
+    });
+    setIsLoadingNextChapter(true);
+    snapToPage(0);
+
+    try {
+      const { error } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            free_devotional_id: devotionalId,
+            louis_primary_devotional_id: devotionalId,
+            louis_primary_devotional_day: dayNumber,
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (error) throw error;
+
+      if (cycleStartedAt) {
+        rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
+          devotionalId,
+          dayNumber,
+        });
+      }
+
+      onDevotionalChanged();
+    } catch (error) {
+      console.error("[DASHBOARD] Could not load embedded Bible study chapter:", error);
+      setIsLoadingNextChapter(false);
+    } finally {
+      setSwitchingStudyChapter(null);
+    }
+  }
+
   function handleClearDoneTaskCards() {
     const doneKinds = visibleTasks
       .filter((task) => task.done && !clearedDoneTaskKinds[task.kind])
@@ -2476,7 +2548,7 @@ export default function DashboardJourneyExperience({
                         onClick={() => setEmbeddedBibleReading({ book: embeddedBibleSelectedBook, chapter })}
                         className={`rounded-2xl border px-2 py-3 text-center text-sm font-black transition hover:-translate-y-0.5 hover:shadow-sm ${
                           isComplete
-                            ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+                            ? "border-[#b9dcf4] bg-[#eaf5ff] text-[#2f6685]"
                             : "bb-surface-soft bb-text-primary hover:border-[var(--bb-accent)]"
                         }`}
                       >
@@ -2604,6 +2676,9 @@ export default function DashboardJourneyExperience({
             devotionalIdOverride={embeddedBibleStudyId}
             embedded
             onBack={() => setEmbeddedBibleStudyId(null)}
+            onChapterSelect={(payload) => {
+              void loadEmbeddedBibleStudyChapter(payload);
+            }}
           />
         ) : (
           <BibleStudiesLibraryPage embedded onStudySelect={setEmbeddedBibleStudyId} />
@@ -2716,15 +2791,9 @@ export default function DashboardJourneyExperience({
   );
 
   const renderCurrentStudyHeader = () => {
-    const greetingName = getFirstDashboardName(profile?.display_name || profile?.username || userName);
-
     return (
       <div className="mx-auto w-full max-w-xl px-1">
-        <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
-          {getDashboardGreeting()}, {greetingName}
-        </h1>
-
-        <div className="mt-2 overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2.5 shadow-sm transition">
+        <div className="overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2.5 shadow-sm transition">
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -2796,7 +2865,7 @@ export default function DashboardJourneyExperience({
                         isCurrent
                           ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)]"
                           : isPastOrCurrent
-                            ? "border-emerald-200 bg-emerald-50 hover:border-emerald-300"
+                          ? "border-[#b9dcf4] bg-[#eaf5ff] hover:border-[#7BAFD4]"
                             : isLocked
                               ? "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] opacity-70"
                               : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] hover:border-[var(--bb-accent)]"
@@ -2808,7 +2877,7 @@ export default function DashboardJourneyExperience({
                           {studyChapter.day_title || `Chapter ${studyChapter.day_number}`}
                         </span>
                       </span>
-                      <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
+                      <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-[#2f6685]" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
                         {isLocked ? "🔒" : isCurrent ? "Loaded" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
                       </span>
                     </button>
@@ -3053,8 +3122,13 @@ export default function DashboardJourneyExperience({
         <div className={getSlideClass(0)}>
         <section className="w-full px-1">
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-            {renderCurrentStudyHeader()}
+            <div className="mx-auto w-full max-w-xl px-1">
+              <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
+                {getDashboardGreeting()}, {getFirstDashboardName(profile?.display_name || profile?.username || userName)}
+              </h1>
+            </div>
             {homeHeader}
+            {renderCurrentStudyHeader()}
             {!shouldShowCompletionPanel ? (
             <div
               className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition"
@@ -3126,7 +3200,7 @@ export default function DashboardJourneyExperience({
                             isCurrent
                               ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)]"
                               : isPastOrCurrent
-                                ? "border-emerald-200 bg-emerald-50 hover:border-emerald-300"
+                              ? "border-[#b9dcf4] bg-[#eaf5ff] hover:border-[#7BAFD4]"
                                 : isLocked
                                   ? "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] opacity-70"
                                   : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] hover:border-[var(--bb-accent)]"
@@ -3138,7 +3212,7 @@ export default function DashboardJourneyExperience({
                               {studyChapter.day_title || `Chapter ${studyChapter.day_number}`}
                             </span>
                           </span>
-                          <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-emerald-700" : "bb-accent"}`}>
+                          <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-[#2f6685]" : "bb-accent"}`}>
                             {isLocked ? "🔒" : isCurrent ? "Loaded" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
                           </span>
                         </button>
@@ -3230,7 +3304,7 @@ export default function DashboardJourneyExperience({
                     <div className="mt-3 overflow-hidden rounded-full bg-gray-200">
                       <div
                         key={progressCelebrationKey}
-                        className={`h-2.5 rounded-full transition-all duration-700 ${progressCelebrationKey > 0 ? "progress-glow" : ""} ${allDone ? "chapter-complete-fill bg-[#9fce85]" : "bg-[#d8aa57]"}`}
+                        className={`h-2.5 rounded-full transition-all duration-700 ${progressCelebrationKey > 0 ? "progress-glow" : ""} ${allDone ? "chapter-complete-fill bg-[#7BAFD4]" : "bg-[#d8aa57]"}`}
                         style={{
                           width: `${Math.max(
                             0,
@@ -3429,11 +3503,11 @@ export default function DashboardJourneyExperience({
               ))
             ) : shouldShowCompletionPanel ? (
               <div className="completion-panel-enter relative overflow-hidden rounded-[28px] border border-[#dbe7f4] bg-white/90 px-5 pb-5 pt-7 text-center shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
-                <div className="chapter-firework-ring pointer-events-none absolute left-1/2 top-16 h-24 w-24 rounded-full border-4 border-emerald-300/45" aria-hidden="true" />
+                <div className="chapter-firework-ring pointer-events-none absolute left-1/2 top-16 h-24 w-24 rounded-full border-4 border-[#7BAFD4]/45" aria-hidden="true" />
                 <div className="chapter-confetti pointer-events-none absolute left-1/2 top-16" aria-hidden="true">
                   <span className="absolute h-2 w-3 rounded-sm bg-amber-400 [--confetti-rotate:160deg] [--confetti-x:-104px] [--confetti-y:-78px]" />
                   <span className="absolute h-2 w-2 rounded-full bg-sky-400 [--confetti-rotate:-120deg] [--confetti-x:86px] [--confetti-y:-92px]" />
-                  <span className="absolute h-3 w-2 rounded-sm bg-emerald-400 [--confetti-rotate:210deg] [--confetti-x:-72px] [--confetti-y:52px]" />
+                  <span className="absolute h-3 w-2 rounded-sm bg-[#7BAFD4] [--confetti-rotate:210deg] [--confetti-x:-72px] [--confetti-y:52px]" />
                   <span className="absolute h-2 w-3 rounded-sm bg-rose-400 [--confetti-rotate:-190deg] [--confetti-x:108px] [--confetti-y:36px]" />
                   <span className="absolute h-2 w-2 rounded-full bg-violet-400 [--confetti-rotate:140deg] [--confetti-x:-28px] [--confetti-y:-118px]" />
                   <span className="absolute h-3 w-2 rounded-sm bg-lime-400 [--confetti-rotate:-155deg] [--confetti-x:30px] [--confetti-y:76px]" />
@@ -3443,7 +3517,7 @@ export default function DashboardJourneyExperience({
                 <div className="completion-side-firework pointer-events-none absolute left-12 top-24" aria-hidden="true">
                   <span className="absolute h-2 w-3 rounded-sm bg-amber-400 [--fx-r:140deg] [--fx-x:-42px] [--fx-y:-42px]" />
                   <span className="absolute h-2 w-2 rounded-full bg-sky-400 [--fx-r:-160deg] [--fx-x:34px] [--fx-y:-50px]" />
-                  <span className="absolute h-3 w-2 rounded-sm bg-emerald-400 [--fx-r:210deg] [--fx-x:-28px] [--fx-y:42px]" />
+                  <span className="absolute h-3 w-2 rounded-sm bg-[#7BAFD4] [--fx-r:210deg] [--fx-x:-28px] [--fx-y:42px]" />
                   <span className="absolute h-2 w-3 rounded-sm bg-rose-400 [--fx-r:-190deg] [--fx-x:48px] [--fx-y:24px]" />
                   <span className="absolute h-2 w-2 rounded-full bg-violet-400 [--fx-r:120deg] [--fx-x:4px] [--fx-y:-64px]" />
                   <span className="absolute h-3 w-2 rounded-sm bg-lime-400 [--fx-r:-130deg] [--fx-x:10px] [--fx-y:54px]" />
@@ -3451,7 +3525,7 @@ export default function DashboardJourneyExperience({
                 <div className="completion-side-firework pointer-events-none absolute right-12 top-24" aria-hidden="true">
                   <span className="absolute h-2 w-3 rounded-sm bg-orange-400 [--fx-r:-150deg] [--fx-x:42px] [--fx-y:-42px]" />
                   <span className="absolute h-2 w-2 rounded-full bg-cyan-400 [--fx-r:160deg] [--fx-x:-34px] [--fx-y:-50px]" />
-                  <span className="absolute h-3 w-2 rounded-sm bg-emerald-400 [--fx-r:-210deg] [--fx-x:28px] [--fx-y:42px]" />
+                  <span className="absolute h-3 w-2 rounded-sm bg-[#7BAFD4] [--fx-r:-210deg] [--fx-x:28px] [--fx-y:42px]" />
                   <span className="absolute h-2 w-3 rounded-sm bg-rose-400 [--fx-r:190deg] [--fx-x:-48px] [--fx-y:24px]" />
                   <span className="absolute h-2 w-2 rounded-full bg-violet-400 [--fx-r:-120deg] [--fx-x:-4px] [--fx-y:-64px]" />
                   <span className="absolute h-3 w-2 rounded-sm bg-lime-400 [--fx-r:130deg] [--fx-x:-10px] [--fx-y:54px]" />
@@ -3510,7 +3584,8 @@ export default function DashboardJourneyExperience({
                 const originalTaskIndex = displayTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
                 const taskIndex = originalTaskIndex >= 0 ? originalTaskIndex : index;
                 const taskCopy = getTaskCardCopy(task, taskIndex);
-                const isCelebrating = Boolean(celebratingTasks[task.kind]);
+                const justCompleted = Boolean(task.done && previousDoneByKindRef.current && !previousDoneByKindRef.current[task.kind]);
+                const isCelebrating = Boolean(celebratingTasks[task.kind]) || justCompleted;
                 const isLockedByOrder = !task.done && displayNextActionTaskIndex >= 0 && taskIndex > displayNextActionTaskIndex;
                 const isCardDisabled = Boolean(task.disabled || isLockedByOrder);
                 const isNextActionTask = task.kind === displayNextActionTaskKind && !isCardDisabled;
@@ -3523,7 +3598,7 @@ export default function DashboardJourneyExperience({
                   (activeTask.chapterLabel || "") === (task.chapterLabel || "");
 
                 const taskShellClasses = task.done
-                  ? "border-green-200 bg-gradient-to-r from-green-50 via-white to-green-50 hover:bg-green-50"
+                  ? "border-[#b9dcf4] bg-gradient-to-r from-[#eaf5ff] via-white to-[#e2f1fb] hover:bg-[#eaf5ff]"
                   : isCardDisabled
                     ? "cursor-not-allowed border-[#e2e8f0] bg-gradient-to-r from-white via-[#f7fbff] to-white text-gray-700 opacity-95"
                     : isActiveInlineTask
@@ -3571,7 +3646,7 @@ export default function DashboardJourneyExperience({
                     >
                       <span className={`drop-shadow-sm ${isCardDisabled ? "opacity-75" : ""}`} aria-hidden="true">{getTaskEmoji(task)}</span>
                       {task.done ? (
-                        <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#22b95f] text-xs font-black text-white ring-2 ring-white">
+                        <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#7BAFD4] text-xs font-black text-white ring-2 ring-white">
                           ✓
                         </span>
                       ) : null}
@@ -3583,12 +3658,12 @@ export default function DashboardJourneyExperience({
                           <p className={`mt-0.5 text-xs leading-4 sm:text-[13px] ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
                         </div>
                         <div className="flex shrink-0 flex-col items-end gap-1">
-                        <span className={`px-1 py-1 text-xs font-black ${task.done ? "text-green-700" : "text-[#2f7fe8]"}`}>
+                        <span className={`px-1 py-1 text-xs font-black ${task.done ? "text-[#2f6685]" : "text-[#2f7fe8]"}`}>
                           {pointsPillLabel}
                         </span>
                         <span className={`hidden ${
                           task.done
-                            ? "font-medium text-green-700"
+                            ? "font-medium text-[#2f6685]"
                             : isNextActionTask
                               ? "start-here-flash text-gray-950 font-black tracking-wide"
                               : "font-medium text-gray-500"
@@ -3663,24 +3738,24 @@ export default function DashboardJourneyExperience({
               </>
             )}
 
-            {!suppressCompletionPanelForLoadedChapter && !shouldShowCompletionPanel && !isLoadingNextChapter && displayTasks.length < visibleTasks.length && completedTrackerTasks.length > 0 ? (
-              <div className="overflow-hidden rounded-2xl border border-emerald-100 bg-white/80 shadow-sm">
+            {!shouldShowCompletionPanel && !isLoadingNextChapter && displayTasks.length < visibleTasks.length && completedTrackerTasks.length > 0 ? (
+              <div className="overflow-hidden rounded-2xl border border-[#b9dcf4] bg-white/80 shadow-sm">
                 <button
                   type="button"
                   onClick={() => setCompletedTasksExpanded((prev) => !prev)}
-                  className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition hover:bg-emerald-50/50"
+                  className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition hover:bg-[#eaf5ff]/70"
                   aria-expanded={completedTasksExpanded}
                 >
                   <div className="min-w-0">
                     <p className="truncate text-sm font-black text-gray-950">
                       Completed Study Tasks for {activeChapterLabel}
                     </p>
-                    <p className="mt-0.5 text-[11px] font-bold text-emerald-700">
+                    <p className="mt-0.5 text-[11px] font-bold text-[#2f6685]">
                       {completedTrackerTasks.length} of {visibleTasks.length} tasks done
                     </p>
                   </div>
                   <span
-                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full bg-emerald-100 text-lg font-black text-emerald-700 transition ${completedTasksExpanded ? "rotate-180" : ""}`}
+                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#eaf5ff] text-lg font-black text-[#2f6685] transition ${completedTasksExpanded ? "rotate-180" : ""}`}
                     aria-hidden="true"
                   >
                     v
@@ -3688,7 +3763,7 @@ export default function DashboardJourneyExperience({
                 </button>
                 {completedTasksExpanded ? (
                 <>
-                <div className="grid gap-2 border-t border-emerald-100 px-3 pb-3 pt-3 sm:grid-cols-2">
+                <div className="grid gap-2 border-t border-[#b9dcf4] px-3 pb-3 pt-3 sm:grid-cols-2">
                   {completedTrackerTasks.map((task) => {
                     const originalTaskIndex = visibleTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
                     const taskCopy = getTaskCardCopy(task, originalTaskIndex >= 0 ? originalTaskIndex : 0);
@@ -3702,7 +3777,7 @@ export default function DashboardJourneyExperience({
                         className={`overflow-hidden rounded-xl border transition ${
                           isActiveCompletedTask
                             ? "border-[var(--bb-accent,#2f7fe8)] bg-white shadow-sm sm:col-span-2"
-                            : "border-emerald-100 bg-emerald-50/70 hover:border-emerald-200 hover:bg-emerald-50 hover:shadow-sm"
+                            : "border-[#b9dcf4] bg-[#eaf5ff]/70 hover:border-[#7BAFD4] hover:bg-[#eaf5ff] hover:shadow-sm"
                         }`}
                       >
                         <button
@@ -3711,7 +3786,7 @@ export default function DashboardJourneyExperience({
                           className="group flex min-h-10 w-full items-center gap-2 px-3 py-2 text-left transition"
                           aria-expanded={isActiveCompletedTask}
                         >
-                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-emerald-500 text-[11px] font-black text-white shadow-sm" aria-hidden="true">
+                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-[#7BAFD4] text-[11px] font-black text-white shadow-sm" aria-hidden="true">
                           ✓
                         </span>
                         <span className="min-w-0 flex-1 truncate text-xs font-black text-gray-800">
@@ -3729,7 +3804,7 @@ export default function DashboardJourneyExperience({
                   })}
                 </div>
                 {activeCompletedTrackerTask ? (
-                  <div className="border-t border-emerald-100 px-3 pb-3">
+                  <div className="border-t border-[#b9dcf4] px-3 pb-3">
                     <DashboardDailyTaskCallout
                       task={activeTask}
                       userId={userId}
@@ -4224,7 +4299,7 @@ export default function DashboardJourneyExperience({
                 </div>
               </section>
 
-              <section className="rounded-2xl border border-green-200 bg-green-50 p-4">
+              <section className="rounded-2xl border border-[#b9dcf4] bg-[#eaf5ff] p-4">
                 <h3 className="text-lg font-bold text-gray-950">✅ When A Chapter Is Complete</h3>
                 <p className="mt-2 leading-7">
                   Once the chapter study is finished, Bible Buddy celebrates the completion and moves you to the next chapter. The goal is simple: keep showing up, keep learning, and keep moving forward at a healthy pace.

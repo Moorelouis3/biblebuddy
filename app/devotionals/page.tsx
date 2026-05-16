@@ -305,7 +305,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     }
 
     return (
-      <div className="flex aspect-[3/4] w-full flex-col items-center justify-center rounded-xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-sky-50 px-4 py-6 text-center shadow-sm">
+      <div className="flex aspect-[3/4] w-full flex-col items-center justify-center rounded-xl border border-[#b9dcf4] bg-gradient-to-br from-[#eaf5ff] via-white to-sky-50 px-4 py-6 text-center shadow-sm">
         <div className="text-3xl md:text-5xl mb-3">📖</div>
         <div className="text-sm md:text-base font-semibold text-gray-900 leading-tight">
           {devotional.title}
@@ -741,7 +741,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
               const isComplete = progress.isComplete;
               const card = (
                 <div className={`group h-full rounded-3xl border p-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl md:p-4 ${
-                  isComplete ? "border-emerald-200 bg-[#effdf4]" : "border-gray-200 bg-white"
+                  isComplete ? "border-[#b9dcf4] bg-[#eaf5ff]" : "border-gray-200 bg-white"
                 }`}>
                   <div className="grid grid-cols-[86px_1fr] gap-3 sm:grid-cols-[104px_1fr] md:gap-4">
                     <div>{getDevotionalVisual(devotional)}</div>
@@ -752,7 +752,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                             {devotional.title}
                           </div>
                           {isComplete ? (
-                            <span className="rounded-full bg-emerald-600 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-white">
+                            <span className="rounded-full bg-[#7BAFD4] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-white">
                               Done
                             </span>
                           ) : null}
@@ -768,7 +768,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                         </div>
                         <div className="mt-2 h-3 overflow-hidden rounded-full bg-gray-100">
                           <div
-                            className={`h-full rounded-full transition-all duration-500 ${isComplete ? "bg-emerald-500" : "bg-[#7BAFD4]"}`}
+                            className="h-full rounded-full bg-[#7BAFD4] transition-all duration-500"
                             style={{ width: `${progress.percent}%` }}
                           />
                         </div>
@@ -778,7 +778,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                       </div>
                     </div>
                   </div>
-                  <div className={`mt-3 h-2 rounded-full ${isComplete ? "bg-emerald-300" : "bg-[#d7e8f5]"}`} />
+                  <div className={`mt-3 h-2 rounded-full ${isComplete ? "bg-[#b9dcf4]" : "bg-[#d7e8f5]"}`} />
                   {community && community.total > 0 ? (
                     <button
                       type="button"

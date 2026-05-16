@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
@@ -65,6 +65,7 @@ export default function TriviaGamePlayer({
   const [isPaid, setIsPaid] = useState<boolean | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const completionNotifiedRef = useRef(false);
+  const completionPersistedRef = useRef(false);
 
   const bookKey = useMemo(() => {
     return CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.routeSlug === bookSlug)?.key ?? bookSlug;
@@ -244,30 +245,60 @@ export default function TriviaGamePlayer({
     setShowResults(true);
   }
 
-  useEffect(() => {
-    if (!showResults || !userId) return;
+  const recordTriviaCompletion = useCallback(
+    async (score: number, pointsToAward: number) => {
+      if (completionPersistedRef.current) return true;
 
-    void trackNavigationActionOnce({
-      userId,
-      actionType: ACTION_TYPE.trivia_chapter_completed,
-      actionLabel: `${bookName} ${chapter.chapter} - ${correctCount}/${questions.length}`,
-      dedupeKey: `trivia-chapter-completed:${bookKey}:${chapter.chapter}`,
-    })
-      .then((logged) => {
+      let currentUserId = userId;
+      if (!currentUserId) {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        currentUserId = user?.id ?? null;
+        if (user?.email) setUserEmail(user.email);
+        if (user?.id) setUserId(user.id);
+      }
+
+      if (!currentUserId) return false;
+
+      try {
+        const logged = await trackNavigationActionOnce({
+          userId: currentUserId,
+          actionType: ACTION_TYPE.trivia_chapter_completed,
+          actionLabel: `${bookName} ${chapter.chapter} - ${score}/${questions.length}`,
+          dedupeKey: `trivia-chapter-completed:${bookKey}:${chapter.chapter}`,
+        });
+
+        completionPersistedRef.current = true;
         if (logged) {
-          triggerPoints(earnedCorrectCount);
+          triggerPoints(pointsToAward);
         }
-      })
-      .catch((error) => {
+        return true;
+      } catch (error) {
         console.error("[NAV] Failed to track Trivia chapter completion:", error);
-      });
-  }, [showResults, userId, bookName, chapter.chapter, questions.length, earnedCorrectCount, bookKey]);
+        return false;
+      }
+    },
+    [bookKey, bookName, chapter.chapter, questions.length, userId],
+  );
 
   useEffect(() => {
     if (!showResults || completionNotifiedRef.current) return;
-    completionNotifiedRef.current = true;
-    onComplete?.();
-  }, [showResults, onComplete]);
+    let cancelled = false;
+
+    async function persistThenNotify() {
+      const saved = await recordTriviaCompletion(correctCount, earnedCorrectCount);
+      if (cancelled || !saved) return;
+      completionNotifiedRef.current = true;
+      onComplete?.();
+    }
+
+    void persistThenNotify();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [showResults, correctCount, earnedCorrectCount, onComplete, recordTriviaCompletion]);
 
   useEffect(() => {
     if (!showResults) return;
@@ -294,6 +325,17 @@ export default function TriviaGamePlayer({
       ],
     });
   }, [showResults, correctCount, questions.length, chapter.chapter, bookName, bookKey, bookSlug]);
+
+  async function handleResultsClose() {
+    if (showResults && !completionNotifiedRef.current) {
+      const saved = await recordTriviaCompletion(correctCount, earnedCorrectCount);
+      if (saved) {
+        completionNotifiedRef.current = true;
+        onComplete?.();
+      }
+    }
+    onClose?.();
+  }
 
   if (!currentQuestion && !showResults) {
     return (
@@ -339,7 +381,7 @@ export default function TriviaGamePlayer({
           {onClose ? (
             <button
               type="button"
-              onClick={onClose}
+              onClick={() => void handleResultsClose()}
               className="absolute right-1 top-1 z-10 grid h-9 w-9 place-items-center rounded-full border border-gray-200 bg-white text-2xl font-light leading-none text-gray-700 shadow-sm transition hover:bg-gray-50 hover:text-gray-950 sm:right-3 sm:top-3"
               aria-label="Close trivia results"
             >
@@ -371,7 +413,7 @@ export default function TriviaGamePlayer({
           {onClose && !compact ? (
             <button
               type="button"
-              onClick={onClose}
+              onClick={() => void handleResultsClose()}
               className="mt-8 rounded-full bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
             >
               Mark as Completed

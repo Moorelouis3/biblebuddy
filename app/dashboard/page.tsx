@@ -1846,12 +1846,11 @@ export default function DashboardPage() {
       {
         key: "level",
         label: "Level",
-        sublabel: `${levelInfo?.pointsToNextLevel ?? 0} XP to next level`,
+        sublabel: "",
         value: levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1,
         icon: "🛡️",
         tones: "border-[#dbe7f4] bg-gradient-to-br from-white via-[#f8fbff] to-[#edf6ff]",
         onClick: openLevelInfoModal,
-        progress: nextLevelPercent,
       },
       {
         key: "badges",
@@ -1976,6 +1975,20 @@ export default function DashboardPage() {
                 </div>
                 );
               })}
+            </div>
+
+            <div className="mt-3 rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-3 py-2.5">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-xs font-black text-gray-800">
+                  Level {levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1}
+                </p>
+                <p className="text-[11px] font-black text-[#2f7fe8]">
+                  {levelInfo?.pointsToNextLevel ?? 0} XP to next level
+                </p>
+              </div>
+              <div className="mt-2 h-2 overflow-hidden rounded-full bg-[#dce8f7]">
+                <div className="h-full rounded-full bg-[#2f7fe8] transition-all duration-500" style={{ width: `${nextLevelPercent}%` }} />
+              </div>
             </div>
           </button>
       </>

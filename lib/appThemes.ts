@@ -40,15 +40,15 @@ export const lightTheme: AppTheme = {
   textPrimary: "#111827",
   textSecondary: "#374151",
   textMuted: "#6B7280",
-  accent: "#4A9B6F",
-  accentSoft: "#EEF7F1",
-  button: "#4A9B6F",
+  accent: "#7BAFD4",
+  accentSoft: "#EAF5FF",
+  button: "#7BAFD4",
   buttonText: "#FFFFFF",
   navBackground: "#FFFFFF",
   navActive: "#2563EB",
   navInactive: "#6B7280",
   progressTrack: "#E5E7EB",
-  progressFill: "#4A9B6F",
+  progressFill: "#7BAFD4",
 };
 
 export const darkTheme: AppTheme = {

@@ -106,7 +106,7 @@ export default function LoginPage() {
         {/* Left: Logo + Text */}
         <div className="flex items-center gap-3">
           <Image
-            src="/louis/louis-wave.png"
+            src="/Newlouiswave.png"
             alt="Bible Buddy Logo"
             width={32}
             height={32}

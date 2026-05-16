@@ -220,9 +220,16 @@ type DevotionalDetailPageProps = {
   devotionalIdOverride?: string;
   embedded?: boolean;
   onBack?: () => void;
+  onChapterSelect?: (payload: {
+    devotionalId: string;
+    devotionalTitle: string;
+    dayNumber: number;
+    book: string;
+    chapter: number;
+  }) => void;
 };
 
-export default function DevotionalDetailPage({ devotionalIdOverride, embedded = false, onBack }: DevotionalDetailPageProps = {}) {
+export default function DevotionalDetailPage({ devotionalIdOverride, embedded = false, onBack, onChapterSelect }: DevotionalDetailPageProps = {}) {
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -543,6 +550,25 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         router.push(`/bible-studies/${devotionalId}/day/${day.day_number}`);
         return;
       }
+
+      if (
+        embedded &&
+        devotional &&
+        isChapterJourneyStudyTitle(devotional.title) &&
+        day.bible_reading_book &&
+        day.bible_reading_chapter &&
+        onChapterSelect
+      ) {
+        onChapterSelect({
+          devotionalId,
+          devotionalTitle: devotional.title,
+          dayNumber: day.day_number,
+          book: day.bible_reading_book,
+          chapter: day.bible_reading_chapter,
+        });
+        return;
+      }
+
       setSelectedDay(day);
     };
 
@@ -1197,7 +1223,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                   disabled={!isUnlocked}
                   className={`w-full text-left px-4 py-3 rounded-lg border transition ${
                     isCompleted
-                      ? "bg-green-50 border-green-300 hover:bg-green-100"
+                      ? "bg-[#eaf5ff] border-[#b9dcf4] hover:bg-[#dff0fb]"
                       : isUnlocked
                       ? "bg-white border-gray-200 hover:bg-blue-50 hover:border-blue-300 cursor-pointer"
                       : "bg-gray-50 border-gray-200 opacity-60 cursor-not-allowed"
@@ -1227,7 +1253,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                         </svg>
                       )}
                       {isChapterJourneyStudy && isCompleted ? (
-                        <span className="text-green-600 font-semibold">✓ Complete</span>
+                        <span className="font-semibold text-[#2f6685]">✓ Complete</span>
                       ) : isChapterJourneyStudy && isUnlocked ? (
                         <span className="text-sm font-semibold text-gray-600">
                           {taskProgress.completed}/{taskProgress.total} complete
@@ -1235,7 +1261,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                         </span>
                       ) : null}
                       {isCompleted && !isChapterJourneyStudy && (
-                        <span className="text-green-600 font-semibold">✓ Complete</span>
+                        <span className="font-semibold text-[#2f6685]">✓ Complete</span>
                       )}
                     </div>
                   </div>

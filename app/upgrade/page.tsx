@@ -310,7 +310,7 @@ export default function UpgradePage() {
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden shadow-md hover:scale-105 transition-transform duration-300">
                 <Image
-                  src="/louis/louis-wave.png"
+                  src="/Newlouiswave.png"
                   alt="Little Louis"
                   width={48}
                   height={48}

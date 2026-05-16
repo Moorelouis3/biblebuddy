@@ -320,7 +320,7 @@ export default function LandingPage() {
       <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-5 md:py-6">
         <div className="flex items-center gap-3">
           <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-[#d9ecff] ring-1 ring-white/15 md:h-10 md:w-10">
-            <Image src="/louis/louis-wave.png" alt="Bible Buddy Logo" width={36} height={36} className="h-9 w-9 object-contain" />
+            <Image src="/Newlouiswave.png" alt="Bible Buddy Logo" width={36} height={36} className="h-9 w-9 object-contain" />
           </div>
           <div className="text-lg font-black tracking-tight text-slate-950 md:text-2xl">Bible Buddy</div>
         </div>
@@ -378,14 +378,14 @@ export default function LandingPage() {
               <div className="flex items-center justify-between border-b border-[#e5edf7] bg-[#fbfdff] px-3 py-3 sm:px-5">
                 <div className="flex items-center gap-2">
                   <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-xl bg-[#d9ecff]">
-                    <Image src="/louis/louis-wave.png" alt="Bible Buddy" width={30} height={30} className="h-8 w-8 object-contain" />
+                    <Image src="/Newlouiswave.png" alt="Bible Buddy" width={30} height={30} className="h-8 w-8 object-contain" />
                   </div>
                   <span className="text-sm font-black text-slate-950">Bible Buddy</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs font-black sm:gap-2">
                   <span>!</span>
                   <span>DM</span>
-                  <Image src="/louis/louis-cool.png" alt="Profile" width={26} height={26} className="rounded-full" />
+                  <Image src="/Newlouispeace.png" alt="Profile" width={26} height={26} className="rounded-full" />
                 </div>
               </div>
 
@@ -406,7 +406,7 @@ export default function LandingPage() {
 
                 <div className="landing-card mt-3 rounded-[24px] border border-[#ecd8b2] bg-gradient-to-br from-[#fff6e8] via-[#fffaf2] to-[#fff2db] p-3 shadow-sm sm:mt-4 sm:p-4">
                   <div className="flex items-start gap-3">
-                    <Image src="/louis/louis-stareyes.png" alt="Louis" width={52} height={52} className="h-12 w-12 shrink-0 rounded-full bg-white object-contain ring-4 ring-white/70" />
+                    <Image src="/Newlouisstareyes.png" alt="Louis" width={52} height={52} className="h-12 w-12 shrink-0 rounded-full bg-white object-contain ring-4 ring-white/70" />
                     <div className="min-w-0 flex-1">
                       <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#946327]">Next Bible Study Step</p>
                       <h3 className="mt-1 text-xl font-black leading-tight text-slate-950 sm:text-2xl">The Rise of Esther</h3>
@@ -618,14 +618,14 @@ export default function LandingPage() {
               <div className="flex items-center justify-between border-b border-[#dbe7f6] bg-[#fbfdff] px-4 py-3 md:px-5">
                 <div className="flex items-center gap-2">
                   <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-xl bg-[#d9ecff]">
-                    <Image src="/louis/louis-wave.png" alt="Bible Buddy" width={30} height={30} className="h-8 w-8 object-contain" />
+                    <Image src="/Newlouiswave.png" alt="Bible Buddy" width={30} height={30} className="h-8 w-8 object-contain" />
                   </div>
                   <span className="text-sm font-black text-slate-950">Bible Buddy</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs font-black text-slate-800 sm:gap-2">
                   <span>🔔</span>
                   <span>💬</span>
-                  <Image src="/louis/louis-cool.png" alt="Profile" width={26} height={26} className="rounded-full" />
+                  <Image src="/Newlouispeace.png" alt="Profile" width={26} height={26} className="rounded-full" />
                 </div>
               </div>
               <div className="p-4 md:p-6">

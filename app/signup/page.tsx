@@ -153,7 +153,7 @@ export default function SignupPage() {
       <header className="mx-auto flex w-full max-w-7xl items-center px-4 py-4 md:py-6">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/louis/louis-wave.png"
+            src="/Newlouiswave.png"
             alt="Bible Buddy Logo"
             width={32}
             height={32}

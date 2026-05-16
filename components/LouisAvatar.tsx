@@ -12,6 +12,11 @@ import {
 type LouisMood =
   | "wave"
   | "stareyes"
+  | "reading"
+  | "praying"
+  | "idea"
+  | "thinking"
+  | "peace"
   | "think"
   | "pray"
   | "sheesh"
@@ -29,17 +34,22 @@ type LouisAvatarProps = {
 };
 
 const moodToFile: Record<LouisMood, string> = {
-  wave: "/louis/louis-wave.png",
-  stareyes: "/louis/louis-stareyes.png",
-  think: "/louis/louis-think.png",
-  pray: "/louis/louis-pray.png",
-  sheesh: "/louis/louis-sheesh.png",
-  bible: "/louis/louis-bible.png",
-  smile: "/louis/louis-smile.png",
-  cool: "/louis/louis-cool.png",
-  hands: "/louis/louis-hands.png",
-  salute: "/louis/louis-salute.png",
-  sideeye: "/louis/louis-sideeye.png",
+  wave: "/Newlouiswave.png",
+  stareyes: "/Newlouisstareyes.png",
+  reading: "/Newlouisreading.png",
+  praying: "/Newlouispraying.png",
+  idea: "/Newlouisidea.png",
+  thinking: "/Newlouisthinking.png",
+  peace: "/Newlouispeace.png",
+  think: "/Newlouisthinking.png",
+  pray: "/Newlouispraying.png",
+  sheesh: "/Newlouisthinking.png",
+  bible: "/Newlouisreading.png",
+  smile: "/Newlouispeace.png",
+  cool: "/Newlouispeace.png",
+  hands: "/Newlouisstareyes.png",
+  salute: "/Newlouiswave.png",
+  sideeye: "/Newlouisthinking.png",
 };
 
 function BuddyIllustration({ buddyId, mood, size }: { buddyId: BuddyAvatarId; mood: LouisMood; size: number }) {
