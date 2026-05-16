@@ -55,6 +55,72 @@ const problemRows = [
   },
 ];
 
+const dashboardPreviewPages = [
+  {
+    key: "home",
+    label: "Home",
+    icon: "H",
+    eyebrow: "Today",
+    title: "Esther 2 Study",
+    copy: "Pick up with the next chapter, daily tasks, streaks, and progress in one focused dashboard.",
+    action: "Start chapter",
+  },
+  {
+    key: "bible",
+    label: "Bible",
+    icon: "B",
+    eyebrow: "Scripture",
+    title: "The Bible",
+    copy: "Open Scripture without leaving the dashboard frame, so reading still feels connected.",
+    action: "Read Esther 2",
+  },
+  {
+    key: "studies",
+    label: "Bible Studies",
+    icon: "S",
+    eyebrow: "Chapter journeys",
+    title: "Bible Studies",
+    copy: "Browse studies in Bible order, from Genesis forward, and jump into the next chapter.",
+    action: "View studies",
+  },
+  {
+    key: "community",
+    label: "Community",
+    icon: "C",
+    eyebrow: "Together",
+    title: "Community",
+    copy: "Move into community from the same center column, with the dashboard navigation still there.",
+    action: "Open community",
+  },
+  {
+    key: "tv",
+    label: "TV",
+    icon: "T",
+    eyebrow: "Watch",
+    title: "Bible Buddy TV",
+    copy: "Watch study videos and teaching moments as part of the same app experience.",
+    action: "Watch now",
+  },
+  {
+    key: "games",
+    label: "Games",
+    icon: "G",
+    eyebrow: "Practice",
+    title: "Study Games",
+    copy: "Use quizzes and word games to remember what each chapter is teaching.",
+    action: "Play game",
+  },
+  {
+    key: "share",
+    label: "Share",
+    icon: "+",
+    eyebrow: "Invite",
+    title: "Share Bible Buddy",
+    copy: "Invite friends into the same rhythm and keep studying together.",
+    action: "Share app",
+  },
+];
+
 export default function LandingPage() {
   const router = useRouter();
   const [isChecking, setIsChecking] = useState(true);
@@ -283,10 +349,17 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setHeroFocus((current) => (current + 1) % 4)}
-            className="group relative mx-auto w-full max-w-[420px] text-left outline-none sm:max-w-2xl lg:max-w-3xl"
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => setHeroFocus((current) => (current + 1) % dashboardPreviewPages.length)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setHeroFocus((current) => (current + 1) % dashboardPreviewPages.length);
+              }
+            }}
+            className="group relative mx-auto w-full max-w-[420px] cursor-pointer text-left outline-none sm:max-w-2xl lg:max-w-3xl"
             aria-label="Animate Bible Buddy dashboard preview"
           >
             <div className="absolute -inset-2 rounded-[28px] border border-[#d8cbb8] bg-white/60 opacity-80 transition group-hover:opacity-100 sm:-inset-4 sm:rounded-[34px]" />
@@ -299,72 +372,82 @@ export default function LandingPage() {
                   <span className="text-sm font-black text-slate-950">Bible Buddy</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs font-black sm:gap-2">
-                  <span>🔔</span>
-                  <span>💬</span>
+                  <span>!</span>
+                  <span>DM</span>
                   <Image src="/louis/louis-cool.png" alt="Profile" width={26} height={26} className="rounded-full" />
                 </div>
               </div>
 
-              <div className="p-3 sm:p-6">
-                <div className="grid grid-cols-4 gap-2 sm:gap-3">
-                  {[
-                    ["1", "🔥 Streak", "bg-slate-100"],
-                    ["0", "💎 Grace Days", "bg-[#d7eaff]"],
-                    ["5", "🛡️ Level", "bg-[#d5f8e4]"],
-                    ["7", "🏅 Badges", "bg-[#ffdede]"],
-                  ].map((card, index) => {
-                    const displayCard = [
-                      ["1", "🔥 Streak", "bg-slate-100"],
-                      ["5", "💎 Grace Days", "bg-[#d7eaff]"],
-                      ["5", "🛡 Level", "bg-[#d5f8e4]"],
-                      ["7", "🏅 Badges", "bg-[#ffdede] landing-badge"],
-                    ][index] ?? card;
-                    return (
-                    <div
-                      key={displayCard[1]}
-                      className={`rounded-xl px-1.5 py-2.5 text-center text-slate-950 transition sm:px-2 sm:py-4 ${displayCard[2]} ${heroFocus === index ? "scale-[1.03] ring-4 ring-[#7BAFD4]/45" : ""}`}
-                    >
-                      <p className="text-lg font-black sm:text-2xl">{displayCard[0]}</p>
-                      <p className="mt-1 text-[9px] font-bold leading-tight sm:text-xs">{displayCard[1]}</p>
+              <div className="bg-[#eef4ff] p-3 sm:p-5">
+                <div className="rounded-[22px] border border-[#dbe7f6] bg-white p-3 shadow-sm sm:rounded-[26px] sm:p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#5f95bd] sm:text-xs">Dashboard</p>
+                      <h3 className="mt-1 text-xl font-black leading-tight text-slate-950 sm:text-2xl">Today&apos;s study</h3>
+                      <p className="mt-1 text-xs font-semibold text-slate-500 sm:text-sm">Genesis to Revelation, one chapter at a time.</p>
                     </div>
-                    );
-                  })}
-                </div>
+                    <div className="rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] px-3 py-2 text-center">
+                      <p className="text-lg font-black text-slate-950">5</p>
+                      <p className="text-[10px] font-bold text-slate-500">Level</p>
+                    </div>
+                  </div>
 
-                <div className="landing-card mt-3 rounded-2xl border border-emerald-300/60 bg-[#effdf4] p-4 text-slate-950 shadow-sm sm:mt-5 sm:rounded-3xl sm:p-5">
-                  <div className="flex gap-3 sm:gap-4">
-                    <Image src="/louis/louis-stareyes.png" alt="Louis" width={58} height={58} className="h-11 w-11 rounded-full bg-white object-contain sm:h-14 sm:w-14" />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-xs font-semibold leading-5 sm:text-base sm:leading-6">
-                        Well done. Esther 1 is behind you now, and Esther 2 is waiting with more of Esther entering the palace.
-                      </p>
-                      <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-emerald-100 sm:mt-5 sm:h-3">
-                        <div className="landing-progress h-full rounded-full bg-[#8bc97d] transition-all duration-700" />
+                  <div className="mt-3 grid grid-cols-[1fr_auto] gap-3 rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] p-3 sm:mt-4 sm:p-4">
+                    <div className="min-w-0">
+                      <p className="text-xs font-black text-slate-500">Next up</p>
+                      <p className="mt-1 text-base font-black text-slate-950 sm:text-lg">Read Esther 2</p>
+                      <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-[#d7eaff]">
+                        <div className="landing-progress h-full rounded-full bg-[#7BAFD4]" />
                       </div>
-                      <p className="mt-3 text-center text-xs font-black sm:mt-4 sm:text-sm">Start the next Chapter study.</p>
-                      <div className="landing-pulse mt-3 rounded-full bg-[#7BAFD4] py-2.5 text-center text-xs font-black shadow-sm sm:mt-4 sm:py-3 sm:text-sm">Start next chapter</div>
+                      <p className="mt-2 text-xs font-bold text-slate-500">4 of 6 daily tasks complete</p>
+                    </div>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full border-[8px] border-[#7BAFD4] bg-white text-sm font-black text-slate-950 sm:h-20 sm:w-20">
+                      67%
+                    </div>
+                  </div>
+
+                  <div className="mt-3 overflow-hidden rounded-2xl border border-[#dbe7f6] bg-white sm:mt-4">
+                    <div className="flex transition-transform duration-300 ease-out" style={{ transform: `translateX(-${heroFocus * 100}%)` }}>
+                      {dashboardPreviewPages.map((page) => (
+                        <div key={page.key} className="w-full shrink-0 p-3 sm:p-4">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#d9ecff] text-lg font-black text-[#1f5278] sm:h-12 sm:w-12">
+                              {page.icon}
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#5f95bd] sm:text-xs">{page.eyebrow}</p>
+                              <h4 className="truncate text-lg font-black text-slate-950 sm:text-xl">{page.title}</h4>
+                            </div>
+                          </div>
+                          <p className="mt-3 min-h-[48px] text-sm font-semibold leading-6 text-slate-600 sm:text-base">{page.copy}</p>
+                          <div className="mt-4 flex items-center justify-between gap-3">
+                            <span className="rounded-full bg-[#d7eaff] px-3 py-1 text-xs font-black text-[#1f5278]">Swipe preview</span>
+                            <span className="rounded-full bg-[#7BAFD4] px-4 py-2 text-xs font-black text-[#05111f] shadow-sm">{page.action}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-3 overflow-hidden rounded-[22px] border border-[#dbe7f6] bg-[#fbfdff] p-2">
+                    <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                      {dashboardPreviewPages.map((page, index) => (
+                        <span
+                          key={page.key}
+                          className={`flex min-w-[86px] flex-col items-center gap-1 rounded-2xl px-3 py-2 text-center transition sm:min-w-[96px] ${
+                            heroFocus === index ? "bg-[#d7eaff] text-[#1f5278] ring-1 ring-[#7BAFD4]/45" : "bg-white text-slate-500"
+                          }`}
+                        >
+                          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-current/10 text-xs font-black">{page.icon}</span>
+                          <span className="text-[10px] font-black leading-tight sm:text-xs">{page.label}</span>
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
-
-                <div className="mt-5 space-y-3">
-                  {taskSteps.slice(0, 4).map((step, index) => (
-                    <div
-                      key={step.title}
-                      className={`items-center gap-3 rounded-2xl border bg-white p-3 text-slate-950 transition ${index >= 2 ? "hidden sm:flex" : "flex"} ${heroFocus === index ? "border-[#7BAFD4] shadow-[0_0_0_5px_rgba(123,175,212,0.16)]" : "border-emerald-200"}`}
-                    >
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-400 text-xl sm:h-12 sm:w-12 sm:text-2xl">{step.icon}</div>
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-black sm:text-base">{index + 1}. {index === 1 ? "Read Esther 1" : step.title}</p>
-                        <p className="line-clamp-2 text-xs font-semibold text-slate-600">{step.copy}</p>
-                      </div>
-                      <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black">+5 pts</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
-          </button>
+          </div>
         </section>
 
         <section className="px-4 py-8 sm:px-5 md:py-12">

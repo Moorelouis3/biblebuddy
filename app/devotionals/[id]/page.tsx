@@ -117,6 +117,20 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
   );
 }
 
+function getStudyScriptureRange(title: string | null | undefined) {
+  const ranges: Record<string, string> = {
+    "The Creation of the World": "Genesis 1 & 2",
+    "The Fall of Man": "Genesis 3 & 4",
+    "The Obedience of Abraham": "Genesis 11-25",
+    "The Testing of Joseph": "Genesis 37-50",
+    "The Rise of Esther": "Esther 1-10",
+    "The Wisdom of Proverbs": "Proverbs 1-31",
+    "The Courage of Daniel": "Daniel 1-6",
+  };
+
+  return ranges[title || ""] ?? null;
+}
+
 function getChapterJourneyProgressLabel(title: string | null | undefined, currentDay: number, totalDays: number) {
   if (title === "The Wisdom of Proverbs") return `Proverbs ${currentDay} of ${totalDays}`;
   if (title === "The Testing of Joseph") return `Genesis ${currentDay + 36} of 50`;
@@ -457,6 +471,8 @@ export default function DevotionalDetailPage() {
   const previewDescription = devotional
     ? getPreviewDescription(devotional.title, devotional.description)
     : "";
+  const scriptureRange = getStudyScriptureRange(devotional?.title);
+  const orderedDays = [...days].sort((a, b) => a.day_number - b.day_number);
 
   const isDayUnlocked = (dayNumber: number) => {
     if (userEmail === "moorelouis3@gmail.com") return true;
@@ -1077,7 +1093,7 @@ export default function DevotionalDetailPage() {
         </Link>
 
         <h1 className="text-3xl font-bold mb-2">{devotional.title}</h1>
-        <p className="text-gray-600 mb-4">{devotional.subtitle}</p>
+        <p className="text-gray-600 mb-4">{scriptureRange ?? devotional.subtitle}</p>
 
         {/* DEVOTIONAL COVER */}
         {getCoverImage(devotional.title) && (
@@ -1121,7 +1137,7 @@ export default function DevotionalDetailPage() {
         <div className="bg-white border border-gray-200 rounded-xl p-6">
           <h2 className="text-xl font-bold mb-4">{isChapterJourneyStudy ? "Chapters" : "Days"}</h2>
           <div className="space-y-2">
-            {days.map((day) => {
+            {orderedDays.map((day) => {
               const dayProgress = progress.get(day.day_number);
               const taskProgress = chapterTaskProgress.get(day.day_number) || { completed: 0, total: WISDOM_TASK_TOTAL };
               const isUnlocked = isDayUnlocked(day.day_number);
