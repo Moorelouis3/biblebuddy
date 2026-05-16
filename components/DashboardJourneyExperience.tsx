@@ -1396,6 +1396,10 @@ export default function DashboardJourneyExperience({
   const [embeddedBibleCompletedChapters, setEmbeddedBibleCompletedChapters] = useState<number[]>([]);
   const [embeddedBibleReading, setEmbeddedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
   const [embeddedBibleStudyId, setEmbeddedBibleStudyId] = useState<string | null>(null);
+  const [embeddedStudyLoadNotice, setEmbeddedStudyLoadNotice] = useState<{
+    devotionalTitle: string;
+    chapterLabel: string;
+  } | null>(null);
   const [embeddedCommunityGroupId, setEmbeddedCommunityGroupId] = useState<string | null>(null);
   const [embeddedCommunityLoading, setEmbeddedCommunityLoading] = useState(false);
   const [embeddedCommunityError, setEmbeddedCommunityError] = useState<string | null>(null);
@@ -2374,7 +2378,7 @@ export default function DashboardJourneyExperience({
 
     const chapterLabel = buildDashboardChapterLabel(book, chapter);
     setSwitchingStudyChapter(dayNumber);
-    setEmbeddedBibleStudyId(null);
+    setEmbeddedStudyLoadNotice({ devotionalTitle, chapterLabel });
     setShowCompletionPanel(false);
     setSuppressCompletionPanelForLoadedChapter(true);
     setClearedDoneTaskKinds({});
@@ -2391,7 +2395,6 @@ export default function DashboardJourneyExperience({
       }),
     });
     setIsLoadingNextChapter(true);
-    snapToPage(0);
 
     try {
       const { error } = await supabase
@@ -2671,6 +2674,43 @@ export default function DashboardJourneyExperience({
   const renderEmbeddedBibleStudiesPage = () => (
     <section className="w-full px-1">
       <div className="mx-auto max-w-xl overflow-hidden rounded-[28px]">
+        {embeddedStudyLoadNotice ? (
+          <div className="mb-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
+            <div className="flex items-start gap-3">
+              <div className="shrink-0 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] p-1 shadow-sm">
+                <LouisAvatar mood="reading" size={46} />
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Loaded Into Dashboard</p>
+                <h3 className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                  {embeddedStudyLoadNotice.chapterLabel}
+                </h3>
+                <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
+                  {embeddedStudyLoadNotice.devotionalTitle} is ready in your Home study workspace. Completed tasks stay under Completed Study Tasks so you can reopen them anytime.
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setEmbeddedStudyLoadNotice(null);
+                  snapToPage(0);
+                }}
+                className="rounded-full bg-[var(--bb-button,#2f7fe8)] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+              >
+                Start {embeddedStudyLoadNotice.chapterLabel}
+              </button>
+              <button
+                type="button"
+                onClick={() => setEmbeddedStudyLoadNotice(null)}
+                className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-transparent px-4 py-2.5 text-sm font-black text-[var(--bb-text-secondary,#5f6368)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+              >
+                Keep Browsing
+              </button>
+            </div>
+          </div>
+        ) : null}
         {embeddedBibleStudyId ? (
           <BibleStudyDetailPage
             devotionalIdOverride={embeddedBibleStudyId}
