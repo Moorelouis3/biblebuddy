@@ -3408,13 +3408,13 @@ export default function DashboardJourneyExperience({
                         />
                       </div>
                       <div className="flex min-w-0 flex-1 flex-col justify-center pr-2">
-                        <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#5e8eb0]">
+                        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#5e8eb0]">
                           Next Bible Series
                         </p>
-                        <p className="mt-1 text-base font-black leading-tight text-gray-950">
+                        <p className="mt-1 text-2xl font-black leading-tight text-gray-950 sm:text-3xl">
                           {preloadedNextStudy.title}
                         </p>
-                        <p className="mt-1 text-xs font-bold leading-5 text-gray-600">{preloadedNextStudy.subtitle}</p>
+                        <p className="mt-2 text-base font-black leading-5 text-gray-600 sm:text-lg">{preloadedNextStudy.subtitle}</p>
                       </div>
                     </div>
                     <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-6 text-gray-600">

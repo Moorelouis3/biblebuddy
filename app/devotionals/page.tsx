@@ -699,16 +699,16 @@ export default function DevotionalsPage() {
           </div>
         ) : (
           <div className="rounded-[2rem] border border-white bg-white/80 p-3 shadow-sm md:p-5">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4">
             {visibleDevotionals.map((devotional) => {
               const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
               const community = communityByDevotional[devotional.id];
               const isComplete = progress.isComplete;
               const card = (
-                <div className={`group h-full rounded-3xl border p-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl ${
+                <div className={`group h-full rounded-3xl border p-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl md:p-4 ${
                   isComplete ? "border-emerald-200 bg-[#effdf4]" : "border-gray-200 bg-white"
                 }`}>
-                  <div className="grid grid-cols-[92px_1fr] gap-3 sm:grid-cols-1">
+                  <div className="grid grid-cols-[96px_1fr] gap-3 sm:grid-cols-[132px_1fr] md:gap-5">
                     <div>{getDevotionalVisual(devotional)}</div>
                     <div className="flex min-w-0 flex-col justify-between">
                       <div>
