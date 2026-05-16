@@ -2390,7 +2390,7 @@ export default function DashboardJourneyExperience({
                 href={`/bible-studies?study=${encodeURIComponent(study.title)}`}
                 className="bb-surface-soft group rounded-2xl border p-2 text-left transition hover:-translate-y-0.5 hover:border-[var(--bb-accent)] hover:shadow-sm"
               >
-                <div className="overflow-visible rounded-xl bg-[var(--bb-surface)]/70">
+                <div className="overflow-visible rounded-xl">
                   <img
                     src={study.image}
                     alt={`${study.title} cover`}

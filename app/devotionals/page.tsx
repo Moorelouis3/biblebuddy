@@ -283,7 +283,7 @@ export default function DevotionalsPage() {
     const coverImage = getCoverImage(devotional.title);
     if (coverImage) {
       return (
-        <div className="overflow-visible rounded-xl border border-white/70 bg-white/40 p-1 shadow-sm">
+        <div className="overflow-visible rounded-xl p-1">
           <img
             src={coverImage}
             alt={`${devotional.title} cover`}
