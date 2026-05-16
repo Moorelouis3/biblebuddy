@@ -759,6 +759,32 @@ function buildDashboardNextStudyLine(checklistData: ChecklistData | null) {
   return `Let's finish ${chapterLabel} today.`;
 }
 
+function getDashboardStudyCover(title: string | null | undefined) {
+  if (title === "The Creation of the World") return "/creationoftheworld.png";
+  if (title === "The Fall of Man") return "/thefallofman.png";
+  if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
+  if (title === "The Rise of Esther") return "/theriseofester.png";
+  if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
+  if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
+  if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
+  if (title === "The Heart of David") return "/heartofdaviddevotional.png";
+  if (title === "The Faith of Job") return "/faithofjob.png";
+  if (title === "The Calling of Moses") return "/callingofmosesdevotional.png";
+  if (title === "The Transforming of Paul") return "/transformingofpauldevotional.png";
+  return null;
+}
+
+function getDashboardStudySummary(title: string | null | undefined) {
+  if (title === "The Creation of the World") return "Genesis 1-2: creation, Eden, purpose, rest, and relationship.";
+  if (title === "The Fall of Man") return "Genesis 3-4: temptation, shame, Cain and Abel, exile, and hope.";
+  if (title === "The Obedience of Abraham") return "Genesis 11-25: Abraham's call, waiting, covenant, testing, and legacy.";
+  if (title === "The Rise of Esther") return "Esther 1-10: palace pressure, courage, providence, and reversal.";
+  if (title === "The Courage of Daniel") return "Daniel 1-6: exile, courage, wisdom, prayer, pressure, and faith.";
+  if (title === "The Testing of Joseph") return "Genesis 37-50: betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
+  if (title === "The Wisdom of Proverbs") return "Chapter-by-chapter wisdom for speech, choices, discipline, and daily life.";
+  return "Guided Bible study with reading, notes, games, and reflection.";
+}
+
 export default function DashboardPage() {
   // All useState declarations appear first, before any useEffect
   const router = useRouter();
@@ -821,7 +847,7 @@ export default function DashboardPage() {
   const [dailyTaskNextTitle, setDailyTaskNextTitle] = useState<string | null>(null);
   const [dailyTaskSummaryLine, setDailyTaskSummaryLine] = useState<string | null>(null);
   const [selectedDashboardTask, setSelectedDashboardTask] = useState<TaskState | null>(null);
-  const [showChapterFocusPreview, setShowChapterFocusPreview] = useState(false);
+  const [studySettingsOpenRequest, setStudySettingsOpenRequest] = useState(0);
   const [dashboardLastSevenDays, setDashboardLastSevenDays] = useState(buildLastSevenDashboardDays());
   const dailyTaskPopupOpenRef = useRef(false);
   const dailyChecklistDataRef = useRef<ChecklistData | null>(null);
@@ -1786,7 +1812,9 @@ export default function DashboardPage() {
     const activeChapterLabel =
       activeChapterFocusTask?.chapterLabel ||
       "Your Chapter";
-    const activeChapterPreviewLine = getChapterPreviewLine(activeChapterFocusTask);
+    const currentStudyTask = dailyChecklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
+    const currentStudyTitle = currentStudyTask?.devotionalTitle || null;
+    const currentStudyCover = getDashboardStudyCover(currentStudyTitle);
     const streakFlameDuration = Math.max(0.85, 7 - Math.min(29, Math.max(0, streakValue)) * 0.2);
     const streakFlameClass =
       streakValue >= 30
@@ -1894,28 +1922,41 @@ export default function DashboardPage() {
               <h1 className="text-2xl font-black leading-tight text-gray-950 sm:text-3xl">
                 {getDashboardGreeting()}, {greetingName}
               </h1>
-              <p className="mt-1 text-sm font-medium leading-5 text-gray-500 sm:text-[15px]">
-                {nextStudyLine}
-              </p>
             </div>
-            <button
-              type="button"
-              onClick={() => setShowChapterFocusPreview((value) => !value)}
-              className="mt-2 flex min-h-[58px] w-full items-center justify-between gap-3 rounded-[18px] border border-[#dbe7f4] bg-[#fbfdff] px-3 py-2 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-              aria-expanded={showChapterFocusPreview}
-            >
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#eef6ff] text-xl">📘</span>
-              <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm font-black text-gray-950">{activeChapterLabel}</span>
-                <span className="block text-[11px] font-semibold text-gray-500">Today's Focus</span>
-              </span>
-              <span className={`text-xl text-gray-400 transition ${showChapterFocusPreview ? "rotate-90" : ""}`} aria-hidden="true">›</span>
-            </button>
-            {showChapterFocusPreview ? (
-              <div className="mt-2 rounded-[18px] border border-[#dbe7f4] bg-white/90 px-4 py-3 text-sm font-medium leading-6 text-gray-600 shadow-sm">
-                {activeChapterPreviewLine}
+            <div className="mt-2 overflow-hidden rounded-[18px] border border-[#dbe7f4] bg-white/90 px-3 py-2.5 shadow-sm">
+              <div className="flex items-center gap-3">
+                <div className="h-16 w-12 shrink-0 overflow-hidden rounded-xl bg-[#eef6ff] shadow-sm">
+                  {currentStudyCover ? (
+                    <img src={currentStudyCover} alt="" className="h-full w-full object-cover" />
+                  ) : (
+                    <div className="grid h-full w-full place-items-center text-xl" aria-hidden="true">
+                      📖
+                    </div>
+                  )}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#2f7fe8]">
+                    Current Study
+                  </p>
+                  <p className="mt-0.5 truncate text-sm font-black text-gray-950">
+                    {currentStudyTitle || "Choose Your Bible Study"}
+                  </p>
+                  <p className="mt-0.5 truncate text-xs font-bold text-gray-600">
+                    {activeChapterLabel}
+                  </p>
+                  <p className="mt-0.5 line-clamp-1 text-[11px] font-medium text-gray-500">
+                    {getDashboardStudySummary(currentStudyTitle)}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setStudySettingsOpenRequest((value) => value + 1)}
+                  className="shrink-0 rounded-full bg-[#f2f7ff] px-3 py-1.5 text-[11px] font-black text-[#2f7fe8] transition hover:bg-[#e7f1ff]"
+                >
+                  Change Study
+                </button>
               </div>
-            ) : null}
+            </div>
           </div>
 
           <button
@@ -3726,7 +3767,7 @@ export default function DashboardPage() {
       `}</style>
       <div className="dashboard-shell min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
-      <div className="hidden lg:flex max-w-7xl mx-auto px-4 mt-8 gap-6">
+      <div className="hidden lg:flex max-w-7xl mx-auto px-4 mt-4 gap-6">
         {/* LEFT AD SLOT (Desktop Only) */}
         {shouldShowAds && (
           <aside className="w-64 flex-shrink-0 sticky top-8 h-fit">
@@ -3765,6 +3806,7 @@ export default function DashboardPage() {
           onOpenDailyTasks={handleOpenDailyTasksModal}
           onTaskClick={handleDailyJourneyTaskClick}
           cycleStartedAt={louisDailyTaskCycleStartedAt}
+          studySettingsOpenRequest={studySettingsOpenRequest}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
           }}
@@ -3786,7 +3828,7 @@ export default function DashboardPage() {
       </div>
 
       {/* MOBILE LAYOUT: Content Only (Ads shown at bottom) */}
-      <div className="lg:hidden max-w-2xl mx-auto px-4 mt-8">
+      <div className="lg:hidden max-w-2xl mx-auto px-4 mt-4">
         {renderDashboardStatsRow()}
 
         <DashboardJourneyExperience
@@ -3810,6 +3852,7 @@ export default function DashboardPage() {
           onOpenDailyTasks={handleOpenDailyTasksModal}
           onTaskClick={handleDailyJourneyTaskClick}
           cycleStartedAt={louisDailyTaskCycleStartedAt}
+          studySettingsOpenRequest={studySettingsOpenRequest}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
           }}

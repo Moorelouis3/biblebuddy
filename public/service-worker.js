@@ -1,9 +1,11 @@
-const CACHE_VERSION = "v5-2026-03-17";
+const CACHE_VERSION = "v6-2026-05-16";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
   "/manifest.json",
-  "/louis/newiconlouis.png",
+  "/louis/NewNewBibleBuddyIcon.png",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png",
 ];
 
 self.addEventListener('install', event => {
@@ -51,8 +53,8 @@ self.addEventListener("push", (event) => {
   const body = typeof payload.body === "string" ? payload.body : "";
   const options = {
     body,
-    icon: "/louis/newiconlouis.png",
-    badge: "/louis/newiconlouis.png",
+    icon: "/louis/NewNewBibleBuddyIcon.png",
+    badge: "/louis/NewNewBibleBuddyIcon.png",
     data: {
       url: payload.url || "/dashboard",
       notificationId: payload.notificationId || null,

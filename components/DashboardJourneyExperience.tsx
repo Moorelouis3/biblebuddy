@@ -60,6 +60,7 @@ type Props = {
   onOpenDailyTasks: () => void;
   onTaskClick: (task: TaskState) => void;
   cycleStartedAt: string | null;
+  studySettingsOpenRequest?: number;
   onDevotionalChanged: () => void;
 };
 
@@ -1116,6 +1117,78 @@ function buildDailyStudySummaryLine({
   return `${completedTasks} done. ${remainingTasks} steps left in this chapter study.`;
 }
 
+function buildStudyProgressMotivation({
+  allDone,
+  completedTasks,
+  totalTasks,
+  nextTaskTitle,
+  chapterLabel,
+}: {
+  allDone: boolean;
+  completedTasks: number;
+  totalTasks: number;
+  nextTaskTitle: string;
+  chapterLabel: string;
+}) {
+  const safeTotal = Math.max(totalTasks, 1);
+  const safeCompleted = Math.max(0, Math.min(completedTasks, safeTotal));
+  const remaining = Math.max(safeTotal - safeCompleted, 0);
+  const progressKey = `${chapterLabel}:${nextTaskTitle}:${safeCompleted}:${safeTotal}`;
+  const pick = (lines: string[]) => lines[stableHash(progressKey) % lines.length];
+
+  if (allDone || remaining === 0) {
+    return pick([
+      `${chapterLabel} is wrapped. Strong finish. The next chapter is ready when you are.`,
+      `You finished every step for ${chapterLabel}. That is steady, faithful work.`,
+      `Chapter complete. Take a breath, then keep the momentum moving when you are ready.`,
+      `All ${safeTotal} tasks are done. You stayed with it all the way through.`,
+    ]);
+  }
+
+  if (safeCompleted === 0) {
+    return pick([
+      `Start with ${nextTaskTitle}. One focused step gets ${chapterLabel} moving.`,
+      `${chapterLabel} is waiting for you. Begin with ${nextTaskTitle} and build from there.`,
+      `No rush. Open ${nextTaskTitle}, get one win, and let the chapter unfold.`,
+      `Fresh chapter, fresh rhythm. ${nextTaskTitle} is the next right step.`,
+    ]);
+  }
+
+  if (remaining === 1) {
+    return pick([
+      `You are one task away from finishing ${chapterLabel}. Bring it home with ${nextTaskTitle}.`,
+      `Last step: ${nextTaskTitle}. You have carried this chapter well.`,
+      `One more task closes the chapter. Finish strong with ${nextTaskTitle}.`,
+      `Almost there. ${nextTaskTitle} is the final piece for ${chapterLabel}.`,
+    ]);
+  }
+
+  if (safeCompleted <= 2) {
+    return pick([
+      `Keep going. ${remaining} tasks left to wrap up ${chapterLabel}.`,
+      `Good start. Stay with ${nextTaskTitle}, then you will have ${remaining - 1} more to go.`,
+      `You have momentum now. ${remaining} steps remain in this chapter study.`,
+      `${safeCompleted} of ${safeTotal} done. Keep stacking small faithful wins.`,
+    ]);
+  }
+
+  if (safeCompleted >= safeTotal - 2) {
+    return pick([
+      `You are deep into ${chapterLabel}. ${remaining} tasks left, and the finish line is close.`,
+      `This is the home stretch. ${nextTaskTitle} keeps the chapter moving.`,
+      `${safeCompleted} of ${safeTotal} complete. You have been locked in.`,
+      `Almost finished. ${remaining} more focused steps will close this chapter.`,
+    ]);
+  }
+
+  return pick([
+    `${safeCompleted} of ${safeTotal} done. ${nextTaskTitle} is your next move.`,
+    `You are halfway into the work. Keep your rhythm with ${nextTaskTitle}.`,
+    `Nice progress. ${remaining} tasks remain for ${chapterLabel}.`,
+    `You are building understanding one step at a time. Next up: ${nextTaskTitle}.`,
+  ]);
+}
+
 export default function DashboardJourneyExperience({
   userId,
   userName,
@@ -1132,9 +1205,11 @@ export default function DashboardJourneyExperience({
   onOpenDailyTasks,
   onTaskClick,
   cycleStartedAt,
+  studySettingsOpenRequest = 0,
   onDevotionalChanged,
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const swipeStartXRef = useRef<number | null>(null);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
   const previousCompletedCountRef = useRef<number | null>(null);
   const previousJourneyKeyRef = useRef<string | null>(null);
@@ -1159,6 +1234,39 @@ export default function DashboardJourneyExperience({
   const [isSavingDevotional, setIsSavingDevotional] = useState(false);
   const [isResettingDevotional, setIsResettingDevotional] = useState(false);
   const [devotionalSettingsMessage, setDevotionalSettingsMessage] = useState<string | null>(null);
+
+  const dashboardPageKeys = ["home", "bible", "group", "tv", "games", "share"] as const;
+  type DashboardPageKey = (typeof dashboardPageKeys)[number];
+  const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
+  const activeDashboardPageKey: DashboardPageKey = dashboardPageKeys[safeActivePage];
+  const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
+  const dashboardPageLinks = {
+    bible: exploreLinkByKey("bible"),
+    group: exploreLinkByKey("group"),
+    tv: exploreLinkByKey("tv"),
+    games: exploreLinkByKey("games"),
+    share: exploreLinkByKey("share"),
+  };
+  const dashboardNavItems: Array<{
+    key: DashboardPageKey;
+    label: string;
+    icon: string;
+    href: string;
+    onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  }> = [
+    { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
+    { key: "bible", label: "Bible", icon: "\uD83D\uDCD6", href: dashboardPageLinks.bible?.href || "/reading", onClick: dashboardPageLinks.bible?.onClick },
+    { key: "group", label: "Community", icon: "\uD83D\uDC65", href: dashboardPageLinks.group?.href || "/study-groups", onClick: dashboardPageLinks.group?.onClick },
+    { key: "tv", label: "TV", icon: "\u25B6", href: dashboardPageLinks.tv?.href || "/biblebuddy-tv", onClick: dashboardPageLinks.tv?.onClick },
+    { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
+    { key: "share", label: "Share", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
+  ];
+
+  useEffect(() => {
+    if (studySettingsOpenRequest <= 0) return;
+    setShowJourneyHelp(false);
+    setShowDevotionalSettings(true);
+  }, [studySettingsOpenRequest]);
 
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
   const visibleTasks = checklistData?.tasks ?? [];
@@ -1236,9 +1344,19 @@ export default function DashboardJourneyExperience({
     studyProgressTotal,
     visibleTasks.filter((task) => task.done).length,
   );
-  const studyProgressLabel = `${studyProgressCompleted}/${studyProgressTotal} study ${
-    studyProgressCompleted === 1 ? "task" : "tasks"
-  } done`;
+  const nextTaskDisplayIndex = nextTask ? visibleTasks.findIndex((task) => task.kind === nextTask.kind) : -1;
+  const nextTaskTitle = nextTask
+    ? getTaskCardCopy(nextTask, nextTaskDisplayIndex >= 0 ? nextTaskDisplayIndex : 0).title
+    : allDone
+      ? "Chapter Complete"
+      : "Continue Your Study";
+  const studyProgressMotivation = buildStudyProgressMotivation({
+    allDone,
+    completedTasks: studyProgressCompleted,
+    totalTasks: studyProgressTotal,
+    nextTaskTitle,
+    chapterLabel: activeChapterLabel,
+  });
   const shouldShowCompletionPanel =
     !isChecklistSyncing &&
     allDone &&
@@ -1805,19 +1923,68 @@ export default function DashboardJourneyExperience({
   }, []);
 
   function snapToPage(index: number) {
-    const container = containerRef.current;
-    if (!container) return;
-    container.scrollTo({
-      left: container.clientWidth * index,
-      behavior: "smooth",
-    });
-    setActivePage(index);
+    const nextIndex = Math.max(0, Math.min(index, dashboardPageKeys.length - 1));
+    setActivePage(nextIndex);
+  }
+
+  function handleSwipeStart(event: React.TouchEvent<HTMLDivElement>) {
+    swipeStartXRef.current = event.touches[0]?.clientX ?? null;
+  }
+
+  function handleSwipeEnd(event: React.TouchEvent<HTMLDivElement>) {
+    const startX = swipeStartXRef.current;
+    swipeStartXRef.current = null;
+    if (startX === null) return;
+
+    const endX = event.changedTouches[0]?.clientX ?? startX;
+    const deltaX = endX - startX;
+    if (Math.abs(deltaX) < 45) return;
+
+    snapToPage(safeActivePage + (deltaX < 0 ? 1 : -1));
   }
 
   const studyProgressPercent = Math.round((studyProgressCompleted / Math.max(studyProgressTotal, 1)) * 100);
+  const renderDashboardPageCard = (link: ExploreLink | null, fallback: { title: string; subtitle: string; href: string; emoji: string }) => {
+    const card = link ?? {
+      key: fallback.title,
+      title: fallback.title,
+      subtitle: fallback.subtitle,
+      href: fallback.href,
+      emoji: fallback.emoji,
+      eyebrow: "Open",
+      accent: "border-[#dbe7f4] bg-white",
+      onClick: undefined,
+    };
+
+    return (
+      <div className="mx-auto flex max-w-xl flex-col gap-4 px-1 pb-7">
+        <Link href={card.href} onClick={card.onClick} className="block">
+          <div className={`rounded-[24px] border p-5 text-left shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition hover:-translate-y-0.5 hover:shadow-md ${card.accent}`}>
+            <div className="flex items-center gap-3">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/70 text-2xl shadow-sm" aria-hidden="true">
+                {card.emoji}
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#2f7fe8]">
+                  {card.eyebrow}
+                </p>
+                <h2 className="mt-1 truncate text-xl font-black text-gray-950">
+                  {card.title}
+                </h2>
+                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">
+                  {card.subtitle}
+                </p>
+              </div>
+              <span className="text-2xl text-gray-400" aria-hidden="true">›</span>
+            </div>
+          </div>
+        </Link>
+      </div>
+    );
+  };
 
   return (
-    <div className="space-y-4 pb-28">
+    <div className="space-y-4 pb-4">
       <style>{`
         @keyframes task-complete-pop {
           0% {
@@ -1971,30 +2138,26 @@ export default function DashboardJourneyExperience({
       `}</style>
       <div
         ref={containerRef}
+        onTouchStart={handleSwipeStart}
+        onTouchEnd={handleSwipeEnd}
         className="[scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
+        {activeDashboardPageKey === "home" ? (
         <section className="w-full px-1">
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
             <div className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)]">
               <div className="mb-3 flex items-start justify-between gap-3">
                 <div>
                   <h2 className="min-w-0 whitespace-nowrap text-[clamp(16px,4.8vw,20px)] font-black leading-tight text-gray-950">
-                    Continue Your Study
+                    {nextTaskTitle}
                   </h2>
                   <p className="mt-1 text-[11px] font-bold leading-tight text-gray-500">
                     {estimatedStudyTimeLabel}
                   </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowJourneyHelp(false);
-                    setShowDevotionalSettings(true);
-                  }}
-                  className="rounded-full bg-[#f2f7ff] px-3 py-1.5 text-[11px] font-black text-[#2f7fe8] transition hover:bg-[#e7f1ff]"
-                >
-                  Change Study
-                </button>
+                <div className="shrink-0 rounded-full bg-[#eef6ff] px-3 py-1.5 text-[11px] font-black text-[#2f7fe8]">
+                  {studyProgressCompleted}/{studyProgressTotal}
+                </div>
               </div>
               <div className="flex items-center gap-4">
                 <div
@@ -2009,7 +2172,7 @@ export default function DashboardJourneyExperience({
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-black text-gray-950">{activeChapterLabel}</p>
-                  <p className="mt-0.5 text-xs font-semibold text-gray-500">Study Progress</p>
+                  <p className="mt-0.5 text-xs font-semibold leading-5 text-gray-500">{studyProgressMotivation}</p>
                   <div className="mt-3 flex items-center gap-3">
                     <div className="h-2 flex-1 overflow-hidden rounded-full bg-[#e6edf7]">
                       <div
@@ -2533,12 +2696,12 @@ export default function DashboardJourneyExperience({
               </div>
             ) : null}
 
-            {currentDevotionalTitle ? (
+            {false && currentDevotionalTitle ? (
               <div className="overflow-hidden rounded-2xl border border-[#dbe7f4] bg-white/90 p-3 shadow-sm">
                 <div className="flex items-center gap-3">
                   <div className="h-20 w-14 shrink-0 overflow-hidden rounded-xl bg-[#eef6ff] shadow-sm">
                     {currentStudyCover ? (
-                      <img src={currentStudyCover} alt="" className="h-full w-full object-cover" />
+                      <img src={currentStudyCover || undefined} alt="" className="h-full w-full object-cover" />
                     ) : (
                       <div className="grid h-full w-full place-items-center text-2xl" aria-hidden="true">
                         📖
@@ -2563,7 +2726,7 @@ export default function DashboardJourneyExperience({
               </div>
             ) : null}
 
-            <div className="flex justify-center">
+            <div className="hidden">
               <button
                 type="button"
                 onClick={() => {
@@ -2579,12 +2742,60 @@ export default function DashboardJourneyExperience({
           </div>
         </section>
 
+        ) : null}
+
+        {activeDashboardPageKey === "bible"
+          ? renderDashboardPageCard(dashboardPageLinks.bible, {
+              title: "The Bible",
+              subtitle: "Read the complete Bible here",
+              href: "/reading",
+              emoji: "\uD83D\uDCD6",
+            })
+          : null}
+
+        {activeDashboardPageKey === "group"
+          ? renderDashboardPageCard(dashboardPageLinks.group, {
+              title: "Bible Study Group",
+              subtitle: "Study the Bible with us",
+              href: "/study-groups",
+              emoji: "\uD83D\uDC65",
+            })
+          : null}
+
+        {activeDashboardPageKey === "tv"
+          ? renderDashboardPageCard(dashboardPageLinks.tv, {
+              title: "Bible Buddy TV",
+              subtitle: "Stream Bible shows, movies, sermons, and more",
+              href: "/biblebuddy-tv",
+              emoji: "\u25B6",
+            })
+          : null}
+
+        {activeDashboardPageKey === "games"
+          ? renderDashboardPageCard(dashboardPageLinks.games, {
+              title: "Bible Study Games",
+              subtitle: "Play our Bible-based games",
+              href: "/bible-study-games",
+              emoji: "\uD83C\uDFAE",
+            })
+          : null}
+
+        {activeDashboardPageKey === "share"
+          ? renderDashboardPageCard(dashboardPageLinks.share, {
+              title: "Share Bible Buddy",
+              subtitle: "Share by text, WhatsApp, or copy link.",
+              href: "#share-bible-buddy",
+              emoji: "\u2197",
+            })
+          : null}
+
+        {false ? (
         <section className={`w-full shrink-0 snap-start px-1 ${activePage === 1 ? "" : "h-0 overflow-hidden"}`}>
               <div className="mx-auto flex max-w-xl flex-col gap-5">
-            {membershipStatus === "pro" && daysRemaining !== null && daysRemaining > 0 ? (
+            {membershipStatus === "pro" && (daysRemaining ?? 0) > 0 ? (
               <div className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 shadow-sm">
                 <p className="text-sm font-medium text-blue-800">
-                  Pro expires in {daysRemaining} {daysRemaining === 1 ? "day" : "days"}
+                  Pro expires in {daysRemaining ?? 0} {daysRemaining === 1 ? "day" : "days"}
                 </p>
               </div>
             ) : null}
@@ -2601,9 +2812,40 @@ export default function DashboardJourneyExperience({
             ))}
           </div>
         </section>
+        ) : null}
       </div>
 
-      <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-[#dbe7f4] bg-white/96 px-3 pb-[calc(env(safe-area-inset-bottom,0px)+8px)] pt-2 shadow-[0_-12px_34px_rgba(38,63,99,0.12)] backdrop-blur">
+      <nav className="sticky bottom-3 z-40 mx-auto max-w-xl rounded-[24px] border border-[#dbe7f4] bg-white/95 px-2 pb-[calc(env(safe-area-inset-bottom,0px)+8px)] pt-2 shadow-[0_14px_34px_rgba(38,63,99,0.16)] backdrop-blur">
+        <div className="mx-auto mb-1 h-1 w-12 rounded-full bg-[#dbe7f4]" aria-hidden="true" />
+        <div className="grid grid-cols-6 items-end gap-1 text-center">
+          {dashboardNavItems.map((item, index) => {
+            const isActive = index === safeActivePage;
+            return (
+              <Link
+                key={item.key}
+                href={item.href}
+                onClick={item.onClick}
+                onMouseEnter={() => setActivePage(index)}
+                className={`flex min-w-0 flex-col items-center justify-center gap-0.5 rounded-2xl px-1 py-1.5 text-[9px] font-black transition sm:text-[10px] ${
+                  isActive ? "text-[#2f7fe8]" : "text-gray-500 hover:bg-[#f4f8ff] hover:text-gray-900"
+                }`}
+              >
+                <span
+                  className={`grid h-8 w-8 place-items-center rounded-full text-base ${
+                    isActive ? "bg-[#2f7fe8] text-white shadow-sm" : "bg-transparent"
+                  }`}
+                  aria-hidden="true"
+                >
+                  {item.icon}
+                </span>
+                <span className="max-w-full truncate">{item.label}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
+
+      <nav className="hidden">
         <div className="mx-auto grid max-w-md grid-cols-5 items-end gap-1 text-center">
           {[
             { label: "Home", href: "/dashboard", icon: "⌂", active: true },
