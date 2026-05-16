@@ -1364,6 +1364,7 @@ export default function DashboardJourneyExperience({
   const [celebratingTasks, setCelebratingTasks] = useState<Record<string, number>>({});
   const [progressCelebrationKey, setProgressCelebrationKey] = useState(0);
   const [showCompletionPanel, setShowCompletionPanel] = useState(false);
+  const [suppressCompletionPanelForLoadedChapter, setSuppressCompletionPanelForLoadedChapter] = useState(false);
   const [completedTasksExpanded, setCompletedTasksExpanded] = useState(false);
   const [isLoadingNextChapter, setIsLoadingNextChapter] = useState(false);
   const [isNewChapterDropping, setIsNewChapterDropping] = useState(false);
@@ -1575,8 +1576,8 @@ export default function DashboardJourneyExperience({
   const displayTasks = isLoadingNextChapter && (preloadedNextChapter?.tasks.length || preloadedNextStudy?.tasks.length)
     ? preloadedNextChapter?.tasks.length
       ? preloadedNextChapter.tasks
-      : preloadedNextStudy?.tasks || queueTasks
-    : queueTasks;
+      : preloadedNextStudy?.tasks || visibleTasks
+    : visibleTasks;
   const displayNextActionTaskIndex = displayTasks.findIndex((task) => !task.done);
   const displayNextActionTaskKind =
     displayNextActionTaskIndex >= 0 && displayTasks[displayNextActionTaskIndex] && !displayTasks[displayNextActionTaskIndex].disabled
@@ -1609,6 +1610,7 @@ export default function DashboardJourneyExperience({
     allDone &&
     queueTasks.length === 0 &&
     !isLoadingNextChapter &&
+    !suppressCompletionPanelForLoadedChapter &&
     showCompletionPanel;
   const greetingName = userName && userName !== "buddy" ? userName : "buddy";
   function buildLouisMessage() {
@@ -2078,6 +2080,10 @@ export default function DashboardJourneyExperience({
   }, [allDone, isChecklistSyncing, isLoadingNextChapter, queueTasks.length]);
 
   useEffect(() => {
+    if (!allDone) setSuppressCompletionPanelForLoadedChapter(false);
+  }, [allDone, activeChapterLabel]);
+
+  useEffect(() => {
     const target = checklistData?.nextJourneyTarget;
     if (!allDone || !target) {
       setPreloadedNextChapter(null);
@@ -2277,6 +2283,8 @@ export default function DashboardJourneyExperience({
 
     setSwitchingStudyChapter(dayNumber);
     setShowCurrentStudyDetails(false);
+    setShowCompletionPanel(false);
+    setSuppressCompletionPanelForLoadedChapter(true);
     try {
       const { error } = await supabase
         .from("profile_stats")
@@ -2291,17 +2299,6 @@ export default function DashboardJourneyExperience({
         );
 
       if (error) throw error;
-
-      await supabase.from("devotional_progress").upsert(
-        {
-          user_id: userId,
-          devotional_id: currentDevotionalId,
-          day_number: dayNumber,
-          is_completed: false,
-          reading_completed: false,
-        },
-        { onConflict: "user_id,devotional_id,day_number" },
-      );
 
       if (cycleStartedAt) {
         rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
@@ -2539,11 +2536,10 @@ export default function DashboardJourneyExperience({
     <section className="w-full px-1">
       <div className="mx-auto flex max-w-xl flex-col gap-3 pb-7">
         <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
-          <div className="border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#f8fbff)] px-4 py-4 sm:px-5">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Community</p>
-            <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Community</h2>
-            <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
-              The real group feed, study posts, prayer, questions, and buddies stay right here in your dashboard.
+          <div className="bg-[var(--bb-surface,#f8fbff)] px-4 py-4 sm:px-5">
+            <h2 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Community</h2>
+            <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
+              Connect with Bible Buddies across the world through study posts, prayers, questions, encouragement, and real chapter progress.
             </p>
           </div>
 
@@ -2694,18 +2690,7 @@ export default function DashboardJourneyExperience({
 
           {showCurrentStudyDetails && currentDevotionalId ? (
             <div className="dashboard-inline-task mt-3 border-t border-[var(--bb-card-border,#dbe7f4)] pt-3">
-              <div className="flex gap-3">
-                {currentStudyCover ? (
-                  <img src={currentStudyCover} alt="" className="h-24 w-16 shrink-0 rounded-2xl object-cover shadow-sm" />
-                ) : null}
-                <div className="min-w-0 flex-1">
-                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Study Details</p>
-                  <h3 className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">{currentDevotionalTitle}</h3>
-                  <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{currentStudySummary}</p>
-                </div>
-              </div>
-
-              <div className="mt-3 grid gap-2">
+              <div className="grid gap-2">
                 {currentStudyChapters.map((studyChapter) => {
                   const chapterLabel =
                     studyChapter.bible_reading_book && studyChapter.bible_reading_chapter
@@ -3585,7 +3570,7 @@ export default function DashboardJourneyExperience({
               })
             )}
 
-            {!shouldShowCompletionPanel && !isLoadingNextChapter && completedTrackerTasks.length > 0 ? (
+            {!shouldShowCompletionPanel && !isLoadingNextChapter && displayTasks.length < visibleTasks.length && completedTrackerTasks.length > 0 ? (
               <div className="overflow-hidden rounded-2xl border border-emerald-100 bg-white/80 shadow-sm">
                 <button
                   type="button"

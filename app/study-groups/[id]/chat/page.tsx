@@ -4812,6 +4812,7 @@ export default function GroupChatPage() {
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="sticky top-0 z-20 border-b border-[#dbe7f4]/80" style={{ backgroundColor: coverColor }}>
         <div className="max-w-2xl mx-auto px-4 py-4">
+          {!isDashboardEmbed && (
           <div className="flex items-center gap-1 text-xs text-gray-600 font-medium mb-2 flex-wrap">
             {!isDashboardEmbed && (
               <>
@@ -4851,13 +4852,15 @@ export default function GroupChatPage() {
               </>
             )}
           </div>
+          )}
           <div className="flex items-center gap-3">
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#dbe7f4] bg-white text-xl shadow-sm">{group.cover_emoji || "👥"}</span>
+            {!isDashboardEmbed ? (
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#dbe7f4] bg-white text-xl shadow-sm">{group.cover_emoji || "👥"}</span>
+            ) : null}
             <div className="flex-1 min-w-0">
-              <h1 className="text-lg font-bold text-gray-900 truncate">{displayGroupName}</h1>
-              {isDashboardEmbed && (
-                <p className="mt-0.5 text-xs font-semibold text-gray-500">Study posts, prayer, questions, and buddies in one place.</p>
-              )}
+              {!isDashboardEmbed ? (
+                <h1 className="text-lg font-bold text-gray-900 truncate">{displayGroupName}</h1>
+              ) : null}
               <div className="flex items-center gap-3 flex-wrap">
                 <button
                   onClick={() => setShowGroupInfoModal(true)}
@@ -4871,7 +4874,7 @@ export default function GroupChatPage() {
                 }}
                 className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
               >
-                ?? See All Buddies
+                See All Buddies
               </button>
               {isLouisAdmin && (
                 <>
@@ -4879,13 +4882,13 @@ export default function GroupChatPage() {
                     href={`/study-groups/${group.id}/analytics`}
                     className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
                   >
-                    ?? Group Analytics
+                    Group Analytics
                   </Link>
                   <Link
                     href={`/study-groups/${group.id}/scheduler`}
                     className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
                   >
-                    ??? Scheduler
+                    Scheduler
                   </Link>
                 </>
               )}
@@ -4899,11 +4902,11 @@ export default function GroupChatPage() {
           {(() => {
             const primaryTabs = [
               { key: "home", label: "Home" },
-              { key: "bible_studies", label: "Bible Studies" },
+              ...(!isDashboardEmbed ? [{ key: "bible_studies", label: "Bible Studies" }] : []),
             ];
             const moreItems = [
-              { key: "prayer", label: "?? Prayer Request", isHub: false },
-              { key: "qa", label: "? Q&A", isHub: false },
+              { key: "prayer", label: "Prayer Request", isHub: false },
+              { key: "qa", label: "Q&A", isHub: false },
               ...hubCategories.map((cat) => ({
                 key: cat.id,
                 label: `${cat.emoji} ${cat.name}`,
@@ -4978,8 +4981,8 @@ export default function GroupChatPage() {
             style={{ top: moreMenuPosition.top, left: moreMenuPosition.left }}
           >
             {[
-              { key: "prayer", label: "?? Prayer Request", isHub: false },
-              { key: "qa", label: "? Q&A", isHub: false },
+              { key: "prayer", label: "Prayer Request", isHub: false },
+              { key: "qa", label: "Q&A", isHub: false },
               ...hubCategories.map((cat) => ({
                 key: cat.id,
                 label: `${cat.emoji} ${cat.name}`,
