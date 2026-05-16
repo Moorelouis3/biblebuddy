@@ -1360,6 +1360,7 @@ export default function DashboardJourneyExperience({
   const [embeddedBibleAlphabetical, setEmbeddedBibleAlphabetical] = useState(false);
   const [embeddedBibleCompletedChapters, setEmbeddedBibleCompletedChapters] = useState<number[]>([]);
   const [embeddedBibleReading, setEmbeddedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
+  const [embeddedStudyIdsByTitle, setEmbeddedStudyIdsByTitle] = useState<Record<string, string>>({});
   const [shareCopied, setShareCopied] = useState(false);
 
   const dashboardPageKeys = ["home", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
@@ -1407,6 +1408,38 @@ export default function DashboardJourneyExperience({
       setFreePlanGate({ kind: "study" });
     }
   }, [canFreeUserChooseNewStudy, isPaidUser, studySettingsOpenRequest]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadEmbeddedStudyIds() {
+      const titles = BIBLE_STUDY_SERIES_CATALOG.map((study) => study.title);
+      const { data, error } = await supabase
+        .from("devotionals")
+        .select("id, title")
+        .in("title", titles);
+
+      if (cancelled) return;
+      if (error) {
+        console.error("[DASHBOARD] Could not load embedded Bible Study links:", error);
+        setEmbeddedStudyIdsByTitle({});
+        return;
+      }
+
+      setEmbeddedStudyIdsByTitle(
+        Object.fromEntries(
+          ((data || []) as Array<{ id: string; title: string }>).map((study) => [study.title, study.id]),
+        ),
+      );
+    }
+
+    void loadEmbeddedStudyIds();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const nextTask = visibleTasks.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = visibleTasks.findIndex((task) => !task.done);
   const nextActionTaskKind =
@@ -2384,23 +2417,27 @@ export default function DashboardJourneyExperience({
           </div>
 
           <div className="mt-5 grid grid-cols-2 gap-3">
-            {BIBLE_STUDY_SERIES_CATALOG.map((study) => (
-              <Link
-                key={study.key}
-                href={`/bible-studies?study=${encodeURIComponent(study.title)}`}
-                className="bb-surface-soft group rounded-2xl border p-2 text-left transition hover:-translate-y-0.5 hover:border-[var(--bb-accent)] hover:shadow-sm"
-              >
-                <div className="overflow-visible rounded-xl">
-                  <img
-                    src={study.image}
-                    alt={`${study.title} cover`}
-                    className="aspect-[3/4] w-full object-contain drop-shadow-sm transition group-hover:scale-[1.02]"
-                  />
-                </div>
-                <p className="bb-text-primary mt-2 line-clamp-2 text-sm font-black leading-tight">{study.title}</p>
-                <p className="bb-accent mt-1 text-[11px] font-bold">{study.subtitle}</p>
-              </Link>
-            ))}
+            {BIBLE_STUDY_SERIES_CATALOG.map((study) => {
+              const studyId = embeddedStudyIdsByTitle[study.title];
+
+              return (
+                <Link
+                  key={study.key}
+                  href={studyId ? `/bible-studies/${studyId}` : "/bible-studies"}
+                  className="bb-surface-soft group rounded-2xl border p-2 text-left transition hover:-translate-y-0.5 hover:border-[var(--bb-accent)] hover:shadow-sm"
+                >
+                  <div className="overflow-visible rounded-xl">
+                    <img
+                      src={study.image}
+                      alt={`${study.title} cover`}
+                      className="aspect-[3/4] w-full object-contain drop-shadow-sm transition group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  <p className="bb-text-primary mt-2 line-clamp-2 text-sm font-black leading-tight">{study.title}</p>
+                  <p className="bb-accent mt-1 text-[11px] font-bold">{study.subtitle}</p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

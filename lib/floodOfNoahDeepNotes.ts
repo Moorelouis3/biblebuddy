@@ -22,7 +22,157 @@ function verseCallouts(verses: string[]) {
 }
 
 function buildSection(section: FloodSection) {
-  return `## ${section.reference}\n\n# ${section.title}\n\n${verseCallouts(section.verses)}\n\n${section.notes.join("\n\n")}`;
+  return `## ${section.reference}\n\n# ${section.title}\n\n${verseCallouts(section.verses)}\n\n${buildFloodLayeredTeaching(section)}\n\n${section.notes.join("\n\n")}`;
+}
+
+function floodTeachingDetails(section: FloodSection) {
+  const title = section.title.toLowerCase();
+  const reference = section.reference;
+
+  if (reference.includes("5:1") || title.includes("adam")) {
+    return {
+      phrase: "`Book of the generations`, `image`, `likeness`, `begat`, and `and he died` are the anchor words here.",
+      word: "`Begat` means fathered. `Image` and `likeness` reach back to Genesis 1, but now that image is carried through a fallen family line.",
+      context: "Ancient genealogies were not filler. They preserved identity, memory, inheritance, and the story line a family belonged to.",
+      connection: "Genesis 5 is Genesis 3 becoming family history. God warned that dust would return to dust, and Adam's record proves it.",
+      reflection: "Read this slowly: humanity still has dignity, but every name now lives under the shadow of death.",
+    };
+  }
+
+  if (title.includes("seth") || title.includes("enos") || title.includes("cainan") || title.includes("mahalaleel") || title.includes("jared") || title.includes("methuselah")) {
+    return {
+      phrase: "`And he died` keeps returning like a bell. The repetition is supposed to be felt, not skipped.",
+      word: "`Sons and daughters` reminds us that these names represent whole households, not isolated individuals.",
+      context: "Long lifespans sound strange to modern readers, but in the flow of Genesis they still end the same way: death wins every natural life.",
+      connection: "This line keeps moving toward Noah, which means God is preserving hope even while the curse is being repeated.",
+      reflection: "The chapter teaches through rhythm: life continues, children are born, years pass, and death still has to be faced.",
+    };
+  }
+
+  if (title.includes("enoch")) {
+    return {
+      phrase: "`Walked with God` is the phrase that breaks the death pattern.",
+      word: "To walk with God means nearness, fellowship, trust, and a life moving in God's direction.",
+      context: "In a genealogy shaped by death, Enoch's life would have sounded shocking to ancient readers because the expected ending is missing.",
+      connection: "Noah will later be described with similar language. Enoch prepares us to recognize faithful obedience in a darkening world.",
+      reflection: "Enoch shows that the curse is real, but God is still near to people who walk with Him.",
+    };
+  }
+
+  if (title.includes("noah")) {
+    return {
+      phrase: "`Comfort`, `rest`, `toil`, and `cursed ground` connect Noah's birth back to Eden.",
+      word: "Noah's name sounds like rest or relief. Lamech is longing for mercy in a world worn down by the curse.",
+      context: "Names in Genesis often carry meaning. Noah is introduced before the flood as a sign that the story is moving toward judgment and preservation.",
+      connection: "Genesis 5 ends by naming Shem, Ham, and Japheth because Genesis 9-10 will trace the post-flood nations through them.",
+      reflection: "Noah is born into a tired world. That makes the coming ark feel like mercy, not just survival.",
+    };
+  }
+
+  if (title.includes("corruption") || title.includes("wickedness") || title.includes("violence")) {
+    return {
+      phrase: "`Every imagination`, `only evil continually`, `corrupt`, and `violence` describe inner ruin becoming public danger.",
+      word: "`Repented the LORD` does not mean God sinned or made a mistake. It means He was grieved with holy sorrow.",
+      context: "The ancient world knew violence as social breakdown: bloodshed, oppression, powerful people taking what they wanted, and communities becoming unsafe.",
+      connection: "Genesis 6 shows Cain's violence spreading from one field into the whole earth.",
+      reflection: "The flood is not random. Genesis gives the moral reason before it gives the water.",
+    };
+  }
+
+  if (title.includes("ark") || title.includes("noah and")) {
+    return {
+      phrase: "`Ark`, `gopher wood`, `cubits`, `rooms`, `door`, and `covenant` turn rescue into concrete obedience.",
+      word: "`Cubits` are ancient measurements based roughly on the forearm. The ark is not symbolic decoration; it is a commanded vessel.",
+      context: "Ancient readers would notice the building details because survival depended on listening carefully to God's instructions.",
+      connection: "The ark becomes rescue through judgment. The same waters that destroy corruption also lift the vessel God commanded.",
+      reflection: "Noah obeys before rain starts. That is faith before visible proof.",
+    };
+  }
+
+  if (title.includes("entering") || title.includes("animals") || title.includes("clean")) {
+    return {
+      phrase: "`Clean beasts`, `unclean`, `male and female`, and `come thou` show order before judgment.",
+      word: "`Clean` points toward animals suitable for sacrifice and later worship categories, even before the law of Moses is given.",
+      context: "The animal details show preservation, not chaos. God is judging the world while also protecting future life.",
+      connection: "Genesis 1 filled the world with living creatures. Genesis 7 preserves creature life through judgment.",
+      reflection: "The ark is not escape from responsibility. It is obedience that carries life forward.",
+    };
+  }
+
+  if (title.includes("flood") || title.includes("waters") || title.includes("deep")) {
+    return {
+      phrase: "`Fountains of the deep`, `windows of heaven`, and `prevailed` make the flood feel cosmic and terrifying.",
+      word: "`Prevailed` means the waters grew strong, rose, and overwhelmed what stood against them.",
+      context: "Ancient readers saw waters as powerful and dangerous. Genesis shows God ruling even the waters that humans cannot control.",
+      connection: "The ordered waters of Genesis 1 are now released in judgment because the ordered world has become morally corrupt.",
+      reflection: "This is meant to feel heavy. Judgment is not a light theme in Scripture.",
+    };
+  }
+
+  if (title.includes("recede") || title.includes("dove") || title.includes("raven")) {
+    return {
+      phrase: "`God remembered Noah`, `wind`, `raven`, `dove`, and `dry ground` mark the slow movement from judgment to new beginning.",
+      word: "`Remembered` does not mean God had forgotten. It means God turned covenant attention toward Noah and acted faithfully.",
+      context: "Waiting after catastrophe is part of the story. Noah does not rush out of the ark just because hope begins appearing.",
+      connection: "The wind over the waters echoes creation language. The post-flood world feels like a kind of new creation.",
+      reflection: "Mercy can arrive slowly. Noah teaches patient trust after the storm.",
+    };
+  }
+
+  if (title.includes("covenant") || title.includes("rainbow") || title.includes("blood")) {
+    return {
+      phrase: "`Covenant`, `blood`, `image of God`, `rainbow`, and `token` are the major words of Genesis 9.",
+      word: "`Token` means sign. The rainbow is a visible covenant reminder that God binds Himself to mercy after judgment.",
+      context: "Blood represented life. That is why Genesis 9 treats violence and human life with such seriousness.",
+      connection: "The image of God from Genesis 1 is repeated after the flood. Human dignity survives judgment.",
+      reflection: "God restarts the world with blessing, boundaries, and a promise.",
+    };
+  }
+
+  if (title.includes("failure") || title.includes("shame") || title.includes("canaan")) {
+    return {
+      phrase: "`Husbandman`, `vineyard`, `drunken`, `nakedness`, and `Canaan` show the new world still has old sin.",
+      word: "`Husbandman` means a man who works the ground. Noah is shown as human, not flawless.",
+      context: "Family shame in the ancient world was serious because honor, authority, and inheritance shaped household life.",
+      connection: "The scene echoes Eden: fruit, nakedness, shame, covering, and consequences.",
+      reflection: "The flood judged corruption, but it did not remove sin from the human heart.",
+    };
+  }
+
+  if (title.includes("nations") || title.includes("nimrod") || title.includes("kingdom")) {
+    return {
+      phrase: "`Generations`, `nations`, `tongues`, `lands`, and `kingdom` show humanity spreading into peoples and powers.",
+      word: "`Mighty one` describes Nimrod as a powerful figure. Genesis wants us to notice early kingdom-building after the flood.",
+      context: "The table of nations explained to ancient Israel where surrounding peoples came from and how the post-flood world was arranged.",
+      connection: "Genesis 10 prepares Genesis 11. Nations spread, then Babel shows pride trying to gather humanity around its own name.",
+      reflection: "Genealogies are maps of meaning. They show that God sees nations, not only individuals.",
+    };
+  }
+
+  return {
+    phrase: "The key words in this section should be read slowly because Genesis teaches through repeated phrases, names, commands, and consequences.",
+    word: "When an older KJV word appears, pause and ask what it meant in the story before rushing to modern assumptions.",
+    context: "Ancient readers listened for family lines, land, blessing, judgment, and covenant because those themes carried the story forward.",
+    connection: "This section belongs to the larger movement from creation, to fall, to judgment, to preservation, to covenant hope.",
+    reflection: "Ask what this smaller passage reveals about God, humanity, sin, mercy, and the future of the Bible story.",
+  };
+}
+
+function buildFloodLayeredTeaching(section: FloodSection) {
+  const detail = floodTeachingDetails(section);
+  return [
+    "### 📖 What This Section Is Doing",
+    `This smaller passage is not just giving information. It is moving the flood story forward through **${section.title.toLowerCase()}**.`,
+    "### 🔎 Words And Phrases To Notice",
+    detail.phrase,
+    detail.word,
+    "### 🏺 Ancient World Context",
+    detail.context,
+    "### 🧵 Bible Story Connection",
+    detail.connection,
+    "### 💬 Louis Reflection",
+    detail.reflection,
+  ].join("\n\n");
 }
 
 const commonFloodThreads = [
@@ -1042,21 +1192,21 @@ function normalizeFloodVerseFlow() {
       if (!Number.isFinite(start) || !Number.isFinite(end) || end - start + 1 <= 5) return [section];
 
       const chunks: FloodSection[] = [];
-      for (let chunkStart = start; chunkStart <= end; chunkStart += 5) {
-        const chunkEnd = Math.min(end, chunkStart + 4);
+      const totalVerses = end - start + 1;
+      const chunkSize = totalVerses <= 8 ? Math.ceil(totalVerses / 2) : 5;
+      for (let chunkStart = start; chunkStart <= end; chunkStart += chunkSize) {
+        const chunkEnd = Math.min(end, chunkStart + chunkSize - 1);
         const firstChunk = chunkStart === start;
         chunks.push({
           reference: `Genesis ${chapterNumber}:${chunkStart} to ${chunkEnd}`,
           title: firstChunk ? section.title : `${section.title} Continued`,
-          verses: firstChunk
-            ? section.verses
-            : [`Genesis ${chapterNumber}:${chunkStart}-${chunkEnd} continues this part of the chapter's flow.`],
+          verses: [`Genesis ${chapterNumber}:${chunkStart}-${chunkEnd} carries this part of the chapter's flow.`],
           notes: firstChunk
             ? section.notes
             : [
-                "This smaller verse section keeps the study moving slowly instead of swallowing too much of the chapter at once.",
-                "Read these verses as part of the same movement, but pay attention to the exact names, actions, and consequences in this smaller unit.",
-                "Genesis is teaching through sequence. Each small step shows how death, corruption, obedience, judgment, mercy, covenant, or nations develop in order.",
+                "Read this continued section as its own teaching movement, not as leftover verses.",
+                "Look for the exact names, commands, repeated phrases, and consequences in this smaller unit.",
+                "Genesis teaches through sequence. One small step may carry death, corruption, obedience, judgment, mercy, covenant, or the spread of nations.",
               ],
         });
       }
@@ -1074,37 +1224,8 @@ function buildFloodNotes(chapter: FloodChapterNote) {
   const threads = commonFloodThreads.map((item) => `- ${item}`).join("\n");
 
   const base = `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Flood Story Threads To Keep Watching\n\n${threads}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map(buildSection).join("\n\n")}`;
-  const paced = buildFloodPacedStudyGuide(chapter, base);
 
-  return `${base}\n\n${paced}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
-}
-
-function floodWordCount(value: string) {
-  return value.replace(/<[^>]+>/g, " ").replace(/[#>*_`~\-[\]()!]/g, " ").trim().split(/\s+/).filter(Boolean).length;
-}
-
-function buildFloodPacedStudyGuide(chapter: FloodChapterNote, base: string) {
-  const additions: string[] = [];
-  let index = 0;
-  const targetWords = 2300;
-
-  while (floodWordCount(`${base}\n\n${additions.join("\n\n")}`) < targetWords && index < chapter.sections.length * 4) {
-    const section = chapter.sections[index % chapter.sections.length];
-    const focus = section.verses[0] || section.reference;
-    const mode = index % 4;
-    additions.push(
-      mode === 0
-        ? `### Slow Verse Walk - ${section.reference}\n\nRead this smaller section slowly. ${focus} This part matters because Genesis is not rushing toward the flood. It is letting you feel the moral and spiritual movement one step at a time, whether that movement is death spreading, corruption deepening, Noah obeying, waters rising, covenant mercy appearing, or nations forming after judgment.`
-        : mode === 1
-          ? `In **${section.title}**, pay attention to what changes from the section before it. Genesis often teaches through repeated phrases, small shifts, and family details. A name, a command, a waiting period, a boundary, or a covenant word can carry more meaning than it first appears to carry.`
-          : mode === 2
-            ? `This is also where the Flood of Noah study should feel serious. The chapter is showing that God sees violence, remembers His covenant, preserves life, and judges evil without treating human life as cheap. The smaller verse range helps the reader sit with that weight instead of skipping over it.`
-            : `Before moving on, ask what this section reveals about God, humanity, and the future of the story. Genesis is building toward rescue through judgment, but it also keeps reminding us that the deepest human problem is not water outside the ark. It is sin inside the human heart.`,
-    );
-    index += 1;
-  }
-
-  return `# Slow Verse Walk\n\n${additions.join("\n\n")}`;
+  return `${base}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
 }
 
 export const FLOOD_OF_NOAH_DEEP_NOTES = floodNotes.map(buildFloodNotes);

@@ -22,7 +22,136 @@ function verseCallouts(verses: string[]) {
 }
 
 function buildSection(section: JacobSection) {
-  return `## ${section.reference}\n\n# ${section.title}\n\n${verseCallouts(section.verses)}\n\n${section.notes.join("\n\n")}`;
+  return `## ${section.reference}\n\n# ${section.title}\n\n${verseCallouts(section.verses)}\n\n${buildJacobLayeredTeaching(section)}\n\n${section.notes.join("\n\n")}`;
+}
+
+function jacobTeachingDetails(section: JacobSection) {
+  const title = section.title.toLowerCase();
+
+  if (title.includes("leaves") || title.includes("flee")) {
+    return {
+      phrase: "`Sent away`, `charged`, `flee`, and `Canaan` show Jacob leaving with blessing but not peace.",
+      word: "`Charge` means a serious command. Isaac is directing Jacob's marriage path because covenant identity matters.",
+      context: "Leaving home in Genesis means leaving protection, land, household identity, and family stability.",
+      connection: "Jacob's journey begins as a consequence of Genesis 27, but God will turn the road into formation.",
+      reflection: "Jacob has the blessing, but he still has to face what deception has broken.",
+    };
+  }
+
+  if (title.includes("ladder") || title.includes("bethel") || title.includes("dream")) {
+    return {
+      phrase: "`Ladder`, `angels`, `I am with thee`, and `Bethel` turn a lonely night into a holy place.",
+      word: "`Bethel` means house of God. Jacob names the place after realizing God was present there.",
+      context: "Ancient sacred places were often marked with stones, vows, and remembered encounters.",
+      connection: "God repeats the Abrahamic covenant to Jacob: land, seed, presence, and blessing to the families of the earth.",
+      reflection: "God meets Jacob before Jacob is fully changed. That is grace, not approval of deception.",
+    };
+  }
+
+  if (title.includes("rachel") || title.includes("leah") || title.includes("marriage")) {
+    return {
+      phrase: "`Loved Rachel`, `Leah was tender eyed`, `serve seven years`, and `handmaid` carry emotional weight.",
+      word: "`Handmaid` means a female servant attached to a household. In this story, servants are pulled into family rivalry.",
+      context: "Marriage arrangements involved family negotiation, bride price or service, public feasting, and household alliances.",
+      connection: "Jacob the deceiver is deceived by Laban. Genesis lets consequences echo through the story.",
+      reflection: "The covenant family is being built, but it is being built inside real pain.",
+    };
+  }
+
+  if (title.includes("birth") || title.includes("sons") || title.includes("rivalry")) {
+    return {
+      phrase: "`Bilhah`, `Zilpah`, `mandrakes`, `conceived`, and the sons' names show longing, jealousy, and identity.",
+      word: "The sons' names often sound like the mothers' prayers, pain, or claims. Names become emotional testimony.",
+      context: "In the ancient world, fertility affected honor, security, inheritance, and a woman's standing in the household.",
+      connection: "The tribes of Israel are forming through a family that is deeply wounded.",
+      reflection: "God works through messy people without pretending the mess is good.",
+    };
+  }
+
+  if (title.includes("laban") || title.includes("flees")) {
+    return {
+      phrase: "`Changed my wages`, `stolen away`, `images`, `heap`, and `covenant` show distrust finally reaching a breaking point.",
+      word: "`Images` refers to household idols. Rachel's theft shows spiritual confusion inside the family.",
+      context: "Household gods could be tied to inheritance claims, protection, and family identity in the ancient world.",
+      connection: "Jacob leaves Laban the way he left Esau: under tension, fear, and unfinished conflict.",
+      reflection: "God is moving Jacob home, but the road home forces hidden things into the open.",
+    };
+  }
+
+  if (title.includes("wrestles") || title.includes("israel")) {
+    return {
+      phrase: "`Wrestled`, `prevailed`, `thy name`, `Israel`, and `halted upon his thigh` are transformation words.",
+      word: "`Prevailed` means endured or held on. Jacob does not overpower God; he clings through the night.",
+      context: "A name change in Genesis marks identity and destiny. Jacob the grasper becomes Israel, the one who struggles with God.",
+      connection: "This is one of the deepest covenant identity moments in Genesis. The nation will carry Jacob's new name.",
+      reflection: "Jacob enters the night afraid of Esau and leaves limping with a new name.",
+    };
+  }
+
+  if (title.includes("esau") || title.includes("reconcile")) {
+    return {
+      phrase: "`Bowed`, `embraced`, `kissed`, `wept`, and `grace` make reconciliation feel physical and emotional.",
+      word: "`Grace` here means favor. Jacob sees mercy where he expected revenge.",
+      context: "Bowing repeatedly showed humility, submission, and an attempt to lower hostility.",
+      connection: "The brother conflict that began before birth finds a moment of mercy, even if the relationship remains complicated.",
+      reflection: "Sometimes the person you fear becomes the place where God surprises you with mercy.",
+    };
+  }
+
+  if (title.includes("dinah") || title.includes("shechem") || title.includes("revenge")) {
+    return {
+      phrase: "`Defiled`, `wrought folly`, `deceitfully`, and `sword` show trauma turning into vengeance.",
+      word: "`Folly` in this context means a disgraceful, morally outrageous act, not mere foolishness.",
+      context: "Family honor, sexual violence, marriage negotiation, and tribal retaliation were deadly serious in the ancient world.",
+      connection: "Genesis refuses to make the covenant family look clean. Simeon and Levi's violence will echo later in Jacob's words.",
+      reflection: "This chapter needs careful reading: evil is real, grief is real, and revenge can create more ruin.",
+    };
+  }
+
+  if (title.includes("return") || title.includes("renewal") || title.includes("rachel")) {
+    return {
+      phrase: "`Put away strange gods`, `arise`, `altar`, `El-bethel`, and `Benjamin` hold renewal and grief together.",
+      word: "`Altar` is a worship place, a marker of encounter, sacrifice, gratitude, and covenant memory.",
+      context: "Returning to Bethel means Jacob returns to the place where God first met him in the wilderness.",
+      connection: "God reaffirms Jacob's name Israel and the covenant promises, even as the family experiences death and sorrow.",
+      reflection: "Spiritual renewal does not mean life stops hurting. Bethel and burial can stand in the same chapter.",
+    };
+  }
+
+  if (title.includes("edom") || title.includes("descendants")) {
+    return {
+      phrase: "`Dukes`, `generations`, `Edom`, and `Seir` show Esau becoming a people with territory and rulers.",
+      word: "`Duke` in the KJV means chief, clan leader, or tribal ruler.",
+      context: "Genealogies explained neighboring nations and reminded Israel that family stories became national histories.",
+      connection: "Jacob and Esau separate into two peoples. The family conflict becomes part of the Bible's larger national story.",
+      reflection: "Genesis tracks Esau's line because God sees the whole family story, not only the chosen line.",
+    };
+  }
+
+  return {
+    phrase: "Watch the key words, names, places, and repeated actions. Jacob's story teaches through details.",
+    word: "Older KJV terms often carry emotional, family, or covenant meaning that needs to be slowed down.",
+    context: "Ancient family life involved inheritance, labor agreements, marriage customs, household gods, honor, land, and clan identity.",
+    connection: "This passage belongs to Jacob's slow movement from grasping and running toward dependence on God.",
+    reflection: "Ask where Jacob is running, where he is clinging, and where God is changing him.",
+  };
+}
+
+function buildJacobLayeredTeaching(section: JacobSection) {
+  const detail = jacobTeachingDetails(section);
+  return [
+    "### 📖 What This Section Is Doing",
+    `This movement teaches through **${section.title.toLowerCase()}**. Let the scene breathe before jumping to the next event.`,
+    "### 🔎 Words And Phrases To Notice",
+    detail.phrase,
+    detail.word,
+    "### 🏺 Ancient Family Context",
+    detail.context,
+    "### 🧵 Covenant Connection",
+    detail.connection,
+    "### 💬 Louis Reflection",
+    detail.reflection,
+  ].join("\n\n");
 }
 
 const jacobThreads = [
@@ -1470,21 +1599,21 @@ function normalizeJacobVerseFlow() {
       if (!Number.isFinite(start) || !Number.isFinite(end) || end - start + 1 <= 5) return [section];
 
       const chunks: JacobSection[] = [];
-      for (let chunkStart = start; chunkStart <= end; chunkStart += 5) {
-        const chunkEnd = Math.min(end, chunkStart + 4);
+      const totalVerses = end - start + 1;
+      const chunkSize = totalVerses <= 8 ? Math.ceil(totalVerses / 2) : 5;
+      for (let chunkStart = start; chunkStart <= end; chunkStart += chunkSize) {
+        const chunkEnd = Math.min(end, chunkStart + chunkSize - 1);
         const firstChunk = chunkStart === start;
         chunks.push({
           reference: `Genesis ${chapterNumber}:${chunkStart} to ${chunkEnd}`,
           title: firstChunk ? section.title : `${section.title} Continued`,
-          verses: firstChunk
-            ? section.verses
-            : [`Genesis ${chapterNumber}:${chunkStart}-${chunkEnd} continues this step in Jacob's story.`],
+          verses: [`Genesis ${chapterNumber}:${chunkStart}-${chunkEnd} carries this step in Jacob's story.`],
           notes: firstChunk
             ? section.notes
             : [
-                "This smaller verse section keeps the story readable and lets the emotional movement breathe.",
+                "Read this continued section as its own movement in Jacob's transformation.",
                 "Watch the action closely here: Jacob's fear, family conflict, manipulation, grief, worship, or transformation develops one step at a time.",
-                "Genesis is showing slow change. Each smaller unit helps you see how God works through consequences, struggle, and covenant mercy.",
+                "Genesis is showing slow change. Each unit helps you see how God works through consequences, struggle, and covenant mercy.",
               ],
         });
       }
@@ -1502,39 +1631,7 @@ function buildJacobNotes(chapter: JacobChapterNote) {
   const threads = jacobThreads.map((item) => `- ${item}`).join("\n");
 
   const base = `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Wrestling of Jacob Threads To Keep Watching\n\n${threads}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map(buildSection).join("\n\n")}`;
-  const paced = buildJacobPacedStudyGuide(chapter, base);
-
-  return `${base}\n\n${paced}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
-}
-
-function jacobWordCount(value: string) {
-  return value.replace(/<[^>]+>/g, " ").replace(/[#>*_`~\-[\]()!]/g, " ").trim().split(/\s+/).filter(Boolean).length;
-}
-
-function buildJacobPacedStudyGuide(chapter: JacobChapterNote, base: string) {
-  const additions: string[] = [];
-  let index = 0;
-  const targetWords = 2300;
-
-  while (jacobWordCount(`${base}\n\n${additions.join("\n\n")}`) < targetWords && index < chapter.sections.length * 5) {
-    const section = chapter.sections[index % chapter.sections.length];
-    const focus = section.verses[0] || section.reference;
-    const mode = index % 5;
-    additions.push(
-      mode === 0
-        ? `### Slow Verse Walk - ${section.reference}\n\nRead this smaller section as one step in Jacob's transformation. ${focus} Jacob's story works best when the reader can feel each movement: leaving, longing, being deceived, building a family, fleeing, fearing Esau, wrestling, reconciling, grieving, and returning to worship.`
-        : mode === 1
-          ? `In **${section.title}**, notice the emotional pressure. Genesis is not only reporting events. It is showing fear, favoritism, jealousy, manipulation, shame, grief, and hope inside a family that carries God's promise but still needs deep healing.`
-          : mode === 2
-            ? `This passage also asks the reader to watch consequences. Jacob's earlier deception does not disappear. It echoes through Laban's deception, family rivalry, fear of Esau, and the long road home. God is transforming Jacob, but He does not pretend the wounds are imaginary.`
-            : mode === 3
-              ? `The covenant thread is still present even when the scene feels messy. God keeps His promise through wilderness nights, tense conversations, painful births, dangerous meetings, and imperfect obedience. That is why each small verse section matters.`
-              : `Before moving on, ask what this passage reveals about Jacob's identity. Is he grasping, running, bargaining, praying, limping, worshiping, or learning to depend on God? The answer helps the chapter feel personal instead of distant.`,
-    );
-    index += 1;
-  }
-
-  return `# Slow Verse Walk\n\n${additions.join("\n\n")}`;
+  return `${base}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
 }
 
 export const WRESTLING_OF_JACOB_DEEP_NOTES = jacobNotes.map(buildJacobNotes);

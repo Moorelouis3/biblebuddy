@@ -326,6 +326,21 @@ export default function DevotionalsPage() {
     }), [devotionals]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const requestedStudy = new URLSearchParams(window.location.search).get("study")?.trim();
+    if (!requestedStudy || visibleDevotionals.length === 0) return;
+
+    const matchedStudy = visibleDevotionals.find(
+      (devotional) => devotional.title.toLowerCase() === requestedStudy.toLowerCase(),
+    );
+
+    if (matchedStudy) {
+      router.replace(`/bible-studies/${matchedStudy.id}`);
+    }
+  }, [router, visibleDevotionals]);
+
+  useEffect(() => {
     if (visibleDevotionals.length === 0) {
       setCommunityByDevotional({});
       return;

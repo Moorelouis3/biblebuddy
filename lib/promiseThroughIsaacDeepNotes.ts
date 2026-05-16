@@ -22,7 +22,116 @@ function verseCallouts(verses: string[]) {
 }
 
 function buildSection(section: IsaacSection) {
-  return `## ${section.reference}\n\n# ${section.title}\n\n${verseCallouts(section.verses)}\n\n${section.notes.join("\n\n")}`;
+  return `## ${section.reference}\n\n# ${section.title}\n\n${verseCallouts(section.verses)}\n\n${buildIsaacLayeredTeaching(section)}\n\n${section.notes.join("\n\n")}`;
+}
+
+function isaacTeachingDetails(section: IsaacSection) {
+  const title = section.title.toLowerCase();
+
+  if (title.includes("god speaks") || title.includes("covenant")) {
+    return {
+      phrase: "`Sojourn`, `I will be with thee`, `seed`, `land`, and `bless` are covenant words.",
+      word: "`Sojourn` means Isaac is living as a resident stranger. He has promise from God, but not full possession yet.",
+      context: "In the ancient world, land, family line, wells, and blessing were survival realities, not abstract ideas.",
+      connection: "God repeats Abraham's promise to Isaac, proving the covenant does not die with Abraham.",
+      reflection: "Isaac must trust the God of his father for himself.",
+    };
+  }
+
+  if (title.includes("lies") || title.includes("rebekah")) {
+    return {
+      phrase: "`She is my sister` is the painful repeated phrase from Abraham's earlier fear.",
+      word: "`Fair to look upon` means Rebekah's beauty becomes the reason Isaac imagines danger.",
+      context: "A vulnerable family in a foreign region could fear powerful men, but fear still does not justify deception.",
+      connection: "Genesis shows family patterns repeating: Abraham's fear becomes Isaac's fear.",
+      reflection: "The promise is real, but Isaac still has to learn not to protect it by lying.",
+    };
+  }
+
+  if (title.includes("wells") || title.includes("conflict")) {
+    return {
+      phrase: "`Wells`, `strove`, `digged`, `Esek`, `Sitnah`, and `Rehoboth` show conflict over life-sustaining resources.",
+      word: "`Strove` means quarreled or contended. These are not minor disagreements; wells meant survival.",
+      context: "Nomadic households needed water for family, servants, and livestock. A well could decide whether a household could stay.",
+      connection: "Isaac's well conflicts show covenant blessing attracting jealousy and pressure.",
+      reflection: "Sometimes faithfulness looks like refusing to make every conflict your final battlefield.",
+    };
+  }
+
+  if (title.includes("family") || title.includes("esau")) {
+    return {
+      phrase: "`Grief of mind`, `wives`, `Beersheba`, `altar`, and `oath` connect worship and family tension.",
+      word: "`Grief of mind` means Esau's choices caused deep bitterness and sorrow to Isaac and Rebekah.",
+      context: "Marriage choices shaped covenant identity, household alliances, inheritance, and spiritual direction.",
+      connection: "Genesis 26 ends by preparing the family wound that will tear open in Genesis 27.",
+      reflection: "The covenant line is blessed, but the family carrying it is already hurting.",
+    };
+  }
+
+  if (title.includes("rebekah") || title.includes("plan")) {
+    return {
+      phrase: "`Bless`, `venison`, `goodly raiment`, and `obey my voice` are the tension words.",
+      word: "`Venison` means hunted game. The meal becomes part of the blessing scene Isaac is trying to control.",
+      context: "A father's spoken blessing carried inheritance, authority, destiny, and public family direction.",
+      connection: "Favoritism from Genesis 25 now becomes manipulation in Genesis 27.",
+      reflection: "Rebekah believes the promise, but she tries to secure it through deception.",
+    };
+  }
+
+  if (title.includes("jacob receives") || title.includes("deceives")) {
+    return {
+      phrase: "`I am Esau`, `the voice is Jacob's voice`, `hands`, `smell`, and `blessing` slow the deception down.",
+      word: "`Blessing` is not a casual wish. It is covenant direction spoken over the next generation.",
+      context: "In an oral culture, spoken words of blessing had weight. They shaped inheritance, status, and future expectation.",
+      connection: "Jacob receives the blessing, but he receives it through lies that will haunt him later.",
+      reflection: "Genesis lets the blessing matter and the deception hurt at the same time.",
+    };
+  }
+
+  if (title.includes("esau") || title.includes("grief")) {
+    return {
+      phrase: "`Exceeding great and bitter cry`, `supplanted`, and `birthright` reveal Esau's pain.",
+      word: "`Supplanted` means displaced or tripped up. Esau feels Jacob has taken his place twice.",
+      context: "The firstborn blessing affected honor, inheritance, leadership, and family future.",
+      connection: "Genesis is not asking us to laugh at Esau's grief. It makes the family damage audible.",
+      reflection: "Sin inside a family can turn blessing into heartbreak.",
+    };
+  }
+
+  if (title.includes("flees")) {
+    return {
+      phrase: "`Hate`, `slay`, `flee`, and `few days` show consequences arriving fast.",
+      word: "`Flee` means Jacob's blessing does not give him peace at home. It sends him into exile.",
+      context: "Leaving the household meant leaving protection, familiarity, inheritance space, and family belonging.",
+      connection: "Jacob's running sets up Genesis 28-36, where God will transform him slowly.",
+      reflection: "Manipulation may get an outcome, but it cannot heal the wound it creates.",
+    };
+  }
+
+  return {
+    phrase: "Read the key words slowly because Genesis teaches through family details, spoken words, food, clothing, fear, and blessing.",
+    word: "Older KJV terms often carry emotional and covenant weight, so pause before treating them like decoration.",
+    context: "Ancient households were shaped by inheritance, firstborn rights, marriage alliances, wells, livestock, and public blessings.",
+    connection: "This passage keeps the covenant moving from Abraham through Isaac toward Jacob.",
+    reflection: "Ask where trust is present and where fear is quietly taking over.",
+  };
+}
+
+function buildIsaacLayeredTeaching(section: IsaacSection) {
+  const detail = isaacTeachingDetails(section);
+  return [
+    "### 📖 What This Section Is Doing",
+    `This part of the story teaches through **${section.title.toLowerCase()}**, so slow down and watch the family pressure underneath the event.`,
+    "### 🔎 Words And Phrases To Notice",
+    detail.phrase,
+    detail.word,
+    "### 🏺 Ancient Family Context",
+    detail.context,
+    "### 🧵 Covenant Connection",
+    detail.connection,
+    "### 💬 Louis Reflection",
+    detail.reflection,
+  ].join("\n\n");
 }
 
 const isaacThreads = [
@@ -581,20 +690,20 @@ function normalizeIsaacVerseFlow() {
       if (!Number.isFinite(start) || !Number.isFinite(end) || end - start + 1 <= 5) return [section];
 
       const chunks: IsaacSection[] = [];
-      for (let chunkStart = start; chunkStart <= end; chunkStart += 5) {
-        const chunkEnd = Math.min(end, chunkStart + 4);
+      const totalVerses = end - start + 1;
+      const chunkSize = totalVerses <= 8 ? Math.ceil(totalVerses / 2) : 5;
+      for (let chunkStart = start; chunkStart <= end; chunkStart += chunkSize) {
+        const chunkEnd = Math.min(end, chunkStart + chunkSize - 1);
         const firstChunk = chunkStart === start;
         chunks.push({
           reference: `Genesis ${chapterNumber}:${chunkStart} to ${chunkEnd}`,
           title: firstChunk ? section.title : `${section.title} Continued`,
-          verses: firstChunk
-            ? section.verses
-            : [`Genesis ${chapterNumber}:${chunkStart}-${chunkEnd} continues this family and covenant movement.`],
+          verses: [`Genesis ${chapterNumber}:${chunkStart}-${chunkEnd} carries this family and covenant movement.`],
           notes: firstChunk
             ? section.notes
             : [
-                "This smaller verse section keeps the blessing, fear, deception, or family consequence easier to follow.",
-                "Watch what each person says and does here. Genesis is not rushing the story; it is showing how covenant promise moves through real family choices.",
+                "Read this continued section as a real teaching moment inside the blessing story.",
+                "Watch what each person says and does here. Genesis is showing how covenant promise moves through real family choices.",
                 "The details matter because Isaac, Rebekah, Jacob, and Esau are not symbols only. They are people whose decisions wound, reveal, and redirect the household.",
               ],
         });
@@ -613,37 +722,7 @@ function buildIsaacNotes(chapter: IsaacChapterNote) {
   const threads = isaacThreads.map((item) => `- ${item}`).join("\n");
 
   const base = `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Promise Through Isaac Threads To Keep Watching\n\n${threads}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map(buildSection).join("\n\n")}`;
-  const paced = buildIsaacPacedStudyGuide(chapter, base);
-
-  return `${base}\n\n${paced}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
-}
-
-function isaacWordCount(value: string) {
-  return value.replace(/<[^>]+>/g, " ").replace(/[#>*_`~\-[\]()!]/g, " ").trim().split(/\s+/).filter(Boolean).length;
-}
-
-function buildIsaacPacedStudyGuide(chapter: IsaacChapterNote, base: string) {
-  const additions: string[] = [];
-  let index = 0;
-  const targetWords = 2300;
-
-  while (isaacWordCount(`${base}\n\n${additions.join("\n\n")}`) < targetWords && index < chapter.sections.length * 4) {
-    const section = chapter.sections[index % chapter.sections.length];
-    const focus = section.verses[0] || section.reference;
-    const mode = index % 4;
-    additions.push(
-      mode === 0
-        ? `### Slow Verse Walk - ${section.reference}\n\nRead this smaller section as its own movement. ${focus} The promise through Isaac is not only about who receives a blessing. It is about fear, trust, family pressure, covenant inheritance, and the way one decision can shape the emotional future of the whole household.`
-        : mode === 1
-          ? `In **${section.title}**, watch what each person wants. Isaac wants security and blessing, Rebekah wants the promise protected, Jacob wants the blessing, and Esau wants what he feels has been taken. Genesis lets those desires collide without pretending the family is healthy.`
-          : mode === 2
-            ? `This section should be read slowly because covenant moments in Genesis often happen inside ordinary family scenes: food, wells, clothing, voices, fear, grief, and spoken words. The details are not decoration. They show how God's promise moves through real people.`
-            : `Before moving forward, ask what this passage reveals about trust. Is someone trusting God's word, forcing an outcome, reacting from fear, or hiding behind deception? That question helps Genesis 26-27 feel like a Bible study instead of a quick summary.`,
-    );
-    index += 1;
-  }
-
-  return `# Slow Verse Walk\n\n${additions.join("\n\n")}`;
+  return `${base}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
 }
 
 export const PROMISE_THROUGH_ISAAC_DEEP_NOTES = isaacNotes.map(buildIsaacNotes);
