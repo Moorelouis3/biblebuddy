@@ -268,7 +268,16 @@ html {
   background-color: var(--bb-surface-soft) !important;
 }
 
-[data-bb-theme]:not([data-bb-theme="light"]) header,
+[data-bb-theme] header {
+  background-color: var(--bb-background) !important;
+  border-color: var(--bb-card-border) !important;
+}
+
+[data-bb-theme] .dashboard-shell {
+  background: var(--bb-background) !important;
+  background-color: var(--bb-background) !important;
+}
+
 [data-bb-theme]:not([data-bb-theme="light"]) nav,
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="sticky bottom"] {
   background-color: var(--bb-nav-background) !important;

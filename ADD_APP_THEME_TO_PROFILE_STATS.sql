@@ -6,4 +6,4 @@ DROP CONSTRAINT IF EXISTS profile_stats_app_theme_check;
 
 ALTER TABLE profile_stats
 ADD CONSTRAINT profile_stats_app_theme_check
-CHECK (app_theme IN ('light', 'dark', 'blue', 'gold', 'purple'));
+CHECK (app_theme IN ('light', 'dark', 'blue', 'gold', 'purple', 'red', 'green', 'pink'));

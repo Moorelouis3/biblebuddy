@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
+import BibleReadingModal from "./BibleReadingModal";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
+import { getBookTotalChapters, getCompletedChapters } from "../lib/readingProgress";
 import {
   canFreeUserUnlockChapter,
   formatFreePlanCountdown,
@@ -357,6 +359,78 @@ type ActiveTaskPrompt = {
   lineOne: string;
   lineTwo: string;
 };
+
+const DASHBOARD_BIBLE_BOOKS = [
+  "Genesis",
+  "Exodus",
+  "Leviticus",
+  "Numbers",
+  "Deuteronomy",
+  "Joshua",
+  "Judges",
+  "Ruth",
+  "1 Samuel",
+  "2 Samuel",
+  "1 Kings",
+  "2 Kings",
+  "1 Chronicles",
+  "2 Chronicles",
+  "Ezra",
+  "Nehemiah",
+  "Esther",
+  "Job",
+  "Psalms",
+  "Proverbs",
+  "Ecclesiastes",
+  "Song of Solomon",
+  "Isaiah",
+  "Jeremiah",
+  "Lamentations",
+  "Ezekiel",
+  "Daniel",
+  "Hosea",
+  "Joel",
+  "Amos",
+  "Obadiah",
+  "Jonah",
+  "Micah",
+  "Nahum",
+  "Habakkuk",
+  "Zephaniah",
+  "Haggai",
+  "Zechariah",
+  "Malachi",
+  "Matthew",
+  "Mark",
+  "Luke",
+  "John",
+  "Acts",
+  "Romans",
+  "1 Corinthians",
+  "2 Corinthians",
+  "Galatians",
+  "Ephesians",
+  "Philippians",
+  "Colossians",
+  "1 Thessalonians",
+  "2 Thessalonians",
+  "1 Timothy",
+  "2 Timothy",
+  "Titus",
+  "Philemon",
+  "Hebrews",
+  "James",
+  "1 Peter",
+  "2 Peter",
+  "1 John",
+  "2 John",
+  "3 John",
+  "Jude",
+  "Revelation",
+];
+
+const DASHBOARD_BIBLE_BOOKS_PER_PAGE = 12;
+const DASHBOARD_BIBLE_CHAPTERS_PER_PAGE = 16;
 
 const activeTaskPrompts: ActiveTaskPrompt[] = [
   { lineOne: "This is next", lineTwo: "Open this task" },
@@ -1243,6 +1317,11 @@ export default function DashboardJourneyExperience({
   const [devotionalSettingsMessage, setDevotionalSettingsMessage] = useState<string | null>(null);
   const [freePlanGate, setFreePlanGate] = useState<{ kind: "chapter" | "study"; chapterLabel?: string | null } | null>(null);
   const [freePlanCountdown, setFreePlanCountdown] = useState(() => formatFreePlanCountdown(getNextLocalDayStartMs() - Date.now()));
+  const [embeddedBibleBookPage, setEmbeddedBibleBookPage] = useState(0);
+  const [embeddedBibleSelectedBook, setEmbeddedBibleSelectedBook] = useState<string | null>(null);
+  const [embeddedBibleChapterPage, setEmbeddedBibleChapterPage] = useState(0);
+  const [embeddedBibleCompletedChapters, setEmbeddedBibleCompletedChapters] = useState<number[]>([]);
+  const [embeddedBibleReading, setEmbeddedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
 
   const dashboardPageKeys = ["home", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
@@ -2009,6 +2088,31 @@ export default function DashboardJourneyExperience({
     return () => window.removeEventListener("bb:dashboard-open-explore-page", handleOpenExplorePage);
   }, []);
 
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadEmbeddedBibleProgress() {
+      if (!userId || !embeddedBibleSelectedBook) {
+        setEmbeddedBibleCompletedChapters([]);
+        return;
+      }
+
+      try {
+        const chapters = await getCompletedChapters(userId, embeddedBibleSelectedBook);
+        if (!cancelled) setEmbeddedBibleCompletedChapters(chapters);
+      } catch (error) {
+        console.error("[DASHBOARD_BIBLE] Could not load completed chapters:", error);
+        if (!cancelled) setEmbeddedBibleCompletedChapters([]);
+      }
+    }
+
+    void loadEmbeddedBibleProgress();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [embeddedBibleSelectedBook, userId]);
+
   function snapToPage(index: number) {
     const nextIndex = Math.max(0, Math.min(index, dashboardPageKeys.length - 1));
     setActivePage(nextIndex);
@@ -2053,6 +2157,149 @@ export default function DashboardJourneyExperience({
       default:
         return ["Keep building your daily rhythm", "Follow your next Bible step", "Grow one day at a time"];
     }
+  };
+
+  const renderEmbeddedBiblePage = () => {
+    const bookStartIndex = embeddedBibleBookPage * DASHBOARD_BIBLE_BOOKS_PER_PAGE;
+    const visibleBooks = DASHBOARD_BIBLE_BOOKS.slice(bookStartIndex, bookStartIndex + DASHBOARD_BIBLE_BOOKS_PER_PAGE);
+    const hasPreviousBookPage = embeddedBibleBookPage > 0;
+    const hasNextBookPage = bookStartIndex + DASHBOARD_BIBLE_BOOKS_PER_PAGE < DASHBOARD_BIBLE_BOOKS.length;
+    const selectedBookChapterCount = embeddedBibleSelectedBook ? getBookTotalChapters(embeddedBibleSelectedBook) : 0;
+    const chapterStartIndex = embeddedBibleChapterPage * DASHBOARD_BIBLE_CHAPTERS_PER_PAGE;
+    const visibleChapters = embeddedBibleSelectedBook
+      ? Array.from({ length: selectedBookChapterCount }, (_, index) => index + 1).slice(
+          chapterStartIndex,
+          chapterStartIndex + DASHBOARD_BIBLE_CHAPTERS_PER_PAGE,
+        )
+      : [];
+    const hasPreviousChapterPage = embeddedBibleChapterPage > 0;
+    const hasNextChapterPage = chapterStartIndex + DASHBOARD_BIBLE_CHAPTERS_PER_PAGE < selectedBookChapterCount;
+
+    return (
+      <section className="w-full px-1">
+        <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+          <div className="min-h-[calc(100vh-210px)] rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Scripture</p>
+                <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">
+                  {embeddedBibleSelectedBook || "The Bible"}
+                </h2>
+                <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
+                  {embeddedBibleSelectedBook
+                    ? `${selectedBookChapterCount} chapters. Pick one to read inside your dashboard.`
+                    : "Choose a book and keep reading without leaving your dashboard."}
+                </p>
+              </div>
+              {embeddedBibleSelectedBook ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmbeddedBibleSelectedBook(null);
+                    setEmbeddedBibleChapterPage(0);
+                  }}
+                  className="rounded-full border border-[#dbe7f4] bg-[#f7fbff] px-3 py-2 text-xs font-black text-[#2f7fe8] transition hover:bg-[#eef6ff]"
+                >
+                  Books
+                </button>
+              ) : null}
+            </div>
+
+            {embeddedBibleSelectedBook ? (
+              <div className="mt-5">
+                <div className="grid grid-cols-4 gap-2 sm:grid-cols-4">
+                  {visibleChapters.map((chapter) => {
+                    const isComplete = embeddedBibleCompletedChapters.includes(chapter);
+                    return (
+                      <button
+                        key={chapter}
+                        type="button"
+                        onClick={() => setEmbeddedBibleReading({ book: embeddedBibleSelectedBook, chapter })}
+                        className={`rounded-2xl border px-2 py-3 text-center text-sm font-black transition hover:-translate-y-0.5 hover:shadow-sm ${
+                          isComplete
+                            ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+                            : "border-[#dbe7f4] bg-[#f8fbff] text-gray-800 hover:border-[#7BAFD4]"
+                        }`}
+                      >
+                        <span className="block text-lg">{chapter}</span>
+                        <span className="mt-1 block text-[10px] font-bold text-gray-500">
+                          {isComplete ? "Done" : "Read"}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-5 flex items-center justify-between gap-3 text-xs font-black text-[#2f7fe8]">
+                  <button
+                    type="button"
+                    onClick={() => hasPreviousChapterPage && setEmbeddedBibleChapterPage((page) => page - 1)}
+                    disabled={!hasPreviousChapterPage}
+                    className={`rounded-full px-3 py-2 transition ${hasPreviousChapterPage ? "bg-[#eef6ff] hover:bg-[#dbeafe]" : "bg-gray-100 text-gray-300"}`}
+                  >
+                    Previous chapters
+                  </button>
+                  <span className="text-gray-500">
+                    Page {embeddedBibleChapterPage + 1} of {Math.max(1, Math.ceil(selectedBookChapterCount / DASHBOARD_BIBLE_CHAPTERS_PER_PAGE))}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => hasNextChapterPage && setEmbeddedBibleChapterPage((page) => page + 1)}
+                    disabled={!hasNextChapterPage}
+                    className={`rounded-full px-3 py-2 transition ${hasNextChapterPage ? "bg-[#eef6ff] hover:bg-[#dbeafe]" : "bg-gray-100 text-gray-300"}`}
+                  >
+                    Next chapters
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="mt-5">
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {visibleBooks.map((book) => (
+                    <button
+                      key={book}
+                      type="button"
+                      onClick={() => {
+                        setEmbeddedBibleSelectedBook(book);
+                        setEmbeddedBibleChapterPage(0);
+                      }}
+                      className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-3 py-3 text-left text-sm font-black text-gray-900 transition hover:-translate-y-0.5 hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm"
+                    >
+                      <span className="block leading-tight">{book}</span>
+                      <span className="mt-1 block text-[11px] font-bold text-gray-500">
+                        {getBookTotalChapters(book)} chapters
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="mt-5 flex items-center justify-between gap-3 text-xs font-black text-[#2f7fe8]">
+                  <button
+                    type="button"
+                    onClick={() => hasPreviousBookPage && setEmbeddedBibleBookPage((page) => page - 1)}
+                    disabled={!hasPreviousBookPage}
+                    className={`rounded-full px-3 py-2 transition ${hasPreviousBookPage ? "bg-[#eef6ff] hover:bg-[#dbeafe]" : "bg-gray-100 text-gray-300"}`}
+                  >
+                    Previous books
+                  </button>
+                  <span className="text-gray-500">
+                    Page {embeddedBibleBookPage + 1} of {Math.ceil(DASHBOARD_BIBLE_BOOKS.length / DASHBOARD_BIBLE_BOOKS_PER_PAGE)}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => hasNextBookPage && setEmbeddedBibleBookPage((page) => page + 1)}
+                    disabled={!hasNextBookPage}
+                    className={`rounded-full px-3 py-2 transition ${hasNextBookPage ? "bg-[#eef6ff] hover:bg-[#dbeafe]" : "bg-gray-100 text-gray-300"}`}
+                  >
+                    Next books
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    );
   };
 
   const renderDashboardFeaturePage = (
@@ -2891,13 +3138,7 @@ export default function DashboardJourneyExperience({
         </div>
 
         <div className="w-full shrink-0">
-          {renderDashboardFeaturePage("bible", dashboardPageLinks.bible, {
-              title: "The Bible",
-              subtitle: "Read the complete Bible here",
-              href: "/reading",
-              emoji: "\uD83D\uDCD6",
-              eyebrow: "Scripture",
-            })}
+          {renderEmbeddedBiblePage()}
         </div>
 
         <div className="w-full shrink-0">
@@ -3041,6 +3282,21 @@ export default function DashboardJourneyExperience({
           ))}
         </div>
       </nav>
+
+      {embeddedBibleReading ? (
+        <BibleReadingModal
+          book={embeddedBibleReading.book}
+          chapter={embeddedBibleReading.chapter}
+          onClose={() => setEmbeddedBibleReading(null)}
+          onMarkComplete={() => {
+            setEmbeddedBibleCompletedChapters((previous) =>
+              previous.includes(embeddedBibleReading.chapter)
+                ? previous
+                : [...previous, embeddedBibleReading.chapter].sort((a, b) => a - b),
+            );
+          }}
+        />
+      ) : null}
 
       <ModalShell
         isOpen={showDevotionalSettings}
