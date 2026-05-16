@@ -3795,11 +3795,18 @@ export default function DashboardPage() {
           color: #cbd5e1;
         }
         @keyframes dashboard-inline-task-slide {
-          from { opacity: 0; transform: translateY(-8px); max-height: 0; }
-          to { opacity: 1; transform: translateY(0); max-height: 1400px; }
+          from { opacity: 0; transform: translateY(-8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes dashboard-inline-reader-slide {
+          from { opacity: 0; transform: translateY(-8px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .dashboard-inline-task {
           animation: dashboard-inline-task-slide 260ms ease-out both;
+        }
+        .dashboard-inline-reader {
+          animation: dashboard-inline-reader-slide 260ms ease-out both;
         }
       `}</style>
       <div className="dashboard-shell min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">

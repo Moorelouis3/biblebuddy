@@ -9,12 +9,14 @@ import CommentSection from "./comments/CommentSection";
 import type { TaskState } from "./LouisDailyTasksModal";
 import { triggerPoints } from "./PointsPop";
 import { ACTION_TYPE } from "../lib/actionTypes";
+import { consumeCreditAction } from "../lib/creditClient";
 import { supabase } from "../lib/supabaseClient";
 import { markChapterDone } from "../lib/readingProgress";
 import { getProverbsChapterNotesFallback, withNotesTimeout } from "../lib/proverbsChapterNotesFallback";
 import { getScrambledBook, getScrambledChapter } from "../lib/scrambledGameData";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaBook, getTriviaChapter } from "../lib/triviaGameData";
+import { deleteHighlight, fetchHighlights, upsertHighlight } from "../lib/verseHighlightingApi";
 
 type Props = {
   task: TaskState | null;
@@ -45,6 +47,28 @@ type DayProgressRow = {
   reading_completed: boolean;
   reflection_text: string | null;
 };
+
+type BibleApiVerse = {
+  verse: number;
+  text: string;
+};
+
+type BibleApiResponse = {
+  reference: string;
+  text: string;
+  translation_id: string;
+  translation_name: string;
+  translation_note: string;
+  verses: BibleApiVerse[];
+};
+
+type InlineBibleTranslation = "kjv" | "asv" | "web";
+
+const INLINE_BIBLE_TRANSLATIONS: Array<{ value: InlineBibleTranslation; label: string }> = [
+  { value: "kjv", label: "KJV" },
+  { value: "asv", label: "ASV" },
+  { value: "web", label: "WEB" },
+];
 
 class TaskPlayerErrorBoundary extends Component<
   { taskKey: string; onClose: () => void; children: ReactNode },
@@ -107,6 +131,238 @@ function parseDevotionalTask(task: TaskState) {
 
 function chapterSlug(book: string, chapter: number) {
   return `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
+}
+
+function normalizeBibleBookForApi(book: string) {
+  return book.toLowerCase().replace(/\s+/g, "");
+}
+
+function normalizeBibleBookDisplay(book: string) {
+  return book
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}
+
+function getHighlightColorCode(color: string) {
+  switch (color) {
+    case "yellow":
+      return "rgba(250, 204, 21, 0.3)";
+    case "green":
+      return "rgba(34, 197, 94, 0.24)";
+    case "blue":
+      return "rgba(59, 130, 246, 0.22)";
+    case "purple":
+      return "rgba(168, 85, 247, 0.22)";
+    case "orange":
+      return "rgba(249, 115, 22, 0.24)";
+    default:
+      return "transparent";
+  }
+}
+
+function DashboardInlineBibleReader({
+  book,
+  chapter,
+  chapterLabel,
+  userId,
+  onDone,
+  onClose,
+}: {
+  book: string;
+  chapter: number;
+  chapterLabel: string;
+  userId: string | null;
+  onDone: () => Promise<void>;
+  onClose: () => void;
+}) {
+  const [translation, setTranslation] = useState<InlineBibleTranslation>("kjv");
+  const [verses, setVerses] = useState<BibleApiVerse[]>([]);
+  const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
+  const [loading, setLoading] = useState(false);
+  const [markingDone, setMarkingDone] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const bookDisplay = normalizeBibleBookDisplay(book);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadChapter() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const apiBook = normalizeBibleBookForApi(book);
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(() => controller.abort(), 12000);
+        const response = await fetch(`https://bible-api.com/${apiBook}+${chapter}?translation=${translation}`, {
+          signal: controller.signal,
+        });
+        window.clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          throw new Error(`Could not load ${chapterLabel}.`);
+        }
+
+        const data = (await response.json()) as BibleApiResponse;
+        if (!cancelled) {
+          setVerses(data.verses || []);
+        }
+      } catch (loadError) {
+        if (!cancelled) {
+          setVerses([]);
+          setError(loadError instanceof Error && loadError.name === "AbortError" ? "The chapter took too long to load." : "Could not load this chapter.");
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    void loadChapter();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [book, chapter, chapterLabel, translation]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadHighlights() {
+      if (!userId) {
+        setHighlightMap({});
+        return;
+      }
+
+      const saved = await fetchHighlights(book, chapter);
+      if (cancelled) return;
+
+      const next: Record<number, string> = {};
+      saved.forEach((highlight) => {
+        next[highlight.verse] = highlight.color;
+      });
+      setHighlightMap(next);
+    }
+
+    void loadHighlights();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [book, chapter, userId]);
+
+  async function toggleVerseHighlight(verse: number) {
+    const currentlyHighlighted = Boolean(highlightMap[verse]);
+
+    if (currentlyHighlighted) {
+      setHighlightMap((current) => {
+        const next = { ...current };
+        delete next[verse];
+        return next;
+      });
+      await deleteHighlight(book, chapter, verse);
+      return;
+    }
+
+    if (userId) {
+      const creditResult = await consumeCreditAction(ACTION_TYPE.verse_highlighted, { userId });
+      if (!creditResult.ok) return;
+    }
+
+    setHighlightMap((current) => ({ ...current, [verse]: "yellow" }));
+    await upsertHighlight(book, chapter, verse, "yellow");
+  }
+
+  async function handleDone() {
+    setMarkingDone(true);
+    try {
+      await onDone();
+    } finally {
+      setMarkingDone(false);
+    }
+  }
+
+  return (
+    <div className="dashboard-inline-reader mt-4 px-1 pb-2">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="bb-text-muted text-xs font-black uppercase tracking-[0.18em]">Read The Scripture</p>
+          <h2 className="bb-text-primary mt-1 text-2xl font-black leading-tight">
+            {bookDisplay} {chapter}
+          </h2>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <label className="sr-only" htmlFor="dashboard-bible-translation">
+            Bible translation
+          </label>
+          <select
+            id="dashboard-bible-translation"
+            value={translation}
+            onChange={(event) => setTranslation(event.target.value as InlineBibleTranslation)}
+            className="rounded-full border border-[var(--bb-card-border)] bg-transparent px-3 py-2 text-xs font-black uppercase text-[var(--bb-text-primary)] outline-none transition focus:border-[var(--bb-accent)] focus:ring-2 focus:ring-[var(--bb-accent)]/20"
+          >
+            {INLINE_BIBLE_TRANSLATIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <button
+            type="button"
+            onClick={onClose}
+            className="grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border)] bg-transparent text-xl leading-none text-[var(--bb-text-secondary)] transition hover:border-[var(--bb-accent)] hover:text-[var(--bb-text-primary)]"
+            aria-label="Close Bible reader"
+          >
+            x
+          </button>
+        </div>
+      </div>
+
+      {loading ? (
+        <p className="bb-text-secondary py-8 text-sm font-semibold">Loading {chapterLabel}...</p>
+      ) : error ? (
+        <p className="py-8 text-sm font-bold text-red-600">{error}</p>
+      ) : (
+        <div className="space-y-3">
+          {verses.map((verse) => {
+            const highlightColor = highlightMap[verse.verse];
+            return (
+              <p
+                key={verse.verse}
+                className="bb-text-primary rounded-lg px-1 py-1 text-base font-medium leading-8 transition"
+                style={{ backgroundColor: highlightColor ? getHighlightColorCode(highlightColor) : "transparent" }}
+              >
+                <button
+                  type="button"
+                  onClick={() => void toggleVerseHighlight(verse.verse)}
+                  className="mr-2 inline-flex min-w-7 translate-y-[-1px] items-center justify-center rounded-full border border-[var(--bb-card-border)] bg-transparent px-2 py-0.5 text-xs font-black text-[var(--bb-accent)] transition hover:border-[var(--bb-accent)] hover:bg-[var(--bb-accent-soft)]"
+                  aria-label={`Highlight verse ${verse.verse}`}
+                >
+                  {verse.verse}
+                </button>
+                <span>{verse.text}</span>
+              </p>
+            );
+          })}
+        </div>
+      )}
+
+      {!loading && !error ? (
+        <div className="mt-5 flex justify-end">
+          <button
+            type="button"
+            onClick={() => void handleDone()}
+            disabled={markingDone}
+            className="rounded-full bg-[var(--bb-button)] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text)] transition hover:brightness-95 disabled:opacity-60"
+          >
+            {markingDone ? "Saving..." : "Mark Chapter Read"}
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 function getTriviaSlugFromTask(task: TaskState) {
@@ -429,6 +685,20 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   if (task.kind === "reading" && task.book && task.chapter) {
     const chapterLabel = task.chapterLabel || `${task.book} ${task.chapter}`;
+
+    if (isInline) {
+      return (
+        <DashboardInlineBibleReader
+          book={task.book}
+          chapter={task.chapter}
+          chapterLabel={chapterLabel}
+          userId={userId}
+          onClose={closeOnly}
+          onDone={closeReadingAndRefresh}
+        />
+      );
+    }
+
     const readerPath = `/Bible/${encodeURIComponent(task.book)}/${task.chapter}?from=louis-daily-task&embedded=chapter-text`;
     const readerPanel = (
       <div className={`relative flex w-full flex-col overflow-hidden bg-white ${isInline ? "h-[78vh] min-h-[560px]" : "h-[92vh]"}`}>
@@ -448,8 +718,6 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
         />
       </div>
     );
-
-    if (isInline) return inlineFrame(readerPanel);
 
     return (
       <ModalShell isOpen={true} onClose={() => void closeReadingAndRefresh()} backdropColor="bg-black/65" closeOnBackdrop={false}>
