@@ -324,13 +324,326 @@ const isaacNotes: IsaacChapterNote[] = [
   },
 ];
 
+function setIsaacSections(chapterNumber: number, sections: IsaacSection[]) {
+  const chapter = isaacNotes.find((item) => item.chapter === chapterNumber);
+  if (chapter) chapter.sections = sections;
+}
+
+setIsaacSections(26, [
+  {
+    reference: "Genesis 26:1 to 5",
+    title: "Famine Tests Isaac and God Repeats the Covenant",
+    verses: [
+      "Genesis 26:1 says there was a famine in the land.",
+      "Genesis 26:2 says the LORD told Isaac not to go down into Egypt.",
+      "Genesis 26:3-4 repeats land, presence, seed, and blessing.",
+      "Genesis 26:5 remembers Abraham's obedience.",
+    ],
+    notes: [
+      "The chapter begins with famine, which means Isaac's faith is tested at the level of survival. This is not theory. Food, family, servants, flocks, and future are all under pressure.",
+      "The famine also echoes Abraham's story. Isaac is now facing the kind of pressure his father faced, and the reader watches to see whether he will trust God for himself.",
+      "God tells Isaac not to go down into Egypt. Instead, he must `sojourn` in the land. The KJV word `sojourn` means to live as a temporary resident or stranger.",
+      "The covenant is repeated directly to Isaac: God's presence, land, descendants, and blessing to all nations. Isaac is not just Abraham's son. He is now the covenant carrier.",
+    ],
+  },
+  {
+    reference: "Genesis 26:6 to 11",
+    title: "Isaac Repeats Abraham's Fear",
+    verses: [
+      "Genesis 26:6 says Isaac dwelt in Gerar.",
+      "Genesis 26:7 says Isaac called Rebekah his sister because he feared for his life.",
+      "Genesis 26:9 says Abimelech confronted Isaac.",
+      "Genesis 26:11 says Abimelech warned the people not to touch Isaac or Rebekah.",
+    ],
+    notes: [
+      "Isaac obeys by staying in Gerar, but then fear takes over. He lies about Rebekah because he thinks the men of the place may kill him.",
+      "This is painful because it repeats Abraham's earlier failure. Genesis is showing that families can pass down fears, not only blessings.",
+      "Abimelech discovers the truth and confronts Isaac. The foreign king sees the danger of the deception more clearly than Isaac does in the moment.",
+      "Isaac's lie was not harmless. It placed Rebekah and others at risk. Genesis is already preparing us for Genesis 27, where deception will move inside the family.",
+    ],
+  },
+  {
+    reference: "Genesis 26:12 to 16",
+    title: "Blessing Creates Jealousy",
+    verses: [
+      "Genesis 26:12 says Isaac received an hundredfold.",
+      "Genesis 26:13 says the man waxed great.",
+      "Genesis 26:14 says the Philistines envied him.",
+      "Genesis 26:15-16 says Abraham's wells were stopped and Isaac was sent away.",
+    ],
+    notes: [
+      "Isaac prospers because God is faithful to the covenant, not because Isaac is flawless.",
+      "The blessing becomes visible: crops, flocks, herds, servants, and increasing strength.",
+      "But visible blessing creates jealousy. The Philistines envy Isaac and stop up Abraham's wells.",
+      "In that world, wells meant survival. Blocking a well was not a small insult. It attacked a family's ability to stay, drink, farm, and live.",
+    ],
+  },
+  {
+    reference: "Genesis 26:17 to 22",
+    title: "Isaac Reopens Wells and Finds Room",
+    verses: [
+      "Genesis 26:18 says Isaac digged again the wells of Abraham.",
+      "Genesis 26:20 names a well Esek because of strife.",
+      "Genesis 26:21 names another well Sitnah because of opposition.",
+      "Genesis 26:22 names the final well Rehoboth because the LORD made room.",
+    ],
+    notes: [
+      "Isaac reopens Abraham's wells and gives them the old names. That is symbolic. Isaac is continuing Abraham's legacy, not inventing a separate promise.",
+      "The first wells bring conflict. `Esek` is tied to contention, and `Sitnah` is tied to hostility or opposition.",
+      "Isaac keeps moving instead of escalating into violence. That does not mean he is weak. It shows patient endurance in a tense land.",
+      "`Rehoboth` means broad places or room. Isaac recognizes that God has made space for him after repeated conflict.",
+    ],
+  },
+  {
+    reference: "Genesis 26:23 to 25",
+    title: "God Meets Isaac at Beersheba",
+    verses: [
+      "Genesis 26:23 says Isaac went up to Beersheba.",
+      "Genesis 26:24 says God told him, Fear not, for I am with thee.",
+      "Genesis 26:25 says Isaac built an altar, called on the LORD, pitched his tent, and digged a well.",
+    ],
+    notes: [
+      "Beersheba carries Abraham memory, and there God appears to Isaac again.",
+      "God says, `Fear not, for I am with thee.` That speaks directly to Isaac's weakness. Fear has already shaped his lie about Rebekah.",
+      "Isaac responds with worship. The altar says worship, the tent says sojourning, and the well says provision.",
+      "This is one of Isaac's strongest moments. He is living as a covenant heir in a promised land that is not fully settled yet.",
+    ],
+  },
+  {
+    reference: "Genesis 26:26 to 33",
+    title: "Abimelech Seeks Peace",
+    verses: [
+      "Genesis 26:26 says Abimelech came to Isaac.",
+      "Genesis 26:28 says they saw the LORD was with Isaac.",
+      "Genesis 26:31 says they made an oath.",
+      "Genesis 26:33 says Isaac called the well Shebah.",
+    ],
+    notes: [
+      "Abimelech comes with his men because he recognizes God's blessing on Isaac.",
+      "This matters because Isaac's covenant life is visible even to outsiders. The surrounding peoples can see that the LORD is with him.",
+      "The oath creates peace after conflict. Isaac's story is not only private spirituality; it affects politics, land, and neighbor relationships.",
+      "The well at the end confirms provision again. The chapter keeps tying God's promise to water, land, worship, and survival.",
+    ],
+  },
+  {
+    reference: "Genesis 26:34 to 35",
+    title: "Esau's Marriages Bring Grief",
+    verses: [
+      "Genesis 26:34 says Esau took Judith and Bashemath as wives.",
+      "Genesis 26:35 says they were a grief of mind unto Isaac and Rebekah.",
+    ],
+    notes: [
+      "The chapter ends with a short family note, but it is not random. Esau's marriages prepare the tension of Genesis 27.",
+      "`Grief of mind` means deep emotional bitterness or distress. Isaac and Rebekah are burdened by Esau's choices.",
+      "Marriage matters in Genesis because covenant direction matters. This family carries a promise that is connected to identity, worship, and future.",
+      "Genesis 26 ends with God faithful, Isaac blessed, and the family still hurting.",
+    ],
+  },
+]);
+
+setIsaacSections(27, [
+  {
+    reference: "Genesis 27:1 to 4",
+    title: "Isaac Plans to Bless Esau",
+    verses: [
+      "Genesis 27:1 says Isaac was old and his eyes were dim.",
+      "Genesis 27:3 tells Esau to take his weapons and hunt.",
+      "Genesis 27:4 says Isaac wanted to bless Esau before he died.",
+    ],
+    notes: [
+      "Isaac's physical blindness becomes part of the emotional tension, but the family also has spiritual and relational blindness.",
+      "The KJV word `venison` means hunted game. Isaac asks Esau to prepare the food he loves.",
+      "This meal is tied to blessing, not casual appetite. A father's blessing carried inheritance, authority, identity, and future.",
+      "Genesis 25 already said the elder would serve the younger, but Isaac still moves toward Esau. Family preference is colliding with God's earlier word.",
+    ],
+  },
+  {
+    reference: "Genesis 27:5 to 10",
+    title: "Rebekah Forms a Plan",
+    verses: [
+      "Genesis 27:5 says Rebekah heard Isaac speak to Esau.",
+      "Genesis 27:6-7 repeats Isaac's plan.",
+      "Genesis 27:8 says Rebekah told Jacob to obey her voice.",
+      "Genesis 27:9-10 gives her instructions for the meal.",
+    ],
+    notes: [
+      "Rebekah overhears and immediately acts. She knows Jacob is connected to the promise, but she chooses manipulation instead of open trust.",
+      "Her command `obey my voice` sounds parental, but the plan itself is deceptive.",
+      "This is what favoritism does inside a family. Instead of producing trust, it produces secret strategies.",
+      "Rebekah believes the right outcome, but she uses sinful methods to force it.",
+    ],
+  },
+  {
+    reference: "Genesis 27:11 to 17",
+    title: "Jacob Fears Being Caught",
+    verses: [
+      "Genesis 27:11 says Esau is hairy and Jacob is smooth.",
+      "Genesis 27:12 says Jacob fears he will seem like a deceiver and receive a curse.",
+      "Genesis 27:13 says Rebekah takes responsibility for the curse.",
+      "Genesis 27:15-16 says Rebekah uses Esau's clothes and goat skins.",
+    ],
+    notes: [
+      "Jacob's first concern is not that the plan is wrong. His first concern is that he might get caught.",
+      "That is spiritually revealing. Deception often worries about consequences before it worries about sin.",
+      "Rebekah covers Jacob with Esau's clothes and goat skins. The whole plan becomes identity theft inside a family.",
+      "They know Isaac well enough to deceive him. Family closeness becomes the tool of betrayal.",
+    ],
+  },
+  {
+    reference: "Genesis 27:18 to 23",
+    title: "Jacob Lies About Who He Is",
+    verses: [
+      "Genesis 27:18 says Jacob came unto his father.",
+      "Genesis 27:19 says Jacob said, I am Esau thy firstborn.",
+      "Genesis 27:20 shows Jacob bringing the LORD's name into the lie.",
+      "Genesis 27:22 says the voice is Jacob's voice, but the hands are Esau's hands.",
+    ],
+    notes: [
+      "Isaac asks, `Who art thou, my son?` That question cuts to the heart of Jacob's story.",
+      "Jacob answers with a direct lie. He lies about his name, his birth order, his obedience, and the source of his success.",
+      "The darkest part is that Jacob uses God's name to support the deception.",
+      "Isaac senses contradiction: Jacob's voice, Esau's hands. Deception often creates exactly that kind of confusion.",
+    ],
+  },
+  {
+    reference: "Genesis 27:24 to 29",
+    title: "The Blessing Is Spoken",
+    verses: [
+      "Genesis 27:24 asks again whether Jacob is Esau.",
+      "Genesis 27:27 says Isaac smelled Esau's raiment.",
+      "Genesis 27:28 blesses with dew, fatness, corn, and wine.",
+      "Genesis 27:29 speaks of nations, lordship, curse, and blessing.",
+    ],
+    notes: [
+      "Isaac asks again, and Jacob lies again. The repeated question makes the scene more tense, not less.",
+      "Isaac smells Esau's garments and is convinced. The disguise works because the family knows each other's habits and weaknesses.",
+      "`Dew of heaven` and `fatness of the earth` are images of provision, fertility, and abundance in the land.",
+      "The blessing includes rule and covenant language. This is not a small family wish. It carries destiny.",
+    ],
+  },
+  {
+    reference: "Genesis 27:30 to 33",
+    title: "Isaac Trembles",
+    verses: [
+      "Genesis 27:30 says Jacob had scarcely gone out when Esau came in.",
+      "Genesis 27:31 says Esau brought the meal.",
+      "Genesis 27:33 says Isaac trembled very exceedingly.",
+    ],
+    notes: [
+      "The timing is brutal. Jacob leaves, and Esau enters almost immediately.",
+      "Isaac realizes the deception too late. His trembling is not mild surprise. It is deep shock.",
+      "He has been tricked, but he also seems to recognize that the blessing has gone where God's earlier word said it would go.",
+      "Genesis is holding two truths together: God is sovereign, and human deception is still real sin.",
+    ],
+  },
+  {
+    reference: "Genesis 27:34 to 40",
+    title: "Esau's Bitter Cry",
+    verses: [
+      "Genesis 27:34 says Esau cried with a great and exceeding bitter cry.",
+      "Genesis 27:36 says Jacob supplanted him these two times.",
+      "Genesis 27:38 says Esau asked, Hast thou but one blessing?",
+      "Genesis 27:39-40 gives Isaac's word to Esau.",
+    ],
+    notes: [
+      "Esau's grief is one of the most human moments in Genesis. The text lets us hear his pain.",
+      "`Supplanted` means displaced, tripped up, or pushed aside. Esau connects Jacob's name with Jacob's pattern.",
+      "Esau is not innocent in the broader story, because he despised his birthright earlier. But Genesis still shows his heartbreak honestly.",
+      "Isaac's word to Esau is not the covenant blessing Jacob received. It speaks of struggle, survival, and future conflict.",
+    ],
+  },
+  {
+    reference: "Genesis 27:41 to 46",
+    title: "Jacob Must Flee",
+    verses: [
+      "Genesis 27:41 says Esau hated Jacob and planned to kill him.",
+      "Genesis 27:42 says Rebekah heard Esau's words.",
+      "Genesis 27:43 tells Jacob to flee to Haran.",
+      "Genesis 27:46 shows Rebekah speaking to Isaac about Jacob's marriage.",
+    ],
+    notes: [
+      "The blessing has been obtained, but the family is shattered. Esau's grief hardens into hatred.",
+      "Jacob must now flee from the brother he deceived. The man who grasped the blessing loses home, safety, and family life.",
+      "Rebekah sends Jacob away for a few days, but the separation will become much longer. Her plan costs more than she seems to expect.",
+      "Genesis 27 ends with the covenant moving forward, but the household broken by favoritism and deception.",
+    ],
+  },
+]);
+
+function normalizeIsaacVerseFlow() {
+  for (const chapter of isaacNotes) {
+    chapter.sections = chapter.sections.flatMap((section) => {
+      const match = section.reference.match(/^Genesis (\d+):(\d+) to (\d+)$/);
+      if (!match) return [section];
+      const chapterNumber = Number(match[1]);
+      const start = Number(match[2]);
+      const end = Number(match[3]);
+      if (!Number.isFinite(start) || !Number.isFinite(end) || end - start + 1 <= 5) return [section];
+
+      const chunks: IsaacSection[] = [];
+      for (let chunkStart = start; chunkStart <= end; chunkStart += 5) {
+        const chunkEnd = Math.min(end, chunkStart + 4);
+        const firstChunk = chunkStart === start;
+        chunks.push({
+          reference: `Genesis ${chapterNumber}:${chunkStart} to ${chunkEnd}`,
+          title: firstChunk ? section.title : `${section.title} Continued`,
+          verses: firstChunk
+            ? section.verses
+            : [`Genesis ${chapterNumber}:${chunkStart}-${chunkEnd} continues this family and covenant movement.`],
+          notes: firstChunk
+            ? section.notes
+            : [
+                "This smaller verse section keeps the blessing, fear, deception, or family consequence easier to follow.",
+                "Watch what each person says and does here. Genesis is not rushing the story; it is showing how covenant promise moves through real family choices.",
+                "The details matter because Isaac, Rebekah, Jacob, and Esau are not symbols only. They are people whose decisions wound, reveal, and redirect the household.",
+              ],
+        });
+      }
+      return chunks;
+    });
+  }
+}
+
+normalizeIsaacVerseFlow();
+
 function buildIsaacNotes(chapter: IsaacChapterNote) {
   const chapterFlow = chapter.sections.map((section) => `- 📍 ${section.title}`).join("\n");
   const finalThought = chapter.finalThought.map((item) => `- ${item}`).join("\n");
   const pause = chapter.pause.map((item) => `- ${item}`).join("\n");
   const threads = isaacThreads.map((item) => `- ${item}`).join("\n");
 
-  return `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Promise Through Isaac Threads To Keep Watching\n\n${threads}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map(buildSection).join("\n\n")}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
+  const base = `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Promise Through Isaac Threads To Keep Watching\n\n${threads}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map(buildSection).join("\n\n")}`;
+  const paced = buildIsaacPacedStudyGuide(chapter, base);
+
+  return `${base}\n\n${paced}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
+}
+
+function isaacWordCount(value: string) {
+  return value.replace(/<[^>]+>/g, " ").replace(/[#>*_`~\-[\]()!]/g, " ").trim().split(/\s+/).filter(Boolean).length;
+}
+
+function buildIsaacPacedStudyGuide(chapter: IsaacChapterNote, base: string) {
+  const additions: string[] = [];
+  let index = 0;
+  const targetWords = 2300;
+
+  while (isaacWordCount(`${base}\n\n${additions.join("\n\n")}`) < targetWords && index < chapter.sections.length * 4) {
+    const section = chapter.sections[index % chapter.sections.length];
+    const focus = section.verses[0] || section.reference;
+    const mode = index % 4;
+    additions.push(
+      mode === 0
+        ? `### Slow Verse Walk - ${section.reference}\n\nRead this smaller section as its own movement. ${focus} The promise through Isaac is not only about who receives a blessing. It is about fear, trust, family pressure, covenant inheritance, and the way one decision can shape the emotional future of the whole household.`
+        : mode === 1
+          ? `In **${section.title}**, watch what each person wants. Isaac wants security and blessing, Rebekah wants the promise protected, Jacob wants the blessing, and Esau wants what he feels has been taken. Genesis lets those desires collide without pretending the family is healthy.`
+          : mode === 2
+            ? `This section should be read slowly because covenant moments in Genesis often happen inside ordinary family scenes: food, wells, clothing, voices, fear, grief, and spoken words. The details are not decoration. They show how God's promise moves through real people.`
+            : `Before moving forward, ask what this passage reveals about trust. Is someone trusting God's word, forcing an outcome, reacting from fear, or hiding behind deception? That question helps Genesis 26-27 feel like a Bible study instead of a quick summary.`,
+    );
+    index += 1;
+  }
+
+  return `# Slow Verse Walk\n\n${additions.join("\n\n")}`;
 }
 
 export const PROMISE_THROUGH_ISAAC_DEEP_NOTES = isaacNotes.map(buildIsaacNotes);

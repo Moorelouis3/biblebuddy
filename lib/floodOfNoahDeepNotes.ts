@@ -51,81 +51,120 @@ const floodNotes: FloodChapterNote[] = [
     ],
     sections: [
       {
-        reference: "Genesis 5:1 to 20",
-        title: "Adam's Descendants and the Refrain of Death",
+        reference: "Genesis 5:1 to 5",
+        title: "Adam, Image, Family, and Death",
         verses: [
-          "Genesis 5:1-2 calls this the book of the generations of Adam.",
+          "Genesis 5:1-2 calls this the book of the generations of Adam and remembers that God made mankind in His likeness.",
           "Genesis 5:3 says Adam begat a son in his own likeness, after his image.",
-          "Genesis 5 repeats the phrase, and he died.",
+          "Genesis 5:5 says all the days Adam lived were nine hundred and thirty years, and he died.",
         ],
         notes: [
-          "Genesis 5 begins by reaching back to creation. The chapter reminds us that humanity was made in the likeness of God. That matters because the flood story is not about God casually destroying something worthless. Humanity is still dignified. Humanity is still made by God. But humanity is now living east of Eden, under the shadow of death.",
+          "Genesis 5 begins by reaching back to creation before it moves forward into genealogy. That matters because the flood story is not about God casually destroying something worthless. Humanity is still made by God. Humanity still carries dignity. But humanity is now living east of Eden, under the shadow of death.",
           "The phrase `book of the generations` means this is an ordered family record. Ancient readers would not hear this as a boring interruption. They would hear it as the way a family identity, a promise line, and a theological memory are preserved.",
           "Verse 3 says Adam fathers Seth in his own likeness and after his image. Genesis 1 said humanity was made in God's image. Genesis 5 now says Adam passes life forward after the fall. The image of God is not erased, but the brokenness of Adam's fallen condition is now carried through the generations too.",
-          "That is why the repeated phrase `and he died` matters so much.",
-          "It is not just a death notice.",
-          "It is Genesis preaching.",
-          "- Adam lived, and he died.",
-          "- Seth lived, and he died.",
-          "- Enos lived, and he died.",
-          "- Cainan lived, and he died.",
-          "- Mahalaleel lived, and he died.",
-          "- Jared lived, and he died.",
-          "The rhythm is intentionally heavy. Genesis wants the reader to feel the curse of Genesis 3 moving through ordinary family history.",
-          "The long lifespans can feel strange to modern readers. Bible readers have understood them in different ways, but inside the story they do at least three things. They show the ancient world feeling very different from ours. They show life continuing with unusual strength near the beginning of human history. And they make the tragedy sharper: even lives that stretch for centuries still end in death.",
-          "This is one reason Genesis 5 is darker than it first appears. The chapter is not dramatic like Cain murdering Abel. It is quiet. It is names and years. But the quietness makes it feel more realistic. Death is not only in violent moments. Death becomes part of every family record.",
-          "Modern readers often rush through genealogies because they do not feel like action scenes. But Genesis 5 is doing emotional and theological work. It is letting us feel that something has gone terribly wrong with humanity, even while families keep growing.",
-          "The flood has not arrived yet, but the chapter is already preparing us for it. The world is multiplying. Death is spreading. Hope is narrowing into a line. Noah is coming.",
+          "The KJV word `begat` means fathered or became the father of. Genesis uses that word to show life continuing through generations. But the chapter also shows that every new generation is born into a world where death is already active.",
+          "That is why Adam's ending is so heavy. Adam lives a very long life, but the sentence still lands: `and he died.`",
+          "Genesis is already teaching the reader how to feel this chapter. The family line is moving forward, but death is moving with it.",
+        ],
+      },
+      {
+        reference: "Genesis 5:6 to 8",
+        title: "Seth's Line Keeps Moving",
+        verses: [
+          "Genesis 5:6 says Seth lived one hundred and five years and begat Enos.",
+          "Genesis 5:8 says all the days of Seth were nine hundred and twelve years, and he died.",
+        ],
+        notes: [
+          "Seth matters because Genesis 4 ended by showing that God gave Eve another seed after Abel was killed. Cain's line moved toward city-building, culture, pride, and violence. Seth's line is the line Genesis follows toward Noah.",
+          "This does not mean every person in Seth's line is automatically righteous. Genealogies are not saying everyone listed is spiritually mature. They are showing the line through which the story is moving.",
+          "Again the structure is simple: Seth lives, Seth fathers, Seth lives more years, Seth dies.",
+          "The repetition can feel slow, but that slowness is the point. Genesis is making death feel ordinary. Not because death is good, but because the curse has become part of family history.",
+          "So this section teaches two things at once: God is preserving a line, and death is still reigning over that line.",
+        ],
+      },
+      {
+        reference: "Genesis 5:9 to 14",
+        title: "Enos and Cainan Under the Same Shadow",
+        verses: [
+          "Genesis 5:9 says Enos lived ninety years and begat Cainan.",
+          "Genesis 5:11 says all the days of Enos were nine hundred and five years, and he died.",
+          "Genesis 5:12 says Cainan lived seventy years and begat Mahalaleel.",
+          "Genesis 5:14 says all the days of Cainan were nine hundred and ten years, and he died.",
+        ],
+        notes: [
+          "Enos and Cainan continue the same pattern. The names change, the years change, but the ending repeats.",
+          "This is one reason Genesis 5 is darker than it first appears. Nothing dramatic happens here like Cain murdering Abel. No one builds an ark yet. No flood waters rise. But death keeps entering the record.",
+          "That kind of darkness can be easy to miss because it is quiet. Genesis is showing that death is not only found in violent scenes. Death is also found in ordinary family records, birthdays, children, aging, and endings.",
+          "Ancient readers cared deeply about genealogies because they told you where a family came from, where it belonged, and what story it carried. Genesis is using that familiar form to preach a hard truth: sin has changed the human family.",
+          "The flood is not here yet, but the world is already not okay. Humanity is multiplying, but multiplication alone does not heal the fall.",
+        ],
+      },
+      {
+        reference: "Genesis 5:15 to 20",
+        title: "Mahalaleel and Jared Continue the Death Refrain",
+        verses: [
+          "Genesis 5:15 says Mahalaleel lived sixty and five years and begat Jared.",
+          "Genesis 5:17 says all the days of Mahalaleel were eight hundred ninety and five years, and he died.",
+          "Genesis 5:18 says Jared lived one hundred sixty and two years and begat Enoch.",
+          "Genesis 5:20 says all the days of Jared were nine hundred sixty and two years, and he died.",
+        ],
+        notes: [
+          "This section keeps the same rhythm, but it also moves us closer to one of the most surprising moments in the chapter: Enoch.",
+          "Before Enoch appears fully, Genesis names Jared as his father. That detail reminds us that faithfulness does not float in the air. It appears inside real families, real generations, and real historical movement.",
+          "The long lifespans can feel strange to modern readers. Bible readers have understood them in different ways. Inside the story, they at least show that the ancient world feels different from ours and that life near the beginning of human history is described with unusual length.",
+          "But the long lifespans do not erase the tragedy. Even a life that stretches for centuries still ends with `and he died.`",
+          "That repeated line is not filler. It is the sound of Genesis 3 echoing through Genesis 5. God said dust would return to dust, and now every family record proves that His warning was true.",
         ],
       },
       {
         reference: "Genesis 5:21 to 24",
         title: "Enoch Walked With God",
         verses: [
-          "Genesis 5:22 says Enoch walked with God.",
-          "Genesis 5:24 says Enoch was not, for God took him.",
+          "Genesis 5:22 says Enoch walked with God after he begat Methuselah.",
+          "Genesis 5:24 says Enoch walked with God, and he was not, for God took him.",
         ],
         notes: [
           "Enoch interrupts the pattern.",
           "That is the point.",
           "The chapter has trained the reader to expect the same ending: and he died. Then Enoch appears, and the pattern changes. Instead of simply saying he lived and died, Genesis says twice that Enoch walked with God.",
-          "`Walked with God` is covenant-life language before the formal covenants are fully developed. It pictures closeness, faithfulness, fellowship, and a life moving in the direction God desires. It is not saying Enoch was sinless. It is saying his life was marked by nearness to God in a world where death was still spreading.",
+          "`Walked with God` pictures closeness, faithfulness, fellowship, and a life moving in the direction God desires. It is not saying Enoch was sinless. It is saying his life was marked by nearness to God in a world where death was still spreading.",
           "That matters for the flood story because Noah will later be described with similar language. Genesis 6:9 says Noah walked with God. Enoch becomes a preview of faithful life in a darkening world.",
           "The phrase `God took him` is mysterious and beautiful. Enoch does not receive the normal death refrain. Later Scripture remembers Enoch as a man of faith. But even inside Genesis, the point is clear enough: death is real, but death is not stronger than God.",
-          "Enoch's life gives the chapter a flash of hope.",
-          "It tells us that even under the curse, a person can still walk with God.",
-          "That is important because sometimes readers think the early chapters of Genesis are only about collapse. They are not. They are about collapse and mercy together. Sin spreads, death spreads, violence spreads, but God still knows those who walk with Him.",
-          "Enoch also makes the reader ask a personal question: what does faithfulness look like when the larger world is not getting better?",
-          "The answer in Genesis 5 is simple and deep.",
-          "Walk with God.",
-          "Not perform for God.",
-          "Not manage your image around God.",
-          "Walk with Him.",
-          "Steady. Near. Obedient. Trusting.",
+          "Enoch's life gives the chapter a flash of hope. It tells us that even under the curse, a person can still walk with God.",
+          "That is important because Genesis is not only telling a story of collapse. It is telling a story of collapse and mercy together. Sin spreads, death spreads, violence spreads, but God still knows those who walk with Him.",
         ],
       },
       {
-        reference: "Genesis 5:25 to 32",
-        title: "Noah Is Introduced",
+        reference: "Genesis 5:25 to 27",
+        title: "Methuselah and the Patience Before Judgment",
         verses: [
-          "Genesis 5:29 says Noah will comfort us concerning our work and toil because of the ground which the LORD hath cursed.",
+          "Genesis 5:25 says Methuselah lived one hundred eighty and seven years and begat Lamech.",
+          "Genesis 5:27 says all the days of Methuselah were nine hundred sixty and nine years, and he died.",
+        ],
+        notes: [
+          "Methuselah is remembered for having the longest lifespan recorded in Scripture. But Genesis does not turn that into trivia. It places his long life inside the same pattern: he lives, fathers, lives more years, and dies.",
+          "His long life also stands near the edge of the flood story. Genesis is moving slowly toward judgment, but it is not rushing there. The names and years make the reader feel time passing before the waters ever come.",
+          "This matters spiritually because judgment in Scripture is often preceded by patience. God is not impulsive. Genesis 5 lets generations pass before Genesis 6 announces the depth of corruption.",
+          "At the same time, Methuselah's death still proves the main theme of the chapter. Even the longest human life is not eternal life.",
+          "The Bible is preparing us to understand why humanity needs more than long years. Humanity needs rescue from sin and death.",
+        ],
+      },
+      {
+        reference: "Genesis 5:28 to 32",
+        title: "Noah Is Born Into a Tired World",
+        verses: [
+          "Genesis 5:28-29 says Lamech called his son Noah and spoke of comfort concerning work and toil because of the cursed ground.",
           "Genesis 5:32 names Noah's sons: Shem, Ham, and Japheth.",
         ],
         notes: [
           "The end of Genesis 5 introduces Noah before the flood begins.",
           "That is not accidental.",
-          "Noah's name is connected to comfort, rest, or relief. His father Lamech speaks about the pain of work and the cursed ground. That reaches back to Genesis 3, where the ground is cursed because of Adam's sin.",
+          "Noah's name is connected to comfort, rest, or relief. His father Lamech speaks about painful work and the cursed ground. That reaches directly back to Genesis 3, where the ground is cursed because of Adam's sin.",
           "So Noah is introduced as a child born into a world that is tired.",
-          "The ground is cursed.",
-          "Death is repeated.",
-          "Humanity is multiplying.",
-          "Something is wrong everywhere.",
+          "The ground is cursed. Death is repeated. Humanity is multiplying. Something is wrong everywhere.",
           "Lamech's words do not mean Noah will remove the curse completely. Only God can finally do that. But Noah's life will become a turning point. Through Noah, God will preserve life through judgment and begin the world again on the other side of the waters.",
           "The chapter closes by naming Shem, Ham, and Japheth. Those names matter because Genesis 9 and 10 will trace the post-flood world through them. The nations after the flood do not come out of nowhere. They come through Noah's family.",
-          "Genesis 5 ends with the reader standing at the edge of the flood story.",
-          "We have felt death.",
-          "We have seen one man walk with God.",
-          "We have heard a father longing for relief from the cursed ground.",
+          "Genesis 5 ends with the reader standing at the edge of the flood story. We have felt death. We have seen one man walk with God. We have heard a father longing for relief from the cursed ground.",
           "Now the next chapter will show why judgment becomes necessary.",
         ],
       },
@@ -506,13 +545,566 @@ const floodNotes: FloodChapterNote[] = [
   },
 ];
 
+function setFloodSections(chapterNumber: number, sections: FloodSection[]) {
+  const chapter = floodNotes.find((item) => item.chapter === chapterNumber);
+  if (chapter) chapter.sections = sections;
+}
+
+setFloodSections(5, [
+  {
+    reference: "Genesis 5:1 to 5",
+    title: "Adam, Image, Family, and Death",
+    verses: [
+      "Genesis 5:1-2 remembers that God made mankind in His likeness.",
+      "Genesis 5:3 says Adam had a son in his own likeness, after his image.",
+      "Genesis 5:5 says Adam lived nine hundred and thirty years, and he died.",
+    ],
+    notes: [
+      "Genesis 5 begins by looking back to creation before it moves forward into genealogy. That matters because the flood story is not about God throwing away something worthless. Humanity still carries dignity because humanity was made by God.",
+      "But verse 3 also shows life after the fall. Adam passes life forward, but he passes it forward in a world now marked by sin and death. The image of God is not erased, but the family story is wounded.",
+      "The KJV word `begat` means fathered. Genesis is showing life continuing, generation after generation.",
+      "Then the first death refrain lands: Adam lived, and he died. The warning from Eden was true. Dust is returning to dust.",
+    ],
+  },
+  {
+    reference: "Genesis 5:6 to 8",
+    title: "Seth's Line Keeps Moving",
+    verses: [
+      "Genesis 5:6 says Seth lived one hundred and five years and begat Enos.",
+      "Genesis 5:8 says all the days of Seth were nine hundred and twelve years, and he died.",
+    ],
+    notes: [
+      "Seth matters because Genesis 4 ended by showing that God gave Eve another seed after Abel was killed. Cain's line moved toward pride and violence, but Genesis now follows Seth's line toward Noah.",
+      "This does not mean everyone in Seth's line is automatically righteous. It means this is the line the story is tracing.",
+      "The rhythm repeats: Seth lives, fathers, lives more years, and dies. Genesis is making death feel ordinary because the curse has entered ordinary family history.",
+      "God is preserving a line, but death is still reigning over that line.",
+    ],
+  },
+  {
+    reference: "Genesis 5:9 to 14",
+    title: "Enos and Cainan Under the Same Shadow",
+    verses: [
+      "Genesis 5:9 says Enos lived ninety years and begat Cainan.",
+      "Genesis 5:11 says Enos died.",
+      "Genesis 5:12 says Cainan begat Mahalaleel.",
+      "Genesis 5:14 says Cainan died.",
+    ],
+    notes: [
+      "The names change, but the pattern does not. Enos and Cainan keep the family line moving, yet both endings repeat the same truth: and he died.",
+      "That quiet repetition is part of the heaviness. Death is not only in violent scenes like Cain killing Abel. Death is also in ordinary records, ages, children, and endings.",
+      "Ancient readers cared deeply about genealogies because they preserved family memory and identity. Genesis uses that familiar form to teach that sin has changed the human family.",
+      "The flood has not arrived yet, but the world is already not okay. Humanity is multiplying, but multiplication does not heal the fall.",
+    ],
+  },
+  {
+    reference: "Genesis 5:15 to 20",
+    title: "Mahalaleel and Jared Continue the Refrain",
+    verses: [
+      "Genesis 5:15 says Mahalaleel begat Jared.",
+      "Genesis 5:17 says Mahalaleel died.",
+      "Genesis 5:18 says Jared begat Enoch.",
+      "Genesis 5:20 says Jared died.",
+    ],
+    notes: [
+      "This section keeps the same rhythm, but it moves us toward Enoch, the surprising interruption in the chapter.",
+      "The long lifespans feel strange to modern readers. Inside Genesis, they show an ancient world that feels different from ours, while also making the tragedy sharper.",
+      "Even a life that stretches for centuries still ends with death.",
+      "The repeated sentence is not filler. It is Genesis 3 echoing through Genesis 5: dust returns to dust.",
+    ],
+  },
+  {
+    reference: "Genesis 5:21 to 24",
+    title: "Enoch Walked With God",
+    verses: [
+      "Genesis 5:22 says Enoch walked with God after he begat Methuselah.",
+      "Genesis 5:24 says Enoch walked with God, and God took him.",
+    ],
+    notes: [
+      "Enoch interrupts the pattern. Genesis has trained us to expect `and he died,` but Enoch's ending is different.",
+      "`Walked with God` pictures closeness, fellowship, faithfulness, and a life moving in God's direction. It does not mean Enoch was sinless. It means his life was marked by nearness to God.",
+      "This prepares us for Noah, because Genesis 6:9 will say Noah walked with God too. Enoch becomes a preview of faithful life in a darkening world.",
+      "`God took him` is mysterious and hopeful. Death is real, but death is not stronger than God.",
+    ],
+  },
+  {
+    reference: "Genesis 5:25 to 27",
+    title: "Methuselah and Time Before Judgment",
+    verses: [
+      "Genesis 5:25 says Methuselah begat Lamech.",
+      "Genesis 5:27 says all the days of Methuselah were nine hundred sixty and nine years, and he died.",
+    ],
+    notes: [
+      "Methuselah is remembered for the longest lifespan in Scripture, but Genesis does not turn him into trivia. His long life still ends with the same refrain.",
+      "His place near the flood story makes the reader feel time passing before judgment comes. God is not impulsive. Generations pass before Genesis 6 announces the depth of corruption.",
+      "Still, even the longest human life is not eternal life.",
+      "Genesis is preparing us to see that humanity needs more than long years. Humanity needs rescue from sin and death.",
+    ],
+  },
+  {
+    reference: "Genesis 5:28 to 32",
+    title: "Noah Is Born Into a Tired World",
+    verses: [
+      "Genesis 5:28-29 says Lamech named his son Noah and spoke of comfort from work and toil.",
+      "Genesis 5:32 names Noah's sons: Shem, Ham, and Japheth.",
+    ],
+    notes: [
+      "Noah's name is connected to comfort, rest, or relief. His father speaks about painful work and the cursed ground, reaching all the way back to Genesis 3.",
+      "Noah is introduced as a child born into a tired world. The ground is cursed. Death is repeated. Humanity is multiplying. Something is wrong everywhere.",
+      "Lamech's words do not mean Noah will remove the curse completely, but Noah will become a turning point. Through him, God will preserve life through judgment.",
+      "Shem, Ham, and Japheth matter because Genesis 9 and 10 will trace the post-flood world through them. The nations after the flood come through Noah's family.",
+    ],
+  },
+]);
+
+setFloodSections(6, [
+  {
+    reference: "Genesis 6:1 to 4",
+    title: "Power, Desire, and a Darkening World",
+    verses: [
+      "Genesis 6:1 says men began to multiply on the face of the earth.",
+      "Genesis 6:2 mentions the sons of God and the daughters of men.",
+      "Genesis 6:4 says there were giants in the earth in those days.",
+    ],
+    notes: [
+      "Genesis 6 begins with humanity multiplying, but growth does not mean righteousness. More people does not automatically mean a healthier world.",
+      "The phrases `sons of God`, `daughters of men`, and `giants` have been discussed for centuries. Some see heavenly beings, some see powerful rulers, and some see the Seth line mixing with the Cain line. The key point is that the world is becoming morally distorted.",
+      "The KJV word `giants` points to the Nephilim, mighty figures in an ancient world of violence and power. Genesis is not inviting wild speculation; it is showing human society becoming dangerous.",
+      "This opening prepares us for the flood by showing that corruption is not only private. It is social, powerful, and spreading.",
+    ],
+  },
+  {
+    reference: "Genesis 6:5 to 8",
+    title: "God Sees the Heart and Noah Finds Grace",
+    verses: [
+      "Genesis 6:5 says every imagination of man's heart was only evil continually.",
+      "Genesis 6:6 says it repented the LORD that he had made man.",
+      "Genesis 6:8 says Noah found grace in the eyes of the LORD.",
+    ],
+    notes: [
+      "Verse 5 gives the moral reason for the flood before the water appears. The problem is not only behavior. It is imagination, thought, desire, and intention.",
+      "`Repented the LORD` does not mean God sinned or made a mistake. It means God is grieved over what humanity has become. The language shows divine sorrow, not divine weakness.",
+      "God is not cold toward evil. Violence and corruption grieve Him at the heart.",
+      "Then verse 8 breaks through like light: Noah found grace. Grace appears before the ark is built. Rescue begins with God's favor.",
+    ],
+  },
+  {
+    reference: "Genesis 6:9 to 12",
+    title: "Noah Walks With God While Earth Is Corrupt",
+    verses: [
+      "Genesis 6:9 says Noah was just and walked with God.",
+      "Genesis 6:11 says the earth was corrupt and filled with violence.",
+      "Genesis 6:12 says all flesh had corrupted his way upon the earth.",
+    ],
+    notes: [
+      "Noah is described with language that echoes Enoch. He walks with God while the world around him moves in the opposite direction.",
+      "`Just` means righteous or upright. It does not mean Noah is sinless. It means his life is set apart in a generation moving toward ruin.",
+      "The repeated words `corrupt` and `violence` explain the flood. God is judging a world that has become morally ruined and socially brutal.",
+      "This section helps us feel why the ark matters. The ark is not cute. It is rescue in a world filled with violence.",
+    ],
+  },
+  {
+    reference: "Genesis 6:13 to 16",
+    title: "God Announces Judgment and Gives the Ark Pattern",
+    verses: [
+      "Genesis 6:13 says the end of all flesh is come before God.",
+      "Genesis 6:14 commands Noah to make an ark of gopher wood.",
+      "Genesis 6:15-16 gives measurements and design details.",
+    ],
+    notes: [
+      "God tells Noah why judgment is coming: the earth is filled with violence. The flood is not random. It is God's response to a corrupted world.",
+      "`Gopher wood` is an old KJV phrase for the kind of wood used to build the ark. We do not know the exact tree with certainty, but the point is that Noah receives specific instructions.",
+      "`Cubits` are ancient measurements based roughly on the length from elbow to fingertip. The ark is presented as massive, structured, and intentionally designed.",
+      "Noah is not told to improvise salvation. He is told to obey God's pattern.",
+    ],
+  },
+  {
+    reference: "Genesis 6:17 to 22",
+    title: "Covenant, Preservation, and Noah's Obedience",
+    verses: [
+      "Genesis 6:17 says God will bring a flood of waters upon the earth.",
+      "Genesis 6:18 says God will establish His covenant with Noah.",
+      "Genesis 6:22 says Noah did according to all that God commanded him.",
+    ],
+    notes: [
+      "The flood is named clearly here: waters will come upon the earth to judge life under heaven. The language is heavy because the judgment is heavy.",
+      "But covenant appears before the storm. God promises to preserve Noah, his family, and the living creatures brought into the ark.",
+      "`Covenant` means a solemn binding commitment. God is not only announcing destruction; He is binding Himself to preserve life through judgment.",
+      "Noah's obedience is simple and powerful. He does according to all God commands. Faith here looks like building before rain appears.",
+    ],
+  },
+]);
+
+setFloodSections(7, [
+  {
+    reference: "Genesis 7:1 to 5",
+    title: "Enter the Ark",
+    verses: [
+      "Genesis 7:1 says the LORD told Noah to come into the ark.",
+      "Genesis 7:2-3 distinguishes clean and unclean animals.",
+      "Genesis 7:5 says Noah did according unto all that the LORD commanded him.",
+    ],
+    notes: [
+      "God tells Noah to enter the ark. The wording feels personal: judgment is coming, but God is calling Noah into the place of rescue.",
+      "`Clean beasts` are animals suitable for sacrifice and later worship categories. Before the law of Moses, Genesis already shows some distinction that will matter when Noah worships after the flood.",
+      "The animals are preserved so life can continue after judgment. The ark is not only for Noah's survival; it is for the future of creation.",
+      "Noah obeys again. Genesis keeps repeating his obedience because the story wants us to see faith as action.",
+    ],
+  },
+  {
+    reference: "Genesis 7:6 to 10",
+    title: "The Final Days Before the Waters",
+    verses: [
+      "Genesis 7:6 says Noah was six hundred years old when the flood came.",
+      "Genesis 7:7 says Noah and his family entered the ark.",
+      "Genesis 7:10 says after seven days the waters came.",
+    ],
+    notes: [
+      "The chapter slows down before the flood begins. Noah's age, his family, the animals, and the seven-day wait all make the moment feel real.",
+      "The seven days create tension. The door is not just an idea now. The family is inside. The world outside is still standing, but judgment is near.",
+      "This waiting matters emotionally. Obedience often includes a space between doing what God said and seeing why it mattered.",
+      "Genesis makes the reader sit with the seriousness before the waters arrive.",
+    ],
+  },
+  {
+    reference: "Genesis 7:11 to 16",
+    title: "The Deep Breaks Open and the Door Is Shut",
+    verses: [
+      "Genesis 7:11 says the fountains of the great deep were broken up.",
+      "Genesis 7:12 says rain was upon the earth forty days and forty nights.",
+      "Genesis 7:16 says the LORD shut Noah in.",
+    ],
+    notes: [
+      "`Fountains of the great deep` points to waters below bursting open, while the windows of heaven point to waters from above. The flood is pictured as creation's ordered boundaries breaking loose.",
+      "This is terrifying imagery. The world God ordered in Genesis 1 is now being overwhelmed by judgment.",
+      "Noah, his family, and the animals enter as God commanded. Then the LORD shuts him in.",
+      "That detail matters. Noah does not save himself by mastering the door. God seals the place of rescue.",
+    ],
+  },
+  {
+    reference: "Genesis 7:17 to 20",
+    title: "The Waters Prevail",
+    verses: [
+      "Genesis 7:17 says the flood was forty days upon the earth.",
+      "Genesis 7:18 says the waters prevailed and increased greatly.",
+      "Genesis 7:20 says the waters prevailed above the mountains.",
+    ],
+    notes: [
+      "The repeated word `prevailed` makes the flood feel unstoppable. The waters rise, increase, lift the ark, and cover the high places.",
+      "The ark is not escaping judgment by avoiding the waters. It is carried through judgment by God's design.",
+      "Mountains are symbols of stability and height, yet even they are covered. Genesis wants the reader to feel the scale.",
+      "This is not a small storm. It is a world-changing judgment.",
+    ],
+  },
+  {
+    reference: "Genesis 7:21 to 24",
+    title: "Everything Outside the Ark Dies",
+    verses: [
+      "Genesis 7:21 says all flesh died that moved upon the earth.",
+      "Genesis 7:23 says Noah only remained alive, and they that were with him in the ark.",
+      "Genesis 7:24 says the waters prevailed one hundred and fifty days.",
+    ],
+    notes: [
+      "This is the most sobering part of the flood chapter. Genesis does not soften the cost of judgment.",
+      "The repeated categories of life show the totality: birds, cattle, beasts, creeping things, and people. The corruption of the earth has led to the judgment of the earth.",
+      "Noah remains alive with those in the ark. The ark is the only place of preservation in the flood.",
+      "The one hundred and fifty days remind us that rescue does not instantly become comfort. Noah survives, but he must also wait.",
+    ],
+  },
+]);
+
+setFloodSections(8, [
+  {
+    reference: "Genesis 8:1 to 5",
+    title: "God Remembers Noah and the Waters Begin to Recede",
+    verses: [
+      "Genesis 8:1 says God remembered Noah.",
+      "Genesis 8:1 says God made a wind to pass over the earth.",
+      "Genesis 8:4 says the ark rested upon the mountains of Ararat.",
+    ],
+    notes: [
+      "`God remembered Noah` does not mean God had forgotten him. In Scripture, God remembering means God acts faithfully according to His covenant care.",
+      "The wind over the waters echoes creation language. Genesis is showing a kind of new beginning after judgment.",
+      "The waters begin to return within their boundaries. The chaos that covered the earth is being restrained.",
+      "The ark rests, but the story is not over. Rest begins before Noah can leave.",
+    ],
+  },
+  {
+    reference: "Genesis 8:6 to 12",
+    title: "The Raven, the Dove, and Waiting",
+    verses: [
+      "Genesis 8:7 says Noah sent forth a raven.",
+      "Genesis 8:8 says he sent forth a dove.",
+      "Genesis 8:11 says the dove returned with an olive leaf.",
+    ],
+    notes: [
+      "Noah sends birds to learn what the world is like outside the ark. This is practical, patient obedience.",
+      "The raven and dove show the slow transition from judgment to renewed life. Noah does not rush out just because he wants the flood to be over.",
+      "The olive leaf is a sign that vegetation is returning. The earth is becoming habitable again.",
+      "Waiting is a major spiritual theme here. Noah survived judgment, but he still has to wait for God's timing.",
+    ],
+  },
+  {
+    reference: "Genesis 8:13 to 19",
+    title: "Noah Leaves the Ark",
+    verses: [
+      "Genesis 8:13 says the face of the ground was dry.",
+      "Genesis 8:15-16 says God told Noah to go forth from the ark.",
+      "Genesis 8:17 commands the living creatures to breed abundantly.",
+    ],
+    notes: [
+      "Noah waits until God speaks. The same God who told him to enter now tells him to leave.",
+      "That matters because survival after judgment still requires obedience. Noah does not simply decide the next step on his own.",
+      "The animals leave with a command to multiply. This echoes the creation blessing from Genesis 1.",
+      "The flood has judged the old world, but God is preserving life and giving creation a renewed start.",
+    ],
+  },
+  {
+    reference: "Genesis 8:20 to 22",
+    title: "Noah Worships and God Promises Stability",
+    verses: [
+      "Genesis 8:20 says Noah built an altar unto the LORD.",
+      "Genesis 8:21 says the LORD smelled a sweet savour.",
+      "Genesis 8:22 promises seedtime and harvest, cold and heat, summer and winter, day and night.",
+    ],
+    notes: [
+      "Noah's first recorded act after leaving the ark is worship. He builds an altar and offers from the clean animals.",
+      "The phrase `sweet savour` is worship language. It means the offering is acceptable and pleasing to God.",
+      "God acknowledges that the imagination of man's heart is evil from youth. The flood judged humanity, but it did not erase the heart problem.",
+      "Still, God promises stability for the earth. Seasons will continue. Mercy will hold the world together while God's bigger rescue plan moves forward.",
+    ],
+  },
+]);
+
+setFloodSections(9, [
+  {
+    reference: "Genesis 9:1 to 7",
+    title: "Life Restarts with Blessing and Boundaries",
+    verses: [
+      "Genesis 9:1 says God blessed Noah and his sons.",
+      "Genesis 9:4 warns against eating blood.",
+      "Genesis 9:6 says man is made in the image of God.",
+    ],
+    notes: [
+      "God blesses Noah and his sons with language that echoes Genesis 1: be fruitful, multiply, and fill the earth.",
+      "The world is restarting after judgment, but it is not lawless. God gives boundaries around blood, life, and violence.",
+      "Blood represents life. That is why the command about blood matters. Life belongs to God.",
+      "Genesis 9:6 grounds human dignity in the image of God. Even after the flood, the image of God still matters.",
+    ],
+  },
+  {
+    reference: "Genesis 9:8 to 11",
+    title: "God Establishes His Covenant",
+    verses: [
+      "Genesis 9:9 says God establishes His covenant with Noah and his seed.",
+      "Genesis 9:10 includes every living creature.",
+      "Genesis 9:11 says waters shall no more become a flood to destroy all flesh.",
+    ],
+    notes: [
+      "This covenant is not only with Noah. It includes Noah's descendants and living creatures. God's mercy reaches the whole renewed creation.",
+      "`Covenant` means a solemn commitment. God binds Himself with a promise after judgment.",
+      "The promise does not say there will never be local floods or suffering. It says God will not again destroy all flesh by a flood like this.",
+      "The flood story is terrifying, but the covenant shows that judgment is not God's final word over creation.",
+    ],
+  },
+  {
+    reference: "Genesis 9:12 to 17",
+    title: "The Rainbow Sign",
+    verses: [
+      "Genesis 9:13 says God set His bow in the cloud.",
+      "Genesis 9:15 says God will remember His covenant.",
+      "Genesis 9:17 calls the bow the token of the covenant.",
+    ],
+    notes: [
+      "The rainbow is called a `token`, meaning a sign or visible marker of the covenant.",
+      "The bow in the cloud turns storm imagery into promise imagery. Clouds may still come, but they now carry a sign of mercy.",
+      "When God says He will remember, it means He will act faithfully according to His promise.",
+      "The rainbow teaches that the world after judgment is held by covenant mercy.",
+    ],
+  },
+  {
+    reference: "Genesis 9:18 to 23",
+    title: "Noah's Failure and Family Shame",
+    verses: [
+      "Genesis 9:20 says Noah began to be an husbandman.",
+      "Genesis 9:21 says Noah was drunken and uncovered.",
+      "Genesis 9:22-23 contrasts Ham's response with Shem and Japheth's response.",
+    ],
+    notes: [
+      "`Husbandman` means a farmer or man who works the ground. Noah becomes connected to the soil of the renewed world.",
+      "The scene is painful because Noah, the faithful ark builder, is now shown in weakness. Genesis does not turn heroes into flawless statues.",
+      "Ham sees his father's shame, while Shem and Japheth move carefully to cover it. The issue is not only seeing; it is how shame is treated in the family.",
+      "The flood judged the world, but sin still remains in the human heart and home.",
+    ],
+  },
+  {
+    reference: "Genesis 9:24 to 29",
+    title: "Blessing, Curse, and Noah's Death",
+    verses: [
+      "Genesis 9:24 says Noah knew what his younger son had done.",
+      "Genesis 9:25-27 gives words over Canaan, Shem, and Japheth.",
+      "Genesis 9:29 says Noah died.",
+    ],
+    notes: [
+      "This section must be handled carefully. Noah's words have been misused terribly in history, especially to justify racism. The text speaks about Canaan, not a curse on all people with a certain skin color.",
+      "Genesis is tracing family consequences and future tensions among peoples that will matter later in Scripture.",
+      "Shem receives special blessing, and the covenant line will later move through Shem toward Abraham.",
+      "The chapter ends with Noah's death. Even after rescue, covenant, and rainbow, the death refrain from Genesis 5 is still true. Humanity still needs deeper redemption.",
+    ],
+  },
+]);
+
+setFloodSections(10, [
+  {
+    reference: "Genesis 10:1 to 5",
+    title: "Japheth's Line and the Coastlands",
+    verses: [
+      "Genesis 10:1 introduces the generations of Noah's sons.",
+      "Genesis 10:2 names the sons of Japheth.",
+      "Genesis 10:5 says the isles of the Gentiles were divided.",
+    ],
+    notes: [
+      "Genesis 10 is often called the Table of Nations. It shows humanity spreading after the flood.",
+      "The chapter begins with Noah's sons because the post-flood world comes through one preserved family.",
+      "Japheth's line is associated with peoples spreading toward coastlands and distant regions.",
+      "This is not filler. Genesis is showing that nations are known by God and have a place in His world.",
+    ],
+  },
+  {
+    reference: "Genesis 10:6 to 12",
+    title: "Ham's Line, Kingdoms, and Nimrod",
+    verses: [
+      "Genesis 10:6 names the sons of Ham.",
+      "Genesis 10:8 says Cush begat Nimrod.",
+      "Genesis 10:10 says the beginning of Nimrod's kingdom was Babel.",
+    ],
+    notes: [
+      "Ham's line introduces peoples and places that will matter later, including Egypt, Canaan, and Babel.",
+      "Nimrod stands out as a mighty one. Genesis is making us watch power after the flood.",
+      "Cities and kingdoms are not automatically evil, but organized human power can become dangerous when pride and violence rule it.",
+      "Babel appears here before Genesis 11 explains it. Genesis gives the map first, then zooms in on the rebellion.",
+    ],
+  },
+  {
+    reference: "Genesis 10:13 to 20",
+    title: "Egypt, Canaan, and Future Tensions",
+    verses: [
+      "Genesis 10:13-14 traces descendants connected to Egypt.",
+      "Genesis 10:15 says Canaan begat Sidon and Heth.",
+      "Genesis 10:19 describes the border of the Canaanites.",
+    ],
+    notes: [
+      "This section names peoples that will become major players in the Old Testament story.",
+      "Egypt will become a place of refuge and later slavery. Canaan will become the land connected to the promise and conflict.",
+      "Genesis is preparing the reader for future Bible geography. These names are seeds that will grow into later storylines.",
+      "The flood did not end human complexity. Nations, borders, cities, and tensions are developing quickly.",
+    ],
+  },
+  {
+    reference: "Genesis 10:21 to 25",
+    title: "Shem's Line and Peleg's Division",
+    verses: [
+      "Genesis 10:21 introduces Shem's descendants.",
+      "Genesis 10:22 names the children of Shem.",
+      "Genesis 10:25 says in Peleg's days the earth was divided.",
+    ],
+    notes: [
+      "Shem matters because the covenant line will eventually move through him toward Abraham.",
+      "Genesis gives Shem attention because the next major movement of the Bible will narrow from the nations to one family again.",
+      "Peleg's name is connected with division. This likely points toward the division of peoples connected with Babel.",
+      "The Table of Nations is already preparing us for Genesis 11, where human pride gathers and God scatters.",
+    ],
+  },
+  {
+    reference: "Genesis 10:26 to 32",
+    title: "The Nations Spread After the Flood",
+    verses: [
+      "Genesis 10:26-29 continues Shem's family line.",
+      "Genesis 10:31 says these are the sons of Shem by families and nations.",
+      "Genesis 10:32 says the nations were divided in the earth after the flood.",
+    ],
+    notes: [
+      "The chapter ends by repeating its main point: families become languages, lands, and nations.",
+      "Humanity is spreading as God commanded, but the heart problem remains. The next chapter will show people trying to make a name for themselves at Babel.",
+      "Genesis 10 gives a wide-angle view of the world God sees. No nation is invisible to Him.",
+      "This prepares for Abraham, because God's promise to one family will be for the blessing of all families of the earth.",
+    ],
+  },
+]);
+
+function normalizeFloodVerseFlow() {
+  for (const chapter of floodNotes) {
+    chapter.sections = chapter.sections.flatMap((section) => {
+      const match = section.reference.match(/^Genesis (\d+):(\d+) to (\d+)$/);
+      if (!match) return [section];
+      const chapterNumber = Number(match[1]);
+      const start = Number(match[2]);
+      const end = Number(match[3]);
+      if (!Number.isFinite(start) || !Number.isFinite(end) || end - start + 1 <= 5) return [section];
+
+      const chunks: FloodSection[] = [];
+      for (let chunkStart = start; chunkStart <= end; chunkStart += 5) {
+        const chunkEnd = Math.min(end, chunkStart + 4);
+        const firstChunk = chunkStart === start;
+        chunks.push({
+          reference: `Genesis ${chapterNumber}:${chunkStart} to ${chunkEnd}`,
+          title: firstChunk ? section.title : `${section.title} Continued`,
+          verses: firstChunk
+            ? section.verses
+            : [`Genesis ${chapterNumber}:${chunkStart}-${chunkEnd} continues this part of the chapter's flow.`],
+          notes: firstChunk
+            ? section.notes
+            : [
+                "This smaller verse section keeps the study moving slowly instead of swallowing too much of the chapter at once.",
+                "Read these verses as part of the same movement, but pay attention to the exact names, actions, and consequences in this smaller unit.",
+                "Genesis is teaching through sequence. Each small step shows how death, corruption, obedience, judgment, mercy, covenant, or nations develop in order.",
+              ],
+        });
+      }
+      return chunks;
+    });
+  }
+}
+
+normalizeFloodVerseFlow();
+
 function buildFloodNotes(chapter: FloodChapterNote) {
   const chapterFlow = chapter.sections.map((section) => `- 📍 ${section.title}`).join("\n");
   const finalThought = chapter.finalThought.map((item) => `- ${item}`).join("\n");
   const pause = chapter.pause.map((item) => `- ${item}`).join("\n");
   const threads = commonFloodThreads.map((item) => `- ${item}`).join("\n");
 
-  return `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Flood Story Threads To Keep Watching\n\n${threads}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map(buildSection).join("\n\n")}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
+  const base = `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Flood Story Threads To Keep Watching\n\n${threads}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map(buildSection).join("\n\n")}`;
+  const paced = buildFloodPacedStudyGuide(chapter, base);
+
+  return `${base}\n\n${paced}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
+}
+
+function floodWordCount(value: string) {
+  return value.replace(/<[^>]+>/g, " ").replace(/[#>*_`~\-[\]()!]/g, " ").trim().split(/\s+/).filter(Boolean).length;
+}
+
+function buildFloodPacedStudyGuide(chapter: FloodChapterNote, base: string) {
+  const additions: string[] = [];
+  let index = 0;
+  const targetWords = 2300;
+
+  while (floodWordCount(`${base}\n\n${additions.join("\n\n")}`) < targetWords && index < chapter.sections.length * 4) {
+    const section = chapter.sections[index % chapter.sections.length];
+    const focus = section.verses[0] || section.reference;
+    const mode = index % 4;
+    additions.push(
+      mode === 0
+        ? `### Slow Verse Walk - ${section.reference}\n\nRead this smaller section slowly. ${focus} This part matters because Genesis is not rushing toward the flood. It is letting you feel the moral and spiritual movement one step at a time, whether that movement is death spreading, corruption deepening, Noah obeying, waters rising, covenant mercy appearing, or nations forming after judgment.`
+        : mode === 1
+          ? `In **${section.title}**, pay attention to what changes from the section before it. Genesis often teaches through repeated phrases, small shifts, and family details. A name, a command, a waiting period, a boundary, or a covenant word can carry more meaning than it first appears to carry.`
+          : mode === 2
+            ? `This is also where the Flood of Noah study should feel serious. The chapter is showing that God sees violence, remembers His covenant, preserves life, and judges evil without treating human life as cheap. The smaller verse range helps the reader sit with that weight instead of skipping over it.`
+            : `Before moving on, ask what this section reveals about God, humanity, and the future of the story. Genesis is building toward rescue through judgment, but it also keeps reminding us that the deepest human problem is not water outside the ark. It is sin inside the human heart.`,
+    );
+    index += 1;
+  }
+
+  return `# Slow Verse Walk\n\n${additions.join("\n\n")}`;
 }
 
 export const FLOOD_OF_NOAH_DEEP_NOTES = floodNotes.map(buildFloodNotes);

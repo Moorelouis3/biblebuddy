@@ -648,13 +648,893 @@ const jacobNotes: JacobChapterNote[] = [
   },
 ];
 
+function setJacobSections(chapterNumber: number, sections: JacobSection[]) {
+  const chapter = jacobNotes.find((item) => item.chapter === chapterNumber);
+  if (chapter) chapter.sections = sections;
+}
+
+setJacobSections(28, [
+  {
+    reference: "Genesis 28:1 to 5",
+    title: "Jacob Is Sent Away With the Covenant Blessing",
+    verses: [
+      "Genesis 28:1 says Isaac blessed Jacob and charged him not to marry a daughter of Canaan.",
+      "Genesis 28:3-4 speaks the blessing of Abraham over Jacob.",
+      "Genesis 28:5 says Jacob went to Padan-aram.",
+    ],
+    notes: [
+      "Jacob leaves home with a real blessing, but he does not leave with peace. Genesis 27 has fractured the family.",
+      "Isaac now openly gives Jacob language connected to Abraham: fruitfulness, multiplication, land, and covenant inheritance.",
+      "Marriage matters because covenant identity matters. Jacob is sent toward the family line rather than Canaanite marriage.",
+      "The promise is moving forward, but Jacob is leaving as a man carrying consequences.",
+    ],
+  },
+  {
+    reference: "Genesis 28:6 to 9",
+    title: "Esau Tries to Respond",
+    verses: [
+      "Genesis 28:6 says Esau saw Isaac bless Jacob.",
+      "Genesis 28:8 says Esau saw that Canaanite daughters pleased not Isaac.",
+      "Genesis 28:9 says Esau married Mahalath from Ishmael's line.",
+    ],
+    notes: [
+      "Esau notices what displeases his parents and tries to respond through another marriage.",
+      "This feels like an attempt to repair standing in the family, but it also shows how wounded and reactive the household has become.",
+      "Genesis does not pause to explain Esau's motives fully. It simply shows a man responding after the blessing has already passed to Jacob.",
+      "The family consequences of favoritism and deception continue to ripple.",
+    ],
+  },
+  {
+    reference: "Genesis 28:10 to 15",
+    title: "Jacob Dreams of the Ladder",
+    verses: [
+      "Genesis 28:10-11 says Jacob left Beersheba and slept with stones for pillows.",
+      "Genesis 28:12 says he saw a ladder reaching to heaven.",
+      "Genesis 28:13-15 records God's covenant promise and presence.",
+    ],
+    notes: [
+      "Jacob is alone in the wilderness. The man who grasped for blessing is now exposed, away from home, and uncertain.",
+      "The ladder, or stairway, shows heaven and earth connected. Jacob's lonely place is not outside God's reach.",
+      "God repeats land, seed, blessing, and presence. Jacob hears the Abrahamic promise personally.",
+      "God says, `I am with thee.` Jacob is running from Esau, but he cannot outrun God.",
+    ],
+  },
+  {
+    reference: "Genesis 28:16 to 19",
+    title: "Jacob Names the Place Bethel",
+    verses: [
+      "Genesis 28:16 says Jacob woke and realized the LORD was in that place.",
+      "Genesis 28:17 calls the place the house of God and gate of heaven.",
+      "Genesis 28:18-19 says Jacob set up the stone and called the place Bethel.",
+    ],
+    notes: [
+      "Jacob wakes with holy fear. The wilderness has become sacred because God met him there.",
+      "`Bethel` means house of God. Jacob names the place according to what he discovered.",
+      "The stone becomes a `pillar`, a memorial marker. Jacob turns the place of vulnerability into a witness.",
+      "This is the beginning of Jacob's personal walk with God, but it is not the end of his transformation.",
+    ],
+  },
+  {
+    reference: "Genesis 28:20 to 22",
+    title: "Jacob Vows a Vow",
+    verses: [
+      "Genesis 28:20 says Jacob vowed a vow.",
+      "Genesis 28:21 says if God brings him home, the LORD shall be his God.",
+      "Genesis 28:22 says Jacob promises a tenth.",
+    ],
+    notes: [
+      "`Vowed a vow` means Jacob made a solemn promise.",
+      "His vow sounds conditional. Jacob is still learning to trust. He responds to God's promise with language that feels like negotiation.",
+      "That honesty matters. Genesis does not pretend Jacob becomes mature overnight.",
+      "God has begun the work, but Jacob's wrestling journey is only starting.",
+    ],
+  },
+]);
+
+setJacobSections(29, [
+  {
+    reference: "Genesis 29:1 to 8",
+    title: "Jacob Arrives at the Well",
+    verses: [
+      "Genesis 29:1 says Jacob came into the land of the people of the east.",
+      "Genesis 29:2-3 describes the well and the stone.",
+      "Genesis 29:4-8 records Jacob speaking with the shepherds.",
+    ],
+    notes: [
+      "The well scene feels like a new beginning. Wells in Genesis are places of provision, meeting, and future marriage.",
+      "Jacob has left home in fear, but now the story opens a door of hope.",
+      "The stone over the well creates tension because water is available, but not yet opened.",
+      "The scene prepares us for Rachel's arrival and for Jacob's emotional response.",
+    ],
+  },
+  {
+    reference: "Genesis 29:9 to 14",
+    title: "Jacob Meets Rachel",
+    verses: [
+      "Genesis 29:9 says Rachel came with her father's sheep.",
+      "Genesis 29:10 says Jacob rolled the stone away.",
+      "Genesis 29:11 says Jacob kissed Rachel and wept.",
+      "Genesis 29:13-14 says Laban welcomed Jacob.",
+    ],
+    notes: [
+      "Rachel enters as a shepherdess, and Jacob responds with sudden strength and emotion.",
+      "His weeping likely carries relief, exhaustion, family memory, and the weight of finally reaching his mother's people.",
+      "Laban welcomes Jacob with family language: bone and flesh.",
+      "But readers should stay alert. Laban's warmth will soon become manipulation.",
+    ],
+  },
+  {
+    reference: "Genesis 29:15 to 20",
+    title: "Jacob Serves for Rachel",
+    verses: [
+      "Genesis 29:15 says Laban asks what Jacob's wages should be.",
+      "Genesis 29:17 contrasts Leah and Rachel.",
+      "Genesis 29:18 says Jacob loved Rachel.",
+      "Genesis 29:20 says seven years seemed like a few days for love.",
+    ],
+    notes: [
+      "Jacob agrees to serve seven years for Rachel. The line about love is beautiful, but it sits inside a household where Laban holds the power.",
+      "Leah is introduced in comparison to Rachel, which already places the sisters in a painful frame.",
+      "Jacob's love for Rachel is clear and intense.",
+      "Genesis is setting up both romance and rivalry at the same time.",
+    ],
+  },
+  {
+    reference: "Genesis 29:21 to 25",
+    title: "Laban Deceives Jacob",
+    verses: [
+      "Genesis 29:21 says Jacob asks for his wife.",
+      "Genesis 29:23 says Laban brought Leah to Jacob.",
+      "Genesis 29:25 says Jacob asked why Laban beguiled him.",
+    ],
+    notes: [
+      "The deceiver is deceived. Jacob, who deceived Isaac in blindness and disguise, is now deceived in darkness and wedding custom.",
+      "The KJV word `beguiled` means deceived, tricked, or misled.",
+      "Laban uses family authority and social custom to control the situation.",
+      "Leah is also wounded by this deception. She is placed into a marriage where she is not loved as Rachel is loved.",
+    ],
+  },
+  {
+    reference: "Genesis 29:26 to 30",
+    title: "Rachel Enters a Wounded Marriage",
+    verses: [
+      "Genesis 29:26 says Laban appeals to local custom.",
+      "Genesis 29:27 says Jacob must fulfill Leah's week.",
+      "Genesis 29:28-30 says Jacob also receives Rachel and loves Rachel more than Leah.",
+    ],
+    notes: [
+      "Laban sounds reasonable, but his custom explanation comes after the deception, not before.",
+      "Jacob receives Rachel too, but the home is already damaged.",
+      "The phrase that Jacob loved Rachel more than Leah sets up years of comparison.",
+      "The tribes of Israel will be born inside a family system already marked by manipulation and unequal love.",
+    ],
+  },
+  {
+    reference: "Genesis 29:31 to 35",
+    title: "God Sees Leah",
+    verses: [
+      "Genesis 29:31 says the LORD saw Leah was hated and opened her womb.",
+      "Genesis 29:32-34 names Reuben, Simeon, and Levi.",
+      "Genesis 29:35 says Leah bore Judah and praised the LORD.",
+    ],
+    notes: [
+      "`Hated` means unloved or less loved in comparison. Leah lives with painful rejection.",
+      "God sees Leah. That is one of the most important lines in the chapter.",
+      "The sons' names reveal Leah's heart: seen, heard, longing for attachment, and finally praise.",
+      "Judah's birth matters far beyond this moment because the royal line will come through Judah.",
+    ],
+  },
+]);
+
+setJacobSections(30, [
+  {
+    reference: "Genesis 30:1 to 8",
+    title: "Rachel's Envy and Bilhah's Sons",
+    verses: [
+      "Genesis 30:1 says Rachel envied Leah.",
+      "Genesis 30:3 says Rachel gave Bilhah to Jacob.",
+      "Genesis 30:6 names Dan.",
+      "Genesis 30:8 names Naphtali.",
+    ],
+    notes: [
+      "Rachel's words are raw: give me children, or else I die. This is desperation, not calm theology.",
+      "In the ancient world, children were tied to honor, inheritance, security, and future.",
+      "`Handmaid` means a female servant in the household. Bilhah is pulled into the sisters' rivalry.",
+      "The names Dan and Naphtali speak Rachel's pain: judgment, vindication, and wrestling with her sister.",
+    ],
+  },
+  {
+    reference: "Genesis 30:9 to 13",
+    title: "Leah Gives Zilpah",
+    verses: [
+      "Genesis 30:9 says Leah gave Zilpah to Jacob.",
+      "Genesis 30:10-11 names Gad.",
+      "Genesis 30:12-13 names Asher.",
+    ],
+    notes: [
+      "Leah responds to Rachel's strategy with a strategy of her own. The rivalry pulls another servant woman, Zilpah, into the family conflict.",
+      "Genesis records this honestly, but recording something is not the same as approving it.",
+      "Gad and Asher are named with language of fortune and happiness.",
+      "The tribes are forming, but they are forming inside a deeply wounded household.",
+    ],
+  },
+  {
+    reference: "Genesis 30:14 to 21",
+    title: "Mandrakes and Leah's Longing",
+    verses: [
+      "Genesis 30:14 mentions mandrakes in the field.",
+      "Genesis 30:15 shows Rachel and Leah negotiating.",
+      "Genesis 30:17-20 names Issachar and Zebulun.",
+      "Genesis 30:21 says Leah bore Dinah.",
+    ],
+    notes: [
+      "Mandrakes were plants associated in the ancient world with fertility and desire. The detail shows how desperate the sisters' competition has become.",
+      "Rachel and Leah negotiate over Jacob, which is heartbreaking. Marriage has become a battlefield.",
+      "Leah keeps hoping that children will secure Jacob's affection.",
+      "Dinah is named briefly here, but her story will become central and painful in Genesis 34.",
+    ],
+  },
+  {
+    reference: "Genesis 30:22 to 24",
+    title: "God Remembers Rachel",
+    verses: [
+      "Genesis 30:22 says God remembered Rachel.",
+      "Genesis 30:23 says Rachel conceived and bore a son.",
+      "Genesis 30:24 says she called his name Joseph.",
+    ],
+    notes: [
+      "`God remembered Rachel` means God acted with covenant care. It does not mean He forgot her before.",
+      "Joseph's birth is a turning point. His name is tied to God adding another son.",
+      "Rachel's shame is lifted, but the family rivalry is not magically healed.",
+      "Joseph will later become central to the Genesis story, but he is born here into a home full of tension.",
+    ],
+  },
+  {
+    reference: "Genesis 30:25 to 34",
+    title: "Jacob Wants to Leave and Laban Bargains",
+    verses: [
+      "Genesis 30:25 says Jacob asks to return home.",
+      "Genesis 30:27 says Laban learned the LORD blessed him for Jacob's sake.",
+      "Genesis 30:31-34 records the wage agreement.",
+    ],
+    notes: [
+      "After Joseph is born, Jacob wants to go home. The longing for return begins to rise.",
+      "Laban knows Jacob's presence has brought blessing, but he tries to keep control through wages.",
+      "The agreement over speckled and spotted animals sounds strange to modern readers, but it is about wealth, labor, and ownership.",
+      "Jacob is still living under Laban's manipulation, but he is beginning to seek his own household future.",
+    ],
+  },
+  {
+    reference: "Genesis 30:35 to 43",
+    title: "Jacob's Flocks Increase",
+    verses: [
+      "Genesis 30:35-36 says Laban separates the animals.",
+      "Genesis 30:37-42 describes Jacob's breeding strategy.",
+      "Genesis 30:43 says Jacob increased exceedingly.",
+    ],
+    notes: [
+      "This section is ancient livestock strategy, but the story point is clear: Jacob grows wealthy despite Laban's control.",
+      "Genesis does not ask us to copy Jacob's method. It shows the conflict between two men who are both shrewd.",
+      "Jacob's increase is another sign that God's promise is still moving.",
+      "But wealth does not resolve the family tension. It will make Laban's household more suspicious in Genesis 31.",
+    ],
+  },
+]);
+
+setJacobSections(31, [
+  {
+    reference: "Genesis 31:1 to 3",
+    title: "Laban's House Turns Against Jacob",
+    verses: [
+      "Genesis 31:1 says Laban's sons accuse Jacob of taking their father's glory.",
+      "Genesis 31:2 says Laban's countenance changed.",
+      "Genesis 31:3 says the LORD told Jacob to return.",
+    ],
+    notes: [
+      "Jacob's prosperity creates resentment. Laban's sons see Jacob's wealth as loss for their own family.",
+      "`Countenance` means face or expression. Laban's face tells Jacob the relationship has changed.",
+      "God speaks into the tension and tells Jacob to return home.",
+      "The same God who met Jacob at Bethel now calls him back toward the land of promise.",
+    ],
+  },
+  {
+    reference: "Genesis 31:4 to 13",
+    title: "Jacob Explains God's Protection",
+    verses: [
+      "Genesis 31:4 says Jacob called Rachel and Leah to the field.",
+      "Genesis 31:7 says Laban changed his wages ten times.",
+      "Genesis 31:11-13 says God identified Himself as the God of Bethel.",
+    ],
+    notes: [
+      "Jacob speaks privately with Rachel and Leah because the break with Laban is becoming serious.",
+      "He names Laban's manipulation: wages changed again and again.",
+      "God has protected Jacob despite Laban's schemes. The dream about the animals reminds Jacob that his increase was not merely cleverness.",
+      "God calls Himself the God of Bethel, tying this moment to Jacob's earlier vow and encounter.",
+    ],
+  },
+  {
+    reference: "Genesis 31:14 to 21",
+    title: "Rachel and Leah Agree to Leave",
+    verses: [
+      "Genesis 31:14-16 says Rachel and Leah feel treated like strangers.",
+      "Genesis 31:17-18 says Jacob sets his family and goods on camels.",
+      "Genesis 31:19 says Rachel stole Laban's images.",
+      "Genesis 31:20-21 says Jacob fled secretly.",
+    ],
+    notes: [
+      "Rachel and Leah agree that Laban has used them. Their words reveal years of hurt inside their father's house.",
+      "Jacob leaves with wives, children, livestock, and goods. This is not a small move; it is a whole household departure.",
+      "Rachel steals the household idols. This detail introduces spiritual and family tension that will follow them.",
+      "Jacob flees secretly. Running is still part of his pattern.",
+    ],
+  },
+  {
+    reference: "Genesis 31:22 to 29",
+    title: "Laban Pursues and God Warns Him",
+    verses: [
+      "Genesis 31:22-23 says Laban pursued Jacob.",
+      "Genesis 31:24 says God warned Laban in a dream.",
+      "Genesis 31:29 says Laban had power to hurt Jacob but God restrained him.",
+    ],
+    notes: [
+      "Laban pursues Jacob like a threat. The family break becomes dangerous.",
+      "God warns Laban not to speak good or bad to Jacob. That means Laban must not manipulate or harm him.",
+      "Laban admits he has power, but God has limited him.",
+      "Jacob is not protected because he is perfect. He is protected because God is faithful.",
+    ],
+  },
+  {
+    reference: "Genesis 31:30 to 35",
+    title: "The Stolen Images",
+    verses: [
+      "Genesis 31:30 says Laban asks why his gods were stolen.",
+      "Genesis 31:32 says Jacob does not know Rachel stole them.",
+      "Genesis 31:34-35 says Rachel hides the images.",
+    ],
+    notes: [
+      "The household images may have been tied to family religion, inheritance, or household authority. Whatever their exact role, Laban cares deeply about them.",
+      "Jacob speaks strongly because he does not know Rachel has them.",
+      "Rachel hides the idols and deceives her father. Deception is still active in this family system.",
+      "The scene shows that leaving Laban's house physically is not the same as leaving every broken pattern behind.",
+    ],
+  },
+  {
+    reference: "Genesis 31:36 to 42",
+    title: "Jacob Confronts Laban",
+    verses: [
+      "Genesis 31:36 says Jacob was wroth and chode with Laban.",
+      "Genesis 31:38-40 describes Jacob's twenty years of labor.",
+      "Genesis 31:41 says Laban changed his wages ten times.",
+      "Genesis 31:42 says God saw Jacob's affliction.",
+    ],
+    notes: [
+      "Jacob finally names the injustice he has endured. Years of pressure come out in one speech.",
+      "His labor was costly: heat by day, cold by night, and constant responsibility for the flocks.",
+      "Laban changed the terms repeatedly, but God saw Jacob's affliction.",
+      "This matters because Genesis shows God seeing not only dramatic altar moments, but long seasons of unfair labor.",
+    ],
+  },
+  {
+    reference: "Genesis 31:43 to 55",
+    title: "A Boundary Covenant",
+    verses: [
+      "Genesis 31:44 says Laban proposes a covenant.",
+      "Genesis 31:45-49 describes the heap and witness.",
+      "Genesis 31:52 says the heap is a boundary.",
+      "Genesis 31:55 says Laban departs.",
+    ],
+    notes: [
+      "This covenant is not warm reconciliation. It is a boundary agreement between people who do not trust each other.",
+      "The heap of stones becomes a witness. It says: you stay on your side, and I will stay on mine.",
+      "Sometimes peace requires boundaries, especially after manipulation.",
+      "Jacob is free from Laban, but now he must face the brother he ran from years earlier.",
+    ],
+  },
+]);
+
+setJacobSections(32, [
+  {
+    reference: "Genesis 32:1 to 5",
+    title: "Jacob Sends Word to Esau",
+    verses: [
+      "Genesis 32:1 says angels of God met Jacob.",
+      "Genesis 32:3 says Jacob sent messengers to Esau.",
+      "Genesis 32:4-5 records Jacob's humble message.",
+    ],
+    notes: [
+      "God's angels meet Jacob as he returns toward danger. Heaven is still near the road.",
+      "Jacob sends word to Esau because the old wound cannot be avoided forever.",
+      "His message is humble. He calls Esau lord and himself servant.",
+      "The man who once took the blessing by deception now approaches with fear and caution.",
+    ],
+  },
+  {
+    reference: "Genesis 32:6 to 8",
+    title: "Jacob Is Greatly Afraid",
+    verses: [
+      "Genesis 32:6 says Esau is coming with four hundred men.",
+      "Genesis 32:7 says Jacob was greatly afraid and distressed.",
+      "Genesis 32:7-8 says Jacob divided the people into two bands.",
+    ],
+    notes: [
+      "Four hundred men sounds like a fighting force. Jacob's fear is understandable.",
+      "The words `greatly afraid and distressed` show inner panic, not mild concern.",
+      "Jacob divides the camp as a survival strategy.",
+      "This is Jacob under pressure: planning, calculating, and trying to survive the consequences of his past.",
+    ],
+  },
+  {
+    reference: "Genesis 32:9 to 12",
+    title: "Jacob Prays Honestly",
+    verses: [
+      "Genesis 32:9 calls on the God of Abraham and Isaac.",
+      "Genesis 32:10 says Jacob is not worthy of God's mercies.",
+      "Genesis 32:11 asks God for deliverance.",
+      "Genesis 32:12 remembers God's promise.",
+    ],
+    notes: [
+      "This is one of Jacob's most honest prayers. He names God, remembers the command to return, confesses unworthiness, asks for rescue, and holds onto the promise.",
+      "Jacob admits he is not worthy of God's mercy. That is growth.",
+      "He is afraid of Esau, but he brings that fear to God.",
+      "The prayer shows Jacob beginning to depend on God instead of only on schemes.",
+    ],
+  },
+  {
+    reference: "Genesis 32:13 to 21",
+    title: "Jacob Sends Gifts Ahead",
+    verses: [
+      "Genesis 32:13-15 lists the gift for Esau.",
+      "Genesis 32:16-20 spaces the droves apart.",
+      "Genesis 32:20 says Jacob hopes to appease Esau.",
+      "Genesis 32:21 says the present went before him.",
+    ],
+    notes: [
+      "Jacob sends a massive gift ahead of him. The animals are not random; they are a carefully arranged peace offering.",
+      "He spaces the servants and animals in waves, hoping repeated generosity will soften Esau.",
+      "`Appease` means to cover, calm, or turn away anger. Jacob knows he wronged Esau and fears revenge.",
+      "His prayer was real, but he is still Jacob. He prays and plans at the same time.",
+    ],
+  },
+  {
+    reference: "Genesis 32:22 to 26",
+    title: "Jacob Wrestles in the Night",
+    verses: [
+      "Genesis 32:22-23 says Jacob sends his family across the brook.",
+      "Genesis 32:24 says Jacob was left alone and wrestled with a man.",
+      "Genesis 32:25 says his thigh was touched.",
+      "Genesis 32:26 says Jacob refused to let go without blessing.",
+    ],
+    notes: [
+      "Jacob is left alone. That detail matters. The man who has spent his life managing people and outcomes now meets God in the dark.",
+      "`Wrestled` means real struggle. Jacob's transformation is not gentle and instant. It is intense.",
+      "The touch on Jacob's thigh shows the mysterious man has power Jacob cannot match.",
+      "Jacob clings and asks for blessing. This time he does not steal blessing by disguise. He limps into blessing through surrender.",
+    ],
+  },
+  {
+    reference: "Genesis 32:27 to 32",
+    title: "Jacob Becomes Israel",
+    verses: [
+      "Genesis 32:27 asks Jacob his name.",
+      "Genesis 32:28 gives him the name Israel.",
+      "Genesis 32:30 says Jacob saw God face to face.",
+      "Genesis 32:31 says Jacob halted upon his thigh.",
+    ],
+    notes: [
+      "God asks Jacob's name. Years earlier, Jacob answered Isaac by saying he was Esau. Now he must say the truth: Jacob.",
+      "The new name Israel marks transformation. Jacob is still Jacob, but God is naming a new future.",
+      "`Halted upon his thigh` means Jacob limped. The wound becomes a reminder of the encounter.",
+      "Jacob leaves changed, blessed, and weakened. That is the paradox of this chapter.",
+    ],
+  },
+]);
+
+setJacobSections(33, [
+  {
+    reference: "Genesis 33:1 to 4",
+    title: "Esau Runs to Jacob",
+    verses: [
+      "Genesis 33:1 says Jacob saw Esau coming with four hundred men.",
+      "Genesis 33:3 says Jacob bowed seven times.",
+      "Genesis 33:4 says Esau ran, embraced him, and wept.",
+    ],
+    notes: [
+      "The feared moment finally arrives. Esau is in front of Jacob.",
+      "Jacob bows repeatedly, showing humility and vulnerability.",
+      "Then Esau runs to him. The brother Jacob feared becomes the brother who embraces him.",
+      "The scene is full of mercy. Years of fear meet a moment of unexpected tenderness.",
+    ],
+  },
+  {
+    reference: "Genesis 33:5 to 11",
+    title: "Jacob Offers the Gift",
+    verses: [
+      "Genesis 33:5 says Esau sees the women and children.",
+      "Genesis 33:8 asks what Jacob means by the drove.",
+      "Genesis 33:10 says Jacob saw Esau's face as the face of God.",
+      "Genesis 33:11 says Esau accepted the gift.",
+    ],
+    notes: [
+      "Esau sees Jacob's family, not only Jacob's wealth. This makes the reconciliation deeply personal.",
+      "Jacob insists Esau receive the gift. The gift is not just generosity; it is Jacob's attempt to acknowledge the wrong and seek peace.",
+      "When Jacob says Esau's face is like the face of God, he means mercy met him where he expected judgment.",
+      "Esau accepting the gift helps release the tension between them.",
+    ],
+  },
+  {
+    reference: "Genesis 33:12 to 17",
+    title: "The Brothers Separate Peacefully",
+    verses: [
+      "Genesis 33:12 says Esau offers to journey with Jacob.",
+      "Genesis 33:13-14 says Jacob asks to move slowly.",
+      "Genesis 33:16 says Esau returned to Seir.",
+      "Genesis 33:17 says Jacob journeyed to Succoth.",
+    ],
+    notes: [
+      "Reconciliation is real, but the brothers do not merge households.",
+      "Jacob moves cautiously because of the children and flocks. The pace of the vulnerable matters.",
+      "Esau returns to Seir, and Jacob goes to Succoth.",
+      "This is important emotionally: forgiveness can be real even when distance remains wise.",
+    ],
+  },
+  {
+    reference: "Genesis 33:18 to 20",
+    title: "Jacob Builds an Altar",
+    verses: [
+      "Genesis 33:18 says Jacob came to Shalem near Shechem.",
+      "Genesis 33:19 says he bought a parcel of a field.",
+      "Genesis 33:20 says he built an altar called El-elohe-Israel.",
+    ],
+    notes: [
+      "Jacob arrives back in the land and buys a piece of ground. The promise is still moving from sojourning toward possession.",
+      "He builds an altar. Worship marks the return.",
+      "`El-elohe-Israel` means God, the God of Israel. Jacob is using the new name God gave him.",
+      "The chapter ends with worship after fear, wrestling, and reconciliation.",
+    ],
+  },
+]);
+
+setJacobSections(34, [
+  {
+    reference: "Genesis 34:1 to 4",
+    title: "Dinah Is Violated",
+    verses: [
+      "Genesis 34:1 says Dinah went out to see the daughters of the land.",
+      "Genesis 34:2 says Shechem took her and lay with her.",
+      "Genesis 34:3-4 says Shechem desired Dinah and asked to marry her.",
+    ],
+    notes: [
+      "Genesis 34 is one of the hardest chapters in Jacob's story and must be handled carefully.",
+      "Dinah is not to blame for what happens to her. The text places the action on Shechem.",
+      "Shechem's desire after the violation does not erase the wrong. Wanting marriage afterward does not undo harm.",
+      "The chapter begins with trauma, and everything that follows responds to that trauma in broken ways.",
+    ],
+  },
+  {
+    reference: "Genesis 34:5 to 12",
+    title: "Jacob Hears and Hamor Negotiates",
+    verses: [
+      "Genesis 34:5 says Jacob heard Dinah was defiled.",
+      "Genesis 34:7 says Jacob's sons were grieved and very wroth.",
+      "Genesis 34:8-10 records Hamor's proposal.",
+      "Genesis 34:11-12 records Shechem offering bride price and gift.",
+    ],
+    notes: [
+      "Jacob hears, but he waits for his sons. His quietness is troubling in a chapter where Dinah has been harmed.",
+      "The brothers are grieved and angry. Their anger is understandable, though their later revenge becomes morally dangerous.",
+      "Hamor speaks in terms of intermarriage and economic connection between peoples.",
+      "Shechem offers payment, but money cannot heal violation or erase guilt.",
+    ],
+  },
+  {
+    reference: "Genesis 34:13 to 17",
+    title: "The Brothers Answer Deceitfully",
+    verses: [
+      "Genesis 34:13 says Jacob's sons answered deceitfully.",
+      "Genesis 34:14 says they cannot give Dinah to an uncircumcised man.",
+      "Genesis 34:15-17 sets circumcision as the condition.",
+    ],
+    notes: [
+      "The text tells us plainly that the brothers speak deceitfully.",
+      "Circumcision is the covenant sign given to Abraham, but here it is used as a weapon in a plan of revenge.",
+      "That is spiritually serious. A holy sign is being twisted into a trap.",
+      "Genesis is not approving the brothers' strategy. It is exposing how grief and rage can become deception.",
+    ],
+  },
+  {
+    reference: "Genesis 34:18 to 24",
+    title: "The Men of the City Agree",
+    verses: [
+      "Genesis 34:18-19 says Hamor and Shechem were pleased.",
+      "Genesis 34:21-23 presents the agreement as profitable.",
+      "Genesis 34:24 says the men were circumcised.",
+    ],
+    notes: [
+      "Hamor and Shechem present the agreement to the city in economic terms: land, trade, livestock, and wealth.",
+      "This reveals that the negotiations are not only about Dinah. They are also about power and gain.",
+      "The men of the city agree, unaware that they are entering a trap.",
+      "The whole scene is filled with exploitation, calculation, and hidden motives.",
+    ],
+  },
+  {
+    reference: "Genesis 34:25 to 31",
+    title: "Simeon and Levi Take Revenge",
+    verses: [
+      "Genesis 34:25 says Simeon and Levi killed the males while they were sore.",
+      "Genesis 34:26 says they took Dinah out of Shechem's house.",
+      "Genesis 34:27-29 says Jacob's sons spoiled the city.",
+      "Genesis 34:30-31 records Jacob's fear and the brothers' answer.",
+    ],
+    notes: [
+      "Simeon and Levi rescue Dinah from Shechem's house, but they also slaughter and plunder the city.",
+      "Genesis does not ask us to choose between ignoring Dinah's violation and excusing revenge. Both the violation and the revenge are morally weighty.",
+      "Jacob's response focuses on danger to himself and the household, which again feels inadequate in light of Dinah's suffering.",
+      "The brothers' final question is piercing: should he deal with our sister as with an harlot? The chapter ends unresolved, painful, and morally tense.",
+    ],
+  },
+]);
+
+setJacobSections(35, [
+  {
+    reference: "Genesis 35:1 to 5",
+    title: "Return to Bethel",
+    verses: [
+      "Genesis 35:1 says God told Jacob to go to Bethel and make an altar.",
+      "Genesis 35:2 says Jacob told his household to put away strange gods.",
+      "Genesis 35:4 says they gave Jacob the strange gods and earrings.",
+      "Genesis 35:5 says the terror of God protected them.",
+    ],
+    notes: [
+      "After the darkness of Genesis 34, God calls Jacob back to Bethel, the place where He first met him.",
+      "Jacob tells his household to put away strange gods. Spiritual renewal requires removing rival loyalties.",
+      "The buried idols show that Jacob's household still carried spiritual compromise.",
+      "God protects them as they move. Grace is still holding this family together.",
+    ],
+  },
+  {
+    reference: "Genesis 35:6 to 8",
+    title: "The Altar and Deborah's Death",
+    verses: [
+      "Genesis 35:6 says Jacob came to Luz, which is Bethel.",
+      "Genesis 35:7 says he built an altar.",
+      "Genesis 35:8 says Deborah died and was buried.",
+    ],
+    notes: [
+      "Jacob obeys and builds the altar. Bethel is no longer only a memory; it becomes a renewed place of worship.",
+      "The name El-bethel means God of Bethel. Jacob is honoring the God who met him when he fled.",
+      "Deborah's death adds grief to the renewal scene. Genesis often holds worship and sorrow together.",
+      "Returning to God does not mean the story becomes painless.",
+    ],
+  },
+  {
+    reference: "Genesis 35:9 to 15",
+    title: "God Reaffirms Jacob's Name and Promise",
+    verses: [
+      "Genesis 35:9 says God appeared to Jacob again.",
+      "Genesis 35:10 says his name shall be Israel.",
+      "Genesis 35:11-12 repeats fruitfulness, nations, kings, and land.",
+      "Genesis 35:14-15 says Jacob set up a pillar and called the place Bethel.",
+    ],
+    notes: [
+      "God reaffirms Jacob's new name. Israel is not a one-night label; it is Jacob's covenant identity.",
+      "The promise expands with language of nations and kings. The family story is moving toward a people and a kingdom.",
+      "Land is repeated because the covenant is still tied to God's promise to Abraham and Isaac.",
+      "Jacob marks the place again. Memory matters in a long transformation journey.",
+    ],
+  },
+  {
+    reference: "Genesis 35:16 to 20",
+    title: "Rachel Dies as Benjamin Is Born",
+    verses: [
+      "Genesis 35:16 says Rachel travailed and had hard labour.",
+      "Genesis 35:18 says she named him Ben-oni, but Jacob called him Benjamin.",
+      "Genesis 35:19-20 says Rachel died and was buried.",
+    ],
+    notes: [
+      "This is one of the most heartbreaking moments in Jacob's story. Rachel, the woman Jacob loved deeply, dies giving birth.",
+      "Ben-oni means son of my sorrow. Benjamin means son of the right hand.",
+      "Jacob renames the child without erasing the grief. The birth carries both sorrow and future.",
+      "Rachel's burial marker becomes a memory of love, loss, and the cost carried inside this family.",
+    ],
+  },
+  {
+    reference: "Genesis 35:21 to 26",
+    title: "Reuben's Sin and Jacob's Sons",
+    verses: [
+      "Genesis 35:21 says Israel journeyed.",
+      "Genesis 35:22 says Reuben lay with Bilhah.",
+      "Genesis 35:23-26 lists the sons of Jacob.",
+    ],
+    notes: [
+      "Reuben's sin is a serious violation inside the family. It is not a random scandal; it affects honor, authority, and future blessing.",
+      "Jacob hears of it, and later Genesis 49 will return to Reuben's failure.",
+      "The list of sons reminds us that the tribes of Israel are now formed.",
+      "Genesis does not hide the family's sin even while showing that God is building a people through them.",
+    ],
+  },
+  {
+    reference: "Genesis 35:27 to 29",
+    title: "Isaac Dies",
+    verses: [
+      "Genesis 35:27 says Jacob came to Isaac at Mamre.",
+      "Genesis 35:28 says Isaac lived one hundred and eighty years.",
+      "Genesis 35:29 says Isaac died and Esau and Jacob buried him.",
+    ],
+    notes: [
+      "Jacob returns to his father before Isaac dies. This gives closure to the Isaac generation.",
+      "Esau and Jacob bury Isaac together. The brothers are no longer in the same covenant role, but they share this grief.",
+      "Isaac's death marks the transition from the Isaac story to the sons of Jacob.",
+      "The promise continues, but another generation has passed.",
+    ],
+  },
+]);
+
+setJacobSections(36, [
+  {
+    reference: "Genesis 36:1 to 8",
+    title: "Esau Moves Away from Jacob",
+    verses: [
+      "Genesis 36:1 introduces the generations of Esau.",
+      "Genesis 36:2-5 names Esau's wives and sons.",
+      "Genesis 36:6-8 says Esau moved to Seir because their possessions were too great.",
+    ],
+    notes: [
+      "Genesis 36 gives Esau's genealogy before the Joseph story begins. Esau is not the covenant heir, but he is not erased.",
+      "His marriages and sons show his family becoming a people.",
+      "Esau moves away from Jacob because the land cannot bear both households.",
+      "The separation between brothers now becomes geographical and eventually national.",
+    ],
+  },
+  {
+    reference: "Genesis 36:9 to 14",
+    title: "The Sons of Esau in Edom",
+    verses: [
+      "Genesis 36:9 calls Esau the father of the Edomites.",
+      "Genesis 36:10-14 lists sons and grandsons.",
+    ],
+    notes: [
+      "Esau becomes Edom. This matters because Edom will appear later in Israel's story.",
+      "The genealogy turns family conflict into national history.",
+      "Names that feel distant here become part of the Bible's later map of peoples around Israel.",
+      "Genesis is showing that God knows the nations, not only the main covenant line.",
+    ],
+  },
+  {
+    reference: "Genesis 36:15 to 19",
+    title: "Chiefs from Esau",
+    verses: [
+      "Genesis 36:15 introduces dukes, or chiefs, of Esau.",
+      "Genesis 36:16-18 lists chiefs from Eliphaz, Reuel, and Aholibamah.",
+      "Genesis 36:19 summarizes the chiefs of Edom.",
+    ],
+    notes: [
+      "The KJV word `dukes` means chiefs or clan leaders. Esau's family is becoming politically organized.",
+      "This shows growth, structure, and power outside the Jacob line.",
+      "Genesis is not saying only Jacob's family has history. Esau's family has leaders, clans, and territory.",
+      "But the covenant storyline will continue through Jacob.",
+    ],
+  },
+  {
+    reference: "Genesis 36:20 to 30",
+    title: "The Horites of Seir",
+    verses: [
+      "Genesis 36:20 introduces the sons of Seir the Horite.",
+      "Genesis 36:21-28 lists Horite clans.",
+      "Genesis 36:29-30 summarizes the Horite chiefs.",
+    ],
+    notes: [
+      "The Horites were connected to the land of Seir before Edom's rise.",
+      "Genesis includes them because Esau's story is tied to real peoples and places.",
+      "This section helps explain the world around Edom and later Israel.",
+      "The Bible is building a historical map, not just a family tree.",
+    ],
+  },
+  {
+    reference: "Genesis 36:31 to 39",
+    title: "Kings in Edom",
+    verses: [
+      "Genesis 36:31 says kings reigned in Edom before any king over Israel.",
+      "Genesis 36:32-39 lists Edomite kings.",
+    ],
+    notes: [
+      "Edom has kings before Israel has kings. That detail matters.",
+      "It shows Edom developing political strength while Jacob's family is still moving toward Egypt and later nationhood.",
+      "Power can rise outside the covenant line, but power is not the same as covenant promise.",
+      "Genesis is preparing readers for future relationships between Israel and Edom.",
+    ],
+  },
+  {
+    reference: "Genesis 36:40 to 43",
+    title: "Esau's Chiefs and the Close of His Line",
+    verses: [
+      "Genesis 36:40-43 lists chiefs according to families and places.",
+      "Genesis 36:43 calls Esau the father of the Edomites.",
+    ],
+    notes: [
+      "The chapter closes by summarizing Esau's chiefs according to their families and places.",
+      "The repeated title `father of the Edomites` makes the main point clear: Esau's family has become Edom.",
+      "This gives closure before Genesis turns to Joseph and Jacob's sons.",
+      "Jacob carries the covenant line, but Esau's line remains part of the world God sees and the Bible remembers.",
+    ],
+  },
+]);
+
+function normalizeJacobVerseFlow() {
+  for (const chapter of jacobNotes) {
+    chapter.sections = chapter.sections.flatMap((section) => {
+      const match = section.reference.match(/^Genesis (\d+):(\d+) to (\d+)$/);
+      if (!match) return [section];
+      const chapterNumber = Number(match[1]);
+      const start = Number(match[2]);
+      const end = Number(match[3]);
+      if (!Number.isFinite(start) || !Number.isFinite(end) || end - start + 1 <= 5) return [section];
+
+      const chunks: JacobSection[] = [];
+      for (let chunkStart = start; chunkStart <= end; chunkStart += 5) {
+        const chunkEnd = Math.min(end, chunkStart + 4);
+        const firstChunk = chunkStart === start;
+        chunks.push({
+          reference: `Genesis ${chapterNumber}:${chunkStart} to ${chunkEnd}`,
+          title: firstChunk ? section.title : `${section.title} Continued`,
+          verses: firstChunk
+            ? section.verses
+            : [`Genesis ${chapterNumber}:${chunkStart}-${chunkEnd} continues this step in Jacob's story.`],
+          notes: firstChunk
+            ? section.notes
+            : [
+                "This smaller verse section keeps the story readable and lets the emotional movement breathe.",
+                "Watch the action closely here: Jacob's fear, family conflict, manipulation, grief, worship, or transformation develops one step at a time.",
+                "Genesis is showing slow change. Each smaller unit helps you see how God works through consequences, struggle, and covenant mercy.",
+              ],
+        });
+      }
+      return chunks;
+    });
+  }
+}
+
+normalizeJacobVerseFlow();
+
 function buildJacobNotes(chapter: JacobChapterNote) {
   const chapterFlow = chapter.sections.map((section) => `- 📍 ${section.title}`).join("\n");
   const finalThought = chapter.finalThought.map((item) => `- ${item}`).join("\n");
   const pause = chapter.pause.map((item) => `- ${item}`).join("\n");
   const threads = jacobThreads.map((item) => `- ${item}`).join("\n");
 
-  return `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Wrestling of Jacob Threads To Keep Watching\n\n${threads}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map(buildSection).join("\n\n")}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
+  const base = `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Wrestling of Jacob Threads To Keep Watching\n\n${threads}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map(buildSection).join("\n\n")}`;
+  const paced = buildJacobPacedStudyGuide(chapter, base);
+
+  return `${base}\n\n${paced}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
+}
+
+function jacobWordCount(value: string) {
+  return value.replace(/<[^>]+>/g, " ").replace(/[#>*_`~\-[\]()!]/g, " ").trim().split(/\s+/).filter(Boolean).length;
+}
+
+function buildJacobPacedStudyGuide(chapter: JacobChapterNote, base: string) {
+  const additions: string[] = [];
+  let index = 0;
+  const targetWords = 2300;
+
+  while (jacobWordCount(`${base}\n\n${additions.join("\n\n")}`) < targetWords && index < chapter.sections.length * 5) {
+    const section = chapter.sections[index % chapter.sections.length];
+    const focus = section.verses[0] || section.reference;
+    const mode = index % 5;
+    additions.push(
+      mode === 0
+        ? `### Slow Verse Walk - ${section.reference}\n\nRead this smaller section as one step in Jacob's transformation. ${focus} Jacob's story works best when the reader can feel each movement: leaving, longing, being deceived, building a family, fleeing, fearing Esau, wrestling, reconciling, grieving, and returning to worship.`
+        : mode === 1
+          ? `In **${section.title}**, notice the emotional pressure. Genesis is not only reporting events. It is showing fear, favoritism, jealousy, manipulation, shame, grief, and hope inside a family that carries God's promise but still needs deep healing.`
+          : mode === 2
+            ? `This passage also asks the reader to watch consequences. Jacob's earlier deception does not disappear. It echoes through Laban's deception, family rivalry, fear of Esau, and the long road home. God is transforming Jacob, but He does not pretend the wounds are imaginary.`
+            : mode === 3
+              ? `The covenant thread is still present even when the scene feels messy. God keeps His promise through wilderness nights, tense conversations, painful births, dangerous meetings, and imperfect obedience. That is why each small verse section matters.`
+              : `Before moving on, ask what this passage reveals about Jacob's identity. Is he grasping, running, bargaining, praying, limping, worshiping, or learning to depend on God? The answer helps the chapter feel personal instead of distant.`,
+    );
+    index += 1;
+  }
+
+  return `# Slow Verse Walk\n\n${additions.join("\n\n")}`;
 }
 
 export const WRESTLING_OF_JACOB_DEEP_NOTES = jacobNotes.map(buildJacobNotes);
