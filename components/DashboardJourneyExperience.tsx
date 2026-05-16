@@ -1244,13 +1244,14 @@ export default function DashboardJourneyExperience({
   const [freePlanGate, setFreePlanGate] = useState<{ kind: "chapter" | "study"; chapterLabel?: string | null } | null>(null);
   const [freePlanCountdown, setFreePlanCountdown] = useState(() => formatFreePlanCountdown(getNextLocalDayStartMs() - Date.now()));
 
-  const dashboardPageKeys = ["home", "bible", "group", "tv", "games", "share"] as const;
+  const dashboardPageKeys = ["home", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
   const activeDashboardPageKey: DashboardPageKey = dashboardPageKeys[safeActivePage];
   const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
   const dashboardPageLinks = {
     bible: exploreLinkByKey("bible"),
+    bible_studies: exploreLinkByKey("bible_studies"),
     group: exploreLinkByKey("group"),
     tv: exploreLinkByKey("tv"),
     games: exploreLinkByKey("games"),
@@ -1264,7 +1265,8 @@ export default function DashboardJourneyExperience({
     onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   }> = [
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
-    { key: "bible", label: "Bible", icon: "\uD83D\uDCD6", href: dashboardPageLinks.bible?.href || "/reading", onClick: dashboardPageLinks.bible?.onClick },
+    { key: "bible", label: "The Bible", icon: "\uD83D\uDCD6", href: dashboardPageLinks.bible?.href || "/reading", onClick: dashboardPageLinks.bible?.onClick },
+    { key: "bible_studies", label: "Bible Studies", icon: "\uD83C\uDF05", href: dashboardPageLinks.bible_studies?.href || "/devotionals", onClick: dashboardPageLinks.bible_studies?.onClick },
     { key: "group", label: "Community", icon: "\uD83D\uDC65", href: dashboardPageLinks.group?.href || "/study-groups", onClick: dashboardPageLinks.group?.onClick },
     { key: "tv", label: "TV", icon: "\u25B6", href: dashboardPageLinks.tv?.href || "/biblebuddy-tv", onClick: dashboardPageLinks.tv?.onClick },
     { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
@@ -2030,45 +2032,95 @@ export default function DashboardJourneyExperience({
   }
 
   const studyProgressPercent = Math.round((studyProgressCompleted / Math.max(studyProgressTotal, 1)) * 100);
-  const renderDashboardPageCard = (link: ExploreLink | null, fallback: { title: string; subtitle: string; href: string; emoji: string }) => {
+  const getFeaturePageBullets = (key: DashboardPageKey) => {
+    switch (key) {
+      case "bible":
+        return ["Read any Bible book", "Pick up where you left off", "Use Scripture with notes and study tools"];
+      case "bible_studies":
+        return ["Follow guided chapter studies", "Keep moving through your Bible Study Journey", "Intro, reading, notes, trivia, Scrambled, and reflection"];
+      case "group":
+        return ["Join Bible Buddy conversations", "Share reflections from your study", "Encourage other Bible Buddies"];
+      case "tv":
+        return ["Watch Bible teaching and shows", "Browse sermons and topics", "Learn when you want a video study moment"];
+      case "games":
+        return ["Play Bible Trivia", "Practice with Scrambled", "Review what you learned from each chapter"];
+      case "share":
+        return ["Invite a friend", "Share by text or WhatsApp", "Help someone start studying too"];
+      default:
+        return ["Keep building your daily rhythm", "Follow your next Bible step", "Grow one day at a time"];
+    }
+  };
+
+  const renderDashboardFeaturePage = (
+    key: DashboardPageKey,
+    link: ExploreLink | null,
+    fallback: { title: string; subtitle: string; href: string; emoji: string; eyebrow?: string },
+  ) => {
     const card = link ?? {
       key: fallback.title,
       title: fallback.title,
       subtitle: fallback.subtitle,
       href: fallback.href,
       emoji: fallback.emoji,
-      eyebrow: "Open",
+      eyebrow: fallback.eyebrow || "Open",
       accent: "border-[#dbe7f4] bg-white",
       onClick: undefined,
     };
+    const bullets = getFeaturePageBullets(key);
 
     return (
-      <div className="mx-auto flex max-w-xl flex-col gap-4 px-1 pb-7">
-        <Link href={card.href} onClick={card.onClick} className="block">
-          <div className={`rounded-[24px] border p-5 text-left shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition hover:-translate-y-0.5 hover:shadow-md ${card.accent}`}>
-            <div className="flex items-center gap-3">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/70 text-2xl shadow-sm" aria-hidden="true">
+      <section className="w-full px-1">
+        <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+          <div className={`min-h-[calc(100vh-210px)] rounded-[28px] border p-5 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] ${card.accent}`}>
+            <div className="flex items-start gap-4">
+              <span className="grid h-16 w-16 shrink-0 place-items-center rounded-3xl bg-white/75 text-3xl shadow-sm" aria-hidden="true">
                 {card.emoji}
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#2f7fe8]">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">
                   {card.eyebrow}
                 </p>
-                <h2 className="mt-1 truncate text-xl font-black text-gray-950">
+                <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">
                   {card.title}
                 </h2>
-                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">
+                <p className="mt-3 text-base font-semibold leading-6 text-gray-700">
                   {card.subtitle}
                 </p>
               </div>
-              <span className="text-2xl text-gray-400" aria-hidden="true">›</span>
             </div>
+
+            <div className="mt-6 grid gap-3">
+              {bullets.map((bullet, index) => (
+                <div key={bullet} className="flex items-center gap-3 rounded-2xl bg-white/80 px-4 py-3 shadow-sm">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#eef6ff] text-sm font-black text-[#2f7fe8]">
+                    {index + 1}
+                  </span>
+                  <p className="text-sm font-bold leading-5 text-gray-800">{bullet}</p>
+                </div>
+              ))}
+            </div>
+
+            {key === "bible_studies" && currentDevotionalTitle ? (
+              <div className="mt-5 rounded-2xl border border-white/80 bg-white/80 p-4 shadow-sm">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Current Study</p>
+                <p className="mt-1 text-lg font-black text-gray-950">{currentDevotionalTitle}</p>
+                <p className="mt-1 text-sm font-bold text-gray-600">{activeChapterLabel}</p>
+              </div>
+            ) : null}
+
+            <Link
+              href={card.href}
+              onClick={card.onClick}
+              className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#2f7fe8] px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-[#256fd1]"
+            >
+              Open {card.title}
+              <span className="ml-2" aria-hidden="true">›</span>
+            </Link>
           </div>
-        </Link>
-      </div>
+        </div>
+      </section>
     );
   };
-
   return (
     <div className="space-y-4 pb-4">
       <style>{`
@@ -2831,47 +2883,62 @@ export default function DashboardJourneyExperience({
         ) : null}
 
         {activeDashboardPageKey === "bible"
-          ? renderDashboardPageCard(dashboardPageLinks.bible, {
+          ? renderDashboardFeaturePage("bible", dashboardPageLinks.bible, {
               title: "The Bible",
               subtitle: "Read the complete Bible here",
               href: "/reading",
               emoji: "\uD83D\uDCD6",
+              eyebrow: "Scripture",
+            })
+          : null}
+
+        {activeDashboardPageKey === "bible_studies"
+          ? renderDashboardFeaturePage("bible_studies", dashboardPageLinks.bible_studies, {
+              title: "Bible Studies",
+              subtitle: "Guided chapter studies with reading, notes, games, and reflection",
+              href: "/devotionals",
+              emoji: "\uD83C\uDF05",
+              eyebrow: "Chapter Journeys",
             })
           : null}
 
         {activeDashboardPageKey === "group"
-          ? renderDashboardPageCard(dashboardPageLinks.group, {
-              title: "Bible Study Group",
+          ? renderDashboardFeaturePage("group", dashboardPageLinks.group, {
+              title: "Community",
               subtitle: "Study the Bible with us",
               href: "/study-groups",
               emoji: "\uD83D\uDC65",
+              eyebrow: "Community",
             })
           : null}
 
         {activeDashboardPageKey === "tv"
-          ? renderDashboardPageCard(dashboardPageLinks.tv, {
+          ? renderDashboardFeaturePage("tv", dashboardPageLinks.tv, {
               title: "Bible Buddy TV",
               subtitle: "Stream Bible shows, movies, sermons, and more",
               href: "/biblebuddy-tv",
               emoji: "\u25B6",
+              eyebrow: "Watch",
             })
           : null}
 
         {activeDashboardPageKey === "games"
-          ? renderDashboardPageCard(dashboardPageLinks.games, {
+          ? renderDashboardFeaturePage("games", dashboardPageLinks.games, {
               title: "Bible Study Games",
               subtitle: "Play our Bible-based games",
               href: "/bible-study-games",
               emoji: "\uD83C\uDFAE",
+              eyebrow: "Play",
             })
           : null}
 
         {activeDashboardPageKey === "share"
-          ? renderDashboardPageCard(dashboardPageLinks.share, {
+          ? renderDashboardFeaturePage("share", dashboardPageLinks.share, {
               title: "Share Bible Buddy",
               subtitle: "Share by text, WhatsApp, or copy link.",
               href: "#share-bible-buddy",
               emoji: "\u2197",
+              eyebrow: "Invite",
             })
           : null}
 
@@ -2903,16 +2970,20 @@ export default function DashboardJourneyExperience({
 
       <nav className="sticky bottom-2 z-40 mx-auto max-w-xl rounded-[22px] border border-[#dbe7f4] bg-white/95 px-2 pb-1.5 pt-1.5 shadow-[0_12px_28px_rgba(38,63,99,0.14)] backdrop-blur">
         <div className="mx-auto mb-0.5 h-1 w-10 rounded-full bg-[#dbe7f4]" aria-hidden="true" />
-        <div className="grid grid-cols-6 items-end gap-1 text-center">
+        <div className="[scrollbar-width:none] overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          <div className="flex min-w-max items-end gap-1 text-center">
           {dashboardNavItems.map((item, index) => {
             const isActive = index === safeActivePage;
             return (
               <Link
                 key={item.key}
                 href={item.href}
-                onClick={item.onClick}
+                onClick={(event) => {
+                  event.preventDefault();
+                  snapToPage(index);
+                }}
                 onMouseEnter={() => setActivePage(index)}
-                className={`flex min-w-0 flex-col items-center justify-center gap-0.5 rounded-2xl px-1 py-1 text-[9px] font-black transition sm:text-[10px] ${
+                className={`flex min-w-[74px] flex-col items-center justify-center gap-0.5 rounded-2xl px-2 py-1 text-[9px] font-black transition sm:min-w-[88px] sm:text-[10px] ${
                   isActive ? "text-[#2f7fe8]" : "text-gray-500 hover:bg-[#f4f8ff] hover:text-gray-900"
                 }`}
               >
@@ -2924,10 +2995,11 @@ export default function DashboardJourneyExperience({
                 >
                   {item.icon}
                 </span>
-                <span className="max-w-full truncate">{item.label}</span>
+                <span className="whitespace-nowrap">{item.label}</span>
               </Link>
             );
           })}
+          </div>
         </div>
       </nav>
 
