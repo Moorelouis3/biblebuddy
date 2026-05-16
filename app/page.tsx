@@ -477,7 +477,7 @@ export default function LandingPage() {
               <span className="block text-slate-400">but you do not know how.</span>
             </h2>
             <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-slate-600 md:mt-4 md:text-lg md:leading-8">
-              You have tried reading plans. You have tried devotionals. You have tried willpower.
+              You have tried reading plans. You have tried Bible studies. You have tried willpower.
               But it is hard to stay consistent with the Bible when you do not know where to start or what you are reading.
             </p>
 

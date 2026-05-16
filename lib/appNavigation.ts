@@ -44,7 +44,7 @@ export const APP_NAV_ITEMS: AppNavItem[] = [
   {
     label: "Bible Study Tools",
     href: "/guided-studies",
-    activePrefixes: ["/guided-studies", "/devotionals", "/reading-plans", "/bible-study-hub", "/bible-study-tips", "/bible-study-guides"],
+    activePrefixes: ["/guided-studies", "/bible-studies", "/devotionals", "/reading-plans", "/bible-study-hub", "/bible-study-tips", "/bible-study-guides"],
     activeExact: ["/bible-references"],
     activeClasses: "bg-orange-50 text-orange-700 font-medium cursor-not-allowed",
     hoverClasses: "text-gray-700 hover:bg-orange-50 hover:text-orange-600 active:scale-[0.98]",
@@ -65,6 +65,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   "study-groups": "Bible Study Group",
   "guided-studies": "Bible Study Tools",
   devotionals: "Bible Studies",
+  "bible-studies": "Bible Studies",
   "reading-plans": "Bible Reading Plans",
   "bible-study-games": "Bible Study Games",
   "bible-trivia": "Trivia",

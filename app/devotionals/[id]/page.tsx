@@ -16,6 +16,8 @@ function getCoverImage(title: string): string | null {
   if (title === "The Creation of the World") return "/creationoftheworld.png";
   if (title === "The Fall of Man") return "/thefallofman.png";
   if (title === "The Flood of Noah") return "/Floodofnoah.png";
+  if (title === "The Promise Through Isaac") return "/ThePromiseThroughIsaac.png";
+  if (title === "The Wrestling of Jacob") return "/TheWrestlingofJacob.png";
   return null;
 }
 
@@ -51,6 +53,10 @@ function getPreviewDescription(title: string, fallback: string): string {
       "Genesis 3-4 shows the collapse after Eden. This 2-chapter Bible study walks slowly through temptation, shame, hiding, blame, judgment, exile, Cain and Abel, anger, murder, violence spreading through generations, and the first signs of hope after humanity breaks trust with God.",
     "The Flood of Noah":
       "Genesis 5-10 shows humanity moving from death spreading through the generations to corruption filling the earth, Noah obeying God, the flood covering the world, covenant mercy appearing through the rainbow, and the nations spreading after judgment.",
+    "The Promise Through Isaac":
+      "Genesis 26-27 shows Abraham's covenant promise moving through Isaac while famine, fear, wells, favoritism, Jacob, Esau, deception, blessing, grief, and family consequences make the next generation feel deeply human.",
+    "The Wrestling of Jacob":
+      "Genesis 28-36 follows Jacob from fleeing Esau to Bethel, Rachel and Leah, Laban's deception, family rivalry, wrestling with God, reconciliation, Dinah's tragedy, return to Bethel, and Esau's line becoming Edom.",
   };
 
   return descriptions[title] ?? fallback;
@@ -117,7 +123,9 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Courage of Daniel" ||
     title === "The Creation of the World" ||
     title === "The Fall of Man" ||
-    title === "The Flood of Noah"
+    title === "The Flood of Noah" ||
+    title === "The Promise Through Isaac" ||
+    title === "The Wrestling of Jacob"
   );
 }
 
@@ -127,6 +135,8 @@ function getStudyScriptureRange(title: string | null | undefined) {
     "The Fall of Man": "Genesis 3 & 4",
     "The Flood of Noah": "Genesis 5-10",
     "The Obedience of Abraham": "Genesis 11-25",
+    "The Promise Through Isaac": "Genesis 26 & 27",
+    "The Wrestling of Jacob": "Genesis 28-36",
     "The Testing of Joseph": "Genesis 37-50",
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "Proverbs 1-31",
@@ -145,6 +155,8 @@ function getChapterJourneyProgressLabel(title: string | null | undefined, curren
   if (title === "The Creation of the World") return `Genesis ${currentDay} of 2`;
   if (title === "The Fall of Man") return `Genesis ${currentDay + 2} of 4`;
   if (title === "The Flood of Noah") return `Genesis ${currentDay + 4} of 10`;
+  if (title === "The Promise Through Isaac") return `Genesis ${currentDay + 25} of 27`;
+  if (title === "The Wrestling of Jacob") return `Genesis ${currentDay + 27} of 36`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 
@@ -301,7 +313,7 @@ export default function DevotionalDetailPage() {
 
         if (devotionalError || !devotionalData) {
           console.error("Error loading devotional:", devotionalError);
-          router.push("/devotionals");
+          router.push("/bible-studies");
           return;
         }
 
@@ -518,7 +530,7 @@ export default function DevotionalDetailPage() {
     const shouldOpenFullPage = isChapterJourneyStudyTitle(devotional?.title);
     const openDay = () => {
       if (shouldOpenFullPage) {
-        router.push(`/devotionals/${devotionalId}/day/${day.day_number}`);
+        router.push(`/bible-studies/${devotionalId}/day/${day.day_number}`);
         return;
       }
       setSelectedDay(day);
@@ -585,7 +597,7 @@ export default function DevotionalDetailPage() {
     const day = days.find((entry) => entry.day_number === requestedDay);
     if (!day) {
       handledLouisDayRef.current = requestKey;
-      router.replace(`/devotionals/${devotionalId}`);
+      router.replace(`/bible-studies/${devotionalId}`);
       return;
     }
 
@@ -593,7 +605,7 @@ export default function DevotionalDetailPage() {
 
     void (async () => {
       await handleDayClick(day);
-      router.replace(`/devotionals/${devotionalId}`);
+      router.replace(`/bible-studies/${devotionalId}`);
     })();
   }, [days, devotional, devotionalId, router, searchParams]);
 
@@ -617,7 +629,7 @@ export default function DevotionalDetailPage() {
     if (pendingDayClick) {
       setShowCreditBlocked(false);
       if (isChapterJourneyStudyTitle(devotional?.title)) {
-        router.push(`/devotionals/${devotionalId}/day/${pendingDayClick.day_number}`);
+        router.push(`/bible-studies/${devotionalId}/day/${pendingDayClick.day_number}`);
       } else {
         setSelectedDay(pendingDayClick);
       }
@@ -1071,7 +1083,7 @@ export default function DevotionalDetailPage() {
         onPrimary={() => router.push('/upgrade')}
         onClose={() => {
           setShowProModal(false);
-          router.push('/devotionals');
+          router.push('/bible-studies');
         }}
       />
     );
@@ -1082,7 +1094,7 @@ export default function DevotionalDetailPage() {
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 py-8">
           <div className="text-gray-500">Bible study not found.</div>
-          <Link href="/devotionals" className="text-blue-600 hover:underline mt-4 inline-block">
+          <Link href="/bible-studies" className="text-blue-600 hover:underline mt-4 inline-block">
             ← Back to Bible Studies
           </Link>
         </div>
@@ -1094,7 +1106,7 @@ export default function DevotionalDetailPage() {
     <div className="min-h-screen bg-gray-50 pb-12">
       <div className="max-w-5xl mx-auto px-4 py-8">
         {/* HEADER */}
-        <Link href="/devotionals" className="text-blue-600 hover:underline mb-4 inline-block">
+        <Link href="/bible-studies" className="text-blue-600 hover:underline mb-4 inline-block">
           ← Back to Bible Studies
         </Link>
 

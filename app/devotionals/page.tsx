@@ -68,7 +68,7 @@ const FEATURED_STUDY_ORDER = [
   "The Fall of Man",
   "The Flood of Noah",
   "The Obedience of Abraham",
-  "The Covenant Through Isaac",
+  "The Promise Through Isaac",
   "The Wrestling of Jacob",
   "The Testing of Joseph",
   "The Calling of Moses",
@@ -97,6 +97,8 @@ function getStudyScriptureRange(title: string) {
     "The Fall of Man": "Genesis 3 & 4",
     "The Flood of Noah": "Genesis 5-10",
     "The Obedience of Abraham": "Genesis 11-25",
+    "The Promise Through Isaac": "Genesis 26 & 27",
+    "The Wrestling of Jacob": "Genesis 28-36",
     "The Testing of Joseph": "Genesis 37-50",
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "Proverbs 1-31",
@@ -249,6 +251,12 @@ export default function DevotionalsPage() {
     }
     if (title === "The Obedience of Abraham") {
       return "/TheobedienceofAbraham.png";
+    }
+    if (title === "The Promise Through Isaac") {
+      return "/ThePromiseThroughIsaac.png";
+    }
+    if (title === "The Wrestling of Jacob") {
+      return "/TheWrestlingofJacob.png";
     }
     if (title === "The Transforming of Paul") {
       return "/transformingofpauldevotional.png";
@@ -776,7 +784,7 @@ export default function DevotionalsPage() {
                         dedupeKey: `devotional-opened:${devotional.id}`,
                       }).catch((error) => console.error("[NAV] Failed to track devotional click:", error));
                     }
-                    router.push(`/devotionals/${devotional.id}`);
+                    router.push(`/bible-studies/${devotional.id}`);
                   }}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
@@ -790,7 +798,7 @@ export default function DevotionalsPage() {
                           dedupeKey: `devotional-opened:${devotional.id}`,
                         }).catch((error) => console.error("[NAV] Failed to track devotional click:", error));
                       }
-                      router.push(`/devotionals/${devotional.id}`);
+                      router.push(`/bible-studies/${devotional.id}`);
                     }
                   }}
                 >

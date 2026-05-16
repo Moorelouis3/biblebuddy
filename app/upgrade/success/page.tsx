@@ -8,7 +8,7 @@ export default function UpgradeSuccessPage() {
         </p>
         <p className="text-base text-gray-600 mb-4">
           You now have full access to all Bible Buddy features, including unlimited
-          study tools, trivia, devotionals, reading plans, and deep Bible insights.
+          study tools, trivia, Bible studies, reading plans, and deep Bible insights.
         </p>
         <p className="text-sm text-gray-500 mb-10">
           Thank you for supporting Bible Buddy and investing in deeper Scripture

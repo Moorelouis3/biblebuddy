@@ -292,13 +292,13 @@ export async function loadGroupPostMentions(
 
   (devotionals || []).forEach((devotional: DynamicMentionRow) => {
     const hasMatchingSeriesTitle = normalizedSeriesTitleSet.has(normalizeSearchText(devotional.title));
-    const label = hasMatchingSeriesTitle ? `${devotional.title} Devotional` : devotional.title;
+    const label = hasMatchingSeriesTitle ? `${devotional.title} Bible Study` : devotional.title;
     items.push({
       key: `devotional:${devotional.id}`,
       label,
-      href: `/devotionals/${devotional.id}`,
+      href: `/bible-studies/${devotional.id}`,
       kind: "devotional",
-      searchText: normalizeSearchText(`${devotional.title} ${label} devotional daily study`),
+      searchText: normalizeSearchText(`${devotional.title} ${label} Bible study daily study`),
     });
   });
 
@@ -337,7 +337,7 @@ export function linkMentionItemsInHtml(html: string, items: MentionCatalogItem[]
 
 export function getMentionCategoryLabel(kind: MentionCatalogItem["kind"]) {
   switch (kind) {
-    case "devotional": return "Devotional";
+    case "devotional": return "Bible Study";
     case "book": return "Book";
     case "chapter": return "Chapter";
     case "person": return "Person";

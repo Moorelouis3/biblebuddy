@@ -13,7 +13,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
     key: "creation_of_the_world",
     title: "The Creation of the World",
-    subtitle: "2-chapter Bible study",
+    subtitle: "Genesis 1 & 2",
     totalWeeks: 2,
     image: "/creationoftheworld.png",
     description:
@@ -22,7 +22,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
     key: "fall_of_man",
     title: "The Fall of Man",
-    subtitle: "2-chapter Bible study",
+    subtitle: "Genesis 3 & 4",
     totalWeeks: 2,
     image: "/thefallofman.png",
     description:
@@ -31,7 +31,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
     key: "flood_of_noah",
     title: "The Flood of Noah",
-    subtitle: "6-chapter Bible study",
+    subtitle: "Genesis 5-10",
     totalWeeks: 6,
     image: "/Floodofnoah.png",
     description:
@@ -40,16 +40,34 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
     key: "obedience_of_abraham",
     title: "The Obedience of Abraham",
-    subtitle: "15-chapter Bible study",
+    subtitle: "Genesis 11-25",
     totalWeeks: 15,
     image: "/TheobedienceofAbraham.png",
     description:
       "A chapter-by-chapter Bible study through Genesis 11-25 with intro, reading, notes, trivia, Scrambled, and reflection centered on Abraham's call, waiting, covenant, testing, and legacy.",
   },
   {
+    key: "promise_through_isaac",
+    title: "The Promise Through Isaac",
+    subtitle: "Genesis 26 & 27",
+    totalWeeks: 2,
+    image: "/ThePromiseThroughIsaac.png",
+    description:
+      "A chapter-by-chapter Bible study through Genesis 26-27 with intro, reading, notes, trivia, Scrambled, and reflection centered on Isaac carrying Abraham's covenant promise, wells, fear, favoritism, Jacob and Esau, deception, blessing, and family consequences.",
+  },
+  {
+    key: "wrestling_of_jacob",
+    title: "The Wrestling of Jacob",
+    subtitle: "Genesis 28-36",
+    totalWeeks: 9,
+    image: "/TheWrestlingofJacob.png",
+    description:
+      "A chapter-by-chapter Bible study through Genesis 28-36 with intro, reading, notes, trivia, Scrambled, and reflection centered on Jacob fleeing, Bethel, Rachel and Leah, Laban's deception, family rivalry, wrestling with God, reconciliation with Esau, renewal, and Edom.",
+  },
+  {
     key: "testing_of_joseph",
     title: "The Testing of Joseph",
-    subtitle: "14-chapter Bible study",
+    subtitle: "Genesis 37-50",
     totalWeeks: 14,
     image: "/TheTestingofJospehnewcover.png",
     description:
@@ -58,7 +76,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
     key: "rise_of_esther",
     title: "The Rise of Esther",
-    subtitle: "10-chapter Bible study",
+    subtitle: "Esther 1-10",
     totalWeeks: 10,
     image: "/theriseofester.png",
     description:
@@ -67,7 +85,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
     key: "wisdom_of_proverbs",
     title: "The Wisdom of Proverbs",
-    subtitle: "31-week group study",
+    subtitle: "Proverbs 1-31",
     totalWeeks: 31,
     image: "/Wisdomofproverbsnewcover.png",
     description:
@@ -76,7 +94,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
     key: "courage_of_daniel",
     title: "The Courage of Daniel",
-    subtitle: "6-chapter Bible study",
+    subtitle: "Daniel 1-6",
     totalWeeks: 6,
     image: "/thecourageofdaniel.png",
     description:

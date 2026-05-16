@@ -2197,17 +2197,17 @@ export default function GroupChatPage() {
         .maybeSingle();
 
       if (error) {
-        router.push("/devotionals");
+        router.push("/bible-studies");
         return;
       }
 
       if (data?.id) {
-        router.push(`/devotionals/${data.id}`);
+        router.push(`/bible-studies/${data.id}`);
       } else {
-        router.push("/devotionals");
+        router.push("/bible-studies");
       }
     } catch {
-      router.push("/devotionals");
+      router.push("/bible-studies");
     }
   }
 
@@ -4912,7 +4912,7 @@ export default function GroupChatPage() {
                         type="button"
                         onClick={() => {
                           if (tab.key === "bible_studies") {
-                            router.push("/devotionals");
+                            router.push("/bible-studies");
                             return;
                           }
                           setSelectedHubItem(null);

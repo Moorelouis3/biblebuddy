@@ -1583,7 +1583,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         setSourceContext({
           type: "devotional",
           id: devotionalId,
-          backLink: `/devotionals/${devotionalId}`,
+          backLink: `/bible-studies/${devotionalId}`,
           backText: "← Back to Devotional",
         });
         setFromReadingPlan(true);

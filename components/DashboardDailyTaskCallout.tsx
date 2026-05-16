@@ -96,7 +96,7 @@ function parseDevotionalTask(task: TaskState) {
     };
   }
   if (!task.href) return null;
-  const match = task.href.match(/\/devotionals\/([^/?]+)(?:\/day\/(\d+)|\?day=(\d+))/);
+  const match = task.href.match(/\/(?:devotionals|bible-studies)\/([^/?]+)(?:\/day\/(\d+)|\?day=(\d+))/);
   if (!match) return null;
   return {
     devotionalId: decodeURIComponent(match[1]),

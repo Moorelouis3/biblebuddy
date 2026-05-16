@@ -770,6 +770,8 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Fall of Man") return "/thefallofman.png";
   if (title === "The Flood of Noah") return "/Floodofnoah.png";
   if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
+  if (title === "The Promise Through Isaac") return "/ThePromiseThroughIsaac.png";
+  if (title === "The Wrestling of Jacob") return "/TheWrestlingofJacob.png";
   if (title === "The Rise of Esther") return "/theriseofester.png";
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
   if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
@@ -786,6 +788,8 @@ function getDashboardStudySummary(title: string | null | undefined) {
   if (title === "The Fall of Man") return "Genesis 3-4: temptation, shame, Cain and Abel, exile, and hope.";
   if (title === "The Flood of Noah") return "Genesis 5-10: death, corruption, Noah, the flood, covenant, and nations.";
   if (title === "The Obedience of Abraham") return "Genesis 11-25: Abraham's call, waiting, covenant, testing, and legacy.";
+  if (title === "The Promise Through Isaac") return "Genesis 26-27: Isaac, wells, favoritism, Jacob, Esau, deception, and blessing.";
+  if (title === "The Wrestling of Jacob") return "Genesis 28-36: Bethel, Rachel, Leah, Laban, wrestling, Esau, renewal, and Edom.";
   if (title === "The Rise of Esther") return "Esther 1-10: palace pressure, courage, providence, and reversal.";
   if (title === "The Courage of Daniel") return "Daniel 1-6: exile, courage, wisdom, prayer, pressure, and faith.";
   if (title === "The Testing of Joseph") return "Genesis 37-50: betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
@@ -3490,11 +3494,11 @@ export default function DashboardPage() {
       key: "bible_studies",
       title: "Bible Studies",
       subtitle: "Guided chapter studies with reading, notes, games, and reflection",
-      href: "/devotionals",
+      href: "/bible-studies",
       eyebrow: "Chapter Journeys",
       emoji: "🌅",
       accent: "border-teal-200 bg-teal-100",
-      onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "bible_studies", "/devotionals"),
+      onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "bible_studies", "/bible-studies"),
     },
     {
       key: "group",

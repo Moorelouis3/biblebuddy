@@ -157,7 +157,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
               <div className="min-w-0">
                 <p className="bb-text-primary text-sm font-semibold">Go Deeper With Pro</p>
                 <p className="bb-text-secondary text-xs leading-relaxed">
-                  Unlock the full devotional library and remove the daily credit wall.
+                  Unlock the full Bible study library and remove the daily credit wall.
                 </p>
               </div>
             </div>
@@ -183,7 +183,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
-      <Link href="/devotionals" onClick={(event) => handleCardClick(event, "bible_studies", "/devotionals")}>
+      <Link href="/bible-studies" onClick={(event) => handleCardClick(event, "bible_studies", "/bible-studies")}>
         <div className="bb-card cursor-pointer rounded-xl border p-5 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md">
           <h2 className="bb-text-primary text-xl font-semibold">ðŸŒ… Bible Studies</h2>
           <p className="bb-text-secondary mt-1">Guided chapter studies with reading, notes, games, and reflection</p>

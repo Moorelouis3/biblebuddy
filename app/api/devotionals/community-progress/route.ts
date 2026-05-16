@@ -6,7 +6,10 @@ const CHAPTER_JOURNEY_TASK_TOTAL = 6;
 const CHAPTER_JOURNEY_TITLES = new Set([
   "The Creation of the World",
   "The Fall of Man",
+  "The Flood of Noah",
   "The Obedience of Abraham",
+  "The Promise Through Isaac",
+  "The Wrestling of Jacob",
   "The Rise of Esther",
   "The Courage of Daniel",
   "The Testing of Joseph",

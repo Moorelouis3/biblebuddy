@@ -824,7 +824,7 @@ export default function ProverbsStudyDayPage() {
     return (
       <div className="min-h-screen bg-gray-50 px-4 py-10 text-center">
         <p className="font-semibold text-gray-900">Could not load this Bible study.</p>
-        <Link href="/devotionals" className="mt-4 inline-block text-blue-600 hover:underline">Back to Bible Studies</Link>
+        <Link href="/bible-studies" className="mt-4 inline-block text-blue-600 hover:underline">Back to Bible Studies</Link>
       </div>
     );
   }

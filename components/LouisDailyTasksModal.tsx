@@ -126,7 +126,10 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Rise of Esther" ||
     title === "The Courage of Daniel" ||
     title === "The Creation of the World" ||
-    title === "The Fall of Man"
+    title === "The Fall of Man" ||
+    title === "The Flood of Noah" ||
+    title === "The Promise Through Isaac" ||
+    title === "The Wrestling of Jacob"
   );
 }
 
@@ -189,7 +192,7 @@ export function buildChooseDevotionalChecklistData(_userId: string): ChecklistDa
         pointsLabel: "Start here",
         timeEstimateLabel: "1 min",
         timeEstimateDetail: "Pick your study",
-        href: "/devotionals",
+        href: "/bible-studies",
         done: false,
       },
       {
@@ -506,7 +509,7 @@ export async function fetchLouisDailyChecklistData(
       pointsLabel: "+5 pts",
       timeEstimateLabel: formatEstimate(introMinutes),
       timeEstimateDetail: "Intro read",
-      href: `/devotionals/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task`,
+      href: `/bible-studies/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task`,
       done: devotionalDone,
       devotionalId: activeDevotional.id,
       devotionalTitle: activeDevotional.title,
@@ -600,7 +603,7 @@ export async function fetchLouisDailyChecklistData(
       pointsLabel: "+5 pts",
       timeEstimateLabel: "3 min",
       timeEstimateDetail: "Write your response",
-      href: `/devotionals/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task-reflection`,
+      href: `/bible-studies/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task-reflection`,
       done: reflectionDone,
       devotionalId: activeDevotional.id,
       devotionalTitle: activeDevotional.title,
@@ -738,7 +741,7 @@ export default function LouisDailyTasksModal({
     if (!task.href || task.disabled) return;
     if (task.devotionalId && task.devotionalDayNumber && isChapterJourneyStudyTitle(task.devotionalTitle)) {
       onClose();
-      router.push(`/devotionals/${task.devotionalId}/day/${task.devotionalDayNumber}`);
+      router.push(`/bible-studies/${task.devotionalId}/day/${task.devotionalDayNumber}`);
       return;
     }
     if (task.kind === "notes" && task.book && task.chapter) {

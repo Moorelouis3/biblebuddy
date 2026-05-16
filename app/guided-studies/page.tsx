@@ -8,7 +8,7 @@ import { supabase } from "../../lib/supabaseClient";
 
 const tools = [
   {
-    href: "/devotionals",
+    href: "/bible-studies",
     bg: "bg-teal-100 border-teal-200",
     emoji: "🌅",
     title: "Bible Studies",

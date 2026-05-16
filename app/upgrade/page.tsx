@@ -93,7 +93,7 @@ export default function UpgradePage() {
             <li>✓ Everything in Free</li>
             <li>✓ Unlimited people, places, and keywords</li>
             <li>✓ Unlimited trivia questions</li>
-            <li>✓ All Bible study guides, devotionals, and reading plans</li>
+            <li>✓ All Bible study guides, Bible studies, and reading plans</li>
           </ul>
 
           {/* Visual Direction Toward Pricing */}
@@ -253,7 +253,7 @@ export default function UpgradePage() {
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 mt-1">•</span>
                     <span>
-                      Daily devotionals covering major stories and key themes throughout the Bible
+                      Daily Bible studies covering major stories and key themes throughout the Bible
                     </span>
                   </li>
                 </ul>

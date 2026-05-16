@@ -162,7 +162,7 @@ export default function CreditLimitModal({
                     <li>• Explore People, Places, or Keywords</li>
                     <li>• Highlight a verse</li>
                     <li>• Start a trivia round</li>
-                    <li>• Open devotionals</li>
+                    <li>• Open Bible studies</li>
                     <li>• Begin new study actions</li>
                   </ul>
                 </div>

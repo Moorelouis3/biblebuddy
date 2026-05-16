@@ -124,7 +124,7 @@ const STUDY_PICKER_ORDER = [
   "The Fall of Man",
   "The Flood of Noah",
   "The Obedience of Abraham",
-  "The Covenant Through Isaac",
+  "The Promise Through Isaac",
   "The Wrestling of Jacob",
   "The Testing of Joseph",
   "The Wisdom of Proverbs",
@@ -149,8 +149,8 @@ const COVER_BY_STUDY_TITLE: Record<string, string> = {
   "The Creation of the World": "/creationoftheworld.png",
   "The Fall of Man": "/thefallofman.png",
   "The Flood of Noah": "/Floodofnoah.png",
-  "The Covenant Through Isaac": "/TheobedienceofAbraham.png",
-  "The Wrestling of Jacob": "/TheobedienceofAbraham.png",
+  "The Promise Through Isaac": "/ThePromiseThroughIsaac.png",
+  "The Wrestling of Jacob": "/TheWrestlingofJacob.png",
 };
 
 const ONBOARDING_STUDY_DESCRIPTION_BY_TITLE: Record<string, string> = {
@@ -183,10 +183,10 @@ const ONBOARDING_STUDY_DESCRIPTION_BY_TITLE: Record<string, string> = {
     "A 2-chapter journey through Genesis 3-4, following temptation, shame, blame, Cain and Abel, violence, exile, and the need for redemption.",
   "The Flood of Noah":
     "A 6-chapter journey through Genesis 5-10, following death after the fall, corruption, Noah's obedience, the flood, covenant mercy, and the nations after judgment.",
-  "The Covenant Through Isaac":
-    "A guided journey through the promise continuing through Isaac, showing how God's covenant keeps moving across generations.",
+  "The Promise Through Isaac":
+    "A 2-chapter journey through Genesis 26-27, following Isaac carrying Abraham's promise, wells, favoritism, Jacob, Esau, deception, blessing, and family consequences.",
   "The Wrestling of Jacob":
-    "A guided journey through Jacob's family, struggle, transformation, and the God who stays faithful through messy stories.",
+    "A 9-chapter journey through Genesis 28-36, following Jacob's flight, Bethel, Rachel and Leah, Laban, family rivalry, wrestling with God, reconciliation with Esau, renewal, and Edom.",
 };
 
 const STUDY_BOOK_BY_TITLE: Record<string, string> = {
@@ -194,7 +194,7 @@ const STUDY_BOOK_BY_TITLE: Record<string, string> = {
   "The Fall of Man": "Genesis",
   "The Flood of Noah": "Genesis",
   "The Obedience of Abraham": "Genesis",
-  "The Covenant Through Isaac": "Genesis",
+  "The Promise Through Isaac": "Genesis",
   "The Wrestling of Jacob": "Genesis",
   "The Testing of Joseph": "Genesis",
   "The Wisdom of Proverbs": "Proverbs",

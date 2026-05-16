@@ -98,6 +98,7 @@ export async function buildLouisRecommendationHandoff(
 
   if (
     targetPath.startsWith("/devotionals/") ||
+    targetPath.startsWith("/bible-studies/") ||
     targetPath.startsWith("/Bible/") ||
     targetPath === "/reading"
   ) {

@@ -507,7 +507,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
           : `You already started ${activeDevotional.title}.`,
         recommendationLine: `Day ${nextDay} is ready, and this is probably the cleanest place for you to pick the story back up today.`,
         primaryButtonText: `Continue Day ${nextDay}`,
-        primaryButtonHref: `/devotionals/${activeDevotional.id}?day=${nextDay}&from=louis-recommendation`,
+        primaryButtonHref: `/bible-studies/${activeDevotional.id}?day=${nextDay}&from=louis-recommendation`,
         level: 1,
         category: "devotional",
         cardEyebrow: "Keep Going",
@@ -886,21 +886,21 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         greeting,
         contextLine: contextLine(
           new Date(lastDevotionalCompletion.created_at),
-          "you completed a devotional day.",
-          "It's been a while since you last worked on a devotional."
+          "you completed a Bible study day.",
+          "It's been a while since you last worked on a Bible study."
         ),
-        recommendationLine: "Open your devotionals and keep the habit alive with the next story that speaks to where you are right now.",
-        primaryButtonText: "View Devotionals",
-        primaryButtonHref: "/devotionals",
+        recommendationLine: "Open your Bible studies and keep the habit alive with the next story that speaks to where you are right now.",
+        primaryButtonText: "View Bible Studies",
+        primaryButtonHref: "/bible-studies",
         level: 2,
         category: "devotional",
         cardTheme: "rose",
       }), [
-        { title: "Hey, you should open a devotional today", subtitle: "A devotional is still one of the easiest ways to sit with Scripture in a guided, story-first way." },
-        { title: "Hey, go pick a devotional back up", subtitle: "If you want something guided today, this is one of the simplest ways to get back into the Word." },
-        { title: "Hey, a devotional would be a great move today", subtitle: "You already know how these work, so just jump back in and let the app guide you." },
-        { title: "Hey, now is a good time for a devotional day", subtitle: "If you want Scripture with structure, this is one of the best places to start." },
-        { title: "Hey, go find your next devotional story", subtitle: "A good devotional day can get you back into the Bible without needing to overthink what to do next." },
+        { title: "Hey, you should open a Bible study today", subtitle: "A Bible study is one of the easiest ways to sit with Scripture in a guided, chapter-by-chapter way." },
+        { title: "Hey, go pick a Bible study back up", subtitle: "If you want something guided today, this is one of the simplest ways to get back into the Word." },
+        { title: "Hey, a Bible study would be a great move today", subtitle: "You already know how these work, so jump back in and let the app guide you." },
+        { title: "Hey, now is a good time for a Bible study day", subtitle: "If you want Scripture with structure, this is one of the best places to start." },
+        { title: "Hey, go find your next Bible study story", subtitle: "A good Bible study day can get you back into the Bible without needing to overthink what to do next." },
       ]));
     }
 
@@ -943,7 +943,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         cardTheme: "gold",
       }), [
         { title: "Hey, you have been using Bible Buddy for a while now", subtitle: "Have you thought about upgrading? Tap here and see why Pro might be worth it for you." },
-        { title: "Hey, if Bible Buddy has been helping you, look at Pro", subtitle: "See what opens up when the credit wall is gone and the full devotional library is unlocked." },
+        { title: "Hey, if Bible Buddy has been helping you, look at Pro", subtitle: "See what opens up when the credit wall is gone and the full Bible study library is unlocked." },
         { title: "Hey, you might be ready for Pro now", subtitle: "You have already been showing up, so take a look at what upgrading would add to your study flow." },
         { title: "Hey, want to go deeper with Bible Buddy", subtitle: "Tap here and see what Pro gives you if you want more room to study without limits." },
         { title: "Hey, it may be time to look at upgrading", subtitle: "If you are using the app a lot now, Pro might make the whole experience feel smoother." },
@@ -970,7 +970,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         contextLine: `${recommendedDevotional.title} is a strong place to begin if you want a guided story and a clear next step.`,
         recommendationLine: "Start with Day 1 today and let the app lead you into a simple, steady rhythm.",
         primaryButtonText: "Start Day 1",
-        primaryButtonHref: `/devotionals/${recommendedDevotional.id}?day=1&from=louis-recommendation`,
+        primaryButtonHref: `/bible-studies/${recommendedDevotional.id}?day=1&from=louis-recommendation`,
         level: 2,
         category: "devotional",
         cardEyebrow: "Start Here",

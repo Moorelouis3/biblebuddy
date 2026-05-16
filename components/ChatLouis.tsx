@@ -330,8 +330,8 @@ function buildLouisPageContext(pathname: string | null | undefined, searchParams
     if (safePathname === "/reading" || safePathname === "/Bible") return "bible_home";
     if (segments[0] === "reading" && segments[1] === "books" && segments[2]) return "bible_book";
     if (segments[0] === "Bible" && segments[1] && segments[2]) return "bible_chapter";
-    if (safePathname === "/devotionals") return "devotionals_home";
-    if (segments[0] === "devotionals" && segments[1]) return "devotional_day";
+    if (safePathname === "/devotionals" || safePathname === "/bible-studies") return "devotionals_home";
+    if ((segments[0] === "devotionals" || segments[0] === "bible-studies") && segments[1]) return "devotional_day";
     if (segments[0] === "reading-plans" || segments[0] === "reading-plan") return "reading_plan";
     if (segments[0] === "bible-trivia") return "trivia";
     if (segments[0] === "scrambled") return "scrambled";
@@ -483,7 +483,7 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
   const simpleRoutes: Array<{ match: RegExp; href: string; reply: string }> = [
     { match: /\b(dashboard|home)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to the dashboard now." },
     { match: /\b(the )?bible( reader)?\b/, href: "/reading", reply: "Okay.\n\nI’m opening the Bible reader now." },
-    { match: /\b(devotionals?|bible studies?)\b/, href: "/devotionals", reply: "Okay.\n\nI’m taking you to the Bible Studies page now." },
+    { match: /\b(devotionals?|bible studies?)\b/, href: "/bible-studies", reply: "Okay.\n\nI’m taking you to the Bible Studies page now." },
     { match: /\b(reading plans?|plans?)\b/, href: "/reading-plans", reply: "Okay.\n\nI’m opening the reading plans now." },
     { match: /\b(group|bible study group|the group)\b/, href: "/study-groups", reply: "Okay.\n\nI’m taking you to The Bible Study Group now." },
     { match: /\b(tv|sermons?|bible buddy tv)\b/, href: "/biblebuddy-tv", reply: "Okay.\n\nI’m opening Bible Buddy TV now." },
@@ -1023,7 +1023,7 @@ function buildFallbackTarget(goal: string | null, currentStreak: number): LouisD
         ? "That keeps your streak moving and gives your Bible time some structure."
         : `${toGoalHelpLine(goal)} and gives you one clear place to start.`,
     question: "Ready to jump in?",
-    href: "/devotionals",
+    href: "/bible-studies",
     yesFollowUp: "Let's get you into a Bible study and keep this moving.",
   };
 }
@@ -1044,7 +1044,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
       summaryLines: [`Your best move today is to finish day ${nextDay} of ${context.primaryDevotional.title}.`],
       whyLine: `${toGoalHelpLine(context.goal)} and keeps your habit moving.`,
       question: "Ready to jump in?",
-      href: `/devotionals/${context.primaryDevotional.id}?day=${nextDay}&from=louis-daily`,
+      href: `/bible-studies/${context.primaryDevotional.id}?day=${nextDay}&from=louis-daily`,
       yesFollowUp: `Let's get you into day ${nextDay} and keep your rhythm going.`,
       nextDevotionalDayNumber: nextDay,
     });
@@ -1303,7 +1303,7 @@ function summarizeLastMasterAction(action: {
       summary: `Last time you were in ${label}.`,
       followUp: "Do you want to keep going with that Bible study?",
       continueLabel: "Open Bible Studies",
-      continueHref: "/devotionals",
+      continueHref: "/bible-studies",
     };
   }
 
@@ -1442,7 +1442,7 @@ function buildLouisJourneyRecommendation({
       recommendationLine:
         "Pick one Bible study and let me walk you through it chapter by chapter. You do one task at a time, and I will help with the rest.",
       primaryButtonText: "Start a Bible study",
-      primaryButtonHref: "/devotionals",
+      primaryButtonHref: "/bible-studies",
       level: 1,
       cardTitle: "Start With A Bible Study",
       cardSubtitle: "One daily track is the easiest way to build real momentum.",
@@ -1461,7 +1461,7 @@ function buildLouisJourneyRecommendation({
       contextLine: `Yesterday you finished day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}.`,
       recommendationLine: `Come back to ${primaryDevotional.title} and do day ${nextDay}. Keep it simple and protect the streak.`,
       primaryButtonText: `Start day ${nextDay}`,
-      primaryButtonHref: `/devotionals/${primaryDevotional.id}`,
+      primaryButtonHref: `/bible-studies/${primaryDevotional.id}`,
       level: 1,
       cardTitle: `Keep Going With ${primaryDevotional.title}`,
       cardSubtitle: `Day ${nextDay} is the right next move.`,
@@ -2371,7 +2371,7 @@ export function ChatLouis() {
 
     async function loadSelectedDevotionalForChallenge() {
       const parts = pathname.split("/").filter(Boolean);
-      if (parts[0] !== "devotionals" || !parts[1]) {
+      if ((parts[0] !== "devotionals" && parts[0] !== "bible-studies") || !parts[1]) {
         if (!cancelled) setSelectedDevotionalForChallenge(null);
         return;
       }
@@ -2943,14 +2943,14 @@ export function ChatLouis() {
           appendAssistantMessage("Perfect\n\nI’m sending you to the Bible Studies page now");
           clearLouisInputPrompt();
           setIsOpen(false);
-          router.push("/devotionals");
+          router.push("/bible-studies");
           break;
         }
         if (dailyFlowType === "devotional_start" && selectedDevotionalForChallenge) {
           appendAssistantMessage("Let’s start Day 1");
           clearLouisInputPrompt();
           setIsOpen(false);
-          router.push(`/devotionals/${selectedDevotionalForChallenge.id}`);
+          router.push(`/bible-studies/${selectedDevotionalForChallenge.id}`);
           break;
         }
         {
@@ -3069,7 +3069,7 @@ export function ChatLouis() {
         break;
       case "open_devotionals":
         markRolloutSeenLocal("devotionals_intro_seen");
-        router.push("/devotionals");
+        router.push("/bible-studies");
         break;
       case "moment_navigate":
         if (reply.href) {

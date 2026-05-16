@@ -740,17 +740,17 @@ function pickRecommendations(
     recommendations.push({
       key: "devotional-continue",
       priority: 92,
-      line: `Keep your devotional momentum going with Day ${activeDevotional.nextDay} of ${activeDevotional.devotional.title}.`,
-      action: { label: `Continue ${activeDevotional.devotional.title}`, href: `/devotionals/${activeDevotional.devotional.id}` },
+      line: `Keep your Bible study momentum going with Day ${activeDevotional.nextDay} of ${activeDevotional.devotional.title}.`,
+      action: { label: `Continue ${activeDevotional.devotional.title}`, href: `/bible-studies/${activeDevotional.devotional.id}` },
       quickActionLabel: `Continue ${activeDevotional.devotional.title}`,
     });
   } else if ((actionCounts.get("devotional_day_completed") ?? 0) === 0) {
     recommendations.push({
       key: "devotional-start",
       priority: 89,
-      line: "Start a devotional this week if you want a simple guided way to stay consistent instead of deciding from scratch what to read every day.",
-      action: { label: "Start a Devotional", href: "/devotionals" },
-      quickActionLabel: "Start a Devotional",
+      line: "Start a Bible study this week if you want a simple guided way to stay consistent instead of deciding from scratch what to read every day.",
+      action: { label: "Start a Bible Study", href: "/bible-studies" },
+      quickActionLabel: "Start a Bible Study",
     });
   }
 
@@ -873,7 +873,7 @@ export function buildWeeklyReportForUser(
 
   const statLines = [
     chaptersRead ? `📖 You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
-    devotionalsCompleted ? `🌿 You completed ${formatCount(devotionalsCompleted, "devotional day")}.` : null,
+    devotionalsCompleted ? `🌿 You completed ${formatCount(devotionalsCompleted, "Bible study day")}.` : null,
     chapterReviews ? `📝 You reviewed ${formatCount(chapterReviews, "chapter review")}.` : null,
     triviaCompleted ? `🧠 You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
     scrambledCompleted ? `🔤 You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
@@ -985,7 +985,7 @@ export function buildWeeklyLouisReportForUser(
 
   const statLines = [
     chaptersRead ? `📖 You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
-    devotionalsCompleted ? `🌿 You completed ${formatCount(devotionalsCompleted, "devotional day")}.` : null,
+    devotionalsCompleted ? `🌿 You completed ${formatCount(devotionalsCompleted, "Bible study day")}.` : null,
     chapterReviews ? `📝 You opened ${formatCount(chapterReviews, "chapter review")}.` : null,
     triviaCompleted ? `🧠 You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
     scrambledCompleted ? `🔤 You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,

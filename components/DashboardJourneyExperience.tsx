@@ -104,6 +104,8 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Fall of Man") return "/thefallofman.png";
   if (title === "The Flood of Noah") return "/Floodofnoah.png";
   if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
+  if (title === "The Promise Through Isaac") return "/ThePromiseThroughIsaac.png";
+  if (title === "The Wrestling of Jacob") return "/TheWrestlingofJacob.png";
   if (title === "The Rise of Esther") return "/theriseofester.png";
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
   if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
@@ -120,6 +122,8 @@ function getDashboardStudySummary(title: string | null | undefined, totalDays: n
   if (title === "The Fall of Man") return "Study Genesis 3-4 through temptation, shame, Cain and Abel, violence, exile, and hope.";
   if (title === "The Flood of Noah") return "Study Genesis 5-10 through death, corruption, judgment, Noah's obedience, covenant, and the nations.";
   if (title === "The Obedience of Abraham") return "Walk Genesis 11-25 through Abraham's call, waiting, covenant, testing, and legacy.";
+  if (title === "The Promise Through Isaac") return "Study Genesis 26-27 through Isaac, wells, favoritism, Jacob, Esau, deception, and blessing.";
+  if (title === "The Wrestling of Jacob") return "Study Genesis 28-36 through Bethel, Rachel, Leah, Laban, wrestling, Esau, renewal, and Edom.";
   if (title === "The Rise of Esther") return "Follow Esther 1-10 through palace pressure, hidden identity, courage, providence, and reversal.";
   if (title === "The Courage of Daniel") return "Study Daniel 1-6 through exile, courage, wisdom, prayer, pressure, and the lions' den.";
   if (title === "The Testing of Joseph") return "Walk Genesis 37-50 through betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
@@ -145,6 +149,26 @@ function getBibleJourneyHandoff(title: string | null | undefined) {
       cover: "/Floodofnoah.png",
       description:
         "Next, Genesis 5-10 shows death spreading through the generations, corruption filling the earth, Noah obeying God, the flood, covenant mercy, and the nations after judgment.",
+    };
+  }
+
+  if (title === "The Obedience of Abraham") {
+    return {
+      nextTitle: "The Promise Through Isaac",
+      subtitle: "Genesis 26-27",
+      cover: "/ThePromiseThroughIsaac.png",
+      description:
+        "Next, Genesis 26-27 shows Isaac carrying Abraham's promise while wells, fear, favoritism, Jacob, Esau, deception, and blessing reshape the covenant family.",
+    };
+  }
+
+  if (title === "The Promise Through Isaac") {
+    return {
+      nextTitle: "The Wrestling of Jacob",
+      subtitle: "Genesis 28-36",
+      cover: "/TheWrestlingofJacob.png",
+      description:
+        "Next, Genesis 28-36 follows Jacob fleeing, meeting God at Bethel, facing Laban's deception, building a complicated family, wrestling with God, and becoming Israel.",
     };
   }
 
@@ -282,7 +306,7 @@ function buildPreloadedNextChapterTasks({
       title: `Read Chapter Intro for ${chapterLabel}`,
       pointsLabel: "+5 pts",
       timeEstimateLabel: "2 min",
-      href: `/devotionals/${devotionalId}?day=${dayNumber}&from=louis-daily-task`,
+      href: `/bible-studies/${devotionalId}?day=${dayNumber}&from=louis-daily-task`,
       done: false,
       devotionalId,
       devotionalTitle,
@@ -356,7 +380,7 @@ function buildPreloadedNextChapterTasks({
       title: "Answer The Reflection Question",
       pointsLabel: "+5 pts",
       timeEstimateLabel: "3 min",
-      href: `/devotionals/${devotionalId}?day=${dayNumber}&from=louis-daily-task-reflection`,
+      href: `/bible-studies/${devotionalId}?day=${dayNumber}&from=louis-daily-task-reflection`,
       done: false,
       disabled: true,
       devotionalId,
@@ -1332,9 +1356,8 @@ export default function DashboardJourneyExperience({
   const [devotionalSettingsMessage, setDevotionalSettingsMessage] = useState<string | null>(null);
   const [freePlanGate, setFreePlanGate] = useState<{ kind: "chapter" | "study"; chapterLabel?: string | null } | null>(null);
   const [freePlanCountdown, setFreePlanCountdown] = useState(() => formatFreePlanCountdown(getNextLocalDayStartMs() - Date.now()));
-  const [embeddedBibleBookPage, setEmbeddedBibleBookPage] = useState(0);
   const [embeddedBibleSelectedBook, setEmbeddedBibleSelectedBook] = useState<string | null>(null);
-  const [embeddedBibleChapterPage, setEmbeddedBibleChapterPage] = useState(0);
+  const [embeddedBibleAlphabetical, setEmbeddedBibleAlphabetical] = useState(false);
   const [embeddedBibleCompletedChapters, setEmbeddedBibleCompletedChapters] = useState<number[]>([]);
   const [embeddedBibleReading, setEmbeddedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
@@ -1360,7 +1383,7 @@ export default function DashboardJourneyExperience({
   }> = [
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
     { key: "bible", label: "The Bible", icon: "\uD83D\uDCD6", href: dashboardPageLinks.bible?.href || "/reading", onClick: dashboardPageLinks.bible?.onClick },
-    { key: "bible_studies", label: "Bible Studies", icon: "\uD83C\uDF05", href: dashboardPageLinks.bible_studies?.href || "/devotionals", onClick: dashboardPageLinks.bible_studies?.onClick },
+    { key: "bible_studies", label: "Bible Studies", icon: "\uD83C\uDF05", href: dashboardPageLinks.bible_studies?.href || "/bible-studies", onClick: dashboardPageLinks.bible_studies?.onClick },
     { key: "group", label: "Community", icon: "\uD83D\uDC65", href: dashboardPageLinks.group?.href || "/study-groups", onClick: dashboardPageLinks.group?.onClick },
     { key: "tv", label: "TV", icon: "\u25B6", href: dashboardPageLinks.tv?.href || "/biblebuddy-tv", onClick: dashboardPageLinks.tv?.onClick },
     { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
@@ -2179,32 +2202,25 @@ export default function DashboardJourneyExperience({
   };
 
   const renderEmbeddedBiblePage = () => {
-    const bookStartIndex = embeddedBibleBookPage * DASHBOARD_BIBLE_BOOKS_PER_PAGE;
-    const visibleBooks = DASHBOARD_BIBLE_BOOKS.slice(bookStartIndex, bookStartIndex + DASHBOARD_BIBLE_BOOKS_PER_PAGE);
-    const hasPreviousBookPage = embeddedBibleBookPage > 0;
-    const hasNextBookPage = bookStartIndex + DASHBOARD_BIBLE_BOOKS_PER_PAGE < DASHBOARD_BIBLE_BOOKS.length;
+    const visibleBooks = embeddedBibleAlphabetical
+      ? [...DASHBOARD_BIBLE_BOOKS].sort((a, b) => a.localeCompare(b))
+      : DASHBOARD_BIBLE_BOOKS;
     const selectedBookChapterCount = embeddedBibleSelectedBook ? getBookTotalChapters(embeddedBibleSelectedBook) : 0;
-    const chapterStartIndex = embeddedBibleChapterPage * DASHBOARD_BIBLE_CHAPTERS_PER_PAGE;
     const visibleChapters = embeddedBibleSelectedBook
-      ? Array.from({ length: selectedBookChapterCount }, (_, index) => index + 1).slice(
-          chapterStartIndex,
-          chapterStartIndex + DASHBOARD_BIBLE_CHAPTERS_PER_PAGE,
-        )
+      ? Array.from({ length: selectedBookChapterCount }, (_, index) => index + 1)
       : [];
-    const hasPreviousChapterPage = embeddedBibleChapterPage > 0;
-    const hasNextChapterPage = chapterStartIndex + DASHBOARD_BIBLE_CHAPTERS_PER_PAGE < selectedBookChapterCount;
 
     return (
       <section className="w-full px-1">
         <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-          <div className="min-h-[calc(100vh-210px)] rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+          <div className="bb-card min-h-[calc(100vh-210px)] rounded-[28px] border p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Scripture</p>
-                <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">
+                <p className="bb-accent text-xs font-black uppercase tracking-[0.16em]">Scripture</p>
+                <h2 className="bb-text-primary mt-1 text-3xl font-black leading-tight">
                   {embeddedBibleSelectedBook || "The Bible"}
                 </h2>
-                <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
+                <p className="bb-text-secondary mt-2 text-sm font-semibold leading-6">
                   {embeddedBibleSelectedBook
                     ? `${selectedBookChapterCount} chapters. Pick one to read inside your dashboard.`
                     : "Choose a book and keep reading without leaving your dashboard."}
@@ -2215,9 +2231,8 @@ export default function DashboardJourneyExperience({
                   type="button"
                   onClick={() => {
                     setEmbeddedBibleSelectedBook(null);
-                    setEmbeddedBibleChapterPage(0);
                   }}
-                  className="rounded-full border border-[#dbe7f4] bg-[#f7fbff] px-3 py-2 text-xs font-black text-[#2f7fe8] transition hover:bg-[#eef6ff]"
+                  className="bb-surface-soft bb-accent rounded-full border px-3 py-2 text-xs font-black transition hover:brightness-95"
                 >
                   Books
                 </button>
@@ -2226,7 +2241,7 @@ export default function DashboardJourneyExperience({
 
             {embeddedBibleSelectedBook ? (
               <div className="mt-5">
-                <div className="grid grid-cols-4 gap-2 sm:grid-cols-4">
+                <div className="grid grid-cols-4 gap-2 sm:grid-cols-5">
                   {visibleChapters.map((chapter) => {
                     const isComplete = embeddedBibleCompletedChapters.includes(chapter);
                     return (
@@ -2237,42 +2252,29 @@ export default function DashboardJourneyExperience({
                         className={`rounded-2xl border px-2 py-3 text-center text-sm font-black transition hover:-translate-y-0.5 hover:shadow-sm ${
                           isComplete
                             ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-                            : "border-[#dbe7f4] bg-[#f8fbff] text-gray-800 hover:border-[#7BAFD4]"
+                            : "bb-surface-soft bb-text-primary hover:border-[var(--bb-accent)]"
                         }`}
                       >
                         <span className="block text-lg">{chapter}</span>
-                        <span className="mt-1 block text-[10px] font-bold text-gray-500">
+                        <span className="bb-text-muted mt-1 block text-[10px] font-bold">
                           {isComplete ? "Done" : "Read"}
                         </span>
                       </button>
                     );
                   })}
                 </div>
-
-                <div className="mt-5 flex items-center justify-between gap-3 text-xs font-black text-[#2f7fe8]">
-                  <button
-                    type="button"
-                    onClick={() => hasPreviousChapterPage && setEmbeddedBibleChapterPage((page) => page - 1)}
-                    disabled={!hasPreviousChapterPage}
-                    className={`rounded-full px-3 py-2 transition ${hasPreviousChapterPage ? "bg-[#eef6ff] hover:bg-[#dbeafe]" : "bg-gray-100 text-gray-300"}`}
-                  >
-                    Previous chapters
-                  </button>
-                  <span className="text-gray-500">
-                    Page {embeddedBibleChapterPage + 1} of {Math.max(1, Math.ceil(selectedBookChapterCount / DASHBOARD_BIBLE_CHAPTERS_PER_PAGE))}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => hasNextChapterPage && setEmbeddedBibleChapterPage((page) => page + 1)}
-                    disabled={!hasNextChapterPage}
-                    className={`rounded-full px-3 py-2 transition ${hasNextChapterPage ? "bg-[#eef6ff] hover:bg-[#dbeafe]" : "bg-gray-100 text-gray-300"}`}
-                  >
-                    Next chapters
-                  </button>
-                </div>
               </div>
             ) : (
               <div className="mt-5">
+                <label className="bb-surface-soft mb-4 flex items-center justify-between gap-3 rounded-2xl border px-4 py-3">
+                  <span className="bb-text-primary text-sm font-black">ABC order</span>
+                  <input
+                    type="checkbox"
+                    checked={embeddedBibleAlphabetical}
+                    onChange={(event) => setEmbeddedBibleAlphabetical(event.target.checked)}
+                    className="h-5 w-5 accent-[var(--bb-accent)]"
+                  />
+                </label>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                   {visibleBooks.map((book) => (
                     <button
@@ -2280,38 +2282,15 @@ export default function DashboardJourneyExperience({
                       type="button"
                       onClick={() => {
                         setEmbeddedBibleSelectedBook(book);
-                        setEmbeddedBibleChapterPage(0);
                       }}
-                      className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-3 py-3 text-left text-sm font-black text-gray-900 transition hover:-translate-y-0.5 hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm"
+                      className="bb-surface-soft rounded-2xl border px-3 py-3 text-left text-sm font-black transition hover:-translate-y-0.5 hover:border-[var(--bb-accent)] hover:shadow-sm"
                     >
-                      <span className="block leading-tight">{book}</span>
-                      <span className="mt-1 block text-[11px] font-bold text-gray-500">
+                      <span className="bb-text-primary block leading-tight">{book}</span>
+                      <span className="bb-text-muted mt-1 block text-[11px] font-bold">
                         {getBookTotalChapters(book)} chapters
                       </span>
                     </button>
                   ))}
-                </div>
-
-                <div className="mt-5 flex items-center justify-between gap-3 text-xs font-black text-[#2f7fe8]">
-                  <button
-                    type="button"
-                    onClick={() => hasPreviousBookPage && setEmbeddedBibleBookPage((page) => page - 1)}
-                    disabled={!hasPreviousBookPage}
-                    className={`rounded-full px-3 py-2 transition ${hasPreviousBookPage ? "bg-[#eef6ff] hover:bg-[#dbeafe]" : "bg-gray-100 text-gray-300"}`}
-                  >
-                    Previous books
-                  </button>
-                  <span className="text-gray-500">
-                    Page {embeddedBibleBookPage + 1} of {Math.ceil(DASHBOARD_BIBLE_BOOKS.length / DASHBOARD_BIBLE_BOOKS_PER_PAGE)}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => hasNextBookPage && setEmbeddedBibleBookPage((page) => page + 1)}
-                    disabled={!hasNextBookPage}
-                    className={`rounded-full px-3 py-2 transition ${hasNextBookPage ? "bg-[#eef6ff] hover:bg-[#dbeafe]" : "bg-gray-100 text-gray-300"}`}
-                  >
-                    Next books
-                  </button>
                 </div>
               </div>
             )}
@@ -2395,11 +2374,11 @@ export default function DashboardJourneyExperience({
   const renderEmbeddedBibleStudiesPage = () => (
     <section className="w-full px-1">
       <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-        <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+        <div className="bb-card rounded-[28px] border p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Chapter Journeys</p>
-            <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">Bible Studies</h2>
-            <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
+            <p className="bb-accent text-xs font-black uppercase tracking-[0.16em]">Chapter Journeys</p>
+            <h2 className="bb-text-primary mt-1 text-3xl font-black leading-tight">Bible Studies</h2>
+            <p className="bb-text-secondary mt-2 text-sm font-semibold leading-6">
               Choose a guided study and keep moving through Scripture in order.
             </p>
           </div>
@@ -2408,18 +2387,18 @@ export default function DashboardJourneyExperience({
             {BIBLE_STUDY_SERIES_CATALOG.map((study) => (
               <Link
                 key={study.key}
-                href={`/devotionals?study=${encodeURIComponent(study.title)}`}
-                className="group rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] p-2 text-left transition hover:-translate-y-0.5 hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm"
+                href={`/bible-studies?study=${encodeURIComponent(study.title)}`}
+                className="bb-surface-soft group rounded-2xl border p-2 text-left transition hover:-translate-y-0.5 hover:border-[var(--bb-accent)] hover:shadow-sm"
               >
-                <div className="overflow-visible rounded-xl bg-white/70">
+                <div className="overflow-visible rounded-xl bg-[var(--bb-surface)]/70">
                   <img
                     src={study.image}
                     alt={`${study.title} cover`}
                     className="aspect-[3/4] w-full object-contain drop-shadow-sm transition group-hover:scale-[1.02]"
                   />
                 </div>
-                <p className="mt-2 line-clamp-2 text-sm font-black leading-tight text-gray-950">{study.title}</p>
-                <p className="mt-1 text-[11px] font-bold text-[#2f7fe8]">{study.subtitle}</p>
+                <p className="bb-text-primary mt-2 line-clamp-2 text-sm font-black leading-tight">{study.title}</p>
+                <p className="bb-accent mt-1 text-[11px] font-bold">{study.subtitle}</p>
               </Link>
             ))}
           </div>

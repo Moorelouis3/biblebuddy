@@ -84,7 +84,7 @@ export function getLouisPageGuide(pathname: string | null): LouisPageGuide | nul
     return TRIVIA_GUIDE;
   }
   if (pathname === "/biblebuddy-tv" || pathname.startsWith("/biblebuddy-tv/")) return TV_GUIDE;
-  if (pathname === "/devotionals") return DEVOTIONALS_GUIDE;
+  if (pathname === "/devotionals" || pathname === "/bible-studies") return DEVOTIONALS_GUIDE;
   if (pathname === "/bible-reference" || pathname === "/bible-references") return REFERENCES_GUIDE;
 
   return null;
