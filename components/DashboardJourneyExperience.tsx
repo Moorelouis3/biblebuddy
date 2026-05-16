@@ -1400,6 +1400,14 @@ export default function DashboardJourneyExperience({
   const [embeddedCommunityLoading, setEmbeddedCommunityLoading] = useState(false);
   const [embeddedCommunityError, setEmbeddedCommunityError] = useState<string | null>(null);
   const [embeddedCommunityHeight, setEmbeddedCommunityHeight] = useState(900);
+  const [pendingStudyDashboardHandoff, setPendingStudyDashboardHandoff] = useState<{
+    journeyKey: string;
+    chapterLabel: string;
+  } | null>(null);
+  const [studyDashboardHandoffModal, setStudyDashboardHandoffModal] = useState<{
+    chapterLabel: string;
+    remainingTasks: number;
+  } | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
 
   const dashboardPageKeys = ["home", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
@@ -2110,6 +2118,18 @@ export default function DashboardJourneyExperience({
   }, [checklistData, isLoadingChecklist, isLoadingNextChapter]);
 
   useEffect(() => {
+    if (!pendingStudyDashboardHandoff || isLoadingChecklist || !checklistData?.journeyKey) return;
+    if (checklistData.journeyKey !== pendingStudyDashboardHandoff.journeyKey) return;
+
+    const remaining = checklistData.tasks.filter((task) => !task.done).length;
+    setStudyDashboardHandoffModal({
+      chapterLabel: pendingStudyDashboardHandoff.chapterLabel,
+      remainingTasks: remaining,
+    });
+    setPendingStudyDashboardHandoff(null);
+  }, [checklistData, isLoadingChecklist, pendingStudyDashboardHandoff]);
+
+  useEffect(() => {
     if (isChecklistSyncing || !allDone || queueTasks.length > 0 || isLoadingNextChapter) {
       setShowCompletionPanel(false);
       return;
@@ -2374,15 +2394,36 @@ export default function DashboardJourneyExperience({
   }) {
     if (!userId || switchingStudyChapter) return;
 
+    const chapterLabel = buildDashboardChapterLabel(book, chapter);
+    const targetKey = `${devotionalId}:${dayNumber}`;
+    const optimisticTasks = buildPreloadedNextChapterTasks({
+      devotionalId,
+      devotionalTitle,
+      dayNumber,
+      book,
+      chapter,
+    });
+
     setSwitchingStudyChapter(dayNumber);
     setEmbeddedBibleStudyId(null);
     setShowCompletionPanel(false);
     setSuppressCompletionPanelForLoadedChapter(true);
     setClearedDoneTaskKinds({});
     setPreloadedNextStudy(null);
-    setPreloadedNextChapter(null);
+    setPreloadedNextChapter({
+      targetKey,
+      chapterLabel,
+      tasks: optimisticTasks,
+    });
+    setPendingStudyDashboardHandoff({
+      journeyKey: targetKey,
+      chapterLabel,
+    });
+    setStudyDashboardHandoffModal({
+      chapterLabel,
+      remainingTasks: optimisticTasks.length,
+    });
     setIsLoadingNextChapter(true);
-    snapToPage(0);
 
     try {
       const { error } = await supabase
@@ -3285,7 +3326,7 @@ export default function DashboardJourneyExperience({
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start gap-3">
                       <div className="rounded-full border border-white/90 bg-white/80 p-1.5 shadow-sm">
-                        <LouisAvatar mood={allDone ? "stareyes" : "wave"} size={46} />
+                        <LouisAvatar mood={allDone ? "stareyes" : "wave"} size={68} />
                       </div>
                       <div className="min-w-0 flex-1 pr-8">
                         <p className="text-sm font-normal leading-6 text-gray-800">{louisMessage.focusLine}</p>
@@ -3336,7 +3377,7 @@ export default function DashboardJourneyExperience({
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-start gap-3">
                       <div className="shrink-0 rounded-full bg-[#e8f4ff] p-1 shadow-sm">
-                        <LouisAvatar mood="wave" size={42} />
+                        <LouisAvatar mood="wave" size={64} />
                       </div>
                       <div>
                       <p className="text-sm font-bold text-gray-950">Want to do a different Bible study?</p>
@@ -3522,7 +3563,7 @@ export default function DashboardJourneyExperience({
                   <span className="absolute h-3 w-2 rounded-sm bg-lime-400 [--fx-r:130deg] [--fx-x:-10px] [--fx-y:54px]" />
                 </div>
                 <div className="relative mx-auto flex h-24 w-24 items-center justify-center rounded-full">
-                  <LouisAvatar mood="stareyes" size={90} />
+                  <LouisAvatar mood="stareyes" size={114} />
                 </div>
                 {preloadedNextStudy ? (
                   <>
@@ -3575,7 +3616,7 @@ export default function DashboardJourneyExperience({
                 <div className="completion-panel-enter rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
                   <div className="flex items-start gap-3">
                     <div className="shrink-0 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] p-1 shadow-sm">
-                      <LouisAvatar mood="reading" size={54} />
+                      <LouisAvatar mood="reading" size={76} />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
@@ -4021,7 +4062,7 @@ export default function DashboardJourneyExperience({
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-start gap-3">
               <div className="shrink-0 rounded-full bg-[#e8f4ff] p-1 shadow-sm">
-                <LouisAvatar mood="wave" size={46} />
+                <LouisAvatar mood="wave" size={72} />
               </div>
               <div>
                 <p className="text-base font-black text-gray-950">Want to do a different Bible study?</p>
@@ -4136,6 +4177,40 @@ export default function DashboardJourneyExperience({
       </ModalShell>
 
       <ModalShell
+        isOpen={studyDashboardHandoffModal !== null}
+        onClose={() => setStudyDashboardHandoffModal(null)}
+        backdropColor="bg-black/45"
+        scrollable={false}
+        zIndex="z-[95]"
+      >
+        <div className="mx-4 w-full max-w-md rounded-[30px] border border-[var(--bb-card-border,#cfe4f3)] bg-[var(--bb-card,#ffffff)] p-5 text-center shadow-2xl">
+          <div className="mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#e8f4ff)] p-2 shadow-sm">
+            <LouisAvatar mood="stareyes" size={108} />
+          </div>
+          <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
+            Study Dashboard
+          </p>
+          <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+            {studyDashboardHandoffModal?.chapterLabel || "This chapter"} has been set on your study dashboard.
+          </h2>
+          <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+            You have {studyDashboardHandoffModal?.remainingTasks ?? 0} Bible study{" "}
+            {(studyDashboardHandoffModal?.remainingTasks ?? 0) === 1 ? "task" : "tasks"} to complete.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              setStudyDashboardHandoffModal(null);
+              snapToPage(0);
+            }}
+            className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+          >
+            Let&apos;s start
+          </button>
+        </div>
+      </ModalShell>
+
+      <ModalShell
         isOpen={freePlanGate !== null}
         onClose={() => setFreePlanGate(null)}
         backdropColor="bg-black/55"
@@ -4145,7 +4220,7 @@ export default function DashboardJourneyExperience({
         <div className="mx-4 w-full max-w-md rounded-[28px] border border-[#f0d7b3] bg-white p-5 text-left shadow-2xl">
           <div className="flex items-start gap-3">
             <div className="shrink-0 rounded-full bg-[#e8f4ff] p-1 shadow-sm">
-              <LouisAvatar mood="wave" size={48} />
+              <LouisAvatar mood="wave" size={74} />
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Free Bible Buddy</p>
@@ -4232,7 +4307,7 @@ export default function DashboardJourneyExperience({
               <div className="rounded-2xl border border-[#b8d9ef] bg-gradient-to-br from-[#f6fbff] via-white to-[#edf7ff] p-4 shadow-sm">
                 <div className="flex items-start gap-3">
                   <div className="rounded-full border border-white bg-white p-1 shadow-sm">
-                    <LouisAvatar mood="wave" size={44} />
+                    <LouisAvatar mood="wave" size={70} />
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#4d88ad]">

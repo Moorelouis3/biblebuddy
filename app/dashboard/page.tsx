@@ -4025,7 +4025,7 @@ export default function DashboardPage() {
         <div className="mx-4 w-full max-w-sm overflow-hidden rounded-[24px] border border-[#d7e4f7] bg-white shadow-2xl">
           <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-5 py-5 text-center">
             <div className="flex justify-center">
-              <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={66} />
+              <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={96} />
             </div>
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
               {streakMotivationModalMode === "daily" ? "Daily Streak" : displayedDashboardNudge.eyebrow}
@@ -4252,7 +4252,7 @@ export default function DashboardPage() {
           <div className="bg-gradient-to-br from-[#eef7ff] via-white to-[#edf8ff] px-6 py-7 text-center">
             <div className="flex justify-center">
               <div className="relative rounded-full bg-[#e7f4ff] p-2 shadow-sm">
-                <LouisAvatar mood="stareyes" size={72} />
+                <LouisAvatar mood="stareyes" size={104} />
                 <span
                   className="absolute -right-1 -top-1 flex h-10 w-10 items-center justify-center rounded-full bg-white text-2xl shadow-md"
                   aria-hidden="true"
@@ -4331,7 +4331,7 @@ export default function DashboardPage() {
 
                 <div className="flex justify-center">
                   <div className="relative rounded-full bg-white/75 p-1 shadow-sm">
-                    <LouisAvatar mood="hands" size={66} />
+                    <LouisAvatar mood="hands" size={96} />
                   </div>
                 </div>
 
@@ -4388,7 +4388,7 @@ export default function DashboardPage() {
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div className="rounded-full bg-[#e8f4ff] p-1 shadow-sm">
-                  <LouisAvatar mood="stareyes" size={58} />
+                  <LouisAvatar mood="stareyes" size={88} />
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#5f86bd]">
@@ -4572,7 +4572,7 @@ export default function DashboardPage() {
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
           <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-8 text-center">
             <div className="flex justify-center">
-              <LouisAvatar mood="stareyes" size={72} />
+              <LouisAvatar mood="stareyes" size={104} />
             </div>
             <h2 className="mt-4 text-3xl font-bold text-[#21304f]">Chapter Complete!</h2>
             <p className="mt-3 text-base font-semibold text-[#355487]">
@@ -4600,7 +4600,7 @@ export default function DashboardPage() {
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#f0d7b3] bg-white shadow-2xl">
           <div className="bg-gradient-to-br from-[#fff8ef] via-white to-[#eef7ff] px-6 py-7 text-center">
             <div className="flex justify-center">
-              <LouisAvatar mood="wave" size={72} />
+              <LouisAvatar mood="wave" size={104} />
             </div>
             <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Free Bible Buddy</p>
             <h2 className="mt-2 text-2xl font-black text-[#21304f]">Your next chapter opens soon</h2>
@@ -4646,7 +4646,7 @@ export default function DashboardPage() {
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
           <div className="bg-gradient-to-br from-[#fff7d9] via-[#fffdf4] to-[#fff1c2] px-6 py-8 text-center">
             <div className="flex justify-center">
-              <LouisAvatar mood="stareyes" size={72} />
+              <LouisAvatar mood="stareyes" size={104} />
             </div>
             <h2 className="mt-4 text-3xl font-bold text-[#2b3550]">Hey Jessica</h2>
             <p className="mt-3 text-base leading-7 text-[#5b6480]">
@@ -4681,7 +4681,7 @@ export default function DashboardPage() {
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
           <div className="bg-gradient-to-br from-[#eef7ff] via-[#fffdf4] to-[#e8f5ec] px-6 py-8 text-center">
             <div className="flex justify-center">
-              <LouisAvatar mood="hands" size={76} />
+              <LouisAvatar mood="hands" size={108} />
             </div>
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
               Account Restored

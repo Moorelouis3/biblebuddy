@@ -89,7 +89,7 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
 
         <div className="bg-gradient-to-br from-[#eef5ff] via-[#f8fbff] to-[#e7f0ff] px-6 pb-6 pt-7 sm:px-8">
           <div className="mx-auto mb-4 w-fit rounded-full border border-[#d7e5ff] bg-white shadow-lg">
-            <LouisAvatar mood="wave" size={72} />
+            <LouisAvatar mood="wave" size={108} />
           </div>
           <p className="mb-3 text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5d7fb7]">
             Verse of the Day

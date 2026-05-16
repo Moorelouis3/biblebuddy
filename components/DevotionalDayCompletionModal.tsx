@@ -119,7 +119,7 @@ export default function DevotionalDayCompletionModal({
 
         <div className="rounded-3xl bg-blue-50 px-4 md:px-6 py-5 md:py-7">
           <div className="flex flex-col items-center mb-6">
-            <LouisAvatar mood="stareyes" size={80} />
+            <LouisAvatar mood="stareyes" size={112} />
             <h1 className="text-2xl md:text-3xl font-bold mt-4 text-center text-gray-900">
               {customTitle ? customTitle : "You finished today's devotional"}
             </h1>

@@ -389,7 +389,7 @@ export default function TriviaGamePlayer({
             </button>
           ) : null}
           <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-gray-200 bg-white shadow-lg shadow-gray-200/80">
-            <LouisAvatar mood="stareyes" size={78} />
+            <LouisAvatar mood="stareyes" size={112} />
           </div>
           <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-gray-950">Bible Buddy</p>
           <p className="mt-1 text-base font-black text-gray-950">{perfectScore ? "Perfect round." : "Nice work finishing."}</p>

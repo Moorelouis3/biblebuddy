@@ -58,7 +58,7 @@ export default function DailyRecommendationModal({
         {/* Inner light blue panel — matches DevotionalDayCompletionModal style */}
         <div className="rounded-3xl bg-blue-50 px-4 md:px-6 py-5 md:py-7">
           <div className="flex flex-col items-center mb-6">
-            <LouisAvatar mood="wave" size={80} />
+            <LouisAvatar mood="wave" size={112} />
             <p className="text-sm font-semibold text-blue-600 mt-4 text-center">{greeting}</p>
             <p className="text-base md:text-lg text-gray-800 mt-3 text-center font-semibold">
               {contextLine}
