@@ -768,6 +768,7 @@ function buildDashboardNextStudyLine(checklistData: ChecklistData | null) {
 function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Creation of the World") return "/creationoftheworld.png";
   if (title === "The Fall of Man") return "/thefallofman.png";
+  if (title === "The Flood of Noah") return "/Floodofnoah.png";
   if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
   if (title === "The Rise of Esther") return "/theriseofester.png";
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
@@ -783,6 +784,7 @@ function getDashboardStudyCover(title: string | null | undefined) {
 function getDashboardStudySummary(title: string | null | undefined) {
   if (title === "The Creation of the World") return "Genesis 1-2: creation, Eden, purpose, rest, and relationship.";
   if (title === "The Fall of Man") return "Genesis 3-4: temptation, shame, Cain and Abel, exile, and hope.";
+  if (title === "The Flood of Noah") return "Genesis 5-10: death, corruption, Noah, the flood, covenant, and nations.";
   if (title === "The Obedience of Abraham") return "Genesis 11-25: Abraham's call, waiting, covenant, testing, and legacy.";
   if (title === "The Rise of Esther") return "Esther 1-10: palace pressure, courage, providence, and reversal.";
   if (title === "The Courage of Daniel") return "Daniel 1-6: exile, courage, wisdom, prayer, pressure, and faith.";

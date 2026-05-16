@@ -95,6 +95,7 @@ function getStudyScriptureRange(title: string) {
   const ranges: Record<string, string> = {
     "The Creation of the World": "Genesis 1 & 2",
     "The Fall of Man": "Genesis 3 & 4",
+    "The Flood of Noah": "Genesis 5-10",
     "The Obedience of Abraham": "Genesis 11-25",
     "The Testing of Joseph": "Genesis 37-50",
     "The Rise of Esther": "Esther 1-10",
@@ -263,6 +264,9 @@ export default function DevotionalsPage() {
     }
     if (title === "The Fall of Man") {
       return "/thefallofman.png";
+    }
+    if (title === "The Flood of Noah") {
+      return "/Floodofnoah.png";
     }
     return null;
   };

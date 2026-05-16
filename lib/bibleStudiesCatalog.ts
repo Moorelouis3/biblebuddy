@@ -29,6 +29,15 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
       "A chapter-by-chapter Bible study through Genesis 3-4 with intro, reading, notes, trivia, Scrambled, and reflection centered on temptation, shame, sin, blame, violence, exile, and the need for redemption.",
   },
   {
+    key: "flood_of_noah",
+    title: "The Flood of Noah",
+    subtitle: "6-chapter Bible study",
+    totalWeeks: 6,
+    image: "/Floodofnoah.png",
+    description:
+      "A chapter-by-chapter Bible study through Genesis 5-10 with intro, reading, notes, trivia, Scrambled, and reflection centered on death spreading after the fall, corruption, violence, judgment, Noah's obedience, the flood, covenant mercy, and the nations after the flood.",
+  },
+  {
     key: "obedience_of_abraham",
     title: "The Obedience of Abraham",
     subtitle: "15-chapter Bible study",

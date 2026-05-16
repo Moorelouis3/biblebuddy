@@ -9,6 +9,7 @@ import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
+import { BIBLE_STUDY_SERIES_CATALOG } from "../lib/bibleStudiesCatalog";
 import { getBookTotalChapters, getCompletedChapters } from "../lib/readingProgress";
 import {
   canFreeUserUnlockChapter,
@@ -101,6 +102,7 @@ const HIDDEN_STUDY_SWITCHER_TITLES = new Set([
 function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Creation of the World") return "/creationoftheworld.png";
   if (title === "The Fall of Man") return "/thefallofman.png";
+  if (title === "The Flood of Noah") return "/Floodofnoah.png";
   if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
   if (title === "The Rise of Esther") return "/theriseofester.png";
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
@@ -116,6 +118,7 @@ function getDashboardStudyCover(title: string | null | undefined) {
 function getDashboardStudySummary(title: string | null | undefined, totalDays: number | null | undefined) {
   if (title === "The Creation of the World") return "Study Genesis 1-2 through creation, Eden, image of God, purpose, rest, and relationship.";
   if (title === "The Fall of Man") return "Study Genesis 3-4 through temptation, shame, Cain and Abel, violence, exile, and hope.";
+  if (title === "The Flood of Noah") return "Study Genesis 5-10 through death, corruption, judgment, Noah's obedience, covenant, and the nations.";
   if (title === "The Obedience of Abraham") return "Walk Genesis 11-25 through Abraham's call, waiting, covenant, testing, and legacy.";
   if (title === "The Rise of Esther") return "Follow Esther 1-10 through palace pressure, hidden identity, courage, providence, and reversal.";
   if (title === "The Courage of Daniel") return "Study Daniel 1-6 through exile, courage, wisdom, prayer, pressure, and the lions' den.";
@@ -132,6 +135,16 @@ function getBibleJourneyHandoff(title: string | null | undefined) {
       cover: "/thefallofman.png",
       description:
         "Next, Genesis 3-4 shows what happens when sin enters the story: temptation, shame, exile, Cain and Abel, and the first signs of humanity's need for redemption.",
+    };
+  }
+
+  if (title === "The Fall of Man") {
+    return {
+      nextTitle: "The Flood of Noah",
+      subtitle: "Genesis 5-10",
+      cover: "/Floodofnoah.png",
+      description:
+        "Next, Genesis 5-10 shows death spreading through the generations, corruption filling the earth, Noah obeying God, the flood, covenant mercy, and the nations after judgment.",
     };
   }
 
@@ -1324,6 +1337,7 @@ export default function DashboardJourneyExperience({
   const [embeddedBibleChapterPage, setEmbeddedBibleChapterPage] = useState(0);
   const [embeddedBibleCompletedChapters, setEmbeddedBibleCompletedChapters] = useState<number[]>([]);
   const [embeddedBibleReading, setEmbeddedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
+  const [shareCopied, setShareCopied] = useState(false);
 
   const dashboardPageKeys = ["home", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
@@ -2141,6 +2155,9 @@ export default function DashboardJourneyExperience({
     snapToPage(safeActivePage + (deltaX < 0 ? 1 : -1));
   }
 
+  const getSlideClass = (index: number) =>
+    `w-full shrink-0 transition-[height] duration-300 ${safeActivePage === index ? "" : "h-0 overflow-hidden"}`;
+
   const studyProgressPercent = Math.round((studyProgressCompleted / Math.max(studyProgressTotal, 1)) * 100);
   const getFeaturePageBullets = (key: DashboardPageKey) => {
     switch (key) {
@@ -2374,6 +2391,159 @@ export default function DashboardJourneyExperience({
       </section>
     );
   };
+
+  const renderEmbeddedBibleStudiesPage = () => (
+    <section className="w-full px-1">
+      <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+        <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Chapter Journeys</p>
+            <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">Bible Studies</h2>
+            <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
+              Choose a guided study and keep moving through Scripture in order.
+            </p>
+          </div>
+
+          <div className="mt-5 grid grid-cols-2 gap-3">
+            {BIBLE_STUDY_SERIES_CATALOG.map((study) => (
+              <Link
+                key={study.key}
+                href={`/devotionals?study=${encodeURIComponent(study.title)}`}
+                className="group rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] p-2 text-left transition hover:-translate-y-0.5 hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm"
+              >
+                <div className="overflow-visible rounded-xl bg-white/70">
+                  <img
+                    src={study.image}
+                    alt={`${study.title} cover`}
+                    className="aspect-[3/4] w-full object-contain drop-shadow-sm transition group-hover:scale-[1.02]"
+                  />
+                </div>
+                <p className="mt-2 line-clamp-2 text-sm font-black leading-tight text-gray-950">{study.title}</p>
+                <p className="mt-1 text-[11px] font-bold text-[#2f7fe8]">{study.subtitle}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
+  const renderEmbeddedCommunityPage = () => (
+    <section className="w-full px-1">
+      <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+        <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Community</p>
+          <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">Study With Others</h2>
+          <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
+            Join the Bible Buddy community flow without leaving the dashboard shell.
+          </p>
+          <div className="mt-5 grid gap-3">
+            {[
+              ["Official Study Group", "Weekly Bible study posts, finishers, and discussion.", "/study-groups"],
+              ["Bible Buddies", "See other Bible Buddies and keep growing together.", "/bible-buddies"],
+              ["Messages", "Continue your faith conversations.", "/messages"],
+            ].map(([title, subtitle, href]) => (
+              <Link key={title} href={href} className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-4 py-4 transition hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm">
+                <p className="text-base font-black text-gray-950">{title}</p>
+                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">{subtitle}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
+  const renderEmbeddedTvPage = () => (
+    <section className="w-full px-1">
+      <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+        <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Watch</p>
+          <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">Bible Buddy TV</h2>
+          <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
+            Pick a video study lane and keep learning from the dashboard.
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {[
+              ["Shows", "Bible stories and faith series.", "/biblebuddy-tv"],
+              ["Sermons", "Teaching by topic.", "/biblebuddy-tv/sermons/faith"],
+              ["Browse", "Find movies, shows, and lessons.", "/biblebuddy-tv"],
+              ["Continue", "Open the TV library.", "/biblebuddy-tv"],
+            ].map(([title, subtitle, href]) => (
+              <Link key={title} href={href} className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-4 py-4 transition hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm">
+                <p className="text-base font-black text-gray-950">{title}</p>
+                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">{subtitle}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
+  const renderEmbeddedGamesPage = () => (
+    <section className="w-full px-1">
+      <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+        <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Play</p>
+          <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">Bible Games</h2>
+          <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
+            Practice what you are learning with quick games.
+          </p>
+          <div className="mt-5 grid gap-3">
+            {[
+              ["Bible Trivia", "Test chapter knowledge and Bible memory.", "/bible-trivia"],
+              ["Scrambled", "Unscramble words from Scripture.", "/bible-study-games/scrambled"],
+              ["Game Hub", "Browse all Bible study games.", "/bible-study-games"],
+            ].map(([title, subtitle, href]) => (
+              <Link key={title} href={href} className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-4 py-4 transition hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm">
+                <p className="text-base font-black text-gray-950">{title}</p>
+                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">{subtitle}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
+  const renderEmbeddedSharePage = () => {
+    const shareUrl = "https://thebiblestudybuddy.com";
+    return (
+      <section className="w-full px-1">
+        <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+          <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Invite</p>
+            <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">Share Bible Buddy</h2>
+            <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
+              Send Bible Buddy to someone who wants a clearer Bible study rhythm.
+            </p>
+            <div className="mt-5 grid gap-3">
+              <button
+                type="button"
+                onClick={async () => {
+                  if (navigator.share) {
+                    await navigator.share({ title: "Bible Buddy", url: shareUrl });
+                    return;
+                  }
+                  await navigator.clipboard.writeText(shareUrl);
+                  setShareCopied(true);
+                  window.setTimeout(() => setShareCopied(false), 1800);
+                }}
+                className="rounded-2xl bg-[#2f7fe8] px-4 py-4 text-center text-sm font-black text-white shadow-sm transition hover:bg-[#256fd1]"
+              >
+                {shareCopied ? "Link Copied" : "Share or Copy Link"}
+              </button>
+              <Link href="/ambassador" className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-4 py-4 transition hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm">
+                <p className="text-base font-black text-gray-950">Ambassador</p>
+                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">Invite people and help them start studying.</p>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  };
   return (
     <div className="space-y-4 pb-4">
       <style>{`
@@ -2537,7 +2707,7 @@ export default function DashboardJourneyExperience({
           className="flex transition-transform duration-300 ease-out"
           style={{ transform: `translateX(-${safeActivePage * 100}%)` }}
         >
-        <div className="w-full shrink-0">
+        <div className={getSlideClass(0)}>
         <section className="w-full px-1">
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
             {homeHeader}
@@ -3140,58 +3310,28 @@ export default function DashboardJourneyExperience({
 
         </div>
 
-        <div className="w-full shrink-0">
+        <div className={getSlideClass(1)}>
           {renderEmbeddedBiblePage()}
         </div>
 
-        <div className="w-full shrink-0">
-          {renderDashboardFeaturePage("bible_studies", dashboardPageLinks.bible_studies, {
-              title: "Bible Studies",
-              subtitle: "Guided chapter studies with reading, notes, games, and reflection",
-              href: "/devotionals",
-              emoji: "\uD83C\uDF05",
-              eyebrow: "Chapter Journeys",
-            })}
+        <div className={getSlideClass(2)}>
+          {renderEmbeddedBibleStudiesPage()}
         </div>
 
-        <div className="w-full shrink-0">
-          {renderDashboardFeaturePage("group", dashboardPageLinks.group, {
-              title: "Community",
-              subtitle: "Study the Bible with us",
-              href: "/study-groups",
-              emoji: "\uD83D\uDC65",
-              eyebrow: "Community",
-            })}
+        <div className={getSlideClass(3)}>
+          {renderEmbeddedCommunityPage()}
         </div>
 
-        <div className="w-full shrink-0">
-          {renderDashboardFeaturePage("tv", dashboardPageLinks.tv, {
-              title: "Bible Buddy TV",
-              subtitle: "Stream Bible shows, movies, sermons, and more",
-              href: "/biblebuddy-tv",
-              emoji: "\u25B6",
-              eyebrow: "Watch",
-            })}
+        <div className={getSlideClass(4)}>
+          {renderEmbeddedTvPage()}
         </div>
 
-        <div className="w-full shrink-0">
-          {renderDashboardFeaturePage("games", dashboardPageLinks.games, {
-              title: "Bible Study Games",
-              subtitle: "Play our Bible-based games",
-              href: "/bible-study-games",
-              emoji: "\uD83C\uDFAE",
-              eyebrow: "Play",
-            })}
+        <div className={getSlideClass(5)}>
+          {renderEmbeddedGamesPage()}
         </div>
 
-        <div className="w-full shrink-0">
-          {renderDashboardFeaturePage("share", dashboardPageLinks.share, {
-              title: "Share Bible Buddy",
-              subtitle: "Share by text, WhatsApp, or copy link.",
-              href: "#share-bible-buddy",
-              emoji: "\u2197",
-              eyebrow: "Invite",
-            })}
+        <div className={getSlideClass(6)}>
+          {renderEmbeddedSharePage()}
         </div>
 
         {false ? (

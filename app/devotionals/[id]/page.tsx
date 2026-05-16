@@ -15,6 +15,7 @@ function getCoverImage(title: string): string | null {
   if (title === "The Rise of Esther") return "/theriseofester.png";
   if (title === "The Creation of the World") return "/creationoftheworld.png";
   if (title === "The Fall of Man") return "/thefallofman.png";
+  if (title === "The Flood of Noah") return "/Floodofnoah.png";
   return null;
 }
 
@@ -48,6 +49,8 @@ function getPreviewDescription(title: string, fallback: string): string {
       "Genesis begins before nations, kings, cities, temples, or human history as we know it. This 2-chapter Bible study walks slowly through Genesis 1-2 as the foundation of the Bible: God creating, ordering, blessing, resting, forming Adam from dust, planting Eden, giving a command, and creating the first human relationship. You will see why creation is good, what it means to be made in God's image, why work and rest matter, and how Eden shows humanity's original life with God before sin enters the story.",
     "The Fall of Man":
       "Genesis 3-4 shows the collapse after Eden. This 2-chapter Bible study walks slowly through temptation, shame, hiding, blame, judgment, exile, Cain and Abel, anger, murder, violence spreading through generations, and the first signs of hope after humanity breaks trust with God.",
+    "The Flood of Noah":
+      "Genesis 5-10 shows humanity moving from death spreading through the generations to corruption filling the earth, Noah obeying God, the flood covering the world, covenant mercy appearing through the rainbow, and the nations spreading after judgment.",
   };
 
   return descriptions[title] ?? fallback;
@@ -113,7 +116,8 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Rise of Esther" ||
     title === "The Courage of Daniel" ||
     title === "The Creation of the World" ||
-    title === "The Fall of Man"
+    title === "The Fall of Man" ||
+    title === "The Flood of Noah"
   );
 }
 
@@ -121,6 +125,7 @@ function getStudyScriptureRange(title: string | null | undefined) {
   const ranges: Record<string, string> = {
     "The Creation of the World": "Genesis 1 & 2",
     "The Fall of Man": "Genesis 3 & 4",
+    "The Flood of Noah": "Genesis 5-10",
     "The Obedience of Abraham": "Genesis 11-25",
     "The Testing of Joseph": "Genesis 37-50",
     "The Rise of Esther": "Esther 1-10",
@@ -139,6 +144,7 @@ function getChapterJourneyProgressLabel(title: string | null | undefined, curren
   if (title === "The Courage of Daniel") return `Daniel ${currentDay} of ${totalDays}`;
   if (title === "The Creation of the World") return `Genesis ${currentDay} of 2`;
   if (title === "The Fall of Man") return `Genesis ${currentDay + 2} of 4`;
+  if (title === "The Flood of Noah") return `Genesis ${currentDay + 4} of 10`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 

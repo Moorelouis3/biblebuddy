@@ -148,7 +148,7 @@ const COVER_BY_STUDY_TITLE: Record<string, string> = {
   "The Rise of Esther": "/theriseofester.png",
   "The Creation of the World": "/creationoftheworld.png",
   "The Fall of Man": "/thefallofman.png",
-  "The Flood of Noah": "/thefallofman.png",
+  "The Flood of Noah": "/Floodofnoah.png",
   "The Covenant Through Isaac": "/TheobedienceofAbraham.png",
   "The Wrestling of Jacob": "/TheobedienceofAbraham.png",
 };
@@ -182,7 +182,7 @@ const ONBOARDING_STUDY_DESCRIPTION_BY_TITLE: Record<string, string> = {
   "The Fall of Man":
     "A 2-chapter journey through Genesis 3-4, following temptation, shame, blame, Cain and Abel, violence, exile, and the need for redemption.",
   "The Flood of Noah":
-    "A guided journey through Noah, judgment, mercy, the ark, covenant, and God's preservation of creation.",
+    "A 6-chapter journey through Genesis 5-10, following death after the fall, corruption, Noah's obedience, the flood, covenant mercy, and the nations after judgment.",
   "The Covenant Through Isaac":
     "A guided journey through the promise continuing through Isaac, showing how God's covenant keeps moving across generations.",
   "The Wrestling of Jacob":
