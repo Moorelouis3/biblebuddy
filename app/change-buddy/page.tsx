@@ -11,6 +11,7 @@ import {
   type BuddyAvatar,
   type BuddyAvatarId,
 } from "../../lib/buddyAvatars";
+import { BUDDY_STORE_ITEMS } from "../../lib/bibleBuddyStore";
 import { supabase } from "../../lib/supabaseClient";
 
 function orderBuddies(currentBuddyId: BuddyAvatarId) {
@@ -23,11 +24,21 @@ function getBuddyMood(buddy: BuddyAvatar, currentBuddyId: BuddyAvatarId) {
   return currentBuddyId === "louis" ? "peace" : "wave";
 }
 
+function getBuddyStoreItemId(buddyId: BuddyAvatarId) {
+  return buddyId === "louis" ? "buddy-lil-louis" : `buddy-${buddyId}`;
+}
+
+function getBuddyStoreItem(buddyId: BuddyAvatarId) {
+  return BUDDY_STORE_ITEMS.find((item) => item.id === getBuddyStoreItemId(buddyId)) ?? null;
+}
+
 export default function ChangeBuddyPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId>(DEFAULT_BUDDY_AVATAR);
   const [activeIndex, setActiveIndex] = useState(0);
   const [savingBuddy, setSavingBuddy] = useState<BuddyAvatarId | null>(null);
+  const [ownedBuddyItemIds, setOwnedBuddyItemIds] = useState<Set<string>>(() => new Set(["buddy-lil-louis"]));
+  const [diamondCount, setDiamondCount] = useState(0);
   const [message, setMessage] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -47,9 +58,15 @@ export default function ChangeBuddyPage() {
 
         const { data } = await supabase
           .from("profile_stats")
-          .select("selected_buddy_avatar")
+          .select("selected_buddy_avatar, diamonds_count")
           .eq("user_id", user.id)
           .maybeSingle();
+
+        const { data: purchases } = await supabase
+          .from("user_store_purchases")
+          .select("item_id")
+          .eq("user_id", user.id)
+          .eq("item_kind", "buddy");
 
         const savedBuddy = data?.selected_buddy_avatar
           ? normalizeBuddyAvatarId(data.selected_buddy_avatar)
@@ -59,6 +76,8 @@ export default function ChangeBuddyPage() {
 
         if (!cancelled) {
           setSelectedBuddy(savedBuddy);
+          setDiamondCount(Math.max(0, Number(data?.diamonds_count ?? 0)));
+          setOwnedBuddyItemIds(new Set(["buddy-lil-louis", ...(purchases || []).map((purchase) => purchase.item_id)]));
           setActiveIndex(0);
           if (typeof window !== "undefined") {
             window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, savedBuddy);
@@ -85,11 +104,7 @@ export default function ChangeBuddyPage() {
     activeCard?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
   }, [activeIndex, buddies]);
 
-  async function chooseBuddy(buddy: BuddyAvatar) {
-    if (buddy.id === selectedBuddy || savingBuddy) return;
-
-    setSavingBuddy(buddy.id);
-    setMessage(null);
+  async function saveBuddySelection(buddy: BuddyAvatar) {
     setSelectedBuddy(buddy.id);
     setActiveIndex(0);
 
@@ -110,9 +125,101 @@ export default function ChangeBuddyPage() {
     } catch (error) {
       console.error("[CHANGE_BUDDY] Could not save selected buddy:", error);
       setMessage(`${buddy.name} is selected on this device.`);
+    }
+  }
+
+  async function chooseBuddy(buddy: BuddyAvatar) {
+    if (buddy.id === selectedBuddy || savingBuddy) return;
+
+    setSavingBuddy(buddy.id);
+    setMessage(null);
+    try {
+      await saveBuddySelection(buddy);
     } finally {
       setSavingBuddy(null);
     }
+  }
+
+  async function purchaseBuddy(buddy: BuddyAvatar) {
+    if (savingBuddy) return;
+    const storeItem = getBuddyStoreItem(buddy.id);
+    if (!storeItem || storeItem.comingSoon) {
+      setMessage(`${buddy.name} is coming soon.`);
+      return;
+    }
+
+    if (!userId) {
+      setMessage("Sign in first so BibleBuddy can save this Buddy.");
+      return;
+    }
+
+    setSavingBuddy(buddy.id);
+    setMessage(null);
+
+    try {
+      const { data: statsRow, error: statsError } = await supabase
+        .from("profile_stats")
+        .select("diamonds_count")
+        .eq("user_id", userId)
+        .maybeSingle();
+
+      if (statsError) throw statsError;
+
+      const serverDiamonds = Math.max(0, Number(statsRow?.diamonds_count ?? diamondCount));
+      if (serverDiamonds < storeItem.price) {
+        setDiamondCount(serverDiamonds);
+        setMessage(`You need ${(storeItem.price - serverDiamonds).toLocaleString()} more diamonds for ${buddy.name}.`);
+        return;
+      }
+
+      const nextDiamonds = serverDiamonds - storeItem.price;
+      const { error: updateError } = await supabase
+        .from("profile_stats")
+        .update({ diamonds_count: nextDiamonds })
+        .eq("user_id", userId);
+
+      if (updateError) throw updateError;
+
+      const { error: purchaseError } = await supabase.from("user_store_purchases").insert({
+        user_id: userId,
+        item_id: storeItem.id,
+        item_kind: storeItem.kind,
+        item_title: storeItem.title,
+        price_diamonds: storeItem.price,
+        reward_payload: {
+          buddyId: buddy.id,
+        },
+      });
+
+      if (purchaseError) {
+        await supabase.from("profile_stats").update({ diamonds_count: serverDiamonds }).eq("user_id", userId);
+        throw purchaseError;
+      }
+
+      setDiamondCount(nextDiamonds);
+      setOwnedBuddyItemIds((current) => new Set([...Array.from(current), storeItem.id]));
+      setMessage(`${buddy.name} is unlocked.`);
+      await saveBuddySelection(buddy);
+    } catch (error) {
+      console.error("[CHANGE_BUDDY] Could not purchase buddy:", error);
+      setMessage("The Buddy purchase did not go through. Try again in a moment.");
+    } finally {
+      setSavingBuddy(null);
+    }
+  }
+
+  function handleBuddyButton(buddy: BuddyAvatar) {
+    const storeItem = getBuddyStoreItem(buddy.id);
+    const isOwned = buddy.id === "louis" || ownedBuddyItemIds.has(getBuddyStoreItemId(buddy.id)) || buddy.id === selectedBuddy;
+    if (isOwned) {
+      void chooseBuddy(buddy);
+      return;
+    }
+    if (storeItem?.comingSoon) {
+      setMessage(`${buddy.name} is coming soon.`);
+      return;
+    }
+    void purchaseBuddy(buddy);
   }
 
   function moveCard(direction: -1 | 1) {
@@ -122,7 +229,7 @@ export default function ChangeBuddyPage() {
   return (
     <main className="min-h-screen px-4 py-5 text-[var(--bb-text-primary,#2b0707)]">
       <div className="mx-auto max-w-[760px]">
-        <section className="relative overflow-hidden rounded-[32px] border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] px-4 pb-6 pt-5 text-center shadow-[0_18px_50px_rgba(127,29,29,0.12)] sm:px-6">
+        <section className="relative overflow-hidden rounded-[32px] border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-surface,#fff7f7)] px-3 pb-5 pt-4 text-center shadow-[0_18px_50px_rgba(127,29,29,0.12)] sm:px-5">
           <Link
             href="/dashboard"
             aria-label="Close Change Buddy"
@@ -131,16 +238,11 @@ export default function ChangeBuddyPage() {
             x
           </Link>
 
-          <div className="mx-auto max-w-sm">
-            <p className="text-xs font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#dc2626)]">Change Buddy</p>
-            <h1 className="mt-2 text-3xl font-black leading-tight sm:text-4xl">Pick your guide</h1>
-          </div>
-
-          <div className="mt-5 flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-2 sm:gap-3">
             <button
               type="button"
               onClick={() => moveCard(-1)}
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-accent-soft,#fee2e2)] text-lg font-black text-[var(--bb-accent,#dc2626)] shadow-sm transition active:scale-95"
+              className="z-10 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] text-lg font-black text-[var(--bb-accent,#dc2626)] shadow-sm transition active:scale-95"
               aria-label="Previous Buddy"
             >
               ‹
@@ -148,7 +250,7 @@ export default function ChangeBuddyPage() {
 
             <div
               ref={scrollRef}
-              className="flex w-full max-w-[430px] snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-3 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex w-full max-w-[600px] snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-3 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               onScroll={(event) => {
                 const container = event.currentTarget;
                 const width = container.clientWidth || 1;
@@ -159,44 +261,50 @@ export default function ChangeBuddyPage() {
               {buddies.map((buddy, index) => {
                 const isCurrent = buddy.id === selectedBuddy;
                 const isActive = index === activeIndex;
+                const storeItem = getBuddyStoreItem(buddy.id);
+                const isOwned = buddy.id === "louis" || ownedBuddyItemIds.has(getBuddyStoreItemId(buddy.id)) || isCurrent;
+                const isComingSoon = Boolean(storeItem?.comingSoon);
 
                 return (
                   <article
                     key={buddy.id}
                     data-buddy-card-index={index}
-                    className={`min-w-full snap-center rounded-[30px] border bg-[var(--bb-surface,#fff7f7)] p-4 text-center shadow-sm transition duration-300 ${
-                      isActive ? "scale-100 opacity-100" : "scale-[0.96] opacity-80"
+                    className={`relative min-w-full snap-center overflow-hidden rounded-[30px] border p-5 text-center shadow-[0_16px_42px_rgba(38,63,99,0.12)] transition duration-300 sm:p-7 ${
+                      isActive ? "scale-100 opacity-100" : "scale-[0.97] opacity-80"
                     }`}
                     style={{
                       borderColor: isCurrent ? "var(--bb-accent,#dc2626)" : "var(--bb-card-border,#fecaca)",
+                      background:
+                        "radial-gradient(circle at 50% 18%, var(--bb-accent-soft,#fee2e2), transparent 34%), var(--bb-card,#ffffff)",
                     }}
                   >
-                    <div className="mx-auto mb-3 inline-flex rounded-full bg-[var(--bb-card,#ffffff)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#dc2626)] shadow-sm">
-                      {isCurrent ? "Current Buddy" : "Select"}
+                    <div className="pointer-events-none absolute inset-x-10 bottom-20 h-24 rounded-full bg-[var(--bb-accent-soft,#fee2e2)] blur-3xl" aria-hidden="true" />
+                    <div className="relative mx-auto grid min-h-[300px] place-items-end sm:min-h-[360px]">
+                      <LouisAvatar buddyId={buddy.id} mood={getBuddyMood(buddy, selectedBuddy)} size={isActive ? 310 : 290} />
                     </div>
 
-                    <div className="relative mx-auto grid h-[250px] w-full max-w-[300px] place-items-center overflow-hidden rounded-[28px] bg-[var(--bb-card,#ffffff)] shadow-inner">
-                      <div className="absolute inset-x-8 bottom-8 h-20 rounded-full bg-[var(--bb-accent-soft,#fee2e2)] blur-2xl" />
-                      <LouisAvatar buddyId={buddy.id} mood={getBuddyMood(buddy, selectedBuddy)} size={220} />
-                    </div>
-
-                    <h2 className="mt-4 text-4xl font-black leading-none">{buddy.name}</h2>
-                    <p className="mt-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#dc2626)]">{buddy.title}</p>
-                    <p className="mx-auto mt-3 max-w-[300px] text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#8a1c1c)]">
-                      {buddy.description}
-                    </p>
+                    <h2 className="relative -mt-2 text-5xl font-black leading-none sm:text-6xl">{buddy.name}</h2>
+                    <p className="relative mt-3 text-sm font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#dc2626)]">{buddy.title}</p>
 
                     <button
                       type="button"
-                      onClick={() => void chooseBuddy(buddy)}
-                      disabled={isCurrent || savingBuddy === buddy.id}
-                      className={`mt-5 w-full rounded-full px-5 py-3 text-sm font-black shadow-sm transition active:scale-[0.98] ${
+                      onClick={() => handleBuddyButton(buddy)}
+                      disabled={isCurrent || savingBuddy === buddy.id || isComingSoon}
+                      className={`relative mt-6 w-full rounded-full px-5 py-3.5 text-sm font-black shadow-sm transition active:scale-[0.98] ${
                         isCurrent
                           ? "bg-[var(--bb-accent,#dc2626)] text-[var(--bb-button-text,#ffffff)]"
                           : "bg-[var(--bb-button,#dc2626)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
                       } disabled:cursor-default disabled:opacity-95`}
                     >
-                      {savingBuddy === buddy.id ? "Saving..." : isCurrent ? "Current Buddy" : "Select"}
+                      {savingBuddy === buddy.id
+                        ? "Saving..."
+                        : isCurrent
+                          ? "Current Buddy"
+                          : isComingSoon
+                            ? "Coming Soon"
+                            : isOwned
+                              ? "Select"
+                              : `Purchase ${storeItem?.price.toLocaleString() ?? 0} diamonds`}
                     </button>
                   </article>
                 );
@@ -206,7 +314,7 @@ export default function ChangeBuddyPage() {
             <button
               type="button"
               onClick={() => moveCard(1)}
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-accent-soft,#fee2e2)] text-lg font-black text-[var(--bb-accent,#dc2626)] shadow-sm transition active:scale-95"
+              className="z-10 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] text-lg font-black text-[var(--bb-accent,#dc2626)] shadow-sm transition active:scale-95"
               aria-label="Next Buddy"
             >
               ›
@@ -231,7 +339,6 @@ export default function ChangeBuddyPage() {
             </p>
           ) : null}
 
-          <p className="mt-4 text-xs font-bold text-[var(--bb-text-muted,#9f6262)]">Swipe the card or use the arrows.</p>
           <p className="sr-only" aria-live="polite">
             Showing {activeBuddy.name}
           </p>

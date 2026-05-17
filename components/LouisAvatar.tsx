@@ -53,6 +53,25 @@ const moodToFile: Record<LouisMood, string> = {
   sideeye: "/Newlouisthinking.png",
 };
 
+const walterMoodToFile: Partial<Record<LouisMood, string>> = {
+  wave: "/Walterwaving.png",
+  salute: "/Walterwaving.png",
+  stareyes: "/WalterHappy.png",
+  hands: "/WalterHappy.png",
+  smile: "/WalterHappy.png",
+  cool: "/WalterHappy.png",
+  peace: "/WalterHappy.png",
+  reading: "/Walterreading.png",
+  bible: "/Walterreading.png",
+  idea: "/Walterreading.png",
+  thinking: "/Walterreading.png",
+  think: "/Walterreading.png",
+  praying: "/Walterreading.png",
+  pray: "/Walterreading.png",
+  sheesh: "/Walterreading.png",
+  sideeye: "/Walterreading.png",
+};
+
 function BuddyIllustration({ buddyId, mood, size }: { buddyId: BuddyAvatarId; mood: LouisMood; size: number }) {
   const buddy = getBuddyAvatar(buddyId);
   const isPrayer = mood === "pray";
@@ -174,6 +193,23 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
       window.removeEventListener("storage", loadSelectedBuddy);
     };
   }, [buddyId]);
+
+  if (selectedBuddy === "walter") {
+    const src = walterMoodToFile[mood] ?? "/Walterwaving.png";
+    return (
+      <span
+        data-louis-avatar
+        className="inline-flex shrink-0 items-center justify-center"
+        style={{ "--bb-louis-avatar-size": `${size}px`, width: size, height: size } as CSSProperties}
+      >
+        <img
+          src={src}
+          alt="Walter avatar"
+          className="h-full w-full rounded-full object-cover select-none"
+        />
+      </span>
+    );
+  }
 
   if (selectedBuddy !== "louis") {
     return (

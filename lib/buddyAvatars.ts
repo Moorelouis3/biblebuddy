@@ -27,7 +27,7 @@ export const SELECTED_BUDDY_STORAGE_KEY = "bb:selected-buddy-avatar";
 export const BUDDY_AVATARS: BuddyAvatar[] = [
   {
     id: "louis",
-    name: "Louis",
+    name: "Lil Louis",
     unlockLevel: 1,
     title: "Bible Teacher",
     description: "Warm, calm, honest, and built to help you keep showing up.",
@@ -43,8 +43,9 @@ export const BUDDY_AVATARS: BuddyAvatar[] = [
     id: "walter",
     name: "Walter",
     unlockLevel: 1,
-    title: "65 - Retired Pastor",
+    title: "Retired Preacher",
     description: "Wise, patient, grounded in Scripture, and speaks like a mentor.",
+    profileImage: "/Walterwaving.png",
     traits: ["Wise", "Patient", "Grounded"],
     bio: "Walter is planned as a steady pastor voice for users who want calm wisdom and Scripture-first guidance.",
     speakingStyle: "Slow, warm, pastoral, and rooted in the Bible.",
@@ -54,9 +55,9 @@ export const BUDDY_AVATARS: BuddyAvatar[] = [
   },
   {
     id: "lindsey",
-    name: "Lindsay",
+    name: "Lindsey",
     unlockLevel: 1,
-    title: "Stay-at-home Mom",
+    title: "Christian Life Coach",
     description: "Encouraging, practical, gentle, and focused on daily faith.",
     traits: ["Gentle", "Practical", "Encouraging"],
     bio: "Lindsay is planned as a practical everyday faith voice for busy users building a Bible habit at home.",

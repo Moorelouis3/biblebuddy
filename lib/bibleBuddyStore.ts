@@ -41,7 +41,7 @@ export const STREAK_FLAME_STORE_ITEMS: BibleBuddyStoreItem[] = [
 
 export const BUDDY_STORE_ITEMS: BibleBuddyStoreItem[] = [
   { id: "buddy-lil-louis", kind: "buddy", title: "Lil Louis", subtitle: "Your first Bible Buddy coach.", price: 0, emoji: "👑", accent: "#DC2626" },
-  { id: "buddy-walter", kind: "buddy", title: "Walter", subtitle: "New Bible Buddy coming soon.", price: 750, emoji: "👤", accent: "#4B5563", comingSoon: true },
+  { id: "buddy-walter", kind: "buddy", title: "Walter", subtitle: "Retired preacher with calm Scripture wisdom.", price: 750, emoji: "W", accent: "#4B5563", imageSrc: "/Walterwaving.png" },
   { id: "buddy-lindsey", kind: "buddy", title: "Lindsey", subtitle: "New Bible Buddy coming soon.", price: 750, emoji: "👤", accent: "#DB2777", comingSoon: true },
   { id: "buddy-steve", kind: "buddy", title: "Steve", subtitle: "New Bible Buddy coming soon.", price: 750, emoji: "👤", accent: "#2563EB", comingSoon: true },
 ];

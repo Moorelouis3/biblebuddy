@@ -142,6 +142,10 @@ type StorePurchaseRow = {
   created_at?: string | null;
 };
 
+type BadgePopupSeenRow = {
+  badge_id: string;
+};
+
 type MysteryPrizeReveal = {
   status: "closed" | "opening" | "opened";
   reward: number;
@@ -226,6 +230,10 @@ function getBadgeAwardLabel(badge: Pick<BadgeProgress, "id" | "xp">) {
 
 function getLocalBadgeAwardKey(userId: string, badgeId: string) {
   return `bb:badge-awarded:${userId}:${badgeId}`;
+}
+
+function getLocalBadgePopupSeenKey(userId: string, badgeId: string) {
+  return `bb:badge-popup-seen:${userId}:${badgeId}`;
 }
 
 function getPendingBadgeQueueKey(userId: string) {
@@ -895,6 +903,8 @@ export default function DashboardPage() {
   const [hasJessicaBonusAward, setHasJessicaBonusAward] = useState(false);
   const [showZorianRestorationModal, setShowZorianRestorationModal] = useState(false);
   const [hasZorianRestorationAward, setHasZorianRestorationAward] = useState(false);
+  const [seenBadgePopupIds, setSeenBadgePopupIds] = useState<Set<string>>(new Set());
+  const [badgePopupSeenLoaded, setBadgePopupSeenLoaded] = useState(false);
   const [isLoadingDailyTaskSummary, setIsLoadingDailyTaskSummary] = useState(true);
   const [dailyChecklistData, setDailyChecklistData] = useState<ChecklistData | null>(null);
   const [dailyTaskCompletedCount, setDailyTaskCompletedCount] = useState(0);
@@ -2294,7 +2304,9 @@ export default function DashboardPage() {
               style={{ background: `${item.accent}22`, color: item.accent }}
               aria-hidden="true"
             >
-              {item.id === "buddy-lil-louis" ? (
+              {item.imageSrc ? (
+                <img src={item.imageSrc} alt={item.title} className="h-12 w-12 rounded-2xl object-cover" />
+              ) : item.id === "buddy-lil-louis" ? (
                 <img src="/Newlouiswave.png" alt="Lil Louis waving" className="h-12 w-12 rounded-2xl object-cover" />
               ) : item.kind === "buddy" && item.comingSoon ? (
                 <span className="grid h-9 w-9 place-items-center rounded-full bg-slate-200 text-slate-500">?</span>
@@ -2540,23 +2552,85 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
+    if (!badgePopupSeenLoaded) return;
     const pendingBadges = readPendingBadgeQueue(userId);
     if (pendingBadges.length > 0) {
       setEarnedBadgeQueue((current) => {
         const existingIds = new Set(current.map((badge) => badge.id));
-        const fresh = pendingBadges.filter((badge) => !existingIds.has(badge.id));
+        const fresh = pendingBadges.filter((badge) => !existingIds.has(badge.id) && !seenBadgePopupIds.has(badge.id));
         return fresh.length ? [...current, ...fresh] : current;
       });
     }
+  }, [badgePopupSeenLoaded, seenBadgePopupIds, userId]);
+
+  useEffect(() => {
+    if (!userId) {
+      setSeenBadgePopupIds(new Set());
+      setBadgePopupSeenLoaded(false);
+      return;
+    }
+
+    let cancelled = false;
+    setBadgePopupSeenLoaded(false);
+
+    async function loadSeenBadgePopups() {
+      const localSeen = new Set<string>();
+      if (typeof window !== "undefined") {
+        for (let index = 0; index < window.localStorage.length; index += 1) {
+          const key = window.localStorage.key(index);
+          const prefix = `bb:badge-popup-seen:${userId}:`;
+          if (key?.startsWith(prefix) && window.localStorage.getItem(key) === "1") {
+            localSeen.add(key.slice(prefix.length));
+          }
+        }
+      }
+
+      const { data, error } = await supabase
+        .from("user_badge_popups_seen")
+        .select("badge_id")
+        .eq("user_id", userId);
+
+      if (cancelled) return;
+
+      if (error) {
+        if (!/user_badge_popups_seen/i.test(error.message || "")) {
+          console.warn("[BADGES] Could not load seen badge popups:", error.message);
+        }
+        setSeenBadgePopupIds(localSeen);
+        setBadgePopupSeenLoaded(true);
+        return;
+      }
+
+      const dbSeen = new Set((data || []).map((row: BadgePopupSeenRow) => row.badge_id).filter(Boolean));
+      setSeenBadgePopupIds(new Set([...Array.from(localSeen), ...Array.from(dbSeen)]));
+      setBadgePopupSeenLoaded(true);
+    }
+
+    void loadSeenBadgePopups();
+
+    return () => {
+      cancelled = true;
+    };
   }, [userId]);
 
   useEffect(() => {
+    if (!badgePopupSeenLoaded) return;
     if (hasBlockingDashboardOverlay || activeEarnedBadge || earnedBadgeQueue.length === 0) return;
     if (badgePopupsShownThisSession >= MAX_BADGE_POPUPS_PER_SESSION) return;
 
-    const [nextBadge, ...remainingBadges] = earnedBadgeQueue;
+    const unseenQueue = earnedBadgeQueue.filter((badge) => !seenBadgePopupIds.has(badge.id));
+    if (unseenQueue.length !== earnedBadgeQueue.length) {
+      setEarnedBadgeQueue(unseenQueue);
+      if (typeof window !== "undefined" && userId) {
+        writePendingBadgeQueue(userId, unseenQueue);
+      }
+      return;
+    }
+
+    const [nextBadge, ...remainingBadges] = unseenQueue;
     setEarnedBadgeQueue(remainingBadges);
     setActiveEarnedBadge(nextBadge);
+    setSeenBadgePopupIds((current) => new Set([...Array.from(current), nextBadge.id]));
     setBadgePopupsShownThisSession((current) => current + 1);
     setPendingDailyStreakSequence(false);
     setShowStreakMotivationModal(false);
@@ -2564,7 +2638,26 @@ export default function DashboardPage() {
     setLouisDashboardNudge(null);
     if (typeof window !== "undefined" && userId) {
       writePendingBadgeQueue(userId, remainingBadges);
+      window.localStorage.setItem(getLocalBadgePopupSeenKey(userId, nextBadge.id), "1");
       window.localStorage.setItem(getDashboardBadgeLastShownKey(userId), String(Date.now()));
+    }
+
+    if (userId) {
+      supabase
+        .from("user_badge_popups_seen")
+        .upsert(
+          {
+            user_id: userId,
+            badge_id: nextBadge.id,
+            shown_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id,badge_id" },
+        )
+        .then(({ error }) => {
+          if (error && !/user_badge_popups_seen/i.test(error.message || "")) {
+            console.warn("[BADGES] Could not persist seen badge popup:", error.message);
+          }
+        });
     }
 
     window.setTimeout(() => {
@@ -2575,7 +2668,7 @@ export default function DashboardPage() {
         colors: ["#7BAFD4", "#f7c948", "#22c55e", "#ffffff"],
       });
     }, 240);
-  }, [activeEarnedBadge, badgePopupsShownThisSession, earnedBadgeQueue, hasBlockingDashboardOverlay, pendingDailyStreakSequence, userId]);
+  }, [activeEarnedBadge, badgePopupSeenLoaded, badgePopupsShownThisSession, earnedBadgeQueue, hasBlockingDashboardOverlay, pendingDailyStreakSequence, seenBadgePopupIds, userId]);
 
   async function completeSwipeHint(options: { openExplore?: boolean } = {}) {
     if (isSavingSwipeHint) return;
@@ -3356,10 +3449,13 @@ export default function DashboardPage() {
               if (window.localStorage.getItem(getLocalBadgeAwardKey(userId, badge.id)) === "1") {
                 alreadyAwardedBadgeIds.add(badge.id);
               }
+              if (window.localStorage.getItem(getLocalBadgePopupSeenKey(userId, badge.id)) === "1") {
+                alreadyAwardedBadgeIds.add(badge.id);
+              }
             });
           }
           const newlyEarnedBadges = nextBadgeProgress.filter(
-            (badge) => badge.current >= badge.target && !alreadyAwardedBadgeIds.has(badge.id)
+            (badge) => badge.current >= badge.target && !alreadyAwardedBadgeIds.has(badge.id) && !seenBadgePopupIds.has(badge.id)
           );
 
           if (newlyEarnedBadges.length > 0) {
@@ -3375,7 +3471,7 @@ export default function DashboardPage() {
                 const existingIds = new Set([...current, ...pendingBadges].map((badge) => badge.id));
                 const activeId = activeEarnedBadge?.id ?? null;
                 const freshBadges = newlyEarnedBadges.filter(
-                  (badge) => badge.id !== activeId && !existingIds.has(badge.id)
+                  (badge) => badge.id !== activeId && !existingIds.has(badge.id) && !seenBadgePopupIds.has(badge.id)
                 );
                 if (!freshBadges.length) return current;
                 const nextPendingBadges = [...pendingBadges, ...freshBadges];
@@ -3422,7 +3518,7 @@ export default function DashboardPage() {
     return () => {
       didCancel = true;
     };
-  }, [userId, levelRefreshTick, isOwnerDashboard]);
+  }, [userId, levelRefreshTick, isOwnerDashboard, seenBadgePopupIds]);
 
   useEffect(() => {
     function handleDiamondsAwarded(event: Event) {
