@@ -1603,6 +1603,21 @@ export default function DashboardJourneyExperience({
     return () => window.removeEventListener("message", handleEmbeddedCommunityHeight);
   }, []);
 
+  useEffect(() => {
+    function handleEmbeddedCommunityScroll(event: MessageEvent) {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data as { type?: string; deltaY?: number } | null;
+      if (!data || data.type !== "bb-community-scroll") return;
+
+      const deltaY = Number(data.deltaY);
+      if (!Number.isFinite(deltaY)) return;
+      window.scrollBy({ top: deltaY, behavior: "auto" });
+    }
+
+    window.addEventListener("message", handleEmbeddedCommunityScroll);
+    return () => window.removeEventListener("message", handleEmbeddedCommunityScroll);
+  }, []);
+
   const nextTask = visibleTasks.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = visibleTasks.findIndex((task) => !task.done);
   const nextActionTaskKind =

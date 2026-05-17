@@ -2029,6 +2029,7 @@ export default function GroupChatPage() {
   const [showTopBuddiesModal, setShowTopBuddiesModal] = useState(false);
   const [topBuddies, setTopBuddies] = useState<TopBuddy[]>([]);
   const [topBuddiesExpanded, setTopBuddiesExpanded] = useState(false);
+  const [showTopBuddiesDetail, setShowTopBuddiesDetail] = useState(false);
   const [topBuddiesEngagement, setTopBuddiesEngagement] = useState<TopBuddiesEngagement | null>(null);
   const [topBuddiesClickersExpanded, setTopBuddiesClickersExpanded] = useState(false);
   const [hasOpenedTopBuddiesCard, setHasOpenedTopBuddiesCard] = useState(false);
@@ -2827,6 +2828,14 @@ export default function GroupChatPage() {
     });
   }
 
+  function openTopBuddiesDetail() {
+    setShowTopBuddiesDetail(true);
+    setTopBuddiesExpanded(true);
+    setHasOpenedTopBuddiesCard(true);
+    if (group?.id) localStorage.setItem(`top-buddies-opened:${group.id}:${TOP_BUDDIES_BOARD_VERSION}`, "true");
+    void trackTopBuddiesClick("open");
+  }
+
   function getTopBuddyMedal(rank: number) {
     if (rank === 1) return { label: "1", icon: "🏆", classes: "bg-[#fff4bd] text-[#8a5a00] border-[#f4d067]" };
     if (rank === 2) return { label: "2", icon: "🥈", classes: "bg-[#eef2f7] text-[#536174] border-[#cbd5e1]" };
@@ -2862,7 +2871,7 @@ export default function GroupChatPage() {
       <div className={`mb-4 overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#d8e7d7)] bg-[var(--bb-card,#ffffff)] shadow-sm ${!hasOpenedTopBuddiesCard && !topBuddiesExpanded ? "animate-pulse ring-2 ring-[var(--bb-accent,#ffd95d)]/40" : ""}`}>
         <button
           type="button"
-          onClick={toggleTopBuddiesCard}
+          onClick={openTopBuddiesDetail}
           className="group relative w-full overflow-hidden bg-[var(--bb-card,#ffffff)] px-4 py-4 text-left"
         >
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-[var(--bb-accent,#4a9b6f)] opacity-80" />
@@ -2890,101 +2899,121 @@ export default function GroupChatPage() {
                 ))}
               </div>
               <span className="rounded-full bg-[var(--bb-surface,#ffffff)] px-3 py-1 text-xs font-black text-[var(--bb-accent,#47677c)] ring-1 ring-[var(--bb-card-border,#d7e6ef)]">
-                {topBuddiesExpanded ? "Hide" : "Open"}
+                Open
               </span>
             </div>
           </div>
         </button>
+      </div>
+    );
+  }
 
-        {topBuddiesExpanded && (
-          <div className="border-t border-[var(--bb-card-border,#e3edf3)] bg-[var(--bb-surface-soft,#fbfdff)] px-4 pb-4 pt-3">
-            <div className="mb-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f0)] bg-[var(--bb-card,#ffffff)] px-3 py-3">
-              <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#4f8fb7)]">How weekly Top Buddies are calculated</p>
-              <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#516173)]">
-                Bible study tasks count the most: study intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
-              </p>
+  function renderTopBuddiesDetailView() {
+    const currentBuddies = topBuddies;
+    const boardClickers = topBuddiesEngagement?.clickers || [];
+    const clickLabel = topBuddiesEngagement
+      ? `${topBuddiesEngagement.uniqueClickers} ${topBuddiesEngagement.uniqueClickers === 1 ? "buddy" : "buddies"} opened this board`
+      : "0 buddies opened this board";
+
+    return (
+      <div className="animate-fade-in-up overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#d8e7d7)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+        <div className="flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e3edf3)] px-5 py-5">
+          <div className="min-w-0">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#4f8fb7)]">Weekly Board</p>
+            <h2 className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#1f2a44)]">Top 10 Bible Buddies</h2>
+            <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">{getWeeklyBoardRangeLabel()}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setShowTopBuddiesDetail(false);
+              setTopBuddiesClickersExpanded(false);
+            }}
+            className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
+            aria-label="Close top buddies"
+          >
+            ×
+          </button>
+        </div>
+
+        <div className="bg-[var(--bb-surface-soft,#fbfdff)] px-5 py-5">
+          <div className="mb-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f0)] bg-[var(--bb-card,#ffffff)] px-4 py-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#4f8fb7)]">How weekly Top Buddies are calculated</p>
+            <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#516173)]">
+              Bible study tasks count the most: study intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
+            </p>
+          </div>
+
+          {loadingTopBuddies ? (
+            <div className="rounded-2xl border border-dashed border-[var(--bb-card-border,#cfe1ee)] bg-[var(--bb-card,#ffffff)] px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+              Loading the award board...
             </div>
-
-            {loadingTopBuddies ? (
-              <div className="rounded-2xl border border-dashed border-[var(--bb-card-border,#cfe1ee)] bg-[var(--bb-card,#ffffff)] px-4 py-5 text-center text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
-                Loading the award board...
-              </div>
-            ) : currentBuddies.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-[var(--bb-card-border,#cfe1ee)] bg-[var(--bb-card,#ffffff)] px-4 py-5 text-center text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
-                No leaderboard points yet. First Buddy to show up gets the spotlight.
-              </div>
-            ) : (
-              <div className="space-y-2">
-                {currentBuddies.map((buddy) => {
-                  const medal = getTopBuddyMedal(buddy.rank);
-                  return (
-                    <div key={`week-${buddy.userId}`} className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-card,#ffffff)] px-3 py-3 shadow-sm">
-                      <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-sm font-black ${medal.classes}`}>
-                        {medal.icon || medal.label}
-                      </div>
-                      <Link href={`/profile/${buddy.userId}`} className="shrink-0">
-                        {renderTopBuddyAvatar(buddy, "h-11 w-11")}
-                      </Link>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex min-w-0 flex-wrap items-center gap-1.5">
-                          <Link href={`/profile/${buddy.userId}`} className="truncate text-sm font-black text-[var(--bb-text-primary,#1f2a44)] hover:underline">
-                            {buddy.displayName}
-                          </Link>
-                          <StreakFlameBadge currentStreak={buddy.currentStreak} />
-                          <LevelBadge currentLevel={buddy.currentLevel} />
-                          <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
-                        </div>
-                        <p className="mt-0.5 text-[11px] font-semibold text-[var(--bb-text-secondary,#718096)]">
-                          {buddy.actions || 0} Bible tasks · {buddy.scoreBreakdown?.community || 0} community pts
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-lg font-black text-[var(--bb-text-primary,#1f2a44)]">{buddy.score}</p>
-                        <p className="text-[11px] font-bold text-[var(--bb-text-secondary,#718096)]">buddy score</p>
-                      </div>
+          ) : currentBuddies.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-[var(--bb-card-border,#cfe1ee)] bg-[var(--bb-card,#ffffff)] px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+              No leaderboard points yet. First Buddy to show up gets the spotlight.
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {currentBuddies.map((buddy) => {
+                const medal = getTopBuddyMedal(buddy.rank);
+                return (
+                  <div key={`detail-week-${buddy.userId}`} className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-card,#ffffff)] px-3 py-3 shadow-sm">
+                    <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-sm font-black ${medal.classes}`}>
+                      {medal.icon || medal.label}
                     </div>
-                  );
-                })}
-              </div>
-            )}
-
-            <div className="mt-3 flex items-center justify-between gap-2 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">
-              <button
-                type="button"
-                onClick={() => setTopBuddiesClickersExpanded((current) => !current)}
-                className="text-left font-black text-[var(--bb-text-primary,#47677c)]"
-              >
-                {clickLabel} {boardClickers.length ? (topBuddiesClickersExpanded ? "▲" : "▼") : ""}
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  void trackTopBuddiesClick("modal");
-                  setShowTopBuddiesModal(true);
-                }}
-                className="font-black text-[var(--bb-accent,#4a9b6f)]"
-              >
-                Full view
-              </button>
+                    <Link href={`/profile/${buddy.userId}`} className="shrink-0">
+                      {renderTopBuddyAvatar(buddy, "h-11 w-11")}
+                    </Link>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+                        <Link href={`/profile/${buddy.userId}`} className="truncate text-sm font-black text-[var(--bb-text-primary,#1f2a44)] hover:underline">
+                          {buddy.displayName}
+                        </Link>
+                        <StreakFlameBadge currentStreak={buddy.currentStreak} />
+                        <LevelBadge currentLevel={buddy.currentLevel} />
+                        <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
+                      </div>
+                      <p className="mt-0.5 text-[11px] font-semibold text-[var(--bb-text-secondary,#718096)]">
+                        {buddy.actions || 0} Bible tasks · {buddy.scoreBreakdown?.community || 0} community pts
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-black text-[var(--bb-text-primary,#1f2a44)]">{buddy.score}</p>
+                      <p className="text-[11px] font-bold text-[var(--bb-text-secondary,#718096)]">buddy score</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
+          )}
+
+          <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">
+            <button
+              type="button"
+              onClick={() => setTopBuddiesClickersExpanded((current) => !current)}
+              className="flex w-full items-center justify-between gap-3 text-left font-black text-[var(--bb-text-primary,#47677c)]"
+            >
+              <span>{clickLabel}</span>
+              <span>{topBuddiesClickersExpanded ? "▲" : "▼"}</span>
+            </button>
             {topBuddiesClickersExpanded && (
-              <div className="mt-2 rounded-2xl border border-[#e1ebf2] bg-white p-3">
+              <div className="mt-3 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-surface,#ffffff)] p-3">
                 {boardClickers.length === 0 ? (
-                  <p className="text-xs font-bold text-[#64748b]">No opens tracked yet.</p>
+                  <p className="text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">No opens tracked yet.</p>
                 ) : (
                   <div className="space-y-2">
                     {boardClickers.map((clicker) => (
-                      <Link key={clicker.userId} href={`/profile/${clicker.userId}`} className="flex items-center gap-3 rounded-xl px-2 py-2 hover:bg-[#f5f9fc]">
+                      <Link key={clicker.userId} href={`/profile/${clicker.userId}`} className="flex items-center gap-3 rounded-xl px-2 py-2 transition hover:bg-[var(--bb-surface-soft,#f5f9fc)]">
                         {clicker.profileImageUrl ? (
-                          <img src={clicker.profileImageUrl} alt={clicker.displayName} className="h-9 w-9 rounded-full object-cover ring-2 ring-white shadow-sm" />
+                          <img src={clicker.profileImageUrl} alt={clicker.displayName} className="h-9 w-9 rounded-full object-cover ring-2 ring-[var(--bb-card,#ffffff)] shadow-sm" />
                         ) : (
-                          <div className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-black text-white ring-2 ring-white shadow-sm" style={{ backgroundColor: avatarColor(clicker.userId) }}>
+                          <div className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-black text-white ring-2 ring-[var(--bb-card,#ffffff)] shadow-sm" style={{ backgroundColor: avatarColor(clicker.userId) }}>
                             {getInitial(clicker.displayName)}
                           </div>
                         )}
                         <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-black text-[#1f2a44]">{clicker.displayName}</p>
-                          <p className="text-[11px] font-bold text-[#718096]">
+                          <p className="truncate text-sm font-black text-[var(--bb-text-primary,#1f2a44)]">{clicker.displayName}</p>
+                          <p className="text-[11px] font-bold text-[var(--bb-text-secondary,#718096)]">
                             {clicker.openedAt ? new Date(clicker.openedAt).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "Opened board"}
                           </p>
                         </div>
@@ -2997,7 +3026,7 @@ export default function GroupChatPage() {
               </div>
             )}
           </div>
-        )}
+        </div>
       </div>
     );
   }
@@ -3148,7 +3177,6 @@ export default function GroupChatPage() {
 
   useEffect(() => {
     const shouldLockBodyScroll =
-      !!selectedFeedPost ||
       !!showPostComposerModal ||
       !!showTopBuddiesModal ||
       !!showGroupInfoModal ||
@@ -3169,7 +3197,6 @@ export default function GroupChatPage() {
       document.body.style.touchAction = previousTouchAction;
     };
   }, [
-    selectedFeedPost,
     showPostComposerModal,
     showTopBuddiesModal,
     showGroupInfoModal,
@@ -3235,6 +3262,53 @@ export default function GroupChatPage() {
     selectedPost?.id,
     members.length,
   ]);
+
+  useEffect(() => {
+    if (!isDashboardEmbed || typeof window === "undefined") return;
+
+    let lastTouchY: number | null = null;
+    const sendScrollDelta = (deltaY: number) => {
+      if (!Number.isFinite(deltaY) || Math.abs(deltaY) < 1) return;
+      window.parent?.postMessage({ type: "bb-community-scroll", deltaY }, window.location.origin);
+    };
+
+    const handleWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      event.preventDefault();
+      sendScrollDelta(event.deltaY);
+    };
+
+    const handleTouchStart = (event: TouchEvent) => {
+      lastTouchY = event.touches[0]?.clientY ?? null;
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      const currentY = event.touches[0]?.clientY ?? null;
+      if (currentY === null || lastTouchY === null) return;
+      const deltaY = lastTouchY - currentY;
+      lastTouchY = currentY;
+      event.preventDefault();
+      sendScrollDelta(deltaY);
+    };
+
+    const handleTouchEnd = () => {
+      lastTouchY = null;
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("touchend", handleTouchEnd);
+    window.addEventListener("touchcancel", handleTouchEnd);
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener("touchcancel", handleTouchEnd);
+    };
+  }, [isDashboardEmbed]);
 
   useEffect(() => {
     return () => {
@@ -4961,6 +5035,7 @@ export default function GroupChatPage() {
                         type="button"
                         onClick={() => {
                           setSelectedHubItem(null);
+                          setShowTopBuddiesDetail(false);
                           setActiveTab(tab.key);
                           if (tab.isHub) setHubView("articles");
                           setShowMoreNav(false);
@@ -5033,6 +5108,7 @@ export default function GroupChatPage() {
                   type="button"
                   onClick={() => {
                     setSelectedHubItem(null);
+                    setShowTopBuddiesDetail(false);
                     setActiveTab(item.key);
                     if (item.isHub) setHubView("articles");
                     setShowMoreNav(false);
@@ -5070,7 +5146,7 @@ export default function GroupChatPage() {
 
         {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
 
-          {activeTab === "home" && !activeFeedPost ? (
+          {activeTab === "home" && !activeFeedPost && !showTopBuddiesDetail ? (
             <>
               {renderTopBuddiesLeaderboardCard()}
               <div className="mb-4">
@@ -6140,7 +6216,7 @@ export default function GroupChatPage() {
 
           /* â”€â”€ OTHER TABS (chat) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
             <div className="space-y-4">
-              {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && !activeFeedPost && (
+              {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && !activeFeedPost && !showTopBuddiesDetail && (
                 <button
                   type="button"
                   onClick={() => setShowPostComposerModal(true)}
@@ -7155,6 +7231,7 @@ export default function GroupChatPage() {
   }
 
   function renderPosts() {
+    if (showTopBuddiesDetail) return renderTopBuddiesDetailView();
     if (activeFeedPost) return renderActiveFeedPostView();
     if (loadingPosts) return <p className="text-[var(--bb-text-muted,#9ca3af)] text-sm text-center py-8">Loading posts...</p>;
     if (posts.length === 0) {
