@@ -830,6 +830,8 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
   if (title === "The Deliverance of Moses") return "/TheDeliveranceofMoses.png";
   if (title === "The Covenant at Sinai") return "/TheCovenantatSinai.png";
+  if (title === "The Presence of God") return "/ThePresenceofGod.png";
+  if (title === "Holiness Before God") return "/ThegolinessbeforeGod.png";
   if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
   if (title === "The Heart of David") return "/heartofdaviddevotional.png";
   if (title === "The Faith of Job") return "/faithofjob.png";
@@ -850,6 +852,8 @@ function getDashboardStudySummary(title: string | null | undefined) {
   if (title === "The Testing of Joseph") return "Genesis 37-50: betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
   if (title === "The Deliverance of Moses") return "Exodus 1-18: slavery, Moses' calling, plagues, Passover, the Red Sea, and wilderness provision.";
   if (title === "The Covenant at Sinai") return "Exodus 19-24: Mount Sinai, holiness, commandments, covenant, blood, and worship.";
+  if (title === "The Presence of God") return "Exodus 25-40: tabernacle, priesthood, intercession, covenant mercy, and God's glory.";
+  if (title === "Holiness Before God") return "Leviticus 1-27: sacrifice, priesthood, atonement, holy living, feasts, and covenant faithfulness.";
   if (title === "The Wisdom of Proverbs") return "Chapter-by-chapter wisdom for speech, choices, discipline, and daily life.";
   return "Guided Bible study with reading, notes, games, and reflection.";
 }

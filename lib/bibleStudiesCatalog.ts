@@ -101,6 +101,15 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
       "A chapter-by-chapter Bible study through Exodus 25-40 with intro, reading, notes, trivia, Scrambled, and reflection centered on the tabernacle, priesthood, golden calf, intercession, covenant mercy, obedient construction, and God's glory filling the tabernacle.",
   },
   {
+    key: "holiness_before_god",
+    title: "Holiness Before God",
+    subtitle: "Leviticus 1-27",
+    totalWeeks: 27,
+    image: "/ThegolinessbeforeGod.png",
+    description:
+      "A chapter-by-chapter Bible study through Leviticus 1-27 with intro, reading, notes, trivia, Scrambled, and reflection centered on sacrifice, priesthood, atonement, clean and unclean, holy living, feasts, Jubilee, and covenant faithfulness before God.",
+  },
+  {
     key: "rise_of_esther",
     title: "The Rise of Esther",
     subtitle: "Esther 1-10",

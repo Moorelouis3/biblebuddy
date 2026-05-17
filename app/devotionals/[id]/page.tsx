@@ -21,6 +21,7 @@ function getCoverImage(title: string): string | null {
   if (title === "The Deliverance of Moses") return "/TheDeliveranceofMoses.png";
   if (title === "The Covenant at Sinai") return "/TheCovenantatSinai.png";
   if (title === "The Presence of God") return "/ThePresenceofGod.png";
+  if (title === "Holiness Before God") return "/ThegolinessbeforeGod.png";
   return null;
 }
 
@@ -66,6 +67,8 @@ function getPreviewDescription(title: string, fallback: string): string {
       "Exodus 19-24 brings the rescued people to Mount Sinai. God descends in holiness, gives His commandments, forms the covenant, and teaches Israel how to live as His people. This Bible Study walks through Sinai chapter by chapter with the full six-task Bible Buddy flow.",
     "The Presence of God":
       "Exodus 25-40 moves from tabernacle instructions to the golden calf, Moses' intercession, covenant mercy, obedient construction, and the glory of the Lord filling the tabernacle. This Bible Study keeps every chapter tied to the full Bible Buddy rhythm: intro, reading, notes, trivia, Scrambled, and reflection.",
+    "Holiness Before God":
+      "Leviticus 1-27 teaches how a holy God dwells with His people. This Bible Study walks chapter by chapter through sacrifice, priesthood, atonement, clean and unclean, holy living, feasts, Jubilee, covenant blessing, and devotion to the Lord with the full Bible Buddy rhythm: intro, reading, notes, trivia, Scrambled, and reflection.",
   };
 
   return descriptions[title] ?? fallback;
@@ -138,7 +141,8 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Wrestling of Jacob" ||
     title === "The Deliverance of Moses" ||
     title === "The Covenant at Sinai" ||
-    title === "The Presence of God"
+    title === "The Presence of God" ||
+    title === "Holiness Before God"
   );
 }
 
@@ -154,6 +158,7 @@ function getStudyScriptureRange(title: string | null | undefined) {
     "The Deliverance of Moses": "Exodus 1-18",
     "The Covenant at Sinai": "Exodus 19-24",
     "The Presence of God": "Exodus 25-40",
+    "Holiness Before God": "Leviticus 1-27",
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "Proverbs 1-31",
     "The Courage of Daniel": "Daniel 1-6",
@@ -176,6 +181,7 @@ function getChapterJourneyProgressLabel(title: string | null | undefined, curren
   if (title === "The Deliverance of Moses") return `Exodus ${currentDay} of 18`;
   if (title === "The Covenant at Sinai") return `Exodus ${currentDay + 18} of 24`;
   if (title === "The Presence of God") return `Exodus ${currentDay + 24} of 40`;
+  if (title === "Holiness Before God") return `Leviticus ${currentDay} of 27`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 
