@@ -121,6 +121,7 @@ const STUDY_SWITCHER_ORDER = [
   "The Wrestling of Jacob",
   "The Testing of Joseph",
   "The Deliverance of Moses",
+  "The Covenant at Sinai",
   "The Calling of Moses",
   "The Heart of David",
   "The Rise of Esther",
@@ -145,6 +146,7 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
   if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
   if (title === "The Deliverance of Moses") return "/TheDeliveranceofMoses.png";
+  if (title === "The Covenant at Sinai") return "/TheCovenantatSinai.png";
   if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
   if (title === "The Heart of David") return "/heartofdaviddevotional.png";
   if (title === "The Faith of Job") return "/faithofjob.png";
@@ -164,6 +166,7 @@ function getDashboardStudySummary(title: string | null | undefined, totalDays: n
   if (title === "The Courage of Daniel") return "Study Daniel 1-6 through exile, courage, wisdom, prayer, pressure, and the lions' den.";
   if (title === "The Testing of Joseph") return "Walk Genesis 37-50 through betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
   if (title === "The Deliverance of Moses") return "Walk Exodus 1-18 through Israel's slavery, Moses' calling, the plagues, Passover, the Red Sea, and God's provision in the wilderness.";
+  if (title === "The Covenant at Sinai") return "Walk Exodus 19-24 through Mount Sinai, God's holiness, the Ten Commandments, covenant law, blood, worship, and Israel becoming God's covenant people.";
   if (title === "The Wisdom of Proverbs") return "Study Proverbs chapter by chapter for practical wisdom in speech, choices, discipline, and daily life.";
   return `${Math.max(1, totalDays || 1)} part Bible study designed to help you keep growing with structure and consistency.`;
 }
@@ -236,6 +239,16 @@ function getBibleJourneyHandoff(title: string | null | undefined) {
       cover: "/TheDeliveranceofMoses.png",
       description:
         "Next, Exodus 1-18 shows Israel in slavery, Moses being raised up, Pharaoh resisting God, the plagues, Passover, the Red Sea, and the first wilderness lessons after deliverance.",
+    };
+  }
+
+  if (title === "The Deliverance of Moses") {
+    return {
+      nextTitle: "The Covenant at Sinai",
+      subtitle: "Exodus 19-24",
+      cover: "/TheCovenantatSinai.png",
+      description:
+        "Next, Exodus 19-24 brings Israel to Mount Sinai, where God descends in holiness, gives His commandments, forms the covenant, and teaches His rescued people how to live before Him.",
     };
   }
 
@@ -1453,7 +1466,7 @@ export default function DashboardJourneyExperience({
   const [embeddedCommunityGroupId, setEmbeddedCommunityGroupId] = useState<string | null>(null);
   const [embeddedCommunityLoading, setEmbeddedCommunityLoading] = useState(false);
   const [embeddedCommunityError, setEmbeddedCommunityError] = useState<string | null>(null);
-  const [embeddedCommunityHeight, setEmbeddedCommunityHeight] = useState(900);
+  const [embeddedCommunityHeight, setEmbeddedCommunityHeight] = useState(620);
   const [pendingStudyDashboardHandoff, setPendingStudyDashboardHandoff] = useState<{
     journeyKey: string;
     chapterLabel: string;
@@ -1557,7 +1570,8 @@ export default function DashboardJourneyExperience({
 
       const nextHeight = Number(data.height);
       if (!Number.isFinite(nextHeight)) return;
-      setEmbeddedCommunityHeight(Math.max(680, Math.ceil(nextHeight)));
+      const viewportLimit = Math.max(460, Math.min(window.innerHeight - 150, 720));
+      setEmbeddedCommunityHeight(Math.min(viewportLimit, Math.max(460, Math.ceil(nextHeight))));
     }
 
     window.addEventListener("message", handleEmbeddedCommunityHeight);
@@ -2181,6 +2195,33 @@ export default function DashboardJourneyExperience({
   }, [checklistData, isLoadingChecklist, isLoadingNextChapter]);
 
   useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    const rawHandoff = window.localStorage.getItem(`bb:study-dashboard-handoff:${userId}`);
+    if (!rawHandoff) return;
+
+    try {
+      const parsed = JSON.parse(rawHandoff) as {
+        journeyKey?: string;
+        chapterLabel?: string;
+        createdAt?: number;
+      };
+      const isFresh = !parsed.createdAt || Date.now() - parsed.createdAt < 5 * 60 * 1000;
+      if (!isFresh || !parsed.journeyKey || !parsed.chapterLabel) {
+        window.localStorage.removeItem(`bb:study-dashboard-handoff:${userId}`);
+        return;
+      }
+
+      setPendingStudyDashboardHandoff({
+        journeyKey: parsed.journeyKey,
+        chapterLabel: parsed.chapterLabel,
+      });
+      window.localStorage.removeItem(`bb:study-dashboard-handoff:${userId}`);
+    } catch {
+      window.localStorage.removeItem(`bb:study-dashboard-handoff:${userId}`);
+    }
+  }, [userId]);
+
+  useEffect(() => {
     if (!pendingStudyDashboardHandoff || isLoadingChecklist || !checklistData?.journeyKey) return;
     if (checklistData.journeyKey !== pendingStudyDashboardHandoff.journeyKey) return;
 
@@ -2784,7 +2825,7 @@ export default function DashboardJourneyExperience({
 
   const renderEmbeddedCommunityPage = () => (
     <section className="w-full px-1">
-      <div className="mx-auto flex max-w-xl flex-col gap-3 pb-7">
+      <div className="mx-auto flex max-w-xl flex-col gap-3 pb-3">
         <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
           <div className="bg-[var(--bb-surface,#f8fbff)] px-4 py-4 sm:px-5">
             <h2 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Community</h2>
@@ -2819,8 +2860,8 @@ export default function DashboardJourneyExperience({
               src={`/study-groups/${embeddedCommunityGroupId}/chat?embedded=dashboard&tab=home`}
               title="Bible Buddy Community"
               className="block w-full overflow-hidden border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
-              scrolling="no"
-              style={{ height: embeddedCommunityHeight, minHeight: 680 }}
+              scrolling="auto"
+              style={{ height: embeddedCommunityHeight, minHeight: 460, maxHeight: "calc(100vh - 150px)" }}
             />
           ) : (
             <div className="grid min-h-[520px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
@@ -3029,7 +3070,7 @@ export default function DashboardJourneyExperience({
     );
   };
   return (
-    <div className="space-y-4 pb-4">
+    <div className="space-y-4 pb-28">
       <style>{`
         @keyframes task-complete-pop {
           0% {
@@ -4034,7 +4075,7 @@ export default function DashboardJourneyExperience({
         </div>
       </div>
 
-      <nav className="sticky bottom-2 z-40 mx-auto max-w-xl rounded-[22px] border border-[#dbe7f4] bg-white/95 px-2 pb-1.5 pt-1.5 shadow-[0_12px_28px_rgba(38,63,99,0.14)] backdrop-blur">
+      <nav className="fixed bottom-[calc(env(safe-area-inset-bottom,0px)+0.5rem)] left-1/2 z-[80] w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 rounded-[22px] border border-[#dbe7f4] bg-white/95 px-2 pb-1.5 pt-1.5 shadow-[0_12px_28px_rgba(38,63,99,0.14)] backdrop-blur">
         <div className="mx-auto mb-0.5 h-1 w-10 rounded-full bg-[#dbe7f4]" aria-hidden="true" />
         <div className="[scrollbar-width:none] overflow-x-auto [&::-webkit-scrollbar]:hidden">
           <div className="flex min-w-max items-end gap-1 text-center">

@@ -775,6 +775,7 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
   if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
   if (title === "The Deliverance of Moses") return "/TheDeliveranceofMoses.png";
+  if (title === "The Covenant at Sinai") return "/TheCovenantatSinai.png";
   if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
   if (title === "The Heart of David") return "/heartofdaviddevotional.png";
   if (title === "The Faith of Job") return "/faithofjob.png";
@@ -794,6 +795,7 @@ function getDashboardStudySummary(title: string | null | undefined) {
   if (title === "The Courage of Daniel") return "Daniel 1-6: exile, courage, wisdom, prayer, pressure, and faith.";
   if (title === "The Testing of Joseph") return "Genesis 37-50: betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
   if (title === "The Deliverance of Moses") return "Exodus 1-18: slavery, Moses' calling, plagues, Passover, the Red Sea, and wilderness provision.";
+  if (title === "The Covenant at Sinai") return "Exodus 19-24: Mount Sinai, holiness, commandments, covenant, blood, and worship.";
   if (title === "The Wisdom of Proverbs") return "Chapter-by-chapter wisdom for speech, choices, discipline, and daily life.";
   return "Guided Bible study with reading, notes, games, and reflection.";
 }
@@ -1848,11 +1850,12 @@ export default function DashboardPage() {
       {
         key: "level",
         label: "Level",
-        sublabel: "",
+        sublabel: `${levelInfo?.pointsToNextLevel ?? 0} XP left`,
         value: levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1,
         icon: "🛡️",
         tones: "border-[#dbe7f4] bg-gradient-to-br from-white via-[#f8fbff] to-[#edf6ff]",
         onClick: openLevelInfoModal,
+        progress: nextLevelPercent,
       },
       {
         key: "badges",
@@ -1977,20 +1980,6 @@ export default function DashboardPage() {
                 </div>
                 );
               })}
-            </div>
-
-            <div className="mt-3 rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-3 py-2.5">
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-[11px] font-black text-[#2f7fe8]">
-                  {levelInfo?.pointsToNextLevel ?? 0} XP to next level
-                </p>
-                <p className="text-[11px] font-black text-gray-600">
-                  {Math.round(nextLevelPercent)}%
-                </p>
-              </div>
-              <div className="mt-2 h-2 overflow-hidden rounded-full bg-[#dce8f7]">
-                <div className="h-full rounded-full bg-[#2f7fe8] transition-all duration-500" style={{ width: `${nextLevelPercent}%` }} />
-              </div>
             </div>
           </button>
       </>

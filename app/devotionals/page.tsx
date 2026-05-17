@@ -74,6 +74,7 @@ const FEATURED_STUDY_ORDER = [
   "The Wrestling of Jacob",
   "The Testing of Joseph",
   "The Deliverance of Moses",
+  "The Covenant at Sinai",
   "The Calling of Moses",
   "The Heart of David",
   "The Rise of Esther",
@@ -104,6 +105,7 @@ function getStudyScriptureRange(title: string) {
     "The Wrestling of Jacob": "Genesis 28-36",
     "The Testing of Joseph": "Genesis 37-50",
     "The Deliverance of Moses": "Exodus 1-18",
+    "The Covenant at Sinai": "Exodus 19-24",
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "Proverbs 1-31",
     "The Courage of Daniel": "Daniel 1-6",
@@ -243,6 +245,9 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     }
     if (title === "The Deliverance of Moses") {
       return "/TheDeliveranceofMoses.png";
+    }
+    if (title === "The Covenant at Sinai") {
+      return "/TheCovenantatSinai.png";
     }
     if (title === "The Disciples of Jesus") {
       return "/disciplesofjesusdevotional.png";

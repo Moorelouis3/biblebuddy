@@ -83,6 +83,15 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
       "A chapter-by-chapter Bible study through Exodus 1-18 with intro, reading, notes, trivia, Scrambled, and reflection centered on Israel's slavery, Moses' calling, the plagues, Passover, the Red Sea, wilderness provision, and God raising a deliverer.",
   },
   {
+    key: "covenant_at_sinai",
+    title: "The Covenant at Sinai",
+    subtitle: "Exodus 19-24",
+    totalWeeks: 6,
+    image: "/TheCovenantatSinai.png",
+    description:
+      "A chapter-by-chapter Bible study through Exodus 19-24 with intro, reading, notes, trivia, Scrambled, and reflection centered on Mount Sinai, God's holiness, the Ten Commandments, covenant law, worship, blood, and Israel becoming God's covenant people.",
+  },
+  {
     key: "rise_of_esther",
     title: "The Rise of Esther",
     subtitle: "Esther 1-10",

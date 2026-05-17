@@ -53,6 +53,8 @@ function renderCardBody(item: BibleStudiesSeriesListItem) {
                     ? "center 30%"
                     : item.title === "The Deliverance of Moses"
                       ? "center 35%"
+                    : item.title === "The Covenant at Sinai"
+                      ? "center 35%"
                     : item.title === "The Temptation of Jesus"
                       ? "center 42%"
                       : "center center",

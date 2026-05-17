@@ -15,6 +15,7 @@ const CHAPTER_JOURNEY_TITLES = new Set([
   "The Testing of Joseph",
   "The Wisdom of Proverbs",
   "The Deliverance of Moses",
+  "The Covenant at Sinai",
 ]);
 
 type DevotionalRow = {

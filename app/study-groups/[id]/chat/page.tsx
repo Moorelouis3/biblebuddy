@@ -5057,7 +5057,7 @@ export default function GroupChatPage() {
 
 
       {/* â”€â”€ Feed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div ref={feedRef} className={isDashboardEmbed ? "pb-32" : "flex-1 overflow-y-auto pb-32"}>
+      <div ref={feedRef} className={isDashboardEmbed ? "pb-4" : "flex-1 overflow-y-auto pb-32"}>
 
         {/* â”€â”€ Hub article viewer (iframe, full-width, no padding) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {selectedHubItem && (

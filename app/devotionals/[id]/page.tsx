@@ -18,6 +18,8 @@ function getCoverImage(title: string): string | null {
   if (title === "The Flood of Noah") return "/Floodofnoah.png";
   if (title === "The Promise Through Isaac") return "/ThePromiseThroughIsaac.png";
   if (title === "The Wrestling of Jacob") return "/TheWrestlingofJacob.png";
+  if (title === "The Deliverance of Moses") return "/TheDeliveranceofMoses.png";
+  if (title === "The Covenant at Sinai") return "/TheCovenantatSinai.png";
   return null;
 }
 
@@ -57,6 +59,10 @@ function getPreviewDescription(title: string, fallback: string): string {
       "Genesis 26-27 shows Abraham's covenant promise moving through Isaac while famine, fear, wells, favoritism, Jacob, Esau, deception, blessing, grief, and family consequences make the next generation feel deeply human.",
     "The Wrestling of Jacob":
       "Genesis 28-36 follows Jacob from fleeing Esau to Bethel, Rachel and Leah, Laban's deception, family rivalry, wrestling with God, reconciliation, Dinah's tragedy, return to Bethel, and Esau's line becoming Edom.",
+    "The Deliverance of Moses":
+      "Exodus 1-18 follows Israel from slavery in Egypt through Moses' birth, calling, confrontation with Pharaoh, the plagues, Passover, the Red Sea, and the first wilderness lessons. This Bible Study keeps every chapter tied to the same six-task rhythm: intro, Bible reading, notes, trivia, Scrambled, and reflection.",
+    "The Covenant at Sinai":
+      "Exodus 19-24 brings the rescued people to Mount Sinai. God descends in holiness, gives His commandments, forms the covenant, and teaches Israel how to live as His people. This Bible Study walks through Sinai chapter by chapter with the full six-task Bible Buddy flow.",
   };
 
   return descriptions[title] ?? fallback;
@@ -125,7 +131,9 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Fall of Man" ||
     title === "The Flood of Noah" ||
     title === "The Promise Through Isaac" ||
-    title === "The Wrestling of Jacob"
+    title === "The Wrestling of Jacob" ||
+    title === "The Deliverance of Moses" ||
+    title === "The Covenant at Sinai"
   );
 }
 
@@ -138,6 +146,8 @@ function getStudyScriptureRange(title: string | null | undefined) {
     "The Promise Through Isaac": "Genesis 26 & 27",
     "The Wrestling of Jacob": "Genesis 28-36",
     "The Testing of Joseph": "Genesis 37-50",
+    "The Deliverance of Moses": "Exodus 1-18",
+    "The Covenant at Sinai": "Exodus 19-24",
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "Proverbs 1-31",
     "The Courage of Daniel": "Daniel 1-6",
@@ -157,6 +167,8 @@ function getChapterJourneyProgressLabel(title: string | null | undefined, curren
   if (title === "The Flood of Noah") return `Genesis ${currentDay + 4} of 10`;
   if (title === "The Promise Through Isaac") return `Genesis ${currentDay + 25} of 27`;
   if (title === "The Wrestling of Jacob") return `Genesis ${currentDay + 27} of 36`;
+  if (title === "The Deliverance of Moses") return `Exodus ${currentDay} of 18`;
+  if (title === "The Covenant at Sinai") return `Exodus ${currentDay + 18} of 24`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 
@@ -520,6 +532,50 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     return prevDayProgress?.is_completed === true;
   };
 
+  const setChapterOnStudyDashboard = async (day: DevotionalDay) => {
+    if (!userId || !devotional || !day.bible_reading_book || !day.bible_reading_chapter) return;
+
+    const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
+    const journeyKey = `${devotionalId}:${day.day_number}`;
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(
+        `bb:study-dashboard-handoff:${userId}`,
+        JSON.stringify({ journeyKey, chapterLabel, createdAt: Date.now() }),
+      );
+    }
+
+    const [{ error: profileError }, { error: progressError }] = await Promise.all([
+      supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            free_devotional_id: devotionalId,
+            louis_primary_devotional_id: devotionalId,
+            louis_primary_devotional_day: day.day_number,
+          },
+          { onConflict: "user_id" },
+        ),
+      supabase.from("devotional_progress").upsert(
+        {
+          user_id: userId,
+          devotional_id: devotionalId,
+          day_number: day.day_number,
+          is_completed: false,
+          reading_completed: false,
+        },
+        { onConflict: "user_id,devotional_id,day_number" },
+      ),
+    ]);
+
+    if (profileError || progressError) {
+      console.error("[BIBLE_STUDY] Could not set dashboard chapter:", profileError || progressError);
+      return;
+    }
+
+    router.push("/dashboard");
+  };
+
   const handleDayClick = async (day: DevotionalDay) => {
     if (!isDayUnlocked(day.day_number)) {
       return;
@@ -544,17 +600,12 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     }
 
     const isFreeUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
-    const shouldOpenFullPage = isChapterJourneyStudyTitle(devotional?.title) && !embedded;
-    const openDay = () => {
-      if (shouldOpenFullPage) {
-        router.push(`/bible-studies/${devotionalId}/day/${day.day_number}`);
-        return;
-      }
-
+    const shouldSetStudyDashboard = isChapterJourneyStudyTitle(devotional?.title);
+    const openDay = async () => {
       if (
         embedded &&
         devotional &&
-        isChapterJourneyStudyTitle(devotional.title) &&
+        shouldSetStudyDashboard &&
         day.bible_reading_book &&
         day.bible_reading_chapter &&
         onChapterSelect
@@ -569,6 +620,18 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         return;
       }
 
+      if (
+        !embedded &&
+        userId &&
+        devotional &&
+        shouldSetStudyDashboard &&
+        day.bible_reading_book &&
+        day.bible_reading_chapter
+      ) {
+        await setChapterOnStudyDashboard(day);
+        return;
+      }
+
       setSelectedDay(day);
     };
 
@@ -577,7 +640,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       if (freeDevotionalId === devotionalId) {
         // This IS their free devotional — open freely
         setShowCreditBlocked(false);
-        openDay();
+        await openDay();
       } else if (freeDevotionalId === null) {
         // No free devotional chosen yet — ask them
         setPendingDayClick(day);
@@ -592,25 +655,25 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     // Paid user (or owner) — existing consume-credit logic
     const dayProgress = progress.get(day.day_number);
     const dayTaskProgress = chapterTaskProgress.get(day.day_number);
-    const isCompleted = shouldOpenFullPage
+    const isCompleted = shouldSetStudyDashboard
       ? dayTaskProgress?.completed === dayTaskProgress?.total
       : dayProgress?.is_completed === true;
 
     if (isCompleted) {
       setShowCreditBlocked(false);
-      openDay();
+      await openDay();
       return;
     }
 
     const creditResult = await consumeCreditAction(ACTION_TYPE.devotional_day_viewed, { userId });
     if (creditResult.ok === false) {
       setShowCreditBlocked(true);
-      openDay();
+      await openDay();
       return;
     }
 
     setShowCreditBlocked(false);
-    openDay();
+    await openDay();
   };
 
   useEffect(() => {
@@ -641,9 +704,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
     void (async () => {
       await handleDayClick(day);
-      router.replace(`/bible-studies/${devotionalId}`);
+      if (!isChapterJourneyStudyTitle(devotional.title) || embedded) {
+        router.replace(`/bible-studies/${devotionalId}`);
+      }
     })();
-  }, [days, devotional, devotionalId, router, searchParams]);
+  }, [days, devotional, devotionalId, embedded, router, searchParams]);
 
   useEffect(() => {
     if (!selectedDay || !featureToursLoaded) return;
@@ -665,7 +730,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     if (pendingDayClick) {
       setShowCreditBlocked(false);
       if (isChapterJourneyStudyTitle(devotional?.title) && !embedded) {
-        router.push(`/bible-studies/${devotionalId}/day/${pendingDayClick.day_number}`);
+        await setChapterOnStudyDashboard(pendingDayClick);
       } else {
         setSelectedDay(pendingDayClick);
       }
@@ -1165,7 +1230,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         <h1 className="text-3xl font-bold mb-2">{devotional.title}</h1>
         <p className="text-gray-600 mb-4">{scriptureRange ?? devotional.subtitle}</p>
 
-        {/* DEVOTIONAL COVER */}
+        {/* STUDY COVER */}
         {getCoverImage(devotional.title) && (
           <div className="flex justify-center my-6">
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
@@ -1203,9 +1268,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           </p>
         </div>
 
-        {/* DAYS LIST */}
+        {/* CHAPTER LIST */}
         <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <h2 className="text-xl font-bold mb-4">{isChapterJourneyStudy ? "Chapters" : "Days"}</h2>
+          <h2 className="text-xl font-bold mb-4">{isChapterJourneyStudy ? "Chapters" : "Sections"}</h2>
           <div className="space-y-2">
             {orderedDays.map((day) => {
               const dayProgress = progress.get(day.day_number);
@@ -1272,7 +1337,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         </div>
       </div>
 
-      {/* DAY MODAL */}
+      {/* LEGACY SECTION MODAL */}
       {selectedDay && (
         <DevotionalDayModal
           devotionalId={devotional.id}
@@ -1348,7 +1413,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           >
             <h2 className="text-xl font-bold text-gray-900 mb-3">🎁 You have one free Bible study</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              As a free user, you're gifted <strong>one complete Bible study</strong> — all {devotional.total_days} days, fully unlocked.
+              As a free user, you're gifted <strong>one complete Bible study</strong> — all {devotional.total_days} {isChapterJourneyStudy ? "chapters" : "sections"}, fully unlocked.
               <br /><br />
               Once you choose, this will be your free Bible study. Is <strong>{devotional.title}</strong> the one you want to start?
             </p>
@@ -1372,7 +1437,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         </div>
       )}
 
-      {/* UPGRADE MODAL — free user on a non-free devotional */}
+      {/* UPGRADE MODAL - free user on a non-free Bible Study */}
       {showUpgradeModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
