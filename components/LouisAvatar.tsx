@@ -199,7 +199,7 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
       <img
         src={src}
         alt="Louis avatar"
-        className="h-full w-full rounded-full select-none"
+        className="h-full w-full rounded-full object-cover select-none"
       />
     </span>
   );
