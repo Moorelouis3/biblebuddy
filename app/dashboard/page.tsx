@@ -62,6 +62,7 @@ import {
   type BibleBuddyStoreItem,
 } from "../../lib/bibleBuddyStore";
 import { normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
+import { getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "../../lib/buddyAvatars";
 
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
@@ -75,6 +76,7 @@ const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
 const MAX_BADGE_POPUPS_PER_SESSION = 3;
 const MYSTERY_PRIZE_REWARDS = [100, 125, 150, 175, 200, 250];
 const DAILY_LOGIN_GIFT_WINDOW_MS = 24 * 60 * 60 * 1000;
+const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -935,7 +937,8 @@ export default function DashboardPage() {
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [levelRefreshTick, setLevelRefreshTick] = useState(0);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; selected_buddy_avatar?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
+  const [buddySelectionWelcome, setBuddySelectionWelcome] = useState<{ buddyId: BuddyAvatarId; buddyName: string } | null>(null);
   const [showDiamondStore, setShowDiamondStore] = useState(false);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
   const [storeLoading, setStoreLoading] = useState(false);
@@ -3188,11 +3191,11 @@ export default function DashboardPage() {
 
         let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username")
+          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username")
           .eq("user_id", userId)
           .maybeSingle();
 
-        if (error && /(diamonds_count|selected_streak_flame|daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(error.message || "")) {
+        if (error && /(diamonds_count|selected_streak_flame|selected_buddy_avatar|daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(error.message || "")) {
           const fallback = await supabase
             .from("profile_stats")
             .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username")
@@ -3252,6 +3255,7 @@ export default function DashboardPage() {
             grace_days_count: Math.max(0, Math.min(5, Number(profileData?.grace_days_count ?? 0))),
             diamonds_count: typeof profileData?.diamonds_count === "number" ? Math.max(0, profileData.diamonds_count) : null,
             selected_streak_flame: normalizeFlameCosmeticId(profileData?.selected_streak_flame),
+            selected_buddy_avatar: normalizeBuddyAvatarId(profileData?.selected_buddy_avatar),
             daily_login_gift_last_visit_at: nowIso,
             daily_login_gift_last_shown_date: shouldShowDailyLoginGift ? todayKey : profileData?.daily_login_gift_last_shown_date ?? null,
             profile_image_url: profileData?.profile_image_url ?? null,
@@ -3277,6 +3281,7 @@ export default function DashboardPage() {
             grace_days_count: current.grace_days_count ?? 0,
             diamonds_count: current.diamonds_count ?? null,
             selected_streak_flame: current.selected_streak_flame ?? "default",
+            selected_buddy_avatar: current.selected_buddy_avatar ?? "louis",
           } : current);
         }
 
@@ -3629,6 +3634,32 @@ export default function DashboardPage() {
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const raw = window.localStorage.getItem(BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY);
+    if (!raw) return;
+
+    try {
+      const parsed = JSON.parse(raw) as { buddyId?: string; buddyName?: string; createdAt?: number };
+      const createdAt = Number(parsed.createdAt || 0);
+      if (createdAt && Date.now() - createdAt > 5 * 60 * 1000) {
+        window.localStorage.removeItem(BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY);
+        return;
+      }
+      const buddyId = normalizeBuddyAvatarId(parsed.buddyId);
+      const buddy = getBuddyAvatar(buddyId);
+      setBuddySelectionWelcome({
+        buddyId,
+        buddyName: parsed.buddyName || buddy.name,
+      });
+      setProfile((current) => current ? { ...current, selected_buddy_avatar: buddyId } : current);
+    } catch {
+      // Ignore malformed handoffs and clear them so they do not keep retrying.
+    } finally {
+      window.localStorage.removeItem(BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY);
+    }
+  }, []);
+
+  useEffect(() => {
     function handlePointsChange() {
       refreshLevelData();
     }
@@ -3716,6 +3747,7 @@ export default function DashboardPage() {
       !profile ||
       !pendingDailyStreakSequence ||
       showVerseOfTheDayModal ||
+      buddySelectionWelcome ||
       activeEarnedBadge ||
       earnedBadgeQueue.length > 0 ||
       dailyLoginGiftReveal ||
@@ -3853,6 +3885,7 @@ export default function DashboardPage() {
   }, [
     activeEarnedBadge,
     activeTourKey,
+    buddySelectionWelcome,
     dailyChecklistData,
     dailyLoginGiftReveal,
     earnedBadgeQueue.length,
@@ -3916,6 +3949,10 @@ export default function DashboardPage() {
     dashboardChecklistData.tasks.find((task) => task.kind === "reading")?.chapterLabel ||
     dashboardChecklistData.tasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "this chapter";
+  const buddyWelcomeStudyTitle =
+    dashboardChecklistData.tasks.find((task) => task.devotionalTitle)?.devotionalTitle ||
+    dashboardChecklistData.title ||
+    "your current Bible study";
   const nextChapterLabel = (() => {
     const chapterTask = dashboardChecklistData.tasks.find((task) => task.book && task.chapter);
     if (!chapterTask?.book || !chapterTask.chapter || !dashboardChecklistData.nextJourneyTarget) return "the next chapter";
@@ -4856,6 +4893,40 @@ export default function DashboardPage() {
       )}
 
       {/* Level Info Modal */}
+      <ModalShell
+        isOpen={buddySelectionWelcome !== null}
+        onClose={() => setBuddySelectionWelcome(null)}
+        backdropColor="bg-black/45"
+      >
+        {buddySelectionWelcome ? (
+          <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+            <div className="bg-gradient-to-br from-[#eef7ff] via-white to-[#fff7df] px-6 py-8 text-center">
+              <div className="flex justify-center">
+                <div className="rounded-full bg-white p-2 shadow-lg">
+                  <LouisAvatar buddyId={buddySelectionWelcome.buddyId} mood="wave" size={118} />
+                </div>
+              </div>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f86bd]">
+                {buddySelectionWelcome.buddyName} is ready
+              </p>
+              <h2 className="mt-2 text-3xl font-black leading-tight text-[#21304f]">
+                New Bible Buddy selected
+              </h2>
+              <p className="mx-auto mt-3 max-w-sm text-base font-semibold leading-7 text-[#355487]">
+                I am looking forward to studying {buddyWelcomeStudyTitle} with you.
+              </p>
+              <button
+                type="button"
+                onClick={() => setBuddySelectionWelcome(null)}
+                className="mt-6 w-full max-w-sm rounded-full bg-[#7BAFD4] px-6 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        ) : null}
+      </ModalShell>
+
       <DashboardDailyWelcomeModal
           open={ENABLE_DAILY_DASHBOARD_WELCOME_FLOW && showVerseOfTheDayModal}
           onClose={() => {
@@ -4871,6 +4942,7 @@ export default function DashboardPage() {
       <ModalShell
         isOpen={
           Boolean(dailyLoginGiftReveal) &&
+          !buddySelectionWelcome &&
           !showVerseOfTheDayModal &&
           !showStreakMotivationModal &&
           !activeEarnedBadge &&
@@ -5061,7 +5133,7 @@ export default function DashboardPage() {
         </ModalShell>
 
       <LouisDailyTasksModal
-        open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal && !dailyLoginGiftReveal}
+        open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal && !dailyLoginGiftReveal && !buddySelectionWelcome}
         onClose={() => {
           setShowLouisDailyTasksModal(false);
           void loadDailyTaskSummary({ force: true, silent: true });

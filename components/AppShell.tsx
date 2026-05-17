@@ -14,7 +14,7 @@ import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
 import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { LouisAvatar } from "./LouisAvatar";
-import { SELECTED_BUDDY_STORAGE_KEY, normalizeBuddyAvatarId } from "../lib/buddyAvatars";
+import { SELECTED_BUDDY_STORAGE_KEY, getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "../lib/buddyAvatars";
 import { normalizeCustomMemberBadge } from "../lib/userBadges";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profileName";
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
@@ -102,6 +102,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     try { setIsEmbedded(window.self !== window.top); } catch { setIsEmbedded(true); }
   }, []);
 
+  useEffect(() => {
+    function loadSelectedBuddy() {
+      if (typeof window === "undefined") return;
+      setSelectedBuddyId(normalizeBuddyAvatarId(window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY)));
+    }
+
+    loadSelectedBuddy();
+    window.addEventListener("bb:selected-buddy-avatar-changed", loadSelectedBuddy);
+    window.addEventListener("storage", loadSelectedBuddy);
+    return () => {
+      window.removeEventListener("bb:selected-buddy-avatar-changed", loadSelectedBuddy);
+      window.removeEventListener("storage", loadSelectedBuddy);
+    };
+  }, []);
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [isEmailConfirmed, setIsEmailConfirmed] = useState(true);
@@ -113,6 +128,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null);
   const [appThemeId, setAppThemeId] = useState<AppThemeId>("light");
+  const [selectedBuddyId, setSelectedBuddyId] = useState<BuddyAvatarId>("louis");
+  const selectedBuddy = getBuddyAvatar(selectedBuddyId);
   
   // Feedback system state
   const [userId, setUserId] = useState<string | null>(null);
@@ -422,7 +439,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
 
     if (typeof window !== "undefined" && typeof data?.selected_buddy_avatar === "string") {
-      window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, normalizeBuddyAvatarId(data.selected_buddy_avatar));
+      const normalizedBuddy = normalizeBuddyAvatarId(data.selected_buddy_avatar);
+      window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, normalizedBuddy);
+      setSelectedBuddyId(normalizedBuddy);
       window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed"));
     }
 
@@ -2486,7 +2505,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       Settings
                     </Link>
 
-                    {/* CHANGE BUDDY */}
                     <Link
                       href="/change-buddy"
                       onClick={() => setIsProfileMenuOpen(false)}
@@ -2496,7 +2514,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           : "text-gray-700 hover:bg-gray-100"
                       }`}
                     >
-                      ☺ Change Buddy
+                      {selectedBuddy.name} Buddy
                     </Link>
 
                     {/* CONTACT US */}

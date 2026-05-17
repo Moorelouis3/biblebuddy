@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import {
@@ -32,7 +33,10 @@ function getBuddyStoreItem(buddyId: BuddyAvatarId) {
   return BUDDY_STORE_ITEMS.find((item) => item.id === getBuddyStoreItemId(buddyId)) ?? null;
 }
 
+const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
+
 export default function ChangeBuddyPage() {
+  const router = useRouter();
   const [userId, setUserId] = useState<string | null>(null);
   const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId>(DEFAULT_BUDDY_AVATAR);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -137,6 +141,13 @@ export default function ChangeBuddyPage() {
     setMessage(null);
     try {
       await saveBuddySelection(buddy);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY,
+          JSON.stringify({ buddyId: buddy.id, buddyName: buddy.name, createdAt: Date.now() }),
+        );
+      }
+      router.push("/dashboard");
     } finally {
       setSavingBuddy(null);
     }
@@ -206,6 +217,13 @@ export default function ChangeBuddyPage() {
       setOwnedBuddyItemIds((current) => new Set([...Array.from(current), storeItem.id]));
       setMessage(`${buddy.name} is unlocked.`);
       await saveBuddySelection(buddy);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY,
+          JSON.stringify({ buddyId: buddy.id, buddyName: buddy.name, createdAt: Date.now() }),
+        );
+      }
+      router.push("/dashboard");
     } catch (error) {
       console.error("[CHANGE_BUDDY] Could not purchase buddy:", error);
       setMessage("The Buddy purchase did not go through. Try again in a moment.");

@@ -30,6 +30,7 @@ import {
 } from "../lib/bibleBuddyTvContent";
 import { awardBibleBuddyTvWatchOnce, buildBibleBuddyTvWatchRewardLabel } from "../lib/bibleBuddyTvRewards";
 import { triggerPoints } from "./PointsPop";
+import { getBuddyAvatar } from "../lib/buddyAvatars";
 
 const ChatLouis = dynamic(() => import("./ChatLouis").then((mod) => mod.ChatLouis), {
   ssr: false,
@@ -53,6 +54,8 @@ type ProfileShape = {
   last_active_date?: string | null;
   verse_of_the_day_shown?: string | null;
   current_streak?: number | null;
+  selected_streak_flame?: string | null;
+  selected_buddy_avatar?: string | null;
   profile_image_url?: string | null;
   display_name?: string | null;
   username?: string | null;
@@ -1557,6 +1560,7 @@ export default function DashboardJourneyExperience({
     games: exploreLinkByKey("games"),
     share: exploreLinkByKey("share"),
   };
+  const selectedBuddy = getBuddyAvatar(profile?.selected_buddy_avatar);
   const dashboardNavItems: Array<{
     key: DashboardPageKey;
     label: string;
@@ -1567,7 +1571,7 @@ export default function DashboardJourneyExperience({
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
     {
       key: "buddy",
-      label: "Lil Louis",
+      label: selectedBuddy.name,
       icon: (
         <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-full">
           <LouisAvatar mood="wave" size={38} />
