@@ -3160,7 +3160,7 @@ export default function DashboardJourneyExperience({
               </h1>
             </div>
             {homeHeader}
-            {renderCurrentStudyHeader()}
+            {!shouldShowCompletionPanel ? renderCurrentStudyHeader() : null}
             {!shouldShowCompletionPanel ? (
             <div
               className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition"

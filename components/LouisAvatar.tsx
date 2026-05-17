@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 import {
   DEFAULT_BUDDY_AVATAR,
@@ -61,6 +62,7 @@ function BuddyIllustration({ buddyId, mood, size }: { buddyId: BuddyAvatarId; mo
 
   return (
     <div
+      data-buddy-avatar-root
       aria-label={`${buddy.name} avatar`}
       className="relative select-none overflow-hidden rounded-full"
       style={{ width: size, height: size, backgroundColor: buddy.colors.bg }}
@@ -174,19 +176,31 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
   }, [buddyId]);
 
   if (selectedBuddy !== "louis") {
-    return <BuddyIllustration buddyId={selectedBuddy} mood={mood} size={size} />;
+    return (
+      <span
+        data-louis-avatar
+        className="inline-flex shrink-0 items-center justify-center"
+        style={{ "--bb-louis-avatar-size": `${size}px`, width: size, height: size } as CSSProperties}
+      >
+        <BuddyIllustration buddyId={selectedBuddy} mood={mood} size={size} />
+      </span>
+    );
   }
 
   // fall back to wave if something weird ever gets passed in
   const src = moodToFile[mood] ?? moodToFile.wave;
 
   return (
-    <img
-      src={src}
-      alt="Louis avatar"
-      width={size}
-      height={size}
-      className="rounded-full select-none"
-    />
+    <span
+      data-louis-avatar
+      className="inline-flex shrink-0 items-center justify-center"
+      style={{ "--bb-louis-avatar-size": `${size}px`, width: size, height: size } as CSSProperties}
+    >
+      <img
+        src={src}
+        alt="Louis avatar"
+        className="h-full w-full rounded-full select-none"
+      />
+    </span>
   );
 }
