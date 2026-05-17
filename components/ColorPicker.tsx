@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 interface ColorPickerProps {
   anchor: { x: number; y: number } | null;
@@ -17,8 +18,14 @@ const COLORS = [
 
 export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor, onSelect, onClose }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!anchor) return;
     function handleClick(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) {
         onClose();
@@ -26,17 +33,15 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor,
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
-  }, [onClose]);
+  }, [anchor, onClose]);
 
 
-  if (!anchor) return null;
+  if (!anchor || !mounted) return null;
 
-  console.log('[ColorPicker] Rendered at', anchor);
-
-  return (
+  return createPortal(
     <div
       ref={ref}
-      className="fixed z-50 p-2 rounded-lg shadow-lg bg-white border flex gap-2 animate-fade-in"
+      className="fixed z-[9999] flex gap-2 rounded-lg border bg-white p-2 shadow-lg animate-fade-in"
       style={{ top: anchor.y, left: anchor.x }}
     >
       {COLORS.map((c) => (
@@ -48,6 +53,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor,
           onClick={() => onSelect(c.name)}
         />
       ))}
-    </div>
+    </div>,
+    document.body,
   );
 };

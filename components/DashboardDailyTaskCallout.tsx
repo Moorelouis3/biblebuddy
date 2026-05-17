@@ -273,7 +273,7 @@ function DashboardInlineBibleReader({
   function openVerseColorPicker(verse: number, event: React.MouseEvent<HTMLElement>) {
     const target = event.target as HTMLElement;
     if (target.closest(".bible-highlight")) return;
-    const rect = target.getBoundingClientRect();
+    const rect = event.currentTarget.getBoundingClientRect();
     setPicker({
       verse,
       anchor: {

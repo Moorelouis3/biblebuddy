@@ -1252,12 +1252,12 @@ function GroupCommentSection({
     const name = comment.display_name || "Buddy";
     const isTargetComment = targetCommentId === comment.id;
     // Cap visual indent at 1 level so deep threads stay readable on mobile
-    const indentClass = depth > 0 ? "ml-8 mt-3 pl-4 border-l border-[#e8ddd0]" : "mt-3";
+    const indentClass = depth > 0 ? "ml-8 mt-3 pl-4 border-l border-[var(--bb-card-border,#e8ddd0)]" : "mt-3";
     return (
       <div
         key={comment.id}
         id={`comment-${comment.id}`}
-        className={`flex gap-2 transition-colors duration-700 ${indentClass} ${isTargetComment ? "rounded-2xl ring-1 ring-[#e8ddd0] px-2 py-1" : ""}`}
+        className={`flex gap-2 transition-colors duration-700 ${indentClass} ${isTargetComment ? "rounded-2xl bg-[var(--bb-accent-soft,#f8fafc)] px-2 py-1 ring-1 ring-[var(--bb-card-border,#e8ddd0)]" : ""}`}
       >
         <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
           {comment.profile_image_url ? (
@@ -1271,7 +1271,7 @@ function GroupCommentSection({
         <div className="flex-1 min-w-0">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
+              <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-[var(--bb-text-primary,#111827)] hover:underline">
                 {name}
               </Link>
               <StreakFlameBadge currentStreak={comment.current_streak} />
@@ -1284,7 +1284,7 @@ function GroupCommentSection({
                   value={editingCommentText}
                   onChange={(e) => setEditingCommentText(e.target.value)}
                   rows={3}
-                  className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-3 py-2 text-xs text-gray-900 outline-none focus:ring-2 focus:ring-[#d6b18b] resize-none"
+                  className="w-full resize-none rounded-2xl border border-[var(--bb-card-border,#ead8c4)] bg-[var(--bb-surface,#fffaf4)] px-3 py-2 text-xs text-[var(--bb-text-primary,#111827)] outline-none focus:ring-2 focus:ring-[var(--bb-accent,#d6b18b)]/30"
                 />
             <div className="flex items-center gap-1.5">
                   <button
@@ -1292,7 +1292,7 @@ function GroupCommentSection({
                     onClick={() => void handleSaveCommentEdit(comment)}
                     disabled={savingCommentId === comment.id || !editingCommentText.trim()}
                     className="rounded-xl px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
-                    style={{ backgroundColor: "#5a9a5a" }}
+                    style={{ backgroundColor: "var(--bb-button,#5a9a5a)", color: "var(--bb-button-text,#ffffff)" }}
                   >
                     {savingCommentId === comment.id ? "Saving..." : "Save"}
                   </button>
@@ -1302,7 +1302,7 @@ function GroupCommentSection({
                       setEditingCommentId(null);
                       setEditingCommentText("");
                     }}
-                    className="rounded-xl px-3 py-1.5 text-xs font-medium text-gray-600 border border-gray-200 hover:bg-gray-50 transition"
+                    className="rounded-xl border border-[var(--bb-card-border,#e5e7eb)] px-3 py-1.5 text-xs font-medium text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
                   >
                     Cancel
                   </button>
@@ -1312,16 +1312,16 @@ function GroupCommentSection({
               <MentionText
                 text={comment.content}
                 items={mentionItems}
-                className="text-xs text-gray-700 mt-0.5 leading-relaxed whitespace-pre-wrap"
+                className="mt-0.5 whitespace-pre-wrap text-xs leading-relaxed text-[var(--bb-text-secondary,#374151)]"
               />
             )}
           </div>
           <div className="flex items-center gap-3 mt-1">
-            <span className="text-[10px] text-gray-400">{timeAgo(comment.created_at)}</span>
+            <span className="text-[10px] text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(comment.created_at)}</span>
             <button
               onClick={() => void toggleCommentLike(comment)}
               disabled={likeLoading.has(comment.id)}
-              className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-red-500 transition"
+              className="flex items-center gap-1 text-[10px] text-[var(--bb-text-muted,#9ca3af)] transition hover:text-red-500"
             >
               <svg className={`w-3 h-3 ${likeAnimatingIds.has(comment.id) ? "animate-heart-pop" : ""}`} fill={comment.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -1332,7 +1332,7 @@ function GroupCommentSection({
               <button
                 type="button"
                 onClick={() => void openCommentLikes(comment)}
-                className="text-[10px] text-gray-400 hover:text-gray-700 transition"
+                className="text-[10px] text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-text-primary,#111827)]"
               >
                 {comment.like_count === 1 ? "1 like" : `${comment.like_count} likes`}
               </button>
@@ -1342,7 +1342,7 @@ function GroupCommentSection({
                 setReplyingTo(replyingTo === comment.id ? null : comment.id);
                 setReplyText("");
               }}
-              className="text-[10px] text-gray-400 hover:text-[#b7794d] font-semibold transition"
+              className="text-[10px] font-semibold text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-accent,#b7794d)]"
             >
               Reply
             </button>
@@ -1351,7 +1351,7 @@ function GroupCommentSection({
                 type="button"
                 onClick={() => void handleAutoReply(comment)}
                 disabled={autoReplyLoadingId === comment.id}
-                className="text-[10px] text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
+                className="text-[10px] font-semibold text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-accent,#4a9b6f)] disabled:opacity-50"
               >
                 {autoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
               </button>
@@ -1365,7 +1365,7 @@ function GroupCommentSection({
                   setReplyingTo(null);
                   setReplyText("");
                 }}
-                className="text-[10px] text-gray-400 hover:text-[#4a9b6f] font-semibold transition"
+                className="text-[10px] font-semibold text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-accent,#4a9b6f)]"
               >
                 Edit
               </button>
@@ -1375,7 +1375,7 @@ function GroupCommentSection({
                 type="button"
                 onClick={() => setCommentPendingDelete(comment)}
                 disabled={deletingCommentId === comment.id}
-                className="text-[10px] text-gray-400 hover:text-red-500 font-semibold transition disabled:opacity-50"
+                className="text-[10px] font-semibold text-[var(--bb-text-muted,#9ca3af)] transition hover:text-red-500 disabled:opacity-50"
               >
                 {deletingCommentId === comment.id ? "Deleting..." : "Delete"}
               </button>
@@ -1391,13 +1391,13 @@ function GroupCommentSection({
                 placeholder={`Reply to ${name}...`}
                 rows={1}
                 autoFocus
-                className="w-full text-xs px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
+                className="w-full resize-none rounded-xl border border-[var(--bb-card-border,#eadfce)] bg-[var(--bb-surface,#ffffff)] px-3 py-2 text-xs text-[var(--bb-text-primary,#111827)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#d6b18b)]/30"
               />
               <button
                 onClick={() => void submitComment(replyText, comment.id)}
                 disabled={!replyText.trim() || submitting}
                 className="text-xs font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
-                style={{ backgroundColor: "#b7794d" }}
+                style={{ backgroundColor: "var(--bb-button,#b7794d)", color: "var(--bb-button-text,#ffffff)" }}
               >
                 Reply
               </button>
@@ -1410,11 +1410,11 @@ function GroupCommentSection({
   }
 
   return (
-    <div className="mt-4 pt-4 border-t border-[#efe5d9]">
+    <div className="mt-4 border-t border-[var(--bb-card-border,#efe5d9)] pt-4">
       {loading ? (
-        <p className="text-xs text-gray-400 text-center py-2">Loading comments...</p>
+        <p className="py-2 text-center text-xs text-[var(--bb-text-muted,#9ca3af)]">Loading comments...</p>
       ) : topLevelComments.length === 0 ? (
-        <p className="text-xs text-gray-400 text-center py-2">No comments yet. Start the conversation.</p>
+        <p className="py-2 text-center text-xs text-[var(--bb-text-muted,#9ca3af)]">No comments yet. Start the conversation.</p>
       ) : (
         <div>
           {topLevelComments.map((comment) => (
@@ -1438,14 +1438,14 @@ function GroupCommentSection({
           onEnterSubmit={() => void submitComment(newComment, null)}
           placeholder="Add a comment..."
           rows={1}
-          className="flex-1 text-xs px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
+          className="flex-1 resize-none rounded-xl border border-[var(--bb-card-border,#eadfce)] bg-[var(--bb-surface,#ffffff)] px-3 py-2 text-xs text-[var(--bb-text-primary,#111827)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#d6b18b)]/30"
         />
         {canAutoReply && post.user_id !== userId && (
           <button
             type="button"
             onClick={() => void handleAutoComment()}
             disabled={autoCommentLoading}
-            className="text-xs font-semibold text-gray-500 px-3 py-2 rounded-xl border border-[#eadfce] transition hover:text-[#4a9b6f] hover:border-[#cfe4d8] disabled:opacity-50 flex-shrink-0"
+            className="flex-shrink-0 rounded-xl border border-[var(--bb-card-border,#eadfce)] px-3 py-2 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)] transition hover:border-[var(--bb-accent,#4a9b6f)] hover:text-[var(--bb-accent,#4a9b6f)] disabled:opacity-50"
           >
             {autoCommentLoading ? "Writing..." : "Auto Comment"}
           </button>
@@ -1454,7 +1454,7 @@ function GroupCommentSection({
           onClick={() => void submitComment(newComment, null)}
           disabled={!newComment.trim() || submitting}
           className="text-xs font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
-          style={{ backgroundColor: "#b7794d" }}
+          style={{ backgroundColor: "var(--bb-button,#b7794d)", color: "var(--bb-button-text,#ffffff)" }}
         >
           Post
         </button>
@@ -1471,29 +1471,29 @@ function GroupCommentSection({
           >
             <div className="flex items-center justify-between border-b border-[var(--bb-card-border)] px-5 py-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">Liked By</p>
-                <h3 className="text-base font-bold text-gray-900 mt-1">Comment Likes</h3>
+                <p className="text-xs font-semibold uppercase tracking-wide text-[var(--bb-text-muted,#9ca3af)]">Liked By</p>
+                <h3 className="mt-1 text-base font-bold text-[var(--bb-text-primary,#111827)]">Comment Likes</h3>
               </div>
               <button
                 type="button"
                 onClick={() => setShowCommentLikesFor(null)}
-                className="w-9 h-9 rounded-full border border-gray-200 text-gray-500 hover:text-gray-700 hover:border-gray-300 transition"
+                className="h-9 w-9 rounded-full border border-[var(--bb-card-border,#e5e7eb)] text-[var(--bb-text-secondary,#4b5563)] transition hover:border-[var(--bb-accent,#b7794d)] hover:text-[var(--bb-text-primary,#111827)]"
               >
                 ×
               </button>
             </div>
             <div className="max-h-[60vh] overflow-y-auto px-5 py-4">
               {loadingCommentLikers ? (
-                <p className="text-sm text-gray-400 text-center py-8">Loading likes...</p>
+                <p className="py-8 text-center text-sm text-[var(--bb-text-muted,#9ca3af)]">Loading likes...</p>
               ) : commentLikers.length === 0 ? (
-                <p className="text-sm text-gray-400 text-center py-8">No likes yet.</p>
+                <p className="py-8 text-center text-sm text-[var(--bb-text-muted,#9ca3af)]">No likes yet.</p>
               ) : (
                 <div className="space-y-3">
                   {commentLikers.map((liker) => (
                     <Link
                       key={liker.user_id}
                       href={`/profile/${liker.user_id}`}
-                      className="flex items-center gap-3 rounded-2xl border border-[#f1e6da] px-3 py-2 hover:bg-[#fffaf4] transition"
+                      className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#f1e6da)] px-3 py-2 transition hover:bg-[var(--bb-surface-soft,#fffaf4)]"
                       onClick={() => setShowCommentLikesFor(null)}
                     >
                       {liker.profile_image_url ? (
@@ -1512,7 +1512,7 @@ function GroupCommentSection({
                       )}
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-sm font-semibold text-gray-900 truncate">{liker.display_name}</span>
+                          <span className="truncate text-sm font-semibold text-[var(--bb-text-primary,#111827)]">{liker.display_name}</span>
                           <StreakFlameBadge currentStreak={liker.current_streak} />
                           <LevelBadge currentLevel={liker.current_level} />
                           <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
@@ -1537,15 +1537,15 @@ function GroupCommentSection({
             onClick={(event) => event.stopPropagation()}
           >
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--bb-accent)]">Community</p>
-            <h3 className="mt-2 text-xl font-black text-gray-900">Delete this comment?</h3>
-            <p className="mt-2 text-sm leading-6 text-gray-600">
+            <h3 className="mt-2 text-xl font-black text-[var(--bb-text-primary,#111827)]">Delete this comment?</h3>
+            <p className="mt-2 text-sm leading-6 text-[var(--bb-text-secondary,#4b5563)]">
               This will remove the comment and any replies under it. This action cannot be undone.
             </p>
             <div className="mt-5 flex gap-3">
               <button
                 type="button"
                 onClick={() => setCommentPendingDelete(null)}
-                className="flex-1 rounded-2xl border border-[var(--bb-card-border)] px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-[var(--bb-surface-soft)]"
+                className="flex-1 rounded-2xl border border-[var(--bb-card-border)] px-4 py-3 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft)]"
               >
                 Cancel
               </button>
@@ -5070,7 +5070,7 @@ export default function GroupChatPage() {
 
         {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
 
-          {activeTab === "home" ? (
+          {activeTab === "home" && !activeFeedPost ? (
             <>
               {renderTopBuddiesLeaderboardCard()}
               <div className="mb-4">
@@ -6140,7 +6140,7 @@ export default function GroupChatPage() {
 
           /* â”€â”€ OTHER TABS (chat) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
             <div className="space-y-4">
-              {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && (
+              {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && !activeFeedPost && (
                 <button
                   type="button"
                   onClick={() => setShowPostComposerModal(true)}
@@ -6214,161 +6214,6 @@ export default function GroupChatPage() {
               >
                 Upgrade to Pro
               </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {activeFeedPost && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
-          onClick={() => {
-            setSelectedFeedPost(null);
-            setDeepLinkedCommentId(null);
-          }}
-        >
-          <div
-            className="bg-white rounded-3xl shadow-xl w-full max-w-2xl max-h-[92vh] overflow-y-auto modal-panel-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-start justify-between gap-4 px-6 py-5 border-b border-[#efe5d9]">
-              <div className="min-w-0">
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <Link href={`/profile/${activeFeedPost.user_id}`} className="font-semibold text-gray-900 text-sm hover:underline">
-                    {activeFeedPost.display_name || "Buddy"}
-                  </Link>
-                  <StreakFlameBadge currentStreak={activeFeedPost.current_streak} />
-                  <LevelBadge currentLevel={activeFeedPost.current_level} />
-                  <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} />
-                  <span className="text-xs text-gray-400">{timeAgo(activeFeedPost.created_at)}</span>
-                </div>
-                {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
-                  <h2 className="text-xl font-bold text-gray-900 mt-2 leading-snug">{activeFeedPost.title}</h2>
-                )}
-              </div>
-              <button
-                type="button"
-                onClick={() => {
-                  setSelectedFeedPost(null);
-                  setDeepLinkedCommentId(null);
-                }}
-                className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition flex-shrink-0"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="px-6 py-5">
-                {activeFeedScrambledShare && renderScrambledShareCard(activeFeedPost)}
-                {activeFeedScrambledPromo && renderScrambledPromoCard(activeFeedPost)}
-                {activeFeedBibleBuddyTvShare && renderBibleBuddyTvShareCard(activeFeedPost)}
-
-                {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
-                  <div
-                    className="prose prose-sm max-w-none text-gray-800 leading-relaxed [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-bold [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5 [&_li]:my-1.5"
-                    onClick={handleScriptureClick}
-                  dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
-                />
-              )}
-              {activeFeedPollSet && (
-                <GroupWeeklyPollCard pollSet={activeFeedPollSet} userId={userId} />
-              )}
-              {activeFeedTriviaSet && (
-                <GroupWeeklyTriviaCard triviaSet={activeFeedTriviaSet} userId={userId} />
-              )}
-              {activeFeedQuestionSet && (
-                <GroupWeeklyQuestionCard
-                  prompt={activeFeedQuestionSet.prompt}
-                  intro={activeFeedQuestionSet.intro}
-                  commentPrompt={activeFeedQuestionSet.comment_prompt}
-                />
-              )}
-
-              {activeFeedPost.media_url && isUploadedVideo(activeFeedPost.media_url) && (
-                <video
-                  src={activeFeedPost.media_url}
-                  controls
-                  playsInline
-                  className="mt-4 w-full rounded-2xl bg-black"
-                  style={{ maxHeight: "520px" }}
-                />
-              )}
-
-              {activeFeedPost.media_url && !isUploadedVideo(activeFeedPost.media_url) && (
-                <button
-                  type="button"
-                  onClick={() => setLightboxUrl(activeFeedPost.media_url!)}
-                  className="mt-4 w-full block rounded-2xl overflow-hidden focus:outline-none"
-                >
-                  <img
-                    src={activeFeedPost.media_url}
-                    alt="Post image"
-                    className="w-full object-contain rounded-2xl"
-                    style={{ maxHeight: "520px", objectPosition: "center" }}
-                  />
-                </button>
-              )}
-
-              {activeFeedCoverPost && activeFeedPost.title && (
-                <h2 className="mt-5 text-xl font-bold leading-snug text-gray-900">{activeFeedPost.title}</h2>
-              )}
-
-              {activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
-                <div
-                  className="prose prose-sm mt-5 max-w-none text-gray-800 leading-relaxed [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-bold [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5 [&_li]:my-1.5"
-                  onClick={handleScriptureClick}
-                  dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
-                />
-              )}
-
-              <div className="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
-                <button
-                  onClick={() => void handleLike(activeFeedPost)}
-                  disabled={likeLoading.has(activeFeedPost.id)}
-                  className="flex items-center gap-1.5 text-sm transition"
-                  style={{ color: activeFeedPost.liked ? "#e53e3e" : "#9ca3af" }}
-                >
-                  <svg className={`w-4 h-4 ${likeAnimatingIds.has(activeFeedPost.id) ? "animate-heart-pop" : ""}`} fill={activeFeedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                  <span>{activeFeedPost.like_count}</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => void openPostLikes(activeFeedPost)}
-                  className="text-sm text-gray-500 hover:text-gray-700 transition"
-                >
-                  {activeFeedPost.like_count === 1 ? "1 like" : `${activeFeedPost.like_count || 0} likes`}
-                </button>
-                <div className="flex items-center gap-1.5 text-sm text-gray-400">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
-                  <span>{activeFeedPost.comment_count || 0}</span>
-                  <span>Comments</span>
-                </div>
-              </div>
-
-              {userId && (
-                <div className="mt-5" id="group-feed-comments">
-                  <GroupCommentSection
-                    groupId={groupId}
-                    post={activeFeedPost}
-                    userId={userId}
-                    displayName={displayName}
-                    userProfileImage={userProfileImage}
-                    currentUserRole={userRole}
-                    currentUserBadge={userMemberBadge}
-                    canAutoReply={isLouisAdmin}
-                    targetCommentId={deepLinkedCommentId}
-                    mentionItems={mentionItems}
-                    onCountChange={(delta) => {
-                      setSelectedFeedPost((prev) => prev ? { ...prev, comment_count: Math.max((prev.comment_count || 0) + delta, 0) } : prev);
-                      setPosts((prev) => prev.map((item) => item.id === activeFeedPost.id ? { ...item, comment_count: Math.max((item.comment_count || 0) + delta, 0) } : item));
-                    }}
-                  />
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -7177,7 +7022,140 @@ export default function GroupChatPage() {
   );
 
   // â”€â”€ Chat renderPosts helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  function renderActiveFeedPostView() {
+    if (!activeFeedPost) return null;
+
+    return (
+      <div className="animate-fade-in-up overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+        <div className="flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4">
+          <div className="min-w-0">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#b7794d)]">Community Post</p>
+            <div className="mt-2 flex flex-wrap items-center gap-1.5">
+              <Link href={`/profile/${activeFeedPost.user_id}`} className="text-sm font-semibold text-[var(--bb-text-primary,#111827)] hover:underline">
+                {activeFeedPost.display_name || "Buddy"}
+              </Link>
+              <StreakFlameBadge currentStreak={activeFeedPost.current_streak} />
+              <LevelBadge currentLevel={activeFeedPost.current_level} />
+              <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} />
+              <span className="text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(activeFeedPost.created_at)}</span>
+            </div>
+            {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
+              <h2 className="mt-2 text-xl font-black leading-snug text-[var(--bb-text-primary,#111827)]">{activeFeedPost.title}</h2>
+            )}
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setSelectedFeedPost(null);
+              setDeepLinkedCommentId(null);
+            }}
+            className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
+            aria-label="Close post"
+          >
+            ×
+          </button>
+        </div>
+
+        <div className="px-5 py-5">
+          {activeFeedScrambledShare && renderScrambledShareCard(activeFeedPost)}
+          {activeFeedScrambledPromo && renderScrambledPromoCard(activeFeedPost)}
+          {activeFeedBibleBuddyTvShare && renderBibleBuddyTvShareCard(activeFeedPost)}
+
+          {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
+            <div
+              className="prose prose-sm max-w-none leading-relaxed text-[var(--bb-text-secondary,#374151)] [&_*]:text-[var(--bb-text-secondary,#374151)] [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:text-[var(--bb-text-primary,#111827)] [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-[var(--bb-text-primary,#111827)] [&_li]:my-1.5 [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5"
+              onClick={handleScriptureClick}
+              dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
+            />
+          )}
+          {activeFeedPollSet && <GroupWeeklyPollCard pollSet={activeFeedPollSet} userId={userId} />}
+          {activeFeedTriviaSet && <GroupWeeklyTriviaCard triviaSet={activeFeedTriviaSet} userId={userId} />}
+          {activeFeedQuestionSet && (
+            <GroupWeeklyQuestionCard
+              prompt={activeFeedQuestionSet.prompt}
+              intro={activeFeedQuestionSet.intro}
+              commentPrompt={activeFeedQuestionSet.comment_prompt}
+            />
+          )}
+
+          {activeFeedPost.media_url && isUploadedVideo(activeFeedPost.media_url) && (
+            <video src={activeFeedPost.media_url} controls playsInline className="mt-4 w-full rounded-2xl bg-black" style={{ maxHeight: "520px" }} />
+          )}
+
+          {activeFeedPost.media_url && !isUploadedVideo(activeFeedPost.media_url) && (
+            <button
+              type="button"
+              onClick={() => setLightboxUrl(activeFeedPost.media_url!)}
+              className="mt-4 block w-full overflow-hidden rounded-2xl bg-[var(--bb-surface,#ffffff)] focus:outline-none"
+            >
+              <img src={activeFeedPost.media_url} alt="Post image" className="w-full rounded-2xl object-contain" style={{ maxHeight: "520px", objectPosition: "center" }} />
+            </button>
+          )}
+
+          {activeFeedCoverPost && activeFeedPost.title && (
+            <h2 className="mt-5 text-xl font-black leading-snug text-[var(--bb-text-primary,#111827)]">{activeFeedPost.title}</h2>
+          )}
+
+          {activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
+            <div
+              className="prose prose-sm mt-5 max-w-none leading-relaxed text-[var(--bb-text-secondary,#374151)] [&_*]:text-[var(--bb-text-secondary,#374151)] [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:text-[var(--bb-text-primary,#111827)] [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-[var(--bb-text-primary,#111827)] [&_li]:my-1.5 [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5"
+              onClick={handleScriptureClick}
+              dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
+            />
+          )}
+
+          <div className="mt-4 flex items-center gap-4 border-t border-[var(--bb-card-border,#e5e7eb)] pt-4">
+            <button
+              type="button"
+              onClick={() => void handleLike(activeFeedPost)}
+              disabled={likeLoading.has(activeFeedPost.id)}
+              className="flex items-center gap-1.5 text-sm transition"
+              style={{ color: activeFeedPost.liked ? "#e53e3e" : "var(--bb-text-muted,#9ca3af)" }}
+            >
+              <svg className={`h-4 w-4 ${likeAnimatingIds.has(activeFeedPost.id) ? "animate-heart-pop" : ""}`} fill={activeFeedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              <span>{activeFeedPost.like_count}</span>
+            </button>
+            <button type="button" onClick={() => void openPostLikes(activeFeedPost)} className="text-sm text-[var(--bb-text-secondary,#4b5563)] transition hover:text-[var(--bb-text-primary,#111827)]">
+              {activeFeedPost.like_count === 1 ? "1 like" : `${activeFeedPost.like_count || 0} likes`}
+            </button>
+            <div className="flex items-center gap-1.5 text-sm text-[var(--bb-text-muted,#9ca3af)]">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <span>{activeFeedPost.comment_count || 0}</span>
+              <span>Comments</span>
+            </div>
+          </div>
+
+          {userId && (
+            <div className="mt-5" id="group-feed-comments">
+              <GroupCommentSection
+                groupId={groupId}
+                post={activeFeedPost}
+                userId={userId}
+                displayName={displayName}
+                userProfileImage={userProfileImage}
+                currentUserRole={userRole}
+                currentUserBadge={userMemberBadge}
+                canAutoReply={isLouisAdmin}
+                targetCommentId={deepLinkedCommentId}
+                mentionItems={mentionItems}
+                onCountChange={(delta) => {
+                  setSelectedFeedPost((prev) => prev ? { ...prev, comment_count: Math.max((prev.comment_count || 0) + delta, 0) } : prev);
+                  setPosts((prev) => prev.map((item) => item.id === activeFeedPost.id ? { ...item, comment_count: Math.max((item.comment_count || 0) + delta, 0) } : item));
+                }}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   function renderPosts() {
+    if (activeFeedPost) return renderActiveFeedPostView();
     if (loadingPosts) return <p className="text-[var(--bb-text-muted,#9ca3af)] text-sm text-center py-8">Loading posts...</p>;
     if (posts.length === 0) {
       return (
