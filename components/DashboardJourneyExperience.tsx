@@ -3235,7 +3235,7 @@ export default function DashboardJourneyExperience({
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">{buddy.displayName}</p>
                       <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                        L{buddy.currentLevel} - {buddy.taskCount} Bible task points
+                        L{buddy.currentLevel} - {buddy.taskCount} completed Bible tasks
                       </p>
                     </div>
                     <div className="text-right">
@@ -3253,7 +3253,7 @@ export default function DashboardJourneyExperience({
             <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
               <h3 className="text-xl font-black text-[var(--bb-text-primary,#111827)]">Your Buddies' Timeline</h3>
               <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
-                Recent Bible study tasks and progress from people you are connected with.
+                Completed Bible study tasks from your mutual Buddies.
               </p>
               <div className="mt-4 space-y-3">
                 {(buddiesDashboard?.friendTimeline || []).map((item) => (

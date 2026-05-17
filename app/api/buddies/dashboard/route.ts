@@ -28,29 +28,33 @@ type ActionRow = {
   created_at: string | null;
 };
 
+type CompletedChapterRow = {
+  user_id: string | null;
+  completed_at: string | null;
+};
+
 type BuddyRow = {
   user_id_1: string | null;
   user_id_2: string | null;
 };
 
-const TASK_SCORE: Record<string, number> = {
-  devotional_day_started: 1,
-  devotional_day_viewed: 1,
-  devotional_bible_reading_opened: 1,
-  chapter_notes_viewed: 1,
-  chapter_notes_reviewed: 1,
-  trivia_started: 1,
-  trivia_chapter_completed: 1,
-  scrambled_chapter_opened: 1,
-  scrambled_chapter_completed: 1,
-  devotional_reflection_saved: 1,
-  devotional_day_completed: 6,
-  chapter_completed: 6,
-  reading_plan_chapter_completed: 6,
-  louis_daily_task_bonus: 6,
+type BuddyRequestRow = {
+  sender_id: string | null;
+  receiver_id: string | null;
 };
 
-const TOP_BUDDY_TASK_ACTIONS = Object.keys(TASK_SCORE);
+const BUDDY_SCORE_WEIGHTS: Record<string, number> = {
+  devotional_day_completed: 10,
+  chapter_completed: 10,
+  reading_plan_chapter_completed: 10,
+  chapter_notes_reviewed: 10,
+  trivia_chapter_completed: 10,
+  scrambled_chapter_completed: 10,
+  devotional_reflection_saved: 10,
+  louis_daily_task_bonus: 10,
+};
+
+const COMPLETED_TASK_ACTIONS = Object.keys(BUDDY_SCORE_WEIGHTS);
 
 async function fetchPaged<T>(
   queryBuilder: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: any }>,
@@ -104,6 +108,10 @@ function formatActivity(action: ActionRow) {
   }
 }
 
+function toDateKey(value: string | null) {
+  return value ? value.slice(0, 10) : "";
+}
+
 export async function GET(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -135,7 +143,7 @@ export async function GET(request: NextRequest) {
   const friendSinceIso = new Date(Date.now() - FRIEND_ACTIVITY_WINDOW_DAYS * DAY_MS).toISOString();
 
   try {
-    const [profiles, actions, buddyRows] = await Promise.all([
+    const [profiles, actions, completedChapters, buddyRows, buddyRequestRows] = await Promise.all([
       fetchPaged<ProfileRow>((from, to) =>
         supabaseAdmin
           .from("profile_stats")
@@ -146,30 +154,58 @@ export async function GET(request: NextRequest) {
         supabaseAdmin
           .from("master_actions")
           .select("user_id, action_type, action_label, created_at")
-          .in("action_type", TOP_BUDDY_TASK_ACTIONS)
-          .gte("created_at", topSinceIso)
+          .in("action_type", COMPLETED_TASK_ACTIONS)
+          .gte("created_at", friendSinceIso)
           .order("created_at", { ascending: false })
+          .range(from, to),
+      ),
+      fetchPaged<CompletedChapterRow>((from, to) =>
+        supabaseAdmin
+          .from("completed_chapters")
+          .select("user_id, completed_at")
+          .gte("completed_at", topSinceIso)
           .range(from, to),
       ),
       supabaseAdmin
         .from("buddies")
         .select("user_id_1, user_id_2")
         .or(`user_id_1.eq.${userData.user.id},user_id_2.eq.${userData.user.id}`),
+      supabaseAdmin
+        .from("buddy_requests")
+        .select("sender_id, receiver_id")
+        .eq("status", "accepted")
+        .or(`sender_id.eq.${userData.user.id},receiver_id.eq.${userData.user.id}`),
     ]);
 
     const profileMap = new Map(profiles.map((profile) => [profile.user_id, profile]));
     const scoreMap = new Map<string, { score: number; taskCount: number; weightedXp: number; lastActionAt: string | null }>();
+    const chapterActionKeys = new Set<string>();
 
     actions.forEach((action) => {
       if (!action.user_id || !action.action_type) return;
+      if (!action.created_at || action.created_at < topSinceIso) return;
+      if (action.action_type === "chapter_completed" || action.action_type === "reading_plan_chapter_completed") {
+        chapterActionKeys.add(`${action.user_id}:${toDateKey(action.created_at)}`);
+      }
       const current = scoreMap.get(action.user_id) || { score: 0, taskCount: 0, weightedXp: 0, lastActionAt: null };
-      const taskScore = TASK_SCORE[action.action_type] || 0;
+      const taskScore = BUDDY_SCORE_WEIGHTS[action.action_type] || 0;
       if (taskScore <= 0) return;
       current.score += taskScore;
       current.weightedXp += ACTION_POINT_WEIGHTS[action.action_type as keyof typeof ACTION_POINT_WEIGHTS] ?? 0;
-      current.taskCount += taskScore;
+      current.taskCount += 1;
       if (!current.lastActionAt || (action.created_at && action.created_at > current.lastActionAt)) current.lastActionAt = action.created_at;
       scoreMap.set(action.user_id, current);
+    });
+
+    completedChapters.forEach((row) => {
+      if (!row.user_id) return;
+      const current = scoreMap.get(row.user_id) || { score: 0, taskCount: 0, weightedXp: 0, lastActionAt: null };
+      if (!chapterActionKeys.has(`${row.user_id}:${toDateKey(row.completed_at)}`)) {
+        current.score += BUDDY_SCORE_WEIGHTS.chapter_completed;
+        current.taskCount += 1;
+      }
+      if (!current.lastActionAt || (row.completed_at && row.completed_at > current.lastActionAt)) current.lastActionAt = row.completed_at;
+      scoreMap.set(row.user_id, current);
     });
 
     const topBuddies = Array.from(scoreMap.entries())
@@ -201,9 +237,21 @@ export async function GET(request: NextRequest) {
         .map((row) => (row.user_id_1 === userData.user.id ? row.user_id_2 : row.user_id_1))
         .filter((id): id is string => typeof id === "string" && id.length > 0),
     );
+    ((buddyRequestRows.data || []) as BuddyRequestRow[])
+      .map((row) => (row.sender_id === userData.user.id ? row.receiver_id : row.sender_id))
+      .filter((id): id is string => typeof id === "string" && id.length > 0)
+      .forEach((id) => buddyIds.add(id));
 
     const friendTimeline = actions
-      .filter((action) => !!action.user_id && buddyIds.has(action.user_id) && !!action.created_at && action.created_at >= friendSinceIso)
+      .filter(
+        (action) =>
+          !!action.user_id &&
+          buddyIds.has(action.user_id) &&
+          !!action.action_type &&
+          COMPLETED_TASK_ACTIONS.includes(action.action_type) &&
+          !!action.created_at &&
+          action.created_at >= friendSinceIso,
+      )
       .slice(0, 30)
       .map((action) => {
         const profile = profileMap.get(action.user_id!);
