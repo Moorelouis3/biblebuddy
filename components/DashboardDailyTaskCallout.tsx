@@ -1030,13 +1030,14 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
               <button
                 type="button"
                 onClick={() => void closeNotesAndRefresh()}
-                className="rounded-full bg-[var(--bb-button)] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text)] transition hover:brightness-95"
+                className="animate-pulse rounded-full bg-[var(--bb-button)] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text)] transition hover:brightness-95"
               >
                 Mark as Completed
               </button>
             </div>
           ) : null}
         </div>,
+        "mt-0 border-t-0 pt-0",
       );
     }
 

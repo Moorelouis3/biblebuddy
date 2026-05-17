@@ -3193,6 +3193,18 @@ export default function DashboardJourneyExperience({
           50% { opacity: 0.45; transform: translateY(-1px); }
         }
 
+        @keyframes task-estimate-primary {
+          0%, 43% { opacity: 1; transform: translateY(0); }
+          50%, 93% { opacity: 0; transform: translateY(-3px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes task-estimate-secondary {
+          0%, 43% { opacity: 0; transform: translateY(3px); }
+          50%, 93% { opacity: 1; transform: translateY(0); }
+          100% { opacity: 0; transform: translateY(3px); }
+        }
+
         .task-complete-pop {
           animation: task-complete-pop 760ms cubic-bezier(0.16, 0.9, 0.22, 1) forwards;
           transform-origin: center;
@@ -3245,6 +3257,8 @@ export default function DashboardJourneyExperience({
         .chapter-complete-fill { animation: chapter-complete-fill 900ms ease-out; }
         .next-task-pulse { animation: next-task-pulse 1.9s ease-in-out infinite; }
         .start-here-flash { animation: start-here-flash 1s ease-in-out infinite; }
+        .task-estimate-primary { animation: task-estimate-primary 2.4s ease-in-out infinite; }
+        .task-estimate-secondary { animation: task-estimate-secondary 2.4s ease-in-out infinite; }
         .spark-a { --spark-x: -53px; --spark-y: -53px; }
         .spark-b { --spark-x: 23px; --spark-y: -70px; }
         .spark-c { --spark-x: 85px; --spark-y: -25px; }
@@ -3854,9 +3868,20 @@ export default function DashboardJourneyExperience({
                       <div className="mt-2 flex justify-center">
                         <p className="hidden">{taskCopy.subtitle}</p>
                         {task.timeEstimateLabel ? (
-                          <p className="whitespace-nowrap text-center text-[11px] font-black text-gray-700">
-                            Takes about {task.timeEstimateLabel}
-                          </p>
+                          isActiveInlineTask && task.kind === "notes" && !task.done ? (
+                            <p className="relative h-4 w-56 text-center text-[11px] font-black text-gray-700">
+                              <span className="task-estimate-primary absolute inset-0 whitespace-nowrap">
+                                Takes about {task.timeEstimateLabel}
+                              </span>
+                              <span className="task-estimate-secondary absolute inset-0 whitespace-nowrap text-[var(--bb-accent,#2f7fe8)]">
+                                Mark as completed below
+                              </span>
+                            </p>
+                          ) : (
+                            <p className="whitespace-nowrap text-center text-[11px] font-black text-gray-700">
+                              Takes about {task.timeEstimateLabel}
+                            </p>
+                          )
                         ) : null}
                       </div>
                     </div>

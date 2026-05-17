@@ -253,6 +253,8 @@ const LOUIS_OPENING_GREETINGS = [
   "What can I help you find today?",
 ] as const;
 
+const LOUIS_OPENING_GREETING_SET = new Set<string>(LOUIS_OPENING_GREETINGS);
+
 const DASHBOARD_VERSE_MODAL_EVENT = "bb:dashboard-verse-modal-state";
 
 // Type for SpeechRecognition (Web Speech API)
@@ -1941,7 +1943,7 @@ export function ChatLouis() {
 
   useEffect(() => {
     if (!louisUserId || typeof window === "undefined") return;
-    window.localStorage.setItem(getChatStorageKey(louisUserId), JSON.stringify(messages.slice(-40)));
+    window.localStorage.setItem(getChatStorageKey(louisUserId), JSON.stringify(normalizeOpeningGreetingMessages(messages).slice(-40)));
 
     const latestUserMessage = [...messages].reverse().find((message) => message.role === "user");
     if (!latestUserMessage) return;
@@ -1998,7 +2000,7 @@ export function ChatLouis() {
         try {
           const storedMessages = window.localStorage.getItem(getChatStorageKey(user.id));
           const parsedMessages = storedMessages ? (JSON.parse(storedMessages) as Message[]) : [];
-          setMessages(parsedMessages);
+          setMessages(normalizeOpeningGreetingMessages(parsedMessages));
           setHasLouisHistory(parsedMessages.length > 0);
         } catch {
           setMessages([]);
@@ -2428,7 +2430,7 @@ export function ChatLouis() {
     ? "Type today or tomorrow..."
     : hasPendingDevotionalChallengePrompt || hasPendingDashboardDailyPrompt
       ? "Type yes or no..."
-      : "Talk to Louis...";
+      : "Talk to Lil' Lewis...";
 
   function formatInboxMessage(row: LouisInboxMessageRow) {
     const actionLine =
@@ -2455,8 +2457,23 @@ export function ChatLouis() {
     return nextMessages;
   }
 
+  function normalizeOpeningGreetingMessages(nextMessages: Message[]) {
+    let hasOpeningGreeting = false;
+    return nextMessages.filter((message) => {
+      const isOpeningGreeting = message.role === "assistant" && LOUIS_OPENING_GREETING_SET.has(message.content.trim());
+      if (!isOpeningGreeting) return true;
+      if (hasOpeningGreeting) return false;
+      hasOpeningGreeting = true;
+      return true;
+    });
+  }
+
+  function hasOpeningGreeting(nextMessages: Message[]) {
+    return nextMessages.some((message) => message.role === "assistant" && LOUIS_OPENING_GREETING_SET.has(message.content.trim()));
+  }
+
   function appendAssistantMessage(content: string) {
-    setMessages((prev) => [...prev, { role: "assistant", content }]);
+    setMessages((prev) => normalizeOpeningGreetingMessages([...prev, { role: "assistant", content }]));
     void logLouisAction(ACTION_TYPE.louis_ai_message_sent, toLouisLogLabel(content));
   }
 
@@ -3126,7 +3143,7 @@ export function ChatLouis() {
         ),
       ) % LOUIS_OPENING_GREETINGS.length;
 
-    if (!louisUserId || !canShowIdleGreeting(louisUserId)) {
+    if (!louisUserId || hasOpeningGreeting(messages) || !canShowIdleGreeting(louisUserId)) {
       return;
     }
 
@@ -3398,7 +3415,7 @@ export function ChatLouis() {
   const panelWidth = 360;
   const panelHeight = 500;
   const viewportPadding = 16;
-  const bubbleSize = 80;
+  const bubbleSize = 128;
   const customPanelLeft =
     position.x === 0
       ? null
@@ -3427,8 +3444,8 @@ export function ChatLouis() {
         };
 
   const isLouisActive = hasPendingLouisMoment;
-  const bubbleOuterSize = isLouisActive ? "h-20 w-20" : "h-16 w-16";
-  const avatarSize = isLouisActive ? 64 : 52;
+  const bubbleOuterSize = isLouisActive ? "h-36 w-36" : "h-32 w-32";
+  const avatarSize = isLouisActive ? 118 : 104;
 
   return (
     <>
@@ -3450,9 +3467,9 @@ export function ChatLouis() {
           className={`z-[70] rounded-full shadow-xl flex items-center justify-center transition-all duration-300 ${
             hasPendingLouisMoment ? "animate-[bounce_1.25s_ease-in-out_infinite]" : "scale-95"
           }`}
-          aria-label="Chat with Louis"
+          aria-label="Chat with Lil' Lewis"
         >
-          <div className={`relative ${bubbleOuterSize} rounded-full flex items-center justify-center ${isLouisActive ? "bg-sky-100/80" : "bg-black/5 grayscale"}`}>
+          <div className={`relative ${bubbleOuterSize} rounded-full flex items-center justify-center bg-white/90 ring-1 ring-rose-100 shadow-2xl`}>
             {hasPendingLouisMoment ? (
               <>
                 <span className="absolute inset-0 rounded-full border-4 border-sky-300/70 animate-ping [animation-duration:1.15s]" />
@@ -3489,8 +3506,7 @@ export function ChatLouis() {
             }}
           >
             <div className="flex items-center gap-2">
-              <LouisAvatar mood="bible" size={28} />
-              <span className="text-sm font-semibold text-gray-900">Chat with Louis</span>
+              <span className="text-sm font-semibold text-gray-900">Chat with Lil' Lewis</span>
             </div>
             <button
               onClick={() => setIsOpen(false)}
@@ -3520,19 +3536,12 @@ export function ChatLouis() {
                 className={
                   m.role === "user"
                     ? "flex items-end justify-end gap-2.5"
-                    : "flex items-end justify-start gap-2.5"
+                    : "flex items-end justify-start"
                 }
               >
-                {m.role === "assistant" ? (
-                  <div className="shrink-0">
-                    <div className="overflow-hidden rounded-full border border-sky-100 bg-white p-0.5 shadow-sm">
-                      <LouisAvatar mood="bible" size={30} />
-                    </div>
-                  </div>
-                ) : null}
                 <div className={m.role === "user" ? "max-w-[78%] text-right" : "max-w-[78%]"}>
                   <div className={m.role === "user" ? "mb-1 text-[10px] font-medium text-slate-500" : "mb-1 text-[10px] font-medium text-slate-500"}>
-                    {m.role === "user" ? "You" : "Louis"}
+                    {m.role === "user" ? "You" : "Lil' Lewis"}
                   </div>
                   <div
                     className={
@@ -3566,19 +3575,14 @@ export function ChatLouis() {
               </div>
             ))}
             {isSending ? (
-              <div className="flex items-end justify-start gap-2.5">
-                <div className="shrink-0">
-                  <div className="overflow-hidden rounded-full border border-sky-100 bg-white p-0.5 shadow-sm">
-                    <LouisAvatar mood="bible" size={30} />
-                  </div>
-                </div>
+              <div className="flex items-end justify-start">
                 <div className="max-w-[78%]">
-                  <div className="mb-1 text-[10px] font-medium text-slate-500">Louis</div>
+                  <div className="mb-1 text-[10px] font-medium text-slate-500">Lil' Lewis</div>
                   <div className="inline-flex items-center gap-1 rounded-[22px] rounded-bl-md border border-gray-200 bg-white px-3.5 py-3 text-gray-800 shadow-sm">
                     <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.2s]" />
                     <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.1s]" />
                     <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400" />
-                    <span className="ml-2 text-[11px] text-slate-500">Louis is typing...</span>
+                    <span className="ml-2 text-[11px] text-slate-500">Lil' Lewis is typing...</span>
                   </div>
                 </div>
               </div>
