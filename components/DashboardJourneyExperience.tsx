@@ -58,6 +58,39 @@ type ProfileShape = {
   username?: string | null;
 } | null;
 
+type BuddiesDashboardTopBuddy = {
+  userId: string;
+  displayName: string;
+  username: string | null;
+  profileImageUrl: string | null;
+  currentLevel: number;
+  currentStreak: number;
+  score: number;
+  taskCount: number;
+  communityCount: number;
+  rank: number;
+};
+
+type BuddiesDashboardTimelineItem = {
+  id: string;
+  userId: string;
+  displayName: string;
+  profileImageUrl: string | null;
+  actionText: string;
+  createdAt: string | null;
+  actionType: string | null;
+};
+
+type BuddiesDashboardPayload = {
+  topBuddies: BuddiesDashboardTopBuddy[];
+  friendTimeline: BuddiesDashboardTimelineItem[];
+  meta?: {
+    topWindowDays?: number;
+    friendWindowDays?: number;
+    generatedAt?: string;
+  };
+};
+
 type ExploreLink = {
   key: string;
   title: string;
@@ -1494,6 +1527,9 @@ export default function DashboardJourneyExperience({
   const [embeddedCommunityLoading, setEmbeddedCommunityLoading] = useState(false);
   const [embeddedCommunityError, setEmbeddedCommunityError] = useState<string | null>(null);
   const [embeddedCommunityHeight, setEmbeddedCommunityHeight] = useState(620);
+  const [buddiesDashboard, setBuddiesDashboard] = useState<BuddiesDashboardPayload | null>(null);
+  const [buddiesDashboardLoading, setBuddiesDashboardLoading] = useState(false);
+  const [buddiesDashboardError, setBuddiesDashboardError] = useState<string | null>(null);
   const [embeddedTvSelection, setEmbeddedTvSelection] = useState<{
     title: BibleBuddyTvTitle;
     episode: BibleBuddyTvEpisode;
@@ -1510,7 +1546,7 @@ export default function DashboardJourneyExperience({
   const [shareCopied, setShareCopied] = useState(false);
   const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
 
-  const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "tv", "games", "share"] as const;
+  const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "buddies", "tv", "games", "share"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
   const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
@@ -1541,6 +1577,7 @@ export default function DashboardJourneyExperience({
     },
     { key: "bible_studies", label: "Bible Studies", icon: "\uD83C\uDF05", href: dashboardPageLinks.bible_studies?.href || "/bible-studies", onClick: dashboardPageLinks.bible_studies?.onClick },
     { key: "group", label: "Community", icon: "\uD83D\uDC65", href: dashboardPageLinks.group?.href || "/study-groups", onClick: dashboardPageLinks.group?.onClick },
+    { key: "buddies", label: "Buddies", icon: "\uD83E\uDD1D", href: "#buddies" },
     { key: "tv", label: "TV", icon: "\u25B6", href: dashboardPageLinks.tv?.href || "/biblebuddy-tv", onClick: dashboardPageLinks.tv?.onClick },
     { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
     { key: "share", label: "Share", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
@@ -1602,6 +1639,41 @@ export default function DashboardJourneyExperience({
       cancelled = true;
     };
   }, [embeddedCommunityGroupId, safeActivePage]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadBuddiesDashboard() {
+      if (buddiesDashboard || buddiesDashboardLoading) return;
+      setBuddiesDashboardLoading(true);
+      setBuddiesDashboardError(null);
+
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const token = sessionData.session?.access_token;
+        if (!token) throw new Error("Sign in again to load Buddies.");
+
+        const response = await fetch("/api/buddies/dashboard", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload?.error || "Could not load Buddies.");
+        if (!cancelled) setBuddiesDashboard(payload as BuddiesDashboardPayload);
+      } catch (error: any) {
+        if (!cancelled) setBuddiesDashboardError(error?.message || "Could not load Buddies.");
+      } finally {
+        if (!cancelled) setBuddiesDashboardLoading(false);
+      }
+    }
+
+    if (dashboardPageKeys[safeActivePage] === "buddies") {
+      void loadBuddiesDashboard();
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [buddiesDashboard, buddiesDashboardLoading, safeActivePage]);
 
   useEffect(() => {
     function handleEmbeddedCommunityHeight(event: MessageEvent) {
@@ -3005,6 +3077,66 @@ export default function DashboardJourneyExperience({
     </section>
   );
 
+  function getBuddyInitial(name: string) {
+    return name
+      .split(/\s+/)
+      .filter(Boolean)
+      .map((part) => part[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase() || "BB";
+  }
+
+  function formatBuddyTime(value: string | null) {
+    if (!value) return "recently";
+    const diffMs = Date.now() - new Date(value).getTime();
+    if (!Number.isFinite(diffMs)) return "recently";
+    const minutes = Math.max(1, Math.round(diffMs / 60000));
+    if (minutes < 60) return `${minutes}m ago`;
+    const hours = Math.round(minutes / 60);
+    if (hours < 24) return `${hours}h ago`;
+    const days = Math.round(hours / 24);
+    return `${days}d ago`;
+  }
+
+  const renderCommunityLoadingSkeleton = () => (
+    <div className="bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-5">
+      <div className="rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+        <div className="flex items-center gap-3">
+          <LouisAvatar mood="wave" size={44} />
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Share something with the group</p>
+            <p className="mt-1 h-3 w-4/5 rounded-full bg-[var(--bb-surface-soft,#f3f4f6)]" />
+          </div>
+          <span className="h-3 w-3 rounded-full bg-[var(--bb-accent,#2f7fe8)]" />
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+        <div className="mb-3 flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+          <span>📌</span>
+          <span>Pinned</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)]" />
+          <div className="min-w-0 flex-1">
+            <div className="h-3.5 w-40 rounded-full bg-[var(--bb-surface-soft,#f3f4f6)]" />
+            <div className="mt-2 h-3 w-24 rounded-full bg-[var(--bb-surface-soft,#f3f4f6)]" />
+          </div>
+        </div>
+        <div className="mt-4 space-y-2">
+          <div className="h-4 w-11/12 rounded-full bg-[var(--bb-surface-soft,#f3f4f6)]" />
+          <div className="h-4 w-4/5 rounded-full bg-[var(--bb-surface-soft,#f3f4f6)]" />
+          <div className="h-4 w-2/3 rounded-full bg-[var(--bb-surface-soft,#f3f4f6)]" />
+        </div>
+      </div>
+
+      <p className="mt-4 text-center text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#6b7280)]">
+        Loading the latest posts...
+      </p>
+    </div>
+  );
+
   const renderEmbeddedCommunityPage = () => (
     <section className="w-full px-1">
       <div className="mx-auto flex max-w-xl flex-col gap-3 pb-3">
@@ -3017,12 +3149,7 @@ export default function DashboardJourneyExperience({
           </div>
 
           {embeddedCommunityLoading ? (
-            <div className="grid min-h-[520px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
-              <div>
-                <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-[var(--bb-accent,#2f7fe8)] border-t-transparent" />
-                <p className="mt-4 text-sm font-black text-[var(--bb-text-primary,#111827)]">Loading Community...</p>
-              </div>
-            </div>
+            renderCommunityLoadingSkeleton()
           ) : embeddedCommunityError ? (
             <div className="grid min-h-[420px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
               <div>
@@ -3051,6 +3178,106 @@ export default function DashboardJourneyExperience({
             </div>
           )}
         </div>
+      </div>
+    </section>
+  );
+
+  const renderEmbeddedBuddiesPage = () => (
+    <section className="w-full px-1 pb-4">
+      <div className="mx-auto flex max-w-xl flex-col gap-4">
+        <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Buddies</p>
+          <h2 className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#111827)]">Top Bible Buddies</h2>
+          <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
+            Universal Top 10 based on Bible task momentum from the last {buddiesDashboard?.meta?.topWindowDays || 340} days.
+          </p>
+        </div>
+
+        {buddiesDashboardLoading ? (
+          <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
+            <div className="space-y-3">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-[var(--bb-surface-soft,#f3f4f6)]" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-3 w-3/5 rounded-full bg-[var(--bb-surface-soft,#f3f4f6)]" />
+                    <div className="h-3 w-2/5 rounded-full bg-[var(--bb-surface-soft,#f3f4f6)]" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : buddiesDashboardError ? (
+          <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-6 text-center shadow-sm">
+            <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">Buddies needs a refresh.</p>
+            <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">{buddiesDashboardError}</p>
+          </div>
+        ) : (
+          <>
+            <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+              <div className="space-y-3">
+                {(buddiesDashboard?.topBuddies || []).map((buddy) => (
+                  <div key={buddy.userId} className="flex items-center gap-3 rounded-[20px] bg-[var(--bb-surface,#f8fbff)] p-3">
+                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-sm font-black text-[var(--bb-button-text,#ffffff)]">
+                      #{buddy.rank}
+                    </div>
+                    {buddy.profileImageUrl ? (
+                      <img src={buddy.profileImageUrl} alt={buddy.displayName} className="h-11 w-11 shrink-0 rounded-full object-cover" />
+                    ) : (
+                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
+                        {getBuddyInitial(buddy.displayName)}
+                      </div>
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">{buddy.displayName}</p>
+                      <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                        L{buddy.currentLevel} • {buddy.taskCount} tasks • {buddy.communityCount} community
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-base font-black text-[var(--bb-text-primary,#111827)]">{buddy.score}</p>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--bb-text-muted,#6b7280)]">score</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {!(buddiesDashboard?.topBuddies || []).length ? (
+                <p className="py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">No ranking activity yet.</p>
+              ) : null}
+            </div>
+
+            <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
+              <h3 className="text-xl font-black text-[var(--bb-text-primary,#111827)]">Your Buddies' Timeline</h3>
+              <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+                Recent Bible study tasks and progress from people you are connected with.
+              </p>
+              <div className="mt-4 space-y-3">
+                {(buddiesDashboard?.friendTimeline || []).map((item) => (
+                  <div key={item.id} className="flex gap-3 rounded-[20px] bg-[var(--bb-surface,#f8fbff)] p-3">
+                    {item.profileImageUrl ? (
+                      <img src={item.profileImageUrl} alt={item.displayName} className="h-10 w-10 shrink-0 rounded-full object-cover" />
+                    ) : (
+                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
+                        {getBuddyInitial(item.displayName)}
+                      </div>
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{item.displayName}</p>
+                      <p className="mt-0.5 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">{item.actionText}</p>
+                      <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">{formatBuddyTime(item.createdAt)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {!(buddiesDashboard?.friendTimeline || []).length ? (
+                <div className="mt-4 rounded-[20px] bg-[var(--bb-surface,#f8fbff)] p-5 text-center">
+                  <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">No Buddy activity yet.</p>
+                  <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">Add Buddies from profiles and their Bible task progress will show up here.</p>
+                </div>
+              ) : null}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
@@ -4497,14 +4724,18 @@ export default function DashboardJourneyExperience({
         </div>
 
         <div className={getSlideClass(4)}>
-          {renderEmbeddedTvPage()}
+          {renderEmbeddedBuddiesPage()}
         </div>
 
         <div className={getSlideClass(5)}>
-          {renderEmbeddedGamesPage()}
+          {renderEmbeddedTvPage()}
         </div>
 
         <div className={getSlideClass(6)}>
+          {renderEmbeddedGamesPage()}
+        </div>
+
+        <div className={getSlideClass(7)}>
           {renderEmbeddedSharePage()}
         </div>
 

@@ -73,9 +73,19 @@ const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
 const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 4 * 60 * 60 * 1000;
 const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
 const MAX_BADGE_POPUPS_PER_SESSION = 3;
+const MYSTERY_PRIZE_REWARDS = [100, 125, 150, 175, 200, 250];
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
+
+function rollMysteryPrizeReward() {
+  if (typeof window !== "undefined" && window.crypto?.getRandomValues) {
+    const randomValues = new Uint32Array(1);
+    window.crypto.getRandomValues(randomValues);
+    return MYSTERY_PRIZE_REWARDS[randomValues[0] % MYSTERY_PRIZE_REWARDS.length];
+  }
+  return MYSTERY_PRIZE_REWARDS[Math.floor(Math.random() * MYSTERY_PRIZE_REWARDS.length)];
+}
 
 type BadgeTone = "blue" | "gold" | "green" | "pink" | "purple" | "red" | "teal" | "slate";
 
@@ -130,6 +140,11 @@ type StorePurchaseRow = {
   item_title: string;
   price_diamonds: number;
   created_at?: string | null;
+};
+
+type MysteryPrizeReveal = {
+  status: "closed" | "opening" | "opened";
+  reward: number;
 };
 
 type DashboardLouisNudge = {
@@ -910,6 +925,8 @@ export default function DashboardPage() {
   const [storeLoading, setStoreLoading] = useState(false);
   const [storeBuyingId, setStoreBuyingId] = useState<string | null>(null);
   const [storeMessage, setStoreMessage] = useState<string | null>(null);
+  const [mysteryPrizeReveal, setMysteryPrizeReveal] = useState<MysteryPrizeReveal | null>(null);
+  const mysteryPrizeAwardingRef = useRef(false);
   const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
@@ -2187,6 +2204,74 @@ export default function DashboardPage() {
     const diamondCount = Math.max(0, Number(profile?.diamonds_count ?? 0));
     const ownedItemIds = new Set(storePurchases.map((purchase) => purchase.item_id));
 
+    const renderMysteryRevealPanel = () => {
+      if (!mysteryPrizeReveal) return null;
+      const isClosed = mysteryPrizeReveal.status === "closed";
+      const isOpening = mysteryPrizeReveal.status === "opening";
+      const isOpened = mysteryPrizeReveal.status === "opened";
+
+      return (
+        <section className="mt-5 overflow-hidden rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-5 text-center shadow-[0_18px_46px_rgba(38,63,99,0.14)]">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">Mystery Prize</p>
+          <h3 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary)]">
+            {isOpened ? "You opened the box!" : "Tap the box"}
+          </h3>
+          <p className="mx-auto mt-2 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
+            {isOpened
+              ? "Your diamond gift has been added to your stash."
+              : "One mystery gift is waiting. Open it and see what BibleBuddy drops into your stash."}
+          </p>
+
+          <button
+            type="button"
+            disabled={!isClosed}
+            onClick={() => void handleOpenMysteryPrize()}
+            className="group relative mx-auto mt-7 grid min-h-[210px] w-full max-w-sm place-items-center overflow-hidden rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] p-6 transition hover:-translate-y-1 hover:shadow-xl disabled:cursor-default disabled:hover:translate-y-0"
+          >
+            <span className="absolute left-8 top-8 h-3 w-3 rounded-full bg-[var(--bb-accent)] opacity-70 animate-ping" />
+            <span className="absolute right-10 top-12 h-4 w-4 rounded-full bg-yellow-300 opacity-80 animate-pulse" />
+            <span className="absolute bottom-10 left-12 h-4 w-4 rounded-full bg-sky-300 opacity-80 animate-bounce" />
+            <span className="absolute bottom-12 right-14 h-3 w-3 rounded-full bg-pink-300 opacity-80 animate-ping" />
+            <span
+              className={`relative text-[7.5rem] leading-none drop-shadow-lg transition duration-500 ${
+                isClosed ? "animate-bounce group-hover:scale-110" : isOpening ? "scale-125 rotate-6 animate-pulse" : "scale-110"
+              }`}
+              aria-hidden="true"
+            >
+              {isOpened ? "💎" : "🎁"}
+            </span>
+            {isOpening ? (
+              <span className="absolute inset-x-10 top-1/2 h-20 -translate-y-1/2 rounded-full bg-[var(--bb-accent-soft)] blur-2xl animate-pulse" />
+            ) : null}
+          </button>
+
+          {isOpened ? (
+            <div className="mx-auto mt-6 max-w-sm rounded-[24px] border border-[var(--bb-card-border)] bg-[var(--bb-accent-soft)] p-5">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted)]">Gift unlocked</p>
+              <p className="mt-1 text-5xl font-black text-[var(--bb-text-primary)]">
+                +{mysteryPrizeReveal.reward.toLocaleString()}
+              </p>
+              <p className="mt-1 text-sm font-black text-[var(--bb-accent)]">diamonds</p>
+            </div>
+          ) : (
+            <p className="mt-5 text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted)]">
+              {isOpening ? "Opening..." : "Tap to open"}
+            </p>
+          )}
+
+          {isOpened ? (
+            <button
+              type="button"
+              onClick={() => setMysteryPrizeReveal(null)}
+              className="mt-6 w-full max-w-sm rounded-full bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
+            >
+              Keep Shopping
+            </button>
+          ) : null}
+        </section>
+      );
+    };
+
     const renderStoreItemCard = (item: BibleBuddyStoreItem) => {
       const owned = item.price === 0 || ownedItemIds.has(item.id);
       const canBuy = !item.comingSoon && (item.repeatable || !owned);
@@ -2283,29 +2368,35 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {storeLoading ? (
-          <div className="mt-5 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-center text-sm font-black text-[var(--bb-text-secondary)]">
-            Loading store...
-          </div>
-        ) : null}
-        {storeMessage ? (
-          <div className="mt-5 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-accent-soft)] p-4 text-sm font-black text-[var(--bb-text-primary)]">
-            {storeMessage}
-          </div>
-        ) : null}
+        {mysteryPrizeReveal ? (
+          renderMysteryRevealPanel()
+        ) : (
+          <>
+            {storeLoading ? (
+              <div className="mt-5 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-center text-sm font-black text-[var(--bb-text-secondary)]">
+                Loading store...
+              </div>
+            ) : null}
+            {storeMessage ? (
+              <div className="mt-5 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-accent-soft)] p-4 text-sm font-black text-[var(--bb-text-primary)]">
+                {storeMessage}
+              </div>
+            ) : null}
 
-        {renderSection("Themes", "Each theme costs 500 diamonds, about ten full chapters of steady study.", THEME_STORE_ITEMS)}
-        {renderSection("30 Day Streak Flames", "Change the color of your streak badge and make long runs feel earned.", STREAK_FLAME_STORE_ITEMS)}
-        {renderSection("Bible Buddies", "Lil Louis is ready now. Walter, Lindsey, and Steve are placeholders until their art is uploaded.", BUDDY_STORE_ITEMS)}
-        {renderSection("Boosts And Items", "Helpful items for streaks, XP, and surprise rewards.", BOOST_STORE_ITEMS)}
+            {renderSection("Themes", "Each theme costs 500 diamonds, about ten full chapters of steady study.", THEME_STORE_ITEMS)}
+            {renderSection("30 Day Streak Flames", "Change the color of your streak badge and make long runs feel earned.", STREAK_FLAME_STORE_ITEMS)}
+            {renderSection("Bible Buddies", "Lil Louis is ready now. Walter, Lindsey, and Steve are placeholders until their art is uploaded.", BUDDY_STORE_ITEMS)}
+            {renderSection("Boosts And Items", "Helpful items for streaks, XP, and surprise rewards.", BOOST_STORE_ITEMS)}
 
-        <button
-          type="button"
-          onClick={() => setShowDiamondStore(false)}
-          className="mt-6 w-full rounded-full bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
-        >
-          Close Store
-        </button>
+            <button
+              type="button"
+              onClick={() => setShowDiamondStore(false)}
+              className="mt-6 w-full rounded-full bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
+            >
+              Close Store
+            </button>
+          </>
+        )}
       </section>
     );
   }
@@ -2712,6 +2803,38 @@ export default function DashboardPage() {
     }
   }
 
+  async function handleOpenMysteryPrize() {
+    if (!userId || !mysteryPrizeReveal || mysteryPrizeReveal.status !== "closed" || mysteryPrizeAwardingRef.current) return;
+
+    mysteryPrizeAwardingRef.current = true;
+    setStoreMessage(null);
+    setMysteryPrizeReveal((current) => current ? { ...current, status: "opening" } : current);
+
+    window.setTimeout(async () => {
+      const reward = mysteryPrizeReveal.reward;
+      const awarded = await awardDiamonds(userId, reward);
+
+      if (awarded <= 0) {
+        setStoreMessage("The mystery box could not add diamonds yet. Try opening it again in a moment.");
+        setMysteryPrizeReveal((current) => current ? { ...current, status: "closed" } : current);
+        mysteryPrizeAwardingRef.current = false;
+        return;
+      }
+
+      setProfile((current) =>
+        current
+          ? {
+              ...current,
+              diamonds_count: Math.max(0, Number(current.diamonds_count ?? 0)) + awarded,
+            }
+          : current,
+      );
+      setMysteryPrizeReveal((current) => current ? { ...current, status: "opened" } : current);
+      confetti({ particleCount: 90, spread: 72, origin: { y: 0.6 } });
+      mysteryPrizeAwardingRef.current = false;
+    }, 650);
+  }
+
   async function handleStorePurchase(item: BibleBuddyStoreItem) {
     if (!userId) {
       setStoreMessage("Sign in first so BibleBuddy can save what you buy.");
@@ -2813,6 +2936,8 @@ export default function DashboardPage() {
       return;
     }
 
+    const mysteryReward = item.kind === "mystery" ? rollMysteryPrizeReward() : null;
+
     const { error: purchaseError } = await supabase.from("user_store_purchases").insert({
       user_id: userId,
       item_id: item.id,
@@ -2823,6 +2948,7 @@ export default function DashboardPage() {
         themeId: item.themeId ?? null,
         flameId: item.flameId ?? null,
         repeatable: item.repeatable ?? false,
+        mysteryReward,
       },
     });
 
@@ -2847,7 +2973,7 @@ export default function DashboardPage() {
       setStoreMessage("The store needs the new purchase-history migration before checkout can work.");
       setStoreBuyingId(null);
       return;
-    } else {
+    } else if (!mysteryReward) {
       setStoreMessage(`${item.title} added to your account.`);
     }
 
@@ -2879,6 +3005,10 @@ export default function DashboardPage() {
     }));
 
     await loadStorePurchases();
+    if (mysteryReward) {
+      setMysteryPrizeReveal({ status: "closed", reward: mysteryReward });
+      setStoreMessage(null);
+    }
     setStoreBuyingId(null);
   }
 

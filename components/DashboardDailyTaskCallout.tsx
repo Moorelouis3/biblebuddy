@@ -1,6 +1,6 @@
 "use client";
 
-import { Component, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import { Component, type MouseEvent, type ReactNode, type RefObject, useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import { ColorPicker } from "./ColorPicker";
@@ -71,6 +71,7 @@ type BibleApiResponse = {
 };
 
 type InlineBibleTranslation = "kjv" | "asv" | "web";
+type BibleDatabaseTerm = { type: "people" | "places" | "keywords"; name: string };
 
 const INLINE_BIBLE_TRANSLATIONS: Array<{ value: InlineBibleTranslation; label: string }> = [
   { value: "kjv", label: "KJV" },
@@ -172,6 +173,89 @@ function normalizeInlinePopupMarkdown(markdown: string) {
     .trim();
 }
 
+function DatabaseTermTakeover({
+  selectedTerm,
+  termBurstKey,
+  loadingTermNotes,
+  termNotes,
+  termNotesError,
+  onClose,
+  takeoverRef,
+}: {
+  selectedTerm: BibleDatabaseTerm;
+  termBurstKey: number;
+  loadingTermNotes: boolean;
+  termNotes: string | null;
+  termNotesError: string | null;
+  onClose: () => void;
+  takeoverRef?: RefObject<HTMLDivElement | null>;
+}) {
+  return (
+    <div ref={takeoverRef} className="relative min-h-[62vh] overflow-hidden rounded-[26px] bg-[var(--bb-card,#ffffff)] px-4 py-6 text-center text-[var(--bb-text-primary,#111827)]">
+      <style>{`
+        @keyframes word-discovery-smoke {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); filter: blur(0); }
+          18% { opacity: 0.48; }
+          100% { opacity: 0; transform: translate(calc(-50% + var(--smoke-x)), calc(-50% + var(--smoke-y))) scale(1.35); filter: blur(5px); }
+        }
+        @keyframes word-discovery-card {
+          0% { opacity: 0; transform: translateY(14px) scale(0.92); filter: blur(1px); }
+          62% { opacity: 1; transform: translateY(-3px) scale(1.015); filter: blur(0); }
+          100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+        .word-discovery-smoke span { animation: word-discovery-smoke 780ms ease-out both; }
+        .word-discovery-card { animation: word-discovery-card 260ms cubic-bezier(0.16, 0.9, 0.22, 1) both; }
+      `}</style>
+      <div key={termBurstKey} className="word-discovery-smoke pointer-events-none absolute left-1/2 top-24 z-0" aria-hidden="true">
+        <span className="absolute h-14 w-14 rounded-full bg-slate-300/45 [--smoke-x:-84px] [--smoke-y:-22px]" />
+        <span className="absolute h-12 w-12 rounded-full bg-slate-200/50 [--smoke-x:72px] [--smoke-y:-32px]" />
+        <span className="absolute h-10 w-10 rounded-full bg-rose-100/70 [--smoke-x:-16px] [--smoke-y:42px]" />
+        <span className="absolute h-9 w-9 rounded-full bg-slate-300/35 [--smoke-x:96px] [--smoke-y:28px]" />
+        <span className="absolute h-8 w-8 rounded-full bg-white/80 [--smoke-x:-104px] [--smoke-y:34px]" />
+      </div>
+      <div className="word-discovery-card relative z-10 mx-auto flex min-h-[58vh] max-w-xl flex-col items-center justify-center">
+        <div className="mb-3 flex justify-center">
+          <LouisAvatar mood="think" size={104} />
+        </div>
+        <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">
+          {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
+        </p>
+        <h3 className="mt-1 text-4xl font-black leading-tight">{selectedTerm.name}</h3>
+        <div className="mt-5 w-full px-2 py-2">
+          {loadingTermNotes && !termNotes ? (
+            <div className="space-y-3 py-6">
+              <div className="h-3 rounded-full bg-white/80" />
+              <div className="h-3 w-5/6 rounded-full bg-white/80" />
+              <div className="h-3 w-2/3 rounded-full bg-white/80" />
+            </div>
+          ) : termNotes ? (
+            <ReactMarkdown
+              components={{
+                h1: ({ ...props }) => <h1 className="mb-3 mt-5 text-left text-xl font-black" {...props} />,
+                p: ({ ...props }) => <p className="mb-4 text-left text-base font-medium leading-7" {...props} />,
+                strong: ({ ...props }) => <strong className="font-black" {...props} />,
+              }}
+            >
+              {normalizeInlinePopupMarkdown(termNotes)}
+            </ReactMarkdown>
+          ) : (
+            <p className="py-6 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+              {termNotesError || "Could not load this word yet."}
+            </p>
+          )}
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          className="mt-5 rounded-full bg-[var(--bb-button,#2f7fe8)] px-8 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function DashboardInlineBibleReader({
   book,
   chapter,
@@ -191,7 +275,7 @@ function DashboardInlineBibleReader({
   const [verses, setVerses] = useState<BibleApiVerse[]>([]);
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [picker, setPicker] = useState<{ verse: number; anchor: { x: number; y: number } } | null>(null);
-  const [selectedTerm, setSelectedTerm] = useState<{ type: "people" | "places" | "keywords"; name: string } | null>(null);
+  const [selectedTerm, setSelectedTerm] = useState<BibleDatabaseTerm | null>(null);
   const [termBurstKey, setTermBurstKey] = useState(0);
   const [termNotes, setTermNotes] = useState<string | null>(null);
   const [termNotesError, setTermNotesError] = useState<string | null>(null);
@@ -612,6 +696,13 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   const [notesLoading, setNotesLoading] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
   const [notesMarkedComplete, setNotesMarkedComplete] = useState(false);
+  const [notesSelectedTerm, setNotesSelectedTerm] = useState<BibleDatabaseTerm | null>(null);
+  const [notesTermBurstKey, setNotesTermBurstKey] = useState(0);
+  const [notesTermNotes, setNotesTermNotes] = useState<string | null>(null);
+  const [notesTermNotesError, setNotesTermNotesError] = useState<string | null>(null);
+  const [notesTermLoading, setNotesTermLoading] = useState(false);
+  const notesTermTakeoverRef = useRef<HTMLDivElement | null>(null);
+  const notesTermReturnScrollYRef = useRef<number | null>(null);
   const [interactiveTaskCompleted, setInteractiveTaskCompleted] = useState(false);
   const interactiveTaskCompletedRef = useRef(false);
 
@@ -640,6 +731,9 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   useEffect(() => {
     setInteractiveTaskCompleted(false);
     interactiveTaskCompletedRef.current = false;
+    setNotesSelectedTerm(null);
+    setNotesTermNotes(null);
+    setNotesTermNotesError(null);
   }, [task?.kind, task?.href, task?.chapterLabel]);
 
   function markInteractiveTaskComplete() {
@@ -751,6 +845,89 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       cancelled = true;
     };
   }, [task]);
+
+  function centerNotesTermTakeover(behavior: ScrollBehavior = "smooth") {
+    const node = notesTermTakeoverRef.current;
+    if (!node) return;
+
+    const rect = node.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const centeredOffset = Math.max(12, (viewportHeight - rect.height) / 2);
+    const nextTop = Math.max(0, window.scrollY + rect.top - centeredOffset);
+    window.scrollTo({ top: nextTop, behavior });
+  }
+
+  function handleNotesDatabaseTermClick(event: MouseEvent<HTMLDivElement>) {
+    const highlightElement = (event.target as HTMLElement).closest(".bible-highlight") as HTMLElement | null;
+    if (!highlightElement) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const type = highlightElement.dataset.type as "people" | "places" | "keywords" | undefined;
+    const term = highlightElement.dataset.term;
+    if (!type || !term) return;
+
+    notesTermReturnScrollYRef.current = window.scrollY;
+    setNotesTermBurstKey((current) => current + 1);
+    setNotesSelectedTerm({ type, name: resolveBibleReference(type, term) });
+  }
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadNotesTermNotes() {
+      if (!notesSelectedTerm) return;
+      setNotesTermLoading(true);
+      setNotesTermNotes(null);
+      setNotesTermNotesError(null);
+
+      try {
+        const notes =
+          notesSelectedTerm.type === "people"
+            ? await getPersonPopupNotes(notesSelectedTerm.name)
+            : notesSelectedTerm.type === "places"
+              ? await getPlacePopupNotes(notesSelectedTerm.name)
+              : await getKeywordPopupNotes(notesSelectedTerm.name);
+
+        if (!cancelled) setNotesTermNotes(notes);
+      } catch {
+        if (!cancelled) setNotesTermNotesError("Could not load this word yet.");
+      } finally {
+        if (!cancelled) setNotesTermLoading(false);
+      }
+    }
+
+    void loadNotesTermNotes();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [notesSelectedTerm]);
+
+  useEffect(() => {
+    if (!notesSelectedTerm) return;
+    let settleTimeout: number | null = null;
+    const frame = window.requestAnimationFrame(() => {
+      centerNotesTermTakeover("smooth");
+      settleTimeout = window.setTimeout(() => centerNotesTermTakeover("smooth"), 120);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      if (settleTimeout !== null) window.clearTimeout(settleTimeout);
+    };
+  }, [notesSelectedTerm, notesTermLoading, notesTermNotes]);
+
+  function closeNotesTermTakeover() {
+    setNotesSelectedTerm(null);
+    setNotesTermNotes(null);
+    setNotesTermNotesError(null);
+    const returnScrollY = notesTermReturnScrollYRef.current;
+    if (typeof returnScrollY === "number") {
+      window.requestAnimationFrame(() => window.scrollTo({ top: returnScrollY, behavior: "auto" }));
+    }
+  }
 
   async function markNotesComplete() {
     if (!userId || !task?.book || !task.chapter || notesMarkedComplete) return;
@@ -1102,17 +1279,27 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             </button>
           </div>
           <div className="px-1 py-3">
-            {notesLoading ? (
+            {notesSelectedTerm ? (
+              <DatabaseTermTakeover
+                selectedTerm={notesSelectedTerm}
+                termBurstKey={notesTermBurstKey}
+                loadingTermNotes={notesTermLoading}
+                termNotes={notesTermNotes}
+                termNotesError={notesTermNotesError}
+                onClose={closeNotesTermTakeover}
+                takeoverRef={notesTermTakeoverRef}
+              />
+            ) : notesLoading ? (
               <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p>
             ) : notesError ? (
               <p className="py-10 text-center text-sm text-red-500">{notesError}</p>
             ) : (
               <div className="max-w-none text-gray-800">
-                <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
+                <ChapterNotesMarkdown onDatabaseTermClick={handleNotesDatabaseTermClick}>{notesText}</ChapterNotesMarkdown>
               </div>
             )}
           </div>
-          {!notesLoading && !notesError ? (
+          {!notesSelectedTerm && !notesLoading && !notesError ? (
             <div className="flex justify-end px-1 pb-1 pt-3">
               <button
                 type="button"
@@ -1141,13 +1328,23 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             </button>
           </div>
           <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
-            {notesLoading ? (
+            {notesSelectedTerm ? (
+              <DatabaseTermTakeover
+                selectedTerm={notesSelectedTerm}
+                termBurstKey={notesTermBurstKey}
+                loadingTermNotes={notesTermLoading}
+                termNotes={notesTermNotes}
+                termNotesError={notesTermNotesError}
+                onClose={closeNotesTermTakeover}
+                takeoverRef={notesTermTakeoverRef}
+              />
+            ) : notesLoading ? (
               <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p>
             ) : notesError ? (
               <p className="py-10 text-center text-sm text-red-500">{notesError}</p>
             ) : (
               <div className="max-w-none text-gray-800">
-                <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
+                <ChapterNotesMarkdown onDatabaseTermClick={handleNotesDatabaseTermClick}>{notesText}</ChapterNotesMarkdown>
               </div>
             )}
           </div>

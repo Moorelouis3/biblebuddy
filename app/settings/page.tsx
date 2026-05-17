@@ -265,15 +265,25 @@ export default function SettingsPage() {
     if (!user) return;
     setFlameSaving(flameId);
     setSettingsMessage(null);
+    setSelectedFlame(flameId);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId } }));
+    }
     try {
-      const { error } = await supabase.from("profile_stats").update({ selected_streak_flame: flameId }).eq("user_id", user.id);
+      const { error } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: user.id,
+            selected_streak_flame: flameId,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" },
+        );
       if (error) throw error;
-      setSelectedFlame(flameId);
-      if (typeof window !== "undefined") {
-        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId } }));
-      }
       setSettingsMessage("Streak flame updated.");
     } catch (error: any) {
+      setSelectedFlame(normalizeFlameCosmeticId(selectedFlame));
       setSettingsMessage(error.message || "Could not update streak flame.");
     } finally {
       setFlameSaving(null);

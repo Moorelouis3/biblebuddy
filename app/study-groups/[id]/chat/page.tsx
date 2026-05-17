@@ -5167,7 +5167,6 @@ export default function GroupChatPage() {
 
           {activeTab === "home" && !activeFeedPost && !showTopBuddiesDetail ? (
             <>
-              {renderTopBuddiesLeaderboardCard()}
               <div className="mb-4">
                 {renderUpdateCard()}
               </div>

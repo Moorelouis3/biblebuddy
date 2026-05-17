@@ -1,10 +1,12 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
+import { enrichPlainText } from "../lib/bibleHighlighting";
 
 type ChapterNotesMarkdownProps = {
   children: string;
+  onDatabaseTermClick?: (event: MouseEvent<HTMLDivElement>) => void;
 };
 
 const leadingEmojiPattern = /^[\s]*(?:[\p{Extended_Pictographic}\p{Emoji_Presentation}]|\d\uFE0F?\u20E3)/u;
@@ -84,27 +86,69 @@ function normalizeEmojiLists(markdown: string): string {
   return output.join("\n");
 }
 
-export default function ChapterNotesMarkdown({ children }: ChapterNotesMarkdownProps) {
+function enrichMarkdownChildren(children: ReactNode): ReactNode {
+  if (typeof children === "string") {
+    return (
+      <span
+        className="chapter-notes-enriched-text"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Bible notes text is escaped by the highlighter before known database spans are inserted.
+        dangerouslySetInnerHTML={{ __html: enrichPlainText(children) }}
+      />
+    );
+  }
+
+  if (Array.isArray(children)) {
+    return children.map((child, index) => (
+      <span key={index} className="contents">
+        {enrichMarkdownChildren(child)}
+      </span>
+    ));
+  }
+
+  return children;
+}
+
+export default function ChapterNotesMarkdown({ children, onDatabaseTermClick }: ChapterNotesMarkdownProps) {
   return (
-    <div className="chapter-notes-markdown max-w-none text-gray-800">
+    <div className="chapter-notes-markdown max-w-none text-gray-800" onClick={onDatabaseTermClick}>
+      <style>{`
+        .chapter-notes-markdown .bible-highlight {
+          color: inherit !important;
+          text-decoration-color: color-mix(in srgb, var(--bb-accent, #dc2626) 72%, transparent) !important;
+          text-decoration-thickness: 1.5px;
+          text-underline-offset: 3px;
+        }
+        .chapter-notes-markdown .bible-highlight:hover {
+          color: var(--bb-accent, #dc2626) !important;
+          text-decoration-color: var(--bb-accent, #dc2626) !important;
+        }
+      `}</style>
       <ReactMarkdown
         components={{
-          h1: ({ ...props }) => (
-            <h1 className="mb-4 mt-7 text-2xl font-black leading-tight tracking-normal text-gray-950 first:mt-0 md:text-3xl" {...props} />
+          h1: ({ children, ...props }) => (
+            <h1 className="mb-4 mt-7 text-2xl font-black leading-tight tracking-normal text-[var(--bb-text-primary,#111827)] first:mt-0 md:text-3xl" {...props}>
+              {enrichMarkdownChildren(children)}
+            </h1>
           ),
-          h2: ({ ...props }) => (
-            <h2 className="mb-3 mt-8 border-b border-gray-200 pb-2 text-xl font-black leading-tight tracking-normal text-gray-950 md:text-2xl" {...props} />
+          h2: ({ children, ...props }) => (
+            <h2 className="mb-3 mt-8 border-b border-[var(--bb-card-border,#e5e7eb)] pb-2 text-xl font-black leading-tight tracking-normal text-[var(--bb-text-primary,#111827)] md:text-2xl" {...props}>
+              {enrichMarkdownChildren(children)}
+            </h2>
           ),
-          h3: ({ ...props }) => (
-            <h3 className="mb-2 mt-6 text-lg font-extrabold leading-tight text-gray-900 md:text-xl" {...props} />
+          h3: ({ children, ...props }) => (
+            <h3 className="mb-2 mt-6 text-lg font-extrabold leading-tight text-[var(--bb-text-primary,#111827)] md:text-xl" {...props}>
+              {enrichMarkdownChildren(children)}
+            </h3>
           ),
-          p: ({ ...props }) => (
-            <p className="mb-4 text-[15px] leading-relaxed text-gray-800 md:text-base" {...props} />
+          p: ({ children, ...props }) => (
+            <p className="mb-4 text-[15px] leading-relaxed text-[var(--bb-text-secondary,#374151)] md:text-base" {...props}>
+              {enrichMarkdownChildren(children)}
+            </p>
           ),
-          strong: ({ ...props }) => <strong className="font-extrabold text-gray-950" {...props} />,
-          em: ({ ...props }) => <em className="italic text-gray-800" {...props} />,
+          strong: ({ ...props }) => <strong className="font-extrabold text-[var(--bb-text-primary,#111827)]" {...props} />,
+          em: ({ ...props }) => <em className="italic text-[var(--bb-text-secondary,#374151)]" {...props} />,
           ul: ({ ...props }) => (
-            <ul className="mb-5 ml-0 list-none space-y-1.5 text-[15px] leading-relaxed text-gray-800 md:text-base" {...props} />
+            <ul className="mb-5 ml-0 list-none space-y-1.5 text-[15px] leading-relaxed text-[var(--bb-text-secondary,#374151)] md:text-base" {...props} />
           ),
           li: ({ children, ...props }) => {
             const alreadyStartsWithEmoji = leadingEmojiPattern.test(getTextFromNode(children));
@@ -116,7 +160,7 @@ export default function ChapterNotesMarkdown({ children }: ChapterNotesMarkdownP
                     ✨
                   </span>
                 )}
-                <span className="min-w-0">{children}</span>
+                <span className="min-w-0">{enrichMarkdownChildren(children)}</span>
               </li>
             );
           },
