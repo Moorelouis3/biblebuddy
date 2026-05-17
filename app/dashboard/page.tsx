@@ -77,6 +77,16 @@ const MAX_BADGE_POPUPS_PER_SESSION = 3;
 const MYSTERY_PRIZE_REWARDS = [100, 125, 150, 175, 200, 250];
 const DAILY_LOGIN_GIFT_WINDOW_MS = 24 * 60 * 60 * 1000;
 const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
+const DASHBOARD_EMOJI_FLAME_FILTERS: Record<string, string> = {
+  default: "none",
+  orange: "none",
+  blue: "hue-rotate(176deg) saturate(1.12) brightness(1.18)",
+  gold: "hue-rotate(22deg) saturate(1.45) brightness(1.12)",
+  purple: "hue-rotate(215deg) saturate(1.75) brightness(1.02)",
+  red: "hue-rotate(342deg) saturate(1.35) brightness(1.02)",
+  green: "hue-rotate(92deg) saturate(1.65) brightness(1.05)",
+  black: "grayscale(1) contrast(1.45) brightness(0.72)",
+};
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -2020,6 +2030,8 @@ export default function DashboardPage() {
       streakValue >= 30
         ? "streak-flame-earned"
         : "streak-flame-building";
+    const selectedFlameId = normalizeFlameCosmeticId(profile?.selected_streak_flame);
+    const streakEmojiFilter = DASHBOARD_EMOJI_FLAME_FILTERS[selectedFlameId] ?? "none";
     const nextLevelPercent = Math.max(0, Math.min(100, levelInfo?.progressPercent ?? 0));
     const personalStats = [
       {
@@ -2144,7 +2156,13 @@ export default function DashboardPage() {
               <div className="w-full">
                 <div className="flex items-center gap-2">
                   <span className={streakFlameClass} style={{ animationDuration: `${streakFlameDuration}s` }} aria-hidden="true">
-                    <AnimatedFlame flameId={profile?.selected_streak_flame} size={42} title={`${streakValue} day streak`} />
+                    <span
+                      className="block text-[42px] leading-none"
+                      style={{ filter: streakEmojiFilter }}
+                      title={`${streakValue} day streak`}
+                    >
+                      🔥
+                    </span>
                   </span>
                   <p className="text-xl font-black leading-none text-gray-950 sm:text-2xl">
                     {streakValue} day streak

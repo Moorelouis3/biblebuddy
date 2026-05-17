@@ -2541,7 +2541,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           : "text-gray-700 hover:bg-gray-100"
                       }`}
                     >
-                      {selectedBuddy.name} Buddy
+                      {selectedBuddy.name}
                     </Link>
 
                     {/* CONTACT US */}

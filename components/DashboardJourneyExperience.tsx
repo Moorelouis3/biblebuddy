@@ -1643,7 +1643,7 @@ export default function DashboardJourneyExperience({
       label: selectedBuddy.name,
       icon: (
         <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-full">
-          <LouisAvatar mood="wave" size={38} />
+          <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={38} />
         </span>
       ),
       href: "#lil-louis",
