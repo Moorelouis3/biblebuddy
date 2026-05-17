@@ -15,7 +15,7 @@ export default function AnimatedFlame({ flameId, size = 42, className = "", titl
   const filterByFlame: Record<string, string> = {
     default: "none",
     orange: "none",
-    blue: "hue-rotate(165deg) saturate(1.9) brightness(1.08)",
+    blue: "hue-rotate(176deg) saturate(1.12) brightness(1.18)",
     gold: "hue-rotate(22deg) saturate(1.45) brightness(1.12)",
     purple: "hue-rotate(215deg) saturate(1.75) brightness(1.02)",
     green: "hue-rotate(92deg) saturate(1.65) brightness(1.05)",

@@ -13,7 +13,7 @@ export const DEFAULT_FLAME_COSMETIC: FlameCosmeticId = "default";
 export const FLAME_COSMETICS: FlameCosmetic[] = [
   { id: "default", name: "Classic Flame", light: "#FDBA74", main: "#F97316", dark: "#B91C1C" },
   { id: "orange", name: "Orange Flame", light: "#FED7AA", main: "#EA580C", dark: "#9A3412" },
-  { id: "blue", name: "Blue Flame", light: "#BAE6FD", main: "#38BDF8", dark: "#1D4ED8" },
+  { id: "blue", name: "Blue Flame", light: "#D7ECFA", main: "#7BAFD4", dark: "#256FA8" },
   { id: "gold", name: "Gold Flame", light: "#FEF3C7", main: "#F59E0B", dark: "#92400E" },
   { id: "purple", name: "Purple Flame", light: "#DDD6FE", main: "#8B5CF6", dark: "#5B21B6" },
   { id: "green", name: "Green Flame", light: "#BBF7D0", main: "#22C55E", dark: "#166534" },

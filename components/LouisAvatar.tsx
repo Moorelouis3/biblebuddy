@@ -89,13 +89,13 @@ function BuddyIllustration({ buddyId, mood, size }: { buddyId: BuddyAvatarId; mo
           backgroundColor: buddy.colors.hair,
         }}
       />
-      {buddyId === "ezra" ? (
+      {buddyId === "walter" ? (
         <div
           className="absolute rounded-full bg-white/90"
           style={{ left: size * 0.24, top: size * 0.15, width: size * 0.52, height: size * 0.13 }}
         />
       ) : null}
-      {buddyId === "josiah" ? (
+      {buddyId === "steve" ? (
         <div
           className="absolute"
           style={{
@@ -104,7 +104,7 @@ function BuddyIllustration({ buddyId, mood, size }: { buddyId: BuddyAvatarId; mo
             width: size * 0.36,
             height: size * 0.2,
             backgroundColor: buddy.colors.accent,
-            clipPath: "polygon(0 80%, 18% 30%, 38% 72%, 50% 15%, 62% 72%, 82% 30%, 100% 80%)",
+            clipPath: "polygon(0 30%, 100% 0, 88% 100%, 12% 100%)",
           }}
         />
       ) : null}
