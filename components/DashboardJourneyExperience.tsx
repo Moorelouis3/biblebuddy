@@ -1478,6 +1478,9 @@ export default function DashboardJourneyExperience({
   const [embeddedBibleAlphabetical, setEmbeddedBibleAlphabetical] = useState(false);
   const [embeddedBibleCompletedChapters, setEmbeddedBibleCompletedChapters] = useState<number[]>([]);
   const [embeddedBibleReading, setEmbeddedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
+  const [embeddedBibleBookSearchOpen, setEmbeddedBibleBookSearchOpen] = useState(false);
+  const [embeddedBibleChapterLoading, setEmbeddedBibleChapterLoading] = useState<string | null>(null);
+  const [embeddedBibleSearchMessage, setEmbeddedBibleSearchMessage] = useState<string | null>(null);
   const [embeddedBibleStudyId, setEmbeddedBibleStudyId] = useState<string | null>(null);
   const [embeddedCommunityGroupId, setEmbeddedCommunityGroupId] = useState<string | null>(null);
   const [embeddedCommunityLoading, setEmbeddedCommunityLoading] = useState(false);
@@ -1492,13 +1495,13 @@ export default function DashboardJourneyExperience({
     remainingTasks: number;
   } | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
+  const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
 
-  const dashboardPageKeys = ["home", "buddy", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
+  const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "tv", "games", "share"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
   const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
   const dashboardPageLinks = {
-    bible: exploreLinkByKey("bible"),
     bible_studies: exploreLinkByKey("bible_studies"),
     group: exploreLinkByKey("group"),
     tv: exploreLinkByKey("tv"),
@@ -1523,7 +1526,6 @@ export default function DashboardJourneyExperience({
       ),
       href: "#lil-louis",
     },
-    { key: "bible", label: "The Bible", icon: "\uD83D\uDCD6", href: dashboardPageLinks.bible?.href || "/reading", onClick: dashboardPageLinks.bible?.onClick },
     { key: "bible_studies", label: "Bible Studies", icon: "\uD83C\uDF05", href: dashboardPageLinks.bible_studies?.href || "/bible-studies", onClick: dashboardPageLinks.bible_studies?.onClick },
     { key: "group", label: "Community", icon: "\uD83D\uDC65", href: dashboardPageLinks.group?.href || "/study-groups", onClick: dashboardPageLinks.group?.onClick },
     { key: "tv", label: "TV", icon: "\u25B6", href: dashboardPageLinks.tv?.href || "/biblebuddy-tv", onClick: dashboardPageLinks.tv?.onClick },
@@ -2572,6 +2574,7 @@ export default function DashboardJourneyExperience({
       chapterLabel,
       remainingTasks: optimisticTasks.length,
     });
+    snapToPage(0);
     setIsLoadingNextChapter(true);
 
     try {
@@ -2602,6 +2605,66 @@ export default function DashboardJourneyExperience({
       setIsLoadingNextChapter(false);
     } finally {
       setSwitchingStudyChapter(null);
+    }
+  }
+
+  async function loadBibleBookSearchChapter(book: string, chapter: number) {
+    if (!userId || embeddedBibleChapterLoading) return;
+
+    const chapterLabel = buildDashboardChapterLabel(book, chapter);
+    setEmbeddedBibleChapterLoading(`${book}:${chapter}`);
+    setEmbeddedBibleSearchMessage(null);
+
+    try {
+      const { data: matchingDays, error: dayError } = await supabase
+        .from("devotional_days")
+        .select("devotional_id, day_number, day_title, bible_reading_book, bible_reading_chapter")
+        .eq("bible_reading_book", book)
+        .eq("bible_reading_chapter", chapter)
+        .order("day_number", { ascending: true });
+
+      if (dayError) throw dayError;
+
+      const firstDay = (matchingDays || [])[0] as
+        | {
+            devotional_id: string;
+            day_number: number;
+            bible_reading_book: string | null;
+            bible_reading_chapter: number | null;
+          }
+        | undefined;
+
+      if (!firstDay?.devotional_id || !firstDay.day_number) {
+        setEmbeddedBibleSearchMessage(`${chapterLabel} is not connected to a Bible Study yet.`);
+        return;
+      }
+
+      const { data: devotional, error: devotionalError } = await supabase
+        .from("devotionals")
+        .select("id, title")
+        .eq("id", firstDay.devotional_id)
+        .maybeSingle();
+
+      if (devotionalError) throw devotionalError;
+      if (!devotional?.id) {
+        setEmbeddedBibleSearchMessage(`${chapterLabel} is not connected to a Bible Study yet.`);
+        return;
+      }
+
+      setEmbeddedBibleBookSearchOpen(false);
+      setEmbeddedBibleSelectedBook(null);
+      await loadEmbeddedBibleStudyChapter({
+        devotionalId: devotional.id,
+        devotionalTitle: devotional.title,
+        dayNumber: firstDay.day_number,
+        book,
+        chapter,
+      });
+    } catch (error) {
+      console.error("[DASHBOARD] Could not load Bible search chapter:", error);
+      setEmbeddedBibleSearchMessage(`Could not load ${chapterLabel}. Try again in a moment.`);
+    } finally {
+      setEmbeddedBibleChapterLoading(null);
     }
   }
 
@@ -2662,8 +2725,6 @@ export default function DashboardJourneyExperience({
   const studyProgressPercent = Math.round((studyProgressCompleted / Math.max(studyProgressTotal, 1)) * 100);
   const getFeaturePageBullets = (key: DashboardPageKey) => {
     switch (key) {
-      case "bible":
-        return ["Read any Bible book", "Pick up where you left off", "Use Scripture with notes and study tools"];
       case "bible_studies":
         return ["Follow guided chapter studies", "Keep moving through your Bible Study Journey", "Intro, reading, notes, trivia, Scrambled, and reflection"];
       case "group":
@@ -2696,14 +2757,15 @@ export default function DashboardJourneyExperience({
               <div>
                 <p className="bb-accent text-xs font-black uppercase tracking-[0.16em]">Scripture</p>
                 <h2 className="bb-text-primary mt-1 text-3xl font-black leading-tight">
-                  {embeddedBibleSelectedBook || "The Bible"}
+                  {embeddedBibleSelectedBook || "Search By Bible Book"}
                 </h2>
                 <p className="bb-text-secondary mt-2 text-sm font-semibold leading-6">
                   {embeddedBibleSelectedBook
-                    ? `${selectedBookChapterCount} chapters. Pick one to read inside your dashboard.`
-                    : "Choose a book and keep reading without leaving your dashboard."}
+                    ? `${selectedBookChapterCount} chapters. Pick one to load on your study dashboard.`
+                    : "Choose a book, pick a chapter, and BibleBuddy will load it into the study dashboard."}
                 </p>
               </div>
+              <div className="flex shrink-0 items-center gap-2">
               {embeddedBibleSelectedBook ? (
                 <button
                   type="button"
@@ -2715,6 +2777,19 @@ export default function DashboardJourneyExperience({
                   Books
                 </button>
               ) : null}
+              <button
+                type="button"
+                onClick={() => {
+                  setEmbeddedBibleBookSearchOpen(false);
+                  setEmbeddedBibleSelectedBook(null);
+                  setEmbeddedBibleSearchMessage(null);
+                }}
+                className="grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-xl font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-card,#ffffff)] hover:text-[var(--bb-text-primary,#111827)]"
+                aria-label="Close Bible book search"
+              >
+                ×
+              </button>
+              </div>
             </div>
 
             {embeddedBibleSelectedBook ? (
@@ -2726,7 +2801,8 @@ export default function DashboardJourneyExperience({
                       <button
                         key={chapter}
                         type="button"
-                        onClick={() => setEmbeddedBibleReading({ book: embeddedBibleSelectedBook, chapter })}
+                        onClick={() => void loadBibleBookSearchChapter(embeddedBibleSelectedBook, chapter)}
+                        disabled={embeddedBibleChapterLoading !== null}
                         className={`rounded-2xl border px-2 py-3 text-center text-sm font-black transition hover:-translate-y-0.5 hover:shadow-sm ${
                           isComplete
                             ? "border-[#b9dcf4] bg-[#eaf5ff] text-[#2f6685]"
@@ -2735,12 +2811,17 @@ export default function DashboardJourneyExperience({
                       >
                         <span className="block text-lg">{chapter}</span>
                         <span className="bb-text-muted mt-1 block text-[10px] font-bold">
-                          {isComplete ? "Done" : "Read"}
+                          {embeddedBibleChapterLoading === `${embeddedBibleSelectedBook}:${chapter}` ? "Loading" : isComplete ? "Done" : "Load"}
                         </span>
                       </button>
                     );
                   })}
                 </div>
+                {embeddedBibleSearchMessage ? (
+                  <p className="mt-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
+                    {embeddedBibleSearchMessage}
+                  </p>
+                ) : null}
               </div>
             ) : (
               <div className="mt-5">
@@ -2852,7 +2933,9 @@ export default function DashboardJourneyExperience({
   const renderEmbeddedBibleStudiesPage = () => (
     <section className="w-full px-1">
       <div className="mx-auto max-w-xl overflow-hidden rounded-[28px]">
-        {embeddedBibleStudyId ? (
+        {embeddedBibleBookSearchOpen ? (
+          renderEmbeddedBiblePage()
+        ) : embeddedBibleStudyId ? (
           <BibleStudyDetailPage
             devotionalIdOverride={embeddedBibleStudyId}
             embedded
@@ -2862,7 +2945,30 @@ export default function DashboardJourneyExperience({
             }}
           />
         ) : (
-          <BibleStudiesLibraryPage embedded onStudySelect={setEmbeddedBibleStudyId} />
+          <>
+            <div className="mb-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+              <div className="flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Studies</p>
+                  <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">Find a chapter by book</h2>
+                  <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                    Search the Bible, pick a chapter, and load it into your study dashboard.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmbeddedBibleBookSearchOpen(true);
+                    setEmbeddedBibleSearchMessage(null);
+                  }}
+                  className="shrink-0 rounded-full bg-[var(--bb-button,#2f7fe8)] px-4 py-3 text-xs font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+                >
+                  Search by Bible book
+                </button>
+              </div>
+            </div>
+            <BibleStudiesLibraryPage embedded onStudySelect={setEmbeddedBibleStudyId} />
+          </>
         )}
       </div>
     </section>
@@ -2953,31 +3059,115 @@ export default function DashboardJourneyExperience({
     </section>
   );
 
-  const renderEmbeddedGamesPage = () => (
-    <section className="w-full px-1">
-      <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-        <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Play</p>
-          <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">Bible Games</h2>
-          <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
-            Practice what you are learning with quick games.
-          </p>
-          <div className="mt-5 grid gap-3">
-            {[
-              ["Bible Trivia", "Test chapter knowledge and Bible memory.", "/bible-trivia"],
-              ["Scrambled", "Unscramble words from Scripture.", "/bible-study-games/scrambled"],
-              ["Game Hub", "Browse all Bible study games.", "/bible-study-games"],
-            ].map(([title, subtitle, href]) => (
-              <Link key={title} href={href} className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-4 py-4 transition hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm">
-                <p className="text-base font-black text-gray-950">{title}</p>
-                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">{subtitle}</p>
-              </Link>
-            ))}
-          </div>
+  const renderEmbeddedGamesPage = () => {
+    const triviaTask = visibleTasks.find((task) => task.kind === "trivia") ?? null;
+    const scrambledTask = visibleTasks.find((task) => task.kind === "scrambled") ?? null;
+    const gameCards = [
+      {
+        key: "trivia" as const,
+        eyebrow: "Task 4",
+        title: "Bible Trivia",
+        subtitle: "Answer chapter questions and see what is sticking.",
+        stat: "5 quick questions",
+        href: triviaTask?.href || "/bible-trivia",
+        button: triviaTask ? `Play ${triviaTask.chapterLabel || "Today's"} Trivia` : "Browse Trivia",
+        icon: "🧠",
+      },
+      {
+        key: "scrambled" as const,
+        eyebrow: "Task 5",
+        title: "Scrambled",
+        subtitle: "Unscramble Bible words so the chapter stays in your memory.",
+        stat: "5 Scripture words",
+        href: scrambledTask?.href || "/bible-study-games/scrambled",
+        button: scrambledTask ? `Play ${scrambledTask.chapterLabel || "Today's"} Scrambled` : "Browse Scrambled",
+        icon: "🔤",
+      },
+    ];
+    const selectedGame = gameCards.find((game) => game.key === embeddedGameView) ?? null;
+
+    return (
+      <section className="w-full px-1">
+        <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+          {!selectedGame ? (
+            <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Play</p>
+              <h2 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Games</h2>
+              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                Practice today&apos;s chapter with games that fit the Bible Study flow.
+              </p>
+              <div className="mt-5 grid gap-3">
+                {gameCards.map((game) => (
+                  <button
+                    key={game.key}
+                    type="button"
+                    onClick={() => setEmbeddedGameView(game.key)}
+                    className="group w-full rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4 text-left transition hover:border-[var(--bb-accent,#7BAFD4)] hover:bg-[var(--bb-card,#ffffff)] hover:shadow-sm"
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[var(--bb-accent-soft,#eaf5ff)] text-2xl transition group-hover:scale-105" aria-hidden="true">
+                        {game.icon}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-[11px] font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">{game.eyebrow}</span>
+                        <span className="mt-1 block text-lg font-black text-[var(--bb-text-primary,#111827)]">{game.title}</span>
+                        <span className="mt-1 block text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{game.subtitle}</span>
+                      </span>
+                      <span className="shrink-0 rounded-full bg-[var(--bb-card,#ffffff)] px-3 py-1 text-xs font-black text-[var(--bb-text-muted,#6b7280)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]">
+                        {game.stat}
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="animate-fade-in-up rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+              <div className="flex items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Game</p>
+                  <h2 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">{selectedGame.title}</h2>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{selectedGame.subtitle}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setEmbeddedGameView(null)}
+                  className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-xl font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-card,#ffffff)] hover:text-[var(--bb-text-primary,#111827)]"
+                  aria-label="Close game view"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="mt-5 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+                <div className="flex items-center gap-3">
+                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-[var(--bb-accent-soft,#eaf5ff)] text-3xl" aria-hidden="true">{selectedGame.icon}</span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{selectedGame.stat}</p>
+                    <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                      {embeddedGameView === "trivia"
+                        ? "Use this after reading and notes to check your chapter understanding."
+                        : "Use this after trivia to slow down and remember key Bible words."}
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 grid gap-2">
+                  <Link href={selectedGame.href} className="rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-4 py-3 text-center text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95">
+                    {selectedGame.button}
+                  </Link>
+                  <Link
+                    href={embeddedGameView === "trivia" ? "/bible-trivia/books" : "/bible-study-games/scrambled/books"}
+                    className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                  >
+                    Choose A Book
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  };
 
   const renderCurrentStudyHeader = () => {
     return (
@@ -4117,26 +4307,22 @@ export default function DashboardJourneyExperience({
         </div>
 
         <div className={getSlideClass(2)}>
-          {renderEmbeddedBiblePage()}
-        </div>
-
-        <div className={getSlideClass(3)}>
           {renderEmbeddedBibleStudiesPage()}
         </div>
 
-        <div className={getSlideClass(4)}>
+        <div className={getSlideClass(3)}>
           {renderEmbeddedCommunityPage()}
         </div>
 
-        <div className={getSlideClass(5)}>
+        <div className={getSlideClass(4)}>
           {renderEmbeddedTvPage()}
         </div>
 
-        <div className={getSlideClass(6)}>
+        <div className={getSlideClass(5)}>
           {renderEmbeddedGamesPage()}
         </div>
 
-        <div className={getSlideClass(7)}>
+        <div className={getSlideClass(6)}>
           {renderEmbeddedSharePage()}
         </div>
 

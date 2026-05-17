@@ -1251,8 +1251,8 @@ function GroupCommentSection({
   function renderCommentRow(comment: GroupFeedComment, depth = 0) {
     const name = comment.display_name || "Buddy";
     const isTargetComment = targetCommentId === comment.id;
-    // Cap visual indent at 1 level so deep threads stay readable on mobile
-    const indentClass = depth > 0 ? "ml-8 mt-3 pl-4 border-l border-[var(--bb-card-border,#e8ddd0)]" : "mt-3";
+    // Keep replies readable like a social feed: one slim thread cue, no endless staircase.
+    const indentClass = depth > 0 ? "mt-3 border-l border-[var(--bb-card-border,#e8ddd0)] pl-2 sm:pl-3" : "mt-3";
     return (
       <div
         key={comment.id}
@@ -1261,9 +1261,9 @@ function GroupCommentSection({
       >
         <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
           {comment.profile_image_url ? (
-            <img src={comment.profile_image_url} alt={name} className="w-7 h-7 rounded-full object-cover" />
+            <img src={comment.profile_image_url} alt={name} className={`${depth > 0 ? "h-6 w-6" : "h-7 w-7"} rounded-full object-cover`} />
           ) : (
-            <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-bold" style={{ backgroundColor: avatarColor(comment.user_id) }}>
+            <div className={`${depth > 0 ? "h-6 w-6" : "h-7 w-7"} rounded-full flex items-center justify-center text-white text-[10px] font-bold`} style={{ backgroundColor: avatarColor(comment.user_id) }}>
               {getInitial(name)}
             </div>
           )}

@@ -2091,7 +2091,9 @@ export default function DashboardPage() {
               style={{ background: `${item.accent}22`, color: item.accent }}
               aria-hidden="true"
             >
-              {item.kind === "buddy" && item.comingSoon ? (
+              {item.id === "buddy-lil-louis" ? (
+                <img src="/Newlouiswave.png" alt="Lil Louis waving" className="h-12 w-12 rounded-2xl object-cover" />
+              ) : item.kind === "buddy" && item.comingSoon ? (
                 <span className="grid h-9 w-9 place-items-center rounded-full bg-slate-200 text-slate-500">?</span>
               ) : item.flameId ? (
                 <AnimatedFlame flameId={item.flameId} size={34} />

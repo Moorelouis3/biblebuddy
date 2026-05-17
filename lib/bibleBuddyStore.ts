@@ -11,6 +11,7 @@ export type BibleBuddyStoreItem = {
   price: number;
   emoji: string;
   accent: string;
+  imageSrc?: string;
   themeId?: AppThemeId;
   flameId?: FlameCosmeticId;
   comingSoon?: boolean;

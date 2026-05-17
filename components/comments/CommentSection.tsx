@@ -628,14 +628,14 @@ export default function CommentSection({
           <div
             key={c.id}
             id={`comment-${c.id}`}
-            className={`${depth === 0 ? "mt-4" : "ml-6 mt-3 pl-3 border-l border-[#e8ddd0]"} flex gap-3 transition-all`}
+            className={`${depth === 0 ? "mt-4" : "mt-3 border-l border-[var(--bb-card-border,#e8ddd0)] pl-2 sm:pl-3"} flex gap-2 transition-all sm:gap-3`}
           >
             <Link href={`/profile/${c.user_id}`} className="mt-0.5 flex-shrink-0">
               {c.profile_image_url ? (
-                <img src={c.profile_image_url} alt={c.user_name} className="h-8 w-8 rounded-full object-cover transition hover:opacity-80" />
+                <img src={c.profile_image_url} alt={c.user_name} className="h-7 w-7 rounded-full object-cover transition hover:opacity-80 sm:h-8 sm:w-8" />
               ) : (
                 <div
-                  className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white transition hover:opacity-80"
+                  className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white transition hover:opacity-80 sm:h-8 sm:w-8 sm:text-sm"
                   style={{ backgroundColor: avatarColor(c.user_id) }}
                 >
                   {c.user_name.charAt(0).toUpperCase()}
@@ -645,13 +645,13 @@ export default function CommentSection({
             <div className="min-w-0 flex-1">
               <div
                 className={`rounded-2xl border px-3 py-2.5 ${
-                  variant === "plain" ? "border-gray-200 bg-white" : "border-[#efe5d9] bg-[#faf7f2]"
+                  variant === "plain" ? "border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)]" : "border-[var(--bb-card-border,#efe5d9)] bg-[var(--bb-surface-soft,#faf7f2)]"
                 }`}
               >
                 <div className="flex items-start gap-2">
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <Link href={`/profile/${c.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
+                      <Link href={`/profile/${c.user_id}`} className="text-xs font-semibold text-[var(--bb-text-primary,#1f2937)] hover:underline">
                         {c.user_name}
                       </Link>
                       <StreakFlameBadge currentStreak={c.current_streak} />
@@ -696,7 +696,7 @@ export default function CommentSection({
                       <MentionText
                         text={c.content}
                         items={mentionItems}
-                        className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-gray-700"
+                        className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-[var(--bb-text-secondary,#374151)]"
                       />
                     )}
                   </div>

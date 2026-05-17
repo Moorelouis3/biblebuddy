@@ -967,14 +967,14 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
     return (
       <div
         ref={commentRowRef}
-        className={`flex gap-2 ${indent ? "ml-6 mt-3 pl-3 border-l border-[#e8ddd0]" : "mt-2"} ${isHighlightComment ? "rounded-xl ring-2 ring-green-300 p-1 -mx-1" : ""}`}
+        className={`flex gap-2 ${indent ? "mt-3 border-l border-[var(--bb-card-border,#e8ddd0)] pl-2 sm:pl-3" : "mt-2"} ${isHighlightComment ? "rounded-xl ring-2 ring-green-300 p-1 -mx-1" : ""}`}
       >
         <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
-          <Avatar userId={comment.user_id} displayName={name} imageUrl={comment.profile_image_url} size={6} />
+          <Avatar userId={comment.user_id} displayName={name} imageUrl={comment.profile_image_url} size={indent ? 5 : 6} />
         </Link>
         <div className="flex-1 min-w-0">
-          <div className={`rounded-xl px-3 py-2 ${isHighlightComment ? "bg-green-50 border border-green-200" : "bg-gray-50"}`}>
-            <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
+          <div className={`rounded-xl px-3 py-2 ${isHighlightComment ? "border border-[var(--bb-accent,#4a9b6f)] bg-[var(--bb-accent-soft,#ecfdf3)]" : "bg-[var(--bb-surface-soft,#f9fafb)]"}`}>
+            <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-[var(--bb-text-primary,#1f2937)] hover:underline">
               {name}
             </Link>
             {editingCommentId === comment.id ? (
@@ -1007,7 +1007,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
                 </div>
               </div>
             ) : (
-              <p className="text-xs text-gray-700 mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
+              <p className="text-xs text-[var(--bb-text-secondary,#374151)] mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
             )}
           </div>
           <div className="flex items-center gap-3 mt-0.5 px-1">
