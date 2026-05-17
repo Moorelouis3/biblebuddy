@@ -71,13 +71,12 @@ const ZORIAN_USER_ID = "6ffe9dd2-884b-4a6b-8096-e9418dd56232";
 const ZORIAN_RESTORATION_ACTION_LABEL = "admin_bonus_points:1000:zorian-login-restoration-may-2026";
 const ZORIAN_RESTORATION_POPUP_KEY = "bb:bonus-popup:zorian-login-restoration-1000:v1";
 const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
-const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 4 * 60 * 60 * 1000;
+const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 60 * 60 * 1000;
 const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
 const MAX_BADGE_POPUPS_PER_SESSION = 3;
 const MYSTERY_PRIZE_REWARDS = [100, 125, 150, 175, 200, 250];
 const DAILY_LOGIN_GIFT_WINDOW_MS = 24 * 60 * 60 * 1000;
 const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
-const STORE_PROMO_SEEN_STORAGE_KEY = "bb:store-promo-seen";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -161,6 +160,7 @@ type DailyLoginGiftReveal = {
 };
 
 type StorePromoKind = "buddies" | "diamonds";
+type DailyPopupStep = "streak" | "mystery" | "store_buddies" | "bible_tip" | "store_diamonds";
 
 type DashboardLouisNudge = {
   id: string;
@@ -1004,6 +1004,23 @@ export default function DashboardPage() {
 
   function getDailyLoginGiftShownKey(currentUserId: string, dayKey: string) {
     return `bb:daily-login-gift:shown:${currentUserId}:${dayKey}`;
+  }
+
+  function getDailyPopupStepKey(currentUserId: string, dayKey: string) {
+    return `bb:daily-popup-step:${currentUserId}:${dayKey}`;
+  }
+
+  function getDailyPopupLastShownKey(currentUserId: string, dayKey: string) {
+    return `bb:daily-popup-last-shown:${currentUserId}:${dayKey}`;
+  }
+
+  function getDailyPopupSessionKey(currentUserId: string, dayKey: string) {
+    return `bb:daily-popup-session:${currentUserId}:${dayKey}`;
+  }
+
+  function getDailyPopupStep(index: number): DailyPopupStep {
+    const steps: DailyPopupStep[] = ["streak", "mystery", "store_buddies", "bible_tip", "store_diamonds"];
+    return steps[Math.abs(index) % steps.length];
   }
 
   function getDashboardLouisNudgeRotationKey(currentUserId: string, dayKey: string) {
@@ -2635,6 +2652,7 @@ export default function DashboardPage() {
     showZorianRestorationModal ||
     Boolean(selectedDashboardTask) ||
     Boolean(activeTourKey) ||
+    Boolean(activeStorePromo) ||
     pendingDailyStreakSequence ||
     pendingDailyTaskCelebrationModal;
 
@@ -2953,15 +2971,6 @@ export default function DashboardPage() {
   const openDiamondStore = useCallback(() => {
     setShowDiamondStore(true);
     setStoreMessage(null);
-    if (typeof window !== "undefined") {
-      const todayKey = getBibleBuddyLocalDayKey();
-      const seenKey = `${STORE_PROMO_SEEN_STORAGE_KEY}:${todayKey}`;
-      if (window.localStorage.getItem(seenKey) !== "1") {
-        const promoKind: StorePromoKind = Math.abs(todayKey.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0)) % 2 === 0 ? "buddies" : "diamonds";
-        setActiveStorePromo(promoKind);
-        window.localStorage.setItem(seenKey, "1");
-      }
-    }
     void loadStorePurchases();
   }, [loadStorePurchases]);
 
@@ -3298,7 +3307,7 @@ export default function DashboardPage() {
         const dailyGiftAlreadyShown =
           profileData?.daily_login_gift_last_shown_date === todayKey ||
           (typeof window !== "undefined" && window.localStorage.getItem(dailyGiftShownKey) === "1");
-        const shouldShowDailyLoginGift = hadRecentVisit && !dailyGiftAlreadyShown;
+        const shouldShowDailyLoginGift = false;
 
         if (typeof window !== "undefined") {
           window.localStorage.setItem(localLastVisitKey, nowIso);
@@ -3811,12 +3820,8 @@ export default function DashboardPage() {
       setPendingDailyStreakSequence(false);
       return;
     }
-    const today = getBibleBuddyLocalDayKey();
-    const lastShownKey = getDashboardLouisCheckInLastShownKey(userId);
-    const lastShownAt = Number(window.localStorage.getItem(lastShownKey) || "0");
-    const checkInReady = !lastShownAt || Date.now() - lastShownAt >= DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS;
     setShowVerseOfTheDayModal(false);
-    setPendingDailyStreakSequence(checkInReady);
+    setPendingDailyStreakSequence(true);
   }, [userId, profile]);
 
   useEffect(() => {
@@ -3858,6 +3863,7 @@ export default function DashboardPage() {
       showZorianRestorationModal ||
       Boolean(selectedDashboardTask) ||
       Boolean(activeTourKey) ||
+      Boolean(activeStorePromo) ||
       typeof window === "undefined"
     ) return;
     const cycleStartedAt = hasActiveLouisDailyTaskCycle(userId)
@@ -3872,14 +3878,12 @@ export default function DashboardPage() {
     const currentUserId = userId;
     const currentStreakForPopup = profile.current_streak ?? 0;
     const nowMs = Date.now();
-    const seenKey = getStreakMotivationSeenKey(userId, dayKey);
-    const dailySequenceSeenKey = getDashboardDailySequenceSeenKey(userId, dayKey);
-    const dailyStreakAlreadySeenLocally =
-      window.localStorage.getItem(seenKey) === "1" ||
-      window.localStorage.getItem(dailySequenceSeenKey) === "1";
-    const lastShownKey = getDashboardLouisCheckInLastShownKey(userId);
+    const stepKey = getDailyPopupStepKey(userId, dayKey);
+    const lastShownKey = getDailyPopupLastShownKey(userId, dayKey);
+    const stepIndex = Number(window.localStorage.getItem(stepKey) || "0");
+    const dailyPopupStep = getDailyPopupStep(stepIndex);
     const lastShownAt = Number(window.localStorage.getItem(lastShownKey) || "0");
-    if (dailyStreakAlreadySeenLocally && lastShownAt && nowMs - lastShownAt < DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS) {
+    if (stepIndex > 0 && lastShownAt && nowMs - lastShownAt < DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS) {
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       setPendingDailyStreakSequence(false);
       dailyStreakSequenceCheckRef.current = null;
@@ -3903,7 +3907,52 @@ export default function DashboardPage() {
       return;
     }
 
+    function markDailyPopupShown() {
+      window.localStorage.setItem(stepKey, String(stepIndex + 1));
+      window.localStorage.setItem(lastShownKey, String(Date.now()));
+      window.localStorage.setItem(getDashboardLouisCheckInLastShownKey(currentUserId), String(Date.now()));
+      setPendingDailyStreakSequence(false);
+      dailyStreakSequenceCheckRef.current = null;
+    }
+
+    function openNextDailyPopup() {
+      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+
+      if (dailyPopupStep === "mystery") {
+        const dailyGiftShownKey = getDailyLoginGiftShownKey(currentUserId, dayKey);
+        window.localStorage.setItem(dailyGiftShownKey, "1");
+        setDailyLoginGiftReveal({ status: "closed", reward: rollMysteryPrizeReward() });
+        markDailyPopupShown();
+        return true;
+      }
+
+      if (dailyPopupStep === "store_buddies" || dailyPopupStep === "store_diamonds") {
+        setActiveStorePromo(dailyPopupStep === "store_buddies" ? "buddies" : "diamonds");
+        markDailyPopupShown();
+        return true;
+      }
+
+      if (dailyPopupStep === "bible_tip") {
+        const tips = buildDashboardLouisNudgePool().filter(
+          (item) =>
+            item.action === "dismiss" &&
+            (item.category === "habit" || item.category === "bible_fact" || item.eyebrow.toLowerCase().includes("tip")),
+        );
+        const selectedTip = tips[Math.abs(stepIndex) % Math.max(tips.length, 1)] ?? pickDashboardLouisNudge(currentUserId, dayKey);
+        setStreakMotivationModalMode("checkin");
+        setShowStreakMotivationTaskPrompt(false);
+        setLouisDashboardNudge(selectedTip);
+        setShowStreakMotivationModal(true);
+        markDailyPopupShown();
+        return true;
+      }
+
+      return false;
+    }
+
     async function openDailyStreakPopupIfNeeded() {
+      if (dailyPopupStep !== "streak" && openNextDailyPopup()) return;
+
       const popupActionLabel = getDailyStreakPopupActionLabel(dayKey);
       const { data: existingPopup, error: existingPopupError } = await supabase
         .from("master_actions")
@@ -3964,14 +4013,12 @@ export default function DashboardPage() {
         }
         window.localStorage.setItem(streakPointsShownKey, "1");
       }
-      window.localStorage.setItem(seenKey, "1");
-      window.localStorage.setItem(dailySequenceSeenKey, "1");
-      window.localStorage.setItem(lastShownKey, String(Date.now()));
+      window.localStorage.setItem(getStreakMotivationSeenKey(currentUserId, dayKey), "1");
+      window.localStorage.setItem(getDashboardDailySequenceSeenKey(currentUserId, dayKey), "1");
       const countKey = getDashboardLouisCheckInCountKey(currentUserId, dayKey);
       const nextCount = Number(window.localStorage.getItem(countKey) || "0") + 1;
       window.localStorage.setItem(countKey, String(nextCount));
-      setPendingDailyStreakSequence(false);
-      dailyStreakSequenceCheckRef.current = null;
+      markDailyPopupShown();
     }
 
     void openDailyStreakPopupIfNeeded();
@@ -3982,6 +4029,7 @@ export default function DashboardPage() {
   }, [
     activeEarnedBadge,
     activeTourKey,
+    activeStorePromo,
     buddySelectionWelcome,
     dailyChecklistData,
     dailyLoginGiftReveal,
@@ -5338,7 +5386,7 @@ export default function DashboardPage() {
         </ModalShell>
 
       <LouisDailyTasksModal
-        open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal && !dailyLoginGiftReveal && !buddySelectionWelcome}
+        open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal && !dailyLoginGiftReveal && !buddySelectionWelcome && !activeStorePromo}
         onClose={() => {
           setShowLouisDailyTasksModal(false);
           void loadDailyTaskSummary({ force: true, silent: true });
