@@ -12,16 +12,6 @@ type Props = {
 
 export default function AnimatedFlame({ flameId, size = 42, className = "", title }: Props) {
   const flame = getFlameCosmetic(flameId);
-  const filterByFlame: Record<string, string> = {
-    default: "none",
-    orange: "none",
-    blue: "hue-rotate(176deg) saturate(1.12) brightness(1.18)",
-    gold: "hue-rotate(22deg) saturate(1.45) brightness(1.12)",
-    purple: "hue-rotate(215deg) saturate(1.75) brightness(1.02)",
-    red: "hue-rotate(342deg) saturate(1.35) brightness(1.02)",
-    green: "hue-rotate(92deg) saturate(1.65) brightness(1.05)",
-    black: "grayscale(1) contrast(1.45) brightness(0.72)",
-  };
 
   return (
     <span
@@ -32,13 +22,14 @@ export default function AnimatedFlame({ flameId, size = 42, className = "", titl
           "--bb-flame-light": flame.light,
           "--bb-flame-main": flame.main,
           "--bb-flame-dark": flame.dark,
-          "--bb-flame-filter": filterByFlame[flame.id] ?? "none",
         } as CSSProperties
       }
       aria-label={title || flame.name}
       title={title || flame.name}
     >
-      <span className="bb-animated-flame__shape" aria-hidden="true" />
+      <span className="bb-animated-flame__body" aria-hidden="true">
+        <span className="bb-animated-flame__core" />
+      </span>
     </span>
   );
 }
