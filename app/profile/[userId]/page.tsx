@@ -16,7 +16,7 @@ import { syncChaptersCount, shouldSyncChaptersCount } from "../../../lib/syncCha
 import { syncTriviaQuestionsCount, shouldSyncTriviaQuestionsCount } from "../../../lib/syncTriviaQuestionsCount";
 import { isBookComplete } from "../../../lib/readingProgress";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
-import { hasRequiredFullName } from "@/lib/profileName";
+import { buildFullName, hasRequiredFullName, splitFullName } from "@/lib/profileName";
 import UserBadge from "@/components/UserBadge";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { CUSTOM_MEMBER_BADGE_OPTIONS, normalizeCustomMemberBadge } from "@/lib/userBadges";
@@ -171,7 +171,8 @@ export default function PublicProfilePage() {
   const [actionLog, setActionLog] = useState<Array<{ date: string; text: string; sortKey: number; actionType: string; url?: string }>>([]);
   const [userGroups, setUserGroups] = useState<Array<{ id: string; name: string; cover_emoji: string | null; cover_color: string | null; member_count: number }>>([]);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [editDisplayName, setEditDisplayName] = useState("");
+  const [editFirstName, setEditFirstName] = useState("");
+  const [editLastName, setEditLastName] = useState("");
   const [editBio, setEditBio] = useState("");
   const [editLocation, setEditLocation] = useState("");
   const [editImagePreview, setEditImagePreview] = useState<string | null>(null);
@@ -726,7 +727,9 @@ export default function PublicProfilePage() {
   }
 
   function openEditModal() {
-    setEditDisplayName(stats?.display_name || stats?.username || "");
+    const nameParts = splitFullName(stats?.display_name || stats?.username || "");
+    setEditFirstName(nameParts.firstName);
+    setEditLastName(nameParts.lastName);
     setEditBio(stats?.bio || "");
     setEditLocation(stats?.location || "");
     setEditImagePreview(stats?.profile_image_url || null);
@@ -744,7 +747,8 @@ export default function PublicProfilePage() {
 
   async function handleSaveProfile() {
     if (!viewerUserId || viewerUserId !== profileUserId) return;
-    if (!hasRequiredFullName(editDisplayName)) {
+    const nextDisplayName = buildFullName(editFirstName, editLastName);
+    if (!hasRequiredFullName(nextDisplayName)) {
       setEditProfileError("Please add both your first and last name.");
       return;
     }
@@ -774,7 +778,8 @@ export default function PublicProfilePage() {
       const { error } = await supabase
         .from("profile_stats")
         .update({
-          display_name: editDisplayName.trim() || null,
+          display_name: nextDisplayName,
+          username: nextDisplayName,
           bio: editBio.trim() || null,
           location: editLocation.trim() || null,
           profile_image_url: imageUrl,
@@ -786,11 +791,22 @@ export default function PublicProfilePage() {
       } else {
         setStats((prev) => prev ? {
           ...prev,
-          display_name: editDisplayName.trim() || prev.display_name,
+          display_name: nextDisplayName,
+          username: nextDisplayName,
           bio: editBio.trim() || null,
           location: editLocation.trim() || null,
           profile_image_url: imageUrl,
         } : prev);
+        const { error: authNameError } = await supabase.auth.updateUser({
+          data: {
+            firstName: editFirstName.trim(),
+            first_name: editFirstName.trim(),
+            lastName: editLastName.trim(),
+            last_name: editLastName.trim(),
+            display_name: nextDisplayName,
+          },
+        });
+        if (authNameError) console.warn("[EDIT_PROFILE] Auth metadata name update failed:", authNameError.message);
         setShowEditModal(false);
       }
     } catch (err) {
@@ -1515,14 +1531,24 @@ export default function PublicProfilePage() {
                   <p className="text-xs text-gray-400">Tap the camera to change your photo</p>
                 </div>
 
-                {/* Display name */}
+                {/* Profile name */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
                   <input
                     type="text"
-                    value={editDisplayName}
-                    onChange={(e) => setEditDisplayName(e.target.value)}
-                    placeholder="First and last name"
+                    value={editFirstName}
+                    onChange={(e) => setEditFirstName(e.target.value)}
+                    placeholder="First name"
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                  <input
+                    type="text"
+                    value={editLastName}
+                    onChange={(e) => setEditLastName(e.target.value)}
+                    placeholder="Last name"
                     className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"
                   />
                   <p className="mt-1 text-xs text-gray-400">Use your first and last name so Buddies can recognize you.</p>

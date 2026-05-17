@@ -2099,7 +2099,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       setIsNotifOpen(!isNotifOpen);
                       if (!isNotifOpen && userId) fetchNotifications(userId);
                     }}
-                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
+                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-[var(--bb-surface-soft,#e5e7eb)] hover:opacity-85 text-[var(--bb-text-secondary,#374151)] transition-colors"
                     aria-label="Notifications"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2277,7 +2277,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     </svg>
                     {unreadMessageCount > 0 && (
                       <span
-                        className="absolute -top-1.5 -right-1.5 min-w-[1.1rem] h-[1.1rem] px-1 rounded-full border-2 border-white text-[10px] leading-none font-bold flex items-center justify-center text-white"
+                        className="absolute -top-1.5 -right-1.5 min-w-[1.1rem] h-[1.1rem] px-1 rounded-full border-2 border-[var(--bb-card,#ffffff)] text-[10px] leading-none font-bold flex items-center justify-center text-white"
                         style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
                         aria-label={`${unreadMessageCount} unread message${unreadMessageCount === 1 ? "" : "s"}`}
                       >
@@ -2287,14 +2287,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   </button>
 
                   {isMessagesOpen && (
-                    <div className="fixed top-16 left-4 right-4 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
-                      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-                        <span className="font-semibold text-sm text-gray-900">Messages</span>
+                    <div className="fixed top-16 left-4 right-4 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-80 bg-[var(--bb-card,#ffffff)] rounded-xl shadow-lg border border-[var(--bb-card-border,#e5e7eb)] z-50 overflow-hidden">
+                      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--bb-card-border,#e5e7eb)]">
+                        <span className="font-semibold text-sm text-[var(--bb-text-primary,#111827)]">Messages</span>
                         <Link
                           href="/messages"
                           onClick={() => setIsMessagesOpen(false)}
                           className="text-xs font-medium"
-                          style={{ color: "#4a9b6f" }}
+                          style={{ color: "var(--bb-accent)" }}
                         >
                           See all
                         </Link>
@@ -2302,14 +2302,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
                       <div className="max-h-80 overflow-y-auto">
                         {loadingPreviews ? (
-                          <p className="text-sm text-gray-400 text-center py-6">Loading...</p>
+                          <p className="text-sm text-[var(--bb-text-muted,#9ca3af)] text-center py-6">Loading...</p>
                         ) : conversationPreviews.length === 0 ? (
                           <div className="text-center py-8 px-4">
-                            <div className="mx-auto flex w-fit rounded-full bg-[#eef7f1] p-2 shadow-sm">
+                            <div className="mx-auto flex w-fit rounded-full bg-[var(--bb-accent-soft,#eef7f1)] p-2 shadow-sm">
                               <LouisAvatar mood="hands" size={48} />
                             </div>
-                            <p className="text-sm font-semibold text-gray-800 mt-3 mb-1">No messages yet</p>
-                            <p className="text-xs text-gray-500 leading-relaxed">
+                            <p className="text-sm font-semibold text-[var(--bb-text-primary,#1f2937)] mt-3 mb-1">No messages yet</p>
+                            <p className="text-xs text-[var(--bb-text-secondary,#6b7280)] leading-relaxed">
                               Add a few Buddies and Louis will help this inbox start feeling alive.
                             </p>
                           </div>
@@ -2326,8 +2326,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                             return (
                               <div key={convo.id}>
                                 {showBucketLabel && (
-                                  <div className="border-b border-gray-100 bg-gray-50 px-4 py-2">
-                                    <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                                  <div className="border-b border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#f3f4f6)] px-4 py-2">
+                                    <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--bb-text-secondary,#6b7280)]">
                                       {convo.bucket === "primary" ? "Primary" : "General"}
                                     </span>
                                   </div>
@@ -2358,7 +2358,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                       setOpenConversationId(convo.id);
                                     }
                                   }}
-                                  className={`w-full flex items-center gap-3 px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors text-left cursor-pointer ${convo.hasUnread ? "bg-green-50" : ""}`}
+                                  className={`w-full flex items-center gap-3 px-4 py-3 border-b border-[var(--bb-card-border,#e5e7eb)] hover:bg-[var(--bb-surface-soft,#f3f4f6)] transition-colors text-left cursor-pointer ${convo.hasUnread ? "bg-[var(--bb-accent-soft,#eef7f1)]" : ""}`}
                                 >
                                   <div className="flex-shrink-0">
                                     {convo.otherUserImage ? (
@@ -2379,16 +2379,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                             e.stopPropagation();
                                             setIsMessagesOpen(false);
                                           }}
-                                          className={`text-sm truncate hover:underline ${convo.hasUnread ? "font-bold text-gray-900" : "font-medium text-gray-800"}`}
+                                          className={`text-sm truncate hover:underline ${convo.hasUnread ? "font-bold text-[var(--bb-text-primary,#111827)]" : "font-medium text-[var(--bb-text-primary,#1f2937)]"}`}
                                         >
                                           {convo.otherUserName}
                                         </Link>
                                         <StreakFlameBadge currentStreak={convo.otherUserCurrentStreak} />
                                         <UserBadge customBadge={convo.otherUserBadge} isPaid={convo.otherUserIsPaid} />
                                       </div>
-                                      <span className="text-xs text-gray-400 flex-shrink-0">{formatMessageTime(convo.lastMessageAt)}</span>
+                                      <span className="text-xs text-[var(--bb-text-muted,#9ca3af)] flex-shrink-0">{formatMessageTime(convo.lastMessageAt)}</span>
                                     </div>
-                                    <p className={`text-xs truncate mt-0.5 ${convo.hasUnread ? "text-gray-800 font-medium" : "text-gray-400"}`}>
+                                    <p className={`text-xs truncate mt-0.5 ${convo.hasUnread ? "text-[var(--bb-text-primary,#1f2937)] font-medium" : "text-[var(--bb-text-muted,#9ca3af)]"}`}>
                                       {convo.lastMessagePreview || "No messages yet"}
                                     </p>
                                   </div>
@@ -2403,11 +2403,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                         )}
                       </div>
 
-                      <div className="border-t border-gray-100 px-4 py-2.5">
+                      <div className="border-t border-[var(--bb-card-border,#e5e7eb)] px-4 py-2.5">
                         <Link
                           href="/messages"
                           onClick={() => setIsMessagesOpen(false)}
-                          className="block text-center text-sm font-medium text-gray-600 hover:text-gray-900 transition"
+                          className="block text-center text-sm font-medium text-[var(--bb-text-secondary,#4b5563)] hover:text-[var(--bb-text-primary,#111827)] transition"
                         >
                           View all messages →
                         </Link>

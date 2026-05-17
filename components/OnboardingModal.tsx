@@ -6,6 +6,7 @@ import { supabase } from "../lib/supabaseClient";
 import { ensureLouisDailyTaskCycle, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { LouisAvatar } from "./LouisAvatar";
 import { BIBLE_GAME_BOOKS } from "../lib/bibleStudyGameCatalog";
+import { buildFullName, splitFullName } from "../lib/profileName";
 
 type OnboardingModalProps = {
   isOpen: boolean;
@@ -470,7 +471,8 @@ export function OnboardingModal({
   const [source, setSource] = useState<string | null>(null);
   const [experience, setExperience] = useState<string | null>(null);
   const [goal, setGoal] = useState<string | null>(null);
-  const [fullName, setFullName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<"monthly" | "yearly">("yearly");
@@ -584,7 +586,9 @@ export function OnboardingModal({
           optionFromStored(EXPERIENCE_OPTIONS, initialBibleExperienceLevel),
       );
       setGoal(goalFromStored(data?.onboarding_goal));
-      setFullName(data?.display_name?.trim() ?? "");
+      const nameParts = splitFullName(data?.display_name?.trim() ?? "");
+      setFirstName(nameParts.firstName);
+      setLastName(nameParts.lastName);
       setAvatarPreview(data?.profile_image_url?.trim() || null);
       setAvatarFile(null);
       isPaidRef.current = data?.is_paid === true;
@@ -647,7 +651,7 @@ export function OnboardingModal({
   }
 
   async function saveProfileAndContinue() {
-    const normalizedName = fullName.trim().replace(/\s+/g, " ");
+    const normalizedName = buildFullName(firstName, lastName);
 
     if (!normalizedName || normalizedName.split(" ").length < 2) {
       setError("Please enter your first and last name.");
@@ -670,8 +674,19 @@ export function OnboardingModal({
 
       await persistProfile({
         display_name: normalizedName,
+        username: normalizedName,
         ...(publicUrl ? { profile_image_url: publicUrl } : {}),
       });
+      const { error: authNameError } = await supabase.auth.updateUser({
+        data: {
+          firstName: firstName.trim(),
+          first_name: firstName.trim(),
+          lastName: lastName.trim(),
+          last_name: lastName.trim(),
+          display_name: normalizedName,
+        },
+      });
+      if (authNameError) throw authNameError;
       goToSlide(8);
     } catch (saveError: any) {
       setError(saveError?.message || "Could not save your profile.");
@@ -1020,11 +1035,20 @@ export function OnboardingModal({
         </Subtitle>
         <div className="mt-8 space-y-5">
           <label className="block text-left">
-            <span className="text-sm font-extrabold text-[#161f3b]">Full name</span>
+            <span className="text-sm font-extrabold text-[#161f3b]">First name</span>
             <input
-              value={fullName}
-              onChange={(event) => setFullName(event.target.value)}
-              placeholder="Enter your full name"
+              value={firstName}
+              onChange={(event) => setFirstName(event.target.value)}
+              placeholder="Enter your first name"
+              className="mt-2 w-full rounded-2xl border border-[#e2e7f0] bg-white px-4 py-4 text-sm font-semibold text-[#18213a] outline-none transition focus:border-[#2f80ed] focus:ring-4 focus:ring-[#d9eaff]"
+            />
+          </label>
+          <label className="block text-left">
+            <span className="text-sm font-extrabold text-[#161f3b]">Last name</span>
+            <input
+              value={lastName}
+              onChange={(event) => setLastName(event.target.value)}
+              placeholder="Enter your last name"
               className="mt-2 w-full rounded-2xl border border-[#e2e7f0] bg-white px-4 py-4 text-sm font-semibold text-[#18213a] outline-none transition focus:border-[#2f80ed] focus:ring-4 focus:ring-[#d9eaff]"
             />
           </label>
@@ -1348,7 +1372,8 @@ export function OnboardingModal({
     [
       avatarPreview,
       experience,
-      fullName,
+      firstName,
+      lastName,
       goal,
       isCheckingUpgrade,
       isSaving,

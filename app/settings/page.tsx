@@ -13,6 +13,7 @@ import {
 } from "../../lib/appThemes";
 import { STREAK_FLAME_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
 import { FLAME_COSMETICS, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
+import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
 
 function getPasswordResetRedirectUrl() {
   if (typeof window === "undefined") return "https://www.mybiblebuddy.net/reset-password";
@@ -36,7 +37,8 @@ export default function SettingsPage() {
   const [selectedFlame, setSelectedFlame] = useState<FlameCosmeticId>("default");
   
   // Profile fields
-  const [displayName, setDisplayName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   
   // Reset password
@@ -59,13 +61,12 @@ export default function SettingsPage() {
       if (currentUser) {
         setUser(currentUser);
         const meta = currentUser.user_metadata || {};
-        setDisplayName(meta.firstName || meta.first_name || currentUser.email?.split("@")[0] || "");
         setEmail(currentUser.email || "");
 
         const [{ data: profile }, { data: purchases }] = await Promise.all([
           supabase
             .from("profile_stats")
-            .select("app_theme, selected_streak_flame")
+            .select("display_name, username, app_theme, selected_streak_flame")
             .eq("user_id", currentUser.id)
             .maybeSingle(),
           supabase
@@ -74,6 +75,15 @@ export default function SettingsPage() {
             .eq("user_id", currentUser.id),
         ]);
 
+        const nameParts = splitFullName(
+          profile?.display_name ||
+            meta.display_name ||
+            [meta.firstName || meta.first_name, meta.lastName || meta.last_name].filter(Boolean).join(" ") ||
+            profile?.username ||
+            "",
+        );
+        setFirstName(nameParts.firstName);
+        setLastName(nameParts.lastName);
         setSelectedTheme(normalizeAppThemeId(profile?.app_theme));
         setSelectedFlame(normalizeFlameCosmeticId(profile?.selected_streak_flame));
         setOwnedStoreItemIds((purchases || []).map((purchase: { item_id: string }) => purchase.item_id));
@@ -85,17 +95,38 @@ export default function SettingsPage() {
 
   async function handleSaveProfile() {
     if (!user) return;
+    const fullName = buildFullName(firstName, lastName);
+    if (!hasRequiredFullName(fullName)) {
+      alert("Please enter your first and last name.");
+      return;
+    }
     
     setSaving(true);
     try {
       const { error } = await supabase.auth.updateUser({
         data: {
-          firstName: displayName,
-          first_name: displayName,
+          firstName: firstName.trim(),
+          first_name: firstName.trim(),
+          lastName: lastName.trim(),
+          last_name: lastName.trim(),
+          display_name: fullName,
         },
       });
 
       if (error) throw error;
+
+      const { error: profileError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: user.id,
+            display_name: fullName,
+            username: fullName,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" },
+        );
+      if (profileError) throw profileError;
 
       // Update email if changed
       if (email !== user.email) {
@@ -355,14 +386,27 @@ export default function SettingsPage() {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Display Name
+                First Name
               </label>
               <input
                 type="text"
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Your name"
+                placeholder="Your first name"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Last Name
+              </label>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Your last name"
               />
             </div>
 

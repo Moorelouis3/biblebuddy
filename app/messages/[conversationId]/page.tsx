@@ -753,8 +753,8 @@ export default function ConversationPage({
   if (loading) {
     return (
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="h-[100dvh] w-screen bg-white px-6 py-16 text-center sm:mx-4 sm:h-auto sm:w-full sm:max-w-3xl sm:rounded-[28px] sm:shadow-2xl">
-          <p className="text-sm text-gray-400">Loading conversation...</p>
+        <div className="h-[100dvh] w-screen bg-[var(--bb-card,#ffffff)] px-6 py-16 text-center text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-auto sm:w-full sm:max-w-3xl sm:rounded-[28px] sm:shadow-2xl">
+          <p className="text-sm text-[var(--bb-text-muted,#9ca3af)]">Loading conversation...</p>
         </div>
       </ModalShell>
     );
@@ -763,10 +763,10 @@ export default function ConversationPage({
   if (notFound) {
     return (
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="h-[100dvh] w-screen bg-white px-6 py-12 text-center sm:mx-4 sm:h-auto sm:w-full sm:max-w-md sm:rounded-[28px] sm:shadow-2xl">
+        <div className="h-[100dvh] w-screen bg-[var(--bb-card,#ffffff)] px-6 py-12 text-center text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-auto sm:w-full sm:max-w-md sm:rounded-[28px] sm:shadow-2xl">
           <p className="mb-4 text-4xl">?</p>
-          <h1 className="mb-2 text-xl font-bold text-gray-900">Conversation not found</h1>
-          <Link href="/messages" className="text-sm text-blue-600 hover:underline">
+          <h1 className="mb-2 text-xl font-bold">Conversation not found</h1>
+          <Link href="/messages" className="text-sm font-semibold text-[var(--bb-accent,#2563eb)] hover:underline">
             Back to Messages
           </Link>
         </div>
@@ -795,12 +795,12 @@ export default function ConversationPage({
   return (
     <>
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="flex h-[100dvh] w-screen flex-col overflow-hidden bg-[#f5f5f5] sm:mx-4 sm:h-[84vh] sm:w-full sm:max-w-4xl sm:rounded-[32px] sm:border sm:border-gray-200 sm:shadow-2xl">
-          <div className="flex items-center gap-3 border-b border-gray-200 bg-white px-5 py-4">
+        <div className="flex h-[100dvh] w-screen flex-col overflow-hidden bg-[var(--bb-background,#f5f5f5)] text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-[84vh] sm:w-full sm:max-w-4xl sm:rounded-[32px] sm:border sm:border-[var(--bb-card-border,#e5e7eb)] sm:shadow-2xl">
+          <div className="flex items-center gap-3 border-b border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-5 py-4">
             <button
               type="button"
               onClick={() => onExternalClose ? onExternalClose() : router.back()}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#f3f4f6)] text-[var(--bb-text-secondary,#4b5563)] transition hover:opacity-85"
               aria-label="Close conversation"
             >
               x
@@ -808,7 +808,7 @@ export default function ConversationPage({
 
             <Link
               href={`/profile/${otherUser?.user_id}`}
-              className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl px-1 py-1 transition hover:bg-gray-50"
+              className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl px-1 py-1 transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
             >
               {otherUser?.profile_image_url ? (
                 <img
@@ -826,11 +826,11 @@ export default function ConversationPage({
               )}
               <div className="min-w-0">
                 <div className="flex min-w-0 items-center gap-2">
-                  <p className="truncate text-lg font-semibold text-gray-900">{otherDisplay}</p>
+                  <p className="truncate text-lg font-semibold text-[var(--bb-text-primary,#111827)]">{otherDisplay}</p>
                   <StreakFlameBadge currentStreak={otherUser?.current_streak} />
                   <UserBadge customBadge={otherUser?.member_badge} isPaid={otherUser?.is_paid === true} />
                 </div>
-                <p className="truncate text-sm text-gray-500">
+                <p className="truncate text-sm text-[var(--bb-text-secondary,#6b7280)]">
                   {otherUser?.username ? `@${otherUser.username} · ` : ""}
                   {formatHeaderStatus(otherUser?.last_active_at)}
                 </p>
@@ -841,7 +841,7 @@ export default function ConversationPage({
               <button
                 type="button"
                 onClick={() => setMenuOpen((prev) => !prev)}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 transition hover:bg-gray-50"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-[var(--bb-text-primary,#374151)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
                 aria-label="Conversation options"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -852,11 +852,11 @@ export default function ConversationPage({
               </button>
 
               {menuOpen && otherUser && (
-                <div className="absolute right-0 top-14 z-20 w-64 overflow-hidden rounded-3xl border border-gray-200 bg-white p-2 shadow-2xl">
+                <div className="absolute right-0 top-14 z-20 w-64 overflow-hidden rounded-3xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-2 shadow-2xl">
                   <Link
                     href={`/profile/${otherUser.user_id}`}
                     onClick={() => setMenuOpen(false)}
-                    className="block rounded-2xl px-4 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-50"
+                    className="block rounded-2xl px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
                   >
                     View Buddy Profile
                   </Link>
@@ -871,7 +871,7 @@ export default function ConversationPage({
                   <button
                     type="button"
                     onClick={() => setShowReportModal(true)}
-                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-gray-900 transition hover:bg-gray-50"
+                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
                   >
                     Report {otherDisplay}
                   </button>
@@ -880,10 +880,10 @@ export default function ConversationPage({
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto bg-[#f5f5f5] px-5 py-5">
+          <div className="flex-1 overflow-y-auto bg-[var(--bb-background,#f5f5f5)] px-5 py-5">
             {messages.length === 0 && (
               <div className="py-16 text-center">
-                <p className="text-sm text-gray-400">No messages yet. Say hello!</p>
+                <p className="text-sm text-[var(--bb-text-muted,#9ca3af)]">No messages yet. Say hello!</p>
               </div>
             )}
 
@@ -937,18 +937,18 @@ export default function ConversationPage({
 
                     <div className={`flex min-w-0 flex-col gap-1 ${isMine ? "items-end" : "items-start"}`}>
                       {senderProfileHref ? (
-                        <Link href={senderProfileHref} className="px-1 text-xs font-semibold text-gray-700 hover:underline">
+                        <Link href={senderProfileHref} className="px-1 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)] hover:underline">
                           {senderName}
                         </Link>
                       ) : (
-                        <div className="px-1 text-xs font-semibold text-gray-700">{senderName}</div>
+                        <div className="px-1 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">{senderName}</div>
                       )}
 
                       <div
                         className={`rounded-[24px] border px-4 py-3 text-sm leading-relaxed shadow-sm ${
                           isMine
-                            ? "rounded-br-md border-[#d8eadf] bg-[#eef7f1] text-gray-900"
-                            : "rounded-bl-md border-gray-200 bg-white text-gray-900"
+                            ? "rounded-br-md border-[var(--bb-card-border,#d8eadf)] bg-[var(--bb-accent-soft,#eef7f1)] text-[var(--bb-text-primary,#111827)]"
+                            : "rounded-bl-md border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)]"
                         }`}
                       >
                         {isEditing ? (
@@ -959,13 +959,13 @@ export default function ConversationPage({
                               onChange={(e) => setEditingContent(e.target.value)}
                               onKeyDown={handleEditKeyDown}
                               rows={3}
-                              className="w-full resize-none rounded-2xl border border-gray-200 bg-white px-3 py-2 text-sm leading-relaxed text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                              className="w-full resize-none rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-sm leading-relaxed text-[var(--bb-text-primary,#111827)] placeholder-[var(--bb-text-muted,#9ca3af)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#d62828)]"
                             />
                             <div className="flex items-center justify-end gap-2">
                               <button
                                 type="button"
                                 onClick={cancelEditingMessage}
-                                className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700 transition hover:bg-gray-200"
+                                className="rounded-full bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-1 text-xs font-semibold text-[var(--bb-text-secondary,#374151)] transition hover:opacity-85"
                               >
                                 Cancel
                               </button>
@@ -973,7 +973,7 @@ export default function ConversationPage({
                                 type="button"
                                 onClick={() => void handleSaveEdit()}
                                 disabled={!editingContent.trim() || savingEdit}
-                                className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#2f6f4f] transition hover:bg-white/90 disabled:opacity-50"
+                                className="rounded-full bg-[var(--bb-card,#ffffff)] px-3 py-1 text-xs font-semibold text-[var(--bb-accent,#2f6f4f)] transition hover:opacity-90 disabled:opacity-50"
                               >
                                 {savingEdit ? "Saving..." : "Save"}
                               </button>
@@ -1022,7 +1022,7 @@ export default function ConversationPage({
                                           key={`${action.label}-${action.href}-${index}`}
                                           type="button"
                                           onClick={() => handleActionNavigation(action.href)}
-                                          className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
+                                          className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d8eadf)] bg-[var(--bb-accent-soft,#eef7f1)] px-4 py-2 text-sm font-semibold text-[var(--bb-accent,#2f6f4f)] transition hover:opacity-85"
                                         >
                                           {action.label}
                                         </button>
@@ -1040,7 +1040,7 @@ export default function ConversationPage({
                                             key={`${action.label}-${action.href}-${index}`}
                                             type="button"
                                             onClick={() => handleActionNavigation(action.href)}
-                                            className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
+                                            className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d8eadf)] bg-[var(--bb-accent-soft,#eef7f1)] px-4 py-2 text-sm font-semibold text-[var(--bb-accent,#2f6f4f)] transition hover:opacity-85"
                                           >
                                             {action.label}
                                           </button>
@@ -1054,7 +1054,7 @@ export default function ConversationPage({
                                             key={`msg-link:${msg.id}:${lineIndex}:${segmentIndex}`}
                                             type="button"
                                             onClick={() => handleActionNavigation(segment.href)}
-                                            className="font-semibold text-[#8d5d38] underline underline-offset-2"
+                                            className="font-semibold text-[var(--bb-accent,#8d5d38)] underline underline-offset-2"
                                           >
                                             {segment.label}
                                           </button>
@@ -1079,7 +1079,7 @@ export default function ConversationPage({
                                     key={`${action.label}-${action.href}-${index}`}
                                     type="button"
                                     onClick={() => handleActionNavigation(action.href)}
-                                    className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
+                                    className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d8eadf)] bg-[var(--bb-accent-soft,#eef7f1)] px-4 py-2 text-sm font-semibold text-[var(--bb-accent,#2f6f4f)] transition hover:opacity-85"
                                   >
                                     {action.label}
                                   </button>
@@ -1090,18 +1090,18 @@ export default function ConversationPage({
                         )}
                       </div>
 
-                      <div className={`flex items-center gap-2 px-1 text-[11px] text-gray-400 ${isMine ? "justify-end" : "justify-start"}`}>
+                      <div className={`flex items-center gap-2 px-1 text-[11px] text-[var(--bb-text-muted,#9ca3af)] ${isMine ? "justify-end" : "justify-start"}`}>
                         <span>{formatMsgTime(msg.created_at)}</span>
                         {canEdit && !isEditing && (
                           <button
                             type="button"
                             onClick={() => startEditingMessage(msg)}
-                            className="font-medium text-gray-500 transition hover:text-gray-800"
+                            className="font-medium text-[var(--bb-text-secondary,#6b7280)] transition hover:text-[var(--bb-text-primary,#1f2937)]"
                           >
                             Edit
                           </button>
                         )}
-                        {isMine && isSeen && <span className="font-medium text-[#83e2a7]">Seen</span>}
+                        {isMine && isSeen && <span className="font-medium text-[var(--bb-accent,#4a9b6f)]">Seen</span>}
                       </div>
                     </div>
                   </div>
@@ -1112,7 +1112,7 @@ export default function ConversationPage({
             <div ref={bottomRef} />
           </div>
 
-          <div className="border-t border-gray-200 bg-white px-5 py-4">
+          <div className="border-t border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-5 py-4">
             {composerNotice ? (
                 <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
                 {composerNotice}
@@ -1123,7 +1123,7 @@ export default function ConversationPage({
                 {photoPreview && (
                   <div className="mb-3 flex items-start gap-3">
                     <div className="relative">
-                      <img src={photoPreview.url} alt="Photo preview" className="h-24 w-24 rounded-2xl object-cover border border-gray-200" />
+                      <img src={photoPreview.url} alt="Photo preview" className="h-24 w-24 rounded-2xl object-cover border border-[var(--bb-card-border,#e5e7eb)]" />
                       <button
                         type="button"
                         onClick={() => { URL.revokeObjectURL(photoPreview.url); setPhotoPreview(null); }}
@@ -1148,7 +1148,7 @@ export default function ConversationPage({
                     type="button"
                     onClick={() => photoInputRef.current?.click()}
                     disabled={!!blockState}
-                    className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition hover:bg-gray-50 disabled:opacity-40"
+                    className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-[var(--bb-text-secondary,#6b7280)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] disabled:opacity-40"
                     title="Send photo"
                   >
                     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1162,22 +1162,22 @@ export default function ConversationPage({
                       onKeyDown={handleComposerKeyDown}
                       placeholder={`Message ${otherDisplay}`}
                       rows={1}
-                      className="max-h-36 w-full resize-none overflow-y-auto rounded-[24px] border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                      className="max-h-36 w-full resize-none overflow-y-auto rounded-[24px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] px-4 py-3 text-sm text-[var(--bb-text-primary,#111827)] placeholder-[var(--bb-text-muted,#9ca3af)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#d62828)]"
                       style={{ lineHeight: "1.5" }}
                     />
                   <button
                     type="button"
                     onClick={() => void handleSend()}
                     disabled={(!newMessage.trim() && !photoPreview) || sending || uploadingPhoto}
-                    className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-white transition disabled:opacity-40"
-                    style={{ backgroundColor: (newMessage.trim() || photoPreview) ? "#4a9b6f" : "#cbd5e1" }}
+                    className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-[var(--bb-button-text,#ffffff)] transition disabled:opacity-40"
+                    style={{ backgroundColor: (newMessage.trim() || photoPreview) ? "var(--bb-button)" : "var(--bb-progress-track)" }}
                   >
                     <svg className="h-5 w-5 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>
                   </button>
                 </div>
-                <p className="mt-2 text-center text-[10px] text-gray-400">Enter to send | Shift+Enter for new line</p>
+                <p className="mt-2 text-center text-[10px] text-[var(--bb-text-muted,#9ca3af)]">Enter to send | Shift+Enter for new line</p>
               </>
             )}
           </div>
@@ -1190,9 +1190,9 @@ export default function ConversationPage({
         backdropColor="bg-black/60"
         zIndex="z-[90]"
       >
-        <div className="mx-4 w-full max-w-md rounded-[28px] border border-gray-200 bg-white px-6 py-6 text-gray-900 shadow-2xl">
+        <div className="mx-4 w-full max-w-md rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-6 py-6 text-[var(--bb-text-primary,#111827)] shadow-2xl">
           <h2 className="text-xl font-bold">Report Buddy</h2>
-          <p className="mt-2 text-sm text-gray-500">Why are you reporting {otherDisplay}?</p>
+          <p className="mt-2 text-sm text-[var(--bb-text-secondary,#6b7280)]">Why are you reporting {otherDisplay}?</p>
 
           <div className="mt-5 space-y-2">
             {REPORT_REASONS.map((reason) => (
@@ -1200,8 +1200,8 @@ export default function ConversationPage({
                 key={reason}
                 className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm transition ${
                   reportReason === reason
-                    ? "border-[#4a9b6f] bg-[#eef7f1]"
-                    : "border-gray-200 bg-white hover:bg-gray-50"
+                    ? "border-[var(--bb-accent,#4a9b6f)] bg-[var(--bb-accent-soft,#eef7f1)]"
+                    : "border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
                 }`}
               >
                 <input
@@ -1209,7 +1209,7 @@ export default function ConversationPage({
                   name="buddy-report-reason"
                   checked={reportReason === reason}
                   onChange={() => setReportReason(reason)}
-                  className="h-4 w-4 accent-[#4a9b6f]"
+                  className="h-4 w-4 accent-[var(--bb-accent,#4a9b6f)]"
                 />
                 <span>{reason}</span>
               </label>
@@ -1223,7 +1223,7 @@ export default function ConversationPage({
                 setShowReportModal(false);
                 setReportReason("");
               }}
-              className="flex-1 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+              className="flex-1 rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-semibold text-[var(--bb-text-secondary,#374151)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
             >
               Cancel
             </button>
@@ -1231,7 +1231,7 @@ export default function ConversationPage({
               type="button"
               onClick={() => void handleSubmitReport()}
               disabled={!reportReason || submittingReport}
-              className="flex-1 rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+              className="flex-1 rounded-2xl bg-[var(--bb-button,#4a9b6f)] px-4 py-3 text-sm font-semibold text-[var(--bb-button-text,#ffffff)] transition hover:opacity-90 disabled:opacity-50"
             >
               {submittingReport ? "Submitting..." : "Submit Report"}
             </button>

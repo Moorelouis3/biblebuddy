@@ -258,16 +258,16 @@ export default function MessagesPage() {
 
   return (
     <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[70]">
-      <div className="h-[100dvh] w-screen overflow-hidden bg-[#fcfcfb] sm:mx-4 sm:h-auto sm:max-h-[calc(100dvh-2rem)] sm:w-full sm:max-w-2xl sm:rounded-[28px] sm:border sm:border-black/5 sm:shadow-2xl">
-        <div className="flex items-center justify-between border-b border-black/5 px-5 py-4">
+      <div className="h-[100dvh] w-screen overflow-hidden bg-[var(--bb-card,#fcfcfb)] text-[var(--bb-text-primary,#111827)] sm:mx-4 sm:h-auto sm:max-h-[calc(100dvh-2rem)] sm:w-full sm:max-w-2xl sm:rounded-[28px] sm:border sm:border-[var(--bb-card-border,#e5e7eb)] sm:shadow-2xl">
+        <div className="flex items-center justify-between border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4a9b6f]">Bible Buddy</p>
-            <h1 className="mt-1 text-2xl font-bold text-gray-900">Messages</h1>
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--bb-accent,#4a9b6f)]">Bible Buddy</p>
+            <h1 className="mt-1 text-2xl font-bold text-[var(--bb-text-primary,#111827)]">Messages</h1>
           </div>
           <button
             type="button"
             onClick={() => router.back()}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#f3f4f6)] text-[var(--bb-text-secondary,#6b7280)] transition hover:opacity-85"
             aria-label="Close messages"
           >
             ×
@@ -275,12 +275,12 @@ export default function MessagesPage() {
         </div>
 
         <div className="h-[calc(100dvh-5rem)] overflow-y-auto px-4 py-4 sm:h-auto sm:max-h-[78vh]">
-          <div className="mb-4 inline-flex rounded-2xl border border-black/5 bg-white p-1 shadow-sm">
+          <div className="mb-4 inline-flex rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] p-1 shadow-sm">
             <button
               type="button"
               onClick={() => setActiveTab("primary")}
               className={`rounded-2xl px-4 py-2 text-sm font-semibold transition ${
-                activeTab === "primary" ? "bg-[#4a9b6f] text-white" : "text-gray-500 hover:text-gray-800"
+                activeTab === "primary" ? "bg-[var(--bb-button,#4a9b6f)] text-[var(--bb-button-text,#ffffff)]" : "text-[var(--bb-text-secondary,#6b7280)] hover:text-[var(--bb-text-primary,#1f2937)]"
               }`}
             >
               Primary ({primaryConversations.length})
@@ -289,7 +289,7 @@ export default function MessagesPage() {
               type="button"
               onClick={() => setActiveTab("general")}
               className={`rounded-2xl px-4 py-2 text-sm font-semibold transition ${
-                activeTab === "general" ? "bg-[#4a9b6f] text-white" : "text-gray-500 hover:text-gray-800"
+                activeTab === "general" ? "bg-[var(--bb-button,#4a9b6f)] text-[var(--bb-button-text,#ffffff)]" : "text-[var(--bb-text-secondary,#6b7280)] hover:text-[var(--bb-text-primary,#1f2937)]"
               }`}
             >
               General ({generalConversations.length})
@@ -297,34 +297,34 @@ export default function MessagesPage() {
           </div>
 
           {loading ? (
-            <div className="py-12 text-center text-sm text-gray-400">Loading...</div>
+            <div className="py-12 text-center text-sm text-[var(--bb-text-muted,#9ca3af)]">Loading...</div>
           ) : conversations.length === 0 ? (
-            <div className="rounded-3xl border border-dashed border-gray-200 bg-white p-12 text-center">
+            <div className="rounded-3xl border border-dashed border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] p-12 text-center">
               <p className="mb-4 text-4xl">💬</p>
-              <h2 className="mb-2 text-xl font-bold text-gray-900">No messages yet</h2>
-              <p className="mb-6 text-sm text-gray-500">Add Buddies from their profile to start a conversation.</p>
+              <h2 className="mb-2 text-xl font-bold text-[var(--bb-text-primary,#111827)]">No messages yet</h2>
+              <p className="mb-6 text-sm text-[var(--bb-text-secondary,#6b7280)]">Add Buddies from their profile to start a conversation.</p>
               <Link
                 href="/study-groups"
-                className="inline-block rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition"
-                style={{ backgroundColor: "#4a9b6f" }}
+                className="inline-block rounded-xl px-5 py-2.5 text-sm font-semibold text-[var(--bb-button-text,#ffffff)] transition"
+                style={{ backgroundColor: "var(--bb-button)" }}
               >
                 Find People
               </Link>
             </div>
           ) : visibleConversations.length === 0 ? (
-            <div className="rounded-3xl border border-dashed border-gray-200 bg-white p-12 text-center">
+            <div className="rounded-3xl border border-dashed border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] p-12 text-center">
               <p className="mb-4 text-4xl">{activeTab === "primary" ? "📥" : "🗂️"}</p>
-              <h2 className="mb-2 text-xl font-bold text-gray-900">
+              <h2 className="mb-2 text-xl font-bold text-[var(--bb-text-primary,#111827)]">
                 No {activeTab === "primary" ? "primary" : "general"} messages
               </h2>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[var(--bb-text-secondary,#6b7280)]">
                 {activeTab === "primary"
                   ? "Threads move here once the other person replies back."
                   : "Outreach and onboarding threads stay here until somebody answers you."}
               </p>
             </div>
           ) : (
-            <div className="overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm">
+            <div className="overflow-hidden rounded-3xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-sm">
               {visibleConversations.map((convo, index) => {
                 const initials = convo.otherUserName
                   .split(" ")
@@ -345,9 +345,9 @@ export default function MessagesPage() {
                         router.push(`/messages/${convo.id}`);
                       }
                     }}
-                    className={`w-full cursor-pointer text-left transition-colors hover:bg-gray-50 ${
-                      convo.hasUnread ? "bg-green-50/70" : ""
-                    } ${index < visibleConversations.length - 1 ? "border-b border-gray-100" : ""}`}
+                    className={`w-full cursor-pointer text-left transition-colors hover:bg-[var(--bb-surface-soft,#f3f4f6)] ${
+                      convo.hasUnread ? "bg-[var(--bb-accent-soft,#eef7f1)]" : ""
+                    } ${index < visibleConversations.length - 1 ? "border-b border-[var(--bb-card-border,#e5e7eb)]" : ""}`}
                   >
                     <div className="flex items-center gap-4 px-5 py-4">
                       <div className="flex-shrink-0">
@@ -374,7 +374,7 @@ export default function MessagesPage() {
                               href={`/profile/${convo.otherUserId}`}
                               onClick={(event) => event.stopPropagation()}
                               className={`truncate text-sm hover:underline ${
-                                convo.hasUnread ? "font-bold text-gray-900" : "font-semibold text-gray-800"
+                                convo.hasUnread ? "font-bold text-[var(--bb-text-primary,#111827)]" : "font-semibold text-[var(--bb-text-primary,#1f2937)]"
                               }`}
                             >
                               {convo.otherUserName}
@@ -382,15 +382,15 @@ export default function MessagesPage() {
                             <StreakFlameBadge currentStreak={convo.otherUserCurrentStreak} />
                             <UserBadge customBadge={convo.otherUserBadge} isPaid={convo.otherUserIsPaid} />
                           </div>
-                          <span className="flex-shrink-0 text-xs text-gray-400">{formatTime(convo.lastMessageAt)}</span>
+                          <span className="flex-shrink-0 text-xs text-[var(--bb-text-muted,#9ca3af)]">{formatTime(convo.lastMessageAt)}</span>
                         </div>
-                        <p className={`truncate text-sm ${convo.hasUnread ? "font-medium text-gray-800" : "text-gray-400"}`}>
+                        <p className={`truncate text-sm ${convo.hasUnread ? "font-medium text-[var(--bb-text-primary,#1f2937)]" : "text-[var(--bb-text-muted,#9ca3af)]"}`}>
                           {convo.lastMessagePreview || "No messages yet"}
                         </p>
                       </div>
 
                       {convo.hasUnread && (
-                        <div className="h-3 w-3 flex-shrink-0 rounded-full" style={{ backgroundColor: "#4a9b6f" }} />
+                        <div className="h-3 w-3 flex-shrink-0 rounded-full bg-[var(--bb-accent,#4a9b6f)]" />
                       )}
                     </div>
                   </div>
