@@ -129,7 +129,8 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Fall of Man" ||
     title === "The Flood of Noah" ||
     title === "The Promise Through Isaac" ||
-    title === "The Wrestling of Jacob"
+    title === "The Wrestling of Jacob" ||
+    title === "The Deliverance of Moses"
   );
 }
 

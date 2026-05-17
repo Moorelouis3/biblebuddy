@@ -51,6 +51,8 @@ function renderCardBody(item: BibleStudiesSeriesListItem) {
                 objectPosition:
                   item.title === "The Testing of Joseph"
                     ? "center 30%"
+                    : item.title === "The Deliverance of Moses"
+                      ? "center 35%"
                     : item.title === "The Temptation of Jesus"
                       ? "center 42%"
                       : "center center",

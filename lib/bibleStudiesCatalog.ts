@@ -74,6 +74,15 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
       "A chapter-by-chapter Bible study through Genesis 37-50 with intro, reading, notes, trivia, Scrambled, and reflection all centered on Joseph's story.",
   },
   {
+    key: "deliverance_of_moses",
+    title: "The Deliverance of Moses",
+    subtitle: "Exodus 1-18",
+    totalWeeks: 18,
+    image: "/TheDeliveranceofMoses.png",
+    description:
+      "A chapter-by-chapter Bible study through Exodus 1-18 with intro, reading, notes, trivia, Scrambled, and reflection centered on Israel's slavery, Moses' calling, the plagues, Passover, the Red Sea, wilderness provision, and God raising a deliverer.",
+  },
+  {
     key: "rise_of_esther",
     title: "The Rise of Esther",
     subtitle: "Esther 1-10",

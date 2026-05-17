@@ -774,6 +774,7 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Rise of Esther") return "/theriseofester.png";
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
   if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
+  if (title === "The Deliverance of Moses") return "/TheDeliveranceofMoses.png";
   if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
   if (title === "The Heart of David") return "/heartofdaviddevotional.png";
   if (title === "The Faith of Job") return "/faithofjob.png";
@@ -792,6 +793,7 @@ function getDashboardStudySummary(title: string | null | undefined) {
   if (title === "The Rise of Esther") return "Esther 1-10: palace pressure, courage, providence, and reversal.";
   if (title === "The Courage of Daniel") return "Daniel 1-6: exile, courage, wisdom, prayer, pressure, and faith.";
   if (title === "The Testing of Joseph") return "Genesis 37-50: betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
+  if (title === "The Deliverance of Moses") return "Exodus 1-18: slavery, Moses' calling, plagues, Passover, the Red Sea, and wilderness provision.";
   if (title === "The Wisdom of Proverbs") return "Chapter-by-chapter wisdom for speech, choices, discipline, and daily life.";
   return "Guided Bible study with reading, notes, games, and reflection.";
 }

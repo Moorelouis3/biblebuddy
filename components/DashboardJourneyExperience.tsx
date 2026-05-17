@@ -112,6 +112,28 @@ const HIDDEN_STUDY_SWITCHER_TITLES = new Set([
   "Women of the Bible",
 ]);
 
+const STUDY_SWITCHER_ORDER = [
+  "The Creation of the World",
+  "The Fall of Man",
+  "The Flood of Noah",
+  "The Obedience of Abraham",
+  "The Promise Through Isaac",
+  "The Wrestling of Jacob",
+  "The Testing of Joseph",
+  "The Deliverance of Moses",
+  "The Calling of Moses",
+  "The Heart of David",
+  "The Rise of Esther",
+  "The Faith of Job",
+  "The Wisdom of Proverbs",
+  "The Courage of Daniel",
+  "The Transforming of Paul",
+];
+
+const STUDY_SWITCHER_ORDER_INDEX = new Map(
+  STUDY_SWITCHER_ORDER.map((title, index) => [title, index]),
+);
+
 function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Creation of the World") return "/creationoftheworld.png";
   if (title === "The Fall of Man") return "/thefallofman.png";
@@ -122,6 +144,7 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Rise of Esther") return "/theriseofester.png";
   if (title === "The Courage of Daniel") return "/thecourageofdaniel.png";
   if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
+  if (title === "The Deliverance of Moses") return "/TheDeliveranceofMoses.png";
   if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
   if (title === "The Heart of David") return "/heartofdaviddevotional.png";
   if (title === "The Faith of Job") return "/faithofjob.png";
@@ -140,6 +163,7 @@ function getDashboardStudySummary(title: string | null | undefined, totalDays: n
   if (title === "The Rise of Esther") return "Follow Esther 1-10 through palace pressure, hidden identity, courage, providence, and reversal.";
   if (title === "The Courage of Daniel") return "Study Daniel 1-6 through exile, courage, wisdom, prayer, pressure, and the lions' den.";
   if (title === "The Testing of Joseph") return "Walk Genesis 37-50 through betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
+  if (title === "The Deliverance of Moses") return "Walk Exodus 1-18 through Israel's slavery, Moses' calling, the plagues, Passover, the Red Sea, and God's provision in the wilderness.";
   if (title === "The Wisdom of Proverbs") return "Study Proverbs chapter by chapter for practical wisdom in speech, choices, discipline, and daily life.";
   return `${Math.max(1, totalDays || 1)} part Bible study designed to help you keep growing with structure and consistency.`;
 }
@@ -165,6 +189,16 @@ function getBibleJourneyHandoff(title: string | null | undefined) {
     };
   }
 
+  if (title === "The Flood of Noah") {
+    return {
+      nextTitle: "The Obedience of Abraham",
+      subtitle: "Genesis 11-25",
+      cover: "/TheobedienceofAbraham.png",
+      description:
+        "Next, Genesis 11-25 follows Abraham's call, waiting, covenant promises, family tension, testing, and the beginning of the covenant family.",
+    };
+  }
+
   if (title === "The Obedience of Abraham") {
     return {
       nextTitle: "The Promise Through Isaac",
@@ -182,6 +216,26 @@ function getBibleJourneyHandoff(title: string | null | undefined) {
       cover: "/TheWrestlingofJacob.png",
       description:
         "Next, Genesis 28-36 follows Jacob fleeing, meeting God at Bethel, facing Laban's deception, building a complicated family, wrestling with God, and becoming Israel.",
+    };
+  }
+
+  if (title === "The Wrestling of Jacob") {
+    return {
+      nextTitle: "The Testing of Joseph",
+      subtitle: "Genesis 37-50",
+      cover: "/TheTestingofJospehnewcover.png",
+      description:
+        "Next, Genesis 37-50 follows Joseph through betrayal, waiting, prison, wisdom, forgiveness, family restoration, and God's hidden providence.",
+    };
+  }
+
+  if (title === "The Testing of Joseph") {
+    return {
+      nextTitle: "The Deliverance of Moses",
+      subtitle: "Exodus 1-18",
+      cover: "/TheDeliveranceofMoses.png",
+      description:
+        "Next, Exodus 1-18 shows Israel in slavery, Moses being raised up, Pharaoh resisting God, the plagues, Passover, the Red Sea, and the first wilderness lessons after deliverance.",
     };
   }
 
@@ -1793,9 +1847,18 @@ export default function DashboardJourneyExperience({
         setDevotionalSettingsMessage("Louis could not load the Bible study list. Try again in a moment.");
         setDevotionalOptions([]);
       } else {
-        const options = ((data || []) as DevotionalOption[]).filter(
-          (option) => !HIDDEN_STUDY_SWITCHER_TITLES.has(option.title),
-        );
+        const options = ((data || []) as DevotionalOption[])
+          .filter((option) => !HIDDEN_STUDY_SWITCHER_TITLES.has(option.title))
+          .sort((a, b) => {
+            const aOrder = STUDY_SWITCHER_ORDER_INDEX.get(a.title);
+            const bOrder = STUDY_SWITCHER_ORDER_INDEX.get(b.title);
+
+            if (aOrder !== undefined || bOrder !== undefined) {
+              return (aOrder ?? Number.MAX_SAFE_INTEGER) - (bOrder ?? Number.MAX_SAFE_INTEGER);
+            }
+
+            return a.title.localeCompare(b.title);
+          });
         setDevotionalOptions(options);
         setSelectedDevotionalId(currentDevotionalId || options[0]?.id || "");
       }
