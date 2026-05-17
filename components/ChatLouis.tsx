@@ -2430,7 +2430,7 @@ export function ChatLouis() {
     ? "Type today or tomorrow..."
     : hasPendingDevotionalChallengePrompt || hasPendingDashboardDailyPrompt
       ? "Type yes or no..."
-      : "Talk to Lil' Lewis...";
+      : "Talk to Lil Louis...";
 
   function formatInboxMessage(row: LouisInboxMessageRow) {
     const actionLine =
@@ -3467,7 +3467,7 @@ export function ChatLouis() {
           className={`z-[70] rounded-full flex items-center justify-center transition-all duration-300 ${
             hasPendingLouisMoment ? "animate-[bounce_1.25s_ease-in-out_infinite]" : "scale-95"
           }`}
-          aria-label="Chat with Lil' Lewis"
+          aria-label="Chat with Lil Louis"
         >
           <div className={`relative ${bubbleOuterSize} rounded-full flex items-center justify-center`}>
             {hasPendingLouisMoment ? (
@@ -3506,7 +3506,7 @@ export function ChatLouis() {
             }}
           >
             <div className="flex items-center gap-2">
-              <span className="text-sm font-semibold text-gray-900">Chat with Lil' Lewis</span>
+              <span className="text-sm font-semibold text-gray-900">Chat with Lil Louis</span>
             </div>
             <button
               onClick={() => setIsOpen(false)}
@@ -3541,7 +3541,7 @@ export function ChatLouis() {
               >
                 <div className={m.role === "user" ? "max-w-[78%] text-right" : "max-w-[78%]"}>
                   <div className={m.role === "user" ? "mb-1 text-[10px] font-medium text-slate-500" : "mb-1 text-[10px] font-medium text-slate-500"}>
-                    {m.role === "user" ? "You" : "Lil' Lewis"}
+                    {m.role === "user" ? "You" : "Lil Louis"}
                   </div>
                   <div
                     className={
@@ -3577,12 +3577,12 @@ export function ChatLouis() {
             {isSending ? (
               <div className="flex items-end justify-start">
                 <div className="max-w-[78%]">
-                  <div className="mb-1 text-[10px] font-medium text-slate-500">Lil' Lewis</div>
+                  <div className="mb-1 text-[10px] font-medium text-slate-500">Lil Louis</div>
                   <div className="inline-flex items-center gap-1 rounded-[22px] rounded-bl-md border border-gray-200 bg-white px-3.5 py-3 text-gray-800 shadow-sm">
                     <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.2s]" />
                     <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.1s]" />
                     <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400" />
-                    <span className="ml-2 text-[11px] text-slate-500">Lil' Lewis is typing...</span>
+                    <span className="ml-2 text-[11px] text-slate-500">Lil Louis is typing...</span>
                   </div>
                 </div>
               </div>
@@ -3763,12 +3763,12 @@ export function ChatLouis() {
       {false && featureToursEnabled && (
         <FeatureTourModal
           isOpen={showChatTourModal}
-          title="Welcome to Chat with Louis"
+          title="Welcome to Chat with Lil Louis"
           body=""
           content={
             <div className="space-y-6">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-                Welcome to Chat with Louis
+                Welcome to Chat with Lil Louis
               </h1>
 
               <p className="text-sm md:text-[15px] text-gray-600 leading-7">
@@ -3778,7 +3778,7 @@ export function ChatLouis() {
               <section className="space-y-2">
                 <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ’¬ Ask Questions Anytime</h2>
                 <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-                  While reading Scripture, you can open Chat with Louis and ask:
+                  While reading Scripture, you can open Chat with Lil Louis and ask:
                 </p>
                 <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
                   <li>â€¢ What does this verse mean?</li>

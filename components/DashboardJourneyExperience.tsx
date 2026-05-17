@@ -1578,8 +1578,7 @@ export default function DashboardJourneyExperience({
 
       const nextHeight = Number(data.height);
       if (!Number.isFinite(nextHeight)) return;
-      const viewportLimit = Math.max(460, Math.min(window.innerHeight - 150, 720));
-      setEmbeddedCommunityHeight(Math.min(viewportLimit, Math.max(460, Math.ceil(nextHeight))));
+      setEmbeddedCommunityHeight(Math.max(620, Math.ceil(nextHeight)));
     }
 
     window.addEventListener("message", handleEmbeddedCommunityHeight);
@@ -2868,8 +2867,8 @@ export default function DashboardJourneyExperience({
               src={`/study-groups/${embeddedCommunityGroupId}/chat?embedded=dashboard&tab=home`}
               title="Bible Buddy Community"
               className="block w-full overflow-hidden border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
-              scrolling="auto"
-              style={{ height: embeddedCommunityHeight, minHeight: 460, maxHeight: "calc(100vh - 150px)" }}
+              scrolling="no"
+              style={{ height: embeddedCommunityHeight, minHeight: 620 }}
             />
           ) : (
             <div className="grid min-h-[520px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">

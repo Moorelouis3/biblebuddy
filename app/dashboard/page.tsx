@@ -1356,7 +1356,7 @@ export default function DashboardPage() {
       body: "Use this section to capture insights, organize your study thoughts, and keep track of what God is teaching you.",
     },
     chat_widget: {
-      title: "Welcome to Chat with Louis",
+      title: "Welcome to Chat with Lil Louis",
       body: "This chat lets you ask Bible questions instantly while you study so you can stay focused in your reading flow. Louis has been carefully trained for hours on biblical content and designed to search Scripture, filter out nonsense, and prioritize clear, Scripture-grounded answers. Itâ€™s like having a Bible study partner built directly into your reading experience.",
     },
     bible_study_hub: {

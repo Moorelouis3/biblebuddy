@@ -191,7 +191,6 @@ function DashboardInlineBibleReader({
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [picker, setPicker] = useState<{ verse: number; anchor: { x: number; y: number } } | null>(null);
   const [selectedTerm, setSelectedTerm] = useState<{ type: "people" | "places" | "keywords"; name: string } | null>(null);
-  const [termPopupTop, setTermPopupTop] = useState(120);
   const [termBurstKey, setTermBurstKey] = useState(0);
   const [termNotes, setTermNotes] = useState<string | null>(null);
   const [termNotesError, setTermNotesError] = useState<string | null>(null);
@@ -200,6 +199,7 @@ function DashboardInlineBibleReader({
   const [markingDone, setMarkingDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const readerRootRef = useRef<HTMLDivElement | null>(null);
+  const termReturnScrollYRef = useRef<number | null>(null);
   const bookDisplay = normalizeBibleBookDisplay(book);
 
   useEffect(() => {
@@ -318,11 +318,7 @@ function DashboardInlineBibleReader({
     const term = highlightElement.dataset.term;
     if (!type || !term) return;
 
-    const rootRect = readerRootRef.current?.getBoundingClientRect();
-    const targetRect = highlightElement.getBoundingClientRect();
-    if (rootRect) {
-      setTermPopupTop(Math.max(72, targetRect.top - rootRect.top - 38));
-    }
+    termReturnScrollYRef.current = window.scrollY;
     setTermBurstKey((current) => current + 1);
     setSelectedTerm({ type, name: resolveBibleReference(type, term) });
   }
@@ -363,6 +359,10 @@ function DashboardInlineBibleReader({
     setSelectedTerm(null);
     setTermNotes(null);
     setTermNotesError(null);
+    const returnScrollY = termReturnScrollYRef.current;
+    if (typeof returnScrollY === "number") {
+      window.requestAnimationFrame(() => window.scrollTo({ top: returnScrollY, behavior: "auto" }));
+    }
   }
 
   async function handleDone() {
@@ -394,6 +394,7 @@ function DashboardInlineBibleReader({
           animation: word-discovery-card 260ms cubic-bezier(0.16, 0.9, 0.22, 1) both;
         }
       `}</style>
+      {!selectedTerm ? (
       <div className="mb-4 flex justify-end">
         <div className="flex items-center gap-2">
           <label className="sr-only" htmlFor="dashboard-bible-translation">
@@ -413,20 +414,70 @@ function DashboardInlineBibleReader({
           </select>
         </div>
       </div>
+      ) : null}
 
-      {loading ? (
+      {selectedTerm ? (
+        <div className="relative min-h-[62vh] overflow-hidden rounded-[26px] bg-[var(--bb-card,#ffffff)] px-4 py-6 text-center text-[var(--bb-text-primary,#111827)]">
+          <div key={termBurstKey} className="word-discovery-smoke pointer-events-none absolute left-1/2 top-24 z-0" aria-hidden="true">
+            <span className="absolute h-14 w-14 rounded-full bg-slate-300/45 [--smoke-x:-84px] [--smoke-y:-22px]" />
+            <span className="absolute h-12 w-12 rounded-full bg-slate-200/50 [--smoke-x:72px] [--smoke-y:-32px]" />
+            <span className="absolute h-10 w-10 rounded-full bg-rose-100/70 [--smoke-x:-16px] [--smoke-y:42px]" />
+            <span className="absolute h-9 w-9 rounded-full bg-slate-300/35 [--smoke-x:96px] [--smoke-y:28px]" />
+            <span className="absolute h-8 w-8 rounded-full bg-white/80 [--smoke-x:-104px] [--smoke-y:34px]" />
+          </div>
+          <div className="word-discovery-card relative z-10 mx-auto flex min-h-[58vh] max-w-xl flex-col items-center justify-center">
+            <div className="mb-3 flex justify-center">
+              <LouisAvatar mood="think" size={104} />
+            </div>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">
+              {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
+            </p>
+            <h3 className="mt-1 text-4xl font-black leading-tight">{selectedTerm.name}</h3>
+            <div className="mt-5 max-h-[38vh] w-full overflow-y-auto rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-5 py-4">
+              {loadingTermNotes && !termNotes ? (
+                <div className="space-y-3 py-6">
+                  <div className="h-3 rounded-full bg-white/80" />
+                  <div className="h-3 w-5/6 rounded-full bg-white/80" />
+                  <div className="h-3 w-2/3 rounded-full bg-white/80" />
+                </div>
+              ) : termNotes ? (
+                <ReactMarkdown
+                  components={{
+                    h1: ({ ...props }) => <h1 className="mb-3 mt-5 text-xl font-black text-left" {...props} />,
+                    p: ({ ...props }) => <p className="mb-4 text-left text-base font-medium leading-7" {...props} />,
+                    strong: ({ ...props }) => <strong className="font-black" {...props} />,
+                  }}
+                >
+                  {normalizeInlinePopupMarkdown(termNotes)}
+                </ReactMarkdown>
+              ) : (
+                <p className="py-6 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+                  {termNotesError || "Could not load this word yet."}
+                </p>
+              )}
+            </div>
+            <button
+              type="button"
+              onClick={closeTermPopup}
+              className="mt-5 rounded-full bg-[var(--bb-button,#2f7fe8)] px-8 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      ) : loading ? (
         <p className="bb-text-secondary py-8 text-sm font-semibold">Loading {chapterLabel}...</p>
       ) : error ? (
         <p className="py-8 text-sm font-bold text-red-600">{error}</p>
       ) : (
-        <div className="space-y-3" onClick={handleBibleTermClick}>
+        <div className="space-y-1.5" onClick={handleBibleTermClick}>
           {verses.map((verse) => {
             const highlightColor = highlightMap[verse.verse];
             return (
               <p
                 key={verse.verse}
                 onClick={(event) => openVerseColorPicker(verse.verse, event)}
-                className="bb-text-primary cursor-pointer rounded-lg px-1 py-1 text-base font-medium leading-8 transition"
+                className="bb-text-primary cursor-pointer rounded-lg px-1 py-0.5 text-base font-medium leading-7 transition"
                 style={{ backgroundColor: highlightColor ? getHighlightColorCode(highlightColor) : "transparent" }}
               >
                 <button
@@ -435,7 +486,7 @@ function DashboardInlineBibleReader({
                     event.stopPropagation();
                     openVerseColorPicker(verse.verse, event);
                   }}
-                  className="mr-2 inline-flex min-w-7 translate-y-[-1px] items-center justify-center rounded-full border border-[var(--bb-card-border)] bg-transparent px-2 py-0.5 text-xs font-black text-[var(--bb-accent)] transition hover:border-[var(--bb-accent)] hover:bg-[var(--bb-accent-soft)]"
+                  className="mr-1.5 inline-flex h-6 min-w-6 items-center justify-center rounded-full border border-[var(--bb-card-border)] bg-transparent px-1.5 align-baseline text-xs font-black leading-none text-[var(--bb-accent)] transition hover:border-[var(--bb-accent)] hover:bg-[var(--bb-accent-soft)]"
                   aria-label={`Highlight verse ${verse.verse}`}
                 >
                   {verse.verse}
@@ -457,61 +508,7 @@ function DashboardInlineBibleReader({
         onClose={() => setPicker(null)}
       />
 
-      {selectedTerm ? (
-        <div
-          className="absolute inset-x-0 z-[45] px-2"
-          style={{ top: termPopupTop }}
-        >
-          <div key={termBurstKey} className="word-discovery-smoke pointer-events-none absolute left-1/2 top-8 z-0" aria-hidden="true">
-            <span className="absolute h-10 w-10 rounded-full bg-slate-300/45 [--smoke-x:-54px] [--smoke-y:-18px]" />
-            <span className="absolute h-9 w-9 rounded-full bg-slate-200/50 [--smoke-x:42px] [--smoke-y:-26px]" />
-            <span className="absolute h-8 w-8 rounded-full bg-rose-100/70 [--smoke-x:-12px] [--smoke-y:30px]" />
-            <span className="absolute h-7 w-7 rounded-full bg-slate-300/35 [--smoke-x:64px] [--smoke-y:18px]" />
-            <span className="absolute h-6 w-6 rounded-full bg-white/80 [--smoke-x:-72px] [--smoke-y:20px]" />
-          </div>
-          <div
-            className="word-discovery-card relative z-10 mx-auto max-h-[58vh] w-full max-w-md overflow-y-auto rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_18px_44px_rgba(38,63,99,0.18)]"
-          >
-            <div className="mb-3 flex justify-center">
-              <LouisAvatar mood="think" size={86} />
-            </div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">
-              {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
-            </p>
-            <h3 className="mt-1 text-3xl font-black leading-tight">{selectedTerm.name}</h3>
-            {loadingTermNotes && !termNotes ? (
-              <div className="space-y-3 py-6">
-                <div className="h-3 rounded-full bg-gray-100" />
-                <div className="h-3 w-5/6 rounded-full bg-gray-100" />
-                <div className="h-3 w-2/3 rounded-full bg-gray-100" />
-              </div>
-            ) : termNotes ? (
-              <ReactMarkdown
-                components={{
-                  h1: ({ ...props }) => <h1 className="mb-3 mt-5 text-xl font-black text-left" {...props} />,
-                  p: ({ ...props }) => <p className="mb-4 text-left text-sm font-medium leading-6" {...props} />,
-                  strong: ({ ...props }) => <strong className="font-black" {...props} />,
-                }}
-              >
-                {normalizeInlinePopupMarkdown(termNotes)}
-              </ReactMarkdown>
-            ) : (
-              <p className="py-6 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
-                {termNotesError || "Could not load this word yet."}
-              </p>
-            )}
-            <button
-              type="button"
-              onClick={closeTermPopup}
-              className="mt-2 rounded-full bg-[var(--bb-button,#2f7fe8)] px-6 py-2.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      ) : null}
-
-      {!loading && !error ? (
+      {!loading && !error && !selectedTerm ? (
         <div className="mt-5 flex justify-end">
           <button
             type="button"
