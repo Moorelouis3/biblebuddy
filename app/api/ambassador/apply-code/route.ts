@@ -11,9 +11,10 @@ const REFERRAL_REWARD_XP = 250;
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   const code = typeof body?.code === "string" ? body.code.trim().toUpperCase() : "";
+  const referrerUserId = typeof body?.referrerUserId === "string" ? body.referrerUserId.trim() : "";
 
-  if (!code) {
-    return NextResponse.json({ error: "No code provided." }, { status: 400 });
+  if (!code && !referrerUserId) {
+    return NextResponse.json({ error: "No invite link provided." }, { status: 400 });
   }
 
   // Authenticate the requesting user
@@ -39,22 +40,25 @@ export async function POST(req: NextRequest) {
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
   const supabase = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
 
-  // Validate code
-  const { data: ambassador, error: lookupError } = await supabase
+  let ambassadorQuery = supabase
     .from("ambassador_profiles")
-    .select("id, user_id, referral_code, is_active")
-    .eq("referral_code", code)
-    .maybeSingle();
+    .select("id, user_id, referral_code, is_active");
+
+  ambassadorQuery = referrerUserId
+    ? ambassadorQuery.eq("user_id", referrerUserId)
+    : ambassadorQuery.eq("referral_code", code);
+
+  const { data: ambassador, error: lookupError } = await ambassadorQuery.maybeSingle();
 
   if (lookupError || !ambassador || !ambassador.is_active) {
-    return NextResponse.json({ error: "Invalid or inactive code." }, { status: 400 });
+    return NextResponse.json({ error: "Invalid or inactive invite link." }, { status: 400 });
   }
 
   if (ambassador.user_id === user.id) {
-    return NextResponse.json({ error: "You cannot use your own Buddy Rewards code." }, { status: 400 });
+    return NextResponse.json({ error: "You cannot use your own Buddy Rewards invite link." }, { status: 400 });
   }
 
-  // Make sure this referred user hasn't already used a code
+  // Make sure this referred user hasn't already been credited to an invite.
   const { data: existingReferral } = await supabase
     .from("ambassador_referrals")
     .select("id")
@@ -62,7 +66,7 @@ export async function POST(req: NextRequest) {
     .maybeSingle();
 
   if (existingReferral) {
-    return NextResponse.json({ error: "You have already used a referral code." }, { status: 400 });
+    return NextResponse.json({ error: "You have already used an invite link." }, { status: 400 });
   }
 
   // Also skip if already paid/pro permanently
@@ -83,13 +87,13 @@ export async function POST(req: NextRequest) {
   const { error: referralError } = await supabase.from("ambassador_referrals").insert({
     ambassador_user_id: ambassador.user_id,
     referred_user_id: user.id,
-    referral_code: code,
+    referral_code: ambassador.referral_code || "INVITE_LINK",
     trial_started_at: trialStartedAt.toISOString(),
     trial_ends_at: trialEndsAt.toISOString(),
   });
 
   if (referralError) {
-    return NextResponse.json({ error: referralError.message || "Could not apply Buddy Rewards code." }, { status: 400 });
+    return NextResponse.json({ error: referralError.message || "Could not apply Buddy Rewards invite." }, { status: 400 });
   }
 
   const { data: referrerProfile } = await supabase
@@ -116,7 +120,7 @@ export async function POST(req: NextRequest) {
     user_id: ambassador.user_id,
     username: referrerProfile?.username || referrerProfile?.display_name || "Bible Buddy",
     action_type: ACTION_TYPE.referral_signup_reward,
-    action_label: `Buddy Rewards signup: ${code} (+${REFERRAL_REWARD_XP} XP, +${REFERRAL_REWARD_DIAMONDS} diamonds)`,
+    action_label: `Buddy Rewards invite signup (+${REFERRAL_REWARD_XP} XP, +${REFERRAL_REWARD_DIAMONDS} diamonds)`,
     created_at: trialStartedAt.toISOString(),
   });
 

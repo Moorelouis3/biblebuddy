@@ -19,6 +19,7 @@ interface Referral {
 interface RewardsProfile {
   referral_code: string;
   is_active: boolean;
+  user_id: string;
 }
 
 function formatDate(iso: string) {
@@ -34,20 +35,16 @@ export default function BuddyRewardsPage() {
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState<RewardsProfile | null>(null);
   const [referrals, setReferrals] = useState<Referral[]>([]);
-  const [copied, setCopied] = useState<"code" | "link" | null>(null);
-  const [editingCode, setEditingCode] = useState(false);
-  const [newCodeInput, setNewCodeInput] = useState("");
-  const [savingCode, setSavingCode] = useState(false);
-  const [codeError, setCodeError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const signupCount = referrals.length;
   const earnedDiamonds = signupCount * REWARD_DIAMONDS;
   const earnedXp = signupCount * REWARD_XP;
   const shareLink = useMemo(() => {
-    if (!profile?.referral_code) return "";
+    if (!profile?.user_id) return "";
     const origin = typeof window !== "undefined" ? window.location.origin : "https://thebiblestudybuddy.com";
-    return `${origin}/signup?ref=${encodeURIComponent(profile.referral_code)}`;
-  }, [profile?.referral_code]);
+    return `${origin}/signup?referrer=${encodeURIComponent(profile.user_id)}`;
+  }, [profile?.user_id]);
 
   useEffect(() => {
     async function init() {
@@ -65,7 +62,7 @@ export default function BuddyRewardsPage() {
         });
         if (res.ok) {
           const json = await res.json();
-          setProfile({ referral_code: json.referral_code, is_active: json.is_active });
+          setProfile({ referral_code: json.referral_code, is_active: json.is_active, user_id: user.id });
         }
       }
 
@@ -100,48 +97,11 @@ export default function BuddyRewardsPage() {
     void init();
   }, [router]);
 
-  async function handleSaveCode() {
-    if (!newCodeInput.trim()) return;
-    setSavingCode(true);
-    setCodeError(null);
-    const code = newCodeInput.trim().toUpperCase().replace(/[^A-Z]/g, "");
-    if (code.length < 4 || code.length > 10) {
-      setCodeError("Use one word, 4-10 letters.");
-      setSavingCode(false);
-      return;
-    }
-
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session?.access_token) {
-      setCodeError("Session expired. Please refresh and try again.");
-      setSavingCode(false);
-      return;
-    }
-
-    const res = await fetch("/api/ambassador/update-code", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${session.access_token}`,
-      },
-      body: JSON.stringify({ code }),
-    });
-    const json = await res.json().catch(() => ({}));
-    if (!res.ok) {
-      setCodeError(json.error ?? "Could not save that code.");
-    } else {
-      setProfile((prev) => prev ? { ...prev, referral_code: code } : prev);
-      setEditingCode(false);
-      setNewCodeInput("");
-    }
-    setSavingCode(false);
-  }
-
-  async function copyText(value: string, kind: "code" | "link") {
+  async function copyText(value: string) {
     if (!value) return;
     await navigator.clipboard.writeText(value);
-    setCopied(kind);
-    window.setTimeout(() => setCopied(null), 1800);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1800);
   }
 
   if (loading) {
@@ -167,52 +127,18 @@ export default function BuddyRewardsPage() {
 
         <div className="mb-4 rounded-2xl border border-blue-200 bg-white p-5 shadow-sm">
           <div className="flex items-center justify-between gap-3">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-blue-600">Your Code</p>
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-blue-600">Your Invite Link</p>
             <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">+250 XP +250 diamonds</span>
           </div>
 
-          {!editingCode ? (
-            <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
-              <div className="rounded-xl border border-blue-200 bg-blue-50 px-5 py-3 text-center">
-                <p className="font-mono text-2xl font-black tracking-widest text-blue-800">{profile?.referral_code}</p>
-              </div>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-1">
-                <button onClick={() => void copyText(profile?.referral_code || "", "code")} className="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-black text-white">
-                  {copied === "code" ? "Copied" : "Copy"}
-                </button>
-                <button onClick={() => { setEditingCode(true); setNewCodeInput(profile?.referral_code ?? ""); }} className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-black text-gray-700">
-                  Edit
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="mt-4 space-y-3">
-              <input
-                type="text"
-                value={newCodeInput}
-                onChange={(e) => setNewCodeInput(e.target.value.toUpperCase().replace(/[^A-Z]/g, ""))}
-                maxLength={10}
-                placeholder="FAITH"
-                className="w-full rounded-xl border border-blue-300 bg-blue-50 px-4 py-3 text-center font-mono text-xl font-black uppercase tracking-widest text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
-              <p className="text-xs font-semibold text-gray-500">You can choose one word, up to 10 letters. Your code locks after your first signup.</p>
-              {codeError && <p className="text-xs font-bold text-red-600">{codeError}</p>}
-              <div className="flex gap-2">
-                <button onClick={handleSaveCode} disabled={savingCode || !newCodeInput.trim()} className="flex-1 rounded-xl bg-blue-600 py-2.5 text-sm font-black text-white disabled:opacity-50">
-                  {savingCode ? "Saving..." : "Save Code"}
-                </button>
-                <button onClick={() => { setEditingCode(false); setCodeError(null); }} className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-black text-gray-700">
-                  Cancel
-                </button>
-              </div>
-            </div>
-          )}
-
           <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-3">
             <p className="truncate text-xs font-bold text-gray-500">{shareLink}</p>
-            <button onClick={() => void copyText(shareLink, "link")} className="mt-2 w-full rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-black text-white">
-              {copied === "link" ? "Link Copied" : "Copy Signup Link"}
+            <button onClick={() => void copyText(shareLink)} className="mt-2 w-full rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-black text-white">
+              {copied ? "Link Copied" : "Copy Invite Link"}
             </button>
+            <p className="mt-2 text-xs font-semibold leading-5 text-gray-500">
+              Anyone who signs up from this link is tracked back to you automatically. No code needed.
+            </p>
           </div>
         </div>
 

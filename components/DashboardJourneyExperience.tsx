@@ -103,6 +103,7 @@ type ShareRewardsReferral = {
 type ShareRewardsProfile = {
   referral_code: string;
   is_active: boolean;
+  user_id: string;
 };
 
 type ExploreLink = {
@@ -1588,9 +1589,6 @@ export default function DashboardJourneyExperience({
   const [shareRewardsReferrals, setShareRewardsReferrals] = useState<ShareRewardsReferral[]>([]);
   const [shareRewardsLoading, setShareRewardsLoading] = useState(false);
   const [shareRewardsError, setShareRewardsError] = useState<string | null>(null);
-  const [shareRewardsCodeInput, setShareRewardsCodeInput] = useState("");
-  const [shareRewardsSaving, setShareRewardsSaving] = useState(false);
-  const [shareRewardsMessage, setShareRewardsMessage] = useState<string | null>(null);
   const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
 
   const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "buddies", "tv", "games", "share"] as const;
@@ -1751,9 +1749,8 @@ export default function DashboardJourneyExperience({
         if (refsError) throw refsError;
 
         if (!cancelled) {
-          const profileData = { referral_code: profilePayload.referral_code, is_active: profilePayload.is_active };
+          const profileData = { referral_code: profilePayload.referral_code, is_active: profilePayload.is_active, user_id: profilePayload.user_id || userId };
           setShareRewardsProfile(profileData);
-          setShareRewardsCodeInput(profileData.referral_code || "");
           setShareRewardsReferrals((refs || []) as ShareRewardsReferral[]);
         }
       } catch (error: any) {
@@ -3793,47 +3790,13 @@ export default function DashboardJourneyExperience({
   };
 
   const renderEmbeddedSharePage = () => {
-    const rewardCode = shareRewardsProfile?.referral_code || "";
     const shareUrl =
-      rewardCode && typeof window !== "undefined"
-        ? `${window.location.origin}/signup?ref=${encodeURIComponent(rewardCode)}`
+      shareRewardsProfile?.user_id && typeof window !== "undefined"
+        ? `${window.location.origin}/signup?referrer=${encodeURIComponent(shareRewardsProfile.user_id)}`
         : "https://thebiblestudybuddy.com/signup";
     const signupCount = shareRewardsReferrals.length;
     const earnedXp = signupCount * 250;
     const earnedDiamonds = signupCount * 250;
-
-    async function saveShareRewardsCode() {
-      const code = shareRewardsCodeInput.trim().toUpperCase().replace(/[^A-Z]/g, "");
-      if (code.length < 4 || code.length > 10) {
-        setShareRewardsMessage("Use one word, 4-10 letters.");
-        return;
-      }
-
-      setShareRewardsSaving(true);
-      setShareRewardsMessage(null);
-      try {
-        const { data: sessionData } = await supabase.auth.getSession();
-        const token = sessionData.session?.access_token;
-        if (!token) throw new Error("Sign in again to save your code.");
-        const response = await fetch("/api/ambassador/update-code", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ code }),
-        });
-        const payload = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(payload?.error || "Could not save that code.");
-        setShareRewardsProfile((current) => current ? { ...current, referral_code: code } : current);
-        setShareRewardsCodeInput(code);
-        setShareRewardsMessage("Code saved.");
-      } catch (error: any) {
-        setShareRewardsMessage(error?.message || "Could not save that code.");
-      } finally {
-        setShareRewardsSaving(false);
-      }
-    }
 
     return (
       <section className="w-full px-1">
@@ -3852,31 +3815,15 @@ export default function DashboardJourneyExperience({
               <>
                 <div className="mt-5 rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] p-4">
                   <div className="flex items-center justify-between gap-3">
-                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#2f7fe8]">Your Code</p>
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#2f7fe8]">Your Invite Link</p>
                     <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-[#2f7fe8]">+250 XP +250 diamonds</span>
                   </div>
-                  <div className="mt-3 grid gap-2 sm:grid-cols-[1fr_auto]">
-                    <input
-                      value={shareRewardsCodeInput}
-                      onChange={(event) => {
-                        setShareRewardsCodeInput(event.target.value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 10));
-                        setShareRewardsMessage(null);
-                      }}
-                      maxLength={10}
-                      className="w-full rounded-2xl border border-[#b9dcf4] bg-white px-4 py-3 text-center font-mono text-lg font-black uppercase tracking-widest text-gray-950 outline-none focus:ring-2 focus:ring-[#7BAFD4]"
-                      placeholder="FAITH"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => void saveShareRewardsCode()}
-                      disabled={shareRewardsSaving || !shareRewardsCodeInput.trim()}
-                      className="rounded-2xl bg-[#2f7fe8] px-4 py-3 text-sm font-black text-white disabled:opacity-50"
-                    >
-                      {shareRewardsSaving ? "Saving" : "Save"}
-                    </button>
-                  </div>
-                  <p className="mt-2 text-xs font-bold text-gray-500">One word, 4-10 letters. Your code locks after your first signup.</p>
-                  {shareRewardsMessage ? <p className="mt-2 text-xs font-black text-[#2f7fe8]">{shareRewardsMessage}</p> : null}
+                  <p className="mt-3 truncate rounded-2xl border border-[#dbe7f4] bg-white px-4 py-3 text-xs font-bold text-gray-500">
+                    {shareUrl}
+                  </p>
+                  <p className="mt-2 text-xs font-bold leading-5 text-gray-500">
+                    Share this link anywhere. When someone clicks it and signs up, Bible Buddy credits the signup back to you automatically.
+                  </p>
                 </div>
 
                 <div className="mt-3 grid grid-cols-3 gap-2">
@@ -3913,7 +3860,7 @@ export default function DashboardJourneyExperience({
               </button>
               <Link href="/ambassador" className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-4 py-4 transition hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm">
                 <p className="text-base font-black text-gray-950">Buddy Rewards</p>
-                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">Open the full signup log and copy your code.</p>
+                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">Open the full signup log and copy your invite link.</p>
               </Link>
               {signupCount > 0 ? (
                 <div className="rounded-2xl border border-[#dbe7f4] bg-white p-4">

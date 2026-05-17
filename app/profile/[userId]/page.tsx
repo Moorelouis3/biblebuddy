@@ -209,13 +209,16 @@ export default function PublicProfilePage() {
   }>>([]);
   const [buddyActionLoading, setBuddyActionLoading] = useState(false);
   const heatMapCardRef = useRef<HTMLDivElement | null>(null);
+  const referralInput = "";
+  const referralState = "idle" as "idle" | "checking" | "valid" | "invalid";
+  const referralError: string | null = null;
+  const referralTrialEnds = "";
+  const setReferralInput = (_value: string) => {};
+  const setReferralError = (_value: string | null) => {};
+  const setReferralState = (_value: "idle" | "checking" | "valid" | "invalid") => {};
+  const applyReferralCode = () => {};
 
   // ── Referral code ───────────────────────────────────────────────────────────
-  const [referralInput, setReferralInput] = useState("");
-  const [referralState, setReferralState] = useState<"idle" | "checking" | "valid" | "invalid">("idle");
-  const [referralError, setReferralError] = useState<string | null>(null);
-  const [referralTrialEnds, setReferralTrialEnds] = useState<string | null>(null);
-
   useEffect(() => {
     if (!profileUserId) return;
     loadProfileData();
@@ -464,32 +467,6 @@ export default function PublicProfilePage() {
   }
 
   // ── Referral code ──────────────────────────────────────────────────────────
-  async function applyReferralCode() {
-    const code = referralInput.trim().toUpperCase();
-    if (!code) return;
-    setReferralState("checking");
-    setReferralError(null);
-    try {
-      const res = await fetch("/api/ambassador/apply-code", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ code }),
-      });
-      const json = await res.json();
-      if (!res.ok) {
-        setReferralError(json.error ?? "Invalid code. Please try again.");
-        setReferralState("invalid");
-      } else {
-        setReferralState("valid");
-        setReferralTrialEnds(json.trialEndsAt ?? null);
-        setStats((prev) => prev ? { ...prev, is_paid: true, membership_status: "pro", pro_expires_at: json.trialEndsAt ?? prev.pro_expires_at } : prev);
-      }
-    } catch {
-      setReferralError("Something went wrong. Please try again.");
-      setReferralState("invalid");
-    }
-  }
-
   // ── Buddy actions ──────────────────────────────────────────────────────────
   async function handleAddBuddy() {
     if (!viewerUserId || buddyActionLoading) return;
@@ -1148,7 +1125,7 @@ export default function PublicProfilePage() {
         </div>
 
         {/* ── REFERRAL CODE (owner only, non-paid) ────────────────────────── */}
-        {isOwner && !stats?.is_paid && (
+        {false && (
           <div className="bg-white border border-teal-200 rounded-xl p-4 shadow-sm mb-6">
             {referralState === "valid" ? (
               <div className="flex items-center gap-3">

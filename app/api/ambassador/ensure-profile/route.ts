@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     .maybeSingle();
 
   if (existing) {
-    return NextResponse.json({ referral_code: existing.referral_code, is_active: existing.is_active });
+    return NextResponse.json({ referral_code: existing.referral_code, is_active: existing.is_active, user_id: userId });
   }
 
   // Create it
@@ -57,5 +57,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: insertError.message }, { status: 500 });
   }
 
-  return NextResponse.json({ referral_code: created?.referral_code, is_active: created?.is_active });
+  return NextResponse.json({ referral_code: created?.referral_code, is_active: created?.is_active, user_id: userId });
 }

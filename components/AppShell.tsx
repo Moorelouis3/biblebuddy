@@ -59,6 +59,7 @@ const BuddyCelebrationModal = dynamic(
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 const DAILY_RECOMMENDATIONS_ENABLED = false;
+const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
 
 function isSupabaseEmailConfirmed(user: { email_confirmed_at?: string | null; confirmed_at?: string | null } | null | undefined) {
   return Boolean(user?.email_confirmed_at || user?.confirmed_at);
@@ -90,6 +91,30 @@ async function runBackgroundSessionSync(currentUserId: string) {
   }
 
   await Promise.allSettled(tasks);
+}
+
+async function applyPendingInviteLink(currentUserId: string) {
+  if (typeof window === "undefined") return;
+
+  const referrerUserId = window.localStorage.getItem(PENDING_REFERRER_STORAGE_KEY)?.trim();
+  if (!referrerUserId || referrerUserId === currentUserId) {
+    if (referrerUserId === currentUserId) window.localStorage.removeItem(PENDING_REFERRER_STORAGE_KEY);
+    return;
+  }
+
+  try {
+    const response = await fetch("/api/ambassador/apply-code", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ referrerUserId }),
+    });
+
+    if (response.ok) {
+      window.localStorage.removeItem(PENDING_REFERRER_STORAGE_KEY);
+    }
+  } catch (error) {
+    console.warn("[BUDDY_REWARDS] Invite attribution skipped:", error);
+  }
 }
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
@@ -1305,6 +1330,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           (session.user.email ? session.user.email.split("@")[0] : null) ||
           "User";
         setUsername(extractedUsername);
+        void applyPendingInviteLink(session.user.id);
         void checkOnboardingStatus(session.user.id);
         void checkUpdateStatus(session.user.id);
         if (DAILY_RECOMMENDATIONS_ENABLED) {
@@ -1363,6 +1389,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             (session.user.email ? session.user.email.split("@")[0] : null) ||
             "User";
           setUsername(extractedUsername);
+          void applyPendingInviteLink(session.user.id);
           void checkOnboardingStatus(session.user.id);
           void checkUpdateStatus(session.user.id);
           void loadHeaderDashboardStats(session.user.id);

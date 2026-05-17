@@ -4015,7 +4015,7 @@ export default function AnalyticsPage() {
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-teal-50">
             <div>
               <span className="text-xl font-bold text-teal-800">🤝 Buddy Partners</span>
-              <p className="text-xs text-teal-600 mt-0.5">{ambassadors.length} Buddy Rewards code{ambassadors.length !== 1 ? "s" : ""}</p>
+              <p className="text-xs text-teal-600 mt-0.5">{ambassadors.length} Buddy Rewards invite link{ambassadors.length !== 1 ? "s" : ""}</p>
             </div>
             <button
               type="button"
@@ -4028,7 +4028,7 @@ export default function AnalyticsPage() {
           {loadingAmbassadors ? (
             <p className="text-sm text-gray-400 px-5 py-4">Loading...</p>
           ) : ambassadors.length === 0 ? (
-            <p className="text-sm text-gray-400 px-5 py-4">No Buddy Rewards codes yet.</p>
+            <p className="text-sm text-gray-400 px-5 py-4">No Buddy Rewards invite links yet.</p>
           ) : (
             <div className="divide-y divide-gray-100">
               {ambassadors.map((amb) => (
@@ -4051,7 +4051,7 @@ export default function AnalyticsPage() {
                       <p className="mt-0.5 text-xs font-semibold text-gray-500">
                         {(amb.total_reward_xp ?? amb.total_referrals * 250).toLocaleString()} XP - {(amb.total_reward_diamonds ?? amb.total_referrals * 250).toLocaleString()} diamonds earned
                       </p>
-                      <p className="text-xs text-gray-400 font-mono">Code: <span className="font-bold text-teal-700">{amb.referral_code}</span> · {amb.is_active ? "Active" : "Inactive"}</p>
+                      <p className="text-xs text-gray-400 font-mono">Invite link tracking: <span className="font-bold text-teal-700">{amb.referral_code}</span> · {amb.is_active ? "Active" : "Inactive"}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
                       <p className="text-xl font-black text-teal-700">{amb.total_referrals}</p>

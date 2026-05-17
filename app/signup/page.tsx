@@ -11,20 +11,20 @@ export default function SignupPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [referralCode, setReferralCode] = useState("");
+  const [referrerUserId, setReferrerUserId] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
-    const codeFromUrl = params.get("ref") || params.get("code") || "";
-    if (codeFromUrl) {
-      const normalizedCode = codeFromUrl.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 10);
-      setReferralCode(normalizedCode);
-      localStorage.setItem("bb:pending-referral-code", normalizedCode);
+    const referrerFromUrl = params.get("referrer") || params.get("invitedBy") || "";
+    if (referrerFromUrl) {
+      const normalizedReferrer = referrerFromUrl.trim();
+      setReferrerUserId(normalizedReferrer);
+      localStorage.setItem("bb:pending-referrer-user-id", normalizedReferrer);
     } else {
-      const pendingCode = localStorage.getItem("bb:pending-referral-code");
-      if (pendingCode) setReferralCode(pendingCode);
+      const pendingReferrer = localStorage.getItem("bb:pending-referrer-user-id");
+      if (pendingReferrer) setReferrerUserId(pendingReferrer);
     }
 
     const checkSession = async () => {
@@ -147,19 +147,19 @@ export default function SignupPage() {
   }
 
   async function applyReferralCodeIfPresent() {
-    const code = referralCode.trim().toUpperCase().replace(/[^A-Z]/g, "");
-    if (!code) return;
+    const pendingReferrerUserId = referrerUserId.trim() || localStorage.getItem("bb:pending-referrer-user-id") || "";
+    if (!pendingReferrerUserId) return;
     try {
       const res = await fetch("/api/ambassador/apply-code", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ code }),
+        body: JSON.stringify({ referrerUserId: pendingReferrerUserId }),
       });
       if (res.ok) {
-        localStorage.removeItem("bb:pending-referral-code");
+        localStorage.removeItem("bb:pending-referrer-user-id");
       }
     } catch (referralError) {
-      console.error("Buddy Rewards code apply failed (non-blocking):", referralError);
+      console.error("Buddy Rewards invite apply failed (non-blocking):", referralError);
     }
   }
 
@@ -252,19 +252,11 @@ export default function SignupPage() {
               />
             </div>
 
-            <div>
-              <label className="mb-1 block text-xs font-semibold text-gray-700">
-                Buddy Rewards code
-              </label>
-              <input
-                type="text"
-                value={referralCode}
-                onChange={(event) => setReferralCode(event.target.value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 10))}
-                maxLength={10}
-                className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm uppercase focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Optional"
-              />
-            </div>
+            {referrerUserId ? (
+              <p className="rounded-xl border border-blue-100 bg-blue-50 px-3 py-2 text-xs font-semibold text-blue-700">
+                Buddy Rewards invite detected. Your friend will get credit after you join.
+              </p>
+            ) : null}
 
             {error && (
               <p className="rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-xs text-red-600">
