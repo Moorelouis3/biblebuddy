@@ -165,6 +165,7 @@ type Props = {
   studySettingsOpenRequest?: number;
   homeHeader?: ReactNode;
   homePanelOverride?: ReactNode;
+  onHomeReset?: () => void;
   onDevotionalChanged: () => void;
   isOwnerDashboard?: boolean;
 };
@@ -1545,11 +1546,11 @@ export default function DashboardJourneyExperience({
   studySettingsOpenRequest = 0,
   homeHeader,
   homePanelOverride,
+  onHomeReset,
   onDevotionalChanged,
   isOwnerDashboard = false,
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const swipeStartRef = useRef<{ x: number; y: number } | null>(null);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
   const previousCompletedCountRef = useRef<number | null>(null);
   const previousJourneyKeyRef = useRef<string | null>(null);
@@ -1592,7 +1593,6 @@ export default function DashboardJourneyExperience({
   const [embeddedCommunityGroupId, setEmbeddedCommunityGroupId] = useState<string | null>(null);
   const [embeddedCommunityLoading, setEmbeddedCommunityLoading] = useState(false);
   const [embeddedCommunityError, setEmbeddedCommunityError] = useState<string | null>(null);
-  const [embeddedCommunityHeight, setEmbeddedCommunityHeight] = useState(620);
   const [buddiesDashboard, setBuddiesDashboard] = useState<BuddiesDashboardPayload | null>(null);
   const [buddiesDashboardLoading, setBuddiesDashboardLoading] = useState(false);
   const [buddiesDashboardError, setBuddiesDashboardError] = useState<string | null>(null);
@@ -1844,36 +1844,6 @@ export default function DashboardJourneyExperience({
       cancelled = true;
     };
   }, [safeActivePage, shareRewardsLoading, shareRewardsProfile, userId]);
-
-  useEffect(() => {
-    function handleEmbeddedCommunityHeight(event: MessageEvent) {
-      if (event.origin !== window.location.origin) return;
-      const data = event.data as { type?: string; height?: number } | null;
-      if (!data || data.type !== "bb-community-height") return;
-
-      const nextHeight = Number(data.height);
-      if (!Number.isFinite(nextHeight)) return;
-      setEmbeddedCommunityHeight(Math.max(620, Math.ceil(nextHeight)));
-    }
-
-    window.addEventListener("message", handleEmbeddedCommunityHeight);
-    return () => window.removeEventListener("message", handleEmbeddedCommunityHeight);
-  }, []);
-
-  useEffect(() => {
-    function handleEmbeddedCommunityScroll(event: MessageEvent) {
-      if (event.origin !== window.location.origin) return;
-      const data = event.data as { type?: string; deltaY?: number } | null;
-      if (!data || data.type !== "bb-community-scroll") return;
-
-      const deltaY = Number(data.deltaY);
-      if (!Number.isFinite(deltaY)) return;
-      window.scrollBy({ top: deltaY, behavior: "auto" });
-    }
-
-    window.addEventListener("message", handleEmbeddedCommunityScroll);
-    return () => window.removeEventListener("message", handleEmbeddedCommunityScroll);
-  }, []);
 
   const nextTask = visibleTasks.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = visibleTasks.findIndex((task) => !task.done);
@@ -2761,6 +2731,17 @@ export default function DashboardJourneyExperience({
     }, 0);
   }
 
+  function handleDashboardNavClick(index: number) {
+    if (index === 0) {
+      setFreeStudyModeActive(false);
+      setEmbeddedBibleBookSearchOpen(false);
+      setEmbeddedBibleSelectedBook(null);
+      setEmbeddedBibleStudyId(null);
+      onHomeReset?.();
+    }
+    snapToPage(index);
+  }
+
   async function switchCurrentStudyChapter(dayNumber: number) {
     if (!userId || !currentDevotionalId || switchingStudyChapter) return;
     const currentDayNumber = currentDevotionalTask?.devotionalDayNumber ?? 1;
@@ -2974,30 +2955,6 @@ export default function DashboardJourneyExperience({
         return next;
       });
     }, 840);
-  }
-
-  function handleSwipeStart(event: React.TouchEvent<HTMLDivElement>) {
-    if (shouldShowBibleBuddy3ModeGate) return;
-    const touch = event.touches[0];
-    swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
-  }
-
-  function handleSwipeEnd(event: React.TouchEvent<HTMLDivElement>) {
-    if (shouldShowBibleBuddy3ModeGate) return;
-    const start = swipeStartRef.current;
-    swipeStartRef.current = null;
-    if (!start) return;
-
-    const touch = event.changedTouches[0];
-    const endX = touch?.clientX ?? start.x;
-    const endY = touch?.clientY ?? start.y;
-    const deltaX = endX - start.x;
-    const deltaY = endY - start.y;
-    const absX = Math.abs(deltaX);
-    const absY = Math.abs(deltaY);
-    if (absX < 90 || absY > 28 || absY > absX * 0.45) return;
-
-    snapToPage(safeActivePage + (deltaX < 0 ? 1 : -1));
   }
 
   const getSlideClass = (index: number) =>
@@ -3364,14 +3321,16 @@ export default function DashboardJourneyExperience({
               </div>
             </div>
           ) : embeddedCommunityGroupId ? (
-            <iframe
-              key={embeddedCommunityGroupId}
-              src={`/study-groups/${embeddedCommunityGroupId}/chat?embedded=dashboard&tab=home`}
-              title="Bible Buddy Community"
-              className="block w-full overflow-hidden border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
-              scrolling="no"
-              style={{ height: embeddedCommunityHeight, minHeight: 620 }}
-            />
+            <div className="-mx-4 sm:-mx-5">
+              <iframe
+                key={embeddedCommunityGroupId}
+                src={`/study-groups/${embeddedCommunityGroupId}/chat?embedded=dashboard&tab=home`}
+                title="Bible Buddy Community"
+                className="block w-full border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
+                scrolling="yes"
+                style={{ height: "calc(100dvh - 130px)", minHeight: "calc(100dvh - 130px)" }}
+              />
+            </div>
           ) : (
             <div className="grid min-h-[520px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
               <p className="text-sm font-black text-[var(--bb-text-secondary,#5f6368)]">Open Community from the menu to load the group.</p>
@@ -4255,9 +4214,7 @@ export default function DashboardJourneyExperience({
       `}</style>
       <div
         ref={containerRef}
-        onTouchStart={handleSwipeStart}
-        onTouchEnd={handleSwipeEnd}
-        className="overflow-hidden [scrollbar-width:none] [touch-action:pan-y] [&::-webkit-scrollbar]:hidden"
+        className="overflow-hidden [scrollbar-width:none] [touch-action:auto] [&::-webkit-scrollbar]:hidden"
       >
         <div
           className="flex transition-transform duration-300 ease-out"
@@ -5123,7 +5080,7 @@ export default function DashboardJourneyExperience({
                 href={item.href}
                 onClick={(event) => {
                   event.preventDefault();
-                  snapToPage(index);
+                  handleDashboardNavClick(index);
                 }}
                 className={`flex min-w-[68px] flex-col items-center justify-center gap-0.5 rounded-2xl px-1.5 py-1.5 text-[8.5px] font-black transition sm:min-w-[76px] sm:text-[9.5px] ${
                   isActive ? "text-[#2f7fe8]" : "text-gray-500 hover:bg-[#f4f8ff] hover:text-gray-900"

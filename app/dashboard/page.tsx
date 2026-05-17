@@ -2974,6 +2974,15 @@ export default function DashboardPage() {
     void loadStorePurchases();
   }, [loadStorePurchases]);
 
+  const resetDashboardHomePanel = useCallback(() => {
+    setShowDiamondStore(false);
+    setActiveStorePromo(null);
+    setMysteryPrizeReveal(null);
+    setDailyLoginGiftReveal(null);
+    setBuddySelectionWelcome(null);
+    setSelectedDashboardTask(null);
+  }, []);
+
   async function applyPurchasedTheme(themeId: AppThemeId) {
     if (typeof window !== "undefined") {
       window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
@@ -4967,6 +4976,7 @@ export default function DashboardPage() {
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : undefined}
+          onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
@@ -5017,6 +5027,7 @@ export default function DashboardPage() {
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : undefined}
+          onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });

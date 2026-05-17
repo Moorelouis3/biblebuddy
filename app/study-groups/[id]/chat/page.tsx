@@ -3265,53 +3265,6 @@ export default function GroupChatPage() {
   ]);
 
   useEffect(() => {
-    if (!isDashboardEmbed || typeof window === "undefined") return;
-
-    let lastTouchY: number | null = null;
-    const sendScrollDelta = (deltaY: number) => {
-      if (!Number.isFinite(deltaY) || Math.abs(deltaY) < 1) return;
-      window.parent?.postMessage({ type: "bb-community-scroll", deltaY }, window.location.origin);
-    };
-
-    const handleWheel = (event: WheelEvent) => {
-      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-      event.preventDefault();
-      sendScrollDelta(event.deltaY);
-    };
-
-    const handleTouchStart = (event: TouchEvent) => {
-      lastTouchY = event.touches[0]?.clientY ?? null;
-    };
-
-    const handleTouchMove = (event: TouchEvent) => {
-      const currentY = event.touches[0]?.clientY ?? null;
-      if (currentY === null || lastTouchY === null) return;
-      const deltaY = lastTouchY - currentY;
-      lastTouchY = currentY;
-      event.preventDefault();
-      sendScrollDelta(deltaY);
-    };
-
-    const handleTouchEnd = () => {
-      lastTouchY = null;
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-    window.addEventListener("touchend", handleTouchEnd);
-    window.addEventListener("touchcancel", handleTouchEnd);
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleTouchEnd);
-      window.removeEventListener("touchcancel", handleTouchEnd);
-    };
-  }, [isDashboardEmbed]);
-
-  useEffect(() => {
     return () => {
       if (postEditor) postEditor.destroy();
     };
