@@ -134,11 +134,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
       {verses.map((v) => (
         <div
           key={v.number}
-          className="flex items-start mb-2 group verse-line"
+          className="mb-2 flex items-baseline gap-2 group verse-line"
           style={{ backgroundColor: highlightMap[v.number] ? getColorCode(highlightMap[v.number]) : "transparent", borderRadius: highlightMap[v.number] ? 4 : 0, transition: "background-color 0.3s" }}
         >
           <button
-            className="select-none text-lg mr-3 cursor-pointer hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 font-bold bg-blue-100 px-2 py-0.5 rounded-md shadow-sm"
+            className="shrink-0 select-none cursor-pointer rounded-md bg-blue-100 px-2 py-0.5 text-lg font-bold shadow-sm hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
             style={{ minWidth: 32 }}
             onClick={(e) => { e.stopPropagation(); handleVerseClick(v.number, e); }}
             title={`Highlight verse ${v.number}`}
@@ -148,7 +148,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
           </button>
           {/* Render enriched HTML for this verse, fallback to plain text */}
           <span
-            className="verse-text break-words text-base leading-relaxed flex-1"
+            className="verse-text min-w-0 flex-1 break-words text-base leading-relaxed [&_p]:inline"
             // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted HTML from server-side enrichment
             dangerouslySetInnerHTML={{ __html: plainTextMode ? v.text : getEnrichedHtmlForVerse(v.enrichedHtml, v.text) }}
           />

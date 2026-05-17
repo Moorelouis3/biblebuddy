@@ -322,6 +322,9 @@ function DashboardInlineBibleReader({
     termReturnScrollYRef.current = window.scrollY;
     setTermBurstKey((current) => current + 1);
     setSelectedTerm({ type, name: resolveBibleReference(type, term) });
+    window.requestAnimationFrame(() => {
+      readerRootRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
+    });
   }
 
   useEffect(() => {
@@ -358,11 +361,8 @@ function DashboardInlineBibleReader({
 
   useEffect(() => {
     if (!selectedTerm) return;
-    const returnScrollY = termReturnScrollYRef.current;
-    if (typeof returnScrollY !== "number") return;
-
     const frame = window.requestAnimationFrame(() => {
-      window.scrollTo({ top: returnScrollY, behavior: "auto" });
+      readerRootRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
     });
 
     return () => window.cancelAnimationFrame(frame);
@@ -490,7 +490,7 @@ function DashboardInlineBibleReader({
               <p
                 key={verse.verse}
                 onClick={(event) => openVerseColorPicker(verse.verse, event)}
-                className="bb-text-primary cursor-pointer rounded-lg px-1 py-0.5 text-base font-medium leading-7 transition"
+                className="bb-text-primary flex cursor-pointer items-baseline gap-2 rounded-lg px-1 py-0.5 text-base font-medium leading-7 transition"
                 style={{ backgroundColor: highlightColor ? getHighlightColorCode(highlightColor) : "transparent" }}
               >
                 <button
@@ -499,12 +499,13 @@ function DashboardInlineBibleReader({
                     event.stopPropagation();
                     openVerseColorPicker(verse.verse, event);
                   }}
-                  className="mr-1.5 inline-flex h-6 min-w-6 items-center justify-center rounded-full border border-[var(--bb-card-border)] bg-transparent px-1.5 align-baseline text-xs font-black leading-none text-[var(--bb-accent)] transition hover:border-[var(--bb-accent)] hover:bg-[var(--bb-accent-soft)]"
+                  className="inline-flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-[var(--bb-card-border)] bg-transparent px-1.5 align-baseline text-xs font-black leading-none text-[var(--bb-accent)] transition hover:border-[var(--bb-accent)] hover:bg-[var(--bb-accent-soft)]"
                   aria-label={`Highlight verse ${verse.verse}`}
                 >
                   {verse.verse}
                 </button>
                 <span
+                  className="min-w-0 flex-1 [&_p]:inline"
                   // biome-ignore lint/security/noDangerouslySetInnerHtml: Bible text is escaped before enrichment.
                   dangerouslySetInnerHTML={{ __html: enrichPlainText(verse.text) }}
                 />
