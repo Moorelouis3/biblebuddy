@@ -1497,7 +1497,7 @@ export default function DashboardJourneyExperience({
   isOwnerDashboard = false,
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const swipeStartXRef = useRef<number | null>(null);
+  const swipeStartRef = useRef<{ x: number; y: number } | null>(null);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
   const previousCompletedCountRef = useRef<number | null>(null);
   const previousJourneyKeyRef = useRef<string | null>(null);
@@ -2878,17 +2878,23 @@ export default function DashboardJourneyExperience({
   }
 
   function handleSwipeStart(event: React.TouchEvent<HTMLDivElement>) {
-    swipeStartXRef.current = event.touches[0]?.clientX ?? null;
+    const touch = event.touches[0];
+    swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
   }
 
   function handleSwipeEnd(event: React.TouchEvent<HTMLDivElement>) {
-    const startX = swipeStartXRef.current;
-    swipeStartXRef.current = null;
-    if (startX === null) return;
+    const start = swipeStartRef.current;
+    swipeStartRef.current = null;
+    if (!start) return;
 
-    const endX = event.changedTouches[0]?.clientX ?? startX;
-    const deltaX = endX - startX;
-    if (Math.abs(deltaX) < 45) return;
+    const touch = event.changedTouches[0];
+    const endX = touch?.clientX ?? start.x;
+    const endY = touch?.clientY ?? start.y;
+    const deltaX = endX - start.x;
+    const deltaY = endY - start.y;
+    const absX = Math.abs(deltaX);
+    const absY = Math.abs(deltaY);
+    if (absX < 90 || absY > 28 || absY > absX * 0.45) return;
 
     snapToPage(safeActivePage + (deltaX < 0 ? 1 : -1));
   }
@@ -4098,7 +4104,7 @@ export default function DashboardJourneyExperience({
         ref={containerRef}
         onTouchStart={handleSwipeStart}
         onTouchEnd={handleSwipeEnd}
-        className="overflow-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="overflow-hidden [scrollbar-width:none] [touch-action:pan-y] [&::-webkit-scrollbar]:hidden"
       >
         <div
           className="flex transition-transform duration-300 ease-out"

@@ -46,6 +46,7 @@ export default function ChangeBuddyPage() {
   const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const buddySwipeStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const buddies = useMemo(() => orderBuddies(selectedBuddy), [selectedBuddy]);
   const activeBuddy = buddies[activeIndex] ?? buddies[0];
@@ -250,6 +251,28 @@ export default function ChangeBuddyPage() {
     setActiveIndex((index) => (index + direction + buddies.length) % buddies.length);
   }
 
+  function handleBuddySwipeStart(event: React.TouchEvent<HTMLDivElement>) {
+    const touch = event.touches[0];
+    buddySwipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+  }
+
+  function handleBuddySwipeEnd(event: React.TouchEvent<HTMLDivElement>) {
+    const start = buddySwipeStartRef.current;
+    buddySwipeStartRef.current = null;
+    if (!start) return;
+
+    const touch = event.changedTouches[0];
+    const endX = touch?.clientX ?? start.x;
+    const endY = touch?.clientY ?? start.y;
+    const deltaX = endX - start.x;
+    const deltaY = endY - start.y;
+    const absX = Math.abs(deltaX);
+    const absY = Math.abs(deltaY);
+    if (absX < 70 || absY > 35 || absY > absX * 0.55) return;
+
+    moveCard(deltaX < 0 ? 1 : -1);
+  }
+
   return (
     <main className="min-h-screen px-4 py-5 text-[var(--bb-text-primary,#2b0707)]">
       <div className="mx-auto max-w-[760px]">
@@ -274,13 +297,9 @@ export default function ChangeBuddyPage() {
 
             <div
               ref={scrollRef}
-              className="mx-auto flex w-full max-w-[600px] snap-x snap-mandatory gap-4 overflow-x-auto px-0 pb-3 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:px-1 [&::-webkit-scrollbar]:hidden"
-              onScroll={(event) => {
-                const container = event.currentTarget;
-                const width = container.clientWidth || 1;
-                const nextIndex = Math.round(container.scrollLeft / width);
-                if (nextIndex >= 0 && nextIndex < buddies.length) setActiveIndex(nextIndex);
-              }}
+              className="mx-auto flex w-full max-w-[600px] gap-4 overflow-x-hidden px-0 pb-3 pt-1 [touch-action:pan-y] sm:px-1"
+              onTouchStart={handleBuddySwipeStart}
+              onTouchEnd={handleBuddySwipeEnd}
             >
               {buddies.map((buddy, index) => {
                 const isCurrent = buddy.id === selectedBuddy;
