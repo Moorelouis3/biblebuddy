@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import AnimatedFlame from "../../components/AnimatedFlame";
+import StreakFlameEmoji from "../../components/StreakFlameEmoji";
 import {
   APP_THEME_STORAGE_KEY,
   APP_THEMES,
@@ -15,6 +15,18 @@ import { STREAK_FLAME_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBudd
 import { FLAME_COSMETICS, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
 import { isAdminUser } from "../../lib/readingProgress";
+
+type StorePurchaseRow = {
+  item_id: string;
+  item_kind: string;
+};
+
+type SettingsProfileRow = {
+  display_name?: string | null;
+  username?: string | null;
+  app_theme?: string | null;
+  selected_streak_flame?: string | null;
+};
 
 function getPasswordResetRedirectUrl() {
   if (typeof window === "undefined") return "https://www.mybiblebuddy.net/reset-password";
@@ -33,10 +45,11 @@ export default function SettingsPage() {
   const [themeSaving, setThemeSaving] = useState<string | null>(null);
   const [flameSaving, setFlameSaving] = useState<string | null>(null);
   const [settingsMessage, setSettingsMessage] = useState<string | null>(null);
-  const [ownedStoreItemIds, setOwnedStoreItemIds] = useState<string[]>([]);
+  const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
   const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState<AppThemeId>("light");
   const [selectedFlame, setSelectedFlame] = useState<FlameCosmeticId>("default");
+  const [removingItemId, setRemovingItemId] = useState<string | null>(null);
   
   // Profile fields
   const [firstName, setFirstName] = useState("");
@@ -66,17 +79,27 @@ export default function SettingsPage() {
         const meta = currentUser.user_metadata || {};
         setEmail(currentUser.email || "");
 
-        const [{ data: profile }, { data: purchases }] = await Promise.all([
-          supabase
+        const profileRequest = await supabase
+          .from("profile_stats")
+          .select("display_name, username, app_theme, selected_streak_flame")
+          .eq("user_id", currentUser.id)
+          .maybeSingle();
+
+        let profile = profileRequest.data as SettingsProfileRow | null;
+        if (profileRequest.error && /selected_streak_flame/i.test(profileRequest.error.message || "")) {
+          const fallbackProfile = await supabase
             .from("profile_stats")
-            .select("display_name, username, app_theme, selected_streak_flame")
+            .select("display_name, username, app_theme")
             .eq("user_id", currentUser.id)
-            .maybeSingle(),
-          supabase
-            .from("user_store_purchases")
-            .select("item_id")
-            .eq("user_id", currentUser.id),
-        ]);
+            .maybeSingle();
+          profile = fallbackProfile.data as SettingsProfileRow | null;
+          setSettingsMessage("Streak flames need one database update before they can save. Run ADD_SELECTED_STREAK_FLAME.sql in Supabase.");
+        }
+
+        const { data: purchases } = await supabase
+          .from("user_store_purchases")
+          .select("item_id,item_kind")
+          .eq("user_id", currentUser.id);
 
         const nameParts = splitFullName(
           profile?.display_name ||
@@ -89,7 +112,7 @@ export default function SettingsPage() {
         setLastName(nameParts.lastName);
         setSelectedTheme(normalizeAppThemeId(profile?.app_theme));
         setSelectedFlame(normalizeFlameCosmeticId(profile?.selected_streak_flame));
-        setOwnedStoreItemIds((purchases || []).map((purchase: { item_id: string }) => purchase.item_id));
+        setStorePurchases((purchases || []) as StorePurchaseRow[]);
       }
       setLoading(false);
     }
@@ -266,6 +289,7 @@ export default function SettingsPage() {
 
   async function handleFlameSelect(flameId: FlameCosmeticId) {
     if (!user) return;
+    const previousFlame = selectedFlame;
     setFlameSaving(flameId);
     setSettingsMessage(null);
     setSelectedFlame(flameId);
@@ -275,21 +299,64 @@ export default function SettingsPage() {
     try {
       const { error } = await supabase
         .from("profile_stats")
-        .upsert(
-          {
-            user_id: user.id,
-            selected_streak_flame: flameId,
-            updated_at: new Date().toISOString(),
-          },
-          { onConflict: "user_id" },
-        );
+        .update({
+          selected_streak_flame: flameId,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("user_id", user.id);
       if (error) throw error;
       setSettingsMessage("Streak flame updated.");
     } catch (error: any) {
-      setSelectedFlame(normalizeFlameCosmeticId(selectedFlame));
-      setSettingsMessage(error.message || "Could not update streak flame.");
+      setSelectedFlame(previousFlame);
+      setSettingsMessage(
+        /selected_streak_flame/i.test(error.message || "")
+          ? "Streak flames need one database update before they can save. Run ADD_SELECTED_STREAK_FLAME.sql in Supabase."
+          : error.message || "Could not update streak flame.",
+      );
     } finally {
       setFlameSaving(null);
+    }
+  }
+
+  async function handleDeleteStoreItem(itemId: string) {
+    if (!user || removingItemId) return;
+    const item =
+      THEME_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
+      STREAK_FLAME_STORE_ITEMS.find((storeItem) => storeItem.id === itemId);
+    if (!item) return;
+
+    const confirmed = window.confirm(`Remove ${item.title} from your account?`);
+    if (!confirmed) return;
+
+    setRemovingItemId(itemId);
+    setSettingsMessage(null);
+    try {
+      const { error } = await supabase
+        .from("user_store_purchases")
+        .delete()
+        .eq("user_id", user.id)
+        .eq("item_id", itemId);
+      if (error) throw error;
+
+      setStorePurchases((current) => current.filter((purchase) => purchase.item_id !== itemId));
+
+      if (item.themeId && selectedTheme === item.themeId) {
+        await handleThemeSelect("light");
+      }
+
+      if (item.flameId && selectedFlame === item.flameId) {
+        await handleFlameSelect("default");
+      }
+
+      setSettingsMessage(`${item.title} removed.`);
+    } catch (error: any) {
+      setSettingsMessage(
+        /row-level security|policy|permission/i.test(error.message || "")
+          ? "Deleting purchases needs the store delete policy SQL. Run ADD_USER_STORE_PURCHASES_DELETE_POLICY.sql in Supabase."
+          : error.message || "Could not remove that item.",
+      );
+    } finally {
+      setRemovingItemId(null);
     }
   }
 
@@ -306,6 +373,7 @@ export default function SettingsPage() {
     );
   }
 
+  const ownedStoreItemIds = storePurchases.map((purchase) => purchase.item_id);
   const ownedThemeIds = new Set(
     THEME_STORE_ITEMS
       .filter((item) => ownedStoreItemIds.includes(item.id) && item.themeId)
@@ -319,7 +387,7 @@ export default function SettingsPage() {
       .filter((item) => ownedStoreItemIds.includes(item.id) && item.flameId)
       .map((item) => item.flameId),
   );
-  const availableFlames = FLAME_COSMETICS;
+  const availableFlames = FLAME_COSMETICS.filter((flame) => ownerHasUnlimitedDiamonds || flame.id === "default" || ownedFlameIds.has(flame.id));
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
@@ -340,27 +408,45 @@ export default function SettingsPage() {
           </p>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {availableThemes.map((theme) => (
-              <button
-                key={theme.id}
-                type="button"
-                onClick={() => void handleThemeSelect(theme.id)}
-                disabled={themeSaving === theme.id}
-                className={`rounded-2xl border p-3 text-left transition hover:-translate-y-0.5 hover:shadow-sm ${
-                  selectedTheme === theme.id ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
-                }`}
-              >
-                <div className="flex gap-1">
-                  {[theme.background, theme.surfaceSoft, theme.accent, theme.progressFill].map((color) => (
-                    <span key={color} className="h-6 flex-1 rounded-full border border-black/5" style={{ backgroundColor: color }} />
-                  ))}
+            {availableThemes.map((theme) => {
+              const storeItem = THEME_STORE_ITEMS.find((item) => item.themeId === theme.id);
+              const canDelete = Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id));
+              return (
+                <div
+                  key={theme.id}
+                  className={`rounded-2xl border p-3 text-left transition ${
+                    selectedTheme === theme.id ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => void handleThemeSelect(theme.id)}
+                    disabled={themeSaving === theme.id}
+                    className="w-full text-left transition hover:-translate-y-0.5 disabled:hover:translate-y-0"
+                  >
+                    <div className="flex gap-1">
+                      {[theme.background, theme.surfaceSoft, theme.accent, theme.progressFill].map((color) => (
+                        <span key={color} className="h-6 flex-1 rounded-full border border-black/5" style={{ backgroundColor: color }} />
+                      ))}
+                    </div>
+                    <p className="mt-3 text-sm font-black text-gray-950">{theme.name}</p>
+                    <p className="mt-1 text-xs font-semibold text-gray-500">
+                      {themeSaving === theme.id ? "Saving..." : selectedTheme === theme.id ? "Active" : "Use theme"}
+                    </p>
+                  </button>
+                  {canDelete && storeItem ? (
+                    <button
+                      type="button"
+                      onClick={() => void handleDeleteStoreItem(storeItem.id)}
+                      disabled={removingItemId === storeItem.id}
+                      className="mt-3 w-full rounded-full border border-red-200 px-3 py-1.5 text-xs font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
+                    >
+                      {removingItemId === storeItem.id ? "Removing..." : "Delete"}
+                    </button>
+                  ) : null}
                 </div>
-                <p className="mt-3 text-sm font-black text-gray-950">{theme.name}</p>
-                <p className="mt-1 text-xs font-semibold text-gray-500">
-                  {themeSaving === theme.id ? "Saving..." : selectedTheme === theme.id ? "Active" : "Use theme"}
-                </p>
-              </button>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -372,23 +458,41 @@ export default function SettingsPage() {
           </p>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {availableFlames.map((flame) => (
-              <button
-                key={flame.id}
-                type="button"
-                onClick={() => void handleFlameSelect(flame.id)}
-                disabled={flameSaving === flame.id}
-                className={`rounded-2xl border p-3 text-center transition hover:-translate-y-0.5 hover:shadow-sm ${
-                  selectedFlame === flame.id ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
-                }`}
-              >
-                <AnimatedFlame flameId={flame.id} size={48} />
-                <p className="mt-3 text-sm font-black text-gray-950">{flame.name}</p>
-                <p className="mt-1 text-xs font-semibold text-gray-500">
-                  {flameSaving === flame.id ? "Saving..." : selectedFlame === flame.id ? "Active" : "Use flame"}
-                </p>
-              </button>
-            ))}
+            {availableFlames.map((flame) => {
+              const storeItem = STREAK_FLAME_STORE_ITEMS.find((item) => item.flameId === flame.id);
+              const canDelete = Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id));
+              return (
+                <div
+                  key={flame.id}
+                  className={`rounded-2xl border p-3 text-center transition ${
+                    selectedFlame === flame.id ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => void handleFlameSelect(flame.id)}
+                    disabled={flameSaving === flame.id}
+                    className="w-full text-center transition hover:-translate-y-0.5 disabled:hover:translate-y-0"
+                  >
+                    <StreakFlameEmoji flameId={flame.id} size={48} title={flame.name} />
+                    <p className="mt-3 text-sm font-black text-gray-950">{flame.name}</p>
+                    <p className="mt-1 text-xs font-semibold text-gray-500">
+                      {flameSaving === flame.id ? "Saving..." : selectedFlame === flame.id ? "Active" : "Use flame"}
+                    </p>
+                  </button>
+                  {canDelete && storeItem ? (
+                    <button
+                      type="button"
+                      onClick={() => void handleDeleteStoreItem(storeItem.id)}
+                      disabled={removingItemId === storeItem.id}
+                      className="mt-3 w-full rounded-full border border-red-200 px-3 py-1.5 text-xs font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
+                    >
+                      {removingItemId === storeItem.id ? "Removing..." : "Delete"}
+                    </button>
+                  ) : null}
+                </div>
+              );
+            })}
           </div>
         </div>
 
