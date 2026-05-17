@@ -56,6 +56,15 @@
   text-decoration-color: rgba(153, 27, 27, 0.62);
 }
 
+[data-bb-theme]:not([data-bb-theme="light"]) .bible-highlight {
+  color: var(--bb-text-primary) !important;
+  text-decoration-color: color-mix(in srgb, var(--bb-text-primary) 48%, transparent) !important;
+}
+
+[data-bb-theme]:not([data-bb-theme="light"]) .bible-highlight:hover {
+  text-decoration-color: color-mix(in srgb, var(--bb-text-primary) 72%, transparent) !important;
+}
+
 /* Plain text mode for chapter reading: keep enriched HTML, remove all highlight styling */
 .plain-text-mode .bible-highlight,
 .plain-text-mode .bible-highlight-people,

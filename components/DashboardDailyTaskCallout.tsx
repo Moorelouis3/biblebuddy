@@ -416,9 +416,11 @@ function DashboardInlineBibleReader({
         }
         .dashboard-inline-bible-reader .bible-highlight {
           color: var(--bb-reader-text, #102a43) !important;
+          text-decoration-color: color-mix(in srgb, var(--bb-reader-text, #102a43) 48%, transparent) !important;
         }
         .dashboard-inline-bible-reader .bible-highlight:hover {
           color: var(--bb-accent, #2f7fe8) !important;
+          text-decoration-color: color-mix(in srgb, var(--bb-reader-text, #102a43) 72%, transparent) !important;
         }
       `}</style>
       {!selectedTerm ? (

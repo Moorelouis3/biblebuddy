@@ -148,7 +148,7 @@ export default function GroupWeeklyPollCard({
           onOpen();
         }
       }}
-      className={compactResults && onOpen ? "cursor-pointer" : undefined}
+      className={`rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 ${compactResults && onOpen ? "cursor-pointer" : ""}`}
     >
       {pollSet.intro ? <p className="text-sm leading-relaxed text-[var(--bb-text-secondary,#4b5563)]">{pollSet.intro}</p> : null}
       <div className="mt-4 space-y-2.5">
@@ -167,14 +167,14 @@ export default function GroupWeeklyPollCard({
                 void handleVote(option.key);
               }}
               disabled={!userId || !!submitting}
-              className={`relative w-full overflow-hidden rounded-2xl border px-4 py-3 text-left transition ${
+              className={`relative w-full overflow-hidden rounded-xl border px-4 py-3 text-left transition ${
                 selected
                   ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)]"
                   : "border-[var(--bb-card-border)] bg-[var(--bb-card)] hover:border-[var(--bb-accent)] hover:bg-[var(--bb-surface)]"
               } disabled:opacity-70`}
             >
               <div
-                className="absolute inset-y-0 left-0 rounded-r-2xl bg-[var(--bb-accent-soft)] transition-all"
+                className="absolute inset-y-0 left-0 rounded-r-xl bg-[var(--bb-accent-soft)] transition-all"
                 style={{ width: `${currentVote ? percent : 0}%`, opacity: currentVote ? 1 : 0 }}
               />
 

@@ -222,7 +222,7 @@ export default function GroupWeeklyTriviaCard({
 
   return (
     <div
-      className="rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface)] p-4"
+      className="rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4"
       onClick={(event) => event.stopPropagation()}
       onKeyDown={(event) => event.stopPropagation()}
     >
@@ -237,7 +237,7 @@ export default function GroupWeeklyTriviaCard({
         </span>
       </div>
 
-      <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#e9e2d8)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+      <div className="mt-4">
         {phase === "start" && (
           <div className="text-center">
             <p className="text-sm text-[var(--bb-text-secondary,#4b5563)]">Jump into this week's group trivia, then see how your score stacks up on the board.</p>
@@ -307,7 +307,7 @@ export default function GroupWeeklyTriviaCard({
 
         {phase === "done" && (
           <div>
-            <div className="rounded-2xl bg-[var(--bb-accent-soft)] px-4 py-4 text-center">
+            <div className="bg-[var(--bb-accent-soft)] px-4 py-4 text-center">
               <p className="text-3xl">🏁</p>
               <p className="mt-2 text-xl font-bold text-[var(--bb-text-primary,#111827)]">{savedScore ?? score} / {totalQuestions}</p>
               <p className="mt-1 text-sm text-[var(--bb-text-secondary,#4b5563)]">

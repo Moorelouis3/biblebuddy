@@ -2135,19 +2135,29 @@ export default function DashboardPage() {
     return (
       <section className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-surface)] p-4 shadow-[0_16px_42px_rgba(38,63,99,0.12)]">
         <div className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border)] bg-[var(--bb-card)]">
-          <div className="relative p-5">
-            <div className="absolute -right-10 -top-12 h-32 w-32 rounded-full bg-[var(--bb-accent-soft)] opacity-80" aria-hidden="true" />
-            <p className="relative text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Bible Buddy Store</p>
-            <div className="relative mt-2 flex flex-wrap items-end justify-between gap-3">
-              <div>
+          <div className="p-5">
+            <div className="flex items-start justify-between gap-3">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Bible Buddy Store</p>
+              <button
+                type="button"
+                onClick={() => setShowDiamondStore(false)}
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] text-xl font-black text-[var(--bb-text-secondary)] transition hover:bg-[var(--bb-card)] hover:text-[var(--bb-text-primary)]"
+                aria-label="Close store"
+              >
+                ×
+              </button>
+            </div>
+            <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
+              <div className="min-w-0">
                 <h2 className="text-3xl font-black leading-tight text-[var(--bb-text-primary)]">Spend your diamonds</h2>
                 <p className="mt-2 max-w-md text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
                   Buy themes, streak styles, Bible Buddies, and boosts for your Bible habit.
                 </p>
               </div>
-              <div className="rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-4 py-3 text-right">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted)]">Your stash</p>
-                <p className="text-2xl font-black text-[var(--bb-text-primary)]">💎 {diamondCount.toLocaleString()}</p>
+              <div className="text-right">
+                <p className="text-2xl leading-none" aria-hidden="true">💎💎💎</p>
+                <p className="mt-2 text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted)]">Your stash</p>
+                <p className="text-3xl font-black leading-none text-[var(--bb-text-primary)]">{diamondCount.toLocaleString()}</p>
               </div>
             </div>
           </div>
