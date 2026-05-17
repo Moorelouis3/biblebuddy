@@ -1594,6 +1594,7 @@ export default function DashboardJourneyExperience({
   const [embeddedCommunityGroupId, setEmbeddedCommunityGroupId] = useState<string | null>(null);
   const [embeddedCommunityLoading, setEmbeddedCommunityLoading] = useState(false);
   const [embeddedCommunityError, setEmbeddedCommunityError] = useState<string | null>(null);
+  const [embeddedCommunityHeight, setEmbeddedCommunityHeight] = useState(620);
   const [buddiesDashboard, setBuddiesDashboard] = useState<BuddiesDashboardPayload | null>(null);
   const [buddiesDashboardLoading, setBuddiesDashboardLoading] = useState(false);
   const [buddiesDashboardError, setBuddiesDashboardError] = useState<string | null>(null);
@@ -1802,22 +1803,13 @@ export default function DashboardJourneyExperience({
     let cancelled = false;
 
     async function loadShareRewards() {
+      if (!userId) return;
       if (shareRewardsProfile || shareRewardsLoading) return;
+      const inviteOwnerId = userId;
       setShareRewardsLoading(true);
       setShareRewardsError(null);
 
       try {
-        const { data: sessionData } = await supabase.auth.getSession();
-        const token = sessionData.session?.access_token;
-        if (!token) throw new Error("Sign in again to load Buddy Rewards.");
-
-        const response = await fetch("/api/ambassador/ensure-profile", {
-          method: "POST",
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const profilePayload = await response.json();
-        if (!response.ok) throw new Error(profilePayload?.error || "Could not load Buddy Rewards.");
-
         const { data: refs, error: refsError } = await supabase
           .from("ambassador_referrals")
           .select("referred_user_id, trial_started_at, trial_ends_at")
@@ -1826,8 +1818,7 @@ export default function DashboardJourneyExperience({
         if (refsError) throw refsError;
 
         if (!cancelled) {
-          const profileData = { referral_code: profilePayload.referral_code, is_active: profilePayload.is_active, user_id: profilePayload.user_id || userId };
-          setShareRewardsProfile(profileData);
+          setShareRewardsProfile({ referral_code: "", is_active: true, user_id: inviteOwnerId });
           setShareRewardsReferrals((refs || []) as ShareRewardsReferral[]);
         }
       } catch (error: any) {
@@ -1845,6 +1836,21 @@ export default function DashboardJourneyExperience({
       cancelled = true;
     };
   }, [safeActivePage, shareRewardsLoading, shareRewardsProfile, userId]);
+
+  useEffect(() => {
+    function handleEmbeddedCommunityHeight(event: MessageEvent) {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data as { type?: string; height?: number } | null;
+      if (!data || data.type !== "bb-community-height") return;
+
+      const nextHeight = Number(data.height);
+      if (!Number.isFinite(nextHeight)) return;
+      setEmbeddedCommunityHeight(Math.max(620, Math.ceil(nextHeight)));
+    }
+
+    window.addEventListener("message", handleEmbeddedCommunityHeight);
+    return () => window.removeEventListener("message", handleEmbeddedCommunityHeight);
+  }, []);
 
   const nextTask = visibleTasks.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = visibleTasks.findIndex((task) => !task.done);
@@ -3296,48 +3302,44 @@ export default function DashboardJourneyExperience({
   );
 
   const renderEmbeddedCommunityPage = () => (
-    <section className="w-full px-1">
-      <div className="mx-auto flex max-w-xl flex-col gap-3 pb-3">
-        <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
-          <div className="bg-[var(--bb-surface,#f8fbff)] px-4 py-4 sm:px-5">
-            <h2 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Community</h2>
-            <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
-              Connect with Bible Buddies across the world through study posts, prayers, questions, encouragement, and real chapter progress.
-            </p>
-          </div>
-
-          {embeddedCommunityLoading ? (
-            renderCommunityLoadingSkeleton()
-          ) : embeddedCommunityError ? (
-            <div className="grid min-h-[420px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
-              <div>
-                <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">Community needs a refresh.</p>
-                <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">{embeddedCommunityError}</p>
-                <Link
-                  href="/study-groups"
-                  className="mt-5 inline-flex rounded-full bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)]"
-                >
-                  Open Community
-                </Link>
-              </div>
-            </div>
-          ) : embeddedCommunityGroupId ? (
-            <div className="-mx-4 sm:-mx-5">
-              <iframe
-                key={embeddedCommunityGroupId}
-                src={`/study-groups/${embeddedCommunityGroupId}/chat?embedded=dashboard&tab=home`}
-                title="Bible Buddy Community"
-                className="block w-full border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
-                scrolling="yes"
-                style={{ height: "calc(100dvh - 130px)", minHeight: "calc(100dvh - 130px)" }}
-              />
-            </div>
-          ) : (
-            <div className="grid min-h-[520px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
-              <p className="text-sm font-black text-[var(--bb-text-secondary,#5f6368)]">Open Community from the menu to load the group.</p>
-            </div>
-          )}
+    <section className="-mx-4 w-[calc(100%+2rem)] sm:-mx-5 sm:w-[calc(100%+2.5rem)]">
+      <div className="bg-[var(--bb-background,#f8fbff)] pb-3">
+        <div className="border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 sm:px-5">
+          <h2 className="text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Community</h2>
+          <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
+            Connect with Bible Buddies across the world.
+          </p>
         </div>
+
+        {embeddedCommunityLoading ? (
+          renderCommunityLoadingSkeleton()
+        ) : embeddedCommunityError ? (
+          <div className="grid min-h-[420px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
+            <div>
+              <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">Community needs a refresh.</p>
+              <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">{embeddedCommunityError}</p>
+              <Link
+                href="/study-groups"
+                className="mt-5 inline-flex rounded-full bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)]"
+              >
+                Open Community
+              </Link>
+            </div>
+          </div>
+        ) : embeddedCommunityGroupId ? (
+          <iframe
+            key={embeddedCommunityGroupId}
+            src={`/study-groups/${embeddedCommunityGroupId}/chat?embedded=dashboard&tab=home`}
+            title="Bible Buddy Community"
+            className="block w-full border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
+            scrolling="no"
+            style={{ height: embeddedCommunityHeight, minHeight: "calc(100dvh - 130px)" }}
+          />
+        ) : (
+          <div className="grid min-h-[520px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
+            <p className="text-sm font-black text-[var(--bb-text-secondary,#5f6368)]">Open Community from the menu to load the group.</p>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -3930,9 +3932,10 @@ export default function DashboardJourneyExperience({
   };
 
   const renderEmbeddedSharePage = () => {
+    const inviteUserId = shareRewardsProfile?.user_id || userId;
     const shareUrl =
-      shareRewardsProfile?.user_id && typeof window !== "undefined"
-        ? `${window.location.origin}/signup?referrer=${encodeURIComponent(shareRewardsProfile.user_id)}`
+      inviteUserId && typeof window !== "undefined"
+        ? `${window.location.origin}/signup?referrer=${encodeURIComponent(inviteUserId)}`
         : "https://thebiblestudybuddy.com/signup";
     const signupCount = shareRewardsReferrals.length;
     const earnedXp = signupCount * 250;
@@ -3968,8 +3971,7 @@ export default function DashboardJourneyExperience({
                   <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={104} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{selectedBuddy.name} says:</p>
-                  <p className="mt-1 text-sm font-bold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
+                  <p className="text-sm font-bold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
                     For every person you get to sign up, you earn 250 XP points and 250 diamonds.
                   </p>
                   <span className="mt-3 inline-flex rounded-full bg-[var(--bb-accent,#2f7fe8)] px-3 py-1 text-xs font-black text-white">
@@ -3980,12 +3982,9 @@ export default function DashboardJourneyExperience({
             </div>
 
             <div className="space-y-4 p-4 sm:p-5">
-              {shareRewardsLoading ? (
-                <p className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4 text-sm font-black text-[var(--bb-text-muted,#6b7280)]">Loading your invite link...</p>
-              ) : shareRewardsError ? (
+              {shareRewardsError ? (
                 <p className="rounded-2xl bg-red-50 px-4 py-4 text-sm font-black text-red-600">{shareRewardsError}</p>
-              ) : (
-                <>
+              ) : null}
                   <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
                     <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Your Invite Link</p>
                     <p className="mt-3 truncate rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-xs font-bold text-[var(--bb-text-secondary,#5f6368)]">
@@ -4023,7 +4022,7 @@ export default function DashboardJourneyExperience({
                       href={`sms:?&body=${encodedShareMessage}`}
                       className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-card,#ffffff)]"
                     >
-                      Text
+                      SMS
                     </a>
                     <a
                       href={`mailto:?subject=Join me on Bible Buddy&body=${encodedShareMessage}`}
@@ -4036,7 +4035,14 @@ export default function DashboardJourneyExperience({
                       onClick={copyInviteLink}
                       className="rounded-2xl border border-[#ead8ff] bg-[#fbf7ff] px-3 py-3 text-center text-sm font-black text-[#6f3bc2] transition hover:bg-white"
                     >
-                      Copy for Instagram
+                      Instagram DM
+                    </button>
+                    <button
+                      type="button"
+                      onClick={copyInviteLink}
+                      className="rounded-2xl border border-[#c7f0ff] bg-[#f2fcff] px-3 py-3 text-center text-sm font-black text-[#0b6880] transition hover:bg-white"
+                    >
+                      TikTok Message
                     </button>
                   </div>
 
@@ -4059,7 +4065,9 @@ export default function DashboardJourneyExperience({
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Signup Log</p>
-                        <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#5f6368)]">Every signup from your link appears here.</p>
+                        <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#5f6368)]">
+                          {shareRewardsLoading ? "Checking for signups..." : "Every signup from your link appears here."}
+                        </p>
                       </div>
                       <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">{signupCount}</span>
                     </div>
@@ -4080,8 +4088,6 @@ export default function DashboardJourneyExperience({
                       </p>
                     )}
                   </div>
-                </>
-              )}
             </div>
           </div>
         </div>
