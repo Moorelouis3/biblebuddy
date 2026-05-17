@@ -4996,12 +4996,7 @@ export default function DashboardPage() {
                 ×
               </button>
               <div className="mt-1 flex justify-center">
-                <div className="relative rounded-full bg-white p-2 shadow-lg">
-                  <LouisAvatar mood={dailyLoginGiftReveal.status === "opened" ? "stareyes" : "wave"} size={104} />
-                  <span className="absolute -right-2 -top-2 grid h-11 w-11 place-items-center rounded-full bg-[#fff3c4] text-2xl shadow-md" aria-hidden="true">
-                    🎁
-                  </span>
-                </div>
+                <LouisAvatar mood={dailyLoginGiftReveal.status === "opened" ? "stareyes" : "wave"} size={104} />
               </div>
               <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f86bd]">
                 Daily Login Gift
