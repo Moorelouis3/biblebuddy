@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
@@ -21,6 +22,10 @@ import {
   type FreeChapterUnlockTarget,
 } from "../lib/freePlanGating";
 import { TASK_REWARD_LABELS } from "../lib/progressionRewards";
+
+const ChatLouis = dynamic(() => import("./ChatLouis").then((mod) => mod.ChatLouis), {
+  ssr: false,
+});
 
 type LevelInfo = {
   level: number;
@@ -1486,7 +1491,7 @@ export default function DashboardJourneyExperience({
   } | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
 
-  const dashboardPageKeys = ["home", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
+  const dashboardPageKeys = ["home", "buddy", "bible", "bible_studies", "group", "tv", "games", "share"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
   const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
@@ -1501,11 +1506,21 @@ export default function DashboardJourneyExperience({
   const dashboardNavItems: Array<{
     key: DashboardPageKey;
     label: string;
-    icon: string;
+    icon: ReactNode;
     href: string;
     onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   }> = [
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
+    {
+      key: "buddy",
+      label: "Lil Louis",
+      icon: (
+        <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-full">
+          <LouisAvatar mood="bible" size={32} />
+        </span>
+      ),
+      href: "#lil-louis",
+    },
     { key: "bible", label: "The Bible", icon: "\uD83D\uDCD6", href: dashboardPageLinks.bible?.href || "/reading", onClick: dashboardPageLinks.bible?.onClick },
     { key: "bible_studies", label: "Bible Studies", icon: "\uD83C\uDF05", href: dashboardPageLinks.bible_studies?.href || "/bible-studies", onClick: dashboardPageLinks.bible_studies?.onClick },
     { key: "group", label: "Community", icon: "\uD83D\uDC65", href: dashboardPageLinks.group?.href || "/study-groups", onClick: dashboardPageLinks.group?.onClick },
@@ -2886,6 +2901,33 @@ export default function DashboardJourneyExperience({
     </section>
   );
 
+  const renderEmbeddedBuddyPage = () => (
+    <section className="w-full px-1 pb-4">
+      <div className="mx-auto flex max-w-xl flex-col gap-4">
+        <div className="rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-5 shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
+          <div className="flex items-center gap-4">
+            <div className="grid h-16 w-16 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] shadow-sm">
+              <LouisAvatar mood="stareyes" size={62} />
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
+                Bible Buddy
+              </p>
+              <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                Lil Louis
+              </h2>
+              <p className="mt-1 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+                Ask questions, get help with your next step, or talk through what you are studying.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <ChatLouis displayMode="embedded" />
+      </div>
+    </section>
+  );
+
   const renderEmbeddedTvPage = () => (
     <section className="w-full px-1">
       <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
@@ -4068,26 +4110,30 @@ export default function DashboardJourneyExperience({
         </div>
 
         <div className={getSlideClass(1)}>
-          {renderEmbeddedBiblePage()}
+          {renderEmbeddedBuddyPage()}
         </div>
 
         <div className={getSlideClass(2)}>
-          {renderEmbeddedBibleStudiesPage()}
+          {renderEmbeddedBiblePage()}
         </div>
 
         <div className={getSlideClass(3)}>
-          {renderEmbeddedCommunityPage()}
+          {renderEmbeddedBibleStudiesPage()}
         </div>
 
         <div className={getSlideClass(4)}>
-          {renderEmbeddedTvPage()}
+          {renderEmbeddedCommunityPage()}
         </div>
 
         <div className={getSlideClass(5)}>
-          {renderEmbeddedGamesPage()}
+          {renderEmbeddedTvPage()}
         </div>
 
         <div className={getSlideClass(6)}>
+          {renderEmbeddedGamesPage()}
+        </div>
+
+        <div className={getSlideClass(7)}>
           {renderEmbeddedSharePage()}
         </div>
 
@@ -4121,7 +4167,7 @@ export default function DashboardJourneyExperience({
       <nav className="sticky bottom-2 z-40 mx-auto max-w-xl rounded-[22px] border border-[#dbe7f4] bg-white/95 px-2 pb-1.5 pt-1.5 shadow-[0_12px_28px_rgba(38,63,99,0.14)] backdrop-blur">
         <div className="mx-auto mb-0.5 h-1 w-10 rounded-full bg-[#dbe7f4]" aria-hidden="true" />
         <div className="[scrollbar-width:none] overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          <div className="flex min-w-max items-end gap-1 text-center">
+          <div className="flex min-w-max items-end gap-0.5 text-center sm:min-w-0">
           {dashboardNavItems.map((item, index) => {
             const isActive = index === safeActivePage;
             return (
@@ -4133,12 +4179,12 @@ export default function DashboardJourneyExperience({
                   event.preventDefault();
                   snapToPage(index);
                 }}
-                className={`flex min-w-[96px] flex-col items-center justify-center gap-0.5 rounded-2xl px-3 py-1.5 text-[9px] font-black transition sm:min-w-[112px] sm:text-[10px] ${
+                className={`flex min-w-[68px] flex-col items-center justify-center gap-0.5 rounded-2xl px-1.5 py-1.5 text-[8.5px] font-black transition sm:min-w-[76px] sm:text-[9.5px] ${
                   isActive ? "text-[#2f7fe8]" : "text-gray-500 hover:bg-[#f4f8ff] hover:text-gray-900"
                 }`}
               >
                 <span
-                  className={`grid h-7 w-7 place-items-center rounded-full text-sm ${
+                  className={`grid h-8 w-8 place-items-center rounded-full text-sm ${
                     isActive ? "bg-[#2f7fe8] text-white shadow-sm" : "bg-transparent"
                   }`}
                   aria-hidden="true"

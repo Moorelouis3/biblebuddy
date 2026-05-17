@@ -35,9 +35,6 @@ import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
 
-const ChatLouis = dynamic(() => import("./ChatLouis").then((mod) => mod.ChatLouis), {
-  ssr: false,
-});
 const FeedbackModal = dynamic(() => import("./FeedbackModal").then((mod) => mod.FeedbackModal), {
   ssr: false,
 });
@@ -2638,9 +2635,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         )}
         {children}
       </main>
-
-      {/* CHAT LOUIS - always rendered in AppShell */}
-      {!isBarePage && <ChatLouis />}
 
       {/* BUDDY CELEBRATION MODAL */}
       {showBuddyCelebration && celebrationData && (

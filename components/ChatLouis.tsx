@@ -27,6 +27,10 @@ type Message = {
   serverMessageId?: string | null;
 };
 
+type ChatLouisProps = {
+  displayMode?: "floating" | "embedded";
+};
+
 type LouisInboxMessageRow = {
   id: string;
   title: string | null;
@@ -1606,8 +1610,9 @@ function buildLouisJourneyRecommendation({
   return null;
 }
 
-export function ChatLouis() {
+export function ChatLouis({ displayMode = "floating" }: ChatLouisProps) {
   const { featureToursEnabled } = useFeatureRenderPriority();
+  const isEmbedded = displayMode === "embedded";
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -3151,6 +3156,13 @@ export function ChatLouis() {
     appendAssistantMessage(LOUIS_OPENING_GREETINGS[openingIndex]);
   }
 
+  useEffect(() => {
+    if (!isEmbedded) return;
+    if (!louisUserId) return;
+    if (isOpen) return;
+    void handleChatButtonClick();
+  }, [isEmbedded, louisUserId, isOpen]);
+
   async function handleLouisGuideSecondary() {}
 
   async function handleLouisGuideClose() {}
@@ -3447,10 +3459,12 @@ export function ChatLouis() {
   const bubbleOuterSize = isLouisActive ? "h-32 w-32" : "h-28 w-28";
   const avatarSize = isLouisActive ? 118 : 104;
 
+  const showPanel = isEmbedded || isOpen;
+
   return (
     <>
       {/* Floating avatar button */}
-      {!isOpen && (
+      {!isEmbedded && !isOpen && (
         <button
           ref={buttonRef}
           onClick={async (e) => {
@@ -3483,21 +3497,34 @@ export function ChatLouis() {
         </button>
       )}
 
-      {/* Chat panel - Medium size */}
-      {isOpen && (
+      {/* Chat panel */}
+      {showPanel && (
         <div
           ref={panelRef}
-          style={{
-            ...panelStyle,
-            cursor: isDragging ? "grabbing" : "default",
-          }}
-          className="z-[70] w-[360px] h-[500px] rounded-t-2xl bg-white border border-gray-200 shadow-2xl flex flex-col"
+          style={
+            isEmbedded
+              ? { cursor: "default" }
+              : {
+                  ...panelStyle,
+                  cursor: isDragging ? "grabbing" : "default",
+                }
+          }
+          className={
+            isEmbedded
+              ? "mx-auto flex min-h-[620px] w-full max-w-xl flex-col overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-[0_14px_36px_rgba(38,63,99,0.12)]"
+              : "z-[70] w-[360px] h-[500px] rounded-t-2xl bg-white border border-gray-200 shadow-2xl flex flex-col"
+          }
         >
           {/* Header */}
           <div 
-            className="px-4 py-2.5 border-b border-gray-200 flex items-center justify-between bg-gray-50 rounded-t-2xl cursor-grab active:cursor-grabbing"
+            className={
+              isEmbedded
+                ? "flex items-center justify-between border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4"
+                : "px-4 py-2.5 border-b border-gray-200 flex items-center justify-between bg-gray-50 rounded-t-2xl cursor-grab active:cursor-grabbing"
+            }
             style={{ touchAction: "none" }}
             onPointerDown={(e) => {
+              if (isEmbedded) return;
               const target = e.target as HTMLElement;
               if (target.closest("button")) {
                 return; // Don't drag if clicking close button
@@ -3505,26 +3532,38 @@ export function ChatLouis() {
               handlePointerDown(e);
             }}
           >
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-semibold text-gray-900">Chat with Lil Louis</span>
+            <div className="flex items-center gap-3">
+              <div className="grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+                <LouisAvatar mood="bible" size={isEmbedded ? 46 : 34} />
+              </div>
+              <div>
+                <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Chat with Lil Louis</span>
+                {isEmbedded ? (
+                  <span className="block text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+                    Your Bible Buddy DM
+                  </span>
+                ) : null}
+              </div>
             </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="text-gray-500 hover:text-gray-700 text-base leading-none"
-              onPointerDown={(e) => e.stopPropagation()}
-            >
-              ✕
-            </button>
+            {!isEmbedded ? (
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-gray-500 hover:text-gray-700 text-base leading-none"
+                onPointerDown={(e) => e.stopPropagation()}
+              >
+                ✕
+              </button>
+            ) : null}
           </div>
 
           {/* Messages area */}
           <div
             ref={messagesContainerRef}
-            className="flex-1 overflow-y-auto px-4 py-3 space-y-2.5 bg-white"
+            className="flex-1 overflow-y-auto bg-[var(--bb-card,#ffffff)] px-4 py-4 space-y-3"
           >
             {messages.length === 0 && (
               <div className="flex items-center justify-center h-full">
-                <p className="text-xs text-gray-500 text-center">
+                <p className="max-w-xs text-center text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
                   {emptyStatePrompt}
                 </p>
               </div>
@@ -3546,8 +3585,8 @@ export function ChatLouis() {
                   <div
                     className={
                       m.role === "user"
-                        ? "inline-block rounded-[22px] rounded-br-md border border-[#b8d9ef] bg-[#7BAFD4] px-3.5 py-2.5 text-left text-slate-950 shadow-sm"
-                        : "inline-block rounded-[22px] rounded-bl-md border border-gray-200 bg-white px-3.5 py-2.5 text-gray-800 shadow-sm"
+                        ? "inline-block rounded-[22px] rounded-br-md border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-accent-soft,#eaf5ff)] px-3.5 py-2.5 text-left text-[var(--bb-text-primary,#111827)] shadow-sm"
+                        : "inline-block rounded-[22px] rounded-bl-md border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3.5 py-2.5 text-[var(--bb-text-primary,#111827)] shadow-sm"
                     }
                   >
                     {m.role === "assistant" ? (
@@ -3591,7 +3630,7 @@ export function ChatLouis() {
           </div>
 
           {quickReplies.length > 0 ? (
-            <div className="border-t border-gray-200 bg-white px-3 py-3">
+            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-3">
               <div className={`gap-2 ${quickReplies.length === 1 ? "flex justify-end" : "grid grid-cols-2"}`}>
                 {quickReplies.map((reply) => (
                   <button
@@ -3615,7 +3654,7 @@ export function ChatLouis() {
 
           {/* Input area */}
           <div 
-            className="border-t border-gray-200 px-3 py-2.5 bg-gray-50 rounded-b-2xl"
+            className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3"
           >
             <div className="flex gap-2 items-end">
               <div className="flex-1 flex items-end gap-2">
@@ -3626,7 +3665,7 @@ export function ChatLouis() {
                   onKeyDown={handleKeyDown}
                   placeholder={inputPlaceholder}
                   rows={1}
-                  className="flex-1 text-xs border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white resize-none min-h-[36px] max-h-[120px] overflow-y-auto"
+                  className="min-h-[40px] max-h-[130px] flex-1 resize-none overflow-y-auto rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-sm text-[var(--bb-text-primary,#111827)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#2f7fe8)]"
                 />
                 {isListening && audioLevels.length > 0 && (
                   <div className="flex items-end gap-0.5 h-8 pb-1">
@@ -3649,7 +3688,7 @@ export function ChatLouis() {
                 className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition ${
                   isListening
                     ? "bg-red-500 hover:bg-red-600 text-white"
-                    : "bg-gray-200 hover:bg-gray-300 text-gray-600"
+                    : "bg-[var(--bb-accent-soft,#eaf5ff)] hover:brightness-95 text-[var(--bb-accent,#2f7fe8)]"
                 }`}
                 aria-label={isListening ? "Stop listening" : "Start listening"}
               >
@@ -3682,7 +3721,7 @@ export function ChatLouis() {
               <button
                 onClick={handleSend}
                 disabled={isSending || !input.trim()}
-                className="text-xs font-semibold bg-blue-600 text-white px-4 py-2 rounded-full disabled:opacity-60 disabled:cursor-not-allowed hover:bg-blue-700 transition"
+                className="rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-2 text-xs font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSending ? "Sending..." : "Send"}
               </button>
