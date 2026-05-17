@@ -74,6 +74,7 @@ const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 4 * 60 * 60 * 1000;
 const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
 const MAX_BADGE_POPUPS_PER_SESSION = 3;
 const MYSTERY_PRIZE_REWARDS = [100, 125, 150, 175, 200, 250];
+const DAILY_LOGIN_GIFT_WINDOW_MS = 24 * 60 * 60 * 1000;
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -147,6 +148,11 @@ type BadgePopupSeenRow = {
 };
 
 type MysteryPrizeReveal = {
+  status: "closed" | "opening" | "opened";
+  reward: number;
+};
+
+type DailyLoginGiftReveal = {
   status: "closed" | "opening" | "opened";
   reward: number;
 };
@@ -929,7 +935,7 @@ export default function DashboardPage() {
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [levelRefreshTick, setLevelRefreshTick] = useState(0);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
   const [showDiamondStore, setShowDiamondStore] = useState(false);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
   const [storeLoading, setStoreLoading] = useState(false);
@@ -937,6 +943,9 @@ export default function DashboardPage() {
   const [storeMessage, setStoreMessage] = useState<string | null>(null);
   const [mysteryPrizeReveal, setMysteryPrizeReveal] = useState<MysteryPrizeReveal | null>(null);
   const mysteryPrizeAwardingRef = useRef(false);
+  const [dailyLoginGiftReveal, setDailyLoginGiftReveal] = useState<DailyLoginGiftReveal | null>(null);
+  const dailyLoginGiftAwardingRef = useRef(false);
+  const dailyLoginGiftCheckRef = useRef<string | null>(null);
   const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
@@ -976,6 +985,14 @@ export default function DashboardPage() {
 
   function getDashboardBadgeLastShownKey(currentUserId: string) {
     return `bb:louis-dashboard-badge-last-shown:${currentUserId}`;
+  }
+
+  function getDailyLoginGiftLastVisitKey(currentUserId: string) {
+    return `bb:daily-login-gift:last-visit:${currentUserId}`;
+  }
+
+  function getDailyLoginGiftShownKey(currentUserId: string, dayKey: string) {
+    return `bb:daily-login-gift:shown:${currentUserId}:${dayKey}`;
   }
 
   function getDashboardLouisNudgeRotationKey(currentUserId: string, dayKey: string) {
@@ -2933,6 +2950,28 @@ export default function DashboardPage() {
     }, 650);
   }
 
+  async function handleOpenDailyLoginGift() {
+    if (!userId || !dailyLoginGiftReveal || dailyLoginGiftReveal.status !== "closed" || dailyLoginGiftAwardingRef.current) return;
+
+    dailyLoginGiftAwardingRef.current = true;
+    setDailyLoginGiftReveal((current) => current ? { ...current, status: "opening" } : current);
+
+    window.setTimeout(async () => {
+      const reward = dailyLoginGiftReveal.reward;
+      const awarded = await awardDiamonds(userId, reward);
+
+      if (awarded <= 0) {
+        setDailyLoginGiftReveal((current) => current ? { ...current, status: "closed" } : current);
+        dailyLoginGiftAwardingRef.current = false;
+        return;
+      }
+
+      setDailyLoginGiftReveal((current) => current ? { ...current, status: "opened" } : current);
+      confetti({ particleCount: 80, spread: 68, origin: { y: 0.62 } });
+      dailyLoginGiftAwardingRef.current = false;
+    }, 650);
+  }
+
   async function handleStorePurchase(item: BibleBuddyStoreItem) {
     if (!userId) {
       setStoreMessage("Sign in first so BibleBuddy can save what you buy.");
@@ -3149,11 +3188,11 @@ export default function DashboardPage() {
 
         let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, profile_image_url, display_name, username")
+          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username")
           .eq("user_id", userId)
           .maybeSingle();
 
-        if (error && /(diamonds_count|selected_streak_flame)/i.test(error.message || "")) {
+        if (error && /(diamonds_count|selected_streak_flame|daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(error.message || "")) {
           const fallback = await supabase
             .from("profile_stats")
             .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username")
@@ -3168,6 +3207,41 @@ export default function DashboardPage() {
         }
 
         const profileData = data;
+        const todayKey = getBibleBuddyLocalDayKey();
+        const nowIso = new Date().toISOString();
+        const dailyGiftShownKey = getDailyLoginGiftShownKey(userId, todayKey);
+        const localLastVisitKey = getDailyLoginGiftLastVisitKey(userId);
+        const localLastVisitAt =
+          typeof window !== "undefined" ? window.localStorage.getItem(localLastVisitKey) : null;
+        const previousGiftVisitAt = profileData?.daily_login_gift_last_visit_at ?? localLastVisitAt;
+        const previousGiftVisitMs = previousGiftVisitAt ? new Date(previousGiftVisitAt).getTime() : 0;
+        const hadRecentVisit =
+          Number.isFinite(previousGiftVisitMs) &&
+          previousGiftVisitMs > 0 &&
+          Date.now() - previousGiftVisitMs <= DAILY_LOGIN_GIFT_WINDOW_MS;
+        const dailyGiftAlreadyShown =
+          profileData?.daily_login_gift_last_shown_date === todayKey ||
+          (typeof window !== "undefined" && window.localStorage.getItem(dailyGiftShownKey) === "1");
+        const shouldShowDailyLoginGift = hadRecentVisit && !dailyGiftAlreadyShown;
+
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem(localLastVisitKey, nowIso);
+        }
+        const { error: dailyGiftVisitError } = await supabase
+          .from("profile_stats")
+          .update({
+            daily_login_gift_last_visit_at: nowIso,
+            ...(shouldShowDailyLoginGift ? { daily_login_gift_last_shown_date: todayKey } : {}),
+          })
+          .eq("user_id", userId);
+
+        if (dailyGiftVisitError && !/(daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(dailyGiftVisitError.message || "")) {
+          console.warn("[DAILY_LOGIN_GIFT] Could not update login gift tracking:", dailyGiftVisitError.message);
+        }
+        if (shouldShowDailyLoginGift && typeof window !== "undefined") {
+          window.localStorage.setItem(dailyGiftShownKey, "1");
+        }
+
         if (!didCancel) {
           setProfile({
             is_paid: profileData?.is_paid === true,
@@ -3178,10 +3252,16 @@ export default function DashboardPage() {
             grace_days_count: Math.max(0, Math.min(5, Number(profileData?.grace_days_count ?? 0))),
             diamonds_count: typeof profileData?.diamonds_count === "number" ? Math.max(0, profileData.diamonds_count) : null,
             selected_streak_flame: normalizeFlameCosmeticId(profileData?.selected_streak_flame),
+            daily_login_gift_last_visit_at: nowIso,
+            daily_login_gift_last_shown_date: shouldShowDailyLoginGift ? todayKey : profileData?.daily_login_gift_last_shown_date ?? null,
             profile_image_url: profileData?.profile_image_url ?? null,
             display_name: profileData?.display_name ?? null,
             username: profileData?.username ?? null,
           });
+          if (shouldShowDailyLoginGift && dailyLoginGiftCheckRef.current !== dailyGiftShownKey) {
+            dailyLoginGiftCheckRef.current = dailyGiftShownKey;
+            setDailyLoginGiftReveal({ status: "closed", reward: rollMysteryPrizeReward() });
+          }
         }
 
         const [resetJson, streakData] = await Promise.all([resetCreditsPromise, streakPromise]);
@@ -3638,6 +3718,7 @@ export default function DashboardPage() {
       showVerseOfTheDayModal ||
       activeEarnedBadge ||
       earnedBadgeQueue.length > 0 ||
+      dailyLoginGiftReveal ||
       showLevelInfoModal ||
       showStreakBadgeModal ||
       showBadgesModal ||
@@ -3773,6 +3854,7 @@ export default function DashboardPage() {
     activeEarnedBadge,
     activeTourKey,
     dailyChecklistData,
+    dailyLoginGiftReveal,
     earnedBadgeQueue.length,
     pendingDailyStreakSequence,
     profile,
@@ -4774,7 +4856,7 @@ export default function DashboardPage() {
       )}
 
       {/* Level Info Modal */}
-        <DashboardDailyWelcomeModal
+      <DashboardDailyWelcomeModal
           open={ENABLE_DAILY_DASHBOARD_WELCOME_FLOW && showVerseOfTheDayModal}
           onClose={() => {
             const today = getBibleBuddyLocalDayKey();
@@ -4785,6 +4867,107 @@ export default function DashboardPage() {
         isReturningUser={true}
         userId={userId}
       />
+
+      <ModalShell
+        isOpen={
+          Boolean(dailyLoginGiftReveal) &&
+          !showVerseOfTheDayModal &&
+          !showStreakMotivationModal &&
+          !activeEarnedBadge &&
+          earnedBadgeQueue.length === 0 &&
+          !showLevelInfoModal &&
+          !showStreakBadgeModal &&
+          !showBadgesModal &&
+          !showCommunityModal &&
+          !showLouisDailyTasksModal &&
+          !showDailyTaskCelebrationModal &&
+          !showJessicaBonusModal &&
+          !showZorianRestorationModal &&
+          !selectedDashboardTask &&
+          !activeTourKey
+        }
+        onClose={() => setDailyLoginGiftReveal(null)}
+        backdropColor="bg-black/50"
+      >
+        {dailyLoginGiftReveal ? (
+          <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+            <div className="bg-gradient-to-br from-[#eef7ff] via-white to-[#fff6dc] px-6 py-7 text-center">
+              <button
+                type="button"
+                onClick={() => setDailyLoginGiftReveal(null)}
+                className="ml-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/80 text-xl font-black text-[#516784] shadow-sm transition hover:bg-white"
+                aria-label="Close daily gift"
+              >
+                ×
+              </button>
+              <div className="mt-1 flex justify-center">
+                <div className="relative rounded-full bg-white p-2 shadow-lg">
+                  <LouisAvatar mood={dailyLoginGiftReveal.status === "opened" ? "stareyes" : "wave"} size={104} />
+                  <span className="absolute -right-2 -top-2 grid h-11 w-11 place-items-center rounded-full bg-[#fff3c4] text-2xl shadow-md" aria-hidden="true">
+                    🎁
+                  </span>
+                </div>
+              </div>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f86bd]">
+                Daily Login Gift
+              </p>
+              <h2 className="mt-2 text-3xl font-black leading-tight text-[#21304f]">
+                {dailyLoginGiftReveal.status === "opened" ? "Gift opened!" : "Welcome back again"}
+              </h2>
+              <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[#58709d]">
+                {dailyLoginGiftReveal.status === "opened"
+                  ? "Your free mystery diamonds were added to your stash."
+                  : "You came back for a second visit within 24 hours, so Bible Buddy has a free mystery gift for you."}
+              </p>
+
+              <button
+                type="button"
+                disabled={dailyLoginGiftReveal.status !== "closed"}
+                onClick={() => void handleOpenDailyLoginGift()}
+                className="group relative mx-auto mt-6 grid min-h-[180px] w-full max-w-sm place-items-center overflow-hidden rounded-[28px] border border-[#d7e4f7] bg-white/85 p-5 transition hover:-translate-y-1 hover:shadow-xl disabled:cursor-default disabled:hover:translate-y-0"
+              >
+                <span className="absolute left-8 top-7 h-3 w-3 rounded-full bg-[#7BAFD4] opacity-70 animate-ping" />
+                <span className="absolute right-9 top-10 h-4 w-4 rounded-full bg-yellow-300 opacity-80 animate-pulse" />
+                <span className="absolute bottom-9 left-12 h-4 w-4 rounded-full bg-sky-300 opacity-80 animate-bounce" />
+                <span
+                  className={`relative text-[6.5rem] leading-none drop-shadow-lg transition duration-500 ${
+                    dailyLoginGiftReveal.status === "closed"
+                      ? "animate-bounce group-hover:scale-110"
+                      : dailyLoginGiftReveal.status === "opening"
+                        ? "scale-125 rotate-6 animate-pulse"
+                        : "scale-110"
+                  }`}
+                  aria-hidden="true"
+                >
+                  {dailyLoginGiftReveal.status === "opened" ? "💎" : "🎁"}
+                </span>
+              </button>
+
+              {dailyLoginGiftReveal.status === "opened" ? (
+                <div className="mx-auto mt-5 max-w-sm rounded-[24px] border border-[#d7e4f7] bg-white/85 p-4">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#5b6f92]">Gift unlocked</p>
+                  <p className="mt-1 text-5xl font-black text-[#21304f]">+{dailyLoginGiftReveal.reward.toLocaleString()}</p>
+                  <p className="mt-1 text-sm font-black text-[#2f7fe8]">diamonds</p>
+                </div>
+              ) : (
+                <p className="mt-4 text-xs font-black uppercase tracking-[0.14em] text-[#5b6f92]">
+                  {dailyLoginGiftReveal.status === "opening" ? "Opening..." : "Tap to open"}
+                </p>
+              )}
+
+              {dailyLoginGiftReveal.status === "opened" ? (
+                <button
+                  type="button"
+                  onClick={() => setDailyLoginGiftReveal(null)}
+                  className="mt-5 w-full max-w-sm rounded-full bg-[#7BAFD4] px-6 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                >
+                  Nice
+                </button>
+              ) : null}
+            </div>
+          </div>
+        ) : null}
+      </ModalShell>
 
         <ModalShell
           isOpen={ENABLE_DAILY_DASHBOARD_WELCOME_FLOW && showStreakMotivationModal && !showVerseOfTheDayModal}
@@ -4878,7 +5061,7 @@ export default function DashboardPage() {
         </ModalShell>
 
       <LouisDailyTasksModal
-        open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal}
+        open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal && !dailyLoginGiftReveal}
         onClose={() => {
           setShowLouisDailyTasksModal(false);
           void loadDailyTaskSummary({ force: true, silent: true });
