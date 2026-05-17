@@ -1517,8 +1517,8 @@ export default function DashboardJourneyExperience({
       key: "buddy",
       label: "Lil Louis",
       icon: (
-        <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-full">
-          <LouisAvatar mood="bible" size={32} />
+        <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-full">
+          <LouisAvatar mood="peace" size={38} />
         </span>
       ),
       href: "#lil-louis",
@@ -2906,25 +2906,6 @@ export default function DashboardJourneyExperience({
   const renderEmbeddedBuddyPage = () => (
     <section className="w-full px-1 pb-4">
       <div className="mx-auto flex max-w-xl flex-col gap-4">
-        <div className="rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-5 shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
-          <div className="flex items-center gap-4">
-            <div className="grid h-16 w-16 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] shadow-sm">
-              <LouisAvatar mood="stareyes" size={62} />
-            </div>
-            <div className="min-w-0">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
-                Bible Buddy
-              </p>
-              <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                Lil Louis
-              </h2>
-              <p className="mt-1 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
-                Ask questions, get help with your next step, or talk through what you are studying.
-              </p>
-            </div>
-          </div>
-        </div>
-
         <ChatLouis displayMode="embedded" />
       </div>
     </section>
@@ -3334,12 +3315,14 @@ export default function DashboardJourneyExperience({
         <div className={getSlideClass(0)}>
         <section className="w-full px-1">
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-            <div className="mx-auto w-full max-w-xl px-1">
-              <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
-                {getDashboardGreeting()}, {getFirstDashboardName(profile?.display_name || profile?.username || userName)}
-              </h1>
-            </div>
-            {homeHeader}
+            {!homePanelOverride ? (
+              <div className="mx-auto w-full max-w-xl px-1">
+                <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
+                  {getDashboardGreeting()}, {getFirstDashboardName(profile?.display_name || profile?.username || userName)}
+                </h1>
+              </div>
+            ) : null}
+            {!homePanelOverride ? homeHeader : null}
             {homePanelOverride ? (
               <div className="dashboard-inline-task">{homePanelOverride}</div>
             ) : null}
@@ -4190,7 +4173,7 @@ export default function DashboardJourneyExperience({
               >
                 <span
                   className={`grid h-8 w-8 place-items-center rounded-full text-sm ${
-                    isActive ? "bg-[#2f7fe8] text-white shadow-sm" : "bg-transparent"
+                    isActive && item.key !== "buddy" ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-transparent"
                   }`}
                   aria-hidden="true"
                 >

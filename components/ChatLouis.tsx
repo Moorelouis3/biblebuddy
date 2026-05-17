@@ -3140,13 +3140,14 @@ export function ChatLouis({ displayMode = "floating" }: ChatLouisProps) {
     const latestMessage = messages[messages.length - 1];
 
 
-    const openingIndex =
-      Math.abs(
-        [...`${pathname}-${messages.length}-${new Date().getMinutes()}`].reduce(
-          (sum, char) => sum + char.charCodeAt(0),
-          0,
-        ),
-      ) % LOUIS_OPENING_GREETINGS.length;
+    const openingIndex = isEmbedded
+      ? 0
+      : Math.abs(
+          [...`${pathname}-${messages.length}-${new Date().getMinutes()}`].reduce(
+            (sum, char) => sum + char.charCodeAt(0),
+            0,
+          ),
+        ) % LOUIS_OPENING_GREETINGS.length;
 
     if (!louisUserId || hasOpeningGreeting(messages) || !canShowIdleGreeting(louisUserId)) {
       return;
@@ -3516,36 +3517,26 @@ export function ChatLouis({ displayMode = "floating" }: ChatLouisProps) {
           }
         >
           {/* Header */}
-          <div 
-            className={
-              isEmbedded
-                ? "flex items-center justify-between border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4"
-                : "px-4 py-2.5 border-b border-gray-200 flex items-center justify-between bg-gray-50 rounded-t-2xl cursor-grab active:cursor-grabbing"
-            }
-            style={{ touchAction: "none" }}
-            onPointerDown={(e) => {
-              if (isEmbedded) return;
-              const target = e.target as HTMLElement;
-              if (target.closest("button")) {
-                return; // Don't drag if clicking close button
-              }
-              handlePointerDown(e);
-            }}
-          >
-            <div className="flex items-center gap-3">
-              <div className="grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
-                <LouisAvatar mood="bible" size={isEmbedded ? 46 : 34} />
+          {!isEmbedded ? (
+            <div
+              className="px-4 py-2.5 border-b border-gray-200 flex items-center justify-between bg-gray-50 rounded-t-2xl cursor-grab active:cursor-grabbing"
+              style={{ touchAction: "none" }}
+              onPointerDown={(e) => {
+                const target = e.target as HTMLElement;
+                if (target.closest("button")) {
+                  return; // Don't drag if clicking close button
+                }
+                handlePointerDown(e);
+              }}
+            >
+              <div className="flex items-center gap-3">
+                <div className="grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+                  <LouisAvatar mood="peace" size={34} />
+                </div>
+                <div>
+                  <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Chat with Lil Louis</span>
+                </div>
               </div>
-              <div>
-                <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Chat with Lil Louis</span>
-                {isEmbedded ? (
-                  <span className="block text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">
-                    Your Bible Buddy DM
-                  </span>
-                ) : null}
-              </div>
-            </div>
-            {!isEmbedded ? (
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-gray-500 hover:text-gray-700 text-base leading-none"
@@ -3553,8 +3544,8 @@ export function ChatLouis({ displayMode = "floating" }: ChatLouisProps) {
               >
                 ✕
               </button>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
 
           {/* Messages area */}
           <div
