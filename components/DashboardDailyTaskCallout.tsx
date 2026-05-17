@@ -200,6 +200,7 @@ function DashboardInlineBibleReader({
   const [markingDone, setMarkingDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const readerRootRef = useRef<HTMLDivElement | null>(null);
+  const termTakeoverRef = useRef<HTMLDivElement | null>(null);
   const termReturnScrollYRef = useRef<number | null>(null);
   const bookDisplay = normalizeBibleBookDisplay(book);
 
@@ -322,9 +323,18 @@ function DashboardInlineBibleReader({
     termReturnScrollYRef.current = window.scrollY;
     setTermBurstKey((current) => current + 1);
     setSelectedTerm({ type, name: resolveBibleReference(type, term) });
-    window.requestAnimationFrame(() => {
-      readerRootRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
-    });
+  }
+
+  function centerTermTakeover(behavior: ScrollBehavior = "smooth") {
+    const node = termTakeoverRef.current ?? readerRootRef.current;
+    if (!node) return;
+
+    const rect = node.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const centeredOffset = Math.max(12, (viewportHeight - rect.height) / 2);
+    const nextTop = Math.max(0, window.scrollY + rect.top - centeredOffset);
+
+    window.scrollTo({ top: nextTop, behavior });
   }
 
   useEffect(() => {
@@ -361,11 +371,16 @@ function DashboardInlineBibleReader({
 
   useEffect(() => {
     if (!selectedTerm) return;
+    let settleTimeout: number | null = null;
     const frame = window.requestAnimationFrame(() => {
-      readerRootRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
+      centerTermTakeover("smooth");
+      settleTimeout = window.setTimeout(() => centerTermTakeover("smooth"), 120);
     });
 
-    return () => window.cancelAnimationFrame(frame);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      if (settleTimeout !== null) window.clearTimeout(settleTimeout);
+    };
   }, [selectedTerm, loadingTermNotes, termNotes]);
 
   function closeTermPopup() {
@@ -451,7 +466,7 @@ function DashboardInlineBibleReader({
       ) : null}
 
       {selectedTerm ? (
-        <div className="relative min-h-[62vh] overflow-hidden rounded-[26px] bg-[var(--bb-card,#ffffff)] px-4 py-6 text-center text-[var(--bb-text-primary,#111827)]">
+        <div ref={termTakeoverRef} className="relative min-h-[62vh] overflow-hidden rounded-[26px] bg-[var(--bb-card,#ffffff)] px-4 py-6 text-center text-[var(--bb-text-primary,#111827)]">
           <div key={termBurstKey} className="word-discovery-smoke pointer-events-none absolute left-1/2 top-24 z-0" aria-hidden="true">
             <span className="absolute h-14 w-14 rounded-full bg-slate-300/45 [--smoke-x:-84px] [--smoke-y:-22px]" />
             <span className="absolute h-12 w-12 rounded-full bg-slate-200/50 [--smoke-x:72px] [--smoke-y:-32px]" />
