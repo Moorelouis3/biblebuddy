@@ -615,11 +615,11 @@ export default function ScrambledGamePlayer({
               ×
             </button>
 
-            <div className={`${compact ? "hidden" : "mx-auto grid"} h-24 w-24 place-items-center rounded-full border border-gray-200 bg-white shadow-lg shadow-gray-200/80`}>
-              <LouisAvatar mood="stareyes" size={112} />
+            <div className={`mx-auto grid place-items-center rounded-full border border-gray-200 bg-white shadow-lg shadow-gray-200/80 ${compact ? "h-20 w-20" : "h-24 w-24"}`}>
+              <LouisAvatar mood="stareyes" size={compact ? 92 : 112} />
             </div>
-            <p className={`${compact ? "hidden" : "mt-4"} text-xs font-black uppercase tracking-[0.22em] text-gray-950`}>Bible Buddy</p>
-            <p className={`${compact ? "hidden" : "mt-1"} text-base font-black text-gray-950`}>You finished Scrambled.</p>
+            <p className={`${compact ? "mt-3" : "mt-4"} text-xs font-black uppercase tracking-[0.22em] text-gray-950`}>Bible Buddy</p>
+            <p className={`${compact ? "mt-1" : "mt-1"} text-base font-black text-gray-950`}>You finished Scrambled.</p>
             <h1 className={`mx-auto max-w-md font-black leading-tight text-[var(--bb-text-primary,#111827)] ${compact ? "mt-1 text-2xl" : "mt-8 text-3xl"}`}>
               {compact ? `${bookName} ${chapter.chapter} Scrambled Results` : `Scrambled Results for ${bookName} ${chapter.chapter}`}
             </h1>
@@ -654,10 +654,11 @@ export default function ScrambledGamePlayer({
     return (
       <div className="min-h-screen bg-[#f5f7fb] px-4 py-10">
         <div className="mx-auto max-w-xl overflow-hidden rounded-[32px] border border-[#d8e8dc] bg-gradient-to-br from-white via-[#f8fcf9] to-[#eef9f2] p-8 text-center shadow-xl shadow-[#d8e8dc]/40">
-          <div className="mx-auto flex w-fit items-center gap-3 rounded-full border border-[#d8e8dc] bg-white px-4 py-2 shadow-sm">
-            <LouisAvatar mood={scoredSolveCount === chapter.questions.length ? "stareyes" : "wave"} size={46} />
-            <p className="text-sm font-semibold text-[#2f7a52]">Bible Buddy says you finished this chapter.</p>
+          <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-[#d8e8dc] bg-white shadow-lg shadow-[#d8e8dc]/80">
+            <LouisAvatar mood="stareyes" size={112} />
           </div>
+          <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-[#2f7a52]">Bible Buddy</p>
+          <p className="mt-1 text-sm font-semibold text-[#2f7a52]">You finished this chapter.</p>
 
           <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#4a9b6f]">Chapter Complete</p>
           <h1 className="mt-3 text-3xl font-bold text-gray-950">{bookName} {chapter.chapter}</h1>
