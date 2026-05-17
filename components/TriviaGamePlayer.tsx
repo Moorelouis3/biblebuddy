@@ -28,7 +28,8 @@ type TriviaGamePlayerProps = {
 async function fetchVerseText(reference: string) {
   try {
     const primaryRef = reference.split(/[;,]/)[0]?.trim() ?? reference.trim();
-    const normalizedRef = encodeURIComponent(primaryRef);
+    const singleVerseRef = primaryRef.replace(/:(\d+)\s*-\s*\d+\b/, ":$1");
+    const normalizedRef = encodeURIComponent(singleVerseRef);
     const response = await fetch(`https://bible-api.com/${normalizedRef}`);
     if (!response.ok) {
       throw new Error("Failed to fetch verse");
@@ -370,15 +371,15 @@ export default function TriviaGamePlayer({
           ? "Good progress. Keep going and this chapter will get clearer."
           : "You finished the round, and that still counts. Review it once more and the chapter will land better.";
     return (
-      <div className={`${isEmbedded || compact ? "bg-white px-3 py-4" : "min-h-screen bg-[#f5f7fb] px-4 py-8"}`}>
+      <div className={`${isEmbedded || compact ? "bg-white px-0 py-2" : "min-h-screen bg-[#f5f7fb] px-4 py-8"}`}>
         <div
           className={`relative mx-auto max-w-xl text-center ${
-            isEmbedded
-              ? "px-2 py-2"
+            isEmbedded || compact
+              ? "px-2 py-4"
               : "rounded-[32px] border border-gray-200 bg-white p-6 shadow-xl shadow-gray-200/70 sm:p-8"
           }`}
         >
-          {onClose ? (
+          {onClose && !compact ? (
             <button
               type="button"
               onClick={() => void handleResultsClose()}
@@ -388,16 +389,20 @@ export default function TriviaGamePlayer({
               ×
             </button>
           ) : null}
-          <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-gray-200 bg-white shadow-lg shadow-gray-200/80">
-            <LouisAvatar mood="stareyes" size={112} />
-          </div>
-          <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-gray-950">Bible Buddy</p>
-          <p className="mt-1 text-base font-black text-gray-950">{perfectScore ? "Perfect round." : "Nice work finishing."}</p>
-          <h1 className="mx-auto mt-8 max-w-md text-3xl font-black leading-tight text-gray-950">
-            Trivia Results for {bookName} {chapter.chapter}
+          {!compact ? (
+            <>
+              <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-gray-200 bg-white shadow-lg shadow-gray-200/80">
+                <LouisAvatar mood="stareyes" size={112} />
+              </div>
+              <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-gray-950">Bible Buddy</p>
+            </>
+          ) : null}
+          <p className={`${compact ? "mt-1" : "mt-1"} text-base font-black text-gray-950`}>{perfectScore ? "Perfect round." : "Nice work finishing."}</p>
+          <h1 className={`mx-auto max-w-md font-black leading-tight text-gray-950 ${compact ? "mt-4 text-2xl" : "mt-8 text-3xl"}`}>
+            {compact ? `${bookName} ${chapter.chapter} Trivia Results` : `Trivia Results for ${bookName} ${chapter.chapter}`}
           </h1>
-          <p className="mt-8 text-sm font-black uppercase tracking-[0.16em] text-gray-950">Score</p>
-          <p className="mt-2 text-6xl font-black leading-none text-gray-950">
+          <p className={`${compact ? "mt-5" : "mt-8"} text-sm font-black uppercase tracking-[0.16em] text-gray-950`}>Score</p>
+          <p className={`${compact ? "mt-1 text-5xl" : "mt-2 text-6xl"} font-black leading-none text-gray-950`}>
             {correctCount}/{questions.length}
           </p>
           <p className="mx-auto mt-4 max-w-md text-base font-bold leading-7 text-gray-950">{encouragement}</p>
@@ -410,7 +415,7 @@ export default function TriviaGamePlayer({
               No new points this run (you already earned points for these questions before).
             </p>
           )}
-          {onClose && !compact ? (
+          {onClose ? (
             <button
               type="button"
               onClick={() => void handleResultsClose()}
@@ -447,9 +452,9 @@ export default function TriviaGamePlayer({
   }
 
   return (
-    <div className={`${compact ? "bg-white px-0 py-2" : "min-h-screen bg-gray-50 px-4 py-8"}`}>
-      <div className="mx-auto max-w-2xl">
-        <div className={`${compact ? "mb-4 justify-end" : "mb-6 justify-between"} flex items-center gap-4`}>
+    <div className={`${compact ? "bg-white px-0 py-0" : "min-h-screen bg-gray-50 px-4 py-8"}`}>
+      <div className={`${compact ? "mx-auto max-w-none" : "mx-auto max-w-2xl"}`}>
+        <div className={`${compact ? "hidden" : "mb-6 justify-between"} flex items-center gap-4`}>
           {onClose ? (
             <button type="button" onClick={onClose} className="text-sm text-gray-600 transition hover:text-gray-900">
               ← Close
@@ -475,7 +480,7 @@ export default function TriviaGamePlayer({
           </div>
         </div>
 
-        <div className="mb-4 flex items-start gap-3">
+        <div className={`${compact ? "hidden" : "mb-4"} flex items-start gap-3`}>
           <LouisAvatar mood="bible" size={48} />
           <div className="relative w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 shadow-sm">
             <div className="absolute -left-2 top-5 h-3 w-3 rotate-45 border-b border-l border-gray-200 bg-white" />
@@ -483,10 +488,28 @@ export default function TriviaGamePlayer({
           </div>
         </div>
 
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">
-            {bookName} {chapter.chapter}
-          </p>
+        <div className={`${compact ? "rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-4" : "rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"}`}>
+          <div className="flex items-start justify-between gap-3">
+            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">
+              {bookName} {chapter.chapter}
+            </p>
+            {compact ? (
+              <div className="flex shrink-0 items-center gap-2">
+                <p className="rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-3 py-1 text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
+                  Question {currentQuestionIndex + 1} of {questions.length}
+                </p>
+                {showOwnerDashboardSkip ? (
+                  <button
+                    type="button"
+                    onClick={handleOwnerSkip}
+                    className="rounded-full bg-blue-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-blue-700 transition hover:bg-blue-100 hover:text-blue-900"
+                  >
+                    Skip
+                  </button>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
           <h1 className="mt-3 text-2xl font-bold text-gray-900">{currentQuestion.question}</h1>
 
           <div className="mt-6 space-y-3">

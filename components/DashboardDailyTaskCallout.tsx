@@ -4,6 +4,7 @@ import { Component, type ReactNode, useEffect, useMemo, useRef, useState } from 
 import ReactMarkdown from "react-markdown";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import { ColorPicker } from "./ColorPicker";
+import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import ScrambledGamePlayer from "./ScrambledGamePlayer";
 import TriviaGamePlayer from "./TriviaGamePlayer";
@@ -190,12 +191,15 @@ function DashboardInlineBibleReader({
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [picker, setPicker] = useState<{ verse: number; anchor: { x: number; y: number } } | null>(null);
   const [selectedTerm, setSelectedTerm] = useState<{ type: "people" | "places" | "keywords"; name: string } | null>(null);
+  const [termPopupTop, setTermPopupTop] = useState(120);
+  const [termBurstKey, setTermBurstKey] = useState(0);
   const [termNotes, setTermNotes] = useState<string | null>(null);
   const [termNotesError, setTermNotesError] = useState<string | null>(null);
   const [loadingTermNotes, setLoadingTermNotes] = useState(false);
   const [loading, setLoading] = useState(false);
   const [markingDone, setMarkingDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const readerRootRef = useRef<HTMLDivElement | null>(null);
   const bookDisplay = normalizeBibleBookDisplay(book);
 
   useEffect(() => {
@@ -314,6 +318,12 @@ function DashboardInlineBibleReader({
     const term = highlightElement.dataset.term;
     if (!type || !term) return;
 
+    const rootRect = readerRootRef.current?.getBoundingClientRect();
+    const targetRect = highlightElement.getBoundingClientRect();
+    if (rootRect) {
+      setTermPopupTop(Math.max(72, targetRect.top - rootRect.top - 38));
+    }
+    setTermBurstKey((current) => current + 1);
     setSelectedTerm({ type, name: resolveBibleReference(type, term) });
   }
 
@@ -365,7 +375,25 @@ function DashboardInlineBibleReader({
   }
 
   return (
-    <div className="dashboard-task-card-extension mt-2 px-1 pb-2 pt-1">
+    <div ref={readerRootRef} className="dashboard-task-card-extension relative mt-2 px-1 pb-2 pt-1">
+      <style>{`
+        @keyframes word-discovery-smoke {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); filter: blur(0); }
+          18% { opacity: 0.48; }
+          100% { opacity: 0; transform: translate(calc(-50% + var(--smoke-x)), calc(-50% + var(--smoke-y))) scale(1.35); filter: blur(5px); }
+        }
+        @keyframes word-discovery-card {
+          0% { opacity: 0; transform: translateY(14px) scale(0.92); filter: blur(1px); }
+          62% { opacity: 1; transform: translateY(-3px) scale(1.015); filter: blur(0); }
+          100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+        .word-discovery-smoke span {
+          animation: word-discovery-smoke 780ms ease-out both;
+        }
+        .word-discovery-card {
+          animation: word-discovery-card 260ms cubic-bezier(0.16, 0.9, 0.22, 1) both;
+        }
+      `}</style>
       <div className="mb-4 flex justify-end">
         <div className="flex items-center gap-2">
           <label className="sr-only" htmlFor="dashboard-bible-translation">
@@ -431,29 +459,26 @@ function DashboardInlineBibleReader({
 
       {selectedTerm ? (
         <div
-          className="fixed inset-0 z-[90] flex items-center justify-center bg-black/45 px-4 py-5"
-          onClick={closeTermPopup}
+          className="absolute inset-x-0 z-[45] px-2"
+          style={{ top: termPopupTop }}
         >
+          <div key={termBurstKey} className="word-discovery-smoke pointer-events-none absolute left-1/2 top-8 z-0" aria-hidden="true">
+            <span className="absolute h-10 w-10 rounded-full bg-slate-300/45 [--smoke-x:-54px] [--smoke-y:-18px]" />
+            <span className="absolute h-9 w-9 rounded-full bg-slate-200/50 [--smoke-x:42px] [--smoke-y:-26px]" />
+            <span className="absolute h-8 w-8 rounded-full bg-rose-100/70 [--smoke-x:-12px] [--smoke-y:30px]" />
+            <span className="absolute h-7 w-7 rounded-full bg-slate-300/35 [--smoke-x:64px] [--smoke-y:18px]" />
+            <span className="absolute h-6 w-6 rounded-full bg-white/80 [--smoke-x:-72px] [--smoke-y:20px]" />
+          </div>
           <div
-            className="max-h-[72vh] w-full max-w-md overflow-y-auto rounded-3xl border border-[var(--bb-card-border)] bg-[var(--bb-card,#ffffff)] p-5 text-[var(--bb-text-primary,#111827)] shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
+            className="word-discovery-card relative z-10 mx-auto max-h-[58vh] w-full max-w-md overflow-y-auto rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_18px_44px_rgba(38,63,99,0.18)]"
           >
-            <div className="mb-4 flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
-                  {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
-                </p>
-                <h3 className="mt-1 text-2xl font-black leading-tight">{selectedTerm.name}</h3>
-              </div>
-              <button
-                type="button"
-                onClick={closeTermPopup}
-                className="rounded-full border border-[var(--bb-card-border)] px-3 py-1 text-sm font-black text-[var(--bb-text-secondary,#5f6368)]"
-                aria-label="Close word notes"
-              >
-                Close
-              </button>
+            <div className="mb-3 flex justify-center">
+              <LouisAvatar mood="think" size={86} />
             </div>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">
+              {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
+            </p>
+            <h3 className="mt-1 text-3xl font-black leading-tight">{selectedTerm.name}</h3>
             {loadingTermNotes && !termNotes ? (
               <div className="space-y-3 py-6">
                 <div className="h-3 rounded-full bg-gray-100" />
@@ -463,8 +488,8 @@ function DashboardInlineBibleReader({
             ) : termNotes ? (
               <ReactMarkdown
                 components={{
-                  h1: ({ ...props }) => <h1 className="mb-3 mt-5 text-xl font-black" {...props} />,
-                  p: ({ ...props }) => <p className="mb-4 text-sm font-medium leading-6" {...props} />,
+                  h1: ({ ...props }) => <h1 className="mb-3 mt-5 text-xl font-black text-left" {...props} />,
+                  p: ({ ...props }) => <p className="mb-4 text-left text-sm font-medium leading-6" {...props} />,
                   strong: ({ ...props }) => <strong className="font-black" {...props} />,
                 }}
               >
@@ -475,6 +500,13 @@ function DashboardInlineBibleReader({
                 {termNotesError || "Could not load this word yet."}
               </p>
             )}
+            <button
+              type="button"
+              onClick={closeTermPopup}
+              className="mt-2 rounded-full bg-[var(--bb-button,#2f7fe8)] px-6 py-2.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+            >
+              Close
+            </button>
           </div>
         </div>
       ) : null}
