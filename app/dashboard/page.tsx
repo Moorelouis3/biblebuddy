@@ -941,7 +941,7 @@ export default function DashboardPage() {
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [levelRefreshTick, setLevelRefreshTick] = useState(0);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; selected_buddy_avatar?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; selected_buddy_avatar?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null; created_at?: string | null } | null>(null);
   const [buddySelectionWelcome, setBuddySelectionWelcome] = useState<{ buddyId: BuddyAvatarId; buddyName: string } | null>(null);
   const [showDiamondStore, setShowDiamondStore] = useState(false);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
@@ -2075,7 +2075,7 @@ export default function DashboardPage() {
         onClick?: () => void;
       }>
     ) => (
-      <div className="mx-auto grid max-w-xl grid-cols-4 gap-1.5 rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-1.5 shadow-[0_12px_34px_rgba(38,63,99,0.08)] backdrop-blur sm:gap-2 sm:p-2">
+      <div className="mx-auto flex max-w-xl snap-x gap-2 overflow-x-auto rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-1.5 shadow-[0_12px_34px_rgba(38,63,99,0.08)] backdrop-blur [scrollbar-width:none] sm:grid sm:grid-cols-4 sm:overflow-visible sm:gap-2 sm:p-2 [&::-webkit-scrollbar]:hidden">
         {cards.map((card) => {
           const CardTag = card.onClick ? "button" : "div";
           return (
@@ -2083,7 +2083,7 @@ export default function DashboardPage() {
               key={card.key ?? card.label}
               type={card.onClick ? "button" : undefined}
               onClick={card.onClick}
-              className={`flex min-h-[68px] flex-col rounded-[16px] border px-1.5 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition sm:min-h-[82px] sm:px-2.5 sm:py-2.5 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-md" : ""} ${card.tones}`}
+              className={`flex min-h-[78px] w-[38vw] min-w-[126px] shrink-0 snap-start flex-col rounded-[16px] border px-2 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition sm:min-h-[82px] sm:w-auto sm:min-w-0 sm:px-2.5 sm:py-2.5 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-md" : ""} ${card.tones}`}
             >
               <p className="text-base font-black leading-none text-gray-950 sm:text-xl">
                 <span className="mr-1 align-middle text-sm" aria-hidden="true">{card.icon}</span>
@@ -2104,7 +2104,7 @@ export default function DashboardPage() {
           <button
             type="button"
             onClick={openLevelInfoModal}
-            className="col-span-4 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-3 py-1.5 text-left transition hover:bg-[var(--bb-card)] hover:shadow-sm"
+            className="w-[calc(100vw-3.5rem)] min-w-[260px] shrink-0 snap-start rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-3 py-1.5 text-left transition hover:bg-[var(--bb-card)] hover:shadow-sm sm:col-span-4 sm:w-auto sm:min-w-0"
           >
             <div className="flex items-center justify-between gap-3">
               <p className="text-[11px] font-black text-[var(--bb-accent)]">
@@ -3195,14 +3195,14 @@ export default function DashboardPage() {
 
         let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username")
+          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
           .eq("user_id", userId)
           .maybeSingle();
 
         if (error && /(diamonds_count|selected_streak_flame|selected_buddy_avatar|daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(error.message || "")) {
           const fallback = await supabase
             .from("profile_stats")
-            .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username")
+            .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username, created_at")
             .eq("user_id", userId)
             .maybeSingle();
           data = fallback.data as typeof data;
@@ -3265,6 +3265,7 @@ export default function DashboardPage() {
             profile_image_url: profileData?.profile_image_url ?? null,
             display_name: profileData?.display_name ?? null,
             username: profileData?.username ?? null,
+            created_at: profileData?.created_at ?? null,
           });
           if (shouldShowDailyLoginGift && dailyLoginGiftCheckRef.current !== dailyGiftShownKey) {
             dailyLoginGiftCheckRef.current = dailyGiftShownKey;

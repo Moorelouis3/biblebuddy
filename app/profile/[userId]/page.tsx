@@ -1282,22 +1282,24 @@ export default function PublicProfilePage() {
         </div>
 
         {/* ── STATS ROW 1 ────────────────────────────────────────────────── */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-          <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm">
+        <div className="-mx-4 mb-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
+          <div className="flex snap-x gap-4 sm:grid sm:grid-cols-4">
+          <div className="w-[72vw] shrink-0 snap-start bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm sm:w-auto">
             <div className="text-2xl font-bold mb-1">{displayStats.total_actions}</div>
             <div className="text-sm text-gray-700">Total Actions</div>
           </div>
-          <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm">
+          <div className="w-[72vw] shrink-0 snap-start bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm sm:w-auto">
             <div className="text-2xl font-bold mb-1">{booksCompleted}</div>
             <div className="text-sm text-gray-700">Books Completed</div>
           </div>
-          <div className="bg-green-100 border border-green-200 rounded-xl p-5 shadow-sm">
+          <div className="w-[72vw] shrink-0 snap-start bg-green-100 border border-green-200 rounded-xl p-5 shadow-sm sm:w-auto">
             <div className="text-2xl font-bold mb-1">{displayStats.chapters_completed_count}</div>
             <div className="text-sm text-gray-700">Chapters Read</div>
           </div>
-          <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm">
+          <div className="w-[72vw] shrink-0 snap-start bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm sm:w-auto">
             <div className="text-2xl font-bold mb-1">{bibleCompletion}%</div>
             <div className="text-sm text-gray-700">Bible Completion</div>
+          </div>
           </div>
         </div>
 

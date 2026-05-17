@@ -32,6 +32,9 @@ import { awardBibleBuddyTvWatchOnce, buildBibleBuddyTvWatchRewardLabel } from ".
 import { triggerPoints } from "./PointsPop";
 import { getBuddyAvatar } from "../lib/buddyAvatars";
 
+const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
+const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
+
 const ChatLouis = dynamic(() => import("./ChatLouis").then((mod) => mod.ChatLouis), {
   ssr: false,
 });
@@ -59,6 +62,7 @@ type ProfileShape = {
   profile_image_url?: string | null;
   display_name?: string | null;
   username?: string | null;
+  created_at?: string | null;
 } | null;
 
 type BuddiesDashboardTopBuddy = {
@@ -1590,6 +1594,7 @@ export default function DashboardJourneyExperience({
   const [shareRewardsLoading, setShareRewardsLoading] = useState(false);
   const [shareRewardsError, setShareRewardsError] = useState<string | null>(null);
   const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
+  const [studyModeGateDismissed, setStudyModeGateDismissed] = useState(true);
 
   const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "buddies", "tv", "games", "share"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
@@ -1603,6 +1608,11 @@ export default function DashboardJourneyExperience({
     share: exploreLinkByKey("share"),
   };
   const selectedBuddy = getBuddyAvatar(profile?.selected_buddy_avatar);
+  const shouldShowBibleBuddy3ModeGate =
+    isOwnerDashboard &&
+    !studyModeGateDismissed &&
+    safeActivePage === 0 &&
+    !homePanelOverride;
   const dashboardNavItems: Array<{
     key: DashboardPageKey;
     label: string;
@@ -1631,11 +1641,32 @@ export default function DashboardJourneyExperience({
   const isPaidUser = profile?.is_paid === true || membershipStatus === "pro";
 
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
-  const visibleTasks = checklistData?.tasks ?? [];
+  const visibleTasks = shouldShowBibleBuddy3ModeGate ? [] : checklistData?.tasks ?? [];
   const totalTasks = visibleTasks.length || 5;
   const completedTasks = checklistData?.completedCount ?? 0;
   const allDone = checklistData?.allDone ?? false;
   const canFreeUserChooseNewStudy = !isPaidUser && allDone && !checklistData?.nextJourneyTarget;
+
+  useEffect(() => {
+    if (!isOwnerDashboard || !userId) {
+      setStudyModeGateDismissed(true);
+      return;
+    }
+
+    const createdMs = profile?.created_at ? new Date(profile.created_at).getTime() : 0;
+    const isExistingUser =
+      Number.isFinite(createdMs) &&
+      createdMs > 0 &&
+      createdMs < BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS;
+
+    if (!isExistingUser) {
+      setStudyModeGateDismissed(true);
+      return;
+    }
+
+    const key = `${BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY}:${userId}`;
+    setStudyModeGateDismissed(typeof window === "undefined" || window.localStorage.getItem(key) === "1");
+  }, [isOwnerDashboard, profile?.created_at, userId]);
 
   useEffect(() => {
     if (studySettingsOpenRequest <= 0) return;
@@ -3678,6 +3709,84 @@ export default function DashboardJourneyExperience({
     );
   };
 
+  function rememberBibleBuddy3ModeChoice() {
+    setStudyModeGateDismissed(true);
+    if (typeof window !== "undefined" && userId) {
+      window.localStorage.setItem(`${BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY}:${userId}`, "1");
+    }
+  }
+
+  function chooseBibleBuddyStudyJourney() {
+    rememberBibleBuddy3ModeChoice();
+    setEmbeddedBibleBookSearchOpen(false);
+    setEmbeddedBibleSelectedBook(null);
+    setEmbeddedBibleStudyId(null);
+    setActivePage(dashboardPageKeys.indexOf("bible_studies"));
+  }
+
+  function chooseFreeStudyMode() {
+    rememberBibleBuddy3ModeChoice();
+    setEmbeddedBibleStudyId(null);
+    setEmbeddedBibleSelectedBook(null);
+    setEmbeddedBibleSearchMessage(null);
+    setEmbeddedBibleBookSearchOpen(true);
+    setActivePage(dashboardPageKeys.indexOf("bible_studies"));
+  }
+
+  const renderBibleBuddy3ModeGate = () => (
+    <section className="w-full px-1">
+      <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+        <div className="overflow-hidden rounded-[28px] border border-[#dbe7f4] bg-white shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
+          <div className="bg-gradient-to-br from-[#eef7ff] via-white to-[#eff8f1] px-5 py-6 text-center">
+            <div className="flex justify-center">
+              <LouisAvatar mood="wave" size={96} />
+            </div>
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Bible Buddy 3.0</p>
+            <h2 className="mt-2 text-3xl font-black leading-tight text-gray-950">Bible Buddy 3.0 is now live.</h2>
+            <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-gray-600">
+              Please select your study mode so your dashboard can load the right Bible study experience.
+            </p>
+          </div>
+
+          <div className="grid gap-3 p-4 sm:grid-cols-2">
+            <button
+              type="button"
+              onClick={chooseBibleBuddyStudyJourney}
+              className="rounded-2xl border border-[#b9dcf4] bg-[#f8fbff] px-4 py-5 text-left transition hover:-translate-y-0.5 hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm"
+            >
+              <span className="text-xs font-black uppercase tracking-[0.14em] text-[#2f7fe8]">Guided</span>
+              <span className="mt-1 block text-xl font-black leading-tight text-gray-950">Bible Buddy Study Journey</span>
+              <span className="mt-2 block text-sm font-semibold leading-5 text-gray-600">
+                Follow the chapter-by-chapter study flow with daily tasks, notes, trivia, games, and reflection.
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={chooseFreeStudyMode}
+              className="rounded-2xl border border-[#d8eadf] bg-[#f8fcf9] px-4 py-5 text-left transition hover:-translate-y-0.5 hover:border-[#8cc6a4] hover:bg-white hover:shadow-sm"
+            >
+              <span className="text-xs font-black uppercase tracking-[0.14em] text-[#3b875f]">Explore</span>
+              <span className="mt-1 block text-xl font-black leading-tight text-gray-950">Free Study Mode</span>
+              <span className="mt-2 block text-sm font-semibold leading-5 text-gray-600">
+                Pick any Bible book and chapter when you want to study freely without following a guided journey.
+              </span>
+            </button>
+          </div>
+
+          <div className="border-t border-[#e5eef8] bg-[#f8fbff] px-4 py-4">
+            <div className="flex items-center gap-3">
+              <LouisAvatar mood="hands" size={46} />
+              <p className="text-sm font-semibold leading-5 text-gray-600">
+                We promise this will never happen again. We just had to move a lot around to make the new Bible Buddy 3.0 study system work right.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
   const renderCurrentStudyHeader = () => {
     return (
       <div className="mx-auto w-full max-w-xl px-1">
@@ -4086,6 +4195,10 @@ export default function DashboardJourneyExperience({
         <div className={getSlideClass(0)}>
         <section className="w-full px-1">
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+            {shouldShowBibleBuddy3ModeGate ? (
+              renderBibleBuddy3ModeGate()
+            ) : (
+              <>
             {!homePanelOverride ? (
               <div className="mx-auto w-full max-w-xl px-1">
                 <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
@@ -4444,8 +4557,10 @@ export default function DashboardJourneyExperience({
               ) : null}
             </div>
             ) : null}
+              </>
+            )}
 
-            {isChecklistSyncing || (isLoadingNextChapter && !preloadedNextChapter?.tasks.length && !preloadedNextStudy?.tasks.length) ? (
+            {!shouldShowBibleBuddy3ModeGate && (isChecklistSyncing || (isLoadingNextChapter && !preloadedNextChapter?.tasks.length && !preloadedNextStudy?.tasks.length)) ? (
               skeletonTasks.map((task, index) => (
                 <div
                   key={task.title}
