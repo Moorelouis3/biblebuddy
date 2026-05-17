@@ -3936,86 +3936,151 @@ export default function DashboardJourneyExperience({
     const signupCount = shareRewardsReferrals.length;
     const earnedXp = signupCount * 250;
     const earnedDiamonds = signupCount * 250;
+    const shareMessage = `Join me on Bible Buddy. It helps you know where to start, understand what you read, and stay consistent with Bible study. ${shareUrl}`;
+    const encodedShareMessage = encodeURIComponent(shareMessage);
+    const copyInviteLink = async () => {
+      await navigator.clipboard.writeText(shareUrl);
+      setShareCopied(true);
+      window.setTimeout(() => setShareCopied(false), 1800);
+    };
+    const openNativeShare = async () => {
+      if (navigator.share) {
+        await navigator.share({ title: "Bible Buddy", text: "Join me on Bible Buddy.", url: shareUrl });
+        return;
+      }
+      await copyInviteLink();
+    };
 
     return (
       <section className="w-full px-1">
         <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-          <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Buddy Rewards</p>
-            <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">Share Bible Buddy</h2>
-            <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
-              Share Bible Buddy with friends and earn XP points and diamonds.
-            </p>
-            {shareRewardsLoading ? (
-              <p className="mt-5 rounded-2xl bg-[#f8fbff] px-4 py-4 text-sm font-black text-gray-500">Loading Buddy Rewards...</p>
-            ) : shareRewardsError ? (
-              <p className="mt-5 rounded-2xl bg-red-50 px-4 py-4 text-sm font-black text-red-600">{shareRewardsError}</p>
-            ) : (
-              <>
-                <div className="mt-5 rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] p-4">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#2f7fe8]">Your Invite Link</p>
-                    <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-[#2f7fe8]">+250 XP +250 diamonds</span>
-                  </div>
-                  <p className="mt-3 truncate rounded-2xl border border-[#dbe7f4] bg-white px-4 py-3 text-xs font-bold text-gray-500">
-                    {shareUrl}
-                  </p>
-                  <p className="mt-2 text-xs font-bold leading-5 text-gray-500">
-                    Share this link anywhere. When someone clicks it and signs up, Bible Buddy credits the signup back to you automatically.
-                  </p>
-                </div>
+          <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
+            <div className="bg-[linear-gradient(135deg,var(--bb-accent-soft,#eaf5ff),var(--bb-card,#ffffff)_62%,#fff7d7)] px-4 pb-5 pt-5 sm:px-5">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Buddy Rewards</p>
+              <h2 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Share Bible Buddy</h2>
+              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+                Share Bible Buddy with friends and earn XP points and diamonds.
+              </p>
 
-                <div className="mt-3 grid grid-cols-3 gap-2">
-                  <div className="rounded-2xl bg-[#f8fbff] p-3 text-center">
-                    <p className="text-xl font-black text-gray-950">{signupCount}</p>
-                    <p className="text-[10px] font-black uppercase tracking-[0.1em] text-gray-500">signups</p>
-                  </div>
-                  <div className="rounded-2xl bg-[#f8fbff] p-3 text-center">
-                    <p className="text-xl font-black text-gray-950">{earnedXp}</p>
-                    <p className="text-[10px] font-black uppercase tracking-[0.1em] text-gray-500">XP</p>
-                  </div>
-                  <div className="rounded-2xl bg-[#f8fbff] p-3 text-center">
-                    <p className="text-xl font-black text-gray-950">{earnedDiamonds}</p>
-                    <p className="text-[10px] font-black uppercase tracking-[0.1em] text-gray-500">diamonds</p>
-                  </div>
+              <div className="mt-5 flex items-center gap-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm">
+                <div className="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-[22px] bg-[var(--bb-surface-soft,#f8fbff)]">
+                  <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={104} />
                 </div>
-              </>
-            )}
-            <div className="mt-5 grid gap-3">
-              <button
-                type="button"
-                onClick={async () => {
-                  if (navigator.share) {
-                    await navigator.share({ title: "Bible Buddy", text: "Join me on Bible Buddy.", url: shareUrl });
-                    return;
-                  }
-                  await navigator.clipboard.writeText(shareUrl);
-                  setShareCopied(true);
-                  window.setTimeout(() => setShareCopied(false), 1800);
-                }}
-                className="rounded-2xl bg-[#2f7fe8] px-4 py-4 text-center text-sm font-black text-white shadow-sm transition hover:bg-[#256fd1]"
-              >
-                {shareCopied ? "Link Copied" : "Share or Copy Link"}
-              </button>
-              <Link href="/ambassador" className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-4 py-4 transition hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm">
-                <p className="text-base font-black text-gray-950">Buddy Rewards</p>
-                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">Open the full signup log and copy your invite link.</p>
-              </Link>
-              {signupCount > 0 ? (
-                <div className="rounded-2xl border border-[#dbe7f4] bg-white p-4">
-                  <p className="text-xs font-black uppercase tracking-[0.14em] text-gray-500">Recent Signups</p>
-                  <div className="mt-3 space-y-2">
-                    {shareRewardsReferrals.slice(0, 3).map((referral) => (
-                      <div key={referral.referred_user_id} className="flex items-center justify-between rounded-xl bg-[#f8fbff] px-3 py-2">
-                        <p className="text-sm font-black text-gray-800">New Bible Buddy</p>
-                        <p className="text-xs font-bold text-gray-500">
-                          {new Date(referral.trial_started_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-                        </p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{selectedBuddy.name} says:</p>
+                  <p className="mt-1 text-sm font-bold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
+                    For every person you get to sign up, you earn 250 XP points and 250 diamonds.
+                  </p>
+                  <span className="mt-3 inline-flex rounded-full bg-[var(--bb-accent,#2f7fe8)] px-3 py-1 text-xs font-black text-white">
+                    +250 XP +250 diamonds
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4 p-4 sm:p-5">
+              {shareRewardsLoading ? (
+                <p className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4 text-sm font-black text-[var(--bb-text-muted,#6b7280)]">Loading your invite link...</p>
+              ) : shareRewardsError ? (
+                <p className="rounded-2xl bg-red-50 px-4 py-4 text-sm font-black text-red-600">{shareRewardsError}</p>
+              ) : (
+                <>
+                  <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Your Invite Link</p>
+                    <p className="mt-3 truncate rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-xs font-bold text-[var(--bb-text-secondary,#5f6368)]">
+                      {shareUrl}
+                    </p>
+                    <p className="mt-2 text-xs font-bold leading-5 text-[var(--bb-text-muted,#6b7280)]">
+                      Send it anywhere. When someone clicks your link and signs up, Bible Buddy credits the signup back to you.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={copyInviteLink}
+                      className="rounded-2xl bg-[var(--bb-accent,#2f7fe8)] px-3 py-3 text-center text-sm font-black text-white shadow-sm transition hover:opacity-90"
+                    >
+                      {shareCopied ? "Link Copied" : "Copy Invite Link"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={openNativeShare}
+                      className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                    >
+                      Send to Anyone
+                    </button>
+                    <a
+                      href={`https://wa.me/?text=${encodedShareMessage}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-2xl border border-[#bce8cf] bg-[#effff5] px-3 py-3 text-center text-sm font-black text-[#137a3a] transition hover:bg-white"
+                    >
+                      WhatsApp
+                    </a>
+                    <a
+                      href={`sms:?&body=${encodedShareMessage}`}
+                      className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-card,#ffffff)]"
+                    >
+                      Text
+                    </a>
+                    <a
+                      href={`mailto:?subject=Join me on Bible Buddy&body=${encodedShareMessage}`}
+                      className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-card,#ffffff)]"
+                    >
+                      Email
+                    </a>
+                    <button
+                      type="button"
+                      onClick={copyInviteLink}
+                      className="rounded-2xl border border-[#ead8ff] bg-[#fbf7ff] px-3 py-3 text-center text-sm font-black text-[#6f3bc2] transition hover:bg-white"
+                    >
+                      Copy for Instagram
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
+                      <p className="text-xl font-black text-[var(--bb-text-primary,#111827)]">{signupCount}</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">signups</p>
+                    </div>
+                    <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
+                      <p className="text-xl font-black text-[var(--bb-text-primary,#111827)]">{earnedXp}</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">XP earned</p>
+                    </div>
+                    <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
+                      <p className="text-xl font-black text-[var(--bb-text-primary,#111827)]">{earnedDiamonds}</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">diamonds</p>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Signup Log</p>
+                        <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#5f6368)]">Every signup from your link appears here.</p>
                       </div>
-                    ))}
+                      <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">{signupCount}</span>
+                    </div>
+                    {signupCount > 0 ? (
+                      <div className="mt-3 space-y-2">
+                        {shareRewardsReferrals.map((referral) => (
+                          <div key={referral.referred_user_id} className="flex items-center justify-between rounded-xl bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2">
+                            <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">New Bible Buddy</p>
+                            <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                              {new Date(referral.trial_started_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="mt-3 rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4 text-sm font-bold leading-5 text-[var(--bb-text-muted,#6b7280)]">
+                        No signups yet. Share your invite link with someone who wants help starting and staying consistent with Bible study.
+                      </p>
+                    )}
                   </div>
-                </div>
-              ) : null}
+                </>
+              )}
             </div>
           </div>
         </div>
