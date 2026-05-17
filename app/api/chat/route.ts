@@ -72,6 +72,7 @@ export async function POST(req: Request) {
     const pageContext = body.pageContext ?? null;
     const growMode = body.growMode ?? false;
     const louisContext = body.louisContext ?? null;
+    const studyContext = louisContext?.studyContext ?? body.studyContext ?? null;
 
     console.log("Received request:", {
       messageCount: userMessages.length,
@@ -688,6 +689,53 @@ If they share a struggle, help them name it, then connect it to one clear next s
 - a small habit step for today
 
 Do not just comfort them. Help them move.
+`;
+    }
+
+    if (studyContext) {
+      const unfinishedTasks = Array.isArray(studyContext?.unfinishedTasks)
+        ? studyContext.unfinishedTasks.filter(Boolean).join(", ")
+        : "none";
+      const finishedTasks = Array.isArray(studyContext?.finishedTasks)
+        ? studyContext.finishedTasks.filter(Boolean).join(", ")
+        : "none";
+
+      systemContent += `
+
+CURRENT BIBLE STUDY FOCUS
+
+The user is inside the daily Bible Study flow.
+
+Current Bible Study: ${studyContext?.studyTitle || "none"}
+Current study summary: ${studyContext?.studySummary || "none"}
+Current chapter: ${studyContext?.chapterLabel || "none"}
+Current chapter title: ${studyContext?.chapterTitle || "none"}
+Current chapter theme: ${studyContext?.chapterTheme || "none"}
+Completed tasks: ${studyContext?.completedTasks ?? 0} of ${studyContext?.totalTasks ?? 0}
+All chapter tasks done: ${studyContext?.allDone ? "yes" : "no"}
+Next best task: ${studyContext?.nextTaskTitle || "none"}
+Next task kind: ${studyContext?.nextTaskKind || "none"}
+Unfinished tasks: ${unfinishedTasks || "none"}
+Finished tasks: ${finishedTasks || "none"}
+
+This is Lil Louis' home base.
+
+Unless the user clearly asks a different question, answer from this current Bible Study context first.
+
+If the user asks what to do, how to keep going, what they are studying, what is next, or just says something broad like "help", focus on:
+- the current Bible Study
+- the current chapter
+- the chapter theme
+- the unfinished tasks
+- the next best task
+
+If the user asks a Bible question that connects to the current chapter, connect your answer back to that chapter and its theme.
+
+If all tasks are done, celebrate it briefly and point them toward reviewing the chapter or starting the next chapter/study when ready.
+
+If the user clearly asks about a different Bible passage, life issue, app feature, or topic, answer that question normally, but still keep the tone of a study companion.
+
+Do not call this a devotional. Call it a Bible Study or chapter study.
 `;
     }
 

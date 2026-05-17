@@ -2637,14 +2637,30 @@ export default function DashboardPage() {
 
     const { data: statsRow, error: statsError } = await supabase
       .from("profile_stats")
-      .select("diamonds_count, grace_days_count")
+      .select("diamonds_count")
       .eq("user_id", userId)
       .maybeSingle();
 
     if (statsError) {
-      setStoreMessage("I could not check your diamond stash. Try again in a moment.");
+      const missingDiamondsColumn = /diamonds_count/i.test(statsError.message || "");
+      setStoreMessage(
+        missingDiamondsColumn
+          ? "The diamond stash column is missing. Run ADD_DIAMONDS_TO_PROFILE_STATS.sql in Supabase."
+          : "I could not check your diamond stash. Try again in a moment.",
+      );
       setStoreBuyingId(null);
       return;
+    }
+
+    if (!statsRow) {
+      const { error: createStatsError } = await supabase
+        .from("profile_stats")
+        .upsert({ user_id: userId, diamonds_count: currentDiamonds }, { onConflict: "user_id" });
+      if (createStatsError) {
+        setStoreMessage("I could not create your diamond stash. Try again in a moment.");
+        setStoreBuyingId(null);
+        return;
+      }
     }
 
     const serverDiamonds = Math.max(0, Number(statsRow?.diamonds_count ?? currentDiamonds));
@@ -2657,8 +2673,22 @@ export default function DashboardPage() {
 
     const nextDiamonds = serverDiamonds - item.price;
     const profileUpdate: Record<string, number> = { diamonds_count: nextDiamonds };
+    let previousGraceDays = Math.max(0, Number(profile?.grace_days_count ?? 0));
     if (item.id === "boost-extra-grace-day") {
-      profileUpdate.grace_days_count = Math.min(5, Math.max(0, Number(statsRow?.grace_days_count ?? profile?.grace_days_count ?? 0)) + 1);
+      const { data: graceRow, error: graceError } = await supabase
+        .from("profile_stats")
+        .select("grace_days_count")
+        .eq("user_id", userId)
+        .maybeSingle();
+
+      if (graceError) {
+        setStoreMessage("Grace Days are not ready yet. Run ADD_GRACE_DAYS_TO_PROFILE_STATS.sql in Supabase.");
+        setStoreBuyingId(null);
+        return;
+      }
+
+      previousGraceDays = Math.max(0, Number(graceRow?.grace_days_count ?? profile?.grace_days_count ?? 0));
+      profileUpdate.grace_days_count = Math.min(5, previousGraceDays + 1);
     }
 
     const { error: updateError } = await supabase
@@ -2691,15 +2721,15 @@ export default function DashboardPage() {
         .from("profile_stats")
         .update({
           diamonds_count: serverDiamonds,
-          grace_days_count: Math.max(0, Number(statsRow?.grace_days_count ?? profile?.grace_days_count ?? 0)),
+          ...(typeof profileUpdate.grace_days_count === "number" ? { grace_days_count: previousGraceDays } : {}),
         })
         .eq("user_id", userId);
       setProfile((current) =>
         current
           ? {
-              ...current,
-              diamonds_count: serverDiamonds,
-              grace_days_count: Math.max(0, Number(statsRow?.grace_days_count ?? profile?.grace_days_count ?? 0)),
+            ...current,
+            diamonds_count: serverDiamonds,
+              grace_days_count: typeof profileUpdate.grace_days_count === "number" ? previousGraceDays : current.grace_days_count,
             }
           : current,
       );

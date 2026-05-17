@@ -1763,6 +1763,24 @@ export default function DashboardJourneyExperience({
     nextTaskTitle,
     chapterLabel: activeChapterLabel,
   });
+  const louisStudyContext = {
+    studyTitle: currentDevotionalTitle,
+    studySummary: currentStudySummary,
+    chapterLabel: activeChapterLabel,
+    chapterTitle: chapterTask?.chapterTitle || null,
+    chapterTheme: chapterTask?.introSummary || devotionalTask?.introSummary || currentStudySummary || null,
+    completedTasks: studyProgressCompleted,
+    totalTasks: studyProgressTotal,
+    allDone,
+    nextTaskTitle: allDone ? null : nextTaskTitle,
+    nextTaskKind: nextTask?.kind || null,
+    unfinishedTasks: visibleTasks
+      .filter((task) => !task.done)
+      .map((task, index) => getTaskCardCopy(task, index).title),
+    finishedTasks: visibleTasks
+      .filter((task) => task.done)
+      .map((task, index) => getTaskCardCopy(task, index).title),
+  };
   const shouldShowCompletionPanel =
     !isChecklistSyncing &&
     allDone &&
@@ -3027,7 +3045,7 @@ export default function DashboardJourneyExperience({
   const renderEmbeddedBuddyPage = () => (
     <section className="w-full px-1 pb-4">
       <div className="mx-auto flex max-w-xl flex-col gap-4">
-        <ChatLouis displayMode="embedded" />
+        <ChatLouis displayMode="embedded" studyContext={louisStudyContext} />
       </div>
     </section>
   );

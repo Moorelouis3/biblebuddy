@@ -29,6 +29,22 @@ type Message = {
 
 type ChatLouisProps = {
   displayMode?: "floating" | "embedded";
+  studyContext?: LouisStudyContext | null;
+};
+
+export type LouisStudyContext = {
+  studyTitle: string | null;
+  studySummary: string | null;
+  chapterLabel: string | null;
+  chapterTitle: string | null;
+  chapterTheme: string | null;
+  completedTasks: number;
+  totalTasks: number;
+  allDone: boolean;
+  nextTaskTitle: string | null;
+  nextTaskKind: string | null;
+  unfinishedTasks: string[];
+  finishedTasks: string[];
 };
 
 type LouisInboxMessageRow = {
@@ -1610,7 +1626,7 @@ function buildLouisJourneyRecommendation({
   return null;
 }
 
-export function ChatLouis({ displayMode = "floating" }: ChatLouisProps) {
+export function ChatLouis({ displayMode = "floating", studyContext = null }: ChatLouisProps) {
   const { featureToursEnabled } = useFeatureRenderPriority();
   const isEmbedded = displayMode === "embedded";
   const pathname = usePathname();
@@ -3276,6 +3292,7 @@ export function ChatLouis({ displayMode = "floating" }: ChatLouisProps) {
             habitNudge: habitNudge?.summary ?? null,
             recommendationLine: louisRecommendation?.recommendationLine ?? null,
             recommendationHref: louisRecommendation?.primaryButtonHref ?? null,
+            studyContext,
           },
         }),
       });
