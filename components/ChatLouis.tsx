@@ -3560,59 +3560,85 @@ export function ChatLouis({ displayMode = "floating" }: ChatLouisProps) {
               </div>
             )}
 
-            {messages.map((m, i) => (
-              <div
-                key={i}
-                className={
-                  m.role === "user"
-                    ? "flex items-end justify-end gap-2.5"
-                    : "flex items-end justify-start"
-                }
-              >
-                <div className={m.role === "user" ? "max-w-[78%] text-right" : "max-w-[78%]"}>
-                  <div className={m.role === "user" ? "mb-1 text-[10px] font-medium text-slate-500" : "mb-1 text-[10px] font-medium text-slate-500"}>
-                    {m.role === "user" ? "You" : "Lil Louis"}
-                  </div>
-                  <div
-                    className={
-                      m.role === "user"
-                        ? "inline-block rounded-[22px] rounded-br-md border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-accent-soft,#eaf5ff)] px-3.5 py-2.5 text-left text-[var(--bb-text-primary,#111827)] shadow-sm"
-                        : "inline-block rounded-[22px] rounded-bl-md border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3.5 py-2.5 text-[var(--bb-text-primary,#111827)] shadow-sm"
-                    }
-                  >
-                    {m.role === "assistant" ? (
-                      <div>{renderLouisFormattedText(m.content)}</div>
-                    ) : (
-                      <p className="text-xs whitespace-pre-line leading-relaxed break-words">
-                        {m.content}
-                      </p>
-                    )}
-                  </div>
+            {messages.map((m, i) => {
+              const previousMessage = i > 0 ? messages[i - 1] : null;
+              const nextMessage = i < messages.length - 1 ? messages[i + 1] : null;
+              const startsMessageRun = !previousMessage || previousMessage.role !== m.role;
+              const endsMessageRun = !nextMessage || nextMessage.role !== m.role;
+              const isUserMessage = m.role === "user";
+
+              const userAvatar = userProfileImageUrl ? (
+                <img
+                  src={userProfileImageUrl}
+                  alt="Your profile picture"
+                  className="h-8 w-8 shrink-0 rounded-full border border-[var(--bb-card-border,#b8d9ef)] object-cover shadow-sm"
+                />
+              ) : (
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--bb-card-border,#b8d9ef)] bg-[var(--bb-accent-soft,#e8f3fb)] text-[11px] font-semibold text-[var(--bb-accent,#214761)] shadow-sm">
+                  {userInitial}
                 </div>
-                {m.role === "user" ? (
-                  userProfileImageUrl ? (
-                    <img
-                      src={userProfileImageUrl}
-                      alt="Your profile picture"
-                      className="h-8 w-8 shrink-0 rounded-full border border-[#b8d9ef] object-cover shadow-sm"
-                    />
-                  ) : (
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#b8d9ef] bg-[#e8f3fb] text-[11px] font-semibold text-[#214761] shadow-sm">
-                      {userInitial}
+              );
+
+              return (
+                <div
+                  key={i}
+                  className={
+                    isUserMessage
+                      ? `flex justify-end gap-2.5 ${endsMessageRun ? "items-end" : "items-start"}`
+                      : `flex justify-start gap-2.5 ${endsMessageRun ? "items-end" : "items-start"}`
+                  }
+                >
+                  {!isUserMessage ? (
+                    startsMessageRun ? (
+                      <div className="mt-5 grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+                        <LouisAvatar mood="peace" size={31} />
+                      </div>
+                    ) : (
+                      <div className="h-9 w-9 shrink-0" aria-hidden="true" />
+                    )
+                  ) : null}
+
+                  <div className={isUserMessage ? "max-w-[78%] text-right" : "max-w-[78%]"}>
+                    {startsMessageRun ? (
+                      <div className="mb-1 text-[10px] font-medium text-[var(--bb-text-muted,#64748b)]">
+                        {isUserMessage ? "You" : "Lil Louis"}
+                      </div>
+                    ) : null}
+                    <div
+                      className={
+                        isUserMessage
+                          ? `inline-block rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-accent-soft,#eaf5ff)] px-3.5 py-2.5 text-left text-[var(--bb-text-primary,#111827)] shadow-sm ${endsMessageRun ? "rounded-br-md" : ""}`
+                          : `inline-block rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3.5 py-2.5 text-[var(--bb-text-primary,#111827)] shadow-sm ${endsMessageRun ? "rounded-bl-md" : ""}`
+                      }
+                    >
+                      {m.role === "assistant" ? (
+                        <div>{renderLouisFormattedText(m.content)}</div>
+                      ) : (
+                        <p className="text-xs whitespace-pre-line leading-relaxed break-words">
+                          {m.content}
+                        </p>
+                      )}
                     </div>
-                  )
-                ) : null}
-              </div>
-            ))}
+                  </div>
+
+                  {isUserMessage ? (
+                    startsMessageRun ? userAvatar : <div className="h-8 w-8 shrink-0" aria-hidden="true" />
+                  ) : null}
+                </div>
+              );
+            })}
             {isSending ? (
-              <div className="flex items-end justify-start">
+              <div className="flex items-end justify-start gap-2.5">
+                <div className="mt-5 grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+                  <LouisAvatar mood="thinking" size={31} />
+                </div>
                 <div className="max-w-[78%]">
-                  <div className="mb-1 text-[10px] font-medium text-slate-500">Lil Louis</div>
-                  <div className="inline-flex items-center gap-1 rounded-[22px] rounded-bl-md border border-gray-200 bg-white px-3.5 py-3 text-gray-800 shadow-sm">
-                    <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.2s]" />
-                    <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.1s]" />
-                    <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400" />
-                    <span className="ml-2 text-[11px] text-slate-500">Lil Louis is typing...</span>
+                  <div className="mb-1 text-[10px] font-medium text-[var(--bb-text-muted,#64748b)]">Lil Louis</div>
+                  <div className="inline-flex items-center gap-1 rounded-[22px] rounded-bl-md border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#ffffff)] px-3.5 py-3 text-[var(--bb-text-primary,#1f2937)] shadow-sm">
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--bb-accent,#94a3b8)] [animation-delay:-0.2s]" />
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--bb-accent,#94a3b8)] [animation-delay:-0.1s]" />
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--bb-accent,#94a3b8)]" />
+                    <span className="ml-2 text-[11px] text-[var(--bb-text-muted,#64748b)]">Lil Louis is typing...</span>
                   </div>
                 </div>
               </div>

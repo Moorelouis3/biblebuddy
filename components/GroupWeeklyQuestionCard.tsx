@@ -11,8 +11,8 @@ export default function GroupWeeklyQuestionCard({
 }) {
   return (
     <div onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()}>
-      {intro ? <p className="mt-3 text-sm leading-relaxed text-gray-600">{intro}</p> : null}
-      {commentPrompt ? <p className="mt-3 text-sm leading-relaxed text-gray-600">{commentPrompt}</p> : null}
+      {intro ? <p className="mt-3 text-sm leading-relaxed text-[var(--bb-text-secondary,#4b5563)]">{intro}</p> : null}
+      {commentPrompt ? <p className="mt-3 text-sm leading-relaxed text-[var(--bb-text-secondary,#4b5563)]">{commentPrompt}</p> : null}
     </div>
   );
 }

@@ -129,7 +129,7 @@ export default function GroupWeeklyPollCard({
 
   return (
     <div onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()}>
-      {pollSet.intro ? <p className="text-sm leading-relaxed text-gray-600">{pollSet.intro}</p> : null}
+      {pollSet.intro ? <p className="text-sm leading-relaxed text-[var(--bb-text-secondary,#4b5563)]">{pollSet.intro}</p> : null}
       <div className="mt-4 space-y-2.5">
         {pollSet.options.map((option) => {
           const count = voteCounts[option.key] || 0;
@@ -156,14 +156,14 @@ export default function GroupWeeklyPollCard({
 
               <div className="relative flex items-center justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-sm font-semibold text-gray-900">{option.text}</p>
+                  <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">{option.text}</p>
                   {currentVote ? (
-                    <p className="mt-1 text-xs text-gray-500">
+                    <p className="mt-1 text-xs text-[var(--bb-text-secondary,#6b7280)]">
                       {count} vote{count === 1 ? "" : "s"}{selected ? " / your vote" : ""}
                     </p>
                   ) : null}
                 </div>
-                {currentVote ? <span className="text-xs font-semibold text-gray-600">{percent}%</span> : null}
+                {currentVote ? <span className="text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">{percent}%</span> : null}
               </div>
 
               {currentVote && voters.length ? (
@@ -172,24 +172,24 @@ export default function GroupWeeklyPollCard({
                     <div
                       key={voter.user_id}
                       title={voter.display_name}
-                      className="h-7 w-7 overflow-hidden rounded-full border-2 border-white bg-[#efe7db]"
+                      className="h-7 w-7 overflow-hidden rounded-full border-2 border-[var(--bb-card,#ffffff)] bg-[var(--bb-surface-soft,#efe7db)]"
                     >
                       {voter.profile_image_url ? (
                         <img src={voter.profile_image_url} alt={voter.display_name} className="h-full w-full object-cover" />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center text-[10px] font-bold text-[#8d5d38]">
+                        <div className="flex h-full w-full items-center justify-center text-[10px] font-bold text-[var(--bb-accent,#8d5d38)]">
                           {voter.display_name.charAt(0).toUpperCase()}
                         </div>
                       )}
                     </div>
                   ))}
                   {voters.length > (compactResults ? 3 : 5) ? (
-                    <span className="ml-1 text-[11px] font-semibold text-gray-500">
+                    <span className="ml-1 text-[11px] font-semibold text-[var(--bb-text-secondary,#6b7280)]">
                       +{voters.length - (compactResults ? 3 : 5)}
                     </span>
                   ) : null}
                   {compactResults ? (
-                    <span className="ml-2 text-[11px] font-semibold text-gray-500">
+                    <span className="ml-2 text-[11px] font-semibold text-[var(--bb-text-secondary,#6b7280)]">
                       Open post to see all
                     </span>
                   ) : null}
@@ -199,7 +199,7 @@ export default function GroupWeeklyPollCard({
           );
         })}
       </div>
-      <p className="mt-3 text-xs text-gray-500">
+      <p className="mt-3 text-xs text-[var(--bb-text-secondary,#6b7280)]">
         {currentVote ? `${totalVotes} total vote${totalVotes === 1 ? "" : "s"} so far.` : "Vote in the poll and then share your reason in the comments."}
       </p>
       {error ? <p className="mt-2 text-xs text-red-500">{error}</p> : null}

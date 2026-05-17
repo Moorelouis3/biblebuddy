@@ -1704,7 +1704,7 @@ export default function GroupChatPage() {
   const [composerVideoPreview, setComposerVideoPreview] = useState<string | null>(null);
   const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
   const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
-  const FEED_PAGE_SIZE = 8;
+  const FEED_PAGE_SIZE = 6;
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const groupPhotoInputRef = useRef<HTMLInputElement>(null);
   const groupVideoInputRef = useRef<HTMLInputElement>(null);
@@ -2859,24 +2859,23 @@ export default function GroupChatPage() {
       : "0 clicks";
 
     return (
-      <div className={`mb-4 overflow-hidden rounded-[24px] border border-[#d8e7d7] bg-white shadow-sm ${!hasOpenedTopBuddiesCard && !topBuddiesExpanded ? "animate-pulse ring-2 ring-[#ffd95d]/60" : ""}`}>
+      <div className={`mb-4 overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#d8e7d7)] bg-[var(--bb-card,#ffffff)] shadow-sm ${!hasOpenedTopBuddiesCard && !topBuddiesExpanded ? "animate-pulse ring-2 ring-[var(--bb-accent,#ffd95d)]/40" : ""}`}>
         <button
           type="button"
           onClick={toggleTopBuddiesCard}
-          className="group relative w-full overflow-hidden bg-gradient-to-br from-[#fff8d7] via-[#f7fbff] to-[#e9f7ea] px-4 py-4 text-left"
+          className="group relative w-full overflow-hidden bg-[var(--bb-card,#ffffff)] px-4 py-4 text-left"
         >
-          <div className="pointer-events-none absolute -right-8 -top-10 h-28 w-28 rounded-full bg-[#ffd95d]/30 blur-2xl transition group-hover:scale-110" />
-          <div className="pointer-events-none absolute -left-8 bottom-0 h-24 w-24 rounded-full bg-[#7BAFD4]/20 blur-2xl transition group-hover:scale-110" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-[var(--bb-accent,#4a9b6f)] opacity-80" />
           <div className="relative flex items-center justify-between gap-3">
             <div className="flex min-w-0 items-center gap-3">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#f3d77a] bg-white text-2xl shadow-sm transition group-hover:-rotate-3 group-hover:scale-105">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#f3d77a)] bg-[var(--bb-surface,#ffffff)] text-2xl shadow-sm transition group-hover:-rotate-3 group-hover:scale-105">
                 🏆
               </div>
               <div className="min-w-0">
-                <h3 className="mt-1 truncate text-lg font-black text-[#1f2a44]">
+                <h3 className="mt-1 truncate text-lg font-black text-[var(--bb-text-primary,#1f2a44)]">
                   Top 10 Bible Buddies
                 </h3>
-                <p className="mt-0.5 animate-pulse text-xs font-black text-[#64748b]">
+                <p className="mt-0.5 animate-pulse text-xs font-black text-[var(--bb-text-secondary,#64748b)]">
                   {weekRangeLabel}
                 </p>
               </div>
@@ -2890,7 +2889,7 @@ export default function GroupChatPage() {
                   </div>
                 ))}
               </div>
-              <span className="rounded-full bg-white/85 px-3 py-1 text-xs font-black text-[#47677c] ring-1 ring-[#d7e6ef]">
+              <span className="rounded-full bg-[var(--bb-surface,#ffffff)] px-3 py-1 text-xs font-black text-[var(--bb-accent,#47677c)] ring-1 ring-[var(--bb-card-border,#d7e6ef)]">
                 {topBuddiesExpanded ? "Hide" : "Open"}
               </span>
             </div>
@@ -2898,20 +2897,20 @@ export default function GroupChatPage() {
         </button>
 
         {topBuddiesExpanded && (
-          <div className="border-t border-[#e3edf3] bg-[#fbfdff] px-4 pb-4 pt-3">
-            <div className="mb-3 rounded-2xl border border-[#dbe7f0] bg-white px-3 py-3">
-              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#4f8fb7]">How weekly Top Buddies are calculated</p>
-              <p className="mt-1 text-xs font-semibold leading-5 text-[#516173]">
+          <div className="border-t border-[var(--bb-card-border,#e3edf3)] bg-[var(--bb-surface-soft,#fbfdff)] px-4 pb-4 pt-3">
+            <div className="mb-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f0)] bg-[var(--bb-card,#ffffff)] px-3 py-3">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#4f8fb7)]">How weekly Top Buddies are calculated</p>
+              <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#516173)]">
                 Bible study tasks count the most: study intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
               </p>
             </div>
 
             {loadingTopBuddies ? (
-              <div className="rounded-2xl border border-dashed border-[#cfe1ee] bg-white px-4 py-5 text-center text-sm font-semibold text-[#64748b]">
+              <div className="rounded-2xl border border-dashed border-[var(--bb-card-border,#cfe1ee)] bg-[var(--bb-card,#ffffff)] px-4 py-5 text-center text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
                 Loading the award board...
               </div>
             ) : currentBuddies.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-[#cfe1ee] bg-white px-4 py-5 text-center text-sm font-semibold text-[#64748b]">
+              <div className="rounded-2xl border border-dashed border-[var(--bb-card-border,#cfe1ee)] bg-[var(--bb-card,#ffffff)] px-4 py-5 text-center text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
                 No leaderboard points yet. First Buddy to show up gets the spotlight.
               </div>
             ) : (
@@ -2919,7 +2918,7 @@ export default function GroupChatPage() {
                 {currentBuddies.map((buddy) => {
                   const medal = getTopBuddyMedal(buddy.rank);
                   return (
-                    <div key={`week-${buddy.userId}`} className="flex items-center gap-3 rounded-2xl border border-[#e1ebf2] bg-white px-3 py-3 shadow-sm">
+                    <div key={`week-${buddy.userId}`} className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-card,#ffffff)] px-3 py-3 shadow-sm">
                       <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-sm font-black ${medal.classes}`}>
                         {medal.icon || medal.label}
                       </div>
@@ -2928,20 +2927,20 @@ export default function GroupChatPage() {
                       </Link>
                       <div className="min-w-0 flex-1">
                         <div className="flex min-w-0 flex-wrap items-center gap-1.5">
-                          <Link href={`/profile/${buddy.userId}`} className="truncate text-sm font-black text-[#1f2a44] hover:underline">
+                          <Link href={`/profile/${buddy.userId}`} className="truncate text-sm font-black text-[var(--bb-text-primary,#1f2a44)] hover:underline">
                             {buddy.displayName}
                           </Link>
                           <StreakFlameBadge currentStreak={buddy.currentStreak} />
                           <LevelBadge currentLevel={buddy.currentLevel} />
                           <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                         </div>
-                        <p className="mt-0.5 text-[11px] font-semibold text-[#718096]">
+                        <p className="mt-0.5 text-[11px] font-semibold text-[var(--bb-text-secondary,#718096)]">
                           {buddy.actions || 0} Bible tasks · {buddy.scoreBreakdown?.community || 0} community pts
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="text-lg font-black text-[#1f2a44]">{buddy.score}</p>
-                        <p className="text-[11px] font-bold text-[#718096]">buddy score</p>
+                        <p className="text-lg font-black text-[var(--bb-text-primary,#1f2a44)]">{buddy.score}</p>
+                        <p className="text-[11px] font-bold text-[var(--bb-text-secondary,#718096)]">buddy score</p>
                       </div>
                     </div>
                   );
@@ -2949,11 +2948,11 @@ export default function GroupChatPage() {
               </div>
             )}
 
-            <div className="mt-3 flex items-center justify-between gap-2 rounded-2xl border border-[#e1ebf2] bg-white px-3 py-2 text-xs font-bold text-[#64748b]">
+            <div className="mt-3 flex items-center justify-between gap-2 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">
               <button
                 type="button"
                 onClick={() => setTopBuddiesClickersExpanded((current) => !current)}
-                className="text-left font-black text-[#47677c]"
+                className="text-left font-black text-[var(--bb-text-primary,#47677c)]"
               >
                 {clickLabel} {boardClickers.length ? (topBuddiesClickersExpanded ? "▲" : "▼") : ""}
               </button>
@@ -2963,7 +2962,7 @@ export default function GroupChatPage() {
                   void trackTopBuddiesClick("modal");
                   setShowTopBuddiesModal(true);
                 }}
-                className="font-black text-[#4a9b6f]"
+                className="font-black text-[var(--bb-accent,#4a9b6f)]"
               >
                 Full view
               </button>
@@ -3208,12 +3207,9 @@ export default function GroupChatPage() {
     const postHeight = () => {
       window.cancelAnimationFrame(frame);
       frame = window.requestAnimationFrame(() => {
-        const height = Math.max(
-          communityRootRef.current?.scrollHeight ?? 0,
-          document.documentElement.scrollHeight,
-          document.body.scrollHeight,
-        );
-        window.parent?.postMessage({ type: "bb-community-height", height: height + 16 }, window.location.origin);
+        const root = communityRootRef.current;
+        const height = root ? Math.ceil(root.getBoundingClientRect().height) : 0;
+        window.parent?.postMessage({ type: "bb-community-height", height: Math.max(620, height + 16) }, window.location.origin);
       });
     };
 
@@ -4830,7 +4826,7 @@ export default function GroupChatPage() {
     );
   }
 
-  const coverColor = isDashboardEmbed ? "#f8fbff" : group.cover_color || "#d4ecd4";
+  const coverColor = isDashboardEmbed ? "var(--bb-card)" : group.cover_color || "var(--bb-card)";
   const activeFeedPost = selectedFeedPost ? (posts.find((post) => post.id === selectedFeedPost.id) ?? selectedFeedPost) : null;
   const activeFeedPollSet = activeFeedPost ? weeklyPollByPostId[activeFeedPost.id] : undefined;
   const activeFeedTriviaSet = activeFeedPost ? weeklyTriviaByPostId[activeFeedPost.id] : undefined;
@@ -4850,22 +4846,22 @@ export default function GroupChatPage() {
     : { buttonBg: SAGE };
   // â”€â”€ Render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
-    <div ref={communityRootRef} className={`${isDashboardEmbed ? "min-h-full bg-[#f8fbff]" : "min-h-screen bg-gray-50"} flex flex-col`}>
+    <div ref={communityRootRef} className={`${isDashboardEmbed ? "bg-[var(--bb-background,#f8fbff)]" : "min-h-screen bg-[var(--bb-background,#f8fbff)]"} flex flex-col text-[var(--bb-text-primary,#111827)]`}>
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div className="sticky top-0 z-20 border-b border-[#dbe7f4]/80" style={{ backgroundColor: coverColor }}>
+      <div className="sticky top-0 z-20 border-b border-[var(--bb-card-border,#dbe7f4)]" style={{ backgroundColor: coverColor }}>
         <div className="max-w-2xl mx-auto px-4 py-4">
           {!isDashboardEmbed && (
-          <div className="flex items-center gap-1 text-xs text-gray-600 font-medium mb-2 flex-wrap">
+          <div className="flex items-center gap-1 text-xs text-[var(--bb-text-secondary,#5f6368)] font-medium mb-2 flex-wrap">
             {!isDashboardEmbed && (
               <>
-                <Link href="/dashboard" className="hover:text-gray-900 hover:underline transition">
+                <Link href="/dashboard" className="hover:text-[var(--bb-text-primary,#111827)] hover:underline transition">
                   Dashboard
                 </Link>
                 <span>/</span>
               </>
             )}
-            <span className="text-gray-900">Community</span>
+            <span className="text-[var(--bb-text-primary,#111827)]">Community</span>
             {selectedSeries && (
               <>
                 <span>/</span>
@@ -4876,7 +4872,7 @@ export default function GroupChatPage() {
                     setSelectedSeriesWeek(null);
                     setSelectedPost(null);
                   }}
-                  className="text-gray-900 hover:underline"
+                  className="text-[var(--bb-text-primary,#111827)] hover:underline"
                 >
                   {selectedSeries.title}
                 </button>
@@ -4888,7 +4884,7 @@ export default function GroupChatPage() {
                 <button
                   type="button"
                   onClick={() => setSelectedPost(null)}
-                  className="text-gray-900 hover:underline"
+                  className="text-[var(--bb-text-primary,#111827)] hover:underline"
                 >
                   {selectedPost.title}
                 </button>
@@ -4898,16 +4894,16 @@ export default function GroupChatPage() {
           )}
           <div className="flex items-center gap-3">
             {!isDashboardEmbed ? (
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#dbe7f4] bg-white text-xl shadow-sm">{group.cover_emoji || "👥"}</span>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#ffffff)] text-xl shadow-sm">{group.cover_emoji || "👥"}</span>
             ) : null}
             <div className="flex-1 min-w-0">
               {!isDashboardEmbed ? (
-                <h1 className="text-lg font-bold text-gray-900 truncate">{displayGroupName}</h1>
+                <h1 className="text-lg font-bold text-[var(--bb-text-primary,#111827)] truncate">{displayGroupName}</h1>
               ) : null}
               <div className="flex items-center gap-3 flex-wrap">
                 <button
                   onClick={() => setShowGroupInfoModal(true)}
-                  className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+                  className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
                 >
                   About Community
                 </button>
@@ -4915,7 +4911,7 @@ export default function GroupChatPage() {
                 onClick={() => {
                       setActiveTab("members");
                 }}
-                className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+                className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
               >
                 See All Buddies
               </button>
@@ -4923,13 +4919,13 @@ export default function GroupChatPage() {
                 <>
                   <Link
                     href={`/study-groups/${group.id}/analytics`}
-                    className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+                    className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
                   >
                     Group Analytics
                   </Link>
                   <Link
                     href={`/study-groups/${group.id}/scheduler`}
-                    className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+                    className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
                   >
                     Scheduler
                   </Link>
@@ -4971,9 +4967,9 @@ export default function GroupChatPage() {
                         }}
                         className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition"
                         style={{
-                          backgroundColor: isActive ? "#ffffff" : "rgba(255,255,255,0.82)",
-                          borderColor: isActive ? "#d9c7b4" : "#e5e7eb",
-                          color: isActive ? "#8d5d38" : "#374151",
+                          backgroundColor: isActive ? "var(--bb-surface)" : "var(--bb-surface-soft)",
+                          borderColor: isActive ? "var(--bb-accent)" : "var(--bb-card-border)",
+                          color: isActive ? "var(--bb-accent)" : "var(--bb-text-primary)",
                         }}
                       >
                         {tab.label}
@@ -4990,9 +4986,9 @@ export default function GroupChatPage() {
                         }}
                         className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition flex items-center gap-2"
                         style={{
-                          backgroundColor: moreIsActive || showMoreNav ? "#ffffff" : "rgba(255,255,255,0.82)",
-                          borderColor: moreIsActive || showMoreNav ? "#d9c7b4" : "#e5e7eb",
-                          color: moreIsActive || showMoreNav ? "#8d5d38" : "#374151",
+                          backgroundColor: moreIsActive || showMoreNav ? "var(--bb-surface)" : "var(--bb-surface-soft)",
+                          borderColor: moreIsActive || showMoreNav ? "var(--bb-accent)" : "var(--bb-card-border)",
+                          color: moreIsActive || showMoreNav ? "var(--bb-accent)" : "var(--bb-text-primary)",
                         }}
                       >
                         <span>More</span>
@@ -5018,7 +5014,7 @@ export default function GroupChatPage() {
         <>
           <div className="fixed inset-0 z-10" onClick={() => setShowMoreNav(false)} />
           <div
-            className="fixed z-20 w-64 max-w-[calc(100vw-2rem)] rounded-2xl border border-[#ead8c4] bg-[#fffaf4] p-2 shadow-xl"
+            className="fixed z-20 w-64 max-w-[calc(100vw-2rem)] rounded-2xl border border-[var(--bb-card-border,#ead8c4)] bg-[var(--bb-card,#fffaf4)] p-2 shadow-xl"
             style={{ top: moreMenuPosition.top, left: moreMenuPosition.left }}
           >
             {[
@@ -5043,8 +5039,8 @@ export default function GroupChatPage() {
                   }}
                   className="w-full px-3.5 py-2.5 rounded-xl text-sm font-medium text-left transition"
                   style={{
-                    backgroundColor: isActive ? "#f7e3d1" : "transparent",
-                    color: isActive ? "#8d5d38" : "#5f6368",
+                    backgroundColor: isActive ? "var(--bb-accent-soft)" : "transparent",
+                    color: isActive ? "var(--bb-accent)" : "var(--bb-text-secondary)",
                   }}
                 >
                   {item.label}
@@ -6148,11 +6144,11 @@ export default function GroupChatPage() {
                 <button
                   type="button"
                   onClick={() => setShowPostComposerModal(true)}
-                  className="w-full bg-white border border-[#d4ecd4] rounded-2xl px-4 py-4 shadow-sm hover:shadow-md transition text-left relative overflow-hidden"
+                  className="w-full bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#d4ecd4)] rounded-2xl px-4 py-4 shadow-sm hover:shadow-md transition text-left relative overflow-hidden"
                 >
                   <span className="absolute right-4 top-4 flex h-2.5 w-2.5">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-[#8ccf98] opacity-60 animate-ping" />
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#4a9b6f]" />
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--bb-accent,#8ccf98)] opacity-60 animate-ping" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--bb-accent,#4a9b6f)]" />
                   </span>
                   <div className="flex items-center gap-3">
                     {userProfileImage ? (
@@ -6163,8 +6159,8 @@ export default function GroupChatPage() {
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-gray-900">Share something with the group</p>
-                      <p className="text-sm text-gray-400 mt-1">Add a title, write your post, and start the conversation...</p>
+                      <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">Share something with the group</p>
+                      <p className="text-sm text-[var(--bb-text-muted,#9ca3af)] mt-1">Add a title, write your post, and start the conversation...</p>
                     </div>
                   </div>
                 </button>
@@ -7182,12 +7178,12 @@ export default function GroupChatPage() {
 
   // â”€â”€ Chat renderPosts helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function renderPosts() {
-    if (loadingPosts) return <p className="text-gray-400 text-sm text-center py-8">Loading posts...</p>;
+    if (loadingPosts) return <p className="text-[var(--bb-text-muted,#9ca3af)] text-sm text-center py-8">Loading posts...</p>;
     if (posts.length === 0) {
       return (
         <div className="text-center py-12">
-          <p className="text-gray-400 text-sm">No posts yet.</p>
-          <p className="text-gray-400 text-sm mt-1">Be the first to post something!</p>
+          <p className="text-[var(--bb-text-muted,#9ca3af)] text-sm">No posts yet.</p>
+          <p className="text-[var(--bb-text-muted,#9ca3af)] text-sm mt-1">Be the first to post something!</p>
         </div>
       );
     }
@@ -7215,7 +7211,7 @@ export default function GroupChatPage() {
                 setSelectedFeedPost(post);
               }
             }}
-            className="w-full text-left transition cursor-pointer bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md animate-fade-in-up"
+            className="w-full text-left transition cursor-pointer bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#e5e7eb)] rounded-xl p-4 shadow-sm hover:shadow-md animate-fade-in-up"
             style={{ animationDelay: `${Math.min(index * 0.045, 0.45)}s` }}
           >
             <div>
@@ -7230,13 +7226,13 @@ export default function GroupChatPage() {
               )}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <Link href={`/profile/${post.user_id}`} className="font-semibold text-gray-900 text-sm hover:underline">
+                  <Link href={`/profile/${post.user_id}`} className="font-semibold text-[var(--bb-text-primary,#111827)] text-sm hover:underline">
                     {post.display_name || "Buddy"}
                   </Link>
                   <StreakFlameBadge currentStreak={post.current_streak} />
                   <LevelBadge currentLevel={post.current_level} />
                   <UserBadge customBadge={post.member_badge} isPaid={post.is_paid} groupRole={post.role} />
-                  <span className="text-xs text-gray-400">{timeAgo(post.created_at)}</span>
+                  <span className="text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(post.created_at)}</span>
                 </div>
               </div>
               {(userId === post.user_id || isLeaderOrMod) && (
@@ -7247,7 +7243,7 @@ export default function GroupChatPage() {
                       e.stopPropagation();
                       setActivePostMenuId(activePostMenuId === post.id ? null : post.id);
                     }}
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition"
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-[var(--bb-text-muted,#9ca3af)] hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#374151)] transition"
                     aria-label="Post options"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -7255,7 +7251,7 @@ export default function GroupChatPage() {
                     </svg>
                   </button>
                   {activePostMenuId === post.id && (
-                    <div className="absolute right-0 top-10 z-10 min-w-[140px] rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+                    <div className="absolute right-0 top-10 z-10 min-w-[140px] rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-lg overflow-hidden">
                       {canEditFeedPost(post) && (
                         <button
                           type="button"
@@ -7263,7 +7259,7 @@ export default function GroupChatPage() {
                             e.stopPropagation();
                             startEditingFeedPost(post);
                           }}
-                          className="w-full px-4 py-3 text-left text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+                          className="w-full px-4 py-3 text-left text-sm font-medium text-[var(--bb-text-secondary,#374151)] hover:bg-[var(--bb-surface-soft,#f3f4f6)] transition"
                         >
                           Edit Post
                         </button>
@@ -7297,12 +7293,12 @@ export default function GroupChatPage() {
                 </div>
               )}
             </div>
-              {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
+              {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && <h3 className={`font-bold text-[var(--bb-text-primary,#111827)] leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
               {isScrambledSharePost && renderScrambledShareCard(post, true)}
               {isScrambledPromo && renderScrambledPromoCard(post, true)}
               {isBibleBuddyTvShare && renderBibleBuddyTvShareCard(post, true)}
               {!pollSet && !triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (
-                <p className={`text-sm text-gray-700 mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
+                <p className={`text-sm text-[var(--bb-text-secondary,#374151)] mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
                   {getPostPreviewText(post.content)}
                 </p>
             )}
@@ -7337,7 +7333,7 @@ export default function GroupChatPage() {
             )}
             {post.media_url && !isUploadedVideo(post.media_url) && (
               <div
-                className="mt-3 w-full block rounded-[22px] overflow-hidden bg-white"
+                className="mt-3 w-full block rounded-[22px] overflow-hidden bg-[var(--bb-surface,#ffffff)]"
                 style={{ maxHeight: hasImagePost ? "560px" : "420px" }}
               >
                 <img
@@ -7368,17 +7364,17 @@ export default function GroupChatPage() {
               }
               const meta = VIDEO_META[parsed.platform];
               return (
-                <a href={post.link_url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="mt-3 flex items-center gap-3 p-3 border border-gray-100 rounded-xl hover:bg-gray-50 transition">
+                <a href={post.link_url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="mt-3 flex items-center gap-3 p-3 border border-[var(--bb-card-border,#f3f4f6)] rounded-xl hover:bg-[var(--bb-surface-soft,#f3f4f6)] transition">
                   <span className="text-xl">{meta.icon}</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-semibold text-gray-700">{meta.label}</p>
-                    <p className="text-xs text-gray-400 truncate">{post.link_url}</p>
+                    <p className="text-xs font-semibold text-[var(--bb-text-secondary,#374151)]">{meta.label}</p>
+                    <p className="text-xs text-[var(--bb-text-muted,#9ca3af)] truncate">{post.link_url}</p>
                   </div>
                   <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                 </a>
               );
             })()}
-            <div className="flex items-center gap-4 mt-4 pt-3 border-t border-gray-100">
+            <div className="flex items-center gap-4 mt-4 pt-3 border-t border-[var(--bb-card-border,#f3f4f6)]">
               <button
                 type="button"
                 onClick={(e) => {
@@ -7399,7 +7395,7 @@ export default function GroupChatPage() {
                   e.stopPropagation();
                   void openPostLikes(post);
                 }}
-                className="text-sm text-gray-500 hover:text-gray-700 transition"
+                className="text-sm text-[var(--bb-text-secondary,#6b7280)] hover:text-[var(--bb-text-primary,#374151)] transition"
               >
                 {post.like_count === 1 ? "1 like" : `${post.like_count || 0} likes`}
               </button>
@@ -7409,7 +7405,7 @@ export default function GroupChatPage() {
                   e.stopPropagation();
                   setSelectedFeedPost(post);
                 }}
-                className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-[#b7794d] transition"
+                className="flex items-center gap-1.5 text-sm text-[var(--bb-text-muted,#9ca3af)] hover:text-[var(--bb-accent,#b7794d)] transition"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -7422,7 +7418,7 @@ export default function GroupChatPage() {
           </div>
         )})}
         <div className="flex flex-col gap-3 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-center text-xs font-semibold text-gray-500 sm:text-left">
+          <p className="text-center text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] sm:text-left">
             Page {postsPage + 1} · Showing up to {FEED_PAGE_SIZE} posts
           </p>
           <div className="flex items-center justify-center gap-2">
@@ -7430,7 +7426,7 @@ export default function GroupChatPage() {
               type="button"
               onClick={() => void loadPosts(Math.max(postsPage - 1, 0))}
               disabled={postsPage === 0 || loadingPosts}
-              className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-4 py-2 text-sm font-semibold text-gray-600 shadow-sm transition hover:bg-[var(--bb-surface-soft)] disabled:cursor-not-allowed disabled:opacity-45"
+              className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-4 py-2 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)] shadow-sm transition hover:bg-[var(--bb-surface-soft)] disabled:cursor-not-allowed disabled:opacity-45"
             >
               Previous
             </button>

@@ -388,7 +388,15 @@ function DashboardInlineBibleReader({
   }
 
   return (
-    <div ref={readerRootRef} className="dashboard-task-card-extension relative mt-2 px-1 pb-2 pt-1">
+    <div
+      ref={readerRootRef}
+      className="dashboard-inline-bible-reader dashboard-task-card-extension relative mt-2 rounded-[24px] border px-3 pb-4 pt-3 shadow-sm"
+      style={{
+        backgroundColor: "var(--bb-reader-bg, #f8fbff)",
+        borderColor: "var(--bb-reader-border, #bfdbfe)",
+        color: "var(--bb-reader-text, #102a43)",
+      }}
+    >
       <style>{`
         @keyframes word-discovery-smoke {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); filter: blur(0); }
@@ -406,6 +414,12 @@ function DashboardInlineBibleReader({
         .word-discovery-card {
           animation: word-discovery-card 260ms cubic-bezier(0.16, 0.9, 0.22, 1) both;
         }
+        .dashboard-inline-bible-reader .bible-highlight {
+          color: var(--bb-reader-text, #102a43) !important;
+        }
+        .dashboard-inline-bible-reader .bible-highlight:hover {
+          color: var(--bb-accent, #2f7fe8) !important;
+        }
       `}</style>
       {!selectedTerm ? (
       <div className="mb-4 flex justify-end">
@@ -417,7 +431,12 @@ function DashboardInlineBibleReader({
             id="dashboard-bible-translation"
             value={translation}
             onChange={(event) => setTranslation(event.target.value as InlineBibleTranslation)}
-            className="rounded-full border border-[var(--bb-card-border)] bg-transparent px-3 py-2 text-xs font-black uppercase text-[var(--bb-text-primary)] outline-none transition focus:border-[var(--bb-accent)] focus:ring-2 focus:ring-[var(--bb-accent)]/20"
+            className="rounded-full border px-3 py-2 text-xs font-black uppercase outline-none transition focus:border-[var(--bb-accent)] focus:ring-2 focus:ring-[var(--bb-accent)]/20"
+            style={{
+              backgroundColor: "var(--bb-reader-surface, #ffffff)",
+              borderColor: "var(--bb-reader-border, #bfdbfe)",
+              color: "var(--bb-reader-text, #102a43)",
+            }}
           >
             {INLINE_BIBLE_TRANSLATIONS.map((option) => (
               <option key={option.value} value={option.value}>
@@ -479,19 +498,22 @@ function DashboardInlineBibleReader({
           </div>
         </div>
       ) : loading ? (
-        <p className="bb-text-secondary py-8 text-sm font-semibold">Loading {chapterLabel}...</p>
+        <p className="py-8 text-sm font-semibold" style={{ color: "var(--bb-reader-secondary, #334e68)" }}>Loading {chapterLabel}...</p>
       ) : error ? (
         <p className="py-8 text-sm font-bold text-red-600">{error}</p>
       ) : (
-        <div className="space-y-1.5" onClick={handleBibleTermClick}>
+        <div className="space-y-3" onClick={handleBibleTermClick}>
           {verses.map((verse) => {
             const highlightColor = highlightMap[verse.verse];
             return (
               <p
                 key={verse.verse}
                 onClick={(event) => openVerseColorPicker(verse.verse, event)}
-                className="bb-text-primary flex cursor-pointer items-baseline gap-2 rounded-lg px-1 py-0.5 text-base font-medium leading-7 transition"
-                style={{ backgroundColor: highlightColor ? getHighlightColorCode(highlightColor) : "transparent" }}
+                className="cursor-pointer rounded-lg px-1 py-0.5 text-base font-semibold leading-8 transition"
+                style={{
+                  backgroundColor: highlightColor ? getHighlightColorCode(highlightColor) : "transparent",
+                  color: "var(--bb-reader-text, #102a43)",
+                }}
               >
                 <button
                   type="button"
@@ -499,13 +521,18 @@ function DashboardInlineBibleReader({
                     event.stopPropagation();
                     openVerseColorPicker(verse.verse, event);
                   }}
-                  className="inline-flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-[var(--bb-card-border)] bg-transparent px-1.5 align-baseline text-xs font-black leading-none text-[var(--bb-accent)] transition hover:border-[var(--bb-accent)] hover:bg-[var(--bb-accent-soft)]"
+                  className="mr-2 inline-flex h-6 min-w-6 translate-y-[-1px] items-center justify-center rounded-full border px-1.5 align-middle text-xs font-black leading-none text-[var(--bb-accent)] transition hover:border-[var(--bb-accent)] hover:bg-[var(--bb-accent-soft)]"
+                  style={{
+                    backgroundColor: "var(--bb-reader-surface, #ffffff)",
+                    borderColor: "var(--bb-reader-border, #bfdbfe)",
+                    color: "var(--bb-accent, #2f7fe8)",
+                  }}
                   aria-label={`Highlight verse ${verse.verse}`}
                 >
                   {verse.verse}
                 </button>
                 <span
-                  className="min-w-0 flex-1 [&_p]:inline"
+                  className="inline [&_p]:inline"
                   // biome-ignore lint/security/noDangerouslySetInnerHtml: Bible text is escaped before enrichment.
                   dangerouslySetInnerHTML={{ __html: enrichPlainText(verse.text) }}
                 />

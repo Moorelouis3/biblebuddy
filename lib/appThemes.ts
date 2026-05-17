@@ -345,6 +345,13 @@ export function applyAppThemeToDocument(themeId: AppThemeId) {
   (Object.keys(variableMap) as Array<keyof AppThemeTokens>).forEach((key) => {
     root.style.setProperty(variableMap[key], theme[key]);
   });
+  const readerIsDarkTheme = theme.id === "dark";
+  root.style.setProperty("--bb-reader-bg", readerIsDarkTheme ? "#F8FBFF" : theme.surface);
+  root.style.setProperty("--bb-reader-surface", readerIsDarkTheme ? "#FFFFFF" : theme.card);
+  root.style.setProperty("--bb-reader-border", readerIsDarkTheme ? "#BFDBFE" : theme.cardBorder);
+  root.style.setProperty("--bb-reader-text", readerIsDarkTheme ? "#102A43" : theme.textPrimary);
+  root.style.setProperty("--bb-reader-secondary", readerIsDarkTheme ? "#334E68" : theme.textSecondary);
+  root.style.setProperty("--bb-reader-muted", readerIsDarkTheme ? "#627D98" : theme.textMuted);
   root.style.setProperty("--background", theme.background);
   root.style.setProperty("--foreground", theme.textPrimary);
 }

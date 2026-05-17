@@ -89,6 +89,12 @@
   --bb-nav-inactive: #6b7280;
   --bb-progress-track: #e5e7eb;
   --bb-progress-fill: #7bafd4;
+  --bb-reader-bg: #f8fbff;
+  --bb-reader-surface: #ffffff;
+  --bb-reader-border: #bfdbfe;
+  --bb-reader-text: #102a43;
+  --bb-reader-secondary: #334e68;
+  --bb-reader-muted: #627d98;
 }
 
 @theme inline {

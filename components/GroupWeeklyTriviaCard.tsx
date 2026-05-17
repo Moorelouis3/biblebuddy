@@ -229,18 +229,18 @@ export default function GroupWeeklyTriviaCard({
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--bb-accent)]">Weekly Bible Trivia</p>
-          <h3 className="mt-1 text-lg font-bold text-gray-900">{triviaSet.subject_title}</h3>
-          {triviaSet.intro && <p className="mt-2 text-sm leading-relaxed text-gray-600">{triviaSet.intro}</p>}
+          <h3 className="mt-1 text-lg font-bold text-[var(--bb-text-primary,#111827)]">{triviaSet.subject_title}</h3>
+          {triviaSet.intro && <p className="mt-2 text-sm leading-relaxed text-[var(--bb-text-secondary,#4b5563)]">{triviaSet.intro}</p>}
         </div>
         <span className="rounded-full bg-[var(--bb-accent-soft)] px-2.5 py-1 text-[11px] font-semibold text-[var(--bb-accent)]">
           10 Questions
         </span>
       </div>
 
-      <div className="mt-4 rounded-2xl border border-[#e9e2d8] bg-white p-4 shadow-sm">
+      <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#e9e2d8)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
         {phase === "start" && (
           <div className="text-center">
-            <p className="text-sm text-gray-600">Jump into this week's group trivia, then see how your score stacks up on the board.</p>
+            <p className="text-sm text-[var(--bb-text-secondary,#4b5563)]">Jump into this week's group trivia, then see how your score stacks up on the board.</p>
             <button
               type="button"
               disabled={!userId}
@@ -256,7 +256,7 @@ export default function GroupWeeklyTriviaCard({
         {phase === "quiz" && currentQuestion && (
           <div>
             <div className="mb-3 flex items-center justify-between gap-3">
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
+              <p className="text-xs font-semibold uppercase tracking-wide text-[var(--bb-text-muted,#9ca3af)]">
                 Question {currentIndex + 1} of {totalQuestions}
               </p>
               <p className="text-xs font-semibold text-[var(--bb-accent)]">{score} correct</p>
@@ -267,7 +267,7 @@ export default function GroupWeeklyTriviaCard({
                 style={{ width: `${(currentIndex / totalQuestions) * 100}%` }}
               />
             </div>
-            <p className="text-base font-semibold leading-snug text-gray-900">{currentQuestion.question}</p>
+            <p className="text-base font-semibold leading-snug text-[var(--bb-text-primary,#111827)]">{currentQuestion.question}</p>
             <div className="mt-4 space-y-2">
               {currentQuestion.options.map((option) => (
                 <button
@@ -276,15 +276,15 @@ export default function GroupWeeklyTriviaCard({
                   onClick={() => handleSelect(option.label)}
                   className={`w-full rounded-2xl border px-4 py-3 text-left text-sm transition ${optionClasses(option.label)}`}
                 >
-                  <span className="mr-2 font-bold text-gray-700">{option.label}.</span>
-                  <span className="text-gray-800">{option.text}</span>
+                  <span className="mr-2 font-bold text-[var(--bb-text-secondary,#374151)]">{option.label}.</span>
+                  <span className="text-[var(--bb-text-primary,#1f2937)]">{option.text}</span>
                 </button>
               ))}
             </div>
 
             {revealed && (
               <div className="mt-4">
-                <div className="rounded-2xl border border-[#e4edf3] bg-[#f5fbff] px-4 py-3 text-sm leading-relaxed text-[#466274]">
+                <div className="rounded-2xl border border-[var(--bb-card-border,#e4edf3)] bg-[var(--bb-surface-soft,#f5fbff)] px-4 py-3 text-sm leading-relaxed text-[var(--bb-text-secondary,#466274)]">
                   <span className="font-semibold">Explanation:</span> {currentQuestion.explanation}
                 </div>
                 <button
@@ -309,8 +309,8 @@ export default function GroupWeeklyTriviaCard({
           <div>
             <div className="rounded-2xl bg-[var(--bb-accent-soft)] px-4 py-4 text-center">
               <p className="text-3xl">🏁</p>
-              <p className="mt-2 text-xl font-bold text-gray-900">{savedScore ?? score} / {totalQuestions}</p>
-              <p className="mt-1 text-sm text-gray-600">
+              <p className="mt-2 text-xl font-bold text-[var(--bb-text-primary,#111827)]">{savedScore ?? score} / {totalQuestions}</p>
+              <p className="mt-1 text-sm text-[var(--bb-text-secondary,#4b5563)]">
                 {userCompleted ? "Nice work. Your score is locked in for this week's group board." : "Your score is ready."}
               </p>
               {yourRank && (
@@ -322,13 +322,13 @@ export default function GroupWeeklyTriviaCard({
 
             <div className="mt-4">
               <div className="flex items-center justify-between gap-3">
-                <p className="text-sm font-bold text-gray-900">Group Trivia Board</p>
-                <p className="text-xs text-gray-400">{entries.length} completed</p>
+                <p className="text-sm font-bold text-[var(--bb-text-primary,#111827)]">Group Trivia Board</p>
+                <p className="text-xs text-[var(--bb-text-muted,#9ca3af)]">{entries.length} completed</p>
               </div>
               {loadingBoard ? (
-                <p className="py-5 text-sm text-gray-400">Loading board...</p>
+                <p className="py-5 text-sm text-[var(--bb-text-muted,#9ca3af)]">Loading board...</p>
               ) : entries.length === 0 ? (
-                <p className="py-5 text-sm text-gray-400">No scores yet. Be the first one on the board.</p>
+                <p className="py-5 text-sm text-[var(--bb-text-muted,#9ca3af)]">No scores yet. Be the first one on the board.</p>
               ) : (
                 <div className="mt-3 space-y-2">
                   {entries.slice(0, compactBoard ? 3 : entries.length).map((entry, index) => {
@@ -339,7 +339,7 @@ export default function GroupWeeklyTriviaCard({
                         className={`rounded-2xl border px-3 py-3 ${entry.user_id === userId ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)]" : "border-[var(--bb-card-border)] bg-[var(--bb-card)]"}`}
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-7 text-center text-sm font-bold text-gray-500">#{index + 1}</div>
+                          <div className="w-7 text-center text-sm font-bold text-[var(--bb-text-secondary,#6b7280)]">#{index + 1}</div>
                           {entry.profile_image_url ? (
                             <img src={entry.profile_image_url} alt={entry.display_name} className="h-9 w-9 rounded-full object-cover" />
                           ) : (
@@ -348,24 +348,24 @@ export default function GroupWeeklyTriviaCard({
                             </div>
                           )}
                           <div className="min-w-0 flex-1">
-                            <p className="truncate text-sm font-semibold text-gray-900">
+                            <p className="truncate text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
                               {entry.display_name}
                               {entry.user_id === userId ? " (You)" : ""}
                             </p>
-                            <div className="mt-1 h-2 overflow-hidden rounded-full bg-[#ece7df]">
+                            <div className="mt-1 h-2 overflow-hidden rounded-full bg-[var(--bb-progress-track,#ece7df)]">
                               <div className="h-full rounded-full bg-[var(--bb-progress-fill)]" style={{ width: `${percent}%` }} />
                             </div>
                           </div>
                           <div className="text-right">
-                            <p className="text-sm font-bold text-gray-900">{entry.score}/{entry.total_questions}</p>
-                            <p className="text-[11px] text-gray-400">{percent}%</p>
+                            <p className="text-sm font-bold text-[var(--bb-text-primary,#111827)]">{entry.score}/{entry.total_questions}</p>
+                            <p className="text-[11px] text-[var(--bb-text-muted,#9ca3af)]">{percent}%</p>
                           </div>
                         </div>
                       </div>
                     );
                   })}
                   {compactBoard && entries.length > 3 ? (
-                    <p className="px-1 pt-1 text-[11px] font-semibold text-gray-500">
+                    <p className="px-1 pt-1 text-[11px] font-semibold text-[var(--bb-text-secondary,#6b7280)]">
                       Open post to see the full trivia board and everyone who finished.
                     </p>
                   ) : null}
