@@ -75,6 +75,8 @@ export async function GET(request: NextRequest) {
         profile_image_url: rp?.profile_image_url ?? null,
         trial_started_at: r.trial_started_at,
         trial_ends_at: r.trial_ends_at,
+        reward_xp: 250,
+        reward_diamonds: 250,
       };
     });
 
@@ -87,6 +89,8 @@ export async function GET(request: NextRequest) {
       display_name: profile?.display_name ?? profile?.username ?? "Unknown",
       profile_image_url: profile?.profile_image_url ?? null,
       total_referrals: myReferrals.length,
+      total_reward_xp: myReferrals.length * 250,
+      total_reward_diamonds: myReferrals.length * 250,
       referrals: myReferrals,
     };
   });

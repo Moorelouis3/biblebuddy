@@ -94,6 +94,17 @@ type BuddiesDashboardPayload = {
   };
 };
 
+type ShareRewardsReferral = {
+  referred_user_id: string;
+  trial_started_at: string;
+  trial_ends_at: string;
+};
+
+type ShareRewardsProfile = {
+  referral_code: string;
+  is_active: boolean;
+};
+
 type ExploreLink = {
   key: string;
   title: string;
@@ -1547,6 +1558,13 @@ export default function DashboardJourneyExperience({
     remainingTasks: number;
   } | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
+  const [shareRewardsProfile, setShareRewardsProfile] = useState<ShareRewardsProfile | null>(null);
+  const [shareRewardsReferrals, setShareRewardsReferrals] = useState<ShareRewardsReferral[]>([]);
+  const [shareRewardsLoading, setShareRewardsLoading] = useState(false);
+  const [shareRewardsError, setShareRewardsError] = useState<string | null>(null);
+  const [shareRewardsCodeInput, setShareRewardsCodeInput] = useState("");
+  const [shareRewardsSaving, setShareRewardsSaving] = useState(false);
+  const [shareRewardsMessage, setShareRewardsMessage] = useState<string | null>(null);
   const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
 
   const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "buddies", "tv", "games", "share"] as const;
@@ -1678,6 +1696,55 @@ export default function DashboardJourneyExperience({
       cancelled = true;
     };
   }, [buddiesDashboard, buddiesDashboardLoading, safeActivePage]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadShareRewards() {
+      if (shareRewardsProfile || shareRewardsLoading) return;
+      setShareRewardsLoading(true);
+      setShareRewardsError(null);
+
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const token = sessionData.session?.access_token;
+        if (!token) throw new Error("Sign in again to load Buddy Rewards.");
+
+        const response = await fetch("/api/ambassador/ensure-profile", {
+          method: "POST",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const profilePayload = await response.json();
+        if (!response.ok) throw new Error(profilePayload?.error || "Could not load Buddy Rewards.");
+
+        const { data: refs, error: refsError } = await supabase
+          .from("ambassador_referrals")
+          .select("referred_user_id, trial_started_at, trial_ends_at")
+          .eq("ambassador_user_id", userId)
+          .order("trial_started_at", { ascending: false });
+        if (refsError) throw refsError;
+
+        if (!cancelled) {
+          const profileData = { referral_code: profilePayload.referral_code, is_active: profilePayload.is_active };
+          setShareRewardsProfile(profileData);
+          setShareRewardsCodeInput(profileData.referral_code || "");
+          setShareRewardsReferrals((refs || []) as ShareRewardsReferral[]);
+        }
+      } catch (error: any) {
+        if (!cancelled) setShareRewardsError(error?.message || "Could not load Buddy Rewards.");
+      } finally {
+        if (!cancelled) setShareRewardsLoading(false);
+      }
+    }
+
+    if (dashboardPageKeys[safeActivePage] === "share" && userId) {
+      void loadShareRewards();
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [safeActivePage, shareRewardsLoading, shareRewardsProfile, userId]);
 
   useEffect(() => {
     function handleEmbeddedCommunityHeight(event: MessageEvent) {
@@ -3694,22 +3761,114 @@ export default function DashboardJourneyExperience({
   };
 
   const renderEmbeddedSharePage = () => {
-    const shareUrl = "https://thebiblestudybuddy.com";
+    const rewardCode = shareRewardsProfile?.referral_code || "";
+    const shareUrl =
+      rewardCode && typeof window !== "undefined"
+        ? `${window.location.origin}/signup?ref=${encodeURIComponent(rewardCode)}`
+        : "https://thebiblestudybuddy.com/signup";
+    const signupCount = shareRewardsReferrals.length;
+    const earnedXp = signupCount * 250;
+    const earnedDiamonds = signupCount * 250;
+
+    async function saveShareRewardsCode() {
+      const code = shareRewardsCodeInput.trim().toUpperCase().replace(/[^A-Z]/g, "");
+      if (code.length < 4 || code.length > 10) {
+        setShareRewardsMessage("Use one word, 4-10 letters.");
+        return;
+      }
+
+      setShareRewardsSaving(true);
+      setShareRewardsMessage(null);
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const token = sessionData.session?.access_token;
+        if (!token) throw new Error("Sign in again to save your code.");
+        const response = await fetch("/api/ambassador/update-code", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ code }),
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload?.error || "Could not save that code.");
+        setShareRewardsProfile((current) => current ? { ...current, referral_code: code } : current);
+        setShareRewardsCodeInput(code);
+        setShareRewardsMessage("Code saved.");
+      } catch (error: any) {
+        setShareRewardsMessage(error?.message || "Could not save that code.");
+      } finally {
+        setShareRewardsSaving(false);
+      }
+    }
+
     return (
       <section className="w-full px-1">
         <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
           <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Invite</p>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Buddy Rewards</p>
             <h2 className="mt-1 text-3xl font-black leading-tight text-gray-950">Share Bible Buddy</h2>
             <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
-              Send Bible Buddy to someone who wants a clearer Bible study rhythm.
+              Share Bible Buddy with friends and earn XP points and diamonds.
             </p>
+            {shareRewardsLoading ? (
+              <p className="mt-5 rounded-2xl bg-[#f8fbff] px-4 py-4 text-sm font-black text-gray-500">Loading Buddy Rewards...</p>
+            ) : shareRewardsError ? (
+              <p className="mt-5 rounded-2xl bg-red-50 px-4 py-4 text-sm font-black text-red-600">{shareRewardsError}</p>
+            ) : (
+              <>
+                <div className="mt-5 rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#2f7fe8]">Your Code</p>
+                    <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-[#2f7fe8]">+250 XP +250 diamonds</span>
+                  </div>
+                  <div className="mt-3 grid gap-2 sm:grid-cols-[1fr_auto]">
+                    <input
+                      value={shareRewardsCodeInput}
+                      onChange={(event) => {
+                        setShareRewardsCodeInput(event.target.value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 10));
+                        setShareRewardsMessage(null);
+                      }}
+                      maxLength={10}
+                      className="w-full rounded-2xl border border-[#b9dcf4] bg-white px-4 py-3 text-center font-mono text-lg font-black uppercase tracking-widest text-gray-950 outline-none focus:ring-2 focus:ring-[#7BAFD4]"
+                      placeholder="FAITH"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => void saveShareRewardsCode()}
+                      disabled={shareRewardsSaving || !shareRewardsCodeInput.trim()}
+                      className="rounded-2xl bg-[#2f7fe8] px-4 py-3 text-sm font-black text-white disabled:opacity-50"
+                    >
+                      {shareRewardsSaving ? "Saving" : "Save"}
+                    </button>
+                  </div>
+                  <p className="mt-2 text-xs font-bold text-gray-500">One word, 4-10 letters. Your code locks after your first signup.</p>
+                  {shareRewardsMessage ? <p className="mt-2 text-xs font-black text-[#2f7fe8]">{shareRewardsMessage}</p> : null}
+                </div>
+
+                <div className="mt-3 grid grid-cols-3 gap-2">
+                  <div className="rounded-2xl bg-[#f8fbff] p-3 text-center">
+                    <p className="text-xl font-black text-gray-950">{signupCount}</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.1em] text-gray-500">signups</p>
+                  </div>
+                  <div className="rounded-2xl bg-[#f8fbff] p-3 text-center">
+                    <p className="text-xl font-black text-gray-950">{earnedXp}</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.1em] text-gray-500">XP</p>
+                  </div>
+                  <div className="rounded-2xl bg-[#f8fbff] p-3 text-center">
+                    <p className="text-xl font-black text-gray-950">{earnedDiamonds}</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.1em] text-gray-500">diamonds</p>
+                  </div>
+                </div>
+              </>
+            )}
             <div className="mt-5 grid gap-3">
               <button
                 type="button"
                 onClick={async () => {
                   if (navigator.share) {
-                    await navigator.share({ title: "Bible Buddy", url: shareUrl });
+                    await navigator.share({ title: "Bible Buddy", text: "Join me on Bible Buddy.", url: shareUrl });
                     return;
                   }
                   await navigator.clipboard.writeText(shareUrl);
@@ -3721,9 +3880,24 @@ export default function DashboardJourneyExperience({
                 {shareCopied ? "Link Copied" : "Share or Copy Link"}
               </button>
               <Link href="/ambassador" className="rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-4 py-4 transition hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm">
-                <p className="text-base font-black text-gray-950">Ambassador</p>
-                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">Invite people and help them start studying.</p>
+                <p className="text-base font-black text-gray-950">Buddy Rewards</p>
+                <p className="mt-1 text-sm font-semibold leading-5 text-gray-600">Open the full signup log and copy your code.</p>
               </Link>
+              {signupCount > 0 ? (
+                <div className="rounded-2xl border border-[#dbe7f4] bg-white p-4">
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-gray-500">Recent Signups</p>
+                  <div className="mt-3 space-y-2">
+                    {shareRewardsReferrals.slice(0, 3).map((referral) => (
+                      <div key={referral.referred_user_id} className="flex items-center justify-between rounded-xl bg-[#f8fbff] px-3 py-2">
+                        <p className="text-sm font-black text-gray-800">New Bible Buddy</p>
+                        <p className="text-xs font-bold text-gray-500">
+                          {new Date(referral.trial_started_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

@@ -333,8 +333,8 @@ export default function AnalyticsPage() {
   const [loadingLouisReportLog, setLoadingLouisReportLog] = useState(true);
 
   // Ambassador / Buddy Partners
-  type AmbassadorReferral = { referred_user_id: string; username: string; profile_image_url: string | null; trial_started_at: string; trial_ends_at: string };
-  type AmbassadorEntry = { user_id: string; username: string; display_name: string; profile_image_url: string | null; referral_code: string; is_active: boolean; total_referrals: number; referrals: AmbassadorReferral[] };
+  type AmbassadorReferral = { referred_user_id: string; username: string; profile_image_url: string | null; trial_started_at: string; trial_ends_at: string; reward_xp?: number; reward_diamonds?: number };
+  type AmbassadorEntry = { user_id: string; username: string; display_name: string; profile_image_url: string | null; referral_code: string; is_active: boolean; total_referrals: number; total_reward_xp?: number; total_reward_diamonds?: number; referrals: AmbassadorReferral[] };
   const [ambassadors, setAmbassadors] = useState<AmbassadorEntry[]>([]);
   const [loadingAmbassadors, setLoadingAmbassadors] = useState(true);
   const [expandedAmbassador, setExpandedAmbassador] = useState<string | null>(null);
@@ -4015,7 +4015,7 @@ export default function AnalyticsPage() {
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-teal-50">
             <div>
               <span className="text-xl font-bold text-teal-800">🤝 Buddy Partners</span>
-              <p className="text-xs text-teal-600 mt-0.5">{ambassadors.length} active partner{ambassadors.length !== 1 ? "s" : ""}</p>
+              <p className="text-xs text-teal-600 mt-0.5">{ambassadors.length} Buddy Rewards code{ambassadors.length !== 1 ? "s" : ""}</p>
             </div>
             <button
               type="button"
@@ -4028,7 +4028,7 @@ export default function AnalyticsPage() {
           {loadingAmbassadors ? (
             <p className="text-sm text-gray-400 px-5 py-4">Loading...</p>
           ) : ambassadors.length === 0 ? (
-            <p className="text-sm text-gray-400 px-5 py-4">No Buddy Partners yet. Assign the Buddy Partner badge to a user to create one.</p>
+            <p className="text-sm text-gray-400 px-5 py-4">No Buddy Rewards codes yet.</p>
           ) : (
             <div className="divide-y divide-gray-100">
               {ambassadors.map((amb) => (
@@ -4048,6 +4048,9 @@ export default function AnalyticsPage() {
                     )}
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold text-gray-900">{amb.display_name || amb.username}</p>
+                      <p className="mt-0.5 text-xs font-semibold text-gray-500">
+                        {(amb.total_reward_xp ?? amb.total_referrals * 250).toLocaleString()} XP - {(amb.total_reward_diamonds ?? amb.total_referrals * 250).toLocaleString()} diamonds earned
+                      </p>
                       <p className="text-xs text-gray-400 font-mono">Code: <span className="font-bold text-teal-700">{amb.referral_code}</span> · {amb.is_active ? "Active" : "Inactive"}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
@@ -4074,6 +4077,7 @@ export default function AnalyticsPage() {
                               )}
                               <span className="font-semibold text-gray-800">{r.username}</span>
                               <span className="text-gray-400">joined {new Date(r.trial_started_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                              <span className="font-bold text-teal-700">+{r.reward_xp ?? 250} XP / +{r.reward_diamonds ?? 250} diamonds</span>
                               <span className={`ml-auto px-2 py-0.5 rounded-full font-semibold ${new Date(r.trial_ends_at) > new Date() ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-500"}`}>
                                 {new Date(r.trial_ends_at) > new Date() ? "Trial active" : "Trial ended"}
                               </span>

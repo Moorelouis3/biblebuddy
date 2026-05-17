@@ -1165,7 +1165,7 @@ export default function PublicProfilePage() {
             ) : (
               <div>
                 <p className="text-sm font-semibold text-gray-800 mb-1">Have a referral code?</p>
-                <p className="text-xs text-gray-500 mb-3">Enter a Buddy Partner code to get 30 days of Pro free.</p>
+                <p className="text-xs text-gray-500 mb-3">Enter a Buddy Rewards code to get 30 days of Pro free.</p>
                 <div className="flex gap-2">
                   <input
                     type="text"

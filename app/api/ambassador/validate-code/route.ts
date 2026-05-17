@@ -28,16 +28,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ valid: false, error: "This code is no longer active." });
   }
 
-  // Verify the owner still has buddy_partner badge
-  const { data: profile } = await supabase
-    .from("profile_stats")
-    .select("member_badge")
-    .eq("user_id", data.user_id)
-    .maybeSingle();
-
-  if (profile?.member_badge !== "buddy_partner") {
-    return NextResponse.json({ valid: false, error: "Code not found." });
-  }
-
   return NextResponse.json({ valid: true, code: data.referral_code });
 }

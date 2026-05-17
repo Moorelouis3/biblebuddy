@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
+function buildReferralCode(seed: string | null | undefined) {
+  const letters = (seed || "BUDDY").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 7) || "BUDDY";
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+  let suffix = "";
+  while ((letters + suffix).length < 10) {
+    suffix += alphabet[Math.floor(Math.random() * alphabet.length)];
+  }
+  return (letters + suffix).slice(0, 10);
+}
+
 export async function POST(request: NextRequest) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -17,16 +27,11 @@ export async function POST(request: NextRequest) {
   const userId = userData.user.id;
   const supabase = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
 
-  // Verify they have the buddy_partner badge
   const { data: ps } = await supabase
     .from("profile_stats")
-    .select("member_badge, username, display_name")
+    .select("username, display_name")
     .eq("user_id", userId)
     .maybeSingle();
-
-  if (ps?.member_badge !== "buddy_partner") {
-    return NextResponse.json({ error: "Not a Buddy Partner." }, { status: 403 });
-  }
 
   // Check if profile already exists
   const { data: existing } = await supabase
@@ -40,9 +45,7 @@ export async function POST(request: NextRequest) {
   }
 
   // Create it
-  const base = ((ps.username ?? ps.display_name ?? "BUDDY").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 8));
-  const suffix = String(Math.floor(Math.random() * 90) + 10);
-  const code = base + suffix;
+  const code = buildReferralCode(ps?.username ?? ps?.display_name);
 
   const { data: created, error: insertError } = await supabase
     .from("ambassador_profiles")

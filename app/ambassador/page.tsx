@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+
+const REWARD_DIAMONDS = 250;
+const REWARD_XP = 250;
 
 interface Referral {
   referred_user_id: string;
@@ -13,7 +16,7 @@ interface Referral {
   trial_ends_at: string;
 }
 
-interface AmbassadorProfile {
+interface RewardsProfile {
   referral_code: string;
   is_active: boolean;
 }
@@ -26,67 +29,45 @@ function formatDate(iso: string) {
   });
 }
 
-function isTrialActive(endsAt: string) {
-  return new Date(endsAt) > new Date();
-}
-
-export default function AmbassadorPage() {
+export default function BuddyRewardsPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [notAuthorized, setNotAuthorized] = useState(false);
-  const [profile, setProfile] = useState<AmbassadorProfile | null>(null);
+  const [profile, setProfile] = useState<RewardsProfile | null>(null);
   const [referrals, setReferrals] = useState<Referral[]>([]);
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<"code" | "link" | null>(null);
   const [editingCode, setEditingCode] = useState(false);
   const [newCodeInput, setNewCodeInput] = useState("");
   const [savingCode, setSavingCode] = useState(false);
   const [codeError, setCodeError] = useState<string | null>(null);
 
+  const signupCount = referrals.length;
+  const earnedDiamonds = signupCount * REWARD_DIAMONDS;
+  const earnedXp = signupCount * REWARD_XP;
+  const shareLink = useMemo(() => {
+    if (!profile?.referral_code) return "";
+    const origin = typeof window !== "undefined" ? window.location.origin : "https://thebiblestudybuddy.com";
+    return `${origin}/signup?ref=${encodeURIComponent(profile.referral_code)}`;
+  }, [profile?.referral_code]);
+
   useEffect(() => {
     async function init() {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) { router.push("/login"); return; }
-
-      const { data: profileStats } = await supabase
-        .from("profile_stats")
-        .select("member_badge")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      if (profileStats?.member_badge !== "buddy_partner") {
-        setNotAuthorized(true);
-        setLoading(false);
+      if (!user) {
+        router.push("/login");
         return;
       }
 
-      let { data: ambProfile } = await supabase
-        .from("ambassador_profiles")
-        .select("referral_code, is_active")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      // Auto-create profile row if missing (e.g. table was created after badge was assigned)
-      if (!ambProfile) {
-        const { data: { session } } = await supabase.auth.getSession();
-        if (session?.access_token) {
-          const res = await fetch("/api/ambassador/ensure-profile", {
-            method: "POST",
-            headers: { authorization: `Bearer ${session.access_token}` },
-          });
-          if (res.ok) {
-            const json = await res.json();
-            ambProfile = { referral_code: json.referral_code, is_active: json.is_active };
-          }
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.access_token) {
+        const res = await fetch("/api/ambassador/ensure-profile", {
+          method: "POST",
+          headers: { authorization: `Bearer ${session.access_token}` },
+        });
+        if (res.ok) {
+          const json = await res.json();
+          setProfile({ referral_code: json.referral_code, is_active: json.is_active });
         }
       }
-
-      if (!ambProfile) {
-        setNotAuthorized(true);
-        setLoading(false);
-        return;
-      }
-
-      setProfile(ambProfile);
 
       const { data: refs } = await supabase
         .from("ambassador_referrals")
@@ -102,12 +83,11 @@ export default function AmbassadorPage() {
           .in("user_id", refUserIds);
 
         const profileMap = new Map((refProfiles || []).map((p) => [p.user_id, p]));
-
         setReferrals(refs.map((r) => {
           const p = profileMap.get(r.referred_user_id);
           return {
             referred_user_id: r.referred_user_id,
-            username: p?.username ?? p?.display_name ?? "Unknown",
+            username: p?.display_name ?? p?.username ?? "Bible Buddy",
             profile_image_url: p?.profile_image_url ?? null,
             trial_started_at: r.trial_started_at,
             trial_ends_at: r.trial_ends_at,
@@ -124,12 +104,13 @@ export default function AmbassadorPage() {
     if (!newCodeInput.trim()) return;
     setSavingCode(true);
     setCodeError(null);
-    const code = newCodeInput.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
-    if (code.length < 4 || code.length > 16) {
-      setCodeError("Code must be 4–16 letters/numbers.");
+    const code = newCodeInput.trim().toUpperCase().replace(/[^A-Z]/g, "");
+    if (code.length < 4 || code.length > 10) {
+      setCodeError("Use one word, 4-10 letters.");
       setSavingCode(false);
       return;
     }
+
     const { data: { session } } = await supabase.auth.getSession();
     if (!session?.access_token) {
       setCodeError("Session expired. Please refresh and try again.");
@@ -137,161 +118,144 @@ export default function AmbassadorPage() {
       return;
     }
 
-    try {
-      const res = await fetch("/api/ambassador/update-code", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${session.access_token}`,
-        },
-        body: JSON.stringify({ code }),
-      });
-
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setCodeError(json.error ?? `Save failed (${res.status}). Try again.`);
-      } else {
-        setProfile((prev) => prev ? { ...prev, referral_code: code } : prev);
-        setEditingCode(false);
-        setNewCodeInput("");
-      }
-    } catch (err) {
-      setCodeError("Network error. Please try again.");
+    const res = await fetch("/api/ambassador/update-code", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${session.access_token}`,
+      },
+      body: JSON.stringify({ code }),
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      setCodeError(json.error ?? "Could not save that code.");
+    } else {
+      setProfile((prev) => prev ? { ...prev, referral_code: code } : prev);
+      setEditingCode(false);
+      setNewCodeInput("");
     }
     setSavingCode(false);
   }
 
-  function handleCopy() {
-    if (!profile) return;
-    navigator.clipboard.writeText(profile.referral_code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  async function copyText(value: string, kind: "code" | "link") {
+    if (!value) return;
+    await navigator.clipboard.writeText(value);
+    setCopied(kind);
+    window.setTimeout(() => setCopied(null), 1800);
   }
 
   if (loading) {
-    return <div className="max-w-2xl mx-auto px-4 py-16 text-center text-gray-400">Loading...</div>;
-  }
-
-  if (notAuthorized) {
-    return (
-      <div className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <p className="text-gray-500 text-sm">This page is only available to Buddy Partners.</p>
-        <Link href="/dashboard" className="mt-4 inline-block text-sm text-blue-600 hover:underline">← Back to Dashboard</Link>
-      </div>
-    );
+    return <div className="mx-auto max-w-2xl px-4 py-16 text-center text-gray-400">Loading...</div>;
   }
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
-      <div className="max-w-2xl mx-auto px-4 py-8">
-        <nav className="text-sm text-gray-500 mb-6">
-          <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
-          <span className="mx-2">›</span>
-          <span className="text-gray-800 font-medium">Buddy Partner</span>
+      <div className="mx-auto max-w-2xl px-4 py-8">
+        <nav className="mb-6 text-sm text-gray-500">
+          <Link href="/dashboard" className="transition hover:text-gray-700">Dashboard</Link>
+          <span className="mx-2">/</span>
+          <span className="font-medium text-gray-800">Buddy Rewards</span>
         </nav>
 
         <div className="mb-6">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-bold uppercase tracking-wide text-teal-600">Ambassador Program</span>
-            <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium bg-teal-100 text-teal-700">🤝 Buddy Partner</span>
-          </div>
-          <h1 className="text-2xl font-bold text-gray-900">Your Partner Dashboard</h1>
-          <p className="text-sm text-gray-500 mt-1">Share your code. Every signup gets 30 days of Pro free.</p>
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">Buddy Rewards</p>
+          <h1 className="mt-1 text-3xl font-black text-gray-950">Share Bible Buddy</h1>
+          <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
+            Share Bible Buddy with friends and earn XP points and diamonds.
+          </p>
         </div>
 
-        {/* Referral Code Card */}
-        <div className="bg-white border border-teal-200 rounded-2xl p-5 mb-4 shadow-sm">
-          <p className="text-xs font-bold uppercase tracking-wide text-teal-600 mb-3">Your Referral Code</p>
+        <div className="mb-4 rounded-2xl border border-blue-200 bg-white p-5 shadow-sm">
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-blue-600">Your Code</p>
+            <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">+250 XP +250 diamonds</span>
+          </div>
 
           {!editingCode ? (
-            <div className="flex items-center gap-3">
-              <div className="flex-1 bg-teal-50 border border-teal-200 rounded-xl px-5 py-3 text-center">
-                <p className="text-2xl font-black tracking-widest text-teal-800 font-mono">{profile?.referral_code}</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
+              <div className="rounded-xl border border-blue-200 bg-blue-50 px-5 py-3 text-center">
+                <p className="font-mono text-2xl font-black tracking-widest text-blue-800">{profile?.referral_code}</p>
               </div>
-              <div className="flex flex-col gap-2">
-                <button
-                  onClick={handleCopy}
-                  className="px-4 py-2.5 rounded-xl text-sm font-semibold text-white transition hover:opacity-90"
-                  style={{ backgroundColor: "#4a9b6f" }}
-                >
-                  {copied ? "Copied!" : "Copy"}
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-1">
+                <button onClick={() => void copyText(profile?.referral_code || "", "code")} className="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-black text-white">
+                  {copied === "code" ? "Copied" : "Copy"}
                 </button>
-                <button
-                  onClick={() => { setEditingCode(true); setNewCodeInput(profile?.referral_code ?? ""); }}
-                  className="px-4 py-2.5 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 bg-white hover:bg-gray-50 transition"
-                >
+                <button onClick={() => { setEditingCode(true); setNewCodeInput(profile?.referral_code ?? ""); }} className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-black text-gray-700">
                   Edit
                 </button>
               </div>
             </div>
           ) : (
-            <div className="space-y-3">
+            <div className="mt-4 space-y-3">
               <input
                 type="text"
                 value={newCodeInput}
-                onChange={(e) => setNewCodeInput(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""))}
-                maxLength={16}
-                placeholder="e.g. LOUIS30"
-                className="w-full text-xl font-black font-mono tracking-widest text-center px-4 py-3 border border-teal-300 rounded-xl bg-teal-50 text-teal-800 uppercase focus:outline-none focus:ring-2 focus:ring-teal-400"
+                onChange={(e) => setNewCodeInput(e.target.value.toUpperCase().replace(/[^A-Z]/g, ""))}
+                maxLength={10}
+                placeholder="FAITH"
+                className="w-full rounded-xl border border-blue-300 bg-blue-50 px-4 py-3 text-center font-mono text-xl font-black uppercase tracking-widest text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
-              {codeError && <p className="text-xs text-red-600">{codeError}</p>}
+              <p className="text-xs font-semibold text-gray-500">You can choose one word, up to 10 letters. Your code locks after your first signup.</p>
+              {codeError && <p className="text-xs font-bold text-red-600">{codeError}</p>}
               <div className="flex gap-2">
-                <button
-                  onClick={handleSaveCode}
-                  disabled={savingCode || !newCodeInput.trim()}
-                  className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 disabled:opacity-50 transition"
-                >
+                <button onClick={handleSaveCode} disabled={savingCode || !newCodeInput.trim()} className="flex-1 rounded-xl bg-blue-600 py-2.5 text-sm font-black text-white disabled:opacity-50">
                   {savingCode ? "Saving..." : "Save Code"}
                 </button>
-                <button
-                  onClick={() => { setEditingCode(false); setCodeError(null); }}
-                  className="px-4 py-2.5 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 bg-white hover:bg-gray-50 transition"
-                >
+                <button onClick={() => { setEditingCode(false); setCodeError(null); }} className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-black text-gray-700">
                   Cancel
                 </button>
               </div>
             </div>
           )}
 
-          <p className="text-xs text-gray-400 mt-3">New users enter this code during signup to get 30 days of Pro free.</p>
-        </div>
-
-        {/* Stats */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 mb-4 shadow-sm">
-          <div className="flex items-center justify-between">
-            <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Total Signups</p>
-            <p className="text-3xl font-black text-teal-700">{referrals.length}</p>
+          <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-3">
+            <p className="truncate text-xs font-bold text-gray-500">{shareLink}</p>
+            <button onClick={() => void copyText(shareLink, "link")} className="mt-2 w-full rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-black text-white">
+              {copied === "link" ? "Link Copied" : "Copy Signup Link"}
+            </button>
           </div>
         </div>
 
-        {/* Referral list */}
-        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
-          <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
-            <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Signups via Your Code</p>
+        <div className="mb-4 grid grid-cols-3 gap-3">
+          <div className="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm">
+            <p className="text-2xl font-black text-gray-950">{signupCount}</p>
+            <p className="mt-1 text-xs font-bold text-gray-500">signups</p>
+          </div>
+          <div className="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm">
+            <p className="text-2xl font-black text-blue-700">{earnedXp}</p>
+            <p className="mt-1 text-xs font-bold text-gray-500">XP earned</p>
+          </div>
+          <div className="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm">
+            <p className="text-2xl font-black text-cyan-700">{earnedDiamonds}</p>
+            <p className="mt-1 text-xs font-bold text-gray-500">diamonds</p>
+          </div>
+        </div>
+
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+          <div className="border-b border-gray-100 bg-gray-50 px-5 py-3">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-gray-500">Signup Log</p>
           </div>
 
           {referrals.length === 0 ? (
             <div className="px-5 py-10 text-center">
-              <p className="text-sm text-gray-400">No signups yet. Share your code to get started!</p>
+              <p className="text-sm font-semibold text-gray-400">No signups yet. Share your link to start earning.</p>
             </div>
           ) : (
             <div className="divide-y divide-gray-100">
               {referrals.map((r) => (
                 <div key={r.referred_user_id} className="flex items-center gap-3 px-5 py-3">
                   {r.profile_image_url ? (
-                    <img src={r.profile_image_url} alt={r.username} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+                    <img src={r.profile_image_url} alt={r.username} className="h-9 w-9 shrink-0 rounded-full object-cover" />
                   ) : (
-                    <div className="w-9 h-9 rounded-full bg-teal-100 flex items-center justify-center text-sm font-bold text-teal-700 flex-shrink-0">
+                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-100 text-sm font-black text-blue-700">
                       {r.username.charAt(0).toUpperCase()}
                     </div>
                   )}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-gray-800 truncate">{r.username}</p>
-                    <p className="text-xs text-gray-400">Joined {formatDate(r.trial_started_at)}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-black text-gray-800">{r.username}</p>
+                    <p className="text-xs font-semibold text-gray-400">Joined {formatDate(r.trial_started_at)}</p>
                   </div>
-                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${isTrialActive(r.trial_ends_at) ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
-                    {isTrialActive(r.trial_ends_at) ? `Trial ends ${formatDate(r.trial_ends_at)}` : "Trial ended"}
-                  </span>
+                  <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">+250/+250</span>
                 </div>
               ))}
             </div>

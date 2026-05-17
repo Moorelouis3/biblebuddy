@@ -11,10 +11,22 @@ export default function SignupPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [referralCode, setReferralCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const params = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
+    const codeFromUrl = params.get("ref") || params.get("code") || "";
+    if (codeFromUrl) {
+      const normalizedCode = codeFromUrl.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 10);
+      setReferralCode(normalizedCode);
+      localStorage.setItem("bb:pending-referral-code", normalizedCode);
+    } else {
+      const pendingCode = localStorage.getItem("bb:pending-referral-code");
+      if (pendingCode) setReferralCode(pendingCode);
+    }
+
     const checkSession = async () => {
       const {
         data: { session },
@@ -110,6 +122,7 @@ export default function SignupPage() {
     void recordSignup(user.id, user.email, username);
 
     if (data.session) {
+      await applyReferralCodeIfPresent();
       window.location.href = "/dashboard";
       return;
     }
@@ -120,6 +133,7 @@ export default function SignupPage() {
     });
 
     if (loginData.session) {
+      await applyReferralCodeIfPresent();
       window.location.href = "/dashboard";
       return;
     }
@@ -130,6 +144,23 @@ export default function SignupPage() {
         ? "Your account was created, but Supabase email confirmation is still turned on. Turn it off in Supabase Auth so new users can start onboarding right away."
         : loginError?.message || "Account created, but Bible Buddy could not start your session yet. Try logging in."
     );
+  }
+
+  async function applyReferralCodeIfPresent() {
+    const code = referralCode.trim().toUpperCase().replace(/[^A-Z]/g, "");
+    if (!code) return;
+    try {
+      const res = await fetch("/api/ambassador/apply-code", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      if (res.ok) {
+        localStorage.removeItem("bb:pending-referral-code");
+      }
+    } catch (referralError) {
+      console.error("Buddy Rewards code apply failed (non-blocking):", referralError);
+    }
   }
 
   async function handleOAuthSignIn(provider: "google") {
@@ -218,6 +249,20 @@ export default function SignupPage() {
                 onChange={(event) => setPassword(event.target.value)}
                 className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Create a password"
+              />
+            </div>
+
+            <div>
+              <label className="mb-1 block text-xs font-semibold text-gray-700">
+                Buddy Rewards code
+              </label>
+              <input
+                type="text"
+                value={referralCode}
+                onChange={(event) => setReferralCode(event.target.value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 10))}
+                maxLength={10}
+                className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm uppercase focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Optional"
               />
             </div>
 

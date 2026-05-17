@@ -3,6 +3,10 @@ import { createClient } from "@supabase/supabase-js";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { markUserAsPaidAndTrackUpgrade } from "@/lib/server/upgradeTracking";
+import { ACTION_TYPE } from "@/lib/actionTypes";
+
+const REFERRAL_REWARD_DIAMONDS = 250;
+const REFERRAL_REWARD_XP = 250;
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
@@ -46,15 +50,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid or inactive code." }, { status: 400 });
   }
 
-  // Ensure ambassador still has buddy_partner badge
-  const { data: ambProfile } = await supabase
-    .from("profile_stats")
-    .select("member_badge")
-    .eq("user_id", ambassador.user_id)
-    .maybeSingle();
-
-  if (ambProfile?.member_badge !== "buddy_partner") {
-    return NextResponse.json({ error: "Invalid code." }, { status: 400 });
+  if (ambassador.user_id === user.id) {
+    return NextResponse.json({ error: "You cannot use your own Buddy Rewards code." }, { status: 400 });
   }
 
   // Make sure this referred user hasn't already used a code
@@ -83,7 +80,7 @@ export async function POST(req: NextRequest) {
   const trialEndsAt = new Date(trialStartedAt.getTime() + 30 * 24 * 60 * 60 * 1000); // +30 days
 
   // Create referral record
-  await supabase.from("ambassador_referrals").insert({
+  const { error: referralError } = await supabase.from("ambassador_referrals").insert({
     ambassador_user_id: ambassador.user_id,
     referred_user_id: user.id,
     referral_code: code,
@@ -91,15 +88,52 @@ export async function POST(req: NextRequest) {
     trial_ends_at: trialEndsAt.toISOString(),
   });
 
-  // Grant 30-day Pro trial and log the upgrade event if this is a new paid conversion
+  if (referralError) {
+    return NextResponse.json({ error: referralError.message || "Could not apply Buddy Rewards code." }, { status: 400 });
+  }
+
+  const { data: referrerProfile } = await supabase
+    .from("profile_stats")
+    .select("user_id, username, display_name, diamonds_count, total_diamonds_earned")
+    .eq("user_id", ambassador.user_id)
+    .maybeSingle();
+
+  const nextDiamonds = Math.max(0, Number(referrerProfile?.diamonds_count ?? 0)) + REFERRAL_REWARD_DIAMONDS;
+  const nextTotalEarned = Math.max(0, Number(referrerProfile?.total_diamonds_earned ?? 0)) + REFERRAL_REWARD_DIAMONDS;
+  await supabase
+    .from("profile_stats")
+    .upsert(
+      {
+        user_id: ambassador.user_id,
+        diamonds_count: nextDiamonds,
+        total_diamonds_earned: nextTotalEarned,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id" },
+    );
+
+  await supabase.from("master_actions").insert({
+    user_id: ambassador.user_id,
+    username: referrerProfile?.username || referrerProfile?.display_name || "Bible Buddy",
+    action_type: ACTION_TYPE.referral_signup_reward,
+    action_label: `Buddy Rewards signup: ${code} (+${REFERRAL_REWARD_XP} XP, +${REFERRAL_REWARD_DIAMONDS} diamonds)`,
+    created_at: trialStartedAt.toISOString(),
+  });
+
+  // Grant 30-day Pro trial and log the upgrade event if this is a new paid conversion.
   await markUserAsPaidAndTrackUpgrade({
     supabase,
     userId: user.id,
-    source: "ambassador_trial",
+    source: "buddy_rewards_trial",
     membershipStatus: "pro",
     proExpiresAt: trialEndsAt.toISOString(),
-    actionLabel: "Ambassador 30-day Pro trial started",
+    actionLabel: "Buddy Rewards 30-day Pro trial started",
   });
 
-  return NextResponse.json({ success: true, trialEndsAt: trialEndsAt.toISOString() });
+  return NextResponse.json({
+    success: true,
+    trialEndsAt: trialEndsAt.toISOString(),
+    rewardDiamonds: REFERRAL_REWARD_DIAMONDS,
+    rewardXp: REFERRAL_REWARD_XP,
+  });
 }

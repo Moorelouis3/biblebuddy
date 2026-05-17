@@ -16,23 +16,32 @@ export async function POST(request: NextRequest) {
 
   const userId = userData.user.id;
   const body = await request.json().catch(() => null);
-  const code = typeof body?.code === "string" ? body.code.toUpperCase().replace(/[^A-Z0-9]/g, "") : "";
+  const code = typeof body?.code === "string" ? body.code.toUpperCase().replace(/[^A-Z]/g, "") : "";
 
-  if (code.length < 4 || code.length > 16) {
-    return NextResponse.json({ error: "Code must be 4–16 letters/numbers." }, { status: 400 });
+  if (code.length < 4 || code.length > 10) {
+    return NextResponse.json({ error: "Code must be one word, 4-10 letters." }, { status: 400 });
   }
 
   const supabase = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
 
-  // Verify they have the buddy_partner badge
-  const { data: ps } = await supabase
-    .from("profile_stats")
-    .select("member_badge")
+  const { data: existing } = await supabase
+    .from("ambassador_profiles")
+    .select("referral_code")
     .eq("user_id", userId)
     .maybeSingle();
 
-  if (ps?.member_badge !== "buddy_partner") {
-    return NextResponse.json({ error: "Not a Buddy Partner." }, { status: 403 });
+  if (!existing) {
+    return NextResponse.json({ error: "Create your Buddy Rewards code first." }, { status: 400 });
+  }
+
+  const { data: referrals } = await supabase
+    .from("ambassador_referrals")
+    .select("id")
+    .eq("ambassador_user_id", userId)
+    .limit(1);
+
+  if ((referrals || []).length > 0) {
+    return NextResponse.json({ error: "Your code is locked after your first signup." }, { status: 400 });
   }
 
   const { error } = await supabase

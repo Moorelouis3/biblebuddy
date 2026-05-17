@@ -86,7 +86,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   settings: "Settings",
   "change-buddy": "Change Buddy",
   "bb-feed": "Community Feed",
-  ambassador: "Partner Dashboard",
+  ambassador: "Buddy Rewards",
   "verse-of-the-day": "Verse of the Day",
   updates: "Updates",
   upgrade: "Upgrade",

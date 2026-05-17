@@ -81,6 +81,7 @@ export const ACTION_TYPES = [
   "louis_daily_message_shown",
   "louis_route_handoff_shown",
   "louis_daily_task_bonus",
+  "referral_signup_reward",
   "badge_earned",
 ] as const;
 
@@ -169,6 +170,7 @@ export const ACTION_TYPE = {
   louis_daily_message_shown: "louis_daily_message_shown",
   louis_route_handoff_shown: "louis_route_handoff_shown",
   louis_daily_task_bonus: "louis_daily_task_bonus",
+  referral_signup_reward: "referral_signup_reward",
   badge_earned: "badge_earned",
 } as const satisfies Record<ActionType, ActionType>;
 
