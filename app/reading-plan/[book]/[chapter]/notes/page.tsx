@@ -8,6 +8,7 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import CreditEducationModal from "@/components/CreditEducationModal";
 import { triggerPoints } from "@/components/PointsPop";
+import { TASK_XP } from "@/lib/progressionRewards";
 
 const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 export default function ChapterNotesPage() {
@@ -252,7 +253,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           if (insertReviewedError) {
             console.error("[CHAPTER_NOTES] Error logging chapter_notes_reviewed:", insertReviewedError);
           } else {
-            triggerPoints(5);
+            triggerPoints(TASK_XP.notes);
           }
         }
       }

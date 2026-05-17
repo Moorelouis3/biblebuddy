@@ -95,7 +95,7 @@ export function PointsPop() {
               whiteSpace: "nowrap",
             }}
           >
-            {text} pts
+            {text} XP
           </div>
         );
       })}

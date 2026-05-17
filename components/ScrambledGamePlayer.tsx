@@ -10,6 +10,7 @@ import { getScrambledBook, type ScrambledChapterPack } from "@/lib/scrambledGame
 import { supabase } from "@/lib/supabaseClient";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
 import { dispatchLouisMoment } from "@/lib/louisMoments";
+import { TASK_XP } from "@/lib/progressionRewards";
 
 type LetterTile = {
   id: string;
@@ -149,7 +150,7 @@ export default function ScrambledGamePlayer({
   }, []);
 
   useEffect(() => {
-    // Reset the "new points earned" counter each time a chapter run starts.
+    // Reset the new XP counter each time a chapter run starts.
     setEarnedSolveCount(0);
   }, [bookSlug, chapter.chapter]);
 
@@ -258,7 +259,7 @@ export default function ScrambledGamePlayer({
       })
       .then((logged) => {
         if (logged) {
-          triggerPoints(earnedSolveCount);
+          triggerPoints(Math.round(earnedSolveCount * (TASK_XP.scrambledPerfect / Math.max(chapter.questions.length, 1))));
         }
       })
       .catch((error) => {
@@ -523,7 +524,7 @@ export default function ScrambledGamePlayer({
     if (hintCount === 0) {
       setHintCount(1);
       setLouieLine(question.clue);
-      setPointNotice("Hint shown. You can still earn the point if you solve it.");
+      setPointNotice("Hint shown. You can still earn the XP if you solve it.");
       return;
     }
 
@@ -543,7 +544,7 @@ export default function ScrambledGamePlayer({
     setPointNotice(
       nextRevealCount >= 2
         ? "Two letters revealed, so this word counts for progress only now."
-        : "One letter revealed. You can still earn the point if you solve it."
+        : "One letter revealed. You can still earn the XP if you solve it."
     );
     setRecentReveal((current) => ({
       index: revealedIndex,
@@ -627,15 +628,15 @@ export default function ScrambledGamePlayer({
             <p className="mx-auto mt-4 max-w-md text-base font-bold leading-7 text-[var(--bb-text-primary,#111827)]">{encouragement}</p>
             {earnedSolveCount > 0 ? (
               <p className="mt-5 text-base font-black leading-7 text-gray-950">
-                You earned +{earnedSolveCount} points for new solved words.
+                You earned +{Math.round(earnedSolveCount * (TASK_XP.scrambledPerfect / Math.max(chapter.questions.length, 1)))} XP for new solved words.
               </p>
             ) : completedSolveCount > scoredSolveCount ? (
               <p className="mt-5 text-base font-bold leading-7 text-gray-950">
-                Hints helped on this round, so those words counted for progress but not for points.
+                Hints helped on this round, so those words counted for progress but not for XP.
               </p>
             ) : (
               <p className="mt-5 text-base font-bold leading-7 text-gray-950">
-                No new points this run (you already earned points for these words before).
+                No new XP this run (you already earned XP for these words before).
               </p>
             )}
             <button
@@ -670,15 +671,15 @@ export default function ScrambledGamePlayer({
             <p className="mt-3 text-sm font-semibold leading-6 text-gray-700">{encouragement}</p>
             {earnedSolveCount > 0 ? (
               <p className="mt-3 rounded-2xl bg-[#eaf7ee] px-4 py-3 text-sm font-black text-[#2f7a52]">
-                You earned +{earnedSolveCount} points for new solved words.
+                You earned +{Math.round(earnedSolveCount * (TASK_XP.scrambledPerfect / Math.max(chapter.questions.length, 1)))} XP for new solved words.
               </p>
             ) : completedSolveCount > scoredSolveCount ? (
               <p className="mt-3 rounded-2xl bg-[#f6fbf8] px-4 py-3 text-sm font-semibold leading-6 text-gray-600">
-                Hints helped on this round, so those words counted for progress but not for points.
+                Hints helped on this round, so those words counted for progress but not for XP.
               </p>
             ) : (
               <p className="mt-3 rounded-2xl bg-[#f6fbf8] px-4 py-3 text-sm font-semibold leading-6 text-gray-600">
-                No new points this run (you already earned points for these words before).
+                No new XP this run (you already earned XP for these words before).
               </p>
             )}
           </div>
@@ -1098,7 +1099,7 @@ export default function ScrambledGamePlayer({
             <p className="mt-4 text-sm leading-7 text-gray-700">Tap letters below to build the word in the correct order.</p>
             <p className="mt-2 text-sm leading-7 text-gray-700">Tap a placed letter if you want to send it back and try another spot.</p>
             <p className="mt-2 text-sm leading-7 text-gray-700">Every time you ask for more help, Louis can place another letter for you.</p>
-            <p className="mt-2 text-sm leading-7 text-gray-700">If you use any hint on a word, you can still finish it for progress, but that word will not count as correct for points.</p>
+            <p className="mt-2 text-sm leading-7 text-gray-700">If you use any hint on a word, you can still finish it for progress, but that word will not count as correct for XP.</p>
             <button
               type="button"
               onClick={() => setShowHelp(false)}

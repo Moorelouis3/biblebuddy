@@ -17,6 +17,7 @@ import { LouisAvatar } from "./LouisAvatar";
 import CommentSection from "./comments/CommentSection";
 import TriviaGamePlayer from "./TriviaGamePlayer";
 import ScrambledGamePlayer from "./ScrambledGamePlayer";
+import { TASK_XP } from "../lib/progressionRewards";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -796,7 +797,7 @@ Be accurate to Scripture.`;
             action_type: ACTION_TYPE.chapter_notes_reviewed,
             action_label: reviewOpenedLabel,
           });
-          if (!reviewedError) triggerPoints(5);
+          if (!reviewedError) triggerPoints(TASK_XP.notes);
         }
       }
 

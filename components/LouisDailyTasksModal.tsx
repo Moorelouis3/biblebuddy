@@ -17,6 +17,7 @@ import {
 } from "../lib/louisDailyFlow";
 import { LouisAvatar } from "./LouisAvatar";
 import { triggerPoints } from "./PointsPop";
+import { TASK_REWARD_LABELS, TASK_XP } from "../lib/progressionRewards";
 
 type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
 
@@ -151,10 +152,10 @@ function parseCompletedScore(actionLabel: string | null | undefined) {
 function formatGamePointsLabel(done: boolean, actionLabel: string | null | undefined, total: number) {
   if (done) {
     const completedScore = parseCompletedScore(actionLabel);
-    if (completedScore) return `+${completedScore.score} pts`;
+    if (completedScore) return `+${completedScore.score * 5} XP`;
   }
 
-  return `Up to +${total}`;
+  return `Up to +${total * 5} XP`;
 }
 
 function countWords(value: string | null | undefined) {
@@ -221,7 +222,7 @@ export function buildChooseDevotionalChecklistData(_userId: string): ChecklistDa
       {
         kind: "reading",
         title: "Read your chapter",
-        pointsLabel: "+5 pts",
+        pointsLabel: TASK_REWARD_LABELS.reading,
         timeEstimateLabel: "4 min",
         timeEstimateDetail: "Chapter reading",
         href: null,
@@ -231,7 +232,7 @@ export function buildChooseDevotionalChecklistData(_userId: string): ChecklistDa
       {
         kind: "notes",
         title: "Review chapter notes",
-        pointsLabel: "+5 pts",
+        pointsLabel: TASK_REWARD_LABELS.notes,
         timeEstimateLabel: "10 min",
         timeEstimateDetail: "Study notes",
         href: null,
@@ -241,7 +242,7 @@ export function buildChooseDevotionalChecklistData(_userId: string): ChecklistDa
       {
         kind: "trivia",
         title: "Play chapter trivia",
-        pointsLabel: "Up to +5",
+        pointsLabel: TASK_REWARD_LABELS.trivia,
         timeEstimateLabel: "4 min",
         timeEstimateDetail: "Quick quiz",
         href: null,
@@ -251,7 +252,7 @@ export function buildChooseDevotionalChecklistData(_userId: string): ChecklistDa
       {
         kind: "scrambled",
         title: "Play chapter Scrambled",
-        pointsLabel: "Up to +5",
+        pointsLabel: TASK_REWARD_LABELS.scrambled,
         timeEstimateLabel: "4 min",
         timeEstimateDetail: "Word puzzle",
         href: null,
@@ -531,7 +532,7 @@ export async function fetchLouisDailyChecklistData(
       kind: "devotional",
       title: `Read the ${chapterLabel} Intro`,
       subtitle: introSummary,
-      pointsLabel: "+5 pts",
+      pointsLabel: TASK_REWARD_LABELS.intro,
       timeEstimateLabel: formatEstimate(introMinutes),
       timeEstimateDetail: "Intro read",
       href: `/bible-studies/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task`,
@@ -549,7 +550,7 @@ export async function fetchLouisDailyChecklistData(
     {
       kind: "reading",
       title: `Read ${chapterLabel}`,
-      pointsLabel: "+5 pts",
+      pointsLabel: TASK_REWARD_LABELS.reading,
       timeEstimateLabel: formatEstimate(readingMinutes),
       timeEstimateDetail: `${chapterLabel} reading`,
       href: `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?from=louis-daily-task`,
@@ -567,7 +568,7 @@ export async function fetchLouisDailyChecklistData(
     {
       kind: "notes",
       title: `Review ${chapterLabel} Notes`,
-      pointsLabel: "+5 pts",
+      pointsLabel: TASK_REWARD_LABELS.notes,
       timeEstimateLabel: formatEstimate(notesMinutes),
       timeEstimateDetail: "Study notes",
       href: `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
@@ -583,7 +584,7 @@ export async function fetchLouisDailyChecklistData(
     {
       kind: "trivia",
       title: hasTrivia ? `Play Trivia for ${chapterLabel}` : `Review ${chapterLabel} Notes Again`,
-      pointsLabel: hasTrivia ? formatGamePointsLabel(triviaDone, triviaAction?.action_label, triviaQuestionCount) : "+5 pts",
+      pointsLabel: hasTrivia ? formatGamePointsLabel(triviaDone, triviaAction?.action_label, triviaQuestionCount) : TASK_REWARD_LABELS.trivia,
       timeEstimateLabel: hasTrivia ? formatEstimate(triviaMinutes) : formatEstimate(notesMinutes),
       timeEstimateDetail: hasTrivia ? `${triviaQuestionCount} questions` : "Study notes",
       href: hasTrivia
@@ -604,7 +605,7 @@ export async function fetchLouisDailyChecklistData(
     {
       kind: "scrambled",
       title: hasScrambled ? `Play Scrambled for ${chapterLabel}` : `Open ${chapterLabel} Again`,
-      pointsLabel: hasScrambled ? formatGamePointsLabel(scrambledDone, scrambledAction?.action_label, scrambledQuestionCount) : "+5 pts",
+      pointsLabel: hasScrambled ? formatGamePointsLabel(scrambledDone, scrambledAction?.action_label, scrambledQuestionCount) : TASK_REWARD_LABELS.scrambled,
       timeEstimateLabel: hasScrambled ? formatEstimate(scrambledMinutes) : formatEstimate(readingMinutes),
       timeEstimateDetail: hasScrambled ? `${scrambledQuestionCount} words` : "Chapter reading",
       href: hasScrambled
@@ -628,7 +629,7 @@ export async function fetchLouisDailyChecklistData(
       kind: "reflection",
       title: "Answer The Reflection Question",
       subtitle: `Share what ${chapterLabel} is stirring in you.`,
-      pointsLabel: "+5 pts",
+      pointsLabel: TASK_REWARD_LABELS.reflection,
       timeEstimateLabel: "3 min",
       timeEstimateDetail: "Write your response",
       href: `/bible-studies/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task-reflection`,
@@ -760,7 +761,7 @@ export default function LouisDailyTasksModal({
 
     if (!hasLouisChapterJourneyBonusAwarded(userId, data.journeyKey)) {
       rememberLouisChapterJourneyBonusAwarded(userId, data.journeyKey);
-      triggerPoints(10);
+      triggerPoints(TASK_XP.chapterBonus);
     }
 
   }, [open, userId, data]);
@@ -905,7 +906,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         action_type: ACTION_TYPE.chapter_notes_reviewed,
         action_label: reviewOpenedLabel,
       });
-      if (!insertErr) triggerPoints(5);
+      if (!insertErr) triggerPoints(TASK_XP.notes);
     }
 
     setNotesMarkedComplete(true);

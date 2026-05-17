@@ -1,4 +1,5 @@
 import type { ActionType } from "./actionTypes";
+import { TASK_XP } from "./progressionRewards";
 
 export type LevelDefinition = {
   level: number;
@@ -17,18 +18,18 @@ export type WeightedPointBreakdown = {
 };
 
 export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
-  user_signup: 5,
-  user_login: 1,
-  chapter_completed: 5,
-  book_completed: 30,
-  devotional_day_started: 2,
+  user_signup: 25,
+  user_login: 5,
+  chapter_completed: TASK_XP.reading,
+  book_completed: 250,
+  devotional_day_started: 5,
   devotional_day_viewed: 1,
-  devotional_day_completed: 5,
-  devotional_reflection_saved: 5,
-  reading_plan_chapter_completed: 5,
+  devotional_day_completed: TASK_XP.intro,
+  devotional_reflection_saved: TASK_XP.reflection,
+  reading_plan_chapter_completed: TASK_XP.reading,
   bible_in_one_year_day_viewed: 3,
   chapter_notes_viewed: 0,
-  chapter_notes_reviewed: 5,
+  chapter_notes_reviewed: TASK_XP.notes,
   note_started: 1,
   note_created: 7,
   verse_highlighted: 2,
@@ -41,9 +42,9 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   keyword_mastered: 6,
   trivia_started: 0,
   trivia_question_answered: 0,
-  trivia_question_correct: 1,
+  trivia_question_correct: 5,
   trivia_chapter_completed: 0,
-  scrambled_word_answered: 1,
+  scrambled_word_answered: 5,
   scrambled_chapter_completed: 0,
   feed_post_thought: 5,
   feed_post_prayer: 5,
@@ -58,7 +59,7 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   study_group_feed_viewed: 1,
   study_group_article_opened: 2,
   study_group_bible_study_card_opened: 2,
-  louis_daily_task_bonus: 10,
+  louis_daily_task_bonus: TASK_XP.chapterBonus,
   badge_earned: 0,
 };
 
@@ -69,7 +70,7 @@ export const SOCIAL_POINT_WEIGHTS = {
   likeReceived: 2,
 } as const;
 
-export const LEVEL_DEFINITIONS: LevelDefinition[] = [
+const LEGACY_LEVEL_DEFINITIONS: LevelDefinition[] = [
   {
     level: 1,
     minPoints: 0,
@@ -231,6 +232,48 @@ export const LEVEL_DEFINITIONS: LevelDefinition[] = [
     encouragementText: "You have built something lasting. Keep representing the Word well.",
   },
 ];
+
+const LEVEL_MIN_POINTS = [
+  0, 250, 600, 1100, 1800, 2700, 3800, 5100, 6600, 8300,
+  10200, 12300, 14600, 17100, 19800, 22700, 25800, 29100, 32600, 36300,
+  40200, 44300, 48600, 53100, 57800, 62700, 67800, 73100, 78600, 84300,
+  90200, 96300, 102600, 109100, 115800, 122700, 129800, 137100, 144600, 152300,
+  160200, 168300, 176600, 185100, 193800, 202700, 211800, 221100, 230600, 240300,
+] as const;
+
+const LEVEL_NAMES = [
+  "Seeker", "Explorer", "Listener", "Reader", "Learner",
+  "Follower", "Disciple", "Rooted", "Grounded", "Steady",
+  "Faithful", "Equipped", "Watchful", "Devoted", "Servant",
+  "Builder", "Teacher", "Shepherd", "Watchman", "Ambassador",
+  "Covenant Keeper", "Scripture Scout", "Wisdom Walker", "Truth Bearer", "Prayer Warrior",
+  "Word Keeper", "Faith Builder", "Light Carrier", "Gospel Guide", "Bible Mentor",
+  "Kingdom Servant", "Hope Carrier", "Grace Witness", "Truth Defender", "Story Keeper",
+  "Journey Leader", "Bible Scholar", "Faith Captain", "Covenant Champion", "Word Guardian",
+  "Kingdom Builder", "Scripture Master", "Faith General", "Bible Veteran", "Holy Flame",
+  "Gospel Ambassador", "Word Legend", "Kingdom Elder", "Bible Champion", "Bible Buddy Legend",
+] as const;
+
+export const LEVEL_DEFINITIONS: LevelDefinition[] = LEVEL_MIN_POINTS.map((minPoints, index) => {
+  const level = index + 1;
+  const nextMinPoints = LEVEL_MIN_POINTS[index + 1] ?? null;
+  const legacy = LEGACY_LEVEL_DEFINITIONS[Math.min(index, LEGACY_LEVEL_DEFINITIONS.length - 1)];
+
+  return {
+    level,
+    minPoints,
+    maxPoints: nextMinPoints === null ? null : nextMinPoints - 1,
+    levelName: LEVEL_NAMES[index] ?? `Level ${level}`,
+    identityText:
+      level <= 20
+        ? legacy.identityText
+        : `You are building a long-term Bible habit and moving deeper through Scripture.`,
+    encouragementText:
+      level <= 20
+        ? legacy.encouragementText
+        : `Keep going. Every chapter, reflection, and return is adding up.`,
+  };
+});
 
 export function calculateWeightedPoints(options: {
   actionTypes: string[];

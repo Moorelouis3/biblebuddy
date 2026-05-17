@@ -38,6 +38,8 @@ import type { TriviaChapterPack } from "../../../../lib/triviaGameData";
 import type { ScrambledChapterPack } from "../../../../lib/scrambledGameData";
 import TriviaGamePlayer from "../../../../components/TriviaGamePlayer";
 import ScrambledGamePlayer from "../../../../components/ScrambledGamePlayer";
+import { awardDiamonds } from "../../../../lib/diamondWallet";
+import { DIAMOND_REWARDS, TASK_REWARD_LABELS, TASK_XP } from "../../../../lib/progressionRewards";
 
 type Verse = {
   num: number;
@@ -1419,7 +1421,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       const bookKey = book.toLowerCase().trim();
       const chapterNum = Number(chapter);
 
-      // 1. Log view + award +2 points once per chapter
+      // 1. Log view + award XP once per chapter
       if (userId) {
         const reviewOpenedLabel = `${bookDisplayName} ${chapterNum} Review Opened`;
 
@@ -1434,7 +1436,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
         }
 
-        // Award points first time only (chapter_notes_reviewed)
+        // Award XP first time only (chapter_notes_reviewed)
         const { data: existingReviewed } = await supabase
           .from("master_actions")
           .select("id")
@@ -1451,7 +1453,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             action_label: reviewOpenedLabel,
           });
           if (!insertErr) {
-            triggerPoints(5);
+            triggerPoints(TASK_XP.notes);
             setReviewDone(true);
             if (typeof window !== "undefined") {
               window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
@@ -1976,7 +1978,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
       console.log(`[MARK_FINISHED] Successfully marked ${book} chapter ${chapter} as done`);
 
       setIsCompleted(true);
-      triggerPoints(5);
+      triggerPoints(TASK_XP.reading);
       setIsSaving(false);
 
       // Trigger confetti animation
@@ -2024,6 +2026,8 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
           if (actionError) {
             console.error("Error logging action to master_actions:", actionError);
+          } else {
+            void awardDiamonds(userId, DIAMOND_REWARDS.fullChapter);
           }
 
           // If this chapter was opened from a reading plan, also log reading_plan_chapter_completed
@@ -2071,6 +2075,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 console.error("Error logging book_completed action to master_actions:", bookActionError);
               } else {
                 console.log(`[MASTER_ACTIONS] Successfully logged book_completed: ${bookDisplayName}`);
+                void awardDiamonds(userId, DIAMOND_REWARDS.fullBook);
               }
             }
           } catch (bookCheckError) {
@@ -3633,7 +3638,7 @@ function CongratsModalWithConfetti({
                       </div>
                       <div className="flex flex-col items-end gap-2">
                         <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
-                          +2 pts
+                          {TASK_REWARD_LABELS.notes}
                         </span>
                         <span className={`text-xs font-semibold ${effectiveChecklist.notesReviewed ? "text-emerald-700" : "text-gray-500"}`}>
                           {effectiveChecklist.notesReviewed ? "Completed" : "Not done"}
@@ -3655,12 +3660,12 @@ function CongratsModalWithConfetti({
                       <div>
                         <p className="text-base font-bold text-gray-900">Take the Trivia Quiz</p>
                         <p className="mt-1 text-sm text-gray-700">
-                          Earn up to 5 points based on how many you get right.
+                          Earn up to {TASK_XP.triviaPerfect} XP based on how many you get right.
                         </p>
                       </div>
                       <div className="flex flex-col items-end gap-2">
                         <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
-                          Up to +5
+                          {TASK_REWARD_LABELS.trivia}
                         </span>
                         <span className={`text-xs font-semibold ${effectiveChecklist.triviaDone ? "text-emerald-700" : "text-gray-500"}`}>
                           {effectiveChecklist.triviaDone ? "Completed" : "Not done"}
@@ -3682,12 +3687,12 @@ function CongratsModalWithConfetti({
                       <div>
                         <p className="text-base font-bold text-gray-900">Play Scrambled</p>
                         <p className="mt-1 text-sm text-gray-700">
-                          Earn up to 5 points by solving the chapter words.
+                          Earn up to {TASK_XP.scrambledPerfect} XP by solving the chapter words.
                         </p>
                       </div>
                       <div className="flex flex-col items-end gap-2">
                         <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
-                          Up to +5
+                          {TASK_REWARD_LABELS.scrambled}
                         </span>
                         <span className={`text-xs font-semibold ${effectiveChecklist.scrambledDone ? "text-emerald-700" : "text-gray-500"}`}>
                           {effectiveChecklist.scrambledDone ? "Completed" : "Not done"}

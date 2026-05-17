@@ -850,38 +850,38 @@ function getStreakCelebrationLine(currentStreak: number) {
   }
 
   if (currentStreak === 1) {
-    return "You're on day 1 right now, and that also means you just picked up 1 extra level point from your streak. Once you hit 30 days, you earn the fire and your habit really starts to feel real.";
+    return "You're on day 1 right now, and that also means you just picked up 1 extra XP from your streak. Once you hit 30 days, you earn the fire and your habit really starts to feel real.";
   }
 
   if (currentStreak === 2) {
-    return "This is your second day in a row. That's how a habit starts getting real, and your streak just gave you 2 extra level points today.";
+    return "This is your second day in a row. That's how a habit starts getting real, and your streak just gave you 2 extra XP today.";
   }
 
   if (currentStreak === 3) {
-    return "You're on day 3 now. That's real momentum, not just a random check-in, and your streak just added 3 extra level points.";
+    return "You're on day 3 now. That's real momentum, not just a random check-in, and your streak just added 3 extra XP.";
   }
 
   if (currentStreak === 4) {
-    return "Four days in a row is big. Most people talk about consistency, but this is what consistency actually looks like, and your streak just gave you 4 extra level points.";
+    return "Four days in a row is big. Most people talk about consistency, but this is what consistency actually looks like, and your streak just gave you 4 extra XP.";
   }
 
   if (currentStreak === 5) {
-    return "Five straight days is strong. You're not just visiting Bible Buddy now. You're building something, and you just picked up 5 extra level points from your streak.";
+    return "Five straight days is strong. You're not just visiting Bible Buddy now. You're building something, and you just picked up 5 extra XP from your streak.";
   }
 
   if (currentStreak === 6) {
-    return "Six days in a row is serious. You're close to a full week of showing up for your walk with God, and your streak just gave you 6 extra level points.";
+    return "Six days in a row is serious. You're close to a full week of showing up for your walk with God, and your streak just gave you 6 extra XP.";
   }
 
   if (currentStreak === 7) {
-    return "A full week in a row is strong. That's how Bible study starts becoming part of your real life, and today your streak gave you 7 extra level points.";
+    return "A full week in a row is strong. That's how Bible study starts becoming part of your real life, and today your streak gave you 7 extra XP.";
   }
 
   if (currentStreak < 30) {
-    return `You're on day ${currentStreak}, which means you just got ${currentStreak} extra level points from your streak today. Keep stacking days like this and the fire is coming.`;
+    return `You're on day ${currentStreak}, which means you just got ${currentStreak} extra XP from your streak today. Keep stacking days like this and the fire is coming.`;
   }
 
-  return `You're on day ${currentStreak}, and you've already earned the fire. You also just picked up ${currentStreak} extra level points from your streak today. Now it's about protecting the habit and growing deeper.`;
+  return `You're on day ${currentStreak}, and you've already earned the fire. You also just picked up ${currentStreak} extra XP from your streak today. Now it's about protecting the habit and growing deeper.`;
 }
 
 function getDailyStreakMotivation(currentStreak: number) {

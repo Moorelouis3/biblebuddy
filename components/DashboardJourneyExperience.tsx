@@ -20,6 +20,7 @@ import {
   rememberFreeChapterUnlock,
   type FreeChapterUnlockTarget,
 } from "../lib/freePlanGating";
+import { TASK_REWARD_LABELS } from "../lib/progressionRewards";
 
 type LevelInfo = {
   level: number;
@@ -404,7 +405,7 @@ function buildPreloadedNextChapterTasks({
       kind: "devotional",
       title: `Read the ${chapterLabel} Intro`,
       subtitle: "Start with the big picture before you read the chapter.",
-      pointsLabel: "+5 pts",
+      pointsLabel: TASK_REWARD_LABELS.intro,
       timeEstimateLabel: "2 min",
       href: `/bible-studies/${devotionalId}?day=${dayNumber}&from=louis-daily-task`,
       done: false,
@@ -418,7 +419,7 @@ function buildPreloadedNextChapterTasks({
     {
       kind: "reading",
       title: `Read ${chapterLabel}`,
-      pointsLabel: "+5 pts",
+      pointsLabel: TASK_REWARD_LABELS.reading,
       timeEstimateLabel: "4 min",
       href: `/Bible/${encodeURIComponent(book)}/${chapter}?from=louis-daily-task`,
       done: false,
@@ -433,7 +434,7 @@ function buildPreloadedNextChapterTasks({
     {
       kind: "notes",
       title: `Review ${chapterLabel} Notes`,
-      pointsLabel: "+5 pts",
+      pointsLabel: TASK_REWARD_LABELS.notes,
       timeEstimateLabel: "12 min",
       href: `/Bible/${encodeURIComponent(book)}/${chapter}?notes=1&from=louis-daily-task`,
       done: false,
@@ -448,7 +449,7 @@ function buildPreloadedNextChapterTasks({
     {
       kind: "trivia",
       title: `Play Trivia for ${chapterLabel}`,
-      pointsLabel: "Up to +5",
+      pointsLabel: TASK_REWARD_LABELS.trivia,
       timeEstimateLabel: "4 min",
       href: `/bible-trivia/${bookKey}/${chapter}?from=louis-daily-task`,
       done: false,
@@ -463,7 +464,7 @@ function buildPreloadedNextChapterTasks({
     {
       kind: "scrambled",
       title: `Play Scrambled for ${chapterLabel}`,
-      pointsLabel: "Up to +5",
+      pointsLabel: TASK_REWARD_LABELS.scrambled,
       timeEstimateLabel: "4 min",
       href: `/bible-study-games/scrambled/${bookKey}/${chapter}?from=louis-daily-task`,
       done: false,
@@ -479,7 +480,7 @@ function buildPreloadedNextChapterTasks({
       kind: "reflection",
       title: "Answer The Reflection Question",
       subtitle: `Share what ${chapterLabel} is stirring in you.`,
-      pointsLabel: "+5 pts",
+      pointsLabel: TASK_REWARD_LABELS.reflection,
       timeEstimateLabel: "3 min",
       href: `/bible-studies/${devotionalId}?day=${dayNumber}&from=louis-daily-task-reflection`,
       done: false,

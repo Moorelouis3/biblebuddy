@@ -48,8 +48,10 @@ import {
   type FeatureToursState,
 } from "../../lib/featureTours";
 import { LEVEL_DEFINITIONS, calculateWeightedPoints, getLevelInfoFromPoints } from "../../lib/levelSystem";
+import { TASK_XP, DIAMOND_REWARDS, estimateDiamondStashFromActions } from "../../lib/progressionRewards";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { trackUserActivity } from "../../lib/trackUserActivity";
+import { awardDiamonds } from "../../lib/diamondWallet";
 
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
@@ -881,7 +883,7 @@ export default function DashboardPage() {
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [levelRefreshTick, setLevelRefreshTick] = useState(0);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
   const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
@@ -1817,7 +1819,7 @@ export default function DashboardPage() {
     const displayedBibleCompletionPercent = isLoadingBibleCompletion
       ? animatedDashboardStats.completion
       : bibleCompletionPercent;
-    const graceDaysLoading = !profile;
+    const diamondsLoading = !profile;
     const levelLoading = isLoadingLevel || !levelInfo;
     const badgesLoading = badgeProgress.length === 0;
     const streakFlameDuration = Math.max(0.85, 7 - Math.min(29, Math.max(0, streakValue)) * 0.2);
@@ -1833,19 +1835,19 @@ export default function DashboardPage() {
         sublabel: "Overall",
         value: `${displayedBibleCompletionPercent}%`,
         icon: "📖",
-        tones: "border-[#dbe7f4] bg-gradient-to-br from-white via-[#f8fbff] to-[#eef7ff]",
+        tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
         onClick: () => setShowBibleProgressModal(true),
       },
       {
-        key: "grace",
-        label: "Grace Days",
-        sublabel: "Available",
-        value: graceDaysLoading
+        key: "diamonds",
+        label: "Diamonds",
+        sublabel: "In your stash",
+        value: diamondsLoading
           ? animatedDashboardStats.grace
-          : Math.max(0, Math.min(5, Number(profile?.grace_days_count ?? 0))),
+          : Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString(),
         icon: "💎",
-        tones: "border-[#dbe7f4] bg-gradient-to-br from-white via-[#f7fbff] to-[#edf6ff]",
-        onClick: () => setShowGraceDaysInfoModal(true),
+        tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
+        onClick: openLevelInfoModal,
       },
       {
         key: "level",
@@ -1853,7 +1855,7 @@ export default function DashboardPage() {
         sublabel: "",
         value: levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1,
         icon: "🛡️",
-        tones: "border-[#dbe7f4] bg-gradient-to-br from-white via-[#f8fbff] to-[#edf6ff]",
+        tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
         onClick: openLevelInfoModal,
       },
       {
@@ -1862,7 +1864,7 @@ export default function DashboardPage() {
         sublabel: "",
         value: badgesLoading ? animatedDashboardStats.badges : earnedBadgeCount,
         icon: "🏅",
-        tones: "border-[#dbe7f4] bg-gradient-to-br from-white via-[#f8fbff] to-[#fff6e8]",
+        tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
         onClick: () => setShowBadgesModal(true),
       },
     ];
@@ -1878,7 +1880,7 @@ export default function DashboardPage() {
         onClick?: () => void;
       }>
     ) => (
-      <div className="mx-auto grid max-w-xl grid-cols-4 gap-2 rounded-[24px] border border-[#dbe7f4] bg-white/80 p-2 shadow-[0_12px_34px_rgba(38,63,99,0.08)] backdrop-blur">
+      <div className="mx-auto grid max-w-xl grid-cols-4 gap-2 rounded-[24px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-2 shadow-[0_12px_34px_rgba(38,63,99,0.08)] backdrop-blur">
         {cards.map((card) => {
           const CardTag = card.onClick ? "button" : "div";
           return (
@@ -2434,11 +2436,21 @@ export default function DashboardPage() {
             return null;
           });
 
-        const { data, error } = await supabase
+        let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username")
+          .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, profile_image_url, display_name, username")
           .eq("user_id", userId)
           .maybeSingle();
+
+        if (error && /diamonds_count/i.test(error.message || "")) {
+          const fallback = await supabase
+            .from("profile_stats")
+            .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username")
+            .eq("user_id", userId)
+            .maybeSingle();
+          data = fallback.data as typeof data;
+          error = fallback.error;
+        }
 
         if (error && error.code !== "PGRST116") {
           throw error;
@@ -2453,6 +2465,7 @@ export default function DashboardPage() {
             verse_of_the_day_shown: profileData?.verse_of_the_day_shown ?? null,
             current_streak: profileData?.current_streak ?? 0,
             grace_days_count: Math.max(0, Math.min(5, Number(profileData?.grace_days_count ?? 0))),
+            diamonds_count: typeof profileData?.diamonds_count === "number" ? Math.max(0, profileData.diamonds_count) : null,
             profile_image_url: profileData?.profile_image_url ?? null,
             display_name: profileData?.display_name ?? null,
             username: profileData?.username ?? null,
@@ -2470,6 +2483,7 @@ export default function DashboardPage() {
                 : current.daily_credits,
             current_streak: resolvedCurrentStreak,
             grace_days_count: current.grace_days_count ?? 0,
+            diamonds_count: current.diamonds_count ?? null,
           } : current);
         }
 
@@ -2611,6 +2625,7 @@ export default function DashboardPage() {
         const baseTotalPoints = weightedPoints.totalPoints + uniqueEntityPoints;
         const levelData = getLevelInfoFromPoints(baseTotalPoints);
         const { level, levelName, identityText, encouragementText, levelStart, levelEnd, progressPercent, totalPoints, pointsToNextLevel } = levelData;
+        const estimatedDiamondStash = estimateDiamondStashFromActions(actionRows, level);
 
         // Select random motivational message for this level
         const motivationalMessages: Record<number, string[]> = {
@@ -2682,6 +2697,17 @@ export default function DashboardPage() {
         };
 
         if (!didCancel) {
+          setProfile((current) =>
+            current
+              ? {
+                  ...current,
+                  diamonds_count:
+                    typeof current.diamonds_count === "number"
+                      ? current.diamonds_count
+                      : estimatedDiamondStash,
+                }
+              : current,
+          );
           setLevelInfo(levelInfoData);
           setMotivationalMessage(randomMessage);
           const nextBadgeProgress = buildBadgeProgress({
@@ -2779,6 +2805,28 @@ export default function DashboardPage() {
       didCancel = true;
     };
   }, [userId, levelRefreshTick, isOwnerDashboard]);
+
+  useEffect(() => {
+    function handleDiamondsAwarded(event: Event) {
+      const detail = (event as CustomEvent<{ amount?: number; diamonds?: number }>).detail;
+      if (!detail) return;
+
+      setProfile((current) =>
+        current
+          ? {
+              ...current,
+              diamonds_count:
+                typeof detail.diamonds === "number"
+                  ? Math.max(0, detail.diamonds)
+                  : Math.max(0, Number(current.diamonds_count ?? 0)) + Math.max(0, Number(detail.amount ?? 0)),
+            }
+          : current,
+      );
+    }
+
+    window.addEventListener("bb:diamonds-awarded", handleDiamondsAwarded);
+    return () => window.removeEventListener("bb:diamonds-awarded", handleDiamondsAwarded);
+  }, []);
 
   useEffect(() => {
     function handlePointsChange() {
@@ -3562,7 +3610,8 @@ export default function DashboardPage() {
 
     if (!hasLouisChapterJourneyBonusAwarded(userId, journeyKey)) {
       rememberLouisChapterJourneyBonusAwarded(userId, journeyKey);
-      triggerPoints(10);
+      triggerPoints(TASK_XP.chapterBonus);
+      void awardDiamonds(userId, DIAMOND_REWARDS.fullChapter);
     }
 
     if (chapterCelebrationTimerRef.current !== null) {
@@ -4653,7 +4702,7 @@ export default function DashboardPage() {
             </div>
             <h2 className="mt-4 text-3xl font-bold text-[#2b3550]">Hey Jessica</h2>
             <p className="mt-3 text-base leading-7 text-[#5b6480]">
-              You have been awarded <span className="font-bold text-[#1f2937]">1000 bonus points</span>.
+              You have been awarded <span className="font-bold text-[#1f2937]">1000 bonus XP</span>.
             </p>
             <button
               type="button"
@@ -4731,7 +4780,7 @@ export default function DashboardPage() {
               <div className="space-y-6 text-gray-700">
                 {isLoadingLevel ? (
                   <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 p-4 shadow-sm">
-                    <p className="text-sm font-medium text-gray-600">Loading your latest level points...</p>
+                    <p className="text-sm font-medium text-gray-600">Loading your latest XP...</p>
                   </div>
                 ) : levelInfo ? (
                   <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 p-4 shadow-sm">
@@ -4744,7 +4793,7 @@ export default function DashboardPage() {
                           Level {levelInfo.level} Bible Buddy
                         </h3>
                         <p className="mt-1 text-sm text-gray-600">
-                          {levelInfo.totalPoints.toLocaleString()} total points
+                          {levelInfo.totalPoints.toLocaleString()} total XP
                         </p>
                       </div>
                       <div className="rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-blue-600 shadow-sm">
@@ -4762,7 +4811,7 @@ export default function DashboardPage() {
                     <div className="mt-3 flex items-center justify-between gap-4 text-sm">
                       <p className="font-medium text-gray-700">
                         {levelInfo.pointsToNextLevel > 0
-                          ? `${levelInfo.pointsToNextLevel.toLocaleString()} points until Level ${levelInfo.level + 1}`
+                          ? `${levelInfo.pointsToNextLevel.toLocaleString()} XP until Level ${levelInfo.level + 1}`
                           : "You are at the top level right now."}
                       </p>
                       <p className="text-gray-500">
@@ -4814,10 +4863,10 @@ export default function DashboardPage() {
                       <p>If other Buddies like your posts or comments, that also gives you points because your activity is helping the community.</p>
                     </div>
                     <div className="bg-orange-50 p-3 rounded-lg border border-orange-100">
-                      <p className="font-semibold text-gray-900">Streak bonus points</p>
+                      <p className="font-semibold text-gray-900">Streak bonus XP</p>
                       <p>
-                        Every day you log in on a streak, you get bonus level points equal to that streak day.
-                        Day 1 gives you 1 bonus point. Day 10 gives you 10 bonus points. Day 45 gives you 45 bonus points.
+                        Every day you log in on a streak, you get bonus XP equal to that streak day.
+                        Day 1 gives you 1 bonus XP. Day 10 gives you 10 bonus XP. Day 45 gives you 45 bonus XP.
                       </p>
                     </div>
                   </div>
@@ -4847,7 +4896,7 @@ export default function DashboardPage() {
                           Level {definition.level} Bible Buddy
                           {" "}
                           <span className="text-xs font-medium text-gray-500">
-                            ({definition.minPoints.toLocaleString()} to {definition.maxPoints !== null ? definition.maxPoints.toLocaleString() : `${definition.minPoints.toLocaleString()}+`} pts)
+                            ({definition.minPoints.toLocaleString()} to {definition.maxPoints !== null ? definition.maxPoints.toLocaleString() : `${definition.minPoints.toLocaleString()}+`} XP)
                           </span>
                         </p>
                       </div>
@@ -4917,7 +4966,7 @@ export default function DashboardPage() {
                 </p>
 
                 <p className="text-sm leading-7">
-                  Your streak also gives you extra level points every day you keep it alive, so showing up daily helps you grow faster.
+                  Your streak also gives you extra XP every day you keep it alive, so showing up daily helps you grow faster.
                 </p>
 
                 <button

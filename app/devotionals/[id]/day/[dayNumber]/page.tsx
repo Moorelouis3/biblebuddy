@@ -16,6 +16,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { getScrambledBook, getScrambledChapter } from "@/lib/scrambledGameData";
 import { getTriviaBook, getTriviaChapter } from "@/lib/triviaGameData";
 import { triggerPoints } from "@/components/PointsPop";
+import { TASK_XP } from "@/lib/progressionRewards";
 
 type Devotional = {
   id: string;
@@ -700,7 +701,7 @@ export default function ProverbsStudyDayPage() {
         action_type: ACTION_TYPE.devotional_day_completed,
         action_label: `${devotional.title} - Day ${dayNumber} Intro Reading Completed`,
       });
-      if (!error) triggerPoints(5);
+      if (!error) triggerPoints(TASK_XP.intro);
     }
 
     setProgress((prev) => ({
@@ -763,7 +764,7 @@ export default function ProverbsStudyDayPage() {
           action_type: ACTION_TYPE.chapter_notes_reviewed,
           action_label: label,
         });
-        if (!error) triggerPoints(5);
+        if (!error) triggerPoints(TASK_XP.notes);
       }
 
       setNotesDone(true);
@@ -794,7 +795,7 @@ export default function ProverbsStudyDayPage() {
       action_label: actionLabel,
     });
 
-    if (!error) triggerPoints(5);
+    if (!error) triggerPoints(TASK_XP.reflection);
   }
 
   async function markReadingComplete() {

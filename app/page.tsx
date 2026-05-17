@@ -433,7 +433,7 @@ export default function LandingPage() {
                               {index < 2 ? "✓" : index + 1}
                             </span>
                             <span className="min-w-0 truncate text-xs font-black text-slate-800 sm:text-sm">{task}</span>
-                            <span className="ml-auto whitespace-nowrap text-[10px] font-black text-slate-500">+5 pts</span>
+                            <span className="ml-auto whitespace-nowrap text-[10px] font-black text-slate-500">+10 XP</span>
                           </div>
                         ))}
                       </div>

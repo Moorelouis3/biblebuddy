@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
 import { triggerPoints } from "@/components/PointsPop";
+import { TASK_XP } from "@/lib/progressionRewards";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import type { TriviaChapterPack } from "@/lib/triviaGameData";
@@ -272,7 +273,7 @@ export default function TriviaGamePlayer({
 
         completionPersistedRef.current = true;
         if (logged) {
-          triggerPoints(pointsToAward);
+          triggerPoints(Math.round(pointsToAward * (TASK_XP.triviaPerfect / Math.max(questions.length, 1))));
         }
         return true;
       } catch (error) {
@@ -408,11 +409,11 @@ export default function TriviaGamePlayer({
           <p className="mx-auto mt-4 max-w-md text-base font-bold leading-7 text-gray-950">{encouragement}</p>
           {earnedCorrectCount > 0 ? (
             <p className="mt-5 text-base font-black leading-7 text-gray-950">
-              You earned +{earnedCorrectCount} points for new correct answers.
+              You earned +{Math.round(earnedCorrectCount * (TASK_XP.triviaPerfect / Math.max(questions.length, 1)))} XP for new correct answers.
             </p>
           ) : (
             <p className="mt-5 text-base font-bold leading-7 text-gray-950">
-              No new points this run (you already earned points for these questions before).
+              No new XP this run (you already earned XP for these questions before).
             </p>
           )}
           {onClose ? (

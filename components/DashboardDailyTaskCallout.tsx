@@ -23,6 +23,7 @@ import { deleteHighlight, fetchHighlights, upsertHighlight } from "../lib/verseH
 import { enrichPlainText } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
+import { TASK_XP } from "../lib/progressionRewards";
 
 type Props = {
   task: TaskState | null;
@@ -732,7 +733,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
         action_type: ACTION_TYPE.chapter_notes_reviewed,
         action_label: reviewOpenedLabel,
       });
-      if (!error) triggerPoints(5);
+      if (!error) triggerPoints(TASK_XP.notes);
     }
 
     setNotesMarkedComplete(true);
@@ -806,7 +807,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
         action_type: ACTION_TYPE.devotional_day_completed,
         action_label: `${devotional.title} - Day ${devotionalTarget.dayNumber}`,
       });
-      if (!error) triggerPoints(5);
+      if (!error) triggerPoints(TASK_XP.intro);
     }
 
   }
@@ -837,7 +838,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       action_label: actionLabel,
     });
 
-    if (!error) triggerPoints(5);
+    if (!error) triggerPoints(TASK_XP.reflection);
   }
 
   async function closeIntroAndRefresh() {
