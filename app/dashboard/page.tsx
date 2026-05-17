@@ -2291,7 +2291,7 @@ export default function DashboardPage() {
       const buttonLabel = item.comingSoon
         ? "Soon"
         : owned && !item.repeatable
-          ? item.themeId
+          ? item.themeId || item.flameId
             ? "Use"
             : "Owned"
           : `${item.price.toLocaleString()} diamonds`;
@@ -2326,7 +2326,7 @@ export default function DashboardPage() {
           </div>
           <button
             type="button"
-            disabled={storeBuyingId === item.id || item.comingSoon || (!canBuy && !item.themeId)}
+            disabled={storeBuyingId === item.id || item.comingSoon || (!canBuy && !item.themeId && !item.flameId)}
             onClick={() => void handleStorePurchase(item)}
             className={`mt-3 inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-xs font-black transition ${
               owned && !item.repeatable
