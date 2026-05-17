@@ -1,4 +1,4 @@
-export type AppThemeId = "light" | "dark" | "blue" | "gold" | "purple" | "red" | "green" | "pink";
+export type AppThemeId = "light" | "dark" | "blue" | "gold" | "purple" | "red" | "green" | "pink" | "orange" | "gray" | "black";
 
 export type AppThemeTokens = {
   background: string;
@@ -219,6 +219,78 @@ export const pinkTheme: AppTheme = {
   progressFill: "#DB2777",
 };
 
+export const orangeTheme: AppTheme = {
+  id: "orange",
+  name: "Orange",
+  isLocked: false,
+  unlockRequirement: null,
+  background: "#FFF4E8",
+  surface: "#FFF9F2",
+  surfaceSoft: "#FFEDD5",
+  card: "#FFFFFF",
+  cardBorder: "#FED7AA",
+  textPrimary: "#3B1707",
+  textSecondary: "#9A3412",
+  textMuted: "#B85C2B",
+  accent: "#EA580C",
+  accentSoft: "#FFEDD5",
+  button: "#EA580C",
+  buttonText: "#FFFFFF",
+  navBackground: "#FFF4E8",
+  navActive: "#EA580C",
+  navInactive: "#B85C2B",
+  progressTrack: "#FDD8B6",
+  progressFill: "#EA580C",
+};
+
+export const grayTheme: AppTheme = {
+  id: "gray",
+  name: "Gray",
+  isLocked: false,
+  unlockRequirement: null,
+  background: "#F4F5F7",
+  surface: "#FAFAFA",
+  surfaceSoft: "#E5E7EB",
+  card: "#FFFFFF",
+  cardBorder: "#D1D5DB",
+  textPrimary: "#111827",
+  textSecondary: "#374151",
+  textMuted: "#6B7280",
+  accent: "#4B5563",
+  accentSoft: "#E5E7EB",
+  button: "#374151",
+  buttonText: "#FFFFFF",
+  navBackground: "#F4F5F7",
+  navActive: "#374151",
+  navInactive: "#6B7280",
+  progressTrack: "#E5E7EB",
+  progressFill: "#4B5563",
+};
+
+export const blackTheme: AppTheme = {
+  id: "black",
+  name: "Black",
+  isLocked: false,
+  unlockRequirement: null,
+  background: "#F7F7F7",
+  surface: "#FFFFFF",
+  surfaceSoft: "#ECECEC",
+  card: "#FFFFFF",
+  cardBorder: "#BDBDBD",
+  textPrimary: "#050505",
+  textSecondary: "#1F1F1F",
+  textMuted: "#5A5A5A",
+  accent: "#050505",
+  accentSoft: "#E5E5E5",
+  button: "#050505",
+  buttonText: "#FFFFFF",
+  navBackground: "#FFFFFF",
+  navActive: "#050505",
+  navInactive: "#5A5A5A",
+  progressTrack: "#D4D4D4",
+  progressFill: "#050505",
+};
+
 export const APP_THEMES: AppTheme[] = [
   lightTheme,
   darkTheme,
@@ -228,6 +300,9 @@ export const APP_THEMES: AppTheme[] = [
   redTheme,
   greenTheme,
   pinkTheme,
+  orangeTheme,
+  grayTheme,
+  blackTheme,
 ];
 
 export const APP_THEME_BY_ID = new Map(APP_THEMES.map((theme) => [theme.id, theme]));

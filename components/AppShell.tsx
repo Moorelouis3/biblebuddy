@@ -147,6 +147,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     applyAppThemeToDocument(resolvedTheme);
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    function handlePurchasedTheme(event: Event) {
+      const customEvent = event as CustomEvent<{ themeId?: string }>;
+      const themeId = normalizeAppThemeId(customEvent.detail?.themeId);
+      setAppThemeId(themeId);
+      applyAppThemeToDocument(themeId);
+    }
+    window.addEventListener("bb:app-theme-purchased", handlePurchasedTheme);
+    return () => window.removeEventListener("bb:app-theme-purchased", handlePurchasedTheme);
+  }, []);
+
   function applyThemeLocally(themeId: AppThemeId) {
     setAppThemeId(themeId);
     if (typeof window !== "undefined") {

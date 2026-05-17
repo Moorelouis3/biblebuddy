@@ -83,6 +83,7 @@ type Props = {
   cycleStartedAt: string | null;
   studySettingsOpenRequest?: number;
   homeHeader?: ReactNode;
+  homePanelOverride?: ReactNode;
   onDevotionalChanged: () => void;
   isOwnerDashboard?: boolean;
 };
@@ -1436,6 +1437,7 @@ export default function DashboardJourneyExperience({
   cycleStartedAt,
   studySettingsOpenRequest = 0,
   homeHeader,
+  homePanelOverride,
   onDevotionalChanged,
   isOwnerDashboard = false,
 }: Props) {
@@ -3338,8 +3340,11 @@ export default function DashboardJourneyExperience({
               </h1>
             </div>
             {homeHeader}
-            {!shouldShowCompletionPanel ? renderCurrentStudyHeader() : null}
-            {!shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard ? (
+            {homePanelOverride ? (
+              <div className="dashboard-inline-task">{homePanelOverride}</div>
+            ) : null}
+            {!homePanelOverride && !shouldShowCompletionPanel ? renderCurrentStudyHeader() : null}
+            {!homePanelOverride && !shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard ? (
             <div
               className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition"
             >
@@ -3788,7 +3793,7 @@ export default function DashboardJourneyExperience({
                   {preloadedNextStudy ? `Start ${preloadedNextStudy.title}` : "Continue"}
                 </button>
               </div>
-            ) : (
+            ) : homePanelOverride ? null : (
               <>
               {suppressCompletionPanelForLoadedChapter && allDone ? (
                 <div className="completion-panel-enter rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">

@@ -52,6 +52,14 @@ import { TASK_XP, DIAMOND_REWARDS, estimateDiamondStashFromActions } from "../..
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { trackUserActivity } from "../../lib/trackUserActivity";
 import { awardDiamonds } from "../../lib/diamondWallet";
+import { applyAppThemeToDocument, APP_THEME_STORAGE_KEY, type AppThemeId } from "../../lib/appThemes";
+import {
+  BOOST_STORE_ITEMS,
+  BUDDY_STORE_ITEMS,
+  STREAK_FLAME_STORE_ITEMS,
+  THEME_STORE_ITEMS,
+  type BibleBuddyStoreItem,
+} from "../../lib/bibleBuddyStore";
 
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
@@ -110,6 +118,15 @@ type DashboardAnimatedStats = {
   grace: number;
   level: number;
   badges: number;
+};
+
+type StorePurchaseRow = {
+  id: string;
+  item_id: string;
+  item_kind: string;
+  item_title: string;
+  price_diamonds: number;
+  created_at?: string | null;
 };
 
 type DashboardLouisNudge = {
@@ -884,6 +901,11 @@ export default function DashboardPage() {
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [levelRefreshTick, setLevelRefreshTick] = useState(0);
   const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
+  const [showDiamondStore, setShowDiamondStore] = useState(false);
+  const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
+  const [storeLoading, setStoreLoading] = useState(false);
+  const [storeBuyingId, setStoreBuyingId] = useState<string | null>(null);
+  const [storeMessage, setStoreMessage] = useState<string | null>(null);
   const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
@@ -1847,7 +1869,7 @@ export default function DashboardPage() {
           : Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString(),
         icon: "💎",
         tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
-        onClick: openLevelInfoModal,
+        onClick: openDiamondStore,
       },
       {
         key: "level",
@@ -2042,6 +2064,119 @@ export default function DashboardPage() {
         </div>
 
       </div>
+    );
+  }
+
+  function renderDiamondStorePanel() {
+    const diamondCount = Math.max(0, Number(profile?.diamonds_count ?? 0));
+    const ownedItemIds = new Set(storePurchases.map((purchase) => purchase.item_id));
+
+    const renderStoreItemCard = (item: BibleBuddyStoreItem) => {
+      const owned = item.price === 0 || ownedItemIds.has(item.id);
+      const canBuy = !item.comingSoon && (item.repeatable || !owned);
+      const buttonLabel = item.comingSoon
+        ? "Soon"
+        : owned && !item.repeatable
+          ? item.themeId
+            ? "Use"
+            : "Owned"
+          : `${item.price.toLocaleString()} diamonds`;
+
+      return (
+        <article
+          key={item.id}
+          className="flex min-h-[132px] flex-col justify-between rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 shadow-sm"
+        >
+          <div className="flex items-start gap-3">
+            <div
+              className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-2xl shadow-inner"
+              style={{ background: `${item.accent}22`, color: item.accent }}
+              aria-hidden="true"
+            >
+              {item.kind === "buddy" && item.comingSoon ? (
+                <span className="grid h-9 w-9 place-items-center rounded-full bg-slate-200 text-slate-500">?</span>
+              ) : (
+                item.emoji
+              )}
+            </div>
+            <div className="min-w-0">
+              <h4 className="text-sm font-black leading-tight text-[var(--bb-text-primary)]">{item.title}</h4>
+              <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary)]">{item.subtitle}</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            disabled={storeBuyingId === item.id || item.comingSoon || (!canBuy && !item.themeId)}
+            onClick={() => void handleStorePurchase(item)}
+            className={`mt-3 inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-xs font-black transition ${
+              owned && !item.repeatable
+                ? "border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] text-[var(--bb-text-primary)] hover:bg-[var(--bb-card)]"
+                : "bg-[var(--bb-button)] text-[var(--bb-button-text)] shadow-sm hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
+            }`}
+          >
+            {storeBuyingId === item.id ? "Buying..." : buttonLabel}
+          </button>
+        </article>
+      );
+    };
+
+    const renderSection = (title: string, subtitle: string, items: BibleBuddyStoreItem[]) => (
+      <section className="mt-5">
+        <div className="mb-3">
+          <h3 className="text-lg font-black text-[var(--bb-text-primary)]">{title}</h3>
+          <p className="text-xs font-semibold leading-5 text-[var(--bb-text-secondary)]">{subtitle}</p>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {items.map(renderStoreItemCard)}
+        </div>
+      </section>
+    );
+
+    return (
+      <section className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-surface)] p-4 shadow-[0_16px_42px_rgba(38,63,99,0.12)]">
+        <div className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border)] bg-[var(--bb-card)]">
+          <div className="relative p-5">
+            <div className="absolute -right-10 -top-12 h-32 w-32 rounded-full bg-[var(--bb-accent-soft)] opacity-80" aria-hidden="true" />
+            <p className="relative text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Bible Buddy Store</p>
+            <div className="relative mt-2 flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <h2 className="text-3xl font-black leading-tight text-[var(--bb-text-primary)]">Spend your diamonds</h2>
+                <p className="mt-2 max-w-md text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
+                  Buy themes, streak styles, Bible Buddies, and boosts for your Bible habit.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-4 py-3 text-right">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted)]">Your stash</p>
+                <p className="text-2xl font-black text-[var(--bb-text-primary)]">💎 {diamondCount.toLocaleString()}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {storeLoading ? (
+          <div className="mt-5 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-center text-sm font-black text-[var(--bb-text-secondary)]">
+            Loading store...
+          </div>
+        ) : null}
+        {storeMessage ? (
+          <div className="mt-5 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-accent-soft)] p-4 text-sm font-black text-[var(--bb-text-primary)]">
+            {storeMessage}
+          </div>
+        ) : null}
+
+        {renderSection("Themes", "Each theme costs 500 diamonds, about ten full chapters of steady study.", THEME_STORE_ITEMS)}
+        {renderSection("30 Day Streak Flames", "Change the color of your streak badge and make long runs feel earned.", STREAK_FLAME_STORE_ITEMS)}
+        {renderSection("Bible Buddies", "Lil Louis is ready now. Walter, Lindsey, and Steve are placeholders until their art is uploaded.", BUDDY_STORE_ITEMS)}
+        {renderSection("Boosts And Items", "Helpful items for streaks, XP, and surprise rewards.", BOOST_STORE_ITEMS)}
+
+        <button
+          type="button"
+          onClick={() => setShowDiamondStore(false)}
+          className="mt-6 w-full rounded-full bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
+        >
+          Close Store
+        </button>
+      </section>
     );
   }
 
@@ -2399,6 +2534,177 @@ export default function DashboardPage() {
     refreshLevelData();
     setShowLevelInfoModal(true);
   }, [refreshLevelData]);
+
+  const loadStorePurchases = useCallback(async () => {
+    if (!userId) return;
+    setStoreLoading(true);
+    const { data, error } = await supabase
+      .from("user_store_purchases")
+      .select("id,item_id,item_kind,item_title,price_diamonds,created_at")
+      .eq("user_id", userId)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.warn("[STORE] Could not load purchases:", error.message);
+      setStoreMessage("The store is almost ready. Run the store purchases migration if this keeps showing.");
+      setStoreLoading(false);
+      return;
+    }
+
+    setStorePurchases((data || []) as StorePurchaseRow[]);
+    setStoreLoading(false);
+  }, [userId]);
+
+  const openDiamondStore = useCallback(() => {
+    setShowDiamondStore(true);
+    setStoreMessage(null);
+    void loadStorePurchases();
+  }, [loadStorePurchases]);
+
+  async function applyPurchasedTheme(themeId: AppThemeId) {
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
+      window.localStorage.setItem("bb:dashboard-theme", themeId === "dark" ? "dark" : "light");
+      window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId } }));
+    }
+    applyAppThemeToDocument(themeId);
+    if (userId) {
+      const { error } = await supabase.from("profile_stats").update({ app_theme: themeId }).eq("user_id", userId);
+      if (error) console.warn("[STORE] Theme saved locally, but profile update failed:", error.message);
+    }
+  }
+
+  async function handleStorePurchase(item: BibleBuddyStoreItem) {
+    if (!userId) {
+      setStoreMessage("Sign in first so BibleBuddy can save what you buy.");
+      return;
+    }
+    if (item.comingSoon) {
+      setStoreMessage(`${item.title} is coming soon.`);
+      return;
+    }
+
+    const alreadyOwned = storePurchases.some((purchase) => purchase.item_id === item.id);
+    if (alreadyOwned && !item.repeatable) {
+      if (item.themeId) {
+        await applyPurchasedTheme(item.themeId);
+        setStoreMessage(`${item.title} is now active.`);
+      } else {
+        setStoreMessage(`You already own ${item.title}.`);
+      }
+      return;
+    }
+
+    setStoreBuyingId(item.id);
+    setStoreMessage(null);
+
+    const currentDiamonds = Math.max(0, Number(profile?.diamonds_count ?? 0));
+    if (currentDiamonds < item.price) {
+      setStoreMessage(`You need ${(item.price - currentDiamonds).toLocaleString()} more diamonds for ${item.title}.`);
+      setStoreBuyingId(null);
+      return;
+    }
+
+    const { data: statsRow, error: statsError } = await supabase
+      .from("profile_stats")
+      .select("diamonds_count, grace_days_count")
+      .eq("user_id", userId)
+      .maybeSingle();
+
+    if (statsError) {
+      setStoreMessage("I could not check your diamond stash. Try again in a moment.");
+      setStoreBuyingId(null);
+      return;
+    }
+
+    const serverDiamonds = Math.max(0, Number(statsRow?.diamonds_count ?? currentDiamonds));
+    if (serverDiamonds < item.price) {
+      setProfile((current) => current ? { ...current, diamonds_count: serverDiamonds } : current);
+      setStoreMessage(`You need ${(item.price - serverDiamonds).toLocaleString()} more diamonds for ${item.title}.`);
+      setStoreBuyingId(null);
+      return;
+    }
+
+    const nextDiamonds = serverDiamonds - item.price;
+    const profileUpdate: Record<string, number> = { diamonds_count: nextDiamonds };
+    if (item.id === "boost-extra-grace-day") {
+      profileUpdate.grace_days_count = Math.min(5, Math.max(0, Number(statsRow?.grace_days_count ?? profile?.grace_days_count ?? 0)) + 1);
+    }
+
+    const { error: updateError } = await supabase
+      .from("profile_stats")
+      .update(profileUpdate)
+      .eq("user_id", userId);
+
+    if (updateError) {
+      setStoreMessage("The purchase did not go through. Your diamonds were not spent.");
+      setStoreBuyingId(null);
+      return;
+    }
+
+    const { error: purchaseError } = await supabase.from("user_store_purchases").insert({
+      user_id: userId,
+      item_id: item.id,
+      item_kind: item.kind,
+      item_title: item.title,
+      price_diamonds: item.price,
+      reward_payload: {
+        themeId: item.themeId ?? null,
+        repeatable: item.repeatable ?? false,
+      },
+    });
+
+    if (purchaseError) {
+      console.warn("[STORE] Purchase saved to wallet but not purchase history:", purchaseError.message);
+      await supabase
+        .from("profile_stats")
+        .update({
+          diamonds_count: serverDiamonds,
+          grace_days_count: Math.max(0, Number(statsRow?.grace_days_count ?? profile?.grace_days_count ?? 0)),
+        })
+        .eq("user_id", userId);
+      setProfile((current) =>
+        current
+          ? {
+              ...current,
+              diamonds_count: serverDiamonds,
+              grace_days_count: Math.max(0, Number(statsRow?.grace_days_count ?? profile?.grace_days_count ?? 0)),
+            }
+          : current,
+      );
+      setStoreMessage("The store needs the new purchase-history migration before checkout can work.");
+      setStoreBuyingId(null);
+      return;
+    } else {
+      setStoreMessage(`${item.title} added to your account.`);
+    }
+
+    if (item.themeId) {
+      await applyPurchasedTheme(item.themeId);
+    }
+
+    setProfile((current) =>
+      current
+        ? {
+            ...current,
+            diamonds_count: nextDiamonds,
+            grace_days_count:
+              typeof profileUpdate.grace_days_count === "number"
+                ? profileUpdate.grace_days_count
+                : current.grace_days_count,
+          }
+        : current,
+    );
+
+    window.dispatchEvent(new CustomEvent("bb:dashboard-stats-sync", {
+      detail: {
+        graceDays: profileUpdate.grace_days_count,
+      },
+    }));
+
+    await loadStorePurchases();
+    setStoreBuyingId(null);
+  }
 
   useEffect(() => {
     let didCancel = false;
@@ -3875,6 +4181,7 @@ export default function DashboardPage() {
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
+          homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : undefined}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
@@ -3924,6 +4231,7 @@ export default function DashboardPage() {
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
+          homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : undefined}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
