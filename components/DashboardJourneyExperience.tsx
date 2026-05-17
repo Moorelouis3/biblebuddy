@@ -3736,14 +3736,14 @@ export default function DashboardJourneyExperience({
   const renderBibleBuddy3ModeGate = () => (
     <section className="w-full px-1">
       <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-        <div className="overflow-hidden rounded-[28px] border border-[#dbe7f4] bg-white shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
-          <div className="bg-gradient-to-br from-[#eef7ff] via-white to-[#eff8f1] px-5 py-6 text-center">
+        <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
+          <div className="bg-[var(--bb-surface-soft,#f8fbff)] px-5 py-6 text-center">
             <div className="flex justify-center">
               <LouisAvatar mood="wave" size={96} />
             </div>
-            <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Bible Buddy 3.0</p>
-            <h2 className="mt-2 text-3xl font-black leading-tight text-gray-950">Bible Buddy 3.0 is now live.</h2>
-            <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-gray-600">
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Buddy 3.0</p>
+            <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy 3.0 is now live.</h2>
+            <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
               Please select your study mode so your dashboard can load the right Bible study experience.
             </p>
           </div>
@@ -3752,32 +3752,32 @@ export default function DashboardJourneyExperience({
             <button
               type="button"
               onClick={chooseBibleBuddyStudyJourney}
-              className="rounded-2xl border border-[#b9dcf4] bg-[#f8fbff] px-4 py-5 text-left transition hover:-translate-y-0.5 hover:border-[#7BAFD4] hover:bg-white hover:shadow-sm"
+              className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-5 text-left transition hover:-translate-y-0.5 hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-card,#ffffff)] hover:shadow-sm"
             >
-              <span className="text-xs font-black uppercase tracking-[0.14em] text-[#2f7fe8]">Guided</span>
-              <span className="mt-1 block text-xl font-black leading-tight text-gray-950">Bible Buddy Study Journey</span>
-              <span className="mt-2 block text-sm font-semibold leading-5 text-gray-600">
-                Follow the chapter-by-chapter study flow with daily tasks, notes, trivia, games, and reflection.
+              <span className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Guided</span>
+              <span className="mt-1 block text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Study Journey</span>
+              <span className="mt-2 block text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                Start from Genesis 1, The Creation of the World, and work through the Bible with story-based explanations, daily tasks, notes, trivia, games, and reflection.
               </span>
             </button>
 
             <button
               type="button"
               onClick={chooseFreeStudyMode}
-              className="rounded-2xl border border-[#d8eadf] bg-[#f8fcf9] px-4 py-5 text-left transition hover:-translate-y-0.5 hover:border-[#8cc6a4] hover:bg-white hover:shadow-sm"
+              className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-5 text-left transition hover:-translate-y-0.5 hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-surface-soft,#f8fbff)] hover:shadow-sm"
             >
-              <span className="text-xs font-black uppercase tracking-[0.14em] text-[#3b875f]">Explore</span>
-              <span className="mt-1 block text-xl font-black leading-tight text-gray-950">Free Study Mode</span>
-              <span className="mt-2 block text-sm font-semibold leading-5 text-gray-600">
+              <span className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Explore</span>
+              <span className="mt-1 block text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Free Study Mode</span>
+              <span className="mt-2 block text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
                 Pick any Bible book and chapter when you want to study freely without following a guided journey.
               </span>
             </button>
           </div>
 
-          <div className="border-t border-[#e5eef8] bg-[#f8fbff] px-4 py-4">
+          <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4">
             <div className="flex items-center gap-3">
               <LouisAvatar mood="hands" size={46} />
-              <p className="text-sm font-semibold leading-5 text-gray-600">
+              <p className="text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
                 We promise this will never happen again. We just had to move a lot around to make the new Bible Buddy 3.0 study system work right.
               </p>
             </div>
