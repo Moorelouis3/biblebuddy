@@ -128,9 +128,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    function loadSelectedBuddy() {
+    function loadSelectedBuddy(event?: Event) {
       if (typeof window === "undefined") return;
-      setSelectedBuddyId(normalizeBuddyAvatarId(window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY)));
+      const detailBuddyId = (event as CustomEvent<{ buddyId?: string }> | undefined)?.detail?.buddyId;
+      setSelectedBuddyId(normalizeBuddyAvatarId(detailBuddyId || window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY)));
     }
 
     loadSelectedBuddy();
@@ -467,7 +468,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const normalizedBuddy = normalizeBuddyAvatarId(data.selected_buddy_avatar);
       window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, normalizedBuddy);
       setSelectedBuddyId(normalizedBuddy);
-      window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed"));
+      window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: normalizedBuddy } }));
     }
 
     setHeaderCurrentLevel(typeof data?.current_level === "number" && data.current_level > 0 ? data.current_level : 1);

@@ -218,9 +218,10 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
       return;
     }
 
-    function loadSelectedBuddy() {
+    function loadSelectedBuddy(event?: Event) {
       if (typeof window === "undefined") return;
-      setSelectedBuddy(normalizeBuddyAvatarId(window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY)));
+      const detailBuddyId = (event as CustomEvent<{ buddyId?: string }> | undefined)?.detail?.buddyId;
+      setSelectedBuddy(normalizeBuddyAvatarId(detailBuddyId || window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY)));
     }
 
     loadSelectedBuddy();

@@ -62,7 +62,7 @@ import {
   type BibleBuddyStoreItem,
 } from "../../lib/bibleBuddyStore";
 import { normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
-import { getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "../../lib/buddyAvatars";
+import { SELECTED_BUDDY_STORAGE_KEY, getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "../../lib/buddyAvatars";
 
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
@@ -3250,6 +3250,8 @@ export default function DashboardPage() {
         }
 
         if (!didCancel) {
+          const localSelectedBuddy =
+            typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
           setProfile({
             is_paid: profileData?.is_paid === true,
             daily_credits: typeof profileData?.daily_credits === "number" ? profileData.daily_credits : 0,
@@ -3259,7 +3261,7 @@ export default function DashboardPage() {
             grace_days_count: Math.max(0, Math.min(5, Number(profileData?.grace_days_count ?? 0))),
             diamonds_count: typeof profileData?.diamonds_count === "number" ? Math.max(0, profileData.diamonds_count) : null,
             selected_streak_flame: normalizeFlameCosmeticId(profileData?.selected_streak_flame),
-            selected_buddy_avatar: normalizeBuddyAvatarId(profileData?.selected_buddy_avatar),
+            selected_buddy_avatar: normalizeBuddyAvatarId(profileData?.selected_buddy_avatar || localSelectedBuddy),
             daily_login_gift_last_visit_at: nowIso,
             daily_login_gift_last_shown_date: shouldShowDailyLoginGift ? todayKey : profileData?.daily_login_gift_last_shown_date ?? null,
             profile_image_url: profileData?.profile_image_url ?? null,
@@ -3652,6 +3654,8 @@ export default function DashboardPage() {
       }
       const buddyId = normalizeBuddyAvatarId(parsed.buddyId);
       const buddy = getBuddyAvatar(buddyId);
+      window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, buddyId);
+      window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId } }));
       setBuddySelectionWelcome({
         buddyId,
         buddyName: parsed.buddyName || buddy.name,

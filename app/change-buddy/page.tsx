@@ -117,7 +117,7 @@ export default function ChangeBuddyPage() {
 
     if (typeof window !== "undefined") {
       window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, buddy.id);
-      window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed"));
+      window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: buddy.id } }));
     }
 
     try {

@@ -30,7 +30,12 @@ import {
 } from "../lib/bibleBuddyTvContent";
 import { awardBibleBuddyTvWatchOnce, buildBibleBuddyTvWatchRewardLabel } from "../lib/bibleBuddyTvRewards";
 import { triggerPoints } from "./PointsPop";
-import { getBuddyAvatar } from "../lib/buddyAvatars";
+import {
+  SELECTED_BUDDY_STORAGE_KEY,
+  getBuddyAvatar,
+  normalizeBuddyAvatarId,
+  type BuddyAvatarId,
+} from "../lib/buddyAvatars";
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
@@ -1624,7 +1629,30 @@ export default function DashboardJourneyExperience({
     games: exploreLinkByKey("games"),
     share: exploreLinkByKey("share"),
   };
-  const selectedBuddy = getBuddyAvatar(profile?.selected_buddy_avatar);
+  const [liveSelectedBuddyId, setLiveSelectedBuddyId] = useState<BuddyAvatarId>(() => normalizeBuddyAvatarId(profile?.selected_buddy_avatar));
+
+  useEffect(() => {
+    setLiveSelectedBuddyId(normalizeBuddyAvatarId(profile?.selected_buddy_avatar));
+  }, [profile?.selected_buddy_avatar]);
+
+  useEffect(() => {
+    function loadSelectedBuddy(event?: Event) {
+      const detailBuddyId = (event as CustomEvent<{ buddyId?: string }> | undefined)?.detail?.buddyId;
+      const storedBuddyId =
+        typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
+      setLiveSelectedBuddyId(normalizeBuddyAvatarId(detailBuddyId || storedBuddyId || profile?.selected_buddy_avatar));
+    }
+
+    loadSelectedBuddy();
+    window.addEventListener("bb:selected-buddy-avatar-changed", loadSelectedBuddy);
+    window.addEventListener("storage", loadSelectedBuddy);
+    return () => {
+      window.removeEventListener("bb:selected-buddy-avatar-changed", loadSelectedBuddy);
+      window.removeEventListener("storage", loadSelectedBuddy);
+    };
+  }, [profile?.selected_buddy_avatar]);
+
+  const selectedBuddy = getBuddyAvatar(liveSelectedBuddyId);
   const shouldShowBibleBuddy3ModeGate =
     isOwnerDashboard &&
     !studyModeGateDismissed &&
