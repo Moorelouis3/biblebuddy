@@ -73,6 +73,7 @@ export const BUDDY_AVATARS: BuddyAvatar[] = [
     unlockLevel: 1,
     title: "New Youth Pastor",
     description: "Energetic, relatable, Scripture focused, and growth driven.",
+    profileImage: "/Stevewaving.png",
     traits: ["Energetic", "Relatable", "Focused"],
     bio: "Steve is planned as a youth pastor voice for quick encouragement, action steps, and growth-focused study.",
     speakingStyle: "Energetic, clear, casual, and Scripture focused.",
