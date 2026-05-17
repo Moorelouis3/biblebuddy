@@ -269,9 +269,14 @@ function getTaskPillClasses(task: TaskState) {
 
 function getTaskCardCopy(task: TaskState, _index: number) {
   if (task.kind === "devotional") {
+    const chapterLabel = task.chapterLabel || (task.book && task.chapter ? `${task.book} ${task.chapter}` : "");
     return {
-      title: "Read Chapter Intro",
-      subtitle: "Understand what you are about to read before you begin the chapter.",
+      title: chapterLabel ? `Read the ${chapterLabel} Intro` : task.title || "Read Chapter Intro",
+      subtitle:
+        task.introSummary ||
+        task.subtitle ||
+        task.chapterTitle ||
+        "Start with the big picture before you read the chapter.",
       emoji: "📕",
       doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
@@ -396,7 +401,8 @@ function buildPreloadedNextChapterTasks({
   return [
     {
       kind: "devotional",
-      title: `Read Chapter Intro for ${chapterLabel}`,
+      title: `Read the ${chapterLabel} Intro`,
+      subtitle: "Start with the big picture before you read the chapter.",
       pointsLabel: "+5 pts",
       timeEstimateLabel: "2 min",
       href: `/bible-studies/${devotionalId}?day=${dayNumber}&from=louis-daily-task`,

@@ -1,7 +1,9 @@
 "use client";
 
 import { Component, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
+import { ColorPicker } from "./ColorPicker";
 import { ModalShell } from "./ModalShell";
 import ScrambledGamePlayer from "./ScrambledGamePlayer";
 import TriviaGamePlayer from "./TriviaGamePlayer";
@@ -17,6 +19,9 @@ import { getScrambledBook, getScrambledChapter } from "../lib/scrambledGameData"
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaBook, getTriviaChapter } from "../lib/triviaGameData";
 import { deleteHighlight, fetchHighlights, upsertHighlight } from "../lib/verseHighlightingApi";
+import { enrichPlainText } from "../lib/bibleHighlighting";
+import { resolveBibleReference } from "../lib/bibleTermResolver";
+import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 
 type Props = {
   task: TaskState | null;
@@ -148,19 +153,21 @@ function normalizeBibleBookDisplay(book: string) {
 
 function getHighlightColorCode(color: string) {
   switch (color) {
-    case "yellow":
-      return "rgba(250, 204, 21, 0.3)";
-    case "green":
-      return "rgba(34, 197, 94, 0.24)";
-    case "blue":
-      return "rgba(59, 130, 246, 0.22)";
-    case "purple":
-      return "rgba(168, 85, 247, 0.22)";
-    case "orange":
-      return "rgba(249, 115, 22, 0.24)";
+    case "yellow": return "#FFF9C4";
+    case "green": return "#C8E6C9";
+    case "blue": return "#BBDEFB";
+    case "purple": return "#E1BEE7";
+    case "orange": return "#FFE0B2";
     default:
       return "transparent";
   }
+}
+
+function normalizeInlinePopupMarkdown(markdown: string) {
+  return markdown
+    .replace(/^\s*[-•*]\s+/gm, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 }
 
 function DashboardInlineBibleReader({
@@ -181,6 +188,11 @@ function DashboardInlineBibleReader({
   const [translation, setTranslation] = useState<InlineBibleTranslation>("kjv");
   const [verses, setVerses] = useState<BibleApiVerse[]>([]);
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
+  const [picker, setPicker] = useState<{ verse: number; anchor: { x: number; y: number } } | null>(null);
+  const [selectedTerm, setSelectedTerm] = useState<{ type: "people" | "places" | "keywords"; name: string } | null>(null);
+  const [termNotes, setTermNotes] = useState<string | null>(null);
+  const [termNotesError, setTermNotesError] = useState<string | null>(null);
+  const [loadingTermNotes, setLoadingTermNotes] = useState(false);
   const [loading, setLoading] = useState(false);
   const [markingDone, setMarkingDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -253,10 +265,26 @@ function DashboardInlineBibleReader({
     };
   }, [book, chapter, userId]);
 
-  async function toggleVerseHighlight(verse: number) {
-    const currentlyHighlighted = Boolean(highlightMap[verse]);
+  function openVerseColorPicker(verse: number, event: React.MouseEvent<HTMLElement>) {
+    const target = event.target as HTMLElement;
+    if (target.closest(".bible-highlight")) return;
+    const rect = target.getBoundingClientRect();
+    setPicker({
+      verse,
+      anchor: {
+        x: Math.min(window.innerWidth - 190, Math.max(12, rect.left + rect.width / 2 - 70)),
+        y: rect.bottom + 8,
+      },
+    });
+  }
 
-    if (currentlyHighlighted) {
+  async function handleHighlightColorSelect(color: string | null) {
+    if (!picker) return;
+    const { verse } = picker;
+    const previous = highlightMap[verse] || null;
+    setPicker(null);
+
+    if (!color || color === previous) {
       setHighlightMap((current) => {
         const next = { ...current };
         delete next[verse];
@@ -271,8 +299,60 @@ function DashboardInlineBibleReader({
       if (!creditResult.ok) return;
     }
 
-    setHighlightMap((current) => ({ ...current, [verse]: "yellow" }));
-    await upsertHighlight(book, chapter, verse, "yellow");
+    setHighlightMap((current) => ({ ...current, [verse]: color }));
+    await upsertHighlight(book, chapter, verse, color);
+  }
+
+  function handleBibleTermClick(event: React.MouseEvent<HTMLDivElement>) {
+    const highlightElement = (event.target as HTMLElement).closest(".bible-highlight") as HTMLElement | null;
+    if (!highlightElement) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const type = highlightElement.dataset.type as "people" | "places" | "keywords" | undefined;
+    const term = highlightElement.dataset.term;
+    if (!type || !term) return;
+
+    setSelectedTerm({ type, name: resolveBibleReference(type, term) });
+  }
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadTermNotes() {
+      if (!selectedTerm) return;
+      setLoadingTermNotes(true);
+      setTermNotes(null);
+      setTermNotesError(null);
+
+      try {
+        const notes =
+          selectedTerm.type === "people"
+            ? await getPersonPopupNotes(selectedTerm.name)
+            : selectedTerm.type === "places"
+              ? await getPlacePopupNotes(selectedTerm.name)
+              : await getKeywordPopupNotes(selectedTerm.name);
+
+        if (!cancelled) setTermNotes(notes);
+      } catch {
+        if (!cancelled) setTermNotesError("Could not load this word yet.");
+      } finally {
+        if (!cancelled) setLoadingTermNotes(false);
+      }
+    }
+
+    void loadTermNotes();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedTerm]);
+
+  function closeTermPopup() {
+    setSelectedTerm(null);
+    setTermNotes(null);
+    setTermNotesError(null);
   }
 
   async function handleDone() {
@@ -285,15 +365,8 @@ function DashboardInlineBibleReader({
   }
 
   return (
-    <div className="dashboard-task-card-extension mt-4 border-t border-[var(--bb-card-border)] px-1 pb-2 pt-4">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <p className="bb-text-muted text-xs font-black uppercase tracking-[0.18em]">Read The Scripture</p>
-          <h2 className="bb-text-primary mt-1 text-2xl font-black leading-tight">
-            {bookDisplay} {chapter}
-          </h2>
-        </div>
-
+    <div className="dashboard-task-card-extension mt-2 px-1 pb-2 pt-1">
+      <div className="mb-4 flex justify-end">
         <div className="flex items-center gap-2">
           <label className="sr-only" htmlFor="dashboard-bible-translation">
             Bible translation
@@ -318,29 +391,93 @@ function DashboardInlineBibleReader({
       ) : error ? (
         <p className="py-8 text-sm font-bold text-red-600">{error}</p>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-3" onClick={handleBibleTermClick}>
           {verses.map((verse) => {
             const highlightColor = highlightMap[verse.verse];
             return (
               <p
                 key={verse.verse}
-                className="bb-text-primary rounded-lg px-1 py-1 text-base font-medium leading-8 transition"
+                onClick={(event) => openVerseColorPicker(verse.verse, event)}
+                className="bb-text-primary cursor-pointer rounded-lg px-1 py-1 text-base font-medium leading-8 transition"
                 style={{ backgroundColor: highlightColor ? getHighlightColorCode(highlightColor) : "transparent" }}
               >
                 <button
                   type="button"
-                  onClick={() => void toggleVerseHighlight(verse.verse)}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    openVerseColorPicker(verse.verse, event);
+                  }}
                   className="mr-2 inline-flex min-w-7 translate-y-[-1px] items-center justify-center rounded-full border border-[var(--bb-card-border)] bg-transparent px-2 py-0.5 text-xs font-black text-[var(--bb-accent)] transition hover:border-[var(--bb-accent)] hover:bg-[var(--bb-accent-soft)]"
                   aria-label={`Highlight verse ${verse.verse}`}
                 >
                   {verse.verse}
                 </button>
-                <span>{verse.text}</span>
+                <span
+                  // biome-ignore lint/security/noDangerouslySetInnerHtml: Bible text is escaped before enrichment.
+                  dangerouslySetInnerHTML={{ __html: enrichPlainText(verse.text) }}
+                />
               </p>
             );
           })}
         </div>
       )}
+
+      <ColorPicker
+        anchor={picker?.anchor || null}
+        selectedColor={picker ? highlightMap[picker.verse] || null : null}
+        onSelect={handleHighlightColorSelect}
+        onClose={() => setPicker(null)}
+      />
+
+      {selectedTerm ? (
+        <div
+          className="fixed inset-0 z-[90] flex items-center justify-center bg-black/45 px-4 py-5"
+          onClick={closeTermPopup}
+        >
+          <div
+            className="max-h-[72vh] w-full max-w-md overflow-y-auto rounded-3xl border border-[var(--bb-card-border)] bg-[var(--bb-card,#ffffff)] p-5 text-[var(--bb-text-primary,#111827)] shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-4 flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+                  {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
+                </p>
+                <h3 className="mt-1 text-2xl font-black leading-tight">{selectedTerm.name}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={closeTermPopup}
+                className="rounded-full border border-[var(--bb-card-border)] px-3 py-1 text-sm font-black text-[var(--bb-text-secondary,#5f6368)]"
+                aria-label="Close word notes"
+              >
+                Close
+              </button>
+            </div>
+            {loadingTermNotes && !termNotes ? (
+              <div className="space-y-3 py-6">
+                <div className="h-3 rounded-full bg-gray-100" />
+                <div className="h-3 w-5/6 rounded-full bg-gray-100" />
+                <div className="h-3 w-2/3 rounded-full bg-gray-100" />
+              </div>
+            ) : termNotes ? (
+              <ReactMarkdown
+                components={{
+                  h1: ({ ...props }) => <h1 className="mb-3 mt-5 text-xl font-black" {...props} />,
+                  p: ({ ...props }) => <p className="mb-4 text-sm font-medium leading-6" {...props} />,
+                  strong: ({ ...props }) => <strong className="font-black" {...props} />,
+                }}
+              >
+                {normalizeInlinePopupMarkdown(termNotes)}
+              </ReactMarkdown>
+            ) : (
+              <p className="py-6 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+                {termNotesError || "Could not load this word yet."}
+              </p>
+            )}
+          </div>
+        </div>
+      ) : null}
 
       {!loading && !error ? (
         <div className="mt-5 flex justify-end">
@@ -796,7 +933,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       if (isInline) {
         return inlineFrame(
           <div className="relative">
-            <div className="flex items-start justify-between gap-4 px-1 pb-3">
+            <div className="hidden">
               <div>
                 <p className="bb-accent text-xs font-black uppercase tracking-widest">Task 1</p>
                 <h2 className="bb-text-primary text-lg font-black">{chapterLabel}</h2>
@@ -868,7 +1005,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
     if (isInline) {
       return inlineFrame(
         <div className="relative">
-          <div className="flex items-center justify-between px-1 pb-3">
+          <div className="hidden">
             <div>
               <p className="bb-accent text-xs font-black uppercase tracking-widest">Chapter Notes</p>
               <h2 className="bb-text-primary text-base font-black">{task.chapterLabel || task.title}</h2>

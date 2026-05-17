@@ -1888,7 +1888,7 @@ export default function DashboardPage() {
               key={card.key ?? card.label}
               type={card.onClick ? "button" : undefined}
               onClick={card.onClick}
-              className={`min-h-[88px] rounded-[18px] border px-1.5 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition sm:min-h-[106px] sm:px-3 sm:py-3 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-md" : ""} ${card.tones}`}
+              className={`flex min-h-[88px] flex-col rounded-[18px] border px-1.5 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition sm:min-h-[106px] sm:px-3 sm:py-3 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-md" : ""} ${card.tones}`}
             >
               <p className="text-base font-black leading-none text-gray-950 sm:text-2xl">
                 <span className="mr-1 align-middle text-sm" aria-hidden="true">{card.icon}</span>
@@ -1903,7 +1903,7 @@ export default function DashboardPage() {
                 </p>
               ) : null}
               {typeof card.progress === "number" ? (
-                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-[#dce8f7]">
+                <div className="mt-auto h-1.5 overflow-hidden rounded-full bg-[#dce8f7]">
                   <div className="h-full rounded-full bg-[#2f7fe8]" style={{ width: `${card.progress}%` }} />
                 </div>
               ) : null}

@@ -23,6 +23,7 @@ type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "r
 export type TaskState = {
   kind: TaskKind;
   title: string;
+  subtitle?: string | null;
   pointsLabel: string;
   timeEstimateLabel?: string | null;
   timeEstimateDetail?: string | null;
@@ -36,6 +37,8 @@ export type TaskState = {
   book?: string | null;
   chapter?: number | null;
   chapterLabel?: string | null;
+  chapterTitle?: string | null;
+  introSummary?: string | null;
 };
 
 type DevotionalRow = {
@@ -53,6 +56,7 @@ type ProfileStatsDevotionalRow = {
 type DevotionalDayRow = {
   devotional_id: string;
   day_number: number;
+  day_title?: string | null;
   devotional_text?: string | null;
   bible_reading_book: string;
   bible_reading_chapter: number;
@@ -160,6 +164,23 @@ function countWords(value: string | null | undefined) {
     .trim()
     .split(/\s+/)
     .filter(Boolean).length;
+}
+
+function getIntroSummary(value: string | null | undefined) {
+  const firstParagraph = String(value || "")
+    .split(/\n{2,}/)
+    .map((part) =>
+      part
+        .replace(/^#+\s*/gm, "")
+        .replace(/[*_`>#-]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim(),
+    )
+    .find(Boolean);
+  if (!firstParagraph) return null;
+
+  const firstSentence = firstParagraph.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() || firstParagraph;
+  return firstSentence.length > 150 ? `${firstSentence.slice(0, 147).trim()}...` : firstSentence;
 }
 
 function estimateMinutesFromWords(words: number, wordsPerMinute: number, min = 1, max = 30) {
@@ -364,7 +385,7 @@ export async function fetchLouisDailyChecklistData(
 
   const { data: dayRow, error: dayError } = await supabase
     .from("devotional_days")
-    .select("devotional_id, day_number, devotional_text, bible_reading_book, bible_reading_chapter")
+    .select("devotional_id, day_number, day_title, devotional_text, bible_reading_book, bible_reading_chapter")
     .eq("devotional_id", activeDevotional.id)
     .eq("day_number", nextDayNumber)
     .maybeSingle();
@@ -376,6 +397,7 @@ export async function fetchLouisDailyChecklistData(
 
   const day = dayRow as DevotionalDayRow;
   const chapterLabel = buildChapterLabel(day.bible_reading_book, day.bible_reading_chapter);
+  const introSummary = getIntroSummary(day.devotional_text) || day.day_title || null;
   const reviewOpenedLabel = `${chapterLabel} Review Opened`;
   const resolvedBookKey = normalizeBookKey(day.bible_reading_book);
   const triviaRouteSlug =
@@ -507,7 +529,8 @@ export async function fetchLouisDailyChecklistData(
   const tasks: TaskState[] = [
     {
       kind: "devotional",
-      title: `Read Chapter Intro for ${chapterLabel}`,
+      title: `Read the ${chapterLabel} Intro`,
+      subtitle: introSummary,
       pointsLabel: "+5 pts",
       timeEstimateLabel: formatEstimate(introMinutes),
       timeEstimateDetail: "Intro read",
@@ -519,6 +542,8 @@ export async function fetchLouisDailyChecklistData(
       book: day.bible_reading_book,
       chapter: day.bible_reading_chapter,
       chapterLabel,
+      chapterTitle: day.day_title || null,
+      introSummary,
       completedAtLabel: devotionalDone ? formatCompletedAtLabel(todayProgress?.completed_at) : null,
     },
     {
