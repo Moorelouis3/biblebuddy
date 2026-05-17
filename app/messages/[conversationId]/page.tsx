@@ -133,6 +133,7 @@ interface BuddyProfile {
   is_paid: boolean | null;
   last_active_at?: string | null;
   current_streak?: number | null;
+  selected_streak_flame?: string | null;
 }
 
 interface BlockState {
@@ -282,7 +283,7 @@ export default function ConversationPage({
 
       const { data: profiles } = await supabase
         .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, last_active_at, current_streak")
+        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, last_active_at, current_streak, selected_streak_flame")
         .in("user_id", [uid, otherId]);
 
       const profileRows = profiles || [];
@@ -299,6 +300,7 @@ export default function ConversationPage({
           is_paid: false,
           last_active_at: null,
           current_streak: null,
+          selected_streak_flame: null,
         },
       );
 
@@ -312,6 +314,7 @@ export default function ConversationPage({
           is_paid: false,
           last_active_at: null,
           current_streak: null,
+          selected_streak_flame: null,
         },
       );
 
@@ -827,7 +830,7 @@ export default function ConversationPage({
               <div className="min-w-0">
                 <div className="flex min-w-0 items-center gap-2">
                   <p className="truncate text-lg font-semibold text-[var(--bb-text-primary,#111827)]">{otherDisplay}</p>
-                  <StreakFlameBadge currentStreak={otherUser?.current_streak} />
+                  <StreakFlameBadge currentStreak={otherUser?.current_streak} flameId={otherUser?.selected_streak_flame} />
                   <UserBadge customBadge={otherUser?.member_badge} isPaid={otherUser?.is_paid === true} />
                 </div>
                 <p className="truncate text-sm text-[var(--bb-text-secondary,#6b7280)]">

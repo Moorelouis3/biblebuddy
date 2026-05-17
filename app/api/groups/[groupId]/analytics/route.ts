@@ -232,7 +232,7 @@ export async function GET(
   const [{ data: allProfileRows, error: fireProfilesError }, recentLiveStreakMap] = await Promise.all([
     supabaseAdmin
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, last_active_date, has_fire_streak_badge, fire_streak_awarded_at"),
+      .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, selected_streak_flame, current_level, last_active_date, has_fire_streak_badge, fire_streak_awarded_at"),
     getLiveStreakMapForRecentUsers(supabaseAdmin, 400),
   ]);
 
@@ -248,6 +248,7 @@ export async function GET(
     member_badge: string | null;
     is_paid: boolean | null;
     current_streak: number | null;
+    selected_streak_flame: string | null;
     current_level: number | null;
     last_active_date: string | null;
     has_fire_streak_badge?: boolean | null;
@@ -289,6 +290,7 @@ export async function GET(
       memberBadge: profile.member_badge ?? null,
       isPaid: !!profile.is_paid,
       currentStreak: profile.resolvedCurrentStreak ?? 0,
+      selectedStreakFlame: profile.selected_streak_flame ?? null,
       currentLevel: profile.current_level ?? null,
       lastActiveDate: profile.last_active_date ?? null,
     }));

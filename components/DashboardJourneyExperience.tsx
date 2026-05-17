@@ -93,6 +93,7 @@ type BuddiesDashboardTopBuddy = {
   profileImageUrl: string | null;
   currentLevel: number;
   currentStreak: number;
+  selectedStreakFlame?: string | null;
   score: number;
   taskCount: number;
   communityCount: number;

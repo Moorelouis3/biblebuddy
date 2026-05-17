@@ -1,8 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useEffect, useState } from "react";
-import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, type FlameCosmeticId } from "../lib/flameCosmetics";
+import { normalizeFlameCosmeticId, type FlameCosmeticId } from "../lib/flameCosmetics";
 
 const FLAME_FILTERS: Record<FlameCosmeticId, string> = {
   default: "none",
@@ -23,31 +22,7 @@ type Props = {
 };
 
 export default function StreakFlameEmoji({ flameId, size = 42, className = "", title }: Props) {
-  const [localFlameId, setLocalFlameId] = useState<FlameCosmeticId>(() => normalizeFlameCosmeticId(flameId));
-
-  useEffect(() => {
-    if (flameId) {
-      setLocalFlameId(normalizeFlameCosmeticId(flameId));
-      return;
-    }
-
-    function loadActiveFlame(event?: Event) {
-      const detailFlameId = (event as CustomEvent<{ flameId?: string }> | undefined)?.detail?.flameId;
-      const storedFlameId =
-        typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
-      setLocalFlameId(normalizeFlameCosmeticId(detailFlameId || storedFlameId));
-    }
-
-    loadActiveFlame();
-    window.addEventListener("bb:streak-flame-changed", loadActiveFlame);
-    window.addEventListener("storage", loadActiveFlame);
-    return () => {
-      window.removeEventListener("bb:streak-flame-changed", loadActiveFlame);
-      window.removeEventListener("storage", loadActiveFlame);
-    };
-  }, [flameId]);
-
-  const normalizedFlameId = flameId ? normalizeFlameCosmeticId(flameId) : localFlameId;
+  const normalizedFlameId = normalizeFlameCosmeticId(flameId);
 
   return (
     <span

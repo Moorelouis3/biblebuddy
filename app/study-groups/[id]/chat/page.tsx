@@ -86,6 +86,7 @@ interface Post {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  selected_streak_flame?: string | null;
   current_level?: number | null;
 }
 
@@ -104,6 +105,7 @@ interface GroupFeedComment {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  selected_streak_flame?: string | null;
   current_level?: number | null;
 }
 
@@ -115,6 +117,7 @@ interface Member {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  selected_streak_flame?: string | null;
   current_level?: number | null;
 }
 
@@ -126,6 +129,7 @@ interface TopBuddy {
   memberBadge: string | null;
   isPaid: boolean;
   currentStreak?: number | null;
+  selectedStreakFlame?: string | null;
   currentLevel?: number | null;
   posts: number;
   comments: number;
@@ -153,6 +157,7 @@ interface TopBuddiesEngagement {
     memberBadge: string | null;
     isPaid: boolean;
     currentStreak?: number | null;
+    selectedStreakFlame?: string | null;
     currentLevel?: number | null;
     openedAt: string | null;
   }>;
@@ -204,6 +209,7 @@ interface ArticleLikeUser {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  selected_streak_flame?: string | null;
   current_level?: number | null;
 }
 
@@ -284,6 +290,7 @@ interface SeriesComment {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  selected_streak_flame?: string | null;
   current_level?: number | null;
 }
 
@@ -872,7 +879,7 @@ function GroupCommentSection({
     const [{ data: profiles }, { data: likes }, { data: memberships }] = await Promise.all([
       supabase
         .from("profile_stats")
-        .select("user_id, profile_image_url, is_paid, member_badge, current_streak, current_level")
+        .select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level")
         .in("user_id", userIds),
       supabase
         .from("group_post_likes")
@@ -886,7 +893,7 @@ function GroupCommentSection({
     ]);
 
     const imageMap: Record<string, string | null> = {};
-    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; current_level: number | null }> = {};
+    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null }> = {};
     const roleMap: Record<string, string> = {};
     (profiles || []).forEach((profile: any) => {
       imageMap[profile.user_id] = profile.profile_image_url ?? null;
@@ -894,6 +901,7 @@ function GroupCommentSection({
         is_paid: !!profile.is_paid,
         member_badge: profile.member_badge ?? null,
         current_streak: profile.current_streak ?? null,
+        selected_streak_flame: profile.selected_streak_flame ?? null,
         current_level: profile.current_level ?? null,
       };
     });
@@ -920,6 +928,7 @@ function GroupCommentSection({
         is_paid: badgeMap[row.user_id]?.is_paid ?? false,
         member_badge: badgeMap[row.user_id]?.member_badge ?? null,
         current_streak: badgeMap[row.user_id]?.current_streak ?? null,
+        selected_streak_flame: badgeMap[row.user_id]?.selected_streak_flame ?? null,
         current_level: badgeMap[row.user_id]?.current_level ?? null,
       }))
     );
@@ -991,7 +1000,7 @@ function GroupCommentSection({
 
     const { data: profiles } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, current_level")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level")
       .in("user_id", likerIds);
 
     setCommentLikers(
@@ -1004,6 +1013,7 @@ function GroupCommentSection({
           is_paid: !!profile?.is_paid,
           member_badge: profile?.member_badge ?? null,
           current_streak: profile?.current_streak ?? null,
+          selected_streak_flame: profile?.selected_streak_flame ?? null,
           current_level: profile?.current_level ?? null,
         };
       }),
@@ -1274,7 +1284,7 @@ function GroupCommentSection({
               <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-[var(--bb-text-primary,#111827)] hover:underline">
                 {name}
               </Link>
-              <StreakFlameBadge currentStreak={comment.current_streak} />
+              <StreakFlameBadge currentStreak={comment.current_streak} flameId={comment.selected_streak_flame} />
               <LevelBadge currentLevel={comment.current_level} />
               <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
             </div>
@@ -1513,7 +1523,7 @@ function GroupCommentSection({
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="truncate text-sm font-semibold text-[var(--bb-text-primary,#111827)]">{liker.display_name}</span>
-                          <StreakFlameBadge currentStreak={liker.current_streak} />
+                          <StreakFlameBadge currentStreak={liker.current_streak} flameId={liker.selected_streak_flame} />
                           <LevelBadge currentLevel={liker.current_level} />
                           <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
                         </div>
@@ -1628,6 +1638,7 @@ export default function GroupChatPage() {
   const [userIsPaid, setUserIsPaid] = useState(false);
   const [userMemberBadge, setUserMemberBadge] = useState<string | null>(null);
   const [userCurrentStreak, setUserCurrentStreak] = useState<number | null>(null);
+  const [userSelectedStreakFlame, setUserSelectedStreakFlame] = useState<string | null>(null);
   const [pushSupported, setPushSupported] = useState(false);
   const [pushPermission, setPushPermission] = useState<NotificationPermission | "unsupported">("unsupported");
   const [pushSubscribed, setPushSubscribed] = useState(false);
@@ -2358,7 +2369,7 @@ export default function GroupChatPage() {
       const [{ data: profile }, streakData] = await Promise.all([
         supabase
           .from("profile_stats")
-          .select("display_name, username, profile_image_url, bio, location, is_paid, member_badge, current_streak, feature_tours")
+          .select("display_name, username, profile_image_url, bio, location, is_paid, member_badge, current_streak, selected_streak_flame, feature_tours")
           .eq("user_id", user.id)
           .maybeSingle(),
         syncCurrentStreakToProfileStats(user.id),
@@ -2371,6 +2382,7 @@ export default function GroupChatPage() {
       setUserIsPaid(!!profile?.is_paid);
       setUserMemberBadge(profile?.member_badge ?? null);
       setUserCurrentStreak(resolvedCurrentStreak);
+      setUserSelectedStreakFlame(profile?.selected_streak_flame ?? null);
       const { data: membership } = await supabase
         .from("group_members")
         .select("status, role")
@@ -2447,28 +2459,28 @@ export default function GroupChatPage() {
 
     setPosts((prev) =>
       prev.map((post) =>
-        post.user_id === userId ? { ...post, current_streak: userCurrentStreak } : post,
+        post.user_id === userId ? { ...post, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame } : post,
       ),
     );
     setComments((prev) =>
       prev.map((comment) =>
-        comment.user_id === userId ? { ...comment, current_streak: userCurrentStreak } : comment,
+        comment.user_id === userId ? { ...comment, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame } : comment,
       ),
     );
     setMembers((prev) =>
       prev.map((member) =>
-        member.user_id === userId ? { ...member, current_streak: userCurrentStreak } : member,
+        member.user_id === userId ? { ...member, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame } : member,
       ),
     );
     setPostLikers((prev) =>
       prev.map((liker) =>
-        liker.user_id === userId ? { ...liker, current_streak: userCurrentStreak } : liker,
+        liker.user_id === userId ? { ...liker, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame } : liker,
       ),
     );
     setSelectedFeedPost((prev) =>
-      prev?.user_id === userId ? { ...prev, current_streak: userCurrentStreak } : prev,
+      prev?.user_id === userId ? { ...prev, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame } : prev,
     );
-  }, [userCurrentStreak, userId]);
+  }, [userCurrentStreak, userId, userSelectedStreakFlame]);
 
   useEffect(() => {
     const supported =
@@ -2838,9 +2850,9 @@ export default function GroupChatPage() {
   }
 
   function getTopBuddyMedal(rank: number) {
-    if (rank === 1) return { label: "1", icon: "🏆", classes: "bg-[#fff4bd] text-[#8a5a00] border-[#f4d067]" };
-    if (rank === 2) return { label: "2", icon: "🥈", classes: "bg-[#eef2f7] text-[#536174] border-[#cbd5e1]" };
-    if (rank === 3) return { label: "3", icon: "🥉", classes: "bg-[#ffe2ca] text-[#8b4a1f] border-[#f4b27c]" };
+    if (rank === 1) return { label: "1", icon: "??", classes: "bg-[#fff4bd] text-[#8a5a00] border-[#f4d067]" };
+    if (rank === 2) return { label: "2", icon: "??", classes: "bg-[#eef2f7] text-[#536174] border-[#cbd5e1]" };
+    if (rank === 3) return { label: "3", icon: "??", classes: "bg-[#ffe2ca] text-[#8b4a1f] border-[#f4b27c]" };
     return { label: String(rank), icon: null, classes: "bg-[#eef7ed] text-[#4a7c57] border-[#cfe7d2]" };
   }
 
@@ -2879,7 +2891,7 @@ export default function GroupChatPage() {
           <div className="relative flex items-center justify-between gap-3">
             <div className="flex min-w-0 items-center gap-3">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#f3d77a)] bg-[var(--bb-surface,#ffffff)] text-2xl shadow-sm transition group-hover:-rotate-3 group-hover:scale-105">
-                🏆
+                ??
               </div>
               <div className="min-w-0">
                 <h3 className="mt-1 truncate text-lg font-black text-[var(--bb-text-primary,#1f2a44)]">
@@ -2970,7 +2982,7 @@ export default function GroupChatPage() {
                         <Link href={`/profile/${buddy.userId}`} className="truncate text-sm font-black text-[var(--bb-text-primary,#1f2a44)] hover:underline">
                           {buddy.displayName}
                         </Link>
-                        <StreakFlameBadge currentStreak={buddy.currentStreak} />
+                        <StreakFlameBadge currentStreak={buddy.currentStreak} flameId={buddy.selectedStreakFlame} />
                         <LevelBadge currentLevel={buddy.currentLevel} />
                         <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                       </div>
@@ -2995,7 +3007,7 @@ export default function GroupChatPage() {
               className="flex w-full items-center justify-between gap-3 text-left font-black text-[var(--bb-text-primary,#47677c)]"
             >
               <span>{clickLabel}</span>
-              <span>{topBuddiesClickersExpanded ? "▲" : "▼"}</span>
+              <span>{topBuddiesClickersExpanded ? "?" : "?"}</span>
             </button>
             {topBuddiesClickersExpanded && (
               <div className="mt-3 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-surface,#ffffff)] p-3">
@@ -3018,7 +3030,7 @@ export default function GroupChatPage() {
                             {clicker.openedAt ? new Date(clicker.openedAt).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "Opened board"}
                           </p>
                         </div>
-                        <StreakFlameBadge currentStreak={clicker.currentStreak} />
+                        <StreakFlameBadge currentStreak={clicker.currentStreak} flameId={clicker.selectedStreakFlame} />
                         <LevelBadge currentLevel={clicker.currentLevel} />
                       </Link>
                     ))}
@@ -3405,7 +3417,7 @@ export default function GroupChatPage() {
     const authorIds = [...new Set(rows.map((p) => p.user_id))];
     const roleMap: Record<string, string> = {};
     const imageMap: Record<string, string | null> = {};
-    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; current_level: number | null }> = {};
+    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null }> = {};
 
     const likedSet = new Set<string>();
     const likeCountMap: Record<string, number> = {};
@@ -3426,7 +3438,7 @@ export default function GroupChatPage() {
     if (authorIds.length > 0 && group) {
       const [{ data: mems }, { data: pics }] = await Promise.all([
         supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", authorIds),
-        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, current_level").in("user_id", authorIds),
+        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level").in("user_id", authorIds),
       ]);
       (mems || []).forEach((m) => { roleMap[m.user_id] = m.role; });
       (pics || []).forEach((p: any) => {
@@ -3435,6 +3447,7 @@ export default function GroupChatPage() {
           is_paid: !!p.is_paid,
           member_badge: p.member_badge ?? null,
           current_streak: p.current_streak ?? null,
+          selected_streak_flame: p.selected_streak_flame ?? null,
           current_level: p.current_level ?? null,
         };
       });
@@ -3451,6 +3464,7 @@ export default function GroupChatPage() {
         is_paid: badgeMap[p.user_id]?.is_paid ?? false,
         member_badge: badgeMap[p.user_id]?.member_badge ?? null,
         current_streak: badgeMap[p.user_id]?.current_streak ?? null,
+        selected_streak_flame: badgeMap[p.user_id]?.selected_streak_flame ?? null,
         current_level: badgeMap[p.user_id]?.current_level ?? null,
       })),
       weeklyPollByPostId: nextWeeklyPollByPostId,
@@ -3576,7 +3590,7 @@ export default function GroupChatPage() {
 
     const [{ data: membership }, { data: profile }, { data: likeRows }, { count: directCommentCount }, { data: topLevelComments }] = await Promise.all([
       supabase.from("group_members").select("role").eq("group_id", group.id).eq("user_id", postRow.user_id).maybeSingle(),
-      supabase.from("profile_stats").select("profile_image_url, is_paid, member_badge, current_streak, current_level").eq("user_id", postRow.user_id).maybeSingle(),
+      supabase.from("profile_stats").select("profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level").eq("user_id", postRow.user_id).maybeSingle(),
       supabase.from("group_post_likes").select("post_id, user_id").eq("post_id", postRow.id),
       supabase.from("group_posts").select("id", { count: "exact", head: true }).eq("parent_post_id", postRow.id),
       supabase.from("group_posts").select("id").eq("parent_post_id", postRow.id),
@@ -3691,6 +3705,7 @@ export default function GroupChatPage() {
       is_paid: !!profile?.is_paid,
       member_badge: profile?.member_badge ?? null,
       current_streak: profile?.current_streak ?? null,
+      selected_streak_flame: profile?.selected_streak_flame ?? null,
       current_level: profile?.current_level ?? null,
     };
 
@@ -3723,6 +3738,7 @@ export default function GroupChatPage() {
         is_paid: userIsPaid,
         member_badge: userMemberBadge,
         current_streak: userCurrentStreak,
+        selected_streak_flame: userSelectedStreakFlame,
       }, ...prev]);
     }
     setLikeLoading((prev) => { const s = new Set(prev); s.delete(post.id); return s; });
@@ -3756,7 +3772,7 @@ export default function GroupChatPage() {
 
     const { data: profiles } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, current_level")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level")
       .in("user_id", likerIds);
 
     setPostLikers(
@@ -3769,6 +3785,7 @@ export default function GroupChatPage() {
           is_paid: !!profile?.is_paid,
           member_badge: profile?.member_badge ?? null,
           current_streak: profile?.current_streak ?? null,
+          selected_streak_flame: profile?.selected_streak_flame ?? null,
           current_level: profile?.current_level ?? null,
         };
       }),
@@ -4047,7 +4064,7 @@ export default function GroupChatPage() {
       if (likerIds.length > 0) {
         const { data: likerProfiles } = await supabase
           .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url, current_streak, current_level")
+          .select("user_id, display_name, username, profile_image_url, current_streak, selected_streak_flame, current_level")
           .in("user_id", likerIds);
 
         likerMap = Object.fromEntries(
@@ -4058,6 +4075,7 @@ export default function GroupChatPage() {
               display_name: profile.display_name || profile.username || "Buddy",
               profile_image_url: profile.profile_image_url ?? null,
               current_streak: profile.current_streak ?? null,
+              selected_streak_flame: profile.selected_streak_flame ?? null,
               current_level: profile.current_level ?? null,
             },
           ]),
@@ -4119,6 +4137,7 @@ export default function GroupChatPage() {
       user_id: userId,
       display_name: displayName,
       profile_image_url: userProfileImage,
+      selected_streak_flame: userSelectedStreakFlame,
     };
 
     setHubItemStats((prev) => ({
@@ -4148,7 +4167,7 @@ export default function GroupChatPage() {
     const userIds = page.map((m) => m.user_id);
     const { data: profiles } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame")
       .in("user_id", userIds);
     const profileMap: Record<string, any> = {};
     (profiles || []).forEach((p) => { profileMap[p.user_id] = p; });
@@ -4164,6 +4183,7 @@ export default function GroupChatPage() {
         is_paid: !!p?.is_paid,
         member_badge: p?.member_badge ?? null,
         current_streak: p?.current_streak ?? null,
+        selected_streak_flame: p?.selected_streak_flame ?? null,
       };
     });
     rows.sort((a, b) => (roleOrder[a.role] ?? 2) - (roleOrder[b.role] ?? 2));
@@ -4373,11 +4393,11 @@ export default function GroupChatPage() {
 
     let imageMap: Record<string, string | null> = {};
     let roleMap: Record<string, string> = {};
-    let badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null }> = {};
+    let badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null }> = {};
     if (commentRows.length > 0) {
       const commenterIds = [...new Set(commentRows.map((c) => c.user_id))];
       const [{ data: pics }, { data: roles }] = await Promise.all([
-        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak").in("user_id", commenterIds),
+        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame").in("user_id", commenterIds),
         group
           ? supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", commenterIds)
           : Promise.resolve({ data: [] as Array<{ user_id: string; role: string }> }),
@@ -4388,6 +4408,7 @@ export default function GroupChatPage() {
           is_paid: !!p.is_paid,
           member_badge: p.member_badge ?? null,
           current_streak: p.current_streak ?? null,
+          selected_streak_flame: p.selected_streak_flame ?? null,
         };
       });
       (roles || []).forEach((row) => { roleMap[row.user_id] = row.role; });
@@ -4408,6 +4429,7 @@ export default function GroupChatPage() {
       is_paid: badgeMap[c.user_id]?.is_paid ?? false,
       member_badge: badgeMap[c.user_id]?.member_badge ?? null,
       current_streak: badgeMap[c.user_id]?.current_streak ?? null,
+      selected_streak_flame: badgeMap[c.user_id]?.selected_streak_flame ?? null,
     })));
     setLoadingComments(false);
   }
@@ -4675,6 +4697,7 @@ export default function GroupChatPage() {
         is_paid: userIsPaid,
         member_badge: userMemberBadge,
         current_streak: userCurrentStreak,
+        selected_streak_flame: userSelectedStreakFlame,
       }]);
       if (parentId) { setReplyText(""); setReplyingToId(null); }
       else setNewCommentText("");
@@ -4922,7 +4945,7 @@ export default function GroupChatPage() {
           )}
           <div className="flex items-center gap-3">
             {!isDashboardEmbed ? (
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#ffffff)] text-xl shadow-sm">{group.cover_emoji || "👥"}</span>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#ffffff)] text-xl shadow-sm">{group.cover_emoji || "??"}</span>
             ) : null}
             <div className="flex-1 min-w-0">
               {!isDashboardEmbed ? (
@@ -5167,7 +5190,7 @@ export default function GroupChatPage() {
                               <div className="flex items-center gap-2">
                                 <div className="flex items-center gap-1.5">
                                   <p className="truncate text-sm font-semibold text-gray-900">{buddy.displayName}</p>
-                                  <StreakFlameBadge currentStreak={buddy.currentStreak} />
+                                  <StreakFlameBadge currentStreak={buddy.currentStreak} flameId={buddy.selectedStreakFlame} />
                                   <LevelBadge currentLevel={buddy.currentLevel} />
                                 </div>
                                 <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
@@ -5228,7 +5251,7 @@ export default function GroupChatPage() {
                           <div className="flex flex-wrap items-center gap-2">
                             <div className="flex items-center gap-1.5">
                               <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
-                              <StreakFlameBadge currentStreak={member.current_streak} />
+                              <StreakFlameBadge currentStreak={member.current_streak} flameId={member.selected_streak_flame} />
                               <LevelBadge currentLevel={member.current_level} />
                             </div>
                             <UserBadge customBadge={member.member_badge} isPaid={member.is_paid} groupRole={member.role} />
@@ -5320,7 +5343,7 @@ export default function GroupChatPage() {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-1.5 mb-1">
                               <Link href={`/profile/${comment.user_id}`} className="text-sm font-semibold text-gray-900 hover:underline">{comment.display_name}</Link>
-                              <StreakFlameBadge currentStreak={comment.current_streak} />
+                              <StreakFlameBadge currentStreak={comment.current_streak} flameId={comment.selected_streak_flame} />
                               <LevelBadge currentLevel={comment.current_level} />
                               <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
                               <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
@@ -5457,7 +5480,7 @@ export default function GroupChatPage() {
                                 <div className="flex-1">
                                   <div className="flex items-center gap-1.5 mb-0.5">
                                     <Link href={`/profile/${reply.user_id}`} className="text-xs font-semibold text-gray-900 hover:underline">{reply.display_name}</Link>
-                                    <StreakFlameBadge currentStreak={reply.current_streak} />
+                                    <StreakFlameBadge currentStreak={reply.current_streak} flameId={reply.selected_streak_flame} />
                                     <LevelBadge currentLevel={reply.current_level} />
                                     <UserBadge customBadge={reply.member_badge} isPaid={reply.is_paid} groupRole={reply.role} />
                                     <span className="text-xs text-gray-400">{timeAgo(reply.created_at)}</span>
@@ -6501,7 +6524,7 @@ export default function GroupChatPage() {
                         <Link href={`/profile/${liker.user_id}`} className="text-sm font-medium text-gray-900 hover:underline">
                           {liker.display_name}
                         </Link>
-                        <StreakFlameBadge currentStreak={liker.current_streak} />
+                        <StreakFlameBadge currentStreak={liker.current_streak} flameId={liker.selected_streak_flame} />
                         <LevelBadge currentLevel={liker.current_level} />
                         <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
                       </div>
@@ -6558,7 +6581,7 @@ export default function GroupChatPage() {
                         <Link href={`/profile/${liker.user_id}`} className="text-sm font-medium text-gray-900 hover:underline">
                           {liker.display_name}
                         </Link>
-                        <StreakFlameBadge currentStreak={liker.current_streak} />
+                        <StreakFlameBadge currentStreak={liker.current_streak} flameId={liker.selected_streak_flame} />
                         <LevelBadge currentLevel={liker.current_level} />
                         <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
                       </div>
@@ -6974,7 +6997,7 @@ export default function GroupChatPage() {
                             <Link href={`/profile/${buddy.userId}`} className="truncate text-sm font-semibold text-gray-900 hover:underline">
                               {buddy.displayName}
                             </Link>
-                            <StreakFlameBadge currentStreak={buddy.currentStreak} />
+                            <StreakFlameBadge currentStreak={buddy.currentStreak} flameId={buddy.selectedStreakFlame} />
                             <LevelBadge currentLevel={buddy.currentLevel} />
                             <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                           </div>
@@ -7104,7 +7127,7 @@ export default function GroupChatPage() {
               <Link href={`/profile/${activeFeedPost.user_id}`} className="text-sm font-semibold text-[var(--bb-text-primary,#111827)] hover:underline">
                 {activeFeedPost.display_name || "Buddy"}
               </Link>
-              <StreakFlameBadge currentStreak={activeFeedPost.current_streak} />
+              <StreakFlameBadge currentStreak={activeFeedPost.current_streak} flameId={activeFeedPost.selected_streak_flame} />
               <LevelBadge currentLevel={activeFeedPost.current_level} />
               <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} />
               <span className="text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(activeFeedPost.created_at)}</span>
@@ -7325,7 +7348,7 @@ export default function GroupChatPage() {
             <div>
             {post.is_pinned && (
               <div className="mb-2 flex items-center gap-1 text-xs font-medium text-amber-600">
-                <span aria-hidden="true">📌</span>
+                <span aria-hidden="true">??</span>
                 <span>Pinned</span>
               </div>
             )}
@@ -7342,7 +7365,7 @@ export default function GroupChatPage() {
                   <Link href={`/profile/${post.user_id}`} className="font-semibold text-[var(--bb-text-primary,#111827)] text-sm hover:underline">
                     {post.display_name || "Buddy"}
                   </Link>
-                  <StreakFlameBadge currentStreak={post.current_streak} />
+                  <StreakFlameBadge currentStreak={post.current_streak} flameId={post.selected_streak_flame} />
                   <LevelBadge currentLevel={post.current_level} />
                   <UserBadge customBadge={post.member_badge} isPaid={post.is_paid} groupRole={post.role} />
                   <span className="text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(post.created_at)}</span>

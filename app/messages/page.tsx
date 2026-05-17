@@ -43,6 +43,7 @@ interface Conversation {
   otherUserBadge: string | null;
   otherUserIsPaid: boolean;
   otherUserCurrentStreak: number | null;
+  otherUserSelectedStreakFlame: string | null;
   lastMessagePreview: string | null;
   lastMessageAt: string | null;
   hasUnread: boolean;
@@ -170,7 +171,7 @@ export default function MessagesPage() {
           profileChunks.map((chunk) =>
             supabase
               .from("profile_stats")
-              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
+              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, selected_streak_flame")
               .in("user_id", chunk),
           ),
         ),
@@ -203,7 +204,7 @@ export default function MessagesPage() {
           [...new Set(missingIds)].map(async (missingId) => {
             const { data } = await supabase
               .from("profile_stats")
-              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
+              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, selected_streak_flame")
               .eq("user_id", missingId)
               .maybeSingle();
 
@@ -235,6 +236,7 @@ export default function MessagesPage() {
           otherUserBadge: profile?.member_badge || null,
           otherUserIsPaid: profile?.is_paid === true,
           otherUserCurrentStreak: profile?.current_streak ?? null,
+          otherUserSelectedStreakFlame: profile?.selected_streak_flame ?? null,
           lastMessagePreview: conversation.last_message_preview
             ? extractLegacyDirectMessageAction(conversation.last_message_preview).body
             : null,
@@ -379,7 +381,7 @@ export default function MessagesPage() {
                             >
                               {convo.otherUserName}
                             </Link>
-                            <StreakFlameBadge currentStreak={convo.otherUserCurrentStreak} />
+                            <StreakFlameBadge currentStreak={convo.otherUserCurrentStreak} flameId={convo.otherUserSelectedStreakFlame} />
                             <UserBadge customBadge={convo.otherUserBadge} isPaid={convo.otherUserIsPaid} />
                           </div>
                           <span className="flex-shrink-0 text-xs text-[var(--bb-text-muted,#9ca3af)]">{formatTime(convo.lastMessageAt)}</span>

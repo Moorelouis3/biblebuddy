@@ -90,6 +90,7 @@ type AnalyticsPayload = {
     memberBadge: string | null;
     isPaid: boolean;
     currentStreak: number;
+    selectedStreakFlame?: string | null;
     currentLevel: number | null;
     lastActiveDate: string | null;
   }>;
@@ -905,7 +906,7 @@ export default function StudyGroupAnalyticsPage() {
                               <Link href={`/profile/${buddy.userId}`} className="text-lg font-bold text-gray-900 hover:underline">
                                 {buddy.displayName}
                               </Link>
-                              <StreakFlameBadge currentStreak={buddy.currentStreak} />
+                              <StreakFlameBadge currentStreak={buddy.currentStreak} flameId={buddy.selectedStreakFlame} />
                               <LevelBadge currentLevel={buddy.currentLevel} />
                               <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                             </div>

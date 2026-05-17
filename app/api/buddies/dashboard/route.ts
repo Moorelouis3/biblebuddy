@@ -17,6 +17,7 @@ type ProfileRow = {
   profile_image_url: string | null;
   current_level: number | null;
   current_streak: number | null;
+  selected_streak_flame: string | null;
   is_paid: boolean | null;
   member_badge: string | null;
 };
@@ -147,7 +148,7 @@ export async function GET(request: NextRequest) {
       fetchPaged<ProfileRow>((from, to) =>
         supabaseAdmin
           .from("profile_stats")
-          .select("user_id, username, display_name, profile_image_url, current_level, current_streak, is_paid, member_badge")
+          .select("user_id, username, display_name, profile_image_url, current_level, current_streak, selected_streak_flame, is_paid, member_badge")
           .range(from, to),
       ),
       fetchPaged<ActionRow>((from, to) =>
@@ -219,6 +220,7 @@ export async function GET(request: NextRequest) {
           profileImageUrl: profile?.profile_image_url || null,
           currentLevel: Math.max(1, profile?.current_level || fallbackLevel),
           currentStreak: profile?.current_streak || 0,
+          selectedStreakFlame: profile?.selected_streak_flame || null,
           memberBadge: profile?.member_badge || null,
           isPaid: profile?.is_paid === true,
           score: Math.round(scoreData.score),

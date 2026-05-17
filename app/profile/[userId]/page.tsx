@@ -145,6 +145,7 @@ interface BuddyProfile {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  selected_streak_flame?: string | null;
 }
 
 export default function PublicProfilePage() {
@@ -456,13 +457,13 @@ export default function PublicProfilePage() {
 
     const { data: pics } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
+      .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, selected_streak_flame")
       .in("user_id", otherIds);
 
     const profileMap: Record<string, BuddyProfile> = {};
     (pics || []).forEach((p) => { profileMap[p.user_id] = p; });
 
-    setBuddiesList(otherIds.map((id) => profileMap[id] || { user_id: id, display_name: null, username: null, profile_image_url: null, member_badge: null, is_paid: false, current_streak: null }));
+    setBuddiesList(otherIds.map((id) => profileMap[id] || { user_id: id, display_name: null, username: null, profile_image_url: null, member_badge: null, is_paid: false, current_streak: null, selected_streak_flame: null }));
     setBuddiesLoadingPage(false);
   }
 
@@ -956,7 +957,7 @@ export default function PublicProfilePage() {
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <h1 className="text-2xl font-bold text-gray-900 leading-tight">{displayName}</h1>
-                    <StreakFlameBadge currentStreak={displayStats.current_streak} />
+                    <StreakFlameBadge currentStreak={displayStats.current_streak} flameId={stats?.selected_streak_flame} />
                     <UserBadge
                       customBadge={stats?.member_badge}
                       isPaid={stats?.is_paid}
@@ -1646,7 +1647,7 @@ export default function PublicProfilePage() {
                             <div className="flex-1 min-w-0">
                               <div className="flex flex-wrap items-center gap-2">
                                 <p className="font-semibold text-gray-900 text-sm truncate">{buddyDisplay}</p>
-                                <StreakFlameBadge currentStreak={buddy.current_streak} />
+                                <StreakFlameBadge currentStreak={buddy.current_streak} flameId={buddy.selected_streak_flame} />
                                 <UserBadge customBadge={buddy.member_badge} isPaid={buddy.is_paid} />
                               </div>
                               {buddy.username && <p className="text-xs text-gray-500">@{buddy.username}</p>}

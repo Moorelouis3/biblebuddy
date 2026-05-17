@@ -44,6 +44,7 @@ interface Comment {
   is_paid?: boolean | null;
   current_level?: number | null;
   current_streak?: number | null;
+  selected_streak_flame?: string | null;
   like_count?: number;
   liked?: boolean;
   replies?: Comment[];
@@ -228,10 +229,10 @@ export default function CommentSection({
     try {
       const { data: profiles } = await supabase
         .from("profile_stats")
-        .select("user_id, profile_image_url, member_badge, is_paid, current_level, current_streak")
+        .select("user_id, profile_image_url, member_badge, is_paid, current_level, current_streak, selected_streak_flame")
         .in("user_id", userIds);
       if (!profiles || profiles.length === 0) return;
-      const profileMap: Record<string, { profile_image_url: string | null; member_badge: string | null; is_paid: boolean; current_level: number | null; current_streak: number | null }> = {};
+      const profileMap: Record<string, { profile_image_url: string | null; member_badge: string | null; is_paid: boolean; current_level: number | null; current_streak: number | null; selected_streak_flame: string | null }> = {};
       profiles.forEach((p) => {
         profileMap[p.user_id] = {
           profile_image_url: p.profile_image_url ?? null,
@@ -239,6 +240,7 @@ export default function CommentSection({
           is_paid: p.is_paid === true,
           current_level: p.current_level ?? null,
           current_streak: p.current_streak ?? null,
+          selected_streak_flame: p.selected_streak_flame ?? null,
         };
       });
       setComments((prev) =>
@@ -249,6 +251,7 @@ export default function CommentSection({
           is_paid: profileMap[c.user_id]?.is_paid ?? false,
           current_level: profileMap[c.user_id]?.current_level ?? null,
           current_streak: profileMap[c.user_id]?.current_streak ?? null,
+          selected_streak_flame: profileMap[c.user_id]?.selected_streak_flame ?? null,
         })),
       );
     } catch {
@@ -654,7 +657,7 @@ export default function CommentSection({
                       <Link href={`/profile/${c.user_id}`} className="text-xs font-semibold text-[var(--bb-text-primary,#1f2937)] hover:underline">
                         {c.user_name}
                       </Link>
-                      <StreakFlameBadge currentStreak={c.current_streak} />
+                      <StreakFlameBadge currentStreak={c.current_streak} flameId={c.selected_streak_flame} />
                       <LevelBadge currentLevel={c.current_level} />
                       <UserBadge customBadge={c.member_badge} isPaid={c.is_paid === true} />
                       <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
