@@ -184,6 +184,7 @@ const STUDY_SWITCHER_ORDER = [
   "The Testing of Joseph",
   "The Deliverance of Moses",
   "The Covenant at Sinai",
+  "The Presence of God",
   "The Calling of Moses",
   "The Heart of David",
   "The Rise of Esther",
@@ -209,6 +210,7 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
   if (title === "The Deliverance of Moses") return "/TheDeliveranceofMoses.png";
   if (title === "The Covenant at Sinai") return "/TheCovenantatSinai.png";
+  if (title === "The Presence of God") return "/ThePresenceofGod.png";
   if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
   if (title === "The Heart of David") return "/heartofdaviddevotional.png";
   if (title === "The Faith of Job") return "/faithofjob.png";
@@ -229,6 +231,7 @@ function getDashboardStudySummary(title: string | null | undefined, totalDays: n
   if (title === "The Testing of Joseph") return "Walk Genesis 37-50 through betrayal, waiting, wisdom, forgiveness, and God's hidden plan.";
   if (title === "The Deliverance of Moses") return "Walk Exodus 1-18 through Israel's slavery, Moses' calling, the plagues, Passover, the Red Sea, and God's provision in the wilderness.";
   if (title === "The Covenant at Sinai") return "Walk Exodus 19-24 through Mount Sinai, God's holiness, the Ten Commandments, covenant law, blood, worship, and Israel becoming God's covenant people.";
+  if (title === "The Presence of God") return "Walk Exodus 25-40 through the tabernacle, priesthood, golden calf, intercession, covenant mercy, obedient construction, and God's glory filling the tabernacle.";
   if (title === "The Wisdom of Proverbs") return "Study Proverbs chapter by chapter for practical wisdom in speech, choices, discipline, and daily life.";
   return `${Math.max(1, totalDays || 1)} part Bible study designed to help you keep growing with structure and consistency.`;
 }
@@ -311,6 +314,16 @@ function getBibleJourneyHandoff(title: string | null | undefined) {
       cover: "/TheCovenantatSinai.png",
       description:
         "Next, Exodus 19-24 brings Israel to Mount Sinai, where God descends in holiness, gives His commandments, forms the covenant, and teaches His rescued people how to live before Him.",
+    };
+  }
+
+  if (title === "The Covenant at Sinai") {
+    return {
+      nextTitle: "The Presence of God",
+      subtitle: "Exodus 25-40",
+      cover: "/ThePresenceofGod.png",
+      description:
+        "Next, Exodus 25-40 shows the tabernacle instructions, the priesthood, the golden calf, Moses' intercession, covenant mercy, obedient construction, and God's glory filling the tabernacle.",
     };
   }
 

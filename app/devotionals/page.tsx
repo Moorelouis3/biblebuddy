@@ -75,6 +75,7 @@ const FEATURED_STUDY_ORDER = [
   "The Testing of Joseph",
   "The Deliverance of Moses",
   "The Covenant at Sinai",
+  "The Presence of God",
   "The Calling of Moses",
   "The Heart of David",
   "The Rise of Esther",
@@ -106,6 +107,7 @@ function getStudyScriptureRange(title: string) {
     "The Testing of Joseph": "Genesis 37-50",
     "The Deliverance of Moses": "Exodus 1-18",
     "The Covenant at Sinai": "Exodus 19-24",
+    "The Presence of God": "Exodus 25-40",
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "Proverbs 1-31",
     "The Courage of Daniel": "Daniel 1-6",
@@ -248,6 +250,9 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     }
     if (title === "The Covenant at Sinai") {
       return "/TheCovenantatSinai.png";
+    }
+    if (title === "The Presence of God") {
+      return "/ThePresenceofGod.png";
     }
     if (title === "The Disciples of Jesus") {
       return "/disciplesofjesusdevotional.png";

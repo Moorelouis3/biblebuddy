@@ -92,6 +92,15 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
       "A chapter-by-chapter Bible study through Exodus 19-24 with intro, reading, notes, trivia, Scrambled, and reflection centered on Mount Sinai, God's holiness, the Ten Commandments, covenant law, worship, blood, and Israel becoming God's covenant people.",
   },
   {
+    key: "presence_of_god",
+    title: "The Presence of God",
+    subtitle: "Exodus 25-40",
+    totalWeeks: 16,
+    image: "/ThePresenceofGod.png",
+    description:
+      "A chapter-by-chapter Bible study through Exodus 25-40 with intro, reading, notes, trivia, Scrambled, and reflection centered on the tabernacle, priesthood, golden calf, intercession, covenant mercy, obedient construction, and God's glory filling the tabernacle.",
+  },
+  {
     key: "rise_of_esther",
     title: "The Rise of Esther",
     subtitle: "Esther 1-10",
