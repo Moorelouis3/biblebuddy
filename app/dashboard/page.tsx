@@ -77,6 +77,7 @@ const MAX_BADGE_POPUPS_PER_SESSION = 3;
 const MYSTERY_PRIZE_REWARDS = [100, 125, 150, 175, 200, 250];
 const DAILY_LOGIN_GIFT_WINDOW_MS = 24 * 60 * 60 * 1000;
 const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
+const STORE_PROMO_SEEN_STORAGE_KEY = "bb:store-promo-seen";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -158,6 +159,8 @@ type DailyLoginGiftReveal = {
   status: "closed" | "opening" | "opened";
   reward: number;
 };
+
+type StorePromoKind = "buddies" | "diamonds";
 
 type DashboardLouisNudge = {
   id: string;
@@ -948,6 +951,7 @@ export default function DashboardPage() {
   const [storeLoading, setStoreLoading] = useState(false);
   const [storeBuyingId, setStoreBuyingId] = useState<string | null>(null);
   const [storeMessage, setStoreMessage] = useState<string | null>(null);
+  const [activeStorePromo, setActiveStorePromo] = useState<StorePromoKind | null>(null);
   const [mysteryPrizeReveal, setMysteryPrizeReveal] = useState<MysteryPrizeReveal | null>(null);
   const mysteryPrizeAwardingRef = useRef(false);
   const [dailyLoginGiftReveal, setDailyLoginGiftReveal] = useState<DailyLoginGiftReveal | null>(null);
@@ -2376,6 +2380,58 @@ export default function DashboardPage() {
       </section>
     );
 
+    const promoCards = [
+      {
+        kind: "buddies" as StorePromoKind,
+        eyebrow: "New Guides",
+        title: "Choose a Bible Buddy",
+        body: "Unlock Walter, Lindsey, or Steve and study with a different kind of encouragement.",
+        visual: (
+          <div className="flex -space-x-3">
+            {BUDDY_STORE_ITEMS.filter((item) => item.id !== "buddy-lil-louis").map((buddy) => (
+              <img
+                key={buddy.id}
+                src={buddy.imageSrc}
+                alt={buddy.title}
+                className="h-12 w-12 rounded-full border-2 border-white object-cover shadow-sm"
+              />
+            ))}
+          </div>
+        ),
+      },
+      {
+        kind: "diamonds" as StorePromoKind,
+        eyebrow: "Diamond Drop",
+        title: "Spend diamonds your way",
+        body: "Themes, flame colors, Bible Buddies, boosts, and surprise rewards are waiting.",
+        visual: (
+          <div className="grid grid-cols-4 gap-1 text-xl" aria-hidden="true">
+            <span>💎</span>
+            <span>🎨</span>
+            <span><StreakFlameEmoji flameId="blue" size={22} /></span>
+            <span>⚡</span>
+          </div>
+        ),
+      },
+    ];
+
+    const renderPromoCard = (promo: (typeof promoCards)[number]) => (
+      <button
+        key={promo.kind}
+        type="button"
+        onClick={() => setActiveStorePromo(promo.kind)}
+        className="relative overflow-hidden rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+      >
+        <div className="absolute right-3 top-3 rounded-full bg-[var(--bb-accent-soft)] px-2 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-accent)]">
+          Promo
+        </div>
+        {promo.visual}
+        <p className="mt-3 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">{promo.eyebrow}</p>
+        <h3 className="mt-1 text-base font-black leading-tight text-[var(--bb-text-primary)]">{promo.title}</h3>
+        <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary)]">{promo.body}</p>
+      </button>
+    );
+
     return (
       <section className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-surface)] p-4 shadow-[0_16px_42px_rgba(38,63,99,0.12)]">
         <div className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border)] bg-[var(--bb-card)]">
@@ -2413,6 +2469,9 @@ export default function DashboardPage() {
           renderMysteryRevealPanel()
         ) : (
           <>
+            <section className="mt-5 grid gap-3 sm:grid-cols-2">
+              {promoCards.map(renderPromoCard)}
+            </section>
             {storeLoading ? (
               <div className="mt-5 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-center text-sm font-black text-[var(--bb-text-secondary)]">
                 Loading store...
@@ -2894,6 +2953,15 @@ export default function DashboardPage() {
   const openDiamondStore = useCallback(() => {
     setShowDiamondStore(true);
     setStoreMessage(null);
+    if (typeof window !== "undefined") {
+      const todayKey = getBibleBuddyLocalDayKey();
+      const seenKey = `${STORE_PROMO_SEEN_STORAGE_KEY}:${todayKey}`;
+      if (window.localStorage.getItem(seenKey) !== "1") {
+        const promoKind: StorePromoKind = Math.abs(todayKey.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0)) % 2 === 0 ? "buddies" : "diamonds";
+        setActiveStorePromo(promoKind);
+        window.localStorage.setItem(seenKey, "1");
+      }
+    }
     void loadStorePurchases();
   }, [loadStorePurchases]);
 
@@ -4623,6 +4691,117 @@ export default function DashboardPage() {
     };
   }, []);
 
+  function renderStorePromoModal() {
+    if (!activeStorePromo) return null;
+
+    const buddyPromos = BUDDY_STORE_ITEMS.filter((item) => item.id !== "buddy-lil-louis");
+    const closePromo = () => setActiveStorePromo(null);
+    const shopPromo = () => {
+      setActiveStorePromo(null);
+      setShowDiamondStore(true);
+      void loadStorePurchases();
+    };
+
+    if (activeStorePromo === "buddies") {
+      return (
+        <ModalShell isOpen={true} onClose={closePromo} zIndex="z-[120]" backdropColor="bg-black/70" scrollable>
+          <div className="w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-2xl">
+            <div className="relative overflow-hidden bg-[var(--bb-surface)] px-5 pb-6 pt-5">
+              <button
+                type="button"
+                onClick={closePromo}
+                className="ml-auto grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-card)] text-xl font-black text-[var(--bb-text-secondary)] shadow-sm"
+                aria-label="Close Buddy promo"
+              >
+                x
+              </button>
+              <p className="mt-2 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">New Bible Buddies</p>
+              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary)]">Pick the voice that helps you keep showing up</h2>
+              <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
+                Unlock a new Bible Buddy and switch your study coach anytime. Same Bible habit, different encouragement style.
+              </p>
+
+              <div className="mt-5 grid gap-3">
+                {buddyPromos.map((buddy) => (
+                  <div key={buddy.id} className="flex items-center gap-3 rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 shadow-sm">
+                    <img src={buddy.imageSrc} alt={buddy.title} className="h-16 w-16 rounded-2xl object-cover" />
+                    <div className="min-w-0">
+                      <p className="text-base font-black text-[var(--bb-text-primary)]">{buddy.title}</p>
+                      <p className="text-xs font-semibold leading-5 text-[var(--bb-text-secondary)]">{buddy.subtitle}</p>
+                      <p className="mt-1 text-xs font-black text-[var(--bb-accent)]">{buddy.price.toLocaleString()} diamonds</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={shopPromo}
+                className="mt-5 w-full rounded-full bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
+              >
+                Shop Bible Buddies
+              </button>
+            </div>
+          </div>
+        </ModalShell>
+      );
+    }
+
+    const rewardTiles = [
+      { title: "Themes", text: "Change the whole app feel.", icon: "🎨", color: "#7BAFD4" },
+      { title: "Flames", text: "Make your streak fire yours.", icon: <StreakFlameEmoji flameId="blue" size={30} />, color: "#38BDF8" },
+      { title: "Buddies", text: "Unlock new study voices.", icon: "👥", color: "#DB2777" },
+      { title: "Boosts", text: "Protect streaks and chase rewards.", icon: "⚡", color: "#B7791F" },
+    ];
+
+    return (
+      <ModalShell isOpen={true} onClose={closePromo} zIndex="z-[120]" backdropColor="bg-black/70" scrollable>
+        <div className="w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-2xl">
+          <div className="relative overflow-hidden bg-[var(--bb-surface)] px-5 pb-6 pt-5">
+            <button
+              type="button"
+              onClick={closePromo}
+              className="ml-auto grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-card)] text-xl font-black text-[var(--bb-text-secondary)] shadow-sm"
+              aria-label="Close store promo"
+            >
+              x
+            </button>
+            <div className="mt-1 flex items-center gap-3">
+              <div className="grid h-16 w-16 place-items-center rounded-[22px] bg-[var(--bb-accent-soft)] text-4xl shadow-inner" aria-hidden="true">💎</div>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">Diamond Store</p>
+                <h2 className="text-3xl font-black leading-tight text-[var(--bb-text-primary)]">Spend diamonds. Build your setup.</h2>
+              </div>
+            </div>
+            <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
+              Your Bible study work turns into diamonds. Use them on themes, flame colors, Bible Buddies, boosts, and more rewards coming next.
+            </p>
+
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              {rewardTiles.map((tile) => (
+                <div key={tile.title} className="rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 shadow-sm">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl text-2xl" style={{ backgroundColor: `${tile.color}22`, color: tile.color }}>
+                    {tile.icon}
+                  </div>
+                  <p className="mt-3 text-sm font-black text-[var(--bb-text-primary)]">{tile.title}</p>
+                  <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary)]">{tile.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={shopPromo}
+              className="mt-5 w-full rounded-full bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
+            >
+              Open Diamond Store
+            </button>
+          </div>
+        </div>
+      </ModalShell>
+    );
+  }
+
   return (
     <>
       <style>{`
@@ -4840,6 +5019,8 @@ export default function DashboardPage() {
       {shouldShowAds && !mobileAdDismissed && (
         <div className="lg:hidden h-20" />
       )}
+
+      {renderStorePromoModal()}
 
       {false && showSwipeHintOverlay && (
         <div
