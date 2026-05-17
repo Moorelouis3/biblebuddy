@@ -355,6 +355,18 @@ function DashboardInlineBibleReader({
     };
   }, [selectedTerm]);
 
+  useEffect(() => {
+    if (!selectedTerm) return;
+    const returnScrollY = termReturnScrollYRef.current;
+    if (typeof returnScrollY !== "number") return;
+
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: returnScrollY, behavior: "auto" });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [selectedTerm, loadingTermNotes, termNotes]);
+
   function closeTermPopup() {
     setSelectedTerm(null);
     setTermNotes(null);
@@ -433,7 +445,7 @@ function DashboardInlineBibleReader({
               {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
             </p>
             <h3 className="mt-1 text-4xl font-black leading-tight">{selectedTerm.name}</h3>
-            <div className="mt-5 max-h-[38vh] w-full overflow-y-auto rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-5 py-4">
+            <div className="mt-5 w-full px-2 py-2">
               {loadingTermNotes && !termNotes ? (
                 <div className="space-y-3 py-6">
                   <div className="h-3 rounded-full bg-white/80" />

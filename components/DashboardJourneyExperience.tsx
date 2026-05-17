@@ -1735,6 +1735,11 @@ export default function DashboardJourneyExperience({
     !isLoadingNextChapter &&
     !suppressCompletionPanelForLoadedChapter &&
     showCompletionPanel;
+  const shouldHideCompletedChapterProgressCard =
+    suppressCompletionPanelForLoadedChapter &&
+    allDone &&
+    !isLoadingNextChapter &&
+    !shouldShowCompletionPanel;
   const greetingName = userName && userName !== "buddy" ? userName : "buddy";
   function buildLouisMessage() {
     const streakLine = `Hey ${greetingName}, you are on a ${streak} day streak.`;
@@ -3001,9 +3006,14 @@ export default function DashboardJourneyExperience({
                       onClick={(event) => {
                         event.stopPropagation();
                         if (isLocked) return;
+                        if (isCurrent) {
+                          setShowCurrentStudyDetails(false);
+                          setSuppressCompletionPanelForLoadedChapter(true);
+                          return;
+                        }
                         void switchCurrentStudyChapter(studyChapter.day_number);
                       }}
-                      disabled={isCurrent || isLocked || switchingStudyChapter !== null}
+                      disabled={isLocked || switchingStudyChapter !== null}
                       className={`flex items-center justify-between gap-3 rounded-2xl border px-3 py-3 text-left transition ${
                         isCurrent
                           ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)]"
@@ -3021,7 +3031,7 @@ export default function DashboardJourneyExperience({
                         </span>
                       </span>
                       <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-[#2f6685]" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
-                        {isLocked ? "🔒" : isCurrent ? "Loaded" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
+                        {isLocked ? "🔒" : isCurrent ? "Review" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
                       </span>
                     </button>
                   );
@@ -3286,7 +3296,7 @@ export default function DashboardJourneyExperience({
             </div>
             {homeHeader}
             {!shouldShowCompletionPanel ? renderCurrentStudyHeader() : null}
-            {!shouldShowCompletionPanel ? (
+            {!shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard ? (
             <div
               className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition"
             >
@@ -3370,7 +3380,7 @@ export default function DashboardJourneyExperience({
                             </span>
                           </span>
                           <span className={`shrink-0 text-xs font-black ${isPastOrCurrent && !isCurrent ? "text-[#2f6685]" : "bb-accent"}`}>
-                            {isLocked ? "🔒" : isCurrent ? "Loaded" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
+                            {isLocked ? "🔒" : isCurrent ? "Review" : switchingStudyChapter === studyChapter.day_number ? "Loading" : "Load"}
                           </span>
                         </button>
                       );
@@ -3740,8 +3750,8 @@ export default function DashboardJourneyExperience({
               {suppressCompletionPanelForLoadedChapter && allDone ? (
                 <div className="completion-panel-enter rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
                   <div className="flex items-start gap-3">
-                    <div className="shrink-0 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] p-1 shadow-sm">
-                      <LouisAvatar mood="reading" size={76} />
+                    <div className="-ml-2 shrink-0">
+                      <LouisAvatar mood="reading" size={114} />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
