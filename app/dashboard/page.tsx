@@ -72,6 +72,7 @@ const ZORIAN_RESTORATION_POPUP_KEY = "bb:bonus-popup:zorian-login-restoration-10
 const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
 const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 4 * 60 * 60 * 1000;
 const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
+const MAX_BADGE_POPUPS_PER_SESSION = 3;
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -133,6 +134,7 @@ type StorePurchaseRow = {
 
 type DashboardLouisNudge = {
   id: string;
+  category?: "progress" | "discovery" | "habit" | "bible_fact";
   eyebrow: string;
   title: string;
   lineOne: string;
@@ -927,6 +929,7 @@ export default function DashboardPage() {
     upgrades24h: 0,
   });
   const [loadingOwnerQuickStats, setLoadingOwnerQuickStats] = useState(false);
+  const [badgePopupsShownThisSession, setBadgePopupsShownThisSession] = useState(0);
 
   function getStreakMotivationSeenKey(currentUserId: string, dayKey: string) {
     return `bb:streak-motivation-seen:${currentUserId}:${dayKey}`;
@@ -1051,6 +1054,109 @@ export default function DashboardPage() {
       },
     ];
 
+    const compactCheckIn = buildCompactDashboardCheckIn(dailyChecklistData, userName);
+    pool.push(
+      {
+        id: "progress-current-study",
+        category: "progress",
+        eyebrow: "Progress Check",
+        title: dailyChecklistData?.allDone ? "Chapter wrapped" : "Your chapter is waiting",
+        lineOne: dailyChecklistData?.allDone ? "You finished every task for this chapter. That is real Bible habit work." : compactCheckIn.mainLine,
+        lineTwo: dailyChecklistData?.allDone ? "When you are ready, start the next chapter and keep the story moving." : compactCheckIn.helperLine,
+        buttonText: dailyChecklistData?.allDone ? "Review Tasks" : "Keep Going",
+        action: "daily-tasks",
+      },
+      {
+        id: "progress-xp-next-level",
+        category: "progress",
+        eyebrow: "XP Progress",
+        title: levelInfo ? `${levelInfo.pointsToNextLevel} XP to go` : "XP is stacking",
+        lineOne: levelInfo ? `You are level ${levelInfo.level}. Every Bible task pushes you closer to the next level.` : "Every Bible task helps your level move forward.",
+        lineTwo: "Small wins count here. Intro, reading, notes, games, and reflection all build momentum.",
+        buttonText: "Keep Building",
+        action: "daily-tasks",
+      },
+      {
+        id: "progress-diamonds",
+        category: "progress",
+        eyebrow: "Diamond Stash",
+        title: `${Math.max(0, Number(profile?.diamonds_count ?? 0))} diamonds saved`,
+        lineOne: "Diamonds are your reward currency. You earn them by finishing real Bible study work.",
+        lineTwo: "Stack enough and you can unlock themes, flames, boosts, and future Bible Buddies.",
+        buttonText: "Open Store",
+        action: "dismiss",
+      },
+    );
+
+    [
+      ["discovery-store", "Your diamonds have a purpose", "Tap your diamond card to open the Bible Buddy Store.", "Themes, flames, boosts, and Bible Buddies live there as unlocks."],
+      ["discovery-bible-studies", "Bible Studies are the main path", "Bible Buddy is built around chapter studies, not random devotionals.", "Pick the next chapter and follow the six-task rhythm."],
+      ["discovery-search-by-book", "Search by Bible book", "Inside Bible Studies, you can search by book and load a chapter onto your dashboard.", "It is the fast way to jump to a specific chapter."],
+      ["discovery-keywords", "Tap the underlined words", "People, places, and keywords can open a quick meaning card while you read.", "That helps the Bible feel less confusing in the moment."],
+      ["discovery-lil-louis", "Lil Louis knows your study", "Use the Lil Louis tab when you want help with your current chapter or next task.", "He is built to guide the Bible habit first."],
+      ["discovery-community", "Community is part of the habit", "The Community tab lets you share thoughts, ask questions, and encourage other Bible Buddies.", "One honest comment can help somebody else keep going."],
+      ["discovery-games", "Games help it stick", "Trivia and Scrambled are not filler.", "They help you remember what you just studied."],
+      ["discovery-tv", "Use TV when reading feels heavy", "Bible Buddy TV gives you a different way to keep learning.", "It is good for days when you need a lighter lane."],
+      ["discovery-themes", "Themes make it yours", "Unlocked themes can change the whole app feel across your account.", "Buy one in the store, then switch it from settings."],
+      ["discovery-flames", "Your streak flame can change", "Store flames let your dashboard fire match the style you unlock.", "It is a cosmetic reward for showing up."],
+      ["discovery-badges", "Badges mark real wins", "Badges are earned from real actions like reading, notes, games, comments, and streaks.", "They are separate achievement celebrations."],
+      ["discovery-reflection", "Reflection finishes the chapter", "The reflection question helps you turn reading into a response.", "It asks what the chapter is stirring in you."],
+      ["discovery-notes", "Deep notes slow the chapter down", "Chapter notes explain context, culture, meaning, and key verses.", "Use them before trivia so the details are fresh."],
+      ["discovery-progress-card", "The progress card tells the truth", "Your dashboard shows what chapter you are on and how many tasks are done.", "If you are unsure what to do next, start there."],
+      ["discovery-paid-flex", "Pro gives freer movement", "Free users follow the task order. Pro users can move through cards more freely.", "The structure still helps, but Pro gives more control."],
+      ["discovery-profile", "Your profile tells your story", "Your name, picture, level, badges, and streak help the community feel real.", "A complete profile makes Bible Buddy feel personal."],
+      ["discovery-chapter-order", "The story is ordered", "Bible Studies walk through Scripture like a connected story.", "Creation, Fall, Noah, Abraham, Jacob, Joseph, Moses, Sinai."],
+      ["discovery-completed-tasks", "Completed tasks can reopen", "When a task is done, you can still reopen it from completed tasks.", "That lets you review anytime."],
+      ["discovery-study-dashboard", "The dashboard is your study home", "When you choose a chapter, it loads into the study dashboard.", "Open, continue, finish, celebrate."],
+      ["discovery-perfect-trivia", "Perfect trivia matters", "Perfect trivia rounds can become part of future streaks and rewards.", "It gives you a reason to read carefully."],
+    ].forEach(([id, title, lineOne, lineTwo]) => pool.push({ id, category: "discovery", eyebrow: "Discovery", title, lineOne, lineTwo, buttonText: "Got it", action: "dismiss" }));
+
+    [
+      ["habit-open-first", "Open before you feel ready", "Most habits start before motivation shows up.", "Open the chapter first. The feeling usually follows the first small step."],
+      ["habit-two-minutes", "Two minutes still counts", "If the day is packed, do the chapter intro and keep the rhythm alive.", "Short faithful moments are better than waiting for perfect time."],
+      ["habit-dont-rush", "Do not rush the chapter", "The goal is not speed. The goal is understanding and consistency.", "Move through the six tasks like reps, not like a race."],
+      ["habit-one-task", "One task breaks the wall", "When you do not feel like studying, finish only the next task.", "One card completed often turns into real momentum."],
+      ["habit-streak-mercy", "Consistency needs grace", "A streak is a tool, not a chain.", "Show up honestly, and use Grace Days when life gets loud."],
+      ["habit-same-place", "Use the same place", "Opening Bible Buddy from the same spot each day trains your brain.", "The easier the start, the stronger the habit."],
+      ["habit-after-breakfast", "Attach it to a real moment", "Bible habits grow faster when they attach to something you already do.", "Try after breakfast, bedtime, or right after work."],
+      ["habit-before-scroll", "Scripture before scrolling", "Give God the first few focused minutes before the noise gets loud.", "Even one chapter task can reset the direction of the day."],
+      ["habit-review-notes", "Review before moving on", "A quick notes review makes the chapter easier to remember later.", "Understanding grows when you return to what you just read."],
+      ["habit-say-it-out-loud", "Say one line out loud", "Reading one verse out loud can slow your mind down.", "It turns the chapter from screen text into something you hear."],
+      ["habit-question", "Ask one better question", "Try asking: What does this show about God?", "One strong question can open a chapter more than ten rushed answers."],
+      ["habit-trivia-after-notes", "Notes before trivia", "Play trivia after the notes so your memory has something to grab.", "That makes the game feel fair and helps the chapter stick."],
+      ["habit-finish-loop", "Close the loop", "The reflection task finishes the chapter loop.", "It turns information into a response from your own heart."],
+      ["habit-missed-day", "Missed days are not the end", "A missed day is not failure. It is just the next place to restart.", "Come back simple. Open the next task and keep moving."],
+      ["habit-tiny-win", "Collect the tiny win", "Do the next card, earn the XP, and let that small win matter.", "Big Bible habits are built from small honest reps."],
+      ["habit-community", "Share one sentence", "You do not need a perfect post to join the community.", "One honest sentence about the chapter can help somebody else."],
+      ["habit-no-guilt", "No guilt loop", "Bible Buddy should pull you forward, not shame you backward.", "Start with the next task and let grace set the tone."],
+      ["habit-keep-place", "Keep your place", "The current study card keeps your chapter ready for you.", "You do not have to remember where you left off. Just continue."],
+      ["habit-pray-first", "Pray before the task", "Before reading, ask God to help you understand one true thing.", "That simple prayer can change how you read."],
+      ["habit-stack-week", "Stack a week", "Seven honest check-ins can change how normal Bible study feels.", "Do today's piece. Let tomorrow worry about tomorrow."],
+    ].forEach(([id, title, lineOne, lineTwo]) => pool.push({ id, category: "habit", eyebrow: "Habit Builder", title, lineOne, lineTwo, buttonText: "Got it", action: "dismiss" }));
+
+    [
+      ["fact-genesis", "Genesis means beginning", "Genesis opens with origins: creation, humanity, sin, promise, covenant, and family lines.", "It sets the foundation for the whole Bible story."],
+      ["fact-exodus", "Exodus means going out", "Exodus tells how God brings Israel out of slavery and forms them as His covenant people.", "Deliverance comes before Sinai."],
+      ["fact-sinai", "Sinai is a turning point", "At Sinai, rescued people learn what it means to belong to a holy God.", "The mountain moves the story from escape into covenant identity."],
+      ["fact-tabernacle", "The tabernacle means God dwells", "The tabernacle shows that God wants to dwell among His people.", "Its design teaches holiness, access, sacrifice, and presence."],
+      ["fact-leviticus", "Leviticus is about holiness", "Leviticus is not random rules.", "It teaches how a holy God lives among a covenant people."],
+      ["fact-covenant", "Covenant means committed relationship", "A covenant is more than a contract.", "It is a serious relationship with promises and responsibilities."],
+      ["fact-passover", "Passover remembers rescue", "Passover helped Israel remember that God delivered them from judgment and slavery.", "The meal turned history into worship and identity."],
+      ["fact-manna", "Manna trained trust", "Manna was daily bread in the wilderness.", "It taught Israel to trust God one day at a time."],
+      ["fact-joseph", "Joseph connects Genesis to Exodus", "Joseph's story explains how Jacob's family ends up in Egypt.", "That sets the stage for Moses and deliverance."],
+      ["fact-abraham", "Abraham carries promise", "God promises Abraham land, descendants, blessing, and a family line.", "That promise drives the Bible story forward."],
+      ["fact-jacob", "Jacob becomes Israel", "Jacob's new name marks identity and destiny.", "The family story becomes the nation story."],
+      ["fact-sacrifice", "Sacrifice teaches access", "In the Old Testament, sacrifice showed that approaching God was serious.", "It taught sin, cleansing, worship, gratitude, and fellowship."],
+      ["fact-priesthood", "Priests represented the people", "Priests served at the altar and helped Israel approach God.", "Their role showed both God's holiness and His mercy."],
+      ["fact-sabbath", "Sabbath is trust", "Sabbath was not only rest.", "It was a weekly act of trust in God as provider."],
+      ["fact-image", "Humans bear God's image", "Genesis says humanity is made in the image of God.", "That gives people dignity, purpose, and responsibility."],
+      ["fact-eden", "Eden is temple-like", "Eden is more than a garden scene.", "It is a place of God's presence, human vocation, and holy order."],
+      ["fact-genealogies", "Genealogies carry story", "Bible genealogies are not filler.", "They preserve identity, promise, memory, and direction."],
+      ["fact-wilderness", "The wilderness tests trust", "The wilderness is where Israel learns dependence after rescue.", "Freedom from Egypt still has to become faith in God."],
+      ["fact-law", "Law follows rescue", "God gives commandments after He rescues Israel.", "Obedience responds to grace; it does not create rescue."],
+      ["fact-connected-story", "The Bible is one connected story", "The chapters are not isolated pieces.", "Creation, fall, promise, rescue, covenant, kingdom, exile, and redemption connect."],
+    ].forEach(([id, title, lineOne, lineTwo]) => pool.push({ id, category: "bible_fact", eyebrow: "Bible Fact", title, lineOne, lineTwo, buttonText: "Nice", action: "dismiss" }));
+
     if (typeof window !== "undefined" && "Notification" in window && Notification.permission !== "granted") {
       pool.push({
         id: "enable-notifications",
@@ -1095,9 +1201,21 @@ export default function DashboardPage() {
   function pickDashboardLouisNudge(currentUserId: string, dayKey: string) {
     const pool = buildDashboardLouisNudgePool();
     if (pool.length === 0) return null;
+    const dayNumber = Number(dayKey.replace(/\D/g, "").slice(-2) || "0");
+    const categoryOrder: Array<NonNullable<DashboardLouisNudge["category"]>> =
+      dayNumber % 4 === 0
+        ? ["progress", "discovery", "habit", "bible_fact"]
+        : dayNumber % 4 === 1
+          ? ["discovery", "progress", "habit", "bible_fact"]
+          : dayNumber % 4 === 2
+            ? ["habit", "progress", "discovery", "bible_fact"]
+            : ["bible_fact", "progress", "discovery", "habit"];
+    const selectedCategory =
+      categoryOrder.find((category) => pool.some((item) => (item.category ?? "discovery") === category)) ?? "discovery";
+    const categoryPool = pool.filter((item) => (item.category ?? "discovery") === selectedCategory);
     const key = getDashboardLouisNudgeRotationKey(currentUserId, dayKey);
     const currentIndex = Number(window.localStorage.getItem(key) || "0");
-    const selected = pool[Math.abs(currentIndex) % pool.length] ?? pool[0];
+    const selected = categoryPool[Math.abs(currentIndex) % categoryPool.length] ?? pool[0];
     window.localStorage.setItem(key, String(currentIndex + 1));
     return selected;
   }
@@ -2342,19 +2460,13 @@ export default function DashboardPage() {
   }, [userId]);
 
   useEffect(() => {
-    if ((hasBlockingDashboardOverlay && !pendingDailyStreakSequence) || activeEarnedBadge || earnedBadgeQueue.length === 0) return;
-    if (typeof window !== "undefined" && userId) {
-      const lastCheckInShownAt = Number(window.localStorage.getItem(getDashboardLouisCheckInLastShownKey(userId)) || "0");
-      const lastBadgeShownAt = Number(window.localStorage.getItem(getDashboardBadgeLastShownKey(userId)) || "0");
-      const lastPopupShownAt = Math.max(lastCheckInShownAt, lastBadgeShownAt);
-      if (lastPopupShownAt && Date.now() - lastPopupShownAt < DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS) {
-        return;
-      }
-    }
+    if (hasBlockingDashboardOverlay || activeEarnedBadge || earnedBadgeQueue.length === 0) return;
+    if (badgePopupsShownThisSession >= MAX_BADGE_POPUPS_PER_SESSION) return;
 
     const [nextBadge, ...remainingBadges] = earnedBadgeQueue;
     setEarnedBadgeQueue(remainingBadges);
     setActiveEarnedBadge(nextBadge);
+    setBadgePopupsShownThisSession((current) => current + 1);
     setPendingDailyStreakSequence(false);
     setShowStreakMotivationModal(false);
     setShowStreakMotivationTaskPrompt(false);
@@ -2362,7 +2474,6 @@ export default function DashboardPage() {
     if (typeof window !== "undefined" && userId) {
       writePendingBadgeQueue(userId, remainingBadges);
       window.localStorage.setItem(getDashboardBadgeLastShownKey(userId), String(Date.now()));
-      window.localStorage.setItem(getDashboardLouisCheckInLastShownKey(userId), String(Date.now()));
     }
 
     window.setTimeout(() => {
@@ -2373,7 +2484,7 @@ export default function DashboardPage() {
         colors: ["#7BAFD4", "#f7c948", "#22c55e", "#ffffff"],
       });
     }, 240);
-  }, [activeEarnedBadge, earnedBadgeQueue, hasBlockingDashboardOverlay, pendingDailyStreakSequence, userId]);
+  }, [activeEarnedBadge, badgePopupsShownThisSession, earnedBadgeQueue, hasBlockingDashboardOverlay, pendingDailyStreakSequence, userId]);
 
   async function completeSwipeHint(options: { openExplore?: boolean } = {}) {
     if (isSavingSwipeHint) return;

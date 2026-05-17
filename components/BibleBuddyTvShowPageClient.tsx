@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import BibleBuddyTvEpisodeModal from "./BibleBuddyTvEpisodeModal";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { logActionToMasterActions } from "../lib/actionRecorder";
+import { awardBibleBuddyTvWatchOnce, buildBibleBuddyTvWatchRewardLabel } from "../lib/bibleBuddyTvRewards";
 import {
   bibleBuddyTvTitles,
   type BibleBuddyTvEpisode,
@@ -234,13 +235,18 @@ export default function BibleBuddyTvShowPageClient({
     const { resolvedUserId, resolvedUserName } = await ensureTrackingUser();
 
     if (resolvedUserId) {
-      const actionLabel = `${categoryLabel} • ${title.title} • ${episode.contentLabel || (isMovie ? "Movie" : `Episode ${episode.episodeNumber}`)} • ${episode.title}`;
-      void logActionToMasterActions(
-        resolvedUserId,
-        ACTION_TYPE.bible_buddy_tv_video_started,
+      const actionLabel = buildBibleBuddyTvWatchRewardLabel({
+        categoryLabel,
+        title: title.title,
+        episodeLabel: episode.contentLabel || (isMovie ? "Movie" : `Episode ${episode.episodeNumber}`),
+        episodeTitle: episode.title,
+        episodeId: episode.id,
+      });
+      void awardBibleBuddyTvWatchOnce({
+        userId: resolvedUserId,
+        username: resolvedUserName,
         actionLabel,
-        resolvedUserName
-      ).catch((error) => {
+      }).catch((error) => {
         console.error("[NAV] Failed to track Bible Buddy TV video start:", error);
       });
     }

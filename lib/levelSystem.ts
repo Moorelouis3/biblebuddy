@@ -59,6 +59,7 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   study_group_feed_viewed: 1,
   study_group_article_opened: 2,
   study_group_bible_study_card_opened: 2,
+  bible_buddy_tv_video_started: 10,
   louis_daily_task_bonus: TASK_XP.chapterBonus,
   badge_earned: 0,
 };

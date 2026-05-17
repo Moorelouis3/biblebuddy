@@ -17,6 +17,7 @@ export const DIAMOND_REWARDS = {
   perfectTrivia: 10,
   perfectScrambled: 10,
   reflection: 5,
+  tvVideoWatch: 1,
   levelUp: 50,
 } as const;
 
