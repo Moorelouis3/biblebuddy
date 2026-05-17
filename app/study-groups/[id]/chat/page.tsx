@@ -5131,16 +5131,35 @@ export default function GroupChatPage() {
       {/* â”€â”€ Feed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div ref={feedRef} className={isDashboardEmbed ? "pb-4" : "flex-1 overflow-y-auto pb-32"}>
 
-        {/* â”€â”€ Hub article viewer (iframe, full-width, no padding) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* â”€â”€ Hub article viewer â”€â”€ */}
         {selectedHubItem && (
-          <div className="w-full">
-            <iframe
-              key={selectedHubItem.path}
-              src={selectedHubItem.path}
-              title={selectedHubItem.title}
-              className="w-full border-0 block bg-white"
-              style={{ height: "calc(100vh - 118px)", minHeight: 600 }}
-            />
+          <div className="mx-auto max-w-2xl px-4 py-4">
+            <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+              <div className="flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4">
+                <div className="min-w-0">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#b7794d)]">
+                    {selectedHubItem.type === "article" ? "Article" : "Question"}
+                  </p>
+                  <h2 className="mt-1 text-xl font-black leading-snug text-[var(--bb-text-primary,#111827)]">{selectedHubItem.title}</h2>
+                  <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{selectedHubItem.subtitle}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedHubItem(null)}
+                  className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
+                  aria-label="Close article"
+                >
+                  ×
+                </button>
+              </div>
+              <iframe
+                key={selectedHubItem.path}
+                src={selectedHubItem.path}
+                title={selectedHubItem.title}
+                className="block w-full border-0 bg-[var(--bb-card,#ffffff)]"
+                style={{ height: "calc(100vh - 220px)", minHeight: 620 }}
+              />
+            </div>
           </div>
         )}
 
@@ -6108,8 +6127,6 @@ export default function GroupChatPage() {
           /* â”€â”€ HUB TABS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
           ) : hubCategories.some((c) => c.id === activeTab) ? (() => {
             const hubCat = hubCategories.find((c) => c.id === activeTab)!;
-            const bg = "#ffffff";
-            const borderColor = "#e5e7eb";
 
             // â”€â”€ Category list view (items from static config) â”€â”€
             const hubCatStatic = HUB_CONTENT.find((c) => normalizeHubCategoryName(c.name) === normalizeHubCategoryName(hubCat.name));
@@ -6118,98 +6135,122 @@ export default function GroupChatPage() {
             const questions = allItems.filter((i) => i.type === "question");
             const items = hubView === "articles" ? articles : questions;
             return (
-              <div className="flex flex-col gap-4">
-                {/* Articles / Questions toggle */}
-                <div className="flex justify-center">
-                  <div className="inline-flex rounded-lg border overflow-hidden shadow-sm" style={{ borderColor }}>
+              <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+                <div className="flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4">
+                  <div className="min-w-0">
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#b7794d)]">Community Library</p>
+                    <h2 className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#111827)]">{hubCat.emoji} {hubCat.name}</h2>
+                    <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">Choose an article or question to open it in this area.</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedHubItem(null);
+                      setActiveTab("home");
+                    }}
+                    className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
+                    aria-label="Close section"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div className="bg-[var(--bb-surface-soft,#f8fbff)] px-5 py-5">
+                  <div className="mb-4 flex justify-center">
+                    <div className="inline-flex overflow-hidden rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-1 shadow-sm">
                     <button
-                      className="px-5 py-2 text-sm font-semibold transition focus:outline-none"
-                      style={{ backgroundColor: hubView === "articles" ? bg : "transparent", color: hubView === "articles" ? "#1a1a1a" : "rgba(0,0,0,0.45)" }}
+                      className={`rounded-xl px-5 py-2 text-sm font-black transition focus:outline-none ${
+                        hubView === "articles"
+                          ? "bg-[var(--bb-accent,#b7794d)] text-[var(--bb-button-text,#ffffff)]"
+                          : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface,#ffffff)]"
+                      }`}
                       onClick={() => setHubView("articles")}
                       type="button"
                     >
                       Articles
                     </button>
                     <button
-                      className="px-5 py-2 text-sm font-semibold transition focus:outline-none border-l"
-                      style={{ borderColor, backgroundColor: hubView === "questions" ? bg : "transparent", color: hubView === "questions" ? "#1a1a1a" : "rgba(0,0,0,0.45)" }}
+                      className={`rounded-xl px-5 py-2 text-sm font-black transition focus:outline-none ${
+                        hubView === "questions"
+                          ? "bg-[var(--bb-accent,#b7794d)] text-[var(--bb-button-text,#ffffff)]"
+                          : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface,#ffffff)]"
+                      }`}
                       onClick={() => setHubView("questions")}
                       type="button"
                     >
                       Questions
                     </button>
+                    </div>
                   </div>
-                </div>
 
-                {/* Content list */}
-                {items.length === 0 ? (
-                  <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm text-center">
-                    <p className="text-gray-400 text-sm">No {hubView} yet in this category.</p>
-                  </div>
-                ) : (
-                  <div className="flex flex-col gap-3">
-                    {items.map((item) => (
-                      <div
-                        key={item.id}
-                        role="button"
-                        tabIndex={0}
-                        onClick={() => setSelectedHubItem(item)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            setSelectedHubItem(item);
-                          }
-                        }}
-                        className="w-full text-left rounded-xl p-4 shadow-sm border hover:shadow-md transition cursor-pointer"
-                        style={{ backgroundColor: bg, borderColor }}
-                      >
-                        <div className="min-w-0 flex-1">
-                          <p className="font-bold text-gray-900 text-[15px] leading-snug">{item.title}</p>
-                          <p className="text-gray-600 text-sm mt-1">{item.subtitle}</p>
-                        </div>
-                        <div className="flex items-center gap-3 mt-3 pt-3 border-t border-black/5">
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              void handleHubItemLike(item);
-                            }}
-                            className="flex items-center gap-1.5 text-sm transition"
-                            style={{ color: hubItemStats[item.path]?.liked ? "#e53e3e" : "#7b7b7b" }}
-                          >
-                            <svg className={`w-4 h-4 ${hubLikeAnimatingPaths.has(item.path) ? "animate-heart-pop" : ""}`} fill={hubItemStats[item.path]?.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                            </svg>
-                          </button>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setShowHubLikesFor(item);
-                            }}
-                            className="text-sm text-gray-500 hover:text-gray-700 hover:underline transition"
-                          >
-                            {hubItemStats[item.path]?.likeCount || 0}
-                          </button>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
+                  {items.length === 0 ? (
+                    <div className="rounded-2xl border border-dashed border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-8 text-center shadow-sm">
+                      <p className="text-sm font-semibold text-[var(--bb-text-muted,#9ca3af)]">No {hubView} yet in this category.</p>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-3">
+                      {items.map((item) => (
+                        <div
+                          key={item.id}
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => setSelectedHubItem(item)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
                               setSelectedHubItem(item);
-                            }}
-                            className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#b7794d] transition"
-                          >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                            </svg>
-                            <span>{hubItemStats[item.path]?.commentCount || 0}</span>
-                            <span>Comments</span>
-                          </button>
+                            }
+                          }}
+                          className="w-full cursor-pointer rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-sm transition hover:border-[var(--bb-accent,#b7794d)] hover:shadow-md"
+                        >
+                          <div className="min-w-0 flex-1">
+                            <p className="text-[15px] font-black leading-snug text-[var(--bb-text-primary,#111827)]">{item.title}</p>
+                            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">{item.subtitle}</p>
+                          </div>
+                          <div className="mt-3 flex items-center gap-3 border-t border-[var(--bb-card-border,#e5e7eb)] pt-3">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                void handleHubItemLike(item);
+                              }}
+                              className="flex items-center gap-1.5 text-sm transition"
+                              style={{ color: hubItemStats[item.path]?.liked ? "#e53e3e" : "var(--bb-text-muted,#9ca3af)" }}
+                            >
+                              <svg className={`h-4 w-4 ${hubLikeAnimatingPaths.has(item.path) ? "animate-heart-pop" : ""}`} fill={hubItemStats[item.path]?.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                              </svg>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setShowHubLikesFor(item);
+                              }}
+                              className="text-sm text-[var(--bb-text-secondary,#4b5563)] transition hover:text-[var(--bb-text-primary,#111827)] hover:underline"
+                            >
+                              {hubItemStats[item.path]?.likeCount || 0}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedHubItem(item);
+                              }}
+                              className="flex items-center gap-1.5 text-sm text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-accent,#b7794d)]"
+                            >
+                              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                              </svg>
+                              <span>{hubItemStats[item.path]?.commentCount || 0}</span>
+                              <span>Comments</span>
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             );
           })() : (
@@ -7119,17 +7160,76 @@ export default function GroupChatPage() {
               <h2 className="mt-2 text-xl font-black leading-snug text-[var(--bb-text-primary,#111827)]">{activeFeedPost.title}</h2>
             )}
           </div>
-          <button
-            type="button"
-            onClick={() => {
-              setSelectedFeedPost(null);
-              setDeepLinkedCommentId(null);
-            }}
-            className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
-            aria-label="Close post"
-          >
-            ×
-          </button>
+          <div className="flex flex-shrink-0 items-center gap-2">
+            {(userId === activeFeedPost.user_id || isLeaderOrMod) && (
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setActivePostMenuId(activePostMenuId === activeFeedPost.id ? null : activeFeedPost.id);
+                  }}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
+                  aria-label="Post options"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6h.01M12 12h.01M12 18h.01" />
+                  </svg>
+                </button>
+                {activePostMenuId === activeFeedPost.id && (
+                  <div className="absolute right-0 top-12 z-20 min-w-[150px] overflow-hidden rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-lg">
+                    {canEditFeedPost(activeFeedPost) && (
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          startEditingFeedPost(activeFeedPost);
+                        }}
+                        className="w-full px-4 py-3 text-left text-sm font-medium text-[var(--bb-text-secondary,#374151)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
+                      >
+                        Edit Post
+                      </button>
+                    )}
+                    {isLeaderOrMod && (
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          void handleTogglePin(activeFeedPost);
+                        }}
+                        disabled={pinningPostId === activeFeedPost.id}
+                        className="w-full px-4 py-3 text-left text-sm font-medium text-amber-700 transition hover:bg-amber-50 disabled:opacity-50"
+                      >
+                        {pinningPostId === activeFeedPost.id ? "Saving..." : activeFeedPost.is_pinned ? "Unpin Post" : "Pin to Top"}
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setActivePostMenuId(null);
+                        setDeletePostId(activeFeedPost.id);
+                      }}
+                      className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 transition hover:bg-red-50"
+                    >
+                      Delete Post
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedFeedPost(null);
+                setDeepLinkedCommentId(null);
+              }}
+              className="grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
+              aria-label="Close post"
+            >
+              ×
+            </button>
+          </div>
         </div>
 
         <div className="px-5 py-5">
@@ -7359,7 +7459,7 @@ export default function GroupChatPage() {
             )}
             {pollSet && (
               <div className="mt-3">
-                <GroupWeeklyPollCard pollSet={pollSet} userId={userId} compactResults />
+                <GroupWeeklyPollCard pollSet={pollSet} userId={userId} compactResults onOpen={() => setSelectedFeedPost(post)} />
               </div>
             )}
             {triviaSet && (
@@ -7373,6 +7473,7 @@ export default function GroupChatPage() {
                   prompt={questionSet.prompt}
                   intro={questionSet.intro}
                   commentPrompt={questionSet.comment_prompt}
+                  onOpen={() => setSelectedFeedPost(post)}
                 />
               </div>
             )}

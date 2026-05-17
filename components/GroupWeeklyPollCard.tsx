@@ -24,10 +24,12 @@ export default function GroupWeeklyPollCard({
   pollSet,
   userId,
   compactResults = false,
+  onOpen,
 }: {
   pollSet: PollFeedSet;
   userId: string | null;
   compactResults?: boolean;
+  onOpen?: () => void;
 }) {
   const [currentVote, setCurrentVote] = useState<string | null>(pollSet.current_user_vote);
   const [voteCounts, setVoteCounts] = useState<Record<string, number>>(pollSet.vote_counts);
@@ -89,6 +91,10 @@ export default function GroupWeeklyPollCard({
   }, [pollSet.id, currentVote, totalVotes]);
 
   async function handleVote(optionKey: string) {
+    if (compactResults && onOpen) {
+      onOpen();
+      return;
+    }
     if (!userId || submitting) return;
     setSubmitting(optionKey);
     setError(null);
@@ -128,7 +134,22 @@ export default function GroupWeeklyPollCard({
   }
 
   return (
-    <div onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()}>
+    <div
+      role={compactResults && onOpen ? "button" : undefined}
+      tabIndex={compactResults && onOpen ? 0 : undefined}
+      onClick={(event) => {
+        event.stopPropagation();
+        if (compactResults && onOpen) onOpen();
+      }}
+      onKeyDown={(event) => {
+        event.stopPropagation();
+        if (compactResults && onOpen && (event.key === "Enter" || event.key === " ")) {
+          event.preventDefault();
+          onOpen();
+        }
+      }}
+      className={compactResults && onOpen ? "cursor-pointer" : undefined}
+    >
       {pollSet.intro ? <p className="text-sm leading-relaxed text-[var(--bb-text-secondary,#4b5563)]">{pollSet.intro}</p> : null}
       <div className="mt-4 space-y-2.5">
         {pollSet.options.map((option) => {
@@ -141,7 +162,10 @@ export default function GroupWeeklyPollCard({
             <button
               key={option.key}
               type="button"
-              onClick={() => void handleVote(option.key)}
+              onClick={(event) => {
+                event.stopPropagation();
+                void handleVote(option.key);
+              }}
               disabled={!userId || !!submitting}
               className={`relative w-full overflow-hidden rounded-2xl border px-4 py-3 text-left transition ${
                 selected
