@@ -61,7 +61,7 @@ import {
   THEME_STORE_ITEMS,
   type BibleBuddyStoreItem,
 } from "../../lib/bibleBuddyStore";
-import { normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
 import { SELECTED_BUDDY_STORAGE_KEY, getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "../../lib/buddyAvatars";
 
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
@@ -2913,6 +2913,7 @@ export default function DashboardPage() {
   async function applyPurchasedFlame(flameId: string) {
     const normalizedFlameId = normalizeFlameCosmeticId(flameId);
     if (typeof window !== "undefined") {
+      window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizedFlameId);
       window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: normalizedFlameId } }));
     }
     setProfile((current) => current ? { ...current, selected_streak_flame: normalizedFlameId } : current);
@@ -3252,6 +3253,10 @@ export default function DashboardPage() {
         if (!didCancel) {
           const localSelectedBuddy =
             typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
+          const localSelectedFlame =
+            typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
+          const dbSelectedFlame = normalizeFlameCosmeticId(profileData?.selected_streak_flame);
+          const resolvedSelectedFlame = dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame);
           setProfile({
             is_paid: profileData?.is_paid === true,
             daily_credits: typeof profileData?.daily_credits === "number" ? profileData.daily_credits : 0,
@@ -3260,7 +3265,7 @@ export default function DashboardPage() {
             current_streak: profileData?.current_streak ?? 0,
             grace_days_count: Math.max(0, Math.min(5, Number(profileData?.grace_days_count ?? 0))),
             diamonds_count: typeof profileData?.diamonds_count === "number" ? Math.max(0, profileData.diamonds_count) : null,
-            selected_streak_flame: normalizeFlameCosmeticId(profileData?.selected_streak_flame),
+            selected_streak_flame: resolvedSelectedFlame,
             selected_buddy_avatar: normalizeBuddyAvatarId(profileData?.selected_buddy_avatar || localSelectedBuddy),
             daily_login_gift_last_visit_at: nowIso,
             daily_login_gift_last_shown_date: shouldShowDailyLoginGift ? todayKey : profileData?.daily_login_gift_last_shown_date ?? null,
@@ -3638,6 +3643,21 @@ export default function DashboardPage() {
 
     window.addEventListener("bb:diamonds-awarded", handleDiamondsAwarded);
     return () => window.removeEventListener("bb:diamonds-awarded", handleDiamondsAwarded);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    function handleStreakFlameChanged(event: Event) {
+      const customEvent = event as CustomEvent<{ flameId?: string }>;
+      const nextFlameId = normalizeFlameCosmeticId(
+        customEvent.detail?.flameId || window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY),
+      );
+      window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, nextFlameId);
+      setProfile((current) => current ? { ...current, selected_streak_flame: nextFlameId } : current);
+    }
+
+    window.addEventListener("bb:streak-flame-changed", handleStreakFlameChanged);
+    return () => window.removeEventListener("bb:streak-flame-changed", handleStreakFlameChanged);
   }, []);
 
   useEffect(() => {

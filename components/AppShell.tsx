@@ -30,8 +30,10 @@ import {
 import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
 import StreakFlameBadge from "./StreakFlameBadge";
+import StreakFlameEmoji from "./StreakFlameEmoji";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, type FlameCosmeticId } from "../lib/flameCosmetics";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
 
 const FeedbackModal = dynamic(() => import("./FeedbackModal").then((mod) => mod.FeedbackModal), {
@@ -191,6 +193,26 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    function handleStreakFlameChanged(event: Event) {
+      const customEvent = event as CustomEvent<{ flameId?: string }>;
+      const nextFlameId = normalizeFlameCosmeticId(
+        customEvent.detail?.flameId || window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY),
+      );
+      window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, nextFlameId);
+      setHeaderSelectedFlame(nextFlameId);
+    }
+
+    handleStreakFlameChanged(new CustomEvent("bb:streak-flame-changed"));
+    window.addEventListener("bb:streak-flame-changed", handleStreakFlameChanged);
+    window.addEventListener("storage", handleStreakFlameChanged);
+    return () => {
+      window.removeEventListener("bb:streak-flame-changed", handleStreakFlameChanged);
+      window.removeEventListener("storage", handleStreakFlameChanged);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
     function handlePurchasedTheme(event: Event) {
       const customEvent = event as CustomEvent<{ themeId?: string }>;
       const themeId = normalizeAppThemeId(customEvent.detail?.themeId);
@@ -309,6 +331,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [headerCurrentLevel, setHeaderCurrentLevel] = useState<number>(1);
   const [headerCurrentStreak, setHeaderCurrentStreak] = useState<number>(0);
   const [headerGraceDays, setHeaderGraceDays] = useState<number>(0);
+  const [headerSelectedFlame, setHeaderSelectedFlame] = useState<FlameCosmeticId>("default");
   const [headerProfileImageUrl, setHeaderProfileImageUrl] = useState<string | null>(null);
   const [headerProfileName, setHeaderProfileName] = useState<string>("You");
   const [headerMemberBadge, setHeaderMemberBadge] = useState<string | null>(null);
@@ -445,11 +468,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function loadHeaderDashboardStats(currentUserId: string) {
     let { data, error }: { data: any; error: any } = await supabase
       .from("profile_stats")
-      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username, selected_buddy_avatar, member_badge")
+      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username, selected_buddy_avatar, selected_streak_flame, member_badge")
       .eq("user_id", currentUserId)
       .maybeSingle();
 
-    if (error && /grace_days_count|last_grace_day_earned_at|selected_buddy_avatar/i.test(error.message || "")) {
+    if (error && /grace_days_count|last_grace_day_earned_at|selected_buddy_avatar|selected_streak_flame/i.test(error.message || "")) {
       const fallback = await supabase
         .from("profile_stats")
         .select("current_level, current_streak, profile_image_url, display_name, username, member_badge")
@@ -469,6 +492,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, normalizedBuddy);
       setSelectedBuddyId(normalizedBuddy);
       window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: normalizedBuddy } }));
+    }
+    if (typeof window !== "undefined") {
+      const localSelectedFlame = window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY);
+      const dbSelectedFlame = normalizeFlameCosmeticId(data?.selected_streak_flame);
+      const resolvedSelectedFlame = dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame);
+      window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, resolvedSelectedFlame);
+      setHeaderSelectedFlame(resolvedSelectedFlame);
     }
 
     setHeaderCurrentLevel(typeof data?.current_level === "number" && data.current_level > 0 ? data.current_level : 1);
@@ -2098,11 +2128,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     aria-label={`Open streak details for ${headerCurrentStreak} day streak`}
                     title={`${headerCurrentStreak} day streak`}
                   >
-                    <span
-                      className={`text-base leading-none ${headerCurrentStreak >= 30 ? "" : "grayscale opacity-60"}`}
-                      aria-hidden="true"
-                    >
-                      🔥
+                    <span className={headerCurrentStreak >= 30 ? "" : "grayscale opacity-60"} aria-hidden="true">
+                      <StreakFlameEmoji flameId={headerSelectedFlame} size={18} title={`${headerCurrentStreak} day streak`} />
                     </span>
                     <span className="text-xs font-semibold leading-none text-gray-700">
                       {headerCurrentStreak}

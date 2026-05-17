@@ -9,6 +9,7 @@ export type FlameCosmetic = {
 };
 
 export const DEFAULT_FLAME_COSMETIC: FlameCosmeticId = "default";
+export const ACTIVE_STREAK_FLAME_STORAGE_KEY = "bb:active-streak-flame";
 
 export const FLAME_COSMETICS: FlameCosmetic[] = [
   { id: "default", name: "Classic Flame", light: "#FDBA74", main: "#F97316", dark: "#B91C1C" },

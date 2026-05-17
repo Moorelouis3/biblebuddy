@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import StreakFlameEmoji from "./StreakFlameEmoji";
 
 type Props = {
   currentStreak?: number | null;
+  flameId?: string | null;
   className?: string;
 };
 
-export default function StreakFlameBadge({ currentStreak, className = "" }: Props) {
+export default function StreakFlameBadge({ currentStreak, flameId, className = "" }: Props) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
 
@@ -44,7 +46,7 @@ export default function StreakFlameBadge({ currentStreak, className = "" }: Prop
         aria-label={`${streakLabel} badge`}
         title={streakLabel}
       >
-        🔥
+        <StreakFlameEmoji flameId={flameId} size={18} title={streakLabel} />
       </button>
       {open ? (
         <div className="absolute left-0 top-full z-30 mt-2 w-64 rounded-2xl border border-[#e9dccb] bg-[#fffaf4] p-3 shadow-xl">

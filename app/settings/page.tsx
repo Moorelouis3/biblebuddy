@@ -12,7 +12,7 @@ import {
   type AppThemeId,
 } from "../../lib/appThemes";
 import { STREAK_FLAME_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
-import { FLAME_COSMETICS, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, FLAME_COSMETICS, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
 import { isAdminUser } from "../../lib/readingProgress";
 
@@ -111,7 +111,14 @@ export default function SettingsPage() {
         setFirstName(nameParts.firstName);
         setLastName(nameParts.lastName);
         setSelectedTheme(normalizeAppThemeId(profile?.app_theme));
-        setSelectedFlame(normalizeFlameCosmeticId(profile?.selected_streak_flame));
+        const localSelectedFlame =
+          typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
+        const dbSelectedFlame = normalizeFlameCosmeticId(profile?.selected_streak_flame);
+        const resolvedSelectedFlame = dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame);
+        setSelectedFlame(resolvedSelectedFlame);
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, resolvedSelectedFlame);
+        }
         setStorePurchases((purchases || []) as StorePurchaseRow[]);
       }
       setLoading(false);
@@ -294,6 +301,7 @@ export default function SettingsPage() {
     setSettingsMessage(null);
     setSelectedFlame(flameId);
     if (typeof window !== "undefined") {
+      window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, flameId);
       window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId } }));
     }
     try {
@@ -308,6 +316,10 @@ export default function SettingsPage() {
       setSettingsMessage("Streak flame updated.");
     } catch (error: any) {
       setSelectedFlame(previousFlame);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, previousFlame);
+        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: previousFlame } }));
+      }
       setSettingsMessage(
         /selected_streak_flame/i.test(error.message || "")
           ? "Streak flames need one database update before they can save. Run ADD_SELECTED_STREAK_FLAME.sql in Supabase."
