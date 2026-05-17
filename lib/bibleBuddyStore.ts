@@ -1,4 +1,5 @@
 import type { AppThemeId } from "./appThemes";
+import type { FlameCosmeticId } from "./flameCosmetics";
 
 export type StoreItemKind = "theme" | "streak_flame" | "buddy" | "boost" | "mystery";
 
@@ -11,6 +12,7 @@ export type BibleBuddyStoreItem = {
   emoji: string;
   accent: string;
   themeId?: AppThemeId;
+  flameId?: FlameCosmeticId;
   comingSoon?: boolean;
   repeatable?: boolean;
 };
@@ -28,12 +30,12 @@ export const THEME_STORE_ITEMS: BibleBuddyStoreItem[] = [
 ];
 
 export const STREAK_FLAME_STORE_ITEMS: BibleBuddyStoreItem[] = [
-  { id: "flame-orange", kind: "streak_flame", title: "Orange Flame", subtitle: "Classic 30 day streak fire.", price: 250, emoji: "🔥", accent: "#EA580C" },
-  { id: "flame-blue", kind: "streak_flame", title: "Blue Flame", subtitle: "Cool flame for steady readers.", price: 250, emoji: "🔥", accent: "#2563EB" },
-  { id: "flame-gold", kind: "streak_flame", title: "Gold Flame", subtitle: "A reward flame for strong runs.", price: 250, emoji: "🔥", accent: "#B7791F" },
-  { id: "flame-purple", kind: "streak_flame", title: "Purple Flame", subtitle: "Royal streak glow.", price: 250, emoji: "🔥", accent: "#7C3AED" },
-  { id: "flame-green", kind: "streak_flame", title: "Green Flame", subtitle: "Growth streak glow.", price: 250, emoji: "🔥", accent: "#16A34A" },
-  { id: "flame-black", kind: "streak_flame", title: "Black Flame", subtitle: "Clean high contrast streak style.", price: 250, emoji: "🔥", accent: "#050505" },
+  { id: "flame-orange", kind: "streak_flame", title: "Orange Flame", subtitle: "Classic 30 day streak fire.", price: 250, emoji: "🔥", accent: "#EA580C", flameId: "orange" },
+  { id: "flame-blue", kind: "streak_flame", title: "Blue Flame", subtitle: "Carolina blue with a deep blue base.", price: 250, emoji: "🔥", accent: "#38BDF8", flameId: "blue" },
+  { id: "flame-gold", kind: "streak_flame", title: "Gold Flame", subtitle: "Bright gold with a deep amber base.", price: 250, emoji: "🔥", accent: "#F59E0B", flameId: "gold" },
+  { id: "flame-purple", kind: "streak_flame", title: "Purple Flame", subtitle: "Light purple with a royal dark base.", price: 250, emoji: "🔥", accent: "#8B5CF6", flameId: "purple" },
+  { id: "flame-green", kind: "streak_flame", title: "Green Flame", subtitle: "Light green with a deep forest base.", price: 250, emoji: "🔥", accent: "#22C55E", flameId: "green" },
+  { id: "flame-black", kind: "streak_flame", title: "Black Flame", subtitle: "Gray light with a black base.", price: 250, emoji: "🔥", accent: "#050505", flameId: "black" },
 ];
 
 export const BUDDY_STORE_ITEMS: BibleBuddyStoreItem[] = [

@@ -22,7 +22,6 @@ import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import {
   APP_THEME_STORAGE_KEY,
-  APP_THEMES,
   applyAppThemeToDocument,
   getAppTheme,
   normalizeAppThemeId,
@@ -2089,24 +2088,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     </span>
                   </button>
                 </>
-              )}
-
-              {isLoggedIn && (
-                <label className="relative flex h-9 items-center px-1 text-xs font-bold bb-theme-picker">
-                  <span className="sr-only">Choose app theme</span>
-                  <select
-                    value={appThemeId}
-                    onChange={(event) => handleThemeChange(normalizeAppThemeId(event.target.value))}
-                    className="h-full max-w-[96px] bg-transparent text-xs font-bold outline-none"
-                    aria-label="Choose app theme"
-                  >
-                    {APP_THEMES.map((theme) => (
-                      <option key={theme.id} value={theme.id} disabled={theme.isLocked}>
-                        {theme.name}{theme.isLocked && theme.unlockRequirement ? ` - ${theme.unlockRequirement}` : ""}
-                      </option>
-                    ))}
-                  </select>
-                </label>
               )}
 
               {/* NOTIFICATION BELL */}

@@ -33,6 +33,7 @@ import {
   rememberFreeChapterUnlock,
 } from "../../lib/freePlanGating";
 import { LouisAvatar } from "../../components/LouisAvatar";
+import AnimatedFlame from "../../components/AnimatedFlame";
 import { ModalShell } from "../../components/ModalShell";
 import { triggerPoints } from "../../components/PointsPop";
 
@@ -60,6 +61,7 @@ import {
   THEME_STORE_ITEMS,
   type BibleBuddyStoreItem,
 } from "../../lib/bibleBuddyStore";
+import { normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
 
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
@@ -900,7 +902,7 @@ export default function DashboardPage() {
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [levelRefreshTick, setLevelRefreshTick] = useState(0);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
   const [showDiamondStore, setShowDiamondStore] = useState(false);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
   const [storeLoading, setStoreLoading] = useState(false);
@@ -1970,12 +1972,8 @@ export default function DashboardPage() {
             <div className="flex items-start justify-between gap-4">
               <div className="w-full">
                 <div className="flex items-center gap-2">
-                  <span
-                    className={`inline-block text-3xl leading-none sm:text-4xl ${streakFlameClass}`}
-                    style={{ animationDuration: `${streakFlameDuration}s` }}
-                    aria-hidden="true"
-                  >
-                    🔥
+                  <span className={streakFlameClass} style={{ animationDuration: `${streakFlameDuration}s` }} aria-hidden="true">
+                    <AnimatedFlame flameId={profile?.selected_streak_flame} size={42} title={`${streakValue} day streak`} />
                   </span>
                   <p className="text-xl font-black leading-none text-gray-950 sm:text-2xl">
                     {streakValue} day streak
@@ -2095,6 +2093,8 @@ export default function DashboardPage() {
             >
               {item.kind === "buddy" && item.comingSoon ? (
                 <span className="grid h-9 w-9 place-items-center rounded-full bg-slate-200 text-slate-500">?</span>
+              ) : item.flameId ? (
+                <AnimatedFlame flameId={item.flameId} size={34} />
               ) : (
                 item.emoji
               )}
@@ -2574,6 +2574,21 @@ export default function DashboardPage() {
     }
   }
 
+  async function applyPurchasedFlame(flameId: string) {
+    const normalizedFlameId = normalizeFlameCosmeticId(flameId);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: normalizedFlameId } }));
+    }
+    setProfile((current) => current ? { ...current, selected_streak_flame: normalizedFlameId } : current);
+    if (userId) {
+      const { error } = await supabase
+        .from("profile_stats")
+        .update({ selected_streak_flame: normalizedFlameId })
+        .eq("user_id", userId);
+      if (error) console.warn("[STORE] Flame saved locally, but profile update failed:", error.message);
+    }
+  }
+
   async function handleStorePurchase(item: BibleBuddyStoreItem) {
     if (!userId) {
       setStoreMessage("Sign in first so BibleBuddy can save what you buy.");
@@ -2588,6 +2603,9 @@ export default function DashboardPage() {
     if (alreadyOwned && !item.repeatable) {
       if (item.themeId) {
         await applyPurchasedTheme(item.themeId);
+        setStoreMessage(`${item.title} is now active.`);
+      } else if (item.flameId) {
+        await applyPurchasedFlame(item.flameId);
         setStoreMessage(`${item.title} is now active.`);
       } else {
         setStoreMessage(`You already own ${item.title}.`);
@@ -2650,6 +2668,7 @@ export default function DashboardPage() {
       price_diamonds: item.price,
       reward_payload: {
         themeId: item.themeId ?? null,
+        flameId: item.flameId ?? null,
         repeatable: item.repeatable ?? false,
       },
     });
@@ -2682,6 +2701,9 @@ export default function DashboardPage() {
     if (item.themeId) {
       await applyPurchasedTheme(item.themeId);
     }
+    if (item.flameId) {
+      await applyPurchasedFlame(item.flameId);
+    }
 
     setProfile((current) =>
       current
@@ -2692,6 +2714,7 @@ export default function DashboardPage() {
               typeof profileUpdate.grace_days_count === "number"
                 ? profileUpdate.grace_days_count
                 : current.grace_days_count,
+            selected_streak_flame: item.flameId ? normalizeFlameCosmeticId(item.flameId) : current.selected_streak_flame,
           }
         : current,
     );
@@ -2744,11 +2767,11 @@ export default function DashboardPage() {
 
         let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, profile_image_url, display_name, username")
+          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, profile_image_url, display_name, username")
           .eq("user_id", userId)
           .maybeSingle();
 
-        if (error && /diamonds_count/i.test(error.message || "")) {
+        if (error && /(diamonds_count|selected_streak_flame)/i.test(error.message || "")) {
           const fallback = await supabase
             .from("profile_stats")
             .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username")
@@ -2772,6 +2795,7 @@ export default function DashboardPage() {
             current_streak: profileData?.current_streak ?? 0,
             grace_days_count: Math.max(0, Math.min(5, Number(profileData?.grace_days_count ?? 0))),
             diamonds_count: typeof profileData?.diamonds_count === "number" ? Math.max(0, profileData.diamonds_count) : null,
+            selected_streak_flame: normalizeFlameCosmeticId(profileData?.selected_streak_flame),
             profile_image_url: profileData?.profile_image_url ?? null,
             display_name: profileData?.display_name ?? null,
             username: profileData?.username ?? null,
@@ -2790,6 +2814,7 @@ export default function DashboardPage() {
             current_streak: resolvedCurrentStreak,
             grace_days_count: current.grace_days_count ?? 0,
             diamonds_count: current.diamonds_count ?? null,
+            selected_streak_flame: current.selected_streak_flame ?? "default",
           } : current);
         }
 

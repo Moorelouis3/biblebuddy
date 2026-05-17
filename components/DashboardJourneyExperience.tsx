@@ -1518,7 +1518,7 @@ export default function DashboardJourneyExperience({
       label: "Lil Louis",
       icon: (
         <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-full">
-          <LouisAvatar mood="peace" size={38} />
+          <LouisAvatar mood="wave" size={38} />
         </span>
       ),
       href: "#lil-louis",
@@ -3699,7 +3699,7 @@ export default function DashboardJourneyExperience({
                   </div>
                 </div>
               ))
-            ) : shouldShowCompletionPanel ? (
+            ) : !homePanelOverride && shouldShowCompletionPanel ? (
               <div className="completion-panel-enter relative overflow-hidden rounded-[28px] border border-[#dbe7f4] bg-white/90 px-5 pb-5 pt-7 text-center shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
                 <div className="chapter-firework-ring pointer-events-none absolute left-1/2 top-16 h-24 w-24 rounded-full border-4 border-[#7BAFD4]/45" aria-hidden="true" />
                 <div className="chapter-confetti pointer-events-none absolute left-1/2 top-16" aria-hidden="true">
@@ -3804,7 +3804,7 @@ export default function DashboardJourneyExperience({
                 const taskCopy = getTaskCardCopy(task, taskIndex);
                 const justCompleted = Boolean(task.done && previousDoneByKindRef.current && !previousDoneByKindRef.current[task.kind]);
                 const isCelebrating = Boolean(celebratingTasks[task.kind]) || justCompleted;
-                const isLockedByOrder = !task.done && displayNextActionTaskIndex >= 0 && taskIndex > displayNextActionTaskIndex;
+                const isLockedByOrder = !isPaidUser && !task.done && displayNextActionTaskIndex >= 0 && taskIndex > displayNextActionTaskIndex;
                 const isCardDisabled = Boolean(task.disabled || isLockedByOrder);
                 const isNextActionTask = task.kind === displayNextActionTaskKind && !isCardDisabled;
                 const pointsPillLabel = task.pointsLabel;

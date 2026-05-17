@@ -3,6 +3,16 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
+import AnimatedFlame from "../../components/AnimatedFlame";
+import {
+  APP_THEME_STORAGE_KEY,
+  APP_THEMES,
+  applyAppThemeToDocument,
+  normalizeAppThemeId,
+  type AppThemeId,
+} from "../../lib/appThemes";
+import { STREAK_FLAME_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
+import { FLAME_COSMETICS, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
 
 function getPasswordResetRedirectUrl() {
   if (typeof window === "undefined") return "https://www.mybiblebuddy.net/reset-password";
@@ -18,6 +28,12 @@ export default function SettingsPage() {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [themeSaving, setThemeSaving] = useState<string | null>(null);
+  const [flameSaving, setFlameSaving] = useState<string | null>(null);
+  const [settingsMessage, setSettingsMessage] = useState<string | null>(null);
+  const [ownedStoreItemIds, setOwnedStoreItemIds] = useState<string[]>([]);
+  const [selectedTheme, setSelectedTheme] = useState<AppThemeId>("light");
+  const [selectedFlame, setSelectedFlame] = useState<FlameCosmeticId>("default");
   
   // Profile fields
   const [displayName, setDisplayName] = useState("");
@@ -45,6 +61,22 @@ export default function SettingsPage() {
         const meta = currentUser.user_metadata || {};
         setDisplayName(meta.firstName || meta.first_name || currentUser.email?.split("@")[0] || "");
         setEmail(currentUser.email || "");
+
+        const [{ data: profile }, { data: purchases }] = await Promise.all([
+          supabase
+            .from("profile_stats")
+            .select("app_theme, selected_streak_flame")
+            .eq("user_id", currentUser.id)
+            .maybeSingle(),
+          supabase
+            .from("user_store_purchases")
+            .select("item_id")
+            .eq("user_id", currentUser.id),
+        ]);
+
+        setSelectedTheme(normalizeAppThemeId(profile?.app_theme));
+        setSelectedFlame(normalizeFlameCosmeticId(profile?.selected_streak_flame));
+        setOwnedStoreItemIds((purchases || []).map((purchase: { item_id: string }) => purchase.item_id));
       }
       setLoading(false);
     }
@@ -176,6 +208,47 @@ export default function SettingsPage() {
     }
   }
 
+  async function handleThemeSelect(themeId: AppThemeId) {
+    if (!user) return;
+    setThemeSaving(themeId);
+    setSettingsMessage(null);
+    try {
+      const { error } = await supabase.from("profile_stats").update({ app_theme: themeId }).eq("user_id", user.id);
+      if (error) throw error;
+      setSelectedTheme(themeId);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
+        window.localStorage.setItem("bb:dashboard-theme", themeId === "dark" ? "dark" : "light");
+        window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId } }));
+      }
+      applyAppThemeToDocument(themeId);
+      setSettingsMessage("Theme updated.");
+    } catch (error: any) {
+      setSettingsMessage(error.message || "Could not update theme.");
+    } finally {
+      setThemeSaving(null);
+    }
+  }
+
+  async function handleFlameSelect(flameId: FlameCosmeticId) {
+    if (!user) return;
+    setFlameSaving(flameId);
+    setSettingsMessage(null);
+    try {
+      const { error } = await supabase.from("profile_stats").update({ selected_streak_flame: flameId }).eq("user_id", user.id);
+      if (error) throw error;
+      setSelectedFlame(flameId);
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId } }));
+      }
+      setSettingsMessage("Streak flame updated.");
+    } catch (error: any) {
+      setSettingsMessage(error.message || "Could not update streak flame.");
+    } finally {
+      setFlameSaving(null);
+    }
+  }
+
   async function handleLogout() {
     await supabase.auth.signOut();
     router.push("/login");
@@ -189,10 +262,91 @@ export default function SettingsPage() {
     );
   }
 
+  const ownedThemeIds = new Set(
+    THEME_STORE_ITEMS
+      .filter((item) => ownedStoreItemIds.includes(item.id) && item.themeId)
+      .map((item) => item.themeId),
+  );
+  const availableThemes = APP_THEMES.filter((theme) =>
+    theme.id === "light" || theme.id === "dark" || ownedThemeIds.has(theme.id),
+  );
+  const ownedFlameIds = new Set(
+    STREAK_FLAME_STORE_ITEMS
+      .filter((item) => ownedStoreItemIds.includes(item.id) && item.flameId)
+      .map((item) => item.flameId),
+  );
+  const availableFlames = FLAME_COSMETICS.filter((flame) => flame.id === "default" || ownedFlameIds.has(flame.id));
+
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
       <div className="max-w-2xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Settings</h1>
+
+        {settingsMessage ? (
+          <div className="mb-6 rounded-xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-accent-soft,#eaf5ff)] p-4 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+            {settingsMessage}
+          </div>
+        ) : null}
+
+        {/* Theme Section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
+          <h2 className="text-xl font-semibold mb-2">Theme</h2>
+          <p className="mb-4 text-sm text-gray-600">
+            Light and Dark are always here. Themes you buy in the Diamond Store show up here too.
+          </p>
+
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {availableThemes.map((theme) => (
+              <button
+                key={theme.id}
+                type="button"
+                onClick={() => void handleThemeSelect(theme.id)}
+                disabled={themeSaving === theme.id}
+                className={`rounded-2xl border p-3 text-left transition hover:-translate-y-0.5 hover:shadow-sm ${
+                  selectedTheme === theme.id ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
+                }`}
+              >
+                <div className="flex gap-1">
+                  {[theme.background, theme.surfaceSoft, theme.accent, theme.progressFill].map((color) => (
+                    <span key={color} className="h-6 flex-1 rounded-full border border-black/5" style={{ backgroundColor: color }} />
+                  ))}
+                </div>
+                <p className="mt-3 text-sm font-black text-gray-950">{theme.name}</p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">
+                  {themeSaving === theme.id ? "Saving..." : selectedTheme === theme.id ? "Active" : "Use theme"}
+                </p>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Flame Section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
+          <h2 className="text-xl font-semibold mb-2">Streak Flame</h2>
+          <p className="mb-4 text-sm text-gray-600">
+            Bought flames replace the real dashboard flame, even before a 30 day streak.
+          </p>
+
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {availableFlames.map((flame) => (
+              <button
+                key={flame.id}
+                type="button"
+                onClick={() => void handleFlameSelect(flame.id)}
+                disabled={flameSaving === flame.id}
+                className={`rounded-2xl border p-3 text-center transition hover:-translate-y-0.5 hover:shadow-sm ${
+                  selectedFlame === flame.id ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
+                }`}
+              >
+                <AnimatedFlame flameId={flame.id} size={48} />
+                <p className="mt-3 text-sm font-black text-gray-950">{flame.name}</p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">
+                  {flameSaving === flame.id ? "Saving..." : selectedFlame === flame.id ? "Active" : "Use flame"}
+                </p>
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* Profile Section */}
         <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
