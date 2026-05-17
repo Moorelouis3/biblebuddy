@@ -1679,9 +1679,8 @@ export default function GroupChatPage() {
   const [weeklyTriviaByPostId, setWeeklyTriviaByPostId] = useState<Record<string, WeeklyGroupTriviaFeedSet>>({});
   const [weeklyQuestionByPostId, setWeeklyQuestionByPostId] = useState<Record<string, WeeklyGroupQuestionFeedSet>>({});
   const [loadingPosts, setLoadingPosts] = useState(true);
-  const [loadingMorePosts, setLoadingMorePosts] = useState(false);
   const [postsHasMore, setPostsHasMore] = useState(false);
-  const [postsOffset, setPostsOffset] = useState(0);
+  const [postsPage, setPostsPage] = useState(0);
   const [showPostComposerModal, setShowPostComposerModal] = useState(false);
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostContent, setNewPostContent] = useState("");
@@ -1705,8 +1704,7 @@ export default function GroupChatPage() {
   const [composerVideoPreview, setComposerVideoPreview] = useState<string | null>(null);
   const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
   const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
-  const feedLoadMoreRef = useRef<HTMLDivElement | null>(null);
-  const FEED_PAGE_SIZE = 5;
+  const FEED_PAGE_SIZE = 8;
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const groupPhotoInputRef = useRef<HTMLInputElement>(null);
   const groupVideoInputRef = useRef<HTMLInputElement>(null);
@@ -3023,7 +3021,8 @@ export default function GroupChatPage() {
       setWeeklyPollByPostId({});
       setWeeklyTriviaByPostId({});
       setWeeklyQuestionByPostId({});
-      void loadPosts(true);
+      setPostsPage(0);
+      void loadPosts(0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [group, activeTab, hubCategories]);
@@ -3436,15 +3435,10 @@ export default function GroupChatPage() {
     };
   }
 
-  async function loadPosts(reset = true) {
+  async function loadPosts(page = 0) {
     if (!group) return;
-    if (reset) {
-      setLoadingPosts(true);
-      setPostsOffset(0);
-      setPostsHasMore(false);
-    } else {
-      setLoadingMorePosts(true);
-    }
+    setLoadingPosts(true);
+    setPostsHasMore(false);
     const postCategory = getGroupPostCategory(activeTab);
 
     if (activeTab === "home") {
@@ -3513,40 +3507,28 @@ export default function GroupChatPage() {
         ? postQuery.in("category", [...HOME_FEED_CATEGORIES])
         : postQuery.eq("category", postCategory);
 
-    const rangeStart = reset ? 0 : postsOffset;
+    const rangeStart = Math.max(page, 0) * FEED_PAGE_SIZE;
     const { data: postRows, error } = await categorizedPostQuery
       .order("is_pinned", { ascending: false })
       .order("created_at", { ascending: false })
-      .range(rangeStart, rangeStart + FEED_PAGE_SIZE - 1);
+      .range(rangeStart, rangeStart + FEED_PAGE_SIZE);
 
     if (error) {
       setLoadingPosts(false);
-      setLoadingMorePosts(false);
       return;
     }
 
-    const rows = postRows || [];
+    const fetchedRows = postRows || [];
+    const rows = fetchedRows.slice(0, FEED_PAGE_SIZE);
     const hydrated = await hydrateFeedPosts(rows);
 
-    if (reset) {
-      setPosts(sortPinnedPostsFirst(hydrated.posts));
-      setWeeklyPollByPostId(hydrated.weeklyPollByPostId);
-      setWeeklyTriviaByPostId(hydrated.weeklyTriviaByPostId);
-      setWeeklyQuestionByPostId(hydrated.weeklyQuestionByPostId);
-    } else {
-      setPosts((prev) => sortPinnedPostsFirst([
-        ...prev,
-        ...hydrated.posts.filter((nextPost) => !prev.some((prevPost) => prevPost.id === nextPost.id)),
-      ]));
-      setWeeklyPollByPostId((prev) => ({ ...prev, ...hydrated.weeklyPollByPostId }));
-      setWeeklyTriviaByPostId((prev) => ({ ...prev, ...hydrated.weeklyTriviaByPostId }));
-      setWeeklyQuestionByPostId((prev) => ({ ...prev, ...hydrated.weeklyQuestionByPostId }));
-    }
-
-    setPostsOffset(rangeStart + rows.length);
-    setPostsHasMore(rows.length === FEED_PAGE_SIZE);
+    setPosts(sortPinnedPostsFirst(hydrated.posts));
+    setWeeklyPollByPostId(hydrated.weeklyPollByPostId);
+    setWeeklyTriviaByPostId(hydrated.weeklyTriviaByPostId);
+    setWeeklyQuestionByPostId(hydrated.weeklyQuestionByPostId);
+    setPostsPage(Math.max(page, 0));
+    setPostsHasMore(fetchedRows.length > FEED_PAGE_SIZE);
     setLoadingPosts(false);
-    setLoadingMorePosts(false);
   }
 
   async function openFeedPostById(postId: string) {
@@ -4212,7 +4194,7 @@ export default function GroupChatPage() {
           filter: `group_id=eq.${group.id}`,
         },
         () => {
-          void loadPosts(true);
+          void loadPosts(postsPage);
         },
       )
       .subscribe();
@@ -4220,29 +4202,7 @@ export default function GroupChatPage() {
     return () => {
       void supabase.removeChannel(channel);
     };
-  }, [group, activeTab, hubCategories]);
-
-  useEffect(() => {
-    if (!group) return;
-    if (activeTab === "members" || activeTab === "bible_studies" || hubCategories.some((c) => c.id === activeTab)) return;
-    if (!postsHasMore || loadingPosts || loadingMorePosts || selectedFeedPost) return;
-
-    const target = feedLoadMoreRef.current;
-    if (!target) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const firstEntry = entries[0];
-        if (firstEntry?.isIntersecting) {
-          void loadPosts(false);
-        }
-      },
-      { rootMargin: "300px 0px" },
-    );
-
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, [activeTab, group, hubCategories, loadingMorePosts, loadingPosts, postsHasMore, selectedFeedPost, postsOffset]);
+  }, [group, activeTab, hubCategories, postsPage]);
 
   // â”€â”€ Series â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadSeries() {
@@ -7461,18 +7421,30 @@ export default function GroupChatPage() {
             </div>
           </div>
         )})}
-        {postsHasMore ? (
-          <div ref={feedLoadMoreRef} className="flex justify-center pt-2">
+        <div className="flex flex-col gap-3 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-center text-xs font-semibold text-gray-500 sm:text-left">
+            Page {postsPage + 1} · Showing up to {FEED_PAGE_SIZE} posts
+          </p>
+          <div className="flex items-center justify-center gap-2">
             <button
               type="button"
-              onClick={() => void loadPosts(false)}
-              disabled={loadingMorePosts}
-              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm transition hover:bg-gray-50 disabled:opacity-60"
+              onClick={() => void loadPosts(Math.max(postsPage - 1, 0))}
+              disabled={postsPage === 0 || loadingPosts}
+              className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-4 py-2 text-sm font-semibold text-gray-600 shadow-sm transition hover:bg-[var(--bb-surface-soft)] disabled:cursor-not-allowed disabled:opacity-45"
             >
-              {loadingMorePosts ? "Loading more..." : "Load more posts"}
+              Previous
+            </button>
+            <button
+              type="button"
+              onClick={() => void loadPosts(postsPage + 1)}
+              disabled={!postsHasMore || loadingPosts}
+              className="rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45"
+              style={{ backgroundColor: "var(--bb-accent)" }}
+            >
+              Next
             </button>
           </div>
-        ) : null}
+        </div>
       </div>
     );
   }

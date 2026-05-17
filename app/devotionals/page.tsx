@@ -56,6 +56,8 @@ type StudyCommunityModal = {
   rows: StudyBuddyProgress[];
 };
 
+type StudyFilter = "all" | "done" | "started";
+
 const HIDDEN_DEVOTIONAL_TITLES = new Set([
   "The Calling of Moses",
   "The Tempting of Jesus",
@@ -145,6 +147,7 @@ type DevotionalsPageProps = {
 export default function DevotionalsPage({ embedded = false, onStudySelect }: DevotionalsPageProps = {}) {
   const router = useRouter();
   const [devotionals, setDevotionals] = useState<Devotional[]>([]);
+  const [studyFilter, setStudyFilter] = useState<StudyFilter>("all");
   const [loading, setLoading] = useState(true);
   const [isInstructionsExpanded, setIsInstructionsExpanded] = useState(false);
   const [dontShowAgain, setDontShowAgain] = useState(false);
@@ -334,7 +337,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     const completed = visibleDevotionals.filter((study) => progressByDevotional[study.id]?.isComplete).length;
     const started = visibleDevotionals.filter((study) => {
       const progress = progressByDevotional[study.id];
-      return progress && progress.percent > 0;
+      return progress && progress.percent > 0 && !progress.isComplete;
     }).length;
 
     return {
@@ -343,6 +346,16 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
       started,
     };
   }, [progressByDevotional, visibleDevotionals]);
+
+  const filteredDevotionals = useMemo(() => {
+    if (studyFilter === "all") return visibleDevotionals;
+
+    return visibleDevotionals.filter((study) => {
+      const progress = progressByDevotional[study.id] ?? buildEmptyProgress(study);
+      if (studyFilter === "done") return progress.isComplete;
+      return progress.percent > 0 && !progress.isComplete;
+    });
+  }, [progressByDevotional, studyFilter, visibleDevotionals]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -601,30 +614,64 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
 
         {/* INSTRUCTIONS CALLOUT */}
         <div className="bg-white border border-[#cfe5f6] rounded-2xl shadow-sm mb-6 overflow-hidden">
-          {/* HEADER - Clickable */}
-          <button
-            type="button"
-            onClick={handleToggleInstructions}
-            className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left hover:bg-[#f3f9ff] transition sm:px-6"
-          >
+          {/* HEADER */}
+          <div className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left sm:px-6">
             <div className="min-w-0 flex-1">
               <h2 className="text-lg font-semibold text-gray-900">📖 About Our Bible Studies</h2>
               <div className="mt-3 grid max-w-sm grid-cols-3 gap-2 text-center">
-                <div className="rounded-2xl bg-[#eaf6ff] px-3 py-2">
-                  <p className="text-lg font-black text-gray-950">{bibleStudyStats.studies}</p>
-                  <p className="text-[10px] font-bold uppercase tracking-wide text-gray-600">Studies</p>
-                </div>
-                <div className="rounded-2xl bg-[#eafff2] px-3 py-2">
-                  <p className="text-lg font-black text-gray-950">{bibleStudyStats.completed}</p>
-                  <p className="text-[10px] font-bold uppercase tracking-wide text-gray-600">Done</p>
-                </div>
-                <div className="rounded-2xl bg-[#fff5df] px-3 py-2">
-                  <p className="text-lg font-black text-gray-950">{bibleStudyStats.started}</p>
-                  <p className="text-[10px] font-bold uppercase tracking-wide text-gray-600">Started</p>
-                </div>
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setStudyFilter("all");
+                  }}
+                  className={`rounded-2xl px-3 py-2 transition ${
+                    studyFilter === "all"
+                      ? "bg-[#7BAFD4] text-white shadow-sm"
+                      : "bg-[#eaf6ff] text-gray-950 hover:bg-[#dff0fb]"
+                  }`}
+                >
+                  <p className={`text-lg font-black ${studyFilter === "all" ? "text-white" : "text-gray-950"}`}>{bibleStudyStats.studies}</p>
+                  <p className={`text-[10px] font-bold uppercase tracking-wide ${studyFilter === "all" ? "text-white/90" : "text-gray-600"}`}>All Studies</p>
+                </button>
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setStudyFilter("done");
+                  }}
+                  className={`rounded-2xl px-3 py-2 transition ${
+                    studyFilter === "done"
+                      ? "bg-[#7BAFD4] text-white shadow-sm"
+                      : "bg-[#eaf6ff] text-gray-950 hover:bg-[#dff0fb]"
+                  }`}
+                >
+                  <p className={`text-lg font-black ${studyFilter === "done" ? "text-white" : "text-gray-950"}`}>{bibleStudyStats.completed}</p>
+                  <p className={`text-[10px] font-bold uppercase tracking-wide ${studyFilter === "done" ? "text-white/90" : "text-gray-600"}`}>Done Studies</p>
+                </button>
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setStudyFilter("started");
+                  }}
+                  className={`rounded-2xl px-3 py-2 transition ${
+                    studyFilter === "started"
+                      ? "bg-[#7BAFD4] text-white shadow-sm"
+                      : "bg-[#eaf6ff] text-gray-950 hover:bg-[#dff0fb]"
+                  }`}
+                >
+                  <p className={`text-lg font-black ${studyFilter === "started" ? "text-white" : "text-gray-950"}`}>{bibleStudyStats.started}</p>
+                  <p className={`text-[10px] font-bold uppercase tracking-wide ${studyFilter === "started" ? "text-white/90" : "text-gray-600"}`}>Started</p>
+                </button>
               </div>
             </div>
-            <span className="shrink-0">
+            <button
+              type="button"
+              onClick={handleToggleInstructions}
+              className="shrink-0 rounded-full p-2 transition hover:bg-[#f3f9ff]"
+              aria-label={isInstructionsExpanded ? "Collapse Bible study details" : "Expand Bible study details"}
+            >
               <svg
                 className={`w-5 h-5 text-gray-600 transition-transform ${isInstructionsExpanded ? '' : 'transform -rotate-90'}`}
                 fill="none"
@@ -638,8 +685,8 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                   d="M19 9l-7 7-7-7"
                 />
               </svg>
-            </span>
-          </button>
+            </button>
+          </div>
 
           {/* CONTENT - Collapsible */}
           {isInstructionsExpanded && (
@@ -728,14 +775,16 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
           )}
         </div>
 
-        {visibleDevotionals.length === 0 ? (
+        {filteredDevotionals.length === 0 ? (
           <div className="text-gray-500">
-            No Bible studies available yet. Check back soon!
+            {studyFilter === "all"
+              ? "No Bible studies available yet. Check back soon!"
+              : `No ${studyFilter === "done" ? "done" : "started"} Bible studies yet.`}
           </div>
         ) : (
           <div className="rounded-[2rem] border border-white bg-white/80 p-3 shadow-sm md:p-5">
             <div className="grid grid-cols-1 gap-4">
-            {visibleDevotionals.map((devotional) => {
+            {filteredDevotionals.map((devotional) => {
               const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
               const community = communityByDevotional[devotional.id];
               const isComplete = progress.isComplete;
