@@ -145,12 +145,12 @@ export default function GroupWeeklyPollCard({
               disabled={!userId || !!submitting}
               className={`relative w-full overflow-hidden rounded-2xl border px-4 py-3 text-left transition ${
                 selected
-                  ? "border-[#4a9b6f] bg-[#eef8ef]"
-                  : "border-[#ece7de] bg-[#fcfbf8] hover:border-[#d7e8d7] hover:bg-white"
+                  ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)]"
+                  : "border-[var(--bb-card-border)] bg-[var(--bb-card)] hover:border-[var(--bb-accent)] hover:bg-[var(--bb-surface)]"
               } disabled:opacity-70`}
             >
               <div
-                className="absolute inset-y-0 left-0 rounded-r-2xl bg-[#dff0df] transition-all"
+                className="absolute inset-y-0 left-0 rounded-r-2xl bg-[var(--bb-accent-soft)] transition-all"
                 style={{ width: `${currentVote ? percent : 0}%`, opacity: currentVote ? 1 : 0 }}
               />
 

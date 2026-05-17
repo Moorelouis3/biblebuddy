@@ -8,6 +8,7 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ReactMarkdown from "react-markdown";
 import { useEffect, useMemo, useState, useRef, useCallback, type MouseEvent } from "react";
+import { createPortal } from "react-dom";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -833,6 +834,8 @@ function GroupCommentSection({
   const [loadingCommentLikers, setLoadingCommentLikers] = useState(false);
   const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
   const [autoCommentLoading, setAutoCommentLoading] = useState(false);
+  const [commentPendingDelete, setCommentPendingDelete] = useState<GroupFeedComment | null>(null);
+  const canUsePortal = typeof document !== "undefined";
 
   async function loadComments() {
     setLoading(true);
@@ -1370,7 +1373,7 @@ function GroupCommentSection({
             {canDeleteComment(comment) && (
               <button
                 type="button"
-                onClick={() => void handleDeleteComment(comment)}
+                onClick={() => setCommentPendingDelete(comment)}
                 disabled={deletingCommentId === comment.id}
                 className="text-[10px] text-gray-400 hover:text-red-500 font-semibold transition disabled:opacity-50"
               >
@@ -1420,7 +1423,7 @@ function GroupCommentSection({
         </div>
       )}
 
-      <div className="flex gap-2 items-end mt-3">
+      <div className="sticky bottom-0 z-10 mt-3 flex items-end gap-2 border-t border-[var(--bb-card-border)] bg-[var(--bb-card)]/95 pt-3 backdrop-blur">
         {userProfileImage ? (
           <img src={userProfileImage} alt={displayName} className="w-7 h-7 rounded-full object-cover flex-shrink-0" />
         ) : (
@@ -1457,16 +1460,16 @@ function GroupCommentSection({
         </button>
       </div>
       {submitError && <p className="mt-2 text-xs text-red-500">{submitError}</p>}
-      {showCommentLikesFor && (
+      {showCommentLikesFor && canUsePortal && createPortal(
         <div
-          className="fixed inset-0 z-[180] flex items-center justify-center bg-black/45 px-4"
+          className="fixed inset-0 z-[220] flex items-center justify-center overflow-y-auto bg-black/45 p-4"
           onClick={() => setShowCommentLikesFor(null)}
         >
           <div
-            className="w-full max-w-sm rounded-[28px] bg-white shadow-2xl border border-[#e7ded2] overflow-hidden"
+            className="w-full max-w-sm overflow-hidden rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-5 py-4 border-b border-[#f2e8dc]">
+            <div className="flex items-center justify-between border-b border-[var(--bb-card-border)] px-5 py-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">Liked By</p>
                 <h3 className="text-base font-bold text-gray-900 mt-1">Comment Likes</h3>
@@ -1521,7 +1524,47 @@ function GroupCommentSection({
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
+      )}
+      {commentPendingDelete && canUsePortal && createPortal(
+        <div
+          className="fixed inset-0 z-[230] flex items-center justify-center overflow-y-auto bg-black/50 p-4"
+          onClick={() => setCommentPendingDelete(null)}
+        >
+          <div
+            className="w-full max-w-sm rounded-3xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-6 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--bb-accent)]">Community</p>
+            <h3 className="mt-2 text-xl font-black text-gray-900">Delete this comment?</h3>
+            <p className="mt-2 text-sm leading-6 text-gray-600">
+              This will remove the comment and any replies under it. This action cannot be undone.
+            </p>
+            <div className="mt-5 flex gap-3">
+              <button
+                type="button"
+                onClick={() => setCommentPendingDelete(null)}
+                className="flex-1 rounded-2xl border border-[var(--bb-card-border)] px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-[var(--bb-surface-soft)]"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  const comment = commentPendingDelete;
+                  setCommentPendingDelete(null);
+                  void handleDeleteComment(comment);
+                }}
+                disabled={deletingCommentId === commentPendingDelete.id}
+                className="flex-1 rounded-2xl bg-red-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-red-700 disabled:opacity-60"
+              >
+                {deletingCommentId === commentPendingDelete.id ? "Deleting..." : "Delete"}
+              </button>
+            </div>
+          </div>
+        </div>,
+        document.body,
       )}
     </div>
   );
@@ -4840,7 +4883,7 @@ export default function GroupChatPage() {
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
-  const SAGE = "#5a9a5a";
+  const SAGE = "var(--bb-accent)";
   const displayGroupName = group.name === "Hope Nation" || group.name === "Bible Buddy Study Group" ? "Community" : group.name;
   const selectedSeriesAccent = selectedSeries?.title.toLowerCase().includes("tempt")
     ? { buttonBg: "#b7794d" }

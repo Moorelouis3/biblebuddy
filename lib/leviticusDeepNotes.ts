@@ -15417,8 +15417,13 @@ God begins with the weekly Sabbath, then moves through the yearly feasts. Each h
 
 # Deep Chapter Notes
 
-> **Leviticus 23:1-3**  
-> "Speak unto the children of Israel... concerning the feasts of the LORD... Six days shall work be done: but the seventh day is the sabbath of rest..."
+## Leviticus 23:1-3
+
+> **1** And the LORD spake unto Moses, saying,
+
+> **2** Speak unto the children of Israel, and say unto them, Concerning the feasts of the LORD, which ye shall proclaim to be holy convocations, even these are my feasts.
+
+> **3** Six days shall work be done: but the seventh day is the sabbath of rest, an holy convocation; ye shall do no work therein: it is the sabbath of the LORD in all your dwellings.
 
 ### 🕊️ The Sabbath Comes First
 
@@ -15440,8 +15445,17 @@ The Sabbath reminds them that life is not built by human strength alone.
 
 This teaches Israel to trust God with time, labor, and provision.
 
-> **Leviticus 23:4-8**  
-> "In the fourteenth day of the first month at even is the LORD'S passover. And on the fifteenth day... is the feast of unleavened bread unto the LORD..."
+## Leviticus 23:4-8
+
+> **4** These are the feasts of the LORD, even holy convocations, which ye shall proclaim in their seasons.
+
+> **5** In the fourteenth day of the first month at even is the LORD’S passover.
+
+> **6** And on the fifteenth day of the same month is the feast of unleavened bread unto the LORD: seven days ye must eat unleavened bread.
+
+> **7** In the first day ye shall have an holy convocation: ye shall do no servile work therein.
+
+> **8** But ye shall offer an offering made by fire unto the LORD seven days: in the seventh day is an holy convocation: ye shall do no servile work therein.
 
 ### 🐑 Passover and Unleavened Bread
 
@@ -15461,8 +15475,19 @@ Unleavened Bread follows Passover. For seven days, Israel eats bread without lea
 
 God does not want His people to forget how freedom began.
 
-> **Leviticus 23:9-14**  
-> "When ye be come into the land... ye shall bring a sheaf of the firstfruits of your harvest unto the priest..."
+## Leviticus 23:9-14
+
+> **9** And the LORD spake unto Moses, saying,
+
+> **10** Speak unto the children of Israel, and say unto them, When ye be come into the land which I give unto you, and shall reap the harvest thereof, then ye shall bring a sheaf of the firstfruits of your harvest unto the priest:
+
+> **11** And he shall wave the sheaf before the LORD, to be accepted for you: on the morrow after the sabbath the priest shall wave it.
+
+> **12** And ye shall offer that day when ye wave the sheaf an he lamb without blemish of the first year for a burnt offering unto the LORD.
+
+> **13** And the meat offering thereof shall be two tenth deals of fine flour mingled with oil, an offering made by fire unto the LORD for a sweet savour: and the drink offering thereof shall be of wine, the fourth part of an hin.
+
+> **14** And ye shall eat neither bread, nor parched corn, nor green ears, until the selfsame day that ye have brought an offering unto your God: it shall be a statute for ever throughout your generations in all your dwellings.
 
 ### 🌾 Firstfruits
 
@@ -15482,8 +15507,23 @@ This feast trains trust.
 
 Firstfruits says, "God provided this, and we trust Him with what comes next."
 
-> **Leviticus 23:15-22**  
-> "And ye shall count unto you... seven sabbaths shall be complete... ye shall number fifty days... And when ye reap the harvest of your land... thou shalt leave them unto the poor, and to the stranger..."
+## Leviticus 23:15-22
+
+> **15** And ye shall count unto you from the morrow after the sabbath, from the day that ye brought the sheaf of the wave offering; seven sabbaths shall be complete:
+
+> **16** Even unto the morrow after the seventh sabbath shall ye number fifty days; and ye shall offer a new meat offering unto the LORD.
+
+> **17** Ye shall bring out of your habitations two wave loaves of two tenth deals: they shall be of fine flour; they shall be baken with leaven; they are the firstfruits unto the LORD.
+
+> **18** And ye shall offer with the bread seven lambs without blemish of the first year, and one young bullock, and two rams: they shall be for a burnt offering unto the LORD, with their meat offering, and their drink offerings, even an offering made by fire, of sweet savour unto the LORD.
+
+> **19** Then ye shall sacrifice one kid of the goats for a sin offering, and two lambs of the first year for a sacrifice of peace offerings.
+
+> **20** And the priest shall wave them with the bread of the first fruits for a wave offering before the LORD, with the two lambs: they shall be holy to the LORD for the priest.
+
+> **21** And ye shall proclaim on the selfsame day, that it may be an holy convocation unto you: ye shall do no servile work therein: it shall be a statute for ever in all your dwellings throughout your generations.
+
+> **22** And when ye reap the harvest of your land, thou shalt not make clean riddance of the corners of thy field when thou reapest, neither shalt thou gather any gleaning of thy harvest: thou shalt leave them unto the poor, and to the stranger: I am the LORD your God.
 
 ### 🔥 The Feast of Weeks
 
@@ -15505,8 +15545,13 @@ God connects worship with mercy.
 
 A holy calendar should create a holy community.
 
-> **Leviticus 23:23-25**  
-> "In the seventh month, in the first day of the month, shall ye have a sabbath, a memorial of blowing of trumpets..."
+## Leviticus 23:23-25
+
+> **23** And the LORD spake unto Moses, saying,
+
+> **24** Speak unto the children of Israel, saying, In the seventh month, in the first day of the month, shall ye have a sabbath, a memorial of blowing of trumpets, an holy convocation.
+
+> **25** Ye shall do no servile work therein: but ye shall offer an offering made by fire unto the LORD.
 
 ### 📯 The Trumpets
 
@@ -15526,8 +15571,21 @@ This feast calls Israel to pause and listen.
 
 The trumpet reminds Israel that they are not drifting through life. God is calling them to Himself.
 
-> **Leviticus 23:26-32**  
-> "Also on the tenth day of this seventh month there shall be a day of atonement... ye shall afflict your souls..."
+## Leviticus 23:26-32
+
+> **26** And the LORD spake unto Moses, saying,
+
+> **27** Also on the tenth day of this seventh month there shall be a day of atonement: it shall be an holy convocation unto you; and ye shall afflict your souls, and offer an offering made by fire unto the LORD.
+
+> **28** And ye shall do no work in that same day: for it is a day of atonement, to make an atonement for you before the LORD your God.
+
+> **29** For whatsoever soul it be that shall not be afflicted in that same day, he shall be cut off from among his people.
+
+> **30** And whatsoever soul it be that doeth any work in that same day, the same soul will I destroy from among his people.
+
+> **31** Ye shall do no manner of work: it shall be a statute for ever throughout your generations in all your dwellings.
+
+> **32** It shall be unto you a sabbath of rest, and ye shall afflict your souls: in the ninth day of the month at even, from even unto even, shall ye celebrate your sabbath.
 
 ### 🩸 The Day of Atonement
 
@@ -15549,8 +15607,31 @@ The people must not treat sin lightly.
 
 This day teaches that mercy is not cheap. Sin must be dealt with before the Lord.
 
-> **Leviticus 23:33-44**  
-> "The fifteenth day of this seventh month shall be the feast of tabernacles for seven days unto the LORD... Ye shall dwell in booths seven days... That your generations may know..."
+## Leviticus 23:33-44
+
+> **33** And the LORD spake unto Moses, saying,
+
+> **34** Speak unto the children of Israel, saying, The fifteenth day of this seventh month shall be the feast of tabernacles for seven days unto the LORD.
+
+> **35** On the first day shall be an holy convocation: ye shall do no servile work therein.
+
+> **36** Seven days ye shall offer an offering made by fire unto the LORD: on the eighth day shall be an holy convocation unto you; and ye shall offer an offering made by fire unto the LORD: it is a solemn assembly; and ye shall do no servile work therein.
+
+> **37** These are the feasts of the LORD, which ye shall proclaim to be holy convocations, to offer an offering made by fire unto the LORD, a burnt offering, and a meat offering, a sacrifice, and drink offerings, every thing upon his day:
+
+> **38** Beside the sabbaths of the LORD, and beside your gifts, and beside all your vows, and beside all your freewill offerings, which ye give unto the LORD.
+
+> **39** Also in the fifteenth day of the seventh month, when ye have gathered in the fruit of the land, ye shall keep a feast unto the LORD seven days: on the first day shall be a sabbath, and on the eighth day shall be a sabbath.
+
+> **40** And ye shall take you on the first day the boughs of goodly trees, branches of palm trees, and the boughs of thick trees, and willows of the brook; and ye shall rejoice before the LORD your God seven days.
+
+> **41** And ye shall keep it a feast unto the LORD seven days in the year. It shall be a statute for ever in your generations: ye shall celebrate it in the seventh month.
+
+> **42** Ye shall dwell in booths seven days; all that are Israelites born shall dwell in booths:
+
+> **43** That your generations may know that I made the children of Israel to dwell in booths, when I brought them out of the land of Egypt: I am the LORD your God.
+
+> **44** And Moses declared unto the children of Israel the feasts of the LORD.
 
 ### ⛺ The Feast of Tabernacles
 
@@ -15645,8 +15726,15 @@ The chapter begins with continual worship before the Lord. Then it moves into a 
 
 # Deep Chapter Notes
 
-> **Leviticus 24:1-4**  
-> "Command the children of Israel, that they bring unto thee pure oil olive beaten for the light, to cause the lamps to burn continually."
+## Leviticus 24:1-4
+
+> **1** And the LORD spake unto Moses, saying,
+
+> **2** Command the children of Israel, that they bring unto thee pure oil olive beaten for the light, to cause the lamps to burn continually.
+
+> **3** Without the vail of the testimony, in the tabernacle of the congregation, shall Aaron order it from the evening unto the morning before the LORD continually: it shall be a statute for ever in your generations.
+
+> **4** He shall order the lamps upon the pure candlestick before the LORD continually.
 
 ### 🕯️ The Continual Light
 
@@ -15666,8 +15754,17 @@ This teaches steady faithfulness.
 
 God's presence is not treated carelessly. The lamp is maintained because worship before the Lord must remain alive and ordered.
 
-> **Leviticus 24:5-9**  
-> "And thou shalt take fine flour, and bake twelve cakes thereof... Every sabbath he shall set it in order before the LORD continually..."
+## Leviticus 24:5-9
+
+> **5** And thou shalt take fine flour, and bake twelve cakes thereof: two tenth deals shall be in one cake.
+
+> **6** And thou shalt set them in two rows, six on a row, upon the pure table before the LORD.
+
+> **7** And thou shalt put pure frankincense upon each row, that it may be on the bread for a memorial, even an offering made by fire unto the LORD.
+
+> **8** Every sabbath he shall set it in order before the LORD continually, being taken from the children of Israel by an everlasting covenant.
+
+> **9** And it shall be Aaron’s and his sons’; and they shall eat it in the holy place: for it is most holy unto him of the offerings of the LORD made by fire by a perpetual statute.
 
 ### 🍞 The Bread Before The Lord
 
@@ -15687,8 +15784,13 @@ Israel is symbolically kept before the Lord.
 
 The bread shows that God's people live before His face. Their life, provision, and covenant identity are all held in His presence.
 
-> **Leviticus 24:10-12**  
-> "And the Israelitish woman's son blasphemed the name of the LORD, and cursed... And they put him in ward, that the mind of the LORD might be shewed them."
+## Leviticus 24:10-12
+
+> **10** And the son of an Israelitish woman, whose father was an Egyptian, went out among the children of Israel: and this son of the Israelitish woman and a man of Israel strove together in the camp;
+
+> **11** And the Israelitish woman’s son blasphemed the name of the LORD, and cursed. And they brought him unto Moses: (and his mother’s name was Shelomith, the daughter of Dibri, of the tribe of Dan:)
+
+> **12** And they put him in ward, that the mind of the LORD might be shewed them.
 
 ### 🗣️ The Holy Name Is Blasphemed
 
@@ -15708,8 +15810,15 @@ This moment shows the seriousness of God's name.
 
 The name of the Lord represents His character, authority, and holiness. To curse His name is to attack what Israel is called to honor.
 
-> **Leviticus 24:13-16**  
-> "Bring forth him that hath cursed without the camp... he that blasphemeth the name of the LORD, he shall surely be put to death..."
+## Leviticus 24:13-16
+
+> **13** And the LORD spake unto Moses, saying,
+
+> **14** Bring forth him that hath cursed without the camp; and let all that heard him lay their hands upon his head, and let all the congregation stone him.
+
+> **15** And thou shalt speak unto the children of Israel, saying, Whosoever curseth his God shall bear his sin.
+
+> **16** And he that blasphemeth the name of the LORD, he shall surely be put to death, and all the congregation shall certainly stone him: as well the stranger, as he that is born in the land, when he blasphemeth the name of the LORD, shall be put to death.
 
 ### ⚖️ Judgment For Blasphemy
 
@@ -15729,8 +15838,19 @@ The camp must not normalize contempt for the Lord.
 
 This is not about uncontrolled anger. It is covenant justice in a holy nation.
 
-> **Leviticus 24:17-22**  
-> "And he that killeth any man shall surely be put to death... Ye shall have one manner of law, as well for the stranger, as for one of your own country..."
+## Leviticus 24:17-22
+
+> **17** And he that killeth any man shall surely be put to death.
+
+> **18** And he that killeth a beast shall make it good; beast for beast.
+
+> **19** And if a man cause a blemish in his neighbour; as he hath done, so shall it be done to him;
+
+> **20** Breach for breach, eye for eye, tooth for tooth: as he hath caused a blemish in a man, so shall it be done to him again.
+
+> **21** And he that killeth a beast, he shall restore it: and he that killeth a man, he shall be put to death.
+
+> **22** Ye shall have one manner of law, as well for the stranger, as for one of your own country: for I am the LORD your God.
 
 ### ⚖️ Equal Justice
 
@@ -15752,8 +15872,9 @@ God also says the same law applies to the stranger and the native-born.
 
 A holy community cannot have one law for insiders and another for outsiders.
 
-> **Leviticus 24:23**  
-> "And Moses spake to the children of Israel... And the children of Israel did as the LORD commanded Moses."
+## Leviticus 24:23
+
+> **23** And Moses spake to the children of Israel, that they should bring forth him that had cursed out of the camp, and stone him with stones. And the children of Israel did as the LORD commanded Moses.
 
 ### ✅ Israel Obeys The Lord's Command
 
@@ -15860,8 +15981,21 @@ God gives Israel a rhythm of rest and restoration.
 
 # Deep Chapter Notes
 
-> **Leviticus 25:1-7**  
-> "When ye come into the land which I give you, then shall the land keep a sabbath unto the LORD."
+## Leviticus 25:1-7
+
+> **1** And the LORD spake unto Moses in mount Sinai, saying,
+
+> **2** Speak unto the children of Israel, and say unto them, When ye come into the land which I give you, then shall the land keep a sabbath unto the LORD.
+
+> **3** Six years thou shalt sow thy field, and six years thou shalt prune thy vineyard, and gather in the fruit thereof;
+
+> **4** But in the seventh year shall be a sabbath of rest unto the land, a sabbath for the LORD: thou shalt neither sow thy field, nor prune thy vineyard.
+
+> **5** That which groweth of its own accord of thy harvest thou shalt not reap, neither gather the grapes of thy vine undressed: for it is a year of rest unto the land.
+
+> **6** And the sabbath of the land shall be meat for you; for thee, and for thy servant, and for thy maid, and for thy hired servant, and for thy stranger that sojourneth with thee,
+
+> **7** And for thy cattle, and for the beast that are in thy land, shall all the increase thereof be meat.
 
 ### 🌾 The Land Gets A Sabbath
 
@@ -15881,8 +16015,19 @@ This teaches that the land is not merely a resource to exploit.
 
 God builds rest into creation, labor, and community life.
 
-> **Leviticus 25:8-13**  
-> "And ye shall hallow the fiftieth year, and proclaim liberty throughout all the land unto all the inhabitants thereof..."
+## Leviticus 25:8-13
+
+> **8** And thou shalt number seven sabbaths of years unto thee, seven times seven years; and the space of the seven sabbaths of years shall be unto thee forty and nine years.
+
+> **9** Then shalt thou cause the trumpet of the jubile to sound on the tenth day of the seventh month, in the day of atonement shall ye make the trumpet sound throughout all your land.
+
+> **10** And ye shall hallow the fiftieth year, and proclaim liberty throughout all the land unto all the inhabitants thereof: it shall be a jubile unto you; and ye shall return every man unto his possession, and ye shall return every man unto his family.
+
+> **11** A jubile shall that fiftieth year be unto you: ye shall not sow, neither reap that which groweth of itself in it, nor gather the grapes in it of thy vine undressed.
+
+> **12** For it is the jubile; it shall be holy unto you: ye shall eat the increase thereof out of the field.
+
+> **13** In the year of this jubile ye shall return every man unto his possession.
 
 ### 📯 The Year Of Jubilee
 
@@ -15904,8 +16049,15 @@ Jubilee is holy reset.
 
 God does not want His people trapped forever by poverty, debt, or disaster.
 
-> **Leviticus 25:14-17**  
-> "And if thou sell ought unto thy neighbour... ye shall not oppress one another."
+## Leviticus 25:14-17
+
+> **14** And if thou sell ought unto thy neighbour, or buyest ought of thy neighbour’s hand, ye shall not oppress one another:
+
+> **15** According to the number of years after the jubile thou shalt buy of thy neighbour, and according unto the number of years of the fruits he shall sell unto thee:
+
+> **16** According to the multitude of years thou shalt increase the price thereof, and according to the fewness of years thou shalt diminish the price of it: for according to the number of the years of the fruits doth he sell unto thee.
+
+> **17** Ye shall not therefore oppress one another; but thou shalt fear thy God: for I am the LORD your God.
 
 ### ⚖️ Fair Dealing
 
@@ -15925,8 +16077,17 @@ God says clearly: do not oppress one another.
 
 The marketplace is not outside God's holiness.
 
-> **Leviticus 25:18-22**  
-> "And if ye shall say, What shall we eat the seventh year?... Then I will command my blessing upon you in the sixth year..."
+## Leviticus 25:18-22
+
+> **18** Wherefore ye shall do my statutes, and keep my judgments, and do them; and ye shall dwell in the land in safety.
+
+> **19** And the land shall yield her fruit, and ye shall eat your fill, and dwell therein in safety.
+
+> **20** And if ye shall say, What shall we eat the seventh year? behold, we shall not sow, nor gather in our increase:
+
+> **21** Then I will command my blessing upon you in the sixth year, and it shall bring forth fruit for three years.
+
+> **22** And ye shall sow the eighth year, and eat yet of old fruit until the ninth year; until her fruits come in ye shall eat of the old store.
 
 ### 🙌 Trusting God For Provision
 
@@ -15946,8 +16107,31 @@ This is faith with food on the line.
 
 God is teaching Israel that security comes from Him, not endless production.
 
-> **Leviticus 25:23-34**  
-> "The land shall not be sold for ever: for the land is mine; for ye are strangers and sojourners with me."
+## Leviticus 25:23-34
+
+> **23** The land shall not be sold for ever: for the land is mine; for ye are strangers and sojourners with me.
+
+> **24** And in all the land of your possession ye shall grant a redemption for the land.
+
+> **25** If thy brother be waxen poor, and hath sold away some of his possession, and if any of his kin come to redeem it, then shall he redeem that which his brother sold.
+
+> **26** And if the man have none to redeem it, and himself be able to redeem it;
+
+> **27** Then let him count the years of the sale thereof, and restore the overplus unto the man to whom he sold it; that he may return unto his possession.
+
+> **28** But if he be not able to restore it to him, then that which is sold shall remain in the hand of him that hath bought it until the year of jubile: and in the jubile it shall go out, and he shall return unto his possession.
+
+> **29** And if a man sell a dwelling house in a walled city, then he may redeem it within a whole year after it is sold; within a full year may he redeem it.
+
+> **30** And if it be not redeemed within the space of a full year, then the house that is in the walled city shall be established for ever to him that bought it throughout his generations: it shall not go out in the jubile.
+
+> **31** But the houses of the villages which have no wall round about them shall be counted as the fields of the country: they may be redeemed, and they shall go out in the jubile.
+
+> **32** Notwithstanding the cities of the Levites, and the houses of the cities of their possession, may the Levites redeem at any time.
+
+> **33** And if a man purchase of the Levites, then the house that was sold, and the city of his possession, shall go out in the year of jubile: for the houses of the cities of the Levites are their possession among the children of Israel.
+
+> **34** But the field of the suburbs of their cities may not be sold; for it is their perpetual possession.
 
 ### 🏡 The Land Belongs To God
 
@@ -15969,8 +16153,15 @@ Because of that, land must be redeemable. Families must have a way back to their
 
 God's economy keeps people from being permanently cut off from their place among His people.
 
-> **Leviticus 25:35-38**  
-> "If thy brother be waxen poor... then thou shalt relieve him... Take thou no usury of him, or increase..."
+## Leviticus 25:35-38
+
+> **35** And if thy brother be waxen poor, and fallen in decay with thee; then thou shalt relieve him: yea, though he be a stranger, or a sojourner; that he may live with thee.
+
+> **36** Take thou no usury of him, or increase: but fear thy God; that thy brother may live with thee.
+
+> **37** Thou shalt not give him thy money upon usury, nor lend him thy victuals for increase.
+
+> **38** I am the LORD your God, which brought you forth out of the land of Egypt, to give you the land of Canaan, and to be your God.
 
 ### 🤲 Help The Poor Brother Live
 
@@ -15990,8 +16181,23 @@ They are not to charge interest or profit from his desperation. The goal is not 
 
 God reminds them that He brought them out of Egypt to give them the land and to be their God.
 
-> **Leviticus 25:39-46**  
-> "If thy brother... be waxen poor, and be sold unto thee; thou shalt not compel him to serve as a bondservant..."
+## Leviticus 25:39-46
+
+> **39** And if thy brother that dwelleth by thee be waxen poor, and be sold unto thee; thou shalt not compel him to serve as a bondservant:
+
+> **40** But as an hired servant, and as a sojourner, he shall be with thee, and shall serve thee unto the year of jubile:
+
+> **41** And then shall he depart from thee, both he and his children with him, and shall return unto his own family, and unto the possession of his fathers shall he return.
+
+> **42** For they are my servants, which I brought forth out of the land of Egypt: they shall not be sold as bondmen.
+
+> **43** Thou shalt not rule over him with rigour; but shalt fear thy God.
+
+> **44** Both thy bondmen, and thy bondmaids, which thou shalt have, shall be of the heathen that are round about you; of them shall ye buy bondmen and bondmaids.
+
+> **45** Moreover of the children of the strangers that do sojourn among you, of them shall ye buy, and of their families that are with you, which they begat in your land: and they shall be your possession.
+
+> **46** And ye shall take them as an inheritance for your children after you, to inherit them for a possession; they shall be your bondmen for ever: but over your brethren the children of Israel, ye shall not rule one over another with rigour.
 
 ### 🔓 Do Not Rule With Harshness
 
@@ -16013,8 +16219,25 @@ God gives the reason: "They are my servants."
 
 No Israelite has the right to treat another redeemed Israelite as property.
 
-> **Leviticus 25:47-55**  
-> "After that he is sold he may be redeemed again... For unto me the children of Israel are servants... I am the LORD your God."
+## Leviticus 25:47-55
+
+> **47** And if a sojourner or stranger wax rich by thee, and thy brother that dwelleth by him wax poor, and sell himself unto the stranger or sojourner by thee, or to the stock of the stranger’s family:
+
+> **48** After that he is sold he may be redeemed again; one of his brethren may redeem him:
+
+> **49** Either his uncle, or his uncle’s son, may redeem him, or any that is nigh of kin unto him of his family may redeem him; or if he be able, he may redeem himself.
+
+> **50** And he shall reckon with him that bought him from the year that he was sold to him unto the year of jubile: and the price of his sale shall be according unto the number of years, according to the time of an hired servant shall it be with him.
+
+> **51** If there be yet many years behind, according unto them he shall give again the price of his redemption out of the money that he was bought for.
+
+> **52** And if there remain but few years unto the year of jubile, then he shall count with him, and according unto his years shall he give him again the price of his redemption.
+
+> **53** And as a yearly hired servant shall he be with him: and the other shall not rule with rigour over him in thy sight.
+
+> **54** And if he be not redeemed in these years, then he shall go out in the year of jubile, both he, and his children with him.
+
+> **55** For unto me the children of Israel are servants; they are my servants whom I brought forth out of the land of Egypt: I am the LORD your God.
 
 ### 🔁 Redemption From Bondage
 
@@ -16121,8 +16344,11 @@ The chapter moves from worship commands, to blessings, to escalating warnings, t
 
 # Deep Chapter Notes
 
-> **Leviticus 26:1-2**  
-> "Ye shall make you no idols nor graven image... Ye shall keep my sabbaths, and reverence my sanctuary: I am the LORD."
+## Leviticus 26:1-2
+
+> **1** Ye shall make you no idols nor graven image, neither rear you up a standing image, neither shall ye set up any image of stone in your land, to bow down unto it: for I am the LORD your God.
+
+> **2** Ye shall keep my sabbaths, and reverence my sanctuary: I am the LORD.
 
 ### 🛐 Worship Must Stay Pure
 
@@ -16142,8 +16368,29 @@ Then God reminds them to keep His Sabbaths and reverence His sanctuary.
 
 Before God talks about blessings and warnings, He anchors the covenant in worship.
 
-> **Leviticus 26:3-13**  
-> "If ye walk in my statutes, and keep my commandments, and do them; Then I will give you rain in due season..."
+## Leviticus 26:3-13
+
+> **3** If ye walk in my statutes, and keep my commandments, and do them;
+
+> **4** Then I will give you rain in due season, and the land shall yield her increase, and the trees of the field shall yield their fruit.
+
+> **5** And your threshing shall reach unto the vintage, and the vintage shall reach unto the sowing time: and ye shall eat your bread to the full, and dwell in your land safely.
+
+> **6** And I will give peace in the land, and ye shall lie down, and none shall make you afraid: and I will rid evil beasts out of the land, neither shall the sword go through your land.
+
+> **7** And ye shall chase your enemies, and they shall fall before you by the sword.
+
+> **8** And five of you shall chase an hundred, and an hundred of you shall put ten thousand to flight: and your enemies shall fall before you by the sword.
+
+> **9** For I will have respect unto you, and make you fruitful, and multiply you, and establish my covenant with you.
+
+> **10** And ye shall eat old store, and bring forth the old because of the new.
+
+> **11** And I will set my tabernacle among you: and my soul shall not abhor you.
+
+> **12** And I will walk among you, and will be your God, and ye shall be my people.
+
+> **13** I am the LORD your God, which brought you forth out of the land of Egypt, that ye should not be their bondmen; and I have broken the bands of your yoke, and made you go upright.
 
 ### 🌧️ Blessing For Obedience
 
@@ -16167,8 +16414,21 @@ The highest blessing is not only harvest or safety. It is God's presence.
 
 God says, "I will walk among you, and will be your God, and ye shall be my people."
 
-> **Leviticus 26:14-20**  
-> "But if ye will not hearken unto me... I will even appoint over you terror... And I will break the pride of your power..."
+## Leviticus 26:14-20
+
+> **14** But if ye will not hearken unto me, and will not do all these commandments;
+
+> **15** And if ye shall despise my statutes, or if your soul abhor my judgments, so that ye will not do all my commandments, but that ye break my covenant:
+
+> **16** I also will do this unto you; I will even appoint over you terror, consumption, and the burning ague, that shall consume the eyes, and cause sorrow of heart: and ye shall sow your seed in vain, for your enemies shall eat it.
+
+> **17** And I will set my face against you, and ye shall be slain before your enemies: they that hate you shall reign over you; and ye shall flee when none pursueth you.
+
+> **18** And if ye will not yet for all this hearken unto me, then I will punish you seven times more for your sins.
+
+> **19** And I will break the pride of your power; and I will make your heaven as iron, and your earth as brass:
+
+> **20** And your strength shall be spent in vain: for your land shall not yield her increase, neither shall the trees of the land yield their fruits.
 
 ### ⚠️ The First Warnings
 
@@ -16192,8 +16452,19 @@ God is not being random. These consequences directly undo the blessings of obedi
 
 Rebellion makes life hard because it cuts people off from the God who gives life.
 
-> **Leviticus 26:21-26**  
-> "And if ye walk contrary unto me... Then will I also walk contrary unto you..."
+## Leviticus 26:21-26
+
+> **21** And if ye walk contrary unto me, and will not hearken unto me; I will bring seven times more plagues upon you according to your sins.
+
+> **22** I will also send wild beasts among you, which shall rob you of your children, and destroy your cattle, and make you few in number; and your high ways shall be desolate.
+
+> **23** And if ye will not be reformed by me by these things, but will walk contrary unto me;
+
+> **24** Then will I also walk contrary unto you, and will punish you yet seven times for your sins.
+
+> **25** And I will bring a sword upon you, that shall avenge the quarrel of my covenant: and when ye are gathered together within your cities, I will send the pestilence among you; and ye shall be delivered into the hand of the enemy.
+
+> **26** And when I have broken the staff of your bread, ten women shall bake your bread in one oven, and they shall deliver you your bread again by weight: and ye shall eat, and not be satisfied.
 
 ### 🚨 Walking Contrary To God
 
@@ -16215,8 +16486,33 @@ The land becomes dangerous. Roads become desolate. Sword and pestilence come. Br
 
 God's discipline is meant to wake them up before destruction goes further.
 
-> **Leviticus 26:27-39**  
-> "And if ye will not for all this hearken unto me... I will scatter you among the heathen... Then shall the land enjoy her sabbaths..."
+## Leviticus 26:27-39
+
+> **27** And if ye will not for all this hearken unto me, but walk contrary unto me;
+
+> **28** Then I will walk contrary unto you also in fury; and I, even I, will chastise you seven times for your sins.
+
+> **29** And ye shall eat the flesh of your sons, and the flesh of your daughters shall ye eat.
+
+> **30** And I will destroy your high places, and cut down your images, and cast your carcases upon the carcases of your idols, and my soul shall abhor you.
+
+> **31** And I will make your cities waste, and bring your sanctuaries unto desolation, and I will not smell the savour of your sweet odours.
+
+> **32** And I will bring the land into desolation: and your enemies which dwell therein shall be astonished at it.
+
+> **33** And I will scatter you among the heathen, and will draw out a sword after you: and your land shall be desolate, and your cities waste.
+
+> **34** Then shall the land enjoy her sabbaths, as long as it lieth desolate, and ye be in your enemies’ land; even then shall the land rest, and enjoy her sabbaths.
+
+> **35** As long as it lieth desolate it shall rest; because it did not rest in your sabbaths, when ye dwelt upon it.
+
+> **36** And upon them that are left alive of you I will send a faintness into their hearts in the lands of their enemies; and the sound of a shaken leaf shall chase them; and they shall flee, as fleeing from a sword; and they shall fall when none pursueth.
+
+> **37** And they shall fall one upon another, as it were before a sword, when none pursueth: and ye shall have no power to stand before your enemies.
+
+> **38** And ye shall perish among the heathen, and the land of your enemies shall eat you up.
+
+> **39** And they that are left of you shall pine away in their iniquity in your enemies’ lands; and also in the iniquities of their fathers shall they pine away with them.
 
 ### 🏚️ Exile And Desolation
 
@@ -16240,8 +16536,19 @@ The warning is terrifying because covenant rebellion eventually leads to exile.
 
 God is showing Israel where persistent rebellion leads if they refuse correction.
 
-> **Leviticus 26:40-45**  
-> "If they shall confess their iniquity... Then will I remember my covenant with Jacob... and I will remember the land."
+## Leviticus 26:40-45
+
+> **40** If they shall confess their iniquity, and the iniquity of their fathers, with their trespass which they trespassed against me, and that also they have walked contrary unto me;
+
+> **41** And that I also have walked contrary unto them, and have brought them into the land of their enemies; if then their uncircumcised hearts be humbled, and they then accept of the punishment of their iniquity:
+
+> **42** Then will I remember my covenant with Jacob, and also my covenant with Isaac, and also my covenant with Abraham will I remember; and I will remember the land.
+
+> **43** The land also shall be left of them, and shall enjoy her sabbaths, while she lieth desolate without them: and they shall accept of the punishment of their iniquity: because, even because they despised my judgments, and because their soul abhorred my statutes.
+
+> **44** And yet for all that, when they be in the land of their enemies, I will not cast them away, neither will I abhor them, to destroy them utterly, and to break my covenant with them: for I am the LORD their God.
+
+> **45** But I will for their sakes remember the covenant of their ancestors, whom I brought forth out of the land of Egypt in the sight of the heathen, that I might be their God: I am the LORD.
 
 ### 🙏 Confession And Covenant Mercy
 
@@ -16263,8 +16570,9 @@ Even in the land of their enemies, God says He will not cast them away completel
 
 Mercy does not erase the seriousness of sin. But covenant mercy means judgment is not the final word.
 
-> **Leviticus 26:46**  
-> "These are the statutes and judgments and laws, which the LORD made between him and the children of Israel in mount Sinai by the hand of Moses."
+## Leviticus 26:46
+
+> **46** These are the statutes and judgments and laws, which the LORD made between him and the children of Israel in mount Sinai by the hand of Moses.
 
 ### 📜 The Covenant Is Clear
 
@@ -16319,3 +16627,482 @@ The chapter is heavy, but it ends with hope: "I will remember."
 🙏 Ask God to help you walk in obedience.
 
 🙏 Thank God that He remembers mercy even after failure.`;
+LEVITICUS_DEEP_NOTES[26] = `# Leviticus 27
+
+Vows, Dedications, And What Belongs To The Lord
+
+Leviticus 27 closes the book by teaching Israel how to handle vows and dedicated things. After all the laws about worship, holiness, sacrifice, purity, feasts, land, and covenant, the final chapter reminds the people that what is given to God must be treated seriously.
+
+This chapter teaches that devotion is not casual. A vow before the Lord has weight.
+
+## Why Leviticus 27 Matters
+
+Leviticus 27 matters because it teaches reverence in what people promise, dedicate, redeem, and give.
+
+🙏 Vows must be honored.
+
+⚖️ Valuations must be ordered.
+
+🐑 Dedicated animals become holy.
+
+🏠 Houses and fields can be devoted.
+
+📏 The sanctuary shekel sets the measure.
+
+🌾 The tithe belongs to the Lord.
+
+God cares about the promises His people make. He also gives structure so devotion does not become confusion.
+
+## Chapter Flow
+
+The chapter moves through different kinds of dedication and redemption.
+
+👤 Persons dedicated by vow.
+
+🐑 Animals dedicated to the Lord.
+
+🏠 Houses sanctified to the Lord.
+
+🌾 Fields dedicated from inheritance.
+
+📏 Valuations measured by the sanctuary shekel.
+
+🌾 Tithes belonging to the Lord.
+
+# Deep Chapter Notes
+
+## Leviticus 27:1-8
+
+> **1** And the LORD spake unto Moses, saying,
+
+> **2** Speak unto the children of Israel, and say unto them, When a man shall make a singular vow, the persons shall be for the LORD by thy estimation.
+
+> **3** And thy estimation shall be of the male from twenty years old even unto sixty years old, even thy estimation shall be fifty shekels of silver, after the shekel of the sanctuary.
+
+> **4** And if it be a female, then thy estimation shall be thirty shekels.
+
+> **5** And if it be from five years old even unto twenty years old, then thy estimation shall be of the male twenty shekels, and for the female ten shekels.
+
+> **6** And if it be from a month old even unto five years old, then thy estimation shall be of the male five shekels of silver, and for the female thy estimation shall be three shekels of silver.
+
+> **7** And if it be from sixty years old and above; if it be a male, then thy estimation shall be fifteen shekels, and for the female ten shekels.
+
+> **8** But if he be poorer than thy estimation, then he shall present himself before the priest, and the priest shall value him; according to his ability that vowed shall the priest value him.
+
+### 🙏 A Special Vow
+
+God begins with a person making a singular vow.
+
+This is not casual speech. Someone is setting something apart to the Lord in a serious way.
+
+Leviticus 27 teaches that devotion needs truth, order, and follow-through.
+
+🙏 A vow is spoken before God.
+
+🧍 Persons can be connected to a vow.
+
+📜 God gives instructions for how the vow is handled.
+
+⚖️ Devotion must not become confusion.
+
+### 📏 Ordered Valuation
+
+The priest assigns a valuation according to the sanctuary standard.
+
+This does not mean a person's spiritual worth is reduced to money.
+
+It means the vow needs an ordered way to be fulfilled or redeemed.
+
+The values differ by age and category because they are connected to social and labor value in Israel's system, not human dignity before God.
+
+📏 The sanctuary shekel is the standard.
+
+👤 The priest handles the valuation.
+
+🧾 The vow has a concrete cost.
+
+✅ The worshiper knows what faithfulness requires.
+
+### 🤲 Room For The Poor
+
+God also makes room for poverty.
+
+If someone is poorer than the valuation, the priest values him according to his ability.
+
+God does not let vows become a trap that crushes the poor.
+
+🤲 Poverty is considered.
+
+⚖️ The priest applies wisdom.
+
+💛 God cares about sincere devotion.
+
+🕊️ Holy order includes mercy.
+
+God does not let zeal turn into chaos, and He does not crush the poor with impossible payment.
+
+## Leviticus 27:9-13
+
+> **9** And if it be a beast, whereof men bring an offering unto the LORD, all that any man giveth of such unto the LORD shall be holy.
+
+> **10** He shall not alter it, nor change it, a good for a bad, or a bad for a good: and if he shall at all change beast for beast, then it and the exchange thereof shall be holy.
+
+> **11** And if it be any unclean beast, of which they do not offer a sacrifice unto the LORD, then he shall present the beast before the priest:
+
+> **12** And the priest shall value it, whether it be good or bad: as thou valuest it, who art the priest, so shall it be.
+
+> **13** But if he will at all redeem it, then he shall add a fifth part thereof unto thy estimation.
+
+### 🐑 Once Given, It Is Holy
+
+If a clean animal is given to the Lord, it becomes holy.
+
+That sentence matters: what is given to God is not ordinary anymore.
+
+The worshiper cannot treat the animal like a flexible possession after dedicating it.
+
+🐑 What is given to God is holy.
+
+🔥 Holy things must be treated as holy.
+
+🙏 Devotion changes how the gift is handled.
+
+### 🔁 No Swapping Holy Things
+
+The worshiper cannot exchange a good animal for a bad one, or a bad one for a good one.
+
+If he tries to swap it, both animals become holy.
+
+That rule blocks manipulation.
+
+🔁 No trading away the vowed gift.
+
+⚠️ No gaming the system.
+
+🐑 Both animals become holy if exchanged.
+
+✅ God protects sincerity in worship.
+
+### 🧾 Redeeming The Unclean Animal
+
+If the animal is unclean and cannot be offered as a sacrifice, the priest values it.
+
+If the worshiper redeems it, he adds a fifth.
+
+Even here, the process is ordered.
+
+🧾 The priest sets the value.
+
+💰 Redemption has a cost.
+
+📏 The valuation stands.
+
+🙏 Dedicated things remain serious before God.
+
+## Leviticus 27:14-15
+
+> **14** And when a man shall sanctify his house to be holy unto the LORD, then the priest shall estimate it, whether it be good or bad: as the priest shall estimate it, so shall it stand.
+
+> **15** And if he that sanctified it will redeem his house, then he shall add the fifth part of the money of thy estimation unto it, and it shall be his.
+
+### 🏠 A House Set Apart
+
+A person could dedicate a house to the Lord.
+
+The house is not treated casually once it is sanctified. It is valued by the priest, and the valuation stands.
+
+🏠 A home can be dedicated.
+
+⚖️ The priest establishes the value.
+
+📜 The valuation is not random.
+
+🔥 The house is treated as holy to the Lord.
+
+### 💰 Redemption Has Cost
+
+If the owner wants to redeem the house, he adds a fifth to the valuation.
+
+This teaches that taking back what was dedicated is not casual.
+
+💰 Redemption adds a fifth.
+
+🙏 Devotion should not be treated lightly.
+
+🧾 The cost protects the seriousness of the vow.
+
+When something is sanctified to the Lord, taking it back must still honor the Lord.
+
+## Leviticus 27:16-25
+
+> **16** And if a man shall sanctify unto the LORD some part of a field of his possession, then thy estimation shall be according to the seed thereof: an homer of barley seed shall be valued at fifty shekels of silver.
+
+> **17** If he sanctify his field from the year of jubile, according to thy estimation it shall stand.
+
+> **18** But if he sanctify his field after the jubile, then the priest shall reckon unto him the money according to the years that remain, even unto the year of the jubile, and it shall be abated from thy estimation.
+
+> **19** And if he that sanctified the field will in any wise redeem it, then he shall add the fifth part of the money of thy estimation unto it, and it shall be assured to him.
+
+> **20** And if he will not redeem the field, or if he have sold the field to another man, it shall not be redeemed any more.
+
+> **21** But the field, when it goeth out in the jubile, shall be holy unto the LORD, as a field devoted; the possession thereof shall be the priest's.
+
+> **22** And if a man sanctify unto the LORD a field which he hath bought, which is not of the fields of his possession;
+
+> **23** Then the priest shall reckon unto him the worth of thy estimation, even unto the year of the jubile: and he shall give thine estimation in that day, as a holy thing unto the LORD.
+
+> **24** In the year of the jubile the field shall return unto him of whom it was bought, even to him to whom the possession of the land did belong.
+
+> **25** And all thy estimations shall be according to the shekel of the sanctuary: twenty gerahs shall be the shekel.
+
+### 🌾 A Field From Inheritance
+
+Fields can also be sanctified to the Lord.
+
+But a field is not just property in Leviticus. It is tied to inheritance, family, and Jubilee.
+
+That means dedication must respect the way God already ordered the land.
+
+🌾 Fields can be dedicated.
+
+🏡 Inheritance still matters.
+
+📜 The vow does not erase God's land law.
+
+🙏 Devotion must fit God's order.
+
+### 📅 Jubilee Shapes The Price
+
+The value of the field depends on how many years remain until Jubilee.
+
+That connects this chapter directly back to Leviticus 25.
+
+The land belongs to God. Israel's families receive possession from Him. So the field's value is measured by time, harvest, and return.
+
+📅 Jubilee affects the value.
+
+🌾 The seed amount shapes the valuation.
+
+⏳ Fewer years means a lower value.
+
+🏡 The land system still points back to God.
+
+### 🔁 Redemption And Loss
+
+If the man redeems the field, he adds a fifth.
+
+But if he refuses to redeem it or sells it to another, the field becomes holy to the Lord when Jubilee comes.
+
+That is serious.
+
+💰 Redemption adds a fifth.
+
+⚠️ Refusal has consequences.
+
+🔥 The field can become devoted to the Lord.
+
+👨‍⚖️ The priest receives what becomes devoted.
+
+### 📏 The Sanctuary Shekel
+
+All valuations use the shekel of the sanctuary.
+
+God's worship has a standard.
+
+Human guessing does not control holy things.
+
+📏 The sanctuary shekel gives the standard.
+
+⚖️ Holy valuation must be measured rightly.
+
+🧾 The process is public and ordered.
+
+🙌 God brings order even into complicated vows involving land.
+
+## Leviticus 27:26-29
+
+> **26** Only the firstling of the beasts, which should be the LORD'S firstling, no man shall sanctify it; whether it be ox, or sheep: it is the LORD'S.
+
+> **27** And if it be of an unclean beast, then he shall redeem it according to thine estimation, and shall add a fifth part of it thereto: or if it be not redeemed, then it shall be sold according to thy estimation.
+
+> **28** Notwithstanding no devoted thing, that a man shall devote unto the LORD of all that he hath, both of man and beast, and of the field of his possession, shall be sold or redeemed: every devoted thing is most holy unto the LORD.
+
+> **29** None devoted, which shall be devoted of men, shall be redeemed; but shall surely be put to death.
+
+### 🐑 The Firstborn Is Already The Lord's
+
+The firstborn animal cannot be newly dedicated because it already belongs to the Lord.
+
+This is an important distinction.
+
+People cannot offer God what is already owed as if it were extra generosity.
+
+🐑 The firstborn belongs to God.
+
+🚫 What is already His cannot be re-gifted.
+
+📌 Holy categories must be respected.
+
+### 🔥 Devoted Things Are Most Holy
+
+Devoted things are treated with even greater seriousness.
+
+They cannot be sold.
+
+They cannot be redeemed.
+
+They are most holy unto the Lord.
+
+🔥 Devoted things are most holy.
+
+⚠️ They are not ordinary property anymore.
+
+🙏 What is fully devoted belongs fully to God.
+
+### ⚖️ Holy Categories Cannot Be Blurred
+
+This section is hard, but its main point is clear: Israel must not blur what God has made holy.
+
+Some things are redeemable.
+
+Some things are not.
+
+Some things can be valued.
+
+Some things already belong to God.
+
+God defines what belongs to Him.
+
+## Leviticus 27:30-33
+
+> **30** And all the tithe of the land, whether of the seed of the land, or of the fruit of the tree, is the LORD'S: it is holy unto the LORD.
+
+> **31** And if a man will at all redeem ought of his tithes, he shall add thereto the fifth part thereof.
+
+> **32** And concerning the tithe of the herd, or of the flock, even of whatsoever passeth under the rod, the tenth shall be holy unto the LORD.
+
+> **33** He shall not search whether it be good or bad, neither shall he change it: and if he change it at all, then both it and the change thereof shall be holy; it shall not be redeemed.
+
+### 🌾 The Tithe Belongs To The Lord
+
+The tithe belongs to the Lord.
+
+Seed and fruit are included.
+
+The increase of the land is holy to the Lord.
+
+This means giving is not treated like a casual leftover.
+
+🌾 The seed of the land belongs to God.
+
+🍎 The fruit of the tree belongs to God.
+
+🔥 The tithe is holy.
+
+🙏 Giving is part of worship.
+
+### 🐄 The Tenth Passes Under The Rod
+
+The tithe of the herd or flock is the tenth animal that passes under the rod.
+
+This is simple and honest.
+
+🐄 The tenth animal is holy.
+
+📏 The count decides the gift.
+
+🙌 The worshiper trusts God with the outcome.
+
+### 🚫 No Picking And Choosing
+
+The worshiper must not search whether the animal is good or bad.
+
+He must not manipulate the tithe.
+
+If he tries to change it, both the original and the exchange become holy.
+
+🚫 No picking the convenient animal.
+
+⚠️ No swapping after the count.
+
+✅ Giving must be truthful before God.
+
+💰 Redemption requires adding a fifth where redemption is allowed.
+
+The tithe is not treated as a tip. It is holy to the Lord.
+
+## Leviticus 27:34
+
+> **34** These are the commandments, which the LORD commanded Moses for the children of Israel in mount Sinai.
+
+### 📜 The Commands Close The Book
+
+Leviticus ends by reminding us that these commandments came from the Lord through Moses at Mount Sinai.
+
+The book began with God calling Moses from the tabernacle. It ends with God's commandments for Israel.
+
+📜 God commands.
+
+👂 Moses receives.
+
+👥 Israel must obey.
+
+### 🏕️ Sinai And Holiness
+
+Mount Sinai frames the covenant.
+
+Leviticus has shown Israel how to live near a holy God.
+
+The message is clear: the holy God has spoken, and His people must live as holy.
+
+🏕️ Sinai frames the covenant.
+
+🔥 Holiness shapes worship.
+
+🏠 Holiness shapes daily life.
+
+🙏 Holiness shapes what people promise and give.
+
+Leviticus closes with authority, holiness, and covenant responsibility.
+
+# The Big Lesson
+
+Leviticus 27 teaches that what belongs to God must be honored.
+
+Words matter.
+
+Vows matter.
+
+Offerings matter.
+
+Tithes matter.
+
+Holy things matter.
+
+God's people are not allowed to treat devotion as casual, careless, or changeable whenever it becomes inconvenient.
+
+# Final Thought
+
+Leviticus ends by bringing holiness into promises and possessions.
+
+The book has shown that God is holy, worship is holy, the priests are holy, the people are called to be holy, the land is holy, time is holy, and now even vows and gifts are holy.
+
+Everything belongs before the Lord.
+
+# Pause and Reflect
+
+💭 Do I take my promises to God seriously?
+
+💭 Am I tempted to give God what is easy instead of what is faithful?
+
+💭 What does this chapter teach me about honesty in worship?
+
+💭 Do I treat giving as holy or casual?
+
+💭 How has Leviticus helped me understand God's holiness?
+
+🙏 Ask God to make your devotion sincere.
+
+🙏 Ask God to help you honor what belongs to Him.
+
+🙏 Thank God for teaching His people how to live near His holiness.`;

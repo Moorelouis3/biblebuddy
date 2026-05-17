@@ -239,9 +239,16 @@ html {
 
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="text-blue-"],
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="text-sky-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-green-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-emerald-"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-teal-"],
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#2f7fe8"],
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#4f8fb7"],
-[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#5a76af"] {
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#5a76af"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#4a9b6f"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#4f7e54"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#4f7f54"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="text-[#6f8d6c"] {
   color: var(--bb-accent) !important;
 }
 
@@ -249,7 +256,11 @@ html {
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#2878f0"],
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#3f6fb2"],
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#2f7fe8"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#4a9b6f"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-[#5a9a5a"],
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-blue-600"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-green-500"],
+[data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-green-600"],
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-emerald-500"],
 [data-bb-theme]:not([data-bb-theme="light"]) [class*="bg-emerald-600"] {
   background: var(--bb-button) !important;

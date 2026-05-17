@@ -214,25 +214,25 @@ export default function GroupWeeklyTriviaCard({
   }
 
   function optionClasses(label: "A" | "B" | "C" | "D") {
-    if (!revealed) return "border-[#d9e8d8] bg-white hover:border-[#8fbc8f] hover:bg-[#f7fbf6]";
-    if (label === currentQuestion.correctAnswer) return "border-[#5f9c72] bg-[#edf8ef]";
+    if (!revealed) return "border-[var(--bb-card-border)] bg-[var(--bb-card)] hover:border-[var(--bb-accent)] hover:bg-[var(--bb-surface)]";
+    if (label === currentQuestion.correctAnswer) return "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)]";
     if (label === selected && label !== currentQuestion.correctAnswer) return "border-[#d88b8b] bg-[#fff4f4]";
-    return "border-[#ece7df] bg-[#faf8f4] opacity-60";
+    return "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] opacity-60";
   }
 
   return (
     <div
-      className="rounded-2xl border border-[#dce8dc] bg-[#f8fcf7] p-4"
+      className="rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface)] p-4"
       onClick={(event) => event.stopPropagation()}
       onKeyDown={(event) => event.stopPropagation()}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6f8d6c]">Weekly Bible Trivia</p>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--bb-accent)]">Weekly Bible Trivia</p>
           <h3 className="mt-1 text-lg font-bold text-gray-900">{triviaSet.subject_title}</h3>
           {triviaSet.intro && <p className="mt-2 text-sm leading-relaxed text-gray-600">{triviaSet.intro}</p>}
         </div>
-        <span className="rounded-full bg-[#e4f1e2] px-2.5 py-1 text-[11px] font-semibold text-[#4f7f54]">
+        <span className="rounded-full bg-[var(--bb-accent-soft)] px-2.5 py-1 text-[11px] font-semibold text-[var(--bb-accent)]">
           10 Questions
         </span>
       </div>
@@ -246,7 +246,7 @@ export default function GroupWeeklyTriviaCard({
               disabled={!userId}
               onClick={() => setPhase("quiz")}
               className="mt-4 rounded-xl px-5 py-2.5 text-sm font-bold text-white transition hover:opacity-90 disabled:opacity-50"
-              style={{ backgroundColor: "#4a9b6f" }}
+              style={{ backgroundColor: "var(--bb-accent)" }}
             >
               {userId ? "Start Trivia" : "Sign in to play"}
             </button>
@@ -259,11 +259,11 @@ export default function GroupWeeklyTriviaCard({
               <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
                 Question {currentIndex + 1} of {totalQuestions}
               </p>
-              <p className="text-xs font-semibold text-[#4f7f54]">{score} correct</p>
+              <p className="text-xs font-semibold text-[var(--bb-accent)]">{score} correct</p>
             </div>
-            <div className="mb-4 h-2 overflow-hidden rounded-full bg-[#edf1ec]">
+            <div className="mb-4 h-2 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
               <div
-                className="h-full rounded-full bg-[#6faa77] transition-all"
+                className="h-full rounded-full bg-[var(--bb-progress-fill)] transition-all"
                 style={{ width: `${(currentIndex / totalQuestions) * 100}%` }}
               />
             </div>
@@ -292,7 +292,7 @@ export default function GroupWeeklyTriviaCard({
                   disabled={saving}
                   onClick={handleNext}
                   className="mt-3 w-full rounded-xl px-4 py-2.5 text-sm font-bold text-white transition hover:opacity-90 disabled:opacity-60"
-                  style={{ backgroundColor: "#4a9b6f" }}
+                  style={{ backgroundColor: "var(--bb-accent)" }}
                 >
                   {saving
                     ? "Saving..."
@@ -307,14 +307,14 @@ export default function GroupWeeklyTriviaCard({
 
         {phase === "done" && (
           <div>
-            <div className="rounded-2xl bg-[#f7fbf6] px-4 py-4 text-center">
+            <div className="rounded-2xl bg-[var(--bb-accent-soft)] px-4 py-4 text-center">
               <p className="text-3xl">🏁</p>
               <p className="mt-2 text-xl font-bold text-gray-900">{savedScore ?? score} / {totalQuestions}</p>
               <p className="mt-1 text-sm text-gray-600">
                 {userCompleted ? "Nice work. Your score is locked in for this week's group board." : "Your score is ready."}
               </p>
               {yourRank && (
-                <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#6f8d6c]">
+                <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-[var(--bb-accent)]">
                   Current Group Rank: #{yourRank}
                 </p>
               )}
@@ -336,14 +336,14 @@ export default function GroupWeeklyTriviaCard({
                     return (
                       <div
                         key={`${entry.user_id}-${entry.completed_at}`}
-                        className={`rounded-2xl border px-3 py-3 ${entry.user_id === userId ? "border-[#a9d0ae] bg-[#f7fbf6]" : "border-[#eee8de] bg-[#fcfbf9]"}`}
+                        className={`rounded-2xl border px-3 py-3 ${entry.user_id === userId ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)]" : "border-[var(--bb-card-border)] bg-[var(--bb-card)]"}`}
                       >
                         <div className="flex items-center gap-3">
                           <div className="w-7 text-center text-sm font-bold text-gray-500">#{index + 1}</div>
                           {entry.profile_image_url ? (
                             <img src={entry.profile_image_url} alt={entry.display_name} className="h-9 w-9 rounded-full object-cover" />
                           ) : (
-                            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#dce8dc] text-sm font-bold text-[#4f7f54]">
+                            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--bb-accent-soft)] text-sm font-bold text-[var(--bb-accent)]">
                               {(entry.display_name || "B").charAt(0).toUpperCase()}
                             </div>
                           )}
@@ -353,7 +353,7 @@ export default function GroupWeeklyTriviaCard({
                               {entry.user_id === userId ? " (You)" : ""}
                             </p>
                             <div className="mt-1 h-2 overflow-hidden rounded-full bg-[#ece7df]">
-                              <div className="h-full rounded-full bg-[#6faa77]" style={{ width: `${percent}%` }} />
+                              <div className="h-full rounded-full bg-[var(--bb-progress-fill)]" style={{ width: `${percent}%` }} />
                             </div>
                           </div>
                           <div className="text-right">
