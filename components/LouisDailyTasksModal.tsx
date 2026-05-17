@@ -627,6 +627,7 @@ export async function fetchLouisDailyChecklistData(
     {
       kind: "reflection",
       title: "Answer The Reflection Question",
+      subtitle: `Share what ${chapterLabel} is stirring in you.`,
       pointsLabel: "+5 pts",
       timeEstimateLabel: "3 min",
       timeEstimateDetail: "Write your response",

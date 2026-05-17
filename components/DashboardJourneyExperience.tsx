@@ -314,9 +314,10 @@ function getTaskCardCopy(task: TaskState, _index: number) {
   }
 
   if (task.kind === "reflection") {
+    const chapterLabel = task.chapterLabel || (task.book && task.chapter ? `${task.book} ${task.chapter}` : "this chapter");
     return {
       title: "Answer The Reflection Question",
-      subtitle: "Share what this chapter is stirring in you.",
+      subtitle: `Share what ${chapterLabel} is stirring in you.`,
       emoji: "âœï¸",
       doneAccent: "from-[#b9dcf4] to-[#7BAFD4]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
@@ -477,6 +478,7 @@ function buildPreloadedNextChapterTasks({
     {
       kind: "reflection",
       title: "Answer The Reflection Question",
+      subtitle: `Share what ${chapterLabel} is stirring in you.`,
       pointsLabel: "+5 pts",
       timeEstimateLabel: "3 min",
       href: `/bible-studies/${devotionalId}?day=${dayNumber}&from=louis-daily-task-reflection`,

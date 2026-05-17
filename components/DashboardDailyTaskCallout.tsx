@@ -898,7 +898,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
         if (isInline) {
           return inlineFrame(
             <div className="relative bg-white">
-              <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
+              <div className="hidden">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-[#4f8fb7]">Task 6</p>
                   <h2 className="text-lg font-bold text-gray-900">Answer The Reflection Question</h2>
@@ -908,8 +908,8 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                   Ã—
                 </button>
               </div>
-              <div className="px-6 py-5">
-                <p className="mb-5 text-xl font-black leading-snug text-gray-950">
+              <div className="px-1 py-3">
+                <p className="mb-5 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
                   {devotionalDay.reflection_question || "What stood out to you from this chapter?"}
                 </p>
                 <CommentSection

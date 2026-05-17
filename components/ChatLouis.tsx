@@ -3444,7 +3444,7 @@ export function ChatLouis() {
         };
 
   const isLouisActive = hasPendingLouisMoment;
-  const bubbleOuterSize = isLouisActive ? "h-36 w-36" : "h-32 w-32";
+  const bubbleOuterSize = isLouisActive ? "h-32 w-32" : "h-28 w-28";
   const avatarSize = isLouisActive ? 118 : 104;
 
   return (
@@ -3464,12 +3464,12 @@ export function ChatLouis() {
             cursor: isDragging ? "grabbing" : "grab",
             touchAction: "none",
           }}
-          className={`z-[70] rounded-full shadow-xl flex items-center justify-center transition-all duration-300 ${
+          className={`z-[70] rounded-full flex items-center justify-center transition-all duration-300 ${
             hasPendingLouisMoment ? "animate-[bounce_1.25s_ease-in-out_infinite]" : "scale-95"
           }`}
           aria-label="Chat with Lil' Lewis"
         >
-          <div className={`relative ${bubbleOuterSize} rounded-full flex items-center justify-center bg-white/90 ring-1 ring-rose-100 shadow-2xl`}>
+          <div className={`relative ${bubbleOuterSize} rounded-full flex items-center justify-center`}>
             {hasPendingLouisMoment ? (
               <>
                 <span className="absolute inset-0 rounded-full border-4 border-sky-300/70 animate-ping [animation-duration:1.15s]" />

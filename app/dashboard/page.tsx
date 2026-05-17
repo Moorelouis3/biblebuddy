@@ -1907,18 +1907,18 @@ export default function DashboardPage() {
           <button
             type="button"
             onClick={openLevelInfoModal}
-            className="col-span-4 rounded-2xl border border-[#dbe7f4] bg-[#f8fbff] px-3 py-2 text-left transition hover:bg-white hover:shadow-sm"
+            className="col-span-4 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-3 py-2 text-left transition hover:bg-[var(--bb-card)] hover:shadow-sm"
           >
             <div className="flex items-center justify-between gap-3">
-              <p className="text-[11px] font-black text-[#2f7fe8]">
+              <p className="text-[11px] font-black text-[var(--bb-accent)]">
                 {levelInfo?.pointsToNextLevel ?? 0} XP to next level
               </p>
-              <p className="text-[11px] font-black text-gray-600">
+              <p className="text-[11px] font-black text-[var(--bb-text-secondary)]">
                 {Math.round(nextLevelPercent)}%
               </p>
             </div>
-            <div className="mt-2 h-2 overflow-hidden rounded-full bg-[#dce8f7]">
-              <div className="h-full rounded-full bg-[#2f7fe8] transition-all duration-500" style={{ width: `${nextLevelPercent}%` }} />
+            <div className="mt-2 h-2 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
+              <div className="h-full rounded-full bg-[var(--bb-progress-fill)] transition-all duration-500" style={{ width: `${nextLevelPercent}%` }} />
             </div>
           </button>
         ) : null}

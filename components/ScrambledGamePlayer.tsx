@@ -574,7 +574,7 @@ export default function ScrambledGamePlayer({
     return parts.map((part, index) => {
       if (part.toLowerCase() === question.answer.toLowerCase()) {
         return (
-          <span key={`${question.id}-line-${index}`} className="font-bold text-[#c14e5d]">
+          <span key={`${question.id}-line-${index}`} className="font-bold text-[var(--bb-accent,#2f7fe8)]">
             {part}
           </span>
         );
@@ -603,28 +603,28 @@ export default function ScrambledGamePlayer({
 
     if (onClose) {
       return (
-        <div className="bg-white px-4 py-6">
+        <div className={compact ? "bg-white px-0 py-2" : "bg-white px-4 py-6"}>
           <div className="relative mx-auto max-w-xl px-2 py-2 text-center">
             <button
               type="button"
               onClick={onClose}
-              className="absolute right-1 top-1 z-10 grid h-9 w-9 place-items-center rounded-full border border-gray-200 bg-white text-2xl font-light leading-none text-gray-700 shadow-sm transition hover:bg-gray-50 hover:text-gray-950 sm:right-3 sm:top-3"
+              className={`${compact ? "hidden" : "absolute grid"} right-1 top-1 z-10 h-9 w-9 place-items-center rounded-full border border-gray-200 bg-white text-2xl font-light leading-none text-gray-700 shadow-sm transition hover:bg-gray-50 hover:text-gray-950 sm:right-3 sm:top-3`}
               aria-label="Close Scrambled results"
             >
               ×
             </button>
 
-            <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-gray-200 bg-white shadow-lg shadow-gray-200/80">
+            <div className={`${compact ? "hidden" : "mx-auto grid"} h-24 w-24 place-items-center rounded-full border border-gray-200 bg-white shadow-lg shadow-gray-200/80`}>
               <LouisAvatar mood="stareyes" size={112} />
             </div>
-            <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-gray-950">Bible Buddy</p>
-            <p className="mt-1 text-base font-black text-gray-950">You finished Scrambled.</p>
-            <h1 className="mx-auto mt-8 max-w-md text-3xl font-black leading-tight text-gray-950">
-              Scrambled Results for {bookName} {chapter.chapter}
+            <p className={`${compact ? "hidden" : "mt-4"} text-xs font-black uppercase tracking-[0.22em] text-gray-950`}>Bible Buddy</p>
+            <p className={`${compact ? "hidden" : "mt-1"} text-base font-black text-gray-950`}>You finished Scrambled.</p>
+            <h1 className={`mx-auto max-w-md font-black leading-tight text-[var(--bb-text-primary,#111827)] ${compact ? "mt-1 text-2xl" : "mt-8 text-3xl"}`}>
+              {compact ? `${bookName} ${chapter.chapter} Scrambled Results` : `Scrambled Results for ${bookName} ${chapter.chapter}`}
             </h1>
-            <p className="mt-8 text-sm font-black uppercase tracking-[0.16em] text-gray-950">Words Correct</p>
-            <p className="mt-2 text-6xl font-black leading-none text-gray-950">{scoredSolveCount}/{chapter.questions.length}</p>
-            <p className="mx-auto mt-4 max-w-md text-base font-bold leading-7 text-gray-950">{encouragement}</p>
+            <p className={`${compact ? "mt-6" : "mt-8"} text-sm font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]`}>Words Correct</p>
+            <p className={`${compact ? "mt-2 text-5xl" : "mt-2 text-6xl"} font-black leading-none text-[var(--bb-text-primary,#111827)]`}>{scoredSolveCount}/{chapter.questions.length}</p>
+            <p className="mx-auto mt-4 max-w-md text-base font-bold leading-7 text-[var(--bb-text-primary,#111827)]">{encouragement}</p>
             {earnedSolveCount > 0 ? (
               <p className="mt-5 text-base font-black leading-7 text-gray-950">
                 You earned +{earnedSolveCount} points for new solved words.
@@ -850,7 +850,7 @@ export default function ScrambledGamePlayer({
               <button
                 type="button"
                 onClick={handleOwnerSkip}
-                className="text-xs font-black uppercase tracking-[0.14em] text-[#4768af] transition hover:text-[#35508a]"
+                className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-75"
               >
                 Skip
               </button>
@@ -886,47 +886,75 @@ export default function ScrambledGamePlayer({
           ) : null}
 
           <div className={introCardClassName}>
-            <div className="flex items-start gap-4">
-              <div className={avatarFrameClassName}>
-                <LouisAvatar mood={status === "correct" ? "stareyes" : hintCount > 0 ? "think" : "bible"} size={58} />
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Scrambled</p>
-                <h1 className="mt-1 text-3xl font-bold tracking-tight text-gray-900">{bookName} {chapter.chapter}</h1>
-                <p className="mt-1 text-sm font-medium text-[#5d7fc0]">{question.reference}</p>
-                <div className={louieLineClassName}>
-                  <p className="text-sm leading-7 text-[#35508a]">{louieLine}</p>
+            {compact ? (
+              <p className="mx-auto max-w-lg text-center text-sm font-bold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+                Tap the letters below and let's solve this word together.
+              </p>
+            ) : (
+              <div className="flex items-start gap-4">
+                <div className={avatarFrameClassName}>
+                  <LouisAvatar mood={status === "correct" ? "stareyes" : hintCount > 0 ? "think" : "bible"} size={58} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Scrambled</p>
+                  <h1 className="mt-1 text-3xl font-bold tracking-tight text-gray-900">{bookName} {chapter.chapter}</h1>
+                  <p className="mt-1 text-sm font-medium text-[#5d7fc0]">{question.reference}</p>
+                  <div className={louieLineClassName}>
+                    <p className="text-sm leading-7 text-[#35508a]">{louieLine}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
 
           <div className={gameCardClassName}>
-            <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-gray-700">
+            <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-[var(--bb-text-secondary,#5f6368)]">
               <p className="font-semibold">Word {currentQuestionIndex + 1} of {chapter.questions.length}</p>
               <p>Number of words correct: {scoredSolveCount}</p>
             </div>
 
-            <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-[#dfe8f8]">
+            <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-[var(--bb-accent-soft,#eaf5ff)]">
               <div
-                className="h-full rounded-full bg-[#5c7fc1] transition-all duration-300"
+                className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] transition-all duration-300"
                 style={{ width: `${buildProgressPercent(currentQuestionIndex, chapter.questions.length)}%` }}
               />
             </div>
 
-            <div className="mt-5 flex flex-wrap items-start justify-between gap-4">
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">Unscramble the word</h2>
+                <h2 className="text-2xl font-bold text-[var(--bb-text-primary,#111827)]">Unscramble the word</h2>
               </div>
 
-              <button
-                type="button"
-                onClick={revealNextLetter}
-                disabled={status === "correct"}
-                className="rounded-2xl border border-[#d8e2ee] bg-[#f7fbff] px-4 py-2 text-sm font-semibold text-[#2f4b6a] shadow-sm transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {hintLabel}
-              </button>
+              <div className="flex flex-wrap items-center gap-2">
+                {compact ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={resetAttempt}
+                      disabled={status === "correct"}
+                      className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      Reset
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setBankLetters((current) => shuffleTiles(current))}
+                      disabled={status === "correct" || bankLetters.length <= 1}
+                      className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      Shuffle
+                    </button>
+                  </>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={revealNextLetter}
+                  disabled={status === "correct"}
+                  className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)] shadow-sm transition hover:bg-[var(--bb-card,#ffffff)] disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {hintLabel}
+                </button>
+              </div>
             </div>
 
             {pointNotice ? (
@@ -960,7 +988,7 @@ export default function ScrambledGamePlayer({
                       {recentReveal?.index === index ? (
                         <span
                           key={`reveal-${recentReveal.key}`}
-                          className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2 rounded-full bg-[#edf4ff] px-2 py-0.5 text-xs font-bold text-[#4768af] shadow-sm animate-[reveal-pop_850ms_ease-out_forwards]"
+                          className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-2 py-0.5 text-xs font-bold text-[var(--bb-accent,#2f7fe8)] shadow-sm animate-[reveal-pop_850ms_ease-out_forwards]"
                         >
                           +{recentReveal.letter}
                         </span>
@@ -972,10 +1000,10 @@ export default function ScrambledGamePlayer({
                           tile
                             ? tile.locked
                               ? recentReveal?.index === index
-                                ? "border-[#95b5ef] bg-[#edf4ff] text-[#31528d] animate-[slot-pop_360ms_ease-out]"
-                                : "border-[#bfd3f5] bg-[#edf4ff] text-[#31528d]"
-                              : "border-[#d5dbe5] bg-white text-gray-900 shadow-sm"
-                            : "border-[#e4e8ef] bg-[#f4f6f9] text-gray-300"
+                                ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] animate-[slot-pop_360ms_ease-out]"
+                                : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)]"
+                              : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-sm"
+                            : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-[var(--bb-text-muted,#6b7280)]"
                         }`}
                       >
                         {tile?.value ?? ""}
@@ -999,7 +1027,7 @@ export default function ScrambledGamePlayer({
                     key={tile.id}
                     type="button"
                     onClick={() => handleBankLetterClick(tile)}
-                    className="flex h-12 w-full items-center justify-center rounded-2xl border border-[#d8e2ee] bg-[#f7fbff] text-lg font-bold uppercase text-[#2f4b6a] shadow-sm transition hover:-translate-y-0.5 hover:bg-white"
+                    className="flex h-12 w-full items-center justify-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-lg font-bold uppercase text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:-translate-y-0.5 hover:bg-[var(--bb-card,#ffffff)]"
                   >
                     {tile.value}
                   </button>
@@ -1009,9 +1037,9 @@ export default function ScrambledGamePlayer({
 
             <div className="mt-3 text-sm leading-7">
               {status === "correct" ? (
-                <div className="rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-4 py-4">
-                  <p className="text-sm font-semibold text-gray-900">{question.reference}</p>
-                  <p className="mt-1 text-sm leading-7 text-gray-700">"{highlightedSourceLine}"</p>
+                <div className="rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">{question.reference}</p>
+                  <p className="mt-1 text-sm leading-7 text-[var(--bb-text-secondary,#5f6368)]">"{highlightedSourceLine}"</p>
                 </div>
               ) : status === "incorrect" ? (
                 <p className="font-semibold text-[#9a4d4d]">Not quite. Try a different order, or let Louis reveal the next letter.</p>
@@ -1019,27 +1047,31 @@ export default function ScrambledGamePlayer({
             </div>
 
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={resetAttempt}
-                disabled={status === "correct"}
-                className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                Reset word
-              </button>
-              <button
-                type="button"
-                onClick={() => setBankLetters((current) => shuffleTiles(current))}
-                disabled={status === "correct" || bankLetters.length <= 1}
-                className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                Shuffle letters
-              </button>
+              {!compact ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={resetAttempt}
+                    disabled={status === "correct"}
+                    className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    Reset word
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setBankLetters((current) => shuffleTiles(current))}
+                    disabled={status === "correct" || bankLetters.length <= 1}
+                    className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    Shuffle letters
+                  </button>
+                </>
+              ) : null}
               {status === "correct" ? (
                 <button
                   type="button"
                   onClick={moveToNext}
-                  className="rounded-2xl bg-[#4768af] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#35508a]"
+                  className="rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-semibold text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95"
                 >
                   {currentQuestionIndex === chapter.questions.length - 1 ? "See Chapter Results" : "Next word"}
                 </button>
