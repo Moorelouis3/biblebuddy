@@ -18,6 +18,7 @@ export default function AnimatedFlame({ flameId, size = 42, className = "", titl
     blue: "hue-rotate(176deg) saturate(1.12) brightness(1.18)",
     gold: "hue-rotate(22deg) saturate(1.45) brightness(1.12)",
     purple: "hue-rotate(215deg) saturate(1.75) brightness(1.02)",
+    red: "hue-rotate(342deg) saturate(1.35) brightness(1.02)",
     green: "hue-rotate(92deg) saturate(1.65) brightness(1.05)",
     black: "grayscale(1) contrast(1.45) brightness(0.72)",
   };
@@ -37,7 +38,7 @@ export default function AnimatedFlame({ flameId, size = 42, className = "", titl
       aria-label={title || flame.name}
       title={title || flame.name}
     >
-      <span className="bb-animated-flame__emoji" aria-hidden="true">🔥</span>
+      <span className="bb-animated-flame__shape" aria-hidden="true" />
     </span>
   );
 }

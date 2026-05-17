@@ -2013,7 +2013,9 @@ export default function DashboardPage() {
         sublabel: "In your stash",
         value: diamondsLoading
           ? animatedDashboardStats.grace
-          : Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString(),
+          : isOwnerDashboard
+            ? "Unlimited"
+            : Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString(),
         icon: "💎",
         tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
         onClick: openDiamondStore,
@@ -2211,7 +2213,8 @@ export default function DashboardPage() {
   }
 
   function renderDiamondStorePanel() {
-    const diamondCount = Math.max(0, Number(profile?.diamonds_count ?? 0));
+    const ownerHasUnlimitedDiamonds = isOwnerDashboard;
+    const diamondCount = ownerHasUnlimitedDiamonds ? Number.POSITIVE_INFINITY : Math.max(0, Number(profile?.diamonds_count ?? 0));
     const ownedItemIds = new Set(storePurchases.map((purchase) => purchase.item_id));
 
     const renderMysteryRevealPanel = () => {
@@ -2374,7 +2377,9 @@ export default function DashboardPage() {
               <div className="text-right">
                 <p className="text-2xl leading-none" aria-hidden="true">💎💎💎</p>
                 <p className="mt-2 text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted)]">Your stash</p>
-                <p className="text-3xl font-black leading-none text-[var(--bb-text-primary)]">{diamondCount.toLocaleString()}</p>
+                <p className="text-3xl font-black leading-none text-[var(--bb-text-primary)]">
+                  {ownerHasUnlimitedDiamonds ? "Unlimited" : diamondCount.toLocaleString()}
+                </p>
               </div>
             </div>
           </div>
@@ -2397,7 +2402,7 @@ export default function DashboardPage() {
 
             {renderSection("Themes", "Each theme costs 500 diamonds, about ten full chapters of steady study.", THEME_STORE_ITEMS)}
             {renderSection("30 Day Streak Flames", "Change the color of your streak badge and make long runs feel earned.", STREAK_FLAME_STORE_ITEMS)}
-            {renderSection("Bible Buddies", "Lil Louis is ready now. Walter, Lindsey, and Steve are placeholders until their art is uploaded.", BUDDY_STORE_ITEMS)}
+            {renderSection("Bible Buddies", "Unlock the Buddy voice you want guiding your Bible habit.", BUDDY_STORE_ITEMS)}
             {renderSection("Boosts And Items", "Helpful items for streaks, XP, and surprise rewards.", BOOST_STORE_ITEMS)}
 
             <button
@@ -2955,8 +2960,9 @@ export default function DashboardPage() {
     setStoreBuyingId(item.id);
     setStoreMessage(null);
 
+    const ownerHasUnlimitedDiamonds = isOwnerDashboard;
     const currentDiamonds = Math.max(0, Number(profile?.diamonds_count ?? 0));
-    if (currentDiamonds < item.price) {
+    if (!ownerHasUnlimitedDiamonds && currentDiamonds < item.price) {
       setStoreMessage(`You need ${(item.price - currentDiamonds).toLocaleString()} more diamonds for ${item.title}.`);
       setStoreBuyingId(null);
       return;
@@ -2991,14 +2997,14 @@ export default function DashboardPage() {
     }
 
     const serverDiamonds = Math.max(0, Number(statsRow?.diamonds_count ?? currentDiamonds));
-    if (serverDiamonds < item.price) {
+    if (!ownerHasUnlimitedDiamonds && serverDiamonds < item.price) {
       setProfile((current) => current ? { ...current, diamonds_count: serverDiamonds } : current);
       setStoreMessage(`You need ${(item.price - serverDiamonds).toLocaleString()} more diamonds for ${item.title}.`);
       setStoreBuyingId(null);
       return;
     }
 
-    const nextDiamonds = serverDiamonds - item.price;
+    const nextDiamonds = ownerHasUnlimitedDiamonds ? serverDiamonds : serverDiamonds - item.price;
     const profileUpdate: Record<string, number> = { diamonds_count: nextDiamonds };
     let previousGraceDays = Math.max(0, Number(profile?.grace_days_count ?? 0));
     if (item.id === "boost-extra-grace-day") {

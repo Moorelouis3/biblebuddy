@@ -72,6 +72,25 @@ const walterMoodToFile: Partial<Record<LouisMood, string>> = {
   sideeye: "/Walterreading.png",
 };
 
+const lindseyMoodToFile: Partial<Record<LouisMood, string>> = {
+  wave: "/Lindseywaving.png",
+  salute: "/Lindseywaving.png",
+  stareyes: "/Lindseyhappy.png",
+  hands: "/Lindseyhappy.png",
+  smile: "/Lindseyhappy.png",
+  cool: "/Lindseyhappy.png",
+  peace: "/Lindseyhappy.png",
+  reading: "/Lindseyreading.png",
+  bible: "/Lindseyreading.png",
+  idea: "/Lindseyreading.png",
+  thinking: "/Lindseyreading.png",
+  think: "/Lindseyreading.png",
+  praying: "/Lindseyreading.png",
+  pray: "/Lindseyreading.png",
+  sheesh: "/Lindseyreading.png",
+  sideeye: "/Lindseyreading.png",
+};
+
 function BuddyIllustration({ buddyId, mood, size }: { buddyId: BuddyAvatarId; mood: LouisMood; size: number }) {
   const buddy = getBuddyAvatar(buddyId);
   const isPrayer = mood === "pray";
@@ -205,6 +224,23 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
         <img
           src={src}
           alt="Walter avatar"
+          className="h-full w-full rounded-full object-cover select-none"
+        />
+      </span>
+    );
+  }
+
+  if (selectedBuddy === "lindsey") {
+    const src = lindseyMoodToFile[mood] ?? "/Lindseywaving.png";
+    return (
+      <span
+        data-louis-avatar
+        className="inline-flex shrink-0 items-center justify-center"
+        style={{ "--bb-louis-avatar-size": `${size}px`, width: size, height: size } as CSSProperties}
+      >
+        <img
+          src={src}
+          alt="Lindsey avatar"
           className="h-full w-full rounded-full object-cover select-none"
         />
       </span>

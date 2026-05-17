@@ -35,6 +35,7 @@ export const STREAK_FLAME_STORE_ITEMS: BibleBuddyStoreItem[] = [
   { id: "flame-blue", kind: "streak_flame", title: "Blue Flame", subtitle: "Carolina blue with a deep blue base.", price: 250, emoji: "🔥", accent: "#38BDF8", flameId: "blue" },
   { id: "flame-gold", kind: "streak_flame", title: "Gold Flame", subtitle: "Bright gold with a deep amber base.", price: 250, emoji: "🔥", accent: "#F59E0B", flameId: "gold" },
   { id: "flame-purple", kind: "streak_flame", title: "Purple Flame", subtitle: "Light purple with a royal dark base.", price: 250, emoji: "🔥", accent: "#8B5CF6", flameId: "purple" },
+  { id: "flame-red", kind: "streak_flame", title: "Red Flame", subtitle: "Bold red flame matched to the red theme.", price: 250, emoji: "🔥", accent: "#DC2626", flameId: "red" },
   { id: "flame-green", kind: "streak_flame", title: "Green Flame", subtitle: "Light green with a deep forest base.", price: 250, emoji: "🔥", accent: "#22C55E", flameId: "green" },
   { id: "flame-black", kind: "streak_flame", title: "Black Flame", subtitle: "Gray light with a black base.", price: 250, emoji: "🔥", accent: "#050505", flameId: "black" },
 ];
@@ -42,7 +43,7 @@ export const STREAK_FLAME_STORE_ITEMS: BibleBuddyStoreItem[] = [
 export const BUDDY_STORE_ITEMS: BibleBuddyStoreItem[] = [
   { id: "buddy-lil-louis", kind: "buddy", title: "Lil Louis", subtitle: "Your first Bible Buddy coach.", price: 0, emoji: "👑", accent: "#DC2626" },
   { id: "buddy-walter", kind: "buddy", title: "Walter", subtitle: "Retired preacher with calm Scripture wisdom.", price: 750, emoji: "W", accent: "#4B5563", imageSrc: "/Walterwaving.png" },
-  { id: "buddy-lindsey", kind: "buddy", title: "Lindsey", subtitle: "New Bible Buddy coming soon.", price: 750, emoji: "👤", accent: "#DB2777", comingSoon: true },
+  { id: "buddy-lindsey", kind: "buddy", title: "Lindsey", subtitle: "Christian life coach for practical daily faith.", price: 750, emoji: "L", accent: "#DB2777", imageSrc: "/Lindseywaving.png" },
   { id: "buddy-steve", kind: "buddy", title: "Steve", subtitle: "New Bible Buddy coming soon.", price: 750, emoji: "👤", accent: "#2563EB", comingSoon: true },
 ];
 

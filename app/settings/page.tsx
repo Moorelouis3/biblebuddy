@@ -14,6 +14,7 @@ import {
 import { STREAK_FLAME_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
 import { FLAME_COSMETICS, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
+import { isAdminUser } from "../../lib/readingProgress";
 
 function getPasswordResetRedirectUrl() {
   if (typeof window === "undefined") return "https://www.mybiblebuddy.net/reset-password";
@@ -33,6 +34,7 @@ export default function SettingsPage() {
   const [flameSaving, setFlameSaving] = useState<string | null>(null);
   const [settingsMessage, setSettingsMessage] = useState<string | null>(null);
   const [ownedStoreItemIds, setOwnedStoreItemIds] = useState<string[]>([]);
+  const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState<AppThemeId>("light");
   const [selectedFlame, setSelectedFlame] = useState<FlameCosmeticId>("default");
   
@@ -60,6 +62,7 @@ export default function SettingsPage() {
       const { data: { user: currentUser } } = await supabase.auth.getUser();
       if (currentUser) {
         setUser(currentUser);
+        setOwnerHasUnlimitedDiamonds(isAdminUser(currentUser.email));
         const meta = currentUser.user_metadata || {};
         setEmail(currentUser.email || "");
 
@@ -309,14 +312,14 @@ export default function SettingsPage() {
       .map((item) => item.themeId),
   );
   const availableThemes = APP_THEMES.filter((theme) =>
-    theme.id === "light" || theme.id === "dark" || ownedThemeIds.has(theme.id),
+    ownerHasUnlimitedDiamonds || theme.id === "light" || theme.id === "dark" || ownedThemeIds.has(theme.id),
   );
   const ownedFlameIds = new Set(
     STREAK_FLAME_STORE_ITEMS
       .filter((item) => ownedStoreItemIds.includes(item.id) && item.flameId)
       .map((item) => item.flameId),
   );
-  const availableFlames = FLAME_COSMETICS.filter((flame) => flame.id === "default" || ownedFlameIds.has(flame.id));
+  const availableFlames = FLAME_COSMETICS;
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12">

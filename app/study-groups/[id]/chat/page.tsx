@@ -1704,6 +1704,7 @@ export default function GroupChatPage() {
   const [composerVideoPreview, setComposerVideoPreview] = useState<string | null>(null);
   const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
   const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
+  // One pinned post plus five regular posts keeps the embedded Community fast.
   const FEED_PAGE_SIZE = 6;
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const groupPhotoInputRef = useRef<HTMLInputElement>(null);
@@ -7369,7 +7370,12 @@ export default function GroupChatPage() {
             style={{ animationDelay: `${Math.min(index * 0.045, 0.45)}s` }}
           >
             <div>
-            {post.is_pinned && <div className="flex items-center gap-1 text-xs text-amber-600 font-medium mb-2">?? Pinned</div>}
+            {post.is_pinned && (
+              <div className="mb-2 flex items-center gap-1 text-xs font-medium text-amber-600">
+                <span aria-hidden="true">📌</span>
+                <span>Pinned</span>
+              </div>
+            )}
             <div className="flex items-start gap-3">
               {post.profile_image_url ? (
                 <img src={post.profile_image_url} alt={post.display_name || ""} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
@@ -7574,7 +7580,7 @@ export default function GroupChatPage() {
         )})}
         <div className="flex flex-col gap-3 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-center text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] sm:text-left">
-            Page {postsPage + 1} · Showing up to {FEED_PAGE_SIZE} posts
+            Page {postsPage + 1} · Pinned plus 5 posts
           </p>
           <div className="flex items-center justify-center gap-2">
             <button

@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const TOP_BUDDIES_WINDOW_DAYS = 340;
+const TOP_BUDDIES_WINDOW_DAYS = 30;
 const FRIEND_ACTIVITY_WINDOW_DAYS = 45;
 const PAGE_SIZE = 1000;
 
@@ -34,28 +34,23 @@ type BuddyRow = {
 };
 
 const TASK_SCORE: Record<string, number> = {
-  devotional_day_completed: 10,
-  chapter_completed: 10,
-  reading_plan_chapter_completed: 10,
-  chapter_notes_reviewed: 10,
-  trivia_chapter_completed: 10,
-  scrambled_chapter_completed: 10,
-  devotional_reflection_saved: 10,
-  louis_daily_task_bonus: 10,
-  bible_buddy_tv_video_started: 4,
+  devotional_day_started: 1,
+  devotional_day_viewed: 1,
+  devotional_bible_reading_opened: 1,
+  chapter_notes_viewed: 1,
+  chapter_notes_reviewed: 1,
+  trivia_started: 1,
+  trivia_chapter_completed: 1,
+  scrambled_chapter_opened: 1,
+  scrambled_chapter_completed: 1,
+  devotional_reflection_saved: 1,
+  devotional_day_completed: 6,
+  chapter_completed: 6,
+  reading_plan_chapter_completed: 6,
+  louis_daily_task_bonus: 6,
 };
 
-const COMMUNITY_SCORE: Record<string, number> = {
-  feed_post_thought: 5,
-  feed_post_prayer: 5,
-  feed_post_prayer_request: 5,
-  feed_post_photo: 5,
-  feed_post_video: 5,
-  feed_post_commented: 5,
-  feed_post_replied: 5,
-  feed_post_liked: 2,
-  buddy_added: 3,
-};
+const TOP_BUDDY_TASK_ACTIONS = Object.keys(TASK_SCORE);
 
 async function fetchPaged<T>(
   queryBuilder: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: any }>,
@@ -151,6 +146,7 @@ export async function GET(request: NextRequest) {
         supabaseAdmin
           .from("master_actions")
           .select("user_id, action_type, action_label, created_at")
+          .in("action_type", TOP_BUDDY_TASK_ACTIONS)
           .gte("created_at", topSinceIso)
           .order("created_at", { ascending: false })
           .range(from, to),
@@ -162,17 +158,16 @@ export async function GET(request: NextRequest) {
     ]);
 
     const profileMap = new Map(profiles.map((profile) => [profile.user_id, profile]));
-    const scoreMap = new Map<string, { score: number; taskCount: number; communityCount: number; weightedXp: number; lastActionAt: string | null }>();
+    const scoreMap = new Map<string, { score: number; taskCount: number; weightedXp: number; lastActionAt: string | null }>();
 
     actions.forEach((action) => {
       if (!action.user_id || !action.action_type) return;
-      const current = scoreMap.get(action.user_id) || { score: 0, taskCount: 0, communityCount: 0, weightedXp: 0, lastActionAt: null };
+      const current = scoreMap.get(action.user_id) || { score: 0, taskCount: 0, weightedXp: 0, lastActionAt: null };
       const taskScore = TASK_SCORE[action.action_type] || 0;
-      const communityScore = COMMUNITY_SCORE[action.action_type] || 0;
-      current.score += taskScore + communityScore;
+      if (taskScore <= 0) return;
+      current.score += taskScore;
       current.weightedXp += ACTION_POINT_WEIGHTS[action.action_type as keyof typeof ACTION_POINT_WEIGHTS] ?? 0;
-      if (taskScore > 0) current.taskCount += 1;
-      if (communityScore > 0) current.communityCount += 1;
+      current.taskCount += taskScore;
       if (!current.lastActionAt || (action.created_at && action.created_at > current.lastActionAt)) current.lastActionAt = action.created_at;
       scoreMap.set(action.user_id, current);
     });
@@ -192,7 +187,7 @@ export async function GET(request: NextRequest) {
           isPaid: profile?.is_paid === true,
           score: Math.round(scoreData.score),
           taskCount: scoreData.taskCount,
-          communityCount: scoreData.communityCount,
+          communityCount: 0,
           lastActionAt: scoreData.lastActionAt,
         };
       })

@@ -20,7 +20,7 @@ function orderBuddies(currentBuddyId: BuddyAvatarId) {
 }
 
 function getBuddyMood(buddy: BuddyAvatar, currentBuddyId: BuddyAvatarId) {
-  if (buddy.id !== "louis") return "peace";
+  if (buddy.id !== "louis") return "wave";
   return currentBuddyId === "louis" ? "peace" : "wave";
 }
 
@@ -39,6 +39,7 @@ export default function ChangeBuddyPage() {
   const [savingBuddy, setSavingBuddy] = useState<BuddyAvatarId | null>(null);
   const [ownedBuddyItemIds, setOwnedBuddyItemIds] = useState<Set<string>>(() => new Set(["buddy-lil-louis"]));
   const [diamondCount, setDiamondCount] = useState(0);
+  const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -55,6 +56,7 @@ export default function ChangeBuddyPage() {
         if (!user) return;
 
         if (!cancelled) setUserId(user.id);
+        if (!cancelled) setOwnerHasUnlimitedDiamonds(user.email?.toLowerCase() === "moorelouis3@gmail.com");
 
         const { data } = await supabase
           .from("profile_stats")
@@ -166,19 +168,21 @@ export default function ChangeBuddyPage() {
       if (statsError) throw statsError;
 
       const serverDiamonds = Math.max(0, Number(statsRow?.diamonds_count ?? diamondCount));
-      if (serverDiamonds < storeItem.price) {
+      if (!ownerHasUnlimitedDiamonds && serverDiamonds < storeItem.price) {
         setDiamondCount(serverDiamonds);
         setMessage(`You need ${(storeItem.price - serverDiamonds).toLocaleString()} more diamonds for ${buddy.name}.`);
         return;
       }
 
-      const nextDiamonds = serverDiamonds - storeItem.price;
-      const { error: updateError } = await supabase
-        .from("profile_stats")
-        .update({ diamonds_count: nextDiamonds })
-        .eq("user_id", userId);
+      const nextDiamonds = ownerHasUnlimitedDiamonds ? serverDiamonds : serverDiamonds - storeItem.price;
+      if (!ownerHasUnlimitedDiamonds) {
+        const { error: updateError } = await supabase
+          .from("profile_stats")
+          .update({ diamonds_count: nextDiamonds })
+          .eq("user_id", userId);
 
-      if (updateError) throw updateError;
+        if (updateError) throw updateError;
+      }
 
       const { error: purchaseError } = await supabase.from("user_store_purchases").insert({
         user_id: userId,
@@ -192,7 +196,9 @@ export default function ChangeBuddyPage() {
       });
 
       if (purchaseError) {
-        await supabase.from("profile_stats").update({ diamonds_count: serverDiamonds }).eq("user_id", userId);
+        if (!ownerHasUnlimitedDiamonds) {
+          await supabase.from("profile_stats").update({ diamonds_count: serverDiamonds }).eq("user_id", userId);
+        }
         throw purchaseError;
       }
 
@@ -238,11 +244,11 @@ export default function ChangeBuddyPage() {
             x
           </Link>
 
-          <div className="flex items-center justify-center gap-2 sm:gap-3">
+          <div className="relative mx-auto max-w-[720px] px-12 sm:px-16">
             <button
               type="button"
               onClick={() => moveCard(-1)}
-              className="z-10 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] text-lg font-black text-[var(--bb-accent,#dc2626)] shadow-sm transition active:scale-95"
+              className="absolute left-0 top-1/2 z-30 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#dc2626)] shadow-[0_10px_24px_rgba(15,23,42,0.12)] transition hover:brightness-95 active:scale-95"
               aria-label="Previous Buddy"
             >
               ‹
@@ -250,7 +256,7 @@ export default function ChangeBuddyPage() {
 
             <div
               ref={scrollRef}
-              className="flex w-full max-w-[600px] snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-3 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="mx-auto flex w-full max-w-[600px] snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-3 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               onScroll={(event) => {
                 const container = event.currentTarget;
                 const width = container.clientWidth || 1;
@@ -279,7 +285,7 @@ export default function ChangeBuddyPage() {
                     }}
                   >
                     <div className="pointer-events-none absolute inset-x-10 bottom-20 h-24 rounded-full bg-[var(--bb-accent-soft,#fee2e2)] blur-3xl" aria-hidden="true" />
-                    <div className="relative mx-auto grid min-h-[300px] place-items-end sm:min-h-[360px]">
+                    <div className="relative mx-auto grid min-h-[300px] place-items-center sm:min-h-[360px]">
                       <LouisAvatar buddyId={buddy.id} mood={getBuddyMood(buddy, selectedBuddy)} size={isActive ? 310 : 290} />
                     </div>
 
@@ -314,7 +320,7 @@ export default function ChangeBuddyPage() {
             <button
               type="button"
               onClick={() => moveCard(1)}
-              className="z-10 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] text-lg font-black text-[var(--bb-accent,#dc2626)] shadow-sm transition active:scale-95"
+              className="absolute right-0 top-1/2 z-30 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#dc2626)] shadow-[0_10px_24px_rgba(15,23,42,0.12)] transition hover:brightness-95 active:scale-95"
               aria-label="Next Buddy"
             >
               ›

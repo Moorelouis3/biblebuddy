@@ -3189,7 +3189,7 @@ export default function DashboardJourneyExperience({
           <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Buddies</p>
           <h2 className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#111827)]">Top Bible Buddies</h2>
           <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
-            Universal Top 10 based on Bible task momentum from the last {buddiesDashboard?.meta?.topWindowDays || 340} days.
+            App-wide Top 10 based on Bible tasks finished in the last rolling {buddiesDashboard?.meta?.topWindowDays || 30} days.
           </p>
         </div>
 
@@ -3231,7 +3231,7 @@ export default function DashboardJourneyExperience({
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">{buddy.displayName}</p>
                       <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                        L{buddy.currentLevel} • {buddy.taskCount} tasks • {buddy.communityCount} community
+                        L{buddy.currentLevel} - {buddy.taskCount} Bible task points
                       </p>
                     </div>
                     <div className="text-right">
