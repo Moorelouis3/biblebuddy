@@ -244,11 +244,11 @@ export default function ChangeBuddyPage() {
             x
           </Link>
 
-          <div className="relative mx-auto max-w-[720px] px-12 sm:px-16">
+          <div className="relative mx-auto max-w-[720px] px-0 sm:px-16">
             <button
               type="button"
               onClick={() => moveCard(-1)}
-              className="absolute left-0 top-1/2 z-30 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#dc2626)] shadow-[0_10px_24px_rgba(15,23,42,0.12)] transition hover:brightness-95 active:scale-95"
+              className="absolute left-2 top-1/2 z-30 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#dc2626)] shadow-[0_10px_24px_rgba(15,23,42,0.12)] transition hover:brightness-95 active:scale-95 sm:left-0 sm:h-14 sm:w-14"
               aria-label="Previous Buddy"
             >
               ‹
@@ -256,7 +256,7 @@ export default function ChangeBuddyPage() {
 
             <div
               ref={scrollRef}
-              className="mx-auto flex w-full max-w-[600px] snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-3 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="mx-auto flex w-full max-w-[600px] snap-x snap-mandatory gap-4 overflow-x-auto px-0 pb-3 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:px-1 [&::-webkit-scrollbar]:hidden"
               onScroll={(event) => {
                 const container = event.currentTarget;
                 const width = container.clientWidth || 1;
@@ -275,7 +275,7 @@ export default function ChangeBuddyPage() {
                   <article
                     key={buddy.id}
                     data-buddy-card-index={index}
-                    className={`relative min-w-full snap-center overflow-hidden rounded-[30px] border p-5 text-center shadow-[0_16px_42px_rgba(38,63,99,0.12)] transition duration-300 sm:p-7 ${
+                    className={`relative min-w-full snap-center overflow-hidden rounded-[26px] border p-4 text-center shadow-[0_16px_42px_rgba(38,63,99,0.12)] transition duration-300 sm:rounded-[30px] sm:p-7 ${
                       isActive ? "scale-100 opacity-100" : "scale-[0.97] opacity-80"
                     }`}
                     style={{
@@ -285,8 +285,8 @@ export default function ChangeBuddyPage() {
                     }}
                   >
                     <div className="pointer-events-none absolute inset-x-10 bottom-20 h-24 rounded-full bg-[var(--bb-accent-soft,#fee2e2)] blur-3xl" aria-hidden="true" />
-                    <div className="relative mx-auto grid min-h-[300px] place-items-center sm:min-h-[360px]">
-                      <LouisAvatar buddyId={buddy.id} mood={getBuddyMood(buddy, selectedBuddy)} size={isActive ? 310 : 290} />
+                    <div className="relative mx-auto grid min-h-[270px] place-items-center sm:min-h-[360px]">
+                      <LouisAvatar buddyId={buddy.id} mood={getBuddyMood(buddy, selectedBuddy)} size={isActive ? 280 : 260} />
                     </div>
 
                     <h2 className="relative -mt-2 text-5xl font-black leading-none sm:text-6xl">{buddy.name}</h2>
@@ -320,7 +320,7 @@ export default function ChangeBuddyPage() {
             <button
               type="button"
               onClick={() => moveCard(1)}
-              className="absolute right-0 top-1/2 z-30 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#dc2626)] shadow-[0_10px_24px_rgba(15,23,42,0.12)] transition hover:brightness-95 active:scale-95"
+              className="absolute right-2 top-1/2 z-30 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#fecaca)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#dc2626)] shadow-[0_10px_24px_rgba(15,23,42,0.12)] transition hover:brightness-95 active:scale-95 sm:right-0 sm:h-14 sm:w-14"
               aria-label="Next Buddy"
             >
               ›
