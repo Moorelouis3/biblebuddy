@@ -47,7 +47,7 @@ import {
   type FeatureTourKey,
   type FeatureToursState,
 } from "../../lib/featureTours";
-import { LEVEL_DEFINITIONS, calculateWeightedPoints, getLevelInfoFromPoints } from "../../lib/levelSystem";
+import { LEVEL_DEFINITIONS, calculateWeightedPoints, getLevelInfoWithLevelFloor } from "../../lib/levelSystem";
 import { TASK_XP, DIAMOND_REWARDS, estimateDiamondStashFromActions } from "../../lib/progressionRewards";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { trackUserActivity } from "../../lib/trackUserActivity";
@@ -2438,14 +2438,14 @@ export default function DashboardPage() {
 
         let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, profile_image_url, display_name, username")
+          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, profile_image_url, display_name, username")
           .eq("user_id", userId)
           .maybeSingle();
 
         if (error && /diamonds_count/i.test(error.message || "")) {
           const fallback = await supabase
             .from("profile_stats")
-            .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username")
+            .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username")
             .eq("user_id", userId)
             .maybeSingle();
           data = fallback.data as typeof data;
@@ -2623,7 +2623,11 @@ export default function DashboardPage() {
         });
 
         const baseTotalPoints = weightedPoints.totalPoints + uniqueEntityPoints;
-        const levelData = getLevelInfoFromPoints(baseTotalPoints);
+        const storedCurrentLevel =
+          typeof profileData?.current_level === "number" && profileData.current_level > 0
+            ? profileData.current_level
+            : 1;
+        const levelData = getLevelInfoWithLevelFloor(baseTotalPoints, storedCurrentLevel);
         const { level, levelName, identityText, encouragementText, levelStart, levelEnd, progressPercent, totalPoints, pointsToNextLevel } = levelData;
         const estimatedDiamondStash = estimateDiamondStashFromActions(actionRows, level);
 
@@ -2788,7 +2792,7 @@ export default function DashboardPage() {
         // Write current_level back to profile_stats so other components can read it
         supabase
           .from("profile_stats")
-          .update({ current_level: level })
+          .update({ current_level: Math.max(storedCurrentLevel, level) })
           .eq("user_id", userId)
           .then(() => {});
 

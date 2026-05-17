@@ -329,3 +329,17 @@ export function getLevelInfoFromPoints(totalPoints: number) {
     progressPercent,
   };
 }
+
+export function getMinimumPointsForLevel(level: number) {
+  const safeLevel = Math.max(1, Math.min(LEVEL_DEFINITIONS.length, Math.floor(level || 1)));
+  return LEVEL_DEFINITIONS[safeLevel - 1]?.minPoints ?? 0;
+}
+
+export function getLevelInfoWithLevelFloor(totalPoints: number, storedLevel?: number | null) {
+  const minimumProtectedPoints =
+    typeof storedLevel === "number" && storedLevel > 1
+      ? getMinimumPointsForLevel(storedLevel)
+      : 0;
+
+  return getLevelInfoFromPoints(Math.max(totalPoints, minimumProtectedPoints));
+}
