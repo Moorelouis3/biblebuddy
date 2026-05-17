@@ -34,6 +34,22 @@ import { getBuddyAvatar } from "../lib/buddyAvatars";
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
+const STUDY_BOOK_BY_TITLE: Record<string, string> = {
+  "The Creation of the World": "Genesis",
+  "The Fall of Man": "Genesis",
+  "The Flood of Noah": "Genesis",
+  "The Obedience of Abraham": "Genesis",
+  "The Promise Through Isaac": "Genesis",
+  "The Wrestling of Jacob": "Genesis",
+  "The Testing of Joseph": "Genesis",
+  "The Deliverance of Moses": "Exodus",
+  "The Covenant at Sinai": "Exodus",
+  "The Presence of God": "Exodus",
+  "Holiness Before God": "Leviticus",
+  "The Rise of Esther": "Esther",
+  "The Wisdom of Proverbs": "Proverbs",
+  "The Courage of Daniel": "Daniel",
+};
 
 const ChatLouis = dynamic(() => import("./ChatLouis").then((mod) => mod.ChatLouis), {
   ssr: false,
@@ -1595,6 +1611,7 @@ export default function DashboardJourneyExperience({
   const [shareRewardsError, setShareRewardsError] = useState<string | null>(null);
   const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
   const [studyModeGateDismissed, setStudyModeGateDismissed] = useState(true);
+  const [freeStudyModeActive, setFreeStudyModeActive] = useState(false);
 
   const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "buddies", "tv", "games", "share"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
@@ -2115,7 +2132,7 @@ export default function DashboardJourneyExperience({
   }
 
   useEffect(() => {
-    if (!showDevotionalSettings) return;
+    if (!showDevotionalSettings && !embeddedBibleBookSearchOpen) return;
 
     let cancelled = false;
 
@@ -2160,7 +2177,7 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [showDevotionalSettings, currentDevotionalId]);
+  }, [showDevotionalSettings, embeddedBibleBookSearchOpen, currentDevotionalId]);
 
   async function handleSaveDevotionalSetting() {
     if (!userId || !selectedDevotionalId) return;
@@ -2932,11 +2949,13 @@ export default function DashboardJourneyExperience({
   }
 
   function handleSwipeStart(event: React.TouchEvent<HTMLDivElement>) {
+    if (shouldShowBibleBuddy3ModeGate) return;
     const touch = event.touches[0];
     swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
   }
 
   function handleSwipeEnd(event: React.TouchEvent<HTMLDivElement>) {
+    if (shouldShowBibleBuddy3ModeGate) return;
     const start = swipeStartRef.current;
     swipeStartRef.current = null;
     if (!start) return;
@@ -2975,12 +2994,14 @@ export default function DashboardJourneyExperience({
   };
 
   const renderEmbeddedBiblePage = () => {
+    const studyOptionsWithBooks = devotionalOptions.filter((study) => STUDY_BOOK_BY_TITLE[study.title]);
+    const availableBooks = Array.from(new Set(studyOptionsWithBooks.map((study) => STUDY_BOOK_BY_TITLE[study.title])))
+      .filter(Boolean);
     const visibleBooks = embeddedBibleAlphabetical
-      ? [...DASHBOARD_BIBLE_BOOKS].sort((a, b) => a.localeCompare(b))
-      : DASHBOARD_BIBLE_BOOKS;
-    const selectedBookChapterCount = embeddedBibleSelectedBook ? getBookTotalChapters(embeddedBibleSelectedBook) : 0;
-    const visibleChapters = embeddedBibleSelectedBook
-      ? Array.from({ length: selectedBookChapterCount }, (_, index) => index + 1)
+      ? [...availableBooks].sort((a, b) => a.localeCompare(b))
+      : availableBooks;
+    const visibleStudies = embeddedBibleSelectedBook
+      ? studyOptionsWithBooks.filter((study) => STUDY_BOOK_BY_TITLE[study.title] === embeddedBibleSelectedBook)
       : [];
 
     return (
@@ -2991,12 +3012,12 @@ export default function DashboardJourneyExperience({
               <div>
                 <p className="bb-accent text-xs font-black uppercase tracking-[0.16em]">Scripture</p>
                 <h2 className="bb-text-primary mt-1 text-3xl font-black leading-tight">
-                  {embeddedBibleSelectedBook || "Search By Bible Book"}
+                  {embeddedBibleSelectedBook || "Choose a Bible book"}
                 </h2>
                 <p className="bb-text-secondary mt-2 text-sm font-semibold leading-6">
                   {embeddedBibleSelectedBook
-                    ? `${selectedBookChapterCount} chapters. Pick one to load on your study dashboard.`
-                    : "Choose a book, pick a chapter, and BibleBuddy will load it into the study dashboard."}
+                    ? "Pick one of the Bible Buddy studies available for this book."
+                    : "Only books that already have Bible Buddy studies are shown here."}
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-2">
@@ -3011,6 +3032,7 @@ export default function DashboardJourneyExperience({
                   Books
                 </button>
               ) : null}
+              {!freeStudyModeActive ? (
               <button
                 type="button"
                 onClick={() => {
@@ -3023,33 +3045,40 @@ export default function DashboardJourneyExperience({
               >
                 ×
               </button>
+              ) : null}
               </div>
             </div>
 
             {embeddedBibleSelectedBook ? (
               <div className="mt-5">
-                <div className="grid grid-cols-4 gap-2 sm:grid-cols-5">
-                  {visibleChapters.map((chapter) => {
-                    const isComplete = embeddedBibleCompletedChapters.includes(chapter);
-                    return (
+                <div className="grid gap-2">
+                  {isLoadingDevotionalOptions ? (
+                    <p className="bb-surface-soft rounded-2xl border px-4 py-4 text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">
+                      Loading studies...
+                    </p>
+                  ) : visibleStudies.length > 0 ? (
+                    visibleStudies.map((study) => (
                       <button
-                        key={chapter}
+                        key={study.id}
                         type="button"
-                        onClick={() => void loadBibleBookSearchChapter(embeddedBibleSelectedBook, chapter)}
-                        disabled={embeddedBibleChapterLoading !== null}
-                        className={`rounded-2xl border px-2 py-3 text-center text-sm font-black transition hover:-translate-y-0.5 hover:shadow-sm ${
-                          isComplete
-                            ? "border-[#b9dcf4] bg-[#eaf5ff] text-[#2f6685]"
-                            : "bb-surface-soft bb-text-primary hover:border-[var(--bb-accent)]"
-                        }`}
+                        onClick={() => {
+                          setEmbeddedBibleStudyId(study.id);
+                          setEmbeddedBibleBookSearchOpen(false);
+                          setFreeStudyModeActive(true);
+                        }}
+                        className="bb-surface-soft rounded-2xl border px-4 py-4 text-left transition hover:-translate-y-0.5 hover:border-[var(--bb-accent)] hover:bg-[var(--bb-card,#ffffff)] hover:shadow-sm"
                       >
-                        <span className="block text-lg">{chapter}</span>
-                        <span className="bb-text-muted mt-1 block text-[10px] font-bold">
-                          {embeddedBibleChapterLoading === `${embeddedBibleSelectedBook}:${chapter}` ? "Loading" : isComplete ? "Done" : "Load"}
+                        <span className="bb-text-primary block text-base font-black leading-tight">{study.title}</span>
+                        <span className="bb-text-muted mt-1 block text-xs font-bold">
+                          {study.total_days} chapter study
                         </span>
                       </button>
-                    );
-                  })}
+                    ))
+                  ) : (
+                    <p className="bb-surface-soft rounded-2xl border px-4 py-4 text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">
+                      No studies are available for this book yet.
+                    </p>
+                  )}
                 </div>
                 {embeddedBibleSearchMessage ? (
                   <p className="mt-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
@@ -3069,21 +3098,30 @@ export default function DashboardJourneyExperience({
                   />
                 </label>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                  {visibleBooks.map((book) => (
-                    <button
-                      key={book}
-                      type="button"
-                      onClick={() => {
-                        setEmbeddedBibleSelectedBook(book);
-                      }}
-                      className="bb-surface-soft rounded-2xl border px-3 py-3 text-left text-sm font-black transition hover:-translate-y-0.5 hover:border-[var(--bb-accent)] hover:shadow-sm"
-                    >
-                      <span className="bb-text-primary block leading-tight">{book}</span>
-                      <span className="bb-text-muted mt-1 block text-[11px] font-bold">
-                        {getBookTotalChapters(book)} chapters
-                      </span>
-                    </button>
-                  ))}
+                  {isLoadingDevotionalOptions ? (
+                    <p className="bb-surface-soft col-span-full rounded-2xl border px-4 py-4 text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">
+                      Loading available books...
+                    </p>
+                  ) : (
+                    visibleBooks.map((book) => {
+                      const studyCount = studyOptionsWithBooks.filter((study) => STUDY_BOOK_BY_TITLE[study.title] === book).length;
+                      return (
+                        <button
+                          key={book}
+                          type="button"
+                          onClick={() => {
+                            setEmbeddedBibleSelectedBook(book);
+                          }}
+                          className="bb-surface-soft rounded-2xl border px-3 py-3 text-left text-sm font-black transition hover:-translate-y-0.5 hover:border-[var(--bb-accent)] hover:shadow-sm"
+                        >
+                          <span className="bb-text-primary block leading-tight">{book}</span>
+                          <span className="bb-text-muted mt-1 block text-[11px] font-bold">
+                            {studyCount} {studyCount === 1 ? "study" : "studies"}
+                          </span>
+                        </button>
+                      );
+                    })
+                  )}
                 </div>
               </div>
             )}
@@ -3167,13 +3205,16 @@ export default function DashboardJourneyExperience({
   const renderEmbeddedBibleStudiesPage = () => (
     <section className="w-full px-1">
       <div className="mx-auto max-w-xl overflow-hidden rounded-[28px]">
-        {embeddedBibleBookSearchOpen ? (
+        {embeddedBibleBookSearchOpen || (freeStudyModeActive && !embeddedBibleStudyId) ? (
           renderEmbeddedBiblePage()
         ) : embeddedBibleStudyId ? (
           <BibleStudyDetailPage
             devotionalIdOverride={embeddedBibleStudyId}
             embedded
-            onBack={() => setEmbeddedBibleStudyId(null)}
+            onBack={() => {
+              setEmbeddedBibleStudyId(null);
+              if (freeStudyModeActive) setEmbeddedBibleBookSearchOpen(true);
+            }}
             onChapterSelect={(payload) => {
               void loadEmbeddedBibleStudyChapter(payload);
             }}
@@ -3718,6 +3759,7 @@ export default function DashboardJourneyExperience({
 
   function chooseBibleBuddyStudyJourney() {
     rememberBibleBuddy3ModeChoice();
+    setFreeStudyModeActive(false);
     setEmbeddedBibleBookSearchOpen(false);
     setEmbeddedBibleSelectedBook(null);
     setEmbeddedBibleStudyId(null);
@@ -3726,6 +3768,7 @@ export default function DashboardJourneyExperience({
 
   function chooseFreeStudyMode() {
     rememberBibleBuddy3ModeChoice();
+    setFreeStudyModeActive(true);
     setEmbeddedBibleStudyId(null);
     setEmbeddedBibleSelectedBook(null);
     setEmbeddedBibleSearchMessage(null);
@@ -5038,6 +5081,7 @@ export default function DashboardJourneyExperience({
         </div>
       </div>
 
+      {!shouldShowBibleBuddy3ModeGate ? (
       <nav className="sticky bottom-2 z-40 mx-auto max-w-xl rounded-[22px] border border-[#dbe7f4] bg-white/95 px-2 pb-1.5 pt-1.5 shadow-[0_12px_28px_rgba(38,63,99,0.14)] backdrop-blur">
         <div className="mx-auto mb-0.5 h-1 w-10 rounded-full bg-[#dbe7f4]" aria-hidden="true" />
         <div className="[scrollbar-width:none] overflow-x-auto [&::-webkit-scrollbar]:hidden">
@@ -5072,6 +5116,7 @@ export default function DashboardJourneyExperience({
           </div>
         </div>
       </nav>
+      ) : null}
 
       <nav className="hidden">
         <div className="mx-auto grid max-w-md grid-cols-5 items-end gap-1 text-center">
