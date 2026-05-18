@@ -1234,6 +1234,46 @@ export default function DashboardPage() {
       ["habit-keep-place", "Keep your place", "The current study card keeps your chapter ready for you.", "You do not have to remember where you left off. Just continue."],
       ["habit-pray-first", "Pray before the task", "Before reading, ask God to help you understand one true thing.", "That simple prayer can change how you read."],
       ["habit-stack-week", "Stack a week", "Seven honest check-ins can change how normal Bible study feels.", "Do today's piece. Let tomorrow worry about tomorrow."],
+      ["tip-read-for-god", "Look for God first", "Before asking what the chapter says about you, ask what it shows about God.", "That keeps study from becoming only advice and helps you worship while you learn."],
+      ["tip-underline-why", "Ask why the detail is there", "When a name, place, or repeated phrase shows up, slow down and ask why God included it.", "Small details often carry the meaning of the whole chapter."],
+      ["tip-one-verse-deep", "Go deep on one verse", "Pick one verse from the chapter and sit with it for a full minute.", "Ask what it says, what it means, and what response it calls for."],
+      ["tip-read-before-opinion", "Read before reacting", "Some Bible chapters feel hard at first, but do not judge them too quickly.", "Read the full chapter, then let the notes help you understand the context."],
+      ["tip-watch-repetition", "Watch repeated words", "Repeated words are like signposts in Scripture.", "If a chapter repeats a phrase, God may be helping you see the main idea."],
+      ["tip-find-the-turn", "Find the turning point", "Most chapters have a moment where the story shifts.", "Look for the verse where a choice, command, warning, or promise changes the direction."],
+      ["tip-before-after", "Ask what changed", "After reading, ask what is different at the end of the chapter than at the beginning.", "That one question helps you follow the movement of the story."],
+      ["tip-character-choice", "Notice the choices", "Look at what each person does, says, fears, or trusts.", "Bible study gets clearer when you pay attention to the choices people make."],
+      ["tip-god-action", "Circle what God does", "When you read, notice every action God takes.", "The Bible is not mainly about heroes. It is about the Lord leading, judging, rescuing, and keeping promise."],
+      ["tip-promises-warnings", "Separate promises and warnings", "Ask which lines comfort, which lines command, and which lines warn.", "That keeps you from turning every verse into the same kind of lesson."],
+      ["tip-context-neighbors", "Check the neighbor chapters", "If a chapter feels confusing, look at the chapter before it and after it.", "The Bible often explains itself through the flow of the surrounding story."],
+      ["tip-notes-with-question", "Open notes with one question", "Before opening chapter notes, name the thing you do not understand yet.", "You will read with more focus when you are looking for a real answer."],
+      ["tip-trivia-missed", "Use missed trivia as a study guide", "A wrong answer is not failure.", "It shows exactly what to review before moving to the next chapter."],
+      ["tip-scramble-names", "Scramble helps with Bible names", "Names and places can feel hard to remember.", "Word games give your brain another way to recognize them later."],
+      ["tip-reflection-specific", "Make reflection specific", "Instead of writing, 'I need to do better,' name one real next step.", "Specific reflection turns Bible study into practice."],
+      ["tip-prayer-response", "Turn one lesson into prayer", "After the chapter, pray one sentence from what you learned.", "Bible study becomes personal when truth turns into conversation with God."],
+      ["tip-dont-skip-hard", "Do not skip hard chapters", "Hard chapters often teach holiness, justice, patience, or trust.", "Let Bible Buddy walk you through them instead of jumping away."],
+      ["tip-law-grace", "Read law chapters slowly", "Old Testament laws can feel strange, but they reveal God's holiness and care for community life.", "Ask what the law protected, taught, or exposed."],
+      ["tip-gospel-thread", "Look for the bigger story", "Ask how this chapter fits creation, fall, promise, rescue, covenant, kingdom, exile, or redemption.", "That helps the Bible feel like one story instead of scattered pieces."],
+      ["tip-application-small", "Keep application small", "A good Bible response does not have to be dramatic.", "One honest act of obedience today is better than a huge vague plan."],
+      ["tip-study-not-mood", "Do not wait for the mood", "A Bible habit grows when you show up before you feel inspired.", "Open the next task and let the Word start working on your attention."],
+      ["tip-read-aloud-hard", "Read hard verses out loud", "When a verse feels dense, hearing it can help your mind slow down.", "Out-loud reading catches words your eyes may skip."],
+      ["tip-write-summary", "Write a 10-word summary", "After reading, try to summarize the chapter in ten words.", "That simple limit forces you to find the main point."],
+      ["tip-main-tension", "Find the tension", "Ask what problem, conflict, fear, sin, or question the chapter is dealing with.", "Once you find the tension, the lesson usually becomes clearer."],
+      ["tip-mercy-judgment", "Notice mercy and judgment", "Many chapters hold both together.", "God's justice shows sin is serious, and His mercy shows He still makes a way forward."],
+      ["tip-community-question", "Post one question", "If the chapter confused you, ask the community one clear question.", "Someone else may need that same answer too."],
+      ["tip-buddy-help", "Ask your Buddy for the next step", "When you feel stuck, use your Bible Buddy as a guide, not just a mascot.", "Ask what to focus on in the chapter you are studying."],
+      ["tip-review-tomorrow", "Review tomorrow before starting", "Before opening the next chapter, reread yesterday's final thought or reflection.", "It helps the story connect instead of starting cold."],
+      ["tip-study-chain", "Build a chapter chain", "Each chapter is a link in the bigger story.", "When you finish, ask how this chapter connects to the one before it."],
+      ["tip-no-perfect-notes", "Your notes do not need to be perfect", "Write honest notes, not fancy notes.", "The goal is understanding Scripture, not sounding impressive."],
+      ["tip-find-command", "Look for one command", "If the chapter gives a command, ask what obedience would look like in real life.", "Commands are not just information. They invite response."],
+      ["tip-find-warning", "Respect the warning", "Warnings in Scripture are gifts, not interruptions.", "They show where sin leads before we have to learn it the hard way."],
+      ["tip-find-comfort", "Receive the comfort", "Some verses are meant to steady you.", "Do not rush past comfort just because you are used to being strong."],
+      ["tip-study-with-pen", "Study with a pen mindset", "Even if you type, read like you are ready to mark what matters.", "Active reading helps the chapter stick."],
+      ["tip-one-name", "Learn one name", "If a chapter has lots of names, choose one and learn why that person matters.", "One clear name is better than twenty blurred names."],
+      ["tip-one-place", "Learn one place", "Bible places are not random scenery.", "A place can carry memory, promise, failure, or worship."],
+      ["tip-slow-ending", "Do not rush the ending", "The final verses often show the point of the chapter.", "Slow down at the end and ask what the chapter wants you to carry."],
+      ["tip-start-clean", "Start with a clean question", "Try asking, 'Lord, what do You want me to see here?'", "A simple prayer can turn reading from a task into a meeting place."],
+      ["tip-repeat-tomorrow", "Repeat the habit tomorrow", "Bible growth is rarely one giant moment.", "It is the repeated return that reshapes how you think and live."],
+      ["tip-understanding-over-checkmark", "Understanding over checkmarks", "The task list is there to guide you, not rush you.", "Use each card to understand the chapter better."],
     ].forEach(([id, title, lineOne, lineTwo]) => pool.push({ id, category: "habit", eyebrow: "Habit Builder", title, lineOne, lineTwo, buttonText: "Got it", action: "dismiss" }));
 
     [
@@ -4876,6 +4916,43 @@ export default function DashboardPage() {
     buttonText: "OK",
     action: "dismiss" as const,
   };
+  const dashboardNudgeTone = (() => {
+    const category = displayedDashboardNudge.category ?? "discovery";
+    if (category === "habit") {
+      return {
+        icon: "📖",
+        glow: "from-[#eaf6ff] via-white to-[#fff4d8]",
+        badge: "bg-[#fff4d8] text-[#8a5a00] border-[#f1d892]",
+        tile: "bg-[#fff4d8]",
+        button: "bg-[#f5c542] text-[#1f2a44] hover:bg-[#efbd2d]",
+      };
+    }
+    if (category === "bible_fact") {
+      return {
+        icon: "💡",
+        glow: "from-[#eefbf4] via-white to-[#edf7ff]",
+        badge: "bg-[#e7f8ee] text-[#116b35] border-[#bfe8cc]",
+        tile: "bg-[#e7f8ee]",
+        button: "bg-[#34c77b] text-white hover:bg-[#2fb870]",
+      };
+    }
+    if (category === "progress") {
+      return {
+        icon: "✨",
+        glow: "from-[#eef4ff] via-white to-[#f2ecff]",
+        badge: "bg-[#edf2ff] text-[#3f5fa8] border-[#c9d7ff]",
+        tile: "bg-[#edf2ff]",
+        button: "bg-[#7BAFD4] text-slate-950 hover:bg-[#6aa3cc]",
+      };
+    }
+    return {
+      icon: "🧭",
+      glow: "from-[#f3f7ff] via-white to-[#eefbf4]",
+      badge: "bg-[#edf7ff] text-[#346792] border-[#c8dfef]",
+      tile: "bg-[#edf7ff]",
+      button: "bg-[#7BAFD4] text-slate-950 hover:bg-[#6aa3cc]",
+    };
+  })();
 
   function closeDashboardNudge() {
     setShowStreakMotivationModal(false);
@@ -5651,32 +5728,62 @@ export default function DashboardPage() {
           }}
           backdropColor="bg-black/45"
         >
-        <div className="mx-4 w-full max-w-sm overflow-hidden rounded-[24px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-5 py-5 text-center">
-            <div className="flex justify-center">
-              <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={96} />
-            </div>
-            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
-              {streakMotivationModalMode === "daily" ? "Daily Streak" : displayedDashboardNudge.eyebrow}
-            </p>
+        <div className="mx-4 w-full max-w-sm overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+          <div className={`relative overflow-hidden bg-gradient-to-br ${dashboardNudgeTone.glow} px-5 pb-6 pt-5 text-center`}>
             {streakMotivationModalMode === "checkin" ? (
               <>
-                <h2 className="mt-3 text-3xl font-bold text-[#21304f]">
+                <span className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/55 blur-2xl" aria-hidden="true" />
+                <span className="pointer-events-none absolute -bottom-12 -left-12 h-36 w-36 rounded-full bg-[#7BAFD4]/15 blur-2xl" aria-hidden="true" />
+              </>
+            ) : null}
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-3 text-left">
+                <div className="relative grid h-[92px] w-[92px] shrink-0 place-items-center rounded-[28px] border border-white/80 bg-white shadow-[0_16px_35px_rgba(33,48,79,0.14)]">
+                  <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={82} />
+                </div>
+                <div>
+                  <p className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] ${dashboardNudgeTone.badge}`}>
+                    {streakMotivationModalMode === "daily" ? "Daily Streak" : displayedDashboardNudge.eyebrow}
+                  </p>
+                  {streakMotivationModalMode === "checkin" ? (
+                    <div className={`mt-2 grid h-11 w-11 place-items-center rounded-2xl ${dashboardNudgeTone.tile} text-2xl shadow-sm`} aria-hidden="true">
+                      {dashboardNudgeTone.icon}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowStreakMotivationModal(false);
+                  setShowStreakMotivationTaskPrompt(false);
+                  setLouisCheckInContextLine(null);
+                  setLouisDashboardNudge(null);
+                }}
+                className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/80 text-xl font-black leading-none text-[#516784] shadow-sm transition hover:bg-white"
+                aria-label="Close popup"
+              >
+                ×
+              </button>
+            </div>
+            {streakMotivationModalMode === "checkin" ? (
+              <>
+                <h2 className="mt-5 text-left text-[2rem] font-black leading-[1.05] text-[#21304f]">
                   {displayedDashboardNudge.title}
                 </h2>
-                <div className="mx-auto mt-4 max-w-sm space-y-2 text-center">
-                  <p className="text-base font-semibold leading-7 text-[#355487]">
+                <div className="mt-4 space-y-3 rounded-[24px] border border-white/80 bg-white/80 p-4 text-left shadow-sm">
+                  <p className="text-[15px] font-bold leading-6 text-[#29466f]">
                     {displayedDashboardNudge.lineOne}
                   </p>
-                  <p className="text-sm leading-6 text-[#4f678e]">
+                  <p className="text-sm font-semibold leading-6 text-[#5b6f92]">
                     {displayedDashboardNudge.lineTwo}
                   </p>
                 </div>
-                <div className="mt-6 flex items-center justify-center">
+                <div className="mt-5 flex items-center justify-center">
                   <button
                     type="button"
                     onClick={handleDashboardNudgeAction}
-                    className="inline-flex min-w-[140px] justify-center rounded-full bg-[#7BAFD4] px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                    className={`inline-flex min-w-[160px] justify-center rounded-full px-5 py-3 text-sm font-black shadow-sm transition ${dashboardNudgeTone.button}`}
                   >
                     {displayedDashboardNudge.buttonText}
                   </button>
@@ -5684,7 +5791,7 @@ export default function DashboardPage() {
               </>
             ) : (
               <>
-              <h2 className="mt-2 flex items-center justify-center gap-2 text-3xl font-bold text-[#21304f]">
+              <h2 className="mt-5 flex items-center justify-center gap-2 text-3xl font-bold text-[#21304f]">
                 <span
                   className={`leading-none ${
                     (profile?.current_streak ?? 0) >= 30
