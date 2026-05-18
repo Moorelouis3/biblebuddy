@@ -173,6 +173,7 @@ export default function ConversationPage({
   const [blockState, setBlockState] = useState<BlockState | null>(null);
   const [uploadingPhoto, setUploadingPhoto] = useState(false);
   const [photoPreview, setPhotoPreview] = useState<{ file: File; url: string } | null>(null);
+  const [expandedImageUrl, setExpandedImageUrl] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const editInputRef = useRef<HTMLTextAreaElement>(null);
@@ -983,12 +984,19 @@ export default function ConversationPage({
                             </div>
                           </div>
                         ) : msg.image_url ? (
-                          <img
-                            src={msg.image_url}
-                            alt="Photo"
-                            className="max-w-[240px] rounded-2xl object-cover"
-                            style={{ maxHeight: 320 }}
-                          />
+                          <button
+                            type="button"
+                            onClick={() => setExpandedImageUrl(msg.image_url || null)}
+                            className="block overflow-hidden rounded-2xl text-left transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#4a9b6f)] focus:ring-offset-2 focus:ring-offset-[var(--bb-card,#ffffff)]"
+                            aria-label="Open shared photo"
+                          >
+                            <img
+                              src={msg.image_url}
+                              alt="Shared photo"
+                              className="max-w-[240px] object-cover"
+                              style={{ maxHeight: 320 }}
+                            />
+                          </button>
                         ) : (
                           <>
                             <div className="whitespace-pre-wrap">
@@ -1184,6 +1192,31 @@ export default function ConversationPage({
               </>
             )}
           </div>
+        </div>
+      </ModalShell>
+
+      <ModalShell
+        isOpen={Boolean(expandedImageUrl)}
+        onClose={() => setExpandedImageUrl(null)}
+        backdropColor="bg-black/85"
+        zIndex="z-[100]"
+      >
+        <div className="relative mx-2 flex max-h-[92vh] w-full max-w-5xl items-center justify-center">
+          <button
+            type="button"
+            onClick={() => setExpandedImageUrl(null)}
+            className="absolute right-2 top-2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/65 text-3xl leading-none text-white shadow-lg transition hover:bg-black/80"
+            aria-label="Close photo"
+          >
+            ×
+          </button>
+          {expandedImageUrl ? (
+            <img
+              src={expandedImageUrl}
+              alt="Expanded shared photo"
+              className="max-h-[88vh] w-full rounded-[28px] object-contain shadow-2xl"
+            />
+          ) : null}
         </div>
       </ModalShell>
 

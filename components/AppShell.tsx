@@ -2566,13 +2566,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     <Link
                       href="/change-buddy"
                       onClick={() => setIsProfileMenuOpen(false)}
-                      className={`block px-4 py-2 text-sm ${
+                      className={`flex items-center gap-2 px-4 py-2 text-sm ${
                         pathname?.startsWith("/change-buddy")
                           ? "bg-sky-100 text-black font-medium"
                           : "text-gray-700 hover:bg-gray-100"
                       }`}
                     >
-                      {selectedBuddy.name}
+                      <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full bg-white">
+                        <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={28} />
+                      </span>
+                      <span>{selectedBuddy.name}</span>
                     </Link>
 
                     {/* CONTACT US */}

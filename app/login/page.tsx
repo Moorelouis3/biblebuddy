@@ -5,6 +5,7 @@ import { FormEvent, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import AppLoadingScreen from "@/components/AppLoadingScreen";
 import { supabase } from "../../lib/supabaseClient";
 
 export default function LoginPage() {
@@ -97,6 +98,10 @@ export default function LoginPage() {
       setLoading(false);
       setError(error.message);
     }
+  }
+
+  if (loading) {
+    return <AppLoadingScreen />;
   }
 
   return (

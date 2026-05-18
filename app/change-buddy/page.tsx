@@ -124,8 +124,14 @@ export default function ChangeBuddyPage() {
       if (!userId) throw new Error("No user session found.");
       const { error } = await supabase
         .from("profile_stats")
-        .update({ selected_buddy_avatar: buddy.id })
-        .eq("user_id", userId);
+        .upsert(
+          {
+            user_id: userId,
+            selected_buddy_avatar: buddy.id,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" },
+        );
 
       if (error) throw error;
       setMessage(`${buddy.name} is your Buddy now.`);

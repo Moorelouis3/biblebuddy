@@ -35,6 +35,7 @@ import {
 import { LouisAvatar } from "../../components/LouisAvatar";
 import StreakFlameEmoji from "../../components/StreakFlameEmoji";
 import { ModalShell } from "../../components/ModalShell";
+import BibleReadingModal from "../../components/BibleReadingModal";
 import { triggerPoints } from "../../components/PointsPop";
 
 import AdSlot from "../../components/AdSlot";
@@ -76,6 +77,7 @@ const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
 const MAX_BADGE_POPUPS_PER_SESSION = 3;
 const MYSTERY_PRIZE_REWARDS = [100, 125, 150, 175, 200, 250];
 const DAILY_LOGIN_GIFT_WINDOW_MS = 24 * 60 * 60 * 1000;
+const DAILY_LOGIN_GIFT_MIN_DELAY_MS = 15 * 60 * 1000;
 const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
 
 const MATTHEW_CHAPTERS = 28;
@@ -665,12 +667,6 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
 }
 
 const BOOKS = [
-  // Gospels & Acts
-  "Matthew",
-  "Mark",
-  "Luke",
-  "John",
-  "Acts",
   // Law (Torah)
   "Genesis",
   "Exodus",
@@ -715,6 +711,12 @@ const BOOKS = [
   "Haggai",
   "Zechariah",
   "Malachi",
+  // Gospels & Acts
+  "Matthew",
+  "Mark",
+  "Luke",
+  "John",
+  "Acts",
   // Paul's Letters
   "Romans",
   "1 Corinthians",
@@ -894,6 +896,10 @@ export default function DashboardPage() {
   const [showBadgesModal, setShowBadgesModal] = useState(false);
   const [showGraceDaysInfoModal, setShowGraceDaysInfoModal] = useState(false);
   const [showBibleProgressModal, setShowBibleProgressModal] = useState(false);
+  const [showBibleProgressPanel, setShowBibleProgressPanel] = useState(false);
+  const [bibleBrowserSelectedBook, setBibleBrowserSelectedBook] = useState<string | null>(null);
+  const [bibleBrowserAlphabetical, setBibleBrowserAlphabetical] = useState(false);
+  const [bibleBrowserReading, setBibleBrowserReading] = useState<{ book: string; chapter: number } | null>(null);
   const [badgeProgress, setBadgeProgress] = useState<BadgeProgress[]>([]);
   const [selectedBadge, setSelectedBadge] = useState<BadgeProgress | null>(null);
   const [earnedBadgeQueue, setEarnedBadgeQueue] = useState<BadgeProgress[]>([]);
@@ -1027,6 +1033,10 @@ export default function DashboardPage() {
     return `bb:louis-dashboard-nudge-rotation:${currentUserId}:${dayKey}`;
   }
 
+  function getBibleTipPopupRotationKey(currentUserId: string) {
+    return `bb:bible-tip-popup-rotation:${currentUserId}`;
+  }
+
   function getStreakPointsShownKey(currentUserId: string, dayKey: string) {
     return `bb:streak-points-shown:${currentUserId}:${dayKey}`;
   }
@@ -1093,16 +1103,6 @@ export default function DashboardPage() {
         lineTwo: "That is why small daily choices matter so much in this book.",
         buttonText: "Nice",
         action: "dismiss",
-      },
-      {
-        id: "feature-change-buddy",
-        eyebrow: "Feature Tip",
-        title: "Choose your Buddy",
-        lineOne: "You can unlock different Bible Buddy guides as your level grows.",
-        lineTwo: "Pick the one that feels most encouraging for your study rhythm.",
-        buttonText: "Change Buddy",
-        action: "route",
-        href: "/change-buddy",
       },
       {
         id: "feature-tv",
@@ -1184,6 +1184,36 @@ export default function DashboardPage() {
     ].forEach(([id, title, lineOne, lineTwo]) => pool.push({ id, category: "discovery", eyebrow: "Discovery", title, lineOne, lineTwo, buttonText: "Got it", action: "dismiss" }));
 
     [
+      ["study-task-dont-just-read", "Do not just read the chapter", "Study it with the Bible tasks.", "The intro, chapter, notes, games, and reflection work together so the chapter actually lands."],
+      ["study-task-notes-make-sense", "Do not skip chapter notes", "That is where a lot of the chapter starts to make sense.", "The notes explain people, places, context, and meaning before you move on."],
+      ["study-task-six-tasks", "Do all 6 tasks", "The six-task chapter flow is built to help you really understand.", "Reading starts the chapter, but review and reflection help it stay with you."],
+      ["study-task-intro-first", "Start with the intro", "The intro gives you the map before you walk into the chapter.", "A little context can make the whole reading feel clearer."],
+      ["study-task-read-then-notes", "Read, then study", "Read the chapter first, then let the notes slow it down.", "That order helps you see the Bible itself before the explanation."],
+      ["study-task-trivia-review", "Trivia is review", "Trivia is not just a game.", "It checks what stuck after the chapter and shows what you may want to revisit."],
+      ["study-task-scrambled-memory", "Scrambled helps memory", "Word games train your attention after you read.", "That makes names, themes, and Bible ideas easier to remember."],
+      ["study-task-reflect-last", "Finish with reflection", "Reflection is where the study becomes personal.", "Ask what God is showing you and what one response should look like today."],
+      ["study-task-one-chapter", "One chapter is enough", "You do not have to rush through a lot of Bible at once.", "One chapter studied well can build more than five chapters skimmed fast."],
+      ["study-task-current-card", "Use the current study card", "Your current study card tells you exactly where to continue.", "If you feel lost, start there."],
+      ["study-task-progress", "Watch the task count", "The task count shows how much of the chapter study is done.", "Try to close the loop before jumping to something new."],
+      ["study-task-dont-wander", "Do not wander today", "Pick the next study task and stay with it.", "Structure helps when your brain wants to bounce around."],
+      ["study-task-chapter-context", "Context matters", "A chapter makes more sense when you know what came before it.", "That is why the studies move like a story, not random pieces."],
+      ["study-task-review-before-next", "Review before the next chapter", "Before moving forward, check the notes or games once more.", "A quick review makes the next chapter easier to understand."],
+      ["study-task-small-win", "Grab the next small win", "Even one Bible task is progress.", "Open the next card, finish it, and let that count."],
+      ["study-task-read-carefully", "Read carefully, not quickly", "The goal is not to beat the app.", "The goal is to understand what Scripture is saying."],
+      ["study-task-notes-before-games", "Notes before games", "The games work better after chapter notes.", "You will remember more because the details have already been explained."],
+      ["study-task-finish-loop", "Close the study loop", "Reading, notes, review, and reflection all have a job.", "Together they turn a chapter into a real study session."],
+      ["study-task-questions", "Bring your questions", "If something confuses you, that is not a problem.", "Use the notes, Buddy help, and community to work through it."],
+      ["study-task-understanding", "Understanding grows slowly", "Some chapters make sense piece by piece.", "Keep showing up, and the connections start to build."],
+      ["feature-community-world", "Study with Bible Buddies around the world", "Community is where you can post, ask, pray, and encourage.", "You are not the only one trying to stay consistent."],
+      ["feature-community-check", "Have you checked Community?", "The Community tab is for Bible thoughts, questions, prayer, and encouragement.", "A simple comment can help somebody keep going."],
+      ["feature-share-notes", "Share what stood out", "You do not need a perfect post.", "Share one line from your study and let the community grow around Scripture."],
+      ["feature-buddy-switch", "Pick the Buddy that helps you", "Your Bible Buddy can match the kind of encouragement you need.", "Change your Buddy in settings when you want a different feel."],
+      ["feature-store-customize", "Use diamonds for customization", "Diamonds are there so consistency can unlock something fun.", "Themes, flames, Buddies, and boosts make the app feel more personal."],
+      ["feature-tv-visual", "Try Bible Buddy TV", "Some days visual learning helps the Bible click.", "Use TV when you want to keep learning but need a different lane."],
+      ["feature-games-retention", "Use games after reading", "Games help you remember what you studied.", "They are best after the chapter and notes."],
+      ["feature-profile-progress", "Your profile shows your rhythm", "Levels, XP, badges, and streaks show the story of your consistency.", "Small daily actions become visible over time."],
+      ["feature-progress-bible", "Tap Bible Progress", "Bible Progress lets you open books and chapters again.", "Use it when you want to review or continue through Scripture."],
+      ["feature-dashboard-home", "Dashboard is home base", "Your dashboard gathers the chapter, tasks, streak, rewards, and Buddy.", "When you do not know where to go, go home and continue the next task."],
       ["habit-open-first", "Open before you feel ready", "Most habits start before motivation shows up.", "Open the chapter first. The feeling usually follows the first small step."],
       ["habit-two-minutes", "Two minutes still counts", "If the day is packed, do the chapter intro and keep the rhythm alive.", "Short faithful moments are better than waiting for perfect time."],
       ["habit-dont-rush", "Do not rush the chapter", "The goal is not speed. The goal is understanding and consistency.", "Move through the six tasks like reps, not like a race."],
@@ -1228,6 +1258,31 @@ export default function DashboardPage() {
       ["fact-law", "Law follows rescue", "God gives commandments after He rescues Israel.", "Obedience responds to grace; it does not create rescue."],
       ["fact-connected-story", "The Bible is one connected story", "The chapters are not isolated pieces.", "Creation, fall, promise, rescue, covenant, kingdom, exile, and redemption connect."],
     ].forEach(([id, title, lineOne, lineTwo]) => pool.push({ id, category: "bible_fact", eyebrow: "Bible Fact", title, lineOne, lineTwo, buttonText: "Nice", action: "dismiss" }));
+
+    [
+      ["invite-earn-rewards", "Invite new Bible Buddies", "When someone joins from your invite link, you earn XP and diamonds.", "Sharing Bible Buddy can help your friends study and help your progress grow too."],
+      ["invite-share-link", "Your invite link is ready", "Send your Bible Buddy link to someone who wants to understand Scripture better.", "Every real signup from your link can add rewards to your account."],
+      ["invite-friend-start", "Help a friend start", "Somebody you know may not know where to begin in the Bible.", "Invite them so they can start with guided tasks instead of guessing."],
+      ["invite-community-growth", "Grow the Bible Buddy family", "The more people studying, posting, and encouraging, the stronger the community feels.", "Your invite link helps bring new Bible Buddies in."],
+      ["invite-reward-reminder", "Invites can reward you", "Bible Buddy rewards real referrals with XP and diamonds.", "Share your link, then check your Share tab to see your signups."],
+      ["invite-diamonds", "Earn diamonds by sharing", "Diamonds are not only from study tasks.", "Inviting a friend who signs up can add more diamonds to your stash."],
+      ["invite-xp", "Earn XP by sharing", "Helping someone start their Bible habit counts.", "Invite friends and watch your XP rewards grow when they join."],
+      ["invite-no-code", "No code needed", "Just use your invite link.", "Bible Buddy tracks who came from your link so you can get credit."],
+      ["invite-one-person", "Think of one person", "Who needs a simple place to start with the Bible?", "Send them your invite link today and help them take the first step."],
+      ["invite-study-together", "Study with someone you know", "Bible study is easier when you are not doing it alone.", "Invite a friend and encourage each other through the chapter tasks."],
+      ["community-world", "Bible Buddies are everywhere", "Community lets you study with people beyond your own circle.", "Post one thought and join what God is teaching others too."],
+      ["community-encourage", "Encourage one Bible Buddy", "A like, comment, or reply can help somebody keep going.", "Community is part of the habit, not just a side page."],
+      ["community-question", "Ask the question", "If a chapter confuses you, someone else may be wondering too.", "Post a question in Community and learn together."],
+      ["community-testimony", "Share what clicked", "When a chapter starts making sense, share the moment.", "Your simple testimony can make Scripture feel reachable for someone else."],
+      ["community-not-perfect", "Posts do not need to be perfect", "One honest sentence is enough.", "Tell the community what stood out from your study today."],
+      ["share-tab-tracker", "Check your Share tab", "Your Share tab tracks signups, XP earned, and diamonds earned.", "That is where your invite rewards live."],
+      ["share-after-study", "Share after you study", "After finishing a chapter, invite someone to start their own Bible habit.", "Your consistency can become encouragement for them."],
+      ["feature-settings-buddy", "Your Buddy can change", "Settings lets you choose which Bible Buddy shows across the app.", "Pick the guide that feels right for your study rhythm."],
+      ["feature-flame-style", "Your flame can match you", "Bought flame colors show up wherever your streak flame appears.", "Set your active flame in Settings after you unlock one."],
+      ["feature-store-check", "The store has more than themes", "Themes, flames, Bible Buddies, boosts, and rewards all live in the store.", "Spend diamonds when you want to customize your Bible Buddy experience."],
+    ].forEach(([id, title, lineOne, lineTwo]) =>
+      pool.push({ id, category: "habit", eyebrow: "App Feature", title, lineOne, lineTwo, buttonText: "Got it", action: "dismiss" }),
+    );
 
     if (typeof window !== "undefined" && "Notification" in window && Notification.permission !== "granted") {
       pool.push({
@@ -2050,7 +2105,11 @@ export default function DashboardPage() {
         value: `${displayedBibleCompletionPercent}%`,
         icon: "📖",
         tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
-        onClick: () => setShowBibleProgressModal(true),
+        onClick: () => {
+          setShowDiamondStore(false);
+          setShowBibleProgressPanel(true);
+          setBibleBrowserSelectedBook(null);
+        },
       },
       {
         key: "diamonds",
@@ -2254,6 +2313,147 @@ export default function DashboardPage() {
         </div>
 
       </div>
+    );
+  }
+
+  function renderBibleProgressPanel() {
+    const bibleCompletionPercent = Math.max(
+      0,
+      Math.min(100, Math.round((totalCompletedChapters / Math.max(TOTAL_BIBLE_CHAPTERS, 1)) * 100)),
+    );
+    const progressRows = bibleBookProgress.length
+      ? bibleBookProgress
+      : BOOKS.map((book) => ({
+          book,
+          completed: 0,
+          total: getBookTotalChapters(book),
+          chapters: [] as number[],
+        }));
+    const progressByBook = new Map(progressRows.map((row) => [row.book, row]));
+    const visibleBooks = bibleBrowserAlphabetical ? [...BOOKS].sort((a, b) => a.localeCompare(b)) : BOOKS;
+    const selectedProgress = bibleBrowserSelectedBook ? progressByBook.get(bibleBrowserSelectedBook) : null;
+    const selectedTotal = bibleBrowserSelectedBook ? getBookTotalChapters(bibleBrowserSelectedBook) : 0;
+    const selectedCompleted = new Set(selectedProgress?.chapters || []);
+
+    return (
+      <section className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">Bible Progress</p>
+            <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary)]">
+              {bibleBrowserSelectedBook || "Choose a Bible book"}
+            </h2>
+            <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary)]">
+              {bibleBrowserSelectedBook
+                ? "Pick a chapter to open the Bible reader. Finished chapters are already marked."
+                : "Tap a book, then choose a chapter. Books are in Bible order by default."}
+            </p>
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            {bibleBrowserSelectedBook ? (
+              <button
+                type="button"
+                onClick={() => setBibleBrowserSelectedBook(null)}
+                className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-3 py-2 text-xs font-black text-[var(--bb-accent)] transition hover:brightness-95"
+              >
+                Books
+              </button>
+            ) : null}
+            <button
+              type="button"
+              onClick={() => {
+                setShowBibleProgressPanel(false);
+                setBibleBrowserSelectedBook(null);
+              }}
+              className="grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] text-xl font-black text-[var(--bb-text-secondary)] transition hover:bg-[var(--bb-card)]"
+              aria-label="Close Bible"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-4 rounded-3xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] p-4">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <p className="text-3xl font-black leading-none text-[var(--bb-text-primary)]">{bibleCompletionPercent}%</p>
+              <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted)]">Bible completed</p>
+            </div>
+            <div className="text-right text-xs font-black text-[var(--bb-text-secondary)]">
+              <p>{totalCompletedChapters} / {TOTAL_BIBLE_CHAPTERS}</p>
+              <p className="mt-1 font-bold text-[var(--bb-text-muted)]">chapters finished</p>
+            </div>
+          </div>
+          <div className="mt-3 h-3 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)]">
+            <div
+              className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] transition-all duration-500"
+              style={{ width: `${bibleCompletionPercent}%` }}
+            />
+          </div>
+        </div>
+
+        {bibleBrowserSelectedBook ? (
+          <div className="mt-5">
+            <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
+              {Array.from({ length: selectedTotal }, (_, index) => index + 1).map((chapter) => {
+                const done = selectedCompleted.has(chapter);
+                return (
+                  <button
+                    key={chapter}
+                    type="button"
+                    onClick={() => setBibleBrowserReading({ book: bibleBrowserSelectedBook, chapter })}
+                    className={`min-h-[72px] rounded-2xl border px-2 py-3 text-center transition hover:-translate-y-0.5 hover:shadow-sm ${
+                      done
+                        ? "border-[#9be7b0] bg-[#eafbf0] text-[#116b35]"
+                        : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] text-[var(--bb-text-primary)] hover:border-[var(--bb-accent)]"
+                    }`}
+                  >
+                    <span className="block text-lg font-black">{chapter}</span>
+                    <span className="mt-1 block text-[10px] font-black uppercase tracking-[0.08em]">
+                      {done ? "Done" : "Open"}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="mt-5">
+            <label className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-4 py-3">
+              <span className="text-sm font-black text-[var(--bb-text-primary)]">ABC order</span>
+              <input
+                type="checkbox"
+                checked={bibleBrowserAlphabetical}
+                onChange={(event) => setBibleBrowserAlphabetical(event.target.checked)}
+                className="h-5 w-5 accent-[var(--bb-accent)]"
+              />
+            </label>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+              {visibleBooks.map((book) => {
+                const progress = progressByBook.get(book);
+                const total = progress?.total ?? getBookTotalChapters(book);
+                const completed = progress?.completed ?? 0;
+                const complete = completed >= total;
+                return (
+                  <button
+                    key={book}
+                    type="button"
+                    onClick={() => setBibleBrowserSelectedBook(book)}
+                    className={`rounded-2xl border px-3 py-3 text-left transition hover:-translate-y-0.5 hover:border-[var(--bb-accent)] hover:shadow-sm ${
+                      complete ? "border-[#9be7b0] bg-[#eafbf0]" : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)]"
+                    }`}
+                  >
+                    <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary)]">{book}</span>
+                    <span className="mt-1 block text-[11px] font-bold text-[var(--bb-text-muted)]">
+                      {completed} of {total} chapters
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </section>
     );
   }
 
@@ -2976,6 +3176,9 @@ export default function DashboardPage() {
 
   const resetDashboardHomePanel = useCallback(() => {
     setShowDiamondStore(false);
+    setShowBibleProgressPanel(false);
+    setBibleBrowserSelectedBook(null);
+    setBibleBrowserReading(null);
     setActiveStorePromo(null);
     setMysteryPrizeReveal(null);
     setDailyLoginGiftReveal(null);
@@ -3892,7 +4095,8 @@ export default function DashboardPage() {
     const stepIndex = Number(window.localStorage.getItem(stepKey) || "0");
     const dailyPopupStep = getDailyPopupStep(stepIndex);
     const lastShownAt = Number(window.localStorage.getItem(lastShownKey) || "0");
-    if (stepIndex > 0 && lastShownAt && nowMs - lastShownAt < DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS) {
+    const popupCooldownMs = dailyPopupStep === "mystery" ? DAILY_LOGIN_GIFT_MIN_DELAY_MS : DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS;
+    if (stepIndex > 0 && lastShownAt && nowMs - lastShownAt < popupCooldownMs) {
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       setPendingDailyStreakSequence(false);
       dailyStreakSequenceCheckRef.current = null;
@@ -3929,8 +4133,24 @@ export default function DashboardPage() {
 
       if (dailyPopupStep === "mystery") {
         const dailyGiftShownKey = getDailyLoginGiftShownKey(currentUserId, dayKey);
+        const dailyGiftAlreadyShown =
+          profile?.daily_login_gift_last_shown_date === dayKey ||
+          window.localStorage.getItem(dailyGiftShownKey) === "1";
+        if (dailyGiftAlreadyShown) {
+          markDailyPopupShown();
+          return true;
+        }
+
         window.localStorage.setItem(dailyGiftShownKey, "1");
         setDailyLoginGiftReveal({ status: "closed", reward: rollMysteryPrizeReward() });
+        setProfile((current) => current ? { ...current, daily_login_gift_last_shown_date: dayKey } : current);
+        void supabase
+          .from("profile_stats")
+          .update({
+            daily_login_gift_last_shown_date: dayKey,
+            updated_at: new Date().toISOString(),
+          })
+          .eq("user_id", currentUserId);
         markDailyPopupShown();
         return true;
       }
@@ -3947,7 +4167,10 @@ export default function DashboardPage() {
             item.action === "dismiss" &&
             (item.category === "habit" || item.category === "bible_fact" || item.eyebrow.toLowerCase().includes("tip")),
         );
-        const selectedTip = tips[Math.abs(stepIndex) % Math.max(tips.length, 1)] ?? pickDashboardLouisNudge(currentUserId, dayKey);
+        const rotationKey = getBibleTipPopupRotationKey(currentUserId);
+        const tipRotationIndex = Number(window.localStorage.getItem(rotationKey) || "0");
+        const selectedTip = tips[Math.abs(tipRotationIndex) % Math.max(tips.length, 1)] ?? pickDashboardLouisNudge(currentUserId, dayKey);
+        window.localStorage.setItem(rotationKey, String(tipRotationIndex + 1));
         setStreakMotivationModalMode("checkin");
         setShowStreakMotivationTaskPrompt(false);
         setLouisDashboardNudge(selectedTip);
@@ -4975,7 +5198,7 @@ export default function DashboardPage() {
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
-          homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : undefined}
+          homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : showBibleProgressPanel ? renderBibleProgressPanel() : undefined}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
@@ -5026,7 +5249,7 @@ export default function DashboardPage() {
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
-          homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : undefined}
+          homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : showBibleProgressPanel ? renderBibleProgressPanel() : undefined}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
@@ -5034,6 +5257,42 @@ export default function DashboardPage() {
           }}
         />
       </div>
+
+      {bibleBrowserReading ? (
+        <BibleReadingModal
+          book={bibleBrowserReading.book}
+          chapter={bibleBrowserReading.chapter}
+          onClose={() => setBibleBrowserReading(null)}
+          onMarkComplete={() => {
+            const { book, chapter } = bibleBrowserReading;
+            setBibleBookProgress((currentRows) => {
+              const rows = currentRows.length
+                ? currentRows
+                : BOOKS.map((bookName) => ({
+                    book: bookName,
+                    completed: 0,
+                    total: getBookTotalChapters(bookName),
+                    chapters: [] as number[],
+                  }));
+
+              return rows.map((row) => {
+                if (row.book !== book || row.chapters.includes(chapter)) return row;
+                const chapters = [...row.chapters, chapter].sort((a, b) => a - b);
+                return {
+                  ...row,
+                  chapters,
+                  completed: chapters.length,
+                };
+              });
+            });
+            setTotalCompletedChapters((current) => {
+              const existing = bibleBookProgress.find((row) => row.book === book)?.chapters.includes(chapter);
+              return existing ? current : current + 1;
+            });
+            void loadDailyTaskSummary({ force: true, silent: true });
+          }}
+        />
+      ) : null}
 
       {/* MOBILE BOTTOM AD BANNER (Fixed at bottom, above system UI) */}
       {shouldShowAds && !mobileAdDismissed && (

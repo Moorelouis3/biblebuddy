@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import StreakFlameEmoji from "../../components/StreakFlameEmoji";
+import { LouisAvatar } from "../../components/LouisAvatar";
 import {
   APP_THEME_STORAGE_KEY,
   APP_THEMES,
@@ -11,10 +12,18 @@ import {
   normalizeAppThemeId,
   type AppThemeId,
 } from "../../lib/appThemes";
-import { STREAK_FLAME_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
+import { BUDDY_STORE_ITEMS, STREAK_FLAME_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
+import {
+  BUDDY_AVATARS,
+  DEFAULT_BUDDY_AVATAR,
+  SELECTED_BUDDY_STORAGE_KEY,
+  normalizeBuddyAvatarId,
+  type BuddyAvatarId,
+} from "../../lib/buddyAvatars";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, FLAME_COSMETICS, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
 import { isAdminUser } from "../../lib/readingProgress";
+import type { BuddyAvatar } from "../../lib/buddyAvatars";
 
 type StorePurchaseRow = {
   item_id: string;
@@ -26,7 +35,17 @@ type SettingsProfileRow = {
   username?: string | null;
   app_theme?: string | null;
   selected_streak_flame?: string | null;
+  selected_buddy_avatar?: string | null;
 };
+
+function getBuddyStoreItemId(buddyId: BuddyAvatarId) {
+  return buddyId === "louis" ? "buddy-lil-louis" : `buddy-${buddyId}`;
+}
+
+function getBuddyMood(buddy: BuddyAvatar, currentBuddyId: BuddyAvatarId) {
+  if (buddy.id !== "louis") return "wave";
+  return currentBuddyId === "louis" ? "peace" : "wave";
+}
 
 function getPasswordResetRedirectUrl() {
   if (typeof window === "undefined") return "https://www.mybiblebuddy.net/reset-password";
@@ -49,7 +68,11 @@ export default function SettingsPage() {
   const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState<AppThemeId>("light");
   const [selectedFlame, setSelectedFlame] = useState<FlameCosmeticId>("default");
+  const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId>(DEFAULT_BUDDY_AVATAR);
+  const [buddySaving, setBuddySaving] = useState<BuddyAvatarId | null>(null);
+  const [activeBuddyIndex, setActiveBuddyIndex] = useState(0);
   const [removingItemId, setRemovingItemId] = useState<string | null>(null);
+  const buddySwipeStartRef = useRef<{ x: number; y: number } | null>(null);
   
   // Profile fields
   const [firstName, setFirstName] = useState("");
@@ -81,19 +104,19 @@ export default function SettingsPage() {
 
         const profileRequest = await supabase
           .from("profile_stats")
-          .select("display_name, username, app_theme, selected_streak_flame")
+          .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar")
           .eq("user_id", currentUser.id)
           .maybeSingle();
 
         let profile = profileRequest.data as SettingsProfileRow | null;
-        if (profileRequest.error && /selected_streak_flame/i.test(profileRequest.error.message || "")) {
+        if (profileRequest.error && /selected_streak_flame|selected_buddy_avatar/i.test(profileRequest.error.message || "")) {
           const fallbackProfile = await supabase
             .from("profile_stats")
             .select("display_name, username, app_theme")
             .eq("user_id", currentUser.id)
             .maybeSingle();
           profile = fallbackProfile.data as SettingsProfileRow | null;
-          setSettingsMessage("Streak flames need one database update before they can save. Run ADD_SELECTED_STREAK_FLAME.sql in Supabase.");
+          setSettingsMessage("Buddy and flame selections need the newest profile_stats columns before they can save.");
         }
 
         const { data: purchases } = await supabase
@@ -111,13 +134,19 @@ export default function SettingsPage() {
         setFirstName(nameParts.firstName);
         setLastName(nameParts.lastName);
         setSelectedTheme(normalizeAppThemeId(profile?.app_theme));
+        const localSelectedBuddy =
+          typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
+        const resolvedSelectedBuddy = normalizeBuddyAvatarId(profile?.selected_buddy_avatar || localSelectedBuddy);
+        setSelectedBuddy(resolvedSelectedBuddy);
         const localSelectedFlame =
           typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
         const dbSelectedFlame = normalizeFlameCosmeticId(profile?.selected_streak_flame);
         const resolvedSelectedFlame = dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame);
         setSelectedFlame(resolvedSelectedFlame);
         if (typeof window !== "undefined") {
+          window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, resolvedSelectedBuddy);
           window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, resolvedSelectedFlame);
+          window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: resolvedSelectedBuddy } }));
         }
         setStorePurchases((purchases || []) as StorePurchaseRow[]);
       }
@@ -330,11 +359,53 @@ export default function SettingsPage() {
     }
   }
 
+  async function handleBuddySelect(buddyId: BuddyAvatarId) {
+    if (!user) return;
+    const previousBuddy = selectedBuddy;
+    setBuddySaving(buddyId);
+    setSettingsMessage(null);
+    setSelectedBuddy(buddyId);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, buddyId);
+      window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId } }));
+    }
+
+    try {
+      const { error } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: user.id,
+            selected_buddy_avatar: buddyId,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" },
+        );
+      if (error) throw error;
+      setSettingsMessage("Bible Buddy updated.");
+      setActiveBuddyIndex(0);
+    } catch (error: any) {
+      setSelectedBuddy(previousBuddy);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, previousBuddy);
+        window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: previousBuddy } }));
+      }
+      setSettingsMessage(
+        /selected_buddy_avatar/i.test(error.message || "")
+          ? "Bible Buddy selection needs the selected_buddy_avatar column in profile_stats before it can save."
+          : error.message || "Could not update Bible Buddy.",
+      );
+    } finally {
+      setBuddySaving(null);
+    }
+  }
+
   async function handleDeleteStoreItem(itemId: string) {
     if (!user || removingItemId) return;
     const item =
       THEME_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
-      STREAK_FLAME_STORE_ITEMS.find((storeItem) => storeItem.id === itemId);
+      STREAK_FLAME_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
+      BUDDY_STORE_ITEMS.find((storeItem) => storeItem.id === itemId);
     if (!item) return;
 
     const confirmed = window.confirm(`Remove ${item.title} from your account?`);
@@ -358,6 +429,11 @@ export default function SettingsPage() {
 
       if (item.flameId && selectedFlame === item.flameId) {
         await handleFlameSelect("default");
+      }
+
+      const removedBuddyId = BUDDY_AVATARS.find((buddy) => getBuddyStoreItemId(buddy.id) === itemId)?.id;
+      if (removedBuddyId && selectedBuddy === removedBuddyId) {
+        await handleBuddySelect(DEFAULT_BUDDY_AVATAR);
       }
 
       setSettingsMessage(`${item.title} removed.`);
@@ -400,6 +476,49 @@ export default function SettingsPage() {
       .map((item) => item.flameId),
   );
   const availableFlames = FLAME_COSMETICS.filter((flame) => ownerHasUnlimitedDiamonds || flame.id === "default" || ownedFlameIds.has(flame.id));
+  const ownedBuddyItemIds = new Set(
+    BUDDY_STORE_ITEMS
+      .filter((item) => ownedStoreItemIds.includes(item.id))
+      .map((item) => item.id),
+  );
+  const availableBuddies = BUDDY_AVATARS.filter((buddy) =>
+    ownerHasUnlimitedDiamonds ||
+    buddy.id === DEFAULT_BUDDY_AVATAR ||
+    buddy.id === selectedBuddy ||
+    ownedBuddyItemIds.has(getBuddyStoreItemId(buddy.id)),
+  );
+  const currentBuddyForSlides = availableBuddies.find((buddy) => buddy.id === selectedBuddy) ?? availableBuddies[0];
+  const buddySlides = currentBuddyForSlides
+    ? [currentBuddyForSlides, ...availableBuddies.filter((buddy) => buddy.id !== currentBuddyForSlides.id)]
+    : [];
+  const activeBuddy = buddySlides[activeBuddyIndex] ?? buddySlides[0];
+
+  function moveBuddyCard(direction: -1 | 1) {
+    if (!buddySlides.length) return;
+    setActiveBuddyIndex((index) => (index + direction + buddySlides.length) % buddySlides.length);
+  }
+
+  function handleBuddySwipeStart(event: React.TouchEvent<HTMLDivElement>) {
+    const touch = event.touches[0];
+    buddySwipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+  }
+
+  function handleBuddySwipeEnd(event: React.TouchEvent<HTMLDivElement>) {
+    const start = buddySwipeStartRef.current;
+    buddySwipeStartRef.current = null;
+    if (!start) return;
+
+    const touch = event.changedTouches[0];
+    const endX = touch?.clientX ?? start.x;
+    const endY = touch?.clientY ?? start.y;
+    const deltaX = endX - start.x;
+    const deltaY = endY - start.y;
+    const absX = Math.abs(deltaX);
+    const absY = Math.abs(deltaY);
+    if (absX < 70 || absY > 35 || absY > absX * 0.55) return;
+
+    moveBuddyCard(deltaX < 0 ? 1 : -1);
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
@@ -506,6 +625,118 @@ export default function SettingsPage() {
               );
             })}
           </div>
+        </div>
+
+        {/* Bible Buddy Section */}
+        <div className="bg-white rounded-xl p-4 shadow-sm mb-6 sm:p-6">
+          <h2 className="text-xl font-semibold mb-2">Bible Buddy</h2>
+          <p className="mb-4 text-sm text-gray-600">
+            Pick the Buddy that should show across your dashboard, menu, popups, games, and study areas.
+          </p>
+
+          {activeBuddy ? (
+            <div className="relative mx-auto max-w-[620px] px-0 sm:px-14">
+              <button
+                type="button"
+                onClick={() => moveBuddyCard(-1)}
+                className="absolute left-1 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#2563eb)] shadow-sm transition hover:brightness-95 active:scale-95 sm:left-0"
+                aria-label="Previous Bible Buddy"
+              >
+                ‹
+              </button>
+
+              <div
+                className="mx-auto w-full overflow-hidden pb-3 pt-1 [touch-action:pan-y]"
+                onTouchStart={handleBuddySwipeStart}
+                onTouchEnd={handleBuddySwipeEnd}
+              >
+                <div
+                  className="flex transition-transform duration-300 ease-out"
+                  style={{ transform: `translateX(-${activeBuddyIndex * 100}%)` }}
+                >
+                  {buddySlides.map((buddy, index) => {
+                    const isCurrent = buddy.id === selectedBuddy;
+                    const isActive = index === activeBuddyIndex;
+                    const storeItem = BUDDY_STORE_ITEMS.find((item) => item.id === getBuddyStoreItemId(buddy.id));
+                    const canDelete = Boolean(storeItem && buddy.id !== DEFAULT_BUDDY_AVATAR && ownedStoreItemIds.includes(storeItem.id));
+
+                    return (
+                      <article
+                        key={buddy.id}
+                        data-settings-buddy-card-index={index}
+                        className={`relative min-w-full overflow-hidden rounded-[26px] border p-4 text-center shadow-[0_16px_42px_rgba(38,63,99,0.12)] transition duration-300 sm:rounded-[30px] sm:p-6 ${
+                          isActive ? "scale-100 opacity-100" : "scale-[0.97] opacity-80"
+                        }`}
+                        style={{
+                          borderColor: isCurrent ? "var(--bb-accent,#2563eb)" : "var(--bb-card-border,#dbe7f4)",
+                          background:
+                            "radial-gradient(circle at 50% 18%, var(--bb-accent-soft,#eaf5ff), transparent 34%), var(--bb-card,#ffffff)",
+                        }}
+                      >
+                        <div className="pointer-events-none absolute inset-x-10 bottom-20 h-24 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] blur-3xl" aria-hidden="true" />
+                        <div className="relative mx-auto grid min-h-[240px] place-items-center sm:min-h-[320px]">
+                          <LouisAvatar buddyId={buddy.id} mood={getBuddyMood(buddy, selectedBuddy)} size={isActive ? 230 : 210} />
+                        </div>
+
+                        <h3 className="relative -mt-2 text-4xl font-black leading-none text-gray-950 sm:text-5xl">{buddy.name}</h3>
+                        <p className="relative mt-3 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2563eb)] sm:text-sm">{buddy.title}</p>
+                        <p className="relative mx-auto mt-3 max-w-sm text-sm font-semibold leading-relaxed text-gray-600">{buddy.description}</p>
+
+                        <button
+                          type="button"
+                          onClick={() => void handleBuddySelect(buddy.id)}
+                          disabled={isCurrent || buddySaving === buddy.id}
+                          className={`relative mt-5 w-full rounded-full px-5 py-3.5 text-sm font-black shadow-sm transition active:scale-[0.98] ${
+                            isCurrent
+                              ? "bg-[var(--bb-accent,#2563eb)] text-[var(--bb-button-text,#ffffff)]"
+                              : "bg-[var(--bb-button,#2563eb)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
+                          } disabled:cursor-default disabled:opacity-95`}
+                        >
+                          {buddySaving === buddy.id ? "Saving..." : isCurrent ? "Current Buddy" : "Select Buddy"}
+                        </button>
+
+                        {canDelete && storeItem ? (
+                          <button
+                            type="button"
+                            onClick={() => void handleDeleteStoreItem(storeItem.id)}
+                            disabled={removingItemId === storeItem.id}
+                            className="relative mt-3 w-full rounded-full border border-red-200 px-3 py-2 text-xs font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
+                          >
+                            {removingItemId === storeItem.id ? "Removing..." : "Delete"}
+                          </button>
+                        ) : null}
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => moveBuddyCard(1)}
+                className="absolute right-1 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#2563eb)] shadow-sm transition hover:brightness-95 active:scale-95 sm:right-0"
+                aria-label="Next Bible Buddy"
+              >
+                ›
+              </button>
+
+              <div className="mt-1 flex justify-center gap-2">
+                {buddySlides.map((buddy, index) => (
+                  <button
+                    key={buddy.id}
+                    type="button"
+                    onClick={() => setActiveBuddyIndex(index)}
+                    className={`h-2.5 rounded-full transition ${index === activeBuddyIndex ? "w-7 bg-[var(--bb-accent,#2563eb)]" : "w-2.5 bg-[var(--bb-card-border,#dbe7f4)]"}`}
+                    aria-label={`Show ${buddy.name}`}
+                  />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <p className="rounded-2xl bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-500">
+              No Bible Buddies are available yet.
+            </p>
+          )}
         </div>
 
         {/* Profile Section */}
