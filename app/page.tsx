@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import AppLoadingScreen from "@/components/AppLoadingScreen";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { BIBLE_STUDY_SERIES_CATALOG } from "@/lib/bibleStudiesCatalog";
@@ -274,11 +275,7 @@ export default function LandingPage() {
   }
 
   if (isChecking) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-[#eef4ff]">
-        <div className="text-slate-400">Loading...</div>
-      </div>
-    );
+    return <AppLoadingScreen />;
   }
 
   return (
