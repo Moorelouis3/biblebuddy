@@ -2625,13 +2625,13 @@ export default function DashboardPage() {
             </span>
           ) : null}
           <div
-            className="grid h-44 place-items-end overflow-hidden bg-[var(--bb-surface-soft)] sm:h-52"
-            style={{ background: `radial-gradient(circle at 50% 92%, #ffffff 0 42%, ${item.accent}1f 43% 100%)` }}
+            className="grid h-64 place-items-center overflow-hidden bg-[var(--bb-surface-soft)] px-2 pt-4 sm:h-72"
+            style={{ background: `radial-gradient(circle at 50% 88%, #ffffff 0 42%, ${item.accent}1f 43% 100%)` }}
           >
             <img
               src={item.imageSrc || "/Newlouiswave.png"}
               alt={item.title}
-              className="max-h-full w-full object-contain object-bottom"
+              className="h-full w-full object-contain object-center"
             />
           </div>
           <div className="p-3 text-center">
