@@ -931,6 +931,995 @@ They are the LORD's people.
 💭 Are you trying to move forward while keeping God somewhere other than the center?
 `;
 
+NUMBERS_DEEP_NOTES[20] = `# Numbers 21
+
+# 🐍 The Bronze Serpent and Learning to Trust God on the Long Road
+
+Numbers 21 is full of movement.
+
+Israel is getting closer to the land, but the journey is still difficult.
+
+There is battle.
+
+There is discouragement.
+
+There is complaining.
+
+There is judgment.
+
+There is healing.
+
+There are songs.
+
+There are victories.
+
+This chapter shows Israel moving from fear and complaint into victory and progress.
+
+But the chapter also reminds us that the heart can still turn against God, even after years of provision.
+
+The most famous moment is the bronze serpent.
+
+The people speak against God and Moses.
+
+Fiery serpents come among them.
+
+The people confess their sin.
+
+God tells Moses to lift up a bronze serpent on a pole.
+
+Whoever looks at it lives.
+
+That is a strange and powerful picture.
+
+God does not tell the people to save themselves.
+
+He tells them to look at the provision He gives.
+
+Numbers 21 teaches that God judges sin, but He also provides a way for wounded people to live.
+
+## Why Numbers 21 Matters
+
+⚔️ Israel fights the Canaanite king of Arad and wins after making a vow to the LORD.
+
+😩 The people become discouraged because of the way.
+
+🍞 They complain against God’s manna again.
+
+🐍 Fiery serpents bite the people.
+
+🙌 The people confess that they sinned.
+
+🪧 God tells Moses to lift up a bronze serpent.
+
+👀 Whoever looks at the bronze serpent lives.
+
+💧 Israel continues traveling and receives water.
+
+🎶 Israel sings at the well.
+
+👑 Israel defeats Sihon king of the Amorites.
+
+🏔️ Israel defeats Og king of Bashan.
+
+## Chapter Flow
+
+⚔️ Arad attacks Israel and takes some captives.
+
+🙌 Israel vows to the LORD and wins the battle.
+
+😩 The people become discouraged on the long route around Edom.
+
+🗣️ They speak against God and Moses.
+
+🐍 God sends fiery serpents among them.
+
+🙏 The people confess and ask Moses to pray.
+
+🪧 Moses lifts up the bronze serpent.
+
+👀 The bitten people look and live.
+
+💧 Israel journeys from place to place and receives water.
+
+🎶 Israel sings, “Spring up, O well.”
+
+👑 Sihon refuses passage and attacks Israel.
+
+🏆 Israel defeats Sihon and takes his land.
+
+🏔️ Og comes against Israel, and God gives victory.
+
+# Deep Chapter Notes
+
+## Numbers 21:1 to 3
+
+# ⚔️ Israel Learns to Fight With Dependence on God
+
+> **1** And when king Arad the Canaanite... heard tell that Israel came by the way of the spies; then he fought against Israel, and took some of them prisoners.
+
+> **2** And Israel vowed a vow unto the LORD...
+
+> **3** And the LORD hearkened to the voice of Israel, and delivered up the Canaanites...
+
+The chapter begins with conflict.
+
+The Canaanite king of Arad attacks Israel and takes some of them captive.
+
+This is not Israel looking for a fight.
+
+This enemy comes against them first.
+
+### ⚔️ A Real Attack
+
+Arad attacks and takes prisoners.
+
+That means families in Israel are suddenly grieving and afraid.
+
+This is not a small border issue.
+
+People have been captured.
+
+Israel is forced to face danger as they move toward the promised land.
+
+### 🙌 Israel Makes a Vow
+
+Israel vows that if the LORD gives them victory, they will devote the enemy’s cities to destruction.
+
+The important thing is that Israel brings the battle before God.
+
+They are not trusting their own strength first.
+
+They are asking the LORD to deliver.
+
+### 👂 The LORD Listens
+
+Verse 3 says the LORD hearkened to the voice of Israel.
+
+That is beautiful.
+
+Even after all Israel’s failures, God still hears them when they call on Him.
+
+He gives them victory.
+
+### 🏷️ Hormah
+
+The place is called Hormah, connected to destruction or devotion.
+
+This name reminds Israel that victory belongs to the LORD, not to human pride.
+
+### 🧠 A Deep Lesson
+
+Israel is learning how to fight differently.
+
+Earlier, in Numbers 14, they tried to go up after God had told them not to, and they were defeated.
+
+Here, they seek the LORD and He gives victory.
+
+The lesson is clear:
+
+Victory is not just about courage.
+
+It is about obedience, timing, and dependence on God.
+
+## Numbers 21:4
+
+# 😩 Discouraged Because of the Way
+
+> **4** And they journeyed from mount Hor by the way of the Red sea, to compass the land of Edom: and the soul of the people was much discouraged because of the way.
+
+This verse explains the emotional setting for the next failure.
+
+Israel has to travel around Edom.
+
+That means the road is longer than they wanted.
+
+They cannot take the easier route.
+
+They are tired.
+
+They are frustrated.
+
+They are discouraged because of the way.
+
+### 🛣️ The Way Was Hard
+
+This is one of the most relatable verses in Numbers.
+
+The people are not only discouraged because of one event.
+
+They are discouraged because of the road itself.
+
+The journey feels long.
+
+The route feels inconvenient.
+
+The promise feels delayed.
+
+### 🚷 Edom’s Refusal Still Has Consequences
+
+Numbers 20 showed Edom refusing passage.
+
+Now Israel has to go around.
+
+That refusal creates more travel, more heat, more waiting, and more emotional strain.
+
+### 😩 Discouragement Can Become Dangerous
+
+Discouragement is not the same as rebellion.
+
+People can be tired.
+
+People can feel worn down.
+
+But if discouragement is not brought honestly to God, it can turn into accusation.
+
+That is what happens next.
+
+### 🧠 A Deep Lesson
+
+Sometimes the hardest part of faith is not one huge battle.
+
+Sometimes it is the long road.
+
+The detour.
+
+The waiting.
+
+The repeated daily strain.
+
+Numbers 21 shows that a hard road can reveal whether the heart is still trusting God.
+
+## Numbers 21:5
+
+# 🗣️ The People Speak Against God and Moses
+
+> **5** And the people spake against God, and against Moses, Wherefore have ye brought us up out of Egypt to die in the wilderness?
+
+This is a serious turning point.
+
+The people do not only complain against Moses.
+
+They speak against God.
+
+They accuse Him of bringing them out to die.
+
+### ⚠️ Complaint Turns Into Accusation
+
+There is a difference between saying, “Lord, this road is hard,” and saying, “God brought us here to destroy us.”
+
+The first can be honest lament.
+
+The second attacks God’s character.
+
+Israel crosses that line.
+
+### 🍞 They Reject the Manna Again
+
+They say there is no bread, no water, and their soul loathes “this light bread.”
+
+But the “light bread” is manna.
+
+It is the food God has faithfully given them from heaven.
+
+They are despising the very provision that kept them alive.
+
+### 💔 Familiar Sin
+
+This complaint sounds like earlier complaints in Exodus and Numbers.
+
+That repetition matters.
+
+The people have seen God provide again and again.
+
+Yet under pressure, they return to the same accusation:
+
+Why did you bring us out of Egypt?
+
+### 🧠 A Deep Lesson
+
+A bitter heart can begin to hate blessings.
+
+Manna was mercy.
+
+Manna was daily provision.
+
+Manna was evidence that God had not abandoned them.
+
+But when their hearts turned sour, they called God’s gift worthless.
+
+We have to be careful when frustration makes us despise what God has been using to sustain us.
+
+## Numbers 21:6
+
+# 🐍 Fiery Serpents Come Among the People
+
+> **6** And the LORD sent fiery serpents among the people, and they bit the people; and much people of Israel died.
+
+God responds with judgment.
+
+Fiery serpents come among the people.
+
+They bite the people.
+
+Many die.
+
+This is terrifying.
+
+### 🐍 Why Serpents?
+
+The text does not give a long explanation, but serpents carry deep biblical weight.
+
+A serpent was involved in the fall in Genesis 3.
+
+Here, serpents become instruments of judgment in the wilderness.
+
+The people’s words were poisonous toward God.
+
+Now the camp experiences deadly poison physically.
+
+### 🔥 “Fiery” Serpents
+
+They may be called fiery because of the burning pain of the bite, their appearance, or the deadly fever-like effect.
+
+Either way, the image is intense.
+
+Their bite burns.
+
+Their bite kills.
+
+### ⚰️ Sin Brings Death
+
+The chapter makes the connection clear.
+
+The people speak against God.
+
+Judgment comes.
+
+Many die.
+
+Numbers does not soften this.
+
+Sin is not harmless.
+
+Rebellion against God is not light.
+
+### 🧠 A Deep Lesson
+
+God’s judgment is not random anger.
+
+It reveals the seriousness of sin.
+
+Israel’s words were not just bad attitude.
+
+They were unbelief, ingratitude, and rebellion against the God who had carried them.
+
+The serpents showed outwardly what sin was doing inwardly.
+
+## Numbers 21:7
+
+# 🙏 The People Confess Their Sin
+
+> **7** Therefore the people came to Moses, and said, We have sinned, for we have spoken against the LORD, and against thee...
+
+This is one of the clearest confessions in Numbers.
+
+The people do not make excuses.
+
+They say, “We have sinned.”
+
+They name the sin.
+
+They spoke against the LORD and against Moses.
+
+### 🙌 Real Confession Names the Wrong
+
+They do not only say, “We are hurting.”
+
+They do not only say, “Please make the snakes stop.”
+
+They say, “We have sinned.”
+
+That matters.
+
+True repentance does not only want relief from consequences.
+
+It agrees with God about the sin.
+
+### 🗣️ They Admit Their Words Were Wrong
+
+They specifically confess their speech.
+
+They had spoken against God and Moses.
+
+Their mouths revealed their hearts.
+
+Now their mouths confess the truth.
+
+### 🙏 They Ask for Intercession
+
+They ask Moses to pray to the LORD.
+
+This is humble.
+
+Earlier they spoke against Moses.
+
+Now they need Moses to intercede for them.
+
+### 💛 Moses Prays
+
+The verse says Moses prayed for the people.
+
+That is grace.
+
+Moses does not say, “You deserve this.”
+
+He does not refuse because they insulted him.
+
+He intercedes.
+
+### 🧠 A Deep Lesson
+
+Repentance begins when we stop defending our sin.
+
+The people say, “We have sinned.”
+
+That simple sentence is powerful.
+
+It opens the door for mercy.
+
+## Numbers 21:8 to 9
+
+# 🪧 Look and Live
+
+> **8** And the LORD said unto Moses, Make thee a fiery serpent, and set it upon a pole...
+
+> **9** And Moses made a serpent of brass, and put it upon a pole... when he beheld the serpent of brass, he lived.
+
+God gives a surprising remedy.
+
+Moses must make a serpent and lift it up on a pole.
+
+Anyone who is bitten must look at it.
+
+When they look, they live.
+
+### 🪧 God Provides the Way
+
+The people cannot heal themselves.
+
+They cannot pull the poison out.
+
+They cannot bargain their way back to life.
+
+God provides the remedy.
+
+### 👀 The Response Is Look
+
+This is so simple that it almost sounds too simple.
+
+Look.
+
+The bitten person must trust God’s word enough to look at what He provided.
+
+The healing is not in the person’s strength.
+
+It is in God’s promise attached to God’s provision.
+
+### 🐍 A Bronze Serpent
+
+The image of the serpent is connected to the judgment itself.
+
+The thing lifted up represents the curse and the judgment they are suffering under.
+
+When the bitten person looks, they are not pretending the judgment did not happen.
+
+They are trusting God’s provided answer to it.
+
+### 🙌 Mercy in the Middle of Judgment
+
+God does not remove every serpent before providing healing.
+
+The people are still in the camp.
+
+The danger is real.
+
+But God gives a way to live.
+
+### ✝️ A Bigger Biblical Picture
+
+Later in John 3, Jesus refers to this event when He speaks with Nicodemus.
+
+He says that as Moses lifted up the serpent in the wilderness, the Son of Man must be lifted up.
+
+That connection shows how deeply this moment points forward.
+
+The wounded look and live.
+
+The sinner looks to God’s lifted-up provision and receives life.
+
+### 🧠 A Deep Lesson
+
+God’s saving provision often humbles human pride.
+
+The person who is bitten has to admit need.
+
+They have to stop trying to save themselves.
+
+They have to look where God says to look.
+
+That is faith.
+
+## Numbers 21:10 to 13
+
+# 🧭 Israel Keeps Moving Through the Wilderness
+
+> **10** And the children of Israel set forward, and pitched in Oboth.
+
+> **11** And they journeyed from Oboth...
+
+> **13** From thence they removed, and pitched on the other side of Arnon...
+
+After the bronze serpent, the travel log resumes.
+
+Israel moves from place to place.
+
+Oboth.
+
+Ijeabarim.
+
+The valley of Zared.
+
+The other side of Arnon.
+
+These names may feel easy to skip, but they matter.
+
+### 🧭 Grace Does Not Mean the Journey Stops
+
+God healed the bitten people, but Israel still had to travel.
+
+Mercy did not remove the whole wilderness process.
+
+They still had steps to take.
+
+They still had places to pass through.
+
+### 📍 Movement Toward the Land
+
+The locations show Israel moving closer to the territory east of the Jordan.
+
+The story is beginning to shift.
+
+They are no longer just wandering in circles.
+
+They are approaching the edges of conquest.
+
+### 🧠 A Deep Lesson
+
+After repentance and healing, keep walking.
+
+Some people receive mercy and then want everything to instantly become easy.
+
+Numbers 21 shows a different rhythm.
+
+God heals.
+
+God leads.
+
+And the people continue the journey.
+
+## Numbers 21:14 to 16
+
+# 📖 The Book of the Wars and the Gift of Water
+
+> **14** Wherefore it is said in the book of the wars of the LORD...
+
+> **16** And from thence they went to Beer: that is the well whereof the LORD spake unto Moses...
+
+This section mentions “the book of the wars of the LORD,” then moves to Beer, which means well.
+
+God tells Moses to gather the people and He will give them water.
+
+### 📖 Remembering God’s Battles
+
+The mention of the book of the wars of the LORD shows that Israel remembered God’s acts.
+
+Their journey was not random.
+
+Their battles and movements were part of a bigger testimony.
+
+### 💧 God Gives Water Again
+
+Earlier in Numbers 20, water came through the painful Meribah moment.
+
+Here, God again provides water.
+
+But the mood is different.
+
+There is no striking the rock here.
+
+No angry speech from Moses.
+
+No judgment on leadership.
+
+God simply gives water.
+
+### 👥 “Gather the People”
+
+God tells Moses to gather the people together.
+
+The community receives the gift together.
+
+Water is not only survival.
+
+It becomes a moment of shared worship.
+
+### 🧠 A Deep Lesson
+
+God keeps providing.
+
+Even after complaints.
+
+Even after judgment.
+
+Even after the serpents.
+
+The story does not end with failure.
+
+God continues to lead His people toward life.
+
+## Numbers 21:17 to 20
+
+# 🎶 Israel Sings at the Well
+
+> **17** Then Israel sang this song, Spring up, O well; sing ye unto it:
+
+> **18** The princes digged the well, the nobles of the people digged it...
+
+This is a beautiful shift.
+
+Israel sings.
+
+After so much complaining in Numbers, a song feels refreshing.
+
+Instead of saying, “Why did you bring us here to die?” they sing over God’s provision.
+
+### 🎶 “Spring Up, O Well”
+
+The song celebrates water.
+
+It is simple.
+
+It is joyful.
+
+It turns provision into praise.
+
+### 👑 Leaders Participate
+
+The princes and nobles are connected with digging the well.
+
+The leaders are not only standing above the people.
+
+They are part of the provision moment.
+
+The staff and staves point to organized leadership joining in.
+
+### 💧 From Complaint to Song
+
+This contrast matters.
+
+Earlier, thirst led to accusation.
+
+Here, water leads to worship.
+
+The same kind of need can produce very different responses depending on the heart.
+
+### 🧠 A Deep Lesson
+
+One of the signs of growth is when God’s provision starts producing praise instead of entitlement.
+
+Israel has complained about water many times.
+
+Now they sing.
+
+That does not mean they are perfect.
+
+But it is a real moment of grace.
+
+## Numbers 21:21 to 24
+
+# 👑 Sihon Refuses Peace and Attacks Israel
+
+> **21** And Israel sent messengers unto Sihon king of the Amorites, saying,
+
+> **22** Let me pass through thy land...
+
+> **23** And Sihon would not suffer Israel to pass through his border...
+
+Israel asks Sihon king of the Amorites for passage.
+
+The request sounds similar to the request made to Edom.
+
+Israel promises to stay on the king’s highway and not take from fields, vineyards, or wells.
+
+But Sihon refuses.
+
+Then he attacks Israel.
+
+### 🕊️ Israel Offers Peaceful Passage
+
+Israel does not begin with war.
+
+They ask respectfully.
+
+They promise not to take resources.
+
+This shows restraint.
+
+They are not acting like a greedy invading mob.
+
+### ⚔️ Sihon Comes Out to Fight
+
+Sihon refuses passage and gathers his people to fight.
+
+This is different from Edom in one important way.
+
+Edom threatened force, and Israel turned away.
+
+Sihon actually comes against Israel in battle.
+
+### 🏆 Israel Defeats Him
+
+Israel smites Sihon with the edge of the sword and possesses his land.
+
+This becomes a major victory east of the Jordan.
+
+The people who had once feared giants and fortified cities are now seeing God give them victory over kings.
+
+### 🧠 A Deep Lesson
+
+There is a time to turn away from conflict, and there is a time to stand and fight.
+
+Israel turned away from Edom.
+
+Israel fights Sihon.
+
+Wisdom is knowing the difference under God’s leading.
+
+## Numbers 21:25 to 30
+
+# 🏙️ Israel Takes the Cities of the Amorites
+
+> **25** And Israel took all these cities: and Israel dwelt in all the cities of the Amorites...
+
+> **26** For Heshbon was the city of Sihon the king of the Amorites...
+
+> **30** We have shot at them; Heshbon is perished even unto Dibon...
+
+Israel takes the Amorite cities, including Heshbon.
+
+The chapter gives background about Sihon’s power.
+
+Sihon had previously fought against Moab and taken land from them.
+
+This means Israel is not defeating a weak king.
+
+They are defeating a powerful ruler with a history of conquest.
+
+### 🏙️ Heshbon Matters
+
+Heshbon was Sihon’s city.
+
+It represented strength, rule, and control.
+
+When Israel takes it, the victory is not small.
+
+It shows God giving them real territory.
+
+### 📜 A Victory Poem
+
+The chapter includes poetic lines about Heshbon and Moab.
+
+This preserves the memory of Sihon’s earlier victories and the fall of his power.
+
+The point is that Sihon looked strong.
+
+His city had a reputation.
+
+But before the LORD, his strength could not stand.
+
+### 🏕️ Israel Dwells There
+
+Israel does not only win a battle.
+
+They begin dwelling in the cities.
+
+This is a preview of settlement.
+
+After so much wandering, that matters emotionally and spiritually.
+
+They are beginning to taste what it means to possess land.
+
+### 🧠 A Deep Lesson
+
+God can bring His people from wandering to possessing.
+
+But the move into promise often comes through battles that require trust.
+
+Israel is learning to live like a people who believe God can give them what He promised.
+
+## Numbers 21:31 to 35
+
+# 🏔️ Victory Over Og King of Bashan
+
+> **31** Thus Israel dwelt in the land of the Amorites.
+
+> **33** And they turned and went up by the way of Bashan: and Og the king of Bashan went out against them...
+
+> **34** And the LORD said unto Moses, Fear him not: for I have delivered him into thy hand...
+
+> **35** So they smote him, and his sons, and all his people...
+
+The chapter ends with another major victory.
+
+Og king of Bashan comes out against Israel.
+
+Before the battle, God speaks to Moses:
+
+“Fear him not.”
+
+### 🏔️ Og Comes Against Israel
+
+Og does not wait quietly.
+
+He comes out to battle with his sons and all his people.
+
+This is another intimidating enemy.
+
+Israel is facing kings, armies, and fortified regions.
+
+### 🙌 God Says, “Fear Him Not”
+
+This is the key line.
+
+God knows fear is real.
+
+He does not shame Moses for needing courage.
+
+He gives Moses a promise.
+
+“I have delivered him into thy hand.”
+
+The victory is spoken by God before it is seen on the battlefield.
+
+### 🔁 Remember Sihon
+
+God tells Moses that Og will be defeated like Sihon.
+
+Past victory becomes fuel for present faith.
+
+God is teaching Israel to remember what He has already done.
+
+### 🏆 Complete Victory
+
+Israel defeats Og, his sons, and all his people.
+
+Then they possess his land.
+
+Numbers 21 ends very differently from how it began.
+
+It began with attack, discouragement, and deadly serpents.
+
+It ends with God giving victory over kings.
+
+### 🧠 A Deep Lesson
+
+Fear does not get the final word when God has spoken.
+
+Israel still has to fight.
+
+They still have to walk onto the battlefield.
+
+But they fight with a promise:
+
+God has delivered the enemy into their hand.
+
+# The Big Lesson of Numbers 21
+
+🐍 Numbers 21 teaches that God judges unbelief, heals those who look to His provision, and leads His people into victory.
+
+⚔️ Israel wins when they depend on the LORD.
+
+😩 The long road exposes discouragement.
+
+🗣️ Complaint turns into speaking against God.
+
+🐍 Fiery serpents reveal the seriousness of sin.
+
+🙏 Confession opens the door to mercy.
+
+🪧 The bronze serpent is lifted up.
+
+👀 The bitten look and live.
+
+🎶 Israel learns to sing over God’s provision.
+
+👑 God gives victory over Sihon.
+
+🏔️ God gives victory over Og.
+
+This chapter is both warning and encouragement.
+
+It warns us not to despise God’s provision.
+
+It warns us that bitter speech against God is serious.
+
+But it also shows mercy.
+
+The wounded can live.
+
+The guilty can confess.
+
+The discouraged can keep walking.
+
+The people who once wandered can begin to win battles.
+
+# Final Thought on Numbers 21
+
+Numbers 21 shows the wilderness journey changing.
+
+Israel is still flawed.
+
+They still complain.
+
+They still need correction.
+
+But they are also moving forward.
+
+They fight.
+
+They sing.
+
+They win.
+
+They possess land.
+
+The bronze serpent stands at the center of the chapter like a sign of mercy.
+
+The people sinned.
+
+The serpents bit.
+
+Death spread through the camp.
+
+But God provided a way to live.
+
+Look and live.
+
+That message is simple, but deep.
+
+God does not ask the bitten person to prove strength.
+
+He does not ask them to deny the wound.
+
+He tells them to look at what He has lifted up.
+
+Numbers 21 reminds us that God’s provision is enough, but we must trust it.
+
+It also reminds us that the long road is not the end of the story.
+
+God can bring His people through discouragement, through repentance, through healing, and into victory.
+
+# Pause and Reflect
+
+💭 Where has the long road made you discouraged?
+
+💭 Are you treating God’s daily provision like a gift or like something boring?
+
+💭 What does it teach you that the bitten people only had to look and live?
+
+💭 Where do you need to remember past victories so you can face the next battle with faith?
+`;
+
 NUMBERS_DEEP_NOTES[19] = `# Numbers 20
 
 # 💧 Water From the Rock and the Cost of Not Honoring God

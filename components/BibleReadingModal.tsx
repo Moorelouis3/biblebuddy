@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import ReactMarkdown from "react-markdown";
@@ -13,6 +13,9 @@ import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
 import { isChapterCompleted, markChapterDone } from "../lib/readingProgress";
+import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
+import { getTriviaChapter } from "../lib/triviaGameData";
+import { getScrambledChapter } from "../lib/scrambledGameData";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -142,6 +145,19 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
   const [chapterCompleted, setChapterCompleted] = useState(false);
   const [markingChapterComplete, setMarkingChapterComplete] = useState(false);
+  const bookDisplayName = useMemo(() => normalizeBookDisplay(book), [book]);
+  const biblePageHref = `/Bible/${encodeURIComponent(book.toLowerCase().trim())}/${chapter}`;
+  const bibleNotesHref = `${biblePageHref}?notes=1`;
+  const normalizedGameBookKey = useMemo(() => {
+    const rawKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
+    return rawKey === "songofsolomon" ? "songofsongs" : rawKey;
+  }, [book]);
+  const triviaRouteSlug = useMemo(
+    () => CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.key === normalizedGameBookKey)?.routeSlug ?? normalizedGameBookKey,
+    [normalizedGameBookKey],
+  );
+  const hasTrivia = Boolean(getTriviaChapter(normalizedGameBookKey, chapter));
+  const hasScrambled = Boolean(getScrambledChapter(normalizedGameBookKey, chapter));
 
   useEffect(() => {
     async function loadUserAndProgress() {
@@ -811,7 +827,7 @@ Be accurate to Scripture.`;
       <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold">
-            {book} {chapter}
+            {bookDisplayName} {chapter}
           </h2>
           <button
             type="button"
@@ -820,6 +836,62 @@ Be accurate to Scripture.`;
           >
             ✕
           </button>
+        </div>
+
+        <div className="sticky top-0 z-10 mb-5 rounded-[22px] border border-blue-100 bg-white/95 p-3 shadow-sm backdrop-blur">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+            <button
+              type="button"
+              onClick={() => void handleMarkChapterComplete({ showError: true })}
+              disabled={chapterCompleted || markingChapterComplete}
+              className={`flex min-h-[52px] items-center justify-center gap-2 rounded-2xl px-3 py-2 text-xs font-black transition ${
+                chapterCompleted
+                  ? "bg-emerald-600 text-white"
+                  : markingChapterComplete
+                    ? "cursor-not-allowed bg-blue-300 text-white"
+                    : "bg-blue-600 text-white hover:bg-blue-700"
+              }`}
+            >
+              <span>{chapterCompleted ? "✓" : "☑"}</span>
+              <span>{chapterCompleted ? "Complete" : "Mark Complete"}</span>
+            </button>
+
+            <Link
+              href={bibleNotesHref}
+              className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+            >
+              <span>📝</span>
+              <span>Notes</span>
+            </Link>
+
+            {hasTrivia ? (
+              <Link
+                href={`/bible-trivia/${triviaRouteSlug}/${chapter}`}
+                className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+              >
+                <span>🧠</span>
+                <span>Trivia</span>
+              </Link>
+            ) : null}
+
+            {hasScrambled ? (
+              <Link
+                href={`/bible-study-games/scrambled/${normalizedGameBookKey}/${chapter}`}
+                className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+              >
+                <span>🔀</span>
+                <span>Scrambled</span>
+              </Link>
+            ) : null}
+
+            <Link
+              href={biblePageHref}
+              className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+            >
+              <span>📖</span>
+              <span>Full Reader</span>
+            </Link>
+          </div>
         </div>
 
         {loading ? (
