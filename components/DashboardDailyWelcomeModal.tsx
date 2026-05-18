@@ -87,7 +87,7 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
           x
         </button>
 
-        <div className="bg-gradient-to-br from-[#eef5ff] via-[#f8fbff] to-[#e7f0ff] px-6 pb-6 pt-7 sm:px-8">
+        <div className="bg-[var(--bb-card,#ffffff)] px-6 pb-6 pt-7 sm:px-8">
           <div className="mx-auto mb-4 w-fit rounded-full border border-[#d7e5ff] bg-white shadow-lg">
             <LouisAvatar mood="wave" size={108} />
           </div>
@@ -95,10 +95,10 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
             Verse of the Day
           </p>
 
-          <div className="rounded-[26px] border border-[#d9e7ff] bg-white/95 px-5 py-5 text-center shadow-sm">
-            <div className="mb-3 text-xl font-bold italic leading-8 text-[#17335f]">"{verse.text}"</div>
-            <div className="mb-1 text-sm font-semibold text-[#3e67a7]">{verse.reference}</div>
-            <div className="text-xs text-[#6d86ad]">{verse.subtitle}</div>
+          <div className="rounded-[26px] border border-[var(--bb-card-border,#d9e7ff)] bg-[var(--bb-surface-soft,#f8fbff)] px-5 py-5 text-center shadow-sm">
+            <div className="mb-3 text-xl font-bold italic leading-8 text-[var(--bb-text-primary,#17335f)]">"{verse.text}"</div>
+            <div className="mb-1 text-sm font-semibold text-[var(--bb-accent,#3e67a7)]">{verse.reference}</div>
+            <div className="text-xs text-[var(--bb-text-secondary,#6d86ad)]">{verse.subtitle}</div>
           </div>
         </div>
 

@@ -174,6 +174,7 @@ export default function BibleChapterPage() {
   const book = bookParam;
   const chapter = Number(params.chapter);
   const isChapterTextEmbed = searchParams.get("embedded") === "chapter-text";
+  const isDashboardEmbed = searchParams.get("dashboardEmbed") === "1";
 
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
@@ -2260,15 +2261,17 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
   }
 
   const totalChaptersInBook = getBookTotalChapters(book);
+  const chapterReaderHref = (targetBook: string, targetChapter: number) =>
+    `/Bible/${encodeURIComponent(targetBook.toLowerCase())}/${targetChapter}${isDashboardEmbed ? "?dashboardEmbed=1" : ""}`;
 
   function goPrevChapter() {
     if (chapter <= 1) return;
-    router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${chapter - 1}`);
+    router.push(chapterReaderHref(book, chapter - 1));
   }
 
   function goNextChapter() {
     if (chapter < totalChaptersInBook) {
-      router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${chapter + 1}`);
+      router.push(chapterReaderHref(book, chapter + 1));
       return;
     }
 
@@ -2294,18 +2297,20 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         ? BOOKS_ORDER[currentIndex + 1]
         : bookDisplayName;
 
-    router.push(`/Bible/${encodeURIComponent(nextBook.toLowerCase())}/1`);
+    router.push(chapterReaderHref(nextBook, 1));
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className={isDashboardEmbed ? "bg-white px-0 py-0" : "min-h-screen bg-gray-50 py-8 px-4"}>
+      <div className={isDashboardEmbed ? "mx-auto max-w-4xl px-1 py-1 sm:px-2 sm:py-2" : "max-w-4xl mx-auto"}>
         {/* BACK LINK */}
-        <div className="mb-4 text-xs sm:text-sm text-blue-600">
-          <Link href={backLink} className="hover:underline">
-            {backText}
-          </Link>
-        </div>
+        {!isDashboardEmbed ? (
+          <div className="mb-4 text-xs sm:text-sm text-blue-600">
+            <Link href={backLink} className="hover:underline">
+              {backText}
+            </Link>
+          </div>
+        ) : null}
 
         {/* PAGE HEADER */}
         <div className="mb-1 flex items-start justify-between gap-3">

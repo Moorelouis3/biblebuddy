@@ -961,7 +961,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
       <div className="relative my-6 w-full max-w-xl overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
         {showCelebration ? (
           <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/35 px-6 text-center backdrop-blur-[1px]">
-            <div className="w-full max-w-md rounded-[28px] border border-[#d7e4f7] bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-8 shadow-xl">
+            <div className="w-full max-w-md rounded-[28px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] px-6 py-8 shadow-xl">
               <div className="flex justify-center">
                 <LouisAvatar mood="wave" size={64} />
               </div>
@@ -999,7 +999,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           ×
         </button>
 
-        <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-5 pb-5 pt-6 sm:px-6">
+        <div className="bg-[var(--bb-card,#ffffff)] px-5 pb-5 pt-6 sm:px-6">
           <div className="flex flex-col items-center text-center">
             <LouisAvatar mood="wave" size={56} />
             <h2 className="mt-3 text-[1.8rem] font-bold text-[#21304f]">
@@ -1025,7 +1025,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
             <div className="mt-4 h-3 overflow-hidden rounded-full bg-[#dbe7fa]">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-[#7aa7df] to-[#9dc1ee] transition-all duration-500"
+                className="h-full rounded-full bg-[var(--bb-accent,#7aa7df)] transition-all duration-500"
                 style={{ width: `${loading ? 12 : completionPercent}%` }}
               />
             </div>

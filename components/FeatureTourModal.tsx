@@ -106,8 +106,8 @@ export function FeatureTourModal({
             ? "mx-auto w-[min(100%,48rem)] border-[#cadcf9] bg-white/97 px-3 py-3 backdrop-blur-sm sm:px-4"
             :
           isCoachmark
-            ? "max-w-[28rem] border-[#c9d9f5] bg-gradient-to-br from-[#eef6ff] via-[#f4f8ff] to-[#eefaf6] px-4 py-4 sm:px-5 sm:py-5"
-            : "my-6 max-w-[32rem] items-center border-blue-200 bg-gradient-to-br from-[#eef6ff] via-[#f4f9ff] to-[#eef8f8] px-5 py-5 sm:px-6 sm:py-6",
+            ? "max-w-[28rem] border-[var(--bb-card-border,#c9d9f5)] bg-[var(--bb-card,#ffffff)] px-4 py-4 sm:px-5 sm:py-5"
+            : "my-6 max-w-[32rem] items-center border-[var(--bb-card-border,#bfdbfe)] bg-[var(--bb-card,#ffffff)] px-5 py-5 sm:px-6 sm:py-6",
         ].join(" ")}
       >
         {!isSpeechBubble && !isPrompt ? (

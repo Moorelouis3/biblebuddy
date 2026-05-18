@@ -35,7 +35,6 @@ import {
 import { LouisAvatar } from "../../components/LouisAvatar";
 import StreakFlameEmoji from "../../components/StreakFlameEmoji";
 import { ModalShell } from "../../components/ModalShell";
-import BibleReadingModal from "../../components/BibleReadingModal";
 import { triggerPoints } from "../../components/PointsPop";
 
 import AdSlot from "../../components/AdSlot";
@@ -196,42 +195,42 @@ function withDashboardTimeout<T>(promise: Promise<T>, timeoutMs: number, label: 
 
 const BADGE_TONE_CLASSES: Record<BadgeTone, { tile: string; progress: string; glow: string }> = {
   blue: {
-    tile: "border-[#8fc7ee] bg-gradient-to-br from-[#bfe5ff] to-[#5eaee6] text-[#123c63]",
+    tile: "border-[var(--bb-accent,#8fc7ee)] bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-text-primary,#123c63)]",
     progress: "bg-[#7BAFD4]",
     glow: "shadow-[0_10px_28px_rgba(123,175,212,0.32)]",
   },
   gold: {
-    tile: "border-[#ffd36a] bg-gradient-to-br from-[#fff3ae] to-[#f2b233] text-[#4c3100]",
+    tile: "border-[#ffd36a] bg-[#fff7df] text-[#4c3100]",
     progress: "bg-[#f3bd3e]",
     glow: "shadow-[0_10px_28px_rgba(242,178,51,0.3)]",
   },
   green: {
-    tile: "border-[#9fe6b8] bg-gradient-to-br from-[#c9f7d8] to-[#34c36f] text-[#0e4829]",
+    tile: "border-[#9fe6b8] bg-[#e9fbef] text-[#0e4829]",
     progress: "bg-[#35c46f]",
     glow: "shadow-[0_10px_28px_rgba(52,195,111,0.28)]",
   },
   pink: {
-    tile: "border-[#ffc0d6] bg-gradient-to-br from-[#ffdce9] to-[#f46fa0] text-[#651536]",
+    tile: "border-[#ffc0d6] bg-[#fff0f6] text-[#651536]",
     progress: "bg-[#f46fa0]",
     glow: "shadow-[0_10px_28px_rgba(244,111,160,0.28)]",
   },
   purple: {
-    tile: "border-[#d8c1ff] bg-gradient-to-br from-[#ede0ff] to-[#9b6cf4] text-[#35156d]",
+    tile: "border-[#d8c1ff] bg-[#f4edff] text-[#35156d]",
     progress: "bg-[#9b6cf4]",
     glow: "shadow-[0_10px_28px_rgba(155,108,244,0.28)]",
   },
   red: {
-    tile: "border-[#ffb2a7] bg-gradient-to-br from-[#ffd7d2] to-[#f45b4c] text-[#651a14]",
+    tile: "border-[#ffb2a7] bg-[#fff0ee] text-[#651a14]",
     progress: "bg-[#f45b4c]",
     glow: "shadow-[0_10px_28px_rgba(244,91,76,0.26)]",
   },
   teal: {
-    tile: "border-[#99eadc] bg-gradient-to-br from-[#c9fff4] to-[#26bca5] text-[#0c4d44]",
+    tile: "border-[#99eadc] bg-[#e9fffa] text-[#0c4d44]",
     progress: "bg-[#26bca5]",
     glow: "shadow-[0_10px_28px_rgba(38,188,165,0.26)]",
   },
   slate: {
-    tile: "border-[#cbd5e1] bg-gradient-to-br from-[#f1f5f9] to-[#94a3b8] text-[#1f2937]",
+    tile: "border-[#cbd5e1] bg-[#f8fafc] text-[#1f2937]",
     progress: "bg-[#64748b]",
     glow: "shadow-[0_10px_28px_rgba(100,116,139,0.2)]",
   },
@@ -2383,45 +2382,34 @@ export default function DashboardPage() {
     };
 
     if (bibleBrowserReading) {
+      const readerBookSlug = encodeURIComponent(bibleBrowserReading.book.toLowerCase().trim());
+      const readerSrc = `/Bible/${readerBookSlug}/${bibleBrowserReading.chapter}?dashboardEmbed=1`;
+
       return (
         <section
           ref={bibleProgressPanelRef}
-          className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-4"
+          className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-4"
         >
-          <BibleReadingModal
+          <div className="mb-3 flex items-center justify-between gap-3 rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-3 py-2">
+            <button
+              type="button"
+              onClick={() => setBibleBrowserReading(null)}
+              className="rounded-full bg-[var(--bb-button)] px-4 py-2 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
+            >
+              Chapters
+            </button>
+            <div className="min-w-0 text-right">
+              <p className="truncate text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">Full Bible Reader</p>
+              <p className="truncate text-sm font-black text-[var(--bb-text-primary)]">
+                {bibleBrowserReading.book} {bibleBrowserReading.chapter}
+              </p>
+            </div>
+          </div>
+          <iframe
             key={`${bibleBrowserReading.book}:${bibleBrowserReading.chapter}:dashboard-full-reader`}
-            book={bibleBrowserReading.book}
-            chapter={bibleBrowserReading.chapter}
-            presentation="inline"
-            onClose={() => setBibleBrowserReading(null)}
-            onMarkComplete={() => {
-              const { book, chapter } = bibleBrowserReading;
-              setBibleBookProgress((currentRows) => {
-                const rows = currentRows.length
-                  ? currentRows
-                  : BOOKS.map((bookName) => ({
-                      book: bookName,
-                      completed: 0,
-                      total: getBookTotalChapters(bookName),
-                      chapters: [] as number[],
-                    }));
-
-                return rows.map((row) => {
-                  if (row.book !== book || row.chapters.includes(chapter)) return row;
-                  const chapters = [...row.chapters, chapter].sort((a, b) => a - b);
-                  return {
-                    ...row,
-                    chapters,
-                    completed: chapters.length,
-                  };
-                });
-              });
-              setTotalCompletedChapters((current) => {
-                const existing = bibleBookProgress.find((row) => row.book === book)?.chapters.includes(chapter);
-                return existing ? current : current + 1;
-              });
-              void loadDailyTaskSummary({ force: true, silent: true });
-            }}
+            src={readerSrc}
+            title={`${bibleBrowserReading.book} ${bibleBrowserReading.chapter} full Bible reader`}
+            className="h-[calc(100vh-190px)] min-h-[720px] w-full rounded-[24px] border border-[var(--bb-card-border)] bg-white"
           />
         </section>
       );
@@ -5603,25 +5591,25 @@ export default function DashboardPage() {
       >
         {buddySelectionWelcome ? (
           <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-            <div className="bg-gradient-to-br from-[#eef7ff] via-white to-[#fff7df] px-6 py-8 text-center">
+            <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center">
               <div className="flex justify-center">
                 <div className="rounded-full bg-white p-2 shadow-lg">
                   <LouisAvatar buddyId={buddySelectionWelcome.buddyId} mood="wave" size={118} />
                 </div>
               </div>
-              <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f86bd]">
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#5f86bd)]">
                 {buddySelectionWelcome.buddyName} is ready
               </p>
-              <h2 className="mt-2 text-3xl font-black leading-tight text-[#21304f]">
+              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
                 New Bible Buddy selected
               </h2>
-              <p className="mx-auto mt-3 max-w-sm text-base font-semibold leading-7 text-[#355487]">
+              <p className="mx-auto mt-3 max-w-sm text-base font-semibold leading-7 text-[var(--bb-text-secondary,#355487)]">
                 I am looking forward to studying {buddyWelcomeStudyTitle} with you.
               </p>
               <button
                 type="button"
                 onClick={() => setBuddySelectionWelcome(null)}
-                className="mt-6 w-full max-w-sm rounded-full bg-[#7BAFD4] px-6 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                className="mt-6 w-full max-w-sm rounded-full bg-[var(--bb-button,#7BAFD4)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#0f172a)] shadow-sm transition hover:brightness-95"
               >
                 OK
               </button>
@@ -5666,11 +5654,11 @@ export default function DashboardPage() {
       >
         {dailyLoginGiftReveal ? (
           <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-            <div className="bg-gradient-to-br from-[#eef7ff] via-white to-[#fff6dc] px-6 py-7 text-center">
+            <div className="bg-[var(--bb-card,#ffffff)] px-6 py-7 text-center">
               <button
                 type="button"
                 onClick={() => setDailyLoginGiftReveal(null)}
-                className="ml-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/80 text-xl font-black text-[#516784] shadow-sm transition hover:bg-white"
+                className="ml-auto flex h-9 w-9 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#f8fbff)] text-xl font-black text-[var(--bb-text-secondary,#516784)] shadow-sm transition hover:brightness-95"
                 aria-label="Close daily gift"
               >
                 ×
@@ -5678,13 +5666,13 @@ export default function DashboardPage() {
               <div className="mt-1 flex justify-center">
                 <LouisAvatar mood={dailyLoginGiftReveal.status === "opened" ? "stareyes" : "wave"} size={104} />
               </div>
-              <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f86bd]">
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#5f86bd)]">
                 Daily Login Gift
               </p>
-              <h2 className="mt-2 text-3xl font-black leading-tight text-[#21304f]">
+              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
                 {dailyLoginGiftReveal.status === "opened" ? "Gift opened!" : "Welcome back again"}
               </h2>
-              <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[#58709d]">
+              <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
                 {dailyLoginGiftReveal.status === "opened"
                   ? "Your free mystery diamonds were added to your stash."
                   : "You came back for a second visit within 24 hours, so Bible Buddy has a free mystery gift for you."}
@@ -5694,7 +5682,7 @@ export default function DashboardPage() {
                 type="button"
                 disabled={dailyLoginGiftReveal.status !== "closed"}
                 onClick={() => void handleOpenDailyLoginGift()}
-                className="group relative mx-auto mt-6 grid min-h-[180px] w-full max-w-sm place-items-center overflow-hidden rounded-[28px] border border-[#d7e4f7] bg-white/85 p-5 transition hover:-translate-y-1 hover:shadow-xl disabled:cursor-default disabled:hover:translate-y-0"
+                className="group relative mx-auto mt-6 grid min-h-[180px] w-full max-w-sm place-items-center overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] p-5 transition hover:-translate-y-1 hover:shadow-xl disabled:cursor-default disabled:hover:translate-y-0"
               >
                 <span className="absolute left-8 top-7 h-3 w-3 rounded-full bg-[#7BAFD4] opacity-70 animate-ping" />
                 <span className="absolute right-9 top-10 h-4 w-4 rounded-full bg-yellow-300 opacity-80 animate-pulse" />
@@ -5714,13 +5702,13 @@ export default function DashboardPage() {
               </button>
 
               {dailyLoginGiftReveal.status === "opened" ? (
-                <div className="mx-auto mt-5 max-w-sm rounded-[24px] border border-[#d7e4f7] bg-white/85 p-4">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#5b6f92]">Gift unlocked</p>
-                  <p className="mt-1 text-5xl font-black text-[#21304f]">+{dailyLoginGiftReveal.reward.toLocaleString()}</p>
-                  <p className="mt-1 text-sm font-black text-[#2f7fe8]">diamonds</p>
+                <div className="mx-auto mt-5 max-w-sm rounded-[24px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#5b6f92)]">Gift unlocked</p>
+                  <p className="mt-1 text-5xl font-black text-[var(--bb-text-primary,#21304f)]">+{dailyLoginGiftReveal.reward.toLocaleString()}</p>
+                  <p className="mt-1 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">diamonds</p>
                 </div>
               ) : (
-                <p className="mt-4 text-xs font-black uppercase tracking-[0.14em] text-[#5b6f92]">
+                <p className="mt-4 text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted,#5b6f92)]">
                   {dailyLoginGiftReveal.status === "opening" ? "Opening..." : "Tap to open"}
                 </p>
               )}
@@ -5729,7 +5717,7 @@ export default function DashboardPage() {
                 <button
                   type="button"
                   onClick={() => setDailyLoginGiftReveal(null)}
-                  className="mt-5 w-full max-w-sm rounded-full bg-[#7BAFD4] px-6 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                  className="mt-5 w-full max-w-sm rounded-full bg-[var(--bb-button,#7BAFD4)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#0f172a)] shadow-sm transition hover:brightness-95"
                 >
                   Nice
                 </button>
@@ -5750,16 +5738,10 @@ export default function DashboardPage() {
           backdropColor="bg-black/45"
         >
         <div className="mx-4 w-full max-w-sm overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className={`relative overflow-hidden bg-gradient-to-br ${dashboardNudgeTone.glow} px-5 pb-6 pt-5 text-center`}>
-            {streakMotivationModalMode === "checkin" ? (
-              <>
-                <span className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/55 blur-2xl" aria-hidden="true" />
-                <span className="pointer-events-none absolute -bottom-12 -left-12 h-36 w-36 rounded-full bg-[#7BAFD4]/15 blur-2xl" aria-hidden="true" />
-              </>
-            ) : null}
+          <div className="relative overflow-hidden bg-[var(--bb-card,#ffffff)] px-5 pb-6 pt-5 text-center">
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3 text-left">
-                <div className="relative grid h-[92px] w-[92px] shrink-0 place-items-center rounded-[28px] border border-white/80 bg-white shadow-[0_16px_35px_rgba(33,48,79,0.14)]">
+                <div className="relative grid h-[92px] w-[92px] shrink-0 place-items-center rounded-[28px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] shadow-[0_16px_35px_rgba(33,48,79,0.14)]">
                   <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={82} />
                 </div>
                 <div>
@@ -5781,7 +5763,7 @@ export default function DashboardPage() {
                   setLouisCheckInContextLine(null);
                   setLouisDashboardNudge(null);
                 }}
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/80 text-xl font-black leading-none text-[#516784] shadow-sm transition hover:bg-white"
+                className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f8fbff)] text-xl font-black leading-none text-[var(--bb-text-secondary,#516784)] shadow-sm transition hover:brightness-95"
                 aria-label="Close popup"
               >
                 ×
@@ -5789,14 +5771,14 @@ export default function DashboardPage() {
             </div>
             {streakMotivationModalMode === "checkin" ? (
               <>
-                <h2 className="mt-5 text-left text-[2rem] font-black leading-[1.05] text-[#21304f]">
+                <h2 className="mt-5 text-left text-[2rem] font-black leading-[1.05] text-[var(--bb-text-primary,#21304f)]">
                   {displayedDashboardNudge.title}
                 </h2>
-                <div className="mt-4 space-y-3 rounded-[24px] border border-white/80 bg-white/80 p-4 text-left shadow-sm">
-                  <p className="text-[15px] font-bold leading-6 text-[#29466f]">
+                <div className="mt-4 space-y-3 rounded-[24px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] p-4 text-left shadow-sm">
+                  <p className="text-[15px] font-bold leading-6 text-[var(--bb-text-primary,#29466f)]">
                     {displayedDashboardNudge.lineOne}
                   </p>
-                  <p className="text-sm font-semibold leading-6 text-[#5b6f92]">
+                  <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5b6f92)]">
                     {displayedDashboardNudge.lineTwo}
                   </p>
                 </div>
@@ -5905,7 +5887,7 @@ export default function DashboardPage() {
 
           return (
             <div className="relative mx-3 my-5 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-              <div className="border-b border-[#dbe7f6] bg-gradient-to-br from-[#edf7ff] via-white to-[#fff7df] px-5 py-5 sm:px-7">
+              <div className="border-b border-[var(--bb-card-border,#dbe7f6)] bg-[var(--bb-card,#ffffff)] px-5 py-5 sm:px-7">
                 <div className="flex justify-end">
                   <button
                     type="button"
@@ -6006,7 +5988,7 @@ export default function DashboardPage() {
         backdropColor="bg-black/45"
       >
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#cfe3f5] bg-white shadow-2xl">
-          <div className="bg-gradient-to-br from-[#eef7ff] via-white to-[#edf8ff] px-6 py-7 text-center">
+          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-7 text-center">
             <div className="flex justify-center">
               <div className="relative rounded-full bg-[#e7f4ff] p-2 shadow-sm">
                 <LouisAvatar mood="stareyes" size={104} />
@@ -6081,7 +6063,7 @@ export default function DashboardPage() {
                 .badge-earned-shine { animation: badge-earned-shine 1150ms ease-out 280ms both; }
                 .badge-float-spark { animation: badge-float-spark 1.7s ease-in-out infinite; }
               `}</style>
-              <div className="relative overflow-hidden bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-5 py-5 text-center">
+              <div className="relative overflow-hidden bg-[var(--bb-card,#ffffff)] px-5 py-5 text-center">
                 <div className="pointer-events-none absolute left-8 top-9 text-xl badge-float-spark">✦</div>
                 <div className="pointer-events-none absolute right-10 top-16 text-lg badge-float-spark" style={{ animationDelay: "0.35s" }}>✧</div>
                 <div className="pointer-events-none absolute bottom-16 left-12 text-lg badge-float-spark" style={{ animationDelay: "0.7s" }}>✦</div>
@@ -6141,7 +6123,7 @@ export default function DashboardPage() {
         backdropColor="bg-black/45"
       >
         <div className="relative mx-3 my-5 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="border-b border-[#dbe7f6] bg-gradient-to-br from-[#edf5ff] via-white to-[#f4fbff] px-5 py-5 sm:px-7">
+          <div className="border-b border-[var(--bb-card-border,#dbe7f6)] bg-[var(--bb-card,#ffffff)] px-5 py-5 sm:px-7">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div className="rounded-full bg-[#e8f4ff] p-1 shadow-sm">
@@ -6188,8 +6170,8 @@ export default function DashboardPage() {
                     onClick={() => setSelectedBadge(badge)}
                     className={`group relative flex min-h-[198px] flex-col items-center rounded-[28px] border px-3 py-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg sm:min-h-[220px] sm:px-4 ${
                       isEarned
-                        ? "border-[#9fe6b8] bg-gradient-to-br from-[#f3fff7] via-[#e9fbef] to-[#d7f7e1]"
-                        : "border-slate-200 bg-gradient-to-br from-white to-slate-50 opacity-90"
+                        ? "border-[#9fe6b8] bg-[#e9fbef]"
+                        : "border-slate-200 bg-white opacity-90"
                     }`}
                   >
                     <span
@@ -6246,7 +6228,7 @@ export default function DashboardPage() {
                     </div>
                     {isEarned ? (
                       <div
-                        className="pointer-events-none absolute inset-x-5 top-4 h-px bg-gradient-to-r from-transparent via-white/90 to-transparent opacity-80"
+                        className="pointer-events-none absolute inset-x-5 top-4 h-px bg-white/80 opacity-80"
                       />
                     ) : null}
                   </button>
@@ -6264,7 +6246,7 @@ export default function DashboardPage() {
               <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#172033]/35 px-4 backdrop-blur-sm">
                 <div className={`w-full max-w-sm rounded-[30px] border p-5 text-center shadow-2xl ${
                   isEarned
-                    ? "border-[#9fe6b8] bg-gradient-to-br from-[#f3fff7] via-white to-[#e6f9ed]"
+                    ? "border-[#9fe6b8] bg-[#f3fff7]"
                     : "border-[#d7e4f7] bg-white"
                 }`}>
                   <button
@@ -6327,7 +6309,7 @@ export default function DashboardPage() {
         backdropColor="bg-black/45"
       >
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-8 text-center">
+          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center">
             <div className="flex justify-center">
               <LouisAvatar mood="stareyes" size={104} />
             </div>
@@ -6355,7 +6337,7 @@ export default function DashboardPage() {
         backdropColor="bg-black/55"
       >
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#f0d7b3] bg-white shadow-2xl">
-          <div className="bg-gradient-to-br from-[#fff8ef] via-white to-[#eef7ff] px-6 py-7 text-center">
+          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-7 text-center">
             <div className="flex justify-center">
               <LouisAvatar mood="wave" size={104} />
             </div>
@@ -6401,7 +6383,7 @@ export default function DashboardPage() {
         backdropColor="bg-black/50"
       >
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="bg-gradient-to-br from-[#fff7d9] via-[#fffdf4] to-[#fff1c2] px-6 py-8 text-center">
+          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center">
             <div className="flex justify-center">
               <LouisAvatar mood="stareyes" size={104} />
             </div>
@@ -6436,7 +6418,7 @@ export default function DashboardPage() {
         backdropColor="bg-black/50"
       >
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="bg-gradient-to-br from-[#eef7ff] via-[#fffdf4] to-[#e8f5ec] px-6 py-8 text-center">
+          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center">
             <div className="flex justify-center">
               <LouisAvatar mood="hands" size={108} />
             </div>
@@ -6484,11 +6466,11 @@ export default function DashboardPage() {
 
               <div className="space-y-6 text-gray-700">
                 {isLoadingLevel ? (
-                  <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 p-4 shadow-sm">
+                  <div className="rounded-2xl border border-[var(--bb-card-border,#bfdbfe)] bg-[var(--bb-surface-soft,#eff6ff)] p-4 shadow-sm">
                     <p className="text-sm font-medium text-gray-600">Loading your latest XP...</p>
                   </div>
                 ) : levelInfo ? (
-                  <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 p-4 shadow-sm">
+                  <div className="rounded-2xl border border-[var(--bb-card-border,#bfdbfe)] bg-[var(--bb-surface-soft,#eff6ff)] p-4 shadow-sm">
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-500">
