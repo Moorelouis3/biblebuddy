@@ -27,6 +27,7 @@ interface BibleReadingModalProps {
   chapter: number;
   onClose: () => void;
   onMarkComplete?: () => void;
+  presentation?: "modal" | "inline";
 }
 
 interface Verse {
@@ -116,7 +117,7 @@ function normalizeKeywordMarkdown(markdown: string): string {
     .trim();
 }
 
-export default function BibleReadingModal({ book, chapter, onClose, onMarkComplete }: BibleReadingModalProps) {
+export default function BibleReadingModal({ book, chapter, onClose, onMarkComplete, presentation = "modal" }: BibleReadingModalProps) {
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -158,6 +159,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
   );
   const hasTrivia = Boolean(getTriviaChapter(normalizedGameBookKey, chapter));
   const hasScrambled = Boolean(getScrambledChapter(normalizedGameBookKey, chapter));
+  const isInline = presentation === "inline";
 
   useEffect(() => {
     async function loadUserAndProgress() {
@@ -823,8 +825,15 @@ Be accurate to Scripture.`;
   }, [selectedKeyword, userId, completedKeywords, viewedKeywords]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-3 py-4 overflow-y-auto">
-      <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8" onClick={(e) => e.stopPropagation()}>
+    <div className={isInline ? "w-full" : "fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-3 py-4 overflow-y-auto"}>
+      <div
+        className={
+          isInline
+            ? "relative w-full overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] bg-white p-4 shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5"
+            : "relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8"
+        }
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold">
             {bookDisplayName} {chapter}
@@ -833,13 +842,14 @@ Be accurate to Scripture.`;
             type="button"
             onClick={handleClose}
             className="text-gray-500 hover:text-gray-800 text-2xl font-bold"
+            aria-label={isInline ? "Back to chapters" : "Close reader"}
           >
-            ✕
+            {isInline ? "←" : "✕"}
           </button>
         </div>
 
         <div className="sticky top-0 z-10 mb-5 rounded-[22px] border border-blue-100 bg-white/95 p-3 shadow-sm backdrop-blur">
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+          <div className={`grid grid-cols-2 gap-2 ${isInline ? "sm:grid-cols-4" : "sm:grid-cols-5"}`}>
             <button
               type="button"
               onClick={() => void handleMarkChapterComplete({ showError: true })}
@@ -884,13 +894,15 @@ Be accurate to Scripture.`;
               </Link>
             ) : null}
 
-            <Link
-              href={biblePageHref}
-              className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
-            >
-              <span>📖</span>
-              <span>Full Reader</span>
-            </Link>
+            {!isInline ? (
+              <Link
+                href={biblePageHref}
+                className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+              >
+                <span>📖</span>
+                <span>Full Reader</span>
+              </Link>
+            ) : null}
           </div>
         </div>
 
@@ -911,7 +923,9 @@ Be accurate to Scripture.`;
         ) : (
           <div 
             ref={verseContainerRef}
-            className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto"
+            className={`bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 ${
+              isInline ? "overflow-visible" : "max-h-[60vh] overflow-y-auto"
+            }`}
           >
             {enrichedContent ? (
               // Use pre-rendered enriched content if available

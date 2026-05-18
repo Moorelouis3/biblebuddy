@@ -2375,6 +2375,47 @@ export default function DashboardPage() {
     const selectedTotal = bibleBrowserSelectedBook ? getBookTotalChapters(bibleBrowserSelectedBook) : 0;
     const selectedCompleted = new Set(selectedProgress?.chapters || []);
 
+    if (bibleBrowserReading) {
+      return (
+        <section className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-4">
+          <BibleReadingModal
+            book={bibleBrowserReading.book}
+            chapter={bibleBrowserReading.chapter}
+            presentation="inline"
+            onClose={() => setBibleBrowserReading(null)}
+            onMarkComplete={() => {
+              const { book, chapter } = bibleBrowserReading;
+              setBibleBookProgress((currentRows) => {
+                const rows = currentRows.length
+                  ? currentRows
+                  : BOOKS.map((bookName) => ({
+                      book: bookName,
+                      completed: 0,
+                      total: getBookTotalChapters(bookName),
+                      chapters: [] as number[],
+                    }));
+
+                return rows.map((row) => {
+                  if (row.book !== book || row.chapters.includes(chapter)) return row;
+                  const chapters = [...row.chapters, chapter].sort((a, b) => a - b);
+                  return {
+                    ...row,
+                    chapters,
+                    completed: chapters.length,
+                  };
+                });
+              });
+              setTotalCompletedChapters((current) => {
+                const existing = bibleBookProgress.find((row) => row.book === book)?.chapters.includes(chapter);
+                return existing ? current : current + 1;
+              });
+              void loadDailyTaskSummary({ force: true, silent: true });
+            }}
+          />
+        </section>
+      );
+    }
+
     return (
       <section className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
         <div className="flex items-start justify-between gap-3">
@@ -2655,7 +2696,7 @@ export default function DashboardPage() {
       return (
         <article
           key={item.id}
-          className={`relative flex min-h-[430px] flex-col overflow-hidden rounded-[22px] border bg-[var(--bb-card)] shadow-[0_12px_30px_rgba(38,63,99,0.12)] sm:min-h-[500px] ${
+          className={`relative flex min-h-[310px] flex-col overflow-hidden rounded-[22px] border bg-[var(--bb-card)] shadow-[0_12px_30px_rgba(38,63,99,0.12)] sm:min-h-[390px] ${
             active ? "border-[var(--bb-accent)] ring-2 ring-[var(--bb-accent-soft)]" : "border-[var(--bb-card-border)]"
           }`}
         >
@@ -2665,18 +2706,18 @@ export default function DashboardPage() {
             </span>
           ) : null}
           <div
-            className="grid h-80 place-items-center overflow-hidden bg-[var(--bb-surface-soft)] px-3 pt-5 sm:h-96"
+            className="grid h-48 place-items-end overflow-hidden bg-[var(--bb-surface-soft)] px-2 pt-3 sm:h-72 sm:px-3 sm:pt-5"
           >
             <img
               src={item.imageSrc || "/Newlouiswave.png"}
               alt={item.title}
-              className="h-full w-full object-contain object-bottom"
+              className="max-h-full w-full object-contain object-bottom"
             />
           </div>
-          <div className="mt-auto border-t border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 text-center">
-            <h4 className="text-base font-black text-[var(--bb-text-primary)]">{item.title}</h4>
-            <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary)]">{item.subtitle}</p>
-            <div className="mt-3">{renderStoreActionButton(item, owned, "w-full")}</div>
+          <div className="mt-auto border-t border-[var(--bb-card-border)] bg-[var(--bb-card)] p-2.5 text-center sm:p-3">
+            <h4 className="text-[15px] font-black leading-tight text-[var(--bb-text-primary)] sm:text-base">{item.title}</h4>
+            <p className="mt-1 min-h-[32px] text-[11px] font-bold leading-4 text-[var(--bb-text-secondary)] sm:text-xs">{item.subtitle}</p>
+            <div className="mt-2 sm:mt-3">{renderStoreActionButton(item, owned, "w-full")}</div>
           </div>
         </article>
       );
@@ -2812,7 +2853,7 @@ export default function DashboardPage() {
               "Bible Buddies",
               "Unlock the Buddy voice you want guiding your habit.",
               "750",
-              <div className="grid grid-cols-2 gap-3">{BUDDY_STORE_ITEMS.map(renderBuddyStoreCard)}</div>,
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3">{BUDDY_STORE_ITEMS.map(renderBuddyStoreCard)}</div>,
             )}
             {renderStoreSection(
               "⚡",
@@ -5411,42 +5452,6 @@ export default function DashboardPage() {
           }}
         />
       </div>
-
-      {bibleBrowserReading ? (
-        <BibleReadingModal
-          book={bibleBrowserReading.book}
-          chapter={bibleBrowserReading.chapter}
-          onClose={() => setBibleBrowserReading(null)}
-          onMarkComplete={() => {
-            const { book, chapter } = bibleBrowserReading;
-            setBibleBookProgress((currentRows) => {
-              const rows = currentRows.length
-                ? currentRows
-                : BOOKS.map((bookName) => ({
-                    book: bookName,
-                    completed: 0,
-                    total: getBookTotalChapters(bookName),
-                    chapters: [] as number[],
-                  }));
-
-              return rows.map((row) => {
-                if (row.book !== book || row.chapters.includes(chapter)) return row;
-                const chapters = [...row.chapters, chapter].sort((a, b) => a - b);
-                return {
-                  ...row,
-                  chapters,
-                  completed: chapters.length,
-                };
-              });
-            });
-            setTotalCompletedChapters((current) => {
-              const existing = bibleBookProgress.find((row) => row.book === book)?.chapters.includes(chapter);
-              return existing ? current : current + 1;
-            });
-            void loadDailyTaskSummary({ force: true, silent: true });
-          }}
-        />
-      ) : null}
 
       {/* MOBILE BOTTOM AD BANNER (Fixed at bottom, above system UI) */}
       {shouldShowAds && !mobileAdDismissed && (
