@@ -166,6 +166,7 @@ type Props = {
   studySettingsOpenRequest?: number;
   homeHeader?: ReactNode;
   homePanelOverride?: ReactNode;
+  suppressCompletedTasksPanel?: boolean;
   onHomeReset?: () => void;
   onDevotionalChanged: () => void;
   isOwnerDashboard?: boolean;
@@ -1547,6 +1548,7 @@ export default function DashboardJourneyExperience({
   studySettingsOpenRequest = 0,
   homeHeader,
   homePanelOverride,
+  suppressCompletedTasksPanel = false,
   onHomeReset,
   onDevotionalChanged,
   isOwnerDashboard = false,
@@ -4953,7 +4955,12 @@ export default function DashboardJourneyExperience({
               </>
             )}
 
-            {!shouldShowCompletionPanel && !isLoadingNextChapter && displayTasks.length < visibleTasks.length && completedTrackerTasks.length > 0 ? (
+            {!homePanelOverride &&
+            !suppressCompletedTasksPanel &&
+            !shouldShowCompletionPanel &&
+            !isLoadingNextChapter &&
+            displayTasks.length < visibleTasks.length &&
+            completedTrackerTasks.length > 0 ? (
               <div className="overflow-hidden rounded-2xl border border-[#b9dcf4] bg-white/80 shadow-sm">
                 <button
                   type="button"

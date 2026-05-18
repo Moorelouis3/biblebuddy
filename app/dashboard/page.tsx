@@ -900,6 +900,7 @@ export default function DashboardPage() {
   const [bibleBrowserSelectedBook, setBibleBrowserSelectedBook] = useState<string | null>(null);
   const [bibleBrowserAlphabetical, setBibleBrowserAlphabetical] = useState(false);
   const [bibleBrowserReading, setBibleBrowserReading] = useState<{ book: string; chapter: number } | null>(null);
+  const bibleProgressPanelRef = useRef<HTMLElement | null>(null);
   const [badgeProgress, setBadgeProgress] = useState<BadgeProgress[]>([]);
   const [selectedBadge, setSelectedBadge] = useState<BadgeProgress | null>(null);
   const [earnedBadgeQueue, setEarnedBadgeQueue] = useState<BadgeProgress[]>([]);
@@ -2374,11 +2375,21 @@ export default function DashboardPage() {
     const selectedProgress = bibleBrowserSelectedBook ? progressByBook.get(bibleBrowserSelectedBook) : null;
     const selectedTotal = bibleBrowserSelectedBook ? getBookTotalChapters(bibleBrowserSelectedBook) : 0;
     const selectedCompleted = new Set(selectedProgress?.chapters || []);
+    const openBibleReader = (book: string, chapter: number) => {
+      setBibleBrowserReading({ book, chapter });
+      window.setTimeout(() => {
+        bibleProgressPanelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 0);
+    };
 
     if (bibleBrowserReading) {
       return (
-        <section className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-4">
+        <section
+          ref={bibleProgressPanelRef}
+          className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-4"
+        >
           <BibleReadingModal
+            key={`${bibleBrowserReading.book}:${bibleBrowserReading.chapter}:dashboard-full-reader`}
             book={bibleBrowserReading.book}
             chapter={bibleBrowserReading.chapter}
             presentation="inline"
@@ -2417,7 +2428,10 @@ export default function DashboardPage() {
     }
 
     return (
-      <section className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5">
+      <section
+        ref={bibleProgressPanelRef}
+        className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-5"
+      >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">Bible Progress</p>
@@ -2482,7 +2496,7 @@ export default function DashboardPage() {
                   <button
                     key={chapter}
                     type="button"
-                    onClick={() => setBibleBrowserReading({ book: bibleBrowserSelectedBook, chapter })}
+                    onClick={() => openBibleReader(bibleBrowserSelectedBook, chapter)}
                     className={`min-h-[72px] rounded-2xl border px-2 py-3 text-center transition hover:-translate-y-0.5 hover:shadow-sm ${
                       done
                         ? "border-[#9be7b0] bg-[#eafbf0] text-[#116b35]"
@@ -5394,6 +5408,7 @@ export default function DashboardPage() {
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : showBibleProgressPanel ? renderBibleProgressPanel() : undefined}
+          suppressCompletedTasksPanel={showBibleProgressPanel}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
@@ -5445,6 +5460,7 @@ export default function DashboardPage() {
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : showBibleProgressPanel ? renderBibleProgressPanel() : undefined}
+          suppressCompletedTasksPanel={showBibleProgressPanel}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
