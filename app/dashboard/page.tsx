@@ -2615,7 +2615,7 @@ export default function DashboardPage() {
       return (
         <article
           key={item.id}
-          className={`relative overflow-hidden rounded-[22px] border bg-[var(--bb-card)] shadow-[0_12px_30px_rgba(38,63,99,0.12)] ${
+          className={`relative flex min-h-[430px] flex-col overflow-hidden rounded-[22px] border bg-[var(--bb-card)] shadow-[0_12px_30px_rgba(38,63,99,0.12)] sm:min-h-[500px] ${
             active ? "border-[var(--bb-accent)] ring-2 ring-[var(--bb-accent-soft)]" : "border-[var(--bb-card-border)]"
           }`}
         >
@@ -2625,16 +2625,15 @@ export default function DashboardPage() {
             </span>
           ) : null}
           <div
-            className="grid h-64 place-items-center overflow-hidden bg-[var(--bb-surface-soft)] px-2 pt-4 sm:h-72"
-            style={{ background: `radial-gradient(circle at 50% 88%, #ffffff 0 42%, ${item.accent}1f 43% 100%)` }}
+            className="grid h-80 place-items-center overflow-hidden bg-[var(--bb-surface-soft)] px-3 pt-5 sm:h-96"
           >
             <img
               src={item.imageSrc || "/Newlouiswave.png"}
               alt={item.title}
-              className="h-full w-full object-contain object-center"
+              className="h-full w-full object-contain object-bottom"
             />
           </div>
-          <div className="p-3 text-center">
+          <div className="mt-auto border-t border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 text-center">
             <h4 className="text-base font-black text-[var(--bb-text-primary)]">{item.title}</h4>
             <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary)]">{item.subtitle}</p>
             <div className="mt-3">{renderStoreActionButton(item, owned, "w-full")}</div>
