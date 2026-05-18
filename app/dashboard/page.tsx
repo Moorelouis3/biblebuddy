@@ -2,7 +2,7 @@
 "use client";
 export const dynamic = 'force-dynamic';
 
-import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import Link from "next/link";
 import confetti from "canvas-confetti";
 import "../../styles/pulse.css";
@@ -2530,152 +2530,209 @@ export default function DashboardPage() {
       );
     };
 
-    const renderStoreItemCard = (item: BibleBuddyStoreItem) => {
-      const owned = item.price === 0 || ownedItemIds.has(item.id);
-      const canBuy = !item.comingSoon && (item.repeatable || !owned);
-      const buttonLabel = item.comingSoon
-        ? "Soon"
-        : owned && !item.repeatable
-          ? item.themeId || item.flameId
-            ? "Use"
-            : "Owned"
-          : `${item.price.toLocaleString()} diamonds`;
+    const getStoreButtonLabel = (item: BibleBuddyStoreItem, owned: boolean) => {
+      if (item.comingSoon) return "Soon";
+      if (owned && !item.repeatable) return item.themeId || item.flameId ? "Use" : "Owned";
+      return `${item.price.toLocaleString()} 💎`;
+    };
 
+    const getBuddyIdFromStoreItem = (item: BibleBuddyStoreItem) => {
+      if (item.id === "buddy-lil-louis") return "louis";
+      return item.id.replace("buddy-", "");
+    };
+
+    const renderStoreActionButton = (item: BibleBuddyStoreItem, owned: boolean, className = "") => {
+      const canBuy = !item.comingSoon && (item.repeatable || !owned);
+      const isSelectableOwned = owned && !item.repeatable && Boolean(item.themeId || item.flameId);
+      return (
+        <button
+          type="button"
+          disabled={storeBuyingId === item.id || item.comingSoon || (!canBuy && !isSelectableOwned)}
+          onClick={() => void handleStorePurchase(item)}
+          className={`inline-flex items-center justify-center rounded-2xl px-3 py-2 text-xs font-black transition disabled:cursor-not-allowed disabled:opacity-60 ${
+            owned && !item.repeatable
+              ? "border border-white/70 bg-white/80 text-[var(--bb-text-primary)] shadow-sm hover:bg-white"
+              : "bg-[#050505] text-white shadow-sm hover:brightness-110"
+          } ${className}`}
+        >
+          {storeBuyingId === item.id ? "Buying..." : getStoreButtonLabel(item, owned)}
+        </button>
+      );
+    };
+
+    const renderThemeCard = (item: BibleBuddyStoreItem) => {
+      const owned = item.price === 0 || ownedItemIds.has(item.id);
       return (
         <article
           key={item.id}
-          className="flex min-h-[132px] flex-col justify-between rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 shadow-sm"
+          className="relative min-h-[132px] overflow-hidden rounded-[18px] border border-white/70 p-2 text-center shadow-[0_10px_24px_rgba(38,63,99,0.10)]"
+          style={{ background: `linear-gradient(145deg, ${item.accent}24, #ffffff 72%)` }}
+        >
+          {owned ? (
+            <span className="absolute right-2 top-2 grid h-6 w-6 place-items-center rounded-full bg-white text-xs font-black text-[var(--bb-text-primary)] shadow-sm">
+              ✓
+            </span>
+          ) : null}
+          <button type="button" onClick={() => void handleStorePurchase(item)} className="block w-full">
+            <span className="mx-auto mt-3 block h-12 w-12 rounded-full shadow-[inset_0_4px_10px_rgba(255,255,255,0.55),0_6px_12px_rgba(0,0,0,0.18)]" style={{ background: item.accent }} />
+            <h4 className="mt-3 truncate text-sm font-black text-[var(--bb-text-primary)]">{item.title}</h4>
+          </button>
+          <div className="mt-2">{renderStoreActionButton(item, owned, "w-full bg-white/90 text-[var(--bb-text-primary)]")}</div>
+        </article>
+      );
+    };
+
+    const renderFlameCard = (item: BibleBuddyStoreItem) => {
+      const owned = item.price === 0 || ownedItemIds.has(item.id);
+      const active = item.flameId && normalizeFlameCosmeticId(profile?.selected_streak_flame) === item.flameId;
+      return (
+        <article
+          key={item.id}
+          className={`relative min-h-[140px] overflow-hidden rounded-[18px] border p-2 text-center shadow-[0_10px_24px_rgba(38,63,99,0.10)] ${
+            active ? "border-[var(--bb-accent)] ring-2 ring-[var(--bb-accent-soft)]" : "border-white/70"
+          }`}
+          style={{ background: `linear-gradient(145deg, ${item.accent}20, #ffffff 74%)` }}
+        >
+          {active ? (
+            <span className="absolute right-2 top-2 z-10 grid h-6 w-6 place-items-center rounded-full bg-[#050505] text-xs font-black text-white shadow-sm">
+              ✓
+            </span>
+          ) : null}
+          <button type="button" onClick={() => void handleStorePurchase(item)} className="block w-full">
+            <span className="mx-auto mt-5 grid h-16 w-16 place-items-center rounded-3xl bg-white/70 shadow-inner">
+              <StreakFlameEmoji flameId={item.flameId} size={48} title={item.title} />
+            </span>
+            <h4 className="mt-2 min-h-[34px] text-xs font-black leading-4 text-[var(--bb-text-primary)]">{item.title}</h4>
+          </button>
+          <div className="mt-2">{renderStoreActionButton(item, owned, "w-full bg-white/90 text-[var(--bb-text-primary)]")}</div>
+        </article>
+      );
+    };
+
+    const renderBuddyStoreCard = (item: BibleBuddyStoreItem) => {
+      const owned = item.price === 0 || ownedItemIds.has(item.id);
+      const active = normalizeBuddyAvatarId(profile?.selected_buddy_avatar) === getBuddyIdFromStoreItem(item);
+      return (
+        <article
+          key={item.id}
+          className={`relative overflow-hidden rounded-[22px] border bg-[var(--bb-card)] shadow-[0_12px_30px_rgba(38,63,99,0.12)] ${
+            active ? "border-[var(--bb-accent)] ring-2 ring-[var(--bb-accent-soft)]" : "border-[var(--bb-card-border)]"
+          }`}
+        >
+          {active ? (
+            <span className="absolute right-3 top-3 z-10 rounded-full bg-[#050505] px-2 py-1 text-[10px] font-black uppercase tracking-[0.1em] text-white">
+              Active
+            </span>
+          ) : null}
+          <div
+            className="grid h-44 place-items-end overflow-hidden bg-[var(--bb-surface-soft)] sm:h-52"
+            style={{ background: `radial-gradient(circle at 50% 92%, #ffffff 0 42%, ${item.accent}1f 43% 100%)` }}
+          >
+            <img
+              src={item.imageSrc || "/Newlouiswave.png"}
+              alt={item.title}
+              className="max-h-full w-full object-contain object-bottom"
+            />
+          </div>
+          <div className="p-3 text-center">
+            <h4 className="text-base font-black text-[var(--bb-text-primary)]">{item.title}</h4>
+            <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary)]">{item.subtitle}</p>
+            <div className="mt-3">{renderStoreActionButton(item, owned, "w-full")}</div>
+          </div>
+        </article>
+      );
+    };
+
+    const renderBoostCard = (item: BibleBuddyStoreItem) => {
+      const owned = item.price === 0 || ownedItemIds.has(item.id);
+      return (
+        <article
+          key={item.id}
+          className="flex min-h-[150px] flex-col justify-between rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 shadow-sm"
         >
           <div className="flex items-start gap-3">
             <div
-              className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-2xl shadow-inner"
+              className="grid h-14 w-14 shrink-0 place-items-center rounded-full text-3xl shadow-inner"
               style={{ background: `${item.accent}22`, color: item.accent }}
               aria-hidden="true"
             >
-              {item.imageSrc ? (
-                <img src={item.imageSrc} alt={item.title} className="h-12 w-12 rounded-2xl object-cover" />
-              ) : item.id === "buddy-lil-louis" ? (
-                <img src="/Newlouiswave.png" alt="Lil Louis waving" className="h-12 w-12 rounded-2xl object-cover" />
-              ) : item.kind === "buddy" && item.comingSoon ? (
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-slate-200 text-slate-500">?</span>
-              ) : item.flameId ? (
-                <StreakFlameEmoji flameId={item.flameId} size={34} title={item.title} />
-              ) : (
-                item.emoji
-              )}
+              {item.emoji}
             </div>
             <div className="min-w-0">
               <h4 className="text-sm font-black leading-tight text-[var(--bb-text-primary)]">{item.title}</h4>
               <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary)]">{item.subtitle}</p>
             </div>
           </div>
-          <button
-            type="button"
-            disabled={storeBuyingId === item.id || item.comingSoon || (!canBuy && !item.themeId && !item.flameId)}
-            onClick={() => void handleStorePurchase(item)}
-            className={`mt-3 inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-xs font-black transition ${
-              owned && !item.repeatable
-                ? "border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] text-[var(--bb-text-primary)] hover:bg-[var(--bb-card)]"
-                : "bg-[var(--bb-button)] text-[var(--bb-button-text)] shadow-sm hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
-            }`}
-          >
-            {storeBuyingId === item.id ? "Buying..." : buttonLabel}
-          </button>
+          <div className="mt-3">{renderStoreActionButton(item, owned, "w-full")}</div>
         </article>
       );
     };
 
-    const renderSection = (title: string, subtitle: string, items: BibleBuddyStoreItem[]) => (
-      <section className="mt-5">
-        <div className="mb-3">
-          <h3 className="text-lg font-black text-[var(--bb-text-primary)]">{title}</h3>
-          <p className="text-xs font-semibold leading-5 text-[var(--bb-text-secondary)]">{subtitle}</p>
+    const renderStoreSection = (
+      icon: string,
+      title: string,
+      subtitle: string,
+      priceLabel: string | null,
+      children: ReactNode,
+    ) => (
+      <section className="mt-6">
+        <div className="mb-3 flex items-end justify-between gap-3">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl" aria-hidden="true">{icon}</span>
+              <h3 className="text-xl font-black text-[var(--bb-text-primary)]">{title}</h3>
+            </div>
+            <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary)]">{subtitle}</p>
+          </div>
+          {priceLabel ? (
+            <span className="shrink-0 rounded-full bg-[var(--bb-surface-soft)] px-4 py-2 text-sm font-black text-[var(--bb-text-primary)]">
+              {priceLabel} 💎
+            </span>
+          ) : null}
         </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {items.map(renderStoreItemCard)}
-        </div>
+        {children}
       </section>
     );
 
-    const promoCards = [
-      {
-        kind: "buddies" as StorePromoKind,
-        eyebrow: "New Guides",
-        title: "Choose a Bible Buddy",
-        body: "Unlock Walter, Lindsey, or Steve and study with a different kind of encouragement.",
-        visual: (
-          <div className="flex -space-x-3">
-            {BUDDY_STORE_ITEMS.filter((item) => item.id !== "buddy-lil-louis").map((buddy) => (
-              <img
-                key={buddy.id}
-                src={buddy.imageSrc}
-                alt={buddy.title}
-                className="h-12 w-12 rounded-full border-2 border-white object-cover shadow-sm"
-              />
-            ))}
-          </div>
-        ),
-      },
-      {
-        kind: "diamonds" as StorePromoKind,
-        eyebrow: "Diamond Drop",
-        title: "Spend diamonds your way",
-        body: "Themes, flame colors, Bible Buddies, boosts, and surprise rewards are waiting.",
-        visual: (
-          <div className="grid grid-cols-4 gap-1 text-xl" aria-hidden="true">
-            <span>💎</span>
-            <span>🎨</span>
-            <span><StreakFlameEmoji flameId="blue" size={22} /></span>
-            <span>⚡</span>
-          </div>
-        ),
-      },
-    ];
-
-    const renderPromoCard = (promo: (typeof promoCards)[number]) => (
-      <button
-        key={promo.kind}
-        type="button"
-        onClick={() => setActiveStorePromo(promo.kind)}
-        className="relative overflow-hidden rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-      >
-        <div className="absolute right-3 top-3 rounded-full bg-[var(--bb-accent-soft)] px-2 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-accent)]">
-          Promo
-        </div>
-        {promo.visual}
-        <p className="mt-3 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">{promo.eyebrow}</p>
-        <h3 className="mt-1 text-base font-black leading-tight text-[var(--bb-text-primary)]">{promo.title}</h3>
-        <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary)]">{promo.body}</p>
-      </button>
-    );
-
     return (
-      <section className="rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-surface)] p-4 shadow-[0_16px_42px_rgba(38,63,99,0.12)]">
-        <div className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border)] bg-[var(--bb-card)]">
-          <div className="p-5">
-            <div className="flex items-start justify-between gap-3">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Bible Buddy Store</p>
-              <button
-                type="button"
-                onClick={() => setShowDiamondStore(false)}
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] text-xl font-black text-[var(--bb-text-secondary)] transition hover:bg-[var(--bb-card)] hover:text-[var(--bb-text-primary)]"
-                aria-label="Close store"
-              >
-                ×
-              </button>
+      <section className="rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-surface)] p-4 shadow-[0_18px_48px_rgba(38,63,99,0.14)]">
+        <div className="p-1">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-text-primary)]">Bible Buddy Store</p>
+              <h2 className="mt-3 text-4xl font-black leading-none text-[var(--bb-text-primary)]">Customize your journey</h2>
+              <p className="mt-3 max-w-xl text-base font-semibold leading-7 text-[var(--bb-text-secondary)]">
+                Unlock new styles, Bible Buddies, boosts, and rewards as you grow your habit.
+              </p>
             </div>
-            <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
-              <div className="min-w-0">
-                <h2 className="text-3xl font-black leading-tight text-[var(--bb-text-primary)]">Spend your diamonds</h2>
-                <p className="mt-2 max-w-md text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
-                  Buy themes, streak styles, Bible Buddies, and boosts for your Bible habit.
-                </p>
+            <button
+              type="button"
+              onClick={() => setShowDiamondStore(false)}
+              className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-card)] text-3xl font-black leading-none text-[var(--bb-text-primary)] shadow-sm transition hover:scale-105"
+              aria-label="Close store"
+            >
+              ×
+            </button>
+          </div>
+
+          <div
+            className="sticky top-2 z-10 mt-5 overflow-hidden rounded-[24px] p-5 text-white shadow-[0_18px_42px_rgba(37,99,235,0.30)]"
+            style={{ background: "linear-gradient(135deg, #0c2f86 0%, #1d4ed8 54%, #102064 100%)" }}
+          >
+            <div className="pointer-events-none absolute -right-12 -top-16 h-40 w-40 rounded-full bg-white/15 blur-2xl" />
+            <div className="pointer-events-none absolute right-8 top-4 text-6xl opacity-40" aria-hidden="true">💎</div>
+            <div className="pointer-events-none absolute bottom-4 right-24 text-3xl opacity-60" aria-hidden="true">💎</div>
+            <div className="relative flex items-center gap-4">
+              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-white/15 text-4xl shadow-inner" aria-hidden="true">
+                💎
               </div>
-              <div className="text-right">
-                <p className="text-2xl leading-none" aria-hidden="true">💎💎💎</p>
-                <p className="mt-2 text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted)]">Your stash</p>
-                <p className="text-3xl font-black leading-none text-[var(--bb-text-primary)]">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.24em] !text-white/80">Your stash</p>
+                <p className="mt-1 text-3xl font-black leading-none !text-white">
                   {ownerHasUnlimitedDiamonds ? "Unlimited" : diamondCount.toLocaleString()}
+                </p>
+                <p className="mt-2 max-w-md text-sm font-bold leading-5 !text-white/85">
+                  Earn diamonds by completing studies, streaks, trivia, and daily tasks.
                 </p>
               </div>
             </div>
@@ -2686,9 +2743,6 @@ export default function DashboardPage() {
           renderMysteryRevealPanel()
         ) : (
           <>
-            <section className="mt-5 grid gap-3 sm:grid-cols-2">
-              {promoCards.map(renderPromoCard)}
-            </section>
             {storeLoading ? (
               <div className="mt-5 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 text-center text-sm font-black text-[var(--bb-text-secondary)]">
                 Loading store...
@@ -2700,10 +2754,34 @@ export default function DashboardPage() {
               </div>
             ) : null}
 
-            {renderSection("Themes", "Each theme costs 500 diamonds, about ten full chapters of steady study.", THEME_STORE_ITEMS)}
-            {renderSection("30 Day Streak Flames", "Change the color of your streak badge and make long runs feel earned.", STREAK_FLAME_STORE_ITEMS)}
-            {renderSection("Bible Buddies", "Unlock the Buddy voice you want guiding your Bible habit.", BUDDY_STORE_ITEMS)}
-            {renderSection("Boosts And Items", "Helpful items for streaks, XP, and surprise rewards.", BOOST_STORE_ITEMS)}
+            {renderStoreSection(
+              "🎨",
+              "Themes",
+              "Choose a style that fits your journey.",
+              "500",
+              <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">{THEME_STORE_ITEMS.map(renderThemeCard)}</div>,
+            )}
+            {renderStoreSection(
+              "🔥",
+              "30 Day Streak Flames",
+              "Match your streak fire to your favorite theme.",
+              "250",
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">{STREAK_FLAME_STORE_ITEMS.map(renderFlameCard)}</div>,
+            )}
+            {renderStoreSection(
+              "👥",
+              "Bible Buddies",
+              "Unlock the Buddy voice you want guiding your habit.",
+              "750",
+              <div className="grid grid-cols-2 gap-3">{BUDDY_STORE_ITEMS.map(renderBuddyStoreCard)}</div>,
+            )}
+            {renderStoreSection(
+              "⚡",
+              "Boosts & Items",
+              "Helpful items to power up your Bible habit.",
+              null,
+              <div className="grid gap-3 sm:grid-cols-3">{BOOST_STORE_ITEMS.map(renderBoostCard)}</div>,
+            )}
 
             <button
               type="button"
