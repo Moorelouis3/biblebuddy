@@ -7658,6 +7658,8 @@ export default function DashboardPage() {
         isOpen={activeDashboardRewardPopup?.popup_id === "dashboard:reward:moderator-weekly-payout"}
         onClose={() => void acknowledgeModeratorWeeklyPayout()}
         backdropColor="bg-black/45"
+        zIndex="z-[220]"
+        scrollable
       >
         {moderatorWeeklyPayoutReveal ? (
           <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#f1d99f)] bg-[var(--bb-card,#ffffff)] shadow-2xl">

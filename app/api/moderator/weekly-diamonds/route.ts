@@ -10,6 +10,14 @@ import {
 } from "@/lib/moderatorWeeklyDiamonds";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
+const MODERATOR_PAYOUT_POPUP_FIX_AT = "2026-05-19T18:51:57.000Z";
+
+function shouldShowPayoutPopupAgain(seenAt: string | null | undefined) {
+  if (!seenAt) return true;
+  const seenMs = new Date(seenAt).getTime();
+  const fixedMs = new Date(MODERATOR_PAYOUT_POPUP_FIX_AT).getTime();
+  return Number.isFinite(seenMs) && seenMs < fixedMs;
+}
 
 function getServerClients(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -117,7 +125,7 @@ export async function GET(request: NextRequest) {
     ok: true,
     moderator: auth.isModerator,
     currentPayout,
-    unseenPayout: currentPayout && !currentPayout.seenAt ? currentPayout : null,
+    unseenPayout: currentPayout && shouldShowPayoutPopupAgain(currentPayout.seenAt) ? currentPayout : null,
     currentDiamonds: updatedProfile?.diamonds_count ?? null,
     totalDiamondsEarned: updatedProfile?.total_diamonds_earned ?? null,
     dashboard,

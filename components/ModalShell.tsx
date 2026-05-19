@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 // Track how many modals are currently mounted so scroll is only restored when all are closed.
 let _openModalCount = 0;
@@ -78,9 +79,9 @@ export function ModalShell({
     };
   }, [mounted]);
 
-  if (!mounted) return null;
+  if (!mounted || typeof document === "undefined") return null;
 
-  return (
+  return createPortal(
     <div
       className={`bb-modal-shell fixed inset-0 ${zIndex} ${backdropColor} flex ${
         scrollable ? "items-start overflow-y-auto py-10" : placement === "bottom" ? "items-end pb-6 sm:pb-8" : "items-center"
@@ -93,6 +94,7 @@ export function ModalShell({
       >
         {children}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
