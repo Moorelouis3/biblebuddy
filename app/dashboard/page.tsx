@@ -2333,7 +2333,9 @@ export default function DashboardPage() {
   }, [isOwnerDashboard]);
 
   function renderDashboardStatsRow() {
-    const earnedBadgeCount = badgeProgress.filter((badge) => badge.current >= badge.target).length;
+    const earnedBadges = badgeProgress.filter((badge) => badge.current >= badge.target);
+    const earnedBadgeCount = earnedBadges.length;
+    const latestBadge = earnedBadges[earnedBadges.length - 1] ?? badgeProgress[0] ?? null;
     const streakValue = Math.max(1, profile?.current_streak ?? 1);
     const bibleCompletionPercent = Math.max(
       0,
@@ -2456,6 +2458,181 @@ export default function DashboardPage() {
       </div>
     );
 
+    const currentLevel = levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1;
+    const currentLevelTitle = levelInfo?.levelName || "Faithful Beginner";
+    const currentXp = levelInfo?.totalPoints ?? 0;
+    const nextLevelXp = levelInfo?.pointsToNextLevel ?? 0;
+    const diamondValue = diamondsLoading
+      ? animatedDashboardStats.grace
+      : isOwnerDashboard
+        ? "Unlimited"
+        : Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString();
+    const journeyTitle = currentBook ? `${currentBook} Journey` : "Bible Journey";
+    const chaptersLabel = `${totalCompletedChapters.toLocaleString()} of ${TOTAL_BIBLE_CHAPTERS.toLocaleString()} chapters`;
+    const skinWorldClass = activePremiumSkinId === "none" ? "skin-world-default" : `skin-world-${activePremiumSkinId}`;
+
+    const renderPremiumProgressionBoard = () => (
+      <section className={`premium-stats-board ${skinWorldClass} mx-auto max-w-xl`} aria-label="Bible Buddy progression">
+        <style jsx>{`
+          .premium-stats-board {
+            --premium-aura: var(--bb-accent);
+            --premium-card: color-mix(in srgb, var(--bb-card) 88%, transparent);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+          }
+          .premium-stat-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid color-mix(in srgb, var(--bb-card-border) 82%, var(--bb-accent));
+            background:
+              radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--premium-aura) 24%, transparent), transparent 34%),
+              linear-gradient(145deg, color-mix(in srgb, var(--premium-card) 92%, transparent), color-mix(in srgb, var(--bb-surface) 70%, transparent));
+            box-shadow:
+              inset 0 1px 0 rgba(255,255,255,0.16),
+              0 14px 34px rgba(0,0,0,0.18),
+              0 0 28px color-mix(in srgb, var(--premium-aura) 16%, transparent);
+            color: var(--bb-text-primary);
+            isolation: isolate;
+          }
+          .premium-stat-card::before {
+            content: "";
+            position: absolute;
+            inset: -35%;
+            z-index: -1;
+            background:
+              radial-gradient(circle, color-mix(in srgb, var(--premium-aura) 20%, transparent) 0 1px, transparent 2px),
+              linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.12), transparent 58%);
+            background-size: 34px 34px, 100% 100%;
+            opacity: 0.72;
+            animation: premium-stat-drift 16s ease-in-out infinite alternate;
+          }
+          .premium-level-card {
+            grid-column: span 2;
+            min-height: 168px;
+            border-radius: 26px;
+            padding: 18px;
+            box-shadow:
+              inset 0 1px 0 rgba(255,255,255,0.18),
+              0 18px 48px rgba(0,0,0,0.24),
+              0 0 42px color-mix(in srgb, var(--premium-aura) 28%, transparent);
+          }
+          .premium-mini-card {
+            min-height: 132px;
+            border-radius: 22px;
+            padding: 14px;
+          }
+          .premium-xp-ring {
+            width: 86px;
+            height: 86px;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            background:
+              radial-gradient(circle, color-mix(in srgb, var(--bb-card) 88%, #07101c) 0 54%, transparent 56%),
+              conic-gradient(var(--premium-aura) ${nextLevelPercent}%, color-mix(in srgb, var(--bb-progress-track) 82%, transparent) 0);
+            box-shadow: 0 0 26px color-mix(in srgb, var(--premium-aura) 42%, transparent);
+          }
+          .premium-xp-fill {
+            width: ${nextLevelPercent}%;
+            background: linear-gradient(90deg, color-mix(in srgb, var(--premium-aura) 62%, white), var(--bb-progress-fill));
+          }
+          .premium-orb {
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 18px;
+            background: radial-gradient(circle at 35% 20%, rgba(255,255,255,0.55), color-mix(in srgb, var(--premium-aura) 72%, #111827));
+            color: var(--bb-button-text);
+            box-shadow: 0 0 22px color-mix(in srgb, var(--premium-aura) 40%, transparent);
+          }
+          .skin-world-blue-storm { --premium-aura: #5DD6FF; }
+          .skin-world-midnight-garden { --premium-aura: #AFCF7A; }
+          .skin-world-lavender-prayer { --premium-aura: #CFAEFF; }
+          .skin-world-ruby-village { --premium-aura: #FF735F; }
+          @keyframes premium-stat-drift {
+            from { transform: translate3d(-2%, -1%, 0) rotate(0deg); opacity: 0.52; }
+            to { transform: translate3d(2%, 1%, 0) rotate(4deg); opacity: 0.82; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .premium-stat-card::before { animation: none; }
+          }
+        `}</style>
+
+        <button type="button" onClick={openLevelInfoModal} className="premium-stat-card premium-level-card text-left transition hover:-translate-y-0.5">
+          <div className="flex items-center justify-between gap-4">
+            <div className="min-w-0">
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">Level Identity</p>
+              <div className="mt-2 flex items-baseline gap-3">
+                <p className="text-6xl font-black leading-none text-[var(--bb-text-primary)]">{currentLevel}</p>
+                <div className="min-w-0">
+                  <p className="text-lg font-black leading-tight text-[var(--bb-text-primary)]">{currentLevelTitle}</p>
+                  <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">
+                    {nextLevelXp > 0 ? `${nextLevelXp.toLocaleString()} XP until the next rank` : "Next rank unlocked"}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="premium-xp-ring shrink-0">
+              <div className="text-center">
+                <p className="text-sm font-black text-[var(--bb-text-primary)]">{Math.round(nextLevelPercent)}%</p>
+                <p className="text-[9px] font-black uppercase text-[var(--bb-text-muted)]">XP</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 h-3 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
+            <div className="premium-xp-fill h-full rounded-full transition-all duration-500" />
+          </div>
+          <div className="mt-3 flex items-center justify-between gap-3 text-[11px] font-black text-[var(--bb-text-secondary)]">
+            <span>{currentXp.toLocaleString()} total XP</span>
+            <span>Unlocks grow with your rhythm</span>
+          </div>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            setShowDiamondStore(false);
+            setShowBibleProgressPanel(true);
+            setBibleBrowserSelectedBook(null);
+          }}
+          className="premium-stat-card premium-mini-card text-left transition hover:-translate-y-0.5"
+        >
+          <span className="premium-orb text-lg font-black" aria-hidden="true">B</span>
+          <p className="mt-3 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Scripture Path</p>
+          <p className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary)]">{journeyTitle}</p>
+          <p className="mt-1 text-sm font-black text-[var(--bb-text-primary)]">{displayedBibleCompletionPercent}% complete</p>
+          <p className="mt-1 text-[11px] font-bold leading-4 text-[var(--bb-text-secondary)]">{chaptersLabel}. One chapter at a time.</p>
+        </button>
+
+        <button type="button" onClick={openDiamondStore} className="premium-stat-card premium-mini-card text-left transition hover:-translate-y-0.5">
+          <span className="premium-orb text-lg font-black" aria-hidden="true">D</span>
+          <p className="mt-3 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Stash</p>
+          <p className="mt-1 text-2xl font-black leading-none text-[var(--bb-text-primary)]">{diamondValue}</p>
+          <p className="mt-2 text-[11px] font-bold leading-4 text-[var(--bb-text-secondary)]">Save for skins, drops, and special editions.</p>
+        </button>
+
+        <button type="button" onClick={() => setShowBadgesModal(true)} className="premium-stat-card premium-mini-card col-span-2 text-left transition hover:-translate-y-0.5">
+          <div className="flex items-center gap-3">
+            <span className="premium-orb text-xl" aria-hidden="true">{latestBadge?.emoji ?? "B"}</span>
+            <div className="min-w-0">
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Latest Badge</p>
+              <p className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary)]">
+                {badgesLoading ? `${animatedDashboardStats.badges} badges loading` : latestBadge?.title ?? "First Badge Waiting"}
+              </p>
+              <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">
+                {latestBadge?.description ?? `${earnedBadgeCount} badges earned. Keep building your Bible Buddy story.`}
+              </p>
+            </div>
+          </div>
+          <div className="mt-3 inline-flex rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-accent-soft)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary)]">
+            View All Badges
+          </div>
+        </button>
+      </section>
+    );
+
     const ownerAnalyticsStats = [
       { key: "signups", label: "Signups 24h", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.signups24h, tones: "border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100" },
       { key: "active", label: "Active 24h", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.activeUsers24h, tones: "border-blue-200 bg-gradient-to-br from-white via-blue-50 to-blue-100" },
@@ -2534,7 +2711,7 @@ export default function DashboardPage() {
       return (
         <div className="mb-4 space-y-4">
           {renderGreetingAndStreakCard()}
-          {renderStatCards(personalStats)}
+          {renderPremiumProgressionBoard()}
         </div>
       );
     }
