@@ -902,6 +902,29 @@ export default function AnalyticsPage() {
         return query.gte(column, fromDate);
       };
 
+      const loadActiveProfileRows = async () => {
+        const startDay = fromDate?.slice(0, 10);
+        const query = supabase
+          .from("profile_stats")
+          .select("user_id, last_active_at, last_active_date");
+
+        const result = fromDate && startDay
+          ? await query.or(`last_active_at.gte.${fromDate},last_active_date.gte.${startDay}`)
+          : await query;
+
+        if (!result.error || !/last_active_at/i.test(result.error.message || "")) {
+          return result;
+        }
+
+        const fallbackQuery = supabase
+          .from("profile_stats")
+          .select("user_id, last_active_date");
+
+        return fromDate && startDay
+          ? await fallbackQuery.gte("last_active_date", startDay)
+          : await fallbackQuery;
+      };
+
       // Signups: query user_signups table
       const signupsPromise = applyDateFilter(
         supabase
@@ -917,12 +940,13 @@ export default function AnalyticsPage() {
           .eq("action_type", "user_upgraded")
       );
 
-      // Active Users: count of unique users who did any action within the range
+      // Active Users: unique users who did any action or had an app heartbeat within the range
       const activeUsersPromise = applyDateFilter(
         supabase
           .from("master_actions")
           .select("user_id")
       );
+      const activeProfileRowsPromise = loadActiveProfileRows();
 
       // Total actions: all master_actions rows
       const totalActionsPromise = applyDateFilter(
@@ -1092,6 +1116,7 @@ export default function AnalyticsPage() {
         signupsResult,
         upgradesResult,
         activeUsersRowsResult,
+        activeProfileRowsResult,
         totalActionsResult,
         navigationViewsResult,
         navigationClicksResult,
@@ -1125,6 +1150,7 @@ export default function AnalyticsPage() {
         signupsPromise,
         upgradesPromise,
         activeUsersPromise,
+        activeProfileRowsPromise,
         totalActionsPromise,
         navigationViewsPromise,
         navigationClicksPromise,
@@ -1161,11 +1187,20 @@ export default function AnalyticsPage() {
       const upgradesCount = upgradesResult.count ?? 0;
       const upgradesError = upgradesResult.error;
       const activeUsersError = activeUsersRowsResult.error;
-      const activeUsersCount = new Set(
+      const activeProfileRowsError = activeProfileRowsResult.error;
+      const activeUserIds = new Set<string>(
         (activeUsersRowsResult.data || [])
           .map((row: { user_id: string | null }) => row.user_id)
           .filter((userId: string | null): userId is string => typeof userId === "string" && userId.length > 0)
-      ).size;
+      );
+      for (const row of activeProfileRowsResult.data || []) {
+        const profile = row as { user_id: string | null; last_active_at?: string | null; last_active_date?: string | null };
+        if (!profile.user_id) continue;
+        if (!fromDate || profile.last_active_at || profile.last_active_date) {
+          activeUserIds.add(profile.user_id);
+        }
+      }
+      const activeUsersCount = activeUserIds.size;
       const totalActionsCount = totalActionsResult.count ?? 0;
       const totalActionsError = totalActionsResult.error;
       const navigationViewsCount = navigationViewsResult.count ?? 0;
@@ -1205,6 +1240,7 @@ export default function AnalyticsPage() {
         signupsError ||
         upgradesError ||
         activeUsersError ||
+        activeProfileRowsError ||
         totalActionsError ||
         navigationViewsError ||
         navigationClicksError ||
@@ -1227,6 +1263,7 @@ export default function AnalyticsPage() {
           signupsError,
           upgradesError,
           activeUsersError,
+          activeProfileRowsError,
           totalActionsError,
           navigationViewsError,
           navigationClicksError,

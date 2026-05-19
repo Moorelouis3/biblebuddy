@@ -24,19 +24,56 @@ export async function GET() {
   try {
 
     // Active Users = distinct users who did anything tracked in master_actions
-    // within each time window. Login-only undercounts users who still have an
-    // active session and return without seeing the login page.
+    // OR had an app heartbeat in profile_stats within each time window.
     const now = new Date();
     const nowISO = now.toISOString();
 
     async function getActiveUsersCount(startISO: string) {
+      const activeUserIds = new Set<string>();
+      const startDay = startISO.slice(0, 10);
+
       const { data, error } = await supabase
         .from("master_actions")
         .select("user_id")
         .gte("created_at", startISO)
         .lte("created_at", nowISO);
       if (error) throw error;
-      return new Set((data || []).map((r: { user_id: string }) => r.user_id).filter(Boolean)).size;
+
+      for (const row of data || []) {
+        const userId = (row as { user_id: string | null }).user_id;
+        if (userId) activeUserIds.add(userId);
+      }
+
+      const profileActivity = await supabase
+        .from("profile_stats")
+        .select("user_id, last_active_at, last_active_date")
+        .or(`last_active_at.gte.${startISO},last_active_date.gte.${startDay}`);
+
+      if (profileActivity.error && !/last_active_at/i.test(profileActivity.error.message || "")) {
+        throw profileActivity.error;
+      }
+
+      const profileRows = profileActivity.error
+        ? await supabase
+            .from("profile_stats")
+            .select("user_id, last_active_date")
+            .gte("last_active_date", startDay)
+        : profileActivity;
+
+      if (profileRows.error) throw profileRows.error;
+
+      for (const row of profileRows.data || []) {
+        const profile = row as { user_id: string | null; last_active_at?: string | null; last_active_date?: string | null };
+        if (!profile.user_id) continue;
+        if (
+          (profile.last_active_at && profile.last_active_at >= startISO) ||
+          (!profile.last_active_at && profile.last_active_date && profile.last_active_date >= startDay)
+        ) {
+          activeUserIds.add(profile.user_id);
+        }
+      }
+
+      return activeUserIds.size;
     }
 
     const [
@@ -90,5 +127,4 @@ export async function GET() {
     );
   }
 }
-
 

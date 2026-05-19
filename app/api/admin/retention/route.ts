@@ -12,8 +12,48 @@ type ActionRow = {
   created_at: string;
 };
 
+type ProfileActivityRow = {
+  user_id: string | null;
+  last_active_at?: string | null;
+  last_active_date?: string | null;
+};
+
 function getDayKey(dateIso: string) {
   return dateIso.slice(0, 10);
+}
+
+async function fetchProfileActivityRows(
+  db: any,
+  sinceIso: string,
+): Promise<ProfileActivityRow[]> {
+  const sinceDay = getDayKey(sinceIso);
+  const primary = await db
+    .from("profile_stats")
+    .select("user_id, last_active_at, last_active_date")
+    .or(`last_active_at.gte.${sinceIso},last_active_date.gte.${sinceDay}`)
+    .limit(250000);
+
+  if (!primary.error) {
+    return (primary.data || []) as ProfileActivityRow[];
+  }
+
+  if (!/last_active_at/i.test(primary.error.message || "")) {
+    console.error("[USAGE API] profile activity query error:", primary.error);
+    return [];
+  }
+
+  const fallback = await db
+    .from("profile_stats")
+    .select("user_id, last_active_date")
+    .gte("last_active_date", sinceDay)
+    .limit(250000);
+
+  if (fallback.error) {
+    console.error("[USAGE API] profile activity fallback query error:", fallback.error);
+    return [];
+  }
+
+  return (fallback.data || []) as ProfileActivityRow[];
 }
 
 export async function GET() {
@@ -47,6 +87,8 @@ export async function GET() {
       console.error("[USAGE API] query error:", error);
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
+
+    const profileActivityRows = await fetchProfileActivityRows(db, since60d);
 
     const rows = ((data || []) as ActionRow[]).filter((row) => typeof row.user_id === "string" && row.user_id.length > 0);
 
@@ -82,6 +124,34 @@ export async function GET() {
           activeDaysByUser30d.set(userId, new Set());
         }
         activeDaysByUser30d.get(userId)?.add(getDayKey(createdAt));
+      }
+    }
+
+    for (const row of profileActivityRows) {
+      const userId = row.user_id;
+      if (!userId) continue;
+
+      const activeAt = row.last_active_at || null;
+      const activeDate = row.last_active_date || null;
+
+      const wasActiveSince = (sinceIso: string) => {
+        const sinceDay = getDayKey(sinceIso);
+        return Boolean(
+          (activeAt && activeAt >= sinceIso) ||
+            (!activeAt && activeDate && activeDate >= sinceDay),
+        );
+      };
+
+      if (wasActiveSince(since24h)) active24h.add(userId);
+      if (wasActiveSince(since7d)) active7d.add(userId);
+      if (wasActiveSince(since30d)) {
+        active30d.add(userId);
+        if (activeDate) {
+          if (!activeDaysByUser30d.has(userId)) {
+            activeDaysByUser30d.set(userId, new Set());
+          }
+          activeDaysByUser30d.get(userId)?.add(activeDate.slice(0, 10));
+        }
       }
     }
 
@@ -125,6 +195,7 @@ export async function GET() {
       returnRate7d,
       debug: {
         rowsFetched: rows.length,
+        profileActivityRowsFetched: profileActivityRows.length,
         unique24h: active24h.size,
         unique7d: active7d.size,
         unique30d: active30d.size,

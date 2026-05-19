@@ -1118,7 +1118,31 @@ RULES:
     }
 
     if (!summary) {
-      return "";
+      const introBlock = notesText
+        .split(/\n## Why\s+/i)[0]
+        .split(/\n# Deep Chapter Notes/i)[0];
+      const introParagraphs = introBlock
+        .split(/\n{2,}/)
+        .map((paragraph) =>
+          paragraph
+            .replace(/^#{1,6}\s+/gm, "")
+            .replace(/^>\s?.*$/gm, "")
+            .replace(/\*\*(.*?)\*\*/g, "$1")
+            .replace(/\*(.*?)\*/g, "$1")
+            .replace(/`(.*?)`/g, "$1")
+            .replace(/^\s*[-*+]\s+/gm, "")
+            .replace(/\s+/g, " ")
+            .trim(),
+        )
+        .filter(Boolean)
+        .filter((paragraph) => !/^(?:[1-3]\s+)?[A-Za-z ]+\s+\d+$/.test(paragraph))
+        .filter((paragraph) => paragraph.length > 35);
+
+      summary = introParagraphs.slice(0, 3).join(" ").trim();
+
+      if (!summary) {
+        return "";
+      }
     }
 
     // Strip markdown formatting
@@ -2630,7 +2654,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   aria-label={isCompleted ? "Chapter completed" : "Mark chapter completed"}
                   className={`flex min-h-[5.5rem] w-full items-center justify-between rounded-2xl border px-4 py-4 text-left text-white shadow-lg transition ${
                     isCompleted
-                      ? "border-emerald-500 bg-emerald-600 shadow-emerald-200 hover:bg-emerald-700"
+                      ? "border-emerald-300 bg-emerald-50 text-emerald-800 shadow-emerald-100 hover:bg-emerald-100"
                       : isSaving
                         ? "border-blue-300 bg-blue-300 cursor-not-allowed shadow-blue-100"
                         : "border-blue-500 bg-blue-600 shadow-blue-200 hover:bg-blue-700 bb-mark-pulse"
@@ -2640,7 +2664,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                       <span className="text-sm font-extrabold uppercase tracking-[0.08em]">
                         {isCompleted ? "Completed" : "Mark Complete"}
                       </span>
-                      <span className="mt-1 text-xs font-medium text-blue-100">
+                      <span className={`mt-1 text-xs font-medium ${isCompleted ? "text-emerald-700" : "text-blue-100"}`}>
                         {isCompleted ? "This chapter is finished" : "Finish this chapter"}
                       </span>
                     </div>
@@ -2792,7 +2816,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 aria-label={isCompleted ? "Chapter completed" : "Mark chapter completed"}
                 className={`flex min-h-[4.25rem] w-full items-center justify-between rounded-2xl border px-4 py-3 text-left text-white shadow-lg transition ${
                   isCompleted
-                    ? "border-emerald-500 bg-emerald-600 shadow-emerald-200 hover:bg-emerald-700"
+                    ? "border-emerald-300 bg-emerald-50 text-emerald-800 shadow-emerald-100 hover:bg-emerald-100"
                     : isSaving
                       ? "cursor-not-allowed border-blue-300 bg-blue-300 shadow-blue-100"
                       : "border-blue-500 bg-blue-600 shadow-blue-200 hover:bg-blue-700 bb-mark-pulse"
@@ -2802,7 +2826,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   <span className="text-xs font-extrabold uppercase tracking-[0.08em]">
                     {isCompleted ? "Completed" : "Mark Complete"}
                   </span>
-                  <span className="mt-1 text-[11px] font-medium text-blue-100">
+                  <span className={`mt-1 text-[11px] font-medium ${isCompleted ? "text-emerald-700" : "text-blue-100"}`}>
                     {isCompleted ? "This chapter is finished" : "Finish this chapter"}
                   </span>
                 </div>

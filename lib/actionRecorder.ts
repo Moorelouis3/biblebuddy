@@ -5,7 +5,7 @@
  * 
  * ACTION FLOW:
  * 1. Insert action into master_actions
- * 2. Update profile_stats (increment counters, update last_active_date)
+ * 2. Update profile_stats (increment counters, update last active timestamps)
  */
 
 import { supabase } from "./supabaseClient";
@@ -128,6 +128,7 @@ export async function recordAction(
 
     // STEP 2: Update profile_stats
     const today = getBibleBuddyLocalDayKey();
+    const nowIso = new Date().toISOString();
 
     // Get current stats
     const { data: currentStats, error: fetchError } = await supabase
@@ -146,9 +147,10 @@ export async function recordAction(
       const initialStats: Record<string, any> = {
         user_id: userId,
         total_actions: 1,
+        last_active_at: nowIso,
         last_active_date: today,
         current_streak: 1,
-        updated_at: new Date().toISOString(),
+        updated_at: nowIso,
       };
 
       // Increment the appropriate counter based on action type
@@ -176,8 +178,9 @@ export async function recordAction(
       // Update existing stats
       const updates: Record<string, any> = {
         total_actions: (currentStats.total_actions || 0) + 1,
+        last_active_at: nowIso,
         last_active_date: today,
-        updated_at: new Date().toISOString(),
+        updated_at: nowIso,
       };
 
       // Increment the appropriate counter

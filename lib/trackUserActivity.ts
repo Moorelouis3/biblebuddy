@@ -1,8 +1,8 @@
 /**
  * Track User Activity Utility
  *
- * Tracks when a user logs in or refreshes the app (opens a new page).
- * Updates last_active_date in profile_stats and logs to master_actions once per 24 hours.
+ * Tracks when a user logs in, refreshes, or interacts with the app.
+ * Updates last_active_at as a lightweight heartbeat and logs user_login once per Bible Buddy day.
  */
 
 import { supabase } from "./supabaseClient";
@@ -13,6 +13,32 @@ import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
 // Concurrent callers share the same promise so streak syncs can wait for today's
 // login write instead of reading yesterday's streak.
 const inFlight = new Map<string, Promise<boolean>>();
+const HEARTBEAT_THROTTLE_MS = 24 * 60 * 60 * 1000;
+
+async function recordActivityHeartbeat(userId: string) {
+  const nowIso = new Date().toISOString();
+
+  if (typeof window !== "undefined") {
+    const heartbeatKey = `bb:last-active-heartbeat:${userId}`;
+    const lastHeartbeat = Number(window.localStorage.getItem(heartbeatKey) || 0);
+    if (Number.isFinite(lastHeartbeat) && Date.now() - lastHeartbeat < HEARTBEAT_THROTTLE_MS) {
+      return;
+    }
+    window.localStorage.setItem(heartbeatKey, String(Date.now()));
+  }
+
+  const { error } = await supabase
+    .from("profile_stats")
+    .update({
+      last_active_at: nowIso,
+      updated_at: nowIso,
+    })
+    .eq("user_id", userId);
+
+  if (error && !/last_active_at/i.test(error.message || "")) {
+    console.error("[TRACK_ACTIVITY] Error updating last_active_at:", error);
+  }
+}
 
 function shiftDayKey(dayKey: string, days: number) {
   const [year, month, day] = dayKey.split("-").map(Number);
@@ -49,6 +75,8 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
 
   const run = (async (): Promise<boolean> => {
     try {
+      await recordActivityHeartbeat(userId);
+
     // Check if we've already logged activity for this user in this session
     const sessionKey = `activity_logged_${userId}`;
     const today = getBibleBuddyLocalDayKey();
@@ -175,35 +203,45 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
       currentStats?.last_grace_day_earned_at !== today;
     const nextGraceDays = shouldEarnGraceDay ? Math.min(5, currentGraceDays + 1) : currentGraceDays;
 
+    const nowIso = new Date().toISOString();
+
     // Update profile_stats with last_active_date
     let { error: statsError } = await supabase
       .from("profile_stats")
       .upsert(
         {
           user_id: userId,
+          last_active_at: nowIso,
           last_active_date: today,
           username: username,
           current_streak: nextCurrentStreak,
           grace_days_count: nextGraceDays,
           ...(shouldEarnGraceDay ? { last_grace_day_earned_at: today } : {}),
-          updated_at: new Date().toISOString(),
+          updated_at: nowIso,
         },
         {
           onConflict: "user_id",
         }
       );
 
-    if (statsError && /grace_days_count|last_grace_day_earned_at/i.test(statsError.message || "")) {
+    if (statsError && /grace_days_count|last_grace_day_earned_at|last_active_at/i.test(statsError.message || "")) {
+      const statsErrorMessage = statsError.message || "";
+      const fallbackPayload: Record<string, unknown> = {
+        user_id: userId,
+        last_active_date: today,
+        username: username,
+        current_streak: nextCurrentStreak,
+        updated_at: nowIso,
+      };
+
+      if (!/last_active_at/i.test(statsErrorMessage)) {
+        fallbackPayload.last_active_at = nowIso;
+      }
+
       const fallbackUpdate = await supabase
         .from("profile_stats")
         .upsert(
-          {
-            user_id: userId,
-            last_active_date: today,
-            username: username,
-            current_streak: nextCurrentStreak,
-            updated_at: new Date().toISOString(),
-          },
+          fallbackPayload,
           {
             onConflict: "user_id",
           }

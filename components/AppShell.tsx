@@ -1482,6 +1482,32 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, [pathname, userId]);
 
   useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+
+    const markActive = () => {
+      void trackUserActivity(userId);
+    };
+
+    const markActiveWhenVisible = () => {
+      if (document.visibilityState === "visible") {
+        markActive();
+      }
+    };
+
+    window.addEventListener("focus", markActive);
+    window.addEventListener("pointerdown", markActive, { passive: true });
+    window.addEventListener("keydown", markActive);
+    document.addEventListener("visibilitychange", markActiveWhenVisible);
+
+    return () => {
+      window.removeEventListener("focus", markActive);
+      window.removeEventListener("pointerdown", markActive);
+      window.removeEventListener("keydown", markActive);
+      document.removeEventListener("visibilitychange", markActiveWhenVisible);
+    };
+  }, [userId]);
+
+  useEffect(() => {
     function handleDashboardStatsSync(event: Event) {
       const customEvent = event as CustomEvent<{ level?: number; streak?: number; graceDays?: number }>;
       if (typeof customEvent.detail?.level === "number" && customEvent.detail.level > 0) {
