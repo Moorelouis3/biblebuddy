@@ -190,7 +190,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null);
   const [isDashboardStoreOpen, setIsDashboardStoreOpen] = useState(false);
-  const [appThemeId, setAppThemeId] = useState<AppThemeId>("light");
+  const [appThemeId, setAppThemeId] = useState<AppThemeId>(() => {
+    if (typeof window === "undefined") return "light";
+    return normalizeAppThemeId(
+      window.localStorage.getItem(APP_THEME_STORAGE_KEY) ||
+        window.localStorage.getItem("bb:dashboard-theme"),
+    );
+  });
   const [selectedBuddyId, setSelectedBuddyId] = useState<BuddyAvatarId | null>(null);
   const selectedBuddy = selectedBuddyId ? getBuddyAvatar(selectedBuddyId) : null;
   

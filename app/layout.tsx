@@ -8,6 +8,7 @@ import { AppToast } from "@/components/AppToast";
 import { PointsPop } from "@/components/PointsPop";
 import GlobalCreditFeedback from "@/components/GlobalCreditFeedback";
 import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
+import { PREMIUM_SKIN_STORAGE_KEY, PREMIUM_SKINS } from "@/lib/premiumSkins";
 // redeploy trigger
 
 export const metadata: Metadata = {
@@ -54,6 +55,78 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+const premiumSkinFirstPaintPayload = Object.fromEntries(
+  PREMIUM_SKINS.map((skin) => [
+    skin.id,
+    {
+      desktopBackgroundImage: skin.desktopBackgroundImage,
+      mobileBackgroundImage: skin.mobileBackgroundImage,
+      palette: skin.palette,
+    },
+  ]),
+);
+
+const premiumSkinFirstPaintScript = `
+(function () {
+  try {
+    var skins = ${JSON.stringify(premiumSkinFirstPaintPayload)};
+    var skinId = window.localStorage && window.localStorage.getItem(${JSON.stringify(PREMIUM_SKIN_STORAGE_KEY)});
+    var skin = skins[skinId];
+    if (!skin) return;
+
+    var root = document.documentElement;
+    var style = root.style;
+    var palette = skin.palette;
+    var prefersMobile = window.matchMedia && window.matchMedia("(max-width: 767px)").matches;
+    var bg = prefersMobile ? skin.mobileBackgroundImage : skin.desktopBackgroundImage;
+    var vars = {
+      background: "--bb-background",
+      surface: "--bb-surface",
+      surfaceSoft: "--bb-surface-soft",
+      card: "--bb-card",
+      cardBorder: "--bb-card-border",
+      textPrimary: "--bb-text-primary",
+      textSecondary: "--bb-text-secondary",
+      textMuted: "--bb-text-muted",
+      accent: "--bb-accent",
+      accentSoft: "--bb-accent-soft",
+      button: "--bb-button",
+      buttonText: "--bb-button-text",
+      navBackground: "--bb-nav-background",
+      navActive: "--bb-nav-active",
+      navInactive: "--bb-nav-inactive",
+      progressTrack: "--bb-progress-track",
+      progressFill: "--bb-progress-fill"
+    };
+
+    root.dataset.bbSkin = skinId;
+    root.dataset.bbTheme = window.localStorage.getItem("bb:app-theme") || "light";
+    style.setProperty("--bb-skin-bg-image", 'url("' + bg + '")');
+    style.setProperty("--bb-skin-bg-image-mobile", 'url("' + skin.mobileBackgroundImage + '")');
+    style.setProperty("--bb-skin-bg-image-desktop", 'url("' + skin.desktopBackgroundImage + '")');
+
+    Object.keys(vars).forEach(function (key) {
+      style.setProperty(vars[key], palette[key]);
+    });
+    style.setProperty("--bb-reader-bg", palette.card);
+    style.setProperty("--bb-reader-surface", palette.surface);
+    style.setProperty("--bb-reader-border", palette.cardBorder);
+    style.setProperty("--bb-reader-text", palette.textPrimary);
+    style.setProperty("--bb-reader-secondary", palette.textSecondary);
+    style.setProperty("--bb-reader-muted", palette.textMuted);
+    style.setProperty("--background", palette.background);
+    style.setProperty("--foreground", palette.textPrimary);
+
+    var preload = document.createElement("link");
+    preload.rel = "preload";
+    preload.as = "image";
+    preload.href = bg;
+    preload.fetchPriority = "high";
+    document.head.appendChild(preload);
+  } catch (error) {}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: {
@@ -62,6 +135,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          id="bb-premium-skin-first-paint"
+          dangerouslySetInnerHTML={{ __html: premiumSkinFirstPaintScript }}
+        />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3367331224607676"

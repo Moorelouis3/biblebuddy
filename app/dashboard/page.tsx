@@ -1080,8 +1080,14 @@ export default function DashboardPage() {
   const [buddySelectionWelcome, setBuddySelectionWelcome] = useState<{ buddyId: BuddyAvatarId; buddyName: string } | null>(null);
   const [showDiamondStore, setShowDiamondStore] = useState(false);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
-  const [activePremiumSkinId, setActivePremiumSkinId] = useState<PremiumSkinId>("none");
-  const [dashboardThemeId, setDashboardThemeId] = useState<AppThemeId>("light");
+  const [activePremiumSkinId, setActivePremiumSkinId] = useState<PremiumSkinId>(() => (
+    typeof window === "undefined" ? "none" : normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY))
+  ));
+  const [dashboardThemeId, setDashboardThemeId] = useState<AppThemeId>(() => (
+    typeof window === "undefined"
+      ? "light"
+      : normalizeAppThemeId(window.localStorage.getItem(APP_THEME_STORAGE_KEY) || window.localStorage.getItem("bb:dashboard-theme"))
+  ));
   const [storeLoading, setStoreLoading] = useState(false);
   const [storeBuyingId, setStoreBuyingId] = useState<string | null>(null);
   const [storeMessage, setStoreMessage] = useState<string | null>(null);
