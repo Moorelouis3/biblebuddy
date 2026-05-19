@@ -105,9 +105,14 @@ async function applyPendingInviteLink(currentUserId: string) {
   }
 
   try {
+    const { data: sessionData } = await supabase.auth.getSession();
+    const token = sessionData.session?.access_token;
     const response = await fetch("/api/ambassador/apply-code", {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: {
+        "content-type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
       body: JSON.stringify({ referrerUserId }),
     });
 

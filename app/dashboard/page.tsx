@@ -62,7 +62,14 @@ import {
   type BibleBuddyStoreItem,
 } from "../../lib/bibleBuddyStore";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
-import { SELECTED_BUDDY_STORAGE_KEY, getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "../../lib/buddyAvatars";
+import {
+  SELECTED_BUDDY_STORAGE_KEY,
+  getBuddyAvatar,
+  getBuddyPurchasePopupBody,
+  getBuddySelectionPopupCopy,
+  normalizeBuddyAvatarId,
+  type BuddyAvatarId,
+} from "../../lib/buddyAvatars";
 
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
@@ -74,9 +81,8 @@ const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
 const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 60 * 60 * 1000;
 const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
 const MAX_BADGE_POPUPS_PER_SESSION = 3;
-const MYSTERY_PRIZE_REWARDS = [100, 125, 150, 175, 200, 250];
-const DAILY_LOGIN_GIFT_WINDOW_MS = 24 * 60 * 60 * 1000;
-const DAILY_LOGIN_GIFT_MIN_DELAY_MS = 15 * 60 * 1000;
+const MYSTERY_PRIZE_REWARDS = [100, 150, 200, 250, 300, 400, 500];
+const DAILY_LOGIN_GIFT_MIN_DELAY_MS = 60 * 60 * 1000;
 const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
 
 const MATTHEW_CHAPTERS = 28;
@@ -158,6 +164,10 @@ type MysteryPrizeReveal = {
 type DailyLoginGiftReveal = {
   status: "closed" | "opening" | "opened";
   reward: number;
+};
+
+type StorePurchaseCongrats = {
+  item: BibleBuddyStoreItem;
 };
 
 type StorePromoKind = "buddies" | "diamonds";
@@ -963,6 +973,7 @@ export default function DashboardPage() {
   const [storeLoading, setStoreLoading] = useState(false);
   const [storeBuyingId, setStoreBuyingId] = useState<string | null>(null);
   const [storeMessage, setStoreMessage] = useState<string | null>(null);
+  const [storePurchaseCongrats, setStorePurchaseCongrats] = useState<StorePurchaseCongrats | null>(null);
   const [activeStorePromo, setActiveStorePromo] = useState<StorePromoKind | null>(null);
   const [mysteryPrizeReveal, setMysteryPrizeReveal] = useState<MysteryPrizeReveal | null>(null);
   const mysteryPrizeAwardingRef = useRef(false);
@@ -1016,6 +1027,10 @@ export default function DashboardPage() {
 
   function getDailyLoginGiftShownKey(currentUserId: string, dayKey: string) {
     return `bb:daily-login-gift:shown:${currentUserId}:${dayKey}`;
+  }
+
+  function getDailyLoginGiftFirstUseKey(currentUserId: string, dayKey: string) {
+    return `bb:daily-login-gift:first-use:${currentUserId}:${dayKey}`;
   }
 
   function getDailyPopupStepKey(currentUserId: string, dayKey: string) {
@@ -3334,6 +3349,7 @@ export default function DashboardPage() {
     setBibleBrowserSelectedBook(null);
     setBibleBrowserReading(null);
     setActiveStorePromo(null);
+    setStorePurchaseCongrats(null);
     setMysteryPrizeReveal(null);
     setDailyLoginGiftReveal(null);
     setBuddySelectionWelcome(null);
@@ -3367,6 +3383,37 @@ export default function DashboardPage() {
         .eq("user_id", userId);
       if (error) console.warn("[STORE] Flame saved locally, but profile update failed:", error.message);
     }
+  }
+
+  async function applyPurchasedBuddyFromItem(item: BibleBuddyStoreItem) {
+    if (item.kind !== "buddy") return;
+    const buddyId = normalizeBuddyAvatarId(item.id === "buddy-lil-louis" ? "louis" : item.id.replace("buddy-", ""));
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, buddyId);
+      window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId } }));
+    }
+    setProfile((current) => current ? { ...current, selected_buddy_avatar: buddyId } : current);
+    if (userId) {
+      const { error } = await supabase
+        .from("profile_stats")
+        .update({ selected_buddy_avatar: buddyId, updated_at: new Date().toISOString() })
+        .eq("user_id", userId);
+      if (error) console.warn("[STORE] Buddy saved locally, but profile update failed:", error.message);
+    }
+  }
+
+  async function handleUsePurchasedStoreItem(item: BibleBuddyStoreItem) {
+    if (item.themeId) {
+      await applyPurchasedTheme(item.themeId);
+      setStoreMessage(`${item.title} is now active.`);
+    } else if (item.flameId) {
+      await applyPurchasedFlame(item.flameId);
+      setStoreMessage(`${item.title} is now active.`);
+    } else if (item.kind === "buddy") {
+      await applyPurchasedBuddyFromItem(item);
+      setStoreMessage(`${item.title} is your Bible Buddy now.`);
+    }
+    setStorePurchaseCongrats(null);
   }
 
   async function handleOpenMysteryPrize() {
@@ -3417,6 +3464,14 @@ export default function DashboardPage() {
         return;
       }
 
+      setProfile((current) =>
+        current
+          ? {
+              ...current,
+              diamonds_count: Math.max(0, Number(current.diamonds_count ?? 0)) + awarded,
+            }
+          : current,
+      );
       setDailyLoginGiftReveal((current) => current ? { ...current, status: "opened" } : current);
       confetti({ particleCount: 80, spread: 68, origin: { y: 0.62 } });
       dailyLoginGiftAwardingRef.current = false;
@@ -3441,6 +3496,9 @@ export default function DashboardPage() {
       } else if (item.flameId) {
         await applyPurchasedFlame(item.flameId);
         setStoreMessage(`${item.title} is now active.`);
+      } else if (item.kind === "buddy") {
+        await applyPurchasedBuddyFromItem(item);
+        setStoreMessage(`${item.title} is your Bible Buddy now.`);
       } else {
         setStoreMessage(`You already own ${item.title}.`);
       }
@@ -3597,6 +3655,8 @@ export default function DashboardPage() {
     if (mysteryReward) {
       setMysteryPrizeReveal({ status: "closed", reward: mysteryReward });
       setStoreMessage(null);
+    } else {
+      setStorePurchaseCongrats({ item });
     }
     setStoreBuyingId(null);
   }
@@ -3660,20 +3720,25 @@ export default function DashboardPage() {
         const profileData = data;
         const todayKey = getBibleBuddyLocalDayKey();
         const nowIso = new Date().toISOString();
+        const nowMs = Date.now();
         const dailyGiftShownKey = getDailyLoginGiftShownKey(userId, todayKey);
         const localLastVisitKey = getDailyLoginGiftLastVisitKey(userId);
-        const localLastVisitAt =
-          typeof window !== "undefined" ? window.localStorage.getItem(localLastVisitKey) : null;
-        const previousGiftVisitAt = profileData?.daily_login_gift_last_visit_at ?? localLastVisitAt;
-        const previousGiftVisitMs = previousGiftVisitAt ? new Date(previousGiftVisitAt).getTime() : 0;
-        const hadRecentVisit =
-          Number.isFinite(previousGiftVisitMs) &&
-          previousGiftVisitMs > 0 &&
-          Date.now() - previousGiftVisitMs <= DAILY_LOGIN_GIFT_WINDOW_MS;
+        const dailyGiftFirstUseKey = getDailyLoginGiftFirstUseKey(userId, todayKey);
+        let firstUseAt =
+          typeof window !== "undefined" ? window.localStorage.getItem(dailyGiftFirstUseKey) : null;
+        if (!firstUseAt && typeof window !== "undefined") {
+          firstUseAt = nowIso;
+          window.localStorage.setItem(dailyGiftFirstUseKey, firstUseAt);
+        }
+        const firstUseMs = firstUseAt ? new Date(firstUseAt).getTime() : nowMs;
+        const hasWaitedSinceFirstUse =
+          Number.isFinite(firstUseMs) &&
+          firstUseMs > 0 &&
+          nowMs - firstUseMs >= DAILY_LOGIN_GIFT_MIN_DELAY_MS;
         const dailyGiftAlreadyShown =
           profileData?.daily_login_gift_last_shown_date === todayKey ||
           (typeof window !== "undefined" && window.localStorage.getItem(dailyGiftShownKey) === "1");
-        const shouldShowDailyLoginGift = false;
+        const shouldShowDailyLoginGift = !dailyGiftAlreadyShown && hasWaitedSinceFirstUse;
 
         if (typeof window !== "undefined") {
           window.localStorage.setItem(localLastVisitKey, nowIso);
@@ -4067,6 +4132,46 @@ export default function DashboardPage() {
   }, [userId, levelRefreshTick, isOwnerDashboard, seenBadgePopupIds]);
 
   useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    const dayKey = getBibleBuddyLocalDayKey();
+    const shownKey = getDailyLoginGiftShownKey(userId, dayKey);
+    if (profile?.daily_login_gift_last_shown_date === dayKey || window.localStorage.getItem(shownKey) === "1") return;
+
+    const firstUseKey = getDailyLoginGiftFirstUseKey(userId, dayKey);
+    let firstUseAt = window.localStorage.getItem(firstUseKey);
+    if (!firstUseAt) {
+      firstUseAt = new Date().toISOString();
+      window.localStorage.setItem(firstUseKey, firstUseAt);
+    }
+
+    const firstUseMs = new Date(firstUseAt).getTime();
+    if (!Number.isFinite(firstUseMs) || firstUseMs <= 0) return;
+
+    const openGift = () => {
+      if (window.localStorage.getItem(shownKey) === "1") return;
+      window.localStorage.setItem(shownKey, "1");
+      setProfile((current) => current ? { ...current, daily_login_gift_last_shown_date: dayKey } : current);
+      setDailyLoginGiftReveal({ status: "closed", reward: rollMysteryPrizeReward() });
+      void supabase
+        .from("profile_stats")
+        .update({
+          daily_login_gift_last_shown_date: dayKey,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("user_id", userId);
+    };
+
+    const remainingMs = firstUseMs + DAILY_LOGIN_GIFT_MIN_DELAY_MS - Date.now();
+    if (remainingMs <= 0) {
+      openGift();
+      return;
+    }
+
+    const timeoutId = window.setTimeout(openGift, remainingMs);
+    return () => window.clearTimeout(timeoutId);
+  }, [profile?.daily_login_gift_last_shown_date, userId]);
+
+  useEffect(() => {
     function handleDiamondsAwarded(event: Event) {
       const detail = (event as CustomEvent<{ amount?: number; diamonds?: number }>).detail;
       if (!detail) return;
@@ -4219,6 +4324,7 @@ export default function DashboardPage() {
       activeEarnedBadge ||
       earnedBadgeQueue.length > 0 ||
       dailyLoginGiftReveal ||
+      storePurchaseCongrats ||
       showLevelInfoModal ||
       showStreakBadgeModal ||
       showBadgesModal ||
@@ -4287,11 +4393,27 @@ export default function DashboardPage() {
 
       if (dailyPopupStep === "mystery") {
         const dailyGiftShownKey = getDailyLoginGiftShownKey(currentUserId, dayKey);
+        const dailyGiftFirstUseKey = getDailyLoginGiftFirstUseKey(currentUserId, dayKey);
+        let firstUseAt = window.localStorage.getItem(dailyGiftFirstUseKey);
+        if (!firstUseAt) {
+          firstUseAt = new Date().toISOString();
+          window.localStorage.setItem(dailyGiftFirstUseKey, firstUseAt);
+        }
+        const firstUseMs = new Date(firstUseAt).getTime();
+        const hasWaitedSinceFirstUse =
+          Number.isFinite(firstUseMs) &&
+          firstUseMs > 0 &&
+          Date.now() - firstUseMs >= DAILY_LOGIN_GIFT_MIN_DELAY_MS;
         const dailyGiftAlreadyShown =
           profile?.daily_login_gift_last_shown_date === dayKey ||
           window.localStorage.getItem(dailyGiftShownKey) === "1";
         if (dailyGiftAlreadyShown) {
           markDailyPopupShown();
+          return true;
+        }
+        if (!hasWaitedSinceFirstUse) {
+          setPendingDailyStreakSequence(false);
+          dailyStreakSequenceCheckRef.current = null;
           return true;
         }
 
@@ -4423,6 +4545,7 @@ export default function DashboardPage() {
     pendingDailyStreakSequence,
     profile,
     selectedDashboardTask,
+    storePurchaseCongrats,
     showBadgesModal,
     showCommunityModal,
     showDailyTaskCelebrationModal,
@@ -4484,6 +4607,13 @@ export default function DashboardPage() {
     dashboardChecklistData.tasks.find((task) => task.devotionalTitle)?.devotionalTitle ||
     dashboardChecklistData.title ||
     "your current Bible study";
+  const buddySelectionCopy = buddySelectionWelcome
+    ? getBuddySelectionPopupCopy(buddySelectionWelcome.buddyId, { studyTitle: buddyWelcomeStudyTitle })
+    : null;
+  const purchasedBuddyId =
+    storePurchaseCongrats?.item.kind === "buddy"
+      ? normalizeBuddyAvatarId(storePurchaseCongrats.item.id === "buddy-lil-louis" ? "louis" : storePurchaseCongrats.item.id.replace("buddy-", ""))
+      : null;
   const nextChapterLabel = (() => {
     const chapterTask = dashboardChecklistData.tasks.find((task) => task.book && task.chapter);
     if (!chapterTask?.book || !chapterTask.chapter || !dashboardChecklistData.nextJourneyTarget) return "the next chapter";
@@ -5591,13 +5721,13 @@ export default function DashboardPage() {
                 <LouisAvatar buddyId={buddySelectionWelcome.buddyId} mood="wave" size={142} />
               </div>
               <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#5f86bd)]">
-                ✨ {buddySelectionWelcome.buddyName} is ready
+                {buddySelectionCopy?.eyebrow || `${buddySelectionWelcome.buddyName} is ready`}
               </p>
               <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)] sm:text-4xl">
-                New Bible Buddy selected
+                {buddySelectionCopy?.title || "New Bible Buddy selected"}
               </h2>
               <p className="mx-auto mt-3 max-w-sm text-base font-semibold leading-7 text-[var(--bb-text-secondary,#355487)]">
-                I am looking forward to studying {buddyWelcomeStudyTitle} with you.
+                {buddySelectionCopy?.body || `I am looking forward to studying ${buddyWelcomeStudyTitle} with you.`}
               </p>
               <button
                 type="button"
@@ -5624,8 +5754,82 @@ export default function DashboardPage() {
       />
 
       <ModalShell
+        isOpen={Boolean(storePurchaseCongrats)}
+        onClose={() => setStorePurchaseCongrats(null)}
+        backdropColor="bg-black/45"
+      >
+        {storePurchaseCongrats ? (
+          <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+            <div className="relative overflow-hidden px-6 pb-7 pt-5 text-center sm:px-8">
+              <div
+                className="absolute inset-x-0 top-0 h-32"
+                style={{ background: `linear-gradient(135deg, ${storePurchaseCongrats.item.accent}26, transparent)` }}
+                aria-hidden="true"
+              />
+              <div className="relative flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => setStorePurchaseCongrats(null)}
+                  className="grid h-9 w-9 place-items-center rounded-full bg-white/85 text-xl font-black text-[var(--bb-text-secondary,#516784)] shadow-sm transition hover:brightness-95"
+                  aria-label="Close purchase message"
+                >
+                  x
+                </button>
+              </div>
+              <div className="relative mx-auto mt-1 grid h-36 w-36 place-items-center rounded-full bg-white shadow-[0_16px_36px_rgba(38,63,99,0.16)]">
+                {storePurchaseCongrats.item.kind === "buddy" ? (
+                  <LouisAvatar
+                    buddyId={normalizeBuddyAvatarId(storePurchaseCongrats.item.id === "buddy-lil-louis" ? "louis" : storePurchaseCongrats.item.id.replace("buddy-", ""))}
+                    mood="reading"
+                    size={124}
+                  />
+                ) : storePurchaseCongrats.item.flameId ? (
+                  <StreakFlameEmoji flameId={storePurchaseCongrats.item.flameId} size={82} title={storePurchaseCongrats.item.title} />
+                ) : (
+                  <span className="text-6xl" aria-hidden="true">{storePurchaseCongrats.item.emoji}</span>
+                )}
+              </div>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2563eb)]">
+                Purchase complete
+              </p>
+              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
+                Congrats on {storePurchaseCongrats.item.title}
+              </h2>
+              <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
+                {storePurchaseCongrats.item.kind === "buddy"
+                  ? getBuddyPurchasePopupBody(purchasedBuddyId)
+                  : storePurchaseCongrats.item.themeId || storePurchaseCongrats.item.flameId
+                    ? `${storePurchaseCongrats.item.title} is unlocked and ready to use.`
+                    : `${storePurchaseCongrats.item.title} has been added to your account.`}
+              </p>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {storePurchaseCongrats.item.themeId || storePurchaseCongrats.item.flameId || storePurchaseCongrats.item.kind === "buddy" ? (
+                  <button
+                    type="button"
+                    onClick={() => void handleUsePurchasedStoreItem(storePurchaseCongrats.item)}
+                    className="rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
+                  >
+                    {storePurchaseCongrats.item.kind === "buddy" ? "Set as default" : "Use it"}
+                  </button>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={() => setStorePurchaseCongrats(null)}
+                  className="rounded-full border border-[var(--bb-card-border,#d7e4f7)] bg-white px-6 py-3 text-sm font-black text-[var(--bb-text-primary,#21304f)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                >
+                  {"That's awesome"}
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </ModalShell>
+
+      <ModalShell
         isOpen={
           Boolean(dailyLoginGiftReveal) &&
+          !storePurchaseCongrats &&
           !buddySelectionWelcome &&
           !showVerseOfTheDayModal &&
           !showStreakMotivationModal &&
@@ -5668,7 +5872,7 @@ export default function DashboardPage() {
               <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
                 {dailyLoginGiftReveal.status === "opened"
                   ? "Your free mystery diamonds were added to your stash."
-                  : "You came back for a second visit within 24 hours, so Bible Buddy has a free mystery gift for you."}
+                  : "You came back after today's first Bible Buddy session, so a free mystery gift is ready for you."}
               </p>
 
               <button

@@ -18,6 +18,7 @@ import {
 import { LouisAvatar } from "./LouisAvatar";
 import { triggerPoints } from "./PointsPop";
 import { TASK_REWARD_LABELS, TASK_XP } from "../lib/progressionRewards";
+import { getProverbsChapterNotesFallback } from "../lib/proverbsChapterNotesFallback";
 
 type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
 
@@ -801,6 +802,7 @@ export default function LouisDailyTasksModal({
       try {
         const bookKey = selectedNotesTask.book.toLowerCase().trim();
         const chapterNum = Number(selectedNotesTask.chapter);
+        const fallbackNotes = getProverbsChapterNotesFallback(selectedNotesTask.book, chapterNum);
 
         const { data: cached } = await supabase
           .from("bible_notes")
@@ -811,6 +813,11 @@ export default function LouisDailyTasksModal({
 
         if (cached?.notes_text && cached.notes_text.trim().length > 0) {
           if (!cancelled) setNotesText(cached.notes_text);
+          return;
+        }
+
+        if (fallbackNotes) {
+          if (!cancelled) setNotesText(fallbackNotes);
           return;
         }
 

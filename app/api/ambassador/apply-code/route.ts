@@ -8,6 +8,16 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 const REFERRAL_REWARD_DIAMONDS = 250;
 const REFERRAL_REWARD_XP = 250;
 
+function buildReferralCode(seed: string | null | undefined) {
+  const letters = (seed || "BUDDY").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 7) || "BUDDY";
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+  let suffix = "";
+  while ((letters + suffix).length < 10) {
+    suffix += alphabet[Math.floor(Math.random() * alphabet.length)];
+  }
+  return (letters + suffix).slice(0, 10);
+}
+
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   const code = typeof body?.code === "string" ? body.code.trim().toUpperCase() : "";
@@ -17,26 +27,31 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "No invite link provided." }, { status: 400 });
   }
 
-  // Authenticate the requesting user
-  const cookieStore = await cookies();
-  const supabaseAuth = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) { return cookieStore.get(name)?.value; },
-        set() {},
-        remove() {},
-      },
-    }
-  );
+  // Authenticate the requesting user. Some app paths use Supabase's browser
+  // session token without a server-readable auth cookie, so support both.
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+  const authHeader = req.headers.get("authorization");
+  const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  const authResult = token
+    ? await createClient(url, anonKey, { auth: { autoRefreshToken: false, persistSession: false } }).auth.getUser(token)
+    : await (async () => {
+        const cookieStore = await cookies();
+        const supabaseAuth = createServerClient(url, anonKey, {
+          cookies: {
+            get(name: string) { return cookieStore.get(name)?.value; },
+            set() {},
+            remove() {},
+          },
+        });
+        return supabaseAuth.auth.getUser();
+      })();
 
-  const { data: { user }, error: authError } = await supabaseAuth.auth.getUser();
+  const { data: { user }, error: authError } = authResult;
   if (authError || !user) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
   const supabase = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
 
@@ -48,7 +63,29 @@ export async function POST(req: NextRequest) {
     ? ambassadorQuery.eq("user_id", referrerUserId)
     : ambassadorQuery.eq("referral_code", code);
 
-  const { data: ambassador, error: lookupError } = await ambassadorQuery.maybeSingle();
+  let { data: ambassador, error: lookupError } = await ambassadorQuery.maybeSingle();
+
+  if (!ambassador && referrerUserId && !lookupError) {
+    const { data: referrerProfile } = await supabase
+      .from("profile_stats")
+      .select("username, display_name")
+      .eq("user_id", referrerUserId)
+      .maybeSingle();
+
+    const { data: createdAmbassador, error: createAmbassadorError } = await supabase
+      .from("ambassador_profiles")
+      .insert({
+        user_id: referrerUserId,
+        referral_code: buildReferralCode(referrerProfile?.username ?? referrerProfile?.display_name),
+        is_active: true,
+      })
+      .select("id, user_id, referral_code, is_active")
+      .maybeSingle();
+
+    if (!createAmbassadorError) {
+      ambassador = createdAmbassador;
+    }
+  }
 
   if (lookupError || !ambassador || !ambassador.is_active) {
     return NextResponse.json({ error: "Invalid or inactive invite link." }, { status: 400 });

@@ -1,18 +1,8 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { normalizeFlameCosmeticId, type FlameCosmeticId } from "../lib/flameCosmetics";
-
-const FLAME_FILTERS: Record<FlameCosmeticId, string> = {
-  default: "none",
-  orange: "none",
-  blue: "hue-rotate(176deg) saturate(1.12) brightness(1.18)",
-  gold: "hue-rotate(22deg) saturate(1.45) brightness(1.12)",
-  purple: "hue-rotate(215deg) saturate(1.75) brightness(1.02)",
-  red: "hue-rotate(342deg) saturate(1.35) brightness(1.02)",
-  green: "hue-rotate(92deg) saturate(1.65) brightness(1.05)",
-  black: "grayscale(1) contrast(1.45) brightness(0.72)",
-};
+import { useId } from "react";
+import { getFlameCosmetic, type FlameCosmeticId } from "../lib/flameCosmetics";
 
 type Props = {
   flameId?: FlameCosmeticId | string | null;
@@ -22,17 +12,60 @@ type Props = {
 };
 
 export default function StreakFlameEmoji({ flameId, size = 42, className = "", title }: Props) {
-  const normalizedFlameId = normalizeFlameCosmeticId(flameId);
+  const flame = getFlameCosmetic(flameId);
+  const gradientId = useId().replace(/:/g, "");
+  const outerGradientId = `flame-outer-${gradientId}`;
+  const innerGradientId = `flame-inner-${gradientId}`;
+  const glowGradientId = `flame-glow-${gradientId}`;
 
   return (
     <span
-      className={`inline-block leading-none ${className}`}
-      style={{ fontSize: size, filter: FLAME_FILTERS[normalizedFlameId] ?? "none" } as CSSProperties}
+      className={`inline-grid place-items-center leading-none ${className}`}
+      style={{ width: size, height: size } as CSSProperties}
       title={title}
-      aria-label={title}
+      aria-label={title || flame.name}
       role="img"
     >
-      🔥
+      <svg
+        viewBox="0 0 64 64"
+        width={size}
+        height={size}
+        aria-hidden="true"
+        focusable="false"
+        className="block overflow-visible"
+      >
+        <defs>
+          <radialGradient id={glowGradientId} cx="50%" cy="74%" r="56%">
+            <stop offset="0%" stopColor={flame.main} stopOpacity="0.32" />
+            <stop offset="100%" stopColor={flame.main} stopOpacity="0" />
+          </radialGradient>
+          <linearGradient id={outerGradientId} x1="20%" y1="8%" x2="78%" y2="96%">
+            <stop offset="0%" stopColor={flame.light} />
+            <stop offset="38%" stopColor={flame.main} />
+            <stop offset="100%" stopColor={flame.dark} />
+          </linearGradient>
+          <linearGradient id={innerGradientId} x1="34%" y1="22%" x2="70%" y2="96%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.92" />
+            <stop offset="38%" stopColor={flame.light} />
+            <stop offset="100%" stopColor={flame.main} />
+          </linearGradient>
+        </defs>
+        <ellipse cx="32" cy="47" rx="22" ry="15" fill={`url(#${glowGradientId})`} />
+        <path
+          d="M34 3C42 14 52 21 55 35c3 15-8 27-23 27S7 53 9 38c1-9 6-15 12-22-1 8 2 13 7 15-2-12 1-20 6-28Z"
+          fill={`url(#${outerGradientId})`}
+        />
+        <path
+          d="M34 18c6 8 13 15 13 25 0 10-7 17-16 17-8 0-14-6-14-14 0-6 3-11 8-16 0 7 3 11 7 12-2-9 0-17 2-24Z"
+          fill={`url(#${innerGradientId})`}
+          opacity="0.96"
+        />
+        <path
+          d="M27 47c0-5 3-9 7-14 4 6 7 10 7 15 0 6-4 10-8 10-4 0-6-4-6-11Z"
+          fill="#FFFFFF"
+          opacity="0.44"
+        />
+      </svg>
     </span>
   );
 }

@@ -18,7 +18,13 @@ import {
 } from "../lib/louisDailyFlow";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { ACTION_TYPE } from "@/lib/actionTypes";
-import { SELECTED_BUDDY_STORAGE_KEY, getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "@/lib/buddyAvatars";
+import {
+  SELECTED_BUDDY_STORAGE_KEY,
+  buildBuddySelectedChatMessage,
+  getBuddyAvatar,
+  normalizeBuddyAvatarId,
+  type BuddyAvatarId,
+} from "@/lib/buddyAvatars";
 
 type MessageRole = "user" | "assistant";
 
@@ -26,6 +32,7 @@ type Message = {
   role: MessageRole;
   content: string;
   serverMessageId?: string | null;
+  eventKey?: string | null;
 };
 
 type ChatLouisProps = {
@@ -632,6 +639,10 @@ function getChatStorageKey(userId: string) {
   return `bb:louis:chat:${userId}`;
 }
 
+function getBuddyChatStorageKey(userId: string, buddyId: BuddyAvatarId) {
+  return `bb:bible-buddy:chat:${userId}:${buddyId}`;
+}
+
 function getIdleGreetingShownAtKey(userId: string) {
   return `bb:louis:idle-greeting-at:${DAILY_LOUIS_FLOW_VERSION}:${userId}`;
 }
@@ -751,6 +762,19 @@ function buildVerseExplanationMessage(verse: VerseOfTheDayEntry) {
     ...parts,
     `That’s why this verse is not just something to read. It’s something to carry with you today.`,
   ].join("\n\n");
+}
+
+function buildBuddySelectedEventKey(buddyId: BuddyAvatarId, studyContext: LouisStudyContext | null) {
+  return `buddy-selected:${buddyId}:${studyContext?.studyTitle || "no-study"}:${studyContext?.chapterLabel || "no-chapter"}`;
+}
+
+function buildBuddySelectedMessage(buddyId: BuddyAvatarId, studyContext: LouisStudyContext | null) {
+  const chapterStudy = studyContext?.chapterLabel
+    ? `${studyContext.chapterLabel}${studyContext.studyTitle ? ` in ${studyContext.studyTitle}` : ""}`
+    : studyContext?.studyTitle || "your Bible Study";
+  const nextTask = studyContext?.nextTaskTitle || (studyContext?.allDone ? "getting ready for the next chapter" : "your next Bible Study task");
+
+  return buildBuddySelectedChatMessage(buddyId, { chapterStudy, nextTask });
 }
 
 function normalizeOnboardingGoal(value: string | null | undefined) {
@@ -1705,6 +1729,8 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
   const panelRef = useRef<HTMLDivElement | null>(null);
   const messagesContainerRef = useRef<HTMLDivElement | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const loadedChatKeyRef = useRef<string | null>(null);
+  const loadingChatRef = useRef(false);
   const showLouisGuideModal = false;
   const louisGuideView: "intro" | "tour" | "recommendation" = "intro";
   const showChatTourModal = false;
@@ -1989,9 +2015,31 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
   useEffect(() => {
     if (!louisUserId || typeof window === "undefined") return;
-    window.localStorage.setItem(getChatStorageKey(louisUserId), JSON.stringify(normalizeOpeningGreetingMessages(messages).slice(-40)));
+    const chatKey = getBuddyChatStorageKey(louisUserId, selectedBuddy.id);
+    if (loadingChatRef.current || loadedChatKeyRef.current !== chatKey) return;
+    const persistedMessages = normalizeOpeningGreetingMessages(messages).slice(-40);
+    window.localStorage.setItem(chatKey, JSON.stringify(persistedMessages));
 
     const latestUserMessage = [...messages].reverse().find((message) => message.role === "user");
+    void supabase
+      .from("bible_buddy_chat_threads")
+      .upsert(
+        {
+          user_id: louisUserId,
+          buddy_id: selectedBuddy.id,
+          messages: persistedMessages,
+          last_user_message: latestUserMessage?.content ?? null,
+          last_message_at: messages.length > 0 ? new Date().toISOString() : null,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "user_id,buddy_id" },
+      )
+      .then(({ error }) => {
+        if (error && !/bible_buddy_chat_threads/i.test(error.message || "")) {
+          console.warn("[BIBLE_BUDDY_CHAT] Could not sync chat thread:", error.message);
+        }
+      });
+
     if (!latestUserMessage) return;
 
     window.localStorage.setItem(
@@ -2001,7 +2049,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
         lastUserAt: new Date().toISOString(),
       }),
     );
-  }, [messages, louisUserId]);
+  }, [messages, louisUserId, selectedBuddy.id]);
 
   useEffect(() => {
     let cancelled = false;
@@ -2043,16 +2091,6 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
             : null;
 
       if (typeof window !== "undefined") {
-        try {
-          const storedMessages = window.localStorage.getItem(getChatStorageKey(user.id));
-          const parsedMessages = storedMessages ? (JSON.parse(storedMessages) as Message[]) : [];
-          setMessages(normalizeOpeningGreetingMessages(parsedMessages));
-          setHasLouisHistory(parsedMessages.length > 0);
-        } catch {
-          setMessages([]);
-          setHasLouisHistory(false);
-        }
-
         setOnboardingGoal(normalizeOnboardingGoal(window.localStorage.getItem(getGoalStorageKey())));
         try {
           const storedRollout = window.localStorage.getItem(getRolloutStorageKey(user.id));
@@ -2394,6 +2432,88 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
       cancelled = true;
     };
   }, [pathname]);
+
+  useEffect(() => {
+    if (!louisUserId || typeof window === "undefined") return;
+
+    let cancelled = false;
+    const chatKey = getBuddyChatStorageKey(louisUserId, selectedBuddy.id);
+    const legacyKey = getChatStorageKey(louisUserId);
+    const starterEventKey = buildBuddySelectedEventKey(selectedBuddy.id, studyContext);
+
+    function withBuddyStarter(sourceMessages: Message[]) {
+      const normalized = normalizeOpeningGreetingMessages(sourceMessages).slice(-40);
+      const hasStarter = normalized.some((message) => message.eventKey === starterEventKey);
+      if (hasStarter) return normalized;
+      return [
+        ...normalized,
+        {
+          role: "assistant" as const,
+          content: buildBuddySelectedMessage(selectedBuddy.id, studyContext),
+          eventKey: starterEventKey,
+        },
+      ].slice(-40);
+    }
+
+    async function loadBuddyThread() {
+      loadingChatRef.current = true;
+      loadedChatKeyRef.current = null;
+
+      let localMessages: Message[] = [];
+      try {
+        const storedMessages =
+          window.localStorage.getItem(chatKey) ||
+          (selectedBuddy.id === "louis" ? window.localStorage.getItem(legacyKey) : null);
+        localMessages = storedMessages ? (JSON.parse(storedMessages) as Message[]) : [];
+      } catch {
+        localMessages = [];
+      }
+
+      const localThread = withBuddyStarter(localMessages);
+      if (!cancelled) {
+        setMessages(localThread);
+        setHasLouisHistory(localMessages.length > 0);
+      }
+
+      const { data, error } = await supabase
+        .from("bible_buddy_chat_threads")
+        .select("messages")
+        .eq("user_id", louisUserId)
+        .eq("buddy_id", selectedBuddy.id)
+        .maybeSingle();
+
+      if (cancelled) return;
+
+      const dbMessages = Array.isArray(data?.messages) ? (data.messages as Message[]) : null;
+      let finalMessages = localThread;
+      if (dbMessages) {
+        finalMessages = withBuddyStarter(dbMessages);
+        setHasLouisHistory(dbMessages.length > 0);
+      } else if (error && !/bible_buddy_chat_threads|PGRST116/i.test(error.message || "")) {
+        console.warn("[BIBLE_BUDDY_CHAT] Could not load chat thread:", error.message);
+      }
+
+      loadedChatKeyRef.current = chatKey;
+      loadingChatRef.current = false;
+      setMessages(finalMessages);
+      window.localStorage.setItem(chatKey, JSON.stringify(finalMessages));
+    }
+
+    void loadBuddyThread();
+
+    return () => {
+      cancelled = true;
+      loadingChatRef.current = false;
+    };
+  }, [
+    louisUserId,
+    selectedBuddy.id,
+    selectedBuddy.name,
+    studyContext?.studyTitle,
+    studyContext?.chapterLabel,
+    studyContext?.nextTaskTitle,
+    studyContext?.allDone,
+  ]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -3634,7 +3754,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
                 >
                   {!isUserMessage ? (
                     startsMessageRun ? (
-                      <div className="mt-5 grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+                      <div className="mt-5 grid h-9 w-9 shrink-0 place-items-center overflow-hidden">
                         <LouisAvatar buddyId={selectedBuddy.id} mood="peace" size={31} />
                       </div>
                     ) : (
@@ -3673,7 +3793,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
             })}
             {isSending ? (
               <div className="flex items-end justify-start gap-2.5">
-                <div className="mt-5 grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+                <div className="mt-5 grid h-9 w-9 shrink-0 place-items-center overflow-hidden">
                   <LouisAvatar buddyId={selectedBuddy.id} mood="thinking" size={31} />
                 </div>
                 <div className="max-w-[78%]">

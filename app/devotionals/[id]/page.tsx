@@ -1418,7 +1418,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Complete Bible Reading First</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              You must complete the assigned Bible reading before marking this day as complete.
+              You must complete the assigned Bible reading before marking this {isChapterJourneyStudy ? "chapter" : "section"} as complete.
             </p>
             
             <button

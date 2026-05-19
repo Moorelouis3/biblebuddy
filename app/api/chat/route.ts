@@ -1,5 +1,6 @@
 // app/api/chat/route.ts
 import OpenAI from "openai";
+import { buildBuddyVoiceSystemPrompt, getBuddyAvatar } from "@/lib/buddyAvatars";
 
 if (!process.env.OPENAI_API_KEY) {
   console.error("⚠️ OPENAI_API_KEY is not set in environment variables!");
@@ -77,6 +78,11 @@ export async function POST(req: Request) {
       typeof louisContext?.selectedBuddyName === "string" && louisContext.selectedBuddyName.trim()
         ? louisContext.selectedBuddyName.trim()
         : "Lil Louis";
+    const selectedBuddyId =
+      typeof louisContext?.selectedBuddyId === "string" && louisContext.selectedBuddyId.trim()
+        ? louisContext.selectedBuddyId.trim()
+        : "louis";
+    const selectedBuddy = getBuddyAvatar(selectedBuddyId);
 
     console.log("Received request:", {
       messageCount: userMessages.length,
@@ -460,9 +466,9 @@ Core app areas that are real in Bible Buddy:
   Chapter notes and series notes live here in the Bible reading flow.
   These are meant to help people understand the chapter, not just finish it.
 
-- Devotionals
-  These are guided daily studies with numbered days.
-  If someone is in a devotional, help them keep going with the next unfinished day.
+- Bible Studies
+  These are guided chapter studies with Bible reading, intro, notes, trivia, Scrambled, and reflection.
+  If someone is in a Bible Study, help them keep going with the next unfinished chapter task.
 
 - Bible Reading Plans
   These are structured reading paths for people who want a broader plan.
@@ -541,7 +547,7 @@ Do not describe Bible Buddy like a giant menu dump.
 Only explain the feature they asked about plus the one best next step that fits.
 
 If they ask a broad question like "what can this app do?" then give a short tour of the main areas:
-The Bible, Devotionals, Study Group, Games, Study Tools, Bible Buddy TV, Notes, and Louis chat.
+The Bible, Bible Studies, Study Group, Games, Study Tools, Bible Buddy TV, Notes, and Bible Buddy chat.
 
 CONVERSATION FLOW RULES
 
@@ -652,6 +658,7 @@ Bible experience level: ${louisContext?.bibleExperienceLevel || "none"}
 Louis journey stage: ${louisContext?.louisJourneyStage || "none"}
 Primary devotional: ${louisContext?.primaryDevotionalTitle || "none"}
 Primary devotional day: ${louisContext?.primaryDevotionalDay ?? "none"}
+Selected Bible Buddy: ${selectedBuddy.name}
 Last conversation topic: ${louisContext?.lastConversationTopic || "none"}
 Last conversation summary: ${louisContext?.lastConversationSummary || "none"}
 Last conversation resolved: ${louisContext?.lastConversationResolved ? "yes" : "no"}
@@ -955,6 +962,8 @@ END OF GROW MODE INSTRUCTIONS
         throw new Error(`Invalid message role at index ${i}: ${msg.role}`);
       }
     }
+
+    systemContent += buildBuddyVoiceSystemPrompt(selectedBuddy.id);
 
     if (selectedBuddyName !== "Lil Louis") {
       systemContent = systemContent

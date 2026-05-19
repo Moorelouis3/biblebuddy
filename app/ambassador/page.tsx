@@ -10,7 +10,8 @@ const REWARD_XP = 250;
 
 interface Referral {
   referred_user_id: string;
-  username: string;
+  username: string | null;
+  display_name?: string | null;
   profile_image_url: string | null;
   trial_started_at: string;
   trial_ends_at: string;
@@ -55,46 +56,20 @@ export default function BuddyRewardsPage() {
       }
 
       const { data: { session } } = await supabase.auth.getSession();
-      if (session?.access_token) {
-        const res = await fetch("/api/ambassador/ensure-profile", {
-          method: "POST",
-          headers: { authorization: `Bearer ${session.access_token}` },
-        });
-        if (res.ok) {
-          const json = await res.json();
-          setProfile({ referral_code: json.referral_code, is_active: json.is_active, user_id: user.id });
-        }
-      }
+      if (!session?.access_token) throw new Error("Sign in again to load Buddy Rewards.");
 
-      const { data: refs } = await supabase
-        .from("ambassador_referrals")
-        .select("referred_user_id, trial_started_at, trial_ends_at")
-        .eq("ambassador_user_id", user.id)
-        .order("trial_started_at", { ascending: false });
+      const res = await fetch("/api/ambassador/rewards", {
+        headers: { authorization: `Bearer ${session.access_token}` },
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json?.error || "Could not load Buddy Rewards.");
 
-      if (refs && refs.length > 0) {
-        const refUserIds = refs.map((r) => r.referred_user_id);
-        const { data: refProfiles } = await supabase
-          .from("profile_stats")
-          .select("user_id, username, display_name, profile_image_url")
-          .in("user_id", refUserIds);
-
-        const profileMap = new Map((refProfiles || []).map((p) => [p.user_id, p]));
-        setReferrals(refs.map((r) => {
-          const p = profileMap.get(r.referred_user_id);
-          return {
-            referred_user_id: r.referred_user_id,
-            username: p?.display_name ?? p?.username ?? "Bible Buddy",
-            profile_image_url: p?.profile_image_url ?? null,
-            trial_started_at: r.trial_started_at,
-            trial_ends_at: r.trial_ends_at,
-          };
-        }));
-      }
+      setProfile(json.profile);
+      setReferrals(json.referrals || []);
 
       setLoading(false);
     }
-    void init();
+    void init().catch(() => setLoading(false));
   }, [router]);
 
   async function copyText(value: string) {
@@ -168,22 +143,25 @@ export default function BuddyRewardsPage() {
             </div>
           ) : (
             <div className="divide-y divide-gray-100">
-              {referrals.map((r) => (
+              {referrals.map((r) => {
+                const displayName = r.display_name || r.username || "Bible Buddy";
+                return (
                 <div key={r.referred_user_id} className="flex items-center gap-3 px-5 py-3">
                   {r.profile_image_url ? (
-                    <img src={r.profile_image_url} alt={r.username} className="h-9 w-9 shrink-0 rounded-full object-cover" />
+                    <img src={r.profile_image_url} alt={displayName} className="h-9 w-9 shrink-0 rounded-full object-cover" />
                   ) : (
                     <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-100 text-sm font-black text-blue-700">
-                      {r.username.charAt(0).toUpperCase()}
+                      {displayName.charAt(0).toUpperCase()}
                     </div>
                   )}
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-black text-gray-800">{r.username}</p>
+                    <p className="truncate text-sm font-black text-gray-800">{displayName}</p>
                     <p className="text-xs font-semibold text-gray-400">Joined {formatDate(r.trial_started_at)}</p>
                   </div>
                   <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">+250/+250</span>
                 </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>

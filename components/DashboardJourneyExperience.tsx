@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
@@ -127,6 +127,9 @@ type ShareRewardsReferral = {
   referred_user_id: string;
   trial_started_at: string;
   trial_ends_at: string;
+  username?: string | null;
+  display_name?: string | null;
+  profile_image_url?: string | null;
 };
 
 type ShareRewardsProfile = {
@@ -1660,6 +1663,7 @@ export default function DashboardJourneyExperience({
   const [shareRewardsReferrals, setShareRewardsReferrals] = useState<ShareRewardsReferral[]>([]);
   const [shareRewardsLoading, setShareRewardsLoading] = useState(false);
   const [shareRewardsError, setShareRewardsError] = useState<string | null>(null);
+  const [referralRewardModal, setReferralRewardModal] = useState<ShareRewardsReferral | null>(null);
   const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
   const [studyModeGateDismissed, setStudyModeGateDismissed] = useState(true);
   const [freeStudyModeActive, setFreeStudyModeActive] = useState(false);
@@ -1737,6 +1741,59 @@ export default function DashboardJourneyExperience({
   const completedTasks = checklistData?.completedCount ?? 0;
   const allDone = checklistData?.allDone ?? false;
   const canFreeUserChooseNewStudy = !isPaidUser && allDone && !checklistData?.nextJourneyTarget;
+
+  const rememberReferralRewardSeen = useCallback((referral: ShareRewardsReferral | null) => {
+    if (!userId || !referral || typeof window === "undefined") return;
+    const key = `bb:share-reward-seen:${userId}`;
+    const seen = new Set(
+      JSON.parse(window.localStorage.getItem(key) || "[]").filter((value: unknown): value is string => typeof value === "string"),
+    );
+    seen.add(referral.referred_user_id);
+    window.localStorage.setItem(key, JSON.stringify([...seen].slice(-100)));
+  }, [userId]);
+
+  const getReferralDisplayName = useCallback((referral: ShareRewardsReferral | null) => {
+    return referral?.display_name || referral?.username || "Your friend";
+  }, []);
+
+  const maybeShowReferralRewardModal = useCallback((referrals: ShareRewardsReferral[]) => {
+    if (!userId || typeof window === "undefined" || referralRewardModal || referrals.length === 0) return;
+    const key = `bb:share-reward-seen:${userId}`;
+    const seen = new Set(
+      JSON.parse(window.localStorage.getItem(key) || "[]").filter((value: unknown): value is string => typeof value === "string"),
+    );
+    const newestUnseen = referrals.find((referral) => !seen.has(referral.referred_user_id));
+    if (newestUnseen) setReferralRewardModal(newestUnseen);
+  }, [referralRewardModal, userId]);
+
+  const fetchShareRewards = useCallback(async (options?: { showLoading?: boolean; checkForNewReward?: boolean }) => {
+    if (!userId) return;
+    if (options?.showLoading) setShareRewardsLoading(true);
+    setShareRewardsError(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error("Sign in again to load Buddy Rewards.");
+
+      const response = await fetch("/api/ambassador/rewards", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload?.error || "Could not load Buddy Rewards.");
+
+      const nextReferrals = (payload?.referrals || []) as ShareRewardsReferral[];
+      setShareRewardsProfile(payload.profile as ShareRewardsProfile);
+      setShareRewardsReferrals(nextReferrals);
+      if (options?.checkForNewReward) {
+        maybeShowReferralRewardModal(nextReferrals);
+      }
+    } catch (error: any) {
+      setShareRewardsError(error?.message || "Could not load Buddy Rewards.");
+    } finally {
+      if (options?.showLoading) setShareRewardsLoading(false);
+    }
+  }, [maybeShowReferralRewardModal, userId]);
 
   useEffect(() => {
     if (!isOwnerDashboard || !userId) {
@@ -1844,42 +1901,19 @@ export default function DashboardJourneyExperience({
   }, [buddiesDashboard, buddiesDashboardLoading, safeActivePage]);
 
   useEffect(() => {
-    let cancelled = false;
-
-    async function loadShareRewards() {
-      if (!userId) return;
-      if (shareRewardsProfile || shareRewardsLoading) return;
-      const inviteOwnerId = userId;
-      setShareRewardsLoading(true);
-      setShareRewardsError(null);
-
-      try {
-        const { data: refs, error: refsError } = await supabase
-          .from("ambassador_referrals")
-          .select("referred_user_id, trial_started_at, trial_ends_at")
-          .eq("ambassador_user_id", userId)
-          .order("trial_started_at", { ascending: false });
-        if (refsError) throw refsError;
-
-        if (!cancelled) {
-          setShareRewardsProfile({ referral_code: "", is_active: true, user_id: inviteOwnerId });
-          setShareRewardsReferrals((refs || []) as ShareRewardsReferral[]);
-        }
-      } catch (error: any) {
-        if (!cancelled) setShareRewardsError(error?.message || "Could not load Buddy Rewards.");
-      } finally {
-        if (!cancelled) setShareRewardsLoading(false);
-      }
-    }
-
     if (dashboardPageKeys[safeActivePage] === "share" && userId) {
-      void loadShareRewards();
+      void fetchShareRewards({ showLoading: true });
     }
+  }, [fetchShareRewards, safeActivePage, userId]);
 
-    return () => {
-      cancelled = true;
-    };
-  }, [safeActivePage, shareRewardsLoading, shareRewardsProfile, userId]);
+  useEffect(() => {
+    if (!userId) return;
+    void fetchShareRewards({ checkForNewReward: true });
+    const intervalId = window.setInterval(() => {
+      void fetchShareRewards({ checkForNewReward: true });
+    }, 45000);
+    return () => window.clearInterval(intervalId);
+  }, [fetchShareRewards, userId]);
 
   useEffect(() => {
     function handleEmbeddedCommunityHeight(event: MessageEvent) {
@@ -4074,20 +4108,6 @@ export default function DashboardJourneyExperience({
                     >
                       Email
                     </a>
-                    <button
-                      type="button"
-                      onClick={copyInviteLink}
-                      className="rounded-2xl border border-[#ead8ff] bg-[#fbf7ff] px-3 py-3 text-center text-sm font-black text-[#6f3bc2] transition hover:bg-white"
-                    >
-                      Instagram DM
-                    </button>
-                    <button
-                      type="button"
-                      onClick={copyInviteLink}
-                      className="rounded-2xl border border-[#c7f0ff] bg-[#f2fcff] px-3 py-3 text-center text-sm font-black text-[#0b6880] transition hover:bg-white"
-                    >
-                      TikTok Message
-                    </button>
                   </div>
 
                   <div className="grid grid-cols-3 gap-2">
@@ -5493,6 +5513,61 @@ export default function DashboardJourneyExperience({
             </button>
           </div>
         </div>
+      </ModalShell>
+
+      <ModalShell
+        isOpen={Boolean(referralRewardModal)}
+        onClose={() => {
+          rememberReferralRewardSeen(referralRewardModal);
+          setReferralRewardModal(null);
+        }}
+        backdropColor="bg-black/55"
+        zIndex="z-[80]"
+      >
+        {referralRewardModal ? (
+          <div className="w-full max-w-sm overflow-hidden rounded-[28px] bg-white text-center shadow-2xl">
+            <div className="bg-[linear-gradient(135deg,#eefdf5,#ffffff_58%,#fff2c7)] px-6 pb-6 pt-7">
+              <div className="mx-auto grid h-24 w-24 place-items-center overflow-hidden rounded-full border-4 border-white bg-[#edf7ff] shadow-lg">
+                {referralRewardModal.profile_image_url ? (
+                  <img
+                    src={referralRewardModal.profile_image_url}
+                    alt={getReferralDisplayName(referralRewardModal)}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={96} />
+                )}
+              </div>
+              <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Buddy Rewards</p>
+              <h2 className="mt-1 text-2xl font-black leading-tight text-gray-950">
+                {getReferralDisplayName(referralRewardModal)} signed up!
+              </h2>
+              <p className="mt-3 text-sm font-bold leading-6 text-gray-600">
+                You were credited 250 XP points and 250 diamonds for sharing Bible Buddy.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-2 px-6 py-5">
+              <div className="rounded-2xl bg-[#f3f7ff] px-3 py-4">
+                <p className="text-2xl font-black text-[#2f7fe8]">+250</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-gray-500">XP points</p>
+              </div>
+              <div className="rounded-2xl bg-[#fff7d7] px-3 py-4">
+                <p className="text-2xl font-black text-[#b7791f]">+250</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-gray-500">diamonds</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  rememberReferralRewardSeen(referralRewardModal);
+                  setReferralRewardModal(null);
+                }}
+                className="col-span-2 mt-2 rounded-full bg-[#111827] px-4 py-3 text-sm font-black text-white transition hover:bg-[#263246]"
+              >
+                Awesome
+              </button>
+            </div>
+          </div>
+        ) : null}
       </ModalShell>
 
       <ModalShell

@@ -17,6 +17,7 @@ import {
   BUDDY_AVATARS,
   DEFAULT_BUDDY_AVATAR,
   SELECTED_BUDDY_STORAGE_KEY,
+  getBuddyAvatar,
   normalizeBuddyAvatarId,
   type BuddyAvatarId,
 } from "../../lib/buddyAvatars";
@@ -37,6 +38,14 @@ type SettingsProfileRow = {
   selected_streak_flame?: string | null;
   selected_buddy_avatar?: string | null;
 };
+
+type BuddyReadyModal = {
+  buddyId: BuddyAvatarId;
+  buddyName: string;
+  buttonLabel: string;
+};
+
+const BUDDY_READY_BUTTON_LABELS = ["Let's go", "OK", "That's awesome"];
 
 function getBuddyStoreItemId(buddyId: BuddyAvatarId) {
   return buddyId === "louis" ? "buddy-lil-louis" : `buddy-${buddyId}`;
@@ -70,6 +79,7 @@ export default function SettingsPage() {
   const [selectedFlame, setSelectedFlame] = useState<FlameCosmeticId>("default");
   const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId>(DEFAULT_BUDDY_AVATAR);
   const [buddySaving, setBuddySaving] = useState<BuddyAvatarId | null>(null);
+  const [buddyReadyModal, setBuddyReadyModal] = useState<BuddyReadyModal | null>(null);
   const [activeBuddyIndex, setActiveBuddyIndex] = useState(0);
   const [removingItemId, setRemovingItemId] = useState<string | null>(null);
   const buddySwipeStartRef = useRef<{ x: number; y: number } | null>(null);
@@ -384,6 +394,13 @@ export default function SettingsPage() {
       if (error) throw error;
       setSettingsMessage("Bible Buddy updated.");
       setActiveBuddyIndex(0);
+      const buddy = getBuddyAvatar(buddyId);
+      const labelIndex = Math.abs(buddyId.charCodeAt(0) + buddyId.length) % BUDDY_READY_BUTTON_LABELS.length;
+      setBuddyReadyModal({
+        buddyId,
+        buddyName: buddy.name,
+        buttonLabel: BUDDY_READY_BUTTON_LABELS[labelIndex],
+      });
     } catch (error: any) {
       setSelectedBuddy(previousBuddy);
       if (typeof window !== "undefined") {
@@ -522,6 +539,42 @@ export default function SettingsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
+      {buddyReadyModal ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4">
+          <div className="w-full max-w-md overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-white shadow-2xl">
+            <div className="relative overflow-hidden px-6 pb-7 pt-5 text-center">
+              <div className="absolute inset-x-0 top-0 h-28 bg-[var(--bb-accent-soft,#eaf5ff)]" aria-hidden="true" />
+              <button
+                type="button"
+                onClick={() => setBuddyReadyModal(null)}
+                className="relative ml-auto grid h-9 w-9 place-items-center rounded-full bg-white/85 text-xl font-black text-gray-500 shadow-sm transition hover:brightness-95"
+                aria-label="Close Buddy ready message"
+              >
+                x
+              </button>
+              <div className="relative mx-auto mt-1 grid h-40 w-40 place-items-center rounded-full bg-white shadow-[0_16px_36px_rgba(38,63,99,0.16)]">
+                <LouisAvatar buddyId={buddyReadyModal.buddyId} mood="reading" size={136} />
+              </div>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2563eb)]">
+                Bible Buddy ready
+              </p>
+              <h2 className="mt-2 text-3xl font-black leading-tight text-gray-950">
+                {buddyReadyModal.buddyName} is ready
+              </h2>
+              <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-gray-600">
+                Your new Bible Buddy is ready to guide you through the Bible.
+              </p>
+              <button
+                type="button"
+                onClick={() => setBuddyReadyModal(null)}
+                className="mt-6 w-full rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
+              >
+                {buddyReadyModal.buttonLabel}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
       <div className="max-w-2xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Settings</h1>
 
