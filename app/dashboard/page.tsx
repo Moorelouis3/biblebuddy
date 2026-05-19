@@ -7276,6 +7276,16 @@ export default function DashboardPage() {
             z-index: 1;
           }
         }
+        html[data-bb-skin="blue-storm"] .dashboard-shell,
+        html[data-bb-skin="midnight-garden"] .dashboard-shell,
+        html[data-bb-skin="lavender-prayer"] .dashboard-shell,
+        html[data-bb-skin="ruby-village"] .dashboard-shell,
+        html[data-bb-skin="blue-storm"] .bb-blue-storm-stage,
+        html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage,
+        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage,
+        html[data-bb-skin="ruby-village"] .bb-blue-storm-stage {
+          overflow: visible !important;
+        }
         @keyframes dashboard-inline-task-slide {
           from { opacity: 0; transform: translateY(-8px); }
           to { opacity: 1; transform: translateY(0); }

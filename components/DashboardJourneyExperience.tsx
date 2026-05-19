@@ -4381,7 +4381,7 @@ export default function DashboardJourneyExperience({
       `}</style>
       <div
         ref={containerRef}
-        className="overflow-hidden [scrollbar-width:none] [touch-action:auto] [&::-webkit-scrollbar]:hidden"
+        className="overflow-x-hidden overflow-y-visible [scrollbar-width:none] [touch-action:auto] [&::-webkit-scrollbar]:hidden"
       >
         <div
           className="flex transition-transform duration-300 ease-out"
