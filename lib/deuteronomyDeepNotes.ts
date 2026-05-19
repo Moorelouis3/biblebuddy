@@ -34,43 +34,27 @@ Deuteronomy 1 teaches us that remembering the road matters before stepping into 
 
 ## Why Deuteronomy 1 Matters
 
-🗣️ Moses begins his final teaching before Israel enters the land.
-
-🧭 Israel is reminded that the journey should not have taken forty years.
-
-🏔️ God had already told them to leave Horeb and move toward the promise.
-
-👥 Moses remembers the burden of leading a large and difficult people.
-
-⚖️ Wise leaders were appointed to help judge the people fairly.
-
-🍇 The spies saw that the land was good.
-
-😨 Israel let fear speak louder than God's promise.
-
-🚪 Unbelief kept the first generation from entering.
-
-🙏 The chapter warns us not to confuse regret with obedience.
+- 🗣️ Moses begins his final teaching before Israel enters the land.
+- 🧭 Israel is reminded that the journey should not have taken forty years.
+- 🏔️ God had already told them to leave Horeb and move toward the promise.
+- 👥 Moses remembers the burden of leading a large and difficult people.
+- ⚖️ Wise leaders were appointed to help judge the people fairly.
+- 🍇 The spies saw that the land was good.
+- 😨 Israel let fear speak louder than God's promise.
+- 🚪 Unbelief kept the first generation from entering.
+- 🙏 The chapter warns us not to confuse regret with obedience.
 
 ## Chapter Flow
 
-🗣️ Moses speaks to Israel in the wilderness east of Jordan.
-
-⏳ The short road became a long wilderness because of unbelief.
-
-🏔️ God commands Israel to leave Horeb and take the land.
-
-👥 Moses appoints leaders to help carry the people.
-
-⚖️ Judges are told to hear cases with righteousness and courage.
-
-🍇 The spies search the land and bring back good fruit.
-
-😨 Israel refuses to trust God and fears the giants.
-
-🚫 God declares that the unbelieving generation will not enter.
-
-⚔️ Israel tries to fight after refusing to obey, but God is not with them.
+- 🗣️ Moses speaks to Israel in the wilderness east of Jordan.
+- ⏳ The short road became a long wilderness because of unbelief.
+- 🏔️ God commands Israel to leave Horeb and take the land.
+- 👥 Moses appoints leaders to help carry the people.
+- ⚖️ Judges are told to hear cases with righteousness and courage.
+- 🍇 The spies search the land and bring back good fruit.
+- 😨 Israel refuses to trust God and fears the giants.
+- 🚫 God declares that the unbelieving generation will not enter.
+- ⚔️ Israel tries to fight after refusing to obey, but God is not with them.
 
 # Deep Chapter Notes
 
@@ -1249,57 +1233,38 @@ And when one season closes, God is already preparing what comes next.
 
 ## Why Deuteronomy 34 Matters
 
-⛰️ Moses climbs Mount Nebo and sees the promised land.
-
-👀 God lets Moses see the inheritance promised to Abraham, Isaac, and Jacob.
-
-🚫 Moses does not cross the Jordan because of his earlier disobedience.
-
-🕊️ Moses dies as the servant of the Lord.
-
-🪦 The Lord buries Moses, and no one knows his grave.
-
-💪 Moses is 120 years old, but his eye is not dim and his strength is not gone.
-
-😭 Israel mourns Moses for thirty days.
-
-🧭 Joshua is filled with the spirit of wisdom.
-
-👂 Israel listens to Joshua as Moses commanded.
-
-🙌 Moses is honored as a prophet uniquely known by the Lord face to face.
-
-🔥 The chapter remembers the signs, wonders, mighty hand, and great terror God worked through Moses.
-
-📖 The story closes Deuteronomy while preparing the reader for Joshua.
+- ⛰️ Moses climbs Mount Nebo and sees the promised land.
+- 👀 God lets Moses see the inheritance promised to Abraham, Isaac, and Jacob.
+- 🚫 Moses does not cross the Jordan because of his earlier disobedience.
+- 🕊️ Moses dies as the servant of the Lord.
+- 🪦 The Lord buries Moses, and no one knows his grave.
+- 💪 Moses is 120 years old, but his eye is not dim and his strength is not gone.
+- 😭 Israel mourns Moses for thirty days.
+- 🧭 Joshua is filled with the spirit of wisdom.
+- 👂 Israel listens to Joshua as Moses commanded.
+- 🙌 Moses is honored as a prophet uniquely known by the Lord face to face.
+- 🔥 The chapter remembers the signs, wonders, mighty hand, and great terror God worked through Moses.
+- 📖 The story closes Deuteronomy while preparing the reader for Joshua.
 
 ## Chapter Flow
 
-⛰️ Moses goes from the plains of Moab to Mount Nebo.
-
-👀 The Lord shows him the land in every direction.
-
-📜 God identifies the land as the promise sworn to the fathers.
-
-🚫 God tells Moses he has seen it with his eyes, but he will not go over.
-
-🕊️ Moses dies in the land of Moab according to the word of the Lord.
-
-🪦 God buries him in a valley, but the place remains unknown.
-
-💪 Moses dies at 120 with strength still present.
-
-😭 Israel weeps for Moses thirty days.
-
-🧭 Joshua takes leadership with wisdom.
-
-👂 Israel obeys Joshua.
-
-🙌 The final verses honor Moses as uniquely known by God.
+- ⛰️ Moses goes from the plains of Moab to Mount Nebo.
+- 👀 The Lord shows him the land in every direction.
+- 📜 God identifies the land as the promise sworn to the fathers.
+- 🚫 God tells Moses he has seen it with his eyes, but he will not go over.
+- 🕊️ Moses dies in the land of Moab according to the word of the Lord.
+- 🪦 God buries him in a valley, but the place remains unknown.
+- 💪 Moses dies at 120 with strength still present.
+- 😭 Israel weeps for Moses thirty days.
+- 🧭 Joshua takes leadership with wisdom.
+- 👂 Israel obeys Joshua.
+- 🙌 The final verses honor Moses as uniquely known by God.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 34:1 to 4
+
+# Moses goes up the mountain alone
 
 > **1** And Moses went up from the plains of Moab unto the mountain of Nebo, to the top of Pisgah... And the LORD shewed him all the land...
 
@@ -1308,6 +1273,8 @@ And when one season closes, God is already preparing what comes next.
 > **3** And the south, and the plain of the valley of Jericho, the city of palm trees...
 
 > **4** And the LORD said unto him, This is the land which I sware unto Abraham, unto Isaac, and unto Jacob... I have caused thee to see it with thine eyes, but thou shalt not go over thither.
+
+### 🧠 What This Passage Shows
 
 Moses goes up the mountain alone.
 
@@ -1453,9 +1420,13 @@ He finished his assigned portion.
 
 ## Deuteronomy 34:5 to 6
 
+# Moses dies in the land of Moab
+
 > **5** So Moses the servant of the LORD died there in the land of Moab, according to the word of the LORD.
 
 > **6** And he buried him in a valley in the land of Moab... but no man knoweth of his sepulchre unto this day.
+
+### 🧠 What This Passage Shows
 
 Moses dies in the land of Moab.
 
@@ -1557,7 +1528,11 @@ Keep following the Lord.
 
 ## Deuteronomy 34:7
 
+# Moses dies at 120 years old
+
 > **7** And Moses was an hundred and twenty years old when he died: his eye was not dim, nor his natural force abated.
+
+### 🧠 What This Passage Shows
 
 Moses dies at 120 years old.
 
@@ -1637,7 +1612,11 @@ That is faithfulness too.
 
 ## Deuteronomy 34:8
 
+# Israel mourns Moses for thirty days
+
 > **8** And the children of Israel wept for Moses in the plains of Moab thirty days: so the days of weeping and mourning for Moses were ended.
+
+### 🧠 What This Passage Shows
 
 Israel mourns Moses for thirty days.
 
@@ -1723,7 +1702,11 @@ Then follow God into what comes next.
 
 ## Deuteronomy 34:9
 
+# Now Joshua steps forward
+
 > **9** And Joshua the son of Nun was full of the spirit of wisdom; for Moses had laid his hands upon him: and the children of Israel hearkened unto him, and did as the LORD commanded Moses.
+
+### 🧠 What This Passage Shows
 
 Now Joshua steps forward.
 
@@ -1809,11 +1792,15 @@ And he needed the Lord.
 
 ## Deuteronomy 34:10 to 12
 
+# The final verses honor Moses
+
 > **10** And there arose not a prophet since in Israel like unto Moses, whom the LORD knew face to face,
 
 > **11** In all the signs and the wonders, which the LORD sent him to do in the land of Egypt to Pharaoh...
 
 > **12** And in all that mighty hand, and in all the great terror which Moses shewed in the sight of all Israel.
+
+### 🧠 What This Passage Shows
 
 The final verses honor Moses.
 
@@ -2126,67 +2113,43 @@ But all need the same God.
 
 ## Why Deuteronomy 33 Matters
 
-🙌 Moses blesses Israel before his death.
-
-🔥 The chapter begins with God's glory at Sinai.
-
-❤️ God is described as loving His people.
-
-📖 The law is called an inheritance for the congregation of Jacob.
-
-👑 The Lord is pictured as King among His gathered people.
-
-🧭 The tribes receive different blessings and roles.
-
-🙏 Moses asks that Reuben live and not die.
-
-🦁 Judah is blessed with help in battle.
-
-📖 Levi is blessed for priestly faithfulness and teaching God's law.
-
-🛡️ Benjamin is called beloved and sheltered by the Lord.
-
-🌾 Joseph receives rich blessing from heaven, earth, and God's favor.
-
-🐂 Ephraim and Manasseh are pictured with strength.
-
-⛺ Zebulun and Issachar are blessed in going out and dwelling.
-
-⚔️ Gad is blessed with strength and justice.
-
-🦁 Dan is pictured like a lion's whelp.
-
-🌊 Naphtali is full of favor and blessing.
-
-🛢️ Asher is blessed with favor, strength, and security.
-
-🏠 The chapter ends with the eternal God as Israel's refuge.
+- 🙌 Moses blesses Israel before his death.
+- 🔥 The chapter begins with God's glory at Sinai.
+- ❤️ God is described as loving His people.
+- 📖 The law is called an inheritance for the congregation of Jacob.
+- 👑 The Lord is pictured as King among His gathered people.
+- 🧭 The tribes receive different blessings and roles.
+- 🙏 Moses asks that Reuben live and not die.
+- 🦁 Judah is blessed with help in battle.
+- 📖 Levi is blessed for priestly faithfulness and teaching God's law.
+- 🛡️ Benjamin is called beloved and sheltered by the Lord.
+- 🌾 Joseph receives rich blessing from heaven, earth, and God's favor.
+- 🐂 Ephraim and Manasseh are pictured with strength.
+- ⛺ Zebulun and Issachar are blessed in going out and dwelling.
+- ⚔️ Gad is blessed with strength and justice.
+- 🦁 Dan is pictured like a lion's whelp.
+- 🌊 Naphtali is full of favor and blessing.
+- 🛢️ Asher is blessed with favor, strength, and security.
+- 🏠 The chapter ends with the eternal God as Israel's refuge.
 
 ## Chapter Flow
 
-🌅 Moses begins by remembering the Lord's majestic coming from Sinai.
-
-❤️ The Lord loves His people and holds His holy ones.
-
-📖 Israel receives the law through Moses.
-
-👑 God is King among His gathered people.
-
-🗣️ Moses blesses Reuben, Judah, Levi, Benjamin, Joseph, Zebulun, Issachar, Gad, Dan, Naphtali, and Asher.
-
-🌾 Some blessings focus on land and fruitfulness.
-
-⚔️ Some blessings focus on strength and victory.
-
-📖 Some blessings focus on worship, teaching, and priestly service.
-
-🙌 The ending celebrates Israel's unmatched God.
-
-🛡️ The Lord is Israel's shield, help, sword, refuge, and dwelling place.
+- 🌅 Moses begins by remembering the Lord's majestic coming from Sinai.
+- ❤️ The Lord loves His people and holds His holy ones.
+- 📖 Israel receives the law through Moses.
+- 👑 God is King among His gathered people.
+- 🗣️ Moses blesses Reuben, Judah, Levi, Benjamin, Joseph, Zebulun, Issachar, Gad, Dan, Naphtali, and Asher.
+- 🌾 Some blessings focus on land and fruitfulness.
+- ⚔️ Some blessings focus on strength and victory.
+- 📖 Some blessings focus on worship, teaching, and priestly service.
+- 🙌 The ending celebrates Israel's unmatched God.
+- 🛡️ The Lord is Israel's shield, help, sword, refuge, and dwelling place.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 33:1 to 5
+
+# The chapter opens by calling Moses "the man of God
 
 > **1** And this is the blessing, wherewith Moses the man of God blessed the children of Israel before his death.
 
@@ -2197,6 +2160,8 @@ But all need the same God.
 > **4** Moses commanded us a law, even the inheritance of the congregation of Jacob.
 
 > **5** And he was king in Jeshurun, when the heads of the people and the tribes of Israel were gathered together.
+
+### 🧠 What This Passage Shows
 
 The chapter opens by calling Moses "the man of God."
 
@@ -2268,9 +2233,13 @@ If we start with God, we remember the One who reveals Himself, loves His people,
 
 ## Deuteronomy 33:6 to 7
 
+# Reuben receives a short blessing:
+
 > **6** Let Reuben live, and not die; and let not his men be few.
 
 > **7** And this is the blessing of Judah: and he said, Hear, LORD, the voice of Judah, and bring him unto his people: let his hands be sufficient for him; and be thou an help to him from his enemies.
+
+### 🧠 What This Passage Shows
 
 Reuben receives a short blessing:
 
@@ -2332,6 +2301,8 @@ In both cases, the answer is the Lord.
 
 ## Deuteronomy 33:8 to 11
 
+# Levi receives one of the longest blessings
+
 > **8** And of Levi he said, Let thy Thummim and thy Urim be with thy holy one...
 
 > **9** Who said unto his father and to his mother, I have not seen him... for they have observed thy word, and kept thy covenant.
@@ -2339,6 +2310,8 @@ In both cases, the answer is the Lord.
 > **10** They shall teach Jacob thy judgments, and Israel thy law: they shall put incense before thee, and whole burnt sacrifice upon thine altar.
 
 > **11** Bless, LORD, his substance, and accept the work of his hands...
+
+### 🧠 What This Passage Shows
 
 Levi receives one of the longest blessings.
 
@@ -2398,7 +2371,11 @@ The community suffers when spiritual leaders care more about pleasing people tha
 
 ## Deuteronomy 33:12
 
+# Benjamin's blessing is short but beautiful
+
 > **12** And of Benjamin he said, The beloved of the LORD shall dwell in safety by him; and the LORD shall cover him all the day long, and he shall dwell between his shoulders.
+
+### 🧠 What This Passage Shows
 
 Benjamin's blessing is short but beautiful.
 
@@ -2450,6 +2427,8 @@ It is also about learning to dwell safely near Him.
 
 ## Deuteronomy 33:13 to 17
 
+# Joseph receives a rich blessing full of abundance
+
 > **13** And of Joseph he said, Blessed of the LORD be his land, for the precious things of heaven...
 
 > **14** And for the precious fruits brought forth by the sun...
@@ -2459,6 +2438,8 @@ It is also about learning to dwell safely near Him.
 > **16** And for the precious things of the earth and fulness thereof, and for the good will of him that dwelt in the bush...
 
 > **17** His glory is like the firstling of his bullock, and his horns are like the horns of unicorns...
+
+### 🧠 What This Passage Shows
 
 Joseph receives a rich blessing full of abundance.
 
@@ -2516,9 +2497,13 @@ It should make us grateful.
 
 ## Deuteronomy 33:18 to 19
 
+# Zebulun and Issachar are blessed together
+
 > **18** And of Zebulun he said, Rejoice, Zebulun, in thy going out; and, Issachar, in thy tents.
 
 > **19** They shall call the people unto the mountain; there they shall offer sacrifices of righteousness...
+
+### 🧠 What This Passage Shows
 
 Zebulun and Issachar are blessed together.
 
@@ -2576,9 +2561,13 @@ The question is whether you are honoring God in it.
 
 ## Deuteronomy 33:20 to 21
 
+# Gad is blessed with enlargement, strength, and justice
+
 > **20** And of Gad he said, Blessed be he that enlargeth Gad: he dwelleth as a lion, and teareth the arm with the crown of the head.
 
 > **21** And he provided the first part for himself... and he came with the heads of the people, he executed the justice of the LORD...
+
+### 🧠 What This Passage Shows
 
 Gad is blessed with enlargement, strength, and justice.
 
@@ -2618,9 +2607,13 @@ Strength is meant to help others enter what God has promised.
 
 ## Deuteronomy 33:22 to 23
 
+# Dan is described as a lion's whelp
+
 > **22** And of Dan he said, Dan is a lion's whelp: he shall leap from Bashan.
 
 > **23** And of Naphtali he said, O Naphtali, satisfied with favour, and full with the blessing of the LORD: possess thou the west and the south.
+
+### 🧠 What This Passage Shows
 
 Dan is described as a lion's whelp.
 
@@ -2668,9 +2661,13 @@ Both come from God.
 
 ## Deuteronomy 33:24 to 25
 
+# Asher's blessing is full of favor, family, richness, and
+
 > **24** And of Asher he said, Let Asher be blessed with children; let him be acceptable to his brethren, and let him dip his foot in oil.
 
 > **25** Thy shoes shall be iron and brass; and as thy days, so shall thy strength be.
+
+### 🧠 What This Passage Shows
 
 Asher's blessing is full of favor, family, richness, and strength.
 
@@ -2728,6 +2725,8 @@ He calls you to trust Him today.
 
 ## Deuteronomy 33:26 to 29
 
+# The chapter ends by lifting Israel's eyes back to God
+
 > **26** There is none like unto the God of Jeshurun, who rideth upon the heaven in thy help...
 
 > **27** The eternal God is thy refuge, and underneath are the everlasting arms...
@@ -2735,6 +2734,8 @@ He calls you to trust Him today.
 > **28** Israel then shall dwell in safety alone...
 
 > **29** Happy art thou, O Israel: who is like unto thee, O people saved by the LORD...
+
+### 🧠 What This Passage Shows
 
 The chapter ends by lifting Israel's eyes back to God.
 
@@ -3007,69 +3008,44 @@ It is life.
 
 ## Why Deuteronomy 32 Matters
 
-🎵 Moses teaches Israel a song that will witness against future forgetfulness.
-
-🌧️ The teaching is meant to fall like rain and nourish like dew.
-
-🪨 The Lord is called the Rock, perfect, faithful, just, and upright.
-
-💔 Israel is described as corrupt and foolish when they turn from Him.
-
-👨‍👧 God is pictured as Father, Maker, and the One who established His people.
-
-🧠 Israel is told to remember the days of old.
-
-🦅 God found, led, protected, and carried Israel like an eagle over its young.
-
-🍯 Israel becomes full from blessing, then forgets the Lord.
-
-🛑 Idolatry is shown as spiritual betrayal.
-
-⚠️ God's judgment exposes the emptiness of false gods.
-
-🙌 The Lord declares that He alone is God.
-
-🩸 The song ends with God judging enemies and showing mercy to His land and people.
-
-📖 Moses says these words are not vain; they are Israel's life.
+- 🎵 Moses teaches Israel a song that will witness against future forgetfulness.
+- 🌧️ The teaching is meant to fall like rain and nourish like dew.
+- 🪨 The Lord is called the Rock, perfect, faithful, just, and upright.
+- 💔 Israel is described as corrupt and foolish when they turn from Him.
+- 👨‍👧 God is pictured as Father, Maker, and the One who established His people.
+- 🧠 Israel is told to remember the days of old.
+- 🦅 God found, led, protected, and carried Israel like an eagle over its young.
+- 🍯 Israel becomes full from blessing, then forgets the Lord.
+- 🛑 Idolatry is shown as spiritual betrayal.
+- ⚠️ God's judgment exposes the emptiness of false gods.
+- 🙌 The Lord declares that He alone is God.
+- 🩸 The song ends with God judging enemies and showing mercy to His land and people.
+- 📖 Moses says these words are not vain; they are Israel's life.
 
 ## Chapter Flow
 
-👂 Heaven and earth are called to listen.
-
-🌧️ Moses wants his teaching to fall like rain.
-
-🪨 God is praised as the Rock whose work is perfect.
-
-💔 Israel's corruption is contrasted with God's faithfulness.
-
-🧠 Israel is told to remember the old days and ask the elders.
-
-🦅 God cared for Israel in the wilderness and guarded them.
-
-🍞 Israel is blessed with abundance.
-
-😔 Jeshurun grows fat and kicks.
-
-🛑 Israel turns to strange gods and forgets the Rock who begot them.
-
-🔥 God responds with jealousy and judgment.
-
-⚔️ The song describes disaster, sword, famine, and scattering.
-
-🤔 God says Israel is a nation without counsel or understanding.
-
-🙌 The Lord declares, "I, even I, am he."
-
-⚖️ God promises vengeance and compassion.
-
-📖 Moses finishes the song and tells Israel to set their hearts on these words.
-
-⛰️ God tells Moses to go up Mount Nebo and see the land before his death.
+- 👂 Heaven and earth are called to listen.
+- 🌧️ Moses wants his teaching to fall like rain.
+- 🪨 God is praised as the Rock whose work is perfect.
+- 💔 Israel's corruption is contrasted with God's faithfulness.
+- 🧠 Israel is told to remember the old days and ask the elders.
+- 🦅 God cared for Israel in the wilderness and guarded them.
+- 🍞 Israel is blessed with abundance.
+- 😔 Jeshurun grows fat and kicks.
+- 🛑 Israel turns to strange gods and forgets the Rock who begot them.
+- 🔥 God responds with jealousy and judgment.
+- ⚔️ The song describes disaster, sword, famine, and scattering.
+- 🤔 God says Israel is a nation without counsel or understanding.
+- 🙌 The Lord declares, "I, even I, am he."
+- ⚖️ God promises vengeance and compassion.
+- 📖 Moses finishes the song and tells Israel to set their hearts on these words.
+- ⛰️ God tells Moses to go up Mount Nebo and see the land before his death.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 32:1 to 4
+
+# The song begins by calling heaven and earth to listen
 
 > **1** Give ear, O ye heavens, and I will speak; and hear, O earth, the words of my mouth.
 
@@ -3078,6 +3054,8 @@ It is life.
 > **3** Because I will publish the name of the LORD: ascribe ye greatness unto our God.
 
 > **4** He is the Rock, his work is perfect: for all his ways are judgment: a God of truth and without iniquity, just and right is he.
+
+### 🧠 What This Passage Shows
 
 The song begins by calling heaven and earth to listen.
 
@@ -3165,6 +3143,8 @@ God is faithful, just, true, and right.
 
 ## Deuteronomy 32:5 to 9
 
+# After praising God's faithfulness, the song turns to
+
 > **5** They have corrupted themselves, their spot is not the spot of his children: they are a perverse and crooked generation.
 
 > **6** Do ye thus requite the LORD, O foolish people and unwise? is not he thy father that hath bought thee? hath he not made thee, and established thee?
@@ -3174,6 +3154,8 @@ God is faithful, just, true, and right.
 > **8** When the most High divided to the nations their inheritance...
 
 > **9** For the LORD'S portion is his people; Jacob is the lot of his inheritance.
+
+### 🧠 What This Passage Shows
 
 After praising God's faithfulness, the song turns to Israel's corruption.
 
@@ -3241,6 +3223,8 @@ If you forget what God saved you from, what He has carried you through, and how 
 
 ## Deuteronomy 32:10 to 14
 
+# These verses describe God's tender care for Israel
+
 > **10** He found him in a desert land, and in the waste howling wilderness; he led him about, he instructed him, he kept him as the apple of his eye.
 
 > **11** As an eagle stirreth up her nest, fluttereth over her young, spreadeth abroad her wings...
@@ -3250,6 +3234,8 @@ If you forget what God saved you from, what He has carried you through, and how 
 > **13** He made him ride on the high places of the earth...
 
 > **14** Butter of kine, and milk of sheep, with fat of lambs...
+
+### 🧠 What This Passage Shows
 
 These verses describe God's tender care for Israel.
 
@@ -3335,6 +3321,8 @@ He may bless you, but He calls you to remember the Giver.
 
 ## Deuteronomy 32:15 to 18
 
+# "Jeshurun" is a poetic name for Israel
+
 > **15** But Jeshurun waxed fat, and kicked... then he forsook God which made him, and lightly esteemed the Rock of his salvation.
 
 > **16** They provoked him to jealousy with strange gods, with abominations provoked they him to anger.
@@ -3342,6 +3330,8 @@ He may bless you, but He calls you to remember the Giver.
 > **17** They sacrificed unto devils, not to God; to gods whom they knew not...
 
 > **18** Of the Rock that begat thee thou art unmindful, and hast forgotten God that formed thee.
+
+### 🧠 What This Passage Shows
 
 "Jeshurun" is a poetic name for Israel.
 
@@ -3413,6 +3403,8 @@ That is how forgetfulness begins.
 
 ## Deuteronomy 32:19 to 25
 
+# God responds to Israel's idolatry with holy anger
+
 > **19** And when the LORD saw it, he abhorred them, because of the provoking of his sons, and of his daughters.
 
 > **20** And he said, I will hide my face from them, I will see what their end shall be...
@@ -3426,6 +3418,8 @@ That is how forgetfulness begins.
 > **24** They shall be burnt with hunger, and devoured with burning heat...
 
 > **25** The sword without, and terror within, shall destroy both the young man and the virgin...
+
+### 🧠 What This Passage Shows
 
 God responds to Israel's idolatry with holy anger.
 
@@ -3481,6 +3475,8 @@ The Lord's anger rises because His people are giving themselves to death.
 
 ## Deuteronomy 32:26 to 33
 
+# God speaks about scattering Israel, but He also shows
+
 > **26** I said, I would scatter them into corners, I would make the remembrance of them to cease from among men:
 
 > **27** Were it not that I feared the wrath of the enemy...
@@ -3496,6 +3492,8 @@ The Lord's anger rises because His people are giving themselves to death.
 > **32** For their vine is of the vine of Sodom...
 
 > **33** Their wine is the poison of dragons...
+
+### 🧠 What This Passage Shows
 
 God speaks about scattering Israel, but He also shows restraint.
 
@@ -3565,6 +3563,8 @@ Look at whether the path leads toward God or away from Him.
 
 ## Deuteronomy 32:34 to 43
 
+# This section brings the song toward its climax
+
 > **34** Is not this laid up in store with me, and sealed up among my treasures?
 
 > **35** To me belongeth vengeance, and recompence...
@@ -3582,6 +3582,8 @@ Look at whether the path leads toward God or away from Him.
 > **41** If I whet my glittering sword...
 
 > **43** Rejoice, O ye nations, with his people... and will be merciful unto his land, and to his people.
+
+### 🧠 What This Passage Shows
 
 This section brings the song toward its climax.
 
@@ -3675,6 +3677,8 @@ Christ bears the curse and brings life.
 
 ## Deuteronomy 32:44 to 47
 
+# After the song, Moses speaks plainly
+
 > **44** And Moses came and spake all the words of this song in the ears of the people...
 
 > **45** And Moses made an end of speaking all these words to all Israel:
@@ -3682,6 +3686,8 @@ Christ bears the curse and brings life.
 > **46** And he said unto them, Set your hearts unto all the words which I testify among you this day...
 
 > **47** For it is not a vain thing for you; because it is your life...
+
+### 🧠 What This Passage Shows
 
 After the song, Moses speaks plainly.
 
@@ -3733,6 +3739,8 @@ If we treat God's word lightly, we treat life lightly.
 
 ## Deuteronomy 32:48 to 52
 
+# The chapter ends with God telling Moses to go up Mount
+
 > **48** And the LORD spake unto Moses that selfsame day, saying,
 
 > **49** Get thee up into this mountain Abarim, unto mount Nebo...
@@ -3742,6 +3750,8 @@ If we treat God's word lightly, we treat life lightly.
 > **51** Because ye trespassed against me among the children of Israel at the waters of Meribah-Kadesh...
 
 > **52** Yet thou shalt see the land before thee; but thou shalt not go thither unto the land which I give the children of Israel.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with God telling Moses to go up Mount Nebo.
 
@@ -3960,65 +3970,46 @@ Courage is confidence that the Lord goes with His people.
 
 ## Why Deuteronomy 31 Matters
 
-🧓 Moses prepares Israel for life after his leadership.
-
-🌊 Israel is about to cross the Jordan without Moses.
-
-🙌 The Lord promises to go before His people.
-
-💪 Moses tells Israel to be strong and courageous.
-
-🧭 Joshua is commissioned to lead the people into the land.
-
-📖 Moses writes the law and gives it to Israel's leaders.
-
-👂 The law must be read publicly so everyone hears it.
-
-👨‍👩‍👧 Children must learn to fear the Lord too.
-
-⛺ The Lord appears at the tabernacle to commission Joshua.
-
-⚠️ God reveals Israel's future unfaithfulness.
-
-🎵 God gives Moses a song as a witness against forgetfulness.
-
-🧠 The chapter teaches that God's word must shape the community across generations.
+- 🧓 Moses prepares Israel for life after his leadership.
+- 🌊 Israel is about to cross the Jordan without Moses.
+- 🙌 The Lord promises to go before His people.
+- 💪 Moses tells Israel to be strong and courageous.
+- 🧭 Joshua is commissioned to lead the people into the land.
+- 📖 Moses writes the law and gives it to Israel's leaders.
+- 👂 The law must be read publicly so everyone hears it.
+- 👨‍👩‍👧 Children must learn to fear the Lord too.
+- ⛺ The Lord appears at the tabernacle to commission Joshua.
+- ⚠️ God reveals Israel's future unfaithfulness.
+- 🎵 God gives Moses a song as a witness against forgetfulness.
+- 🧠 The chapter teaches that God's word must shape the community across generations.
 
 ## Chapter Flow
 
-🧓 Moses tells Israel he is 120 years old and cannot go out and come in anymore.
-
-🙌 Moses says the Lord Himself will cross before them.
-
-💪 Israel is told to be strong, courageous, and not afraid.
-
-🧭 Joshua is publicly encouraged before all Israel.
-
-📖 Moses writes the law and gives it to the priests and elders.
-
-🎺 Every seven years, the law must be read during the Feast of Tabernacles.
-
-👂 Men, women, children, and strangers must hear and learn.
-
-⛺ God calls Moses and Joshua to the tabernacle.
-
-☁️ The Lord appears in the pillar of cloud.
-
-⚠️ God tells Moses Israel will forsake Him after entering the land.
-
-🎵 Moses is commanded to write a song that will testify against Israel.
-
-📚 Moses finishes writing the law and commands it to be placed beside the ark.
-
-🗣️ Moses gathers the elders and officers to hear the words of the song.
+- 🧓 Moses tells Israel he is 120 years old and cannot go out and come in anymore.
+- 🙌 Moses says the Lord Himself will cross before them.
+- 💪 Israel is told to be strong, courageous, and not afraid.
+- 🧭 Joshua is publicly encouraged before all Israel.
+- 📖 Moses writes the law and gives it to the priests and elders.
+- 🎺 Every seven years, the law must be read during the Feast of Tabernacles.
+- 👂 Men, women, children, and strangers must hear and learn.
+- ⛺ God calls Moses and Joshua to the tabernacle.
+- ☁️ The Lord appears in the pillar of cloud.
+- ⚠️ God tells Moses Israel will forsake Him after entering the land.
+- 🎵 Moses is commanded to write a song that will testify against Israel.
+- 📚 Moses finishes writing the law and commands it to be placed beside the ark.
+- 🗣️ Moses gathers the elders and officers to hear the words of the song.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 31:1 to 2
 
+# Speaking plainly to all Israel
+
 > **1** And Moses went and spake these words unto all Israel.
 
 > **2** And he said unto them, I am an hundred and twenty years old this day; I can no more go out and come in: also the LORD hath said unto me, Thou shalt not go over this Jordan.
+
+### 🧠 What This Passage Shows
 
 Moses begins by speaking plainly to all Israel.
 
@@ -4072,6 +4063,8 @@ Israel is about to lose the visible leader they have known for decades, but they
 
 ## Deuteronomy 31:3 to 6
 
+# Moses does not begin Israel's future by saying, "Joshua
+
 > **3** The LORD thy God, he will go over before thee, and he will destroy these nations from before thee, and thou shalt possess them: and Joshua, he shall go over before thee, as the LORD hath said.
 
 > **4** And the LORD shall do unto them as he did to Sihon and to Og, kings of the Amorites, and unto the land of them, whom he destroyed.
@@ -4079,6 +4072,8 @@ Israel is about to lose the visible leader they have known for decades, but they
 > **5** And the LORD shall give them up before your face, that ye may do unto them according unto all the commandments which I have commanded you.
 
 > **6** Be strong and of a good courage, fear not, nor be afraid of them: for the LORD thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee.
+
+### 🧠 What This Passage Shows
 
 Moses does not begin Israel's future by saying, "Joshua will save you."
 
@@ -4150,9 +4145,13 @@ If He goes before you, you are not walking into unknown territory alone.
 
 ## Deuteronomy 31:7 to 8
 
+# Now Moses speaks directly to Joshua in front of everyone
+
 > **7** And Moses called unto Joshua, and said unto him in the sight of all Israel, Be strong and of a good courage: for thou must go with this people unto the land which the LORD hath sworn unto their fathers to give them; and thou shalt cause them to inherit it.
 
 > **8** And the LORD, he it is that doth go before thee; he will be with thee, he will not fail thee, neither forsake thee: fear not, neither be dismayed.
+
+### 🧠 What This Passage Shows
 
 Now Moses speaks directly to Joshua in front of everyone.
 
@@ -4222,6 +4221,8 @@ Look at His presence.
 
 ## Deuteronomy 31:9 to 13
 
+# Moses writes the law and gives it to the priests and
+
 > **9** And Moses wrote this law, and delivered it unto the priests the sons of Levi, which bare the ark of the covenant of the LORD, and unto all the elders of Israel.
 
 > **10** And Moses commanded them, saying, At the end of every seven years, in the solemnity of the year of release, in the feast of tabernacles,
@@ -4231,6 +4232,8 @@ Look at His presence.
 > **12** Gather the people together, men, and women, and children, and thy stranger that is within thy gates, that they may hear, and that they may learn, and fear the LORD your God, and observe to do all the words of this law:
 
 > **13** And that their children, which have not known any thing, may hear, and learn to fear the LORD your God, as long as ye live in the land whither ye go over Jordan to possess it.
+
+### 🧠 What This Passage Shows
 
 Moses writes the law and gives it to the priests and elders.
 
@@ -4320,9 +4323,13 @@ It is the foundation that keeps the community alive.
 
 ## Deuteronomy 31:14 to 15
 
+# God now speaks directly about Moses' death
+
 > **14** And the LORD said unto Moses, Behold, thy days approach that thou must die: call Joshua, and present yourselves in the tabernacle of the congregation, that I may give him a charge. And Moses and Joshua went, and presented themselves in the tabernacle of the congregation.
 
 > **15** And the LORD appeared in the tabernacle in a pillar of a cloud: and the pillar of the cloud stood over the door of the tabernacle.
+
+### 🧠 What This Passage Shows
 
 God now speaks directly about Moses' death.
 
@@ -4372,11 +4379,15 @@ He will be there after.
 
 ## Deuteronomy 31:16 to 18
 
+# This is one of the saddest parts of the chapter
+
 > **16** And the LORD said unto Moses, Behold, thou shalt sleep with thy fathers; and this people will rise up, and go a whoring after the gods of the strangers of the land, whither they go to be among them, and will forsake me, and break my covenant which I have made with them.
 
 > **17** Then my anger shall be kindled against them in that day, and I will forsake them, and I will hide my face from them, and they shall be devoured, and many evils and troubles shall befall them; so that they will say in that day, Are not these evils come upon us, because our God is not among us?
 
 > **18** And I will surely hide my face in that day for all the evils which they shall have wrought, in that they are turned unto other gods.
+
+### 🧠 What This Passage Shows
 
 This is one of the saddest parts of the chapter.
 
@@ -4444,6 +4455,8 @@ We drift away unless we keep returning to the Lord.
 
 ## Deuteronomy 31:19 to 22
 
+# God commands Moses to write a song
+
 > **19** Now therefore write ye this song for you, and teach it the children of Israel: put it in their mouths, that this song may be a witness for me against the children of Israel.
 
 > **20** For when I shall have brought them into the land which I sware unto their fathers, that floweth with milk and honey; and they shall have eaten and filled themselves, and waxen fat; then will they turn unto other gods, and serve them, and provoke me, and break my covenant.
@@ -4451,6 +4464,8 @@ We drift away unless we keep returning to the Lord.
 > **21** And it shall come to pass, when many evils and troubles are befallen them, that this song shall testify against them as a witness... for it shall not be forgotten out of the mouths of their seed...
 
 > **22** Moses therefore wrote this song the same day, and taught it the children of Israel.
+
+### 🧠 What This Passage Shows
 
 God commands Moses to write a song.
 
@@ -4512,7 +4527,11 @@ We need truth in our mouths.
 
 ## Deuteronomy 31:23
 
+# God personally charges Joshua
+
 > **23** And he gave Joshua the son of Nun a charge, and said, Be strong and of a good courage: for thou shalt bring the children of Israel into the land which I sware unto them: and I will be with thee.
+
+### 🧠 What This Passage Shows
 
 God personally charges Joshua.
 
@@ -4564,6 +4583,8 @@ I am with you always.
 
 ## Deuteronomy 31:24 to 27
 
+# Moses finishes writing the words of the law in a book
+
 > **24** And it came to pass, when Moses had made an end of writing the words of this law in a book, until they were finished,
 
 > **25** That Moses commanded the Levites, which bare the ark of the covenant of the LORD, saying,
@@ -4571,6 +4592,8 @@ I am with you always.
 > **26** Take this book of the law, and put it in the side of the ark of the covenant of the LORD your God, that it may be there for a witness against thee.
 
 > **27** For I know thy rebellion, and thy stiff neck...
+
+### 🧠 What This Passage Shows
 
 Moses finishes writing the words of the law in a book.
 
@@ -4620,11 +4643,15 @@ God's word must become the anchor.
 
 ## Deuteronomy 31:28 to 30
 
+# Moses gathers the elders and officers
+
 > **28** Gather unto me all the elders of your tribes, and your officers, that I may speak these words in their ears, and call heaven and earth to record against them.
 
 > **29** For I know that after my death ye will utterly corrupt yourselves, and turn aside from the way which I have commanded you...
 
 > **30** And Moses spake in the ears of all the congregation of Israel the words of this song, until they were ended.
+
+### 🧠 What This Passage Shows
 
 Moses gathers the elders and officers.
 
@@ -4823,63 +4850,44 @@ For everyday Christians, this chapter helps us understand that God's commands ar
 
 ## Why Deuteronomy 5 Matters
 
-👂 Moses calls Israel to hear, learn, keep, and do God's commands.
-
-🔥 Israel is reminded that God spoke to them from the fire.
-
-🤝 The covenant is for the living generation standing before Moses.
-
-⛓️ The Ten Commandments begin with rescue from slavery.
-
-🙏 God demands exclusive worship because He alone is Lord.
-
-🛑 Idols are forbidden because God cannot be replaced by images.
-
-🗣️ God's name must not be treated lightly.
-
-🕊️ Sabbath rest reminds Israel that they were once slaves and God set them free.
-
-👨‍👩‍👧‍👦 Family honor matters inside the covenant community.
-
-⚖️ Love for neighbor includes life, marriage, property, truth, and contentment.
-
-❤️ God desires a heart that fears Him and keeps His commandments.
-
-🚶 Moses teaches Israel to walk exactly in the way God commands.
+- 👂 Moses calls Israel to hear, learn, keep, and do God's commands.
+- 🔥 Israel is reminded that God spoke to them from the fire.
+- 🤝 The covenant is for the living generation standing before Moses.
+- ⛓️ The Ten Commandments begin with rescue from slavery.
+- 🙏 God demands exclusive worship because He alone is Lord.
+- 🛑 Idols are forbidden because God cannot be replaced by images.
+- 🗣️ God's name must not be treated lightly.
+- 🕊️ Sabbath rest reminds Israel that they were once slaves and God set them free.
+- 👨‍👩‍👧‍👦 Family honor matters inside the covenant community.
+- ⚖️ Love for neighbor includes life, marriage, property, truth, and contentment.
+- ❤️ God desires a heart that fears Him and keeps His commandments.
+- 🚶 Moses teaches Israel to walk exactly in the way God commands.
 
 ## Chapter Flow
 
-👂 Moses gathers Israel and tells them to hear the statutes and judgments.
-
-🤝 Moses says the Lord made the covenant with the generation standing there.
-
-🔥 God spoke face to face from the mountain, out of the fire.
-
-🧭 The Lord identifies Himself as the God who delivered Israel from Egypt.
-
-🙏 Israel is commanded to worship no other gods.
-
-🛑 Israel is commanded not to make idols or bow down to them.
-
-🗣️ Israel is commanded not to misuse the Lord's name.
-
-🕊️ Israel is commanded to keep the Sabbath day holy.
-
-👨‍👩‍👧‍👦 Israel is commanded to honor father and mother.
-
-⚖️ Israel is commanded not to murder, commit adultery, steal, lie, or covet.
-
-😨 Israel trembles because of God's voice and asks Moses to stand between them and God.
-
-❤️ God says their words are right, but He longs for hearts that will always fear Him.
-
-🚶 Moses tells Israel not to turn aside to the right or left, but to walk in God's ways.
+- 👂 Moses gathers Israel and tells them to hear the statutes and judgments.
+- 🤝 Moses says the Lord made the covenant with the generation standing there.
+- 🔥 God spoke face to face from the mountain, out of the fire.
+- 🧭 The Lord identifies Himself as the God who delivered Israel from Egypt.
+- 🙏 Israel is commanded to worship no other gods.
+- 🛑 Israel is commanded not to make idols or bow down to them.
+- 🗣️ Israel is commanded not to misuse the Lord's name.
+- 🕊️ Israel is commanded to keep the Sabbath day holy.
+- 👨‍👩‍👧‍👦 Israel is commanded to honor father and mother.
+- ⚖️ Israel is commanded not to murder, commit adultery, steal, lie, or covet.
+- 😨 Israel trembles because of God's voice and asks Moses to stand between them and God.
+- ❤️ God says their words are right, but He longs for hearts that will always fear Him.
+- 🚶 Moses tells Israel not to turn aside to the right or left, but to walk in God's ways.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 5:1
 
+# Moses begins with a call to attention
+
 > **1** And Moses called all Israel, and said unto them, Hear, O Israel, the statutes and judgments which I speak in your ears this day, that ye may learn them, and keep, and do them.
+
+### 🧠 What This Passage Shows
 
 Moses begins with a call to attention.
 
@@ -4931,6 +4939,8 @@ Moses is teaching Israel that the word of God is not background noise. It is the
 
 ## Deuteronomy 5:2 to 5
 
+# This covenant is personal
+
 > **2** The LORD our God made a covenant with us in Horeb.
 
 > **3** The LORD made not this covenant with our fathers, but with us, even us, who are all of us here alive this day.
@@ -4938,6 +4948,8 @@ Moses is teaching Israel that the word of God is not background noise. It is the
 > **4** The LORD talked with you face to face in the mount out of the midst of the fire,
 
 > **5** I stood between the LORD and you at that time, to shew you the word of the LORD: for ye were afraid by reason of the fire, and went not up into the mount;
+
+### 🧠 What This Passage Shows
 
 Moses reminds Israel that this covenant is personal.
 
@@ -4989,7 +5001,11 @@ For Christians, this points us forward to something even greater. Jesus is the g
 
 ## Deuteronomy 5:6
 
+# This verse is the foundation for everything that follows
+
 > **6** I am the LORD thy God, which brought thee out of the land of Egypt, from the house of bondage.
+
+### 🧠 What This Passage Shows
 
 This verse is the foundation for everything that follows.
 
@@ -5039,7 +5055,11 @@ They are free to worship, rest, love, tell the truth, honor life, and live under
 
 ## Deuteronomy 5:7
 
+# The first commandment is about worship
+
 > **7** Thou shalt have none other gods before me.
+
+### 🧠 What This Passage Shows
 
 The first commandment is about worship.
 
@@ -5089,11 +5109,15 @@ Who has the first claim on your heart?
 
 ## Deuteronomy 5:8 to 10
 
+# The second commandment teaches Israel not to make images
+
 > **8** Thou shalt not make thee any graven image, or any likeness of any thing that is in heaven above, or that is in the earth beneath, or that is in the waters beneath the earth:
 
 > **9** Thou shalt not bow down thyself unto them, nor serve them: for I the LORD thy God am a jealous God, visiting the iniquity of the fathers upon the children unto the third and fourth generation of them that hate me,
 
 > **10** And shewing mercy unto thousands of them that love me and keep my commandments.
+
+### 🧠 What This Passage Shows
 
 The second commandment teaches Israel not to make images for worship.
 
@@ -5163,7 +5187,11 @@ It is more abundant than the damage of sin.
 
 ## Deuteronomy 5:11
 
+# The third commandment is about honoring God's name
+
 > **11** Thou shalt not take the name of the LORD thy God in vain: for the LORD will not hold him guiltless that taketh his name in vain.
+
+### 🧠 What This Passage Shows
 
 The third commandment is about honoring God's name.
 
@@ -5207,6 +5235,8 @@ It should make us honest, not performative.
 
 ## Deuteronomy 5:12 to 15
 
+# The Sabbath commandment teaches Israel to stop
+
 > **12** Keep the sabbath day to sanctify it, as the LORD thy God hath commanded thee.
 
 > **13** Six days thou shalt labour, and do all thy work:
@@ -5214,6 +5244,8 @@ It should make us honest, not performative.
 > **14** But the seventh day is the sabbath of the LORD thy God: in it thou shalt not do any work, thou, nor thy son, nor thy daughter, nor thy manservant, nor thy maidservant, nor thine ox, nor thine ass, nor any of thy cattle, nor thy stranger that is within thy gates; that thy manservant and thy maidservant may rest as well as thou.
 
 > **15** And remember that thou wast a servant in the land of Egypt, and that the LORD thy God brought thee out thence through a mighty hand and by a stretched out arm: therefore the LORD thy God commanded thee to keep the sabbath day.
+
+### 🧠 What This Passage Shows
 
 The Sabbath commandment teaches Israel to stop.
 
@@ -5287,7 +5319,11 @@ Rest can be resistance against slavery.
 
 ## Deuteronomy 5:16
 
+# This commandment moves from love for God into love within
+
 > **16** Honour thy father and thy mother, as the LORD thy God hath commanded thee; that thy days may be prolonged, and that it may go well with thee, in the land which the LORD thy God giveth thee.
+
+### 🧠 What This Passage Shows
 
 This commandment moves from love for God into love within the family.
 
@@ -5331,7 +5367,11 @@ How people treat parents matters for the health of the whole covenant community.
 
 ## Deuteronomy 5:17
 
+# This commandment protects human life
+
 > **17** Thou shalt not kill.
+
+### 🧠 What This Passage Shows
 
 This commandment protects human life.
 
@@ -5377,7 +5417,11 @@ God's people are called to protect life, honor life, and repent of the anger tha
 
 ## Deuteronomy 5:18
 
+# This commandment protects marriage faithfulness
+
 > **18** Neither shalt thou commit adultery.
+
+### 🧠 What This Passage Shows
 
 This commandment protects marriage faithfulness.
 
@@ -5421,7 +5465,11 @@ For everyday Christians, this command calls us to honor marriage, guard our eyes
 
 ## Deuteronomy 5:19
 
+# This commandment protects what belongs to another person
+
 > **19** Neither shalt thou steal.
+
+### 🧠 What This Passage Shows
 
 This commandment protects what belongs to another person.
 
@@ -5463,7 +5511,11 @@ For Christians, this command calls us toward honesty, generosity, contentment, a
 
 ## Deuteronomy 5:20
 
+# This commandment protects truth and justice
+
 > **20** Neither shalt thou bear false witness against thy neighbour.
+
+### 🧠 What This Passage Shows
 
 This commandment protects truth and justice.
 
@@ -5515,7 +5567,11 @@ Do we stay silent when the truth would protect someone?
 
 ## Deuteronomy 5:21
 
+# The tenth commandment moves from outward actions into
+
 > **21** Neither shalt thou desire thy neighbour's wife, neither shalt thou covet thy neighbour's house, his field, or his manservant, or his maidservant, his ox, or his ass, or any thing that is thy neighbour's.
+
+### 🧠 What This Passage Shows
 
 The tenth commandment moves from outward actions into inward desire.
 
@@ -5573,7 +5629,11 @@ Contentment says, "God sees me. God has not forgotten me. I can celebrate anothe
 
 ## Deuteronomy 5:22
 
+# Moses now reminds Israel how the commandments came
+
 > **22** These words the LORD spake unto all your assembly in the mount out of the midst of the fire, of the cloud, and of the thick darkness, with a great voice: and he added no more. And he wrote them in two tables of stone, and delivered them unto me.
+
+### 🧠 What This Passage Shows
 
 Moses now reminds Israel how the commandments came.
 
@@ -5619,6 +5679,8 @@ We sit under it as people who need wisdom, correction, life, and grace.
 
 ## Deuteronomy 5:23 to 27
 
+# Israel's response to God's voice is fear
+
 > **23** And it came to pass, when ye heard the voice out of the midst of the darkness, (for the mountain did burn with fire,) that ye came near unto me, even all the heads of your tribes, and your elders;
 
 > **24** And ye said, Behold, the LORD our God hath shewed us his glory and his greatness, and we have heard his voice out of the midst of the fire: we have seen this day that God doth talk with man, and he liveth.
@@ -5628,6 +5690,8 @@ We sit under it as people who need wisdom, correction, life, and grace.
 > **26** For who is there of all flesh, that hath heard the voice of the living God speaking out of the midst of the fire, as we have, and lived?
 
 > **27** Go thou near, and hear all that the LORD our God shall say: and speak thou unto us all that the LORD our God shall speak unto thee; and we will hear it, and do it.
+
+### 🧠 What This Passage Shows
 
 Israel's response to God's voice is fear.
 
@@ -5681,6 +5745,8 @@ We need hearts that actually love the Lord.
 
 ## Deuteronomy 5:28 to 31
 
+# Verse 29 is one of the most tender verses in Deuteronomy
+
 > **28** And the LORD heard the voice of your words, when ye spake unto me; and the LORD said unto me, I have heard the voice of the words of this people, which they have spoken unto thee: they have well said all that they have spoken.
 
 > **29** O that there were such an heart in them, that they would fear me, and keep all my commandments always, that it might be well with them, and with their children for ever!
@@ -5688,6 +5754,8 @@ We need hearts that actually love the Lord.
 > **30** Go say to them, Get you into your tents again.
 
 > **31** But as for thee, stand thou here by me, and I will speak unto thee all the commandments, and the statutes, and the judgments, which thou shalt teach them, that they may do them in the land which I give them to possess it.
+
+### 🧠 What This Passage Shows
 
 Verse 29 is one of the most tender verses in Deuteronomy.
 
@@ -5749,9 +5817,13 @@ They need instruction.
 
 ## Deuteronomy 5:32 to 33
 
+# The chapter ends with a call to careful obedience
+
 > **32** Ye shall observe to do therefore as the LORD your God hath commanded you: ye shall not turn aside to the right hand or to the left.
 
 > **33** Ye shall walk in all the ways which the LORD your God hath commanded you, that ye may live, and that it may be well with you, and that ye may prolong your days in the land which ye shall possess.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with a call to careful obedience.
 
@@ -5968,67 +6040,48 @@ For everyday Christians, Deuteronomy 6 reminds us that Bible study is not meant 
 
 ## Why Deuteronomy 6 Matters
 
-👂 Israel is called to hear and obey God's commands.
-
-❤️ The greatest command is to love the Lord with the whole heart, soul, and might.
-
-📖 God's words must be kept in the heart, not only heard with the ears.
-
-👨‍👩‍👧‍👦 Parents must teach God's word diligently to their children.
-
-🏠 Faith is meant to shape ordinary home life.
-
-🧠 Israel must remember the Lord when life becomes comfortable.
-
-⛓️ The story of deliverance from Egypt must be retold to the next generation.
-
-🛑 Israel must not follow the gods of the surrounding nations.
-
-🔥 The Lord is jealous, and covenant betrayal matters.
-
-🧪 Israel must not test the Lord as they did at Massah.
-
-🚶 Israel must do what is right and good in the Lord's sight.
-
-🗣️ Children will ask what the commandments mean, and God's people must answer with the story of salvation.
+- 👂 Israel is called to hear and obey God's commands.
+- ❤️ The greatest command is to love the Lord with the whole heart, soul, and might.
+- 📖 God's words must be kept in the heart, not only heard with the ears.
+- 👨‍👩‍👧‍👦 Parents must teach God's word diligently to their children.
+- 🏠 Faith is meant to shape ordinary home life.
+- 🧠 Israel must remember the Lord when life becomes comfortable.
+- ⛓️ The story of deliverance from Egypt must be retold to the next generation.
+- 🛑 Israel must not follow the gods of the surrounding nations.
+- 🔥 The Lord is jealous, and covenant betrayal matters.
+- 🧪 Israel must not test the Lord as they did at Massah.
+- 🚶 Israel must do what is right and good in the Lord's sight.
+- 🗣️ Children will ask what the commandments mean, and God's people must answer with the story of salvation.
 
 ## Chapter Flow
 
-📖 Moses explains why the commandments must be taught before Israel enters the land.
-
-👂 Israel is told to hear and fear the Lord.
-
-🌱 Obedience is connected with life, blessing, and multiplication in the land.
-
-❤️ Moses declares that the Lord is one and must be loved with all the heart.
-
-🏠 God's words must be taught in the home and carried into everyday life.
-
-🚪 Israel is told to bind God's word to their hands, eyes, doorposts, and gates.
-
-🍇 Moses warns Israel not to forget God when they enjoy houses, wells, vineyards, and olive trees they did not build.
-
-🛑 Israel must fear the Lord, serve Him, and not go after other gods.
-
-🧪 Israel must not test the Lord like they did at Massah.
-
-⚖️ Israel must do what is right and good so it may go well with them.
-
-👦 When children ask about the law, Israel must tell the Exodus story.
-
-🩸 The answer begins with grace: we were Pharaoh's slaves, and the Lord brought us out.
-
-🙏 Obedience is their righteous covenant response to the God who saved them.
+- 📖 Moses explains why the commandments must be taught before Israel enters the land.
+- 👂 Israel is told to hear and fear the Lord.
+- 🌱 Obedience is connected with life, blessing, and multiplication in the land.
+- ❤️ Moses declares that the Lord is one and must be loved with all the heart.
+- 🏠 God's words must be taught in the home and carried into everyday life.
+- 🚪 Israel is told to bind God's word to their hands, eyes, doorposts, and gates.
+- 🍇 Moses warns Israel not to forget God when they enjoy houses, wells, vineyards, and olive trees they did not build.
+- 🛑 Israel must fear the Lord, serve Him, and not go after other gods.
+- 🧪 Israel must not test the Lord like they did at Massah.
+- ⚖️ Israel must do what is right and good so it may go well with them.
+- 👦 When children ask about the law, Israel must tell the Exodus story.
+- 🩸 The answer begins with grace: we were Pharaoh's slaves, and the Lord brought us out.
+- 🙏 Obedience is their righteous covenant response to the God who saved them.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 6:1 to 3
+
+# Explaining why the commandments are being taught
 
 > **1** Now these are the commandments, the statutes, and the judgments, which the LORD your God commanded to teach you, that ye might do them in the land whither ye go to possess it:
 
 > **2** That thou mightest fear the LORD thy God, to keep all his statutes and his commandments, which I command thee, thou, and thy son, and thy son's son, all the days of thy life; and that thy days may be prolonged.
 
 > **3** Hear therefore, O Israel, and observe to do it; that it may be well with thee, and that ye may increase mightily, as the LORD God of thy fathers hath promised thee, in the land that floweth with milk and honey.
+
+### 🧠 What This Passage Shows
 
 Moses begins by explaining why the commandments are being taught.
 
@@ -6100,7 +6153,11 @@ He is teaching them how to live under blessing without being destroyed by pride.
 
 ## Deuteronomy 6:4
 
+# This verse is the heartbeat of Deuteronomy 6
+
 > **4** Hear, O Israel: The LORD our God is one LORD:
+
+### 🧠 What This Passage Shows
 
 This verse is the heartbeat of Deuteronomy 6.
 
@@ -6152,7 +6209,11 @@ He is worthy of whole love because He is the one true Lord.
 
 ## Deuteronomy 6:5
 
+# This is the greatest commandment
+
 > **5** And thou shalt love the LORD thy God with all thine heart, and with all thy soul, and with all thy might.
+
+### 🧠 What This Passage Shows
 
 This is the greatest commandment.
 
@@ -6234,9 +6295,13 @@ And by His Spirit, He begins forming real love for God in us.
 
 ## Deuteronomy 6:6 to 7
 
+# God's words must be in the heart before they are taught
+
 > **6** And these words, which I command thee this day, shall be in thine heart:
 
 > **7** And thou shalt teach them diligently unto thy children, and shalt talk of them when thou sittest in thine house, and when thou walkest by the way, and when thou liest down, and when thou risest up.
+
+### 🧠 What This Passage Shows
 
 God's words must be in the heart before they are taught from the mouth.
 
@@ -6326,9 +6391,13 @@ When suffering comes, we talk about God's faithfulness.
 
 ## Deuteronomy 6:8 to 9
 
+# Moses uses physical images to show that God's word should
+
 > **8** And thou shalt bind them for a sign upon thine hand, and they shall be as frontlets between thine eyes.
 
 > **9** And thou shalt write them upon the posts of thy house, and on thy gates.
+
+### 🧠 What This Passage Shows
 
 Moses uses physical images to show that God's word should shape all of life.
 
@@ -6382,11 +6451,15 @@ It should shape how we treat people in public.
 
 ## Deuteronomy 6:10 to 12
 
+# This is one of the strongest warnings in the chapter
+
 > **10** And it shall be, when the LORD thy God shall have brought thee into the land which he sware unto thy fathers, to Abraham, to Isaac, and to Jacob, to give thee great and goodly cities, which thou buildedst not,
 
 > **11** And houses full of all good things, which thou filledst not, and wells digged, which thou diggedst not, vineyards and olive trees, which thou plantedst not; when thou shalt have eaten and be full;
 
 > **12** Then beware lest thou forget the LORD, which brought thee forth out of the land of Egypt, from the house of bondage.
+
+### 🧠 What This Passage Shows
 
 This is one of the strongest warnings in the chapter.
 
@@ -6456,11 +6529,15 @@ The answer is to remember the Giver.
 
 ## Deuteronomy 6:13 to 15
 
+# Moses gives Israel a clear path:
+
 > **13** Thou shalt fear the LORD thy God, and serve him, and shalt swear by his name.
 
 > **14** Ye shall not go after other gods, of the gods of the people which are round about you;
 
 > **15** (For the LORD thy God is a jealous God among you) lest the anger of the LORD thy God be kindled against thee, and destroy thee from off the face of the earth.
+
+### 🧠 What This Passage Shows
 
 Moses gives Israel a clear path:
 
@@ -6530,7 +6607,11 @@ Moses says the people of God must not go after other gods.
 
 ## Deuteronomy 6:16
 
+# Moses now brings up Massah
+
 > **16** Ye shall not tempt the LORD your God, as ye tempted him in Massah.
+
+### 🧠 What This Passage Shows
 
 Moses now brings up Massah.
 
@@ -6582,11 +6663,15 @@ Am I trusting God, or am I demanding that God prove Himself my way?
 
 ## Deuteronomy 6:17 to 19
 
+# Moses calls Israel again to diligent obedience
+
 > **17** Ye shall diligently keep the commandments of the LORD your God, and his testimonies, and his statutes, which he hath commanded thee.
 
 > **18** And thou shalt do that which is right and good in the sight of the LORD: that it may be well with thee, and that thou mayest go in and possess the good land which the LORD sware unto thy fathers,
 
 > **19** To cast out all thine enemies from before thee, as the LORD hath spoken.
+
+### 🧠 What This Passage Shows
 
 Moses calls Israel again to diligent obedience.
 
@@ -6636,6 +6721,8 @@ They cannot receive God's gift and then ignore God's ways.
 
 ## Deuteronomy 6:20 to 23
 
+# Moses expects children to ask questions
+
 > **20** And when thy son asketh thee in time to come, saying, What mean the testimonies, and the statutes, and the judgments, which the LORD our God hath commanded you?
 
 > **21** Then thou shalt say unto thy son, We were Pharaoh's bondmen in Egypt; and the LORD brought us out of Egypt with a mighty hand:
@@ -6643,6 +6730,8 @@ They cannot receive God's gift and then ignore God's ways.
 > **22** And the LORD shewed signs and wonders, great and sore, upon Egypt, upon Pharaoh, and upon all his household, before our eyes:
 
 > **23** And he brought us out from thence, that he might bring us in, to give us the land which he sware unto our fathers.
+
+### 🧠 What This Passage Shows
 
 Moses expects children to ask questions.
 
@@ -6726,9 +6815,13 @@ Because we belong to the One who brought us out.
 
 ## Deuteronomy 6:24 to 25
 
+# Moses ends the chapter by explaining the goodness of
+
 > **24** And the LORD commanded us to do all these statutes, to fear the LORD our God, for our good always, that he might preserve us alive, as it is at this day.
 
 > **25** And it shall be our righteousness, if we observe to do all these commandments before the LORD our God, as he hath commanded us.
+
+### 🧠 What This Passage Shows
 
 Moses ends the chapter by explaining the goodness of God's commands.
 
@@ -6947,69 +7040,48 @@ Grace creates a people who belong to God.
 
 ## Why Deuteronomy 7 Matters
 
-🏞️ Israel is about to enter a land filled with nations stronger than them.
-
-🛑 God commands Israel not to make covenant compromises with idol worship.
-
-💍 Intermarriage is forbidden because it would turn hearts away from the Lord.
-
-🔥 Idols must be destroyed, not collected, admired, or managed.
-
-👑 Israel is holy because they belong to the Lord.
-
-❤️ God chose Israel because of His love and covenant faithfulness.
-
-⛓️ The Lord redeemed Israel from slavery with a mighty hand.
-
-⚖️ God is faithful to those who love Him and just toward those who hate Him.
-
-🌾 Obedience is connected with blessing in the land.
-
-😨 Israel must not fear nations greater and mightier than them.
-
-🧠 They must remember what God did to Pharaoh and Egypt.
-
-🐝 God will drive out the nations little by little.
-
-🛡️ The Lord will fight for His people.
-
-🚫 Israel must not bring detestable idols into their homes.
+- 🏞️ Israel is about to enter a land filled with nations stronger than them.
+- 🛑 God commands Israel not to make covenant compromises with idol worship.
+- 💍 Intermarriage is forbidden because it would turn hearts away from the Lord.
+- 🔥 Idols must be destroyed, not collected, admired, or managed.
+- 👑 Israel is holy because they belong to the Lord.
+- ❤️ God chose Israel because of His love and covenant faithfulness.
+- ⛓️ The Lord redeemed Israel from slavery with a mighty hand.
+- ⚖️ God is faithful to those who love Him and just toward those who hate Him.
+- 🌾 Obedience is connected with blessing in the land.
+- 😨 Israel must not fear nations greater and mightier than them.
+- 🧠 They must remember what God did to Pharaoh and Egypt.
+- 🐝 God will drive out the nations little by little.
+- 🛡️ The Lord will fight for His people.
+- 🚫 Israel must not bring detestable idols into their homes.
 
 ## Chapter Flow
 
-🏞️ Moses names the nations Israel will face in the land.
-
-🛑 Israel must not make treaties with them or show covenant mercy to their idolatry.
-
-💍 Israel must not intermarry because their hearts would be turned away.
-
-🔥 Israel must destroy altars, images, groves, and carved idols.
-
-👑 Moses reminds Israel that they are a holy and treasured people.
-
-❤️ God chose them because He loved them and kept His promise.
-
-⚖️ Moses teaches that the Lord keeps covenant and mercy with those who love Him.
-
-🌾 Obedience will bring blessing on families, crops, animals, and daily life.
-
-😨 Israel must not fear larger nations.
-
-🧠 They must remember the signs and wonders God did in Egypt.
-
-🐝 God will drive out enemies little by little, not all at once.
-
-🔥 Israel must burn idols and refuse the silver and gold on them.
-
-🚫 They must not bring an abomination into their house.
+- 🏞️ Moses names the nations Israel will face in the land.
+- 🛑 Israel must not make treaties with them or show covenant mercy to their idolatry.
+- 💍 Israel must not intermarry because their hearts would be turned away.
+- 🔥 Israel must destroy altars, images, groves, and carved idols.
+- 👑 Moses reminds Israel that they are a holy and treasured people.
+- ❤️ God chose them because He loved them and kept His promise.
+- ⚖️ Moses teaches that the Lord keeps covenant and mercy with those who love Him.
+- 🌾 Obedience will bring blessing on families, crops, animals, and daily life.
+- 😨 Israel must not fear larger nations.
+- 🧠 They must remember the signs and wonders God did in Egypt.
+- 🐝 God will drive out enemies little by little, not all at once.
+- 🔥 Israel must burn idols and refuse the silver and gold on them.
+- 🚫 They must not bring an abomination into their house.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 7:1 to 2
 
+# Naming the reality Israel will face
+
 > **1** When the LORD thy God shall bring thee into the land whither thou goest to possess it, and hath cast out many nations before thee, the Hittites, and the Girgashites, and the Amorites, and the Canaanites, and the Perizzites, and the Hivites, and the Jebusites, seven nations greater and mightier than thou;
 
 > **2** And when the LORD thy God shall deliver them before thee; thou shalt smite them, and utterly destroy them; thou shalt make no covenant with them, nor shew mercy unto them:
+
+### 🧠 What This Passage Shows
 
 Moses begins by naming the reality Israel will face.
 
@@ -7069,9 +7141,13 @@ He knew covenant compromise would become spiritual collapse.
 
 ## Deuteronomy 7:3 to 4
 
+# The issue here is not ethnicity
+
 > **3** Neither shalt thou make marriages with them; thy daughter thou shalt not give unto his son, nor his daughter shalt thou take unto thy son.
 
 > **4** For they will turn away thy son from following me, that they may serve other gods: so will the anger of the LORD be kindled against you, and destroy thee suddenly.
+
+### 🧠 What This Passage Shows
 
 The issue here is not ethnicity.
 
@@ -7127,7 +7203,11 @@ But covenant partnership is different from neighborly love.
 
 ## Deuteronomy 7:5
 
+# God commands Israel to destroy the structures of idol
+
 > **5** But thus shall ye deal with them; ye shall destroy their altars, and break down their images, and cut down their groves, and burn their graven images with fire.
+
+### 🧠 What This Passage Shows
 
 God commands Israel to destroy the structures of idol worship.
 
@@ -7201,7 +7281,11 @@ Sometimes repentance means removing access, breaking patterns, changing habits, 
 
 ## Deuteronomy 7:6
 
+# This verse explains the identity behind the command
+
 > **6** For thou art an holy people unto the LORD thy God: the LORD thy God hath chosen thee to be a special people unto himself, above all people that are upon the face of the earth.
+
+### 🧠 What This Passage Shows
 
 This verse explains the identity behind the command.
 
@@ -7257,9 +7341,13 @@ If you belong to Him, not every cultural pattern gets to define you.
 
 ## Deuteronomy 7:7 to 8
 
+# These verses are the grace center of the chapter
+
 > **7** The LORD did not set his love upon you, nor choose you, because ye were more in number than any people; for ye were the fewest of all people:
 
 > **8** But because the LORD loved you, and because he would keep the oath which he had sworn unto your fathers, hath the LORD brought you out with a mighty hand, and redeemed you out of the house of bondmen, from the hand of Pharaoh king of Egypt.
+
+### 🧠 What This Passage Shows
 
 These verses are the grace center of the chapter.
 
@@ -7327,11 +7415,15 @@ He saves by grace so the glory belongs to Him.
 
 ## Deuteronomy 7:9 to 11
 
+# Moses tells Israel what they must know
+
 > **9** Know therefore that the LORD thy God, he is God, the faithful God, which keepeth covenant and mercy with them that love him and keep his commandments to a thousand generations;
 
 > **10** And repayeth them that hate him to their face, to destroy them: he will not be slack to him that hateth him, he will repay him to his face.
 
 > **11** Thou shalt therefore keep the commandments, and the statutes, and the judgments, which I command thee this day, to do them.
+
+### 🧠 What This Passage Shows
 
 Moses tells Israel what they must know.
 
@@ -7389,6 +7481,8 @@ Because God is God, do not live like His word is optional.
 
 ## Deuteronomy 7:12 to 15
 
+# Moses describes covenant blessing in the land
+
 > **12** Wherefore it shall come to pass, if ye hearken to these judgments, and keep, and do them, that the LORD thy God shall keep unto thee the covenant and the mercy which he sware unto thy fathers:
 
 > **13** And he will love thee, and bless thee, and multiply thee: he will also bless the fruit of thy womb, and the fruit of thy land, thy corn, and thy wine, and thine oil, the increase of thy kine, and the flocks of thy sheep, in the land which he sware unto thy fathers to give thee.
@@ -7396,6 +7490,8 @@ Because God is God, do not live like His word is optional.
 > **14** Thou shalt be blessed above all people: there shall not be male or female barren among you, or among your cattle.
 
 > **15** And the LORD will take away from thee all sickness, and will put none of the evil diseases of Egypt, which thou knowest, upon thee; but will lay them upon all them that hate thee.
+
+### 🧠 What This Passage Shows
 
 Moses describes covenant blessing in the land.
 
@@ -7457,7 +7553,11 @@ For Christians, every blessing is secured ultimately in Christ, and the fullness
 
 ## Deuteronomy 7:16
 
+# Moses returns to the danger of idolatry
+
 > **16** And thou shalt consume all the people which the LORD thy God shall deliver thee; thine eye shall have no pity upon them: neither shalt thou serve their gods; for that will be a snare unto thee.
+
+### 🧠 What This Passage Shows
 
 Moses returns to the danger of idolatry.
 
@@ -7525,11 +7625,15 @@ Do not serve what will trap you.
 
 ## Deuteronomy 7:17 to 19
 
+# Moses knows what Israel will say in their heart
+
 > **17** If thou shalt say in thine heart, These nations are more than I; how can I dispossess them?
 
 > **18** Thou shalt not be afraid of them: but shalt well remember what the LORD thy God did unto Pharaoh, and unto all Egypt;
 
 > **19** The great temptations which thine eyes saw, and the signs, and the wonders, and the mighty hand, and the stretched out arm, whereby the LORD thy God brought thee out: so shall the LORD thy God do unto all the people of whom thou art afraid.
+
+### 🧠 What This Passage Shows
 
 Moses knows what Israel will say in their heart.
 
@@ -7591,9 +7695,13 @@ Faith says, "What has God already shown me about who He is?"
 
 ## Deuteronomy 7:20 to 21
 
+# Moses continues encouraging Israel not to fear
+
 > **20** Moreover the LORD thy God will send the hornet among them, until they that are left, and hide themselves from thee, be destroyed.
 
 > **21** Thou shalt not be affrighted at them: for the LORD thy God is among you, a mighty God and terrible.
+
+### 🧠 What This Passage Shows
 
 Moses continues encouraging Israel not to fear.
 
@@ -7645,11 +7753,15 @@ We do not face obedience alone.
 
 ## Deuteronomy 7:22 to 24
 
+# God tells Israel that victory will happen little by little
+
 > **22** And the LORD thy God will put out those nations before thee by little and little: thou mayest not consume them at once, lest the beasts of the field increase upon thee.
 
 > **23** But the LORD thy God shall deliver them unto thee, and shall destroy them with a mighty destruction, until they be destroyed.
 
 > **24** And he shall deliver their kings into thine hand, and thou shalt destroy their name from under heaven: there shall no man be able to stand before thee, until thou have destroyed them.
+
+### 🧠 What This Passage Shows
 
 God tells Israel that victory will happen little by little.
 
@@ -7719,9 +7831,13 @@ But the process will unfold according to God's wise pace.
 
 ## Deuteronomy 7:25 to 26
 
+# The chapter ends with a warning about the silver and gold
+
 > **25** The graven images of their gods shall ye burn with fire: thou shalt not desire the silver or gold that is on them, nor take it unto thee, lest thou be snared therein: for it is an abomination to the LORD thy God.
 
 > **26** Neither shalt thou bring an abomination into thine house, lest thou be a cursed thing like it: but thou shalt utterly detest it, and thou shalt utterly abhor it; for it is a cursed thing.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with a warning about the silver and gold on idols.
 
@@ -7960,63 +8076,44 @@ The question is also, "Will I remember God when I have plenty?"
 
 ## Why Deuteronomy 8 Matters
 
-🧠 Israel is commanded to remember the whole wilderness journey.
-
-🏜️ God used the wilderness to humble and test His people.
-
-🍞 Manna taught Israel that life depends on God's word, not bread alone.
-
-👣 God preserved their clothing and feet for forty years.
-
-👨‍👦 The Lord disciplines His people like a father disciplines a son.
-
-🌊 God is bringing Israel into a good land with water, wheat, barley, vines, figs, pomegranates, oil, and honey.
-
-🏠 Fullness creates a new spiritual danger.
-
-⚠️ Israel must beware lest they forget the Lord.
-
-⛓️ They must remember the God who brought them out of Egypt.
-
-🐍 They must remember the wilderness with serpents, scorpions, drought, water from rock, and manna.
-
-💰 They must not say their own power produced their wealth.
-
-🙏 God gives power to get wealth so He may establish His covenant.
-
-🛑 Forgetting God and following idols will lead to destruction.
+- 🧠 Israel is commanded to remember the whole wilderness journey.
+- 🏜️ God used the wilderness to humble and test His people.
+- 🍞 Manna taught Israel that life depends on God's word, not bread alone.
+- 👣 God preserved their clothing and feet for forty years.
+- 👨‍👦 The Lord disciplines His people like a father disciplines a son.
+- 🌊 God is bringing Israel into a good land with water, wheat, barley, vines, figs, pomegranates, oil, and honey.
+- 🏠 Fullness creates a new spiritual danger.
+- ⚠️ Israel must beware lest they forget the Lord.
+- ⛓️ They must remember the God who brought them out of Egypt.
+- 🐍 They must remember the wilderness with serpents, scorpions, drought, water from rock, and manna.
+- 💰 They must not say their own power produced their wealth.
+- 🙏 God gives power to get wealth so He may establish His covenant.
+- 🛑 Forgetting God and following idols will lead to destruction.
 
 ## Chapter Flow
 
-📖 Moses commands Israel to observe the commandments so they may live and enter the land.
-
-🧠 Israel must remember the forty years in the wilderness.
-
-🏜️ God humbled them, tested them, and revealed what was in their heart.
-
-🍞 God fed them with manna to teach dependence on His word.
-
-👕 Their clothes did not wear out and their feet did not swell.
-
-👨‍👦 Moses explains God's discipline as fatherly training.
-
-🌾 Moses describes the good land God is giving.
-
-🙏 Israel must bless the Lord after eating and being full.
-
-⚠️ Moses warns them not to forget God in prosperity.
-
-💭 Israel must not say, "My power got me this wealth."
-
-🤝 They must remember that God gives power to get wealth to confirm His covenant.
-
-🚫 Moses warns that if they forget the Lord and follow other gods, they will perish like the nations.
+- 📖 Moses commands Israel to observe the commandments so they may live and enter the land.
+- 🧠 Israel must remember the forty years in the wilderness.
+- 🏜️ God humbled them, tested them, and revealed what was in their heart.
+- 🍞 God fed them with manna to teach dependence on His word.
+- 👕 Their clothes did not wear out and their feet did not swell.
+- 👨‍👦 Moses explains God's discipline as fatherly training.
+- 🌾 Moses describes the good land God is giving.
+- 🙏 Israel must bless the Lord after eating and being full.
+- ⚠️ Moses warns them not to forget God in prosperity.
+- 💭 Israel must not say, "My power got me this wealth."
+- 🤝 They must remember that God gives power to get wealth to confirm His covenant.
+- 🚫 Moses warns that if they forget the Lord and follow other gods, they will perish like the nations.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 8:1
 
+# Moses begins with obedience
+
 > **1** All the commandments which I command thee this day shall ye observe to do, that ye may live, and multiply, and go in and possess the land which the LORD sware unto your fathers.
+
+### 🧠 What This Passage Shows
 
 Moses begins with obedience.
 
@@ -8066,7 +8163,11 @@ Grace brings us into a life where we learn to walk with the Lord.
 
 ## Deuteronomy 8:2
 
+# This verse is one of the keys to the whole chapter
+
 > **2** And thou shalt remember all the way which the LORD thy God led thee these forty years in the wilderness, to humble thee, and to prove thee, to know what was in thine heart, whether thou wouldest keep his commandments, or no.
+
+### 🧠 What This Passage Shows
 
 This verse is one of the keys to the whole chapter.
 
@@ -8138,7 +8239,11 @@ God may use hard seasons to reveal what we trust, what we fear, what we crave, a
 
 ## Deuteronomy 8:3
 
+# This is the most famous verse in the chapter
+
 > **3** And he humbled thee, and suffered thee to hunger, and fed thee with manna, which thou knewest not, neither did thy fathers know; that he might make thee know that man doth not live by bread only, but by every word that proceedeth out of the mouth of the LORD doth man live.
+
+### 🧠 What This Passage Shows
 
 This is the most famous verse in the chapter.
 
@@ -8222,7 +8327,11 @@ Real life comes from God and His word.
 
 ## Deuteronomy 8:4
 
+# This verse is quiet but powerful
+
 > **4** Thy raiment waxed not old upon thee, neither did thy foot swell, these forty years.
+
+### 🧠 What This Passage Shows
 
 This verse is quiet but powerful.
 
@@ -8270,9 +8379,13 @@ That may be the quiet faithfulness of God.
 
 ## Deuteronomy 8:5 to 6
 
+# Moses tells Israel how to interpret God's discipline
+
 > **5** Thou shalt also consider in thine heart, that, as a man chasteneth his son, so the LORD thy God chasteneth thee.
 
 > **6** Therefore thou shalt keep the commandments of the LORD thy God, to walk in his ways, and to fear him.
+
+### 🧠 What This Passage Shows
 
 Moses tells Israel how to interpret God's discipline.
 
@@ -8332,11 +8445,15 @@ But God can use hardship to train us, correct us, humble us, and deepen us.
 
 ## Deuteronomy 8:7 to 9
 
+# After describing the wilderness, Moses describes the good
+
 > **7** For the LORD thy God bringeth thee into a good land, a land of brooks of water, of fountains and depths that spring out of valleys and hills;
 
 > **8** A land of wheat, and barley, and vines, and fig trees, and pomegranates; a land of oil olive, and honey;
 
 > **9** A land wherein thou shalt eat bread without scarceness, thou shalt not lack any thing in it; a land whose stones are iron, and out of whose hills thou mayest dig brass.
+
+### 🧠 What This Passage Shows
 
 After describing the wilderness, Moses describes the good land.
 
@@ -8402,7 +8519,11 @@ But we must refuse to let blessings become gods.
 
 ## Deuteronomy 8:10
 
+# This verse teaches Israel what to do with fullness
+
 > **10** When thou hast eaten and art full, then thou shalt bless the LORD thy God for the good land which he hath given thee.
+
+### 🧠 What This Passage Shows
 
 This verse teaches Israel what to do with fullness.
 
@@ -8454,6 +8575,8 @@ After the season of increase, bless the Lord.
 
 ## Deuteronomy 8:11 to 14
 
+# Moses now names the danger directly:
+
 > **11** Beware that thou forget not the LORD thy God, in not keeping his commandments, and his judgments, and his statutes, which I command thee this day:
 
 > **12** Lest when thou hast eaten and art full, and hast built goodly houses, and dwelt therein;
@@ -8461,6 +8584,8 @@ After the season of increase, bless the Lord.
 > **13** And when thy herds and thy flocks multiply, and thy silver and thy gold is multiplied, and all that thou hast is multiplied;
 
 > **14** Then thine heart be lifted up, and thou forget the LORD thy God, which brought thee forth out of the land of Egypt, from the house of bondage;
+
+### 🧠 What This Passage Shows
 
 Moses now names the danger directly:
 
@@ -8530,9 +8655,13 @@ He is saying, "Do not let good things make you forget the Lord."
 
 ## Deuteronomy 8:15 to 16
 
+# Moses brings Israel's memory back to the wilderness
+
 > **15** Who led thee through that great and terrible wilderness, wherein were fiery serpents, and scorpions, and drought, where there was no water; who brought thee forth water out of the rock of flint;
 
 > **16** Who fed thee in the wilderness with manna, which thy fathers knew not, that he might humble thee, and that he might prove thee, to do thee good at thy latter end;
+
+### 🧠 What This Passage Shows
 
 Moses brings Israel's memory back to the wilderness.
 
@@ -8610,9 +8739,13 @@ He can bring people through with deeper dependence than they had before.
 
 ## Deuteronomy 8:17 to 18
 
+# Here Moses exposes the sentence pride speaks in the heart:
+
 > **17** And thou say in thine heart, My power and the might of mine hand hath gotten me this wealth.
 
 > **18** But thou shalt remember the LORD thy God: for it is he that giveth thee power to get wealth, that he may establish his covenant which he sware unto thy fathers, as it is this day.
+
+### 🧠 What This Passage Shows
 
 Here Moses exposes the sentence pride speaks in the heart:
 
@@ -8700,9 +8833,13 @@ God gives power to get wealth to establish His covenant, not to feed pride.
 
 ## Deuteronomy 8:19 to 20
 
+# The chapter ends with a serious warning
+
 > **19** And it shall be, if thou do at all forget the LORD thy God, and walk after other gods, and serve them, and worship them, I testify against you this day that ye shall surely perish.
 
 > **20** As the nations which the LORD destroyeth before your face, so shall ye perish; because ye would not be obedient unto the voice of the LORD your God.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with a serious warning.
 
@@ -8945,67 +9082,48 @@ And God's people are not saved by their own righteousness.
 
 ## Why Deuteronomy 9 Matters
 
-🏞️ Israel is about to cross the Jordan and face nations greater and mightier than them.
-
-🔥 The Lord will go before them as a consuming fire.
-
-🛑 Israel must not say victory happened because of their righteousness.
-
-⚖️ God is judging the wickedness of the nations.
-
-🤝 God is keeping the promise He made to Abraham, Isaac, and Jacob.
-
-💔 Israel is reminded that they are stiff-necked people.
-
-🐄 Moses retells the golden calf rebellion.
-
-📜 The tablets of the covenant were broken because Israel broke covenant.
-
-🙏 Moses interceded before the Lord for forty days and forty nights.
-
-🔥 God's anger against Aaron is remembered too.
-
-🧠 Moses reminds Israel of repeated rebellion at Taberah, Massah, Kibroth-hattaavah, and Kadesh-barnea.
-
-❤️ Moses prays for God's mercy based on God's people, God's promise, and God's reputation.
+- 🏞️ Israel is about to cross the Jordan and face nations greater and mightier than them.
+- 🔥 The Lord will go before them as a consuming fire.
+- 🛑 Israel must not say victory happened because of their righteousness.
+- ⚖️ God is judging the wickedness of the nations.
+- 🤝 God is keeping the promise He made to Abraham, Isaac, and Jacob.
+- 💔 Israel is reminded that they are stiff-necked people.
+- 🐄 Moses retells the golden calf rebellion.
+- 📜 The tablets of the covenant were broken because Israel broke covenant.
+- 🙏 Moses interceded before the Lord for forty days and forty nights.
+- 🔥 God's anger against Aaron is remembered too.
+- 🧠 Moses reminds Israel of repeated rebellion at Taberah, Massah, Kibroth-hattaavah, and Kadesh-barnea.
+- ❤️ Moses prays for God's mercy based on God's people, God's promise, and God's reputation.
 
 ## Chapter Flow
 
-👂 Moses calls Israel to hear before they cross the Jordan.
-
-💪 The nations ahead are strong, fortified, and connected to the sons of Anak.
-
-🔥 The Lord will go before Israel as a consuming fire.
-
-🛑 Moses warns Israel not to say, "For my righteousness the Lord brought me in."
-
-⚖️ The nations are being driven out because of their wickedness.
-
-🤝 The land is given because God is keeping His oath to the fathers.
-
-💔 Israel is told plainly that they are stiff-necked.
-
-🐄 Moses remembers the golden calf at Horeb.
-
-📜 Moses breaks the two tablets before Israel.
-
-🙏 Moses fasts and intercedes because God is ready to destroy them.
-
-🔥 Moses destroys the calf and grinds it to dust.
-
-🧠 Moses lists other places where Israel provoked the Lord.
-
-🙌 Moses recounts his intercession for the people and Aaron.
+- 👂 Moses calls Israel to hear before they cross the Jordan.
+- 💪 The nations ahead are strong, fortified, and connected to the sons of Anak.
+- 🔥 The Lord will go before Israel as a consuming fire.
+- 🛑 Moses warns Israel not to say, "For my righteousness the Lord brought me in."
+- ⚖️ The nations are being driven out because of their wickedness.
+- 🤝 The land is given because God is keeping His oath to the fathers.
+- 💔 Israel is told plainly that they are stiff-necked.
+- 🐄 Moses remembers the golden calf at Horeb.
+- 📜 Moses breaks the two tablets before Israel.
+- 🙏 Moses fasts and intercedes because God is ready to destroy them.
+- 🔥 Moses destroys the calf and grinds it to dust.
+- 🧠 Moses lists other places where Israel provoked the Lord.
+- 🙌 Moses recounts his intercession for the people and Aaron.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 9:1 to 3
+
+# Moses begins with reality
 
 > **1** Hear, O Israel: Thou art to pass over Jordan this day, to go in to possess nations greater and mightier than thyself, cities great and fenced up to heaven,
 
 > **2** A people great and tall, the children of the Anakims, whom thou knowest, and of whom thou hast heard say, Who can stand before the children of Anak!
 
 > **3** Understand therefore this day, that the LORD thy God is he which goeth over before thee; as a consuming fire he shall destroy them, and he shall bring them down before thy face: so shalt thou drive them out, and destroy them quickly, as the LORD hath said unto thee.
+
+### 🧠 What This Passage Shows
 
 Moses begins with reality.
 
@@ -9067,9 +9185,13 @@ Faith means Israel moves forward because God is the one going before them.
 
 ## Deuteronomy 9:4 to 5
 
+# Moses now attacks the lie before it forms
+
 > **4** Speak not thou in thine heart, after that the LORD thy God hath cast them out from before thee, saying, For my righteousness the LORD hath brought me in to possess this land: but for the wickedness of these nations the LORD doth drive them out from before thee.
 
 > **5** Not for thy righteousness, or for the uprightness of thine heart, dost thou go to possess their land: but for the wickedness of these nations the LORD thy God doth drive them out from before thee, and that he may perform the word which the LORD sware unto thy fathers, Abraham, Isaac, and Jacob.
+
+### 🧠 What This Passage Shows
 
 Moses now attacks the lie before it forms.
 
@@ -9131,7 +9253,11 @@ We are saved because God is merciful, faithful, and gracious in Christ.
 
 ## Deuteronomy 9:6
 
+# Moses repeats the point again
+
 > **6** Understand therefore, that the LORD thy God giveth thee not this good land to possess it for thy righteousness; for thou art a stiffnecked people.
+
+### 🧠 What This Passage Shows
 
 Moses repeats the point again.
 
@@ -9197,9 +9323,13 @@ It makes grace amazing.
 
 ## Deuteronomy 9:7 to 8
 
+# Moses now commands Israel to remember their rebellion
+
 > **7** Remember, and forget not, how thou provokedst the LORD thy God to wrath in the wilderness: from the day that thou didst depart out of the land of Egypt, until ye came unto this place, ye have been rebellious against the LORD.
 
 > **8** Also in Horeb ye provoked the LORD to wrath, so that the LORD was angry with you to have destroyed you.
+
+### 🧠 What This Passage Shows
 
 Moses now commands Israel to remember their rebellion.
 
@@ -9259,11 +9389,15 @@ But to keep them honest.
 
 ## Deuteronomy 9:9 to 11
 
+# Moses brings the people back to the mountain
+
 > **9** When I was gone up into the mount to receive the tables of stone, even the tables of the covenant which the LORD made with you, then I abode in the mount forty days and forty nights, I neither did eat bread nor drink water:
 
 > **10** And the LORD delivered unto me two tables of stone written with the finger of God; and on them was written according to all the words, which the LORD spake with you in the mount out of the midst of the fire in the day of the assembly.
 
 > **11** And it came to pass at the end of forty days and forty nights, that the LORD gave me the two tables of stone, even the tables of the covenant.
+
+### 🧠 What This Passage Shows
 
 Moses brings the people back to the mountain.
 
@@ -9327,11 +9461,15 @@ We need transformed hearts.
 
 ## Deuteronomy 9:12 to 14
 
+# God tells Moses to go down quickly
+
 > **12** And the LORD said unto me, Arise, get thee down quickly from hence; for thy people which thou hast brought forth out of Egypt have corrupted themselves; they are quickly turned aside out of the way which I commanded them; they have made them a molten image.
 
 > **13** Furthermore the LORD spake unto me, saying, I have seen this people, and, behold, it is a stiffnecked people:
 
 > **14** Let me alone, that I may destroy them, and blot out their name from under heaven: and I will make of thee a nation mightier and greater than they.
+
+### 🧠 What This Passage Shows
 
 God tells Moses to go down quickly.
 
@@ -9391,11 +9529,15 @@ True spiritual leadership pleads for mercy.
 
 ## Deuteronomy 9:15 to 17
 
+# Moses comes down from the mountain with the tablets in
+
 > **15** So I turned and came down from the mount, and the mount burned with fire: and the two tables of the covenant were in my two hands.
 
 > **16** And I looked, and, behold, ye had sinned against the LORD your God, and had made you a molten calf: ye had turned aside quickly out of the way which the LORD had commanded you.
 
 > **17** And I took the two tables, and cast them out of my two hands, and brake them before your eyes.
+
+### 🧠 What This Passage Shows
 
 Moses comes down from the mountain with the tablets in his hands.
 
@@ -9455,9 +9597,13 @@ If we only see sin as a small mistake, we will not understand why grace is so co
 
 ## Deuteronomy 9:18 to 19
 
+# Moses falls before the Lord again for forty days and
+
 > **18** And I fell down before the LORD, as at the first, forty days and forty nights: I did neither eat bread, nor drink water, because of all your sins which ye sinned, in doing wickedly in the sight of the LORD, to provoke him to anger.
 
 > **19** For I was afraid of the anger and hot displeasure, wherewith the LORD was wroth against you to destroy you. But the LORD hearkened unto me at that time also.
+
+### 🧠 What This Passage Shows
 
 Moses falls before the Lord again for forty days and forty nights.
 
@@ -9515,9 +9661,13 @@ Jesus is the greater Mediator whose intercession does not fail.
 
 ## Deuteronomy 9:20 to 21
 
+# Aaron is not ignored
+
 > **20** And the LORD was very angry with Aaron to have destroyed him: and I prayed for Aaron also the same time.
 
 > **21** And I took your sin, the calf which ye had made, and burnt it with fire, and stamped it, and ground it very small, even until it was as small as dust: and I cast the dust thereof into the brook that descended out of the mount.
+
+### 🧠 What This Passage Shows
 
 Aaron is not ignored.
 
@@ -9577,11 +9727,15 @@ They must be crushed.
 
 ## Deuteronomy 9:22 to 24
 
+# Moses now lists other places of rebellion
+
 > **22** And at Taberah, and at Massah, and at Kibrothhattaavah, ye provoked the LORD to wrath.
 
 > **23** Likewise when the LORD sent you from Kadeshbarnea, saying, Go up and possess the land which I have given you; then ye rebelled against the commandment of the LORD your God, and ye believed him not, nor hearkened to his voice.
 
 > **24** Ye have been rebellious against the LORD from the day that I knew you.
+
+### 🧠 What This Passage Shows
 
 Moses now lists other places of rebellion.
 
@@ -9639,9 +9793,13 @@ God's record is mercy.
 
 ## Deuteronomy 9:25 to 26
 
+# Moses returns to his intercession
+
 > **25** Thus I fell down before the LORD forty days and forty nights, as I fell down at the first; because the LORD had said he would destroy you.
 
 > **26** I prayed therefore unto the LORD, and said, O Lord GOD, destroy not thy people and thine inheritance, which thou hast redeemed through thy greatness, which thou hast brought forth out of Egypt with a mighty hand.
+
+### 🧠 What This Passage Shows
 
 Moses returns to his intercession.
 
@@ -9701,11 +9859,15 @@ We come saying, "Lord, have mercy because of Christ, because of Your covenant lo
 
 ## Deuteronomy 9:27 to 29
 
+# Moses continues praying
+
 > **27** Remember thy servants, Abraham, Isaac, and Jacob; look not unto the stubbornness of this people, nor to their wickedness, nor to their sin:
 
 > **28** Lest the land whence thou broughtest us out say, Because the LORD was not able to bring them into the land which he promised them, and because he hated them, he hath brought them out to slay them in the wilderness.
 
 > **29** Yet they are thy people and thine inheritance, which thou broughtest out by thy mighty power and by thy stretched out arm.
+
+### 🧠 What This Passage Shows
 
 Moses continues praying.
 
@@ -9948,73 +10110,50 @@ God renews covenant mercy, and then He calls His people to renewed hearts.
 
 ## Why Deuteronomy 10 Matters
 
-📜 God gives new tablets after Israel broke covenant.
-
-🪵 The ark is made to hold the tablets of the covenant.
-
-🙏 Moses' intercession is connected with God's mercy toward Israel.
-
-⚰️ Aaron dies, but Eleazar ministers as priest after him.
-
-🧍 The Levites are set apart for holy service.
-
-❓ Moses asks what the Lord requires of His people.
-
-❤️ God wants fear, love, walking, serving, and obedience from the whole heart.
-
-🌍 The heavens and earth belong to the Lord, yet He set love on Israel.
-
-✂️ Israel must circumcise the heart and stop being stiff-necked.
-
-⚖️ God is great, mighty, awesome, just, and impartial.
-
-🧳 God loves the stranger, so Israel must love the stranger too.
-
-⛓️ Israel must remember that they were strangers in Egypt.
-
-🙌 The Lord is Israel's praise and their God.
-
-👥 God multiplied Abraham's family from seventy people into a multitude like the stars.
+- 📜 God gives new tablets after Israel broke covenant.
+- 🪵 The ark is made to hold the tablets of the covenant.
+- 🙏 Moses' intercession is connected with God's mercy toward Israel.
+- ⚰️ Aaron dies, but Eleazar ministers as priest after him.
+- 🧍 The Levites are set apart for holy service.
+- ❓ Moses asks what the Lord requires of His people.
+- ❤️ God wants fear, love, walking, serving, and obedience from the whole heart.
+- 🌍 The heavens and earth belong to the Lord, yet He set love on Israel.
+- ✂️ Israel must circumcise the heart and stop being stiff-necked.
+- ⚖️ God is great, mighty, awesome, just, and impartial.
+- 🧳 God loves the stranger, so Israel must love the stranger too.
+- ⛓️ Israel must remember that they were strangers in Egypt.
+- 🙌 The Lord is Israel's praise and their God.
+- 👥 God multiplied Abraham's family from seventy people into a multitude like the stars.
 
 ## Chapter Flow
 
-📜 The Lord tells Moses to cut two new tablets like the first.
-
-🪵 Moses makes an ark of wood and returns to the mountain.
-
-🔥 God writes the Ten Commandments again.
-
-📦 Moses places the tablets in the ark.
-
-⚰️ Aaron dies, and Eleazar serves as priest.
-
-🧍 The tribe of Levi is set apart for holy service.
-
-🙏 Moses reminds Israel that the Lord listened to his intercession.
-
-❓ Moses asks what the Lord requires.
-
-❤️ Israel is called to fear, walk, love, serve, and obey.
-
-🌍 Moses reminds them the whole creation belongs to God.
-
-✂️ Israel must circumcise the heart.
-
-⚖️ Moses describes God's greatness and justice.
-
-🧳 Israel must love the stranger because they were strangers in Egypt.
-
-🙌 Israel must fear the Lord, serve Him, hold fast to Him, and swear by His name.
-
-⭐ God multiplied Israel from seventy souls to a multitude like the stars.
+- 📜 The Lord tells Moses to cut two new tablets like the first.
+- 🪵 Moses makes an ark of wood and returns to the mountain.
+- 🔥 God writes the Ten Commandments again.
+- 📦 Moses places the tablets in the ark.
+- ⚰️ Aaron dies, and Eleazar serves as priest.
+- 🧍 The tribe of Levi is set apart for holy service.
+- 🙏 Moses reminds Israel that the Lord listened to his intercession.
+- ❓ Moses asks what the Lord requires.
+- ❤️ Israel is called to fear, walk, love, serve, and obey.
+- 🌍 Moses reminds them the whole creation belongs to God.
+- ✂️ Israel must circumcise the heart.
+- ⚖️ Moses describes God's greatness and justice.
+- 🧳 Israel must love the stranger because they were strangers in Egypt.
+- 🙌 Israel must fear the Lord, serve Him, hold fast to Him, and swear by His name.
+- ⭐ God multiplied Israel from seventy souls to a multitude like the stars.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 10:1 to 2
 
+# These verses are mercy after failure
+
 > **1** At that time the LORD said unto me, Hew thee two tables of stone like unto the first, and come up unto me into the mount, and make thee an ark of wood.
 
 > **2** And I will write on the tables the words that were in the first tables which thou brakest, and thou shalt put them in the ark.
+
+### 🧠 What This Passage Shows
 
 These verses are mercy after failure.
 
@@ -10074,11 +10213,15 @@ It means we come back to the God who speaks.
 
 ## Deuteronomy 10:3 to 5
 
+# Moses obeys the Lord's command
+
 > **3** And I made an ark of shittim wood, and hewed two tables of stone like unto the first, and went up into the mount, having the two tables in mine hand.
 
 > **4** And he wrote on the tables, according to the first writing, the ten commandments, which the LORD spake unto you in the mount out of the midst of the fire in the day of the assembly: and the LORD gave them unto me.
 
 > **5** And I turned myself and came down from the mount, and put the tables in the ark which I had made; and there they be, as the LORD commanded me.
+
+### 🧠 What This Passage Shows
 
 Moses obeys the Lord's command.
 
@@ -10132,9 +10275,13 @@ The new tablets are a sign of mercy, but they also remind Israel that they neede
 
 ## Deuteronomy 10:6 to 7
 
+# Moses briefly mentions Israel's journey and Aaron's death
+
 > **6** And the children of Israel took their journey from Beeroth of the children of Jaakan to Mosera: there Aaron died, and there he was buried; and Eleazar his son ministered in the priest's office in his stead.
 
 > **7** From thence they journeyed unto Gudgodah; and from Gudgodah to Jotbath, a land of rivers of waters.
+
+### 🧠 What This Passage Shows
 
 Moses briefly mentions Israel's journey and Aaron's death.
 
@@ -10186,9 +10333,13 @@ After wilderness dryness, water is a sign of God's continuing provision.
 
 ## Deuteronomy 10:8 to 9
 
+# The Levites are set apart for holy service
+
 > **8** At that time the LORD separated the tribe of Levi, to bear the ark of the covenant of the LORD, to stand before the LORD to minister unto him, and to bless in his name, unto this day.
 
 > **9** Wherefore Levi hath no part nor inheritance with his brethren; the LORD is his inheritance, according as the LORD thy God promised him.
+
+### 🧠 What This Passage Shows
 
 The Levites are set apart for holy service.
 
@@ -10240,9 +10391,13 @@ You may have less in one category and still have the greatest treasure.
 
 ## Deuteronomy 10:10 to 11
 
+# Moses again reminds Israel that he stayed on the mountain
+
 > **10** And I stayed in the mount, according to the first time, forty days and forty nights; and the LORD hearkened unto me at that time also, and the LORD would not destroy thee.
 
 > **11** And the LORD said unto me, Arise, take thy journey before the people, that they may go in and possess the land, which I sware unto their fathers to give unto them.
+
+### 🧠 What This Passage Shows
 
 Moses again reminds Israel that he stayed on the mountain forty days and forty nights.
 
@@ -10296,9 +10451,13 @@ But humbly, gratefully, and obediently.
 
 ## Deuteronomy 10:12 to 13
 
+# These verses are the heart of the chapter
+
 > **12** And now, Israel, what doth the LORD thy God require of thee, but to fear the LORD thy God, to walk in all his ways, and to love him, and to serve the LORD thy God with all thy heart and with all thy soul,
 
 > **13** To keep the commandments of the LORD, and his statutes, which I command thee this day for thy good?
+
+### 🧠 What This Passage Shows
 
 These verses are the heart of the chapter.
 
@@ -10370,9 +10529,13 @@ God wants the whole life turned toward Him.
 
 ## Deuteronomy 10:14 to 15
 
+# Moses now expands Israel's view of God
+
 > **14** Behold, the heaven and the heaven of heavens is the LORD's thy God, the earth also, with all that therein is.
 
 > **15** Only the LORD had a delight in thy fathers to love them, and he chose their seed after them, even you above all people, as it is this day.
+
+### 🧠 What This Passage Shows
 
 Moses now expands Israel's view of God.
 
@@ -10432,7 +10595,11 @@ He is gracious, not small.
 
 ## Deuteronomy 10:16
 
+# This verse moves from outward covenant sign to inward
+
 > **16** Circumcise therefore the foreskin of your heart, and be no more stiffnecked.
+
+### 🧠 What This Passage Shows
 
 This verse moves from outward covenant sign to inward heart reality.
 
@@ -10488,7 +10655,11 @@ Where am I outwardly religious but inwardly resistant?
 
 ## Deuteronomy 10:17
 
+# Moses describes God's greatness
+
 > **17** For the LORD your God is God of gods, and Lord of lords, a great God, a mighty, and a terrible, which regardeth not persons, nor taketh reward:
+
+### 🧠 What This Passage Shows
 
 Moses describes God's greatness.
 
@@ -10552,9 +10723,13 @@ If God is just, His people should care about justice.
 
 ## Deuteronomy 10:18 to 19
 
+# God's greatness is shown not only in power but in justice
+
 > **18** He doth execute the judgment of the fatherless and widow, and loveth the stranger, in giving him food and raiment.
 
 > **19** Love ye therefore the stranger: for ye were strangers in the land of Egypt.
+
+### 🧠 What This Passage Shows
 
 God's greatness is shown not only in power but in justice and compassion.
 
@@ -10620,9 +10795,13 @@ We should be people of compassion, justice, hospitality, and mercy.
 
 ## Deuteronomy 10:20 to 21
 
+# Moses returns to Israel's relationship with the Lord
+
 > **20** Thou shalt fear the LORD thy God; him shalt thou serve, and to him shalt thou cleave, and swear by his name.
 
 > **21** He is thy praise, and he is thy God, that hath done for thee these great and terrible things, which thine eyes have seen.
+
+### 🧠 What This Passage Shows
 
 Moses returns to Israel's relationship with the Lord.
 
@@ -10694,7 +10873,11 @@ Is God Himself my praise, or only what I want Him to give me?
 
 ## Deuteronomy 10:22
 
+# Moses ends by reminding Israel of God's faithfulness
+
 > **22** Thy fathers went down into Egypt with threescore and ten persons; and now the LORD thy God hath made thee as the stars of heaven for multitude.
+
+### 🧠 What This Passage Shows
 
 Moses ends by reminding Israel of God's faithfulness across generations.
 
@@ -10945,69 +11128,47 @@ You cannot walk in two directions and call it obedience.
 
 ## Why Deuteronomy 11 Matters
 
-❤️ Israel is commanded to love the Lord and keep His charge.
-
-👀 Moses reminds them that their own eyes saw God's acts.
-
-⛓️ They saw God's judgment on Egypt and Pharaoh.
-
-🌊 They saw what God did to Egypt's army at the Red Sea.
-
-🏜️ They saw God's works in the wilderness.
-
-⚖️ They saw judgment on Dathan and Abiram's rebellion.
-
-💪 Remembering God's works should strengthen obedience.
-
-🌧️ The promised land depends on rain from heaven.
-
-👁️ The Lord's eyes are always on the land.
-
-🌾 Obedience is connected to rain, grain, wine, oil, grass, and fullness.
-
-🛑 Turning aside to other gods will bring judgment.
-
-👨‍👩‍👧‍👦 God's word must be taught to children in everyday rhythms.
-
-🚪 God's words belong on hands, eyes, doorposts, and gates.
-
-🏔️ Blessing and curse will be set before Israel.
+- ❤️ Israel is commanded to love the Lord and keep His charge.
+- 👀 Moses reminds them that their own eyes saw God's acts.
+- ⛓️ They saw God's judgment on Egypt and Pharaoh.
+- 🌊 They saw what God did to Egypt's army at the Red Sea.
+- 🏜️ They saw God's works in the wilderness.
+- ⚖️ They saw judgment on Dathan and Abiram's rebellion.
+- 💪 Remembering God's works should strengthen obedience.
+- 🌧️ The promised land depends on rain from heaven.
+- 👁️ The Lord's eyes are always on the land.
+- 🌾 Obedience is connected to rain, grain, wine, oil, grass, and fullness.
+- 🛑 Turning aside to other gods will bring judgment.
+- 👨‍👩‍👧‍👦 God's word must be taught to children in everyday rhythms.
+- 🚪 God's words belong on hands, eyes, doorposts, and gates.
+- 🏔️ Blessing and curse will be set before Israel.
 
 ## Chapter Flow
 
-❤️ Moses calls Israel to love the Lord and keep His commandments always.
-
-👀 He reminds them that they have seen God's greatness and discipline.
-
-⛓️ Moses recalls Egypt, Pharaoh, and the Red Sea.
-
-🏜️ Moses recalls the wilderness and the judgment on rebellion.
-
-💪 Israel must keep the commandments so they may be strong and possess the land.
-
-🌧️ Moses describes the land as dependent on rain from heaven.
-
-🌾 If Israel loves and serves the Lord, God will give rain and fruitfulness.
-
-🛑 Moses warns them not to be deceived and turn aside to other gods.
-
-📖 God's words must be placed in the heart and soul.
-
-👨‍👩‍👧‍👦 Parents must teach God's word to their children.
-
-🏠 God's word must shape home, travel, bedtime, and morning.
-
-🗺️ Obedience is connected to dwelling long in the land.
-
-🛡️ God will drive out nations greater and mightier than Israel.
-
-🏔️ Moses sets before them blessing and curse.
+- ❤️ Moses calls Israel to love the Lord and keep His commandments always.
+- 👀 He reminds them that they have seen God's greatness and discipline.
+- ⛓️ Moses recalls Egypt, Pharaoh, and the Red Sea.
+- 🏜️ Moses recalls the wilderness and the judgment on rebellion.
+- 💪 Israel must keep the commandments so they may be strong and possess the land.
+- 🌧️ Moses describes the land as dependent on rain from heaven.
+- 🌾 If Israel loves and serves the Lord, God will give rain and fruitfulness.
+- 🛑 Moses warns them not to be deceived and turn aside to other gods.
+- 📖 God's words must be placed in the heart and soul.
+- 👨‍👩‍👧‍👦 Parents must teach God's word to their children.
+- 🏠 God's word must shape home, travel, bedtime, and morning.
+- 🗺️ Obedience is connected to dwelling long in the land.
+- 🛡️ God will drive out nations greater and mightier than Israel.
+- 🏔️ Moses sets before them blessing and curse.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 11:1
 
+# Moses begins with love
+
 > **1** Therefore thou shalt love the LORD thy God, and keep his charge, and his statutes, and his judgments, and his commandments, alway.
+
+### 🧠 What This Passage Shows
 
 Moses begins with love.
 
@@ -11063,6 +11224,8 @@ Is my obedience connected to love for God, or am I only trying to look religious
 
 ## Deuteronomy 11:2 to 7
 
+# They are not hearing secondhand rumors
+
 > **2** And know ye this day: for I speak not with your children which have not known, and which have not seen the chastisement of the LORD your God, his greatness, his mighty hand, and his stretched out arm,
 
 > **3** And his miracles, and his acts, which he did in the midst of Egypt unto Pharaoh the king of Egypt, and unto all his land;
@@ -11074,6 +11237,8 @@ Is my obedience connected to love for God, or am I only trying to look religious
 > **6** And what he did unto Dathan and Abiram, the sons of Eliab, the son of Reuben: how the earth opened her mouth, and swallowed them up, and their households, and their tents, and all the substance that was in their possession, in the midst of all Israel:
 
 > **7** But your eyes have seen all the great acts of the LORD which he did.
+
+### 🧠 What This Passage Shows
 
 Moses reminds Israel that they are not hearing secondhand rumors.
 
@@ -11131,9 +11296,13 @@ But if we remember God's mercy and holiness together, we learn reverent trust.
 
 ## Deuteronomy 11:8 to 9
 
+# Because Israel has seen God's acts, they must keep His
+
 > **8** Therefore shall ye keep all the commandments which I command you this day, that ye may be strong, and go in and possess the land, whither ye go to possess it;
 
 > **9** And that ye may prolong your days in the land, which the LORD sware unto your fathers to give unto them and to their seed, a land that floweth with milk and honey.
+
+### 🧠 What This Passage Shows
 
 Because Israel has seen God's acts, they must keep His commands.
 
@@ -11183,11 +11352,15 @@ God's promises make obedience possible and meaningful.
 
 ## Deuteronomy 11:10 to 12
 
+# Moses contrasts Egypt with the promised land
+
 > **10** For the land, whither thou goest in to possess it, is not as the land of Egypt, from whence ye came out, where thou sowedst thy seed, and wateredst it with thy foot, as a garden of herbs:
 
 > **11** But the land, whither ye go to possess it, is a land of hills and valleys, and drinketh water of the rain of heaven:
 
 > **12** A land which the LORD thy God careth for: the eyes of the LORD thy God are always upon it, from the beginning of the year even unto the end of the year.
+
+### 🧠 What This Passage Shows
 
 Moses contrasts Egypt with the promised land.
 
@@ -11245,11 +11418,15 @@ But we still need rain from heaven.
 
 ## Deuteronomy 11:13 to 15
 
+# Moses again connects love, service, obedience, and
+
 > **13** And it shall come to pass, if ye shall hearken diligently unto my commandments which I command you this day, to love the LORD your God, and to serve him with all your heart and with all your soul,
 
 > **14** That I will give you the rain of your land in his due season, the first rain and the latter rain, that thou mayest gather in thy corn, and thy wine, and thine oil.
 
 > **15** And I will send grass in thy fields for thy cattle, that thou mayest eat and be full.
+
+### 🧠 What This Passage Shows
 
 Moses again connects love, service, obedience, and blessing.
 
@@ -11299,9 +11476,13 @@ He wants love that serves.
 
 ## Deuteronomy 11:16 to 17
 
+# Moses warns them to take heed
+
 > **16** Take heed to yourselves, that your heart be not deceived, and ye turn aside, and serve other gods, and worship them;
 
 > **17** And then the LORD's wrath be kindled against you, and he shut up the heaven, that there be no rain, and that the land yield not her fruit; and lest ye perish quickly from off the good land which the LORD giveth you.
+
+### 🧠 What This Passage Shows
 
 Moses warns them to take heed.
 
@@ -11367,6 +11548,8 @@ Stay watchful.
 
 ## Deuteronomy 11:18 to 21
 
+# This section repeats the kind of instruction we saw in
+
 > **18** Therefore shall ye lay up these my words in your heart and in your soul, and bind them for a sign upon your hand, that they may be as frontlets between your eyes.
 
 > **19** And ye shall teach them your children, speaking of them when thou sittest in thine house, and when thou walkest by the way, when thou liest down, and when thou risest up.
@@ -11374,6 +11557,8 @@ Stay watchful.
 > **20** And thou shalt write them upon the door posts of thine house, and upon thy gates:
 
 > **21** That your days may be multiplied, and the days of your children, in the land which the LORD sware unto your fathers to give them, as the days of heaven upon the earth.
+
+### 🧠 What This Passage Shows
 
 This section repeats the kind of instruction we saw in Deuteronomy 6.
 
@@ -11435,6 +11620,8 @@ If parents remember, children receive a living witness.
 
 ## Deuteronomy 11:22 to 25
 
+# Moses now returns to promise and courage
+
 > **22** For if ye shall diligently keep all these commandments which I command you, to do them, to love the LORD your God, to walk in all his ways, and to cleave unto him;
 
 > **23** Then will the LORD drive out all these nations from before you, and ye shall possess greater nations and mightier than yourselves.
@@ -11442,6 +11629,8 @@ If parents remember, children receive a living witness.
 > **24** Every place whereon the soles of your feet shall tread shall be yours: from the wilderness and Lebanon, from the river, the river Euphrates, even unto the uttermost sea shall your coast be.
 
 > **25** There shall no man be able to stand before you: for the LORD your God shall lay the fear of you and the dread of you upon all the land that ye shall tread upon, as he hath said unto you.
+
+### 🧠 What This Passage Shows
 
 Moses now returns to promise and courage.
 
@@ -11501,11 +11690,15 @@ He says love Him, walk with Him, and cleave to Him.
 
 ## Deuteronomy 11:26 to 28
 
+# Moses sets the choice clearly before Israel
+
 > **26** Behold, I set before you this day a blessing and a curse;
 
 > **27** A blessing, if ye obey the commandments of the LORD your God, which I command you this day:
 
 > **28** And a curse, if ye will not obey the commandments of the LORD your God, but turn aside out of the way which I command you this day, to go after other gods, which ye have not known.
+
+### 🧠 What This Passage Shows
 
 Moses sets the choice clearly before Israel.
 
@@ -11563,6 +11756,8 @@ There is blessing in walking with God and loss in turning aside.
 
 ## Deuteronomy 11:29 to 32
 
+# Moses tells Israel that when they enter the land,
+
 > **29** And it shall come to pass, when the LORD thy God hath brought thee in unto the land whither thou goest to possess it, that thou shalt put the blessing upon mount Gerizim, and the curse upon mount Ebal.
 
 > **30** Are they not on the other side Jordan, by the way where the sun goeth down, in the land of the Canaanites, which dwell in the champaign over against Gilgal, beside the plains of Moreh?
@@ -11570,6 +11765,8 @@ There is blessing in walking with God and loss in turning aside.
 > **31** For ye shall pass over Jordan to go in to possess the land which the LORD your God giveth you, and ye shall possess it, and dwell therein.
 
 > **32** And ye shall observe to do all the statutes and judgments which I set before you this day.
+
+### 🧠 What This Passage Shows
 
 Moses tells Israel that when they enter the land, blessing and curse will be publicly declared on Mount Gerizim and Mount Ebal.
 
@@ -11772,67 +11969,46 @@ God wants worship that is joyful, obedient, reverent, grateful, and shaped by wh
 
 ## Why Deuteronomy 12 Matters
 
-🏞️ Israel is about to live in the land God gives them.
-
-🔥 They must destroy the worship places of the nations.
-
-🛑 They must not worship the Lord the way idol worshipers worshiped false gods.
-
-📍 God will choose a place for His name to dwell.
-
-🙏 Israel must bring sacrifices, tithes, vows, and offerings to the Lord's chosen place.
-
-🎉 Worship includes rejoicing before the Lord with the whole household.
-
-👀 Israel must stop doing whatever is right in their own eyes.
-
-🧍 The Levite must not be neglected.
-
-🥩 Eating meat is permitted in towns, but blood must not be eaten.
-
-🩸 Blood is treated seriously because the blood is the life.
-
-👨‍👩‍👧‍👦 Obedience is for Israel's good and their children's good.
-
-🚫 Israel must not inquire about pagan worship practices.
-
-🔥 The nations even burned their children in worship to false gods.
-
-📖 Israel must not add to or take away from God's command.
+- 🏞️ Israel is about to live in the land God gives them.
+- 🔥 They must destroy the worship places of the nations.
+- 🛑 They must not worship the Lord the way idol worshipers worshiped false gods.
+- 📍 God will choose a place for His name to dwell.
+- 🙏 Israel must bring sacrifices, tithes, vows, and offerings to the Lord's chosen place.
+- 🎉 Worship includes rejoicing before the Lord with the whole household.
+- 👀 Israel must stop doing whatever is right in their own eyes.
+- 🧍 The Levite must not be neglected.
+- 🥩 Eating meat is permitted in towns, but blood must not be eaten.
+- 🩸 Blood is treated seriously because the blood is the life.
+- 👨‍👩‍👧‍👦 Obedience is for Israel's good and their children's good.
+- 🚫 Israel must not inquire about pagan worship practices.
+- 🔥 The nations even burned their children in worship to false gods.
+- 📖 Israel must not add to or take away from God's command.
 
 ## Chapter Flow
 
-📖 Moses introduces statutes and judgments for life in the land.
-
-🔥 Israel must destroy pagan altars, pillars, groves, and carved images.
-
-📍 Israel must seek the place the Lord chooses for His name.
-
-🙏 Offerings and sacrifices must be brought there.
-
-🎉 Israel must rejoice before the Lord in all He blesses.
-
-👀 Moses warns them not to do whatever is right in their own eyes.
-
-🏠 When the Lord gives rest in the land, worship must gather at the chosen place.
-
-🥩 Meat may be eaten in towns when desired.
-
-🩸 Blood must be poured out like water and not eaten.
-
-🙌 Holy offerings must be brought to the Lord's chosen place.
-
-👨‍👩‍👧‍👦 Obedience brings good to Israel and their children.
-
-🛑 Israel must not copy the worship practices of destroyed nations.
-
-📖 They must observe God's word without adding or subtracting.
+- 📖 Moses introduces statutes and judgments for life in the land.
+- 🔥 Israel must destroy pagan altars, pillars, groves, and carved images.
+- 📍 Israel must seek the place the Lord chooses for His name.
+- 🙏 Offerings and sacrifices must be brought there.
+- 🎉 Israel must rejoice before the Lord in all He blesses.
+- 👀 Moses warns them not to do whatever is right in their own eyes.
+- 🏠 When the Lord gives rest in the land, worship must gather at the chosen place.
+- 🥩 Meat may be eaten in towns when desired.
+- 🩸 Blood must be poured out like water and not eaten.
+- 🙌 Holy offerings must be brought to the Lord's chosen place.
+- 👨‍👩‍👧‍👦 Obedience brings good to Israel and their children.
+- 🛑 Israel must not copy the worship practices of destroyed nations.
+- 📖 They must observe God's word without adding or subtracting.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 12:1
 
+# Saying these commands are for life in the land
+
 > **1** These are the statutes and judgments, which ye shall observe to do in the land, which the LORD God of thy fathers giveth thee to possess it, all the days that ye live upon the earth.
+
+### 🧠 What This Passage Shows
 
 Moses begins by saying these commands are for life in the land.
 
@@ -11872,9 +12048,13 @@ God teaches us how to live in the places He gives.
 
 ## Deuteronomy 12:2 to 3
 
+# The first major command is to destroy idol worship
+
 > **2** Ye shall utterly destroy all the places, wherein the nations which ye shall possess served their gods, upon the high mountains, and upon the hills, and under every green tree:
 
 > **3** And ye shall overthrow their altars, and break their pillars, and burn their groves with fire; and ye shall hew down the graven images of their gods, and destroy the names of them out of that place.
+
+### 🧠 What This Passage Shows
 
 The first major command is to destroy idol worship.
 
@@ -11928,6 +12108,8 @@ What names still hold power over our hearts?
 
 ## Deuteronomy 12:4 to 7
 
+# Verse 4 is short but powerful:
+
 > **4** Ye shall not do so unto the LORD your God.
 
 > **5** But unto the place which the LORD your God shall choose out of all your tribes to put his name there, even unto his habitation shall ye seek, and thither thou shalt come:
@@ -11935,6 +12117,8 @@ What names still hold power over our hearts?
 > **6** And thither ye shall bring your burnt offerings, and your sacrifices, and your tithes, and heave offerings of your hand, and your vows, and your freewill offerings, and the firstlings of your herds and of your flocks:
 
 > **7** And there ye shall eat before the LORD your God, and ye shall rejoice in all that ye put your hand unto, ye and your households, wherein the LORD thy God hath blessed thee.
+
+### 🧠 What This Passage Shows
 
 Verse 4 is short but powerful:
 
@@ -11994,9 +12178,13 @@ He calls them to reverent worship filled with gratitude and celebration.
 
 ## Deuteronomy 12:8 to 9
 
+# Moses warns Israel not to continue doing whatever is
+
 > **8** Ye shall not do after all the things that we do here this day, every man whatsoever is right in his own eyes.
 
 > **9** For ye are not as yet come to the rest and to the inheritance, which the LORD your God giveth you.
+
+### 🧠 What This Passage Shows
 
 Moses warns Israel not to continue doing whatever is right in their own eyes.
 
@@ -12042,11 +12230,15 @@ We are called to be shaped by Scripture.
 
 ## Deuteronomy 12:10 to 12
 
+# Moses looks ahead to settled life in the land
+
 > **10** But when ye go over Jordan, and dwell in the land which the LORD your God giveth you to inherit, and when he giveth you rest from all your enemies round about, so that ye dwell in safety;
 
 > **11** Then there shall be a place which the LORD your God shall choose to cause his name to dwell there; thither shall ye bring all that I command you; your burnt offerings, and your sacrifices, your tithes, and the heave offering of your hand, and all your choice vows which ye vow unto the LORD:
 
 > **12** And ye shall rejoice before the LORD your God, ye, and your sons, and your daughters, and your menservants, and your maidservants, and the Levite that is within your gates; forasmuch as he hath no part nor inheritance with you.
+
+### 🧠 What This Passage Shows
 
 Moses looks ahead to settled life in the land.
 
@@ -12100,9 +12292,13 @@ Worship that forgets vulnerable servants of God is incomplete.
 
 ## Deuteronomy 12:13 to 14
 
+# Moses tells Israel to take heed
+
 > **13** Take heed to thyself that thou offer not thy burnt offerings in every place that thou seest:
 
 > **14** But in the place which the LORD shall choose in one of thy tribes, there thou shalt offer thy burnt offerings, and there thou shalt do all that I command thee.
+
+### 🧠 What This Passage Shows
 
 Moses tells Israel to take heed.
 
@@ -12146,9 +12342,13 @@ We do not get to invent a version of Christianity that suits our preferences and
 
 ## Deuteronomy 12:15 to 16
 
+# Moses now clarifies ordinary eating
+
 > **15** Notwithstanding thou mayest kill and eat flesh in all thy gates, whatsoever thy soul lusteth after, according to the blessing of the LORD thy God which he hath given thee: the unclean and the clean may eat thereof, as of the roebuck, and as of the hart.
 
 > **16** Only ye shall not eat the blood; ye shall pour it upon the earth as water.
+
+### 🧠 What This Passage Shows
 
 Moses now clarifies ordinary eating.
 
@@ -12194,11 +12394,15 @@ Enjoy God's gifts with gratitude, but do not treat sacred things casually.
 
 ## Deuteronomy 12:17 to 19
 
+# Moses distinguishes ordinary eating from holy offerings
+
 > **17** Thou mayest not eat within thy gates the tithe of thy corn, or of thy wine, or of thy oil, or the firstlings of thy herds or of thy flock, nor any of thy vows which thou vowest, nor thy freewill offerings, or heave offering of thine hand:
 
 > **18** But thou must eat them before the LORD thy God in the place which the LORD thy God shall choose, thou, and thy son, and thy daughter, and thy manservant, and thy maidservant, and the Levite that is within thy gates: and thou shalt rejoice before the LORD thy God in all that thou puttest thine hands unto.
 
 > **19** Take heed to thyself that thou forsake not the Levite as long as thou livest upon the earth.
+
+### 🧠 What This Passage Shows
 
 Moses distinguishes ordinary eating from holy offerings.
 
@@ -12260,11 +12464,15 @@ For Christians, this presses us to ask whether our worship includes care, genero
 
 ## Deuteronomy 12:20 to 22
 
+# Moses is practical
+
 > **20** When the LORD thy God shall enlarge thy border, as he hath promised thee, and thou shalt say, I will eat flesh, because thy soul longeth to eat flesh; thou mayest eat flesh, whatsoever thy soul lusteth after.
 
 > **21** If the place which the LORD thy God hath chosen to put his name there be too far from thee, then thou shalt kill of thy herd and of thy flock, which the LORD hath given thee, as I have commanded thee, and thou shalt eat in thy gates whatsoever thy soul lusteth after.
 
 > **22** Even as the roebuck and the hart is eaten, so thou shalt eat them: the unclean and the clean shall eat of them alike.
+
+### 🧠 What This Passage Shows
 
 Moses is practical.
 
@@ -12308,11 +12516,15 @@ But every good gift is still from God.
 
 ## Deuteronomy 12:23 to 25
 
+# Moses repeats the command about blood
+
 > **23** Only be sure that thou eat not the blood: for the blood is the life; and thou mayest not eat the life with the flesh.
 
 > **24** Thou shalt not eat it; thou shalt pour it upon the earth as water.
 
 > **25** Thou shalt not eat it; that it may go well with thee, and with thy children after thee, when thou shalt do that which is right in the sight of the LORD.
+
+### 🧠 What This Passage Shows
 
 Moses repeats the command about blood.
 
@@ -12364,11 +12576,15 @@ So while the food law is not applied the same way under the new covenant, revere
 
 ## Deuteronomy 12:26 to 28
 
+# Holy things and vows must be taken to the chosen place
+
 > **26** Only thy holy things which thou hast, and thy vows, thou shalt take, and go unto the place which the LORD shall choose:
 
 > **27** And thou shalt offer thy burnt offerings, the flesh and the blood, upon the altar of the LORD thy God: and the blood of thy sacrifices shall be poured out upon the altar of the LORD thy God, and thou shalt eat the flesh.
 
 > **28** Observe and hear all these words which I command thee, that it may go well with thee, and with thy children after thee for ever, when thou doest that which is good and right in the sight of the LORD thy God.
+
+### 🧠 What This Passage Shows
 
 Holy things and vows must be taken to the chosen place.
 
@@ -12416,11 +12632,15 @@ He is protecting life with Him.
 
 ## Deuteronomy 12:29 to 31
 
+# Moses warns Israel about curiosity that becomes a snare
+
 > **29** When the LORD thy God shall cut off the nations from before thee, whither thou goest to possess them, and thou succeedest them, and dwellest in their land;
 
 > **30** Take heed to thyself that thou be not snared by following them, after that they be destroyed from before thee; and that thou enquire not after their gods, saying, How did these nations serve their gods? even so will I do likewise.
 
 > **31** Thou shalt not do so unto the LORD thy God: for every abomination to the LORD, which he hateth, have they done unto their gods; for even their sons and their daughters they have burnt in the fire to their gods.
+
+### 🧠 What This Passage Shows
 
 Moses warns Israel about curiosity that becomes a snare.
 
@@ -12486,7 +12706,11 @@ Does this come from truth or from idols?
 
 ## Deuteronomy 12:32
 
+# The chapter ends with a clear command
+
 > **32** What thing soever I command you, observe to do it: thou shalt not add thereto, nor diminish from it.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with a clear command.
 
@@ -12711,65 +12935,47 @@ Does this voice lead me toward the Lord or away from Him?
 
 ## Why Deuteronomy 13 Matters
 
-🧪 Israel must test spiritual voices by faithfulness to the Lord.
-
-✨ Signs and wonders do not prove a messenger is true if the message leads to other gods.
-
-❤️ God may allow testing to reveal whether His people love Him with all their heart and soul.
-
-🚶 Israel must walk after the Lord, fear Him, keep His commandments, obey His voice, serve Him, and cleave to Him.
-
-🛑 False prophets who lead people away from the Lord are dangerous.
-
-👨‍👩‍👧‍👦 Even close family must not be allowed to turn the heart toward idols.
-
-🤫 Secret temptation is still serious before God.
-
-⚖️ Israel must investigate reports of city-wide idolatry carefully.
-
-🔥 A city given to idolatry must be judged and not treated casually.
-
-🚫 Nothing devoted to destruction may be kept for personal gain.
-
-🙏 Obedience turns Israel away from fierce anger and back toward mercy.
+- 🧪 Israel must test spiritual voices by faithfulness to the Lord.
+- ✨ Signs and wonders do not prove a messenger is true if the message leads to other gods.
+- ❤️ God may allow testing to reveal whether His people love Him with all their heart and soul.
+- 🚶 Israel must walk after the Lord, fear Him, keep His commandments, obey His voice, serve Him, and cleave to Him.
+- 🛑 False prophets who lead people away from the Lord are dangerous.
+- 👨‍👩‍👧‍👦 Even close family must not be allowed to turn the heart toward idols.
+- 🤫 Secret temptation is still serious before God.
+- ⚖️ Israel must investigate reports of city-wide idolatry carefully.
+- 🔥 A city given to idolatry must be judged and not treated casually.
+- 🚫 Nothing devoted to destruction may be kept for personal gain.
+- 🙏 Obedience turns Israel away from fierce anger and back toward mercy.
 
 ## Chapter Flow
 
-✨ Moses warns about prophets or dreamers who give signs.
-
-🛑 If they say to follow other gods, Israel must not listen.
-
-❤️ The Lord tests His people to reveal whether they love Him.
-
-🚶 Israel must follow, fear, obey, serve, and cling to the Lord.
-
-⚖️ The false prophet must be removed because he spoke rebellion.
-
-👂 Moses warns about secret temptation from close family or friends.
-
-🛑 Israel must not consent, listen, pity, spare, or conceal the idolater.
-
-⛓️ The reason is clear: the Lord brought Israel out of Egypt.
-
-🔥 Judgment teaches all Israel to hear, fear, and stop wickedness.
-
-🏙️ Moses warns about worthless men drawing a city after idols.
-
-🔎 Israel must inquire, search, and ask diligently before judgment.
-
-🔥 If the report is true, the city is treated as devoted to destruction.
-
-🙏 Israel must obey so the Lord may show mercy and multiply them.
+- ✨ Moses warns about prophets or dreamers who give signs.
+- 🛑 If they say to follow other gods, Israel must not listen.
+- ❤️ The Lord tests His people to reveal whether they love Him.
+- 🚶 Israel must follow, fear, obey, serve, and cling to the Lord.
+- ⚖️ The false prophet must be removed because he spoke rebellion.
+- 👂 Moses warns about secret temptation from close family or friends.
+- 🛑 Israel must not consent, listen, pity, spare, or conceal the idolater.
+- ⛓️ The reason is clear: the Lord brought Israel out of Egypt.
+- 🔥 Judgment teaches all Israel to hear, fear, and stop wickedness.
+- 🏙️ Moses warns about worthless men drawing a city after idols.
+- 🔎 Israel must inquire, search, and ask diligently before judgment.
+- 🔥 If the report is true, the city is treated as devoted to destruction.
+- 🙏 Israel must obey so the Lord may show mercy and multiply them.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 13:1 to 3
+
+# Moses begins with a surprising warning
 
 > **1** If there arise among you a prophet, or a dreamer of dreams, and giveth thee a sign or a wonder,
 
 > **2** And the sign or the wonder come to pass, whereof he spake unto thee, saying, Let us go after other gods, which thou hast not known, and let us serve them;
 
 > **3** Thou shalt not hearken unto the words of that prophet, or that dreamer of dreams: for the LORD your God proveth you, to know whether ye love the LORD your God with all your heart and with all your soul.
+
+### 🧠 What This Passage Shows
 
 Moses begins with a surprising warning.
 
@@ -12827,7 +13033,11 @@ Does this lead me toward the God of Scripture, or away from Him?
 
 ## Deuteronomy 13:4
 
+# This verse gives the positive path
+
 > **4** Ye shall walk after the LORD your God, and fear him, and keep his commandments, and obey his voice, and ye shall serve him, and cleave unto him.
+
+### 🧠 What This Passage Shows
 
 This verse gives the positive path.
 
@@ -12885,7 +13095,11 @@ The heart that cleaves to the Lord is harder to pull toward idols.
 
 ## Deuteronomy 13:5
 
+# The consequence for the false prophet is severe because
+
 > **5** And that prophet, or that dreamer of dreams, shall be put to death; because he hath spoken to turn you away from the LORD your God, which brought you out of the land of Egypt, and redeemed you out of the house of bondage, to thrust thee out of the way which the LORD thy God commanded thee to walk in. So shalt thou put the evil away from the midst of thee.
+
+### 🧠 What This Passage Shows
 
 The consequence for the false prophet is severe because the danger is severe.
 
@@ -12935,11 +13149,15 @@ Because souls matter.
 
 ## Deuteronomy 13:6 to 8
 
+# Now Moses moves from public spiritual leaders to private
+
 > **6** If thy brother, the son of thy mother, or thy son, or thy daughter, or the wife of thy bosom, or thy friend, which is as thine own soul, entice thee secretly, saying, Let us go and serve other gods, which thou hast not known, thou, nor thy fathers;
 
 > **7** Namely, of the gods of the people which are round about you, nigh unto thee, or far off from thee, from the one end of the earth even unto the other end of the earth;
 
 > **8** Thou shalt not consent unto him, nor hearken unto him; neither shall thine eye pity him, neither shalt thou spare, neither shalt thou conceal him:
+
+### 🧠 What This Passage Shows
 
 Now Moses moves from public spiritual leaders to private relationships.
 
@@ -13001,11 +13219,15 @@ He is commanding ultimate loyalty.
 
 ## Deuteronomy 13:9 to 11
 
+# These verses are severe because Israel's covenant setting
+
 > **9** But thou shalt surely kill him; thine hand shall be first upon him to put him to death, and afterwards the hand of all the people.
 
 > **10** And thou shalt stone him with stones, that he die; because he hath sought to thrust thee away from the LORD thy God, which brought thee out of the land of Egypt, from the house of bondage.
 
 > **11** And all Israel shall hear, and fear, and shall do no more any such wickedness as this is among you.
+
+### 🧠 What This Passage Shows
 
 These verses are severe because Israel's covenant setting is severe.
 
@@ -13055,11 +13277,15 @@ This chapter should make us feel the seriousness of leading someone away from Go
 
 ## Deuteronomy 13:12 to 14
 
+# Moses now gives a third situation:
+
 > **12** If thou shalt hear say in one of thy cities, which the LORD thy God hath given thee to dwell there, saying,
 
 > **13** Certain men, the children of Belial, are gone out from among you, and have withdrawn the inhabitants of their city, saying, Let us go and serve other gods, which ye have not known;
 
 > **14** Then shalt thou enquire, and make search, and ask diligently; and, behold, if it be truth, and the thing certain, that such abomination is wrought among you;
+
+### 🧠 What This Passage Shows
 
 Moses now gives a third situation:
 
@@ -13113,9 +13339,13 @@ We should not excuse evil, and we should not spread unverified claims.
 
 ## Deuteronomy 13:15 to 16
 
+# If the city has truly turned to idolatry, judgment comes
+
 > **15** Thou shalt surely smite the inhabitants of that city with the edge of the sword, destroying it utterly, and all that is therein, and the cattle thereof, with the edge of the sword.
 
 > **16** And thou shalt gather all the spoil of it into the midst of the street thereof, and shalt burn with fire the city, and all the spoil thereof every whit, for the LORD thy God: and it shall be an heap for ever; it shall not be built again.
+
+### 🧠 What This Passage Shows
 
 If the city has truly turned to idolatry, judgment comes.
 
@@ -13157,9 +13387,13 @@ Some structures become so devoted to false worship that God's people must separa
 
 ## Deuteronomy 13:17 to 18
 
+# Moses ends with a call to complete separation from the
+
 > **17** And there shall cleave nought of the cursed thing to thine hand: that the LORD may turn from the fierceness of his anger, and shew thee mercy, and have compassion upon thee, and multiply thee, as he hath sworn unto thy fathers;
 
 > **18** When thou shalt hearken to the voice of the LORD thy God, to keep all his commandments which I command thee this day, to do that which is right in the eyes of the LORD thy God.
+
+### 🧠 What This Passage Shows
 
 Moses ends with a call to complete separation from the cursed thing.
 
@@ -13384,71 +13618,49 @@ Therefore your ordinary life should reflect Him.
 
 ## Why Deuteronomy 14 Matters
 
-👑 Israel is called the children of the Lord.
-
-💎 Israel is holy and chosen as God's treasured people.
-
-🕯️ They must not copy pagan mourning rituals.
-
-🥩 Clean and unclean food boundaries mark Israel as set apart.
-
-🛑 Israel must not eat what God calls abominable.
-
-🦌 Moses lists animals, fish, birds, and insects connected to clean and unclean categories.
-
-🩸 Israel must not eat what dies of itself.
-
-🌾 Israel must tithe the increase of seed, wine, oil, herds, and flocks.
-
-🎉 The tithe is connected with eating and rejoicing before the Lord.
-
-📍 Worship happens in the place God chooses for His name.
-
-🧍 The Levite must not be forsaken.
-
-🤲 Every third year, the tithe supports Levites, strangers, fatherless, and widows.
-
-🙏 Generosity is connected with blessing in the work of their hands.
+- 👑 Israel is called the children of the Lord.
+- 💎 Israel is holy and chosen as God's treasured people.
+- 🕯️ They must not copy pagan mourning rituals.
+- 🥩 Clean and unclean food boundaries mark Israel as set apart.
+- 🛑 Israel must not eat what God calls abominable.
+- 🦌 Moses lists animals, fish, birds, and insects connected to clean and unclean categories.
+- 🩸 Israel must not eat what dies of itself.
+- 🌾 Israel must tithe the increase of seed, wine, oil, herds, and flocks.
+- 🎉 The tithe is connected with eating and rejoicing before the Lord.
+- 📍 Worship happens in the place God chooses for His name.
+- 🧍 The Levite must not be forsaken.
+- 🤲 Every third year, the tithe supports Levites, strangers, fatherless, and widows.
+- 🙏 Generosity is connected with blessing in the work of their hands.
 
 ## Chapter Flow
 
-👑 Moses reminds Israel they are children of the Lord.
-
-🕯️ Israel must not cut themselves or shave the forehead for the dead.
-
-💎 Moses repeats that Israel is holy and chosen by God.
-
-🥩 Israel must not eat abominable things.
-
-🐂 Clean land animals are listed.
-
-🐫 Unclean land animals are listed.
-
-🐟 Clean water creatures must have fins and scales.
-
-🦅 Unclean birds are listed.
-
-🦗 Clean winged creatures are distinguished from unclean ones.
-
-🩸 Israel must not eat animals that die by themselves.
-
-🌾 Israel must tithe yearly increase.
-
-🎉 They must eat before the Lord and learn to fear Him always.
-
-💰 If the chosen place is too far, the tithe may be converted to money and brought there.
-
-🧍 Israel must not neglect the Levite.
-
-🤲 Every third year, the tithe is stored locally for Levites and vulnerable people.
+- 👑 Moses reminds Israel they are children of the Lord.
+- 🕯️ Israel must not cut themselves or shave the forehead for the dead.
+- 💎 Moses repeats that Israel is holy and chosen by God.
+- 🥩 Israel must not eat abominable things.
+- 🐂 Clean land animals are listed.
+- 🐫 Unclean land animals are listed.
+- 🐟 Clean water creatures must have fins and scales.
+- 🦅 Unclean birds are listed.
+- 🦗 Clean winged creatures are distinguished from unclean ones.
+- 🩸 Israel must not eat animals that die by themselves.
+- 🌾 Israel must tithe yearly increase.
+- 🎉 They must eat before the Lord and learn to fear Him always.
+- 💰 If the chosen place is too far, the tithe may be converted to money and brought there.
+- 🧍 Israel must not neglect the Levite.
+- 🤲 Every third year, the tithe is stored locally for Levites and vulnerable people.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 14:1 to 2
 
+# Moses begins with identity
+
 > **1** Ye are the children of the LORD your God: ye shall not cut yourselves, nor make any baldness between your eyes for the dead.
 
 > **2** For thou art an holy people unto the LORD thy God, and the LORD hath chosen thee to be a peculiar people unto himself, above all the nations that are upon the earth.
+
+### 🧠 What This Passage Shows
 
 Moses begins with identity.
 
@@ -13504,6 +13716,8 @@ Our identity in God shapes the way we mourn.
 
 ## Deuteronomy 14:3 to 8
 
+# Moses now speaks about food
+
 > **3** Thou shalt not eat any abominable thing.
 
 > **4** These are the beasts which ye shall eat: the ox, the sheep, and the goat,
@@ -13515,6 +13729,8 @@ Our identity in God shapes the way we mourn.
 > **7** Nevertheless these ye shall not eat of them that chew the cud, or of them that divide the cloven hoof; as the camel, and the hare, and the coney: for they chew the cud, but divide not the hoof; therefore they are unclean unto you.
 
 > **8** And the swine, because it divideth the hoof, yet cheweth not the cud, it is unclean unto you: ye shall not eat of their flesh, nor touch their dead carcase.
+
+### 🧠 What This Passage Shows
 
 Moses now speaks about food.
 
@@ -13574,9 +13790,13 @@ Not every cultural habit should be absorbed.
 
 ## Deuteronomy 14:9 to 10
 
+# The water creatures are divided by fins and scales
+
 > **9** These ye shall eat of all that are in the waters: all that have fins and scales shall ye eat:
 
 > **10** And whatsoever hath not fins and scales ye may not eat; it is unclean unto you.
+
+### 🧠 What This Passage Shows
 
 The water creatures are divided by fins and scales.
 
@@ -13616,6 +13836,8 @@ God's people belong to Him in ordinary life too.
 
 ## Deuteronomy 14:11 to 20
 
+# Moses lists unclean birds and flying creatures
+
 > **11** Of all clean birds ye shall eat.
 
 > **12** But these are they of which ye shall not eat: the eagle, and the ossifrage, and the ospray,
@@ -13635,6 +13857,8 @@ God's people belong to Him in ordinary life too.
 > **19** And every creeping thing that flieth is unclean unto you: they shall not be eaten.
 
 > **20** But of all clean fowls ye may eat.
+
+### 🧠 What This Passage Shows
 
 Moses lists unclean birds and flying creatures.
 
@@ -13678,7 +13902,11 @@ That question is still essential.
 
 ## Deuteronomy 14:21
 
+# Israel must not eat an animal that dies by itself
+
 > **21** Ye shall not eat of any thing that dieth of itself: thou shalt give it unto the stranger that is in thy gates, that he may eat it; or thou mayest sell it unto an alien: for thou art an holy people unto the LORD thy God. Thou shalt not seethe a kid in his mother's milk.
+
+### 🧠 What This Passage Shows
 
 Israel must not eat an animal that dies by itself.
 
@@ -13716,9 +13944,13 @@ Holy people are trained to notice what dishonors life, worship, and the characte
 
 ## Deuteronomy 14:22 to 23
 
+# Moses moves from food boundaries to tithing
+
 > **22** Thou shalt truly tithe all the increase of thy seed, that the field bringeth forth year by year.
 
 > **23** And thou shalt eat before the LORD thy God, in the place which he shall choose to place his name there, the tithe of thy corn, of thy wine, and of thine oil, and the firstlings of thy herds and of thy flocks; that thou mayest learn to fear the LORD thy God always.
+
+### 🧠 What This Passage Shows
 
 Moses moves from food boundaries to tithing.
 
@@ -13780,11 +14012,15 @@ Giving still trains the heart away from self-rule and toward trust.
 
 ## Deuteronomy 14:24 to 26
 
+# God's law makes wise provision for distance
+
 > **24** And if the way be too long for thee, so that thou art not able to carry it; or if the place be too far from thee, which the LORD thy God shall choose to set his name there, when the LORD thy God hath blessed thee:
 
 > **25** Then shalt thou turn it into money, and bind up the money in thine hand, and shalt go unto the place which the LORD thy God shall choose:
 
 > **26** And thou shalt bestow that money for whatsoever thy soul lusteth after, for oxen, or for sheep, or for wine, or for strong drink, or for whatsoever thy soul desireth: and thou shalt eat there before the LORD thy God, and thou shalt rejoice, thou, and thine household,
+
+### 🧠 What This Passage Shows
 
 God's law makes wise provision for distance.
 
@@ -13830,7 +14066,11 @@ He gives good gifts, and His people should receive them with thankfulness and se
 
 ## Deuteronomy 14:27
 
+# Moses again reminds Israel not to forsake the Levite
+
 > **27** And the Levite that is within thy gates; thou shalt not forsake him; for he hath no part nor inheritance with thee.
+
+### 🧠 What This Passage Shows
 
 Moses again reminds Israel not to forsake the Levite.
 
@@ -13864,9 +14104,13 @@ If celebration becomes selfish, it has lost the shape of God's heart.
 
 ## Deuteronomy 14:28 to 29
 
+# Every third year, the tithe is stored locally within the
+
 > **28** At the end of three years thou shalt bring forth all the tithe of thine increase the same year, and shalt lay it up within thy gates:
 
 > **29** And the Levite, (because he hath no part nor inheritance with thee,) and the stranger, and the fatherless, and the widow, which are within thy gates, shall come, and shall eat and be satisfied; that the LORD thy God may bless thee in all the work of thine hand which thou doest.
+
+### 🧠 What This Passage Shows
 
 Every third year, the tithe is stored locally within the towns.
 
@@ -14093,71 +14337,49 @@ Do we remember how much mercy God has shown us?
 
 ## Why Deuteronomy 15 Matters
 
-📅 Israel is commanded to practice a release every seven years.
-
-💸 Debts among covenant brothers are not meant to become permanent crushing bondage.
-
-🤝 Israel must not demand repayment from a brother in the year of release.
-
-🌾 Obedience under God's blessing should create a community where poverty is relieved.
-
-👂 Israel must listen carefully to the Lord's voice.
-
-👐 The poor brother must not be ignored.
-
-❤️ God commands open-hearted and open-handed generosity.
-
-⚠️ Israel must not use the nearness of the release year as an excuse to refuse help.
-
-🙏 Giving must not be grudging.
-
-⛓️ Hebrew servants must be released after six years of service.
-
-🎁 Released servants must not be sent away empty.
-
-🩸 Israel must remember they were slaves and the Lord redeemed them.
-
-🐑 Firstborn animals are set apart to the Lord.
-
-🩸 Blood still must not be eaten.
+- 📅 Israel is commanded to practice a release every seven years.
+- 💸 Debts among covenant brothers are not meant to become permanent crushing bondage.
+- 🤝 Israel must not demand repayment from a brother in the year of release.
+- 🌾 Obedience under God's blessing should create a community where poverty is relieved.
+- 👂 Israel must listen carefully to the Lord's voice.
+- 👐 The poor brother must not be ignored.
+- ❤️ God commands open-hearted and open-handed generosity.
+- ⚠️ Israel must not use the nearness of the release year as an excuse to refuse help.
+- 🙏 Giving must not be grudging.
+- ⛓️ Hebrew servants must be released after six years of service.
+- 🎁 Released servants must not be sent away empty.
+- 🩸 Israel must remember they were slaves and the Lord redeemed them.
+- 🐑 Firstborn animals are set apart to the Lord.
+- 🩸 Blood still must not be eaten.
 
 ## Chapter Flow
 
-📅 Moses commands a release at the end of every seven years.
-
-🤝 Israelites must release what a brother owes.
-
-🌍 Foreigners are treated differently in this law than covenant brothers.
-
-🌾 Moses describes the blessing that should come if Israel obeys.
-
-👂 Israel must carefully listen and observe God's commands.
-
-👐 Moses commands generosity toward the poor brother.
-
-⚠️ Israel must not let the release year make them selfish.
-
-❤️ They must give willingly, not with a grieved heart.
-
-⛓️ Hebrew servants are released in the seventh year.
-
-🎁 Released servants must be furnished generously.
-
-🩸 Israel must remember their own redemption from slavery.
-
-🤝 A servant may choose lifelong service out of love.
-
-🐂 Firstborn animals are consecrated to the Lord.
-
-🍽️ The firstborn is eaten before the Lord unless blemished.
+- 📅 Moses commands a release at the end of every seven years.
+- 🤝 Israelites must release what a brother owes.
+- 🌍 Foreigners are treated differently in this law than covenant brothers.
+- 🌾 Moses describes the blessing that should come if Israel obeys.
+- 👂 Israel must carefully listen and observe God's commands.
+- 👐 Moses commands generosity toward the poor brother.
+- ⚠️ Israel must not let the release year make them selfish.
+- ❤️ They must give willingly, not with a grieved heart.
+- ⛓️ Hebrew servants are released in the seventh year.
+- 🎁 Released servants must be furnished generously.
+- 🩸 Israel must remember their own redemption from slavery.
+- 🤝 A servant may choose lifelong service out of love.
+- 🐂 Firstborn animals are consecrated to the Lord.
+- 🍽️ The firstborn is eaten before the Lord unless blemished.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 15:1 to 2
 
+# Moses begins with the year of release
+
 > **1** At the end of every seven years thou shalt make a release.
 
 > **2** And this is the manner of the release: Every creditor that lendeth ought unto his neighbour shall release it; he shall not exact it of his neighbour, or of his brother; because it is called the LORD'S release.
+
+### 🧠 What This Passage Shows
 
 Moses begins with the year of release.
 
@@ -14207,6 +14429,8 @@ The people of God should not be hard, exploitative, or indifferent toward people
 
 ## Deuteronomy 15:3 to 6
 
+# Moses distinguishes between foreigners and covenant
+
 > **3** Of a foreigner thou mayest exact it again: but that which is thine with thy brother thine hand shall release;
 
 > **4** Save when there shall be no poor among you; for the LORD shall greatly bless thee in the land which the LORD thy God giveth thee for an inheritance to possess it:
@@ -14214,6 +14438,8 @@ The people of God should not be hard, exploitative, or indifferent toward people
 > **5** Only if thou carefully hearken unto the voice of the LORD thy God, to observe to do all these commandments which I command thee this day.
 
 > **6** For the LORD thy God blesseth thee, as he promised thee: and thou shalt lend unto many nations, but thou shalt not borrow; and thou shalt reign over many nations, but they shall not reign over thee.
+
+### 🧠 What This Passage Shows
 
 Moses distinguishes between foreigners and covenant brothers in this debt release command.
 
@@ -14261,9 +14487,13 @@ Blessing should make us more generous, more just, more attentive, and more willi
 
 ## Deuteronomy 15:7 to 8
 
+# This is one of the clearest generosity commands in
+
 > **7** If there be among you a poor man of one of thy brethren within any of thy gates in thy land which the LORD thy God giveth thee, thou shalt not harden thine heart, nor shut thine hand from thy poor brother:
 
 > **8** But thou shalt open thine hand wide unto him, and shalt surely lend him sufficient for his need, in that which he wanteth.
+
+### 🧠 What This Passage Shows
 
 This is one of the clearest generosity commands in Deuteronomy.
 
@@ -14327,11 +14557,15 @@ Do we help in ways that preserve dignity?
 
 ## Deuteronomy 15:9 to 11
 
+# Moses now exposes a selfish calculation
+
 > **9** Beware that there be not a thought in thy wicked heart, saying, The seventh year, the year of release, is at hand; and thine eye be evil against thy poor brother, and thou givest him nought; and he cry unto the LORD against thee, and it be sin unto thee.
 
 > **10** Thou shalt surely give him, and thine heart shall not be grieved when thou givest unto him: because that for this thing the LORD thy God shall bless thee in all thy works, and in all that thou puttest thine hand unto.
 
 > **11** For the poor shall never cease out of the land: therefore I command thee, saying, Thou shalt open thine hand wide unto thy brother, to thy poor, and to thy needy, in thy land.
+
+### 🧠 What This Passage Shows
 
 Moses now exposes a selfish calculation.
 
@@ -14387,6 +14621,8 @@ Jesus quotes this truth when He says the poor you always have with you. He does 
 
 ## Deuteronomy 15:12 to 15
 
+# Moses now talks about Hebrew servants
+
 > **12** And if thy brother, an Hebrew man, or an Hebrew woman, be sold unto thee, and serve thee six years; then in the seventh year thou shalt let him go free from thee.
 
 > **13** And when thou sendest him out free from thee, thou shalt not let him go away empty:
@@ -14394,6 +14630,8 @@ Jesus quotes this truth when He says the poor you always have with you. He does 
 > **14** Thou shalt furnish him liberally out of thy flock, and out of thy floor, and out of thy winepress: of that wherewith the LORD thy God hath blessed thee thou shalt give unto him.
 
 > **15** And thou shalt remember that thou wast a bondman in the land of Egypt, and the LORD thy God redeemed thee: therefore I command thee this thing to day.
+
+### 🧠 What This Passage Shows
 
 Moses now talks about Hebrew servants.
 
@@ -14449,11 +14687,15 @@ So they must not become mini-Pharaohs in the promised land.
 
 ## Deuteronomy 15:16 to 18
 
+# Moses allows for a servant who does not want to leave
+
 > **16** And it shall be, if he say unto thee, I will not go away from thee; because he loveth thee and thine house, because he is well with thee;
 
 > **17** Then thou shalt take an aul, and thrust it through his ear unto the door, and he shall be thy servant for ever. And also unto thy maidservant thou shalt do likewise.
 
 > **18** It shall not seem hard unto thee, when thou sendest him away free from thee; for he hath been worth a double hired servant to thee, in serving thee six years: and the LORD thy God shall bless thee in all that thou doest.
+
+### 🧠 What This Passage Shows
 
 Moses allows for a servant who does not want to leave.
 
@@ -14503,9 +14745,13 @@ Remember that God sees how power is used.
 
 ## Deuteronomy 15:19 to 20
 
+# Moses now speaks about firstborn males from the herd and
+
 > **19** All the firstling males that come of thy herd and of thy flock thou shalt sanctify unto the LORD thy God: thou shalt do no work with the firstling of thy bullock, nor shear the firstling of thy sheep.
 
 > **20** Thou shalt eat it before the LORD thy God year by year in the place which the LORD shall choose, thou and thy household.
+
+### 🧠 What This Passage Shows
 
 Moses now speaks about firstborn males from the herd and flock.
 
@@ -14555,11 +14801,15 @@ Our time, money, energy, and gratitude should reflect that He is the source and 
 
 ## Deuteronomy 15:21 to 23
 
+# If the firstborn animal has a serious blemish, it must
+
 > **21** And if there be any blemish therein, as if it be lame, or blind, or have any ill blemish, thou shalt not sacrifice it unto the LORD thy God.
 
 > **22** Thou shalt eat it within thy gates: the unclean and the clean person shall eat it alike, as the roebuck, and as the hart.
 
 > **23** Only thou shalt not eat the blood thereof; thou shalt pour it upon the ground as water.
+
+### 🧠 What This Passage Shows
 
 If the firstborn animal has a serious blemish, it must not be sacrificed to the Lord.
 
@@ -14750,69 +15000,48 @@ For everyday Christians, this chapter reminds us to build rhythms of remembrance
 
 ## Why Deuteronomy 16 Matters
 
-🩸 Passover keeps Israel remembering deliverance from Egypt.
-
-🍞 Unleavened bread reminds Israel they came out in haste and affliction.
-
-📍 Sacrificial worship belongs in the place the Lord chooses.
-
-🌾 The Feast of Weeks connects harvest blessing with freewill offering.
-
-🎉 God's people are commanded to rejoice before the Lord.
-
-🤲 Worship joy must include servants, Levites, strangers, fatherless, and widows.
-
-🏕️ The Feast of Tabernacles celebrates gathered harvest and God's provision.
-
-🎁 Israel must not appear before the Lord empty.
-
-⚖️ Judges and officers must judge with righteous judgment.
-
-🚫 Israel must not twist justice, show partiality, or take bribes.
-
-🏃 Israel must follow justice so they may live and inherit the land.
-
-🌳 Israel must not plant idolatrous groves near the Lord's altar.
-
-🪨 Israel must not set up pillars the Lord hates.
+- 🩸 Passover keeps Israel remembering deliverance from Egypt.
+- 🍞 Unleavened bread reminds Israel they came out in haste and affliction.
+- 📍 Sacrificial worship belongs in the place the Lord chooses.
+- 🌾 The Feast of Weeks connects harvest blessing with freewill offering.
+- 🎉 God's people are commanded to rejoice before the Lord.
+- 🤲 Worship joy must include servants, Levites, strangers, fatherless, and widows.
+- 🏕️ The Feast of Tabernacles celebrates gathered harvest and God's provision.
+- 🎁 Israel must not appear before the Lord empty.
+- ⚖️ Judges and officers must judge with righteous judgment.
+- 🚫 Israel must not twist justice, show partiality, or take bribes.
+- 🏃 Israel must follow justice so they may live and inherit the land.
+- 🌳 Israel must not plant idolatrous groves near the Lord's altar.
+- 🪨 Israel must not set up pillars the Lord hates.
 
 ## Chapter Flow
 
-🩸 Moses commands Israel to keep Passover in the month of Abib.
-
-🍞 Israel eats unleavened bread for seven days as bread of affliction.
-
-📍 Passover sacrifice must happen at the place the Lord chooses.
-
-🏠 Israel returns to their tents after the feast.
-
-🌾 Moses commands the Feast of Weeks after counting seven weeks from harvest.
-
-🎁 Israel brings a freewill offering according to God's blessing.
-
-🎉 They rejoice with household, servants, Levites, strangers, fatherless, and widows.
-
-⛓️ They remember they were slaves in Egypt.
-
-🏕️ Moses commands the Feast of Tabernacles after gathering grain and wine.
-
-🙌 Israel rejoices because the Lord blesses their increase and work.
-
-🎁 Three times a year, males appear before the Lord and do not come empty.
-
-⚖️ Moses commands judges and officers in the gates.
-
-🚫 Justice must not be distorted by partiality or bribes.
-
-🌳 Israel must reject idolatrous worship symbols.
+- 🩸 Moses commands Israel to keep Passover in the month of Abib.
+- 🍞 Israel eats unleavened bread for seven days as bread of affliction.
+- 📍 Passover sacrifice must happen at the place the Lord chooses.
+- 🏠 Israel returns to their tents after the feast.
+- 🌾 Moses commands the Feast of Weeks after counting seven weeks from harvest.
+- 🎁 Israel brings a freewill offering according to God's blessing.
+- 🎉 They rejoice with household, servants, Levites, strangers, fatherless, and widows.
+- ⛓️ They remember they were slaves in Egypt.
+- 🏕️ Moses commands the Feast of Tabernacles after gathering grain and wine.
+- 🙌 Israel rejoices because the Lord blesses their increase and work.
+- 🎁 Three times a year, males appear before the Lord and do not come empty.
+- ⚖️ Moses commands judges and officers in the gates.
+- 🚫 Justice must not be distorted by partiality or bribes.
+- 🌳 Israel must reject idolatrous worship symbols.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 16:1 to 2
 
+# Moses begins with Passover
+
 > **1** Observe the month of Abib, and keep the passover unto the LORD thy God: for in the month of Abib the LORD thy God brought thee forth out of Egypt by night.
 
 > **2** Thou shalt therefore sacrifice the passover unto the LORD thy God, of the flock and the herd, in the place which the LORD shall choose to place his name there.
+
+### 🧠 What This Passage Shows
 
 Moses begins with Passover.
 
@@ -14862,9 +15091,13 @@ Not only from Egypt, but from sin and death.
 
 ## Deuteronomy 16:3 to 4
 
+# Israel eats unleavened bread for seven days
+
 > **3** Thou shalt eat no leavened bread with it; seven days shalt thou eat unleavened bread therewith, even the bread of affliction; for thou camest forth out of the land of Egypt in haste: that thou mayest remember the day when thou camest forth out of the land of Egypt all the days of thy life.
 
 > **4** And there shall be no leavened bread seen with thee in all thy coast seven days; neither shall there any thing of the flesh, which thou sacrificedst the first day at even, remain all night until the morning.
+
+### 🧠 What This Passage Shows
 
 Israel eats unleavened bread for seven days.
 
@@ -14912,6 +15145,8 @@ Religious rhythm without remembrance becomes empty routine.
 
 ## Deuteronomy 16:5 to 8
 
+# Moses repeats that Passover must not be sacrificed in any
+
 > **5** Thou mayest not sacrifice the passover within any of thy gates, which the LORD thy God giveth thee:
 
 > **6** But at the place which the LORD thy God shall choose to place his name in, there thou shalt sacrifice the passover at even, at the going down of the sun, at the season that thou camest forth out of Egypt.
@@ -14919,6 +15154,8 @@ Religious rhythm without remembrance becomes empty routine.
 > **7** And thou shalt roast and eat it in the place which the LORD thy God shall choose: and thou shalt turn in the morning, and go unto thy tents.
 
 > **8** Six days thou shalt eat unleavened bread: and on the seventh day shall be a solemn assembly to the LORD thy God: thou shalt do no work therein.
+
+### 🧠 What This Passage Shows
 
 Moses repeats that Passover must not be sacrificed in any random town.
 
@@ -14968,9 +15205,13 @@ We need moments where we stop, gather, remember, and let God's redemption define
 
 ## Deuteronomy 16:9 to 10
 
+# Moses now commands the Feast of Weeks
+
 > **9** Seven weeks shalt thou number unto thee: begin to number the seven weeks from such time as thou beginnest to put the sickle to the corn.
 
 > **10** And thou shalt keep the feast of weeks unto the LORD thy God with a tribute of a freewill offering of thine hand, which thou shalt give unto the LORD thy God, according as the LORD thy God hath blessed thee:
+
+### 🧠 What This Passage Shows
 
 Moses now commands the Feast of Weeks.
 
@@ -15014,9 +15255,13 @@ God sees gratitude, sacrifice, and faith.
 
 ## Deuteronomy 16:11 to 12
 
+# This feast is filled with rejoicing
+
 > **11** And thou shalt rejoice before the LORD thy God, thou, and thy son, and thy daughter, and thy manservant, and thy maidservant, and the Levite that is within thy gates, and the stranger, and the fatherless, and the widow, that are among you, in the place which the LORD thy God hath chosen to place his name there.
 
 > **12** And thou shalt remember that thou wast a bondman in Egypt: and thou shalt observe and do these statutes.
+
+### 🧠 What This Passage Shows
 
 This feast is filled with rejoicing.
 
@@ -15072,11 +15317,15 @@ Does remembering grace make us more welcoming?
 
 ## Deuteronomy 16:13 to 15
 
+# The Feast of Tabernacles comes after gathering grain and
+
 > **13** Thou shalt observe the feast of tabernacles seven days, after that thou hast gathered in thy corn and thy wine:
 
 > **14** And thou shalt rejoice in thy feast, thou, and thy son, and thy daughter, and thy manservant, and thy maidservant, and the Levite, the stranger, and the fatherless, and the widow, that are within thy gates.
 
 > **15** Seven days shalt thou keep a solemn feast unto the LORD thy God in the place which the LORD shall choose: because the LORD thy God shall bless thee in all thine increase, and in all the works of thine hands, therefore thou shalt surely rejoice.
+
+### 🧠 What This Passage Shows
 
 The Feast of Tabernacles comes after gathering grain and wine.
 
@@ -15138,9 +15387,13 @@ But joy before the Lord, shaped by gratitude and shared with others.
 
 ## Deuteronomy 16:16 to 17
 
+# Three times a year, Israel's males appear before the Lord
+
 > **16** Three times in a year shall all thy males appear before the LORD thy God in the place which he shall choose; in the feast of unleavened bread, and in the feast of weeks, and in the feast of tabernacles: and they shall not appear before the LORD empty:
 
 > **17** Every man shall give as he is able, according to the blessing of the LORD thy God which he hath given thee.
+
+### 🧠 What This Passage Shows
 
 Three times a year, Israel's males appear before the Lord at the chosen place:
 
@@ -15192,7 +15445,11 @@ We give because we have received from Him.
 
 ## Deuteronomy 16:18
 
+# Moses now turns to justice
+
 > **18** Judges and officers shalt thou make thee in all thy gates, which the LORD thy God giveth thee, throughout thy tribes: and they shall judge the people with just judgment.
+
+### 🧠 What This Passage Shows
 
 Moses now turns to justice.
 
@@ -15238,9 +15495,13 @@ If we celebrate grace but twist truth when it costs us, something is wrong.
 
 ## Deuteronomy 16:19 to 20
 
+# Moses gives three dangers to justice:
+
 > **19** Thou shalt not wrest judgment; thou shalt not respect persons, neither take a gift: for a gift doth blind the eyes of the wise, and pervert the words of the righteous.
 
 > **20** That which is altogether just shalt thou follow, that thou mayest live, and inherit the land which the LORD thy God giveth thee.
+
+### 🧠 What This Passage Shows
 
 Moses gives three dangers to justice:
 
@@ -15300,9 +15561,13 @@ Do we twist stories to protect ourselves?
 
 ## Deuteronomy 16:21 to 22
 
+# The chapter ends by returning to worship purity
+
 > **21** Thou shalt not plant thee a grove of any trees near unto the altar of the LORD thy God, which thou shalt make thee.
 
 > **22** Neither shalt thou set thee up any image; which the LORD thy God hateth.
+
+### 🧠 What This Passage Shows
 
 The chapter ends by returning to worship purity.
 
@@ -15525,73 +15790,49 @@ Do I want leadership that is under Scripture, or leadership that serves pride?
 
 ## Why Deuteronomy 17 Matters
 
-🐑 Israel must not offer blemished sacrifices to the Lord.
-
-🙏 Worship must honor God's holiness.
-
-🛑 Idolatry is treated as covenant evil.
-
-🔎 Serious accusations require careful investigation.
-
-👥 Capital judgment requires two or three witnesses, not one witness.
-
-⚖️ Justice must be both holy and truthful.
-
-🏛️ Difficult cases go to the priests, Levites, and judge at the place the Lord chooses.
-
-👂 Israel must listen and obey the decision given according to God's law.
-
-🚫 Presumptuous refusal is treated seriously.
-
-👑 Moses gives laws for a future king.
-
-🐎 The king must not multiply horses or return Israel to Egypt.
-
-💍 The king must not multiply wives.
-
-💰 The king must not greatly multiply silver and gold.
-
-📖 The king must write and read God's law all his life.
-
-❤️ God's word keeps the king humble before God and his brothers.
+- 🐑 Israel must not offer blemished sacrifices to the Lord.
+- 🙏 Worship must honor God's holiness.
+- 🛑 Idolatry is treated as covenant evil.
+- 🔎 Serious accusations require careful investigation.
+- 👥 Capital judgment requires two or three witnesses, not one witness.
+- ⚖️ Justice must be both holy and truthful.
+- 🏛️ Difficult cases go to the priests, Levites, and judge at the place the Lord chooses.
+- 👂 Israel must listen and obey the decision given according to God's law.
+- 🚫 Presumptuous refusal is treated seriously.
+- 👑 Moses gives laws for a future king.
+- 🐎 The king must not multiply horses or return Israel to Egypt.
+- 💍 The king must not multiply wives.
+- 💰 The king must not greatly multiply silver and gold.
+- 📖 The king must write and read God's law all his life.
+- ❤️ God's word keeps the king humble before God and his brothers.
 
 ## Chapter Flow
 
-🐑 Moses forbids sacrificing blemished animals.
-
-🛑 Moses addresses idolatry involving sun, moon, stars, or other gods.
-
-🔎 The accusation must be investigated diligently.
-
-👥 Two or three witnesses are required.
-
-⚖️ The witnesses' hands begin the judgment, then all the people act.
-
-🏛️ Hard legal cases are brought to the place the Lord chooses.
-
-📖 Priests, Levites, and judges give instruction according to the law.
-
-👂 The people must obey without turning aside.
-
-🚫 Presumptuous refusal is judged so Israel will hear and fear.
-
-👑 Moses anticipates Israel asking for a king.
-
-📌 The king must be chosen by the Lord and come from among Israel's brothers.
-
-🐎 The king must not multiply horses or return to Egypt.
-
-💍 The king must not multiply wives or turn his heart away.
-
-💰 The king must not greatly multiply wealth.
-
-📖 The king must copy, read, fear, keep, and obey God's law.
+- 🐑 Moses forbids sacrificing blemished animals.
+- 🛑 Moses addresses idolatry involving sun, moon, stars, or other gods.
+- 🔎 The accusation must be investigated diligently.
+- 👥 Two or three witnesses are required.
+- ⚖️ The witnesses' hands begin the judgment, then all the people act.
+- 🏛️ Hard legal cases are brought to the place the Lord chooses.
+- 📖 Priests, Levites, and judges give instruction according to the law.
+- 👂 The people must obey without turning aside.
+- 🚫 Presumptuous refusal is judged so Israel will hear and fear.
+- 👑 Moses anticipates Israel asking for a king.
+- 📌 The king must be chosen by the Lord and come from among Israel's brothers.
+- 🐎 The king must not multiply horses or return to Egypt.
+- 💍 The king must not multiply wives or turn his heart away.
+- 💰 The king must not greatly multiply wealth.
+- 📖 The king must copy, read, fear, keep, and obey God's law.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 17:1
 
+# Moses begins with worship
+
 > **1** Thou shalt not sacrifice unto the LORD thy God any bullock, or sheep, wherein is blemish, or any evilfavouredness: for that is an abomination unto the LORD thy God.
+
+### 🧠 What This Passage Shows
 
 Moses begins with worship.
 
@@ -15645,9 +15886,13 @@ Do we serve Him with integrity or only when convenient?
 
 ## Deuteronomy 17:2 to 3
 
+# Moses moves from blemished worship to false worship
+
 > **2** If there be found among you, within any of thy gates which the LORD thy God giveth thee, man or woman, that hath wrought wickedness in the sight of the LORD thy God, in transgressing his covenant,
 
 > **3** And hath gone and served other gods, and worshipped them, either the sun, or moon, or any of the host of heaven, which I have not commanded;
+
+### 🧠 What This Passage Shows
 
 Moses moves from blemished worship to false worship.
 
@@ -15697,6 +15942,8 @@ But creation must never become God.
 
 ## Deuteronomy 17:4 to 7
 
+# This section shows both seriousness and careful justice
+
 > **4** And it be told thee, and thou hast heard of it, and enquired diligently, and, behold, it be true, and the thing certain, that such abomination is wrought in Israel:
 
 > **5** Then shalt thou bring forth that man or that woman, which have committed that wicked thing, unto thy gates, even that man or that woman, and shalt stone them with stones, till they die.
@@ -15704,6 +15951,8 @@ But creation must never become God.
 > **6** At the mouth of two witnesses, or three witnesses, shall he that is worthy of death be put to death; but at the mouth of one witness he shall not be put to death.
 
 > **7** The hands of the witnesses shall be first upon him to put him to death, and afterward the hands of all the people. So thou shalt put the evil away from among you.
+
+### 🧠 What This Passage Shows
 
 This section shows both seriousness and careful justice.
 
@@ -15763,9 +16012,13 @@ Understand that words can have life-altering consequences.
 
 ## Deuteronomy 17:8 to 9
 
+# Moses recognizes that some cases will be difficult
+
 > **8** If there arise a matter too hard for thee in judgment, between blood and blood, between plea and plea, and between stroke and stroke, being matters of controversy within thy gates: then shalt thou arise, and get thee up into the place which the LORD thy God shall choose;
 
 > **9** And thou shalt come unto the priests the Levites, and unto the judge that shall be in those days, and enquire; and they shall shew thee the sentence of judgment:
+
+### 🧠 What This Passage Shows
 
 Moses recognizes that some cases will be difficult.
 
@@ -15809,6 +16062,8 @@ They seek counsel, Scripture, prayer, and wise judgment.
 
 ## Deuteronomy 17:10 to 13
 
+# Once the judgment is given according to the law, Israel
+
 > **10** And thou shalt do according to the sentence, which they of that place which the LORD shall choose shall shew thee; and thou shalt observe to do according to all that they inform thee:
 
 > **11** According to the sentence of the law which they shall teach thee, and according to the judgment which they shall tell thee, thou shalt do: thou shalt not decline from the sentence which they shall shew thee, to the right hand, nor to the left.
@@ -15816,6 +16071,8 @@ They seek counsel, Scripture, prayer, and wise judgment.
 > **12** And the man that will do presumptuously, and will not hearken unto the priest that standeth to minister there before the LORD thy God, or unto the judge, even that man shall die: and thou shalt put away the evil from Israel.
 
 > **13** And all the people shall hear, and fear, and do no more presumptuously.
+
+### 🧠 What This Passage Shows
 
 Once the judgment is given according to the law, Israel must obey.
 
@@ -15857,9 +16114,13 @@ But humility listens when God's word corrects.
 
 ## Deuteronomy 17:14 to 15
 
+# Moses now looks ahead to kingship
+
 > **14** When thou art come unto the land which the LORD thy God giveth thee, and shalt possess it, and shalt dwell therein, and shalt say, I will set a king over me, like as all the nations that are about me;
 
 > **15** Thou shalt in any wise set him king over thee, whom the LORD thy God shall choose: one from among thy brethren shalt thou set king over thee: thou mayest not set a stranger over thee, which is not thy brother.
+
+### 🧠 What This Passage Shows
 
 Moses now looks ahead to kingship.
 
@@ -15903,7 +16164,11 @@ Do we want someone chosen by image, charisma, and force, or someone submitted to
 
 ## Deuteronomy 17:16
 
+# The first warning for the king is about horses
+
 > **16** But he shall not multiply horses to himself, nor cause the people to return to Egypt, to the end that he should multiply horses: forasmuch as the LORD hath said unto you, Ye shall henceforth return no more that way.
+
+### 🧠 What This Passage Shows
 
 The first warning for the king is about horses.
 
@@ -15949,7 +16214,11 @@ We should be careful when fear or ambition tempts us to go back to what God resc
 
 ## Deuteronomy 17:17
 
+# The king must not multiply wives
+
 > **17** Neither shall he multiply wives to himself, that his heart turn not away: neither shall he greatly multiply to himself silver and gold.
+
+### 🧠 What This Passage Shows
 
 The king must not multiply wives.
 
@@ -16003,9 +16272,13 @@ We all need to ask what has power to turn our heart away.
 
 ## Deuteronomy 17:18 to 19
 
+# This is one of the most beautiful leadership commands in
+
 > **18** And it shall be, when he sitteth upon the throne of his kingdom, that he shall write him a copy of this law in a book out of that which is before the priests the Levites:
 
 > **19** And it shall be with him, and he shall read therein all the days of his life: that he may learn to fear the LORD his God, to keep all the words of this law and these statutes, to do them:
+
+### 🧠 What This Passage Shows
 
 This is one of the most beautiful leadership commands in the Old Testament.
 
@@ -16061,7 +16334,11 @@ If leadership must be shaped by Scripture, so must parenting, business, ministry
 
 ## Deuteronomy 17:20
 
+# God's word protects the king's heart
+
 > **20** That his heart be not lifted up above his brethren, and that he turn not aside from the commandment, to the right hand, or to the left: to the end that he may prolong his days in his kingdom, he, and his children, in the midst of Israel.
+
+### 🧠 What This Passage Shows
 
 God's word protects the king's heart.
 
@@ -16292,67 +16569,47 @@ Jesus must be heard.
 
 ## Why Deuteronomy 18 Matters
 
-🧍 Priests and Levites have no land inheritance like the other tribes.
-
-🙏 The Lord Himself is their inheritance.
-
-🎁 Israel must provide the priestly portions from sacrifices and firstfruits.
-
-🏠 Levites who come from towns to serve at the chosen place are welcomed.
-
-🛑 Israel must not imitate the abominations of the nations.
-
-🔥 Child sacrifice is forbidden.
-
-🔮 Divination, sorcery, witchcraft, charms, mediums, spiritism, and consulting the dead are forbidden.
-
-💎 Israel must be blameless before the Lord.
-
-👂 Israel must not listen to occult practitioners like the nations do.
-
-📣 God promises to raise up a prophet like Moses.
-
-🔥 The promise responds to Israel's fear at Horeb.
-
-⚖️ God will hold people accountable for refusing His word.
-
-🚫 False prophets who speak presumptuously must not be feared.
+- 🧍 Priests and Levites have no land inheritance like the other tribes.
+- 🙏 The Lord Himself is their inheritance.
+- 🎁 Israel must provide the priestly portions from sacrifices and firstfruits.
+- 🏠 Levites who come from towns to serve at the chosen place are welcomed.
+- 🛑 Israel must not imitate the abominations of the nations.
+- 🔥 Child sacrifice is forbidden.
+- 🔮 Divination, sorcery, witchcraft, charms, mediums, spiritism, and consulting the dead are forbidden.
+- 💎 Israel must be blameless before the Lord.
+- 👂 Israel must not listen to occult practitioners like the nations do.
+- 📣 God promises to raise up a prophet like Moses.
+- 🔥 The promise responds to Israel's fear at Horeb.
+- ⚖️ God will hold people accountable for refusing His word.
+- 🚫 False prophets who speak presumptuously must not be feared.
 
 ## Chapter Flow
 
-🧍 Moses explains the inheritance of priests and Levites.
-
-🎁 Priestly portions are described from sacrifices and firstfruits.
-
-🙏 Levi is chosen to minister in the name of the Lord.
-
-🏠 A Levite may come from any gate to serve at the chosen place.
-
-🛑 Israel must not learn the abominations of the nations.
-
-🔮 Occult practices are listed and rejected.
-
-💎 Israel is called to be perfect or blameless with the Lord.
-
-👂 The nations listen to diviners, but Israel must not.
-
-📣 The Lord will raise up a Prophet like Moses.
-
-🔥 This comes from Israel's request at Horeb.
-
-🗣️ God will put His words in the Prophet's mouth.
-
-⚖️ Refusing that word brings accountability.
-
-🚫 False prophets are exposed when their word does not come to pass.
+- 🧍 Moses explains the inheritance of priests and Levites.
+- 🎁 Priestly portions are described from sacrifices and firstfruits.
+- 🙏 Levi is chosen to minister in the name of the Lord.
+- 🏠 A Levite may come from any gate to serve at the chosen place.
+- 🛑 Israel must not learn the abominations of the nations.
+- 🔮 Occult practices are listed and rejected.
+- 💎 Israel is called to be perfect or blameless with the Lord.
+- 👂 The nations listen to diviners, but Israel must not.
+- 📣 The Lord will raise up a Prophet like Moses.
+- 🔥 This comes from Israel's request at Horeb.
+- 🗣️ God will put His words in the Prophet's mouth.
+- ⚖️ Refusing that word brings accountability.
+- 🚫 False prophets are exposed when their word does not come to pass.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 18:1 to 2
 
+# Moses begins with the priests and Levites
+
 > **1** The priests the Levites, and all the tribe of Levi, shall have no part nor inheritance with Israel: they shall eat the offerings of the LORD made by fire, and his inheritance.
 
 > **2** Therefore shall they have no inheritance among their brethren: the LORD is their inheritance, as he hath said unto them.
+
+### 🧠 What This Passage Shows
 
 Moses begins with the priests and Levites.
 
@@ -16400,11 +16657,15 @@ But it can also be beautiful.
 
 ## Deuteronomy 18:3 to 5
 
+# Moses now explains practical provision
+
 > **3** And this shall be the priest's due from the people, from them that offer a sacrifice, whether it be ox or sheep; and they shall give unto the priest the shoulder, and the two cheeks, and the maw.
 
 > **4** The firstfruit also of thy corn, of thy wine, and of thine oil, and the first of the fleece of thy sheep, shalt thou give him.
 
 > **5** For the LORD thy God hath chosen him out of all thy tribes, to stand to minister in the name of the LORD, him and his sons for ever.
+
+### 🧠 What This Passage Shows
 
 Moses now explains practical provision.
 
@@ -16458,11 +16719,15 @@ But faithful ministry should be supported with honor and integrity.
 
 ## Deuteronomy 18:6 to 8
 
+# Moses describes a Levite who comes from one of Israel's
+
 > **6** And if a Levite come from any of thy gates out of all Israel, where he sojourned, and come with all the desire of his mind unto the place which the LORD shall choose;
 
 > **7** Then he shall minister in the name of the LORD his God, as all his brethren the Levites do, which stand there before the LORD.
 
 > **8** They shall have like portions to eat, beside that which cometh of the sale of his patrimony.
+
+### 🧠 What This Passage Shows
 
 Moses describes a Levite who comes from one of Israel's towns to the chosen place with a desire to minister.
 
@@ -16502,11 +16767,15 @@ There should be holy desire.
 
 ## Deuteronomy 18:9 to 11
 
+# Moses now gives a strong warning
+
 > **9** When thou art come into the land which the LORD thy God giveth thee, thou shalt not learn to do after the abominations of those nations.
 
 > **10** There shall not be found among you any one that maketh his son or his daughter to pass through the fire, or that useth divination, or an observer of times, or an enchanter, or a witch,
 
 > **11** Or a charmer, or a consulter with familiar spirits, or a wizard, or a necromancer.
+
+### 🧠 What This Passage Shows
 
 Moses now gives a strong warning.
 
@@ -16574,11 +16843,15 @@ We do not need forbidden doors.
 
 ## Deuteronomy 18:12 to 14
 
+# Moses explains why these practices matter
+
 > **12** For all that do these things are an abomination unto the LORD: and because of these abominations the LORD thy God doth drive them out from before thee.
 
 > **13** Thou shalt be perfect with the LORD thy God.
 
 > **14** For these nations, which thou shalt possess, hearkened unto observers of times, and unto diviners: but as for thee, the LORD thy God hath not suffered thee so to do.
+
+### 🧠 What This Passage Shows
 
 Moses explains why these practices matter.
 
@@ -16630,7 +16903,11 @@ But God calls His people to trust Him, not manipulate the unknown.
 
 ## Deuteronomy 18:15
 
+# This is one of the most important promises in Deuteronomy
+
 > **15** The LORD thy God will raise up unto thee a Prophet from the midst of thee, of thy brethren, like unto me; unto him ye shall hearken;
+
+### 🧠 What This Passage Shows
 
 This is one of the most important promises in Deuteronomy.
 
@@ -16682,9 +16959,13 @@ Listen to Him.
 
 ## Deuteronomy 18:16 to 17
 
+# Moses reminds Israel of Horeb, the day of assembly at the
+
 > **16** According to all that thou desiredst of the LORD thy God in Horeb in the day of the assembly, saying, Let me not hear again the voice of the LORD my God, neither let me see this great fire any more, that I die not.
 
 > **17** And the LORD said unto me, They have well spoken that which they have spoken.
+
+### 🧠 What This Passage Shows
 
 Moses reminds Israel of Horeb, the day of assembly at the mountain.
 
@@ -16732,9 +17013,13 @@ He makes access possible by grace.
 
 ## Deuteronomy 18:18 to 19
 
+# God repeats the promise
+
 > **18** I will raise them up a Prophet from among their brethren, like unto thee, and will put my words in his mouth; and he shall speak unto them all that I shall command him.
 
 > **19** And it shall come to pass, that whosoever will not hearken unto my words which he shall speak in my name, I will require it of him.
+
+### 🧠 What This Passage Shows
 
 God repeats the promise.
 
@@ -16786,7 +17071,11 @@ Do I treat Jesus' words as optional advice or as the word of the Lord?
 
 ## Deuteronomy 18:20
 
+# Moses now warns about false prophets
+
 > **20** But the prophet, which shall presume to speak a word in my name, which I have not commanded him to speak, or that shall speak in the name of other gods, even that prophet shall die.
+
+### 🧠 What This Passage Shows
 
 Moses now warns about false prophets.
 
@@ -16830,9 +17119,13 @@ It can lead people into sin, fear, or bondage.
 
 ## Deuteronomy 18:21 to 22
 
+# Moses gives Israel a test
+
 > **21** And if thou say in thine heart, How shall we know the word which the LORD hath not spoken?
 
 > **22** When a prophet speaketh in the name of the LORD, if the thing follow not, nor come to pass, that is the thing which the LORD hath not spoken, but the prophet hath spoken it presumptuously: thou shalt not be afraid of him.
+
+### 🧠 What This Passage Shows
 
 Moses gives Israel a test.
 
@@ -17043,65 +17336,47 @@ Truth must protect the community.
 
 ## Why Deuteronomy 19 Matters
 
-🏙️ Cities of refuge protect people who kill unintentionally.
-
-🛣️ Roads must be prepared so refuge is reachable.
-
-❤️ The law distinguishes accidental death from murder driven by hatred.
-
-🩸 Innocent blood must not be shed in the land.
-
-⚖️ Premeditated murder must not be protected by the refuge system.
-
-📍 Boundary markers must not be moved.
-
-👥 One witness is not enough to convict someone.
-
-🔎 False witnesses must be investigated carefully.
-
-🛑 A malicious witness must receive the consequence he intended for another.
-
-👂 Public justice teaches the community to hear, fear, and stop evil.
-
-⚖️ Justice must be proportionate and truthful.
+- 🏙️ Cities of refuge protect people who kill unintentionally.
+- 🛣️ Roads must be prepared so refuge is reachable.
+- ❤️ The law distinguishes accidental death from murder driven by hatred.
+- 🩸 Innocent blood must not be shed in the land.
+- ⚖️ Premeditated murder must not be protected by the refuge system.
+- 📍 Boundary markers must not be moved.
+- 👥 One witness is not enough to convict someone.
+- 🔎 False witnesses must be investigated carefully.
+- 🛑 A malicious witness must receive the consequence he intended for another.
+- 👂 Public justice teaches the community to hear, fear, and stop evil.
+- ⚖️ Justice must be proportionate and truthful.
 
 ## Chapter Flow
 
-🏞️ Moses looks ahead to Israel dwelling in the land.
-
-🏙️ Israel must set apart three cities of refuge.
-
-🛣️ The way to the cities must be prepared and the land divided.
-
-🪓 Moses gives an example of accidental death with an axe head.
-
-🏃 The manslayer may flee and live.
-
-😡 The avenger of blood must not kill someone who did not hate the victim.
-
-➕ If the Lord enlarges the land, three more cities are added.
-
-🩸 This prevents innocent blood from being shed.
-
-⚖️ A murderer who acts from hatred must be brought back for judgment.
-
-📍 Israel must not move a neighbor's landmark.
-
-👥 Two or three witnesses are required.
-
-🔎 Judges must diligently investigate false testimony.
-
-⚖️ The false witness receives what he planned against his brother.
+- 🏞️ Moses looks ahead to Israel dwelling in the land.
+- 🏙️ Israel must set apart three cities of refuge.
+- 🛣️ The way to the cities must be prepared and the land divided.
+- 🪓 Moses gives an example of accidental death with an axe head.
+- 🏃 The manslayer may flee and live.
+- 😡 The avenger of blood must not kill someone who did not hate the victim.
+- ➕ If the Lord enlarges the land, three more cities are added.
+- 🩸 This prevents innocent blood from being shed.
+- ⚖️ A murderer who acts from hatred must be brought back for judgment.
+- 📍 Israel must not move a neighbor's landmark.
+- 👥 Two or three witnesses are required.
+- 🔎 Judges must diligently investigate false testimony.
+- ⚖️ The false witness receives what he planned against his brother.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 19:1 to 3
+
+# Looking ahead to settled life in the land
 
 > **1** When the LORD thy God hath cut off the nations, whose land the LORD thy God giveth thee, and thou succeedest them, and dwellest in their cities, and in their houses;
 
 > **2** Thou shalt separate three cities for thee in the midst of thy land, which the LORD thy God giveth thee to possess it.
 
 > **3** Thou shalt prepare thee a way, and divide the coasts of thy land, which the LORD thy God giveth thee to inherit, into three parts, that every slayer may flee thither.
+
+### 🧠 What This Passage Shows
 
 Moses begins by looking ahead to settled life in the land.
 
@@ -17155,9 +17430,13 @@ Are we making it easier for people in crisis to reach safety, counsel, prayer, a
 
 ## Deuteronomy 19:4 to 5
 
+# Moses gives a clear example
+
 > **4** And this is the case of the slayer, which shall flee thither, that he may live: Whoso killeth his neighbour ignorantly, whom he hated not in time past;
 
 > **5** As when a man goeth into the wood with his neighbour to hew wood, and his hand fetcheth a stroke with the axe to cut down the tree, and the head slippeth from the helve, and lighteth upon his neighbour, that he die; he shall flee unto one of those cities, and live:
+
+### 🧠 What This Passage Shows
 
 Moses gives a clear example.
 
@@ -17217,9 +17496,13 @@ God cares about truth, not only outcomes.
 
 ## Deuteronomy 19:6 to 7
 
+# Moses explains why refuge is necessary
+
 > **6** Lest the avenger of the blood pursue the slayer, while his heart is hot, and overtake him, because the way is long, and slay him; whereas he was not worthy of death, inasmuch as he hated him not in time past.
 
 > **7** Wherefore I command thee, saying, Thou shalt separate three cities for thee.
+
+### 🧠 What This Passage Shows
 
 Moses explains why refuge is necessary.
 
@@ -17273,11 +17556,15 @@ God calls His people to slow down and make room for truth.
 
 ## Deuteronomy 19:8 to 10
 
+# If the Lord enlarges Israel's borders, they must add
+
 > **8** And if the LORD thy God enlarge thy coast, as he hath sworn unto thy fathers, and give thee all the land which he promised to give unto thy fathers;
 
 > **9** If thou shalt keep all these commandments to do them, which I command thee this day, to love the LORD thy God, and to walk ever in his ways; then shalt thou add three cities more for thee, beside these three:
 
 > **10** That innocent blood be not shed in thy land, which the LORD thy God giveth thee for an inheritance, and so blood be upon thee.
+
+### 🧠 What This Passage Shows
 
 If the Lord enlarges Israel's borders, they must add three more cities.
 
@@ -17327,11 +17614,15 @@ More blessing means more accountability.
 
 ## Deuteronomy 19:11 to 13
 
+# Now Moses gives the opposite case
+
 > **11** But if any man hate his neighbour, and lie in wait for him, and rise up against him, and smite him mortally that he die, and fleeth into one of these cities:
 
 > **12** Then the elders of his city shall send and fetch him thence, and deliver him into the hand of the avenger of blood, that he may die.
 
 > **13** Thine eye shall not pity him, but thou shalt put away the guilt of innocent blood from Israel, that it may go well with thee.
+
+### 🧠 What This Passage Shows
 
 Now Moses gives the opposite case.
 
@@ -17383,7 +17674,11 @@ We should also refuse to enable the guilty to keep destroying others.
 
 ## Deuteronomy 19:14
 
+# This short command protects boundary markers
+
 > **14** Thou shalt not remove thy neighbour's landmark, which they of old time have set in thine inheritance, which thou shalt inherit in the land that the LORD thy God giveth thee to possess it.
+
+### 🧠 What This Passage Shows
 
 This short command protects boundary markers.
 
@@ -17437,7 +17732,11 @@ Do not take what is not yours just because you can hide it.
 
 ## Deuteronomy 19:15
 
+# One witness is not enough to establish a charge
+
 > **15** One witness shall not rise up against a man for any iniquity, or for any sin, in any sin that he sinneth: at the mouth of two witnesses, or at the mouth of three witnesses, shall the matter be established.
+
+### 🧠 What This Passage Shows
 
 One witness is not enough to establish a charge.
 
@@ -17485,9 +17784,13 @@ We should not spread claims carelessly.
 
 ## Deuteronomy 19:16 to 17
 
+# Moses now addresses false witnesses
+
 > **16** If a false witness rise up against any man to testify against him that which is wrong;
 
 > **17** Then both the men, between whom the controversy is, shall stand before the LORD, before the priests and the judges, which shall be in those days;
+
+### 🧠 What This Passage Shows
 
 Moses now addresses false witnesses.
 
@@ -17529,9 +17832,13 @@ When we lie to harm others, we sin before God, not only before people.
 
 ## Deuteronomy 19:18 to 19
 
+# The judges must investigate diligently
+
 > **18** And the judges shall make diligent inquisition: and, behold, if the witness be a false witness, and hath testified falsely against his brother;
 
 > **19** Then shall ye do unto him, as he had thought to have done unto his brother: so shalt thou put the evil away from among you.
+
+### 🧠 What This Passage Shows
 
 The judges must investigate diligently.
 
@@ -17573,9 +17880,13 @@ God also cares about the community being poisoned by falsehood.
 
 ## Deuteronomy 19:20 to 21
 
+# The purpose of judging false witness is public warning
+
 > **20** And those which remain shall hear, and fear, and shall henceforth commit no more any such evil among you.
 
 > **21** And thine eye shall not pity; but life shall go for life, eye for eye, tooth for tooth, hand for hand, foot for foot.
+
+### 🧠 What This Passage Shows
 
 The purpose of judging false witness is public warning.
 
@@ -17780,71 +18091,48 @@ God's people must trust the Lord, obey His word, and practice restraint.
 
 ## Why Deuteronomy 20 Matters
 
-😨 Israel will face armies with horses, chariots, and more people.
-
-🙏 The Lord who brought Israel from Egypt goes with them.
-
-🗣️ The priest encourages the army before battle.
-
-❤️ Israel must not let fear melt their hearts.
-
-⚔️ The Lord fights for His people.
-
-🏠 Men with new houses may return home.
-
-🍇 Men with new vineyards may return home.
-
-💍 Men betrothed to a wife may return home.
-
-😰 Fearful men may return home so fear does not spread.
-
-🕊️ Far cities are offered peace terms first.
-
-⚖️ Cities that refuse peace face judgment.
-
-🔥 Canaanite cities are treated differently because of their abominations and God's judgment.
-
-🌳 Fruit trees must not be destroyed in siege warfare.
-
-🪓 Non-fruit trees may be used for siege works.
+- 😨 Israel will face armies with horses, chariots, and more people.
+- 🙏 The Lord who brought Israel from Egypt goes with them.
+- 🗣️ The priest encourages the army before battle.
+- ❤️ Israel must not let fear melt their hearts.
+- ⚔️ The Lord fights for His people.
+- 🏠 Men with new houses may return home.
+- 🍇 Men with new vineyards may return home.
+- 💍 Men betrothed to a wife may return home.
+- 😰 Fearful men may return home so fear does not spread.
+- 🕊️ Far cities are offered peace terms first.
+- ⚖️ Cities that refuse peace face judgment.
+- 🔥 Canaanite cities are treated differently because of their abominations and God's judgment.
+- 🌳 Fruit trees must not be destroyed in siege warfare.
+- 🪓 Non-fruit trees may be used for siege works.
 
 ## Chapter Flow
 
-👀 Moses prepares Israel to see stronger armies.
-
-🙏 Israel must not fear because the Lord goes with them.
-
-🗣️ The priest speaks courage before battle.
-
-⚔️ The Lord fights to save His people.
-
-🏠 Officers release those with unfinished homes.
-
-🍇 Officers release those with unused vineyards.
-
-💍 Officers release those who are betrothed but not married.
-
-😰 Officers release the fearful so fear does not spread.
-
-👥 Captains are appointed after exemptions.
-
-🕊️ Israel offers peace to distant cities.
-
-⚖️ If peace is accepted, the city becomes subject to Israel.
-
-🔥 If peace is refused, judgment comes.
-
-🚫 Canaanite nations are not treated like distant cities.
-
-🛑 Israel must not learn their abominations.
-
-🌳 Fruit trees are spared during siege.
+- 👀 Moses prepares Israel to see stronger armies.
+- 🙏 Israel must not fear because the Lord goes with them.
+- 🗣️ The priest speaks courage before battle.
+- ⚔️ The Lord fights to save His people.
+- 🏠 Officers release those with unfinished homes.
+- 🍇 Officers release those with unused vineyards.
+- 💍 Officers release those who are betrothed but not married.
+- 😰 Officers release the fearful so fear does not spread.
+- 👥 Captains are appointed after exemptions.
+- 🕊️ Israel offers peace to distant cities.
+- ⚖️ If peace is accepted, the city becomes subject to Israel.
+- 🔥 If peace is refused, judgment comes.
+- 🚫 Canaanite nations are not treated like distant cities.
+- 🛑 Israel must not learn their abominations.
+- 🌳 Fruit trees are spared during siege.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 20:1
 
+# Moses begins with what Israel will see
+
 > **1** When thou goest out to battle against thine enemies, and seest horses, and chariots, and a people more than thou, be not afraid of them: for the LORD thy God is with thee, which brought thee up out of the land of Egypt.
+
+### 🧠 What This Passage Shows
 
 Moses begins with what Israel will see.
 
@@ -17920,11 +18208,15 @@ The Lord is with His people.
 
 ## Deuteronomy 20:2 to 4
 
+# Before the battle, the priest speaks
+
 > **2** And it shall be, when ye are come nigh unto the battle, that the priest shall approach and speak unto the people,
 
 > **3** And shall say unto them, Hear, O Israel, ye approach this day unto battle against your enemies: let not your hearts faint, fear not, and do not tremble, neither be ye terrified because of them;
 
 > **4** For the LORD your God is he that goeth with you, to fight for you against your enemies, to save you.
+
+### 🧠 What This Passage Shows
 
 Before the battle, the priest speaks.
 
@@ -17992,7 +18284,11 @@ We need the word that reminds us who God is.
 
 ## Deuteronomy 20:5
 
+# The officers now begin exemptions
+
 > **5** And the officers shall speak unto the people, saying, What man is there that hath built a new house, and hath not dedicated it? let him go and return to his house, lest he die in the battle, and another man dedicate it.
+
+### 🧠 What This Passage Shows
 
 The officers now begin exemptions.
 
@@ -18042,7 +18338,11 @@ He cares about life beyond conflict.
 
 ## Deuteronomy 20:6
 
+# The second exemption is for a man who has planted a
+
 > **6** And what man is he that hath planted a vineyard, and hath not yet eaten of it? let him also go and return unto his house, lest he die in the battle, and another man eat of it.
+
+### 🧠 What This Passage Shows
 
 The second exemption is for a man who has planted a vineyard but has not yet enjoyed its fruit.
 
@@ -18086,7 +18386,11 @@ He cares about the work you have planted but not yet tasted.
 
 ## Deuteronomy 20:7
 
+# The third exemption is for a man betrothed to a wife but
+
 > **7** And what man is there that hath betrothed a wife, and hath not taken her? let him go and return unto his house, lest he die in the battle, and another man take her.
+
+### 🧠 What This Passage Shows
 
 The third exemption is for a man betrothed to a wife but not yet married.
 
@@ -18124,9 +18428,13 @@ He is not impressed by versions of service that unnecessarily crush family respo
 
 ## Deuteronomy 20:8 to 9
 
+# The final exemption is for the fearful and fainthearted
+
 > **8** And the officers shall speak further unto the people, and they shall say, What man is there that is fearful and fainthearted? let him go and return unto his house, lest his brethren's heart faint as well as his heart.
 
 > **9** And it shall be, when the officers have made an end of speaking unto the people, that they shall make captains of the armies to lead the people.
+
+### 🧠 What This Passage Shows
 
 The final exemption is for the fearful and fainthearted.
 
@@ -18178,9 +18486,13 @@ It means we take fear seriously and bring it honestly before the Lord.
 
 ## Deuteronomy 20:10 to 11
 
+# Moses now gives instructions for cities outside the
+
 > **10** When thou comest nigh unto a city to fight against it, then proclaim peace unto it.
 
 > **11** And it shall be, if it make thee answer of peace, and open unto thee, then it shall be, that all the people that is found therein shall be tributaries unto thee, and they shall serve thee.
+
+### 🧠 What This Passage Shows
 
 Moses now gives instructions for cities outside the specific Canaanite judgment.
 
@@ -18222,6 +18534,8 @@ Even in conflict, restraint matters.
 
 ## Deuteronomy 20:12 to 15
 
+# If a distant city refuses peace and makes war, Israel
+
 > **12** And if it will make no peace with thee, but will make war against thee, then thou shalt besiege it:
 
 > **13** And when the LORD thy God hath delivered it into thine hands, thou shalt smite every male thereof with the edge of the sword:
@@ -18229,6 +18543,8 @@ Even in conflict, restraint matters.
 > **14** But the women, and the little ones, and the cattle, and all that is in the city, even all the spoil thereof, shalt thou take unto thyself; and thou shalt eat the spoil of thine enemies, which the LORD thy God hath given thee.
 
 > **15** Thus shalt thou do unto all the cities which are very far off from thee, which are not of the cities of these nations.
+
+### 🧠 What This Passage Shows
 
 If a distant city refuses peace and makes war, Israel besieges it.
 
@@ -18266,11 +18582,15 @@ Still, Deuteronomy 20 shows that even ancient warfare had categories, limits, an
 
 ## Deuteronomy 20:16 to 18
 
+# Now Moses speaks about the cities of the nations in the
+
 > **16** But of the cities of these people, which the LORD thy God doth give thee for an inheritance, thou shalt save alive nothing that breatheth:
 
 > **17** But thou shalt utterly destroy them; namely, the Hittites, and the Amorites, the Canaanites, and the Perizzites, the Hivites, and the Jebusites; as the LORD thy God hath commanded thee:
 
 > **18** That they teach you not to do after all their abominations, which they have done unto their gods; so should ye sin against the LORD your God.
+
+### 🧠 What This Passage Shows
 
 Now Moses speaks about the cities of the nations in the land.
 
@@ -18320,9 +18640,13 @@ Jesus rebukes violent kingdom-building and sends His church to make disciples by
 
 ## Deuteronomy 20:19 to 20
 
+# The chapter ends with restraint toward fruit trees
+
 > **19** When thou shalt besiege a city a long time, in making war against it to take it, thou shalt not destroy the trees thereof by forcing an axe against them: for thou mayest eat of them, and thou shalt not cut them down (for the tree of the field is man's life) to employ them in the siege:
 
 > **20** Only the trees which thou knowest that they be not trees for meat, thou shalt destroy and cut them down; and thou shalt build bulwarks against the city that maketh war with thee, until it be subdued.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with restraint toward fruit trees.
 
@@ -18513,59 +18837,39 @@ God teaches His people that holiness must enter the messy places too.
 
 ## Why Deuteronomy 21 Matters
 
-🩸 Unsolved bloodshed must not be ignored.
-
-🏙️ Elders and judges are responsible to seek justice for the land.
-
-🐄 A public ritual acknowledges guilt and asks God for mercy when a murderer is unknown.
-
-🙏 Innocent blood defiles the land and must be dealt with before the Lord.
-
-👩 A captive woman must be given time to mourn and must not be treated as merchandise.
-
-🛑 Power in war is restrained by God's law.
-
-👦 The hated wife's firstborn son must not be robbed of inheritance rights.
-
-⚖️ Justice must not be twisted by favoritism.
-
-💔 Persistent family rebellion is treated as a serious covenant threat.
-
-👂 The community must hear and fear.
-
-🌳 A body hanged on a tree must not remain overnight.
-
-✝️ The curse of hanging on a tree points forward to Christ bearing the curse for us.
+- 🩸 Unsolved bloodshed must not be ignored.
+- 🏙️ Elders and judges are responsible to seek justice for the land.
+- 🐄 A public ritual acknowledges guilt and asks God for mercy when a murderer is unknown.
+- 🙏 Innocent blood defiles the land and must be dealt with before the Lord.
+- 👩 A captive woman must be given time to mourn and must not be treated as merchandise.
+- 🛑 Power in war is restrained by God's law.
+- 👦 The hated wife's firstborn son must not be robbed of inheritance rights.
+- ⚖️ Justice must not be twisted by favoritism.
+- 💔 Persistent family rebellion is treated as a serious covenant threat.
+- 👂 The community must hear and fear.
+- 🌳 A body hanged on a tree must not remain overnight.
+- ✝️ The curse of hanging on a tree points forward to Christ bearing the curse for us.
 
 ## Chapter Flow
 
-🩸 A slain person is found in a field and the killer is unknown.
-
-📏 Elders measure to find the nearest city.
-
-🐄 A heifer is brought to an uncultivated valley and its neck is broken.
-
-🧍 Priests are present because judgment and blessing belong under the Lord.
-
-👐 Elders wash their hands and declare they did not shed the blood.
-
-🙏 They ask the Lord to be merciful and not charge innocent blood to Israel.
-
-👩 A captive woman may be taken as a wife only after a process of mourning and transition.
-
-🛑 If the man no longer delights in her, he must let her go free and may not sell her.
-
-👦 A firstborn son of an unloved wife must receive his rightful double portion.
-
-💔 A stubborn and rebellious son is brought before the elders.
-
-⚖️ Communal judgment removes evil from Israel.
-
-🌳 A hanged body must be buried the same day.
+- 🩸 A slain person is found in a field and the killer is unknown.
+- 📏 Elders measure to find the nearest city.
+- 🐄 A heifer is brought to an uncultivated valley and its neck is broken.
+- 🧍 Priests are present because judgment and blessing belong under the Lord.
+- 👐 Elders wash their hands and declare they did not shed the blood.
+- 🙏 They ask the Lord to be merciful and not charge innocent blood to Israel.
+- 👩 A captive woman may be taken as a wife only after a process of mourning and transition.
+- 🛑 If the man no longer delights in her, he must let her go free and may not sell her.
+- 👦 A firstborn son of an unloved wife must receive his rightful double portion.
+- 💔 A stubborn and rebellious son is brought before the elders.
+- ⚖️ Communal judgment removes evil from Israel.
+- 🌳 A hanged body must be buried the same day.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 21:1 to 4
+
+# The chapter begins with a body in a field
 
 > **1** If one be found slain in the land which the LORD thy God giveth thee to possess it, lying in the field, and it be not known who hath slain him:
 
@@ -18574,6 +18878,8 @@ God teaches His people that holiness must enter the messy places too.
 > **3** And it shall be, that the city which is next unto the slain man, even the elders of that city shall take an heifer, which hath not been wrought with, and which hath not drawn in the yoke;
 
 > **4** And the elders of that city shall bring down the heifer unto a rough valley, which is neither eared nor sown, and shall strike off the heifer's neck there in the valley:
+
+### 🧠 What This Passage Shows
 
 The chapter begins with a body in a field.
 
@@ -18623,6 +18929,8 @@ It matters to God.
 
 ## Deuteronomy 21:5 to 9
 
+# The priests come near because this is not only a criminal
+
 > **5** And the priests the sons of Levi shall come near; for them the LORD thy God hath chosen to minister unto him, and to bless in the name of the LORD; and by their word shall every controversy and every stroke be tried:
 
 > **6** And all the elders of that city, that are next unto the slain man, shall wash their hands over the heifer that is beheaded in the valley:
@@ -18632,6 +18940,8 @@ It matters to God.
 > **8** Be merciful, O LORD, unto thy people Israel, whom thou hast redeemed, and lay not innocent blood unto thy people of Israel's charge. And the blood shall be forgiven them.
 
 > **9** So shalt thou put away the guilt of innocent blood from among you, when thou shalt do that which is right in the sight of the LORD.
+
+### 🧠 What This Passage Shows
 
 The priests come near because this is not only a criminal matter.
 
@@ -18677,6 +18987,8 @@ Sometimes a community must grieve, acknowledge, seek mercy, and commit to righte
 
 ## Deuteronomy 21:10 to 14
 
+# This section is difficult because it addresses a
+
 > **10** When thou goest forth to war against thine enemies, and the LORD thy God hath delivered them into thine hands, and thou hast taken them captive,
 
 > **11** And seest among the captives a beautiful woman, and hast a desire unto her, that thou wouldest have her to thy wife;
@@ -18686,6 +18998,8 @@ Sometimes a community must grieve, acknowledge, seek mercy, and commit to righte
 > **13** And she shall put the raiment of her captivity from off her, and shall remain in thine house, and bewail her father and her mother a full month: and after that thou shalt go in unto her, and be her husband, and she shall be thy wife.
 
 > **14** And it shall be, if thou have no delight in her, then thou shalt let her go whither she will; but thou shalt not sell her at all for money, thou shalt not make merchandise of her, because thou hast humbled her.
+
+### 🧠 What This Passage Shows
 
 This section is difficult because it addresses a situation from ancient warfare involving a captive woman.
 
@@ -18739,11 +19053,15 @@ People must never be treated as merchandise.
 
 ## Deuteronomy 21:15 to 17
 
+# Moses now addresses family favoritism and inheritance
+
 > **15** If a man have two wives, one beloved, and another hated, and they have born him children, both the beloved and the hated; and if the firstborn son be hers that was hated:
 
 > **16** Then it shall be, when he maketh his sons to inherit that which he hath, that he may not make the son of the beloved firstborn before the son of the hated, which is indeed the firstborn:
 
 > **17** But he shall acknowledge the son of the hated for the firstborn, by giving him a double portion of all that he hath: for he is the beginning of his strength; the right of the firstborn is his.
+
+### 🧠 What This Passage Shows
 
 Moses now addresses family favoritism and inheritance.
 
@@ -18793,6 +19111,8 @@ God calls His people to do what is right, not only what feels emotionally conven
 
 ## Deuteronomy 21:18 to 21
 
+# This is one of the hardest sections in the chapter
+
 > **18** If a man have a stubborn and rebellious son, which will not obey the voice of his father, or the voice of his mother, and that, when they have chastened him, will not hearken unto them:
 
 > **19** Then shall his father and his mother lay hold on him, and bring him out unto the elders of his city, and unto the gate of his place;
@@ -18800,6 +19120,8 @@ God calls His people to do what is right, not only what feels emotionally conven
 > **20** And they shall say unto the elders of his city, This our son is stubborn and rebellious, he will not obey our voice; he is a glutton, and a drunkard.
 
 > **21** And all the men of his city shall stone him with stones, that he die: so shalt thou put evil away from among you; and all Israel shall hear, and fear.
+
+### 🧠 What This Passage Shows
 
 This is one of the hardest sections in the chapter.
 
@@ -18857,9 +19179,13 @@ Correction rejected again and again is not a small thing.
 
 ## Deuteronomy 21:22 to 23
 
+# The chapter ends with the body of an executed criminal
+
 > **22** And if a man have committed a sin worthy of death, and he be to be put to death, and thou hang him on a tree:
 
 > **23** His body shall not remain all night upon the tree, but thou shalt in any wise bury him that day; (for he that is hanged is accursed of God;) that thy land be not defiled, which the LORD thy God giveth thee for an inheritance.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with the body of an executed criminal.
 
@@ -19056,69 +19382,44 @@ God cares about whether His people look away when they should act.
 
 ## Why Deuteronomy 22 Matters
 
-🤝 Neighbor love includes returning lost animals and property.
-
-👀 God's people must not hide themselves from another person's need.
-
-🐂 Fallen animals must be helped, not ignored.
-
-👕 Israel must honor God-given distinctions and reject confusion.
-
-🐦 Even taking a bird's nest has limits that preserve future life.
-
-🏠 A roof must have a guardrail so bloodguilt does not come on the house.
-
-🌱 Israel must not mix seed in the vineyard.
-
-🐂 An ox and donkey must not be yoked together.
-
-🧵 Mixed fabrics are forbidden as part of Israel's holiness boundaries.
-
-🧶 Tassels remind Israel of covenant identity.
-
-⚖️ Marriage accusations must be judged carefully.
-
-🛑 Sexual sin is treated seriously.
-
-🛡️ The law distinguishes consent from assault.
-
-💔 Vulnerable women must not be blamed for violence done against them.
+- 🤝 Neighbor love includes returning lost animals and property.
+- 👀 God's people must not hide themselves from another person's need.
+- 🐂 Fallen animals must be helped, not ignored.
+- 👕 Israel must honor God-given distinctions and reject confusion.
+- 🐦 Even taking a bird's nest has limits that preserve future life.
+- 🏠 A roof must have a guardrail so bloodguilt does not come on the house.
+- 🌱 Israel must not mix seed in the vineyard.
+- 🐂 An ox and donkey must not be yoked together.
+- 🧵 Mixed fabrics are forbidden as part of Israel's holiness boundaries.
+- 🧶 Tassels remind Israel of covenant identity.
+- ⚖️ Marriage accusations must be judged carefully.
+- 🛑 Sexual sin is treated seriously.
+- 🛡️ The law distinguishes consent from assault.
+- 💔 Vulnerable women must not be blamed for violence done against them.
 
 ## Chapter Flow
 
-🐂 Lost animals must be returned to the brother.
-
-🏠 If the owner is unknown, the animal is kept until claimed.
-
-👕 Lost clothing and property must also be returned.
-
-🐴 Fallen animals must be helped.
-
-👚 Men and women must not wear what belongs to the other in this covenant setting.
-
-🐦 A mother bird must be released when taking young or eggs.
-
-🏠 New houses need a battlement on the roof.
-
-🌱 Mixed vineyard seed is forbidden.
-
-🐂 Ox and donkey must not plow together.
-
-🧵 Wool and linen mixed together are forbidden.
-
-🧶 Tassels are placed on garments.
-
-⚖️ A husband's accusation against his wife is investigated.
-
-🛑 Adultery and sexual violation are judged.
-
-🏙️ City and field cases are distinguished.
-
-💔 Assault is treated as violence, not mutual guilt.
+- 🐂 Lost animals must be returned to the brother.
+- 🏠 If the owner is unknown, the animal is kept until claimed.
+- 👕 Lost clothing and property must also be returned.
+- 🐴 Fallen animals must be helped.
+- 👚 Men and women must not wear what belongs to the other in this covenant setting.
+- 🐦 A mother bird must be released when taking young or eggs.
+- 🏠 New houses need a battlement on the roof.
+- 🌱 Mixed vineyard seed is forbidden.
+- 🐂 Ox and donkey must not plow together.
+- 🧵 Wool and linen mixed together are forbidden.
+- 🧶 Tassels are placed on garments.
+- ⚖️ A husband's accusation against his wife is investigated.
+- 🛑 Adultery and sexual violation are judged.
+- 🏙️ City and field cases are distinguished.
+- 💔 Assault is treated as violence, not mutual guilt.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 22:1 to 4
+
+# Moses begins with ordinary neighbor responsibility
 
 > **1** Thou shalt not see thy brother's ox or his sheep go astray, and hide thyself from them: thou shalt in any case bring them again unto thy brother.
 
@@ -19127,6 +19428,8 @@ God cares about whether His people look away when they should act.
 > **3** In like manner shalt thou do with his ass; and so shalt thou do with his raiment; and with all lost thing of thy brother's, which he hath lost, and thou hast found, shalt thou do likewise: thou mayest not hide thyself.
 
 > **4** Thou shalt not see thy brother's ass or his ox fall down by the way, and hide thyself from them: thou shalt surely help him to lift them up again.
+
+### 🧠 What This Passage Shows
 
 Moses begins with ordinary neighbor responsibility.
 
@@ -19182,7 +19485,11 @@ Do not profit from what someone else misplaced.
 
 ## Deuteronomy 22:5
 
+# This verse addresses clothing connected to male and
+
 > **5** The woman shall not wear that which pertaineth unto a man, neither shall a man put on a woman's garment: for all that do so are abomination unto the LORD thy God.
+
+### 🧠 What This Passage Shows
 
 This verse addresses clothing connected to male and female distinction in Israel's covenant life.
 
@@ -19220,9 +19527,13 @@ We speak truth with compassion because every person is made in God's image and n
 
 ## Deuteronomy 22:6 to 7
 
+# This law concerns a bird's nest
+
 > **6** If a bird's nest chance to be before thee in the way in any tree, or on the ground, whether they be young ones, or eggs, and the dam sitting upon the young, or upon the eggs, thou shalt not take the dam with the young:
 
 > **7** But thou shalt in any wise let the dam go, and take the young to thee; that it may be well with thee, and that thou mayest prolong thy days.
+
+### 🧠 What This Passage Shows
 
 This law concerns a bird's nest.
 
@@ -19264,7 +19575,11 @@ Do not take the future for a moment of appetite.
 
 ## Deuteronomy 22:8
 
+# In Israel, flat roofs were used as living space
+
 > **8** When thou buildest a new house, then thou shalt make a battlement for thy roof, that thou bring not blood upon thine house, if any man fall from thence.
+
+### 🧠 What This Passage Shows
 
 In Israel, flat roofs were used as living space.
 
@@ -19308,6 +19623,8 @@ What foreseeable harm can I prevent?
 
 ## Deuteronomy 22:9 to 12
 
+# These laws concern mixtures and covenant signs
+
 > **9** Thou shalt not sow thy vineyard with divers seeds: lest the fruit of thy seed which thou hast sown, and the fruit of thy vineyard, be defiled.
 
 > **10** Thou shalt not plow with an ox and an ass together.
@@ -19315,6 +19632,8 @@ What foreseeable harm can I prevent?
 > **11** Thou shalt not wear a garment of divers sorts, as of woollen and linen together.
 
 > **12** Thou shalt make thee fringes upon the four quarters of thy vesture, wherewith thou coverest thyself.
+
+### 🧠 What This Passage Shows
 
 These laws concern mixtures and covenant signs.
 
@@ -19364,6 +19683,8 @@ Do not forget who you are.
 
 ## Deuteronomy 22:13 to 19
 
+# This section deals with a husband who falsely accuses his
+
 > **13** If any man take a wife, and go in unto her, and hate her,
 
 > **14** And give occasions of speech against her, and bring up an evil name upon her, and say, I took this woman, and when I came to her, I found her not a maid:
@@ -19377,6 +19698,8 @@ Do not forget who you are.
 > **18** And the elders of that city shall take that man and chastise him;
 
 > **19** And they shall amerce him in an hundred shekels of silver, and give them unto the father of the damsel, because he hath brought up an evil name upon a virgin of Israel: and she shall be his wife; he may not put her away all his days.
+
+### 🧠 What This Passage Shows
 
 This section deals with a husband who falsely accuses his wife.
 
@@ -19424,9 +19747,13 @@ God sees when people use words to crush the vulnerable.
 
 ## Deuteronomy 22:20 to 21
 
+# This is another hard section
+
 > **20** But if this thing be true, and the tokens of virginity be not found for the damsel:
 
 > **21** Then they shall bring out the damsel to the door of her father's house, and the men of her city shall stone her with stones that she die: because she hath wrought folly in Israel, to play the whore in her father's house: so shalt thou put evil away from among you.
+
+### 🧠 What This Passage Shows
 
 This is another hard section.
 
@@ -19470,7 +19797,11 @@ And in Christ, sexual sinners are called not to death by stones, but to repentan
 
 ## Deuteronomy 22:22
 
+# This verse deals with adultery
+
 > **22** If a man be found lying with a woman married to an husband, then they shall both of them die, both the man that lay with the woman, and the woman: so shalt thou put away evil from Israel.
+
+### 🧠 What This Passage Shows
 
 This verse deals with adultery.
 
@@ -19518,9 +19849,13 @@ Christ restores repentant sinners.
 
 ## Deuteronomy 22:23 to 24
 
+# This section addresses a betrothed woman in the city
+
 > **23** If a damsel that is a virgin be betrothed unto an husband, and a man find her in the city, and lie with her;
 
 > **24** Then ye shall bring them both out unto the gate of that city, and ye shall stone them with stones that they die; the damsel, because she cried not, being in the city; and the man, because he hath humbled his neighbour's wife: so thou shalt put away evil from among you.
+
+### 🧠 What This Passage Shows
 
 This section addresses a betrothed woman in the city.
 
@@ -19564,11 +19899,15 @@ We must seek what truly happened.
 
 ## Deuteronomy 22:25 to 27
 
+# This section is very important
+
 > **25** But if a man find a betrothed damsel in the field, and the man force her, and lie with her: then the man only that lay with her shall die.
 
 > **26** But unto the damsel thou shalt do nothing; there is in the damsel no sin worthy of death: for as when a man riseth against his neighbour, and slayeth him, even so is this matter:
 
 > **27** For he found her in the field, and the betrothed damsel cried, and there was none to save her.
+
+### 🧠 What This Passage Shows
 
 This section is very important.
 
@@ -19620,9 +19959,13 @@ Do not make the wounded carry the guilt of the offender.
 
 ## Deuteronomy 22:28 to 29
 
+# This section is also difficult and must be handled
+
 > **28** If a man find a damsel that is a virgin, which is not betrothed, and lay hold on her, and lie with her, and they be found;
 
 > **29** Then the man that lay with her shall give unto the damsel's father fifty shekels of silver, and she shall be his wife; because he hath humbled her, he may not put her away all his days.
+
+### 🧠 What This Passage Shows
 
 This section is also difficult and must be handled carefully.
 
@@ -19668,7 +20011,11 @@ The vulnerable must not be abandoned.
 
 ## Deuteronomy 22:30
 
+# The chapter ends with a prohibition against a man taking
+
 > **30** A man shall not take his father's wife, nor discover his father's skirt.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with a prohibition against a man taking his father's wife.
 
@@ -19853,65 +20200,46 @@ Our homes, habits, relationships, money, promises, and appetites all belong unde
 
 ## Why Deuteronomy 23 Matters
 
-🚪 Assembly boundaries remind Israel that covenant worship is holy.
-
-🧬 Some exclusions reflect serious covenant, family, and historical concerns.
-
-🛑 Ammon and Moab are remembered for refusing bread and water and hiring Balaam.
-
-💛 God turned Balaam's curse into blessing because He loved Israel.
-
-🧳 Edom and Egypt are treated differently because of family connection and former hospitality.
-
-⛺ War camps must be kept clean and holy.
-
-👁️ The Lord walks in the camp, so uncleanness must not be treated casually.
-
-🛡️ Escaped servants must not be returned to oppressive masters.
-
-🚫 Cult prostitution is forbidden.
-
-💰 Israelites must not charge interest to poor covenant brothers.
-
-🗣️ Vows to the Lord must be kept.
-
-🍇 Neighborly eating from a vineyard or field is allowed, but harvesting greedily is not.
+- 🚪 Assembly boundaries remind Israel that covenant worship is holy.
+- 🧬 Some exclusions reflect serious covenant, family, and historical concerns.
+- 🛑 Ammon and Moab are remembered for refusing bread and water and hiring Balaam.
+- 💛 God turned Balaam's curse into blessing because He loved Israel.
+- 🧳 Edom and Egypt are treated differently because of family connection and former hospitality.
+- ⛺ War camps must be kept clean and holy.
+- 👁️ The Lord walks in the camp, so uncleanness must not be treated casually.
+- 🛡️ Escaped servants must not be returned to oppressive masters.
+- 🚫 Cult prostitution is forbidden.
+- 💰 Israelites must not charge interest to poor covenant brothers.
+- 🗣️ Vows to the Lord must be kept.
+- 🍇 Neighborly eating from a vineyard or field is allowed, but harvesting greedily is not.
 
 ## Chapter Flow
 
-🚪 Moses gives restrictions about entering the assembly of the Lord.
-
-🛑 Ammonites and Moabites are excluded because of their hostility toward Israel.
-
-💛 Moses remembers how God turned curse into blessing.
-
-🧳 Edomites and Egyptians are not to be hated in the same way.
-
-⛺ Camp holiness is required when Israel goes out against enemies.
-
-💧 A man with uncleanness leaves the camp until evening.
-
-🧹 Israel must keep the camp clean because the Lord walks there.
-
-🛡️ Escaped servants are protected and allowed to live where they choose.
-
-🚫 Prostitution connected with worship is forbidden.
-
-💰 Interest may not be charged to a brother.
-
-🗣️ Vows must be paid without delay.
-
-🍇 A person may eat grapes by hand in a neighbor's vineyard.
-
-🌾 A person may pluck grain by hand, but not use a sickle.
+- 🚪 Moses gives restrictions about entering the assembly of the Lord.
+- 🛑 Ammonites and Moabites are excluded because of their hostility toward Israel.
+- 💛 Moses remembers how God turned curse into blessing.
+- 🧳 Edomites and Egyptians are not to be hated in the same way.
+- ⛺ Camp holiness is required when Israel goes out against enemies.
+- 💧 A man with uncleanness leaves the camp until evening.
+- 🧹 Israel must keep the camp clean because the Lord walks there.
+- 🛡️ Escaped servants are protected and allowed to live where they choose.
+- 🚫 Prostitution connected with worship is forbidden.
+- 💰 Interest may not be charged to a brother.
+- 🗣️ Vows must be paid without delay.
+- 🍇 A person may eat grapes by hand in a neighbor's vineyard.
+- 🌾 A person may pluck grain by hand, but not use a sickle.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 23:1 to 2
 
+# These opening verses are difficult for modern readers
+
 > **1** He that is wounded in the stones, or hath his privy member cut off, shall not enter into the congregation of the LORD.
 
 > **2** A bastard shall not enter into the congregation of the LORD; even to his tenth generation shall he not enter into the congregation of the LORD.
+
+### 🧠 What This Passage Shows
 
 These opening verses are difficult for modern readers.
 
@@ -19955,6 +20283,8 @@ So we read these verses soberly in their covenant context while also rejoicing t
 
 ## Deuteronomy 23:3 to 6
 
+# Ammon and Moab are treated severely because of how they
+
 > **3** An Ammonite or Moabite shall not enter into the congregation of the LORD; even to their tenth generation shall they not enter into the congregation of the LORD for ever:
 
 > **4** Because they met you not with bread and with water in the way, when ye came forth out of Egypt; and because they hired against thee Balaam the son of Beor of Pethor of Mesopotamia, to curse thee.
@@ -19962,6 +20292,8 @@ So we read these verses soberly in their covenant context while also rejoicing t
 > **5** Nevertheless the LORD thy God would not hearken unto Balaam; but the LORD thy God turned the curse into a blessing unto thee, because the LORD thy God loved thee.
 
 > **6** Thou shalt not seek their peace nor their prosperity all thy days for ever.
+
+### 🧠 What This Passage Shows
 
 Ammon and Moab are treated severely because of how they responded to Israel.
 
@@ -20011,9 +20343,13 @@ God's law warns Israel about covenant hostility, but God's grace can still welco
 
 ## Deuteronomy 23:7 to 8
 
+# Edom and Egypt are treated differently
+
 > **7** Thou shalt not abhor an Edomite; for he is thy brother: thou shalt not abhor an Egyptian; because thou wast a stranger in his land.
 
 > **8** The children that are begotten of them shall enter into the congregation of the LORD in their third generation.
+
+### 🧠 What This Passage Shows
 
 Edom and Egypt are treated differently.
 
@@ -20059,11 +20395,15 @@ They must let God teach them how to think about people, history, and mercy.
 
 ## Deuteronomy 23:9 to 11
 
+# Moses now speaks about the war camp
+
 > **9** When the host goeth forth against thine enemies, then keep thee from every wicked thing.
 
 > **10** If there be among you any man, that is not clean by reason of uncleanness that chanceth him by night, then shall he go abroad out of the camp, he shall not come within the camp:
 
 > **11** But it shall be, when evening cometh on, he shall wash himself with water: and when the sun is down, he shall come into the camp again.
+
+### 🧠 What This Passage Shows
 
 Moses now speaks about the war camp.
 
@@ -20105,11 +20445,15 @@ When life is pressured, God's people still belong to God.
 
 ## Deuteronomy 23:12 to 14
 
+# This section is very practical
+
 > **12** Thou shalt have a place also without the camp, whither thou shalt go forth abroad:
 
 > **13** And thou shalt have a paddle upon thy weapon; and it shall be, when thou wilt ease thyself abroad, thou shalt dig therewith, and shalt turn back and cover that which cometh from thee:
 
 > **14** For the LORD thy God walketh in the midst of thy camp, to deliver thee, and to give up thine enemies before thee; therefore shall thy camp be holy: that he see no unclean thing in thee, and turn away from thee.
+
+### 🧠 What This Passage Shows
 
 This section is very practical.
 
@@ -20155,9 +20499,13 @@ How we keep spaces, care for bodies, protect health, and respect shared environm
 
 ## Deuteronomy 23:15 to 16
 
+# This law is striking
+
 > **15** Thou shalt not deliver unto his master the servant which is escaped from his master unto thee:
 
 > **16** He shall dwell with thee, even among you, in that place which he shall choose in one of thy gates, where it liketh him best: thou shalt not oppress him.
+
+### 🧠 What This Passage Shows
 
 This law is striking.
 
@@ -20203,9 +20551,13 @@ Human dignity matters.
 
 ## Deuteronomy 23:17 to 18
 
+# Moses forbids prostitution among Israel's sons and
+
 > **17** There shall be no whore of the daughters of Israel, nor a sodomite of the sons of Israel.
 
 > **18** Thou shalt not bring the hire of a whore, or the price of a dog, into the house of the LORD thy God for any vow: for even both these are abomination unto the LORD thy God.
+
+### 🧠 What This Passage Shows
 
 Moses forbids prostitution among Israel's sons and daughters, especially in connection with worship.
 
@@ -20249,9 +20601,13 @@ An offering does not make unjust gain pure.
 
 ## Deuteronomy 23:19 to 20
 
+# Moses forbids charging interest to a covenant brother
+
 > **19** Thou shalt not lend upon usury to thy brother; usury of money, usury of victuals, usury of any thing that is lent upon usury:
 
 > **20** Unto a stranger thou mayest lend upon usury; but unto thy brother thou shalt not lend upon usury: that the LORD thy God may bless thee in all that thou settest thine hand to in the land whither thou goest to possess it.
+
+### 🧠 What This Passage Shows
 
 Moses forbids charging interest to a covenant brother.
 
@@ -20293,11 +20649,15 @@ Do we treat brothers and sisters as transactions instead of family?
 
 ## Deuteronomy 23:21 to 23
 
+# Moses now speaks about vows
+
 > **21** When thou shalt vow a vow unto the LORD thy God, thou shalt not slack to pay it: for the LORD thy God will surely require it of thee; and it would be sin in thee.
 
 > **22** But if thou shalt forbear to vow, it shall be no sin in thee.
 
 > **23** That which is gone out of thy lips thou shalt keep and perform; even a freewill offering, according as thou hast vowed unto the LORD thy God, which thou hast promised with thy mouth.
+
+### 🧠 What This Passage Shows
 
 Moses now speaks about vows.
 
@@ -20343,9 +20703,13 @@ We should not use religious language to sound devoted while living carelessly.
 
 ## Deuteronomy 23:24 to 25
 
+# The chapter ends with a beautiful balance of generosity
+
 > **24** When thou comest into thy neighbour's vineyard, then thou mayest eat grapes thy fill at thine own pleasure; but thou shalt not put any in thy vessel.
 
 > **25** When thou comest into the standing corn of thy neighbour, then thou mayest pluck the ears with thine hand; but thou shalt not move a sickle unto thy neighbour's standing corn.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with a beautiful balance of generosity and restraint.
 
@@ -20540,61 +20904,40 @@ Do we leave room for others to gather from our abundance?
 
 ## Why Deuteronomy 24 Matters
 
-💔 Marriage breakdown is regulated to prevent careless abuse.
-
-🏠 Newly married men are protected from military and public duty for one year.
-
-🪨 A lender must not take a millstone because that takes a person's livelihood.
-
-🚫 Kidnapping and selling a person is condemned.
-
-🩹 Leprosy laws must be followed carefully according to priestly instruction.
-
-🚪 Lenders must not enter a poor man's house to seize a pledge.
-
-🌙 A poor man's pledge must be returned by sunset.
-
-💰 Poor laborers must be paid on time.
-
-⚖️ Each person bears responsibility for his own sin.
-
-🧳 Justice for strangers, fatherless, and widows must not be twisted.
-
-🌾 Harvest leftovers are reserved for strangers, fatherless, and widows.
-
-⛓️ Israel's memory of slavery must shape mercy.
+- 💔 Marriage breakdown is regulated to prevent careless abuse.
+- 🏠 Newly married men are protected from military and public duty for one year.
+- 🪨 A lender must not take a millstone because that takes a person's livelihood.
+- 🚫 Kidnapping and selling a person is condemned.
+- 🩹 Leprosy laws must be followed carefully according to priestly instruction.
+- 🚪 Lenders must not enter a poor man's house to seize a pledge.
+- 🌙 A poor man's pledge must be returned by sunset.
+- 💰 Poor laborers must be paid on time.
+- ⚖️ Each person bears responsibility for his own sin.
+- 🧳 Justice for strangers, fatherless, and widows must not be twisted.
+- 🌾 Harvest leftovers are reserved for strangers, fatherless, and widows.
+- ⛓️ Israel's memory of slavery must shape mercy.
 
 ## Chapter Flow
 
-💔 Moses addresses divorce, remarriage, and defilement.
-
-🏠 A newly married man stays free for one year to cheer his wife.
-
-🪨 Millstones must not be taken as pledge.
-
-🚫 Kidnapping a brother and selling him brings death.
-
-🩹 Israel must observe priestly instruction about leprosy.
-
-🧠 Miriam is remembered as a warning.
-
-🚪 A lender must stand outside and not invade the borrower's home.
-
-🌙 A poor man's pledge must be returned before sunset.
-
-💰 Hired workers must be paid the same day.
-
-⚖️ Parents and children are not executed for each other's sins.
-
-🧳 Justice for strangers and fatherless must not be perverted.
-
-🖤 A widow's garment must not be taken as pledge.
-
-🌾 Forgotten sheaves, olive leftovers, and grape gleanings belong to the vulnerable.
+- 💔 Moses addresses divorce, remarriage, and defilement.
+- 🏠 A newly married man stays free for one year to cheer his wife.
+- 🪨 Millstones must not be taken as pledge.
+- 🚫 Kidnapping a brother and selling him brings death.
+- 🩹 Israel must observe priestly instruction about leprosy.
+- 🧠 Miriam is remembered as a warning.
+- 🚪 A lender must stand outside and not invade the borrower's home.
+- 🌙 A poor man's pledge must be returned before sunset.
+- 💰 Hired workers must be paid the same day.
+- ⚖️ Parents and children are not executed for each other's sins.
+- 🧳 Justice for strangers and fatherless must not be perverted.
+- 🖤 A widow's garment must not be taken as pledge.
+- 🌾 Forgotten sheaves, olive leftovers, and grape gleanings belong to the vulnerable.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 24:1 to 4
+
+# This passage deals with divorce and remarriage in
 
 > **1** When a man hath taken a wife, and married her, and it come to pass that she find no favour in his eyes, because he hath found some uncleanness in her: then let him write her a bill of divorcement, and give it in her hand, and send her out of his house.
 
@@ -20603,6 +20946,8 @@ Do we leave room for others to gather from our abundance?
 > **3** And if the latter husband hate her, and write her a bill of divorcement, and giveth it in her hand, and sendeth her out of his house; or if the latter husband die, which took her to be his wife;
 
 > **4** Her former husband, which sent her away, may not take her again to be his wife, after that she is defiled; for that is abomination before the LORD: and thou shalt not cause the land to sin, which the LORD thy God giveth thee for an inheritance.
+
+### 🧠 What This Passage Shows
 
 This passage deals with divorce and remarriage in Israel's civil life.
 
@@ -20646,7 +20991,11 @@ At the same time, we can see that God cares about protecting vulnerable people w
 
 ## Deuteronomy 24:5
 
+# This verse protects a new marriage
+
 > **5** When a man hath taken a new wife, he shall not go out to war, neither shall he be charged with any business: but he shall be free at home one year, and shall cheer up his wife which he hath taken.
+
+### 🧠 What This Passage Shows
 
 This verse protects a new marriage.
 
@@ -20686,7 +21035,11 @@ There are seasons where duty pulls hard, but God's wisdom honors the home.
 
 ## Deuteronomy 24:6
 
+# The millstone was used to grind grain
+
 > **6** No man shall take the nether or the upper millstone to pledge: for he taketh a man's life to pledge.
+
+### 🧠 What This Passage Shows
 
 The millstone was used to grind grain.
 
@@ -20724,7 +21077,11 @@ Do not call it smart business if it destroys your neighbor's ability to eat.
 
 ## Deuteronomy 24:7
 
+# This verse condemns kidnapping and selling a brother
+
 > **7** If a man be found stealing any of his brethren of the children of Israel, and maketh merchandise of him, or selleth him; then that thief shall die; and thou shalt put evil away from among you.
+
+### 🧠 What This Passage Shows
 
 This verse condemns kidnapping and selling a brother.
 
@@ -20764,9 +21121,13 @@ Any system that turns people into merchandise stands under God's judgment.
 
 ## Deuteronomy 24:8 to 9
 
+# Moses warns Israel to be careful with leprosy or serious
+
 > **8** Take heed in the plague of leprosy, that thou observe diligently, and do according to all that the priests the Levites shall teach you: as I commanded them, so ye shall observe to do.
 
 > **9** Remember what the LORD thy God did unto Miriam by the way, after that ye were come forth out of Egypt.
+
+### 🧠 What This Passage Shows
 
 Moses warns Israel to be careful with leprosy or serious skin disease laws.
 
@@ -20810,6 +21171,8 @@ Do not assume spiritual history makes you immune to correction.
 
 ## Deuteronomy 24:10 to 13
 
+# Moses now gives lending instructions that protect dignity
+
 > **10** When thou dost lend thy brother any thing, thou shalt not go into his house to fetch his pledge.
 
 > **11** Thou shalt stand abroad, and the man to whom thou dost lend shall bring out the pledge abroad unto thee.
@@ -20817,6 +21180,8 @@ Do not assume spiritual history makes you immune to correction.
 > **12** And if the man be poor, thou shalt not sleep with his pledge:
 
 > **13** In any case thou shalt deliver him the pledge again when the sun goeth down, that he may sleep in his own raiment, and bless thee: and it shall be righteousness unto thee before the LORD thy God.
+
+### 🧠 What This Passage Shows
 
 Moses now gives lending instructions that protect dignity.
 
@@ -20858,9 +21223,13 @@ Just because you have power does not mean you can violate boundaries.
 
 ## Deuteronomy 24:14 to 15
 
+# Moses now speaks to employers
+
 > **14** Thou shalt not oppress an hired servant that is poor and needy, whether he be of thy brethren, or of thy strangers that are in thy land within thy gates:
 
 > **15** At his day thou shalt give him his hire, neither shall the sun go down upon it; for he is poor, and setteth his heart upon it: lest he cry against thee unto the LORD, and it be sin unto thee.
+
+### 🧠 What This Passage Shows
 
 Moses now speaks to employers.
 
@@ -20912,7 +21281,11 @@ Do not make the needy carry the burden of your convenience.
 
 ## Deuteronomy 24:16
 
+# This verse teaches individual responsibility in legal
+
 > **16** The fathers shall not be put to death for the children, neither shall the children be put to death for the fathers: every man shall be put to death for his own sin.
+
+### 🧠 What This Passage Shows
 
 This verse teaches individual responsibility in legal punishment.
 
@@ -20950,9 +21323,13 @@ At the same time, each person must take responsibility for their own sin.
 
 ## Deuteronomy 24:17 to 18
 
+# Moses again protects the vulnerable:
+
 > **17** Thou shalt not pervert the judgment of the stranger, nor of the fatherless; nor take a widow's raiment to pledge:
 
 > **18** But thou shalt remember that thou wast a bondman in Egypt, and the LORD thy God redeemed thee thence: therefore I command thee to do this thing.
+
+### 🧠 What This Passage Shows
 
 Moses again protects the vulnerable:
 
@@ -21010,7 +21387,11 @@ So we must not use strength to crush the weak.
 
 ## Deuteronomy 24:19
 
+# Moses now speaks about harvest generosity
+
 > **19** When thou cuttest down thine harvest in thy field, and hast forgot a sheaf in the field, thou shalt not go again to fetch it: it shall be for the stranger, for the fatherless, and for the widow: that the LORD thy God may bless thee in all the work of thine hands.
+
+### 🧠 What This Passage Shows
 
 Moses now speaks about harvest generosity.
 
@@ -21054,11 +21435,15 @@ Or do we create space where others can be helped with dignity?
 
 ## Deuteronomy 24:20 to 22
 
+# The same principle applies to olives and grapes
+
 > **20** When thou beatest thine olive tree, thou shalt not go over the boughs again: it shall be for the stranger, for the fatherless, and for the widow.
 
 > **21** When thou gatherest the grapes of thy vineyard, thou shalt not glean it afterward: it shall be for the stranger, for the fatherless, and for the widow.
 
 > **22** And thou shalt remember that thou wast a bondman in the land of Egypt: therefore I command thee to do this thing.
+
+### 🧠 What This Passage Shows
 
 The same principle applies to olives and grapes.
 
@@ -21261,63 +21646,44 @@ Do I remember the people who attacked the weak?
 
 ## Why Deuteronomy 25 Matters
 
-⚖️ Judges must justify the righteous and condemn the wicked.
-
-🛑 Punishment must be limited so justice does not become degradation.
-
-👤 Even a guilty brother must not be treated as less than human.
-
-🐂 An ox must not be muzzled while treading grain.
-
-🌾 Labor should not be cut off from provision.
-
-👩 Levirate marriage protects the widow and preserves the dead brother's name.
-
-👡 Public shame falls on the brother who refuses covenant responsibility.
-
-🚫 Sexual dishonor in violent conflict is judged seriously.
-
-⚖️ Honest weights and measures are required.
-
-🛑 Dishonest business practices are an abomination to the Lord.
-
-🗡️ Amalek attacked the weak, faint, and weary.
-
-🧠 Israel must remember Amalek and not forget.
+- ⚖️ Judges must justify the righteous and condemn the wicked.
+- 🛑 Punishment must be limited so justice does not become degradation.
+- 👤 Even a guilty brother must not be treated as less than human.
+- 🐂 An ox must not be muzzled while treading grain.
+- 🌾 Labor should not be cut off from provision.
+- 👩 Levirate marriage protects the widow and preserves the dead brother's name.
+- 👡 Public shame falls on the brother who refuses covenant responsibility.
+- 🚫 Sexual dishonor in violent conflict is judged seriously.
+- ⚖️ Honest weights and measures are required.
+- 🛑 Dishonest business practices are an abomination to the Lord.
+- 🗡️ Amalek attacked the weak, faint, and weary.
+- 🧠 Israel must remember Amalek and not forget.
 
 ## Chapter Flow
 
-⚖️ Legal disputes are judged, and righteous and wicked are distinguished.
-
-🪓 Punishment is limited to forty stripes.
-
-👤 The guilty brother must not be degraded beyond measure.
-
-🐂 The working ox must not be muzzled.
-
-👩 A widow without a son is protected through brotherly duty.
-
-👡 Refusal brings public shame at the gate.
-
-🚫 A dishonorable act in a fight is judged.
-
-⚖️ Israel must not keep different weights and measures.
-
-🌾 Honest measures are tied to long life in the land.
-
-🛑 Dishonesty is abomination to the Lord.
-
-🗡️ Israel must remember Amalek's attack.
-
-😰 Amalek struck the faint and weary from behind.
-
-🧠 When God gives rest, Israel must blot out Amalek's remembrance.
+- ⚖️ Legal disputes are judged, and righteous and wicked are distinguished.
+- 🪓 Punishment is limited to forty stripes.
+- 👤 The guilty brother must not be degraded beyond measure.
+- 🐂 The working ox must not be muzzled.
+- 👩 A widow without a son is protected through brotherly duty.
+- 👡 Refusal brings public shame at the gate.
+- 🚫 A dishonorable act in a fight is judged.
+- ⚖️ Israel must not keep different weights and measures.
+- 🌾 Honest measures are tied to long life in the land.
+- 🛑 Dishonesty is abomination to the Lord.
+- 🗡️ Israel must remember Amalek's attack.
+- 😰 Amalek struck the faint and weary from behind.
+- 🧠 When God gives rest, Israel must blot out Amalek's remembrance.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 25:1
 
+# Moses begins with a courtroom
+
 > **1** If there be a controversy between men, and they come unto judgment, that the judges may judge them; then they shall justify the righteous, and condemn the wicked.
+
+### 🧠 What This Passage Shows
 
 Moses begins with a courtroom.
 
@@ -21365,9 +21731,13 @@ Do not make truth serve your side.
 
 ## Deuteronomy 25:2 to 3
 
+# This law regulates punishment
+
 > **2** And it shall be, if the wicked man be worthy to be beaten, that the judge shall cause him to lie down, and to be beaten before his face, according to his fault, by a certain number.
 
 > **3** Forty stripes he may give him, and not exceed: lest, if he should exceed, and beat him above these with many stripes, then thy brother should seem vile unto thee.
+
+### 🧠 What This Passage Shows
 
 This law regulates punishment.
 
@@ -21423,7 +21793,11 @@ Correction must not erase dignity.
 
 ## Deuteronomy 25:4
 
+# This short verse has a large principle
+
 > **4** Thou shalt not muzzle the ox when he treadeth out the corn.
+
+### 🧠 What This Passage Shows
 
 This short verse has a large principle.
 
@@ -21469,9 +21843,13 @@ Do not withhold reasonable provision.
 
 ## Deuteronomy 25:5 to 6
 
+# This law is called levirate marriage
+
 > **5** If brethren dwell together, and one of them die, and have no child, the wife of the dead shall not marry without unto a stranger: her husband's brother shall go in unto her, and take her to him to wife, and perform the duty of an husband's brother unto her.
 
 > **6** And it shall be, that the firstborn which she beareth shall succeed in the name of his brother which is dead, that his name be not put out of Israel.
+
+### 🧠 What This Passage Shows
 
 This law is called levirate marriage.
 
@@ -21515,6 +21893,8 @@ Protect legacy, dignity, and provision.
 
 ## Deuteronomy 25:7 to 10
 
+# If the brother refuses his duty, the widow may go to the
+
 > **7** And if the man like not to take his brother's wife, then let his brother's wife go up to the gate unto the elders, and say, My husband's brother refuseth to raise up unto his brother a name in Israel, he will not perform the duty of my husband's brother.
 
 > **8** Then the elders of his city shall call him, and speak unto him: and if he stand to it, and say, I like not to take her;
@@ -21522,6 +21902,8 @@ Protect legacy, dignity, and provision.
 > **9** Then shall his brother's wife come unto him in the presence of the elders, and loose his shoe from off his foot, and spit in his face, and shall answer and say, So shall it be done unto that man that will not build up his brother's house.
 
 > **10** And his name shall be called in Israel, The house of him that hath his shoe loosed.
+
+### 🧠 What This Passage Shows
 
 If the brother refuses his duty, the widow may go to the elders at the gate.
 
@@ -21563,9 +21945,13 @@ God sees that.
 
 ## Deuteronomy 25:11 to 12
 
+# This is another difficult law
+
 > **11** When men strive together one with another, and the wife of the one draweth near for to deliver her husband out of the hand of him that smiteth him, and putteth forth her hand, and taketh him by the secrets:
 
 > **12** Then thou shalt cut off her hand, thine eye shall not pity her.
+
+### 🧠 What This Passage Shows
 
 This is another difficult law.
 
@@ -21605,6 +21991,8 @@ The ends do not justify the means.
 
 ## Deuteronomy 25:13 to 16
 
+# Moses now addresses dishonest business
+
 > **13** Thou shalt not have in thy bag divers weights, a great and a small.
 
 > **14** Thou shalt not have in thine house divers measures, a great and a small.
@@ -21612,6 +22000,8 @@ The ends do not justify the means.
 > **15** But thou shalt have a perfect and just weight, a perfect and just measure shalt thou have: that thy days may be lengthened in the land which the LORD thy God giveth thee.
 
 > **16** For all that do such things, and all that do unrighteously, are an abomination unto the LORD thy God.
+
+### 🧠 What This Passage Shows
 
 Moses now addresses dishonest business.
 
@@ -21675,11 +22065,15 @@ Be honest when no customer can tell.
 
 ## Deuteronomy 25:17 to 19
 
+# The chapter ends with a command to remember Amalek
+
 > **17** Remember what Amalek did unto thee by the way, when ye were come forth out of Egypt;
 
 > **18** How he met thee by the way, and smote the hindmost of thee, even all that were feeble behind thee, when thou wast faint and weary; and he feared not God.
 
 > **19** Therefore it shall be, when the LORD thy God hath given thee rest from all thine enemies round about, in the land which the LORD thy God giveth thee for an inheritance to possess it, that thou shalt blot out the remembrance of Amalek from under heaven; thou shalt not forget it.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with a command to remember Amalek.
 
@@ -21898,59 +22292,39 @@ Live like you belong to Him.
 
 ## Why Deuteronomy 26 Matters
 
-🍇 Firstfruits teach Israel to honor God as the giver of the land.
-
-📍 Worship happens at the place the Lord chooses for His name.
-
-🧺 The basket of fruit becomes a confession of grace.
-
-🧳 Israel remembers humble beginnings through "a wandering Aramean."
-
-⛓️ Israel remembers suffering and oppression in Egypt.
-
-🙏 Israel remembers that the Lord heard their cry.
-
-💪 Israel remembers deliverance by mighty hand and outstretched arm.
-
-🏞️ Israel remembers the land as gift, not achievement.
-
-🎉 Worship includes rejoicing with Levites and strangers.
-
-🤲 The third-year tithe supports Levites, strangers, fatherless, and widows.
-
-🗣️ Israel confesses obedience before the Lord.
-
-🤝 The chapter ends with covenant identity: the Lord is their God, and they are His treasured people.
+- 🍇 Firstfruits teach Israel to honor God as the giver of the land.
+- 📍 Worship happens at the place the Lord chooses for His name.
+- 🧺 The basket of fruit becomes a confession of grace.
+- 🧳 Israel remembers humble beginnings through "a wandering Aramean."
+- ⛓️ Israel remembers suffering and oppression in Egypt.
+- 🙏 Israel remembers that the Lord heard their cry.
+- 💪 Israel remembers deliverance by mighty hand and outstretched arm.
+- 🏞️ Israel remembers the land as gift, not achievement.
+- 🎉 Worship includes rejoicing with Levites and strangers.
+- 🤲 The third-year tithe supports Levites, strangers, fatherless, and widows.
+- 🗣️ Israel confesses obedience before the Lord.
+- 🤝 The chapter ends with covenant identity: the Lord is their God, and they are His treasured people.
 
 ## Chapter Flow
 
-🏞️ Israel enters the land the Lord gives.
-
-🧺 The worshiper brings firstfruits in a basket.
-
-📍 He goes to the place the Lord chooses.
-
-🧍 The priest receives the basket and sets it before the altar.
-
-🗣️ The worshiper confesses Israel's story of descent, oppression, cry, deliverance, and gift.
-
-🙌 He worships before the Lord.
-
-🎉 He rejoices in every good thing the Lord has given.
-
-🤲 The third-year tithe is given to Levites, strangers, fatherless, and widows.
-
-🙏 The worshiper declares he has obeyed and not profaned the holy portion.
-
-👀 He asks the Lord to look down from heaven and bless Israel.
-
-🤝 Moses calls Israel to keep the Lord's statutes with all heart and soul.
-
-💎 The Lord declares Israel His special people, high in praise, name, honor, and holiness.
+- 🏞️ Israel enters the land the Lord gives.
+- 🧺 The worshiper brings firstfruits in a basket.
+- 📍 He goes to the place the Lord chooses.
+- 🧍 The priest receives the basket and sets it before the altar.
+- 🗣️ The worshiper confesses Israel's story of descent, oppression, cry, deliverance, and gift.
+- 🙌 He worships before the Lord.
+- 🎉 He rejoices in every good thing the Lord has given.
+- 🤲 The third-year tithe is given to Levites, strangers, fatherless, and widows.
+- 🙏 The worshiper declares he has obeyed and not profaned the holy portion.
+- 👀 He asks the Lord to look down from heaven and bless Israel.
+- 🤝 Moses calls Israel to keep the Lord's statutes with all heart and soul.
+- 💎 The Lord declares Israel His special people, high in praise, name, honor, and holiness.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 26:1 to 4
+
+# Looking ahead to the land
 
 > **1** And it shall be, when thou art come in unto the land which the LORD thy God giveth thee for an inheritance, and possessest it, and dwellest therein;
 
@@ -21959,6 +22333,8 @@ Live like you belong to Him.
 > **3** And thou shalt go unto the priest that shall be in those days, and say unto him, I profess this day unto the LORD thy God, that I am come unto the country which the LORD sware unto our fathers for to give us.
 
 > **4** And the priest shall take the basket out of thine hand, and set it down before the altar of the LORD thy God.
+
+### 🧠 What This Passage Shows
 
 Moses begins by looking ahead to the land.
 
@@ -22022,7 +22398,11 @@ Remember the promise.
 
 ## Deuteronomy 26:5
 
+# The worshiper now tells the story
+
 > **5** And thou shalt speak and say before the LORD thy God, A Syrian ready to perish was my father, and he went down into Egypt, and sojourned there with a few, and became there a nation, great, mighty, and populous:
+
+### 🧠 What This Passage Shows
 
 The worshiper now tells the story.
 
@@ -22078,11 +22458,15 @@ Remember that God carried the story.
 
 ## Deuteronomy 26:6 to 8
 
+# The confession moves from humble beginnings to suffering
+
 > **6** And the Egyptians evil entreated us, and afflicted us, and laid upon us hard bondage:
 
 > **7** And when we cried unto the LORD God of our fathers, the LORD heard our voice, and looked on our affliction, and our labour, and our oppression:
 
 > **8** And the LORD brought us forth out of Egypt with a mighty hand, and with an outstretched arm, and with great terribleness, and with signs, and with wonders:
+
+### 🧠 What This Passage Shows
 
 The confession moves from humble beginnings to suffering.
 
@@ -22136,11 +22520,15 @@ We say, "I was bound, but God heard. I was oppressed, but God saw. I was unable 
 
 ## Deuteronomy 26:9 to 11
 
+# The confession reaches the present moment
+
 > **9** And he hath brought us into this place, and hath given us this land, even a land that floweth with milk and honey.
 
 > **10** And now, behold, I have brought the firstfruits of the land, which thou, O LORD, hast given me. And thou shalt set it before the LORD thy God, and worship before the LORD thy God:
 
 > **11** And thou shalt rejoice in every good thing which the LORD thy God hath given unto thee, and unto thine house, thou, and the Levite, and the stranger that is among you.
+
+### 🧠 What This Passage Shows
 
 The confession reaches the present moment.
 
@@ -22210,9 +22598,13 @@ Include others.
 
 ## Deuteronomy 26:12 to 13
 
+# Moses now turns to the third-year tithe
+
 > **12** When thou hast made an end of tithing all the tithes of thine increase the third year, which is the year of tithing, and hast given it unto the Levite, the stranger, the fatherless, and the widow, that they may eat within thy gates, and be filled;
 
 > **13** Then thou shalt say before the LORD thy God, I have brought away the hallowed things out of mine house, and also have given them unto the Levite, and unto the stranger, to the fatherless, and to the widow, according to all thy commandments which thou hast commanded me: I have not transgressed thy commandments, neither have I forgotten them:
+
+### 🧠 What This Passage Shows
 
 Moses now turns to the third-year tithe.
 
@@ -22260,7 +22652,11 @@ Do we call ourselves generous while forgetting the people God keeps naming?
 
 ## Deuteronomy 26:14
 
+# The worshiper continues the declaration
+
 > **14** I have not eaten thereof in my mourning, neither have I taken away ought thereof for any unclean use, nor given ought thereof for the dead: but I have hearkened to the voice of the LORD my God, and have done according to all that thou hast commanded me.
+
+### 🧠 What This Passage Shows
 
 The worshiper continues the declaration.
 
@@ -22306,7 +22702,11 @@ Do we say circumstances made obedience impossible when we simply chose ourselves
 
 ## Deuteronomy 26:15
 
+# After declaring obedience, the worshiper prays for
+
 > **15** Look down from thy holy habitation, from heaven, and bless thy people Israel, and the land which thou hast given us, as thou swarest unto our fathers, a land that floweth with milk and honey.
+
+### 🧠 What This Passage Shows
 
 After declaring obedience, the worshiper prays for blessing.
 
@@ -22358,7 +22758,11 @@ We steward and still need grace.
 
 ## Deuteronomy 26:16
 
+# Moses now summarizes the covenant call
+
 > **16** This day the LORD thy God hath commanded thee to do these statutes and judgments: thou shalt therefore keep and do them with all thine heart, and with all thy soul.
+
+### 🧠 What This Passage Shows
 
 Moses now summarizes the covenant call.
 
@@ -22400,11 +22804,15 @@ He wants obedient love.
 
 ## Deuteronomy 26:17 to 19
 
+# The chapter ends with covenant identity
+
 > **17** Thou hast avouched the LORD this day to be thy God, and to walk in his ways, and to keep his statutes, and his commandments, and his judgments, and to hearken unto his voice:
 
 > **18** And the LORD hath avouched thee this day to be his peculiar people, as he hath promised thee, and that thou shouldest keep all his commandments;
 
 > **19** And to make thee high above all nations which he hath made, in praise, and in name, and in honour; and that thou mayest be an holy people unto the LORD thy God, as he hath spoken.
+
+### 🧠 What This Passage Shows
 
 The chapter ends with covenant identity.
 
@@ -22629,65 +23037,47 @@ Do I say amen only with my mouth, or with my life?
 
 ## Why Deuteronomy 27 Matters
 
-🪨 Israel must write God's law on stones after crossing the Jordan.
-
-📖 The law must be clear and public.
-
-🏞️ Covenant renewal happens in the land God promised.
-
-🪨 The altar must be built with uncut stones, not human-shaped display.
-
-🔥 Burnt offerings and peace offerings connect obedience with worship.
-
-🎉 Israel eats and rejoices before the Lord.
-
-👂 Moses calls Israel to listen because they have become the Lord's people.
-
-🏔️ Tribes stand on Mount Gerizim for blessing and Mount Ebal for curse.
-
-🗣️ Levites speak covenant curses loudly to all Israel.
-
-🙋 The people answer amen.
-
-🛑 Hidden idolatry, injustice, sexual sin, violence, bribery, and covenant disobedience are cursed.
-
-📜 The chapter ends by cursing anyone who does not confirm all the words of the law to do them.
+- 🪨 Israel must write God's law on stones after crossing the Jordan.
+- 📖 The law must be clear and public.
+- 🏞️ Covenant renewal happens in the land God promised.
+- 🪨 The altar must be built with uncut stones, not human-shaped display.
+- 🔥 Burnt offerings and peace offerings connect obedience with worship.
+- 🎉 Israel eats and rejoices before the Lord.
+- 👂 Moses calls Israel to listen because they have become the Lord's people.
+- 🏔️ Tribes stand on Mount Gerizim for blessing and Mount Ebal for curse.
+- 🗣️ Levites speak covenant curses loudly to all Israel.
+- 🙋 The people answer amen.
+- 🛑 Hidden idolatry, injustice, sexual sin, violence, bribery, and covenant disobedience are cursed.
+- 📜 The chapter ends by cursing anyone who does not confirm all the words of the law to do them.
 
 ## Chapter Flow
 
-🪨 Moses commands Israel to set up plastered stones after crossing Jordan.
-
-📖 The law is written plainly on the stones.
-
-🏔️ The stones and altar are set up on Mount Ebal.
-
-🪨 The altar is built of whole stones untouched by iron tools.
-
-🔥 Israel offers burnt offerings and peace offerings.
-
-🎉 Israel eats and rejoices before the Lord.
-
-👂 Moses and the priests call Israel to silence and listening.
-
-🤝 Israel is reminded that they have become the people of the Lord.
-
-🏔️ Six tribes stand on Gerizim to bless.
-
-🏔️ Six tribes stand on Ebal for the curse.
-
-🗣️ Levites announce curses.
-
-🙋 All the people say amen.
+- 🪨 Moses commands Israel to set up plastered stones after crossing Jordan.
+- 📖 The law is written plainly on the stones.
+- 🏔️ The stones and altar are set up on Mount Ebal.
+- 🪨 The altar is built of whole stones untouched by iron tools.
+- 🔥 Israel offers burnt offerings and peace offerings.
+- 🎉 Israel eats and rejoices before the Lord.
+- 👂 Moses and the priests call Israel to silence and listening.
+- 🤝 Israel is reminded that they have become the people of the Lord.
+- 🏔️ Six tribes stand on Gerizim to bless.
+- 🏔️ Six tribes stand on Ebal for the curse.
+- 🗣️ Levites announce curses.
+- 🙋 All the people say amen.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 27:1 to 3
+
+# Moses commands the people to keep all the commandments
 
 > **1** And Moses with the elders of Israel commanded the people, saying, Keep all the commandments which I command you this day.
 
 > **2** And it shall be on the day when ye shall pass over Jordan unto the land which the LORD thy God giveth thee, that thou shalt set thee up great stones, and plaister them with plaister:
 
 > **3** And thou shalt write upon them all the words of this law, when thou art passed over, that thou mayest go in unto the land which the LORD thy God giveth thee, a land that floweth with milk and honey; as the LORD God of thy fathers hath promised thee.
+
+### 🧠 What This Passage Shows
 
 Moses commands the people to keep all the commandments.
 
@@ -22739,6 +23129,8 @@ It should be clear, visible, remembered, and central.
 
 ## Deuteronomy 27:4 to 8
 
+# The stones are set up on Mount Ebal
+
 > **4** Therefore it shall be when ye be gone over Jordan, that ye shall set up these stones, which I command you this day, in mount Ebal, and thou shalt plaister them with plaister.
 
 > **5** And there shalt thou build an altar unto the LORD thy God, an altar of stones: thou shalt not lift up any iron tool upon them.
@@ -22748,6 +23140,8 @@ It should be clear, visible, remembered, and central.
 > **7** And thou shalt offer peace offerings, and shalt eat there, and rejoice before the LORD thy God.
 
 > **8** And thou shalt write upon the stones all the words of this law very plainly.
+
+### 🧠 What This Passage Shows
 
 The stones are set up on Mount Ebal.
 
@@ -22813,9 +23207,13 @@ Able to be heard and obeyed.
 
 ## Deuteronomy 27:9 to 10
 
+# Moses and the priests call Israel to attention
+
 > **9** And Moses and the priests the Levites spake unto all Israel, saying, Take heed, and hearken, O Israel; this day thou art become the people of the LORD thy God.
 
 > **10** Thou shalt therefore obey the voice of the LORD thy God, and do his commandments and his statutes, which I command thee this day.
+
+### 🧠 What This Passage Shows
 
 Moses and the priests call Israel to attention.
 
@@ -22863,11 +23261,15 @@ It is the fruit of belonging.
 
 ## Deuteronomy 27:11 to 13
 
+# Moses now divides the tribes between two mountains
+
 > **11** And Moses charged the people the same day, saying,
 
 > **12** These shall stand upon mount Gerizim to bless the people, when ye are come over Jordan; Simeon, and Levi, and Judah, and Issachar, and Joseph, and Benjamin:
 
 > **13** And these shall stand upon mount Ebal to curse; Reuben, Gad, and Asher, and Zebulun, Dan, and Naphtali.
+
+### 🧠 What This Passage Shows
 
 Moses now divides the tribes between two mountains.
 
@@ -22933,9 +23335,13 @@ We stand before the truth and must respond.
 
 ## Deuteronomy 27:14 to 15
 
+# The Levites speak with a loud voice
+
 > **14** And the Levites shall speak, and say unto all the men of Israel with a loud voice,
 
 > **15** Cursed be the man that maketh any graven or molten image, an abomination unto the LORD, the work of the hands of the craftsman, and putteth it in a secret place. And all the people shall answer and say, Amen.
+
+### 🧠 What This Passage Shows
 
 The Levites speak with a loud voice.
 
@@ -22983,7 +23389,11 @@ God sees the secret idol.
 
 ## Deuteronomy 27:16
 
+# The next curse concerns dishonoring father or mother
+
 > **16** Cursed be he that setteth light by his father or his mother. And all the people shall say, Amen.
+
+### 🧠 What This Passage Shows
 
 The next curse concerns dishonoring father or mother.
 
@@ -23021,7 +23431,11 @@ Even when relationships are complicated, God calls us away from contempt as a wa
 
 ## Deuteronomy 27:17
 
+# This curse concerns moving a neighbor's landmark
+
 > **17** Cursed be he that removeth his neighbour's landmark. And all the people shall say, Amen.
+
+### 🧠 What This Passage Shows
 
 This curse concerns moving a neighbor's landmark.
 
@@ -23063,7 +23477,11 @@ Do not take advantage of someone just because you can make it look legal.
 
 ## Deuteronomy 27:18
 
+# This curse concerns exploiting the blind
+
 > **18** Cursed be he that maketh the blind to wander out of the way. And all the people shall say, Amen.
+
+### 🧠 What This Passage Shows
 
 This curse concerns exploiting the blind.
 
@@ -23103,7 +23521,11 @@ Do not take advantage of someone's disability, inexperience, age, grief, poverty
 
 ## Deuteronomy 27:19
 
+# This curse concerns justice for the vulnerable
+
 > **19** Cursed be he that perverteth the judgment of the stranger, fatherless, and widow. And all the people shall say, Amen.
+
+### 🧠 What This Passage Shows
 
 This curse concerns justice for the vulnerable.
 
@@ -23145,6 +23567,8 @@ For everyday Christians, this asks whether we care about justice when the person
 
 ## Deuteronomy 27:20 to 23
 
+# These curses address sexual sins that violate family,
+
 > **20** Cursed be he that lieth with his father's wife; because he uncovereth his father's skirt. And all the people shall say, Amen.
 
 > **21** Cursed be he that lieth with any manner of beast. And all the people shall say, Amen.
@@ -23152,6 +23576,8 @@ For everyday Christians, this asks whether we care about justice when the person
 > **22** Cursed be he that lieth with his sister, the daughter of his father, or the daughter of his mother. And all the people shall say, Amen.
 
 > **23** Cursed be he that lieth with his mother in law. And all the people shall say, Amen.
+
+### 🧠 What This Passage Shows
 
 These curses address sexual sins that violate family, creation, and holiness.
 
@@ -23193,9 +23619,13 @@ The household must not become a place where sin hides.
 
 ## Deuteronomy 27:24 to 25
 
+# These curses address violence
+
 > **24** Cursed be he that smiteth his neighbour secretly. And all the people shall say, Amen.
 
 > **25** Cursed be he that taketh reward to slay an innocent person. And all the people shall say, Amen.
+
+### 🧠 What This Passage Shows
 
 These curses address violence.
 
@@ -23239,7 +23669,11 @@ Do not let money make you participate in injustice.
 
 ## Deuteronomy 27:26
 
+# The final curse is sweeping
+
 > **26** Cursed be he that confirmeth not all the words of this law to do them. And all the people shall say, Amen.
+
+### 🧠 What This Passage Shows
 
 The final curse is sweeping.
 
@@ -23482,61 +23916,44 @@ And the gospel shines brightly because Jesus bears the curse for His people and 
 
 ## Why Deuteronomy 28 Matters
 
-👂 Blessing is connected to diligently listening to the Lord's voice.
-
-🌾 Obedience affects ordinary life in the land.
-
-🏙️ Blessing touches city, field, family, food, work, and travel.
-
-🛡️ The Lord promises victory and establishment as His holy people.
-
-🌍 The nations will see that Israel is called by the Lord's name.
-
-🛑 Curses come if Israel refuses to listen and obey.
-
-💔 Rebellion affects the same areas blessing would have filled.
-
-😰 The curses expose the deep breakdown caused by covenant unfaithfulness.
-
-🏚️ Disobedience leads to loss, exile, fear, confusion, and sorrow.
-
-📜 The chapter teaches the seriousness of the covenant.
-
-✝️ The curse of the law points us to our need for Christ.
+- 👂 Blessing is connected to diligently listening to the Lord's voice.
+- 🌾 Obedience affects ordinary life in the land.
+- 🏙️ Blessing touches city, field, family, food, work, and travel.
+- 🛡️ The Lord promises victory and establishment as His holy people.
+- 🌍 The nations will see that Israel is called by the Lord's name.
+- 🛑 Curses come if Israel refuses to listen and obey.
+- 💔 Rebellion affects the same areas blessing would have filled.
+- 😰 The curses expose the deep breakdown caused by covenant unfaithfulness.
+- 🏚️ Disobedience leads to loss, exile, fear, confusion, and sorrow.
+- 📜 The chapter teaches the seriousness of the covenant.
+- ✝️ The curse of the law points us to our need for Christ.
 
 ## Chapter Flow
 
-👂 Moses promises blessing if Israel listens diligently.
-
-🎉 Blessings overtake Israel in city, field, family, livestock, basket, and movement.
-
-🛡️ The Lord defeats Israel's enemies.
-
-💎 The Lord establishes Israel as a holy people.
-
-🌍 Nations see Israel is called by the Lord's name.
-
-🌧️ The Lord opens His good treasure and blesses the land.
-
-🛑 Moses warns of curses if Israel refuses to listen.
-
-💔 Curses touch city, field, basket, womb, crops, herds, and flocks.
-
-🔥 Disease, defeat, drought, confusion, oppression, and exile follow rebellion.
-
-😨 The curses intensify into national collapse and scattering.
-
-🧠 Fear, trembling, and despair mark life away from covenant blessing.
-
-⛓️ The chapter ends with a reversal toward bondage.
+- 👂 Moses promises blessing if Israel listens diligently.
+- 🎉 Blessings overtake Israel in city, field, family, livestock, basket, and movement.
+- 🛡️ The Lord defeats Israel's enemies.
+- 💎 The Lord establishes Israel as a holy people.
+- 🌍 Nations see Israel is called by the Lord's name.
+- 🌧️ The Lord opens His good treasure and blesses the land.
+- 🛑 Moses warns of curses if Israel refuses to listen.
+- 💔 Curses touch city, field, basket, womb, crops, herds, and flocks.
+- 🔥 Disease, defeat, drought, confusion, oppression, and exile follow rebellion.
+- 😨 The curses intensify into national collapse and scattering.
+- 🧠 Fear, trembling, and despair mark life away from covenant blessing.
+- ⛓️ The chapter ends with a reversal toward bondage.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 28:1 to 2
 
+# The chapter begins with listening
+
 > **1** And it shall come to pass, if thou shalt hearken diligently unto the voice of the LORD thy God, to observe and to do all his commandments which I command thee this day, that the LORD thy God will set thee on high above all nations of the earth:
 
 > **2** And all these blessings shall come on thee, and overtake thee, if thou shalt hearken unto the voice of the LORD thy God.
+
+### 🧠 What This Passage Shows
 
 The chapter begins with listening.
 
@@ -23584,6 +24001,8 @@ Grace trains us to listen.
 
 ## Deuteronomy 28:3 to 6
 
+# These verses describe blessing in every direction of
+
 > **3** Blessed shalt thou be in the city, and blessed shalt thou be in the field.
 
 > **4** Blessed shall be the fruit of thy body, and the fruit of thy ground, and the fruit of thy cattle, the increase of thy kine, and the flocks of thy sheep.
@@ -23591,6 +24010,8 @@ Grace trains us to listen.
 > **5** Blessed shall be thy basket and thy store.
 
 > **6** Blessed shalt thou be when thou comest in, and blessed shalt thou be when thou goest out.
+
+### 🧠 What This Passage Shows
 
 These verses describe blessing in every direction of ordinary life.
 
@@ -23644,6 +24065,8 @@ But we can still learn that God cares about the whole life of His people.
 
 ## Deuteronomy 28:7 to 10
 
+# The Lord promises protection from enemies
+
 > **7** The LORD shall cause thine enemies that rise up against thee to be smitten before thy face: they shall come out against thee one way, and flee before thee seven ways.
 
 > **8** The LORD shall command the blessing upon thee in thy storehouses, and in all that thou settest thine hand unto; and he shall bless thee in the land which the LORD thy God giveth thee.
@@ -23651,6 +24074,8 @@ But we can still learn that God cares about the whole life of His people.
 > **9** The LORD shall establish thee an holy people unto himself, as he hath sworn unto thee, if thou shalt keep the commandments of the LORD thy God, and walk in his ways.
 
 > **10** And all people of the earth shall see that thou art called by the name of the LORD; and they shall be afraid of thee.
+
+### 🧠 What This Passage Shows
 
 The Lord promises protection from enemies.
 
@@ -23700,6 +24125,8 @@ But in a way that shows we belong to Him.
 
 ## Deuteronomy 28:11 to 14
 
+# Moses continues the blessing
+
 > **11** And the LORD shall make thee plenteous in goods, in the fruit of thy body, and in the fruit of thy cattle, and in the fruit of thy ground, in the land which the LORD sware unto thy fathers to give thee.
 
 > **12** The LORD shall open unto thee his good treasure, the heaven to give the rain unto thy land in his season, and to bless all the work of thine hand: and thou shalt lend unto many nations, and thou shalt not borrow.
@@ -23707,6 +24134,8 @@ But in a way that shows we belong to Him.
 > **13** And the LORD shall make thee the head, and not the tail; and thou shalt be above only, and thou shalt not be beneath; if that thou hearken unto the commandments of the LORD thy God, which I command thee this day, to observe and to do them:
 
 > **14** And thou shalt not go aside from any of the words which I command thee this day, to the right hand, or to the left, to go after other gods to serve them.
+
+### 🧠 What This Passage Shows
 
 Moses continues the blessing.
 
@@ -23760,6 +24189,8 @@ And do not let blessing become the doorway to idolatry.
 
 ## Deuteronomy 28:15 to 19
 
+# Verse 15 turns the chapter
+
 > **15** But it shall come to pass, if thou wilt not hearken unto the voice of the LORD thy God, to observe to do all his commandments and his statutes which I command thee this day; that all these curses shall come upon thee, and overtake thee:
 
 > **16** Cursed shalt thou be in the city, and cursed shalt thou be in the field.
@@ -23769,6 +24200,8 @@ And do not let blessing become the doorway to idolatry.
 > **18** Cursed shall be the fruit of thy body, and the fruit of thy land, the increase of thy kine, and the flocks of thy sheep.
 
 > **19** Cursed shalt thou be when thou comest in, and cursed shalt thou be when thou goest out.
+
+### 🧠 What This Passage Shows
 
 Verse 15 turns the chapter.
 
@@ -23816,6 +24249,8 @@ Refusing God's voice leads away from life.
 
 ## Deuteronomy 28:20 to 24
 
+# These verses intensify the warning
+
 > **20** The LORD shall send upon thee cursing, vexation, and rebuke, in all that thou settest thine hand unto for to do, until thou be destroyed, and until thou perish quickly; because of the wickedness of thy doings, whereby thou hast forsaken me.
 
 > **21** The LORD shall make the pestilence cleave unto thee, until he have consumed thee from off the land, whither thou goest to possess it.
@@ -23825,6 +24260,8 @@ Refusing God's voice leads away from life.
 > **23** And thy heaven that is over thy head shall be brass, and the earth that is under thee shall be iron.
 
 > **24** The LORD shall make the rain of thy land powder and dust: from heaven shall it come down upon thee, until thou be destroyed.
+
+### 🧠 What This Passage Shows
 
 These verses intensify the warning.
 
@@ -23884,6 +24321,8 @@ God's commands are connected to life because He Himself is life.
 
 ## Deuteronomy 28:25 to 35
 
+# This section shows covenant reversal
+
 > **25** The LORD shall cause thee to be smitten before thine enemies: thou shalt go out one way against them, and flee seven ways before them: and shalt be removed into all the kingdoms of the earth.
 
 > **26** And thy carcase shall be meat unto all fowls of the air, and unto the beasts of the earth, and no man shall fray them away.
@@ -23905,6 +24344,8 @@ God's commands are connected to life because He Himself is life.
 > **34** So that thou shalt be mad for the sight of thine eyes which thou shalt see.
 
 > **35** The LORD shall smite thee in the knees, and in the legs, with a sore botch that cannot be healed, from the sole of thy foot unto the top of thy head.
+
+### 🧠 What This Passage Shows
 
 This section shows covenant reversal.
 
@@ -23966,6 +24407,8 @@ The enemy always makes sin look smaller before we choose it than after it has do
 
 ## Deuteronomy 28:36 to 46
 
+# This section moves toward exile
+
 > **36** The LORD shall bring thee, and thy king which thou shalt set over thee, unto a nation which neither thou nor thy fathers have known; and there shalt thou serve other gods, wood and stone.
 
 > **37** And thou shalt become an astonishment, a proverb, and a byword, among all nations whither the LORD shall lead thee.
@@ -23987,6 +24430,8 @@ The enemy always makes sin look smaller before we choose it than after it has do
 > **45** Moreover all these curses shall come upon thee, and shall pursue thee, and overtake thee, till thou be destroyed; because thou hearkenedst not unto the voice of the LORD thy God, to keep his commandments and his statutes which he commanded thee:
 
 > **46** And they shall be upon thee for a sign and for a wonder, and upon thy seed for ever.
+
+### 🧠 What This Passage Shows
 
 This section moves toward exile.
 
@@ -24032,6 +24477,8 @@ If we choose idols, we should not be surprised when those idols become bondage.
 
 ## Deuteronomy 28:47 to 57
 
+# Verse 47 is one of the most searching verses in the
+
 > **47** Because thou servedst not the LORD thy God with joyfulness, and with gladness of heart, for the abundance of all things;
 
 > **48** Therefore shalt thou serve thine enemies which the LORD shall send against thee, in hunger, and in thirst, and in nakedness, and in want of all things: and he shall put a yoke of iron upon thy neck, until he have destroyed thee.
@@ -24047,6 +24494,8 @@ If we choose idols, we should not be surprised when those idols become bondage.
 > **53** And thou shalt eat the fruit of thine own body, the flesh of thy sons and of thy daughters...
 
 > **54-57** Even the tender and delicate will become cruel under the horror of siege.
+
+### 🧠 What This Passage Shows
 
 Verse 47 is one of the most searching verses in the chapter.
 
@@ -24096,6 +24545,8 @@ Or do we receive His gifts and complain as if He has done nothing?
 
 ## Deuteronomy 28:58 to 68
 
+# The final section brings the curse to its full weight
+
 > **58** If thou wilt not observe to do all the words of this law that are written in this book, that thou mayest fear this glorious and fearful name, THE LORD THY GOD;
 
 > **59** Then the LORD will make thy plagues wonderful, and the plagues of thy seed...
@@ -24113,6 +24564,8 @@ Or do we receive His gifts and complain as if He has done nothing?
 > **67** In the morning thou shalt say, Would God it were even! and at even thou shalt say, Would God it were morning!
 
 > **68** And the LORD shall bring thee into Egypt again with ships... and there ye shall be sold unto your enemies... and no man shall buy you.
+
+### 🧠 What This Passage Shows
 
 The final section brings the curse to its full weight.
 
@@ -24337,69 +24790,47 @@ It teaches us to obey what God has revealed and trust Him with what He has kept 
 
 ## Why Deuteronomy 29 Matters
 
-🤝 Moses renews the covenant in Moab.
-
-👀 Israel is reminded of what they saw in Egypt.
-
-🏜️ Israel is reminded of forty years of wilderness preservation.
-
-👕 Clothes and sandals did not wear out.
-
-🍞 Israel's unusual wilderness diet taught them that the Lord is God.
-
-⚔️ Israel defeated Sihon and Og.
-
-🏞️ Land east of the Jordan was given as inheritance.
-
-👂 Moses calls Israel to keep and do the covenant.
-
-👥 Everyone stands before the Lord: leaders, men, children, wives, strangers, servants.
-
-⚠️ Moses warns against a heart that turns away to idols.
-
-🌿 A root bearing poison and bitterness must not be tolerated.
-
-🛑 False peace while walking in stubbornness is exposed.
-
-🔥 Future devastation of the land will reveal covenant rebellion.
-
-📖 The revealed things belong to God's people so they may obey.
+- 🤝 Moses renews the covenant in Moab.
+- 👀 Israel is reminded of what they saw in Egypt.
+- 🏜️ Israel is reminded of forty years of wilderness preservation.
+- 👕 Clothes and sandals did not wear out.
+- 🍞 Israel's unusual wilderness diet taught them that the Lord is God.
+- ⚔️ Israel defeated Sihon and Og.
+- 🏞️ Land east of the Jordan was given as inheritance.
+- 👂 Moses calls Israel to keep and do the covenant.
+- 👥 Everyone stands before the Lord: leaders, men, children, wives, strangers, servants.
+- ⚠️ Moses warns against a heart that turns away to idols.
+- 🌿 A root bearing poison and bitterness must not be tolerated.
+- 🛑 False peace while walking in stubbornness is exposed.
+- 🔥 Future devastation of the land will reveal covenant rebellion.
+- 📖 The revealed things belong to God's people so they may obey.
 
 ## Chapter Flow
 
-🤝 Moses identifies these words as covenant renewal in Moab.
-
-👀 Moses reminds Israel of the Lord's works in Egypt.
-
-💔 He says the Lord had not yet given them a heart to perceive.
-
-🏜️ Moses remembers forty years in the wilderness.
-
-⚔️ Moses remembers victories over Sihon and Og.
-
-👂 Israel must keep the covenant to prosper.
-
-👥 All Israel stands before the Lord to enter the covenant oath.
-
-🌍 The covenant includes those present and those not present.
-
-🛑 Moses warns against turning to the gods of the nations.
-
-🌿 A bitter root can poison the community.
-
-🔥 The Lord will not spare the person who blesses himself in rebellion.
-
-🏚️ Future generations and nations will ask why the land is devastated.
-
-🪵 The answer is that Israel forsook the covenant and served other gods.
-
-📖 Secret things belong to the Lord, revealed things belong to His people.
+- 🤝 Moses identifies these words as covenant renewal in Moab.
+- 👀 Moses reminds Israel of the Lord's works in Egypt.
+- 💔 He says the Lord had not yet given them a heart to perceive.
+- 🏜️ Moses remembers forty years in the wilderness.
+- ⚔️ Moses remembers victories over Sihon and Og.
+- 👂 Israel must keep the covenant to prosper.
+- 👥 All Israel stands before the Lord to enter the covenant oath.
+- 🌍 The covenant includes those present and those not present.
+- 🛑 Moses warns against turning to the gods of the nations.
+- 🌿 A bitter root can poison the community.
+- 🔥 The Lord will not spare the person who blesses himself in rebellion.
+- 🏚️ Future generations and nations will ask why the land is devastated.
+- 🪵 The answer is that Israel forsook the covenant and served other gods.
+- 📖 Secret things belong to the Lord, revealed things belong to His people.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 29:1
 
+# This verse frames the chapter as covenant renewal in Moab
+
 > **1** These are the words of the covenant, which the LORD commanded Moses to make with the children of Israel in the land of Moab, beside the covenant which he made with them in Horeb.
+
+### 🧠 What This Passage Shows
 
 This verse frames the chapter as covenant renewal in Moab.
 
@@ -24441,11 +24872,15 @@ Each generation needs the word of God made clear.
 
 ## Deuteronomy 29:2 to 4
 
+# They have seen the Lord's works
+
 > **2** And Moses called unto all Israel, and said unto them, Ye have seen all that the LORD did before your eyes in the land of Egypt unto Pharaoh, and unto all his servants, and unto all his land;
 
 > **3** The great temptations which thine eyes have seen, the signs, and those great miracles:
 
 > **4** Yet the LORD hath not given you an heart to perceive, and eyes to see, and ears to hear, unto this day.
+
+### 🧠 What This Passage Shows
 
 Moses reminds Israel that they have seen the Lord's works.
 
@@ -24497,6 +24932,8 @@ Ask God for a heart that understands, eyes that see, and ears that hear.
 
 ## Deuteronomy 29:5 to 9
 
+# Moses continues the memory
+
 > **5** And I have led you forty years in the wilderness: your clothes are not waxen old upon you, and thy shoe is not waxen old upon thy foot.
 
 > **6** Ye have not eaten bread, neither have ye drunk wine or strong drink: that ye might know that I am the LORD your God.
@@ -24506,6 +24943,8 @@ Ask God for a heart that understands, eyes that see, and ears that hear.
 > **8** And we took their land, and gave it for an inheritance unto the Reubenites, and to the Gadites, and to the half tribe of Manasseh.
 
 > **9** Keep therefore the words of this covenant, and do them, that ye may prosper in all that ye do.
+
+### 🧠 What This Passage Shows
 
 Moses continues the memory.
 
@@ -24557,6 +24996,8 @@ The right response is obedience.
 
 ## Deuteronomy 29:10 to 13
 
+# All Israel stands before the Lord
+
 > **10** Ye stand this day all of you before the LORD your God; your captains of your tribes, your elders, and your officers, with all the men of Israel,
 
 > **11** Your little ones, your wives, and thy stranger that is in thy camp, from the hewer of thy wood unto the drawer of thy water:
@@ -24564,6 +25005,8 @@ The right response is obedience.
 > **12** That thou shouldest enter into covenant with the LORD thy God, and into his oath, which the LORD thy God maketh with thee this day:
 
 > **13** That he may establish thee to day for a people unto himself, and that he may be unto thee a God, as he hath said unto thee, and as he hath sworn unto thy fathers, to Abraham, to Isaac, and to Jacob.
+
+### 🧠 What This Passage Shows
 
 All Israel stands before the Lord.
 
@@ -24619,9 +25062,13 @@ The Lord sees the little ones and the laborers too.
 
 ## Deuteronomy 29:14 to 15
 
+# The covenant is not only for those physically standing
+
 > **14** Neither with you only do I make this covenant and this oath;
 
 > **15** But with him that standeth here with us this day before the LORD our God, and also with him that is not here with us this day:
+
+### 🧠 What This Passage Shows
 
 The covenant is not only for those physically standing there.
 
@@ -24657,11 +25104,15 @@ We do not control future generations, but we are responsible to hand them truth,
 
 ## Deuteronomy 29:16 to 18
 
+# Moses reminds Israel of what they have seen among the
+
 > **16** (For ye know how we have dwelt in the land of Egypt; and how we came through the nations which ye passed by;
 
 > **17** And ye have seen their abominations, and their idols, wood and stone, silver and gold, which were among them:)
 
 > **18** Lest there should be among you man, or woman, or family, or tribe, whose heart turneth away this day from the LORD our God, to go and serve the gods of these nations; lest there should be among you a root that beareth gall and wormwood;
+
+### 🧠 What This Passage Shows
 
 Moses reminds Israel of what they have seen among the nations.
 
@@ -24713,11 +25164,15 @@ What grows in the heart eventually bears fruit.
 
 ## Deuteronomy 29:19 to 21
 
+# This is one of the strongest warnings in the chapter
+
 > **19** And it come to pass, when he heareth the words of this curse, that he bless himself in his heart, saying, I shall have peace, though I walk in the imagination of mine heart, to add drunkenness to thirst:
 
 > **20** The LORD will not spare him, but then the anger of the LORD and his jealousy shall smoke against that man, and all the curses that are written in this book shall lie upon him, and the LORD shall blot out his name from under heaven.
 
 > **21** And the LORD shall separate him unto evil out of all the tribes of Israel, according to all the curses of the covenant that are written in this book of the law:
+
+### 🧠 What This Passage Shows
 
 This is one of the strongest warnings in the chapter.
 
@@ -24771,6 +25226,8 @@ Do not assume that hearing warnings means you have obeyed them.
 
 ## Deuteronomy 29:22 to 28
 
+# Moses looks into a possible future where the land is
+
 > **22** So that the generation to come of your children that shall rise up after you, and the stranger that shall come from a far land, shall say, when they see the plagues of that land, and the sicknesses which the LORD hath laid upon it;
 
 > **23** And that the whole land thereof is brimstone, and salt, and burning...
@@ -24784,6 +25241,8 @@ Do not assume that hearing warnings means you have obeyed them.
 > **27** And the anger of the LORD was kindled against this land...
 
 > **28** And the LORD rooted them out of their land in anger, and in wrath, and in great indignation, and cast them into another land, as it is this day.
+
+### 🧠 What This Passage Shows
 
 Moses looks into a possible future where the land is devastated.
 
@@ -24835,7 +25294,11 @@ The next generation may end up asking why everything became so broken.
 
 ## Deuteronomy 29:29
 
+# This is one of the most well-known verses in Deuteronomy
+
 > **29** The secret things belong unto the LORD our God: but those things which are revealed belong unto us and to our children for ever, that we may do all the words of this law.
+
+### 🧠 What This Passage Shows
 
 This is one of the most well-known verses in Deuteronomy.
 
@@ -25064,71 +25527,50 @@ And in the New Testament, Paul uses this chapter to speak about the nearness of 
 
 ## Why Deuteronomy 30 Matters
 
-↩️ Return is possible after judgment and exile.
-
-❤️ God calls for return with all heart and soul.
-
-🤲 The Lord promises compassion.
-
-🌍 God can gather His people from the farthest places.
-
-🏞️ Restoration includes return, blessing, and renewed fruitfulness.
-
-✂️ The Lord promises to circumcise the heart.
-
-❤️ Heart change enables love for God.
-
-⚖️ God will deal with enemies and persecutors.
-
-👂 Israel is called again to obey the Lord's voice.
-
-📖 God's command is not too far away.
-
-🗣️ The word is near, in the mouth and heart.
-
-🧭 Life and death, blessing and curse are set before Israel.
-
-🤝 Choosing life means loving, obeying, and holding fast to the Lord.
+- ↩️ Return is possible after judgment and exile.
+- ❤️ God calls for return with all heart and soul.
+- 🤲 The Lord promises compassion.
+- 🌍 God can gather His people from the farthest places.
+- 🏞️ Restoration includes return, blessing, and renewed fruitfulness.
+- ✂️ The Lord promises to circumcise the heart.
+- ❤️ Heart change enables love for God.
+- ⚖️ God will deal with enemies and persecutors.
+- 👂 Israel is called again to obey the Lord's voice.
+- 📖 God's command is not too far away.
+- 🗣️ The word is near, in the mouth and heart.
+- 🧭 Life and death, blessing and curse are set before Israel.
+- 🤝 Choosing life means loving, obeying, and holding fast to the Lord.
 
 ## Chapter Flow
 
-🧠 Israel remembers blessing and curse among the nations.
-
-↩️ Israel returns to the Lord with heart and soul.
-
-🤲 The Lord has compassion and gathers them.
-
-🌍 Even from the farthest parts of heaven, God brings them back.
-
-🏞️ The Lord restores them to the land and does good to them.
-
-✂️ The Lord circumcises their hearts and their children's hearts.
-
-❤️ They love the Lord and live.
-
-⚖️ Curses are placed on enemies who persecuted them.
-
-👂 Israel again obeys and does God's commandments.
-
-🌾 The Lord rejoices over them for good.
-
-📖 The command is not hidden or far away.
-
-🗣️ The word is very near.
-
-⚖️ Life and good, death and evil are set before them.
-
-🙌 Heaven and earth witness the call to choose life.
+- 🧠 Israel remembers blessing and curse among the nations.
+- ↩️ Israel returns to the Lord with heart and soul.
+- 🤲 The Lord has compassion and gathers them.
+- 🌍 Even from the farthest parts of heaven, God brings them back.
+- 🏞️ The Lord restores them to the land and does good to them.
+- ✂️ The Lord circumcises their hearts and their children's hearts.
+- ❤️ They love the Lord and live.
+- ⚖️ Curses are placed on enemies who persecuted them.
+- 👂 Israel again obeys and does God's commandments.
+- 🌾 The Lord rejoices over them for good.
+- 📖 The command is not hidden or far away.
+- 🗣️ The word is very near.
+- ⚖️ Life and good, death and evil are set before them.
+- 🙌 Heaven and earth witness the call to choose life.
 
 # Deep Chapter Notes
 
 ## Deuteronomy 30:1 to 3
+
+# Moses looks into Israel's future
 
 > **1** And it shall come to pass, when all these things are come upon thee, the blessing and the curse, which I have set before thee, and thou shalt call them to mind among all the nations, whither the LORD thy God hath driven thee,
 
 > **2** And shalt return unto the LORD thy God, and shalt obey his voice according to all that I command thee this day, thou and thy children, with all thine heart, and with all thy soul;
 
 > **3** That then the LORD thy God will turn thy captivity, and have compassion upon thee, and will return and gather thee from all the nations, whither the LORD thy God hath scattered thee.
+
+### 🧠 What This Passage Shows
 
 Moses looks into Israel's future.
 
@@ -25172,11 +25614,15 @@ Do not confuse consequences with final rejection.
 
 ## Deuteronomy 30:4 to 6
 
+# No distance is too far for God to gather His people
+
 > **4** If any of thine be driven out unto the outmost parts of heaven, from thence will the LORD thy God gather thee, and from thence will he fetch thee:
 
 > **5** And the LORD thy God will bring thee into the land which thy fathers possessed, and thou shalt possess it; and he will do thee good, and multiply thee above thy fathers.
 
 > **6** And the LORD thy God will circumcise thine heart, and the heart of thy seed, to love the LORD thy God with all thine heart, and with all thy soul, that thou mayest live.
+
+### 🧠 What This Passage Shows
 
 No distance is too far for God to gather His people.
 
@@ -25226,6 +25672,8 @@ God makes love possible by grace.
 
 ## Deuteronomy 30:7 to 10
 
+# Restoration includes justice
+
 > **7** And the LORD thy God will put all these curses upon thine enemies, and on them that hate thee, which persecuted thee.
 
 > **8** And thou shalt return and obey the voice of the LORD, and do all his commandments which I command thee this day.
@@ -25233,6 +25681,8 @@ God makes love possible by grace.
 > **9** And the LORD thy God will make thee plenteous in every work of thine hand... for good...
 
 > **10** If thou shalt hearken unto the voice of the LORD thy God... and if thou turn unto the LORD thy God with all thine heart, and with all thy soul.
+
+### 🧠 What This Passage Shows
 
 Restoration includes justice.
 
@@ -25280,6 +25730,8 @@ God delights in mercy.
 
 ## Deuteronomy 30:11 to 14
 
+# Moses says the command is not hidden or far away
+
 > **11** For this commandment which I command thee this day, it is not hidden from thee, neither is it far off.
 
 > **12** It is not in heaven, that thou shouldest say, Who shall go up for us to heaven, and bring it unto us...
@@ -25287,6 +25739,8 @@ God delights in mercy.
 > **13** Neither is it beyond the sea...
 
 > **14** But the word is very nigh unto thee, in thy mouth, and in thy heart, that thou mayest do it.
+
+### 🧠 What This Passage Shows
 
 Moses says the command is not hidden or far away.
 
@@ -25334,6 +25788,8 @@ Do not pretend obedience is impossible because every mystery is not solved.
 
 ## Deuteronomy 30:15 to 18
 
+# Moses now sets the choice clearly:
+
 > **15** See, I have set before thee this day life and good, and death and evil;
 
 > **16** In that I command thee this day to love the LORD thy God, to walk in his ways, and to keep his commandments...
@@ -25341,6 +25797,8 @@ Do not pretend obedience is impossible because every mystery is not solved.
 > **17** But if thine heart turn away, so that thou wilt not hear, but shalt be drawn away, and worship other gods...
 
 > **18** I denounce unto you this day, that ye shall surely perish...
+
+### 🧠 What This Passage Shows
 
 Moses now sets the choice clearly:
 
@@ -25398,9 +25856,13 @@ What am I beginning to worship?
 
 ## Deuteronomy 30:19 to 20
 
+# Moses calls heaven and earth as witnesses
+
 > **19** I call heaven and earth to record this day against you, that I have set before you life and death, blessing and cursing: therefore choose life, that both thou and thy seed may live:
 
 > **20** That thou mayest love the LORD thy God, and that thou mayest obey his voice, and that thou mayest cleave unto him: for he is thy life, and the length of thy days...
+
+### 🧠 What This Passage Shows
 
 Moses calls heaven and earth as witnesses.
 
@@ -25589,41 +26051,26 @@ Deuteronomy 2 helps us see that obedience is not only courage to fight. Sometime
 
 ## Why Deuteronomy 2 Matters
 
-🧭 God tells Israel when the long circling season is over.
-
-🏔️ Israel must pass by Esau without taking his land.
-
-💰 Israel must pay for food and water instead of stealing.
-
-⏳ The wilderness years end as the old generation passes away.
-
-🌍 God reminds Israel that He rules the lands of other peoples too.
-
-🚫 Moab and Ammon are protected from Israel's attack.
-
-⚔️ Sihon refuses peace and becomes Israel's first major victory in this retelling.
-
-💪 God begins to put the fear of Israel upon the nations.
-
-🙏 The chapter teaches timing, restraint, and trust in God's specific command.
+- 🧭 God tells Israel when the long circling season is over.
+- 🏔️ Israel must pass by Esau without taking his land.
+- 💰 Israel must pay for food and water instead of stealing.
+- ⏳ The wilderness years end as the old generation passes away.
+- 🌍 God reminds Israel that He rules the lands of other peoples too.
+- 🚫 Moab and Ammon are protected from Israel's attack.
+- ⚔️ Sihon refuses peace and becomes Israel's first major victory in this retelling.
+- 💪 God begins to put the fear of Israel upon the nations.
+- 🙏 The chapter teaches timing, restraint, and trust in God's specific command.
 
 ## Chapter Flow
 
-🔁 Israel circles Mount Seir for many days.
-
-🗣️ God says it is time to turn north.
-
-🤝 Israel is told not to fight Esau's descendants.
-
-💧 They must buy food and water as they pass through.
-
-⏳ The generation of unbelieving warriors finally passes away.
-
-🚫 God protects Moab and Ammon from Israel's attack.
-
-⚔️ Israel offers peace to Sihon, but Sihon refuses.
-
-🏙️ God gives Sihon and his cities into Israel's hand.
+- 🔁 Israel circles Mount Seir for many days.
+- 🗣️ God says it is time to turn north.
+- 🤝 Israel is told not to fight Esau's descendants.
+- 💧 They must buy food and water as they pass through.
+- ⏳ The generation of unbelieving warriors finally passes away.
+- 🚫 God protects Moab and Ammon from Israel's attack.
+- ⚔️ Israel offers peace to Sihon, but Sihon refuses.
+- 🏙️ God gives Sihon and his cities into Israel's hand.
 
 # Deep Chapter Notes
 
@@ -26458,43 +26905,27 @@ Deuteronomy 3 teaches that God gives real victory, sets real boundaries, and rem
 
 ## Why Deuteronomy 3 Matters
 
-⚔️ God gives Israel victory over Og king of Bashan.
-
-💪 Israel learns that even giant-like enemies are not too strong for the Lord.
-
-🏙️ The fortified cities of Bashan fall because God delivers them.
-
-🗺️ Land east of the Jordan is assigned to Reuben, Gad, and half Manasseh.
-
-🤝 The eastern tribes must still help their brothers fight for Canaan.
-
-👀 Joshua is told to remember what God has already done.
-
-🚪 Moses asks to enter the land, but God says no.
-
-🏔️ Moses is allowed to see the land from Pisgah.
-
-🙏 The chapter teaches victory, shared responsibility, leadership transition, and surrendered trust.
+- ⚔️ God gives Israel victory over Og king of Bashan.
+- 💪 Israel learns that even giant-like enemies are not too strong for the Lord.
+- 🏙️ The fortified cities of Bashan fall because God delivers them.
+- 🗺️ Land east of the Jordan is assigned to Reuben, Gad, and half Manasseh.
+- 🤝 The eastern tribes must still help their brothers fight for Canaan.
+- 👀 Joshua is told to remember what God has already done.
+- 🚪 Moses asks to enter the land, but God says no.
+- 🏔️ Moses is allowed to see the land from Pisgah.
+- 🙏 The chapter teaches victory, shared responsibility, leadership transition, and surrendered trust.
 
 ## Chapter Flow
 
-⚔️ Og king of Bashan comes out to fight Israel.
-
-🗣️ God tells Moses not to fear because He has already given Og into Israel's hand.
-
-🏙️ Israel captures the fortified cities of Bashan.
-
-🛏️ Og's giant bed is remembered as a sign of his intimidating strength.
-
-🗺️ Moses distributes the conquered land east of Jordan.
-
-🤝 Reuben, Gad, and half Manasseh must help the other tribes cross and fight.
-
-💪 Moses encourages Joshua with the victories he has seen.
-
-🙏 Moses pleads to enter the land.
-
-🏔️ God tells Moses to view the land from the mountain and strengthen Joshua.
+- ⚔️ Og king of Bashan comes out to fight Israel.
+- 🗣️ God tells Moses not to fear because He has already given Og into Israel's hand.
+- 🏙️ Israel captures the fortified cities of Bashan.
+- 🛏️ Og's giant bed is remembered as a sign of his intimidating strength.
+- 🗺️ Moses distributes the conquered land east of Jordan.
+- 🤝 Reuben, Gad, and half Manasseh must help the other tribes cross and fight.
+- 💪 Moses encourages Joshua with the victories he has seen.
+- 🙏 Moses pleads to enter the land.
+- 🏔️ God tells Moses to view the land from the mountain and strengthen Joshua.
 
 # Deep Chapter Notes
 
@@ -27299,47 +27730,29 @@ Deuteronomy 4 teaches that Bible memory is not just knowing facts. True remember
 
 ## Why Deuteronomy 4 Matters
 
-👂 Israel is commanded to listen and obey.
-
-📖 God's word must not be added to or taken away from.
-
-⚖️ Obedience will show wisdom before the nations.
-
-🔥 Israel must remember hearing God's voice at Horeb.
-
-🚫 Moses warns strongly against idolatry.
-
-👨‍👩‍👧‍👦 Parents must teach God's works to their children.
-
-🌍 God is unlike the idols of the nations.
-
-💔 Moses warns that future rebellion will bring exile.
-
-🙏 Even in exile, if Israel seeks the Lord, they will find Him.
-
-🕊️ The chapter ends by reminding Israel there is no God beside the Lord.
+- 👂 Israel is commanded to listen and obey.
+- 📖 God's word must not be added to or taken away from.
+- ⚖️ Obedience will show wisdom before the nations.
+- 🔥 Israel must remember hearing God's voice at Horeb.
+- 🚫 Moses warns strongly against idolatry.
+- 👨‍👩‍👧‍👦 Parents must teach God's works to their children.
+- 🌍 God is unlike the idols of the nations.
+- 💔 Moses warns that future rebellion will bring exile.
+- 🙏 Even in exile, if Israel seeks the Lord, they will find Him.
+- 🕊️ The chapter ends by reminding Israel there is no God beside the Lord.
 
 ## Chapter Flow
 
-👂 Listen to God's statutes and judgments.
-
-🚫 Do not add to or take away from God's commands.
-
-⚖️ Obedience displays wisdom to the nations.
-
-🔥 Remember Horeb, where God spoke from the fire.
-
-👁️ Israel saw no form, so they must not make an image.
-
-🌞 Do not worship created things like sun, moon, or stars.
-
-💔 Moses warns that idolatry will lead to scattering among nations.
-
-🙏 From exile, seeking the Lord with all the heart will find mercy.
-
-🗣️ Israel must know that the Lord alone is God.
-
-🏙️ Moses sets apart cities of refuge east of Jordan.
+- 👂 Listen to God's statutes and judgments.
+- 🚫 Do not add to or take away from God's commands.
+- ⚖️ Obedience displays wisdom to the nations.
+- 🔥 Remember Horeb, where God spoke from the fire.
+- 👁️ Israel saw no form, so they must not make an image.
+- 🌞 Do not worship created things like sun, moon, or stars.
+- 💔 Moses warns that idolatry will lead to scattering among nations.
+- 🙏 From exile, seeking the Lord with all the heart will find mercy.
+- 🗣️ Israel must know that the Lord alone is God.
+- 🏙️ Moses sets apart cities of refuge east of Jordan.
 
 # Deep Chapter Notes
 

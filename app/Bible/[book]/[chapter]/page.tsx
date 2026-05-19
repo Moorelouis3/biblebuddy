@@ -2780,8 +2780,8 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         </div> : null}
 
         {hideReaderChrome ? (
-          <div className="relative z-20 mb-4" ref={gamesMenuRef}>
-            <div className="flex gap-2">
+          <div className="relative z-20 mb-3" ref={gamesMenuRef}>
+            <div className="flex flex-col gap-2">
               <button
                 type="button"
                 onClick={() => {
@@ -2790,7 +2790,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   void handleMarkFinished();
                 }}
                 aria-label={isCompleted ? "Chapter completed" : "Mark chapter completed"}
-                className={`flex min-h-[4.25rem] flex-1 items-center justify-between rounded-2xl border px-4 py-3 text-left text-white shadow-lg transition ${
+                className={`flex min-h-[4.25rem] w-full items-center justify-between rounded-2xl border px-4 py-3 text-left text-white shadow-lg transition ${
                   isCompleted
                     ? "border-emerald-500 bg-emerald-600 shadow-emerald-200 hover:bg-emerald-700"
                     : isSaving
@@ -2817,10 +2817,13 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 }}
                 aria-expanded={gamesMenuOpen}
                 aria-label="Bible menu"
-                className="flex min-h-[4.25rem] w-28 flex-col items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-3 text-center text-[var(--bb-text-primary,#1f2937)] shadow-sm transition hover:brightness-95 sm:w-36"
+                className="flex min-h-[3.75rem] w-full items-center justify-between rounded-2xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-4 py-3 text-left text-[var(--bb-text-primary,#1f2937)] shadow-sm transition hover:brightness-95"
               >
-                <span className="text-xs font-extrabold uppercase tracking-[0.12em]">Menu</span>
-                <span className="mt-1 text-xl font-bold leading-none">{gamesMenuOpen ? "-" : "+"}</span>
+                <div className="flex flex-col">
+                  <span className="text-xs font-extrabold uppercase tracking-[0.12em]">Menu</span>
+                  <span className="mt-1 text-[11px] font-semibold text-[var(--bb-text-secondary,#4b5563)]">Bible tools</span>
+                </div>
+                <span className="text-xl font-bold leading-none">{gamesMenuOpen ? "-" : "+"}</span>
               </button>
             </div>
 
