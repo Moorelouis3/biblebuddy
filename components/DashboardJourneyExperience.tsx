@@ -172,6 +172,7 @@ type Props = {
   studySettingsOpenRequest?: number;
   homeHeader?: ReactNode;
   homePanelOverride?: ReactNode;
+  deepStudyNode?: ReactNode;
   suppressCompletedTasksPanel?: boolean;
   onHomeReset?: () => void;
   onDevotionalChanged: () => void;
@@ -1593,6 +1594,7 @@ export default function DashboardJourneyExperience({
   studySettingsOpenRequest = 0,
   homeHeader,
   homePanelOverride,
+  deepStudyNode,
   suppressCompletedTasksPanel = false,
   onHomeReset,
   onDevotionalChanged,
@@ -4473,6 +4475,9 @@ export default function DashboardJourneyExperience({
                 </div>
               ) : null}
             </div>
+            ) : null}
+            {!homePanelOverride && !shouldShowCompletionPanel && deepStudyNode ? (
+              <div className="dashboard-inline-deep-study">{deepStudyNode}</div>
             ) : null}
             {false ? (
             <div

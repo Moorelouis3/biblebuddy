@@ -35,6 +35,7 @@ import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, type FlameCosmeticId } from "../lib/flameCosmetics";
 import { getStoreItem } from "../lib/bibleBuddyStore";
+import { getActivePopupFromQueue, markPopupShown, POPUP_QUEUE_PRIORITIES, type PopupQueueItem } from "../lib/popupQueue";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
 
 const FeedbackModal = dynamic(() => import("./FeedbackModal").then((mod) => mod.FeedbackModal), {
@@ -1973,6 +1974,37 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, [isLoggedIn, userId, showOnboardingModal, pathname, router]);
 
   const gracePurchaseTotals = gracePurchasePrompt ? getGracePurchaseTotals(gracePurchasePrompt) : null;
+  const appShellPopupQueue: PopupQueueItem[] = [
+    ...(showOnboardingModal
+      ? [{ popup_id: "account:onboarding", type: "account_blocker" as const, priority: POPUP_QUEUE_PRIORITIES.accountBlocker + 30, user_id: userId }]
+      : []),
+    ...(showEmailConfirmationGate && !isEmailConfirmed
+      ? [{ popup_id: "account:email-confirmation", type: "account_blocker" as const, priority: POPUP_QUEUE_PRIORITIES.accountBlocker + 20, user_id: userId }]
+      : []),
+    ...(!showOnboardingModal && showFullNameModal
+      ? [{ popup_id: "account:full-name", type: "account_blocker" as const, priority: POPUP_QUEUE_PRIORITIES.accountBlocker + 10, user_id: userId }]
+      : []),
+    ...(gracePurchasePrompt
+      ? [{ popup_id: "streak:grace-day-purchase", type: "streak_rescue" as const, priority: POPUP_QUEUE_PRIORITIES.streakRescue + 30, user_id: userId, payload: gracePurchasePrompt }]
+      : []),
+    ...(graceRestoreSuccess
+      ? [{ popup_id: "reward:grace-day-restored", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 30, user_id: userId, payload: graceRestoreSuccess }]
+      : []),
+    ...(graceReward
+      ? [{ popup_id: "reward:grace-day-earned", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 20, user_id: userId, payload: graceReward }]
+      : []),
+    ...(graceUsePrompt
+      ? [{ popup_id: "streak:grace-day-owned", type: "streak_rescue" as const, priority: POPUP_QUEUE_PRIORITIES.streakRescue + 20, user_id: userId, payload: graceUsePrompt }]
+      : []),
+    ...(DAILY_RECOMMENDATIONS_ENABLED && showDailyRecommendation && dailyRecommendation
+      ? [{ popup_id: "daily:bible-buddy-recommendation", type: "daily_guidance" as const, priority: POPUP_QUEUE_PRIORITIES.dailyGuidance, user_id: userId }]
+      : []),
+  ];
+  const activeAppShellPopup = getActivePopupFromQueue(appShellPopupQueue);
+
+  useEffect(() => {
+    if (activeAppShellPopup) markPopupShown(activeAppShellPopup);
+  }, [activeAppShellPopup?.popup_id]);
 
   return (
     <FeatureRenderPriorityProvider value={{ featureToursEnabled }}>
@@ -1980,7 +2012,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* ONBOARDING MODAL */}
       {userId && (
         <OnboardingModal
-          isOpen={showOnboardingModal}
+          isOpen={activeAppShellPopup?.popup_id === "account:onboarding"}
           userId={userId}
           initialTrafficSource={initialTrafficSource}
           initialBibleExperienceLevel={initialBibleExperienceLevel}
@@ -2001,7 +2033,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         />
       )}
 
-      {isLoggedIn && userId && !showOnboardingModal && showFullNameModal && (
+      {isLoggedIn && userId && activeAppShellPopup?.popup_id === "account:full-name" && (
         <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/45 px-4">
           <div className="w-full max-w-md rounded-3xl border border-[#d9eadf] bg-[#f8fcf9] p-6 shadow-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4a9b6f]">One-time setup</p>
@@ -2048,7 +2080,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      {isLoggedIn && userId && !showOnboardingModal && showEmailConfirmationGate && !isEmailConfirmed && (
+      {isLoggedIn && userId && activeAppShellPopup?.popup_id === "account:email-confirmation" && (
         <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
           <div className="w-full max-w-md rounded-3xl border border-[#d8e7f2] bg-white p-6 text-center shadow-2xl">
             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-[#edf7ff]">
@@ -2127,7 +2159,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* DAILY RECOMMENDATION MODAL */}
-      {DAILY_RECOMMENDATIONS_ENABLED && isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && !showEmailConfirmationGate && !showUpdateModal && showDailyRecommendation && dailyRecommendation && (
+      {activeAppShellPopup?.popup_id === "daily:bible-buddy-recommendation" && isLoggedIn && userId && !showUpdateModal && dailyRecommendation && (
         <DailyRecommendationModal
           greeting={dailyRecommendation.greeting}
           contextLine={dailyRecommendation.contextLine}
@@ -2139,7 +2171,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         />
       )}
 
-      {isLoggedIn && userId && gracePurchasePrompt && gracePurchaseTotals && !showOnboardingModal && !showEmailConfirmationGate && (
+      {isLoggedIn && userId && activeAppShellPopup?.popup_id === "streak:grace-day-purchase" && gracePurchasePrompt && gracePurchaseTotals && (
         <div className="fixed inset-0 z-[280] flex items-center justify-center bg-black/60 px-4">
           <style>{`
             @keyframes grace-restore-ring {
@@ -2221,7 +2253,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      {isLoggedIn && userId && graceRestoreSuccess && !showOnboardingModal && !showEmailConfirmationGate && (
+      {isLoggedIn && userId && activeAppShellPopup?.popup_id === "reward:grace-day-restored" && graceRestoreSuccess && (
         <div className="fixed inset-0 z-[281] flex items-center justify-center bg-black/55 px-4">
           <div className="relative w-full max-w-sm overflow-hidden rounded-[28px] bg-white p-6 text-center shadow-2xl">
             <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-amber-300 via-emerald-300 to-sky-300" />
@@ -2247,7 +2279,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      {isLoggedIn && userId && graceReward && !gracePurchasePrompt && !graceRestoreSuccess && !showOnboardingModal && !showEmailConfirmationGate && (
+      {isLoggedIn && userId && activeAppShellPopup?.popup_id === "reward:grace-day-earned" && graceReward && (
         <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
           <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl">
             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-blue-50">
@@ -2279,7 +2311,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      {isLoggedIn && userId && graceUsePrompt && !gracePurchasePrompt && !graceRestoreSuccess && !showOnboardingModal && !showEmailConfirmationGate && (
+      {isLoggedIn && userId && activeAppShellPopup?.popup_id === "streak:grace-day-owned" && graceUsePrompt && (
         <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
           <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl">
             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-blue-50">

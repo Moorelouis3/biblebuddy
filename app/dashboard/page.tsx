@@ -53,7 +53,7 @@ import { TASK_XP, DIAMOND_REWARDS, estimateDiamondStashFromActions } from "../..
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { trackUserActivity } from "../../lib/trackUserActivity";
 import { awardDiamonds } from "../../lib/diamondWallet";
-import { applyAppThemeToDocument, APP_THEME_STORAGE_KEY, type AppThemeId } from "../../lib/appThemes";
+import { applyAppThemeToDocument, APP_THEME_STORAGE_KEY, getAppTheme, type AppThemeId } from "../../lib/appThemes";
 import {
   BOOST_STORE_ITEMS,
   BUDDY_STORE_ITEMS,
@@ -70,6 +70,21 @@ import {
   normalizeBuddyAvatarId,
   type BuddyAvatarId,
 } from "../../lib/buddyAvatars";
+import { getActivePopupFromQueue, markPopupShown, POPUP_QUEUE_PRIORITIES, type PopupQueueItem } from "../../lib/popupQueue";
+import {
+  DEEP_STUDY_DIAMONDS_PER_MINUTE,
+  buildEmptyTaskBreakdown,
+  getDeepStudyDailyStats,
+  getDeepStudyHistoryKey,
+  getDeepStudyLocalDayKey,
+  getDeepStudyMultiplier,
+  getDeepStudyRank,
+  getDeepStudyStreak,
+  loadDeepStudyHistory,
+  saveDeepStudySession,
+  type DeepStudySessionSummary,
+  type DeepStudyTaskKind,
+} from "../../lib/deepStudy";
 
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
@@ -172,6 +187,24 @@ type StorePurchaseCongrats = {
 
 type StorePromoKind = "buddies" | "diamonds";
 type DailyPopupStep = "streak" | "mystery" | "store_buddies" | "bible_tip" | "store_diamonds";
+type DeepStudyModeState = "idle" | "setup" | "active" | "results" | "info";
+
+type DeepStudyActiveSession = {
+  id: string;
+  plannedMinutes: number;
+  startedAt: number;
+  endsAt: number;
+  lastTickAt: number;
+  activeMs: number;
+  awayMs: number;
+  visibleMs: number;
+  interruptions: number;
+  interactions: number;
+  lastInteractionAt: number;
+  tasksCompleted: number;
+  taskBreakdown: Record<DeepStudyTaskKind, number>;
+  chaptersStudied: string[];
+};
 
 type DashboardLouisNudge = {
   id: string;
@@ -836,6 +869,31 @@ function getDashboardStreakHeadline(streak: number) {
   return `${safeStreak} ${safeStreak === 1 ? "day" : "days"} ${phrases[Math.abs(dayIndex) % phrases.length]}`;
 }
 
+function formatDeepStudyTime(totalSeconds: number) {
+  const safeSeconds = Math.max(0, Math.ceil(totalSeconds));
+  const minutes = Math.floor(safeSeconds / 60);
+  const seconds = safeSeconds % 60;
+  return `${minutes}:${String(seconds).padStart(2, "0")}`;
+}
+
+function darkenHexColor(hex: string, amount = 0.28) {
+  const cleaned = hex.replace("#", "").trim();
+  if (!/^[0-9a-f]{6}$/i.test(cleaned)) return "#1f2937";
+  const channels = [0, 2, 4].map((index) => parseInt(cleaned.slice(index, index + 2), 16));
+  const next = channels
+    .map((channel) => Math.max(0, Math.min(255, Math.round(channel * (1 - amount)))))
+    .map((channel) => channel.toString(16).padStart(2, "0"))
+    .join("");
+  return `#${next}`;
+}
+
+function normalizeDeepStudyTaskKind(kind: string | null | undefined): DeepStudyTaskKind | null {
+  if (kind === "devotional" || kind === "reading" || kind === "notes" || kind === "trivia" || kind === "scrambled" || kind === "reflection") {
+    return kind;
+  }
+  return null;
+}
+
 function buildDashboardNextStudyLine(checklistData: ChecklistData | null) {
   const tasks = checklistData?.tasks ?? [];
   const nextTask = tasks.find((task) => !task.done) ?? null;
@@ -1009,6 +1067,14 @@ export default function DashboardPage() {
   const [dailyLoginGiftReveal, setDailyLoginGiftReveal] = useState<DailyLoginGiftReveal | null>(null);
   const dailyLoginGiftAwardingRef = useRef(false);
   const dailyLoginGiftCheckRef = useRef<string | null>(null);
+  const [deepStudyMode, setDeepStudyMode] = useState<DeepStudyModeState>("idle");
+  const [deepStudySelectedMinutes, setDeepStudySelectedMinutes] = useState(20);
+  const [deepStudyActiveSession, setDeepStudyActiveSession] = useState<DeepStudyActiveSession | null>(null);
+  const [deepStudyResults, setDeepStudyResults] = useState<DeepStudySessionSummary | null>(null);
+  const [deepStudyHistory, setDeepStudyHistory] = useState<DeepStudySessionSummary[]>([]);
+  const [deepStudyShareBusy, setDeepStudyShareBusy] = useState(false);
+  const [deepStudyNow, setDeepStudyNow] = useState(Date.now());
+  const deepStudyFinalizingRef = useRef(false);
   const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
@@ -4385,6 +4451,22 @@ export default function DashboardPage() {
     const dailyPopupStep = getDailyPopupStep(stepIndex);
     const lastShownAt = Number(window.localStorage.getItem(lastShownKey) || "0");
     const popupCooldownMs = dailyPopupStep === "mystery" ? DAILY_LOGIN_GIFT_MIN_DELAY_MS : DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS;
+    const dailyPopupQueueItem: PopupQueueItem = {
+      popup_id: `dashboard:${dailyPopupStep}:${dayKey}`,
+      type: dailyPopupStep === "store_buddies" || dailyPopupStep === "store_diamonds" ? "store_promo" : "daily_guidance",
+      priority:
+        dailyPopupStep === "store_buddies" || dailyPopupStep === "store_diamonds"
+          ? POPUP_QUEUE_PRIORITIES.storePromo
+          : POPUP_QUEUE_PRIORITIES.dailyGuidance,
+      user_id: userId,
+      cooldown: popupCooldownMs,
+    };
+    if (!getActivePopupFromQueue([dailyPopupQueueItem], nowMs)) {
+      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+      setPendingDailyStreakSequence(false);
+      dailyStreakSequenceCheckRef.current = null;
+      return;
+    }
     if (stepIndex > 0 && lastShownAt && nowMs - lastShownAt < popupCooldownMs) {
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       setPendingDailyStreakSequence(false);
@@ -4413,6 +4495,7 @@ export default function DashboardPage() {
       window.localStorage.setItem(stepKey, String(stepIndex + 1));
       window.localStorage.setItem(lastShownKey, String(Date.now()));
       window.localStorage.setItem(getDashboardLouisCheckInLastShownKey(currentUserId), String(Date.now()));
+      markPopupShown(dailyPopupQueueItem);
       setPendingDailyStreakSequence(false);
       dailyStreakSequenceCheckRef.current = null;
     }
@@ -4627,6 +4710,272 @@ export default function DashboardPage() {
     () => dailyChecklistData ?? buildChooseDevotionalChecklistData(userId || "dashboard-fallback"),
     [dailyChecklistData, userId],
   );
+  const dashboardThemeId =
+    typeof window !== "undefined"
+      ? (window.localStorage.getItem(APP_THEME_STORAGE_KEY) as AppThemeId | null) || "light"
+      : "light";
+  const dashboardTheme = getAppTheme(dashboardThemeId);
+  const deepStudyButtonColor = darkenHexColor(dashboardTheme.button || dashboardTheme.accent, dashboardTheme.id === "black" ? 0 : 0.2);
+  const deepStudyTodayKey = getDeepStudyLocalDayKey();
+  const deepStudyStreak = getDeepStudyStreak(deepStudyHistory, deepStudyTodayKey);
+  const deepStudyMultiplier = getDeepStudyMultiplier(deepStudyStreak);
+  const deepStudyTodayStats = getDeepStudyDailyStats(deepStudyHistory, deepStudyTodayKey);
+  const deepStudyYesterdayStats = getDeepStudyDailyStats(deepStudyHistory, (() => {
+    const date = new Date();
+    date.setDate(date.getDate() - 1);
+    return getDeepStudyLocalDayKey(date);
+  })());
+  const deepStudyWeekStats = (() => {
+    const cutoff = Date.now() - 6 * 24 * 60 * 60 * 1000;
+    const weekSessions = deepStudyHistory.filter((session) => new Date(session.startedAt).getTime() >= cutoff);
+    const totalMinutes = weekSessions.reduce((sum, session) => sum + session.activeMinutes, 0);
+    const weightedFocus = weekSessions.reduce((sum, session) => sum + session.activeMinutes * session.focusScore, 0);
+    return {
+      sessions: weekSessions.length,
+      totalMinutes,
+      averageFocus: totalMinutes > 0 ? Math.round(weightedFocus / totalMinutes) : 0,
+      diamondsEarned: weekSessions.reduce((sum, session) => sum + session.diamondsEarned, 0),
+    };
+  })();
+  const deepStudyTotalMinutes = deepStudyHistory.reduce((sum, session) => sum + session.activeMinutes, 0);
+
+  useEffect(() => {
+    if (!userId) {
+      setDeepStudyHistory([]);
+      return;
+    }
+    setDeepStudyHistory(loadDeepStudyHistory(userId));
+  }, [userId]);
+
+  useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    const currentUserId = userId;
+    function handleStorage(event: StorageEvent) {
+      if (event.key === getDeepStudyHistoryKey(currentUserId)) {
+        setDeepStudyHistory(loadDeepStudyHistory(currentUserId));
+      }
+    }
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, [userId]);
+
+  useEffect(() => {
+    if (!deepStudyActiveSession) return;
+
+    function markInteraction() {
+      const now = Date.now();
+      setDeepStudyActiveSession((current) =>
+        current
+          ? {
+              ...current,
+              interactions: current.interactions + 1,
+              lastInteractionAt: now,
+            }
+          : current,
+      );
+    }
+
+    function handleVisibilityChange() {
+      if (document.visibilityState === "hidden") {
+        setDeepStudyActiveSession((current) =>
+          current ? { ...current, interruptions: current.interruptions + 1 } : current,
+        );
+      } else {
+        markInteraction();
+      }
+    }
+
+    const events: Array<keyof WindowEventMap> = ["click", "keydown", "touchstart", "scroll"];
+    events.forEach((eventName) => window.addEventListener(eventName, markInteraction, { passive: true }));
+    window.addEventListener("blur", handleVisibilityChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      events.forEach((eventName) => window.removeEventListener(eventName, markInteraction));
+      window.removeEventListener("blur", handleVisibilityChange);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [deepStudyActiveSession?.id]);
+
+  useEffect(() => {
+    if (!deepStudyActiveSession) return;
+    const interval = window.setInterval(() => {
+      const now = Date.now();
+      setDeepStudyNow(now);
+      setDeepStudyActiveSession((current) => {
+        if (!current) return current;
+        const elapsed = Math.max(0, now - current.lastTickAt);
+        const visible = document.visibilityState === "visible" && document.hasFocus();
+        const recentlyEngaged = now - current.lastInteractionAt <= 120000;
+        const active = visible && recentlyEngaged;
+        return {
+          ...current,
+          lastTickAt: now,
+          activeMs: current.activeMs + (active ? elapsed : 0),
+          awayMs: current.awayMs + (active ? 0 : elapsed),
+          visibleMs: current.visibleMs + (visible ? elapsed : 0),
+        };
+      });
+    }, 1000);
+
+    return () => window.clearInterval(interval);
+  }, [deepStudyActiveSession?.id]);
+
+  useEffect(() => {
+    if (!deepStudyActiveSession || deepStudyFinalizingRef.current) return;
+    if (deepStudyNow >= deepStudyActiveSession.endsAt) {
+      void finishDeepStudySession();
+    }
+  }, [deepStudyActiveSession, deepStudyNow]);
+
+  function startDeepStudySession(minutes: number) {
+    const now = Date.now();
+    setDeepStudyResults(null);
+    setDeepStudyActiveSession({
+      id: `deep-study-${userId || "anon"}-${now}`,
+      plannedMinutes: minutes,
+      startedAt: now,
+      endsAt: now + minutes * 60 * 1000,
+      lastTickAt: now,
+      activeMs: 0,
+      awayMs: 0,
+      visibleMs: 0,
+      interruptions: 0,
+      interactions: 1,
+      lastInteractionAt: now,
+      tasksCompleted: 0,
+      taskBreakdown: buildEmptyTaskBreakdown(),
+      chaptersStudied: [],
+    });
+    setDeepStudyMode("active");
+    setDeepStudyNow(now);
+  }
+
+  async function finishDeepStudySession() {
+    if (!userId || !deepStudyActiveSession || deepStudyFinalizingRef.current) return;
+    deepStudyFinalizingRef.current = true;
+    const endedAtMs = Date.now();
+    const activeMinutes = Math.max(0, Math.floor(deepStudyActiveSession.activeMs / 60000));
+    const awayMinutes = Math.max(0, Math.ceil(deepStudyActiveSession.awayMs / 60000));
+    const engagementScore = Math.min(20, deepStudyActiveSession.interactions * 1.4 + deepStudyActiveSession.tasksCompleted * 6);
+    const visibleRatio = Math.max(0, Math.min(1, deepStudyActiveSession.visibleMs / Math.max(1, endedAtMs - deepStudyActiveSession.startedAt)));
+    const interruptionPenalty = Math.min(25, deepStudyActiveSession.interruptions * 5);
+    const focusScore = Math.max(
+      35,
+      Math.min(100, Math.round(visibleRatio * 72 + engagementScore - interruptionPenalty)),
+    );
+    const historyBeforeSave = loadDeepStudyHistory(userId);
+    const dayKey = getDeepStudyLocalDayKey(new Date(deepStudyActiveSession.startedAt));
+    const optimisticStreak = getDeepStudyStreak([
+      {
+        id: deepStudyActiveSession.id,
+        userId,
+        dayKey,
+        startedAt: new Date(deepStudyActiveSession.startedAt).toISOString(),
+        endedAt: new Date(endedAtMs).toISOString(),
+        plannedMinutes: deepStudyActiveSession.plannedMinutes,
+        activeMinutes,
+        awayMinutes,
+        interruptions: deepStudyActiveSession.interruptions,
+        interactions: deepStudyActiveSession.interactions,
+        tasksCompleted: deepStudyActiveSession.tasksCompleted,
+        taskBreakdown: deepStudyActiveSession.taskBreakdown,
+        chaptersStudied: deepStudyActiveSession.chaptersStudied,
+        focusScore,
+        multiplier: 1,
+        streak: 1,
+        diamondsEarned: 0,
+        themeId: dashboardTheme.id,
+      },
+      ...historyBeforeSave,
+    ], dayKey);
+    const multiplier = getDeepStudyMultiplier(optimisticStreak);
+    const diamondsEarned = Math.max(0, Math.floor(activeMinutes * DEEP_STUDY_DIAMONDS_PER_MINUTE * multiplier * (focusScore / 100)));
+
+    const summary: DeepStudySessionSummary = {
+      id: deepStudyActiveSession.id,
+      userId,
+      dayKey,
+      startedAt: new Date(deepStudyActiveSession.startedAt).toISOString(),
+      endedAt: new Date(endedAtMs).toISOString(),
+      plannedMinutes: deepStudyActiveSession.plannedMinutes,
+      activeMinutes,
+      awayMinutes,
+      interruptions: deepStudyActiveSession.interruptions,
+      interactions: deepStudyActiveSession.interactions,
+      tasksCompleted: deepStudyActiveSession.tasksCompleted,
+      taskBreakdown: deepStudyActiveSession.taskBreakdown,
+      chaptersStudied: deepStudyActiveSession.chaptersStudied,
+      focusScore,
+      multiplier,
+      streak: optimisticStreak,
+      diamondsEarned,
+      themeId: dashboardTheme.id,
+    };
+
+    const awarded = await awardDiamonds(userId, diamondsEarned);
+    const savedSummary = { ...summary, diamondsEarned: awarded };
+    saveDeepStudySession(savedSummary);
+    setDeepStudyHistory(loadDeepStudyHistory(userId));
+    setProfile((current) =>
+      current
+        ? {
+            ...current,
+            diamonds_count: Math.max(0, Number(current.diamonds_count ?? 0)) + awarded,
+          }
+        : current,
+    );
+
+    void supabase.from("deep_study_sessions").insert({
+      id: savedSummary.id,
+      user_id: userId,
+      day_key: savedSummary.dayKey,
+      planned_minutes: savedSummary.plannedMinutes,
+      active_minutes: savedSummary.activeMinutes,
+      away_minutes: savedSummary.awayMinutes,
+      interruptions: savedSummary.interruptions,
+      interactions: savedSummary.interactions,
+      tasks_completed: savedSummary.tasksCompleted,
+      task_breakdown: savedSummary.taskBreakdown,
+      chapters_studied: savedSummary.chaptersStudied,
+      focus_score: savedSummary.focusScore,
+      multiplier: savedSummary.multiplier,
+      deep_study_streak: savedSummary.streak,
+      diamonds_earned: savedSummary.diamondsEarned,
+      started_at: savedSummary.startedAt,
+      ended_at: savedSummary.endedAt,
+    }).then(({ error }) => {
+      if (error && !/deep_study_sessions/i.test(error.message || "")) {
+        console.warn("[DEEP_STUDY] Session saved locally, but database history failed:", error.message);
+      }
+    });
+
+    setDeepStudyResults(savedSummary);
+    setDeepStudyActiveSession(null);
+    setDeepStudyMode("results");
+    deepStudyFinalizingRef.current = false;
+  }
+
+  function recordDeepStudyTaskCompletion(task: TaskState) {
+    const taskKind = normalizeDeepStudyTaskKind(task.kind);
+    if (!taskKind) return;
+    const chapterLabel = task.chapterLabel || (task.book && task.chapter ? `${task.book} ${task.chapter}` : null);
+    setDeepStudyActiveSession((current) => {
+      if (!current) return current;
+      return {
+        ...current,
+        tasksCompleted: current.tasksCompleted + 1,
+        interactions: current.interactions + 3,
+        lastInteractionAt: Date.now(),
+        taskBreakdown: {
+          ...current.taskBreakdown,
+          [taskKind]: current.taskBreakdown[taskKind] + 1,
+        },
+        chaptersStudied: chapterLabel && !current.chaptersStudied.includes(chapterLabel)
+          ? [...current.chaptersStudied, chapterLabel]
+          : current.chaptersStudied,
+      };
+    });
+  }
   const dashboardChecklistLoading = isLoadingDailyTaskSummary && Boolean(dailyChecklistData);
   const completedChapterLabel =
     dashboardChecklistData.tasks.find((task) => task.kind === "reading")?.chapterLabel ||
@@ -4643,6 +4992,21 @@ export default function DashboardPage() {
     storePurchaseCongrats?.item.kind === "buddy"
       ? normalizeBuddyAvatarId(storePurchaseCongrats.item.id === "buddy-lil-louis" ? "louis" : storePurchaseCongrats.item.id.replace("buddy-", ""))
       : null;
+  const dashboardRewardPopupQueue: PopupQueueItem[] = [
+    ...(storePurchaseCongrats
+      ? [{ popup_id: "dashboard:reward:store-purchase", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 40, user_id: userId, payload: storePurchaseCongrats }]
+      : []),
+    ...(dailyLoginGiftReveal
+      ? [{ popup_id: "dashboard:reward:daily-login-gift", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 30, user_id: userId, payload: dailyLoginGiftReveal }]
+      : []),
+    ...(activeEarnedBadge
+      ? [{ popup_id: `dashboard:reward:badge:${activeEarnedBadge.id}`, type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 20, user_id: userId, payload: activeEarnedBadge }]
+      : []),
+    ...(buddySelectionWelcome
+      ? [{ popup_id: "dashboard:reward:buddy-selection", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 10, user_id: userId, payload: buddySelectionWelcome }]
+      : []),
+  ];
+  const activeDashboardRewardPopup = getActivePopupFromQueue(dashboardRewardPopupQueue);
   const nextChapterLabel = (() => {
     const chapterTask = dashboardChecklistData.tasks.find((task) => task.book && task.chapter);
     if (!chapterTask?.book || !chapterTask.chapter || !dashboardChecklistData.nextJourneyTarget) return "the next chapter";
@@ -5254,6 +5618,9 @@ export default function DashboardPage() {
 
   function handleDashboardTaskProgressUpdated(completedTask?: TaskState) {
     if (completedTask?.kind) {
+      if (deepStudyActiveSession) {
+        recordDeepStudyTaskCompletion(completedTask);
+      }
       setSelectedDashboardTask(null);
       let completedJourneyKey: string | null | undefined = null;
       setDailyChecklistData((current) => {
@@ -5320,6 +5687,288 @@ export default function DashboardPage() {
       }
     };
   }, []);
+
+  async function buildDeepStudyShareImage(summary: DeepStudySessionSummary) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 1080;
+    canvas.height = 1920;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Canvas is unavailable.");
+    const theme = getAppTheme(summary.themeId);
+    const accent = theme.accent;
+    const darkAccent = darkenHexColor(accent, 0.34);
+
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    gradient.addColorStop(0, theme.id === "dark" || theme.id === "black" ? "#101827" : theme.background);
+    gradient.addColorStop(1, theme.id === "dark" || theme.id === "black" ? "#172033" : theme.surfaceSoft);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "rgba(255,255,255,0.88)";
+    roundRect(ctx, 96, 150, 888, 1400, 56);
+    ctx.fill();
+
+    ctx.fillStyle = darkAccent;
+    ctx.font = "900 46px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Deep Study Complete", 540, 285);
+
+    ctx.fillStyle = theme.textPrimary;
+    ctx.font = "900 92px Arial";
+    ctx.fillText(`${summary.activeMinutes} Minutes`, 540, 430);
+    ctx.font = "700 42px Arial";
+    ctx.fillStyle = theme.textSecondary;
+    ctx.fillText("Focused in God's Word", 540, 500);
+
+    const rows = [
+      ["Chapters Studied", String(summary.chaptersStudied.length)],
+      ["Focus Score", `${summary.focusScore}%`],
+      ["Diamonds Earned", `+${summary.diamondsEarned}`],
+      ["Deep Study Streak", `${summary.streak} days`],
+    ];
+    rows.forEach(([label, value], index) => {
+      const y = 650 + index * 150;
+      ctx.fillStyle = `${accent}24`;
+      roundRect(ctx, 175, y, 730, 104, 28);
+      ctx.fill();
+      ctx.fillStyle = theme.textSecondary;
+      ctx.font = "800 32px Arial";
+      ctx.textAlign = "left";
+      ctx.fillText(label, 220, y + 64);
+      ctx.fillStyle = darkAccent;
+      ctx.font = "900 42px Arial";
+      ctx.textAlign = "right";
+      ctx.fillText(value, 860, y + 66);
+    });
+
+    ctx.textAlign = "center";
+    ctx.fillStyle = theme.textPrimary;
+    ctx.font = "700 40px Arial";
+    ctx.fillText("Stay focused in God's Word.", 540, 1335);
+    ctx.fillStyle = darkAccent;
+    ctx.font = "900 38px Arial";
+    ctx.fillText("Bible Buddy", 540, 1450);
+
+    return new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob((blob) => {
+        if (blob) resolve(blob);
+        else reject(new Error("Could not generate share image."));
+      }, "image/png");
+    });
+  }
+
+  function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, radius: number) {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.arcTo(x + width, y, x + width, y + height, radius);
+    ctx.arcTo(x + width, y + height, x, y + height, radius);
+    ctx.arcTo(x, y + height, x, y, radius);
+    ctx.arcTo(x, y, x + width, y, radius);
+    ctx.closePath();
+  }
+
+  async function shareDeepStudyResults(summary: DeepStudySessionSummary, target: "share" | "save" = "share") {
+    if (deepStudyShareBusy) return;
+    setDeepStudyShareBusy(true);
+    try {
+      const blob = await buildDeepStudyShareImage(summary);
+      const file = new File([blob], "bible-buddy-deep-study.png", { type: "image/png" });
+      if (target === "share" && navigator.canShare?.({ files: [file] })) {
+        await navigator.share({
+          title: "Bible Buddy Deep Study",
+          text: "Deep Study Complete",
+          files: [file],
+        });
+      } else {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "bible-buddy-deep-study.png";
+        link.click();
+        URL.revokeObjectURL(url);
+      }
+    } catch (error) {
+      console.error("[DEEP_STUDY] Could not share results:", error);
+    } finally {
+      setDeepStudyShareBusy(false);
+    }
+  }
+
+  function renderDeepStudyCard() {
+    if (deepStudyMode === "active" && deepStudyActiveSession) {
+      const secondsLeft = Math.max(0, Math.ceil((deepStudyActiveSession.endsAt - deepStudyNow) / 1000));
+      const activeMinutes = Math.floor(deepStudyActiveSession.activeMs / 60000);
+      return (
+        <div className="rounded-[26px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-5 text-center shadow-[0_14px_34px_rgba(38,63,99,0.12)]">
+          <p className="text-5xl font-black leading-none text-[var(--bb-text-primary)]">{formatDeepStudyTime(secondsLeft)}</p>
+          <p className="mt-2 text-sm font-black text-[var(--bb-accent)]">left</p>
+          <div className="mt-4 grid grid-cols-3 gap-2 text-xs font-black">
+            <div className="rounded-2xl bg-[var(--bb-surface-soft)] px-3 py-2">{activeMinutes}m focused</div>
+            <div className="rounded-2xl bg-[var(--bb-surface-soft)] px-3 py-2">{deepStudyActiveSession.tasksCompleted} tasks</div>
+            <div className="rounded-2xl bg-[var(--bb-surface-soft)] px-3 py-2">{deepStudyActiveSession.chaptersStudied.length} chapters</div>
+          </div>
+          <p className="mt-3 text-xs font-semibold text-[var(--bb-text-muted)]">Stay with Scripture to maximize rewards.</p>
+        </div>
+      );
+    }
+
+    return (
+      <button
+        type="button"
+        onClick={() => setDeepStudyMode("setup")}
+        className="block w-full rounded-[26px] border border-white/20 px-5 py-5 text-left text-white shadow-[0_14px_34px_rgba(38,63,99,0.16)] transition hover:-translate-y-0.5 hover:shadow-xl"
+        style={{ backgroundColor: deepStudyButtonColor }}
+      >
+        <p className="text-2xl font-black leading-tight">Deep Study Mode</p>
+        <p className="mt-2 text-sm font-semibold text-white/82">Focused Bible study time that earns diamonds.</p>
+      </button>
+    );
+  }
+
+  function renderDeepStudySetup() {
+    const options = [15, 20, 30];
+    return (
+      <section className="mx-auto w-full max-w-xl rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-6 shadow-[0_16px_40px_rgba(38,63,99,0.12)]">
+        <button type="button" onClick={() => setDeepStudyMode("idle")} className="ml-auto grid h-9 w-9 place-items-center rounded-full bg-[var(--bb-surface-soft)] text-xl font-black text-[var(--bb-text-secondary)]">x</button>
+        <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary)]">Start Deep Study Mode</h2>
+        <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">Earn diamonds while deeply studying God&apos;s Word.</p>
+        <div className="mt-5 grid grid-cols-3 gap-3">
+          {options.map((minutes) => {
+            const selected = deepStudySelectedMinutes === minutes;
+            return (
+              <button
+                key={minutes}
+                type="button"
+                onClick={() => setDeepStudySelectedMinutes(minutes)}
+                className={`rounded-[22px] border px-3 py-4 text-center transition ${selected ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)] shadow-sm" : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)]"}`}
+              >
+                <p className="text-xl font-black text-[var(--bb-text-primary)]">{minutes}</p>
+                <p className="text-xs font-black text-[var(--bb-text-muted)]">minutes</p>
+                {minutes === 20 ? <p className="mt-2 rounded-full bg-[var(--bb-button)] px-2 py-1 text-[10px] font-black text-[var(--bb-button-text)]">Recommended</p> : null}
+              </button>
+            );
+          })}
+        </div>
+        <div className="mt-5 rounded-[22px] bg-[var(--bb-surface-soft)] px-4 py-4 text-sm font-bold leading-6 text-[var(--bb-text-secondary)]">
+          <p>Earn {DEEP_STUDY_DIAMONDS_PER_MINUTE} diamonds per active focused minute.</p>
+          <p>The more focused time, the more you earn.</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => startDeepStudySession(deepStudySelectedMinutes)}
+          className="mt-5 w-full rounded-full px-6 py-3 text-sm font-black text-white shadow-sm transition hover:brightness-95"
+          style={{ backgroundColor: deepStudyButtonColor }}
+        >
+          Start Deep Study Mode
+        </button>
+        <button type="button" onClick={() => setDeepStudyMode("info")} className="mx-auto mt-4 block text-sm font-black text-[var(--bb-accent)]">
+          How does Deep Study Mode work?
+        </button>
+      </section>
+    );
+  }
+
+  function renderDeepStudyResults() {
+    if (!deepStudyResults) return null;
+    const breakdownRows = Object.entries(deepStudyResults.taskBreakdown).filter(([, count]) => count > 0);
+    return (
+      <section className="mx-auto w-full max-w-xl overflow-hidden rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-[0_16px_40px_rgba(38,63,99,0.12)]">
+        <div className="relative px-6 py-7 text-center">
+          <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-sky-300 via-emerald-300 to-amber-300" />
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">Deep Study Mode Results</p>
+          <h2 className="mt-3 text-4xl font-black text-[var(--bb-text-primary)]">+{deepStudyResults.diamondsEarned}</h2>
+          <p className="mt-1 text-sm font-black text-[var(--bb-accent)]">diamonds earned</p>
+          <div className="mt-5 grid grid-cols-2 gap-3 text-left text-sm font-bold">
+            <div className="rounded-[20px] bg-[var(--bb-surface-soft)] p-4"><p className="text-[10px] uppercase tracking-[0.16em] text-[var(--bb-text-muted)]">Focused</p><p className="mt-1 text-xl font-black">{deepStudyResults.activeMinutes}m</p></div>
+            <div className="rounded-[20px] bg-[var(--bb-surface-soft)] p-4"><p className="text-[10px] uppercase tracking-[0.16em] text-[var(--bb-text-muted)]">Away</p><p className="mt-1 text-xl font-black">{deepStudyResults.awayMinutes}m</p></div>
+            <div className="rounded-[20px] bg-[var(--bb-surface-soft)] p-4"><p className="text-[10px] uppercase tracking-[0.16em] text-[var(--bb-text-muted)]">Focus Score</p><p className="mt-1 text-xl font-black">{deepStudyResults.focusScore}%</p></div>
+            <div className="rounded-[20px] bg-[var(--bb-surface-soft)] p-4"><p className="text-[10px] uppercase tracking-[0.16em] text-[var(--bb-text-muted)]">Multiplier</p><p className="mt-1 text-xl font-black">{deepStudyResults.multiplier}x</p></div>
+          </div>
+          <div className="mt-4 rounded-[22px] bg-[var(--bb-surface-soft)] p-4 text-left">
+            <p className="text-sm font-black text-[var(--bb-text-primary)]">{deepStudyResults.tasksCompleted} tasks completed</p>
+            <p className="mt-1 text-xs font-semibold text-[var(--bb-text-muted)]">{deepStudyResults.chaptersStudied.length ? deepStudyResults.chaptersStudied.join(", ") : "No chapter task completed this session."}</p>
+            {breakdownRows.length ? (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {breakdownRows.map(([kind, count]) => <span key={kind} className="rounded-full bg-white px-3 py-1 text-xs font-black">{kind}: {count}</span>)}
+              </div>
+            ) : null}
+          </div>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <button type="button" onClick={() => void shareDeepStudyResults(deepStudyResults)} className="rounded-full bg-[var(--bb-button)] px-5 py-3 text-sm font-black text-[var(--bb-button-text)]">Share My Results</button>
+            <button type="button" onClick={() => setDeepStudyMode("idle")} className="rounded-full border border-[var(--bb-card-border)] bg-white px-5 py-3 text-sm font-black text-[var(--bb-text-primary)]">Done</button>
+          </div>
+          <div className="mt-4 flex flex-wrap justify-center gap-2">
+            {["Instagram", "Messages", "WhatsApp", "Threads", "Facebook"].map((label) => (
+              <button
+                key={label}
+                type="button"
+                onClick={() => void shareDeepStudyResults(deepStudyResults)}
+                className="rounded-full bg-[var(--bb-surface-soft)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary)]"
+              >
+                {label}
+              </button>
+            ))}
+            <button type="button" onClick={() => void shareDeepStudyResults(deepStudyResults, "save")} className="rounded-full bg-[var(--bb-surface-soft)] px-3 py-2 text-xs font-black text-[var(--bb-accent)]">
+              {deepStudyShareBusy ? "Preparing..." : "Save Image"}
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  function renderDeepStudyInfo() {
+    const rank = getDeepStudyRank(deepStudyTodayStats.totalMinutes, deepStudyTodayStats.averageFocus, deepStudyStreak);
+    return (
+      <section className="mx-auto w-full max-w-xl rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-6 shadow-[0_16px_40px_rgba(38,63,99,0.12)]">
+        <button type="button" onClick={() => setDeepStudyMode(deepStudyResults ? "results" : "setup")} className="ml-auto grid h-9 w-9 place-items-center rounded-full bg-[var(--bb-surface-soft)] text-xl font-black">x</button>
+        <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary)]">Deep Study Mode</h2>
+        <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">A calm focus timer for intentional Bible study. It rewards focused minutes, not rushing.</p>
+        <div className="mt-5 grid grid-cols-2 gap-3">
+          {[
+            ["Today", `${deepStudyTodayStats.totalMinutes}m`, `${deepStudyTodayStats.sessions} sessions`],
+            ["Yesterday", `${deepStudyYesterdayStats.totalMinutes}m`, `${deepStudyYesterdayStats.averageFocus}% focus`],
+            ["This Week", `${deepStudyWeekStats.totalMinutes}m`, `+${deepStudyWeekStats.diamondsEarned} diamonds`],
+            ["Total Focus", `${deepStudyTotalMinutes}m`, rank],
+          ].map(([label, value, detail]) => (
+            <div key={label} className="rounded-[22px] bg-[var(--bb-surface-soft)] p-4">
+              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted)]">{label}</p>
+              <p className="mt-1 text-xl font-black text-[var(--bb-text-primary)]">{value}</p>
+              <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary)]">{detail}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-5 space-y-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
+          <div className="rounded-[22px] bg-[var(--bb-surface-soft)] p-4"><b className="text-[var(--bb-text-primary)]">Current Streak:</b> {deepStudyStreak} days, {deepStudyMultiplier}x multiplier.</div>
+          <div className="rounded-[22px] bg-[var(--bb-surface-soft)] p-4"><b className="text-[var(--bb-text-primary)]">Diamonds:</b> active focused minutes earn {DEEP_STUDY_DIAMONDS_PER_MINUTE} diamonds each, then your streak multiplier and focus score shape the final reward.</div>
+          <div className="rounded-[22px] bg-[var(--bb-surface-soft)] p-4"><b className="text-[var(--bb-text-primary)]">Focus:</b> Bible Buddy looks at visible app time, interruptions, task completion, and steady interaction. It is not trying to catch you. It gently rewards focus.</div>
+        </div>
+        <div className="mt-5">
+          <p className="text-sm font-black text-[var(--bb-text-primary)]">Recent Deep Study Sessions</p>
+          <div className="mt-3 space-y-2">
+            {deepStudyHistory.slice(0, 5).map((session) => (
+              <div key={session.id} className="flex items-center justify-between rounded-2xl bg-[var(--bb-surface-soft)] px-4 py-3 text-sm font-bold">
+                <span>{session.dayKey}</span>
+                <span>{session.activeMinutes}m</span>
+                <span>{session.focusScore}%</span>
+                <span>+{session.diamondsEarned}</span>
+              </div>
+            ))}
+            {!deepStudyHistory.length ? <p className="rounded-2xl bg-[var(--bb-surface-soft)] px-4 py-4 text-sm font-bold text-[var(--bb-text-muted)]">No Deep Study sessions yet.</p> : null}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  function renderDashboardHomePanelOverride() {
+    if (showDiamondStore) return renderDiamondStorePanel();
+    if (showBibleProgressPanel) return renderBibleProgressPanel();
+    if (deepStudyMode === "setup") return renderDeepStudySetup();
+    if (deepStudyMode === "results") return renderDeepStudyResults();
+    if (deepStudyMode === "info") return renderDeepStudyInfo();
+    return undefined;
+  }
 
   function renderStorePromoModal() {
     if (!activeStorePromo) return null;
@@ -5549,8 +6198,9 @@ export default function DashboardPage() {
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
-          homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : showBibleProgressPanel ? renderBibleProgressPanel() : undefined}
-          suppressCompletedTasksPanel={showBibleProgressPanel}
+          homePanelOverride={renderDashboardHomePanelOverride()}
+          deepStudyNode={renderDeepStudyCard()}
+          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "setup" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
@@ -5601,8 +6251,9 @@ export default function DashboardPage() {
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
-          homePanelOverride={showDiamondStore ? renderDiamondStorePanel() : showBibleProgressPanel ? renderBibleProgressPanel() : undefined}
-          suppressCompletedTasksPanel={showBibleProgressPanel}
+          homePanelOverride={renderDashboardHomePanelOverride()}
+          deepStudyNode={renderDeepStudyCard()}
+          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "setup" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
@@ -5739,7 +6390,7 @@ export default function DashboardPage() {
 
       {/* Level Info Modal */}
       <ModalShell
-        isOpen={buddySelectionWelcome !== null}
+        isOpen={activeDashboardRewardPopup?.popup_id === "dashboard:reward:buddy-selection"}
         onClose={() => setBuddySelectionWelcome(null)}
         backdropColor="bg-black/45"
       >
@@ -5783,7 +6434,7 @@ export default function DashboardPage() {
       />
 
       <ModalShell
-        isOpen={Boolean(storePurchaseCongrats)}
+        isOpen={activeDashboardRewardPopup?.popup_id === "dashboard:reward:store-purchase"}
         onClose={() => setStorePurchaseCongrats(null)}
         backdropColor="bg-black/45"
       >
@@ -5857,12 +6508,10 @@ export default function DashboardPage() {
 
       <ModalShell
         isOpen={
-          Boolean(dailyLoginGiftReveal) &&
+          activeDashboardRewardPopup?.popup_id === "dashboard:reward:daily-login-gift" &&
           !storePurchaseCongrats &&
-          !buddySelectionWelcome &&
           !showVerseOfTheDayModal &&
           !showStreakMotivationModal &&
-          !activeEarnedBadge &&
           earnedBadgeQueue.length === 0 &&
           !showLevelInfoModal &&
           !showStreakBadgeModal &&
@@ -6245,7 +6894,7 @@ export default function DashboardPage() {
       </ModalShell>
 
       <ModalShell
-        isOpen={Boolean(activeEarnedBadge)}
+        isOpen={activeDashboardRewardPopup?.popup_id?.startsWith("dashboard:reward:badge:") === true}
         onClose={() => setActiveEarnedBadge(null)}
         backdropColor="bg-black/45"
       >
