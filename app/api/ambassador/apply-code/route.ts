@@ -161,6 +161,17 @@ export async function POST(req: NextRequest) {
     created_at: trialStartedAt.toISOString(),
   });
 
+  await supabase.from("notifications").insert({
+    user_id: ambassador.user_id,
+    type: "referral_signup_reward",
+    from_user_id: user.id,
+    from_user_name: "Buddy Rewards",
+    article_slug: "/dashboard",
+    message: `got you a new signup. You earned ${REFERRAL_REWARD_XP} XP and ${REFERRAL_REWARD_DIAMONDS} diamonds.`,
+    is_read: false,
+    created_at: trialStartedAt.toISOString(),
+  });
+
   // Grant 30-day Pro trial and log the upgrade event if this is a new paid conversion.
   await markUserAsPaidAndTrackUpgrade({
     supabase,

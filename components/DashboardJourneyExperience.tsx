@@ -1894,10 +1894,30 @@ export default function DashboardJourneyExperience({
   useEffect(() => {
     if (!userId) return;
     void fetchShareRewards({ checkForNewReward: true });
+
+    const referralChannel = supabase
+      .channel(`buddy-rewards:${userId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "ambassador_referrals",
+          filter: `ambassador_user_id=eq.${userId}`,
+        },
+        () => {
+          void fetchShareRewards({ checkForNewReward: true });
+        },
+      )
+      .subscribe();
+
     const intervalId = window.setInterval(() => {
       void fetchShareRewards({ checkForNewReward: true });
-    }, 45000);
-    return () => window.clearInterval(intervalId);
+    }, 30000);
+    return () => {
+      window.clearInterval(intervalId);
+      void supabase.removeChannel(referralChannel);
+    };
   }, [fetchShareRewards, userId]);
 
   useEffect(() => {
