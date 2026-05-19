@@ -2036,7 +2036,7 @@ export default function DashboardJourneyExperience({
     .filter((task) => !task.done)
     .reduce((total, task) => total + parseTaskEstimateMinutes(task.timeEstimateLabel), 0);
   const estimatedStudyTimeLabel = formatStudyEstimate(estimatedStudyMinutes);
-  const studyProgressTotal = Math.max(6, visibleTasks.length || displayTasks.length || 0);
+  const studyProgressTotal = Math.max(5, visibleTasks.length || displayTasks.length || 0);
   const studyProgressCompleted = Math.min(
     studyProgressTotal,
     visibleTasks.filter((task) => task.done).length,
@@ -4374,44 +4374,32 @@ export default function DashboardJourneyExperience({
             {!homePanelOverride && !shouldShowCompletionPanel ? renderCurrentStudyHeader() : null}
             {!homePanelOverride && !shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard ? (
             <div
-              className="bb-skin-glow-card rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition"
+              className="bb-skin-glow-card rounded-[22px] border border-[#dbe7f4] bg-white p-3 shadow-[0_10px_28px_rgba(38,63,99,0.08)] transition"
             >
-              <div className="mb-3 flex items-start justify-between gap-3">
-                <div>
+              <div className="mb-2">
+                <div className="min-w-0">
                   <h2 className="min-w-0 whitespace-nowrap text-[clamp(16px,4.8vw,20px)] font-black leading-tight text-gray-950">
                     {nextTaskTitle}
                   </h2>
-                  <p className="mt-1 text-[11px] font-bold leading-tight text-gray-500">
+                  <p className="mt-0.5 text-[11px] font-bold leading-tight text-gray-500">
                     {estimatedStudyTimeLabel}
                   </p>
                 </div>
-                <div className="shrink-0 rounded-full bg-[#eef6ff] px-3 py-1.5 text-[11px] font-black text-[#2f7fe8]">
-                  {studyProgressCompleted}/{studyProgressTotal}
-                </div>
               </div>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
                 <div
-                  className="grid h-16 w-16 shrink-0 place-items-center rounded-full"
+                  className="grid h-14 w-14 shrink-0 place-items-center rounded-full"
                   style={{
                     background: `conic-gradient(var(--bb-accent) ${studyProgressPercent}%, var(--bb-progress-track) 0)`,
                   }}
                 >
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-[var(--bb-card)] text-sm font-black text-[var(--bb-accent)]">
+                  <div className="grid h-10 w-10 place-items-center rounded-full bg-[var(--bb-card)] text-xs font-black text-[var(--bb-accent)]">
                     {studyProgressCompleted}/{studyProgressTotal}
                   </div>
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-black text-gray-950">{activeChapterLabel}</p>
                   <p className="mt-0.5 text-xs font-semibold leading-5 text-gray-500">{studyProgressMotivation}</p>
-                  <div className="mt-3 flex items-center gap-3">
-                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
-                      <div
-                        className="h-full rounded-full bg-[var(--bb-accent)] transition-all duration-500"
-                        style={{ width: `${studyProgressPercent}%` }}
-                      />
-                    </div>
-                    <span className="text-[11px] font-bold text-gray-500">{studyProgressPercent}%</span>
-                  </div>
                 </div>
                 <span className="text-xl text-gray-400" aria-hidden="true">›</span>
               </div>
