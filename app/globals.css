@@ -863,6 +863,38 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-notification-list::-webki
   background: linear-gradient(180deg, var(--bb-accent), var(--bb-button));
 }
 
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-backdrop {
+  background:
+    radial-gradient(circle at 50% 10%, color-mix(in srgb, var(--bb-accent) 22%, transparent), transparent 34%),
+    rgba(0, 0, 0, 0.68) !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel > * {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--bb-card) 94%, transparent), color-mix(in srgb, var(--bb-surface) 88%, transparent)),
+    var(--bb-card) !important;
+  border-color: var(--bb-card-border) !important;
+  color: var(--bb-text-primary) !important;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.42),
+    0 0 42px color-mix(in srgb, var(--bb-accent) 28%, transparent) !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel h1,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel h2,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel h3,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel .text-gray-900,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel .text-slate-900 {
+  color: var(--bb-text-primary) !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel p,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel .text-gray-700,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel .text-gray-600,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel .text-slate-600 {
+  color: var(--bb-text-secondary) !important;
+}
+
 html[data-bb-skin="midnight-garden"] .bb-skin-notification-panel {
   border-color: rgba(155, 205, 98, 0.52) !important;
   background:

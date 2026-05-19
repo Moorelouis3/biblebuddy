@@ -179,6 +179,43 @@ export function getPremiumSkin(value: unknown): PremiumSkin | null {
   return PREMIUM_SKIN_BY_ID.get(skinId) ?? null;
 }
 
+export function getPremiumSkinForLegacyTheme(value: unknown): PremiumSkinId {
+  switch (String(value || "").toLowerCase()) {
+    case "blue":
+      return "blue-storm";
+    case "green":
+    case "gold":
+      return "midnight-garden";
+    case "purple":
+    case "pink":
+      return "lavender-prayer";
+    case "red":
+    case "orange":
+    case "black":
+      return "ruby-village";
+    default:
+      return "none";
+  }
+}
+
+export function getPremiumSkinForLegacyFlame(value: unknown): PremiumSkinId {
+  switch (String(value || "").toLowerCase()) {
+    case "blue":
+      return "blue-storm";
+    case "green":
+    case "gold":
+      return "midnight-garden";
+    case "purple":
+      return "lavender-prayer";
+    case "red":
+    case "orange":
+    case "black":
+      return "ruby-village";
+    default:
+      return "none";
+  }
+}
+
 export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
   if (typeof document === "undefined") return;
 

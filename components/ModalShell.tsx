@@ -83,14 +83,14 @@ export function ModalShell({
 
   return createPortal(
     <div
-      className={`bb-modal-shell fixed inset-0 ${zIndex} ${backdropColor} flex ${
+      className={`bb-modal-shell bb-skin-modal-backdrop fixed inset-0 ${zIndex} ${backdropColor} flex ${
         scrollable ? "items-start overflow-y-auto py-10" : placement === "bottom" ? "items-end pb-6 sm:pb-8" : "items-center"
       } justify-center p-4 ${closing ? "modal-backdrop-out" : "modal-backdrop-in"}`}
       style={{ zIndex: 9990 }}
       onClick={closeOnBackdrop ? onClose : undefined}
     >
       <div
-        className={`flex w-full justify-center ${closing ? "modal-panel-out" : "modal-panel-in"}`}
+        className={`bb-skin-modal-panel flex w-full justify-center ${closing ? "modal-panel-out" : "modal-panel-in"}`}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

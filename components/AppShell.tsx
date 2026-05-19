@@ -30,6 +30,8 @@ import {
 import {
   PREMIUM_SKIN_STORAGE_KEY,
   applyPremiumSkinToDocument,
+  getPremiumSkinForLegacyFlame,
+  getPremiumSkinForLegacyTheme,
   normalizePremiumSkinId,
 } from "../lib/premiumSkins";
 import { preloadActiveSkinAssets, preloadImage, scheduleIdleWork, syncPerformanceModeToDocument } from "../lib/appPerformance";
@@ -327,14 +329,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         : "none";
     let { data, error } = await supabase
       .from("profile_stats")
-      .select("app_theme, active_premium_skin")
+      .select("app_theme, active_premium_skin, selected_streak_flame")
       .eq("user_id", currentUserId)
       .maybeSingle();
 
     if (error && /active_premium_skin/i.test(error.message || "")) {
       const fallback = await supabase
         .from("profile_stats")
-        .select("app_theme")
+        .select("app_theme, selected_streak_flame")
         .eq("user_id", currentUserId)
         .maybeSingle();
       data = fallback.data as typeof data;
@@ -347,9 +349,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
 
     const savedTheme = normalizeAppThemeId(data?.app_theme);
-    const savedSkin = data && "active_premium_skin" in data && data.active_premium_skin
-      ? normalizePremiumSkinId(data.active_premium_skin)
-      : localSkin;
+    const dbSkin = normalizePremiumSkinId(data && "active_premium_skin" in data ? data.active_premium_skin : null);
+    const legacyMappedSkin =
+      getPremiumSkinForLegacyTheme(data?.app_theme) !== "none"
+        ? getPremiumSkinForLegacyTheme(data?.app_theme)
+        : getPremiumSkinForLegacyFlame(data && "selected_streak_flame" in data ? data.selected_streak_flame : null);
+    const savedSkin = dbSkin !== "none" ? dbSkin : localSkin !== "none" ? localSkin : legacyMappedSkin;
     applyThemeLocally(savedTheme);
     if (typeof window !== "undefined") {
       window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, savedSkin);

@@ -65,6 +65,8 @@ import {
 import {
   PREMIUM_SKIN_STORAGE_KEY,
   applyPremiumSkinToDocument,
+  getPremiumSkinForLegacyFlame,
+  getPremiumSkinForLegacyTheme,
   getPremiumSkin,
   normalizePremiumSkinId,
   type PremiumSkinId,
@@ -3287,20 +3289,20 @@ export default function DashboardPage() {
             ) : null}
 
             {renderPremiumSkinsStoreSection()}
-            {renderStoreSection(
+            {false ? renderStoreSection(
               "🎨",
               "Themes",
               "Choose a style that fits your journey.",
               "500",
               <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">{THEME_STORE_ITEMS.map(renderThemeCard)}</div>,
-            )}
-            {renderStoreSection(
+            ) : null}
+            {false ? renderStoreSection(
               "🔥",
               "30 Day Streak Flames",
               "Match your streak fire to your favorite theme.",
               "250",
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">{STREAK_FLAME_STORE_ITEMS.map(renderFlameCard)}</div>,
-            )}
+            ) : null}
             {renderStoreSection(
               "👥",
               "Bible Buddies",
@@ -3920,12 +3922,18 @@ export default function DashboardPage() {
   }, []);
 
   async function applyPurchasedTheme(themeId: AppThemeId) {
+    const mappedSkinId = getPremiumSkinForLegacyTheme(themeId);
+    if (mappedSkinId !== "none") {
+      await applyPurchasedPremiumSkin(mappedSkinId);
+    }
     if (typeof window !== "undefined") {
       window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
       window.localStorage.setItem("bb:dashboard-theme", themeId === "dark" ? "dark" : "light");
       window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId } }));
     }
-    applyAppThemeToDocument(themeId);
+    if (mappedSkinId === "none") {
+      applyAppThemeToDocument(themeId);
+    }
     if (userId) {
       const { error } = await supabase.from("profile_stats").update({ app_theme: themeId }).eq("user_id", userId);
       if (error) console.warn("[STORE] Theme saved locally, but profile update failed:", error.message);
@@ -3964,6 +3972,17 @@ export default function DashboardPage() {
 
   async function applyPurchasedFlame(flameId: string) {
     const normalizedFlameId = normalizeFlameCosmeticId(flameId);
+    const currentSkinId =
+      activePremiumSkinId !== "none"
+        ? activePremiumSkinId
+        : typeof window !== "undefined"
+          ? normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY))
+          : "none";
+    const mappedSkinId = currentSkinId === "none" ? getPremiumSkinForLegacyFlame(normalizedFlameId) : "none";
+    if (mappedSkinId !== "none") {
+      await applyPurchasedPremiumSkin(mappedSkinId);
+      return;
+    }
     if (typeof window !== "undefined") {
       window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizedFlameId);
       window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: normalizedFlameId } }));
@@ -4386,11 +4405,11 @@ export default function DashboardPage() {
 
         let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
+          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
           .eq("user_id", userId)
           .maybeSingle();
 
-        if (error && /(diamonds_count|selected_streak_flame|selected_buddy_avatar|active_premium_skin|daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(error.message || "")) {
+        if (error && /(diamonds_count|selected_streak_flame|selected_buddy_avatar|active_premium_skin|app_theme|daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(error.message || "")) {
           const fallback = await supabase
             .from("profile_stats")
             .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username, created_at")
@@ -4453,9 +4472,28 @@ export default function DashboardPage() {
           const dbSelectedFlame = normalizeFlameCosmeticId(profileData?.selected_streak_flame);
           const localActiveSkin = normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY));
           const dbActiveSkin = normalizePremiumSkinId(profileData?.active_premium_skin);
-          const skinFlame = getPremiumSkinFlameId(dbActiveSkin !== "none" ? dbActiveSkin : localActiveSkin);
+          const legacyMappedSkin =
+            getPremiumSkinForLegacyTheme(profileData?.app_theme) !== "none"
+              ? getPremiumSkinForLegacyTheme(profileData?.app_theme)
+              : getPremiumSkinForLegacyFlame(profileData?.selected_streak_flame);
+          const resolvedActiveSkin = dbActiveSkin !== "none" ? dbActiveSkin : localActiveSkin !== "none" ? localActiveSkin : legacyMappedSkin;
+          if (resolvedActiveSkin !== "none") {
+            window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, resolvedActiveSkin);
+            setActivePremiumSkinId(resolvedActiveSkin);
+            applyPremiumSkinToDocument(resolvedActiveSkin);
+            preloadActiveSkinAssets(resolvedActiveSkin);
+          }
+          const skinFlame = getPremiumSkinFlameId(resolvedActiveSkin);
           const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
           if (skinFlame) window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinFlame);
+          if (resolvedActiveSkin !== "none" && dbActiveSkin !== resolvedActiveSkin) {
+            void supabase
+              .from("profile_stats")
+              .upsert(
+                { user_id: userId, active_premium_skin: resolvedActiveSkin, updated_at: new Date().toISOString() },
+                { onConflict: "user_id" },
+              );
+          }
           if (skinFlame && dbSelectedFlame !== skinFlame) {
             void supabase
               .from("profile_stats")
