@@ -11,7 +11,7 @@ interface ModalShellProps {
   isOpen: boolean;
   onClose?: () => void;
   children: React.ReactNode;
-  /** Tailwind z-index class, e.g. "z-50", "z-[200]". Default: "z-50" */
+  /** Tailwind z-index class, e.g. "z-50", "z-[200]". ModalShell also pins the overlay to the app top layer. */
   zIndex?: string;
   /** When true: items-start + overflow-y-auto (tall scrollable modals). Default: false */
   scrollable?: boolean;
@@ -86,6 +86,7 @@ export function ModalShell({
       className={`bb-modal-shell fixed inset-0 ${zIndex} ${backdropColor} flex ${
         scrollable ? "items-start overflow-y-auto py-10" : placement === "bottom" ? "items-end pb-6 sm:pb-8" : "items-center"
       } justify-center p-4 ${closing ? "modal-backdrop-out" : "modal-backdrop-in"}`}
+      style={{ zIndex: 9990 }}
       onClick={closeOnBackdrop ? onClose : undefined}
     >
       <div

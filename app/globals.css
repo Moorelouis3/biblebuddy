@@ -1654,6 +1654,14 @@ button:active:not(:disabled),
   animation: bbMarkPulse 1.8s ease-in-out infinite;
 }
 
+.bb-modal-shell {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9990 !important;
+  transform: none !important;
+  isolation: isolate;
+}
+
 @media (max-width: 1023px) {
   html,
   body {
@@ -1670,6 +1678,7 @@ button:active:not(:disabled),
     background-attachment: scroll !important;
     background-position: center top !important;
     background-size: cover !important;
+    min-height: 100dvh;
   }
 
   html[data-bb-skin="blue-storm"] body::before,
@@ -1705,17 +1714,18 @@ button:active:not(:disabled),
     min-height: 64px !important;
     overflow: visible !important;
     pointer-events: auto !important;
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--bb-card) 88%, transparent), color-mix(in srgb, var(--bb-card) 70%, transparent)) !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--bb-accent) 24%, transparent) !important;
-    box-shadow: 0 12px 32px rgba(0, 8, 22, 0.22) !important;
-    backdrop-filter: blur(18px);
+    background: transparent !important;
+    background-color: transparent !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
   }
 
   html[data-bb-skin="blue-storm"] header > div,
   html[data-bb-skin="midnight-garden"] header > div,
   html[data-bb-skin="lavender-prayer"] header > div,
   html[data-bb-skin="ruby-village"] header > div {
+    background: transparent !important;
+    background-color: transparent !important;
     height: auto !important;
     min-height: 64px !important;
     padding-top: 12px !important;
