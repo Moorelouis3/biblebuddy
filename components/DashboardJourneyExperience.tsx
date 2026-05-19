@@ -612,23 +612,8 @@ function buildPreloadedNextChapterTasks({
       kind: "trivia",
       title: `Play Trivia for ${chapterLabel}`,
       pointsLabel: TASK_REWARD_LABELS.trivia,
-      timeEstimateLabel: "4 min",
+      timeEstimateLabel: "3 min",
       href: `/bible-trivia/${bookKey}/${chapter}?from=louis-daily-task`,
-      done: false,
-      disabled: true,
-      devotionalId,
-      devotionalTitle,
-      devotionalDayNumber: dayNumber,
-      book,
-      chapter,
-      chapterLabel,
-    },
-    {
-      kind: "scrambled",
-      title: `Play Scrambled for ${chapterLabel}`,
-      pointsLabel: TASK_REWARD_LABELS.scrambled,
-      timeEstimateLabel: "4 min",
-      href: `/bible-study-games/scrambled/${bookKey}/${chapter}?from=louis-daily-task`,
       done: false,
       disabled: true,
       devotionalId,
@@ -985,8 +970,7 @@ function getTaskNumberLabel(task: TaskState | null) {
   if (task.kind === "reading") return "task 2";
   if (task.kind === "notes") return "task 3";
   if (task.kind === "trivia") return "task 4";
-  if (task.kind === "scrambled") return "task 5";
-  return "task 6";
+  return "task 5";
 }
 
 function getChapterFocusSummary(task: TaskState | null) {
@@ -1070,10 +1054,6 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
 
   if (task.kind === "trivia") {
     return `You have the reading and notes down. Play trivia for ${chapterLabel} and see what you remember.`;
-  }
-
-  if (task.kind === "scrambled") {
-    return `You are almost done. Play Scrambled for ${chapterLabel} and let the chapter words stick.`;
   }
 
   return `One more task to go. Share your reflection for ${chapterLabel} and complete this chapter study.`;
@@ -2001,7 +1981,6 @@ export default function DashboardJourneyExperience({
     { emoji: "✝️", title: "Read Chapter", subtitleWidth: "w-44" },
     { emoji: "📝", title: "Review Notes", subtitleWidth: "w-56" },
     { emoji: "🧠", title: "Play Trivia", subtitleWidth: "w-48" },
-    { emoji: "🔤", title: "Play Scrambled", subtitleWidth: "w-52" },
     { emoji: "✍️", title: "Answer Reflection", subtitleWidth: "w-40" },
   ];
   const devotionalTask = visibleTasks.find((task) => task.kind === "devotional") ?? null;
@@ -2829,6 +2808,22 @@ export default function DashboardJourneyExperience({
     snapToPage(index);
   }
 
+  useEffect(() => {
+    function handleShowShareTab() {
+      const shareIndex = dashboardPageKeys.indexOf("share");
+      if (shareIndex < 0) return;
+      snapToPage(shareIndex);
+      window.setTimeout(() => {
+        document
+          .querySelector('[data-dashboard-nav-key="share"]')
+          ?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }, 80);
+    }
+
+    window.addEventListener("bb:dashboard-show-share-tab", handleShowShareTab);
+    return () => window.removeEventListener("bb:dashboard-show-share-tab", handleShowShareTab);
+  }, []);
+
   async function switchCurrentStudyChapter(dayNumber: number) {
     if (!userId || !currentDevotionalId || switchingStudyChapter) return;
     const currentDayNumber = currentDevotionalTask?.devotionalDayNumber ?? 1;
@@ -3051,7 +3046,7 @@ export default function DashboardJourneyExperience({
   const getFeaturePageBullets = (key: DashboardPageKey) => {
     switch (key) {
       case "bible_studies":
-        return ["Follow guided chapter studies", "Keep moving through your Bible Study Journey", "Intro, reading, notes, trivia, Scrambled, and reflection"];
+        return ["Follow guided chapter studies", "Keep moving through your Bible Study Journey", "Intro, reading, notes, trivia, and reflection"];
       case "group":
         return ["Join Bible Buddy conversations", "Share reflections from your study", "Encourage other Bible Buddies"];
       case "tv":
@@ -3870,7 +3865,7 @@ export default function DashboardJourneyExperience({
               <span className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Guided</span>
               <span className="mt-1 block text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Study Journey</span>
               <span className="mt-2 block text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                Start from Genesis 1, The Creation of the World, and work through the Bible with story-based explanations, daily tasks, notes, trivia, games, and reflection.
+                Start from Genesis 1, The Creation of the World, and work through the Bible with story-based explanations, daily tasks, notes, trivia, and reflection.
               </span>
             </button>
 
@@ -3903,7 +3898,7 @@ export default function DashboardJourneyExperience({
   const renderCurrentStudyHeader = () => {
     return (
       <div className="mx-auto w-full max-w-xl px-1">
-        <div className="overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2.5 shadow-sm transition">
+        <div className="bb-skin-glow-card overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2.5 shadow-sm transition">
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -4379,7 +4374,7 @@ export default function DashboardJourneyExperience({
             {!homePanelOverride && !shouldShowCompletionPanel ? renderCurrentStudyHeader() : null}
             {!homePanelOverride && !shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard ? (
             <div
-              className="rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition"
+              className="bb-skin-glow-card rounded-[24px] border border-[#dbe7f4] bg-white p-4 shadow-[0_12px_34px_rgba(38,63,99,0.08)] transition"
             >
               <div className="mb-3 flex items-start justify-between gap-3">
                 <div>
@@ -4477,7 +4472,7 @@ export default function DashboardJourneyExperience({
             </div>
             ) : null}
             {!homePanelOverride && !shouldShowCompletionPanel && deepStudyNode ? (
-              <div className="dashboard-inline-deep-study">{deepStudyNode}</div>
+              <div className="dashboard-inline-deep-study mb-3 sm:mb-4">{deepStudyNode}</div>
             ) : null}
             {false ? (
             <div
@@ -4847,7 +4842,7 @@ export default function DashboardJourneyExperience({
                         All tasks for {activeChapterLabel} are done.
                       </h3>
                       <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
-                        You can always review this chapter below in Completed Study Tasks. Tap any completed task to reopen the intro, Scripture, notes, trivia, Scrambled, or reflection.
+                        You can always review this chapter below in Completed Study Tasks. Tap any completed task to reopen the intro, Scripture, notes, trivia, or reflection.
                       </p>
                     </div>
                   </div>
@@ -5530,9 +5525,11 @@ export default function DashboardJourneyExperience({
         zIndex="z-[80]"
       >
         {referralRewardModal ? (
-          <div className="w-full max-w-sm overflow-hidden rounded-[28px] bg-white text-center shadow-2xl">
-            <div className="bg-[linear-gradient(135deg,#eefdf5,#ffffff_58%,#fff2c7)] px-6 pb-6 pt-7">
-              <div className="mx-auto grid h-24 w-24 place-items-center overflow-hidden rounded-full border-4 border-white bg-[#edf7ff] shadow-lg">
+          <div className="w-full max-w-sm overflow-hidden rounded-[28px] border border-[rgba(103,204,255,0.38)] bg-[rgba(5,18,34,0.94)] text-center text-[#f5fbff] shadow-[0_24px_70px_rgba(0,0,0,0.56),0_0_46px_rgba(93,214,255,0.18)] backdrop-blur-xl">
+            <div className="relative overflow-hidden px-6 pb-6 pt-7">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(93,214,255,0.28),transparent_42%),linear-gradient(135deg,rgba(8,42,76,0.94),rgba(3,15,30,0.96)_56%,rgba(5,32,57,0.94))]" />
+              <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,221,255,0.9),transparent)]" />
+              <div className="relative mx-auto grid h-24 w-24 place-items-center overflow-hidden rounded-full border-4 border-[rgba(199,232,255,0.78)] bg-[rgba(31,84,132,0.38)] shadow-[0_0_34px_rgba(93,214,255,0.28)]">
                 {referralRewardModal.profile_image_url ? (
                   <img
                     src={referralRewardModal.profile_image_url}
@@ -5543,22 +5540,22 @@ export default function DashboardJourneyExperience({
                   <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={96} />
                 )}
               </div>
-              <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Buddy Rewards</p>
-              <h2 className="mt-1 text-2xl font-black leading-tight text-gray-950">
+              <p className="relative mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#5dd6ff]">Buddy Rewards</p>
+              <h2 className="relative mt-1 text-2xl font-black leading-tight text-white">
                 {getReferralDisplayName(referralRewardModal)} signed up!
               </h2>
-              <p className="mt-3 text-sm font-bold leading-6 text-gray-600">
+              <p className="relative mt-3 text-sm font-bold leading-6 text-[#c7e8ff]">
                 You were credited 250 XP points and 250 diamonds for sharing Bible Buddy.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-2 px-6 py-5">
-              <div className="rounded-2xl bg-[#f3f7ff] px-3 py-4">
-                <p className="text-2xl font-black text-[#2f7fe8]">+250</p>
-                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-gray-500">XP points</p>
+            <div className="grid grid-cols-2 gap-2 bg-[rgba(2,10,22,0.44)] px-6 py-5">
+              <div className="rounded-2xl border border-[rgba(103,204,255,0.22)] bg-[rgba(199,232,255,0.09)] px-3 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                <p className="text-2xl font-black text-[#5dd6ff]">+250</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#91b9d4]">XP points</p>
               </div>
-              <div className="rounded-2xl bg-[#fff7d7] px-3 py-4">
-                <p className="text-2xl font-black text-[#b7791f]">+250</p>
-                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-gray-500">diamonds</p>
+              <div className="rounded-2xl border border-[rgba(93,214,255,0.2)] bg-[rgba(47,154,255,0.12)] px-3 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                <p className="text-2xl font-black text-[#9ee7ff]">+250</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#91b9d4]">diamonds</p>
               </div>
               <button
                 type="button"
@@ -5566,7 +5563,7 @@ export default function DashboardJourneyExperience({
                   rememberReferralRewardSeen(referralRewardModal);
                   setReferralRewardModal(null);
                 }}
-                className="col-span-2 mt-2 rounded-full bg-[#111827] px-4 py-3 text-sm font-black text-white transition hover:bg-[#263246]"
+                className="col-span-2 mt-2 rounded-full bg-[#075aa8] px-4 py-3 text-sm font-black text-white shadow-[0_14px_34px_rgba(7,90,168,0.36)] transition hover:bg-[#0b6fc8]"
               >
                 Awesome
               </button>
@@ -5696,4 +5693,3 @@ export default function DashboardJourneyExperience({
     </div>
   );
 }
-

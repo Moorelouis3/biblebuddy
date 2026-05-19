@@ -467,7 +467,7 @@ Core app areas that are real in Bible Buddy:
   These are meant to help people understand the chapter, not just finish it.
 
 - Bible Studies
-  These are guided chapter studies with Bible reading, intro, notes, trivia, Scrambled, and reflection.
+  These are guided chapter studies with Bible reading, intro, notes, trivia, and reflection.
   If someone is in a Bible Study, help them keep going with the next unfinished chapter task.
 
 - Bible Reading Plans

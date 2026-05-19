@@ -7,13 +7,11 @@ import BibleReadingModal from "@/components/BibleReadingModal";
 import ChapterNotesMarkdown from "@/components/ChapterNotesMarkdown";
 import CommentSection from "@/components/comments/CommentSection";
 import { ModalShell } from "@/components/ModalShell";
-import ScrambledGamePlayer from "@/components/ScrambledGamePlayer";
 import TriviaGamePlayer from "@/components/TriviaGamePlayer";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
 import { getProverbsChapterNotesFallback, withNotesTimeout } from "@/lib/proverbsChapterNotesFallback";
 import { supabase } from "@/lib/supabaseClient";
-import { getScrambledBook, getScrambledChapter } from "@/lib/scrambledGameData";
 import { getTriviaBook, getTriviaChapter } from "@/lib/triviaGameData";
 import { triggerPoints } from "@/components/PointsPop";
 import { TASK_XP } from "@/lib/progressionRewards";
@@ -51,7 +49,6 @@ type Breakdown = {
   reading: Finisher[];
   notes: Finisher[];
   trivia: Finisher[];
-  scrambled: Finisher[];
   reflection: Finisher[];
 };
 
@@ -74,7 +71,6 @@ type ChapterTaskTimeEstimates = {
   reading: TaskTimeEstimate;
   notes: TaskTimeEstimate;
   trivia: TaskTimeEstimate;
-  scrambled: TaskTimeEstimate;
   reflection: TaskTimeEstimate;
 };
 
@@ -82,8 +78,7 @@ const DEFAULT_TASK_ESTIMATES: ChapterTaskTimeEstimates = {
   intro: { label: "3 min", detail: "Short intro read" },
   reading: { label: "4 min", detail: "Chapter reading" },
   notes: { label: "10 min", detail: "Study notes" },
-  trivia: { label: "4 min", detail: "Quick quiz round" },
-  scrambled: { label: "4 min", detail: "Word puzzle round" },
+  trivia: { label: "3 min", detail: "Quick quiz round" },
   reflection: { label: "3 min", detail: "Reflection response" },
 };
 
@@ -257,7 +252,6 @@ export default function ProverbsStudyDayPage() {
   const [progress, setProgress] = useState<Progress | null>(null);
   const [notesDone, setNotesDone] = useState(false);
   const [triviaDone, setTriviaDone] = useState(false);
-  const [scrambledDone, setScrambledDone] = useState(false);
   const [reflectionDone, setReflectionDone] = useState(false);
   const [loading, setLoading] = useState(true);
   const [openTask, setOpenTask] = useState<number | null>(null);
@@ -266,9 +260,8 @@ export default function ProverbsStudyDayPage() {
   const [notesText, setNotesText] = useState("");
   const [notesLoading, setNotesLoading] = useState(false);
   const [showTrivia, setShowTrivia] = useState(false);
-  const [showScrambled, setShowScrambled] = useState(false);
   const [finishers, setFinishers] = useState<Finisher[]>([]);
-  const [breakdown, setBreakdown] = useState<Breakdown>({ intro: [], reading: [], notes: [], trivia: [], scrambled: [], reflection: [] });
+  const [breakdown, setBreakdown] = useState<Breakdown>({ intro: [], reading: [], notes: [], trivia: [], reflection: [] });
   const [showBreakdown, setShowBreakdown] = useState(false);
   const [taskEstimates, setTaskEstimates] = useState<ChapterTaskTimeEstimates>(DEFAULT_TASK_ESTIMATES);
 
@@ -280,8 +273,6 @@ export default function ProverbsStudyDayPage() {
   const bookKey = day ? normalizeBookKey(day.bible_reading_book) : "";
   const triviaBook = useMemo(() => (bookKey ? getTriviaBook(bookKey) : null), [bookKey]);
   const triviaChapter = useMemo(() => (day && bookKey ? getTriviaChapter(bookKey, day.bible_reading_chapter) : null), [bookKey, day]);
-  const scrambledBook = useMemo(() => (bookKey ? getScrambledBook(bookKey) : null), [bookKey]);
-  const scrambledChapter = useMemo(() => (day && bookKey ? getScrambledChapter(bookKey, day.bible_reading_chapter) : null), [bookKey, day]);
 
   useEffect(() => {
     let cancelled = false;
@@ -294,7 +285,6 @@ export default function ProverbsStudyDayPage() {
 
       const introMinutes = estimateMinutesFromWords(countWords(day.devotional_text), 180, 2, 8);
       const triviaQuestionCount = getQuestionCount(triviaChapter);
-      const scrambledQuestionCount = getQuestionCount(scrambledChapter);
 
       let bibleWords = 0;
       let notesWords = 0;
@@ -335,8 +325,7 @@ export default function ProverbsStudyDayPage() {
       const notesMinutes = devotional?.title === "The Testing of Joseph"
         ? Math.max(20, notesMinutesBase)
         : notesMinutesBase;
-      const triviaMinutes = Math.max(3, Math.ceil((triviaQuestionCount * 45) / 60));
-      const scrambledMinutes = Math.max(3, Math.ceil((scrambledQuestionCount * 50) / 60));
+      const triviaMinutes = 3;
 
       if (!cancelled) {
         setTaskEstimates({
@@ -344,7 +333,6 @@ export default function ProverbsStudyDayPage() {
           reading: { label: formatEstimate(readingMinutes), detail: `${chapterLabel} reading` },
           notes: { label: formatEstimate(notesMinutes), detail: "Study notes" },
           trivia: { label: formatEstimate(triviaMinutes), detail: `${triviaQuestionCount} questions` },
-          scrambled: { label: formatEstimate(scrambledMinutes), detail: `${scrambledQuestionCount} words` },
           reflection: { label: "3 min", detail: "Write your response" },
         });
       }
@@ -355,7 +343,7 @@ export default function ProverbsStudyDayPage() {
     return () => {
       cancelled = true;
     };
-  }, [chapterLabel, day, devotional?.title, scrambledChapter, triviaChapter]);
+  }, [chapterLabel, day, devotional?.title, triviaChapter]);
 
   async function loadAll() {
     setLoading(true);
@@ -403,7 +391,6 @@ export default function ProverbsStudyDayPage() {
           ACTION_TYPE.chapter_notes_reviewed,
           ACTION_TYPE.chapter_notes_viewed,
           ACTION_TYPE.trivia_chapter_completed,
-          ACTION_TYPE.scrambled_chapter_completed,
         ]),
       supabase
         .from("article_comments")
@@ -418,7 +405,6 @@ export default function ProverbsStudyDayPage() {
     setProgress((progressRes.data as Progress | null) ?? { is_completed: false, reading_completed: false, completed_at: null });
     setNotesDone(actions.some((row) => (row.action_type === ACTION_TYPE.chapter_notes_reviewed || row.action_type === ACTION_TYPE.chapter_notes_viewed) && row.action_label === noteLabel));
     setTriviaDone(actions.some((row) => row.action_type === ACTION_TYPE.trivia_chapter_completed && String(row.action_label || "").toLowerCase().startsWith(label.toLowerCase())));
-    setScrambledDone(actions.some((row) => row.action_type === ACTION_TYPE.scrambled_chapter_completed && String(row.action_label || "").toLowerCase().startsWith(label.toLowerCase())));
     setReflectionDone(Boolean(commentsRes.data?.length));
 
     await loadFinishers(dayRow, devotionalRow);
@@ -439,7 +425,6 @@ export default function ProverbsStudyDayPage() {
       readingActionsRes,
       notesActionsRes,
       triviaActionsRes,
-      scrambledActionsRes,
       commentsRes,
     ] = await Promise.all([
       supabase
@@ -488,13 +473,6 @@ export default function ProverbsStudyDayPage() {
         .order("created_at", { ascending: false })
         .limit(1000),
       supabase
-        .from("master_actions")
-        .select("user_id, action_type, action_label, created_at")
-        .eq("action_type", ACTION_TYPE.scrambled_chapter_completed)
-        .ilike("action_label", `${label}%`)
-        .order("created_at", { ascending: false })
-        .limit(1000),
-      supabase
         .from("article_comments")
         .select("user_id, created_at")
         .eq("article_slug", reflectionSlug)
@@ -521,9 +499,6 @@ export default function ProverbsStudyDayPage() {
     if (triviaActionsRes.error) {
       console.error("[PROVERBS_FINISHERS] Could not load trivia finishers:", triviaActionsRes.error);
     }
-    if (scrambledActionsRes.error) {
-      console.error("[PROVERBS_FINISHERS] Could not load Scrambled finishers:", scrambledActionsRes.error);
-    }
     if (commentsRes.error) {
       console.error("[PROVERBS_FINISHERS] Could not load reflection finishers:", commentsRes.error);
     }
@@ -532,7 +507,6 @@ export default function ProverbsStudyDayPage() {
     const readingDates = new Map<string, string | null>();
     const notesDates = new Map<string, string | null>();
     const triviaDates = new Map<string, string | null>();
-    const scrambledDates = new Map<string, string | null>();
     const reflectionDates = new Map<string, string | null>();
 
     const introIds = new Set(
@@ -570,7 +544,6 @@ export default function ProverbsStudyDayPage() {
 
     const noteIds = new Set<string>();
     const triviaIds = new Set<string>();
-    const scrambledIds = new Set<string>();
 
     (notesActionsRes.data || []).forEach((row: any) => {
       if (!row.user_id) return;
@@ -584,12 +557,6 @@ export default function ProverbsStudyDayPage() {
       if (!triviaDates.has(row.user_id)) triviaDates.set(row.user_id, row.created_at || null);
     });
 
-    (scrambledActionsRes.data || []).forEach((row: any) => {
-      if (!row.user_id) return;
-      scrambledIds.add(row.user_id);
-      if (!scrambledDates.has(row.user_id)) scrambledDates.set(row.user_id, row.created_at || null);
-    });
-
     const reflectionIds = new Set(
       (commentsRes.data || []).filter((row: any) => Boolean(row.user_id)).map((row: any) => {
         if (!reflectionDates.has(row.user_id)) reflectionDates.set(row.user_id, row.created_at || null);
@@ -600,7 +567,6 @@ export default function ProverbsStudyDayPage() {
     const inferDate = (id: string) =>
       notesDates.get(id) ||
       triviaDates.get(id) ||
-      scrambledDates.get(id) ||
       reflectionDates.get(id) ||
       readingDates.get(id) ||
       null;
@@ -608,14 +574,14 @@ export default function ProverbsStudyDayPage() {
     // The chapter tasks are ordered. If a buddy has completed a later section,
     // they necessarily passed through the intro and reading even if older/private
     // progress rows are not visible to this viewer.
-    const downstreamIds = new Set<string>([...readingIds, ...noteIds, ...triviaIds, ...scrambledIds, ...reflectionIds]);
+    const downstreamIds = new Set<string>([...readingIds, ...noteIds, ...triviaIds, ...reflectionIds]);
     downstreamIds.forEach((id) => {
       if (!introIds.has(id)) {
         introIds.add(id);
         introDates.set(id, inferDate(id));
       }
     });
-    const afterReadingIds = new Set<string>([...noteIds, ...triviaIds, ...scrambledIds, ...reflectionIds]);
+    const afterReadingIds = new Set<string>([...noteIds, ...triviaIds, ...reflectionIds]);
     afterReadingIds.forEach((id) => {
       if (!readingIds.has(id)) {
         readingIds.add(id);
@@ -623,10 +589,10 @@ export default function ProverbsStudyDayPage() {
       }
     });
 
-    const allUserIds = Array.from(new Set([...introIds, ...readingIds, ...noteIds, ...triviaIds, ...scrambledIds, ...reflectionIds].filter(Boolean)));
+    const allUserIds = Array.from(new Set([...introIds, ...readingIds, ...noteIds, ...triviaIds, ...reflectionIds].filter(Boolean)));
     if (allUserIds.length === 0) {
       setFinishers([]);
-      setBreakdown({ intro: [], reading: [], notes: [], trivia: [], scrambled: [], reflection: [] });
+      setBreakdown({ intro: [], reading: [], notes: [], trivia: [], reflection: [] });
       return;
     }
 
@@ -653,7 +619,7 @@ export default function ProverbsStudyDayPage() {
       Array.from(ids).map((id) => resolve(id, dates.get(id)));
 
     const fullFinishers = allUserIds
-      .filter((id) => introIds.has(id) && readingIds.has(id) && noteIds.has(id) && triviaIds.has(id) && scrambledIds.has(id) && reflectionIds.has(id))
+      .filter((id) => introIds.has(id) && readingIds.has(id) && noteIds.has(id) && triviaIds.has(id) && reflectionIds.has(id))
       .map((id) => resolve(id));
 
     setFinishers(fullFinishers);
@@ -662,7 +628,6 @@ export default function ProverbsStudyDayPage() {
       reading: make(readingIds, readingDates),
       notes: make(noteIds, notesDates),
       trivia: make(triviaIds, triviaDates),
-      scrambled: make(scrambledIds, scrambledDates),
       reflection: make(reflectionIds, reflectionDates),
     });
   }
@@ -838,8 +803,7 @@ export default function ProverbsStudyDayPage() {
     ["Task 2 Reading", breakdown.reading, "Reading completed"],
     ["Task 3 Notes", breakdown.notes, "Notes completed"],
     ["Task 4 Trivia", breakdown.trivia, "Trivia completed"],
-    ["Task 5 Scrambled", breakdown.scrambled, "Scrambled completed"],
-    ["Task 6 Reflection", breakdown.reflection, "Reflection posted"],
+    ["Task 5 Reflection", breakdown.reflection, "Reflection posted"],
   ];
 
   return (
@@ -858,10 +822,10 @@ export default function ProverbsStudyDayPage() {
         <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
           <p className="text-sm font-bold text-gray-950">Chapter Finishers</p>
           <p className="mt-2 text-lg font-black text-gray-950">
-            {finishers.length} {finishers.length === 1 ? "buddy has" : "buddies have"} finished all 6 tasks for {chapterLabel}
+            {finishers.length} {finishers.length === 1 ? "buddy has" : "buddies have"} finished all 5 tasks for {chapterLabel}
           </p>
           <p className="mt-1 text-sm text-gray-600">
-            Intro, reading, notes, trivia, Scrambled, and reflection all completed.
+            Intro, reading, notes, trivia, and reflection all completed.
           </p>
           {finishers.length === 0 ? (
             <p className="mt-5 text-sm leading-6 text-gray-600">
@@ -1021,16 +985,7 @@ export default function ProverbsStudyDayPage() {
             </div>
           </CollapsibleTask>
 
-          <CollapsibleTask taskNumber={5} title="Scrambled" estimate={taskEstimates.scrambled} done={scrambledDone} open={openTask === 5} onToggle={() => setOpenTask(openTask === 5 ? null : 5)}>
-            <div className="text-center">
-              <p className="mx-auto mb-4 max-w-md text-sm leading-6 text-gray-600">Slow down with key words from {chapterLabel} and lock them into memory.</p>
-              <button type="button" onClick={() => setShowScrambled(true)} disabled={!scrambledBook || !scrambledChapter} className="rounded-xl px-6 py-3 text-sm font-black text-slate-950 shadow-sm disabled:opacity-60" style={{ backgroundColor: scrambledBook && scrambledChapter ? TASK_BLUE : "#cbd5e1" }}>
-                {scrambledDone ? "Play Scrambled Again" : "Play Scrambled"}
-              </button>
-            </div>
-          </CollapsibleTask>
-
-          <CollapsibleTask taskNumber={6} title="Answer The Reflection Question" estimate={taskEstimates.reflection} done={reflectionDone} open={openTask === 6} onToggle={() => setOpenTask(openTask === 6 ? null : 6)}>
+          <CollapsibleTask taskNumber={5} title="Answer The Reflection Question" estimate={taskEstimates.reflection} done={reflectionDone} open={openTask === 5} onToggle={() => setOpenTask(openTask === 5 ? null : 5)}>
             <p className="mb-4 text-xl font-black leading-snug text-gray-950">{day.reflection_question}</p>
             <CommentSection
               articleSlug={chapterSlug(day.bible_reading_book, day.bible_reading_chapter)}
@@ -1092,22 +1047,6 @@ export default function ProverbsStudyDayPage() {
         </ModalShell>
       ) : null}
 
-      {showScrambled && scrambledBook && scrambledChapter ? (
-        <ModalShell isOpen={showScrambled} onClose={() => { setShowScrambled(false); void loadAll(); }} scrollable backdropColor="bg-black/55">
-          <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-            <ScrambledGamePlayer
-              bookName={scrambledBook.name}
-              bookSlug={scrambledBook.slug}
-              chapter={scrambledChapter}
-              onComplete={() => {
-                setScrambledDone(true);
-                window.setTimeout(() => void loadFinishers(day), 500);
-              }}
-              onClose={() => { setShowScrambled(false); void loadAll(); }}
-            />
-          </div>
-        </ModalShell>
-      ) : null}
     </div>
   );
 }

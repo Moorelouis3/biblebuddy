@@ -11,7 +11,6 @@ import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
 import { syncCurrentStreakToProfileStats } from "../lib/profileStats";
 import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
-import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { LouisAvatar } from "./LouisAvatar";
 import { SELECTED_BUDDY_STORAGE_KEY, getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "../lib/buddyAvatars";
@@ -53,9 +52,6 @@ const NewMessageAlert = dynamic(() => import("./NewMessageAlert").then((mod) => 
   ssr: false,
 });
 const OnboardingModal = dynamic(() => import("./OnboardingModal").then((mod) => mod.OnboardingModal), {
-  ssr: false,
-});
-const GlobalUpdateModal = dynamic(() => import("./GlobalUpdateModal").then((mod) => mod.GlobalUpdateModal), {
   ssr: false,
 });
 const DailyRecommendationModal = dynamic(() => import("./DailyRecommendationModal"), {
@@ -322,10 +318,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     applyThemeLocally(theme.id);
     void saveThemeToProfile(theme.id);
   }
-
-  // Global update modal state
-  const [showUpdateModal, setShowUpdateModal] = useState(false);
-  const [updateModalChecked, setUpdateModalChecked] = useState(false);
 
   // Daily recommendation modal state
   const [showDailyRecommendation, setShowDailyRecommendation] = useState(false);
@@ -741,54 +733,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
   }
 
-  async function checkUpdateStatus(currentUserId: string) {
-    if (updateModalChecked) return;
-    try {
-      const { data } = await supabase
-        .from("profile_stats")
-        .select("onboarding_completed, last_seen_update_version")
-        .eq("user_id", currentUserId)
-        .maybeSingle();
-
-      // Only show to users who have finished onboarding
-      if (data?.onboarding_completed !== true) {
-        setUpdateModalChecked(true);
-        return;
-      }
-
-      if (data?.last_seen_update_version !== CURRENT_UPDATE_VERSION) {
-        setShowUpdateModal(true);
-      }
-    } catch (_err) {
-      console.warn("[UPDATE MODAL] Check skipped due to transient issue.");
-    }
-    setUpdateModalChecked(true);
-  }
-
-  async function handleDismissUpdateModal() {
-    setShowUpdateModal(false);
-    if (userId) {
-      await supabase
-        .from("profile_stats")
-        .update({ last_seen_update_version: CURRENT_UPDATE_VERSION })
-        .eq("user_id", userId);
-    }
-  }
-
   async function checkDailyRecommendation(currentUserId: string) {
     try {
       const today = new Date().toISOString().slice(0, 10);
 
-      // Gate: onboarding complete + update seen + not shown today
+      // Gate: onboarding complete + not shown today
       const { data } = await supabase
         .from("profile_stats")
-        .select("onboarding_completed, last_seen_update_version, daily_recommendation_shown, level_1_skipped_date")
+        .select("onboarding_completed, daily_recommendation_shown, level_1_skipped_date")
         .eq("user_id", currentUserId)
         .maybeSingle();
 
       if (!data) return;
       if (data.onboarding_completed !== true) return;
-      if (data.last_seen_update_version !== CURRENT_UPDATE_VERSION) return;
       if (data.daily_recommendation_shown === today) return;
 
       // Mark as shown for today immediately
@@ -1423,7 +1380,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setUsername(extractedUsername);
         void applyPendingInviteLink(session.user.id);
         void checkOnboardingStatus(session.user.id);
-        void checkUpdateStatus(session.user.id);
         if (DAILY_RECOMMENDATIONS_ENABLED) {
           void checkDailyRecommendation(session.user.id);
         }
@@ -1482,7 +1438,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setUsername(extractedUsername);
           void applyPendingInviteLink(session.user.id);
           void checkOnboardingStatus(session.user.id);
-          void checkUpdateStatus(session.user.id);
           void loadHeaderDashboardStats(session.user.id);
           void loadSavedTheme(session.user.id);
           void fetchNotifications(session.user.id);
@@ -2179,16 +2134,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         />
       )}
 
-      {/* GLOBAL UPDATE MODAL */}
-      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && !showEmailConfirmationGate && (
-        <GlobalUpdateModal
-          isOpen={showUpdateModal}
-          onDismiss={handleDismissUpdateModal}
-        />
-      )}
-
       {/* DAILY RECOMMENDATION MODAL */}
-      {activeAppShellPopup?.popup_id === "daily:bible-buddy-recommendation" && isLoggedIn && userId && !showUpdateModal && dailyRecommendation && (
+      {activeAppShellPopup?.popup_id === "daily:bible-buddy-recommendation" && isLoggedIn && userId && dailyRecommendation && (
         <DailyRecommendationModal
           greeting={dailyRecommendation.greeting}
           contextLine={dailyRecommendation.contextLine}
@@ -2523,8 +2470,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   </button>
 
                   {isNotifOpen && (
-                    <div className="fixed top-16 left-4 right-4 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
-                      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+                    <div className="bb-skin-notification-panel fixed top-16 left-4 right-4 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
+                      <div className="bb-skin-notification-header flex items-center justify-between px-4 py-3 border-b border-gray-100">
                         <span className="font-semibold text-sm text-gray-900">Notifications</span>
                         {visibleUnreadNotificationCount > 0 && (
                           <button onClick={markAllRead} className="text-xs text-blue-600 hover:text-blue-700 font-medium">
@@ -2534,7 +2481,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       </div>
                       {pushSupported && showPushPrompt && (
                         <div
-                          className={`px-4 py-3 border-b border-gray-100 bg-[#f8fbf8] transition-all duration-200 ${
+                          className={`bb-skin-notification-push px-4 py-3 border-b border-gray-100 bg-[#f8fbf8] transition-all duration-200 ${
                             pushPromptClosing ? "opacity-0 -translate-y-1" : "opacity-100 translate-y-0"
                           }`}
                         >
@@ -2552,7 +2499,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 type="button"
                                 onClick={handleEnablePushAlerts}
                                 disabled={pushLoading}
-                                className="px-3 py-2 rounded-lg text-xs font-semibold text-white transition disabled:opacity-60"
+                                className="bb-skin-notification-primary px-3 py-2 rounded-lg text-xs font-semibold text-white transition disabled:opacity-60"
                                 style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
                               >
                                 {pushLoading ? "Saving..." : "Enable"}
@@ -2574,9 +2521,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           {pushError && <p className="text-xs text-red-500 mt-2">{pushError}</p>}
                         </div>
                       )}
-                      <div className="max-h-72 overflow-y-auto">
+                      <div className="bb-skin-notification-list max-h-72 overflow-y-auto">
                         {notifications.length === 0 ? (
-                          <div className="flex flex-col items-center justify-center px-5 py-7 text-center">
+                          <div className="bb-skin-notification-empty flex flex-col items-center justify-center px-5 py-7 text-center">
                             <div className="rounded-full bg-[#f4f8ff] p-2 shadow-sm">
                               <LouisAvatar mood="wave" size={44} />
                             </div>
@@ -2606,7 +2553,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               return (
                                 <div
                                   key={notif.id}
-                                  className={`px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
+                                  className={`bb-skin-notification-item px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
                                 >
                                   <p className="text-sm text-gray-900 font-medium">{renderNotificationCopy(notif)}</p>
                                   <p className="text-xs text-gray-400 mt-0.5 mb-2">{timeStr}</p>
@@ -2615,7 +2562,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                       type="button"
                                       disabled={isLoading}
                                       onClick={() => handleBuddyRequestAccept(notif)}
-                                      className="flex-1 py-1.5 rounded-lg text-xs font-semibold text-white transition disabled:opacity-60"
+                                      className="bb-skin-notification-primary flex-1 py-1.5 rounded-lg text-xs font-semibold text-white transition disabled:opacity-60"
                                       style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
                                     >
                                       {isLoading ? "..." : "Accept"}
@@ -2638,7 +2585,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               return (
                                 <div
                                   key={notif.id}
-                                  className={`px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
+                                  className={`bb-skin-notification-item px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
                                 >
                                   <p className="text-sm text-gray-900 font-medium">{renderNotificationCopy(notif)}</p>
                                   <p className="text-xs text-gray-400 mt-0.5">{timeStr}</p>
@@ -2652,7 +2599,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 key={notif.id}
                                 type="button"
                                 onClick={() => handleNotifClick(notif)}
-                                className={`w-full text-left px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors ${!notif.is_read ? "bg-blue-50" : ""}`}
+                                className={`bb-skin-notification-item w-full text-left px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors ${!notif.is_read ? "bg-blue-50" : ""}`}
                               >
                                 <p className="text-sm text-gray-900 font-medium">{renderNotificationCopy(notif)}</p>
                                 {notifSourceLabel && <p className="text-xs text-blue-600 mt-0.5">{notifSourceLabel}</p>}

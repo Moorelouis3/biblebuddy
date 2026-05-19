@@ -1194,7 +1194,7 @@ export function OnboardingModal({
                 Follow a guided path through the Bible one study at a time.
               </p>
               <p className="mt-3 text-sm font-semibold leading-6 text-[#556071]">
-                Start in Genesis and progress through Scripture with chapter intros, Bible reading, deep notes, trivia, Scrambled, reflection, and community discussion.
+                Start in Genesis and progress through Scripture with chapter intros, Bible reading, deep notes, trivia, reflection, and community discussion.
               </p>
             </div>
           </div>

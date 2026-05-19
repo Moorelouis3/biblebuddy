@@ -1,6 +1,6 @@
 import type { AppThemeId } from "./appThemes";
 import type { FlameCosmeticId } from "./flameCosmetics";
-import { BLUE_STORM_SKIN, type PremiumSkinId } from "./premiumSkins";
+import { BLUE_STORM_SKIN, MIDNIGHT_GARDEN_SKIN, type PremiumSkinId } from "./premiumSkins";
 
 export type StoreItemKind = "theme" | "premium_skin" | "streak_flame" | "buddy" | "boost" | "mystery";
 
@@ -43,6 +43,17 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     accent: BLUE_STORM_SKIN.palette.accent,
     imageSrc: BLUE_STORM_SKIN.backgroundImage,
     skinId: BLUE_STORM_SKIN.id,
+  },
+  {
+    id: "skin-midnight-garden",
+    kind: "premium_skin",
+    title: MIDNIGHT_GARDEN_SKIN.name,
+    subtitle: MIDNIGHT_GARDEN_SKIN.storeSubtitle,
+    price: MIDNIGHT_GARDEN_SKIN.price,
+    emoji: "Moon",
+    accent: MIDNIGHT_GARDEN_SKIN.palette.accent,
+    imageSrc: MIDNIGHT_GARDEN_SKIN.backgroundImage,
+    skinId: MIDNIGHT_GARDEN_SKIN.id,
   },
 ];
 

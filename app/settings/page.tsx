@@ -12,7 +12,7 @@ import {
   normalizeAppThemeId,
   type AppThemeId,
 } from "../../lib/appThemes";
-import { BUDDY_STORE_ITEMS, STREAK_FLAME_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
+import { BUDDY_STORE_ITEMS, PREMIUM_SKIN_STORE_ITEMS, STREAK_FLAME_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
 import {
   BUDDY_AVATARS,
   DEFAULT_BUDDY_AVATAR,
@@ -22,6 +22,13 @@ import {
   type BuddyAvatarId,
 } from "../../lib/buddyAvatars";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, FLAME_COSMETICS, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
+import {
+  PREMIUM_SKINS,
+  PREMIUM_SKIN_STORAGE_KEY,
+  applyPremiumSkinToDocument,
+  normalizePremiumSkinId,
+  type PremiumSkinId,
+} from "../../lib/premiumSkins";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
 import { isAdminUser } from "../../lib/readingProgress";
 import type { BuddyAvatar } from "../../lib/buddyAvatars";
@@ -71,11 +78,13 @@ export default function SettingsPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [themeSaving, setThemeSaving] = useState<string | null>(null);
+  const [skinSaving, setSkinSaving] = useState<string | null>(null);
   const [flameSaving, setFlameSaving] = useState<string | null>(null);
   const [settingsMessage, setSettingsMessage] = useState<string | null>(null);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
   const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState<AppThemeId>("light");
+  const [selectedPremiumSkin, setSelectedPremiumSkin] = useState<PremiumSkinId>("none");
   const [selectedFlame, setSelectedFlame] = useState<FlameCosmeticId>("default");
   const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId>(DEFAULT_BUDDY_AVATAR);
   const [buddySaving, setBuddySaving] = useState<BuddyAvatarId | null>(null);
@@ -144,6 +153,9 @@ export default function SettingsPage() {
         setFirstName(nameParts.firstName);
         setLastName(nameParts.lastName);
         setSelectedTheme(normalizeAppThemeId(profile?.app_theme));
+        const resolvedPremiumSkin =
+          typeof window !== "undefined" ? normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY)) : "none";
+        setSelectedPremiumSkin(resolvedPremiumSkin);
         const localSelectedBuddy =
           typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
         const resolvedSelectedBuddy = normalizeBuddyAvatarId(profile?.selected_buddy_avatar || localSelectedBuddy);
@@ -156,6 +168,8 @@ export default function SettingsPage() {
         if (typeof window !== "undefined") {
           window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, resolvedSelectedBuddy);
           window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, resolvedSelectedFlame);
+          window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, resolvedPremiumSkin);
+          applyPremiumSkinToDocument(resolvedPremiumSkin);
           window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: resolvedSelectedBuddy } }));
         }
         setStorePurchases((purchases || []) as StorePurchaseRow[]);
@@ -369,6 +383,62 @@ export default function SettingsPage() {
     }
   }
 
+  async function handlePremiumSkinSelect(skinId: PremiumSkinId) {
+    if (!user) return;
+    const skin = PREMIUM_SKINS.find((premiumSkin) => premiumSkin.id === skinId);
+    const storeItem = skin ? PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skin.id) : null;
+    const ownsSkin = skinId === "none" || ownerHasUnlimitedDiamonds || Boolean(storeItem && storePurchases.some((purchase) => purchase.item_id === storeItem.id));
+    if (!ownsSkin) {
+      setSettingsMessage("Buy this Premium Skin in the store first.");
+      return;
+    }
+
+    const previousSkin = selectedPremiumSkin;
+    const previousFlame = selectedFlame;
+    setSkinSaving(skinId);
+    setSettingsMessage(null);
+    setSelectedPremiumSkin(skinId);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, skinId);
+      applyPremiumSkinToDocument(skinId);
+      window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId } }));
+    }
+
+    try {
+      const matchingFlame = skinId === "blue-storm" ? "blue" : skinId === "midnight-garden" ? "green" : null;
+      if (matchingFlame) {
+        setSelectedFlame(matchingFlame);
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, matchingFlame);
+          window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: matchingFlame } }));
+        }
+        const { error } = await supabase
+          .from("profile_stats")
+          .update({
+            selected_streak_flame: matchingFlame,
+            updated_at: new Date().toISOString(),
+          })
+          .eq("user_id", user.id);
+        if (error) throw error;
+      }
+
+      setSettingsMessage(skin ? `${skin.name} is now your default Premium Skin.` : "Premium Skin removed.");
+    } catch (error: any) {
+      setSelectedPremiumSkin(previousSkin);
+      setSelectedFlame(previousFlame);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, previousSkin);
+        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, previousFlame);
+        applyPremiumSkinToDocument(previousSkin);
+        window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: previousSkin } }));
+        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: previousFlame } }));
+      }
+      setSettingsMessage(error.message || "Could not update Premium Skin.");
+    } finally {
+      setSkinSaving(null);
+    }
+  }
+
   async function handleBuddySelect(buddyId: BuddyAvatarId) {
     if (!user) return;
     const previousBuddy = selectedBuddy;
@@ -421,6 +491,7 @@ export default function SettingsPage() {
     if (!user || removingItemId) return;
     const item =
       THEME_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
+      PREMIUM_SKIN_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
       STREAK_FLAME_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
       BUDDY_STORE_ITEMS.find((storeItem) => storeItem.id === itemId);
     if (!item) return;
@@ -446,6 +517,10 @@ export default function SettingsPage() {
 
       if (item.flameId && selectedFlame === item.flameId) {
         await handleFlameSelect("default");
+      }
+
+      if (item.skinId && selectedPremiumSkin === item.skinId) {
+        await handlePremiumSkinSelect("none");
       }
 
       const removedBuddyId = BUDDY_AVATARS.find((buddy) => getBuddyStoreItemId(buddy.id) === itemId)?.id;
@@ -487,6 +562,7 @@ export default function SettingsPage() {
   const availableThemes = APP_THEMES.filter((theme) =>
     ownerHasUnlimitedDiamonds || theme.id === "light" || theme.id === "dark" || ownedThemeIds.has(theme.id),
   );
+  const visiblePremiumSkins = PREMIUM_SKINS;
   const ownedFlameIds = new Set(
     STREAK_FLAME_STORE_ITEMS
       .filter((item) => ownedStoreItemIds.includes(item.id) && item.flameId)
@@ -618,6 +694,119 @@ export default function SettingsPage() {
                       {themeSaving === theme.id ? "Saving..." : selectedTheme === theme.id ? "Active" : "Use theme"}
                     </p>
                   </button>
+                  {canDelete && storeItem ? (
+                    <button
+                      type="button"
+                      onClick={() => void handleDeleteStoreItem(storeItem.id)}
+                      disabled={removingItemId === storeItem.id}
+                      className="mt-3 w-full rounded-full border border-red-200 px-3 py-1.5 text-xs font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
+                    >
+                      {removingItemId === storeItem.id ? "Removing..." : "Delete"}
+                    </button>
+                  ) : null}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Premium Skin Section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
+          <h2 className="text-xl font-semibold mb-2">Premium Skins</h2>
+          <p className="mb-4 text-sm text-gray-600">
+            Set a cinematic skin as your default Bible Buddy experience. Premium Skins stay here so you can turn them on after buying them.
+          </p>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div
+              className={`rounded-2xl border p-3 text-left transition ${
+                selectedPremiumSkin === "none" ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
+              }`}
+            >
+              <button
+                type="button"
+                onClick={() => void handlePremiumSkinSelect("none")}
+                disabled={skinSaving === "none"}
+                className="w-full text-left transition hover:-translate-y-0.5 disabled:hover:translate-y-0"
+              >
+                <div className="grid h-28 place-items-center rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-200">
+                  <span className="text-3xl">BB</span>
+                </div>
+                <p className="mt-3 text-sm font-black text-gray-950">No Premium Skin</p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">
+                  {skinSaving === "none" ? "Saving..." : selectedPremiumSkin === "none" ? "Active" : "Use default"}
+                </p>
+              </button>
+            </div>
+
+            {visiblePremiumSkins.map((skin) => {
+              const storeItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skin.id);
+              const hasSkinAccess =
+                ownerHasUnlimitedDiamonds ||
+                selectedPremiumSkin === skin.id ||
+                Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id));
+              const canDelete = Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id));
+              return (
+                <div
+                  key={skin.id}
+                  className={`overflow-hidden rounded-2xl border p-3 text-left transition ${
+                    selectedPremiumSkin === skin.id ? "border-[var(--bb-accent,#5DD6FF)] ring-2 ring-[var(--bb-accent,#5DD6FF)]/25" : "border-gray-200"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (!hasSkinAccess) {
+                        setSettingsMessage(`Buy ${skin.name} in the Diamond Store first, then come back here to set it.`);
+                        return;
+                      }
+                      void handlePremiumSkinSelect(skin.id);
+                    }}
+                    disabled={skinSaving === skin.id}
+                    className="w-full text-left transition hover:-translate-y-0.5 disabled:hover:translate-y-0"
+                  >
+                    <div
+                      className="relative h-28 overflow-hidden rounded-2xl border bg-cover bg-center shadow-[0_16px_36px_rgba(7,16,20,0.28)]"
+                      style={{
+                        backgroundColor: skin.palette.background,
+                        backgroundImage: `linear-gradient(180deg, rgba(3,10,18,0.04), rgba(3,10,18,0.38)), url("${skin.backgroundImage}")`,
+                        borderColor: skin.palette.cardBorder,
+                      }}
+                    >
+                      <div
+                        className="absolute inset-0"
+                        style={{ background: `radial-gradient(circle at 70% 18%, ${skin.palette.accentSoft}, transparent 34%)` }}
+                      />
+                      <div
+                        className="absolute bottom-3 left-3 rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em]"
+                        style={{
+                          backgroundColor: "rgba(6, 16, 20, 0.72)",
+                          borderColor: skin.palette.cardBorder,
+                          color: skin.palette.textPrimary,
+                        }}
+                      >
+                        Premium Skin
+                      </div>
+                    </div>
+                    <p className="mt-3 text-sm font-black text-gray-950">{skin.name}</p>
+                    <p className="mt-1 text-xs font-semibold text-gray-500">
+                      {skinSaving === skin.id ? "Saving..." : selectedPremiumSkin === skin.id ? "Active" : hasSkinAccess ? "Use skin" : "Locked"}
+                    </p>
+                  </button>
+                  {!hasSkinAccess ? (
+                    <button
+                      type="button"
+                      onClick={() => router.push("/dashboard?openStore=1")}
+                      className="mt-3 w-full rounded-full border px-3 py-2 text-xs font-black transition hover:brightness-110"
+                      style={{
+                        backgroundColor: skin.palette.background,
+                        borderColor: skin.palette.cardBorder,
+                        color: skin.palette.textPrimary,
+                      }}
+                    >
+                      Open Diamond Store
+                    </button>
+                  ) : null}
                   {canDelete && storeItem ? (
                     <button
                       type="button"

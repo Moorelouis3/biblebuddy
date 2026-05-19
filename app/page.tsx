@@ -417,7 +417,7 @@ export default function LandingPage() {
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center justify-between text-xs font-black text-slate-700">
-                        <span>4 of 6 tasks</span>
+                        <span>4 of 5 tasks</span>
                         <span>67%</span>
                       </div>
                       <div className="mt-2 h-3 overflow-hidden rounded-full bg-white">

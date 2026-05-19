@@ -32,7 +32,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   daysRemaining,
   isLoadingDailyTasks,
   dailyTaskCompletedCount,
-  dailyTaskTotalCount,
   dailyTaskNextTitle,
   dailyTaskSummaryLine,
   dailyTaskTimeLeftLabel,
@@ -42,12 +41,9 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   dashboardTourSpotlight = null,
 }) => {
   const showFreeUpgradeCard = membershipStatus !== "pro" && profile?.is_paid !== true;
-  const safeDailyTaskTotal = Math.max(5, dailyTaskTotalCount || 5);
-  const dailyTaskProgressPercent = Math.max(
-    0,
-    Math.min(100, Math.round((dailyTaskCompletedCount / safeDailyTaskTotal) * 100)),
-  );
-  const allDailyTasksDone = dailyTaskCompletedCount >= safeDailyTaskTotal;
+  const safeDailyTaskTotal = 5;
+  const safeDailyTaskCompletedCount = Math.max(0, Math.min(safeDailyTaskTotal, dailyTaskCompletedCount || 0));
+  const allDailyTasksDone = safeDailyTaskCompletedCount >= safeDailyTaskTotal;
 
   function getSpotlightClasses(target: DashboardCardsProps["dashboardTourSpotlight"]) {
     if (!dashboardTourSpotlight) return "";
@@ -82,9 +78,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                   <span className="bb-text-muted animate-[bounce_1.4s_ease-in-out_0.4s_infinite] text-2xl">.</span>
                 </div>
               </div>
-              <div className="bb-progress-track mb-3 h-3 overflow-hidden rounded-full">
-                <div className="bb-progress-fill h-full w-1/3 animate-pulse rounded-full" />
-              </div>
               <div className="bb-surface-soft h-4 w-48 rounded" />
             </>
           ) : (
@@ -92,21 +85,23 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
               <div className="min-w-0 flex-1">
                 {allDailyTasksDone ? (
                   <>
-                    <div className="flex items-center gap-3">
-                      <div className="bb-surface rounded-full border p-1.5 shadow-sm">
-                        <LouisAvatar mood="stareyes" size={48} />
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex min-w-0 items-center gap-3">
+                        <div className="bb-surface shrink-0 rounded-full border p-1.5 shadow-sm">
+                          <LouisAvatar mood="stareyes" size={48} />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="bb-accent text-xs font-semibold uppercase tracking-[0.18em]">
+                            Daily Bible Tasks
+                          </p>
+                          <h2 className="bb-text-primary mt-1 text-base font-bold leading-tight sm:text-lg">
+                            You have finished all of today&apos;s Bible tasks
+                          </h2>
+                        </div>
                       </div>
-                      <div className="min-w-0">
-                        <p className="bb-accent text-xs font-semibold uppercase tracking-[0.18em]">
-                          Daily Bible Tasks
-                        </p>
-                        <h2 className="bb-text-primary mt-1 text-base font-bold leading-tight sm:text-lg">
-                          You have finished all of today&apos;s Bible tasks
-                        </h2>
+                      <div className="bb-surface grid h-12 w-12 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border)] text-xs font-black uppercase tracking-[0.04em] shadow-sm">
+                        {safeDailyTaskCompletedCount}/{safeDailyTaskTotal}
                       </div>
-                    </div>
-                    <div className="bb-progress-track mt-4 h-2.5 overflow-hidden rounded-full">
-                      <div className="bb-progress-fill h-full w-full animate-[pulse_2s_ease-in-out_infinite] rounded-full" />
                     </div>
                     <p className="bb-text-secondary mt-3 text-sm font-medium">
                       Your next daily tasks start in {dailyTaskTimeLeftLabel || "24h 0m"}
@@ -123,19 +118,13 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                           {dailyTaskNextTitle ? `Next: ${dailyTaskNextTitle}` : "Tap to view your daily Bible checklist."}
                         </p>
                       </div>
-                      <div className="bb-surface shrink-0 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] shadow-sm">
-                        {dailyTaskCompletedCount}/{safeDailyTaskTotal}
+                      <div className="bb-surface grid h-12 w-12 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border)] text-xs font-black uppercase tracking-[0.04em] shadow-sm">
+                        {safeDailyTaskCompletedCount}/{safeDailyTaskTotal}
                       </div>
-                    </div>
-                    <div className="bb-progress-track mt-3 overflow-hidden rounded-full">
-                      <div
-                        className="bb-progress-fill h-2.5 rounded-full transition-all duration-300"
-                        style={{ width: `${dailyTaskProgressPercent}%` }}
-                      />
                     </div>
                     <div className="mt-2.5 text-[13px] sm:text-sm">
                       <p className="bb-text-secondary min-w-0 font-medium">
-                        {dailyTaskSummaryLine || `${dailyTaskCompletedCount} out of ${safeDailyTaskTotal} daily tasks done`}
+                        {dailyTaskSummaryLine || `${safeDailyTaskCompletedCount} out of ${safeDailyTaskTotal} daily tasks done`}
                       </p>
                     </div>
                   </>
@@ -186,7 +175,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       <Link href="/bible-studies" onClick={(event) => handleCardClick(event, "bible_studies", "/bible-studies")}>
         <div className="bb-card cursor-pointer rounded-xl border p-5 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md">
           <h2 className="bb-text-primary text-xl font-semibold">ðŸŒ… Bible Studies</h2>
-          <p className="bb-text-secondary mt-1">Guided chapter studies with reading, notes, games, and reflection</p>
+          <p className="bb-text-secondary mt-1">Guided chapter studies with reading, notes, trivia, and reflection</p>
         </div>
       </Link>
 

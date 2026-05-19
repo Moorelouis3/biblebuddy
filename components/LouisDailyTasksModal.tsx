@@ -7,7 +7,6 @@ import { ModalShell } from "./ModalShell";
 import { supabase } from "../lib/supabaseClient";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaChapter } from "../lib/triviaGameData";
-import { getScrambledChapter } from "../lib/scrambledGameData";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import {
   getLouisDailyTaskTarget,
@@ -250,18 +249,18 @@ export function buildChooseDevotionalChecklistData(_userId: string): ChecklistDa
         kind: "trivia",
         title: "Play chapter trivia",
         pointsLabel: TASK_REWARD_LABELS.trivia,
-        timeEstimateLabel: "4 min",
+        timeEstimateLabel: "3 min",
         timeEstimateDetail: "Quick quiz",
         href: null,
         done: false,
         disabled: true,
       },
       {
-        kind: "scrambled",
-        title: "Play chapter Scrambled",
-        pointsLabel: TASK_REWARD_LABELS.scrambled,
-        timeEstimateLabel: "4 min",
-        timeEstimateDetail: "Word puzzle",
+        kind: "reflection",
+        title: "Answer The Reflection Question",
+        pointsLabel: TASK_REWARD_LABELS.reflection,
+        timeEstimateLabel: "3 min",
+        timeEstimateDetail: "Write your response",
         href: null,
         done: false,
         disabled: true,
@@ -411,11 +410,8 @@ export async function fetchLouisDailyChecklistData(
   const triviaRouteSlug =
     CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.key === resolvedBookKey)?.routeSlug ?? resolvedBookKey;
   const triviaChapter = getTriviaChapter(resolvedBookKey, day.bible_reading_chapter);
-  const scrambledChapter = getScrambledChapter(resolvedBookKey, day.bible_reading_chapter);
   const hasTrivia = Boolean(triviaChapter);
-  const hasScrambled = Boolean(scrambledChapter);
   const triviaQuestionCount = triviaChapter?.questions.length ?? 5;
-  const scrambledQuestionCount = scrambledChapter?.questions.length ?? 5;
   const introMinutes = estimateMinutesFromWords(countWords((day as any).devotional_text), 180, 2, 8);
 
   const reflectionSlug = `bible-chapter-${day.bible_reading_book.toLowerCase().replace(/\s+/g, "-")}-${day.bible_reading_chapter}`;
@@ -437,7 +433,6 @@ export async function fetchLouisDailyChecklistData(
         ACTION_TYPE.chapter_completed,
         ACTION_TYPE.bible_chapter_viewed,
         ACTION_TYPE.trivia_chapter_completed,
-        ACTION_TYPE.scrambled_chapter_completed,
       ])
       .order("created_at", { ascending: false })
       .limit(500),
@@ -491,8 +486,7 @@ export async function fetchLouisDailyChecklistData(
 
   const readingMinutes = estimateMinutesFromWords(getBibleChapterWordCount((chapterContentRes.data as any)?.content_json) || 650, 160, 2, 12);
   const notesMinutes = estimateMinutesFromWords(countWords((notesContentRes.data as any)?.notes_text), 220, 5, 24);
-  const triviaMinutes = Math.max(3, Math.ceil((triviaQuestionCount * 45) / 60));
-  const scrambledMinutes = Math.max(3, Math.ceil((scrambledQuestionCount * 50) / 60));
+  const triviaMinutes = 3;
 
   const actionRows = actionsRes.data || [];
   const todayProgress = todayProgressRes.data as DevotionalProgressRow | null;
@@ -511,14 +505,6 @@ export async function fetchLouisDailyChecklistData(
           String(row.action_label || "").toLowerCase().startsWith(chapterLabel.toLowerCase()),
       )
     : null;
-  const scrambledAction = hasScrambled
-    ? actionRows.find(
-        (row) =>
-          row.action_type === ACTION_TYPE.scrambled_chapter_completed &&
-          String(row.action_label || "").toLowerCase().startsWith(chapterLabel.toLowerCase()),
-      )
-    : null;
-
   const devotionalDone = todayProgress?.is_completed === true;
   const readingDone =
     todayProgress?.reading_completed === true ||
@@ -531,7 +517,6 @@ export async function fetchLouisDailyChecklistData(
     );
   const notesDone = Boolean(notesAction);
   const triviaDone = Boolean(triviaAction);
-  const scrambledDone = Boolean(scrambledAction);
   const reflectionDone = Boolean(reflectionRes.data);
 
   const tasks: TaskState[] = [
@@ -608,29 +593,6 @@ export async function fetchLouisDailyChecklistData(
       completedAtLabel: hasTrivia
         ? (triviaDone ? formatCompletedAtLabel(triviaAction?.created_at) : null)
         : (notesDone ? formatCompletedAtLabel(notesAction?.created_at) : null),
-    },
-    {
-      kind: "scrambled",
-      title: hasScrambled ? `Play Scrambled for ${chapterLabel}` : `Open ${chapterLabel} Again`,
-      pointsLabel: hasScrambled ? formatGamePointsLabel(scrambledDone, scrambledAction?.action_label, scrambledQuestionCount) : TASK_REWARD_LABELS.scrambled,
-      timeEstimateLabel: hasScrambled ? formatEstimate(scrambledMinutes) : formatEstimate(readingMinutes),
-      timeEstimateDetail: hasScrambled ? `${scrambledQuestionCount} words` : "Chapter reading",
-      href: hasScrambled
-        ? `/bible-study-games/scrambled/${resolvedBookKey}/${day.bible_reading_chapter}?from=louis-daily-task`
-        : `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?from=louis-daily-task`,
-      done: hasScrambled ? scrambledDone : readingDone,
-      disabled: false,
-      devotionalId: activeDevotional.id,
-      devotionalTitle: activeDevotional.title,
-      devotionalDayNumber: nextDayNumber,
-      book: day.bible_reading_book,
-      chapter: day.bible_reading_chapter,
-      chapterLabel,
-      completedAtLabel: hasScrambled
-        ? (scrambledDone ? formatCompletedAtLabel(scrambledAction?.created_at) : null)
-        : (readingDone
-            ? formatCompletedAtLabel(todayProgress?.completed_at || (completedChapterRes.data as { completed_at?: string | null } | null)?.completed_at)
-            : null),
     },
     {
       kind: "reflection",

@@ -1,4 +1,4 @@
-export type PremiumSkinId = "none" | "blue-storm";
+export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -60,7 +60,35 @@ export const BLUE_STORM_SKIN: PremiumSkin = {
   },
 };
 
-export const PREMIUM_SKINS: PremiumSkin[] = [BLUE_STORM_SKIN];
+export const MIDNIGHT_GARDEN_SKIN: PremiumSkin = {
+  id: "midnight-garden",
+  name: "Midnight Garden",
+  label: "Premium Skin",
+  storeSubtitle: "A peaceful moonlit garden atmosphere for quiet nighttime prayer and reflection.",
+  backgroundImage: "/skins/MidnightGarden.png",
+  price: 1000,
+  palette: {
+    background: "#07100F",
+    surface: "rgba(9, 21, 24, 0.76)",
+    surfaceSoft: "rgba(53, 77, 48, 0.3)",
+    card: "rgba(8, 18, 24, 0.74)",
+    cardBorder: "rgba(158, 183, 112, 0.34)",
+    textPrimary: "#FFF7DF",
+    textSecondary: "#D9DEBD",
+    textMuted: "#A8B289",
+    accent: "#AFCF7A",
+    accentSoft: "rgba(151, 179, 105, 0.2)",
+    button: "#566C32",
+    buttonText: "#FFF8DE",
+    navBackground: "rgba(7, 14, 18, 0.88)",
+    navActive: "#D7B86B",
+    navInactive: "#AAB18B",
+    progressTrack: "rgba(218, 203, 148, 0.18)",
+    progressFill: "#D7B86B",
+  },
+};
+
+export const PREMIUM_SKINS: PremiumSkin[] = [BLUE_STORM_SKIN, MIDNIGHT_GARDEN_SKIN];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
 
 export function normalizePremiumSkinId(value: unknown): PremiumSkinId {
@@ -85,12 +113,14 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
     root.dataset.bbSkin = "none";
     root.style.removeProperty("--bb-skin-bg-image");
     root.style.removeProperty("--bb-skin-glow");
+    root.style.removeProperty("--bb-skin-warm-glow");
     return;
   }
 
   root.dataset.bbSkin = skin.id;
   root.style.setProperty("--bb-skin-bg-image", `url("${skin.backgroundImage}")`);
-  root.style.setProperty("--bb-skin-glow", "rgba(93, 214, 255, 0.42)");
+  root.style.setProperty("--bb-skin-glow", skin.id === "midnight-garden" ? "rgba(175, 207, 122, 0.42)" : "rgba(93, 214, 255, 0.42)");
+  root.style.setProperty("--bb-skin-warm-glow", skin.id === "midnight-garden" ? "rgba(215, 184, 107, 0.38)" : "rgba(93, 214, 255, 0.2)");
 
   const variableMap: Record<keyof PremiumSkinPalette, string> = {
     background: "--bb-background",

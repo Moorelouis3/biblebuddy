@@ -12,7 +12,7 @@ const tools = [
     bg: "bg-teal-100 border-teal-200",
     emoji: "🌅",
     title: "Bible Studies",
-    desc: "Guided Bible studies with chapter intros, reading, notes, games, and reflection",
+    desc: "Guided Bible studies with chapter intros, reading, notes, trivia, and reflection",
   },
   {
     href: "/bible-studies",

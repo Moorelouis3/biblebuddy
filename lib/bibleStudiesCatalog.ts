@@ -17,7 +17,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 2,
     image: "/creationoftheworld.png",
     description:
-      "A chapter-by-chapter Bible study through Genesis 1-2 with intro, reading, notes, trivia, Scrambled, and reflection centered on creation, order, Eden, humanity in God's image, purpose, rest, and relationship with God.",
+      "A chapter-by-chapter Bible study through Genesis 1-2 with intro, reading, notes, trivia, and reflection centered on creation, order, Eden, humanity in God's image, purpose, rest, and relationship with God.",
   },
   {
     key: "fall_of_man",
@@ -26,7 +26,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 2,
     image: "/thefallofman.png",
     description:
-      "A chapter-by-chapter Bible study through Genesis 3-4 with intro, reading, notes, trivia, Scrambled, and reflection centered on temptation, shame, sin, blame, violence, exile, and the need for redemption.",
+      "A chapter-by-chapter Bible study through Genesis 3-4 with intro, reading, notes, trivia, and reflection centered on temptation, shame, sin, blame, violence, exile, and the need for redemption.",
   },
   {
     key: "flood_of_noah",
@@ -35,7 +35,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 6,
     image: "/Floodofnoah.png",
     description:
-      "A chapter-by-chapter Bible study through Genesis 5-10 with intro, reading, notes, trivia, Scrambled, and reflection centered on death spreading after the fall, corruption, violence, judgment, Noah's obedience, the flood, covenant mercy, and the nations after the flood.",
+      "A chapter-by-chapter Bible study through Genesis 5-10 with intro, reading, notes, trivia, and reflection centered on death spreading after the fall, corruption, violence, judgment, Noah's obedience, the flood, covenant mercy, and the nations after the flood.",
   },
   {
     key: "obedience_of_abraham",
@@ -44,7 +44,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 15,
     image: "/TheobedienceofAbraham.png",
     description:
-      "A chapter-by-chapter Bible study through Genesis 11-25 with intro, reading, notes, trivia, Scrambled, and reflection centered on Abraham's call, waiting, covenant, testing, and legacy.",
+      "A chapter-by-chapter Bible study through Genesis 11-25 with intro, reading, notes, trivia, and reflection centered on Abraham's call, waiting, covenant, testing, and legacy.",
   },
   {
     key: "promise_through_isaac",
@@ -53,7 +53,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 2,
     image: "/ThePromiseThroughIsaac.png",
     description:
-      "A chapter-by-chapter Bible study through Genesis 26-27 with intro, reading, notes, trivia, Scrambled, and reflection centered on Isaac carrying Abraham's covenant promise, wells, fear, favoritism, Jacob and Esau, deception, blessing, and family consequences.",
+      "A chapter-by-chapter Bible study through Genesis 26-27 with intro, reading, notes, trivia, and reflection centered on Isaac carrying Abraham's covenant promise, wells, fear, favoritism, Jacob and Esau, deception, blessing, and family consequences.",
   },
   {
     key: "wrestling_of_jacob",
@@ -62,7 +62,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 9,
     image: "/TheWrestlingofJacob.png",
     description:
-      "A chapter-by-chapter Bible study through Genesis 28-36 with intro, reading, notes, trivia, Scrambled, and reflection centered on Jacob fleeing, Bethel, Rachel and Leah, Laban's deception, family rivalry, wrestling with God, reconciliation with Esau, renewal, and Edom.",
+      "A chapter-by-chapter Bible study through Genesis 28-36 with intro, reading, notes, trivia, and reflection centered on Jacob fleeing, Bethel, Rachel and Leah, Laban's deception, family rivalry, wrestling with God, reconciliation with Esau, renewal, and Edom.",
   },
   {
     key: "testing_of_joseph",
@@ -71,7 +71,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 14,
     image: "/TheTestingofJospehnewcover.png",
     description:
-      "A chapter-by-chapter Bible study through Genesis 37-50 with intro, reading, notes, trivia, Scrambled, and reflection all centered on Joseph's story.",
+      "A chapter-by-chapter Bible study through Genesis 37-50 with intro, reading, notes, trivia, and reflection all centered on Joseph's story.",
   },
   {
     key: "deliverance_of_moses",
@@ -80,7 +80,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 18,
     image: "/TheDeliveranceofMoses.png",
     description:
-      "A chapter-by-chapter Bible study through Exodus 1-18 with intro, reading, notes, trivia, Scrambled, and reflection centered on Israel's slavery, Moses' calling, the plagues, Passover, the Red Sea, wilderness provision, and God raising a deliverer.",
+      "A chapter-by-chapter Bible study through Exodus 1-18 with intro, reading, notes, trivia, and reflection centered on Israel's slavery, Moses' calling, the plagues, Passover, the Red Sea, wilderness provision, and God raising a deliverer.",
   },
   {
     key: "covenant_at_sinai",
@@ -89,7 +89,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 6,
     image: "/TheCovenantatSinai.png",
     description:
-      "A chapter-by-chapter Bible study through Exodus 19-24 with intro, reading, notes, trivia, Scrambled, and reflection centered on Mount Sinai, God's holiness, the Ten Commandments, covenant law, worship, blood, and Israel becoming God's covenant people.",
+      "A chapter-by-chapter Bible study through Exodus 19-24 with intro, reading, notes, trivia, and reflection centered on Mount Sinai, God's holiness, the Ten Commandments, covenant law, worship, blood, and Israel becoming God's covenant people.",
   },
   {
     key: "presence_of_god",
@@ -98,7 +98,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 16,
     image: "/ThePresenceofGod.png",
     description:
-      "A chapter-by-chapter Bible study through Exodus 25-40 with intro, reading, notes, trivia, Scrambled, and reflection centered on the tabernacle, priesthood, golden calf, intercession, covenant mercy, obedient construction, and God's glory filling the tabernacle.",
+      "A chapter-by-chapter Bible study through Exodus 25-40 with intro, reading, notes, trivia, and reflection centered on the tabernacle, priesthood, golden calf, intercession, covenant mercy, obedient construction, and God's glory filling the tabernacle.",
   },
   {
     key: "holiness_before_god",
@@ -107,7 +107,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 27,
     image: "/ThegolinessbeforeGod.png",
     description:
-      "A chapter-by-chapter Bible study through Leviticus 1-27 with intro, reading, notes, trivia, Scrambled, and reflection centered on sacrifice, priesthood, atonement, clean and unclean, holy living, feasts, Jubilee, and covenant faithfulness before God.",
+      "A chapter-by-chapter Bible study through Leviticus 1-27 with intro, reading, notes, trivia, and reflection centered on sacrifice, priesthood, atonement, clean and unclean, holy living, feasts, Jubilee, and covenant faithfulness before God.",
   },
   {
     key: "wilderness_journey",
@@ -116,7 +116,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 14,
     image: "/Wildernessjourneycover.png",
     description:
-      "A chapter-by-chapter Bible study through Numbers 1-14 with intro, reading, notes, trivia, Scrambled, and reflection centered on God's ordered people, wilderness guidance, priestly blessing, complaint, leadership pressure, the spies, fear, faith, and learning to trust God between deliverance and promise.",
+      "A chapter-by-chapter Bible study through Numbers 1-14 with intro, reading, notes, trivia, and reflection centered on God's ordered people, wilderness guidance, priestly blessing, complaint, leadership pressure, the spies, fear, faith, and learning to trust God between deliverance and promise.",
   },
   {
     key: "rebellion_in_the_wilderness",
@@ -125,7 +125,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 11,
     image: "/RebellionintheWilderness.png",
     description:
-      "A chapter-by-chapter Bible study through Numbers 15-25 with intro, reading, notes, trivia, Scrambled, and reflection centered on rebellion, holiness, God's chosen priesthood, wilderness judgment, mercy, the bronze serpent, Balaam, blessing, compromise, and faithfulness when the journey gets hard.",
+      "A chapter-by-chapter Bible study through Numbers 15-25 with intro, reading, notes, trivia, and reflection centered on rebellion, holiness, God's chosen priesthood, wilderness judgment, mercy, the bronze serpent, Balaam, blessing, compromise, and faithfulness when the journey gets hard.",
   },
   {
     key: "promised_land_ahead",
@@ -134,7 +134,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 11,
     image: "/promieslandcover.png",
     description:
-      "A chapter-by-chapter Bible study through Numbers 26-36 with intro, reading, notes, trivia, Scrambled, and reflection centered on the new generation, inheritance, Joshua's commissioning, offerings, vows, justice, refuge, boundaries, and preparing to enter the promised land with faithfulness.",
+      "A chapter-by-chapter Bible study through Numbers 26-36 with intro, reading, notes, trivia, and reflection centered on the new generation, inheritance, Joshua's commissioning, offerings, vows, justice, refuge, boundaries, and preparing to enter the promised land with faithfulness.",
   },
   {
     key: "rise_of_esther",
@@ -143,7 +143,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 10,
     image: "/theriseofester.png",
     description:
-      "A chapter-by-chapter Bible study through Esther 1-10 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, hidden identity, palace pressure, providence, reversal, and legacy.",
+      "A chapter-by-chapter Bible study through Esther 1-10 with intro, reading, notes, trivia, and reflection centered on courage, hidden identity, palace pressure, providence, reversal, and legacy.",
   },
   {
     key: "wisdom_of_proverbs",
@@ -161,7 +161,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     totalWeeks: 6,
     image: "/thecourageofdaniel.png",
     description:
-      "A chapter-by-chapter Bible study through Daniel 1-6 with intro, reading, notes, trivia, Scrambled, and reflection centered on courage, identity, prayer, wisdom, pressure, persecution, and faithfulness in Babylon.",
+      "A chapter-by-chapter Bible study through Daniel 1-6 with intro, reading, notes, trivia, and reflection centered on courage, identity, prayer, wisdom, pressure, persecution, and faithfulness in Babylon.",
   },
   {
     key: "temptation_of_jesus",

@@ -734,7 +734,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                 </p>
 
                 <p className="text-gray-700 leading-relaxed">
-                  Every study has chapters, and every chapter has the same six-task flow. You can finish a chapter in one sitting, or spread the tasks out across different days.
+                  Every study has chapters, and every chapter has the same five-task flow. You can finish a chapter in one sitting, or spread the tasks out across different days.
                 </p>
 
                 <div className="space-y-3">
