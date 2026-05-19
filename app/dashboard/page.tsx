@@ -818,6 +818,24 @@ function getDashboardStreakEncouragement(streak: number) {
   return "Fire badge earned. Keep the flame moving.";
 }
 
+function getDashboardStreakHeadline(streak: number) {
+  const safeStreak = Math.max(1, Math.floor(streak || 1));
+  const dayKey = getBibleBuddyLocalDayKey();
+  const [year, month, day] = dayKey.split("-").map(Number);
+  const dayIndex = Math.floor(Date.UTC(year, month - 1, day) / 86400000);
+  const phrases = [
+    "studying the Bible",
+    "reading His Word",
+    "digging into Scripture",
+    "walking through the Bible",
+    "opening Scripture",
+    "growing in the Word",
+    "meeting God in Scripture",
+    "building a Bible habit",
+  ];
+  return `${safeStreak} ${safeStreak === 1 ? "day" : "days"} ${phrases[Math.abs(dayIndex) % phrases.length]}`;
+}
+
 function buildDashboardNextStudyLine(checklistData: ChecklistData | null) {
   const tasks = checklistData?.tasks ?? [];
   const nextTask = tasks.find((task) => !task.done) ?? null;
@@ -2299,10 +2317,10 @@ export default function DashboardPage() {
               <div className="w-full">
                 <div className="flex items-center gap-2">
                   <span className={streakFlameClass} style={{ animationDuration: `${streakFlameDuration}s` }} aria-hidden="true">
-                    <StreakFlameEmoji flameId={profile?.selected_streak_flame} size={42} title={`${streakValue} day streak`} />
+                    <StreakFlameEmoji flameId={profile?.selected_streak_flame} size={42} title={getDashboardStreakHeadline(streakValue)} />
                   </span>
                   <p className="text-xl font-black leading-none text-gray-950 sm:text-2xl">
-                    {streakValue} day streak
+                    {getDashboardStreakHeadline(streakValue)}
                   </p>
                 </div>
                 <p className="mt-1 text-xs font-semibold leading-5 text-gray-500 sm:text-sm">
