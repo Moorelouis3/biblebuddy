@@ -57,10 +57,17 @@ import { applyAppThemeToDocument, APP_THEME_STORAGE_KEY, getAppTheme, type AppTh
 import {
   BOOST_STORE_ITEMS,
   BUDDY_STORE_ITEMS,
+  PREMIUM_SKIN_STORE_ITEMS,
   STREAK_FLAME_STORE_ITEMS,
   THEME_STORE_ITEMS,
   type BibleBuddyStoreItem,
 } from "../../lib/bibleBuddyStore";
+import {
+  PREMIUM_SKIN_STORAGE_KEY,
+  applyPremiumSkinToDocument,
+  normalizePremiumSkinId,
+  type PremiumSkinId,
+} from "../../lib/premiumSkins";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
 import {
   SELECTED_BUDDY_STORAGE_KEY,
@@ -1057,6 +1064,7 @@ export default function DashboardPage() {
   const [buddySelectionWelcome, setBuddySelectionWelcome] = useState<{ buddyId: BuddyAvatarId; buddyName: string } | null>(null);
   const [showDiamondStore, setShowDiamondStore] = useState(false);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
+  const [activePremiumSkinId, setActivePremiumSkinId] = useState<PremiumSkinId>("none");
   const [storeLoading, setStoreLoading] = useState(false);
   const [storeBuyingId, setStoreBuyingId] = useState<string | null>(null);
   const [storeMessage, setStoreMessage] = useState<string | null>(null);
@@ -2719,7 +2727,7 @@ export default function DashboardPage() {
 
     const getStoreButtonLabel = (item: BibleBuddyStoreItem, owned: boolean) => {
       if (item.comingSoon) return "Soon";
-      if (owned && !item.repeatable) return item.themeId || item.flameId ? "Use" : "Owned";
+      if (owned && !item.repeatable) return item.themeId || item.skinId || item.flameId ? "Use" : "Owned";
       return `${item.price.toLocaleString()} 💎`;
     };
 
@@ -2730,7 +2738,7 @@ export default function DashboardPage() {
 
     const renderStoreActionButton = (item: BibleBuddyStoreItem, owned: boolean, className = "") => {
       const canBuy = !item.comingSoon && (item.repeatable || !owned);
-      const isSelectableOwned = owned && !item.repeatable && Boolean(item.themeId || item.flameId);
+      const isSelectableOwned = owned && !item.repeatable && Boolean(item.themeId || item.skinId || item.flameId);
       return (
         <button
           type="button"
@@ -2792,6 +2800,53 @@ export default function DashboardPage() {
             <h4 className="mt-2 min-h-[34px] text-xs font-black leading-4 text-[var(--bb-text-primary)]">{item.title}</h4>
           </button>
           <div className="mt-2">{renderStoreActionButton(item, owned, "w-full bg-white/90 text-[var(--bb-text-primary)]")}</div>
+        </article>
+      );
+    };
+
+    const renderPremiumSkinCard = (item: BibleBuddyStoreItem) => {
+      const owned = item.price === 0 || ownedItemIds.has(item.id);
+      const active = item.skinId && activePremiumSkinId === item.skinId;
+      return (
+        <article
+          key={item.id}
+          className={`relative overflow-hidden rounded-[26px] border p-3 text-white shadow-[0_18px_42px_rgba(8,34,66,0.30)] ${
+            active ? "border-sky-200 ring-2 ring-sky-300/60" : "border-white/25"
+          }`}
+          style={{
+            backgroundImage: `linear-gradient(180deg, rgba(2,8,18,0.08), rgba(2,10,24,0.72)), url(${item.imageSrc})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(93,214,255,0.34),transparent_34%),linear-gradient(135deg,rgba(9,24,52,0.2),rgba(4,11,24,0.78))]" />
+          <div className="pointer-events-none absolute -right-10 top-4 h-28 w-28 rounded-full bg-sky-300/25 blur-2xl" />
+          {active ? (
+            <span className="absolute right-3 top-3 z-10 rounded-full bg-sky-300 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-slate-950 shadow-[0_0_22px_rgba(93,214,255,0.45)]">
+              Active
+            </span>
+          ) : owned ? (
+            <span className="absolute right-3 top-3 z-10 rounded-full bg-white/85 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-slate-950">
+              Owned
+            </span>
+          ) : null}
+          <button type="button" onClick={() => void handleStorePurchase(item)} className="relative block min-h-[210px] w-full text-left">
+            <span className="inline-flex rounded-full border border-sky-200/45 bg-sky-200/15 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] !text-sky-100">
+              Premium Skin
+            </span>
+            <div className="absolute bottom-0 left-0 right-0">
+              <h4 className="text-3xl font-black leading-none !text-white drop-shadow">{item.title}</h4>
+              <p className="mt-2 max-w-sm text-sm font-bold leading-5 !text-sky-100/90">{item.subtitle}</p>
+              <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+                <span className="rounded-2xl border border-white/15 bg-white/10 px-2 py-2 text-[10px] font-black uppercase tracking-wide !text-white/90">Storm</span>
+                <span className="rounded-2xl border border-white/15 bg-white/10 px-2 py-2 text-[10px] font-black uppercase tracking-wide !text-white/90">Glow</span>
+                <span className="rounded-2xl border border-white/15 bg-white/10 px-2 py-2 text-[10px] font-black uppercase tracking-wide !text-white/90">Mist</span>
+              </div>
+            </div>
+          </button>
+          <div className="relative mt-3">
+            {renderStoreActionButton(item, owned, "w-full border border-sky-100/40 bg-sky-300 text-slate-950 shadow-[0_0_24px_rgba(93,214,255,0.28)]")}
+          </div>
         </article>
       );
     };
@@ -2940,6 +2995,13 @@ export default function DashboardPage() {
               </div>
             ) : null}
 
+            {renderStoreSection(
+              "Skin",
+              "Premium Skins",
+              "Full cinematic experiences that change the atmosphere of Bible Buddy.",
+              "1,000",
+              <div className="grid gap-3">{PREMIUM_SKIN_STORE_ITEMS.map(renderPremiumSkinCard)}</div>,
+            )}
             {renderStoreSection(
               "🎨",
               "Themes",
@@ -3451,6 +3513,26 @@ export default function DashboardPage() {
     setSelectedDashboardTask(null);
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    function loadPremiumSkin(event?: Event) {
+      const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
+      const skinId = normalizePremiumSkinId(
+        customEvent?.detail?.skinId || window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY),
+      );
+      setActivePremiumSkinId(skinId);
+      applyPremiumSkinToDocument(skinId);
+    }
+
+    loadPremiumSkin();
+    window.addEventListener("bb:premium-skin-changed", loadPremiumSkin);
+    window.addEventListener("storage", loadPremiumSkin);
+    return () => {
+      window.removeEventListener("bb:premium-skin-changed", loadPremiumSkin);
+      window.removeEventListener("storage", loadPremiumSkin);
+    };
+  }, []);
+
   async function applyPurchasedTheme(themeId: AppThemeId) {
     if (typeof window !== "undefined") {
       window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
@@ -3462,6 +3544,16 @@ export default function DashboardPage() {
       const { error } = await supabase.from("profile_stats").update({ app_theme: themeId }).eq("user_id", userId);
       if (error) console.warn("[STORE] Theme saved locally, but profile update failed:", error.message);
     }
+  }
+
+  async function applyPurchasedPremiumSkin(skinId: PremiumSkinId) {
+    const normalizedSkinId = normalizePremiumSkinId(skinId);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, normalizedSkinId);
+      window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: normalizedSkinId } }));
+    }
+    setActivePremiumSkinId(normalizedSkinId);
+    applyPremiumSkinToDocument(normalizedSkinId);
   }
 
   async function applyPurchasedFlame(flameId: string) {
@@ -3500,6 +3592,9 @@ export default function DashboardPage() {
   async function handleUsePurchasedStoreItem(item: BibleBuddyStoreItem) {
     if (item.themeId) {
       await applyPurchasedTheme(item.themeId);
+      setStoreMessage(`${item.title} is now active.`);
+    } else if (item.skinId) {
+      await applyPurchasedPremiumSkin(item.skinId);
       setStoreMessage(`${item.title} is now active.`);
     } else if (item.flameId) {
       await applyPurchasedFlame(item.flameId);
@@ -3587,6 +3682,9 @@ export default function DashboardPage() {
     if (alreadyOwned && !item.repeatable) {
       if (item.themeId) {
         await applyPurchasedTheme(item.themeId);
+        setStoreMessage(`${item.title} is now active.`);
+      } else if (item.skinId) {
+        await applyPurchasedPremiumSkin(item.skinId);
         setStoreMessage(`${item.title} is now active.`);
       } else if (item.flameId) {
         await applyPurchasedFlame(item.flameId);
@@ -3688,6 +3786,7 @@ export default function DashboardPage() {
       price_diamonds: item.price,
       reward_payload: {
         themeId: item.themeId ?? null,
+        skinId: item.skinId ?? null,
         flameId: item.flameId ?? null,
         repeatable: item.repeatable ?? false,
         mysteryReward,
@@ -3721,6 +3820,9 @@ export default function DashboardPage() {
 
     if (item.themeId) {
       await applyPurchasedTheme(item.themeId);
+    }
+    if (item.skinId) {
+      await applyPurchasedPremiumSkin(item.skinId);
     }
     if (item.flameId) {
       await applyPurchasedFlame(item.flameId);
@@ -6472,6 +6574,12 @@ export default function DashboardPage() {
                   />
                 ) : storePurchaseCongrats.item.flameId ? (
                   <StreakFlameEmoji flameId={storePurchaseCongrats.item.flameId} size={82} title={storePurchaseCongrats.item.title} />
+                ) : storePurchaseCongrats.item.skinId && storePurchaseCongrats.item.imageSrc ? (
+                  <span
+                    className="h-full w-full rounded-full border border-sky-200/60 bg-cover bg-center shadow-[0_0_26px_rgba(93,214,255,0.38)]"
+                    style={{ backgroundImage: `url(${storePurchaseCongrats.item.imageSrc})` }}
+                    aria-hidden="true"
+                  />
                 ) : (
                   <span className="text-6xl" aria-hidden="true">{storePurchaseCongrats.item.emoji}</span>
                 )}
@@ -6485,13 +6593,13 @@ export default function DashboardPage() {
               <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
                 {storePurchaseCongrats.item.kind === "buddy"
                   ? getBuddyPurchasePopupBody(purchasedBuddyId)
-                  : storePurchaseCongrats.item.themeId || storePurchaseCongrats.item.flameId
+                  : storePurchaseCongrats.item.themeId || storePurchaseCongrats.item.skinId || storePurchaseCongrats.item.flameId
                     ? `${storePurchaseCongrats.item.title} is unlocked and ready to use.`
                     : `${storePurchaseCongrats.item.title} has been added to your account.`}
               </p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {storePurchaseCongrats.item.themeId || storePurchaseCongrats.item.flameId || storePurchaseCongrats.item.kind === "buddy" ? (
+                {storePurchaseCongrats.item.themeId || storePurchaseCongrats.item.skinId || storePurchaseCongrats.item.flameId || storePurchaseCongrats.item.kind === "buddy" ? (
                   <button
                     type="button"
                     onClick={() => void handleUsePurchasedStoreItem(storePurchaseCongrats.item)}

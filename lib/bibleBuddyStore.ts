@@ -1,7 +1,8 @@
 import type { AppThemeId } from "./appThemes";
 import type { FlameCosmeticId } from "./flameCosmetics";
+import { BLUE_STORM_SKIN, type PremiumSkinId } from "./premiumSkins";
 
-export type StoreItemKind = "theme" | "streak_flame" | "buddy" | "boost" | "mystery";
+export type StoreItemKind = "theme" | "premium_skin" | "streak_flame" | "buddy" | "boost" | "mystery";
 
 export type BibleBuddyStoreItem = {
   id: string;
@@ -13,6 +14,7 @@ export type BibleBuddyStoreItem = {
   accent: string;
   imageSrc?: string;
   themeId?: AppThemeId;
+  skinId?: PremiumSkinId;
   flameId?: FlameCosmeticId;
   comingSoon?: boolean;
   repeatable?: boolean;
@@ -28,6 +30,20 @@ export const THEME_STORE_ITEMS: BibleBuddyStoreItem[] = [
   { id: "theme-orange", kind: "theme", title: "Orange", subtitle: "Warm streak energy.", price: 500, emoji: "🟠", accent: "#EA580C", themeId: "orange" },
   { id: "theme-gray", kind: "theme", title: "Gray", subtitle: "Clean and steady.", price: 500, emoji: "⚪", accent: "#4B5563", themeId: "gray" },
   { id: "theme-black", kind: "theme", title: "Black", subtitle: "Sharp and focused.", price: 500, emoji: "⚫", accent: "#050505", themeId: "black" },
+];
+
+export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
+  {
+    id: "skin-blue-storm",
+    kind: "premium_skin",
+    title: BLUE_STORM_SKIN.name,
+    subtitle: BLUE_STORM_SKIN.storeSubtitle,
+    price: BLUE_STORM_SKIN.price,
+    emoji: "Storm",
+    accent: BLUE_STORM_SKIN.palette.accent,
+    imageSrc: BLUE_STORM_SKIN.backgroundImage,
+    skinId: BLUE_STORM_SKIN.id,
+  },
 ];
 
 export const STREAK_FLAME_STORE_ITEMS: BibleBuddyStoreItem[] = [
@@ -54,6 +70,7 @@ export const BOOST_STORE_ITEMS: BibleBuddyStoreItem[] = [
 ];
 
 export const STORE_ITEMS = [
+  ...PREMIUM_SKIN_STORE_ITEMS,
   ...THEME_STORE_ITEMS,
   ...STREAK_FLAME_STORE_ITEMS,
   ...BUDDY_STORE_ITEMS,

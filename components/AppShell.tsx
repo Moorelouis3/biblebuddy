@@ -27,6 +27,11 @@ import {
   normalizeAppThemeId,
   type AppThemeId,
 } from "../lib/appThemes";
+import {
+  PREMIUM_SKIN_STORAGE_KEY,
+  applyPremiumSkinToDocument,
+  normalizePremiumSkinId,
+} from "../lib/premiumSkins";
 import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
 import StreakFlameBadge from "./StreakFlameBadge";
@@ -215,6 +220,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     );
     setAppThemeId(resolvedTheme);
     applyAppThemeToDocument(resolvedTheme);
+    applyPremiumSkinToDocument(normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY)));
   }, []);
 
   useEffect(() => {
@@ -244,10 +250,32 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const themeId = normalizeAppThemeId(customEvent.detail?.themeId);
       setAppThemeId(themeId);
       applyAppThemeToDocument(themeId);
+      applyPremiumSkinToDocument(normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY)));
     }
     window.addEventListener("bb:app-theme-purchased", handlePurchasedTheme);
     return () => window.removeEventListener("bb:app-theme-purchased", handlePurchasedTheme);
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    function handlePremiumSkinChanged(event?: Event) {
+      const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
+      const skinId = normalizePremiumSkinId(
+        customEvent?.detail?.skinId || window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY),
+      );
+      window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, skinId);
+      applyAppThemeToDocument(appThemeId);
+      applyPremiumSkinToDocument(skinId);
+    }
+
+    handlePremiumSkinChanged();
+    window.addEventListener("bb:premium-skin-changed", handlePremiumSkinChanged);
+    window.addEventListener("storage", handlePremiumSkinChanged);
+    return () => {
+      window.removeEventListener("bb:premium-skin-changed", handlePremiumSkinChanged);
+      window.removeEventListener("storage", handlePremiumSkinChanged);
+    };
+  }, [appThemeId]);
 
   function applyThemeLocally(themeId: AppThemeId) {
     setAppThemeId(themeId);
@@ -256,6 +284,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.localStorage.setItem("bb:dashboard-theme", themeId === "dark" ? "dark" : "light");
     }
     applyAppThemeToDocument(themeId);
+    applyPremiumSkinToDocument(normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY)));
   }
 
   async function loadSavedTheme(currentUserId: string) {

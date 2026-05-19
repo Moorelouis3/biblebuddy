@@ -2,6 +2,9 @@ import { PROVERBS_ONE_NOTES } from "./proverbsOneNotes";
 import { PROVERBS_TWO_NOTES } from "./proverbsTwoNotes";
 import { PROVERBS_THREE_NOTES } from "./proverbsThreeNotes";
 import { GENESIS_ONE_OFFICIAL_NOTES } from "./genesisOneOfficialNotes";
+import { GENESIS_TWO_OFFICIAL_NOTES } from "./genesisTwoOfficialNotes";
+import { GENESIS_THREE_OFFICIAL_NOTES } from "./genesisThreeOfficialNotes";
+import { GENESIS_FOUR_OFFICIAL_NOTES } from "./genesisFourOfficialNotes";
 
 const PROVERBS_FALLBACK_NOTES: Record<number, string> = {
   1: PROVERBS_ONE_NOTES,
@@ -13,6 +16,9 @@ export function getProverbsChapterNotesFallback(book: string | null | undefined,
   if (!book || !chapter) return null;
   const bookKey = book.toLowerCase().trim();
   if (bookKey === "genesis" && chapter === 1) return GENESIS_ONE_OFFICIAL_NOTES;
+  if (bookKey === "genesis" && chapter === 2) return GENESIS_TWO_OFFICIAL_NOTES;
+  if (bookKey === "genesis" && chapter === 3) return GENESIS_THREE_OFFICIAL_NOTES;
+  if (bookKey === "genesis" && chapter === 4) return GENESIS_FOUR_OFFICIAL_NOTES;
   if (bookKey !== "proverbs") return null;
   return PROVERBS_FALLBACK_NOTES[chapter] || null;
 }

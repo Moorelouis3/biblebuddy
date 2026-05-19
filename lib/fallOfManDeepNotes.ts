@@ -1,3 +1,6 @@
+import { GENESIS_THREE_OFFICIAL_NOTES } from "./genesisThreeOfficialNotes";
+import { GENESIS_FOUR_OFFICIAL_NOTES } from "./genesisFourOfficialNotes";
+
 type FallSection = {
   reference: string;
   title: string;
@@ -590,4 +593,10 @@ function buildFallNotes(chapter: FallChapterNote) {
   return `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map((section) => buildSection(chapter.chapter, section)).join("\n\n")}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
 }
 
-export const FALL_OF_MAN_DEEP_NOTES = fallNotes.map(buildFallNotes);
+export const FALL_OF_MAN_DEEP_NOTES = fallNotes.map((chapter) =>
+  chapter.chapter === 3
+    ? GENESIS_THREE_OFFICIAL_NOTES
+    : chapter.chapter === 4
+      ? GENESIS_FOUR_OFFICIAL_NOTES
+      : buildFallNotes(chapter),
+);

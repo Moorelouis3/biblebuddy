@@ -27,7 +27,6 @@ Genesis 1 teaches the foundation of everything: God made the world, God rules th
 - 📍 Genesis 1:20-25 — God fills the waters, sky, and land with creatures.
 - 📍 Genesis 1:26-31 — God creates humanity in His image.
 
-# Study Notes
 
 ## Genesis 1:1-2
 
@@ -226,3 +225,4 @@ Sin will damage the story in Genesis 3, but it does not get the first word. Good
 Genesis 1 teaches that everything begins with God. Before sin, pain, fear, or failure, there is a good Creator making a good world. He brings order into darkness, fills emptiness with life, and gives humanity dignity and purpose by making people in His image.
 
 This chapter gives the whole Bible its starting point: God owns the world, God gives life meaning, and human beings are created to live under His good rule.`;
+
