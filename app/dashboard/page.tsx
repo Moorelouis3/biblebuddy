@@ -7430,6 +7430,110 @@ export default function DashboardPage() {
           position: relative;
           z-index: 1;
         }
+        html[data-bb-skin="blue-storm"] .dashboard-shell::after,
+        html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after {
+          background:
+            repeating-linear-gradient(112deg, rgba(183, 234, 255, 0.22) 0 1px, transparent 1px 18px),
+            repeating-linear-gradient(112deg, transparent 0 42px, rgba(93, 214, 255, 0.16) 42px 44px, transparent 44px 86px),
+            radial-gradient(circle at 12% 18%, rgba(148, 216, 255, 0.16), transparent 32%),
+            linear-gradient(115deg, transparent 0%, rgba(232, 248, 255, 0.12) 48%, transparent 76%) !important;
+          background-size: 160px 240px, 260px 360px, 100% 100%, 100% 100%;
+          filter: blur(0.3px);
+          opacity: 0.68;
+          animation: bb-dashboard-storm-rain 8s linear infinite !important;
+        }
+        html[data-bb-skin="midnight-garden"] .dashboard-shell::after,
+        html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::after {
+          background:
+            radial-gradient(circle at 12% 18%, rgba(198, 255, 139, 0.6) 0 1.5px, transparent 3px),
+            radial-gradient(circle at 78% 30%, rgba(255, 224, 132, 0.52) 0 1.5px, transparent 3px),
+            radial-gradient(ellipse at 18% 78%, rgba(175, 207, 122, 0.12), transparent 36%),
+            linear-gradient(105deg, transparent 0%, rgba(215, 184, 107, 0.1) 42%, transparent 72%) !important;
+          background-size: 92px 116px, 136px 152px, 100% 100%, 100% 100%;
+          filter: blur(0.8px);
+          opacity: 0.72;
+          animation: bb-dashboard-fireflies 13s ease-in-out infinite alternate !important;
+        }
+        html[data-bb-skin="lavender-prayer"] .dashboard-shell::after,
+        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::after {
+          background:
+            radial-gradient(circle at 20% 24%, rgba(255, 244, 255, 0.75) 0 1px, transparent 2.5px),
+            radial-gradient(circle at 72% 16%, rgba(207, 174, 255, 0.58) 0 1.5px, transparent 3px),
+            radial-gradient(ellipse at 50% 82%, rgba(207, 174, 255, 0.18), transparent 42%),
+            linear-gradient(115deg, transparent 0%, rgba(255, 245, 255, 0.12) 48%, transparent 76%) !important;
+          background-size: 88px 96px, 144px 138px, 100% 100%, 100% 100%;
+          filter: blur(1px);
+          opacity: 0.78;
+          animation: bb-dashboard-lavender-stars 16s ease-in-out infinite alternate !important;
+        }
+        html[data-bb-skin="ruby-village"] .dashboard-shell::after,
+        html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::after {
+          background:
+            radial-gradient(circle at 18% 24%, rgba(255, 192, 106, 0.68) 0 1.8px, transparent 3.5px),
+            radial-gradient(circle at 76% 34%, rgba(255, 115, 95, 0.58) 0 1.5px, transparent 3px),
+            repeating-linear-gradient(98deg, transparent 0 46px, rgba(255, 219, 180, 0.08) 46px 48px, transparent 48px 86px),
+            radial-gradient(ellipse at 50% 88%, rgba(255, 93, 72, 0.16), transparent 42%) !important;
+          background-size: 104px 140px, 148px 176px, 220px 100%, 100% 100%;
+          filter: blur(0.7px);
+          opacity: 0.76;
+          animation: bb-dashboard-embers 11s ease-in-out infinite alternate !important;
+        }
+        html[data-bb-skin="blue-storm"] .dashboard-shell::before,
+        html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::before {
+          animation: bb-dashboard-storm-flash 10s ease-in-out infinite !important;
+        }
+        html[data-bb-skin="midnight-garden"] .dashboard-shell::before,
+        html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::before {
+          animation: bb-dashboard-forest-wind 18s ease-in-out infinite alternate !important;
+        }
+        html[data-bb-skin="lavender-prayer"] .dashboard-shell::before,
+        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::before {
+          animation: bb-dashboard-prayer-fog 20s ease-in-out infinite alternate !important;
+        }
+        html[data-bb-skin="ruby-village"] .dashboard-shell::before,
+        html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::before {
+          animation: bb-dashboard-heat-pulse 13s ease-in-out infinite !important;
+        }
+        @keyframes bb-dashboard-storm-rain {
+          from { background-position: 0 -180px, 0 -260px, 0 0, 0 0; transform: translate3d(-1%, -1%, 0); }
+          to { background-position: -120px 360px, -180px 520px, 0 0, 0 0; transform: translate3d(1%, 1%, 0); }
+        }
+        @keyframes bb-dashboard-storm-flash {
+          0%, 82%, 100% { opacity: 0.22; filter: brightness(1); }
+          86% { opacity: 0.74; filter: brightness(1.35); }
+          88% { opacity: 0.18; filter: brightness(0.95); }
+          91% { opacity: 0.5; filter: brightness(1.18); }
+        }
+        @keyframes bb-dashboard-fireflies {
+          from { background-position: 0 0, 36px 22px, 0 0, 0 0; transform: translate3d(-1%, 1%, 0); }
+          to { background-position: 28px -34px, -24px 42px, 0 0, 0 0; transform: translate3d(1.5%, -1%, 0); }
+        }
+        @keyframes bb-dashboard-forest-wind {
+          from { transform: translate3d(-1.5%, 0, 0) skewX(-1deg); opacity: 0.52; }
+          to { transform: translate3d(1.5%, -0.5%, 0) skewX(1deg); opacity: 0.82; }
+        }
+        @keyframes bb-dashboard-lavender-stars {
+          from { background-position: 0 0, 26px 10px, 0 0, 0 0; transform: translate3d(-1%, 0, 0); }
+          to { background-position: 20px -24px, -28px 34px, 0 0, 0 0; transform: translate3d(1%, -1%, 0); }
+        }
+        @keyframes bb-dashboard-prayer-fog {
+          from { transform: translate3d(-1%, 0, 0) scale(1); opacity: 0.54; }
+          to { transform: translate3d(1%, -1%, 0) scale(1.03); opacity: 0.82; }
+        }
+        @keyframes bb-dashboard-embers {
+          from { background-position: 0 60px, 30px 80px, 0 0, 0 0; transform: translate3d(0, 1%, 0); }
+          to { background-position: 24px -120px, -34px -160px, 60px 0, 0 0; transform: translate3d(0, -1%, 0); }
+        }
+        @keyframes bb-dashboard-heat-pulse {
+          0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; filter: blur(0); }
+          50% { transform: translate3d(0.8%, -0.5%, 0) scale(1.025); opacity: 0.82; filter: blur(0.6px); }
+        }
+        html[data-bb-perf-reduce="true"] .dashboard-shell::before,
+        html[data-bb-perf-reduce="true"] .dashboard-shell::after,
+        html[data-bb-perf-reduce="true"] .bb-blue-storm-stage::before,
+        html[data-bb-perf-reduce="true"] .bb-blue-storm-stage::after {
+          animation: none !important;
+        }
         @media (min-width: 1024px) {
           html[data-bb-skin="blue-storm"] .dashboard-shell {
             background:
