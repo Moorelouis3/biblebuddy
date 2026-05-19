@@ -298,7 +298,7 @@ html {
   background-color: var(--bb-surface-soft) !important;
 }
 
-[data-bb-theme]:not([data-bb-skin="blue-storm"]):not([data-bb-skin="midnight-garden"]):not([data-bb-skin="lavender-prayer"]):not([data-bb-skin="ruby-village"]) header {
+[data-bb-theme]:not([data-bb-skin="blue-storm"]):not([data-bb-skin="midnight-garden"]):not([data-bb-skin="lavender-prayer"]):not([data-bb-skin="ruby-village"]):not([data-bb-skin="slow-mornings"]) header {
   background-color: var(--bb-background) !important;
   border-color: var(--bb-card-border) !important;
 }
@@ -478,6 +478,58 @@ html[data-bb-skin="ruby-village"] body::after {
   animation: bb-ruby-village-mist 28s ease-in-out infinite alternate;
 }
 
+html[data-bb-skin="slow-mornings"] {
+  background:
+    var(--bb-skin-bg-image),
+    var(--bb-background) !important;
+  background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+html[data-bb-skin="slow-mornings"] body {
+  background:
+    radial-gradient(circle at 54% 15%, rgba(255, 216, 150, 0.18), transparent 24%),
+    radial-gradient(circle at 22% 36%, rgba(245, 178, 91, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(22, 13, 8, 0.02) 0%, rgba(32, 19, 12, 0.22) 50%, rgba(18, 11, 7, 0.78) 100%),
+    var(--bb-skin-bg-image),
+    #170f0a !important;
+  background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--bb-text-primary);
+}
+
+html[data-bb-skin="slow-mornings"] body::before,
+html[data-bb-skin="slow-mornings"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+html[data-bb-skin="slow-mornings"] body::before {
+  background:
+    radial-gradient(circle at 50% 8%, rgba(255, 222, 160, 0.2), transparent 24%),
+    radial-gradient(circle at 20% 34%, rgba(245, 178, 91, 0.12), transparent 30%),
+    linear-gradient(100deg, transparent 0%, rgba(255, 228, 185, 0.06) 48%, transparent 78%);
+  mix-blend-mode: screen;
+  animation: bb-slow-mornings-candle 15s ease-in-out infinite;
+}
+
+html[data-bb-skin="slow-mornings"] body::after {
+  background:
+    repeating-linear-gradient(108deg, rgba(255, 232, 190, 0.08) 0 1px, transparent 1px 28px),
+    radial-gradient(circle at 80% 22%, rgba(245, 178, 91, 0.1), transparent 30%),
+    linear-gradient(115deg, transparent 0%, rgba(255, 244, 222, 0.08) 45%, transparent 74%);
+  opacity: 0.66;
+  filter: blur(1.4px);
+  animation: bb-slow-mornings-steam 30s ease-in-out infinite alternate;
+}
+
 html[data-bb-perf-reduce="true"][data-bb-skin] body::before,
 html[data-bb-perf-reduce="true"][data-bb-skin] body::after,
 html[data-bb-app-hidden="true"][data-bb-skin] body::before,
@@ -514,6 +566,13 @@ html[data-bb-skin="ruby-village"] .dashboard-shell {
   z-index: 1;
 }
 
+html[data-bb-skin="slow-mornings"] header,
+html[data-bb-skin="slow-mornings"] main,
+html[data-bb-skin="slow-mornings"] .dashboard-shell {
+  position: relative;
+  z-index: 1;
+}
+
 html[data-bb-skin="blue-storm"] main,
 html[data-bb-skin="blue-storm"] .bg-gray-50,
 html[data-bb-skin="blue-storm"] .dashboard-shell,
@@ -530,6 +589,13 @@ html[data-bb-skin="lavender-prayer"] .dashboard-shell {
 html[data-bb-skin="ruby-village"] main,
 html[data-bb-skin="ruby-village"] .bg-gray-50,
 html[data-bb-skin="ruby-village"] .dashboard-shell {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html[data-bb-skin="slow-mornings"] main,
+html[data-bb-skin="slow-mornings"] .bg-gray-50,
+html[data-bb-skin="slow-mornings"] .dashboard-shell {
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -602,10 +668,28 @@ html[data-bb-skin="ruby-village"] header {
   pointer-events: none;
 }
 
+html[data-bb-skin="slow-mornings"] header {
+  display: block !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 80 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  pointer-events: none;
+}
+
 html[data-bb-skin="blue-storm"] header > div,
 html[data-bb-skin="midnight-garden"] header > div,
 html[data-bb-skin="lavender-prayer"] header > div,
-html[data-bb-skin="ruby-village"] header > div {
+html[data-bb-skin="ruby-village"] header > div,
+html[data-bb-skin="slow-mornings"] header > div {
   background: transparent !important;
   height: 0 !important;
   min-height: 0 !important;
@@ -617,7 +701,8 @@ html[data-bb-skin="ruby-village"] header > div {
 html[data-bb-skin="blue-storm"] .bb-landing-header,
 html[data-bb-skin="midnight-garden"] .bb-landing-header,
 html[data-bb-skin="lavender-prayer"] .bb-landing-header,
-html[data-bb-skin="ruby-village"] .bb-landing-header {
+html[data-bb-skin="ruby-village"] .bb-landing-header,
+html[data-bb-skin="slow-mornings"] .bb-landing-header {
   position: relative !important;
   top: auto !important;
   left: auto !important;
@@ -648,7 +733,11 @@ html[data-bb-skin="lavender-prayer"] header .text-gray-700,
 html[data-bb-skin="ruby-village"] header a,
 html[data-bb-skin="ruby-village"] header button,
 html[data-bb-skin="ruby-village"] header .text-gray-900,
-html[data-bb-skin="ruby-village"] header .text-gray-700 {
+html[data-bb-skin="ruby-village"] header .text-gray-700,
+html[data-bb-skin="slow-mornings"] header a,
+html[data-bb-skin="slow-mornings"] header button,
+html[data-bb-skin="slow-mornings"] header .text-gray-900,
+html[data-bb-skin="slow-mornings"] header .text-gray-700 {
   color: var(--bb-text-primary) !important;
 }
 
@@ -659,7 +748,9 @@ html[data-bb-skin="midnight-garden"] header [role="button"],
 html[data-bb-skin="lavender-prayer"] header button,
 html[data-bb-skin="lavender-prayer"] header [role="button"],
 html[data-bb-skin="ruby-village"] header button,
-html[data-bb-skin="ruby-village"] header [role="button"] {
+html[data-bb-skin="ruby-village"] header [role="button"],
+html[data-bb-skin="slow-mornings"] header button,
+html[data-bb-skin="slow-mornings"] header [role="button"] {
   background: color-mix(in srgb, var(--bb-card) 86%, transparent) !important;
   border-color: color-mix(in srgb, var(--bb-accent) 28%, transparent) !important;
   box-shadow: 0 10px 26px rgba(0, 8, 22, 0.24);
@@ -776,6 +867,34 @@ html[data-bb-skin="ruby-village"] .bb-skin-glow-tile {
     0 0 0 1px rgba(255, 115, 95, 0.14),
     0 0 20px rgba(255, 93, 72, 0.2),
     inset 0 1px 0 rgba(255, 235, 214, 0.16) !important;
+}
+
+html[data-bb-skin="slow-mornings"] .bb-skin-glow-card {
+  border-color: rgba(245, 178, 91, 0.54) !important;
+  box-shadow:
+    0 0 0 1px rgba(245, 178, 91, 0.2),
+    0 0 26px rgba(245, 178, 91, 0.24),
+    0 18px 44px rgba(18, 10, 5, 0.42),
+    inset 0 0 26px rgba(255, 210, 138, 0.1),
+    inset 0 1px 0 rgba(255, 244, 225, 0.18) !important;
+}
+
+html[data-bb-skin="slow-mornings"] .bb-skin-glow-card:hover {
+  border-color: rgba(255, 210, 138, 0.7) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 210, 138, 0.26),
+    0 0 34px rgba(245, 178, 91, 0.32),
+    0 20px 48px rgba(18, 10, 5, 0.46),
+    inset 0 0 28px rgba(255, 210, 138, 0.14),
+    inset 0 1px 0 rgba(255, 244, 225, 0.22) !important;
+}
+
+html[data-bb-skin="slow-mornings"] .bb-skin-glow-tile {
+  border-color: rgba(245, 178, 91, 0.48) !important;
+  box-shadow:
+    0 0 0 1px rgba(245, 178, 91, 0.14),
+    0 0 20px rgba(245, 178, 91, 0.2),
+    inset 0 1px 0 rgba(255, 244, 225, 0.16) !important;
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-notification-panel {
@@ -1327,6 +1446,95 @@ html[data-bb-skin="ruby-village"] [data-louis-avatar] {
   animation: bb-ruby-village-avatar-glow 4.8s ease-in-out infinite;
 }
 
+html[data-bb-skin="slow-mornings"] .bb-card,
+html[data-bb-skin="slow-mornings"] .bb-surface,
+html[data-bb-skin="slow-mornings"] .bg-white,
+html[data-bb-skin="slow-mornings"] [class*="bg-white/"],
+html[data-bb-skin="slow-mornings"] [class*="bg-[#fff"],
+html[data-bb-skin="slow-mornings"] [class*="bg-[#fb"],
+html[data-bb-skin="slow-mornings"] [class*="bg-gradient-to"] {
+  background:
+    linear-gradient(135deg, rgba(70, 43, 28, 0.78), rgba(32, 19, 13, 0.84)) !important;
+  border-color: rgba(245, 178, 91, 0.32) !important;
+  box-shadow:
+    0 18px 44px rgba(18, 10, 5, 0.42),
+    0 0 32px rgba(245, 178, 91, 0.12),
+    inset 0 1px 0 rgba(255, 244, 225, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+html[data-bb-skin="slow-mornings"] .bb-surface-soft,
+html[data-bb-skin="slow-mornings"] .bg-gray-100,
+html[data-bb-skin="slow-mornings"] .bg-gray-200,
+html[data-bb-skin="slow-mornings"] [class*="bg-blue-50"],
+html[data-bb-skin="slow-mornings"] [class*="bg-sky-100"],
+html[data-bb-skin="slow-mornings"] [class*="bg-emerald-50"],
+html[data-bb-skin="slow-mornings"] [class*="bg-green-50"] {
+  background: rgba(148, 91, 45, 0.28) !important;
+  border-color: rgba(245, 178, 91, 0.24) !important;
+}
+
+html[data-bb-skin="slow-mornings"] [class*="text-gray-950"],
+html[data-bb-skin="slow-mornings"] [class*="text-gray-900"],
+html[data-bb-skin="slow-mornings"] [class*="text-slate-950"],
+html[data-bb-skin="slow-mornings"] [class*="text-black"] {
+  color: var(--bb-text-primary) !important;
+}
+
+html[data-bb-skin="slow-mornings"] [class*="text-gray-800"],
+html[data-bb-skin="slow-mornings"] [class*="text-gray-700"],
+html[data-bb-skin="slow-mornings"] [class*="text-gray-600"],
+html[data-bb-skin="slow-mornings"] [class*="text-slate-700"] {
+  color: var(--bb-text-secondary) !important;
+}
+
+html[data-bb-skin="slow-mornings"] [class*="text-gray-500"],
+html[data-bb-skin="slow-mornings"] [class*="text-gray-400"],
+html[data-bb-skin="slow-mornings"] [class*="text-slate-500"] {
+  color: var(--bb-text-muted) !important;
+}
+
+html[data-bb-skin="slow-mornings"] [class*="border-gray-"],
+html[data-bb-skin="slow-mornings"] [class*="border-blue-"],
+html[data-bb-skin="slow-mornings"] [class*="border-sky-"],
+html[data-bb-skin="slow-mornings"] [class*="border-[#"] {
+  border-color: rgba(245, 178, 91, 0.28) !important;
+}
+
+html[data-bb-skin="slow-mornings"] nav,
+html[data-bb-skin="slow-mornings"] [class*="sticky bottom"] {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 210, 138, 0.12), transparent 38%),
+    linear-gradient(135deg, rgba(58, 34, 22, 0.92), rgba(29, 18, 12, 0.92)) !important;
+  border-color: rgba(245, 178, 91, 0.32) !important;
+  box-shadow:
+    0 -18px 42px rgba(18, 10, 5, 0.46),
+    0 0 30px rgba(245, 178, 91, 0.14),
+    inset 0 1px 0 rgba(255, 244, 225, 0.12);
+  backdrop-filter: blur(20px);
+}
+
+html[data-bb-skin="slow-mornings"] button:not(:disabled):focus-visible,
+html[data-bb-skin="slow-mornings"] [role="button"]:focus-visible {
+  outline: 2px solid rgba(245, 178, 91, 0.8);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(245, 178, 91, 0.18);
+}
+
+html[data-bb-skin="slow-mornings"] .streak-flame-earned,
+html[data-bb-skin="slow-mornings"] .dashboard-diamond-glow {
+  filter: drop-shadow(0 0 14px rgba(255, 210, 138, 0.48));
+}
+
+html[data-bb-skin="slow-mornings"] img[alt="Your profile"],
+html[data-bb-skin="slow-mornings"] [data-louis-avatar] {
+  box-shadow:
+    0 0 0 2px rgba(245, 178, 91, 0.84),
+    0 0 24px rgba(245, 178, 91, 0.38),
+    0 0 40px rgba(255, 210, 138, 0.2);
+  animation: bb-slow-mornings-avatar-glow 4.8s ease-in-out infinite;
+}
+
 @keyframes bb-blue-storm-mist {
   0% {
     transform: translate3d(-1.4%, -0.4%, 0) scale(1.02);
@@ -1455,6 +1663,47 @@ html[data-bb-skin="ruby-village"] [data-louis-avatar] {
       0 0 0 2px rgba(255, 156, 120, 0.94),
       0 0 30px rgba(255, 93, 72, 0.44),
       0 0 48px rgba(255, 192, 106, 0.24);
+  }
+}
+
+@keyframes bb-slow-mornings-steam {
+  0% {
+    transform: translate3d(-1.2%, 0.4%, 0) scale(1.02);
+    opacity: 0.46;
+  }
+  100% {
+    transform: translate3d(1.4%, -0.8%, 0) scale(1.05);
+    opacity: 0.72;
+  }
+}
+
+@keyframes bb-slow-mornings-candle {
+  0%, 100% {
+    opacity: 0.22;
+  }
+  45% {
+    opacity: 0.42;
+  }
+  52% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 0.48;
+  }
+}
+
+@keyframes bb-slow-mornings-avatar-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 2px rgba(245, 178, 91, 0.72),
+      0 0 18px rgba(245, 178, 91, 0.26),
+      0 0 28px rgba(255, 210, 138, 0.14);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px rgba(255, 210, 138, 0.94),
+      0 0 30px rgba(245, 178, 91, 0.44),
+      0 0 48px rgba(255, 210, 138, 0.24);
   }
 }
 

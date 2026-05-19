@@ -3,6 +3,7 @@
 import {
   getPremiumSkin,
   normalizePremiumSkinId,
+  PREMIUM_SKINS,
   type PremiumSkinId,
 } from "./premiumSkins";
 
@@ -82,8 +83,8 @@ export function preloadActiveSkinAssets(skinId: PremiumSkinId | string | null | 
 
 export function preloadStoreSkinThumbnails() {
   scheduleIdleWork(() => {
-    ["blue-storm", "midnight-garden", "lavender-prayer", "ruby-village"].forEach((skinId) => {
-      preloadImage(getPremiumSkin(skinId)?.thumbnailImage, "low");
+    PREMIUM_SKINS.forEach((skin) => {
+      preloadImage(skin.thumbnailImage, "low");
     });
   }, 900);
 }

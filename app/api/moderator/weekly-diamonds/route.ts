@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { normalizeCustomMemberBadge } from "@/lib/userBadges";
 import {
   MODERATOR_WEEKLY_DIAMOND_AMOUNT,
@@ -14,6 +14,7 @@ const MODERATOR_PAYOUT_POPUP_FIX_AT = "2026-05-19T18:51:57.000Z";
 const MODERATOR_SKIN_SIGNING_BONUS_AMOUNT = 5000;
 const MODERATOR_SKIN_SIGNING_BONUS_ID = "moderator-skin-signing-bonus-2026-05-19";
 const MODERATOR_SKIN_SIGNING_BONUS_LABEL = "moderator_skin_signing_bonus:premium_skins:2026-05-19";
+const MODERATOR_WEEKLY_FALLBACK_ID_PREFIX = "moderator-weekly-diamond-payout";
 
 function shouldShowPayoutPopupAgain(seenAt: string | null | undefined) {
   if (!seenAt) return true;
@@ -132,6 +133,88 @@ async function ensureCurrentUserSkinSigningBonus(auth: Awaited<ReturnType<typeof
   };
 }
 
+async function addDiamondsToProfile(
+  admin: SupabaseClient,
+  userId: string,
+  amount: number,
+) {
+  const { data: profile } = await admin
+    .from("profile_stats")
+    .select("diamonds_count, total_diamonds_earned")
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  const nextDiamonds = Math.max(0, Number(profile?.diamonds_count ?? 0)) + amount;
+  const nextTotalEarned = Math.max(0, Number(profile?.total_diamonds_earned ?? 0)) + amount;
+
+  await admin
+    .from("profile_stats")
+    .upsert(
+      {
+        user_id: userId,
+        diamonds_count: nextDiamonds,
+        total_diamonds_earned: nextTotalEarned,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id" },
+    );
+}
+
+async function ensureCurrentUserWeeklyFallbackPayout(auth: Awaited<ReturnType<typeof requireSignedInUser>>) {
+  if ("error" in auth || (!auth.isModerator && !auth.isAdmin)) return null;
+
+  const weekStart = getCurrentModeratorPayoutWeekStart();
+  const payoutId = `${MODERATOR_WEEKLY_FALLBACK_ID_PREFIX}:${weekStart}`;
+  const actionLabel = `moderator_weekly_diamond_payout:${weekStart}:${MODERATOR_WEEKLY_DIAMOND_AMOUNT}`;
+
+  const { data: existingAction } = await auth.admin
+    .from("master_actions")
+    .select("id, created_at")
+    .eq("user_id", auth.requester.id)
+    .eq("action_label", actionLabel)
+    .maybeSingle();
+
+  let paidAt = existingAction?.created_at || new Date().toISOString();
+
+  if (!existingAction) {
+    const { data: profile } = await auth.admin
+      .from("profile_stats")
+      .select("username, display_name")
+      .eq("user_id", auth.requester.id)
+      .maybeSingle();
+
+    await addDiamondsToProfile(auth.admin, auth.requester.id, MODERATOR_WEEKLY_DIAMOND_AMOUNT);
+    const { data: insertedAction } = await auth.admin
+      .from("master_actions")
+      .insert({
+        user_id: auth.requester.id,
+        username: profile?.username || profile?.display_name || auth.requester.email || "Bible Buddy Moderator",
+        action_type: "trivia_question_answered",
+        action_label: actionLabel,
+        created_at: paidAt,
+      })
+      .select("created_at")
+      .maybeSingle();
+    paidAt = insertedAction?.created_at || paidAt;
+  }
+
+  const { data: seenRow } = await auth.admin
+    .from("user_badge_popups_seen")
+    .select("shown_at")
+    .eq("user_id", auth.requester.id)
+    .eq("badge_id", payoutId)
+    .maybeSingle();
+
+  return {
+    id: payoutId,
+    weekStart,
+    amount: MODERATOR_WEEKLY_DIAMOND_AMOUNT,
+    paidAt,
+    seenAt: seenRow?.shown_at ?? null,
+    kind: "weekly" as const,
+  };
+}
+
 export async function GET(request: NextRequest) {
   const auth = await requireSignedInUser(request);
   if ("error" in auth) return auth.error;
@@ -156,22 +239,9 @@ export async function GET(request: NextRequest) {
     currentPayout = await getCurrentUserModeratorPayout(auth.admin, auth.requester.id);
     if (skinSigningBonus && shouldShowPayoutPopupAgain(skinSigningBonus.seenAt)) currentPayout = skinSigningBonus;
   }
-  if (canViewOwnPayout && !payoutTableAvailable && auth.isAdmin) {
-    const weekStart = getCurrentModeratorPayoutWeekStart();
-    const fallbackId = `admin-moderator-payout-preview:${weekStart}`;
-    const { data: seenRow } = await auth.admin
-      .from("user_badge_popups_seen")
-      .select("shown_at")
-      .eq("user_id", auth.requester.id)
-      .eq("badge_id", fallbackId)
-      .maybeSingle();
-    currentPayout = {
-      id: fallbackId,
-      weekStart,
-      amount: MODERATOR_WEEKLY_DIAMOND_AMOUNT,
-      paidAt: new Date().toISOString(),
-      seenAt: seenRow?.shown_at ?? null,
-    };
+  if (canViewOwnPayout && !payoutTableAvailable) {
+    currentPayout = await ensureCurrentUserWeeklyFallbackPayout(auth);
+    if (skinSigningBonus && shouldShowPayoutPopupAgain(skinSigningBonus.seenAt)) currentPayout = skinSigningBonus;
   }
   const { data: updatedProfile } = canViewOwnPayout
     ? await auth.admin
@@ -210,7 +280,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Missing payout id." }, { status: 400 });
   }
 
-  if (payoutId.startsWith("admin-moderator-payout-preview:") || payoutId === MODERATOR_SKIN_SIGNING_BONUS_ID) {
+  if (
+    payoutId.startsWith("admin-moderator-payout-preview:") ||
+    payoutId.startsWith(`${MODERATOR_WEEKLY_FALLBACK_ID_PREFIX}:`) ||
+    payoutId === MODERATOR_SKIN_SIGNING_BONUS_ID
+  ) {
     const { error } = await auth.admin.from("user_badge_popups_seen").upsert(
       {
         user_id: auth.requester.id,

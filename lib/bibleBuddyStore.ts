@@ -1,6 +1,6 @@
 import type { AppThemeId } from "./appThemes";
 import type { FlameCosmeticId } from "./flameCosmetics";
-import { BLUE_STORM_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, RUBY_VILLAGE_SKIN, type PremiumSkinId } from "./premiumSkins";
+import { BLUE_STORM_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, RUBY_VILLAGE_SKIN, SLOW_MORNINGS_SKIN, type PremiumSkinId } from "./premiumSkins";
 
 export type StoreItemKind = "theme" | "premium_skin" | "streak_flame" | "buddy" | "boost" | "mystery";
 
@@ -76,6 +76,17 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     accent: RUBY_VILLAGE_SKIN.palette.accent,
     imageSrc: RUBY_VILLAGE_SKIN.thumbnailImage,
     skinId: RUBY_VILLAGE_SKIN.id,
+  },
+  {
+    id: "skin-slow-mornings",
+    kind: "premium_skin",
+    title: SLOW_MORNINGS_SKIN.name,
+    subtitle: SLOW_MORNINGS_SKIN.storeSubtitle,
+    price: SLOW_MORNINGS_SKIN.price,
+    emoji: "Coffee",
+    accent: SLOW_MORNINGS_SKIN.palette.accent,
+    imageSrc: SLOW_MORNINGS_SKIN.thumbnailImage,
+    skinId: SLOW_MORNINGS_SKIN.id,
   },
 ];
 

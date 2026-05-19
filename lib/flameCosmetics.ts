@@ -39,5 +39,6 @@ export function getPremiumSkinFlameId(skinId: PremiumSkinId | string | null | un
   if (skinId === "midnight-garden") return "green";
   if (skinId === "lavender-prayer") return "purple";
   if (skinId === "ruby-village") return "red";
+  if (skinId === "slow-mornings") return "gold";
   return null;
 }
