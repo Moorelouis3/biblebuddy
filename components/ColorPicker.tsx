@@ -38,11 +38,14 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor,
 
   if (!anchor || !mounted) return null;
 
+  const left = Math.min(Math.max(anchor.x - 80, 12), window.innerWidth - 172);
+  const top = Math.min(Math.max(anchor.y, 12), window.innerHeight - 64);
+
   return createPortal(
     <div
       ref={ref}
       className="fixed z-[9999] flex gap-2 rounded-lg border bg-white p-2 shadow-lg animate-fade-in"
-      style={{ top: anchor.y, left: anchor.x }}
+      style={{ top, left }}
     >
       {COLORS.map((c) => (
         <button

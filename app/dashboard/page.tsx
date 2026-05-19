@@ -1067,6 +1067,7 @@ export default function DashboardPage() {
   }
 
   function buildDashboardLouisNudgePool(): DashboardLouisNudge[] {
+    const selectedBuddyName = getBuddyAvatar(normalizeBuddyAvatarId(profile?.selected_buddy_avatar)).name;
     const pool: DashboardLouisNudge[] = [
       {
         id: "bible-stat-consistency",
@@ -1165,7 +1166,7 @@ export default function DashboardPage() {
       ["discovery-bible-studies", "Bible Studies are the main path", "Bible Buddy is built around chapter studies, not random devotionals.", "Pick the next chapter and follow the six-task rhythm."],
       ["discovery-search-by-book", "Search by Bible book", "Inside Bible Studies, you can search by book and load a chapter onto your dashboard.", "It is the fast way to jump to a specific chapter."],
       ["discovery-keywords", "Tap the underlined words", "People, places, and keywords can open a quick meaning card while you read.", "That helps the Bible feel less confusing in the moment."],
-      ["discovery-lil-louis", "Lil Louis knows your study", "Use the Lil Louis tab when you want help with your current chapter or next task.", "He is built to guide the Bible habit first."],
+      ["discovery-lil-louis", `${selectedBuddyName} knows your study`, `Use the ${selectedBuddyName} tab when you want help with your current chapter or next task.`, "Your Bible Buddy is built to guide the Bible habit first."],
       ["discovery-community", "Community is part of the habit", "The Community tab lets you share thoughts, ask questions, and encourage other Bible Buddies.", "One honest comment can help somebody else keep going."],
       ["discovery-games", "Games help it stick", "Trivia and Scrambled are not filler.", "They help you remember what you just studied."],
       ["discovery-tv", "Use TV when reading feels heavy", "Bible Buddy TV gives you a different way to keep learning.", "It is good for days when you need a lighter lane."],
@@ -1641,6 +1642,8 @@ export default function DashboardPage() {
     };
   }, [userId]);
 
+  const selectedBuddyNameForTour = getBuddyAvatar(normalizeBuddyAvatarId(profile?.selected_buddy_avatar)).name;
+
   const TOUR_COPY: Partial<Record<FeatureTourKey, { title: string; body: string }>> = {
     bible: {
       title: "Welcome to The Bible Section",
@@ -1667,8 +1670,8 @@ export default function DashboardPage() {
       body: "Use this section to capture insights, organize your study thoughts, and keep track of what God is teaching you.",
     },
     chat_widget: {
-      title: "Welcome to Chat with Lil Louis",
-      body: "This chat lets you ask Bible questions instantly while you study so you can stay focused in your reading flow. Louis has been carefully trained for hours on biblical content and designed to search Scripture, filter out nonsense, and prioritize clear, Scripture-grounded answers. Itâ€™s like having a Bible study partner built directly into your reading experience.",
+      title: `Welcome to Chat with ${selectedBuddyNameForTour}`,
+      body: `This chat lets you ask Bible questions instantly while you study so you can stay focused in your reading flow. ${selectedBuddyNameForTour} is designed to search Scripture, filter out nonsense, and prioritize clear, Scripture-grounded answers. It is like having a Bible study partner built directly into your reading experience.`,
     },
     bible_study_hub: {
       title: "Welcome to Bible Study Tools",
@@ -1776,7 +1779,7 @@ export default function DashboardPage() {
         <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ“– Read a Chapter</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">When you open a chapter, youâ€™ll see:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>â€¢ A short overview from Little Louis explaining whatâ€™s happening</li>
+          <li>â€¢ A short overview from {selectedBuddyNameForTour} explaining whatâ€™s happening</li>
           <li>â€¢ The full chapter text</li>
           <li>â€¢ Verse numbers for easy reference</li>
         </ul>
@@ -1806,7 +1809,7 @@ export default function DashboardPage() {
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ¤– Use Little Louis Anytime</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ¤– Use {selectedBuddyNameForTour} Anytime</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Tap the chat icon to ask questions about:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
           <li>â€¢ Scripture</li>
@@ -2383,33 +2386,18 @@ export default function DashboardPage() {
 
     if (bibleBrowserReading) {
       const readerBookSlug = encodeURIComponent(bibleBrowserReading.book.toLowerCase().trim());
-      const readerSrc = `/Bible/${readerBookSlug}/${bibleBrowserReading.chapter}?dashboardEmbed=1`;
+      const readerSrc = `/Bible/${readerBookSlug}/${bibleBrowserReading.chapter}?dashboardEmbed=1&hideReaderChrome=1`;
 
       return (
         <section
           ref={bibleProgressPanelRef}
-          className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:p-4"
+          className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]"
         >
-          <div className="mb-3 flex items-center justify-between gap-3 rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-3 py-2">
-            <button
-              type="button"
-              onClick={() => setBibleBrowserReading(null)}
-              className="rounded-full bg-[var(--bb-button)] px-4 py-2 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
-            >
-              Chapters
-            </button>
-            <div className="min-w-0 text-right">
-              <p className="truncate text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">Full Bible Reader</p>
-              <p className="truncate text-sm font-black text-[var(--bb-text-primary)]">
-                {bibleBrowserReading.book} {bibleBrowserReading.chapter}
-              </p>
-            </div>
-          </div>
           <iframe
             key={`${bibleBrowserReading.book}:${bibleBrowserReading.chapter}:dashboard-full-reader`}
             src={readerSrc}
             title={`${bibleBrowserReading.book} ${bibleBrowserReading.chapter} full Bible reader`}
-            className="h-[calc(100vh-190px)] min-h-[720px] w-full rounded-[24px] border border-[var(--bb-card-border)] bg-white"
+            className="h-[calc(100vh-145px)] min-h-[780px] w-full border-0 bg-[var(--bb-card)]"
           />
         </section>
       );
@@ -2698,7 +2686,7 @@ export default function DashboardPage() {
       return (
         <article
           key={item.id}
-          className={`relative flex min-h-[310px] flex-col overflow-hidden rounded-[22px] border bg-[var(--bb-card)] shadow-[0_12px_30px_rgba(38,63,99,0.12)] sm:min-h-[390px] ${
+          className={`relative flex min-h-[258px] flex-col overflow-hidden rounded-[22px] border bg-[var(--bb-card)] shadow-[0_12px_30px_rgba(38,63,99,0.12)] sm:min-h-[320px] ${
             active ? "border-[var(--bb-accent)] ring-2 ring-[var(--bb-accent-soft)]" : "border-[var(--bb-card-border)]"
           }`}
         >
@@ -2708,18 +2696,18 @@ export default function DashboardPage() {
             </span>
           ) : null}
           <div
-            className="grid h-48 place-items-end overflow-hidden bg-[var(--bb-surface-soft)] px-2 pt-3 sm:h-72 sm:px-3 sm:pt-5"
+            className="flex h-[162px] items-end justify-center overflow-hidden bg-[var(--bb-surface-soft)] px-0 sm:h-[220px]"
           >
             <img
               src={item.imageSrc || "/Newlouiswave.png"}
               alt={item.title}
-              className="max-h-full w-full object-contain object-bottom"
+              className="h-[190px] w-[128%] max-w-none object-contain object-bottom sm:h-[258px] sm:w-[124%]"
             />
           </div>
-          <div className="mt-auto border-t border-[var(--bb-card-border)] bg-[var(--bb-card)] p-2.5 text-center sm:p-3">
+          <div className="mt-auto border-t border-[var(--bb-card-border)] bg-[var(--bb-card)] p-2 text-center sm:p-2.5">
             <h4 className="text-[15px] font-black leading-tight text-[var(--bb-text-primary)] sm:text-base">{item.title}</h4>
-            <p className="mt-1 min-h-[32px] text-[11px] font-bold leading-4 text-[var(--bb-text-secondary)] sm:text-xs">{item.subtitle}</p>
-            <div className="mt-2 sm:mt-3">{renderStoreActionButton(item, owned, "w-full")}</div>
+            <p className="mt-0.5 min-h-[28px] text-[11px] font-bold leading-4 text-[var(--bb-text-secondary)] sm:text-xs">{item.subtitle}</p>
+            <div className="mt-1.5">{renderStoreActionButton(item, owned, "w-full")}</div>
           </div>
         </article>
       );
@@ -5182,8 +5170,8 @@ export default function DashboardPage() {
     if (activeStorePromo === "buddies") {
       return (
         <ModalShell isOpen={true} onClose={closePromo} zIndex="z-[120]" backdropColor="bg-black/70" scrollable>
-          <div className="w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-2xl">
-            <div className="relative overflow-hidden bg-[var(--bb-surface)] px-5 pb-6 pt-5">
+          <div className="w-full max-w-xl overflow-hidden rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-2xl">
+            <div className="relative overflow-hidden bg-[var(--bb-card)] px-6 pb-7 pt-5">
               <button
                 type="button"
                 onClick={closePromo}
@@ -5192,9 +5180,12 @@ export default function DashboardPage() {
               >
                 x
               </button>
-              <p className="mt-2 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">New Bible Buddies</p>
-              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary)]">Pick the voice that helps you keep showing up</h2>
-              <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
+              <div className="mt-1 flex justify-center">
+                <LouisAvatar mood="wave" size={132} />
+              </div>
+              <p className="mt-3 text-center text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">👥 New Bible Buddies</p>
+              <h2 className="mt-2 text-center text-3xl font-black leading-tight text-[var(--bb-text-primary)] sm:text-4xl">Pick the voice that helps you keep showing up</h2>
+              <p className="mx-auto mt-3 max-w-md text-center text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
                 Unlock a new Bible Buddy and switch your study coach anytime. Same Bible habit, different encouragement style.
               </p>
 
@@ -5233,8 +5224,8 @@ export default function DashboardPage() {
 
     return (
       <ModalShell isOpen={true} onClose={closePromo} zIndex="z-[120]" backdropColor="bg-black/70" scrollable>
-        <div className="w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-2xl">
-          <div className="relative overflow-hidden bg-[var(--bb-surface)] px-5 pb-6 pt-5">
+        <div className="w-full max-w-xl overflow-hidden rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-2xl">
+          <div className="relative overflow-hidden bg-[var(--bb-card)] px-6 pb-7 pt-5">
             <button
               type="button"
               onClick={closePromo}
@@ -5243,14 +5234,12 @@ export default function DashboardPage() {
             >
               x
             </button>
-            <div className="mt-1 flex items-center gap-3">
-              <div className="grid h-16 w-16 place-items-center rounded-[22px] bg-[var(--bb-accent-soft)] text-4xl shadow-inner" aria-hidden="true">💎</div>
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">Diamond Store</p>
-                <h2 className="text-3xl font-black leading-tight text-[var(--bb-text-primary)]">Spend diamonds. Build your setup.</h2>
-              </div>
+            <div className="mt-1 flex justify-center">
+              <LouisAvatar mood="stareyes" size={132} />
             </div>
-            <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
+            <p className="mt-3 text-center text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">💎 Diamond Store</p>
+            <h2 className="mt-2 text-center text-3xl font-black leading-tight text-[var(--bb-text-primary)] sm:text-4xl">Spend diamonds. Build your setup.</h2>
+            <p className="mx-auto mt-3 max-w-md text-center text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
               Your Bible study work turns into diamonds. Use them on themes, flame colors, Bible Buddies, boosts, and more rewards coming next.
             </p>
 
@@ -5590,17 +5579,15 @@ export default function DashboardPage() {
         backdropColor="bg-black/45"
       >
         {buddySelectionWelcome ? (
-          <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-            <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center">
+          <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+            <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center sm:px-8">
               <div className="flex justify-center">
-                <div className="rounded-full bg-white p-2 shadow-lg">
-                  <LouisAvatar buddyId={buddySelectionWelcome.buddyId} mood="wave" size={118} />
-                </div>
+                <LouisAvatar buddyId={buddySelectionWelcome.buddyId} mood="wave" size={142} />
               </div>
               <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#5f86bd)]">
-                {buddySelectionWelcome.buddyName} is ready
+                ✨ {buddySelectionWelcome.buddyName} is ready
               </p>
-              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
+              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)] sm:text-4xl">
                 New Bible Buddy selected
               </h2>
               <p className="mx-auto mt-3 max-w-sm text-base font-semibold leading-7 text-[var(--bb-text-secondary,#355487)]">
@@ -5653,8 +5640,8 @@ export default function DashboardPage() {
         backdropColor="bg-black/50"
       >
         {dailyLoginGiftReveal ? (
-          <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-            <div className="bg-[var(--bb-card,#ffffff)] px-6 py-7 text-center">
+          <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+            <div className="bg-[var(--bb-card,#ffffff)] px-6 py-7 text-center sm:px-8">
               <button
                 type="button"
                 onClick={() => setDailyLoginGiftReveal(null)}
@@ -5664,12 +5651,12 @@ export default function DashboardPage() {
                 ×
               </button>
               <div className="mt-1 flex justify-center">
-                <LouisAvatar mood={dailyLoginGiftReveal.status === "opened" ? "stareyes" : "wave"} size={104} />
+                <LouisAvatar mood={dailyLoginGiftReveal.status === "opened" ? "stareyes" : "wave"} size={138} />
               </div>
               <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#5f86bd)]">
-                Daily Login Gift
+                🎁 Daily Login Gift
               </p>
-              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
+              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)] sm:text-4xl">
                 {dailyLoginGiftReveal.status === "opened" ? "Gift opened!" : "Welcome back again"}
               </h2>
               <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
@@ -5737,24 +5724,9 @@ export default function DashboardPage() {
           }}
           backdropColor="bg-black/45"
         >
-        <div className="mx-4 w-full max-w-sm overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="relative overflow-hidden bg-[var(--bb-card,#ffffff)] px-5 pb-6 pt-5 text-center">
-            <div className="flex items-start justify-between gap-3">
-              <div className="flex items-center gap-3 text-left">
-                <div className="relative grid h-[92px] w-[92px] shrink-0 place-items-center rounded-[28px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] shadow-[0_16px_35px_rgba(33,48,79,0.14)]">
-                  <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={82} />
-                </div>
-                <div>
-                  <p className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] ${dashboardNudgeTone.badge}`}>
-                    {streakMotivationModalMode === "daily" ? "Daily Streak" : displayedDashboardNudge.eyebrow}
-                  </p>
-                  {streakMotivationModalMode === "checkin" ? (
-                    <div className={`mt-2 grid h-11 w-11 place-items-center rounded-2xl ${dashboardNudgeTone.tile} text-2xl shadow-sm`} aria-hidden="true">
-                      {dashboardNudgeTone.icon}
-                    </div>
-                  ) : null}
-                </div>
-              </div>
+        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+          <div className="relative overflow-hidden bg-[var(--bb-card,#ffffff)] px-6 pb-7 pt-5 text-center sm:px-8">
+            <div className="flex justify-end">
               <button
                 type="button"
                 onClick={() => {
@@ -5769,9 +5741,17 @@ export default function DashboardPage() {
                 ×
               </button>
             </div>
+            <div className="mt-1 flex justify-center">
+              <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={138} />
+            </div>
+            <div className="mt-3 flex justify-center">
+              <p className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] ${dashboardNudgeTone.badge}`}>
+                {streakMotivationModalMode === "daily" ? "🔥 Daily Streak" : `${dashboardNudgeTone.icon} ${displayedDashboardNudge.eyebrow}`}
+              </p>
+            </div>
             {streakMotivationModalMode === "checkin" ? (
               <>
-                <h2 className="mt-5 text-left text-[2rem] font-black leading-[1.05] text-[var(--bb-text-primary,#21304f)]">
+                <h2 className="mt-4 text-center text-[2rem] font-black leading-[1.05] text-[var(--bb-text-primary,#21304f)] sm:text-4xl">
                   {displayedDashboardNudge.title}
                 </h2>
                 <div className="mt-4 space-y-3 rounded-[24px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] p-4 text-left shadow-sm">
@@ -5794,7 +5774,7 @@ export default function DashboardPage() {
               </>
             ) : (
               <>
-              <h2 className="mt-5 flex items-center justify-center gap-2 text-3xl font-bold text-[#21304f]">
+              <h2 className="mt-4 flex items-center justify-center gap-2 text-3xl font-black text-[var(--bb-text-primary,#21304f)] sm:text-4xl">
                 <span
                   className={`leading-none ${
                     (profile?.current_streak ?? 0) >= 30
@@ -5812,7 +5792,7 @@ export default function DashboardPage() {
                 </span>
                 <span>{streakMotivation.headline}</span>
               </h2>
-            <p className="mt-3 text-sm font-semibold leading-6 text-[#4f678e]">
+            <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4f678e)]">
               {streakMotivation.body}
             </p>
               {showStreakMotivationTaskPrompt && (
@@ -5987,23 +5967,15 @@ export default function DashboardPage() {
         onClose={() => setShowGraceDaysInfoModal(false)}
         backdropColor="bg-black/45"
       >
-        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#cfe3f5] bg-white shadow-2xl">
-          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-7 text-center">
+        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#cfe3f5)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-7 text-center sm:px-8">
             <div className="flex justify-center">
-              <div className="relative rounded-full bg-[#e7f4ff] p-2 shadow-sm">
-                <LouisAvatar mood="stareyes" size={104} />
-                <span
-                  className="absolute -right-1 -top-1 flex h-10 w-10 items-center justify-center rounded-full bg-white text-2xl shadow-md"
-                  aria-hidden="true"
-                >
-                  💎
-                </span>
-              </div>
+              <LouisAvatar mood="stareyes" size={138} />
             </div>
             <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f86bd]">
-              Streak Protection
+              💎 Streak Protection
             </p>
-            <h2 className="mt-2 text-3xl font-black text-[#21304f]">Grace Days</h2>
+            <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary,#21304f)] sm:text-4xl">Grace Days</h2>
             <div className="mt-5 space-y-4 text-left text-sm leading-6 text-[#4f678e]">
               <p>
                 Grace Days are designed to give you grace while building your Bible habit.
@@ -6019,7 +5991,7 @@ export default function DashboardPage() {
                 If you miss a day, a Grace Day can be used to continue your streak and keep your progress going.
               </p>
             </div>
-            <div className="mt-6 rounded-2xl border border-[#d7e8f8] bg-white/80 px-4 py-4 text-sm font-semibold leading-6 text-[#21304f] shadow-sm">
+            <div className="mt-6 rounded-2xl border border-[var(--bb-card-border,#d7e8f8)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4 text-sm font-semibold leading-6 text-[var(--bb-text-primary,#21304f)] shadow-sm">
               The goal is not perfection. The goal is helping you build a long term relationship with God through consistency and grace.
             </div>
             <button
@@ -6043,7 +6015,7 @@ export default function DashboardPage() {
           const completionLine = getBadgeCompletionLine(activeEarnedBadge.description);
 
           return (
-            <div className="mx-4 w-full max-w-sm overflow-hidden rounded-[24px] border border-[#d7e4f7] bg-white shadow-2xl">
+            <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
               <style>{`
                 @keyframes badge-color-pop {
                   0% { filter: grayscale(1); transform: scale(0.82) rotate(-4deg); opacity: 0.75; }
@@ -6069,15 +6041,13 @@ export default function DashboardPage() {
                 <div className="pointer-events-none absolute bottom-16 left-12 text-lg badge-float-spark" style={{ animationDelay: "0.7s" }}>✦</div>
 
                 <div className="flex justify-center">
-                  <div className="relative rounded-full bg-white/75 p-1 shadow-sm">
-                    <LouisAvatar mood="hands" size={96} />
-                  </div>
+                  <LouisAvatar mood="hands" size={132} />
                 </div>
 
-                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
-                  Badge Unlocked
+                <p className="mt-4 text-xs font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#5f86bd)]">
+                  🏅 Badge Unlocked
                 </p>
-                <h2 className="mt-3 text-3xl font-bold leading-tight text-[#21304f]">You earned a new badge!</h2>
+                <h2 className="mt-3 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)] sm:text-4xl">You earned a new badge!</h2>
 
                 <div className="mt-5 flex justify-center">
                   <div className={`badge-color-pop relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-[28px] border-2 text-center ${tone.tile} ${tone.glow}`}>
@@ -6100,11 +6070,11 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              <div className="bg-white px-5 pb-5 pt-4">
+              <div className="bg-[var(--bb-card,#ffffff)] px-5 pb-5 pt-4">
                 <button
                   type="button"
                   onClick={() => setActiveEarnedBadge(null)}
-                  className="w-full rounded-full bg-[#7BAFD4] px-5 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                  className="w-full rounded-full bg-[var(--bb-button,#7BAFD4)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#0f172a)] shadow-sm transition hover:brightness-95"
                 >
                   Let’s go
                 </button>
@@ -6126,9 +6096,7 @@ export default function DashboardPage() {
           <div className="border-b border-[var(--bb-card-border,#dbe7f6)] bg-[var(--bb-card,#ffffff)] px-5 py-5 sm:px-7">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="rounded-full bg-[#e8f4ff] p-1 shadow-sm">
-                  <LouisAvatar mood="stareyes" size={88} />
-                </div>
+                <LouisAvatar mood="stareyes" size={112} />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#5f86bd]">
                     Bible Buddy Badges
@@ -6308,12 +6276,12 @@ export default function DashboardPage() {
         onClose={() => void closeDailyTaskCelebrationModal()}
         backdropColor="bg-black/45"
       >
-        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center">
+        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center sm:px-8">
             <div className="flex justify-center">
-              <LouisAvatar mood="stareyes" size={104} />
+              <LouisAvatar mood="stareyes" size={138} />
             </div>
-            <h2 className="mt-4 text-3xl font-bold text-[#21304f]">Chapter Complete!</h2>
+            <h2 className="mt-4 text-3xl font-black text-[var(--bb-text-primary,#21304f)] sm:text-4xl">🎉 Chapter Complete!</h2>
             <p className="mt-3 text-base font-semibold text-[#355487]">
               You completed {completedChapterLabel}.
             </p>
@@ -6336,17 +6304,17 @@ export default function DashboardPage() {
         onClose={() => setFreeChapterGateLabel(null)}
         backdropColor="bg-black/55"
       >
-        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#f0d7b3] bg-white shadow-2xl">
-          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-7 text-center">
+        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#f0d7b3)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-7 text-center sm:px-8">
             <div className="flex justify-center">
-              <LouisAvatar mood="wave" size={104} />
+              <LouisAvatar mood="wave" size={138} />
             </div>
-            <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Free Bible Buddy</p>
-            <h2 className="mt-2 text-2xl font-black text-[#21304f]">Your next chapter opens soon</h2>
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">📖 Free Bible Buddy</p>
+            <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary,#21304f)]">Your next chapter opens soon</h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-[#58709d]">
               Hey, as a free Bible Buddy, you get one new Bible study chapter each day.
             </p>
-            <div className="mt-4 rounded-2xl bg-white/80 px-4 py-4 shadow-sm">
+            <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4 shadow-sm">
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5b6f92]">
                 {freeChapterGateLabel || "Your next chapter"} opens in
               </p>
@@ -6382,12 +6350,12 @@ export default function DashboardPage() {
         }}
         backdropColor="bg-black/50"
       >
-        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center">
+        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center sm:px-8">
             <div className="flex justify-center">
-              <LouisAvatar mood="stareyes" size={104} />
+              <LouisAvatar mood="stareyes" size={138} />
             </div>
-            <h2 className="mt-4 text-3xl font-bold text-[#2b3550]">Hey Jessica</h2>
+            <h2 className="mt-4 text-3xl font-black text-[var(--bb-text-primary,#2b3550)] sm:text-4xl">🎉 Hey Jessica</h2>
             <p className="mt-3 text-base leading-7 text-[#5b6480]">
               You have been awarded <span className="font-bold text-[#1f2937]">1000 bonus XP</span>.
             </p>
@@ -6417,15 +6385,15 @@ export default function DashboardPage() {
         }}
         backdropColor="bg-black/50"
       >
-        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center">
+        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+          <div className="bg-[var(--bb-card,#ffffff)] px-6 py-8 text-center sm:px-8">
             <div className="flex justify-center">
-              <LouisAvatar mood="hands" size={108} />
+              <LouisAvatar mood="hands" size={138} />
             </div>
-            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
-              Account Restored
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#5f86bd)]">
+              ✨ Account Restored
             </p>
-            <h2 className="mt-3 text-3xl font-bold text-[#2b3550]">Hey Zorian</h2>
+            <h2 className="mt-3 text-3xl font-black text-[var(--bb-text-primary,#2b3550)] sm:text-4xl">Hey Zorian</h2>
             <p className="mt-3 text-base font-semibold leading-7 text-[#355487]">
               We are sorry you had trouble logging in.
             </p>

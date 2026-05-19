@@ -175,6 +175,7 @@ export default function BibleChapterPage() {
   const chapter = Number(params.chapter);
   const isChapterTextEmbed = searchParams.get("embedded") === "chapter-text";
   const isDashboardEmbed = searchParams.get("dashboardEmbed") === "1";
+  const hideReaderChrome = isDashboardEmbed || searchParams.get("hideReaderChrome") === "1";
 
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
@@ -254,6 +255,7 @@ export default function BibleChapterPage() {
   const [booksModalSelectedBook, setBooksModalSelectedBook] = useState<string | null>(null);
   const reflectionSectionRef = useRef<HTMLDivElement | null>(null);
   const [highlightReflectionSection, setHighlightReflectionSection] = useState(false);
+  const [studyReflectionQuestion, setStudyReflectionQuestion] = useState<string | null>(null);
   const autoOpenedNotesRef = useRef(false);
   const louisChapterPromptRef = useRef<string | null>(null);
   const bibleGuideShownThisVisitRef = useRef(false);
@@ -1609,11 +1611,54 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 
+  useEffect(() => {
+    let cancelled = false;
+    const bookKey = normalizeBookName(bookDisplayName);
+
+    async function loadStudyReflectionQuestion() {
+      setStudyReflectionQuestion(null);
+
+      try {
+        const { data, error } = await supabase
+          .from("devotional_days")
+          .select("bible_reading_book, reflection_question")
+          .eq("bible_reading_chapter", chapter)
+          .not("reflection_question", "is", null)
+          .limit(50);
+
+        if (cancelled) return;
+
+        if (error) {
+          console.warn("[chapter_reflection] Could not load study reflection question:", error.message);
+          return;
+        }
+
+        const match = (data || []).find((row: any) => {
+          const rowBook = typeof row?.bible_reading_book === "string" ? row.bible_reading_book : "";
+          return normalizeBookName(rowBook) === bookKey;
+        });
+        const question = typeof match?.reflection_question === "string" ? match.reflection_question.trim() : "";
+        setStudyReflectionQuestion(question || null);
+      } catch (err) {
+        if (!cancelled) {
+          console.warn("[chapter_reflection] Could not load study reflection question:", err);
+        }
+      }
+    }
+
+    void loadStudyReflectionQuestion();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [bookDisplayName, chapter]);
+
   const chapterReflectionQuestion = useMemo(
     () =>
+      studyReflectionQuestion ||
       getBibleStudyReflectionQuestion(bookDisplayName, chapter) ||
       buildChapterReflectionQuestion(bookDisplayName, chapter, chapterSummary),
-    [bookDisplayName, chapter, chapterSummary]
+    [studyReflectionQuestion, bookDisplayName, chapter, chapterSummary]
   );
 
   useEffect(() => {
@@ -2262,7 +2307,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
   const totalChaptersInBook = getBookTotalChapters(book);
   const chapterReaderHref = (targetBook: string, targetChapter: number) =>
-    `/Bible/${encodeURIComponent(targetBook.toLowerCase())}/${targetChapter}${isDashboardEmbed ? "?dashboardEmbed=1" : ""}`;
+    `/Bible/${encodeURIComponent(targetBook.toLowerCase())}/${targetChapter}${isDashboardEmbed ? "?dashboardEmbed=1&hideReaderChrome=1" : ""}`;
 
   function goPrevChapter() {
     if (chapter <= 1) return;
@@ -2301,8 +2346,8 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
   }
 
   return (
-    <div className={isDashboardEmbed ? "bg-white px-0 py-0" : "min-h-screen bg-gray-50 py-8 px-4"}>
-      <div className={isDashboardEmbed ? "mx-auto max-w-4xl px-1 py-1 sm:px-2 sm:py-2" : "max-w-4xl mx-auto"}>
+    <div className={isDashboardEmbed ? "bg-[var(--bb-card,#ffffff)] px-0 py-0" : "min-h-screen bg-gray-50 py-8 px-4"}>
+      <div className={isDashboardEmbed ? "mx-auto max-w-4xl px-2 py-3 sm:px-4 sm:py-4" : "max-w-4xl mx-auto"}>
         {/* BACK LINK */}
         {!isDashboardEmbed ? (
           <div className="mb-4 text-xs sm:text-sm text-blue-600">
@@ -2313,14 +2358,16 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         ) : null}
 
         {/* PAGE HEADER */}
-        <div className="mb-1 flex items-start justify-between gap-3">
-          <h1 className="text-3xl font-bold">
-            {bookDisplayName} {chapter}
-          </h1>
-        </div>
+        {!hideReaderChrome ? (
+          <div className="mb-1 flex items-start justify-between gap-3">
+            <h1 className="text-3xl font-bold">
+              {bookDisplayName} {chapter}
+            </h1>
+          </div>
+        ) : null}
 
         {/* LOUIS INSTRUCTION — above the control bar */}
-        {true ? <div className="mb-4 flex items-start gap-3">
+        {!hideReaderChrome ? <div className="mb-4 flex items-start gap-3">
           <LouisAvatar mood="bible" size={40} />
           <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
             <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
@@ -2340,7 +2387,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         </div> : null}
 
         {/* READER CONTROL BAR */}
-        <div className="relative z-20 mb-5">
+        {!hideReaderChrome ? <div className="relative z-20 mb-5">
           <div className="rounded-[26px] border-0 bg-transparent px-0 py-0 shadow-none backdrop-blur md:border md:border-blue-100 md:bg-white/90 md:px-3 md:py-2.5 md:shadow-sm">
             <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               {/* Left: Previous + Book */}
@@ -2730,12 +2777,14 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               )}
             </div>
           </div>
-        </div>
+        </div> : null}
 
         {/* VERSE BLOCK */}
         <div
           ref={verseContainerRef}
-          className={`bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto ${
+          className={`border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] rounded-2xl shadow-sm p-6 md:p-8 mb-6 ${
+            hideReaderChrome ? "overflow-visible" : "max-h-[60vh] overflow-y-auto"
+          } ${
             plainTextMode ? "plain-text-mode" : ""
           }`}
         >

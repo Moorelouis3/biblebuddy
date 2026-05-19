@@ -77,22 +77,22 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
 
   return (
     <ModalShell isOpen={open} onClose={handleAcknowledge} backdropColor="bg-black/45" scrollable={true}>
-      <div className="relative my-8 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d9e7ff] bg-white shadow-2xl">
+      <div className="relative my-8 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d9e7ff)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
         <button
           type="button"
           onClick={handleAcknowledge}
-          className="absolute right-4 top-4 z-10 text-xl text-[#7a97c7] transition hover:text-[#365b98]"
+          className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-[var(--bb-surface-soft,#f8fbff)] text-xl font-black text-[var(--bb-text-secondary,#7a97c7)] shadow-sm transition hover:brightness-95"
           aria-label="Close verse of the day"
         >
           x
         </button>
 
         <div className="bg-[var(--bb-card,#ffffff)] px-6 pb-6 pt-7 sm:px-8">
-          <div className="mx-auto mb-4 w-fit rounded-full border border-[#d7e5ff] bg-white shadow-lg">
-            <LouisAvatar mood="wave" size={108} />
+          <div className="mb-3 flex justify-center">
+            <LouisAvatar mood="wave" size={132} />
           </div>
-          <p className="mb-3 text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5d7fb7]">
-            Verse of the Day
+          <p className="mb-3 text-center text-[11px] font-black uppercase tracking-[0.28em] text-[var(--bb-accent,#5d7fb7)]">
+            📖 Verse of the Day
           </p>
 
           <div className="rounded-[26px] border border-[var(--bb-card-border,#d9e7ff)] bg-[var(--bb-surface-soft,#f8fbff)] px-5 py-5 text-center shadow-sm">
@@ -102,18 +102,18 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
           </div>
         </div>
 
-        <div className="w-full bg-white px-6 pb-6 pt-5 sm:px-8">
+        <div className="w-full bg-[var(--bb-card,#ffffff)] px-6 pb-6 pt-5 sm:px-8">
           {!showExplanation ? (
             <button
               type="button"
               onClick={() => setShowExplanation(true)}
-              className="mb-4 w-full rounded-2xl border border-[#d9e7ff] bg-[#f5f9ff] px-4 py-3 text-center text-sm font-semibold text-[#3f6fb2] transition hover:bg-[#edf4ff]"
+              className="mb-4 w-full rounded-2xl border border-[var(--bb-card-border,#d9e7ff)] bg-[var(--bb-surface-soft,#f5f9ff)] px-4 py-3 text-center text-sm font-black text-[var(--bb-accent,#3f6fb2)] transition hover:brightness-95"
             >
               Do you want to understand this verse?
             </button>
           ) : (
-            <div className="mb-4 rounded-[22px] border border-[#d9e7ff] bg-[#f8fbff] px-4 py-4">
-              <p className="mb-3 text-sm font-semibold text-[#3e67a7]">Understanding this verse</p>
+            <div className="mb-4 rounded-[22px] border border-[var(--bb-card-border,#d9e7ff)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4">
+              <p className="mb-3 text-sm font-black text-[var(--bb-accent,#3e67a7)]">🧠 Understanding this verse</p>
               <div className="space-y-3">
                 {explanationBlocks.map((block, index) => (
                   <p key={`${verse.reference}-explanation-${index}`} className="text-sm leading-7 text-[#445b80]">
@@ -126,7 +126,7 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
           <button
             type="button"
             onClick={handleAcknowledge}
-            className="w-full rounded-2xl bg-[#3f6fb2] px-4 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-[#335f9a]"
+            className="w-full rounded-2xl bg-[var(--bb-button,#3f6fb2)] px-4 py-3 text-center text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
           >
             Close
           </button>

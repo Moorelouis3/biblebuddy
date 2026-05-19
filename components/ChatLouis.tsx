@@ -18,6 +18,7 @@ import {
 } from "../lib/louisDailyFlow";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import { SELECTED_BUDDY_STORAGE_KEY, getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "@/lib/buddyAvatars";
 
 type MessageRole = "user" | "assistant";
 
@@ -1653,6 +1654,8 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
   const [currentStreak, setCurrentStreak] = useState<number>(0);
   const [lastActiveDate, setLastActiveDate] = useState<string | null>(null);
   const [userFirstName, setUserFirstName] = useState<string | null>(null);
+  const [selectedBuddyId, setSelectedBuddyId] = useState<BuddyAvatarId>("louis");
+  const selectedBuddy = getBuddyAvatar(selectedBuddyId);
   const [isPaidUser, setIsPaidUser] = useState(false);
   const [onboardingGoal, setOnboardingGoal] = useState<string | null>(null);
   const [bibleExperienceLevel, setBibleExperienceLevel] = useState<string | null>(null);
@@ -1715,6 +1718,28 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
     if (trimmed) return trimmed.charAt(0).toUpperCase();
     return "Y";
   }, [input, messages]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    function loadSelectedBuddy(event?: Event) {
+      const detailBuddyId =
+        event instanceof CustomEvent && typeof event.detail?.buddyId === "string"
+          ? event.detail.buddyId
+          : null;
+      const storedBuddyId = window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY);
+      setSelectedBuddyId(normalizeBuddyAvatarId(detailBuddyId || storedBuddyId));
+    }
+
+    loadSelectedBuddy();
+    window.addEventListener("bb:selected-buddy-avatar-changed", loadSelectedBuddy);
+    window.addEventListener("storage", loadSelectedBuddy);
+
+    return () => {
+      window.removeEventListener("bb:selected-buddy-avatar-changed", loadSelectedBuddy);
+      window.removeEventListener("storage", loadSelectedBuddy);
+    };
+  }, []);
 
   // Format voice text with paragraph breaks
   function formatVoiceText(text: string, prevText: string): string {
@@ -2451,7 +2476,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
     ? "Type today or tomorrow..."
     : hasPendingDevotionalChallengePrompt || hasPendingDashboardDailyPrompt
       ? "Type yes or no..."
-      : "Talk to Lil Louis...";
+      : `Talk to ${selectedBuddy.name}...`;
 
   function formatInboxMessage(row: LouisInboxMessageRow) {
     const actionLine =
@@ -3275,6 +3300,8 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
               : {}),
           },
           louisContext: {
+            selectedBuddyId: selectedBuddy.id,
+            selectedBuddyName: selectedBuddy.name,
             isFirstTimeLouis: !hasLouisHistory,
             currentStreak,
             onboardingGoal,
@@ -3499,7 +3526,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
           className={`z-[70] rounded-full flex items-center justify-center transition-all duration-300 ${
             hasPendingLouisMoment ? "animate-[bounce_1.25s_ease-in-out_infinite]" : "scale-95"
           }`}
-          aria-label="Chat with Lil Louis"
+          aria-label={`Chat with ${selectedBuddy.name}`}
         >
           <div className={`relative ${bubbleOuterSize} rounded-full flex items-center justify-center`}>
             {hasPendingLouisMoment ? (
@@ -3510,7 +3537,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
                 </span>
               </>
             ) : null}
-            <LouisAvatar mood="bible" size={avatarSize} />
+            <LouisAvatar buddyId={selectedBuddy.id} mood="bible" size={avatarSize} />
           </div>
         </button>
       )}
@@ -3548,10 +3575,10 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
             >
               <div className="flex items-center gap-3">
                 <div className="grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
-                  <LouisAvatar mood="peace" size={34} />
+                  <LouisAvatar buddyId={selectedBuddy.id} mood="peace" size={34} />
                 </div>
                 <div>
-                  <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Chat with Lil Louis</span>
+                  <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Chat with {selectedBuddy.name}</span>
                 </div>
               </div>
               <button
@@ -3608,7 +3635,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
                   {!isUserMessage ? (
                     startsMessageRun ? (
                       <div className="mt-5 grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
-                        <LouisAvatar mood="peace" size={31} />
+                        <LouisAvatar buddyId={selectedBuddy.id} mood="peace" size={31} />
                       </div>
                     ) : (
                       <div className="h-9 w-9 shrink-0" aria-hidden="true" />
@@ -3618,7 +3645,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
                   <div className={isUserMessage ? "max-w-[78%] text-right" : "max-w-[78%]"}>
                     {startsMessageRun ? (
                       <div className="mb-1 text-[10px] font-medium text-[var(--bb-text-muted,#64748b)]">
-                        {isUserMessage ? "You" : "Lil Louis"}
+                        {isUserMessage ? "You" : selectedBuddy.name}
                       </div>
                     ) : null}
                     <div
@@ -3647,15 +3674,15 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
             {isSending ? (
               <div className="flex items-end justify-start gap-2.5">
                 <div className="mt-5 grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
-                  <LouisAvatar mood="thinking" size={31} />
+                  <LouisAvatar buddyId={selectedBuddy.id} mood="thinking" size={31} />
                 </div>
                 <div className="max-w-[78%]">
-                  <div className="mb-1 text-[10px] font-medium text-[var(--bb-text-muted,#64748b)]">Lil Louis</div>
+                  <div className="mb-1 text-[10px] font-medium text-[var(--bb-text-muted,#64748b)]">{selectedBuddy.name}</div>
                   <div className="inline-flex items-center gap-1 rounded-[22px] rounded-bl-md border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#ffffff)] px-3.5 py-3 text-[var(--bb-text-primary,#1f2937)] shadow-sm">
                     <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--bb-accent,#94a3b8)] [animation-delay:-0.2s]" />
                     <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--bb-accent,#94a3b8)] [animation-delay:-0.1s]" />
                     <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--bb-accent,#94a3b8)]" />
-                    <span className="ml-2 text-[11px] text-[var(--bb-text-muted,#64748b)]">Lil Louis is typing...</span>
+                    <span className="ml-2 text-[11px] text-[var(--bb-text-muted,#64748b)]">{selectedBuddy.name} is typing...</span>
                   </div>
                 </div>
               </div>
@@ -3836,12 +3863,12 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
       {false && featureToursEnabled && (
         <FeatureTourModal
           isOpen={showChatTourModal}
-          title="Welcome to Chat with Lil Louis"
+          title={`Welcome to Chat with ${selectedBuddy.name}`}
           body=""
           content={
             <div className="space-y-6">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-                Welcome to Chat with Lil Louis
+                Welcome to Chat with {selectedBuddy.name}
               </h1>
 
               <p className="text-sm md:text-[15px] text-gray-600 leading-7">
@@ -3851,7 +3878,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
               <section className="space-y-2">
                 <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ’¬ Ask Questions Anytime</h2>
                 <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-                  While reading Scripture, you can open Chat with Lil Louis and ask:
+                  While reading Scripture, you can open Chat with {selectedBuddy.name} and ask:
                 </p>
                 <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
                   <li>â€¢ What does this verse mean?</li>

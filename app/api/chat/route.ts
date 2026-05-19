@@ -73,6 +73,10 @@ export async function POST(req: Request) {
     const growMode = body.growMode ?? false;
     const louisContext = body.louisContext ?? null;
     const studyContext = louisContext?.studyContext ?? body.studyContext ?? null;
+    const selectedBuddyName =
+      typeof louisContext?.selectedBuddyName === "string" && louisContext.selectedBuddyName.trim()
+        ? louisContext.selectedBuddyName.trim()
+        : "Lil Louis";
 
     console.log("Received request:", {
       messageCount: userMessages.length,
@@ -952,10 +956,24 @@ END OF GROW MODE INSTRUCTIONS
       }
     }
 
+    if (selectedBuddyName !== "Lil Louis") {
+      systemContent = systemContent
+        .replaceAll("Little Louis", selectedBuddyName)
+        .replaceAll("Lil Louis", selectedBuddyName)
+        .replaceAll("Louis Moore", `${selectedBuddyName}'s Bible Buddy voice`)
+        .replaceAll("Louis style", `${selectedBuddyName} style`)
+        .replaceAll("Louis talking", `${selectedBuddyName} talking`)
+        .replaceAll("Louis chat", `${selectedBuddyName} chat`)
+        .replaceAll("Louis page", `${selectedBuddyName} page`)
+        .replaceAll("Louis has", `${selectedBuddyName} has`)
+        .replaceAll("Louis is", `${selectedBuddyName} is`);
+    }
+
     console.log("Sending to OpenAI:", {
       messageCount: userMessages.length,
       growMode,
       model: "gpt-4o-mini",
+      selectedBuddyName,
     });
 
     const messagesToSend = [

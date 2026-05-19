@@ -87,16 +87,6 @@ export function ModalShell({
       } justify-center p-4 ${closing ? "modal-backdrop-out" : "modal-backdrop-in"}`}
       onClick={closeOnBackdrop ? onClose : undefined}
     >
-      <style>{`
-        .bb-modal-shell [data-louis-avatar] {
-          width: calc(var(--bb-louis-avatar-size) * 2) !important;
-          height: calc(var(--bb-louis-avatar-size) * 2) !important;
-        }
-        .bb-modal-shell [data-louis-avatar] > [data-buddy-avatar-root] {
-          transform: scale(2);
-          transform-origin: center;
-        }
-      `}</style>
       <div
         className={`flex w-full justify-center ${closing ? "modal-panel-out" : "modal-panel-in"}`}
         onClick={(e) => e.stopPropagation()}

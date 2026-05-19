@@ -99,7 +99,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
     console.log('[VerseHighlighter] handleVerseClick fired', { verse, user });
     if (!user) return;
     const rect = (e.target as HTMLElement).getBoundingClientRect();
-    setPicker({ verse, anchor: { x: rect.left + rect.width / 2, y: rect.bottom + window.scrollY + 4 } });
+    setPicker({ verse, anchor: { x: rect.left + rect.width / 2, y: rect.bottom + 8 } });
   };
 
   const handleColorSelect = async (color: string | null) => {
@@ -138,9 +138,10 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
           style={{ backgroundColor: highlightMap[v.number] ? getColorCode(highlightMap[v.number]) : "transparent", borderRadius: highlightMap[v.number] ? 4 : 0, transition: "background-color 0.3s" }}
         >
           <button
+            type="button"
             className="shrink-0 select-none cursor-pointer rounded-md bg-blue-100 px-2 py-0.5 text-lg font-bold shadow-sm hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
             style={{ minWidth: 32 }}
-            onClick={(e) => { e.stopPropagation(); handleVerseClick(v.number, e); }}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleVerseClick(v.number, e); }}
             title={`Highlight verse ${v.number}`}
             tabIndex={0}
           >
