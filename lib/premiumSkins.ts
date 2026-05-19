@@ -1,4 +1,4 @@
-export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings";
+export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -196,7 +196,46 @@ export const SLOW_MORNINGS_SKIN: PremiumSkin = {
   },
 };
 
-export const PREMIUM_SKINS: PremiumSkin[] = [BLUE_STORM_SKIN, MIDNIGHT_GARDEN_SKIN, LAVENDER_PRAYER_SKIN, RUBY_VILLAGE_SKIN, SLOW_MORNINGS_SKIN];
+export const MORNING_MERCY_SKIN: PremiumSkin = {
+  id: "morning-mercy",
+  name: "Morning Mercy",
+  label: "Premium Skin",
+  storeSubtitle: "A hopeful sunrise devotional atmosphere with flowers, coffee, and fresh-start peace.",
+  backgroundImage: "/skins/optimized/morning-mercy-desktop.webp",
+  originalImage: "/skins/MorningMercy.png",
+  thumbnailImage: "/skins/optimized/morning-mercy-thumb.webp",
+  mobileBackgroundImage: "/skins/optimized/morning-mercy-mobile.webp",
+  desktopBackgroundImage: "/skins/optimized/morning-mercy-desktop.webp",
+  price: 1000,
+  palette: {
+    background: "#FFF3E3",
+    surface: "rgba(255, 238, 219, 0.78)",
+    surfaceSoft: "rgba(255, 203, 169, 0.34)",
+    card: "rgba(255, 244, 229, 0.78)",
+    cardBorder: "rgba(238, 151, 104, 0.36)",
+    textPrimary: "#4A271A",
+    textSecondary: "#7C4D35",
+    textMuted: "#A66D51",
+    accent: "#E99265",
+    accentSoft: "rgba(233, 146, 101, 0.24)",
+    button: "#D6754D",
+    buttonText: "#FFF8EE",
+    navBackground: "rgba(255, 238, 219, 0.9)",
+    navActive: "#C8585D",
+    navInactive: "#8D6046",
+    progressTrack: "rgba(166, 109, 81, 0.18)",
+    progressFill: "#F4B35F",
+  },
+};
+
+export const PREMIUM_SKINS: PremiumSkin[] = [
+  BLUE_STORM_SKIN,
+  MIDNIGHT_GARDEN_SKIN,
+  LAVENDER_PRAYER_SKIN,
+  RUBY_VILLAGE_SKIN,
+  SLOW_MORNINGS_SKIN,
+  MORNING_MERCY_SKIN,
+];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
 
 export function normalizePremiumSkinId(value: unknown): PremiumSkinId {
@@ -227,6 +266,9 @@ export function getPremiumSkinForLegacyTheme(value: unknown): PremiumSkinId {
       return "ruby-village";
     case "brown":
       return "slow-mornings";
+    case "cream":
+    case "peach":
+      return "morning-mercy";
     default:
       return "none";
   }
@@ -280,6 +322,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
           ? "rgba(255, 115, 95, 0.42)"
           : skin.id === "slow-mornings"
             ? "rgba(245, 178, 91, 0.42)"
+            : skin.id === "morning-mercy"
+              ? "rgba(233, 146, 101, 0.42)"
           : "rgba(93, 214, 255, 0.42)",
   );
   root.style.setProperty(
@@ -292,6 +336,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
           ? "rgba(255, 192, 106, 0.34)"
           : skin.id === "slow-mornings"
             ? "rgba(255, 210, 138, 0.36)"
+            : skin.id === "morning-mercy"
+              ? "rgba(244, 179, 95, 0.34)"
           : "rgba(93, 214, 255, 0.2)",
   );
 

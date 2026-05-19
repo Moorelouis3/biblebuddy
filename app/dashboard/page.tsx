@@ -2552,6 +2552,7 @@ export default function DashboardPage() {
           .skin-world-lavender-prayer { --premium-aura: #CFAEFF; }
           .skin-world-ruby-village { --premium-aura: #FF735F; }
           .skin-world-slow-mornings { --premium-aura: #F5B25B; }
+          .skin-world-morning-mercy { --premium-aura: #E99265; }
           @keyframes premium-stat-drift {
             from { transform: translate3d(-2%, -1%, 0) rotate(0deg); opacity: 0.52; }
             to { transform: translate3d(2%, 1%, 0) rotate(4deg); opacity: 0.82; }
@@ -3088,6 +3089,8 @@ export default function DashboardPage() {
               ? ["Ruby Sky", "Castle", "Embers"]
               : item.skinId === "slow-mornings"
                 ? ["Rain", "Coffee", "Candlelight"]
+                : item.skinId === "morning-mercy"
+                  ? ["Sunrise", "Flowers", "Peace"]
                 : ["Storm", "Glow", "Mist"];
       const skinMotionClass =
         item.skinId === "midnight-garden"
@@ -3098,9 +3101,11 @@ export default function DashboardPage() {
               ? "bb-store-skin-card--ruby"
               : item.skinId === "slow-mornings"
                 ? "bb-store-skin-card--mornings"
+                : item.skinId === "morning-mercy"
+                  ? "bb-store-skin-card--mercy"
                 : "bb-store-skin-card--storm";
       const skinBadge =
-        item.skinId === "slow-mornings"
+        item.skinId === "slow-mornings" || item.skinId === "morning-mercy"
           ? "New"
           : item.skinId === "ruby-village"
             ? "Popular"
@@ -3138,6 +3143,8 @@ export default function DashboardPage() {
                       ? "radial-gradient(circle at 52% 10%, rgba(255,192,106,0.3), transparent 28%), radial-gradient(circle at 18% 34%, rgba(255,93,72,0.22), transparent 30%), linear-gradient(135deg,rgba(65,12,18,0.18),rgba(18,5,8,0.78))"
                       : item.skinId === "slow-mornings"
                         ? "radial-gradient(circle at 56% 14%, rgba(255,210,138,0.28), transparent 30%), radial-gradient(circle at 18% 40%, rgba(245,178,91,0.18), transparent 28%), linear-gradient(135deg,rgba(62,38,24,0.14),rgba(22,13,8,0.76))"
+                        : item.skinId === "morning-mercy"
+                          ? "radial-gradient(circle at 54% 12%, rgba(255,230,164,0.34), transparent 30%), radial-gradient(circle at 18% 38%, rgba(255,178,150,0.2), transparent 28%), linear-gradient(135deg,rgba(255,238,219,0.1),rgba(97,49,32,0.62))"
                       : "radial-gradient(circle at 18% 12%,rgba(93,214,255,0.34),transparent 34%),linear-gradient(135deg,rgba(9,24,52,0.2),rgba(4,11,24,0.78))",
             }}
           />
@@ -3153,6 +3160,8 @@ export default function DashboardPage() {
                       ? "rgba(255,115,95,0.26)"
                       : item.skinId === "slow-mornings"
                         ? "rgba(245,178,91,0.26)"
+                        : item.skinId === "morning-mercy"
+                          ? "rgba(244,179,95,0.26)"
                       : "rgba(125,211,252,0.25)",
             }}
           />
@@ -3279,6 +3288,8 @@ export default function DashboardPage() {
           .bb-store-skin-card--ruby .bb-store-skin-motion-b { background: rgba(255, 115, 95, 0.5); }
           .bb-store-skin-card--mornings .bb-store-skin-motion-a,
           .bb-store-skin-card--mornings .bb-store-skin-motion-b { background: rgba(245, 178, 91, 0.48); }
+          .bb-store-skin-card--mercy .bb-store-skin-motion-a,
+          .bb-store-skin-card--mercy .bb-store-skin-motion-b { background: rgba(244, 179, 95, 0.46); }
           .bb-store-skin-card--storm::before {
             background:
               linear-gradient(115deg, transparent 0 44%, rgba(210, 246, 255, 0.92) 45%, rgba(93, 214, 255, 0.2) 46%, transparent 49%),
@@ -3313,6 +3324,20 @@ export default function DashboardPage() {
               linear-gradient(115deg, transparent 0%, rgba(255, 244, 222, 0.16) 46%, transparent 76%);
             filter: blur(3px);
             animation: bb-store-skin-drift 9s ease-in-out infinite alternate;
+          }
+          .bb-store-skin-card--mercy::before {
+            background:
+              radial-gradient(circle at 55% 14%, rgba(255, 230, 164, 0.3), transparent 22%),
+              radial-gradient(circle at 20% 40%, rgba(255, 178, 150, 0.18), transparent 20%);
+            animation: bb-store-lantern-flicker 5.4s ease-in-out infinite;
+          }
+          .bb-store-skin-card--mercy::after {
+            background:
+              radial-gradient(circle at 18% 24%, rgba(255, 182, 170, 0.22) 0 2px, transparent 4px),
+              linear-gradient(115deg, transparent 0%, rgba(255, 248, 236, 0.18) 46%, transparent 76%);
+            background-size: 150px 190px, 100% 100%;
+            filter: blur(2px);
+            animation: bb-store-skin-drift 8.5s ease-in-out infinite alternate;
           }
         `}</style>
         <div className="overflow-hidden rounded-[28px] border border-rose-100 bg-[linear-gradient(135deg,rgba(255,231,231,0.9),rgba(255,246,246,0.72))] p-4 shadow-[0_18px_42px_rgba(153,27,27,0.08)]">
@@ -7192,6 +7217,22 @@ export default function DashboardPage() {
           background-size: cover;
           background-repeat: no-repeat;
         }
+        html[data-bb-skin="morning-mercy"] .dashboard-shell {
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
+          z-index: 0;
+          background:
+            radial-gradient(circle at 52% 10%, rgba(255, 230, 164, 0.24), transparent 24%),
+            radial-gradient(circle at 22% 34%, rgba(255, 178, 150, 0.14), transparent 30%),
+            radial-gradient(ellipse at 50% 88%, rgba(255, 203, 169, 0.28), transparent 46%),
+            linear-gradient(180deg, rgba(255, 247, 234, 0.02) 0%, rgba(255, 229, 207, 0.14) 38%, rgba(255, 238, 219, 0.74) 100%),
+            var(--bb-skin-bg-image-mobile),
+            #fff3e3 !important;
+          background-position: center top;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
         html[data-bb-skin="blue-storm"] .dashboard-shell::before,
         html[data-bb-skin="blue-storm"] .dashboard-shell::after,
         html[data-bb-skin="midnight-garden"] .dashboard-shell::before,
@@ -7208,6 +7249,14 @@ export default function DashboardPage() {
         }
         html[data-bb-skin="slow-mornings"] .dashboard-shell::before,
         html[data-bb-skin="slow-mornings"] .dashboard-shell::after {
+          content: "";
+          position: fixed;
+          inset: 0;
+          pointer-events: none;
+          z-index: 0;
+        }
+        html[data-bb-skin="morning-mercy"] .dashboard-shell::before,
+        html[data-bb-skin="morning-mercy"] .dashboard-shell::after {
           content: "";
           position: fixed;
           inset: 0;
@@ -7300,6 +7349,24 @@ export default function DashboardPage() {
           opacity: 0.74;
           animation: bb-slow-mornings-steam 26s ease-in-out infinite alternate;
         }
+        html[data-bb-skin="morning-mercy"] .dashboard-shell::before {
+          background:
+            radial-gradient(circle at 52% 9%, rgba(255, 230, 164, 0.34), transparent 20%),
+            radial-gradient(circle at 22% 38%, rgba(255, 178, 150, 0.14), transparent 28%),
+            linear-gradient(90deg, transparent 0%, rgba(255, 248, 236, 0.1) 48%, transparent 78%);
+          mix-blend-mode: screen;
+          animation: bb-morning-mercy-sunrise 16s ease-in-out infinite;
+        }
+        html[data-bb-skin="morning-mercy"] .dashboard-shell::after {
+          background:
+            radial-gradient(circle at 18% 24%, rgba(255, 182, 170, 0.32) 0 2px, transparent 4px),
+            radial-gradient(circle at 72% 34%, rgba(244, 179, 95, 0.22) 0 1.6px, transparent 3px),
+            linear-gradient(115deg, transparent 0%, rgba(255, 248, 236, 0.12) 48%, transparent 76%);
+          background-size: 150px 190px, 230px 260px, 100% 100%;
+          filter: blur(1px);
+          opacity: 0.64;
+          animation: bb-morning-mercy-petals 24s ease-in-out infinite alternate;
+        }
         html[data-bb-skin="blue-storm"] .dashboard-shell > * {
           position: relative;
           z-index: 1;
@@ -7317,6 +7384,10 @@ export default function DashboardPage() {
           z-index: 1;
         }
         html[data-bb-skin="slow-mornings"] .dashboard-shell > * {
+          position: relative;
+          z-index: 1;
+        }
+        html[data-bb-skin="morning-mercy"] .dashboard-shell > * {
           position: relative;
           z-index: 1;
         }
@@ -7444,6 +7515,34 @@ export default function DashboardPage() {
           padding-top: 22px !important;
           padding-bottom: 28px !important;
         }
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage {
+          position: relative;
+          isolation: isolate;
+          padding-top: clamp(18px, 3vw, 34px);
+          overflow: hidden;
+          border-radius: clamp(26px, 4vw, 44px);
+          border-top: 1px solid rgba(233, 146, 101, 0.3);
+          border-bottom: 1px solid rgba(244, 179, 95, 0.22);
+          background:
+            radial-gradient(circle at 52% 9%, rgba(255, 230, 164, 0.22), transparent 24%),
+            radial-gradient(ellipse at 50% 88%, rgba(255, 203, 169, 0.3), transparent 46%),
+            linear-gradient(180deg, rgba(255, 247, 234, 0.02) 0%, rgba(255, 229, 207, 0.14) 38%, rgba(255, 238, 219, 0.74) 100%),
+            var(--bb-skin-bg-image-mobile),
+            #fff3e3;
+          background-position: center top;
+          background-size: cover;
+          background-repeat: no-repeat;
+          box-shadow:
+            0 -10px 38px rgba(244, 179, 95, 0.14),
+            0 14px 42px rgba(120, 70, 40, 0.24),
+            0 0 42px rgba(233, 146, 101, 0.12),
+            inset 0 0 36px rgba(255, 230, 164, 0.1);
+        }
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage {
+          margin-top: 0 !important;
+          padding-top: 22px !important;
+          padding-bottom: 28px !important;
+        }
         html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::before,
         html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after,
         html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::before,
@@ -7460,6 +7559,14 @@ export default function DashboardPage() {
         }
         html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage::before,
         html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 0;
+        }
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::before,
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::after {
           content: "";
           position: absolute;
           inset: 0;
@@ -7548,6 +7655,24 @@ export default function DashboardPage() {
           opacity: 0.78;
           animation: bb-slow-mornings-steam 26s ease-in-out infinite alternate;
         }
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::before {
+          background:
+            radial-gradient(circle at 52% 8%, rgba(255, 230, 164, 0.36), transparent 18%),
+            radial-gradient(circle at 70% 26%, rgba(255, 178, 150, 0.18), transparent 26%),
+            linear-gradient(90deg, transparent 0%, rgba(255, 248, 236, 0.1) 48%, transparent 76%);
+          mix-blend-mode: screen;
+          animation: bb-morning-mercy-sunrise 16s ease-in-out infinite;
+        }
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::after {
+          background:
+            radial-gradient(circle at 18% 24%, rgba(255, 182, 170, 0.3) 0 2px, transparent 4px),
+            radial-gradient(circle at 72% 34%, rgba(244, 179, 95, 0.2) 0 1.6px, transparent 3px),
+            linear-gradient(115deg, transparent 0%, rgba(255, 248, 236, 0.12) 48%, transparent 76%);
+          background-size: 150px 190px, 230px 260px, 100% 100%;
+          filter: blur(1px);
+          opacity: 0.68;
+          animation: bb-morning-mercy-petals 24s ease-in-out infinite alternate;
+        }
         html[data-bb-skin="blue-storm"] .bb-blue-storm-stage > *,
         html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage > *,
         html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage > *,
@@ -7556,6 +7681,10 @@ export default function DashboardPage() {
           z-index: 1;
         }
         html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage > * {
+          position: relative;
+          z-index: 1;
+        }
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage > * {
           position: relative;
           z-index: 1;
         }
@@ -7639,6 +7768,22 @@ export default function DashboardPage() {
         html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage::before {
           animation: bb-dashboard-candle-steam 19s ease-in-out infinite alternate !important;
         }
+        html[data-bb-skin="morning-mercy"] .dashboard-shell::after,
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::after {
+          background:
+            radial-gradient(circle at 18% 24%, rgba(255, 182, 170, 0.34) 0 2px, transparent 4px),
+            radial-gradient(circle at 72% 34%, rgba(244, 179, 95, 0.22) 0 1.6px, transparent 3px),
+            radial-gradient(circle at 44% 18%, rgba(255, 230, 164, 0.16), transparent 24%),
+            linear-gradient(115deg, transparent 0%, rgba(255, 248, 236, 0.12) 48%, transparent 76%) !important;
+          background-size: 150px 190px, 230px 260px, 100% 100%, 100% 100%;
+          filter: blur(1px);
+          opacity: 0.62;
+          animation: bb-dashboard-mercy-petals 18s ease-in-out infinite alternate !important;
+        }
+        html[data-bb-skin="morning-mercy"] .dashboard-shell::before,
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::before {
+          animation: bb-dashboard-mercy-sunrise 17s ease-in-out infinite alternate !important;
+        }
         @keyframes bb-dashboard-storm-rain {
           from { background-position: 0 -180px, 0 -260px, 0 0, 0 0; transform: translate3d(-1%, -1%, 0); }
           to { background-position: -120px 360px, -180px 520px, 0 0, 0 0; transform: translate3d(1%, 1%, 0); }
@@ -7681,6 +7826,14 @@ export default function DashboardPage() {
           from { transform: translate3d(-1%, 0.2%, 0) scale(1); opacity: 0.48; filter: blur(0); }
           to { transform: translate3d(1%, -1%, 0) scale(1.03); opacity: 0.76; filter: blur(0.5px); }
         }
+        @keyframes bb-dashboard-mercy-petals {
+          from { background-position: 0 40px, 34px 62px, 0 0, 0 0; transform: translate3d(-0.8%, 0.4%, 0); }
+          to { background-position: 26px -90px, -36px -120px, 0 0, 0 0; transform: translate3d(0.8%, -0.8%, 0); }
+        }
+        @keyframes bb-dashboard-mercy-sunrise {
+          from { transform: translate3d(-0.8%, 0, 0) scale(1); opacity: 0.42; filter: brightness(1); }
+          to { transform: translate3d(0.8%, -0.5%, 0) scale(1.025); opacity: 0.74; filter: brightness(1.06); }
+        }
         html[data-bb-perf-reduce="true"] .dashboard-shell::before,
         html[data-bb-perf-reduce="true"] .dashboard-shell::after,
         html[data-bb-perf-reduce="true"] .bb-blue-storm-stage::before,
@@ -7718,6 +7871,12 @@ export default function DashboardPage() {
               linear-gradient(90deg, #120b07 0%, #21140d 28%, #21140d 72%, #120b07 100%),
               #170f0a !important;
           }
+          html[data-bb-skin="morning-mercy"] .dashboard-shell {
+            background:
+              radial-gradient(circle at 50% -10%, rgba(244, 179, 95, 0.22), transparent 28%),
+              linear-gradient(90deg, #fff0dc 0%, #ffe7d3 28%, #ffe7d3 72%, #fff0dc 100%),
+              #fff3e3 !important;
+          }
           html[data-bb-skin="blue-storm"] .dashboard-shell::before,
           html[data-bb-skin="blue-storm"] .dashboard-shell::after,
           html[data-bb-skin="midnight-garden"] .dashboard-shell::before,
@@ -7730,6 +7889,10 @@ export default function DashboardPage() {
           }
           html[data-bb-skin="slow-mornings"] .dashboard-shell::before,
           html[data-bb-skin="slow-mornings"] .dashboard-shell::after {
+            display: none;
+          }
+          html[data-bb-skin="morning-mercy"] .dashboard-shell::before,
+          html[data-bb-skin="morning-mercy"] .dashboard-shell::after {
             display: none;
           }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-desktop-layout {
@@ -7846,6 +8009,28 @@ export default function DashboardPage() {
               0 0 34px rgba(245, 178, 91, 0.16),
               inset 0 0 48px rgba(255, 210, 138, 0.08);
           }
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage {
+            min-height: calc(100vh - 84px);
+            overflow: hidden;
+            border-radius: 38px;
+            border: 1px solid rgba(233, 146, 101, 0.3);
+            background:
+              radial-gradient(circle at 52% 8%, rgba(255, 230, 164, 0.24), transparent 20%),
+              radial-gradient(ellipse at 50% 86%, rgba(255, 203, 169, 0.34), transparent 44%),
+              linear-gradient(180deg, rgba(255, 247, 234, 0.02) 0%, rgba(255, 229, 207, 0.08) 42%, rgba(255, 238, 219, 0.7) 100%),
+              var(--bb-skin-bg-image-desktop),
+              #fff3e3;
+            background-position: center top;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            box-shadow:
+              0 -12px 44px rgba(244, 179, 95, 0.14),
+              0 18px 54px rgba(120, 70, 40, 0.24),
+              -34px 0 48px rgba(255, 224, 202, 0.4),
+              34px 0 48px rgba(255, 224, 202, 0.4),
+              0 0 34px rgba(233, 146, 101, 0.16),
+              inset 0 0 48px rgba(255, 230, 164, 0.1);
+          }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage > div:first-child {
             padding-top: 0;
           }
@@ -7949,6 +8134,24 @@ export default function DashboardPage() {
             opacity: 0.74;
             animation: bb-dashboard-slow-rain 18s ease-in-out infinite alternate;
           }
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::before {
+            background:
+              radial-gradient(circle at 52% 8%, rgba(255, 230, 164, 0.34), transparent 18%),
+              radial-gradient(circle at 70% 26%, rgba(255, 178, 150, 0.18), transparent 26%),
+              linear-gradient(90deg, transparent 0%, rgba(255, 248, 236, 0.1) 48%, transparent 76%);
+            mix-blend-mode: screen;
+            animation: bb-dashboard-mercy-sunrise 17s ease-in-out infinite alternate;
+          }
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::after {
+            background:
+              radial-gradient(circle at 18% 24%, rgba(255, 182, 170, 0.28) 0 2px, transparent 4px),
+              radial-gradient(circle at 72% 34%, rgba(244, 179, 95, 0.18) 0 1.6px, transparent 3px),
+              linear-gradient(115deg, transparent 0%, rgba(255, 248, 236, 0.1) 48%, transparent 76%);
+            background-size: 150px 190px, 230px 260px, 100% 100%;
+            filter: blur(1px);
+            opacity: 0.66;
+            animation: bb-dashboard-mercy-petals 18s ease-in-out infinite alternate;
+          }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage > *,
           html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage > *,
           html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage > *,
@@ -7957,6 +8160,10 @@ export default function DashboardPage() {
             z-index: 1;
           }
           html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage > * {
+            position: relative;
+            z-index: 1;
+          }
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage > * {
             position: relative;
             z-index: 1;
           }
@@ -7970,7 +8177,9 @@ export default function DashboardPage() {
         html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage,
         html[data-bb-skin="ruby-village"] .bb-blue-storm-stage,
         html[data-bb-skin="slow-mornings"] .dashboard-shell,
-        html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage {
+        html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage,
+        html[data-bb-skin="morning-mercy"] .dashboard-shell,
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage {
           overflow: visible !important;
         }
         @media (max-width: 1023px) {
@@ -7991,7 +8200,9 @@ export default function DashboardPage() {
           html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage,
           html[data-bb-skin="ruby-village"] .bb-blue-storm-stage,
           html[data-bb-skin="slow-mornings"] .dashboard-shell,
-          html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage {
+          html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage,
+          html[data-bb-skin="morning-mercy"] .dashboard-shell,
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage {
             isolation: auto !important;
             box-shadow: none !important;
             backdrop-filter: none !important;
@@ -8016,7 +8227,11 @@ export default function DashboardPage() {
           html[data-bb-skin="slow-mornings"] .dashboard-shell::before,
           html[data-bb-skin="slow-mornings"] .dashboard-shell::after,
           html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage::before,
-          html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage::after {
+          html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage::after,
+          html[data-bb-skin="morning-mercy"] .dashboard-shell::before,
+          html[data-bb-skin="morning-mercy"] .dashboard-shell::after,
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::before,
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::after {
             display: none !important;
             animation: none !important;
           }
