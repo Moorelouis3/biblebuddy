@@ -811,6 +811,51 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-notification-list::-webki
   background: linear-gradient(180deg, var(--bb-accent), var(--bb-button));
 }
 
+html[data-bb-skin="midnight-garden"] .bb-skin-notification-panel {
+  border-color: rgba(155, 205, 98, 0.52) !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 246, 209, 0.16), transparent 32%),
+    radial-gradient(circle at 88% 18%, rgba(215, 184, 107, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(17, 35, 22, 0.72), rgba(7, 16, 12, 0.9)),
+    var(--bb-skin-bg-image),
+    #07100f !important;
+  background-position: center top;
+  background-size: cover;
+  box-shadow:
+    0 0 0 1px rgba(155, 205, 98, 0.2),
+    0 0 34px rgba(144, 190, 84, 0.24),
+    0 22px 48px rgba(1, 7, 8, 0.6),
+    inset 0 1px 0 rgba(255, 247, 223, 0.16) !important;
+}
+
+html[data-bb-skin="midnight-garden"] .bb-skin-notification-header {
+  background: rgba(14, 31, 18, 0.76) !important;
+}
+
+html[data-bb-skin="midnight-garden"] .bb-skin-notification-push {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(215, 184, 107, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(70, 101, 43, 0.34), rgba(14, 31, 18, 0.86)) !important;
+}
+
+html[data-bb-skin="midnight-garden"] .bb-skin-notification-item,
+html[data-bb-skin="midnight-garden"] .bb-skin-notification-empty {
+  background: rgba(14, 31, 18, 0.62) !important;
+}
+
+html[data-bb-skin="midnight-garden"] .bb-skin-notification-list {
+  scrollbar-color: rgba(175, 207, 122, 0.68) rgba(7, 16, 12, 0.9);
+}
+
+html[data-bb-skin="midnight-garden"] .bb-skin-notification-list::-webkit-scrollbar-track {
+  background: rgba(7, 16, 12, 0.9);
+}
+
+html[data-bb-skin="midnight-garden"] .bb-skin-notification-list::-webkit-scrollbar-thumb {
+  border-color: rgba(7, 16, 12, 0.9);
+  background: linear-gradient(180deg, #d7b86b, #638238);
+}
+
 html[data-bb-skin="lavender-prayer"] .bb-skin-notification-panel {
   border-color: rgba(207, 174, 255, 0.54) !important;
   background:

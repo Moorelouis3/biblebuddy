@@ -73,6 +73,26 @@ type ActiveBuddiesPage = {
   rows: ActiveBuddy[];
 };
 
+type ModeratorPayoutSummary = {
+  userId: string;
+  name: string;
+  image: string | null;
+  profileHref: string;
+  currentDiamonds: number;
+  totalDiamondsEarned: number;
+  lastPaidAt: string | null;
+  lastWeekStart: string | null;
+  totalPaid: number;
+  payoutCount: number;
+};
+
+type ModeratorPayoutDashboard = {
+  amount: number;
+  weekStart: string;
+  moderators: ModeratorPayoutSummary[];
+  totalPaidAllTime: number;
+};
+
 const SOURCE_FILTERS = [
   { value: "All", label: "All Sources", short: "All", color: "bg-gray-100 text-gray-700" },
   { value: "Group Feed", label: "Group Feed Posts", short: "Group Feed", color: "bg-emerald-50 text-emerald-700" },
@@ -135,6 +155,7 @@ export default function CommentsAdminPage() {
   const [stats, setStats] = useState<CommentStats | null>(null);
   const [recentSignups, setRecentSignups] = useState<RecentSignup[]>([]);
   const [activeBuddies, setActiveBuddies] = useState<ActiveBuddiesPage | null>(null);
+  const [moderatorPayouts, setModeratorPayouts] = useState<ModeratorPayoutDashboard | null>(null);
   const [moderatorName, setModeratorName] = useState("Moderator");
   const [moderatorImage, setModeratorImage] = useState<string | null>(null);
   const [canAutoReply, setCanAutoReply] = useState(false);
@@ -183,6 +204,7 @@ export default function CommentsAdminPage() {
     setStats(payload.stats || null);
     setRecentSignups(payload.recentSignups || []);
     setActiveBuddies(payload.activeBuddies || null);
+    setModeratorPayouts(payload.moderatorPayouts || null);
     setModeratorName(payload.moderator?.name || "Moderator");
     setModeratorImage(payload.moderator?.image || null);
     setCanAutoReply(Boolean(payload.moderator?.canAutoReply));
@@ -342,6 +364,56 @@ export default function CommentsAdminPage() {
               <p className="mt-1 text-sm font-black text-gray-700">{card.label}</p>
             </button>
           ))}
+        </section>
+
+        <section className="mb-5 rounded-3xl border border-[#f1d99f] bg-[#fff9e8] p-4 shadow-sm">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#9a6115]">Moderator Diamonds</p>
+              <h2 className="text-xl font-black">Weekly Moderator Payout Tracker</h2>
+              <p className="text-sm font-semibold text-[#7a5b25]">
+                Each moderator with the Moderator badge gets {moderatorPayouts?.amount?.toLocaleString() || "1,000"} diamonds once per week.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-[#efcf85] bg-white/70 px-4 py-3 text-sm font-black text-[#7a4a0c]">
+              Week of {moderatorPayouts?.weekStart || "this week"} · {(moderatorPayouts?.totalPaidAllTime ?? 0).toLocaleString()} total paid
+            </div>
+          </div>
+
+          <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {(moderatorPayouts?.moderators || []).map((moderator) => (
+              <Link key={moderator.userId} href={moderator.profileHref} className="rounded-2xl border border-[#efcf85] bg-white p-3 shadow-sm transition hover:border-[#dca93e]">
+                <div className="flex items-center gap-3">
+                  <span className="grid h-11 w-11 flex-none place-items-center overflow-hidden rounded-full bg-[#fff0c2] text-sm font-black text-[#9a6115]">
+                    {moderator.image ? <img src={moderator.image} alt="" className="h-full w-full object-cover" /> : avatarFallback(moderator.name)}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-black">{moderator.name}</span>
+                    <span className="text-xs font-bold text-[#8a6115]">
+                      Last paid: {moderator.lastPaidAt ? formatTime(moderator.lastPaidAt) : "Not yet"}
+                    </span>
+                  </span>
+                </div>
+                <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                  <span className="rounded-2xl bg-[#fff7df] px-2 py-2">
+                    <span className="block text-lg font-black text-[#9a6115]">{moderator.currentDiamonds.toLocaleString()}</span>
+                    <span className="text-[10px] font-black uppercase tracking-wide text-[#8a6115]">Stash</span>
+                  </span>
+                  <span className="rounded-2xl bg-[#fff7df] px-2 py-2">
+                    <span className="block text-lg font-black text-[#9a6115]">{moderator.totalPaid.toLocaleString()}</span>
+                    <span className="text-[10px] font-black uppercase tracking-wide text-[#8a6115]">Paid</span>
+                  </span>
+                  <span className="rounded-2xl bg-[#fff7df] px-2 py-2">
+                    <span className="block text-lg font-black text-[#9a6115]">{moderator.payoutCount}</span>
+                    <span className="text-[10px] font-black uppercase tracking-wide text-[#8a6115]">Weeks</span>
+                  </span>
+                </div>
+              </Link>
+            ))}
+            {!moderatorPayouts?.moderators?.length ? (
+              <p className="text-sm font-semibold text-[#7a5b25]">No moderators found yet.</p>
+            ) : null}
+          </div>
         </section>
 
         {showRecentSignups ? (

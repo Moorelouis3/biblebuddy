@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeCustomMemberBadge, resolveUserBadge } from "@/lib/userBadges";
+import { ensureCurrentWeekModeratorPayouts, getModeratorPayoutDashboard } from "@/lib/moderatorWeeklyDiamonds";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 
@@ -250,6 +251,12 @@ export async function GET(request: NextRequest) {
   const buddyFrom = buddyPage * buddyLimit;
   const buddyTo = buddyFrom + buddyLimit - 1;
   const todayRange = localDayUtcRange(timezoneOffsetMinutes);
+  const moderatorPayouts = await ensureCurrentWeekModeratorPayouts(admin)
+    .then(() => getModeratorPayoutDashboard(admin))
+    .catch((error) => {
+      console.warn("[MODERATOR_PAYOUTS] Could not load moderator payout tracker:", error);
+      return null;
+    });
 
   const [
     articleTopRes,
@@ -574,6 +581,7 @@ export async function GET(request: NextRequest) {
       image: auth.requesterImage,
       canAutoReply: true,
     },
+    moderatorPayouts,
     comments: enrichedWithProfiles,
     recentSignups: (signupRes.data || []).map((row: any) => ({
       userId: row.user_id,

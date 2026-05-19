@@ -189,6 +189,13 @@ type DailyLoginGiftReveal = {
   reward: number;
 };
 
+type ModeratorWeeklyPayoutReveal = {
+  id: string;
+  amount: number;
+  paidAt: string;
+  weekStart: string;
+};
+
 type StorePurchaseCongrats = {
   item: BibleBuddyStoreItem;
 };
@@ -1077,6 +1084,8 @@ export default function DashboardPage() {
   const [dailyLoginGiftReveal, setDailyLoginGiftReveal] = useState<DailyLoginGiftReveal | null>(null);
   const dailyLoginGiftAwardingRef = useRef(false);
   const dailyLoginGiftCheckRef = useRef<string | null>(null);
+  const [moderatorWeeklyPayoutReveal, setModeratorWeeklyPayoutReveal] = useState<ModeratorWeeklyPayoutReveal | null>(null);
+  const moderatorWeeklyPayoutCheckRef = useRef<string | null>(null);
   const [deepStudyMode, setDeepStudyMode] = useState<DeepStudyModeState>("idle");
   const [deepStudySelectedMinutes, setDeepStudySelectedMinutes] = useState(20);
   const [deepStudyActiveSession, setDeepStudyActiveSession] = useState<DeepStudyActiveSession | null>(null);
@@ -3253,6 +3262,7 @@ export default function DashboardPage() {
     showDailyTaskCelebrationModal ||
     showJessicaBonusModal ||
     showZorianRestorationModal ||
+    Boolean(moderatorWeeklyPayoutReveal) ||
     Boolean(selectedDashboardTask) ||
     Boolean(activeTourKey) ||
     Boolean(activeStorePromo) ||
@@ -3316,6 +3326,51 @@ export default function DashboardPage() {
     }
 
     void loadSeenBadgePopups();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
+  useEffect(() => {
+    if (!userId || moderatorWeeklyPayoutCheckRef.current === userId) return;
+    moderatorWeeklyPayoutCheckRef.current = userId;
+
+    let cancelled = false;
+
+    async function loadModeratorWeeklyPayout() {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token || "";
+      if (!token) return;
+
+      const response = await fetch("/api/moderator/weekly-diamonds", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const payload = await response.json().catch(() => null);
+      if (!response.ok || cancelled || !payload?.unseenPayout) return;
+
+      const payout = payload.unseenPayout;
+      const amount = Math.max(0, Number(payout.amount ?? 0));
+      setModeratorWeeklyPayoutReveal({
+        id: payout.id,
+        amount,
+        paidAt: payout.paidAt,
+        weekStart: payout.weekStart,
+      });
+      setProfile((current) =>
+        current
+          ? {
+              ...current,
+              diamonds_count:
+                typeof payload.currentDiamonds === "number"
+                  ? Math.max(0, Number(payload.currentDiamonds))
+                  : current.diamonds_count,
+            }
+          : current,
+      );
+    }
+
+    void loadModeratorWeeklyPayout();
 
     return () => {
       cancelled = true;
@@ -3597,6 +3652,7 @@ export default function DashboardPage() {
     setStorePurchaseCongrats(null);
     setMysteryPrizeReveal(null);
     setDailyLoginGiftReveal(null);
+    setModeratorWeeklyPayoutReveal(null);
     setBuddySelectionWelcome(null);
     setSelectedDashboardTask(null);
   }, []);
@@ -3789,6 +3845,27 @@ export default function DashboardPage() {
       confetti({ particleCount: 80, spread: 68, origin: { y: 0.62 } });
       dailyLoginGiftAwardingRef.current = false;
     }, 650);
+  }
+
+  async function acknowledgeModeratorWeeklyPayout() {
+    const payout = moderatorWeeklyPayoutReveal;
+    setModeratorWeeklyPayoutReveal(null);
+    if (!payout) return;
+
+    const { data: sessionData } = await supabase.auth.getSession();
+    const token = sessionData.session?.access_token || "";
+    if (!token) return;
+
+    await fetch("/api/moderator/weekly-diamonds", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ payoutId: payout.id }),
+    }).catch((error) => {
+      console.warn("[MODERATOR_PAYOUT] Could not mark payout popup seen:", error);
+    });
   }
 
   async function handleStorePurchase(item: BibleBuddyStoreItem) {
@@ -4644,6 +4721,7 @@ export default function DashboardPage() {
       activeEarnedBadge ||
       earnedBadgeQueue.length > 0 ||
       dailyLoginGiftReveal ||
+      moderatorWeeklyPayoutReveal ||
       storePurchaseCongrats ||
       showLevelInfoModal ||
       showStreakBadgeModal ||
@@ -4889,6 +4967,7 @@ export default function DashboardPage() {
     buddySelectionWelcome,
     dailyChecklistData,
     dailyLoginGiftReveal,
+    moderatorWeeklyPayoutReveal,
     earnedBadgeQueue.length,
     pendingDailyStreakSequence,
     profile,
@@ -5231,6 +5310,9 @@ export default function DashboardPage() {
       : []),
     ...(dailyLoginGiftReveal
       ? [{ popup_id: "dashboard:reward:daily-login-gift", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 30, user_id: userId, payload: dailyLoginGiftReveal }]
+      : []),
+    ...(moderatorWeeklyPayoutReveal
+      ? [{ popup_id: "dashboard:reward:moderator-weekly-payout", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 28, user_id: userId, payload: moderatorWeeklyPayoutReveal }]
       : []),
     ...(activeEarnedBadge
       ? [{ popup_id: `dashboard:reward:badge:${activeEarnedBadge.id}`, type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 20, user_id: userId, payload: activeEarnedBadge }]
@@ -6429,9 +6511,10 @@ export default function DashboardPage() {
           overflow: hidden;
           z-index: 0;
           background:
-            radial-gradient(circle at 52% 9%, rgba(255, 246, 209, 0.16), transparent 22%),
-            radial-gradient(circle at 18% 34%, rgba(215, 184, 107, 0.12), transparent 30%),
-            linear-gradient(180deg, rgba(4, 8, 12, 0.02) 0%, rgba(5, 12, 16, 0.2) 40%, rgba(3, 7, 10, 0.74) 100%),
+            radial-gradient(circle at 52% 9%, rgba(255, 246, 209, 0.22), transparent 23%),
+            radial-gradient(circle at 18% 34%, rgba(215, 184, 107, 0.14), transparent 30%),
+            radial-gradient(ellipse at 50% 88%, rgba(70, 101, 43, 0.22), transparent 46%),
+            linear-gradient(180deg, rgba(4, 8, 12, 0.01) 0%, rgba(5, 12, 16, 0.16) 38%, rgba(14, 31, 18, 0.78) 100%),
             url("/skins/MidnightGarden.png") center top / cover no-repeat,
             #07100f !important;
         }
@@ -6578,6 +6661,31 @@ export default function DashboardPage() {
           padding-top: 22px !important;
           padding-bottom: 28px !important;
         }
+        html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage {
+          position: relative;
+          isolation: isolate;
+          padding-top: clamp(18px, 3vw, 34px);
+          overflow: hidden;
+          border-radius: clamp(26px, 4vw, 44px);
+          border-top: 1px solid rgba(215, 184, 107, 0.28);
+          border-bottom: 1px solid rgba(155, 205, 98, 0.24);
+          background:
+            radial-gradient(circle at 52% 9%, rgba(255, 246, 209, 0.18), transparent 24%),
+            radial-gradient(ellipse at 50% 88%, rgba(70, 101, 43, 0.3), transparent 46%),
+            linear-gradient(180deg, rgba(4, 8, 12, 0.02) 0%, rgba(5, 12, 16, 0.14) 38%, rgba(14, 31, 18, 0.8) 100%),
+            url("/skins/MidnightGarden.png") center top / cover no-repeat,
+            #07100f;
+          box-shadow:
+            0 -10px 38px rgba(215, 184, 107, 0.12),
+            0 14px 42px rgba(1, 7, 8, 0.44),
+            0 0 42px rgba(144, 190, 84, 0.12),
+            inset 0 0 36px rgba(215, 184, 107, 0.08);
+        }
+        html[data-bb-skin="midnight-garden"] .bb-blue-storm-mobile-stage {
+          margin-top: 0 !important;
+          padding-top: 22px !important;
+          padding-bottom: 28px !important;
+        }
         html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage {
           position: relative;
           isolation: isolate;
@@ -6698,8 +6806,9 @@ export default function DashboardPage() {
             border-radius: 38px;
             border: 1px solid rgba(155, 205, 98, 0.32);
             background:
-              radial-gradient(circle at 52% 8%, rgba(255, 246, 209, 0.16), transparent 18%),
-              linear-gradient(180deg, rgba(4, 8, 12, 0.01) 0%, rgba(5, 12, 16, 0.08) 42%, rgba(3, 7, 10, 0.56) 100%),
+              radial-gradient(circle at 52% 8%, rgba(255, 246, 209, 0.2), transparent 19%),
+              radial-gradient(ellipse at 50% 86%, rgba(70, 101, 43, 0.34), transparent 44%),
+              linear-gradient(180deg, rgba(4, 8, 12, 0.01) 0%, rgba(5, 12, 16, 0.08) 42%, rgba(14, 31, 18, 0.74) 100%),
               url("/skins/MidnightGarden.png") center top / 100% auto no-repeat,
               #07100f;
             box-shadow:
@@ -6764,6 +6873,8 @@ export default function DashboardPage() {
           }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::before,
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after,
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::before,
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::after,
           html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::before,
           html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::after,
           html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::before,
@@ -6788,6 +6899,22 @@ export default function DashboardPage() {
             filter: blur(2px);
             opacity: 0.88;
             animation: bb-blue-storm-mist 18s ease-in-out infinite alternate;
+          }
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::before {
+            background:
+              radial-gradient(circle at 50% 8%, rgba(255, 246, 209, 0.3), transparent 18%),
+              radial-gradient(circle at 70% 26%, rgba(215, 184, 107, 0.16), transparent 26%),
+              linear-gradient(90deg, transparent 0%, rgba(175, 207, 122, 0.06) 48%, transparent 76%);
+            mix-blend-mode: screen;
+            animation: bb-midnight-garden-moonlight 16s ease-in-out infinite;
+          }
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::after {
+            background:
+              radial-gradient(circle at 14% 18%, rgba(175, 207, 122, 0.1), transparent 32%),
+              linear-gradient(115deg, transparent 0%, rgba(238, 229, 190, 0.08) 48%, transparent 76%);
+            filter: blur(2px);
+            opacity: 0.82;
+            animation: bb-midnight-garden-mist 24s ease-in-out infinite alternate;
           }
           html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::before {
             background:
@@ -6822,6 +6949,7 @@ export default function DashboardPage() {
             animation: bb-ruby-village-mist 24s ease-in-out infinite alternate;
           }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage > *,
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage > *,
           html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage > *,
           html[data-bb-skin="ruby-village"] .bb-blue-storm-stage > * {
             position: relative;
@@ -7123,6 +7251,65 @@ export default function DashboardPage() {
       />
 
       <ModalShell
+        isOpen={activeDashboardRewardPopup?.popup_id === "dashboard:reward:moderator-weekly-payout"}
+        onClose={() => void acknowledgeModeratorWeeklyPayout()}
+        backdropColor="bg-black/45"
+      >
+        {moderatorWeeklyPayoutReveal ? (
+          <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#f1d99f)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+            <div className="relative overflow-hidden px-6 py-8 text-center sm:px-8">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_50%_0%,rgba(255,192,106,0.34),transparent_55%)]" />
+              <div className="relative flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => void acknowledgeModeratorWeeklyPayout()}
+                  className="grid h-9 w-9 place-items-center rounded-full bg-white/85 text-xl font-black text-[var(--bb-text-secondary,#516784)] shadow-sm transition hover:brightness-95"
+                  aria-label="Close moderator payout message"
+                >
+                  x
+                </button>
+              </div>
+
+              <div className="relative mx-auto mt-1 grid h-28 w-28 place-items-center rounded-full border border-[#f1d99f] bg-[#fff7df] shadow-[0_18px_40px_rgba(154,97,21,0.2)]">
+                <span className="text-5xl" aria-hidden="true">💎</span>
+              </div>
+
+              <p className="relative mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#9a6115)]">
+                Moderator weekly pay
+              </p>
+              <h2 className="relative mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)] sm:text-4xl">
+                You have been paid {moderatorWeeklyPayoutReveal.amount.toLocaleString()} diamonds
+              </h2>
+              <p className="relative mx-auto mt-3 max-w-sm text-base font-semibold leading-7 text-[var(--bb-text-secondary,#58709d)]">
+                Thank you for being a Bible Buddy moderator this week. The diamonds are already in your stash.
+              </p>
+
+              <div className="relative mt-6 grid grid-cols-2 gap-2.5">
+                <div className="rounded-[20px] border border-[var(--bb-card-border,#f1d99f)] bg-[var(--bb-surface-soft,#fff7df)] px-3 py-3">
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#8a6115)]">Reward</p>
+                  <p className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#21304f)]">+{moderatorWeeklyPayoutReveal.amount.toLocaleString()}</p>
+                  <p className="text-xs font-black text-[var(--bb-accent,#9a6115)]">Diamonds</p>
+                </div>
+                <div className="rounded-[20px] border border-[var(--bb-card-border,#f1d99f)] bg-[var(--bb-surface-soft,#fff7df)] px-3 py-3">
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#8a6115)]">Week</p>
+                  <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#21304f)]">{moderatorWeeklyPayoutReveal.weekStart}</p>
+                  <p className="text-xs font-black text-[var(--bb-accent,#9a6115)]">Paid</p>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => void acknowledgeModeratorWeeklyPayout()}
+                className="relative mt-6 w-full max-w-sm rounded-full bg-[var(--bb-button,#7BAFD4)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#0f172a)] shadow-sm transition hover:brightness-95"
+              >
+                Awesome
+              </button>
+            </div>
+          </div>
+        ) : null}
+      </ModalShell>
+
+      <ModalShell
         isOpen={activeDashboardRewardPopup?.popup_id === "dashboard:reward:store-purchase"}
         onClose={() => setStorePurchaseCongrats(null)}
         backdropColor="bg-black/45"
@@ -7406,7 +7593,7 @@ export default function DashboardPage() {
         </ModalShell>
 
       <LouisDailyTasksModal
-        open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal && !dailyLoginGiftReveal && !buddySelectionWelcome && !activeStorePromo}
+        open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal && !dailyLoginGiftReveal && !moderatorWeeklyPayoutReveal && !buddySelectionWelcome && !activeStorePromo}
         onClose={() => {
           setShowLouisDailyTasksModal(false);
           void loadDailyTaskSummary({ force: true, silent: true });
