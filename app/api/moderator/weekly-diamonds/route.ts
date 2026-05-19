@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeCustomMemberBadge } from "@/lib/userBadges";
 import {
+  MODERATOR_WEEKLY_DIAMOND_AMOUNT,
   ensureCurrentWeekModeratorPayouts,
+  getCurrentModeratorPayoutWeekStart,
   getCurrentUserModeratorPayout,
   getModeratorPayoutDashboard,
 } from "@/lib/moderatorWeeklyDiamonds";
@@ -55,6 +57,12 @@ async function requireSignedInUser(request: NextRequest) {
   };
 }
 
+function isMissingPayoutTableError(error: unknown) {
+  if (!error || typeof error !== "object") return false;
+  const maybeError = error as { code?: string; message?: string };
+  return maybeError.code === "PGRST205" || /moderator_weekly_diamond_payouts/i.test(maybeError.message || "");
+}
+
 export async function GET(request: NextRequest) {
   const auth = await requireSignedInUser(request);
   if ("error" in auth) return auth.error;
@@ -63,19 +71,45 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ ok: true, moderator: false, currentPayout: null });
   }
 
-  await ensureCurrentWeekModeratorPayouts(auth.admin);
+  let payoutTableAvailable = true;
+  await ensureCurrentWeekModeratorPayouts(auth.admin).catch((error) => {
+    if (isMissingPayoutTableError(error)) {
+      payoutTableAvailable = false;
+      return;
+    }
+    throw error;
+  });
 
-  const currentPayout = auth.isModerator
-    ? await getCurrentUserModeratorPayout(auth.admin, auth.requester.id)
-    : null;
-  const { data: updatedProfile } = auth.isModerator
+  const canViewOwnPayout = auth.isModerator || auth.isAdmin;
+  let currentPayout = null;
+  if (canViewOwnPayout && payoutTableAvailable) {
+    currentPayout = await getCurrentUserModeratorPayout(auth.admin, auth.requester.id);
+  }
+  if (canViewOwnPayout && !payoutTableAvailable && auth.isAdmin) {
+    const weekStart = getCurrentModeratorPayoutWeekStart();
+    const fallbackId = `admin-moderator-payout-preview:${weekStart}`;
+    const { data: seenRow } = await auth.admin
+      .from("user_badge_popups_seen")
+      .select("shown_at")
+      .eq("user_id", auth.requester.id)
+      .eq("badge_id", fallbackId)
+      .maybeSingle();
+    currentPayout = {
+      id: fallbackId,
+      weekStart,
+      amount: MODERATOR_WEEKLY_DIAMOND_AMOUNT,
+      paidAt: new Date().toISOString(),
+      seenAt: seenRow?.shown_at ?? null,
+    };
+  }
+  const { data: updatedProfile } = canViewOwnPayout
     ? await auth.admin
         .from("profile_stats")
         .select("diamonds_count, total_diamonds_earned")
         .eq("user_id", auth.requester.id)
         .maybeSingle()
     : { data: null };
-  const dashboard = auth.isModerator || auth.isAdmin
+  const dashboard = (auth.isModerator || auth.isAdmin) && payoutTableAvailable
     ? await getModeratorPayoutDashboard(auth.admin)
     : null;
 
@@ -94,7 +128,7 @@ export async function POST(request: NextRequest) {
   const auth = await requireSignedInUser(request);
   if ("error" in auth) return auth.error;
 
-  if (!auth.isModerator) {
+  if (!auth.isModerator && !auth.isAdmin) {
     return NextResponse.json({ error: "Only moderators can mark moderator payouts seen." }, { status: 403 });
   }
 
@@ -103,6 +137,21 @@ export async function POST(request: NextRequest) {
 
   if (!payoutId) {
     return NextResponse.json({ error: "Missing payout id." }, { status: 400 });
+  }
+
+  if (payoutId.startsWith("admin-moderator-payout-preview:")) {
+    const { error } = await auth.admin.from("user_badge_popups_seen").upsert(
+      {
+        user_id: auth.requester.id,
+        badge_id: payoutId,
+        shown_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id,badge_id" },
+    );
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+    return NextResponse.json({ ok: true });
   }
 
   const { error } = await auth.admin
