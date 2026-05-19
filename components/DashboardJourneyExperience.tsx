@@ -1661,10 +1661,12 @@ export default function DashboardJourneyExperience({
     games: exploreLinkByKey("games"),
     share: exploreLinkByKey("share"),
   };
-  const [liveSelectedBuddyId, setLiveSelectedBuddyId] = useState<BuddyAvatarId>(() => normalizeBuddyAvatarId(profile?.selected_buddy_avatar));
+  const [liveSelectedBuddyId, setLiveSelectedBuddyId] = useState<BuddyAvatarId | null>(null);
 
   useEffect(() => {
-    setLiveSelectedBuddyId(normalizeBuddyAvatarId(profile?.selected_buddy_avatar));
+    if (profile?.selected_buddy_avatar) {
+      setLiveSelectedBuddyId(normalizeBuddyAvatarId(profile.selected_buddy_avatar));
+    }
   }, [profile?.selected_buddy_avatar]);
 
   useEffect(() => {
@@ -1672,7 +1674,8 @@ export default function DashboardJourneyExperience({
       const detailBuddyId = (event as CustomEvent<{ buddyId?: string }> | undefined)?.detail?.buddyId;
       const storedBuddyId =
         typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
-      setLiveSelectedBuddyId(normalizeBuddyAvatarId(detailBuddyId || storedBuddyId || profile?.selected_buddy_avatar));
+      const nextBuddyId = detailBuddyId || storedBuddyId || profile?.selected_buddy_avatar;
+      setLiveSelectedBuddyId(nextBuddyId ? normalizeBuddyAvatarId(nextBuddyId) : null);
     }
 
     loadSelectedBuddy();
@@ -1684,7 +1687,7 @@ export default function DashboardJourneyExperience({
     };
   }, [profile?.selected_buddy_avatar]);
 
-  const selectedBuddy = getBuddyAvatar(liveSelectedBuddyId);
+  const selectedBuddy = liveSelectedBuddyId ? getBuddyAvatar(liveSelectedBuddyId) : null;
   const shouldShowBibleBuddy3ModeGate =
     isOwnerDashboard &&
     !studyModeGateDismissed &&
@@ -1700,10 +1703,10 @@ export default function DashboardJourneyExperience({
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
     {
       key: "buddy",
-      label: selectedBuddy.name,
+      label: selectedBuddy?.name || "Buddy",
       icon: (
         <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-full">
-          <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={38} />
+          {selectedBuddy ? <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={38} /> : null}
         </span>
       ),
       href: "#lil-louis",
@@ -4043,7 +4046,7 @@ export default function DashboardJourneyExperience({
 
               <div className="mt-5 flex items-center gap-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm">
                 <div className="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-[22px] bg-[var(--bb-surface-soft,#f8fbff)]">
-                  <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={104} />
+                  {selectedBuddy ? <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={104} /> : <span className="block h-[104px] w-[104px]" aria-hidden="true" />}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
@@ -5524,8 +5527,10 @@ export default function DashboardJourneyExperience({
                     alt={getReferralDisplayName(referralRewardModal)}
                     className="h-full w-full object-cover"
                   />
-                ) : (
+                ) : selectedBuddy ? (
                   <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={96} />
+                ) : (
+                  <span className="block h-24 w-24" aria-hidden="true" />
                 )}
               </div>
               <p className="relative mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#5dd6ff]">Buddy Rewards</p>

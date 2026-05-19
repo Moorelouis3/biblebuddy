@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v11-2026-05-19-loading-fix";
+const CACHE_VERSION = "v12-2026-05-19-scroll-stability-fix";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [

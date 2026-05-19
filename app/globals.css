@@ -1653,3 +1653,42 @@ button:active:not(:disabled),
 .bb-mark-pulse {
   animation: bbMarkPulse 1.8s ease-in-out infinite;
 }
+
+@media (max-width: 1023px) {
+  html[data-bb-skin="blue-storm"] header,
+  html[data-bb-skin="midnight-garden"] header,
+  html[data-bb-skin="lavender-prayer"] header,
+  html[data-bb-skin="ruby-village"] header {
+    position: sticky !important;
+    top: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    z-index: 80 !important;
+    height: auto !important;
+    min-height: 64px !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--bb-card) 88%, transparent), color-mix(in srgb, var(--bb-card) 70%, transparent)) !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--bb-accent) 24%, transparent) !important;
+    box-shadow: 0 12px 32px rgba(0, 8, 22, 0.22) !important;
+    backdrop-filter: blur(18px);
+  }
+
+  html[data-bb-skin="blue-storm"] header > div,
+  html[data-bb-skin="midnight-garden"] header > div,
+  html[data-bb-skin="lavender-prayer"] header > div,
+  html[data-bb-skin="ruby-village"] header > div {
+    height: auto !important;
+    min-height: 64px !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+
+  html[data-bb-skin="blue-storm"] .bb-blue-storm-mobile-stage,
+  html[data-bb-skin="midnight-garden"] .bb-blue-storm-mobile-stage,
+  html[data-bb-skin="lavender-prayer"] .bb-blue-storm-mobile-stage,
+  html[data-bb-skin="ruby-village"] .bb-blue-storm-mobile-stage {
+    margin-top: 12px !important;
+  }
+}

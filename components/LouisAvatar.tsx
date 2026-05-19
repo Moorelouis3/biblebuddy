@@ -3,7 +3,6 @@
 import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 import {
-  DEFAULT_BUDDY_AVATAR,
   SELECTED_BUDDY_STORAGE_KEY,
   getBuddyAvatar,
   normalizeBuddyAvatarId,
@@ -210,7 +209,7 @@ function BuddyIllustration({ buddyId, mood, size }: { buddyId: BuddyAvatarId; mo
 }
 
 export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarProps) {
-  const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId>(buddyId ?? DEFAULT_BUDDY_AVATAR);
+  const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId | null>(buddyId ?? null);
 
   useEffect(() => {
     if (buddyId) {
@@ -221,7 +220,12 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
     function loadSelectedBuddy(event?: Event) {
       if (typeof window === "undefined") return;
       const detailBuddyId = (event as CustomEvent<{ buddyId?: string }> | undefined)?.detail?.buddyId;
-      setSelectedBuddy(normalizeBuddyAvatarId(detailBuddyId || window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY)));
+      const storedBuddyId = window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY);
+      if (detailBuddyId || storedBuddyId) {
+        setSelectedBuddy(normalizeBuddyAvatarId(detailBuddyId || storedBuddyId));
+      } else {
+        setSelectedBuddy(null);
+      }
     }
 
     loadSelectedBuddy();
@@ -232,6 +236,17 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
       window.removeEventListener("storage", loadSelectedBuddy);
     };
   }, [buddyId]);
+
+  if (!selectedBuddy) {
+    return (
+      <span
+        data-louis-avatar
+        aria-hidden="true"
+        className="inline-flex shrink-0 items-center justify-center"
+        style={{ "--bb-louis-avatar-size": `${size}px`, width: size, height: size } as CSSProperties}
+      />
+    );
+  }
 
   if (selectedBuddy === "walter") {
     const src = walterMoodToFile[mood] ?? "/Walterwaving.png";

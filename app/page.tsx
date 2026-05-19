@@ -159,7 +159,8 @@ export default function LandingPage() {
         settled = true;
         window.clearTimeout(fallbackTimer);
         if (session) {
-          router.push("/dashboard");
+          setIsChecking(false);
+          router.replace("/dashboard");
           return;
         }
         setIsChecking(false);
@@ -177,7 +178,8 @@ export default function LandingPage() {
       settled = true;
       window.clearTimeout(fallbackTimer);
       if (session) {
-        router.push("/dashboard");
+        setIsChecking(false);
+        router.replace("/dashboard");
       } else {
         setIsChecking(false);
       }

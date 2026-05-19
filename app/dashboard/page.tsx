@@ -7291,9 +7291,9 @@ export default function DashboardPage() {
           animation: dashboard-inline-reader-slide 260ms ease-out both;
         }
       `}</style>
-      <div className="dashboard-shell min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12 lg:h-screen lg:overflow-hidden lg:pb-0">
+      <div className="dashboard-shell min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
-      <div className="bb-blue-storm-desktop-layout hidden lg:flex lg:h-full max-w-7xl mx-auto px-4 mt-4 lg:mt-0 lg:py-4 gap-6">
+      <div className="bb-blue-storm-desktop-layout hidden lg:flex max-w-7xl mx-auto px-4 mt-4 lg:mt-0 lg:py-4 gap-6">
         {/* LEFT AD SLOT (Desktop Only) */}
         {shouldShowAds && (
           <aside className="w-64 flex-shrink-0 sticky top-8 h-fit">

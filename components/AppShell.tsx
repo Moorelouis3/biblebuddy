@@ -160,7 +160,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     function loadSelectedBuddy(event?: Event) {
       if (typeof window === "undefined") return;
       const detailBuddyId = (event as CustomEvent<{ buddyId?: string }> | undefined)?.detail?.buddyId;
-      setSelectedBuddyId(normalizeBuddyAvatarId(detailBuddyId || window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY)));
+      const storedBuddyId = window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY);
+      if (detailBuddyId || storedBuddyId) {
+        setSelectedBuddyId(normalizeBuddyAvatarId(detailBuddyId || storedBuddyId));
+      } else {
+        setSelectedBuddyId(null);
+      }
     }
 
     loadSelectedBuddy();
@@ -184,8 +189,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const navMenuRef = useRef<HTMLDivElement>(null);
   const [isDashboardStoreOpen, setIsDashboardStoreOpen] = useState(false);
   const [appThemeId, setAppThemeId] = useState<AppThemeId>("light");
-  const [selectedBuddyId, setSelectedBuddyId] = useState<BuddyAvatarId>("louis");
-  const selectedBuddy = getBuddyAvatar(selectedBuddyId);
+  const [selectedBuddyId, setSelectedBuddyId] = useState<BuddyAvatarId | null>(null);
+  const selectedBuddy = selectedBuddyId ? getBuddyAvatar(selectedBuddyId) : null;
   
   // Feedback system state
   const [userId, setUserId] = useState<string | null>(null);
@@ -538,8 +543,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    if (typeof window !== "undefined" && typeof data?.selected_buddy_avatar === "string") {
-      const normalizedBuddy = normalizeBuddyAvatarId(data.selected_buddy_avatar);
+    if (typeof window !== "undefined") {
+      const normalizedBuddy = normalizeBuddyAvatarId(data?.selected_buddy_avatar);
       window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, normalizedBuddy);
       setSelectedBuddyId(normalizedBuddy);
       window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: normalizedBuddy } }));
@@ -1361,8 +1366,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const getSession = async () => {
-      const { data } = await supabase.auth.getSession();
-      const session = data.session;
+      let session = null;
+      try {
+        const { data } = await supabase.auth.getSession();
+        session = data.session;
+      } catch (error) {
+        console.warn("[APPSHELL] Session check failed; continuing without blocking the shell.", error);
+      }
 
       setIsLoggedIn(!!session);
       setUserEmail(session?.user?.email ?? null);
@@ -2863,9 +2873,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       }`}
                     >
                       <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full bg-white">
-                        <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={28} />
+                        {selectedBuddy ? <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={28} /> : null}
                       </span>
-                      <span>{selectedBuddy.name}</span>
+                      <span>{selectedBuddy?.name || "Change Buddy"}</span>
                     </Link>
 
                     {/* CONTACT US */}
