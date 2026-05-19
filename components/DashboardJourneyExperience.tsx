@@ -51,6 +51,9 @@ const STUDY_BOOK_BY_TITLE: Record<string, string> = {
   "The Covenant at Sinai": "Exodus",
   "The Presence of God": "Exodus",
   "Holiness Before God": "Leviticus",
+  "The Wilderness Journey": "Numbers",
+  "The Rebellion in the Wilderness": "Numbers",
+  "The Promised Land Ahead": "Numbers",
   "The Rise of Esther": "Esther",
   "The Wisdom of Proverbs": "Proverbs",
   "The Courage of Daniel": "Daniel",
@@ -215,6 +218,9 @@ const STUDY_SWITCHER_ORDER = [
   "The Covenant at Sinai",
   "The Presence of God",
   "Holiness Before God",
+  "The Wilderness Journey",
+  "The Rebellion in the Wilderness",
+  "The Promised Land Ahead",
   "The Calling of Moses",
   "The Heart of David",
   "The Rise of Esther",
@@ -242,6 +248,9 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Covenant at Sinai") return "/TheCovenantatSinai.png";
   if (title === "The Presence of God") return "/ThePresenceofGod.png";
   if (title === "Holiness Before God") return "/ThegolinessbeforeGod.png";
+  if (title === "The Wilderness Journey") return "/Wildernessjourneycover.png";
+  if (title === "The Rebellion in the Wilderness") return "/RebellionintheWilderness.png";
+  if (title === "The Promised Land Ahead") return "/promieslandcover.png";
   if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
   if (title === "The Heart of David") return "/heartofdaviddevotional.png";
   if (title === "The Faith of Job") return "/faithofjob.png";
@@ -264,6 +273,9 @@ function getDashboardStudySummary(title: string | null | undefined, totalDays: n
   if (title === "The Covenant at Sinai") return "Walk Exodus 19-24 through Mount Sinai, God's holiness, the Ten Commandments, covenant law, blood, worship, and Israel becoming God's covenant people.";
   if (title === "The Presence of God") return "Walk Exodus 25-40 through the tabernacle, priesthood, golden calf, intercession, covenant mercy, obedient construction, and God's glory filling the tabernacle.";
   if (title === "Holiness Before God") return "Walk Leviticus 1-27 through sacrifice, priesthood, atonement, clean and unclean, holy living, feasts, Jubilee, and covenant faithfulness before God.";
+  if (title === "The Wilderness Journey") return "Walk Numbers 1-14 through the ordered camp, wilderness guidance, offerings, priestly blessing, complaint, leadership pressure, the spies, and the call to trust God between deliverance and promise.";
+  if (title === "The Rebellion in the Wilderness") return "Walk Numbers 15-25 through rebellion, holiness, chosen priesthood, judgment, mercy, the bronze serpent, Balaam, blessing, compromise, and faithfulness in the wilderness.";
+  if (title === "The Promised Land Ahead") return "Walk Numbers 26-36 through the new generation, inheritance, Joshua's commissioning, offerings, vows, justice, refuge, boundaries, and preparing to enter the promised land.";
   if (title === "The Wisdom of Proverbs") return "Study Proverbs chapter by chapter for practical wisdom in speech, choices, discipline, and daily life.";
   return `${Math.max(1, totalDays || 1)} part Bible study designed to help you keep growing with structure and consistency.`;
 }
@@ -366,6 +378,36 @@ function getBibleJourneyHandoff(title: string | null | undefined) {
       cover: "/ThegolinessbeforeGod.png",
       description:
         "Next, Leviticus 1-27 teaches how a holy God dwells with His people through sacrifice, priesthood, atonement, clean and unclean, holy living, worship rhythms, Jubilee, and covenant faithfulness.",
+    };
+  }
+
+  if (title === "Holiness Before God") {
+    return {
+      nextTitle: "The Wilderness Journey",
+      subtitle: "Numbers 1-14",
+      cover: "/Wildernessjourneycover.png",
+      description:
+        "Next, Numbers 1-14 moves Israel from Sinai into the wilderness, where God orders the camp, guides His people, provides blessing, exposes complaint, and calls them to trust Him when the promised land looks impossible.",
+    };
+  }
+
+  if (title === "The Wilderness Journey") {
+    return {
+      nextTitle: "The Rebellion in the Wilderness",
+      subtitle: "Numbers 15-25",
+      cover: "/RebellionintheWilderness.png",
+      description:
+        "Next, Numbers 15-25 shows how rebellion grows in the wilderness, but God keeps revealing holiness, judgment, mercy, chosen leadership, surprising blessing, and the danger of compromise.",
+    };
+  }
+
+  if (title === "The Rebellion in the Wilderness") {
+    return {
+      nextTitle: "The Promised Land Ahead",
+      subtitle: "Numbers 26-36",
+      cover: "/promieslandcover.png",
+      description:
+        "Next, Numbers 26-36 turns toward the promised land as the new generation is counted, inheritances are protected, Joshua is commissioned, worship rhythms are reviewed, and Israel prepares to enter with faithfulness.",
     };
   }
 

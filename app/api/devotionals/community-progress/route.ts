@@ -16,6 +16,11 @@ const CHAPTER_JOURNEY_TITLES = new Set([
   "The Wisdom of Proverbs",
   "The Deliverance of Moses",
   "The Covenant at Sinai",
+  "The Presence of God",
+  "Holiness Before God",
+  "The Wilderness Journey",
+  "The Rebellion in the Wilderness",
+  "The Promised Land Ahead",
 ]);
 
 type DevotionalRow = {

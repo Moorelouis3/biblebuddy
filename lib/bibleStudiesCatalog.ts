@@ -110,6 +110,33 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
       "A chapter-by-chapter Bible study through Leviticus 1-27 with intro, reading, notes, trivia, Scrambled, and reflection centered on sacrifice, priesthood, atonement, clean and unclean, holy living, feasts, Jubilee, and covenant faithfulness before God.",
   },
   {
+    key: "wilderness_journey",
+    title: "The Wilderness Journey",
+    subtitle: "Numbers 1-14",
+    totalWeeks: 14,
+    image: "/Wildernessjourneycover.png",
+    description:
+      "A chapter-by-chapter Bible study through Numbers 1-14 with intro, reading, notes, trivia, Scrambled, and reflection centered on God's ordered people, wilderness guidance, priestly blessing, complaint, leadership pressure, the spies, fear, faith, and learning to trust God between deliverance and promise.",
+  },
+  {
+    key: "rebellion_in_the_wilderness",
+    title: "The Rebellion in the Wilderness",
+    subtitle: "Numbers 15-25",
+    totalWeeks: 11,
+    image: "/RebellionintheWilderness.png",
+    description:
+      "A chapter-by-chapter Bible study through Numbers 15-25 with intro, reading, notes, trivia, Scrambled, and reflection centered on rebellion, holiness, God's chosen priesthood, wilderness judgment, mercy, the bronze serpent, Balaam, blessing, compromise, and faithfulness when the journey gets hard.",
+  },
+  {
+    key: "promised_land_ahead",
+    title: "The Promised Land Ahead",
+    subtitle: "Numbers 26-36",
+    totalWeeks: 11,
+    image: "/promieslandcover.png",
+    description:
+      "A chapter-by-chapter Bible study through Numbers 26-36 with intro, reading, notes, trivia, Scrambled, and reflection centered on the new generation, inheritance, Joshua's commissioning, offerings, vows, justice, refuge, boundaries, and preparing to enter the promised land with faithfulness.",
+  },
+  {
     key: "rise_of_esther",
     title: "The Rise of Esther",
     subtitle: "Esther 1-10",

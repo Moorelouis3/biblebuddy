@@ -836,6 +836,9 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Covenant at Sinai") return "/TheCovenantatSinai.png";
   if (title === "The Presence of God") return "/ThePresenceofGod.png";
   if (title === "Holiness Before God") return "/ThegolinessbeforeGod.png";
+  if (title === "The Wilderness Journey") return "/Wildernessjourneycover.png";
+  if (title === "The Rebellion in the Wilderness") return "/RebellionintheWilderness.png";
+  if (title === "The Promised Land Ahead") return "/promieslandcover.png";
   if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
   if (title === "The Heart of David") return "/heartofdaviddevotional.png";
   if (title === "The Faith of Job") return "/faithofjob.png";
@@ -858,6 +861,9 @@ function getDashboardStudySummary(title: string | null | undefined) {
   if (title === "The Covenant at Sinai") return "Exodus 19-24: Mount Sinai, holiness, commandments, covenant, blood, and worship.";
   if (title === "The Presence of God") return "Exodus 25-40: tabernacle, priesthood, intercession, covenant mercy, and God's glory.";
   if (title === "Holiness Before God") return "Leviticus 1-27: sacrifice, priesthood, atonement, holy living, feasts, and covenant faithfulness.";
+  if (title === "The Wilderness Journey") return "Numbers 1-14: ordered camp, wilderness guidance, priestly blessing, complaint, spies, fear, and faith.";
+  if (title === "The Rebellion in the Wilderness") return "Numbers 15-25: rebellion, holiness, priesthood, judgment, mercy, Balaam, blessing, and compromise.";
+  if (title === "The Promised Land Ahead") return "Numbers 26-36: new generation, inheritance, Joshua, offerings, vows, justice, refuge, and promised land preparation.";
   if (title === "The Wisdom of Proverbs") return "Chapter-by-chapter wisdom for speech, choices, discipline, and daily life.";
   return "Guided Bible study with reading, notes, games, and reflection.";
 }
@@ -2686,7 +2692,7 @@ export default function DashboardPage() {
       return (
         <article
           key={item.id}
-          className={`relative flex min-h-[258px] flex-col overflow-hidden rounded-[22px] border bg-[var(--bb-card)] shadow-[0_12px_30px_rgba(38,63,99,0.12)] sm:min-h-[320px] ${
+          className={`relative flex min-h-[226px] flex-col overflow-hidden rounded-[22px] border bg-[var(--bb-card)] shadow-[0_12px_30px_rgba(38,63,99,0.12)] sm:min-h-[270px] ${
             active ? "border-[var(--bb-accent)] ring-2 ring-[var(--bb-accent-soft)]" : "border-[var(--bb-card-border)]"
           }`}
         >
@@ -2696,12 +2702,12 @@ export default function DashboardPage() {
             </span>
           ) : null}
           <div
-            className="flex h-[162px] items-end justify-center overflow-hidden bg-[var(--bb-surface-soft)] px-0 sm:h-[220px]"
+            className="flex h-[130px] items-end justify-center overflow-hidden bg-[var(--bb-surface-soft)] px-0 sm:h-[170px]"
           >
             <img
               src={item.imageSrc || "/Newlouiswave.png"}
               alt={item.title}
-              className="h-[190px] w-[128%] max-w-none object-contain object-bottom sm:h-[258px] sm:w-[124%]"
+              className="h-[190px] w-[128%] max-w-none translate-y-8 object-contain object-bottom sm:h-[258px] sm:w-[124%] sm:translate-y-12"
             />
           </div>
           <div className="mt-auto border-t border-[var(--bb-card-border)] bg-[var(--bb-card)] p-2 text-center sm:p-2.5">

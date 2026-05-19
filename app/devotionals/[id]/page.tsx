@@ -22,6 +22,9 @@ function getCoverImage(title: string): string | null {
   if (title === "The Covenant at Sinai") return "/TheCovenantatSinai.png";
   if (title === "The Presence of God") return "/ThePresenceofGod.png";
   if (title === "Holiness Before God") return "/ThegolinessbeforeGod.png";
+  if (title === "The Wilderness Journey") return "/Wildernessjourneycover.png";
+  if (title === "The Rebellion in the Wilderness") return "/RebellionintheWilderness.png";
+  if (title === "The Promised Land Ahead") return "/promieslandcover.png";
   return null;
 }
 
@@ -69,6 +72,12 @@ function getPreviewDescription(title: string, fallback: string): string {
       "Exodus 25-40 moves from tabernacle instructions to the golden calf, Moses' intercession, covenant mercy, obedient construction, and the glory of the Lord filling the tabernacle. This Bible Study keeps every chapter tied to the full Bible Buddy rhythm: intro, reading, notes, trivia, Scrambled, and reflection.",
     "Holiness Before God":
       "Leviticus 1-27 teaches how a holy God dwells with His people. This Bible Study walks chapter by chapter through sacrifice, priesthood, atonement, clean and unclean, holy living, feasts, Jubilee, covenant blessing, and devotion to the Lord with the full Bible Buddy rhythm: intro, reading, notes, trivia, Scrambled, and reflection.",
+    "The Wilderness Journey":
+      "Numbers 1-14 takes Israel from ordered camp life at Sinai into the pressure of the wilderness. This Bible Study walks chapter by chapter through census, camp order, Levites, purity, offerings, priestly blessing, cloud and fire, complaint, leadership pressure, Miriam and Aaron, the spies, fear, faith, and the hard lesson of trusting God between deliverance and promise.",
+    "The Rebellion in the Wilderness":
+      "Numbers 15-25 follows the wilderness story as rebellion, complaint, and compromise keep testing Israel's faith. This Bible Study walks chapter by chapter through holiness after failure, Korah's rebellion, Aaron's rod, priestly service, purification, Meribah, the bronze serpent, Balaam's blessings, and the danger of worshiping God with divided loyalty.",
+    "The Promised Land Ahead":
+      "Numbers 26-36 turns toward the promised land as a new generation is counted and prepared. This Bible Study walks chapter by chapter through inheritance, Joshua's commissioning, offerings, vows, justice, refuge cities, boundaries, and the final lessons Israel needs before crossing into the land God promised.",
   };
 
   return descriptions[title] ?? fallback;
@@ -142,7 +151,10 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Deliverance of Moses" ||
     title === "The Covenant at Sinai" ||
     title === "The Presence of God" ||
-    title === "Holiness Before God"
+    title === "Holiness Before God" ||
+    title === "The Wilderness Journey" ||
+    title === "The Rebellion in the Wilderness" ||
+    title === "The Promised Land Ahead"
   );
 }
 
@@ -159,6 +171,9 @@ function getStudyScriptureRange(title: string | null | undefined) {
     "The Covenant at Sinai": "Exodus 19-24",
     "The Presence of God": "Exodus 25-40",
     "Holiness Before God": "Leviticus 1-27",
+    "The Wilderness Journey": "Numbers 1-14",
+    "The Rebellion in the Wilderness": "Numbers 15-25",
+    "The Promised Land Ahead": "Numbers 26-36",
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "Proverbs 1-31",
     "The Courage of Daniel": "Daniel 1-6",
@@ -182,6 +197,9 @@ function getChapterJourneyProgressLabel(title: string | null | undefined, curren
   if (title === "The Covenant at Sinai") return `Exodus ${currentDay + 18} of 24`;
   if (title === "The Presence of God") return `Exodus ${currentDay + 24} of 40`;
   if (title === "Holiness Before God") return `Leviticus ${currentDay} of 27`;
+  if (title === "The Wilderness Journey") return `Numbers ${currentDay} of 14`;
+  if (title === "The Rebellion in the Wilderness") return `Numbers ${currentDay + 14} of 25`;
+  if (title === "The Promised Land Ahead") return `Numbers ${currentDay + 25} of 36`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 

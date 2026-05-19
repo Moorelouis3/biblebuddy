@@ -77,6 +77,9 @@ const FEATURED_STUDY_ORDER = [
   "The Covenant at Sinai",
   "The Presence of God",
   "Holiness Before God",
+  "The Wilderness Journey",
+  "The Rebellion in the Wilderness",
+  "The Promised Land Ahead",
   "The Calling of Moses",
   "The Heart of David",
   "The Rise of Esther",
@@ -110,6 +113,9 @@ function getStudyScriptureRange(title: string) {
     "The Covenant at Sinai": "Exodus 19-24",
     "The Presence of God": "Exodus 25-40",
     "Holiness Before God": "Leviticus 1-27",
+    "The Wilderness Journey": "Numbers 1-14",
+    "The Rebellion in the Wilderness": "Numbers 15-25",
+    "The Promised Land Ahead": "Numbers 26-36",
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "Proverbs 1-31",
     "The Courage of Daniel": "Daniel 1-6",
@@ -258,6 +264,15 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     }
     if (title === "Holiness Before God") {
       return "/ThegolinessbeforeGod.png";
+    }
+    if (title === "The Wilderness Journey") {
+      return "/Wildernessjourneycover.png";
+    }
+    if (title === "The Rebellion in the Wilderness") {
+      return "/RebellionintheWilderness.png";
+    }
+    if (title === "The Promised Land Ahead") {
+      return "/promieslandcover.png";
     }
     if (title === "The Disciples of Jesus") {
       return "/disciplesofjesusdevotional.png";
