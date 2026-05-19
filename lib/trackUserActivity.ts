@@ -8,6 +8,7 @@
 import { supabase } from "./supabaseClient";
 import { ACTION_TYPE } from "./actionTypes";
 import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
+import { getStoreItem } from "./bibleBuddyStore";
 
 // In-memory lock to prevent concurrent calls racing past the localStorage check.
 // Concurrent callers share the same promise so streak syncs can wait for today's
@@ -96,13 +97,13 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     // Get current profile stats to check last_active_date
     let { data: currentStats, error: currentStatsError }: { data: any; error: any } = await supabase
       .from("profile_stats")
-      .select("last_active_date, username, current_streak, grace_days_count, last_grace_day_earned_at")
+      .select("last_active_date, username, current_streak, grace_days_count, last_grace_day_earned_at, diamonds_count")
       .eq("user_id", userId)
       .maybeSingle();
 
     const graceColumnsMissing =
       currentStatsError &&
-      /grace_days_count|last_grace_day_earned_at/i.test(currentStatsError.message || "");
+      /grace_days_count|last_grace_day_earned_at|diamonds_count/i.test(currentStatsError.message || "");
 
     if (graceColumnsMissing) {
       const fallback = await supabase
@@ -131,6 +132,8 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     const yesterday = shiftDayKey(today, -1);
     const currentStoredStreak = Math.max(0, Number(currentStats?.current_streak || 0));
     const currentGraceDays = Math.max(0, Math.min(5, Number(currentStats?.grace_days_count || 0)));
+    const currentDiamonds = Math.max(0, Number(currentStats?.diamonds_count || 0));
+    const graceDayPrice = getStoreItem("boost-extra-grace-day")?.price ?? 100;
 
     if (lastActiveDate && lastActiveDate !== today && lastActiveDate !== yesterday) {
       const missedDays = Math.max(1, diffDayKeys(lastActiveDate, today) - 1);
@@ -141,6 +144,21 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
           currentStreak: currentStoredStreak,
           graceDays: currentGraceDays,
           missedDays,
+        });
+        return false;
+      }
+      const graceDaysToBuy = Math.max(0, missedDays - currentGraceDays);
+      const totalGraceDayCost = graceDaysToBuy * graceDayPrice;
+      if (graceDaysToBuy > 0 && currentDiamonds >= totalGraceDayCost && currentStoredStreak > 0) {
+        setGraceDayLocalEvent(userId, "pending-purchase", {
+          lastActiveDate,
+          today,
+          currentStreak: currentStoredStreak,
+          graceDays: currentGraceDays,
+          missedDays,
+          diamonds: currentDiamonds,
+          pricePerGraceDay: graceDayPrice,
+          graceDaysToBuy,
         });
         return false;
       }

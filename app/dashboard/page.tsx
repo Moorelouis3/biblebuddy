@@ -246,6 +246,17 @@ const BADGE_TONE_CLASSES: Record<BadgeTone, { tile: string; progress: string; gl
   },
 };
 
+const BADGE_TONE_ACCENTS: Record<BadgeTone, string> = {
+  blue: "#7BAFD4",
+  gold: "#f3bd3e",
+  green: "#35c46f",
+  pink: "#f46fa0",
+  purple: "#9b6cf4",
+  red: "#f45b4c",
+  teal: "#26bca5",
+  slate: "#64748b",
+};
+
 function getBadgeAwardLabel(badge: Pick<BadgeProgress, "id" | "xp">) {
   return `badge_earned:${badge.id}:${badge.xp}`;
 }
@@ -6222,6 +6233,7 @@ export default function DashboardPage() {
       >
         {activeEarnedBadge ? (() => {
           const tone = BADGE_TONE_CLASSES[activeEarnedBadge.tone];
+          const accent = BADGE_TONE_ACCENTS[activeEarnedBadge.tone];
           const completionLine = getBadgeCompletionLine(activeEarnedBadge.description);
 
           return (
@@ -6245,49 +6257,82 @@ export default function DashboardPage() {
                 .badge-earned-shine { animation: badge-earned-shine 1150ms ease-out 280ms both; }
                 .badge-float-spark { animation: badge-float-spark 1.7s ease-in-out infinite; }
               `}</style>
-              <div className="relative overflow-hidden bg-[var(--bb-card,#ffffff)] px-5 py-5 text-center">
-                <div className="pointer-events-none absolute left-8 top-9 text-xl badge-float-spark">✦</div>
-                <div className="pointer-events-none absolute right-10 top-16 text-lg badge-float-spark" style={{ animationDelay: "0.35s" }}>✧</div>
-                <div className="pointer-events-none absolute bottom-16 left-12 text-lg badge-float-spark" style={{ animationDelay: "0.7s" }}>✦</div>
+              <div className="relative overflow-hidden px-6 pb-7 pt-5 text-center sm:px-8">
+                <div
+                  className="absolute inset-x-0 top-0 h-32"
+                  style={{ background: `linear-gradient(135deg, ${accent}2f, transparent)` }}
+                  aria-hidden="true"
+                />
+                <div className="pointer-events-none absolute left-9 top-20 text-lg badge-float-spark" style={{ color: accent }}>✦</div>
+                <div className="pointer-events-none absolute right-11 top-28 text-base badge-float-spark" style={{ animationDelay: "0.35s", color: accent }}>✧</div>
 
-                <div className="flex justify-center">
-                  <LouisAvatar mood="hands" size={132} />
+                <div className="relative flex justify-end">
+                  <button
+                    type="button"
+                    onClick={() => setActiveEarnedBadge(null)}
+                    className="grid h-9 w-9 place-items-center rounded-full bg-white/85 text-xl font-black text-[var(--bb-text-secondary,#516784)] shadow-sm transition hover:brightness-95"
+                    aria-label="Close badge message"
+                  >
+                    x
+                  </button>
                 </div>
 
-                <p className="mt-4 text-xs font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#5f86bd)]">
-                  🏅 Badge Unlocked
-                </p>
-                <h2 className="mt-3 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)] sm:text-4xl">You earned a new badge!</h2>
-
-                <div className="mt-5 flex justify-center">
+                <div className="relative mx-auto mt-1 grid h-36 w-36 place-items-center rounded-full bg-white shadow-[0_16px_36px_rgba(38,63,99,0.16)]">
                   <div className={`badge-color-pop relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-[28px] border-2 text-center ${tone.tile} ${tone.glow}`}>
                     <span className="text-6xl" aria-hidden="true">{activeEarnedBadge.emoji}</span>
                     <span className="badge-earned-shine pointer-events-none absolute inset-y-0 left-0 w-12 bg-white/70 blur-sm" />
-                    <span className="absolute -right-2 -top-2 flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-[#19c463] text-sm font-black text-white shadow-md">
+                    <span className="absolute -right-2 -top-2 grid h-9 w-9 place-items-center rounded-full border-2 border-white bg-[#19c463] text-sm font-black text-white shadow-md">
                       ✓
                     </span>
                   </div>
                 </div>
 
-                <h3 className="mt-4 text-2xl font-black text-[#21304f]">{activeEarnedBadge.title}</h3>
-                <div className="mx-auto mt-4 flex max-w-sm items-start gap-3 rounded-2xl border border-[#d7e8f8] bg-white/80 px-4 py-3 text-left shadow-sm">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#19c463] text-xs font-black text-white">
-                    ✓
-                  </span>
-                  <p className="text-sm font-semibold leading-6 text-[#536a8f]">
-                    {completionLine}
-                  </p>
-                </div>
-              </div>
+                <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#5f86bd)]">
+                  Badge unlocked
+                </p>
+                <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
+                  Congrats on {activeEarnedBadge.title}
+                </h2>
+                <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
+                  {completionLine}
+                </p>
 
-              <div className="bg-[var(--bb-card,#ffffff)] px-5 pb-5 pt-4">
-                <button
-                  type="button"
-                  onClick={() => setActiveEarnedBadge(null)}
-                  className="w-full rounded-full bg-[var(--bb-button,#7BAFD4)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#0f172a)] shadow-sm transition hover:brightness-95"
-                >
-                  Let’s go
-                </button>
+                <div className="mt-6 grid grid-cols-3 gap-2.5">
+                  <div className="rounded-[20px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3">
+                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#5b6f92)]">Reward</p>
+                    <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#21304f)]">+{activeEarnedBadge.xp}</p>
+                    <p className="text-xs font-black text-[var(--bb-accent,#2f7fe8)]">XP</p>
+                  </div>
+                  <div className="rounded-[20px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3">
+                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#5b6f92)]">Tier</p>
+                    <p className="mt-1 truncate text-sm font-black text-[var(--bb-text-primary,#21304f)]">{activeEarnedBadge.levelLabel}</p>
+                  </div>
+                  <div className="rounded-[20px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3">
+                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#5b6f92)]">Category</p>
+                    <p className="mt-1 truncate text-sm font-black text-[var(--bb-text-primary,#21304f)]">{activeEarnedBadge.category}</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveEarnedBadge(null);
+                      setSelectedBadge(activeEarnedBadge);
+                      setShowBadgesModal(true);
+                    }}
+                    className="rounded-full bg-[var(--bb-button,#7BAFD4)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#0f172a)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
+                  >
+                    View Badge
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveEarnedBadge(null)}
+                    className="rounded-full border border-[var(--bb-card-border,#d7e4f7)] bg-white px-6 py-3 text-sm font-black text-[var(--bb-text-primary,#21304f)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                  >
+                    Let&apos;s go
+                  </button>
+                </div>
               </div>
             </div>
           );

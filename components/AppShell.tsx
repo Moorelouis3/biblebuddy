@@ -34,6 +34,7 @@ import StreakFlameEmoji from "./StreakFlameEmoji";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, type FlameCosmeticId } from "../lib/flameCosmetics";
+import { getStoreItem } from "../lib/bibleBuddyStore";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
 
 const FeedbackModal = dynamic(() => import("./FeedbackModal").then((mod) => mod.FeedbackModal), {
@@ -62,6 +63,25 @@ const BuddyCelebrationModal = dynamic(
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 const DAILY_RECOMMENDATIONS_ENABLED = false;
 const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
+const GRACE_DAY_STORE_ITEM_ID = "boost-extra-grace-day";
+
+type GracePurchasePrompt = {
+  lastActiveDate: string;
+  today: string;
+  currentStreak: number;
+  graceDays: number;
+  missedDays?: number;
+  diamonds: number;
+  pricePerGraceDay: number;
+  graceDaysToBuy: number;
+};
+
+type GraceRestoreSuccess = {
+  streak: number;
+  graceDays: number;
+  diamonds: number;
+  graceDaysUsed: number;
+};
 
 function isSupabaseEmailConfirmed(user: { email_confirmed_at?: string | null; confirmed_at?: string | null } | null | undefined) {
   return Boolean(user?.email_confirmed_at || user?.confirmed_at);
@@ -350,6 +370,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     graceDays: number;
     missedDays?: number;
   } | null>(null);
+  const [gracePurchasePrompt, setGracePurchasePrompt] = useState<GracePurchasePrompt | null>(null);
+  const [graceRestoreSuccess, setGraceRestoreSuccess] = useState<GraceRestoreSuccess | null>(null);
   const [graceActionLoading, setGraceActionLoading] = useState(false);
 
   const visibleUnreadNotificationCount = notifications.filter(
@@ -1538,6 +1560,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     function readGraceEvents() {
       const today = new Date();
       const dayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+      const pendingPurchaseRaw = window.localStorage.getItem(`bb:grace-days:pending-purchase:${userId}`);
+      if (pendingPurchaseRaw) {
+        try {
+          setGracePurchasePrompt(JSON.parse(pendingPurchaseRaw));
+        } catch {
+          window.localStorage.removeItem(`bb:grace-days:pending-purchase:${userId}`);
+        }
+      }
+
       const pendingRaw = window.localStorage.getItem(`bb:grace-days:pending-use:${userId}`);
       if (pendingRaw) {
         try {
@@ -1600,11 +1631,23 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     return Math.max(1, Math.round((Date.UTC(toYear, toMonth - 1, toDay) - Date.UTC(fromYear, fromMonth - 1, fromDay)) / 86400000));
   }
 
-  function getGraceMissedDays(prompt: NonNullable<typeof graceUsePrompt>) {
+  function getGraceMissedDays(prompt: Pick<NonNullable<typeof graceUsePrompt>, "lastActiveDate" | "today" | "missedDays">) {
     if (typeof prompt.missedDays === "number" && prompt.missedDays > 0) {
       return Math.max(1, Math.round(prompt.missedDays));
     }
     return Math.max(1, diffLocalDayKeys(prompt.lastActiveDate, prompt.today) - 1);
+  }
+
+  function getGracePurchaseTotals(prompt: GracePurchasePrompt) {
+    const missedDays = getGraceMissedDays(prompt);
+    const graceDaysToBuy = Math.max(1, Number(prompt.graceDaysToBuy || missedDays - Math.max(0, prompt.graceDays)));
+    const pricePerGraceDay = Math.max(1, Number(prompt.pricePerGraceDay || getStoreItem(GRACE_DAY_STORE_ITEM_ID)?.price || 100));
+    return {
+      missedDays,
+      graceDaysToBuy,
+      pricePerGraceDay,
+      totalCost: graceDaysToBuy * pricePerGraceDay,
+    };
   }
 
   async function handleUseGraceDay() {
@@ -1648,14 +1691,99 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
   }
 
-  async function handleEndGraceStreak() {
-    if (!userId || !graceUsePrompt) return;
+  async function handlePurchaseGraceDayRestore() {
+    if (!userId || !gracePurchasePrompt) return;
+    setGraceActionLoading(true);
+    try {
+      const { missedDays, graceDaysToBuy, pricePerGraceDay, totalCost } = getGracePurchaseTotals(gracePurchasePrompt);
+      const daysSinceLastActive = diffLocalDayKeys(gracePurchasePrompt.lastActiveDate, gracePurchasePrompt.today);
+
+      const { data: statsRow, error: statsError } = await supabase
+        .from("profile_stats")
+        .select("diamonds_count, grace_days_count")
+        .eq("user_id", userId)
+        .maybeSingle();
+
+      if (statsError) throw statsError;
+
+      const serverDiamonds = Math.max(0, Number(statsRow?.diamonds_count ?? gracePurchasePrompt.diamonds ?? 0));
+      if (serverDiamonds < totalCost) {
+        console.warn("[GRACE_DAYS] Not enough diamonds to restore streak from popup.");
+        setGracePurchasePrompt((current) => current ? { ...current, diamonds: serverDiamonds } : current);
+        return;
+      }
+
+      const currentGraceDays = Math.max(0, Math.min(5, Number(statsRow?.grace_days_count ?? gracePurchasePrompt.graceDays ?? 0)));
+      const availableGraceDays = currentGraceDays + graceDaysToBuy;
+      const graceDaysToUse = Math.min(availableGraceDays, missedDays);
+      const nextGraceDays = Math.max(0, Math.min(5, availableGraceDays - graceDaysToUse));
+      const nextStreak = Math.max(1, gracePurchasePrompt.currentStreak + daysSinceLastActive);
+      const nextDiamonds = serverDiamonds - totalCost;
+
+      const { error: updateError } = await supabase
+        .from("profile_stats")
+        .update({
+          diamonds_count: nextDiamonds,
+          last_active_date: gracePurchasePrompt.today,
+          current_streak: nextStreak,
+          grace_days_count: nextGraceDays,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("user_id", userId);
+      if (updateError) throw updateError;
+
+      const item = getStoreItem(GRACE_DAY_STORE_ITEM_ID);
+      const { error: purchaseError } = await supabase.from("user_store_purchases").insert({
+        user_id: userId,
+        item_id: GRACE_DAY_STORE_ITEM_ID,
+        item_kind: item?.kind ?? "boost",
+        item_title: item?.title ?? "Extra Grace Day",
+        price_diamonds: totalCost,
+        reward_payload: {
+          purchasedForStreakRestore: true,
+          graceDaysPurchased: graceDaysToBuy,
+          graceDaysUsed: graceDaysToUse,
+          missedDays,
+          pricePerGraceDay,
+        },
+      });
+
+      if (purchaseError) {
+        console.warn("[GRACE_DAYS] Streak restored, but purchase history was not saved:", purchaseError.message);
+      }
+
+      await supabase.from("app_logins").insert({ user_id: userId });
+      await supabase.from("master_actions").insert({
+        user_id: userId,
+        username,
+        action_type: ACTION_TYPE.user_login,
+        action_label: `grace_day_purchased_and_used:${graceDaysToUse}:${gracePurchasePrompt.today}`,
+      });
+
+      window.localStorage.removeItem(`bb:grace-days:pending-purchase:${userId}`);
+      setGracePurchasePrompt(null);
+      setGraceUsePrompt(null);
+      setGraceRestoreSuccess({ streak: nextStreak, graceDays: nextGraceDays, diamonds: nextDiamonds, graceDaysUsed: graceDaysToUse });
+      setHeaderCurrentStreak(nextStreak);
+      setHeaderGraceDays(nextGraceDays);
+      window.dispatchEvent(new CustomEvent("bb:dashboard-stats-sync", { detail: { streak: nextStreak, graceDays: nextGraceDays } }));
+      window.dispatchEvent(new CustomEvent("bb:diamonds-awarded", { detail: { diamonds: nextDiamonds } }));
+    } catch (error) {
+      console.error("[GRACE_DAYS] Could not purchase Grace Day restore:", error);
+    } finally {
+      setGraceActionLoading(false);
+    }
+  }
+
+  async function handleEndGraceStreak(promptOverride?: GracePurchasePrompt) {
+    const activePrompt = promptOverride ?? graceUsePrompt;
+    if (!userId || !activePrompt) return;
     setGraceActionLoading(true);
     try {
       const { error } = await supabase
         .from("profile_stats")
         .update({
-          last_active_date: graceUsePrompt.today,
+          last_active_date: activePrompt.today,
           current_streak: 1,
           updated_at: new Date().toISOString(),
         })
@@ -1664,9 +1792,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       await supabase.from("app_logins").insert({ user_id: userId });
       window.localStorage.removeItem(`bb:grace-days:pending-use:${userId}`);
+      window.localStorage.removeItem(`bb:grace-days:pending-purchase:${userId}`);
       setGraceUsePrompt(null);
+      setGracePurchasePrompt(null);
       setHeaderCurrentStreak(1);
-      window.dispatchEvent(new CustomEvent("bb:dashboard-stats-sync", { detail: { streak: 1, graceDays: graceUsePrompt.graceDays } }));
+      window.dispatchEvent(new CustomEvent("bb:dashboard-stats-sync", { detail: { streak: 1, graceDays: activePrompt.graceDays } }));
     } catch (error) {
       console.error("[GRACE_DAYS] Could not end streak:", error);
     } finally {
@@ -1842,6 +1972,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     router.replace("/dashboard");
   }, [isLoggedIn, userId, showOnboardingModal, pathname, router]);
 
+  const gracePurchaseTotals = gracePurchasePrompt ? getGracePurchaseTotals(gracePurchasePrompt) : null;
+
   return (
     <FeatureRenderPriorityProvider value={{ featureToursEnabled }}>
 
@@ -2007,7 +2139,115 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         />
       )}
 
-      {isLoggedIn && userId && graceReward && !showOnboardingModal && !showEmailConfirmationGate && (
+      {isLoggedIn && userId && gracePurchasePrompt && gracePurchaseTotals && !showOnboardingModal && !showEmailConfirmationGate && (
+        <div className="fixed inset-0 z-[280] flex items-center justify-center bg-black/60 px-4">
+          <style>{`
+            @keyframes grace-restore-ring {
+              0% { transform: scale(0.82); opacity: 0.35; }
+              55% { transform: scale(1.16); opacity: 0.9; }
+              100% { transform: scale(1.32); opacity: 0; }
+            }
+            @keyframes grace-restore-spark {
+              0% { transform: translateY(14px) scale(0.7); opacity: 0; }
+              45% { opacity: 1; }
+              100% { transform: translateY(-28px) scale(1.05); opacity: 0; }
+            }
+            @keyframes grace-restore-fill {
+              from { width: 18%; }
+              to { width: 100%; }
+            }
+          `}</style>
+          <div className="relative w-full max-w-md overflow-hidden rounded-[28px] border border-amber-200 bg-[#101827] p-6 text-center text-white shadow-2xl">
+            <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-red-500 via-amber-300 to-emerald-400" />
+            <div className="absolute left-8 top-14 h-2 w-2 rounded-full bg-amber-300 opacity-80 [animation:grace-restore-spark_1.7s_ease-in-out_infinite]" />
+            <div className="absolute right-10 top-24 h-3 w-3 rounded-full bg-emerald-300 opacity-75 [animation:grace-restore-spark_1.9s_ease-in-out_infinite]" />
+            <div className="absolute bottom-28 left-12 h-2.5 w-2.5 rounded-full bg-sky-300 opacity-75 [animation:grace-restore-spark_2.1s_ease-in-out_infinite]" />
+            <p className="text-xs font-black uppercase tracking-[0.28em] text-amber-200">Streak Rescue</p>
+            <h2 className="mt-2 text-3xl font-black leading-tight">Restore your streak?</h2>
+            <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-slate-200">
+              You missed {gracePurchaseTotals.missedDays === 1 ? "a day" : `${gracePurchaseTotals.missedDays} days`}, but you have enough diamonds to buy{" "}
+              {gracePurchaseTotals.graceDaysToBuy === 1 ? "a Grace Day" : `${gracePurchaseTotals.graceDaysToBuy} Grace Days`} and keep your streak alive.
+            </p>
+            <div className="mt-6 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+              <div className="rounded-3xl border border-white/10 bg-white/10 px-3 py-4">
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-slate-800 opacity-60 grayscale">
+                  <StreakFlameEmoji flameId={headerSelectedFlame} size={52} title="Broken streak" />
+                </div>
+                <p className="mt-3 text-xs font-black uppercase tracking-wide text-slate-300">Broken</p>
+              </div>
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-amber-300 text-xl font-black text-slate-950 shadow-[0_0_24px_rgba(252,211,77,0.45)]">
+                &gt;
+              </div>
+              <div className="relative rounded-3xl border border-emerald-300/40 bg-emerald-300/10 px-3 py-4 shadow-[0_0_28px_rgba(52,211,153,0.22)]">
+                <span className="absolute inset-3 rounded-full border border-emerald-300/45 [animation:grace-restore-ring_1.7s_ease-out_infinite]" />
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-white">
+                  <StreakFlameEmoji flameId={headerSelectedFlame} size={54} title="Restored streak" />
+                </div>
+                <p className="mt-3 text-xs font-black uppercase tracking-wide text-emerald-200">Restored</p>
+              </div>
+            </div>
+            <div className="mt-5 rounded-2xl bg-white/10 p-4 text-left">
+              <div className="flex items-center justify-between gap-3 text-sm font-black">
+                <span>Cost</span>
+                <span>{gracePurchaseTotals.totalCost.toLocaleString()} diamonds</span>
+              </div>
+              <div className="mt-3 h-3 overflow-hidden rounded-full bg-slate-700">
+                <div className="h-full rounded-full bg-gradient-to-r from-red-400 via-amber-300 to-emerald-400 [animation:grace-restore-fill_1.15s_ease-out_forwards]" />
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-2 text-xs font-bold text-slate-200">
+                <p>Current streak: {gracePurchasePrompt.currentStreak} days</p>
+                <p className="text-right">After: {gracePurchasePrompt.currentStreak + diffLocalDayKeys(gracePurchasePrompt.lastActiveDate, gracePurchasePrompt.today)} days</p>
+              </div>
+            </div>
+            <div className="mt-5 grid gap-3">
+              <button
+                type="button"
+                disabled={graceActionLoading || gracePurchasePrompt.diamonds < gracePurchaseTotals.totalCost}
+                onClick={() => void handlePurchaseGraceDayRestore()}
+                className="w-full rounded-2xl bg-amber-300 px-5 py-3 text-sm font-black text-slate-950 shadow-[0_10px_28px_rgba(252,211,77,0.32)] transition hover:bg-amber-200 disabled:opacity-60"
+              >
+                Buy Grace Day and Restore
+              </button>
+              <button
+                type="button"
+                disabled={graceActionLoading}
+                onClick={() => void handleEndGraceStreak(gracePurchasePrompt)}
+                className="w-full rounded-2xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/15 disabled:opacity-60"
+              >
+                Let Streak Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isLoggedIn && userId && graceRestoreSuccess && !showOnboardingModal && !showEmailConfirmationGate && (
+        <div className="fixed inset-0 z-[281] flex items-center justify-center bg-black/55 px-4">
+          <div className="relative w-full max-w-sm overflow-hidden rounded-[28px] bg-white p-6 text-center shadow-2xl">
+            <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-amber-300 via-emerald-300 to-sky-300" />
+            <div className="mx-auto mt-2 flex h-28 w-28 items-center justify-center rounded-full bg-emerald-50 shadow-[0_0_34px_rgba(52,211,153,0.28)]">
+              <StreakFlameEmoji flameId={headerSelectedFlame} size={76} title="Streak restored" />
+            </div>
+            <h2 className="mt-5 text-3xl font-black text-gray-950">Streak restored!</h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-gray-600">
+              Your Grace Day rescue worked. Your streak is back at {graceRestoreSuccess.streak} days and ready to keep going.
+            </p>
+            <div className="mt-4 grid grid-cols-2 gap-3 text-sm font-black">
+              <div className="rounded-2xl bg-emerald-50 px-3 py-3 text-emerald-700">{graceRestoreSuccess.graceDays} Grace Days left</div>
+              <div className="rounded-2xl bg-sky-50 px-3 py-3 text-sky-700">{graceRestoreSuccess.diamonds.toLocaleString()} diamonds left</div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setGraceRestoreSuccess(null)}
+              className="mt-5 w-full rounded-2xl bg-[#2878f0] px-5 py-3 text-sm font-black text-white shadow-lg transition hover:bg-[#1f6ee3]"
+            >
+              Let&apos;s Go
+            </button>
+          </div>
+        </div>
+      )}
+
+      {isLoggedIn && userId && graceReward && !gracePurchasePrompt && !graceRestoreSuccess && !showOnboardingModal && !showEmailConfirmationGate && (
         <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
           <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl">
             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-blue-50">
@@ -2039,7 +2279,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      {isLoggedIn && userId && graceUsePrompt && !showOnboardingModal && !showEmailConfirmationGate && (
+      {isLoggedIn && userId && graceUsePrompt && !gracePurchasePrompt && !graceRestoreSuccess && !showOnboardingModal && !showEmailConfirmationGate && (
         <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
           <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl">
             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-blue-50">
