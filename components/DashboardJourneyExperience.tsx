@@ -4045,7 +4045,7 @@ export default function DashboardJourneyExperience({
               </p>
 
               <div className="mt-5 flex items-center gap-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm">
-                <div className="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-[22px] bg-[var(--bb-surface-soft,#f8fbff)]">
+                <div className="buddy-rewards-buddy grid h-24 w-24 shrink-0 place-items-center overflow-visible">
                   {selectedBuddy ? <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={104} /> : <span className="block h-[104px] w-[104px]" aria-hidden="true" />}
                 </div>
                 <div className="min-w-0 flex-1">
@@ -4288,6 +4288,12 @@ export default function DashboardJourneyExperience({
           100% { opacity: 0; transform: translateY(3px); }
         }
 
+        @keyframes buddy-rewards-bob {
+          0%, 100% { transform: translateY(0) rotate(-1deg) scale(1); }
+          45% { transform: translateY(-6px) rotate(1.5deg) scale(1.03); }
+          70% { transform: translateY(-2px) rotate(0deg) scale(1.01); }
+        }
+
         .task-complete-pop {
           animation: task-complete-pop 760ms cubic-bezier(0.16, 0.9, 0.22, 1) forwards;
           transform-origin: center;
@@ -4342,6 +4348,11 @@ export default function DashboardJourneyExperience({
         .start-here-flash { animation: start-here-flash 1s ease-in-out infinite; }
         .task-estimate-primary { animation: task-estimate-primary 2.4s ease-in-out infinite; }
         .task-estimate-secondary { animation: task-estimate-secondary 2.4s ease-in-out infinite; }
+        .buddy-rewards-buddy {
+          animation: buddy-rewards-bob 3.2s ease-in-out infinite;
+          transform-origin: center bottom;
+          filter: drop-shadow(0 12px 18px rgba(38, 63, 99, 0.18));
+        }
         .spark-a { --spark-x: -53px; --spark-y: -53px; }
         .spark-b { --spark-x: 23px; --spark-y: -70px; }
         .spark-c { --spark-x: 85px; --spark-y: -25px; }
