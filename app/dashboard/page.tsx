@@ -202,7 +202,7 @@ type StorePurchaseCongrats = {
 
 type StorePromoKind = "buddies" | "diamonds";
 type DailyPopupStep = "streak" | "share_howto" | "mystery" | "invite_howto" | "store_buddies" | "bible_tip" | "store_diamonds";
-type DeepStudyModeState = "idle" | "setup" | "active" | "results" | "info";
+type DeepStudyModeState = "idle" | "setup" | "active" | "complete" | "results" | "info";
 
 type DeepStudyActiveSession = {
   id: string;
@@ -1092,6 +1092,7 @@ export default function DashboardPage() {
   const [deepStudyResults, setDeepStudyResults] = useState<DeepStudySessionSummary | null>(null);
   const [deepStudyHistory, setDeepStudyHistory] = useState<DeepStudySessionSummary[]>([]);
   const [deepStudyShareBusy, setDeepStudyShareBusy] = useState(false);
+  const [showDeepStudyUpgradeModal, setShowDeepStudyUpgradeModal] = useState(false);
   const [deepStudyNow, setDeepStudyNow] = useState(Date.now());
   const deepStudyFinalizingRef = useRef(false);
   const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
@@ -5187,6 +5188,7 @@ export default function DashboardPage() {
   const dashboardTheme = getAppTheme(dashboardThemeId);
   const activePremiumSkin = getPremiumSkin(activePremiumSkinId);
   const deepStudyButtonColor = activePremiumSkin?.palette.accent || darkenHexColor(dashboardTheme.button || dashboardTheme.accent, dashboardTheme.id === "black" ? 0 : 0.2);
+  const isDeepStudyPaidUser = membershipStatus === "pro" || profile?.is_paid === true;
   const deepStudyTodayKey = getDeepStudyLocalDayKey();
   const deepStudyStreak = getDeepStudyStreak(deepStudyHistory, deepStudyTodayKey);
   const deepStudyMultiplier = getDeepStudyMultiplier(deepStudyStreak);
@@ -5356,6 +5358,7 @@ export default function DashboardPage() {
         streak: 1,
         diamondsEarned: 0,
         themeId: dashboardTheme.id,
+        skinId: activePremiumSkinId,
       },
       ...historyBeforeSave,
     ], dayKey);
@@ -5381,7 +5384,12 @@ export default function DashboardPage() {
       streak: optimisticStreak,
       diamondsEarned,
       themeId: dashboardTheme.id,
+      skinId: activePremiumSkinId,
     };
+
+    setDeepStudyResults(summary);
+    setDeepStudyActiveSession(null);
+    setDeepStudyMode("complete");
 
     const awarded = await awardDiamonds(userId, diamondsEarned);
     const savedSummary = { ...summary, diamondsEarned: awarded };
@@ -5421,8 +5429,6 @@ export default function DashboardPage() {
     });
 
     setDeepStudyResults(savedSummary);
-    setDeepStudyActiveSession(null);
-    setDeepStudyMode("results");
     deepStudyFinalizingRef.current = false;
   }
 
@@ -6191,31 +6197,53 @@ export default function DashboardPage() {
     canvas.height = 1920;
     const ctx = canvas.getContext("2d");
     if (!ctx) throw new Error("Canvas is unavailable.");
-    const theme = getAppTheme(summary.themeId);
+    const skin = getPremiumSkin(summary.skinId);
+    const theme = skin?.palette ?? getAppTheme(summary.themeId);
     const accent = theme.accent;
     const darkAccent = darkenHexColor(accent, 0.34);
 
-    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    gradient.addColorStop(0, theme.id === "dark" || theme.id === "black" ? "#101827" : theme.background);
-    gradient.addColorStop(1, theme.id === "dark" || theme.id === "black" ? "#172033" : theme.surfaceSoft);
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (skin) {
+      try {
+        const image = await loadCanvasImage(skin.backgroundImage);
+        const scale = Math.max(canvas.width / image.width, canvas.height / image.height);
+        const width = image.width * scale;
+        const height = image.height * scale;
+        ctx.drawImage(image, (canvas.width - width) / 2, (canvas.height - height) / 2, width, height);
+      } catch {
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0, theme.background);
+        gradient.addColorStop(1, theme.surfaceSoft);
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      ctx.fillStyle = "rgba(0,0,0,0.42)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    } else {
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, summary.themeId === "dark" || summary.themeId === "black" ? "#101827" : theme.background);
+      gradient.addColorStop(1, summary.themeId === "dark" || summary.themeId === "black" ? "#172033" : theme.surfaceSoft);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
-    ctx.fillStyle = "rgba(255,255,255,0.88)";
-    roundRect(ctx, 96, 150, 888, 1400, 56);
+    ctx.fillStyle = skin ? "rgba(5, 13, 25, 0.74)" : "rgba(255,255,255,0.88)";
+    roundRect(ctx, 88, 132, 904, 1445, 56);
     ctx.fill();
+    ctx.strokeStyle = skin ? theme.cardBorder : `${accent}55`;
+    ctx.lineWidth = 4;
+    ctx.stroke();
 
-    ctx.fillStyle = darkAccent;
+    ctx.fillStyle = skin ? theme.accent : darkAccent;
     ctx.font = "900 46px Arial";
     ctx.textAlign = "center";
-    ctx.fillText("Deep Study Complete", 540, 285);
+    ctx.fillText("Bible Buddy Deep Study", 540, 280);
 
     ctx.fillStyle = theme.textPrimary;
     ctx.font = "900 92px Arial";
     ctx.fillText(`${summary.activeMinutes} Minutes`, 540, 430);
     ctx.font = "700 42px Arial";
     ctx.fillStyle = theme.textSecondary;
-    ctx.fillText("Focused in God's Word", 540, 500);
+    ctx.fillText("Focused in God's Word", 540, 502);
 
     const rows = [
       ["Chapters Studied", String(summary.chaptersStudied.length)],
@@ -6225,14 +6253,14 @@ export default function DashboardPage() {
     ];
     rows.forEach(([label, value], index) => {
       const y = 650 + index * 150;
-      ctx.fillStyle = `${accent}24`;
+      ctx.fillStyle = skin ? "rgba(255,255,255,0.1)" : `${accent}24`;
       roundRect(ctx, 175, y, 730, 104, 28);
       ctx.fill();
       ctx.fillStyle = theme.textSecondary;
       ctx.font = "800 32px Arial";
       ctx.textAlign = "left";
       ctx.fillText(label, 220, y + 64);
-      ctx.fillStyle = darkAccent;
+      ctx.fillStyle = skin ? theme.textPrimary : darkAccent;
       ctx.font = "900 42px Arial";
       ctx.textAlign = "right";
       ctx.fillText(value, 860, y + 66);
@@ -6242,7 +6270,7 @@ export default function DashboardPage() {
     ctx.fillStyle = theme.textPrimary;
     ctx.font = "700 40px Arial";
     ctx.fillText("Stay focused in God's Word.", 540, 1335);
-    ctx.fillStyle = darkAccent;
+    ctx.fillStyle = skin ? theme.accent : darkAccent;
     ctx.font = "900 38px Arial";
     ctx.fillText("Bible Buddy", 540, 1450);
 
@@ -6251,6 +6279,15 @@ export default function DashboardPage() {
         if (blob) resolve(blob);
         else reject(new Error("Could not generate share image."));
       }, "image/png");
+    });
+  }
+
+  function loadCanvasImage(src: string) {
+    return new Promise<HTMLImageElement>((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve(image);
+      image.onerror = () => reject(new Error("Could not load share card background."));
+      image.src = src;
     });
   }
 
@@ -6340,25 +6377,42 @@ export default function DashboardPage() {
   }
 
   function renderDeepStudySetup() {
-    const options = [15, 20, 30];
+    const options = [5, 10, 15, 20, 30, 45, 60];
+    const paidOnlyOptions = new Set([5, 10, 45, 60]);
     return (
       <section className="mx-auto w-full max-w-xl rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-6 shadow-[0_16px_40px_rgba(38,63,99,0.12)]">
         <button type="button" onClick={() => setDeepStudyMode("idle")} className="ml-auto grid h-9 w-9 place-items-center rounded-full bg-[var(--bb-surface-soft)] text-xl font-black text-[var(--bb-text-secondary)]">x</button>
         <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary)]">Start Deep Study Mode</h2>
         <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">Earn diamonds while deeply studying God&apos;s Word.</p>
-        <div className="mt-5 grid grid-cols-3 gap-3">
+        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {options.map((minutes) => {
             const selected = deepStudySelectedMinutes === minutes;
+            const isPaidOnly = paidOnlyOptions.has(minutes);
+            const locked = isPaidOnly && !isDeepStudyPaidUser;
             return (
               <button
                 key={minutes}
                 type="button"
-                onClick={() => setDeepStudySelectedMinutes(minutes)}
-                className={`rounded-[22px] border px-3 py-4 text-center transition ${selected ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)] shadow-sm" : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)]"}`}
+                onClick={() => {
+                  if (locked) {
+                    setShowDeepStudyUpgradeModal(true);
+                    return;
+                  }
+                  setDeepStudySelectedMinutes(minutes);
+                }}
+                aria-disabled={locked}
+                className={`rounded-[22px] border px-3 py-4 text-center transition ${
+                  selected
+                    ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)] shadow-sm"
+                    : locked
+                      ? "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] opacity-60"
+                      : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)]"
+                }`}
               >
                 <p className="text-xl font-black text-[var(--bb-text-primary)]">{minutes}</p>
                 <p className="text-xs font-black text-[var(--bb-text-muted)]">minutes</p>
                 {minutes === 20 ? <p className="mt-2 rounded-full bg-[var(--bb-button)] px-2 py-1 text-[10px] font-black text-[var(--bb-button-text)]">Recommended</p> : null}
+                {isPaidOnly ? <p className="mt-2 rounded-full bg-[var(--bb-button)] px-2 py-1 text-[10px] font-black text-[var(--bb-button-text)]">Pro</p> : null}
               </button>
             );
           })}
@@ -6407,25 +6461,46 @@ export default function DashboardPage() {
               </div>
             ) : null}
           </div>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            <button type="button" onClick={() => void shareDeepStudyResults(deepStudyResults)} className="rounded-full bg-[var(--bb-button)] px-5 py-3 text-sm font-black text-[var(--bb-button-text)]">Share My Results</button>
-            <button type="button" onClick={() => setDeepStudyMode("idle")} className="rounded-full border border-[var(--bb-card-border)] bg-white px-5 py-3 text-sm font-black text-[var(--bb-text-primary)]">Done</button>
+          <button
+            type="button"
+            onClick={() => void shareDeepStudyResults(deepStudyResults)}
+            disabled={deepStudyShareBusy}
+            className="mt-6 w-full rounded-[24px] bg-[var(--bb-button)] px-6 py-5 text-lg font-black text-[var(--bb-button-text)] shadow-[0_12px_28px_rgba(38,63,99,0.22)] transition hover:brightness-95 disabled:opacity-70"
+          >
+            {deepStudyShareBusy ? "Preparing Share Card..." : "Share My Results"}
+          </button>
+          <button type="button" onClick={() => setDeepStudyMode("idle")} className="mt-3 w-full rounded-full border border-[var(--bb-card-border)] bg-white px-5 py-3 text-sm font-black text-[var(--bb-text-primary)]">
+            Done
+          </button>
+        </div>
+      </section>
+    );
+  }
+
+  function renderDeepStudyComplete() {
+    if (!deepStudyResults) return null;
+    const didGood = deepStudyResults.focusScore >= 60 || deepStudyResults.activeMinutes >= Math.max(1, Math.floor(deepStudyResults.plannedMinutes * 0.5));
+    return (
+      <section className="mx-auto w-full max-w-xl overflow-hidden rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-[0_16px_40px_rgba(38,63,99,0.12)]">
+        <div className="px-6 py-8 text-center">
+          <div className="flex justify-center">
+            <LouisAvatar mood={didGood ? "stareyes" : "wave"} size={138} />
           </div>
-          <div className="mt-4 flex flex-wrap justify-center gap-2">
-            {["Instagram", "Messages", "WhatsApp", "Threads", "Facebook"].map((label) => (
-              <button
-                key={label}
-                type="button"
-                onClick={() => void shareDeepStudyResults(deepStudyResults)}
-                className="rounded-full bg-[var(--bb-surface-soft)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary)]"
-              >
-                {label}
-              </button>
-            ))}
-            <button type="button" onClick={() => void shareDeepStudyResults(deepStudyResults, "save")} className="rounded-full bg-[var(--bb-surface-soft)] px-3 py-2 text-xs font-black text-[var(--bb-accent)]">
-              {deepStudyShareBusy ? "Preparing..." : "Save Image"}
-            </button>
-          </div>
+          <p className="mt-4 text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent)]">Bible Buddy</p>
+          <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary)]">Hey, you did it.</h2>
+          <p className="mt-3 text-base font-semibold leading-7 text-[var(--bb-text-secondary)]">
+            You made it through another Deep Study run{didGood ? ", and you did good." : "."}
+          </p>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-muted)]">
+            Let&apos;s see your results.
+          </p>
+          <button
+            type="button"
+            onClick={() => setDeepStudyMode("results")}
+            className="mt-6 w-full rounded-full bg-[var(--bb-button)] px-6 py-3.5 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
+          >
+            OK
+          </button>
         </div>
       </section>
     );
@@ -6479,6 +6554,7 @@ export default function DashboardPage() {
     if (showDiamondStore) return renderDiamondStorePanel();
     if (showBibleProgressPanel) return renderBibleProgressPanel();
     if (deepStudyMode === "setup") return renderDeepStudySetup();
+    if (deepStudyMode === "complete") return renderDeepStudyComplete();
     if (deepStudyMode === "results") return renderDeepStudyResults();
     if (deepStudyMode === "info") return renderDeepStudyInfo();
     return undefined;
@@ -7215,9 +7291,9 @@ export default function DashboardPage() {
           animation: dashboard-inline-reader-slide 260ms ease-out both;
         }
       `}</style>
-      <div className="dashboard-shell min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">
+      <div className="dashboard-shell min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12 lg:h-screen lg:overflow-hidden lg:pb-0">
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
-      <div className="bb-blue-storm-desktop-layout hidden lg:flex max-w-7xl mx-auto px-4 mt-4 gap-6">
+      <div className="bb-blue-storm-desktop-layout hidden lg:flex lg:h-full max-w-7xl mx-auto px-4 mt-4 lg:mt-0 lg:py-4 gap-6">
         {/* LEFT AD SLOT (Desktop Only) */}
         {shouldShowAds && (
           <aside className="w-64 flex-shrink-0 sticky top-8 h-fit">
@@ -7261,7 +7337,7 @@ export default function DashboardPage() {
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={renderDashboardHomePanelOverride()}
           deepStudyNode={renderDeepStudyCard()}
-          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "setup" || deepStudyMode === "results" || deepStudyMode === "info"}
+          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "setup" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
@@ -7314,7 +7390,7 @@ export default function DashboardPage() {
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={renderDashboardHomePanelOverride()}
           deepStudyNode={renderDeepStudyCard()}
-          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "setup" || deepStudyMode === "results" || deepStudyMode === "info"}
+          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "setup" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
@@ -7368,6 +7444,38 @@ export default function DashboardPage() {
       )}
 
       {renderStorePromoModal()}
+
+      <ModalShell
+        isOpen={showDeepStudyUpgradeModal}
+        onClose={() => setShowDeepStudyUpgradeModal(false)}
+        backdropColor="bg-black/55"
+      >
+        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+          <div className="px-6 py-7 text-center sm:px-8">
+            <div className="flex justify-center">
+              <LouisAvatar mood="wave" size={128} />
+            </div>
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Deep Study Pro</p>
+            <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary,#21304f)]">More Study Time Options</h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
+              Upgrade to unlock the 5, 10, 45, and 60 minute Deep Study options.
+            </p>
+            <Link
+              href="/upgrade"
+              className="mt-5 inline-flex w-full justify-center rounded-full bg-[var(--bb-button,#7BAFD4)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+            >
+              Upgrade to Pro
+            </Link>
+            <button
+              type="button"
+              onClick={() => setShowDeepStudyUpgradeModal(false)}
+              className="mt-2 inline-flex w-full justify-center rounded-full border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#21304f)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+            >
+              Not now
+            </button>
+          </div>
+        </div>
+      </ModalShell>
 
       {false && showSwipeHintOverlay && (
         <div

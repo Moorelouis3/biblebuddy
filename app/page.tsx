@@ -144,21 +144,38 @@ export default function LandingPage() {
   const focusedSeries = landingStudySeries[studyCarouselIndex] ?? landingStudySeries[0];
 
   useEffect(() => {
-    const checkSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      if (session) {
-        router.push("/dashboard");
-        return;
+    let settled = false;
+    const fallbackTimer = window.setTimeout(() => {
+      if (!settled) {
+        setIsChecking(false);
       }
-      setIsChecking(false);
+    }, 3500);
+
+    const checkSession = async () => {
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        settled = true;
+        window.clearTimeout(fallbackTimer);
+        if (session) {
+          router.push("/dashboard");
+          return;
+        }
+        setIsChecking(false);
+      } catch {
+        settled = true;
+        window.clearTimeout(fallbackTimer);
+        setIsChecking(false);
+      }
     };
     checkSession();
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
+      settled = true;
+      window.clearTimeout(fallbackTimer);
       if (session) {
         router.push("/dashboard");
       } else {
@@ -167,6 +184,7 @@ export default function LandingPage() {
     });
 
     return () => {
+      window.clearTimeout(fallbackTimer);
       subscription.unsubscribe();
     };
   }, [router]);

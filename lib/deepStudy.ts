@@ -1,4 +1,5 @@
 import type { AppThemeId } from "./appThemes";
+import type { PremiumSkinId } from "./premiumSkins";
 
 export type DeepStudyTaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
 
@@ -21,6 +22,7 @@ export type DeepStudySessionSummary = {
   streak: number;
   diamondsEarned: number;
   themeId: AppThemeId;
+  skinId?: PremiumSkinId;
 };
 
 export type DeepStudyDailyStats = {
@@ -120,4 +122,3 @@ function parseDayKey(dayKey: string) {
 function formatDayKey(date: Date) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
-

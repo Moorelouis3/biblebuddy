@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v10-2026-05-18-newer-app-icon";
+const CACHE_VERSION = "v11-2026-05-19-loading-fix";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
