@@ -114,8 +114,8 @@ function getLocalSkinLockedFlameId() {
 }
 
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
-const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
-const JESSICA_BONUS_POPUP_KEY = "bb:bonus-popup:jessica-1000:v1";
+const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:8297:jessica-level-11-halfway-restoration-may-2026";
+const JESSICA_BONUS_POPUP_KEY = "bb:bonus-popup:jessica-level-11-restored:v1";
 const ZORIAN_USER_ID = "6ffe9dd2-884b-4a6b-8096-e9418dd56232";
 const ZORIAN_RESTORATION_ACTION_LABEL = "admin_bonus_points:1000:zorian-login-restoration-may-2026";
 const ZORIAN_RESTORATION_POPUP_KEY = "bb:bonus-popup:zorian-login-restoration-1000:v1";
@@ -9737,9 +9737,12 @@ export default function DashboardPage() {
             <div className="flex justify-center">
               <LouisAvatar mood="stareyes" size={138} />
             </div>
-            <h2 className="mt-4 text-3xl font-black text-[var(--bb-text-primary,#2b3550)] sm:text-4xl">🎉 Hey Jessica</h2>
+            <h2 className="mt-4 text-3xl font-black text-[var(--bb-text-primary,#2b3550)] sm:text-4xl">Hey Jessica</h2>
             <p className="mt-3 text-base leading-7 text-[#5b6480]">
-              You have been awarded <span className="font-bold text-[#1f2937]">1000 bonus XP</span>.
+              Your <span className="font-bold text-[#1f2937]">Level 11 has been reinstated</span>.
+            </p>
+            <p className="mt-2 text-base leading-7 text-[#5b6480]">
+              You are now halfway to Level 12. Thanks for helping moderate Bible Buddy.
             </p>
             <button
               type="button"
