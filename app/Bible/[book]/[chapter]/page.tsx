@@ -2779,6 +2779,164 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           </div>
         </div> : null}
 
+        {hideReaderChrome ? (
+          <div className="relative z-20 mb-4" ref={gamesMenuRef}>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  if (isSaving) return;
+                  if (isCompleted) return;
+                  void handleMarkFinished();
+                }}
+                aria-label={isCompleted ? "Chapter completed" : "Mark chapter completed"}
+                className={`flex min-h-[4.25rem] flex-1 items-center justify-between rounded-2xl border px-4 py-3 text-left text-white shadow-lg transition ${
+                  isCompleted
+                    ? "border-emerald-500 bg-emerald-600 shadow-emerald-200 hover:bg-emerald-700"
+                    : isSaving
+                      ? "cursor-not-allowed border-blue-300 bg-blue-300 shadow-blue-100"
+                      : "border-blue-500 bg-blue-600 shadow-blue-200 hover:bg-blue-700 bb-mark-pulse"
+                }`}
+              >
+                <div className="flex flex-col">
+                  <span className="text-xs font-extrabold uppercase tracking-[0.08em]">
+                    {isCompleted ? "Completed" : "Mark Complete"}
+                  </span>
+                  <span className="mt-1 text-[11px] font-medium text-blue-100">
+                    {isCompleted ? "This chapter is finished" : "Finish this chapter"}
+                  </span>
+                </div>
+                <span className="text-lg font-bold">{isCompleted ? "✓" : "☑"}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setGamesMenuOpen((value) => !value);
+                  setTranslationMenuOpen(false);
+                }}
+                aria-expanded={gamesMenuOpen}
+                aria-label="Bible menu"
+                className="flex min-h-[4.25rem] w-28 flex-col items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-3 text-center text-[var(--bb-text-primary,#1f2937)] shadow-sm transition hover:brightness-95 sm:w-36"
+              >
+                <span className="text-xs font-extrabold uppercase tracking-[0.12em]">Menu</span>
+                <span className="mt-1 text-xl font-bold leading-none">{gamesMenuOpen ? "-" : "+"}</span>
+              </button>
+            </div>
+
+            {gamesMenuOpen ? (
+              <div className="relative z-50 mt-2 overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-xl">
+                <div className="border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3">
+                  <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">Chapter tools</p>
+                  <p className="text-xs text-[var(--bb-text-secondary,#4b5563)]">Books, notes, translation, games, and reader settings.</p>
+                </div>
+
+                <div className="space-y-2 p-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowBooksModal(true);
+                      setGamesMenuOpen(false);
+                    }}
+                    className="flex w-full items-center justify-between rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:brightness-95"
+                  >
+                    <span>Browse Books and Chapters</span>
+                    <span>Open</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      openReviewModal();
+                      setGamesMenuOpen(false);
+                    }}
+                    className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${reviewDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:brightness-95"}`}
+                  >
+                    <span>Chapter Notes</span>
+                    <span>{reviewDone ? "Done" : "Open"}</span>
+                  </button>
+
+                  <div className="rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)]" ref={translationMenuRef}>
+                    <button
+                      type="button"
+                      onClick={() => setTranslationMenuOpen((value) => !value)}
+                      aria-expanded={translationMenuOpen}
+                      className="flex w-full items-center justify-between px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:brightness-95"
+                    >
+                      <span>Translation</span>
+                      <span>{translation.toUpperCase()}</span>
+                    </button>
+
+                    {translationMenuOpen ? (
+                      <div className="border-t border-[var(--bb-card-border,#e5e7eb)]">
+                        {([
+                          { value: "web", label: "WEB" },
+                          { value: "asv", label: "ASV" },
+                          { value: "kjv", label: "KJV" },
+                        ] as const).map((option) => (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => {
+                              setTranslation(option.value);
+                              setTranslationMenuOpen(false);
+                              setGamesMenuOpen(false);
+                            }}
+                            className={`flex w-full items-center justify-between px-4 py-3 text-sm font-semibold transition ${
+                              translation === option.value ? "bg-blue-600 text-white" : "text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                            }`}
+                          >
+                            <span>{option.label}</span>
+                            {translation === option.value ? <span>Selected</span> : null}
+                          </button>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+
+                  {triviaChapterPack ? (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowTriviaModal(true);
+                        setGamesMenuOpen(false);
+                      }}
+                      className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${triviaDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:brightness-95"}`}
+                    >
+                      <span>Trivia Quiz</span>
+                      <span>{triviaDone ? "Done" : "Play"}</span>
+                    </button>
+                  ) : null}
+
+                  {scrambledChapterPack ? (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowScrambledModal(true);
+                        setGamesMenuOpen(false);
+                      }}
+                      className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${scrambledDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:brightness-95"}`}
+                    >
+                      <span>Scrambled</span>
+                      <span>{scrambledDone ? "Done" : "Play"}</span>
+                    </button>
+                  ) : null}
+
+                  <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 select-none">
+                    <span>Plain Text Mode</span>
+                    <input
+                      type="checkbox"
+                      checked={plainTextMode}
+                      onChange={(e) => setPlainTextMode(e.target.checked)}
+                      className="h-5 w-5 accent-blue-600"
+                    />
+                  </label>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+
         {/* VERSE BLOCK */}
         <div
           ref={verseContainerRef}
