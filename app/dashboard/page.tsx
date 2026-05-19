@@ -7528,19 +7528,17 @@ export default function DashboardPage() {
         }
         html[data-bb-skin="blue-storm"] .dashboard-shell::before {
           background:
-            radial-gradient(circle at 48% 20%, rgba(168, 230, 255, 0.38), transparent 18%),
-            radial-gradient(circle at 62% 30%, rgba(68, 166, 255, 0.24), transparent 28%),
-            linear-gradient(90deg, transparent 0%, rgba(128, 216, 255, 0.1) 46%, transparent 78%);
+            radial-gradient(circle at 48% 20%, rgba(168, 230, 255, 0.16), transparent 20%),
+            radial-gradient(circle at 62% 30%, rgba(68, 166, 255, 0.1), transparent 30%);
           mix-blend-mode: screen;
           animation: bb-blue-storm-lightning 9s ease-in-out infinite;
         }
         html[data-bb-skin="blue-storm"] .dashboard-shell::after {
           background:
-            radial-gradient(circle at 10% 22%, rgba(155, 220, 255, 0.16), transparent 34%),
-            radial-gradient(circle at 88% 18%, rgba(93, 214, 255, 0.2), transparent 32%),
-            linear-gradient(115deg, transparent 0%, rgba(232, 248, 255, 0.1) 48%, transparent 76%);
-          filter: blur(2px);
-          opacity: 0.95;
+            radial-gradient(circle at 10% 22%, rgba(155, 220, 255, 0.06), transparent 34%),
+            radial-gradient(circle at 88% 18%, rgba(93, 214, 255, 0.07), transparent 32%);
+          filter: blur(3px);
+          opacity: 0.28;
           animation: bb-blue-storm-mist 18s ease-in-out infinite alternate;
         }
         html[data-bb-skin="midnight-garden"] .dashboard-shell::before {
@@ -7838,18 +7836,16 @@ export default function DashboardPage() {
         }
         html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::before {
           background:
-            linear-gradient(118deg, transparent 0 45%, rgba(216, 246, 255, 0.72) 46%, rgba(93, 214, 255, 0.18) 47%, transparent 50%),
-            radial-gradient(circle at 51% 8%, rgba(184, 235, 255, 0.42), transparent 15%),
-            radial-gradient(circle at 68% 24%, rgba(58, 166, 255, 0.24), transparent 25%);
+            radial-gradient(circle at 51% 8%, rgba(184, 235, 255, 0.18), transparent 16%),
+            radial-gradient(circle at 68% 24%, rgba(58, 166, 255, 0.1), transparent 26%);
           mix-blend-mode: screen;
           animation: bb-blue-storm-lightning 9s ease-in-out infinite;
         }
         html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after {
           background:
-            radial-gradient(circle at 12% 18%, rgba(148, 216, 255, 0.16), transparent 32%),
-            linear-gradient(115deg, transparent 0%, rgba(232, 248, 255, 0.14) 48%, transparent 76%);
-          filter: blur(2px);
-          opacity: 0.92;
+            radial-gradient(circle at 12% 18%, rgba(148, 216, 255, 0.06), transparent 32%);
+          filter: blur(3px);
+          opacity: 0.24;
           animation: bb-blue-storm-mist 18s ease-in-out infinite alternate;
         }
         html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::before {
@@ -7954,14 +7950,12 @@ export default function DashboardPage() {
         html[data-bb-skin="blue-storm"] .dashboard-shell::after,
         html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after {
           background:
-            repeating-linear-gradient(112deg, rgba(183, 234, 255, 0.22) 0 1px, transparent 1px 18px),
-            repeating-linear-gradient(112deg, transparent 0 42px, rgba(93, 214, 255, 0.16) 42px 44px, transparent 44px 86px),
-            radial-gradient(circle at 12% 18%, rgba(148, 216, 255, 0.16), transparent 32%),
-            linear-gradient(115deg, transparent 0%, rgba(232, 248, 255, 0.12) 48%, transparent 76%) !important;
-          background-size: 160px 240px, 260px 360px, 100% 100%, 100% 100%;
-          filter: blur(0.3px);
-          opacity: 0.68;
-          animation: bb-dashboard-storm-rain 8s linear infinite !important;
+            radial-gradient(circle at 12% 18%, rgba(148, 216, 255, 0.055), transparent 32%),
+            radial-gradient(circle at 86% 22%, rgba(93, 214, 255, 0.045), transparent 34%) !important;
+          background-size: 100% 100%, 100% 100%;
+          filter: blur(3px);
+          opacity: 0.22;
+          animation: bb-blue-storm-mist 20s ease-in-out infinite alternate !important;
         }
         html[data-bb-skin="midnight-garden"] .dashboard-shell::after,
         html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::after {
@@ -8052,10 +8046,10 @@ export default function DashboardPage() {
           to { background-position: -120px 360px, -180px 520px, 0 0, 0 0; transform: translate3d(1%, 1%, 0); }
         }
         @keyframes bb-dashboard-storm-flash {
-          0%, 82%, 100% { opacity: 0.22; filter: brightness(1); }
-          86% { opacity: 0.74; filter: brightness(1.35); }
-          88% { opacity: 0.18; filter: brightness(0.95); }
-          91% { opacity: 0.5; filter: brightness(1.18); }
+          0%, 82%, 100% { opacity: 0.08; filter: brightness(1); }
+          86% { opacity: 0.22; filter: brightness(1.08); }
+          88% { opacity: 0.06; filter: brightness(0.98); }
+          91% { opacity: 0.14; filter: brightness(1.04); }
         }
         @keyframes bb-dashboard-fireflies {
           from { background-position: 0 0, 36px 22px, 0 0, 0 0; transform: translate3d(-1%, 1%, 0); }
@@ -8318,17 +8312,16 @@ export default function DashboardPage() {
           }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::before {
             background:
-              radial-gradient(circle at 51% 8%, rgba(184, 235, 255, 0.4), transparent 15%),
-              radial-gradient(circle at 68% 24%, rgba(58, 166, 255, 0.22), transparent 25%);
+              radial-gradient(circle at 51% 8%, rgba(184, 235, 255, 0.14), transparent 16%),
+              radial-gradient(circle at 68% 24%, rgba(58, 166, 255, 0.08), transparent 26%);
             mix-blend-mode: screen;
             animation: bb-blue-storm-lightning 9s ease-in-out infinite;
           }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after {
             background:
-              radial-gradient(circle at 12% 18%, rgba(148, 216, 255, 0.14), transparent 32%),
-              linear-gradient(115deg, transparent 0%, rgba(232, 248, 255, 0.1) 48%, transparent 76%);
-            filter: blur(2px);
-            opacity: 0.88;
+              radial-gradient(circle at 12% 18%, rgba(148, 216, 255, 0.05), transparent 32%);
+            filter: blur(3px);
+            opacity: 0.22;
             animation: bb-blue-storm-mist 18s ease-in-out infinite alternate;
           }
           html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::before {
