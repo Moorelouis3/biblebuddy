@@ -4462,9 +4462,6 @@ export default function DashboardPage() {
           } : current);
         }
 
-        await new Promise((resolve) => window.setTimeout(resolve, 350));
-        if (didCancel) return;
-
         const [
           actionsResult,
           groupPostsResult,

@@ -4,6 +4,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
+import type { Session } from "@supabase/supabase-js";
 import { supabase } from "../lib/supabaseClient";
 import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
@@ -31,7 +32,7 @@ import {
   applyPremiumSkinToDocument,
   normalizePremiumSkinId,
 } from "../lib/premiumSkins";
-import { preloadActiveSkinAssets, syncPerformanceModeToDocument } from "../lib/appPerformance";
+import { preloadActiveSkinAssets, scheduleIdleWork, syncPerformanceModeToDocument } from "../lib/appPerformance";
 import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
 import StreakFlameBadge from "./StreakFlameBadge";
@@ -436,6 +437,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   // PWA install prompt state
   const deferredInstallPromptRef = useRef<any>(null);
+  const criticalSessionBootUserRef = useRef<string | null>(null);
+  const deferredSessionBootUserRef = useRef<string | null>(null);
   const [canInstall, setCanInstall] = useState(false);
   const [pushSupported, setPushSupported] = useState(false);
   const [pushPermission, setPushPermission] = useState<NotificationPermission | "unsupported">("unsupported");
@@ -1435,6 +1438,46 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     router.push(`${notif.article_slug ?? "/dashboard"}${hash}`);
   }
 
+  function runCriticalSessionBoot(session: Session) {
+    setUserId(session.user.id);
+    const meta: any = session.user.user_metadata || {};
+    const extractedUsername =
+      meta.firstName ||
+      meta.first_name ||
+      (session.user.email ? session.user.email.split("@")[0] : null) ||
+      "User";
+    setUsername(extractedUsername);
+    if (criticalSessionBootUserRef.current === session.user.id) {
+      return;
+    }
+    criticalSessionBootUserRef.current = session.user.id;
+    void loadSavedTheme(session.user.id);
+    void loadHeaderDashboardStats(session.user.id);
+  }
+
+  function runDeferredSessionBoot(currentUserId: string) {
+    if (deferredSessionBootUserRef.current === currentUserId) {
+      return;
+    }
+    deferredSessionBootUserRef.current = currentUserId;
+
+    scheduleIdleWork(() => {
+      void applyPendingInviteLink(currentUserId);
+      void checkOnboardingStatus(currentUserId);
+      if (DAILY_RECOMMENDATIONS_ENABLED) {
+        void checkDailyRecommendation(currentUserId);
+      }
+      void fetchNotifications(currentUserId);
+      void refreshUnreadMessageCount(currentUserId);
+    }, 1200);
+
+    scheduleIdleWork(() => {
+      void runBackgroundSessionSync(currentUserId).catch(() => {
+        console.warn("[APPSHELL] Background sync skipped due to transient issue.");
+      });
+    }, 2500);
+  }
+
   useEffect(() => {
     const getSession = async () => {
       let session = null;
@@ -1452,24 +1495,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       
       // Set userId and username for feedback system
       if (session?.user?.id) {
-        setUserId(session.user.id);
-        const meta: any = session.user.user_metadata || {};
-        const extractedUsername =
-          meta.firstName ||
-          meta.first_name ||
-          (session.user.email ? session.user.email.split("@")[0] : null) ||
-          "User";
-        setUsername(extractedUsername);
-        void applyPendingInviteLink(session.user.id);
-        void checkOnboardingStatus(session.user.id);
-        if (DAILY_RECOMMENDATIONS_ENABLED) {
-          void checkDailyRecommendation(session.user.id);
-        }
-        void loadHeaderDashboardStats(session.user.id);
-        void loadSavedTheme(session.user.id);
-        void fetchNotifications(session.user.id);
-        void refreshUnreadMessageCount(session.user.id);
+        runCriticalSessionBoot(session);
+        runDeferredSessionBoot(session.user.id);
       } else {
+        criticalSessionBootUserRef.current = null;
+        deferredSessionBootUserRef.current = null;
         setUserId(null);
         setUsername("");
         setIsEmailConfirmed(true);
@@ -1486,17 +1516,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setHeaderProfileImageUrl(null);
       }
 
-      // Sync notes count on initial session check if user is logged in (non-blocking)
-      if (session?.user?.id) {
-        // Run all sync/tracking in background - don't block UI
-        (async () => {
-          try {
-            await runBackgroundSessionSync(session.user.id);
-          } catch (err) {
-            console.warn("[APPSHELL] Background sync skipped due to transient issue.");
-          }
-        })();
-      }
     };
 
     getSession();
@@ -1510,21 +1529,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         
         // Set userId and username for feedback system
         if (session?.user?.id) {
-          setUserId(session.user.id);
-          const meta: any = session.user.user_metadata || {};
-          const extractedUsername =
-            meta.firstName ||
-            meta.first_name ||
-            (session.user.email ? session.user.email.split("@")[0] : null) ||
-            "User";
-          setUsername(extractedUsername);
-          void applyPendingInviteLink(session.user.id);
-          void checkOnboardingStatus(session.user.id);
-          void loadHeaderDashboardStats(session.user.id);
-          void loadSavedTheme(session.user.id);
-          void fetchNotifications(session.user.id);
-          void refreshUnreadMessageCount(session.user.id);
+          runCriticalSessionBoot(session);
+          runDeferredSessionBoot(session.user.id);
         } else {
+          criticalSessionBootUserRef.current = null;
+          deferredSessionBootUserRef.current = null;
           setUserId(null);
           setUsername("");
           setIsEmailConfirmed(true);
@@ -1541,17 +1550,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setHeaderProfileImageUrl(null);
         }
 
-        // Sync notes count when user logs in or session changes (non-blocking)
-        if (session?.user?.id) {
-          // Run all sync/tracking in background - don't block UI
-          (async () => {
-            try {
-              await runBackgroundSessionSync(session.user.id);
-            } catch (err) {
-              console.warn("[APPSHELL] Background sync skipped due to transient issue.");
-            }
-          })();
-        }
       }
     );
 
