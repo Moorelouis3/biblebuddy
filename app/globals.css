@@ -1772,14 +1772,13 @@ html[data-bb-app-hidden="true"] *::after {
     overflow: visible !important;
     pointer-events: auto !important;
     background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0)) ,
-      var(--bb-skin-bg-image),
+      linear-gradient(180deg, color-mix(in srgb, var(--bb-background) 96%, transparent), color-mix(in srgb, var(--bb-background) 84%, transparent)),
       var(--bb-background) !important;
     background-position: center top !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
-    border-bottom: 0 !important;
-    box-shadow: none !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--bb-accent) 22%, transparent) !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18) !important;
   }
 
   html[data-bb-skin="blue-storm"] header > div,
