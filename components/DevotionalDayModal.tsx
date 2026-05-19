@@ -18,6 +18,7 @@ import CommentSection from "./comments/CommentSection";
 import TriviaGamePlayer from "./TriviaGamePlayer";
 import ScrambledGamePlayer from "./ScrambledGamePlayer";
 import { TASK_XP } from "../lib/progressionRewards";
+import { cacheChapterNotes, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -773,6 +774,12 @@ Be accurate to Scripture.`;
     const reviewOpenedLabel = `${chapterLabel} Review Opened`;
 
     try {
+      const offlineNotes = await getOfflineChapterNotes(day.bible_reading_book, day.bible_reading_chapter);
+      if (offlineNotes) {
+        setChapterNotesText(offlineNotes);
+        setChapterNotesLoading(false);
+      }
+
       if (userId) {
         await supabase.from("master_actions").insert({
           user_id: userId,
@@ -809,9 +816,16 @@ Be accurate to Scripture.`;
         .maybeSingle();
 
       if (error) throw error;
-      setChapterNotesText(data?.notes_text || "No notes are available for this chapter yet.");
+      const nextNotes = data?.notes_text || offlineNotes || "No notes are available for this chapter yet.";
+      setChapterNotesText(nextNotes);
+      if (data?.notes_text) cacheChapterNotes(day.bible_reading_book, day.bible_reading_chapter, data.notes_text);
     } catch (error: any) {
-      setChapterNotesError(error?.message || "Could not load the chapter notes.");
+      const offlineNotes = await getOfflineChapterNotes(day.bible_reading_book, day.bible_reading_chapter);
+      if (offlineNotes) {
+        setChapterNotesText(offlineNotes);
+      } else {
+        setChapterNotesError(error?.message || "Could not load the chapter notes.");
+      }
     } finally {
       setChapterNotesLoading(false);
     }

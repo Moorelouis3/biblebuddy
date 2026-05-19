@@ -18,7 +18,8 @@ import {
 import { LouisAvatar } from "./LouisAvatar";
 import { triggerPoints } from "./PointsPop";
 import { TASK_REWARD_LABELS, TASK_XP } from "../lib/progressionRewards";
-import { getProverbsChapterNotesFallback } from "../lib/proverbsChapterNotesFallback";
+import { getChapterNotesFallback, withNotesTimeout } from "../lib/proverbsChapterNotesFallback";
+import { cacheChapterNotes, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
 
 type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
 
@@ -802,16 +803,25 @@ export default function LouisDailyTasksModal({
       try {
         const bookKey = selectedNotesTask.book.toLowerCase().trim();
         const chapterNum = Number(selectedNotesTask.chapter);
-        const fallbackNotes = getProverbsChapterNotesFallback(selectedNotesTask.book, chapterNum);
+        const fallbackNotes = await getOfflineChapterNotes(selectedNotesTask.book, chapterNum);
 
-        const { data: cached } = await supabase
-          .from("bible_notes")
-          .select("notes_text")
-          .eq("book", bookKey)
-          .eq("chapter", chapterNum)
-          .maybeSingle();
+        if (fallbackNotes && !cancelled) {
+          setNotesText(fallbackNotes);
+          setNotesLoading(false);
+        }
+
+        const { data: cached } = await withNotesTimeout(
+          supabase
+            .from("bible_notes")
+            .select("notes_text")
+            .eq("book", bookKey)
+            .eq("chapter", chapterNum)
+            .maybeSingle(),
+          fallbackNotes ? 1600 : 6500,
+        );
 
         if (cached?.notes_text && cached.notes_text.trim().length > 0) {
+          cacheChapterNotes(selectedNotesTask.book, chapterNum, cached.notes_text);
           if (!cancelled) setNotesText(cached.notes_text);
           return;
         }
@@ -875,8 +885,14 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         if (!cancelled) setNotesText(saved?.notes_text ?? generated);
       } catch (error: any) {
         console.error("[LOUIS_DAILY_TASKS] Could not load notes:", error);
+        const fallbackNotes = await getOfflineChapterNotes(selectedNotesTask.book, Number(selectedNotesTask.chapter));
         if (!cancelled) {
-          setNotesError(error?.message || "Couldn't load the chapter notes.");
+          if (fallbackNotes) {
+            setNotesText(fallbackNotes);
+            setNotesError(null);
+          } else {
+            setNotesError(error?.message || "Couldn't load the chapter notes.");
+          }
         }
       } finally {
         if (!cancelled) {

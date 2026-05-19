@@ -1,3 +1,5 @@
+import { GENESIS_ONE_OFFICIAL_NOTES } from "./genesisOneOfficialNotes";
+
 type CreationSection = {
   reference: string;
   title: string;
@@ -638,4 +640,6 @@ function buildCreationNotesWithBigLessonFirst(chapter: CreationChapterNote) {
   return `# Genesis ${chapter.chapter}\n\n# ${chapter.title}\n\n${chapter.hook}\n\n${chapter.setup.join("\n\n")}\n\n## Why Genesis ${chapter.chapter} Matters\n\n${chapter.matters.map((item) => `- ${item}`).join("\n")}\n\n## Chapter Flow\n\n${chapterFlow}\n\n# Deep Chapter Notes\n\n${chapter.sections.map((section) => buildSection(chapter.chapter, section)).join("\n\n")}\n\n# The Big Lesson of Genesis ${chapter.chapter}\n\n${chapter.lesson}\n\n# Final Thought on Genesis ${chapter.chapter}\n\n${finalThought}\n\n# Pause and Reflect\n\n${pause}`;
 }
 
-export const CREATION_OF_WORLD_DEEP_NOTES = creationNotes.map(buildCreationNotesWithBigLessonFirst);
+export const CREATION_OF_WORLD_DEEP_NOTES = creationNotes.map((chapter) =>
+  chapter.chapter === 1 ? GENESIS_ONE_OFFICIAL_NOTES : buildCreationNotesWithBigLessonFirst(chapter),
+);

@@ -7,6 +7,7 @@ import { enrichPlainText } from "../lib/bibleHighlighting";
 type ChapterNotesMarkdownProps = {
   children: string;
   onDatabaseTermClick?: (event: MouseEvent<HTMLDivElement>) => void;
+  onScriptureReferenceClick?: (event: MouseEvent<HTMLDivElement>) => void;
 };
 
 const leadingEmojiPattern = /^[\s]*(?:[\p{Extended_Pictographic}\p{Emoji_Presentation}]|\d\uFE0F?\u20E3)/u;
@@ -86,8 +87,43 @@ function normalizeEmojiLists(markdown: string): string {
   return output.join("\n");
 }
 
-function enrichMarkdownChildren(children: ReactNode): ReactNode {
+function escapeHtml(text: string) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function escapeHtmlAttribute(text: string) {
+  return escapeHtml(text).replace(/`/g, "&#096;");
+}
+
+function linkScriptureReferences(text: string) {
+  const escaped = escapeHtml(text);
+
+  return escaped.replace(
+    /\b((?:[1-3]\s+)?[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(\d+):(\d+)(?:\s*(?:-|to)\s*(\d+))?\b/g,
+    (match) =>
+      `<button type="button" class="scripture-ref-link inline font-black text-[var(--bb-accent,#2f7fe8)] underline decoration-[var(--bb-accent,#2f7fe8)]/55 underline-offset-2" data-scripture-ref="${escapeHtmlAttribute(match)}">${match}</button>`,
+  );
+}
+
+function enrichMarkdownChildren(children: ReactNode, options: { enableTerms: boolean; enableScriptureRefs: boolean }): ReactNode {
+  if (!options.enableTerms && !options.enableScriptureRefs) return children;
+
   if (typeof children === "string") {
+    if (!options.enableTerms && options.enableScriptureRefs) {
+      return (
+        <span
+          className="chapter-notes-scripture-ref-text"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: text is escaped before Bible reference buttons are inserted.
+          dangerouslySetInnerHTML={{ __html: linkScriptureReferences(children) }}
+        />
+      );
+    }
+
     return (
       <span
         className="chapter-notes-enriched-text"
@@ -100,7 +136,7 @@ function enrichMarkdownChildren(children: ReactNode): ReactNode {
   if (Array.isArray(children)) {
     return children.map((child, index) => (
       <span key={index} className="contents">
-        {enrichMarkdownChildren(child)}
+        {enrichMarkdownChildren(child, options)}
       </span>
     ));
   }
@@ -108,9 +144,22 @@ function enrichMarkdownChildren(children: ReactNode): ReactNode {
   return children;
 }
 
-export default function ChapterNotesMarkdown({ children, onDatabaseTermClick }: ChapterNotesMarkdownProps) {
+export default function ChapterNotesMarkdown({ children, onDatabaseTermClick, onScriptureReferenceClick }: ChapterNotesMarkdownProps) {
+  const enableTermHighlighting = Boolean(onDatabaseTermClick) && children.length < 8000;
+  const childRenderOptions = {
+    enableTerms: enableTermHighlighting,
+    enableScriptureRefs: Boolean(onScriptureReferenceClick),
+  };
+
+  function handleClick(event: MouseEvent<HTMLDivElement>) {
+    onScriptureReferenceClick?.(event);
+    if (!event.defaultPrevented) {
+      onDatabaseTermClick?.(event);
+    }
+  }
+
   return (
-    <div className="chapter-notes-markdown max-w-none text-gray-800" onClick={onDatabaseTermClick}>
+    <div className="chapter-notes-markdown max-w-none text-gray-800" onClick={handleClick}>
       <style>{`
         .chapter-notes-markdown .bible-highlight {
           color: inherit !important;
@@ -127,22 +176,22 @@ export default function ChapterNotesMarkdown({ children, onDatabaseTermClick }: 
         components={{
           h1: ({ children, ...props }) => (
             <h1 className="mb-4 mt-7 text-2xl font-black leading-tight tracking-normal text-[var(--bb-text-primary,#111827)] first:mt-0 md:text-3xl" {...props}>
-              {enrichMarkdownChildren(children)}
+              {enrichMarkdownChildren(children, childRenderOptions)}
             </h1>
           ),
           h2: ({ children, ...props }) => (
             <h2 className="mb-3 mt-8 border-b border-[var(--bb-card-border,#e5e7eb)] pb-2 text-xl font-black leading-tight tracking-normal text-[var(--bb-text-primary,#111827)] md:text-2xl" {...props}>
-              {enrichMarkdownChildren(children)}
+              {enrichMarkdownChildren(children, childRenderOptions)}
             </h2>
           ),
           h3: ({ children, ...props }) => (
             <h3 className="mb-2 mt-6 text-lg font-extrabold leading-tight text-[var(--bb-text-primary,#111827)] md:text-xl" {...props}>
-              {enrichMarkdownChildren(children)}
+              {enrichMarkdownChildren(children, childRenderOptions)}
             </h3>
           ),
           p: ({ children, ...props }) => (
             <p className="mb-4 text-[15px] leading-relaxed text-[var(--bb-text-secondary,#374151)] md:text-base" {...props}>
-              {enrichMarkdownChildren(children)}
+              {enrichMarkdownChildren(children, childRenderOptions)}
             </p>
           ),
           strong: ({ ...props }) => <strong className="font-extrabold text-[var(--bb-text-primary,#111827)]" {...props} />,
@@ -160,7 +209,7 @@ export default function ChapterNotesMarkdown({ children, onDatabaseTermClick }: 
                     ✨
                   </span>
                 )}
-                <span className="min-w-0">{enrichMarkdownChildren(children)}</span>
+                <span className="min-w-0">{enrichMarkdownChildren(children, childRenderOptions)}</span>
               </li>
             );
           },

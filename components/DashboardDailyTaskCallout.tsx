@@ -15,12 +15,13 @@ import { ACTION_TYPE } from "../lib/actionTypes";
 import { consumeCreditAction } from "../lib/creditClient";
 import { supabase } from "../lib/supabaseClient";
 import { markChapterDone } from "../lib/readingProgress";
-import { getProverbsChapterNotesFallback, withNotesTimeout } from "../lib/proverbsChapterNotesFallback";
+import { getChapterNotesFallback, withNotesTimeout } from "../lib/proverbsChapterNotesFallback";
+import { cacheChapterNotes, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
 import { getScrambledBook, getScrambledChapter } from "../lib/scrambledGameData";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaBook, getTriviaChapter } from "../lib/triviaGameData";
 import { deleteHighlight, fetchHighlights, upsertHighlight } from "../lib/verseHighlightingApi";
-import { enrichPlainText } from "../lib/bibleHighlighting";
+import { enrichBibleVerses, enrichPlainText } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { TASK_XP } from "../lib/progressionRewards";
@@ -72,6 +73,7 @@ type BibleApiResponse = {
 
 type InlineBibleTranslation = "kjv" | "asv" | "web";
 type BibleDatabaseTerm = { type: "people" | "places" | "keywords"; name: string };
+type NotesScriptureSelection = { reference: string; apiReference: string; book: string; chapter: number };
 
 const INLINE_BIBLE_TRANSLATIONS: Array<{ value: InlineBibleTranslation; label: string }> = [
   { value: "kjv", label: "KJV" },
@@ -173,6 +175,24 @@ function normalizeInlinePopupMarkdown(markdown: string) {
     .trim();
 }
 
+function parseInlineBibleReference(reference: string): NotesScriptureSelection | null {
+  const match = reference.match(/^((?:[1-3]\s+)?[A-Za-z]+(?:\s+[A-Za-z]+)*)\s+(\d+):(\d+)(?:\s*(?:-|to)\s*(\d+))?$/);
+  if (!match) return null;
+
+  const book = match[1].trim();
+  const chapter = Number(match[2]);
+  const startVerse = Number(match[3]);
+  const endVerse = match[4] ? Number(match[4]) : null;
+  if (!book || Number.isNaN(chapter) || Number.isNaN(startVerse)) return null;
+
+  return {
+    reference,
+    apiReference: `${book} ${chapter}:${startVerse}${endVerse ? `-${endVerse}` : ""}`,
+    book,
+    chapter,
+  };
+}
+
 function DatabaseTermTakeover({
   selectedTerm,
   termBurstKey,
@@ -251,6 +271,65 @@ function DatabaseTermTakeover({
         >
           Close
         </button>
+      </div>
+    </div>
+  );
+}
+
+function ScriptureReferenceTakeover({
+  selectedScripture,
+  loading,
+  scriptureHtml,
+  error,
+  onClose,
+  takeoverRef,
+}: {
+  selectedScripture: NotesScriptureSelection;
+  loading: boolean;
+  scriptureHtml: string | null;
+  error: string | null;
+  onClose: () => void;
+  takeoverRef?: RefObject<HTMLDivElement | null>;
+}) {
+  return (
+    <div ref={takeoverRef} className="relative min-h-[52vh] overflow-hidden rounded-[26px] bg-[var(--bb-card,#ffffff)] px-4 py-6 text-[var(--bb-text-primary,#111827)]">
+      <div className="mx-auto flex min-h-[48vh] max-w-xl flex-col justify-center">
+        <p className="text-center text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">Bible Reference</p>
+        <h3 className="mt-1 text-center text-3xl font-black leading-tight">{selectedScripture.reference}</h3>
+        <div className="mt-5 rounded-[22px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#f6f8fb)] px-4 py-4">
+          {loading ? (
+            <div className="space-y-3 py-6">
+              <div className="h-3 rounded-full bg-white/90" />
+              <div className="h-3 w-5/6 rounded-full bg-white/90" />
+              <div className="h-3 w-2/3 rounded-full bg-white/90" />
+            </div>
+          ) : scriptureHtml ? (
+            <div
+              className="chapter-notes-scripture-popup space-y-3 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#374151)] [&_.bible-highlight]:font-black"
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: Bible API text is escaped by enrichBibleVerses before known highlight spans are inserted.
+              dangerouslySetInnerHTML={{ __html: scriptureHtml }}
+            />
+          ) : (
+            <p className="py-6 text-center text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
+              {error || "Could not load this verse right now."}
+            </p>
+          )}
+        </div>
+        <div className="mt-5 flex flex-wrap justify-center gap-3">
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-full bg-[var(--bb-button,#2f7fe8)] px-7 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+          >
+            Back to Notes
+          </button>
+          <a
+            href={`/Bible/${encodeURIComponent(selectedScripture.book.toLowerCase())}/${selectedScripture.chapter}`}
+            className="rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-white px-7 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f6f8fb)]"
+          >
+            Read Chapter
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -703,6 +782,12 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   const [notesTermLoading, setNotesTermLoading] = useState(false);
   const notesTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const notesTermReturnScrollYRef = useRef<number | null>(null);
+  const [notesSelectedScripture, setNotesSelectedScripture] = useState<NotesScriptureSelection | null>(null);
+  const [notesScriptureHtml, setNotesScriptureHtml] = useState<string | null>(null);
+  const [notesScriptureError, setNotesScriptureError] = useState<string | null>(null);
+  const [notesScriptureLoading, setNotesScriptureLoading] = useState(false);
+  const notesScriptureTakeoverRef = useRef<HTMLDivElement | null>(null);
+  const notesScriptureReturnScrollYRef = useRef<number | null>(null);
   const [interactiveTaskCompleted, setInteractiveTaskCompleted] = useState(false);
   const interactiveTaskCompletedRef = useRef(false);
 
@@ -734,6 +819,9 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
     setNotesSelectedTerm(null);
     setNotesTermNotes(null);
     setNotesTermNotesError(null);
+    setNotesSelectedScripture(null);
+    setNotesScriptureHtml(null);
+    setNotesScriptureError(null);
   }, [task?.kind, task?.href, task?.chapterLabel]);
 
   function markInteractiveTaskComplete() {
@@ -813,7 +901,13 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
       try {
         const bookKey = task.book.toLowerCase().trim();
-        const fallbackNotes = getProverbsChapterNotesFallback(task.book, task.chapter);
+        const fallbackNotes = await getOfflineChapterNotes(task.book, task.chapter);
+
+        if (fallbackNotes && !cancelled) {
+          setNotesText(fallbackNotes);
+          setNotesLoading(false);
+        }
+
         const { data: cached, error } = await withNotesTimeout(
           supabase
             .from("bible_notes")
@@ -821,15 +915,18 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             .eq("book", bookKey)
             .eq("chapter", task.chapter)
             .maybeSingle(),
+          fallbackNotes ? 1600 : 6500,
         );
 
         if (error) throw error;
 
         if (!cancelled) {
-          setNotesText(cached?.notes_text || fallbackNotes || "No notes are available for this chapter yet.");
+          const nextNotes = cached?.notes_text || fallbackNotes || "No notes are available for this chapter yet.";
+          setNotesText(nextNotes);
+          if (cached?.notes_text) cacheChapterNotes(task.book, task.chapter, cached.notes_text);
         }
       } catch (error: any) {
-        const fallbackNotes = getProverbsChapterNotesFallback(task.book, task.chapter);
+        const fallbackNotes = await getOfflineChapterNotes(task.book, task.chapter);
         if (!cancelled) {
           setNotesText(fallbackNotes || "No notes are available for this chapter yet.");
           setNotesError(fallbackNotes ? null : error?.message || "Could not load the chapter notes.");
@@ -924,6 +1021,104 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
     setNotesTermNotes(null);
     setNotesTermNotesError(null);
     const returnScrollY = notesTermReturnScrollYRef.current;
+    if (typeof returnScrollY === "number") {
+      window.requestAnimationFrame(() => window.scrollTo({ top: returnScrollY, behavior: "auto" }));
+    }
+  }
+
+  function centerNotesScriptureTakeover(behavior: ScrollBehavior = "smooth") {
+    const node = notesScriptureTakeoverRef.current;
+    if (!node) return;
+
+    const rect = node.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const centeredOffset = Math.max(12, (viewportHeight - rect.height) / 2);
+    const nextTop = Math.max(0, window.scrollY + rect.top - centeredOffset);
+    window.scrollTo({ top: nextTop, behavior });
+  }
+
+  function handleNotesScriptureReferenceClick(event: MouseEvent<HTMLDivElement>) {
+    const scriptureButton = (event.target as HTMLElement).closest(".scripture-ref-link") as HTMLElement | null;
+    if (!scriptureButton) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const reference = scriptureButton.dataset.scriptureRef;
+    if (!reference) return;
+
+    const parsed = parseInlineBibleReference(reference);
+    if (!parsed) return;
+
+    notesScriptureReturnScrollYRef.current = window.scrollY;
+    setNotesSelectedTerm(null);
+    setNotesSelectedScripture(parsed);
+  }
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadNotesScripture() {
+      if (!notesSelectedScripture) {
+        setNotesScriptureHtml(null);
+        setNotesScriptureError(null);
+        return;
+      }
+
+      setNotesScriptureLoading(true);
+      setNotesScriptureHtml(null);
+      setNotesScriptureError(null);
+
+      try {
+        const normalizedRef = notesSelectedScripture.apiReference.replace(/\s+/g, "+");
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(() => controller.abort(), 10000);
+        const response = await fetch(`https://bible-api.com/${normalizedRef}?translation=kjv`, {
+          signal: controller.signal,
+        });
+        window.clearTimeout(timeoutId);
+
+        if (!response.ok) throw new Error("Could not load this verse right now.");
+        const payload = await response.json();
+        const verses = Array.isArray(payload?.verses) ? payload.verses : [];
+        const html = await enrichBibleVerses(verses);
+
+        if (!cancelled) setNotesScriptureHtml(html);
+      } catch (error) {
+        if (!cancelled) {
+          setNotesScriptureError(error instanceof Error && error.name === "AbortError" ? "The verse took too long to load." : "Could not load this verse right now.");
+        }
+      } finally {
+        if (!cancelled) setNotesScriptureLoading(false);
+      }
+    }
+
+    void loadNotesScripture();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [notesSelectedScripture]);
+
+  useEffect(() => {
+    if (!notesSelectedScripture) return;
+    let settleTimeout: number | null = null;
+    const frame = window.requestAnimationFrame(() => {
+      centerNotesScriptureTakeover("smooth");
+      settleTimeout = window.setTimeout(() => centerNotesScriptureTakeover("smooth"), 120);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      if (settleTimeout !== null) window.clearTimeout(settleTimeout);
+    };
+  }, [notesSelectedScripture, notesScriptureLoading, notesScriptureHtml]);
+
+  function closeNotesScriptureTakeover() {
+    setNotesSelectedScripture(null);
+    setNotesScriptureHtml(null);
+    setNotesScriptureError(null);
+    const returnScrollY = notesScriptureReturnScrollYRef.current;
     if (typeof returnScrollY === "number") {
       window.requestAnimationFrame(() => window.scrollTo({ top: returnScrollY, behavior: "auto" }));
     }
@@ -1289,17 +1484,26 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                 onClose={closeNotesTermTakeover}
                 takeoverRef={notesTermTakeoverRef}
               />
+            ) : notesSelectedScripture ? (
+              <ScriptureReferenceTakeover
+                selectedScripture={notesSelectedScripture}
+                loading={notesScriptureLoading}
+                scriptureHtml={notesScriptureHtml}
+                error={notesScriptureError}
+                onClose={closeNotesScriptureTakeover}
+                takeoverRef={notesScriptureTakeoverRef}
+              />
             ) : notesLoading ? (
               <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p>
             ) : notesError ? (
               <p className="py-10 text-center text-sm text-red-500">{notesError}</p>
             ) : (
               <div className="max-w-none text-gray-800">
-                <ChapterNotesMarkdown onDatabaseTermClick={handleNotesDatabaseTermClick}>{notesText}</ChapterNotesMarkdown>
+                <ChapterNotesMarkdown onDatabaseTermClick={handleNotesDatabaseTermClick} onScriptureReferenceClick={handleNotesScriptureReferenceClick}>{notesText}</ChapterNotesMarkdown>
               </div>
             )}
           </div>
-          {!notesSelectedTerm && !notesLoading && !notesError ? (
+          {!notesSelectedTerm && !notesSelectedScripture && !notesLoading && !notesError ? (
             <div className="flex justify-end px-1 pb-1 pt-3">
               <button
                 type="button"
@@ -1338,13 +1542,22 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                 onClose={closeNotesTermTakeover}
                 takeoverRef={notesTermTakeoverRef}
               />
+            ) : notesSelectedScripture ? (
+              <ScriptureReferenceTakeover
+                selectedScripture={notesSelectedScripture}
+                loading={notesScriptureLoading}
+                scriptureHtml={notesScriptureHtml}
+                error={notesScriptureError}
+                onClose={closeNotesScriptureTakeover}
+                takeoverRef={notesScriptureTakeoverRef}
+              />
             ) : notesLoading ? (
               <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p>
             ) : notesError ? (
               <p className="py-10 text-center text-sm text-red-500">{notesError}</p>
             ) : (
               <div className="max-w-none text-gray-800">
-                <ChapterNotesMarkdown onDatabaseTermClick={handleNotesDatabaseTermClick}>{notesText}</ChapterNotesMarkdown>
+                <ChapterNotesMarkdown onDatabaseTermClick={handleNotesDatabaseTermClick} onScriptureReferenceClick={handleNotesScriptureReferenceClick}>{notesText}</ChapterNotesMarkdown>
               </div>
             )}
           </div>

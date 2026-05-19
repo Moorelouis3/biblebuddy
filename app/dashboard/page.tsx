@@ -5803,11 +5803,19 @@ export default function DashboardPage() {
           <p className="text-5xl font-black leading-none text-[var(--bb-text-primary)]">{formatDeepStudyTime(secondsLeft)}</p>
           <p className="mt-2 text-sm font-black text-[var(--bb-accent)]">left</p>
           <div className="mt-4 grid grid-cols-3 gap-2 text-xs font-black">
-            <div className="rounded-2xl bg-[var(--bb-surface-soft)] px-3 py-2">{activeMinutes}m focused</div>
-            <div className="rounded-2xl bg-[var(--bb-surface-soft)] px-3 py-2">{deepStudyActiveSession.tasksCompleted} tasks</div>
-            <div className="rounded-2xl bg-[var(--bb-surface-soft)] px-3 py-2">{deepStudyActiveSession.chaptersStudied.length} chapters</div>
+            <div className="rounded-2xl bg-[var(--bb-surface-soft)] px-2 py-2 leading-tight">⏳ {activeMinutes}m focused time</div>
+            <div className="rounded-2xl bg-[var(--bb-surface-soft)] px-2 py-2 leading-tight">✅ {deepStudyActiveSession.tasksCompleted} tasks done</div>
+            <div className="rounded-2xl bg-[var(--bb-surface-soft)] px-2 py-2 leading-tight">📖 {deepStudyActiveSession.chaptersStudied.length} chapters studied</div>
           </div>
           <p className="mt-3 text-xs font-semibold text-[var(--bb-text-muted)]">Stay with Scripture to maximize rewards.</p>
+          <button
+            type="button"
+            onClick={() => void finishDeepStudySession()}
+            disabled={deepStudyFinalizingRef.current}
+            className="mt-4 w-full rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary)] transition hover:bg-white disabled:opacity-60"
+          >
+            {deepStudyFinalizingRef.current ? "Stopping..." : "Stop"}
+          </button>
         </div>
       );
     }
@@ -5816,11 +5824,10 @@ export default function DashboardPage() {
       <button
         type="button"
         onClick={() => setDeepStudyMode("setup")}
-        className="block w-full rounded-[26px] border border-white/20 px-5 py-5 text-left text-white shadow-[0_14px_34px_rgba(38,63,99,0.16)] transition hover:-translate-y-0.5 hover:shadow-xl"
+        className="block w-full rounded-[26px] border border-white/25 px-6 py-7 text-center text-white shadow-[0_18px_38px_rgba(38,63,99,0.2)] ring-2 ring-white/15 transition hover:-translate-y-0.5 hover:brightness-105 hover:shadow-xl active:translate-y-0"
         style={{ backgroundColor: deepStudyButtonColor }}
       >
-        <p className="text-2xl font-black leading-tight">Deep Study Mode</p>
-        <p className="mt-2 text-sm font-semibold text-white/82">Focused Bible study time that earns diamonds.</p>
+        <p className="text-3xl font-black leading-tight">Deep Study Mode</p>
       </button>
     );
   }

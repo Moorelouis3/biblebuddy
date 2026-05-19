@@ -40,6 +40,7 @@ import TriviaGamePlayer from "../../../../components/TriviaGamePlayer";
 import ScrambledGamePlayer from "../../../../components/ScrambledGamePlayer";
 import { awardDiamonds } from "../../../../lib/diamondWallet";
 import { DIAMOND_REWARDS, TASK_REWARD_LABELS, TASK_XP } from "../../../../lib/progressionRewards";
+import { cacheChapterNotes, getOfflineChapterNotes } from "../../../../lib/chapterNotesOffline";
 
 type Verse = {
   num: number;
@@ -1444,9 +1445,9 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
   async function openReviewModal() {
     setShowReviewModal(true);
+    const chapterNum = Number(chapter);
     try {
       const bookKey = book.toLowerCase().trim();
-      const chapterNum = Number(chapter);
 
       // 1. Log view + award XP once per chapter
       if (userId) {
@@ -1499,6 +1500,11 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       setReviewLoading(true);
       setReviewError(null);
 
+      const offlineNotes = await getOfflineChapterNotes(bookDisplayName, chapterNum);
+      if (offlineNotes) {
+        setReviewNotesText(offlineNotes);
+      }
+
       // 2. Check bible_notes cache first
       const { data: cached } = await supabase
         .from("bible_notes")
@@ -1508,9 +1514,12 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         .maybeSingle();
 
       if (cached?.notes_text && cached.notes_text.trim().length > 0) {
+        cacheChapterNotes(bookDisplayName, chapterNum, cached.notes_text);
         setReviewNotesText(cached.notes_text);
         return;
       }
+
+      if (offlineNotes) return;
 
       // 2. Not cached ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â generate via AI
       const prompt = `You are Little Louis. Generate beginner friendly notes for ${bookDisplayName} chapter ${chapter} using this exact template and rules.
@@ -1567,10 +1576,17 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         .eq("chapter", chapterNum)
         .maybeSingle();
 
-      setReviewNotesText(saved?.notes_text ?? generated);
+      const nextNotes = saved?.notes_text ?? generated;
+      cacheChapterNotes(bookDisplayName, chapterNum, nextNotes);
+      setReviewNotesText(nextNotes);
     } catch (err: any) {
       console.error("Review modal error:", err);
-      setReviewError("Couldn't load the chapter notes. Please try again.");
+      const offlineNotes = await getOfflineChapterNotes(bookDisplayName, chapterNum);
+      if (offlineNotes) {
+        setReviewNotesText(offlineNotes);
+      } else {
+        setReviewError("Couldn't load the chapter notes. Please try again.");
+      }
     } finally {
       setReviewLoading(false);
       reviewLoadingRef.current = false;
