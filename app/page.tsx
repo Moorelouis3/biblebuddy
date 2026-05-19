@@ -145,11 +145,23 @@ export default function LandingPage() {
 
   useEffect(() => {
     let settled = false;
+    let hadCachedSession = false;
+    try {
+      hadCachedSession =
+        typeof window !== "undefined" &&
+        Object.keys(window.localStorage).some((key) => key.startsWith("sb-") && key.endsWith("-auth-token"));
+    } catch {
+      hadCachedSession = false;
+    }
     const fallbackTimer = window.setTimeout(() => {
       if (!settled) {
+        if (hadCachedSession) {
+          router.replace("/dashboard");
+          return;
+        }
         setIsChecking(false);
       }
-    }, 3500);
+    }, hadCachedSession ? 900 : 3500);
 
     const checkSession = async () => {
       try {

@@ -290,11 +290,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }
 
   async function loadSavedTheme(currentUserId: string) {
-    const { data, error } = await supabase
+    let { data, error } = await supabase
       .from("profile_stats")
-      .select("app_theme")
+      .select("app_theme, active_premium_skin")
       .eq("user_id", currentUserId)
       .maybeSingle();
+
+    if (error && /active_premium_skin/i.test(error.message || "")) {
+      const fallback = await supabase
+        .from("profile_stats")
+        .select("app_theme")
+        .eq("user_id", currentUserId)
+        .maybeSingle();
+      data = fallback.data as typeof data;
+      error = fallback.error;
+    }
 
     if (error) {
       console.warn("[THEME] Could not load saved profile theme; using local theme.", error.message);
@@ -302,7 +312,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
 
     const savedTheme = normalizeAppThemeId(data?.app_theme);
+    const savedSkin = normalizePremiumSkinId(data?.active_premium_skin);
     applyThemeLocally(savedTheme);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, savedSkin);
+    }
+    applyPremiumSkinToDocument(savedSkin);
+    window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: savedSkin } }));
   }
 
   async function saveThemeToProfile(themeId: AppThemeId) {

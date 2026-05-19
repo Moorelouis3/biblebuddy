@@ -11,6 +11,9 @@ import {
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 const MODERATOR_PAYOUT_POPUP_FIX_AT = "2026-05-19T18:51:57.000Z";
+const MODERATOR_SKIN_SIGNING_BONUS_AMOUNT = 5000;
+const MODERATOR_SKIN_SIGNING_BONUS_ID = "moderator-skin-signing-bonus-2026-05-19";
+const MODERATOR_SKIN_SIGNING_BONUS_LABEL = "moderator_skin_signing_bonus:premium_skins:2026-05-19";
 
 function shouldShowPayoutPopupAgain(seenAt: string | null | undefined) {
   if (!seenAt) return true;
@@ -71,6 +74,64 @@ function isMissingPayoutTableError(error: unknown) {
   return maybeError.code === "PGRST205" || /moderator_weekly_diamond_payouts/i.test(maybeError.message || "");
 }
 
+async function ensureCurrentUserSkinSigningBonus(auth: Awaited<ReturnType<typeof requireSignedInUser>>) {
+  if ("error" in auth || (!auth.isModerator && !auth.isAdmin)) return null;
+
+  const { data: existingAction } = await auth.admin
+    .from("master_actions")
+    .select("id, created_at")
+    .eq("user_id", auth.requester.id)
+    .eq("action_label", MODERATOR_SKIN_SIGNING_BONUS_LABEL)
+    .maybeSingle();
+
+  if (!existingAction) {
+    const { data: profile } = await auth.admin
+      .from("profile_stats")
+      .select("diamonds_count, total_diamonds_earned, username, display_name")
+      .eq("user_id", auth.requester.id)
+      .maybeSingle();
+
+    const nextDiamonds = Math.max(0, Number(profile?.diamonds_count ?? 0)) + MODERATOR_SKIN_SIGNING_BONUS_AMOUNT;
+    const nextTotalEarned = Math.max(0, Number(profile?.total_diamonds_earned ?? 0)) + MODERATOR_SKIN_SIGNING_BONUS_AMOUNT;
+
+    await auth.admin
+      .from("profile_stats")
+      .upsert(
+        {
+          user_id: auth.requester.id,
+          diamonds_count: nextDiamonds,
+          total_diamonds_earned: nextTotalEarned,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "user_id" },
+      );
+
+    await auth.admin.from("master_actions").insert({
+      user_id: auth.requester.id,
+      username: profile?.username || profile?.display_name || auth.requester.email || "Bible Buddy Moderator",
+      action_type: "moderator_skin_signing_bonus",
+      action_label: MODERATOR_SKIN_SIGNING_BONUS_LABEL,
+      created_at: new Date().toISOString(),
+    });
+  }
+
+  const { data: seenRow } = await auth.admin
+    .from("user_badge_popups_seen")
+    .select("shown_at")
+    .eq("user_id", auth.requester.id)
+    .eq("badge_id", MODERATOR_SKIN_SIGNING_BONUS_ID)
+    .maybeSingle();
+
+  return {
+    id: MODERATOR_SKIN_SIGNING_BONUS_ID,
+    weekStart: "Premium Skins",
+    amount: MODERATOR_SKIN_SIGNING_BONUS_AMOUNT,
+    paidAt: existingAction?.created_at || new Date().toISOString(),
+    seenAt: seenRow?.shown_at ?? null,
+    kind: "skin_bonus" as const,
+  };
+}
+
 export async function GET(request: NextRequest) {
   const auth = await requireSignedInUser(request);
   if ("error" in auth) return auth.error;
@@ -90,8 +151,10 @@ export async function GET(request: NextRequest) {
 
   const canViewOwnPayout = auth.isModerator || auth.isAdmin;
   let currentPayout = null;
+  const skinSigningBonus = await ensureCurrentUserSkinSigningBonus(auth);
   if (canViewOwnPayout && payoutTableAvailable) {
     currentPayout = await getCurrentUserModeratorPayout(auth.admin, auth.requester.id);
+    if (skinSigningBonus && shouldShowPayoutPopupAgain(skinSigningBonus.seenAt)) currentPayout = skinSigningBonus;
   }
   if (canViewOwnPayout && !payoutTableAvailable && auth.isAdmin) {
     const weekStart = getCurrentModeratorPayoutWeekStart();
@@ -147,7 +210,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Missing payout id." }, { status: 400 });
   }
 
-  if (payoutId.startsWith("admin-moderator-payout-preview:")) {
+  if (payoutId.startsWith("admin-moderator-payout-preview:") || payoutId === MODERATOR_SKIN_SIGNING_BONUS_ID) {
     const { error } = await auth.admin.from("user_badge_popups_seen").upsert(
       {
         user_id: auth.requester.id,

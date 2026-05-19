@@ -194,6 +194,7 @@ type ModeratorWeeklyPayoutReveal = {
   amount: number;
   paidAt: string;
   weekStart: string;
+  kind?: "weekly" | "skin_bonus";
 };
 
 type StorePurchaseCongrats = {
@@ -1115,6 +1116,8 @@ export default function DashboardPage() {
   });
   const [loadingOwnerQuickStats, setLoadingOwnerQuickStats] = useState(false);
   const [badgePopupsShownThisSession, setBadgePopupsShownThisSession] = useState(0);
+
+  const dashboardStatsCacheKey = userId ? `bb:dashboard-stats-cache:${userId}` : null;
 
   function getStreakMotivationSeenKey(currentUserId: string, dayKey: string) {
     return `bb:streak-motivation-seen:${currentUserId}:${dayKey}`;
@@ -3501,14 +3504,15 @@ export default function DashboardPage() {
       const payload = await response.json().catch(() => null);
       if (!response.ok || cancelled || !payload?.unseenPayout) return;
 
-      const payout = payload.unseenPayout;
-      const amount = Math.max(0, Number(payout.amount ?? 0));
-      setModeratorWeeklyPayoutReveal({
-        id: payout.id,
-        amount,
-        paidAt: payout.paidAt,
-        weekStart: payout.weekStart,
-      });
+          const payout = payload.unseenPayout;
+          const amount = Math.max(0, Number(payout.amount ?? 0));
+          setModeratorWeeklyPayoutReveal({
+            id: payout.id,
+            amount,
+            paidAt: payout.paidAt,
+            weekStart: payout.weekStart,
+            kind: payout.kind === "skin_bonus" ? "skin_bonus" : "weekly",
+          });
       setProfile((current) =>
         current
           ? {
@@ -3880,6 +3884,21 @@ export default function DashboardPage() {
     }
     setActivePremiumSkinId(normalizedSkinId);
     applyPremiumSkinToDocument(normalizedSkinId);
+    if (userId) {
+      const { error } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            active_premium_skin: normalizedSkinId,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" },
+        );
+      if (error && !/active_premium_skin/i.test(error.message || "")) {
+        console.warn("[STORE] Premium Skin saved locally, but profile update failed:", error.message);
+      }
+    }
     const matchingFlame =
       normalizedSkinId === "blue-storm"
         ? "blue"
@@ -4219,6 +4238,49 @@ export default function DashboardPage() {
   }
 
   useEffect(() => {
+    if (!dashboardStatsCacheKey || typeof window === "undefined") return;
+    const cached = JSON.parse(window.localStorage.getItem(dashboardStatsCacheKey) || "null") as {
+      profile?: typeof profile;
+      levelInfo?: typeof levelInfo;
+      badgeProgress?: BadgeProgress[];
+      totalCompletedChapters?: number;
+      bibleBookProgress?: BibleBookProgress[];
+      currentBook?: string | null;
+    } | null;
+    if (!cached) return;
+
+    if (cached.profile) setProfile(cached.profile);
+    if (cached.levelInfo) {
+      setLevelInfo(cached.levelInfo);
+      setIsLoadingLevel(false);
+    }
+    if (Array.isArray(cached.badgeProgress) && cached.badgeProgress.length) {
+      setBadgeProgress(cached.badgeProgress);
+    }
+    if (typeof cached.totalCompletedChapters === "number") {
+      setTotalCompletedChapters(cached.totalCompletedChapters);
+      setIsLoadingBibleCompletion(false);
+    }
+    if (Array.isArray(cached.bibleBookProgress)) setBibleBookProgress(cached.bibleBookProgress);
+    if (typeof cached.currentBook === "string" || cached.currentBook === null) setCurrentBook(cached.currentBook);
+  }, [dashboardStatsCacheKey]);
+
+  useEffect(() => {
+    if (!dashboardStatsCacheKey || typeof window === "undefined") return;
+    const hasUsefulStats = Boolean(profile || levelInfo || badgeProgress.length || totalCompletedChapters > 0 || bibleBookProgress.length);
+    if (!hasUsefulStats) return;
+    window.localStorage.setItem(dashboardStatsCacheKey, JSON.stringify({
+      cachedAt: new Date().toISOString(),
+      profile,
+      levelInfo,
+      badgeProgress,
+      totalCompletedChapters,
+      bibleBookProgress,
+      currentBook,
+    }));
+  }, [badgeProgress, bibleBookProgress, currentBook, dashboardStatsCacheKey, levelInfo, profile, totalCompletedChapters]);
+
+  useEffect(() => {
     let didCancel = false;
     async function loadLevelDataAndMaybeResetCredits() {
       if (!userId) {
@@ -4226,7 +4288,7 @@ export default function DashboardPage() {
         return;
       }
 
-      setIsLoadingLevel(true);
+      if (!levelInfo) setIsLoadingLevel(true);
       try {
         const resetCreditsPromise = fetch("/api/reset-daily-credits", {
           method: "POST",
@@ -7684,10 +7746,14 @@ export default function DashboardPage() {
                 Moderator weekly pay
               </p>
               <h2 className="relative mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)] sm:text-4xl">
-                You have been paid {moderatorWeeklyPayoutReveal.amount.toLocaleString()} diamonds
+                {moderatorWeeklyPayoutReveal.kind === "skin_bonus"
+                  ? `Premium skins are here. Here is ${moderatorWeeklyPayoutReveal.amount.toLocaleString()} diamonds.`
+                  : `You have been paid ${moderatorWeeklyPayoutReveal.amount.toLocaleString()} diamonds`}
               </h2>
               <p className="relative mx-auto mt-3 max-w-sm text-base font-semibold leading-7 text-[var(--bb-text-secondary,#58709d)]">
-                Thank you for being a Bible Buddy moderator this week. The diamonds are already in your stash.
+                {moderatorWeeklyPayoutReveal.kind === "skin_bonus"
+                  ? "Thanks for being a moderator. Here is some loot to test and purchase the new premium skins."
+                  : "Thank you for being a Bible Buddy moderator this week. The diamonds are already in your stash."}
               </p>
 
               <div className="relative mt-6 grid grid-cols-2 gap-2.5">
@@ -7698,8 +7764,12 @@ export default function DashboardPage() {
                 </div>
                 <div className="rounded-[20px] border border-[var(--bb-card-border,#f1d99f)] bg-[var(--bb-surface-soft,#fff7df)] px-3 py-3">
                   <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#8a6115)]">Week</p>
-                  <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#21304f)]">{moderatorWeeklyPayoutReveal.weekStart}</p>
-                  <p className="text-xs font-black text-[var(--bb-accent,#9a6115)]">Paid</p>
+                  <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#21304f)]">
+                    {moderatorWeeklyPayoutReveal.kind === "skin_bonus" ? "Signing Bonus" : moderatorWeeklyPayoutReveal.weekStart}
+                  </p>
+                  <p className="text-xs font-black text-[var(--bb-accent,#9a6115)]">
+                    {moderatorWeeklyPayoutReveal.kind === "skin_bonus" ? "Test" : "Paid"}
+                  </p>
                 </div>
               </div>
 

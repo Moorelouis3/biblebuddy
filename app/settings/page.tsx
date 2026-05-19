@@ -431,6 +431,18 @@ export default function SettingsPage() {
         if (error) throw error;
       }
 
+      const { error: skinError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: user.id,
+            active_premium_skin: skinId,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" },
+        );
+      if (skinError && !/active_premium_skin/i.test(skinError.message || "")) throw skinError;
+
       setSettingsMessage(skin ? `${skin.name} is now your default Premium Skin.` : "Premium Skin removed.");
     } catch (error: any) {
       setSelectedPremiumSkin(previousSkin);

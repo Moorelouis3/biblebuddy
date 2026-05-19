@@ -22,6 +22,7 @@ export type ModeratorCurrentPayout = {
   amount: number;
   paidAt: string;
   seenAt: string | null;
+  kind?: "weekly" | "skin_bonus";
 };
 
 type ModeratorProfileRow = {
