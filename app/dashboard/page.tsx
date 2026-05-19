@@ -71,6 +71,7 @@ import {
 } from "../../lib/premiumSkins";
 import {
   preloadActiveSkinAssets,
+  preloadImage,
   preloadStoreSkinThumbnails,
   readPerformanceCache,
   scheduleIdleWork,
@@ -1069,6 +1070,7 @@ export default function DashboardPage() {
   const chapterCelebrationScheduledKeyRef = useRef<string | null>(null);
   const pendingChapterCelebrationForceRef = useRef(false);
   const dailyStreakSequenceCheckRef = useRef<string | null>(null);
+  const dailyTaskRefreshLastRunRef = useRef(0);
   const [dailyTaskTimeLeftLabel, setDailyTaskTimeLeftLabel] = useState<string | null>(null);
   const [motivationalMessage, setMotivationalMessage] = useState<string>("");
   const [proExpiresAt, setProExpiresAt] = useState<string | null>(null);
@@ -1131,6 +1133,7 @@ export default function DashboardPage() {
   const [badgePopupsShownThisSession, setBadgePopupsShownThisSession] = useState(0);
 
   const dashboardStatsCacheKey = userId ? `bb:dashboard-stats-cache:${userId}` : null;
+  const storePurchasesCacheKey = userId ? `store-purchases:${userId}` : null;
 
   const prefetchChecklistRoutes = useCallback((checklistData: ChecklistData) => {
     scheduleIdleWork(() => {
@@ -2241,20 +2244,33 @@ export default function DashboardPage() {
 
   // load user first name from Supabase
   useEffect(() => {
+    function applyDashboardUser(user: {
+      id: string;
+      email?: string | null;
+      user_metadata?: Record<string, unknown> | null;
+    }) {
+      setUserId(user.id);
+      setIsOwnerDashboard(user.email === "moorelouis3@gmail.com");
+      const meta: any = user.user_metadata || {};
+      const first =
+        meta.firstName ||
+        meta.first_name ||
+        (user.email ? user.email.split("@")[0] : null) ||
+        "friend";
+
+      setUserName(first);
+    }
+
     async function loadUser() {
-      const { data, error } = await supabase.auth.getUser();
+      const { data: sessionData } = await supabase.auth.getSession();
+      if (sessionData.session?.user) {
+        applyDashboardUser(sessionData.session.user);
+        return;
+      }
 
+      const { data } = await supabase.auth.getUser();
       if (data?.user) {
-        setUserId(data.user.id);
-        setIsOwnerDashboard(data.user.email === "moorelouis3@gmail.com");
-        const meta: any = data.user.user_metadata || {};
-        const first =
-          meta.firstName ||
-          meta.first_name ||
-          (data.user.email ? data.user.email.split("@")[0] : null) ||
-          "friend";
-
-        setUserName(first);
+        applyDashboardUser(data.user);
       }
     }
 
@@ -3792,6 +3808,12 @@ export default function DashboardPage() {
 
   const loadStorePurchases = useCallback(async () => {
     if (!userId) return;
+    if (storePurchasesCacheKey) {
+      const cachedPurchases = readPerformanceCache<StorePurchaseRow[]>(storePurchasesCacheKey);
+      if (cachedPurchases) {
+        setStorePurchases(cachedPurchases);
+      }
+    }
     setStoreLoading(true);
     const { data, error } = await supabase
       .from("user_store_purchases")
@@ -3806,9 +3828,13 @@ export default function DashboardPage() {
       return;
     }
 
-    setStorePurchases((data || []) as StorePurchaseRow[]);
+    const purchases = (data || []) as StorePurchaseRow[];
+    setStorePurchases(purchases);
+    if (storePurchasesCacheKey) {
+      writePerformanceCache(storePurchasesCacheKey, purchases, 1000 * 60 * 60 * 12);
+    }
     setStoreLoading(false);
-  }, [userId]);
+  }, [storePurchasesCacheKey, userId]);
 
   const openDiamondStore = useCallback(() => {
     setShowDiamondStore(true);
@@ -4268,6 +4294,8 @@ export default function DashboardPage() {
       totalCompletedChapters?: number;
       bibleBookProgress?: BibleBookProgress[];
       currentBook?: string | null;
+      activePremiumSkinId?: PremiumSkinId;
+      dashboardThemeId?: AppThemeId;
     }>(dashboardStatsCacheKey) ?? (() => {
       try {
         return JSON.parse(window.localStorage.getItem(dashboardStatsCacheKey) || "null") as {
@@ -4277,6 +4305,8 @@ export default function DashboardPage() {
           totalCompletedChapters?: number;
           bibleBookProgress?: BibleBookProgress[];
           currentBook?: string | null;
+          activePremiumSkinId?: PremiumSkinId;
+          dashboardThemeId?: AppThemeId;
         } | null;
       } catch {
         return null;
@@ -4298,6 +4328,8 @@ export default function DashboardPage() {
     }
     if (Array.isArray(cached.bibleBookProgress)) setBibleBookProgress(cached.bibleBookProgress);
     if (typeof cached.currentBook === "string" || cached.currentBook === null) setCurrentBook(cached.currentBook);
+    if (cached.activePremiumSkinId) setActivePremiumSkinId(normalizePremiumSkinId(cached.activePremiumSkinId));
+    if (cached.dashboardThemeId) setDashboardThemeId(normalizeAppThemeId(cached.dashboardThemeId));
   }, [dashboardStatsCacheKey]);
 
   useEffect(() => {
@@ -4311,8 +4343,10 @@ export default function DashboardPage() {
       totalCompletedChapters,
       bibleBookProgress,
       currentBook,
+      activePremiumSkinId,
+      dashboardThemeId,
     }, 1000 * 60 * 60 * 18);
-  }, [badgeProgress, bibleBookProgress, currentBook, dashboardStatsCacheKey, levelInfo, profile, totalCompletedChapters]);
+  }, [activePremiumSkinId, badgeProgress, bibleBookProgress, currentBook, dashboardStatsCacheKey, dashboardThemeId, levelInfo, profile, totalCompletedChapters]);
 
   useEffect(() => {
     let didCancel = false;
@@ -4867,6 +4901,11 @@ export default function DashboardPage() {
     window.addEventListener("bb:streak-flame-changed", handleStreakFlameChanged);
     return () => window.removeEventListener("bb:streak-flame-changed", handleStreakFlameChanged);
   }, []);
+
+  useEffect(() => {
+    const buddy = getBuddyAvatar(normalizeBuddyAvatarId(profile?.selected_buddy_avatar));
+    preloadImage(buddy.profileImage, "high");
+  }, [profile?.selected_buddy_avatar]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -5747,6 +5786,9 @@ export default function DashboardPage() {
 
   useEffect(() => {
     function refreshDailyTaskSummary() {
+      const now = Date.now();
+      if (now - dailyTaskRefreshLastRunRef.current < 15000) return;
+      dailyTaskRefreshLastRunRef.current = now;
       void loadDailyTaskSummary({ force: true, silent: true });
     }
 

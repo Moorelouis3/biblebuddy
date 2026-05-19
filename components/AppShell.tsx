@@ -32,7 +32,7 @@ import {
   applyPremiumSkinToDocument,
   normalizePremiumSkinId,
 } from "../lib/premiumSkins";
-import { preloadActiveSkinAssets, scheduleIdleWork, syncPerformanceModeToDocument } from "../lib/appPerformance";
+import { preloadActiveSkinAssets, preloadImage, scheduleIdleWork, syncPerformanceModeToDocument } from "../lib/appPerformance";
 import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
 import StreakFlameBadge from "./StreakFlameBadge";
@@ -164,7 +164,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const detailBuddyId = (event as CustomEvent<{ buddyId?: string }> | undefined)?.detail?.buddyId;
       const storedBuddyId = window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY);
       if (detailBuddyId || storedBuddyId) {
-        setSelectedBuddyId(normalizeBuddyAvatarId(detailBuddyId || storedBuddyId));
+        const buddyId = normalizeBuddyAvatarId(detailBuddyId || storedBuddyId);
+        setSelectedBuddyId(buddyId);
+        preloadImage(getBuddyAvatar(buddyId).profileImage, "high");
       } else {
         setSelectedBuddyId(null);
       }
@@ -233,6 +235,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const skinId = normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY));
     applyPremiumSkinToDocument(skinId);
     preloadActiveSkinAssets(skinId);
+    preloadImage(getBuddyAvatar(normalizeBuddyAvatarId(window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY))).profileImage, "high");
     syncPerformanceModeToDocument();
 
     const handleVisibilityChange = () => syncPerformanceModeToDocument();

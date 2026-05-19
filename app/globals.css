@@ -478,6 +478,22 @@ html[data-bb-skin="ruby-village"] body::after {
   animation: bb-ruby-village-mist 28s ease-in-out infinite alternate;
 }
 
+html[data-bb-perf-reduce="true"][data-bb-skin] body::before,
+html[data-bb-perf-reduce="true"][data-bb-skin] body::after,
+html[data-bb-app-hidden="true"][data-bb-skin] body::before,
+html[data-bb-app-hidden="true"][data-bb-skin] body::after {
+  display: none !important;
+  animation: none !important;
+}
+
+html[data-bb-perf-reduce="true"][data-bb-skin] *,
+html[data-bb-app-hidden="true"][data-bb-skin] * {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
 html[data-bb-skin="blue-storm"] header,
 html[data-bb-skin="blue-storm"] main,
 html[data-bb-skin="blue-storm"] .dashboard-shell,
