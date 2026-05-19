@@ -168,7 +168,8 @@ export default function SettingsPage() {
         const localSelectedFlame =
           typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
         const dbSelectedFlame = normalizeFlameCosmeticId(profile?.selected_streak_flame);
-        const resolvedSelectedFlame = dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame);
+        const skinLockedFlame = getPremiumSkinFlameId(resolvedPremiumSkin);
+        const resolvedSelectedFlame = skinLockedFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
         setSelectedFlame(resolvedSelectedFlame);
         if (typeof window !== "undefined") {
           window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, resolvedSelectedBuddy);
@@ -354,6 +355,27 @@ export default function SettingsPage() {
 
   async function handleFlameSelect(flameId: FlameCosmeticId) {
     if (!user) return;
+    const skinLockedFlame = getPremiumSkinFlameId(selectedPremiumSkin);
+    if (skinLockedFlame) {
+      setSelectedFlame(skinLockedFlame);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinLockedFlame);
+        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: skinLockedFlame } }));
+      }
+      const { error } = await supabase
+        .from("profile_stats")
+        .update({
+          selected_streak_flame: skinLockedFlame,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("user_id", user.id);
+      if (error) {
+        setSettingsMessage("Your skin controls the flame color, but the database save needs to retry.");
+      } else {
+        setSettingsMessage("Your active Premium Skin controls this flame color.");
+      }
+      return;
+    }
     const previousFlame = selectedFlame;
     setFlameSaving(flameId);
     setSettingsMessage(null);

@@ -71,6 +71,15 @@ const DAILY_RECOMMENDATIONS_ENABLED = false;
 const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
 const GRACE_DAY_STORE_ITEM_ID = "boost-extra-grace-day";
 
+function getLocalSkinLockedFlame(): FlameCosmeticId | null {
+  if (typeof window === "undefined") return null;
+  const skinId = normalizePremiumSkinId(
+    window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY) ||
+      document.documentElement.dataset.bbSkin,
+  );
+  return getPremiumSkinFlameId(skinId);
+}
+
 type GracePurchasePrompt = {
   lastActiveDate: string;
   today: string;
@@ -255,7 +264,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (typeof window === "undefined") return;
     function handleStreakFlameChanged(event: Event) {
       const customEvent = event as CustomEvent<{ flameId?: string }>;
-      const nextFlameId = normalizeFlameCosmeticId(
+      const skinLockedFlame = getLocalSkinLockedFlame();
+      const nextFlameId = skinLockedFlame ?? normalizeFlameCosmeticId(
         customEvent.detail?.flameId || window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY),
       );
       window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, nextFlameId);
@@ -464,7 +474,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [headerCurrentLevel, setHeaderCurrentLevel] = useState<number>(1);
   const [headerCurrentStreak, setHeaderCurrentStreak] = useState<number>(0);
   const [headerGraceDays, setHeaderGraceDays] = useState<number>(0);
-  const [headerSelectedFlame, setHeaderSelectedFlame] = useState<FlameCosmeticId>("default");
+  const [headerSelectedFlame, setHeaderSelectedFlame] = useState<FlameCosmeticId>(() => {
+    if (typeof window === "undefined") return "default";
+    return getLocalSkinLockedFlame() ?? normalizeFlameCosmeticId(window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY));
+  });
   const [headerProfileImageUrl, setHeaderProfileImageUrl] = useState<string | null>(null);
   const [headerProfileName, setHeaderProfileName] = useState<string>("You");
   const [headerMemberBadge, setHeaderMemberBadge] = useState<string | null>(null);
@@ -633,10 +646,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const dbSelectedFlame = normalizeFlameCosmeticId(data?.selected_streak_flame);
       const localActiveSkin = normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY));
       const dbActiveSkin = normalizePremiumSkinId(data?.active_premium_skin);
-      const skinFlame = getPremiumSkinFlameId(dbActiveSkin !== "none" ? dbActiveSkin : localActiveSkin);
+      const resolvedSkin = dbActiveSkin !== "none" ? dbActiveSkin : localActiveSkin;
+      const skinFlame = getPremiumSkinFlameId(resolvedSkin);
       const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
       window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, resolvedSelectedFlame);
       setHeaderSelectedFlame(resolvedSelectedFlame);
+      if (resolvedSkin !== "none") {
+        window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, resolvedSkin);
+        applyPremiumSkinToDocument(resolvedSkin);
+      }
       if (skinFlame && dbSelectedFlame !== skinFlame) {
         void supabase
           .from("profile_stats")

@@ -104,6 +104,15 @@ import {
   type DeepStudyTaskKind,
 } from "../../lib/deepStudy";
 
+function getLocalSkinLockedFlameId() {
+  if (typeof window === "undefined") return null;
+  const skinId = normalizePremiumSkinId(
+    window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY) ||
+      document.documentElement.dataset.bbSkin,
+  );
+  return getPremiumSkinFlameId(skinId);
+}
+
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
 const JESSICA_BONUS_POPUP_KEY = "bb:bonus-popup:jessica-1000:v1";
@@ -4210,6 +4219,22 @@ export default function DashboardPage() {
       await applyPurchasedPremiumSkin(mappedSkinId);
       return;
     }
+    const skinLockedFlame = getPremiumSkinFlameId(currentSkinId);
+    if (skinLockedFlame) {
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinLockedFlame);
+        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: skinLockedFlame } }));
+      }
+      setProfile((current) => current ? { ...current, selected_streak_flame: skinLockedFlame } : current);
+      if (userId) {
+        const { error } = await supabase
+          .from("profile_stats")
+          .update({ selected_streak_flame: skinLockedFlame, updated_at: new Date().toISOString() })
+          .eq("user_id", userId);
+        if (error) console.warn("[STORE] Skin flame saved locally, but profile update failed:", error.message);
+      }
+      return;
+    }
     if (typeof window !== "undefined") {
       window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizedFlameId);
       window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: normalizedFlameId } }));
@@ -4510,7 +4535,9 @@ export default function DashboardPage() {
               typeof profileUpdate.grace_days_count === "number"
                 ? profileUpdate.grace_days_count
                 : current.grace_days_count,
-            selected_streak_flame: item.flameId ? normalizeFlameCosmeticId(item.flameId) : current.selected_streak_flame,
+            selected_streak_flame:
+              getPremiumSkinFlameId(activePremiumSkinId) ??
+              (item.flameId ? normalizeFlameCosmeticId(item.flameId) : current.selected_streak_flame),
           }
         : current,
     );
@@ -4560,7 +4587,17 @@ export default function DashboardPage() {
     })();
     if (!cached) return;
 
-    if (cached.profile) setProfile(cached.profile);
+    if (cached.profile) {
+      const cachedSkinId = normalizePremiumSkinId(cached.activePremiumSkinId ?? activePremiumSkinId);
+      const skinLockedFlame = getPremiumSkinFlameId(cachedSkinId) ?? getLocalSkinLockedFlameId();
+      setProfile({
+        ...cached.profile,
+        selected_streak_flame: skinLockedFlame ?? cached.profile.selected_streak_flame,
+      });
+      if (skinLockedFlame) {
+        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinLockedFlame);
+      }
+    }
     if (cached.levelInfo) {
       setLevelInfo(cached.levelInfo);
       setIsLoadingLevel(false);
@@ -5156,7 +5193,8 @@ export default function DashboardPage() {
     if (typeof window === "undefined") return;
     function handleStreakFlameChanged(event: Event) {
       const customEvent = event as CustomEvent<{ flameId?: string }>;
-      const nextFlameId = normalizeFlameCosmeticId(
+      const skinLockedFlame = getLocalSkinLockedFlameId();
+      const nextFlameId = skinLockedFlame ?? normalizeFlameCosmeticId(
         customEvent.detail?.flameId || window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY),
       );
       window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, nextFlameId);

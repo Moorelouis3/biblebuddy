@@ -66,10 +66,20 @@ const premiumSkinFirstPaintPayload = Object.fromEntries(
   ]),
 );
 
+const premiumSkinFirstPaintFlames: Record<string, string> = {
+  "blue-storm": "blue",
+  "midnight-garden": "green",
+  "lavender-prayer": "purple",
+  "ruby-village": "red",
+  "slow-mornings": "gold",
+  "morning-mercy": "orange",
+};
+
 const premiumSkinFirstPaintScript = `
 (function () {
   try {
     var skins = ${JSON.stringify(premiumSkinFirstPaintPayload)};
+    var skinFlames = ${JSON.stringify(premiumSkinFirstPaintFlames)};
     var skinId = window.localStorage && window.localStorage.getItem(${JSON.stringify(PREMIUM_SKIN_STORAGE_KEY)});
     var skin = skins[skinId];
     if (!skin) return;
@@ -101,6 +111,9 @@ const premiumSkinFirstPaintScript = `
 
     root.dataset.bbSkin = skinId;
     root.dataset.bbTheme = window.localStorage.getItem("bb:app-theme") || "light";
+    if (skinFlames[skinId]) {
+      window.localStorage.setItem("bb:active-streak-flame", skinFlames[skinId]);
+    }
     style.setProperty("--bb-skin-bg-image", 'url("' + bg + '")');
     style.setProperty("--bb-skin-bg-image-mobile", 'url("' + skin.mobileBackgroundImage + '")');
     style.setProperty("--bb-skin-bg-image-desktop", 'url("' + skin.desktopBackgroundImage + '")');
