@@ -38,7 +38,7 @@ import StreakFlameBadge from "./StreakFlameBadge";
 import StreakFlameEmoji from "./StreakFlameEmoji";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
-import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, type FlameCosmeticId } from "../lib/flameCosmetics";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, getPremiumSkinFlameId, normalizeFlameCosmeticId, type FlameCosmeticId } from "../lib/flameCosmetics";
 import { getStoreItem } from "../lib/bibleBuddyStore";
 import { getActivePopupFromQueue, markPopupShown, POPUP_QUEUE_PRIORITIES, type PopupQueueItem } from "../lib/popupQueue";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
@@ -283,6 +283,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       applyAppThemeToDocument(appThemeId);
       applyPremiumSkinToDocument(skinId);
       preloadActiveSkinAssets(skinId);
+      const skinFlame = getPremiumSkinFlameId(skinId);
+      if (skinFlame) {
+        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinFlame);
+        setHeaderSelectedFlame(skinFlame);
+        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: skinFlame } }));
+      }
     }
 
     handlePremiumSkinChanged();
@@ -556,11 +562,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function loadHeaderDashboardStats(currentUserId: string) {
     let { data, error }: { data: any; error: any } = await supabase
       .from("profile_stats")
-      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username, selected_buddy_avatar, selected_streak_flame, member_badge")
+      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username, selected_buddy_avatar, selected_streak_flame, active_premium_skin, member_badge")
       .eq("user_id", currentUserId)
       .maybeSingle();
 
-    if (error && /grace_days_count|last_grace_day_earned_at|selected_buddy_avatar|selected_streak_flame/i.test(error.message || "")) {
+    if (error && /grace_days_count|last_grace_day_earned_at|selected_buddy_avatar|selected_streak_flame|active_premium_skin/i.test(error.message || "")) {
       const fallback = await supabase
         .from("profile_stats")
         .select("current_level, current_streak, profile_image_url, display_name, username, member_badge")
@@ -584,9 +590,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (typeof window !== "undefined") {
       const localSelectedFlame = window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY);
       const dbSelectedFlame = normalizeFlameCosmeticId(data?.selected_streak_flame);
-      const resolvedSelectedFlame = dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame);
+      const localActiveSkin = normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY));
+      const dbActiveSkin = normalizePremiumSkinId(data?.active_premium_skin);
+      const skinFlame = getPremiumSkinFlameId(dbActiveSkin !== "none" ? dbActiveSkin : localActiveSkin);
+      const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
       window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, resolvedSelectedFlame);
       setHeaderSelectedFlame(resolvedSelectedFlame);
+      if (skinFlame && dbSelectedFlame !== skinFlame) {
+        void supabase
+          .from("profile_stats")
+          .update({ selected_streak_flame: skinFlame, updated_at: new Date().toISOString() })
+          .eq("user_id", currentUserId);
+      }
     }
 
     setHeaderCurrentLevel(typeof data?.current_level === "number" && data.current_level > 0 ? data.current_level : 1);

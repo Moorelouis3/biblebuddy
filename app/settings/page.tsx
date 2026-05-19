@@ -21,7 +21,7 @@ import {
   normalizeBuddyAvatarId,
   type BuddyAvatarId,
 } from "../../lib/buddyAvatars";
-import { ACTIVE_STREAK_FLAME_STORAGE_KEY, FLAME_COSMETICS, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, FLAME_COSMETICS, getPremiumSkinFlameId, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
 import {
   PREMIUM_SKINS,
   PREMIUM_SKIN_STORAGE_KEY,
@@ -405,16 +405,7 @@ export default function SettingsPage() {
     }
 
     try {
-      const matchingFlame =
-        skinId === "blue-storm"
-          ? "blue"
-          : skinId === "midnight-garden"
-            ? "green"
-            : skinId === "lavender-prayer"
-              ? "purple"
-              : skinId === "ruby-village"
-                ? "red"
-                : null;
+      const matchingFlame = getPremiumSkinFlameId(skinId);
       if (matchingFlame) {
         setSelectedFlame(matchingFlame);
         if (typeof window !== "undefined") {

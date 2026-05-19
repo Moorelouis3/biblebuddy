@@ -1,3 +1,5 @@
+import type { PremiumSkinId } from "./premiumSkins";
+
 export type FlameCosmeticId = "default" | "orange" | "blue" | "gold" | "purple" | "red" | "green" | "black";
 
 export type FlameCosmetic = {
@@ -30,4 +32,12 @@ export function normalizeFlameCosmeticId(value: unknown): FlameCosmeticId {
 
 export function getFlameCosmetic(value: unknown): FlameCosmetic {
   return FLAME_COSMETIC_BY_ID.get(normalizeFlameCosmeticId(value)) ?? FLAME_COSMETIC_BY_ID.get(DEFAULT_FLAME_COSMETIC)!;
+}
+
+export function getPremiumSkinFlameId(skinId: PremiumSkinId | string | null | undefined): FlameCosmeticId | null {
+  if (skinId === "blue-storm") return "blue";
+  if (skinId === "midnight-garden") return "green";
+  if (skinId === "lavender-prayer") return "purple";
+  if (skinId === "ruby-village") return "red";
+  return null;
 }

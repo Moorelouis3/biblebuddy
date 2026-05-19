@@ -76,7 +76,7 @@ import {
   scheduleIdleWork,
   writePerformanceCache,
 } from "../../lib/appPerformance";
-import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, getPremiumSkinFlameId, normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
 import {
   SELECTED_BUDDY_STORAGE_KEY,
   getBuddyAvatar,
@@ -2456,15 +2456,7 @@ export default function DashboardPage() {
                   <span className={streakFlameClass} style={{ animationDuration: `${streakFlameDuration}s` }} aria-hidden="true">
                     <StreakFlameEmoji
                       flameId={
-                        activePremiumSkinId === "blue-storm"
-                          ? "blue"
-                          : activePremiumSkinId === "midnight-garden"
-                            ? "green"
-                            : activePremiumSkinId === "lavender-prayer"
-                              ? "purple"
-                              : activePremiumSkinId === "ruby-village"
-                                ? "red"
-                                : profile?.selected_streak_flame
+                        getPremiumSkinFlameId(activePremiumSkinId) ?? profile?.selected_streak_flame
                       }
                       size={42}
                       title={getDashboardStreakHeadline(streakValue)}
@@ -3932,16 +3924,7 @@ export default function DashboardPage() {
         console.warn("[STORE] Premium Skin saved locally, but profile update failed:", error.message);
       }
     }
-    const matchingFlame =
-      normalizedSkinId === "blue-storm"
-        ? "blue"
-        : normalizedSkinId === "midnight-garden"
-          ? "green"
-          : normalizedSkinId === "lavender-prayer"
-            ? "purple"
-            : normalizedSkinId === "ruby-village"
-              ? "red"
-              : null;
+    const matchingFlame = getPremiumSkinFlameId(normalizedSkinId);
     if (matchingFlame) {
       await applyPurchasedFlame(matchingFlame);
     }
@@ -4363,11 +4346,11 @@ export default function DashboardPage() {
 
         let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
+          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
           .eq("user_id", userId)
           .maybeSingle();
 
-        if (error && /(diamonds_count|selected_streak_flame|selected_buddy_avatar|daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(error.message || "")) {
+        if (error && /(diamonds_count|selected_streak_flame|selected_buddy_avatar|active_premium_skin|daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(error.message || "")) {
           const fallback = await supabase
             .from("profile_stats")
             .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username, created_at")
@@ -4428,7 +4411,17 @@ export default function DashboardPage() {
           const localSelectedFlame =
             typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
           const dbSelectedFlame = normalizeFlameCosmeticId(profileData?.selected_streak_flame);
-          const resolvedSelectedFlame = dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame);
+          const localActiveSkin = normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY));
+          const dbActiveSkin = normalizePremiumSkinId(profileData?.active_premium_skin);
+          const skinFlame = getPremiumSkinFlameId(dbActiveSkin !== "none" ? dbActiveSkin : localActiveSkin);
+          const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
+          if (skinFlame) window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinFlame);
+          if (skinFlame && dbSelectedFlame !== skinFlame) {
+            void supabase
+              .from("profile_stats")
+              .update({ selected_streak_flame: skinFlame, updated_at: new Date().toISOString() })
+              .eq("user_id", userId);
+          }
           setProfile({
             is_paid: profileData?.is_paid === true,
             daily_credits: typeof profileData?.daily_credits === "number" ? profileData.daily_credits : 0,
