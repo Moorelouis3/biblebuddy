@@ -340,7 +340,7 @@ export default function LandingPage() {
         .landing-badge { position: relative; overflow: hidden; }
         .landing-badge::after { content: ""; position: absolute; inset-block: 0; left: 0; width: 34px; background: rgba(255,255,255,0.65); filter: blur(8px); animation: landing-shimmer 2.8s ease-out infinite; }
       `}</style>
-      <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-5 md:py-6">
+      <header className="bb-landing-header mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-5 md:py-6">
         <div className="flex items-center gap-3">
           <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-[#d9ecff] ring-1 ring-white/15 md:h-10 md:w-10">
             <Image src="/Newlouiswave.png" alt="Bible Buddy Logo" width={36} height={36} className="h-9 w-9 object-contain" />
