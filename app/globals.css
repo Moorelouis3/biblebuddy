@@ -1662,6 +1662,33 @@ button:active:not(:disabled),
   isolation: isolate;
 }
 
+html[data-bb-app-hidden="true"] *,
+html[data-bb-perf-reduce="true"] *,
+html[data-bb-perf-reduce="true"] *::before,
+html[data-bb-perf-reduce="true"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-bb-app-hidden="true"] *,
+html[data-bb-app-hidden="true"] *::before,
+html[data-bb-app-hidden="true"] *::after {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @media (max-width: 1023px) {
   html,
   body {
@@ -1675,6 +1702,7 @@ button:active:not(:disabled),
   html[data-bb-skin="midnight-garden"] body,
   html[data-bb-skin="lavender-prayer"] body,
   html[data-bb-skin="ruby-village"] body {
+    --bb-skin-bg-image: var(--bb-skin-bg-image-mobile);
     background-attachment: scroll !important;
     background-position: center top !important;
     background-size: cover !important;

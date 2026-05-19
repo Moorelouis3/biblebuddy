@@ -3482,7 +3482,7 @@ export default function DashboardJourneyExperience({
                       #{buddy.rank}
                     </div>
                     {buddy.profileImageUrl ? (
-                      <img src={buddy.profileImageUrl} alt={buddy.displayName} className="h-11 w-11 shrink-0 rounded-full object-cover" />
+                      <img src={buddy.profileImageUrl} alt={buddy.displayName} loading="lazy" decoding="async" className="h-11 w-11 shrink-0 rounded-full object-cover" />
                     ) : (
                       <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
                         {getBuddyInitial(buddy.displayName)}
@@ -3515,7 +3515,7 @@ export default function DashboardJourneyExperience({
                 {(buddiesDashboard?.friendTimeline || []).map((item) => (
                   <div key={item.id} className="flex gap-3 rounded-[20px] bg-[var(--bb-surface,#f8fbff)] p-3">
                     {item.profileImageUrl ? (
-                      <img src={item.profileImageUrl} alt={item.displayName} className="h-10 w-10 shrink-0 rounded-full object-cover" />
+                      <img src={item.profileImageUrl} alt={item.displayName} loading="lazy" decoding="async" className="h-10 w-10 shrink-0 rounded-full object-cover" />
                     ) : (
                       <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
                         {getBuddyInitial(item.displayName)}
@@ -3613,7 +3613,7 @@ export default function DashboardJourneyExperience({
         className="group w-[168px] shrink-0 overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
       >
         <div className="relative aspect-video overflow-hidden bg-[var(--bb-surface-soft,#f8fbff)]">
-          <img src={episode.thumbnail || title.poster} alt="" className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
+          <img src={episode.thumbnail || title.poster} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
           <span className="absolute bottom-2 right-2 rounded-full bg-black/75 px-2 py-0.5 text-[10px] font-black text-white">{episode.duration}</span>
         </div>
         <div className="p-3">
@@ -3691,7 +3691,7 @@ export default function DashboardJourneyExperience({
               onClick={() => void openEmbeddedTvEpisode(featuredTitle, featuredEpisode)}
               className="relative overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-black text-left shadow-[0_14px_36px_rgba(38,63,99,0.16)]"
             >
-              <img src={featuredEpisode.thumbnail || featuredTitle.heroImage || featuredTitle.poster} alt="" className="h-64 w-full object-cover opacity-75" />
+              <img src={featuredEpisode.thumbnail || featuredTitle.heroImage || featuredTitle.poster} alt="" loading="lazy" decoding="async" className="h-64 w-full object-cover opacity-75" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4 text-white">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-white/80">Bible Buddy TV</p>
@@ -3935,7 +3935,7 @@ export default function DashboardJourneyExperience({
             >
               <span className="h-16 w-12 shrink-0 overflow-hidden rounded-xl bg-[var(--bb-surface-soft,#eef6ff)] shadow-sm">
                 {currentStudyCover ? (
-                  <img src={currentStudyCover} alt="" className="h-full w-full object-cover" />
+                  <img src={currentStudyCover} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 ) : (
                   <span className="grid h-full w-full place-items-center text-xl" aria-hidden="true">📖</span>
                 )}
@@ -4659,7 +4659,7 @@ export default function DashboardJourneyExperience({
                               >
                                 <div className="h-14 w-11 shrink-0 overflow-hidden rounded-lg bg-gray-100 shadow-sm">
                                   {cover ? (
-                                    <img src={cover} alt="" className="h-full w-full object-cover" />
+                                    <img src={cover} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
                                   ) : (
                                     <div className="grid h-full w-full place-items-center text-lg">📖</div>
                                   )}
@@ -5131,7 +5131,7 @@ export default function DashboardJourneyExperience({
                 <div className="flex items-center gap-3">
                   <div className="h-20 w-14 shrink-0 overflow-hidden rounded-xl bg-[#eef6ff] shadow-sm">
                     {currentStudyCover ? (
-                      <img src={currentStudyCover || undefined} alt="" className="h-full w-full object-cover" />
+                      <img src={currentStudyCover || undefined} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
                     ) : (
                       <div className="grid h-full w-full place-items-center text-2xl" aria-hidden="true">
                         📖
@@ -5372,7 +5372,7 @@ export default function DashboardJourneyExperience({
                     >
                       <div className="h-14 w-11 shrink-0 overflow-hidden rounded-lg bg-gray-100 shadow-sm">
                         {cover ? (
-                          <img src={cover} alt="" className="h-full w-full object-cover" />
+                          <img src={cover} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
                         ) : (
                           <div className="grid h-full w-full place-items-center text-lg">📖</div>
                         )}

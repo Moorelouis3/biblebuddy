@@ -31,6 +31,7 @@ import {
   applyPremiumSkinToDocument,
   normalizePremiumSkinId,
 } from "../lib/premiumSkins";
+import { preloadActiveSkinAssets, syncPerformanceModeToDocument } from "../lib/appPerformance";
 import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
 import StreakFlameBadge from "./StreakFlameBadge";
@@ -222,7 +223,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     );
     setAppThemeId(resolvedTheme);
     applyAppThemeToDocument(resolvedTheme);
-    applyPremiumSkinToDocument(normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY)));
+    const skinId = normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY));
+    applyPremiumSkinToDocument(skinId);
+    preloadActiveSkinAssets(skinId);
+    syncPerformanceModeToDocument();
+
+    const handleVisibilityChange = () => syncPerformanceModeToDocument();
+    const handleMotionChange = () => syncPerformanceModeToDocument();
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    reducedMotionQuery.addEventListener?.("change", handleMotionChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      reducedMotionQuery.removeEventListener?.("change", handleMotionChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -268,6 +282,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, skinId);
       applyAppThemeToDocument(appThemeId);
       applyPremiumSkinToDocument(skinId);
+      preloadActiveSkinAssets(skinId);
     }
 
     handlePremiumSkinChanged();
@@ -318,6 +333,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, savedSkin);
     }
     applyPremiumSkinToDocument(savedSkin);
+    preloadActiveSkinAssets(savedSkin);
     window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: savedSkin } }));
   }
 

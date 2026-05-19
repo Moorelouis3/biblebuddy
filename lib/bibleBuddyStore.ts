@@ -41,7 +41,7 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     price: BLUE_STORM_SKIN.price,
     emoji: "Storm",
     accent: BLUE_STORM_SKIN.palette.accent,
-    imageSrc: BLUE_STORM_SKIN.backgroundImage,
+    imageSrc: BLUE_STORM_SKIN.thumbnailImage,
     skinId: BLUE_STORM_SKIN.id,
   },
   {
@@ -52,7 +52,7 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     price: MIDNIGHT_GARDEN_SKIN.price,
     emoji: "Moon",
     accent: MIDNIGHT_GARDEN_SKIN.palette.accent,
-    imageSrc: MIDNIGHT_GARDEN_SKIN.backgroundImage,
+    imageSrc: MIDNIGHT_GARDEN_SKIN.thumbnailImage,
     skinId: MIDNIGHT_GARDEN_SKIN.id,
   },
   {
@@ -63,7 +63,7 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     price: LAVENDER_PRAYER_SKIN.price,
     emoji: "Prayer",
     accent: LAVENDER_PRAYER_SKIN.palette.accent,
-    imageSrc: LAVENDER_PRAYER_SKIN.backgroundImage,
+    imageSrc: LAVENDER_PRAYER_SKIN.thumbnailImage,
     skinId: LAVENDER_PRAYER_SKIN.id,
   },
   {
@@ -74,7 +74,7 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     price: RUBY_VILLAGE_SKIN.price,
     emoji: "Ruby",
     accent: RUBY_VILLAGE_SKIN.palette.accent,
-    imageSrc: RUBY_VILLAGE_SKIN.backgroundImage,
+    imageSrc: RUBY_VILLAGE_SKIN.thumbnailImage,
     skinId: RUBY_VILLAGE_SKIN.id,
   },
 ];

@@ -69,6 +69,13 @@ import {
   normalizePremiumSkinId,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
+import {
+  preloadActiveSkinAssets,
+  preloadStoreSkinThumbnails,
+  readPerformanceCache,
+  scheduleIdleWork,
+  writePerformanceCache,
+} from "../../lib/appPerformance";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
 import {
   SELECTED_BUDDY_STORAGE_KEY,
@@ -1118,6 +1125,27 @@ export default function DashboardPage() {
   const [badgePopupsShownThisSession, setBadgePopupsShownThisSession] = useState(0);
 
   const dashboardStatsCacheKey = userId ? `bb:dashboard-stats-cache:${userId}` : null;
+
+  const prefetchChecklistRoutes = useCallback((checklistData: ChecklistData) => {
+    scheduleIdleWork(() => {
+      const likelyRoutes = checklistData.tasks
+        .filter((task) => !task.done && task.href)
+        .map((task) => task.href as string)
+        .slice(0, 4);
+
+      if (checklistData.nextJourneyTarget) {
+        likelyRoutes.push(`/bible-studies/${checklistData.nextJourneyTarget.devotionalId}/day/${checklistData.nextJourneyTarget.dayNumber}`);
+      }
+
+      Array.from(new Set(likelyRoutes)).forEach((href) => {
+        try {
+          router.prefetch(href);
+        } catch {
+          // Prefetch is an optimization only; navigation still works without it.
+        }
+      });
+    }, 1600);
+  }, [router]);
 
   function getStreakMotivationSeenKey(currentUserId: string, dayKey: string) {
     return `bb:streak-motivation-seen:${currentUserId}:${dayKey}`;
@@ -3119,6 +3147,8 @@ export default function DashboardPage() {
             <img
               src={item.imageSrc || "/Newlouiswave.png"}
               alt={item.title}
+              loading="lazy"
+              decoding="async"
               className="h-[190px] w-[128%] max-w-none translate-y-8 object-contain object-bottom sm:h-[258px] sm:w-[124%] sm:translate-y-12"
             />
           </div>
@@ -3785,6 +3815,7 @@ export default function DashboardPage() {
   const openDiamondStore = useCallback(() => {
     setShowDiamondStore(true);
     setStoreMessage(null);
+    preloadStoreSkinThumbnails();
     void loadStorePurchases();
   }, [loadStorePurchases]);
 
@@ -3852,6 +3883,7 @@ export default function DashboardPage() {
       );
       setActivePremiumSkinId(skinId);
       applyPremiumSkinToDocument(skinId);
+      preloadActiveSkinAssets(skinId);
     }
 
     loadPremiumSkin();
@@ -3884,6 +3916,7 @@ export default function DashboardPage() {
     }
     setActivePremiumSkinId(normalizedSkinId);
     applyPremiumSkinToDocument(normalizedSkinId);
+    preloadActiveSkinAssets(normalizedSkinId);
     if (userId) {
       const { error } = await supabase
         .from("profile_stats")
@@ -4239,14 +4272,27 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!dashboardStatsCacheKey || typeof window === "undefined") return;
-    const cached = JSON.parse(window.localStorage.getItem(dashboardStatsCacheKey) || "null") as {
+    const cached = readPerformanceCache<{
       profile?: typeof profile;
       levelInfo?: typeof levelInfo;
       badgeProgress?: BadgeProgress[];
       totalCompletedChapters?: number;
       bibleBookProgress?: BibleBookProgress[];
       currentBook?: string | null;
-    } | null;
+    }>(dashboardStatsCacheKey) ?? (() => {
+      try {
+        return JSON.parse(window.localStorage.getItem(dashboardStatsCacheKey) || "null") as {
+          profile?: typeof profile;
+          levelInfo?: typeof levelInfo;
+          badgeProgress?: BadgeProgress[];
+          totalCompletedChapters?: number;
+          bibleBookProgress?: BibleBookProgress[];
+          currentBook?: string | null;
+        } | null;
+      } catch {
+        return null;
+      }
+    })();
     if (!cached) return;
 
     if (cached.profile) setProfile(cached.profile);
@@ -4269,15 +4315,14 @@ export default function DashboardPage() {
     if (!dashboardStatsCacheKey || typeof window === "undefined") return;
     const hasUsefulStats = Boolean(profile || levelInfo || badgeProgress.length || totalCompletedChapters > 0 || bibleBookProgress.length);
     if (!hasUsefulStats) return;
-    window.localStorage.setItem(dashboardStatsCacheKey, JSON.stringify({
-      cachedAt: new Date().toISOString(),
+    writePerformanceCache(dashboardStatsCacheKey, {
       profile,
       levelInfo,
       badgeProgress,
       totalCompletedChapters,
       bibleBookProgress,
       currentBook,
-    }));
+    }, 1000 * 60 * 60 * 18);
   }, [badgeProgress, bibleBookProgress, currentBook, dashboardStatsCacheKey, levelInfo, profile, totalCompletedChapters]);
 
   useEffect(() => {
@@ -5622,6 +5667,18 @@ export default function DashboardPage() {
       return;
     }
 
+    const cachedChecklist = readPerformanceCache<ChecklistData>(`daily-task-summary:${loadKey}`);
+    if (!options.force && cachedChecklist) {
+      setIsLoadingDailyTaskSummary(false);
+      setDailyChecklistData(cachedChecklist);
+      dailyChecklistDataRef.current = cachedChecklist;
+      setDailyTaskCompletedCount(cachedChecklist.completedCount);
+      setDailyTaskTotalCount(cachedChecklist.tasks.length || 5);
+      setDailyTaskNextTitle(cachedChecklist.nextTaskTitle);
+      setDailyTaskSummaryLine(cachedChecklist.summaryLine);
+      prefetchChecklistRoutes(cachedChecklist);
+    }
+
     const hasExistingChecklist = Boolean(dailyChecklistDataRef.current);
     if (!options.silent && !hasExistingChecklist) {
       setIsLoadingDailyTaskSummary(true);
@@ -5649,6 +5706,8 @@ export default function DashboardPage() {
       setDailyTaskNextTitle(checklistData.nextTaskTitle);
       setDailyTaskSummaryLine(checklistData.summaryLine);
       dailyTaskSummaryLoadedKeyRef.current = loadKey;
+      writePerformanceCache(`daily-task-summary:${loadKey}`, checklistData, 1000 * 60 * 60 * 10);
+      prefetchChecklistRoutes(checklistData);
 
       if (
         previousChecklistData?.journeyKey &&
@@ -5684,7 +5743,7 @@ export default function DashboardPage() {
       }
       setIsLoadingDailyTaskSummary(false);
     }
-  }, [currentStreak, louisDailyTaskCycleStartedAt, userId]);
+  }, [currentStreak, louisDailyTaskCycleStartedAt, prefetchChecklistRoutes, userId]);
 
   useEffect(() => {
     void loadDailyTaskSummary();
@@ -6658,7 +6717,7 @@ export default function DashboardPage() {
               <div className="mt-5 grid gap-3">
                 {buddyPromos.map((buddy) => (
                   <div key={buddy.id} className="flex items-center gap-3 rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-3 shadow-sm">
-                    <img src={buddy.imageSrc} alt={buddy.title} className="h-16 w-16 rounded-2xl object-cover" />
+                    <img src={buddy.imageSrc} alt={buddy.title} loading="lazy" decoding="async" className="h-16 w-16 rounded-2xl object-cover" />
                     <div className="min-w-0">
                       <p className="text-base font-black text-[var(--bb-text-primary)]">{buddy.title}</p>
                       <p className="text-xs font-semibold leading-5 text-[var(--bb-text-secondary)]">{buddy.subtitle}</p>

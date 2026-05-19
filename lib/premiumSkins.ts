@@ -26,6 +26,10 @@ export type PremiumSkin = {
   label: string;
   storeSubtitle: string;
   backgroundImage: string;
+  originalImage: string;
+  thumbnailImage: string;
+  mobileBackgroundImage: string;
+  desktopBackgroundImage: string;
   price: number;
   palette: PremiumSkinPalette;
 };
@@ -37,7 +41,11 @@ export const BLUE_STORM_SKIN: PremiumSkin = {
   name: "Blue Storm",
   label: "Premium Skin",
   storeSubtitle: "A cinematic storm atmosphere for focused Bible study.",
-  backgroundImage: "/skins/Bluestormskin.png",
+  backgroundImage: "/skins/optimized/blue-storm-desktop.webp",
+  originalImage: "/skins/Bluestormskin.png",
+  thumbnailImage: "/skins/optimized/blue-storm-thumb.webp",
+  mobileBackgroundImage: "/skins/optimized/blue-storm-mobile.webp",
+  desktopBackgroundImage: "/skins/optimized/blue-storm-desktop.webp",
   price: 1000,
   palette: {
     background: "#061322",
@@ -65,7 +73,11 @@ export const MIDNIGHT_GARDEN_SKIN: PremiumSkin = {
   name: "Midnight Garden",
   label: "Premium Skin",
   storeSubtitle: "A peaceful moonlit garden atmosphere for quiet nighttime prayer and reflection.",
-  backgroundImage: "/skins/MidnightGarden.png",
+  backgroundImage: "/skins/optimized/midnight-garden-desktop.webp",
+  originalImage: "/skins/MidnightGarden.png",
+  thumbnailImage: "/skins/optimized/midnight-garden-thumb.webp",
+  mobileBackgroundImage: "/skins/optimized/midnight-garden-mobile.webp",
+  desktopBackgroundImage: "/skins/optimized/midnight-garden-desktop.webp",
   price: 1000,
   palette: {
     background: "#07100F",
@@ -93,7 +105,11 @@ export const LAVENDER_PRAYER_SKIN: PremiumSkin = {
   name: "Lavender Prayer",
   label: "Premium Skin",
   storeSubtitle: "A dreamy moonlit prayer atmosphere with candles, stars, and quiet nighttime reflection.",
-  backgroundImage: "/skins/LavenderPrayerSkin.png",
+  backgroundImage: "/skins/optimized/lavender-prayer-desktop.webp",
+  originalImage: "/skins/LavenderPrayerSkin.png",
+  thumbnailImage: "/skins/optimized/lavender-prayer-thumb.webp",
+  mobileBackgroundImage: "/skins/optimized/lavender-prayer-mobile.webp",
+  desktopBackgroundImage: "/skins/optimized/lavender-prayer-desktop.webp",
   price: 1000,
   palette: {
     background: "#130D1F",
@@ -121,7 +137,11 @@ export const RUBY_VILLAGE_SKIN: PremiumSkin = {
   name: "Ruby Village",
   label: "Premium Skin",
   storeSubtitle: "A bold ruby kingdom atmosphere for disciplined, spiritually powerful study.",
-  backgroundImage: "/skins/RubyVillage.png",
+  backgroundImage: "/skins/optimized/ruby-village-desktop.webp",
+  originalImage: "/skins/RubyVillage.png",
+  thumbnailImage: "/skins/optimized/ruby-village-thumb.webp",
+  mobileBackgroundImage: "/skins/optimized/ruby-village-mobile.webp",
+  desktopBackgroundImage: "/skins/optimized/ruby-village-desktop.webp",
   price: 1000,
   palette: {
     background: "#120507",
@@ -168,13 +188,17 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
   if (!skin) {
     root.dataset.bbSkin = "none";
     root.style.removeProperty("--bb-skin-bg-image");
+    root.style.removeProperty("--bb-skin-bg-image-mobile");
+    root.style.removeProperty("--bb-skin-bg-image-desktop");
     root.style.removeProperty("--bb-skin-glow");
     root.style.removeProperty("--bb-skin-warm-glow");
     return;
   }
 
   root.dataset.bbSkin = skin.id;
-  root.style.setProperty("--bb-skin-bg-image", `url("${skin.backgroundImage}")`);
+  root.style.setProperty("--bb-skin-bg-image", `url("${skin.desktopBackgroundImage}")`);
+  root.style.setProperty("--bb-skin-bg-image-mobile", `url("${skin.mobileBackgroundImage}")`);
+  root.style.setProperty("--bb-skin-bg-image-desktop", `url("${skin.desktopBackgroundImage}")`);
   root.style.setProperty(
     "--bb-skin-glow",
     skin.id === "midnight-garden"
