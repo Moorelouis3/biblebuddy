@@ -311,6 +311,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }
 
   async function loadSavedTheme(currentUserId: string) {
+    const localSkin =
+      typeof window !== "undefined"
+        ? normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY))
+        : "none";
     let { data, error } = await supabase
       .from("profile_stats")
       .select("app_theme, active_premium_skin")
@@ -333,7 +337,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
 
     const savedTheme = normalizeAppThemeId(data?.app_theme);
-    const savedSkin = normalizePremiumSkinId(data?.active_premium_skin);
+    const savedSkin = data && "active_premium_skin" in data && data.active_premium_skin
+      ? normalizePremiumSkinId(data.active_premium_skin)
+      : localSkin;
     applyThemeLocally(savedTheme);
     if (typeof window !== "undefined") {
       window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, savedSkin);
@@ -341,6 +347,24 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     applyPremiumSkinToDocument(savedSkin);
     preloadActiveSkinAssets(savedSkin);
     window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: savedSkin } }));
+
+    if (savedSkin !== "none" && normalizePremiumSkinId(data?.active_premium_skin) !== savedSkin) {
+      void supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: currentUserId,
+            active_premium_skin: savedSkin,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" },
+        )
+        .then(({ error: saveSkinError }) => {
+          if (saveSkinError && !/active_premium_skin/i.test(saveSkinError.message || "")) {
+            console.warn("[THEME] Could not repair saved premium skin:", saveSkinError.message);
+          }
+        });
+    }
   }
 
   async function saveThemeToProfile(themeId: AppThemeId) {

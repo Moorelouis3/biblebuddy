@@ -8,6 +8,7 @@ import AppLoadingScreen from "@/components/AppLoadingScreen";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { BIBLE_STUDY_SERIES_CATALOG } from "@/lib/bibleStudiesCatalog";
+import { hasCachedSupabaseSession } from "@/lib/authBoot";
 
 const taskSteps = [
   {
@@ -145,14 +146,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     let settled = false;
-    let hadCachedSession = false;
-    try {
-      hadCachedSession =
-        typeof window !== "undefined" &&
-        Object.keys(window.localStorage).some((key) => key.startsWith("sb-") && key.endsWith("-auth-token"));
-    } catch {
-      hadCachedSession = false;
-    }
+    const hadCachedSession = hasCachedSupabaseSession();
     const fallbackTimer = window.setTimeout(() => {
       if (!settled) {
         if (hadCachedSession) {
@@ -161,7 +155,7 @@ export default function LandingPage() {
         }
         setIsChecking(false);
       }
-    }, hadCachedSession ? 900 : 3500);
+    }, hadCachedSession ? 1600 : 3500);
 
     const checkSession = async () => {
       try {

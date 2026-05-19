@@ -7,20 +7,35 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
 import { supabase } from "../../lib/supabaseClient";
+import { hasCachedSupabaseSession } from "../../lib/authBoot";
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [checkingSession, setCheckingSession] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   // Check for existing session on mount and redirect if logged in
   useEffect(() => {
+    let settled = false;
+    const hadCachedSession = hasCachedSupabaseSession();
+    const fallbackTimer = window.setTimeout(() => {
+      if (!settled) setCheckingSession(false);
+    }, hadCachedSession ? 1600 : 700);
+
     const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        router.push("/dashboard");
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        settled = true;
+        window.clearTimeout(fallbackTimer);
+        if (session) {
+          router.replace("/dashboard");
+          return;
+        }
+      } finally {
+        setCheckingSession(false);
       }
     };
     checkSession();
@@ -28,11 +43,14 @@ export default function LoginPage() {
     // Listen for auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
-        router.push("/dashboard");
+        settled = true;
+        window.clearTimeout(fallbackTimer);
+        router.replace("/dashboard");
       }
     });
 
     return () => {
+      window.clearTimeout(fallbackTimer);
       subscription.unsubscribe();
     };
   }, [router]);
@@ -100,7 +118,7 @@ export default function LoginPage() {
     }
   }
 
-  if (loading) {
+  if (loading || checkingSession) {
     return <AppLoadingScreen />;
   }
 

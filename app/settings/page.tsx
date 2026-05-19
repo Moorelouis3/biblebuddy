@@ -44,6 +44,7 @@ type SettingsProfileRow = {
   app_theme?: string | null;
   selected_streak_flame?: string | null;
   selected_buddy_avatar?: string | null;
+  active_premium_skin?: string | null;
 };
 
 type BuddyReadyModal = {
@@ -123,12 +124,12 @@ export default function SettingsPage() {
 
         const profileRequest = await supabase
           .from("profile_stats")
-          .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar")
+          .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar, active_premium_skin")
           .eq("user_id", currentUser.id)
           .maybeSingle();
 
         let profile = profileRequest.data as SettingsProfileRow | null;
-        if (profileRequest.error && /selected_streak_flame|selected_buddy_avatar/i.test(profileRequest.error.message || "")) {
+        if (profileRequest.error && /selected_streak_flame|selected_buddy_avatar|active_premium_skin/i.test(profileRequest.error.message || "")) {
           const fallbackProfile = await supabase
             .from("profile_stats")
             .select("display_name, username, app_theme")
@@ -153,8 +154,12 @@ export default function SettingsPage() {
         setFirstName(nameParts.firstName);
         setLastName(nameParts.lastName);
         setSelectedTheme(normalizeAppThemeId(profile?.app_theme));
-        const resolvedPremiumSkin =
+        const localPremiumSkin =
           typeof window !== "undefined" ? normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY)) : "none";
+        const resolvedPremiumSkin =
+          profile && "active_premium_skin" in profile && profile.active_premium_skin
+            ? normalizePremiumSkinId(profile.active_premium_skin)
+            : localPremiumSkin;
         setSelectedPremiumSkin(resolvedPremiumSkin);
         const localSelectedBuddy =
           typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
