@@ -7119,8 +7119,18 @@ export default function GroupChatPage() {
     if (!activeFeedPost) return null;
 
     return (
-      <div className="animate-fade-in-up overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-sm">
-        <div className="flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4">
+      <div
+        className={`animate-fade-in-up overflow-hidden bg-[var(--bb-card,#ffffff)] ${
+          isDashboardEmbed
+            ? "-mx-4 min-h-[calc(100dvh-130px)] rounded-none border-0 shadow-none"
+            : "rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] shadow-sm"
+        }`}
+      >
+        <div
+          className={`flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4 ${
+            isDashboardEmbed ? "sticky top-0 z-20 bg-[var(--bb-card,#ffffff)]" : ""
+          }`}
+        >
           <div className="min-w-0">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#b7794d)]">Community Post</p>
             <div className="mt-2 flex flex-wrap items-center gap-1.5">
@@ -7200,10 +7210,19 @@ export default function GroupChatPage() {
                 setSelectedFeedPost(null);
                 setDeepLinkedCommentId(null);
               }}
-              className="grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
-              aria-label="Close post"
+              className={`inline-flex h-10 items-center justify-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)] ${
+                isDashboardEmbed ? "gap-2 px-4 text-sm" : "w-10 text-xl"
+              }`}
+              aria-label={isDashboardEmbed ? "Back to community" : "Close post"}
             >
-              ×
+              {isDashboardEmbed ? (
+                <>
+                  <span aria-hidden="true">←</span>
+                  <span>Back</span>
+                </>
+              ) : (
+                "×"
+              )}
             </button>
           </div>
         </div>
@@ -7319,6 +7338,14 @@ export default function GroupChatPage() {
       );
     }
     const orderedPosts = sortPinnedPostsFirst(posts);
+    const openFeedPostInline = (post: Post) => {
+      setSelectedFeedPost(post);
+      setDeepLinkedCommentId(null);
+      if (isDashboardEmbed && typeof window !== "undefined") {
+        window.setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 0);
+      }
+    };
+
     return (
       <div className="flex flex-col gap-3">
         {orderedPosts.map((post, index) => {
@@ -7335,11 +7362,11 @@ export default function GroupChatPage() {
             key={post.id}
             role="button"
             tabIndex={0}
-            onClick={() => setSelectedFeedPost(post)}
+            onClick={() => openFeedPostInline(post)}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
-                setSelectedFeedPost(post);
+                openFeedPostInline(post);
               }
             }}
             className="w-full text-left transition cursor-pointer bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#e5e7eb)] rounded-xl p-4 shadow-sm hover:shadow-md animate-fade-in-up"
@@ -7440,7 +7467,7 @@ export default function GroupChatPage() {
             )}
             {pollSet && (
               <div className="mt-3">
-                <GroupWeeklyPollCard pollSet={pollSet} userId={userId} compactResults onOpen={() => setSelectedFeedPost(post)} />
+                <GroupWeeklyPollCard pollSet={pollSet} userId={userId} compactResults onOpen={() => openFeedPostInline(post)} />
               </div>
             )}
             {triviaSet && (
@@ -7454,7 +7481,7 @@ export default function GroupChatPage() {
                   prompt={questionSet.prompt}
                   intro={questionSet.intro}
                   commentPrompt={questionSet.comment_prompt}
-                  onOpen={() => setSelectedFeedPost(post)}
+                  onOpen={() => openFeedPostInline(post)}
                 />
               </div>
             )}
@@ -7540,7 +7567,7 @@ export default function GroupChatPage() {
                 type="button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setSelectedFeedPost(post);
+                  openFeedPostInline(post);
                 }}
                 className="flex items-center gap-1.5 text-sm text-[var(--bb-text-muted,#9ca3af)] hover:text-[var(--bb-accent,#b7794d)] transition"
               >

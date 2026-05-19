@@ -2861,21 +2861,39 @@ export default function DashboardPage() {
             : item.skinId === "ruby-village"
               ? ["Ruby Sky", "Castle", "Embers"]
               : ["Storm", "Glow", "Mist"];
+      const skinMotionClass =
+        item.skinId === "midnight-garden"
+          ? "bb-store-skin-card--garden"
+          : item.skinId === "lavender-prayer"
+            ? "bb-store-skin-card--lavender"
+            : item.skinId === "ruby-village"
+              ? "bb-store-skin-card--ruby"
+              : "bb-store-skin-card--storm";
+      const skinBadge =
+        item.skinId === "ruby-village"
+          ? "Popular"
+          : item.skinId === "blue-storm"
+            ? "New"
+            : item.skinId === "lavender-prayer"
+              ? "New"
+              : "Premium";
       const accent = skin?.palette.accent ?? item.accent;
       return (
         <article
           key={item.id}
-          className={`relative overflow-hidden rounded-[26px] border p-3 text-white shadow-[0_18px_42px_rgba(8,34,66,0.30)] ${
+          className={`bb-store-skin-card ${skinMotionClass} relative min-h-[320px] overflow-hidden rounded-[22px] border text-white shadow-[0_18px_42px_rgba(8,34,66,0.30)] ${
             active ? "ring-2" : "border-white/25"
           }`}
           style={{
-            backgroundImage: `linear-gradient(180deg, rgba(2,8,18,0.08), rgba(2,10,24,0.72)), url(${item.imageSrc})`,
+            backgroundImage: `linear-gradient(180deg, rgba(2,8,18,0.02) 0%, rgba(2,10,24,0.18) 42%, rgba(2,10,24,0.82) 100%), url(${item.imageSrc})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             borderColor: active ? accent : undefined,
             boxShadow: active ? `0 0 0 1px ${accent}, 0 18px 42px rgba(8,34,66,0.3)` : undefined,
           }}
         >
+          <span className="bb-store-skin-motion bb-store-skin-motion-a" aria-hidden="true" />
+          <span className="bb-store-skin-motion bb-store-skin-motion-b" aria-hidden="true" />
           <div
             className="pointer-events-none absolute inset-0"
             style={{
@@ -2902,6 +2920,12 @@ export default function DashboardPage() {
                       : "rgba(125,211,252,0.25)",
             }}
           />
+          <span
+            className="absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-white shadow-[0_8px_18px_rgba(0,0,0,0.24)]"
+            style={{ backgroundColor: active ? accent : `${accent}cc` }}
+          >
+            {skinBadge}
+          </span>
           {active ? (
             <span
               className="absolute right-3 top-3 z-10 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-slate-950 shadow-[0_0_22px_rgba(93,214,255,0.45)]"
@@ -2914,28 +2938,161 @@ export default function DashboardPage() {
               Owned
             </span>
           ) : null}
-          <button type="button" onClick={() => void handleStorePurchase(item)} className="relative block min-h-[210px] w-full text-left">
-            <span className="inline-flex rounded-full border border-white/35 bg-white/15 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] !text-white">
-              Premium Skin
-            </span>
-            <div className="absolute bottom-0 left-0 right-0">
-              <h4 className="text-3xl font-black leading-none !text-white drop-shadow">{item.title}</h4>
+          <button type="button" onClick={() => void handleStorePurchase(item)} className="relative block min-h-[250px] w-full p-4 text-left">
+            <div className="absolute bottom-4 left-4 right-4">
+              <h4 className="text-[1.7rem] font-black leading-none !text-white drop-shadow sm:text-3xl">{item.title}</h4>
               <p className="mt-2 max-w-sm text-sm font-bold leading-5 !text-white/90">{item.subtitle}</p>
-              <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-                {previewTags.map((tag) => (
-                  <span key={tag} className="rounded-2xl border border-white/15 bg-white/10 px-2 py-2 text-[10px] font-black uppercase tracking-wide !text-white/90">
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           </button>
-          <div className="relative mt-3">
-            {renderStoreActionButton(item, owned, "w-full border border-white/40 text-slate-950 shadow-[0_0_24px_rgba(255,255,255,0.18)]")}
+          <div className="relative border-t border-white/15 bg-black/34 p-4 backdrop-blur-md">
+            <div className="mb-3 grid grid-cols-3 gap-2 text-center">
+              {previewTags.map((tag) => (
+                <span key={tag} className="rounded-2xl border border-white/15 bg-white/10 px-2 py-2 text-[10px] font-black uppercase tracking-wide !text-white/90">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="flex items-center justify-between gap-3">
+              <span className="inline-flex items-center gap-2 text-lg font-black !text-white">
+                <span aria-hidden="true">💎</span>
+                {item.price.toLocaleString()}
+              </span>
+              {renderStoreActionButton(item, owned, "min-w-[120px] rounded-full border border-white/30 bg-white/18 px-5 py-3 !text-white shadow-[0_0_24px_rgba(255,255,255,0.12)] backdrop-blur-md hover:bg-white/26")}
+            </div>
           </div>
         </article>
       );
     };
+
+    const renderPremiumSkinsStoreSection = () => (
+      <section className="mt-6">
+        <style>{`
+          @keyframes bb-store-skin-drift {
+            0% { transform: translate3d(-6%, 4%, 0) rotate(0deg); opacity: 0.45; }
+            50% { opacity: 0.85; }
+            100% { transform: translate3d(8%, -5%, 0) rotate(7deg); opacity: 0.5; }
+          }
+          @keyframes bb-store-skin-pulse {
+            0%, 100% { transform: scale(0.92); opacity: 0.34; }
+            50% { transform: scale(1.08); opacity: 0.72; }
+          }
+          @keyframes bb-store-storm-flash {
+            0%, 58%, 63%, 100% { opacity: 0; transform: translateY(-3%) scaleY(0.96); }
+            59% { opacity: 0.88; transform: translateY(0) scaleY(1); }
+            61% { opacity: 0.22; }
+            62% { opacity: 0.7; }
+          }
+          @keyframes bb-store-lantern-flicker {
+            0%, 100% { opacity: 0.36; transform: scale(0.94); }
+            48% { opacity: 0.72; transform: scale(1.08); }
+            55% { opacity: 0.46; }
+            62% { opacity: 0.82; transform: scale(1.04); }
+          }
+          @keyframes bb-store-particle-rise {
+            0% { transform: translate3d(0, 28%, 0); opacity: 0; }
+            22% { opacity: 0.58; }
+            100% { transform: translate3d(10%, -34%, 0); opacity: 0; }
+          }
+          .bb-store-skin-card {
+            background-position: center;
+            isolation: isolate;
+            transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
+          }
+          .bb-store-skin-card::before,
+          .bb-store-skin-card::after {
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+          }
+          .bb-store-skin-card:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+          }
+          .bb-store-skin-motion {
+            pointer-events: none;
+            position: absolute;
+            inset: auto;
+            z-index: 3;
+            border-radius: 999px;
+            filter: blur(16px);
+            mix-blend-mode: screen;
+          }
+          .bb-store-skin-motion-a {
+            left: -16%;
+            top: 10%;
+            width: 70%;
+            height: 42%;
+            animation: bb-store-skin-drift 7s ease-in-out infinite alternate;
+          }
+          .bb-store-skin-motion-b {
+            right: -14%;
+            bottom: 20%;
+            width: 52%;
+            height: 36%;
+            animation: bb-store-skin-pulse 4.8s ease-in-out infinite;
+          }
+          .bb-store-skin-card--storm .bb-store-skin-motion-a,
+          .bb-store-skin-card--storm .bb-store-skin-motion-b { background: rgba(93, 214, 255, 0.52); }
+          .bb-store-skin-card--garden .bb-store-skin-motion-a,
+          .bb-store-skin-card--garden .bb-store-skin-motion-b { background: rgba(175, 207, 122, 0.46); }
+          .bb-store-skin-card--lavender .bb-store-skin-motion-a,
+          .bb-store-skin-card--lavender .bb-store-skin-motion-b { background: rgba(207, 174, 255, 0.5); }
+          .bb-store-skin-card--ruby .bb-store-skin-motion-a,
+          .bb-store-skin-card--ruby .bb-store-skin-motion-b { background: rgba(255, 115, 95, 0.5); }
+          .bb-store-skin-card--storm::before {
+            background:
+              linear-gradient(115deg, transparent 0 44%, rgba(210, 246, 255, 0.92) 45%, rgba(93, 214, 255, 0.2) 46%, transparent 49%),
+              linear-gradient(78deg, transparent 0 58%, rgba(210, 246, 255, 0.62) 59%, transparent 61%);
+            filter: blur(0.3px);
+            animation: bb-store-storm-flash 5.2s ease-in-out infinite;
+          }
+          .bb-store-skin-card--storm::after {
+            background: linear-gradient(110deg, transparent 0%, rgba(230, 248, 255, 0.18) 44%, transparent 76%);
+            filter: blur(3px);
+            animation: bb-store-skin-drift 8s ease-in-out infinite alternate;
+          }
+          .bb-store-skin-card--garden::before,
+          .bb-store-skin-card--lavender::before {
+            background: radial-gradient(circle at 70% 18%, rgba(255, 244, 204, 0.34), transparent 17%);
+            animation: bb-store-lantern-flicker 4.6s ease-in-out infinite;
+          }
+          .bb-store-skin-card--ruby::before {
+            background:
+              radial-gradient(circle at 20% 74%, rgba(255, 192, 106, 0.24), transparent 18%),
+              radial-gradient(circle at 70% 58%, rgba(255, 115, 95, 0.18), transparent 18%);
+            animation: bb-store-particle-rise 5.8s ease-in-out infinite;
+          }
+        `}</style>
+        <div className="overflow-hidden rounded-[28px] border border-rose-100 bg-[linear-gradient(135deg,rgba(255,231,231,0.9),rgba(255,246,246,0.72))] p-4 shadow-[0_18px_42px_rgba(153,27,27,0.08)]">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-[18px] bg-[linear-gradient(135deg,#8f1022,#d93d4e)] text-3xl shadow-[0_12px_24px_rgba(153,27,27,0.22)]" aria-hidden="true">
+                ✦
+              </div>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#a41225]">Cinematic Themes</p>
+                <h3 className="text-2xl font-black leading-tight text-[#4a1117]">Premium Skins</h3>
+                <p className="mt-1 max-w-xl text-sm font-semibold leading-6 text-[#6e3036]">
+                  Immersive Bible Buddy atmospheres with animated lighting, premium cards, and skin-wide styling.
+                </p>
+              </div>
+            </div>
+            <span className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#a41225] px-5 py-3 text-sm font-black text-white shadow-[0_12px_24px_rgba(164,18,37,0.22)]">
+              All skins 1,000 💎
+            </span>
+          </div>
+        </div>
+        <div className="mt-5 flex items-end justify-between gap-3">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#a41225]">Premium Skins</p>
+            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary)]">Choose a cinematic environment for prayer, study, and focus.</p>
+          </div>
+        </div>
+        <div className="mt-3 grid gap-4 lg:grid-cols-2">{PREMIUM_SKIN_STORE_ITEMS.map(renderPremiumSkinCard)}</div>
+      </section>
+    );
 
     const renderBuddyStoreCard = (item: BibleBuddyStoreItem) => {
       const owned = item.price === 0 || ownedItemIds.has(item.id);
@@ -3081,13 +3238,7 @@ export default function DashboardPage() {
               </div>
             ) : null}
 
-            {renderStoreSection(
-              "Skin",
-              "Premium Skins",
-              "Full cinematic experiences that change the atmosphere of Bible Buddy.",
-              "1,000",
-              <div className="grid gap-3">{PREMIUM_SKIN_STORE_ITEMS.map(renderPremiumSkinCard)}</div>,
-            )}
+            {renderPremiumSkinsStoreSection()}
             {renderStoreSection(
               "🎨",
               "Themes",
@@ -3656,6 +3807,14 @@ export default function DashboardPage() {
     setBuddySelectionWelcome(null);
     setSelectedDashboardTask(null);
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(new CustomEvent("bb:dashboard-store-state", { detail: { open: showDiamondStore } }));
+    return () => {
+      window.dispatchEvent(new CustomEvent("bb:dashboard-store-state", { detail: { open: false } }));
+    };
+  }, [showDiamondStore]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -6735,6 +6894,91 @@ export default function DashboardPage() {
           margin-top: 0 !important;
           padding-top: 22px !important;
           padding-bottom: 28px !important;
+        }
+        html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::before,
+        html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after,
+        html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::before,
+        html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::after,
+        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::before,
+        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::after,
+        html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::before,
+        html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 0;
+        }
+        html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::before {
+          background:
+            linear-gradient(118deg, transparent 0 45%, rgba(216, 246, 255, 0.72) 46%, rgba(93, 214, 255, 0.18) 47%, transparent 50%),
+            radial-gradient(circle at 51% 8%, rgba(184, 235, 255, 0.42), transparent 15%),
+            radial-gradient(circle at 68% 24%, rgba(58, 166, 255, 0.24), transparent 25%);
+          mix-blend-mode: screen;
+          animation: bb-blue-storm-lightning 9s ease-in-out infinite;
+        }
+        html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after {
+          background:
+            radial-gradient(circle at 12% 18%, rgba(148, 216, 255, 0.16), transparent 32%),
+            linear-gradient(115deg, transparent 0%, rgba(232, 248, 255, 0.14) 48%, transparent 76%);
+          filter: blur(2px);
+          opacity: 0.92;
+          animation: bb-blue-storm-mist 18s ease-in-out infinite alternate;
+        }
+        html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::before {
+          background:
+            radial-gradient(circle at 50% 8%, rgba(255, 246, 209, 0.32), transparent 18%),
+            radial-gradient(circle at 70% 26%, rgba(215, 184, 107, 0.18), transparent 26%),
+            linear-gradient(90deg, transparent 0%, rgba(175, 207, 122, 0.08) 48%, transparent 76%);
+          mix-blend-mode: screen;
+          animation: bb-midnight-garden-moonlight 16s ease-in-out infinite;
+        }
+        html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::after {
+          background:
+            radial-gradient(circle at 14% 18%, rgba(175, 207, 122, 0.12), transparent 32%),
+            linear-gradient(115deg, transparent 0%, rgba(238, 229, 190, 0.1) 48%, transparent 76%);
+          filter: blur(2px);
+          opacity: 0.86;
+          animation: bb-midnight-garden-mist 24s ease-in-out infinite alternate;
+        }
+        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::before {
+          background:
+            radial-gradient(circle at 50% 8%, rgba(255, 238, 255, 0.36), transparent 18%),
+            radial-gradient(circle at 70% 26%, rgba(245, 203, 255, 0.2), transparent 26%),
+            linear-gradient(90deg, transparent 0%, rgba(207, 174, 255, 0.1) 48%, transparent 76%);
+          mix-blend-mode: screen;
+          animation: bb-lavender-prayer-moonlight 17s ease-in-out infinite;
+        }
+        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::after {
+          background:
+            radial-gradient(circle at 14% 18%, rgba(207, 174, 255, 0.12), transparent 32%),
+            linear-gradient(115deg, transparent 0%, rgba(255, 245, 255, 0.1) 48%, transparent 76%);
+          filter: blur(2px);
+          opacity: 0.86;
+          animation: bb-lavender-prayer-mist 25s ease-in-out infinite alternate;
+        }
+        html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::before {
+          background:
+            radial-gradient(circle at 50% 8%, rgba(255, 205, 124, 0.34), transparent 18%),
+            radial-gradient(circle at 70% 26%, rgba(255, 93, 72, 0.2), transparent 26%),
+            linear-gradient(90deg, transparent 0%, rgba(255, 115, 95, 0.1) 48%, transparent 76%);
+          mix-blend-mode: screen;
+          animation: bb-ruby-village-ember 16s ease-in-out infinite;
+        }
+        html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::after {
+          background:
+            radial-gradient(circle at 14% 18%, rgba(255, 115, 95, 0.12), transparent 32%),
+            linear-gradient(115deg, transparent 0%, rgba(255, 219, 180, 0.1) 48%, transparent 76%);
+          filter: blur(2px);
+          opacity: 0.86;
+          animation: bb-ruby-village-mist 24s ease-in-out infinite alternate;
+        }
+        html[data-bb-skin="blue-storm"] .bb-blue-storm-stage > *,
+        html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage > *,
+        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage > *,
+        html[data-bb-skin="ruby-village"] .bb-blue-storm-stage > * {
+          position: relative;
+          z-index: 1;
         }
         @media (min-width: 1024px) {
           html[data-bb-skin="blue-storm"] .dashboard-shell {

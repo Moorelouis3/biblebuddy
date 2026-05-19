@@ -182,6 +182,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const profileMenuRef = useRef<HTMLDivElement>(null);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null);
+  const [isDashboardStoreOpen, setIsDashboardStoreOpen] = useState(false);
   const [appThemeId, setAppThemeId] = useState<AppThemeId>("light");
   const [selectedBuddyId, setSelectedBuddyId] = useState<BuddyAvatarId>("louis");
   const selectedBuddy = getBuddyAvatar(selectedBuddyId);
@@ -1602,6 +1603,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // Treat iframe-embedded pages the same as bare pages (no shell/nav)
   const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded;
 
+  useEffect(() => {
+    function handleDashboardStoreState(event: Event) {
+      const customEvent = event as CustomEvent<{ open?: boolean }>;
+      setIsDashboardStoreOpen(Boolean(customEvent.detail?.open));
+    }
+
+    window.addEventListener("bb:dashboard-store-state", handleDashboardStoreState as EventListener);
+    return () => window.removeEventListener("bb:dashboard-store-state", handleDashboardStoreState as EventListener);
+  }, []);
+
   const isAdmin = isLoggedIn && userEmail === "moorelouis3@gmail.com";
   const isModerator = normalizeCustomMemberBadge(headerMemberBadge) === "moderator";
 
@@ -2338,7 +2349,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* NAVBAR (hidden on landing/login/signup) */}
-      {!isBarePage && (
+      {!isBarePage && !isDashboardStoreOpen && (
         <header className="w-full bg-gray-50">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
