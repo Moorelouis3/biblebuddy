@@ -6838,6 +6838,230 @@ export default function DashboardPage() {
     );
   }
 
+  function renderDeepStudyCardStyles() {
+    return (
+      <style>{`
+        .bb-deep-study-entry::before,
+        .bb-deep-study-entry::after,
+        .bb-deep-study-focus-panel::before,
+        .bb-deep-study-focus-panel::after {
+          content: "";
+          position: absolute;
+          pointer-events: none;
+          inset: 0;
+        }
+        .bb-deep-study-entry::before,
+        .bb-deep-study-focus-panel::before {
+          background:
+            radial-gradient(circle at 18% 14%, rgba(216, 180, 254, 0.36), transparent 28%),
+            radial-gradient(circle at 76% 20%, rgba(99, 102, 241, 0.22), transparent 30%),
+            linear-gradient(135deg, rgba(88, 28, 135, 0.34), rgba(15, 7, 36, 0.22));
+          opacity: 0.95;
+        }
+        .bb-deep-study-entry::after,
+        .bb-deep-study-focus-panel::after {
+          background:
+            radial-gradient(circle, rgba(255,255,255,0.66) 0 1px, transparent 1.5px) 8% 20% / 74px 74px,
+            radial-gradient(circle, rgba(216,180,254,0.62) 0 1px, transparent 1.6px) 52% 30% / 92px 92px;
+          animation: bb-deep-study-stars 12s linear infinite;
+          opacity: 0.42;
+        }
+        .bb-deep-study-glow {
+          position: absolute;
+          inset: auto 8% -34px 18%;
+          height: 72px;
+          border-radius: 999px;
+          background: radial-gradient(circle, rgba(168,85,247,0.5), transparent 70%);
+          filter: blur(18px);
+          animation: bb-deep-study-glow 5.8s ease-in-out infinite;
+        }
+        .bb-deep-study-bible {
+          position: relative;
+          z-index: 1;
+          display: grid;
+          height: 78px;
+          place-items: center;
+          border-radius: 24px;
+          background: radial-gradient(circle at 50% 72%, rgba(168,85,247,0.34), transparent 58%);
+        }
+        .bb-deep-study-book {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          width: 68px;
+          height: 42px;
+          filter: drop-shadow(0 0 18px rgba(216,180,254,0.62));
+          transform: perspective(120px) rotateX(12deg);
+        }
+        .bb-deep-study-book span {
+          border: 1px solid rgba(237,233,254,0.78);
+          background: linear-gradient(135deg, rgba(250,245,255,0.92), rgba(196,181,253,0.7));
+          box-shadow: inset 0 -10px 16px rgba(91,33,182,0.18);
+        }
+        .bb-deep-study-book span:first-child {
+          border-radius: 12px 4px 8px 14px;
+          transform: skewY(-8deg);
+        }
+        .bb-deep-study-book span:nth-child(2) {
+          border-radius: 4px 12px 14px 8px;
+          transform: skewY(8deg);
+        }
+        .bb-deep-study-smoke {
+          position: absolute;
+          bottom: 40px;
+          width: 18px;
+          height: 42px;
+          border-radius: 999px;
+          background: linear-gradient(to top, rgba(216,180,254,0), rgba(216,180,254,0.32), rgba(255,255,255,0));
+          filter: blur(5px);
+          animation: bb-deep-study-smoke 4.8s ease-in-out infinite;
+        }
+        .bb-deep-study-smoke-one { left: 30px; }
+        .bb-deep-study-smoke-two { right: 26px; animation-delay: 1.6s; }
+        .bb-deep-study-spark {
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          border-radius: 999px;
+          background: white;
+          box-shadow: 0 0 12px rgba(216,180,254,0.9);
+          animation: bb-deep-study-twinkle 2.6s ease-in-out infinite;
+        }
+        .bb-deep-study-spark-one { left: 20px; top: 16px; }
+        .bb-deep-study-spark-two { right: 18px; top: 28px; animation-delay: 1.2s; }
+        .bb-deep-study-moon {
+          position: relative;
+          width: 19px;
+          height: 19px;
+          flex: 0 0 auto;
+          border-radius: 999px;
+          background: #ede9fe;
+          box-shadow: 0 0 20px rgba(216,180,254,0.72);
+        }
+        .bb-deep-study-moon::after {
+          content: "";
+          position: absolute;
+          inset: -1px -3px 1px 6px;
+          border-radius: 999px;
+          background: #160a32;
+        }
+        .bb-deep-study-portal {
+          animation: bb-deep-study-portal 4.8s ease-in-out infinite;
+        }
+        .bb-deep-study-orbit {
+          position: absolute;
+          inset: -32% 16% auto;
+          height: 170px;
+          border-radius: 999px;
+          background: radial-gradient(circle, rgba(216,180,254,0.26), transparent 64%);
+          filter: blur(10px);
+          animation: bb-deep-study-glow 6s ease-in-out infinite;
+        }
+        @keyframes bb-deep-study-stars {
+          from { transform: translate3d(0, 0, 0); }
+          to { transform: translate3d(-28px, -42px, 0); }
+        }
+        @keyframes bb-deep-study-glow {
+          0%, 100% { opacity: 0.6; transform: scale(0.96); }
+          50% { opacity: 1; transform: scale(1.04); }
+        }
+        @keyframes bb-deep-study-smoke {
+          0% { opacity: 0; transform: translateY(12px) scale(0.82); }
+          38% { opacity: 0.88; }
+          100% { opacity: 0; transform: translateY(-28px) scale(1.2); }
+        }
+        @keyframes bb-deep-study-twinkle {
+          0%, 100% { opacity: 0.35; transform: scale(0.82); }
+          50% { opacity: 1; transform: scale(1.28); }
+        }
+        @keyframes bb-deep-study-portal {
+          0%, 100% { box-shadow: 0 0 22px rgba(168,85,247,0.3), inset 0 0 18px rgba(255,255,255,0.1); }
+          50% { box-shadow: 0 0 38px rgba(216,180,254,0.52), inset 0 0 24px rgba(255,255,255,0.16); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .bb-deep-study-entry::after,
+          .bb-deep-study-focus-panel::after,
+          .bb-deep-study-glow,
+          .bb-deep-study-smoke,
+          .bb-deep-study-spark,
+          .bb-deep-study-portal,
+          .bb-deep-study-orbit {
+            animation: none !important;
+          }
+        }
+      `}</style>
+    );
+  }
+
+  function renderDeepStudyCinematicCard() {
+    if (deepStudyMode === "active" && deepStudyActiveSession) {
+      const secondsLeft = Math.max(0, Math.ceil((deepStudyActiveSession.endsAt - deepStudyNow) / 1000));
+      const activeMinutes = Math.floor(deepStudyActiveSession.activeMs / 60000);
+      return (
+        <>
+          <div className="bb-deep-study-focus-panel relative overflow-hidden rounded-[30px] border border-violet-200/25 bg-[#150b2b]/80 p-5 text-center text-white shadow-[0_24px_70px_rgba(34,13,82,0.44)] backdrop-blur-xl sm:p-7">
+            <div className="bb-deep-study-orbit" aria-hidden="true" />
+            <p className="relative text-xs font-black uppercase tracking-[0.28em] text-violet-100/80">Focus mode active</p>
+            <p className="relative mt-3 text-5xl font-black leading-none text-white drop-shadow-[0_0_24px_rgba(196,181,253,0.65)]">{formatDeepStudyTime(secondsLeft)}</p>
+            <p className="relative mt-2 text-sm font-black text-violet-200">remaining</p>
+            <div className="relative mt-5 grid grid-cols-3 gap-2 text-xs font-black">
+              <div className="rounded-2xl border border-white/10 bg-white/10 px-2 py-3 leading-tight text-violet-50 backdrop-blur-md">{activeMinutes}m focused</div>
+              <div className="rounded-2xl border border-white/10 bg-white/10 px-2 py-3 leading-tight text-violet-50 backdrop-blur-md">{deepStudyActiveSession.tasksCompleted} tasks</div>
+              <div className="rounded-2xl border border-white/10 bg-white/10 px-2 py-3 leading-tight text-violet-50 backdrop-blur-md">{deepStudyActiveSession.chaptersStudied.length} chapters</div>
+            </div>
+            <p className="relative mt-4 text-xs font-semibold text-violet-100/75">Stay with Scripture. The dashboard is quiet while you study.</p>
+            <button
+              type="button"
+              onClick={() => void finishDeepStudySession()}
+              disabled={deepStudyFinalizingRef.current}
+              className="relative mt-5 w-full rounded-full border border-violet-200/25 bg-white/10 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-violet-50 transition hover:bg-white/15 disabled:opacity-60"
+            >
+              {deepStudyFinalizingRef.current ? "Stopping..." : "Stop"}
+            </button>
+          </div>
+          {renderDeepStudyCardStyles()}
+        </>
+      );
+    }
+
+    return (
+      <>
+        <button
+          type="button"
+          onClick={() => setDeepStudyMode("setup")}
+          className="bb-deep-study-entry group relative grid w-full grid-cols-[88px_1fr_44px] items-center gap-4 overflow-hidden rounded-[28px] border border-violet-200/25 bg-[#160a32]/72 px-4 py-4 text-left text-white shadow-[0_18px_48px_rgba(40,18,88,0.36),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-violet-100/45 hover:bg-[#1d0d3f]/82 active:translate-y-0 sm:grid-cols-[112px_1fr_56px] sm:px-5"
+        >
+          <span className="bb-deep-study-glow" aria-hidden="true" />
+          <span className="bb-deep-study-bible" aria-hidden="true">
+            <span className="bb-deep-study-book">
+              <span />
+              <span />
+            </span>
+            <span className="bb-deep-study-smoke bb-deep-study-smoke-one" />
+            <span className="bb-deep-study-smoke bb-deep-study-smoke-two" />
+            <span className="bb-deep-study-spark bb-deep-study-spark-one" />
+            <span className="bb-deep-study-spark bb-deep-study-spark-two" />
+          </span>
+          <span className="relative min-w-0">
+            <span className="flex items-center gap-2">
+              <span className="bb-deep-study-moon" aria-hidden="true" />
+              <span className="text-lg font-black leading-tight text-white drop-shadow-[0_0_18px_rgba(216,180,254,0.5)] sm:text-xl">Deep Study Mode</span>
+            </span>
+            <span className="mt-1 block text-sm font-bold leading-5 text-violet-100/82">Focus with no distractions.</span>
+            <span className="block text-sm font-semibold leading-5 text-violet-200/72">Immerse yourself in God&apos;s Word.</span>
+            <span className="mt-3 inline-flex rounded-full border border-violet-200/25 bg-white/8 px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em] text-violet-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition group-hover:bg-white/12">
+              Enter Study Mode
+            </span>
+          </span>
+          <span className="bb-deep-study-portal relative grid h-11 w-11 place-items-center justify-self-end rounded-full border border-violet-200/30 bg-violet-100/10 text-xl font-black text-violet-50 shadow-[0_0_26px_rgba(168,85,247,0.36),inset_0_0_18px_rgba(255,255,255,0.1)] sm:h-14 sm:w-14">
+            <span aria-hidden="true">-&gt;</span>
+          </span>
+        </button>
+        {renderDeepStudyCardStyles()}
+      </>
+    );
+  }
+
   function renderDeepStudySetup() {
     const options = [5, 10, 15, 20, 30, 45, 60];
     const paidOnlyOptions = new Set([5, 10, 45, 60]);
@@ -7015,6 +7239,7 @@ export default function DashboardPage() {
   function renderDashboardHomePanelOverride() {
     if (showDiamondStore) return renderDiamondStorePanel();
     if (showBibleProgressPanel) return renderBibleProgressPanel();
+    if (deepStudyMode === "active") return renderDeepStudyCinematicCard();
     if (deepStudyMode === "setup") return renderDeepStudySetup();
     if (deepStudyMode === "complete") return renderDeepStudyComplete();
     if (deepStudyMode === "results") return renderDeepStudyResults();
@@ -8334,8 +8559,8 @@ export default function DashboardPage() {
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={renderDashboardHomePanelOverride()}
-          deepStudyNode={renderDeepStudyCard()}
-          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "setup" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
+          deepStudyNode={deepStudyMode === "active" ? null : renderDeepStudyCinematicCard()}
+          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "active" || deepStudyMode === "setup" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
@@ -8387,8 +8612,8 @@ export default function DashboardPage() {
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={renderDashboardHomePanelOverride()}
-          deepStudyNode={renderDeepStudyCard()}
-          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "setup" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
+          deepStudyNode={deepStudyMode === "active" ? null : renderDeepStudyCinematicCard()}
+          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "active" || deepStudyMode === "setup" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
