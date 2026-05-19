@@ -405,7 +405,16 @@ export default function SettingsPage() {
     }
 
     try {
-      const matchingFlame = skinId === "blue-storm" ? "blue" : skinId === "midnight-garden" ? "green" : null;
+      const matchingFlame =
+        skinId === "blue-storm"
+          ? "blue"
+          : skinId === "midnight-garden"
+            ? "green"
+            : skinId === "lavender-prayer"
+              ? "purple"
+              : skinId === "ruby-village"
+                ? "red"
+                : null;
       if (matchingFlame) {
         setSelectedFlame(matchingFlame);
         if (typeof window !== "undefined") {

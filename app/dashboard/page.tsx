@@ -2414,7 +2414,17 @@ export default function DashboardPage() {
                 <div className="flex items-center gap-2">
                   <span className={streakFlameClass} style={{ animationDuration: `${streakFlameDuration}s` }} aria-hidden="true">
                     <StreakFlameEmoji
-                      flameId={activePremiumSkinId === "blue-storm" ? "blue" : activePremiumSkinId === "midnight-garden" ? "green" : profile?.selected_streak_flame}
+                      flameId={
+                        activePremiumSkinId === "blue-storm"
+                          ? "blue"
+                          : activePremiumSkinId === "midnight-garden"
+                            ? "green"
+                            : activePremiumSkinId === "lavender-prayer"
+                              ? "purple"
+                              : activePremiumSkinId === "ruby-village"
+                                ? "red"
+                                : profile?.selected_streak_flame
+                      }
                       size={42}
                       title={getDashboardStreakHeadline(streakValue)}
                     />
@@ -2834,7 +2844,14 @@ export default function DashboardPage() {
       const owned = item.price === 0 || ownedItemIds.has(item.id);
       const active = item.skinId && activePremiumSkinId === item.skinId;
       const skin = getPremiumSkin(item.skinId);
-      const previewTags = item.skinId === "midnight-garden" ? ["Moonlight", "Lanterns", "Mist"] : ["Storm", "Glow", "Mist"];
+      const previewTags =
+        item.skinId === "midnight-garden"
+          ? ["Moonlight", "Lanterns", "Mist"]
+          : item.skinId === "lavender-prayer"
+            ? ["Moonlight", "Candles", "Stars"]
+            : item.skinId === "ruby-village"
+              ? ["Ruby Sky", "Castle", "Embers"]
+              : ["Storm", "Glow", "Mist"];
       const accent = skin?.palette.accent ?? item.accent;
       return (
         <article
@@ -2856,12 +2873,25 @@ export default function DashboardPage() {
               background:
                 item.skinId === "midnight-garden"
                   ? "radial-gradient(circle at 52% 12%, rgba(255,246,204,0.28), transparent 28%), radial-gradient(circle at 18% 36%, rgba(215,184,107,0.2), transparent 28%), linear-gradient(135deg,rgba(8,18,22,0.12),rgba(4,10,16,0.76))"
-                  : "radial-gradient(circle at 18% 12%,rgba(93,214,255,0.34),transparent 34%),linear-gradient(135deg,rgba(9,24,52,0.2),rgba(4,11,24,0.78))",
+                  : item.skinId === "lavender-prayer"
+                    ? "radial-gradient(circle at 52% 12%, rgba(245,220,255,0.34), transparent 30%), radial-gradient(circle at 18% 40%, rgba(233,190,255,0.2), transparent 28%), linear-gradient(135deg,rgba(28,18,44,0.12),rgba(14,8,27,0.76))"
+                    : item.skinId === "ruby-village"
+                      ? "radial-gradient(circle at 52% 10%, rgba(255,192,106,0.3), transparent 28%), radial-gradient(circle at 18% 34%, rgba(255,93,72,0.22), transparent 30%), linear-gradient(135deg,rgba(65,12,18,0.18),rgba(18,5,8,0.78))"
+                      : "radial-gradient(circle at 18% 12%,rgba(93,214,255,0.34),transparent 34%),linear-gradient(135deg,rgba(9,24,52,0.2),rgba(4,11,24,0.78))",
             }}
           />
           <div
             className="pointer-events-none absolute -right-10 top-4 h-28 w-28 rounded-full blur-2xl"
-            style={{ backgroundColor: item.skinId === "midnight-garden" ? "rgba(215,184,107,0.22)" : "rgba(125,211,252,0.25)" }}
+            style={{
+              backgroundColor:
+                item.skinId === "midnight-garden"
+                  ? "rgba(215,184,107,0.22)"
+                  : item.skinId === "lavender-prayer"
+                    ? "rgba(207,174,255,0.24)"
+                    : item.skinId === "ruby-village"
+                      ? "rgba(255,115,95,0.26)"
+                      : "rgba(125,211,252,0.25)",
+            }}
           />
           {active ? (
             <span
@@ -3634,7 +3664,16 @@ export default function DashboardPage() {
     }
     setActivePremiumSkinId(normalizedSkinId);
     applyPremiumSkinToDocument(normalizedSkinId);
-    const matchingFlame = normalizedSkinId === "blue-storm" ? "blue" : normalizedSkinId === "midnight-garden" ? "green" : null;
+    const matchingFlame =
+      normalizedSkinId === "blue-storm"
+        ? "blue"
+        : normalizedSkinId === "midnight-garden"
+          ? "green"
+          : normalizedSkinId === "lavender-prayer"
+            ? "purple"
+            : normalizedSkinId === "ruby-village"
+              ? "red"
+              : null;
     if (matchingFlame) {
       await applyPurchasedFlame(matchingFlame);
     }
@@ -6379,9 +6418,10 @@ export default function DashboardPage() {
           overflow: hidden;
           z-index: 0;
           background:
-            linear-gradient(180deg, rgba(2, 9, 20, 0.04) 0%, rgba(3, 12, 28, 0.22) 34%, rgba(3, 10, 24, 0.68) 100%),
+            radial-gradient(ellipse at 50% 88%, rgba(31, 84, 132, 0.3), transparent 46%),
+            linear-gradient(180deg, rgba(2, 9, 20, 0.04) 0%, rgba(3, 12, 28, 0.22) 34%, rgba(7, 20, 38, 0.74) 100%),
             url("/skins/Bluestormskin.png") center top / cover no-repeat,
-            #061322 !important;
+            #071426 !important;
         }
         html[data-bb-skin="midnight-garden"] .dashboard-shell {
           position: relative;
@@ -6395,10 +6435,38 @@ export default function DashboardPage() {
             url("/skins/MidnightGarden.png") center top / cover no-repeat,
             #07100f !important;
         }
+        html[data-bb-skin="lavender-prayer"] .dashboard-shell {
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
+          z-index: 0;
+          background:
+            radial-gradient(circle at 52% 9%, rgba(245, 220, 255, 0.2), transparent 24%),
+            radial-gradient(circle at 18% 34%, rgba(245, 203, 255, 0.12), transparent 30%),
+            linear-gradient(180deg, rgba(18, 10, 32, 0.01) 0%, rgba(20, 12, 38, 0.18) 40%, rgba(11, 6, 22, 0.74) 100%),
+            url("/skins/LavenderPrayerSkin.png") center top / cover no-repeat,
+            #130d1f !important;
+        }
+        html[data-bb-skin="ruby-village"] .dashboard-shell {
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
+          z-index: 0;
+          background:
+            radial-gradient(circle at 52% 9%, rgba(255, 192, 106, 0.2), transparent 24%),
+            radial-gradient(circle at 18% 34%, rgba(255, 93, 72, 0.14), transparent 30%),
+            linear-gradient(180deg, rgba(36, 6, 9, 0.01) 0%, rgba(45, 8, 12, 0.2) 40%, rgba(12, 3, 5, 0.76) 100%),
+            url("/skins/RubyVillage.png") center top / cover no-repeat,
+            #120507 !important;
+        }
         html[data-bb-skin="blue-storm"] .dashboard-shell::before,
         html[data-bb-skin="blue-storm"] .dashboard-shell::after,
         html[data-bb-skin="midnight-garden"] .dashboard-shell::before,
-        html[data-bb-skin="midnight-garden"] .dashboard-shell::after {
+        html[data-bb-skin="midnight-garden"] .dashboard-shell::after,
+        html[data-bb-skin="lavender-prayer"] .dashboard-shell::before,
+        html[data-bb-skin="lavender-prayer"] .dashboard-shell::after,
+        html[data-bb-skin="ruby-village"] .dashboard-shell::before,
+        html[data-bb-skin="ruby-village"] .dashboard-shell::after {
           content: "";
           position: fixed;
           inset: 0;
@@ -6439,11 +6507,53 @@ export default function DashboardPage() {
           opacity: 0.82;
           animation: bb-midnight-garden-mist 24s ease-in-out infinite alternate;
         }
+        html[data-bb-skin="lavender-prayer"] .dashboard-shell::before {
+          background:
+            radial-gradient(circle at 50% 8%, rgba(250, 230, 255, 0.34), transparent 20%),
+            radial-gradient(circle at 22% 38%, rgba(245, 203, 255, 0.16), transparent 28%),
+            linear-gradient(90deg, transparent 0%, rgba(207, 174, 255, 0.08) 48%, transparent 78%);
+          mix-blend-mode: screen;
+          animation: bb-lavender-prayer-moonlight 17s ease-in-out infinite;
+        }
+        html[data-bb-skin="lavender-prayer"] .dashboard-shell::after {
+          background:
+            radial-gradient(circle at 12% 20%, rgba(207, 174, 255, 0.12), transparent 34%),
+            radial-gradient(circle at 88% 24%, rgba(245, 203, 255, 0.1), transparent 32%),
+            linear-gradient(115deg, transparent 0%, rgba(255, 245, 255, 0.08) 48%, transparent 76%);
+          filter: blur(2px);
+          opacity: 0.82;
+          animation: bb-lavender-prayer-mist 25s ease-in-out infinite alternate;
+        }
+        html[data-bb-skin="ruby-village"] .dashboard-shell::before {
+          background:
+            radial-gradient(circle at 50% 8%, rgba(255, 192, 106, 0.34), transparent 20%),
+            radial-gradient(circle at 22% 38%, rgba(255, 93, 72, 0.16), transparent 28%),
+            linear-gradient(90deg, transparent 0%, rgba(255, 115, 95, 0.08) 48%, transparent 78%);
+          mix-blend-mode: screen;
+          animation: bb-ruby-village-ember 16s ease-in-out infinite;
+        }
+        html[data-bb-skin="ruby-village"] .dashboard-shell::after {
+          background:
+            radial-gradient(circle at 12% 20%, rgba(255, 115, 95, 0.12), transparent 34%),
+            radial-gradient(circle at 88% 24%, rgba(255, 192, 106, 0.1), transparent 32%),
+            linear-gradient(115deg, transparent 0%, rgba(255, 219, 180, 0.08) 48%, transparent 76%);
+          filter: blur(2px);
+          opacity: 0.84;
+          animation: bb-ruby-village-mist 24s ease-in-out infinite alternate;
+        }
         html[data-bb-skin="blue-storm"] .dashboard-shell > * {
           position: relative;
           z-index: 1;
         }
         html[data-bb-skin="midnight-garden"] .dashboard-shell > * {
+          position: relative;
+          z-index: 1;
+        }
+        html[data-bb-skin="lavender-prayer"] .dashboard-shell > * {
+          position: relative;
+          z-index: 1;
+        }
+        html[data-bb-skin="ruby-village"] .dashboard-shell > * {
           position: relative;
           z-index: 1;
         }
@@ -6468,6 +6578,56 @@ export default function DashboardPage() {
           padding-top: 22px !important;
           padding-bottom: 28px !important;
         }
+        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage {
+          position: relative;
+          isolation: isolate;
+          padding-top: clamp(18px, 3vw, 34px);
+          overflow: hidden;
+          border-radius: clamp(26px, 4vw, 44px);
+          border-top: 1px solid rgba(240, 200, 255, 0.3);
+          border-bottom: 1px solid rgba(207, 174, 255, 0.24);
+          background:
+            radial-gradient(circle at 52% 9%, rgba(250, 230, 255, 0.22), transparent 24%),
+            radial-gradient(ellipse at 50% 88%, rgba(91, 68, 126, 0.28), transparent 46%),
+            linear-gradient(180deg, rgba(18, 10, 32, 0.02) 0%, rgba(20, 12, 38, 0.16) 38%, rgba(25, 16, 42, 0.78) 100%),
+            url("/skins/LavenderPrayerSkin.png") center top / cover no-repeat,
+            #130d1f;
+          box-shadow:
+            0 -10px 38px rgba(245, 203, 255, 0.14),
+            0 14px 42px rgba(10, 4, 22, 0.44),
+            0 0 42px rgba(207, 174, 255, 0.12),
+            inset 0 0 36px rgba(245, 203, 255, 0.08);
+        }
+        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-mobile-stage {
+          margin-top: 0 !important;
+          padding-top: 22px !important;
+          padding-bottom: 28px !important;
+        }
+        html[data-bb-skin="ruby-village"] .bb-blue-storm-stage {
+          position: relative;
+          isolation: isolate;
+          padding-top: clamp(18px, 3vw, 34px);
+          overflow: hidden;
+          border-radius: clamp(26px, 4vw, 44px);
+          border-top: 1px solid rgba(255, 115, 95, 0.3);
+          border-bottom: 1px solid rgba(255, 192, 106, 0.22);
+          background:
+            radial-gradient(circle at 52% 9%, rgba(255, 192, 106, 0.2), transparent 24%),
+            radial-gradient(ellipse at 50% 88%, rgba(120, 34, 30, 0.3), transparent 46%),
+            linear-gradient(180deg, rgba(36, 6, 9, 0.02) 0%, rgba(45, 8, 12, 0.16) 38%, rgba(44, 9, 13, 0.78) 100%),
+            url("/skins/RubyVillage.png") center top / cover no-repeat,
+            #120507;
+          box-shadow:
+            0 -10px 38px rgba(255, 192, 106, 0.14),
+            0 14px 42px rgba(12, 3, 5, 0.46),
+            0 0 42px rgba(255, 93, 72, 0.12),
+            inset 0 0 36px rgba(255, 192, 106, 0.08);
+        }
+        html[data-bb-skin="ruby-village"] .bb-blue-storm-mobile-stage {
+          margin-top: 0 !important;
+          padding-top: 22px !important;
+          padding-bottom: 28px !important;
+        }
         @media (min-width: 1024px) {
           html[data-bb-skin="blue-storm"] .dashboard-shell {
             background:
@@ -6481,10 +6641,26 @@ export default function DashboardPage() {
               linear-gradient(90deg, #050b0d 0%, #081316 28%, #081316 72%, #050b0d 100%),
               #07100f !important;
           }
+          html[data-bb-skin="lavender-prayer"] .dashboard-shell {
+            background:
+              radial-gradient(circle at 50% -10%, rgba(117, 84, 156, 0.2), transparent 28%),
+              linear-gradient(90deg, #0e0819 0%, #171024 28%, #171024 72%, #0e0819 100%),
+              #130d1f !important;
+          }
+          html[data-bb-skin="ruby-village"] .dashboard-shell {
+            background:
+              radial-gradient(circle at 50% -10%, rgba(148, 40, 32, 0.22), transparent 28%),
+              linear-gradient(90deg, #100405 0%, #22080c 28%, #22080c 72%, #100405 100%),
+              #120507 !important;
+          }
           html[data-bb-skin="blue-storm"] .dashboard-shell::before,
           html[data-bb-skin="blue-storm"] .dashboard-shell::after,
           html[data-bb-skin="midnight-garden"] .dashboard-shell::before,
-          html[data-bb-skin="midnight-garden"] .dashboard-shell::after {
+          html[data-bb-skin="midnight-garden"] .dashboard-shell::after,
+          html[data-bb-skin="lavender-prayer"] .dashboard-shell::before,
+          html[data-bb-skin="lavender-prayer"] .dashboard-shell::after,
+          html[data-bb-skin="ruby-village"] .dashboard-shell::before,
+          html[data-bb-skin="ruby-village"] .dashboard-shell::after {
             display: none;
           }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-desktop-layout {
@@ -6504,9 +6680,10 @@ export default function DashboardPage() {
             border-left: 1px solid rgba(103, 204, 255, 0.22);
             border-right: 1px solid rgba(103, 204, 255, 0.22);
             background:
-              linear-gradient(180deg, rgba(2, 9, 20, 0.02) 0%, rgba(3, 12, 28, 0.1) 42%, rgba(3, 10, 24, 0.55) 100%),
+              radial-gradient(ellipse at 50% 86%, rgba(31, 84, 132, 0.36), transparent 44%),
+              linear-gradient(180deg, rgba(2, 9, 20, 0.02) 0%, rgba(3, 12, 28, 0.1) 42%, rgba(7, 20, 38, 0.76) 100%),
               url("/skins/Bluestormskin.png") center top / 100% auto no-repeat,
-              #061322;
+              #071426;
             box-shadow:
               0 -12px 44px rgba(93, 214, 255, 0.18),
               0 18px 54px rgba(0, 9, 24, 0.56),
@@ -6519,7 +6696,7 @@ export default function DashboardPage() {
             min-height: calc(100vh - 84px);
             overflow: hidden;
             border-radius: 38px;
-            border: 1px solid rgba(158, 183, 112, 0.26);
+            border: 1px solid rgba(155, 205, 98, 0.32);
             background:
               radial-gradient(circle at 52% 8%, rgba(255, 246, 209, 0.16), transparent 18%),
               linear-gradient(180deg, rgba(4, 8, 12, 0.01) 0%, rgba(5, 12, 16, 0.08) 42%, rgba(3, 7, 10, 0.56) 100%),
@@ -6533,6 +6710,50 @@ export default function DashboardPage() {
               0 0 34px rgba(175, 207, 122, 0.14),
               inset 0 0 48px rgba(215, 184, 107, 0.08);
           }
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage .bb-card,
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage .bb-surface,
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage .bg-white {
+            background:
+              linear-gradient(135deg, rgba(24, 53, 28, 0.84), rgba(10, 24, 16, 0.84)) !important;
+            border-color: rgba(155, 205, 98, 0.4) !important;
+          }
+          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage {
+            min-height: calc(100vh - 84px);
+            overflow: hidden;
+            border-radius: 38px;
+            border: 1px solid rgba(207, 174, 255, 0.26);
+            background:
+              radial-gradient(circle at 52% 8%, rgba(250, 230, 255, 0.24), transparent 20%),
+              radial-gradient(ellipse at 50% 86%, rgba(91, 68, 126, 0.34), transparent 44%),
+              linear-gradient(180deg, rgba(18, 10, 32, 0.01) 0%, rgba(20, 12, 38, 0.08) 42%, rgba(25, 16, 42, 0.72) 100%),
+              url("/skins/LavenderPrayerSkin.png") center top / 100% auto no-repeat,
+              #130d1f;
+            box-shadow:
+              0 -12px 44px rgba(245, 203, 255, 0.14),
+              0 18px 54px rgba(10, 4, 22, 0.58),
+              -34px 0 48px rgba(10, 4, 22, 0.62),
+              34px 0 48px rgba(10, 4, 22, 0.62),
+              0 0 34px rgba(207, 174, 255, 0.16),
+              inset 0 0 48px rgba(245, 203, 255, 0.08);
+          }
+          html[data-bb-skin="ruby-village"] .bb-blue-storm-stage {
+            min-height: calc(100vh - 84px);
+            overflow: hidden;
+            border-radius: 38px;
+            border: 1px solid rgba(255, 115, 95, 0.3);
+            background:
+              radial-gradient(circle at 52% 8%, rgba(255, 192, 106, 0.2), transparent 20%),
+              linear-gradient(180deg, rgba(36, 6, 9, 0.01) 0%, rgba(45, 8, 12, 0.09) 42%, rgba(12, 3, 5, 0.58) 100%),
+              url("/skins/RubyVillage.png") center top / 100% auto no-repeat,
+              #120507;
+            box-shadow:
+              0 -12px 44px rgba(255, 192, 106, 0.14),
+              0 18px 54px rgba(12, 3, 5, 0.62),
+              -34px 0 48px rgba(12, 3, 5, 0.66),
+              34px 0 48px rgba(12, 3, 5, 0.66),
+              0 0 34px rgba(255, 93, 72, 0.16),
+              inset 0 0 48px rgba(255, 192, 106, 0.08);
+          }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage > div:first-child {
             padding-top: 0;
           }
@@ -6542,7 +6763,11 @@ export default function DashboardPage() {
             padding-bottom: 28px !important;
           }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::before,
-          html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after {
+          html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after,
+          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::before,
+          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::after,
+          html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::before,
+          html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::after {
             content: "";
             position: absolute;
             inset: 0;
@@ -6564,7 +6789,41 @@ export default function DashboardPage() {
             opacity: 0.88;
             animation: bb-blue-storm-mist 18s ease-in-out infinite alternate;
           }
-          html[data-bb-skin="blue-storm"] .bb-blue-storm-stage > * {
+          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::before {
+            background:
+              radial-gradient(circle at 50% 8%, rgba(255, 238, 255, 0.34), transparent 18%),
+              radial-gradient(circle at 70% 26%, rgba(245, 203, 255, 0.18), transparent 26%),
+              linear-gradient(90deg, transparent 0%, rgba(207, 174, 255, 0.08) 48%, transparent 76%);
+            mix-blend-mode: screen;
+            animation: bb-lavender-prayer-moonlight 17s ease-in-out infinite;
+          }
+          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::after {
+            background:
+              radial-gradient(circle at 14% 18%, rgba(207, 174, 255, 0.1), transparent 32%),
+              linear-gradient(115deg, transparent 0%, rgba(255, 245, 255, 0.09) 48%, transparent 76%);
+            filter: blur(2px);
+            opacity: 0.84;
+            animation: bb-lavender-prayer-mist 25s ease-in-out infinite alternate;
+          }
+          html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::before {
+            background:
+              radial-gradient(circle at 50% 8%, rgba(255, 205, 124, 0.32), transparent 18%),
+              radial-gradient(circle at 70% 26%, rgba(255, 93, 72, 0.18), transparent 26%),
+              linear-gradient(90deg, transparent 0%, rgba(255, 115, 95, 0.08) 48%, transparent 76%);
+            mix-blend-mode: screen;
+            animation: bb-ruby-village-ember 16s ease-in-out infinite;
+          }
+          html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::after {
+            background:
+              radial-gradient(circle at 14% 18%, rgba(255, 115, 95, 0.1), transparent 32%),
+              linear-gradient(115deg, transparent 0%, rgba(255, 219, 180, 0.08) 48%, transparent 76%);
+            filter: blur(2px);
+            opacity: 0.84;
+            animation: bb-ruby-village-mist 24s ease-in-out infinite alternate;
+          }
+          html[data-bb-skin="blue-storm"] .bb-blue-storm-stage > *,
+          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage > *,
+          html[data-bb-skin="ruby-village"] .bb-blue-storm-stage > * {
             position: relative;
             z-index: 1;
           }

@@ -1,4 +1,4 @@
-export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden";
+export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -69,18 +69,18 @@ export const MIDNIGHT_GARDEN_SKIN: PremiumSkin = {
   price: 1000,
   palette: {
     background: "#07100F",
-    surface: "rgba(9, 21, 24, 0.76)",
-    surfaceSoft: "rgba(53, 77, 48, 0.3)",
-    card: "rgba(8, 18, 24, 0.74)",
-    cardBorder: "rgba(158, 183, 112, 0.34)",
+    surface: "rgba(17, 35, 22, 0.8)",
+    surfaceSoft: "rgba(70, 101, 43, 0.36)",
+    card: "rgba(14, 31, 18, 0.8)",
+    cardBorder: "rgba(155, 205, 98, 0.42)",
     textPrimary: "#FFF7DF",
     textSecondary: "#D9DEBD",
     textMuted: "#A8B289",
     accent: "#AFCF7A",
-    accentSoft: "rgba(151, 179, 105, 0.2)",
-    button: "#566C32",
+    accentSoft: "rgba(144, 190, 84, 0.26)",
+    button: "#638238",
     buttonText: "#FFF8DE",
-    navBackground: "rgba(7, 14, 18, 0.88)",
+    navBackground: "rgba(15, 34, 19, 0.9)",
     navActive: "#D7B86B",
     navInactive: "#AAB18B",
     progressTrack: "rgba(218, 203, 148, 0.18)",
@@ -88,7 +88,63 @@ export const MIDNIGHT_GARDEN_SKIN: PremiumSkin = {
   },
 };
 
-export const PREMIUM_SKINS: PremiumSkin[] = [BLUE_STORM_SKIN, MIDNIGHT_GARDEN_SKIN];
+export const LAVENDER_PRAYER_SKIN: PremiumSkin = {
+  id: "lavender-prayer",
+  name: "Lavender Prayer",
+  label: "Premium Skin",
+  storeSubtitle: "A dreamy moonlit prayer atmosphere with candles, stars, and quiet nighttime reflection.",
+  backgroundImage: "/skins/LavenderPrayerSkin.png",
+  price: 1000,
+  palette: {
+    background: "#130D1F",
+    surface: "rgba(28, 18, 44, 0.76)",
+    surfaceSoft: "rgba(91, 68, 126, 0.28)",
+    card: "rgba(25, 16, 42, 0.74)",
+    cardBorder: "rgba(207, 174, 255, 0.34)",
+    textPrimary: "#FFF7FF",
+    textSecondary: "#EAD8FF",
+    textMuted: "#C3A8DE",
+    accent: "#CFAEFF",
+    accentSoft: "rgba(188, 139, 255, 0.2)",
+    button: "#6F4EA2",
+    buttonText: "#FFF7FF",
+    navBackground: "rgba(18, 11, 30, 0.88)",
+    navActive: "#F0C8FF",
+    navInactive: "#C3A8DE",
+    progressTrack: "rgba(234, 216, 255, 0.18)",
+    progressFill: "#F0C8FF",
+  },
+};
+
+export const RUBY_VILLAGE_SKIN: PremiumSkin = {
+  id: "ruby-village",
+  name: "Ruby Village",
+  label: "Premium Skin",
+  storeSubtitle: "A bold ruby kingdom atmosphere for disciplined, spiritually powerful study.",
+  backgroundImage: "/skins/RubyVillage.png",
+  price: 1000,
+  palette: {
+    background: "#120507",
+    surface: "rgba(55, 12, 16, 0.78)",
+    surfaceSoft: "rgba(120, 34, 30, 0.3)",
+    card: "rgba(44, 9, 13, 0.76)",
+    cardBorder: "rgba(255, 105, 84, 0.36)",
+    textPrimary: "#FFF6EF",
+    textSecondary: "#FFD2BE",
+    textMuted: "#D99A86",
+    accent: "#FF735F",
+    accentSoft: "rgba(255, 93, 72, 0.22)",
+    button: "#9C1F24",
+    buttonText: "#FFF6EF",
+    navBackground: "rgba(32, 7, 10, 0.9)",
+    navActive: "#FFC06A",
+    navInactive: "#D99A86",
+    progressTrack: "rgba(255, 210, 190, 0.16)",
+    progressFill: "#FFC06A",
+  },
+};
+
+export const PREMIUM_SKINS: PremiumSkin[] = [BLUE_STORM_SKIN, MIDNIGHT_GARDEN_SKIN, LAVENDER_PRAYER_SKIN, RUBY_VILLAGE_SKIN];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
 
 export function normalizePremiumSkinId(value: unknown): PremiumSkinId {
@@ -119,8 +175,26 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
 
   root.dataset.bbSkin = skin.id;
   root.style.setProperty("--bb-skin-bg-image", `url("${skin.backgroundImage}")`);
-  root.style.setProperty("--bb-skin-glow", skin.id === "midnight-garden" ? "rgba(175, 207, 122, 0.42)" : "rgba(93, 214, 255, 0.42)");
-  root.style.setProperty("--bb-skin-warm-glow", skin.id === "midnight-garden" ? "rgba(215, 184, 107, 0.38)" : "rgba(93, 214, 255, 0.2)");
+  root.style.setProperty(
+    "--bb-skin-glow",
+    skin.id === "midnight-garden"
+      ? "rgba(175, 207, 122, 0.42)"
+      : skin.id === "lavender-prayer"
+        ? "rgba(207, 174, 255, 0.42)"
+        : skin.id === "ruby-village"
+          ? "rgba(255, 115, 95, 0.42)"
+          : "rgba(93, 214, 255, 0.42)",
+  );
+  root.style.setProperty(
+    "--bb-skin-warm-glow",
+    skin.id === "midnight-garden"
+      ? "rgba(215, 184, 107, 0.38)"
+      : skin.id === "lavender-prayer"
+        ? "rgba(245, 203, 255, 0.3)"
+        : skin.id === "ruby-village"
+          ? "rgba(255, 192, 106, 0.34)"
+          : "rgba(93, 214, 255, 0.2)",
+  );
 
   const variableMap: Record<keyof PremiumSkinPalette, string> = {
     background: "--bb-background",

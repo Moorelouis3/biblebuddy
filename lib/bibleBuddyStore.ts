@@ -1,6 +1,6 @@
 import type { AppThemeId } from "./appThemes";
 import type { FlameCosmeticId } from "./flameCosmetics";
-import { BLUE_STORM_SKIN, MIDNIGHT_GARDEN_SKIN, type PremiumSkinId } from "./premiumSkins";
+import { BLUE_STORM_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, RUBY_VILLAGE_SKIN, type PremiumSkinId } from "./premiumSkins";
 
 export type StoreItemKind = "theme" | "premium_skin" | "streak_flame" | "buddy" | "boost" | "mystery";
 
@@ -54,6 +54,28 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     accent: MIDNIGHT_GARDEN_SKIN.palette.accent,
     imageSrc: MIDNIGHT_GARDEN_SKIN.backgroundImage,
     skinId: MIDNIGHT_GARDEN_SKIN.id,
+  },
+  {
+    id: "skin-lavender-prayer",
+    kind: "premium_skin",
+    title: LAVENDER_PRAYER_SKIN.name,
+    subtitle: LAVENDER_PRAYER_SKIN.storeSubtitle,
+    price: LAVENDER_PRAYER_SKIN.price,
+    emoji: "Prayer",
+    accent: LAVENDER_PRAYER_SKIN.palette.accent,
+    imageSrc: LAVENDER_PRAYER_SKIN.backgroundImage,
+    skinId: LAVENDER_PRAYER_SKIN.id,
+  },
+  {
+    id: "skin-ruby-village",
+    kind: "premium_skin",
+    title: RUBY_VILLAGE_SKIN.name,
+    subtitle: RUBY_VILLAGE_SKIN.storeSubtitle,
+    price: RUBY_VILLAGE_SKIN.price,
+    emoji: "Ruby",
+    accent: RUBY_VILLAGE_SKIN.palette.accent,
+    imageSrc: RUBY_VILLAGE_SKIN.backgroundImage,
+    skinId: RUBY_VILLAGE_SKIN.id,
   },
 ];
 
