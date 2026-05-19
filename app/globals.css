@@ -1655,6 +1655,43 @@ button:active:not(:disabled),
 }
 
 @media (max-width: 1023px) {
+  html,
+  body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  html[data-bb-skin="blue-storm"] body,
+  html[data-bb-skin="midnight-garden"] body,
+  html[data-bb-skin="lavender-prayer"] body,
+  html[data-bb-skin="ruby-village"] body {
+    background-attachment: scroll !important;
+    background-position: center top !important;
+    background-size: cover !important;
+  }
+
+  html[data-bb-skin="blue-storm"] body::before,
+  html[data-bb-skin="blue-storm"] body::after,
+  html[data-bb-skin="midnight-garden"] body::before,
+  html[data-bb-skin="midnight-garden"] body::after,
+  html[data-bb-skin="lavender-prayer"] body::before,
+  html[data-bb-skin="lavender-prayer"] body::after,
+  html[data-bb-skin="ruby-village"] body::before,
+  html[data-bb-skin="ruby-village"] body::after {
+    display: none !important;
+    animation: none !important;
+  }
+
+  html[data-bb-skin="blue-storm"] *,
+  html[data-bb-skin="midnight-garden"] *,
+  html[data-bb-skin="lavender-prayer"] *,
+  html[data-bb-skin="ruby-village"] * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
   html[data-bb-skin="blue-storm"] header,
   html[data-bb-skin="midnight-garden"] header,
   html[data-bb-skin="lavender-prayer"] header,
