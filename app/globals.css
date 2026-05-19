@@ -298,7 +298,7 @@ html {
   background-color: var(--bb-surface-soft) !important;
 }
 
-[data-bb-theme] header {
+[data-bb-theme]:not([data-bb-skin="blue-storm"]):not([data-bb-skin="midnight-garden"]):not([data-bb-skin="lavender-prayer"]):not([data-bb-skin="ruby-village"]) header {
   background-color: var(--bb-background) !important;
   border-color: var(--bb-card-border) !important;
 }
@@ -308,6 +308,19 @@ html {
   background-color: var(--bb-background) !important;
 }
 
+html[data-bb-skin="blue-storm"],
+html[data-bb-skin="midnight-garden"],
+html[data-bb-skin="lavender-prayer"],
+html[data-bb-skin="ruby-village"] {
+  background:
+    var(--bb-skin-bg-image),
+    var(--bb-background) !important;
+  background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 html[data-bb-skin="blue-storm"] body {
   background:
     linear-gradient(180deg, rgba(2, 8, 18, 0.2) 0%, rgba(4, 13, 26, 0.6) 58%, rgba(3, 8, 18, 0.86) 100%),
@@ -315,6 +328,7 @@ html[data-bb-skin="blue-storm"] body {
     #061322 !important;
   background-attachment: fixed;
   background-position: center top;
+  background-repeat: no-repeat;
   background-size: cover;
   color: var(--bb-text-primary);
 }
@@ -328,6 +342,7 @@ html[data-bb-skin="midnight-garden"] body {
     #07100f !important;
   background-attachment: fixed;
   background-position: center top;
+  background-repeat: no-repeat;
   background-size: cover;
   color: var(--bb-text-primary);
 }
@@ -341,6 +356,7 @@ html[data-bb-skin="lavender-prayer"] body {
     #130d1f !important;
   background-attachment: fixed;
   background-position: center top;
+  background-repeat: no-repeat;
   background-size: cover;
   color: var(--bb-text-primary);
 }
@@ -354,6 +370,7 @@ html[data-bb-skin="ruby-village"] body {
     #120507 !important;
   background-attachment: fixed;
   background-position: center top;
+  background-repeat: no-repeat;
   background-size: cover;
   color: var(--bb-text-primary);
 }
@@ -1709,6 +1726,18 @@ html[data-bb-app-hidden="true"] *::after {
     min-height: 100dvh;
   }
 
+  html[data-bb-skin="blue-storm"],
+  html[data-bb-skin="midnight-garden"],
+  html[data-bb-skin="lavender-prayer"],
+  html[data-bb-skin="ruby-village"] {
+    --bb-skin-bg-image: var(--bb-skin-bg-image-mobile);
+    background-attachment: scroll !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    min-height: 100dvh;
+  }
+
   html[data-bb-skin="blue-storm"] body::before,
   html[data-bb-skin="blue-storm"] body::after,
   html[data-bb-skin="midnight-garden"] body::before,
@@ -1742,8 +1771,13 @@ html[data-bb-app-hidden="true"] *::after {
     min-height: 64px !important;
     overflow: visible !important;
     pointer-events: auto !important;
-    background: transparent !important;
-    background-color: transparent !important;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0)) ,
+      var(--bb-skin-bg-image),
+      var(--bb-background) !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
     border-bottom: 0 !important;
     box-shadow: none !important;
   }
