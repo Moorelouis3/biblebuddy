@@ -3020,10 +3020,16 @@ export default function DashboardPage() {
       );
     };
 
-    const getStoreButtonLabel = (item: BibleBuddyStoreItem, owned: boolean) => {
+    const getStoreButtonContent = (item: BibleBuddyStoreItem, owned: boolean) => {
       if (item.comingSoon) return "Soon";
       if (owned && !item.repeatable) return item.themeId || item.skinId || item.flameId ? "Use" : "Owned";
-      return `${item.price.toLocaleString()} 💎`;
+      return (
+        <span className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
+          <span>BUY</span>
+          <span>{item.price.toLocaleString()}</span>
+          <span aria-hidden="true">{"\uD83D\uDC8E"}</span>
+        </span>
+      );
     };
 
     const getBuddyIdFromStoreItem = (item: BibleBuddyStoreItem) => {
@@ -3045,7 +3051,7 @@ export default function DashboardPage() {
               : "bg-[#050505] text-white shadow-sm hover:brightness-110"
           } ${className}`}
         >
-          {storeBuyingId === item.id ? "Buying..." : getStoreButtonLabel(item, owned)}
+          {storeBuyingId === item.id ? "Buying..." : getStoreButtonContent(item, owned)}
         </button>
       );
     };
