@@ -37,13 +37,6 @@ export function useGlobalAudioPlayer() {
   return useContext(GlobalAudioContext);
 }
 
-function formatTime(totalSeconds: number) {
-  const seconds = Math.max(0, Math.floor(totalSeconds || 0));
-  const minutes = Math.floor(seconds / 60);
-  const remainder = seconds % 60;
-  return `${minutes}:${String(remainder).padStart(2, "0")}`;
-}
-
 function getStorageKey(src: string, progressKey?: string) {
   return progressKey || `bb:tts-progress:${src}`;
 }
@@ -288,54 +281,5 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     [currentSrc, currentLabel, currentTime, duration, loading, playing, paused, error],
   );
 
-  return (
-    <GlobalAudioContext.Provider value={value}>
-      {children}
-      {currentSrc ? (
-        <div className="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom)+92px)] z-[95] mx-auto max-w-md rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_94%,transparent)] p-3 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(0,0,0,0.28)] backdrop-blur-xl">
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={playing && !paused ? pause : () => void resume()}
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--bb-button,#2563eb)] text-[var(--bb-button-text,#ffffff)] shadow-sm"
-              aria-label={playing && !paused ? "Pause audio" : "Resume audio"}
-            >
-              {loading ? (
-                <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
-              ) : playing && !paused ? (
-                <span className="text-sm font-black leading-none" aria-hidden="true">II</span>
-              ) : (
-                <span className="ml-0.5 h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-current" aria-hidden="true" />
-              )}
-            </button>
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-black">{currentLabel || "Bible Buddy Audio"}</p>
-              <div className="mt-1 flex items-center gap-2">
-                <span className="w-9 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">{formatTime(currentTime)}</span>
-                <input
-                  type="range"
-                  min={0}
-                  max={Math.max(duration || 0, currentTime || 1)}
-                  value={Math.min(currentTime, duration || currentTime || 1)}
-                  onChange={(event) => seek(Number(event.target.value))}
-                  className="h-1 flex-1 accent-[var(--bb-accent,#2563eb)]"
-                  aria-label="Audio position"
-                />
-                <span className="w-9 text-right text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">{duration ? formatTime(duration) : "--:--"}</span>
-              </div>
-              {error ? <p className="mt-1 text-xs font-bold text-red-600">Audio unavailable. Try again.</p> : null}
-            </div>
-            <button
-              type="button"
-              onClick={stop}
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] text-sm font-black"
-              aria-label="Stop audio"
-            >
-              x
-            </button>
-          </div>
-        </div>
-      ) : null}
-    </GlobalAudioContext.Provider>
-  );
+  return <GlobalAudioContext.Provider value={value}>{children}</GlobalAudioContext.Provider>;
 }
