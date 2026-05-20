@@ -4327,20 +4327,6 @@ export default function DashboardPage() {
     }
   }
 
-  async function canUsePremiumSkin(skinId: PremiumSkinId) {
-    if (skinId === "none" || isOwnerDashboard || !userId) return true;
-    const storeItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skinId);
-    if (!storeItem) return false;
-    if (storePurchases.some((purchase) => purchase.item_id === storeItem.id)) return true;
-    const { data, error } = await supabase
-      .from("user_store_purchases")
-      .select("id")
-      .eq("user_id", userId)
-      .eq("item_id", storeItem.id)
-      .maybeSingle();
-    return !error && Boolean(data);
-  }
-
   async function getPremiumSkinLockMessage(nextSkinId: PremiumSkinId) {
     if (!userId || isOwnerDashboard) return null;
     const currentSkin = normalizePremiumSkinId(profile?.active_premium_skin ?? activePremiumSkinId);
@@ -4986,8 +4972,20 @@ export default function DashboardPage() {
           const staleSafeDbSkin = shouldPreferCachedPremiumSkin(userId, dbActiveSkin)
             ? readCachedPremiumSkin(userId)
             : dbActiveSkin;
-          const candidateActiveSkin = hasActiveSkinColumn ? staleSafeDbSkin : legacyMappedSkin;
-          const resolvedActiveSkin = await canUsePremiumSkin(candidateActiveSkin) ? candidateActiveSkin : "none";
+          const cachedActiveSkin = readCachedPremiumSkin(userId);
+          const documentActiveSkin =
+            typeof document !== "undefined" ? normalizePremiumSkinId(document.documentElement.dataset.bbSkin) : "none";
+          const candidateActiveSkin =
+            staleSafeDbSkin !== "none"
+              ? staleSafeDbSkin
+              : cachedActiveSkin !== "none"
+                ? cachedActiveSkin
+                : documentActiveSkin !== "none"
+                  ? documentActiveSkin
+                  : hasActiveSkinColumn
+                    ? "none"
+                    : legacyMappedSkin;
+          const resolvedActiveSkin = candidateActiveSkin;
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(userId, resolvedActiveSkin);
           if (dbActiveSkin === resolvedActiveSkin) clearPendingPremiumSkinSync(userId, resolvedActiveSkin);
@@ -4997,12 +4995,7 @@ export default function DashboardPage() {
           const skinFlame = getPremiumSkinFlameId(resolvedActiveSkin);
           const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
           if (skinFlame) persistActiveStreakFlame(skinFlame);
-          if (candidateActiveSkin !== resolvedActiveSkin && dbActiveSkin !== "none") {
-            void supabase
-              .from("profile_stats")
-              .update({ active_premium_skin: "none", updated_at: new Date().toISOString() })
-              .eq("user_id", userId);
-          } else if (resolvedActiveSkin !== "none" && dbActiveSkin !== resolvedActiveSkin) {
+          if (resolvedActiveSkin !== "none" && dbActiveSkin !== resolvedActiveSkin) {
             void supabase
               .from("profile_stats")
               .upsert(
