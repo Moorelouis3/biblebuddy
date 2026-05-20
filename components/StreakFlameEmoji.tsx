@@ -6,6 +6,7 @@ import {
   ACTIVE_STREAK_FLAME_COLORS_STORAGE_KEY,
   ACTIVE_STREAK_FLAME_STORAGE_KEY,
   getFlameCosmetic,
+  getDocumentPremiumSkinFlameId,
   normalizeFlameCosmeticId,
   type FlameCosmetic,
   type FlameCosmeticId,
@@ -21,13 +22,17 @@ type Props = {
 export default function StreakFlameEmoji({ flameId, size = 42, className = "", title }: Props) {
   const storedFlameId =
     typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
-  const resolvedFlameId = normalizeFlameCosmeticId(flameId ?? storedFlameId);
+  const skinLockedFlameId = getDocumentPremiumSkinFlameId();
+  const resolvedFlameId = flameId == null
+    ? skinLockedFlameId ?? normalizeFlameCosmeticId(storedFlameId)
+    : normalizeFlameCosmeticId(flameId);
   let flame = getFlameCosmetic(resolvedFlameId);
   if (typeof window !== "undefined") {
     try {
       const cached = JSON.parse(window.localStorage.getItem(ACTIVE_STREAK_FLAME_COLORS_STORAGE_KEY) || "null") as FlameCosmetic | null;
       if (
         cached?.id === resolvedFlameId &&
+        (!skinLockedFlameId || cached.id === skinLockedFlameId) &&
         typeof cached.light === "string" &&
         typeof cached.main === "string" &&
         typeof cached.dark === "string"

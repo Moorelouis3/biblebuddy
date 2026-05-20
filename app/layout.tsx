@@ -9,6 +9,7 @@ import { PointsPop } from "@/components/PointsPop";
 import GlobalCreditFeedback from "@/components/GlobalCreditFeedback";
 import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
 import { PREMIUM_SKIN_STORAGE_KEY, PREMIUM_SKINS } from "@/lib/premiumSkins";
+import { FLAME_COSMETIC_BY_ID, PREMIUM_SKIN_FLAME_BY_ID } from "@/lib/flameCosmetics";
 // redeploy trigger
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
     title: "BibleBuddy",
   },
   openGraph: {
@@ -53,6 +54,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: "cover",
+  themeColor: "#061322",
 };
 
 const premiumSkinFirstPaintPayload = Object.fromEntries(
@@ -66,20 +68,15 @@ const premiumSkinFirstPaintPayload = Object.fromEntries(
   ]),
 );
 
-const premiumSkinFirstPaintFlames: Record<string, string> = {
-  "blue-storm": "blue",
-  "midnight-garden": "green",
-  "lavender-prayer": "purple",
-  "ruby-village": "red",
-  "slow-mornings": "gold",
-  "morning-mercy": "orange",
-};
+const premiumSkinFirstPaintFlames = PREMIUM_SKIN_FLAME_BY_ID;
+const premiumSkinFirstPaintFlameColors = Object.fromEntries(FLAME_COSMETIC_BY_ID.entries());
 
 const premiumSkinFirstPaintScript = `
 (function () {
   try {
     var skins = ${JSON.stringify(premiumSkinFirstPaintPayload)};
     var skinFlames = ${JSON.stringify(premiumSkinFirstPaintFlames)};
+    var flameColors = ${JSON.stringify(premiumSkinFirstPaintFlameColors)};
     var skinId = window.localStorage && window.localStorage.getItem(${JSON.stringify(PREMIUM_SKIN_STORAGE_KEY)});
     var skin = skins[skinId];
     if (!skin) return;
@@ -112,7 +109,16 @@ const premiumSkinFirstPaintScript = `
     root.dataset.bbSkin = skinId;
     root.dataset.bbTheme = window.localStorage.getItem("bb:app-theme") || "light";
     if (skinFlames[skinId]) {
-      window.localStorage.setItem("bb:active-streak-flame", skinFlames[skinId]);
+      var flameId = skinFlames[skinId];
+      var flame = flameColors[flameId];
+      window.localStorage.setItem("bb:active-streak-flame", flameId);
+      if (flame) {
+        window.localStorage.setItem("bb:active-streak-flame-colors", JSON.stringify(flame));
+        root.dataset.bbStreakFlame = flameId;
+        style.setProperty("--bb-active-flame-light", flame.light);
+        style.setProperty("--bb-active-flame-main", flame.main);
+        style.setProperty("--bb-active-flame-dark", flame.dark);
+      }
     }
     style.setProperty("--bb-skin-bg-image", 'url("' + bg + '")');
     style.setProperty("--bb-skin-bg-image-mobile", 'url("' + skin.mobileBackgroundImage + '")');
@@ -129,6 +135,12 @@ const premiumSkinFirstPaintScript = `
     style.setProperty("--bb-reader-muted", palette.textMuted);
     style.setProperty("--background", palette.background);
     style.setProperty("--foreground", palette.textPrimary);
+    root.style.backgroundColor = palette.background;
+    if (document.body) document.body.style.backgroundColor = palette.background;
+    var themeMeta = document.querySelector('meta[name="theme-color"]') || document.createElement("meta");
+    themeMeta.setAttribute("name", "theme-color");
+    themeMeta.setAttribute("content", palette.background);
+    if (!themeMeta.parentNode) document.head.appendChild(themeMeta);
 
     var preload = document.createElement("link");
     preload.rel = "preload";

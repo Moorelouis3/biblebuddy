@@ -6881,14 +6881,11 @@ export default function DashboardPage() {
           position: relative;
           z-index: 1;
           display: grid;
-          height: 92px;
+          min-height: 104px;
           place-items: center;
-          border-radius: 22px;
-          border: 1px solid color-mix(in srgb, var(--bb-accent) 26%, transparent);
+          border-radius: 999px;
           background:
-            radial-gradient(circle at 50% 72%, color-mix(in srgb, var(--bb-accent) 26%, transparent), transparent 58%),
-            color-mix(in srgb, var(--bb-surface-soft) 74%, transparent);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+            radial-gradient(circle at 50% 58%, color-mix(in srgb, var(--bb-accent) 34%, transparent), transparent 66%);
           opacity: 0.98;
         }
         .bb-deep-study-bible-emoji {
@@ -6898,11 +6895,11 @@ export default function DashboardPage() {
           position: relative;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          width: 78px;
-          height: 48px;
+          width: 102px;
+          height: 64px;
           filter: drop-shadow(0 0 18px color-mix(in srgb, var(--bb-accent) 62%, transparent));
           transform: perspective(120px) rotateX(12deg);
-          opacity: 0.86;
+          opacity: 0.96;
         }
         .bb-deep-study-book span {
           border: 1px solid color-mix(in srgb, var(--bb-accent) 30%, rgba(255,255,255,0.72));
@@ -7040,21 +7037,20 @@ export default function DashboardPage() {
         }
         @media (max-width: 480px) {
           .bb-deep-study-entry {
-            grid-template-columns: 74px 1fr 34px !important;
-            gap: 10px !important;
+            grid-template-columns: 96px 1fr 36px !important;
+            gap: 8px !important;
             border-radius: 22px !important;
-            padding: 12px !important;
+            padding: 12px 10px !important;
           }
           .bb-deep-study-bible {
-            height: 70px !important;
-            border-radius: 18px !important;
+            min-height: 82px !important;
           }
           .bb-deep-study-bible-emoji {
-            font-size: 54px !important;
+            font-size: 72px !important;
           }
           .bb-deep-study-book {
-            width: 58px !important;
-            height: 36px !important;
+            width: 86px !important;
+            height: 54px !important;
           }
           .bb-deep-study-smoke {
             bottom: 28px !important;
@@ -7065,6 +7061,10 @@ export default function DashboardPage() {
           .bb-deep-study-portal {
             height: 34px !important;
             width: 34px !important;
+          }
+          .bb-deep-study-title {
+            font-size: 1.35rem !important;
+            line-height: 1.05 !important;
           }
           .bb-deep-study-entry [class*="tracking-[0.2em]"] {
             margin-top: 8px !important;
@@ -7155,8 +7155,7 @@ export default function DashboardPage() {
           </span>
           <span className="relative min-w-0">
             <span className="flex items-center gap-2">
-              <span className="bb-deep-study-moon" aria-hidden="true" />
-              <span className="text-lg font-black leading-tight text-[var(--bb-text-primary)] drop-shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent)_48%,transparent)] sm:text-xl">Deep Study Mode</span>
+              <span className="bb-deep-study-title text-xl font-black leading-tight text-[var(--bb-text-primary)] drop-shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent)_48%,transparent)] sm:text-2xl">Deep Study Mode</span>
             </span>
             <span className="mt-1 block text-sm font-bold leading-5 text-[var(--bb-text-secondary)]">Quiet focus for Scripture.</span>
             <span className="bb-deep-study-copy-extra block text-sm font-semibold leading-5 text-[var(--bb-text-muted)]">Set a timer. Study deeper. Earn diamonds.</span>
