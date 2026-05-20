@@ -116,12 +116,13 @@ export default function SettingsPage() {
 
   useEffect(() => {
     async function loadUser() {
-      const { data: { user: currentUser } } = await supabase.auth.getUser();
-      if (currentUser) {
-        setUser(currentUser);
-        setOwnerHasUnlimitedDiamonds(isAdminUser(currentUser.email));
-        const meta = currentUser.user_metadata || {};
-        setEmail(currentUser.email || "");
+      try {
+        const { data: { user: currentUser } } = await supabase.auth.getUser();
+        if (currentUser) {
+          setUser(currentUser);
+          setOwnerHasUnlimitedDiamonds(isAdminUser(currentUser.email));
+          const meta = currentUser.user_metadata || {};
+          setEmail(currentUser.email || "");
 
         const profileRequest = await supabase
           .from("profile_stats")
@@ -186,13 +187,18 @@ export default function SettingsPage() {
           window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, resolvedSelectedBuddy);
           persistActiveStreakFlame(resolvedSelectedFlame);
           clearLegacyPremiumSkinCache();
-          cachePremiumSkinForUser(user.id, safePremiumSkin);
+          cachePremiumSkinForUser(currentUser.id, safePremiumSkin);
           applyPremiumSkinToDocument(safePremiumSkin);
           window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: resolvedSelectedBuddy } }));
         }
-        setStorePurchases((purchases || []) as StorePurchaseRow[]);
+          setStorePurchases((purchases || []) as StorePurchaseRow[]);
+        }
+      } catch (error) {
+        console.error("[SETTINGS] Could not load settings:", error);
+        setSettingsMessage("Settings had trouble loading. Please try again in a moment.");
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     }
     loadUser();
   }, []);

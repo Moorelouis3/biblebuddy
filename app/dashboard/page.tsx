@@ -218,6 +218,14 @@ type StorePurchaseCongrats = {
   item: BibleBuddyStoreItem;
 };
 
+type SkinApplyPrompt = {
+  item: BibleBuddyStoreItem;
+};
+
+type SkinAppliedCongrats = {
+  skinName: string;
+};
+
 type StorePromoKind = "buddies" | "diamonds";
 type DailyPopupStep = "streak" | "share_howto" | "mystery" | "invite_howto" | "store_buddies" | "bible_tip" | "store_diamonds";
 type DeepStudyModeState = "idle" | "setup" | "active" | "complete" | "results" | "info";
@@ -1102,6 +1110,8 @@ export default function DashboardPage() {
   const [storeBuyingId, setStoreBuyingId] = useState<string | null>(null);
   const [storeMessage, setStoreMessage] = useState<string | null>(null);
   const [storePurchaseCongrats, setStorePurchaseCongrats] = useState<StorePurchaseCongrats | null>(null);
+  const [skinApplyPrompt, setSkinApplyPrompt] = useState<SkinApplyPrompt | null>(null);
+  const [skinAppliedCongrats, setSkinAppliedCongrats] = useState<SkinAppliedCongrats | null>(null);
   const [activeStorePromo, setActiveStorePromo] = useState<StorePromoKind | null>(null);
   const [mysteryPrizeReveal, setMysteryPrizeReveal] = useState<MysteryPrizeReveal | null>(null);
   const mysteryPrizeAwardingRef = useRef(false);
@@ -4242,6 +4252,27 @@ export default function DashboardPage() {
     }
   }
 
+  function promptToApplyPremiumSkin(item: BibleBuddyStoreItem) {
+    if (!item.skinId) return;
+    setStorePurchaseCongrats(null);
+    setSkinApplyPrompt({ item });
+  }
+
+  async function confirmApplyPremiumSkin() {
+    const item = skinApplyPrompt?.item;
+    if (!item?.skinId) return;
+    setStoreBuyingId(item.id);
+    setStoreMessage(null);
+    await applyPurchasedPremiumSkin(item.skinId);
+    setStoreBuyingId(null);
+    setSkinApplyPrompt(null);
+    setShowDiamondStore(false);
+    setSkinAppliedCongrats({ skinName: item.title });
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("bb:skin-applied-confirmation", item.title);
+    }
+  }
+
   async function applyPurchasedFlame(flameId: string) {
     const normalizedFlameId = normalizeFlameCosmeticId(flameId);
     const currentSkinId =
@@ -4305,8 +4336,7 @@ export default function DashboardPage() {
       await applyPurchasedTheme(item.themeId);
       setStoreMessage(`${item.title} is now active.`);
     } else if (item.skinId) {
-      await applyPurchasedPremiumSkin(item.skinId);
-      setStoreMessage(`${item.title} is now active.`);
+      promptToApplyPremiumSkin(item);
     } else if (item.flameId) {
       await applyPurchasedFlame(item.flameId);
       setStoreMessage(`${item.title} is now active.`);
@@ -4416,8 +4446,7 @@ export default function DashboardPage() {
         await applyPurchasedTheme(item.themeId);
         setStoreMessage(`${item.title} is now active.`);
       } else if (item.skinId) {
-        await applyPurchasedPremiumSkin(item.skinId);
-        setStoreMessage(`${item.title} is now active.`);
+        promptToApplyPremiumSkin(item);
       } else if (item.flameId) {
         await applyPurchasedFlame(item.flameId);
         setStoreMessage(`${item.title} is now active.`);
@@ -4554,7 +4583,7 @@ export default function DashboardPage() {
       await applyPurchasedTheme(item.themeId);
     }
     if (item.skinId) {
-      await applyPurchasedPremiumSkin(item.skinId);
+      setStoreMessage(`${item.title} is unlocked. Choose Use it when you are ready to set it on your dashboard.`);
     }
     if (item.flameId) {
       await applyPurchasedFlame(item.flameId);
@@ -4648,6 +4677,14 @@ export default function DashboardPage() {
     if (cached.activePremiumSkinId) setActivePremiumSkinId(normalizePremiumSkinId(cached.activePremiumSkinId));
     if (cached.dashboardThemeId) setDashboardThemeId(normalizeAppThemeId(cached.dashboardThemeId));
   }, [dashboardStatsCacheKey]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const appliedSkinName = window.localStorage.getItem("bb:skin-applied-confirmation");
+    if (!appliedSkinName) return;
+    window.localStorage.removeItem("bb:skin-applied-confirmation");
+    setSkinAppliedCongrats({ skinName: appliedSkinName });
+  }, []);
 
   useEffect(() => {
     if (!dashboardStatsCacheKey || typeof window === "undefined") return;
@@ -9189,6 +9226,76 @@ export default function DashboardPage() {
                 className="relative mt-6 w-full max-w-sm rounded-full bg-[var(--bb-button,#7BAFD4)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#0f172a)] shadow-sm transition hover:brightness-95"
               >
                 Awesome
+              </button>
+            </div>
+          </div>
+        ) : null}
+      </ModalShell>
+
+      <ModalShell
+        isOpen={Boolean(skinApplyPrompt)}
+        onClose={() => setSkinApplyPrompt(null)}
+        backdropColor="bg-black/50"
+      >
+        {skinApplyPrompt ? (
+          <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+            <div className="relative overflow-hidden px-6 pb-7 pt-5 text-center sm:px-8">
+              <div
+                className="absolute inset-x-0 top-0 h-36"
+                style={{ background: `linear-gradient(135deg, ${skinApplyPrompt.item.accent}30, transparent)` }}
+                aria-hidden="true"
+              />
+              <div className="relative mx-auto mt-4 h-36 w-36 overflow-hidden rounded-[28px] border border-white/30 bg-cover bg-center shadow-[0_20px_46px_rgba(0,0,0,0.22)]" style={{ backgroundImage: `url(${skinApplyPrompt.item.imageSrc})` }} />
+              <p className="relative mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2563eb)]">Set dashboard skin?</p>
+              <h2 className="relative mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
+                Use {skinApplyPrompt.item.title} on your dashboard?
+              </h2>
+              <p className="relative mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
+                This will save {skinApplyPrompt.item.title} as your active Bible Buddy skin and send you back to the dashboard.
+              </p>
+              <div className="relative mt-6 grid gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => setSkinApplyPrompt(null)}
+                  className="rounded-full border border-[var(--bb-card-border,#d7e4f7)] bg-white px-6 py-3 text-sm font-black text-[var(--bb-text-primary,#21304f)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                >
+                  No, keep shopping
+                </button>
+                <button
+                  type="button"
+                  onClick={() => void confirmApplyPremiumSkin()}
+                  disabled={storeBuyingId === skinApplyPrompt.item.id}
+                  className="rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:opacity-60"
+                >
+                  {storeBuyingId === skinApplyPrompt.item.id ? "Applying..." : "Yes, apply it"}
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </ModalShell>
+
+      <ModalShell
+        isOpen={Boolean(skinAppliedCongrats)}
+        onClose={() => setSkinAppliedCongrats(null)}
+        backdropColor="bg-black/45"
+      >
+        {skinAppliedCongrats ? (
+          <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+            <div className="px-6 py-7 text-center">
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2563eb)]">Skin applied</p>
+              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
+                {skinAppliedCongrats.skinName} is live.
+              </h2>
+              <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
+                Your dashboard has been updated with your new Bible Buddy skin.
+              </p>
+              <button
+                type="button"
+                onClick={() => setSkinAppliedCongrats(null)}
+                className="mt-6 w-full rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+              >
+                OK
               </button>
             </div>
           </div>
