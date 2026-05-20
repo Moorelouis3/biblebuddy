@@ -6897,7 +6897,7 @@ export default function DashboardPage() {
     if (typeof window !== "undefined") {
       window.setTimeout(() => {
         void loadDailyTaskSummary({ force: true, silent: true });
-      }, completedTask ? 650 : 150);
+      }, completedTask ? 4000 : 150);
     } else {
       void loadDailyTaskSummary({ force: true, silent: true });
     }

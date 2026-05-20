@@ -1175,13 +1175,17 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   }
 
   async function closeReadingAndRefresh() {
-    await handleReadingMarkedComplete();
     closeAndRefresh(true);
+    void handleReadingMarkedComplete().catch((error) => {
+      console.warn("[DASHBOARD_TASK] Reading completion sync failed:", error);
+    });
   }
 
   async function closeNotesAndRefresh() {
-    await markNotesComplete();
     closeAndRefresh(true);
+    void markNotesComplete().catch((error) => {
+      console.warn("[DASHBOARD_TASK] Notes completion sync failed:", error);
+    });
   }
 
   async function handleDevotionalIntroComplete() {
@@ -1259,8 +1263,10 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   }
 
   async function closeIntroAndRefresh() {
-    await handleDevotionalIntroComplete();
     closeAndRefresh(true);
+    void handleDevotionalIntroComplete().catch((error) => {
+      console.warn("[DASHBOARD_TASK] Intro completion sync failed:", error);
+    });
   }
 
   if (!task) return null;
