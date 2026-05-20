@@ -340,6 +340,11 @@ function DashboardInlineBibleReader({
   const readerRootRef = useRef<HTMLDivElement | null>(null);
   const bookDisplay = normalizeBibleBookDisplay(book);
   const isModal = variant === "modal";
+  const chapterAudioSrc = getGenesisOneTtsSrc("verses", bookDisplay, chapter);
+  const chapterSpeechText = useMemo(
+    () => verses.map((verse) => `${verse.verse}. ${verse.text}`).join(" "),
+    [verses],
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -451,6 +456,14 @@ function DashboardInlineBibleReader({
           <div className="mb-4">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Read The Chapter</p>
             <h3 className="mt-1 text-xl font-black leading-tight text-[var(--bb-reader-text,#102a43)]">{bookDisplay} {chapter}</h3>
+            {chapterAudioSrc ? (
+              <BrowserTtsButton
+                text={chapterSpeechText}
+                label={`Listen to ${bookDisplay} ${chapter}`}
+                audioSrc={chapterAudioSrc}
+                className="mb-0 mt-3"
+              />
+            ) : null}
           </div>
           <div className={`min-h-0 space-y-3 pr-1 ${isModal ? "flex-1 overflow-y-auto overscroll-contain" : ""}`} onClick={onDatabaseTermClick}>
             {verses.map((verse) => (
