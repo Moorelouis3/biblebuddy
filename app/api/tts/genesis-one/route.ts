@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const BUCKET = "tts-audio";
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const VOICE = "onyx";
 const KINDS: GenesisOneTtsKind[] = ["intro", "verses", "notes"];
 type SupabaseAdmin = any;
@@ -50,18 +50,33 @@ function normalizeBookKey(book: string | null | undefined) {
 }
 
 async function getIntroText(supabase: SupabaseAdmin) {
-  const { data } = await supabase
+  const { data: devotional, error: devotionalError } = await supabase
+    .from("devotionals")
+    .select("id, title")
+    .eq("title", "The Creation of the World")
+    .maybeSingle();
+
+  if (devotionalError) {
+    throw new Error(devotionalError.message);
+  }
+
+  if (!devotional?.id) {
+    throw new Error("The Creation of the World Bible Study was not found.");
+  }
+
+  const { data: row, error: dayError } = await supabase
     .from("devotional_days")
     .select("day_title, devotional_text, bible_reading_book, bible_reading_chapter")
-    .eq("bible_reading_chapter", 1);
+    .eq("devotional_id", devotional.id)
+    .eq("day_number", 1)
+    .maybeSingle();
 
-  const rows: any[] = Array.isArray(data) ? data : [];
-  const row =
-    rows.find((item: any) => normalizeBookKey(item?.bible_reading_book) === "genesis" && item?.devotional_text?.trim()) ||
-    rows.find((item: any) => item?.devotional_text?.trim());
+  if (dayError) {
+    throw new Error(dayError.message);
+  }
 
-  if (!row?.devotional_text?.trim()) {
-    throw new Error("Genesis 1 intro text was not found.");
+  if (!row?.devotional_text?.trim() || normalizeBookKey(row?.bible_reading_book) !== "genesis" || Number(row?.bible_reading_chapter) !== 1) {
+    throw new Error("The Creation of the World Genesis 1 intro text was not found.");
   }
 
   return cleanForSpeech(`${row.day_title || "Genesis 1 Introduction"}. ${row.devotional_text}`);
