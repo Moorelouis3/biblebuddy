@@ -4179,7 +4179,7 @@ export default function DashboardJourneyExperience({
     );
   };
   return (
-    <div className="space-y-4 pb-4">
+    <div className="space-y-4 pb-[112px] lg:pb-4">
       <style>{`
         @keyframes task-complete-pop {
           0% {
@@ -5230,7 +5230,7 @@ export default function DashboardJourneyExperience({
       </div>
 
       {!shouldShowBibleBuddy3ModeGate ? (
-      <nav className="sticky bottom-2 z-40 mx-auto max-w-xl rounded-[22px] border border-[#dbe7f4] bg-white/95 px-2 pb-1.5 pt-1.5 shadow-[0_12px_28px_rgba(38,63,99,0.14)] backdrop-blur">
+      <nav className="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom,0px)+10px)] z-[90] mx-auto max-w-xl rounded-[22px] border border-[#dbe7f4] bg-white/95 px-2 pb-1.5 pt-1.5 shadow-[0_12px_28px_rgba(38,63,99,0.14)] backdrop-blur lg:sticky lg:bottom-2 lg:z-40">
         <div className="mx-auto mb-0.5 h-1 w-10 rounded-full bg-[#dbe7f4]" aria-hidden="true" />
         <div className="[scrollbar-width:none] overflow-x-auto [&::-webkit-scrollbar]:hidden">
           <div className="flex min-w-max items-end gap-0.5 text-center sm:min-w-0">
