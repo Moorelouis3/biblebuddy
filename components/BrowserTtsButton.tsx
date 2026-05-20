@@ -48,6 +48,7 @@ export default function BrowserTtsButton({
   const [paused, setPaused] = useState(false);
   const [loading, setLoading] = useState(false);
   const [audioError, setAudioError] = useState(false);
+  const [playbackRate, setPlaybackRate] = useState(1);
   const globalAudio = useGlobalAudioPlayer();
   const chunks = useMemo(() => chunkSpeechText(text || ""), [text]);
   const chunksRef = useRef<string[]>([]);
@@ -55,6 +56,7 @@ export default function BrowserTtsButton({
   const ownsSpeechRef = useRef(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const lastSavedAudioSecondRef = useRef(-1);
+  const lastAudioProgressNotifyMsRef = useRef(0);
   const audioStorageKey = useMemo(() => {
     if (!audioSrc) return null;
     return progressKey || `bb:tts-progress:${audioSrc}`;
@@ -66,6 +68,7 @@ export default function BrowserTtsButton({
   const audioIsSpeaking = isGlobalTrack ? globalAudio?.playing === true : speaking;
   const audioIsPaused = isGlobalTrack ? globalAudio?.paused === true : paused;
   const audioHasError = isGlobalTrack ? globalAudio?.error === true : audioError;
+  const activePlaybackRate = isGlobalTrack ? globalAudio?.playbackRate || 1 : playbackRate;
 
   useEffect(() => {
     setSupported(typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window);
@@ -123,8 +126,11 @@ export default function BrowserTtsButton({
     if (updateState) setSavedPosition(0);
   }
 
-  function notifyAudioProgress(audio: HTMLAudioElement | null, playing: boolean) {
+  function notifyAudioProgress(audio: HTMLAudioElement | null, playing: boolean, options: { force?: boolean } = {}) {
     if (!audio || !onAudioProgress) return;
+    const now = Date.now();
+    if (!options.force && now - lastAudioProgressNotifyMsRef.current < 650) return;
+    lastAudioProgressNotifyMsRef.current = now;
     onAudioProgress({
       currentTime: audio.currentTime || 0,
       duration: Number.isFinite(audio.duration) ? audio.duration : 0,
@@ -168,6 +174,32 @@ export default function BrowserTtsButton({
     setSpeaking(false);
     setPaused(false);
     setLoading(false);
+  }
+
+  function seekAudioBy(seconds: number) {
+    if (!canUseAudioSrc) return;
+    if (isGlobalTrack && globalAudio) {
+      globalAudio.seekBy(seconds);
+      return;
+    }
+    if (!audioRef.current) return;
+    const duration = Number.isFinite(audioRef.current.duration) ? audioRef.current.duration : 0;
+    const nextTime = Math.max(0, Math.min((audioRef.current.currentTime || 0) + seconds, duration || Number.MAX_SAFE_INTEGER));
+    audioRef.current.currentTime = nextTime;
+    saveAudioProgress(audioRef.current);
+    notifyAudioProgress(audioRef.current, speaking && !paused, { force: true });
+  }
+
+  function changePlaybackRate(rate: number) {
+    const safeRate = [1, 1.25, 1.5, 2].includes(rate) ? rate : 1;
+    setPlaybackRate(safeRate);
+    if (isGlobalTrack && globalAudio) {
+      globalAudio.setPlaybackRate(safeRate);
+      return;
+    }
+    if (audioRef.current) {
+      audioRef.current.playbackRate = safeRate;
+    }
   }
 
   function speakChunk(startIndex = 0) {
@@ -259,14 +291,15 @@ export default function BrowserTtsButton({
     try {
       const audio = new Audio(audioSrc);
       audio.preload = "auto";
+      audio.playbackRate = playbackRate;
       audioRef.current = audio;
       audio.onloadedmetadata = () => {
         applySavedAudioProgress(audio);
-        notifyAudioProgress(audio, true);
+        notifyAudioProgress(audio, true, { force: true });
       };
       audio.oncanplay = () => {
         applySavedAudioProgress(audio);
-        notifyAudioProgress(audio, true);
+        notifyAudioProgress(audio, true, { force: true });
       };
       audio.ontimeupdate = () => {
         notifyAudioProgress(audio, true);
@@ -278,10 +311,10 @@ export default function BrowserTtsButton({
       };
       audio.onpause = () => {
         saveAudioProgress(audio);
-        notifyAudioProgress(audio, false);
+        notifyAudioProgress(audio, false, { force: true });
       };
       audio.onended = () => {
-        notifyAudioProgress(audio, false);
+        notifyAudioProgress(audio, false, { force: true });
         clearAudioProgress();
         setSpeaking(false);
         setPaused(false);
@@ -311,6 +344,9 @@ export default function BrowserTtsButton({
 
   if (!canUseAudioSrc && (!supported || chunks.length === 0)) return null;
 
+  const showAudioControls = canUseAudioSrc && audioIsSpeaking;
+  const speedOptions = [1, 1.25, 1.5, 2];
+
   return (
     <div className={`mb-4 flex items-center gap-2 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 shadow-sm ${className}`}>
       <div className="flex min-w-0 flex-1 flex-col gap-1">
@@ -337,6 +373,43 @@ export default function BrowserTtsButton({
         </button>
         {!audioIsSpeaking && savedPosition > 2 ? (
           <p className="px-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">Saved at {formatTime(savedPosition)}</p>
+        ) : null}
+        {showAudioControls ? (
+          <div className="flex flex-wrap items-center gap-1.5 pt-1">
+            <button
+              type="button"
+              onClick={() => seekAudioBy(-10)}
+              className="min-h-9 rounded-lg border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 text-xs font-black text-[var(--bb-text-primary,#1f2937)] transition hover:brightness-95"
+              aria-label="Go back 10 seconds"
+            >
+              -10s
+            </button>
+            <button
+              type="button"
+              onClick={() => seekAudioBy(10)}
+              className="min-h-9 rounded-lg border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 text-xs font-black text-[var(--bb-text-primary,#1f2937)] transition hover:brightness-95"
+              aria-label="Go forward 10 seconds"
+            >
+              +10s
+            </button>
+            <div className="ml-1 flex flex-wrap items-center gap-1" aria-label="Playback speed">
+              {speedOptions.map((rate) => (
+                <button
+                  key={rate}
+                  type="button"
+                  onClick={() => changePlaybackRate(rate)}
+                  className={`min-h-9 rounded-lg border px-2.5 text-xs font-black transition hover:brightness-95 ${
+                    activePlaybackRate === rate
+                      ? "border-[var(--bb-button,#2563eb)] bg-[var(--bb-button,#2563eb)] text-[var(--bb-button-text,#ffffff)]"
+                      : "border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] text-[var(--bb-text-primary,#1f2937)]"
+                  }`}
+                  aria-pressed={activePlaybackRate === rate}
+                >
+                  {rate}x
+                </button>
+              ))}
+            </div>
+          </div>
         ) : null}
         {audioHasError ? <p className="px-1 text-xs font-bold text-red-600">Audio unavailable. Try again.</p> : null}
       </div>

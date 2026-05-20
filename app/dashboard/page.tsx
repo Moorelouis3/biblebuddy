@@ -1138,6 +1138,15 @@ export default function DashboardPage() {
   const [showDeepStudyUpgradeModal, setShowDeepStudyUpgradeModal] = useState(false);
   const [deepStudyNow, setDeepStudyNow] = useState(Date.now());
   const deepStudyFinalizingRef = useRef(false);
+  const deepStudyRuntimeRef = useRef({
+    activeMs: 0,
+    awayMs: 0,
+    visibleMs: 0,
+    interruptions: 0,
+    interactions: 0,
+    lastInteractionAt: 0,
+    lastTickAt: 0,
+  });
   const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
@@ -5970,23 +5979,13 @@ export default function DashboardPage() {
     if (!deepStudyActiveSession) return;
 
     function markInteraction() {
-      const now = Date.now();
-      setDeepStudyActiveSession((current) =>
-        current
-          ? {
-              ...current,
-              interactions: current.interactions + 1,
-              lastInteractionAt: now,
-            }
-          : current,
-      );
+      deepStudyRuntimeRef.current.interactions += 1;
+      deepStudyRuntimeRef.current.lastInteractionAt = Date.now();
     }
 
     function handleVisibilityChange() {
       if (document.visibilityState === "hidden") {
-        setDeepStudyActiveSession((current) =>
-          current ? { ...current, interruptions: current.interruptions + 1 } : current,
-        );
+        deepStudyRuntimeRef.current.interruptions += 1;
       } else {
         markInteraction();
       }
@@ -6010,16 +6009,23 @@ export default function DashboardPage() {
       setDeepStudyNow(now);
       setDeepStudyActiveSession((current) => {
         if (!current) return current;
-        const elapsed = Math.max(0, now - current.lastTickAt);
+        const elapsed = Math.max(0, now - deepStudyRuntimeRef.current.lastTickAt);
         const visible = document.visibilityState === "visible" && document.hasFocus();
-        const recentlyEngaged = now - current.lastInteractionAt <= 120000;
+        const recentlyEngaged = now - deepStudyRuntimeRef.current.lastInteractionAt <= 120000;
         const active = visible && recentlyEngaged;
+        deepStudyRuntimeRef.current.lastTickAt = now;
+        deepStudyRuntimeRef.current.activeMs += active ? elapsed : 0;
+        deepStudyRuntimeRef.current.awayMs += active ? 0 : elapsed;
+        deepStudyRuntimeRef.current.visibleMs += visible ? elapsed : 0;
         return {
           ...current,
           lastTickAt: now,
-          activeMs: current.activeMs + (active ? elapsed : 0),
-          awayMs: current.awayMs + (active ? 0 : elapsed),
-          visibleMs: current.visibleMs + (visible ? elapsed : 0),
+          activeMs: deepStudyRuntimeRef.current.activeMs,
+          awayMs: deepStudyRuntimeRef.current.awayMs,
+          visibleMs: deepStudyRuntimeRef.current.visibleMs,
+          interruptions: deepStudyRuntimeRef.current.interruptions,
+          interactions: deepStudyRuntimeRef.current.interactions,
+          lastInteractionAt: deepStudyRuntimeRef.current.lastInteractionAt,
         };
       });
     }, 1000);
@@ -6043,6 +6049,15 @@ export default function DashboardPage() {
     setActivePremiumSkinId(stableSkinId);
     applyPremiumSkinToDocument(stableSkinId);
     preloadActiveSkinAssets(stableSkinId);
+    deepStudyRuntimeRef.current = {
+      activeMs: 0,
+      awayMs: 0,
+      visibleMs: 0,
+      interruptions: 0,
+      interactions: 1,
+      lastInteractionAt: now,
+      lastTickAt: now,
+    };
     setDeepStudyActiveSession({
       id: `deep-study-${userId || "anon"}-${now}`,
       plannedMinutes: minutes,
@@ -6068,11 +6083,17 @@ export default function DashboardPage() {
     if (!userId || !deepStudyActiveSession || deepStudyFinalizingRef.current) return;
     deepStudyFinalizingRef.current = true;
     const endedAtMs = Date.now();
-    const activeMinutes = Math.max(0, Math.ceil(deepStudyActiveSession.activeMs / 60000));
-    const awayMinutes = Math.max(0, Math.ceil(deepStudyActiveSession.awayMs / 60000));
-    const engagementScore = Math.min(20, deepStudyActiveSession.interactions * 1.4 + deepStudyActiveSession.tasksCompleted * 6);
-    const visibleRatio = Math.max(0, Math.min(1, deepStudyActiveSession.visibleMs / Math.max(1, endedAtMs - deepStudyActiveSession.startedAt)));
-    const interruptionPenalty = Math.min(25, deepStudyActiveSession.interruptions * 5);
+    const runtimeStats = deepStudyRuntimeRef.current;
+    const activeMs = Math.max(deepStudyActiveSession.activeMs, runtimeStats.activeMs);
+    const awayMs = Math.max(deepStudyActiveSession.awayMs, runtimeStats.awayMs);
+    const visibleMs = Math.max(deepStudyActiveSession.visibleMs, runtimeStats.visibleMs);
+    const interactions = Math.max(deepStudyActiveSession.interactions, runtimeStats.interactions);
+    const interruptions = Math.max(deepStudyActiveSession.interruptions, runtimeStats.interruptions);
+    const activeMinutes = Math.max(0, Math.ceil(activeMs / 60000));
+    const awayMinutes = Math.max(0, Math.ceil(awayMs / 60000));
+    const engagementScore = Math.min(20, interactions * 1.4 + deepStudyActiveSession.tasksCompleted * 6);
+    const visibleRatio = Math.max(0, Math.min(1, visibleMs / Math.max(1, endedAtMs - deepStudyActiveSession.startedAt)));
+    const interruptionPenalty = Math.min(25, interruptions * 5);
     const focusScore = Math.max(
       35,
       Math.min(100, Math.round(visibleRatio * 72 + engagementScore - interruptionPenalty)),
@@ -6091,8 +6112,8 @@ export default function DashboardPage() {
         stoppedEarly,
         activeMinutes,
         awayMinutes,
-        interruptions: deepStudyActiveSession.interruptions,
-        interactions: deepStudyActiveSession.interactions,
+        interruptions,
+        interactions,
         tasksCompleted: deepStudyActiveSession.tasksCompleted,
         taskBreakdown: deepStudyActiveSession.taskBreakdown,
         chaptersStudied: deepStudyActiveSession.chaptersStudied,
@@ -6119,8 +6140,8 @@ export default function DashboardPage() {
       stoppedEarly,
       activeMinutes,
       awayMinutes,
-      interruptions: deepStudyActiveSession.interruptions,
-      interactions: deepStudyActiveSession.interactions,
+      interruptions,
+      interactions,
       tasksCompleted: deepStudyActiveSession.tasksCompleted,
       taskBreakdown: deepStudyActiveSession.taskBreakdown,
       chaptersStudied: deepStudyActiveSession.chaptersStudied,

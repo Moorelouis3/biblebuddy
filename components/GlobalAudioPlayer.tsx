@@ -24,11 +24,14 @@ type GlobalAudioContextValue = {
   playing: boolean;
   paused: boolean;
   error: boolean;
+  playbackRate: number;
   playTrack: (input: PlayTrackInput) => Promise<void>;
   pause: () => void;
   resume: () => Promise<void>;
   stop: () => void;
   seek: (seconds: number) => void;
+  seekBy: (seconds: number) => void;
+  setPlaybackRate: (rate: number) => void;
 };
 
 const GlobalAudioContext = createContext<GlobalAudioContextValue | null>(null);
@@ -45,6 +48,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const progressCallbackRef = useRef<((state: AudioProgressState) => void) | null>(null);
   const lastSavedAudioSecondRef = useRef(-1);
+  const lastProgressNotifyMsRef = useRef(0);
   const progressKeyRef = useRef<string | null>(null);
   const savedPositionAppliedRef = useRef(false);
   const [currentSrc, setCurrentSrc] = useState<string | null>(null);
@@ -55,9 +59,13 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
   const [playing, setPlaying] = useState(false);
   const [paused, setPaused] = useState(false);
   const [error, setError] = useState(false);
+  const [playbackRate, setPlaybackRateState] = useState(1);
 
-  function notify(audio: HTMLAudioElement | null, isPlaying: boolean) {
+  function notify(audio: HTMLAudioElement | null, isPlaying: boolean, options: { force?: boolean } = {}) {
     if (!audio) return;
+    const now = Date.now();
+    if (!options.force && now - lastProgressNotifyMsRef.current < 650) return;
+    lastProgressNotifyMsRef.current = now;
     const state = {
       currentTime: audio.currentTime || 0,
       duration: Number.isFinite(audio.duration) ? audio.duration : 0,
@@ -145,16 +153,17 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
 
     const audio = new Audio(input.src);
     audio.preload = "auto";
+    audio.playbackRate = playbackRate;
     audioRef.current = audio;
 
     audio.onloadedmetadata = () => {
       applySavedProgress(audio, key);
-      notify(audio, true);
+      notify(audio, true, { force: true });
     };
 
     audio.oncanplay = () => {
       applySavedProgress(audio, key);
-      notify(audio, true);
+      notify(audio, true, { force: true });
     };
 
     audio.ontimeupdate = () => {
@@ -168,12 +177,12 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
 
     audio.onpause = () => {
       saveProgress(audio);
-      notify(audio, false);
+      notify(audio, false, { force: true });
     };
 
     audio.onended = () => {
       clearProgress();
-      notify(audio, false);
+      notify(audio, false, { force: true });
       setPlaying(false);
       setPaused(false);
       setCurrentTime(0);
@@ -209,7 +218,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     audioRef.current.pause();
     setPlaying(true);
     setPaused(true);
-    notify(audioRef.current, false);
+    notify(audioRef.current, false, { force: true });
   }
 
   async function resume() {
@@ -221,7 +230,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
       await audioRef.current.play();
       setPlaying(true);
       setPaused(false);
-      notify(audioRef.current, true);
+      notify(audioRef.current, true, { force: true });
     } catch {
       setError(true);
     }
@@ -250,7 +259,20 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     const next = Math.max(0, Math.min(seconds, audioRef.current.duration || seconds));
     audioRef.current.currentTime = next;
     saveProgress(audioRef.current);
-    notify(audioRef.current, playing && !paused);
+    notify(audioRef.current, playing && !paused, { force: true });
+  }
+
+  function seekBy(seconds: number) {
+    if (!audioRef.current) return;
+    seek((audioRef.current.currentTime || 0) + seconds);
+  }
+
+  function setPlaybackRate(rate: number) {
+    const safeRate = [1, 1.25, 1.5, 2].includes(rate) ? rate : 1;
+    setPlaybackRateState(safeRate);
+    if (audioRef.current) {
+      audioRef.current.playbackRate = safeRate;
+    }
   }
 
   useEffect(() => {
@@ -272,13 +294,16 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
       playing,
       paused,
       error,
+      playbackRate,
       playTrack,
       pause,
       resume,
       stop,
       seek,
+      seekBy,
+      setPlaybackRate,
     }),
-    [currentSrc, currentLabel, currentTime, duration, loading, playing, paused, error],
+    [currentSrc, currentLabel, currentTime, duration, loading, playing, paused, error, playbackRate],
   );
 
   return <GlobalAudioContext.Provider value={value}>{children}</GlobalAudioContext.Provider>;
