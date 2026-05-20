@@ -2284,9 +2284,12 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="slow-mornings"] body,
   html[data-bb-skin="morning-mercy"] body {
     --bb-skin-bg-image: var(--bb-skin-bg-image-mobile);
-    background: var(--bb-background) !important;
+    background-image: var(--bb-skin-bg-image-mobile), var(--bb-skin-bg-image), linear-gradient(var(--bb-background), var(--bb-background)) !important;
+    background-attachment: scroll !important;
+    background-position: center top !important;
+    background-repeat: repeat-y !important;
+    background-size: 100% auto !important;
     min-height: 100dvh;
-    position: relative;
   }
 
   html[data-bb-skin="blue-storm"],
@@ -2296,33 +2299,25 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="slow-mornings"],
   html[data-bb-skin="morning-mercy"] {
     --bb-skin-bg-image: var(--bb-skin-bg-image-mobile);
-    background: var(--bb-background) !important;
+    background-image: var(--bb-skin-bg-image-mobile), var(--bb-skin-bg-image), linear-gradient(var(--bb-background), var(--bb-background)) !important;
+    background-attachment: scroll !important;
+    background-position: center top !important;
+    background-repeat: repeat-y !important;
+    background-size: 100% auto !important;
     min-height: 100dvh;
   }
 
   html[data-bb-skin="blue-storm"] body::before,
-  html[data-bb-skin="midnight-garden"] body::before,
-  html[data-bb-skin="lavender-prayer"] body::before,
-  html[data-bb-skin="ruby-village"] body::before,
-  html[data-bb-skin="slow-mornings"] body::before,
-  html[data-bb-skin="morning-mercy"] body::before {
-    content: "" !important;
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 0 !important;
-    pointer-events: none !important;
-    display: block !important;
-    background-image: var(--bb-skin-bg-image-mobile), var(--bb-skin-bg-image), var(--bb-background) !important;
-    background-position: center top !important;
-    background-repeat: repeat-y !important;
-    background-size: 100% auto !important;
-  }
-
   html[data-bb-skin="blue-storm"] body::after,
+  html[data-bb-skin="midnight-garden"] body::before,
   html[data-bb-skin="midnight-garden"] body::after,
+  html[data-bb-skin="lavender-prayer"] body::before,
   html[data-bb-skin="lavender-prayer"] body::after,
+  html[data-bb-skin="ruby-village"] body::before,
   html[data-bb-skin="ruby-village"] body::after,
+  html[data-bb-skin="slow-mornings"] body::before,
   html[data-bb-skin="slow-mornings"] body::after,
+  html[data-bb-skin="morning-mercy"] body::before,
   html[data-bb-skin="morning-mercy"] body::after {
     display: none !important;
     animation: none !important;
