@@ -4946,8 +4946,8 @@ export default function GroupChatPage() {
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="bb-community-header relative z-20" style={{ backgroundColor: coverColor }}>
-        <div className="max-w-2xl mx-auto px-4 pt-5 pb-3">
-          <div className="bb-community-hero-card rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-5 shadow-sm">
+        <div className="max-w-2xl mx-auto px-4 pt-4 pb-2">
+          <div className="bb-community-hero-card rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
           {!isDashboardEmbed && (
           <div className="flex items-center gap-1 text-xs text-[var(--bb-text-secondary,#5f6368)] font-medium mb-3 flex-wrap">
             {!isDashboardEmbed && (
@@ -4998,18 +4998,12 @@ export default function GroupChatPage() {
                 <div>
                   <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">{displayGroupName}</p>
                   <h1 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Community</h1>
-                  <p className="mt-2 max-w-xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
-                    Weekly challenges, shared progress, and conversations from your Bible Buddies.
+                  <p className="mt-1 max-w-xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
+                    Connect with Bible Buddies across the world.
                   </p>
                 </div>
               ) : null}
-              <div className="mt-4 flex items-center gap-3 flex-wrap">
-                <button
-                  onClick={() => setShowGroupInfoModal(true)}
-                  className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
-                >
-                  About Community
-                </button>
+              <div className="mt-2 flex items-center gap-3 flex-wrap">
               <button
                 onClick={() => {
                       setActiveTab("members");
@@ -7362,10 +7356,6 @@ export default function GroupChatPage() {
         onClick={() => setShowPostComposerModal(true)}
         className="bb-community-composer w-full bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#d4ecd4)] rounded-[26px] px-5 py-5 shadow-sm hover:shadow-md transition text-left relative overflow-hidden"
       >
-        <span className="absolute right-5 top-5 flex h-2.5 w-2.5">
-          <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--bb-accent,#8ccf98)] opacity-60 animate-ping" />
-          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--bb-accent,#4a9b6f)]" />
-        </span>
         <div className="flex items-center gap-4">
           {userProfileImage ? (
             <img src={userProfileImage} alt={displayName} className="bb-skin-profile-ring h-12 w-12 rounded-full object-cover flex-shrink-0" />
