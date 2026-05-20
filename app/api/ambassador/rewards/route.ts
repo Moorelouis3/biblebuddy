@@ -58,17 +58,24 @@ export async function GET(request: NextRequest) {
     rewardsProfile = createdProfile;
   }
 
+  const referralCode = rewardsProfile?.referral_code || "";
+  const referralFilter = referralCode
+    ? `ambassador_user_id.eq.${userId},referral_code.eq.${referralCode}`
+    : `ambassador_user_id.eq.${userId}`;
   const { data: referralRows, error: referralError } = await supabase
     .from("ambassador_referrals")
-    .select("referred_user_id, trial_started_at, trial_ends_at")
-    .eq("ambassador_user_id", userId)
+    .select("ambassador_user_id, referred_user_id, referral_code, trial_started_at, trial_ends_at")
+    .or(referralFilter)
     .order("trial_started_at", { ascending: false });
 
   if (referralError) {
     return NextResponse.json({ error: referralError.message || "Could not load signup log." }, { status: 500 });
   }
 
-  const referredUserIds = (referralRows || []).map((referral) => referral.referred_user_id);
+  const uniqueReferralRows = Array.from(
+    new Map((referralRows || []).map((referral) => [referral.referred_user_id, referral])).values(),
+  );
+  const referredUserIds = uniqueReferralRows.map((referral) => referral.referred_user_id);
   const { data: referredProfiles } = referredUserIds.length
     ? await supabase
         .from("profile_stats")
@@ -77,7 +84,7 @@ export async function GET(request: NextRequest) {
     : { data: [] };
 
   const profileMap = new Map((referredProfiles || []).map((profile) => [profile.user_id, profile]));
-  const referrals = (referralRows || []).map((referral) => {
+  const referrals = uniqueReferralRows.map((referral) => {
     const referredProfile = profileMap.get(referral.referred_user_id);
     return {
       ...referral,

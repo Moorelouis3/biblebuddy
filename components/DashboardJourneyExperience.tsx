@@ -177,6 +177,7 @@ type Props = {
   suppressCompletedTasksPanel?: boolean;
   onHomeReset?: () => void;
   onOpenStore?: () => void;
+  onDashboardPageChange?: (pageKey: string) => void;
   onDevotionalChanged: () => void;
   isOwnerDashboard?: boolean;
 };
@@ -1581,6 +1582,7 @@ export default function DashboardJourneyExperience({
   suppressCompletedTasksPanel = false,
   onHomeReset,
   onOpenStore,
+  onDashboardPageChange,
   onDevotionalChanged,
   isOwnerDashboard = false,
 }: Props) {
@@ -2827,10 +2829,12 @@ export default function DashboardJourneyExperience({
 
   function snapToPage(index: number) {
     const nextIndex = Math.max(0, Math.min(index, dashboardPageKeys.length - 1));
+    const nextPageKey = dashboardPageKeys[nextIndex];
     setActivePage(nextIndex);
+    if (nextPageKey) onDashboardPageChange?.(nextPageKey);
     window.setTimeout(() => {
       document
-        .querySelector(`[data-dashboard-nav-key="${dashboardPageKeys[nextIndex]}"]`)
+        .querySelector(`[data-dashboard-nav-key="${nextPageKey}"]`)
         ?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }, 0);
   }
@@ -4093,7 +4097,7 @@ export default function DashboardJourneyExperience({
             <div className="bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,transparent),transparent_42%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_82%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_62%,transparent))] px-4 pb-5 pt-5 sm:px-5">
               <div className="flex items-center gap-4">
                 <div className="buddy-rewards-buddy shrink-0 overflow-visible">
-                  {selectedBuddy ? <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={104} /> : <span className="block h-[104px] w-[104px]" aria-hidden="true" />}
+                  {selectedBuddy ? <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={104} plain /> : <span className="block h-[104px] w-[104px]" aria-hidden="true" />}
                 </div>
                 <div className="min-w-0 flex-1">
                   <h2 className="text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Invite Bible Buddies</h2>
@@ -4167,15 +4171,21 @@ export default function DashboardJourneyExperience({
                       <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">{signupCount}</span>
                     </div>
                     {signupCount > 0 ? (
-                      <div className="mt-3 space-y-2">
-                        {shareRewardsReferrals.map((referral) => (
-                          <div key={referral.referred_user_id} className="flex items-center justify-between rounded-xl bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2">
-                            <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">New Bible Buddy</p>
-                            <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                              {new Date(referral.trial_started_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                            </p>
-                          </div>
-                        ))}
+                      <div className="mt-3 max-h-80 space-y-2 overflow-y-auto pr-1 [scrollbar-width:thin]">
+                        {shareRewardsReferrals.map((referral) => {
+                          const displayName = getReferralDisplayName(referral);
+                          return (
+                            <div key={referral.referred_user_id} className="flex items-center justify-between gap-3 rounded-xl bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2">
+                              <div className="min-w-0">
+                                <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">{displayName}</p>
+                                <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-[var(--bb-text-muted,#6b7280)]">Signed up from your link</p>
+                              </div>
+                              <p className="shrink-0 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                                {new Date(referral.trial_started_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                              </p>
+                            </div>
+                          );
+                        })}
                       </div>
                     ) : (
                       <p className="mt-3 rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-4 text-sm font-bold leading-5 text-[var(--bb-text-muted,#6b7280)]">
@@ -5303,10 +5313,10 @@ export default function DashboardJourneyExperience({
               onClick={() => setDashboardMenuOpen((open) => !open)}
               className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               aria-expanded={dashboardMenuOpen}
-              aria-label="Open dashboard menu"
+              aria-label={dashboardMenuOpen ? "Close dashboard menu" : "Open dashboard menu"}
             >
               <span className="text-2xl leading-none" aria-hidden="true">{dashboardMenuOpen ? "×" : "☰"}</span>
-              <span>{dashboardMenuOpen ? "Close" : "Menu"}</span>
+              <span>Menu</span>
             </button>
 
             <button

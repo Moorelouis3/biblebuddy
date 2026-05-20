@@ -31,6 +31,7 @@ type LouisAvatarProps = {
   mood?: LouisMood;
   size?: number;
   buddyId?: BuddyAvatarId;
+  plain?: boolean;
 };
 
 const moodToFile: Record<LouisMood, string> = {
@@ -109,7 +110,7 @@ const steveMoodToFile: Partial<Record<LouisMood, string>> = {
   sideeye: "/Stevereading.png",
 };
 
-function BuddyIllustration({ buddyId, mood, size }: { buddyId: BuddyAvatarId; mood: LouisMood; size: number }) {
+function BuddyIllustration({ buddyId, mood, size, plain = false }: { buddyId: BuddyAvatarId; mood: LouisMood; size: number; plain?: boolean }) {
   const buddy = getBuddyAvatar(buddyId);
   const isPrayer = mood === "pray";
   const isExcited = mood === "stareyes" || mood === "hands";
@@ -120,8 +121,8 @@ function BuddyIllustration({ buddyId, mood, size }: { buddyId: BuddyAvatarId; mo
     <div
       data-buddy-avatar-root
       aria-label={`${buddy.name} avatar`}
-      className="relative select-none overflow-hidden rounded-full"
-      style={{ width: size, height: size, backgroundColor: buddy.colors.bg }}
+      className={`relative select-none ${plain ? "overflow-visible" : "overflow-hidden rounded-full"}`}
+      style={{ width: size, height: size, backgroundColor: plain ? "transparent" : buddy.colors.bg }}
     >
       <div
         className="absolute rounded-full"
@@ -203,13 +204,14 @@ function BuddyIllustration({ buddyId, mood, size }: { buddyId: BuddyAvatarId; mo
           opacity: mood === "wave" || mood === "hands" || mood === "salute" ? 1 : 0,
         }}
       />
-      <div className="absolute inset-0 rounded-full ring-1 ring-black/5" />
+      {!plain ? <div className="absolute inset-0 rounded-full ring-1 ring-black/5" /> : null}
     </div>
   );
 }
 
-export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarProps) {
+export function LouisAvatar({ mood = "wave", size = 72, buddyId, plain = false }: LouisAvatarProps) {
   const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId | null>(buddyId ?? null);
+  const imageClassName = plain ? "h-full w-full object-contain select-none" : "h-full w-full rounded-full object-cover select-none";
 
   useEffect(() => {
     if (buddyId) {
@@ -259,7 +261,7 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
         <img
           src={src}
           alt="Walter avatar"
-          className="h-full w-full rounded-full object-cover select-none"
+          className={imageClassName}
         />
       </span>
     );
@@ -276,7 +278,7 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
         <img
           src={src}
           alt="Lindsey avatar"
-          className="h-full w-full rounded-full object-cover select-none"
+          className={imageClassName}
         />
       </span>
     );
@@ -293,7 +295,7 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
         <img
           src={src}
           alt="Steve avatar"
-          className="h-full w-full rounded-full object-cover select-none"
+          className={imageClassName}
         />
       </span>
     );
@@ -306,7 +308,7 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
         className="inline-flex shrink-0 items-center justify-center"
         style={{ "--bb-louis-avatar-size": `${size}px`, width: size, height: size } as CSSProperties}
       >
-        <BuddyIllustration buddyId={selectedBuddy} mood={mood} size={size} />
+        <BuddyIllustration buddyId={selectedBuddy} mood={mood} size={size} plain={plain} />
       </span>
     );
   }
@@ -323,7 +325,7 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId }: LouisAvatarPr
       <img
         src={src}
         alt="Louis avatar"
-        className="h-full w-full rounded-full object-cover select-none"
+        className={imageClassName}
       />
     </span>
   );

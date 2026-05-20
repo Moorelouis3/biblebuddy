@@ -931,6 +931,8 @@ export default function PublicProfilePage() {
           .profile-page-shell--skinned {
             position: relative;
             overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             isolation: isolate;
             background-color: var(--profile-skin-background);
             background:
@@ -945,9 +947,12 @@ export default function PublicProfilePage() {
           }
           @media (max-width: 767px) {
             .profile-page-shell--skinned {
+              min-height: 100dvh;
+              overflow-y: auto;
+              -webkit-overflow-scrolling: touch;
               background:
                 linear-gradient(180deg, color-mix(in srgb, var(--profile-skin-background) 4%, transparent) 0%, color-mix(in srgb, var(--profile-skin-background) 48%, transparent) 58%, color-mix(in srgb, var(--profile-skin-background) 82%, #000000) 100%),
-                var(--profile-skin-bg-mobile) center top / 100% auto fixed no-repeat;
+                var(--profile-skin-bg-mobile) center top / 100% auto scroll no-repeat;
             }
           }
           .profile-page-shell--skinned::before {

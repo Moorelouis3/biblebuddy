@@ -4245,8 +4245,9 @@ export default function DashboardPage() {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
       const skinId = normalizePremiumSkinId(
         customEvent?.detail?.skinId ||
-          readCachedPremiumSkin(userId) ||
+          profile?.active_premium_skin ||
           document.documentElement.dataset.bbSkin ||
+          readCachedPremiumSkin(userId) ||
           "none",
       );
       setActivePremiumSkinId(skinId);
@@ -4261,7 +4262,7 @@ export default function DashboardPage() {
       window.removeEventListener("bb:premium-skin-changed", loadPremiumSkin);
       window.removeEventListener("storage", loadPremiumSkin);
     };
-  }, [userId]);
+  }, [profile?.active_premium_skin, userId]);
 
   async function applyPurchasedTheme(themeId: AppThemeId) {
     const mappedSkinId = getPremiumSkinForLegacyTheme(themeId);
@@ -4976,6 +4977,8 @@ export default function DashboardPage() {
             diamonds_count: typeof profileData?.diamonds_count === "number" ? Math.max(0, profileData.diamonds_count) : null,
             selected_streak_flame: resolvedSelectedFlame,
             selected_buddy_avatar: normalizeBuddyAvatarId(profileData?.selected_buddy_avatar || localSelectedBuddy),
+            active_premium_skin: resolvedActiveSkin,
+            active_premium_skin_selected_at: profileData?.active_premium_skin_selected_at ?? null,
             daily_login_gift_last_visit_at: nowIso,
             daily_login_gift_last_shown_date: shouldShowDailyLoginGift ? todayKey : profileData?.daily_login_gift_last_shown_date ?? null,
             profile_image_url: profileData?.profile_image_url ?? null,
@@ -7666,6 +7669,13 @@ export default function DashboardPage() {
     return undefined;
   }
 
+  function preserveActivePremiumSkin() {
+    const stableSkinId = normalizePremiumSkinId(profile?.active_premium_skin ?? activePremiumSkinId);
+    setActivePremiumSkinId(stableSkinId);
+    applyPremiumSkinToDocument(stableSkinId);
+    preloadActiveSkinAssets(stableSkinId);
+  }
+
   function renderStorePromoModal() {
     if (!activeStorePromo) return null;
 
@@ -9201,6 +9211,7 @@ export default function DashboardPage() {
           suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           onOpenStore={openDiamondStore}
+          onDashboardPageChange={preserveActivePremiumSkin}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
@@ -9256,6 +9267,7 @@ export default function DashboardPage() {
           suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           onOpenStore={openDiamondStore}
+          onDashboardPageChange={preserveActivePremiumSkin}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });

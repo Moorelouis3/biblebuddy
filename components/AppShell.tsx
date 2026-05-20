@@ -301,10 +301,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (typeof window === "undefined") return;
     function handlePremiumSkinChanged(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
+      const currentDocumentSkin = normalizePremiumSkinId(document.documentElement.dataset.bbSkin);
       const skinId = normalizePremiumSkinId(
         customEvent?.detail?.skinId ||
+          (currentDocumentSkin !== "none" ? currentDocumentSkin : null) ||
           readCachedPremiumSkin(userId) ||
-          document.documentElement.dataset.bbSkin ||
           "none",
       );
       cachePremiumSkinForUser(userId, skinId);
