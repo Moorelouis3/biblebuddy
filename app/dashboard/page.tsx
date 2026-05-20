@@ -7550,7 +7550,7 @@ export default function DashboardPage() {
         <div className="relative px-6 py-7 text-center">
           <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-sky-300 via-emerald-300 to-amber-300" />
           <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">Deep Study Mode Results</p>
-          <h2 className="mt-3 text-4xl font-black text-[var(--bb-text-primary)]">+{deepStudyResults.diamondsEarned}</h2>
+          <h2 className="mt-3 text-4xl font-black text-[var(--bb-text-primary)]">+{deepStudyResults.diamondsEarned} 💎</h2>
           <p className="mt-1 text-sm font-black text-[var(--bb-accent)]">diamonds earned</p>
           <div className="mt-5 grid grid-cols-2 gap-3 text-left text-sm font-bold">
             <div className="rounded-[20px] bg-[var(--bb-surface-soft)] p-4"><p className="text-[10px] uppercase tracking-[0.16em] text-[var(--bb-text-muted)]">Focused</p><p className="mt-1 text-xl font-black">{deepStudyResults.activeMinutes}m</p></div>
