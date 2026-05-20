@@ -5329,7 +5329,7 @@ export default function DashboardJourneyExperience({
             <button
               type="button"
               onClick={openInvitePage}
-              className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-accent,#2f7fe8)] text-[10px] font-black text-white shadow-sm transition hover:brightness-105"
+              className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               aria-label="Invite friends to Bible Buddy"
             >
               <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
