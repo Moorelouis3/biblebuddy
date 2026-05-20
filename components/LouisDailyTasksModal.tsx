@@ -20,6 +20,7 @@ import { TASK_REWARD_LABELS, TASK_XP } from "../lib/progressionRewards";
 import { getChapterNotesFallback, withNotesTimeout } from "../lib/proverbsChapterNotesFallback";
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
 import BrowserTtsButton from "./BrowserTtsButton";
+import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
 
 type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
 
@@ -1134,7 +1135,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               </div>
             ) : (
               <div className="max-w-none space-y-5 text-gray-800">
-                <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
+                <BrowserTtsButton
+                  text={notesText}
+                  label="Listen to chapter notes"
+                  audioSrc={getGenesisOneTtsSrc("notes", selectedNotesTask?.book, selectedNotesTask?.chapter)}
+                />
                 <ReactMarkdown
                   components={{
                     h1: ({ children }) => (

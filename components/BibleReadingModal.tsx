@@ -17,6 +17,7 @@ import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaChapter } from "../lib/triviaGameData";
 import { getScrambledChapter } from "../lib/scrambledGameData";
 import BrowserTtsButton from "./BrowserTtsButton";
+import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -935,7 +936,11 @@ Be accurate to Scripture.`;
               isInline ? "overflow-visible" : "max-h-[60vh] overflow-y-auto"
             }`}
           >
-            <BrowserTtsButton text={chapterSpeechText} label={`Listen to ${bookDisplayName} ${chapter}`} />
+            <BrowserTtsButton
+              text={chapterSpeechText}
+              label={`Listen to ${bookDisplayName} ${chapter}`}
+              audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
+            />
             {enrichedContent ? (
               // Use pre-rendered enriched content if available
               <div 

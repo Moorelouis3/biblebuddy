@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import BibleReadingModal from "@/components/BibleReadingModal";
 import BrowserTtsButton from "@/components/BrowserTtsButton";
+import { getGenesisOneTtsSrc } from "@/lib/genesisOneTts";
 import ChapterNotesMarkdown from "@/components/ChapterNotesMarkdown";
 import CommentSection from "@/components/comments/CommentSection";
 import { ModalShell } from "@/components/ModalShell";
@@ -881,7 +882,11 @@ export default function ProverbsStudyDayPage() {
         <div className="flex flex-col gap-4">
           <CollapsibleTask taskNumber={1} title="Bible Study Intro" estimate={taskEstimates.intro} done={introDone} open={openTask === 1} onToggle={() => setOpenTask(openTask === 1 ? null : 1)}>
             <h2 className="mb-5 text-2xl font-black leading-tight text-gray-950">{day.day_title}</h2>
-            <BrowserTtsButton text={day.devotional_text} label="Listen to intro" />
+            <BrowserTtsButton
+              text={day.devotional_text}
+              label="Listen to intro"
+              audioSrc={getGenesisOneTtsSrc("intro", day.bible_reading_book, day.bible_reading_chapter)}
+            />
             <div className="text-gray-700" style={{ fontSize: "1rem" }}>
               {devotionalBlocks.map((block) => {
                 if (block.kind === "divider") {
@@ -1020,7 +1025,11 @@ export default function ProverbsStudyDayPage() {
           <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
             {notesLoading ? <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p> : (
               <>
-                <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
+                <BrowserTtsButton
+                  text={notesText}
+                  label="Listen to chapter notes"
+                  audioSrc={getGenesisOneTtsSrc("notes", day.bible_reading_book, day.bible_reading_chapter)}
+                />
                 <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
               </>
             )}

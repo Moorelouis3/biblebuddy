@@ -171,13 +171,9 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-bible-study-card {
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header {
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--bb-background) 10%, transparent), transparent 78%),
-    var(--bb-skin-bg-image) !important;
-  background-attachment: fixed !important;
-  background-position: center top !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
   border-color: transparent !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
@@ -203,6 +199,22 @@ html[data-bb-skin="ruby-village"] .bb-community-header {
   border-color: transparent !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-embedded,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-embedded .bb-community-feed {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-embedded .bb-community-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-embedded .bb-community-content {
+  padding-top: 0.75rem !important;
 }
 
 html[data-bb-skin="ruby-village"] .bb-community-hero-card {
@@ -3769,4 +3781,31 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="mount-sinai"] .bb-blue-storm-mobile-stage {
     margin-top: 0 !important;
   }
+}
+
+/* Premium skin master background rule.
+   Keep the user's source artwork at its real rendered size. Do not cover,
+   contain, stretch, or re-scale the skin image from page to page. */
+html[data-bb-skin]:not([data-bb-skin="none"]),
+html[data-bb-skin]:not([data-bb-skin="none"]) body {
+  background-color: var(--bb-background) !important;
+  background-image: var(--bb-skin-bg-image), linear-gradient(var(--bb-background), var(--bb-background)) !important;
+  background-attachment: fixed, fixed !important;
+  background-position: center top, center top !important;
+  background-repeat: repeat, repeat !important;
+  background-size: auto, auto !important;
+  min-height: 100dvh;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) body {
+  background-clip: border-box !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage,
+html[data-bb-skin]:not([data-bb-skin="none"]) main {
+  background-image: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }

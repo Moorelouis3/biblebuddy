@@ -8,6 +8,7 @@ import { supabase } from "@/lib/supabaseClient";
 import ChapterNotesMarkdown from "../../../components/ChapterNotesMarkdown";
 import { fetchBibleChapterNotes, getOfflineChapterNotes } from "@/lib/chapterNotesOffline";
 import BrowserTtsButton from "@/components/BrowserTtsButton";
+import { getGenesisOneTtsSrc } from "@/lib/genesisOneTts";
 
 const CHAPTERS_PER_PAGE = 12;
 
@@ -161,7 +162,11 @@ export default function BookBibleStudyNotesPage() {
               <div className="bg-blue-50 rounded-3xl px-4 md:px-6 py-5 md:py-7">
                 <section className="mb-8 md:mb-10">
                   <div className="bg-white border border-blue-100 rounded-2xl shadow-sm p-4 md:p-6 max-h-[60vh] overflow-y-auto text-sm md:text-base leading-relaxed text-gray-800 space-y-4">
-                    <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
+                    <BrowserTtsButton
+                      text={notesText}
+                      label="Listen to chapter notes"
+                      audioSrc={getGenesisOneTtsSrc("notes", bookDisplayName, selectedChapter)}
+                    />
                     <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
                   </div>
                 </section>

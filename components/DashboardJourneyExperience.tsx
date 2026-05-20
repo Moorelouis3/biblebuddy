@@ -1941,11 +1941,16 @@ export default function DashboardJourneyExperience({
     function handleEmbeddedCommunityHeight(event: MessageEvent) {
       if (event.origin !== window.location.origin) return;
       const data = event.data as { type?: string; height?: number } | null;
-      if (!data || data.type !== "bb-community-height") return;
+      if (!data || (data.type !== "bb-community-height" && data.type !== "bb-community-scroll-top")) return;
+
+      if (data.type === "bb-community-scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
 
       const nextHeight = Number(data.height);
       if (!Number.isFinite(nextHeight)) return;
-      setEmbeddedCommunityHeight(Math.max(620, Math.ceil(nextHeight)));
+      setEmbeddedCommunityHeight(Math.max(420, Math.ceil(nextHeight)));
     }
 
     window.addEventListener("message", handleEmbeddedCommunityHeight);
@@ -3460,9 +3465,9 @@ export default function DashboardJourneyExperience({
       : "";
 
     return (
-    <section className="-mx-4 w-[calc(100%+2rem)] sm:-mx-5 sm:w-[calc(100%+2.5rem)]">
-      <div className="bg-[var(--bb-background,#f8fbff)] pb-3">
-        <div className="border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 sm:px-5">
+    <section className="-mx-4 w-[calc(100%+2rem)] bg-transparent sm:-mx-5 sm:w-[calc(100%+2.5rem)]">
+      <div className="bg-transparent pb-3">
+        <div className="border-b border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_76%,transparent)] px-4 py-3 backdrop-blur sm:px-5">
           <h2 className="text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Community</h2>
           <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
             Connect with Bible Buddies across the world.
@@ -3472,7 +3477,7 @@ export default function DashboardJourneyExperience({
         {embeddedCommunityLoading ? (
           renderCommunityLoadingSkeleton()
         ) : embeddedCommunityError ? (
-          <div className="grid min-h-[420px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
+          <div className="grid min-h-[420px] place-items-center bg-transparent px-6 text-center">
             <div>
               <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">Community needs a refresh.</p>
               <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">{embeddedCommunityError}</p>
@@ -3489,12 +3494,13 @@ export default function DashboardJourneyExperience({
             key={`${embeddedCommunityGroupId}:${communityPostId || ""}:${communityCommentId || ""}`}
             src={communityIframeSrc}
             title="Bible Buddy Community"
-            className="block w-full border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
+            className="block w-full border-0 bg-transparent"
             scrolling="no"
-            style={{ height: embeddedCommunityHeight, minHeight: "calc(100dvh - 130px)" }}
+            allowTransparency
+            style={{ height: embeddedCommunityHeight, minHeight: 420 }}
           />
         ) : (
-          <div className="grid min-h-[520px] place-items-center bg-[var(--bb-surface-soft,#f8fbff)] px-6 text-center">
+          <div className="grid min-h-[520px] place-items-center bg-transparent px-6 text-center">
             <p className="text-sm font-black text-[var(--bb-text-secondary,#5f6368)]">Open Community from the menu to load the group.</p>
           </div>
         )}

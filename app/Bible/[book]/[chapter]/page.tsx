@@ -42,6 +42,7 @@ import { awardDiamonds } from "../../../../lib/diamondWallet";
 import { DIAMOND_REWARDS, TASK_REWARD_LABELS, TASK_XP } from "../../../../lib/progressionRewards";
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../../../../lib/chapterNotesOffline";
 import BrowserTtsButton from "../../../../components/BrowserTtsButton";
+import { getGenesisOneTtsSrc } from "../../../../lib/genesisOneTts";
 
 type Verse = {
   num: number;
@@ -2291,7 +2292,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           ref={verseContainerRef}
           className={`mx-auto max-w-3xl bg-white pb-8 pr-10 ${plainTextMode ? "plain-text-mode" : ""}`}
         >
-          <BrowserTtsButton text={chapterSpeechText} label={`Listen to ${bookDisplayName} ${chapter}`} />
+          <BrowserTtsButton
+            text={chapterSpeechText}
+            label={`Listen to ${bookDisplayName} ${chapter}`}
+            audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
+          />
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">
               <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold">
@@ -2980,7 +2985,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             plainTextMode ? "plain-text-mode" : ""
           }`}
         >
-          <BrowserTtsButton text={chapterSpeechText} label={`Listen to ${bookDisplayName} ${chapter}`} />
+          <BrowserTtsButton
+            text={chapterSpeechText}
+            label={`Listen to ${bookDisplayName} ${chapter}`}
+            audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
+          />
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">
               <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
@@ -3103,7 +3112,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 </div>
               ) : (
                 <div className="max-w-none text-gray-800">
-                  <BrowserTtsButton text={reviewNotesText} label="Listen to chapter notes" />
+                  <BrowserTtsButton
+                    text={reviewNotesText}
+                    label="Listen to chapter notes"
+                    audioSrc={getGenesisOneTtsSrc("notes", bookDisplayName, chapter)}
+                  />
                   <ChapterNotesMarkdown>{reviewNotesText}</ChapterNotesMarkdown>
                 </div>
               )}

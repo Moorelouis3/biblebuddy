@@ -1,0 +1,206 @@
+import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+import { GENESIS_ONE_OFFICIAL_NOTES } from "@/lib/genesisOneOfficialNotes";
+import type { GenesisOneTtsKind } from "@/lib/genesisOneTts";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+export const maxDuration = 60;
+
+const BUCKET = "tts-audio";
+const CACHE_VERSION = "v1";
+const VOICE = "onyx";
+const KINDS: GenesisOneTtsKind[] = ["intro", "verses", "notes"];
+type SupabaseAdmin = any;
+
+function adminClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  return createClient(url, key, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+}
+
+function audioResponse(bytes: ArrayBuffer | Buffer, source: "cache" | "generated") {
+  return new NextResponse(bytes as BodyInit, {
+    status: 200,
+    headers: {
+      "Content-Type": "audio/mpeg",
+      "Cache-Control": "public, max-age=31536000, immutable",
+      "X-Bible-Buddy-TTS": source,
+    },
+  });
+}
+
+function cleanForSpeech(input: string) {
+  return input
+    .replace(/<[^>]+>/g, " ")
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/[#*_>`~[\]()]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function normalizeBookKey(book: string | null | undefined) {
+  return String(book || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+async function getIntroText(supabase: SupabaseAdmin) {
+  const { data } = await supabase
+    .from("devotional_days")
+    .select("day_title, devotional_text, bible_reading_book, bible_reading_chapter")
+    .eq("bible_reading_chapter", 1);
+
+  const rows: any[] = Array.isArray(data) ? data : [];
+  const row =
+    rows.find((item: any) => normalizeBookKey(item?.bible_reading_book) === "genesis" && item?.devotional_text?.trim()) ||
+    rows.find((item: any) => item?.devotional_text?.trim());
+
+  if (!row?.devotional_text?.trim()) {
+    throw new Error("Genesis 1 intro text was not found.");
+  }
+
+  return cleanForSpeech(`${row.day_title || "Genesis 1 Introduction"}. ${row.devotional_text}`);
+}
+
+async function getVersesText(supabase: SupabaseAdmin) {
+  const { data } = await supabase
+    .from("bible_chapters")
+    .select("content_json")
+    .eq("chapter", 1)
+    .in("book", ["genesis", "Genesis"])
+    .limit(1)
+    .maybeSingle();
+
+  const verses = ((data as any)?.content_json as any)?.verses;
+  if (!Array.isArray(verses) || verses.length === 0) {
+    throw new Error("Genesis 1 chapter text was not found.");
+  }
+
+  return cleanForSpeech(
+    verses
+      .map((verse: any) => {
+        const number = verse?.verse ?? verse?.num ?? verse?.number;
+        return `${number ? `${number}. ` : ""}${verse?.text || ""}`;
+      })
+      .join(" "),
+  );
+}
+
+async function getNotesText() {
+  return cleanForSpeech(GENESIS_ONE_OFFICIAL_NOTES);
+}
+
+async function getSpeechText(kind: GenesisOneTtsKind, supabase: SupabaseAdmin) {
+  if (kind === "intro") return getIntroText(supabase);
+  if (kind === "verses") return getVersesText(supabase);
+  return getNotesText();
+}
+
+async function downloadCachedAudio(supabase: SupabaseAdmin, path: string) {
+  const { data, error } = await supabase.storage.from(BUCKET).download(path);
+  if (error || !data) return null;
+  return data.arrayBuffer();
+}
+
+async function uploadCachedAudio(supabase: SupabaseAdmin, path: string, audio: Buffer) {
+  const upload = await supabase.storage.from(BUCKET).upload(path, audio, {
+    contentType: "audio/mpeg",
+    upsert: true,
+  });
+
+  if (!upload.error) return;
+
+  await supabase.storage.createBucket(BUCKET, { public: false }).catch(() => null);
+  await supabase.storage.from(BUCKET).upload(path, audio, {
+    contentType: "audio/mpeg",
+    upsert: true,
+  });
+}
+
+async function generateOpenAiSpeech(text: string) {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error("OPENAI_API_KEY is not configured.");
+  }
+
+  const calmMaleInstructions =
+    "Speak in a calm, warm, steady male Bible study narrator voice. Keep the tone peaceful, reverent, clear, and comforting. Use a gentle pace with natural pauses. Do not sound dramatic or theatrical.";
+
+  const primary = await fetch("https://api.openai.com/v1/audio/speech", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "gpt-4o-mini-tts",
+      voice: VOICE,
+      input: text,
+      instructions: calmMaleInstructions,
+      response_format: "mp3",
+    }),
+  });
+
+  if (primary.ok) {
+    return Buffer.from(await primary.arrayBuffer());
+  }
+
+  const fallback = await fetch("https://api.openai.com/v1/audio/speech", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "tts-1-hd",
+      voice: VOICE,
+      input: text,
+      response_format: "mp3",
+    }),
+  });
+
+  if (!fallback.ok) {
+    const message = await fallback.text().catch(() => "OpenAI TTS failed.");
+    throw new Error(message || "OpenAI TTS failed.");
+  }
+
+  return Buffer.from(await fallback.arrayBuffer());
+}
+
+export async function GET(request: NextRequest) {
+  const kind = request.nextUrl.searchParams.get("kind") as GenesisOneTtsKind | null;
+  if (!kind || !KINDS.includes(kind)) {
+    return NextResponse.json({ error: "Invalid Genesis 1 TTS kind." }, { status: 400 });
+  }
+
+  const supabase = adminClient();
+  if (!supabase) {
+    return NextResponse.json({ error: "Supabase admin client is not configured." }, { status: 500 });
+  }
+
+  const path = `genesis/1/${kind}-${VOICE}-${CACHE_VERSION}.mp3`;
+  const cached = await downloadCachedAudio(supabase, path);
+  if (cached) {
+    return audioResponse(cached, "cache");
+  }
+
+  try {
+    const text = await getSpeechText(kind, supabase);
+    const audio = await generateOpenAiSpeech(text);
+    await uploadCachedAudio(supabase, path, audio).catch((error) => {
+      console.warn("[GENESIS_ONE_TTS] Could not cache generated audio:", error);
+    });
+    return audioResponse(audio, "generated");
+  } catch (error) {
+    console.error("[GENESIS_ONE_TTS] Failed to generate audio:", error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Could not generate Genesis 1 audio." },
+      { status: 500 },
+    );
+  }
+}

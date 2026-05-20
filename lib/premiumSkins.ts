@@ -547,9 +547,9 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
   }
 
   root.dataset.bbSkin = skin.id;
-  root.style.setProperty("--bb-skin-bg-image", `url("${skin.desktopBackgroundImage}")`);
-  root.style.setProperty("--bb-skin-bg-image-mobile", `url("${skin.mobileBackgroundImage}")`);
-  root.style.setProperty("--bb-skin-bg-image-desktop", `url("${skin.desktopBackgroundImage}")`);
+  root.style.setProperty("--bb-skin-bg-image", `url("${skin.originalImage}")`);
+  root.style.setProperty("--bb-skin-bg-image-mobile", `url("${skin.originalImage}")`);
+  root.style.setProperty("--bb-skin-bg-image-desktop", `url("${skin.originalImage}")`);
   root.style.setProperty(
     "--bb-skin-glow",
     skin.id === "midnight-garden"

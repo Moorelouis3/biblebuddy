@@ -11,6 +11,7 @@ import BrowserTtsButton from "@/components/BrowserTtsButton";
 import { triggerPoints } from "@/components/PointsPop";
 import { TASK_XP } from "@/lib/progressionRewards";
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "@/lib/chapterNotesOffline";
+import { getGenesisOneTtsSrc } from "@/lib/genesisOneTts";
 
 const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 export default function ChapterNotesPage() {
@@ -465,7 +466,11 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               {/* Display notes if they exist - no persistence warnings shown to users */}
               {!loadingNotes && notesText && (
                 <div className="prose prose-sm md:prose-base max-w-none">
-                    <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
+                    <BrowserTtsButton
+                      text={notesText}
+                      label="Listen to chapter notes"
+                      audioSrc={getGenesisOneTtsSrc("notes", bookDisplayName, chapter)}
+                    />
                     <ReactMarkdown
                       components={{
                         h1: ({ node, ...props }) => (

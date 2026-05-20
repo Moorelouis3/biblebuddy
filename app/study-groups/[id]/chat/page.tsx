@@ -3279,8 +3279,8 @@ export default function GroupChatPage() {
       window.cancelAnimationFrame(frame);
       frame = window.requestAnimationFrame(() => {
         const root = communityRootRef.current;
-        const height = root ? Math.ceil(root.getBoundingClientRect().height) : 0;
-        window.parent?.postMessage({ type: "bb-community-height", height: Math.max(620, height + 16) }, window.location.origin);
+        const height = root ? Math.ceil(Math.max(root.getBoundingClientRect().height, root.scrollHeight)) : 0;
+        window.parent?.postMessage({ type: "bb-community-height", height: Math.max(420, height + 16) }, window.location.origin);
       });
     };
 
@@ -3300,6 +3300,8 @@ export default function GroupChatPage() {
     isDashboardEmbed,
     activeTab,
     selectedHubItem,
+    selectedFeedPost?.id,
+    deepLinkedCommentId,
     posts.length,
     hubCategories.length,
     selectedSeries?.id,
@@ -4942,10 +4944,10 @@ export default function GroupChatPage() {
     : { buttonBg: SAGE };
   // â”€â”€ Render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
-    <div ref={communityRootRef} className={`bb-community-page ${isDashboardEmbed ? "" : "min-h-screen"} text-[var(--bb-text-primary,#111827)]`}>
+    <div ref={communityRootRef} className={`bb-community-page ${isDashboardEmbed ? "bb-community-embedded" : "min-h-screen"} text-[var(--bb-text-primary,#111827)]`}>
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div className="bb-community-header relative z-20" style={{ backgroundColor: coverColor }}>
+      <div className="bb-community-header relative z-20" style={isDashboardEmbed ? undefined : { backgroundColor: coverColor }}>
         <div className="max-w-2xl mx-auto px-4 pt-4 pb-2">
           <div className="bb-community-hero-card rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
           {!isDashboardEmbed && (
@@ -7145,13 +7147,13 @@ export default function GroupChatPage() {
       <div
         className={`bb-community-active-post animate-fade-in-up overflow-hidden bg-[var(--bb-card,#ffffff)] ${
           isDashboardEmbed
-            ? "-mx-4 min-h-[calc(100dvh-130px)] rounded-none border-0 shadow-none"
+            ? "rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] shadow-sm"
             : "rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] shadow-sm"
         }`}
       >
         <div
           className={`flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4 ${
-            isDashboardEmbed ? "sticky top-0 z-20 bg-[var(--bb-card,#ffffff)]" : ""
+            isDashboardEmbed ? "bg-[var(--bb-card,#ffffff)]" : ""
           }`}
         >
           <div className="min-w-0">
@@ -7397,8 +7399,11 @@ export default function GroupChatPage() {
       setSelectedFeedPost(post);
       setDeepLinkedCommentId(null);
       if (isDashboardEmbed && typeof window !== "undefined") {
-        window.setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 0);
-      }
+                window.setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  window.parent?.postMessage({ type: "bb-community-scroll-top" }, window.location.origin);
+                }, 0);
+              }
     };
 
     return (

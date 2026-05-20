@@ -24,6 +24,7 @@ import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { TASK_XP } from "../lib/progressionRewards";
 import BrowserTtsButton from "./BrowserTtsButton";
+import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
 
 type Props = {
   task: TaskState | null;
@@ -1164,7 +1165,11 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
               </button>
             </div>
             <div className="px-1 py-3">
-              <BrowserTtsButton text={devotionalDay.devotional_text} label="Listen to intro" />
+              <BrowserTtsButton
+                text={devotionalDay.devotional_text}
+                label="Listen to intro"
+                audioSrc={getGenesisOneTtsSrc("intro", devotionalDay.bible_reading_book, devotionalDay.bible_reading_chapter)}
+              />
               <ChapterNotesMarkdown>{devotionalDay.devotional_text}</ChapterNotesMarkdown>
             </div>
             <div className="flex justify-end px-1 pb-1 pt-3">
@@ -1196,7 +1201,11 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
               </button>
             </div>
             <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
-              <BrowserTtsButton text={devotionalDay.devotional_text} label="Listen to intro" />
+              <BrowserTtsButton
+                text={devotionalDay.devotional_text}
+                label="Listen to intro"
+                audioSrc={getGenesisOneTtsSrc("intro", devotionalDay.bible_reading_book, devotionalDay.bible_reading_chapter)}
+              />
               <ChapterNotesMarkdown>{devotionalDay.devotional_text}</ChapterNotesMarkdown>
             </div>
           </div>
@@ -1260,7 +1269,11 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
               <p className="py-10 text-center text-sm text-red-500">{notesError}</p>
             ) : (
               <div className="max-w-none text-gray-800">
-                <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
+                <BrowserTtsButton
+                  text={notesText}
+                  label="Listen to chapter notes"
+                  audioSrc={getGenesisOneTtsSrc("notes", task.book, task.chapter)}
+                />
                 <ChapterNotesMarkdown onDatabaseTermClick={handleNotesDatabaseTermClick} onScriptureReferenceClick={handleNotesScriptureReferenceClick}>{notesText}</ChapterNotesMarkdown>
               </div>
             )}
@@ -1319,7 +1332,11 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
               <p className="py-10 text-center text-sm text-red-500">{notesError}</p>
             ) : (
               <div className="max-w-none text-gray-800">
-                <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
+                <BrowserTtsButton
+                  text={notesText}
+                  label="Listen to chapter notes"
+                  audioSrc={getGenesisOneTtsSrc("notes", task.book, task.chapter)}
+                />
                 <ChapterNotesMarkdown onDatabaseTermClick={handleNotesDatabaseTermClick} onScriptureReferenceClick={handleNotesScriptureReferenceClick}>{notesText}</ChapterNotesMarkdown>
               </div>
             )}
