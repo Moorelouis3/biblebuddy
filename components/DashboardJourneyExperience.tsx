@@ -7,6 +7,8 @@ import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
 import DashboardDailyTaskCallout from "./DashboardDailyTaskCallout";
+import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
+import CommentSection from "./comments/CommentSection";
 import BibleStudiesLibraryPage from "../app/devotionals/page";
 import BibleStudyDetailPage from "../app/devotionals/[id]/page";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
@@ -40,6 +42,8 @@ import {
   GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
+import { GENESIS_DAY_ONE_CREATION_LESSON } from "../lib/bibleYearDailyLessons";
+import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
@@ -1663,6 +1667,8 @@ export default function DashboardJourneyExperience({
   const [bibleYearDashboardActive, setBibleYearDashboardActive] = useState(false);
   const [bibleYearSeriesActive, setBibleYearSeriesActive] = useState(false);
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
+  const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<"reading" | "trivia" | "reflection" | null>(null);
+  const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
 
   const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "share", "buddies", "tv", "games", "settings"] as const;
@@ -2865,6 +2871,7 @@ export default function DashboardJourneyExperience({
     setBibleYearDashboardActive(false);
     setBibleYearSeriesActive(false);
     setSelectedBibleYearSeriesDay(null);
+    setActiveBibleYearDayCard(null);
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.delete("view");
@@ -2909,6 +2916,7 @@ export default function DashboardJourneyExperience({
     setBibleYearDashboardActive(false);
     setBibleYearSeriesActive(true);
     setSelectedBibleYearSeriesDay(null);
+    setActiveBibleYearDayCard(null);
     setFreeStudyModeActive(false);
     setEmbeddedBibleBookSearchOpen(false);
     setEmbeddedBibleSelectedBook(null);
@@ -4186,6 +4194,580 @@ export default function DashboardJourneyExperience({
     });
   }
 
+  function getBibleYearLessonVerses(block: typeof GENESIS_DAY_ONE_CREATION_LESSON.sections[number]["verseBlock"]) {
+    return (GENESIS_CREATION_WEB_VERSES[block.chapter] || []).filter(
+      (verse) => verse.verse >= block.startVerse && verse.verse <= block.endVerse,
+    );
+  }
+
+  function buildBibleYearLessonMarkdown() {
+    const lesson = GENESIS_DAY_ONE_CREATION_LESSON;
+    const teachingByReference: Record<string, string> = {
+      "Genesis 1:1-5": `### 🌌 God Is Before Creation
+
+The story starts with God already there.
+
+Not created.
+
+Not explained.
+
+Not fighting for control.
+
+Just God, Creator over everything.
+
+### 🌍 The Heavens and the Earth
+
+This means the whole created order.
+
+🌌 everything above
+
+🌍 everything below
+
+👁️ everything visible
+
+🙏 everything humans will live inside
+
+The first verse puts everything under God's authority.
+
+### 🌊 Formless and Empty
+
+The earth is unshaped, unfilled, dark, and watery.
+
+But unfinished does not mean abandoned.
+
+Before the world looks complete, God's Spirit is already near.
+
+### 🗣️ God Speaks Light
+
+God says, "Let there be light," and light comes.
+
+He does not fight the darkness.
+
+He speaks, and creation responds.
+
+Light appears before the sun and moon, so light comes from God, not from a sun god.
+
+### ⚖️ God Brings Order
+
+God separates light from darkness and names Day and Night.
+
+Naming shows authority.
+
+Separation shows order.
+
+God is putting things where they belong.`,
+      "Genesis 1:6-13": `### 🌊 Waters Are Given Boundaries
+
+To ancient readers, deep waters could feel like danger and chaos.
+
+Here, the waters do not rule themselves.
+
+God gives them boundaries.
+
+### 🌍 Dry Land Appears
+
+God gathers the seas and lets dry land appear.
+
+The world is becoming livable.
+
+Life needs a place, so God prepares a place.
+
+### 🌱 Life Begins to Grow
+
+Plants, trees, fruit, and seeds fill the earth.
+
+The seed detail matters because God creates life that can keep producing life.
+
+🌱 life can multiply
+
+🍎 food can be provided
+
+🌍 the earth can sustain creatures
+
+⏳ one generation can lead to another`,
+      "Genesis 1:14-25": `### ☀️ The Lights Serve God's Order
+
+The sun and moon are not gods.
+
+They are lights in God's sky.
+
+### 📅 Time Has Rhythm
+
+The lights mark days, seasons, and years.
+
+God is making a world humans can live in, work in, rest in, and worship in.
+
+📅 seasons for planting and harvesting
+
+🌙 days and nights for work and rest
+
+⏳ years for memory and history
+
+🙏 appointed times for worship
+
+### 🐋 The Waters, Sky, and Land Are Filled
+
+God fills the waters, sky, and land with life.
+
+Creation is no longer empty.
+
+It is full, alive, layered, and blessed.`,
+      "Genesis 1:26-31": `### 👤 Humans Reflect God
+
+This is the high point of creation.
+
+Human beings are made in God's image.
+
+People are not accidents and not disposable.
+
+### 💍 Male and Female Share That Dignity
+
+Male and female are both created in God's image.
+
+Human worth is not based on power, gender, money, beauty, success, or strength.
+
+Every person matters because every person is made by God.
+
+### 👑 Dominion Means Stewardship
+
+Dominion does not mean abuse.
+
+It means responsibility.
+
+Humans are called to care for God's world under God's authority.
+
+👤 every person has dignity
+
+👑 every person has responsibility
+
+🌍 creation is entrusted to human care
+
+✨ life is meant to reflect God's goodness
+
+### ✨ Creation Is Very Good
+
+Before sin enters the story, creation is good, human life is good, and God's purpose for the world is good.`,
+      "Genesis 2:1-3": `### ✅ Creation Is Complete
+
+God does not leave creation half done.
+
+What He made has order, purpose, and goodness.
+
+### 🕊️ God Rests
+
+God rests because the work is complete.
+
+Rest is built into creation before sin enters the world.
+
+### 📅 The Seventh Day Is Blessed
+
+God sets the seventh day apart.
+
+From the beginning, time with God can be holy.
+
+📅 time can be set apart
+
+🕊️ rest belongs in human life
+
+🙏 worship grows from God's finished work
+
+✨ creation has rhythm, not endless striving`,
+      "Genesis 2:4-9": `### 🌿 The Story Moves Closer
+
+The lesson slows down and focuses on human life with God.
+
+### 🌍 Man Is Formed From Dust
+
+God forms man from the dust.
+
+That is humbling.
+
+We are not gods.
+
+We are physical, dependent, and connected to God's world.
+
+### 🌬️ God Gives the Breath of Life
+
+But humanity is not only dust.
+
+God breathes life into the man.
+
+We are dust touched by God: humble, valuable, and dependent.
+
+### 🌳 Eden Is Prepared
+
+God plants a garden and places the man there.
+
+He prepares a home before He gives a command.
+
+Eden is a picture of provision, beauty, purpose, and peace.`,
+      "Genesis 2:10-17": `### 💧 Rivers Flow From Eden
+
+The garden is abundance.
+
+Water flows.
+
+Precious materials are named.
+
+Life near God is supplied.
+
+### 🛠️ Work Is Good
+
+God gives the man work before sin enters the world.
+
+So work itself is not the curse.
+
+Meaningful responsibility is part of God's good design.
+
+### 🌳 Freedom Comes First
+
+God says the man may freely eat from every tree except one.
+
+God gives abundance, then sets one boundary.
+
+### ⚖️ The Command Teaches Trust
+
+The tree introduces choice and trust.
+
+Will humanity trust God's word about life and death?
+
+🍎 provision is generous
+
+🌳 boundaries are real
+
+⚖️ obedience matters
+
+🙏 trust is part of life with God`,
+      "Genesis 2:18-25": `### 🤝 The First Not Good
+
+For the first time, God says something is not good.
+
+Sin has not entered yet.
+
+The problem is aloneness.
+
+### 🐄 The Animals Are Named
+
+The man names the animals, showing responsibility.
+
+But none of them can answer his loneliness.
+
+None is a suitable helper.
+
+### 🧩 A Helper Fit for Him
+
+Helper does not mean weak or lesser.
+
+The point is partnership, not inferiority.
+
+The man needs someone who corresponds to him.
+
+### 💍 Woman Is Made From Man
+
+God makes woman from the man's side and brings her to him.
+
+The man's response is joy: bone of my bones and flesh of my flesh.
+
+### 🧬 One Flesh
+
+Marriage is pictured as covenant closeness, loyalty, and shared life.
+
+### ✨ No Shame Yet
+
+The man and woman are naked and not ashamed.
+
+No hiding.
+
+No fear.
+
+No guilt.
+
+No pretending.
+
+👤 fully known
+
+🤝 fully welcomed
+
+💍 joined in covenant love
+
+✨ not yet covered by shame`,
+    };
+
+    const verseBlocks = lesson.sections
+      .map((section) => {
+        const verses = getBibleYearLessonVerses(section.verseBlock)
+          .map((verse) => `> **${section.verseBlock.chapter}:${verse.verse}** ${verse.text}`)
+          .join("\n\n");
+
+        return `# ${section.heading}
+
+## ${section.verseBlock.reference}
+
+${verses}
+
+${teachingByReference[section.verseBlock.reference] || section.teaching.join("\n\n")}`;
+      })
+      .join("\n\n");
+
+    return `# The Creation of the World
+
+# Day 1 of the Bible In One Year Plan
+
+Genesis opens with God: already present, already powerful, already speaking.
+
+Today we are reading every verse and slowing down just enough to understand the story.
+
+## Why Day 1 Matters
+
+🌌 God creates before anything else exists.
+
+🗣️ Creation responds to God's voice.
+
+🌊 Darkness and emptiness become order and life.
+
+👤 Human beings carry God's image.
+
+🕊️ Rest, work, and relationship belong to God's good design.
+
+✨ Creation is good before the world is broken.
+
+${verseBlocks}
+
+# Final Thoughts
+
+The Creation of the World shows us the world before the damage.
+
+God creates, speaks, orders, fills, blesses, rests, forms, breathes, plants, provides, commands, and creates relationship.
+
+Human life is not accidental. Work is not pointless. Rest is not optional. Relationship is not random.
+
+Everything begins with God's good design.
+
+# The Big Lesson
+
+We were made by God, in God's image, for life with God.
+
+Before we understand the fall, we need to understand creation.
+
+Before we understand redemption, we need to understand what God made humanity for.`;
+  }
+
+  const bibleYearDayOneTrivia = [
+    {
+      id: "creator",
+      question: "Who is already present at the beginning of the Bible?",
+      options: ["God", "Abraham", "Moses"],
+      answer: "God",
+    },
+    {
+      id: "light",
+      question: "What does God speak into the darkness first?",
+      options: ["Light", "Rain", "Animals"],
+      answer: "Light",
+    },
+    {
+      id: "image",
+      question: "What does Genesis say human beings are made in?",
+      options: ["God's image", "The angels' image", "The stars' image"],
+      answer: "God's image",
+    },
+    {
+      id: "rest",
+      question: "What does God do on the seventh day?",
+      options: ["Rests", "Creates the sun", "Names the animals"],
+      answer: "Rests",
+    },
+    {
+      id: "alone",
+      question: "What is the first thing God says is not good?",
+      options: ["For the man to be alone", "The garden", "The animals"],
+      answer: "For the man to be alone",
+    },
+  ];
+
+  function renderBibleYearDayDashboard(day: GenesisBibleYearDay) {
+    const isDayOne = day.dayNumber === 1;
+    const cover = getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
+    const correctTriviaCount = bibleYearDayOneTrivia.filter((item) => bibleYearTriviaAnswers[item.id] === item.answer).length;
+    const answeredTriviaCount = bibleYearDayOneTrivia.filter((item) => Boolean(bibleYearTriviaAnswers[item.id])).length;
+
+    const cards = [
+      {
+        key: "reading" as const,
+        eyebrow: "Day 1 Reading",
+        title: "Creation of the World",
+        subtitle: "Read the full Day 1 lesson with every verse included.",
+        icon: "📖",
+        meta: "🎧 Audio Available",
+      },
+      {
+        key: "trivia" as const,
+        eyebrow: "Quick Check",
+        title: "Trivia",
+        subtitle: "Five simple questions to see what stuck.",
+        icon: "🧠",
+        meta: "5 questions",
+      },
+      {
+        key: "reflection" as const,
+        eyebrow: "Go Deeper",
+        title: "Reflection",
+        subtitle: "Answer one simple question with room to go deep.",
+        icon: "✍️",
+        meta: "Community style",
+      },
+    ];
+
+    return (
+      <section className="w-full px-1">
+        <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+          <div className="bb-skin-glow-card overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
+            <div className="relative min-h-[190px] overflow-hidden bg-[var(--bb-surface-soft,#f8fbff)]">
+              {cover ? (
+                <img src={cover} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover opacity-75" />
+              ) : null}
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.72))]" />
+              <div className="relative flex min-h-[190px] flex-col justify-end p-4 text-white sm:p-5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedBibleYearSeriesDay(null);
+                    setActiveBibleYearDayCard(null);
+                  }}
+                  className="mb-4 w-fit rounded-full bg-white/15 px-3 py-1.5 text-xs font-black text-white ring-1 ring-white/25 backdrop-blur transition hover:bg-white/25"
+                >
+                  Back to Series
+                </button>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-white/85">Bible In One Year Series</p>
+                <h1 className="mt-1 text-3xl font-black leading-tight">Day {day.dayNumber}: {day.title}</h1>
+                <p className="mt-1 text-sm font-bold text-white/85">{day.reference} · {day.estimatedTime}</p>
+                <span className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-black text-white ring-1 ring-white/20 backdrop-blur">
+                  <span aria-hidden="true">🎧</span>
+                  Audio Available
+                </span>
+              </div>
+            </div>
+
+            <div className="space-y-3 p-3 sm:p-4">
+              {!isDayOne ? (
+                <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+                  <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">This day is coming next.</p>
+                  <p className="mt-1 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                    Day 1 is the active test dashboard right now. The rest of Genesis can use this same card layout once we approve it.
+                  </p>
+                </div>
+              ) : null}
+
+              {isDayOne ? (
+                <>
+                  <div className="grid gap-3">
+                    {cards.map((card) => (
+                      <button
+                        key={card.key}
+                        type="button"
+                        onClick={() => setActiveBibleYearDayCard((current) => current === card.key ? null : card.key)}
+                        className={`w-full rounded-[24px] border p-4 text-left transition ${
+                          activeBibleYearDayCard === card.key
+                            ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)] shadow-sm"
+                            : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] text-2xl shadow-sm" aria-hidden="true">
+                            {card.icon}
+                          </span>
+                          <span className="min-w-0 flex-1">
+                            <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">{card.eyebrow}</span>
+                            <span className="mt-0.5 block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">{card.title}</span>
+                            <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{card.subtitle}</span>
+                          </span>
+                          <span className="shrink-0 rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-2.5 py-1 text-[10px] font-black text-[var(--bb-text-muted,#6b7280)]">
+                            {card.meta}
+                          </span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+
+                  {activeBibleYearDayCard === "reading" ? (
+                    <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-1">
+                      {renderBibleYearDayModalBody(day)}
+                    </div>
+                  ) : null}
+
+                  {activeBibleYearDayCard === "trivia" ? (
+                    <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
+                      <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Day 1 Trivia</p>
+                      <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Were you paying attention?</h2>
+                      <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                        {answeredTriviaCount === bibleYearDayOneTrivia.length
+                          ? `You got ${correctTriviaCount} of ${bibleYearDayOneTrivia.length} right.`
+                          : "Answer five quick questions from the Day 1 reading."}
+                      </p>
+                      <div className="mt-4 space-y-4">
+                        {bibleYearDayOneTrivia.map((item, index) => {
+                          const selected = bibleYearTriviaAnswers[item.id];
+                          return (
+                            <div key={item.id} className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-3">
+                              <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{index + 1}. {item.question}</p>
+                              <div className="mt-3 grid gap-2">
+                                {item.options.map((option) => {
+                                  const isSelected = selected === option;
+                                  const isCorrect = option === item.answer;
+                                  return (
+                                    <button
+                                      key={option}
+                                      type="button"
+                                      onClick={() => setBibleYearTriviaAnswers((current) => ({ ...current, [item.id]: option }))}
+                                      className={`rounded-2xl border px-3 py-2.5 text-left text-sm font-bold transition ${
+                                        isSelected
+                                          ? isCorrect
+                                            ? "border-emerald-400 bg-emerald-100 text-emerald-950"
+                                            : "border-rose-400 bg-rose-100 text-rose-950"
+                                          : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-secondary,#4b5563)] hover:border-[var(--bb-accent,#2f7fe8)]"
+                                      }`}
+                                    >
+                                      {option}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {activeBibleYearDayCard === "reflection" ? (
+                    <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
+                      <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Day 1 Reflection</p>
+                      <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                        Where do you need to remember that God can bring order, life, or peace into something that feels unfinished?
+                      </h2>
+                      <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                        Keep it simple, or go deep. This is a place to respond to the Day 1 lesson.
+                      </p>
+                      <div className="mt-4">
+                        <CommentSection
+                          articleSlug="bible-in-one-year-day-1-creation-of-the-world"
+                          headingText=""
+                          placeholderText="Start Typing Here"
+                          submitButtonText="Post Reflection"
+                          variant="plain"
+                        />
+                      </div>
+                    </div>
+                  ) : null}
+                </>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   const renderBibleYearSeriesPage = () => {
     const matchedSeriesDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) =>
       day.readings.some((reading) =>
@@ -4194,6 +4776,9 @@ export default function DashboardJourneyExperience({
       ),
     );
     const currentSeriesDayNumber = matchedSeriesDay?.dayNumber || 1;
+    if (selectedBibleYearSeriesDay) {
+      return renderBibleYearDayDashboard(selectedBibleYearSeriesDay);
+    }
 
     return (
       <section className="w-full px-1">
@@ -4230,7 +4815,10 @@ export default function DashboardJourneyExperience({
                   <button
                     key={day.dayNumber}
                     type="button"
-                    onClick={() => setSelectedBibleYearSeriesDay(day)}
+                    onClick={() => {
+                      setSelectedBibleYearSeriesDay(day);
+                      setActiveBibleYearDayCard(null);
+                    }}
                     className={`w-full overflow-hidden rounded-[24px] border text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(0,0,0,0.16)] ${
                       isCurrent
                         ? "border-[var(--bb-accent,#2f7fe8)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-card,#ffffff))]"
@@ -4266,6 +4854,91 @@ export default function DashboardJourneyExperience({
           </div>
         </div>
       </section>
+    );
+  };
+
+  const renderBibleYearDayModalBody = (day: GenesisBibleYearDay) => {
+    const dayOneLesson = day.dayNumber === 1 ? GENESIS_DAY_ONE_CREATION_LESSON : null;
+
+    if (dayOneLesson) {
+      return (
+        <div className="px-4 py-5">
+          <div className="mb-5">
+            <ChapterNotesMarkdown>{buildBibleYearLessonMarkdown()}</ChapterNotesMarkdown>
+          </div>
+
+          <div className="border-t border-[var(--bb-card-border,#dbe7f4)] pt-5">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">After the lesson</p>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+              Trivia and reflection stay separate so the main lesson can keep flowing like a guided Bible podcast.
+            </p>
+            <div className="mt-3 grid gap-2">
+              {day.readings.map((reading, index) => {
+                const devotional = devotionalOptions.find((option) => option.title === reading.studyTitle);
+                return (
+                  <button
+                    key={`${reading.book}-${reading.chapter}-follow-up`}
+                    type="button"
+                    onClick={() => void startBibleYearSeriesReading(day, index)}
+                    disabled={isLoadingDevotionalOptions || switchingStudyChapter !== null || !devotional}
+                    className="rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    Open Genesis {reading.chapter} Tasks
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="space-y-3 p-4">
+        <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s chapters</p>
+          <div className="mt-3 grid gap-2">
+            {day.readings.map((reading, index) => {
+              const devotional = devotionalOptions.find((option) => option.title === reading.studyTitle);
+              const isCurrentReading =
+                currentDevotionalTitle === reading.studyTitle &&
+                currentDevotionalTask?.devotionalDayNumber === reading.studyDayNumber;
+              return (
+                <button
+                  key={`${reading.book}-${reading.chapter}`}
+                  type="button"
+                  onClick={() => void startBibleYearSeriesReading(day, index)}
+                  disabled={isLoadingDevotionalOptions || switchingStudyChapter !== null || !devotional}
+                  className={`flex items-center justify-between gap-3 rounded-2xl border px-3 py-3 text-left transition ${
+                    isCurrentReading
+                      ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]"
+                      : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] hover:border-[var(--bb-accent,#2f7fe8)]"
+                  } disabled:cursor-not-allowed disabled:opacity-60`}
+                >
+                  <span className="min-w-0">
+                    <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                      Genesis {reading.chapter}
+                    </span>
+                    <span className="mt-0.5 block truncate text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                      {reading.studyTitle}
+                    </span>
+                  </span>
+                  <span className="shrink-0 text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
+                    {isCurrentReading ? "Current" : switchingStudyChapter === reading.studyDayNumber ? "Loading" : "Load"}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Coming next</p>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            Day 1 is testing the new single-lesson format first. The rest of Genesis can move into that format after we like the feel.
+          </p>
+        </div>
+      </div>
     );
   };
 
@@ -4752,6 +5425,13 @@ export default function DashboardJourneyExperience({
                     </span>
                   </span>
                 </div>
+                <button
+                  type="button"
+                  onClick={openBibleYearSeriesDashboard}
+                  className="mt-3 w-full rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
+                >
+                  Open Bible In One Year Series
+                </button>
               </section>
             ) : null}
             {false ? (
@@ -5495,6 +6175,48 @@ export default function DashboardJourneyExperience({
       <nav className="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom,0px)+10px)] z-[90] mx-auto max-w-xl lg:sticky lg:bottom-2 lg:z-40">
         {dashboardMenuOpen ? (
           <div className="mb-2 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 p-2.5 shadow-[0_18px_46px_rgba(15,35,60,0.22)] backdrop-blur">
+            <div className="mb-2 grid grid-cols-2 gap-1.5">
+              <button
+                type="button"
+                data-dashboard-nav-key="bible-year"
+                onClick={openBibleYearDashboard}
+                className={`flex min-h-[76px] flex-col items-center justify-center gap-1 rounded-[18px] px-2 py-2 text-center text-[10px] font-black transition ${
+                  bibleYearDashboardActive
+                    ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
+                    : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
+                }`}
+              >
+                <span
+                  className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
+                    bibleYearDashboardActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
+                  }`}
+                  aria-hidden="true"
+                >
+                  📖
+                </span>
+                <span className="leading-tight">Bible In One Year</span>
+              </button>
+              <button
+                type="button"
+                data-dashboard-nav-key="bible-year-series"
+                onClick={openBibleYearSeriesDashboard}
+                className={`flex min-h-[76px] flex-col items-center justify-center gap-1 rounded-[18px] px-2 py-2 text-center text-[10px] font-black transition ${
+                  bibleYearSeriesActive
+                    ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
+                    : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
+                }`}
+              >
+                <span
+                  className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
+                    bibleYearSeriesActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
+                  }`}
+                  aria-hidden="true"
+                >
+                  📖
+                </span>
+                <span className="leading-tight">Bible In One Year Series</span>
+              </button>
+            </div>
             <div className="grid grid-cols-4 gap-1.5">
               {dashboardNavItems.map((item, index) => {
                 const isActive = !bibleYearDashboardActive && !bibleYearSeriesActive && index === safeActivePage;
@@ -5524,50 +6246,6 @@ export default function DashboardJourneyExperience({
                       </span>
                       <span className="leading-tight">{item.label}</span>
                     </Link>
-                    {item.key === "home" ? (
-                      <>
-                        <button
-                          type="button"
-                          data-dashboard-nav-key="bible-year"
-                          onClick={openBibleYearDashboard}
-                          className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black transition ${
-                            bibleYearDashboardActive
-                              ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
-                              : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
-                          }`}
-                        >
-                          <span
-                            className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
-                              bibleYearDashboardActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
-                            }`}
-                            aria-hidden="true"
-                          >
-                            📖
-                          </span>
-                          <span className="leading-tight">Bible In One Year</span>
-                        </button>
-                        <button
-                          type="button"
-                          data-dashboard-nav-key="bible-year-series"
-                          onClick={openBibleYearSeriesDashboard}
-                          className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black transition ${
-                            bibleYearSeriesActive
-                              ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
-                              : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
-                          }`}
-                        >
-                          <span
-                            className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
-                              bibleYearSeriesActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
-                            }`}
-                            aria-hidden="true"
-                          >
-                            📖
-                          </span>
-                          <span className="leading-tight">Bible In One Year Series</span>
-                        </button>
-                      </>
-                    ) : null}
                   </Fragment>
                 );
               })}
@@ -5680,91 +6358,6 @@ export default function DashboardJourneyExperience({
           }}
         />
       ) : null}
-
-      <ModalShell
-        isOpen={!!selectedBibleYearSeriesDay}
-        onClose={() => setSelectedBibleYearSeriesDay(null)}
-        backdropColor="bg-black/55"
-        scrollable={true}
-        zIndex="z-[95]"
-      >
-        {selectedBibleYearSeriesDay ? (
-          <div className="mx-4 w-full max-w-md overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-2xl">
-            <div className="bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_76%,transparent))] px-5 py-5">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
-                    Day {selectedBibleYearSeriesDay.dayNumber}
-                  </p>
-                  <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                    {selectedBibleYearSeriesDay.title}
-                  </h2>
-                  <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
-                    {selectedBibleYearSeriesDay.reference} · {selectedBibleYearSeriesDay.estimatedTime}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setSelectedBibleYearSeriesDay(null)}
-                  className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f8fbff)] text-lg font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-card,#ffffff)]"
-                  aria-label="Close Bible In One Year day"
-                >
-                  x
-                </button>
-              </div>
-              <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                {selectedBibleYearSeriesDay.summary}
-              </p>
-            </div>
-
-            <div className="space-y-3 p-4">
-              <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s chapters</p>
-                <div className="mt-3 grid gap-2">
-                  {selectedBibleYearSeriesDay.readings.map((reading, index) => {
-                    const devotional = devotionalOptions.find((option) => option.title === reading.studyTitle);
-                    const isCurrentReading =
-                      currentDevotionalTitle === reading.studyTitle &&
-                      currentDevotionalTask?.devotionalDayNumber === reading.studyDayNumber;
-                    return (
-                      <button
-                        key={`${reading.book}-${reading.chapter}`}
-                        type="button"
-                        onClick={() => void startBibleYearSeriesReading(selectedBibleYearSeriesDay, index)}
-                        disabled={isLoadingDevotionalOptions || switchingStudyChapter !== null || !devotional}
-                        className={`flex items-center justify-between gap-3 rounded-2xl border px-3 py-3 text-left transition ${
-                          isCurrentReading
-                            ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]"
-                            : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] hover:border-[var(--bb-accent,#2f7fe8)]"
-                        } disabled:cursor-not-allowed disabled:opacity-60`}
-                      >
-                        <span className="min-w-0">
-                          <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                            Genesis {reading.chapter}
-                          </span>
-                          <span className="mt-0.5 block truncate text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                            {reading.studyTitle}
-                          </span>
-                        </span>
-                        <span className="shrink-0 text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
-                          {isCurrentReading ? "Current" : switchingStudyChapter === reading.studyDayNumber ? "Loading" : "Load"}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Study rhythm</p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                  Each chapter keeps the Bible Buddy flow: intro, read chapter, notes, trivia, and reflection. That keeps the app feeling guided instead of becoming a plain reading checklist.
-                </p>
-              </div>
-            </div>
-          </div>
-        ) : null}
-      </ModalShell>
 
       <ModalShell
         isOpen={showDevotionalSettings}
