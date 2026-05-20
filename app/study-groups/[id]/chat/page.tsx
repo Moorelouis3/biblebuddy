@@ -7,7 +7,7 @@ import { triggerToast } from "@/components/AppToast";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ReactMarkdown from "react-markdown";
-import { useEffect, useMemo, useState, useRef, useCallback, type MouseEvent } from "react";
+import { useEffect, useMemo, useState, useRef, useCallback, type CSSProperties, type MouseEvent } from "react";
 import { createPortal } from "react-dom";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -29,6 +29,7 @@ import BibleStudiesSeriesList from "@/components/BibleStudiesSeriesList";
 import { enrichBibleVerses } from "@/lib/bibleHighlighting";
 import { BIBLE_STUDY_SERIES_CATALOG, getBibleStudySeriesCover } from "@/lib/bibleStudiesCatalog";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import { getPremiumSkin, normalizePremiumSkinId, type PremiumSkinId } from "@/lib/premiumSkins";
 import { ensureBibleEntityLearned } from "@/lib/bibleEntityProgress";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "@/lib/bibleNotes";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
@@ -88,6 +89,7 @@ interface Post {
   current_streak?: number | null;
   selected_streak_flame?: string | null;
   current_level?: number | null;
+  active_premium_skin?: PremiumSkinId | string | null;
 }
 
 interface GroupFeedComment {
@@ -107,6 +109,7 @@ interface GroupFeedComment {
   current_streak?: number | null;
   selected_streak_flame?: string | null;
   current_level?: number | null;
+  active_premium_skin?: PremiumSkinId | string | null;
 }
 
 interface Member {
@@ -119,6 +122,7 @@ interface Member {
   current_streak?: number | null;
   selected_streak_flame?: string | null;
   current_level?: number | null;
+  active_premium_skin?: PremiumSkinId | string | null;
 }
 
 interface TopBuddy {
@@ -131,6 +135,7 @@ interface TopBuddy {
   currentStreak?: number | null;
   selectedStreakFlame?: string | null;
   currentLevel?: number | null;
+  activePremiumSkin?: PremiumSkinId | string | null;
   posts: number;
   comments: number;
   likes: number;
@@ -159,6 +164,7 @@ interface TopBuddiesEngagement {
     currentStreak?: number | null;
     selectedStreakFlame?: string | null;
     currentLevel?: number | null;
+    activePremiumSkin?: PremiumSkinId | string | null;
     openedAt: string | null;
   }>;
 }
@@ -211,6 +217,7 @@ interface ArticleLikeUser {
   current_streak?: number | null;
   selected_streak_flame?: string | null;
   current_level?: number | null;
+  active_premium_skin?: PremiumSkinId | string | null;
 }
 
 interface DevotionalPreview {
@@ -292,6 +299,7 @@ interface SeriesComment {
   current_streak?: number | null;
   selected_streak_flame?: string | null;
   current_level?: number | null;
+  active_premium_skin?: PremiumSkinId | string | null;
 }
 
 interface AnalyticsUser {
@@ -806,6 +814,7 @@ function GroupCommentSection({
   userProfileImage,
   currentUserRole,
   currentUserBadge,
+  currentUserSkin,
   canAutoReply = false,
   onCountChange,
   targetCommentId,
@@ -818,6 +827,7 @@ function GroupCommentSection({
   userProfileImage: string | null;
   currentUserRole: string | null;
   currentUserBadge: string | null;
+  currentUserSkin?: PremiumSkinId | string | null;
   canAutoReply?: boolean;
   onCountChange: (delta: number) => void;
   targetCommentId?: string | null;
@@ -879,7 +889,7 @@ function GroupCommentSection({
     const [{ data: profiles }, { data: likes }, { data: memberships }] = await Promise.all([
       supabase
         .from("profile_stats")
-        .select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level")
+        .select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin")
         .in("user_id", userIds),
       supabase
         .from("group_post_likes")
@@ -893,7 +903,7 @@ function GroupCommentSection({
     ]);
 
     const imageMap: Record<string, string | null> = {};
-    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null }> = {};
+    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null; active_premium_skin: PremiumSkinId }> = {};
     const roleMap: Record<string, string> = {};
     (profiles || []).forEach((profile: any) => {
       imageMap[profile.user_id] = profile.profile_image_url ?? null;
@@ -903,6 +913,7 @@ function GroupCommentSection({
         current_streak: profile.current_streak ?? null,
         selected_streak_flame: profile.selected_streak_flame ?? null,
         current_level: profile.current_level ?? null,
+        active_premium_skin: normalizePremiumSkinId(profile.active_premium_skin),
       };
     });
     (memberships || []).forEach((membership) => {
@@ -930,6 +941,7 @@ function GroupCommentSection({
         current_streak: badgeMap[row.user_id]?.current_streak ?? null,
         selected_streak_flame: badgeMap[row.user_id]?.selected_streak_flame ?? null,
         current_level: badgeMap[row.user_id]?.current_level ?? null,
+        active_premium_skin: badgeMap[row.user_id]?.active_premium_skin ?? "none",
       }))
     );
     setLoading(false);
@@ -1000,7 +1012,7 @@ function GroupCommentSection({
 
     const { data: profiles } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin")
       .in("user_id", likerIds);
 
     setCommentLikers(
@@ -1015,6 +1027,7 @@ function GroupCommentSection({
           current_streak: profile?.current_streak ?? null,
           selected_streak_flame: profile?.selected_streak_flame ?? null,
           current_level: profile?.current_level ?? null,
+          active_premium_skin: normalizePremiumSkinId(profile?.active_premium_skin),
         };
       }),
     );
@@ -1059,6 +1072,7 @@ function GroupCommentSection({
           member_badge: currentUserBadge,
           current_streak: null,
           current_level: null,
+          active_premium_skin: normalizePremiumSkinId(currentUserSkin),
         },
       ]);
 
@@ -1271,9 +1285,9 @@ function GroupCommentSection({
       >
         <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
           {comment.profile_image_url ? (
-            <img src={comment.profile_image_url} alt={name} className={`${depth > 0 ? "h-6 w-6" : "h-7 w-7"} rounded-full object-cover`} />
+            <img src={comment.profile_image_url} alt={name} className={getProfileSkinFrameClass(`${depth > 0 ? "h-6 w-6" : "h-7 w-7"} rounded-full object-cover`, comment.active_premium_skin)} style={getProfileSkinFrameStyle(comment.active_premium_skin)} />
           ) : (
-            <div className={`${depth > 0 ? "h-6 w-6" : "h-7 w-7"} rounded-full flex items-center justify-center text-white text-[10px] font-bold`} style={{ backgroundColor: avatarColor(comment.user_id) }}>
+            <div className={getProfileSkinFrameClass(`${depth > 0 ? "h-6 w-6" : "h-7 w-7"} rounded-full flex items-center justify-center text-white text-[10px] font-bold`, comment.active_premium_skin)} style={{ backgroundColor: avatarColor(comment.user_id), ...getProfileSkinFrameStyle(comment.active_premium_skin) }}>
               {getInitial(name)}
             </div>
           )}
@@ -1285,8 +1299,8 @@ function GroupCommentSection({
                 {name}
               </Link>
               <StreakFlameBadge currentStreak={comment.current_streak} flameId={comment.selected_streak_flame} />
-              <LevelBadge currentLevel={comment.current_level} />
-              <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
+              <LevelBadge currentLevel={comment.current_level} skinId={comment.active_premium_skin} />
+              <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} skinId={comment.active_premium_skin} />
             </div>
             {editingCommentId === comment.id ? (
               <div className="mt-2 space-y-2">
@@ -1510,12 +1524,13 @@ function GroupCommentSection({
                         <img
                           src={liker.profile_image_url}
                           alt={liker.display_name}
-                          className="h-10 w-10 rounded-full object-cover"
+                          className={getProfileSkinFrameClass("h-10 w-10 rounded-full object-cover", liker.active_premium_skin)}
+                          style={getProfileSkinFrameStyle(liker.active_premium_skin)}
                         />
                       ) : (
                         <div
-                          className="h-10 w-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
-                          style={{ backgroundColor: avatarColor(liker.user_id) }}
+                          className={getProfileSkinFrameClass("h-10 w-10 rounded-full flex items-center justify-center text-white text-sm font-bold", liker.active_premium_skin)}
+                          style={{ backgroundColor: avatarColor(liker.user_id), ...getProfileSkinFrameStyle(liker.active_premium_skin) }}
                         >
                           {getInitial(liker.display_name)}
                         </div>
@@ -1524,8 +1539,8 @@ function GroupCommentSection({
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="truncate text-sm font-semibold text-[var(--bb-text-primary,#111827)]">{liker.display_name}</span>
                           <StreakFlameBadge currentStreak={liker.current_streak} flameId={liker.selected_streak_flame} />
-                          <LevelBadge currentLevel={liker.current_level} />
-                          <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
+                          <LevelBadge currentLevel={liker.current_level} skinId={liker.active_premium_skin} />
+                          <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} skinId={liker.active_premium_skin} />
                         </div>
                       </div>
                     </Link>
@@ -1610,6 +1625,20 @@ function avatarColor(userId: string): string {
   return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
 }
 
+function getProfileSkinFrameStyle(skinId: PremiumSkinId | string | null | undefined): CSSProperties | undefined {
+  const skin = getPremiumSkin(normalizePremiumSkinId(skinId));
+  if (!skin) return undefined;
+  return {
+    borderColor: skin.palette.accent,
+    boxShadow: `0 0 0 2px ${skin.palette.accent}, 0 0 18px ${skin.palette.accentSoft}, 0 0 34px ${skin.palette.accentSoft}`,
+  };
+}
+
+function getProfileSkinFrameClass(baseClassName: string, skinId: PremiumSkinId | string | null | undefined) {
+  const hasSkin = normalizePremiumSkinId(skinId) !== "none";
+  return `${baseClassName} ${hasSkin ? "border-2" : ""}`.trim();
+}
+
 function sortPinnedPostsFirst<T extends { is_pinned: boolean; created_at: string }>(items: T[]): T[] {
   return [...items].sort((a, b) => {
     if (a.is_pinned !== b.is_pinned) return a.is_pinned ? -1 : 1;
@@ -1639,6 +1668,7 @@ export default function GroupChatPage() {
   const [userMemberBadge, setUserMemberBadge] = useState<string | null>(null);
   const [userCurrentStreak, setUserCurrentStreak] = useState<number | null>(null);
   const [userSelectedStreakFlame, setUserSelectedStreakFlame] = useState<string | null>(null);
+  const [userActivePremiumSkin, setUserActivePremiumSkin] = useState<PremiumSkinId>("none");
   const [pushSupported, setPushSupported] = useState(false);
   const [pushPermission, setPushPermission] = useState<NotificationPermission | "unsupported">("unsupported");
   const [pushSubscribed, setPushSubscribed] = useState(false);
@@ -2369,7 +2399,7 @@ export default function GroupChatPage() {
       const [{ data: profile }, streakData] = await Promise.all([
         supabase
           .from("profile_stats")
-          .select("display_name, username, profile_image_url, bio, location, is_paid, member_badge, current_streak, selected_streak_flame, feature_tours")
+          .select("display_name, username, profile_image_url, bio, location, is_paid, member_badge, current_streak, selected_streak_flame, active_premium_skin, feature_tours")
           .eq("user_id", user.id)
           .maybeSingle(),
         syncCurrentStreakToProfileStats(user.id),
@@ -2383,6 +2413,7 @@ export default function GroupChatPage() {
       setUserMemberBadge(profile?.member_badge ?? null);
       setUserCurrentStreak(resolvedCurrentStreak);
       setUserSelectedStreakFlame(profile?.selected_streak_flame ?? null);
+      setUserActivePremiumSkin(normalizePremiumSkinId(profile?.active_premium_skin));
       const { data: membership } = await supabase
         .from("group_members")
         .select("status, role")
@@ -2459,28 +2490,28 @@ export default function GroupChatPage() {
 
     setPosts((prev) =>
       prev.map((post) =>
-        post.user_id === userId ? { ...post, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame } : post,
+        post.user_id === userId ? { ...post, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame, active_premium_skin: userActivePremiumSkin } : post,
       ),
     );
     setComments((prev) =>
       prev.map((comment) =>
-        comment.user_id === userId ? { ...comment, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame } : comment,
+        comment.user_id === userId ? { ...comment, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame, active_premium_skin: userActivePremiumSkin } : comment,
       ),
     );
     setMembers((prev) =>
       prev.map((member) =>
-        member.user_id === userId ? { ...member, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame } : member,
+        member.user_id === userId ? { ...member, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame, active_premium_skin: userActivePremiumSkin } : member,
       ),
     );
     setPostLikers((prev) =>
       prev.map((liker) =>
-        liker.user_id === userId ? { ...liker, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame } : liker,
+        liker.user_id === userId ? { ...liker, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame, active_premium_skin: userActivePremiumSkin } : liker,
       ),
     );
     setSelectedFeedPost((prev) =>
-      prev?.user_id === userId ? { ...prev, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame } : prev,
+      prev?.user_id === userId ? { ...prev, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame, active_premium_skin: userActivePremiumSkin } : prev,
     );
-  }, [userCurrentStreak, userId, userSelectedStreakFlame]);
+  }, [userActivePremiumSkin, userCurrentStreak, userId, userSelectedStreakFlame]);
 
   useEffect(() => {
     const supported =
@@ -2858,13 +2889,13 @@ export default function GroupChatPage() {
 
   function renderTopBuddyAvatar(buddy: TopBuddy, sizeClass = "h-10 w-10") {
     if (buddy.profileImageUrl) {
-      return <img src={buddy.profileImageUrl} alt={buddy.displayName} className={`${sizeClass} rounded-full object-cover ring-2 ring-white shadow-sm`} />;
+      return <img src={buddy.profileImageUrl} alt={buddy.displayName} className={getProfileSkinFrameClass(`${sizeClass} rounded-full object-cover ring-2 ring-white shadow-sm`, buddy.activePremiumSkin)} style={getProfileSkinFrameStyle(buddy.activePremiumSkin)} />;
     }
 
     return (
       <div
-        className={`${sizeClass} flex items-center justify-center rounded-full text-sm font-bold text-white ring-2 ring-white shadow-sm`}
-        style={{ backgroundColor: avatarColor(buddy.userId) }}
+        className={getProfileSkinFrameClass(`${sizeClass} flex items-center justify-center rounded-full text-sm font-bold text-white ring-2 ring-white shadow-sm`, buddy.activePremiumSkin)}
+        style={{ backgroundColor: avatarColor(buddy.userId), ...getProfileSkinFrameStyle(buddy.activePremiumSkin) }}
       >
         {getInitial(buddy.displayName)}
       </div>
@@ -2983,8 +3014,8 @@ export default function GroupChatPage() {
                           {buddy.displayName}
                         </Link>
                         <StreakFlameBadge currentStreak={buddy.currentStreak} flameId={buddy.selectedStreakFlame} />
-                        <LevelBadge currentLevel={buddy.currentLevel} />
-                        <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
+                        <LevelBadge currentLevel={buddy.currentLevel} skinId={buddy.activePremiumSkin} />
+                        <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} skinId={buddy.activePremiumSkin} />
                       </div>
                       <p className="mt-0.5 text-[11px] font-semibold text-[var(--bb-text-secondary,#718096)]">
                         {buddy.actions || 0} Bible tasks · {buddy.scoreBreakdown?.community || 0} community pts
@@ -3018,9 +3049,9 @@ export default function GroupChatPage() {
                     {boardClickers.map((clicker) => (
                       <Link key={clicker.userId} href={`/profile/${clicker.userId}`} className="flex items-center gap-3 rounded-xl px-2 py-2 transition hover:bg-[var(--bb-surface-soft,#f5f9fc)]">
                         {clicker.profileImageUrl ? (
-                          <img src={clicker.profileImageUrl} alt={clicker.displayName} className="h-9 w-9 rounded-full object-cover ring-2 ring-[var(--bb-card,#ffffff)] shadow-sm" />
+                          <img src={clicker.profileImageUrl} alt={clicker.displayName} className={getProfileSkinFrameClass("h-9 w-9 rounded-full object-cover ring-2 ring-[var(--bb-card,#ffffff)] shadow-sm", clicker.activePremiumSkin)} style={getProfileSkinFrameStyle(clicker.activePremiumSkin)} />
                         ) : (
-                          <div className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-black text-white ring-2 ring-[var(--bb-card,#ffffff)] shadow-sm" style={{ backgroundColor: avatarColor(clicker.userId) }}>
+                          <div className={getProfileSkinFrameClass("flex h-9 w-9 items-center justify-center rounded-full text-xs font-black text-white ring-2 ring-[var(--bb-card,#ffffff)] shadow-sm", clicker.activePremiumSkin)} style={{ backgroundColor: avatarColor(clicker.userId), ...getProfileSkinFrameStyle(clicker.activePremiumSkin) }}>
                             {getInitial(clicker.displayName)}
                           </div>
                         )}
@@ -3031,7 +3062,7 @@ export default function GroupChatPage() {
                           </p>
                         </div>
                         <StreakFlameBadge currentStreak={clicker.currentStreak} flameId={clicker.selectedStreakFlame} />
-                        <LevelBadge currentLevel={clicker.currentLevel} />
+                        <LevelBadge currentLevel={clicker.currentLevel} skinId={clicker.activePremiumSkin} />
                       </Link>
                     ))}
                   </div>
@@ -3417,7 +3448,7 @@ export default function GroupChatPage() {
     const authorIds = [...new Set(rows.map((p) => p.user_id))];
     const roleMap: Record<string, string> = {};
     const imageMap: Record<string, string | null> = {};
-    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null }> = {};
+    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null; active_premium_skin: PremiumSkinId }> = {};
 
     const likedSet = new Set<string>();
     const likeCountMap: Record<string, number> = {};
@@ -3438,7 +3469,7 @@ export default function GroupChatPage() {
     if (authorIds.length > 0 && group) {
       const [{ data: mems }, { data: pics }] = await Promise.all([
         supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", authorIds),
-        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level").in("user_id", authorIds),
+        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin").in("user_id", authorIds),
       ]);
       (mems || []).forEach((m) => { roleMap[m.user_id] = m.role; });
       (pics || []).forEach((p: any) => {
@@ -3449,6 +3480,7 @@ export default function GroupChatPage() {
           current_streak: p.current_streak ?? null,
           selected_streak_flame: p.selected_streak_flame ?? null,
           current_level: p.current_level ?? null,
+          active_premium_skin: normalizePremiumSkinId(p.active_premium_skin),
         };
       });
     }
@@ -3466,6 +3498,7 @@ export default function GroupChatPage() {
         current_streak: badgeMap[p.user_id]?.current_streak ?? null,
         selected_streak_flame: badgeMap[p.user_id]?.selected_streak_flame ?? null,
         current_level: badgeMap[p.user_id]?.current_level ?? null,
+        active_premium_skin: badgeMap[p.user_id]?.active_premium_skin ?? "none",
       })),
       weeklyPollByPostId: nextWeeklyPollByPostId,
       weeklyTriviaByPostId: nextWeeklyTriviaByPostId,
@@ -3590,7 +3623,7 @@ export default function GroupChatPage() {
 
     const [{ data: membership }, { data: profile }, { data: likeRows }, { count: directCommentCount }, { data: topLevelComments }] = await Promise.all([
       supabase.from("group_members").select("role").eq("group_id", group.id).eq("user_id", postRow.user_id).maybeSingle(),
-      supabase.from("profile_stats").select("profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level").eq("user_id", postRow.user_id).maybeSingle(),
+      supabase.from("profile_stats").select("profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin").eq("user_id", postRow.user_id).maybeSingle(),
       supabase.from("group_post_likes").select("post_id, user_id").eq("post_id", postRow.id),
       supabase.from("group_posts").select("id", { count: "exact", head: true }).eq("parent_post_id", postRow.id),
       supabase.from("group_posts").select("id").eq("parent_post_id", postRow.id),
@@ -3707,6 +3740,7 @@ export default function GroupChatPage() {
       current_streak: profile?.current_streak ?? null,
       selected_streak_flame: profile?.selected_streak_flame ?? null,
       current_level: profile?.current_level ?? null,
+      active_premium_skin: normalizePremiumSkinId(profile?.active_premium_skin),
     };
 
     setSelectedFeedPost(hydratedPost);
@@ -3739,6 +3773,7 @@ export default function GroupChatPage() {
         member_badge: userMemberBadge,
         current_streak: userCurrentStreak,
         selected_streak_flame: userSelectedStreakFlame,
+        active_premium_skin: userActivePremiumSkin,
       }, ...prev]);
     }
     setLikeLoading((prev) => { const s = new Set(prev); s.delete(post.id); return s; });
@@ -3772,7 +3807,7 @@ export default function GroupChatPage() {
 
     const { data: profiles } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin")
       .in("user_id", likerIds);
 
     setPostLikers(
@@ -3787,6 +3822,7 @@ export default function GroupChatPage() {
           current_streak: profile?.current_streak ?? null,
           selected_streak_flame: profile?.selected_streak_flame ?? null,
           current_level: profile?.current_level ?? null,
+          active_premium_skin: normalizePremiumSkinId(profile?.active_premium_skin),
         };
       }),
     );
@@ -4064,7 +4100,7 @@ export default function GroupChatPage() {
       if (likerIds.length > 0) {
         const { data: likerProfiles } = await supabase
           .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url, current_streak, selected_streak_flame, current_level")
+          .select("user_id, display_name, username, profile_image_url, current_streak, selected_streak_flame, current_level, active_premium_skin")
           .in("user_id", likerIds);
 
         likerMap = Object.fromEntries(
@@ -4077,6 +4113,7 @@ export default function GroupChatPage() {
               current_streak: profile.current_streak ?? null,
               selected_streak_flame: profile.selected_streak_flame ?? null,
               current_level: profile.current_level ?? null,
+              active_premium_skin: normalizePremiumSkinId(profile.active_premium_skin),
             },
           ]),
         );
@@ -4138,6 +4175,7 @@ export default function GroupChatPage() {
       display_name: displayName,
       profile_image_url: userProfileImage,
       selected_streak_flame: userSelectedStreakFlame,
+      active_premium_skin: userActivePremiumSkin,
     };
 
     setHubItemStats((prev) => ({
@@ -4167,7 +4205,7 @@ export default function GroupChatPage() {
     const userIds = page.map((m) => m.user_id);
     const { data: profiles } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin")
       .in("user_id", userIds);
     const profileMap: Record<string, any> = {};
     (profiles || []).forEach((p) => { profileMap[p.user_id] = p; });
@@ -4184,6 +4222,8 @@ export default function GroupChatPage() {
         member_badge: p?.member_badge ?? null,
         current_streak: p?.current_streak ?? null,
         selected_streak_flame: p?.selected_streak_flame ?? null,
+        current_level: p?.current_level ?? null,
+        active_premium_skin: normalizePremiumSkinId(p?.active_premium_skin),
       };
     });
     rows.sort((a, b) => (roleOrder[a.role] ?? 2) - (roleOrder[b.role] ?? 2));
@@ -4393,11 +4433,11 @@ export default function GroupChatPage() {
 
     let imageMap: Record<string, string | null> = {};
     let roleMap: Record<string, string> = {};
-    let badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null }> = {};
+    let badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null; active_premium_skin: PremiumSkinId }> = {};
     if (commentRows.length > 0) {
       const commenterIds = [...new Set(commentRows.map((c) => c.user_id))];
       const [{ data: pics }, { data: roles }] = await Promise.all([
-        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame").in("user_id", commenterIds),
+        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin").in("user_id", commenterIds),
         group
           ? supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", commenterIds)
           : Promise.resolve({ data: [] as Array<{ user_id: string; role: string }> }),
@@ -4409,6 +4449,8 @@ export default function GroupChatPage() {
           member_badge: p.member_badge ?? null,
           current_streak: p.current_streak ?? null,
           selected_streak_flame: p.selected_streak_flame ?? null,
+          current_level: p.current_level ?? null,
+          active_premium_skin: normalizePremiumSkinId(p.active_premium_skin),
         };
       });
       (roles || []).forEach((row) => { roleMap[row.user_id] = row.role; });
@@ -4430,6 +4472,8 @@ export default function GroupChatPage() {
       member_badge: badgeMap[c.user_id]?.member_badge ?? null,
       current_streak: badgeMap[c.user_id]?.current_streak ?? null,
       selected_streak_flame: badgeMap[c.user_id]?.selected_streak_flame ?? null,
+      current_level: badgeMap[c.user_id]?.current_level ?? null,
+      active_premium_skin: badgeMap[c.user_id]?.active_premium_skin ?? "none",
     })));
     setLoadingComments(false);
   }
@@ -4698,6 +4742,7 @@ export default function GroupChatPage() {
         member_badge: userMemberBadge,
         current_streak: userCurrentStreak,
         selected_streak_flame: userSelectedStreakFlame,
+        active_premium_skin: userActivePremiumSkin,
       }]);
       if (parentId) { setReplyText(""); setReplyingToId(null); }
       else setNewCommentText("");
@@ -5188,9 +5233,9 @@ export default function GroupChatPage() {
                               {buddy.rank}
                             </div>
                             {buddy.profileImageUrl ? (
-                              <img src={buddy.profileImageUrl} alt={buddy.displayName} className="h-10 w-10 rounded-full object-cover" />
+                              <img src={buddy.profileImageUrl} alt={buddy.displayName} className={getProfileSkinFrameClass("h-10 w-10 rounded-full object-cover", buddy.activePremiumSkin)} style={getProfileSkinFrameStyle(buddy.activePremiumSkin)} />
                             ) : (
-                              <div className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white" style={{ backgroundColor: avatarColor(buddy.userId) }}>
+                              <div className={getProfileSkinFrameClass("flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white", buddy.activePremiumSkin)} style={{ backgroundColor: avatarColor(buddy.userId), ...getProfileSkinFrameStyle(buddy.activePremiumSkin) }}>
                                 {getInitial(buddy.displayName)}
                               </div>
                             )}
@@ -5199,9 +5244,9 @@ export default function GroupChatPage() {
                                 <div className="flex items-center gap-1.5">
                                   <p className="truncate text-sm font-semibold text-gray-900">{buddy.displayName}</p>
                                   <StreakFlameBadge currentStreak={buddy.currentStreak} flameId={buddy.selectedStreakFlame} />
-                                  <LevelBadge currentLevel={buddy.currentLevel} />
+                                  <LevelBadge currentLevel={buddy.currentLevel} skinId={buddy.activePremiumSkin} />
                                 </div>
-                                <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
+                                <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} skinId={buddy.activePremiumSkin} />
                               </div>
                               <p className="mt-0.5 text-xs text-gray-500">{buddy.actions || 0} Bible tasks</p>
                             </div>
@@ -5249,9 +5294,9 @@ export default function GroupChatPage() {
                     {filtered.map((member) => (
                       <div key={member.user_id} className="flex items-center gap-3 px-5 py-3.5">
                         {member.profile_image_url ? (
-                          <img src={member.profile_image_url} alt={member.display_name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                          <img src={member.profile_image_url} alt={member.display_name} className={getProfileSkinFrameClass("w-10 h-10 rounded-full object-cover flex-shrink-0", member.active_premium_skin)} style={getProfileSkinFrameStyle(member.active_premium_skin)} />
                         ) : (
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(member.user_id) }}>
+                          <div className={getProfileSkinFrameClass("w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0", member.active_premium_skin)} style={{ backgroundColor: avatarColor(member.user_id), ...getProfileSkinFrameStyle(member.active_premium_skin) }}>
                             {getInitial(member.display_name)}
                           </div>
                         )}
@@ -5260,9 +5305,9 @@ export default function GroupChatPage() {
                             <div className="flex items-center gap-1.5">
                               <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
                               <StreakFlameBadge currentStreak={member.current_streak} flameId={member.selected_streak_flame} />
-                              <LevelBadge currentLevel={member.current_level} />
+                              <LevelBadge currentLevel={member.current_level} skinId={member.active_premium_skin} />
                             </div>
-                            <UserBadge customBadge={member.member_badge} isPaid={member.is_paid} groupRole={member.role} />
+                            <UserBadge customBadge={member.member_badge} isPaid={member.is_paid} groupRole={member.role} skinId={member.active_premium_skin} />
                           </div>
                         </div>
                         <Link
@@ -5341,9 +5386,9 @@ export default function GroupChatPage() {
                         <div className="flex items-start gap-3">
                           <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0">
                             {comment.profile_image_url ? (
-                              <img src={comment.profile_image_url} alt={comment.display_name} className="w-8 h-8 rounded-full object-cover hover:opacity-80 transition" />
+                              <img src={comment.profile_image_url} alt={comment.display_name} className={getProfileSkinFrameClass("w-8 h-8 rounded-full object-cover hover:opacity-80 transition", comment.active_premium_skin)} style={getProfileSkinFrameStyle(comment.active_premium_skin)} />
                             ) : (
-                              <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold hover:opacity-80 transition" style={{ backgroundColor: avatarColor(comment.user_id) }}>
+                              <div className={getProfileSkinFrameClass("w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold hover:opacity-80 transition", comment.active_premium_skin)} style={{ backgroundColor: avatarColor(comment.user_id), ...getProfileSkinFrameStyle(comment.active_premium_skin) }}>
                                 {getInitial(comment.display_name)}
                               </div>
                             )}
@@ -5352,8 +5397,8 @@ export default function GroupChatPage() {
                             <div className="flex items-center gap-1.5 mb-1">
                               <Link href={`/profile/${comment.user_id}`} className="text-sm font-semibold text-gray-900 hover:underline">{comment.display_name}</Link>
                               <StreakFlameBadge currentStreak={comment.current_streak} flameId={comment.selected_streak_flame} />
-                              <LevelBadge currentLevel={comment.current_level} />
-                              <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
+                              <LevelBadge currentLevel={comment.current_level} skinId={comment.active_premium_skin} />
+                              <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} skinId={comment.active_premium_skin} />
                               <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
                             </div>
                             {editingSeriesCommentId === comment.id ? (
@@ -5478,9 +5523,9 @@ export default function GroupChatPage() {
                               <div key={reply.id} className="mt-3 ml-6 pl-3 border-l border-[#e8ddd0] flex items-start gap-2">
                                 <Link href={`/profile/${reply.user_id}`} className="flex-shrink-0">
                                   {reply.profile_image_url ? (
-                                    <img src={reply.profile_image_url} alt={reply.display_name} className="w-6 h-6 rounded-full object-cover hover:opacity-80 transition" />
+                                    <img src={reply.profile_image_url} alt={reply.display_name} className={getProfileSkinFrameClass("w-6 h-6 rounded-full object-cover hover:opacity-80 transition", reply.active_premium_skin)} style={getProfileSkinFrameStyle(reply.active_premium_skin)} />
                                   ) : (
-                                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold hover:opacity-80 transition" style={{ backgroundColor: avatarColor(reply.user_id) }}>
+                                    <div className={getProfileSkinFrameClass("w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold hover:opacity-80 transition", reply.active_premium_skin)} style={{ backgroundColor: avatarColor(reply.user_id), ...getProfileSkinFrameStyle(reply.active_premium_skin) }}>
                                       {getInitial(reply.display_name)}
                                     </div>
                                   )}
@@ -5489,8 +5534,8 @@ export default function GroupChatPage() {
                                   <div className="flex items-center gap-1.5 mb-0.5">
                                     <Link href={`/profile/${reply.user_id}`} className="text-xs font-semibold text-gray-900 hover:underline">{reply.display_name}</Link>
                                     <StreakFlameBadge currentStreak={reply.current_streak} flameId={reply.selected_streak_flame} />
-                                    <LevelBadge currentLevel={reply.current_level} />
-                                    <UserBadge customBadge={reply.member_badge} isPaid={reply.is_paid} groupRole={reply.role} />
+                                    <LevelBadge currentLevel={reply.current_level} skinId={reply.active_premium_skin} />
+                                    <UserBadge customBadge={reply.member_badge} isPaid={reply.is_paid} groupRole={reply.role} skinId={reply.active_premium_skin} />
                                     <span className="text-xs text-gray-400">{timeAgo(reply.created_at)}</span>
                                   </div>
                                   {editingSeriesCommentId === reply.id ? (
@@ -6497,9 +6542,9 @@ export default function GroupChatPage() {
                     <div key={liker.user_id} className="flex items-center gap-3">
                       <Link href={`/profile/${liker.user_id}`} className="flex items-center gap-3 min-w-0">
                         {liker.profile_image_url ? (
-                          <img src={liker.profile_image_url} alt={liker.display_name} className="w-10 h-10 rounded-full object-cover" />
+                          <img src={liker.profile_image_url} alt={liker.display_name} className={getProfileSkinFrameClass("w-10 h-10 rounded-full object-cover", liker.active_premium_skin)} style={getProfileSkinFrameStyle(liker.active_premium_skin)} />
                         ) : (
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarColor(liker.user_id) }}>
+                          <div className={getProfileSkinFrameClass("w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold", liker.active_premium_skin)} style={{ backgroundColor: avatarColor(liker.user_id), ...getProfileSkinFrameStyle(liker.active_premium_skin) }}>
                             {getInitial(liker.display_name)}
                           </div>
                         )}
@@ -6509,8 +6554,8 @@ export default function GroupChatPage() {
                           {liker.display_name}
                         </Link>
                         <StreakFlameBadge currentStreak={liker.current_streak} flameId={liker.selected_streak_flame} />
-                        <LevelBadge currentLevel={liker.current_level} />
-                        <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
+                        <LevelBadge currentLevel={liker.current_level} skinId={liker.active_premium_skin} />
+                        <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} skinId={liker.active_premium_skin} />
                       </div>
                     </div>
                   ))}
@@ -6554,9 +6599,9 @@ export default function GroupChatPage() {
                     <div key={liker.user_id} className="flex items-center gap-3">
                       <Link href={`/profile/${liker.user_id}`} className="flex items-center gap-3 min-w-0">
                         {liker.profile_image_url ? (
-                          <img src={liker.profile_image_url} alt={liker.display_name} className="w-10 h-10 rounded-full object-cover" />
+                          <img src={liker.profile_image_url} alt={liker.display_name} className={getProfileSkinFrameClass("w-10 h-10 rounded-full object-cover", liker.active_premium_skin)} style={getProfileSkinFrameStyle(liker.active_premium_skin)} />
                         ) : (
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarColor(liker.user_id) }}>
+                          <div className={getProfileSkinFrameClass("w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold", liker.active_premium_skin)} style={{ backgroundColor: avatarColor(liker.user_id), ...getProfileSkinFrameStyle(liker.active_premium_skin) }}>
                             {getInitial(liker.display_name)}
                           </div>
                         )}
@@ -6566,8 +6611,8 @@ export default function GroupChatPage() {
                           {liker.display_name}
                         </Link>
                         <StreakFlameBadge currentStreak={liker.current_streak} flameId={liker.selected_streak_flame} />
-                        <LevelBadge currentLevel={liker.current_level} />
-                        <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
+                        <LevelBadge currentLevel={liker.current_level} skinId={liker.active_premium_skin} />
+                        <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} skinId={liker.active_premium_skin} />
                       </div>
                     </div>
                   ))}
@@ -6969,9 +7014,9 @@ export default function GroupChatPage() {
                         </div>
                         <Link href={`/profile/${buddy.userId}`} className="flex-shrink-0">
                           {buddy.profileImageUrl ? (
-                            <img src={buddy.profileImageUrl} alt={buddy.displayName} className="h-11 w-11 rounded-full object-cover" />
+                            <img src={buddy.profileImageUrl} alt={buddy.displayName} className={getProfileSkinFrameClass("h-11 w-11 rounded-full object-cover", buddy.activePremiumSkin)} style={getProfileSkinFrameStyle(buddy.activePremiumSkin)} />
                           ) : (
-                            <div className="flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white" style={{ backgroundColor: avatarColor(buddy.userId) }}>
+                            <div className={getProfileSkinFrameClass("flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white", buddy.activePremiumSkin)} style={{ backgroundColor: avatarColor(buddy.userId), ...getProfileSkinFrameStyle(buddy.activePremiumSkin) }}>
                               {getInitial(buddy.displayName)}
                             </div>
                           )}
@@ -6982,8 +7027,8 @@ export default function GroupChatPage() {
                               {buddy.displayName}
                             </Link>
                             <StreakFlameBadge currentStreak={buddy.currentStreak} flameId={buddy.selectedStreakFlame} />
-                            <LevelBadge currentLevel={buddy.currentLevel} />
-                            <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
+                            <LevelBadge currentLevel={buddy.currentLevel} skinId={buddy.activePremiumSkin} />
+                            <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} skinId={buddy.activePremiumSkin} />
                           </div>
                           <p className="mt-1 text-xs text-gray-500">
                             {buddy.actions || 0} Bible tasks · {buddy.scoreBreakdown?.community || 0} community pts
@@ -7122,8 +7167,8 @@ export default function GroupChatPage() {
                 {activeFeedPost.display_name || "Buddy"}
               </Link>
               <StreakFlameBadge currentStreak={activeFeedPost.current_streak} flameId={activeFeedPost.selected_streak_flame} />
-              <LevelBadge currentLevel={activeFeedPost.current_level} />
-              <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} />
+              <LevelBadge currentLevel={activeFeedPost.current_level} skinId={activeFeedPost.active_premium_skin} />
+              <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} skinId={activeFeedPost.active_premium_skin} />
               <span className="text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(activeFeedPost.created_at)}</span>
             </div>
             {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
@@ -7294,6 +7339,7 @@ export default function GroupChatPage() {
                 userProfileImage={userProfileImage}
                 currentUserRole={userRole}
                 currentUserBadge={userMemberBadge}
+                currentUserSkin={userActivePremiumSkin}
                 canAutoReply={isLouisAdmin}
                 targetCommentId={deepLinkedCommentId}
                 mentionItems={mentionItems}
@@ -7453,9 +7499,9 @@ export default function GroupChatPage() {
             )}
             <div className="flex items-start gap-3">
               {post.profile_image_url ? (
-                <img src={post.profile_image_url} alt={post.display_name || ""} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+                <img src={post.profile_image_url} alt={post.display_name || ""} className={getProfileSkinFrameClass("w-9 h-9 rounded-full object-cover flex-shrink-0", post.active_premium_skin)} style={getProfileSkinFrameStyle(post.active_premium_skin)} />
               ) : (
-                <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(post.user_id) }}>
+                <div className={getProfileSkinFrameClass("w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0", post.active_premium_skin)} style={{ backgroundColor: avatarColor(post.user_id), ...getProfileSkinFrameStyle(post.active_premium_skin) }}>
                   {getInitial(post.display_name)}
                 </div>
               )}
@@ -7465,8 +7511,8 @@ export default function GroupChatPage() {
                     {post.display_name || "Buddy"}
                   </Link>
                   <StreakFlameBadge currentStreak={post.current_streak} flameId={post.selected_streak_flame} />
-                  <LevelBadge currentLevel={post.current_level} />
-                  <UserBadge customBadge={post.member_badge} isPaid={post.is_paid} groupRole={post.role} />
+                  <LevelBadge currentLevel={post.current_level} skinId={post.active_premium_skin} />
+                  <UserBadge customBadge={post.member_badge} isPaid={post.is_paid} groupRole={post.role} skinId={post.active_premium_skin} />
                   <span className="text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(post.created_at)}</span>
                 </div>
               </div>

@@ -10,7 +10,7 @@ const LEADERBOARD_CACHE_MS = 10 * 60 * 1000;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 const PROFILE_SELECT =
-  "user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, selected_streak_flame, current_level, total_actions, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at";
+  "user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, selected_streak_flame, active_premium_skin, current_level, total_actions, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at";
 
 let leaderboardCache: {
   expiresAt: number;
@@ -28,6 +28,7 @@ type ProfileRow = {
   is_paid: boolean | null;
   current_streak: number | null;
   selected_streak_flame: string | null;
+  active_premium_skin: string | null;
   current_level: number | null;
   total_actions: number | null;
   chapters_completed_count: number | null;
@@ -264,6 +265,7 @@ function buildProfileActionLeaderboard(profiles: ProfileRow[]): LeaderboardBuddy
         isPaid: !!profile.is_paid,
         currentStreak: profile.current_streak ?? null,
         selectedStreakFlame: profile.selected_streak_flame ?? null,
+        activePremiumSkin: profile.active_premium_skin ?? null,
         currentLevel: Math.max(1, profile.current_level || 1),
         posts: 0,
         comments: 0,
@@ -455,6 +457,7 @@ function buildLeaderboard(options: {
         isPaid: !!profile?.is_paid,
         currentStreak: profile?.current_streak ?? null,
         selectedStreakFlame: profile?.selected_streak_flame ?? null,
+        activePremiumSkin: profile?.active_premium_skin ?? null,
         currentLevel,
         posts: entry.posts,
         comments: entry.comments,
@@ -682,6 +685,7 @@ export async function GET(
         isPaid: !!profile?.is_paid,
         currentStreak: profile?.current_streak || null,
         selectedStreakFlame: profile?.selected_streak_flame || null,
+        activePremiumSkin: profile?.active_premium_skin || null,
         currentLevel: profile?.current_level || null,
         openedAt: clicker.openedAt,
       };

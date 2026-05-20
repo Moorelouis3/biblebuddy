@@ -1227,8 +1227,8 @@ html[data-bb-skin="morning-mercy"] .bb-skin-glow-tile {
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-profile-glow-frame,
-html[data-bb-skin]:not([data-bb-skin="none"]) img[alt="Your profile"],
-html[data-bb-skin]:not([data-bb-skin="none"]) img[class*="rounded-full"][class*="object-cover"] {
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-profile-ring,
+html[data-bb-skin]:not([data-bb-skin="none"]) img[alt="Your profile"] {
   border-color: color-mix(in srgb, var(--bb-accent) 78%, rgba(255, 255, 255, 0.72)) !important;
   box-shadow:
     0 0 0 2px color-mix(in srgb, var(--bb-accent) 82%, rgba(255, 255, 255, 0.4)),
