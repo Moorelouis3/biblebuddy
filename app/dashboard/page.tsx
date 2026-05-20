@@ -70,6 +70,8 @@ import {
   getPremiumSkinForLegacyTheme,
   getPremiumSkin,
   normalizePremiumSkinId,
+  readCachedPremiumSkinAgeMs,
+  readCachedPremiumSkin,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
 import {
@@ -123,6 +125,7 @@ const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
 const MAX_BADGE_POPUPS_PER_SESSION = 3;
 const MYSTERY_PRIZE_REWARDS = [100, 150, 200, 250, 300, 400, 500];
 const DAILY_LOGIN_GIFT_MIN_DELAY_MS = 60 * 60 * 1000;
+const RECENT_PREMIUM_SKIN_CACHE_MS = 30000;
 const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
 
 const MATTHEW_CHAPTERS = 28;
@@ -2571,6 +2574,7 @@ export default function DashboardPage() {
           .skin-world-slow-mornings { --premium-aura: #F5B25B; }
           .skin-world-morning-mercy { --premium-aura: #E99265; }
           .skin-world-carolina-coastline { --premium-aura: #7BAFD4; }
+          .skin-world-angel-wings { --premium-aura: #8DDCFF; }
           @keyframes premium-stat-drift {
             from { transform: translate3d(-2%, -1%, 0) rotate(0deg); opacity: 0.52; }
             to { transform: translate3d(2%, 1%, 0) rotate(4deg); opacity: 0.82; }
@@ -3112,6 +3116,8 @@ export default function DashboardPage() {
                   ? ["Sunrise", "Flowers", "Peace"]
                   : item.skinId === "carolina-coastline"
                     ? ["Lighthouse", "Waves", "Mist"]
+                    : item.skinId === "angel-wings"
+                      ? ["Wings", "Light Rays", "Peace"]
                 : ["Storm", "Glow", "Mist"];
       const skinMotionClass =
         item.skinId === "midnight-garden"
@@ -3126,9 +3132,11 @@ export default function DashboardPage() {
                   ? "bb-store-skin-card--mercy"
                   : item.skinId === "carolina-coastline"
                     ? "bb-store-skin-card--coastline"
+                    : item.skinId === "angel-wings"
+                      ? "bb-store-skin-card--angel"
                 : "bb-store-skin-card--storm";
       const skinBadge =
-        item.skinId === "slow-mornings" || item.skinId === "morning-mercy" || item.skinId === "carolina-coastline"
+        item.skinId === "slow-mornings" || item.skinId === "morning-mercy" || item.skinId === "carolina-coastline" || item.skinId === "angel-wings"
           ? "New"
           : item.skinId === "ruby-village"
             ? "Popular"
@@ -3170,6 +3178,8 @@ export default function DashboardPage() {
                           ? "radial-gradient(circle at 54% 12%, rgba(255,230,164,0.34), transparent 30%), radial-gradient(circle at 18% 38%, rgba(255,178,150,0.2), transparent 28%), linear-gradient(135deg,rgba(255,238,219,0.1),rgba(97,49,32,0.62))"
                           : item.skinId === "carolina-coastline"
                             ? "radial-gradient(circle at 54% 12%, rgba(220,243,255,0.3), transparent 30%), radial-gradient(circle at 18% 38%, rgba(123,175,212,0.22), transparent 28%), linear-gradient(135deg,rgba(7,24,43,0.16),rgba(4,14,27,0.76))"
+                            : item.skinId === "angel-wings"
+                              ? "radial-gradient(circle at 50% 12%, rgba(255,255,255,0.38), transparent 28%), radial-gradient(circle at 60% 24%, rgba(246,211,133,0.26), transparent 32%), linear-gradient(180deg,rgba(141,220,255,0.04),rgba(4,18,38,0.78))"
                       : "radial-gradient(circle at 18% 12%,rgba(93,214,255,0.34),transparent 34%),linear-gradient(135deg,rgba(9,24,52,0.2),rgba(4,11,24,0.78))",
             }}
           />
@@ -3189,6 +3199,8 @@ export default function DashboardPage() {
                           ? "rgba(244,179,95,0.26)"
                           : item.skinId === "carolina-coastline"
                             ? "rgba(123,175,212,0.26)"
+                            : item.skinId === "angel-wings"
+                              ? "rgba(246,211,133,0.28)"
                       : "rgba(125,211,252,0.25)",
             }}
           />
@@ -3319,6 +3331,8 @@ export default function DashboardPage() {
           .bb-store-skin-card--mercy .bb-store-skin-motion-b { background: rgba(244, 179, 95, 0.46); }
           .bb-store-skin-card--coastline .bb-store-skin-motion-a,
           .bb-store-skin-card--coastline .bb-store-skin-motion-b { background: rgba(123, 175, 212, 0.5); }
+          .bb-store-skin-card--angel .bb-store-skin-motion-a,
+          .bb-store-skin-card--angel .bb-store-skin-motion-b { background: rgba(141, 220, 255, 0.48); }
           .bb-store-skin-card--storm::before {
             background:
               linear-gradient(115deg, transparent 0 44%, rgba(210, 246, 255, 0.92) 45%, rgba(93, 214, 255, 0.2) 46%, transparent 49%),
@@ -3381,6 +3395,22 @@ export default function DashboardPage() {
             background-size: 220px 280px, 100% 100%;
             filter: blur(2.5px);
             animation: bb-store-skin-drift 9s ease-in-out infinite alternate;
+          }
+          .bb-store-skin-card--angel::before {
+            background:
+              radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.36), transparent 22%),
+              radial-gradient(circle at 58% 24%, rgba(246, 211, 133, 0.24), transparent 26%),
+              linear-gradient(102deg, transparent 0%, rgba(220, 245, 255, 0.2) 48%, transparent 76%);
+            animation: bb-store-lantern-flicker 6s ease-in-out infinite;
+          }
+          .bb-store-skin-card--angel::after {
+            background:
+              radial-gradient(circle at 24% 28%, rgba(255, 255, 255, 0.22) 0 1.5px, transparent 3px),
+              repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 38px),
+              linear-gradient(180deg, transparent 0%, rgba(3, 17, 36, 0.18) 72%, rgba(3, 17, 36, 0.42) 100%);
+            background-size: 180px 220px, 240px 300px, 100% 100%;
+            filter: blur(2px);
+            animation: bb-store-skin-drift 10s ease-in-out infinite alternate;
           }
         `}</style>
         <div className="overflow-hidden rounded-[28px] border border-rose-100 bg-[linear-gradient(135deg,rgba(255,231,231,0.9),rgba(255,246,246,0.72))] p-4 shadow-[0_18px_42px_rgba(153,27,27,0.08)]">
@@ -4174,7 +4204,12 @@ export default function DashboardPage() {
     if (typeof window === "undefined") return;
     function loadPremiumSkin(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
-      const skinId = normalizePremiumSkinId(customEvent?.detail?.skinId || "none");
+      const skinId = normalizePremiumSkinId(
+        customEvent?.detail?.skinId ||
+          readCachedPremiumSkin(userId) ||
+          document.documentElement.dataset.bbSkin ||
+          "none",
+      );
       setActivePremiumSkinId(skinId);
       applyPremiumSkinToDocument(skinId);
       preloadActiveSkinAssets(skinId);
@@ -4805,13 +4840,19 @@ export default function DashboardPage() {
           const localSelectedFlame =
             typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
           const dbSelectedFlame = normalizeFlameCosmeticId(profileData?.selected_streak_flame);
-          const dbActiveSkin = normalizePremiumSkinId(profileData?.active_premium_skin);
+          const hasActiveSkinColumn = Boolean(profileData && "active_premium_skin" in profileData);
+          const dbActiveSkin = normalizePremiumSkinId(hasActiveSkinColumn ? profileData?.active_premium_skin : null);
           const legacyMappedSkin =
             getPremiumSkinForLegacyTheme(profileData?.app_theme) !== "none"
               ? getPremiumSkinForLegacyTheme(profileData?.app_theme)
               : getPremiumSkinForLegacyFlame(profileData?.selected_streak_flame);
-          const candidateActiveSkin = dbActiveSkin !== "none" ? dbActiveSkin : legacyMappedSkin;
-          const resolvedActiveSkin = await canUsePremiumSkin(candidateActiveSkin) ? candidateActiveSkin : "none";
+          const candidateActiveSkin = hasActiveSkinColumn ? dbActiveSkin : legacyMappedSkin;
+          const cachedSkin = readCachedPremiumSkin(userId);
+          const preferredSkin =
+            readCachedPremiumSkinAgeMs(userId) < RECENT_PREMIUM_SKIN_CACHE_MS && cachedSkin !== candidateActiveSkin
+              ? cachedSkin
+              : candidateActiveSkin;
+          const resolvedActiveSkin = await canUsePremiumSkin(preferredSkin) ? preferredSkin : "none";
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(userId, resolvedActiveSkin);
           setActivePremiumSkinId(resolvedActiveSkin);
@@ -7350,7 +7391,11 @@ export default function DashboardPage() {
             <p>Upgrade unlocks 10, 45, and 60 minute focus sessions.</p>
           </div>
         ) : null}
-        <button type="button" onClick={() => setDeepStudyMode((current) => current === "info" ? "setup" : "info")} className="mt-3 text-xs font-black text-[var(--bb-accent)]">
+        <button
+          type="button"
+          onClick={() => setDeepStudyMode((current) => current === "info" ? "setup" : "info")}
+          className="mt-3 text-left text-xs font-black text-[var(--bb-accent)]"
+        >
           View Deep Study History!
         </button>
         {deepStudyMode === "info" ? renderDeepStudyHistoryInline() : null}
@@ -7365,7 +7410,7 @@ export default function DashboardPage() {
         <div className="grid grid-cols-2 gap-3">
           {[
             ["Today", `${deepStudyTodayStats.totalMinutes}m`, `${deepStudyTodayStats.sessions} sessions`],
-            ["This Week", `${deepStudyWeekStats.totalMinutes}m`, `+${deepStudyWeekStats.diamondsEarned} diamonds`],
+            ["This Week", `${deepStudyWeekStats.totalMinutes}m`, `${deepStudyWeekStats.sessions} sessions`],
             ["Streak", `${deepStudyStreak} days`, `${deepStudyMultiplier}x multiplier`],
             ["Total Focus", `${deepStudyTotalMinutes}m`, rank],
           ].map(([label, value, detail]) => (
@@ -7383,7 +7428,7 @@ export default function DashboardPage() {
               <span className="truncate text-[var(--bb-text-primary)]">{session.dayKey}</span>
               <span>{session.activeMinutes}m</span>
               <span>{session.focusScore}%</span>
-              <span>+{session.diamondsEarned}</span>
+              <span>{session.tasksCompleted} tasks</span>
             </div>
           ))}
           {!deepStudyHistory.length ? <p className="rounded-2xl bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] px-4 py-4 text-sm font-bold text-[var(--bb-text-muted)]">No Deep Study sessions yet.</p> : null}
@@ -7476,7 +7521,7 @@ export default function DashboardPage() {
           {[
             ["Today", `${deepStudyTodayStats.totalMinutes}m`, `${deepStudyTodayStats.sessions} sessions`],
             ["Yesterday", `${deepStudyYesterdayStats.totalMinutes}m`, `${deepStudyYesterdayStats.averageFocus}% focus`],
-            ["This Week", `${deepStudyWeekStats.totalMinutes}m`, `+${deepStudyWeekStats.diamondsEarned} diamonds`],
+            ["This Week", `${deepStudyWeekStats.totalMinutes}m`, `${deepStudyWeekStats.sessions} sessions`],
             ["Total Focus", `${deepStudyTotalMinutes}m`, rank],
           ].map(([label, value, detail]) => (
             <div key={label} className="rounded-[22px] bg-[var(--bb-surface-soft)] p-4">
@@ -7488,7 +7533,6 @@ export default function DashboardPage() {
         </div>
         <div className="mt-5 space-y-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
           <div className="rounded-[22px] bg-[var(--bb-surface-soft)] p-4"><b className="text-[var(--bb-text-primary)]">Current Streak:</b> {deepStudyStreak} days, {deepStudyMultiplier}x multiplier.</div>
-          <div className="rounded-[22px] bg-[var(--bb-surface-soft)] p-4"><b className="text-[var(--bb-text-primary)]">Diamonds:</b> active focused minutes earn {DEEP_STUDY_DIAMONDS_PER_MINUTE} diamonds each, then your streak multiplier and focus score shape the final reward.</div>
           <div className="rounded-[22px] bg-[var(--bb-surface-soft)] p-4"><b className="text-[var(--bb-text-primary)]">Focus:</b> Bible Buddy looks at visible app time, interruptions, task completion, and steady interaction. It is not trying to catch you. It gently rewards focus.</div>
         </div>
         <div className="mt-5">
@@ -7499,7 +7543,7 @@ export default function DashboardPage() {
                 <span>{session.dayKey}</span>
                 <span>{session.activeMinutes}m</span>
                 <span>{session.focusScore}%</span>
-                <span>+{session.diamondsEarned}</span>
+                <span>{session.tasksCompleted} tasks</span>
               </div>
             ))}
             {!deepStudyHistory.length ? <p className="rounded-2xl bg-[var(--bb-surface-soft)] px-4 py-4 text-sm font-bold text-[var(--bb-text-muted)]">No Deep Study sessions yet.</p> : null}

@@ -1,6 +1,6 @@
 import type { AppThemeId } from "./appThemes";
 import type { FlameCosmeticId } from "./flameCosmetics";
-import { BLUE_STORM_SKIN, CAROLINA_COASTLINE_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, MORNING_MERCY_SKIN, RUBY_VILLAGE_SKIN, SLOW_MORNINGS_SKIN, type PremiumSkinId } from "./premiumSkins";
+import { ANGEL_WINGS_SKIN, BLUE_STORM_SKIN, CAROLINA_COASTLINE_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, MORNING_MERCY_SKIN, RUBY_VILLAGE_SKIN, SLOW_MORNINGS_SKIN, type PremiumSkinId } from "./premiumSkins";
 
 export type StoreItemKind = "theme" | "premium_skin" | "streak_flame" | "buddy" | "boost" | "mystery";
 
@@ -109,6 +109,17 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     accent: CAROLINA_COASTLINE_SKIN.palette.accent,
     imageSrc: CAROLINA_COASTLINE_SKIN.thumbnailImage,
     skinId: CAROLINA_COASTLINE_SKIN.id,
+  },
+  {
+    id: "skin-angel-wings",
+    kind: "premium_skin",
+    title: ANGEL_WINGS_SKIN.name,
+    subtitle: ANGEL_WINGS_SKIN.storeSubtitle,
+    price: ANGEL_WINGS_SKIN.price,
+    emoji: "Wings",
+    accent: ANGEL_WINGS_SKIN.palette.accent,
+    imageSrc: ANGEL_WINGS_SKIN.thumbnailImage,
+    skinId: ANGEL_WINGS_SKIN.id,
   },
 ];
 

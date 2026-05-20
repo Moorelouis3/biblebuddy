@@ -1646,12 +1646,13 @@ export default function DashboardJourneyExperience({
   const [shareRewardsLoading, setShareRewardsLoading] = useState(false);
   const [shareRewardsError, setShareRewardsError] = useState<string | null>(null);
   const [referralRewardModal, setReferralRewardModal] = useState<ShareRewardsReferral | null>(null);
+  const [communityTargetHref, setCommunityTargetHref] = useState<string | null>(null);
   const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
   const [studyModeGateDismissed, setStudyModeGateDismissed] = useState(true);
   const [freeStudyModeActive, setFreeStudyModeActive] = useState(false);
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
 
-  const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "share", "buddies", "tv", "games"] as const;
+  const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "share", "buddies", "tv", "games", "settings"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
   const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
@@ -1718,6 +1719,7 @@ export default function DashboardJourneyExperience({
     { key: "buddies", label: "Buddies", icon: "\uD83E\uDD1D", href: "#buddies" },
     { key: "tv", label: "TV", icon: "\u25B6", href: dashboardPageLinks.tv?.href || "/biblebuddy-tv", onClick: dashboardPageLinks.tv?.onClick },
     { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
+    { key: "settings", label: "Settings", icon: "\u2699", href: "#settings" },
   ];
   const activeDashboardNavItem = dashboardNavItems[safeActivePage] ?? dashboardNavItems[0];
   const isPaidUser = profile?.is_paid === true || membershipStatus === "pro";
@@ -2840,11 +2842,31 @@ export default function DashboardJourneyExperience({
     snapToPage(index);
   }
 
+  function openInvitePage() {
+    const shareIndex = dashboardPageKeys.indexOf("share");
+    if (shareIndex < 0) return;
+    setDashboardMenuOpen(false);
+    snapToPage(shareIndex);
+  }
+
+  function openCommunityPage(targetHref?: string | null) {
+    const groupIndex = dashboardPageKeys.indexOf("group");
+    if (groupIndex < 0) return;
+    if (targetHref) setCommunityTargetHref(targetHref);
+    setDashboardMenuOpen(false);
+    snapToPage(groupIndex);
+  }
+
+  function openSettingsPage() {
+    const settingsIndex = dashboardPageKeys.indexOf("settings");
+    if (settingsIndex < 0) return;
+    setDashboardMenuOpen(false);
+    snapToPage(settingsIndex);
+  }
+
   useEffect(() => {
     function handleShowShareTab() {
-      const shareIndex = dashboardPageKeys.indexOf("share");
-      if (shareIndex < 0) return;
-      snapToPage(shareIndex);
+      openInvitePage();
       window.setTimeout(() => {
         document
           .querySelector('[data-dashboard-nav-key="share"]')
@@ -2854,6 +2876,37 @@ export default function DashboardJourneyExperience({
 
     window.addEventListener("bb:dashboard-show-share-tab", handleShowShareTab);
     return () => window.removeEventListener("bb:dashboard-show-share-tab", handleShowShareTab);
+  }, []);
+
+  useEffect(() => {
+    function handleShowCommunityTab(event?: Event) {
+      const targetHref =
+        (event as CustomEvent<{ targetHref?: string }> | undefined)?.detail?.targetHref ||
+        (typeof window !== "undefined" ? window.localStorage.getItem("bb:dashboard-community-target") : null);
+      if (typeof window !== "undefined") window.localStorage.removeItem("bb:dashboard-community-target");
+      openCommunityPage(targetHref);
+    }
+
+    function handleShowSettingsTab() {
+      if (typeof window !== "undefined") window.localStorage.removeItem("bb:dashboard-open-settings");
+      openSettingsPage();
+    }
+
+    if (typeof window !== "undefined") {
+      if (window.localStorage.getItem("bb:dashboard-community-target")) {
+        window.setTimeout(() => handleShowCommunityTab(), 0);
+      }
+      if (window.localStorage.getItem("bb:dashboard-open-settings")) {
+        window.setTimeout(() => handleShowSettingsTab(), 0);
+      }
+    }
+
+    window.addEventListener("bb:dashboard-show-community-tab", handleShowCommunityTab);
+    window.addEventListener("bb:dashboard-show-settings-tab", handleShowSettingsTab);
+    return () => {
+      window.removeEventListener("bb:dashboard-show-community-tab", handleShowCommunityTab);
+      window.removeEventListener("bb:dashboard-show-settings-tab", handleShowSettingsTab);
+    };
   }, []);
 
   async function switchCurrentStudyChapter(dayNumber: number) {
@@ -3408,7 +3461,15 @@ export default function DashboardJourneyExperience({
     </div>
   );
 
-  const renderEmbeddedCommunityPage = () => (
+  const renderEmbeddedCommunityPage = () => {
+    const communityTargetUrl = communityTargetHref ? new URL(communityTargetHref, "https://biblebuddy.local") : null;
+    const communityPostId = communityTargetUrl?.searchParams.get("post");
+    const communityCommentId = communityTargetUrl?.searchParams.get("comment");
+    const communityIframeSrc = embeddedCommunityGroupId
+      ? `/study-groups/${embeddedCommunityGroupId}/chat?embedded=dashboard&tab=home${communityPostId ? `&post=${encodeURIComponent(communityPostId)}` : ""}${communityCommentId ? `&comment=${encodeURIComponent(communityCommentId)}` : ""}`
+      : "";
+
+    return (
     <section className="-mx-4 w-[calc(100%+2rem)] sm:-mx-5 sm:w-[calc(100%+2.5rem)]">
       <div className="bg-[var(--bb-background,#f8fbff)] pb-3">
         <div className="border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 sm:px-5">
@@ -3435,8 +3496,8 @@ export default function DashboardJourneyExperience({
           </div>
         ) : embeddedCommunityGroupId ? (
           <iframe
-            key={embeddedCommunityGroupId}
-            src={`/study-groups/${embeddedCommunityGroupId}/chat?embedded=dashboard&tab=home`}
+            key={`${embeddedCommunityGroupId}:${communityPostId || ""}:${communityCommentId || ""}`}
+            src={communityIframeSrc}
             title="Bible Buddy Community"
             className="block w-full border-0 bg-[var(--bb-surface-soft,#f8fbff)]"
             scrolling="no"
@@ -3449,7 +3510,8 @@ export default function DashboardJourneyExperience({
         )}
       </div>
     </section>
-  );
+    );
+  };
 
   const renderEmbeddedBuddiesPage = () => (
     <section className="w-full px-1 pb-4">
@@ -3514,6 +3576,17 @@ export default function DashboardJourneyExperience({
             </div>
         )}
       </div>
+    </section>
+  );
+
+  const renderEmbeddedSettingsPage = () => (
+    <section className="-mx-4 w-[calc(100%+2rem)] sm:-mx-5 sm:w-[calc(100%+2.5rem)]">
+      <iframe
+        src="/settings?embedded=dashboard"
+        title="Bible Buddy Settings"
+        className="block w-full border-0 bg-[var(--bb-background,#f8fbff)]"
+        style={{ minHeight: "calc(100dvh - 130px)", height: "calc(100dvh - 130px)" }}
+      />
     </section>
   );
 
@@ -5154,6 +5227,10 @@ export default function DashboardJourneyExperience({
           {renderEmbeddedGamesPage()}
         </div>
 
+        <div className={getSlideClass(8)}>
+          {renderEmbeddedSettingsPage()}
+        </div>
+
         {false ? (
         <section className={`w-full shrink-0 snap-start px-1 ${activePage === 1 ? "" : "h-0 overflow-hidden"}`}>
               <div className="mx-auto flex max-w-xl flex-col gap-5">
@@ -5222,23 +5299,16 @@ export default function DashboardJourneyExperience({
 
         <div className="rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 px-2 py-2 shadow-[0_12px_28px_rgba(38,63,99,0.16)] backdrop-blur">
           <div className="grid grid-cols-[82px_1fr_92px] items-center gap-2">
-            <Link
-              data-dashboard-nav-key="home"
-              href="/dashboard"
-              onClick={(event) => {
-                event.preventDefault();
-                setDashboardMenuOpen(false);
-                handleDashboardNavClick(0);
-              }}
-              className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
-                safeActivePage === 0
-                  ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm"
-                  : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)]"
-              }`}
+            <button
+              type="button"
+              onClick={() => setDashboardMenuOpen((open) => !open)}
+              className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
+              aria-expanded={dashboardMenuOpen}
+              aria-label="Open dashboard menu"
             >
-              <span className="text-2xl leading-none" aria-hidden="true">⌂</span>
-              <span>Home</span>
-            </Link>
+              <span className="text-2xl leading-none" aria-hidden="true">{dashboardMenuOpen ? "×" : "☰"}</span>
+              <span>{dashboardMenuOpen ? "Close" : "Menu"}</span>
+            </button>
 
             <button
               type="button"
@@ -5258,12 +5328,17 @@ export default function DashboardJourneyExperience({
 
             <button
               type="button"
-              onClick={() => setDashboardMenuOpen((open) => !open)}
+              onClick={openInvitePage}
               className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-accent,#2f7fe8)] text-[10px] font-black text-white shadow-sm transition hover:brightness-105"
-              aria-expanded={dashboardMenuOpen}
+              aria-label="Invite friends to Bible Buddy"
             >
-              <span className="text-2xl leading-none" aria-hidden="true">{dashboardMenuOpen ? "×" : "☰"}</span>
-              <span>{dashboardMenuOpen ? "Close" : "Menu"}</span>
+              <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
+                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
+                  <path d="M21 3 10.6 13.4" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="m21 3-6.7 18-3.7-7.6L3 9.7 21 3Z" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <span>Invite</span>
             </button>
           </div>
         </div>

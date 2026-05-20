@@ -28,6 +28,8 @@ import {
   cachePremiumSkinForUser,
   clearLegacyPremiumSkinCache,
   normalizePremiumSkinId,
+  readCachedPremiumSkin,
+  readCachedPremiumSkinAgeMs,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
@@ -47,6 +49,8 @@ type SettingsProfileRow = {
   selected_buddy_avatar?: string | null;
   active_premium_skin?: string | null;
 };
+
+const RECENT_PREMIUM_SKIN_CACHE_MS = 30000;
 
 type BuddyReadyModal = {
   buddyId: BuddyAvatarId;
@@ -156,10 +160,15 @@ export default function SettingsPage() {
         setFirstName(nameParts.firstName);
         setLastName(nameParts.lastName);
         setSelectedTheme(normalizeAppThemeId(profile?.app_theme));
-        const resolvedPremiumSkin: PremiumSkinId =
+        const dbPremiumSkin: PremiumSkinId =
           profile && "active_premium_skin" in profile && profile.active_premium_skin
             ? normalizePremiumSkinId(profile.active_premium_skin)
             : "none";
+        const cachedPremiumSkin = readCachedPremiumSkin(currentUser.id);
+        const resolvedPremiumSkin: PremiumSkinId =
+          readCachedPremiumSkinAgeMs(currentUser.id) < RECENT_PREMIUM_SKIN_CACHE_MS && cachedPremiumSkin !== dbPremiumSkin
+            ? cachedPremiumSkin
+            : dbPremiumSkin;
         const premiumSkinStoreItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === resolvedPremiumSkin);
         const ownsResolvedPremiumSkin =
           resolvedPremiumSkin === "none" ||

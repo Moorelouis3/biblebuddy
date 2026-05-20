@@ -34,6 +34,8 @@ import {
   getPremiumSkinForLegacyFlame,
   getPremiumSkinForLegacyTheme,
   normalizePremiumSkinId,
+  readCachedPremiumSkinAgeMs,
+  readCachedPremiumSkin,
   type PremiumSkinId,
 } from "../lib/premiumSkins";
 import { preloadActiveSkinAssets, preloadImage, scheduleIdleWork, syncPerformanceModeToDocument } from "../lib/appPerformance";
@@ -72,6 +74,7 @@ const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 const DAILY_RECOMMENDATIONS_ENABLED = false;
 const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
 const GRACE_DAY_STORE_ITEM_ID = "boost-extra-grace-day";
+const RECENT_PREMIUM_SKIN_CACHE_MS = 30000;
 
 function isOwnerEmail(email: string | null | undefined) {
   return email?.toLowerCase() === "moorelouis3@gmail.com";
@@ -300,7 +303,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (typeof window === "undefined") return;
     function handlePremiumSkinChanged(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
-      const skinId = normalizePremiumSkinId(customEvent?.detail?.skinId || "none");
+      const skinId = normalizePremiumSkinId(
+        customEvent?.detail?.skinId ||
+          readCachedPremiumSkin(userId) ||
+          document.documentElement.dataset.bbSkin ||
+          "none",
+      );
       cachePremiumSkinForUser(userId, skinId);
       applyAppThemeToDocument(appThemeId);
       applyPremiumSkinToDocument(skinId);
@@ -368,13 +376,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
 
     const savedTheme = normalizeAppThemeId(data?.app_theme);
-    const dbSkin = normalizePremiumSkinId(data && "active_premium_skin" in data ? data.active_premium_skin : null);
+    const hasActiveSkinColumn = Boolean(data && "active_premium_skin" in data);
+    const dbSkin = normalizePremiumSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
     const legacyMappedSkin =
       getPremiumSkinForLegacyTheme(data?.app_theme) !== "none"
         ? getPremiumSkinForLegacyTheme(data?.app_theme)
         : getPremiumSkinForLegacyFlame(data && "selected_streak_flame" in data ? data.selected_streak_flame : null);
-    const candidateSkin = dbSkin !== "none" ? dbSkin : legacyMappedSkin;
-    const savedSkin = await canUsePremiumSkin(currentUserId, email, candidateSkin) ? candidateSkin : "none";
+    const candidateSkin = hasActiveSkinColumn ? dbSkin : legacyMappedSkin;
+    const cachedSkin = readCachedPremiumSkin(currentUserId);
+    const preferredSkin =
+      readCachedPremiumSkinAgeMs(currentUserId) < RECENT_PREMIUM_SKIN_CACHE_MS && cachedSkin !== candidateSkin
+        ? cachedSkin
+        : candidateSkin;
+    const savedSkin = await canUsePremiumSkin(currentUserId, email, preferredSkin) ? preferredSkin : "none";
     applyThemeLocally(savedTheme);
     cachePremiumSkinForUser(currentUserId, savedSkin);
     applyPremiumSkinToDocument(savedSkin);
@@ -657,8 +671,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (typeof window !== "undefined") {
       const localSelectedFlame = window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY);
       const dbSelectedFlame = normalizeFlameCosmeticId(data?.selected_streak_flame);
-      const dbActiveSkin = normalizePremiumSkinId(data?.active_premium_skin);
-      const resolvedSkin = dbActiveSkin;
+      const hasActiveSkinColumn = Boolean(data && "active_premium_skin" in data);
+      const dbActiveSkin = normalizePremiumSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
+      const cachedSkin = readCachedPremiumSkin(currentUserId);
+      const resolvedSkin =
+        readCachedPremiumSkinAgeMs(currentUserId) < RECENT_PREMIUM_SKIN_CACHE_MS && cachedSkin !== dbActiveSkin
+          ? cachedSkin
+          : dbActiveSkin;
       const skinFlame = getPremiumSkinFlameId(resolvedSkin);
       const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
       persistActiveStreakFlame(resolvedSelectedFlame);
@@ -1462,6 +1481,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       return `${url.pathname}${url.search}${url.hash}`;
     };
 
+    const openDashboardCommunity = () => {
+      const targetHref = buildHrefWithTargets(notif.article_slug?.startsWith("/study-groups/") ? notif.article_slug : "/study-groups");
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem("bb:dashboard-community-target", targetHref);
+        window.dispatchEvent(new CustomEvent("bb:dashboard-show-community-tab", { detail: { targetHref } }));
+      }
+      router.push("/dashboard");
+    };
+
     // Social feed notifications deep-link to the exact post/comment.
     if (
       notif.type === "buddy_posted" ||
@@ -1469,11 +1497,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       notif.type === "feed_post_commented" ||
       notif.type === "feed_post_replied"
     ) {
-      router.push(buildHrefWithTargets("/bb-feed"));
+      openDashboardCommunity();
       return;
     }
     if (notif.article_slug?.startsWith("/study-groups/")) {
-      router.push(buildHrefWithTargets(notif.article_slug));
+      openDashboardCommunity();
       return;
     }
     const hash = notif.comment_id ? `#comment-${notif.comment_id}` : "";
@@ -2963,8 +2991,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
                     {/* SETTINGS */}
                     <Link
-                      href="/settings"
-                      onClick={() => setIsProfileMenuOpen(false)}
+                      href="/dashboard"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        setIsProfileMenuOpen(false);
+                        if (typeof window !== "undefined") {
+                          window.localStorage.setItem("bb:dashboard-open-settings", "1");
+                          window.dispatchEvent(new CustomEvent("bb:dashboard-show-settings-tab"));
+                        }
+                        router.push("/dashboard");
+                      }}
                       className={`block px-4 py-2 text-sm ${
                         pathname?.startsWith("/settings")
                           ? "bg-sky-100 text-black font-medium"

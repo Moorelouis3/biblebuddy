@@ -1,4 +1,4 @@
-export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline";
+export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline" | "angel-wings";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -35,6 +35,7 @@ export type PremiumSkin = {
 };
 
 export const PREMIUM_SKIN_STORAGE_KEY = "bb:premium-skin";
+export const PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY = "bb:premium-skin-updated-at";
 
 export function getPremiumSkinStorageKey(userId: string | null | undefined) {
   return userId ? `${PREMIUM_SKIN_STORAGE_KEY}:${userId}` : PREMIUM_SKIN_STORAGE_KEY;
@@ -45,15 +46,28 @@ export function readCachedPremiumSkin(userId: string | null | undefined): Premiu
   return normalizePremiumSkinId(window.localStorage.getItem(getPremiumSkinStorageKey(userId)));
 }
 
+export function getPremiumSkinStorageTimestampKey(userId: string | null | undefined) {
+  return userId ? `${PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY}:${userId}` : PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY;
+}
+
+export function readCachedPremiumSkinAgeMs(userId: string | null | undefined) {
+  if (typeof window === "undefined" || !userId) return Number.POSITIVE_INFINITY;
+  const updatedAt = Number(window.localStorage.getItem(getPremiumSkinStorageTimestampKey(userId)));
+  return Number.isFinite(updatedAt) ? Date.now() - updatedAt : Number.POSITIVE_INFINITY;
+}
+
 export function cachePremiumSkinForUser(userId: string | null | undefined, skinId: PremiumSkinId) {
   if (typeof window === "undefined" || !userId) return;
   window.localStorage.setItem(getPremiumSkinStorageKey(userId), normalizePremiumSkinId(skinId));
+  window.localStorage.setItem(getPremiumSkinStorageTimestampKey(userId), String(Date.now()));
   window.localStorage.removeItem(PREMIUM_SKIN_STORAGE_KEY);
+  window.localStorage.removeItem(PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY);
 }
 
 export function clearLegacyPremiumSkinCache() {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(PREMIUM_SKIN_STORAGE_KEY);
+  window.localStorage.removeItem(PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY);
 }
 
 export const BLUE_STORM_SKIN: PremiumSkin = {
@@ -280,6 +294,38 @@ export const CAROLINA_COASTLINE_SKIN: PremiumSkin = {
   },
 };
 
+export const ANGEL_WINGS_SKIN: PremiumSkin = {
+  id: "angel-wings",
+  name: "Angel Wings",
+  label: "Premium Skin",
+  storeSubtitle: "A cinematic heavenly atmosphere with angel wings, divine light, and peaceful protection.",
+  backgroundImage: "/skins/optimized/angel-wings-desktop.webp",
+  originalImage: "/skins/AngelWings.png",
+  thumbnailImage: "/skins/optimized/angel-wings-thumb.webp",
+  mobileBackgroundImage: "/skins/optimized/angel-wings-mobile.webp",
+  desktopBackgroundImage: "/skins/optimized/angel-wings-desktop.webp",
+  price: 1000,
+  palette: {
+    background: "#06152A",
+    surface: "rgba(11, 40, 72, 0.76)",
+    surfaceSoft: "rgba(92, 166, 219, 0.28)",
+    card: "rgba(8, 31, 58, 0.74)",
+    cardBorder: "rgba(246, 211, 133, 0.42)",
+    textPrimary: "#F8FCFF",
+    textSecondary: "#D7ECF8",
+    textMuted: "#A9C6D8",
+    accent: "#8DDCFF",
+    accentSoft: "rgba(141, 220, 255, 0.24)",
+    button: "#1F77AD",
+    buttonText: "#F8FCFF",
+    navBackground: "rgba(5, 20, 40, 0.9)",
+    navActive: "#F6D385",
+    navInactive: "#B8D5E7",
+    progressTrack: "rgba(215, 236, 248, 0.18)",
+    progressFill: "#F6D385",
+  },
+};
+
 export const PREMIUM_SKINS: PremiumSkin[] = [
   BLUE_STORM_SKIN,
   MIDNIGHT_GARDEN_SKIN,
@@ -288,6 +334,7 @@ export const PREMIUM_SKINS: PremiumSkin[] = [
   SLOW_MORNINGS_SKIN,
   MORNING_MERCY_SKIN,
   CAROLINA_COASTLINE_SKIN,
+  ANGEL_WINGS_SKIN,
 ];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
 
@@ -383,6 +430,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
               ? "rgba(233, 146, 101, 0.42)"
               : skin.id === "carolina-coastline"
                 ? "rgba(123, 175, 212, 0.42)"
+                : skin.id === "angel-wings"
+                  ? "rgba(141, 220, 255, 0.44)"
           : "rgba(93, 214, 255, 0.42)",
   );
   root.style.setProperty(
@@ -399,6 +448,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
               ? "rgba(244, 179, 95, 0.34)"
               : skin.id === "carolina-coastline"
                 ? "rgba(166, 216, 244, 0.3)"
+                : skin.id === "angel-wings"
+                  ? "rgba(246, 211, 133, 0.38)"
           : "rgba(93, 214, 255, 0.2)",
   );
 
