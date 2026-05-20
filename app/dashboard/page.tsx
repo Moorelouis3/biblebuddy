@@ -2660,7 +2660,7 @@ export default function DashboardPage() {
               setShowStreakMotivationTaskPrompt(false);
               setShowStreakMotivationModal(true);
             }}
-            className="bb-skin-glow-card mx-auto block w-full max-w-xl rounded-[22px] border border-[#e6edf7] bg-white p-3 text-left shadow-[0_10px_26px_rgba(38,63,99,0.08)] transition hover:shadow-md sm:p-3.5"
+            className="bb-dashboard-streak-card bb-skin-glow-card mx-auto block w-full max-w-xl rounded-[22px] border border-[#e6edf7] bg-white p-3 text-left shadow-[0_10px_26px_rgba(38,63,99,0.08)] transition hover:shadow-md sm:p-3.5"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="w-full">
@@ -2691,15 +2691,15 @@ export default function DashboardPage() {
                 return (
                 <div
                   key={day.date}
-                  className={`rounded-2xl px-1 py-1.5 text-center transition sm:py-2 ${
+                  className={`bb-dashboard-streak-day rounded-2xl px-1 py-1.5 text-center transition sm:py-2 ${
                     isCompleted ? "bg-[#eef6ff]" : "bg-[#f8fafc]"
                   } ${day.isToday ? "ring-2 ring-[#4B9CD3]/30" : ""}`}
                 >
-                  <p className={`mb-1.5 text-[10px] font-black sm:text-[11px] ${isCompleted ? "text-[#2f7fe8]" : "text-gray-500"}`}>
+                  <p className={`bb-dashboard-streak-day-label mb-1.5 text-[10px] font-black sm:text-[11px] ${isCompleted ? "text-[#2f7fe8]" : "text-gray-500"}`}>
                     {getDashboardDayAbbr(day.date)}
                   </p>
                   <span
-                    className={`mx-auto grid h-8 w-8 place-items-center rounded-full border text-sm font-black transition sm:h-9 sm:w-9 ${
+                    className={`bb-dashboard-streak-check mx-auto grid h-8 w-8 place-items-center rounded-full border text-sm font-black transition sm:h-9 sm:w-9 ${
                       isCompleted
                         ? day.isToday
                           ? "animate-pulse border-[#2f7fe8] bg-[#2f7fe8] text-white shadow-[0_0_0_6px_rgba(47,127,232,0.15)]"
@@ -6853,16 +6853,16 @@ export default function DashboardPage() {
         .bb-deep-study-entry::before,
         .bb-deep-study-focus-panel::before {
           background:
-            radial-gradient(circle at 18% 14%, rgba(216, 180, 254, 0.36), transparent 28%),
-            radial-gradient(circle at 76% 20%, rgba(99, 102, 241, 0.22), transparent 30%),
-            linear-gradient(135deg, rgba(88, 28, 135, 0.34), rgba(15, 7, 36, 0.22));
+            radial-gradient(circle at 18% 14%, color-mix(in srgb, var(--bb-accent) 34%, transparent), transparent 28%),
+            radial-gradient(circle at 76% 20%, color-mix(in srgb, var(--bb-accent-soft) 38%, transparent), transparent 30%),
+            linear-gradient(135deg, color-mix(in srgb, var(--bb-accent) 22%, transparent), rgba(8, 10, 16, 0.24));
           opacity: 0.95;
         }
         .bb-deep-study-entry::after,
         .bb-deep-study-focus-panel::after {
           background:
-            radial-gradient(circle, rgba(255,255,255,0.66) 0 1px, transparent 1.5px) 8% 20% / 74px 74px,
-            radial-gradient(circle, rgba(216,180,254,0.62) 0 1px, transparent 1.6px) 52% 30% / 92px 92px;
+            radial-gradient(circle, rgba(255,255,255,0.58) 0 1px, transparent 1.5px) 8% 20% / 74px 74px,
+            radial-gradient(circle, color-mix(in srgb, var(--bb-accent) 48%, transparent) 0 1px, transparent 1.6px) 52% 30% / 92px 92px;
           animation: bb-deep-study-stars 12s linear infinite;
           opacity: 0.42;
         }
@@ -6871,7 +6871,7 @@ export default function DashboardPage() {
           inset: auto 8% -34px 18%;
           height: 72px;
           border-radius: 999px;
-          background: radial-gradient(circle, rgba(168,85,247,0.5), transparent 70%);
+          background: radial-gradient(circle, color-mix(in srgb, var(--bb-accent) 54%, transparent), transparent 70%);
           filter: blur(18px);
           animation: bb-deep-study-glow 5.8s ease-in-out infinite;
         }
@@ -6879,23 +6879,36 @@ export default function DashboardPage() {
           position: relative;
           z-index: 1;
           display: grid;
-          height: 78px;
+          height: 104px;
           place-items: center;
           border-radius: 24px;
-          background: radial-gradient(circle at 50% 72%, rgba(168,85,247,0.34), transparent 58%);
+          background: radial-gradient(circle at 50% 72%, color-mix(in srgb, var(--bb-accent) 26%, transparent), transparent 58%);
+          opacity: 0.98;
+        }
+        .bb-deep-study-bible-emoji {
+          position: absolute;
+          inset: 50% auto auto 50%;
+          transform: translate(-50%, -50%) rotate(-7deg);
+          font-size: 78px;
+          line-height: 1;
+          filter: drop-shadow(0 0 24px color-mix(in srgb, var(--bb-accent) 62%, transparent));
+          opacity: 0.92;
         }
         .bb-deep-study-book {
           position: relative;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          width: 68px;
-          height: 42px;
-          filter: drop-shadow(0 0 18px rgba(216,180,254,0.62));
+          width: 92px;
+          height: 56px;
+          filter: drop-shadow(0 0 18px color-mix(in srgb, var(--bb-accent) 62%, transparent));
           transform: perspective(120px) rotateX(12deg);
+          opacity: 0.86;
         }
         .bb-deep-study-book span {
-          border: 1px solid rgba(237,233,254,0.78);
-          background: linear-gradient(135deg, rgba(250,245,255,0.92), rgba(196,181,253,0.7));
+          border: 1px solid color-mix(in srgb, var(--bb-accent) 30%, rgba(255,255,255,0.72));
+          background:
+            repeating-linear-gradient(180deg, rgba(65, 43, 28, 0.14) 0 1px, transparent 1px 7px),
+            linear-gradient(135deg, rgba(255,255,255,0.94), color-mix(in srgb, var(--bb-accent-soft) 28%, rgba(255,255,255,0.84)));
           box-shadow: inset 0 -10px 16px rgba(91,33,182,0.18);
         }
         .bb-deep-study-book span:first-child {
@@ -6912,7 +6925,7 @@ export default function DashboardPage() {
           width: 18px;
           height: 42px;
           border-radius: 999px;
-          background: linear-gradient(to top, rgba(216,180,254,0), rgba(216,180,254,0.32), rgba(255,255,255,0));
+          background: linear-gradient(to top, transparent, color-mix(in srgb, var(--bb-accent) 32%, transparent), rgba(255,255,255,0));
           filter: blur(5px);
           animation: bb-deep-study-smoke 4.8s ease-in-out infinite;
         }
@@ -6924,7 +6937,7 @@ export default function DashboardPage() {
           height: 4px;
           border-radius: 999px;
           background: white;
-          box-shadow: 0 0 12px rgba(216,180,254,0.9);
+          box-shadow: 0 0 12px color-mix(in srgb, var(--bb-accent) 80%, transparent);
           animation: bb-deep-study-twinkle 2.6s ease-in-out infinite;
         }
         .bb-deep-study-spark-one { left: 20px; top: 16px; }
@@ -6935,15 +6948,15 @@ export default function DashboardPage() {
           height: 19px;
           flex: 0 0 auto;
           border-radius: 999px;
-          background: #ede9fe;
-          box-shadow: 0 0 20px rgba(216,180,254,0.72);
+          background: color-mix(in srgb, var(--bb-accent) 18%, #ffffff);
+          box-shadow: 0 0 20px color-mix(in srgb, var(--bb-accent) 70%, transparent);
         }
         .bb-deep-study-moon::after {
           content: "";
           position: absolute;
           inset: -1px -3px 1px 6px;
           border-radius: 999px;
-          background: #160a32;
+          background: color-mix(in srgb, var(--bb-background) 88%, #05070b);
         }
         .bb-deep-study-portal {
           animation: bb-deep-study-portal 4.8s ease-in-out infinite;
@@ -6953,7 +6966,7 @@ export default function DashboardPage() {
           inset: -32% 16% auto;
           height: 170px;
           border-radius: 999px;
-          background: radial-gradient(circle, rgba(216,180,254,0.26), transparent 64%);
+          background: radial-gradient(circle, color-mix(in srgb, var(--bb-accent) 26%, transparent), transparent 64%);
           filter: blur(10px);
           animation: bb-deep-study-glow 6s ease-in-out infinite;
         }
@@ -6989,6 +7002,29 @@ export default function DashboardPage() {
             animation: none !important;
           }
         }
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card {
+          border-color: color-mix(in srgb, var(--bb-accent) 42%, transparent) !important;
+          background: color-mix(in srgb, var(--bb-card) 84%, transparent) !important;
+          box-shadow:
+            0 16px 34px rgba(0, 0, 0, 0.24),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+        }
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card p {
+          color: var(--bb-text-primary) !important;
+        }
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card .bb-dashboard-streak-day {
+          border: 1px solid color-mix(in srgb, var(--bb-accent) 24%, transparent);
+          background: color-mix(in srgb, var(--bb-surface-soft) 72%, transparent) !important;
+        }
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card .bb-dashboard-streak-day-label {
+          color: color-mix(in srgb, var(--bb-accent) 82%, #ffffff) !important;
+        }
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card .bb-dashboard-streak-check {
+          border-color: color-mix(in srgb, var(--bb-accent) 72%, transparent) !important;
+          background: color-mix(in srgb, var(--bb-accent) 72%, #07100f) !important;
+          color: var(--bb-button-text) !important;
+          box-shadow: 0 0 18px color-mix(in srgb, var(--bb-accent) 34%, transparent) !important;
+        }
       `}</style>
     );
   }
@@ -6999,22 +7035,22 @@ export default function DashboardPage() {
       const activeMinutes = Math.floor(deepStudyActiveSession.activeMs / 60000);
       return (
         <>
-          <div className="bb-deep-study-focus-panel relative overflow-hidden rounded-[30px] border border-violet-200/25 bg-[#150b2b]/80 p-5 text-center text-white shadow-[0_24px_70px_rgba(34,13,82,0.44)] backdrop-blur-xl sm:p-7">
+          <div className="bb-deep-study-focus-panel relative overflow-hidden rounded-[30px] border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] p-5 text-center text-[var(--bb-text-primary)] shadow-[0_24px_70px_rgba(0,0,0,0.34)] backdrop-blur-xl sm:p-7">
             <div className="bb-deep-study-orbit" aria-hidden="true" />
-            <p className="relative text-xs font-black uppercase tracking-[0.28em] text-violet-100/80">Focus mode active</p>
-            <p className="relative mt-3 text-5xl font-black leading-none text-white drop-shadow-[0_0_24px_rgba(196,181,253,0.65)]">{formatDeepStudyTime(secondsLeft)}</p>
-            <p className="relative mt-2 text-sm font-black text-violet-200">remaining</p>
+            <p className="relative text-xs font-black uppercase tracking-[0.28em] text-[var(--bb-accent)]">Focus mode active</p>
+            <p className="relative mt-3 text-5xl font-black leading-none text-[var(--bb-text-primary)] drop-shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent)_56%,transparent)]">{formatDeepStudyTime(secondsLeft)}</p>
+            <p className="relative mt-2 text-sm font-black text-[var(--bb-text-secondary)]">remaining</p>
             <div className="relative mt-5 grid grid-cols-3 gap-2 text-xs font-black">
-              <div className="rounded-2xl border border-white/10 bg-white/10 px-2 py-3 leading-tight text-violet-50 backdrop-blur-md">{activeMinutes}m focused</div>
-              <div className="rounded-2xl border border-white/10 bg-white/10 px-2 py-3 leading-tight text-violet-50 backdrop-blur-md">{deepStudyActiveSession.tasksCompleted} tasks</div>
-              <div className="rounded-2xl border border-white/10 bg-white/10 px-2 py-3 leading-tight text-violet-50 backdrop-blur-md">{deepStudyActiveSession.chaptersStudied.length} chapters</div>
+              <div className="rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent)_24%,transparent)] bg-[var(--bb-surface-soft)] px-2 py-3 leading-tight text-[var(--bb-text-primary)] backdrop-blur-md">{activeMinutes}m focused</div>
+              <div className="rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent)_24%,transparent)] bg-[var(--bb-surface-soft)] px-2 py-3 leading-tight text-[var(--bb-text-primary)] backdrop-blur-md">{deepStudyActiveSession.tasksCompleted} tasks</div>
+              <div className="rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent)_24%,transparent)] bg-[var(--bb-surface-soft)] px-2 py-3 leading-tight text-[var(--bb-text-primary)] backdrop-blur-md">{deepStudyActiveSession.chaptersStudied.length} chapters</div>
             </div>
-            <p className="relative mt-4 text-xs font-semibold text-violet-100/75">Stay with Scripture. The dashboard is quiet while you study.</p>
+            <p className="relative mt-4 text-xs font-semibold text-[var(--bb-text-secondary)]">Stay with Scripture. The dashboard is quiet while you study.</p>
             <button
               type="button"
               onClick={() => void finishDeepStudySession()}
               disabled={deepStudyFinalizingRef.current}
-              className="relative mt-5 w-full rounded-full border border-violet-200/25 bg-white/10 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-violet-50 transition hover:bg-white/15 disabled:opacity-60"
+              className="relative mt-5 w-full rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[var(--bb-surface-soft)] px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[var(--bb-text-primary)] transition hover:brightness-110 disabled:opacity-60"
             >
               {deepStudyFinalizingRef.current ? "Stopping..." : "Stop"}
             </button>
@@ -7029,10 +7065,11 @@ export default function DashboardPage() {
         <button
           type="button"
           onClick={() => setDeepStudyMode("setup")}
-          className="bb-deep-study-entry group relative grid w-full grid-cols-[88px_1fr_44px] items-center gap-4 overflow-hidden rounded-[28px] border border-violet-200/25 bg-[#160a32]/72 px-4 py-4 text-left text-white shadow-[0_18px_48px_rgba(40,18,88,0.36),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-violet-100/45 hover:bg-[#1d0d3f]/82 active:translate-y-0 sm:grid-cols-[112px_1fr_56px] sm:px-5"
+          className="bb-deep-study-entry group relative grid w-full grid-cols-[118px_1fr_48px] items-center gap-3 overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_76%,transparent)] px-4 py-4 text-left text-[var(--bb-text-primary)] shadow-[0_18px_48px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--bb-accent)_60%,transparent)] hover:brightness-110 active:translate-y-0 sm:grid-cols-[142px_1fr_58px] sm:px-5"
         >
           <span className="bb-deep-study-glow" aria-hidden="true" />
           <span className="bb-deep-study-bible" aria-hidden="true">
+            <span className="bb-deep-study-bible-emoji">📖</span>
             <span className="bb-deep-study-book">
               <span />
               <span />
@@ -7045,16 +7082,16 @@ export default function DashboardPage() {
           <span className="relative min-w-0">
             <span className="flex items-center gap-2">
               <span className="bb-deep-study-moon" aria-hidden="true" />
-              <span className="text-lg font-black leading-tight text-white drop-shadow-[0_0_18px_rgba(216,180,254,0.5)] sm:text-xl">Deep Study Mode</span>
+              <span className="text-lg font-black leading-tight text-[var(--bb-text-primary)] drop-shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent)_48%,transparent)] sm:text-xl">Deep Study Mode</span>
             </span>
-            <span className="mt-1 block text-sm font-bold leading-5 text-violet-100/82">Focus with no distractions.</span>
-            <span className="block text-sm font-semibold leading-5 text-violet-200/72">Immerse yourself in God&apos;s Word.</span>
-            <span className="mt-3 inline-flex rounded-full border border-violet-200/25 bg-white/8 px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em] text-violet-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition group-hover:bg-white/12">
+            <span className="mt-1 block text-sm font-bold leading-5 text-[var(--bb-text-secondary)]">Focus with no distractions.</span>
+            <span className="block text-sm font-semibold leading-5 text-[var(--bb-text-muted)]">Immerse yourself in God&apos;s Word.</span>
+            <span className="mt-3 inline-flex rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[var(--bb-surface-soft)] px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition group-hover:brightness-110">
               Enter Study Mode
             </span>
           </span>
-          <span className="bb-deep-study-portal relative grid h-11 w-11 place-items-center justify-self-end rounded-full border border-violet-200/30 bg-violet-100/10 text-xl font-black text-violet-50 shadow-[0_0_26px_rgba(168,85,247,0.36),inset_0_0_18px_rgba(255,255,255,0.1)] sm:h-14 sm:w-14">
-            <span aria-hidden="true">-&gt;</span>
+          <span className="bb-deep-study-portal relative grid h-11 w-11 place-items-center justify-self-end rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_38%,transparent)] bg-[var(--bb-surface-soft)] text-xl font-black text-[var(--bb-text-primary)] shadow-[0_0_26px_color-mix(in_srgb,var(--bb-accent)_36%,transparent),inset_0_0_18px_rgba(255,255,255,0.1)] sm:h-14 sm:w-14">
+            <span aria-hidden="true">➡</span>
           </span>
         </button>
         {renderDeepStudyCardStyles()}
@@ -8096,6 +8133,48 @@ export default function DashboardPage() {
         html[data-bb-perf-reduce="true"] .bb-blue-storm-stage::before,
         html[data-bb-perf-reduce="true"] .bb-blue-storm-stage::after {
           animation: none !important;
+        }
+        @media (max-width: 1023px) {
+          html[data-bb-skin="blue-storm"] .dashboard-shell,
+          html[data-bb-skin="midnight-garden"] .dashboard-shell,
+          html[data-bb-skin="lavender-prayer"] .dashboard-shell,
+          html[data-bb-skin="ruby-village"] .dashboard-shell,
+          html[data-bb-skin="slow-mornings"] .dashboard-shell,
+          html[data-bb-skin="morning-mercy"] .dashboard-shell {
+            background: transparent !important;
+            background-color: transparent !important;
+          }
+          html[data-bb-skin="blue-storm"] .bb-blue-storm-mobile-stage,
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-mobile-stage,
+          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-mobile-stage,
+          html[data-bb-skin="ruby-village"] .bb-blue-storm-mobile-stage,
+          html[data-bb-skin="slow-mornings"] .bb-blue-storm-mobile-stage,
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage {
+            margin-top: 0 !important;
+            padding-top: 8px !important;
+            background: transparent !important;
+            background-color: transparent !important;
+            border-top: 0 !important;
+            border-left-color: transparent !important;
+            border-right-color: transparent !important;
+            border-top-left-radius: 0 !important;
+            border-top-right-radius: 0 !important;
+            box-shadow: none !important;
+          }
+          html[data-bb-skin="blue-storm"] .bb-blue-storm-mobile-stage::before,
+          html[data-bb-skin="blue-storm"] .bb-blue-storm-mobile-stage::after,
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-mobile-stage::before,
+          html[data-bb-skin="midnight-garden"] .bb-blue-storm-mobile-stage::after,
+          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-mobile-stage::before,
+          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-mobile-stage::after,
+          html[data-bb-skin="ruby-village"] .bb-blue-storm-mobile-stage::before,
+          html[data-bb-skin="ruby-village"] .bb-blue-storm-mobile-stage::after,
+          html[data-bb-skin="slow-mornings"] .bb-blue-storm-mobile-stage::before,
+          html[data-bb-skin="slow-mornings"] .bb-blue-storm-mobile-stage::after,
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage::before,
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage::after {
+            display: none !important;
+          }
         }
         @media (min-width: 1024px) {
           html[data-bb-skin="blue-storm"] .dashboard-shell {

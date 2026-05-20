@@ -2280,7 +2280,9 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="blue-storm"] body,
   html[data-bb-skin="midnight-garden"] body,
   html[data-bb-skin="lavender-prayer"] body,
-  html[data-bb-skin="ruby-village"] body {
+  html[data-bb-skin="ruby-village"] body,
+  html[data-bb-skin="slow-mornings"] body,
+  html[data-bb-skin="morning-mercy"] body {
     --bb-skin-bg-image: var(--bb-skin-bg-image-mobile);
     background-attachment: scroll !important;
     background-position: center top !important;
@@ -2291,7 +2293,9 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="blue-storm"],
   html[data-bb-skin="midnight-garden"],
   html[data-bb-skin="lavender-prayer"],
-  html[data-bb-skin="ruby-village"] {
+  html[data-bb-skin="ruby-village"],
+  html[data-bb-skin="slow-mornings"],
+  html[data-bb-skin="morning-mercy"] {
     --bb-skin-bg-image: var(--bb-skin-bg-image-mobile);
     background-attachment: scroll !important;
     background-position: center top !important;
@@ -2323,7 +2327,9 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="blue-storm"] header,
   html[data-bb-skin="midnight-garden"] header,
   html[data-bb-skin="lavender-prayer"] header,
-  html[data-bb-skin="ruby-village"] header {
+  html[data-bb-skin="ruby-village"] header,
+  html[data-bb-skin="slow-mornings"] header,
+  html[data-bb-skin="morning-mercy"] header {
     position: sticky !important;
     top: 0 !important;
     left: auto !important;
@@ -2333,20 +2339,21 @@ html[data-bb-app-hidden="true"] *::after {
     min-height: 64px !important;
     overflow: visible !important;
     pointer-events: auto !important;
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--bb-background) 96%, transparent), color-mix(in srgb, var(--bb-background) 84%, transparent)),
-      var(--bb-background) !important;
+    background: transparent !important;
+    background-color: transparent !important;
     background-position: center top !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--bb-accent) 22%, transparent) !important;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18) !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
   }
 
   html[data-bb-skin="blue-storm"] header > div,
   html[data-bb-skin="midnight-garden"] header > div,
   html[data-bb-skin="lavender-prayer"] header > div,
-  html[data-bb-skin="ruby-village"] header > div {
+  html[data-bb-skin="ruby-village"] header > div,
+  html[data-bb-skin="slow-mornings"] header > div,
+  html[data-bb-skin="morning-mercy"] header > div {
     background: transparent !important;
     background-color: transparent !important;
     height: auto !important;
@@ -2358,7 +2365,9 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="blue-storm"] .bb-blue-storm-mobile-stage,
   html[data-bb-skin="midnight-garden"] .bb-blue-storm-mobile-stage,
   html[data-bb-skin="lavender-prayer"] .bb-blue-storm-mobile-stage,
-  html[data-bb-skin="ruby-village"] .bb-blue-storm-mobile-stage {
-    margin-top: 12px !important;
+  html[data-bb-skin="ruby-village"] .bb-blue-storm-mobile-stage,
+  html[data-bb-skin="slow-mornings"] .bb-blue-storm-mobile-stage,
+  html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage {
+    margin-top: 0 !important;
   }
 }
