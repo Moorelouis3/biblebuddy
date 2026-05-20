@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { Fragment, useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
-import DashboardDailyTaskCallout from "./DashboardDailyTaskCallout";
+import DashboardDailyTaskCallout, { DatabaseTermTakeover, type BibleDatabaseTerm } from "./DashboardDailyTaskCallout";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import BibleYearLessonAudioPlayer from "./BibleYearLessonAudioPlayer";
 import CommentSection from "./comments/CommentSection";
@@ -46,6 +46,8 @@ import {
 import { GENESIS_DAY_ONE_CREATION_LESSON } from "../lib/bibleYearDailyLessons";
 import { BIBLE_YEAR_DAY_ONE_AUDIO } from "../lib/bibleYearAudio";
 import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
+import { resolveBibleReference } from "../lib/bibleTermResolver";
+import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
@@ -1674,6 +1676,13 @@ export default function DashboardJourneyExperience({
   const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<BibleYearDayCardKey | null>(null);
   const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>>({});
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
+  const [bibleYearSelectedTerm, setBibleYearSelectedTerm] = useState<BibleDatabaseTerm | null>(null);
+  const [bibleYearTermBurstKey, setBibleYearTermBurstKey] = useState(0);
+  const [bibleYearTermNotes, setBibleYearTermNotes] = useState<string | null>(null);
+  const [bibleYearTermNotesError, setBibleYearTermNotesError] = useState<string | null>(null);
+  const [bibleYearTermLoading, setBibleYearTermLoading] = useState(false);
+  const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
+  const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
 
   const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "share", "buddies", "tv", "games", "settings"] as const;
@@ -3015,6 +3024,12 @@ export default function DashboardJourneyExperience({
     }
   }, []);
 
+  useEffect(() => {
+    setBibleYearSelectedTerm(null);
+    setBibleYearTermNotes(null);
+    setBibleYearTermNotesError(null);
+  }, [activeBibleYearDayCard, selectedBibleYearSeriesDay?.dayNumber]);
+
   function openInvitePage() {
     const shareIndex = dashboardPageKeys.indexOf("share");
     if (shareIndex < 0) return;
@@ -4272,6 +4287,89 @@ export default function DashboardJourneyExperience({
     );
   }
 
+  function handleBibleYearDatabaseTermClick(event: MouseEvent<HTMLDivElement>) {
+    const highlightElement = (event.target as HTMLElement).closest(".bible-highlight") as HTMLElement | null;
+    if (!highlightElement) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const type = highlightElement.dataset.type as "people" | "places" | "keywords" | undefined;
+    const term = highlightElement.dataset.term;
+    if (!type || !term) return;
+
+    bibleYearTermReturnScrollYRef.current = window.scrollY;
+    setBibleYearTermBurstKey((current) => current + 1);
+    setBibleYearSelectedTerm({ type, name: resolveBibleReference(type, term) });
+  }
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadBibleYearTermNotes() {
+      if (!bibleYearSelectedTerm) return;
+      setBibleYearTermLoading(true);
+      setBibleYearTermNotes(null);
+      setBibleYearTermNotesError(null);
+
+      try {
+        const notes =
+          bibleYearSelectedTerm.type === "people"
+            ? await getPersonPopupNotes(bibleYearSelectedTerm.name)
+            : bibleYearSelectedTerm.type === "places"
+              ? await getPlacePopupNotes(bibleYearSelectedTerm.name)
+              : await getKeywordPopupNotes(bibleYearSelectedTerm.name);
+
+        if (!cancelled) setBibleYearTermNotes(notes);
+      } catch {
+        if (!cancelled) setBibleYearTermNotesError("Could not load this word yet.");
+      } finally {
+        if (!cancelled) setBibleYearTermLoading(false);
+      }
+    }
+
+    void loadBibleYearTermNotes();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [bibleYearSelectedTerm]);
+
+  function centerBibleYearTermTakeover(behavior: ScrollBehavior = "smooth") {
+    const node = bibleYearTermTakeoverRef.current;
+    if (!node) return;
+
+    const rect = node.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const centeredOffset = Math.max(12, (viewportHeight - rect.height) / 2);
+    const nextTop = Math.max(0, window.scrollY + rect.top - centeredOffset);
+    window.scrollTo({ top: nextTop, behavior });
+  }
+
+  useEffect(() => {
+    if (!bibleYearSelectedTerm) return;
+    let settleTimeout: number | null = null;
+    const frame = window.requestAnimationFrame(() => {
+      centerBibleYearTermTakeover("smooth");
+      settleTimeout = window.setTimeout(() => centerBibleYearTermTakeover("smooth"), 120);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      if (settleTimeout !== null) window.clearTimeout(settleTimeout);
+    };
+  }, [bibleYearSelectedTerm, bibleYearTermLoading, bibleYearTermNotes]);
+
+  function closeBibleYearTermTakeover() {
+    setBibleYearSelectedTerm(null);
+    setBibleYearTermNotes(null);
+    setBibleYearTermNotesError(null);
+    const returnScrollY = bibleYearTermReturnScrollYRef.current;
+    if (typeof returnScrollY === "number") {
+      window.requestAnimationFrame(() => window.scrollTo({ top: returnScrollY, behavior: "auto" }));
+    }
+  }
+
   function buildBibleYearLessonMarkdown() {
     const lesson = GENESIS_DAY_ONE_CREATION_LESSON;
     const teachingByReference: Record<string, string> = {
@@ -4969,7 +5067,21 @@ Before we understand redemption, we need to understand what God made humanity fo
           />
 
           <div className="mb-5">
-            <ChapterNotesMarkdown>{buildBibleYearLessonMarkdown()}</ChapterNotesMarkdown>
+            {bibleYearSelectedTerm ? (
+              <DatabaseTermTakeover
+                selectedTerm={bibleYearSelectedTerm}
+                termBurstKey={bibleYearTermBurstKey}
+                loadingTermNotes={bibleYearTermLoading}
+                termNotes={bibleYearTermNotes}
+                termNotesError={bibleYearTermNotesError}
+                onClose={closeBibleYearTermTakeover}
+                takeoverRef={bibleYearTermTakeoverRef}
+              />
+            ) : (
+              <ChapterNotesMarkdown onDatabaseTermClick={handleBibleYearDatabaseTermClick} enableLargeDatabaseTerms>
+                {buildBibleYearLessonMarkdown()}
+              </ChapterNotesMarkdown>
+            )}
           </div>
 
           <div className="border-t border-[var(--bb-card-border,#dbe7f4)] pt-5">

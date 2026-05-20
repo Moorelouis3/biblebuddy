@@ -8,6 +8,7 @@ type ChapterNotesMarkdownProps = {
   children: string;
   onDatabaseTermClick?: (event: MouseEvent<HTMLDivElement>) => void;
   onScriptureReferenceClick?: (event: MouseEvent<HTMLDivElement>) => void;
+  enableLargeDatabaseTerms?: boolean;
 };
 
 const leadingEmojiPattern = /^[\s]*(?:[\p{Extended_Pictographic}\p{Emoji_Presentation}]|\d\uFE0F?\u20E3)/u;
@@ -144,10 +145,10 @@ function enrichMarkdownChildren(children: ReactNode, options: { enableTerms: boo
   return children;
 }
 
-export default function ChapterNotesMarkdown({ children, onDatabaseTermClick, onScriptureReferenceClick }: ChapterNotesMarkdownProps) {
+export default function ChapterNotesMarkdown({ children, onDatabaseTermClick, onScriptureReferenceClick, enableLargeDatabaseTerms = false }: ChapterNotesMarkdownProps) {
   const [deferredTermsReady, setDeferredTermsReady] = useState(false);
   const normalizedChildren = useMemo(() => normalizeEmojiLists(children), [children]);
-  const canHighlightTerms = Boolean(onDatabaseTermClick) && children.length < 8000;
+  const canHighlightTerms = Boolean(onDatabaseTermClick) && (enableLargeDatabaseTerms || children.length < 8000);
   const enableTermHighlighting = canHighlightTerms && deferredTermsReady;
   const childRenderOptions = {
     enableTerms: enableTermHighlighting,
@@ -251,7 +252,7 @@ export default function ChapterNotesMarkdown({ children, onDatabaseTermClick, on
           },
           blockquote: ({ ...props }) => (
             <blockquote
-              className="my-6 rounded-xl border-l-4 border-amber-400 bg-amber-100/75 px-5 py-4 text-gray-950 shadow-sm [&_p]:mb-0 [&_p]:font-medium [&_p]:text-gray-950"
+              className="my-6 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] border-l-4 border-l-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-surface-soft,#f8fbff)] px-5 py-4 text-[var(--bb-text-primary,#111827)] shadow-sm [&_p]:mb-0 [&_p]:font-medium [&_p]:text-[var(--bb-text-primary,#111827)]"
               {...props}
             />
           ),

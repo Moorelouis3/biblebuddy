@@ -72,7 +72,7 @@ type BibleApiResponse = {
   verses: BibleApiVerse[];
 };
 
-type BibleDatabaseTerm = { type: "people" | "places" | "keywords"; name: string };
+export type BibleDatabaseTerm = { type: "people" | "places" | "keywords"; name: string };
 type NotesScriptureSelection = { reference: string; apiReference: string; book: string; chapter: number };
 
 class TaskPlayerErrorBoundary extends Component<
@@ -185,7 +185,7 @@ function parseInlineBibleReference(reference: string): NotesScriptureSelection |
   };
 }
 
-function DatabaseTermTakeover({
+export function DatabaseTermTakeover({
   selectedTerm,
   termBurstKey,
   loadingTermNotes,
