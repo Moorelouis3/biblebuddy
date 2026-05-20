@@ -36,14 +36,18 @@ export type PremiumSkin = {
 
 export const PREMIUM_SKIN_STORAGE_KEY = "bb:premium-skin";
 export const PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY = "bb:premium-skin-updated-at";
+export const PREMIUM_SKIN_LOCK_MS = 24 * 60 * 60 * 1000;
 
 export function getPremiumSkinStorageKey(userId: string | null | undefined) {
   return userId ? `${PREMIUM_SKIN_STORAGE_KEY}:${userId}` : PREMIUM_SKIN_STORAGE_KEY;
 }
 
 export function readCachedPremiumSkin(userId: string | null | undefined): PremiumSkinId {
-  if (typeof window === "undefined" || !userId) return "none";
-  return normalizePremiumSkinId(window.localStorage.getItem(getPremiumSkinStorageKey(userId)));
+  if (typeof window === "undefined") return "none";
+  return normalizePremiumSkinId(
+    (userId ? window.localStorage.getItem(getPremiumSkinStorageKey(userId)) : null) ||
+      window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY),
+  );
 }
 
 export function getPremiumSkinStorageTimestampKey(userId: string | null | undefined) {
@@ -56,18 +60,37 @@ export function readCachedPremiumSkinAgeMs(userId: string | null | undefined) {
   return Number.isFinite(updatedAt) ? Date.now() - updatedAt : Number.POSITIVE_INFINITY;
 }
 
-export function cachePremiumSkinForUser(userId: string | null | undefined, skinId: PremiumSkinId) {
-  if (typeof window === "undefined" || !userId) return;
-  window.localStorage.setItem(getPremiumSkinStorageKey(userId), normalizePremiumSkinId(skinId));
-  window.localStorage.setItem(getPremiumSkinStorageTimestampKey(userId), String(Date.now()));
-  window.localStorage.removeItem(PREMIUM_SKIN_STORAGE_KEY);
-  window.localStorage.removeItem(PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY);
+export function cachePremiumSkinForUser(userId: string | null | undefined, skinId: PremiumSkinId, options: { markSelected?: boolean } = {}) {
+  if (typeof window === "undefined") return;
+  const normalizedSkinId = normalizePremiumSkinId(skinId);
+  if (userId) window.localStorage.setItem(getPremiumSkinStorageKey(userId), normalizedSkinId);
+  window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, normalizedSkinId);
+  if (options.markSelected) {
+    const updatedAt = String(Date.now());
+    if (userId) window.localStorage.setItem(getPremiumSkinStorageTimestampKey(userId), updatedAt);
+    window.localStorage.setItem(PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY, updatedAt);
+  }
 }
 
 export function clearLegacyPremiumSkinCache() {
   if (typeof window === "undefined") return;
-  window.localStorage.removeItem(PREMIUM_SKIN_STORAGE_KEY);
   window.localStorage.removeItem(PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY);
+}
+
+export function getPremiumSkinLockRemainingMs(activeSkinId: PremiumSkinId, selectedAt: string | null | undefined, nextSkinId: PremiumSkinId) {
+  if (activeSkinId === "none" || nextSkinId === activeSkinId) return 0;
+  const selectedAtMs = selectedAt ? Date.parse(selectedAt) : Number.NaN;
+  if (!Number.isFinite(selectedAtMs)) return 0;
+  return Math.max(0, PREMIUM_SKIN_LOCK_MS - (Date.now() - selectedAtMs));
+}
+
+export function formatPremiumSkinLockRemaining(ms: number) {
+  const totalMinutes = Math.max(1, Math.ceil(ms / 60000));
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  if (hours <= 0) return `${minutes} minute${minutes === 1 ? "" : "s"}`;
+  if (minutes === 0) return `${hours} hour${hours === 1 ? "" : "s"}`;
+  return `${hours}h ${minutes}m`;
 }
 
 export const BLUE_STORM_SKIN: PremiumSkin = {

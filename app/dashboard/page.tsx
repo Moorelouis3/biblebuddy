@@ -66,11 +66,12 @@ import {
   applyPremiumSkinToDocument,
   cachePremiumSkinForUser,
   clearLegacyPremiumSkinCache,
+  formatPremiumSkinLockRemaining,
+  getPremiumSkinLockRemainingMs,
   getPremiumSkinForLegacyFlame,
   getPremiumSkinForLegacyTheme,
   getPremiumSkin,
   normalizePremiumSkinId,
-  readCachedPremiumSkinAgeMs,
   readCachedPremiumSkin,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
@@ -125,7 +126,6 @@ const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
 const MAX_BADGE_POPUPS_PER_SESSION = 3;
 const MYSTERY_PRIZE_REWARDS = [100, 150, 200, 250, 300, 400, 500];
 const DAILY_LOGIN_GIFT_MIN_DELAY_MS = 60 * 60 * 1000;
-const RECENT_PREMIUM_SKIN_CACHE_MS = 30000;
 const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
 
 const MATTHEW_CHAPTERS = 28;
@@ -1099,7 +1099,7 @@ export default function DashboardPage() {
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [levelRefreshTick, setLevelRefreshTick] = useState(0);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; selected_buddy_avatar?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null; created_at?: string | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; selected_buddy_avatar?: string | null; active_premium_skin?: string | null; active_premium_skin_selected_at?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null; created_at?: string | null } | null>(null);
   const [buddySelectionWelcome, setBuddySelectionWelcome] = useState<{ buddyId: BuddyAvatarId; buddyName: string } | null>(null);
   const [showDiamondStore, setShowDiamondStore] = useState(false);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
@@ -4233,7 +4233,8 @@ export default function DashboardPage() {
   async function applyPurchasedTheme(themeId: AppThemeId) {
     const mappedSkinId = getPremiumSkinForLegacyTheme(themeId);
     if (mappedSkinId !== "none") {
-      await applyPurchasedPremiumSkin(mappedSkinId);
+      const applied = await applyPurchasedPremiumSkin(mappedSkinId);
+      if (!applied) return;
     }
     if (typeof window !== "undefined") {
       window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
@@ -4263,13 +4264,45 @@ export default function DashboardPage() {
     return !error && Boolean(data);
   }
 
+  async function getPremiumSkinLockMessage(nextSkinId: PremiumSkinId) {
+    if (!userId || isOwnerDashboard) return null;
+    const currentSkin = normalizePremiumSkinId(profile?.active_premium_skin ?? activePremiumSkinId);
+    const currentSelectedAt = profile?.active_premium_skin_selected_at ?? null;
+    let remainingMs = getPremiumSkinLockRemainingMs(currentSkin, currentSelectedAt, nextSkinId);
+    if (remainingMs > 0) {
+      return `Keep ${getPremiumSkin(currentSkin)?.name || "your current skin"} for ${formatPremiumSkinLockRemaining(remainingMs)} before choosing another skin.`;
+    }
+
+    const { data, error } = await supabase
+      .from("profile_stats")
+      .select("active_premium_skin, active_premium_skin_selected_at")
+      .eq("user_id", userId)
+      .maybeSingle();
+    if (error && /active_premium_skin_selected_at/i.test(error.message || "")) return null;
+    if (error) {
+      console.warn("[STORE] Could not verify Premium Skin lock:", error.message);
+      return "I could not verify your skin lock yet. Try again in a moment.";
+    }
+    const dbSkin = normalizePremiumSkinId(data?.active_premium_skin);
+    remainingMs = getPremiumSkinLockRemainingMs(dbSkin, data?.active_premium_skin_selected_at, nextSkinId);
+    if (remainingMs <= 0) return null;
+    return `Keep ${getPremiumSkin(dbSkin)?.name || "your current skin"} for ${formatPremiumSkinLockRemaining(remainingMs)} before choosing another skin.`;
+  }
+
   async function applyPurchasedPremiumSkin(skinId: PremiumSkinId) {
     const normalizedSkinId = normalizePremiumSkinId(skinId);
+    const lockMessage = await getPremiumSkinLockMessage(normalizedSkinId);
+    if (lockMessage) {
+      setStoreMessage(lockMessage);
+      return false;
+    }
+    const selectedAt = new Date().toISOString();
     if (typeof window !== "undefined") {
-      cachePremiumSkinForUser(userId, normalizedSkinId);
+      cachePremiumSkinForUser(userId, normalizedSkinId, { markSelected: true });
       window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: normalizedSkinId } }));
     }
     setActivePremiumSkinId(normalizedSkinId);
+    setProfile((current) => current ? { ...current, active_premium_skin: normalizedSkinId, active_premium_skin_selected_at: selectedAt } : current);
     applyPremiumSkinToDocument(normalizedSkinId);
     preloadActiveSkinAssets(normalizedSkinId);
     if (userId) {
@@ -4279,6 +4312,7 @@ export default function DashboardPage() {
           {
             user_id: userId,
             active_premium_skin: normalizedSkinId,
+            active_premium_skin_selected_at: selectedAt,
             updated_at: new Date().toISOString(),
           },
           { onConflict: "user_id" },
@@ -4291,6 +4325,7 @@ export default function DashboardPage() {
     if (matchingFlame) {
       await applyPurchasedFlame(matchingFlame);
     }
+    return true;
   }
 
   function promptToApplyPremiumSkin(item: BibleBuddyStoreItem) {
@@ -4304,8 +4339,9 @@ export default function DashboardPage() {
     if (!item?.skinId) return;
     setStoreBuyingId(item.id);
     setStoreMessage(null);
-    await applyPurchasedPremiumSkin(item.skinId);
+    const applied = await applyPurchasedPremiumSkin(item.skinId);
     setStoreBuyingId(null);
+    if (!applied) return;
     setSkinApplyPrompt(null);
     setShowDiamondStore(false);
     setSkinAppliedCongrats({ skinName: item.title });
@@ -4781,11 +4817,19 @@ export default function DashboardPage() {
 
         let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
+          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
           .eq("user_id", userId)
           .maybeSingle();
 
-        if (error && /(diamonds_count|selected_streak_flame|selected_buddy_avatar|active_premium_skin|app_theme|daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(error.message || "")) {
+        if (error && /active_premium_skin_selected_at/i.test(error.message || "")) {
+          const fallback = await supabase
+            .from("profile_stats")
+            .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
+            .eq("user_id", userId)
+            .maybeSingle();
+          data = fallback.data as typeof data;
+          error = fallback.error;
+        } else if (error && /(diamonds_count|selected_streak_flame|selected_buddy_avatar|active_premium_skin|app_theme|daily_login_gift_last_visit_at|daily_login_gift_last_shown_date)/i.test(error.message || "")) {
           const fallback = await supabase
             .from("profile_stats")
             .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username, created_at")
@@ -4853,12 +4897,7 @@ export default function DashboardPage() {
               ? getPremiumSkinForLegacyTheme(profileData?.app_theme)
               : getPremiumSkinForLegacyFlame(profileData?.selected_streak_flame);
           const candidateActiveSkin = hasActiveSkinColumn ? dbActiveSkin : legacyMappedSkin;
-          const cachedSkin = readCachedPremiumSkin(userId);
-          const preferredSkin =
-            readCachedPremiumSkinAgeMs(userId) < RECENT_PREMIUM_SKIN_CACHE_MS && cachedSkin !== candidateActiveSkin
-              ? cachedSkin
-              : candidateActiveSkin;
-          const resolvedActiveSkin = await canUsePremiumSkin(preferredSkin) ? preferredSkin : "none";
+          const resolvedActiveSkin = await canUsePremiumSkin(candidateActiveSkin) ? candidateActiveSkin : "none";
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(userId, resolvedActiveSkin);
           setActivePremiumSkinId(resolvedActiveSkin);
@@ -4876,7 +4915,7 @@ export default function DashboardPage() {
             void supabase
               .from("profile_stats")
               .upsert(
-                { user_id: userId, active_premium_skin: resolvedActiveSkin, updated_at: new Date().toISOString() },
+                { user_id: userId, active_premium_skin: resolvedActiveSkin, active_premium_skin_selected_at: profileData?.active_premium_skin_selected_at ?? new Date().toISOString(), updated_at: new Date().toISOString() },
                 { onConflict: "user_id" },
               );
           }

@@ -87,7 +87,7 @@ const premiumSkinFirstPaintScript = `
     var skins = ${JSON.stringify(premiumSkinFirstPaintPayload)};
     var skinFlames = ${JSON.stringify(premiumSkinFirstPaintFlames)};
     var flameColors = ${JSON.stringify(premiumSkinFirstPaintFlameColors)};
-    var skinId = null;
+    var skinId = window.localStorage.getItem("bb:premium-skin");
     var skin = skins[skinId];
     if (!skin) return;
 

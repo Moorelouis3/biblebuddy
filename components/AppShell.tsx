@@ -34,7 +34,6 @@ import {
   getPremiumSkinForLegacyFlame,
   getPremiumSkinForLegacyTheme,
   normalizePremiumSkinId,
-  readCachedPremiumSkinAgeMs,
   readCachedPremiumSkin,
   type PremiumSkinId,
 } from "../lib/premiumSkins";
@@ -74,7 +73,6 @@ const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 const DAILY_RECOMMENDATIONS_ENABLED = false;
 const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
 const GRACE_DAY_STORE_ITEM_ID = "boost-extra-grace-day";
-const RECENT_PREMIUM_SKIN_CACHE_MS = 30000;
 
 function isOwnerEmail(email: string | null | undefined) {
   return email?.toLowerCase() === "moorelouis3@gmail.com";
@@ -250,7 +248,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setAppThemeId(resolvedTheme);
     applyAppThemeToDocument(resolvedTheme);
     clearLegacyPremiumSkinCache();
-    applyPremiumSkinToDocument("none");
+    applyPremiumSkinToDocument(readCachedPremiumSkin(null));
     preloadImage(getBuddyAvatar(normalizeBuddyAvatarId(window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY))).profileImage, "high");
     syncPerformanceModeToDocument();
 
@@ -310,8 +308,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           "none",
       );
       cachePremiumSkinForUser(userId, skinId);
-      applyAppThemeToDocument(appThemeId);
-      applyPremiumSkinToDocument(skinId);
+      if (skinId === "none") {
+        applyPremiumSkinToDocument("none");
+        applyAppThemeToDocument(appThemeId);
+      } else {
+        applyAppThemeToDocument(appThemeId);
+        applyPremiumSkinToDocument(skinId);
+      }
       preloadActiveSkinAssets(skinId);
       const skinFlame = getPremiumSkinFlameId(skinId);
       if (skinFlame) {
@@ -356,11 +359,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function loadSavedTheme(currentUserId: string, email?: string | null) {
     let { data, error } = await supabase
       .from("profile_stats")
-      .select("app_theme, active_premium_skin, selected_streak_flame")
+      .select("app_theme, active_premium_skin, active_premium_skin_selected_at, selected_streak_flame")
       .eq("user_id", currentUserId)
       .maybeSingle();
 
-    if (error && /active_premium_skin/i.test(error.message || "")) {
+    if (error && /active_premium_skin_selected_at/i.test(error.message || "")) {
+      const fallback = await supabase
+        .from("profile_stats")
+        .select("app_theme, active_premium_skin, selected_streak_flame")
+        .eq("user_id", currentUserId)
+        .maybeSingle();
+      data = fallback.data as typeof data;
+      error = fallback.error;
+    } else if (error && /active_premium_skin/i.test(error.message || "")) {
       const fallback = await supabase
         .from("profile_stats")
         .select("app_theme, selected_streak_flame")
@@ -383,15 +394,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         ? getPremiumSkinForLegacyTheme(data?.app_theme)
         : getPremiumSkinForLegacyFlame(data && "selected_streak_flame" in data ? data.selected_streak_flame : null);
     const candidateSkin = hasActiveSkinColumn ? dbSkin : legacyMappedSkin;
-    const cachedSkin = readCachedPremiumSkin(currentUserId);
-    const preferredSkin =
-      readCachedPremiumSkinAgeMs(currentUserId) < RECENT_PREMIUM_SKIN_CACHE_MS && cachedSkin !== candidateSkin
-        ? cachedSkin
-        : candidateSkin;
-    const savedSkin = await canUsePremiumSkin(currentUserId, email, preferredSkin) ? preferredSkin : "none";
-    applyThemeLocally(savedTheme);
+    const savedSkin = await canUsePremiumSkin(currentUserId, email, candidateSkin) ? candidateSkin : "none";
     cachePremiumSkinForUser(currentUserId, savedSkin);
-    applyPremiumSkinToDocument(savedSkin);
+    if (savedSkin === "none") {
+      applyPremiumSkinToDocument("none");
+      applyThemeLocally(savedTheme);
+    } else {
+      applyThemeLocally(savedTheme);
+      applyPremiumSkinToDocument(savedSkin);
+    }
     preloadActiveSkinAssets(savedSkin);
     window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: savedSkin } }));
 
@@ -400,13 +411,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         .from("profile_stats")
         .update({ active_premium_skin: "none", updated_at: new Date().toISOString() })
         .eq("user_id", currentUserId);
-    } else if (savedSkin !== "none" && normalizePremiumSkinId(data?.active_premium_skin) !== savedSkin) {
+    } else if (savedSkin !== "none" && (normalizePremiumSkinId(data?.active_premium_skin) !== savedSkin || !data?.active_premium_skin_selected_at)) {
       void supabase
         .from("profile_stats")
         .upsert(
           {
             user_id: currentUserId,
             active_premium_skin: savedSkin,
+            active_premium_skin_selected_at: data?.active_premium_skin_selected_at ?? new Date().toISOString(),
             updated_at: new Date().toISOString(),
           },
           { onConflict: "user_id" },
@@ -643,11 +655,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function loadHeaderDashboardStats(currentUserId: string) {
     let { data, error }: { data: any; error: any } = await supabase
       .from("profile_stats")
-      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username, selected_buddy_avatar, selected_streak_flame, active_premium_skin, member_badge")
+      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username, selected_buddy_avatar, selected_streak_flame, active_premium_skin, active_premium_skin_selected_at, member_badge")
       .eq("user_id", currentUserId)
       .maybeSingle();
 
-    if (error && /grace_days_count|last_grace_day_earned_at|selected_buddy_avatar|selected_streak_flame|active_premium_skin/i.test(error.message || "")) {
+    if (error && /active_premium_skin_selected_at/i.test(error.message || "")) {
+      const fallback = await supabase
+        .from("profile_stats")
+        .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username, selected_buddy_avatar, selected_streak_flame, active_premium_skin, member_badge")
+        .eq("user_id", currentUserId)
+        .maybeSingle();
+      data = fallback.data;
+      error = fallback.error;
+    } else if (error && /grace_days_count|last_grace_day_earned_at|selected_buddy_avatar|selected_streak_flame|active_premium_skin/i.test(error.message || "")) {
       const fallback = await supabase
         .from("profile_stats")
         .select("current_level, current_streak, profile_image_url, display_name, username, member_badge")
@@ -673,11 +693,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const dbSelectedFlame = normalizeFlameCosmeticId(data?.selected_streak_flame);
       const hasActiveSkinColumn = Boolean(data && "active_premium_skin" in data);
       const dbActiveSkin = normalizePremiumSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
-      const cachedSkin = readCachedPremiumSkin(currentUserId);
-      const resolvedSkin =
-        readCachedPremiumSkinAgeMs(currentUserId) < RECENT_PREMIUM_SKIN_CACHE_MS && cachedSkin !== dbActiveSkin
-          ? cachedSkin
-          : dbActiveSkin;
+      const resolvedSkin = dbActiveSkin;
       const skinFlame = getPremiumSkinFlameId(resolvedSkin);
       const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
       persistActiveStreakFlame(resolvedSelectedFlame);

@@ -27,9 +27,9 @@ import {
   applyPremiumSkinToDocument,
   cachePremiumSkinForUser,
   clearLegacyPremiumSkinCache,
+  formatPremiumSkinLockRemaining,
+  getPremiumSkinLockRemainingMs,
   normalizePremiumSkinId,
-  readCachedPremiumSkin,
-  readCachedPremiumSkinAgeMs,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
@@ -48,9 +48,8 @@ type SettingsProfileRow = {
   selected_streak_flame?: string | null;
   selected_buddy_avatar?: string | null;
   active_premium_skin?: string | null;
+  active_premium_skin_selected_at?: string | null;
 };
-
-const RECENT_PREMIUM_SKIN_CACHE_MS = 30000;
 
 type BuddyReadyModal = {
   buddyId: BuddyAvatarId;
@@ -91,6 +90,7 @@ export default function SettingsPage() {
   const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState<AppThemeId>("light");
   const [selectedPremiumSkin, setSelectedPremiumSkin] = useState<PremiumSkinId>("none");
+  const [selectedPremiumSkinSelectedAt, setSelectedPremiumSkinSelectedAt] = useState<string | null>(null);
   const [selectedFlame, setSelectedFlame] = useState<FlameCosmeticId>("default");
   const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId>(DEFAULT_BUDDY_AVATAR);
   const [buddySaving, setBuddySaving] = useState<BuddyAvatarId | null>(null);
@@ -130,12 +130,20 @@ export default function SettingsPage() {
 
         const profileRequest = await supabase
           .from("profile_stats")
-          .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar, active_premium_skin")
+          .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at")
           .eq("user_id", currentUser.id)
           .maybeSingle();
 
         let profile = profileRequest.data as SettingsProfileRow | null;
-        if (profileRequest.error && /selected_streak_flame|selected_buddy_avatar|active_premium_skin/i.test(profileRequest.error.message || "")) {
+        if (profileRequest.error && /active_premium_skin_selected_at/i.test(profileRequest.error.message || "")) {
+          const fallbackProfile = await supabase
+            .from("profile_stats")
+            .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar, active_premium_skin")
+            .eq("user_id", currentUser.id)
+            .maybeSingle();
+          profile = fallbackProfile.data as SettingsProfileRow | null;
+          setSettingsMessage("Skin lock timing needs the newest profile_stats column before it can enforce the 24 hour lock.");
+        } else if (profileRequest.error && /selected_streak_flame|selected_buddy_avatar|active_premium_skin/i.test(profileRequest.error.message || "")) {
           const fallbackProfile = await supabase
             .from("profile_stats")
             .select("display_name, username, app_theme")
@@ -164,11 +172,7 @@ export default function SettingsPage() {
           profile && "active_premium_skin" in profile && profile.active_premium_skin
             ? normalizePremiumSkinId(profile.active_premium_skin)
             : "none";
-        const cachedPremiumSkin = readCachedPremiumSkin(currentUser.id);
-        const resolvedPremiumSkin: PremiumSkinId =
-          readCachedPremiumSkinAgeMs(currentUser.id) < RECENT_PREMIUM_SKIN_CACHE_MS && cachedPremiumSkin !== dbPremiumSkin
-            ? cachedPremiumSkin
-            : dbPremiumSkin;
+        const resolvedPremiumSkin = dbPremiumSkin;
         const premiumSkinStoreItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === resolvedPremiumSkin);
         const ownsResolvedPremiumSkin =
           resolvedPremiumSkin === "none" ||
@@ -182,6 +186,7 @@ export default function SettingsPage() {
             .eq("user_id", currentUser.id);
         }
         setSelectedPremiumSkin(safePremiumSkin);
+        setSelectedPremiumSkinSelectedAt(safePremiumSkin === "none" ? null : profile?.active_premium_skin_selected_at ?? null);
         const localSelectedBuddy =
           typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
         const resolvedSelectedBuddy = normalizeBuddyAvatarId(profile?.selected_buddy_avatar || localSelectedBuddy);
@@ -447,13 +452,43 @@ export default function SettingsPage() {
       return;
     }
 
+    if (!ownerHasUnlimitedDiamonds) {
+      let remainingMs = getPremiumSkinLockRemainingMs(selectedPremiumSkin, selectedPremiumSkinSelectedAt, skinId);
+      if (remainingMs <= 0) {
+        const { data, error } = await supabase
+          .from("profile_stats")
+          .select("active_premium_skin, active_premium_skin_selected_at")
+          .eq("user_id", user.id)
+          .maybeSingle();
+        if (error && !/active_premium_skin_selected_at/i.test(error.message || "")) {
+          setSettingsMessage("I could not verify your skin lock yet. Try again in a moment.");
+          return;
+        }
+        if (!error) {
+          remainingMs = getPremiumSkinLockRemainingMs(
+            normalizePremiumSkinId(data?.active_premium_skin),
+            data?.active_premium_skin_selected_at,
+            skinId,
+          );
+        }
+      }
+      if (remainingMs > 0) {
+        const lockedSkin = PREMIUM_SKINS.find((premiumSkin) => premiumSkin.id === selectedPremiumSkin)?.name || "your current skin";
+        setSettingsMessage(`Keep ${lockedSkin} for ${formatPremiumSkinLockRemaining(remainingMs)} before choosing another skin.`);
+        return;
+      }
+    }
+
     const previousSkin = selectedPremiumSkin;
+    const previousSkinSelectedAt = selectedPremiumSkinSelectedAt;
     const previousFlame = selectedFlame;
+    const selectedAt = new Date().toISOString();
     setSkinSaving(skinId);
     setSettingsMessage(null);
     setSelectedPremiumSkin(skinId);
+    setSelectedPremiumSkinSelectedAt(selectedAt);
     if (typeof window !== "undefined") {
-      cachePremiumSkinForUser(user.id, skinId);
+      cachePremiumSkinForUser(user.id, skinId, { markSelected: true });
       applyPremiumSkinToDocument(skinId);
       window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId } }));
     }
@@ -482,6 +517,7 @@ export default function SettingsPage() {
           {
             user_id: user.id,
             active_premium_skin: skinId,
+            active_premium_skin_selected_at: selectedAt,
             updated_at: new Date().toISOString(),
           },
           { onConflict: "user_id" },
@@ -491,6 +527,7 @@ export default function SettingsPage() {
       setSettingsMessage(skin ? `${skin.name} is now your default Premium Skin.` : "Premium Skin removed.");
     } catch (error: any) {
       setSelectedPremiumSkin(previousSkin);
+      setSelectedPremiumSkinSelectedAt(previousSkinSelectedAt);
       setSelectedFlame(previousFlame);
       if (typeof window !== "undefined") {
         cachePremiumSkinForUser(user.id, previousSkin);
