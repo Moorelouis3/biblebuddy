@@ -7420,14 +7420,14 @@ export default function DashboardPage() {
 
   function renderDeepStudySetup() {
     return (
-      <section className="dashboard-inline-task mt-3 w-full rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_76%,transparent)] p-4 text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
-        <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-end">
+      <section className="dashboard-inline-task mt-2 w-full rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_76%,transparent)] px-4 py-3 text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
+        <div className="grid gap-2.5 sm:grid-cols-[1fr_auto] sm:items-end">
           <label className="block">
-            <span className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Focus time</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">Focus time</span>
             <select
               value={deepStudySelectedMinutes}
               onChange={(event) => setDeepStudySelectedMinutes(Number(event.target.value))}
-              className="mt-2 w-full rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent)_30%,transparent)] bg-[var(--bb-surface-soft)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary)] outline-none"
+              className="mt-1.5 w-full rounded-[16px] border border-[color-mix(in_srgb,var(--bb-accent)_30%,transparent)] bg-[var(--bb-surface-soft)] px-4 py-2.5 text-sm font-black text-[var(--bb-text-primary)] outline-none"
             >
               {deepStudyDurationOptions.map((option) => (
                 <option key={`${option.minutes}:${option.label}`} value={option.minutes}>
@@ -7439,20 +7439,20 @@ export default function DashboardPage() {
           <button
             type="button"
             onClick={() => startDeepStudySession(selectedDeepStudyDuration.minutes, selectedDeepStudyDuration.shareDisplayMinutes)}
-            className="rounded-[18px] bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
+            className="rounded-[16px] bg-[var(--bb-button)] px-6 py-2.5 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
           >
             Start
           </button>
         </div>
         {!isDeepStudyPaidUser ? (
-          <div className="mt-3 rounded-[18px] bg-[var(--bb-surface-soft)] px-4 py-3 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">
+          <div className="mt-2 rounded-[16px] bg-[var(--bb-surface-soft)] px-4 py-2.5 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">
             <p>Upgrade unlocks 10, 45, and 60 minute focus sessions.</p>
           </div>
         ) : null}
         <button
           type="button"
           onClick={() => setDeepStudyMode((current) => current === "info" ? "setup" : "info")}
-          className="mt-3 text-left text-xs font-black text-[var(--bb-accent)]"
+          className="mt-2 text-left text-xs font-black text-[var(--bb-accent)]"
         >
           View Deep Study History!
         </button>
