@@ -915,6 +915,8 @@ export default function PublicProfilePage() {
           ? "rgba(255, 115, 95, 0.38)"
           : profileSkin.id === "angel-wings"
             ? "rgba(141, 220, 255, 0.38)"
+            : profileSkin.id === "winter-cabin"
+              ? "rgba(155, 215, 255, 0.38)"
             : "rgba(255, 255, 255, 0.24)",
       } as React.CSSProperties)
     : undefined;

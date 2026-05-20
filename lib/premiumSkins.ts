@@ -1,4 +1,4 @@
-export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline" | "angel-wings";
+export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline" | "angel-wings" | "winter-cabin";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -349,6 +349,38 @@ export const ANGEL_WINGS_SKIN: PremiumSkin = {
   },
 };
 
+export const WINTER_CABIN_SKIN: PremiumSkin = {
+  id: "winter-cabin",
+  name: "Winter Cabin",
+  label: "Premium Skin",
+  storeSubtitle: "A quiet snowy cabin atmosphere for peaceful nighttime Bible study and reflection.",
+  backgroundImage: "/skins/WinterCabin.png",
+  originalImage: "/skins/WinterCabin.png",
+  thumbnailImage: "/skins/WinterCabin.png",
+  mobileBackgroundImage: "/skins/WinterCabin.png",
+  desktopBackgroundImage: "/skins/WinterCabin.png",
+  price: 1000,
+  palette: {
+    background: "#050E1D",
+    surface: "rgba(8, 19, 36, 0.78)",
+    surfaceSoft: "rgba(52, 89, 120, 0.28)",
+    card: "rgba(7, 18, 34, 0.76)",
+    cardBorder: "rgba(155, 215, 255, 0.36)",
+    textPrimary: "#F5FBFF",
+    textSecondary: "#D6E8F5",
+    textMuted: "#9FB9CB",
+    accent: "#9BD7FF",
+    accentSoft: "rgba(155, 215, 255, 0.22)",
+    button: "#2C6F9E",
+    buttonText: "#F5FBFF",
+    navBackground: "rgba(5, 14, 29, 0.9)",
+    navActive: "#D7ECFF",
+    navInactive: "#A9C0D1",
+    progressTrack: "rgba(214, 232, 245, 0.18)",
+    progressFill: "#9BD7FF",
+  },
+};
+
 export const PREMIUM_SKINS: PremiumSkin[] = [
   BLUE_STORM_SKIN,
   MIDNIGHT_GARDEN_SKIN,
@@ -358,6 +390,7 @@ export const PREMIUM_SKINS: PremiumSkin[] = [
   MORNING_MERCY_SKIN,
   CAROLINA_COASTLINE_SKIN,
   ANGEL_WINGS_SKIN,
+  WINTER_CABIN_SKIN,
 ];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
 
@@ -455,6 +488,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
                 ? "rgba(123, 175, 212, 0.42)"
                 : skin.id === "angel-wings"
                   ? "rgba(141, 220, 255, 0.44)"
+                  : skin.id === "winter-cabin"
+                    ? "rgba(155, 215, 255, 0.44)"
           : "rgba(93, 214, 255, 0.42)",
   );
   root.style.setProperty(
@@ -473,6 +508,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
                 ? "rgba(166, 216, 244, 0.3)"
                 : skin.id === "angel-wings"
                   ? "rgba(246, 211, 133, 0.38)"
+                  : skin.id === "winter-cabin"
+                    ? "rgba(255, 207, 125, 0.24)"
           : "rgba(93, 214, 255, 0.2)",
   );
 

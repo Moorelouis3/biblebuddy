@@ -2608,6 +2608,7 @@ export default function DashboardPage() {
           .skin-world-morning-mercy { --premium-aura: #E99265; }
           .skin-world-carolina-coastline { --premium-aura: #7BAFD4; }
           .skin-world-angel-wings { --premium-aura: #8DDCFF; }
+          .skin-world-winter-cabin { --premium-aura: #9BD7FF; }
           @keyframes premium-stat-drift {
             from { transform: translate3d(-2%, -1%, 0) rotate(0deg); opacity: 0.52; }
             to { transform: translate3d(2%, 1%, 0) rotate(4deg); opacity: 0.82; }
@@ -3157,6 +3158,8 @@ export default function DashboardPage() {
                     ? ["Lighthouse", "Waves", "Mist"]
                     : item.skinId === "angel-wings"
                       ? ["Wings", "Light Rays", "Peace"]
+                      : item.skinId === "winter-cabin"
+                        ? ["Snowfall", "Cabin Glow", "Moonlight"]
                 : ["Storm", "Glow", "Mist"];
       const skinMotionClass =
         item.skinId === "midnight-garden"
@@ -3173,9 +3176,11 @@ export default function DashboardPage() {
                     ? "bb-store-skin-card--coastline"
                     : item.skinId === "angel-wings"
                       ? "bb-store-skin-card--angel"
+                      : item.skinId === "winter-cabin"
+                        ? "bb-store-skin-card--winter"
                 : "bb-store-skin-card--storm";
       const skinBadge =
-        item.skinId === "slow-mornings" || item.skinId === "morning-mercy" || item.skinId === "carolina-coastline" || item.skinId === "angel-wings"
+        item.skinId === "slow-mornings" || item.skinId === "morning-mercy" || item.skinId === "carolina-coastline" || item.skinId === "angel-wings" || item.skinId === "winter-cabin"
           ? "New"
           : item.skinId === "ruby-village"
             ? "Popular"
@@ -3219,6 +3224,8 @@ export default function DashboardPage() {
                             ? "radial-gradient(circle at 54% 12%, rgba(220,243,255,0.3), transparent 30%), radial-gradient(circle at 18% 38%, rgba(123,175,212,0.22), transparent 28%), linear-gradient(135deg,rgba(7,24,43,0.16),rgba(4,14,27,0.76))"
                             : item.skinId === "angel-wings"
                               ? "radial-gradient(circle at 50% 12%, rgba(255,255,255,0.38), transparent 28%), radial-gradient(circle at 60% 24%, rgba(246,211,133,0.26), transparent 32%), linear-gradient(180deg,rgba(141,220,255,0.04),rgba(4,18,38,0.78))"
+                              : item.skinId === "winter-cabin"
+                                ? "radial-gradient(circle at 52% 12%, rgba(215,236,255,0.32), transparent 30%), radial-gradient(circle at 24% 42%, rgba(255,207,125,0.18), transparent 24%), linear-gradient(180deg,rgba(155,215,255,0.04),rgba(3,10,22,0.82))"
                       : "radial-gradient(circle at 18% 12%,rgba(93,214,255,0.34),transparent 34%),linear-gradient(135deg,rgba(9,24,52,0.2),rgba(4,11,24,0.78))",
             }}
           />
@@ -3240,6 +3247,8 @@ export default function DashboardPage() {
                             ? "rgba(123,175,212,0.26)"
                             : item.skinId === "angel-wings"
                               ? "rgba(246,211,133,0.28)"
+                              : item.skinId === "winter-cabin"
+                                ? "rgba(155,215,255,0.28)"
                       : "rgba(125,211,252,0.25)",
             }}
           />
@@ -3451,8 +3460,24 @@ export default function DashboardPage() {
             filter: blur(2px);
             animation: bb-store-skin-drift 10s ease-in-out infinite alternate;
           }
+          .bb-store-skin-card--winter::before {
+            background:
+              radial-gradient(circle at 50% 12%, rgba(215, 236, 255, 0.34), transparent 24%),
+              radial-gradient(circle at 44% 36%, rgba(255, 207, 125, 0.18), transparent 20%),
+              linear-gradient(102deg, transparent 0%, rgba(155, 215, 255, 0.16) 48%, transparent 76%);
+            animation: bb-store-lantern-flicker 6.4s ease-in-out infinite;
+          }
+          .bb-store-skin-card--winter::after {
+            background:
+              radial-gradient(circle at 24% 28%, rgba(245, 251, 255, 0.42) 0 1.4px, transparent 3px),
+              radial-gradient(circle at 72% 18%, rgba(215, 236, 255, 0.32) 0 1.2px, transparent 3px),
+              linear-gradient(180deg, transparent 0%, rgba(3, 10, 22, 0.18) 70%, rgba(3, 10, 22, 0.48) 100%);
+            background-size: 88px 120px, 136px 170px, 100% 100%;
+            filter: blur(1.2px);
+            animation: bb-store-skin-drift 9.4s ease-in-out infinite alternate;
+          }
         `}</style>
-        <div className="overflow-hidden rounded-[28px] border border-rose-100 bg-[linear-gradient(135deg,rgba(255,231,231,0.9),rgba(255,246,246,0.72))] p-4 shadow-[0_18px_42px_rgba(153,27,27,0.08)]">
+        <div className="hidden overflow-hidden rounded-[28px] border border-rose-100 bg-[linear-gradient(135deg,rgba(255,231,231,0.9),rgba(255,246,246,0.72))] p-4 shadow-[0_18px_42px_rgba(153,27,27,0.08)]">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-4">
               <div className="grid h-16 w-16 shrink-0 place-items-center rounded-[18px] bg-[linear-gradient(135deg,#8f1022,#d93d4e)] text-3xl shadow-[0_12px_24px_rgba(153,27,27,0.22)]" aria-hidden="true">
@@ -3471,9 +3496,9 @@ export default function DashboardPage() {
             </span>
           </div>
         </div>
-        <div className="mt-5 flex items-end justify-between gap-3">
+        <div className="flex items-end justify-between gap-3">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#a41225]">Premium Skins</p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Premium Skins</p>
             <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary)]">Choose a cinematic environment for prayer, study, and focus.</p>
           </div>
         </div>
@@ -3572,10 +3597,9 @@ export default function DashboardPage() {
         <div className="p-1">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-text-primary)]">Bible Buddy Store</p>
-              <h2 className="mt-3 text-4xl font-black leading-none text-[var(--bb-text-primary)]">Customize your journey</h2>
+              <h2 className="text-4xl font-black leading-none text-[var(--bb-text-primary)]">Bible Buddy Store</h2>
               <p className="mt-3 max-w-xl text-base font-semibold leading-7 text-[var(--bb-text-secondary)]">
-                Unlock new styles, Bible Buddies, boosts, and rewards as you grow your habit.
+                Unlock new skins, Bible Buddies, boosts, and rewards as you grow your Bible study habits.
               </p>
             </div>
             <button
@@ -3589,22 +3613,21 @@ export default function DashboardPage() {
           </div>
 
           <div
-            className="sticky top-2 z-10 mt-5 overflow-hidden rounded-[24px] p-5 text-white shadow-[0_18px_42px_rgba(37,99,235,0.30)]"
-            style={{ background: "linear-gradient(135deg, #0c2f86 0%, #1d4ed8 54%, #102064 100%)" }}
+            className="sticky top-2 z-10 mt-5 overflow-hidden rounded-[24px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-5 text-[var(--bb-text-primary)] shadow-[0_18px_42px_rgba(0,0,0,0.16)]"
           >
-            <div className="pointer-events-none absolute -right-12 -top-16 h-40 w-40 rounded-full bg-white/15 blur-2xl" />
+            <div className="pointer-events-none absolute -right-12 -top-16 h-40 w-40 rounded-full bg-[var(--bb-accent-soft)] blur-2xl" />
             <div className="pointer-events-none absolute right-8 top-4 text-6xl opacity-40" aria-hidden="true">💎</div>
             <div className="pointer-events-none absolute bottom-4 right-24 text-3xl opacity-60" aria-hidden="true">💎</div>
             <div className="relative flex items-center gap-4">
-              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-white/15 text-4xl shadow-inner" aria-hidden="true">
+              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] text-4xl shadow-inner" aria-hidden="true">
                 💎
               </div>
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.24em] !text-white/80">Your stash</p>
-                <p className="mt-1 text-3xl font-black leading-none !text-white">
+                <p className="text-xs font-black uppercase tracking-[0.24em] text-[var(--bb-accent)]">Your stash</p>
+                <p className="mt-1 text-3xl font-black leading-none text-[var(--bb-text-primary)]">
                   {diamondCount.toLocaleString()}
                 </p>
-                <p className="mt-2 max-w-md text-sm font-bold leading-5 !text-white/85">
+                <p className="mt-2 max-w-md text-sm font-bold leading-5 text-[var(--bb-text-secondary)]">
                   Earn diamonds by completing studies, streaks, trivia, and daily tasks.
                 </p>
               </div>
@@ -9077,8 +9100,8 @@ export default function DashboardPage() {
         html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell,
         html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage,
         html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage {
-          background-attachment: fixed !important;
-          background-position: center top !important;
+          background-image: none !important;
+          background-color: transparent !important;
         }
         html[data-bb-skin="blue-storm"] .dashboard-shell,
         html[data-bb-skin="midnight-garden"] .dashboard-shell,

@@ -1,6 +1,6 @@
 import type { AppThemeId } from "./appThemes";
 import type { FlameCosmeticId } from "./flameCosmetics";
-import { ANGEL_WINGS_SKIN, BLUE_STORM_SKIN, CAROLINA_COASTLINE_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, MORNING_MERCY_SKIN, RUBY_VILLAGE_SKIN, SLOW_MORNINGS_SKIN, type PremiumSkinId } from "./premiumSkins";
+import { ANGEL_WINGS_SKIN, BLUE_STORM_SKIN, CAROLINA_COASTLINE_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, MORNING_MERCY_SKIN, RUBY_VILLAGE_SKIN, SLOW_MORNINGS_SKIN, WINTER_CABIN_SKIN, type PremiumSkinId } from "./premiumSkins";
 
 export type StoreItemKind = "theme" | "premium_skin" | "streak_flame" | "buddy" | "boost" | "mystery";
 
@@ -120,6 +120,17 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     accent: ANGEL_WINGS_SKIN.palette.accent,
     imageSrc: ANGEL_WINGS_SKIN.thumbnailImage,
     skinId: ANGEL_WINGS_SKIN.id,
+  },
+  {
+    id: "skin-winter-cabin",
+    kind: "premium_skin",
+    title: WINTER_CABIN_SKIN.name,
+    subtitle: WINTER_CABIN_SKIN.storeSubtitle,
+    price: WINTER_CABIN_SKIN.price,
+    emoji: "Snow",
+    accent: WINTER_CABIN_SKIN.palette.accent,
+    imageSrc: WINTER_CABIN_SKIN.thumbnailImage,
+    skinId: WINTER_CABIN_SKIN.id,
   },
 ];
 

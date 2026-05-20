@@ -36,6 +36,7 @@ export const PREMIUM_SKIN_FLAME_BY_ID: Partial<Record<PremiumSkinId, FlameCosmet
   "morning-mercy": "orange",
   "carolina-coastline": "blue",
   "angel-wings": "blue",
+  "winter-cabin": "blue",
 };
 
 export function normalizeFlameCosmeticId(value: unknown): FlameCosmeticId {
