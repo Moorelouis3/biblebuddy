@@ -28,11 +28,13 @@ import {
   type AppThemeId,
 } from "../lib/appThemes";
 import {
-  PREMIUM_SKIN_STORAGE_KEY,
   applyPremiumSkinToDocument,
+  cachePremiumSkinForUser,
+  clearLegacyPremiumSkinCache,
   getPremiumSkinForLegacyFlame,
   getPremiumSkinForLegacyTheme,
   normalizePremiumSkinId,
+  type PremiumSkinId,
 } from "../lib/premiumSkins";
 import { preloadActiveSkinAssets, preloadImage, scheduleIdleWork, syncPerformanceModeToDocument } from "../lib/appPerformance";
 import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
@@ -42,7 +44,7 @@ import StreakFlameEmoji from "./StreakFlameEmoji";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, getPremiumSkinFlameId, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../lib/flameCosmetics";
-import { getStoreItem } from "../lib/bibleBuddyStore";
+import { getStoreItem, PREMIUM_SKIN_STORE_ITEMS } from "../lib/bibleBuddyStore";
 import { getActivePopupFromQueue, markPopupShown, POPUP_QUEUE_PRIORITIES, type PopupQueueItem } from "../lib/popupQueue";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
 
@@ -71,12 +73,13 @@ const DAILY_RECOMMENDATIONS_ENABLED = false;
 const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
 const GRACE_DAY_STORE_ITEM_ID = "boost-extra-grace-day";
 
+function isOwnerEmail(email: string | null | undefined) {
+  return email?.toLowerCase() === "moorelouis3@gmail.com";
+}
+
 function getLocalSkinLockedFlame(): FlameCosmeticId | null {
   if (typeof window === "undefined") return null;
-  const skinId = normalizePremiumSkinId(
-    window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY) ||
-      document.documentElement.dataset.bbSkin,
-  );
+  const skinId = normalizePremiumSkinId(document.documentElement.dataset.bbSkin);
   return getPremiumSkinFlameId(skinId);
 }
 
@@ -243,9 +246,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     );
     setAppThemeId(resolvedTheme);
     applyAppThemeToDocument(resolvedTheme);
-    const skinId = normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY));
-    applyPremiumSkinToDocument(skinId);
-    preloadActiveSkinAssets(skinId);
+    clearLegacyPremiumSkinCache();
+    applyPremiumSkinToDocument("none");
     preloadImage(getBuddyAvatar(normalizeBuddyAvatarId(window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY))).profileImage, "high");
     syncPerformanceModeToDocument();
 
@@ -288,7 +290,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const themeId = normalizeAppThemeId(customEvent.detail?.themeId);
       setAppThemeId(themeId);
       applyAppThemeToDocument(themeId);
-      applyPremiumSkinToDocument(normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY)));
+      applyPremiumSkinToDocument(normalizePremiumSkinId(document.documentElement.dataset.bbSkin));
     }
     window.addEventListener("bb:app-theme-purchased", handlePurchasedTheme);
     return () => window.removeEventListener("bb:app-theme-purchased", handlePurchasedTheme);
@@ -298,10 +300,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (typeof window === "undefined") return;
     function handlePremiumSkinChanged(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
-      const skinId = normalizePremiumSkinId(
-        customEvent?.detail?.skinId || window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY),
-      );
-      window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, skinId);
+      const skinId = normalizePremiumSkinId(customEvent?.detail?.skinId || "none");
+      cachePremiumSkinForUser(userId, skinId);
       applyAppThemeToDocument(appThemeId);
       applyPremiumSkinToDocument(skinId);
       preloadActiveSkinAssets(skinId);
@@ -320,7 +320,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.removeEventListener("bb:premium-skin-changed", handlePremiumSkinChanged);
       window.removeEventListener("storage", handlePremiumSkinChanged);
     };
-  }, [appThemeId]);
+  }, [appThemeId, userId]);
 
   function applyThemeLocally(themeId: AppThemeId) {
     setAppThemeId(themeId);
@@ -329,14 +329,23 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.localStorage.setItem("bb:dashboard-theme", themeId === "dark" ? "dark" : "light");
     }
     applyAppThemeToDocument(themeId);
-    applyPremiumSkinToDocument(normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY)));
+    applyPremiumSkinToDocument(normalizePremiumSkinId(document.documentElement.dataset.bbSkin));
   }
 
-  async function loadSavedTheme(currentUserId: string) {
-    const localSkin =
-      typeof window !== "undefined"
-        ? normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY))
-        : "none";
+  async function canUsePremiumSkin(currentUserId: string, email: string | null | undefined, skinId: PremiumSkinId) {
+    if (skinId === "none" || isOwnerEmail(email)) return true;
+    const storeItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skinId);
+    if (!storeItem) return false;
+    const { data, error } = await supabase
+      .from("user_store_purchases")
+      .select("id")
+      .eq("user_id", currentUserId)
+      .eq("item_id", storeItem.id)
+      .maybeSingle();
+    return !error && Boolean(data);
+  }
+
+  async function loadSavedTheme(currentUserId: string, email?: string | null) {
     let { data, error } = await supabase
       .from("profile_stats")
       .select("app_theme, active_premium_skin, selected_streak_flame")
@@ -364,16 +373,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       getPremiumSkinForLegacyTheme(data?.app_theme) !== "none"
         ? getPremiumSkinForLegacyTheme(data?.app_theme)
         : getPremiumSkinForLegacyFlame(data && "selected_streak_flame" in data ? data.selected_streak_flame : null);
-    const savedSkin = dbSkin !== "none" ? dbSkin : localSkin !== "none" ? localSkin : legacyMappedSkin;
+    const candidateSkin = dbSkin !== "none" ? dbSkin : legacyMappedSkin;
+    const savedSkin = await canUsePremiumSkin(currentUserId, email, candidateSkin) ? candidateSkin : "none";
     applyThemeLocally(savedTheme);
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, savedSkin);
-    }
+    cachePremiumSkinForUser(currentUserId, savedSkin);
     applyPremiumSkinToDocument(savedSkin);
     preloadActiveSkinAssets(savedSkin);
     window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: savedSkin } }));
 
-    if (savedSkin !== "none" && normalizePremiumSkinId(data?.active_premium_skin) !== savedSkin) {
+    if (candidateSkin !== savedSkin && dbSkin !== "none") {
+      void supabase
+        .from("profile_stats")
+        .update({ active_premium_skin: "none", updated_at: new Date().toISOString() })
+        .eq("user_id", currentUserId);
+    } else if (savedSkin !== "none" && normalizePremiumSkinId(data?.active_premium_skin) !== savedSkin) {
       void supabase
         .from("profile_stats")
         .upsert(
@@ -644,17 +657,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (typeof window !== "undefined") {
       const localSelectedFlame = window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY);
       const dbSelectedFlame = normalizeFlameCosmeticId(data?.selected_streak_flame);
-      const localActiveSkin = normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY));
       const dbActiveSkin = normalizePremiumSkinId(data?.active_premium_skin);
-      const resolvedSkin = dbActiveSkin !== "none" ? dbActiveSkin : localActiveSkin;
+      const resolvedSkin = dbActiveSkin;
       const skinFlame = getPremiumSkinFlameId(resolvedSkin);
       const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
       persistActiveStreakFlame(resolvedSelectedFlame);
       setHeaderSelectedFlame(resolvedSelectedFlame);
-      if (resolvedSkin !== "none") {
-        window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, resolvedSkin);
-        applyPremiumSkinToDocument(resolvedSkin);
-      }
+      cachePremiumSkinForUser(currentUserId, resolvedSkin);
+      applyPremiumSkinToDocument(resolvedSkin);
       if (skinFlame && dbSelectedFlame !== skinFlame) {
         void supabase
           .from("profile_stats")
@@ -1483,7 +1493,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       return;
     }
     criticalSessionBootUserRef.current = session.user.id;
-    void loadSavedTheme(session.user.id);
+    void loadSavedTheme(session.user.id, session.user.email);
     void loadHeaderDashboardStats(session.user.id);
   }
 

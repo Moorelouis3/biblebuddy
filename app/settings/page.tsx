@@ -24,8 +24,9 @@ import {
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, FLAME_COSMETICS, getPremiumSkinFlameId, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../../lib/flameCosmetics";
 import {
   PREMIUM_SKINS,
-  PREMIUM_SKIN_STORAGE_KEY,
   applyPremiumSkinToDocument,
+  cachePremiumSkinForUser,
+  clearLegacyPremiumSkinCache,
   normalizePremiumSkinId,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
@@ -154,13 +155,23 @@ export default function SettingsPage() {
         setFirstName(nameParts.firstName);
         setLastName(nameParts.lastName);
         setSelectedTheme(normalizeAppThemeId(profile?.app_theme));
-        const localPremiumSkin =
-          typeof window !== "undefined" ? normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY)) : "none";
-        const resolvedPremiumSkin =
+        const resolvedPremiumSkin: PremiumSkinId =
           profile && "active_premium_skin" in profile && profile.active_premium_skin
             ? normalizePremiumSkinId(profile.active_premium_skin)
-            : localPremiumSkin;
-        setSelectedPremiumSkin(resolvedPremiumSkin);
+            : "none";
+        const premiumSkinStoreItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === resolvedPremiumSkin);
+        const ownsResolvedPremiumSkin =
+          resolvedPremiumSkin === "none" ||
+          isAdminUser(currentUser.email) ||
+          Boolean(premiumSkinStoreItem && (purchases || []).some((purchase) => purchase.item_id === premiumSkinStoreItem.id));
+        const safePremiumSkin: PremiumSkinId = ownsResolvedPremiumSkin ? resolvedPremiumSkin : "none";
+        if (!ownsResolvedPremiumSkin) {
+          void supabase
+            .from("profile_stats")
+            .update({ active_premium_skin: "none", updated_at: new Date().toISOString() })
+            .eq("user_id", currentUser.id);
+        }
+        setSelectedPremiumSkin(safePremiumSkin);
         const localSelectedBuddy =
           typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
         const resolvedSelectedBuddy = normalizeBuddyAvatarId(profile?.selected_buddy_avatar || localSelectedBuddy);
@@ -168,14 +179,15 @@ export default function SettingsPage() {
         const localSelectedFlame =
           typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
         const dbSelectedFlame = normalizeFlameCosmeticId(profile?.selected_streak_flame);
-        const skinLockedFlame = getPremiumSkinFlameId(resolvedPremiumSkin);
+        const skinLockedFlame = getPremiumSkinFlameId(safePremiumSkin);
         const resolvedSelectedFlame = skinLockedFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
         setSelectedFlame(resolvedSelectedFlame);
         if (typeof window !== "undefined") {
           window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, resolvedSelectedBuddy);
           persistActiveStreakFlame(resolvedSelectedFlame);
-          window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, resolvedPremiumSkin);
-          applyPremiumSkinToDocument(resolvedPremiumSkin);
+          clearLegacyPremiumSkinCache();
+          cachePremiumSkinForUser(user.id, safePremiumSkin);
+          applyPremiumSkinToDocument(safePremiumSkin);
           window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: resolvedSelectedBuddy } }));
         }
         setStorePurchases((purchases || []) as StorePurchaseRow[]);
@@ -426,7 +438,7 @@ export default function SettingsPage() {
     setSettingsMessage(null);
     setSelectedPremiumSkin(skinId);
     if (typeof window !== "undefined") {
-      window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, skinId);
+      cachePremiumSkinForUser(user.id, skinId);
       applyPremiumSkinToDocument(skinId);
       window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId } }));
     }
@@ -466,7 +478,7 @@ export default function SettingsPage() {
       setSelectedPremiumSkin(previousSkin);
       setSelectedFlame(previousFlame);
       if (typeof window !== "undefined") {
-        window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, previousSkin);
+        cachePremiumSkinForUser(user.id, previousSkin);
         persistActiveStreakFlame(previousFlame);
         applyPremiumSkinToDocument(previousSkin);
         window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: previousSkin } }));

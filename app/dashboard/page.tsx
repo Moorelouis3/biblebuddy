@@ -63,8 +63,9 @@ import {
   type BibleBuddyStoreItem,
 } from "../../lib/bibleBuddyStore";
 import {
-  PREMIUM_SKIN_STORAGE_KEY,
   applyPremiumSkinToDocument,
+  cachePremiumSkinForUser,
+  clearLegacyPremiumSkinCache,
   getPremiumSkinForLegacyFlame,
   getPremiumSkinForLegacyTheme,
   getPremiumSkin,
@@ -106,10 +107,7 @@ import {
 
 function getLocalSkinLockedFlameId() {
   if (typeof window === "undefined") return null;
-  const skinId = normalizePremiumSkinId(
-    window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY) ||
-      document.documentElement.dataset.bbSkin,
-  );
+  const skinId = normalizePremiumSkinId(document.documentElement.dataset.bbSkin);
   return getPremiumSkinFlameId(skinId);
 }
 
@@ -1093,9 +1091,7 @@ export default function DashboardPage() {
   const [buddySelectionWelcome, setBuddySelectionWelcome] = useState<{ buddyId: BuddyAvatarId; buddyName: string } | null>(null);
   const [showDiamondStore, setShowDiamondStore] = useState(false);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
-  const [activePremiumSkinId, setActivePremiumSkinId] = useState<PremiumSkinId>(() => (
-    typeof window === "undefined" ? "none" : normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY))
-  ));
+  const [activePremiumSkinId, setActivePremiumSkinId] = useState<PremiumSkinId>("none");
   const [dashboardThemeId, setDashboardThemeId] = useState<AppThemeId>(() => (
     typeof window === "undefined"
       ? "light"
@@ -4167,9 +4163,7 @@ export default function DashboardPage() {
     if (typeof window === "undefined") return;
     function loadPremiumSkin(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
-      const skinId = normalizePremiumSkinId(
-        customEvent?.detail?.skinId || window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY),
-      );
+      const skinId = normalizePremiumSkinId(customEvent?.detail?.skinId || "none");
       setActivePremiumSkinId(skinId);
       applyPremiumSkinToDocument(skinId);
       preloadActiveSkinAssets(skinId);
@@ -4182,7 +4176,7 @@ export default function DashboardPage() {
       window.removeEventListener("bb:premium-skin-changed", loadPremiumSkin);
       window.removeEventListener("storage", loadPremiumSkin);
     };
-  }, []);
+  }, [userId]);
 
   async function applyPurchasedTheme(themeId: AppThemeId) {
     const mappedSkinId = getPremiumSkinForLegacyTheme(themeId);
@@ -4203,10 +4197,24 @@ export default function DashboardPage() {
     }
   }
 
+  async function canUsePremiumSkin(skinId: PremiumSkinId) {
+    if (skinId === "none" || isOwnerDashboard || !userId) return true;
+    const storeItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skinId);
+    if (!storeItem) return false;
+    if (storePurchases.some((purchase) => purchase.item_id === storeItem.id)) return true;
+    const { data, error } = await supabase
+      .from("user_store_purchases")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("item_id", storeItem.id)
+      .maybeSingle();
+    return !error && Boolean(data);
+  }
+
   async function applyPurchasedPremiumSkin(skinId: PremiumSkinId) {
     const normalizedSkinId = normalizePremiumSkinId(skinId);
     if (typeof window !== "undefined") {
-      window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, normalizedSkinId);
+      cachePremiumSkinForUser(userId, normalizedSkinId);
       window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: normalizedSkinId } }));
     }
     setActivePremiumSkinId(normalizedSkinId);
@@ -4238,9 +4246,7 @@ export default function DashboardPage() {
     const currentSkinId =
       activePremiumSkinId !== "none"
         ? activePremiumSkinId
-        : typeof window !== "undefined"
-          ? normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY))
-          : "none";
+        : normalizePremiumSkinId(typeof document !== "undefined" ? document.documentElement.dataset.bbSkin : null);
     const mappedSkinId = currentSkinId === "none" ? getPremiumSkinForLegacyFlame(normalizedFlameId) : "none";
     if (mappedSkinId !== "none") {
       await applyPurchasedPremiumSkin(mappedSkinId);
@@ -4761,23 +4767,27 @@ export default function DashboardPage() {
           const localSelectedFlame =
             typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
           const dbSelectedFlame = normalizeFlameCosmeticId(profileData?.selected_streak_flame);
-          const localActiveSkin = normalizePremiumSkinId(window.localStorage.getItem(PREMIUM_SKIN_STORAGE_KEY));
           const dbActiveSkin = normalizePremiumSkinId(profileData?.active_premium_skin);
           const legacyMappedSkin =
             getPremiumSkinForLegacyTheme(profileData?.app_theme) !== "none"
               ? getPremiumSkinForLegacyTheme(profileData?.app_theme)
               : getPremiumSkinForLegacyFlame(profileData?.selected_streak_flame);
-          const resolvedActiveSkin = dbActiveSkin !== "none" ? dbActiveSkin : localActiveSkin !== "none" ? localActiveSkin : legacyMappedSkin;
-          if (resolvedActiveSkin !== "none") {
-            window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, resolvedActiveSkin);
-            setActivePremiumSkinId(resolvedActiveSkin);
-            applyPremiumSkinToDocument(resolvedActiveSkin);
-            preloadActiveSkinAssets(resolvedActiveSkin);
-          }
+          const candidateActiveSkin = dbActiveSkin !== "none" ? dbActiveSkin : legacyMappedSkin;
+          const resolvedActiveSkin = await canUsePremiumSkin(candidateActiveSkin) ? candidateActiveSkin : "none";
+          clearLegacyPremiumSkinCache();
+          cachePremiumSkinForUser(userId, resolvedActiveSkin);
+          setActivePremiumSkinId(resolvedActiveSkin);
+          applyPremiumSkinToDocument(resolvedActiveSkin);
+          preloadActiveSkinAssets(resolvedActiveSkin);
           const skinFlame = getPremiumSkinFlameId(resolvedActiveSkin);
           const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
           if (skinFlame) persistActiveStreakFlame(skinFlame);
-          if (resolvedActiveSkin !== "none" && dbActiveSkin !== resolvedActiveSkin) {
+          if (candidateActiveSkin !== resolvedActiveSkin && dbActiveSkin !== "none") {
+            void supabase
+              .from("profile_stats")
+              .update({ active_premium_skin: "none", updated_at: new Date().toISOString() })
+              .eq("user_id", userId);
+          } else if (resolvedActiveSkin !== "none" && dbActiveSkin !== resolvedActiveSkin) {
             void supabase
               .from("profile_stats")
               .upsert(

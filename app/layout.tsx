@@ -8,7 +8,7 @@ import { AppToast } from "@/components/AppToast";
 import { PointsPop } from "@/components/PointsPop";
 import GlobalCreditFeedback from "@/components/GlobalCreditFeedback";
 import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
-import { PREMIUM_SKIN_STORAGE_KEY, PREMIUM_SKINS } from "@/lib/premiumSkins";
+import { PREMIUM_SKINS } from "@/lib/premiumSkins";
 import { FLAME_COSMETIC_BY_ID, PREMIUM_SKIN_FLAME_BY_ID } from "@/lib/flameCosmetics";
 // redeploy trigger
 
@@ -77,7 +77,7 @@ const premiumSkinFirstPaintScript = `
     var skins = ${JSON.stringify(premiumSkinFirstPaintPayload)};
     var skinFlames = ${JSON.stringify(premiumSkinFirstPaintFlames)};
     var flameColors = ${JSON.stringify(premiumSkinFirstPaintFlameColors)};
-    var skinId = window.localStorage && window.localStorage.getItem(${JSON.stringify(PREMIUM_SKIN_STORAGE_KEY)});
+    var skinId = null;
     var skin = skins[skinId];
     if (!skin) return;
 

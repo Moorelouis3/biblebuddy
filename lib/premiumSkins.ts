@@ -36,6 +36,26 @@ export type PremiumSkin = {
 
 export const PREMIUM_SKIN_STORAGE_KEY = "bb:premium-skin";
 
+export function getPremiumSkinStorageKey(userId: string | null | undefined) {
+  return userId ? `${PREMIUM_SKIN_STORAGE_KEY}:${userId}` : PREMIUM_SKIN_STORAGE_KEY;
+}
+
+export function readCachedPremiumSkin(userId: string | null | undefined): PremiumSkinId {
+  if (typeof window === "undefined" || !userId) return "none";
+  return normalizePremiumSkinId(window.localStorage.getItem(getPremiumSkinStorageKey(userId)));
+}
+
+export function cachePremiumSkinForUser(userId: string | null | undefined, skinId: PremiumSkinId) {
+  if (typeof window === "undefined" || !userId) return;
+  window.localStorage.setItem(getPremiumSkinStorageKey(userId), normalizePremiumSkinId(skinId));
+  window.localStorage.removeItem(PREMIUM_SKIN_STORAGE_KEY);
+}
+
+export function clearLegacyPremiumSkinCache() {
+  if (typeof window === "undefined") return;
+  window.localStorage.removeItem(PREMIUM_SKIN_STORAGE_KEY);
+}
+
 export const BLUE_STORM_SKIN: PremiumSkin = {
   id: "blue-storm",
   name: "Blue Storm",
