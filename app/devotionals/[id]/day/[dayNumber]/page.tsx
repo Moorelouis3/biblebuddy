@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import BibleReadingModal from "@/components/BibleReadingModal";
+import BrowserTtsButton from "@/components/BrowserTtsButton";
 import ChapterNotesMarkdown from "@/components/ChapterNotesMarkdown";
 import CommentSection from "@/components/comments/CommentSection";
 import { ModalShell } from "@/components/ModalShell";
@@ -880,6 +881,7 @@ export default function ProverbsStudyDayPage() {
         <div className="flex flex-col gap-4">
           <CollapsibleTask taskNumber={1} title="Bible Study Intro" estimate={taskEstimates.intro} done={introDone} open={openTask === 1} onToggle={() => setOpenTask(openTask === 1 ? null : 1)}>
             <h2 className="mb-5 text-2xl font-black leading-tight text-gray-950">{day.day_title}</h2>
+            <BrowserTtsButton text={day.devotional_text} label="Listen to intro" />
             <div className="text-gray-700" style={{ fontSize: "1rem" }}>
               {devotionalBlocks.map((block) => {
                 if (block.kind === "divider") {
@@ -1016,7 +1018,12 @@ export default function ProverbsStudyDayPage() {
             <button type="button" onClick={() => setShowNotes(false)} className="text-2xl font-bold text-gray-500">x</button>
           </div>
           <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
-            {notesLoading ? <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p> : <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>}
+            {notesLoading ? <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p> : (
+              <>
+                <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
+                <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
+              </>
+            )}
           </div>
         </div>
       </ModalShell>

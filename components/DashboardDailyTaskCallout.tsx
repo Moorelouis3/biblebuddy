@@ -23,6 +23,7 @@ import { enrichBibleVerses, enrichPlainText } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { TASK_XP } from "../lib/progressionRewards";
+import BrowserTtsButton from "./BrowserTtsButton";
 
 type Props = {
   task: TaskState | null;
@@ -1163,6 +1164,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
               </button>
             </div>
             <div className="px-1 py-3">
+              <BrowserTtsButton text={devotionalDay.devotional_text} label="Listen to intro" />
               <ChapterNotesMarkdown>{devotionalDay.devotional_text}</ChapterNotesMarkdown>
             </div>
             <div className="flex justify-end px-1 pb-1 pt-3">
@@ -1194,6 +1196,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
               </button>
             </div>
             <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
+              <BrowserTtsButton text={devotionalDay.devotional_text} label="Listen to intro" />
               <ChapterNotesMarkdown>{devotionalDay.devotional_text}</ChapterNotesMarkdown>
             </div>
           </div>
@@ -1257,6 +1260,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
               <p className="py-10 text-center text-sm text-red-500">{notesError}</p>
             ) : (
               <div className="max-w-none text-gray-800">
+                <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
                 <ChapterNotesMarkdown onDatabaseTermClick={handleNotesDatabaseTermClick} onScriptureReferenceClick={handleNotesScriptureReferenceClick}>{notesText}</ChapterNotesMarkdown>
               </div>
             )}
@@ -1315,6 +1319,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
               <p className="py-10 text-center text-sm text-red-500">{notesError}</p>
             ) : (
               <div className="max-w-none text-gray-800">
+                <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
                 <ChapterNotesMarkdown onDatabaseTermClick={handleNotesDatabaseTermClick} onScriptureReferenceClick={handleNotesScriptureReferenceClick}>{notesText}</ChapterNotesMarkdown>
               </div>
             )}

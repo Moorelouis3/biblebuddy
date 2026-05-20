@@ -41,6 +41,7 @@ import ScrambledGamePlayer from "../../../../components/ScrambledGamePlayer";
 import { awardDiamonds } from "../../../../lib/diamondWallet";
 import { DIAMOND_REWARDS, TASK_REWARD_LABELS, TASK_XP } from "../../../../lib/progressionRewards";
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../../../../lib/chapterNotesOffline";
+import BrowserTtsButton from "../../../../components/BrowserTtsButton";
 
 type Verse = {
   num: number;
@@ -260,6 +261,13 @@ export default function BibleChapterPage() {
   const autoOpenedNotesRef = useRef(false);
   const louisChapterPromptRef = useRef<string | null>(null);
   const bibleGuideShownThisVisitRef = useRef(false);
+  const chapterSpeechText = useMemo(
+    () =>
+      sections
+        .flatMap((section) => section.verses.map((verse) => `${verse.num}. ${verse.text}`))
+        .join(" "),
+    [sections],
+  );
 
   function stripPopupIntro(markdown: string): string {
     return markdown
@@ -2283,6 +2291,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           ref={verseContainerRef}
           className={`mx-auto max-w-3xl bg-white pb-8 pr-10 ${plainTextMode ? "plain-text-mode" : ""}`}
         >
+          <BrowserTtsButton text={chapterSpeechText} label={`Listen to ${bookDisplayName} ${chapter}`} />
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">
               <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold">
@@ -2971,6 +2980,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             plainTextMode ? "plain-text-mode" : ""
           }`}
         >
+          <BrowserTtsButton text={chapterSpeechText} label={`Listen to ${bookDisplayName} ${chapter}`} />
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">
               <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
@@ -3093,6 +3103,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 </div>
               ) : (
                 <div className="max-w-none text-gray-800">
+                  <BrowserTtsButton text={reviewNotesText} label="Listen to chapter notes" />
                   <ChapterNotesMarkdown>{reviewNotesText}</ChapterNotesMarkdown>
                 </div>
               )}

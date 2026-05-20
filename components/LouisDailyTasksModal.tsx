@@ -19,6 +19,7 @@ import { triggerPoints } from "./PointsPop";
 import { TASK_REWARD_LABELS, TASK_XP } from "../lib/progressionRewards";
 import { getChapterNotesFallback, withNotesTimeout } from "../lib/proverbsChapterNotesFallback";
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
+import BrowserTtsButton from "./BrowserTtsButton";
 
 type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
 
@@ -1133,6 +1134,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               </div>
             ) : (
               <div className="max-w-none space-y-5 text-gray-800">
+                <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
                 <ReactMarkdown
                   components={{
                     h1: ({ children }) => (

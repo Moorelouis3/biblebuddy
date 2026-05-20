@@ -19,6 +19,7 @@ import TriviaGamePlayer from "./TriviaGamePlayer";
 import ScrambledGamePlayer from "./ScrambledGamePlayer";
 import { TASK_XP } from "../lib/progressionRewards";
 import { cacheChapterNotes, fetchBibleChapterNotes, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
+import BrowserTtsButton from "./BrowserTtsButton";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -874,6 +875,7 @@ Be accurate to Scripture.`;
                 <>
                   <StudySectionCard title="Bible Study Intro" eyebrow="Task 1">
                     <h2 className="mb-5 text-2xl font-black leading-tight text-gray-950">{day.day_title}</h2>
+                    <BrowserTtsButton text={day.devotional_text} label="Listen to intro" />
                     <div ref={devotionalTextRef} className="text-gray-700" style={{ fontSize: "1rem" }}>
                       {devotionalBlocks.map((block) => {
                         if (block.kind === "divider") {
@@ -1008,6 +1010,7 @@ Be accurate to Scripture.`;
                 <>
               {/* DEVOTIONAL CONTENT SECTION */}
               <div className="mb-8" ref={devotionalTextRef}>
+                <BrowserTtsButton text={day.devotional_text} label="Listen to intro" />
                 <div className="text-gray-700" style={{ fontSize: '1rem' }}>
                   {devotionalBlocks.map((block) => {
                     if (block.kind === "divider") {
@@ -1185,7 +1188,10 @@ Be accurate to Scripture.`;
               ) : chapterNotesError ? (
                 <p className="py-10 text-center text-sm text-red-500">{chapterNotesError}</p>
               ) : (
-                <ChapterNotesMarkdown>{chapterNotesText}</ChapterNotesMarkdown>
+                <>
+                  <BrowserTtsButton text={chapterNotesText} label="Listen to chapter notes" />
+                  <ChapterNotesMarkdown>{chapterNotesText}</ChapterNotesMarkdown>
+                </>
               )}
             </div>
           </div>

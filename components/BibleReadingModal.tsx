@@ -16,6 +16,7 @@ import { isChapterCompleted, markChapterDone } from "../lib/readingProgress";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaChapter } from "../lib/triviaGameData";
 import { getScrambledChapter } from "../lib/scrambledGameData";
+import BrowserTtsButton from "./BrowserTtsButton";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -160,6 +161,13 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
   const hasTrivia = Boolean(getTriviaChapter(normalizedGameBookKey, chapter));
   const hasScrambled = Boolean(getScrambledChapter(normalizedGameBookKey, chapter));
   const isInline = presentation === "inline";
+  const chapterSpeechText = useMemo(
+    () =>
+      sections
+        .flatMap((section) => section.verses.map((verse) => `${verse.num}. ${verse.text}`))
+        .join(" "),
+    [sections],
+  );
 
   useEffect(() => {
     async function loadUserAndProgress() {
@@ -927,6 +935,7 @@ Be accurate to Scripture.`;
               isInline ? "overflow-visible" : "max-h-[60vh] overflow-y-auto"
             }`}
           >
+            <BrowserTtsButton text={chapterSpeechText} label={`Listen to ${bookDisplayName} ${chapter}`} />
             {enrichedContent ? (
               // Use pre-rendered enriched content if available
               <div 

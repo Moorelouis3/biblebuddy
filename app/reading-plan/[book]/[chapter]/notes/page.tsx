@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import CreditEducationModal from "@/components/CreditEducationModal";
+import BrowserTtsButton from "@/components/BrowserTtsButton";
 import { triggerPoints } from "@/components/PointsPop";
 import { TASK_XP } from "@/lib/progressionRewards";
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "@/lib/chapterNotesOffline";
@@ -464,6 +465,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               {/* Display notes if they exist - no persistence warnings shown to users */}
               {!loadingNotes && notesText && (
                 <div className="prose prose-sm md:prose-base max-w-none">
+                    <BrowserTtsButton text={notesText} label="Listen to chapter notes" />
                     <ReactMarkdown
                       components={{
                         h1: ({ node, ...props }) => (
