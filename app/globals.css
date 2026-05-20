@@ -23,23 +23,34 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-page {
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header {
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--bb-background) 70%, transparent), color-mix(in srgb, var(--bb-card) 54%, transparent)),
+    linear-gradient(180deg, color-mix(in srgb, var(--bb-background) 24%, transparent), transparent 72%),
     var(--bb-skin-bg-image) !important;
   background-attachment: fixed !important;
   background-position: center top !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
-  border-color: color-mix(in srgb, var(--bb-accent) 28%, transparent) !important;
-  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(18px);
+  border-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header > div:first-child {
   padding-top: max(1rem, env(safe-area-inset-top, 0px));
 }
 
-html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-emblem,
-html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-tab,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header h1,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header h2,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header p,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header span,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header button,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header a {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.32);
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-emblem {
+  display: none !important;
+}
+
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-composer,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-post-card,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-active-post,
@@ -55,9 +66,10 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-pagination {
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-tab {
-  box-shadow:
-    0 8px 24px color-mix(in srgb, var(--bb-accent) 18%, transparent),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  background: color-mix(in srgb, var(--bb-background) 18%, transparent) !important;
+  border-color: color-mix(in srgb, var(--bb-accent) 24%, transparent) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(8px);
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-post-card {
@@ -119,7 +131,7 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="text-g
   html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-page,
   html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header {
     background-image:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.04), color-mix(in srgb, var(--bb-background) 34%, transparent)),
+      linear-gradient(180deg, color-mix(in srgb, var(--bb-background) 18%, transparent), transparent 74%),
       var(--bb-skin-bg-image-mobile) !important;
     background-size: 100% auto !important;
     background-position: center top !important;
@@ -1259,26 +1271,52 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-backdrop {
     rgba(0, 0, 0, 0.68) !important;
 }
 
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel > * {
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--bb-card) 94%, transparent), color-mix(in srgb, var(--bb-surface) 88%, transparent)),
+    linear-gradient(180deg, color-mix(in srgb, var(--bb-card) 92%, transparent), color-mix(in srgb, var(--bb-surface-soft) 82%, transparent)),
     var(--bb-card) !important;
   border-color: var(--bb-card-border) !important;
   color: var(--bb-text-primary) !important;
   box-shadow:
     0 24px 80px rgba(0, 0, 0, 0.42),
-    0 0 42px color-mix(in srgb, var(--bb-accent) 28%, transparent) !important;
+    0 0 42px color-mix(in srgb, var(--bb-accent) 28%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(22px);
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in .bg-white,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in [class*="bg-white/"],
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in [class*="bg-gray-50"],
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in [class*="bg-gray-100"] {
+  background: color-mix(in srgb, var(--bb-card) 64%, transparent) !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in [class*="border-gray-"],
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in [class*="border-slate-"] {
+  border-color: color-mix(in srgb, var(--bb-accent) 28%, transparent) !important;
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel h1,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel h2,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel h3,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in h1,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in h2,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in h3,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in .text-gray-900,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in .text-slate-900,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel .text-gray-900,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel .text-slate-900 {
   color: var(--bb-text-primary) !important;
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel p,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in p,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in .text-gray-700,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in .text-gray-600,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in .text-slate-600,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in .text-gray-500,
+html[data-bb-skin]:not([data-bb-skin="none"]) .modal-panel-in .text-slate-500,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel .text-gray-700,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel .text-gray-600,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel .text-slate-600 {
