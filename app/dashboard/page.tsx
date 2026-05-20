@@ -2722,7 +2722,7 @@ export default function DashboardPage() {
 
     if (!isOwnerDashboard) {
       return (
-        <div className="mb-4 space-y-4">
+        <div className="space-y-4">
           {renderGreetingAndStreakCard()}
           {renderStatCards(personalStats)}
         </div>
@@ -2731,7 +2731,7 @@ export default function DashboardPage() {
 
     return (
       <div
-        className="mb-4 space-y-4"
+        className="space-y-4"
         onTouchStart={(event) => {
           dashboardStatsTouchStartXRef.current = event.touches[0]?.clientX ?? null;
         }}
