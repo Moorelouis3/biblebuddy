@@ -29,6 +29,10 @@ export function getGenesisOneTtsSrc(
     return "/audio/genesis/2/intro-onyx-peaceful-rain-cinematic.mp3?v=peaceful-v1";
   }
 
+  if (isGenesisTwo(book, chapter)) {
+    return `/audio/genesis/2/${kind}-onyx-peaceful-rain-cinematic.mp3?v=peaceful-v1`;
+  }
+
   if (isGenesisThree(book, chapter)) {
     return `/audio/genesis/3/${kind}-onyx-peaceful-rain-cinematic.mp3?v=peaceful-v1`;
   }

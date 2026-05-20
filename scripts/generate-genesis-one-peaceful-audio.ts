@@ -8,6 +8,7 @@ import {
   getGenesisOneSpeechText,
 } from "../lib/genesisOneTtsAudio";
 import type { GenesisOneTtsKind } from "../lib/genesisOneTts";
+import { GENESIS_TWO_OFFICIAL_NOTES } from "../lib/genesisTwoOfficialNotes";
 import { GENESIS_THREE_OFFICIAL_NOTES } from "../lib/genesisThreeOfficialNotes";
 import { cleanTextForTts } from "../lib/ttsSpeechText";
 
@@ -263,6 +264,11 @@ function getGenesisThreeIntroText() {
 
 async function getGenesisSpeechText(kind: GenesisOneTtsKind, supabase: NonNullable<ReturnType<typeof createGenesisOneTtsAdminClient>>) {
   if (GENESIS_CHAPTER === 1) return getGenesisOneSpeechText(kind, supabase);
+  if (GENESIS_CHAPTER === 2) {
+    if (kind === "intro") return getGenesisIntroText(2, supabase);
+    if (kind === "verses") return getGenesisVersesText(2, supabase);
+    return cleanTextForTts(GENESIS_TWO_OFFICIAL_NOTES);
+  }
   if (GENESIS_CHAPTER === 3) {
     if (kind === "intro") return getGenesisThreeIntroText();
     if (kind === "verses") return getGenesisVersesText(3, supabase);
