@@ -3,7 +3,6 @@
 import { Component, type MouseEvent, type ReactNode, type RefObject, useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
-import { ColorPicker } from "./ColorPicker";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import ScrambledGamePlayer from "./ScrambledGamePlayer";
@@ -20,7 +19,6 @@ import { cacheChapterNotes, getOfflineChapterNotes } from "../lib/chapterNotesOf
 import { getScrambledBook, getScrambledChapter } from "../lib/scrambledGameData";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaBook, getTriviaChapter } from "../lib/triviaGameData";
-import { deleteHighlight, fetchHighlights, upsertHighlight } from "../lib/verseHighlightingApi";
 import { enrichBibleVerses, enrichPlainText } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
@@ -71,15 +69,8 @@ type BibleApiResponse = {
   verses: BibleApiVerse[];
 };
 
-type InlineBibleTranslation = "kjv" | "asv" | "web";
 type BibleDatabaseTerm = { type: "people" | "places" | "keywords"; name: string };
 type NotesScriptureSelection = { reference: string; apiReference: string; book: string; chapter: number };
-
-const INLINE_BIBLE_TRANSLATIONS: Array<{ value: InlineBibleTranslation; label: string }> = [
-  { value: "kjv", label: "KJV" },
-  { value: "asv", label: "ASV" },
-  { value: "web", label: "WEB" },
-];
 
 class TaskPlayerErrorBoundary extends Component<
   { taskKey: string; onClose: () => void; children: ReactNode },
@@ -154,18 +145,6 @@ function normalizeBibleBookDisplay(book: string) {
     .filter(Boolean)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
-}
-
-function getHighlightColorCode(color: string) {
-  switch (color) {
-    case "yellow": return "#FFF9C4";
-    case "green": return "#C8E6C9";
-    case "blue": return "#BBDEFB";
-    case "purple": return "#E1BEE7";
-    case "orange": return "#FFE0B2";
-    default:
-      return "transparent";
-  }
 }
 
 function normalizeInlinePopupMarkdown(markdown: string) {
@@ -339,33 +318,26 @@ function DashboardInlineBibleReader({
   book,
   chapter,
   chapterLabel,
-  userId,
   onDone,
-  onClose,
+  onDatabaseTermClick,
+  termTakeover,
+  variant = "inline",
 }: {
   book: string;
   chapter: number;
   chapterLabel: string;
-  userId: string | null;
   onDone: () => Promise<void>;
-  onClose: () => void;
+  onDatabaseTermClick: (event: MouseEvent<HTMLDivElement>) => void;
+  termTakeover?: ReactNode;
+  variant?: "inline" | "modal";
 }) {
-  const [translation, setTranslation] = useState<InlineBibleTranslation>("kjv");
   const [verses, setVerses] = useState<BibleApiVerse[]>([]);
-  const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
-  const [picker, setPicker] = useState<{ verse: number; anchor: { x: number; y: number } } | null>(null);
-  const [selectedTerm, setSelectedTerm] = useState<BibleDatabaseTerm | null>(null);
-  const [termBurstKey, setTermBurstKey] = useState(0);
-  const [termNotes, setTermNotes] = useState<string | null>(null);
-  const [termNotesError, setTermNotesError] = useState<string | null>(null);
-  const [loadingTermNotes, setLoadingTermNotes] = useState(false);
   const [loading, setLoading] = useState(false);
   const [markingDone, setMarkingDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const readerRootRef = useRef<HTMLDivElement | null>(null);
-  const termTakeoverRef = useRef<HTMLDivElement | null>(null);
-  const termReturnScrollYRef = useRef<number | null>(null);
   const bookDisplay = normalizeBibleBookDisplay(book);
+  const isModal = variant === "modal";
 
   useEffect(() => {
     let cancelled = false;
@@ -375,10 +347,27 @@ function DashboardInlineBibleReader({
       setError(null);
 
       try {
+        const cacheKey = `bb:dashboard-chapter-text:${bookDisplay}:${chapter}:kjv`;
+        try {
+          const cached = window.sessionStorage.getItem(cacheKey);
+          if (cached) {
+            const cachedVerses = JSON.parse(cached) as BibleApiVerse[];
+            if (Array.isArray(cachedVerses) && cachedVerses.length > 0) {
+              if (!cancelled) {
+                setVerses(cachedVerses);
+                setLoading(false);
+              }
+              return;
+            }
+          }
+        } catch {
+          // Session cache is just a smoothness helper.
+        }
+
         const apiBook = normalizeBibleBookForApi(book);
         const controller = new AbortController();
-        const timeoutId = window.setTimeout(() => controller.abort(), 12000);
-        const response = await fetch(`https://bible-api.com/${apiBook}+${chapter}?translation=${translation}`, {
+        const timeoutId = window.setTimeout(() => controller.abort(), 8000);
+        const response = await fetch(`https://bible-api.com/${apiBook}+${chapter}?translation=kjv`, {
           signal: controller.signal,
         });
         window.clearTimeout(timeoutId);
@@ -388,13 +377,25 @@ function DashboardInlineBibleReader({
         }
 
         const data = (await response.json()) as BibleApiResponse;
+        const nextVerses = Array.isArray(data.verses)
+          ? data.verses.map((verse) => ({ verse: verse.verse, text: verse.text || "" })).filter((verse) => verse.text.trim())
+          : [];
+        if (nextVerses.length === 0) {
+          throw new Error(`No text found for ${chapterLabel}.`);
+        }
+
         if (!cancelled) {
-          setVerses(data.verses || []);
+          setVerses(nextVerses);
+          try {
+            window.sessionStorage.setItem(cacheKey, JSON.stringify(nextVerses));
+          } catch {
+            // Ignore cache quota/storage restrictions.
+          }
         }
       } catch (loadError) {
         if (!cancelled) {
           setVerses([]);
-          setError(loadError instanceof Error && loadError.name === "AbortError" ? "The chapter took too long to load." : "Could not load this chapter.");
+          setError(loadError instanceof Error && loadError.name === "AbortError" ? "The chapter took too long to load." : "Could not load this chapter text.");
         }
       } finally {
         if (!cancelled) setLoading(false);
@@ -406,155 +407,7 @@ function DashboardInlineBibleReader({
     return () => {
       cancelled = true;
     };
-  }, [book, chapter, chapterLabel, translation]);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadHighlights() {
-      if (!userId) {
-        setHighlightMap({});
-        return;
-      }
-
-      const saved = await fetchHighlights(book, chapter);
-      if (cancelled) return;
-
-      const next: Record<number, string> = {};
-      saved.forEach((highlight) => {
-        next[highlight.verse] = highlight.color;
-      });
-      setHighlightMap(next);
-    }
-
-    void loadHighlights();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [book, chapter, userId]);
-
-  function openVerseColorPicker(verse: number, event: React.MouseEvent<HTMLElement>) {
-    const target = event.target as HTMLElement;
-    if (target.closest(".bible-highlight")) return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    setPicker({
-      verse,
-      anchor: {
-        x: Math.min(window.innerWidth - 190, Math.max(12, rect.left + rect.width / 2 - 70)),
-        y: rect.bottom + 8,
-      },
-    });
-  }
-
-  async function handleHighlightColorSelect(color: string | null) {
-    if (!picker) return;
-    const { verse } = picker;
-    const previous = highlightMap[verse] || null;
-    setPicker(null);
-
-    if (!color || color === previous) {
-      setHighlightMap((current) => {
-        const next = { ...current };
-        delete next[verse];
-        return next;
-      });
-      await deleteHighlight(book, chapter, verse);
-      return;
-    }
-
-    if (userId) {
-      const creditResult = await consumeCreditAction(ACTION_TYPE.verse_highlighted, { userId });
-      if (!creditResult.ok) return;
-    }
-
-    setHighlightMap((current) => ({ ...current, [verse]: color }));
-    await upsertHighlight(book, chapter, verse, color);
-  }
-
-  function handleBibleTermClick(event: React.MouseEvent<HTMLDivElement>) {
-    const highlightElement = (event.target as HTMLElement).closest(".bible-highlight") as HTMLElement | null;
-    if (!highlightElement) return;
-
-    event.preventDefault();
-    event.stopPropagation();
-
-    const type = highlightElement.dataset.type as "people" | "places" | "keywords" | undefined;
-    const term = highlightElement.dataset.term;
-    if (!type || !term) return;
-
-    termReturnScrollYRef.current = window.scrollY;
-    setTermBurstKey((current) => current + 1);
-    setSelectedTerm({ type, name: resolveBibleReference(type, term) });
-  }
-
-  function centerTermTakeover(behavior: ScrollBehavior = "smooth") {
-    const node = termTakeoverRef.current ?? readerRootRef.current;
-    if (!node) return;
-
-    const rect = node.getBoundingClientRect();
-    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    const centeredOffset = Math.max(12, (viewportHeight - rect.height) / 2);
-    const nextTop = Math.max(0, window.scrollY + rect.top - centeredOffset);
-
-    window.scrollTo({ top: nextTop, behavior });
-  }
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadTermNotes() {
-      if (!selectedTerm) return;
-      setLoadingTermNotes(true);
-      setTermNotes(null);
-      setTermNotesError(null);
-
-      try {
-        const notes =
-          selectedTerm.type === "people"
-            ? await getPersonPopupNotes(selectedTerm.name)
-            : selectedTerm.type === "places"
-              ? await getPlacePopupNotes(selectedTerm.name)
-              : await getKeywordPopupNotes(selectedTerm.name);
-
-        if (!cancelled) setTermNotes(notes);
-      } catch {
-        if (!cancelled) setTermNotesError("Could not load this word yet.");
-      } finally {
-        if (!cancelled) setLoadingTermNotes(false);
-      }
-    }
-
-    void loadTermNotes();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [selectedTerm]);
-
-  useEffect(() => {
-    if (!selectedTerm) return;
-    let settleTimeout: number | null = null;
-    const frame = window.requestAnimationFrame(() => {
-      centerTermTakeover("smooth");
-      settleTimeout = window.setTimeout(() => centerTermTakeover("smooth"), 120);
-    });
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      if (settleTimeout !== null) window.clearTimeout(settleTimeout);
-    };
-  }, [selectedTerm, loadingTermNotes, termNotes]);
-
-  function closeTermPopup() {
-    setSelectedTerm(null);
-    setTermNotes(null);
-    setTermNotesError(null);
-    const returnScrollY = termReturnScrollYRef.current;
-    if (typeof returnScrollY === "number") {
-      window.requestAnimationFrame(() => window.scrollTo({ top: returnScrollY, behavior: "auto" }));
-    }
-  }
+  }, [book, bookDisplay, chapter, chapterLabel]);
 
   async function handleDone() {
     setMarkingDone(true);
@@ -568,7 +421,7 @@ function DashboardInlineBibleReader({
   return (
     <div
       ref={readerRootRef}
-      className="dashboard-inline-bible-reader dashboard-task-card-extension relative mt-2 rounded-[24px] border px-3 pb-4 pt-3 shadow-sm"
+      className={`dashboard-inline-bible-reader dashboard-task-card-extension relative rounded-[24px] border shadow-sm ${isModal ? "flex h-full min-h-0 flex-col px-4 pb-5 pt-4" : "mt-2 px-3 pb-4 pt-3"}`}
       style={{
         backgroundColor: "var(--bb-reader-bg, #f8fbff)",
         borderColor: "var(--bb-reader-border, #bfdbfe)",
@@ -576,22 +429,6 @@ function DashboardInlineBibleReader({
       }}
     >
       <style>{`
-        @keyframes word-discovery-smoke {
-          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); filter: blur(0); }
-          18% { opacity: 0.48; }
-          100% { opacity: 0; transform: translate(calc(-50% + var(--smoke-x)), calc(-50% + var(--smoke-y))) scale(1.35); filter: blur(5px); }
-        }
-        @keyframes word-discovery-card {
-          0% { opacity: 0; transform: translateY(14px) scale(0.92); filter: blur(1px); }
-          62% { opacity: 1; transform: translateY(-3px) scale(1.015); filter: blur(0); }
-          100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-        }
-        .word-discovery-smoke span {
-          animation: word-discovery-smoke 780ms ease-out both;
-        }
-        .word-discovery-card {
-          animation: word-discovery-card 260ms cubic-bezier(0.16, 0.9, 0.22, 1) both;
-        }
         .dashboard-inline-bible-reader .bible-highlight {
           color: var(--bb-reader-text, #102a43) !important;
           text-decoration-color: color-mix(in srgb, var(--bb-reader-text, #102a43) 48%, transparent) !important;
@@ -601,135 +438,49 @@ function DashboardInlineBibleReader({
           text-decoration-color: color-mix(in srgb, var(--bb-reader-text, #102a43) 72%, transparent) !important;
         }
       `}</style>
-      {!selectedTerm ? (
-      <div className="mb-4 flex justify-end">
-        <div className="flex items-center gap-2">
-          <label className="sr-only" htmlFor="dashboard-bible-translation">
-            Bible translation
-          </label>
-          <select
-            id="dashboard-bible-translation"
-            value={translation}
-            onChange={(event) => setTranslation(event.target.value as InlineBibleTranslation)}
-            className="rounded-full border px-3 py-2 text-xs font-black uppercase outline-none transition focus:border-[var(--bb-accent)] focus:ring-2 focus:ring-[var(--bb-accent)]/20"
-            style={{
-              backgroundColor: "var(--bb-reader-surface, #ffffff)",
-              borderColor: "var(--bb-reader-border, #bfdbfe)",
-              color: "var(--bb-reader-text, #102a43)",
-            }}
-          >
-            {INLINE_BIBLE_TRANSLATIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-      ) : null}
-
-      {selectedTerm ? (
-        <div ref={termTakeoverRef} className="relative min-h-[62vh] overflow-hidden rounded-[26px] bg-[var(--bb-card,#ffffff)] px-4 py-6 text-center text-[var(--bb-text-primary,#111827)]">
-          <div key={termBurstKey} className="word-discovery-smoke pointer-events-none absolute left-1/2 top-24 z-0" aria-hidden="true">
-            <span className="absolute h-14 w-14 rounded-full bg-slate-300/45 [--smoke-x:-84px] [--smoke-y:-22px]" />
-            <span className="absolute h-12 w-12 rounded-full bg-slate-200/50 [--smoke-x:72px] [--smoke-y:-32px]" />
-            <span className="absolute h-10 w-10 rounded-full bg-rose-100/70 [--smoke-x:-16px] [--smoke-y:42px]" />
-            <span className="absolute h-9 w-9 rounded-full bg-slate-300/35 [--smoke-x:96px] [--smoke-y:28px]" />
-            <span className="absolute h-8 w-8 rounded-full bg-white/80 [--smoke-x:-104px] [--smoke-y:34px]" />
-          </div>
-          <div className="word-discovery-card relative z-10 mx-auto flex min-h-[58vh] max-w-xl flex-col items-center justify-center">
-            <div className="mb-3 flex justify-center">
-              <LouisAvatar mood="think" size={104} />
-            </div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">
-              {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
-            </p>
-            <h3 className="mt-1 text-4xl font-black leading-tight">{selectedTerm.name}</h3>
-            <div className="mt-5 w-full px-2 py-2">
-              {loadingTermNotes && !termNotes ? (
-                <div className="space-y-3 py-6">
-                  <div className="h-3 rounded-full bg-white/80" />
-                  <div className="h-3 w-5/6 rounded-full bg-white/80" />
-                  <div className="h-3 w-2/3 rounded-full bg-white/80" />
-                </div>
-              ) : termNotes ? (
-                <ReactMarkdown
-                  components={{
-                    h1: ({ ...props }) => <h1 className="mb-3 mt-5 text-xl font-black text-left" {...props} />,
-                    p: ({ ...props }) => <p className="mb-4 text-left text-base font-medium leading-7" {...props} />,
-                    strong: ({ ...props }) => <strong className="font-black" {...props} />,
-                  }}
-                >
-                  {normalizeInlinePopupMarkdown(termNotes)}
-                </ReactMarkdown>
-              ) : (
-                <p className="py-6 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
-                  {termNotesError || "Could not load this word yet."}
-                </p>
-              )}
-            </div>
-            <button
-              type="button"
-              onClick={closeTermPopup}
-              className="mt-5 rounded-full bg-[var(--bb-button,#2f7fe8)] px-8 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
-            >
-              Close
-            </button>
-          </div>
-        </div>
+      {termTakeover ? (
+        termTakeover
       ) : loading ? (
         <p className="py-8 text-sm font-semibold" style={{ color: "var(--bb-reader-secondary, #334e68)" }}>Loading {chapterLabel}...</p>
       ) : error ? (
         <p className="py-8 text-sm font-bold text-red-600">{error}</p>
       ) : (
-        <div className="space-y-3" onClick={handleBibleTermClick}>
-          {verses.map((verse) => {
-            const highlightColor = highlightMap[verse.verse];
-            return (
+        <>
+          <div className="mb-4">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Read The Chapter</p>
+            <h3 className="mt-1 text-xl font-black leading-tight text-[var(--bb-reader-text,#102a43)]">{bookDisplay} {chapter}</h3>
+          </div>
+          <div className={`min-h-0 space-y-3 pr-1 ${isModal ? "flex-1 overflow-y-auto overscroll-contain" : ""}`} onClick={onDatabaseTermClick}>
+            {verses.map((verse) => (
               <p
                 key={verse.verse}
-                onClick={(event) => openVerseColorPicker(verse.verse, event)}
-                className="cursor-pointer rounded-lg px-1 py-0.5 text-base font-semibold leading-8 transition"
+                className="rounded-lg px-1 py-0.5 text-base font-semibold leading-8"
                 style={{
-                  backgroundColor: highlightColor ? getHighlightColorCode(highlightColor) : "transparent",
                   color: "var(--bb-reader-text, #102a43)",
                 }}
               >
-                <button
-                  type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    openVerseColorPicker(verse.verse, event);
-                  }}
+                <span
                   className="mr-2 inline-flex h-6 min-w-6 translate-y-[-1px] items-center justify-center rounded-full border px-1.5 align-middle text-xs font-black leading-none text-[var(--bb-accent)] transition hover:border-[var(--bb-accent)] hover:bg-[var(--bb-accent-soft)]"
                   style={{
                     backgroundColor: "var(--bb-reader-surface, #ffffff)",
                     borderColor: "var(--bb-reader-border, #bfdbfe)",
                     color: "var(--bb-accent, #2f7fe8)",
                   }}
-                  aria-label={`Highlight verse ${verse.verse}`}
                 >
                   {verse.verse}
-                </button>
+                </span>
                 <span
                   className="inline [&_p]:inline"
-                  // biome-ignore lint/security/noDangerouslySetInnerHtml: Bible text is escaped before enrichment.
+                  // biome-ignore lint/security/noDangerouslySetInnerHtml: Bible text is escaped before known database term spans are inserted.
                   dangerouslySetInnerHTML={{ __html: enrichPlainText(verse.text) }}
                 />
               </p>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        </>
       )}
 
-      <ColorPicker
-        anchor={picker?.anchor || null}
-        selectedColor={picker ? highlightMap[picker.verse] || null : null}
-        onSelect={handleHighlightColorSelect}
-        onClose={() => setPicker(null)}
-      />
-
-      {!loading && !error && !selectedTerm ? (
+      {!loading && !error && !termTakeover ? (
         <div className="mt-5 flex justify-end">
           <button
             type="button"
@@ -1277,6 +1028,17 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       {children}
     </div>
   );
+  const databaseTermTakeover = notesSelectedTerm ? (
+    <DatabaseTermTakeover
+      selectedTerm={notesSelectedTerm}
+      termBurstKey={notesTermBurstKey}
+      loadingTermNotes={notesTermLoading}
+      termNotes={notesTermNotes}
+      termNotesError={notesTermNotesError}
+      onClose={closeNotesTermTakeover}
+      takeoverRef={notesTermTakeoverRef}
+    />
+  ) : null;
 
   if (task.kind === "reading" && task.book && task.chapter) {
     const chapterLabel = task.chapterLabel || `${task.book} ${task.chapter}`;
@@ -1287,37 +1049,33 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
           book={task.book}
           chapter={task.chapter}
           chapterLabel={chapterLabel}
-          userId={userId}
-          onClose={closeOnly}
           onDone={closeReadingAndRefresh}
+          onDatabaseTermClick={handleNotesDatabaseTermClick}
+          termTakeover={databaseTermTakeover}
         />
       );
     }
 
-    const readerPath = `/Bible/${encodeURIComponent(task.book)}/${task.chapter}?from=louis-daily-task&embedded=chapter-text`;
-    const readerPanel = (
-      <div className={`relative flex w-full flex-col overflow-hidden bg-white ${isInline ? "h-[78vh] min-h-[560px]" : "h-[92vh]"}`}>
+    return (
+      <ModalShell isOpen={true} onClose={() => void closeReadingAndRefresh()} backdropColor="bg-black/65" closeOnBackdrop={false}>
+        <div className="relative mx-2 flex h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] p-3 shadow-2xl sm:mx-4">
           <button
             type="button"
             onClick={() => void closeReadingAndRefresh()}
-            className="absolute right-3 top-3 z-20 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gray-200 bg-white/95 text-2xl font-light leading-none text-gray-700 shadow-lg backdrop-blur transition hover:border-gray-300 hover:bg-gray-50 hover:text-gray-950"
+            className="absolute right-5 top-5 z-20 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)]/95 text-2xl font-light leading-none text-[var(--bb-text-primary,#111827)] shadow-lg backdrop-blur transition hover:brightness-95"
             aria-label="Close Bible reader"
           >
             x
           </button>
-        <iframe
-          src={readerPath}
-          title={`${chapterLabel} Bible reader`}
-          className="min-h-0 flex-1 border-0 bg-white"
-          loading="eager"
-        />
-      </div>
-    );
-
-    return (
-      <ModalShell isOpen={true} onClose={() => void closeReadingAndRefresh()} backdropColor="bg-black/65" closeOnBackdrop={false}>
-        <div className="relative mx-2 flex h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-[26px] border border-[#d7e4f7] bg-white shadow-2xl sm:mx-4">
-          {readerPanel}
+          <DashboardInlineBibleReader
+            book={task.book}
+            chapter={task.chapter}
+            chapterLabel={chapterLabel}
+            onDone={closeReadingAndRefresh}
+            onDatabaseTermClick={handleNotesDatabaseTermClick}
+            termTakeover={databaseTermTakeover}
+            variant="modal"
+          />
         </div>
       </ModalShell>
     );
