@@ -2284,7 +2284,7 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="slow-mornings"] body,
   html[data-bb-skin="morning-mercy"] body {
     --bb-skin-bg-image: var(--bb-skin-bg-image-mobile);
-    background-attachment: scroll !important;
+    background-attachment: fixed !important;
     background-position: center top !important;
     background-size: cover !important;
     min-height: 100dvh;
@@ -2297,7 +2297,7 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="slow-mornings"],
   html[data-bb-skin="morning-mercy"] {
     --bb-skin-bg-image: var(--bb-skin-bg-image-mobile);
-    background-attachment: scroll !important;
+    background-attachment: fixed !important;
     background-position: center top !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
