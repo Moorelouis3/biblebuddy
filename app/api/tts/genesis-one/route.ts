@@ -13,6 +13,7 @@ const BUCKET = "tts-audio";
 const CACHE_VERSION = "v3";
 const VOICE = "onyx";
 const KINDS: GenesisOneTtsKind[] = ["intro", "verses", "notes"];
+const MAX_TTS_CHUNK_LENGTH = 3400;
 type SupabaseAdmin = any;
 
 function adminClient() {
@@ -136,6 +137,40 @@ async function uploadCachedAudio(supabase: SupabaseAdmin, path: string, audio: B
 }
 
 async function generateOpenAiSpeech(text: string) {
+  const chunks = chunkSpeechInput(text);
+  const audioChunks: Buffer[] = [];
+
+  for (const chunk of chunks) {
+    audioChunks.push(await generateOpenAiSpeechChunk(chunk));
+  }
+
+  return Buffer.concat(audioChunks);
+}
+
+function chunkSpeechInput(text: string) {
+  if (text.length <= MAX_TTS_CHUNK_LENGTH) return [text];
+
+  const sentences = text.match(/[^.!?]+[.!?]*/g) || [text];
+  const chunks: string[] = [];
+  let current = "";
+
+  for (const sentence of sentences) {
+    const trimmed = sentence.trim();
+    if (!trimmed) continue;
+    const next = `${current} ${trimmed}`.trim();
+    if (next.length > MAX_TTS_CHUNK_LENGTH && current) {
+      chunks.push(current);
+      current = trimmed;
+    } else {
+      current = next;
+    }
+  }
+
+  if (current) chunks.push(current);
+  return chunks;
+}
+
+async function generateOpenAiSpeechChunk(text: string) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error("OPENAI_API_KEY is not configured.");

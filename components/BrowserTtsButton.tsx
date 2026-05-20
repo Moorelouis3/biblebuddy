@@ -41,11 +41,14 @@ export default function BrowserTtsButton({
   const [supported, setSupported] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [audioError, setAudioError] = useState(false);
   const chunks = useMemo(() => chunkSpeechText(text || ""), [text]);
   const chunksRef = useRef<string[]>([]);
   const indexRef = useRef(0);
   const ownsSpeechRef = useRef(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioObjectUrlRef = useRef<string | null>(null);
   const canUseAudioSrc = Boolean(audioSrc);
 
   useEffect(() => {
@@ -61,6 +64,10 @@ export default function BrowserTtsButton({
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
+      }
+      if (audioObjectUrlRef.current) {
+        URL.revokeObjectURL(audioObjectUrlRef.current);
+        audioObjectUrlRef.current = null;
       }
     };
   }, [chunks]);
@@ -79,8 +86,13 @@ export default function BrowserTtsButton({
     audioRef.current.pause();
     audioRef.current.currentTime = 0;
     audioRef.current = null;
+    if (audioObjectUrlRef.current) {
+      URL.revokeObjectURL(audioObjectUrlRef.current);
+      audioObjectUrlRef.current = null;
+    }
     setSpeaking(false);
     setPaused(false);
+    setLoading(false);
   }
 
   function speakChunk(startIndex = 0) {
@@ -133,7 +145,8 @@ export default function BrowserTtsButton({
   }
 
   async function toggleAudio() {
-    if (!audioSrc || typeof window === "undefined") return;
+    if (!audioSrc || typeof window === "undefined" || loading) return;
+    setAudioError(false);
 
     if (speaking && !paused) {
       audioRef.current?.pause();
@@ -151,28 +164,58 @@ export default function BrowserTtsButton({
       window.speechSynthesis.cancel();
     }
 
-    const audio = new Audio(audioSrc);
+    setLoading(true);
+
+    try {
+      if (audioObjectUrlRef.current) {
+        URL.revokeObjectURL(audioObjectUrlRef.current);
+        audioObjectUrlRef.current = null;
+      }
+
+      const response = await fetch(audioSrc, { cache: "no-store" });
+      if (!response.ok) throw new Error("Audio request failed.");
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      audioObjectUrlRef.current = objectUrl;
+
+      const audio = new Audio(objectUrl);
     audioRef.current = audio;
     audio.onended = () => {
       setSpeaking(false);
       setPaused(false);
       audioRef.current = null;
+      if (audioObjectUrlRef.current) {
+        URL.revokeObjectURL(audioObjectUrlRef.current);
+        audioObjectUrlRef.current = null;
+      }
     };
     audio.onerror = () => {
       setSpeaking(false);
       setPaused(false);
+      setLoading(false);
+      setAudioError(true);
       audioRef.current = null;
+      if (audioObjectUrlRef.current) {
+        URL.revokeObjectURL(audioObjectUrlRef.current);
+        audioObjectUrlRef.current = null;
+      }
     };
 
     setSpeaking(true);
     setPaused(false);
 
-    try {
       await audio.play();
+      setLoading(false);
     } catch {
       setSpeaking(false);
       setPaused(false);
+      setLoading(false);
+      setAudioError(true);
       audioRef.current = null;
+      if (audioObjectUrlRef.current) {
+        URL.revokeObjectURL(audioObjectUrlRef.current);
+        audioObjectUrlRef.current = null;
+      }
     }
   }
 
@@ -184,10 +227,13 @@ export default function BrowserTtsButton({
         <button
           type="button"
           onClick={canUseAudioSrc ? toggleAudio : toggleSpeech}
+          disabled={loading}
           className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[var(--bb-button,#2563eb)] px-4 py-2 text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95"
           aria-label={speaking && !paused ? `Pause ${label}` : `Play ${label}`}
         >
-          {speaking && !paused ? (
+          {loading ? (
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
+          ) : speaking && !paused ? (
             <span className="text-sm leading-none" aria-hidden="true">
               II
             </span>
@@ -197,8 +243,9 @@ export default function BrowserTtsButton({
               aria-hidden="true"
             />
           )}
-          <span>{speaking && !paused ? "Pause" : paused ? "Resume" : "Play"}</span>
+          <span>{loading ? "Loading" : speaking && !paused ? "Pause" : paused ? "Resume" : "Play"}</span>
         </button>
+        {audioError ? <p className="px-1 text-xs font-bold text-red-600">Audio unavailable. Try again.</p> : null}
       </div>
       {speaking ? (
         <button
