@@ -8519,6 +8519,19 @@ export default function DashboardPage() {
             border-top-right-radius: 0 !important;
             box-shadow: none !important;
           }
+          html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage {
+            margin-top: 0 !important;
+            padding-top: 22px !important;
+            background: transparent !important;
+            background-color: transparent !important;
+            background-image: none !important;
+            border-top: 0 !important;
+            border-left-color: transparent !important;
+            border-right-color: transparent !important;
+            border-top-left-radius: 0 !important;
+            border-top-right-radius: 0 !important;
+            box-shadow: none !important;
+          }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-mobile-stage::before,
           html[data-bb-skin="blue-storm"] .bb-blue-storm-mobile-stage::after,
           html[data-bb-skin="midnight-garden"] .bb-blue-storm-mobile-stage::before,
@@ -8533,6 +8546,10 @@ export default function DashboardPage() {
           html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage::after,
           html[data-bb-skin="carolina-coastline"] .bb-blue-storm-mobile-stage::before,
           html[data-bb-skin="carolina-coastline"] .bb-blue-storm-mobile-stage::after {
+            display: none !important;
+          }
+          html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage::before,
+          html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage::after {
             display: none !important;
           }
         }
