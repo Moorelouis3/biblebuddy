@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
@@ -1656,6 +1656,7 @@ export default function DashboardJourneyExperience({
   const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
   const [studyModeGateDismissed, setStudyModeGateDismissed] = useState(true);
   const [freeStudyModeActive, setFreeStudyModeActive] = useState(false);
+  const [bibleYearDashboardActive, setBibleYearDashboardActive] = useState(false);
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
 
   const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "share", "buddies", "tv", "games", "settings"] as const;
@@ -1728,7 +1729,9 @@ export default function DashboardJourneyExperience({
     { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
     { key: "settings", label: "Settings", icon: "\u2699", href: "#settings" },
   ];
-  const activeDashboardNavItem = dashboardNavItems[safeActivePage] ?? dashboardNavItems[0];
+  const activeDashboardNavItem = bibleYearDashboardActive
+    ? { label: "Bible In One Year", icon: "📖" }
+    : dashboardNavItems[safeActivePage] ?? dashboardNavItems[0];
   const isPaidUser = profile?.is_paid === true || membershipStatus === "pro";
 
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
@@ -2051,6 +2054,7 @@ export default function DashboardJourneyExperience({
         }
       : null;
   const currentStudySummary = getDashboardStudySummary(currentDevotionalTitle, null);
+  const currentDashboardDayLabel = `Day ${currentDevotionalTask?.devotionalDayNumber || 1}`;
   const queueTasks = visibleTasks.filter((task) => !task.done || celebratingTasks[task.kind]);
   const completedTrackerTasks = visibleTasks.filter((task) => task.done && !celebratingTasks[task.kind]);
   const activeCompletedTrackerTask = activeTask
@@ -2850,15 +2854,54 @@ export default function DashboardJourneyExperience({
   }
 
   function handleDashboardNavClick(index: number) {
+    if (bibleYearDashboardActive) {
+      setBibleYearDashboardActive(false);
+      if (typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("view");
+        window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+    }
     if (index === 0) {
+      setBibleYearDashboardActive(false);
       setFreeStudyModeActive(false);
       setEmbeddedBibleBookSearchOpen(false);
       setEmbeddedBibleSelectedBook(null);
       setEmbeddedBibleStudyId(null);
       onHomeReset?.();
+      if (typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("view");
+        window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+      }
     }
     snapToPage(index);
   }
+
+  function openBibleYearDashboard() {
+    setBibleYearDashboardActive(true);
+    setFreeStudyModeActive(false);
+    setEmbeddedBibleBookSearchOpen(false);
+    setEmbeddedBibleSelectedBook(null);
+    setEmbeddedBibleStudyId(null);
+    setDashboardMenuOpen(false);
+    onHomeReset?.();
+    snapToPage(0);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", "bible-year");
+      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+  }
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const view = new URLSearchParams(window.location.search).get("view");
+    if (view === "bible-year") {
+      setBibleYearDashboardActive(true);
+      setActivePage(0);
+    }
+  }, []);
 
   function openInvitePage() {
     const shareIndex = dashboardPageKeys.indexOf("share");
@@ -3991,7 +4034,9 @@ export default function DashboardJourneyExperience({
                 )}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Current Study</span>
+                <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+                  {bibleYearDashboardActive ? currentDashboardDayLabel : "Current Study"}
+                </span>
                 <span className="mt-0.5 block truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
                   {currentDevotionalTitle || "Choose Your Bible Study"}
                 </span>
@@ -4545,8 +4590,22 @@ export default function DashboardJourneyExperience({
               ) : null}
             </div>
             ) : null}
-            {!homePanelOverride && !shouldShowCompletionPanel && deepStudyNode ? (
+            {!bibleYearDashboardActive && !homePanelOverride && !shouldShowCompletionPanel && deepStudyNode ? (
               <div className="dashboard-inline-deep-study mb-3 sm:mb-4">{deepStudyNode}</div>
+            ) : null}
+            {bibleYearDashboardActive && !homePanelOverride && !shouldShowCompletionPanel ? (
+              <section className="dashboard-inline-task mb-3 rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] px-4 py-3 text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
+                <div className="flex items-center gap-3">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[var(--bb-surface-soft,#f4f8ff)] text-2xl shadow-sm" aria-hidden="true">📖</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible In One Year</span>
+                    <span className="mt-0.5 block truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">{currentDashboardDayLabel}</span>
+                    <span className="mt-0.5 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                      Today&apos;s reading is focused on {activeChapterLabel}. Keep the same chapter tasks moving.
+                    </span>
+                  </span>
+                </div>
+              </section>
             ) : null}
             {false ? (
             <div
@@ -5291,33 +5350,56 @@ export default function DashboardJourneyExperience({
           <div className="mb-2 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 p-2.5 shadow-[0_18px_46px_rgba(15,35,60,0.22)] backdrop-blur">
             <div className="grid grid-cols-4 gap-1.5">
               {dashboardNavItems.map((item, index) => {
-                const isActive = index === safeActivePage;
+                const isActive = !bibleYearDashboardActive && index === safeActivePage;
                 return (
-                  <Link
-                    key={item.key}
-                    data-dashboard-nav-key={item.key}
-                    href={item.href}
-                    onClick={(event) => {
-                      event.preventDefault();
-                      setDashboardMenuOpen(false);
-                      handleDashboardNavClick(index);
-                    }}
-                    className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black transition ${
-                      isActive
-                        ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
-                        : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
-                    }`}
-                  >
-                    <span
-                      className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
-                        isActive && item.key !== "buddy" ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
+                  <Fragment key={item.key}>
+                    <Link
+                      data-dashboard-nav-key={item.key}
+                      href={item.href}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        setDashboardMenuOpen(false);
+                        handleDashboardNavClick(index);
+                      }}
+                      className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black transition ${
+                        isActive
+                          ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
+                          : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
                       }`}
-                      aria-hidden="true"
                     >
-                      {item.icon}
-                    </span>
-                    <span className="leading-tight">{item.label}</span>
-                  </Link>
+                      <span
+                        className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
+                          isActive && item.key !== "buddy" ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
+                        }`}
+                        aria-hidden="true"
+                      >
+                        {item.icon}
+                      </span>
+                      <span className="leading-tight">{item.label}</span>
+                    </Link>
+                    {item.key === "home" ? (
+                      <button
+                        type="button"
+                        data-dashboard-nav-key="bible-year"
+                        onClick={openBibleYearDashboard}
+                        className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black transition ${
+                          bibleYearDashboardActive
+                            ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
+                            : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
+                        }`}
+                      >
+                        <span
+                          className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
+                            bibleYearDashboardActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
+                          }`}
+                          aria-hidden="true"
+                        >
+                          📖
+                        </span>
+                        <span className="leading-tight">Bible In One Year</span>
+                      </button>
+                    ) : null}
+                  </Fragment>
                 );
               })}
               <button

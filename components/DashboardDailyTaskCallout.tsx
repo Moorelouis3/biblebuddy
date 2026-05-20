@@ -23,7 +23,7 @@ import { enrichBibleVerses, enrichPlainText } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { TASK_XP } from "../lib/progressionRewards";
-import { GENESIS_CREATION_KJV_VERSES } from "../lib/creationOfWorldDeepNotes";
+import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
 
@@ -148,7 +148,7 @@ function getLocalDashboardChapterVerses(book: string, chapter: number) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "");
   if (normalizedBook !== "genesis") return null;
-  const verses = GENESIS_CREATION_KJV_VERSES[chapter];
+  const verses = GENESIS_CREATION_WEB_VERSES[chapter];
   return Array.isArray(verses) && verses.length > 0 ? verses : null;
 }
 
@@ -373,7 +373,7 @@ function DashboardInlineBibleReader({
       setError(null);
 
       try {
-        const cacheKey = `bb:dashboard-chapter-text:${bookDisplay}:${chapter}:kjv`;
+        const cacheKey = `bb:dashboard-chapter-text:${bookDisplay}:${chapter}:web`;
         try {
           const cached = window.sessionStorage.getItem(cacheKey);
           if (cached) {
@@ -393,7 +393,7 @@ function DashboardInlineBibleReader({
         const apiBook = normalizeBibleBookForApi(book);
         const controller = new AbortController();
         const timeoutId = window.setTimeout(() => controller.abort(), 8000);
-        const response = await fetch(`https://bible-api.com/${apiBook}+${chapter}?translation=kjv`, {
+        const response = await fetch(`https://bible-api.com/${apiBook}+${chapter}?translation=web`, {
           signal: controller.signal,
         });
         window.clearTimeout(timeoutId);
@@ -447,7 +447,7 @@ function DashboardInlineBibleReader({
   return (
     <div
       ref={readerRootRef}
-      className={`dashboard-inline-bible-reader dashboard-task-card-extension relative rounded-[24px] border shadow-sm ${isModal ? "flex h-full min-h-0 flex-col px-4 pb-5 pt-4" : "mt-2 px-3 pb-4 pt-3"}`}
+      className={`dashboard-inline-chapter-text dashboard-task-card-extension relative rounded-[24px] border shadow-sm ${isModal ? "flex h-full min-h-0 flex-col px-4 pb-5 pt-4" : "mt-2 px-3 pb-4 pt-3"}`}
       style={{
         backgroundColor: "var(--bb-reader-bg, #f8fbff)",
         borderColor: "var(--bb-reader-border, #bfdbfe)",
@@ -455,11 +455,11 @@ function DashboardInlineBibleReader({
       }}
     >
       <style>{`
-        .dashboard-inline-bible-reader .bible-highlight {
+        .dashboard-inline-chapter-text .bible-highlight {
           color: var(--bb-reader-text, #102a43) !important;
           text-decoration-color: color-mix(in srgb, var(--bb-reader-text, #102a43) 48%, transparent) !important;
         }
-        .dashboard-inline-bible-reader .bible-highlight:hover {
+        .dashboard-inline-chapter-text .bible-highlight:hover {
           color: var(--bb-accent, #2f7fe8) !important;
           text-decoration-color: color-mix(in srgb, var(--bb-reader-text, #102a43) 72%, transparent) !important;
         }

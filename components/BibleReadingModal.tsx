@@ -18,7 +18,7 @@ import { getTriviaChapter } from "../lib/triviaGameData";
 import { getScrambledChapter } from "../lib/scrambledGameData";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
-import { GENESIS_CREATION_KJV_VERSES } from "../lib/creationOfWorldDeepNotes";
+import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -290,13 +290,13 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
         // Normalize book name
         const bookParam = book.toLowerCase().trim();
         const bookDisplay = normalizeBookDisplay(book);
-        const isGenesisOne = bookParam === "genesis" && Number(chapter) === 1;
-        if (isGenesisOne) {
-          const genesisOneVerses = GENESIS_CREATION_KJV_VERSES[1].map((verse) => ({
+        const localGenesisVerses = bookParam === "genesis" ? GENESIS_CREATION_WEB_VERSES[Number(chapter)] : null;
+        if (localGenesisVerses?.length) {
+          const genesisVerses = localGenesisVerses.map((verse) => ({
             verse: verse.verse,
             text: verse.text,
           }));
-          setSections(convertToSections(genesisOneVerses, bookDisplay));
+          setSections(convertToSections(genesisVerses, bookDisplay));
           setLoading(false);
 
           void (async () => {
@@ -313,7 +313,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
                 return;
               }
 
-              const enriched = await enrichBibleVerses(genesisOneVerses);
+              const enriched = await enrichBibleVerses(genesisVerses);
               setEnrichedContent(enriched);
               await supabase
                 .from("bible_chapters")
@@ -321,7 +321,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
                 .eq("book", bookParam)
                 .eq("chapter", chapter);
             } catch (error) {
-              console.error("[BIBLE_READING_MODAL] Genesis 1 enrichment failed:", error);
+              console.error("[BIBLE_READING_MODAL] Genesis enrichment failed:", error);
             }
           })();
 
