@@ -26,5 +26,5 @@ export function getGenesisOneTtsSrc(
   }
 
   if (!isGenesisOne(book, chapter)) return null;
-  return `/api/tts/genesis-one?kind=${kind}&v=tts-clean-v3`;
+  return `/audio/genesis/1/${kind}-onyx-peaceful-rain-cinematic.mp3?v=peaceful-v1`;
 }
