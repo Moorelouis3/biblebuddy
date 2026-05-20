@@ -2901,7 +2901,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 <button
                   type="button"
                   onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-                  className="flex items-center justify-center w-9 h-9 overflow-hidden rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
+                  className="bb-profile-glow-frame flex items-center justify-center w-9 h-9 overflow-hidden rounded-full border border-transparent bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
                   aria-label="Profile menu"
                   aria-expanded={isProfileMenuOpen}
                 >
@@ -2909,7 +2909,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     <img
                       src={headerProfileImageUrl}
                       alt="Your profile"
-                      className="h-full w-full object-cover"
+                      className="h-full w-full rounded-full object-cover"
                       onError={() => setHeaderProfileImageFailed(true)}
                     />
                   ) : (
