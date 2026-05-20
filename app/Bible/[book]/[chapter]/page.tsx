@@ -40,7 +40,7 @@ import TriviaGamePlayer from "../../../../components/TriviaGamePlayer";
 import ScrambledGamePlayer from "../../../../components/ScrambledGamePlayer";
 import { awardDiamonds } from "../../../../lib/diamondWallet";
 import { DIAMOND_REWARDS, TASK_REWARD_LABELS, TASK_XP } from "../../../../lib/progressionRewards";
-import { cacheChapterNotes, getOfflineChapterNotes } from "../../../../lib/chapterNotesOffline";
+import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../../../../lib/chapterNotesOffline";
 
 type Verse = {
   num: number;
@@ -1221,16 +1221,11 @@ RULES:
     try {
       // CRITICAL: Check if notes exist in Supabase FIRST (BEFORE any ChatGPT call)
       // This is the ONLY source of truth - if notes exist, we MUST use them
-      const bookKey = bookName.toLowerCase().trim();
+      const bookKey = getCanonicalBibleNotesBookKey(bookName);
       
       console.log(`[bible_notes] Checking for existing notes: book="${bookKey}", chapter=${chapterNum}`);
       
-      const { data: existing, error: existingError } = await supabase
-        .from("bible_notes")
-        .select("notes_text")
-        .eq("book", bookKey)
-        .eq("chapter", chapterNum)
-        .maybeSingle();
+      const { data: existing, error: existingError } = await fetchBibleChapterNotes(supabase, bookName, chapterNum);
 
       if (existingError && existingError.code !== 'PGRST116') {
         console.error("[bible_notes] Error checking bible_notes:", existingError);
@@ -1241,6 +1236,13 @@ RULES:
       if (existing?.notes_text && existing.notes_text.trim().length > 0) {
         console.log(`[bible_notes] Found existing notes for ${bookKey} chapter ${chapterNum}, returning immediately (ChatGPT will NOT be called)`);
         const summary = extractBigIdeaSummary(existing.notes_text);
+        return summary || "";
+      }
+
+      const offlineNotes = await getOfflineChapterNotes(bookName, chapterNum);
+      if (offlineNotes) {
+        cacheChapterNotes(bookName, chapterNum, offlineNotes);
+        const summary = extractBigIdeaSummary(offlineNotes);
         return summary || "";
       }
 
@@ -1324,12 +1326,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
         // CRITICAL: Before saving, check ONE MORE TIME if row exists (race condition protection)
         // Another request might have created it while we were generating
-        const { data: existingCheck, error: checkError } = await supabase
-          .from("bible_notes")
-          .select("notes_text")
-          .eq("book", bookKey)
-          .eq("chapter", chapterNum)
-          .maybeSingle();
+        const { data: existingCheck, error: checkError } = await fetchBibleChapterNotes(supabase, bookName, chapterNum);
 
         if (checkError && checkError.code !== 'PGRST116') {
           console.error("[bible_notes] Error checking for duplicates:", checkError);
@@ -1361,12 +1358,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
           // MANDATORY: Always re-read from database after upsert
           // NEVER use in-memory generated text - database is single source of truth
-          const { data: savedRow, error: fetchError } = await supabase
-            .from("bible_notes")
-            .select("notes_text")
-            .eq("book", bookKey)
-            .eq("chapter", chapterNum)
-            .maybeSingle();
+          const { data: savedRow, error: fetchError } = await fetchBibleChapterNotes(supabase, bookName, chapterNum);
 
           if (fetchError && fetchError.code !== 'PGRST116') {
             console.error("[bible_notes] Error re-fetching notes after upsert:", fetchError);
@@ -1447,7 +1439,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     setShowReviewModal(true);
     const chapterNum = Number(chapter);
     try {
-      const bookKey = book.toLowerCase().trim();
+      const bookKey = getCanonicalBibleNotesBookKey(book);
 
       // 1. Log view + award XP once per chapter
       if (userId) {
@@ -1506,12 +1498,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       }
 
       // 2. Check bible_notes cache first
-      const { data: cached } = await supabase
-        .from("bible_notes")
-        .select("notes_text")
-        .eq("book", bookKey)
-        .eq("chapter", chapterNum)
-        .maybeSingle();
+      const { data: cached } = await fetchBibleChapterNotes(supabase, bookDisplayName, chapterNum);
 
       if (cached?.notes_text && cached.notes_text.trim().length > 0) {
         cacheChapterNotes(bookDisplayName, chapterNum, cached.notes_text);
@@ -1569,12 +1556,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
       );
 
       // 4. Re-read from DB (single source of truth)
-      const { data: saved } = await supabase
-        .from("bible_notes")
-        .select("notes_text")
-        .eq("book", bookKey)
-        .eq("chapter", chapterNum)
-        .maybeSingle();
+      const { data: saved } = await fetchBibleChapterNotes(supabase, bookDisplayName, chapterNum);
 
       const nextNotes = saved?.notes_text ?? generated;
       cacheChapterNotes(bookDisplayName, chapterNum, nextNotes);

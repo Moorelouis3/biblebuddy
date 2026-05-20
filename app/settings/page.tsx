@@ -26,6 +26,7 @@ import {
   PREMIUM_SKINS,
   applyPremiumSkinToDocument,
   cachePremiumSkinForUser,
+  clearPendingPremiumSkinSync,
   clearLegacyPremiumSkinCache,
   formatPremiumSkinLockRemaining,
   getPremiumSkinLockRemainingMs,
@@ -219,6 +220,7 @@ export default function SettingsPage() {
           persistActiveStreakFlame(resolvedSelectedFlame);
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(currentUser.id, safePremiumSkin);
+          if (dbPremiumSkin === safePremiumSkin) clearPendingPremiumSkinSync(currentUser.id, safePremiumSkin);
           applyPremiumSkinToDocument(safePremiumSkin);
           window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: resolvedSelectedBuddy } }));
         }
@@ -540,6 +542,7 @@ export default function SettingsPage() {
           { onConflict: "user_id" },
         );
       if (skinError && !/active_premium_skin/i.test(skinError.message || "")) throw skinError;
+      clearPendingPremiumSkinSync(user.id, skinId);
 
       setSettingsMessage(skin ? `${skin.name} is now your default Premium Skin.` : "Premium Skin removed.");
     } catch (error: any) {

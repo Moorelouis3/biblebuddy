@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getCompletedChapters, getBookTotalChapters } from "@/lib/readingProgress";
 import { supabase } from "@/lib/supabaseClient";
 import ChapterNotesMarkdown from "../../../components/ChapterNotesMarkdown";
+import { fetchBibleChapterNotes, getOfflineChapterNotes } from "@/lib/chapterNotesOffline";
 
 const CHAPTERS_PER_PAGE = 12;
 
@@ -81,12 +82,12 @@ export default function BookBibleStudyNotesPage() {
       setNotesError(null);
 
       try {
-        const { data, error } = await supabase
-          .from("bible_notes")
-          .select("notes_text")
-          .eq("book", bookKey)
-          .eq("chapter", selectedChapter)
-          .maybeSingle();
+        const fallbackNotes = await getOfflineChapterNotes(bookDisplayName, selectedChapter);
+        if (fallbackNotes) {
+          setNotesText(fallbackNotes);
+        }
+
+        const { data, error } = await fetchBibleChapterNotes(supabase, bookDisplayName, selectedChapter);
 
         if (error) {
           console.error("Error loading notes:", error);
@@ -96,8 +97,8 @@ export default function BookBibleStudyNotesPage() {
         }
 
         if (!data || !data.notes_text) {
-          setNotesError("Notes not available for this chapter yet.");
-          setNotesText("");
+          setNotesError(fallbackNotes ? null : "Notes not available for this chapter yet.");
+          setNotesText(fallbackNotes || "");
         } else {
           setNotesText(data.notes_text);
         }

@@ -65,6 +65,7 @@ import {
 import {
   applyPremiumSkinToDocument,
   cachePremiumSkinForUser,
+  clearPendingPremiumSkinSync,
   clearLegacyPremiumSkinCache,
   formatPremiumSkinLockRemaining,
   getPremiumSkinLockRemainingMs,
@@ -4408,6 +4409,8 @@ export default function DashboardPage() {
         );
       if (error && !/active_premium_skin/i.test(error.message || "")) {
         console.warn("[STORE] Premium Skin saved locally, but profile update failed:", error.message);
+      } else {
+        clearPendingPremiumSkinSync(userId, normalizedSkinId);
       }
     }
     const matchingFlame = getPremiumSkinFlameId(normalizedSkinId);
@@ -5000,6 +5003,7 @@ export default function DashboardPage() {
           const resolvedActiveSkin = await canUsePremiumSkin(candidateActiveSkin) ? candidateActiveSkin : "none";
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(userId, resolvedActiveSkin);
+          if (dbActiveSkin === resolvedActiveSkin) clearPendingPremiumSkinSync(userId, resolvedActiveSkin);
           setActivePremiumSkinId(resolvedActiveSkin);
           applyPremiumSkinToDocument(resolvedActiveSkin);
           preloadActiveSkinAssets(resolvedActiveSkin);

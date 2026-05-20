@@ -11,6 +11,7 @@ import TriviaGamePlayer from "@/components/TriviaGamePlayer";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
 import { getProverbsChapterNotesFallback, withNotesTimeout } from "@/lib/proverbsChapterNotesFallback";
+import { fetchBibleChapterNotes } from "@/lib/chapterNotesOffline";
 import { supabase } from "@/lib/supabaseClient";
 import { getTriviaBook, getTriviaChapter } from "@/lib/triviaGameData";
 import { triggerPoints } from "@/components/PointsPop";
@@ -297,12 +298,7 @@ export default function ProverbsStudyDayPage() {
             .eq("book", day.bible_reading_book.toLowerCase().trim())
             .eq("chapter", day.bible_reading_chapter)
             .maybeSingle(),
-          supabase
-            .from("bible_notes")
-            .select("notes_text")
-            .eq("book", day.bible_reading_book.toLowerCase().trim())
-            .eq("chapter", day.bible_reading_chapter)
-            .maybeSingle(),
+          fetchBibleChapterNotes(supabase, day.bible_reading_book, day.bible_reading_chapter),
         ]);
 
         bibleWords = getBibleChapterWordCount((chapterData as any)?.content_json);
@@ -687,12 +683,7 @@ export default function ProverbsStudyDayPage() {
 
     try {
       const { data, error } = await withNotesTimeout(
-        supabase
-          .from("bible_notes")
-          .select("notes_text")
-          .eq("book", day.bible_reading_book.toLowerCase().trim())
-          .eq("chapter", day.bible_reading_chapter)
-          .maybeSingle(),
+        fetchBibleChapterNotes(supabase, day.bible_reading_book, day.bible_reading_chapter),
       );
 
       if (error) throw error;

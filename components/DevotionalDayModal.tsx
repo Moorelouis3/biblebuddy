@@ -18,7 +18,7 @@ import CommentSection from "./comments/CommentSection";
 import TriviaGamePlayer from "./TriviaGamePlayer";
 import ScrambledGamePlayer from "./ScrambledGamePlayer";
 import { TASK_XP } from "../lib/progressionRewards";
-import { cacheChapterNotes, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
+import { cacheChapterNotes, fetchBibleChapterNotes, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -808,12 +808,7 @@ Be accurate to Scripture.`;
         }
       }
 
-      const { data, error } = await supabase
-        .from("bible_notes")
-        .select("notes_text")
-        .eq("book", day.bible_reading_book.toLowerCase().trim())
-        .eq("chapter", day.bible_reading_chapter)
-        .maybeSingle();
+      const { data, error } = await fetchBibleChapterNotes(supabase, day.bible_reading_book, day.bible_reading_chapter);
 
       if (error) throw error;
       const nextNotes = data?.notes_text || offlineNotes || "No notes are available for this chapter yet.";

@@ -9,6 +9,7 @@ import CreditLimitModal from "@/components/CreditLimitModal";
 import CreditEducationModal from "@/components/CreditEducationModal";
 import { triggerPoints } from "@/components/PointsPop";
 import { TASK_XP } from "@/lib/progressionRewards";
+import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "@/lib/chapterNotesOffline";
 
 const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 export default function ChapterNotesPage() {
@@ -168,7 +169,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
   async function loadOrGenerateNotes() {
       // Ensure bookKey and chapterNum are defined at the top for use throughout the function
-      const bookKey = book.toLowerCase().trim();
+      const bookKey = getCanonicalBibleNotesBookKey(book);
       const chapterNum = Number(chapter);
     // Prevent double execution in React Strict Mode
     if (loadingRef.current) {
@@ -181,6 +182,11 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       setNotesText("");
       setNotesError(null);
       setShowCreditBlocked(false);
+
+      const offlineNotes = await getOfflineChapterNotes(bookDisplayName, chapterNum);
+      if (offlineNotes) {
+        setNotesText(cleanNotesText(offlineNotes));
+      }
 
 
 
@@ -287,7 +293,27 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         window.sessionStorage.setItem(EDUCATION_MODAL_SESSION_KEY, "1");
         // Do NOT return early; allow notes to load in background
       }
-      // 3) Only generate if NOT found in Supabase
+      const { data: existingNotes, error: existingNotesError } = await fetchBibleChapterNotes(supabase, bookDisplayName, chapterNum);
+      if (existingNotesError && existingNotesError.code !== "PGRST116") {
+        console.error(`[bible_notes] Error checking existing notes:`, existingNotesError);
+      }
+
+      if (existingNotes?.notes_text && existingNotes.notes_text.trim().length > 0) {
+        const cleaned = cleanNotesText(existingNotes.notes_text);
+        cacheChapterNotes(bookDisplayName, chapterNum, cleaned);
+        setNotesText(cleaned);
+        setNotesError(null);
+        return;
+      }
+
+      if (offlineNotes) {
+        cacheChapterNotes(bookDisplayName, chapterNum, offlineNotes);
+        setNotesText(cleanNotesText(offlineNotes));
+        setNotesError(null);
+        return;
+      }
+
+      // 3) Only generate if NOT found in Supabase or local official notes
       const prompt = buildPrompt();
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -326,12 +352,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       // CRITICAL: Before saving, check ONE MORE TIME if row exists (race condition protection)
       // Another request might have created it while we were generating
       console.log(`[bible_notes] Re-checking for existing notes after generation: book="${bookKey}", chapter=${chapterNum}`);
-      const { data: existingAfterGen, error: checkAfterGenError } = await supabase
-        .from("bible_notes")
-        .select("notes_text")
-        .eq("book", bookKey)
-        .eq("chapter", chapterNum)
-        .maybeSingle();
+      const { data: existingAfterGen, error: checkAfterGenError } = await fetchBibleChapterNotes(supabase, bookDisplayName, chapterNum);
 
       if (checkAfterGenError && checkAfterGenError.code !== 'PGRST116') {
         console.error(`[bible_notes] Error re-checking after generation:`, checkAfterGenError);
@@ -369,12 +390,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       // MANDATORY: Always re-read from database after upsert
       // NEVER use in-memory generated text - database is single source of truth
       console.log(`[bible_notes] Re-fetching from database after upsert: book="${bookKey}", chapter=${chapterNum}`);
-      const { data: savedRow, error: fetchError } = await supabase
-        .from("bible_notes")
-        .select("notes_text")
-        .eq("book", bookKey)
-        .eq("chapter", chapterNum)
-        .maybeSingle();
+      const { data: savedRow, error: fetchError } = await fetchBibleChapterNotes(supabase, bookDisplayName, chapterNum);
 
       if (fetchError) {
         if (fetchError.code === 'PGRST116') {

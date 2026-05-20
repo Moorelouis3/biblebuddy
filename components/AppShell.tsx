@@ -30,6 +30,7 @@ import {
 import {
   applyPremiumSkinToDocument,
   cachePremiumSkinForUser,
+  clearPendingPremiumSkinSync,
   clearLegacyPremiumSkinCache,
   getPremiumSkinForLegacyFlame,
   getPremiumSkinForLegacyTheme,
@@ -339,6 +340,40 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, [appThemeId, userId]);
 
+  useEffect(() => {
+    if (!userId) return;
+    const channel = supabase
+      .channel(`profile-skin-sync:${userId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "profile_stats",
+          filter: `user_id=eq.${userId}`,
+        },
+        (payload) => {
+          const nextSkin = normalizePremiumSkinId((payload.new as { active_premium_skin?: unknown } | null)?.active_premium_skin);
+          cachePremiumSkinForUser(userId, nextSkin);
+          clearPendingPremiumSkinSync(userId, nextSkin);
+          if (nextSkin === "none") {
+            applyPremiumSkinToDocument("none");
+            applyAppThemeToDocument(appThemeId);
+          } else {
+            applyAppThemeToDocument(appThemeId);
+            applyPremiumSkinToDocument(nextSkin);
+            preloadActiveSkinAssets(nextSkin);
+          }
+          window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: nextSkin } }));
+        },
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [appThemeId, userId]);
+
   function applyThemeLocally(themeId: AppThemeId) {
     setAppThemeId(themeId);
     if (typeof window !== "undefined") {
@@ -405,6 +440,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const candidateSkin = hasActiveSkinColumn ? staleSafeDbSkin : legacyMappedSkin;
     const savedSkin = await canUsePremiumSkin(currentUserId, email, candidateSkin) ? candidateSkin : "none";
     cachePremiumSkinForUser(currentUserId, savedSkin);
+    if (dbSkin === savedSkin) clearPendingPremiumSkinSync(currentUserId, savedSkin);
     if (savedSkin === "none") {
       applyPremiumSkinToDocument("none");
       applyThemeLocally(savedTheme);
@@ -711,6 +747,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       setHeaderSelectedFlame(resolvedSelectedFlame);
       cachePremiumSkinForUser(currentUserId, resolvedSkin);
       applyPremiumSkinToDocument(resolvedSkin);
+      if (dbActiveSkin === resolvedSkin) clearPendingPremiumSkinSync(currentUserId, resolvedSkin);
       if (resolvedSkin !== dbActiveSkin) {
         void supabase
           .from("profile_stats")

@@ -36,6 +36,8 @@ export type PremiumSkin = {
 
 export const PREMIUM_SKIN_STORAGE_KEY = "bb:premium-skin";
 export const PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY = "bb:premium-skin-updated-at";
+export const PREMIUM_SKIN_PENDING_SYNC_KEY = "bb:premium-skin-pending-sync";
+export const PREMIUM_SKIN_PENDING_SYNC_MS = 90 * 1000;
 export const PREMIUM_SKIN_LOCK_MS = 24 * 60 * 60 * 1000;
 
 export function getPremiumSkinStorageKey(userId: string | null | undefined) {
@@ -54,17 +56,42 @@ export function getPremiumSkinStorageTimestampKey(userId: string | null | undefi
   return userId ? `${PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY}:${userId}` : PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY;
 }
 
+export function getPremiumSkinPendingSyncKey(userId: string | null | undefined) {
+  return userId ? `${PREMIUM_SKIN_PENDING_SYNC_KEY}:${userId}` : PREMIUM_SKIN_PENDING_SYNC_KEY;
+}
+
 export function readCachedPremiumSkinAgeMs(userId: string | null | undefined) {
   if (typeof window === "undefined" || !userId) return Number.POSITIVE_INFINITY;
   const updatedAt = Number(window.localStorage.getItem(getPremiumSkinStorageTimestampKey(userId)));
   return Number.isFinite(updatedAt) ? Date.now() - updatedAt : Number.POSITIVE_INFINITY;
 }
 
+export function readPendingPremiumSkinSync(userId: string | null | undefined) {
+  if (typeof window === "undefined" || !userId) return null;
+  const raw = window.localStorage.getItem(getPremiumSkinPendingSyncKey(userId));
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as { skinId?: unknown; startedAt?: unknown };
+    const skinId = normalizePremiumSkinId(parsed.skinId);
+    const startedAt = Number(parsed.startedAt);
+    if (!Number.isFinite(startedAt)) return null;
+    if (Date.now() - startedAt > PREMIUM_SKIN_PENDING_SYNC_MS) {
+      window.localStorage.removeItem(getPremiumSkinPendingSyncKey(userId));
+      return null;
+    }
+    return { skinId, startedAt };
+  } catch {
+    window.localStorage.removeItem(getPremiumSkinPendingSyncKey(userId));
+    return null;
+  }
+}
+
 export function shouldPreferCachedPremiumSkin(userId: string | null | undefined, authoritativeSkinId: PremiumSkinId) {
   if (typeof window === "undefined" || !userId) return false;
   const cachedSkinId = readCachedPremiumSkin(userId);
-  if (cachedSkinId === "none" || cachedSkinId === authoritativeSkinId) return false;
-  return readCachedPremiumSkinAgeMs(userId) < PREMIUM_SKIN_LOCK_MS;
+  if (cachedSkinId === authoritativeSkinId) return false;
+  const pendingSync = readPendingPremiumSkinSync(userId);
+  return Boolean(pendingSync && pendingSync.skinId === cachedSkinId);
 }
 
 export function cachePremiumSkinForUser(userId: string | null | undefined, skinId: PremiumSkinId, options: { markSelected?: boolean } = {}) {
@@ -76,6 +103,17 @@ export function cachePremiumSkinForUser(userId: string | null | undefined, skinI
     const updatedAt = String(Date.now());
     if (userId) window.localStorage.setItem(getPremiumSkinStorageTimestampKey(userId), updatedAt);
     window.localStorage.setItem(PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY, updatedAt);
+    if (userId) {
+      window.localStorage.setItem(getPremiumSkinPendingSyncKey(userId), JSON.stringify({ skinId: normalizedSkinId, startedAt: Number(updatedAt) }));
+    }
+  }
+}
+
+export function clearPendingPremiumSkinSync(userId: string | null | undefined, skinId?: PremiumSkinId) {
+  if (typeof window === "undefined" || !userId) return;
+  const pendingSync = readPendingPremiumSkinSync(userId);
+  if (!skinId || pendingSync?.skinId === skinId) {
+    window.localStorage.removeItem(getPremiumSkinPendingSyncKey(userId));
   }
 }
 

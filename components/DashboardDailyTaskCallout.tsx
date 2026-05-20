@@ -15,7 +15,7 @@ import { consumeCreditAction } from "../lib/creditClient";
 import { supabase } from "../lib/supabaseClient";
 import { markChapterDone } from "../lib/readingProgress";
 import { getChapterNotesFallback, withNotesTimeout } from "../lib/proverbsChapterNotesFallback";
-import { cacheChapterNotes, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
+import { cacheChapterNotes, fetchBibleChapterNotes, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
 import { getScrambledBook, getScrambledChapter } from "../lib/scrambledGameData";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaBook, getTriviaChapter } from "../lib/triviaGameData";
@@ -651,7 +651,6 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       setNotesMarkedComplete(task.done);
 
       try {
-        const bookKey = task.book.toLowerCase().trim();
         const fallbackNotes = await getOfflineChapterNotes(task.book, task.chapter);
 
         if (fallbackNotes && !cancelled) {
@@ -660,12 +659,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
         }
 
         const { data: cached, error } = await withNotesTimeout(
-          supabase
-            .from("bible_notes")
-            .select("notes_text")
-            .eq("book", bookKey)
-            .eq("chapter", task.chapter)
-            .maybeSingle(),
+          fetchBibleChapterNotes(supabase, task.book, task.chapter),
           fallbackNotes ? 1600 : 6500,
         );
 

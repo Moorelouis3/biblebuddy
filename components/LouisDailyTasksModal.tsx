@@ -18,7 +18,7 @@ import { LouisAvatar } from "./LouisAvatar";
 import { triggerPoints } from "./PointsPop";
 import { TASK_REWARD_LABELS, TASK_XP } from "../lib/progressionRewards";
 import { getChapterNotesFallback, withNotesTimeout } from "../lib/proverbsChapterNotesFallback";
-import { cacheChapterNotes, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
+import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
 
 type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
 
@@ -468,12 +468,7 @@ export async function fetchLouisDailyChecklistData(
       .eq("book", day.bible_reading_book.toLowerCase().trim())
       .eq("chapter", day.bible_reading_chapter)
       .maybeSingle(),
-    supabase
-      .from("bible_notes")
-      .select("notes_text")
-      .eq("book", day.bible_reading_book.toLowerCase().trim())
-      .eq("chapter", day.bible_reading_chapter)
-      .maybeSingle(),
+    fetchBibleChapterNotes(supabase, day.bible_reading_book, day.bible_reading_chapter),
   ]);
 
   if (todayProgressRes.error) throw todayProgressRes.error;
@@ -763,7 +758,7 @@ export default function LouisDailyTasksModal({
       setNotesError(null);
 
       try {
-        const bookKey = selectedNotesTask.book.toLowerCase().trim();
+        const bookKey = getCanonicalBibleNotesBookKey(selectedNotesTask.book);
         const chapterNum = Number(selectedNotesTask.chapter);
         const fallbackNotes = await getOfflineChapterNotes(selectedNotesTask.book, chapterNum);
 
@@ -773,12 +768,7 @@ export default function LouisDailyTasksModal({
         }
 
         const { data: cached } = await withNotesTimeout(
-          supabase
-            .from("bible_notes")
-            .select("notes_text")
-            .eq("book", bookKey)
-            .eq("chapter", chapterNum)
-            .maybeSingle(),
+          fetchBibleChapterNotes(supabase, selectedNotesTask.book, chapterNum),
           fallbackNotes ? 1600 : 6500,
         );
 
@@ -837,12 +827,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           { onConflict: "book,chapter" },
         );
 
-        const { data: saved } = await supabase
-          .from("bible_notes")
-          .select("notes_text")
-          .eq("book", bookKey)
-          .eq("chapter", chapterNum)
-          .maybeSingle();
+        const { data: saved } = await fetchBibleChapterNotes(supabase, selectedNotesTask.book, chapterNum);
 
         if (!cancelled) setNotesText(saved?.notes_text ?? generated);
       } catch (error: any) {
