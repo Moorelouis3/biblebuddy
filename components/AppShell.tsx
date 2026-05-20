@@ -35,6 +35,7 @@ import {
   getPremiumSkinForLegacyTheme,
   normalizePremiumSkinId,
   readCachedPremiumSkin,
+  shouldPreferCachedPremiumSkin,
   type PremiumSkinId,
 } from "../lib/premiumSkins";
 import { preloadActiveSkinAssets, preloadImage, scheduleIdleWork, syncPerformanceModeToDocument } from "../lib/appPerformance";
@@ -302,8 +303,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     function handlePremiumSkinChanged(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
       const currentDocumentSkin = normalizePremiumSkinId(document.documentElement.dataset.bbSkin);
+      const freshCachedSkin = shouldPreferCachedPremiumSkin(userId, currentDocumentSkin)
+        ? readCachedPremiumSkin(userId)
+        : "none";
       const skinId = normalizePremiumSkinId(
         customEvent?.detail?.skinId ||
+          (freshCachedSkin !== "none" ? freshCachedSkin : null) ||
           (currentDocumentSkin !== "none" ? currentDocumentSkin : null) ||
           readCachedPremiumSkin(userId) ||
           "none",
@@ -394,7 +399,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       getPremiumSkinForLegacyTheme(data?.app_theme) !== "none"
         ? getPremiumSkinForLegacyTheme(data?.app_theme)
         : getPremiumSkinForLegacyFlame(data && "selected_streak_flame" in data ? data.selected_streak_flame : null);
-    const candidateSkin = hasActiveSkinColumn ? dbSkin : legacyMappedSkin;
+    const staleSafeDbSkin = shouldPreferCachedPremiumSkin(currentUserId, dbSkin)
+      ? readCachedPremiumSkin(currentUserId)
+      : dbSkin;
+    const candidateSkin = hasActiveSkinColumn ? staleSafeDbSkin : legacyMappedSkin;
     const savedSkin = await canUsePremiumSkin(currentUserId, email, candidateSkin) ? candidateSkin : "none";
     cachePremiumSkinForUser(currentUserId, savedSkin);
     if (savedSkin === "none") {
@@ -694,13 +702,28 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const dbSelectedFlame = normalizeFlameCosmeticId(data?.selected_streak_flame);
       const hasActiveSkinColumn = Boolean(data && "active_premium_skin" in data);
       const dbActiveSkin = normalizePremiumSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
-      const resolvedSkin = dbActiveSkin;
+      const resolvedSkin = shouldPreferCachedPremiumSkin(currentUserId, dbActiveSkin)
+        ? readCachedPremiumSkin(currentUserId)
+        : dbActiveSkin;
       const skinFlame = getPremiumSkinFlameId(resolvedSkin);
       const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
       persistActiveStreakFlame(resolvedSelectedFlame);
       setHeaderSelectedFlame(resolvedSelectedFlame);
       cachePremiumSkinForUser(currentUserId, resolvedSkin);
       applyPremiumSkinToDocument(resolvedSkin);
+      if (resolvedSkin !== dbActiveSkin) {
+        void supabase
+          .from("profile_stats")
+          .upsert(
+            {
+              user_id: currentUserId,
+              active_premium_skin: resolvedSkin,
+              active_premium_skin_selected_at: data?.active_premium_skin_selected_at ?? new Date().toISOString(),
+              updated_at: new Date().toISOString(),
+            },
+            { onConflict: "user_id" },
+          );
+      }
       if (skinFlame && dbSelectedFlame !== skinFlame) {
         void supabase
           .from("profile_stats")

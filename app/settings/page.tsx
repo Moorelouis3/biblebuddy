@@ -30,6 +30,8 @@ import {
   formatPremiumSkinLockRemaining,
   getPremiumSkinLockRemainingMs,
   normalizePremiumSkinId,
+  readCachedPremiumSkin,
+  shouldPreferCachedPremiumSkin,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
@@ -173,7 +175,9 @@ export default function SettingsPage() {
           profile && "active_premium_skin" in profile && profile.active_premium_skin
             ? normalizePremiumSkinId(profile.active_premium_skin)
             : "none";
-        const resolvedPremiumSkin = dbPremiumSkin;
+        const resolvedPremiumSkin = shouldPreferCachedPremiumSkin(currentUser.id, dbPremiumSkin)
+          ? readCachedPremiumSkin(currentUser.id)
+          : dbPremiumSkin;
         const premiumSkinStoreItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === resolvedPremiumSkin);
         const ownsResolvedPremiumSkin =
           resolvedPremiumSkin === "none" ||
@@ -185,6 +189,18 @@ export default function SettingsPage() {
             .from("profile_stats")
             .update({ active_premium_skin: "none", updated_at: new Date().toISOString() })
             .eq("user_id", currentUser.id);
+        } else if (resolvedPremiumSkin !== dbPremiumSkin) {
+          void supabase
+            .from("profile_stats")
+            .upsert(
+              {
+                user_id: currentUser.id,
+                active_premium_skin: resolvedPremiumSkin,
+                active_premium_skin_selected_at: profile?.active_premium_skin_selected_at ?? new Date().toISOString(),
+                updated_at: new Date().toISOString(),
+              },
+              { onConflict: "user_id" },
+            );
         }
         setSelectedPremiumSkin(safePremiumSkin);
         setSelectedPremiumSkinSelectedAt(safePremiumSkin === "none" ? null : profile?.active_premium_skin_selected_at ?? null);

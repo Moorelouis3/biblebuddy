@@ -1,4 +1,4 @@
-export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline" | "angel-wings" | "winter-cabin";
+export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline" | "angel-wings" | "winter-cabin" | "mount-sinai";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -58,6 +58,13 @@ export function readCachedPremiumSkinAgeMs(userId: string | null | undefined) {
   if (typeof window === "undefined" || !userId) return Number.POSITIVE_INFINITY;
   const updatedAt = Number(window.localStorage.getItem(getPremiumSkinStorageTimestampKey(userId)));
   return Number.isFinite(updatedAt) ? Date.now() - updatedAt : Number.POSITIVE_INFINITY;
+}
+
+export function shouldPreferCachedPremiumSkin(userId: string | null | undefined, authoritativeSkinId: PremiumSkinId) {
+  if (typeof window === "undefined" || !userId) return false;
+  const cachedSkinId = readCachedPremiumSkin(userId);
+  if (cachedSkinId === "none" || cachedSkinId === authoritativeSkinId) return false;
+  return readCachedPremiumSkinAgeMs(userId) < PREMIUM_SKIN_LOCK_MS;
 }
 
 export function cachePremiumSkinForUser(userId: string | null | undefined, skinId: PremiumSkinId, options: { markSelected?: boolean } = {}) {
@@ -381,6 +388,38 @@ export const WINTER_CABIN_SKIN: PremiumSkin = {
   },
 };
 
+export const MOUNT_SINAI_SKIN: PremiumSkin = {
+  id: "mount-sinai",
+  name: "Mount Sinai",
+  label: "Premium Skin",
+  storeSubtitle: "A sacred storm-lit mountain atmosphere for reverent deep Bible study.",
+  backgroundImage: "/skins/MountSinai.png",
+  originalImage: "/skins/MountSinai.png",
+  thumbnailImage: "/skins/MountSinai.png",
+  mobileBackgroundImage: "/skins/MountSinai.png",
+  desktopBackgroundImage: "/skins/MountSinai.png",
+  price: 1000,
+  palette: {
+    background: "#050505",
+    surface: "rgba(20, 16, 12, 0.8)",
+    surfaceSoft: "rgba(88, 55, 26, 0.3)",
+    card: "rgba(18, 15, 12, 0.78)",
+    cardBorder: "rgba(230, 153, 55, 0.4)",
+    textPrimary: "#FFF4DE",
+    textSecondary: "#E8CDA5",
+    textMuted: "#B99263",
+    accent: "#EAA23A",
+    accentSoft: "rgba(234, 162, 58, 0.22)",
+    button: "#A85F18",
+    buttonText: "#FFF4DE",
+    navBackground: "rgba(12, 10, 8, 0.92)",
+    navActive: "#FFD37A",
+    navInactive: "#C09B6A",
+    progressTrack: "rgba(232, 205, 165, 0.18)",
+    progressFill: "#FFD37A",
+  },
+};
+
 export const PREMIUM_SKINS: PremiumSkin[] = [
   BLUE_STORM_SKIN,
   MIDNIGHT_GARDEN_SKIN,
@@ -391,6 +430,7 @@ export const PREMIUM_SKINS: PremiumSkin[] = [
   CAROLINA_COASTLINE_SKIN,
   ANGEL_WINGS_SKIN,
   WINTER_CABIN_SKIN,
+  MOUNT_SINAI_SKIN,
 ];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
 
@@ -490,6 +530,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
                   ? "rgba(141, 220, 255, 0.44)"
                   : skin.id === "winter-cabin"
                     ? "rgba(155, 215, 255, 0.44)"
+                    : skin.id === "mount-sinai"
+                      ? "rgba(234, 162, 58, 0.46)"
           : "rgba(93, 214, 255, 0.42)",
   );
   root.style.setProperty(
@@ -510,6 +552,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
                   ? "rgba(246, 211, 133, 0.38)"
                   : skin.id === "winter-cabin"
                     ? "rgba(255, 207, 125, 0.24)"
+                    : skin.id === "mount-sinai"
+                      ? "rgba(255, 211, 122, 0.34)"
           : "rgba(93, 214, 255, 0.2)",
   );
 

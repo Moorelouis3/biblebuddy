@@ -73,6 +73,7 @@ import {
   getPremiumSkin,
   normalizePremiumSkinId,
   readCachedPremiumSkin,
+  shouldPreferCachedPremiumSkin,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
 import {
@@ -2609,6 +2610,7 @@ export default function DashboardPage() {
           .skin-world-carolina-coastline { --premium-aura: #7BAFD4; }
           .skin-world-angel-wings { --premium-aura: #8DDCFF; }
           .skin-world-winter-cabin { --premium-aura: #9BD7FF; }
+          .skin-world-mount-sinai { --premium-aura: #EAA23A; }
           @keyframes premium-stat-drift {
             from { transform: translate3d(-2%, -1%, 0) rotate(0deg); opacity: 0.52; }
             to { transform: translate3d(2%, 1%, 0) rotate(4deg); opacity: 0.82; }
@@ -3160,6 +3162,8 @@ export default function DashboardPage() {
                       ? ["Wings", "Light Rays", "Peace"]
                       : item.skinId === "winter-cabin"
                         ? ["Snowfall", "Cabin Glow", "Moonlight"]
+                        : item.skinId === "mount-sinai"
+                          ? ["Lightning", "Smoke", "Sacred Ground"]
                 : ["Storm", "Glow", "Mist"];
       const skinMotionClass =
         item.skinId === "midnight-garden"
@@ -3178,9 +3182,11 @@ export default function DashboardPage() {
                       ? "bb-store-skin-card--angel"
                       : item.skinId === "winter-cabin"
                         ? "bb-store-skin-card--winter"
+                        : item.skinId === "mount-sinai"
+                          ? "bb-store-skin-card--sinai"
                 : "bb-store-skin-card--storm";
       const skinBadge =
-        item.skinId === "slow-mornings" || item.skinId === "morning-mercy" || item.skinId === "carolina-coastline" || item.skinId === "angel-wings" || item.skinId === "winter-cabin"
+        item.skinId === "slow-mornings" || item.skinId === "morning-mercy" || item.skinId === "carolina-coastline" || item.skinId === "angel-wings" || item.skinId === "winter-cabin" || item.skinId === "mount-sinai"
           ? "New"
           : item.skinId === "ruby-village"
             ? "Popular"
@@ -3226,6 +3232,8 @@ export default function DashboardPage() {
                               ? "radial-gradient(circle at 50% 12%, rgba(255,255,255,0.38), transparent 28%), radial-gradient(circle at 60% 24%, rgba(246,211,133,0.26), transparent 32%), linear-gradient(180deg,rgba(141,220,255,0.04),rgba(4,18,38,0.78))"
                               : item.skinId === "winter-cabin"
                                 ? "radial-gradient(circle at 52% 12%, rgba(215,236,255,0.32), transparent 30%), radial-gradient(circle at 24% 42%, rgba(255,207,125,0.18), transparent 24%), linear-gradient(180deg,rgba(155,215,255,0.04),rgba(3,10,22,0.82))"
+                                : item.skinId === "mount-sinai"
+                                  ? "radial-gradient(circle at 52% 12%, rgba(255,211,122,0.34), transparent 28%), radial-gradient(circle at 22% 42%, rgba(234,162,58,0.2), transparent 26%), linear-gradient(180deg,rgba(234,162,58,0.05),rgba(5,5,5,0.84))"
                       : "radial-gradient(circle at 18% 12%,rgba(93,214,255,0.34),transparent 34%),linear-gradient(135deg,rgba(9,24,52,0.2),rgba(4,11,24,0.78))",
             }}
           />
@@ -3249,6 +3257,8 @@ export default function DashboardPage() {
                               ? "rgba(246,211,133,0.28)"
                               : item.skinId === "winter-cabin"
                                 ? "rgba(155,215,255,0.28)"
+                                : item.skinId === "mount-sinai"
+                                  ? "rgba(234,162,58,0.3)"
                       : "rgba(125,211,252,0.25)",
             }}
           />
@@ -3475,6 +3485,23 @@ export default function DashboardPage() {
             background-size: 88px 120px, 136px 170px, 100% 100%;
             filter: blur(1.2px);
             animation: bb-store-skin-drift 9.4s ease-in-out infinite alternate;
+          }
+          .bb-store-skin-card--sinai::before {
+            background:
+              radial-gradient(circle at 52% 12%, rgba(255, 211, 122, 0.38), transparent 24%),
+              linear-gradient(112deg, transparent 0 44%, rgba(255, 214, 122, 0.56) 48%, rgba(234, 162, 58, 0.28) 50%, transparent 56%),
+              linear-gradient(102deg, transparent 0%, rgba(234, 162, 58, 0.18) 48%, transparent 76%);
+            animation: bb-store-lantern-flicker 5.4s ease-in-out infinite;
+          }
+          .bb-store-skin-card--sinai::after {
+            background:
+              radial-gradient(circle at 22% 72%, rgba(234, 162, 58, 0.36) 0 1.4px, transparent 3px),
+              radial-gradient(circle at 72% 34%, rgba(255, 211, 122, 0.2) 0 1.2px, transparent 3px),
+              linear-gradient(112deg, transparent 0%, rgba(255, 211, 122, 0.14) 44%, transparent 72%),
+              linear-gradient(180deg, transparent 0%, rgba(5, 5, 5, 0.24) 70%, rgba(2, 2, 2, 0.62) 100%);
+            background-size: 140px 180px, 210px 250px, 100% 100%, 100% 100%;
+            filter: blur(1.4px);
+            animation: bb-store-skin-drift 8.8s ease-in-out infinite alternate;
           }
         `}</style>
         <div className="hidden overflow-hidden rounded-[28px] border border-rose-100 bg-[linear-gradient(135deg,rgba(255,231,231,0.9),rgba(255,246,246,0.72))] p-4 shadow-[0_18px_42px_rgba(153,27,27,0.08)]">
@@ -4266,10 +4293,15 @@ export default function DashboardPage() {
     if (typeof window === "undefined") return;
     function loadPremiumSkin(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
+      const profileSkin = normalizePremiumSkinId(profile?.active_premium_skin);
+      const staleSafeProfileSkin = shouldPreferCachedPremiumSkin(userId, profileSkin)
+        ? readCachedPremiumSkin(userId)
+        : profileSkin;
+      const documentSkin = normalizePremiumSkinId(document.documentElement.dataset.bbSkin);
       const skinId = normalizePremiumSkinId(
         customEvent?.detail?.skinId ||
-          profile?.active_premium_skin ||
-          document.documentElement.dataset.bbSkin ||
+          (staleSafeProfileSkin !== "none" ? staleSafeProfileSkin : null) ||
+          (documentSkin !== "none" ? documentSkin : null) ||
           readCachedPremiumSkin(userId) ||
           "none",
       );
@@ -4961,7 +4993,10 @@ export default function DashboardPage() {
             getPremiumSkinForLegacyTheme(profileData?.app_theme) !== "none"
               ? getPremiumSkinForLegacyTheme(profileData?.app_theme)
               : getPremiumSkinForLegacyFlame(profileData?.selected_streak_flame);
-          const candidateActiveSkin = hasActiveSkinColumn ? dbActiveSkin : legacyMappedSkin;
+          const staleSafeDbSkin = shouldPreferCachedPremiumSkin(userId, dbActiveSkin)
+            ? readCachedPremiumSkin(userId)
+            : dbActiveSkin;
+          const candidateActiveSkin = hasActiveSkinColumn ? staleSafeDbSkin : legacyMappedSkin;
           const resolvedActiveSkin = await canUsePremiumSkin(candidateActiveSkin) ? candidateActiveSkin : "none";
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(userId, resolvedActiveSkin);
