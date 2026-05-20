@@ -607,6 +607,45 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     router.push("/dashboard");
   };
 
+  const isFreeStudyFinished = async (studyId: string) => {
+    if (!userId) return false;
+
+    const { data: studyRow, error: studyError } = await supabase
+      .from("devotionals")
+      .select("total_days")
+      .eq("id", studyId)
+      .maybeSingle();
+
+    if (studyError) {
+      console.error("[FREE_STUDY] Could not load selected free study:", studyError);
+      return false;
+    }
+
+    const totalDays = Math.max(1, Number(studyRow?.total_days || 1));
+    const { data: progressRows, error: progressError } = await supabase
+      .from("devotional_progress")
+      .select("day_number, is_completed")
+      .eq("user_id", userId)
+      .eq("devotional_id", studyId);
+
+    if (progressError) {
+      console.error("[FREE_STUDY] Could not load selected free study progress:", progressError);
+      return false;
+    }
+
+    const completedDays = new Set(
+      (progressRows || [])
+        .filter((row: { is_completed: boolean | null }) => row.is_completed === true)
+        .map((row: { day_number: number }) => row.day_number),
+    );
+
+    for (let dayNumber = 1; dayNumber <= totalDays; dayNumber += 1) {
+      if (!completedDays.has(dayNumber)) return false;
+    }
+
+    return true;
+  };
+
   const handleDayClick = async (day: DevotionalDay) => {
     if (!isDayUnlocked(day.day_number)) {
       return;
@@ -678,7 +717,13 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         setShowChooseFreeModal(true);
       } else {
         // They already chose a different devotional — upgrade wall
-        setShowUpgradeModal(true);
+        const finishedFreeStudy = await isFreeStudyFinished(freeDevotionalId);
+        if (finishedFreeStudy) {
+          setPendingDayClick(day);
+          setShowChooseFreeModal(true);
+        } else {
+          setShowUpgradeModal(true);
+        }
       }
       return;
     }

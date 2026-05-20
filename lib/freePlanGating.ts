@@ -57,9 +57,5 @@ export function rememberFreeChapterUnlock(userId: string | null | undefined, tar
 }
 
 export function canFreeUserUnlockChapter(userId: string | null | undefined, target: FreeChapterUnlockTarget) {
-  const today = getBibleBuddyLocalDayKey();
-  const stored = getFreeChapterUnlock(userId);
-  if (!stored || stored.dayKey !== today) return true;
-
-  return stored.devotionalId === target.devotionalId && stored.dayNumber === target.dayNumber;
+  return true;
 }

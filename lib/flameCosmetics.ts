@@ -20,7 +20,7 @@ export const FLAME_COSMETICS: FlameCosmetic[] = [
   { id: "blue", name: "Blue Flame", light: "#DBEAFE", main: "#7BAFD4", dark: "#2563EB" },
   { id: "gold", name: "Gold Flame", light: "#FEF3C7", main: "#B7791F", dark: "#614A19" },
   { id: "purple", name: "Purple Flame", light: "#EDE9FE", main: "#7C3AED", dark: "#4C3575" },
-  { id: "red", name: "Red Flame", light: "#FEE2E2", main: "#DC2626", dark: "#7F1D1D" },
+  { id: "red", name: "Red Flame", light: "#FF6B6B", main: "#991B1B", dark: "#3F0508" },
   { id: "green", name: "Green Flame", light: "#DCFCE7", main: "#16A34A", dark: "#166534" },
   { id: "black", name: "Black Flame", light: "#D4D4D4", main: "#525252", dark: "#050505" },
 ];

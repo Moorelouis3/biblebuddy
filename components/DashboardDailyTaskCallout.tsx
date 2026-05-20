@@ -23,6 +23,7 @@ import { enrichBibleVerses, enrichPlainText } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { TASK_XP } from "../lib/progressionRewards";
+import { GENESIS_CREATION_KJV_VERSES } from "../lib/creationOfWorldDeepNotes";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
 
@@ -139,6 +140,16 @@ function chapterSlug(book: string, chapter: number) {
 
 function normalizeBibleBookForApi(book: string) {
   return book.toLowerCase().replace(/\s+/g, "");
+}
+
+function getLocalDashboardChapterVerses(book: string, chapter: number) {
+  const normalizedBook = book
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+  if (normalizedBook !== "genesis") return null;
+  const verses = GENESIS_CREATION_KJV_VERSES[chapter];
+  return Array.isArray(verses) && verses.length > 0 ? verses : null;
 }
 
 function normalizeBibleBookDisplay(book: string) {
@@ -333,16 +344,17 @@ function DashboardInlineBibleReader({
   termTakeover?: ReactNode;
   variant?: "inline" | "modal";
 }) {
-  const [verses, setVerses] = useState<BibleApiVerse[]>([]);
+  const bookDisplay = normalizeBibleBookDisplay(book);
+  const localVerses = useMemo(() => getLocalDashboardChapterVerses(bookDisplay, chapter), [bookDisplay, chapter]);
+  const [verses, setVerses] = useState<BibleApiVerse[]>(() => localVerses || []);
   const [loading, setLoading] = useState(false);
   const [markingDone, setMarkingDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const readerRootRef = useRef<HTMLDivElement | null>(null);
-  const bookDisplay = normalizeBibleBookDisplay(book);
   const isModal = variant === "modal";
   const chapterAudioSrc = getGenesisOneTtsSrc("verses", bookDisplay, chapter);
   const chapterSpeechText = useMemo(
-    () => verses.map((verse) => `${verse.verse}. ${verse.text}`).join(" "),
+    () => verses.map((verse) => verse.text).join(" "),
     [verses],
   );
 
@@ -350,6 +362,13 @@ function DashboardInlineBibleReader({
     let cancelled = false;
 
     async function loadChapter() {
+      if (localVerses) {
+        setVerses(localVerses);
+        setLoading(false);
+        setError(null);
+        return;
+      }
+
       setLoading(true);
       setError(null);
 
@@ -414,7 +433,7 @@ function DashboardInlineBibleReader({
     return () => {
       cancelled = true;
     };
-  }, [book, bookDisplay, chapter, chapterLabel]);
+  }, [book, bookDisplay, chapter, chapterLabel, localVerses]);
 
   async function handleDone() {
     setMarkingDone(true);
