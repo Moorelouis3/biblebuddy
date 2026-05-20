@@ -4014,7 +4014,6 @@ export default function DashboardJourneyExperience({
     const earnedXp = signupCount * 250;
     const earnedDiamonds = signupCount * 250;
     const shareMessage = `Join me on Bible Buddy. It helps you know where to start, understand what you read, and stay consistent with Bible study. ${shareUrl}`;
-    const encodedShareMessage = encodeURIComponent(shareMessage);
     const copyInviteLink = async () => {
       await navigator.clipboard.writeText(shareUrl);
       setShareCopied(true);
@@ -4032,18 +4031,16 @@ export default function DashboardJourneyExperience({
       <section className="w-full px-1">
         <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
           <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
-            <div className="bg-[linear-gradient(135deg,var(--bb-accent-soft,#eaf5ff),var(--bb-card,#ffffff)_62%,#fff7d7)] px-4 pb-5 pt-5 sm:px-5">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Buddy Rewards</p>
-              <h2 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Invite Bible Buddies</h2>
-              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
-                Invite friends to Bible Buddy and earn XP points and diamonds.
-              </p>
-
-              <div className="mt-5 flex items-center gap-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm">
-                <div className="buddy-rewards-buddy grid h-24 w-24 shrink-0 place-items-center overflow-visible">
+            <div className="bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,transparent),transparent_42%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_82%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_62%,transparent))] px-4 pb-5 pt-5 sm:px-5">
+              <div className="flex items-center gap-4">
+                <div className="buddy-rewards-buddy shrink-0 overflow-visible">
                   {selectedBuddy ? <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={104} /> : <span className="block h-[104px] w-[104px]" aria-hidden="true" />}
                 </div>
                 <div className="min-w-0 flex-1">
+                  <h2 className="text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Invite Bible Buddies</h2>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+                    Invite friends to Bible Buddy and earn XP points and diamonds.
+                  </p>
                   <p className="text-sm font-bold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
                     For every person you get to sign up, you earn 250 XP points and 250 diamonds.
                   </p>
@@ -4068,41 +4065,21 @@ export default function DashboardJourneyExperience({
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid gap-2">
                     <button
                       type="button"
                       onClick={copyInviteLink}
-                      className="rounded-2xl bg-[var(--bb-accent,#2f7fe8)] px-3 py-3 text-center text-sm font-black text-white shadow-sm transition hover:opacity-90"
+                      className="rounded-[22px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-4 text-center text-base font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_rgba(0,0,0,0.16)] transition hover:brightness-95 active:scale-[0.98]"
                     >
                       {shareCopied ? "Link Copied" : "Copy Invite Link"}
                     </button>
                     <button
                       type="button"
                       onClick={openNativeShare}
-                      className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                      className="rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-3.5 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)] active:scale-[0.98]"
                     >
-                      Send to Anyone
+                      Send
                     </button>
-                    <a
-                      href={`https://wa.me/?text=${encodedShareMessage}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-2xl border border-[#bce8cf] bg-[#effff5] px-3 py-3 text-center text-sm font-black text-[#137a3a] transition hover:bg-white"
-                    >
-                      WhatsApp
-                    </a>
-                    <a
-                      href={`sms:?&body=${encodedShareMessage}`}
-                      className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-card,#ffffff)]"
-                    >
-                      SMS
-                    </a>
-                    <a
-                      href={`mailto:?subject=Join me on Bible Buddy&body=${encodedShareMessage}`}
-                      className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-card,#ffffff)]"
-                    >
-                      Email
-                    </a>
                   </div>
 
                   <div className="grid grid-cols-3 gap-2">
