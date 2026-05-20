@@ -7002,6 +7002,42 @@ export default function DashboardPage() {
             animation: none !important;
           }
         }
+        @media (max-width: 480px) {
+          .bb-deep-study-entry {
+            grid-template-columns: 82px 1fr 38px !important;
+            gap: 10px !important;
+            border-radius: 22px !important;
+            padding: 12px !important;
+          }
+          .bb-deep-study-bible {
+            height: 76px !important;
+            border-radius: 18px !important;
+          }
+          .bb-deep-study-bible-emoji {
+            font-size: 54px !important;
+          }
+          .bb-deep-study-book {
+            width: 62px !important;
+            height: 38px !important;
+          }
+          .bb-deep-study-smoke {
+            bottom: 28px !important;
+            height: 30px !important;
+          }
+          .bb-deep-study-smoke-one { left: 18px !important; }
+          .bb-deep-study-smoke-two { right: 16px !important; }
+          .bb-deep-study-portal {
+            height: 38px !important;
+            width: 38px !important;
+            font-size: 17px !important;
+          }
+          .bb-deep-study-entry [class*="tracking-[0.2em]"] {
+            margin-top: 8px !important;
+            padding: 7px 12px !important;
+            font-size: 10px !important;
+            letter-spacing: 0.14em !important;
+          }
+        }
         html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card {
           border-color: color-mix(in srgb, var(--bb-accent) 42%, transparent) !important;
           background: color-mix(in srgb, var(--bb-card) 84%, transparent) !important;
