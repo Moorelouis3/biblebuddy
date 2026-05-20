@@ -2294,7 +2294,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         >
           <BrowserTtsButton
             text={chapterSpeechText}
-            label={`Listen to ${bookDisplayName} ${chapter}`}
+            label={`Listen to KJV ${bookDisplayName} ${chapter}`}
             audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
           />
           {sections.map((section) => (
@@ -2987,7 +2987,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         >
           <BrowserTtsButton
             text={chapterSpeechText}
-            label={`Listen to ${bookDisplayName} ${chapter}`}
+            label={`Listen to KJV ${bookDisplayName} ${chapter}`}
             audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
           />
           {sections.map((section) => (

@@ -938,7 +938,7 @@ Be accurate to Scripture.`;
           >
             <BrowserTtsButton
               text={chapterSpeechText}
-              label={`Listen to ${bookDisplayName} ${chapter}`}
+              label={`Listen to KJV ${bookDisplayName} ${chapter}`}
               audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
             />
             {enrichedContent ? (

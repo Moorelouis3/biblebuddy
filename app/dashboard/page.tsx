@@ -7227,6 +7227,23 @@ export default function DashboardPage() {
             radial-gradient(circle at 50% 58%, color-mix(in srgb, var(--bb-accent) 34%, transparent), transparent 66%);
           opacity: 0.98;
         }
+        .bb-deep-study-bible::before {
+          content: "";
+          position: absolute;
+          z-index: 0;
+          width: 102px;
+          height: 64px;
+          border-radius: 14px 14px 12px 12px;
+          background:
+            linear-gradient(90deg, transparent calc(50% - 1px), color-mix(in srgb, var(--bb-accent) 38%, rgba(71,45,26,0.46)) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+            repeating-linear-gradient(180deg, rgba(65,43,28,0.14) 0 1px, transparent 1px 7px),
+            linear-gradient(100deg, rgba(255,255,255,0.96), color-mix(in srgb, var(--bb-accent-soft) 30%, rgba(255,255,255,0.84)));
+          box-shadow:
+            0 0 18px color-mix(in srgb, var(--bb-accent) 52%, transparent),
+            inset 0 -10px 16px rgba(91,33,182,0.16);
+          opacity: 0.82;
+          transform: perspective(120px) rotateX(12deg);
+        }
         .bb-deep-study-bible-emoji {
           display: none;
         }
@@ -7238,6 +7255,9 @@ export default function DashboardPage() {
           max-width: 100%;
           object-fit: contain;
           filter: drop-shadow(0 0 18px color-mix(in srgb, var(--bb-accent) 62%, transparent));
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          opacity: 1;
         }
         .bb-deep-study-book {
           position: relative;
@@ -7393,6 +7413,10 @@ export default function DashboardPage() {
           .bb-deep-study-bible {
             min-height: 82px !important;
           }
+          .bb-deep-study-bible::before {
+            width: 86px !important;
+            height: 54px !important;
+          }
           .bb-deep-study-bible-emoji {
             font-size: 72px !important;
           }
@@ -7487,7 +7511,7 @@ export default function DashboardPage() {
         >
           <span className="bb-deep-study-glow" aria-hidden="true" />
           <span className="bb-deep-study-bible" aria-hidden="true">
-            <img src="/openbible.png" alt="" className="bb-deep-study-bible-image" draggable={false} />
+            <img src="/openbible.png" alt="" className="bb-deep-study-bible-image" draggable={false} decoding="async" fetchPriority="high" />
             <span className="bb-deep-study-smoke bb-deep-study-smoke-one" />
             <span className="bb-deep-study-smoke bb-deep-study-smoke-two" />
             <span className="bb-deep-study-spark bb-deep-study-spark-one" />

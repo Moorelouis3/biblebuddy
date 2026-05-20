@@ -8,6 +8,7 @@ type BrowserTtsButtonProps = {
   label?: string;
   className?: string;
   audioSrc?: string | null;
+  progressKey?: string;
 };
 
 function chunkSpeechText(text: string) {
@@ -37,6 +38,7 @@ export default function BrowserTtsButton({
   label = "Listen",
   className = "",
   audioSrc,
+  progressKey,
 }: BrowserTtsButtonProps) {
   const [supported, setSupported] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -48,12 +50,33 @@ export default function BrowserTtsButton({
   const indexRef = useRef(0);
   const ownsSpeechRef = useRef(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const audioObjectUrlRef = useRef<string | null>(null);
+  const lastSavedAudioSecondRef = useRef(-1);
+  const audioStorageKey = useMemo(() => {
+    if (!audioSrc) return null;
+    return progressKey || `bb:tts-progress:${audioSrc}`;
+  }, [audioSrc, progressKey]);
+  const [savedPosition, setSavedPosition] = useState(0);
   const canUseAudioSrc = Boolean(audioSrc);
 
   useEffect(() => {
     setSupported(typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window);
   }, []);
+
+  useEffect(() => {
+    if (!audioStorageKey || typeof window === "undefined") {
+      setSavedPosition(0);
+      return;
+    }
+
+    try {
+      const stored = window.localStorage.getItem(audioStorageKey);
+      const parsed = stored ? JSON.parse(stored) : null;
+      const position = Number(parsed?.position || 0);
+      setSavedPosition(Number.isFinite(position) && position > 2 ? position : 0);
+    } catch {
+      setSavedPosition(0);
+    }
+  }, [audioStorageKey]);
 
   useEffect(() => {
     chunksRef.current = chunks;
@@ -62,15 +85,41 @@ export default function BrowserTtsButton({
         window.speechSynthesis.cancel();
       }
       if (audioRef.current) {
+        saveAudioProgress(audioRef.current, { updateState: false });
         audioRef.current.pause();
         audioRef.current = null;
       }
-      if (audioObjectUrlRef.current) {
-        URL.revokeObjectURL(audioObjectUrlRef.current);
-        audioObjectUrlRef.current = null;
-      }
     };
   }, [chunks]);
+
+  function formatTime(totalSeconds: number) {
+    const seconds = Math.max(0, Math.floor(totalSeconds));
+    const minutes = Math.floor(seconds / 60);
+    const remainder = seconds % 60;
+    return `${minutes}:${String(remainder).padStart(2, "0")}`;
+  }
+
+  function saveAudioProgress(audio: HTMLAudioElement | null, options: { updateState?: boolean } = {}) {
+    const updateState = options.updateState !== false;
+    if (!audioStorageKey || typeof window === "undefined" || !audio) return;
+    const position = audio.currentTime || 0;
+    const duration = audio.duration || 0;
+    if (position > 2 && (!duration || duration - position > 4)) {
+      window.localStorage.setItem(audioStorageKey, JSON.stringify({ position, savedAt: Date.now() }));
+      if (updateState) setSavedPosition(position);
+      return;
+    }
+
+    window.localStorage.removeItem(audioStorageKey);
+    if (updateState) setSavedPosition(0);
+  }
+
+  function clearAudioProgress() {
+    if (audioStorageKey && typeof window !== "undefined") {
+      window.localStorage.removeItem(audioStorageKey);
+    }
+    setSavedPosition(0);
+  }
 
   function stopSpeech() {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
@@ -86,10 +135,7 @@ export default function BrowserTtsButton({
     audioRef.current.pause();
     audioRef.current.currentTime = 0;
     audioRef.current = null;
-    if (audioObjectUrlRef.current) {
-      URL.revokeObjectURL(audioObjectUrlRef.current);
-      audioObjectUrlRef.current = null;
-    }
+    clearAudioProgress();
     setSpeaking(false);
     setPaused(false);
     setLoading(false);
@@ -149,6 +195,7 @@ export default function BrowserTtsButton({
     setAudioError(false);
 
     if (speaking && !paused) {
+      saveAudioProgress(audioRef.current);
       audioRef.current?.pause();
       setPaused(true);
       return;
@@ -167,43 +214,40 @@ export default function BrowserTtsButton({
     setLoading(true);
 
     try {
-      if (audioObjectUrlRef.current) {
-        URL.revokeObjectURL(audioObjectUrlRef.current);
-        audioObjectUrlRef.current = null;
-      }
+      const audio = new Audio(audioSrc);
+      audio.preload = "auto";
+      audioRef.current = audio;
+      audio.onloadedmetadata = () => {
+        if (savedPosition > 2 && savedPosition < (audio.duration || Number.POSITIVE_INFINITY) - 4) {
+          audio.currentTime = savedPosition;
+        }
+      };
+      audio.ontimeupdate = () => {
+        const currentSecond = Math.floor(audio.currentTime);
+        if (currentSecond > 0 && currentSecond % 5 === 0 && currentSecond !== lastSavedAudioSecondRef.current) {
+          lastSavedAudioSecondRef.current = currentSecond;
+          saveAudioProgress(audio);
+        }
+      };
+      audio.onpause = () => {
+        saveAudioProgress(audio);
+      };
+      audio.onended = () => {
+        clearAudioProgress();
+        setSpeaking(false);
+        setPaused(false);
+        audioRef.current = null;
+      };
+      audio.onerror = () => {
+        setSpeaking(false);
+        setPaused(false);
+        setLoading(false);
+        setAudioError(true);
+        audioRef.current = null;
+      };
 
-      const response = await fetch(audioSrc, { cache: "no-store" });
-      if (!response.ok) throw new Error("Audio request failed.");
-      const blob = await response.blob();
-      const objectUrl = URL.createObjectURL(blob);
-      audioObjectUrlRef.current = objectUrl;
-
-      const audio = new Audio(objectUrl);
-    audioRef.current = audio;
-    audio.onended = () => {
-      setSpeaking(false);
+      setSpeaking(true);
       setPaused(false);
-      audioRef.current = null;
-      if (audioObjectUrlRef.current) {
-        URL.revokeObjectURL(audioObjectUrlRef.current);
-        audioObjectUrlRef.current = null;
-      }
-    };
-    audio.onerror = () => {
-      setSpeaking(false);
-      setPaused(false);
-      setLoading(false);
-      setAudioError(true);
-      audioRef.current = null;
-      if (audioObjectUrlRef.current) {
-        URL.revokeObjectURL(audioObjectUrlRef.current);
-        audioObjectUrlRef.current = null;
-      }
-    };
-
-    setSpeaking(true);
-    setPaused(false);
-
       await audio.play();
       setLoading(false);
     } catch {
@@ -212,10 +256,6 @@ export default function BrowserTtsButton({
       setLoading(false);
       setAudioError(true);
       audioRef.current = null;
-      if (audioObjectUrlRef.current) {
-        URL.revokeObjectURL(audioObjectUrlRef.current);
-        audioObjectUrlRef.current = null;
-      }
     }
   }
 
@@ -243,8 +283,11 @@ export default function BrowserTtsButton({
               aria-hidden="true"
             />
           )}
-          <span>{loading ? "Loading" : speaking && !paused ? "Pause" : paused ? "Resume" : "Play"}</span>
+          <span>{loading ? "Loading" : speaking && !paused ? "Pause" : paused || savedPosition > 2 ? "Resume" : "Play"}</span>
         </button>
+        {!speaking && savedPosition > 2 ? (
+          <p className="px-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">Saved at {formatTime(savedPosition)}</p>
+        ) : null}
         {audioError ? <p className="px-1 text-xs font-bold text-red-600">Audio unavailable. Try again.</p> : null}
       </div>
       {speaking ? (
