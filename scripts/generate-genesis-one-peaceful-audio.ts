@@ -246,8 +246,7 @@ async function getGenesisVersesText(chapter: number, supabase: NonNullable<Retur
   return cleanTextForTts(
     verses
       .map((verse: any) => {
-        const number = verse?.verse ?? verse?.num ?? verse?.number;
-        return `${number ? `${number}. ` : ""}${verse?.text || ""}`;
+        return verse?.text || "";
       })
       .join(" "),
   );
@@ -263,15 +262,14 @@ function getGenesisThreeIntroText() {
 }
 
 async function getGenesisSpeechText(kind: GenesisOneTtsKind, supabase: NonNullable<ReturnType<typeof createGenesisOneTtsAdminClient>>) {
+  if (kind === "verses") return getGenesisVersesText(GENESIS_CHAPTER, supabase);
   if (GENESIS_CHAPTER === 1) return getGenesisOneSpeechText(kind, supabase);
   if (GENESIS_CHAPTER === 2) {
     if (kind === "intro") return getGenesisIntroText(2, supabase);
-    if (kind === "verses") return getGenesisVersesText(2, supabase);
     return cleanTextForTts(GENESIS_TWO_OFFICIAL_NOTES);
   }
   if (GENESIS_CHAPTER === 3) {
     if (kind === "intro") return getGenesisThreeIntroText();
-    if (kind === "verses") return getGenesisVersesText(3, supabase);
     return cleanTextForTts(GENESIS_THREE_OFFICIAL_NOTES);
   }
 
