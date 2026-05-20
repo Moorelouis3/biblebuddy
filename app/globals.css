@@ -37,21 +37,19 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-bible-study-card {
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header {
-  background: transparent !important;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--bb-background) 10%, transparent), transparent 78%),
+    var(--bb-skin-bg-image) !important;
+  background-attachment: fixed !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
   border-color: transparent !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
 }
 
-html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-hero-card {
-  position: relative;
-  overflow: visible;
-  border-color: transparent !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-}
-
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-hero-card,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feature-card {
   position: relative;
   overflow: hidden;
@@ -66,6 +64,23 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feature-card {
   backdrop-filter: blur(18px);
 }
 
+html[data-bb-skin="ruby-village"] .bb-community-header {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+html[data-bb-skin="ruby-village"] .bb-community-hero-card {
+  position: relative;
+  overflow: visible;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-hero-card::before,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feature-card::before {
   content: "";
   position: absolute;
@@ -77,12 +92,13 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feature-card::before
   opacity: 0.72;
 }
 
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-hero-card > *,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feature-card > * {
   position: relative;
   z-index: 1;
 }
 
-html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-hero-card::before {
+html[data-bb-skin="ruby-village"] .bb-community-hero-card::before {
   display: none !important;
 }
 
@@ -188,7 +204,7 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="text-g
     background-position: center top !important;
   }
 
-  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header {
+  html[data-bb-skin="ruby-village"] .bb-community-header {
     background: transparent !important;
   }
 
