@@ -883,6 +883,16 @@ html[data-bb-skin="angel-wings"] body {
   color: var(--bb-text-primary);
 }
 
+html[data-bb-skin]:not([data-bb-skin="none"]) body,
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-page,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-bible-studies-page {
+  background-attachment: fixed !important;
+  background-position: center top !important;
+}
+
 html[data-bb-skin="angel-wings"] body::before,
 html[data-bb-skin="angel-wings"] body::after {
   content: "";

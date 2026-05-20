@@ -9074,6 +9074,12 @@ export default function DashboardPage() {
             z-index: 1;
           }
         }
+        html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell,
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage,
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage {
+          background-attachment: fixed !important;
+          background-position: center top !important;
+        }
         html[data-bb-skin="blue-storm"] .dashboard-shell,
         html[data-bb-skin="midnight-garden"] .dashboard-shell,
         html[data-bb-skin="lavender-prayer"] .dashboard-shell,
