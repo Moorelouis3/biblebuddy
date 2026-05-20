@@ -1,14 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { createHash } from "crypto";
 import { GENESIS_ONE_OFFICIAL_NOTES } from "@/lib/genesisOneOfficialNotes";
 import type { GenesisOneTtsKind } from "@/lib/genesisOneTts";
+import { cleanTextForTts } from "@/lib/ttsSpeechText";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const BUCKET = "tts-audio";
-const CACHE_VERSION = "v2";
+const CACHE_VERSION = "v3";
 const VOICE = "onyx";
 const KINDS: GenesisOneTtsKind[] = ["intro", "verses", "notes"];
 type SupabaseAdmin = any;
@@ -27,19 +29,15 @@ function audioResponse(bytes: ArrayBuffer | Buffer, source: "cache" | "generated
     status: 200,
     headers: {
       "Content-Type": "audio/mpeg",
-      "Cache-Control": "public, max-age=31536000, immutable",
+      "Cache-Control": "no-store",
       "X-Bible-Buddy-TTS": source,
+      "X-Bible-Buddy-TTS-Provider": "openai",
     },
   });
 }
 
-function cleanForSpeech(input: string) {
-  return input
-    .replace(/<[^>]+>/g, " ")
-    .replace(/```[\s\S]*?```/g, " ")
-    .replace(/[#*_>`~[\]()]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+function speechTextHash(text: string) {
+  return createHash("sha256").update(text).digest("hex").slice(0, 16);
 }
 
 function normalizeBookKey(book: string | null | undefined) {
@@ -79,7 +77,7 @@ async function getIntroText(supabase: SupabaseAdmin) {
     throw new Error("The Creation of the World Genesis 1 intro text was not found.");
   }
 
-  return cleanForSpeech(`${row.day_title || "Genesis 1 Introduction"}. ${row.devotional_text}`);
+  return cleanTextForTts(`${row.day_title || "Genesis 1 Introduction"}. ${row.devotional_text}`);
 }
 
 async function getVersesText(supabase: SupabaseAdmin) {
@@ -96,7 +94,7 @@ async function getVersesText(supabase: SupabaseAdmin) {
     throw new Error("Genesis 1 chapter text was not found.");
   }
 
-  return cleanForSpeech(
+  return cleanTextForTts(
     verses
       .map((verse: any) => {
         const number = verse?.verse ?? verse?.num ?? verse?.number;
@@ -107,7 +105,7 @@ async function getVersesText(supabase: SupabaseAdmin) {
 }
 
 async function getNotesText() {
-  return cleanForSpeech(GENESIS_ONE_OFFICIAL_NOTES);
+  return cleanTextForTts(GENESIS_ONE_OFFICIAL_NOTES);
 }
 
 async function getSpeechText(kind: GenesisOneTtsKind, supabase: SupabaseAdmin) {
@@ -198,14 +196,14 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Supabase admin client is not configured." }, { status: 500 });
   }
 
-  const path = `genesis/1/${kind}-${VOICE}-${CACHE_VERSION}.mp3`;
-  const cached = await downloadCachedAudio(supabase, path);
-  if (cached) {
-    return audioResponse(cached, "cache");
-  }
-
   try {
     const text = await getSpeechText(kind, supabase);
+    const path = `genesis/1/${kind}-${VOICE}-${CACHE_VERSION}-${speechTextHash(text)}.mp3`;
+    const cached = await downloadCachedAudio(supabase, path);
+    if (cached) {
+      return audioResponse(cached, "cache");
+    }
+
     const audio = await generateOpenAiSpeech(text);
     await uploadCachedAudio(supabase, path, audio).catch((error) => {
       console.warn("[GENESIS_ONE_TTS] Could not cache generated audio:", error);

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { cleanTextForTts } from "@/lib/ttsSpeechText";
 
 type BrowserTtsButtonProps = {
   text: string | null | undefined;
@@ -9,18 +10,8 @@ type BrowserTtsButtonProps = {
   audioSrc?: string | null;
 };
 
-function cleanSpeechText(input: string) {
-  return input
-    .replace(/<[^>]+>/g, " ")
-    .replace(/```[\s\S]*?```/g, " ")
-    .replace(/[#*_>`~[\]()]/g, " ")
-    .replace(/!\s*/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
 function chunkSpeechText(text: string) {
-  const cleaned = cleanSpeechText(text);
+  const cleaned = cleanTextForTts(text);
   if (!cleaned) return [];
 
   const sentences = cleaned.match(/[^.!?]+[.!?]*/g) || [cleaned];

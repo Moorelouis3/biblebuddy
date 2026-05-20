@@ -18,5 +18,5 @@ export function getGenesisOneTtsSrc(
   chapter: number | string | null | undefined,
 ) {
   if (!isGenesisOne(book, chapter)) return null;
-  return `/api/tts/genesis-one?kind=${kind}`;
+  return `/api/tts/genesis-one?kind=${kind}&v=tts-clean-v3`;
 }
