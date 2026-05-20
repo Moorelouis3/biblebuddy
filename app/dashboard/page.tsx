@@ -234,7 +234,7 @@ type SkinAppliedCongrats = {
 };
 
 type StorePromoKind = "buddies" | "diamonds";
-type DailyPopupStep = "streak" | "share_howto" | "mystery" | "invite_howto" | "store_buddies" | "bible_tip" | "store_diamonds";
+type DailyPopupStep = "streak" | "share_howto" | "mystery" | "invite_howto" | "store_buddies" | "bible_tip" | "store_diamonds" | "upgrade";
 type DeepStudyModeState = "idle" | "setup" | "active" | "complete" | "results" | "info";
 
 type DeepStudyActiveSession = {
@@ -257,7 +257,7 @@ type DeepStudyActiveSession = {
 
 type DashboardLouisNudge = {
   id: string;
-  category?: "progress" | "discovery" | "habit" | "bible_fact" | "share";
+  category?: "progress" | "discovery" | "habit" | "bible_fact" | "share" | "upgrade";
   eyebrow: string;
   title: string;
   lineOne: string;
@@ -1227,7 +1227,7 @@ export default function DashboardPage() {
   }
 
   function getDailyPopupStep(index: number): DailyPopupStep {
-    const steps: DailyPopupStep[] = ["streak", "share_howto", "mystery", "invite_howto", "store_buddies", "bible_tip", "store_diamonds"];
+    const steps: DailyPopupStep[] = ["streak", "share_howto", "mystery", "upgrade", "invite_howto", "store_buddies", "bible_tip", "store_diamonds"];
     return steps[Math.abs(index) % steps.length];
   }
 
@@ -1586,6 +1586,34 @@ export default function DashboardPage() {
     }
 
     return pool;
+  }
+
+  function pickUpgradePopupNudge(): DashboardLouisNudge {
+    const upgradeNudges: DashboardLouisNudge[] = [
+      {
+        id: "upgrade-unlimited-study",
+        category: "upgrade",
+        eyebrow: "Upgrade Bible Buddy",
+        title: "Unlock the full study flow",
+        lineOne: "Pro gives you more room to study without the free limits slowing your momentum.",
+        lineTwo: "Open more chapters, keep moving through tasks, and make Bible Buddy feel like your daily study home.",
+        buttonText: "See Pro",
+        action: "route",
+        href: "/upgrade",
+      },
+      {
+        id: "upgrade-deeper-habit",
+        category: "upgrade",
+        eyebrow: "Go Pro",
+        title: "Build a deeper Bible habit",
+        lineOne: "If Bible Buddy is helping you stay consistent, Pro is the best way to keep that rhythm going.",
+        lineTwo: "Unlock the premium study experience, support the app, and remove more friction from your Bible time.",
+        buttonText: "View Upgrade",
+        action: "route",
+        href: "/upgrade",
+      },
+    ];
+    return upgradeNudges[Math.floor(Math.random() * upgradeNudges.length)] ?? upgradeNudges[0];
   }
 
   function pickDashboardLouisNudge(currentUserId: string, dayKey: string) {
@@ -5631,6 +5659,20 @@ export default function DashboardPage() {
         return true;
       }
 
+      if (dailyPopupStep === "upgrade") {
+        const isFreeUserForUpgradePopup = membershipStatus !== "pro" && profile?.is_paid !== true;
+        if (!isFreeUserForUpgradePopup && !isOwnerDashboard) {
+          markDailyPopupShown();
+          return true;
+        }
+        setStreakMotivationModalMode("checkin");
+        setShowStreakMotivationTaskPrompt(false);
+        setLouisDashboardNudge(pickUpgradePopupNudge());
+        setShowStreakMotivationModal(true);
+        markDailyPopupShown();
+        return true;
+      }
+
       if (dailyPopupStep === "share_howto" || dailyPopupStep === "invite_howto") {
         const sharePopupId = dailyPopupStep === "share_howto" ? "how-to-share-bible-buddy" : "how-to-invite-bible-buddies";
         const selectedTip = buildDashboardLouisNudgePool().find((item) => item.id === sharePopupId) ?? pickDashboardLouisNudge(currentUserId, dayKey);
@@ -5761,6 +5803,8 @@ export default function DashboardPage() {
     showStreakBadgeModal,
     showVerseOfTheDayModal,
     showZorianRestorationModal,
+    isOwnerDashboard,
+    membershipStatus,
     userId,
     userName,
   ]);
@@ -6659,6 +6703,15 @@ export default function DashboardPage() {
         badge: "bg-[#eaf5ff] text-[#155e91] border-[#bfe1f7]",
         tile: "bg-[#eaf5ff]",
         button: "bg-[#2f7fe8] text-white hover:bg-[#256fd1]",
+      };
+    }
+    if (category === "upgrade") {
+      return {
+        icon: "ðŸ’Ž",
+        glow: "from-[#fff7ed] via-white to-[#eef4ff]",
+        badge: "bg-[#fff4d8] text-[#8a4b00] border-[#f2d38a]",
+        tile: "bg-[#fff4d8]",
+        button: "bg-[#f5a524] text-[#1f2a44] hover:bg-[#e99918]",
       };
     }
     if (category === "progress") {
