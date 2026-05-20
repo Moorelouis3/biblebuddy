@@ -221,6 +221,10 @@ type StorePurchaseCongrats = {
   item: BibleBuddyStoreItem;
 };
 
+type StorePurchaseConfirm = {
+  item: BibleBuddyStoreItem;
+};
+
 type SkinApplyPrompt = {
   item: BibleBuddyStoreItem;
 };
@@ -1112,6 +1116,7 @@ export default function DashboardPage() {
   const [storeLoading, setStoreLoading] = useState(false);
   const [storeBuyingId, setStoreBuyingId] = useState<string | null>(null);
   const [storeMessage, setStoreMessage] = useState<string | null>(null);
+  const [storePurchaseConfirm, setStorePurchaseConfirm] = useState<StorePurchaseConfirm | null>(null);
   const [storePurchaseCongrats, setStorePurchaseCongrats] = useState<StorePurchaseCongrats | null>(null);
   const [skinApplyPrompt, setSkinApplyPrompt] = useState<SkinApplyPrompt | null>(null);
   const [skinAppliedCongrats, setSkinAppliedCongrats] = useState<SkinAppliedCongrats | null>(null);
@@ -4507,7 +4512,7 @@ export default function DashboardPage() {
     });
   }
 
-  async function handleStorePurchase(item: BibleBuddyStoreItem) {
+  async function handleStorePurchase(item: BibleBuddyStoreItem, confirmed = false) {
     if (!userId) {
       setStoreMessage("Sign in first so BibleBuddy can save what you buy.");
       return;
@@ -4536,6 +4541,14 @@ export default function DashboardPage() {
       return;
     }
 
+    if (!confirmed) {
+      setStoreMessage(null);
+      setStorePurchaseCongrats(null);
+      setStorePurchaseConfirm({ item });
+      return;
+    }
+
+    setStorePurchaseConfirm(null);
     setStoreBuyingId(item.id);
     setStoreMessage(null);
 
@@ -9411,6 +9424,62 @@ export default function DashboardPage() {
       </ModalShell>
 
       <ModalShell
+        isOpen={Boolean(storePurchaseConfirm)}
+        onClose={() => setStorePurchaseConfirm(null)}
+        backdropColor="bg-black/45"
+      >
+        {storePurchaseConfirm ? (
+          <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
+            <div className="relative overflow-hidden px-6 pb-7 pt-6 text-center">
+              <div
+                className="absolute inset-x-0 top-0 h-28"
+                style={{ background: `linear-gradient(135deg, ${storePurchaseConfirm.item.accent}28, transparent)` }}
+                aria-hidden="true"
+              />
+              <div className="relative mx-auto grid h-20 w-20 place-items-center overflow-hidden rounded-[24px] bg-[var(--bb-surface-soft,#f8fbff)] text-4xl shadow-sm">
+                {storePurchaseConfirm.item.imageSrc ? (
+                  <span
+                    className="h-full w-full bg-cover bg-center"
+                    style={{ backgroundImage: `url(${storePurchaseConfirm.item.imageSrc})` }}
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <span aria-hidden="true">{storePurchaseConfirm.item.emoji}</span>
+                )}
+              </div>
+              <p className="relative mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2563eb)]">Confirm purchase</p>
+              <h2 className="relative mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
+                Buy {storePurchaseConfirm.item.title}?
+              </h2>
+              <p className="relative mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
+                Are you sure you want to spend {storePurchaseConfirm.item.price.toLocaleString()} diamonds on {storePurchaseConfirm.item.title}?
+              </p>
+              <div className="relative mt-5 rounded-2xl border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#21304f)]">
+                BUY {storePurchaseConfirm.item.price.toLocaleString()} diamonds
+              </div>
+              <div className="relative mt-6 grid gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => setStorePurchaseConfirm(null)}
+                  className="rounded-full border border-[var(--bb-card-border,#d7e4f7)] bg-white px-6 py-3 text-sm font-black text-[var(--bb-text-primary,#21304f)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                >
+                  No, back to store
+                </button>
+                <button
+                  type="button"
+                  onClick={() => void handleStorePurchase(storePurchaseConfirm.item, true)}
+                  disabled={storeBuyingId === storePurchaseConfirm.item.id}
+                  className="rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:opacity-60"
+                >
+                  {storeBuyingId === storePurchaseConfirm.item.id ? "Buying..." : "Yes, buy it"}
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </ModalShell>
+
+      <ModalShell
         isOpen={Boolean(skinApplyPrompt)}
         onClose={() => setSkinApplyPrompt(null)}
         backdropColor="bg-black/50"
@@ -9526,9 +9595,10 @@ export default function DashboardPage() {
                 Purchase complete
               </p>
               <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
-                Congrats on {storePurchaseCongrats.item.title}
+                Congratulations on your purchase!
               </h2>
               <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
+                You bought {storePurchaseCongrats.item.title}.{" "}
                 {storePurchaseCongrats.item.kind === "buddy"
                   ? getBuddyPurchasePopupBody(purchasedBuddyId)
                   : storePurchaseCongrats.item.themeId || storePurchaseCongrats.item.skinId || storePurchaseCongrats.item.flameId
