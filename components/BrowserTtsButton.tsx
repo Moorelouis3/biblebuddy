@@ -7,7 +7,6 @@ type BrowserTtsButtonProps = {
   label?: string;
   className?: string;
   audioSrc?: string | null;
-  audioDisclosure?: string;
 };
 
 function cleanSpeechText(input: string) {
@@ -47,26 +46,20 @@ export default function BrowserTtsButton({
   label = "Listen",
   className = "",
   audioSrc,
-  audioDisclosure = "AI-generated voice",
 }: BrowserTtsButtonProps) {
   const [supported, setSupported] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [paused, setPaused] = useState(false);
-  const [audioFailed, setAudioFailed] = useState(false);
   const chunks = useMemo(() => chunkSpeechText(text || ""), [text]);
   const chunksRef = useRef<string[]>([]);
   const indexRef = useRef(0);
   const ownsSpeechRef = useRef(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const canUseAudioSrc = Boolean(audioSrc && !audioFailed);
+  const canUseAudioSrc = Boolean(audioSrc);
 
   useEffect(() => {
     setSupported(typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window);
   }, []);
-
-  useEffect(() => {
-    setAudioFailed(false);
-  }, [audioSrc]);
 
   useEffect(() => {
     chunksRef.current = chunks;
@@ -175,7 +168,6 @@ export default function BrowserTtsButton({
       audioRef.current = null;
     };
     audio.onerror = () => {
-      setAudioFailed(true);
       setSpeaking(false);
       setPaused(false);
       audioRef.current = null;
@@ -187,7 +179,6 @@ export default function BrowserTtsButton({
     try {
       await audio.play();
     } catch {
-      setAudioFailed(true);
       setSpeaking(false);
       setPaused(false);
       audioRef.current = null;
@@ -203,16 +194,20 @@ export default function BrowserTtsButton({
           type="button"
           onClick={canUseAudioSrc ? toggleAudio : toggleSpeech}
           className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[var(--bb-button,#2563eb)] px-4 py-2 text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95"
-          aria-label={speaking && !paused ? "Pause audio" : "Play audio"}
+          aria-label={speaking && !paused ? `Pause ${label}` : `Play ${label}`}
         >
-          <span className="text-sm leading-none">{speaking && !paused ? "II" : "Play"}</span>
-          <span>{speaking && !paused ? "Pause" : paused ? "Resume" : label}</span>
+          {speaking && !paused ? (
+            <span className="text-sm leading-none" aria-hidden="true">
+              II
+            </span>
+          ) : (
+            <span
+              className="h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-current"
+              aria-hidden="true"
+            />
+          )}
+          <span>{speaking && !paused ? "Pause" : paused ? "Resume" : "Play"}</span>
         </button>
-        {canUseAudioSrc ? (
-          <span className="px-2 text-[10px] font-bold uppercase tracking-wide text-[var(--bb-text-secondary,#64748b)]">
-            {audioDisclosure}
-          </span>
-        ) : null}
       </div>
       {speaking ? (
         <button
