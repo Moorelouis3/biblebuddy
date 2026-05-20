@@ -7,6 +7,7 @@ import { PostSuccessEffect } from "@/components/PostSuccessEffect";
 import { AppToast } from "@/components/AppToast";
 import { PointsPop } from "@/components/PointsPop";
 import GlobalCreditFeedback from "@/components/GlobalCreditFeedback";
+import { GlobalAudioPlayerProvider } from "@/components/GlobalAudioPlayer";
 import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
 import { PREMIUM_SKINS } from "@/lib/premiumSkins";
 import { FLAME_COSMETIC_BY_ID, PREMIUM_SKIN_FLAME_BY_ID } from "@/lib/flameCosmetics";
@@ -187,7 +188,9 @@ export default function RootLayout({
         {/* Responsive bottom padding for banner - applied to main content */}
         <div className="flex flex-col min-h-screen w-full">
           <div className="flex-1 w-full">
-            <AppShell>{children}</AppShell>
+            <GlobalAudioPlayerProvider>
+              <AppShell>{children}</AppShell>
+            </GlobalAudioPlayerProvider>
           </div>
         </div>
         <SmokeDeleteEffect />

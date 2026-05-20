@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import BibleReadingModal from "@/components/BibleReadingModal";
@@ -262,6 +262,8 @@ export default function ProverbsStudyDayPage() {
   const [showNotes, setShowNotes] = useState(false);
   const [notesText, setNotesText] = useState("");
   const [notesLoading, setNotesLoading] = useState(false);
+  const notesScrollRef = useRef<HTMLDivElement | null>(null);
+  const notesContentRef = useRef<HTMLDivElement | null>(null);
   const [showTrivia, setShowTrivia] = useState(false);
   const [finishers, setFinishers] = useState<Finisher[]>([]);
   const [breakdown, setBreakdown] = useState<Breakdown>({ intro: [], reading: [], notes: [], trivia: [], reflection: [] });
@@ -276,6 +278,19 @@ export default function ProverbsStudyDayPage() {
   const bookKey = day ? normalizeBookKey(day.bible_reading_book) : "";
   const triviaBook = useMemo(() => (bookKey ? getTriviaBook(bookKey) : null), [bookKey]);
   const triviaChapter = useMemo(() => (day && bookKey ? getTriviaChapter(bookKey, day.bible_reading_chapter) : null), [bookKey, day]);
+
+  function handleNotesAudioProgress(state: { currentTime: number; duration: number; playing: boolean }) {
+    if (!state.playing || state.duration <= 0) return;
+    const scrollContainer = notesScrollRef.current;
+    const notesContent = notesContentRef.current;
+    if (!scrollContainer || !notesContent) return;
+
+    const maxScroll = Math.max(0, notesContent.offsetHeight - scrollContainer.clientHeight + 24);
+    if (maxScroll <= 0) return;
+
+    const progress = Math.min(1, Math.max(0, state.currentTime / state.duration));
+    scrollContainer.scrollTo({ top: Math.round(maxScroll * progress), behavior: "smooth" });
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -1022,15 +1037,18 @@ export default function ProverbsStudyDayPage() {
             </div>
             <button type="button" onClick={() => setShowNotes(false)} className="text-2xl font-bold text-gray-500">x</button>
           </div>
-          <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
+          <div ref={notesScrollRef} className="max-h-[75vh] overflow-y-auto px-6 py-5">
             {notesLoading ? <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p> : (
               <>
                 <BrowserTtsButton
                   text={notesText}
                   label="Listen to chapter notes"
                   audioSrc={getGenesisOneTtsSrc("notes", day.bible_reading_book, day.bible_reading_chapter)}
+                  onAudioProgress={handleNotesAudioProgress}
                 />
-                <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
+                <div ref={notesContentRef}>
+                  <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
+                </div>
               </>
             )}
           </div>

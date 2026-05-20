@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cleanTextForTts } from "@/lib/ttsSpeechText";
+import { useGlobalAudioPlayer } from "./GlobalAudioPlayer";
 
 type BrowserTtsButtonProps = {
   text: string | null | undefined;
@@ -9,6 +10,7 @@ type BrowserTtsButtonProps = {
   className?: string;
   audioSrc?: string | null;
   progressKey?: string;
+  onAudioProgress?: (state: { currentTime: number; duration: number; playing: boolean }) => void;
 };
 
 function chunkSpeechText(text: string) {
@@ -39,12 +41,14 @@ export default function BrowserTtsButton({
   className = "",
   audioSrc,
   progressKey,
+  onAudioProgress,
 }: BrowserTtsButtonProps) {
   const [supported, setSupported] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [paused, setPaused] = useState(false);
   const [loading, setLoading] = useState(false);
   const [audioError, setAudioError] = useState(false);
+  const globalAudio = useGlobalAudioPlayer();
   const chunks = useMemo(() => chunkSpeechText(text || ""), [text]);
   const chunksRef = useRef<string[]>([]);
   const indexRef = useRef(0);
@@ -57,6 +61,11 @@ export default function BrowserTtsButton({
   }, [audioSrc, progressKey]);
   const [savedPosition, setSavedPosition] = useState(0);
   const canUseAudioSrc = Boolean(audioSrc);
+  const isGlobalTrack = Boolean(audioSrc && globalAudio?.currentSrc === audioSrc);
+  const audioIsLoading = isGlobalTrack ? globalAudio?.loading === true : loading;
+  const audioIsSpeaking = isGlobalTrack ? globalAudio?.playing === true : speaking;
+  const audioIsPaused = isGlobalTrack ? globalAudio?.paused === true : paused;
+  const audioHasError = isGlobalTrack ? globalAudio?.error === true : audioError;
 
   useEffect(() => {
     setSupported(typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window);
@@ -114,11 +123,31 @@ export default function BrowserTtsButton({
     if (updateState) setSavedPosition(0);
   }
 
+  function notifyAudioProgress(audio: HTMLAudioElement | null, playing: boolean) {
+    if (!audio || !onAudioProgress) return;
+    onAudioProgress({
+      currentTime: audio.currentTime || 0,
+      duration: Number.isFinite(audio.duration) ? audio.duration : 0,
+      playing,
+    });
+  }
+
   function clearAudioProgress() {
     if (audioStorageKey && typeof window !== "undefined") {
       window.localStorage.removeItem(audioStorageKey);
     }
     setSavedPosition(0);
+  }
+
+  function applySavedAudioProgress(audio: HTMLAudioElement) {
+    const audioDuration = Number.isFinite(audio.duration) ? audio.duration : 0;
+    if (savedPosition > 2 && (!audioDuration || savedPosition < audioDuration - 4)) {
+      try {
+        audio.currentTime = savedPosition;
+      } catch {
+        // Mobile browsers can delay seeking until the file can play; later events retry this.
+      }
+    }
   }
 
   function stopSpeech() {
@@ -194,14 +223,28 @@ export default function BrowserTtsButton({
     if (!audioSrc || typeof window === "undefined" || loading) return;
     setAudioError(false);
 
+    if (globalAudio) {
+      await globalAudio.playTrack({
+        src: audioSrc,
+        label,
+        progressKey,
+        onProgress: onAudioProgress,
+      });
+      return;
+    }
+
     if (speaking && !paused) {
       saveAudioProgress(audioRef.current);
+      notifyAudioProgress(audioRef.current, false);
       audioRef.current?.pause();
       setPaused(true);
       return;
     }
 
     if (speaking && paused) {
+      if (audioRef.current) {
+        applySavedAudioProgress(audioRef.current);
+      }
       await audioRef.current?.play();
       setPaused(false);
       return;
@@ -218,11 +261,15 @@ export default function BrowserTtsButton({
       audio.preload = "auto";
       audioRef.current = audio;
       audio.onloadedmetadata = () => {
-        if (savedPosition > 2 && savedPosition < (audio.duration || Number.POSITIVE_INFINITY) - 4) {
-          audio.currentTime = savedPosition;
-        }
+        applySavedAudioProgress(audio);
+        notifyAudioProgress(audio, true);
+      };
+      audio.oncanplay = () => {
+        applySavedAudioProgress(audio);
+        notifyAudioProgress(audio, true);
       };
       audio.ontimeupdate = () => {
+        notifyAudioProgress(audio, true);
         const currentSecond = Math.floor(audio.currentTime);
         if (currentSecond > 0 && currentSecond % 5 === 0 && currentSecond !== lastSavedAudioSecondRef.current) {
           lastSavedAudioSecondRef.current = currentSecond;
@@ -231,8 +278,10 @@ export default function BrowserTtsButton({
       };
       audio.onpause = () => {
         saveAudioProgress(audio);
+        notifyAudioProgress(audio, false);
       };
       audio.onended = () => {
+        notifyAudioProgress(audio, false);
         clearAudioProgress();
         setSpeaking(false);
         setPaused(false);
@@ -248,6 +297,7 @@ export default function BrowserTtsButton({
 
       setSpeaking(true);
       setPaused(false);
+      applySavedAudioProgress(audio);
       await audio.play();
       setLoading(false);
     } catch {
@@ -267,13 +317,13 @@ export default function BrowserTtsButton({
         <button
           type="button"
           onClick={canUseAudioSrc ? toggleAudio : toggleSpeech}
-          disabled={loading}
+          disabled={audioIsLoading}
           className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[var(--bb-button,#2563eb)] px-4 py-2 text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95"
-          aria-label={speaking && !paused ? `Pause ${label}` : `Play ${label}`}
+          aria-label={audioIsSpeaking && !audioIsPaused ? `Pause ${label}` : `Play ${label}`}
         >
-          {loading ? (
+          {audioIsLoading ? (
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
-          ) : speaking && !paused ? (
+          ) : audioIsSpeaking && !audioIsPaused ? (
             <span className="text-sm leading-none" aria-hidden="true">
               II
             </span>
@@ -283,14 +333,14 @@ export default function BrowserTtsButton({
               aria-hidden="true"
             />
           )}
-          <span>{loading ? "Loading" : speaking && !paused ? "Pause" : paused || savedPosition > 2 ? "Resume" : "Play"}</span>
+          <span>{audioIsLoading ? "Loading" : audioIsSpeaking && !audioIsPaused ? "Pause" : audioIsPaused || savedPosition > 2 ? "Resume" : "Play"}</span>
         </button>
-        {!speaking && savedPosition > 2 ? (
+        {!audioIsSpeaking && savedPosition > 2 ? (
           <p className="px-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">Saved at {formatTime(savedPosition)}</p>
         ) : null}
-        {audioError ? <p className="px-1 text-xs font-bold text-red-600">Audio unavailable. Try again.</p> : null}
+        {audioHasError ? <p className="px-1 text-xs font-bold text-red-600">Audio unavailable. Try again.</p> : null}
       </div>
-      {speaking ? (
+      {audioIsSpeaking && !globalAudio ? (
         <button
           type="button"
           onClick={canUseAudioSrc ? stopAudio : stopSpeech}

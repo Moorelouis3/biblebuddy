@@ -18,6 +18,7 @@ import { getTriviaChapter } from "../lib/triviaGameData";
 import { getScrambledChapter } from "../lib/scrambledGameData";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
+import { GENESIS_CREATION_KJV_VERSES } from "../lib/creationOfWorldDeepNotes";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -169,6 +170,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
         .join(" "),
     [sections],
   );
+  const isGenesisOneStudyReading = bookDisplayName.toLowerCase() === "genesis" && Number(chapter) === 1;
 
   useEffect(() => {
     async function loadUserAndProgress() {
@@ -288,6 +290,44 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
         // Normalize book name
         const bookParam = book.toLowerCase().trim();
         const bookDisplay = normalizeBookDisplay(book);
+        const isGenesisOne = bookParam === "genesis" && Number(chapter) === 1;
+        if (isGenesisOne) {
+          const genesisOneVerses = GENESIS_CREATION_KJV_VERSES[1].map((verse) => ({
+            verse: verse.verse,
+            text: verse.text,
+          }));
+          setSections(convertToSections(genesisOneVerses, bookDisplay));
+          setLoading(false);
+
+          void (async () => {
+            try {
+              const { data } = await supabase
+                .from("bible_chapters")
+                .select("enriched_content")
+                .eq("book", bookParam)
+                .eq("chapter", chapter)
+                .maybeSingle();
+
+              if (data?.enriched_content) {
+                setEnrichedContent(data.enriched_content);
+                return;
+              }
+
+              const enriched = await enrichBibleVerses(genesisOneVerses);
+              setEnrichedContent(enriched);
+              await supabase
+                .from("bible_chapters")
+                .update({ enriched_content: enriched })
+                .eq("book", bookParam)
+                .eq("chapter", chapter);
+            } catch (error) {
+              console.error("[BIBLE_READING_MODAL] Genesis 1 enrichment failed:", error);
+            }
+          })();
+
+          loadingRef.current = false;
+          return;
+        }
 
         // Step A: Check Supabase table bible_chapters FIRST
         let supabaseData: any = null;
@@ -936,11 +976,13 @@ Be accurate to Scripture.`;
               isInline ? "overflow-visible" : "max-h-[60vh] overflow-y-auto"
             }`}
           >
-            <BrowserTtsButton
-              text={chapterSpeechText}
-              label={`Listen to KJV ${bookDisplayName} ${chapter}`}
-              audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
-            />
+            {isGenesisOneStudyReading ? (
+              <BrowserTtsButton
+                text={chapterSpeechText}
+                label={`Listen to KJV ${bookDisplayName} ${chapter}`}
+                audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
+              />
+            ) : null}
             {enrichedContent ? (
               // Use pre-rendered enriched content if available
               <div 
