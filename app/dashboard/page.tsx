@@ -9167,7 +9167,7 @@ export default function DashboardPage() {
           background-image: var(--bb-skin-bg-image), linear-gradient(var(--bb-background), var(--bb-background)) !important;
           background-attachment: fixed, fixed !important;
           background-position: center top, center top !important;
-          background-repeat: repeat, repeat !important;
+          background-repeat: no-repeat, repeat !important;
           background-size: auto, auto !important;
         }
         html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell,
@@ -9189,6 +9189,28 @@ export default function DashboardPage() {
           animation: none !important;
           opacity: 0 !important;
           content: none !important;
+        }
+        @media (min-width: 1024px) {
+          html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) body {
+            background-color: var(--bb-background) !important;
+            background-image: linear-gradient(var(--bb-background), var(--bb-background)) !important;
+            background-attachment: fixed !important;
+            background-position: center top !important;
+            background-repeat: repeat !important;
+            background-size: auto !important;
+          }
+          html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell {
+            background: transparent !important;
+            background-image: none !important;
+          }
+          html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage {
+            background-color: var(--bb-background) !important;
+            background-image: var(--bb-skin-bg-image), linear-gradient(var(--bb-background), var(--bb-background)) !important;
+            background-attachment: fixed, scroll !important;
+            background-position: center top, center top !important;
+            background-repeat: no-repeat, repeat !important;
+            background-size: auto, auto !important;
+          }
         }
         @keyframes dashboard-inline-task-slide {
           from { opacity: 0; transform: translateY(-8px); }
