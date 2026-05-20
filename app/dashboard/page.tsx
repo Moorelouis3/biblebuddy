@@ -2563,6 +2563,7 @@ export default function DashboardPage() {
           .skin-world-ruby-village { --premium-aura: #FF735F; }
           .skin-world-slow-mornings { --premium-aura: #F5B25B; }
           .skin-world-morning-mercy { --premium-aura: #E99265; }
+          .skin-world-carolina-coastline { --premium-aura: #7BAFD4; }
           @keyframes premium-stat-drift {
             from { transform: translate3d(-2%, -1%, 0) rotate(0deg); opacity: 0.52; }
             to { transform: translate3d(2%, 1%, 0) rotate(4deg); opacity: 0.82; }
@@ -3102,6 +3103,8 @@ export default function DashboardPage() {
                 ? ["Rain", "Coffee", "Candlelight"]
                 : item.skinId === "morning-mercy"
                   ? ["Sunrise", "Flowers", "Peace"]
+                  : item.skinId === "carolina-coastline"
+                    ? ["Lighthouse", "Waves", "Mist"]
                 : ["Storm", "Glow", "Mist"];
       const skinMotionClass =
         item.skinId === "midnight-garden"
@@ -3114,9 +3117,11 @@ export default function DashboardPage() {
                 ? "bb-store-skin-card--mornings"
                 : item.skinId === "morning-mercy"
                   ? "bb-store-skin-card--mercy"
+                  : item.skinId === "carolina-coastline"
+                    ? "bb-store-skin-card--coastline"
                 : "bb-store-skin-card--storm";
       const skinBadge =
-        item.skinId === "slow-mornings" || item.skinId === "morning-mercy"
+        item.skinId === "slow-mornings" || item.skinId === "morning-mercy" || item.skinId === "carolina-coastline"
           ? "New"
           : item.skinId === "ruby-village"
             ? "Popular"
@@ -3156,6 +3161,8 @@ export default function DashboardPage() {
                         ? "radial-gradient(circle at 56% 14%, rgba(255,210,138,0.28), transparent 30%), radial-gradient(circle at 18% 40%, rgba(245,178,91,0.18), transparent 28%), linear-gradient(135deg,rgba(62,38,24,0.14),rgba(22,13,8,0.76))"
                         : item.skinId === "morning-mercy"
                           ? "radial-gradient(circle at 54% 12%, rgba(255,230,164,0.34), transparent 30%), radial-gradient(circle at 18% 38%, rgba(255,178,150,0.2), transparent 28%), linear-gradient(135deg,rgba(255,238,219,0.1),rgba(97,49,32,0.62))"
+                          : item.skinId === "carolina-coastline"
+                            ? "radial-gradient(circle at 54% 12%, rgba(220,243,255,0.3), transparent 30%), radial-gradient(circle at 18% 38%, rgba(123,175,212,0.22), transparent 28%), linear-gradient(135deg,rgba(7,24,43,0.16),rgba(4,14,27,0.76))"
                       : "radial-gradient(circle at 18% 12%,rgba(93,214,255,0.34),transparent 34%),linear-gradient(135deg,rgba(9,24,52,0.2),rgba(4,11,24,0.78))",
             }}
           />
@@ -3173,6 +3180,8 @@ export default function DashboardPage() {
                         ? "rgba(245,178,91,0.26)"
                         : item.skinId === "morning-mercy"
                           ? "rgba(244,179,95,0.26)"
+                          : item.skinId === "carolina-coastline"
+                            ? "rgba(123,175,212,0.26)"
                       : "rgba(125,211,252,0.25)",
             }}
           />
@@ -3301,6 +3310,8 @@ export default function DashboardPage() {
           .bb-store-skin-card--mornings .bb-store-skin-motion-b { background: rgba(245, 178, 91, 0.48); }
           .bb-store-skin-card--mercy .bb-store-skin-motion-a,
           .bb-store-skin-card--mercy .bb-store-skin-motion-b { background: rgba(244, 179, 95, 0.46); }
+          .bb-store-skin-card--coastline .bb-store-skin-motion-a,
+          .bb-store-skin-card--coastline .bb-store-skin-motion-b { background: rgba(123, 175, 212, 0.5); }
           .bb-store-skin-card--storm::before {
             background:
               linear-gradient(115deg, transparent 0 44%, rgba(210, 246, 255, 0.92) 45%, rgba(93, 214, 255, 0.2) 46%, transparent 49%),
@@ -3349,6 +3360,20 @@ export default function DashboardPage() {
             background-size: 150px 190px, 100% 100%;
             filter: blur(2px);
             animation: bb-store-skin-drift 8.5s ease-in-out infinite alternate;
+          }
+          .bb-store-skin-card--coastline::before {
+            background:
+              radial-gradient(circle at 58% 14%, rgba(220, 243, 255, 0.28), transparent 22%),
+              linear-gradient(105deg, transparent 0%, rgba(166, 216, 244, 0.16) 48%, transparent 78%);
+            animation: bb-store-lantern-flicker 5.8s ease-in-out infinite;
+          }
+          .bb-store-skin-card--coastline::after {
+            background:
+              repeating-linear-gradient(104deg, rgba(200, 230, 247, 0.1) 0 1px, transparent 1px 34px),
+              linear-gradient(115deg, transparent 0%, rgba(166, 216, 244, 0.16) 46%, transparent 76%);
+            background-size: 220px 280px, 100% 100%;
+            filter: blur(2.5px);
+            animation: bb-store-skin-drift 9s ease-in-out infinite alternate;
           }
         `}</style>
         <div className="overflow-hidden rounded-[28px] border border-rose-100 bg-[linear-gradient(135deg,rgba(255,231,231,0.9),rgba(255,246,246,0.72))] p-4 shadow-[0_18px_42px_rgba(153,27,27,0.08)]">
@@ -8159,6 +8184,26 @@ export default function DashboardPage() {
         html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::before {
           animation: bb-dashboard-mercy-sunrise 17s ease-in-out infinite alternate !important;
         }
+        html[data-bb-skin="carolina-coastline"] .dashboard-shell::after,
+        html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage::after {
+          background:
+            repeating-linear-gradient(104deg, rgba(200, 230, 247, 0.08) 0 1px, transparent 1px 34px),
+            radial-gradient(circle at 18% 24%, rgba(123, 175, 212, 0.16), transparent 34%),
+            linear-gradient(115deg, transparent 0%, rgba(166, 216, 244, 0.12) 48%, transparent 76%) !important;
+          background-size: 220px 280px, 100% 100%, 100% 100%;
+          filter: blur(1.4px);
+          opacity: 0.68;
+          animation: bb-dashboard-carolina-mist 20s ease-in-out infinite alternate !important;
+        }
+        html[data-bb-skin="carolina-coastline"] .dashboard-shell::before,
+        html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage::before {
+          background:
+            radial-gradient(circle at 52% 8%, rgba(220, 243, 255, 0.24), transparent 18%),
+            radial-gradient(circle at 70% 26%, rgba(123, 175, 212, 0.16), transparent 26%),
+            linear-gradient(90deg, transparent 0%, rgba(166, 216, 244, 0.1) 48%, transparent 76%) !important;
+          mix-blend-mode: screen;
+          animation: bb-dashboard-carolina-light 18s ease-in-out infinite alternate !important;
+        }
         @keyframes bb-dashboard-storm-rain {
           from { background-position: 0 -180px, 0 -260px, 0 0, 0 0; transform: translate3d(-1%, -1%, 0); }
           to { background-position: -120px 360px, -180px 520px, 0 0, 0 0; transform: translate3d(1%, 1%, 0); }
@@ -8209,6 +8254,14 @@ export default function DashboardPage() {
           from { transform: translate3d(-0.8%, 0, 0) scale(1); opacity: 0.42; filter: brightness(1); }
           to { transform: translate3d(0.8%, -0.5%, 0) scale(1.025); opacity: 0.74; filter: brightness(1.06); }
         }
+        @keyframes bb-dashboard-carolina-mist {
+          from { background-position: 0 -80px, 0 0, 0 0; transform: translate3d(-0.8%, 0.4%, 0); }
+          to { background-position: -90px 220px, 0 0, 0 0; transform: translate3d(0.8%, -0.8%, 0); }
+        }
+        @keyframes bb-dashboard-carolina-light {
+          from { transform: translate3d(-0.8%, 0, 0) scale(1); opacity: 0.36; filter: brightness(1); }
+          to { transform: translate3d(0.8%, -0.5%, 0) scale(1.02); opacity: 0.68; filter: brightness(1.08); }
+        }
         html[data-bb-perf-reduce="true"] .dashboard-shell::before,
         html[data-bb-perf-reduce="true"] .dashboard-shell::after,
         html[data-bb-perf-reduce="true"] .bb-blue-storm-stage::before,
@@ -8221,7 +8274,8 @@ export default function DashboardPage() {
           html[data-bb-skin="lavender-prayer"] .dashboard-shell,
           html[data-bb-skin="ruby-village"] .dashboard-shell,
           html[data-bb-skin="slow-mornings"] .dashboard-shell,
-          html[data-bb-skin="morning-mercy"] .dashboard-shell {
+          html[data-bb-skin="morning-mercy"] .dashboard-shell,
+          html[data-bb-skin="carolina-coastline"] .dashboard-shell {
             background: transparent !important;
             background-color: transparent !important;
           }
@@ -8230,7 +8284,8 @@ export default function DashboardPage() {
           html[data-bb-skin="lavender-prayer"] .bb-blue-storm-mobile-stage,
           html[data-bb-skin="ruby-village"] .bb-blue-storm-mobile-stage,
           html[data-bb-skin="slow-mornings"] .bb-blue-storm-mobile-stage,
-          html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage {
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage,
+          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-mobile-stage {
             margin-top: 0 !important;
             padding-top: 8px !important;
             background: transparent !important;
@@ -8254,7 +8309,9 @@ export default function DashboardPage() {
           html[data-bb-skin="slow-mornings"] .bb-blue-storm-mobile-stage::before,
           html[data-bb-skin="slow-mornings"] .bb-blue-storm-mobile-stage::after,
           html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage::before,
-          html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage::after {
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage::after,
+          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-mobile-stage::before,
+          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-mobile-stage::after {
             display: none !important;
           }
         }
@@ -8295,6 +8352,12 @@ export default function DashboardPage() {
               linear-gradient(90deg, #fff0dc 0%, #ffe7d3 28%, #ffe7d3 72%, #fff0dc 100%),
               #fff3e3 !important;
           }
+          html[data-bb-skin="carolina-coastline"] .dashboard-shell {
+            background:
+              radial-gradient(circle at 50% -10%, rgba(123, 175, 212, 0.22), transparent 28%),
+              linear-gradient(90deg, #03101d 0%, #061a30 28%, #061a30 72%, #03101d 100%),
+              #04111f !important;
+          }
           html[data-bb-skin="blue-storm"] .dashboard-shell::before,
           html[data-bb-skin="blue-storm"] .dashboard-shell::after,
           html[data-bb-skin="midnight-garden"] .dashboard-shell::before,
@@ -8310,7 +8373,9 @@ export default function DashboardPage() {
             display: none;
           }
           html[data-bb-skin="morning-mercy"] .dashboard-shell::before,
-          html[data-bb-skin="morning-mercy"] .dashboard-shell::after {
+          html[data-bb-skin="morning-mercy"] .dashboard-shell::after,
+          html[data-bb-skin="carolina-coastline"] .dashboard-shell::before,
+          html[data-bb-skin="carolina-coastline"] .dashboard-shell::after {
             display: none;
           }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-desktop-layout {
@@ -8449,6 +8514,28 @@ export default function DashboardPage() {
               0 0 34px rgba(233, 146, 101, 0.16),
               inset 0 0 48px rgba(255, 230, 164, 0.1);
           }
+          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage {
+            min-height: calc(100vh - 84px);
+            overflow: hidden;
+            border-radius: 38px;
+            border: 1px solid rgba(123, 175, 212, 0.34);
+            background:
+              radial-gradient(circle at 52% 8%, rgba(220, 243, 255, 0.22), transparent 20%),
+              radial-gradient(ellipse at 50% 86%, rgba(56, 129, 177, 0.34), transparent 44%),
+              linear-gradient(180deg, rgba(4, 17, 31, 0.01) 0%, rgba(6, 21, 39, 0.08) 42%, rgba(4, 13, 24, 0.72) 100%),
+              var(--bb-skin-bg-image-desktop),
+              #04111f;
+            background-position: center top;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            box-shadow:
+              0 -12px 44px rgba(166, 216, 244, 0.14),
+              0 18px 54px rgba(0, 8, 20, 0.62),
+              -34px 0 48px rgba(0, 8, 20, 0.66),
+              34px 0 48px rgba(0, 8, 20, 0.66),
+              0 0 34px rgba(123, 175, 212, 0.16),
+              inset 0 0 48px rgba(166, 216, 244, 0.08);
+          }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage > div:first-child {
             padding-top: 0;
           }
@@ -8569,6 +8656,32 @@ export default function DashboardPage() {
             opacity: 0.66;
             animation: bb-dashboard-mercy-petals 18s ease-in-out infinite alternate;
           }
+          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage::before,
+          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+          }
+          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage::before {
+            background:
+              radial-gradient(circle at 52% 8%, rgba(220, 243, 255, 0.3), transparent 18%),
+              radial-gradient(circle at 70% 26%, rgba(123, 175, 212, 0.18), transparent 26%),
+              linear-gradient(90deg, transparent 0%, rgba(166, 216, 244, 0.1) 48%, transparent 76%);
+            mix-blend-mode: screen;
+            animation: bb-dashboard-carolina-light 18s ease-in-out infinite alternate;
+          }
+          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage::after {
+            background:
+              repeating-linear-gradient(104deg, rgba(200, 230, 247, 0.08) 0 1px, transparent 1px 34px),
+              radial-gradient(circle at 14% 18%, rgba(123, 175, 212, 0.1), transparent 32%),
+              linear-gradient(115deg, transparent 0%, rgba(166, 216, 244, 0.1) 48%, transparent 76%);
+            background-size: 220px 280px, 100% 100%, 100% 100%;
+            filter: blur(1.4px);
+            opacity: 0.72;
+            animation: bb-dashboard-carolina-mist 20s ease-in-out infinite alternate;
+          }
           html[data-bb-skin="blue-storm"] .bb-blue-storm-stage > *,
           html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage > *,
           html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage > *,
@@ -8584,6 +8697,10 @@ export default function DashboardPage() {
             position: relative;
             z-index: 1;
           }
+          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage > * {
+            position: relative;
+            z-index: 1;
+          }
         }
         html[data-bb-skin="blue-storm"] .dashboard-shell,
         html[data-bb-skin="midnight-garden"] .dashboard-shell,
@@ -8596,7 +8713,9 @@ export default function DashboardPage() {
         html[data-bb-skin="slow-mornings"] .dashboard-shell,
         html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage,
         html[data-bb-skin="morning-mercy"] .dashboard-shell,
-        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage {
+        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage,
+        html[data-bb-skin="carolina-coastline"] .dashboard-shell,
+        html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage {
           overflow: visible !important;
         }
         @media (max-width: 1023px) {
@@ -8619,7 +8738,9 @@ export default function DashboardPage() {
           html[data-bb-skin="slow-mornings"] .dashboard-shell,
           html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage,
           html[data-bb-skin="morning-mercy"] .dashboard-shell,
-          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage {
+          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage,
+          html[data-bb-skin="carolina-coastline"] .dashboard-shell,
+          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage {
             isolation: auto !important;
             box-shadow: none !important;
             backdrop-filter: none !important;

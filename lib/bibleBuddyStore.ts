@@ -1,6 +1,6 @@
 import type { AppThemeId } from "./appThemes";
 import type { FlameCosmeticId } from "./flameCosmetics";
-import { BLUE_STORM_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, MORNING_MERCY_SKIN, RUBY_VILLAGE_SKIN, SLOW_MORNINGS_SKIN, type PremiumSkinId } from "./premiumSkins";
+import { BLUE_STORM_SKIN, CAROLINA_COASTLINE_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, MORNING_MERCY_SKIN, RUBY_VILLAGE_SKIN, SLOW_MORNINGS_SKIN, type PremiumSkinId } from "./premiumSkins";
 
 export type StoreItemKind = "theme" | "premium_skin" | "streak_flame" | "buddy" | "boost" | "mystery";
 
@@ -98,6 +98,17 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     accent: MORNING_MERCY_SKIN.palette.accent,
     imageSrc: MORNING_MERCY_SKIN.thumbnailImage,
     skinId: MORNING_MERCY_SKIN.id,
+  },
+  {
+    id: "skin-carolina-coastline",
+    kind: "premium_skin",
+    title: CAROLINA_COASTLINE_SKIN.name,
+    subtitle: CAROLINA_COASTLINE_SKIN.storeSubtitle,
+    price: CAROLINA_COASTLINE_SKIN.price,
+    emoji: "Lighthouse",
+    accent: CAROLINA_COASTLINE_SKIN.palette.accent,
+    imageSrc: CAROLINA_COASTLINE_SKIN.thumbnailImage,
+    skinId: CAROLINA_COASTLINE_SKIN.id,
   },
 ];
 

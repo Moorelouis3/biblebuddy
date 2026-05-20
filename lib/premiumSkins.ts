@@ -1,4 +1,4 @@
-export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy";
+export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -228,6 +228,38 @@ export const MORNING_MERCY_SKIN: PremiumSkin = {
   },
 };
 
+export const CAROLINA_COASTLINE_SKIN: PremiumSkin = {
+  id: "carolina-coastline",
+  name: "Carolina Coastline",
+  label: "Premium Skin",
+  storeSubtitle: "A moody lighthouse coast atmosphere for steady, peaceful nighttime study.",
+  backgroundImage: "/skins/optimized/carolina-coastline-desktop.webp",
+  originalImage: "/skins/CarolinaCoastline.png",
+  thumbnailImage: "/skins/optimized/carolina-coastline-thumb.webp",
+  mobileBackgroundImage: "/skins/optimized/carolina-coastline-mobile.webp",
+  desktopBackgroundImage: "/skins/optimized/carolina-coastline-desktop.webp",
+  price: 1000,
+  palette: {
+    background: "#04111F",
+    surface: "rgba(7, 24, 43, 0.78)",
+    surfaceSoft: "rgba(56, 129, 177, 0.26)",
+    card: "rgba(6, 21, 39, 0.76)",
+    cardBorder: "rgba(123, 175, 212, 0.42)",
+    textPrimary: "#F3FAFF",
+    textSecondary: "#C8E6F7",
+    textMuted: "#8FB3CC",
+    accent: "#7BAFD4",
+    accentSoft: "rgba(123, 175, 212, 0.24)",
+    button: "#1D6692",
+    buttonText: "#F3FAFF",
+    navBackground: "rgba(5, 18, 34, 0.9)",
+    navActive: "#A6D8F4",
+    navInactive: "#9AB8CB",
+    progressTrack: "rgba(200, 230, 247, 0.18)",
+    progressFill: "#7BAFD4",
+  },
+};
+
 export const PREMIUM_SKINS: PremiumSkin[] = [
   BLUE_STORM_SKIN,
   MIDNIGHT_GARDEN_SKIN,
@@ -235,6 +267,7 @@ export const PREMIUM_SKINS: PremiumSkin[] = [
   RUBY_VILLAGE_SKIN,
   SLOW_MORNINGS_SKIN,
   MORNING_MERCY_SKIN,
+  CAROLINA_COASTLINE_SKIN,
 ];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
 
@@ -254,6 +287,8 @@ export function getPremiumSkinForLegacyTheme(value: unknown): PremiumSkinId {
   switch (String(value || "").toLowerCase()) {
     case "blue":
       return "blue-storm";
+    case "navy":
+      return "carolina-coastline";
     case "green":
     case "gold":
       return "midnight-garden";
@@ -278,6 +313,8 @@ export function getPremiumSkinForLegacyFlame(value: unknown): PremiumSkinId {
   switch (String(value || "").toLowerCase()) {
     case "blue":
       return "blue-storm";
+    case "navy":
+      return "carolina-coastline";
     case "green":
     case "gold":
       return "midnight-garden";
@@ -324,6 +361,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
             ? "rgba(245, 178, 91, 0.42)"
             : skin.id === "morning-mercy"
               ? "rgba(233, 146, 101, 0.42)"
+              : skin.id === "carolina-coastline"
+                ? "rgba(123, 175, 212, 0.42)"
           : "rgba(93, 214, 255, 0.42)",
   );
   root.style.setProperty(
@@ -338,6 +377,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
             ? "rgba(255, 210, 138, 0.36)"
             : skin.id === "morning-mercy"
               ? "rgba(244, 179, 95, 0.34)"
+              : skin.id === "carolina-coastline"
+                ? "rgba(166, 216, 244, 0.3)"
           : "rgba(93, 214, 255, 0.2)",
   );
 
