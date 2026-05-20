@@ -6769,6 +6769,7 @@ export default function DashboardPage() {
     const theme = skin?.palette ?? getAppTheme(summary.themeId);
     const accent = theme.accent;
     const darkAccent = darkenHexColor(accent, 0.34);
+    const displayMinutes = summary.shareDisplayMinutes ?? summary.activeMinutes;
 
     if (skin) {
       try {
@@ -6794,53 +6795,73 @@ export default function DashboardPage() {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    ctx.fillStyle = skin ? "rgba(5, 13, 25, 0.74)" : "rgba(255,255,255,0.88)";
-    roundRect(ctx, 88, 132, 904, 1445, 56);
+    const glow = ctx.createRadialGradient(540, 430, 80, 540, 430, 620);
+    glow.addColorStop(0, `${accent}66`);
+    glow.addColorStop(0.54, `${accent}20`);
+    glow.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = skin ? "rgba(4, 10, 22, 0.62)" : "rgba(255,255,255,0.78)";
+    roundRect(ctx, 82, 150, 916, 1398, 68);
     ctx.fill();
-    ctx.strokeStyle = skin ? theme.cardBorder : `${accent}55`;
-    ctx.lineWidth = 4;
+    ctx.strokeStyle = skin ? `${accent}AA` : `${accent}72`;
+    ctx.lineWidth = 5;
+    ctx.stroke();
+
+    ctx.fillStyle = `${accent}2D`;
+    roundRect(ctx, 135, 205, 810, 410, 46);
+    ctx.fill();
+    ctx.strokeStyle = `${accent}66`;
+    ctx.lineWidth = 3;
     ctx.stroke();
 
     ctx.fillStyle = skin ? theme.accent : darkAccent;
-    ctx.font = "900 46px Arial";
+    ctx.font = "900 34px Arial";
     ctx.textAlign = "center";
-    ctx.fillText("Bible Buddy Deep Study", 540, 280);
+    ctx.fillText("DEEP STUDY COMPLETE", 540, 300);
 
     ctx.fillStyle = theme.textPrimary;
-    ctx.font = "900 92px Arial";
-    ctx.fillText(`${summary.shareDisplayMinutes ?? summary.activeMinutes} Minutes`, 540, 430);
-    ctx.font = "700 42px Arial";
-    ctx.fillStyle = theme.textSecondary;
-    ctx.fillText("Focused in God's Word", 540, 502);
+    ctx.font = "900 72px Arial";
+    wrapCanvasText(ctx, "I just studied the Bible for", 540, 405, 780, 80);
+    ctx.font = "900 118px Arial";
+    ctx.fillText(`${displayMinutes} minute${displayMinutes === 1 ? "" : "s"}`, 540, 560);
 
     const rows = [
-      ["Chapters Studied", String(summary.chaptersStudied.length)],
-      ["Focus Score", `${summary.focusScore}%`],
-      ["Diamonds Earned", `+${summary.diamondsEarned}`],
-      ["Deep Study Streak", `${summary.streak} days`],
+      ["Focus score", `${summary.focusScore}%`],
+      ["Deep Study streak", `${summary.streak} day${summary.streak === 1 ? "" : "s"}`],
+      ["Tasks completed", String(summary.tasksCompleted)],
+      ["Diamonds earned", `+${summary.diamondsEarned}`],
     ];
     rows.forEach(([label, value], index) => {
-      const y = 650 + index * 150;
-      ctx.fillStyle = skin ? "rgba(255,255,255,0.1)" : `${accent}24`;
-      roundRect(ctx, 175, y, 730, 104, 28);
+      const x = index % 2 === 0 ? 135 : 555;
+      const y = 720 + Math.floor(index / 2) * 190;
+      ctx.fillStyle = skin ? "rgba(255,255,255,0.11)" : `${accent}22`;
+      roundRect(ctx, x, y, 390, 145, 34);
       ctx.fill();
       ctx.fillStyle = theme.textSecondary;
-      ctx.font = "800 32px Arial";
-      ctx.textAlign = "left";
-      ctx.fillText(label, 220, y + 64);
+      ctx.font = "800 26px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText(label.toUpperCase(), x + 195, y + 48);
       ctx.fillStyle = skin ? theme.textPrimary : darkAccent;
-      ctx.font = "900 42px Arial";
-      ctx.textAlign = "right";
-      ctx.fillText(value, 860, y + 66);
+      ctx.font = "900 46px Arial";
+      ctx.fillText(value, x + 195, y + 105);
     });
 
+    ctx.fillStyle = skin ? "rgba(255,255,255,0.1)" : `${accent}18`;
+    roundRect(ctx, 135, 1132, 810, 178, 42);
+    ctx.fill();
     ctx.textAlign = "center";
     ctx.fillStyle = theme.textPrimary;
-    ctx.font = "700 40px Arial";
-    ctx.fillText("Stay focused in God's Word.", 540, 1335);
+    ctx.font = "800 42px Arial";
+    wrapCanvasText(ctx, "Building a Bible habit one focused session at a time.", 540, 1210, 720, 52);
+
     ctx.fillStyle = skin ? theme.accent : darkAccent;
-    ctx.font = "900 38px Arial";
-    ctx.fillText("Bible Buddy", 540, 1450);
+    ctx.font = "900 42px Arial";
+    ctx.fillText("Start your own study rhythm", 540, 1418);
+    ctx.fillStyle = theme.textPrimary;
+    ctx.font = "900 54px Arial";
+    ctx.fillText("MyBibleBuddy.net", 540, 1492);
 
     return new Promise<Blob>((resolve, reject) => {
       canvas.toBlob((blob) => {
@@ -6867,6 +6888,22 @@ export default function DashboardPage() {
     ctx.arcTo(x, y + height, x, y, radius);
     ctx.arcTo(x, y, x + width, y, radius);
     ctx.closePath();
+  }
+
+  function wrapCanvasText(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, maxWidth: number, lineHeight: number) {
+    const words = text.split(" ");
+    let line = "";
+    words.forEach((word) => {
+      const testLine = line ? `${line} ${word}` : word;
+      if (ctx.measureText(testLine).width > maxWidth && line) {
+        ctx.fillText(line, x, y);
+        line = word;
+        y += lineHeight;
+      } else {
+        line = testLine;
+      }
+    });
+    if (line) ctx.fillText(line, x, y);
   }
 
   async function shareDeepStudyResults(summary: DeepStudySessionSummary, target: "share" | "save" = "share") {
@@ -7255,7 +7292,7 @@ export default function DashboardPage() {
         <button
           type="button"
           onClick={() => setDeepStudyMode((current) => current === "setup" ? "idle" : "setup")}
-          aria-expanded={deepStudyMode === "setup"}
+          aria-expanded={deepStudyMode === "setup" || deepStudyMode === "info"}
           className="bb-deep-study-entry group relative grid w-full grid-cols-[82px_1fr_42px] items-center gap-3 overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] px-3 py-3 text-left text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--bb-accent)_60%,transparent)] hover:brightness-110 active:translate-y-0 sm:grid-cols-[104px_1fr_48px] sm:px-4 sm:py-3.5"
         >
           <span className="bb-deep-study-glow" aria-hidden="true" />
@@ -7273,10 +7310,10 @@ export default function DashboardPage() {
             <span className="mt-0.5 block text-sm font-bold leading-5 text-[var(--bb-text-secondary)]">Quiet focus for Scripture.</span>
           </span>
           <span className="bb-deep-study-portal relative grid h-11 w-11 place-items-center justify-self-end rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_38%,transparent)] bg-[var(--bb-surface-soft)] text-xl font-black text-[var(--bb-text-primary)] shadow-[0_0_26px_color-mix(in_srgb,var(--bb-accent)_36%,transparent),inset_0_0_18px_rgba(255,255,255,0.1)] sm:h-14 sm:w-14">
-            <span className={`bb-deep-study-arrow transition-transform ${deepStudyMode === "setup" ? "rotate-90" : ""}`} aria-hidden="true" />
+            <span className={`bb-deep-study-arrow transition-transform ${deepStudyMode === "setup" || deepStudyMode === "info" ? "rotate-90" : ""}`} aria-hidden="true" />
           </span>
         </button>
-        {deepStudyMode === "setup" ? renderDeepStudySetup() : null}
+        {deepStudyMode === "setup" || deepStudyMode === "info" ? renderDeepStudySetup() : null}
         {renderDeepStudyCardStyles()}
       </>
     );
@@ -7308,14 +7345,50 @@ export default function DashboardPage() {
             Start
           </button>
         </div>
-        <div className="mt-3 rounded-[18px] bg-[var(--bb-surface-soft)] px-4 py-3 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">
-          <p>Earn {DEEP_STUDY_DIAMONDS_PER_MINUTE} diamonds per active focused minute.</p>
-          {!isDeepStudyPaidUser ? <p>Upgrade unlocks 10, 45, and 60 minute focus sessions.</p> : null}
-        </div>
-        <button type="button" onClick={() => setDeepStudyMode("info")} className="mt-3 text-xs font-black text-[var(--bb-accent)]">
-          How does Deep Study Mode work?
+        {!isDeepStudyPaidUser ? (
+          <div className="mt-3 rounded-[18px] bg-[var(--bb-surface-soft)] px-4 py-3 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">
+            <p>Upgrade unlocks 10, 45, and 60 minute focus sessions.</p>
+          </div>
+        ) : null}
+        <button type="button" onClick={() => setDeepStudyMode((current) => current === "info" ? "setup" : "info")} className="mt-3 text-xs font-black text-[var(--bb-accent)]">
+          View Deep Study History!
         </button>
+        {deepStudyMode === "info" ? renderDeepStudyHistoryInline() : null}
       </section>
+    );
+  }
+
+  function renderDeepStudyHistoryInline() {
+    const rank = getDeepStudyRank(deepStudyTodayStats.totalMinutes, deepStudyTodayStats.averageFocus, deepStudyStreak);
+    return (
+      <div className="mt-4 rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_26%,transparent)] bg-[color-mix(in_srgb,var(--bb-surface-soft)_74%,transparent)] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            ["Today", `${deepStudyTodayStats.totalMinutes}m`, `${deepStudyTodayStats.sessions} sessions`],
+            ["This Week", `${deepStudyWeekStats.totalMinutes}m`, `+${deepStudyWeekStats.diamondsEarned} diamonds`],
+            ["Streak", `${deepStudyStreak} days`, `${deepStudyMultiplier}x multiplier`],
+            ["Total Focus", `${deepStudyTotalMinutes}m`, rank],
+          ].map(([label, value, detail]) => (
+            <div key={label} className="rounded-[18px] bg-[color-mix(in_srgb,var(--bb-card)_76%,transparent)] p-3">
+              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted)]">{label}</p>
+              <p className="mt-1 text-lg font-black text-[var(--bb-text-primary)]">{value}</p>
+              <p className="mt-1 text-[11px] font-bold text-[var(--bb-text-secondary)]">{detail}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 text-sm font-black text-[var(--bb-text-primary)]">Recent Deep Study Sessions</p>
+        <div className="mt-3 space-y-2">
+          {deepStudyHistory.slice(0, 5).map((session) => (
+            <div key={session.id} className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-2 rounded-2xl bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] px-4 py-3 text-xs font-bold text-[var(--bb-text-secondary)]">
+              <span className="truncate text-[var(--bb-text-primary)]">{session.dayKey}</span>
+              <span>{session.activeMinutes}m</span>
+              <span>{session.focusScore}%</span>
+              <span>+{session.diamondsEarned}</span>
+            </div>
+          ))}
+          {!deepStudyHistory.length ? <p className="rounded-2xl bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] px-4 py-4 text-sm font-bold text-[var(--bb-text-muted)]">No Deep Study sessions yet.</p> : null}
+        </div>
+      </div>
     );
   }
 
@@ -7441,7 +7514,6 @@ export default function DashboardPage() {
     if (showBibleProgressPanel) return renderBibleProgressPanel();
     if (deepStudyMode === "complete") return renderDeepStudyComplete();
     if (deepStudyMode === "results") return renderDeepStudyResults();
-    if (deepStudyMode === "info") return renderDeepStudyInfo();
     return undefined;
   }
 
