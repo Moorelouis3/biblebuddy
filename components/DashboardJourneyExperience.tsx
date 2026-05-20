@@ -36,6 +36,10 @@ import {
   normalizeBuddyAvatarId,
   type BuddyAvatarId,
 } from "../lib/buddyAvatars";
+import {
+  GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
+  type GenesisBibleYearDay,
+} from "../lib/bibleInOneYearPlan";
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
@@ -1657,6 +1661,8 @@ export default function DashboardJourneyExperience({
   const [studyModeGateDismissed, setStudyModeGateDismissed] = useState(true);
   const [freeStudyModeActive, setFreeStudyModeActive] = useState(false);
   const [bibleYearDashboardActive, setBibleYearDashboardActive] = useState(false);
+  const [bibleYearSeriesActive, setBibleYearSeriesActive] = useState(false);
+  const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
 
   const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "share", "buddies", "tv", "games", "settings"] as const;
@@ -1729,7 +1735,9 @@ export default function DashboardJourneyExperience({
     { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
     { key: "settings", label: "Settings", icon: "\u2699", href: "#settings" },
   ];
-  const activeDashboardNavItem = bibleYearDashboardActive
+  const activeDashboardNavItem = bibleYearSeriesActive
+    ? { label: "Bible In One Year Series", icon: "📖" }
+    : bibleYearDashboardActive
     ? { label: "Bible In One Year", icon: "📖" }
     : dashboardNavItems[safeActivePage] ?? dashboardNavItems[0];
   const isPaidUser = profile?.is_paid === true || membershipStatus === "pro";
@@ -2250,7 +2258,7 @@ export default function DashboardJourneyExperience({
   }
 
   useEffect(() => {
-    if (!showDevotionalSettings && !embeddedBibleBookSearchOpen) return;
+    if (!showDevotionalSettings && !embeddedBibleBookSearchOpen && !bibleYearSeriesActive) return;
 
     let cancelled = false;
 
@@ -2295,7 +2303,7 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [showDevotionalSettings, embeddedBibleBookSearchOpen, currentDevotionalId]);
+  }, [showDevotionalSettings, embeddedBibleBookSearchOpen, bibleYearSeriesActive, currentDevotionalId]);
 
   async function handleSaveDevotionalSetting() {
     if (!userId || !selectedDevotionalId) return;
@@ -2853,33 +2861,36 @@ export default function DashboardJourneyExperience({
     }, 0);
   }
 
+  function clearBibleYearViews() {
+    setBibleYearDashboardActive(false);
+    setBibleYearSeriesActive(false);
+    setSelectedBibleYearSeriesDay(null);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("view");
+      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+  }
+
   function handleDashboardNavClick(index: number) {
-    if (bibleYearDashboardActive) {
-      setBibleYearDashboardActive(false);
-      if (typeof window !== "undefined") {
-        const url = new URL(window.location.href);
-        url.searchParams.delete("view");
-        window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
-      }
+    if (bibleYearDashboardActive || bibleYearSeriesActive) {
+      clearBibleYearViews();
     }
     if (index === 0) {
-      setBibleYearDashboardActive(false);
+      clearBibleYearViews();
       setFreeStudyModeActive(false);
       setEmbeddedBibleBookSearchOpen(false);
       setEmbeddedBibleSelectedBook(null);
       setEmbeddedBibleStudyId(null);
       onHomeReset?.();
-      if (typeof window !== "undefined") {
-        const url = new URL(window.location.href);
-        url.searchParams.delete("view");
-        window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
-      }
     }
     snapToPage(index);
   }
 
   function openBibleYearDashboard() {
     setBibleYearDashboardActive(true);
+    setBibleYearSeriesActive(false);
+    setSelectedBibleYearSeriesDay(null);
     setFreeStudyModeActive(false);
     setEmbeddedBibleBookSearchOpen(false);
     setEmbeddedBibleSelectedBook(null);
@@ -2894,11 +2905,32 @@ export default function DashboardJourneyExperience({
     }
   }
 
+  function openBibleYearSeriesDashboard() {
+    setBibleYearDashboardActive(false);
+    setBibleYearSeriesActive(true);
+    setSelectedBibleYearSeriesDay(null);
+    setFreeStudyModeActive(false);
+    setEmbeddedBibleBookSearchOpen(false);
+    setEmbeddedBibleSelectedBook(null);
+    setEmbeddedBibleStudyId(null);
+    setDashboardMenuOpen(false);
+    onHomeReset?.();
+    snapToPage(0);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", "bible-year-series");
+      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+  }
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     const view = new URLSearchParams(window.location.search).get("view");
     if (view === "bible-year") {
       setBibleYearDashboardActive(true);
+      setActivePage(0);
+    } else if (view === "bible-year-series") {
+      setBibleYearSeriesActive(true);
       setActivePage(0);
     }
   }, []);
@@ -2906,6 +2938,7 @@ export default function DashboardJourneyExperience({
   function openInvitePage() {
     const shareIndex = dashboardPageKeys.indexOf("share");
     if (shareIndex < 0) return;
+    clearBibleYearViews();
     setDashboardMenuOpen(false);
     snapToPage(shareIndex);
   }
@@ -2913,6 +2946,7 @@ export default function DashboardJourneyExperience({
   function openCommunityPage(targetHref?: string | null) {
     const groupIndex = dashboardPageKeys.indexOf("group");
     if (groupIndex < 0) return;
+    clearBibleYearViews();
     if (targetHref) setCommunityTargetHref(targetHref);
     setDashboardMenuOpen(false);
     snapToPage(groupIndex);
@@ -2921,11 +2955,13 @@ export default function DashboardJourneyExperience({
   function openSettingsPage() {
     const settingsIndex = dashboardPageKeys.indexOf("settings");
     if (settingsIndex < 0) return;
+    clearBibleYearViews();
     setDashboardMenuOpen(false);
     snapToPage(settingsIndex);
   }
 
   function openStorePanel() {
+    clearBibleYearViews();
     setDashboardMenuOpen(false);
     onOpenStore?.();
   }
@@ -4124,6 +4160,115 @@ export default function DashboardJourneyExperience({
     );
   };
 
+  async function startBibleYearSeriesReading(day: GenesisBibleYearDay, readingIndex = 0) {
+    const reading = day.readings[readingIndex] || day.readings[0];
+    if (!reading) return;
+
+    const devotional = devotionalOptions.find((option) => option.title === reading.studyTitle);
+    if (!devotional) {
+      setDevotionalSettingsMessage("This Genesis study is still loading. Try again in a moment.");
+      return;
+    }
+
+    if (!isPaidUser && !canFreeUserChooseNewStudy && devotional.id !== currentDevotionalId) {
+      setSelectedBibleYearSeriesDay(null);
+      setFreePlanGate({ kind: "study" });
+      return;
+    }
+
+    setSelectedBibleYearSeriesDay(null);
+    await loadEmbeddedBibleStudyChapter({
+      devotionalId: devotional.id,
+      devotionalTitle: devotional.title,
+      dayNumber: reading.studyDayNumber,
+      book: reading.book,
+      chapter: reading.chapter,
+    });
+  }
+
+  const renderBibleYearSeriesPage = () => {
+    const matchedSeriesDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) =>
+      day.readings.some((reading) =>
+        reading.studyTitle === currentDevotionalTitle &&
+        reading.studyDayNumber === currentDevotionalTask?.devotionalDayNumber,
+      ),
+    );
+    const currentSeriesDayNumber = matchedSeriesDay?.dayNumber || 1;
+
+    return (
+      <section className="w-full px-1">
+        <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
+          <div className="bb-skin-glow-card overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
+            <div className="bg-[radial-gradient(circle_at_20%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_72%,transparent))] px-4 pb-5 pt-5 sm:px-5">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Genesis test series</p>
+              <h1 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible In One Year Series</h1>
+              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                A Genesis-first Bible-in-one-year test flow using the same Bible Buddy study rhythm.
+              </p>
+              <div className="mt-4 grid grid-cols-3 gap-2">
+                <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
+                  <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">24</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">days</p>
+                </div>
+                <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
+                  <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">50</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">chapters</p>
+                </div>
+                <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
+                  <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">Day {currentSeriesDayNumber}</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">current</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-3 p-3 sm:p-4">
+              {GENESIS_BIBLE_IN_ONE_YEAR_SERIES.map((day) => {
+                const cover = getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
+                const isCurrent = day.dayNumber === currentSeriesDayNumber;
+                const isPast = day.dayNumber < currentSeriesDayNumber;
+                return (
+                  <button
+                    key={day.dayNumber}
+                    type="button"
+                    onClick={() => setSelectedBibleYearSeriesDay(day)}
+                    className={`w-full overflow-hidden rounded-[24px] border text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(0,0,0,0.16)] ${
+                      isCurrent
+                        ? "border-[var(--bb-accent,#2f7fe8)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-card,#ffffff))]"
+                        : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
+                    }`}
+                  >
+                    <div className="flex gap-3 p-3">
+                      <div className="h-24 w-[72px] min-w-[72px] overflow-hidden rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] shadow-sm">
+                        {cover ? (
+                          <img src={cover} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                        ) : (
+                          <span className="grid h-full w-full place-items-center text-2xl" aria-hidden="true">📖</span>
+                        )}
+                      </div>
+                      <div className="min-w-0 flex-1 py-1">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-accent,#2f7fe8)]">
+                            Day {day.dayNumber}
+                          </span>
+                          <span className="shrink-0 text-[11px] font-black text-[var(--bb-text-muted,#6b7280)]">
+                            {isCurrent ? "Current" : isPast ? "Review" : day.estimatedTime}
+                          </span>
+                        </div>
+                        <p className="mt-2 text-base font-black leading-tight text-[var(--bb-text-primary,#111827)]">{day.title}</p>
+                        <p className="mt-0.5 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">{day.reference}</p>
+                        <p className="mt-1 line-clamp-2 text-xs font-semibold leading-5 text-[var(--bb-text-muted,#6b7280)]">{day.summary}</p>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  };
+
   const renderEmbeddedSharePage = () => {
     const inviteUserId = shareRewardsProfile?.user_id || userId;
     const shareUrl =
@@ -4489,6 +4634,8 @@ export default function DashboardJourneyExperience({
           <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
             {shouldShowBibleBuddy3ModeGate ? (
               renderBibleBuddy3ModeGate()
+            ) : bibleYearSeriesActive ? (
+              renderBibleYearSeriesPage()
             ) : (
               <>
             {!homePanelOverride && !deepStudyFocusActive ? (
@@ -5350,7 +5497,7 @@ export default function DashboardJourneyExperience({
           <div className="mb-2 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 p-2.5 shadow-[0_18px_46px_rgba(15,35,60,0.22)] backdrop-blur">
             <div className="grid grid-cols-4 gap-1.5">
               {dashboardNavItems.map((item, index) => {
-                const isActive = !bibleYearDashboardActive && index === safeActivePage;
+                const isActive = !bibleYearDashboardActive && !bibleYearSeriesActive && index === safeActivePage;
                 return (
                   <Fragment key={item.key}>
                     <Link
@@ -5378,26 +5525,48 @@ export default function DashboardJourneyExperience({
                       <span className="leading-tight">{item.label}</span>
                     </Link>
                     {item.key === "home" ? (
-                      <button
-                        type="button"
-                        data-dashboard-nav-key="bible-year"
-                        onClick={openBibleYearDashboard}
-                        className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black transition ${
-                          bibleYearDashboardActive
-                            ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
-                            : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
-                        }`}
-                      >
-                        <span
-                          className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
-                            bibleYearDashboardActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
+                      <>
+                        <button
+                          type="button"
+                          data-dashboard-nav-key="bible-year"
+                          onClick={openBibleYearDashboard}
+                          className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black transition ${
+                            bibleYearDashboardActive
+                              ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
+                              : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
                           }`}
-                          aria-hidden="true"
                         >
-                          📖
-                        </span>
-                        <span className="leading-tight">Bible In One Year</span>
-                      </button>
+                          <span
+                            className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
+                              bibleYearDashboardActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
+                            }`}
+                            aria-hidden="true"
+                          >
+                            📖
+                          </span>
+                          <span className="leading-tight">Bible In One Year</span>
+                        </button>
+                        <button
+                          type="button"
+                          data-dashboard-nav-key="bible-year-series"
+                          onClick={openBibleYearSeriesDashboard}
+                          className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black transition ${
+                            bibleYearSeriesActive
+                              ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
+                              : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
+                          }`}
+                        >
+                          <span
+                            className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
+                              bibleYearSeriesActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
+                            }`}
+                            aria-hidden="true"
+                          >
+                            📖
+                          </span>
+                          <span className="leading-tight">Bible In One Year Series</span>
+                        </button>
+                      </>
                     ) : null}
                   </Fragment>
                 );
@@ -5511,6 +5680,91 @@ export default function DashboardJourneyExperience({
           }}
         />
       ) : null}
+
+      <ModalShell
+        isOpen={!!selectedBibleYearSeriesDay}
+        onClose={() => setSelectedBibleYearSeriesDay(null)}
+        backdropColor="bg-black/55"
+        scrollable={true}
+        zIndex="z-[95]"
+      >
+        {selectedBibleYearSeriesDay ? (
+          <div className="mx-4 w-full max-w-md overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-2xl">
+            <div className="bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_76%,transparent))] px-5 py-5">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+                    Day {selectedBibleYearSeriesDay.dayNumber}
+                  </p>
+                  <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                    {selectedBibleYearSeriesDay.title}
+                  </h2>
+                  <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
+                    {selectedBibleYearSeriesDay.reference} · {selectedBibleYearSeriesDay.estimatedTime}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedBibleYearSeriesDay(null)}
+                  className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f8fbff)] text-lg font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-card,#ffffff)]"
+                  aria-label="Close Bible In One Year day"
+                >
+                  x
+                </button>
+              </div>
+              <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                {selectedBibleYearSeriesDay.summary}
+              </p>
+            </div>
+
+            <div className="space-y-3 p-4">
+              <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s chapters</p>
+                <div className="mt-3 grid gap-2">
+                  {selectedBibleYearSeriesDay.readings.map((reading, index) => {
+                    const devotional = devotionalOptions.find((option) => option.title === reading.studyTitle);
+                    const isCurrentReading =
+                      currentDevotionalTitle === reading.studyTitle &&
+                      currentDevotionalTask?.devotionalDayNumber === reading.studyDayNumber;
+                    return (
+                      <button
+                        key={`${reading.book}-${reading.chapter}`}
+                        type="button"
+                        onClick={() => void startBibleYearSeriesReading(selectedBibleYearSeriesDay, index)}
+                        disabled={isLoadingDevotionalOptions || switchingStudyChapter !== null || !devotional}
+                        className={`flex items-center justify-between gap-3 rounded-2xl border px-3 py-3 text-left transition ${
+                          isCurrentReading
+                            ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]"
+                            : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] hover:border-[var(--bb-accent,#2f7fe8)]"
+                        } disabled:cursor-not-allowed disabled:opacity-60`}
+                      >
+                        <span className="min-w-0">
+                          <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                            Genesis {reading.chapter}
+                          </span>
+                          <span className="mt-0.5 block truncate text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                            {reading.studyTitle}
+                          </span>
+                        </span>
+                        <span className="shrink-0 text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
+                          {isCurrentReading ? "Current" : switchingStudyChapter === reading.studyDayNumber ? "Loading" : "Load"}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Study rhythm</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                  Each chapter keeps the Bible Buddy flow: intro, read chapter, notes, trivia, and reflection. That keeps the app feeling guided instead of becoming a plain reading checklist.
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </ModalShell>
 
       <ModalShell
         isOpen={showDevotionalSettings}

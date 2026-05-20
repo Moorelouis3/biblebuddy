@@ -43,6 +43,226 @@ export type BibleInOneYearPlan = {
   totalChapters: number;
 };
 
+export type GenesisBibleYearReading = {
+  book: "Genesis";
+  chapter: number;
+  studyTitle: string;
+  studyDayNumber: number;
+};
+
+export type GenesisBibleYearDay = {
+  dayNumber: number;
+  title: string;
+  reference: string;
+  estimatedTime: string;
+  summary: string;
+  readings: GenesisBibleYearReading[];
+};
+
+function buildGenesisReadings(studyTitle: string, startChapter: number, endChapter: number, studyStartDay: number): GenesisBibleYearReading[] {
+  return Array.from({ length: endChapter - startChapter + 1 }, (_, index) => ({
+    book: "Genesis",
+    chapter: startChapter + index,
+    studyTitle,
+    studyDayNumber: studyStartDay + index,
+  }));
+}
+
+export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
+  {
+    dayNumber: 1,
+    title: "Creation of the World",
+    reference: "Genesis 1-2",
+    estimatedTime: "35-40 min",
+    summary: "Start with creation, Eden, image of God, purpose, rest, and relationship.",
+    readings: buildGenesisReadings("The Creation of the World", 1, 2, 1),
+  },
+  {
+    dayNumber: 2,
+    title: "Fall of Man",
+    reference: "Genesis 3-4",
+    estimatedTime: "About 35 min",
+    summary: "Follow temptation, shame, Cain and Abel, exile, violence, and the first hints of hope.",
+    readings: buildGenesisReadings("The Fall of Man", 3, 4, 1),
+  },
+  {
+    dayNumber: 3,
+    title: "Flood of Noah",
+    reference: "Genesis 5-6",
+    estimatedTime: "30-35 min",
+    summary: "Watch the generations unfold as corruption grows and Noah is introduced as a man who walks with God.",
+    readings: buildGenesisReadings("The Flood of Noah", 5, 6, 1),
+  },
+  {
+    dayNumber: 4,
+    title: "Flood of Noah",
+    reference: "Genesis 7-8",
+    estimatedTime: "30-35 min",
+    summary: "Move through judgment, the flood waters, preservation, waiting, and the first steps into a renewed world.",
+    readings: buildGenesisReadings("The Flood of Noah", 7, 8, 3),
+  },
+  {
+    dayNumber: 5,
+    title: "Flood of Noah",
+    reference: "Genesis 9-10",
+    estimatedTime: "30-35 min",
+    summary: "Study covenant mercy, Noah's family, human weakness, and the nations after the flood.",
+    readings: buildGenesisReadings("The Flood of Noah", 9, 10, 5),
+  },
+  {
+    dayNumber: 6,
+    title: "Obedience of Abraham",
+    reference: "Genesis 11-12",
+    estimatedTime: "30-35 min",
+    summary: "Begin Abraham's story with Babel, the call of Abram, promise, movement, and imperfect faith.",
+    readings: buildGenesisReadings("The Obedience of Abraham", 11, 12, 1),
+  },
+  {
+    dayNumber: 7,
+    title: "Obedience of Abraham",
+    reference: "Genesis 13-14",
+    estimatedTime: "30-35 min",
+    summary: "Follow separation, rescue, blessing, and Abraham learning how to trust God with the land and the promise.",
+    readings: buildGenesisReadings("The Obedience of Abraham", 13, 14, 3),
+  },
+  {
+    dayNumber: 8,
+    title: "Obedience of Abraham",
+    reference: "Genesis 15-16",
+    estimatedTime: "30-35 min",
+    summary: "Study covenant promise, waiting, faith counted as righteousness, Hagar, and the pain of rushing God.",
+    readings: buildGenesisReadings("The Obedience of Abraham", 15, 16, 5),
+  },
+  {
+    dayNumber: 9,
+    title: "Obedience of Abraham",
+    reference: "Genesis 17-18",
+    estimatedTime: "30-35 min",
+    summary: "Watch covenant identity deepen through circumcision, new names, promise, hospitality, and intercession.",
+    readings: buildGenesisReadings("The Obedience of Abraham", 17, 18, 7),
+  },
+  {
+    dayNumber: 10,
+    title: "Obedience of Abraham",
+    reference: "Genesis 19-20",
+    estimatedTime: "30-35 min",
+    summary: "Move through Sodom's judgment, Lot's rescue, family brokenness, and Abraham's repeated weakness.",
+    readings: buildGenesisReadings("The Obedience of Abraham", 19, 20, 9),
+  },
+  {
+    dayNumber: 11,
+    title: "Obedience of Abraham",
+    reference: "Genesis 21-22",
+    estimatedTime: "30-35 min",
+    summary: "Study Isaac's birth, covenant conflict, and Abraham's great test on Mount Moriah.",
+    readings: buildGenesisReadings("The Obedience of Abraham", 21, 22, 11),
+  },
+  {
+    dayNumber: 12,
+    title: "Obedience of Abraham",
+    reference: "Genesis 23-25",
+    estimatedTime: "40-45 min",
+    summary: "Close Abraham's journey with burial, legacy, Isaac's bride, and the covenant family moving forward.",
+    readings: buildGenesisReadings("The Obedience of Abraham", 23, 25, 13),
+  },
+  {
+    dayNumber: 13,
+    title: "Covenant Through Isaac",
+    reference: "Genesis 26-27",
+    estimatedTime: "30-35 min",
+    summary: "Study Isaac, wells, family tension, deception, Jacob, Esau, and the blessing moving through weakness.",
+    readings: buildGenesisReadings("The Promise Through Isaac", 26, 27, 1),
+  },
+  {
+    dayNumber: 14,
+    title: "Wrestling of Jacob",
+    reference: "Genesis 28-29",
+    estimatedTime: "30-35 min",
+    summary: "Begin Jacob's journey with Bethel, God's promise, exile, love, labor, and family complexity.",
+    readings: buildGenesisReadings("The Wrestling of Jacob", 28, 29, 1),
+  },
+  {
+    dayNumber: 15,
+    title: "Wrestling of Jacob",
+    reference: "Genesis 30-31",
+    estimatedTime: "30-35 min",
+    summary: "Follow household tension, growth, conflict with Laban, and Jacob learning to leave by faith.",
+    readings: buildGenesisReadings("The Wrestling of Jacob", 30, 31, 3),
+  },
+  {
+    dayNumber: 16,
+    title: "Wrestling of Jacob",
+    reference: "Genesis 32-33",
+    estimatedTime: "30-35 min",
+    summary: "Study fear, prayer, wrestling with God, a changed name, and reconciliation with Esau.",
+    readings: buildGenesisReadings("The Wrestling of Jacob", 32, 33, 5),
+  },
+  {
+    dayNumber: 17,
+    title: "Wrestling of Jacob",
+    reference: "Genesis 34-36",
+    estimatedTime: "40-45 min",
+    summary: "Close Jacob's section with grief, violence, renewal at Bethel, loss, and the Edomite line.",
+    readings: buildGenesisReadings("The Wrestling of Jacob", 34, 36, 7),
+  },
+  {
+    dayNumber: 18,
+    title: "Testing of Joseph",
+    reference: "Genesis 37-38",
+    estimatedTime: "30-35 min",
+    summary: "Begin Joseph's story with dreams, betrayal, the pit, Judah, Tamar, and God working in messy places.",
+    readings: buildGenesisReadings("The Testing of Joseph", 37, 38, 1),
+  },
+  {
+    dayNumber: 19,
+    title: "Testing of Joseph",
+    reference: "Genesis 39-40",
+    estimatedTime: "30-35 min",
+    summary: "Follow Joseph through integrity, false accusation, prison, forgotten service, and hidden preparation.",
+    readings: buildGenesisReadings("The Testing of Joseph", 39, 40, 3),
+  },
+  {
+    dayNumber: 20,
+    title: "Testing of Joseph",
+    reference: "Genesis 41-42",
+    estimatedTime: "30-35 min",
+    summary: "Watch Joseph rise with wisdom, famine begin, and his brothers unknowingly face the one they betrayed.",
+    readings: buildGenesisReadings("The Testing of Joseph", 41, 42, 5),
+  },
+  {
+    dayNumber: 21,
+    title: "Testing of Joseph",
+    reference: "Genesis 43-44",
+    estimatedTime: "30-35 min",
+    summary: "Study testing, fear, mercy, Judah's transformation, and the family reaching a breaking point.",
+    readings: buildGenesisReadings("The Testing of Joseph", 43, 44, 7),
+  },
+  {
+    dayNumber: 22,
+    title: "Testing of Joseph",
+    reference: "Genesis 45-46",
+    estimatedTime: "30-35 min",
+    summary: "Move into revelation, forgiveness, reunion, and Jacob's family going down into Egypt.",
+    readings: buildGenesisReadings("The Testing of Joseph", 45, 46, 9),
+  },
+  {
+    dayNumber: 23,
+    title: "Testing of Joseph",
+    reference: "Genesis 47-48",
+    estimatedTime: "30-35 min",
+    summary: "Study provision in Egypt, Jacob's final years, blessing, adoption, and covenant hope.",
+    readings: buildGenesisReadings("The Testing of Joseph", 47, 48, 11),
+  },
+  {
+    dayNumber: 24,
+    title: "Testing of Joseph",
+    reference: "Genesis 49-50",
+    estimatedTime: "30-35 min",
+    summary: "Finish Genesis with Jacob's blessings, burial, Joseph's forgiveness, and hope beyond Egypt.",
+    readings: buildGenesisReadings("The Testing of Joseph", 49, 50, 13),
+  },
+];
+
 /**
  * Generate a 365-day Bible reading plan
  * Distributes all chapters evenly across the year
