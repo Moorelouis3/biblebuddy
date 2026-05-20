@@ -4897,10 +4897,10 @@ export default function GroupChatPage() {
     : { buttonBg: SAGE };
   // â”€â”€ Render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
-    <div ref={communityRootRef} className={`${isDashboardEmbed ? "bg-[var(--bb-background,#f8fbff)]" : "min-h-screen bg-[var(--bb-background,#f8fbff)]"} flex flex-col text-[var(--bb-text-primary,#111827)]`}>
+    <div ref={communityRootRef} className={`bb-community-page ${isDashboardEmbed ? "" : "min-h-screen"} flex flex-col text-[var(--bb-text-primary,#111827)]`}>
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div className="sticky top-0 z-20 border-b border-[var(--bb-card-border,#dbe7f4)]" style={{ backgroundColor: coverColor }}>
+      <div className="bb-community-header sticky top-0 z-20 border-b border-[var(--bb-card-border,#dbe7f4)]" style={{ backgroundColor: coverColor }}>
         <div className="max-w-2xl mx-auto px-4 py-4">
           {!isDashboardEmbed && (
           <div className="flex items-center gap-1 text-xs text-[var(--bb-text-secondary,#5f6368)] font-medium mb-2 flex-wrap">
@@ -4945,7 +4945,7 @@ export default function GroupChatPage() {
           )}
           <div className="flex items-center gap-3">
             {!isDashboardEmbed ? (
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#ffffff)] text-xl shadow-sm">{group.cover_emoji || "??"}</span>
+              <span className="bb-community-emblem grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#ffffff)] text-xl shadow-sm">{group.cover_emoji || "??"}</span>
             ) : null}
             <div className="flex-1 min-w-0">
               {!isDashboardEmbed ? (
@@ -5017,7 +5017,7 @@ export default function GroupChatPage() {
                           if (tab.isHub) setHubView("articles");
                           setShowMoreNav(false);
                         }}
-                        className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition"
+                        className="bb-community-tab px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition"
                         style={{
                           backgroundColor: isActive ? "var(--bb-surface)" : "var(--bb-surface-soft)",
                           borderColor: isActive ? "var(--bb-accent)" : "var(--bb-card-border)",
@@ -5036,7 +5036,7 @@ export default function GroupChatPage() {
                         onClick={() => {
                           setShowMoreNav((v) => !v);
                         }}
-                        className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition flex items-center gap-2"
+                        className="bb-community-tab px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition flex items-center gap-2"
                         style={{
                           backgroundColor: moreIsActive || showMoreNav ? "var(--bb-surface)" : "var(--bb-surface-soft)",
                           borderColor: moreIsActive || showMoreNav ? "var(--bb-accent)" : "var(--bb-card-border)",
@@ -5106,12 +5106,12 @@ export default function GroupChatPage() {
 
 
       {/* â”€â”€ Feed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div ref={feedRef} className={isDashboardEmbed ? "pb-4" : "flex-1 overflow-y-auto pb-32"}>
+      <div ref={feedRef} className={`bb-community-feed ${isDashboardEmbed ? "pb-4" : "flex-1 overflow-y-auto pb-32"}`}>
 
         {/* â”€â”€ Hub article viewer â”€â”€ */}
         {selectedHubItem && (
           <div className="mx-auto max-w-2xl px-4 py-4">
-            <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+            <div className="bb-community-panel overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-sm">
               <div className="flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4">
                 <div className="min-w-0">
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#b7794d)]">
@@ -5140,7 +5140,7 @@ export default function GroupChatPage() {
           </div>
         )}
 
-        {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
+        {!selectedHubItem && <div className="bb-community-content max-w-2xl mx-auto px-4 py-4">
 
           {activeTab === "home" && !activeFeedPost && !showTopBuddiesDetail ? (
             <>
@@ -6237,7 +6237,7 @@ export default function GroupChatPage() {
                 <button
                   type="button"
                   onClick={() => setShowPostComposerModal(true)}
-                  className="w-full bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#d4ecd4)] rounded-2xl px-4 py-4 shadow-sm hover:shadow-md transition text-left relative overflow-hidden"
+                  className="bb-community-composer w-full bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#d4ecd4)] rounded-2xl px-4 py-4 shadow-sm hover:shadow-md transition text-left relative overflow-hidden"
                 >
                   <span className="absolute right-4 top-4 flex h-2.5 w-2.5">
                     <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--bb-accent,#8ccf98)] opacity-60 animate-ping" />
@@ -7120,7 +7120,7 @@ export default function GroupChatPage() {
 
     return (
       <div
-        className={`animate-fade-in-up overflow-hidden bg-[var(--bb-card,#ffffff)] ${
+        className={`bb-community-active-post animate-fade-in-up overflow-hidden bg-[var(--bb-card,#ffffff)] ${
           isDashboardEmbed
             ? "-mx-4 min-h-[calc(100dvh-130px)] rounded-none border-0 shadow-none"
             : "rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] shadow-sm"
@@ -7369,7 +7369,7 @@ export default function GroupChatPage() {
                 openFeedPostInline(post);
               }
             }}
-            className="w-full text-left transition cursor-pointer bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#e5e7eb)] rounded-xl p-4 shadow-sm hover:shadow-md animate-fade-in-up"
+            className="bb-community-post-card w-full text-left transition cursor-pointer bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#e5e7eb)] rounded-xl p-4 shadow-sm hover:shadow-md animate-fade-in-up"
             style={{ animationDelay: `${Math.min(index * 0.045, 0.45)}s` }}
           >
             <div>
@@ -7581,7 +7581,7 @@ export default function GroupChatPage() {
             </div>
           </div>
         )})}
-        <div className="flex flex-col gap-3 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="bb-community-pagination flex flex-col gap-3 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-center text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] sm:text-left">
             Page {postsPage + 1} · Pinned plus 5 posts
           </p>
