@@ -8127,14 +8127,15 @@ export default function DashboardPage() {
         html[data-bb-skin="ruby-village"] .dashboard-shell::after,
         html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::after {
           background:
-            radial-gradient(circle at 18% 24%, rgba(255, 192, 106, 0.68) 0 1.8px, transparent 3.5px),
-            radial-gradient(circle at 76% 34%, rgba(255, 115, 95, 0.58) 0 1.5px, transparent 3px),
-            repeating-linear-gradient(98deg, transparent 0 46px, rgba(255, 219, 180, 0.08) 46px 48px, transparent 48px 86px),
+            radial-gradient(circle at 18% 24%, rgba(255, 255, 255, 0.72) 0 1px, transparent 2.4px),
+            radial-gradient(circle at 76% 34%, rgba(255, 244, 220, 0.58) 0 1.2px, transparent 2.8px),
+            radial-gradient(circle at 42% 16%, rgba(255, 192, 106, 0.24) 0 1.6px, transparent 4px),
+            repeating-linear-gradient(98deg, transparent 0 58px, rgba(255, 219, 180, 0.06) 58px 60px, transparent 60px 110px),
             radial-gradient(ellipse at 50% 88%, rgba(255, 93, 72, 0.16), transparent 42%) !important;
-          background-size: 104px 140px, 148px 176px, 220px 100%, 100% 100%;
-          filter: blur(0.7px);
-          opacity: 0.76;
-          animation: bb-dashboard-embers 11s ease-in-out infinite alternate !important;
+          background-size: 150px 190px, 220px 260px, 180px 220px, 260px 100%, 100% 100%;
+          filter: blur(0.45px);
+          opacity: 0.64;
+          animation: bb-dashboard-ruby-sparkles 18s ease-in-out infinite alternate !important;
         }
         html[data-bb-skin="blue-storm"] .dashboard-shell::before,
         html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::before {
@@ -8233,6 +8234,10 @@ export default function DashboardPage() {
         @keyframes bb-dashboard-embers {
           from { background-position: 0 60px, 30px 80px, 0 0, 0 0; transform: translate3d(0, 1%, 0); }
           to { background-position: 24px -120px, -34px -160px, 60px 0, 0 0; transform: translate3d(0, -1%, 0); }
+        }
+        @keyframes bb-dashboard-ruby-sparkles {
+          from { background-position: 0 58px, 40px 80px, -18px 40px, 0 0, 0 0; transform: translate3d(-0.4%, 0.5%, 0); opacity: 0.5; }
+          to { background-position: 22px -120px, -36px -150px, 28px -92px, 44px 0, 0 0; transform: translate3d(0.5%, -0.7%, 0); opacity: 0.72; }
         }
         @keyframes bb-dashboard-heat-pulse {
           0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; filter: blur(0); }
@@ -8614,11 +8619,14 @@ export default function DashboardPage() {
           }
           html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::after {
             background:
-              radial-gradient(circle at 14% 18%, rgba(255, 115, 95, 0.1), transparent 32%),
+              radial-gradient(circle at 18% 24%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2.4px),
+              radial-gradient(circle at 76% 34%, rgba(255, 244, 220, 0.56) 0 1.2px, transparent 2.8px),
+              radial-gradient(circle at 42% 16%, rgba(255, 192, 106, 0.2) 0 1.6px, transparent 4px),
               linear-gradient(115deg, transparent 0%, rgba(255, 219, 180, 0.08) 48%, transparent 76%);
-            filter: blur(2px);
-            opacity: 0.84;
-            animation: bb-ruby-village-mist 24s ease-in-out infinite alternate;
+            background-size: 150px 190px, 220px 260px, 180px 220px, 100% 100%;
+            filter: blur(0.5px);
+            opacity: 0.66;
+            animation: bb-dashboard-ruby-sparkles 18s ease-in-out infinite alternate;
           }
           html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage::before {
             background:
