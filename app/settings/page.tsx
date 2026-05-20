@@ -167,7 +167,8 @@ export default function SettingsPage() {
         );
         setFirstName(nameParts.firstName);
         setLastName(nameParts.lastName);
-        setSelectedTheme(normalizeAppThemeId(profile?.app_theme));
+        const savedTheme = normalizeAppThemeId(profile?.app_theme);
+        setSelectedTheme(savedTheme === "dark" ? "dark" : "light");
         const dbPremiumSkin: PremiumSkinId =
           profile && "active_premium_skin" in profile && profile.active_premium_skin
             ? normalizePremiumSkinId(profile.active_premium_skin)
@@ -657,14 +658,7 @@ export default function SettingsPage() {
   }
 
   const ownedStoreItemIds = storePurchases.map((purchase) => purchase.item_id);
-  const ownedThemeIds = new Set(
-    THEME_STORE_ITEMS
-      .filter((item) => ownedStoreItemIds.includes(item.id) && item.themeId)
-      .map((item) => item.themeId),
-  );
-  const availableThemes = APP_THEMES.filter((theme) =>
-    ownerHasUnlimitedDiamonds || theme.id === "light" || theme.id === "dark" || ownedThemeIds.has(theme.id),
-  );
+  const availableThemes = APP_THEMES.filter((theme) => theme.id === "light" || theme.id === "dark");
   const visiblePremiumSkins = PREMIUM_SKINS;
   const ownedFlameIds = new Set(
     STREAK_FLAME_STORE_ITEMS
@@ -767,13 +761,11 @@ export default function SettingsPage() {
         <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
           <h2 className="text-xl font-semibold mb-2">Theme</h2>
           <p className="mb-4 text-sm text-gray-600">
-            Light and Dark are always here. Themes you buy in the Diamond Store show up here too.
+            Choose Light or Dark. Premium visual styles live in the Premium Skins section.
           </p>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {availableThemes.map((theme) => {
-              const storeItem = THEME_STORE_ITEMS.find((item) => item.themeId === theme.id);
-              const canDelete = Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id));
               return (
                 <div
                   key={theme.id}
@@ -797,16 +789,6 @@ export default function SettingsPage() {
                       {themeSaving === theme.id ? "Saving..." : selectedTheme === theme.id ? "Active" : "Use theme"}
                     </p>
                   </button>
-                  {canDelete && storeItem ? (
-                    <button
-                      type="button"
-                      onClick={() => void handleDeleteStoreItem(storeItem.id)}
-                      disabled={removingItemId === storeItem.id}
-                      className="mt-3 w-full rounded-full border border-red-200 px-3 py-1.5 text-xs font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
-                    >
-                      {removingItemId === storeItem.id ? "Removing..." : "Delete"}
-                    </button>
-                  ) : null}
                 </div>
               );
             })}
