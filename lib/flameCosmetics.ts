@@ -12,6 +12,7 @@ export type FlameCosmetic = {
 
 export const DEFAULT_FLAME_COSMETIC: FlameCosmeticId = "default";
 export const ACTIVE_STREAK_FLAME_STORAGE_KEY = "bb:active-streak-flame";
+export const ACTIVE_STREAK_FLAME_COLORS_STORAGE_KEY = "bb:active-streak-flame-colors";
 
 export const FLAME_COSMETICS: FlameCosmetic[] = [
   { id: "default", name: "Classic Flame", light: "#FDBA74", main: "#F97316", dark: "#B91C1C" },
@@ -42,4 +43,20 @@ export function getPremiumSkinFlameId(skinId: PremiumSkinId | string | null | un
   if (skinId === "slow-mornings") return "gold";
   if (skinId === "morning-mercy") return "orange";
   return null;
+}
+
+export function persistActiveStreakFlame(flameId: FlameCosmeticId | string | null | undefined): FlameCosmeticId {
+  const normalizedFlameId = normalizeFlameCosmeticId(flameId);
+  const flame = getFlameCosmetic(normalizedFlameId);
+  if (typeof window !== "undefined") {
+    window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizedFlameId);
+    window.localStorage.setItem(ACTIVE_STREAK_FLAME_COLORS_STORAGE_KEY, JSON.stringify(flame));
+  }
+  if (typeof document !== "undefined") {
+    document.documentElement.dataset.bbStreakFlame = normalizedFlameId;
+    document.documentElement.style.setProperty("--bb-active-flame-light", flame.light);
+    document.documentElement.style.setProperty("--bb-active-flame-main", flame.main);
+    document.documentElement.style.setProperty("--bb-active-flame-dark", flame.dark);
+  }
+  return normalizedFlameId;
 }

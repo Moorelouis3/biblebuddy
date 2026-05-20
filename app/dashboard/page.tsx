@@ -79,7 +79,7 @@ import {
   scheduleIdleWork,
   writePerformanceCache,
 } from "../../lib/appPerformance";
-import { ACTIVE_STREAK_FLAME_STORAGE_KEY, getPremiumSkinFlameId, normalizeFlameCosmeticId } from "../../lib/flameCosmetics";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, getPremiumSkinFlameId, normalizeFlameCosmeticId, persistActiveStreakFlame } from "../../lib/flameCosmetics";
 import {
   SELECTED_BUDDY_STORAGE_KEY,
   getBuddyAvatar,
@@ -2362,6 +2362,7 @@ export default function DashboardPage() {
         ? "streak-flame-earned"
         : "streak-flame-building";
     const nextLevelPercent = Math.max(0, Math.min(100, levelInfo?.progressPercent ?? 0));
+    const visibleOwnerDiamondTotal = 10000;
     const personalStats = [
       {
         key: "completion",
@@ -2383,7 +2384,7 @@ export default function DashboardPage() {
         value: diamondsLoading
           ? animatedDashboardStats.grace
           : isOwnerDashboard
-            ? "Unlimited"
+            ? visibleOwnerDiamondTotal.toLocaleString()
             : Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString(),
         icon: "💎",
         tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
@@ -2474,7 +2475,7 @@ export default function DashboardPage() {
     const diamondValue = diamondsLoading
       ? animatedDashboardStats.grace
       : isOwnerDashboard
-        ? "Unlimited"
+        ? visibleOwnerDiamondTotal.toLocaleString()
         : Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString();
     const journeyTitle = currentBook ? `${currentBook} Journey` : "Bible Journey";
     const chaptersLabel = `${totalCompletedChapters.toLocaleString()} of ${TOTAL_BIBLE_CHAPTERS.toLocaleString()} chapters`;
@@ -2935,7 +2936,8 @@ export default function DashboardPage() {
 
   function renderDiamondStorePanel() {
     const ownerHasUnlimitedDiamonds = isOwnerDashboard;
-    const diamondCount = ownerHasUnlimitedDiamonds ? Number.POSITIVE_INFINITY : Math.max(0, Number(profile?.diamonds_count ?? 0));
+    const visibleOwnerDiamondTotal = 10000;
+    const diamondCount = ownerHasUnlimitedDiamonds ? visibleOwnerDiamondTotal : Math.max(0, Number(profile?.diamonds_count ?? 0));
     const ownedItemIds = new Set(storePurchases.map((purchase) => purchase.item_id));
 
     const renderMysteryRevealPanel = () => {
@@ -3499,7 +3501,7 @@ export default function DashboardPage() {
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.24em] !text-white/80">Your stash</p>
                 <p className="mt-1 text-3xl font-black leading-none !text-white">
-                  {ownerHasUnlimitedDiamonds ? "Unlimited" : diamondCount.toLocaleString()}
+                  {diamondCount.toLocaleString()}
                 </p>
                 <p className="mt-2 max-w-md text-sm font-bold leading-5 !text-white/85">
                   Earn diamonds by completing studies, streaks, trivia, and daily tasks.
@@ -4222,8 +4224,8 @@ export default function DashboardPage() {
     const skinLockedFlame = getPremiumSkinFlameId(currentSkinId);
     if (skinLockedFlame) {
       if (typeof window !== "undefined") {
-        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinLockedFlame);
-        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: skinLockedFlame } }));
+        const persistedSkinFlame = persistActiveStreakFlame(skinLockedFlame);
+        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: persistedSkinFlame } }));
       }
       setProfile((current) => current ? { ...current, selected_streak_flame: skinLockedFlame } : current);
       if (userId) {
@@ -4236,8 +4238,8 @@ export default function DashboardPage() {
       return;
     }
     if (typeof window !== "undefined") {
-      window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizedFlameId);
-      window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: normalizedFlameId } }));
+      const persistedFlame = persistActiveStreakFlame(normalizedFlameId);
+      window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: persistedFlame } }));
     }
     setProfile((current) => current ? { ...current, selected_streak_flame: normalizedFlameId } : current);
     if (userId) {
@@ -4595,7 +4597,7 @@ export default function DashboardPage() {
         selected_streak_flame: skinLockedFlame ?? cached.profile.selected_streak_flame,
       });
       if (skinLockedFlame) {
-        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinLockedFlame);
+        persistActiveStreakFlame(skinLockedFlame);
       }
     }
     if (cached.levelInfo) {
@@ -4749,7 +4751,7 @@ export default function DashboardPage() {
           }
           const skinFlame = getPremiumSkinFlameId(resolvedActiveSkin);
           const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
-          if (skinFlame) window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinFlame);
+          if (skinFlame) persistActiveStreakFlame(skinFlame);
           if (resolvedActiveSkin !== "none" && dbActiveSkin !== resolvedActiveSkin) {
             void supabase
               .from("profile_stats")
@@ -5197,7 +5199,7 @@ export default function DashboardPage() {
       const nextFlameId = skinLockedFlame ?? normalizeFlameCosmeticId(
         customEvent.detail?.flameId || window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY),
       );
-      window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, nextFlameId);
+      persistActiveStreakFlame(nextFlameId);
       setProfile((current) => current ? { ...current, selected_streak_flame: nextFlameId } : current);
     }
 
@@ -6853,9 +6855,9 @@ export default function DashboardPage() {
         .bb-deep-study-entry::before,
         .bb-deep-study-focus-panel::before {
           background:
-            radial-gradient(circle at 18% 14%, color-mix(in srgb, var(--bb-accent) 34%, transparent), transparent 28%),
-            radial-gradient(circle at 76% 20%, color-mix(in srgb, var(--bb-accent-soft) 38%, transparent), transparent 30%),
-            linear-gradient(135deg, color-mix(in srgb, var(--bb-accent) 22%, transparent), rgba(8, 10, 16, 0.24));
+            radial-gradient(circle at 14% 18%, color-mix(in srgb, var(--bb-accent) 34%, transparent), transparent 30%),
+            radial-gradient(circle at 92% 16%, color-mix(in srgb, var(--bb-accent-soft) 44%, transparent), transparent 32%),
+            linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 58%, transparent), rgba(8, 10, 16, 0.18));
           opacity: 0.95;
         }
         .bb-deep-study-entry::after,
@@ -6868,8 +6870,8 @@ export default function DashboardPage() {
         }
         .bb-deep-study-glow {
           position: absolute;
-          inset: auto 8% -34px 18%;
-          height: 72px;
+          inset: auto 10% -28px 12%;
+          height: 62px;
           border-radius: 999px;
           background: radial-gradient(circle, color-mix(in srgb, var(--bb-accent) 54%, transparent), transparent 70%);
           filter: blur(18px);
@@ -6879,27 +6881,25 @@ export default function DashboardPage() {
           position: relative;
           z-index: 1;
           display: grid;
-          height: 104px;
+          height: 92px;
           place-items: center;
-          border-radius: 24px;
-          background: radial-gradient(circle at 50% 72%, color-mix(in srgb, var(--bb-accent) 26%, transparent), transparent 58%);
+          border-radius: 22px;
+          border: 1px solid color-mix(in srgb, var(--bb-accent) 26%, transparent);
+          background:
+            radial-gradient(circle at 50% 72%, color-mix(in srgb, var(--bb-accent) 26%, transparent), transparent 58%),
+            color-mix(in srgb, var(--bb-surface-soft) 74%, transparent);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
           opacity: 0.98;
         }
         .bb-deep-study-bible-emoji {
-          position: absolute;
-          inset: 50% auto auto 50%;
-          transform: translate(-50%, -50%) rotate(-7deg);
-          font-size: 78px;
-          line-height: 1;
-          filter: drop-shadow(0 0 24px color-mix(in srgb, var(--bb-accent) 62%, transparent));
-          opacity: 0.92;
+          display: none;
         }
         .bb-deep-study-book {
           position: relative;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          width: 92px;
-          height: 56px;
+          width: 78px;
+          height: 48px;
           filter: drop-shadow(0 0 18px color-mix(in srgb, var(--bb-accent) 62%, transparent));
           transform: perspective(120px) rotateX(12deg);
           opacity: 0.86;
@@ -6910,6 +6910,17 @@ export default function DashboardPage() {
             repeating-linear-gradient(180deg, rgba(65, 43, 28, 0.14) 0 1px, transparent 1px 7px),
             linear-gradient(135deg, rgba(255,255,255,0.94), color-mix(in srgb, var(--bb-accent-soft) 28%, rgba(255,255,255,0.84)));
           box-shadow: inset 0 -10px 16px rgba(91,33,182,0.18);
+        }
+        .bb-deep-study-book::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 5px;
+          bottom: 3px;
+          width: 2px;
+          border-radius: 999px;
+          background: color-mix(in srgb, var(--bb-accent) 34%, rgba(71, 45, 26, 0.42));
+          transform: translateX(-50%);
         }
         .bb-deep-study-book span:first-child {
           border-radius: 12px 4px 8px 14px;
@@ -6961,6 +6972,31 @@ export default function DashboardPage() {
         .bb-deep-study-portal {
           animation: bb-deep-study-portal 4.8s ease-in-out infinite;
         }
+        .bb-deep-study-arrow {
+          position: relative;
+          display: block;
+          width: 15px;
+          height: 15px;
+        }
+        .bb-deep-study-arrow::before {
+          content: "";
+          position: absolute;
+          inset: 2px 1px 2px 0;
+          border-top: 3px solid currentColor;
+          border-right: 3px solid currentColor;
+          transform: rotate(45deg);
+          border-radius: 2px;
+        }
+        .bb-deep-study-arrow::after {
+          content: "";
+          position: absolute;
+          left: 1px;
+          top: 6px;
+          width: 12px;
+          height: 3px;
+          border-radius: 999px;
+          background: currentColor;
+        }
         .bb-deep-study-orbit {
           position: absolute;
           inset: -32% 16% auto;
@@ -7004,21 +7040,21 @@ export default function DashboardPage() {
         }
         @media (max-width: 480px) {
           .bb-deep-study-entry {
-            grid-template-columns: 82px 1fr 38px !important;
+            grid-template-columns: 74px 1fr 34px !important;
             gap: 10px !important;
             border-radius: 22px !important;
             padding: 12px !important;
           }
           .bb-deep-study-bible {
-            height: 76px !important;
+            height: 70px !important;
             border-radius: 18px !important;
           }
           .bb-deep-study-bible-emoji {
             font-size: 54px !important;
           }
           .bb-deep-study-book {
-            width: 62px !important;
-            height: 38px !important;
+            width: 58px !important;
+            height: 36px !important;
           }
           .bb-deep-study-smoke {
             bottom: 28px !important;
@@ -7027,15 +7063,17 @@ export default function DashboardPage() {
           .bb-deep-study-smoke-one { left: 18px !important; }
           .bb-deep-study-smoke-two { right: 16px !important; }
           .bb-deep-study-portal {
-            height: 38px !important;
-            width: 38px !important;
-            font-size: 17px !important;
+            height: 34px !important;
+            width: 34px !important;
           }
           .bb-deep-study-entry [class*="tracking-[0.2em]"] {
             margin-top: 8px !important;
-            padding: 7px 12px !important;
+            padding: 6px 10px !important;
             font-size: 10px !important;
             letter-spacing: 0.14em !important;
+          }
+          .bb-deep-study-copy-extra {
+            display: none !important;
           }
         }
         html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card {
@@ -7101,11 +7139,11 @@ export default function DashboardPage() {
         <button
           type="button"
           onClick={() => setDeepStudyMode("setup")}
-          className="bb-deep-study-entry group relative grid w-full grid-cols-[118px_1fr_48px] items-center gap-3 overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_76%,transparent)] px-4 py-4 text-left text-[var(--bb-text-primary)] shadow-[0_18px_48px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--bb-accent)_60%,transparent)] hover:brightness-110 active:translate-y-0 sm:grid-cols-[142px_1fr_58px] sm:px-5"
+          className="bb-deep-study-entry group relative grid w-full grid-cols-[104px_1fr_46px] items-center gap-3 overflow-hidden rounded-[26px] border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] px-4 py-3.5 text-left text-[var(--bb-text-primary)] shadow-[0_16px_42px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--bb-accent)_60%,transparent)] hover:brightness-110 active:translate-y-0 sm:grid-cols-[128px_1fr_54px] sm:px-5 sm:py-4"
         >
           <span className="bb-deep-study-glow" aria-hidden="true" />
           <span className="bb-deep-study-bible" aria-hidden="true">
-            <span className="bb-deep-study-bible-emoji">📖</span>
+            <span className="bb-deep-study-bible-emoji" />
             <span className="bb-deep-study-book">
               <span />
               <span />
@@ -7120,14 +7158,14 @@ export default function DashboardPage() {
               <span className="bb-deep-study-moon" aria-hidden="true" />
               <span className="text-lg font-black leading-tight text-[var(--bb-text-primary)] drop-shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent)_48%,transparent)] sm:text-xl">Deep Study Mode</span>
             </span>
-            <span className="mt-1 block text-sm font-bold leading-5 text-[var(--bb-text-secondary)]">Focus with no distractions.</span>
-            <span className="block text-sm font-semibold leading-5 text-[var(--bb-text-muted)]">Immerse yourself in God&apos;s Word.</span>
+            <span className="mt-1 block text-sm font-bold leading-5 text-[var(--bb-text-secondary)]">Quiet focus for Scripture.</span>
+            <span className="bb-deep-study-copy-extra block text-sm font-semibold leading-5 text-[var(--bb-text-muted)]">Set a timer. Study deeper. Earn diamonds.</span>
             <span className="mt-3 inline-flex rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[var(--bb-surface-soft)] px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition group-hover:brightness-110">
-              Enter Study Mode
+              Start Focus
             </span>
           </span>
           <span className="bb-deep-study-portal relative grid h-11 w-11 place-items-center justify-self-end rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_38%,transparent)] bg-[var(--bb-surface-soft)] text-xl font-black text-[var(--bb-text-primary)] shadow-[0_0_26px_color-mix(in_srgb,var(--bb-accent)_36%,transparent),inset_0_0_18px_rgba(255,255,255,0.1)] sm:h-14 sm:w-14">
-            <span aria-hidden="true">➡</span>
+            <span className="bb-deep-study-arrow" aria-hidden="true" />
           </span>
         </button>
         {renderDeepStudyCardStyles()}

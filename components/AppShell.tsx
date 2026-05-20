@@ -41,7 +41,7 @@ import StreakFlameBadge from "./StreakFlameBadge";
 import StreakFlameEmoji from "./StreakFlameEmoji";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
-import { ACTIVE_STREAK_FLAME_STORAGE_KEY, getPremiumSkinFlameId, normalizeFlameCosmeticId, type FlameCosmeticId } from "../lib/flameCosmetics";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, getPremiumSkinFlameId, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../lib/flameCosmetics";
 import { getStoreItem } from "../lib/bibleBuddyStore";
 import { getActivePopupFromQueue, markPopupShown, POPUP_QUEUE_PRIORITIES, type PopupQueueItem } from "../lib/popupQueue";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
@@ -268,7 +268,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const nextFlameId = skinLockedFlame ?? normalizeFlameCosmeticId(
         customEvent.detail?.flameId || window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY),
       );
-      window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, nextFlameId);
+      persistActiveStreakFlame(nextFlameId);
       setHeaderSelectedFlame(nextFlameId);
     }
 
@@ -307,9 +307,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       preloadActiveSkinAssets(skinId);
       const skinFlame = getPremiumSkinFlameId(skinId);
       if (skinFlame) {
-        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinFlame);
-        setHeaderSelectedFlame(skinFlame);
-        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: skinFlame } }));
+        const persistedSkinFlame = persistActiveStreakFlame(skinFlame);
+        setHeaderSelectedFlame(persistedSkinFlame);
+        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: persistedSkinFlame } }));
       }
     }
 
@@ -649,7 +649,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const resolvedSkin = dbActiveSkin !== "none" ? dbActiveSkin : localActiveSkin;
       const skinFlame = getPremiumSkinFlameId(resolvedSkin);
       const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
-      window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, resolvedSelectedFlame);
+      persistActiveStreakFlame(resolvedSelectedFlame);
       setHeaderSelectedFlame(resolvedSelectedFlame);
       if (resolvedSkin !== "none") {
         window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, resolvedSkin);

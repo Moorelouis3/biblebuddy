@@ -1,7 +1,14 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { getFlameCosmetic, type FlameCosmeticId } from "../lib/flameCosmetics";
+import {
+  ACTIVE_STREAK_FLAME_COLORS_STORAGE_KEY,
+  ACTIVE_STREAK_FLAME_STORAGE_KEY,
+  getFlameCosmetic,
+  normalizeFlameCosmeticId,
+  type FlameCosmetic,
+  type FlameCosmeticId,
+} from "../lib/flameCosmetics";
 
 type Props = {
   flameId?: FlameCosmeticId | string | null;
@@ -11,7 +18,20 @@ type Props = {
 };
 
 export default function AnimatedFlame({ flameId, size = 42, className = "", title }: Props) {
-  const flame = getFlameCosmetic(flameId);
+  const storedFlameId =
+    typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
+  const resolvedFlameId = normalizeFlameCosmeticId(flameId ?? storedFlameId);
+  let flame = getFlameCosmetic(resolvedFlameId);
+  if (typeof window !== "undefined") {
+    try {
+      const cached = JSON.parse(window.localStorage.getItem(ACTIVE_STREAK_FLAME_COLORS_STORAGE_KEY) || "null") as FlameCosmetic | null;
+      if (cached?.id === resolvedFlameId && cached.light && cached.main && cached.dark) {
+        flame = cached;
+      }
+    } catch {
+      // Use the bundled flame palette if the cached colors are unavailable.
+    }
+  }
   const filterByFlame: Record<string, string> = {
     default: "none",
     orange: "none",

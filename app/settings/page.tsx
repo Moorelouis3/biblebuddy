@@ -21,7 +21,7 @@ import {
   normalizeBuddyAvatarId,
   type BuddyAvatarId,
 } from "../../lib/buddyAvatars";
-import { ACTIVE_STREAK_FLAME_STORAGE_KEY, FLAME_COSMETICS, getPremiumSkinFlameId, normalizeFlameCosmeticId, type FlameCosmeticId } from "../../lib/flameCosmetics";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, FLAME_COSMETICS, getPremiumSkinFlameId, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../../lib/flameCosmetics";
 import {
   PREMIUM_SKINS,
   PREMIUM_SKIN_STORAGE_KEY,
@@ -173,7 +173,7 @@ export default function SettingsPage() {
         setSelectedFlame(resolvedSelectedFlame);
         if (typeof window !== "undefined") {
           window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, resolvedSelectedBuddy);
-          window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, resolvedSelectedFlame);
+          persistActiveStreakFlame(resolvedSelectedFlame);
           window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, resolvedPremiumSkin);
           applyPremiumSkinToDocument(resolvedPremiumSkin);
           window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: resolvedSelectedBuddy } }));
@@ -359,7 +359,7 @@ export default function SettingsPage() {
     if (skinLockedFlame) {
       setSelectedFlame(skinLockedFlame);
       if (typeof window !== "undefined") {
-        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, skinLockedFlame);
+        persistActiveStreakFlame(skinLockedFlame);
         window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: skinLockedFlame } }));
       }
       const { error } = await supabase
@@ -381,7 +381,7 @@ export default function SettingsPage() {
     setSettingsMessage(null);
     setSelectedFlame(flameId);
     if (typeof window !== "undefined") {
-      window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, flameId);
+      persistActiveStreakFlame(flameId);
       window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId } }));
     }
     try {
@@ -397,7 +397,7 @@ export default function SettingsPage() {
     } catch (error: any) {
       setSelectedFlame(previousFlame);
       if (typeof window !== "undefined") {
-        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, previousFlame);
+        persistActiveStreakFlame(previousFlame);
         window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: previousFlame } }));
       }
       setSettingsMessage(
@@ -436,7 +436,7 @@ export default function SettingsPage() {
       if (matchingFlame) {
         setSelectedFlame(matchingFlame);
         if (typeof window !== "undefined") {
-          window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, matchingFlame);
+          persistActiveStreakFlame(matchingFlame);
           window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: matchingFlame } }));
         }
         const { error } = await supabase
@@ -467,7 +467,7 @@ export default function SettingsPage() {
       setSelectedFlame(previousFlame);
       if (typeof window !== "undefined") {
         window.localStorage.setItem(PREMIUM_SKIN_STORAGE_KEY, previousSkin);
-        window.localStorage.setItem(ACTIVE_STREAK_FLAME_STORAGE_KEY, previousFlame);
+        persistActiveStreakFlame(previousFlame);
         applyPremiumSkinToDocument(previousSkin);
         window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: previousSkin } }));
         window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: previousFlame } }));

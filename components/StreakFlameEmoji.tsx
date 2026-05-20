@@ -2,7 +2,14 @@
 
 import type { CSSProperties } from "react";
 import { useId } from "react";
-import { getFlameCosmetic, type FlameCosmeticId } from "../lib/flameCosmetics";
+import {
+  ACTIVE_STREAK_FLAME_COLORS_STORAGE_KEY,
+  ACTIVE_STREAK_FLAME_STORAGE_KEY,
+  getFlameCosmetic,
+  normalizeFlameCosmeticId,
+  type FlameCosmetic,
+  type FlameCosmeticId,
+} from "../lib/flameCosmetics";
 
 type Props = {
   flameId?: FlameCosmeticId | string | null;
@@ -12,7 +19,25 @@ type Props = {
 };
 
 export default function StreakFlameEmoji({ flameId, size = 42, className = "", title }: Props) {
-  const flame = getFlameCosmetic(flameId);
+  const storedFlameId =
+    typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
+  const resolvedFlameId = normalizeFlameCosmeticId(flameId ?? storedFlameId);
+  let flame = getFlameCosmetic(resolvedFlameId);
+  if (typeof window !== "undefined") {
+    try {
+      const cached = JSON.parse(window.localStorage.getItem(ACTIVE_STREAK_FLAME_COLORS_STORAGE_KEY) || "null") as FlameCosmetic | null;
+      if (
+        cached?.id === resolvedFlameId &&
+        typeof cached.light === "string" &&
+        typeof cached.main === "string" &&
+        typeof cached.dark === "string"
+      ) {
+        flame = cached;
+      }
+    } catch {
+      // Ignore corrupt cached flame colors and use the bundled palette.
+    }
+  }
   const gradientId = useId().replace(/:/g, "");
   const outerGradientId = `flame-outer-${gradientId}`;
   const innerGradientId = `flame-inner-${gradientId}`;
