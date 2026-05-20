@@ -10,6 +10,7 @@ export type DeepStudySessionSummary = {
   startedAt: string;
   endedAt: string;
   plannedMinutes: number;
+  shareDisplayMinutes?: number;
   activeMinutes: number;
   awayMinutes: number;
   interruptions: number;

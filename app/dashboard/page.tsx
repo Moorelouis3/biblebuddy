@@ -225,6 +225,7 @@ type DeepStudyModeState = "idle" | "setup" | "active" | "complete" | "results" |
 type DeepStudyActiveSession = {
   id: string;
   plannedMinutes: number;
+  shareDisplayMinutes?: number;
   startedAt: number;
   endsAt: number;
   lastTickAt: number;
@@ -1110,7 +1111,7 @@ export default function DashboardPage() {
   const [moderatorWeeklyPayoutReveal, setModeratorWeeklyPayoutReveal] = useState<ModeratorWeeklyPayoutReveal | null>(null);
   const moderatorWeeklyPayoutCheckRef = useRef<string | null>(null);
   const [deepStudyMode, setDeepStudyMode] = useState<DeepStudyModeState>("idle");
-  const [deepStudySelectedMinutes, setDeepStudySelectedMinutes] = useState(20);
+  const [deepStudySelectedMinutes, setDeepStudySelectedMinutes] = useState(5);
   const [deepStudyActiveSession, setDeepStudyActiveSession] = useState<DeepStudyActiveSession | null>(null);
   const [deepStudyResults, setDeepStudyResults] = useState<DeepStudySessionSummary | null>(null);
   const [deepStudyHistory, setDeepStudyHistory] = useState<DeepStudySessionSummary[]>([]);
@@ -5693,6 +5694,32 @@ export default function DashboardPage() {
     };
   })();
   const deepStudyTotalMinutes = deepStudyHistory.reduce((sum, session) => sum + session.activeMinutes, 0);
+  const deepStudyDurationOptions = [
+    ...(isOwnerDashboard ? [{ minutes: 1, label: "1 minute test", shareDisplayMinutes: 30 }] : []),
+    { minutes: 5, label: "5 minutes" },
+    ...(isDeepStudyPaidUser ? [{ minutes: 10, label: "10 minutes" }] : []),
+    { minutes: 15, label: "15 minutes" },
+    { minutes: 20, label: "20 minutes" },
+    { minutes: 30, label: "30 minutes" },
+    ...(isDeepStudyPaidUser ? [{ minutes: 45, label: "45 minutes" }, { minutes: 60, label: "60 minutes" }] : []),
+  ];
+  const selectedDeepStudyDuration =
+    deepStudyDurationOptions.find((option) => option.minutes === deepStudySelectedMinutes) ?? deepStudyDurationOptions[0];
+
+  useEffect(() => {
+    const allowedMinutes = [
+      ...(isOwnerDashboard ? [1] : []),
+      5,
+      ...(isDeepStudyPaidUser ? [10] : []),
+      15,
+      20,
+      30,
+      ...(isDeepStudyPaidUser ? [45, 60] : []),
+    ];
+    if (!allowedMinutes.includes(deepStudySelectedMinutes)) {
+      setDeepStudySelectedMinutes(5);
+    }
+  }, [deepStudySelectedMinutes, isDeepStudyPaidUser, isOwnerDashboard]);
 
   useEffect(() => {
     if (!userId) {
@@ -5782,12 +5809,13 @@ export default function DashboardPage() {
     }
   }, [deepStudyActiveSession, deepStudyNow]);
 
-  function startDeepStudySession(minutes: number) {
+  function startDeepStudySession(minutes: number, shareDisplayMinutes?: number) {
     const now = Date.now();
     setDeepStudyResults(null);
     setDeepStudyActiveSession({
       id: `deep-study-${userId || "anon"}-${now}`,
       plannedMinutes: minutes,
+      shareDisplayMinutes,
       startedAt: now,
       endsAt: now + minutes * 60 * 1000,
       lastTickAt: now,
@@ -5828,6 +5856,7 @@ export default function DashboardPage() {
         startedAt: new Date(deepStudyActiveSession.startedAt).toISOString(),
         endedAt: new Date(endedAtMs).toISOString(),
         plannedMinutes: deepStudyActiveSession.plannedMinutes,
+        shareDisplayMinutes: deepStudyActiveSession.shareDisplayMinutes,
         activeMinutes,
         awayMinutes,
         interruptions: deepStudyActiveSession.interruptions,
@@ -5854,6 +5883,7 @@ export default function DashboardPage() {
       startedAt: new Date(deepStudyActiveSession.startedAt).toISOString(),
       endedAt: new Date(endedAtMs).toISOString(),
       plannedMinutes: deepStudyActiveSession.plannedMinutes,
+      shareDisplayMinutes: deepStudyActiveSession.shareDisplayMinutes,
       activeMinutes,
       awayMinutes,
       interruptions: deepStudyActiveSession.interruptions,
@@ -6739,7 +6769,7 @@ export default function DashboardPage() {
 
     ctx.fillStyle = theme.textPrimary;
     ctx.font = "900 92px Arial";
-    ctx.fillText(`${summary.activeMinutes} Minutes`, 540, 430);
+    ctx.fillText(`${summary.shareDisplayMinutes ?? summary.activeMinutes} Minutes`, 540, 430);
     ctx.font = "700 42px Arial";
     ctx.fillStyle = theme.textSecondary;
     ctx.fillText("Focused in God's Word", 540, 502);
@@ -7185,8 +7215,9 @@ export default function DashboardPage() {
       <>
         <button
           type="button"
-          onClick={() => setDeepStudyMode("setup")}
-          className="bb-deep-study-entry group relative grid w-full grid-cols-[104px_1fr_46px] items-center gap-3 overflow-hidden rounded-[26px] border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] px-4 py-3.5 text-left text-[var(--bb-text-primary)] shadow-[0_16px_42px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--bb-accent)_60%,transparent)] hover:brightness-110 active:translate-y-0 sm:grid-cols-[128px_1fr_54px] sm:px-5 sm:py-4"
+          onClick={() => setDeepStudyMode((current) => current === "setup" ? "idle" : "setup")}
+          aria-expanded={deepStudyMode === "setup"}
+          className="bb-deep-study-entry group relative grid w-full grid-cols-[82px_1fr_42px] items-center gap-3 overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] px-3 py-3 text-left text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--bb-accent)_60%,transparent)] hover:brightness-110 active:translate-y-0 sm:grid-cols-[104px_1fr_48px] sm:px-4 sm:py-3.5"
         >
           <span className="bb-deep-study-glow" aria-hidden="true" />
           <span className="bb-deep-study-bible" aria-hidden="true">
@@ -7198,77 +7229,51 @@ export default function DashboardPage() {
           </span>
           <span className="relative min-w-0">
             <span className="flex items-center gap-2">
-              <span className="bb-deep-study-title text-xl font-black leading-tight text-[var(--bb-text-primary)] drop-shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent)_48%,transparent)] sm:text-2xl">Deep Study Mode</span>
+              <span className="bb-deep-study-title text-lg font-black leading-tight text-[var(--bb-text-primary)] drop-shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent)_48%,transparent)] sm:text-xl">Deep Study Mode</span>
             </span>
-            <span className="mt-1 block text-sm font-bold leading-5 text-[var(--bb-text-secondary)]">Quiet focus for Scripture.</span>
-            <span className="bb-deep-study-copy-extra block text-sm font-semibold leading-5 text-[var(--bb-text-muted)]">Set a timer. Study deeper. Earn diamonds.</span>
-            <span className="mt-3 inline-flex rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[var(--bb-surface-soft)] px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-text-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition group-hover:brightness-110">
-              Start Focus
-            </span>
+            <span className="mt-0.5 block text-sm font-bold leading-5 text-[var(--bb-text-secondary)]">Quiet focus for Scripture.</span>
           </span>
           <span className="bb-deep-study-portal relative grid h-11 w-11 place-items-center justify-self-end rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_38%,transparent)] bg-[var(--bb-surface-soft)] text-xl font-black text-[var(--bb-text-primary)] shadow-[0_0_26px_color-mix(in_srgb,var(--bb-accent)_36%,transparent),inset_0_0_18px_rgba(255,255,255,0.1)] sm:h-14 sm:w-14">
-            <span className="bb-deep-study-arrow" aria-hidden="true" />
+            <span className={`bb-deep-study-arrow transition-transform ${deepStudyMode === "setup" ? "rotate-90" : ""}`} aria-hidden="true" />
           </span>
         </button>
+        {deepStudyMode === "setup" ? renderDeepStudySetup() : null}
         {renderDeepStudyCardStyles()}
       </>
     );
   }
 
   function renderDeepStudySetup() {
-    const options = [5, 10, 15, 20, 30, 45, 60];
-    const paidOnlyOptions = new Set([5, 10, 45, 60]);
     return (
-      <section className="mx-auto w-full max-w-xl rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-6 shadow-[0_16px_40px_rgba(38,63,99,0.12)]">
-        <button type="button" onClick={() => setDeepStudyMode("idle")} className="ml-auto grid h-9 w-9 place-items-center rounded-full bg-[var(--bb-surface-soft)] text-xl font-black text-[var(--bb-text-secondary)]">x</button>
-        <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary)]">Start Deep Study Mode</h2>
-        <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">Earn diamonds while deeply studying God&apos;s Word.</p>
-        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {options.map((minutes) => {
-            const selected = deepStudySelectedMinutes === minutes;
-            const isPaidOnly = paidOnlyOptions.has(minutes);
-            const locked = isPaidOnly && !isDeepStudyPaidUser;
-            return (
-              <button
-                key={minutes}
-                type="button"
-                onClick={() => {
-                  if (locked) {
-                    setShowDeepStudyUpgradeModal(true);
-                    return;
-                  }
-                  setDeepStudySelectedMinutes(minutes);
-                }}
-                aria-disabled={locked}
-                className={`rounded-[22px] border px-3 py-4 text-center transition ${
-                  selected
-                    ? "border-[var(--bb-accent)] bg-[var(--bb-accent-soft)] shadow-sm"
-                    : locked
-                      ? "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] opacity-60"
-                      : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)]"
-                }`}
-              >
-                <p className="text-xl font-black text-[var(--bb-text-primary)]">{minutes}</p>
-                <p className="text-xs font-black text-[var(--bb-text-muted)]">minutes</p>
-                {minutes === 20 ? <p className="mt-2 rounded-full bg-[var(--bb-button)] px-2 py-1 text-[10px] font-black text-[var(--bb-button-text)]">Recommended</p> : null}
-                {isPaidOnly ? <p className="mt-2 rounded-full bg-[var(--bb-button)] px-2 py-1 text-[10px] font-black text-[var(--bb-button-text)]">Pro</p> : null}
-              </button>
-            );
-          })}
+      <section className="dashboard-inline-task mt-3 w-full rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_76%,transparent)] p-4 text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
+        <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-end">
+          <label className="block">
+            <span className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Focus time</span>
+            <select
+              value={deepStudySelectedMinutes}
+              onChange={(event) => setDeepStudySelectedMinutes(Number(event.target.value))}
+              className="mt-2 w-full rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent)_30%,transparent)] bg-[var(--bb-surface-soft)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary)] outline-none"
+            >
+              {deepStudyDurationOptions.map((option) => (
+                <option key={`${option.minutes}:${option.label}`} value={option.minutes}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button
+            type="button"
+            onClick={() => startDeepStudySession(selectedDeepStudyDuration.minutes, selectedDeepStudyDuration.shareDisplayMinutes)}
+            className="rounded-[18px] bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
+          >
+            Start
+          </button>
         </div>
-        <div className="mt-5 rounded-[22px] bg-[var(--bb-surface-soft)] px-4 py-4 text-sm font-bold leading-6 text-[var(--bb-text-secondary)]">
+        <div className="mt-3 rounded-[18px] bg-[var(--bb-surface-soft)] px-4 py-3 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">
           <p>Earn {DEEP_STUDY_DIAMONDS_PER_MINUTE} diamonds per active focused minute.</p>
-          <p>The more focused time, the more you earn.</p>
+          {!isDeepStudyPaidUser ? <p>Upgrade unlocks 10, 45, and 60 minute focus sessions.</p> : null}
         </div>
-        <button
-          type="button"
-          onClick={() => startDeepStudySession(deepStudySelectedMinutes)}
-          className="mt-5 w-full rounded-full px-6 py-3 text-sm font-black text-white shadow-sm transition hover:brightness-95"
-          style={{ backgroundColor: deepStudyButtonColor }}
-        >
-          Start Deep Study Mode
-        </button>
-        <button type="button" onClick={() => setDeepStudyMode("info")} className="mx-auto mt-4 block text-sm font-black text-[var(--bb-accent)]">
+        <button type="button" onClick={() => setDeepStudyMode("info")} className="mt-3 text-xs font-black text-[var(--bb-accent)]">
           How does Deep Study Mode work?
         </button>
       </section>
@@ -7393,7 +7398,6 @@ export default function DashboardPage() {
     if (showDiamondStore) return renderDiamondStorePanel();
     if (showBibleProgressPanel) return renderBibleProgressPanel();
     if (deepStudyMode === "active") return renderDeepStudyCinematicCard();
-    if (deepStudyMode === "setup") return renderDeepStudySetup();
     if (deepStudyMode === "complete") return renderDeepStudyComplete();
     if (deepStudyMode === "results") return renderDeepStudyResults();
     if (deepStudyMode === "info") return renderDeepStudyInfo();
@@ -8853,7 +8857,7 @@ export default function DashboardPage() {
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={renderDashboardHomePanelOverride()}
           deepStudyNode={deepStudyMode === "active" ? null : renderDeepStudyCinematicCard()}
-          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "active" || deepStudyMode === "setup" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
+          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "active" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
@@ -8906,7 +8910,7 @@ export default function DashboardPage() {
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={renderDashboardHomePanelOverride()}
           deepStudyNode={deepStudyMode === "active" ? null : renderDeepStudyCinematicCard()}
-          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "active" || deepStudyMode === "setup" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
+          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "active" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
