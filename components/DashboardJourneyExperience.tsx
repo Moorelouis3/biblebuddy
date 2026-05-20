@@ -175,6 +175,7 @@ type Props = {
   deepStudyNode?: ReactNode;
   suppressCompletedTasksPanel?: boolean;
   onHomeReset?: () => void;
+  onOpenStore?: () => void;
   onDevotionalChanged: () => void;
   isOwnerDashboard?: boolean;
 };
@@ -1577,6 +1578,7 @@ export default function DashboardJourneyExperience({
   deepStudyNode,
   suppressCompletedTasksPanel = false,
   onHomeReset,
+  onOpenStore,
   onDevotionalChanged,
   isOwnerDashboard = false,
 }: Props) {
@@ -2862,6 +2864,11 @@ export default function DashboardJourneyExperience({
     if (settingsIndex < 0) return;
     setDashboardMenuOpen(false);
     snapToPage(settingsIndex);
+  }
+
+  function openStorePanel() {
+    setDashboardMenuOpen(false);
+    onOpenStore?.();
   }
 
   useEffect(() => {
@@ -5270,6 +5277,19 @@ export default function DashboardJourneyExperience({
                   </Link>
                 );
               })}
+              <button
+                type="button"
+                onClick={openStorePanel}
+                className="flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
+              >
+                <span
+                  className="grid h-10 w-10 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-xl"
+                  aria-hidden="true"
+                >
+                  💎
+                </span>
+                <span className="leading-tight">Store</span>
+              </button>
             </div>
           </div>
         ) : null}

@@ -8525,14 +8525,16 @@ export default function DashboardPage() {
         html[data-bb-skin="lavender-prayer"] .dashboard-shell::after,
         html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::after {
           background:
+            linear-gradient(116deg, transparent 0 40%, rgba(255, 255, 255, 0.92) 47%, rgba(207, 174, 255, 0.48) 49%, transparent 56%),
+            linear-gradient(116deg, transparent 0 44%, rgba(255, 244, 255, 0.78) 49%, rgba(207, 174, 255, 0.38) 51%, transparent 58%),
             radial-gradient(circle at 20% 24%, rgba(255, 244, 255, 0.75) 0 1px, transparent 2.5px),
             radial-gradient(circle at 72% 16%, rgba(207, 174, 255, 0.58) 0 1.5px, transparent 3px),
             radial-gradient(ellipse at 50% 82%, rgba(207, 174, 255, 0.18), transparent 42%),
             linear-gradient(115deg, transparent 0%, rgba(255, 245, 255, 0.12) 48%, transparent 76%) !important;
-          background-size: 88px 96px, 144px 138px, 100% 100%, 100% 100%;
-          filter: blur(1px);
-          opacity: 0.78;
-          animation: bb-dashboard-lavender-stars 16s ease-in-out infinite alternate !important;
+          background-size: 42% 28%, 36% 24%, 88px 96px, 144px 138px, 100% 100%, 100% 100%;
+          filter: blur(0.8px);
+          opacity: 0.82;
+          animation: bb-dashboard-lavender-shooting-stars 18s ease-in-out infinite !important;
         }
         html[data-bb-skin="ruby-village"] .dashboard-shell::after,
         html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::after {
@@ -8557,7 +8559,14 @@ export default function DashboardPage() {
         }
         html[data-bb-skin="lavender-prayer"] .dashboard-shell::before,
         html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::before {
-          animation: bb-dashboard-prayer-fog 20s ease-in-out infinite alternate !important;
+          background:
+            radial-gradient(circle at 50% 8%, rgba(255, 238, 255, 0.34), transparent 18%),
+            radial-gradient(circle at 70% 26%, rgba(245, 203, 255, 0.18), transparent 26%),
+            radial-gradient(ellipse at 50% 48%, rgba(255, 229, 172, 0.16), rgba(207, 174, 255, 0.08) 19%, transparent 34%),
+            radial-gradient(ellipse at 50% 56%, rgba(255, 244, 220, 0.13), transparent 22%),
+            linear-gradient(90deg, transparent 0%, rgba(207, 174, 255, 0.08) 48%, transparent 76%) !important;
+          mix-blend-mode: screen;
+          animation: bb-dashboard-prayer-sky-flicker 14s ease-in-out infinite !important;
         }
         html[data-bb-skin="ruby-village"] .dashboard-shell::before,
         html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::before {
@@ -8640,6 +8649,49 @@ export default function DashboardPage() {
         @keyframes bb-dashboard-prayer-fog {
           from { transform: translate3d(-1%, 0, 0) scale(1); opacity: 0.54; }
           to { transform: translate3d(1%, -1%, 0) scale(1.03); opacity: 0.82; }
+        }
+        @keyframes bb-dashboard-lavender-shooting-stars {
+          0%, 8% {
+            background-position: -62% 12%, 118% 28%, 0 0, 26px 10px, 0 0, 0 0;
+            opacity: 0.58;
+          }
+          14% {
+            background-position: 74% 34%, 118% 28%, 8px -8px, 16px 20px, 0 0, 0 0;
+            opacity: 0.98;
+          }
+          18%, 54% {
+            background-position: 128% 46%, 118% 28%, 18px -18px, -12px 30px, 0 0, 0 0;
+            opacity: 0.7;
+          }
+          62% {
+            background-position: 128% 46%, -54% 20%, 20px -22px, -20px 34px, 0 0, 0 0;
+            opacity: 0.94;
+          }
+          68%, 100% {
+            background-position: 128% 46%, 88% 42%, 28px -30px, -34px 42px, 0 0, 0 0;
+            opacity: 0.62;
+          }
+        }
+        @keyframes bb-dashboard-prayer-sky-flicker {
+          0%, 11%, 19%, 57%, 66%, 100% {
+            transform: translate3d(-0.6%, 0, 0) scale(1);
+            opacity: 0.58;
+            filter: brightness(1);
+          }
+          14% {
+            transform: translate3d(0.2%, -0.4%, 0) scale(1.018);
+            opacity: 0.88;
+            filter: brightness(1.11);
+          }
+          16% {
+            opacity: 0.64;
+            filter: brightness(1.03);
+          }
+          62% {
+            transform: translate3d(0.7%, -0.8%, 0) scale(1.025);
+            opacity: 0.82;
+            filter: brightness(1.08);
+          }
         }
         @keyframes bb-dashboard-embers {
           from { background-position: 0 60px, 30px 80px, 0 0, 0 0; transform: translate3d(0, 1%, 0); }
@@ -9024,17 +9076,24 @@ export default function DashboardPage() {
             background:
               radial-gradient(circle at 50% 8%, rgba(255, 238, 255, 0.34), transparent 18%),
               radial-gradient(circle at 70% 26%, rgba(245, 203, 255, 0.18), transparent 26%),
+              radial-gradient(ellipse at 50% 48%, rgba(255, 229, 172, 0.16), rgba(207, 174, 255, 0.08) 19%, transparent 34%),
+              radial-gradient(ellipse at 50% 56%, rgba(255, 244, 220, 0.13), transparent 22%),
               linear-gradient(90deg, transparent 0%, rgba(207, 174, 255, 0.08) 48%, transparent 76%);
             mix-blend-mode: screen;
-            animation: bb-lavender-prayer-moonlight 17s ease-in-out infinite;
+            animation: bb-dashboard-prayer-sky-flicker 14s ease-in-out infinite;
           }
           html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::after {
             background:
-              radial-gradient(circle at 14% 18%, rgba(207, 174, 255, 0.1), transparent 32%),
-              linear-gradient(115deg, transparent 0%, rgba(255, 245, 255, 0.09) 48%, transparent 76%);
-            filter: blur(2px);
-            opacity: 0.84;
-            animation: bb-lavender-prayer-mist 25s ease-in-out infinite alternate;
+              linear-gradient(116deg, transparent 0 40%, rgba(255, 255, 255, 0.92) 47%, rgba(207, 174, 255, 0.48) 49%, transparent 56%),
+              linear-gradient(116deg, transparent 0 44%, rgba(255, 244, 255, 0.78) 49%, rgba(207, 174, 255, 0.38) 51%, transparent 58%),
+              radial-gradient(circle at 20% 24%, rgba(255, 244, 255, 0.75) 0 1px, transparent 2.5px),
+              radial-gradient(circle at 72% 16%, rgba(207, 174, 255, 0.58) 0 1.5px, transparent 3px),
+              radial-gradient(ellipse at 50% 82%, rgba(207, 174, 255, 0.18), transparent 42%),
+              linear-gradient(115deg, transparent 0%, rgba(255, 245, 255, 0.12) 48%, transparent 76%);
+            background-size: 42% 28%, 36% 24%, 88px 96px, 144px 138px, 100% 100%, 100% 100%;
+            filter: blur(0.8px);
+            opacity: 0.82;
+            animation: bb-dashboard-lavender-shooting-stars 18s ease-in-out infinite;
           }
           html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::before {
             background:
@@ -9272,6 +9331,7 @@ export default function DashboardPage() {
           deepStudyNode={renderDeepStudyCinematicCard()}
           suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
+          onOpenStore={openDiamondStore}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
@@ -9325,6 +9385,7 @@ export default function DashboardPage() {
           deepStudyNode={renderDeepStudyCinematicCard()}
           suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
+          onOpenStore={openDiamondStore}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
             void loadDailyTaskSummary({ force: true, silent: true });
