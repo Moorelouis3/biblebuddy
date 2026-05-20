@@ -49,6 +49,7 @@ import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
+type BibleYearDayCardKey = "reading" | "trivia" | "reflection";
 const STUDY_BOOK_BY_TITLE: Record<string, string> = {
   "The Creation of the World": "Genesis",
   "The Fall of Man": "Genesis",
@@ -1670,8 +1671,8 @@ export default function DashboardJourneyExperience({
   const [bibleYearSeriesActive, setBibleYearSeriesActive] = useState(false);
   const [bibleYearSeriesDetailDay, setBibleYearSeriesDetailDay] = useState<GenesisBibleYearDay | null>(null);
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
-  const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<"reading" | "trivia" | "reflection" | null>(null);
-  const [bibleYearDonePreviewDays, setBibleYearDonePreviewDays] = useState<Record<number, boolean>>({});
+  const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<BibleYearDayCardKey | null>(null);
+  const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>>({});
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
 
@@ -2936,7 +2937,12 @@ export default function DashboardJourneyExperience({
     setBibleYearSeriesDetailDay(null);
     setSelectedBibleYearSeriesDay(day);
     setActiveBibleYearDayCard(null);
-    setBibleYearDonePreviewDays((current) => ({ ...current, [day.dayNumber]: options.markDone === true }));
+    if (options.markDone) {
+      setBibleYearCompletedCardsByDay((current) => ({
+        ...current,
+        [day.dayNumber]: { reading: true, trivia: true, reflection: true },
+      }));
+    }
     setFreeStudyModeActive(false);
     setEmbeddedBibleBookSearchOpen(false);
     setEmbeddedBibleSelectedBook(null);
@@ -4653,13 +4659,25 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function getBibleYearDayTaskKey(task: TaskState) {
     const match = task.href?.match(/^#bible-year-day-\d+-(reading|trivia|reflection)$/);
-    return (match?.[1] as "reading" | "trivia" | "reflection" | undefined) || null;
+    return (match?.[1] as BibleYearDayCardKey | undefined) || null;
+  }
+
+  function getBibleYearDayCompletedCount(day: GenesisBibleYearDay) {
+    const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
+    return (["reading", "trivia", "reflection"] as BibleYearDayCardKey[]).filter((key) => completed[key]).length;
+  }
+
+  function getBibleYearDayAction(day: GenesisBibleYearDay) {
+    const completedCount = getBibleYearDayCompletedCount(day);
+    if (completedCount <= 0) return { label: "Start", markDone: false };
+    if (completedCount >= 3) return { label: "Review", markDone: true };
+    return { label: "Finish", markDone: false };
   }
 
   function buildBibleYearDayTasks(day: GenesisBibleYearDay | null): TaskState[] {
     if (!day) return [];
     const dayLabel = `Day ${day.dayNumber}`;
-    const previewDone = bibleYearDonePreviewDays[day.dayNumber] === true;
+    const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
     return [
       {
         kind: "reading",
@@ -4668,8 +4686,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         pointsLabel: "+25 XP",
         timeEstimateLabel: day.estimatedTime,
         href: `#bible-year-day-${day.dayNumber}-reading`,
-        done: previewDone,
-        completedAtLabel: previewDone ? "Done" : null,
+        done: completed.reading === true,
+        completedAtLabel: completed.reading ? "Done" : null,
         chapterLabel: dayLabel,
       },
       {
@@ -4679,8 +4697,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         pointsLabel: "Up to +25 XP",
         timeEstimateLabel: "3 min",
         href: `#bible-year-day-${day.dayNumber}-trivia`,
-        done: previewDone,
-        completedAtLabel: previewDone ? "Done" : null,
+        done: completed.trivia === true,
+        completedAtLabel: completed.trivia ? "Done" : null,
         chapterLabel: dayLabel,
       },
       {
@@ -4690,8 +4708,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         pointsLabel: "+15 XP",
         timeEstimateLabel: "3 min",
         href: `#bible-year-day-${day.dayNumber}-reflection`,
-        done: previewDone,
-        completedAtLabel: previewDone ? "Done" : null,
+        done: completed.reflection === true,
+        completedAtLabel: completed.reflection ? "Done" : null,
         chapterLabel: dayLabel,
       },
     ];
@@ -4778,6 +4796,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearSeriesDayDetail(day: GenesisBibleYearDay) {
     const cover = getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
+    const detailAction = getBibleYearDayAction(day);
     const chapterTitles: Record<number, string> = {
       1: "Creation, Light, and God's Image",
       2: "Eden, Rest, Work, and Relationship",
@@ -4834,27 +4853,13 @@ Before we understand redemption, we need to understand what God made humanity fo
                 ))}
               </div>
 
-              <div className="grid gap-2">
+              <div>
                 <button
                   type="button"
-                  onClick={() => openBibleYearDayOnDashboard(day)}
-                  className="rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
+                  onClick={() => openBibleYearDayOnDashboard(day, { markDone: detailAction.markDone })}
+                  className="w-full rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
                 >
-                  Start Day {day.dayNumber}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => openBibleYearDayOnDashboard(day)}
-                  className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
-                >
-                  Finish Day {day.dayNumber}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => openBibleYearDayOnDashboard(day, { markDone: true })}
-                  className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:brightness-95"
-                >
-                  Done
+                  {detailAction.label}
                 </button>
               </div>
             </div>

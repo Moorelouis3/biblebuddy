@@ -118,7 +118,7 @@ function synthesizePeacefulBed(sampleCount: number) {
     const drop = Math.sin(2 * Math.PI * (1300 + random() * 600) * t) * dropEnergy;
     const rain = rainState * 0.22 + drop * 0.045;
 
-    bed[i] = music * 0.075 + rain * 0.075;
+    bed[i] = music * 0.088 + rain * 0.088;
   }
 
   return bed;
@@ -182,6 +182,11 @@ function encodeMp3(samples: Float32Array) {
 
 function getVerses(chapter: number, startVerse: number, endVerse: number) {
   return (GENESIS_CREATION_WEB_VERSES[chapter] || []).filter((verse) => verse.verse >= startVerse && verse.verse <= endVerse);
+}
+
+function speakReference(chapter: number, startVerse: number, endVerse: number) {
+  if (startVerse === endVerse) return `Genesis ${chapter} verse ${startVerse}.`;
+  return `Genesis ${chapter} verses ${startVerse} through ${endVerse}.`;
 }
 
 function buildDayOneSpeechText() {
@@ -248,7 +253,7 @@ function buildDayOneSpeechText() {
     const block = section.verseBlock;
     const verses = getVerses(block.chapter, block.startVerse, block.endVerse);
     const scripture = verses.map((verse) => verse.text).join(" ");
-    parts.push(`Listen to this part of the creation story. ${scripture}`);
+    parts.push(`${speakReference(block.chapter, block.startVerse, block.endVerse)} ${scripture}`);
     parts.push(...(teachingByReference[block.reference] || section.teaching));
   }
 
@@ -283,7 +288,7 @@ async function generateOpenAiSpeechPcm(text: string) {
       voice: GENESIS_ONE_TTS_VOICE,
       input: text,
       instructions:
-        "Speak in a deep, calm, warm male Bible teacher voice. Make it reflective, documentary-style, emotionally immersive, and modern. Read Scripture naturally without announcing verse numbers, markdown, headings, emojis, bullets, or formatting labels. Keep the transitions conversational and give natural pauses between Scripture and explanation. Do not sound robotic, theatrical, or rushed.",
+        "Speak in a deep, calm, warm male Bible teacher voice. Make it reflective, documentary-style, emotionally immersive, and modern. Announce each Scripture range naturally, for example: Genesis 1 verses 1 through 5. Do not announce every individual verse number. Do not read markdown, headings, emojis, bullets, or formatting labels. Keep the transitions conversational and give natural pauses between Scripture and explanation. Do not sound robotic, theatrical, or rushed.",
       response_format: "pcm",
     }),
   });

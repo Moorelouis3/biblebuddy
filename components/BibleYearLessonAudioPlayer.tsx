@@ -25,9 +25,11 @@ export default function BibleYearLessonAudioPlayer({
   const [loading, setLoading] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [playbackRate, setPlaybackRate] = useState(1);
   const [error, setError] = useState(false);
 
   const progressKey = useMemo(() => `bb:bible-year-audio-progress:${audioSrc}`, [audioSrc]);
+  const remainingTime = duration > 0 ? Math.max(0, duration - currentTime) : 0;
 
   useEffect(() => {
     return () => {
@@ -104,6 +106,7 @@ export default function BibleYearLessonAudioPlayer({
     try {
       const audio = new Audio(audioSrc);
       audio.preload = "metadata";
+      audio.playbackRate = playbackRate;
       audioRef.current = audio;
 
       audio.onloadedmetadata = () => {
@@ -156,6 +159,23 @@ export default function BibleYearLessonAudioPlayer({
     saveProgress(audio);
   }
 
+  function seekTo(seconds: number) {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const nextTime = Math.max(0, Math.min(seconds, audio.duration || seconds));
+    audio.currentTime = nextTime;
+    setCurrentTime(nextTime);
+    saveProgress(audio);
+  }
+
+  function changePlaybackRate(rate: number) {
+    const safeRate = [1, 1.25, 1.5, 2].includes(rate) ? rate : 1;
+    setPlaybackRate(safeRate);
+    if (audioRef.current) {
+      audioRef.current.playbackRate = safeRate;
+    }
+  }
+
   return (
     <section
       className="mb-6 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] p-2.5 shadow-sm backdrop-blur-md"
@@ -190,26 +210,58 @@ export default function BibleYearLessonAudioPlayer({
         </button>
 
         {playing || currentTime > 2 ? (
-          <div className="flex flex-wrap items-center justify-center gap-2 px-1 pb-1">
-            <button
-              type="button"
-              onClick={() => seekBy(-10)}
-              disabled={!audioRef.current}
-              className="rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 disabled:opacity-50"
-            >
-              -10s
-            </button>
-            <button
-              type="button"
-              onClick={() => seekBy(10)}
-              disabled={!audioRef.current}
-              className="rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 disabled:opacity-50"
-            >
-              +10s
-            </button>
-            <span className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-              {formatTime(currentTime)} {duration ? `/ ${formatTime(duration)}` : ""}
-            </span>
+          <div className="grid gap-3 px-1 pb-1">
+            <div className="grid gap-1.5">
+              <input
+                type="range"
+                min={0}
+                max={duration || 0}
+                step={1}
+                value={Math.min(currentTime, duration || currentTime)}
+                onChange={(event) => seekTo(Number(event.target.value))}
+                disabled={!audioRef.current || !duration}
+                aria-label="Audio progress"
+                className="h-2 w-full cursor-pointer accent-[var(--bb-button,var(--bb-accent,#2f7fe8))] disabled:cursor-not-allowed disabled:opacity-50"
+              />
+              <div className="flex items-center justify-between gap-3 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                <span>{formatTime(currentTime)}</span>
+                <span>{duration ? `${formatTime(remainingTime)} left` : "Loading time"}</span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <button
+                type="button"
+                onClick={() => seekBy(-10)}
+                disabled={!audioRef.current}
+                className="rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 disabled:opacity-50"
+              >
+                -10s
+              </button>
+              <button
+                type="button"
+                onClick={() => seekBy(10)}
+                disabled={!audioRef.current}
+                className="rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 disabled:opacity-50"
+              >
+                +10s
+              </button>
+              {[1, 1.25, 1.5, 2].map((rate) => (
+                <button
+                  key={rate}
+                  type="button"
+                  onClick={() => changePlaybackRate(rate)}
+                  className={`rounded-xl border px-3 py-2 text-xs font-black transition hover:brightness-95 ${
+                    playbackRate === rate
+                      ? "border-[var(--bb-button,var(--bb-accent,#2f7fe8))] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)]"
+                      : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f4f6)] text-[var(--bb-text-primary,#111827)]"
+                  }`}
+                  aria-pressed={playbackRate === rate}
+                >
+                  {rate}x
+                </button>
+              ))}
+            </div>
           </div>
         ) : null}
         {error ? <p className="px-1 text-xs font-black text-red-500">Audio unavailable. Try again in a moment.</p> : null}
