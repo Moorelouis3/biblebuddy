@@ -12,9 +12,17 @@ import { PREMIUM_SKINS } from "@/lib/premiumSkins";
 import { FLAME_COSMETIC_BY_ID, PREMIUM_SKIN_FLAME_BY_ID } from "@/lib/flameCosmetics";
 // redeploy trigger
 
+const siteUrl = new URL("https://www.mybiblebuddy.net");
+const socialPreviewImage = "/bible-buddy-social-preview.png";
+const socialDescription = "Read and understand the Bible with guided reading plans, highlights, and study tools.";
+
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title: "Bible Buddy",
   description: "Your guided Bible reading companion",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/newericon.png",
     apple: "/newericon.png",
@@ -27,24 +35,26 @@ export const metadata: Metadata = {
     title: "BibleBuddy",
   },
   openGraph: {
-    title: "Bible Buddy – Free Bible Study App",
-    description: "Read and understand the Bible with guided reading plans, highlights, and study tools.",
+    title: "Bible Buddy - Free Bible Study App",
+    description: socialDescription,
     type: "website",
-    url: "https://mybiblebuddy.net",
+    url: "/",
+    siteName: "Bible Buddy",
     images: [
       {
-        url: "https://mybiblebuddy.net/updatebanner2026.png",
+        url: socialPreviewImage,
         width: 1200,
         height: 630,
-        alt: "Bible Buddy – Free Bible Study App",
+        type: "image/png",
+        alt: "Bible Buddy - Free Bible Study App",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bible Buddy – Free Bible Study App",
-    description: "Read and understand the Bible with guided reading plans, highlights, and study tools.",
-    images: ["https://mybiblebuddy.net/updatebanner2026.png"],
+    title: "Bible Buddy - Free Bible Study App",
+    description: socialDescription,
+    images: [socialPreviewImage],
   },
 };
 
