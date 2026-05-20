@@ -6891,6 +6891,15 @@ export default function DashboardPage() {
         .bb-deep-study-bible-emoji {
           display: none;
         }
+        .bb-deep-study-bible-image {
+          position: relative;
+          z-index: 1;
+          width: 116px;
+          height: auto;
+          max-width: 100%;
+          object-fit: contain;
+          filter: drop-shadow(0 0 18px color-mix(in srgb, var(--bb-accent) 62%, transparent));
+        }
         .bb-deep-study-book {
           position: relative;
           display: grid;
@@ -7048,6 +7057,9 @@ export default function DashboardPage() {
           .bb-deep-study-bible-emoji {
             font-size: 72px !important;
           }
+          .bb-deep-study-bible-image {
+            width: 94px !important;
+          }
           .bb-deep-study-book {
             width: 86px !important;
             height: 54px !important;
@@ -7143,11 +7155,7 @@ export default function DashboardPage() {
         >
           <span className="bb-deep-study-glow" aria-hidden="true" />
           <span className="bb-deep-study-bible" aria-hidden="true">
-            <span className="bb-deep-study-bible-emoji" />
-            <span className="bb-deep-study-book">
-              <span />
-              <span />
-            </span>
+            <img src="/openbible.png" alt="" className="bb-deep-study-bible-image" draggable={false} />
             <span className="bb-deep-study-smoke bb-deep-study-smoke-one" />
             <span className="bb-deep-study-smoke bb-deep-study-smoke-two" />
             <span className="bb-deep-study-spark bb-deep-study-spark-one" />
