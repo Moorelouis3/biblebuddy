@@ -3458,7 +3458,7 @@ export default function DashboardJourneyExperience({
           <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Buddies</p>
           <h2 className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#111827)]">See what your Buddies have been doing</h2>
           <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
-            A live rolling log of your Bible Buddies' study progress, Deep Study sessions, notes, badges, games, and community activity.
+            A live rolling log of your Bible Buddy activity, your Buddies' progress, Deep Study sessions, notes, badges, games, and community activity.
           </p>
         </div>
 
@@ -3485,7 +3485,7 @@ export default function DashboardJourneyExperience({
           <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
               <h3 className="text-xl font-black text-[var(--bb-text-primary,#111827)]">Buddy activity</h3>
               <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
-                Updates from your personal Bible Buddies.
+                Updates from you and your personal Bible Buddies.
               </p>
               <div className="mt-4 max-h-[62dvh] space-y-3 overflow-y-auto pr-1">
                 {(buddiesDashboard?.friendTimeline || []).map((item) => (
@@ -3508,7 +3508,7 @@ export default function DashboardJourneyExperience({
               {!(buddiesDashboard?.friendTimeline || []).length ? (
                 <div className="mt-4 rounded-[20px] bg-[var(--bb-surface,#f8fbff)] p-5 text-center">
                   <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">No Buddy activity yet.</p>
-                  <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">Add Buddies from profiles and their Bible Buddy activity will show up here.</p>
+                  <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">Your Bible activity and your Buddies' activity will show here as soon as the master action log records it.</p>
                 </div>
               ) : null}
             </div>

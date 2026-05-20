@@ -69,6 +69,20 @@ const BUDDY_SCORE_WEIGHTS: Record<string, number> = {
 const COMPLETED_TASK_ACTIONS = Object.keys(BUDDY_SCORE_WEIGHTS);
 
 const BUDDY_ACTIVITY_ACTIONS = [
+  "bible_reader_viewed",
+  "bible_book_opened",
+  "bible_book_viewed",
+  "bible_chapter_opened",
+  "bible_chapter_viewed",
+  "book_completed",
+  "devotional_opened",
+  "devotional_day_opened",
+  "devotional_day_started",
+  "devotional_day_viewed",
+  "devotional_bible_reading_opened",
+  "reading_plan_opened",
+  "reading_plan_day_opened",
+  "reading_plan_chapter_opened",
   "chapter_completed",
   "reading_plan_chapter_completed",
   "chapter_notes_viewed",
@@ -85,9 +99,13 @@ const BUDDY_ACTIVITY_ACTIONS = [
   "verse_highlighted",
   "understand_verse_of_the_day",
   "note_created",
+  "note_started",
   "person_learned",
+  "person_viewed",
   "place_discovered",
+  "place_viewed",
   "keyword_mastered",
+  "keyword_viewed",
   "badge_earned",
   "buddy_added",
   "feed_post_thought",
@@ -95,8 +113,12 @@ const BUDDY_ACTIVITY_ACTIONS = [
   "feed_post_prayer_request",
   "feed_post_photo",
   "feed_post_video",
+  "feed_post_liked",
   "feed_post_commented",
   "feed_post_replied",
+  "group_message_sent",
+  "study_group_feed_viewed",
+  "bible_buddy_tv_title_opened",
   "bible_buddy_tv_video_started",
   "invite_buddy_opened",
   "dashboard_card_opened",
@@ -131,6 +153,30 @@ function displayName(profile?: ProfileRow | null) {
 function formatActivity(action: ActionRow) {
   const label = (action.action_label || "").replace(/\s+Review Opened$/i, "").trim();
   switch (action.action_type) {
+    case "bible_reader_viewed":
+      return "opened the Bible reader";
+    case "bible_book_opened":
+    case "bible_book_viewed":
+      return label ? `opened ${label}` : "opened a Bible book";
+    case "bible_chapter_opened":
+    case "bible_chapter_viewed":
+      return label ? `read ${label}` : "read a Bible chapter";
+    case "book_completed":
+      return label ? `finished the book of ${label}` : "finished a Bible book";
+    case "devotional_opened":
+      return label ? `opened ${label}` : "opened a Bible study";
+    case "devotional_day_opened":
+    case "devotional_day_started":
+    case "devotional_day_viewed":
+      return label ? `started ${label}` : "started a Bible study day";
+    case "devotional_bible_reading_opened":
+      return label ? `opened the Bible reading for ${label}` : "opened a Bible study reading";
+    case "reading_plan_opened":
+      return label ? `opened ${label}` : "opened a reading plan";
+    case "reading_plan_day_opened":
+      return label ? `opened ${label}` : "opened a reading plan day";
+    case "reading_plan_chapter_opened":
+      return label ? `opened ${label}` : "opened a reading plan chapter";
     case "chapter_notes_viewed":
       return label ? `opened notes for ${label}` : "opened Bible study notes";
     case "trivia_started":
@@ -157,16 +203,24 @@ function formatActivity(action: ActionRow) {
       return "completed all 6 Bible tasks";
     case "note_created":
       return "created a Bible note";
+    case "note_started":
+      return "started a Bible note";
     case "verse_highlighted":
       return label ? `highlighted ${label}` : "highlighted a Bible verse";
     case "understand_verse_of_the_day":
       return "studied the verse of the day";
     case "person_learned":
       return label ? `learned about ${label}` : "learned about a Bible person";
+    case "person_viewed":
+      return label ? `opened ${label}` : "opened a Bible person";
     case "place_discovered":
       return label ? `discovered ${label}` : "discovered a Bible place";
+    case "place_viewed":
+      return label ? `opened ${label}` : "opened a Bible place";
     case "keyword_mastered":
       return label ? `mastered ${label}` : "mastered a Bible keyword";
+    case "keyword_viewed":
+      return label ? `studied ${label}` : "studied a Bible keyword";
     case "badge_earned":
       return label ? `earned the ${label} badge` : "earned a badge";
     case "buddy_added":
@@ -182,7 +236,14 @@ function formatActivity(action: ActionRow) {
     case "study_group_bible_study_card_opened":
       return label ? `opened ${label}` : "opened a community Bible study";
     case "bible_buddy_tv_video_started":
+    case "bible_buddy_tv_title_opened":
       return label ? `watched ${label}` : "watched Bible Buddy TV";
+    case "group_message_sent":
+      return "sent a group message";
+    case "study_group_feed_viewed":
+      return "opened the community feed";
+    case "feed_post_liked":
+      return "encouraged a community post";
     case "feed_post_commented":
     case "feed_post_replied":
       return "joined a community conversation";
@@ -338,6 +399,7 @@ export async function GET(request: NextRequest) {
       .map((row) => (row.sender_id === userData.user.id ? row.receiver_id : row.sender_id))
       .filter((id): id is string => typeof id === "string" && id.length > 0)
       .forEach((id) => buddyIds.add(id));
+    buddyIds.add(userData.user.id);
 
     const buddyIdList = [...buddyIds];
     const { data: deepStudyRows } = buddyIdList.length > 0
@@ -365,7 +427,7 @@ export async function GET(request: NextRequest) {
         return {
           id: `${action.user_id}:${action.action_type}:${action.created_at}`,
           userId: action.user_id,
-          displayName: displayName(profile),
+          displayName: action.user_id === userData.user.id ? "You" : displayName(profile),
           profileImageUrl: profile?.profile_image_url || null,
           actionText: formatActivity(action),
           createdAt: action.created_at,
@@ -380,7 +442,7 @@ export async function GET(request: NextRequest) {
         return {
           id: `deep-study:${session.id || session.user_id}:${session.ended_at || session.started_at}`,
           userId: session.user_id,
-          displayName: displayName(profile),
+          displayName: session.user_id === userData.user.id ? "You" : displayName(profile),
           profileImageUrl: profile?.profile_image_url || null,
           actionText: formatDeepStudyActivity(session),
           createdAt: session.ended_at || session.started_at,
