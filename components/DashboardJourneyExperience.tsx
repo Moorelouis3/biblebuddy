@@ -8,6 +8,7 @@ import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
 import DashboardDailyTaskCallout from "./DashboardDailyTaskCallout";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
+import BibleYearLessonAudioPlayer from "./BibleYearLessonAudioPlayer";
 import CommentSection from "./comments/CommentSection";
 import BibleStudiesLibraryPage from "../app/devotionals/page";
 import BibleStudyDetailPage from "../app/devotionals/[id]/page";
@@ -43,6 +44,7 @@ import {
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
 import { GENESIS_DAY_ONE_CREATION_LESSON } from "../lib/bibleYearDailyLessons";
+import { BIBLE_YEAR_DAY_ONE_AUDIO } from "../lib/bibleYearAudio";
 import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
@@ -2875,6 +2877,7 @@ export default function DashboardJourneyExperience({
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.delete("view");
+      url.searchParams.delete("day");
       window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
     }
   }
@@ -2908,6 +2911,27 @@ export default function DashboardJourneyExperience({
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.set("view", "bible-year");
+      url.searchParams.delete("day");
+      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+  }
+
+  function openBibleYearDayOnDashboard(day: GenesisBibleYearDay) {
+    setBibleYearDashboardActive(true);
+    setBibleYearSeriesActive(false);
+    setSelectedBibleYearSeriesDay(day);
+    setActiveBibleYearDayCard(null);
+    setFreeStudyModeActive(false);
+    setEmbeddedBibleBookSearchOpen(false);
+    setEmbeddedBibleSelectedBook(null);
+    setEmbeddedBibleStudyId(null);
+    setDashboardMenuOpen(false);
+    onHomeReset?.();
+    snapToPage(0);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", "bible-year");
+      url.searchParams.set("day", String(day.dayNumber));
       window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
     }
   }
@@ -2927,15 +2951,20 @@ export default function DashboardJourneyExperience({
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.set("view", "bible-year-series");
+      url.searchParams.delete("day");
       window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
     }
   }
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const view = new URLSearchParams(window.location.search).get("view");
+    const params = new URLSearchParams(window.location.search);
+    const view = params.get("view");
     if (view === "bible-year") {
       setBibleYearDashboardActive(true);
+      const dayNumber = Number(params.get("day") || 0);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
+      if (day) setSelectedBibleYearSeriesDay(day);
       setActivePage(0);
     } else if (view === "bible-year-series") {
       setBibleYearSeriesActive(true);
@@ -4631,7 +4660,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <button
                   type="button"
                   onClick={() => {
-                    setSelectedBibleYearSeriesDay(null);
+                    openBibleYearSeriesDashboard();
                     setActiveBibleYearDayCard(null);
                   }}
                   className="mb-4 w-fit rounded-full bg-white/15 px-3 py-1.5 text-xs font-black text-white ring-1 ring-white/25 backdrop-blur transition hover:bg-white/25"
@@ -4776,10 +4805,6 @@ Before we understand redemption, we need to understand what God made humanity fo
       ),
     );
     const currentSeriesDayNumber = matchedSeriesDay?.dayNumber || 1;
-    if (selectedBibleYearSeriesDay) {
-      return renderBibleYearDayDashboard(selectedBibleYearSeriesDay);
-    }
-
     return (
       <section className="w-full px-1">
         <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
@@ -4815,10 +4840,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <button
                     key={day.dayNumber}
                     type="button"
-                    onClick={() => {
-                      setSelectedBibleYearSeriesDay(day);
-                      setActiveBibleYearDayCard(null);
-                    }}
+                    onClick={() => openBibleYearDayOnDashboard(day)}
                     className={`w-full overflow-hidden rounded-[24px] border text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(0,0,0,0.16)] ${
                       isCurrent
                         ? "border-[var(--bb-accent,#2f7fe8)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-card,#ffffff))]"
@@ -4863,6 +4885,13 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (dayOneLesson) {
       return (
         <div className="px-4 py-5">
+          <BibleYearLessonAudioPlayer
+            audioSrc={BIBLE_YEAR_DAY_ONE_AUDIO.apiSrc}
+            title={BIBLE_YEAR_DAY_ONE_AUDIO.title}
+            durationLabel={BIBLE_YEAR_DAY_ONE_AUDIO.estimatedDuration}
+            storagePath={BIBLE_YEAR_DAY_ONE_AUDIO.storagePath}
+          />
+
           <div className="mb-5">
             <ChapterNotesMarkdown>{buildBibleYearLessonMarkdown()}</ChapterNotesMarkdown>
           </div>
@@ -5413,7 +5442,12 @@ Before we understand redemption, we need to understand what God made humanity fo
             {!bibleYearDashboardActive && !homePanelOverride && !shouldShowCompletionPanel && deepStudyNode ? (
               <div className="dashboard-inline-deep-study mb-3 sm:mb-4">{deepStudyNode}</div>
             ) : null}
-            {bibleYearDashboardActive && !homePanelOverride && !shouldShowCompletionPanel ? (
+            {bibleYearDashboardActive && selectedBibleYearSeriesDay && !homePanelOverride && !shouldShowCompletionPanel ? (
+              <div className="dashboard-inline-task mb-3">
+                {renderBibleYearDayDashboard(selectedBibleYearSeriesDay)}
+              </div>
+            ) : null}
+            {bibleYearDashboardActive && !selectedBibleYearSeriesDay && !homePanelOverride && !shouldShowCompletionPanel ? (
               <section className="dashboard-inline-task mb-3 rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] px-4 py-3 text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
                 <div className="flex items-center gap-3">
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[var(--bb-surface-soft,#f4f8ff)] text-2xl shadow-sm" aria-hidden="true">📖</span>

@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "tts:genesis1": "tsx scripts/generate-genesis-one-tts.ts",
+    "tts:bible-year:day1": "tsx scripts/generate-bible-year-day-one-audio.ts",
     "start": "next start",
     "lint": "eslint"
   },
@@ -20,6 +21,7 @@
     "@vercel/analytics": "^1.6.1",
     "canvas-confetti": "^1.9.4",
     "dotenv": "^17.2.3",
+    "lamejs": "^1.2.1",
     "next": "^16.0.7",
     "openai": "^6.9.1",
     "react": "19.2.0",
