@@ -1649,6 +1649,7 @@ export default function DashboardJourneyExperience({
   const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
   const [studyModeGateDismissed, setStudyModeGateDismissed] = useState(true);
   const [freeStudyModeActive, setFreeStudyModeActive] = useState(false);
+  const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
 
   const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "share", "buddies", "tv", "games"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
@@ -1718,6 +1719,7 @@ export default function DashboardJourneyExperience({
     { key: "tv", label: "TV", icon: "\u25B6", href: dashboardPageLinks.tv?.href || "/biblebuddy-tv", onClick: dashboardPageLinks.tv?.onClick },
     { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
   ];
+  const activeDashboardNavItem = dashboardNavItems[safeActivePage] ?? dashboardNavItems[0];
   const isPaidUser = profile?.is_paid === true || membershipStatus === "pro";
 
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
@@ -5203,37 +5205,89 @@ export default function DashboardJourneyExperience({
       </div>
 
       {!shouldShowBibleBuddy3ModeGate ? (
-      <nav className="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom,0px)+10px)] z-[90] mx-auto max-w-xl rounded-[22px] border border-[#dbe7f4] bg-white/95 px-2 pb-1.5 pt-1.5 shadow-[0_12px_28px_rgba(38,63,99,0.14)] backdrop-blur lg:sticky lg:bottom-2 lg:z-40">
-        <div className="mx-auto mb-0.5 h-1 w-10 rounded-full bg-[#dbe7f4]" aria-hidden="true" />
-        <div className="[scrollbar-width:none] overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          <div className="flex min-w-max items-end gap-0.5 text-center sm:min-w-0">
-          {dashboardNavItems.map((item, index) => {
-            const isActive = index === safeActivePage;
-            return (
-              <Link
-                key={item.key}
-                data-dashboard-nav-key={item.key}
-                href={item.href}
-                onClick={(event) => {
-                  event.preventDefault();
-                  handleDashboardNavClick(index);
-                }}
-                className={`flex min-w-[68px] flex-col items-center justify-center gap-0.5 rounded-2xl px-1.5 py-1.5 text-[8.5px] font-black transition sm:min-w-[76px] sm:text-[9.5px] ${
-                  isActive ? "text-[#2f7fe8]" : "text-gray-500 hover:bg-[#f4f8ff] hover:text-gray-900"
-                }`}
-              >
-                <span
-                  className={`grid h-8 w-8 place-items-center rounded-full text-sm ${
-                    isActive && item.key !== "buddy" ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-transparent"
-                  }`}
-                  aria-hidden="true"
-                >
-                  {item.icon}
-                </span>
-                <span className="whitespace-nowrap">{item.label}</span>
-              </Link>
-            );
-          })}
+      <nav className="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom,0px)+10px)] z-[90] mx-auto max-w-xl lg:sticky lg:bottom-2 lg:z-40">
+        {dashboardMenuOpen ? (
+          <div className="mb-2 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 p-2.5 shadow-[0_18px_46px_rgba(15,35,60,0.22)] backdrop-blur">
+            <div className="grid grid-cols-4 gap-1.5">
+              {dashboardNavItems.map((item, index) => {
+                const isActive = index === safeActivePage;
+                return (
+                  <Link
+                    key={item.key}
+                    data-dashboard-nav-key={item.key}
+                    href={item.href}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setDashboardMenuOpen(false);
+                      handleDashboardNavClick(index);
+                    }}
+                    className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black transition ${
+                      isActive
+                        ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
+                        : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
+                    }`}
+                  >
+                    <span
+                      className={`grid h-10 w-10 place-items-center rounded-full text-xl ${
+                        isActive && item.key !== "buddy" ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm" : "bg-[var(--bb-surface-soft,#f4f8ff)]"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      {item.icon}
+                    </span>
+                    <span className="leading-tight">{item.label}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
+
+        <div className="rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 px-2 py-2 shadow-[0_12px_28px_rgba(38,63,99,0.16)] backdrop-blur">
+          <div className="grid grid-cols-[82px_1fr_92px] items-center gap-2">
+            <Link
+              data-dashboard-nav-key="home"
+              href="/dashboard"
+              onClick={(event) => {
+                event.preventDefault();
+                setDashboardMenuOpen(false);
+                handleDashboardNavClick(0);
+              }}
+              className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
+                safeActivePage === 0
+                  ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm"
+                  : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)]"
+              }`}
+            >
+              <span className="text-2xl leading-none" aria-hidden="true">⌂</span>
+              <span>Home</span>
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setDashboardMenuOpen((open) => !open)}
+              className="flex h-14 min-w-0 items-center gap-2 rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] px-3 text-left transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
+              aria-expanded={dashboardMenuOpen}
+              aria-label="Open dashboard menu"
+            >
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-card,#ffffff)] text-xl shadow-sm" aria-hidden="true">
+                {activeDashboardNavItem.icon}
+              </span>
+              <span className="min-w-0">
+                <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Current</span>
+                <span className="block truncate text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{activeDashboardNavItem.label}</span>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setDashboardMenuOpen((open) => !open)}
+              className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-accent,#2f7fe8)] text-[10px] font-black text-white shadow-sm transition hover:brightness-105"
+              aria-expanded={dashboardMenuOpen}
+            >
+              <span className="text-2xl leading-none" aria-hidden="true">{dashboardMenuOpen ? "×" : "☰"}</span>
+              <span>{dashboardMenuOpen ? "Close" : "Menu"}</span>
+            </button>
           </div>
         </div>
       </nav>
