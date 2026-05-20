@@ -18,9 +18,6 @@ function formatTime(totalSeconds: number) {
 
 export default function BibleYearLessonAudioPlayer({
   audioSrc,
-  title,
-  durationLabel,
-  storagePath,
 }: BibleYearLessonAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const lastSavedSecondRef = useRef(-1);
@@ -31,7 +28,6 @@ export default function BibleYearLessonAudioPlayer({
   const [error, setError] = useState(false);
 
   const progressKey = useMemo(() => `bb:bible-year-audio-progress:${audioSrc}`, [audioSrc]);
-  const progressPercent = duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0;
 
   useEffect(() => {
     return () => {
@@ -162,44 +158,39 @@ export default function BibleYearLessonAudioPlayer({
 
   return (
     <section
-      className="mb-6 rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] p-4 shadow-[0_18px_45px_rgba(0,0,0,0.18)] backdrop-blur-md"
-      style={{ background: "color-mix(in srgb, var(--bb-card, #ffffff) 82%, transparent)" }}
+      className="mb-6 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] p-2.5 shadow-sm backdrop-blur-md"
+      style={{ background: "color-mix(in srgb, var(--bb-card, #ffffff) 74%, transparent)" }}
     >
-      <div className="flex items-start gap-3">
+      <div className="flex min-w-0 flex-col gap-2">
         <button
           type="button"
           onClick={toggleAudio}
           disabled={loading}
-          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_45%,transparent)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
+          className="flex min-h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-base font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
           aria-label={playing ? "Pause Day 1 audio lesson" : "Play Day 1 audio lesson"}
         >
           {loading ? (
-            <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
+            <>
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
+              <span>Loading</span>
+            </>
           ) : playing ? (
-            <span className="text-lg font-black leading-none" aria-hidden="true">
-              II
-            </span>
+            <>
+              <span className="text-sm font-black leading-none" aria-hidden="true">
+                II
+              </span>
+              <span>Pause</span>
+            </>
           ) : (
-            <span className="ml-1 h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-current" aria-hidden="true" />
+            <>
+              <span className="h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-current" aria-hidden="true" />
+              <span>{currentTime > 2 ? "Resume" : "Play"}</span>
+            </>
           )}
         </button>
 
-        <div className="min-w-0 flex-1">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Listen While Reading</p>
-          <h3 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">{title}</h3>
-          <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">{duration ? formatTime(duration) : durationLabel}</p>
-
-          <div
-            className="mt-4 h-2 overflow-hidden rounded-full"
-            style={{ background: "color-mix(in srgb, var(--bb-text-primary, #111827) 14%, transparent)" }}
-          >
-            <div
-              className="h-full rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] transition-[width] duration-300"
-              style={{ width: `${progressPercent}%` }}
-            />
-          </div>
-
-          <div className="mt-3 flex flex-wrap items-center gap-2">
+        {playing || currentTime > 2 ? (
+          <div className="flex flex-wrap items-center justify-center gap-2 px-1 pb-1">
             <button
               type="button"
               onClick={() => seekBy(-10)}
@@ -220,12 +211,8 @@ export default function BibleYearLessonAudioPlayer({
               {formatTime(currentTime)} {duration ? `/ ${formatTime(duration)}` : ""}
             </span>
           </div>
-
-          {storagePath ? (
-            <p className="mt-3 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">Streaming from Bible In One Year audio.</p>
-          ) : null}
-          {error ? <p className="mt-2 text-xs font-black text-red-500">Audio unavailable. Try again in a moment.</p> : null}
-        </div>
+        ) : null}
+        {error ? <p className="px-1 text-xs font-black text-red-500">Audio unavailable. Try again in a moment.</p> : null}
       </div>
     </section>
   );

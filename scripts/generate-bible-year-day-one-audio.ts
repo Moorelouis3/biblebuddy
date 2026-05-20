@@ -237,36 +237,35 @@ function buildDayOneSpeechText() {
   };
 
   const parts: string[] = [
-    "The Creation of the World. Day 1 of the Bible In One Year Plan.",
-    "Genesis opens with God: already present, already powerful, already speaking.",
-    "Today we are reading every verse and slowing down just enough to understand the story.",
-    "Why Day 1 matters. God creates before anything else exists. Creation responds to God's voice. Darkness and emptiness become order and life. Human beings carry God's image. Rest, work, and relationship belong to God's good design. Creation is good before the world is broken.",
+    "Welcome to Day 1 of the Bible In One Year journey: The Creation of the World.",
+    "Today we are walking through Genesis chapters 1 and 2 as one flowing story.",
+    "The goal is simple. We are going to listen to the Scripture, pause along the way, and let the beginning of the Bible open up slowly and clearly.",
+    "Genesis does not begin with human chaos at the center. It begins with God: already present, already powerful, already speaking.",
+    "So take a breath. Let the story slow down. This is where the Bible begins.",
   ];
 
   for (const section of GENESIS_DAY_ONE_CREATION_LESSON.sections) {
     const block = section.verseBlock;
     const verses = getVerses(block.chapter, block.startVerse, block.endVerse);
-    parts.push(section.heading);
-    parts.push(block.reference);
-    for (const verse of verses) {
-      parts.push(`Verse ${verse.verse}. ${verse.text}`);
-    }
+    const scripture = verses.map((verse) => verse.text).join(" ");
+    parts.push(`Listen to this part of the creation story. ${scripture}`);
     parts.push(...(teachingByReference[block.reference] || section.teaching));
   }
 
   parts.push(
-    "Final thoughts.",
     "The Creation of the World shows us the world before the damage.",
     "God creates, speaks, orders, fills, blesses, rests, forms, breathes, plants, provides, commands, and creates relationship.",
     "Human life is not accidental. Work is not pointless. Rest is not optional. Relationship is not random.",
     "Everything begins with God's good design.",
-    "The big lesson.",
     "We were made by God, in God's image, for life with God.",
     "Before we understand the fall, we need to understand creation.",
     "Before we understand redemption, we need to understand what God made humanity for.",
   );
 
-  return cleanTextForTts(parts.join("\n\n"));
+  return cleanTextForTts(parts.join("\n\n"))
+    .replace(/\bVerse\s+\d+\b\.?/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 async function generateOpenAiSpeechPcm(text: string) {
@@ -284,7 +283,7 @@ async function generateOpenAiSpeechPcm(text: string) {
       voice: GENESIS_ONE_TTS_VOICE,
       input: text,
       instructions:
-        "Speak in a deep, calm, warm male Bible teacher voice. Make it reflective, documentary-style, emotionally immersive, and modern. Keep Scripture clear and give natural pauses between verse sections and explanations. Do not sound robotic, theatrical, or rushed.",
+        "Speak in a deep, calm, warm male Bible teacher voice. Make it reflective, documentary-style, emotionally immersive, and modern. Read Scripture naturally without announcing verse numbers, markdown, headings, emojis, bullets, or formatting labels. Keep the transitions conversational and give natural pauses between Scripture and explanation. Do not sound robotic, theatrical, or rushed.",
       response_format: "pcm",
     }),
   });
