@@ -506,7 +506,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
     return (
       <button
         onClick={() => setExpanded(true)}
-        className="w-full flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm hover:border-gray-300 transition text-left mb-6"
+        className="bb-community-composer w-full flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm hover:border-gray-300 transition text-left mb-6"
       >
         <Avatar userId={userId} displayName={displayName} imageUrl={userProfile?.profile_image_url ?? null} size={9} />
         <span className="text-sm text-gray-400 flex-1">Share a thought, prayer, or photo...</span>
@@ -516,7 +516,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
   }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 overflow-hidden">
+    <div className="bb-community-composer bg-white border border-gray-200 rounded-xl shadow-sm mb-6 overflow-hidden">
       {/* Tab selector */}
       <div className="flex border-b border-gray-100">
         {COMPOSER_TABS.map((t) => (
@@ -1373,7 +1373,7 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   const loveActive = myReactions.has(`${post.id}:love`);
 
   return (
-    <div ref={cardRef} className={`bg-white border rounded-xl p-4 shadow-sm relative transition-all ${isHighlighted ? "border-green-400 ring-2 ring-green-200" : "border-gray-200"}`}>
+    <div ref={cardRef} className={`bb-community-post-card bg-white border rounded-xl p-4 shadow-sm relative transition-all ${isHighlighted ? "border-green-400 ring-2 ring-green-200" : "border-gray-200"}`}>
       {/* Header */}
       <div className="flex items-center gap-3 mb-3">
         <Link href={`/profile/${post.user_id}`}>
@@ -1703,7 +1703,7 @@ function ActivityPostCard({ activity }: { activity: FeedActivity }) {
   const content = activityLabel(activity.activity_type, activity.activity_data);
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+    <div className="bb-community-post-card bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
       <div className="flex items-center gap-3 mb-3">
         <Link href={`/profile/${activity.user_id}`}>
           <Avatar userId={activity.user_id} displayName={displayName} imageUrl={activity.profile_image_url} />
@@ -2152,7 +2152,7 @@ export default function BbFeedPage() {
   function renderFriendsTab() {
     if (rankedBuddiesFeed.filter((i) => i._kind === "post").length === 0) {
       return (
-        <div className="bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+        <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
           <p className="text-3xl mb-3">👥</p>
           <h3 className="font-bold text-gray-900 mb-1">No buddy posts yet</h3>
           <p className="text-sm text-gray-500 mb-5">Add Buddies from their profile to see their posts here.</p>
@@ -2177,7 +2177,7 @@ export default function BbFeedPage() {
     const posts = rankedCommunityFeed.filter((item) => item._kind === "post");
     if (posts.length === 0) {
       return (
-        <div className="bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+        <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
           <p className="text-3xl mb-3">🌎</p>
           <h3 className="font-bold text-gray-900 mb-1">Community is quiet</h3>
           <p className="text-sm text-gray-500">Be the first to share something!</p>
@@ -2210,7 +2210,7 @@ export default function BbFeedPage() {
 
     if (items.length === 0) {
       return (
-        <div className="bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+        <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
           <p className="text-3xl mb-3">✨</p>
           <h3 className="font-bold text-gray-900 mb-1">Your feed is empty</h3>
           <p className="text-sm text-gray-500">Your posts and activity will appear here as you use Bible Buddy.</p>
@@ -2246,7 +2246,7 @@ export default function BbFeedPage() {
   // ── Page ───────────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-16">
+    <div className="bb-community-page bb-community-feed min-h-screen bg-gray-50 pb-16">
       {/* Feed onboarding — shown once on first visit */}
       {userId && (
         <FeedOnboardingModal
@@ -2256,7 +2256,7 @@ export default function BbFeedPage() {
         />
       )}
 
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="bb-community-content max-w-2xl mx-auto px-4 py-8">
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6">
@@ -2268,7 +2268,7 @@ export default function BbFeedPage() {
         <h1 className="text-3xl font-bold text-gray-900 mb-6">🔥 Bible Buddy Feed</h1>
 
         {/* Tabs */}
-        <div className="flex gap-1 bg-gray-100 rounded-xl p-1 mb-6">
+        <div className="bb-community-tab flex gap-1 bg-gray-100 rounded-xl p-1 mb-6">
           {([
             { key: "community", label: "🌎 Community" },
             { key: "buddies",   label: "🤝 Buddies" },

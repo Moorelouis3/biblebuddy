@@ -272,7 +272,7 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-panel,
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-pagination {
   border-color: color-mix(in srgb, var(--bb-accent) 34%, transparent) !important;
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 82%, transparent), color-mix(in srgb, var(--bb-surface-soft) 42%, transparent)) !important;
+    linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 90%, var(--bb-background) 10%), color-mix(in srgb, var(--bb-surface-soft) 78%, var(--bb-background) 22%)) !important;
   box-shadow:
     0 18px 48px rgba(0, 0, 0, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
@@ -288,6 +288,8 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-tab {
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-post-card {
   border-radius: 28px !important;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 94%, var(--bb-background) 6%), color-mix(in srgb, var(--bb-surface-soft) 84%, var(--bb-background) 16%)) !important;
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-post-card:hover {
@@ -317,7 +319,7 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="bg-whi
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="bg-[#fff"],
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="bg-gray-50"],
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="bg-gray-100"] {
-  background: color-mix(in srgb, var(--bb-card) 68%, transparent) !important;
+  background: color-mix(in srgb, var(--bb-card) 86%, var(--bb-background) 14%) !important;
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="border-gray-"],
@@ -376,10 +378,10 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="text-g
     border-radius: 24px !important;
     padding: 1rem !important;
     background:
-      linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 72%, transparent), color-mix(in srgb, var(--bb-surface-soft) 30%, transparent)) !important;
+      linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 95%, var(--bb-background) 5%), color-mix(in srgb, var(--bb-surface-soft) 88%, var(--bb-background) 12%)) !important;
     box-shadow:
-      0 14px 34px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+      0 16px 40px rgba(0, 0, 0, 0.26),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
   }
 
   html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-post-card img,

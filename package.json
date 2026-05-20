@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "tts:genesis1": "tsx scripts/generate-genesis-one-tts.ts",
     "start": "next start",
     "lint": "eslint"
   },
