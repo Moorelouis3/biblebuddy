@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const TOP_BUDDIES_WINDOW_DAYS = 30;
-const FRIEND_ACTIVITY_WINDOW_DAYS = 45;
+const FRIEND_ACTIVITY_WINDOW_DAYS = 14;
 const PAGE_SIZE = 1000;
 
 type ProfileRow = {
@@ -44,6 +44,17 @@ type BuddyRequestRow = {
   receiver_id: string | null;
 };
 
+type DeepStudySessionRow = {
+  id: string | null;
+  user_id: string | null;
+  active_minutes: number | null;
+  diamonds_earned: number | null;
+  focus_score: number | null;
+  chapters_studied: string[] | null;
+  ended_at: string | null;
+  started_at: string | null;
+};
+
 const BUDDY_SCORE_WEIGHTS: Record<string, number> = {
   devotional_day_completed: 10,
   chapter_completed: 10,
@@ -56,6 +67,44 @@ const BUDDY_SCORE_WEIGHTS: Record<string, number> = {
 };
 
 const COMPLETED_TASK_ACTIONS = Object.keys(BUDDY_SCORE_WEIGHTS);
+
+const BUDDY_ACTIVITY_ACTIONS = [
+  "chapter_completed",
+  "reading_plan_chapter_completed",
+  "chapter_notes_viewed",
+  "chapter_notes_reviewed",
+  "trivia_started",
+  "trivia_question_answered",
+  "trivia_question_correct",
+  "trivia_chapter_completed",
+  "scrambled_word_answered",
+  "scrambled_chapter_completed",
+  "devotional_day_completed",
+  "devotional_reflection_saved",
+  "louis_daily_task_bonus",
+  "verse_highlighted",
+  "understand_verse_of_the_day",
+  "note_created",
+  "person_learned",
+  "place_discovered",
+  "keyword_mastered",
+  "badge_earned",
+  "buddy_added",
+  "feed_post_thought",
+  "feed_post_prayer",
+  "feed_post_prayer_request",
+  "feed_post_photo",
+  "feed_post_video",
+  "feed_post_commented",
+  "feed_post_replied",
+  "bible_buddy_tv_video_started",
+  "invite_buddy_opened",
+  "dashboard_card_opened",
+  "series_week_started",
+  "series_week_notes_opened",
+  "study_group_article_opened",
+  "study_group_bible_study_card_opened",
+];
 
 async function fetchPaged<T>(
   queryBuilder: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: any }>,
@@ -82,6 +131,17 @@ function displayName(profile?: ProfileRow | null) {
 function formatActivity(action: ActionRow) {
   const label = (action.action_label || "").replace(/\s+Review Opened$/i, "").trim();
   switch (action.action_type) {
+    case "chapter_notes_viewed":
+      return label ? `opened notes for ${label}` : "opened Bible study notes";
+    case "trivia_started":
+      return label ? `started trivia for ${label}` : "started Bible trivia";
+    case "trivia_question_answered":
+    case "trivia_question_correct":
+      return label ? `answered trivia in ${label}` : "answered Bible trivia";
+    case "scrambled_word_answered":
+      return label ? `solved a Scrambled word in ${label}` : "solved a Scrambled word";
+    case "devotional_day_completed":
+      return label ? `completed ${label}` : "completed a Bible study day";
     case "chapter_completed":
     case "reading_plan_chapter_completed":
       return label ? `finished ${label}` : "finished a Bible chapter";
@@ -95,6 +155,32 @@ function formatActivity(action: ActionRow) {
       return label ? `shared a reflection for ${label}` : "shared a reflection";
     case "louis_daily_task_bonus":
       return "completed all 6 Bible tasks";
+    case "note_created":
+      return "created a Bible note";
+    case "verse_highlighted":
+      return label ? `highlighted ${label}` : "highlighted a Bible verse";
+    case "understand_verse_of_the_day":
+      return "studied the verse of the day";
+    case "person_learned":
+      return label ? `learned about ${label}` : "learned about a Bible person";
+    case "place_discovered":
+      return label ? `discovered ${label}` : "discovered a Bible place";
+    case "keyword_mastered":
+      return label ? `mastered ${label}` : "mastered a Bible keyword";
+    case "badge_earned":
+      return label ? `earned the ${label} badge` : "earned a badge";
+    case "buddy_added":
+      return label ? `became Buddies with ${label}` : "added a Bible Buddy";
+    case "invite_buddy_opened":
+      return "opened their Bible Buddy invite";
+    case "dashboard_card_opened":
+      return label ? `opened ${label}` : "opened a dashboard card";
+    case "series_week_started":
+      return label ? `started ${label}` : "started a group Bible study";
+    case "series_week_notes_opened":
+    case "study_group_article_opened":
+    case "study_group_bible_study_card_opened":
+      return label ? `opened ${label}` : "opened a community Bible study";
     case "bible_buddy_tv_video_started":
       return label ? `watched ${label}` : "watched Bible Buddy TV";
     case "feed_post_commented":
@@ -111,6 +197,15 @@ function formatActivity(action: ActionRow) {
 
 function toDateKey(value: string | null) {
   return value ? value.slice(0, 10) : "";
+}
+
+function formatDeepStudyActivity(session: DeepStudySessionRow) {
+  const minutes = Math.max(0, Number(session.active_minutes || 0));
+  const chapter = Array.isArray(session.chapters_studied) && session.chapters_studied.length > 0
+    ? session.chapters_studied[0]
+    : null;
+  const chapterText = chapter ? ` while studying ${chapter}` : "";
+  return `finished ${minutes || "a"} minute${minutes === 1 ? "" : "s"} of Deep Study${chapterText}`;
 }
 
 export async function GET(request: NextRequest) {
@@ -155,7 +250,7 @@ export async function GET(request: NextRequest) {
         supabaseAdmin
           .from("master_actions")
           .select("user_id, action_type, action_label, created_at")
-          .in("action_type", COMPLETED_TASK_ACTIONS)
+          .in("action_type", BUDDY_ACTIVITY_ACTIONS)
           .gte("created_at", friendSinceIso)
           .order("created_at", { ascending: false })
           .range(from, to),
@@ -244,17 +339,27 @@ export async function GET(request: NextRequest) {
       .filter((id): id is string => typeof id === "string" && id.length > 0)
       .forEach((id) => buddyIds.add(id));
 
-    const friendTimeline = actions
+    const buddyIdList = [...buddyIds];
+    const { data: deepStudyRows } = buddyIdList.length > 0
+      ? await supabaseAdmin
+          .from("deep_study_sessions")
+          .select("id, user_id, active_minutes, diamonds_earned, focus_score, chapters_studied, ended_at, started_at")
+          .in("user_id", buddyIdList)
+          .gte("ended_at", friendSinceIso)
+          .order("ended_at", { ascending: false })
+          .limit(30)
+      : { data: [] as DeepStudySessionRow[] | null };
+
+    const actionTimeline = actions
       .filter(
         (action) =>
           !!action.user_id &&
           buddyIds.has(action.user_id) &&
           !!action.action_type &&
-          COMPLETED_TASK_ACTIONS.includes(action.action_type) &&
+          BUDDY_ACTIVITY_ACTIONS.includes(action.action_type) &&
           !!action.created_at &&
           action.created_at >= friendSinceIso,
       )
-      .slice(0, 30)
       .map((action) => {
         const profile = profileMap.get(action.user_id!);
         return {
@@ -267,6 +372,25 @@ export async function GET(request: NextRequest) {
           actionType: action.action_type,
         };
       });
+
+    const deepStudyTimeline = ((deepStudyRows || []) as DeepStudySessionRow[])
+      .filter((session) => session.user_id && buddyIds.has(session.user_id))
+      .map((session) => {
+        const profile = profileMap.get(session.user_id!);
+        return {
+          id: `deep-study:${session.id || session.user_id}:${session.ended_at || session.started_at}`,
+          userId: session.user_id,
+          displayName: displayName(profile),
+          profileImageUrl: profile?.profile_image_url || null,
+          actionText: formatDeepStudyActivity(session),
+          createdAt: session.ended_at || session.started_at,
+          actionType: "deep_study_session",
+        };
+      });
+
+    const friendTimeline = [...actionTimeline, ...deepStudyTimeline]
+      .sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime())
+      .slice(0, 60);
 
     return NextResponse.json({
       topBuddies,

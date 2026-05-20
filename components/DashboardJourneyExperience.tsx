@@ -1650,7 +1650,7 @@ export default function DashboardJourneyExperience({
   const [studyModeGateDismissed, setStudyModeGateDismissed] = useState(true);
   const [freeStudyModeActive, setFreeStudyModeActive] = useState(false);
 
-  const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "buddies", "tv", "games", "share"] as const;
+  const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "share", "buddies", "tv", "games"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
   const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
@@ -1713,10 +1713,10 @@ export default function DashboardJourneyExperience({
     },
     { key: "bible_studies", label: "Bible Studies", icon: "\uD83C\uDF05", href: dashboardPageLinks.bible_studies?.href || "/bible-studies", onClick: dashboardPageLinks.bible_studies?.onClick },
     { key: "group", label: "Community", icon: "\uD83D\uDC65", href: dashboardPageLinks.group?.href || "/study-groups", onClick: dashboardPageLinks.group?.onClick },
+    { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
     { key: "buddies", label: "Buddies", icon: "\uD83E\uDD1D", href: "#buddies" },
     { key: "tv", label: "TV", icon: "\u25B6", href: dashboardPageLinks.tv?.href || "/biblebuddy-tv", onClick: dashboardPageLinks.tv?.onClick },
     { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
-    { key: "share", label: "Share", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
   ];
   const isPaidUser = profile?.is_paid === true || membershipStatus === "pro";
 
@@ -1854,7 +1854,7 @@ export default function DashboardJourneyExperience({
     let cancelled = false;
 
     async function loadBuddiesDashboard() {
-      if (buddiesDashboard || buddiesDashboardLoading) return;
+      if (buddiesDashboardLoading) return;
       setBuddiesDashboardLoading(true);
       setBuddiesDashboardError(null);
 
@@ -1876,14 +1876,21 @@ export default function DashboardJourneyExperience({
       }
     }
 
+    let refreshIntervalId: number | null = null;
     if (dashboardPageKeys[safeActivePage] === "buddies") {
       void loadBuddiesDashboard();
+      if (typeof window !== "undefined") {
+        refreshIntervalId = window.setInterval(() => {
+          void loadBuddiesDashboard();
+        }, 30000);
+      }
     }
 
     return () => {
       cancelled = true;
+      if (refreshIntervalId !== null) window.clearInterval(refreshIntervalId);
     };
-  }, [buddiesDashboard, buddiesDashboardLoading, safeActivePage]);
+  }, [buddiesDashboardLoading, safeActivePage]);
 
   useEffect(() => {
     if (dashboardPageKeys[safeActivePage] === "share" && userId) {
@@ -3447,9 +3454,9 @@ export default function DashboardJourneyExperience({
       <div className="mx-auto flex max-w-xl flex-col gap-4">
         <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Buddies</p>
-          <h2 className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#111827)]">Top Bible Buddies</h2>
+          <h2 className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#111827)]">See what your Buddies have been doing</h2>
           <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
-            App-wide Top 10 based on Bible tasks finished in the last rolling {buddiesDashboard?.meta?.topWindowDays || 30} days.
+            A live rolling log of your Bible Buddies' study progress, Deep Study sessions, notes, badges, games, and community activity.
           </p>
         </div>
 
@@ -3473,47 +3480,14 @@ export default function DashboardJourneyExperience({
             <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">{buddiesDashboardError}</p>
           </div>
         ) : (
-          <>
-            <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
-              <div className="space-y-3">
-                {(buddiesDashboard?.topBuddies || []).map((buddy) => (
-                  <div key={buddy.userId} className="flex items-center gap-3 rounded-[20px] bg-[var(--bb-surface,#f8fbff)] p-3">
-                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-sm font-black text-[var(--bb-button-text,#ffffff)]">
-                      #{buddy.rank}
-                    </div>
-                    {buddy.profileImageUrl ? (
-                      <img src={buddy.profileImageUrl} alt={buddy.displayName} loading="lazy" decoding="async" className="h-11 w-11 shrink-0 rounded-full object-cover" />
-                    ) : (
-                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
-                        {getBuddyInitial(buddy.displayName)}
-                      </div>
-                    )}
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">{buddy.displayName}</p>
-                      <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                        L{buddy.currentLevel} - {buddy.taskCount} completed Bible tasks
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-base font-black text-[var(--bb-text-primary,#111827)]">{buddy.score}</p>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--bb-text-muted,#6b7280)]">score</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {!(buddiesDashboard?.topBuddies || []).length ? (
-                <p className="py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">No ranking activity yet.</p>
-              ) : null}
-            </div>
-
-            <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
-              <h3 className="text-xl font-black text-[var(--bb-text-primary,#111827)]">Your Buddies' Timeline</h3>
+          <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+              <h3 className="text-xl font-black text-[var(--bb-text-primary,#111827)]">Buddy activity</h3>
               <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
-                Completed Bible study tasks from your mutual Buddies.
+                Updates from your personal Bible Buddies.
               </p>
-              <div className="mt-4 space-y-3">
+              <div className="mt-4 max-h-[62dvh] space-y-3 overflow-y-auto pr-1">
                 {(buddiesDashboard?.friendTimeline || []).map((item) => (
-                  <div key={item.id} className="flex gap-3 rounded-[20px] bg-[var(--bb-surface,#f8fbff)] p-3">
+                  <div key={item.id} className="bb-skin-glow-card flex gap-3 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#f8fbff)] p-3">
                     {item.profileImageUrl ? (
                       <img src={item.profileImageUrl} alt={item.displayName} loading="lazy" decoding="async" className="h-10 w-10 shrink-0 rounded-full object-cover" />
                     ) : (
@@ -3532,11 +3506,10 @@ export default function DashboardJourneyExperience({
               {!(buddiesDashboard?.friendTimeline || []).length ? (
                 <div className="mt-4 rounded-[20px] bg-[var(--bb-surface,#f8fbff)] p-5 text-center">
                   <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">No Buddy activity yet.</p>
-                  <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">Add Buddies from profiles and their Bible task progress will show up here.</p>
+                  <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">Add Buddies from profiles and their Bible Buddy activity will show up here.</p>
                 </div>
               ) : null}
             </div>
-          </>
         )}
       </div>
     </section>
@@ -4059,9 +4032,9 @@ export default function DashboardJourneyExperience({
           <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
             <div className="bg-[linear-gradient(135deg,var(--bb-accent-soft,#eaf5ff),var(--bb-card,#ffffff)_62%,#fff7d7)] px-4 pb-5 pt-5 sm:px-5">
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Buddy Rewards</p>
-              <h2 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Share Bible Buddy</h2>
+              <h2 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Invite Bible Buddies</h2>
               <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
-                Share Bible Buddy with friends and earn XP points and diamonds.
+                Invite friends to Bible Buddy and earn XP points and diamonds.
               </p>
 
               <div className="mt-5 flex items-center gap-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm">
@@ -5187,19 +5160,19 @@ export default function DashboardJourneyExperience({
         </div>
 
         <div className={getSlideClass(4)}>
-          {renderEmbeddedBuddiesPage()}
+          {renderEmbeddedSharePage()}
         </div>
 
         <div className={getSlideClass(5)}>
-          {renderEmbeddedTvPage()}
+          {renderEmbeddedBuddiesPage()}
         </div>
 
         <div className={getSlideClass(6)}>
-          {renderEmbeddedGamesPage()}
+          {renderEmbeddedTvPage()}
         </div>
 
         <div className={getSlideClass(7)}>
-          {renderEmbeddedSharePage()}
+          {renderEmbeddedGamesPage()}
         </div>
 
         {false ? (
