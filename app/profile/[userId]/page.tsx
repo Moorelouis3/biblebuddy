@@ -910,6 +910,7 @@ export default function PublicProfilePage() {
         "--profile-skin-accent": profileSkin.palette.accent,
         "--profile-skin-button": profileSkin.palette.button,
         "--profile-skin-button-text": profileSkin.palette.buttonText,
+        "--profile-skin-background": profileSkin.palette.background,
         "--profile-skin-glow": profileSkin.id === "ruby-village"
           ? "rgba(255, 115, 95, 0.38)"
           : profileSkin.id === "angel-wings"
@@ -930,16 +931,23 @@ export default function PublicProfilePage() {
           .profile-page-shell--skinned {
             position: relative;
             overflow-x: hidden;
+            isolation: isolate;
+            background-color: var(--profile-skin-background);
             background:
-              linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.46) 62%, rgba(0,0,0,0.72) 100%),
-              var(--profile-skin-bg) center top / cover fixed no-repeat;
+              linear-gradient(180deg, color-mix(in srgb, var(--profile-skin-background) 6%, transparent) 0%, color-mix(in srgb, var(--profile-skin-background) 42%, transparent) 58%, color-mix(in srgb, var(--profile-skin-background) 78%, #000000) 100%),
+              var(--profile-skin-bg) center top / min(100vw, 920px) auto fixed no-repeat;
             color: var(--profile-skin-text);
+          }
+          .profile-page-shell--skinned[data-profile-skin="lavender-prayer"] {
+            background:
+              linear-gradient(180deg, rgba(19, 13, 31, 0.04) 0%, rgba(19, 13, 31, 0.42) 56%, rgba(19, 13, 31, 0.84) 100%),
+              var(--profile-skin-bg) center top / min(100vw, 920px) auto fixed no-repeat;
           }
           @media (max-width: 767px) {
             .profile-page-shell--skinned {
               background:
-                linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.48) 62%, rgba(0,0,0,0.74) 100%),
-                var(--profile-skin-bg-mobile) center top / cover fixed no-repeat;
+                linear-gradient(180deg, color-mix(in srgb, var(--profile-skin-background) 4%, transparent) 0%, color-mix(in srgb, var(--profile-skin-background) 48%, transparent) 58%, color-mix(in srgb, var(--profile-skin-background) 82%, #000000) 100%),
+                var(--profile-skin-bg-mobile) center top / 100% auto fixed no-repeat;
             }
           }
           .profile-page-shell--skinned::before {
@@ -949,20 +957,48 @@ export default function PublicProfilePage() {
             pointer-events: none;
             background:
               radial-gradient(circle at 50% 12%, var(--profile-skin-glow), transparent 34%),
-              linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.18) 48%, rgba(0,0,0,0.56) 100%);
+              radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--profile-skin-accent) 18%, transparent), transparent 42%),
+              linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--profile-skin-background) 24%, transparent) 48%, color-mix(in srgb, var(--profile-skin-background) 70%, #000000) 100%);
+            z-index: 0;
+          }
+          .profile-page-shell--skinned::after {
+            content: "";
+            position: fixed;
+            inset: auto 0 0;
+            height: 42vh;
+            pointer-events: none;
+            background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--profile-skin-background) 88%, #000000));
             z-index: 0;
           }
           .profile-page-shell--skinned > * {
             position: relative;
             z-index: 1;
           }
+          .profile-page-shell--skinned .profile-skin-container {
+            padding-top: 1.1rem;
+          }
+          .profile-page-shell--skinned .profile-skin-breadcrumb {
+            margin-bottom: 1rem;
+            border: 1px solid color-mix(in srgb, var(--profile-skin-accent) 22%, transparent);
+            border-radius: 18px;
+            background: color-mix(in srgb, var(--profile-skin-card) 72%, transparent);
+            padding: 0.75rem 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+          }
           .profile-page-shell--skinned .profile-skin-card {
             border-color: var(--profile-skin-card-border) !important;
-            background: color-mix(in srgb, var(--profile-skin-card) 82%, transparent) !important;
+            background:
+              radial-gradient(circle at 16% 0%, color-mix(in srgb, var(--profile-skin-accent) 16%, transparent), transparent 38%),
+              linear-gradient(135deg, color-mix(in srgb, var(--profile-skin-card) 88%, transparent), color-mix(in srgb, var(--profile-skin-surface) 72%, transparent)) !important;
             color: var(--profile-skin-text) !important;
-            box-shadow: 0 22px 70px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.14) !important;
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            box-shadow:
+              0 24px 72px rgba(0,0,0,0.38),
+              0 0 34px color-mix(in srgb, var(--profile-skin-accent) 13%, transparent),
+              inset 0 1px 0 rgba(255,255,255,0.14) !important;
+            backdrop-filter: blur(20px) saturate(1.08);
+            -webkit-backdrop-filter: blur(20px) saturate(1.08);
           }
           .profile-page-shell--skinned .profile-skin-card h1,
           .profile-page-shell--skinned .profile-skin-card h2,
@@ -971,6 +1007,8 @@ export default function PublicProfilePage() {
             color: var(--profile-skin-text) !important;
           }
           .profile-page-shell--skinned .profile-skin-card p,
+          .profile-page-shell--skinned .profile-skin-card span,
+          .profile-page-shell--skinned .profile-skin-card button,
           .profile-page-shell--skinned .profile-skin-card .profile-skin-secondary {
             color: var(--profile-skin-text-secondary) !important;
           }
@@ -992,9 +1030,11 @@ export default function PublicProfilePage() {
           }
           .profile-page-shell--skinned .profile-skin-stat-card,
           .profile-page-shell--skinned .profile-skin-inner {
-            border-color: color-mix(in srgb, var(--profile-skin-accent) 24%, transparent) !important;
-            background: color-mix(in srgb, var(--profile-skin-surface-soft) 72%, transparent) !important;
+            border-color: color-mix(in srgb, var(--profile-skin-accent) 28%, transparent) !important;
+            background:
+              linear-gradient(135deg, color-mix(in srgb, var(--profile-skin-surface-soft) 76%, transparent), color-mix(in srgb, var(--profile-skin-card) 58%, transparent)) !important;
             color: var(--profile-skin-text) !important;
+            box-shadow: 0 12px 34px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.10);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
           }
@@ -1007,12 +1047,37 @@ export default function PublicProfilePage() {
           .profile-page-shell--skinned .profile-skin-stat-card div:first-child {
             color: var(--profile-skin-text) !important;
           }
+          .profile-page-shell--skinned .profile-skin-admin {
+            border-color: color-mix(in srgb, var(--profile-skin-accent) 30%, transparent) !important;
+            background: color-mix(in srgb, var(--profile-skin-surface-soft) 68%, transparent) !important;
+          }
+          .profile-page-shell--skinned .profile-skin-input {
+            border-color: color-mix(in srgb, var(--profile-skin-accent) 34%, transparent) !important;
+            background: color-mix(in srgb, var(--profile-skin-background) 64%, transparent) !important;
+            color: var(--profile-skin-text) !important;
+          }
+          .profile-page-shell--skinned .profile-skin-link-row {
+            border-color: color-mix(in srgb, var(--profile-skin-accent) 22%, transparent) !important;
+            background: color-mix(in srgb, var(--profile-skin-surface-soft) 58%, transparent) !important;
+          }
+          .profile-page-shell--skinned .profile-skin-action-log-row {
+            border-color: color-mix(in srgb, var(--profile-skin-accent) 18%, transparent) !important;
+            background: color-mix(in srgb, var(--profile-skin-surface-soft) 48%, transparent) !important;
+            color: var(--profile-skin-text-secondary) !important;
+          }
+          .profile-page-shell--skinned .profile-skin-danger {
+            color: #ff9aa7 !important;
+          }
+          .profile-page-shell--skinned .profile-skin-card .profile-skin-primary,
+          .profile-page-shell--skinned .profile-skin-card h1 {
+            text-shadow: 0 2px 18px color-mix(in srgb, var(--profile-skin-accent) 18%, transparent);
+          }
         `}</style>
       ) : null}
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="profile-skin-container max-w-2xl mx-auto px-4 py-8">
 
         {/* Breadcrumb */}
-        <nav className="text-sm text-gray-500 mb-6">
+        <nav className="profile-skin-breadcrumb text-sm text-gray-500 mb-6">
           <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
           <span className="mx-2">›</span>
           <Link href="/profile" className="hover:text-gray-700 transition">Profile</Link>
@@ -1043,10 +1108,10 @@ export default function PublicProfilePage() {
         )}
 
         <div className="profile-skin-card bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
-          <div className="flex items-start gap-5">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
 
             {/* Avatar */}
-            <div className="flex-shrink-0">
+            <div className="flex flex-shrink-0 justify-center sm:block">
               {stats?.profile_image_url ? (
                 <img
                   src={stats.profile_image_url}
@@ -1065,10 +1130,10 @@ export default function PublicProfilePage() {
 
             {/* Name + username + bio + meta */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between gap-3">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
-                    <h1 className="text-2xl font-bold text-gray-900 leading-tight">{displayName}</h1>
+                    <h1 className="profile-skin-primary text-2xl font-bold text-gray-900 leading-tight">{displayName}</h1>
                     <StreakFlameBadge currentStreak={displayStats.current_streak} flameId={stats?.selected_streak_flame} />
                     <UserBadge
                       customBadge={stats?.member_badge}
@@ -1098,7 +1163,7 @@ export default function PublicProfilePage() {
                     {stats?.member_badge === "buddy_partner" && (
                       <Link
                         href="/ambassador"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold bg-teal-50 border border-teal-200 text-teal-700 hover:bg-teal-100 transition"
+                        className="profile-skin-button inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold bg-teal-50 border border-teal-200 text-teal-700 hover:bg-teal-100 transition"
                       >
                         🤝 Partner Dashboard
                       </Link>
@@ -1110,21 +1175,21 @@ export default function PublicProfilePage() {
                       <button
                         onClick={handleAddBuddy}
                         disabled={buddyActionLoading}
-                        className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition disabled:opacity-60"
-                        style={{ backgroundColor: "#4a9b6f" }}
+                        className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition disabled:opacity-60"
+                        style={{ backgroundColor: profileSkin ? undefined : "#4a9b6f" }}
                       >
                         Add Buddy
                       </button>
                     )}
                     {buddyState === "pending_sent" && (
                       <>
-                        <span className="px-4 py-1.5 rounded-lg text-sm font-medium text-gray-500 bg-gray-100 border border-gray-200">
+                        <span className="profile-skin-inner px-4 py-1.5 rounded-lg text-sm font-medium text-gray-500 bg-gray-100 border border-gray-200">
                           Request Sent
                         </span>
                         <button
                           onClick={handleCancelRequest}
                           disabled={buddyActionLoading}
-                          className="text-xs text-red-500 hover:underline disabled:opacity-60"
+                          className="profile-skin-danger text-xs text-red-500 hover:underline disabled:opacity-60"
                         >
                           Cancel Request
                         </button>
@@ -1135,15 +1200,15 @@ export default function PublicProfilePage() {
                         <button
                           onClick={handleAcceptRequest}
                           disabled={buddyActionLoading}
-                          className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition disabled:opacity-60"
-                          style={{ backgroundColor: "#4a9b6f" }}
+                          className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition disabled:opacity-60"
+                          style={{ backgroundColor: profileSkin ? undefined : "#4a9b6f" }}
                         >
                           Accept
                         </button>
                         <button
                           onClick={handleDeclineRequest}
                           disabled={buddyActionLoading}
-                          className="px-4 py-1.5 rounded-lg text-sm font-medium text-gray-600 bg-gray-100 border border-gray-200 hover:bg-gray-200 transition disabled:opacity-60"
+                          className="profile-skin-inner px-4 py-1.5 rounded-lg text-sm font-medium text-gray-600 bg-gray-100 border border-gray-200 hover:bg-gray-200 transition disabled:opacity-60"
                         >
                           Decline
                         </button>
@@ -1154,23 +1219,23 @@ export default function PublicProfilePage() {
                         {conversationId ? (
                           <button
                             onClick={() => router.push(`/messages/${conversationId}`)}
-                            className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition"
-                            style={{ backgroundColor: "#4a9b6f" }}
+                            className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition"
+                            style={{ backgroundColor: profileSkin ? undefined : "#4a9b6f" }}
                           >
                             Message
                           </button>
                         ) : (
                           <button
                             onClick={() => router.push("/messages")}
-                            className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition"
-                            style={{ backgroundColor: "#4a9b6f" }}
+                            className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition"
+                            style={{ backgroundColor: profileSkin ? undefined : "#4a9b6f" }}
                           >
                             Message
                           </button>
                         )}
                         <button
                           onClick={() => setShowRemoveBuddyConfirm(true)}
-                          className="text-xs text-red-500 hover:underline"
+                          className="profile-skin-danger text-xs text-red-500 hover:underline"
                         >
                           Remove Buddy
                         </button>
@@ -1182,11 +1247,11 @@ export default function PublicProfilePage() {
 
               {/* Bio */}
               {stats?.bio && (
-                <p className="text-sm text-gray-500 italic mt-2 line-clamp-2">{stats.bio}</p>
+                <p className="profile-skin-secondary text-sm text-gray-500 italic mt-2 line-clamp-2">{stats.bio}</p>
               )}
 
               {/* Meta row */}
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-3 text-xs text-gray-500">
+              <div className="profile-skin-secondary flex flex-wrap items-center gap-x-4 gap-y-1 mt-3 text-xs text-gray-500">
                 {stats?.location && (
                   <span>📍 {stats.location}</span>
                 )}
@@ -1207,7 +1272,7 @@ export default function PublicProfilePage() {
               </div>
 
               {canAssignBadges && (
-                <div className="mt-4 rounded-2xl border border-gray-200 bg-gray-50 p-4">
+                <div className="profile-skin-admin mt-4 rounded-2xl border border-gray-200 bg-gray-50 p-4">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-gray-900">Buddy Badge</p>
@@ -1217,7 +1282,7 @@ export default function PublicProfilePage() {
                       <select
                         value={badgeDraft}
                         onChange={(e) => setBadgeDraft(e.target.value)}
-                        className="mt-3 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none"
+                          className="profile-skin-input mt-3 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none"
                       >
                         {CUSTOM_MEMBER_BADGE_OPTIONS.map((option) => (
                           <option key={option.value || "none"} value={option.value}>
@@ -1229,8 +1294,8 @@ export default function PublicProfilePage() {
                     <button
                       onClick={handleSaveMemberBadge}
                       disabled={savingBadge}
-                      className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition disabled:opacity-60"
-                      style={{ backgroundColor: "#4a9b6f" }}
+                      className="profile-skin-button rounded-xl px-4 py-2 text-sm font-semibold text-white transition disabled:opacity-60"
+                      style={{ backgroundColor: profileSkin ? undefined : "#4a9b6f" }}
                     >
                       {savingBadge ? "Saving..." : "Save Badge"}
                     </button>
@@ -1295,7 +1360,7 @@ export default function PublicProfilePage() {
                 {displayStreak.currentStreak === 0 ? "No active streak" : "Active streak"}
               </p>
             </div>
-            <span className="rounded-full border border-[#d9eadf] bg-[#f3faf5] px-3 py-1 text-xs font-medium text-[#356c50]">
+            <span className="profile-skin-inner rounded-full border border-[#d9eadf] bg-[#f3faf5] px-3 py-1 text-xs font-medium text-[#356c50]">
               Past 6 months
             </span>
           </div>
@@ -1383,15 +1448,15 @@ export default function PublicProfilePage() {
                 <button
                   type="button"
                   onClick={() => setShowHeatMapInfoModal(true)}
-                  className="w-fit text-sm font-medium text-[#4a9b6f] transition hover:text-[#356c50]"
+                  className="w-fit text-sm font-medium text-[var(--profile-skin-accent,#4a9b6f)] transition hover:brightness-110"
                 >
                   What is this?
                 </button>
                 <div className="flex items-center gap-2 whitespace-nowrap">
                   <span>Less</span>
-                  <span className="h-3.5 w-3.5 rounded-[4px] border border-gray-200 bg-gray-100" />
-                  <span className="h-3.5 w-3.5 rounded-[4px] border border-[#9fd2b4] bg-[#bfe6ce]" />
-                  <span className="h-3.5 w-3.5 rounded-[4px] border border-[#4a9b6f] bg-[#4a9b6f]" />
+                  <span className="h-3.5 w-3.5 rounded-[4px] border border-[color-mix(in_srgb,var(--profile-skin-accent,#4a9b6f)_18%,transparent)] bg-[color-mix(in_srgb,var(--profile-skin-card,#f8fcf9)_70%,transparent)]" />
+                  <span className="h-3.5 w-3.5 rounded-[4px] border border-[color-mix(in_srgb,var(--profile-skin-accent,#4a9b6f)_42%,transparent)] bg-[color-mix(in_srgb,var(--profile-skin-accent,#4a9b6f)_34%,transparent)]" />
+                  <span className="h-3.5 w-3.5 rounded-[4px] border border-[var(--profile-skin-accent,#4a9b6f)] bg-[var(--profile-skin-accent,#4a9b6f)]" />
                   <span>More</span>
                 </div>
               </div>
@@ -1490,12 +1555,12 @@ export default function PublicProfilePage() {
               {userGroups.map((group) => (
                 <Link key={group.id} href={`/study-groups/${group.id}`}>
                   <div
-                    className="flex items-center gap-3 p-3 rounded-xl hover:opacity-80 transition cursor-pointer"
-                    style={{ backgroundColor: group.cover_color ? group.cover_color + "55" : "#f3f4f6" }}
+                    className="profile-skin-link-row flex items-center gap-3 p-3 rounded-xl hover:opacity-80 transition cursor-pointer"
+                    style={profileSkin ? undefined : { backgroundColor: group.cover_color ? group.cover_color + "55" : "#f3f4f6" }}
                   >
                     <div
                       className="w-10 h-10 rounded-lg flex items-center justify-center text-xl flex-shrink-0"
-                      style={{ backgroundColor: group.cover_color || "#d4ecd4" }}
+                      style={{ backgroundColor: profileSkin ? "color-mix(in srgb, var(--profile-skin-accent) 28%, transparent)" : group.cover_color || "#d4ecd4" }}
                     >
                       {group.cover_emoji || "🤝"}
                     </div>
@@ -1567,7 +1632,7 @@ export default function PublicProfilePage() {
                   <a
                     key={index}
                     href={action.url}
-                    className={`${getActionColorClass(action.actionType)} px-6 py-3 text-sm text-gray-700 flex items-center justify-between gap-2 hover:brightness-95 transition ${
+                    className={`profile-skin-action-log-row ${getActionColorClass(action.actionType)} px-6 py-3 text-sm text-gray-700 flex items-center justify-between gap-2 hover:brightness-95 transition ${
                       index < actionLog.length - 1 ? "border-b border-gray-100" : ""
                     }`}
                   >
@@ -1577,7 +1642,7 @@ export default function PublicProfilePage() {
                 ) : (
                   <div
                     key={index}
-                    className={`${getActionColorClass(action.actionType)} px-6 py-3 text-sm text-gray-700 ${
+                    className={`profile-skin-action-log-row ${getActionColorClass(action.actionType)} px-6 py-3 text-sm text-gray-700 ${
                       index < actionLog.length - 1 ? "border-b border-gray-100" : ""
                     }`}
                   >

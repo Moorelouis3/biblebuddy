@@ -1766,7 +1766,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, [userId, showOnboardingModal, onboardingStudySelectionOnly]);
 
   // Treat iframe-embedded pages the same as bare pages (no shell/nav)
-  const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded;
+  const isPublicProfilePage = Boolean(pathname?.startsWith("/profile/"));
+  const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded || isPublicProfilePage;
 
   useEffect(() => {
     function handleDashboardStoreState(event: Event) {
