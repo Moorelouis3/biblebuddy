@@ -8190,6 +8190,7 @@ export default function DashboardPage() {
             padding-top: 8px !important;
             background: transparent !important;
             background-color: transparent !important;
+            background-image: none !important;
             border-top: 0 !important;
             border-left-color: transparent !important;
             border-right-color: transparent !important;
