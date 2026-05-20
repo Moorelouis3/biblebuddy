@@ -1676,6 +1676,7 @@ export default function DashboardJourneyExperience({
   const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<BibleYearDayCardKey | null>(null);
   const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>>({});
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
+  const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
   const [bibleYearSelectedTerm, setBibleYearSelectedTerm] = useState<BibleDatabaseTerm | null>(null);
   const [bibleYearTermBurstKey, setBibleYearTermBurstKey] = useState(0);
   const [bibleYearTermNotes, setBibleYearTermNotes] = useState<string | null>(null);
@@ -4772,6 +4773,16 @@ Before we understand redemption, we need to understand what God made humanity fo
     return { label: "Finish", markDone: false };
   }
 
+  function markBibleYearDayCardComplete(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
+    setBibleYearCompletedCardsByDay((current) => ({
+      ...current,
+      [day.dayNumber]: {
+        ...(current[day.dayNumber] || {}),
+        [card]: true,
+      },
+    }));
+  }
+
   function buildBibleYearDayTasks(day: GenesisBibleYearDay | null): TaskState[] {
     if (!day) return [];
     const dayLabel = `Day ${day.dayNumber}`;
@@ -4821,6 +4832,13 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (card === "trivia") {
       const correctTriviaCount = bibleYearDayOneTrivia.filter((item) => bibleYearTriviaAnswers[item.id] === item.answer).length;
       const answeredTriviaCount = bibleYearDayOneTrivia.filter((item) => Boolean(bibleYearTriviaAnswers[item.id])).length;
+      const currentQuestionIndex = Math.min(
+        bibleYearTriviaQuestionIndexByDay[day.dayNumber] || 0,
+        bibleYearDayOneTrivia.length - 1,
+      );
+      const currentQuestion = bibleYearDayOneTrivia[currentQuestionIndex];
+      const selectedAnswer = currentQuestion ? bibleYearTriviaAnswers[currentQuestion.id] : null;
+      const isLastTriviaQuestion = currentQuestionIndex >= bibleYearDayOneTrivia.length - 1;
       return (
         <div className="px-4 pb-4">
           <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
@@ -4829,39 +4847,72 @@ Before we understand redemption, we need to understand what God made humanity fo
             <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
               {answeredTriviaCount === bibleYearDayOneTrivia.length
                 ? `You got ${correctTriviaCount} of ${bibleYearDayOneTrivia.length} right.`
-                : "Answer five quick questions from the Day 1 reading."}
+                : `Question ${currentQuestionIndex + 1} of ${bibleYearDayOneTrivia.length}`}
             </p>
-            <div className="mt-4 space-y-4">
-              {bibleYearDayOneTrivia.map((item, index) => {
-                const selected = bibleYearTriviaAnswers[item.id];
-                return (
-                  <div key={item.id} className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-3">
-                    <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{index + 1}. {item.question}</p>
-                    <div className="mt-3 grid gap-2">
-                      {item.options.map((option) => {
-                        const isSelected = selected === option;
-                        const isCorrect = option === item.answer;
-                        return (
-                          <button
-                            key={option}
-                            type="button"
-                            onClick={() => setBibleYearTriviaAnswers((current) => ({ ...current, [item.id]: option }))}
-                            className={`rounded-2xl border px-3 py-2.5 text-left text-sm font-bold transition ${
-                              isSelected
-                                ? isCorrect
-                                  ? "border-emerald-400 bg-emerald-100 text-emerald-950"
-                                  : "border-rose-400 bg-rose-100 text-rose-950"
-                                : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-secondary,#4b5563)] hover:border-[var(--bb-accent,#2f7fe8)]"
-                            }`}
-                          >
-                            {option}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
+            {currentQuestion ? (
+              <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-3">
+                <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{currentQuestion.question}</p>
+                <div className="mt-3 grid gap-2">
+                  {currentQuestion.options.map((option) => {
+                    const isSelected = selectedAnswer === option;
+                    const isCorrect = option === currentQuestion.answer;
+                    return (
+                      <button
+                        key={option}
+                        type="button"
+                        onClick={() => setBibleYearTriviaAnswers((current) => ({ ...current, [currentQuestion.id]: option }))}
+                        className={`rounded-2xl border px-3 py-3 text-left text-sm font-bold transition ${
+                          isSelected
+                            ? isCorrect
+                              ? "border-emerald-400 bg-emerald-100 text-emerald-950"
+                              : "border-rose-400 bg-rose-100 text-rose-950"
+                            : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-secondary,#4b5563)] hover:border-[var(--bb-accent,#2f7fe8)]"
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    );
+                  })}
+                </div>
+                {selectedAnswer ? (
+                  <p className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                    {selectedAnswer === currentQuestion.answer ? "Correct." : `Not quite. Answer: ${currentQuestion.answer}`}
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() =>
+                  setBibleYearTriviaQuestionIndexByDay((current) => ({
+                    ...current,
+                    [day.dayNumber]: Math.max(0, currentQuestionIndex - 1),
+                  }))
+                }
+                disabled={currentQuestionIndex === 0}
+                className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-2.5 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:border-[var(--bb-accent,#2f7fe8)] disabled:cursor-not-allowed disabled:opacity-45"
+              >
+                Back
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  if (!selectedAnswer) return;
+                  if (isLastTriviaQuestion) {
+                    markBibleYearDayCardComplete(day, "trivia");
+                    return;
+                  }
+                  setBibleYearTriviaQuestionIndexByDay((current) => ({
+                    ...current,
+                    [day.dayNumber]: Math.min(bibleYearDayOneTrivia.length - 1, currentQuestionIndex + 1),
+                  }));
+                }}
+                disabled={!selectedAnswer}
+                className="rounded-full bg-[var(--bb-button,#2f7fe8)] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-55"
+              >
+                {isLastTriviaQuestion ? "Finish Trivia" : "Next"}
+              </button>
             </div>
           </div>
         </div>
@@ -5083,6 +5134,18 @@ Before we understand redemption, we need to understand what God made humanity fo
               </ChapterNotesMarkdown>
             )}
           </div>
+
+          {!bibleYearSelectedTerm ? (
+            <div className="mb-5 flex justify-end">
+              <button
+                type="button"
+                onClick={() => markBibleYearDayCardComplete(day, "reading")}
+                className="rounded-full bg-[var(--bb-button,#2f7fe8)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+              >
+                {bibleYearCompletedCardsByDay[day.dayNumber]?.reading ? "Completed" : "Mark as Complete"}
+              </button>
+            </div>
+          ) : null}
 
           <div className="border-t border-[var(--bb-card-border,#dbe7f4)] pt-5">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">After the lesson</p>
