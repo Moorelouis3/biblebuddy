@@ -151,13 +151,8 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel a[class*="bg-
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-page {
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.05), color-mix(in srgb, var(--bb-background) 24%, transparent) 42%, color-mix(in srgb, var(--bb-background) 42%, transparent)),
-    var(--bb-skin-bg-image) !important;
-  background-attachment: fixed !important;
-  background-position: center top !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-bible-studies-page {
@@ -336,11 +331,8 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="text-g
 
 @media (max-width: 767px) {
   html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-page {
-    background-image:
-      linear-gradient(180deg, color-mix(in srgb, var(--bb-background) 18%, transparent), transparent 74%),
-      var(--bb-skin-bg-image-mobile) !important;
-    background-size: 100% auto !important;
-    background-position: center top !important;
+    background: transparent !important;
+    background-color: transparent !important;
   }
 
   html[data-bb-skin="ruby-village"] .bb-community-header {
@@ -348,8 +340,39 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="text-g
   }
 
   html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-content {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    padding-top: 22px !important;
+  }
+
+  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header > div,
+  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed > .mx-auto,
+  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed > .bb-community-content {
+    max-width: min(100%, 26rem) !important;
+  }
+
+  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed .bb-community-content > .flex.flex-col {
+    gap: 2rem !important;
+  }
+
+  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-composer,
+  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-post-card,
+  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feature-card,
+  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 24px !important;
+    padding: 1rem !important;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 72%, transparent), color-mix(in srgb, var(--bb-surface-soft) 30%, transparent)) !important;
+    box-shadow:
+      0 14px 34px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  }
+
+  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-post-card img,
+  html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feature-card img {
+    max-width: 100%;
   }
 }
 @import "tailwindcss";
@@ -1387,7 +1410,9 @@ html[data-bb-skin="lavender-prayer"] header > div,
 html[data-bb-skin="ruby-village"] header > div,
 html[data-bb-skin="slow-mornings"] header > div,
 html[data-bb-skin="morning-mercy"] header > div,
-html[data-bb-skin="angel-wings"] header > div {
+html[data-bb-skin="angel-wings"] header > div,
+html[data-bb-skin="winter-cabin"] header > div,
+html[data-bb-skin="mount-sinai"] header > div {
   background: transparent !important;
   height: 0 !important;
   min-height: 0 !important;
@@ -1402,7 +1427,9 @@ html[data-bb-skin="lavender-prayer"] .bb-landing-header,
 html[data-bb-skin="ruby-village"] .bb-landing-header,
 html[data-bb-skin="slow-mornings"] .bb-landing-header,
 html[data-bb-skin="morning-mercy"] .bb-landing-header,
-html[data-bb-skin="angel-wings"] .bb-landing-header {
+html[data-bb-skin="angel-wings"] .bb-landing-header,
+html[data-bb-skin="winter-cabin"] .bb-landing-header,
+html[data-bb-skin="mount-sinai"] .bb-landing-header {
   position: relative !important;
   top: auto !important;
   left: auto !important;
@@ -3690,7 +3717,10 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="ruby-village"] header,
   html[data-bb-skin="slow-mornings"] header,
   html[data-bb-skin="morning-mercy"] header,
-  html[data-bb-skin="carolina-coastline"] header {
+  html[data-bb-skin="carolina-coastline"] header,
+  html[data-bb-skin="angel-wings"] header,
+  html[data-bb-skin="winter-cabin"] header,
+  html[data-bb-skin="mount-sinai"] header {
     position: sticky !important;
     top: 0 !important;
     left: auto !important;
@@ -3715,7 +3745,10 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="ruby-village"] header > div,
   html[data-bb-skin="slow-mornings"] header > div,
   html[data-bb-skin="morning-mercy"] header > div,
-  html[data-bb-skin="carolina-coastline"] header > div {
+  html[data-bb-skin="carolina-coastline"] header > div,
+  html[data-bb-skin="angel-wings"] header > div,
+  html[data-bb-skin="winter-cabin"] header > div,
+  html[data-bb-skin="mount-sinai"] header > div {
     background: transparent !important;
     background-color: transparent !important;
     height: auto !important;
@@ -3730,7 +3763,10 @@ html[data-bb-app-hidden="true"] *::after {
   html[data-bb-skin="ruby-village"] .bb-blue-storm-mobile-stage,
   html[data-bb-skin="slow-mornings"] .bb-blue-storm-mobile-stage,
   html[data-bb-skin="morning-mercy"] .bb-blue-storm-mobile-stage,
-  html[data-bb-skin="carolina-coastline"] .bb-blue-storm-mobile-stage {
+  html[data-bb-skin="carolina-coastline"] .bb-blue-storm-mobile-stage,
+  html[data-bb-skin="angel-wings"] .bb-blue-storm-mobile-stage,
+  html[data-bb-skin="winter-cabin"] .bb-blue-storm-mobile-stage,
+  html[data-bb-skin="mount-sinai"] .bb-blue-storm-mobile-stage {
     margin-top: 0 !important;
   }
 }

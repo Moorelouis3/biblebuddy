@@ -9136,22 +9136,15 @@ export default function DashboardPage() {
         html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage,
         html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage {
           background-image: none !important;
+          background: transparent !important;
           background-color: transparent !important;
+          background-attachment: initial !important;
+          background-size: initial !important;
+          background-position: initial !important;
+          background-repeat: initial !important;
         }
-        html[data-bb-skin="blue-storm"] .dashboard-shell,
-        html[data-bb-skin="midnight-garden"] .dashboard-shell,
-        html[data-bb-skin="lavender-prayer"] .dashboard-shell,
-        html[data-bb-skin="ruby-village"] .dashboard-shell,
-        html[data-bb-skin="blue-storm"] .bb-blue-storm-stage,
-        html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage,
-        html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage,
-        html[data-bb-skin="ruby-village"] .bb-blue-storm-stage,
-        html[data-bb-skin="slow-mornings"] .dashboard-shell,
-        html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage,
-        html[data-bb-skin="morning-mercy"] .dashboard-shell,
-        html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage,
-        html[data-bb-skin="carolina-coastline"] .dashboard-shell,
-        html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage {
+        html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell,
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage {
           overflow: visible !important;
         }
         @media (max-width: 1023px) {
@@ -9163,49 +9156,17 @@ export default function DashboardPage() {
             min-height: auto !important;
             animation: none !important;
           }
-          html[data-bb-skin="blue-storm"] .dashboard-shell,
-          html[data-bb-skin="midnight-garden"] .dashboard-shell,
-          html[data-bb-skin="lavender-prayer"] .dashboard-shell,
-          html[data-bb-skin="ruby-village"] .dashboard-shell,
-          html[data-bb-skin="blue-storm"] .bb-blue-storm-stage,
-          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage,
-          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage,
-          html[data-bb-skin="ruby-village"] .bb-blue-storm-stage,
-          html[data-bb-skin="slow-mornings"] .dashboard-shell,
-          html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage,
-          html[data-bb-skin="morning-mercy"] .dashboard-shell,
-          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage,
-          html[data-bb-skin="carolina-coastline"] .dashboard-shell,
-          html[data-bb-skin="carolina-coastline"] .bb-blue-storm-stage {
+          html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell,
+          html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage {
             isolation: auto !important;
             box-shadow: none !important;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
           }
-          html[data-bb-skin="blue-storm"] .dashboard-shell::before,
-          html[data-bb-skin="blue-storm"] .dashboard-shell::after,
-          html[data-bb-skin="midnight-garden"] .dashboard-shell::before,
-          html[data-bb-skin="midnight-garden"] .dashboard-shell::after,
-          html[data-bb-skin="lavender-prayer"] .dashboard-shell::before,
-          html[data-bb-skin="lavender-prayer"] .dashboard-shell::after,
-          html[data-bb-skin="ruby-village"] .dashboard-shell::before,
-          html[data-bb-skin="ruby-village"] .dashboard-shell::after,
-          html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::before,
-          html[data-bb-skin="blue-storm"] .bb-blue-storm-stage::after,
-          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::before,
-          html[data-bb-skin="midnight-garden"] .bb-blue-storm-stage::after,
-          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::before,
-          html[data-bb-skin="lavender-prayer"] .bb-blue-storm-stage::after,
-          html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::before,
-          html[data-bb-skin="ruby-village"] .bb-blue-storm-stage::after,
-          html[data-bb-skin="slow-mornings"] .dashboard-shell::before,
-          html[data-bb-skin="slow-mornings"] .dashboard-shell::after,
-          html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage::before,
-          html[data-bb-skin="slow-mornings"] .bb-blue-storm-stage::after,
-          html[data-bb-skin="morning-mercy"] .dashboard-shell::before,
-          html[data-bb-skin="morning-mercy"] .dashboard-shell::after,
-          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::before,
-          html[data-bb-skin="morning-mercy"] .bb-blue-storm-stage::after {
+          html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell::before,
+          html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell::after,
+          html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage::before,
+          html[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage::after {
             display: none !important;
             animation: none !important;
           }
