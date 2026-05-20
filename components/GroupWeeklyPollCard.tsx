@@ -25,11 +25,13 @@ export default function GroupWeeklyPollCard({
   userId,
   compactResults = false,
   onOpen,
+  embedded = false,
 }: {
   pollSet: PollFeedSet;
   userId: string | null;
   compactResults?: boolean;
   onOpen?: () => void;
+  embedded?: boolean;
 }) {
   const [currentVote, setCurrentVote] = useState<string | null>(pollSet.current_user_vote);
   const [voteCounts, setVoteCounts] = useState<Record<string, number>>(pollSet.vote_counts);
@@ -148,7 +150,7 @@ export default function GroupWeeklyPollCard({
           onOpen();
         }
       }}
-      className={`rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4 ${compactResults && onOpen ? "cursor-pointer" : ""}`}
+      className={`${embedded ? "" : "rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4"} ${compactResults && onOpen ? "cursor-pointer" : ""}`}
     >
       {pollSet.intro ? <p className="text-sm leading-relaxed text-[var(--bb-text-secondary,#4b5563)]">{pollSet.intro}</p> : null}
       <div className="mt-4 space-y-2.5">

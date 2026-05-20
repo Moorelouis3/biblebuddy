@@ -29,11 +29,13 @@ export default function GroupWeeklyTriviaCard({
   userId,
   onAfterComplete,
   compactBoard = false,
+  embedded = false,
 }: {
   triviaSet: WeeklyGroupTriviaSet;
   userId: string | null;
   onAfterComplete?: () => void;
   compactBoard?: boolean;
+  embedded?: boolean;
 }) {
   const questions = triviaSet.questions;
   const totalQuestions = questions.length;
@@ -222,7 +224,7 @@ export default function GroupWeeklyTriviaCard({
 
   return (
     <div
-      className="rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4"
+      className={embedded ? "" : "rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-4"}
       onClick={(event) => event.stopPropagation()}
       onKeyDown={(event) => event.stopPropagation()}
     >

@@ -1715,8 +1715,8 @@ export default function GroupChatPage() {
   const [composerVideoPreview, setComposerVideoPreview] = useState<string | null>(null);
   const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
   const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
-  // One pinned post plus five regular posts keeps the embedded Community fast.
-  const FEED_PAGE_SIZE = 6;
+  // Weekly cards plus three fresh posts keep first paint fast; later pages load five at a time.
+  const FEED_PAGE_SIZE = 5;
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const groupPhotoInputRef = useRef<HTMLInputElement>(null);
   const groupVideoInputRef = useRef<HTMLInputElement>(null);
@@ -4897,13 +4897,14 @@ export default function GroupChatPage() {
     : { buttonBg: SAGE };
   // â”€â”€ Render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
-    <div ref={communityRootRef} className={`bb-community-page ${isDashboardEmbed ? "" : "min-h-screen"} flex flex-col text-[var(--bb-text-primary,#111827)]`}>
+    <div ref={communityRootRef} className={`bb-community-page ${isDashboardEmbed ? "" : "min-h-screen"} text-[var(--bb-text-primary,#111827)]`}>
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div className="bb-community-header sticky top-0 z-20 border-b border-[var(--bb-card-border,#dbe7f4)]" style={{ backgroundColor: coverColor }}>
-        <div className="max-w-2xl mx-auto px-4 py-4">
+      <div className="bb-community-header relative z-20" style={{ backgroundColor: coverColor }}>
+        <div className="max-w-2xl mx-auto px-4 pt-5 pb-3">
+          <div className="bb-community-hero-card rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-5 shadow-sm">
           {!isDashboardEmbed && (
-          <div className="flex items-center gap-1 text-xs text-[var(--bb-text-secondary,#5f6368)] font-medium mb-2 flex-wrap">
+          <div className="flex items-center gap-1 text-xs text-[var(--bb-text-secondary,#5f6368)] font-medium mb-3 flex-wrap">
             {!isDashboardEmbed && (
               <>
                 <Link href="/dashboard" className="hover:text-[var(--bb-text-primary,#111827)] hover:underline transition">
@@ -4949,9 +4950,15 @@ export default function GroupChatPage() {
             ) : null}
             <div className="flex-1 min-w-0">
               {!isDashboardEmbed ? (
-                <h1 className="text-lg font-bold text-[var(--bb-text-primary,#111827)] truncate">{displayGroupName}</h1>
+                <div>
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">{displayGroupName}</p>
+                  <h1 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Community</h1>
+                  <p className="mt-2 max-w-xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
+                    Weekly challenges, shared progress, and conversations from your Bible Buddies.
+                  </p>
+                </div>
               ) : null}
-              <div className="flex items-center gap-3 flex-wrap">
+              <div className="mt-4 flex items-center gap-3 flex-wrap">
                 <button
                   onClick={() => setShowGroupInfoModal(true)}
                   className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
@@ -4986,9 +4993,10 @@ export default function GroupChatPage() {
           </div>
         </div>
         </div>
+        </div>
 
         {/* Header navigation */}
-        <div className="max-w-2xl mx-auto px-4 pb-3">
+        <div className="max-w-2xl mx-auto px-4 pb-4">
           {(() => {
             const primaryTabs = [
               { key: "home", label: "Home", isHub: false },
@@ -5106,7 +5114,7 @@ export default function GroupChatPage() {
 
 
       {/* â”€â”€ Feed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div ref={feedRef} className={`bb-community-feed ${isDashboardEmbed ? "pb-4" : "flex-1 overflow-y-auto pb-32"}`}>
+      <div ref={feedRef} className={`bb-community-feed ${isDashboardEmbed ? "pb-4" : "pb-32"}`}>
 
         {/* â”€â”€ Hub article viewer â”€â”€ */}
         {selectedHubItem && (
@@ -6233,31 +6241,7 @@ export default function GroupChatPage() {
 
           /* â”€â”€ OTHER TABS (chat) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
             <div className="space-y-4">
-              {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && !activeFeedPost && !showTopBuddiesDetail && (
-                <button
-                  type="button"
-                  onClick={() => setShowPostComposerModal(true)}
-                  className="bb-community-composer w-full bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#d4ecd4)] rounded-2xl px-4 py-4 shadow-sm hover:shadow-md transition text-left relative overflow-hidden"
-                >
-                  <span className="absolute right-4 top-4 flex h-2.5 w-2.5">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--bb-accent,#8ccf98)] opacity-60 animate-ping" />
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--bb-accent,#4a9b6f)]" />
-                  </span>
-                  <div className="flex items-center gap-3">
-                    {userProfileImage ? (
-                      <img src={userProfileImage} alt={displayName} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
-                    ) : (
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
-                        {getInitial(displayName)}
-                      </div>
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">Share something with the group</p>
-                      <p className="text-sm text-[var(--bb-text-muted,#9ca3af)] mt-1">Add a title, write your post, and start the conversation...</p>
-                    </div>
-                  </div>
-                </button>
-              )}
+              {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "home" && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && !activeFeedPost && !showTopBuddiesDetail && renderCreatePostCard()}
               {renderPosts()}
             </div>
           )}
@@ -7325,6 +7309,35 @@ export default function GroupChatPage() {
     );
   }
 
+  function renderCreatePostCard() {
+    return (
+      <button
+        type="button"
+        onClick={() => setShowPostComposerModal(true)}
+        className="bb-community-composer w-full bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#d4ecd4)] rounded-[26px] px-5 py-5 shadow-sm hover:shadow-md transition text-left relative overflow-hidden"
+      >
+        <span className="absolute right-5 top-5 flex h-2.5 w-2.5">
+          <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--bb-accent,#8ccf98)] opacity-60 animate-ping" />
+          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--bb-accent,#4a9b6f)]" />
+        </span>
+        <div className="flex items-center gap-4">
+          {userProfileImage ? (
+            <img src={userProfileImage} alt={displayName} className="bb-skin-profile-ring h-12 w-12 rounded-full object-cover flex-shrink-0" />
+          ) : (
+            <div className="bb-skin-profile-ring h-12 w-12 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
+              {getInitial(displayName)}
+            </div>
+          )}
+          <div className="flex-1 min-w-0 pr-5">
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#4a9b6f)]">Create Post</p>
+            <p className="mt-1 text-base font-black leading-snug text-[var(--bb-text-primary,#111827)]">Share something with the community</p>
+            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#6b7280)]">Add a title, write your post, and start the conversation.</p>
+          </div>
+        </div>
+      </button>
+    );
+  }
+
   function renderPosts() {
     if (showTopBuddiesDetail) return renderTopBuddiesDetailView();
     if (activeFeedPost) return renderActiveFeedPostView();
@@ -7338,6 +7351,12 @@ export default function GroupChatPage() {
       );
     }
     const orderedPosts = sortPinnedPostsFirst(posts);
+    const isHomeCommunityFeed = activeTab === "home";
+    const weeklyPollPost = isHomeCommunityFeed ? orderedPosts.find((post) => weeklyPollByPostId[post.id]) : undefined;
+    const weeklyTriviaPost = isHomeCommunityFeed ? orderedPosts.find((post) => weeklyTriviaByPostId[post.id]) : undefined;
+    const feedPosts = isHomeCommunityFeed
+      ? orderedPosts.filter((post) => post.id !== weeklyPollPost?.id && post.id !== weeklyTriviaPost?.id)
+      : orderedPosts;
     const openFeedPostInline = (post: Post) => {
       setSelectedFeedPost(post);
       setDeepLinkedCommentId(null);
@@ -7347,8 +7366,61 @@ export default function GroupChatPage() {
     };
 
     return (
-      <div className="flex flex-col gap-3">
-        {orderedPosts.map((post, index) => {
+      <div className="flex flex-col gap-6">
+        {isHomeCommunityFeed && (
+          <>
+            {weeklyPollPost && weeklyPollByPostId[weeklyPollPost.id] ? (
+              <section className="bb-community-feature-card rounded-[28px] border border-[var(--bb-card-border,#d4ecd4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">Weekly Poll</p>
+                    <h2 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                      This Week in the Community
+                    </h2>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => openFeedPostInline(weeklyPollPost)}
+                    className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-3 py-1.5 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:border-[var(--bb-accent)] hover:text-[var(--bb-accent)]"
+                  >
+                    Open
+                  </button>
+                </div>
+                <GroupWeeklyPollCard pollSet={weeklyPollByPostId[weeklyPollPost.id]} userId={userId} embedded />
+              </section>
+            ) : null}
+
+            {weeklyTriviaPost && weeklyTriviaByPostId[weeklyTriviaPost.id] ? (
+              <section className="bb-community-feature-card rounded-[28px] border border-[var(--bb-card-border,#d4ecd4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">Weekly Trivia</p>
+                    <h2 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                      Play the Group Challenge
+                    </h2>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => openFeedPostInline(weeklyTriviaPost)}
+                    className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-3 py-1.5 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:border-[var(--bb-accent)] hover:text-[var(--bb-accent)]"
+                  >
+                    Details
+                  </button>
+                </div>
+                <GroupWeeklyTriviaCard triviaSet={weeklyTriviaByPostId[weeklyTriviaPost.id]} userId={userId} compactBoard embedded />
+              </section>
+            ) : null}
+
+            {renderCreatePostCard()}
+
+            <div className="px-1">
+              <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">Community Posts</p>
+              <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#6b7280)]">Fresh conversations from your Bible Buddies.</p>
+            </div>
+          </>
+        )}
+
+        {feedPosts.map((post, index) => {
           const pollSet = weeklyPollByPostId[post.id];
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
           const isCoverOnlyFeedPost = isHomeFeedCoverPost(post);
@@ -7369,7 +7441,7 @@ export default function GroupChatPage() {
                 openFeedPostInline(post);
               }
             }}
-            className="bb-community-post-card w-full text-left transition cursor-pointer bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#e5e7eb)] rounded-xl p-4 shadow-sm hover:shadow-md animate-fade-in-up"
+            className="bb-community-post-card w-full text-left transition cursor-pointer bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#e5e7eb)] rounded-[28px] p-5 shadow-sm hover:shadow-md animate-fade-in-up"
             style={{ animationDelay: `${Math.min(index * 0.045, 0.45)}s` }}
           >
             <div>
@@ -7583,7 +7655,7 @@ export default function GroupChatPage() {
         )})}
         <div className="bb-community-pagination flex flex-col gap-3 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-center text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] sm:text-left">
-            Page {postsPage + 1} · Pinned plus 5 posts
+            Page {postsPage + 1} · Weekly cards first, then community posts
           </p>
           <div className="flex items-center justify-center gap-2">
             <button

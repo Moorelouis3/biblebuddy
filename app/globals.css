@@ -23,7 +23,7 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-page {
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header {
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--bb-background) 24%, transparent), transparent 72%),
+    linear-gradient(180deg, color-mix(in srgb, var(--bb-background) 10%, transparent), transparent 78%),
     var(--bb-skin-bg-image) !important;
   background-attachment: fixed !important;
   background-position: center top !important;
@@ -32,6 +32,39 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header {
   border-color: transparent !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-hero-card,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feature-card {
+  position: relative;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--bb-accent) 34%, transparent) !important;
+  background:
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--bb-accent) 18%, transparent), transparent 42%),
+    linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 80%, transparent), color-mix(in srgb, var(--bb-surface-soft) 40%, transparent)) !important;
+  box-shadow:
+    0 22px 62px rgba(0, 0, 0, 0.24),
+    0 0 34px color-mix(in srgb, var(--bb-accent) 12%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(18px);
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-hero-card::before,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--bb-accent) 16%, transparent), transparent 30%);
+  opacity: 0.72;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-hero-card > *,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feature-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header > div:first-child {
@@ -73,7 +106,7 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-tab {
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-post-card {
-  border-radius: 24px !important;
+  border-radius: 28px !important;
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-post-card:hover {
