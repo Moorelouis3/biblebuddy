@@ -5805,7 +5805,7 @@ export default function DashboardPage() {
   useEffect(() => {
     if (!deepStudyActiveSession || deepStudyFinalizingRef.current) return;
     if (deepStudyNow >= deepStudyActiveSession.endsAt) {
-      void finishDeepStudySession();
+      void finishDeepStudySession(false);
     }
   }, [deepStudyActiveSession, deepStudyNow]);
 
@@ -5833,11 +5833,11 @@ export default function DashboardPage() {
     setDeepStudyNow(now);
   }
 
-  async function finishDeepStudySession() {
+  async function finishDeepStudySession(stoppedEarly = false) {
     if (!userId || !deepStudyActiveSession || deepStudyFinalizingRef.current) return;
     deepStudyFinalizingRef.current = true;
     const endedAtMs = Date.now();
-    const activeMinutes = Math.max(0, Math.floor(deepStudyActiveSession.activeMs / 60000));
+    const activeMinutes = Math.max(0, Math.ceil(deepStudyActiveSession.activeMs / 60000));
     const awayMinutes = Math.max(0, Math.ceil(deepStudyActiveSession.awayMs / 60000));
     const engagementScore = Math.min(20, deepStudyActiveSession.interactions * 1.4 + deepStudyActiveSession.tasksCompleted * 6);
     const visibleRatio = Math.max(0, Math.min(1, deepStudyActiveSession.visibleMs / Math.max(1, endedAtMs - deepStudyActiveSession.startedAt)));
@@ -5857,6 +5857,7 @@ export default function DashboardPage() {
         endedAt: new Date(endedAtMs).toISOString(),
         plannedMinutes: deepStudyActiveSession.plannedMinutes,
         shareDisplayMinutes: deepStudyActiveSession.shareDisplayMinutes,
+        stoppedEarly,
         activeMinutes,
         awayMinutes,
         interruptions: deepStudyActiveSession.interruptions,
@@ -5884,6 +5885,7 @@ export default function DashboardPage() {
       endedAt: new Date(endedAtMs).toISOString(),
       plannedMinutes: deepStudyActiveSession.plannedMinutes,
       shareDisplayMinutes: deepStudyActiveSession.shareDisplayMinutes,
+      stoppedEarly,
       activeMinutes,
       awayMinutes,
       interruptions: deepStudyActiveSession.interruptions,
@@ -6860,7 +6862,7 @@ export default function DashboardPage() {
   function renderDeepStudyCard() {
     if (deepStudyMode === "active" && deepStudyActiveSession) {
       const secondsLeft = Math.max(0, Math.ceil((deepStudyActiveSession.endsAt - deepStudyNow) / 1000));
-      const activeMinutes = Math.floor(deepStudyActiveSession.activeMs / 60000);
+      const activeMinutes = Math.ceil(deepStudyActiveSession.activeMs / 60000);
       return (
         <div className="rounded-[26px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-5 text-center shadow-[0_14px_34px_rgba(38,63,99,0.12)]">
           <p className="text-5xl font-black leading-none text-[var(--bb-text-primary)]">{formatDeepStudyTime(secondsLeft)}</p>
@@ -6873,7 +6875,7 @@ export default function DashboardPage() {
           <p className="mt-3 text-xs font-semibold text-[var(--bb-text-muted)]">Stay with Scripture to maximize rewards.</p>
           <button
             type="button"
-            onClick={() => void finishDeepStudySession()}
+            onClick={() => void finishDeepStudySession(true)}
             disabled={deepStudyFinalizingRef.current}
             className="mt-4 w-full rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary)] transition hover:bg-white disabled:opacity-60"
           >
@@ -7199,7 +7201,7 @@ export default function DashboardPage() {
             <p className="relative mt-4 text-xs font-semibold text-[var(--bb-text-secondary)]">Stay with Scripture. The dashboard is quiet while you study.</p>
             <button
               type="button"
-              onClick={() => void finishDeepStudySession()}
+              onClick={() => void finishDeepStudySession(true)}
               disabled={deepStudyFinalizingRef.current}
               className="relative mt-5 w-full rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[var(--bb-surface-soft)] px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[var(--bb-text-primary)] transition hover:brightness-110 disabled:opacity-60"
             >
@@ -7323,6 +7325,7 @@ export default function DashboardPage() {
 
   function renderDeepStudyComplete() {
     if (!deepStudyResults) return null;
+    const stoppedEarly = Boolean(deepStudyResults.stoppedEarly);
     const didGood = deepStudyResults.focusScore >= 60 || deepStudyResults.activeMinutes >= Math.max(1, Math.floor(deepStudyResults.plannedMinutes * 0.5));
     return (
       <section className="mx-auto w-full max-w-xl overflow-hidden rounded-[30px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-[0_16px_40px_rgba(38,63,99,0.12)]">
@@ -7331,9 +7334,11 @@ export default function DashboardPage() {
             <LouisAvatar mood={didGood ? "stareyes" : "wave"} size={138} />
           </div>
           <p className="mt-4 text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent)]">Bible Buddy</p>
-          <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary)]">Hey, you did it.</h2>
+          <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary)]">{stoppedEarly ? "You stopped early." : "Hey, you did it."}</h2>
           <p className="mt-3 text-base font-semibold leading-7 text-[var(--bb-text-secondary)]">
-            You made it through another Deep Study run{didGood ? ", and you did good." : "."}
+            {stoppedEarly
+              ? `You still get credit for the ${deepStudyResults.activeMinutes} focused minute${deepStudyResults.activeMinutes === 1 ? "" : "s"} you completed.`
+              : `You made it through another Deep Study run${didGood ? ", and you did good." : "."}`}
           </p>
           <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-muted)]">
             Let&apos;s see your results.
@@ -7397,7 +7402,6 @@ export default function DashboardPage() {
   function renderDashboardHomePanelOverride() {
     if (showDiamondStore) return renderDiamondStorePanel();
     if (showBibleProgressPanel) return renderBibleProgressPanel();
-    if (deepStudyMode === "active") return renderDeepStudyCinematicCard();
     if (deepStudyMode === "complete") return renderDeepStudyComplete();
     if (deepStudyMode === "results") return renderDeepStudyResults();
     if (deepStudyMode === "info") return renderDeepStudyInfo();
@@ -8856,8 +8860,8 @@ export default function DashboardPage() {
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={renderDashboardHomePanelOverride()}
-          deepStudyNode={deepStudyMode === "active" ? null : renderDeepStudyCinematicCard()}
-          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "active" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
+          deepStudyNode={renderDeepStudyCinematicCard()}
+          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
@@ -8909,8 +8913,8 @@ export default function DashboardPage() {
           studySettingsOpenRequest={studySettingsOpenRequest}
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={renderDashboardHomePanelOverride()}
-          deepStudyNode={deepStudyMode === "active" ? null : renderDeepStudyCinematicCard()}
-          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "active" || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
+          deepStudyNode={renderDeepStudyCinematicCard()}
+          suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
