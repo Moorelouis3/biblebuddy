@@ -1,6 +1,6 @@
 "use client";
 
-import type { MouseEvent, ReactNode } from "react";
+import { useEffect, useMemo, useState, type MouseEvent, type ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import { enrichPlainText } from "../lib/bibleHighlighting";
 
@@ -145,11 +145,47 @@ function enrichMarkdownChildren(children: ReactNode, options: { enableTerms: boo
 }
 
 export default function ChapterNotesMarkdown({ children, onDatabaseTermClick, onScriptureReferenceClick }: ChapterNotesMarkdownProps) {
-  const enableTermHighlighting = Boolean(onDatabaseTermClick) && children.length < 8000;
+  const [deferredTermsReady, setDeferredTermsReady] = useState(false);
+  const normalizedChildren = useMemo(() => normalizeEmojiLists(children), [children]);
+  const canHighlightTerms = Boolean(onDatabaseTermClick) && children.length < 8000;
+  const enableTermHighlighting = canHighlightTerms && deferredTermsReady;
   const childRenderOptions = {
     enableTerms: enableTermHighlighting,
     enableScriptureRefs: Boolean(onScriptureReferenceClick),
   };
+
+  useEffect(() => {
+    setDeferredTermsReady(false);
+    if (!canHighlightTerms) return;
+
+    let cancelled = false;
+    let timeoutId: number | null = null;
+    const win = typeof window !== "undefined" ? window : null;
+    const idleCallback = win && "requestIdleCallback" in win ? (win as any).requestIdleCallback : null;
+    const cancelIdleCallback = win && "cancelIdleCallback" in win ? (win as any).cancelIdleCallback : null;
+
+    if (idleCallback) {
+      const idleId = idleCallback(
+        () => {
+          if (!cancelled) setDeferredTermsReady(true);
+        },
+        { timeout: 900 },
+      );
+      return () => {
+        cancelled = true;
+        cancelIdleCallback?.(idleId);
+      };
+    }
+
+    timeoutId = window.setTimeout(() => {
+      if (!cancelled) setDeferredTermsReady(true);
+    }, 350);
+
+    return () => {
+      cancelled = true;
+      if (timeoutId !== null) window.clearTimeout(timeoutId);
+    };
+  }, [canHighlightTerms, children]);
 
   function handleClick(event: MouseEvent<HTMLDivElement>) {
     onScriptureReferenceClick?.(event);
@@ -225,7 +261,7 @@ export default function ChapterNotesMarkdown({ children, onDatabaseTermClick, on
           hr: ({ ...props }) => <hr className="my-7 border-gray-200" {...props} />,
         }}
       >
-        {normalizeEmojiLists(children)}
+        {normalizedChildren}
       </ReactMarkdown>
     </div>
   );

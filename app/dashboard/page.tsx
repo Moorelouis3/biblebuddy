@@ -82,7 +82,6 @@ import {
   preloadImage,
   preloadStoreSkinThumbnails,
   readPerformanceCache,
-  scheduleIdleWork,
   writePerformanceCache,
 } from "../../lib/appPerformance";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, getPremiumSkinFlameId, normalizeFlameCosmeticId, persistActiveStreakFlame } from "../../lib/flameCosmetics";
@@ -1163,26 +1162,14 @@ export default function DashboardPage() {
   const dashboardStatsCacheKey = userId ? `bb:dashboard-stats-cache:${userId}` : null;
   const storePurchasesCacheKey = userId ? `store-purchases:${userId}` : null;
 
+  useEffect(() => {
+    document.documentElement.classList.add("bb-dashboard-stable-motion");
+    return () => document.documentElement.classList.remove("bb-dashboard-stable-motion");
+  }, []);
+
   const prefetchChecklistRoutes = useCallback((checklistData: ChecklistData) => {
-    scheduleIdleWork(() => {
-      const likelyRoutes = checklistData.tasks
-        .filter((task) => !task.done && task.href)
-        .map((task) => task.href as string)
-        .slice(0, 4);
-
-      if (checklistData.nextJourneyTarget) {
-        likelyRoutes.push(`/bible-studies/${checklistData.nextJourneyTarget.devotionalId}/day/${checklistData.nextJourneyTarget.dayNumber}`);
-      }
-
-      Array.from(new Set(likelyRoutes)).forEach((href) => {
-        try {
-          router.prefetch(href);
-        } catch {
-          // Prefetch is an optimization only; navigation still works without it.
-        }
-      });
-    }, 1600);
-  }, [router]);
+    void checklistData;
+  }, []);
 
   function getStreakMotivationSeenKey(currentUserId: string, dayKey: string) {
     return `bb:streak-motivation-seen:${currentUserId}:${dayKey}`;
@@ -9175,6 +9162,34 @@ export default function DashboardPage() {
             animation: none !important;
           }
         }
+        html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) body {
+          background-color: var(--bb-background) !important;
+          background-image: var(--bb-skin-bg-image), linear-gradient(var(--bb-background), var(--bb-background)) !important;
+          background-attachment: fixed, fixed !important;
+          background-position: center top, center top !important;
+          background-repeat: repeat, repeat !important;
+          background-size: auto, auto !important;
+        }
+        html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell,
+        html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage,
+        html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage {
+          background: transparent !important;
+          background-image: none !important;
+          box-shadow: none !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+        html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell::before,
+        html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell::after,
+        html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage::before,
+        html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-stage::after,
+        html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage::before,
+        html.bb-dashboard-stable-motion[data-bb-skin]:not([data-bb-skin="none"]) .bb-blue-storm-mobile-stage::after {
+          display: none !important;
+          animation: none !important;
+          opacity: 0 !important;
+          content: none !important;
+        }
         @keyframes dashboard-inline-task-slide {
           from { opacity: 0; transform: translateY(-8px); }
           to { opacity: 1; transform: translateY(0); }
@@ -9188,6 +9203,13 @@ export default function DashboardPage() {
         }
         .dashboard-inline-reader {
           animation: dashboard-inline-reader-slide 260ms ease-out both;
+        }
+        html.bb-dashboard-stable-motion .dashboard-inline-task,
+        html.bb-dashboard-stable-motion .dashboard-inline-reader,
+        html.bb-dashboard-stable-motion .bb-store-skin-motion,
+        html.bb-dashboard-stable-motion .bb-store-skin-card::before,
+        html.bb-dashboard-stable-motion .bb-store-skin-card::after {
+          animation: none !important;
         }
       `}</style>
       <div className="dashboard-shell min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">

@@ -1661,6 +1661,7 @@ export default function DashboardJourneyExperience({
   const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "share", "buddies", "tv", "games", "settings"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
+  const activePageKey = dashboardPageKeys[safeActivePage] ?? "home";
   const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
   const dashboardPageLinks = {
     bible_studies: exploreLinkByKey("bible_studies"),
@@ -1791,6 +1792,11 @@ export default function DashboardJourneyExperience({
   }, [maybeShowReferralRewardModal, userId]);
 
   useEffect(() => {
+    document.documentElement.classList.add("bb-dashboard-stable-motion");
+    return () => document.documentElement.classList.remove("bb-dashboard-stable-motion");
+  }, []);
+
+  useEffect(() => {
     if (!isOwnerDashboard || !userId) {
       setStudyModeGateDismissed(true);
       return;
@@ -1851,20 +1857,19 @@ export default function DashboardJourneyExperience({
       }
     }
 
-    if (dashboardPageKeys[safeActivePage] === "group") {
+    if (activePageKey === "group") {
       void loadCommunityGroup();
     }
 
     return () => {
       cancelled = true;
     };
-  }, [embeddedCommunityGroupId, safeActivePage]);
+  }, [activePageKey, embeddedCommunityGroupId]);
 
   useEffect(() => {
     let cancelled = false;
 
     async function loadBuddiesDashboard() {
-      if (buddiesDashboardLoading) return;
       setBuddiesDashboardLoading(true);
       setBuddiesDashboardError(null);
 
@@ -1887,7 +1892,7 @@ export default function DashboardJourneyExperience({
     }
 
     let refreshIntervalId: number | null = null;
-    if (dashboardPageKeys[safeActivePage] === "buddies") {
+    if (activePageKey === "buddies") {
       void loadBuddiesDashboard();
       if (typeof window !== "undefined") {
         refreshIntervalId = window.setInterval(() => {
@@ -1900,16 +1905,16 @@ export default function DashboardJourneyExperience({
       cancelled = true;
       if (refreshIntervalId !== null) window.clearInterval(refreshIntervalId);
     };
-  }, [buddiesDashboardLoading, safeActivePage]);
+  }, [activePageKey]);
 
   useEffect(() => {
-    if (dashboardPageKeys[safeActivePage] === "share" && userId) {
+    if (activePageKey === "share" && userId) {
       void fetchShareRewards({ showLoading: true });
     }
-  }, [fetchShareRewards, safeActivePage, userId]);
+  }, [activePageKey, fetchShareRewards, userId]);
 
   useEffect(() => {
-    if (!userId) return;
+    if (!userId || activePageKey !== "share") return;
     void fetchShareRewards({ checkForNewReward: true });
 
     const referralChannel = supabase
@@ -1935,7 +1940,7 @@ export default function DashboardJourneyExperience({
       window.clearInterval(intervalId);
       void supabase.removeChannel(referralChannel);
     };
-  }, [fetchShareRewards, userId]);
+  }, [activePageKey, fetchShareRewards, userId]);
 
   useEffect(() => {
     function handleEmbeddedCommunityHeight(event: MessageEvent) {
@@ -3144,6 +3149,7 @@ export default function DashboardJourneyExperience({
 
   const getSlideClass = (index: number) =>
     `w-full shrink-0 transition-[height] duration-300 ${safeActivePage === index ? "" : "h-0 overflow-hidden"}`;
+  const shouldRenderSlide = (index: number) => safeActivePage === index;
 
   const studyProgressPercent = Math.round((studyProgressCompleted / Math.max(studyProgressTotal, 1)) * 100);
   const getFeaturePageBullets = (key: DashboardPageKey) => {
@@ -4405,6 +4411,25 @@ export default function DashboardJourneyExperience({
         .spark-c { --spark-x: 85px; --spark-y: -25px; }
         .spark-d { --spark-x: 53px; --spark-y: 43px; }
         .spark-e { --spark-x: -35px; --spark-y: 38px; }
+        .bb-dashboard-stable-motion body::before,
+        .bb-dashboard-stable-motion body::after {
+          animation: none !important;
+          opacity: 0 !important;
+          content: none !important;
+        }
+        .bb-dashboard-stable-motion .next-task-pulse,
+        .bb-dashboard-stable-motion .start-here-flash,
+        .bb-dashboard-stable-motion .task-estimate-primary,
+        .bb-dashboard-stable-motion .task-estimate-secondary,
+        .bb-dashboard-stable-motion .buddy-rewards-buddy,
+        .bb-dashboard-stable-motion .done-sparkle span,
+        .bb-dashboard-stable-motion .completion-side-firework span,
+        .bb-dashboard-stable-motion .chapter-confetti span,
+        .bb-dashboard-stable-motion .chapter-firework-ring,
+        .bb-dashboard-stable-motion .chapter-complete-fill,
+        .bb-dashboard-stable-motion .progress-glow {
+          animation: none !important;
+        }
       `}</style>
       <div
         ref={containerRef}
@@ -5202,35 +5227,35 @@ export default function DashboardJourneyExperience({
         </div>
 
         <div className={getSlideClass(1)}>
-          {renderEmbeddedBuddyPage()}
+          {shouldRenderSlide(1) ? renderEmbeddedBuddyPage() : null}
         </div>
 
         <div className={getSlideClass(2)}>
-          {renderEmbeddedBibleStudiesPage()}
+          {shouldRenderSlide(2) ? renderEmbeddedBibleStudiesPage() : null}
         </div>
 
         <div className={getSlideClass(3)}>
-          {renderEmbeddedCommunityPage()}
+          {shouldRenderSlide(3) ? renderEmbeddedCommunityPage() : null}
         </div>
 
         <div className={getSlideClass(4)}>
-          {renderEmbeddedSharePage()}
+          {shouldRenderSlide(4) ? renderEmbeddedSharePage() : null}
         </div>
 
         <div className={getSlideClass(5)}>
-          {renderEmbeddedBuddiesPage()}
+          {shouldRenderSlide(5) ? renderEmbeddedBuddiesPage() : null}
         </div>
 
         <div className={getSlideClass(6)}>
-          {renderEmbeddedTvPage()}
+          {shouldRenderSlide(6) ? renderEmbeddedTvPage() : null}
         </div>
 
         <div className={getSlideClass(7)}>
-          {renderEmbeddedGamesPage()}
+          {shouldRenderSlide(7) ? renderEmbeddedGamesPage() : null}
         </div>
 
         <div className={getSlideClass(8)}>
-          {renderEmbeddedSettingsPage()}
+          {shouldRenderSlide(8) ? renderEmbeddedSettingsPage() : null}
         </div>
 
         {false ? (
