@@ -2286,7 +2286,8 @@ html[data-bb-app-hidden="true"] *::after {
     --bb-skin-bg-image: var(--bb-skin-bg-image-mobile);
     background-attachment: fixed !important;
     background-position: center top !important;
-    background-size: 100% 100dvh !important;
+    background-size: 100% auto !important;
+    background-repeat: repeat-y !important;
     min-height: 100dvh;
   }
 
@@ -2300,7 +2301,7 @@ html[data-bb-app-hidden="true"] *::after {
     background-attachment: fixed !important;
     background-position: center top !important;
     background-repeat: no-repeat !important;
-    background-size: 100% 100dvh !important;
+    background-size: 100% auto !important;
     min-height: 100dvh;
   }
 
