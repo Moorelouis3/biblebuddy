@@ -16,6 +16,10 @@ export function isGenesisTwo(book: string | null | undefined, chapter: number | 
   return normalizeGenesisBook(book) === "genesis" && Number(chapter) === 2;
 }
 
+export function isGenesisThree(book: string | null | undefined, chapter: number | string | null | undefined) {
+  return normalizeGenesisBook(book) === "genesis" && Number(chapter) === 3;
+}
+
 export function getGenesisOneTtsSrc(
   kind: GenesisOneTtsKind,
   book: string | null | undefined,
@@ -23,6 +27,10 @@ export function getGenesisOneTtsSrc(
 ) {
   if (kind === "intro" && isGenesisTwo(book, chapter)) {
     return "/audio/genesis/2/intro-onyx-peaceful-rain-cinematic.mp3?v=peaceful-v1";
+  }
+
+  if (isGenesisThree(book, chapter)) {
+    return `/audio/genesis/3/${kind}-onyx-peaceful-rain-cinematic.mp3?v=peaceful-v1`;
   }
 
   if (!isGenesisOne(book, chapter)) return null;

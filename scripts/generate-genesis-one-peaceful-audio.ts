@@ -8,10 +8,14 @@ import {
   getGenesisOneSpeechText,
 } from "../lib/genesisOneTtsAudio";
 import type { GenesisOneTtsKind } from "../lib/genesisOneTts";
+import { GENESIS_THREE_OFFICIAL_NOTES } from "../lib/genesisThreeOfficialNotes";
+import { cleanTextForTts } from "../lib/ttsSpeechText";
 
 const SAMPLE_RATE = 24000;
-const OUTPUT_DIR = join(process.cwd(), "public", "audio", "genesis", "1");
 const MAX_TTS_CHUNK_LENGTH = 3400;
+const chapterArg = process.argv.find((arg) => arg.startsWith("--chapter="));
+const GENESIS_CHAPTER = Number(chapterArg?.split("=")[1] || 1);
+const OUTPUT_DIR = join(process.cwd(), "public", "audio", "genesis", String(GENESIS_CHAPTER));
 
 for (const path of [".env.local", ".env"]) {
   if (existsSync(path)) config({ path, override: false, quiet: true });
@@ -201,17 +205,84 @@ async function generateOpenAiSpeechPcm(text: string) {
   return Buffer.from(await response.arrayBuffer());
 }
 
+async function getGenesisIntroText(chapter: number, supabase: NonNullable<ReturnType<typeof createGenesisOneTtsAdminClient>>) {
+  const { data: devotional, error: devotionalError } = await supabase
+    .from("devotionals")
+    .select("id, title")
+    .eq("title", "The Creation of the World")
+    .maybeSingle();
+
+  if (devotionalError) throw new Error(devotionalError.message);
+  if (!devotional?.id) throw new Error("The Creation of the World Bible Study was not found.");
+
+  const { data: row, error: dayError } = await supabase
+    .from("devotional_days")
+    .select("day_title, devotional_text, bible_reading_book, bible_reading_chapter")
+    .eq("devotional_id", devotional.id)
+    .eq("day_number", chapter)
+    .maybeSingle();
+
+  if (dayError) throw new Error(dayError.message);
+  if (!row?.devotional_text?.trim()) throw new Error(`Genesis ${chapter} intro text was not found.`);
+
+  return cleanTextForTts(`${row.day_title || `Genesis ${chapter} Introduction`}. ${row.devotional_text}`);
+}
+
+async function getGenesisVersesText(chapter: number, supabase: NonNullable<ReturnType<typeof createGenesisOneTtsAdminClient>>) {
+  const { data } = await supabase
+    .from("bible_chapters")
+    .select("content_json")
+    .eq("chapter", chapter)
+    .in("book", ["genesis", "Genesis"])
+    .limit(1)
+    .maybeSingle();
+
+  const verses = ((data as any)?.content_json as any)?.verses;
+  if (!Array.isArray(verses) || verses.length === 0) {
+    throw new Error(`Genesis ${chapter} chapter text was not found.`);
+  }
+
+  return cleanTextForTts(
+    verses
+      .map((verse: any) => {
+        const number = verse?.verse ?? verse?.num ?? verse?.number;
+        return `${number ? `${number}. ` : ""}${verse?.text || ""}`;
+      })
+      .join(" "),
+  );
+}
+
+function getGenesisThreeIntroText() {
+  const intro = GENESIS_THREE_OFFICIAL_NOTES.split("## Why Genesis 3 Matters")[0]
+    .replace(/^#\s+/gm, "")
+    .trim();
+
+  if (!intro) throw new Error("Genesis 3 official intro text was not found.");
+  return cleanTextForTts(intro);
+}
+
+async function getGenesisSpeechText(kind: GenesisOneTtsKind, supabase: NonNullable<ReturnType<typeof createGenesisOneTtsAdminClient>>) {
+  if (GENESIS_CHAPTER === 1) return getGenesisOneSpeechText(kind, supabase);
+  if (GENESIS_CHAPTER === 3) {
+    if (kind === "intro") return getGenesisThreeIntroText();
+    if (kind === "verses") return getGenesisVersesText(3, supabase);
+    return cleanTextForTts(GENESIS_THREE_OFFICIAL_NOTES);
+  }
+
+  throw new Error(`Genesis ${GENESIS_CHAPTER} peaceful audio is not configured in this script.`);
+}
+
 async function generateKind(kind: GenesisOneTtsKind) {
   const supabase = createGenesisOneTtsAdminClient();
   if (!supabase) throw new Error("NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required.");
 
-  const text = await getGenesisOneSpeechText(kind, supabase);
+  const text = await getGenesisSpeechText(kind, supabase);
   const chunks = chunkSpeechInput(text);
   const voiceChunks: Float32Array[] = [];
 
-  console.log(`[GENESIS_1_PEACEFUL] Generating ${kind}. Text chars: ${text.length}, chunks: ${chunks.length}`);
+  console.log(`[GENESIS_${GENESIS_CHAPTER}_PEACEFUL] Generating ${kind}. Text chars: ${text.length}, chunks: ${chunks.length}`);
   for (const [index, chunk] of chunks.entries()) {
-    console.log(`[GENESIS_1_PEACEFUL] ${kind} chunk ${index + 1}/${chunks.length}`);
+    console.log(`[GENESIS_${GENESIS_CHAPTER}_PEACEFUL] ${kind} chunk ${index + 1}/${chunks.length}`);
     voiceChunks.push(pcmBufferToFloat32(await generateOpenAiSpeechPcm(chunk)));
   }
 
@@ -220,7 +291,7 @@ async function generateKind(kind: GenesisOneTtsKind) {
   const peacefulPath = join(OUTPUT_DIR, `${kind}-${GENESIS_ONE_TTS_VOICE}-peaceful-rain-cinematic.wav`);
   ensureDir(peacefulPath);
   writeFileSync(peacefulPath, createWavBuffer(peacefulSamples));
-  console.log(`[GENESIS_1_PEACEFUL] Peaceful WAV: ${peacefulPath}`);
+  console.log(`[GENESIS_${GENESIS_CHAPTER}_PEACEFUL] Peaceful WAV: ${peacefulPath}`);
 }
 
 async function main() {
