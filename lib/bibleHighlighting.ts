@@ -423,7 +423,34 @@ export async function enrichBibleVerses(
  * 
  * This function is synchronous and can be called client-side
  */
-export function enrichPlainText(text: string): string {
+const LIGHT_HIGHLIGHT_STOP_TERMS = new Set([
+  "a", "an", "and", "are", "as", "at", "be", "but", "by", "for", "from", "he", "her", "him", "his", "i", "if", "in", "is", "it", "its",
+  "me", "my", "no", "not", "of", "on", "or", "our", "she", "so", "that", "the", "their", "them", "then", "there", "they", "this",
+  "to", "up", "us", "we", "with", "you", "your",
+  "god", "lord", "man", "woman", "men", "women", "day", "days", "good", "light", "darkness", "earth", "water", "waters", "tree",
+  "fruit", "life", "work", "rest", "voice", "word", "words",
+]);
+
+type EnrichPlainTextOptions = {
+  mode?: "full" | "light";
+};
+
+function isLightHighlightTermAllowed(term: string, type: "people" | "places" | "keywords") {
+  const normalized = term.toLowerCase().trim();
+  if (!normalized) return false;
+  if (LIGHT_HIGHLIGHT_STOP_TERMS.has(normalized)) return false;
+
+  const wordCount = normalized.split(/\s+/).filter(Boolean).length;
+  if (type === "keywords" && wordCount === 1 && normalized.length < 5) return false;
+  if ((type === "people" || type === "places") && wordCount === 1 && normalized.length < 3) return false;
+
+  return true;
+}
+
+export function enrichPlainText(text: string, options: EnrichPlainTextOptions = {}): string {
+  const lightMode = options.mode === "light";
+  const maxMatchesPerTerm = lightMode ? 2 : Number.POSITIVE_INFINITY;
+  const maxTotalMatches = lightMode ? 80 : Number.POSITIVE_INFINITY;
   // Get lists from UI pages (same source as people/places/keywords pages)
   const peopleNames = getPeopleNames();
   const placeNames = getPlaceNames();
@@ -495,13 +522,16 @@ export function enrichPlainText(text: string): string {
 
   // Process PLACES first (they take priority)
   for (const highlightTerm of placeTerms) {
+    if (lightMode && !isLightHighlightTermAllowed(highlightTerm.term, "places")) continue;
     const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
+    let termMatchCount = 0;
     
     // Find ALL matches (not just first)
     let match;
     regex.lastIndex = 0;
     while ((match = regex.exec(escapedText)) !== null) {
+      if (termMatchCount >= maxMatchesPerTerm || matches.length >= maxTotalMatches) break;
       const start = match.index;
       const end = start + match[0].length;
       
@@ -511,6 +541,7 @@ export function enrichPlainText(text: string): string {
       );
       
       if (!overlaps) {
+        termMatchCount += 1;
         matches.push({
           start,
           end,
@@ -524,8 +555,10 @@ export function enrichPlainText(text: string): string {
 
   // Process PEOPLE (every occurrence)
   for (const highlightTerm of peopleTerms) {
+    if (lightMode && !isLightHighlightTermAllowed(highlightTerm.term, "people")) continue;
     const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
+    let termMatchCount = 0;
     
     // For people names, only match if capitalized (proper noun)
     const termLower = highlightTerm.term.toLowerCase();
@@ -535,6 +568,7 @@ export function enrichPlainText(text: string): string {
     let match;
     regex.lastIndex = 0;
     while ((match = regex.exec(escapedText)) !== null) {
+      if (termMatchCount >= maxMatchesPerTerm || matches.length >= maxTotalMatches) break;
       const matchedText = match[0];
       const firstChar = matchedText.charAt(0);
       
@@ -563,6 +597,7 @@ export function enrichPlainText(text: string): string {
       );
       
       if (!overlaps) {
+        termMatchCount += 1;
         matches.push({
           start,
           end,
@@ -576,12 +611,15 @@ export function enrichPlainText(text: string): string {
 
   // Process KEYWORDS (highlight EVERY occurrence)
   for (const highlightTerm of keywordTerms) {
+    if (lightMode && !isLightHighlightTermAllowed(highlightTerm.term, "keywords")) continue;
     const regex = createKeywordRegex(highlightTerm.term);
+    let termMatchCount = 0;
     
     // Find ALL matches
     regex.lastIndex = 0;
     let match;
     while ((match = regex.exec(escapedText)) !== null) {
+      if (termMatchCount >= maxMatchesPerTerm || matches.length >= maxTotalMatches) break;
       const start = match.index;
       const end = start + match[0].length;
 
@@ -591,6 +629,7 @@ export function enrichPlainText(text: string): string {
       );
 
       if (!overlaps) {
+        termMatchCount += 1;
         matches.push({
           start,
           end,

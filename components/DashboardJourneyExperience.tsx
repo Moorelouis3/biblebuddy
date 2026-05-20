@@ -5129,7 +5129,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 takeoverRef={bibleYearTermTakeoverRef}
               />
             ) : (
-              <ChapterNotesMarkdown onDatabaseTermClick={handleBibleYearDatabaseTermClick} enableLargeDatabaseTerms>
+              <ChapterNotesMarkdown onDatabaseTermClick={handleBibleYearDatabaseTermClick} enableLargeDatabaseTerms databaseTermMode="light">
                 {buildBibleYearLessonMarkdown()}
               </ChapterNotesMarkdown>
             )}
@@ -6268,6 +6268,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             )}
 
             {!homePanelOverride &&
+            !bibleYearSeriesActive &&
             !selectedBibleYearSeriesDay &&
             !suppressCompletedTasksPanel &&
             !shouldShowCompletionPanel &&

@@ -9,6 +9,7 @@ type ChapterNotesMarkdownProps = {
   onDatabaseTermClick?: (event: MouseEvent<HTMLDivElement>) => void;
   onScriptureReferenceClick?: (event: MouseEvent<HTMLDivElement>) => void;
   enableLargeDatabaseTerms?: boolean;
+  databaseTermMode?: "full" | "light";
 };
 
 const leadingEmojiPattern = /^[\s]*(?:[\p{Extended_Pictographic}\p{Emoji_Presentation}]|\d\uFE0F?\u20E3)/u;
@@ -111,7 +112,7 @@ function linkScriptureReferences(text: string) {
   );
 }
 
-function enrichMarkdownChildren(children: ReactNode, options: { enableTerms: boolean; enableScriptureRefs: boolean }): ReactNode {
+function enrichMarkdownChildren(children: ReactNode, options: { enableTerms: boolean; enableScriptureRefs: boolean; databaseTermMode: "full" | "light" }): ReactNode {
   if (!options.enableTerms && !options.enableScriptureRefs) return children;
 
   if (typeof children === "string") {
@@ -129,7 +130,7 @@ function enrichMarkdownChildren(children: ReactNode, options: { enableTerms: boo
       <span
         className="chapter-notes-enriched-text"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Bible notes text is escaped by the highlighter before known database spans are inserted.
-        dangerouslySetInnerHTML={{ __html: enrichPlainText(children) }}
+        dangerouslySetInnerHTML={{ __html: enrichPlainText(children, { mode: options.databaseTermMode }) }}
       />
     );
   }
@@ -145,7 +146,13 @@ function enrichMarkdownChildren(children: ReactNode, options: { enableTerms: boo
   return children;
 }
 
-export default function ChapterNotesMarkdown({ children, onDatabaseTermClick, onScriptureReferenceClick, enableLargeDatabaseTerms = false }: ChapterNotesMarkdownProps) {
+export default function ChapterNotesMarkdown({
+  children,
+  onDatabaseTermClick,
+  onScriptureReferenceClick,
+  enableLargeDatabaseTerms = false,
+  databaseTermMode = "full",
+}: ChapterNotesMarkdownProps) {
   const [deferredTermsReady, setDeferredTermsReady] = useState(false);
   const normalizedChildren = useMemo(() => normalizeEmojiLists(children), [children]);
   const canHighlightTerms = Boolean(onDatabaseTermClick) && (enableLargeDatabaseTerms || children.length < 8000);
@@ -153,6 +160,7 @@ export default function ChapterNotesMarkdown({ children, onDatabaseTermClick, on
   const childRenderOptions = {
     enableTerms: enableTermHighlighting,
     enableScriptureRefs: Boolean(onScriptureReferenceClick),
+    databaseTermMode,
   };
 
   useEffect(() => {
