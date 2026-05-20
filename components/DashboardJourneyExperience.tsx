@@ -3372,30 +3372,7 @@ export default function DashboardJourneyExperience({
             }}
           />
         ) : (
-          <>
-            <div className="mb-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
-              <div className="flex items-center justify-between gap-3">
-                <div className="min-w-0">
-                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Studies</p>
-                  <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">Find a chapter by book</h2>
-                  <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                    Search the Bible, pick a chapter, and load it into your study dashboard.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEmbeddedBibleBookSearchOpen(true);
-                    setEmbeddedBibleSearchMessage(null);
-                  }}
-                  className="shrink-0 rounded-full bg-[var(--bb-button,#2f7fe8)] px-4 py-3 text-xs font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
-                >
-                  Search by Bible book
-                </button>
-              </div>
-            </div>
-            <BibleStudiesLibraryPage embedded onStudySelect={setEmbeddedBibleStudyId} />
-          </>
+          <BibleStudiesLibraryPage embedded onStudySelect={setEmbeddedBibleStudyId} />
         )}
       </div>
     </section>

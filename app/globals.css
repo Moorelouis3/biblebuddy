@@ -21,6 +21,21 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-page {
   background-size: cover !important;
 }
 
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-bible-studies-page {
+  background: transparent !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-bible-studies-hero,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-bible-study-card {
+  border-color: color-mix(in srgb, var(--bb-accent) 30%, transparent) !important;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 84%, transparent), color-mix(in srgb, var(--bb-surface-soft) 44%, transparent)) !important;
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(16px);
+}
+
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-header {
   background: transparent !important;
   border-color: transparent !important;

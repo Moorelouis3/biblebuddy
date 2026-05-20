@@ -633,27 +633,24 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   }
 
   return (
-    <div className="min-h-screen bg-[#f4f8ff]">
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="mb-6 rounded-3xl border border-white bg-white/90 px-5 py-5 shadow-sm md:px-7">
+    <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
+      <div className={`${embedded ? "px-0 py-0" : "px-4 py-5 md:py-8"} max-w-6xl mx-auto`}>
+        <div className="bb-bible-studies-hero mb-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm md:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.28em] text-[#5b8fb8]">Bible Buddy Library</p>
-              <h1 className="mt-2 text-3xl font-black text-gray-950 md:text-4xl">Bible Studies</h1>
-              <p className="mt-2 max-w-2xl text-sm font-semibold leading-relaxed text-gray-600">
+              <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Bible Studies</h1>
+              <p className="mt-2 max-w-2xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
                 Pick a study, finish each chapter step by step, and watch your shelf fill up as completed.
               </p>
             </div>
           </div>
         </div>
 
-        {/* INSTRUCTIONS CALLOUT */}
-        <div className="bg-white border border-[#cfe5f6] rounded-2xl shadow-sm mb-6 overflow-hidden">
+        <div className="bb-card mb-4 overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm">
           {/* HEADER */}
-          <div className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left sm:px-6">
+          <div className="w-full text-left">
             <div className="min-w-0 flex-1">
-              <h2 className="text-lg font-semibold text-gray-900">📖 About Our Bible Studies</h2>
-              <div className="mt-3 grid max-w-sm grid-cols-3 gap-2 text-center">
+              <div className="grid grid-cols-3 gap-2 text-center">
                 <button
                   type="button"
                   onClick={(event) => {
@@ -662,27 +659,12 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                   }}
                   className={`rounded-2xl px-3 py-2 transition ${
                     studyFilter === "all"
-                      ? "bg-[#7BAFD4] text-white shadow-sm"
-                      : "bg-[#eaf6ff] text-gray-950 hover:bg-[#dff0fb]"
+                      ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
+                      : "bg-[var(--bb-surface-soft,#f8fbff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
                   }`}
                 >
-                  <p className={`text-lg font-black ${studyFilter === "all" ? "text-white" : "text-gray-950"}`}>{bibleStudyStats.studies}</p>
-                  <p className={`text-[10px] font-bold uppercase tracking-wide ${studyFilter === "all" ? "text-white/90" : "text-gray-600"}`}>All Studies</p>
-                </button>
-                <button
-                  type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    setStudyFilter("done");
-                  }}
-                  className={`rounded-2xl px-3 py-2 transition ${
-                    studyFilter === "done"
-                      ? "bg-[#7BAFD4] text-white shadow-sm"
-                      : "bg-[#eaf6ff] text-gray-950 hover:bg-[#dff0fb]"
-                  }`}
-                >
-                  <p className={`text-lg font-black ${studyFilter === "done" ? "text-white" : "text-gray-950"}`}>{bibleStudyStats.completed}</p>
-                  <p className={`text-[10px] font-bold uppercase tracking-wide ${studyFilter === "done" ? "text-white/90" : "text-gray-600"}`}>Done Studies</p>
+                  <p className="text-lg font-black">{bibleStudyStats.studies}</p>
+                  <p className={`text-[9px] font-bold uppercase tracking-wide sm:text-[10px] ${studyFilter === "all" ? "text-white/90" : "text-[var(--bb-text-secondary,#5f6368)]"}`}>All Studies</p>
                 </button>
                 <button
                   type="button"
@@ -692,35 +674,30 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                   }}
                   className={`rounded-2xl px-3 py-2 transition ${
                     studyFilter === "started"
-                      ? "bg-[#7BAFD4] text-white shadow-sm"
-                      : "bg-[#eaf6ff] text-gray-950 hover:bg-[#dff0fb]"
+                      ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
+                      : "bg-[var(--bb-surface-soft,#f8fbff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
                   }`}
                 >
-                  <p className={`text-lg font-black ${studyFilter === "started" ? "text-white" : "text-gray-950"}`}>{bibleStudyStats.started}</p>
-                  <p className={`text-[10px] font-bold uppercase tracking-wide ${studyFilter === "started" ? "text-white/90" : "text-gray-600"}`}>Started</p>
+                  <p className="text-lg font-black">{bibleStudyStats.started}</p>
+                  <p className={`text-[9px] font-bold uppercase tracking-wide sm:text-[10px] ${studyFilter === "started" ? "text-white/90" : "text-[var(--bb-text-secondary,#5f6368)]"}`}>Started</p>
+                </button>
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setStudyFilter("done");
+                  }}
+                  className={`rounded-2xl px-3 py-2 transition ${
+                    studyFilter === "done"
+                      ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
+                      : "bg-[var(--bb-surface-soft,#f8fbff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+                  }`}
+                >
+                  <p className="text-lg font-black">{bibleStudyStats.completed}</p>
+                  <p className={`text-[9px] font-bold uppercase tracking-wide sm:text-[10px] ${studyFilter === "done" ? "text-white/90" : "text-[var(--bb-text-secondary,#5f6368)]"}`}>Done Studies</p>
                 </button>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={handleToggleInstructions}
-              className="shrink-0 rounded-full p-2 transition hover:bg-[#f3f9ff]"
-              aria-label={isInstructionsExpanded ? "Collapse Bible study details" : "Expand Bible study details"}
-            >
-              <svg
-                className={`w-5 h-5 text-gray-600 transition-transform ${isInstructionsExpanded ? '' : 'transform -rotate-90'}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
           </div>
 
           {/* CONTENT - Collapsible */}
@@ -817,52 +794,52 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
               : `No ${studyFilter === "done" ? "done" : "started"} Bible studies yet.`}
           </div>
         ) : (
-          <div className="rounded-[2rem] border border-white bg-white/80 p-3 shadow-sm md:p-5">
+          <div className="bb-card rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm md:p-5">
             <div className="grid grid-cols-1 gap-4">
             {filteredDevotionals.map((devotional) => {
               const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
               const community = communityByDevotional[devotional.id];
               const isComplete = progress.isComplete;
               const card = (
-                <div className={`group h-full rounded-3xl border p-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl md:p-4 ${
-                  isComplete ? "border-[#b9dcf4] bg-[#eaf5ff]" : "border-gray-200 bg-white"
+                <div className={`bb-bible-study-card group h-full rounded-[22px] border p-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl md:p-4 ${
+                  isComplete ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]" : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
                 }`}>
                   <div className="grid grid-cols-[86px_1fr] gap-3 sm:grid-cols-[104px_1fr] md:gap-4">
                     <div>{getDevotionalVisual(devotional)}</div>
                     <div className="flex min-w-0 flex-col">
                       <div>
                         <div className="flex items-start justify-between gap-2">
-                          <div className="text-base font-black leading-tight text-gray-950 md:text-lg">
+                          <div className="text-base font-black leading-tight text-[var(--bb-text-primary,#111827)] md:text-lg">
                             {devotional.title}
                           </div>
                           {isComplete ? (
-                            <span className="rounded-full bg-[#7BAFD4] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-white">
+                            <span className="rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)]">
                               Done
                             </span>
                           ) : null}
                         </div>
-                        <p className="mt-1 text-xs font-bold text-gray-500">
+                        <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
                           {getStudyScriptureRange(devotional.title) ?? (isChapterJourney(devotional.title) ? `${devotional.total_days} chapter journey` : `${devotional.total_days} part study`)}
                         </p>
                       </div>
                       <div className="mt-3">
-                        <div className="flex items-center justify-between text-xs font-black text-gray-700">
+                        <div className="flex items-center justify-between text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">
                           <span>{progress.label}</span>
                           <span>{progress.percent}%</span>
                         </div>
-                        <div className="mt-2 h-3 overflow-hidden rounded-full bg-gray-100">
+                        <div className="mt-2 h-3 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#f8fbff)]">
                           <div
-                            className="h-full rounded-full bg-[#7BAFD4] transition-all duration-500"
+                            className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] transition-all duration-500"
                             style={{ width: `${progress.percent}%` }}
                           />
                         </div>
-                        <p className="mt-3 text-sm font-black text-gray-950">
+                        <p className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">
                           {isComplete ? "Completed study" : progress.percent > 0 ? "Continue study" : "Start study"}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className={`mt-3 h-2 rounded-full ${isComplete ? "bg-[#b9dcf4]" : "bg-[#d7e8f5]"}`} />
+                  <div className="mt-3 h-2 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)]" />
                   {community && community.total > 0 ? (
                     <button
                       type="button"
@@ -870,13 +847,13 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                         event.stopPropagation();
                         void openCommunityModal(devotional, 0);
                       }}
-                      className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-gray-100 bg-white/85 px-3 py-2 text-left transition hover:border-[#7BAFD4] hover:bg-[#f7fbfd]"
+                      className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2 text-left transition hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-card,#ffffff)]"
                     >
                       <span className="flex min-w-0 items-center">
                         {community.avatars.slice(0, 5).map((buddy, index) => (
                           <span
                             key={buddy.userId}
-                            className="-ml-2 grid h-8 w-8 place-items-center overflow-hidden rounded-full border-2 border-white bg-[#eaf6ff] text-xs font-black text-[#2f6685] first:ml-0"
+                            className="-ml-2 grid h-8 w-8 place-items-center overflow-hidden rounded-full border-2 border-[var(--bb-card,#ffffff)] bg-[var(--bb-accent-soft,#eaf5ff)] text-xs font-black text-[var(--bb-accent,#2f7fe8)] first:ml-0"
                             style={{ zIndex: 10 - index }}
                             title={buddy.name}
                           >
@@ -889,14 +866,14 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                         ))}
                       </span>
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate text-xs font-black text-gray-900">
+                        <span className="block truncate text-xs font-black text-[var(--bb-text-primary,#111827)]">
                           {community.total} {community.total === 1 ? "Buddy is" : "Buddies are"} studying this
                         </span>
-                        <span className="text-[11px] font-bold text-gray-500">Tap to see progress</span>
+                        <span className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">Tap to see progress</span>
                       </span>
                     </button>
                   ) : (
-                    <div className="mt-3 rounded-2xl border border-gray-100 bg-white/70 px-3 py-2 text-xs font-bold text-gray-400">
+                    <div className="mt-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
                       Be the first Buddy to start this study.
                     </div>
                   )}
