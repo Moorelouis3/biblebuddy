@@ -173,6 +173,7 @@ type Props = {
   homeHeader?: ReactNode;
   homePanelOverride?: ReactNode;
   deepStudyNode?: ReactNode;
+  deepStudyFocusActive?: boolean;
   suppressCompletedTasksPanel?: boolean;
   onHomeReset?: () => void;
   onOpenStore?: () => void;
@@ -1576,6 +1577,7 @@ export default function DashboardJourneyExperience({
   homeHeader,
   homePanelOverride,
   deepStudyNode,
+  deepStudyFocusActive = false,
   suppressCompletedTasksPanel = false,
   onHomeReset,
   onOpenStore,
@@ -4403,19 +4405,19 @@ export default function DashboardJourneyExperience({
               renderBibleBuddy3ModeGate()
             ) : (
               <>
-            {!homePanelOverride ? (
+            {!homePanelOverride && !deepStudyFocusActive ? (
               <div className="mx-auto w-full max-w-xl px-1">
                 <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
                   {getDashboardGreeting()}, {getFirstDashboardName(profile?.display_name || profile?.username || userName)}
                 </h1>
               </div>
             ) : null}
-            {!homePanelOverride ? homeHeader : null}
+            {!homePanelOverride && !deepStudyFocusActive ? homeHeader : null}
             {homePanelOverride ? (
               <div className="dashboard-inline-task">{homePanelOverride}</div>
             ) : null}
-            {!homePanelOverride && !shouldShowCompletionPanel ? renderCurrentStudyHeader() : null}
-            {!homePanelOverride && !shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard ? (
+            {!homePanelOverride && !deepStudyFocusActive && !shouldShowCompletionPanel ? renderCurrentStudyHeader() : null}
+            {!homePanelOverride && !deepStudyFocusActive && !shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard ? (
             <div
               className="bb-skin-glow-card rounded-[22px] border border-[#dbe7f4] bg-white p-3 shadow-[0_10px_28px_rgba(38,63,99,0.08)] transition"
             >
@@ -5054,23 +5056,23 @@ export default function DashboardJourneyExperience({
             !isLoadingNextChapter &&
             displayTasks.length < visibleTasks.length &&
             completedTrackerTasks.length > 0 ? (
-              <div className="overflow-hidden rounded-2xl border border-[#b9dcf4] bg-white/80 shadow-sm">
+              <div className="overflow-hidden rounded-2xl border border-[var(--bb-card-border,#b9dcf4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_82%,transparent)] shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,transparent)] backdrop-blur">
                 <button
                   type="button"
                   onClick={() => setCompletedTasksExpanded((prev) => !prev)}
-                  className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition hover:bg-[#eaf5ff]/70"
+                  className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_70%,transparent)]"
                   aria-expanded={completedTasksExpanded}
                 >
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-black text-gray-950">
+                    <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
                       Completed Study Tasks for {activeChapterLabel}
                     </p>
-                    <p className="mt-0.5 text-[11px] font-bold text-[#2f6685]">
+                    <p className="mt-0.5 text-[11px] font-bold text-[var(--bb-text-secondary,#2f6685)]">
                       {completedTrackerTasks.length} of {visibleTasks.length} tasks done
                     </p>
                   </div>
                   <span
-                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#eaf5ff] text-lg font-black text-[#2f6685] transition ${completedTasksExpanded ? "rotate-180" : ""}`}
+                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)] bg-[var(--bb-accent-soft,#eaf5ff)] text-lg font-black text-[var(--bb-accent,#2f7fe8)] transition ${completedTasksExpanded ? "rotate-180" : ""}`}
                     aria-hidden="true"
                   >
                     v
@@ -5078,7 +5080,7 @@ export default function DashboardJourneyExperience({
                 </button>
                 {completedTasksExpanded ? (
                 <>
-                <div className="grid gap-2 border-t border-[#b9dcf4] px-3 pb-3 pt-3 sm:grid-cols-2">
+                <div className="grid gap-2 border-t border-[var(--bb-card-border,#b9dcf4)] px-3 pb-3 pt-3 sm:grid-cols-2">
                   {completedTrackerTasks.map((task) => {
                     const originalTaskIndex = visibleTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
                     const taskCopy = getTaskCardCopy(task, originalTaskIndex >= 0 ? originalTaskIndex : 0);
@@ -5091,8 +5093,8 @@ export default function DashboardJourneyExperience({
                         key={`completed-${task.kind}`}
                         className={`overflow-hidden rounded-xl border transition ${
                           isActiveCompletedTask
-                            ? "border-[var(--bb-accent,#2f7fe8)] bg-white shadow-sm sm:col-span-2"
-                            : "border-[#b9dcf4] bg-[#eaf5ff]/70 hover:border-[#7BAFD4] hover:bg-[#eaf5ff] hover:shadow-sm"
+                            ? "border-[var(--bb-accent,#2f7fe8)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,var(--bb-accent-soft,#eaf5ff))] shadow-[0_10px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] sm:col-span-2"
+                            : "border-[var(--bb-card-border,#b9dcf4)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_66%,transparent)] hover:border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_62%,transparent)] hover:bg-[var(--bb-accent-soft,#eaf5ff)] hover:shadow-sm"
                         }`}
                       >
                         <button
@@ -5101,13 +5103,13 @@ export default function DashboardJourneyExperience({
                           className="group flex min-h-10 w-full items-center gap-2 px-3 py-2 text-left transition"
                           aria-expanded={isActiveCompletedTask}
                         >
-                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-[#7BAFD4] text-[11px] font-black text-white shadow-sm" aria-hidden="true">
+                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-[var(--bb-button,var(--bb-accent,#7BAFD4))] text-[11px] font-black text-[var(--bb-button-text,#ffffff)] shadow-sm" aria-hidden="true">
                           ✓
                         </span>
-                        <span className="min-w-0 flex-1 truncate text-xs font-black text-gray-800">
+                        <span className="min-w-0 flex-1 truncate text-xs font-black text-[var(--bb-text-primary,#1f2937)]">
                           {taskCopy.title}
                         </span>
-                        <span className="whitespace-nowrap text-[11px] font-bold text-gray-500">
+                        <span className="whitespace-nowrap text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
                           {task.completedAtLabel || "Completed"}
                         </span>
                         <span className="hidden">
@@ -5119,7 +5121,7 @@ export default function DashboardJourneyExperience({
                   })}
                 </div>
                 {activeCompletedTrackerTask ? (
-                  <div className="border-t border-[#b9dcf4] px-3 pb-3">
+                  <div className="border-t border-[var(--bb-card-border,#b9dcf4)] px-3 pb-3">
                     <DashboardDailyTaskCallout
                       task={activeTask}
                       userId={userId}
@@ -5242,7 +5244,7 @@ export default function DashboardJourneyExperience({
         </div>
       </div>
 
-      {!shouldShowBibleBuddy3ModeGate ? (
+      {!shouldShowBibleBuddy3ModeGate && !deepStudyFocusActive ? (
       <nav className="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom,0px)+10px)] z-[90] mx-auto max-w-xl lg:sticky lg:bottom-2 lg:z-40">
         {dashboardMenuOpen ? (
           <div className="mb-2 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 p-2.5 shadow-[0_18px_46px_rgba(15,35,60,0.22)] backdrop-blur">

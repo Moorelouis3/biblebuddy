@@ -20,6 +20,7 @@ import { buildFullName, hasRequiredFullName, splitFullName } from "@/lib/profile
 import UserBadge from "@/components/UserBadge";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { CUSTOM_MEMBER_BADGE_OPTIONS, normalizeCustomMemberBadge } from "@/lib/userBadges";
+import { getPremiumSkin, normalizePremiumSkinId } from "@/lib/premiumSkins";
 
 // ── Avatar color helpers ────────────────────────────────────────────────────
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
@@ -893,10 +894,121 @@ export default function PublicProfilePage() {
   const color = avatarColor(profileUserId);
   const proTrialTimeLeft = getProTrialTimeLeft(stats?.pro_expires_at);
   const showProTrialBanner = Boolean(stats?.member_badge === "pro_trial" && stats?.is_paid && proTrialTimeLeft);
+  const profileSkinId = normalizePremiumSkinId(stats?.active_premium_skin);
+  const profileSkin = getPremiumSkin(profileSkinId);
+  const profileSkinStyle = profileSkin
+    ? ({
+        "--profile-skin-bg": `url("${profileSkin.desktopBackgroundImage}")`,
+        "--profile-skin-bg-mobile": `url("${profileSkin.mobileBackgroundImage}")`,
+        "--profile-skin-card": profileSkin.palette.card,
+        "--profile-skin-card-border": profileSkin.palette.cardBorder,
+        "--profile-skin-surface": profileSkin.palette.surface,
+        "--profile-skin-surface-soft": profileSkin.palette.surfaceSoft,
+        "--profile-skin-text": profileSkin.palette.textPrimary,
+        "--profile-skin-text-secondary": profileSkin.palette.textSecondary,
+        "--profile-skin-text-muted": profileSkin.palette.textMuted,
+        "--profile-skin-accent": profileSkin.palette.accent,
+        "--profile-skin-button": profileSkin.palette.button,
+        "--profile-skin-button-text": profileSkin.palette.buttonText,
+        "--profile-skin-glow": profileSkin.id === "ruby-village"
+          ? "rgba(255, 115, 95, 0.38)"
+          : profileSkin.id === "angel-wings"
+            ? "rgba(141, 220, 255, 0.38)"
+            : "rgba(255, 255, 255, 0.24)",
+      } as React.CSSProperties)
+    : undefined;
   void trialClockTick;
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-12">
+    <div
+      className={`profile-page-shell min-h-screen pb-12 ${profileSkin ? "profile-page-shell--skinned" : "bg-gray-50"}`}
+      data-profile-skin={profileSkin?.id || "none"}
+      style={profileSkinStyle}
+    >
+      {profileSkin ? (
+        <style>{`
+          .profile-page-shell--skinned {
+            position: relative;
+            overflow-x: hidden;
+            background:
+              linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.46) 62%, rgba(0,0,0,0.72) 100%),
+              var(--profile-skin-bg) center top / cover fixed no-repeat;
+            color: var(--profile-skin-text);
+          }
+          @media (max-width: 767px) {
+            .profile-page-shell--skinned {
+              background:
+                linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.48) 62%, rgba(0,0,0,0.74) 100%),
+                var(--profile-skin-bg-mobile) center top / cover fixed no-repeat;
+            }
+          }
+          .profile-page-shell--skinned::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+              radial-gradient(circle at 50% 12%, var(--profile-skin-glow), transparent 34%),
+              linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.18) 48%, rgba(0,0,0,0.56) 100%);
+            z-index: 0;
+          }
+          .profile-page-shell--skinned > * {
+            position: relative;
+            z-index: 1;
+          }
+          .profile-page-shell--skinned .profile-skin-card {
+            border-color: var(--profile-skin-card-border) !important;
+            background: color-mix(in srgb, var(--profile-skin-card) 82%, transparent) !important;
+            color: var(--profile-skin-text) !important;
+            box-shadow: 0 22px 70px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.14) !important;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+          }
+          .profile-page-shell--skinned .profile-skin-card h1,
+          .profile-page-shell--skinned .profile-skin-card h2,
+          .profile-page-shell--skinned .profile-skin-card h3,
+          .profile-page-shell--skinned .profile-skin-card .profile-skin-primary {
+            color: var(--profile-skin-text) !important;
+          }
+          .profile-page-shell--skinned .profile-skin-card p,
+          .profile-page-shell--skinned .profile-skin-card .profile-skin-secondary {
+            color: var(--profile-skin-text-secondary) !important;
+          }
+          .profile-page-shell--skinned .profile-skin-muted,
+          .profile-page-shell--skinned nav,
+          .profile-page-shell--skinned nav a,
+          .profile-page-shell--skinned nav span {
+            color: var(--profile-skin-text-muted) !important;
+          }
+          .profile-page-shell--skinned .profile-skin-avatar {
+            border: 3px solid var(--profile-skin-accent);
+            box-shadow: 0 0 0 4px color-mix(in srgb, var(--profile-skin-accent) 20%, transparent), 0 0 34px color-mix(in srgb, var(--profile-skin-accent) 42%, transparent);
+          }
+          .profile-page-shell--skinned .profile-skin-button {
+            border-color: color-mix(in srgb, var(--profile-skin-accent) 42%, transparent) !important;
+            background: var(--profile-skin-button) !important;
+            color: var(--profile-skin-button-text) !important;
+            box-shadow: 0 10px 24px color-mix(in srgb, var(--profile-skin-accent) 24%, transparent);
+          }
+          .profile-page-shell--skinned .profile-skin-stat-card,
+          .profile-page-shell--skinned .profile-skin-inner {
+            border-color: color-mix(in srgb, var(--profile-skin-accent) 24%, transparent) !important;
+            background: color-mix(in srgb, var(--profile-skin-surface-soft) 72%, transparent) !important;
+            color: var(--profile-skin-text) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+          }
+          .profile-page-shell--skinned .profile-skin-stat-card div,
+          .profile-page-shell--skinned .profile-skin-inner div,
+          .profile-page-shell--skinned .profile-skin-inner p,
+          .profile-page-shell--skinned .profile-skin-inner span {
+            color: var(--profile-skin-text-secondary) !important;
+          }
+          .profile-page-shell--skinned .profile-skin-stat-card div:first-child {
+            color: var(--profile-skin-text) !important;
+          }
+        `}</style>
+      ) : null}
       <div className="max-w-2xl mx-auto px-4 py-8">
 
         {/* Breadcrumb */}
@@ -930,7 +1042,7 @@ export default function PublicProfilePage() {
           </div>
         )}
 
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+        <div className="profile-skin-card bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
           <div className="flex items-start gap-5">
 
             {/* Avatar */}
@@ -939,11 +1051,11 @@ export default function PublicProfilePage() {
                 <img
                   src={stats.profile_image_url}
                   alt={displayName}
-                  className="w-20 h-20 rounded-full object-cover"
+                  className="profile-skin-avatar w-20 h-20 rounded-full object-cover"
                 />
               ) : (
                 <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center text-white text-2xl font-bold"
+                  className="profile-skin-avatar w-20 h-20 rounded-full flex items-center justify-center text-white text-2xl font-bold"
                   style={{ backgroundColor: color }}
                 >
                   {initials}
@@ -964,6 +1076,13 @@ export default function PublicProfilePage() {
                       proExpiresAt={stats?.pro_expires_at}
                       groupRole={shouldForceTeacherBadge ? "leader" : undefined}
                     />
+                    {profileSkin ? (
+                      <span className="rounded-full border px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] profile-skin-primary"
+                        style={{ borderColor: "color-mix(in srgb, var(--profile-skin-accent) 42%, transparent)", background: "color-mix(in srgb, var(--profile-skin-surface-soft) 76%, transparent)" }}
+                      >
+                        {profileSkin.name}
+                      </span>
+                    ) : null}
                   </div>
                 </div>
 
@@ -972,7 +1091,7 @@ export default function PublicProfilePage() {
                   <div className="flex flex-col items-end gap-2 flex-shrink-0">
                     <button
                       onClick={openEditModal}
-                      className="px-4 py-1.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+                      className="profile-skin-button px-4 py-1.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
                     >
                       Edit Profile
                     </button>
@@ -1168,7 +1287,7 @@ export default function PublicProfilePage() {
         )}
 
         {/* ── DAILY STREAK ───────────────────────────────────────────────── */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+        <div className="profile-skin-card bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
           <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
             <div>
               <h2 className="text-xl font-semibold mb-1">{displayStreak.currentStreak} day streak</h2>
@@ -1181,7 +1300,7 @@ export default function PublicProfilePage() {
             </span>
           </div>
           {heatMapWeeks.length > 0 ? (
-            <div ref={heatMapCardRef} className="relative rounded-2xl border border-[#d9eadf] bg-[#f8fcf9] p-4 sm:p-5">
+            <div ref={heatMapCardRef} className="profile-skin-inner relative rounded-2xl border border-[#d9eadf] bg-[#f8fcf9] p-4 sm:p-5">
               {hoveredHeatMapDay ? (
                 <div
                   className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-full rounded-2xl border border-[#d9eadf] bg-[#f8fcf9] px-4 py-3 text-center text-[#234333] shadow-xl"
@@ -1285,19 +1404,19 @@ export default function PublicProfilePage() {
         {/* ── STATS ROW 1 ────────────────────────────────────────────────── */}
         <div className="-mx-4 mb-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
           <div className="flex snap-x gap-4 sm:grid sm:grid-cols-4">
-          <div className="w-[72vw] shrink-0 snap-start bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm sm:w-auto">
+          <div className="profile-skin-stat-card w-[72vw] shrink-0 snap-start bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm sm:w-auto">
             <div className="text-2xl font-bold mb-1">{displayStats.total_actions}</div>
             <div className="text-sm text-gray-700">Total Actions</div>
           </div>
-          <div className="w-[72vw] shrink-0 snap-start bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm sm:w-auto">
+          <div className="profile-skin-stat-card w-[72vw] shrink-0 snap-start bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm sm:w-auto">
             <div className="text-2xl font-bold mb-1">{booksCompleted}</div>
             <div className="text-sm text-gray-700">Books Completed</div>
           </div>
-          <div className="w-[72vw] shrink-0 snap-start bg-green-100 border border-green-200 rounded-xl p-5 shadow-sm sm:w-auto">
+          <div className="profile-skin-stat-card w-[72vw] shrink-0 snap-start bg-green-100 border border-green-200 rounded-xl p-5 shadow-sm sm:w-auto">
             <div className="text-2xl font-bold mb-1">{displayStats.chapters_completed_count}</div>
             <div className="text-sm text-gray-700">Chapters Read</div>
           </div>
-          <div className="w-[72vw] shrink-0 snap-start bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm sm:w-auto">
+          <div className="profile-skin-stat-card w-[72vw] shrink-0 snap-start bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm sm:w-auto">
             <div className="text-2xl font-bold mb-1">{bibleCompletion}%</div>
             <div className="text-sm text-gray-700">Bible Completion</div>
           </div>
@@ -1339,30 +1458,30 @@ export default function PublicProfilePage() {
 
         {/* ── STATS ROW 2 ────────────────────────────────────────────────── */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
-          <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm">
+          <div className="profile-skin-stat-card bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm">
             <div className="text-2xl font-bold mb-1">{displayStats.notes_created_count}</div>
             <div className="text-sm text-gray-700">Notes Created</div>
           </div>
-          <div className="bg-pink-100 border border-pink-200 rounded-xl p-5 shadow-sm">
+          <div className="profile-skin-stat-card bg-pink-100 border border-pink-200 rounded-xl p-5 shadow-sm">
             <div className="text-2xl font-bold mb-1">{displayStats.people_learned_count}</div>
             <div className="text-sm text-gray-700">People Learned</div>
           </div>
-          <div className="bg-cyan-100 border border-cyan-200 rounded-xl p-5 shadow-sm">
+          <div className="profile-skin-stat-card bg-cyan-100 border border-cyan-200 rounded-xl p-5 shadow-sm">
             <div className="text-2xl font-bold mb-1">{displayStats.places_discovered_count}</div>
             <div className="text-sm text-gray-700">Places Found</div>
           </div>
-          <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm">
+          <div className="profile-skin-stat-card bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm">
             <div className="text-2xl font-bold mb-1">{displayStats.keywords_mastered_count}</div>
             <div className="text-sm text-gray-700">Keywords</div>
           </div>
-          <div className="bg-teal-100 border border-teal-200 rounded-xl p-5 shadow-sm">
+          <div className="profile-skin-stat-card bg-teal-100 border border-teal-200 rounded-xl p-5 shadow-sm">
             <div className="text-2xl font-bold mb-1">{displayStats.trivia_questions_answered}</div>
             <div className="text-sm text-gray-700">Trivia Q&A</div>
           </div>
         </div>
 
         {/* ── STUDY GROUPS ───────────────────────────────────────────────── */}
-        <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 p-5">
+        <div className="profile-skin-card bg-white border border-gray-200 rounded-xl shadow-sm mb-6 p-5">
           <h2 className="text-lg font-semibold text-gray-900 mb-3">Study Groups</h2>
           {userGroups.length === 0 ? (
             <p className="text-sm text-gray-400">Not in any groups yet.</p>
@@ -1435,7 +1554,7 @@ export default function PublicProfilePage() {
         )}
 
         {/* ── ACTION LOG ─────────────────────────────────────────────────── */}
-        <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
+        <div className="profile-skin-card bg-white border border-gray-200 rounded-xl shadow-sm">
           <div className="px-6 py-4 border-b border-gray-100">
             <h2 className="text-xl font-semibold">Action Log</h2>
           </div>

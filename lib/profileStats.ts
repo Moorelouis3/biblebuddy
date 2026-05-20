@@ -39,6 +39,7 @@ export interface ProfileStats {
   fire_streak_last_checked_at?: string | null;
   selected_buddy_avatar?: string | null;
   selected_streak_flame?: string | null;
+  active_premium_skin?: string | null;
 }
 
 export interface HeatMapDay {

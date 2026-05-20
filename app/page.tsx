@@ -349,16 +349,21 @@ export default function LandingPage() {
         </div>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-4">
-          <Link href="/login" className="text-sm font-bold text-slate-700 transition hover:text-slate-950 md:text-base">
+          <Link href="/login" className="rounded-full border border-[#7BAFD4]/45 bg-white/95 px-3.5 py-2 text-sm font-black text-slate-950 shadow-sm transition hover:border-[#7BAFD4] hover:bg-[#eef7ff] md:px-5 md:text-base">
             Log In
           </Link>
-          <button
-            type="button"
-            onClick={() => setShowSignupModal(true)}
-            className="inline-flex items-center gap-2 rounded-full bg-[#7BAFD4] px-4 py-2 text-sm font-black text-[#05111f] shadow-[0_14px_36px_rgba(123,175,212,0.28)] transition hover:bg-[#91c2df] md:px-7 md:py-2.5 md:text-base"
-          >
-            Start free <span aria-hidden="true">→</span>
-          </button>
+          <div className="flex flex-col items-center gap-1">
+            <button
+              type="button"
+              onClick={() => setShowSignupModal(true)}
+              className="inline-flex items-center gap-2 rounded-full bg-[#7BAFD4] px-4 py-2 text-sm font-black text-[#05111f] shadow-[0_14px_36px_rgba(123,175,212,0.28)] transition hover:bg-[#91c2df] md:px-7 md:py-2.5 md:text-base"
+            >
+              Start free <span aria-hidden="true">→</span>
+            </button>
+            <Link href="/login" className="text-[11px] font-black text-slate-700 underline underline-offset-2 transition hover:text-slate-950 sm:hidden">
+              Log in
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -371,14 +376,19 @@ export default function LandingPage() {
             <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-slate-600 md:mt-7 md:text-xl md:leading-8 lg:mx-0">
               Bible Buddy helps you build a daily Bible study rhythm, grow closer to God, know where to start, understand what you read, and keep coming back without feeling rushed.
             </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center md:mt-9 lg:justify-start">
-              <button
-                type="button"
-                onClick={() => setShowSignupModal(true)}
-                className="inline-flex justify-center rounded-2xl bg-[#7BAFD4] px-7 py-3.5 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.3)] transition hover:-translate-y-0.5 hover:bg-[#91c2df] md:px-8 md:py-4"
-              >
-                Get started free <span className="ml-2" aria-hidden="true">→</span>
-              </button>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-center md:mt-9 lg:justify-start">
+              <div className="flex w-full flex-col gap-2 sm:w-auto">
+                <button
+                  type="button"
+                  onClick={() => setShowSignupModal(true)}
+                  className="inline-flex justify-center rounded-2xl bg-[#7BAFD4] px-7 py-3.5 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.3)] transition hover:-translate-y-0.5 hover:bg-[#91c2df] md:px-8 md:py-4"
+                >
+                  Get started free <span className="ml-2" aria-hidden="true">→</span>
+                </button>
+                <Link href="/login" className="inline-flex justify-center rounded-2xl border border-[#7BAFD4]/40 bg-white/90 px-7 py-3 text-sm font-black text-slate-900 shadow-sm transition hover:border-[#7BAFD4] hover:bg-[#eef7ff]">
+                  Log in
+                </Link>
+              </div>
               <p className="text-xs font-medium text-slate-500 md:text-sm">No credit card required.</p>
             </div>
           </div>
@@ -628,13 +638,18 @@ export default function LandingPage() {
                 Bible Buddy keeps the serious part serious, but makes progress visible. You see your streak,
                 protect it with Grace Days, earn badges, level up, and always know the next chapter waiting for you.
               </p>
-              <button
-                type="button"
-                onClick={() => setShowSignupModal(true)}
-                className="mt-4 w-full rounded-2xl bg-[#7BAFD4] px-7 py-3.5 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.28)] transition hover:-translate-y-0.5 hover:bg-[#91c2df] sm:w-auto md:mt-5 md:px-8 md:py-4"
-              >
-                Start Your Bible Study <span className="ml-2" aria-hidden="true">→</span>
-              </button>
+              <div className="mt-4 flex w-full flex-col gap-2 sm:w-auto md:mt-5">
+                <button
+                  type="button"
+                  onClick={() => setShowSignupModal(true)}
+                  className="w-full rounded-2xl bg-[#7BAFD4] px-7 py-3.5 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.28)] transition hover:-translate-y-0.5 hover:bg-[#91c2df] sm:w-auto md:px-8 md:py-4"
+                >
+                  Start Your Bible Study <span className="ml-2" aria-hidden="true">→</span>
+                </button>
+                <Link href="/login" className="inline-flex justify-center rounded-2xl border border-[#7BAFD4]/40 bg-white/90 px-7 py-3 text-sm font-black text-slate-900 shadow-sm transition hover:border-[#7BAFD4] hover:bg-[#eef7ff]">
+                  Log in
+                </Link>
+              </div>
             </div>
 
             <div className="overflow-hidden rounded-3xl border border-[#dbe7f6] bg-white shadow-[0_22px_60px_rgba(42,88,125,0.12)] md:rounded-[30px] md:shadow-[0_30px_90px_rgba(42,88,125,0.14)]">
@@ -798,6 +813,9 @@ export default function LandingPage() {
               <button type="submit" disabled={loading} className="mt-1 w-full rounded-lg bg-[#7BAFD4] py-2.5 text-sm font-black text-[#05111f] shadow-md transition hover:bg-[#91c2df] disabled:opacity-60">
                 {loading ? "Creating account..." : "Create Free Account"}
               </button>
+              <Link href="/login" className="block w-full rounded-lg border border-[#7BAFD4]/40 bg-white py-2.5 text-center text-sm font-black text-slate-900 shadow-sm transition hover:border-[#7BAFD4] hover:bg-[#eef7ff]">
+                Log in
+              </Link>
 
               <p className="mt-1.5 text-center text-[10px] text-gray-500">
                 By creating an account, you agree to the{" "}

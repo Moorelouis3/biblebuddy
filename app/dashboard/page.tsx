@@ -6,7 +6,6 @@ import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent, typ
 import Link from "next/link";
 import confetti from "canvas-confetti";
 import "../../styles/pulse.css";
-import DashboardDailyTaskCallout from "../../components/DashboardDailyTaskCallout";
 import DashboardDailyWelcomeModal from "../../components/DashboardDailyWelcomeModal";
 import LouisDailyTasksModal, { buildChooseDevotionalChecklistData, fetchLouisDailyChecklistData, type ChecklistData, type TaskState } from "../../components/LouisDailyTasksModal";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
@@ -1138,7 +1137,6 @@ export default function DashboardPage() {
   const [showDeepStudyUpgradeModal, setShowDeepStudyUpgradeModal] = useState(false);
   const [deepStudyNow, setDeepStudyNow] = useState(Date.now());
   const deepStudyFinalizingRef = useRef(false);
-  const deepStudyAutoAdvanceJourneyRef = useRef<string | null>(null);
   const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
@@ -5887,21 +5885,6 @@ export default function DashboardPage() {
   ];
   const selectedDeepStudyDuration =
     deepStudyDurationOptions.find((option) => option.minutes === deepStudySelectedMinutes) ?? deepStudyDurationOptions[0];
-  const deepStudyTaskQueue = useMemo(() => {
-    const taskOrder: Record<TaskState["kind"], number> = {
-      devotional: 0,
-      reading: 1,
-      notes: 2,
-      trivia: 3,
-      scrambled: 4,
-      reflection: 5,
-    };
-    return dashboardChecklistData.tasks
-      .filter((task) => !task.done && !task.disabled)
-      .sort((firstTask, secondTask) => taskOrder[firstTask.kind] - taskOrder[secondTask.kind]);
-  }, [dashboardChecklistData]);
-  const activeDeepStudyTask = deepStudyTaskQueue[0] ?? null;
-  const upcomingDeepStudyTasks = deepStudyTaskQueue.slice(1, 4);
 
   useEffect(() => {
     const allowedMinutes = [
@@ -6008,10 +5991,13 @@ export default function DashboardPage() {
 
   function startDeepStudySession(minutes: number, shareDisplayMinutes?: number) {
     const now = Date.now();
+    const stableSkinId = activePremiumSkinId !== "none"
+      ? activePremiumSkinId
+      : normalizePremiumSkinId(profile?.active_premium_skin ?? activePremiumSkinId);
     setDeepStudyResults(null);
-    setShowLouisDailyTasksModal(false);
-    setSelectedDashboardTask(null);
-    deepStudyAutoAdvanceJourneyRef.current = null;
+    setActivePremiumSkinId(stableSkinId);
+    applyPremiumSkinToDocument(stableSkinId);
+    preloadActiveSkinAssets(stableSkinId);
     setDeepStudyActiveSession({
       id: `deep-study-${userId || "anon"}-${now}`,
       plannedMinutes: minutes,
@@ -6075,7 +6061,7 @@ export default function DashboardPage() {
       ...historyBeforeSave,
     ], dayKey);
     const multiplier = getDeepStudyMultiplier(optimisticStreak);
-    const diamondsEarned = Math.max(0, Math.floor(activeMinutes * DEEP_STUDY_DIAMONDS_PER_MINUTE * multiplier * (focusScore / 100)));
+    const diamondsEarned = Math.max(0, activeMinutes * DEEP_STUDY_DIAMONDS_PER_MINUTE);
 
     const summary: DeepStudySessionSummary = {
       id: deepStudyActiveSession.id,
@@ -6859,29 +6845,6 @@ export default function DashboardPage() {
     void loadDailyTaskSummary({ force: true, silent: true });
   }
 
-  useEffect(() => {
-    if (!deepStudyActiveSession || !dashboardChecklistData.allDone || !dashboardChecklistData.nextJourneyTarget) return;
-
-    const journeyKey =
-      dashboardChecklistData.journeyKey ||
-      `${dashboardChecklistData.nextJourneyTarget.devotionalId}:${dashboardChecklistData.nextJourneyTarget.dayNumber - 1}`;
-    if (deepStudyAutoAdvanceJourneyRef.current === journeyKey) return;
-    deepStudyAutoAdvanceJourneyRef.current = journeyKey;
-
-    const timer = window.setTimeout(() => {
-      void closeDailyTaskCelebrationModal({ advanceToNextChapter: true });
-    }, 420);
-
-    return () => window.clearTimeout(timer);
-  }, [
-    deepStudyActiveSession?.id,
-    dashboardChecklistData.allDone,
-    dashboardChecklistData.journeyKey,
-    dashboardChecklistData.nextJourneyTarget,
-    userId,
-    louisDailyTaskCycleStartedAt,
-  ]);
-
   function handleDashboardTaskProgressUpdated(completedTask?: TaskState) {
     if (completedTask?.kind) {
       if (deepStudyActiveSession) {
@@ -7004,13 +6967,6 @@ export default function DashboardPage() {
     ctx.lineWidth = 5;
     ctx.stroke();
 
-    ctx.fillStyle = `${accent}2D`;
-    roundRect(ctx, 135, 205, 810, 410, 46);
-    ctx.fill();
-    ctx.strokeStyle = `${accent}66`;
-    ctx.lineWidth = 3;
-    ctx.stroke();
-
     ctx.fillStyle = skin ? theme.accent : darkAccent;
     ctx.font = "900 34px Arial";
     ctx.textAlign = "center";
@@ -7020,19 +6976,21 @@ export default function DashboardPage() {
     ctx.font = "900 72px Arial";
     wrapCanvasText(ctx, "I just studied the Bible for", 540, 405, 780, 80);
     ctx.font = "900 118px Arial";
-    ctx.fillText(`${displayMinutes} minute${displayMinutes === 1 ? "" : "s"}`, 540, 560);
+    ctx.fillText(`${displayMinutes} minute${displayMinutes === 1 ? "" : "s"}`, 540, 600);
 
     const rows = [
-      ["Focus score", `${summary.focusScore}%`],
-      ["Deep Study streak", `${summary.streak} day${summary.streak === 1 ? "" : "s"}`],
+      ["Focused time", `${summary.activeMinutes}m`],
+      ["Non-focused time", `${summary.awayMinutes}m`],
       ["Tasks completed", String(summary.tasksCompleted)],
       ["Diamonds earned", `+${summary.diamondsEarned}`],
+      ["Focus score", `${summary.focusScore}%`],
+      ["Deep Study streak", `${summary.streak} day${summary.streak === 1 ? "" : "s"}`],
     ];
     rows.forEach(([label, value], index) => {
       const x = index % 2 === 0 ? 135 : 555;
-      const y = 720 + Math.floor(index / 2) * 190;
+      const y = 720 + Math.floor(index / 2) * 170;
       ctx.fillStyle = skin ? "rgba(255,255,255,0.11)" : `${accent}22`;
-      roundRect(ctx, x, y, 390, 145, 34);
+      roundRect(ctx, x, y, 390, 132, 34);
       ctx.fill();
       ctx.fillStyle = theme.textSecondary;
       ctx.font = "800 26px Arial";
@@ -7040,23 +6998,23 @@ export default function DashboardPage() {
       ctx.fillText(label.toUpperCase(), x + 195, y + 48);
       ctx.fillStyle = skin ? theme.textPrimary : darkAccent;
       ctx.font = "900 46px Arial";
-      ctx.fillText(value, x + 195, y + 105);
+      ctx.fillText(value, x + 195, y + 100);
     });
 
     ctx.fillStyle = skin ? "rgba(255,255,255,0.1)" : `${accent}18`;
-    roundRect(ctx, 135, 1132, 810, 178, 42);
+    roundRect(ctx, 135, 1252, 810, 178, 42);
     ctx.fill();
     ctx.textAlign = "center";
     ctx.fillStyle = theme.textPrimary;
     ctx.font = "800 42px Arial";
-    wrapCanvasText(ctx, "Building a Bible habit one focused session at a time.", 540, 1210, 720, 52);
+    wrapCanvasText(ctx, "Building a Bible habit one focused session at a time.", 540, 1330, 720, 52);
 
     ctx.fillStyle = skin ? theme.accent : darkAccent;
     ctx.font = "900 42px Arial";
-    ctx.fillText("Start your own study rhythm", 540, 1418);
+    ctx.fillText("Start your own study rhythm", 540, 1500);
     ctx.fillStyle = theme.textPrimary;
     ctx.font = "900 54px Arial";
-    ctx.fillText("MyBibleBuddy.net", 540, 1492);
+    ctx.fillText("MyBibleBuddy.net", 540, 1574);
 
     return new Promise<Blob>((resolve, reject) => {
       canvas.toBlob((blob) => {
@@ -7109,8 +7067,8 @@ export default function DashboardPage() {
       const file = new File([blob], "bible-buddy-deep-study.png", { type: "image/png" });
       if (target === "share" && navigator.canShare?.({ files: [file] })) {
         await navigator.share({
-          title: "Bible Buddy Deep Study",
-          text: "Deep Study Complete",
+          title: "Bible Buddy",
+          text: "I just studied the Bible with Mybiblebuddy.net",
           files: [file],
         });
       } else {
@@ -7454,25 +7412,17 @@ export default function DashboardPage() {
   function renderDeepStudyCinematicCard() {
     if (deepStudyMode === "active" && deepStudyActiveSession) {
       const secondsLeft = Math.max(0, Math.ceil((deepStudyActiveSession.endsAt - deepStudyNow) / 1000));
-      const activeMinutes = Math.floor(deepStudyActiveSession.activeMs / 60000);
       return (
         <>
-          <div className="bb-deep-study-focus-panel relative overflow-hidden rounded-[30px] border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] p-5 text-center text-[var(--bb-text-primary)] shadow-[0_24px_70px_rgba(0,0,0,0.34)] backdrop-blur-xl sm:p-7">
+          <div className="bb-deep-study-focus-panel relative overflow-hidden rounded-[26px] border border-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] p-4 text-center text-[var(--bb-text-primary)] shadow-[0_18px_48px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:p-5">
             <div className="bb-deep-study-orbit" aria-hidden="true" />
-            <p className="relative text-xs font-black uppercase tracking-[0.28em] text-[var(--bb-accent)]">Focus mode active</p>
-            <p className="relative mt-3 text-5xl font-black leading-none text-[var(--bb-text-primary)] drop-shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent)_56%,transparent)]">{formatDeepStudyTime(secondsLeft)}</p>
-            <p className="relative mt-2 text-sm font-black text-[var(--bb-text-secondary)]">remaining</p>
-            <div className="relative mt-5 grid grid-cols-3 gap-2 text-xs font-black">
-              <div className="rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent)_24%,transparent)] bg-[var(--bb-surface-soft)] px-2 py-3 leading-tight text-[var(--bb-text-primary)] backdrop-blur-md">{activeMinutes}m focused</div>
-              <div className="rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent)_24%,transparent)] bg-[var(--bb-surface-soft)] px-2 py-3 leading-tight text-[var(--bb-text-primary)] backdrop-blur-md">{deepStudyActiveSession.tasksCompleted} tasks</div>
-              <div className="rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent)_24%,transparent)] bg-[var(--bb-surface-soft)] px-2 py-3 leading-tight text-[var(--bb-text-primary)] backdrop-blur-md">{deepStudyActiveSession.chaptersStudied.length} chapters</div>
-            </div>
-            <p className="relative mt-4 text-xs font-semibold text-[var(--bb-text-secondary)]">Stay with Scripture. The dashboard is quiet while you study.</p>
+            <p className="relative text-[10px] font-black uppercase tracking-[0.24em] text-[var(--bb-accent)]">Deep Study Active</p>
+            <p className="relative mt-2 text-5xl font-black leading-none text-[var(--bb-text-primary)] drop-shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent)_56%,transparent)]">{formatDeepStudyTime(secondsLeft)}</p>
             <button
               type="button"
               onClick={() => void finishDeepStudySession(true)}
               disabled={deepStudyFinalizingRef.current}
-              className="relative mt-5 w-full rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[var(--bb-surface-soft)] px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[var(--bb-text-primary)] transition hover:brightness-110 disabled:opacity-60"
+              className="relative mt-4 w-full rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[var(--bb-surface-soft)] px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[var(--bb-text-primary)] transition hover:brightness-110 disabled:opacity-60"
             >
               {deepStudyFinalizingRef.current ? "Stopping..." : "Stop"}
             </button>
@@ -7523,7 +7473,8 @@ export default function DashboardPage() {
             <select
               value={deepStudySelectedMinutes}
               onChange={(event) => setDeepStudySelectedMinutes(Number(event.target.value))}
-              className="mt-1.5 w-full rounded-[16px] border border-[color-mix(in_srgb,var(--bb-accent)_30%,transparent)] bg-[var(--bb-surface-soft)] px-4 py-2.5 text-sm font-black text-[var(--bb-text-primary)] outline-none"
+              className="mt-1.5 w-full rounded-[16px] border border-[color-mix(in_srgb,var(--bb-accent)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_82%,transparent)] px-4 py-2.5 text-sm font-black text-[var(--bb-text-primary)] shadow-[0_8px_22px_color-mix(in_srgb,var(--bb-accent)_18%,transparent),inset_0_1px_0_rgba(255,255,255,0.16)] outline-none backdrop-blur-xl transition focus:border-[color-mix(in_srgb,var(--bb-accent)_72%,transparent)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--bb-accent)_24%,transparent)]"
+              style={{ colorScheme: dashboardTheme.id === "light" && activePremiumSkinId === "none" ? "light" : "dark" }}
             >
               {deepStudyDurationOptions.map((option) => (
                 <option key={`${option.minutes}:${option.label}`} value={option.minutes}>
@@ -7707,91 +7658,6 @@ export default function DashboardPage() {
     );
   }
 
-  function renderDeepStudyFocusOverlay() {
-    if (deepStudyMode !== "active" || !deepStudyActiveSession) return null;
-
-    const secondsLeft = Math.max(0, Math.ceil((deepStudyActiveSession.endsAt - deepStudyNow) / 1000));
-    const activeTaskKey = activeDeepStudyTask
-      ? `${activeDeepStudyTask.kind}:${activeDeepStudyTask.href || ""}:${activeDeepStudyTask.chapterLabel || ""}`
-      : "waiting";
-
-    return (
-      <div className="bb-deep-study-focus-overlay fixed inset-0 z-[95] overflow-y-auto bg-black/[0.88] px-4 py-5 text-white backdrop-blur-xl sm:px-6">
-        <style>{`
-          @keyframes bb-deep-study-focus-in {
-            from { opacity: 0; transform: translateY(16px) scale(0.985); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-          }
-          @keyframes bb-deep-study-task-rise {
-            from { opacity: 0; transform: translateX(34px) rotate(1deg); filter: blur(2px); }
-            to { opacity: 1; transform: translateX(0) rotate(0); filter: blur(0); }
-          }
-          .bb-deep-study-focus-shell { animation: bb-deep-study-focus-in 220ms ease-out both; }
-          .bb-deep-study-active-task { animation: bb-deep-study-task-rise 260ms cubic-bezier(0.16, 0.9, 0.22, 1) both; }
-        `}</style>
-        <div className="bb-deep-study-focus-shell mx-auto flex min-h-[calc(100vh-40px)] w-full max-w-2xl flex-col">
-          <div className="sticky top-0 z-20 -mx-4 border-b border-white/10 bg-black/[0.78] px-4 pb-4 pt-1 backdrop-blur-xl sm:-mx-6 sm:px-6">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="text-[11px] font-black uppercase tracking-[0.24em] text-white/[0.55]">Deep Study Focus</p>
-                <p className="mt-1 text-5xl font-black leading-none tracking-normal text-white">{formatDeepStudyTime(secondsLeft)}</p>
-              </div>
-              <button
-                type="button"
-                onClick={() => void finishDeepStudySession(true)}
-                disabled={deepStudyFinalizingRef.current}
-                className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black text-white shadow-sm backdrop-blur transition hover:bg-white/[0.16] disabled:opacity-60"
-              >
-                {deepStudyFinalizingRef.current ? "Stopping" : "End"}
-              </button>
-            </div>
-            <div className="mt-4 grid grid-cols-3 gap-2 text-center text-[11px] font-black text-white/[0.74]">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.08] px-2 py-2">{deepStudyActiveSession.tasksCompleted} done</div>
-              <div className="rounded-2xl border border-white/10 bg-white/[0.08] px-2 py-2">{deepStudyTaskQueue.length} queued</div>
-              <div className="rounded-2xl border border-white/10 bg-white/[0.08] px-2 py-2">{deepStudyActiveSession.chaptersStudied.length} chapters</div>
-            </div>
-          </div>
-
-          <div className="flex flex-1 flex-col justify-center py-5">
-            {activeDeepStudyTask ? (
-              <div key={activeTaskKey} className="bb-deep-study-active-task rounded-[30px] border border-white/[0.12] bg-white/[0.06] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
-                <DashboardDailyTaskCallout
-                  task={activeDeepStudyTask}
-                  userId={userId}
-                  onClose={() => undefined}
-                  onProgressUpdated={handleDashboardTaskProgressUpdated}
-                  variant="inline"
-                  enableDashboardSkip={isOwnerDashboard}
-                />
-              </div>
-            ) : (
-              <div className="rounded-[30px] border border-white/[0.12] bg-white/[0.06] px-5 py-12 text-center shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
-                <p className="text-2xl font-black">{dashboardChecklistData.nextJourneyTarget ? "Loading the next chapter..." : "This chapter stack is clear."}</p>
-                <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-white/[0.62]">
-                  {dashboardChecklistData.nextJourneyTarget
-                    ? "Bible Buddy is setting up the next intro, reading, notes, games, and reflection."
-                    : "You can keep the timer running for quiet study or end the session when you are ready."}
-                </p>
-              </div>
-            )}
-
-            {upcomingDeepStudyTasks.length > 0 ? (
-              <div className="mt-4 space-y-2">
-                <p className="px-1 text-[11px] font-black uppercase tracking-[0.22em] text-white/[0.45]">Coming Next</p>
-                {upcomingDeepStudyTasks.map((task) => (
-                  <div key={`${task.kind}:${task.href || ""}:${task.chapterLabel || ""}`} className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.055] px-4 py-3 text-sm font-black text-white/[0.72]">
-                    <span className="min-w-0 truncate">{task.title}</span>
-                    <span className="shrink-0 text-xs text-white/[0.42]">{task.timeEstimateLabel || "Next"}</span>
-                  </div>
-                ))}
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   function renderDashboardHomePanelOverride() {
     if (showDiamondStore) return renderDiamondStorePanel();
     if (showBibleProgressPanel) return renderBibleProgressPanel();
@@ -7911,6 +7777,8 @@ export default function DashboardPage() {
       </ModalShell>
     );
   }
+
+  const isDeepStudyFocusActive = deepStudyMode === "active" && Boolean(deepStudyActiveSession);
 
   return (
     <>
@@ -9287,7 +9155,7 @@ export default function DashboardPage() {
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
       <div className="bb-blue-storm-desktop-layout hidden lg:flex max-w-7xl mx-auto px-4 mt-4 lg:mt-0 lg:py-4 gap-6">
         {/* LEFT AD SLOT (Desktop Only) */}
-        {shouldShowAds && (
+        {shouldShowAds && !isDeepStudyFocusActive && (
           <aside className="w-64 flex-shrink-0 sticky top-8 h-fit">
             <div className="mt-8">
               <AdSlot
@@ -9329,6 +9197,7 @@ export default function DashboardPage() {
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={renderDashboardHomePanelOverride()}
           deepStudyNode={renderDeepStudyCinematicCard()}
+          deepStudyFocusActive={isDeepStudyFocusActive}
           suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           onOpenStore={openDiamondStore}
@@ -9340,7 +9209,7 @@ export default function DashboardPage() {
         </div>
 
         {/* RIGHT AD SLOT (Desktop Only) */}
-        {shouldShowAds && (
+        {shouldShowAds && !isDeepStudyFocusActive && (
           <aside className="w-64 flex-shrink-0 sticky top-8 h-fit">
             <div className="mt-8">
               <AdSlot
@@ -9383,6 +9252,7 @@ export default function DashboardPage() {
           homeHeader={renderDashboardStatsRow()}
           homePanelOverride={renderDashboardHomePanelOverride()}
           deepStudyNode={renderDeepStudyCinematicCard()}
+          deepStudyFocusActive={isDeepStudyFocusActive}
           suppressCompletedTasksPanel={showBibleProgressPanel || deepStudyMode === "complete" || deepStudyMode === "results" || deepStudyMode === "info"}
           onHomeReset={resetDashboardHomePanel}
           onOpenStore={openDiamondStore}
@@ -9393,10 +9263,8 @@ export default function DashboardPage() {
         />
       </div>
 
-      {renderDeepStudyFocusOverlay()}
-
       {/* MOBILE BOTTOM AD BANNER (Fixed at bottom, above system UI) */}
-      {shouldShowAds && !mobileAdDismissed && (
+      {shouldShowAds && !isDeepStudyFocusActive && !mobileAdDismissed && (
         <div 
           className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40 shadow-lg"
           style={{
