@@ -2462,7 +2462,7 @@ export default function DashboardPage() {
         onClick?: () => void;
       }>
     ) => (
-      <div className="bb-skin-glow-card mx-auto grid max-w-xl grid-cols-4 gap-1.5 rounded-[22px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-1.5 shadow-[0_12px_34px_rgba(38,63,99,0.08)] backdrop-blur sm:gap-2 sm:p-2">
+      <div className="mx-auto grid max-w-xl grid-cols-4 gap-1.5 sm:gap-2">
         {cards.map((card) => {
           const CardTag = card.onClick ? "button" : "div";
           return (

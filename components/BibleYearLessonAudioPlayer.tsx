@@ -18,6 +18,7 @@ function formatTime(totalSeconds: number) {
 
 export default function BibleYearLessonAudioPlayer({
   audioSrc,
+  title,
   durationLabel,
 }: BibleYearLessonAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -29,6 +30,9 @@ export default function BibleYearLessonAudioPlayer({
   const [playbackRate, setPlaybackRate] = useState(1);
   const [error, setError] = useState(false);
   const pendingSeekRef = useRef(0);
+  const isScrubbingRef = useRef(false);
+  const [isScrubbing, setIsScrubbing] = useState(false);
+  const [scrubTime, setScrubTime] = useState(0);
 
   const progressKey = useMemo(() => `bb:bible-year-audio-progress:${audioSrc}`, [audioSrc]);
   const estimatedDurationSeconds = useMemo(() => {
@@ -37,7 +41,8 @@ export default function BibleYearLessonAudioPlayer({
     return Math.round(Number(match[1]) * 60);
   }, [durationLabel]);
   const effectiveDuration = duration > 0 ? duration : estimatedDurationSeconds;
-  const remainingTime = effectiveDuration > 0 ? Math.max(0, effectiveDuration - currentTime) : 0;
+  const displayTime = isScrubbing ? scrubTime : currentTime;
+  const remainingTime = effectiveDuration > 0 ? Math.max(0, effectiveDuration - displayTime) : 0;
 
   useEffect(() => {
     const saveCurrentProgress = () => saveProgress(audioRef.current);
@@ -95,6 +100,69 @@ export default function BibleYearLessonAudioPlayer({
     }
   }
 
+  function wireAudioEvents(audio: HTMLAudioElement) {
+    audio.onloadedmetadata = () => {
+      if (Number.isFinite(audio.duration)) setDuration(audio.duration);
+      applySavedPosition(audio);
+    };
+    audio.oncanplay = () => {
+      applySavedPosition(audio);
+      setLoading(false);
+    };
+    audio.onseeked = () => {
+      pendingSeekRef.current = 0;
+      saveProgress(audio);
+      setCurrentTime(audio.currentTime || 0);
+    };
+    audio.ontimeupdate = () => {
+      if (!isScrubbingRef.current) setCurrentTime(audio.currentTime || 0);
+      if (Number.isFinite(audio.duration)) setDuration(audio.duration);
+      const second = Math.floor(audio.currentTime || 0);
+      if (!isScrubbingRef.current && second > 0 && second !== lastSavedSecondRef.current) {
+        lastSavedSecondRef.current = second;
+        saveProgress(audio);
+      }
+    };
+    audio.onstalled = () => {
+      saveProgress(audio);
+    };
+    audio.onwaiting = () => {
+      saveProgress(audio);
+      setLoading(true);
+    };
+    audio.onplaying = () => {
+      setLoading(false);
+      setPlaying(true);
+    };
+    audio.onpause = () => {
+      saveProgress(audio);
+      setPlaying(false);
+      setLoading(false);
+    };
+    audio.onended = () => {
+      window.localStorage.removeItem(progressKey);
+      setCurrentTime(0);
+      setScrubTime(0);
+      setPlaying(false);
+      setLoading(false);
+    };
+    audio.onerror = () => {
+      setError(true);
+      setPlaying(false);
+      setLoading(false);
+    };
+  }
+
+  function getOrCreateAudio() {
+    if (audioRef.current) return audioRef.current;
+    const audio = new Audio(audioSrc);
+    audio.preload = "metadata";
+    audio.playbackRate = playbackRate;
+    audioRef.current = audio;
+    wireAudioEvents(audio);
+    return audio;
+  }
+
   async function toggleAudio() {
     if (loading) return;
     setError(false);
@@ -111,10 +179,8 @@ export default function BibleYearLessonAudioPlayer({
       try {
         applySavedPosition(audioRef.current);
         await audioRef.current.play();
-        setPlaying(true);
       } catch {
         setError(true);
-      } finally {
         setLoading(false);
       }
       return;
@@ -122,78 +188,45 @@ export default function BibleYearLessonAudioPlayer({
 
     setLoading(true);
     try {
-      const audio = new Audio(audioSrc);
-      audio.preload = "metadata";
-      audio.playbackRate = playbackRate;
-      audioRef.current = audio;
-
-      audio.onloadedmetadata = () => {
-        if (Number.isFinite(audio.duration)) setDuration(audio.duration);
-        applySavedPosition(audio);
-      };
-      audio.oncanplay = () => {
-        applySavedPosition(audio);
-      };
-      audio.onseeked = () => {
-        pendingSeekRef.current = 0;
-        saveProgress(audio);
-      };
-      audio.ontimeupdate = () => {
-        setCurrentTime(audio.currentTime || 0);
-        if (Number.isFinite(audio.duration)) setDuration(audio.duration);
-        const second = Math.floor(audio.currentTime || 0);
-        if (second > 0 && second !== lastSavedSecondRef.current) {
-          lastSavedSecondRef.current = second;
-          saveProgress(audio);
-        }
-      };
-      audio.onstalled = () => {
-        saveProgress(audio);
-      };
-      audio.onwaiting = () => {
-        saveProgress(audio);
-      };
-      audio.onpause = () => {
-        saveProgress(audio);
-        setPlaying(false);
-      };
-      audio.onended = () => {
-        window.localStorage.removeItem(progressKey);
-        setCurrentTime(0);
-        setPlaying(false);
-      };
-      audio.onerror = () => {
-        setError(true);
-        setPlaying(false);
-        setLoading(false);
-      };
-
+      const audio = getOrCreateAudio();
       applySavedPosition(audio);
       await audio.play();
-      setPlaying(true);
     } catch {
       setError(true);
-    } finally {
       setLoading(false);
     }
+  }
+
+  function commitSeek(seconds: number) {
+    const audio = getOrCreateAudio();
+    const cap = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : effectiveDuration || seconds;
+    const nextTime = Math.max(0, Math.min(seconds, cap));
+    pendingSeekRef.current = nextTime;
+    setCurrentTime(nextTime);
+    setScrubTime(nextTime);
+    try {
+      if ("fastSeek" in audio && typeof audio.fastSeek === "function") {
+        audio.fastSeek(nextTime);
+      } else {
+        audio.currentTime = nextTime;
+      }
+    } catch {
+      pendingSeekRef.current = nextTime;
+    }
+    saveProgress(audio);
   }
 
   function seekBy(seconds: number) {
     const audio = audioRef.current;
     if (!audio) return;
-    const nextTime = Math.max(0, Math.min((audio.currentTime || 0) + seconds, audio.duration || Number.MAX_SAFE_INTEGER));
-    audio.currentTime = nextTime;
-    setCurrentTime(nextTime);
-    saveProgress(audio);
+    const cap = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : effectiveDuration || Number.MAX_SAFE_INTEGER;
+    commitSeek(Math.max(0, Math.min((audio.currentTime || 0) + seconds, cap)));
   }
 
-  function seekTo(seconds: number) {
-    const audio = audioRef.current;
-    if (!audio) return;
-    const nextTime = Math.max(0, Math.min(seconds, audio.duration || seconds));
-    audio.currentTime = nextTime;
-    setCurrentTime(nextTime);
-    saveProgress(audio);
+  function finishScrubbing(value = scrubTime) {
+    isScrubbingRef.current = false;
+    setIsScrubbing(false);
+    commitSeek(value);
   }
 
   function changePlaybackRate(rate: number) {
@@ -206,53 +239,69 @@ export default function BibleYearLessonAudioPlayer({
 
   return (
     <section
-      className="mb-6 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] p-2.5 shadow-sm backdrop-blur-md"
-      style={{ background: "color-mix(in srgb, var(--bb-card, #ffffff) 74%, transparent)" }}
+      className="mb-6 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_80%,transparent)] p-3 shadow-[0_14px_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] backdrop-blur-md"
+      style={{ background: "color-mix(in srgb, var(--bb-card, #ffffff) 78%, transparent)" }}
     >
-      <div className="flex min-w-0 flex-col gap-2">
-        <button
-          type="button"
-          onClick={toggleAudio}
-          disabled={loading}
-          className="flex min-h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-base font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
-          aria-label={playing ? "Pause Day 1 audio lesson" : "Play Day 1 audio lesson"}
-        >
-          {loading ? (
-            <>
-              <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
-              <span>Loading</span>
-            </>
-          ) : playing ? (
-            <>
-              <span className="text-sm font-black leading-none" aria-hidden="true">
-                II
-              </span>
-              <span>Pause</span>
-            </>
-          ) : (
-            <>
-              <span className="h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-current" aria-hidden="true" />
-              <span>{currentTime > 2 ? "Resume" : "Play"}</span>
-            </>
-          )}
-        </button>
+      <div className="flex min-w-0 flex-col gap-3">
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={toggleAudio}
+            disabled={loading}
+            className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-[0_10px_22px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
+            aria-label={playing ? "Pause Day 1 audio lesson" : "Play Day 1 audio lesson"}
+          >
+            {loading ? (
+              <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
+            ) : playing ? (
+              <span className="text-base font-black leading-none" aria-hidden="true">II</span>
+            ) : (
+              <span className="ml-1 h-0 w-0 border-y-[8px] border-l-[13px] border-y-transparent border-l-current" aria-hidden="true" />
+            )}
+          </button>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">{title}</p>
+            <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+              {playing ? "Playing" : currentTime > 2 ? "Ready to resume" : "Audio lesson"}
+              {" • "}
+              {duration ? formatTime(duration) : durationLabel}
+            </p>
+          </div>
+          <span className="rounded-full bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_72%,transparent)] px-2.5 py-1 text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
+            {playbackRate}x
+          </span>
+        </div>
 
-        {playing || currentTime > 2 ? (
-          <div className="grid gap-3 px-1 pb-1">
-            <div className="grid gap-1.5">
+        <div className="grid gap-3">
+            <div className="grid gap-1.5 rounded-2xl bg-[color-mix(in_srgb,var(--bb-text-primary,#111827)_8%,transparent)] px-2.5 py-2">
               <input
                 type="range"
                 min={0}
                 max={effectiveDuration || 0}
                 step={1}
-                value={Math.min(currentTime, effectiveDuration || currentTime)}
-                onChange={(event) => seekTo(Number(event.target.value))}
-                disabled={!audioRef.current || !effectiveDuration}
+                value={Math.min(displayTime, effectiveDuration || displayTime)}
+                onPointerDown={() => {
+                  isScrubbingRef.current = true;
+                  setIsScrubbing(true);
+                  setScrubTime(currentTime);
+                }}
+                onChange={(event) => {
+                  const value = Number(event.target.value);
+                  isScrubbingRef.current = true;
+                  setIsScrubbing(true);
+                  setScrubTime(value);
+                }}
+                onPointerUp={(event) => finishScrubbing(Number((event.currentTarget as HTMLInputElement).value))}
+                onKeyUp={(event) => finishScrubbing(Number((event.currentTarget as HTMLInputElement).value))}
+                onBlur={(event) => {
+                  if (isScrubbing) finishScrubbing(Number(event.currentTarget.value));
+                }}
+                disabled={!effectiveDuration}
                 aria-label="Audio progress"
                 className="h-2 w-full cursor-pointer accent-[var(--bb-button,var(--bb-accent,#2f7fe8))] disabled:cursor-not-allowed disabled:opacity-50"
               />
               <div className="flex items-center justify-between gap-3 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                <span>{formatTime(currentTime)}</span>
+                <span>{formatTime(displayTime)}</span>
                 <span>
                   {duration
                     ? `${formatTime(remainingTime)} left`
@@ -297,7 +346,6 @@ export default function BibleYearLessonAudioPlayer({
               ))}
             </div>
           </div>
-        ) : null}
         {error ? <p className="px-1 text-xs font-black text-red-500">Audio unavailable. Try again in a moment.</p> : null}
       </div>
     </section>

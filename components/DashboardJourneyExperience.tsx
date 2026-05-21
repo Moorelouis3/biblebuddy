@@ -5378,19 +5378,26 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearCompletedTasksPanel(day: GenesisBibleYearDay) {
     const completedTasksForDay = buildBibleYearDayTasks(day).filter((task) => task.done);
-    if (completedTasksForDay.length === 0) return null;
 
     return (
       <div className="overflow-hidden rounded-2xl border border-[var(--bb-card-border,#b9dcf4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_82%,transparent)] shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,transparent)] backdrop-blur">
         <div className="px-4 py-3">
           <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
-            Completed Tasks for Day {day.dayNumber}
+            Completed Tasks
           </p>
           <p className="mt-0.5 text-[11px] font-bold text-[var(--bb-text-secondary,#2f6685)]">
             {completedTasksForDay.length} of 3 tasks done
           </p>
         </div>
         <div className="grid gap-2 border-t border-[var(--bb-card-border,#b9dcf4)] px-3 pb-3 pt-3">
+          {completedTasksForDay.length === 0 ? (
+            <div className="rounded-xl border border-[color-mix(in_srgb,var(--bb-card-border,#b9dcf4)_70%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_45%,transparent)] px-3 py-3">
+              <p className="text-xs font-black text-[var(--bb-text-primary,#1f2937)]">0 completed yet</p>
+              <p className="mt-1 text-[11px] font-bold leading-4 text-[var(--bb-text-muted,#6b7280)]">
+                Finish a task above and it will move here.
+              </p>
+            </div>
+          ) : null}
           {completedTasksForDay.map((task) => {
             const taskCard = getBibleYearDayTaskKey(task);
             const isActiveCompletedTask = taskCard ? activeBibleYearDayCard === taskCard : false;
@@ -5634,8 +5641,8 @@ Before we understand redemption, we need to understand what God made humanity fo
     ];
 
     return (
-      <section className="dashboard-bible-year-study-area overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_58%,transparent)] p-3 shadow-[0_18px_44px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl sm:p-4">
-        <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_68%,transparent)] p-3 shadow-sm">
+      <section className="dashboard-bible-year-study-area grid gap-3">
+        <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_68%,transparent)] p-3 shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)] backdrop-blur-xl">
           <div className="flex items-center gap-3">
             <div className="h-24 w-20 shrink-0 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)] bg-[var(--bb-surface-soft,#f8fbff)] shadow-[0_10px_24px_rgba(0,0,0,0.18)]">
               {cover ? (
@@ -5661,7 +5668,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         </div>
 
-        <div className="mt-3 rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_38%,transparent)] p-3 shadow-sm">
+        <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_38%,transparent)] p-3 shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)] backdrop-blur-xl">
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Progress</p>
@@ -5699,7 +5706,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         </div>
 
-        <div className="mt-3 grid gap-3">
+        <div className="grid gap-3">
           {dashboardAllDone ? renderBibleYearCompletedDayPanel(day) : null}
           {renderDashboardTaskCards(tasksToRender)}
           {renderBibleYearCompletedTasksPanel(day)}
@@ -6390,8 +6397,8 @@ Before we understand redemption, we need to understand what God made humanity fo
             {homePanelOverride ? (
               <div className="dashboard-inline-task">{homePanelOverride}</div>
             ) : null}
-            {!homePanelOverride && !deepStudyFocusActive && !shouldShowCompletionPanel ? renderCurrentStudyHeader() : null}
-            {!homePanelOverride && !deepStudyFocusActive && !shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard ? (
+            {!homePanelOverride && !deepStudyFocusActive && !shouldShowCompletionPanel && !selectedBibleYearSeriesDay ? renderCurrentStudyHeader() : null}
+            {!homePanelOverride && !deepStudyFocusActive && !shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard && !selectedBibleYearSeriesDay ? (
             <div
               className="bb-skin-glow-card rounded-[22px] border border-[#dbe7f4] bg-white p-3 shadow-[0_10px_28px_rgba(38,63,99,0.08)] transition"
             >
