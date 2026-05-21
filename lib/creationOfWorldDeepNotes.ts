@@ -20,7 +20,7 @@ type CreationChapterNote = {
   lesson: string;
 };
 
-type GenesisVerse = {
+export type GenesisVerse = {
   verse: number;
   text: string;
 };

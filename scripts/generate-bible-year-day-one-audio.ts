@@ -4,7 +4,7 @@ import { dirname, join } from "path";
 import { createContext, runInContext } from "vm";
 import { createClient } from "@supabase/supabase-js";
 import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
-import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
+import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import { GENESIS_ONE_TTS_VOICE } from "../lib/genesisOneTtsAudio";
 import { cleanTextForTts } from "../lib/ttsSpeechText";
@@ -456,7 +456,7 @@ function encodeMp3(samples: Float32Array) {
 }
 
 function getVerses(chapter: number, startVerse: number, endVerse: number) {
-  return (GENESIS_CREATION_WEB_VERSES[chapter] || []).filter((verse) => verse.verse >= startVerse && verse.verse <= endVerse);
+  return (BIBLE_YEAR_GENESIS_WEB_VERSES[chapter] || []).filter((verse) => verse.verse >= startVerse && verse.verse <= endVerse);
 }
 
 function speakReference(chapter: number, startVerse: number, endVerse: number) {
@@ -492,7 +492,7 @@ function adam(scene: BibleYearSceneTone, text: string, pauseAfterMs = 750) {
 }
 
 function dayOneVerseSegments(chapter: number, verseNumber: number, scene: BibleYearSceneTone): BibleYearAudioSegment[] {
-  const verse = GENESIS_CREATION_WEB_VERSES[chapter]?.find((item) => item.verse === verseNumber)?.text || "";
+  const verse = BIBLE_YEAR_GENESIS_WEB_VERSES[chapter]?.find((item) => item.verse === verseNumber)?.text || "";
 
   if (chapter === 1) {
     switch (verseNumber) {
@@ -813,7 +813,7 @@ function buildBibleYearSpeechText(lesson: BibleYearDailyLesson) {
     const block = section.verseBlock;
     const verses = getVerses(block.chapter, block.startVerse, block.endVerse);
     const scripture = verses.map((verse) => verse.text).join(" ");
-    parts.push(lesson.dayNumber === 3 ? speakReference(block.chapter, block.startVerse, block.endVerse) : `${speakReference(block.chapter, block.startVerse, block.endVerse)} ${scripture}`);
+    parts.push(`${speakReference(block.chapter, block.startVerse, block.endVerse)} ${scripture}`);
     const customTeaching = lesson.dayNumber === 1 ? teachingByReference[block.reference] : null;
     parts.push(...(customTeaching || section.teaching));
   }

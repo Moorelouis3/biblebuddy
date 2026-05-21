@@ -44,8 +44,8 @@ import {
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
 import { GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
-import { BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
-import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
+import { BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
+import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 
@@ -4294,11 +4294,12 @@ export default function DashboardJourneyExperience({
   function getBibleYearDayAudio(dayNumber: number): BibleYearAudioDay | null {
     if (dayNumber === 1) return BIBLE_YEAR_DAY_ONE_AUDIO;
     if (dayNumber === 2) return BIBLE_YEAR_DAY_TWO_AUDIO;
+    if (dayNumber === 3) return BIBLE_YEAR_DAY_THREE_AUDIO;
     return null;
   }
 
   function getBibleYearLessonVerses(block: BibleYearDailyLesson["sections"][number]["verseBlock"]) {
-    return (GENESIS_CREATION_WEB_VERSES[block.chapter] || []).filter(
+    return (BIBLE_YEAR_GENESIS_WEB_VERSES[block.chapter] || []).filter(
       (verse) => verse.verse >= block.startVerse && verse.verse <= block.endVerse,
     );
   }
@@ -4392,7 +4393,7 @@ export default function DashboardJourneyExperience({
   }
 
   function getDayOneSpokenVerseLines(chapter: number, verseNumber: number) {
-    const verse = GENESIS_CREATION_WEB_VERSES[chapter]?.find((item) => item.verse === verseNumber)?.text || "";
+    const verse = BIBLE_YEAR_GENESIS_WEB_VERSES[chapter]?.find((item) => item.verse === verseNumber)?.text || "";
 
     if (chapter === 1) {
       switch (verseNumber) {
@@ -4626,6 +4627,58 @@ export default function DashboardJourneyExperience({
         teachingTitle: "🌱 Another Seed",
       },
     };
+    const dayThreeDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
+      "Genesis 5:1-5": {
+        heading: "🧬 Death Moves Through the Generations",
+        teachingTitle: "🧬 Still Made in God's Image",
+        list: ["🧬 made in God's image", "👶 family line continues", "⏳ long life is still temporary", "⚰️ death has entered the story"],
+      },
+      "Genesis 5:6-20": {
+        heading: "⏳ The Same Sentence Keeps Falling",
+        teachingTitle: "🔔 The Bell of Death",
+        list: ["📜 names are remembered", "👶 children are born", "⚰️ death keeps repeating", "🌱 hope still moves through the family line"],
+      },
+      "Genesis 5:21-24": {
+        heading: "🚶 Enoch Walked With God",
+        teachingTitle: "🚶 A Different Ending",
+        list: ["🚶 walking with God", "🕊️ closeness with God", "🌑 faith in a dark world", "✨ a different ending"],
+      },
+      "Genesis 5:25-32": {
+        heading: "👶 Noah Is Born Into a Tired World",
+        teachingTitle: "😮‍💨 A World Looking for Relief",
+        list: ["😮‍💨 tired world", "🌾 painful work", "🌍 cursed ground", "👶 Noah brings hope", "🛟 God prepares preservation"],
+      },
+      "Genesis 6:1-8": {
+        heading: "🌑 The Earth Becomes Corrupt",
+        teachingTitle: "🌑 Corruption Reaches the Heart",
+        list: ["🌑 corruption spreads", "🧠 the heart turns evil", "💔 God grieves", "⚖️ judgment is coming", "🛟 Noah finds favor"],
+      },
+      "Genesis 6:9-13": {
+        heading: "🚶 Noah Walked With God",
+        teachingTitle: "🛡️ Different From His Generation",
+        list: ["🚶 Noah walked with God", "🌍 the world was corrupt", "🩸 violence filled the earth", "🛡️ Noah lived differently", "🙏 obedience starts with walking close"],
+      },
+      "Genesis 6:14-22": {
+        heading: "🛠️ God Commands the Ark",
+        teachingTitle: "🛠️ Faith Becomes Construction",
+        list: ["🛠️ faith became work", "📏 obedience had details", "🚪 the ship had one door", "🛟 God provided refuge", "✅ Noah did what God commanded"],
+      },
+      "Genesis 7:1-10": {
+        heading: "🚪 Come Into the Ark",
+        teachingTitle: "🚪 The Place of Refuge",
+        list: ["🚪 God calls Noah in", "👨‍👩‍👦 family enters together", "🐘 animals are preserved", "⏳ seven days of waiting", "🌧️ judgment is near"],
+      },
+      "Genesis 7:11-16": {
+        heading: "🌧️ The Flood Begins",
+        teachingTitle: "🌧️ Creation Boundaries Break Open",
+        list: ["🌧️ rain falls", "🌊 the deep opens", "🚪 the door closes", "🛟 God secures Noah", "⚖️ judgment begins"],
+      },
+      "Genesis 7:17-24": {
+        heading: "🌊 The Waters Prevail",
+        teachingTitle: "🌊 The Same Water Judges and Carries",
+        list: ["🌊 waters rise", "⛰️ mountains are covered", "⚖️ judgment is real", "🛟 the ark is lifted", "🌱 life is preserved"],
+      },
+    };
 
     const sectionBlocks = lesson.sections
       .map((section) => {
@@ -4633,7 +4686,9 @@ export default function DashboardJourneyExperience({
           ? dayOneDisplay[section.verseBlock.reference]
           : lesson.dayNumber === 2
             ? dayTwoDisplay[section.verseBlock.reference]
-            : null;
+            : lesson.dayNumber === 3
+              ? dayThreeDisplay[section.verseBlock.reference]
+              : null;
         const scripture = lesson.dayNumber === 1
           ? getDayOneSpokenVerseCallouts(section.verseBlock)
           : getBibleYearLessonVerses(section.verseBlock)
