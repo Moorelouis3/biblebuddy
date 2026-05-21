@@ -3015,13 +3015,13 @@ export default function DashboardJourneyExperience({
     if (view === "bible-year") {
       setBibleYearDashboardActive(true);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 3);
       if (day) setSelectedBibleYearSeriesDay(day);
       setActivePage(0);
     } else if (view === "bible-year-series") {
       setBibleYearSeriesActive(true);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 3);
       if (day) setBibleYearSeriesDetailDay(day);
       setActivePage(0);
     }
@@ -5944,7 +5944,9 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   const renderBibleYearSeriesPage = () => {
-    const matchedSeriesDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) =>
+    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 3);
+    const visibleChapterCount = visibleSeriesDays.reduce((total, day) => total + day.readings.length, 0);
+    const matchedSeriesDay = visibleSeriesDays.find((day) =>
       day.readings.some((reading) =>
         reading.studyTitle === currentDevotionalTitle &&
         reading.studyDayNumber === currentDevotionalTask?.devotionalDayNumber,
@@ -5967,11 +5969,11 @@ Before we understand redemption, we need to understand what God made humanity fo
               </p>
               <div className="mt-4 grid grid-cols-3 gap-2">
                 <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
-                  <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">23</p>
+                  <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">{visibleSeriesDays.length}</p>
                   <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">days</p>
                 </div>
                 <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
-                  <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">50</p>
+                  <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">{visibleChapterCount}</p>
                   <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">chapters</p>
                 </div>
                 <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
@@ -5982,7 +5984,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
 
             <div className="space-y-3 p-3 sm:p-4">
-              {GENESIS_BIBLE_IN_ONE_YEAR_SERIES.map((day) => {
+              {visibleSeriesDays.map((day) => {
                 const cover = day.coverImage || getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
                 const isCurrent = day.dayNumber === currentSeriesDayNumber;
                 const isPast = day.dayNumber < currentSeriesDayNumber;
@@ -6903,7 +6905,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </>
             )}
 
-            {!shouldShowBibleBuddy3ModeGate && !selectedBibleYearSeriesDay && (isChecklistSyncing || (isLoadingNextChapter && !preloadedNextChapter?.tasks.length && !preloadedNextStudy?.tasks.length)) ? (
+            {!bibleYearSeriesActive && !shouldShowBibleBuddy3ModeGate && !selectedBibleYearSeriesDay && (isChecklistSyncing || (isLoadingNextChapter && !preloadedNextChapter?.tasks.length && !preloadedNextStudy?.tasks.length)) ? (
               skeletonTasks.map((task, index) => (
                 <div
                   key={task.title}
@@ -6928,7 +6930,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </div>
                 </div>
               ))
-            ) : !homePanelOverride && shouldShowCompletionPanel ? (
+            ) : bibleYearSeriesActive ? null : !homePanelOverride && shouldShowCompletionPanel ? (
               <div className="completion-panel-enter relative overflow-hidden rounded-[28px] border border-[#dbe7f4] bg-white/90 px-5 pb-5 pt-7 text-center shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
                 <div className="chapter-firework-ring pointer-events-none absolute left-1/2 top-16 h-24 w-24 rounded-full border-4 border-[#7BAFD4]/45" aria-hidden="true" />
                 <div className="chapter-confetti pointer-events-none absolute left-1/2 top-16" aria-hidden="true">
