@@ -4385,6 +4385,162 @@ export default function DashboardJourneyExperience({
     }
   }
 
+  function formatBibleYearSpokenReference(block: BibleYearDailyLesson["sections"][number]["verseBlock"]) {
+    if (block.startVerse === block.endVerse) return `Genesis ${block.chapter} verse ${block.startVerse}.`;
+    return `Genesis ${block.chapter} verses ${block.startVerse} through ${block.endVerse}.`;
+  }
+
+  function buildBibleYearSpokenScriptMarkdown(lesson: BibleYearDailyLesson) {
+    const dayOneTeachingByReference: Record<string, string[]> = {
+      "Genesis 1:1-5": [
+        "The story starts with God already there. Not created. Not explained. Not fighting for control. Just God, Creator over everything.",
+        "The heavens and the earth means the whole created order: everything above, everything below, everything visible, and everything humans will live inside. The first verse puts everything under God's authority.",
+        "The earth is unshaped, unfilled, dark, and watery. But unfinished does not mean abandoned. Before the world looks complete, God's Spirit is already near.",
+        "God says, Let there be light, and light comes. He does not fight the darkness. He speaks, and creation responds. Light appears before the sun and moon, so light comes from God, not from a sun god.",
+        "God separates light from darkness and names Day and Night. Naming shows authority. Separation shows order. God is putting things where they belong.",
+      ],
+      "Genesis 1:6-13": [
+        "To ancient readers, deep waters could feel like danger and chaos. Here, the waters do not rule themselves. God gives them boundaries.",
+        "God gathers the seas and lets dry land appear. The world is becoming livable. Life needs a place, so God prepares a place.",
+        "Plants, trees, fruit, and seeds fill the earth. The seed detail matters because God creates life that can keep producing life. Life can multiply. Food can be provided. The earth can sustain creatures. One generation can lead to another.",
+      ],
+      "Genesis 1:14-25": [
+        "The sun and moon are not gods. They are lights in God's sky.",
+        "The lights mark days, seasons, and years. God is making a world humans can live in, work in, rest in, and worship in. Seasons for planting and harvesting. Days and nights for work and rest. Years for memory and history. Appointed times for worship.",
+        "God fills the waters, sky, and land with life. Creation is no longer empty. It is full, alive, layered, and blessed.",
+      ],
+      "Genesis 1:26-31": [
+        "This is the high point of creation. Human beings are made in God's image. People are not accidents and not disposable.",
+        "Male and female are both created in God's image. Human worth is not based on power, gender, money, beauty, success, or strength. Every person matters because every person is made by God.",
+        "Dominion does not mean abuse. It means responsibility. Humans are called to care for God's world under God's authority. Every person has dignity. Every person has responsibility. Creation is entrusted to human care. Life is meant to reflect God's goodness.",
+        "Before sin enters the story, creation is good, human life is good, and God's purpose for the world is good.",
+      ],
+      "Genesis 2:1-3": [
+        "God does not leave creation half done. What He made has order, purpose, and goodness.",
+        "God rests because the work is complete. Rest is built into creation before sin enters the world.",
+        "God sets the seventh day apart. From the beginning, time with God can be holy. Time can be set apart. Rest belongs in human life. Worship grows from God's finished work. Creation has rhythm, not endless striving.",
+      ],
+      "Genesis 2:4-9": [
+        "The lesson slows down and focuses on human life with God.",
+        "God forms man from the dust. That is humbling. We are not gods. We are physical, dependent, and connected to God's world.",
+        "But humanity is not only dust. God breathes life into the man. We are dust touched by God: humble, valuable, and dependent.",
+        "God plants a garden and places the man there. He prepares a home before He gives a command. Eden is a picture of provision, beauty, purpose, and peace.",
+      ],
+      "Genesis 2:10-17": [
+        "The garden is abundance. Water flows. Precious materials are named. Life near God is supplied.",
+        "God gives the man work before sin enters the world. So work itself is not the curse. Meaningful responsibility is part of God's good design.",
+        "God says the man may freely eat from every tree except one. God gives abundance, then sets one boundary.",
+        "The tree introduces choice and trust. Will humanity trust God's word about life and death? Provision is generous. Boundaries are real. Obedience matters. Trust is part of life with God.",
+      ],
+      "Genesis 2:18-25": [
+        "For the first time, God says something is not good. Sin has not entered yet. The problem is aloneness.",
+        "The man names the animals, showing responsibility. But none of them can answer his loneliness. None is a suitable helper.",
+        "Helper does not mean weak or lesser. The point is partnership, not inferiority. The man needs someone who corresponds to him.",
+        "God makes woman from the man's side and brings her to him. The man's response is joy: bone of my bones and flesh of my flesh.",
+        "Marriage is pictured as covenant closeness, loyalty, and shared life.",
+        "The man and woman are naked and not ashamed. No hiding. No fear. No guilt. No pretending. Fully known. Fully welcomed. Joined in covenant love. Not yet covered by shame.",
+      ],
+    };
+    const dayOneOpening = [
+      "Welcome to Day 1 of the Bible In One Year journey: The Creation of the World.",
+      "Today we are walking through Genesis chapters 1 and 2 as one flowing story.",
+      "The goal is simple. We are going to listen to the Scripture, pause along the way, and let the beginning of the Bible open up slowly and clearly.",
+      "Genesis does not begin with human chaos at the center. It begins with God: already present, already powerful, already speaking.",
+      "So take a breath. Let the story slow down. This is where the Bible begins.",
+    ];
+    const dayOneClosing = [
+      "The Creation of the World shows us the world before the damage.",
+      "God creates, speaks, orders, fills, blesses, rests, forms, breathes, plants, provides, commands, and creates relationship.",
+      "Human life is not accidental. Work is not pointless. Rest is not optional. Relationship is not random.",
+      "Everything begins with God's good design.",
+      "We were made by God, in God's image, for life with God.",
+      "Before we understand the fall, we need to understand creation.",
+      "Before we understand redemption, we need to understand what God made humanity for.",
+    ];
+    const dayTwoDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
+      "Genesis 3:1-5": {
+        heading: "🐍 The Lie Enters the Garden",
+        teachingTitle: "🐍 Has God Really Said?",
+        list: ["🌳 every tree was provision", "🍎 one tree was boundary", "🐍 the serpent made God sound restrictive", "🧠 the lie was about trust"],
+      },
+      "Genesis 3:6-7": {
+        heading: "👀 Shame Enters the Story",
+        teachingTitle: "🍎 Sin Looks Good Before It Hurts",
+        list: ["🍃 fig leaves", "😔 shame", "👀 opened eyes", "💔 broken trust"],
+      },
+      "Genesis 3:8-13": {
+        heading: "🌳 God Comes Looking",
+        teachingTitle: "❓ Where Are You?",
+        list: ["😨 fear enters", "🌳 hiding begins", "👉 blame spreads", "💔 relationship breaks"],
+      },
+      "Genesis 3:14-19": {
+        heading: "⚖️ Judgment and the First Promise",
+        teachingTitle: "🌱 The First Gospel Promise",
+        list: ["🌾 work becomes painful", "🌵 thorns grow", "😔 relationships strain", "⚰️ dust returns to dust", "🌱 promise still lives"],
+      },
+      "Genesis 3:20-24": {
+        heading: "🧥 Mercy Outside Eden",
+        teachingTitle: "🧥 God Covers Them",
+      },
+      "Genesis 4:1-7": {
+        heading: "👶 Sin Moves Into the Family",
+        teachingTitle: "😠 Sin Crouches at the Door",
+        list: ["😠 anger", "😒 jealousy", "🚪 sin at the door", "⚠️ warning before destruction"],
+      },
+      "Genesis 4:8-16": {
+        heading: "🩸 The First Murder",
+        teachingTitle: "🩸 Blood Cries From the Ground",
+      },
+      "Genesis 4:17-24": {
+        heading: "🏙️ A Broken World Still Builds",
+        teachingTitle: "🏙️ Culture and Corruption",
+        list: ["🏙️ city", "🎶 music", "🔨 tools", "💔 pride", "🩸 violence"],
+      },
+      "Genesis 4:25-26": {
+        heading: "🌱 Hope Keeps Moving",
+        teachingTitle: "🌱 Another Seed",
+      },
+    };
+
+    const sectionBlocks = lesson.sections
+      .map((section) => {
+        const display = lesson.dayNumber === 2 ? dayTwoDisplay[section.verseBlock.reference] : null;
+        const scripture = getBibleYearLessonVerses(section.verseBlock)
+          .map((verse) => `> **Genesis ${section.verseBlock.chapter}:${verse.verse}**\n>\n> ${verse.text}`)
+          .join("\n\n");
+        const list = display?.list?.length ? `\n\n${display.list.join("\n")}` : "";
+        const spokenTeaching =
+          lesson.dayNumber === 1
+            ? dayOneTeachingByReference[section.verseBlock.reference] || section.teaching
+            : section.teaching;
+
+        return `# ${display?.heading || section.heading}
+
+## ${formatBibleYearSpokenReference(section.verseBlock)}
+
+${scripture}
+
+### ${display?.teachingTitle || section.heading}
+
+${spokenTeaching.join("\n\n")}${list}`;
+      })
+      .join("\n\n");
+    const opening = lesson.dayNumber === 1 ? dayOneOpening : [`Welcome to Day ${lesson.dayNumber} of the Bible In One Year journey: ${lesson.title}.`, ...lesson.opening];
+    const closing = lesson.dayNumber === 1 ? dayOneClosing : lesson.closing;
+
+    return `# ${lesson.title}
+
+# Day ${lesson.dayNumber} of the Bible In One Year Plan
+
+${opening.join("\n\n")}
+
+${sectionBlocks}
+
+# Final Thoughts
+
+${closing.join("\n\n")}`;
+  }
+
   function buildBibleYearLessonMarkdown(lesson: BibleYearDailyLesson) {
     const teachingByReference: Record<string, string> = {
       "Genesis 1:1-5": `### 🌌 God Is Before Creation
@@ -4676,6 +4832,10 @@ No pretending.
 
 ✨ not yet covered by shame`,
     };
+
+    if (lesson.dayNumber === 1 || lesson.dayNumber === 2) {
+      return buildBibleYearSpokenScriptMarkdown(lesson);
+    }
 
     const verseBlocks = lesson.sections
       .map((section) => {
