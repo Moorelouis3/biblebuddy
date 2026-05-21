@@ -14,15 +14,16 @@ import { FLAME_COSMETIC_BY_ID, PREMIUM_SKIN_FLAME_BY_ID } from "@/lib/flameCosme
 // redeploy trigger
 
 const siteUrl = new URL("https://www.mybiblebuddy.net");
-const socialPreviewImage = "/bible-buddy-social-preview.png";
+const socialPreviewImage = new URL("/bible-buddy-social-preview-v2.png", siteUrl).toString();
 const socialDescription = "Read and understand the Bible with guided reading plans, highlights, and study tools.";
+const socialImageAlt = "Bible Buddy - Free Bible Study App";
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: "Bible Buddy",
   description: "Your guided Bible reading companion",
   alternates: {
-    canonical: "/",
+    canonical: siteUrl.toString(),
   },
   icons: {
     icon: "/newericon.png",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     title: "Bible Buddy - Free Bible Study App",
     description: socialDescription,
     type: "website",
-    url: "/",
+    url: siteUrl.toString(),
     siteName: "Bible Buddy",
     images: [
       {
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/png",
-        alt: "Bible Buddy - Free Bible Study App",
+        alt: socialImageAlt,
       },
     ],
   },
@@ -56,6 +57,10 @@ export const metadata: Metadata = {
     title: "Bible Buddy - Free Bible Study App",
     description: socialDescription,
     images: [socialPreviewImage],
+  },
+  other: {
+    "og:image:secure_url": socialPreviewImage,
+    "twitter:image:alt": socialImageAlt,
   },
 };
 

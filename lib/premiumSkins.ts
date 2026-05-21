@@ -1,4 +1,4 @@
-export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline" | "angel-wings" | "winter-cabin" | "mount-sinai";
+export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline" | "angel-wings" | "winter-cabin" | "mount-sinai" | "desert-dawn";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -475,6 +475,38 @@ export const MOUNT_SINAI_SKIN: PremiumSkin = {
   },
 };
 
+export const DESERT_DAWN_SKIN: PremiumSkin = {
+  id: "desert-dawn",
+  name: "Desert Dawn",
+  label: "Premium Skin",
+  storeSubtitle: "A rugged sunrise wilderness atmosphere for disciplined, grounded Bible study.",
+  backgroundImage: "/skins/optimized/desert-dawn-desktop.webp",
+  originalImage: "/skins/DesertDawn.png",
+  thumbnailImage: "/skins/optimized/desert-dawn-thumb.webp",
+  mobileBackgroundImage: "/skins/optimized/desert-dawn-mobile.webp",
+  desktopBackgroundImage: "/skins/optimized/desert-dawn-desktop.webp",
+  price: 1000,
+  palette: {
+    background: "#0E0906",
+    surface: "rgba(42, 26, 15, 0.8)",
+    surfaceSoft: "rgba(128, 80, 35, 0.3)",
+    card: "rgba(35, 22, 13, 0.78)",
+    cardBorder: "rgba(232, 171, 72, 0.42)",
+    textPrimary: "#FFF4DE",
+    textSecondary: "#E9CFA4",
+    textMuted: "#B98A55",
+    accent: "#E8AB48",
+    accentSoft: "rgba(232, 171, 72, 0.24)",
+    button: "#9A5A1C",
+    buttonText: "#FFF4DE",
+    navBackground: "rgba(19, 12, 8, 0.92)",
+    navActive: "#FFD37A",
+    navInactive: "#C8A073",
+    progressTrack: "rgba(233, 207, 164, 0.18)",
+    progressFill: "#FFD37A",
+  },
+};
+
 export const PREMIUM_SKINS: PremiumSkin[] = [
   BLUE_STORM_SKIN,
   MIDNIGHT_GARDEN_SKIN,
@@ -486,6 +518,7 @@ export const PREMIUM_SKINS: PremiumSkin[] = [
   ANGEL_WINGS_SKIN,
   WINTER_CABIN_SKIN,
   MOUNT_SINAI_SKIN,
+  DESERT_DAWN_SKIN,
 ];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
 
@@ -587,6 +620,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
                     ? "rgba(155, 215, 255, 0.44)"
                     : skin.id === "mount-sinai"
                       ? "rgba(234, 162, 58, 0.46)"
+                      : skin.id === "desert-dawn"
+                        ? "rgba(232, 171, 72, 0.46)"
           : "rgba(93, 214, 255, 0.42)",
   );
   root.style.setProperty(
@@ -609,6 +644,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
                     ? "rgba(255, 207, 125, 0.24)"
                     : skin.id === "mount-sinai"
                       ? "rgba(255, 211, 122, 0.34)"
+                      : skin.id === "desert-dawn"
+                        ? "rgba(255, 211, 122, 0.36)"
           : "rgba(93, 214, 255, 0.2)",
   );
 

@@ -2443,6 +2443,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
     function withBuddyStarter(sourceMessages: Message[]) {
       const normalized = normalizeOpeningGreetingMessages(sourceMessages).slice(-40);
+      if (normalized.length > 0) return normalized;
       const hasStarter = normalized.some((message) => message.eventKey === starterEventKey);
       if (hasStarter) return normalized;
       return [
@@ -2625,11 +2626,22 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
   function normalizeOpeningGreetingMessages(nextMessages: Message[]) {
     let hasOpeningGreeting = false;
+    let hasBuddySelectedStarter = false;
     return nextMessages.filter((message) => {
       const isOpeningGreeting = message.role === "assistant" && LOUIS_OPENING_GREETING_SET.has(message.content.trim());
-      if (!isOpeningGreeting) return true;
-      if (hasOpeningGreeting) return false;
-      hasOpeningGreeting = true;
+      if (isOpeningGreeting) {
+        if (hasOpeningGreeting) return false;
+        hasOpeningGreeting = true;
+        return true;
+      }
+      const isBuddySelectedStarter =
+        message.role === "assistant" &&
+        (typeof message.eventKey === "string" && message.eventKey.startsWith("buddy-selected:") ||
+          /^Let's go\. Thanks for picking me\./.test(message.content.trim()));
+      if (isBuddySelectedStarter) {
+        if (hasBuddySelectedStarter) return false;
+        hasBuddySelectedStarter = true;
+      }
       return true;
     });
   }

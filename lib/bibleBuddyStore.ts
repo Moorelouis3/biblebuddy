@@ -1,6 +1,6 @@
 import type { AppThemeId } from "./appThemes";
 import type { FlameCosmeticId } from "./flameCosmetics";
-import { ANGEL_WINGS_SKIN, BLUE_STORM_SKIN, CAROLINA_COASTLINE_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, MORNING_MERCY_SKIN, MOUNT_SINAI_SKIN, RUBY_VILLAGE_SKIN, SLOW_MORNINGS_SKIN, WINTER_CABIN_SKIN, type PremiumSkinId } from "./premiumSkins";
+import { ANGEL_WINGS_SKIN, BLUE_STORM_SKIN, CAROLINA_COASTLINE_SKIN, DESERT_DAWN_SKIN, LAVENDER_PRAYER_SKIN, MIDNIGHT_GARDEN_SKIN, MORNING_MERCY_SKIN, MOUNT_SINAI_SKIN, RUBY_VILLAGE_SKIN, SLOW_MORNINGS_SKIN, WINTER_CABIN_SKIN, type PremiumSkinId } from "./premiumSkins";
 
 export type StoreItemKind = "theme" | "premium_skin" | "streak_flame" | "buddy" | "boost" | "mystery";
 
@@ -142,6 +142,17 @@ export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = [
     accent: MOUNT_SINAI_SKIN.palette.accent,
     imageSrc: MOUNT_SINAI_SKIN.thumbnailImage,
     skinId: MOUNT_SINAI_SKIN.id,
+  },
+  {
+    id: "skin-desert-dawn",
+    kind: "premium_skin",
+    title: DESERT_DAWN_SKIN.name,
+    subtitle: DESERT_DAWN_SKIN.storeSubtitle,
+    price: DESERT_DAWN_SKIN.price,
+    emoji: "Dawn",
+    accent: DESERT_DAWN_SKIN.palette.accent,
+    imageSrc: DESERT_DAWN_SKIN.thumbnailImage,
+    skinId: DESERT_DAWN_SKIN.id,
   },
 ];
 
