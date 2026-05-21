@@ -1994,8 +1994,19 @@ export default function DashboardJourneyExperience({
     return () => window.removeEventListener("message", handleEmbeddedCommunityHeight);
   }, []);
 
-  const bibleYearDashboardTasks = bibleYearDashboardActive && selectedBibleYearSeriesDay
-    ? buildBibleYearDayTasks(selectedBibleYearSeriesDay)
+  const activeBibleYearDashboardDay = bibleYearDashboardActive
+    ? selectedBibleYearSeriesDay ||
+      GENESIS_BIBLE_IN_ONE_YEAR_SERIES
+        .filter((day) => day.dayNumber <= 3)
+        .find((day) => {
+          const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
+          return !(completed.reading && completed.trivia && completed.reflection);
+        }) ||
+      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 3) ||
+      null
+    : null;
+  const bibleYearDashboardTasks = activeBibleYearDashboardDay
+    ? buildBibleYearDayTasks(activeBibleYearDashboardDay)
     : null;
   const dashboardTaskSource = bibleYearDashboardTasks || visibleTasks;
   const nextTask = dashboardTaskSource.find((task) => !task.done) ?? null;
@@ -2924,10 +2935,18 @@ export default function DashboardJourneyExperience({
   }
 
   function openBibleYearDashboard() {
+    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 3);
+    const nextBibleYearDay =
+      builtBibleYearDays.find((day) => {
+        const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
+        return !(completed.reading && completed.trivia && completed.reflection);
+      }) ||
+      builtBibleYearDays[builtBibleYearDays.length - 1] ||
+      null;
     setBibleYearDashboardActive(true);
     setBibleYearSeriesActive(false);
     setBibleYearSeriesDetailDay(null);
-    setSelectedBibleYearSeriesDay(null);
+    setSelectedBibleYearSeriesDay(nextBibleYearDay);
     setFreeStudyModeActive(false);
     setEmbeddedBibleBookSearchOpen(false);
     setEmbeddedBibleSelectedBook(null);
@@ -2938,7 +2957,11 @@ export default function DashboardJourneyExperience({
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.set("view", "bible-year");
-      url.searchParams.delete("day");
+      if (nextBibleYearDay) {
+        url.searchParams.set("day", String(nextBibleYearDay.dayNumber));
+      } else {
+        url.searchParams.delete("day");
+      }
       window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
     }
   }
@@ -5592,7 +5615,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     return tasksToRender.map((task, index) => {
       const originalTaskIndex = tasksToRender.findIndex((visibleTask) => visibleTask.kind === task.kind);
       const taskIndex = originalTaskIndex >= 0 ? originalTaskIndex : index;
-      const bibleYearTaskCard = selectedBibleYearSeriesDay ? getBibleYearDayTaskKey(task) : null;
+      const bibleYearTaskCard = activeBibleYearDashboardDay ? getBibleYearDayTaskKey(task) : null;
       const taskCopy = getTaskCardCopy(task, taskIndex);
       const justCompleted = Boolean(task.done && previousDoneByKindRef.current && !previousDoneByKindRef.current[task.kind]);
       const isCelebrating = Boolean(celebratingTasks[task.kind]) || justCompleted;
@@ -5608,7 +5631,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           (activeTask.href || "") === (task.href || "") &&
           (activeTask.chapterLabel || "") === (task.chapterLabel || "");
 
-      const taskShellClasses = selectedBibleYearSeriesDay
+      const taskShellClasses = activeBibleYearDashboardDay
         ? isCardDisabled
           ? "cursor-not-allowed border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_70%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_62%,transparent)] text-[var(--bb-text-secondary,#4b5563)] opacity-80"
           : isActiveInlineTask
@@ -5675,11 +5698,11 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0 flex-1">
-                <p className={`text-[14px] font-bold leading-tight sm:text-[15px] ${selectedBibleYearSeriesDay ? "text-[var(--bb-text-primary,#111827)]" : task.done ? "text-gray-950" : "text-gray-800"}`}>{taskCopy.title}</p>
-                <p className={`mt-0.5 text-xs leading-4 sm:text-[13px] ${selectedBibleYearSeriesDay ? "text-[var(--bb-text-secondary,#4b5563)]" : task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
+                <p className={`text-[14px] font-bold leading-tight sm:text-[15px] ${activeBibleYearDashboardDay ? "text-[var(--bb-text-primary,#111827)]" : task.done ? "text-gray-950" : "text-gray-800"}`}>{taskCopy.title}</p>
+                <p className={`mt-0.5 text-xs leading-4 sm:text-[13px] ${activeBibleYearDashboardDay ? "text-[var(--bb-text-secondary,#4b5563)]" : task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
               </div>
               <div className="flex shrink-0 flex-col items-end gap-1">
-              <span className={`px-1 py-1 text-xs font-black ${selectedBibleYearSeriesDay ? "text-[var(--bb-accent,#2f7fe8)]" : task.done ? "text-[#2f6685]" : "text-[#2f7fe8]"}`}>
+              <span className={`px-1 py-1 text-xs font-black ${activeBibleYearDashboardDay ? "text-[var(--bb-accent,#2f7fe8)]" : task.done ? "text-[#2f6685]" : "text-[#2f7fe8]"}`}>
                 {pointsPillLabel}
               </span>
               <span className={`hidden ${
@@ -5745,8 +5768,8 @@ Before we understand redemption, we need to understand what God made humanity fo
       </button>
       {isActiveInlineTask ? (
         <div className="px-3.5 pb-3 sm:px-4">
-          {bibleYearTaskCard && selectedBibleYearSeriesDay ? (
-            renderBibleYearInlineTask(bibleYearTaskCard, selectedBibleYearSeriesDay)
+          {bibleYearTaskCard && activeBibleYearDashboardDay ? (
+            renderBibleYearInlineTask(bibleYearTaskCard, activeBibleYearDashboardDay)
           ) : (
             <DashboardDailyTaskCallout
               task={activeTask}
@@ -7029,8 +7052,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </div>
                 </div>
               ) : null}
-              {selectedBibleYearSeriesDay ? (
-                renderBibleYearDashboardStudyArea(selectedBibleYearSeriesDay, displayTasks)
+              {activeBibleYearDashboardDay ? (
+                renderBibleYearDashboardStudyArea(activeBibleYearDashboardDay, displayTasks)
               ) : (
                 <>
               {selectedBibleYearSeriesDay && dashboardAllDone ? (
