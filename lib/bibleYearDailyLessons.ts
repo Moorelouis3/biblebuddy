@@ -25,7 +25,7 @@ export const GENESIS_DAY_ONE_CREATION_LESSON: BibleYearDailyLesson = {
   dayNumber: 1,
   title: "Creation of the World",
   reference: "Genesis 1-2",
-  estimatedListenTime: "13 min",
+  estimatedListenTime: "about 18 min",
   opening: [
     "Before there is a nation, before there is a temple, before there is a king, before there is a cross, Genesis opens with God. Not a debate about God. Not a long explanation of where God came from. Just God, already present, already powerful, already speaking.",
     "That matters because the Bible does not begin with human chaos at the center. It begins with God at the center. And if you are coming into this day tired, distracted, overwhelmed, or unsure where your life is headed, Genesis 1 quietly brings you back to the first truth: God is not confused by darkness. God speaks into it.",
@@ -222,5 +222,139 @@ export const GENESIS_DAY_TWO_FALL_LESSON: BibleYearDailyLesson = {
     "The Fall of Man shows why the world feels broken. Sin attacks trust, shame grows, blame spreads, anger becomes violence, and violence enters culture.",
     "But God does not abandon the story. God comes looking, asks questions, warns Cain, covers Adam and Eve, protects Cain from endless revenge, gives Seth, and keeps hope alive.",
     "The garden is closed, but the promise is open. The serpent wounds, but the seed will crush. Evil will not win forever.",
+  ],
+};
+
+export const GENESIS_DAY_THREE_NOAH_ARK_LESSON: BibleYearDailyLesson = {
+  dayNumber: 3,
+  title: "Noah Builds the Ark",
+  reference: "Genesis 5-7",
+  estimatedListenTime: "about 15 min",
+  opening: [
+    "Day 1 showed the world as God made it: good, ordered, blessed, full of life, and without shame.",
+    "Day 2 showed what happened when trust broke. Sin entered. Shame followed. Blame spread. Violence began.",
+    "Now Day 3 shows what happens when that brokenness spreads through generations.",
+    "Genesis 5 through 7 is not just a flood story. It is a story about death, corruption, warning, obedience, judgment, and mercy. And right in the middle of it all stands Noah, a man who walked with God when the world around him was falling apart.",
+  ],
+  sections: [
+    {
+      heading: "Death Moves Through the Generations",
+      verseBlock: { reference: "Genesis 5:1-5", chapter: 5, startVerse: 1, endVerse: 5 },
+      teaching: [
+        "Genesis 5 begins like a genealogy: a list of names, fathers, sons, and years. But it is not filler. It is showing what life looks like after Eden.",
+        "People are still made in God's image. Families still grow. Children are still born. The blessing of life is still moving. But something else is moving too: death.",
+        "Verse 1 reaches back to creation. God made humanity in His likeness. That matters because even after sin, human life still has dignity. The flood story is not about God destroying something worthless.",
+        "But verse 3 says Adam has a son in his own likeness, after his image. The image of God continues through the family line, but Adam's fallen condition is also now part of human history. People are valuable, and people are wounded.",
+        "Adam lives nine hundred thirty years, but Genesis does not end his life by celebrating the number. It ends with: then he died. God warned in Eden that sin would bring death. Now death is entering the family record.",
+      ],
+    },
+    {
+      heading: "Seth's Line Keeps Moving",
+      verseBlock: { reference: "Genesis 5:6-20", chapter: 5, startVerse: 6, endVerse: 20 },
+      teaching: [
+        "This section repeats the same rhythm: he lived, he fathered, he had sons and daughters, then he died. Again and again.",
+        "That repetition is supposed to be felt. Genesis is letting death ring like a bell through the generations.",
+        "Ancient genealogies preserved memory. They told people where they came from and showed how a family line continued. In Genesis, they also show how God is still carrying the story forward.",
+        "Cain's line in Genesis 4 moved toward violence and pride. Now Genesis follows Seth's line toward Noah. That does not mean every person in Seth's line is perfect. It means this is the line Genesis wants us to watch.",
+        "Nothing dramatic happens here. No murder. No fire. No flood yet. Just family records. But brokenness is not always loud. Sometimes it looks ordinary: birthdays, children, aging, funerals, family history.",
+      ],
+    },
+    {
+      heading: "Enoch Walked With God",
+      verseBlock: { reference: "Genesis 5:21-24", chapter: 5, startVerse: 21, endVerse: 24 },
+      teaching: [
+        "Enoch interrupts the chapter. By now, we expect the same ending: then he died. But Enoch's ending is different. Genesis says Enoch walked with God, and then God took him.",
+        "Walking with God means nearness, fellowship, trust, direction, and a life moving with God instead of away from Him.",
+        "It does not mean Enoch was sinless. It means his life was marked by closeness to God.",
+        "That matters because the world is darkening. Death is spreading. Sin is spreading. But Enoch shows that a person can still walk with God in a broken world.",
+        "This prepares us for Noah. Genesis 6 will say Noah also walked with God. Before we see Noah obey in a corrupt generation, Genesis shows Enoch walking with God in a dying one.",
+      ],
+    },
+    {
+      heading: "Noah Is Born Into a Tired World",
+      verseBlock: { reference: "Genesis 5:25-32", chapter: 5, startVerse: 25, endVerse: 32 },
+      teaching: [
+        "Methuselah is known for the longest lifespan recorded in Scripture. But Genesis still ends his life the same way: then he died. Even the longest human life is not eternal life.",
+        "Then Noah is born, and his father names him with hope. Noah's name is connected to comfort, rest, or relief.",
+        "Lamech says Noah will comfort them in their work and toil because of the cursed ground. That reaches all the way back to Genesis 3.",
+        "After Adam sinned, the ground was cursed. Work became painful. The earth resisted. Life became tiring. Generations later, Lamech is still feeling it.",
+        "Noah will not remove the curse completely. Only God can do that. But Noah's life will become a turning point. Through Noah, God will preserve life through judgment.",
+        "Genesis 5 ends by naming Noah's sons: Shem, Ham, and Japheth. These names matter because the world after the flood will come through them. The death chapter ends with Noah, and the judgment story is about to begin.",
+      ],
+    },
+    {
+      heading: "The Earth Becomes Corrupt",
+      verseBlock: { reference: "Genesis 6:1-8", chapter: 6, startVerse: 1, endVerse: 8 },
+      teaching: [
+        "Genesis 6 opens with difficult language: the sons of God, the daughters of men, the Nephilim, and mighty men of old.",
+        "Bible readers have understood this in different ways. Some believe the sons of God refers to rebellious heavenly beings. Some believe it refers to powerful rulers. Some believe it refers to Seth's line mixing with Cain's line.",
+        "We do not need to pretend the passage is simple. But we also should not miss the main point. Genesis is not trying to satisfy curiosity. Genesis is showing corruption.",
+        "Verse 5 goes straight to the center. Human wickedness is great, and every imagination of the human heart is only evil continually. That is deep corruption. Not just bad actions, but bad desires, bad thoughts, bad intentions, and a heart turned away from God.",
+        "This is one of the most emotional lines in early Genesis: God is grieved in His heart. He is not cold toward evil. He is not detached. Violence matters to Him. Corruption matters to Him. The pain of creation matters to Him.",
+        "Then verse 8 breaks through: Noah found favor in Yahweh's eyes. Noah is not introduced as a superhero. He is a man who receives favor from God. Grace appears before the ark is built. Mercy appears before the rain falls.",
+      ],
+    },
+    {
+      heading: "Noah Walked With God",
+      verseBlock: { reference: "Genesis 6:9-13", chapter: 6, startVerse: 9, endVerse: 13 },
+      teaching: [
+        "Noah walked with God. That connects him to Enoch. Noah lives in a corrupt generation, but he does not move with the crowd. He moves with God.",
+        "The world around him is violent. The culture around him is corrupt. But Noah's direction is different.",
+        "When Genesis calls Noah righteous and blameless, it does not mean sinless. The Bible will later show Noah's weakness too. But compared to his generation, Noah is marked by integrity. He listens. He trusts. He obeys.",
+        "The earth is not only sinful in private. It is filled with violence. Sin has become public, social, and dangerous.",
+        "The same sin that began with distrust in the garden and murder in Cain's field has spread across the earth. A question in Eden becomes blood in a field. Blood in a field becomes violence filling the world.",
+      ],
+    },
+    {
+      heading: "God Commands the Ark",
+      verseBlock: { reference: "Genesis 6:14-22", chapter: 6, startVerse: 14, endVerse: 22 },
+      teaching: [
+        "God does not only tell Noah judgment is coming. He gives instructions: build the ark, use wood, make rooms, seal it with pitch, add a door, make levels, and gather food.",
+        "Noah's faith becomes practical. Boards. Measurements. Labor. Time. Sweat. Construction.",
+        "A cubit was an ancient measurement based roughly on the distance from elbow to fingertip. The ark is massive. This is not a cute little boat. It is a rescue vessel, a survival structure, a place of preservation through judgment.",
+        "God says: I will establish my covenant with you. Before the flood arrives, God speaks covenant. Before judgment falls, God speaks preservation. God is not only ending corruption. He is preserving life.",
+        "Genesis 6 ends with Noah doing all that God commanded. Noah obeys before the sky changes, before rain starts, before people understand, before danger is visible. That is faith. Faith is building because God spoke.",
+      ],
+    },
+    {
+      heading: "Come Into the Ark",
+      verseBlock: { reference: "Genesis 7:1-10", chapter: 7, startVerse: 1, endVerse: 10 },
+      teaching: [
+        "God says: come with all of your household into the ship. That word feels personal. God is inviting Noah into the place of rescue.",
+        "The ark is not Noah's escape plan. It is God's provided refuge.",
+        "Noah enters with his family. His obedience affects more than himself. Sometimes one person's faithfulness becomes shelter for others.",
+        "Genesis mentions clean and unclean animals before the law of Moses. That can surprise people. But it shows that worship categories already existed in some form. Clean animals will matter after the flood because Noah will offer sacrifice.",
+        "Noah enters the ark before the flood comes. Then seven days pass. Inside the ark. Door closed. No rain yet. No flood yet. Just waiting. Faith often has a waiting room.",
+      ],
+    },
+    {
+      heading: "The Flood Begins",
+      verseBlock: { reference: "Genesis 7:11-16", chapter: 7, startVerse: 11, endVerse: 16 },
+      teaching: [
+        "The flood does not come only from rain. Genesis says the fountains of the deep burst open and the windows of heaven open.",
+        "This feels like creation boundaries being released. Genesis 1 showed God ordering the waters so life could flourish. Genesis 7 shows the waters overwhelming the world because the world has become corrupt.",
+        "The flood feels like an undoing.",
+        "Then comes one of the most powerful lines in the story: Yahweh shut him in.",
+        "That line is tender and terrifying. Tender because God secures Noah inside the ark. Terrifying because the door is now closed. The time for building is over. The time for warning is over. Judgment has begun.",
+      ],
+    },
+    {
+      heading: "The Waters Prevail",
+      verseBlock: { reference: "Genesis 7:17-24", chapter: 7, startVerse: 17, endVerse: 24 },
+      teaching: [
+        "The same waters that judge the world lift the ark. That is one of the deepest pictures in the chapter.",
+        "Outside the ark, the waters destroy. Inside the ark, the waters carry. The difference is the refuge God provided.",
+        "Genesis 7 is heavy. This is not just animals and a boat. This is judgment. The chapter says living things outside the ark die.",
+        "The Bible does not treat sin lightly.",
+        "But the ark remains. Noah remains. His family remains. The animals inside remain. God preserves life through judgment. The flood is terrifying, but it is not the end of the story.",
+      ],
+    },
+  ],
+  closing: [
+    "Noah Builds the Ark is not just about a man building a boat. It is about faith in a corrupt generation.",
+    "Genesis 5 shows death moving through generations. Genesis 6 shows corruption filling the earth. Genesis 7 shows the flood beginning.",
+    "But through all of it, God preserves a man who walks with Him.",
+    "Noah obeys before the sky changes. He builds before rain starts. He trusts before everyone understands. And when judgment rises, the safest place is inside what God has provided.",
+    "God sees corruption clearly. God judges evil seriously. God preserves life mercifully. Noah teaches us that obedience before proof is still faith.",
   ],
 };

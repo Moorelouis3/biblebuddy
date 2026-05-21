@@ -18,7 +18,7 @@ export function getBibleYearAudioStoragePath(dayNumber: number) {
 }
 
 export function getBibleYearAudioApiSrc(dayNumber: number) {
-  return `/api/tts/bible-year/day/${dayNumber}?v=day-${padDay(dayNumber)}-audio-v3`;
+  return `/api/tts/bible-year/day/${dayNumber}?v=day-${padDay(dayNumber)}-audio-v6`;
 }
 
 export const BIBLE_YEAR_DAY_ONE_AUDIO: BibleYearAudioDay = {
@@ -26,7 +26,7 @@ export const BIBLE_YEAR_DAY_ONE_AUDIO: BibleYearAudioDay = {
   title: "Day 1 - Creation of the World",
   storagePath: getBibleYearAudioStoragePath(1),
   apiSrc: getBibleYearAudioApiSrc(1),
-  estimatedDuration: "13 min",
+  estimatedDuration: "about 18 min",
 };
 
 export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {
@@ -35,4 +35,12 @@ export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(2),
   apiSrc: getBibleYearAudioApiSrc(2),
   estimatedDuration: "about 10 min",
+};
+
+export const BIBLE_YEAR_DAY_THREE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 3,
+  title: "Day 3 - Noah Builds the Ark",
+  storagePath: getBibleYearAudioStoragePath(3),
+  apiSrc: getBibleYearAudioApiSrc(3),
+  estimatedDuration: "about 15 min",
 };

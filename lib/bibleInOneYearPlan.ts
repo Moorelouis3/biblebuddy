@@ -73,7 +73,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     dayNumber: 1,
     title: "Creation of the World",
     reference: "Genesis 1-2",
-    estimatedTime: "13 min",
+    estimatedTime: "about 18 min",
     summary: "Start with creation, Eden, image of God, purpose, rest, and relationship.",
     readings: buildGenesisReadings("The Creation of the World", 1, 2, 1),
   },

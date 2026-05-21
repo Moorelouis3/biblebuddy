@@ -43,7 +43,7 @@ import {
   GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
-import { GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
+import { GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import { BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
@@ -4287,6 +4287,7 @@ export default function DashboardJourneyExperience({
   function getBibleYearDailyLesson(dayNumber: number): BibleYearDailyLesson | null {
     if (dayNumber === 1) return GENESIS_DAY_ONE_CREATION_LESSON;
     if (dayNumber === 2) return GENESIS_DAY_TWO_FALL_LESSON;
+    if (dayNumber === 3) return GENESIS_DAY_THREE_NOAH_ARK_LESSON;
     return null;
   }
 
