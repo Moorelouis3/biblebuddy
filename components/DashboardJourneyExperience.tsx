@@ -4711,12 +4711,10 @@ ${scripture}
 ${spokenTeaching.join("\n\n")}${list}`;
       })
       .join("\n\n");
-    const opening = lesson.dayNumber === 1 ? dayOneOpening : [`Welcome to Day ${lesson.dayNumber} of the Bible In One Year journey: ${lesson.title}.`, ...lesson.opening];
+    const opening = lesson.dayNumber === 1 ? dayOneOpening : lesson.opening;
     const closing = lesson.dayNumber === 1 ? dayOneClosing : lesson.closing;
 
-    const titleBlock = lesson.dayNumber === 1 ? `# ${lesson.title}` : `# ${lesson.title}
-
-# Day ${lesson.dayNumber} of the Bible In One Year Plan`;
+    const titleBlock = `# ${lesson.title}`;
 
     return `${titleBlock}
 
@@ -5290,7 +5288,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     return [
       {
         kind: "reading",
-        title: `${dayLabel} Reading`,
+        title: `${dayLabel} Scripture`,
         subtitle: `${day.title} lesson with audio and every verse included.`,
         pointsLabel: "+25 XP",
         timeEstimateLabel: day.estimatedTime,
@@ -5813,37 +5811,39 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         </div>
 
-        <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_38%,transparent)] p-3 shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)] backdrop-blur-xl">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Progress</p>
-              <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#111827)]">{completedCount}/3</p>
-            </div>
-            <div className="min-w-0 flex-1">
-              <div className="h-2 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--bb-text-primary,#111827)_14%,transparent)]">
-                <div
-                  className="h-full rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] transition-all duration-500"
-                  style={{ width: `${progressPercent}%` }}
-                />
-              </div>
-              <div className="mt-2 grid grid-cols-3 gap-2">
+        <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_38%,transparent)] p-4 shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)] backdrop-blur-xl">
+          <div className="text-center">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Progress</p>
+            <p className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#111827)]">{completedCount}/3</p>
+            <div className="mt-4 min-w-0">
+              <div className="grid grid-cols-3 gap-2">
                 {stepItems.map((step) => {
                   const done = Boolean(bibleYearCompletedCardsByDay[day.dayNumber]?.[step.key]);
                   return (
-                    <div key={step.key} className="text-center">
-                      <span className={`mx-auto grid h-9 w-9 place-items-center rounded-xl text-lg shadow-sm ${
+                    <div key={step.key} className="min-w-0 text-center">
+                      <span className={`mx-auto grid h-11 w-11 place-items-center rounded-2xl text-lg shadow-sm ring-1 transition ${
                         done
-                          ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)]"
-                          : "bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_76%,transparent)] text-[var(--bb-text-primary,#111827)]"
+                          ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)]"
+                          : "bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_44%,transparent)] text-[color-mix(in_srgb,var(--bb-text-primary,#111827)_42%,transparent)] ring-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_62%,transparent)]"
                       }`}>
                         {done ? "✓" : step.icon}
                       </span>
-                      <span className="mt-1 block text-[10px] font-black text-[var(--bb-text-secondary,#4b5563)]">{step.label}</span>
+                      <span className={`mt-1.5 block truncate text-[10px] font-black ${
+                        done
+                          ? "text-[var(--bb-text-primary,#111827)]"
+                          : "text-[color-mix(in_srgb,var(--bb-text-secondary,#4b5563)_68%,transparent)]"
+                      }`}>{step.label}</span>
                     </div>
                   );
                 })}
               </div>
             </div>
+          </div>
+          <div className="mt-3 h-2 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--bb-text-primary,#111827)_14%,transparent)]">
+            <div
+              className="h-full rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] transition-all duration-500"
+              style={{ width: `${progressPercent}%` }}
+            />
           </div>
           <div className="mt-3 rounded-2xl border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_62%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_56%,transparent)] px-3 py-2">
             <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Steps</p>
