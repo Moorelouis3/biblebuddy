@@ -898,8 +898,8 @@ export default function PublicProfilePage() {
   const profileSkin = getPremiumSkin(profileSkinId);
   const profileSkinStyle = profileSkin
     ? ({
-        "--profile-skin-bg": `url("${profileSkin.desktopBackgroundImage}")`,
-        "--profile-skin-bg-mobile": `url("${profileSkin.mobileBackgroundImage}")`,
+        "--profile-skin-bg": profileSkin.hasImageBackground === false ? "none" : `url("${profileSkin.desktopBackgroundImage}")`,
+        "--profile-skin-bg-mobile": profileSkin.hasImageBackground === false ? "none" : `url("${profileSkin.mobileBackgroundImage}")`,
         "--profile-skin-card": profileSkin.palette.card,
         "--profile-skin-card-border": profileSkin.palette.cardBorder,
         "--profile-skin-surface": profileSkin.palette.surface,
@@ -921,6 +921,8 @@ export default function PublicProfilePage() {
                 ? "rgba(234, 162, 58, 0.4)"
                 : profileSkin.id === "desert-dawn"
                   ? "rgba(232, 171, 72, 0.4)"
+                  : profileSkin.id === "no-fuss"
+                    ? "rgba(108, 184, 255, 0.22)"
             : "rgba(255, 255, 255, 0.24)",
       } as React.CSSProperties)
     : undefined;

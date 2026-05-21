@@ -73,11 +73,15 @@ export function preloadActiveSkinAssets(skinId: PremiumSkinId | string | null | 
   if (!skin) return;
 
   const prefersMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
-  preloadImage(prefersMobile ? skin.mobileBackgroundImage : skin.desktopBackgroundImage, "high");
+  if (skin.hasImageBackground !== false) {
+    preloadImage(prefersMobile ? skin.mobileBackgroundImage : skin.desktopBackgroundImage, "high");
+  }
 
   scheduleIdleWork(() => {
     preloadImage(skin.thumbnailImage, "low");
-    preloadImage(prefersMobile ? skin.desktopBackgroundImage : skin.mobileBackgroundImage, "low");
+    if (skin.hasImageBackground !== false) {
+      preloadImage(prefersMobile ? skin.desktopBackgroundImage : skin.mobileBackgroundImage, "low");
+    }
   }, 2200);
 }
 

@@ -1,4 +1,4 @@
-export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline" | "angel-wings" | "winter-cabin" | "mount-sinai" | "desert-dawn";
+export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline" | "angel-wings" | "winter-cabin" | "mount-sinai" | "desert-dawn" | "no-fuss";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -30,6 +30,7 @@ export type PremiumSkin = {
   thumbnailImage: string;
   mobileBackgroundImage: string;
   desktopBackgroundImage: string;
+  hasImageBackground?: boolean;
   price: number;
   palette: PremiumSkinPalette;
 };
@@ -507,6 +508,39 @@ export const DESERT_DAWN_SKIN: PremiumSkin = {
   },
 };
 
+export const NO_FUSS_SKIN: PremiumSkin = {
+  id: "no-fuss",
+  name: "No Fuss",
+  label: "Premium Skin",
+  storeSubtitle: "Clean focus mode with distraction-free premium minimalism.",
+  backgroundImage: "/skins/no-fuss-preview.svg",
+  originalImage: "/skins/no-fuss-preview.svg",
+  thumbnailImage: "/skins/no-fuss-preview.svg",
+  mobileBackgroundImage: "/skins/no-fuss-preview.svg",
+  desktopBackgroundImage: "/skins/no-fuss-preview.svg",
+  hasImageBackground: false,
+  price: 750,
+  palette: {
+    background: "#0D0D0D",
+    surface: "rgba(20, 20, 20, 0.78)",
+    surfaceSoft: "rgba(32, 32, 32, 0.68)",
+    card: "rgba(26, 26, 26, 0.82)",
+    cardBorder: "rgba(42, 42, 42, 0.92)",
+    textPrimary: "#F5F5F5",
+    textSecondary: "#B0B0B0",
+    textMuted: "#7A7A7A",
+    accent: "#4DA3FF",
+    accentSoft: "rgba(77, 163, 255, 0.16)",
+    button: "#1F6FB8",
+    buttonText: "#F5F5F5",
+    navBackground: "rgba(18, 18, 18, 0.88)",
+    navActive: "#6CB8FF",
+    navInactive: "#8A8A8A",
+    progressTrack: "rgba(245, 245, 245, 0.12)",
+    progressFill: "#4DA3FF",
+  },
+};
+
 export const PREMIUM_SKINS: PremiumSkin[] = [
   BLUE_STORM_SKIN,
   MIDNIGHT_GARDEN_SKIN,
@@ -519,6 +553,7 @@ export const PREMIUM_SKINS: PremiumSkin[] = [
   WINTER_CABIN_SKIN,
   MOUNT_SINAI_SKIN,
   DESERT_DAWN_SKIN,
+  NO_FUSS_SKIN,
 ];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
 
@@ -597,9 +632,15 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
   }
 
   root.dataset.bbSkin = skin.id;
-  root.style.setProperty("--bb-skin-bg-image", `url("${skin.originalImage}")`);
-  root.style.setProperty("--bb-skin-bg-image-mobile", `url("${skin.originalImage}")`);
-  root.style.setProperty("--bb-skin-bg-image-desktop", `url("${skin.originalImage}")`);
+  if (skin.hasImageBackground === false) {
+    root.style.setProperty("--bb-skin-bg-image", "none");
+    root.style.setProperty("--bb-skin-bg-image-mobile", "none");
+    root.style.setProperty("--bb-skin-bg-image-desktop", "none");
+  } else {
+    root.style.setProperty("--bb-skin-bg-image", `url("${skin.originalImage}")`);
+    root.style.setProperty("--bb-skin-bg-image-mobile", `url("${skin.originalImage}")`);
+    root.style.setProperty("--bb-skin-bg-image-desktop", `url("${skin.originalImage}")`);
+  }
   root.style.setProperty(
     "--bb-skin-glow",
     skin.id === "midnight-garden"
@@ -622,6 +663,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
                       ? "rgba(234, 162, 58, 0.46)"
                       : skin.id === "desert-dawn"
                         ? "rgba(232, 171, 72, 0.46)"
+                        : skin.id === "no-fuss"
+                          ? "rgba(108, 184, 255, 0.24)"
           : "rgba(93, 214, 255, 0.42)",
   );
   root.style.setProperty(
@@ -646,6 +689,8 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
                       ? "rgba(255, 211, 122, 0.34)"
                       : skin.id === "desert-dawn"
                         ? "rgba(255, 211, 122, 0.36)"
+                        : skin.id === "no-fuss"
+                          ? "rgba(255, 255, 255, 0.08)"
           : "rgba(93, 214, 255, 0.2)",
   );
 

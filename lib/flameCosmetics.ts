@@ -39,6 +39,7 @@ export const PREMIUM_SKIN_FLAME_BY_ID: Partial<Record<PremiumSkinId, FlameCosmet
   "winter-cabin": "blue",
   "mount-sinai": "gold",
   "desert-dawn": "gold",
+  "no-fuss": "blue",
 };
 
 export function normalizeFlameCosmeticId(value: unknown): FlameCosmeticId {

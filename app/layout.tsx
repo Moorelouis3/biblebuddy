@@ -14,14 +14,15 @@ import { FLAME_COSMETIC_BY_ID, PREMIUM_SKIN_FLAME_BY_ID } from "@/lib/flameCosme
 // redeploy trigger
 
 const siteUrl = new URL("https://www.mybiblebuddy.net");
-const socialPreviewImage = new URL("/bible-buddy-social-preview-v2.png", siteUrl).toString();
-const socialDescription = "Read and understand the Bible with guided reading plans, highlights, and study tools.";
-const socialImageAlt = "Bible Buddy - Free Bible Study App";
+const socialPreviewImage = new URL("/NewNewNewBanner.png", siteUrl).toString();
+const socialTitle = "Bible Buddy, making Bible study easier...";
+const socialDescription = "Bible Buddy, making Bible study easier...";
+const socialImageAlt = "Bible Buddy, making Bible study easier...";
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
-  title: "Bible Buddy",
-  description: "Your guided Bible reading companion",
+  title: socialTitle,
+  description: socialDescription,
   alternates: {
     canonical: siteUrl.toString(),
   },
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     title: "BibleBuddy",
   },
   openGraph: {
-    title: "Bible Buddy - Free Bible Study App",
+    title: socialTitle,
     description: socialDescription,
     type: "website",
     url: siteUrl.toString(),
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bible Buddy - Free Bible Study App",
+    title: socialTitle,
     description: socialDescription,
     images: [socialPreviewImage],
   },
@@ -79,6 +80,7 @@ const premiumSkinFirstPaintPayload = Object.fromEntries(
     {
       desktopBackgroundImage: skin.desktopBackgroundImage,
       mobileBackgroundImage: skin.mobileBackgroundImage,
+      hasImageBackground: skin.hasImageBackground !== false,
       palette: skin.palette,
     },
   ]),
@@ -136,9 +138,15 @@ const premiumSkinFirstPaintScript = `
         style.setProperty("--bb-active-flame-dark", flame.dark);
       }
     }
-    style.setProperty("--bb-skin-bg-image", 'url("' + bg + '")');
-    style.setProperty("--bb-skin-bg-image-mobile", 'url("' + skin.mobileBackgroundImage + '")');
-    style.setProperty("--bb-skin-bg-image-desktop", 'url("' + skin.desktopBackgroundImage + '")');
+    if (skin.hasImageBackground === false) {
+      style.setProperty("--bb-skin-bg-image", "none");
+      style.setProperty("--bb-skin-bg-image-mobile", "none");
+      style.setProperty("--bb-skin-bg-image-desktop", "none");
+    } else {
+      style.setProperty("--bb-skin-bg-image", 'url("' + bg + '")');
+      style.setProperty("--bb-skin-bg-image-mobile", 'url("' + skin.mobileBackgroundImage + '")');
+      style.setProperty("--bb-skin-bg-image-desktop", 'url("' + skin.desktopBackgroundImage + '")');
+    }
 
     Object.keys(vars).forEach(function (key) {
       style.setProperty(vars[key], palette[key]);
@@ -158,12 +166,14 @@ const premiumSkinFirstPaintScript = `
     themeMeta.setAttribute("content", palette.background);
     if (!themeMeta.parentNode) document.head.appendChild(themeMeta);
 
-    var preload = document.createElement("link");
-    preload.rel = "preload";
-    preload.as = "image";
-    preload.href = bg;
-    preload.fetchPriority = "high";
-    document.head.appendChild(preload);
+    if (skin.hasImageBackground !== false) {
+      var preload = document.createElement("link");
+      preload.rel = "preload";
+      preload.as = "image";
+      preload.href = bg;
+      preload.fetchPriority = "high";
+      document.head.appendChild(preload);
+    }
   } catch (error) {}
 })();
 `;

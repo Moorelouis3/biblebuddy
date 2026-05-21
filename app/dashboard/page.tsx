@@ -2624,6 +2624,7 @@ export default function DashboardPage() {
           .skin-world-winter-cabin { --premium-aura: #9BD7FF; }
           .skin-world-mount-sinai { --premium-aura: #EAA23A; }
           .skin-world-desert-dawn { --premium-aura: #E8AB48; }
+          .skin-world-no-fuss { --premium-aura: #4DA3FF; }
           @keyframes premium-stat-drift {
             from { transform: translate3d(-2%, -1%, 0) rotate(0deg); opacity: 0.52; }
             to { transform: translate3d(2%, 1%, 0) rotate(4deg); opacity: 0.82; }
@@ -3181,6 +3182,8 @@ export default function DashboardPage() {
                           ? ["Lightning", "Smoke", "Sacred Ground"]
                           : item.skinId === "desert-dawn"
                             ? ["Sunrise", "Canyon", "Wilderness"]
+                            : item.skinId === "no-fuss"
+                              ? ["Focus", "Minimal", "Clean"]
                 : ["Storm", "Glow", "Mist"];
       const skinMotionClass =
         item.skinId === "midnight-garden"
@@ -3203,9 +3206,11 @@ export default function DashboardPage() {
                           ? "bb-store-skin-card--sinai"
                           : item.skinId === "desert-dawn"
                             ? "bb-store-skin-card--desert"
+                            : item.skinId === "no-fuss"
+                              ? "bb-store-skin-card--no-fuss"
                 : "bb-store-skin-card--storm";
       const skinBadge =
-        item.skinId === "slow-mornings" || item.skinId === "morning-mercy" || item.skinId === "carolina-coastline" || item.skinId === "angel-wings" || item.skinId === "winter-cabin" || item.skinId === "mount-sinai" || item.skinId === "desert-dawn"
+        item.skinId === "slow-mornings" || item.skinId === "morning-mercy" || item.skinId === "carolina-coastline" || item.skinId === "angel-wings" || item.skinId === "winter-cabin" || item.skinId === "mount-sinai" || item.skinId === "desert-dawn" || item.skinId === "no-fuss"
           ? "New"
           : item.skinId === "ruby-village"
             ? "Popular"
@@ -3255,6 +3260,8 @@ export default function DashboardPage() {
                                   ? "radial-gradient(circle at 52% 12%, rgba(255,211,122,0.34), transparent 28%), radial-gradient(circle at 22% 42%, rgba(234,162,58,0.2), transparent 26%), linear-gradient(180deg,rgba(234,162,58,0.05),rgba(5,5,5,0.84))"
                                   : item.skinId === "desert-dawn"
                                     ? "radial-gradient(circle at 52% 12%, rgba(255,211,122,0.34), transparent 30%), radial-gradient(circle at 18% 42%, rgba(232,171,72,0.2), transparent 28%), linear-gradient(180deg,rgba(232,171,72,0.04),rgba(10,6,4,0.82))"
+                                    : item.skinId === "no-fuss"
+                                      ? "radial-gradient(circle at 18% 8%, rgba(77,163,255,0.2), transparent 32%), radial-gradient(circle at 88% 18%, rgba(245,245,245,0.08), transparent 30%), linear-gradient(135deg,rgba(32,32,32,0.12),rgba(8,8,8,0.84))"
                       : "radial-gradient(circle at 18% 12%,rgba(93,214,255,0.34),transparent 34%),linear-gradient(135deg,rgba(9,24,52,0.2),rgba(4,11,24,0.78))",
             }}
           />
@@ -3282,6 +3289,8 @@ export default function DashboardPage() {
                                   ? "rgba(234,162,58,0.3)"
                                   : item.skinId === "desert-dawn"
                                     ? "rgba(232,171,72,0.3)"
+                                    : item.skinId === "no-fuss"
+                                      ? "rgba(108,184,255,0.2)"
                       : "rgba(125,211,252,0.25)",
             }}
           />
@@ -3416,6 +3425,8 @@ export default function DashboardPage() {
           .bb-store-skin-card--angel .bb-store-skin-motion-b { background: rgba(141, 220, 255, 0.48); }
           .bb-store-skin-card--desert .bb-store-skin-motion-a,
           .bb-store-skin-card--desert .bb-store-skin-motion-b { background: rgba(232, 171, 72, 0.5); }
+          .bb-store-skin-card--no-fuss .bb-store-skin-motion-a,
+          .bb-store-skin-card--no-fuss .bb-store-skin-motion-b { background: rgba(108, 184, 255, 0.28); }
           .bb-store-skin-card--storm::before {
             background:
               linear-gradient(115deg, transparent 0 44%, rgba(210, 246, 255, 0.92) 45%, rgba(93, 214, 255, 0.2) 46%, transparent 49%),
@@ -3543,6 +3554,19 @@ export default function DashboardPage() {
             background-size: 160px 200px, 240px 280px, 260px 320px, 100% 100%;
             filter: blur(1.4px);
             animation: bb-store-skin-drift 9.2s ease-in-out infinite alternate;
+          }
+          .bb-store-skin-card--no-fuss::before {
+            background:
+              radial-gradient(circle at 18% 12%, rgba(77, 163, 255, 0.2), transparent 30%),
+              radial-gradient(circle at 88% 18%, rgba(245, 245, 245, 0.08), transparent 28%);
+            animation: bb-store-skin-drift 11s ease-in-out infinite alternate;
+          }
+          .bb-store-skin-card--no-fuss::after {
+            background:
+              linear-gradient(115deg, transparent 0%, rgba(108, 184, 255, 0.06) 46%, transparent 76%),
+              radial-gradient(circle at 84% 78%, rgba(245, 245, 245, 0.06), transparent 34%);
+            filter: blur(1.6px);
+            animation: bb-store-skin-pulse 6s ease-in-out infinite;
           }
         `}</style>
         <div className="hidden overflow-hidden rounded-[28px] border border-rose-100 bg-[linear-gradient(135deg,rgba(255,231,231,0.9),rgba(255,246,246,0.72))] p-4 shadow-[0_18px_42px_rgba(153,27,27,0.08)]">
