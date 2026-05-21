@@ -5917,10 +5917,10 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
             </div>
 
-            <div className="space-y-4 p-4 sm:p-5">
+            <div className="space-y-4 border-t border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#0f172a)_92%,#050505)] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:p-5">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">About Day {day.dayNumber}</p>
-                <div className="mt-2 space-y-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                <div className="mt-2 space-y-3 text-sm font-semibold leading-6 text-[color-mix(in_srgb,var(--bb-text-primary,#ffffff)_72%,#ffffff)]">
                   {daySummary.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
