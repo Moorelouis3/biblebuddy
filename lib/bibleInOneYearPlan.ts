@@ -56,6 +56,7 @@ export type GenesisBibleYearDay = {
   reference: string;
   estimatedTime: string;
   summary: string;
+  coverImage?: string;
   readings: GenesisBibleYearReading[];
 };
 
@@ -91,6 +92,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 5-7",
     estimatedTime: "about 15 min",
     summary: "Follow the generations to Noah, the corruption of the earth, God's warning, Noah's obedience, and the ark.",
+    coverImage: "/day3cover.png",
     readings: buildGenesisReadings("The Flood of Noah", 5, 7, 1),
   },
   {

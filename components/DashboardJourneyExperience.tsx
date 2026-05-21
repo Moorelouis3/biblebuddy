@@ -5765,7 +5765,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearDashboardStudyArea(day: GenesisBibleYearDay, tasksToRender: TaskState[]) {
-    const cover = getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
+    const cover = day.coverImage || getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
     const completedCount = getBibleYearDayCompletedCount(day);
     const progressPercent = Math.round((completedCount / 3) * 100);
     const activeTask = buildBibleYearDayTasks(day).find((task) => !task.done);
@@ -5861,7 +5861,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearSeriesDayDetail(day: GenesisBibleYearDay) {
-    const cover = getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
+    const cover = day.coverImage || getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
     const detailAction = getBibleYearDayAction(day);
     const detailReference =
       day.readings.length === 2
@@ -5983,7 +5983,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
             <div className="space-y-3 p-3 sm:p-4">
               {GENESIS_BIBLE_IN_ONE_YEAR_SERIES.map((day) => {
-                const cover = getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
+                const cover = day.coverImage || getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
                 const isCurrent = day.dayNumber === currentSeriesDayNumber;
                 const isPast = day.dayNumber < currentSeriesDayNumber;
                 const seriesReference =
