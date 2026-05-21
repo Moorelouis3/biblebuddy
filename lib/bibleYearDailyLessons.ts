@@ -25,7 +25,7 @@ export const GENESIS_DAY_ONE_CREATION_LESSON: BibleYearDailyLesson = {
   dayNumber: 1,
   title: "Creation of the World",
   reference: "Genesis 1-2",
-  estimatedListenTime: "about 18 min",
+  estimatedListenTime: "18 min",
   opening: [
     "Before there is a nation, before there is a temple, before there is a king, before there is a cross, Genesis opens with God. Not a debate about God. Not a long explanation of where God came from. Just God, already present, already powerful, already speaking.",
     "That matters because the Bible does not begin with human chaos at the center. It begins with God at the center. And if you are coming into this day tired, distracted, overwhelmed, or unsure where your life is headed, Genesis 1 quietly brings you back to the first truth: God is not confused by darkness. God speaks into it.",

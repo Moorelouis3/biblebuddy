@@ -18,6 +18,7 @@ function formatTime(totalSeconds: number) {
 
 export default function BibleYearLessonAudioPlayer({
   audioSrc,
+  durationLabel,
 }: BibleYearLessonAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const lastSavedSecondRef = useRef(-1);
@@ -27,12 +28,27 @@ export default function BibleYearLessonAudioPlayer({
   const [duration, setDuration] = useState(0);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [error, setError] = useState(false);
+  const pendingSeekRef = useRef(0);
 
   const progressKey = useMemo(() => `bb:bible-year-audio-progress:${audioSrc}`, [audioSrc]);
-  const remainingTime = duration > 0 ? Math.max(0, duration - currentTime) : 0;
+  const estimatedDurationSeconds = useMemo(() => {
+    const match = durationLabel.match(/(\d+(?:\.\d+)?)/);
+    if (!match) return 0;
+    return Math.round(Number(match[1]) * 60);
+  }, [durationLabel]);
+  const effectiveDuration = duration > 0 ? duration : estimatedDurationSeconds;
+  const remainingTime = effectiveDuration > 0 ? Math.max(0, effectiveDuration - currentTime) : 0;
 
   useEffect(() => {
+    const saveCurrentProgress = () => saveProgress(audioRef.current);
+    document.addEventListener("visibilitychange", saveCurrentProgress);
+    window.addEventListener("pagehide", saveCurrentProgress);
+    window.addEventListener("beforeunload", saveCurrentProgress);
+
     return () => {
+      document.removeEventListener("visibilitychange", saveCurrentProgress);
+      window.removeEventListener("pagehide", saveCurrentProgress);
+      window.removeEventListener("beforeunload", saveCurrentProgress);
       const audio = audioRef.current;
       if (audio) {
         saveProgress(audio);
@@ -65,13 +81,15 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   function applySavedPosition(audio: HTMLAudioElement) {
-    const savedPosition = getSavedPosition();
+    const savedPosition = pendingSeekRef.current || getSavedPosition();
     const audioDuration = Number.isFinite(audio.duration) ? audio.duration : 0;
     if (savedPosition > 2 && (!audioDuration || savedPosition < audioDuration - 4)) {
       try {
         audio.currentTime = savedPosition;
         setCurrentTime(savedPosition);
+        pendingSeekRef.current = 0;
       } catch {
+        pendingSeekRef.current = savedPosition;
         // Mobile browsers may delay seeking until metadata/canplay fires.
       }
     }
@@ -116,14 +134,24 @@ export default function BibleYearLessonAudioPlayer({
       audio.oncanplay = () => {
         applySavedPosition(audio);
       };
+      audio.onseeked = () => {
+        pendingSeekRef.current = 0;
+        saveProgress(audio);
+      };
       audio.ontimeupdate = () => {
         setCurrentTime(audio.currentTime || 0);
         if (Number.isFinite(audio.duration)) setDuration(audio.duration);
         const second = Math.floor(audio.currentTime || 0);
-        if (second > 0 && second % 5 === 0 && second !== lastSavedSecondRef.current) {
+        if (second > 0 && second !== lastSavedSecondRef.current) {
           lastSavedSecondRef.current = second;
           saveProgress(audio);
         }
+      };
+      audio.onstalled = () => {
+        saveProgress(audio);
+      };
+      audio.onwaiting = () => {
+        saveProgress(audio);
       };
       audio.onpause = () => {
         saveProgress(audio);
@@ -215,17 +243,23 @@ export default function BibleYearLessonAudioPlayer({
               <input
                 type="range"
                 min={0}
-                max={duration || 0}
+                max={effectiveDuration || 0}
                 step={1}
-                value={Math.min(currentTime, duration || currentTime)}
+                value={Math.min(currentTime, effectiveDuration || currentTime)}
                 onChange={(event) => seekTo(Number(event.target.value))}
-                disabled={!audioRef.current || !duration}
+                disabled={!audioRef.current || !effectiveDuration}
                 aria-label="Audio progress"
                 className="h-2 w-full cursor-pointer accent-[var(--bb-button,var(--bb-accent,#2f7fe8))] disabled:cursor-not-allowed disabled:opacity-50"
               />
               <div className="flex items-center justify-between gap-3 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
                 <span>{formatTime(currentTime)}</span>
-                <span>{duration ? `${formatTime(remainingTime)} left` : "Loading time"}</span>
+                <span>
+                  {duration
+                    ? `${formatTime(remainingTime)} left`
+                    : effectiveDuration
+                      ? `about ${formatTime(remainingTime)} left`
+                      : durationLabel || "Audio time"}
+                </span>
               </div>
             </div>
 

@@ -4391,72 +4391,137 @@ export default function DashboardJourneyExperience({
     return `Genesis ${block.chapter} verses ${block.startVerse} through ${block.endVerse}.`;
   }
 
+  function getDayOneSpokenVerseLines(chapter: number, verseNumber: number) {
+    const verse = GENESIS_CREATION_WEB_VERSES[chapter]?.find((item) => item.verse === verseNumber)?.text || "";
+
+    if (chapter === 1) {
+      switch (verseNumber) {
+        case 3:
+          return ["God said.", "Let there be light.", "And there was light."];
+        case 6:
+          return ["God said.", "Let there be an expanse in the middle of the waters, and let it divide the waters from the waters."];
+        case 9:
+          return ["God said.", "Let the waters under the sky be gathered together to one place, and let the dry land appear.", "And it was so."];
+        case 11:
+          return ["God said.", "Let the earth yield grass, herbs yielding seeds, and fruit trees bearing fruit after their kind, with their seeds in it, on the earth.", "And it was so."];
+        case 14:
+          return ["God said.", "Let there be lights in the expanse of the sky to divide the day from the night; and let them be for signs to mark seasons, days, and years."];
+        case 15:
+          return ["And let them be for lights in the expanse of the sky to give light on the earth.", "And it was so."];
+        case 20:
+          return ["God said.", "Let the waters abound with living creatures, and let birds fly above the earth in the open expanse of the sky."];
+        case 22:
+          return ["God blessed them, saying.", "Be fruitful, and multiply, and fill the waters in the seas, and let birds multiply on the earth."];
+        case 24:
+          return ["God said.", "Let the earth produce living creatures after their kind, livestock, creeping things, and animals of the earth after their kind.", "And it was so."];
+        case 26:
+          return ["God said.", "Let us make man in our image, after our likeness: and let them have dominion over the fish of the sea, over the birds of the sky, over the livestock, over all the earth, and over every creeping thing that creeps on the earth."];
+        case 28:
+          return ["God blessed them. God said to them.", "Be fruitful, multiply, fill the earth, and subdue it. Have dominion over the fish of the sea, over the birds of the sky, and over every living thing that moves on the earth."];
+        case 29:
+          return ["God said.", "Behold, I have given you every herb yielding seed, which is on the surface of all the earth, and every tree, which bears fruit yielding seed. It will be your food."];
+        case 30:
+          return ["To every animal of the earth, and to every bird of the sky, and to everything that creeps on the earth, in which there is life, I have given every green herb for food.", "And it was so."];
+        default:
+          return verse ? [verse] : [];
+      }
+    }
+
+    if (chapter === 2) {
+      switch (verseNumber) {
+        case 16:
+          return ["Yahweh God commanded the man, saying.", "You may freely eat of every tree of the garden."];
+        case 17:
+          return ["But you shall not eat of the tree of the knowledge of good and evil; for in the day that you eat of it, you will surely die."];
+        case 18:
+          return ["Yahweh God said.", "It is not good for the man to be alone. I will make him a helper comparable to him."];
+        case 23:
+          return ["The man said.", "This is now bone of my bones, and flesh of my flesh. She will be called woman, because she was taken out of Man."];
+        default:
+          return verse ? [verse] : [];
+      }
+    }
+
+    return verse ? [verse] : [];
+  }
+
   function buildBibleYearSpokenScriptMarkdown(lesson: BibleYearDailyLesson) {
     const dayOneTeachingByReference: Record<string, string[]> = {
       "Genesis 1:1-5": [
-        "The story starts with God already there. Not created. Not explained. Not fighting for control. Just God, Creator over everything.",
-        "The heavens and the earth means the whole created order: everything above, everything below, everything visible, and everything humans will live inside. The first verse puts everything under God's authority.",
-        "The earth is unshaped, unfilled, dark, and watery. But unfinished does not mean abandoned. Before the world looks complete, God's Spirit is already near.",
-        "God says, Let there be light, and light comes. He does not fight the darkness. He speaks, and creation responds. Light appears before the sun and moon, so light comes from God, not from a sun god.",
-        "God separates light from darkness and names Day and Night. Naming shows authority. Separation shows order. God is putting things where they belong.",
+        "Stay here for a second. Before anything exists, God is already there. He is not introduced like a character who walks onto the stage. He simply is.",
+        "The earth is formless, empty, covered in darkness, and deep waters. But unfinished does not mean abandoned. God's Spirit is already hovering over the waters. Even before the world has shape, God's presence is near.",
+        "Creation begins quietly, with a voice. God does not panic in darkness. He does not fight it. He speaks into it.",
+        "Light enters the story before the sun and moon are ever named. Genesis is showing you that light does not ultimately come from created things. Light comes from God.",
+        "Maybe you know what it feels like when life seems dark, unfinished, or hard to understand. Genesis starts here to remind you: darkness is not too much for God. Confusion is not stronger than His voice.",
       ],
       "Genesis 1:6-13": [
-        "To ancient readers, deep waters could feel like danger and chaos. Here, the waters do not rule themselves. God gives them boundaries.",
-        "God gathers the seas and lets dry land appear. The world is becoming livable. Life needs a place, so God prepares a place.",
-        "Plants, trees, fruit, and seeds fill the earth. The seed detail matters because God creates life that can keep producing life. Life can multiply. Food can be provided. The earth can sustain creatures. One generation can lead to another.",
+        "Now the world begins to take shape. Waters are separated. Sky opens. Seas gather. Dry ground appears.",
+        "This is not random motion. This is God making room for life. Before He fills the world, He prepares the world.",
+        "Then the earth starts to grow. Grass, plants, fruit trees, seeds. Life that can keep producing more life.",
+        "Most things God grows start smaller than we expect. A seed is easy to overlook, but inside it is future provision, future fruit, future generations.",
       ],
       "Genesis 1:14-25": [
-        "The sun and moon are not gods. They are lights in God's sky.",
-        "The lights mark days, seasons, and years. God is making a world humans can live in, work in, rest in, and worship in. Seasons for planting and harvesting. Days and nights for work and rest. Years for memory and history. Appointed times for worship.",
-        "God fills the waters, sky, and land with life. Creation is no longer empty. It is full, alive, layered, and blessed.",
+        "Now the sky fills with lights. Days can be counted. Seasons can be known. Years can be remembered.",
+        "To the ancient world, the sun and moon were often treated like gods. Genesis quietly corrects that. They are not gods. They are lights in God's sky, serving the purpose He gives them.",
+        "Then the waters move. The sky comes alive. Birds lift into the air. Sea creatures fill the deep. Animals begin moving across the land.",
+        "The silence of the empty world is gone now. There is movement, sound, breath, rhythm, and life.",
       ],
       "Genesis 1:26-31": [
-        "This is the high point of creation. Human beings are made in God's image. People are not accidents and not disposable.",
-        "Male and female are both created in God's image. Human worth is not based on power, gender, money, beauty, success, or strength. Every person matters because every person is made by God.",
-        "Dominion does not mean abuse. It means responsibility. Humans are called to care for God's world under God's authority. Every person has dignity. Every person has responsibility. Creation is entrusted to human care. Life is meant to reflect God's goodness.",
-        "Before sin enters the story, creation is good, human life is good, and God's purpose for the world is good.",
+        "This is the moment the story has been building toward. Human beings are not accidents. You are not an accident.",
+        "Before anyone measures your success, your beauty, your strength, your usefulness, or your past, Genesis says human worth starts with God.",
+        "Male and female are both made in God's image. Both carry dignity. Both are blessed. Both are called into purpose.",
+        "Dominion does not mean abuse. It means responsibility. Humanity is called to represent God's care inside God's creation.",
+        "Before sin breaks anything, the world is blessed, ordered, alive, and full of purpose.",
       ],
       "Genesis 2:1-3": [
-        "God does not leave creation half done. What He made has order, purpose, and goodness.",
-        "God rests because the work is complete. Rest is built into creation before sin enters the world.",
-        "God sets the seventh day apart. From the beginning, time with God can be holy. Time can be set apart. Rest belongs in human life. Worship grows from God's finished work. Creation has rhythm, not endless striving.",
+        "The story does not end with God rushing to the next thing. It ends with rest.",
+        "God rests, not because He is tired, but because the work is complete. Creation has rhythm. Work and rest. Forming and filling. Speaking and delighting.",
+        "The first thing called holy in the Bible is not a building. It is not an object. It is a day. Time with God is holy from the beginning.",
+        "If your life feels like nonstop striving, Genesis gently pushes back. You were not created to hold everything together. Rest is trust. Rest is worship.",
       ],
       "Genesis 2:4-9": [
-        "The lesson slows down and focuses on human life with God.",
-        "God forms man from the dust. That is humbling. We are not gods. We are physical, dependent, and connected to God's world.",
-        "But humanity is not only dust. God breathes life into the man. We are dust touched by God: humble, valuable, and dependent.",
-        "God plants a garden and places the man there. He prepares a home before He gives a command. Eden is a picture of provision, beauty, purpose, and peace.",
+        "Now the camera moves closer. Genesis 1 gave us the wide view of creation. Genesis 2 brings us near enough to see dust, breath, garden, and relationship.",
+        "God forms the man from the dust of the ground. That is humbling. We are not gods. We are creatures. We are connected to the earth.",
+        "But then God breathes into him the breath of life. Humanity is dust touched by God. Fragile, but valuable. Humble, but alive with breath from the Creator.",
+        "Then God plants a garden. Before there is a command, there is provision. Before there is a test, there is a home. Eden is beauty, safety, abundance, and peace.",
       ],
       "Genesis 2:10-17": [
-        "The garden is abundance. Water flows. Precious materials are named. Life near God is supplied.",
-        "God gives the man work before sin enters the world. So work itself is not the curse. Meaningful responsibility is part of God's good design.",
-        "God says the man may freely eat from every tree except one. God gives abundance, then sets one boundary.",
-        "The tree introduces choice and trust. Will humanity trust God's word about life and death? Provision is generous. Boundaries are real. Obedience matters. Trust is part of life with God.",
+        "The garden is full. Rivers flow. Precious materials are named. The world near God is supplied and alive.",
+        "Then God gives the man work. That matters because work exists before sin. Meaningful responsibility is part of the good world.",
+        "God also gives freedom before restriction. You may freely eat from every tree, except one.",
+        "The story is not showing a stingy God. It is showing a generous God with a real boundary. The question is trust. Will humanity receive life from God, or try to define good and evil apart from Him?",
+        "That question will carry us straight into the next day. But for now, feel the goodness of this moment. God gives life, place, food, work, freedom, and a clear word.",
       ],
       "Genesis 2:18-25": [
-        "For the first time, God says something is not good. Sin has not entered yet. The problem is aloneness.",
-        "The man names the animals, showing responsibility. But none of them can answer his loneliness. None is a suitable helper.",
-        "Helper does not mean weak or lesser. The point is partnership, not inferiority. The man needs someone who corresponds to him.",
-        "God makes woman from the man's side and brings her to him. The man's response is joy: bone of my bones and flesh of my flesh.",
-        "Marriage is pictured as covenant closeness, loyalty, and shared life.",
-        "The man and woman are naked and not ashamed. No hiding. No fear. No guilt. No pretending. Fully known. Fully welcomed. Joined in covenant love. Not yet covered by shame.",
+        "For the first time, God says something is not good. Not sin. Not rebellion. Aloneness.",
+        "The man is surrounded by living creatures, but none of them correspond to him. None can meet him face to face as a true partner.",
+        "So God causes a deep sleep to fall over the man, and He forms the woman. When the man sees her, the first human words recorded in Scripture are poetry.",
+        "This is bone of my bones and flesh of my flesh. That is wonder. Recognition. Joy.",
+        "And the chapter ends with a picture that almost feels hard to imagine now: naked and not ashamed. No hiding. No fear. No pretending. Fully known, fully safe, fully at peace.",
+        "Before shame entered the story, there was peace.",
       ],
     };
     const dayOneOpening = [
-      "Welcome to Day 1 of the Bible In One Year journey: The Creation of the World.",
-      "Today we are walking through Genesis chapters 1 and 2 as one flowing story.",
-      "The goal is simple. We are going to listen to the Scripture, pause along the way, and let the beginning of the Bible open up slowly and clearly.",
-      "Genesis does not begin with human chaos at the center. It begins with God: already present, already powerful, already speaking.",
-      "So take a breath. Let the story slow down. This is where the Bible begins.",
+      "Hey. I am really glad you are here.",
+      "Today is Day 1 of our journey through the Bible together.",
+      "Before Abraham. Before Moses. Before David. Before Jesus. Before cities, war, pain, and shame. The story starts here.",
+      "At the beginning.",
+      "There was God.",
+      "Today, we are stepping into the creation of the world. Not just to learn facts, but to walk through the opening scene of Scripture together.",
+      "So take a breath. Let the noise settle for a moment. We are going back to the first page of the Bible.",
     ];
     const dayOneClosing = [
-      "The Creation of the World shows us the world before the damage.",
-      "God creates, speaks, orders, fills, blesses, rests, forms, breathes, plants, provides, commands, and creates relationship.",
-      "Human life is not accidental. Work is not pointless. Rest is not optional. Relationship is not random.",
-      "Everything begins with God's good design.",
-      "We were made by God, in God's image, for life with God.",
-      "Before we understand the fall, we need to understand creation.",
-      "Before we understand redemption, we need to understand what God made humanity for.",
+      "So this is where the Bible begins.",
+      "Not with human achievement. Not with human failure. Not with a problem we have to solve.",
+      "It begins with God creating, speaking, ordering, filling, blessing, resting, forming, breathing, planting, providing, and making room for relationship.",
+      "This matters because the rest of the Bible is going to show us what happens when that good world is broken, and how far God will go to restore what was lost.",
+      "But before we talk about the fall, before shame, hiding, violence, exile, covenant, sacrifice, kings, prophets, and redemption, you need to see the design.",
+      "You were made by God. You were made in God's image. You were made for life with Him.",
+      "And if you carry nothing else from Day 1, carry this: God is not afraid of darkness, emptiness, or disorder. He knows how to speak light into places that feel impossible.",
+      "Tomorrow, we step into Genesis 3 and 4. The peace of Eden will be tested. Trust will break. Shame will enter. But even there, God will not disappear.",
+      "For now, rest in the beginning.",
+      "The world was made good.",
+      "And you were made on purpose.",
     ];
     const dayTwoDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
       "Genesis 3:1-5": {
@@ -4506,9 +4571,17 @@ export default function DashboardJourneyExperience({
     const sectionBlocks = lesson.sections
       .map((section) => {
         const display = lesson.dayNumber === 2 ? dayTwoDisplay[section.verseBlock.reference] : null;
-        const scripture = getBibleYearLessonVerses(section.verseBlock)
-          .map((verse) => `> **Genesis ${section.verseBlock.chapter}:${verse.verse}**\n>\n> ${verse.text}`)
-          .join("\n\n");
+        const scripture = lesson.dayNumber === 1
+          ? Array.from(
+              { length: section.verseBlock.endVerse - section.verseBlock.startVerse + 1 },
+              (_, index) => section.verseBlock.startVerse + index,
+            )
+              .flatMap((verseNumber) => getDayOneSpokenVerseLines(section.verseBlock.chapter, verseNumber))
+              .map((line) => `> ${line}`)
+              .join("\n\n")
+          : getBibleYearLessonVerses(section.verseBlock)
+              .map((verse) => `> **Genesis ${section.verseBlock.chapter}:${verse.verse}**\n>\n> ${verse.text}`)
+              .join("\n\n");
         const list = display?.list?.length ? `\n\n${display.list.join("\n")}` : "";
         const spokenTeaching =
           lesson.dayNumber === 1
@@ -4529,9 +4602,11 @@ ${spokenTeaching.join("\n\n")}${list}`;
     const opening = lesson.dayNumber === 1 ? dayOneOpening : [`Welcome to Day ${lesson.dayNumber} of the Bible In One Year journey: ${lesson.title}.`, ...lesson.opening];
     const closing = lesson.dayNumber === 1 ? dayOneClosing : lesson.closing;
 
-    return `# ${lesson.title}
+    const titleBlock = lesson.dayNumber === 1 ? `# ${lesson.title}` : `# ${lesson.title}
 
-# Day ${lesson.dayNumber} of the Bible In One Year Plan
+# Day ${lesson.dayNumber} of the Bible In One Year Plan`;
+
+    return `${titleBlock}
 
 ${opening.join("\n\n")}
 
@@ -4872,8 +4947,6 @@ ${lesson.closing.join("\n\n")}`;
 
     return `# The Creation of the World
 
-# Day 1 of the Bible In One Year Plan
-
 Genesis opens with God: already present, already powerful, already speaking.
 
 Today we are reading every verse and slowing down just enough to understand the story.
@@ -5100,8 +5173,8 @@ Before we understand redemption, we need to understand what God made humanity fo
       {
         kind: "trivia",
         title: `${dayLabel} Trivia`,
-        subtitle: "Five simple questions to see what stuck.",
-        pointsLabel: "Up to +25 XP",
+        subtitle: "Test what you learned and reinforce the truth.",
+        pointsLabel: "+20 XP",
         timeEstimateLabel: "3 min",
         href: `#bible-year-day-${day.dayNumber}-trivia`,
         done: completed.trivia === true,
@@ -5111,8 +5184,8 @@ Before we understand redemption, we need to understand what God made humanity fo
       {
         kind: "reflection",
         title: `${dayLabel} Reflection`,
-        subtitle: "Answer one simple question with room to go deep.",
-        pointsLabel: "+15 XP",
+        subtitle: "Reflect on what God is teaching you today.",
+        pointsLabel: "+20 XP",
         timeEstimateLabel: "3 min",
         href: `#bible-year-day-${day.dayNumber}-reflection`,
         done: completed.reflection === true,
@@ -5360,6 +5433,278 @@ Before we understand redemption, we need to understand what God made humanity fo
           })}
         </div>
       </div>
+    );
+  }
+
+  function renderDashboardTaskCards(tasksToRender: TaskState[]) {
+    return tasksToRender.map((task, index) => {
+      const originalTaskIndex = tasksToRender.findIndex((visibleTask) => visibleTask.kind === task.kind);
+      const taskIndex = originalTaskIndex >= 0 ? originalTaskIndex : index;
+      const bibleYearTaskCard = selectedBibleYearSeriesDay ? getBibleYearDayTaskKey(task) : null;
+      const taskCopy = getTaskCardCopy(task, taskIndex);
+      const justCompleted = Boolean(task.done && previousDoneByKindRef.current && !previousDoneByKindRef.current[task.kind]);
+      const isCelebrating = Boolean(celebratingTasks[task.kind]) || justCompleted;
+      const isLockedByOrder = !isPaidUser && !task.done && displayNextActionTaskIndex >= 0 && taskIndex > displayNextActionTaskIndex;
+      const isCardDisabled = Boolean(task.disabled || isLockedByOrder);
+      const isNextActionTask = task.kind === displayNextActionTaskKind && !isCardDisabled;
+      const pointsPillLabel = task.pointsLabel;
+      const activeTaskPrompt = null as ActiveTaskPrompt | null;
+      const taskStatusLabel = getTaskStatusLine(task);
+      const isActiveInlineTask = bibleYearTaskCard
+        ? activeBibleYearDayCard === bibleYearTaskCard
+        : activeTask?.kind === task.kind &&
+          (activeTask.href || "") === (task.href || "") &&
+          (activeTask.chapterLabel || "") === (task.chapterLabel || "");
+
+      const taskShellClasses = selectedBibleYearSeriesDay
+        ? isCardDisabled
+          ? "cursor-not-allowed border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_70%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_62%,transparent)] text-[var(--bb-text-secondary,#4b5563)] opacity-80"
+          : isActiveInlineTask
+            ? "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_78%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,transparent)]"
+            : "border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_82%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_74%,transparent)] text-[var(--bb-text-primary,#111827)] hover:border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_62%,transparent)] hover:bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent)] hover:shadow-md"
+        : task.done
+          ? "border-[#b9dcf4] bg-gradient-to-r from-[#eaf5ff] via-white to-[#e2f1fb] hover:bg-[#eaf5ff]"
+          : isCardDisabled
+            ? "cursor-not-allowed border-[#e2e8f0] bg-gradient-to-r from-white via-[#f7fbff] to-white text-gray-700 opacity-95"
+            : isActiveInlineTask
+              ? "border-[var(--bb-accent)] bg-[var(--bb-card)] text-[var(--bb-text-primary)] shadow-[0_16px_40px_rgba(38,63,99,0.16)]"
+              : "border-[#dbe7f4] bg-gradient-to-r from-white via-[#fbfdff] to-white text-gray-700 hover:shadow-md";
+
+      return (
+      <div
+        key={task.kind}
+        className={`dashboard-task-shell relative w-full overflow-hidden rounded-[18px] border shadow-sm transition-all duration-300 ${
+          isCelebrating ? "task-complete-pop" : ""
+        } ${
+          isNewChapterDropping ? "chapter-card-drop" : ""
+        } ${
+          isNextActionTask && !isActiveInlineTask ? "next-task-pulse" : ""
+        } ${
+          isActiveInlineTask ? "dashboard-task-shell-open" : ""
+        } ${taskShellClasses}`}
+        style={isNewChapterDropping ? { animationDelay: `${index * 85}ms` } : undefined}
+      >
+      <button
+        type="button"
+        onClick={() => {
+          if (isCardDisabled) return;
+          if (bibleYearTaskCard) {
+            setActiveBibleYearDayCard((current) => current === bibleYearTaskCard ? null : bibleYearTaskCard);
+            return;
+          }
+          onTaskClick(task);
+        }}
+        disabled={isCardDisabled}
+        className="relative w-full px-3.5 py-3 text-left transition-all duration-300 sm:px-4"
+        aria-expanded={isActiveInlineTask}
+      >
+        {isCardDisabled ? (
+          <span
+            className="absolute bottom-3 right-4 text-base opacity-70"
+            aria-label="Locked"
+            title="Complete the task above to unlock this."
+          >
+            {"\uD83D\uDD12"}
+          </span>
+        ) : null}
+        <div className="flex items-start gap-2.5">
+          <div
+            className={`relative mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-xl shadow-sm ${
+              task.done ? taskCopy.doneAccent : taskCopy.idleAccent
+            }`}
+          >
+            <span className={`drop-shadow-sm ${isCardDisabled ? "opacity-75" : ""}`} aria-hidden="true">{getTaskEmoji(task)}</span>
+            {task.done ? (
+              <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#7BAFD4] text-xs font-black text-white ring-2 ring-white">
+                ✓
+              </span>
+            ) : null}
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-start justify-between gap-2">
+              <div className="min-w-0 flex-1">
+                <p className={`text-[14px] font-bold leading-tight sm:text-[15px] ${selectedBibleYearSeriesDay ? "text-[var(--bb-text-primary,#111827)]" : task.done ? "text-gray-950" : "text-gray-800"}`}>{taskCopy.title}</p>
+                <p className={`mt-0.5 text-xs leading-4 sm:text-[13px] ${selectedBibleYearSeriesDay ? "text-[var(--bb-text-secondary,#4b5563)]" : task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
+              </div>
+              <div className="flex shrink-0 flex-col items-end gap-1">
+              <span className={`px-1 py-1 text-xs font-black ${selectedBibleYearSeriesDay ? "text-[var(--bb-accent,#2f7fe8)]" : task.done ? "text-[#2f6685]" : "text-[#2f7fe8]"}`}>
+                {pointsPillLabel}
+              </span>
+              <span className={`hidden ${
+                task.done
+                  ? "font-medium text-[#2f6685]"
+                  : isNextActionTask
+                    ? "start-here-flash text-gray-950 font-black tracking-wide"
+                    : "font-medium text-gray-500"
+              }`}>
+                <span aria-hidden="true">{task.done ? "□" : "○"}</span>
+                {task.done ? (
+                  <span className="done-sparkle pointer-events-none absolute -inset-x-2 -top-3 flex justify-between text-[10px] text-amber-400" aria-hidden="true">
+                    <span>✦</span>
+                    <span>✧</span>
+                    <span>✦</span>
+                  </span>
+                ) : null}
+                {activeTaskPrompt ? (
+                  <span className="flex flex-col items-end leading-tight">
+                    <span>{activeTaskPrompt.lineOne}</span>
+                    {activeTaskPrompt.lineTwo ? (
+                      <span className="text-[10px] font-extrabold opacity-75">{activeTaskPrompt.lineTwo}</span>
+                    ) : null}
+                  </span>
+                ) : (
+                  taskStatusLabel
+                )}
+              </span>
+              </div>
+            </div>
+            <div className="mt-2 flex justify-center">
+              <p className="hidden">{taskCopy.subtitle}</p>
+              {task.timeEstimateLabel ? (
+                isActiveInlineTask && task.kind === "notes" && !task.done ? (
+                  <p className="relative h-4 w-56 text-center text-[11px] font-black text-[var(--bb-text-secondary,#374151)]">
+                    <span className="task-estimate-primary absolute inset-0 whitespace-nowrap">
+                      Takes about {task.timeEstimateLabel}
+                    </span>
+                    <span className="task-estimate-secondary absolute inset-0 whitespace-nowrap text-[var(--bb-accent,#2f7fe8)]">
+                      Mark as completed below
+                    </span>
+                  </p>
+                ) : (
+                  <p className="whitespace-nowrap text-center text-[11px] font-black text-[var(--bb-text-secondary,#374151)]">
+                    Takes about {task.timeEstimateLabel}
+                  </p>
+                )
+              ) : null}
+            </div>
+          </div>
+          {!isCardDisabled && !isActiveInlineTask ? (
+            <span className="mt-5 shrink-0 text-xl leading-none text-[var(--bb-text-muted,#9ca3af)]" aria-hidden="true">›</span>
+          ) : null}
+        </div>
+        {isCelebrating ? (
+          <div className="task-smoke pointer-events-none absolute left-1/2 top-1/2" aria-hidden="true">
+            <span className="absolute h-8 w-8 rounded-full bg-slate-300/40 [--smoke-x:-42px] [--smoke-y:-20px]" />
+            <span className="absolute h-7 w-7 rounded-full bg-slate-300/35 [--smoke-x:34px] [--smoke-y:-24px]" />
+            <span className="absolute h-6 w-6 rounded-full bg-slate-400/25 [--smoke-x:-8px] [--smoke-y:18px]" />
+            <span className="absolute h-5 w-5 rounded-full bg-slate-300/30 [--smoke-x:54px] [--smoke-y:10px]" />
+          </div>
+        ) : null}
+      </button>
+      {isActiveInlineTask ? (
+        <div className="px-3.5 pb-3 sm:px-4">
+          {bibleYearTaskCard && selectedBibleYearSeriesDay ? (
+            renderBibleYearInlineTask(bibleYearTaskCard, selectedBibleYearSeriesDay)
+          ) : (
+            <DashboardDailyTaskCallout
+              task={activeTask}
+              userId={userId}
+              onClose={onActiveTaskClose}
+              onProgressUpdated={onActiveTaskProgressUpdated}
+              variant="inline"
+              enableDashboardSkip={isOwnerDashboard}
+            />
+          )}
+        </div>
+      ) : null}
+      </div>
+      );
+    });
+  }
+
+  function renderBibleYearDashboardStudyArea(day: GenesisBibleYearDay, tasksToRender: TaskState[]) {
+    const cover = getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
+    const completedCount = getBibleYearDayCompletedCount(day);
+    const progressPercent = Math.round((completedCount / 3) * 100);
+    const activeTask = buildBibleYearDayTasks(day).find((task) => !task.done);
+    const nextTaskKey = activeTask ? getBibleYearDayTaskKey(activeTask) : null;
+    const nextStepText =
+      nextTaskKey === "trivia"
+        ? "You finished the scripture. Test what you just learned with today's trivia."
+        : nextTaskKey === "reflection"
+          ? "You finished the lesson and trivia. Take one moment to reflect on what God is teaching you."
+          : completedCount >= 3
+            ? "Day complete. You can review any card below whenever you want."
+            : "Your first step is to read or listen to today's scripture. Let's start your journey.";
+    const readingSummary = day.reference || day.readings.map((reading) => `${reading.book} ${reading.chapter}`).join(", ");
+    const stepItems: Array<{ key: BibleYearDayCardKey; label: string; icon: string }> = [
+      { key: "reading", label: "Reading", icon: "📖" },
+      { key: "trivia", label: "Trivia", icon: "🧠" },
+      { key: "reflection", label: "Reflection", icon: "✍️" },
+    ];
+
+    return (
+      <section className="dashboard-bible-year-study-area overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_58%,transparent)] p-3 shadow-[0_18px_44px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl sm:p-4">
+        <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_68%,transparent)] p-3 shadow-sm">
+          <div className="flex items-center gap-3">
+            <div className="h-24 w-20 shrink-0 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)] bg-[var(--bb-surface-soft,#f8fbff)] shadow-[0_10px_24px_rgba(0,0,0,0.18)]">
+              {cover ? (
+                <img src={cover} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+              ) : (
+                <div className="grid h-full w-full place-items-center text-3xl">📖</div>
+              )}
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Day {day.dayNumber}</p>
+              <h2 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-2xl">{day.title}</h2>
+              <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                Study {readingSummary} with scripture, teaching, trivia, and reflection.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={openBibleYearSeriesDashboard}
+              className="shrink-0 rounded-full bg-[color-mix(in_srgb,var(--bb-button,var(--bb-accent,#2f7fe8))_82%,transparent)] px-3 py-2 text-[11px] font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+            >
+              Change Plan
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-3 rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_38%,transparent)] p-3 shadow-sm">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Progress</p>
+              <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#111827)]">{completedCount}/3</p>
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="h-2 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--bb-text-primary,#111827)_14%,transparent)]">
+                <div
+                  className="h-full rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] transition-all duration-500"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
+              <div className="mt-2 grid grid-cols-3 gap-2">
+                {stepItems.map((step) => {
+                  const done = Boolean(bibleYearCompletedCardsByDay[day.dayNumber]?.[step.key]);
+                  return (
+                    <div key={step.key} className="text-center">
+                      <span className={`mx-auto grid h-9 w-9 place-items-center rounded-xl text-lg shadow-sm ${
+                        done
+                          ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)]"
+                          : "bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_76%,transparent)] text-[var(--bb-text-primary,#111827)]"
+                      }`}>
+                        {done ? "✓" : step.icon}
+                      </span>
+                      <span className="mt-1 block text-[10px] font-black text-[var(--bb-text-secondary,#4b5563)]">{step.label}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <div className="mt-3 rounded-2xl border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_62%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_56%,transparent)] px-3 py-2">
+            <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s Steps</p>
+            <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{nextStepText}</p>
+          </div>
+        </div>
+
+        <div className="mt-3 grid gap-3">
+          {dashboardAllDone ? renderBibleYearCompletedDayPanel(day) : null}
+          {renderDashboardTaskCards(tasksToRender)}
+          {renderBibleYearCompletedTasksPanel(day)}
+        </div>
+      </section>
     );
   }
 
@@ -6531,6 +6876,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </div>
                 </div>
               ) : null}
+              {selectedBibleYearSeriesDay ? (
+                renderBibleYearDashboardStudyArea(selectedBibleYearSeriesDay, displayTasks)
+              ) : (
+                <>
               {selectedBibleYearSeriesDay && dashboardAllDone ? (
                 renderBibleYearCompletedDayPanel(selectedBibleYearSeriesDay)
               ) : null}
@@ -6702,6 +7051,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                 );
               })}
               {selectedBibleYearSeriesDay ? renderBibleYearCompletedTasksPanel(selectedBibleYearSeriesDay) : null}
+                </>
+              )}
               {hasClearableDoneTaskCards ? (
                 <button
                   type="button"
