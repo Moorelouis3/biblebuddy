@@ -25,7 +25,7 @@ export const GENESIS_DAY_ONE_CREATION_LESSON: BibleYearDailyLesson = {
   dayNumber: 1,
   title: "Creation of the World",
   reference: "Genesis 1-2",
-  estimatedListenTime: "15-20 min",
+  estimatedListenTime: "13 min",
   opening: [
     "Before there is a nation, before there is a temple, before there is a king, before there is a cross, Genesis opens with God. Not a debate about God. Not a long explanation of where God came from. Just God, already present, already powerful, already speaking.",
     "That matters because the Bible does not begin with human chaos at the center. It begins with God at the center. And if you are coming into this day tired, distracted, overwhelmed, or unsure where your life is headed, Genesis 1 quietly brings you back to the first truth: God is not confused by darkness. God speaks into it.",
@@ -122,5 +122,114 @@ export const GENESIS_DAY_ONE_CREATION_LESSON: BibleYearDailyLesson = {
     "So Day 1 is not only about how the world began. It is about who God is and what kind of world He intended. God creates with purpose. God brings order from chaos. God gives dignity to human beings. God blesses life. God gives meaningful work. God gives rest. God creates relationship. And before sin breaks anything, the world is very good.",
     "That is why Genesis 1 and 2 matter so much. They show us the design before the damage. When the rest of the Bible talks about sin, redemption, covenant, Israel, Jesus, new creation, and restored relationship with God, it is reaching back to this beginning.",
     "The Bible starts here because we need to know what we were made for. We were made by God, in God's image, for life with God, in God's world, under God's good word. That is the foundation. Everything else in the story builds from here.",
+  ],
+};
+
+export const GENESIS_DAY_TWO_FALL_LESSON: BibleYearDailyLesson = {
+  dayNumber: 2,
+  title: "The Fall of Man",
+  reference: "Genesis 3-4",
+  estimatedListenTime: "15 min",
+  opening: [
+    "Day 1 showed us the world as God made it: good, ordered, blessed, relational, and open before Him. Day 2 shows us what happens when trust breaks.",
+    "Genesis 3 and 4 are not just old stories about a garden and two brothers. They explain why shame feels so familiar, why blame comes so naturally, why anger can grow so quickly, and why life outside Eden feels both beautiful and broken.",
+    "Today we are going to walk through the fall of man as one flowing lesson. We will read every verse, pause along the way, and watch how sin moves from a question in the garden to violence in the family. But we will also look for mercy, because even here, God does not disappear.",
+  ],
+  sections: [
+    {
+      heading: "The Lie Enters the Garden",
+      verseBlock: { reference: "Genesis 3:1-5", chapter: 3, startVerse: 1, endVerse: 5 },
+      teaching: [
+        "The serpent does not begin by attacking God directly. He begins with a question: Has God really said? That is how temptation often works. It does not always start by telling us to reject God. It starts by making God's word feel unclear, unfair, or restrictive.",
+        "Notice the twist. God had given Adam and Eve a garden full of yes, with one boundary. The serpent makes it sound like God is mainly withholding. That is the first lie: God cannot really be trusted with your joy.",
+        "Eve answers, but the conversation has already shifted. The focus is no longer on God's generosity. It is on the one tree. Then the serpent moves from questioning God to contradicting God: You will not really die.",
+        "That is the heart of the fall. Humanity is being invited to define good and evil without God. The serpent promises wisdom, but the kind of wisdom he offers is independence from the One who gives life.",
+      ],
+    },
+    {
+      heading: "Shame Enters the Story",
+      verseBlock: { reference: "Genesis 3:6-7", chapter: 3, startVerse: 6, endVerse: 7 },
+      teaching: [
+        "Verse 6 slows down and lets us watch desire grow. The tree looks good for food, beautiful to the eyes, and desirable for wisdom. Sin is not presented as ugly in the moment. It looks useful. It looks attractive. It looks like it will give more life than obedience.",
+        "Eve takes and eats, then gives to Adam, who is with her. Adam is not far away from the story. He is present, silent, and responsible. The command had been given to him, and he fails to guard what God entrusted to him.",
+        "Then their eyes are opened, but not in the way they expected. They do not become free. They become ashamed. Genesis 2 ended with nakedness and no shame. Genesis 3 shows nakedness covered with fig leaves.",
+        "That is one of the first pictures of human brokenness: people trying to cover themselves after trust is broken. Sin promises glory, but it leaves people hiding.",
+      ],
+    },
+    {
+      heading: "God Comes Looking",
+      verseBlock: { reference: "Genesis 3:8-13", chapter: 3, startVerse: 8, endVerse: 13 },
+      teaching: [
+        "This scene is heartbreaking. God comes walking in the garden, and the man and woman hide from His presence. The relationship that was open and peaceful is now filled with fear.",
+        "God asks, Where are you? He is not asking because He lacks information. He is drawing Adam into confession. This is mercy before judgment. God gives the man space to come out of hiding and tell the truth.",
+        "Adam says he was afraid because he was naked. Then God asks the question that exposes everything: Who told you that you were naked? Have you eaten from the tree?",
+        "Instead of confessing plainly, Adam blames Eve and indirectly blames God: the woman whom You gave to be with me. Eve blames the serpent. Nobody takes clean responsibility. Sin breaks our relationship with God, with ourselves, and with each other.",
+      ],
+    },
+    {
+      heading: "Judgment and the First Promise",
+      verseBlock: { reference: "Genesis 3:14-19", chapter: 3, startVerse: 14, endVerse: 19 },
+      teaching: [
+        "God now speaks judgment, but the order matters. He addresses the serpent first. The serpent is cursed, and then verse 15 gives the first promise of hope: the offspring of the woman will crush the serpent's head, even though the serpent will bruise His heel.",
+        "Christians have often called this the first gospel promise. Evil will wound, but evil will not win. A child from the woman will one day defeat the serpent.",
+        "Then God speaks to the woman and the man. Childbearing, marriage, work, ground, food, and death are all touched by the fall. The good things from Genesis 1 and 2 are not erased, but they become painful and strained.",
+        "The ground is cursed. Work becomes exhausting. Human life now moves toward dust. God is not pretending sin is small. The world is still God's world, but it is no longer the world as it was meant to be.",
+      ],
+    },
+    {
+      heading: "Mercy Outside Eden",
+      verseBlock: { reference: "Genesis 3:20-24", chapter: 3, startVerse: 20, endVerse: 24 },
+      teaching: [
+        "After judgment, Adam names his wife Eve because she will be the mother of all living. That name carries hope. Life will continue. The story is not over.",
+        "Then God makes garments of skin and clothes them. Adam and Eve made fig leaves, but God gives a better covering. Even outside innocence, God provides.",
+        "The garden is closed, and the way to the tree of life is guarded. That sounds harsh until we understand the mercy inside it. God does not allow humanity to live forever in a broken, fallen state.",
+        "Eden is lost, but hope is not lost. The rest of the Bible will be the long road back to life with God.",
+      ],
+    },
+    {
+      heading: "Sin Moves Into the Family",
+      verseBlock: { reference: "Genesis 4:1-7", chapter: 4, startVerse: 1, endVerse: 7 },
+      teaching: [
+        "Genesis 4 begins with birth. Life continues outside Eden. Adam and Eve have sons: Cain and Abel. Cain works the ground. Abel keeps sheep. Worship enters the story as both brothers bring offerings to God.",
+        "God respects Abel and his offering, but not Cain and his offering. The text does not explain every detail, but it shows Cain's response clearly. He becomes very angry, and his face falls.",
+        "God comes to Cain with a warning. Sin is crouching at the door. That picture is intense. Sin is like something waiting to master him, but Cain is called to rule over it.",
+        "This is mercy again. Before Cain acts, God warns him. Before murder happens, God confronts the anger underneath it. Genesis is teaching us that sin rarely begins with the final act. It begins in the heart, in resentment, jealousy, and refusal to listen.",
+      ],
+    },
+    {
+      heading: "The First Murder",
+      verseBlock: { reference: "Genesis 4:8-16", chapter: 4, startVerse: 8, endVerse: 16 },
+      teaching: [
+        "Cain ignores the warning. He takes Abel into the field and kills his brother. Sin has now moved from distrust to shame, from shame to blame, and from blame to bloodshed.",
+        "God asks Cain, Where is Abel your brother? It echoes the garden question: Where are you? Again, God draws the sinner into truth. Cain answers with a lie and a hard heart: Am I my brother's keeper?",
+        "God says Abel's blood cries from the ground. That is a powerful line. Hidden violence is not hidden from God. The earth itself becomes a witness.",
+        "Cain is judged. The ground will not yield strength to him, and he becomes a fugitive and wanderer. Yet even here, God protects Cain from revenge. Judgment and mercy stand together. Cain leaves the presence of Yahweh, but God still restrains the spread of violence.",
+      ],
+    },
+    {
+      heading: "A Broken World Still Builds",
+      verseBlock: { reference: "Genesis 4:17-24", chapter: 4, startVerse: 17, endVerse: 24 },
+      teaching: [
+        "Cain's line begins to build. There is a city, family growth, livestock, music, tools, bronze, and iron. That matters because fallen humanity is still creative. People still make culture. People still build beautiful and useful things.",
+        "But the line also carries violence. Lamech takes two wives, breaking the one-flesh pattern from Genesis 2. Then he boasts about killing a young man and claims revenge greater than Cain's.",
+        "Genesis is not saying culture is bad. It is showing that human creativity can grow alongside human pride. The same world that produces music and tools also produces arrogance and bloodshed.",
+        "That is the world outside Eden: gifted and broken, productive and violent, capable of beauty and capable of destruction.",
+      ],
+    },
+    {
+      heading: "Hope Keeps Moving",
+      verseBlock: { reference: "Genesis 4:25-26", chapter: 4, startVerse: 25, endVerse: 26 },
+      teaching: [
+        "The chapter does not end with Cain's line. It returns to Adam and Eve, and Eve gives birth to Seth. She says God has appointed another seed instead of Abel.",
+        "That word seed matters because Genesis 3 promised the seed of the woman would one day crush the serpent. Abel is dead. Cain is exiled. But God preserves a line of hope.",
+        "Then Seth has a son named Enosh, and people begin to call on the name of Yahweh. After shame, exile, murder, and violence, worship still rises.",
+        "That is where Day 2 leaves us. The world is broken, but God is still working. Humanity has fallen, but the promise has not failed.",
+      ],
+    },
+  ],
+  closing: [
+    "The Fall of Man shows us why the world feels the way it feels. We were made for life with God, but sin bends trust into suspicion, desire into rebellion, nakedness into shame, relationship into blame, work into frustration, family into jealousy, and anger into violence.",
+    "But this lesson also shows us that God is merciful in the middle of the damage. He asks questions. He warns. He clothes. He protects. He promises. He preserves hope.",
+    "Day 2 is heavy, but it is not hopeless. The garden is closed, but the story keeps moving. The serpent strikes, but the promise has already been spoken. Evil will wound, but God has already promised that evil will not win.",
   ],
 };

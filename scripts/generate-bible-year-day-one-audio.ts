@@ -3,20 +3,27 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { createContext, runInContext } from "vm";
 import { createClient } from "@supabase/supabase-js";
-import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_ONE_AUDIO } from "../lib/bibleYearAudio";
+import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
 import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
-import { GENESIS_DAY_ONE_CREATION_LESSON } from "../lib/bibleYearDailyLessons";
+import { GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import { GENESIS_ONE_TTS_VOICE } from "../lib/genesisOneTtsAudio";
 import { cleanTextForTts } from "../lib/ttsSpeechText";
 
 const SAMPLE_RATE = 24000;
 const MAX_TTS_CHUNK_LENGTH = 3400;
 const MP3_KBPS = 96;
-const OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", "day-001", "day-001-audio.mp3");
 
 for (const path of [".env.local", ".env"]) {
   if (existsSync(path)) config({ path, override: false, quiet: true });
 }
+
+const requestedDay = Number(process.env.BIBLE_YEAR_TTS_DAY || process.argv.find((arg) => arg.startsWith("--day="))?.split("=")[1] || "1");
+const selectedLesson = requestedDay === 2 ? GENESIS_DAY_TWO_FALL_LESSON : GENESIS_DAY_ONE_CREATION_LESSON;
+const selectedAudio = requestedDay === 2 ? BIBLE_YEAR_DAY_TWO_AUDIO : BIBLE_YEAR_DAY_ONE_AUDIO;
+const selectedDayLabel = `BIBLE_YEAR_DAY_${String(selectedLesson.dayNumber).padStart(3, "0")}`;
+const outputDay = String(selectedLesson.dayNumber).padStart(3, "0");
+const OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-audio.mp3`);
+const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.112 : 0.088;
 
 function ensureDir(path: string) {
   mkdirSync(dirname(path), { recursive: true });
@@ -80,7 +87,7 @@ function chordFrequency(root: number, semitone: number) {
   return root * 2 ** (semitone / 12);
 }
 
-function synthesizePeacefulBed(sampleCount: number) {
+function synthesizePeacefulBed(sampleCount: number, ambienceGain = 0.088) {
   const bed = new Float32Array(sampleCount);
   const random = seededNoise();
   const progression = [
@@ -118,7 +125,7 @@ function synthesizePeacefulBed(sampleCount: number) {
     const drop = Math.sin(2 * Math.PI * (1300 + random() * 600) * t) * dropEnergy;
     const rain = rainState * 0.22 + drop * 0.045;
 
-    bed[i] = music * 0.088 + rain * 0.088;
+    bed[i] = music * ambienceGain + rain * ambienceGain;
   }
 
   return bed;
@@ -127,7 +134,7 @@ function synthesizePeacefulBed(sampleCount: number) {
 function mixVoiceWithBed(voice: Float32Array) {
   const tailSamples = SAMPLE_RATE * 2;
   const outputLength = voice.length + tailSamples;
-  const bed = synthesizePeacefulBed(outputLength);
+  const bed = synthesizePeacefulBed(outputLength, AMBIENCE_GAIN);
   const output = new Float32Array(outputLength);
   let peak = 0;
 
@@ -189,7 +196,7 @@ function speakReference(chapter: number, startVerse: number, endVerse: number) {
   return `Genesis ${chapter} verses ${startVerse} through ${endVerse}.`;
 }
 
-function buildDayOneSpeechText() {
+function buildBibleYearSpeechText(lesson: BibleYearDailyLesson) {
   const teachingByReference: Record<string, string[]> = {
     "Genesis 1:1-5": [
       "The story starts with God already there. Not created. Not explained. Not fighting for control. Just God, Creator over everything.",
@@ -242,30 +249,32 @@ function buildDayOneSpeechText() {
   };
 
   const parts: string[] = [
-    "Welcome to Day 1 of the Bible In One Year journey: The Creation of the World.",
-    "Today we are walking through Genesis chapters 1 and 2 as one flowing story.",
-    "The goal is simple. We are going to listen to the Scripture, pause along the way, and let the beginning of the Bible open up slowly and clearly.",
-    "Genesis does not begin with human chaos at the center. It begins with God: already present, already powerful, already speaking.",
-    "So take a breath. Let the story slow down. This is where the Bible begins.",
+    `Welcome to Day ${lesson.dayNumber} of the Bible In One Year journey: ${lesson.title}.`,
+    ...lesson.opening,
   ];
 
-  for (const section of GENESIS_DAY_ONE_CREATION_LESSON.sections) {
+  for (const section of lesson.sections) {
     const block = section.verseBlock;
     const verses = getVerses(block.chapter, block.startVerse, block.endVerse);
     const scripture = verses.map((verse) => verse.text).join(" ");
     parts.push(`${speakReference(block.chapter, block.startVerse, block.endVerse)} ${scripture}`);
-    parts.push(...(teachingByReference[block.reference] || section.teaching));
+    const customTeaching = lesson.dayNumber === 1 ? teachingByReference[block.reference] : null;
+    parts.push(...(customTeaching || section.teaching));
   }
 
-  parts.push(
-    "The Creation of the World shows us the world before the damage.",
-    "God creates, speaks, orders, fills, blesses, rests, forms, breathes, plants, provides, commands, and creates relationship.",
-    "Human life is not accidental. Work is not pointless. Rest is not optional. Relationship is not random.",
-    "Everything begins with God's good design.",
-    "We were made by God, in God's image, for life with God.",
-    "Before we understand the fall, we need to understand creation.",
-    "Before we understand redemption, we need to understand what God made humanity for.",
-  );
+  if (lesson.dayNumber === 1) {
+    parts.push(
+      "The Creation of the World shows us the world before the damage.",
+      "God creates, speaks, orders, fills, blesses, rests, forms, breathes, plants, provides, commands, and creates relationship.",
+      "Human life is not accidental. Work is not pointless. Rest is not optional. Relationship is not random.",
+      "Everything begins with God's good design.",
+      "We were made by God, in God's image, for life with God.",
+      "Before we understand the fall, we need to understand creation.",
+      "Before we understand redemption, we need to understand what God made humanity for.",
+    );
+  } else {
+    parts.push(...lesson.closing);
+  }
 
   return cleanTextForTts(parts.join("\n\n"))
     .replace(/\bVerse\s+\d+\b\.?/gi, " ")
@@ -315,7 +324,7 @@ async function uploadAudio(audio: Buffer) {
   if (!supabase) throw new Error("NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required.");
 
   await supabase.storage.createBucket(BIBLE_YEAR_AUDIO_BUCKET, { public: false }).catch(() => null);
-  const upload = await supabase.storage.from(BIBLE_YEAR_AUDIO_BUCKET).upload(BIBLE_YEAR_DAY_ONE_AUDIO.storagePath, audio, {
+  const upload = await supabase.storage.from(BIBLE_YEAR_AUDIO_BUCKET).upload(selectedAudio.storagePath, audio, {
     contentType: "audio/mpeg",
     upsert: true,
   });
@@ -324,31 +333,31 @@ async function uploadAudio(audio: Buffer) {
 }
 
 async function main() {
-  const text = buildDayOneSpeechText();
+  const text = buildBibleYearSpeechText(selectedLesson);
   const chunks = chunkSpeechInput(text);
   const voiceChunks: Float32Array[] = [];
 
-  console.log(`[BIBLE_YEAR_DAY_001] Text chars: ${text.length}, chunks: ${chunks.length}`);
+  console.log(`[${selectedDayLabel}] Text chars: ${text.length}, chunks: ${chunks.length}`);
   for (const [index, chunk] of chunks.entries()) {
-    console.log(`[BIBLE_YEAR_DAY_001] Generating chunk ${index + 1}/${chunks.length}`);
+    console.log(`[${selectedDayLabel}] Generating chunk ${index + 1}/${chunks.length}`);
     voiceChunks.push(pcmBufferToFloat32(await generateOpenAiSpeechPcm(chunk)));
   }
 
-  console.log("[BIBLE_YEAR_DAY_001] Mixing voice with peaceful ambience");
+  console.log(`[${selectedDayLabel}] Mixing voice with peaceful ambience`);
   const mixed = mixVoiceWithBed(concatSamples(voiceChunks));
 
-  console.log("[BIBLE_YEAR_DAY_001] Encoding MP3");
+  console.log(`[${selectedDayLabel}] Encoding MP3`);
   const mp3 = encodeMp3(mixed);
   ensureDir(OUTPUT_PATH);
   writeFileSync(OUTPUT_PATH, mp3);
 
-  console.log(`[BIBLE_YEAR_DAY_001] Local MP3: ${OUTPUT_PATH}`);
-  console.log(`[BIBLE_YEAR_DAY_001] Uploading to ${BIBLE_YEAR_AUDIO_BUCKET}/${BIBLE_YEAR_DAY_ONE_AUDIO.storagePath}`);
+  console.log(`[${selectedDayLabel}] Local MP3: ${OUTPUT_PATH}`);
+  console.log(`[${selectedDayLabel}] Uploading to ${BIBLE_YEAR_AUDIO_BUCKET}/${selectedAudio.storagePath}`);
   await uploadAudio(mp3);
-  console.log("[BIBLE_YEAR_DAY_001] Done");
+  console.log(`[${selectedDayLabel}] Done`);
 }
 
 main().catch((error) => {
-  console.error("[BIBLE_YEAR_DAY_001] Failed:", error);
+  console.error(`[${selectedDayLabel}] Failed:`, error);
   process.exit(1);
 });

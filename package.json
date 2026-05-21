@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "tts:genesis1": "tsx scripts/generate-genesis-one-tts.ts",
-    "tts:bible-year:day1": "tsx scripts/generate-bible-year-day-one-audio.ts",
+    "tts:bible-year:day1": "tsx scripts/generate-bible-year-day-one-audio.ts --day=1",
+    "tts:bible-year:day2": "tsx scripts/generate-bible-year-day-one-audio.ts --day=2",
     "start": "next start",
     "lint": "eslint"
   },

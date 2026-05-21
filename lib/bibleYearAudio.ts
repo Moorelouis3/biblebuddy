@@ -26,5 +26,13 @@ export const BIBLE_YEAR_DAY_ONE_AUDIO: BibleYearAudioDay = {
   title: "Day 1 - Creation of the World",
   storagePath: getBibleYearAudioStoragePath(1),
   apiSrc: getBibleYearAudioApiSrc(1),
-  estimatedDuration: "15-17 min",
+  estimatedDuration: "13 min",
+};
+
+export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {
+  dayNumber: 2,
+  title: "Day 2 - The Fall of Man",
+  storagePath: getBibleYearAudioStoragePath(2),
+  apiSrc: getBibleYearAudioApiSrc(2),
+  estimatedDuration: "15 min",
 };
