@@ -5021,7 +5021,7 @@ No pretending.
 ✨ not yet covered by shame`,
     };
 
-    if (lesson.dayNumber === 1 || lesson.dayNumber === 2) {
+    if (lesson.dayNumber === 1 || lesson.dayNumber === 2 || lesson.dayNumber === 3) {
       return buildBibleYearSpokenScriptMarkdown(lesson);
     }
 
