@@ -4445,6 +4445,20 @@ export default function DashboardJourneyExperience({
     return verse ? [verse] : [];
   }
 
+  function getDayOneSpokenVerseCallouts(block: BibleYearDailyLesson["sections"][number]["verseBlock"]) {
+    return Array.from(
+      { length: block.endVerse - block.startVerse + 1 },
+      (_, index) => block.startVerse + index,
+    )
+      .map((verseNumber) => {
+        const lines = getDayOneSpokenVerseLines(block.chapter, verseNumber);
+        if (!lines.length) return "";
+        return `> **Genesis ${block.chapter}:${verseNumber}**\n>\n${lines.map((line) => `> ${line}`).join("\n>\n")}`;
+      })
+      .filter(Boolean)
+      .join("\n\n");
+  }
+
   function buildBibleYearSpokenScriptMarkdown(lesson: BibleYearDailyLesson) {
     const dayOneTeachingByReference: Record<string, string[]> = {
       "Genesis 1:1-5": [
@@ -4500,6 +4514,48 @@ export default function DashboardJourneyExperience({
         "And the chapter ends with a picture that almost feels hard to imagine now: naked and not ashamed. No hiding. No fear. No pretending. Fully known, fully safe, fully at peace.",
         "Before shame entered the story, there was peace.",
       ],
+    };
+    const dayOneDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
+      "Genesis 1:1-5": {
+        heading: "🌌 God Speaks Into the Beginning",
+        teachingTitle: "🗣️ God Is Already There",
+        list: ["🌑 darkness is not too much for God", "🕊️ God's Spirit is already near", "💡 light comes from His voice", "⚖️ order begins with God speaking"],
+      },
+      "Genesis 1:6-13": {
+        heading: "🌊 God Forms a World That Can Hold Life",
+        teachingTitle: "🌍 God Makes Room for Life",
+        list: ["🌊 waters are separated", "☁️ sky opens", "🌍 dry ground appears", "🌱 seeds carry future life"],
+      },
+      "Genesis 1:14-25": {
+        heading: "✨ God Fills the Sky, Waters, and Earth",
+        teachingTitle: "🐦 Creation Comes Alive",
+        list: ["☀️ time has rhythm", "🌙 lights serve God's purpose", "🐋 waters move with life", "🐦 birds fill the sky", "🐾 animals move across the land"],
+      },
+      "Genesis 1:26-31": {
+        heading: "👤 Humanity Is Made in God's Image",
+        teachingTitle: "👑 Human Life Has God-Given Worth",
+        list: ["👤 you are not an accident", "💍 male and female carry dignity", "🌍 dominion means responsibility", "✨ creation is very good"],
+      },
+      "Genesis 2:1-3": {
+        heading: "🕊️ God Rests and Makes Time Holy",
+        teachingTitle: "🕯️ Rest Is Built Into Creation",
+        list: ["✅ the work is complete", "📅 time with God is holy", "🕊️ rest is trust", "🙏 rest is worship"],
+      },
+      "Genesis 2:4-9": {
+        heading: "🌿 God Forms Humanity With Breath",
+        teachingTitle: "🌬️ Dust Touched by God",
+        list: ["🌍 humanity is formed from dust", "🌬️ life comes from God's breath", "🌳 Eden is prepared", "🏡 provision comes before the command"],
+      },
+      "Genesis 2:10-17": {
+        heading: "💧 Work, Freedom, and One Boundary",
+        teachingTitle: "🍎 The Question Is Trust",
+        list: ["💧 the garden is supplied", "🛠️ work is good before sin", "🌳 freedom comes before restriction", "⚖️ one boundary teaches trust"],
+      },
+      "Genesis 2:18-25": {
+        heading: "🤝 God Creates Relationship",
+        teachingTitle: "✨ Fully Known and Not Ashamed",
+        list: ["🤝 aloneness is not good", "🐾 animals are not enough", "💍 woman is formed for partnership", "✨ no hiding, no fear, no shame"],
+      },
     };
     const dayOneOpening = [
       "Hey. I am really glad you are here.",
@@ -4570,15 +4626,13 @@ export default function DashboardJourneyExperience({
 
     const sectionBlocks = lesson.sections
       .map((section) => {
-        const display = lesson.dayNumber === 2 ? dayTwoDisplay[section.verseBlock.reference] : null;
+        const display = lesson.dayNumber === 1
+          ? dayOneDisplay[section.verseBlock.reference]
+          : lesson.dayNumber === 2
+            ? dayTwoDisplay[section.verseBlock.reference]
+            : null;
         const scripture = lesson.dayNumber === 1
-          ? Array.from(
-              { length: section.verseBlock.endVerse - section.verseBlock.startVerse + 1 },
-              (_, index) => section.verseBlock.startVerse + index,
-            )
-              .flatMap((verseNumber) => getDayOneSpokenVerseLines(section.verseBlock.chapter, verseNumber))
-              .map((line) => `> ${line}`)
-              .join("\n\n")
+          ? getDayOneSpokenVerseCallouts(section.verseBlock)
           : getBibleYearLessonVerses(section.verseBlock)
               .map((verse) => `> **Genesis ${section.verseBlock.chapter}:${verse.verse}**\n>\n> ${verse.text}`)
               .join("\n\n");
