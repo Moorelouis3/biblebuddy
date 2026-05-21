@@ -5705,9 +5705,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       return (
         <div className="px-4 pb-4">
           <div className="dashboard-inline-task">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Day {day.dayNumber} Trivia</p>
-            <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Were you paying attention?</h2>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            <p className="text-sm font-black leading-6 text-[var(--bb-accent,#2f7fe8)]">
               {answeredTriviaCount === triviaQuestions.length
                 ? `You got ${correctTriviaCount} of ${triviaQuestions.length} right.`
                 : `Question ${currentQuestionIndex + 1} of ${triviaQuestions.length}`}
@@ -5814,16 +5812,8 @@ Before we understand redemption, we need to understand what God made humanity fo
               placeholderText="Start Typing Here"
               submitButtonText="Post Reflection"
               variant="plain"
+              onPosted={() => markBibleYearDayCardComplete(day, "reflection")}
             />
-          </div>
-          <div className="mt-5 flex justify-end">
-            <button
-              type="button"
-              onClick={() => markBibleYearDayCardComplete(day, "reflection")}
-              className="rounded-full bg-[var(--bb-button,#2f7fe8)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
-            >
-              {bibleYearCompletedCardsByDay[day.dayNumber]?.reflection ? "Completed" : "Mark Reflection Complete"}
-            </button>
           </div>
         </div>
       </div>
@@ -6167,7 +6157,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
     return (
       <section className="dashboard-bible-year-study-area grid gap-3 rounded-[28px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_62%,rgba(0,0,0,0.42))] p-3 shadow-[0_18px_46px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
-        <div className="dashboard-current-study-card bb-skin-glow-card relative rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent)] p-3 pr-12 shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)] backdrop-blur-xl">
+        <div className="dashboard-current-study-card bb-skin-glow-card hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent)] p-3 pr-12 shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)] backdrop-blur-xl">
           <button
             type="button"
             onClick={openBibleYearSeriesDashboard}
@@ -6819,6 +6809,21 @@ Before we understand redemption, we need to understand what God made humanity fo
           }
         }
 
+        @keyframes bible-year-current-milestone {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow:
+              0 0 0 0 color-mix(in srgb, var(--bb-accent, #2f7fe8) 34%, transparent),
+              0 10px 24px color-mix(in srgb, var(--bb-accent, #2f7fe8) 18%, transparent);
+          }
+          50% {
+            transform: scale(1.08);
+            box-shadow:
+              0 0 0 10px color-mix(in srgb, var(--bb-accent, #2f7fe8) 0%, transparent),
+              0 16px 34px color-mix(in srgb, var(--bb-accent, #2f7fe8) 32%, transparent);
+          }
+        }
+
         @keyframes start-here-flash {
           0%, 100% { opacity: 1; transform: translateY(0); }
           50% { opacity: 0.45; transform: translateY(-1px); }
@@ -6894,6 +6899,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         .chapter-complete-fill { animation: chapter-complete-fill 900ms ease-out; }
         .next-task-pulse { animation: next-task-pulse 1.9s ease-in-out infinite; }
         .bible-year-task-soft-pulse { animation: bible-year-task-soft-pulse 3.4s ease-in-out infinite; }
+        .bible-year-current-milestone { animation: bible-year-current-milestone 1.55s ease-in-out infinite; }
         .start-here-flash { animation: start-here-flash 1s ease-in-out infinite; }
         .task-estimate-primary { animation: task-estimate-primary 2.4s ease-in-out infinite; }
         .task-estimate-secondary { animation: task-estimate-secondary 2.4s ease-in-out infinite; }
@@ -6915,6 +6921,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         }
         .bb-dashboard-stable-motion .next-task-pulse,
         .bb-dashboard-stable-motion .bible-year-task-soft-pulse,
+        .bb-dashboard-stable-motion .bible-year-current-milestone,
         .bb-dashboard-stable-motion .start-here-flash,
         .bb-dashboard-stable-motion .task-estimate-primary,
         .bb-dashboard-stable-motion .task-estimate-secondary,
@@ -6956,8 +6963,8 @@ Before we understand redemption, we need to understand what God made humanity fo
             {homePanelOverride ? (
               <div className="dashboard-inline-task">{homePanelOverride}</div>
             ) : null}
-            {!homePanelOverride && !deepStudyFocusActive && !shouldShowCompletionPanel && !selectedBibleYearSeriesDay ? renderCurrentStudyHeader() : null}
-            {!homePanelOverride && !deepStudyFocusActive && !shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard && !selectedBibleYearSeriesDay ? (
+            {!homePanelOverride && !deepStudyFocusActive && !bibleYearDashboardActive && !shouldShowCompletionPanel && !selectedBibleYearSeriesDay ? renderCurrentStudyHeader() : null}
+            {!homePanelOverride && !deepStudyFocusActive && !bibleYearDashboardActive && !shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard && !selectedBibleYearSeriesDay ? (
             <div
               className="bb-skin-glow-card rounded-[22px] border border-[#dbe7f4] bg-white p-3 shadow-[0_10px_28px_rgba(38,63,99,0.08)] transition"
             >
@@ -7070,8 +7077,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                       {bibleYearStudyPlanMilestones.map((milestone, index) => {
                         const completed = bibleYearCompletedCardsByDay[milestone.dayNumber] || {};
                         const isComplete = Boolean(completed.reading && completed.trivia && completed.reflection);
-                        const isCurrent = activeBibleYearDashboardDay?.dayNumber === milestone.dayNumber;
-                        const isUnlocked = milestone.dayNumber <= 5;
+                        const currentSeriesDayNumber = getCurrentBibleYearSeriesDayNumber();
+                        const isCurrent = currentSeriesDayNumber === milestone.dayNumber;
+                        const isLocked = !isPaidUser && milestone.dayNumber > currentSeriesDayNumber;
+                        const isUnlocked = !isLocked;
                         const milestoneDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === milestone.dayNumber);
 
                         return (
@@ -7098,14 +7107,30 @@ Before we understand redemption, we need to understand what God made humanity fo
                                 isComplete
                                   ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)]"
                                   : isCurrent
-                                    ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] ring-4 ring-[color-mix(in_srgb,var(--bb-accent)_18%,transparent)]"
+                                    ? "bible-year-current-milestone border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] ring-4 ring-[color-mix(in_srgb,var(--bb-accent)_18%,transparent)]"
                                     : isUnlocked
-                                      ? "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-muted,#6b7280)] hover:border-[var(--bb-accent,#2f7fe8)]"
+                                      ? "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-[var(--bb-accent,#2f7fe8)] hover:border-[var(--bb-accent,#2f7fe8)]"
                                       : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)] opacity-70"
                               }`}
                               aria-label={`${milestone.label} ${isComplete ? "complete" : isCurrent ? "in progress" : isUnlocked ? "unlocked" : "locked"}`}
                             >
-                              {isComplete ? "✓" : isCurrent ? milestone.dayNumber : "•"}
+                              {isComplete ? (
+                                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                  <path d="m5 12 4 4L19 6" />
+                                </svg>
+                              ) : isCurrent ? (
+                                <span className="h-3 w-3 rounded-full bg-current shadow-[0_0_14px_currentColor]" aria-hidden="true" />
+                              ) : isUnlocked ? (
+                                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                  <rect x="5" y="10" width="14" height="10" rx="2" />
+                                  <path d="M8 10V7a4 4 0 0 1 7.6-1.7" />
+                                </svg>
+                              ) : (
+                                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                  <rect x="5" y="10" width="14" height="10" rx="2" />
+                                  <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                                </svg>
+                              )}
                             </button>
                             <p className="mt-2 truncate text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">{milestone.label}</p>
                             <p className={`mt-0.5 text-[10px] font-bold leading-tight ${
