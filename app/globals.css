@@ -150,6 +150,36 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-panel a[class*="bg-
   border-color: color-mix(in srgb, var(--bb-accent) 32%, transparent) !important;
 }
 
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .bb-skin-glow-card,
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-task-shell,
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-inline-task,
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-inline-deep-study,
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-bible-year-study-area > div,
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .completion-panel-enter {
+  background:
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--bb-accent) 14%, transparent), transparent 42%),
+    linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 72%, rgba(0, 0, 0, 0.36)), color-mix(in srgb, var(--bb-surface-soft) 46%, rgba(0, 0, 0, 0.34))) !important;
+  border-color: color-mix(in srgb, var(--bb-accent) 34%, transparent) !important;
+  box-shadow:
+    0 16px 42px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(18px) saturate(1.05);
+  -webkit-backdrop-filter: blur(18px) saturate(1.05);
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .bb-skin-glow-tile {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--bb-card) 76%, rgba(0, 0, 0, 0.28)), color-mix(in srgb, var(--bb-surface-soft) 58%, rgba(0, 0, 0, 0.24))) !important;
+  border-color: color-mix(in srgb, var(--bb-accent) 34%, transparent) !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-task-shell [class*="bg-white"],
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-task-shell [class*="bg-gray-50"],
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-inline-task [class*="bg-white"],
+html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-inline-task [class*="bg-gray-50"] {
+  background: color-mix(in srgb, var(--bb-card) 68%, rgba(0, 0, 0, 0.24)) !important;
+}
+
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-page {
   background: transparent !important;
   background-color: transparent !important;

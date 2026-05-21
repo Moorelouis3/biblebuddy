@@ -32,6 +32,7 @@ for (const path of [".env.local", ".env"]) {
 }
 
 const requestedDay = Number(process.env.BIBLE_YEAR_TTS_DAY || process.argv.find((arg) => arg.startsWith("--day="))?.split("=")[1] || "1");
+const voiceOnlyMode = process.argv.includes("--voice-only") || process.env.BIBLE_YEAR_TTS_VOICE_ONLY === "true";
 const selectedLesson =
   requestedDay === 3 ? GENESIS_DAY_THREE_NOAH_ARK_LESSON : requestedDay === 2 ? GENESIS_DAY_TWO_FALL_LESSON : GENESIS_DAY_ONE_CREATION_LESSON;
 const selectedAudio = requestedDay === 3 ? BIBLE_YEAR_DAY_THREE_AUDIO : requestedDay === 2 ? BIBLE_YEAR_DAY_TWO_AUDIO : BIBLE_YEAR_DAY_ONE_AUDIO;
@@ -39,6 +40,7 @@ const selectedDayLabel = `BIBLE_YEAR_DAY_${String(selectedLesson.dayNumber).padS
 const outputDay = String(selectedLesson.dayNumber).padStart(3, "0");
 const OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-audio.mp3`);
 const VOICE_ONLY_OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-voices-only.mp3`);
+const NARRATOR_ONLY_OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-narrator-only.mp3`);
 const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.129 : selectedLesson.dayNumber === 1 ? 0.112 : 0.088;
 
 function ensureDir(path: string) {
@@ -951,17 +953,20 @@ async function main() {
     voiceChunks.push(pcmBufferToFloat32(await generateOpenAiSpeechPcm(chunk)));
   }
 
-  console.log(`[${selectedDayLabel}] Mixing voice with peaceful ambience`);
-  const mixed = mixVoiceWithBed(concatSamples(voiceChunks));
+  const voiceTrack = concatSamples(voiceChunks);
+  const mixed = voiceOnlyMode ? normalizeVoiceOnlyEpisode(voiceTrack) : mixVoiceWithBed(voiceTrack);
 
-  console.log(`[${selectedDayLabel}] Encoding MP3`);
+  console.log(`[${selectedDayLabel}] Encoding ${voiceOnlyMode ? "narrator-only" : "mixed"} MP3`);
   const mp3 = encodeMp3(mixed);
-  ensureDir(OUTPUT_PATH);
-  writeFileSync(OUTPUT_PATH, mp3);
+  const outputPath = voiceOnlyMode ? NARRATOR_ONLY_OUTPUT_PATH : OUTPUT_PATH;
+  ensureDir(outputPath);
+  writeFileSync(outputPath, mp3);
 
-  console.log(`[${selectedDayLabel}] Local MP3: ${OUTPUT_PATH}`);
-  console.log(`[${selectedDayLabel}] Uploading to ${BIBLE_YEAR_AUDIO_BUCKET}/${selectedAudio.storagePath}`);
-  await uploadAudio(mp3);
+  console.log(`[${selectedDayLabel}] Local MP3: ${outputPath}`);
+  if (!voiceOnlyMode) {
+    console.log(`[${selectedDayLabel}] Uploading to ${BIBLE_YEAR_AUDIO_BUCKET}/${selectedAudio.storagePath}`);
+    await uploadAudio(mp3);
+  }
   console.log(`[${selectedDayLabel}] Done`);
 }
 

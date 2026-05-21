@@ -5043,36 +5043,53 @@ Before we understand the fall, we need to understand creation.
 Before we understand redemption, we need to understand what God made humanity for.`;
   }
 
-  const bibleYearDayOneTrivia = [
+  const bibleYearDayOneTrivia: Array<{
+    id: string;
+    question: string;
+    options: string[];
+    answer: string;
+    verse?: string;
+    explanation?: string;
+  }> = [
     {
       id: "creator",
-      question: "Who is already present at the beginning of the Bible?",
-      options: ["God", "Abraham", "Moses"],
+      question: "Who is already present before anything is created?",
+      options: ["God", "Adam", "Moses", "The angels"],
       answer: "God",
+      verse: "Genesis 1:1",
+      explanation: "Genesis begins with God already there. He is not created or introduced as part of creation. He is the Creator over everything.",
     },
     {
       id: "light",
-      question: "What does God speak into the darkness first?",
-      options: ["Light", "Rain", "Animals"],
+      question: "What does God create first by speaking into the darkness?",
+      options: ["Light", "Animals", "The garden", "Rain"],
       answer: "Light",
+      verse: "Genesis 1:3",
+      explanation: "God says, Let there be light. Creation begins by His voice, showing that darkness is not stronger than God.",
     },
     {
       id: "image",
       question: "What does Genesis say human beings are made in?",
-      options: ["God's image", "The angels' image", "The stars' image"],
+      options: ["God's image", "The angels' image", "The stars' image", "The animals' image"],
       answer: "God's image",
+      verse: "Genesis 1:26-27",
+      explanation: "Human worth begins with God. Male and female are both made in His image, so every person carries God-given dignity.",
     },
     {
       id: "rest",
       question: "What does God do on the seventh day?",
-      options: ["Rests", "Creates the sun", "Names the animals"],
+      options: ["Rests", "Creates the sun", "Names the animals", "Plants Eden"],
       answer: "Rests",
+      verse: "Genesis 2:1-3",
+      explanation: "God rests because creation is complete, not because He is tired. Rest is built into creation from the beginning.",
     },
     {
       id: "alone",
       question: "What is the first thing God says is not good?",
-      options: ["For the man to be alone", "The garden", "The animals"],
+      options: ["For the man to be alone", "The garden", "The animals", "The seventh day"],
       answer: "For the man to be alone",
+      verse: "Genesis 2:18",
+      explanation: "Before sin enters the story, God says aloneness is not good. Humanity is made for relationship, partnership, and covenant love.",
     },
   ];
 
@@ -5267,10 +5284,11 @@ Before we understand redemption, we need to understand what God made humanity fo
       );
       const currentQuestion = triviaQuestions[currentQuestionIndex];
       const selectedAnswer = currentQuestion ? bibleYearTriviaAnswers[currentQuestion.id] : null;
+      const selectedAnswerIsCorrect = Boolean(currentQuestion && selectedAnswer === currentQuestion.answer);
       const isLastTriviaQuestion = currentQuestionIndex >= triviaQuestions.length - 1;
       return (
         <div className="px-4 pb-4">
-          <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
+          <div className="dashboard-inline-task">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Day {day.dayNumber} Trivia</p>
             <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Were you paying attention?</h2>
             <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
@@ -5279,24 +5297,26 @@ Before we understand redemption, we need to understand what God made humanity fo
                 : `Question ${currentQuestionIndex + 1} of ${triviaQuestions.length}`}
             </p>
             {currentQuestion ? (
-              <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-3">
-                <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{currentQuestion.question}</p>
+              <div className="mt-4">
+                <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">{currentQuestion.question}</p>
                 <div className="mt-3 grid gap-2">
                   {currentQuestion.options.map((option) => {
                     const isSelected = selectedAnswer === option;
-                    const isCorrect = option === currentQuestion.answer;
+                    const isCorrect = Boolean(selectedAnswer && option === currentQuestion.answer);
+                    const isWrongSelection = Boolean(selectedAnswer && isSelected && option !== currentQuestion.answer);
                     return (
                       <button
                         key={option}
                         type="button"
                         onClick={() => setBibleYearTriviaAnswers((current) => ({ ...current, [currentQuestion.id]: option }))}
+                        disabled={Boolean(selectedAnswer)}
                         className={`rounded-2xl border px-3 py-3 text-left text-sm font-bold transition ${
-                          isSelected
-                            ? isCorrect
-                              ? "border-emerald-400 bg-emerald-100 text-emerald-950"
-                              : "border-rose-400 bg-rose-100 text-rose-950"
+                          isCorrect
+                            ? "border-emerald-400 bg-emerald-100 text-emerald-950"
+                            : isWrongSelection
+                              ? "border-rose-400 bg-rose-100 text-rose-950"
                             : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-secondary,#4b5563)] hover:border-[var(--bb-accent,#2f7fe8)]"
-                        }`}
+                        } disabled:opacity-100`}
                       >
                         {option}
                       </button>
@@ -5304,9 +5324,22 @@ Before we understand redemption, we need to understand what God made humanity fo
                   })}
                 </div>
                 {selectedAnswer ? (
-                  <p className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                    {selectedAnswer === currentQuestion.answer ? "Correct." : `Not quite. Answer: ${currentQuestion.answer}`}
-                  </p>
+                  <div className="mt-4 border-t border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_74%,transparent)] pt-4">
+                    <p className={`text-sm font-black ${selectedAnswerIsCorrect ? "text-emerald-700" : "text-rose-700"}`}>
+                      {selectedAnswerIsCorrect ? "Correct" : "Not quite"}
+                    </p>
+                    <p className="mt-2 text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                      Answer: {currentQuestion.answer}
+                    </p>
+                    {currentQuestion.verse ? (
+                      <p className="mt-2 text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-accent,#2f7fe8)]">
+                        {currentQuestion.verse}
+                      </p>
+                    ) : null}
+                    <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                      {currentQuestion.explanation || "Review the lesson, then keep moving to the next question."}
+                    </p>
+                  </div>
                 ) : null}
               </div>
             ) : null}
@@ -5698,7 +5731,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     ];
 
     return (
-      <section className="dashboard-bible-year-study-area grid gap-3">
+      <section className="dashboard-bible-year-study-area grid gap-3 rounded-[28px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_62%,rgba(0,0,0,0.42))] p-3 shadow-[0_18px_46px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
         <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_68%,transparent)] p-3 shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)] backdrop-blur-xl">
           <div className="flex items-center gap-3">
             <div className="h-24 w-20 shrink-0 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)] bg-[var(--bb-surface-soft,#f8fbff)] shadow-[0_10px_24px_rgba(0,0,0,0.18)]">

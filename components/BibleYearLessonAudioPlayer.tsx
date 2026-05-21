@@ -31,6 +31,8 @@ export default function BibleYearLessonAudioPlayer({
   const [error, setError] = useState(false);
   const pendingSeekRef = useRef(0);
   const isScrubbingRef = useRef(false);
+  const manualSeekInProgressRef = useRef(false);
+  const resumeAfterSeekRef = useRef(false);
   const [isScrubbing, setIsScrubbing] = useState(false);
   const [scrubTime, setScrubTime] = useState(0);
 
@@ -86,6 +88,7 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   function applySavedPosition(audio: HTMLAudioElement) {
+    if (manualSeekInProgressRef.current) return;
     const savedPosition = pendingSeekRef.current || getSavedPosition();
     const audioDuration = Number.isFinite(audio.duration) ? audio.duration : 0;
     if (savedPosition > 2 && (!audioDuration || savedPosition < audioDuration - 4)) {
@@ -106,13 +109,22 @@ export default function BibleYearLessonAudioPlayer({
       applySavedPosition(audio);
     };
     audio.oncanplay = () => {
-      applySavedPosition(audio);
+      if (!manualSeekInProgressRef.current) applySavedPosition(audio);
       setLoading(false);
     };
     audio.onseeked = () => {
       pendingSeekRef.current = 0;
+      manualSeekInProgressRef.current = false;
       saveProgress(audio);
       setCurrentTime(audio.currentTime || 0);
+      if (resumeAfterSeekRef.current) {
+        resumeAfterSeekRef.current = false;
+        audio.play().catch(() => {
+          setError(true);
+          setLoading(false);
+          setPlaying(false);
+        });
+      }
     };
     audio.ontimeupdate = () => {
       if (!isScrubbingRef.current) setCurrentTime(audio.currentTime || 0);
@@ -128,7 +140,7 @@ export default function BibleYearLessonAudioPlayer({
     };
     audio.onwaiting = () => {
       saveProgress(audio);
-      setLoading(true);
+      if (!manualSeekInProgressRef.current) setLoading(true);
     };
     audio.onplaying = () => {
       setLoading(false);
@@ -156,7 +168,7 @@ export default function BibleYearLessonAudioPlayer({
   function getOrCreateAudio() {
     if (audioRef.current) return audioRef.current;
     const audio = new Audio(audioSrc);
-    audio.preload = "metadata";
+    audio.preload = "auto";
     audio.playbackRate = playbackRate;
     audioRef.current = audio;
     wireAudioEvents(audio);
@@ -201,9 +213,13 @@ export default function BibleYearLessonAudioPlayer({
     const audio = getOrCreateAudio();
     const cap = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : effectiveDuration || seconds;
     const nextTime = Math.max(0, Math.min(seconds, cap));
+    const shouldResume = playing && !audio.paused;
+    manualSeekInProgressRef.current = true;
+    resumeAfterSeekRef.current = shouldResume;
     pendingSeekRef.current = nextTime;
     setCurrentTime(nextTime);
     setScrubTime(nextTime);
+    if (shouldResume) audio.pause();
     try {
       if ("fastSeek" in audio && typeof audio.fastSeek === "function") {
         audio.fastSeek(nextTime);
@@ -212,8 +228,22 @@ export default function BibleYearLessonAudioPlayer({
       }
     } catch {
       pendingSeekRef.current = nextTime;
+      manualSeekInProgressRef.current = false;
+      resumeAfterSeekRef.current = false;
     }
-    saveProgress(audio);
+    window.setTimeout(() => {
+      if (!manualSeekInProgressRef.current) return;
+      manualSeekInProgressRef.current = false;
+      saveProgress(audio);
+      setCurrentTime(audio.currentTime || nextTime);
+      if (resumeAfterSeekRef.current) {
+        resumeAfterSeekRef.current = false;
+        audio.play().catch(() => {
+          setError(true);
+          setPlaying(false);
+        });
+      }
+    }, 900);
   }
 
   function seekBy(seconds: number) {
@@ -292,6 +322,8 @@ export default function BibleYearLessonAudioPlayer({
                   setScrubTime(value);
                 }}
                 onPointerUp={(event) => finishScrubbing(Number((event.currentTarget as HTMLInputElement).value))}
+                onPointerCancel={(event) => finishScrubbing(Number((event.currentTarget as HTMLInputElement).value))}
+                onTouchEnd={(event) => finishScrubbing(Number((event.currentTarget as HTMLInputElement).value))}
                 onKeyUp={(event) => finishScrubbing(Number((event.currentTarget as HTMLInputElement).value))}
                 onBlur={(event) => {
                   if (isScrubbing) finishScrubbing(Number(event.currentTarget.value));

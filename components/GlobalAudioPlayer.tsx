@@ -51,6 +51,8 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
   const lastProgressNotifyMsRef = useRef(0);
   const progressKeyRef = useRef<string | null>(null);
   const savedPositionAppliedRef = useRef(false);
+  const pendingResumePositionRef = useRef<number | null>(null);
+  const playRequestIdRef = useRef(0);
   const [currentSrc, setCurrentSrc] = useState<string | null>(null);
   const [currentLabel, setCurrentLabel] = useState<string | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
@@ -110,23 +112,58 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     const savedPosition = readProgress(key);
     const audioDuration = Number.isFinite(audio.duration) ? audio.duration : 0;
     if (savedPosition > 2 && (!audioDuration || savedPosition < audioDuration - 4)) {
+      if (Math.abs((audio.currentTime || 0) - savedPosition) < 1) {
+        savedPositionAppliedRef.current = true;
+        pendingResumePositionRef.current = null;
+        setCurrentTime(savedPosition);
+        return;
+      }
       try {
         audio.currentTime = savedPosition;
         savedPositionAppliedRef.current = true;
+        pendingResumePositionRef.current = null;
         setCurrentTime(savedPosition);
       } catch {
+        pendingResumePositionRef.current = savedPosition;
         // Some mobile browsers only allow seeking after canplay; that event retries this.
       }
+      return;
+    }
+    savedPositionAppliedRef.current = true;
+    pendingResumePositionRef.current = null;
+  }
+
+  function applyPendingResumePosition(audio: HTMLAudioElement) {
+    const position = pendingResumePositionRef.current;
+    if (!position || position <= 2) return;
+    const audioDuration = Number.isFinite(audio.duration) ? audio.duration : 0;
+    if (audioDuration && position >= audioDuration - 4) {
+      pendingResumePositionRef.current = null;
+      return;
+    }
+    if (Math.abs((audio.currentTime || 0) - position) < 1) {
+      pendingResumePositionRef.current = null;
+      savedPositionAppliedRef.current = true;
+      return;
+    }
+    try {
+      audio.currentTime = position;
+      pendingResumePositionRef.current = null;
+      savedPositionAppliedRef.current = true;
+      setCurrentTime(position);
+    } catch {
+      // Keep it queued for the next playable event.
     }
   }
 
   async function playTrack(input: PlayTrackInput) {
     if (typeof window === "undefined") return;
 
+    const requestId = playRequestIdRef.current + 1;
+    playRequestIdRef.current = requestId;
     const key = getStorageKey(input.src, input.progressKey);
     progressCallbackRef.current = input.onProgress || null;
     progressKeyRef.current = key;
-    savedPositionAppliedRef.current = false;
     setError(false);
 
     if (audioRef.current && currentSrc === input.src) {
@@ -134,7 +171,6 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
         pause();
         return;
       }
-      applySavedProgress(audioRef.current, key);
       await resume();
       return;
     }
@@ -150,6 +186,9 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     setCurrentLabel(input.label);
     setCurrentTime(0);
     setDuration(0);
+    savedPositionAppliedRef.current = false;
+    pendingResumePositionRef.current = readProgress(key) || null;
+    lastSavedAudioSecondRef.current = -1;
 
     const audio = new Audio(input.src);
     audio.preload = "auto";
@@ -162,8 +201,12 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     };
 
     audio.oncanplay = () => {
-      applySavedProgress(audio, key);
+      applyPendingResumePosition(audio);
       notify(audio, true, { force: true });
+    };
+
+    audio.oncanplaythrough = () => {
+      applyPendingResumePosition(audio);
     };
 
     audio.ontimeupdate = () => {
@@ -190,6 +233,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     };
 
     audio.onerror = () => {
+      if (playRequestIdRef.current !== requestId) return;
       setError(true);
       setLoading(false);
       setPlaying(false);
@@ -200,10 +244,12 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     try {
       applySavedProgress(audio, key);
       await audio.play();
+      if (playRequestIdRef.current !== requestId || audioRef.current !== audio) return;
       setLoading(false);
       setPlaying(true);
       setPaused(false);
     } catch {
+      if (playRequestIdRef.current !== requestId || audioRef.current !== audio) return;
       setError(true);
       setLoading(false);
       setPlaying(false);

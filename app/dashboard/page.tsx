@@ -2462,50 +2462,52 @@ export default function DashboardPage() {
         onClick?: () => void;
       }>
     ) => (
-      <div className="mx-auto grid max-w-xl grid-cols-4 gap-1.5 sm:gap-2">
-        {cards.map((card) => {
-          const CardTag = card.onClick ? "button" : "div";
-          return (
-            <CardTag
-              key={card.key ?? card.label}
-              type={card.onClick ? "button" : undefined}
-              onClick={card.onClick}
-              className={`bb-skin-glow-tile flex min-h-[68px] flex-col rounded-[16px] border px-1.5 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition sm:min-h-[82px] sm:px-2.5 sm:py-2.5 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-md" : ""} ${card.tones}`}
-            >
-              <p className="text-base font-black leading-none text-gray-950 sm:text-xl">
-                <span className="mr-1 align-middle text-sm" aria-hidden="true">{card.icon}</span>
-                <span>{card.value}</span>
-              </p>
-              <p className="mt-1.5 text-[9px] font-black leading-tight text-gray-800 sm:text-[11px]">
-                {card.label}
-              </p>
-              {card.sublabel ? (
-                <p className="mt-0.5 text-[8px] font-semibold leading-tight text-gray-500 sm:text-[10px]">
-                  {card.sublabel}
+      <div className="mx-auto max-w-xl rounded-[22px] border border-[color-mix(in_srgb,var(--bb-card-border)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_72%,rgba(0,0,0,0.36))] p-2 shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
+        <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
+          {cards.map((card) => {
+            const CardTag = card.onClick ? "button" : "div";
+            return (
+              <CardTag
+                key={card.key ?? card.label}
+                type={card.onClick ? "button" : undefined}
+                onClick={card.onClick}
+                className={`bb-skin-glow-tile flex min-h-[68px] flex-col rounded-[16px] border px-1.5 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition sm:min-h-[82px] sm:px-2.5 sm:py-2.5 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-md" : ""} ${card.tones}`}
+              >
+                <p className="text-base font-black leading-none text-gray-950 sm:text-xl">
+                  <span className="mr-1 align-middle text-sm" aria-hidden="true">{card.icon}</span>
+                  <span>{card.value}</span>
                 </p>
-              ) : null}
-            </CardTag>
-          );
-        })}
-        {cards.some((card) => card.key === "level") ? (
-          <button
-            type="button"
-            onClick={openLevelInfoModal}
-            className="bb-skin-glow-tile col-span-4 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-3 py-1.5 text-left transition hover:bg-[var(--bb-card)] hover:shadow-sm"
-          >
-            <div className="flex items-center justify-between gap-3">
-              <p className="text-[11px] font-black text-[var(--bb-accent)]">
-                {levelInfo?.pointsToNextLevel ?? 0} XP to next level
-              </p>
-              <p className="text-[11px] font-black text-[var(--bb-text-secondary)]">
-                {Math.round(nextLevelPercent)}%
-              </p>
-            </div>
-            <div className="mt-2 h-2 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
-              <div className="h-full rounded-full bg-[var(--bb-progress-fill)] transition-all duration-500" style={{ width: `${nextLevelPercent}%` }} />
-            </div>
-          </button>
-        ) : null}
+                <p className="mt-1.5 text-[9px] font-black leading-tight text-gray-800 sm:text-[11px]">
+                  {card.label}
+                </p>
+                {card.sublabel ? (
+                  <p className="mt-0.5 text-[8px] font-semibold leading-tight text-gray-500 sm:text-[10px]">
+                    {card.sublabel}
+                  </p>
+                ) : null}
+              </CardTag>
+            );
+          })}
+          {cards.some((card) => card.key === "level") ? (
+            <button
+              type="button"
+              onClick={openLevelInfoModal}
+              className="bb-skin-glow-tile col-span-4 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-3 py-1.5 text-left transition hover:bg-[var(--bb-card)] hover:shadow-sm"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-[11px] font-black text-[var(--bb-accent)]">
+                  {levelInfo?.pointsToNextLevel ?? 0} XP to next level
+                </p>
+                <p className="text-[11px] font-black text-[var(--bb-text-secondary)]">
+                  {Math.round(nextLevelPercent)}%
+                </p>
+              </div>
+              <div className="mt-2 h-2 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
+                <div className="h-full rounded-full bg-[var(--bb-progress-fill)] transition-all duration-500" style={{ width: `${nextLevelPercent}%` }} />
+              </div>
+            </button>
+          ) : null}
+        </div>
       </div>
     );
 
