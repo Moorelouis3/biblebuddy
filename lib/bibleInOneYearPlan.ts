@@ -110,6 +110,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 11-13",
     estimatedTime: "about 16 min",
     summary: "Begin Abraham's story with Babel, Abram's family line, God's call, Egypt, and Abram learning not to grasp.",
+    coverImage: "/obedienceofabrahamnewcover.png",
     readings: buildGenesisReadings("The Obedience of Abraham", 11, 13, 1),
   },
   {

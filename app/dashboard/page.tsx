@@ -2728,7 +2728,7 @@ export default function DashboardPage() {
               setShowStreakMotivationTaskPrompt(false);
               setShowStreakMotivationModal(true);
             }}
-            className="bb-dashboard-streak-card bb-skin-glow-card mx-auto block w-full max-w-xl rounded-[22px] border border-[#e6edf7] bg-white p-3 text-left shadow-[0_10px_26px_rgba(38,63,99,0.08)] transition hover:shadow-md sm:p-3.5"
+            className="bb-dashboard-streak-card bb-skin-glow-card mx-auto block w-full max-w-xl rounded-[22px] border border-[var(--bb-card-border)] bg-[color-mix(in_srgb,var(--bb-card)_86%,transparent)] p-3 text-left shadow-[0_10px_26px_rgba(38,63,99,0.08)] transition hover:shadow-md sm:p-3.5"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="w-full">
@@ -2742,11 +2742,11 @@ export default function DashboardPage() {
                       title={getDashboardStreakHeadline(streakValue)}
                     />
                   </span>
-                  <p className="text-xl font-black leading-none text-gray-950 sm:text-2xl">
+                  <p className="text-xl font-black leading-none text-[var(--bb-text-primary)] sm:text-2xl">
                     {getDashboardStreakHeadline(streakValue)}
                   </p>
                 </div>
-                <p className="mt-1 text-xs font-semibold leading-5 text-gray-500 sm:text-sm">
+                <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary)] sm:text-sm">
                   {getDashboardStreakEncouragement(streakValue)}
                 </p>
               </div>
@@ -2759,20 +2759,22 @@ export default function DashboardPage() {
                 return (
                 <div
                   key={day.date}
+                  data-completed={isCompleted ? "true" : "false"}
+                  data-today={day.isToday ? "true" : "false"}
                   className={`bb-dashboard-streak-day rounded-2xl px-1 py-1.5 text-center transition sm:py-2 ${
-                    isCompleted ? "bg-[#eef6ff]" : "bg-[#f8fafc]"
-                  } ${day.isToday ? "ring-2 ring-[#4B9CD3]/30" : ""}`}
+                    isCompleted ? "bg-[var(--bb-accent-soft)]" : "bg-[color-mix(in_srgb,var(--bb-surface-soft)_86%,transparent)]"
+                  } ${day.isToday ? "ring-2 ring-[color-mix(in_srgb,var(--bb-accent)_34%,transparent)]" : ""}`}
                 >
-                  <p className={`bb-dashboard-streak-day-label mb-1.5 text-[10px] font-black sm:text-[11px] ${isCompleted ? "text-[#2f7fe8]" : "text-gray-500"}`}>
+                  <p className={`bb-dashboard-streak-day-label mb-1.5 text-[10px] font-black sm:text-[11px] ${isCompleted ? "text-[var(--bb-accent)]" : "text-[var(--bb-text-muted)]"}`}>
                     {getDashboardDayAbbr(day.date)}
                   </p>
                   <span
                     className={`bb-dashboard-streak-check mx-auto grid h-8 w-8 place-items-center rounded-full border text-sm font-black transition sm:h-9 sm:w-9 ${
                       isCompleted
                         ? day.isToday
-                          ? "animate-pulse border-[#2f7fe8] bg-[#2f7fe8] text-white shadow-[0_0_0_6px_rgba(47,127,232,0.15)]"
-                          : "border-[#2f7fe8] bg-[#2f7fe8] text-white shadow-sm"
-                        : "border-[#d9e3ef] bg-white text-transparent"
+                          ? "animate-pulse border-[var(--bb-accent)] bg-[var(--bb-accent)] text-[var(--bb-button-text)] shadow-sm ring-4 ring-[color-mix(in_srgb,var(--bb-accent)_18%,transparent)]"
+                          : "border-[var(--bb-accent)] bg-[var(--bb-accent)] text-[var(--bb-button-text)] shadow-sm"
+                        : "border-[var(--bb-card-border)] bg-[var(--bb-card)] text-transparent"
                     }`}
                     aria-label={`${day.date} ${isCompleted ? "active" : "inactive"}`}
                   >
@@ -7512,10 +7514,27 @@ export default function DashboardPage() {
           border: 1px solid color-mix(in srgb, var(--bb-accent) 24%, transparent);
           background: color-mix(in srgb, var(--bb-surface-soft) 72%, transparent) !important;
         }
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card .bb-dashboard-streak-day[data-completed="true"] {
+          background: color-mix(in srgb, var(--bb-accent-soft) 82%, var(--bb-card)) !important;
+        }
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card .bb-dashboard-streak-day[data-today="true"] {
+          box-shadow:
+            0 0 0 2px color-mix(in srgb, var(--bb-accent) 34%, transparent),
+            inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+        }
         html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card .bb-dashboard-streak-day-label {
+          color: var(--bb-text-muted) !important;
+        }
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card .bb-dashboard-streak-day[data-completed="true"] .bb-dashboard-streak-day-label {
           color: color-mix(in srgb, var(--bb-accent) 82%, #ffffff) !important;
         }
         html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card .bb-dashboard-streak-check {
+          border-color: var(--bb-card-border) !important;
+          background: color-mix(in srgb, var(--bb-card) 88%, transparent) !important;
+          color: transparent !important;
+          box-shadow: none !important;
+        }
+        html[data-bb-skin]:not([data-bb-skin="none"]) .bb-dashboard-streak-card .bb-dashboard-streak-day[data-completed="true"] .bb-dashboard-streak-check {
           border-color: color-mix(in srgb, var(--bb-accent) 72%, transparent) !important;
           background: color-mix(in srgb, var(--bb-accent) 72%, #07100f) !important;
           color: var(--bb-button-text) !important;
@@ -9351,6 +9370,7 @@ export default function DashboardPage() {
           onDashboardPageChange={preserveActivePremiumSkin}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
+            refreshLevelData();
             void loadDailyTaskSummary({ force: true, silent: true });
           }}
         />
@@ -9407,6 +9427,7 @@ export default function DashboardPage() {
           onDashboardPageChange={preserveActivePremiumSkin}
           isOwnerDashboard={isOwnerDashboard}
           onDevotionalChanged={() => {
+            refreshLevelData();
             void loadDailyTaskSummary({ force: true, silent: true });
           }}
         />
