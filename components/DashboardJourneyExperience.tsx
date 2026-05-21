@@ -43,8 +43,8 @@ import {
   GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
-import { GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
-import { BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
+import { GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
+import { BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
@@ -52,6 +52,14 @@ import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from ".
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
 type BibleYearDayCardKey = "reading" | "trivia" | "reflection";
+type BibleYearCompletedCardsByDay = Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>;
+type BibleYearProgressRow = {
+  day_number: number;
+  reading_completed: boolean | null;
+  trivia_completed: boolean | null;
+  reflection_completed: boolean | null;
+};
+const BIBLE_YEAR_DAY_CARD_KEYS: BibleYearDayCardKey[] = ["reading", "trivia", "reflection"];
 const STUDY_BOOK_BY_TITLE: Record<string, string> = {
   "The Creation of the World": "Genesis",
   "The Fall of Man": "Genesis",
@@ -1674,7 +1682,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearSeriesDetailDay, setBibleYearSeriesDetailDay] = useState<GenesisBibleYearDay | null>(null);
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
   const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<BibleYearDayCardKey | null>(null);
-  const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>>({});
+  const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<BibleYearCompletedCardsByDay>({});
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
   const [bibleYearSelectedTerm, setBibleYearSelectedTerm] = useState<BibleDatabaseTerm | null>(null);
@@ -1997,12 +2005,12 @@ export default function DashboardJourneyExperience({
   const activeBibleYearDashboardDay = bibleYearDashboardActive
     ? selectedBibleYearSeriesDay ||
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-        .filter((day) => day.dayNumber <= 3)
+        .filter((day) => day.dayNumber <= 4)
         .find((day) => {
           const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
           return !(completed.reading && completed.trivia && completed.reflection);
         }) ||
-      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 3) ||
+      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 4) ||
       null
     : null;
   const bibleYearDashboardTasks = activeBibleYearDashboardDay
@@ -2893,6 +2901,47 @@ export default function DashboardJourneyExperience({
     };
   }, [embeddedBibleSelectedBook, userId]);
 
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadBibleYearProgress() {
+      if (!userId) {
+        setBibleYearCompletedCardsByDay({});
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase
+          .from("bible_year_day_progress")
+          .select("day_number, reading_completed, trivia_completed, reflection_completed")
+          .eq("user_id", userId)
+          .order("day_number", { ascending: true });
+
+        if (error) throw error;
+
+        const next: BibleYearCompletedCardsByDay = {};
+        ((data || []) as BibleYearProgressRow[]).forEach((row) => {
+          next[row.day_number] = {
+            reading: row.reading_completed === true,
+            trivia: row.trivia_completed === true,
+            reflection: row.reflection_completed === true,
+          };
+        });
+
+        if (!cancelled) setBibleYearCompletedCardsByDay(next);
+      } catch (error) {
+        console.error("[BIBLE_YEAR_PROGRESS] Could not load Bible in One Year progress:", error);
+        if (!cancelled) setBibleYearCompletedCardsByDay({});
+      }
+    }
+
+    void loadBibleYearProgress();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
   function snapToPage(index: number) {
     const nextIndex = Math.max(0, Math.min(index, dashboardPageKeys.length - 1));
     const nextPageKey = dashboardPageKeys[nextIndex];
@@ -2935,7 +2984,7 @@ export default function DashboardJourneyExperience({
   }
 
   function openBibleYearDashboard() {
-    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 3);
+    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 4);
     const nextBibleYearDay =
       builtBibleYearDays.find((day) => {
         const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
@@ -2973,10 +3022,7 @@ export default function DashboardJourneyExperience({
     setSelectedBibleYearSeriesDay(day);
     setActiveBibleYearDayCard(null);
     if (options.markDone) {
-      setBibleYearCompletedCardsByDay((current) => ({
-        ...current,
-        [day.dayNumber]: { reading: true, trivia: true, reflection: true },
-      }));
+      void markBibleYearDayCardsComplete(day, BIBLE_YEAR_DAY_CARD_KEYS);
     }
     setFreeStudyModeActive(false);
     setEmbeddedBibleBookSearchOpen(false);
@@ -3038,13 +3084,13 @@ export default function DashboardJourneyExperience({
     if (view === "bible-year") {
       setBibleYearDashboardActive(true);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 3);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 4);
       if (day) setSelectedBibleYearSeriesDay(day);
       setActivePage(0);
     } else if (view === "bible-year-series") {
       setBibleYearSeriesActive(true);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 3);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 4);
       if (day) setBibleYearSeriesDetailDay(day);
       setActivePage(0);
     }
@@ -4311,6 +4357,7 @@ export default function DashboardJourneyExperience({
     if (dayNumber === 1) return GENESIS_DAY_ONE_CREATION_LESSON;
     if (dayNumber === 2) return GENESIS_DAY_TWO_FALL_LESSON;
     if (dayNumber === 3) return GENESIS_DAY_THREE_NOAH_ARK_LESSON;
+    if (dayNumber === 4) return GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON;
     return null;
   }
 
@@ -4318,6 +4365,7 @@ export default function DashboardJourneyExperience({
     if (dayNumber === 1) return BIBLE_YEAR_DAY_ONE_AUDIO;
     if (dayNumber === 2) return BIBLE_YEAR_DAY_TWO_AUDIO;
     if (dayNumber === 3) return BIBLE_YEAR_DAY_THREE_AUDIO;
+    if (dayNumber === 4) return BIBLE_YEAR_DAY_FOUR_AUDIO;
     return null;
   }
 
@@ -4703,6 +4751,59 @@ export default function DashboardJourneyExperience({
       },
     };
 
+    const dayFourDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
+      "Genesis 8:1-5": {
+        heading: "🌬️ God Remembers Noah",
+        teachingTitle: "🌈 Mercy Begins to Move",
+        list: ["🕊️ God remembers Noah", "🌬️ wind passes over the earth", "🌊 waters begin to go down", "⛰️ the ark rests", "🌱 hope returns in stages"],
+      },
+      "Genesis 8:6-12": {
+        heading: "🕊️ The Raven, the Dove, and the Olive Leaf",
+        teachingTitle: "🌿 The First Sign of Life",
+        list: ["🪟 Noah opens the window", "🐦 the raven goes out", "🕊️ the dove searches for rest", "🌿 the olive leaf appears", "⏳ Noah keeps waiting"],
+      },
+      "Genesis 8:13-19": {
+        heading: "🚪 God Says Go Forth",
+        teachingTitle: "🚶 Rescue Becomes Responsibility",
+        list: ["🌍 the ground is dry", "🗣️ God speaks again", "🚪 Noah leaves the ark", "🐾 animals go out by kind", "🌱 life begins again"],
+      },
+      "Genesis 8:20-22": {
+        heading: "🔥 Worship After Rescue",
+        teachingTitle: "🙏 The First Act Is Worship",
+        list: ["🔥 Noah builds an altar", "🐑 clean animals are offered", "🙏 rescue becomes worship", "🌾 seedtime and harvest continue", "☀️ day and night shall not cease"],
+      },
+      "Genesis 9:1-7": {
+        heading: "🩸 Blessing, Blood, and Human Dignity",
+        teachingTitle: "👤 The Image of God Still Matters",
+        list: ["🙌 God blesses Noah", "🌍 fill the earth", "🩸 blood represents life", "👤 people bear God's image", "⚖️ violence is not normal"],
+      },
+      "Genesis 9:8-17": {
+        heading: "🌈 The Rainbow Covenant",
+        teachingTitle: "☁️ Mercy in the Clouds",
+        list: ["🤝 God establishes covenant", "🐾 every living creature is included", "🌈 the bow is the sign", "☁️ clouds carry promise", "🕊️ God remembers mercy"],
+      },
+      "Genesis 9:18-29": {
+        heading: "🍇 Noah's Failure After the Flood",
+        teachingTitle: "🧥 Rescued People Still Need Grace",
+        list: ["🍇 Noah plants a vineyard", "😔 drunkenness brings shame", "👀 Ham exposes", "🧥 Shem and Japheth cover", "⚰️ Noah still dies"],
+      },
+      "Genesis 10:1-5": {
+        heading: "🗺️ The Nations After the Flood",
+        teachingTitle: "🌍 Families Become Peoples",
+        list: ["👨‍👦 Noah's sons have sons", "🗺️ lands are named", "🗣️ tongues are named", "🏘️ families spread", "🌍 nations begin to form"],
+      },
+      "Genesis 10:6-20": {
+        heading: "🏙️ Ham, Nimrod, and Early Kingdoms",
+        teachingTitle: "👑 Power Rises Again",
+        list: ["🏛️ Egypt and Canaan appear", "👑 Nimrod becomes mighty", "🏙️ Babel is named", "🏰 kingdoms begin", "⚠️ pride is already near"],
+      },
+      "Genesis 10:21-32": {
+        heading: "🌱 Shem and the Line Toward Promise",
+        teachingTitle: "🧵 The Story Moves Toward Abram",
+        list: ["🌱 Shem's line continues", "🧵 Eber is highlighted", "🌍 the earth is divided", "🗣️ nations spread", "✨ promise is getting closer"],
+      },
+    };
+
     const sectionBlocks = lesson.sections
       .map((section) => {
         const display = lesson.dayNumber === 1
@@ -4711,7 +4812,9 @@ export default function DashboardJourneyExperience({
             ? dayTwoDisplay[section.verseBlock.reference]
             : lesson.dayNumber === 3
               ? dayThreeDisplay[section.verseBlock.reference]
-              : null;
+              : lesson.dayNumber === 4
+                ? dayFourDisplay[section.verseBlock.reference]
+                : null;
         const scripture = lesson.dayNumber === 1
           ? getDayOneSpokenVerseCallouts(section.verseBlock)
           : getBibleYearLessonVerses(section.verseBlock)
@@ -5044,7 +5147,7 @@ No pretending.
 ✨ not yet covered by shame`,
     };
 
-    if (lesson.dayNumber === 1 || lesson.dayNumber === 2 || lesson.dayNumber === 3) {
+    if (lesson.dayNumber === 1 || lesson.dayNumber === 2 || lesson.dayNumber === 3 || lesson.dayNumber === 4) {
       return buildBibleYearSpokenScriptMarkdown(lesson);
     }
 
@@ -5295,15 +5398,41 @@ Before we understand redemption, we need to understand what God made humanity fo
     return { label: "Finish", markDone: false };
   }
 
-  function markBibleYearDayCardComplete(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
+  async function persistBibleYearDayProgress(dayNumber: number, cards: BibleYearDayCardKey[]) {
+    if (!userId) return;
+
+    const payload: Record<string, unknown> = {
+      user_id: userId,
+      day_number: dayNumber,
+    };
+
+    cards.forEach((card) => {
+      payload[`${card}_completed`] = true;
+    });
+
+    const { error } = await supabase
+      .from("bible_year_day_progress")
+      .upsert(payload, { onConflict: "user_id,day_number" });
+
+    if (error) throw error;
+  }
+
+  function markBibleYearDayCardsComplete(day: GenesisBibleYearDay, cards: BibleYearDayCardKey[]) {
     setBibleYearCompletedCardsByDay((current) => ({
       ...current,
       [day.dayNumber]: {
         ...(current[day.dayNumber] || {}),
-        [card]: true,
+        ...Object.fromEntries(cards.map((card) => [card, true])),
       },
     }));
     setActiveBibleYearDayCard(null);
+    void persistBibleYearDayProgress(day.dayNumber, cards).catch((error) => {
+      console.error("[BIBLE_YEAR_PROGRESS] Could not save Bible in One Year progress:", error);
+    });
+  }
+
+  function markBibleYearDayCardComplete(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
+    markBibleYearDayCardsComplete(day, [card]);
   }
 
   function buildBibleYearDayTasks(day: GenesisBibleYearDay | null): TaskState[] {
@@ -5967,7 +6096,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   const renderBibleYearSeriesPage = () => {
-    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 3);
+    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 4);
     const visibleChapterCount = visibleSeriesDays.reduce((total, day) => total + day.readings.length, 0);
     const matchedSeriesDay = visibleSeriesDays.find((day) =>
       day.readings.some((reading) =>

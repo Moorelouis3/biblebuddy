@@ -534,3 +534,119 @@ export const GENESIS_DAY_THREE_NOAH_ARK_LESSON: BibleYearDailyLesson = {
     "God sees corruption clearly. God judges evil seriously. God preserves life mercifully. Noah teaches us that obedience before proof is still faith.",
   ],
 };
+
+export const GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON: BibleYearDailyLesson = {
+  dayNumber: 4,
+  title: "Life After the Flood",
+  reference: "Genesis 8-10",
+  estimatedListenTime: "about 16 min",
+  opening: [
+    "Day 4 begins with one of the most comforting lines in the flood story: God remembered Noah.",
+    "Genesis 8 through 10 moves from water to dry ground, from waiting to worship, from covenant to rainbow, and from one rescued family to the nations.",
+  ],
+  sections: [
+    {
+      heading: "God Remembered Noah",
+      verseBlock: { reference: "Genesis 8:1-5", chapter: 8, startVerse: 1, endVerse: 5 },
+      teaching: [
+        "God remembering Noah does not mean God had forgotten him. It means God turns His faithful attention toward Noah and acts.",
+        "The waters begin to go down because the story is moving from judgment toward restoration.",
+        "Hope returns in stages: the waters lower, the ark rests, the mountain tops appear, and Noah still waits.",
+      ],
+    },
+    {
+      heading: "The Raven, the Dove, and the Olive Leaf",
+      verseBlock: { reference: "Genesis 8:6-12", chapter: 8, startVerse: 6, endVerse: 12 },
+      teaching: [
+        "Noah opens the window and begins looking for signs of dry ground.",
+        "The olive leaf is a quiet sign that life is returning.",
+        "Noah does not rush. Faith is also staying until God's timing is clear.",
+      ],
+    },
+    {
+      heading: "God Says Go Forth",
+      verseBlock: { reference: "Genesis 8:13-19", chapter: 8, startVerse: 13, endVerse: 19 },
+      teaching: [
+        "Noah sees that the ground is dry, but he still waits for God's word.",
+        "That is the pattern of Noah's life: God speaks, Noah obeys.",
+        "The animals leave after their kinds, echoing Genesis 1.",
+        "Rescue leads into responsibility. Noah is preserved so life can begin again.",
+      ],
+    },
+    {
+      heading: "Worship After Rescue",
+      verseBlock: { reference: "Genesis 8:20-22", chapter: 8, startVerse: 20, endVerse: 22 },
+      teaching: [
+        "Noah's first recorded act after leaving the ark is worship.",
+        "He builds an altar before he builds a house.",
+        "The clean animals from Genesis 7 now make sense because Noah offers burnt offerings.",
+        "God promises stability: seedtime and harvest, cold and heat, summer and winter, day and night.",
+      ],
+    },
+    {
+      heading: "Blessing, Blood, and Human Dignity",
+      verseBlock: { reference: "Genesis 9:1-7", chapter: 9, startVerse: 1, endVerse: 7 },
+      teaching: [
+        "Genesis 9 begins like a second start. God blesses Noah and repeats the creation calling.",
+        "God speaks about blood because blood represents life.",
+        "Human life is sacred because people are made in the image of God.",
+        "The new world must not be filled with the violence that corrupted the old one.",
+      ],
+    },
+    {
+      heading: "The Rainbow Covenant",
+      verseBlock: { reference: "Genesis 9:8-17", chapter: 9, startVerse: 8, endVerse: 17 },
+      teaching: [
+        "God establishes a covenant with Noah, his descendants, and every living creature.",
+        "The rainbow is the token, or sign, of that covenant.",
+        "The rainbow does not mean storms never come. It means God's promise stands.",
+      ],
+    },
+    {
+      heading: "Noah's Failure After the Flood",
+      verseBlock: { reference: "Genesis 9:18-29", chapter: 9, startVerse: 18, endVerse: 29 },
+      teaching: [
+        "Genesis does not hide Noah's weakness.",
+        "After the altar, the blessing, and the rainbow, Noah gets drunk and is uncovered.",
+        "The flood washed the world, but it did not remove sin from the human heart.",
+        "The curse falls on Canaan, not on all descendants of Ham. Genesis is not giving permission for racism or slavery.",
+        "Noah still dies, pointing forward to the need for a greater rescue.",
+      ],
+    },
+    {
+      heading: "The Nations After the Flood",
+      verseBlock: { reference: "Genesis 10:1-5", chapter: 10, startVerse: 1, endVerse: 5 },
+      teaching: [
+        "Genesis 10 is often called the Table of Nations.",
+        "It shows humanity spreading after the flood through Noah's sons.",
+        "This is not filler. God sees peoples, places, and languages.",
+      ],
+    },
+    {
+      heading: "Ham, Nimrod, and Early Kingdoms",
+      verseBlock: { reference: "Genesis 10:6-20", chapter: 10, startVerse: 6, endVerse: 20 },
+      teaching: [
+        "Ham's line includes names that matter later: Egypt, Canaan, Babel, Nineveh, and the Philistines.",
+        "Nimrod is singled out as a mighty one, and the first clear kingdom language appears here.",
+        "Babel appears before Genesis 11 explains the tower.",
+        "Canaan matters because that land will become central to Abraham, Israel, and the promise story.",
+      ],
+    },
+    {
+      heading: "Shem and the Line Toward Promise",
+      verseBlock: { reference: "Genesis 10:21-32", chapter: 10, startVerse: 21, endVerse: 32 },
+      teaching: [
+        "Now Genesis turns to Shem.",
+        "This line matters because the covenant story will move through Shem toward Abram.",
+        "Peleg is connected with division, preparing us for Babel.",
+        "Genesis 10 prepares the way for Genesis 12, where God promises blessing for all families of the earth.",
+      ],
+    },
+  ],
+  closing: [
+    "God remembers Noah, the waters recede, the ark rests, and the dove brings back an olive leaf.",
+    "Noah waits for God's word, leaves the ark, and worships after rescue.",
+    "God gives the rainbow as a covenant sign.",
+    "The flood did not end God's purpose. It preserved the world for the next movement of the promise.",
+  ],
+};

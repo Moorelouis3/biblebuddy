@@ -44,3 +44,11 @@ export const BIBLE_YEAR_DAY_THREE_AUDIO: BibleYearAudioDay = {
   apiSrc: getBibleYearAudioApiSrc(3),
   estimatedDuration: "about 15 min",
 };
+
+export const BIBLE_YEAR_DAY_FOUR_AUDIO: BibleYearAudioDay = {
+  dayNumber: 4,
+  title: "Day 4 - Life After the Flood",
+  storagePath: getBibleYearAudioStoragePath(4),
+  apiSrc: getBibleYearAudioApiSrc(4),
+  estimatedDuration: "about 16 min",
+};

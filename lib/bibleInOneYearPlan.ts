@@ -97,10 +97,11 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
   },
   {
     dayNumber: 4,
-    title: "Noah and the Flood",
+    title: "Life After the Flood",
     reference: "Genesis 8-10",
-    estimatedTime: "15-17 min",
+    estimatedTime: "about 16 min",
     summary: "Move through the flood waters receding, Noah's altar, God's covenant, the rainbow, human weakness, and the nations.",
+    coverImage: "/Lifeafterflood.png",
     readings: buildGenesisReadings("The Flood of Noah", 8, 10, 4),
   },
   {
