@@ -18,7 +18,7 @@ export function getBibleYearAudioStoragePath(dayNumber: number) {
 }
 
 export function getBibleYearAudioApiSrc(dayNumber: number) {
-  return `/api/tts/bible-year/day/${dayNumber}?v=day-${padDay(dayNumber)}-audio-v8`;
+  return `/api/tts/bible-year/day/${dayNumber}?v=day-${padDay(dayNumber)}-audio-v9`;
 }
 
 export const BIBLE_YEAR_DAY_ONE_AUDIO: BibleYearAudioDay = {
