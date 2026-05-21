@@ -5863,24 +5863,35 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleYearSeriesDayDetail(day: GenesisBibleYearDay) {
     const cover = getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
     const detailAction = getBibleYearDayAction(day);
-    const chapterTitles: Record<number, string> = {
-      1: "Creation, Light, and God's Image",
-      2: "Eden, Rest, Work, and Relationship",
-      3: "Temptation, Shame, and the First Promise",
-      4: "Cain, Abel, Anger, and Hope",
-      5: "Generations From Adam to Noah",
-      6: "Corruption, Grace, and the Ark",
-      7: "Noah Enters and the Flood Begins",
-      8: "The Waters Recede",
-      9: "Covenant, Rainbow, and Human Dignity",
-      10: "The Nations Spread",
+    const detailReference =
+      day.readings.length === 2
+        ? `${day.readings[0].book} ${day.readings[0].chapter} & ${day.readings[1].chapter}`
+        : day.reference;
+    const totalStudyTime: Record<number, string> = {
+      1: "about 24 min",
+      2: "about 20 min",
+      3: "about 20 min",
+      4: "about 20-22 min",
     };
-    const lessonSummaries: Record<number, string> = {
-      1: "Day 1 walks through Genesis 1 and 2 together: creation, light, order, humanity made in God's image, Eden, rest, work, and relationship. This is the foundation for the Bible In One Year journey.",
-      2: "Day 2 walks through Genesis 3 and 4 together: temptation, shame, blame, judgment, mercy, Cain and Abel, anger, exile, violence, and the first hints of hope.",
-      3: "Day 3 will walk through Genesis 5, 6, and 7 together: the generations from Adam to Noah, the earth filling with corruption, Noah finding grace, the ark being built, and the flood beginning.",
-      4: "Day 4 will walk through Genesis 8, 9, and 10 together: the flood waters receding, Noah leaving the ark, the altar, God's covenant, the rainbow, Noah's failure, and the nations spreading across the earth.",
+    const lessonSummaries: Record<number, string[]> = {
+      1: [
+        "Day 1 walks through Genesis 1 and 2 together: creation, light, order, humanity made in God's image, Eden, rest, work, and relationship. This is the foundation for the Bible In One Year journey.",
+        "You will read the opening chapters as one flowing beginning: God forms the world, fills it with life, and places humanity inside His good creation with purpose.",
+      ],
+      2: [
+        "Day 2 walks through Genesis 3 and 4 together: temptation, shame, blame, judgment, mercy, Cain and Abel, anger, exile, violence, and the first hints of hope.",
+        "Genesis 3 shows how sin enters the human story and how God still comes looking for people who are hiding. Genesis 4 shows that brokenness spreads quickly, but God keeps speaking, warning, protecting, and leaving room for hope.",
+      ],
+      3: [
+        "Day 3 walks through Genesis 5, 6, and 7 together: the generations from Adam to Noah, the earth filling with corruption, Noah finding grace, the ark being built, and the flood beginning.",
+        "This day slows down over the long family line, the grief of a violent world, and the obedience of Noah before the rain ever starts falling.",
+      ],
+      4: [
+        "Day 4 walks through Genesis 8, 9, and 10 together: the flood waters receding, Noah leaving the ark, the altar, God's covenant, the rainbow, Noah's failure, and the nations spreading across the earth.",
+        "This day moves from judgment into mercy, showing a new beginning after the flood while still being honest about the human heart.",
+      ],
     };
+    const daySummary = lessonSummaries[day.dayNumber] || [day.summary];
 
     return (
       <section className="w-full px-1">
@@ -5891,45 +5902,29 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <img src={cover} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
               ) : null}
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.76))]" />
+              <button
+                type="button"
+                onClick={openBibleYearSeriesDashboard}
+                className="absolute right-3 top-3 z-10 grid h-10 w-10 place-items-center rounded-full bg-black/35 text-2xl font-black leading-none text-white ring-1 ring-white/25 backdrop-blur transition hover:bg-black/50"
+                aria-label="Close day details"
+              >
+                x
+              </button>
               <div className="relative flex min-h-[230px] flex-col justify-end p-4 text-white sm:p-5">
-                <button
-                  type="button"
-                  onClick={openBibleYearSeriesDashboard}
-                  className="mb-4 w-fit rounded-full bg-white/15 px-3 py-1.5 text-xs font-black text-white ring-1 ring-white/25 backdrop-blur transition hover:bg-white/25"
-                >
-                  Back to Series
-                </button>
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-white/85">Day {day.dayNumber}</p>
                 <h1 className="mt-1 text-3xl font-black leading-tight">{day.title}</h1>
-                <p className="mt-1 text-sm font-bold text-white/85">{day.reference} · {day.estimatedTime}</p>
+                <p className="mt-1 text-sm font-bold text-white/85">{detailReference} - {totalStudyTime[day.dayNumber] || day.estimatedTime}</p>
               </div>
             </div>
 
             <div className="space-y-4 p-4 sm:p-5">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s lesson</p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                  {lessonSummaries[day.dayNumber] || day.summary}
-                </p>
-              </div>
-
-              <div className="grid gap-3 sm:grid-cols-2">
-                {day.readings.map((reading) => (
-                  <div
-                    key={`${reading.book}-${reading.chapter}`}
-                    className="rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4"
-                  >
-                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">
-                      {reading.book} {reading.chapter}
-                    </p>
-                    <h2 className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                      {chapterTitles[reading.chapter] || reading.studyTitle}
-                    </h2>
-                    <p className="mt-2 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                      Part of {reading.studyTitle}
-                    </p>
-                  </div>
-                ))}
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">About Day {day.dayNumber}</p>
+                <div className="mt-2 space-y-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                  {daySummary.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
               </div>
 
               <div>
@@ -5991,6 +5986,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                 const cover = getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
                 const isCurrent = day.dayNumber === currentSeriesDayNumber;
                 const isPast = day.dayNumber < currentSeriesDayNumber;
+                const seriesReference =
+                  day.readings.length === 2
+                    ? `${day.readings[0].book} ${day.readings[0].chapter} & ${day.readings[1].chapter}`
+                    : day.reference;
                 return (
                   <button
                     key={day.dayNumber}
@@ -6020,7 +6019,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                           </span>
                         </div>
                         <p className="mt-2 text-base font-black leading-tight text-[var(--bb-text-primary,#111827)]">{day.title}</p>
-                        <p className="mt-0.5 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">{day.reference}</p>
+                        <p className="mt-0.5 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">{seriesReference}</p>
                         <p className="mt-1 line-clamp-2 text-xs font-semibold leading-5 text-[var(--bb-text-muted,#6b7280)]">{day.summary}</p>
                       </div>
                     </div>
@@ -7540,7 +7539,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <button
               type="button"
               onClick={openInvitePage}
-              className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
+              className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
               aria-label="Invite friends to Bible Buddy"
             >
               <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
