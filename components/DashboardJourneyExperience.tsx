@@ -5421,29 +5421,6 @@ Before we understand redemption, we need to understand what God made humanity fo
               </button>
             </div>
           ) : null}
-
-          <div className="border-t border-[var(--bb-card-border,#dbe7f4)] pt-5">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">After the lesson</p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-              Trivia and reflection stay separate so the main lesson can keep flowing like a guided Bible podcast.
-            </p>
-            <div className="mt-3 grid gap-2">
-              {day.readings.map((reading, index) => {
-                const devotional = devotionalOptions.find((option) => option.title === reading.studyTitle);
-                return (
-                  <button
-                    key={`${reading.book}-${reading.chapter}-follow-up`}
-                    type="button"
-                    onClick={() => void startBibleYearSeriesReading(day, index)}
-                    disabled={isLoadingDevotionalOptions || switchingStudyChapter !== null || !devotional}
-                    className="rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    Open Genesis {reading.chapter} Tasks
-                  </button>
-                );
-              })}
-            </div>
-          </div>
         </div>
       );
     }

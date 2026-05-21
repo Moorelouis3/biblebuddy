@@ -34,5 +34,5 @@ export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {
   title: "Day 2 - The Fall of Man",
   storagePath: getBibleYearAudioStoragePath(2),
   apiSrc: getBibleYearAudioApiSrc(2),
-  estimatedDuration: "15 min",
+  estimatedDuration: "about 10 min",
 };

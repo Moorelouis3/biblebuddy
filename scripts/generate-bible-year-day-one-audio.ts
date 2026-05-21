@@ -23,7 +23,7 @@ const selectedAudio = requestedDay === 2 ? BIBLE_YEAR_DAY_TWO_AUDIO : BIBLE_YEAR
 const selectedDayLabel = `BIBLE_YEAR_DAY_${String(selectedLesson.dayNumber).padStart(3, "0")}`;
 const outputDay = String(selectedLesson.dayNumber).padStart(3, "0");
 const OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-audio.mp3`);
-const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.112 : 0.088;
+const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.129 : 0.088;
 
 function ensureDir(path: string) {
   mkdirSync(dirname(path), { recursive: true });
@@ -297,7 +297,7 @@ async function generateOpenAiSpeechPcm(text: string) {
       voice: GENESIS_ONE_TTS_VOICE,
       input: text,
       instructions:
-        "Speak in a deep, calm, warm male Bible teacher voice. Make it reflective, documentary-style, emotionally immersive, and modern. Announce each Scripture range naturally, for example: Genesis 1 verses 1 through 5. Do not announce every individual verse number. Do not read markdown, headings, emojis, bullets, or formatting labels. Keep the transitions conversational and give natural pauses between Scripture and explanation. Do not sound robotic, theatrical, or rushed.",
+        "Speak in a deep, warm, older male narrator voice. Sound soulful, calm, grounded, cinematic, and wise. Use the pacing of a documentary narrator mixed with a trusted Bible teacher. Keep the tone reflective, comforting, and emotionally weighty. Announce each Scripture range naturally, for example: Genesis 1 verses 1 through 5. Do not announce every individual verse number. Do not read markdown, headings, emojis, bullets, or formatting labels. Keep the transitions conversational and give natural pauses between Scripture and explanation. Do not sound robotic, theatrical, rushed, or overly polished.",
       response_format: "pcm",
     }),
   });

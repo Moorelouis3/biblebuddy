@@ -81,7 +81,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     dayNumber: 2,
     title: "Fall of Man",
     reference: "Genesis 3-4",
-    estimatedTime: "15 min",
+    estimatedTime: "about 10 min",
     summary: "Follow temptation, shame, Cain and Abel, exile, violence, and the first hints of hope.",
     readings: buildGenesisReadings("The Fall of Man", 3, 4, 1),
   },
