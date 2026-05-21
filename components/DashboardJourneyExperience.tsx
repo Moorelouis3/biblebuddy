@@ -4601,6 +4601,7 @@ export default function DashboardJourneyExperience({
         list: ["🌾 work becomes painful", "🌵 thorns grow", "😔 relationships strain", "⚰️ dust returns to dust", "🌱 promise still lives"],
       },
       "Genesis 3:20-24": {
+        list: ["🧥 God covers shame", "🌳 Eden is guarded", "🔥 the way back is blocked", "🌱 hope still moves forward"],
         heading: "🧥 Mercy Outside Eden",
         teachingTitle: "🧥 God Covers Them",
       },
@@ -4610,6 +4611,7 @@ export default function DashboardJourneyExperience({
         list: ["😠 anger", "😒 jealousy", "🚪 sin at the door", "⚠️ warning before destruction"],
       },
       "Genesis 4:8-16": {
+        list: ["🩸 blood cries", "🌍 the ground witnesses", "🚶 Cain becomes a wanderer", "⚖️ judgment comes", "🛡️ mercy still limits revenge"],
         heading: "🩸 The First Murder",
         teachingTitle: "🩸 Blood Cries From the Ground",
       },
@@ -4619,6 +4621,7 @@ export default function DashboardJourneyExperience({
         list: ["🏙️ city", "🎶 music", "🔨 tools", "💔 pride", "🩸 violence"],
       },
       "Genesis 4:25-26": {
+        list: ["🌱 another child", "🙏 people call on Yahweh", "🕯️ hope continues", "✝️ the promise keeps moving"],
         heading: "🌱 Hope Keeps Moving",
         teachingTitle: "🌱 Another Seed",
       },
@@ -4644,7 +4647,7 @@ export default function DashboardJourneyExperience({
 
         return `# ${display?.heading || section.heading}
 
-## ${formatBibleYearSpokenReference(section.verseBlock)}
+## ${section.verseBlock.reference}
 
 ${scripture}
 

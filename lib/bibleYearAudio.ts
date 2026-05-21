@@ -18,7 +18,7 @@ export function getBibleYearAudioStoragePath(dayNumber: number) {
 }
 
 export function getBibleYearAudioApiSrc(dayNumber: number) {
-  return `/api/tts/bible-year/day/${dayNumber}?v=day-${padDay(dayNumber)}-audio-v6`;
+  return `/api/tts/bible-year/day/${dayNumber}?v=day-${padDay(dayNumber)}-audio-v7`;
 }
 
 export const BIBLE_YEAR_DAY_ONE_AUDIO: BibleYearAudioDay = {
@@ -34,7 +34,7 @@ export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {
   title: "Day 2 - The Fall of Man",
   storagePath: getBibleYearAudioStoragePath(2),
   apiSrc: getBibleYearAudioApiSrc(2),
-  estimatedDuration: "about 10 min",
+  estimatedDuration: "about 15 min",
 };
 
 export const BIBLE_YEAR_DAY_THREE_AUDIO: BibleYearAudioDay = {
