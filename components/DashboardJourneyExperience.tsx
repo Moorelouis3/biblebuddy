@@ -4819,11 +4819,77 @@ Before we understand redemption, we need to understand what God made humanity fo
         answer: "People calling on Yahweh's name",
       },
     ],
+    3: [
+      {
+        id: "day3-noah",
+        question: "Who found grace while the earth was becoming corrupt?",
+        options: ["Noah", "Cain", "Pharaoh"],
+        answer: "Noah",
+      },
+      {
+        id: "day3-ark",
+        question: "What did God tell Noah to build?",
+        options: ["An ark", "A tower", "A city"],
+        answer: "An ark",
+      },
+      {
+        id: "day3-corruption",
+        question: "What filled the earth before the flood?",
+        options: ["Violence and corruption", "Gold and silver", "Peace and rest"],
+        answer: "Violence and corruption",
+      },
+      {
+        id: "day3-obeyed",
+        question: "How did Noah respond to God's command?",
+        options: ["He obeyed", "He ran away", "He laughed"],
+        answer: "He obeyed",
+      },
+      {
+        id: "day3-door",
+        question: "What begins in Genesis 7?",
+        options: ["The flood", "The Exodus", "The fall of Jericho"],
+        answer: "The flood",
+      },
+    ],
+    4: [
+      {
+        id: "day4-waters",
+        question: "What happens to the flood waters in Genesis 8?",
+        options: ["They recede", "They turn to blood", "They become fire"],
+        answer: "They recede",
+      },
+      {
+        id: "day4-altar",
+        question: "What does Noah build after leaving the ark?",
+        options: ["An altar", "A palace", "A prison"],
+        answer: "An altar",
+      },
+      {
+        id: "day4-sign",
+        question: "What sign is connected to God's covenant in Genesis 9?",
+        options: ["The rainbow", "The burning bush", "The tablets"],
+        answer: "The rainbow",
+      },
+      {
+        id: "day4-image",
+        question: "What does Genesis 9 repeat about human life?",
+        options: ["People are made in God's image", "People are made of stone", "People cannot worship"],
+        answer: "People are made in God's image",
+      },
+      {
+        id: "day4-nations",
+        question: "What does Genesis 10 trace?",
+        options: ["The nations spreading", "The birth of Moses", "The walls of Jerusalem"],
+        answer: "The nations spreading",
+      },
+    ],
   };
 
   const bibleYearReflectionPromptByDay: Record<number, string> = {
     1: "What does it mean to you to be made in the image of God?",
     2: "Where do you notice hiding, blame, or anger in your own life?",
+    3: "What does Noah's obedience teach you about following God when the world around you is drifting?",
+    4: "What kind of new beginning are you asking God to help you walk into?",
   };
 
   function getBibleYearDayTaskKey(task: TaskState) {
@@ -5144,10 +5210,18 @@ Before we understand redemption, we need to understand what God made humanity fo
       2: "Eden, Rest, Work, and Relationship",
       3: "Temptation, Shame, and the First Promise",
       4: "Cain, Abel, Anger, and Hope",
+      5: "Generations From Adam to Noah",
+      6: "Corruption, Grace, and the Ark",
+      7: "Noah Enters and the Flood Begins",
+      8: "The Waters Recede",
+      9: "Covenant, Rainbow, and Human Dignity",
+      10: "The Nations Spread",
     };
     const lessonSummaries: Record<number, string> = {
       1: "Day 1 walks through Genesis 1 and 2 together: creation, light, order, humanity made in God's image, Eden, rest, work, and relationship. This is the foundation for the Bible In One Year journey.",
       2: "Day 2 walks through Genesis 3 and 4 together: temptation, shame, blame, judgment, mercy, Cain and Abel, anger, exile, violence, and the first hints of hope.",
+      3: "Day 3 will walk through Genesis 5, 6, and 7 together: the generations from Adam to Noah, the earth filling with corruption, Noah finding grace, the ark being built, and the flood beginning.",
+      4: "Day 4 will walk through Genesis 8, 9, and 10 together: the flood waters receding, Noah leaving the ark, the altar, God's covenant, the rainbow, Noah's failure, and the nations spreading across the earth.",
     };
 
     return (
@@ -5240,7 +5314,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </p>
               <div className="mt-4 grid grid-cols-3 gap-2">
                 <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
-                  <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">24</p>
+                  <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">23</p>
                   <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">days</p>
                 </div>
                 <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
@@ -5330,7 +5404,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 takeoverRef={bibleYearTermTakeoverRef}
               />
             ) : (
-              <ChapterNotesMarkdown onDatabaseTermClick={handleBibleYearDatabaseTermClick} enableLargeDatabaseTerms databaseTermMode="light">
+              <ChapterNotesMarkdown>
                 {buildBibleYearLessonMarkdown(bibleYearLesson)}
               </ChapterNotesMarkdown>
             )}
@@ -5375,9 +5449,39 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
 
     return (
-      <div className="space-y-3 p-4">
+      <div className="space-y-4 p-4">
+        <div className="rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Day {day.dayNumber} Reading Space</p>
+          <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">{day.title}</h2>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            This space is ready for the single flowing Bible In One Year lesson. The full lesson notes and audio will be added next.
+          </p>
+          <div className="mt-4 grid gap-2">
+            {day.readings.map((reading) => (
+              <div
+                key={`${reading.book}-${reading.chapter}-space`}
+                className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3"
+              >
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">
+                  {reading.book} {reading.chapter}
+                </p>
+                <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#111827)]">{reading.studyTitle}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-5 flex justify-end">
+            <button
+              type="button"
+              onClick={() => markBibleYearDayCardComplete(day, "reading")}
+              className="rounded-full bg-[var(--bb-button,#2f7fe8)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+            >
+              {bibleYearCompletedCardsByDay[day.dayNumber]?.reading ? "Completed" : "Mark as Complete"}
+            </button>
+          </div>
+        </div>
+
         <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Today&apos;s chapters</p>
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Chapter task links</p>
           <div className="mt-3 grid gap-2">
             {day.readings.map((reading, index) => {
               const devotional = devotionalOptions.find((option) => option.title === reading.studyTitle);
@@ -5416,7 +5520,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
           <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Coming next</p>
           <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            Day 1 is testing the new single-lesson format first. The rest of Genesis can move into that format after we like the feel.
+            Day {day.dayNumber} is set up for the new single-lesson format. The lesson notes, trivia questions, reflection prompt, and audio can drop into this same card flow.
           </p>
         </div>
       </div>

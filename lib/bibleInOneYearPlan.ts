@@ -87,30 +87,22 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
   },
   {
     dayNumber: 3,
-    title: "Flood of Noah",
-    reference: "Genesis 5-6",
-    estimatedTime: "30-35 min",
-    summary: "Watch the generations unfold as corruption grows and Noah is introduced as a man who walks with God.",
-    readings: buildGenesisReadings("The Flood of Noah", 5, 6, 1),
+    title: "Noah Builds an Ark",
+    reference: "Genesis 5-7",
+    estimatedTime: "15-17 min",
+    summary: "Follow the generations to Noah, the corruption of the earth, God's warning, Noah's obedience, and the ark.",
+    readings: buildGenesisReadings("The Flood of Noah", 5, 7, 1),
   },
   {
     dayNumber: 4,
-    title: "Flood of Noah",
-    reference: "Genesis 7-8",
-    estimatedTime: "30-35 min",
-    summary: "Move through judgment, the flood waters, preservation, waiting, and the first steps into a renewed world.",
-    readings: buildGenesisReadings("The Flood of Noah", 7, 8, 3),
+    title: "Noah and the Flood",
+    reference: "Genesis 8-10",
+    estimatedTime: "15-17 min",
+    summary: "Move through the flood waters receding, Noah's altar, God's covenant, the rainbow, human weakness, and the nations.",
+    readings: buildGenesisReadings("The Flood of Noah", 8, 10, 4),
   },
   {
     dayNumber: 5,
-    title: "Flood of Noah",
-    reference: "Genesis 9-10",
-    estimatedTime: "30-35 min",
-    summary: "Study covenant mercy, Noah's family, human weakness, and the nations after the flood.",
-    readings: buildGenesisReadings("The Flood of Noah", 9, 10, 5),
-  },
-  {
-    dayNumber: 6,
     title: "Obedience of Abraham",
     reference: "Genesis 11-12",
     estimatedTime: "30-35 min",
@@ -118,7 +110,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Obedience of Abraham", 11, 12, 1),
   },
   {
-    dayNumber: 7,
+    dayNumber: 6,
     title: "Obedience of Abraham",
     reference: "Genesis 13-14",
     estimatedTime: "30-35 min",
@@ -126,7 +118,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Obedience of Abraham", 13, 14, 3),
   },
   {
-    dayNumber: 8,
+    dayNumber: 7,
     title: "Obedience of Abraham",
     reference: "Genesis 15-16",
     estimatedTime: "30-35 min",
@@ -134,7 +126,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Obedience of Abraham", 15, 16, 5),
   },
   {
-    dayNumber: 9,
+    dayNumber: 8,
     title: "Obedience of Abraham",
     reference: "Genesis 17-18",
     estimatedTime: "30-35 min",
@@ -142,7 +134,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Obedience of Abraham", 17, 18, 7),
   },
   {
-    dayNumber: 10,
+    dayNumber: 9,
     title: "Obedience of Abraham",
     reference: "Genesis 19-20",
     estimatedTime: "30-35 min",
@@ -150,7 +142,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Obedience of Abraham", 19, 20, 9),
   },
   {
-    dayNumber: 11,
+    dayNumber: 10,
     title: "Obedience of Abraham",
     reference: "Genesis 21-22",
     estimatedTime: "30-35 min",
@@ -158,7 +150,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Obedience of Abraham", 21, 22, 11),
   },
   {
-    dayNumber: 12,
+    dayNumber: 11,
     title: "Obedience of Abraham",
     reference: "Genesis 23-25",
     estimatedTime: "40-45 min",
@@ -166,7 +158,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Obedience of Abraham", 23, 25, 13),
   },
   {
-    dayNumber: 13,
+    dayNumber: 12,
     title: "Covenant Through Isaac",
     reference: "Genesis 26-27",
     estimatedTime: "30-35 min",
@@ -174,7 +166,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Promise Through Isaac", 26, 27, 1),
   },
   {
-    dayNumber: 14,
+    dayNumber: 13,
     title: "Wrestling of Jacob",
     reference: "Genesis 28-29",
     estimatedTime: "30-35 min",
@@ -182,7 +174,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Wrestling of Jacob", 28, 29, 1),
   },
   {
-    dayNumber: 15,
+    dayNumber: 14,
     title: "Wrestling of Jacob",
     reference: "Genesis 30-31",
     estimatedTime: "30-35 min",
@@ -190,7 +182,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Wrestling of Jacob", 30, 31, 3),
   },
   {
-    dayNumber: 16,
+    dayNumber: 15,
     title: "Wrestling of Jacob",
     reference: "Genesis 32-33",
     estimatedTime: "30-35 min",
@@ -198,7 +190,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Wrestling of Jacob", 32, 33, 5),
   },
   {
-    dayNumber: 17,
+    dayNumber: 16,
     title: "Wrestling of Jacob",
     reference: "Genesis 34-36",
     estimatedTime: "40-45 min",
@@ -206,7 +198,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Wrestling of Jacob", 34, 36, 7),
   },
   {
-    dayNumber: 18,
+    dayNumber: 17,
     title: "Testing of Joseph",
     reference: "Genesis 37-38",
     estimatedTime: "30-35 min",
@@ -214,7 +206,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Testing of Joseph", 37, 38, 1),
   },
   {
-    dayNumber: 19,
+    dayNumber: 18,
     title: "Testing of Joseph",
     reference: "Genesis 39-40",
     estimatedTime: "30-35 min",
@@ -222,7 +214,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Testing of Joseph", 39, 40, 3),
   },
   {
-    dayNumber: 20,
+    dayNumber: 19,
     title: "Testing of Joseph",
     reference: "Genesis 41-42",
     estimatedTime: "30-35 min",
@@ -230,7 +222,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Testing of Joseph", 41, 42, 5),
   },
   {
-    dayNumber: 21,
+    dayNumber: 20,
     title: "Testing of Joseph",
     reference: "Genesis 43-44",
     estimatedTime: "30-35 min",
@@ -238,7 +230,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Testing of Joseph", 43, 44, 7),
   },
   {
-    dayNumber: 22,
+    dayNumber: 21,
     title: "Testing of Joseph",
     reference: "Genesis 45-46",
     estimatedTime: "30-35 min",
@@ -246,7 +238,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Testing of Joseph", 45, 46, 9),
   },
   {
-    dayNumber: 23,
+    dayNumber: 22,
     title: "Testing of Joseph",
     reference: "Genesis 47-48",
     estimatedTime: "30-35 min",
@@ -254,7 +246,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     readings: buildGenesisReadings("The Testing of Joseph", 47, 48, 11),
   },
   {
-    dayNumber: 24,
+    dayNumber: 23,
     title: "Testing of Joseph",
     reference: "Genesis 49-50",
     estimatedTime: "30-35 min",
