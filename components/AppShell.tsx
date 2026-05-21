@@ -34,6 +34,7 @@ import {
   clearLegacyPremiumSkinCache,
   getPremiumSkinForLegacyFlame,
   getPremiumSkinForLegacyTheme,
+  isIncomingPremiumSkinOlderThanCache,
   normalizePremiumSkinId,
   readCachedPremiumSkin,
   shouldPreferCachedPremiumSkin,
@@ -353,7 +354,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           filter: `user_id=eq.${userId}`,
         },
         (payload) => {
-          const nextSkin = normalizePremiumSkinId((payload.new as { active_premium_skin?: unknown } | null)?.active_premium_skin);
+          const nextProfile = payload.new as { active_premium_skin?: unknown; active_premium_skin_selected_at?: string | null } | null;
+          const nextSkin = normalizePremiumSkinId(nextProfile?.active_premium_skin);
+          if (isIncomingPremiumSkinOlderThanCache(userId, nextProfile?.active_premium_skin_selected_at)) return;
           cachePremiumSkinForUser(userId, nextSkin);
           clearPendingPremiumSkinSync(userId, nextSkin);
           if (nextSkin === "none") {
@@ -434,7 +437,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       getPremiumSkinForLegacyTheme(data?.app_theme) !== "none"
         ? getPremiumSkinForLegacyTheme(data?.app_theme)
         : getPremiumSkinForLegacyFlame(data && "selected_streak_flame" in data ? data.selected_streak_flame : null);
-    const staleSafeDbSkin = shouldPreferCachedPremiumSkin(currentUserId, dbSkin)
+    const staleSafeDbSkin = isIncomingPremiumSkinOlderThanCache(currentUserId, data?.active_premium_skin_selected_at)
+      ? readCachedPremiumSkin(currentUserId)
+      : shouldPreferCachedPremiumSkin(currentUserId, dbSkin)
       ? readCachedPremiumSkin(currentUserId)
       : dbSkin;
     const candidateSkin = hasActiveSkinColumn ? staleSafeDbSkin : legacyMappedSkin;
@@ -738,7 +743,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const dbSelectedFlame = normalizeFlameCosmeticId(data?.selected_streak_flame);
       const hasActiveSkinColumn = Boolean(data && "active_premium_skin" in data);
       const dbActiveSkin = normalizePremiumSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
-      const resolvedSkin = shouldPreferCachedPremiumSkin(currentUserId, dbActiveSkin)
+      const resolvedSkin = isIncomingPremiumSkinOlderThanCache(currentUserId, data?.active_premium_skin_selected_at)
+        ? readCachedPremiumSkin(currentUserId)
+        : shouldPreferCachedPremiumSkin(currentUserId, dbActiveSkin)
         ? readCachedPremiumSkin(currentUserId)
         : dbActiveSkin;
       const skinFlame = getPremiumSkinFlameId(resolvedSkin);

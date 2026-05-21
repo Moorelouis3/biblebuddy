@@ -3,9 +3,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { createContext, runInContext } from "vm";
 import { createClient } from "@supabase/supabase-js";
-import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
+import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
-import { GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
+import { GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import { GENESIS_ONE_TTS_VOICE } from "../lib/genesisOneTtsAudio";
 import { cleanTextForTts } from "../lib/ttsSpeechText";
 
@@ -34,21 +34,25 @@ for (const path of [".env.local", ".env"]) {
 const requestedDay = Number(process.env.BIBLE_YEAR_TTS_DAY || process.argv.find((arg) => arg.startsWith("--day="))?.split("=")[1] || "1");
 const voiceOnlyMode = process.argv.includes("--voice-only") || process.env.BIBLE_YEAR_TTS_VOICE_ONLY === "true";
 const selectedLesson =
-  requestedDay === 4
-    ? GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON
-    : requestedDay === 3
-      ? GENESIS_DAY_THREE_NOAH_ARK_LESSON
-      : requestedDay === 2
-        ? GENESIS_DAY_TWO_FALL_LESSON
-        : GENESIS_DAY_ONE_CREATION_LESSON;
+  requestedDay === 5
+    ? GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON
+    : requestedDay === 4
+      ? GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON
+      : requestedDay === 3
+        ? GENESIS_DAY_THREE_NOAH_ARK_LESSON
+        : requestedDay === 2
+          ? GENESIS_DAY_TWO_FALL_LESSON
+          : GENESIS_DAY_ONE_CREATION_LESSON;
 const selectedAudio =
-  requestedDay === 4
-    ? BIBLE_YEAR_DAY_FOUR_AUDIO
-    : requestedDay === 3
-      ? BIBLE_YEAR_DAY_THREE_AUDIO
-      : requestedDay === 2
-        ? BIBLE_YEAR_DAY_TWO_AUDIO
-        : BIBLE_YEAR_DAY_ONE_AUDIO;
+  requestedDay === 5
+    ? BIBLE_YEAR_DAY_FIVE_AUDIO
+    : requestedDay === 4
+      ? BIBLE_YEAR_DAY_FOUR_AUDIO
+      : requestedDay === 3
+        ? BIBLE_YEAR_DAY_THREE_AUDIO
+        : requestedDay === 2
+          ? BIBLE_YEAR_DAY_TWO_AUDIO
+          : BIBLE_YEAR_DAY_ONE_AUDIO;
 const selectedDayLabel = `BIBLE_YEAR_DAY_${String(selectedLesson.dayNumber).padStart(3, "0")}`;
 const outputDay = String(selectedLesson.dayNumber).padStart(3, "0");
 const OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-audio.mp3`);

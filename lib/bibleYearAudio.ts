@@ -52,3 +52,11 @@ export const BIBLE_YEAR_DAY_FOUR_AUDIO: BibleYearAudioDay = {
   apiSrc: getBibleYearAudioApiSrc(4),
   estimatedDuration: "about 16 min",
 };
+
+export const BIBLE_YEAR_DAY_FIVE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 5,
+  title: "Day 5 - The Obedience of Abraham",
+  storagePath: getBibleYearAudioStoragePath(5),
+  apiSrc: getBibleYearAudioApiSrc(5),
+  estimatedDuration: "about 15 min",
+};

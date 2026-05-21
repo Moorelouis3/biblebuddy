@@ -30,6 +30,7 @@ import {
   clearLegacyPremiumSkinCache,
   formatPremiumSkinLockRemaining,
   getPremiumSkinLockRemainingMs,
+  isIncomingPremiumSkinOlderThanCache,
   normalizePremiumSkinId,
   readCachedPremiumSkin,
   shouldPreferCachedPremiumSkin,
@@ -176,7 +177,9 @@ export default function SettingsPage() {
           profile && "active_premium_skin" in profile && profile.active_premium_skin
             ? normalizePremiumSkinId(profile.active_premium_skin)
             : "none";
-        const resolvedPremiumSkin = shouldPreferCachedPremiumSkin(currentUser.id, dbPremiumSkin)
+        const resolvedPremiumSkin = isIncomingPremiumSkinOlderThanCache(currentUser.id, profile?.active_premium_skin_selected_at)
+          ? readCachedPremiumSkin(currentUser.id)
+          : shouldPreferCachedPremiumSkin(currentUser.id, dbPremiumSkin)
           ? readCachedPremiumSkin(currentUser.id)
           : dbPremiumSkin;
         const premiumSkinStoreItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === resolvedPremiumSkin);

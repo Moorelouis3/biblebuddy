@@ -56,6 +56,15 @@ export function getPremiumSkinStorageTimestampKey(userId: string | null | undefi
   return userId ? `${PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY}:${userId}` : PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY;
 }
 
+export function readCachedPremiumSkinUpdatedAtMs(userId: string | null | undefined) {
+  if (typeof window === "undefined") return 0;
+  const raw =
+    (userId ? window.localStorage.getItem(getPremiumSkinStorageTimestampKey(userId)) : null) ||
+    window.localStorage.getItem(PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY);
+  const updatedAt = Number(raw);
+  return Number.isFinite(updatedAt) ? updatedAt : 0;
+}
+
 export function getPremiumSkinPendingSyncKey(userId: string | null | undefined) {
   return userId ? `${PREMIUM_SKIN_PENDING_SYNC_KEY}:${userId}` : PREMIUM_SKIN_PENDING_SYNC_KEY;
 }
@@ -107,6 +116,14 @@ export function cachePremiumSkinForUser(userId: string | null | undefined, skinI
       window.localStorage.setItem(getPremiumSkinPendingSyncKey(userId), JSON.stringify({ skinId: normalizedSkinId, startedAt: Number(updatedAt) }));
     }
   }
+}
+
+export function isIncomingPremiumSkinOlderThanCache(userId: string | null | undefined, selectedAt: string | null | undefined) {
+  if (typeof window === "undefined" || !userId || !selectedAt) return false;
+  const incomingSelectedAtMs = Date.parse(selectedAt);
+  if (!Number.isFinite(incomingSelectedAtMs)) return false;
+  const cachedUpdatedAtMs = readCachedPremiumSkinUpdatedAtMs(userId);
+  return cachedUpdatedAtMs > incomingSelectedAtMs;
 }
 
 export function clearPendingPremiumSkinSync(userId: string | null | undefined, skinId?: PremiumSkinId) {

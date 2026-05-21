@@ -72,6 +72,7 @@ import {
   getPremiumSkinForLegacyFlame,
   getPremiumSkinForLegacyTheme,
   getPremiumSkin,
+  isIncomingPremiumSkinOlderThanCache,
   normalizePremiumSkinId,
   readCachedPremiumSkin,
   shouldPreferCachedPremiumSkin,
@@ -2404,29 +2405,26 @@ export default function DashboardPage() {
         : "streak-flame-building";
     const nextLevelPercent = Math.max(0, Math.min(100, levelInfo?.progressPercent ?? 0));
     const visibleOwnerDiamondTotal = 10000;
+    const currentLevel = levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1;
+    const currentLevelTitle = levelInfo?.levelName || "Faithful Beginner";
+    const currentXp = levelInfo?.totalPoints ?? 0;
+    const nextLevelXp = levelInfo?.pointsToNextLevel ?? 0;
+    const diamondValue = diamondsLoading
+      ? animatedDashboardStats.grace
+      : isOwnerDashboard
+        ? visibleOwnerDiamondTotal.toLocaleString()
+        : Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString();
+    const remainingBibleChapters = Math.max(0, TOTAL_BIBLE_CHAPTERS - totalCompletedChapters);
+    const estimatedBibleDaysRemaining = Math.ceil((remainingBibleChapters / Math.max(TOTAL_BIBLE_CHAPTERS, 1)) * 365);
+    const bibleFinishEstimate = remainingBibleChapters <= 0
+      ? "Bible complete. You finished the full one-year path."
+      : `About ${estimatedBibleDaysRemaining.toLocaleString()} days left at the Bible in One Year pace.`;
     const personalStats = [
-      {
-        key: "completion",
-        label: "Bible Progress",
-        sublabel: "Overall",
-        value: `${displayedBibleCompletionPercent}%`,
-        icon: "📖",
-        tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
-        onClick: () => {
-          setShowDiamondStore(false);
-          setShowBibleProgressPanel(true);
-          setBibleBrowserSelectedBook(null);
-        },
-      },
       {
         key: "diamonds",
         label: "Diamonds",
         sublabel: "In your stash",
-        value: diamondsLoading
-          ? animatedDashboardStats.grace
-          : isOwnerDashboard
-            ? visibleOwnerDiamondTotal.toLocaleString()
-            : Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString(),
+        value: diamondValue,
         icon: "💎",
         tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
         onClick: openDiamondStore,
@@ -2434,16 +2432,25 @@ export default function DashboardPage() {
       {
         key: "level",
         label: "Level",
-        sublabel: "",
-        value: levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1,
+        sublabel: currentLevelTitle,
+        value: currentLevel,
         icon: "🛡️",
         tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
         onClick: openLevelInfoModal,
       },
       {
+        key: "xp",
+        label: "XP",
+        sublabel: nextLevelXp > 0 ? `${nextLevelXp.toLocaleString()} to next level` : "Next level ready",
+        value: currentXp.toLocaleString(),
+        icon: "⚡",
+        tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
+        onClick: openLevelInfoModal,
+      },
+      {
         key: "badges",
-        label: "Badges Earned",
-        sublabel: "",
+        label: "Badges",
+        sublabel: latestBadge?.title ?? "Keep going",
         value: badgesLoading ? animatedDashboardStats.badges : earnedBadgeCount,
         icon: "🏅",
         tones: "border-[var(--bb-card-border)] bg-[var(--bb-card)]",
@@ -2461,65 +2468,78 @@ export default function DashboardPage() {
         tones: string;
         onClick?: () => void;
       }>
-    ) => (
-      <div className="mx-auto max-w-xl rounded-[22px] border border-[color-mix(in_srgb,var(--bb-card-border)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_72%,rgba(0,0,0,0.36))] p-2 shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
-        <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
-          {cards.map((card) => {
-            const CardTag = card.onClick ? "button" : "div";
-            return (
-              <CardTag
-                key={card.key ?? card.label}
-                type={card.onClick ? "button" : undefined}
-                onClick={card.onClick}
-                className={`bb-skin-glow-tile flex min-h-[68px] flex-col rounded-[16px] border px-1.5 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition sm:min-h-[82px] sm:px-2.5 sm:py-2.5 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-md" : ""} ${card.tones}`}
-              >
-                <p className="text-base font-black leading-none text-gray-950 sm:text-xl">
-                  <span className="mr-1 align-middle text-sm" aria-hidden="true">{card.icon}</span>
-                  <span>{card.value}</span>
-                </p>
-                <p className="mt-1.5 text-[9px] font-black leading-tight text-gray-800 sm:text-[11px]">
-                  {card.label}
-                </p>
-                {card.sublabel ? (
-                  <p className="mt-0.5 text-[8px] font-semibold leading-tight text-gray-500 sm:text-[10px]">
-                    {card.sublabel}
-                  </p>
-                ) : null}
-              </CardTag>
-            );
-          })}
-          {cards.some((card) => card.key === "level") ? (
+    ) => {
+      const includesBibleYearStats = cards.some((card) => card.key === "xp");
+
+      return (
+        <div className="mx-auto max-w-xl rounded-[22px] border border-[color-mix(in_srgb,var(--bb-card-border)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_72%,rgba(0,0,0,0.36))] p-2 shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
+          {includesBibleYearStats ? (
             <button
               type="button"
-              onClick={openLevelInfoModal}
-              className="bb-skin-glow-tile col-span-4 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-3 py-1.5 text-left transition hover:bg-[var(--bb-card)] hover:shadow-sm"
+              onClick={() => {
+                setShowDiamondStore(false);
+                setShowBibleProgressPanel(true);
+                setBibleBrowserSelectedBook(null);
+              }}
+              className="bb-skin-glow-tile mb-2 w-full rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent)_42%,var(--bb-card-border))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent-soft)_84%,var(--bb-card)),var(--bb-card))] px-4 py-3 text-left shadow-[0_12px_26px_rgba(38,63,99,0.14),inset_0_1px_0_rgba(255,255,255,0.75)] transition hover:-translate-y-0.5 hover:shadow-md"
             >
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-[11px] font-black text-[var(--bb-accent)]">
-                  {levelInfo?.pointsToNextLevel ?? 0} XP to next level
-                </p>
-                <p className="text-[11px] font-black text-[var(--bb-text-secondary)]">
-                  {Math.round(nextLevelPercent)}%
+              <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-end sm:gap-4">
+                <div className="min-w-0">
+                  <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">Studied</p>
+                  <p className="mt-1 whitespace-nowrap text-[clamp(20px,6vw,36px)] font-black leading-none text-[var(--bb-text-primary)]">
+                    {displayedBibleCompletionPercent}% of the Bible studied
+                  </p>
+                </div>
+                <p className="shrink-0 text-left text-[11px] font-black leading-4 text-[var(--bb-text-secondary)] sm:text-right">
+                  {totalCompletedChapters.toLocaleString()} / {TOTAL_BIBLE_CHAPTERS.toLocaleString()}
+                  <br />
+                  chapters
                 </p>
               </div>
-              <div className="mt-2 h-2 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
-                <div className="h-full rounded-full bg-[var(--bb-progress-fill)] transition-all duration-500" style={{ width: `${nextLevelPercent}%` }} />
+              <div className="mt-3 h-3 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
+                <div className="h-full rounded-full bg-[var(--bb-progress-fill)] transition-all duration-500" style={{ width: `${displayedBibleCompletionPercent}%` }} />
               </div>
+              <p className="mt-2 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">{bibleFinishEstimate}</p>
             </button>
           ) : null}
-        </div>
-      </div>
-    );
 
-    const currentLevel = levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1;
-    const currentLevelTitle = levelInfo?.levelName || "Faithful Beginner";
-    const currentXp = levelInfo?.totalPoints ?? 0;
-    const nextLevelXp = levelInfo?.pointsToNextLevel ?? 0;
-    const diamondValue = diamondsLoading
-      ? animatedDashboardStats.grace
-      : isOwnerDashboard
-        ? visibleOwnerDiamondTotal.toLocaleString()
-        : Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString();
+          <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
+            {cards.map((card) => {
+              const CardTag = card.onClick ? "button" : "div";
+              return (
+                <CardTag
+                  key={card.key ?? card.label}
+                  type={card.onClick ? "button" : undefined}
+                  onClick={card.onClick}
+                  className={`bb-skin-glow-tile flex min-h-[76px] flex-col rounded-[16px] border px-1.5 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition sm:min-h-[88px] sm:px-2.5 sm:py-2.5 ${card.onClick ? "hover:-translate-y-0.5 hover:shadow-md" : ""} ${card.tones}`}
+                >
+                  <p className="text-base font-black leading-none text-gray-950 sm:text-xl">
+                    <span className="mr-1 align-middle text-sm font-black" aria-hidden="true">{card.icon}</span>
+                    <span>{card.value}</span>
+                  </p>
+                  <p className="mt-1.5 text-[9px] font-black leading-tight text-gray-800 sm:text-[11px]">
+                    {card.label}
+                  </p>
+                  {card.sublabel ? (
+                    <p className="mt-0.5 line-clamp-2 text-[8px] font-semibold leading-tight text-gray-500 sm:text-[10px]">
+                      {card.sublabel}
+                    </p>
+                  ) : null}
+                  {card.key === "xp" ? (
+                    <div className="mt-auto pt-1.5">
+                      <div className="h-1.5 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
+                        <div className="h-full rounded-full bg-[var(--bb-progress-fill)] transition-all duration-500" style={{ width: `${nextLevelPercent}%` }} />
+                      </div>
+                    </div>
+                  ) : null}
+                </CardTag>
+              );
+            })}
+          </div>
+        </div>
+      );
+    };
+
     const journeyTitle = currentBook ? `${currentBook} Journey` : "Bible Journey";
     const chaptersLabel = `${totalCompletedChapters.toLocaleString()} of ${TOTAL_BIBLE_CHAPTERS.toLocaleString()} chapters`;
     const skinWorldClass = activePremiumSkinId === "none" ? "skin-world-default" : `skin-world-${activePremiumSkinId}`;
@@ -4293,7 +4313,9 @@ export default function DashboardPage() {
     function loadPremiumSkin(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
       const profileSkin = normalizePremiumSkinId(profile?.active_premium_skin);
-      const staleSafeProfileSkin = shouldPreferCachedPremiumSkin(userId, profileSkin)
+      const staleSafeProfileSkin = isIncomingPremiumSkinOlderThanCache(userId, profile?.active_premium_skin_selected_at)
+        ? readCachedPremiumSkin(userId)
+        : shouldPreferCachedPremiumSkin(userId, profileSkin)
         ? readCachedPremiumSkin(userId)
         : profileSkin;
       const documentSkin = normalizePremiumSkinId(document.documentElement.dataset.bbSkin);
@@ -4981,6 +5003,8 @@ export default function DashboardPage() {
               ? getPremiumSkinForLegacyTheme(profileData?.app_theme)
               : getPremiumSkinForLegacyFlame(profileData?.selected_streak_flame);
           const staleSafeDbSkin = shouldPreferCachedPremiumSkin(userId, dbActiveSkin)
+            ? readCachedPremiumSkin(userId)
+            : isIncomingPremiumSkinOlderThanCache(userId, profileData?.active_premium_skin_selected_at)
             ? readCachedPremiumSkin(userId)
             : dbActiveSkin;
           const cachedActiveSkin = readCachedPremiumSkin(userId);

@@ -43,8 +43,8 @@ import {
   GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
-import { GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
-import { BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
+import { GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
+import { BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
@@ -2005,17 +2005,24 @@ export default function DashboardJourneyExperience({
   const activeBibleYearDashboardDay = bibleYearDashboardActive
     ? selectedBibleYearSeriesDay ||
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-        .filter((day) => day.dayNumber <= 4)
+        .filter((day) => day.dayNumber <= 5)
         .find((day) => {
           const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
           return !(completed.reading && completed.trivia && completed.reflection);
         }) ||
-      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 4) ||
+      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 5) ||
       null
     : null;
   const bibleYearDashboardTasks = activeBibleYearDashboardDay
     ? buildBibleYearDayTasks(activeBibleYearDashboardDay)
     : null;
+  const bibleYearStudyPlanMilestones = [
+    { dayNumber: 1, label: "Creation" },
+    { dayNumber: 2, label: "Fall of Man" },
+    { dayNumber: 3, label: "Noah" },
+    { dayNumber: 4, label: "Flood" },
+    { dayNumber: 5, label: "Abraham" },
+  ];
   const dashboardTaskSource = bibleYearDashboardTasks || visibleTasks;
   const nextTask = dashboardTaskSource.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = dashboardTaskSource.findIndex((task) => !task.done);
@@ -2984,7 +2991,7 @@ export default function DashboardJourneyExperience({
   }
 
   function openBibleYearDashboard() {
-    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 4);
+    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 5);
     const nextBibleYearDay =
       builtBibleYearDays.find((day) => {
         const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
@@ -3084,13 +3091,13 @@ export default function DashboardJourneyExperience({
     if (view === "bible-year") {
       setBibleYearDashboardActive(true);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 4);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 5);
       if (day) setSelectedBibleYearSeriesDay(day);
       setActivePage(0);
     } else if (view === "bible-year-series") {
       setBibleYearSeriesActive(true);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 4);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 5);
       if (day) setBibleYearSeriesDetailDay(day);
       setActivePage(0);
     }
@@ -4358,6 +4365,7 @@ export default function DashboardJourneyExperience({
     if (dayNumber === 2) return GENESIS_DAY_TWO_FALL_LESSON;
     if (dayNumber === 3) return GENESIS_DAY_THREE_NOAH_ARK_LESSON;
     if (dayNumber === 4) return GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON;
+    if (dayNumber === 5) return GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON;
     return null;
   }
 
@@ -4366,6 +4374,7 @@ export default function DashboardJourneyExperience({
     if (dayNumber === 2) return BIBLE_YEAR_DAY_TWO_AUDIO;
     if (dayNumber === 3) return BIBLE_YEAR_DAY_THREE_AUDIO;
     if (dayNumber === 4) return BIBLE_YEAR_DAY_FOUR_AUDIO;
+    if (dayNumber === 5) return BIBLE_YEAR_DAY_FIVE_AUDIO;
     return null;
   }
 
@@ -4803,6 +4812,48 @@ export default function DashboardJourneyExperience({
         list: ["🌱 Shem's line continues", "🧵 Eber is highlighted", "🌍 the earth is divided", "🗣️ nations spread", "✨ promise is getting closer"],
       },
     };
+    const dayFiveDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
+      "Genesis 11:1-9": {
+        heading: "🏙️ Babel Tries to Make a Name",
+        teachingTitle: "🧱 Pride Builds Without Trust",
+        list: ["🧱 bricks are made", "🏙️ a city rises", "🗼 a tower reaches upward", "👑 people seek a name", "🌍 God scatters pride"],
+      },
+      "Genesis 11:10-32": {
+        heading: "🧬 The Story Narrows Toward Abram",
+        teachingTitle: "🛤️ An Unfinished Road",
+        list: ["🧬 Shem's line continues", "👤 Abram appears", "💔 Sarai is barren", "🛤️ the family moves toward Canaan", "⏸️ the journey stops in Haran"],
+      },
+      "Genesis 12:1-3": {
+        heading: "📣 God Calls Abram",
+        teachingTitle: "✨ Promise Before the Map",
+        list: ["📣 God speaks", "🏠 Abram must leave", "🌍 land is promised", "👨‍👩‍👧‍👦 nation is promised", "✨ all families will be blessed"],
+      },
+      "Genesis 12:4-9": {
+        heading: "🚶 Abram Goes",
+        teachingTitle: "⛺ Obedience Starts Moving",
+        list: ["🚶 Abram departs", "👨‍👩‍👧 family comes with him", "⛺ he enters Canaan", "🔥 he builds altars", "🙏 he calls on the LORD"],
+      },
+      "Genesis 12:10-20": {
+        heading: "🌾 Fear Takes Abram to Egypt",
+        teachingTitle: "😟 Faith Still Needs Formation",
+        list: ["🌾 famine comes", "🇪🇬 Abram goes to Egypt", "😟 fear takes over", "👑 Sarai is taken", "🛡️ God protects the promise"],
+      },
+      "Genesis 13:1-7": {
+        heading: "🔥 Abram Returns to the Altar",
+        teachingTitle: "🔁 Back to Worship",
+        list: ["🇪🇬 Abram leaves Egypt", "🔥 he returns to the altar", "🐑 flocks increase", "⚠️ strife begins", "🌍 the land feels crowded"],
+      },
+      "Genesis 13:8-13": {
+        heading: "👀 Lot Chooses by Sight",
+        teachingTitle: "🤝 Faith Does Not Have to Grab",
+        list: ["🤝 Abram chooses peace", "👀 Lot looks outward", "🌿 the plain looks good", "🏙️ Lot moves toward Sodom", "⚠️ beauty can hide danger"],
+      },
+      "Genesis 13:14-18": {
+        heading: "🌄 God Repeats the Promise",
+        teachingTitle: "🌱 Abram Receives What God Gives",
+        list: ["🌄 Abram lifts his eyes", "🌍 land is promised", "🌱 descendants are promised", "🚶 Abram walks by faith", "🔥 another altar is built"],
+      },
+    };
 
     const sectionBlocks = lesson.sections
       .map((section) => {
@@ -4814,7 +4865,9 @@ export default function DashboardJourneyExperience({
               ? dayThreeDisplay[section.verseBlock.reference]
               : lesson.dayNumber === 4
                 ? dayFourDisplay[section.verseBlock.reference]
-                : null;
+                : lesson.dayNumber === 5
+                  ? dayFiveDisplay[section.verseBlock.reference]
+                  : null;
         const scripture = lesson.dayNumber === 1
           ? getDayOneSpokenVerseCallouts(section.verseBlock)
           : getBibleYearLessonVerses(section.verseBlock)
@@ -5147,7 +5200,7 @@ No pretending.
 ✨ not yet covered by shame`,
     };
 
-    if (lesson.dayNumber === 1 || lesson.dayNumber === 2 || lesson.dayNumber === 3 || lesson.dayNumber === 4) {
+    if (lesson.dayNumber === 1 || lesson.dayNumber === 2 || lesson.dayNumber === 3 || lesson.dayNumber === 4 || lesson.dayNumber === 5) {
       return buildBibleYearSpokenScriptMarkdown(lesson);
     }
 
@@ -5372,6 +5425,38 @@ Before we understand redemption, we need to understand what God made humanity fo
         answer: "The nations spreading",
       },
     ],
+    5: [
+      {
+        id: "day5-babel",
+        question: "What did the people at Babel want to make for themselves?",
+        options: ["A name", "An ark", "A golden calf"],
+        answer: "A name",
+      },
+      {
+        id: "day5-call",
+        question: "What did God tell Abram to leave?",
+        options: ["His country and father's house", "The ark", "Egypt forever"],
+        answer: "His country and father's house",
+      },
+      {
+        id: "day5-promise",
+        question: "Who would be blessed through Abram according to Genesis 12?",
+        options: ["All families of the earth", "Only Pharaoh", "Only Lot"],
+        answer: "All families of the earth",
+      },
+      {
+        id: "day5-egypt",
+        question: "What pressure drove Abram down into Egypt?",
+        options: ["Famine", "War with Jericho", "A flood"],
+        answer: "Famine",
+      },
+      {
+        id: "day5-lot",
+        question: "What did Abram let Lot do in Genesis 13?",
+        options: ["Choose the land first", "Build the tower", "Name Isaac"],
+        answer: "Choose the land first",
+      },
+    ],
   };
 
   const bibleYearReflectionPromptByDay: Record<number, string> = {
@@ -5379,6 +5464,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     2: "Where do you notice hiding, blame, or anger in your own life?",
     3: "What does Noah's obedience teach you about following God when the world around you is drifting?",
     4: "What kind of new beginning are you asking God to help you walk into?",
+    5: "Where is God asking you to obey, trust His promise, or stop grasping for control?",
   };
 
   function getBibleYearDayTaskKey(task: TaskState) {
@@ -6096,7 +6182,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   const renderBibleYearSeriesPage = () => {
-    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 4);
+    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 5);
     const visibleChapterCount = visibleSeriesDays.reduce((total, day) => total + day.readings.length, 0);
     const matchedSeriesDay = visibleSeriesDays.find((day) =>
       day.readings.some((reading) =>
@@ -6786,26 +6872,84 @@ Before we understand redemption, we need to understand what God made humanity fo
             {!bibleYearDashboardActive && !homePanelOverride && !shouldShowCompletionPanel && deepStudyNode ? (
               <div className="dashboard-inline-deep-study mb-3 sm:mb-4">{deepStudyNode}</div>
             ) : null}
-            {bibleYearDashboardActive && !selectedBibleYearSeriesDay && !homePanelOverride && !shouldShowCompletionPanel ? (
-              <section className="dashboard-inline-task mb-3 rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_78%,transparent)] px-4 py-3 text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
-                <div className="flex items-center gap-3">
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[var(--bb-surface-soft,#f4f8ff)] text-2xl shadow-sm" aria-hidden="true">📖</span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible In One Year</span>
-                    <span className="mt-0.5 block truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">{currentDashboardDayLabel}</span>
-                    <span className="mt-0.5 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                      Today&apos;s reading is focused on {activeChapterLabel}. Keep the same chapter tasks moving.
-                    </span>
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={openBibleYearSeriesDashboard}
-                  className="mt-3 w-full rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
-                >
-                  Open Bible In One Year Series
-                </button>
-              </section>
+            {bibleYearDashboardActive && !homePanelOverride && !shouldShowCompletionPanel ? (
+              <>
+                <section className="dashboard-inline-task mb-3 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_82%,transparent)] px-4 py-3 text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">My Bible Study Plan</p>
+                      <p className="mt-0.5 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                        Move through each study as you complete the Bible in One Year.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={openBibleYearSeriesDashboard}
+                      className="shrink-0 rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] px-3 py-1.5 text-[10px] font-black text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-95"
+                    >
+                      View All
+                    </button>
+                  </div>
+                  <div className="mt-4 overflow-x-auto pb-1">
+                    <div className="grid min-w-[520px] grid-cols-5 items-start gap-0">
+                      {bibleYearStudyPlanMilestones.map((milestone, index) => {
+                        const completed = bibleYearCompletedCardsByDay[milestone.dayNumber] || {};
+                        const isComplete = Boolean(completed.reading && completed.trivia && completed.reflection);
+                        const isCurrent = activeBibleYearDashboardDay?.dayNumber === milestone.dayNumber;
+                        const isUnlocked = milestone.dayNumber <= 5;
+                        const milestoneDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === milestone.dayNumber);
+
+                        return (
+                          <div key={milestone.dayNumber} className="relative px-1 text-center">
+                            {index > 0 ? (
+                              <span
+                                className={`absolute left-[-50%] top-[22px] h-[2px] w-full ${
+                                  isComplete || isCurrent
+                                    ? "bg-[var(--bb-accent,#2f7fe8)]"
+                                    : "bg-[var(--bb-card-border,#dbe7f4)]"
+                                }`}
+                                aria-hidden="true"
+                              />
+                            ) : null}
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (!milestoneDay || !isUnlocked) return;
+                                setActiveBibleYearDayCard(null);
+                                setSelectedBibleYearSeriesDay(milestoneDay);
+                              }}
+                              disabled={!milestoneDay || !isUnlocked}
+                              className={`relative z-10 mx-auto grid h-11 w-11 place-items-center rounded-full border text-sm font-black shadow-sm transition ${
+                                isComplete
+                                  ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)]"
+                                  : isCurrent
+                                    ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] ring-4 ring-[color-mix(in_srgb,var(--bb-accent)_18%,transparent)]"
+                                    : isUnlocked
+                                      ? "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-muted,#6b7280)] hover:border-[var(--bb-accent,#2f7fe8)]"
+                                      : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#6b7280)] opacity-70"
+                              }`}
+                              aria-label={`${milestone.label} ${isComplete ? "complete" : isCurrent ? "in progress" : isUnlocked ? "unlocked" : "locked"}`}
+                            >
+                              {isComplete ? "✓" : isCurrent ? milestone.dayNumber : "•"}
+                            </button>
+                            <p className="mt-2 truncate text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">{milestone.label}</p>
+                            <p className={`mt-0.5 text-[10px] font-bold leading-tight ${
+                              isComplete
+                                ? "text-[var(--bb-accent,#2f7fe8)]"
+                                : isCurrent
+                                  ? "text-[var(--bb-accent,#2f7fe8)]"
+                                  : "text-[var(--bb-text-muted,#6b7280)]"
+                            }`}>
+                              {isComplete ? "Complete" : isCurrent ? "In Progress" : isUnlocked ? "Unlocked" : "Locked"}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </section>
+
+              </>
             ) : null}
             {false ? (
             <div

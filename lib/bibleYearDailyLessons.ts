@@ -650,3 +650,104 @@ export const GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON: BibleYearDailyLesson = {
     "The flood did not end God's purpose. It preserved the world for the next movement of the promise.",
   ],
 };
+
+export const GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON: BibleYearDailyLesson = {
+  dayNumber: 5,
+  title: "The Obedience of Abraham",
+  reference: "Genesis 11-13",
+  estimatedListenTime: "about 16 min",
+  opening: [
+    "Day 5 begins the story of Abraham.",
+    "Genesis 11 through 13 moves from Babel's pride to Abram's call, from unfinished family history to obedient movement, and from grasping for control to trusting God's promise.",
+    "Abram is not introduced as perfect. He obeys, stumbles, returns to worship, and learns that God's promise does not need to be protected by selfishness.",
+  ],
+  sections: [
+    {
+      heading: "Babel Tries to Make a Name",
+      verseBlock: { reference: "Genesis 11:1-9", chapter: 11, startVerse: 1, endVerse: 9 },
+      teaching: [
+        "Babel is humanity trying to build security without surrender.",
+        "They want a city, a tower, and a name for themselves.",
+        "That matters because Genesis 12 will answer Babel with God's promise to Abram: I will make thy name great.",
+        "Human pride gathers and grasps. God's promise calls and gives.",
+      ],
+    },
+    {
+      heading: "The Story Narrows Toward Abram",
+      verseBlock: { reference: "Genesis 11:10-32", chapter: 11, startVerse: 10, endVerse: 32 },
+      teaching: [
+        "After Babel scatters humanity, Genesis narrows the camera to Shem's family line.",
+        "These names carry the story toward Abram.",
+        "Terah's family begins moving toward Canaan, but they stop in Haran.",
+        "Genesis 11 ends with an unfinished road, and that is exactly where God's call will meet Abram.",
+      ],
+    },
+    {
+      heading: "God Calls Abram",
+      verseBlock: { reference: "Genesis 12:1-3", chapter: 12, startVerse: 1, endVerse: 3 },
+      teaching: [
+        "God calls Abram to leave country, kindred, and his father's house.",
+        "The command is costly, but it comes with promise.",
+        "God promises land, nation, blessing, a great name, and blessing for all families of the earth.",
+        "This is the beginning of the promise story that will eventually lead to Jesus.",
+      ],
+    },
+    {
+      heading: "Abram Goes",
+      verseBlock: { reference: "Genesis 12:4-9", chapter: 12, startVerse: 4, endVerse: 9 },
+      teaching: [
+        "Abram departs as the LORD had spoken.",
+        "He does not have the whole map. He has God's word.",
+        "When he reaches Canaan, God repeats the land promise, and Abram builds an altar.",
+        "Obedience and worship belong together in Abram's story.",
+      ],
+    },
+    {
+      heading: "Fear Takes Abram to Egypt",
+      verseBlock: { reference: "Genesis 12:10-20", chapter: 12, startVerse: 10, endVerse: 20 },
+      teaching: [
+        "Famine tests Abram almost immediately after obedience.",
+        "In Egypt, fear takes over, and Abram tells Sarai to say she is his sister.",
+        "The Bible is honest: Abram is chosen, but still afraid.",
+        "God protects Sarai and preserves the promise even when Abram fails.",
+      ],
+    },
+    {
+      heading: "Abram Returns to the Altar",
+      verseBlock: { reference: "Genesis 13:1-7", chapter: 13, startVerse: 1, endVerse: 7 },
+      teaching: [
+        "Abram comes back from Egypt to the place of the altar.",
+        "That feels like a reset after fear.",
+        "But blessing brings a new test: Abram and Lot have too many flocks and herds for the land to hold them together.",
+        "Sometimes faith is tested by pressure, and sometimes it is tested by abundance.",
+      ],
+    },
+    {
+      heading: "Lot Chooses by Sight",
+      verseBlock: { reference: "Genesis 13:8-13", chapter: 13, startVerse: 8, endVerse: 13 },
+      teaching: [
+        "Abram chooses peace and lets Lot pick first.",
+        "Lot lifts up his eyes and chooses what looks best.",
+        "But the well-watered plain is close to Sodom.",
+        "Genesis is warning us that what looks good can still move a person toward danger.",
+      ],
+    },
+    {
+      heading: "God Repeats the Promise",
+      verseBlock: { reference: "Genesis 13:14-18", chapter: 13, startVerse: 14, endVerse: 18 },
+      teaching: [
+        "After Lot separates from Abram, God tells Abram to lift up his eyes.",
+        "Lot looked and chose for himself. Abram looks and receives what God promises.",
+        "God repeats the promise of land and descendants.",
+        "Abram moves his tent and builds another altar. Faith can let go because God has already spoken.",
+      ],
+    },
+  ],
+  closing: [
+    "Day 5 shows that obedience begins with God's word.",
+    "Babel tries to make a name, but God promises to make Abram's name great.",
+    "Abram follows, fails, returns to worship, and learns to trust God enough to let Lot choose first.",
+    "The promise is not held together by Abram's perfection.",
+    "It is held together by God's faithfulness.",
+  ],
+};
