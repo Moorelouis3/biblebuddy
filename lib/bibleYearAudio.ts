@@ -79,6 +79,7 @@ export const BIBLE_YEAR_DAY_SEVEN_AUDIO: BibleYearAudioDay = {
   title: "Day 7 - The Covenant Promise",
   storagePath: getBibleYearAudioStoragePath(7),
   apiSrc: getBibleYearAudioApiSrc(7),
+  videoSrc: "https://player.mediadelivery.net/play/618103/3888ca02-171e-4ce6-96b2-b58f1541f340",
   estimatedDuration: "about 14 min",
 };
 
