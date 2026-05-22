@@ -46,8 +46,8 @@ import {
   GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
-import { GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
-import { BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
+import { GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
+import { BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
@@ -2030,12 +2030,12 @@ export default function DashboardJourneyExperience({
   const activeBibleYearDashboardDay = bibleYearDashboardActive
     ? selectedBibleYearSeriesDay ||
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-        .filter((day) => day.dayNumber <= 5)
+        .filter((day) => day.dayNumber <= 6)
         .find((day) => {
           const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
           return !(completed.reading && completed.trivia && completed.reflection);
         }) ||
-      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 5) ||
+      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 6) ||
       null
     : null;
   const bibleYearDashboardTasks = activeBibleYearDashboardDay
@@ -2047,6 +2047,7 @@ export default function DashboardJourneyExperience({
     { dayNumber: 3, label: "Noah" },
     { dayNumber: 4, label: "Flood" },
     { dayNumber: 5, label: "Abraham" },
+    { dayNumber: 6, label: "Lot" },
   ];
   const dashboardTaskSource = bibleYearDashboardTasks || visibleTasks;
   const nextTask = dashboardTaskSource.find((task) => !task.done) ?? null;
@@ -3013,7 +3014,7 @@ export default function DashboardJourneyExperience({
   }
 
   function openBibleYearDashboard() {
-    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 5);
+    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 6);
     const nextBibleYearDay =
       builtBibleYearDays.find((day) => {
         const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
@@ -3118,14 +3119,14 @@ export default function DashboardJourneyExperience({
       setBibleYearDashboardActive(true);
       setBibleYearSeriesActive(false);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 5);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 6);
       if (day) setSelectedBibleYearSeriesDay(day);
       setActivePage(0);
     } else if (view === "bible-year-series") {
       setBibleYearDashboardActive(false);
       setBibleYearSeriesActive(true);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 5);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 6);
       if (day) setBibleYearSeriesDetailDay(day);
       setActivePage(0);
     } else {
@@ -4405,6 +4406,7 @@ export default function DashboardJourneyExperience({
     if (dayNumber === 3) return GENESIS_DAY_THREE_NOAH_ARK_LESSON;
     if (dayNumber === 4) return GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON;
     if (dayNumber === 5) return GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON;
+    if (dayNumber === 6) return GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON;
     return null;
   }
 
@@ -4414,6 +4416,7 @@ export default function DashboardJourneyExperience({
     if (dayNumber === 3) return BIBLE_YEAR_DAY_THREE_AUDIO;
     if (dayNumber === 4) return BIBLE_YEAR_DAY_FOUR_AUDIO;
     if (dayNumber === 5) return BIBLE_YEAR_DAY_FIVE_AUDIO;
+    if (dayNumber === 6) return BIBLE_YEAR_DAY_SIX_AUDIO;
     return null;
   }
 
@@ -4893,6 +4896,48 @@ export default function DashboardJourneyExperience({
         list: ["🌄 Abram lifts his eyes", "🌍 land is promised", "🌱 descendants are promised", "🚶 Abram walks by faith", "🔥 another altar is built"],
       },
     };
+    const daySixDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
+      "Genesis 14:1-12": {
+        heading: "⚔️ War Reaches Lot",
+        teachingTitle: "🏙️ Lot's Direction Becomes Dangerous",
+        list: ["👑 kings go to war", "🏙️ Sodom is pulled in", "⛓️ Lot is captured", "📦 goods are taken", "⚠️ choices have consequences"],
+      },
+      "Genesis 14:13-16": {
+        heading: "🛡️ Abram Rescues Lot",
+        teachingTitle: "💪 Faith Moves Toward Rescue",
+        list: ["📣 Abram hears", "🛡️ trained servants gather", "🌙 night pursuit begins", "⛓️ captives are freed", "🤝 Lot is brought back"],
+      },
+      "Genesis 14:17-20": {
+        heading: "🍞 Melchizedek Blesses Abram",
+        teachingTitle: "🙌 Victory Belongs to God Most High",
+        list: ["🍞 bread and wine appear", "👑 Melchizedek blesses Abram", "🙌 God Most High is praised", "🛡️ God delivered the victory", "🔟 Abram gives a tenth"],
+      },
+      "Genesis 14:21-24": {
+        heading: "🚫 Abram Refuses Sodom's Reward",
+        teachingTitle: "🧭 Discernment After Victory",
+        list: ["🏙️ Sodom offers goods", "✋ Abram refuses", "🙌 God gets the credit", "🧵 not even a thread is taken", "🧭 blessing must stay clean"],
+      },
+      "Genesis 15:1-6": {
+        heading: "✨ God Speaks to Abram's Fear",
+        teachingTitle: "🌌 Faith Under the Stars",
+        list: ["🛡️ God is Abram's shield", "💬 Abram is honest", "👶 the heir is promised", "🌌 stars fill the sky", "✅ Abram believes"],
+      },
+      "Genesis 15:7-11": {
+        heading: "🕊️ Abram Asks for Assurance",
+        teachingTitle: "🤝 God Meets Honest Questions",
+        list: ["🏜️ God remembers Ur", "❓ Abram asks how", "🐐 covenant pieces are prepared", "🕊️ birds come down", "⏳ Abram waits"],
+      },
+      "Genesis 15:12-16": {
+        heading: "🌑 God Tells Abram the Long Road",
+        teachingTitle: "⏳ Promise Does Not Mean Instant",
+        list: ["🌑 darkness falls", "⛓️ affliction is foretold", "⚖️ God will judge", "🚶 descendants will return", "🕊️ Abram will die in peace"],
+      },
+      "Genesis 15:17-21": {
+        heading: "🔥 God Makes Covenant",
+        teachingTitle: "🔥 God Carries the Promise",
+        list: ["🌑 night comes", "🔥 fire passes through", "🤝 covenant is made", "🌍 land is promised", "🙌 God binds Himself to His word"],
+      },
+    };
 
     const sectionBlocks = lesson.sections
       .map((section) => {
@@ -4906,6 +4951,8 @@ export default function DashboardJourneyExperience({
                 ? dayFourDisplay[section.verseBlock.reference]
                 : lesson.dayNumber === 5
                   ? dayFiveDisplay[section.verseBlock.reference]
+                  : lesson.dayNumber === 6
+                    ? daySixDisplay[section.verseBlock.reference]
                   : null;
         const scripture = lesson.dayNumber === 1
           ? getDayOneSpokenVerseCallouts(section.verseBlock)
@@ -5239,7 +5286,7 @@ No pretending.
 ✨ not yet covered by shame`,
     };
 
-    if (lesson.dayNumber === 1 || lesson.dayNumber === 2 || lesson.dayNumber === 3 || lesson.dayNumber === 4 || lesson.dayNumber === 5) {
+    if (lesson.dayNumber === 1 || lesson.dayNumber === 2 || lesson.dayNumber === 3 || lesson.dayNumber === 4 || lesson.dayNumber === 5 || lesson.dayNumber === 6) {
       return buildBibleYearSpokenScriptMarkdown(lesson);
     }
 
@@ -5496,6 +5543,38 @@ Before we understand redemption, we need to understand what God made humanity fo
         answer: "Choose the land first",
       },
     ],
+    6: [
+      {
+        id: "day6-lot-captured",
+        question: "Who was taken captive in Genesis 14?",
+        options: ["Lot", "Isaac", "Pharaoh"],
+        answer: "Lot",
+      },
+      {
+        id: "day6-rescue",
+        question: "What did Abram do when he heard Lot was captured?",
+        options: ["He rescued him", "He built Babel", "He stayed in Egypt"],
+        answer: "He rescued him",
+      },
+      {
+        id: "day6-melchizedek",
+        question: "Who blessed Abram after the battle?",
+        options: ["Melchizedek", "Cain", "Laban"],
+        answer: "Melchizedek",
+      },
+      {
+        id: "day6-reward",
+        question: "What did God call Himself to Abram in Genesis 15?",
+        options: ["Abram's shield and reward", "Abram's enemy", "Abram's servant"],
+        answer: "Abram's shield and reward",
+      },
+      {
+        id: "day6-believed",
+        question: "What did Abram do in Genesis 15:6?",
+        options: ["Believed in the LORD", "Returned to Babel", "Rejected the promise"],
+        answer: "Believed in the LORD",
+      },
+    ],
   };
 
   const bibleYearReflectionPromptByDay: Record<number, string> = {
@@ -5504,6 +5583,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     3: "What does Noah's obedience teach you about following God when the world around you is drifting?",
     4: "What kind of new beginning are you asking God to help you walk into?",
     5: "Where is God asking you to obey, trust His promise, or stop grasping for control?",
+    6: "Where do you need courage, discernment, or renewed trust in God's promise?",
   };
 
   function getBibleYearDayTaskKey(task: TaskState) {
@@ -5520,7 +5600,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     return getBibleYearDayCompletedCount(day) >= BIBLE_YEAR_DAY_CARD_KEYS.length;
   }
 
-  function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 5)) {
+  function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 6)) {
     const nextDay = days.find((day) => !isBibleYearDayComplete(day)) || days[days.length - 1];
     return nextDay?.dayNumber || 1;
   }
@@ -5626,7 +5706,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   useEffect(() => {
     if (!userId) return;
     const completedEntries = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-      .filter((day) => day.dayNumber <= 5)
+      .filter((day) => day.dayNumber <= 6)
       .flatMap((day) => {
         const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
         return BIBLE_YEAR_DAY_CARD_KEYS
@@ -6210,6 +6290,8 @@ Before we understand redemption, we need to understand what God made humanity fo
       2: "about 20 min",
       3: "about 20 min",
       4: "about 20-22 min",
+      5: "about 16 min",
+      6: "about 16 min",
     };
     const lessonSummaries: Record<number, string[]> = {
       1: [
@@ -6227,6 +6309,14 @@ Before we understand redemption, we need to understand what God made humanity fo
       4: [
         "Day 4 walks through Genesis 8, 9, and 10 together: the flood waters receding, Noah leaving the ark, the altar, God's covenant, the rainbow, Noah's failure, and the nations spreading across the earth.",
         "This day moves from judgment into mercy, showing a new beginning after the flood while still being honest about the human heart.",
+      ],
+      5: [
+        "Day 5 walks through Genesis 11, 12, and 13 together: Babel, Abram's family line, God's call, famine, Egypt, Lot's choice, and God's repeated promise.",
+        "This day begins Abraham's story by showing faith in motion, weakness under pressure, and the promise of God holding steady.",
+      ],
+      6: [
+        "Day 6 walks through Genesis 14 and 15 together: Lot's capture, Abram's rescue, Melchizedek's blessing, Sodom's offer, Abram's faith, and God's covenant promise.",
+        "This day shows courage in crisis, discernment after victory, and faith that believes God's word while still waiting for the promise.",
       ],
     };
     const daySummary = lessonSummaries[day.dayNumber] || [day.summary];
@@ -6292,7 +6382,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   const renderBibleYearSeriesPage = () => {
-    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 5);
+    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 6);
     const visibleChapterCount = visibleSeriesDays.reduce((total, day) => total + day.readings.length, 0);
     const currentSeriesDayNumber = getCurrentBibleYearSeriesDayNumber(visibleSeriesDays);
     const orderedSeriesDays = [...visibleSeriesDays].sort((a, b) => {
@@ -6813,14 +6903,25 @@ Before we understand redemption, we need to understand what God made humanity fo
           0%, 100% {
             transform: scale(1);
             box-shadow:
-              0 0 0 0 color-mix(in srgb, var(--bb-accent, #2f7fe8) 34%, transparent),
-              0 10px 24px color-mix(in srgb, var(--bb-accent, #2f7fe8) 18%, transparent);
+              0 0 0 0 color-mix(in srgb, var(--bb-accent, #2f7fe8) 42%, transparent),
+              0 12px 26px color-mix(in srgb, var(--bb-accent, #2f7fe8) 24%, transparent);
           }
           50% {
-            transform: scale(1.08);
+            transform: scale(1.12);
             box-shadow:
-              0 0 0 10px color-mix(in srgb, var(--bb-accent, #2f7fe8) 0%, transparent),
-              0 16px 34px color-mix(in srgb, var(--bb-accent, #2f7fe8) 32%, transparent);
+              0 0 0 14px color-mix(in srgb, var(--bb-accent, #2f7fe8) 0%, transparent),
+              0 18px 38px color-mix(in srgb, var(--bb-accent, #2f7fe8) 38%, transparent);
+          }
+        }
+
+        @keyframes bible-year-current-milestone-ring {
+          0% {
+            opacity: 0.62;
+            transform: scale(0.92);
+          }
+          70%, 100% {
+            opacity: 0;
+            transform: scale(1.72);
           }
         }
 
@@ -6899,7 +7000,45 @@ Before we understand redemption, we need to understand what God made humanity fo
         .chapter-complete-fill { animation: chapter-complete-fill 900ms ease-out; }
         .next-task-pulse { animation: next-task-pulse 1.9s ease-in-out infinite; }
         .bible-year-task-soft-pulse { animation: bible-year-task-soft-pulse 3.4s ease-in-out infinite; }
-        .bible-year-current-milestone { animation: bible-year-current-milestone 1.55s ease-in-out infinite; }
+        .bible-year-current-milestone { animation: bible-year-current-milestone 1.2s ease-in-out infinite; }
+        .bible-year-current-milestone::before {
+          content: "";
+          position: absolute;
+          inset: -7px;
+          border-radius: 999px;
+          border: 2px solid color-mix(in srgb, var(--bb-accent, #2f7fe8) 72%, transparent);
+          animation: bible-year-current-milestone-ring 1.2s ease-out infinite;
+          pointer-events: none;
+        }
+        .bible-year-journey-scroll {
+          scrollbar-width: thin;
+          scrollbar-color:
+            color-mix(in srgb, var(--bb-accent, #2f7fe8) 72%, var(--bb-card-border, #dbe7f4))
+            color-mix(in srgb, var(--bb-card, #ffffff) 34%, transparent);
+        }
+        .bible-year-journey-scroll::-webkit-scrollbar {
+          height: 12px;
+        }
+        .bible-year-journey-scroll::-webkit-scrollbar-track {
+          border-radius: 999px;
+          background: color-mix(in srgb, var(--bb-card, #ffffff) 34%, transparent);
+          border: 1px solid color-mix(in srgb, var(--bb-card-border, #dbe7f4) 54%, transparent);
+        }
+        .bible-year-journey-scroll::-webkit-scrollbar-thumb {
+          border-radius: 999px;
+          background:
+            linear-gradient(90deg,
+              color-mix(in srgb, var(--bb-accent, #2f7fe8) 76%, var(--bb-card, #ffffff)),
+              color-mix(in srgb, var(--bb-accent, #2f7fe8) 46%, var(--bb-button, #2f7fe8))
+            );
+          border: 3px solid color-mix(in srgb, var(--bb-card, #ffffff) 40%, transparent);
+          box-shadow: 0 0 12px color-mix(in srgb, var(--bb-accent, #2f7fe8) 24%, transparent);
+        }
+        .bible-year-journey-scroll::-webkit-scrollbar-button {
+          width: 0;
+          height: 0;
+          display: none;
+        }
         .start-here-flash { animation: start-here-flash 1s ease-in-out infinite; }
         .task-estimate-primary { animation: task-estimate-primary 2.4s ease-in-out infinite; }
         .task-estimate-secondary { animation: task-estimate-secondary 2.4s ease-in-out infinite; }
@@ -6920,8 +7059,6 @@ Before we understand redemption, we need to understand what God made humanity fo
           content: none !important;
         }
         .bb-dashboard-stable-motion .next-task-pulse,
-        .bb-dashboard-stable-motion .bible-year-task-soft-pulse,
-        .bb-dashboard-stable-motion .bible-year-current-milestone,
         .bb-dashboard-stable-motion .start-here-flash,
         .bb-dashboard-stable-motion .task-estimate-primary,
         .bb-dashboard-stable-motion .task-estimate-secondary,
@@ -7056,7 +7193,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             ) : null}
             {bibleYearDashboardActive && !homePanelOverride && !shouldShowCompletionPanel ? (
               <>
-                <section className="dashboard-inline-task mb-3 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_82%,transparent)] px-4 py-3 text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
+                <section className="dashboard-inline-task mb-3 overflow-visible rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_82%,transparent)] px-4 py-3 text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
                   <div className="flex items-center justify-between gap-3">
                     <div className="min-w-0">
                       <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">My Bible Study Plan</p>
@@ -7072,8 +7209,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                       View All
                     </button>
                   </div>
-                  <div className="mt-4 overflow-x-auto pb-1">
-                    <div className="grid min-w-[520px] grid-cols-5 items-start gap-0">
+                  <div className="bible-year-journey-scroll mt-2 overflow-x-auto px-1 pb-3 pt-5">
+                    <div className="grid min-w-[620px] grid-cols-6 items-start gap-0">
                       {bibleYearStudyPlanMilestones.map((milestone, index) => {
                         const completed = bibleYearCompletedCardsByDay[milestone.dayNumber] || {};
                         const isComplete = Boolean(completed.reading && completed.trivia && completed.reflection);

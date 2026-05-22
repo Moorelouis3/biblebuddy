@@ -751,3 +751,104 @@ export const GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON: BibleYearDailyLesson = {
     "It is held together by God's faithfulness.",
   ],
 };
+
+export const GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON: BibleYearDailyLesson = {
+  dayNumber: 6,
+  title: "The Rescue of Lot",
+  reference: "Genesis 14-15",
+  estimatedListenTime: "about 16 min",
+  opening: [
+    "Day 6 moves Abram from tents and altars into kings, war, rescue, worship, and covenant.",
+    "Genesis 14 shows Abram acting with courage when Lot is taken captive. Genesis 15 shows Abram standing before God with honest questions about the promise.",
+    "This day matters because faith is not only seen when Abram leaves home. Faith is also seen when he rescues, refuses compromise, believes God's word, and receives covenant assurance in the dark.",
+  ],
+  sections: [
+    {
+      heading: "War Reaches Lot",
+      verseBlock: { reference: "Genesis 14:1-12", chapter: 14, startVerse: 1, endVerse: 12 },
+      teaching: [
+        "Genesis 14 opens with a world of kings, alliances, rebellion, and war.",
+        "The fighting eventually reaches Sodom, where Lot has settled.",
+        "Lot is taken captive with the goods of Sodom.",
+        "Genesis is showing us that Lot's direction in Genesis 13 now has consequences in Genesis 14. What looked good by sight has placed him near danger.",
+      ],
+    },
+    {
+      heading: "Abram Rescues Lot",
+      verseBlock: { reference: "Genesis 14:13-16", chapter: 14, startVerse: 13, endVerse: 16 },
+      teaching: [
+        "When Abram hears that Lot has been captured, he does not pretend it is not his problem.",
+        "He gathers trained servants from his own household and pursues the enemy.",
+        "Abram's faith is not passive. It becomes courageous action for the sake of another person.",
+        "He brings back Lot, the people, and the goods. Grace moves toward the person who got too close to Sodom.",
+      ],
+    },
+    {
+      heading: "Melchizedek Blesses Abram",
+      verseBlock: { reference: "Genesis 14:17-20", chapter: 14, startVerse: 17, endVerse: 20 },
+      teaching: [
+        "After the rescue, Melchizedek appears as king of Salem and priest of the Most High God.",
+        "He brings bread and wine, blesses Abram, and blesses God Most High who delivered Abram's enemies into his hand.",
+        "This keeps Abram's victory in the right place. Abram fought, but God delivered.",
+        "Abram gives Melchizedek a tenth of everything, recognizing that his strength and victory belong under God's authority.",
+      ],
+    },
+    {
+      heading: "Abram Refuses Sodom's Reward",
+      verseBlock: { reference: "Genesis 14:21-24", chapter: 14, startVerse: 21, endVerse: 24 },
+      teaching: [
+        "The king of Sodom offers Abram goods after the battle.",
+        "Abram refuses because he does not want Sodom to say, I have made Abram rich.",
+        "This is a major faith moment. Abram will receive blessing from God, not from a corrupt city.",
+        "Victory can be followed by temptation. Abram shows discernment after courage.",
+      ],
+    },
+    {
+      heading: "God Speaks to Abram's Fear",
+      verseBlock: { reference: "Genesis 15:1-6", chapter: 15, startVerse: 1, endVerse: 6 },
+      teaching: [
+        "After these things, God's word comes to Abram in a vision.",
+        "God says, Fear not, Abram: I am thy shield, and thy exceeding great reward.",
+        "Abram is honest about the unresolved ache: he still has no child.",
+        "God takes him outside, points him to the stars, and repeats the promise. Abram believes the LORD, and God counts it to him for righteousness.",
+      ],
+    },
+    {
+      heading: "Abram Asks for Assurance",
+      verseBlock: { reference: "Genesis 15:7-11", chapter: 15, startVerse: 7, endVerse: 11 },
+      teaching: [
+        "God reminds Abram that He brought him out of Ur to give him the land.",
+        "Abram asks, Whereby shall I know that I shall inherit it?",
+        "This question is not treated as rebellion. God answers by preparing a covenant ceremony.",
+        "Abram lays out the animals and drives away the birds. The promise is being confirmed, but he must still wait in faith.",
+      ],
+    },
+    {
+      heading: "God Tells Abram the Long Road",
+      verseBlock: { reference: "Genesis 15:12-16", chapter: 15, startVerse: 12, endVerse: 16 },
+      teaching: [
+        "As the sun goes down, a deep sleep falls on Abram, and great darkness comes over him.",
+        "God tells Abram that his descendants will be strangers in a land that is not theirs and will be afflicted for four hundred years.",
+        "The promise is real, but the road will not be easy or instant.",
+        "God also promises judgment on the oppressing nation, future deliverance, and Abram's own peace. The covenant includes both suffering and rescue.",
+      ],
+    },
+    {
+      heading: "God Makes Covenant",
+      verseBlock: { reference: "Genesis 15:17-21", chapter: 15, startVerse: 17, endVerse: 21 },
+      teaching: [
+        "When darkness falls, a smoking furnace and a burning lamp pass between the pieces.",
+        "This is the covenant moment. God binds Himself to His promise.",
+        "Abram does not walk between the pieces. God does.",
+        "The land promise is named again, and the future is placed in God's faithful hands. The promise rests on God, not on Abram's ability to control the timeline.",
+      ],
+    },
+  ],
+  closing: [
+    "Day 6 shows faith under pressure.",
+    "Abram rescues Lot with courage, receives blessing from Melchizedek, refuses to let Sodom define his success, and then brings his honest questions to God.",
+    "Genesis 15 teaches that faith is not pretending there are no questions.",
+    "Faith hears God's word, believes God's promise, and rests in God's covenant even when the fulfillment is still ahead.",
+    "Abram's shield, reward, righteousness, descendants, land, and future are all held by the Lord.",
+  ],
+};

@@ -60,3 +60,11 @@ export const BIBLE_YEAR_DAY_FIVE_AUDIO: BibleYearAudioDay = {
   apiSrc: getBibleYearAudioApiSrc(5),
   estimatedDuration: "about 15 min",
 };
+
+export const BIBLE_YEAR_DAY_SIX_AUDIO: BibleYearAudioDay = {
+  dayNumber: 6,
+  title: "Day 6 - The Rescue of Lot",
+  storagePath: getBibleYearAudioStoragePath(6),
+  apiSrc: getBibleYearAudioApiSrc(6),
+  estimatedDuration: "about 16 min",
+};
