@@ -1,6 +1,4 @@
-export const BIBLE_YEAR_DAY_ONE_DEEP_NOTES = `# Day 1 Deep Notes
-
-# Creation of the World
+export const BIBLE_YEAR_DAY_ONE_DEEP_NOTES = `# Creation of the World
 
 ## 🌍 Big Picture
 

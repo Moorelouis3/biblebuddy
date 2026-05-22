@@ -7113,16 +7113,16 @@ Before we understand redemption, we need to understand what God made humanity fo
                     : "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(135deg,var(--bb-accent-soft,#eaf5ff),var(--bb-card,#ffffff))] text-[var(--bb-text-primary,#111827)] hover:scale-[1.01] hover:brightness-[1.02]"
                 }`}
               >
-                <span className="flex items-center gap-3">
-                  <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-xl font-black ${
+                <span className="contents">
+                  <span className={`hidden ${
                     readingCardComplete
                       ? "bg-emerald-400 text-emerald-950"
                       : "bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)]"
                   }`} aria-hidden="true">
                     ✓
                   </span>
-                  <span className="min-w-0">
-                    <span className="block text-lg font-black leading-tight">
+                  <span className="contents">
+                    <span className="block text-base font-black leading-tight">
                       {readingCardComplete ? "Reading Completed" : "Mark Reading Completed"}
                     </span>
                     <span className="mt-1 block text-sm font-bold opacity-80">
@@ -7130,6 +7130,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </span>
                   </span>
                 </span>
+                <span className="rounded-full bg-black/12 px-2.5 py-1 text-xs font-black">+25 XP</span>
               </button>
             </>
           ) : null}
@@ -7537,39 +7538,38 @@ Before we understand redemption, we need to understand what God made humanity fo
                   markBibleYearDayCardComplete(day, "reading");
                 }}
                 disabled={readingCardComplete}
-                className={`mt-3 w-full rounded-[24px] border px-4 py-4 text-left shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),0_18px_38px_rgba(0,0,0,0.28)] transition ${
+                className={`mt-3 flex w-full items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-center shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),0_18px_38px_rgba(0,0,0,0.28)] transition ${
                   readingCardComplete
-                    ? "cursor-default border-emerald-400/50 bg-emerald-500/16 text-emerald-100"
-                    : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_58%,transparent)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent),rgba(255,255,255,0.05))] text-[var(--bb-text-primary,#fff7ed)] hover:scale-[1.01] hover:brightness-110"
+                    ? "cursor-default border-emerald-400/70 bg-emerald-400 text-emerald-950"
+                    : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_70%,transparent)] bg-[var(--bb-accent,#f6b44b)] text-black hover:scale-[1.01] hover:brightness-105"
                 }`}
               >
-                <span className="flex items-center gap-3">
-                  <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-xl font-black ${
+                <span className="contents">
+                  <span className={`hidden ${
                     readingCardComplete
                       ? "bg-emerald-400 text-emerald-950"
                       : "bg-[var(--bb-accent,#f6b44b)] text-black"
                   }`} aria-hidden="true">
                     ✓
                   </span>
-                  <span className="min-w-0">
-                    <span className="block text-lg font-black leading-tight">
+                  <span className="contents">
+                    <span className="block text-base font-black leading-tight">
                       {readingCardComplete ? "Reading Completed" : "Mark Reading Completed"}
                     </span>
-                    <span className="mt-1 block text-sm font-bold opacity-85">
+                    <span className="hidden">
                       {readingCardComplete ? `Day ${day.dayNumber} reading is locked in.` : "Tap after you finish the video and lesson. +25 XP"}
                     </span>
                   </span>
                 </span>
+                <span className="rounded-full bg-black/12 px-2.5 py-1 text-xs font-black">+25 XP</span>
               </button>
             </div>
           ) : null}
 
-          <div className="mt-4 grid grid-cols-5 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent)] bg-black/18">
+          <div className="mt-4 grid grid-cols-3 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent)] bg-black/18">
             {[
               { label: "Favorite", premium: false, icon: "heart" },
               { label: "Download", premium: true, icon: "download" },
-              { label: "Deep Study", premium: true, icon: "search" },
-              { label: readingCardComplete ? "Completed" : "Mark Complete", premium: false, icon: "check", action: "complete" },
               { label: "Share", premium: false, icon: "share", action: "share" },
             ].map((item, index) => {
               const disabled = item.premium || (item.action === "complete" && readingCardComplete);
