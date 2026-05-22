@@ -1,8 +1,4 @@
-export const BIBLE_YEAR_DAY_ONE_DEEP_NOTES = `# Creation of the World
-
-## 🌍 Big Picture
-
-Genesis 1-2 is the foundation of the Bible story.
+export const BIBLE_YEAR_DAY_ONE_DEEP_NOTES = `Genesis 1-2 is the foundation of the Bible story.
 
 Before sin enters the world, before shame, death, murder, flood, slavery, exile, or the cross, Scripture begins with God creating a good world.
 
@@ -28,9 +24,9 @@ Genesis 1 gives the wide view. God speaks, separates, names, fills, blesses, and
 
 > 🔥 **Big idea:** Genesis 1-2 shows us the world God wanted before sin broke it.
 
-# Genesis 1:1-5
-
 # God Speaks Into The Beginning
+
+## Genesis 1:1-5
 
 > 📖 **1** In the beginning, God created the heavens and the earth.
 >
@@ -168,9 +164,9 @@ The earth is dark, empty, and unformed, but God is already moving. That means un
 
 > ✨ **Big Thought:** God can bring light, order, and life into places that still look dark.
 
-# Genesis 1:6-13
-
 # God Forms A World That Can Hold Life
+
+## Genesis 1:6-13
 
 > 📖 **6** God said, "Let there be an expanse in the middle of the waters, and let it divide the waters from the waters."
 >
@@ -314,9 +310,9 @@ God is not only powerful. He is wise.
 
 > ✨ **Big Thought:** God does not only create things. He creates order, boundaries, systems, and spaces where life can grow.
 
-# Genesis 1:14-25
-
 # God Fills The Sky, Waters, And Earth
+
+## Genesis 1:14-25
 
 > 📖 **14** God said, "Let there be lights in the expanse of the sky to divide the day from the night; and let them be for signs to mark seasons, days, and years;
 >
@@ -434,9 +430,9 @@ The lights mark time. The waters swarm. The birds multiply. The animals fill the
 
 > ✨ **Big Thought:** God makes a world that is alive with rhythm, movement, blessing, and purpose.
 
-# Genesis 1:26-31
-
 # Humanity Is Made In God's Image
+
+## Genesis 1:26-31
 
 > 📖 **26** God said, "Let us make man in our image, after our likeness. Let them have dominion over the fish of the sea, over the birds of the sky, over the livestock, over all the earth, and over every creeping thing that creeps on the earth."
 >
@@ -540,9 +536,9 @@ Human value is not earned. It is given. Every person carries dignity because eve
 
 > ✨ **Big Thought:** Before humanity does anything for God, humanity is made by God and blessed with purpose.
 
-# Genesis 2:1-3
-
 # God Rests And Makes The Seventh Day Holy
+
+## Genesis 2:1-3
 
 > 📖 **1** The heavens, the earth, and all their vast array were finished.
 >
@@ -622,9 +618,9 @@ Work matters, but work is not everything. God builds rest into the world before 
 
 > ✨ **Big Thought:** Rest is not wasted time. Rest is receiving life from God instead of acting like everything depends on us.
 
-# Genesis 2:4-9
-
 # God Forms The Man And Plants Eden
+
+## Genesis 2:4-9
 
 > 📖 **4** This is the history of the generations of the heavens and of the earth when they were created, in the day that Yahweh God made the earth and the heavens.
 >
@@ -726,9 +722,9 @@ We are dust, but God gives breath. We are formed from the ground, but we are mad
 
 > ✨ **Big Thought:** Humanity is both lowly and loved: dust in God's hands, breath from God's life.
 
-# Genesis 2:10-17
-
 # God Gives Work, Freedom, And One Boundary
+
+## Genesis 2:10-17
 
 > 📖 **10** A river went out of Eden to water the garden; and from there it was parted, and became the source of four rivers.
 >
@@ -836,9 +832,9 @@ The boundary is not proof that God is harsh. It is part of life with God. Trust 
 
 > ✨ **Big Thought:** God's commands are given inside His generosity, not outside it.
 
-# Genesis 2:18-25
-
 # God Makes Woman And The First Human Relationship
+
+## Genesis 2:18-25
 
 > 📖 **18** Yahweh God said, "It is not good for the man to be alone. I will make him a helper comparable to him."
 >

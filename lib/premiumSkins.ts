@@ -121,6 +121,8 @@ export function cachePremiumSkinForUser(userId: string | null | undefined, skinI
 
 export function isIncomingPremiumSkinOlderThanCache(userId: string | null | undefined, selectedAt: string | null | undefined) {
   if (typeof window === "undefined" || !userId || !selectedAt) return false;
+  const pendingSync = readPendingPremiumSkinSync(userId);
+  if (!pendingSync) return false;
   const incomingSelectedAtMs = Date.parse(selectedAt);
   if (!Number.isFinite(incomingSelectedAtMs)) return false;
   const cachedUpdatedAtMs = readCachedPremiumSkinUpdatedAtMs(userId);

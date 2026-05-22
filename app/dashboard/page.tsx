@@ -5068,19 +5068,14 @@ export default function DashboardPage() {
             : isIncomingPremiumSkinOlderThanCache(userId, profileData?.active_premium_skin_selected_at)
             ? readCachedPremiumSkin(userId)
             : dbActiveSkin;
-          const cachedActiveSkin = readCachedPremiumSkin(userId);
           const documentActiveSkin =
             typeof document !== "undefined" ? normalizePremiumSkinId(document.documentElement.dataset.bbSkin) : "none";
           const candidateActiveSkin =
-            staleSafeDbSkin !== "none"
+            hasActiveSkinColumn
               ? staleSafeDbSkin
-              : cachedActiveSkin !== "none"
-                ? cachedActiveSkin
-                : documentActiveSkin !== "none"
-                  ? documentActiveSkin
-                  : hasActiveSkinColumn
-                    ? "none"
-                    : legacyMappedSkin;
+              : documentActiveSkin !== "none"
+                ? documentActiveSkin
+                : legacyMappedSkin;
           const resolvedActiveSkin = candidateActiveSkin;
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(userId, resolvedActiveSkin);

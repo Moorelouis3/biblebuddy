@@ -150,7 +150,10 @@ export default function LandingPage() {
     const fallbackTimer = window.setTimeout(() => {
       if (!settled) {
         if (hadCachedSession) {
-          router.replace("/dashboard");
+          setIsChecking(false);
+          window.setTimeout(() => {
+            if (window.location.pathname === "/") window.location.replace("/dashboard");
+          }, 50);
           return;
         }
         setIsChecking(false);

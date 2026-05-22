@@ -120,6 +120,7 @@ type ProfileShape = {
   current_streak?: number | null;
   selected_streak_flame?: string | null;
   selected_buddy_avatar?: string | null;
+  diamonds_count?: number | null;
   profile_image_url?: string | null;
   display_name?: string | null;
   username?: string | null;
@@ -1735,6 +1736,10 @@ export default function DashboardJourneyExperience({
   const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
   const [bibleYearDeepNotesOpen, setBibleYearDeepNotesOpen] = useState(false);
   const [bibleYearDeepNotesUpgradeOpen, setBibleYearDeepNotesUpgradeOpen] = useState(false);
+  const [bibleYearDeepNotesCompletedByDay, setBibleYearDeepNotesCompletedByDay] = useState<Record<number, boolean>>({});
+  const [bibleYearDeepNotesCompletingDay, setBibleYearDeepNotesCompletingDay] = useState<number | null>(null);
+  const [bibleYearCompletionAnimation, setBibleYearCompletionAnimation] = useState<{ dayNumber: number; card: BibleYearDayCardKey; nonce: number } | null>(null);
+  const [bibleYearRewardToast, setBibleYearRewardToast] = useState<{ dayNumber: number; text: string; nonce: number } | null>(null);
   const bibleYearXpBackfillKeyRef = useRef("");
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
@@ -6056,14 +6061,31 @@ Before we understand redemption, we need to understand what God made humanity fo
   async function markBibleYearDayCardsComplete(day: GenesisBibleYearDay, cards: BibleYearDayCardKey[]) {
     const alreadyCompleted = bibleYearCompletedCardsByDay[day.dayNumber] || {};
     const newlyCompletedCards = cards.filter((card) => alreadyCompleted[card] !== true);
+    const nextCompletedForDay = {
+      ...alreadyCompleted,
+      ...Object.fromEntries(cards.map((card) => [card, true])),
+    };
+    const dayWillBeFullyComplete = BIBLE_YEAR_DAY_CARD_KEYS.every((card) => nextCompletedForDay[card] === true);
+    if (newlyCompletedCards.length > 0) {
+      startBibleYearCompletionAnimation(day.dayNumber, newlyCompletedCards[0]);
+    }
     setBibleYearCompletedCardsByDay((current) => ({
       ...current,
       [day.dayNumber]: {
         ...(current[day.dayNumber] || {}),
-        ...Object.fromEntries(cards.map((card) => [card, true])),
+        ...nextCompletedForDay,
       },
     }));
     setActiveBibleYearDayCard(null);
+    if (dayWillBeFullyComplete) {
+      setSelectedBibleYearSeriesDay(day);
+      if (typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.set("view", "bible-year");
+        url.searchParams.set("day", String(day.dayNumber));
+        window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+    }
     await persistBibleYearDayProgress(day.dayNumber, cards);
     if (newlyCompletedCards.length > 0) {
       await Promise.allSettled(newlyCompletedCards.map((card) => ensureBibleYearCardActionLogged(day, card, true)));
@@ -6075,6 +6097,95 @@ Before we understand redemption, we need to understand what God made humanity fo
     void markBibleYearDayCardsComplete(day, [card]).catch((error) => {
       console.error("[BIBLE_YEAR_PROGRESS] Could not complete Bible in One Year card:", error);
     });
+  }
+
+  function startBibleYearCompletionAnimation(dayNumber: number, card: BibleYearDayCardKey) {
+    const nonce = Date.now();
+    setBibleYearCompletionAnimation({ dayNumber, card, nonce });
+    setBibleYearCompletedTasksExpandedDay(dayNumber);
+    window.setTimeout(() => {
+      setBibleYearCompletionAnimation((current) => current?.nonce === nonce ? null : current);
+    }, 1200);
+  }
+
+  function showBibleYearRewardToast(dayNumber: number, text: string) {
+    const nonce = Date.now();
+    setBibleYearRewardToast({ dayNumber, text, nonce });
+    window.setTimeout(() => {
+      setBibleYearRewardToast((current) => current?.nonce === nonce ? null : current);
+    }, 1800);
+  }
+
+  async function awardBibleYearDeepNotesDiamonds(amount: number) {
+    if (!userId || amount <= 0) return;
+    const { data } = await supabase
+      .from("profile_stats")
+      .select("diamonds_count")
+      .eq("user_id", userId)
+      .maybeSingle();
+    const currentDiamonds = Math.max(0, Number(data?.diamonds_count ?? profile?.diamonds_count ?? 0));
+    const nextDiamonds = currentDiamonds + amount;
+    const { error } = await supabase
+      .from("profile_stats")
+      .upsert({ user_id: userId, diamonds_count: nextDiamonds }, { onConflict: "user_id" });
+    if (error) throw error;
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("bb:diamonds-awarded", { detail: { amount, diamonds: nextDiamonds } }));
+    }
+  }
+
+  async function completeBibleYearDeepNotes(day: GenesisBibleYearDay) {
+    if (!userId || bibleYearDeepNotesCompletingDay === day.dayNumber || bibleYearDeepNotesCompletedByDay[day.dayNumber]) return;
+    setBibleYearDeepNotesCompletingDay(day.dayNumber);
+    const baseLabel = `Bible in One Year Day ${day.dayNumber} Deep Notes Completed`;
+    try {
+      const { data: existing, error: existingError } = await supabase
+        .from("master_actions")
+        .select("id")
+        .eq("user_id", userId)
+        .eq("action_type", ACTION_TYPE.louis_daily_task_bonus)
+        .eq("action_label", baseLabel)
+        .limit(1)
+        .maybeSingle();
+      if (existingError) throw existingError;
+      if (existing) {
+        setBibleYearDeepNotesCompletedByDay((current) => ({ ...current, [day.dayNumber]: true }));
+        return;
+      }
+
+      const readingWasAlreadyComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
+      if (!readingWasAlreadyComplete) {
+        await markBibleYearDayCardsComplete(day, ["reading"]);
+      } else {
+        startBibleYearCompletionAnimation(day.dayNumber, "reading");
+      }
+
+      const username = userName || profile?.username || "Bible Buddy";
+      const { error: deepNotesBonusError } = await supabase.from("master_actions").insert([
+        {
+          user_id: userId,
+          action_type: ACTION_TYPE.louis_daily_task_bonus,
+          action_label: baseLabel,
+          username,
+        },
+        {
+          user_id: userId,
+          action_type: ACTION_TYPE.louis_daily_task_bonus,
+          action_label: `${baseLabel} Extra XP`,
+          username,
+        },
+      ]);
+      if (deepNotesBonusError) throw deepNotesBonusError;
+      await awardBibleYearDeepNotesDiamonds(100);
+      triggerPoints(100);
+      setBibleYearDeepNotesCompletedByDay((current) => ({ ...current, [day.dayNumber]: true }));
+      showBibleYearRewardToast(day.dayNumber, `${readingWasAlreadyComplete ? "+100 XP" : "+125 XP"} +100 diamonds`);
+      onDevotionalChanged();
+    } catch (error) {
+      console.error("[BIBLE_YEAR_DEEP_NOTES] Could not complete deep notes:", error);
+    } finally {
+      setBibleYearDeepNotesCompletingDay(null);
+    }
   }
 
   async function handleContinueToNextBibleYearDay(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
@@ -6420,6 +6531,8 @@ Before we understand redemption, we need to understand what God made humanity fo
     const completedTasksForDay = buildBibleYearDayTasks(day).filter((task) => task.done);
     const isExpanded = bibleYearCompletedTasksExpandedDay === day.dayNumber;
     const dayFullyComplete = completedTasksForDay.length >= BIBLE_YEAR_DAY_CARD_KEYS.length;
+    const isReceivingTask = bibleYearCompletionAnimation?.dayNumber === day.dayNumber;
+    const rewardToast = bibleYearRewardToast?.dayNumber === day.dayNumber ? bibleYearRewardToast : null;
 
     return (
       <div
@@ -6427,8 +6540,21 @@ Before we understand redemption, we need to understand what God made humanity fo
           dayFullyComplete
             ? "bible-year-completed-tasks-celebrate overflow-visible border-emerald-400/70 bg-[linear-gradient(135deg,rgba(13,148,80,0.28),color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent))] shadow-[0_0_28px_rgba(16,185,129,0.28),0_18px_44px_rgba(0,0,0,0.24)]"
             : "overflow-hidden border-[var(--bb-card-border,#b9dcf4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_82%,transparent)] shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,transparent)]"
-        }`}
+        } ${isReceivingTask ? "bible-year-completed-tasks-receive" : ""}`}
       >
+        {isReceivingTask ? (
+          <div className="task-smoke pointer-events-none absolute left-1/2 top-1/2 z-30" aria-hidden="true">
+            <span className="absolute h-8 w-8 rounded-full bg-white/55 [--smoke-x:-44px] [--smoke-y:-20px]" />
+            <span className="absolute h-7 w-7 rounded-full bg-emerald-100/50 [--smoke-x:38px] [--smoke-y:-24px]" />
+            <span className="absolute h-6 w-6 rounded-full bg-white/45 [--smoke-x:-18px] [--smoke-y:32px]" />
+            <span className="absolute h-7 w-7 rounded-full bg-emerald-200/45 [--smoke-x:30px] [--smoke-y:30px]" />
+          </div>
+        ) : null}
+        {rewardToast ? (
+          <div className="bible-year-reward-pop pointer-events-none absolute -top-4 left-1/2 z-40 -translate-x-1/2 whitespace-nowrap rounded-full bg-emerald-300 px-4 py-2 text-xs font-black text-emerald-950 shadow-[0_0_28px_rgba(16,185,129,0.55)]">
+            {rewardToast.text}
+          </div>
+        ) : null}
         {dayFullyComplete ? (
           <>
             <div className="bible-year-completed-task-fireworks pointer-events-none absolute inset-0 z-0" aria-hidden="true">
@@ -6547,6 +6673,12 @@ Before we understand redemption, we need to understand what God made humanity fo
       const taskCopy = getTaskCardCopy(task, taskIndex);
       const justCompleted = Boolean(task.done && previousDoneByKindRef.current && !previousDoneByKindRef.current[task.kind]);
       const isCelebrating = Boolean(celebratingTasks[task.kind]) || justCompleted;
+      const isAbsorbingIntoCompletedTasks = Boolean(
+        activeBibleYearDashboardDay &&
+        bibleYearTaskCard &&
+        bibleYearCompletionAnimation?.dayNumber === activeBibleYearDashboardDay.dayNumber &&
+        bibleYearCompletionAnimation.card === bibleYearTaskCard,
+      );
       const bibleYearOrderLocked = Boolean(
         activeBibleYearDashboardDay &&
         bibleYearTaskCard &&
@@ -6586,6 +6718,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         key={task.kind}
         className={`dashboard-task-shell relative w-full overflow-hidden rounded-[18px] border shadow-sm transition-all duration-300 ${
           isCelebrating ? "task-complete-pop" : ""
+      } ${
+          isAbsorbingIntoCompletedTasks ? "bible-year-task-absorbing" : ""
       } ${
           isNewChapterDropping ? "chapter-card-drop" : ""
         } ${
@@ -7483,6 +7617,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     };
 
     if (day.dayNumber === 1 && bibleYearDeepNotesOpen) {
+      const deepNotesCompleted = bibleYearDeepNotesCompletedByDay[day.dayNumber] === true;
+      const deepNotesCompleting = bibleYearDeepNotesCompletingDay === day.dayNumber;
+      const readingAlreadyComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
+
       return (
         <article className="mx-auto max-w-xl overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[#100905] text-left text-[var(--bb-text-primary,#fff7ed)] shadow-[0_24px_70px_rgba(0,0,0,0.52)] [--bb-card-border:rgba(246,180,75,0.22)] [--bb-surface-soft:rgba(255,255,255,0.06)] [--bb-text-primary:#fff7ed] [--bb-text-secondary:#e7d4bd]">
           <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] bg-[#100905] px-4 py-3">
@@ -7501,6 +7639,30 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
           <div className="px-4 pb-24 pt-5">
             <ChapterNotesMarkdown>{BIBLE_YEAR_DAY_ONE_DEEP_NOTES}</ChapterNotesMarkdown>
+            <div className="mt-8 rounded-[24px] border border-emerald-300/40 bg-[linear-gradient(135deg,rgba(16,185,129,0.18),rgba(0,0,0,0.22))] p-4 shadow-[0_0_32px_rgba(16,185,129,0.18)]">
+              <p className="text-lg font-black leading-tight text-emerald-100">Finished the Deep Notes?</p>
+              <p className="mt-2 text-sm font-semibold leading-6 text-emerald-50/82">
+                {readingAlreadyComplete
+                  ? "Claim your Deep Notes study bonus."
+                  : "This also completes today's reading task and sends it to Completed Tasks."}
+              </p>
+              <button
+                type="button"
+                onClick={() => void completeBibleYearDeepNotes(day)}
+                disabled={deepNotesCompleted || deepNotesCompleting}
+                className={`mt-4 flex w-full items-center justify-center gap-3 rounded-2xl px-5 py-4 text-base font-black shadow-[0_0_30px_rgba(16,185,129,0.32)] transition ${
+                  deepNotesCompleted
+                    ? "cursor-default bg-emerald-400 text-emerald-950"
+                    : "bg-emerald-300 text-emerald-950 hover:scale-[1.01] hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
+                }`}
+              >
+                <span aria-hidden="true">✓</span>
+                <span>{deepNotesCompleted ? "Deep Notes Completed" : deepNotesCompleting ? "Saving..." : "Mark Deep Notes Complete"}</span>
+              </button>
+              <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-100/80">
+                {readingAlreadyComplete ? "+100 XP +100 diamonds" : "+125 XP +100 diamonds"}
+              </p>
+            </div>
           </div>
         </article>
       );
@@ -8023,6 +8185,29 @@ Before we understand redemption, we need to understand what God made humanity fo
           }
         }
 
+        @keyframes bible-year-completed-tasks-receive {
+          0% { transform: scale(1); box-shadow: 0 12px 30px color-mix(in srgb, var(--bb-accent, #2f7fe8) 14%, transparent); }
+          22% { transform: scale(1.055); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.18), 0 0 38px rgba(16, 185, 129, 0.5), 0 18px 44px rgba(0, 0, 0, 0.26); }
+          58% { transform: scale(0.985); }
+          100% { transform: scale(1); }
+        }
+
+        @keyframes bible-year-task-absorbing {
+          0% { opacity: 1; transform: translateY(0) scale(1); background: rgba(16, 185, 129, 0.18); }
+          16% { opacity: 1; transform: translateY(0) scale(1.018) rotate(-0.6deg); border-color: rgba(52, 211, 153, 0.95); }
+          30% { transform: translateY(0) scale(1.018) rotate(0.7deg); }
+          48% { opacity: 0.94; transform: translateY(6px) scale(0.9); }
+          78% { opacity: 0.24; transform: translateY(34px) scale(0.38); filter: blur(1.4px); }
+          100% { opacity: 0; transform: translateY(48px) scale(0.24); filter: blur(2px); }
+        }
+
+        @keyframes bible-year-reward-pop {
+          0% { opacity: 0; transform: translate(-50%, 10px) scale(0.86); }
+          18% { opacity: 1; transform: translate(-50%, -2px) scale(1.06); }
+          72% { opacity: 1; transform: translate(-50%, -8px) scale(1); }
+          100% { opacity: 0; transform: translate(-50%, -16px) scale(0.94); }
+        }
+
         @keyframes bible-year-completed-task-firework {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(0deg); }
           18% { opacity: 1; }
@@ -8165,6 +8350,9 @@ Before we understand redemption, we need to understand what God made humanity fo
         .completion-side-firework span:nth-child(5) { animation-delay: 720ms; }
         .completion-side-firework span:nth-child(6) { animation-delay: 900ms; }
         .bible-year-completed-tasks-celebrate { animation: bible-year-completed-tasks-celebrate 2.4s ease-in-out infinite; }
+        .bible-year-completed-tasks-receive { animation: bible-year-completed-tasks-receive 860ms cubic-bezier(0.18, 0.9, 0.18, 1.12) both; }
+        .bible-year-task-absorbing { animation: bible-year-task-absorbing 860ms cubic-bezier(0.18, 0.9, 0.18, 1.08) both; pointer-events: none; }
+        .bible-year-reward-pop { animation: bible-year-reward-pop 1.55s ease-out both; }
         .bible-year-completed-task-fireworks span { animation: bible-year-completed-task-firework 1.55s ease-out infinite; }
         .bible-year-completed-task-fireworks span:nth-child(2) { animation-delay: 160ms; }
         .bible-year-completed-task-fireworks span:nth-child(3) { animation-delay: 320ms; }
