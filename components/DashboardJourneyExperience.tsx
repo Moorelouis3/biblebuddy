@@ -1734,6 +1734,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearTermLoading, setBibleYearTermLoading] = useState(false);
   const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
   const [bibleYearDeepNotesOpen, setBibleYearDeepNotesOpen] = useState(false);
+  const [bibleYearDeepNotesUpgradeOpen, setBibleYearDeepNotesUpgradeOpen] = useState(false);
   const bibleYearXpBackfillKeyRef = useRef("");
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
@@ -3244,6 +3245,7 @@ export default function DashboardJourneyExperience({
       setBibleYearSeriesFilter("all");
       setBibleYearStudyNotesOpen(false);
       setBibleYearDeepNotesOpen(false);
+      setBibleYearDeepNotesUpgradeOpen(false);
       setBibleYearSelectedTerm(null);
       setBibleYearTermNotes(null);
       setBibleYearTermNotesError(null);
@@ -3310,6 +3312,7 @@ export default function DashboardJourneyExperience({
     setBibleYearTermNotes(null);
     setBibleYearTermNotesError(null);
     setBibleYearDeepNotesOpen(false);
+    setBibleYearDeepNotesUpgradeOpen(false);
     const activeReadingDayNumber = selectedBibleYearSeriesDay?.dayNumber ?? activeBibleYearDashboardDay?.dayNumber;
     setBibleYearStudyNotesOpen(activeBibleYearDayCard === "reading" && activeReadingDayNumber !== undefined && activeReadingDayNumber <= 2);
   }, [activeBibleYearDashboardDay?.dayNumber, activeBibleYearDayCard, selectedBibleYearSeriesDay?.dayNumber]);
@@ -4688,10 +4691,20 @@ export default function DashboardJourneyExperience({
     setActiveBibleYearDayCard(null);
     setBibleYearStudyNotesOpen(false);
     setBibleYearDeepNotesOpen(false);
+    setBibleYearDeepNotesUpgradeOpen(false);
     setBibleYearOpenVerseBreakdownKey(null);
     setBibleYearSelectedTerm(null);
     setBibleYearTermNotes(null);
     setBibleYearTermNotesError(null);
+  }
+
+  function openBibleYearDeepNotes() {
+    if (isPaidUser) {
+      setBibleYearDeepNotesOpen(true);
+      return;
+    }
+
+    setBibleYearDeepNotesUpgradeOpen(true);
   }
 
   function formatBibleYearSpokenReference(block: BibleYearDailyLesson["sections"][number]["verseBlock"]) {
@@ -7468,6 +7481,30 @@ Before we understand redemption, we need to understand what God made humanity fo
       }
     };
 
+    if (day.dayNumber === 1 && bibleYearDeepNotesOpen) {
+      return (
+        <article className="mx-auto max-w-xl overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[#100905] text-left text-[var(--bb-text-primary,#fff7ed)] shadow-[0_24px_70px_rgba(0,0,0,0.52)] [--bb-card-border:rgba(246,180,75,0.22)] [--bb-surface-soft:rgba(255,255,255,0.06)] [--bb-text-primary:#fff7ed] [--bb-text-secondary:#e7d4bd]">
+          <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] bg-[#100905] px-4 py-3">
+            <div className="min-w-0">
+              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">Day 1 Deep Notes</p>
+              <p className="truncate text-lg font-black text-[var(--bb-text-primary,#fff7ed)]">Creation of the World</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setBibleYearDeepNotesOpen(false)}
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] bg-black/35 text-2xl font-black text-[var(--bb-text-primary,#fff7ed)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)]"
+              aria-label="Close deep notes"
+            >
+              ×
+            </button>
+          </div>
+          <div className="px-4 pb-24 pt-5">
+            <ChapterNotesMarkdown>{BIBLE_YEAR_DAY_ONE_DEEP_NOTES}</ChapterNotesMarkdown>
+          </div>
+        </article>
+      );
+    }
+
     return (
       <article className="relative mx-auto max-w-xl text-left text-[var(--bb-text-primary,#fff7ed)]">
         <section className="relative px-1 pb-1 pt-1">
@@ -7644,14 +7681,23 @@ Before we understand redemption, we need to understand what God made humanity fo
           {day.dayNumber === 1 ? (
             <div className="mt-5 border-t border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] pt-5">
               <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,transparent)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent),rgba(0,0,0,0.16))] p-4 shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)]">
-                <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">Want to study deeper?</p>
-                <p className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#fff7ed)]">Day 1 Deep Notes</p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">
-                  Hebrew word study, culture, history, Bible connections, and the full Genesis 1-2 teaching.
+                <p className="text-xl font-black leading-tight text-[var(--bb-text-primary,#fff7ed)]">📖 Want to Go Deeper?</p>
+                <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">
+                  This was just a simple introduction to today's reading.
+                </p>
+                <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">If you want to understand:</p>
+                <div className="mt-2 grid gap-1.5 text-sm font-bold leading-6 text-[var(--bb-text-primary,#fff7ed)]">
+                  <p>📚 the historical and cultural context</p>
+                  <p>🧠 the meaning behind important words and phrases</p>
+                  <p>🔍 hidden connections throughout Scripture</p>
+                  <p>🔥 and how this chapter fits into God's bigger story</p>
+                </div>
+                <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">
+                  check out the Deep Notes for today's study inside Bible Buddy.
                 </p>
                 <button
                   type="button"
-                  onClick={() => setBibleYearDeepNotesOpen(true)}
+                  onClick={openBibleYearDeepNotes}
                   className="mt-4 w-full rounded-2xl bg-[var(--bb-accent,#f6b44b)] px-5 py-4 text-base font-black text-black shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] transition hover:brightness-105"
                 >
                   Open Deep Notes
@@ -7682,6 +7728,45 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
           </div>
         ) : null}
+
+        <ModalShell isOpen={bibleYearDeepNotesUpgradeOpen} onClose={() => setBibleYearDeepNotesUpgradeOpen(false)}>
+          <div className="relative w-full max-w-md rounded-[28px] border border-amber-300/45 bg-[radial-gradient(circle_at_20%_0%,rgba(251,191,36,0.22),transparent_42%),linear-gradient(135deg,#1b1007,#090604)] p-5 text-left text-white shadow-[0_28px_80px_rgba(0,0,0,0.55)]">
+            <button
+              type="button"
+              onClick={() => setBibleYearDeepNotesUpgradeOpen(false)}
+              className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/10 text-xl font-black text-white transition hover:bg-white/16"
+              aria-label="Close upgrade prompt"
+            >
+              ×
+            </button>
+            <p className="pr-12 text-[11px] font-black uppercase tracking-[0.2em] text-amber-300">Bible Buddy Pro</p>
+            <h2 className="mt-2 pr-10 text-2xl font-black leading-tight">Deep Notes are for Pro users</h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-amber-50/86">
+              Deep Notes go past the simple breakdown with historical context, cultural background, important word studies, Scripture connections, and how each chapter fits into God's bigger story.
+            </p>
+            <div className="mt-4 grid gap-2 rounded-2xl border border-amber-300/25 bg-black/24 p-4 text-sm font-bold leading-6 text-amber-50">
+              <p>📚 Unlock every Bible in One Year Deep Note</p>
+              <p>🧠 Study key words and phrases with more depth</p>
+              <p>🔍 See more connections across Scripture</p>
+              <p>🔥 Go beyond the intro and study the full teaching</p>
+            </div>
+            <div className="mt-5 grid gap-2">
+              <Link
+                href="/upgrade"
+                className="inline-flex w-full items-center justify-center rounded-2xl bg-amber-300 px-5 py-3 text-sm font-black text-black shadow-[0_0_28px_rgba(251,191,36,0.38)] transition hover:brightness-105"
+              >
+                Upgrade to Pro
+              </Link>
+              <button
+                type="button"
+                onClick={() => setBibleYearDeepNotesUpgradeOpen(false)}
+                className="inline-flex w-full items-center justify-center rounded-2xl border border-white/14 bg-white/8 px-5 py-3 text-sm font-black text-white transition hover:bg-white/12"
+              >
+                Keep Reading Free Notes
+              </button>
+            </div>
+          </div>
+        </ModalShell>
       </article>
     );
   }
