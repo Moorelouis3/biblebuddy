@@ -1702,6 +1702,9 @@ export default function DashboardJourneyExperience({
   const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<BibleYearCompletedCardsByDay>({});
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
+  const [bibleYearPlanMenuOpen, setBibleYearPlanMenuOpen] = useState(false);
+  const [isResettingBibleYearPlan, setIsResettingBibleYearPlan] = useState(false);
+  const [bibleYearPlanMessage, setBibleYearPlanMessage] = useState<string | null>(null);
   const [bibleYearSelectedTerm, setBibleYearSelectedTerm] = useState<BibleDatabaseTerm | null>(null);
   const [bibleYearTermBurstKey, setBibleYearTermBurstKey] = useState(0);
   const [bibleYearTermNotes, setBibleYearTermNotes] = useState<string | null>(null);
@@ -3000,6 +3003,7 @@ export default function DashboardJourneyExperience({
     setSelectedBibleYearSeriesDay(null);
     setActiveBibleYearDayCard(null);
     setBibleYearCompletedTasksExpandedDay(null);
+    setBibleYearPlanMenuOpen(false);
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.delete("view");
@@ -3038,6 +3042,7 @@ export default function DashboardJourneyExperience({
     setEmbeddedBibleSelectedBook(null);
     setEmbeddedBibleStudyId(null);
     setDashboardMenuOpen(false);
+    setBibleYearPlanMenuOpen(false);
     onHomeReset?.();
     snapToPage(0);
     if (typeof window !== "undefined") {
@@ -3067,6 +3072,7 @@ export default function DashboardJourneyExperience({
     setEmbeddedBibleSelectedBook(null);
     setEmbeddedBibleStudyId(null);
     setDashboardMenuOpen(false);
+    setBibleYearPlanMenuOpen(false);
     onHomeReset?.();
     snapToPage(0);
     if (typeof window !== "undefined") {
@@ -3089,6 +3095,7 @@ export default function DashboardJourneyExperience({
     setEmbeddedBibleSelectedBook(null);
     setEmbeddedBibleStudyId(null);
     setDashboardMenuOpen(false);
+    setBibleYearPlanMenuOpen(false);
     onHomeReset?.();
     snapToPage(0);
     if (typeof window !== "undefined") {
@@ -3107,6 +3114,7 @@ export default function DashboardJourneyExperience({
     setActiveBibleYearDayCard(null);
     setBibleYearCompletedTasksExpandedDay(null);
     setDashboardMenuOpen(false);
+    setBibleYearPlanMenuOpen(false);
     onHomeReset?.();
     snapToPage(0);
     if (typeof window !== "undefined") {
@@ -3114,6 +3122,85 @@ export default function DashboardJourneyExperience({
       url.searchParams.set("view", "bible-year-series");
       url.searchParams.set("day", String(day.dayNumber));
       window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+  }
+
+  async function handleResetBibleYearPlan() {
+    if (isResettingBibleYearPlan) return;
+
+    const confirmed =
+      typeof window === "undefined" ||
+      window.confirm("Reset Bible in One Year back to Day 1? This clears the completed reading, trivia, and reflection checks.");
+
+    if (!confirmed) return;
+
+    setIsResettingBibleYearPlan(true);
+    setBibleYearPlanMessage(null);
+
+    try {
+      if (userId) {
+        const { error } = await supabase
+          .from("bible_year_day_progress")
+          .delete()
+          .eq("user_id", userId);
+
+        if (error) throw error;
+      }
+
+      if (typeof window !== "undefined") {
+        try {
+          Object.keys(window.localStorage)
+            .filter((key) => key.startsWith("bb:bible-year-audio-progress:"))
+            .forEach((key) => window.localStorage.removeItem(key));
+        } catch (storageError) {
+          console.warn("[BIBLE_YEAR_PROGRESS] Could not clear local Bible in One Year playback progress:", storageError);
+        }
+      }
+
+      const firstBibleYearDay =
+        GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 1) ||
+        GENESIS_BIBLE_IN_ONE_YEAR_SERIES[0] ||
+        null;
+
+      setBibleYearCompletedCardsByDay({});
+      setBibleYearTriviaAnswers({});
+      setBibleYearTriviaQuestionIndexByDay({});
+      setBibleYearCompletedTasksExpandedDay(null);
+      setActiveBibleYearDayCard(null);
+      setBibleYearSeriesFilter("all");
+      setBibleYearStudyNotesOpen(false);
+      setBibleYearSelectedTerm(null);
+      setBibleYearTermNotes(null);
+      setBibleYearTermNotesError(null);
+      setBibleYearDashboardActive(true);
+      setBibleYearSeriesActive(false);
+      setBibleYearSeriesDetailDay(null);
+      setSelectedBibleYearSeriesDay(firstBibleYearDay);
+      setFreeStudyModeActive(false);
+      setEmbeddedBibleBookSearchOpen(false);
+      setEmbeddedBibleSelectedBook(null);
+      setEmbeddedBibleStudyId(null);
+      setDashboardMenuOpen(false);
+      setBibleYearPlanMessage("Bible In One Year was reset back to Day 1.");
+      onHomeReset?.();
+      onDevotionalChanged();
+      snapToPage(0);
+
+      if (typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.set("view", "bible-year");
+        if (firstBibleYearDay) {
+          url.searchParams.set("day", String(firstBibleYearDay.dayNumber));
+        } else {
+          url.searchParams.delete("day");
+        }
+        window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+    } catch (error) {
+      console.error("[BIBLE_YEAR_PROGRESS] Could not reset Bible in One Year plan:", error);
+      setBibleYearPlanMessage("Could not reset Bible In One Year. Try again in a moment.");
+    } finally {
+      setIsResettingBibleYearPlan(false);
     }
   }
 
@@ -6411,18 +6498,50 @@ Before we understand redemption, we need to understand what God made humanity fo
     return (
       <section className="dashboard-bible-year-study-area grid gap-3 rounded-[28px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_62%,rgba(0,0,0,0.42))] p-3 shadow-[0_18px_46px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
         <div className="dashboard-current-study-card bb-skin-glow-card relative rounded-[24px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent)] p-3 pr-12 shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)] backdrop-blur-xl">
-          <button
-            type="button"
-            onClick={openBibleYearSeriesDashboard}
-            className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_82%,transparent)] text-[var(--bb-accent,#2f7fe8)] shadow-[0_8px_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] transition hover:scale-105 hover:bg-[var(--bb-accent-soft,#eaf5ff)] focus:outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)]"
-            aria-label="Change Bible in One Year plan"
-            title="Change plan"
-          >
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" />
-              <path d="M19.4 15a1.8 1.8 0 0 0 .36 1.98l.04.04a2.15 2.15 0 0 1-3.04 3.04l-.04-.04a1.8 1.8 0 0 0-1.98-.36 1.8 1.8 0 0 0-1.1 1.66V21.4a2.15 2.15 0 0 1-4.3 0v-.08a1.8 1.8 0 0 0-1.1-1.66 1.8 1.8 0 0 0-1.98.36l-.04.04a2.15 2.15 0 0 1-3.04-3.04l.04-.04A1.8 1.8 0 0 0 4.6 15a1.8 1.8 0 0 0-1.66-1.1H2.85a2.15 2.15 0 0 1 0-4.3h.08A1.8 1.8 0 0 0 4.6 8.5a1.8 1.8 0 0 0-.36-1.98l-.04-.04a2.15 2.15 0 0 1 3.04-3.04l.04.04a1.8 1.8 0 0 0 1.98.36 1.8 1.8 0 0 0 1.1-1.66V2.1a2.15 2.15 0 0 1 4.3 0v.08a1.8 1.8 0 0 0 1.1 1.66 1.8 1.8 0 0 0 1.98-.36l.04-.04a2.15 2.15 0 0 1 3.04 3.04l-.04.04a1.8 1.8 0 0 0-.36 1.98 1.8 1.8 0 0 0 1.66 1.1h.08a2.15 2.15 0 0 1 0 4.3h-.08A1.8 1.8 0 0 0 19.4 15Z" />
-            </svg>
-          </button>
+          <div className="absolute right-3 top-3 z-20">
+            <button
+              type="button"
+              onClick={() => {
+                setBibleYearPlanMessage(null);
+                setBibleYearPlanMenuOpen((open) => !open);
+              }}
+              className="grid h-8 w-8 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_82%,transparent)] text-[var(--bb-accent,#2f7fe8)] shadow-[0_8px_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] transition hover:scale-105 hover:bg-[var(--bb-accent-soft,#eaf5ff)] focus:outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)]"
+              aria-label="Bible in One Year plan options"
+              aria-expanded={bibleYearPlanMenuOpen}
+              title="Plan options"
+            >
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" />
+                <path d="M19.4 15a1.8 1.8 0 0 0 .36 1.98l.04.04a2.15 2.15 0 0 1-3.04 3.04l-.04-.04a1.8 1.8 0 0 0-1.98-.36 1.8 1.8 0 0 0-1.1 1.66V21.4a2.15 2.15 0 0 1-4.3 0v-.08a1.8 1.8 0 0 0-1.1-1.66 1.8 1.8 0 0 0-1.98.36l-.04.04a2.15 2.15 0 0 1-3.04-3.04l.04-.04A1.8 1.8 0 0 0 4.6 15a1.8 1.8 0 0 0-1.66-1.1H2.85a2.15 2.15 0 0 1 0-4.3h.08A1.8 1.8 0 0 0 4.6 8.5a1.8 1.8 0 0 0-.36-1.98l-.04-.04a2.15 2.15 0 0 1 3.04-3.04l.04.04a1.8 1.8 0 0 0 1.98.36 1.8 1.8 0 0 0 1.1-1.66V2.1a2.15 2.15 0 0 1 4.3 0v.08a1.8 1.8 0 0 0 1.1 1.66 1.8 1.8 0 0 0 1.98-.36l.04-.04a2.15 2.15 0 0 1 3.04 3.04l-.04.04a1.8 1.8 0 0 0-.36 1.98 1.8 1.8 0 0 0 1.66 1.1h.08a2.15 2.15 0 0 1 0 4.3h-.08A1.8 1.8 0 0 0 19.4 15Z" />
+              </svg>
+            </button>
+            {bibleYearPlanMenuOpen ? (
+              <div className="absolute right-0 mt-2 w-56 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_32%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,rgba(0,0,0,0.58))] p-2 text-left shadow-[0_18px_38px_rgba(0,0,0,0.28),0_0_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)] backdrop-blur-xl">
+                <button
+                  type="button"
+                  onClick={openBibleYearSeriesDashboard}
+                  className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_74%,transparent)]"
+                >
+                  <span>Change Plan</span>
+                  <span aria-hidden="true" className="text-[var(--bb-accent,#2f7fe8)]">&gt;</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleResetBibleYearPlan}
+                  disabled={isResettingBibleYearPlan}
+                  className="mt-1 flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-black text-[var(--bb-warning,#d97706)] transition hover:bg-[color-mix(in_srgb,var(--bb-warning,#d97706)_12%,transparent)] disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  <span>{isResettingBibleYearPlan ? "Resetting..." : "Reset Plan"}</span>
+                  <span aria-hidden="true" className="text-xs text-[var(--bb-text-secondary,#4b5563)]">Day 1</span>
+                </button>
+                {bibleYearPlanMessage ? (
+                  <p className="mt-2 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_52%,transparent)] px-3 py-2 text-xs font-bold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
+                    {bibleYearPlanMessage}
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
           <div className="flex items-center gap-3">
             <div className="h-24 w-20 shrink-0 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)] bg-[var(--bb-surface-soft,#f8fbff)] p-1 shadow-[0_10px_24px_rgba(0,0,0,0.18)]">
               {cover ? (
