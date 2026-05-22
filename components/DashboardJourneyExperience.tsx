@@ -49,6 +49,7 @@ import {
 } from "../lib/bibleInOneYearPlan";
 import { GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON, GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import { BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
+import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "../lib/bibleYearDayOneDeepNotes";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
@@ -1732,6 +1733,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearTermNotesError, setBibleYearTermNotesError] = useState<string | null>(null);
   const [bibleYearTermLoading, setBibleYearTermLoading] = useState(false);
   const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
+  const [bibleYearDeepNotesOpen, setBibleYearDeepNotesOpen] = useState(false);
   const bibleYearXpBackfillKeyRef = useRef("");
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
@@ -3241,6 +3243,7 @@ export default function DashboardJourneyExperience({
       setActiveBibleYearDayCard(null);
       setBibleYearSeriesFilter("all");
       setBibleYearStudyNotesOpen(false);
+      setBibleYearDeepNotesOpen(false);
       setBibleYearSelectedTerm(null);
       setBibleYearTermNotes(null);
       setBibleYearTermNotesError(null);
@@ -3306,6 +3309,7 @@ export default function DashboardJourneyExperience({
     setBibleYearSelectedTerm(null);
     setBibleYearTermNotes(null);
     setBibleYearTermNotesError(null);
+    setBibleYearDeepNotesOpen(false);
     const activeReadingDayNumber = selectedBibleYearSeriesDay?.dayNumber ?? activeBibleYearDashboardDay?.dayNumber;
     setBibleYearStudyNotesOpen(activeBibleYearDayCard === "reading" && activeReadingDayNumber !== undefined && activeReadingDayNumber <= 2);
   }, [activeBibleYearDashboardDay?.dayNumber, activeBibleYearDayCard, selectedBibleYearSeriesDay?.dayNumber]);
@@ -4683,6 +4687,7 @@ export default function DashboardJourneyExperience({
   function closeBibleYearReadingArticle() {
     setActiveBibleYearDayCard(null);
     setBibleYearStudyNotesOpen(false);
+    setBibleYearDeepNotesOpen(false);
     setBibleYearOpenVerseBreakdownKey(null);
     setBibleYearSelectedTerm(null);
     setBibleYearTermNotes(null);
@@ -7464,7 +7469,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     };
 
     return (
-      <article className="mx-auto max-w-xl text-left text-[var(--bb-text-primary,#fff7ed)]">
+      <article className="relative mx-auto max-w-xl text-left text-[var(--bb-text-primary,#fff7ed)]">
         <section className="relative px-1 pb-1 pt-1">
           {videoPlayerSrc ? (
             <div className="pt-0">
@@ -7635,7 +7640,48 @@ Before we understand redemption, we need to understand what God made humanity fo
               })}
             </div>
           ) : null}
+
+          {day.dayNumber === 1 ? (
+            <div className="mt-5 border-t border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] pt-5">
+              <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,transparent)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent),rgba(0,0,0,0.16))] p-4 shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)]">
+                <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">Want to study deeper?</p>
+                <p className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#fff7ed)]">Day 1 Deep Notes</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">
+                  Hebrew word study, culture, history, Bible connections, and the full Genesis 1-2 teaching.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setBibleYearDeepNotesOpen(true)}
+                  className="mt-4 w-full rounded-2xl bg-[var(--bb-accent,#f6b44b)] px-5 py-4 text-base font-black text-black shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] transition hover:brightness-105"
+                >
+                  Open Deep Notes
+                </button>
+              </div>
+            </div>
+          ) : null}
         </section>
+
+        {day.dayNumber === 1 && bibleYearDeepNotesOpen ? (
+          <div className="absolute inset-0 z-30 overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_96%,black)] shadow-[0_24px_70px_rgba(0,0,0,0.52)]">
+            <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_94%,black)] px-4 py-3 backdrop-blur">
+              <div className="min-w-0">
+                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">Day 1 Deep Notes</p>
+                <p className="truncate text-lg font-black text-[var(--bb-text-primary,#fff7ed)]">Creation of the World</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setBibleYearDeepNotesOpen(false)}
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] bg-black/24 text-2xl font-black text-[var(--bb-text-primary,#fff7ed)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)]"
+                aria-label="Close deep notes"
+              >
+                ×
+              </button>
+            </div>
+            <div className="h-[calc(100%-68px)] overflow-y-auto px-4 py-5">
+              <ChapterNotesMarkdown>{BIBLE_YEAR_DAY_ONE_DEEP_NOTES}</ChapterNotesMarkdown>
+            </div>
+          </div>
+        ) : null}
       </article>
     );
   }
