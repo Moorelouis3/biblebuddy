@@ -1707,6 +1707,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearTermNotes, setBibleYearTermNotes] = useState<string | null>(null);
   const [bibleYearTermNotesError, setBibleYearTermNotesError] = useState<string | null>(null);
   const [bibleYearTermLoading, setBibleYearTermLoading] = useState(false);
+  const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
   const bibleYearXpBackfillKeyRef = useRef("");
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
@@ -3146,6 +3147,7 @@ export default function DashboardJourneyExperience({
     setBibleYearSelectedTerm(null);
     setBibleYearTermNotes(null);
     setBibleYearTermNotesError(null);
+    setBibleYearStudyNotesOpen(false);
   }, [activeBibleYearDayCard, selectedBibleYearSeriesDay?.dayNumber]);
 
   function openInvitePage() {
@@ -6689,45 +6691,73 @@ Before we understand redemption, we need to understand what God made humanity fo
 
     if (bibleYearLesson) {
       return (
-        <div className="px-4 py-5">
+        <div className="space-y-4 px-4 py-5">
           {bibleYearAudio ? (
             <BibleYearLessonAudioPlayer
               audioSrc={bibleYearAudio.apiSrc}
               title={bibleYearAudio.title}
               durationLabel={bibleYearAudio.estimatedDuration}
               storagePath={bibleYearAudio.storagePath}
+              videoSrc={bibleYearAudio.videoSrc}
             />
           ) : null}
 
-          <div className="mb-5">
-            {bibleYearSelectedTerm ? (
-              <DatabaseTermTakeover
-                selectedTerm={bibleYearSelectedTerm}
-                termBurstKey={bibleYearTermBurstKey}
-                loadingTermNotes={bibleYearTermLoading}
-                termNotes={bibleYearTermNotes}
-                termNotesError={bibleYearTermNotesError}
-                onClose={closeBibleYearTermTakeover}
-                takeoverRef={bibleYearTermTakeoverRef}
-              />
-            ) : (
-              <ChapterNotesMarkdown>
-                {buildBibleYearLessonMarkdown(bibleYearLesson)}
-              </ChapterNotesMarkdown>
-            )}
-          </div>
-
-          {!bibleYearSelectedTerm ? (
-            <div className="mb-5 flex justify-end">
-              <button
-                type="button"
-                onClick={() => markBibleYearDayCardComplete(day, "reading")}
-                className="rounded-full bg-[var(--bb-button,#2f7fe8)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+          <div className="overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+            <button
+              type="button"
+              onClick={() => setBibleYearStudyNotesOpen((current) => !current)}
+              className="flex w-full items-center justify-between gap-3 bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_90%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_74%,transparent))] px-4 py-4 text-left transition hover:brightness-[1.02]"
+              aria-expanded={bibleYearStudyNotesOpen}
+            >
+              <span className="min-w-0">
+                <span className="block text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Study Notes</span>
+                <span className="mt-1 block text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                  {bibleYearStudyNotesOpen ? "Click to close" : "Click to read"}
+                </span>
+              </span>
+              <span
+                className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)] bg-[var(--bb-surface-soft,#f8fbff)] text-lg font-black text-[var(--bb-accent,#2f7fe8)] transition ${
+                  bibleYearStudyNotesOpen ? "rotate-180" : ""
+                }`}
+                aria-hidden="true"
               >
-                {bibleYearCompletedCardsByDay[day.dayNumber]?.reading ? "Completed" : "Mark as Complete"}
-              </button>
-            </div>
-          ) : null}
+                ↓
+              </span>
+            </button>
+            {bibleYearStudyNotesOpen ? (
+              <div className="border-t border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] p-4">
+                {bibleYearSelectedTerm ? (
+                  <DatabaseTermTakeover
+                    selectedTerm={bibleYearSelectedTerm}
+                    termBurstKey={bibleYearTermBurstKey}
+                    loadingTermNotes={bibleYearTermLoading}
+                    termNotes={bibleYearTermNotes}
+                    termNotesError={bibleYearTermNotesError}
+                    onClose={closeBibleYearTermTakeover}
+                    takeoverRef={bibleYearTermTakeoverRef}
+                  />
+                ) : (
+                  <div onClick={handleBibleYearDatabaseTermClick}>
+                    <ChapterNotesMarkdown>
+                      {buildBibleYearLessonMarkdown(bibleYearLesson)}
+                    </ChapterNotesMarkdown>
+                  </div>
+                )}
+
+                {!bibleYearSelectedTerm ? (
+                  <div className="mt-5 border-t border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] pt-4">
+                    <button
+                      type="button"
+                      onClick={() => markBibleYearDayCardComplete(day, "reading")}
+                      className="w-full rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition hover:brightness-95"
+                    >
+                      {bibleYearCompletedCardsByDay[day.dayNumber]?.reading ? "Completed" : "Mark Complete +25 XP"}
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
         </div>
       );
     }

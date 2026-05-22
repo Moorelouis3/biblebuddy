@@ -6,6 +6,7 @@ export type BibleYearAudioDay = {
   storagePath: string;
   apiSrc: string;
   estimatedDuration: string;
+  videoSrc?: string;
 };
 
 function padDay(dayNumber: number) {
@@ -35,6 +36,7 @@ export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(2),
   apiSrc: getBibleYearAudioApiSrc(2),
   estimatedDuration: "about 15 min",
+  videoSrc: "https://player.mediadelivery.net/play/618103/1fd36998-1fbe-43fb-a171-51eab4c04b07",
 };
 
 export const BIBLE_YEAR_DAY_THREE_AUDIO: BibleYearAudioDay = {
