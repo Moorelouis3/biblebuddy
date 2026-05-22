@@ -68,3 +68,19 @@ export const BIBLE_YEAR_DAY_SIX_AUDIO: BibleYearAudioDay = {
   apiSrc: getBibleYearAudioApiSrc(6),
   estimatedDuration: "about 16 min",
 };
+
+export const BIBLE_YEAR_DAY_SEVEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 7,
+  title: "Day 7 - The Covenant Promise",
+  storagePath: getBibleYearAudioStoragePath(7),
+  apiSrc: getBibleYearAudioApiSrc(7),
+  estimatedDuration: "about 14 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHT_AUDIO: BibleYearAudioDay = {
+  dayNumber: 8,
+  title: "Day 8 - The Judgment of Sodom",
+  storagePath: getBibleYearAudioStoragePath(8),
+  apiSrc: getBibleYearAudioApiSrc(8),
+  estimatedDuration: "about 19 min",
+};

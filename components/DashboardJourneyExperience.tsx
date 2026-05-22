@@ -9,6 +9,7 @@ import BibleReadingModal from "./BibleReadingModal";
 import DashboardDailyTaskCallout, { DatabaseTermTakeover, type BibleDatabaseTerm } from "./DashboardDailyTaskCallout";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import BibleYearLessonAudioPlayer from "./BibleYearLessonAudioPlayer";
+import BibleTopicsPanel from "./BibleTopicsPanel";
 import JourneyAnalyticsPanel from "./JourneyAnalyticsPanel";
 import CommentSection from "./comments/CommentSection";
 import BibleStudiesLibraryPage from "../app/devotionals/page";
@@ -46,8 +47,8 @@ import {
   GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
-import { GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
-import { BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
+import { GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON, GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
+import { BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
@@ -1712,13 +1713,14 @@ export default function DashboardJourneyExperience({
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
   const [dashboardGreeting, setDashboardGreeting] = useState("Good evening");
 
-  const dashboardPageKeys = ["home", "buddy", "bible_studies", "group", "share", "buddies", "tv", "games", "analytics", "settings"] as const;
+  const dashboardPageKeys = ["home", "buddy", "bible_studies", "bible_topics", "group", "share", "buddies", "tv", "games", "analytics", "settings"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
   const activePageKey = dashboardPageKeys[safeActivePage] ?? "home";
   const exploreLinkByKey = (key: string) => exploreLinks.find((link) => link.key === key) ?? null;
   const dashboardPageLinks = {
     bible_studies: exploreLinkByKey("bible_studies"),
+    bible_topics: null,
     group: exploreLinkByKey("group"),
     tv: exploreLinkByKey("tv"),
     games: exploreLinkByKey("games"),
@@ -1781,6 +1783,7 @@ export default function DashboardJourneyExperience({
       href: "#lil-louis",
     },
     { key: "bible_studies", label: "Bible Studies", icon: "\uD83C\uDF05", href: dashboardPageLinks.bible_studies?.href || "/bible-studies", onClick: dashboardPageLinks.bible_studies?.onClick },
+    { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
     { key: "group", label: "Community", icon: "\uD83D\uDC65", href: dashboardPageLinks.group?.href || "/study-groups", onClick: dashboardPageLinks.group?.onClick },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
     { key: "buddies", label: "Buddies", icon: "\uD83E\uDD1D", href: "#buddies" },
@@ -2030,12 +2033,12 @@ export default function DashboardJourneyExperience({
   const activeBibleYearDashboardDay = bibleYearDashboardActive
     ? selectedBibleYearSeriesDay ||
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-        .filter((day) => day.dayNumber <= 6)
+        .filter((day) => day.dayNumber <= 8)
         .find((day) => {
           const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
           return !(completed.reading && completed.trivia && completed.reflection);
         }) ||
-      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 6) ||
+      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 8) ||
       null
     : null;
   const bibleYearDashboardTasks = activeBibleYearDashboardDay
@@ -2048,6 +2051,8 @@ export default function DashboardJourneyExperience({
     { dayNumber: 4, label: "Flood" },
     { dayNumber: 5, label: "Abraham" },
     { dayNumber: 6, label: "Lot" },
+    { dayNumber: 7, label: "Covenant" },
+    { dayNumber: 8, label: "Sodom" },
   ];
   const dashboardTaskSource = bibleYearDashboardTasks || visibleTasks;
   const nextTask = dashboardTaskSource.find((task) => !task.done) ?? null;
@@ -3014,7 +3019,7 @@ export default function DashboardJourneyExperience({
   }
 
   function openBibleYearDashboard() {
-    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 6);
+    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
     const nextBibleYearDay =
       builtBibleYearDays.find((day) => {
         const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
@@ -3119,14 +3124,14 @@ export default function DashboardJourneyExperience({
       setBibleYearDashboardActive(true);
       setBibleYearSeriesActive(false);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 6);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 8);
       if (day) setSelectedBibleYearSeriesDay(day);
       setActivePage(0);
     } else if (view === "bible-year-series") {
       setBibleYearDashboardActive(false);
       setBibleYearSeriesActive(true);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 6);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 8);
       if (day) setBibleYearSeriesDetailDay(day);
       setActivePage(0);
     } else {
@@ -4407,6 +4412,8 @@ export default function DashboardJourneyExperience({
     if (dayNumber === 4) return GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON;
     if (dayNumber === 5) return GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON;
     if (dayNumber === 6) return GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON;
+    if (dayNumber === 7) return GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON;
+    if (dayNumber === 8) return GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON;
     return null;
   }
 
@@ -4417,6 +4424,8 @@ export default function DashboardJourneyExperience({
     if (dayNumber === 4) return BIBLE_YEAR_DAY_FOUR_AUDIO;
     if (dayNumber === 5) return BIBLE_YEAR_DAY_FIVE_AUDIO;
     if (dayNumber === 6) return BIBLE_YEAR_DAY_SIX_AUDIO;
+    if (dayNumber === 7) return BIBLE_YEAR_DAY_SEVEN_AUDIO;
+    if (dayNumber === 8) return BIBLE_YEAR_DAY_EIGHT_AUDIO;
     return null;
   }
 
@@ -4938,6 +4947,90 @@ export default function DashboardJourneyExperience({
         list: ["🌑 night comes", "🔥 fire passes through", "🤝 covenant is made", "🌍 land is promised", "🙌 God binds Himself to His word"],
       },
     };
+    const daySevenDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
+      "Genesis 16:1-3": {
+        heading: "⚠️ Sarai Tries to Force the Promise",
+        teachingTitle: "⏳ Waiting Turns Into Control",
+        list: ["💔 Sarai has no child", "👤 Hagar is brought in", "⏳ the promise feels delayed", "⚠️ control replaces trust", "🏠 the household is wounded"],
+      },
+      "Genesis 16:4-6": {
+        heading: "💔 Hagar Is Mistreated",
+        teachingTitle: "🕯️ Shortcuts Create Pain",
+        list: ["👶 Hagar conceives", "💔 contempt grows", "😠 Sarai blames Abram", "🚪 Hagar flees", "⚠️ everyone is wounded"],
+      },
+      "Genesis 16:7-12": {
+        heading: "🕊️ God Finds Hagar",
+        teachingTitle: "👀 God Sees the One Who Runs",
+        list: ["🏜️ Hagar is in the wilderness", "🕊️ the angel finds her", "👂 God hears affliction", "👶 Ishmael is named", "🌱 her future is spoken"],
+      },
+      "Genesis 16:13-16": {
+        heading: "👀 The God Who Sees",
+        teachingTitle: "🛟 Seen in the Wilderness",
+        list: ["👀 Hagar names God", "💧 the well is remembered", "👶 Ishmael is born", "⏳ Abram is eighty-six", "🕊️ God sees the wounded"],
+      },
+      "Genesis 17:1-8": {
+        heading: "🪪 Abram Becomes Abraham",
+        teachingTitle: "✨ God Names the Future",
+        list: ["⏳ thirteen years pass", "🙇 Abram falls down", "🪪 Abram gets a new name", "🌍 nations are promised", "🤝 covenant is established"],
+      },
+      "Genesis 17:9-14": {
+        heading: "✂️ The Covenant Sign",
+        teachingTitle: "🤝 Promise Marked in the Flesh",
+        list: ["🤝 covenant is kept", "✂️ circumcision is the sign", "👶 eight days old is named", "🏠 the whole house is included", "⚠️ covenant is serious"],
+      },
+      "Genesis 17:15-22": {
+        heading: "👑 Sarah and Isaac Are Named",
+        teachingTitle: "😂 Laughter Meets Promise",
+        list: ["🪪 Sarai becomes Sarah", "👶 Isaac is promised", "😂 Abraham laughs", "🙏 Ishmael is blessed", "🎯 covenant goes through Isaac"],
+      },
+      "Genesis 17:23-27": {
+        heading: "✅ Abraham Obeys That Same Day",
+        teachingTitle: "🚶 Covenant Faith Responds",
+        list: ["✅ Abraham obeys", "👦 Ishmael is included", "🏠 the household follows", "📅 obedience happens that day", "🤝 promise becomes marked"],
+      },
+    };
+    const dayEightDisplay: Record<string, { heading: string; teachingTitle: string; list?: string[] }> = {
+      "Genesis 18:1-8": {
+        heading: "🏕️ Abraham Welcomes the Visitors",
+        teachingTitle: "🤲 Holy Attention at the Tent",
+        list: ["🏕️ Abraham sits by the tent", "👀 three visitors appear", "🏃 Abraham runs to welcome them", "🍞 a meal is prepared", "✨ promise comes near"],
+      },
+      "Genesis 18:9-15": {
+        heading: "😂 Sarah Hears the Promise",
+        teachingTitle: "❓ Is Anything Too Hard for the LORD?",
+        list: ["👂 Sarah hears from the tent", "😂 she laughs within herself", "⏳ the promise has felt impossible", "❓ God asks the central question", "👶 Isaac is still coming"],
+      },
+      "Genesis 18:16-21": {
+        heading: "🌆 The Lord Looks Toward Sodom",
+        teachingTitle: "⚖️ God Sees What Is Grievous",
+        list: ["🌆 Sodom comes into view", "🤝 Abraham is brought near", "📣 the cry is great", "⚖️ sin is grievous", "👁️ God judges with knowledge"],
+      },
+      "Genesis 18:22-33": {
+        heading: "🙏 Abraham Intercedes",
+        teachingTitle: "⚖️ Shall Not the Judge Do Right?",
+        list: ["🙏 Abraham draws near", "⚖️ he asks about justice", "🔢 fifty becomes ten", "🕊️ mercy is sought", "🙇 prayer stays humble"],
+      },
+      "Genesis 19:1-11": {
+        heading: "🌃 Sodom's Violence Is Exposed",
+        teachingTitle: "🚪 A City Shows Its Heart",
+        list: ["🌃 angels enter Sodom", "🚪 Lot brings them inside", "⚠️ the city gathers", "🛡️ the visitors protect Lot", "👁️ blindness falls at the door"],
+      },
+      "Genesis 19:12-22": {
+        heading: "🤲 Mercy Pulls Lot Out",
+        teachingTitle: "🏃 Do Not Linger in Judgment",
+        list: ["📣 Lot warns his family", "😶 they think he is joking", "⏳ Lot lingers", "🤲 mercy takes his hand", "🏃 escape is commanded"],
+      },
+      "Genesis 19:23-29": {
+        heading: "🔥 Sodom Falls",
+        teachingTitle: "⚖️ Judgment and Mercy Are Both Real",
+        list: ["☀️ Lot reaches Zoar", "🔥 fire falls", "🧂 Lot's wife looks back", "🌫️ smoke rises", "🤲 God remembers Abraham"],
+      },
+      "Genesis 19:30-38": {
+        heading: "💔 Lot's Family After Sodom",
+        teachingTitle: "🏚️ Rescue Does Not Erase Damage",
+        list: ["⛰️ Lot hides in a cave", "💔 fear remains", "🍷 sin continues", "👶 Moab and Ammon begin", "⚠️ compromise leaves scars"],
+      },
+    };
 
     const sectionBlocks = lesson.sections
       .map((section) => {
@@ -4953,7 +5046,11 @@ export default function DashboardJourneyExperience({
                   ? dayFiveDisplay[section.verseBlock.reference]
                   : lesson.dayNumber === 6
                     ? daySixDisplay[section.verseBlock.reference]
-                  : null;
+                    : lesson.dayNumber === 7
+                      ? daySevenDisplay[section.verseBlock.reference]
+                      : lesson.dayNumber === 8
+                        ? dayEightDisplay[section.verseBlock.reference]
+                        : null;
         const scripture = lesson.dayNumber === 1
           ? getDayOneSpokenVerseCallouts(section.verseBlock)
           : getBibleYearLessonVerses(section.verseBlock)
@@ -5286,7 +5383,7 @@ No pretending.
 ✨ not yet covered by shame`,
     };
 
-    if (lesson.dayNumber === 1 || lesson.dayNumber === 2 || lesson.dayNumber === 3 || lesson.dayNumber === 4 || lesson.dayNumber === 5 || lesson.dayNumber === 6) {
+    if (lesson.dayNumber === 1 || lesson.dayNumber === 2 || lesson.dayNumber === 3 || lesson.dayNumber === 4 || lesson.dayNumber === 5 || lesson.dayNumber === 6 || lesson.dayNumber === 7 || lesson.dayNumber === 8) {
       return buildBibleYearSpokenScriptMarkdown(lesson);
     }
 
@@ -5575,6 +5672,70 @@ Before we understand redemption, we need to understand what God made humanity fo
         answer: "Believed in the LORD",
       },
     ],
+    7: [
+      {
+        id: "day7-hagar",
+        question: "Who did Sarai give to Abram when she tried to force the promise?",
+        options: ["Hagar", "Sarah", "Rebekah"],
+        answer: "Hagar",
+      },
+      {
+        id: "day7-wilderness",
+        question: "Where did the angel of the LORD find Hagar?",
+        options: ["By a fountain in the wilderness", "Inside Babel", "On Mount Moriah"],
+        answer: "By a fountain in the wilderness",
+      },
+      {
+        id: "day7-ishmael",
+        question: "Why was Hagar's son called Ishmael?",
+        options: ["Because the LORD heard her affliction", "Because Abraham built an ark", "Because Sarah laughed first"],
+        answer: "Because the LORD heard her affliction",
+      },
+      {
+        id: "day7-abraham",
+        question: "What new name did God give Abram?",
+        options: ["Abraham", "Israel", "Isaac"],
+        answer: "Abraham",
+      },
+      {
+        id: "day7-isaac",
+        question: "Who did God say would carry the covenant promise?",
+        options: ["Isaac", "Lot", "Pharaoh"],
+        answer: "Isaac",
+      },
+    ],
+    8: [
+      {
+        id: "day8-visitors",
+        question: "How many men appeared to Abraham by the tent in Genesis 18?",
+        options: ["Three", "One", "Twelve"],
+        answer: "Three",
+      },
+      {
+        id: "day8-question",
+        question: "What question does the LORD ask after Sarah laughs?",
+        options: ["Is any thing too hard for the LORD?", "Where is Abel?", "Who touched my garment?"],
+        answer: "Is any thing too hard for the LORD?",
+      },
+      {
+        id: "day8-intercession",
+        question: "What city does Abraham intercede for?",
+        options: ["Sodom", "Nineveh", "Jericho"],
+        answer: "Sodom",
+      },
+      {
+        id: "day8-lot",
+        question: "Who was rescued from Sodom before judgment fell?",
+        options: ["Lot", "Cain", "Laban"],
+        answer: "Lot",
+      },
+      {
+        id: "day8-wife",
+        question: "What happened to Lot's wife when she looked back?",
+        options: ["She became a pillar of salt", "She built an altar", "She entered the ark"],
+        answer: "She became a pillar of salt",
+      },
+    ],
   };
 
   const bibleYearReflectionPromptByDay: Record<number, string> = {
@@ -5584,6 +5745,8 @@ Before we understand redemption, we need to understand what God made humanity fo
     4: "What kind of new beginning are you asking God to help you walk into?",
     5: "Where is God asking you to obey, trust His promise, or stop grasping for control?",
     6: "Where do you need courage, discernment, or renewed trust in God's promise?",
+    7: "Where are you tempted to force what God has promised, and where do you need to receive the identity God gives?",
+    8: "Where do you need to take God's mercy, holiness, and warnings more seriously today?",
   };
 
   function getBibleYearDayTaskKey(task: TaskState) {
@@ -5600,7 +5763,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     return getBibleYearDayCompletedCount(day) >= BIBLE_YEAR_DAY_CARD_KEYS.length;
   }
 
-  function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 6)) {
+  function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8)) {
     const nextDay = days.find((day) => !isBibleYearDayComplete(day)) || days[days.length - 1];
     return nextDay?.dayNumber || 1;
   }
@@ -5706,7 +5869,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   useEffect(() => {
     if (!userId) return;
     const completedEntries = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-      .filter((day) => day.dayNumber <= 6)
+      .filter((day) => day.dayNumber <= 8)
       .flatMap((day) => {
         const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
         return BIBLE_YEAR_DAY_CARD_KEYS
@@ -6292,6 +6455,8 @@ Before we understand redemption, we need to understand what God made humanity fo
       4: "about 20-22 min",
       5: "about 16 min",
       6: "about 16 min",
+      7: "about 14 min",
+      8: "about 19 min",
     };
     const lessonSummaries: Record<number, string[]> = {
       1: [
@@ -6317,6 +6482,14 @@ Before we understand redemption, we need to understand what God made humanity fo
       6: [
         "Day 6 walks through Genesis 14 and 15 together: Lot's capture, Abram's rescue, Melchizedek's blessing, Sodom's offer, Abram's faith, and God's covenant promise.",
         "This day shows courage in crisis, discernment after victory, and faith that believes God's word while still waiting for the promise.",
+      ],
+      7: [
+        "Day 7 walks through Genesis 16 and 17 together: Hagar, waiting, human shortcuts, the God who sees, new names, circumcision, Isaac, and covenant promise.",
+        "This day shows that forcing God's promise creates pain, but God's covenant faithfulness is still steady, personal, and clear.",
+      ],
+      8: [
+        "Day 8 walks through Genesis 18 and 19 together: Abraham welcoming the visitors, Sarah hearing the promise, Abraham interceding, Sodom's violence, Lot's rescue, and the judgment of Sodom.",
+        "This day is heavy, but important. It shows that God's promise is still alive, prayer can draw near with bold humility, and mercy must never be treated lightly.",
       ],
     };
     const daySummary = lessonSummaries[day.dayNumber] || [day.summary];
@@ -6382,7 +6555,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   const renderBibleYearSeriesPage = () => {
-    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 6);
+    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
     const visibleChapterCount = visibleSeriesDays.reduce((total, day) => total + day.readings.length, 0);
     const currentSeriesDayNumber = getCurrentBibleYearSeriesDayNumber(visibleSeriesDays);
     const orderedSeriesDays = [...visibleSeriesDays].sort((a, b) => {
@@ -7210,7 +7383,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </button>
                   </div>
                   <div className="bible-year-journey-scroll mt-2 overflow-x-auto px-1 pb-3 pt-5">
-                    <div className="grid min-w-[620px] grid-cols-6 items-start gap-0">
+                    <div className="grid min-w-[820px] grid-cols-8 items-start gap-0">
                       {bibleYearStudyPlanMilestones.map((milestone, index) => {
                         const completed = bibleYearCompletedCardsByDay[milestone.dayNumber] || {};
                         const isComplete = Boolean(completed.reading && completed.trivia && completed.reflection);
@@ -8010,31 +8183,35 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
 
         <div className={getSlideClass(3)}>
-          {shouldRenderSlide(3) ? renderEmbeddedCommunityPage() : null}
+          {shouldRenderSlide(3) ? <BibleTopicsPanel userId={userId} /> : null}
         </div>
 
         <div className={getSlideClass(4)}>
-          {shouldRenderSlide(4) ? renderEmbeddedSharePage() : null}
+          {shouldRenderSlide(4) ? renderEmbeddedCommunityPage() : null}
         </div>
 
         <div className={getSlideClass(5)}>
-          {shouldRenderSlide(5) ? renderEmbeddedBuddiesPage() : null}
+          {shouldRenderSlide(5) ? renderEmbeddedSharePage() : null}
         </div>
 
         <div className={getSlideClass(6)}>
-          {shouldRenderSlide(6) ? renderEmbeddedTvPage() : null}
+          {shouldRenderSlide(6) ? renderEmbeddedBuddiesPage() : null}
         </div>
 
         <div className={getSlideClass(7)}>
-          {shouldRenderSlide(7) ? renderEmbeddedGamesPage() : null}
+          {shouldRenderSlide(7) ? renderEmbeddedTvPage() : null}
         </div>
 
         <div className={getSlideClass(8)}>
-          {shouldRenderSlide(8) && isOwnerDashboard ? renderEmbeddedAnalyticsPage() : null}
+          {shouldRenderSlide(8) ? renderEmbeddedGamesPage() : null}
         </div>
 
         <div className={getSlideClass(9)}>
-          {shouldRenderSlide(9) ? renderEmbeddedSettingsPage() : null}
+          {shouldRenderSlide(9) && isOwnerDashboard ? renderEmbeddedAnalyticsPage() : null}
+        </div>
+
+        <div className={getSlideClass(10)}>
+          {shouldRenderSlide(10) ? renderEmbeddedSettingsPage() : null}
         </div>
 
         {false ? (

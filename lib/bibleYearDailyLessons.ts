@@ -852,3 +852,205 @@ export const GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON: BibleYearDailyLesson = {
     "Abram's shield, reward, righteousness, descendants, land, and future are all held by the Lord.",
   ],
 };
+
+export const GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON: BibleYearDailyLesson = {
+  dayNumber: 7,
+  title: "The Covenant Promise",
+  reference: "Genesis 16-17",
+  estimatedListenTime: "about 14 min",
+  opening: [
+    "Day 7 moves through one of the most honest stretches in Abraham's story.",
+    "Genesis 16 shows what happens when waiting turns into control. Sarai, Abram, and Hagar are pulled into a painful human shortcut.",
+    "Genesis 17 answers that pain with covenant clarity. God gives Abram and Sarai new names, marks the covenant, and names Isaac before the promise is visible.",
+  ],
+  sections: [
+    {
+      heading: "Sarai Tries to Force the Promise",
+      verseBlock: { reference: "Genesis 16:1-3", chapter: 16, startVerse: 1, endVerse: 3 },
+      teaching: [
+        "Sarai has no child, and the waiting has become heavy.",
+        "Instead of waiting on God's promise, she tries to solve the problem through Hagar.",
+        "Abram listens, and the household steps into a plan God never commanded.",
+        "The shortcut looks practical, but it is already moving away from trust.",
+      ],
+    },
+    {
+      heading: "Hagar Is Mistreated",
+      verseBlock: { reference: "Genesis 16:4-6", chapter: 16, startVerse: 4, endVerse: 6 },
+      teaching: [
+        "Hagar conceives, and the pressure inside the household grows.",
+        "Sarai feels despised, Abram avoids responsibility, and Hagar is treated harshly.",
+        "This is what human control often creates: blame, pain, and people being used.",
+        "Genesis is not hiding the damage. It is showing why forcing the promise cannot produce peace.",
+      ],
+    },
+    {
+      heading: "God Finds Hagar",
+      verseBlock: { reference: "Genesis 16:7-12", chapter: 16, startVerse: 7, endVerse: 12 },
+      teaching: [
+        "Hagar runs into the wilderness, but she is not invisible to God.",
+        "The angel of the LORD finds her by a fountain of water.",
+        "God asks where she came from and where she is going, giving dignity to a woman others have mistreated.",
+        "Her son is named Ishmael because the LORD has heard her affliction.",
+      ],
+    },
+    {
+      heading: "The God Who Sees",
+      verseBlock: { reference: "Genesis 16:13-16", chapter: 16, startVerse: 13, endVerse: 16 },
+      teaching: [
+        "Hagar names the LORD as the God who sees her.",
+        "That is one of the most tender moments in Abraham's story.",
+        "Before the covenant sign appears in Genesis 17, God reveals that He sees the person wounded by the shortcut.",
+        "Ishmael is born, and Abram is eighty-six years old. The promise is still waiting.",
+      ],
+    },
+    {
+      heading: "Abram Becomes Abraham",
+      verseBlock: { reference: "Genesis 17:1-8", chapter: 17, startVerse: 1, endVerse: 8 },
+      teaching: [
+        "Thirteen years pass before Genesis 17 begins.",
+        "God appears to Abram as Almighty God and calls him to walk before Him.",
+        "Then God changes Abram's name to Abraham, father of many nations.",
+        "The name change is not based on what Abraham can see yet. It is based on what God has promised.",
+      ],
+    },
+    {
+      heading: "The Covenant Sign",
+      verseBlock: { reference: "Genesis 17:9-14", chapter: 17, startVerse: 9, endVerse: 14 },
+      teaching: [
+        "God gives circumcision as the sign of the covenant.",
+        "The covenant is not just an idea Abraham thinks about. It is marked into the life of the household.",
+        "Every generation is called to remember that this family belongs to God's promise.",
+        "The sign is serious because the covenant is serious.",
+      ],
+    },
+    {
+      heading: "Sarah and Isaac Are Named",
+      verseBlock: { reference: "Genesis 17:15-22", chapter: 17, startVerse: 15, endVerse: 22 },
+      teaching: [
+        "God changes Sarai's name to Sarah and speaks blessing over her.",
+        "Then God names the promised son before he is born: Isaac.",
+        "Abraham laughs and asks that Ishmael might live before God, and God graciously promises blessing for Ishmael too.",
+        "But the covenant line will go through Isaac, the son God promised.",
+      ],
+    },
+    {
+      heading: "Abraham Obeys That Same Day",
+      verseBlock: { reference: "Genesis 17:23-27", chapter: 17, startVerse: 23, endVerse: 27 },
+      teaching: [
+        "Abraham responds to God's word with obedience that same day.",
+        "He circumcises Ishmael and every male in his household.",
+        "Faith is not only waiting and believing. Faith also responds when God gives a clear command.",
+        "Genesis 17 ends with the promise marked on Abraham's house while Isaac is still unseen.",
+      ],
+    },
+  ],
+  closing: [
+    "Day 7 shows the danger of trying to force what God promised to give.",
+    "Genesis 16 is painful because control wounds real people, but it also reveals the God who sees the wounded.",
+    "Genesis 17 brings covenant clarity after years of waiting. God gives new names, a covenant sign, and the promise of Isaac.",
+    "The promise is not carried by human shortcuts.",
+    "It is carried by God's covenant faithfulness.",
+  ],
+};
+
+export const GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON: BibleYearDailyLesson = {
+  dayNumber: 8,
+  title: "The Judgment of Sodom",
+  reference: "Genesis 18-19",
+  estimatedListenTime: "about 19 min",
+  opening: [
+    "Day 8 brings together promise, prayer, mercy, and judgment.",
+    "Genesis 18 shows Abraham receiving visitors, Sarah hearing the promise again, and Abraham standing before the Lord in intercession.",
+    "Genesis 19 is heavy. It shows Sodom's violence, Lot's compromised position, mercy pulling him out, and judgment falling on a city that refused righteousness.",
+  ],
+  sections: [
+    {
+      heading: "Abraham Welcomes the Visitors",
+      verseBlock: { reference: "Genesis 18:1-8", chapter: 18, startVerse: 1, endVerse: 8 },
+      teaching: [
+        "Abraham is sitting in the heat of the day when the LORD appears to him.",
+        "He sees three visitors and runs to welcome them with water, rest, bread, and a meal.",
+        "This is more than politeness. Abraham's tent becomes a place of holy attention.",
+        "Genesis shows promise being spoken in the ordinary space of hospitality.",
+      ],
+    },
+    {
+      heading: "Sarah Hears the Promise",
+      verseBlock: { reference: "Genesis 18:9-15", chapter: 18, startVerse: 9, endVerse: 15 },
+      teaching: [
+        "The visitors ask where Sarah is, and the promise becomes personal again.",
+        "Sarah hears that she will have a son, and she laughs within herself.",
+        "God answers the hidden laugh with a question: Is any thing too hard for the LORD?",
+        "This is not cruelty toward Sarah. It is an invitation to bring impossible waiting under God's power.",
+      ],
+    },
+    {
+      heading: "The Lord Looks Toward Sodom",
+      verseBlock: { reference: "Genesis 18:16-21", chapter: 18, startVerse: 16, endVerse: 21 },
+      teaching: [
+        "The men rise and look toward Sodom, and Abraham walks with them.",
+        "God lets Abraham into the conversation about what is coming.",
+        "The cry of Sodom and Gomorrah is great, and their sin is very grievous.",
+        "Judgment in Genesis is not random anger. God sees, knows, and judges what is truly evil.",
+      ],
+    },
+    {
+      heading: "Abraham Intercedes",
+      verseBlock: { reference: "Genesis 18:22-33", chapter: 18, startVerse: 22, endVerse: 33 },
+      teaching: [
+        "Abraham stands before the LORD and draws near with reverent boldness.",
+        "He asks whether the Judge of all the earth will do right.",
+        "His prayer keeps moving from fifty righteous down to ten.",
+        "Abraham does not command God, but he does plead for mercy. Closeness with God makes him both humble and bold.",
+      ],
+    },
+    {
+      heading: "Sodom's Violence Is Exposed",
+      verseBlock: { reference: "Genesis 19:1-11", chapter: 19, startVerse: 1, endVerse: 11 },
+      teaching: [
+        "Two angels arrive in Sodom, and Lot is sitting in the gate.",
+        "The city quickly reveals its heart through violence, pressure, and wicked desire.",
+        "Lot tries to protect the visitors, but his household is already inside a dangerous place.",
+        "Genesis is warning us that a life can become deeply entangled with a city it cannot heal.",
+      ],
+    },
+    {
+      heading: "Mercy Pulls Lot Out",
+      verseBlock: { reference: "Genesis 19:12-22", chapter: 19, startVerse: 12, endVerse: 22 },
+      teaching: [
+        "The angels tell Lot to bring out anyone he has in the city.",
+        "Lot warns his sons-in-law, but they think he is joking.",
+        "Even when morning comes, Lot lingers.",
+        "The angels take him by the hand because the LORD is merciful. Sometimes mercy has to pull us away from what we are still too attached to.",
+      ],
+    },
+    {
+      heading: "Sodom Falls",
+      verseBlock: { reference: "Genesis 19:23-29", chapter: 19, startVerse: 23, endVerse: 29 },
+      teaching: [
+        "Lot reaches Zoar, and judgment falls on Sodom and Gomorrah.",
+        "Fire and brimstone come from the LORD out of heaven.",
+        "Lot's wife looks back and becomes a warning about divided affection.",
+        "The chapter also says God remembered Abraham and sent Lot out. Judgment is real, and mercy is real too.",
+      ],
+    },
+    {
+      heading: "Lot's Family After Sodom",
+      verseBlock: { reference: "Genesis 19:30-38", chapter: 19, startVerse: 30, endVerse: 38 },
+      teaching: [
+        "The ending of Genesis 19 is disturbing and sad.",
+        "Lot leaves Zoar and lives in a cave with his daughters.",
+        "The family's choices show that leaving Sodom physically did not mean Sodom's damage had fully left them.",
+        "Genesis does not soften the ending. It shows the long consequences of compromise and the need for God's mercy at every level.",
+      ],
+    },
+  ],
+  closing: [
+    "Day 8 is not an easy day, but it is an important one.",
+    "Genesis 18 reminds us that God's promise can still speak into impossible waiting, and that prayer can draw near with reverent boldness.",
+    "Genesis 19 reminds us that wickedness is serious, compromise has consequences, and judgment is not pretend.",
+    "But even here, mercy is present.",
+    "The Lord heard Abraham's intercession, remembered Abraham, and pulled Lot from the overthrow.",
+  ],
+};

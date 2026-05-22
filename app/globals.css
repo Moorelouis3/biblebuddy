@@ -3322,6 +3322,10 @@ html[data-bb-skin="desert-dawn"] [data-louis-avatar] {
   animation: bb-desert-dawn-avatar-glow 4.8s ease-in-out infinite;
 }
 
+[data-louis-avatar] {
+  border-radius: 9999px;
+}
+
 html[data-bb-skin="no-fuss"] .bb-card,
 html[data-bb-skin="no-fuss"] .bb-surface,
 html[data-bb-skin="no-fuss"] .bg-white,

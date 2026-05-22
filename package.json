@@ -11,6 +11,11 @@
     "tts:bible-year:day3": "tsx scripts/generate-bible-year-day-one-audio.ts --day=3",
     "tts:bible-year:day4": "tsx scripts/generate-bible-year-day-one-audio.ts --day=4",
     "tts:bible-year:day5": "tsx scripts/generate-bible-year-day-one-audio.ts --day=5",
+    "tts:bible-year:day6": "tsx scripts/generate-bible-year-day-one-audio.ts --day=6",
+    "tts:bible-year:day7": "tsx scripts/generate-bible-year-day-one-audio.ts --day=7",
+    "tts:bible-year:day8": "tsx scripts/generate-bible-year-day-one-audio.ts --day=8",
+    "tts:bible-topic": "tsx scripts/generate-bible-topic-audio.ts",
+    "tts:bible-topic:reels": "tsx scripts/generate-bible-topic-reel-audio.ts",
     "start": "next start",
     "lint": "eslint"
   },
