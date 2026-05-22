@@ -64,6 +64,7 @@ interface CommentSectionProps {
   submitButtonText?: string;
   variant?: "default" | "plain";
   onPosted?: () => void;
+  onUserHasPosted?: () => void;
 }
 
 function groupComments(comments: Comment[]): Comment[] {
@@ -108,6 +109,7 @@ export default function CommentSection({
   submitButtonText = "Post Comment",
   variant = "default",
   onPosted,
+  onUserHasPosted,
 }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [user, setUser] = useState<{ id: string; name: string } | null>(null);
@@ -223,6 +225,9 @@ export default function CommentSection({
     }
 
     setComments(rows);
+    if (user?.id && rows.some((row) => row.user_id === user.id && !row.is_deleted)) {
+      onUserHasPosted?.();
+    }
 
     const userIds = [...new Set(rows.map((c) => c.user_id))];
     if (userIds.length === 0) return;

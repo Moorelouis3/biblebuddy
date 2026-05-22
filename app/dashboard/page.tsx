@@ -12,6 +12,7 @@ import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { getBookTotalChapters, getCurrentBook, getCompletedChapters } from "../../lib/readingProgress";
+import { generateBibleInOneYearPlan, getCurrentDayNumber } from "../../lib/bibleInOneYearPlan";
 import { getProfileStats, syncCurrentStreakToProfileStats } from "../../lib/profileStats";
 import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
 import { buildLouisRecommendationHandoff, storeLouisRouteHandoff } from "../../lib/louisRouteHandoff";
@@ -2473,30 +2474,6 @@ export default function DashboardPage() {
 
       return (
         <div className="mx-auto max-w-xl rounded-[22px] border border-[color-mix(in_srgb,var(--bb-card-border)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_72%,rgba(0,0,0,0.36))] p-2 shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
-          {includesBibleYearStats ? (
-            <button
-              type="button"
-              onClick={() => {
-                setShowDiamondStore(false);
-                setShowBibleProgressPanel(true);
-                setBibleBrowserSelectedBook(null);
-              }}
-              className="bb-skin-glow-tile mb-2 w-full rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent)_42%,var(--bb-card-border))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent-soft)_84%,var(--bb-card)),var(--bb-card))] px-4 py-3 text-left shadow-[0_12px_26px_rgba(38,63,99,0.14),inset_0_1px_0_rgba(255,255,255,0.75)] transition hover:-translate-y-0.5 hover:shadow-md"
-            >
-              <div className="flex flex-col items-start gap-2">
-                <div className="min-w-0">
-                  <p className="mt-1 whitespace-nowrap text-[clamp(20px,6vw,36px)] font-black leading-none text-[var(--bb-text-primary)]">
-                    {displayedBibleCompletionPercent}% of the Bible studied
-                  </p>
-                </div>
-              </div>
-              <div className="mt-3 h-3 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
-                <div className="h-full rounded-full bg-[var(--bb-progress-fill)] transition-all duration-500" style={{ width: `${displayedBibleCompletionPercent}%` }} />
-              </div>
-              <p className="mt-2 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">{bibleFinishEstimate}</p>
-            </button>
-          ) : null}
-
           <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
             {cards.map((card) => {
               const CardTag = card.onClick ? "button" : "div";
@@ -2530,6 +2507,45 @@ export default function DashboardPage() {
               );
             })}
           </div>
+
+          {includesBibleYearStats ? (
+            <button
+              type="button"
+              onClick={() => {
+                setShowDiamondStore(false);
+                setShowBibleProgressPanel(false);
+                setBibleBrowserSelectedBook(null);
+                setBibleBrowserReading(null);
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("bb:dashboard-open-bible-year-progress"));
+                }
+              }}
+              className="bb-skin-glow-tile mt-2 w-full rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent)_42%,var(--bb-card-border))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent-soft)_84%,var(--bb-card)),var(--bb-card))] px-4 py-3 text-left shadow-[0_12px_26px_rgba(38,63,99,0.14),inset_0_1px_0_rgba(255,255,255,0.75)] transition hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">Bible in One Year Progress</p>
+                  <p className="mt-1 whitespace-nowrap text-[clamp(20px,6vw,36px)] font-black leading-none text-[var(--bb-text-primary)]">
+                    {displayedBibleCompletionPercent}% of the Bible studied
+                  </p>
+                  <p className="mt-2 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">
+                    Day {bibleYearReport.currentDay} • {bibleYearReport.statusLabel}
+                  </p>
+                </div>
+                <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_36%,var(--bb-card-border))] bg-[var(--bb-card)] text-[var(--bb-accent)]" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.7" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
+                </span>
+              </div>
+              <div className="mt-3 h-3 overflow-hidden rounded-full bg-[var(--bb-progress-track)]">
+                <div className="h-full rounded-full bg-[var(--bb-progress-fill)] transition-all duration-500" style={{ width: `${displayedBibleCompletionPercent}%` }} />
+              </div>
+              <p className="mt-2 text-xs font-bold leading-5 text-[var(--bb-text-secondary)]">
+                {totalCompletedChapters.toLocaleString()} read. {remainingBibleChapters.toLocaleString()} chapters left.
+              </p>
+            </button>
+          ) : null}
         </div>
       );
     };
@@ -2668,16 +2684,20 @@ export default function DashboardPage() {
           type="button"
           onClick={() => {
             setShowDiamondStore(false);
-            setShowBibleProgressPanel(true);
+            setShowBibleProgressPanel(false);
             setBibleBrowserSelectedBook(null);
+            setBibleBrowserReading(null);
+            if (typeof window !== "undefined") {
+              window.dispatchEvent(new CustomEvent("bb:dashboard-open-bible-year-progress"));
+            }
           }}
           className="premium-stat-card premium-mini-card text-left transition hover:-translate-y-0.5"
         >
           <span className="premium-orb text-lg font-black" aria-hidden="true">B</span>
           <p className="mt-3 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Scripture Path</p>
-          <p className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary)]">{journeyTitle}</p>
+          <p className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary)]">My Bible in One Year Plan</p>
           <p className="mt-1 text-sm font-black text-[var(--bb-text-primary)]">{displayedBibleCompletionPercent}% complete</p>
-          <p className="mt-1 text-[11px] font-bold leading-4 text-[var(--bb-text-secondary)]">One chapter at a time.</p>
+          <p className="mt-1 text-[11px] font-bold leading-4 text-[var(--bb-text-secondary)]">{journeyTitle}. One chapter at a time.</p>
         </button>
 
         <button type="button" onClick={openDiamondStore} className="premium-stat-card premium-mini-card text-left transition hover:-translate-y-0.5">
@@ -2880,14 +2900,14 @@ export default function DashboardPage() {
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">Bible Progress</p>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent)]">My Bible in One Year Plan</p>
             <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary)]">
-              {bibleBrowserSelectedBook || "Choose a Bible book"}
+              {bibleBrowserSelectedBook || `Day ${bibleYearReport.currentDay} progress`}
             </h2>
             <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary)]">
               {bibleBrowserSelectedBook
                 ? "Pick a chapter to open the Bible reader. Finished chapters are already marked."
-                : "Tap a book, then choose a chapter. Books are in Bible order by default."}
+                : bibleYearReport.statusDetail}
             </p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
@@ -2918,7 +2938,7 @@ export default function DashboardPage() {
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="text-3xl font-black leading-none text-[var(--bb-text-primary)]">{bibleCompletionPercent}%</p>
-              <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted)]">Bible completed</p>
+              <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted)]">{bibleYearReport.statusLabel}</p>
             </div>
             <div className="text-right text-xs font-black text-[var(--bb-text-secondary)]">
               <p>{totalCompletedChapters} / {TOTAL_BIBLE_CHAPTERS}</p>
@@ -2931,7 +2951,37 @@ export default function DashboardPage() {
               style={{ width: `${bibleCompletionPercent}%` }}
             />
           </div>
+          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {[
+              ["Current day", `${bibleYearReport.currentDay}`],
+              ["Today", `${bibleYearReport.currentDayPercent}%`],
+              ["Current streak", `${bibleYearReport.currentStreak}`],
+              ["All-time streak", `${bibleYearReport.allTimeStreak}`],
+            ].map(([label, value]) => (
+              <div key={label} className="rounded-2xl bg-[var(--bb-card)] px-3 py-2">
+                <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted)]">{label}</p>
+                <p className="mt-1 text-base font-black text-[var(--bb-text-primary)]">{value}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 rounded-2xl bg-[var(--bb-card)] px-3 py-3">
+            <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted)]">Status</p>
+            <p className="mt-1 text-sm font-black text-[var(--bb-text-primary)]">{bibleYearReport.statusLabel}</p>
+            <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary)]">{bibleYearReport.statusDetail}</p>
+          </div>
         </div>
+
+        {!bibleBrowserSelectedBook ? (
+          <div className="mt-5">
+            <button
+              type="button"
+              onClick={() => setBibleBrowserSelectedBook(currentBook || "Genesis")}
+              className="w-full rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-4 py-3 text-sm font-black text-[var(--bb-accent)] transition hover:border-[var(--bb-accent)] hover:bg-[var(--bb-card)]"
+            >
+              Open Bible Chapters
+            </button>
+          </div>
+        ) : null}
 
         {bibleBrowserSelectedBook ? (
           <div className="mt-5">
@@ -2958,42 +3008,7 @@ export default function DashboardPage() {
               })}
             </div>
           </div>
-        ) : (
-          <div className="mt-5">
-            <label className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] px-4 py-3">
-              <span className="text-sm font-black text-[var(--bb-text-primary)]">ABC order</span>
-              <input
-                type="checkbox"
-                checked={bibleBrowserAlphabetical}
-                onChange={(event) => setBibleBrowserAlphabetical(event.target.checked)}
-                className="h-5 w-5 accent-[var(--bb-accent)]"
-              />
-            </label>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {visibleBooks.map((book) => {
-                const progress = progressByBook.get(book);
-                const total = progress?.total ?? getBookTotalChapters(book);
-                const completed = progress?.completed ?? 0;
-                const complete = completed >= total;
-                return (
-                  <button
-                    key={book}
-                    type="button"
-                    onClick={() => setBibleBrowserSelectedBook(book)}
-                    className={`rounded-2xl border px-3 py-3 text-left transition hover:-translate-y-0.5 hover:border-[var(--bb-accent)] hover:shadow-sm ${
-                      complete ? "border-[#9be7b0] bg-[#eafbf0]" : "border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)]"
-                    }`}
-                  >
-                    <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary)]">{book}</span>
-                    <span className="mt-1 block text-[11px] font-bold text-[var(--bb-text-muted)]">
-                      {completed} of {total} chapters
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
+        ) : null}
       </section>
     );
   }
@@ -6678,6 +6693,62 @@ export default function DashboardPage() {
   const shouldShowAds = ENABLE_ADS && userId && membershipStatus !== "pro";
   const inviteLink = typeof window !== "undefined" ? `${window.location.origin}/signup` : "https://www.biblebuddy.com/signup";
   const inviteText = "I've been using Bible Buddy to read and study the Bible. Come join me.";
+  const bibleYearPlan = useMemo(() => generateBibleInOneYearPlan(), []);
+  const bibleYearReport = useMemo(() => {
+    const currentDay = getCurrentDayNumber();
+    const completedByBook = new Map(
+      bibleBookProgress.map((row) => [
+        row.book.toLowerCase().trim(),
+        new Set(row.chapters),
+      ]),
+    );
+    const isChapterComplete = (book: string, chapter: number) =>
+      completedByBook.get(book.toLowerCase().trim())?.has(chapter) ?? false;
+    const allDays = bibleYearPlan.weeks.flatMap((week) => week.days);
+    const currentDayReading = allDays.find((day) => day.dayNumber === currentDay) ?? allDays[0];
+    const currentDayTotalChapters = currentDayReading?.chapters.length ?? 0;
+    const currentDayCompletedChapters =
+      currentDayReading?.chapters.filter((chapter) => isChapterComplete(chapter.book, chapter.chapter)).length ?? 0;
+    const currentDayPercent = currentDayTotalChapters > 0
+      ? Math.round((currentDayCompletedChapters / currentDayTotalChapters) * 100)
+      : 0;
+    const firstIncompleteDay = allDays.find((day) =>
+      day.chapters.some((chapter) => !isChapterComplete(chapter.book, chapter.chapter)),
+    )?.dayNumber ?? bibleYearPlan.totalDays + 1;
+    const dayDelta = firstIncompleteDay - currentDay;
+    const statusLabel =
+      dayDelta > 0
+        ? `${dayDelta} ${dayDelta === 1 ? "day" : "days"} ahead`
+        : dayDelta < 0
+          ? `${Math.abs(dayDelta)} ${Math.abs(dayDelta) === 1 ? "day" : "days"} behind`
+          : "On track";
+    const statusDetail =
+      dayDelta > 0
+        ? "You have already finished the chapters needed for today's pace."
+        : dayDelta < 0
+          ? "Finish the next incomplete day to catch the one-year pace."
+          : "You are working on the current Bible in One Year day.";
+    const overallPercent = Math.max(
+      0,
+      Math.min(100, Math.round((totalCompletedChapters / Math.max(TOTAL_BIBLE_CHAPTERS, 1)) * 100)),
+    );
+    const currentStreak = Math.max(0, Math.floor(profile?.current_streak ?? 0));
+
+    return {
+      currentDay,
+      currentDayPercent,
+      currentDayCompletedChapters,
+      currentDayTotalChapters,
+      completedChapters: totalCompletedChapters,
+      totalChapters: TOTAL_BIBLE_CHAPTERS,
+      remainingChapters: Math.max(0, TOTAL_BIBLE_CHAPTERS - totalCompletedChapters),
+      overallPercent,
+      currentStreak,
+      allTimeStreak: currentStreak,
+      statusLabel,
+      statusDetail,
+    };
+  }, [bibleBookProgress, bibleYearPlan, profile?.current_streak, totalCompletedChapters]);
 
   async function handleInviteBuddy() {
     if (userId) {
@@ -9413,6 +9484,7 @@ export default function DashboardPage() {
           onOpenStore={openDiamondStore}
           onDashboardPageChange={preserveActivePremiumSkin}
           isOwnerDashboard={isOwnerDashboard}
+          bibleYearReport={bibleYearReport}
           onDevotionalChanged={() => {
             refreshLevelData();
             void loadDailyTaskSummary({ force: true, silent: true });
@@ -9470,6 +9542,7 @@ export default function DashboardPage() {
           onOpenStore={openDiamondStore}
           onDashboardPageChange={preserveActivePremiumSkin}
           isOwnerDashboard={isOwnerDashboard}
+          bibleYearReport={bibleYearReport}
           onDevotionalChanged={() => {
             refreshLevelData();
             void loadDailyTaskSummary({ force: true, silent: true });

@@ -32,6 +32,7 @@ type LouisAvatarProps = {
   size?: number;
   buddyId?: BuddyAvatarId;
   plain?: boolean;
+  unframed?: boolean;
 };
 
 const moodToFile: Record<LouisMood, string> = {
@@ -209,9 +210,13 @@ function BuddyIllustration({ buddyId, mood, size, plain = false }: { buddyId: Bu
   );
 }
 
-export function LouisAvatar({ mood = "wave", size = 72, buddyId, plain = false }: LouisAvatarProps) {
+export function LouisAvatar({ mood = "wave", size = 72, buddyId, plain = false, unframed = false }: LouisAvatarProps) {
   const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId | null>(buddyId ?? null);
-  const imageClassName = plain ? "h-full w-full object-contain select-none" : "h-full w-full rounded-full object-cover select-none";
+  const imageClassName = unframed
+    ? "h-full w-full object-contain select-none"
+    : plain
+      ? "h-full w-full object-contain select-none"
+      : "h-full w-full rounded-full object-cover select-none";
 
   useEffect(() => {
     if (buddyId) {

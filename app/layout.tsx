@@ -187,7 +187,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <script
-          id="bb-premium-skin-first-paint"
           dangerouslySetInnerHTML={{ __html: premiumSkinFirstPaintScript }}
         />
         <script
