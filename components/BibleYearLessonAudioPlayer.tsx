@@ -273,27 +273,25 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   if (videoPlayerSrc) {
+    const displayTitle = title
+      .replace(/^Day\s+\d+\s*[-–]\s*/i, "")
+      .replace(/^The\s+/i, "");
+
     return (
-      <section className="mb-6 overflow-hidden rounded-[26px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] shadow-[0_18px_42px_rgba(0,0,0,0.16)]">
-        <div className="border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_76%,transparent))] px-4 py-3">
-          <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Video Lesson</p>
-          <h3 className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">{title}</h3>
-        </div>
-        <div className="p-3">
-          <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[#070503] shadow-[0_24px_58px_rgba(0,0,0,0.42),0_0_34px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_20%,transparent)]">
-            <div className="relative aspect-video overflow-hidden bg-black">
-              <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_48%,rgba(0,0,0,0.36)),linear-gradient(180deg,rgba(0,0,0,0.18),transparent_35%,rgba(0,0,0,0.22))]" aria-hidden="true" />
-              <iframe
-                src={videoPlayerSrc}
-                title={title}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                allowFullScreen
-                className="absolute inset-0 h-full w-full border-0"
-              />
-            </div>
+      <section className="mb-3">
+        <h3 className="mb-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">{displayTitle}</h3>
+        <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[#070503] shadow-[0_18px_42px_rgba(0,0,0,0.34),0_0_26px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)]">
+          <div className="relative aspect-video overflow-hidden bg-black">
+            <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_48%,rgba(0,0,0,0.28)),linear-gradient(180deg,rgba(0,0,0,0.12),transparent_35%,rgba(0,0,0,0.18))]" aria-hidden="true" />
+            <iframe
+              src={videoPlayerSrc}
+              title={title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full border-0"
+            />
           </div>
-          <p className="mt-3 text-center text-xs font-black text-[var(--bb-text-muted,#6b7280)]">{durationLabel}</p>
         </div>
       </section>
     );

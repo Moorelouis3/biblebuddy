@@ -28,6 +28,7 @@ export const BIBLE_YEAR_DAY_ONE_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(1),
   apiSrc: getBibleYearAudioApiSrc(1),
   estimatedDuration: "about 18 min",
+  videoSrc: "https://player.mediadelivery.net/play/618103/e810870b-c3f6-4289-b74d-263113afede9",
 };
 
 export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {

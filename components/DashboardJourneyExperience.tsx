@@ -6815,10 +6815,11 @@ Before we understand redemption, we need to understand what God made humanity fo
   const renderBibleYearDayModalBody = (day: GenesisBibleYearDay) => {
     const bibleYearLesson = getBibleYearDailyLesson(day.dayNumber);
     const bibleYearAudio = getBibleYearDayAudio(day.dayNumber);
+    const readingCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
 
     if (bibleYearLesson) {
       return (
-        <div className="space-y-4 px-4 py-5">
+        <div className="space-y-3 px-4 py-4">
           {bibleYearAudio ? (
             <BibleYearLessonAudioPlayer
               audioSrc={bibleYearAudio.apiSrc}
@@ -6878,12 +6879,18 @@ Before we understand redemption, we need to understand what God made humanity fo
             <button
               type="button"
               onClick={() => {
+                if (readingCardComplete) return;
                 markBibleYearDayCardComplete(day, "reading");
                 closeBibleYearReadingArticle();
               }}
-              className="w-full rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition hover:brightness-95"
+              disabled={readingCardComplete}
+              className={`w-full rounded-2xl px-4 py-3 text-sm font-black shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition ${
+                readingCardComplete
+                  ? "cursor-default border border-[color-mix(in_srgb,var(--bb-success,#16a34a)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-success,#16a34a)_20%,var(--bb-card,#ffffff))] text-[var(--bb-success,#16a34a)]"
+                  : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
+              }`}
             >
-              {bibleYearCompletedCardsByDay[day.dayNumber]?.reading ? "Completed" : "Mark Complete +25 XP"}
+              {readingCardComplete ? "Completed" : "Mark Complete +25 XP"}
             </button>
           ) : null}
         </div>
@@ -6914,10 +6921,18 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="mt-5 flex justify-end">
             <button
               type="button"
-              onClick={() => markBibleYearDayCardComplete(day, "reading")}
-              className="rounded-full bg-[var(--bb-button,#2f7fe8)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+              onClick={() => {
+                if (readingCardComplete) return;
+                markBibleYearDayCardComplete(day, "reading");
+              }}
+              disabled={readingCardComplete}
+              className={`rounded-full px-6 py-3 text-sm font-black shadow-sm transition ${
+                readingCardComplete
+                  ? "cursor-default border border-[color-mix(in_srgb,var(--bb-success,#16a34a)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-success,#16a34a)_20%,var(--bb-card,#ffffff))] text-[var(--bb-success,#16a34a)]"
+                  : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
+              }`}
             >
-              {bibleYearCompletedCardsByDay[day.dayNumber]?.reading ? "Completed" : "Mark as Complete"}
+              {readingCardComplete ? "Completed" : "Mark as Complete"}
             </button>
           </div>
         </div>
