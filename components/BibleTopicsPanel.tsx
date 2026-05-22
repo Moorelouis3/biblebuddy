@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { BIBLE_TOPICS } from "../lib/bibleTopics";
-import { logActionToMasterActions } from "../lib/actionRecorder";
 import { awardDiamonds } from "../lib/diamondWallet";
 import { supabase } from "../lib/supabaseClient";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
@@ -154,7 +153,14 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
 
         const alreadyRewarded = !existingError && Boolean(existing?.length);
         if (!alreadyRewarded) {
-          await logActionToMasterActions(userId, ACTION_TYPE.bible_topic_lesson_completed, actionLabel);
+          const { error: actionError } = await supabase.from("master_actions").insert({
+            user_id: userId,
+            action_type: ACTION_TYPE.bible_topic_lesson_completed,
+            action_label: actionLabel,
+          });
+          if (actionError) {
+            console.warn("[BIBLE_TOPICS] Could not persist topic lesson action. Check the master_actions action_type migration.", actionError);
+          }
           await awardDiamonds(userId, TOPIC_LESSON_DIAMONDS);
           triggerPoints(TOPIC_LESSON_XP, "Bible Topics lesson");
         }
@@ -255,27 +261,25 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
                 {studyNotesOpen ? (
                   <div className="border-t border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] p-4">
                     <ChapterNotesMarkdown>{cleanedTranscript}</ChapterNotesMarkdown>
-                    <div className="mt-5 border-t border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] pt-4">
-                      <button
-                        type="button"
-                        onClick={markSelectedLessonComplete}
-                        disabled={selectedLessonComplete || isCompletingLesson}
-                        className={`w-full rounded-2xl px-4 py-3 text-sm font-black shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition ${
-                          selectedLessonComplete
-                            ? "bg-emerald-600 text-white"
-                            : "bg-[linear-gradient(135deg,var(--bb-accent,#2f7fe8),color-mix(in_srgb,var(--bb-accent,#2f7fe8)_72%,#16a34a))] text-[var(--bb-button-text,#ffffff)] hover:brightness-110 disabled:cursor-wait disabled:opacity-70"
-                        }`}
-                      >
-                        {selectedLessonComplete
-                          ? "Completed"
-                          : isCompletingLesson
-                            ? "Saving..."
-                            : `Mark Complete +${TOPIC_LESSON_XP} XP +${TOPIC_LESSON_DIAMONDS} diamonds`}
-                      </button>
-                    </div>
                   </div>
                 ) : null}
               </div>
+              <button
+                type="button"
+                onClick={markSelectedLessonComplete}
+                disabled={selectedLessonComplete || isCompletingLesson}
+                className={`w-full rounded-2xl px-4 py-3 text-sm font-black shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition ${
+                  selectedLessonComplete
+                    ? "bg-emerald-600 text-white"
+                    : "bg-[linear-gradient(135deg,var(--bb-accent,#2f7fe8),color-mix(in_srgb,var(--bb-accent,#2f7fe8)_72%,#16a34a))] text-[var(--bb-button-text,#ffffff)] hover:brightness-110 disabled:cursor-wait disabled:opacity-70"
+                }`}
+              >
+                {selectedLessonComplete
+                  ? "Completed"
+                  : isCompletingLesson
+                    ? "Saving..."
+                    : `Mark Complete +${TOPIC_LESSON_XP} XP +${TOPIC_LESSON_DIAMONDS} diamonds`}
+              </button>
             </div>
           </article>
         </div>
@@ -477,27 +481,25 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
                     {studyNotesOpen ? (
                       <div className="border-t border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] p-4">
                         <ChapterNotesMarkdown>{cleanedTranscript}</ChapterNotesMarkdown>
-                        <div className="mt-5 border-t border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] pt-4">
-                          <button
-                            type="button"
-                            onClick={markSelectedLessonComplete}
-                            disabled={selectedLessonComplete || isCompletingLesson}
-                            className={`w-full rounded-2xl px-4 py-3 text-sm font-black shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition ${
-                              selectedLessonComplete
-                                ? "bg-emerald-600 text-white"
-                                : "bg-[linear-gradient(135deg,var(--bb-accent,#2f7fe8),color-mix(in_srgb,var(--bb-accent,#2f7fe8)_72%,#16a34a))] text-[var(--bb-button-text,#ffffff)] hover:brightness-110 disabled:cursor-wait disabled:opacity-70"
-                            }`}
-                          >
-                            {selectedLessonComplete
-                              ? "Completed"
-                              : isCompletingLesson
-                                ? "Saving..."
-                                : `Mark Complete +${TOPIC_LESSON_XP} XP +${TOPIC_LESSON_DIAMONDS} diamonds`}
-                          </button>
-                        </div>
                       </div>
                     ) : null}
                   </div>
+                  <button
+                    type="button"
+                    onClick={markSelectedLessonComplete}
+                    disabled={selectedLessonComplete || isCompletingLesson}
+                    className={`w-full rounded-2xl px-4 py-3 text-sm font-black shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition ${
+                      selectedLessonComplete
+                        ? "bg-emerald-600 text-white"
+                        : "bg-[linear-gradient(135deg,var(--bb-accent,#2f7fe8),color-mix(in_srgb,var(--bb-accent,#2f7fe8)_72%,#16a34a))] text-[var(--bb-button-text,#ffffff)] hover:brightness-110 disabled:cursor-wait disabled:opacity-70"
+                    }`}
+                  >
+                    {selectedLessonComplete
+                      ? "Completed"
+                      : isCompletingLesson
+                        ? "Saving..."
+                        : `Mark Complete +${TOPIC_LESSON_XP} XP +${TOPIC_LESSON_DIAMONDS} diamonds`}
+                  </button>
                   </>
                 ) : null}
               </>

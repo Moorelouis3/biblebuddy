@@ -4520,6 +4520,14 @@ export default function DashboardJourneyExperience({
     }
   }
 
+  function closeBibleYearReadingArticle() {
+    setActiveBibleYearDayCard(null);
+    setBibleYearStudyNotesOpen(false);
+    setBibleYearSelectedTerm(null);
+    setBibleYearTermNotes(null);
+    setBibleYearTermNotesError(null);
+  }
+
   function formatBibleYearSpokenReference(block: BibleYearDailyLesson["sections"][number]["verseBlock"]) {
     if (block.startVerse === block.endVerse) return `Genesis ${block.chapter} verse ${block.startVerse}.`;
     return `Genesis ${block.chapter} verses ${block.startVerse} through ${block.endVerse}.`;
@@ -6744,20 +6752,21 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </div>
                 )}
 
-                {!bibleYearSelectedTerm ? (
-                  <div className="mt-5 border-t border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] pt-4">
-                    <button
-                      type="button"
-                      onClick={() => markBibleYearDayCardComplete(day, "reading")}
-                      className="w-full rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition hover:brightness-95"
-                    >
-                      {bibleYearCompletedCardsByDay[day.dayNumber]?.reading ? "Completed" : "Mark Complete +25 XP"}
-                    </button>
-                  </div>
-                ) : null}
               </div>
             ) : null}
           </div>
+          {!bibleYearSelectedTerm ? (
+            <button
+              type="button"
+              onClick={() => {
+                markBibleYearDayCardComplete(day, "reading");
+                closeBibleYearReadingArticle();
+              }}
+              className="w-full rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition hover:brightness-95"
+            >
+              {bibleYearCompletedCardsByDay[day.dayNumber]?.reading ? "Completed" : "Mark Complete +25 XP"}
+            </button>
+          ) : null}
         </div>
       );
     }
@@ -6840,6 +6849,38 @@ Before we understand redemption, we need to understand what God made humanity fo
       </div>
     );
   };
+
+  function renderBibleYearReadingArticlePage(day: GenesisBibleYearDay) {
+    const bibleYearLesson = getBibleYearDailyLesson(day.dayNumber);
+    return (
+      <article className="bb-skin-glow-card overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
+        <div className="relative bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,transparent),transparent_42%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_68%,transparent))] px-4 pb-5 pt-5 sm:px-5">
+          <button
+            type="button"
+            onClick={closeBibleYearReadingArticle}
+            className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_82%,transparent)] text-xl font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:scale-105"
+            aria-label="Close reading"
+          >
+            ×
+          </button>
+          <p className="pr-12 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible In One Year</p>
+          <h1 className="mt-1 pr-12 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+            Day {day.dayNumber} - {day.title}
+          </h1>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            {bibleYearLesson
+              ? `${day.reference} with video, Scripture, and study notes.`
+              : "Study today's reading and mark it complete when finished."}
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary,#111827)]">{day.estimatedTime}</span>
+            <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary,#111827)]">+25 XP</span>
+          </div>
+        </div>
+        {renderBibleYearDayModalBody(day)}
+      </article>
+    );
+  }
 
   const renderEmbeddedSharePage = () => {
     const inviteUserId = shareRewardsProfile?.user_id || userId;
@@ -7290,6 +7331,8 @@ Before we understand redemption, we need to understand what God made humanity fo
               renderBibleBuddy3ModeGate()
             ) : bibleYearSeriesActive ? (
               renderBibleYearSeriesPage()
+            ) : selectedBibleYearSeriesDay && activeBibleYearDayCard === "reading" ? (
+              renderBibleYearReadingArticlePage(selectedBibleYearSeriesDay)
             ) : (
               <>
             {!homePanelOverride && !deepStudyFocusActive ? (
