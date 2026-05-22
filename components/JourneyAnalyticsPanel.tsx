@@ -44,6 +44,25 @@ type JourneyAnalyticsPayload = {
       notesOpened30d: number;
     };
   };
+  videoHelpfulness: {
+    yes: number;
+    no: number;
+    total: number;
+    yesRate: number;
+    verdict: string;
+    videos: Array<{
+      videoId: string;
+      title: string;
+      context: string;
+      url: string;
+      yes: number;
+      no: number;
+      total: number;
+      yesRate: number;
+      verdict: string;
+      latestVoteAt: string | null;
+    }>;
+  };
   errors?: Record<string, string | null>;
 };
 
@@ -201,6 +220,7 @@ export default function JourneyAnalyticsPanel({ embedded = false }: { embedded?:
 
   const bibleYear = data.modes.bibleInOneYear;
   const freeMode = data.modes.freeMode;
+  const videoHelpfulness = data.videoHelpfulness;
   const maxDayUsers = Math.max(1, ...bibleYear.dayDistribution.map((item) => item.users));
 
   return (
@@ -298,6 +318,50 @@ export default function JourneyAnalyticsPanel({ embedded = false }: { embedded?:
               ))
             ) : (
               <div className="border-t border-[var(--bb-card-border,#2b4f74)] px-3 py-4 text-sm font-semibold text-[var(--bb-text-secondary,#b7c8dd)]">No Bible In One Year users yet.</div>
+            )}
+          </div>
+        </section>
+
+        <section className="rounded-[22px] border border-[var(--bb-card-border,#2b4f74)] bg-[var(--bb-card,#10243a)]/92 p-4 shadow-sm">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#5ac8fa)]">Video Helpfulness</p>
+              <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#f8fbff)]">Was this video helpful?</h2>
+              <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#b7c8dd)]">Simple Yes vs No feedback across Bible In One Year and Bible Topics videos.</p>
+            </div>
+            <div className="rounded-2xl border border-[var(--bb-card-border,#2b4f74)] bg-[var(--bb-surface-soft,#0a1b2e)]/70 px-4 py-3 text-right">
+              <p className="text-3xl font-black text-[var(--bb-text-primary,#f8fbff)]">{videoHelpfulness.yesRate}%</p>
+              <p className="text-xs font-black text-[var(--bb-text-secondary,#b7c8dd)]">{videoHelpfulness.verdict}</p>
+            </div>
+          </div>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <StatCard label="Yes" value={formatNumber(videoHelpfulness.yes)} detail="Helpful votes" />
+            <StatCard label="No" value={formatNumber(videoHelpfulness.no)} detail="Not helpful votes" />
+            <StatCard label="Total" value={formatNumber(videoHelpfulness.total)} detail="All video votes" />
+          </div>
+
+          <div className="mt-4 overflow-hidden rounded-2xl border border-[var(--bb-card-border,#2b4f74)]">
+            <div className="grid grid-cols-[1.3fr_58px_58px_72px] bg-white/10 px-3 py-2 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#b7c8dd)] sm:grid-cols-[1.5fr_72px_72px_88px]">
+              <p>Video</p>
+              <p>Yes</p>
+              <p>No</p>
+              <p>Avg</p>
+            </div>
+            {videoHelpfulness.videos.length ? (
+              videoHelpfulness.videos.map((video) => (
+                <div key={video.videoId} className="grid grid-cols-[1.3fr_58px_58px_72px] items-center border-t border-[var(--bb-card-border,#2b4f74)] px-3 py-3 text-sm sm:grid-cols-[1.5fr_72px_72px_88px]">
+                  <div className="min-w-0">
+                    <p className="truncate font-black text-[var(--bb-text-primary,#f8fbff)]">{video.title}</p>
+                    <p className="mt-0.5 truncate text-[11px] font-bold capitalize text-[var(--bb-text-secondary,#b7c8dd)]">{video.context.replace("_", " ")}</p>
+                  </div>
+                  <p className="font-bold text-[var(--bb-text-secondary,#b7c8dd)]">{video.yes}</p>
+                  <p className="font-bold text-[var(--bb-text-secondary,#b7c8dd)]">{video.no}</p>
+                  <p className="text-xs font-black text-[var(--bb-text-primary,#f8fbff)]">{video.yesRate}% {video.verdict}</p>
+                </div>
+              ))
+            ) : (
+              <div className="border-t border-[var(--bb-card-border,#2b4f74)] px-3 py-4 text-sm font-semibold text-[var(--bb-text-secondary,#b7c8dd)]">No video helpfulness votes yet.</div>
             )}
           </div>
         </section>

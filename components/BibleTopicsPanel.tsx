@@ -7,6 +7,7 @@ import { awardDiamonds } from "../lib/diamondWallet";
 import { supabase } from "../lib/supabaseClient";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import { triggerPoints } from "./PointsPop";
+import VideoHelpfulPoll from "./VideoHelpfulPoll";
 
 const TOPIC_LESSON_XP = 20;
 const TOPIC_LESSON_DIAMONDS = 10;
@@ -49,6 +50,7 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
   const selectedLessonVideoSrc = selectedLesson?.videoSrc
     ? `${selectedLesson.videoSrc}${selectedLesson.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
     : null;
+  const selectedLessonVideoId = selectedTopic && selectedLesson ? `bible-topics-${selectedTopic.slug}-${selectedLesson.slug}` : "";
   const cleanedTranscript = selectedLesson
     ? selectedLesson.transcript
         .replace(/^# 7 Bible Verses for Peace of Mind\s*/m, "")
@@ -232,6 +234,13 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
                         />
                       </div>
                     </div>
+                    <VideoHelpfulPoll
+                      userId={userId}
+                      videoId={selectedLessonVideoId}
+                      videoTitle={selectedLesson.title}
+                      videoUrl={selectedLesson.videoSrc || ""}
+                      videoContext="bible_topics"
+                    />
                   </div>
                 </div>
               ) : null}
@@ -453,6 +462,15 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
                           )}
                         </div>
                       </div>
+                      {selectedLesson.videoSrc ? (
+                        <VideoHelpfulPoll
+                          userId={userId}
+                          videoId={selectedLessonVideoId}
+                          videoTitle={selectedLesson.title}
+                          videoUrl={selectedLesson.videoSrc}
+                          videoContext="bible_topics"
+                        />
+                      ) : null}
                     </div>
                   </div>
 

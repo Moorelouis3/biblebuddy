@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import VideoHelpfulPoll from "./VideoHelpfulPoll";
 
 type BibleYearLessonAudioPlayerProps = {
   audioSrc: string;
@@ -8,6 +9,9 @@ type BibleYearLessonAudioPlayerProps = {
   durationLabel: string;
   storagePath?: string;
   videoSrc?: string;
+  userId?: string | null;
+  videoId?: string;
+  videoContext?: "bible_year" | "bible_topics";
 };
 
 function formatTime(totalSeconds: number) {
@@ -22,6 +26,9 @@ export default function BibleYearLessonAudioPlayer({
   title,
   durationLabel,
   videoSrc,
+  userId,
+  videoId,
+  videoContext = "bible_year",
 }: BibleYearLessonAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const lastSavedSecondRef = useRef(-1);
@@ -293,6 +300,13 @@ export default function BibleYearLessonAudioPlayer({
             />
           </div>
         </div>
+        <VideoHelpfulPoll
+          userId={userId}
+          videoId={videoId || `bible-year:${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
+          videoTitle={displayTitle}
+          videoUrl={videoSrc || ""}
+          videoContext={videoContext}
+        />
       </section>
     );
   }

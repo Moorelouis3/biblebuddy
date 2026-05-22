@@ -46,6 +46,7 @@ export const BIBLE_YEAR_DAY_THREE_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(3),
   apiSrc: getBibleYearAudioApiSrc(3),
   estimatedDuration: "about 15 min",
+  videoSrc: "https://player.mediadelivery.net/play/618103/3f4903b2-44ba-41a6-9908-3156a850b988",
 };
 
 export const BIBLE_YEAR_DAY_FOUR_AUDIO: BibleYearAudioDay = {
@@ -54,6 +55,7 @@ export const BIBLE_YEAR_DAY_FOUR_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(4),
   apiSrc: getBibleYearAudioApiSrc(4),
   estimatedDuration: "about 16 min",
+  videoSrc: "https://player.mediadelivery.net/play/618103/bbf2431c-ff5f-4bdd-a299-0dd0bc8322b8",
 };
 
 export const BIBLE_YEAR_DAY_FIVE_AUDIO: BibleYearAudioDay = {

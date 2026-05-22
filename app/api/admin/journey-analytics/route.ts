@@ -30,6 +30,15 @@ type ProfileRow = {
   last_active_date?: string | null;
 };
 
+type VideoHelpfulnessRow = {
+  video_id: string | null;
+  video_title: string | null;
+  video_url: string | null;
+  video_context: string | null;
+  helpful: boolean | null;
+  updated_at: string | null;
+};
+
 const BIBLE_YEAR_ACTIONS = [
   "bible_in_one_year_day_viewed",
   "bible_in_one_year_reading_completed",
@@ -140,6 +149,7 @@ export async function GET(request: Request) {
       bibleYearActionsResult,
       freeModeActionsResult,
       profilesResult,
+      videoHelpfulnessResult,
     ] = await Promise.all([
       countAuthUsers(url, key),
       supabase.from("user_signups").select("id", { count: "exact", head: true }).gte("created_at", todayStart),
@@ -151,6 +161,7 @@ export async function GET(request: Request) {
       supabase.from("master_actions").select("user_id, action_type, action_label, created_at").in("action_type", BIBLE_YEAR_ACTIONS).gte("created_at", since30d).limit(250000),
       supabase.from("master_actions").select("user_id, action_type, action_label, created_at").in("action_type", FREE_MODE_ACTIONS).gte("created_at", since30d).limit(250000),
       supabase.from("profile_stats").select("user_id, username, display_name, is_paid, current_level, last_active_at, last_active_date").limit(250000),
+      supabase.from("video_helpfulness_votes").select("video_id, video_title, video_url, video_context, helpful, updated_at").limit(250000),
     ]);
 
     const activeRows = [
@@ -162,6 +173,7 @@ export async function GET(request: Request) {
     const bibleYearActions = (bibleYearActionsResult.data || []) as ActionRow[];
     const freeModeActions = (freeModeActionsResult.data || []) as ActionRow[];
     const profiles = (profilesResult.data || []) as ProfileRow[];
+    const videoHelpfulnessRows = (videoHelpfulnessResult.data || []) as VideoHelpfulnessRow[];
     const profileByUser = new Map(profiles.filter((row) => row.user_id).map((row) => [row.user_id as string, row]));
 
     const progressByUser = new Map<string, BibleYearProgressRow[]>();
@@ -225,6 +237,62 @@ export async function GET(request: Request) {
       .sort((a, b) => b.completedTasks - a.completedTasks || b.currentDay - a.currentDay)
       .slice(0, 8);
 
+    const videoHelpfulnessByVideo = new Map<
+      string,
+      {
+        videoId: string;
+        title: string;
+        context: string;
+        url: string;
+        yes: number;
+        no: number;
+        latestVoteAt: string | null;
+      }
+    >();
+
+    for (const row of videoHelpfulnessRows) {
+      if (!row.video_id) continue;
+      const current =
+        videoHelpfulnessByVideo.get(row.video_id) ||
+        {
+          videoId: row.video_id,
+          title: row.video_title || row.video_id,
+          context: row.video_context || "unknown",
+          url: row.video_url || "",
+          yes: 0,
+          no: 0,
+          latestVoteAt: null,
+        };
+      if (row.helpful === true) current.yes += 1;
+      if (row.helpful === false) current.no += 1;
+      if (row.updated_at && (!current.latestVoteAt || row.updated_at > current.latestVoteAt)) {
+        current.latestVoteAt = row.updated_at;
+      }
+      videoHelpfulnessByVideo.set(row.video_id, current);
+    }
+
+    const videoHelpfulnessVideos = [...videoHelpfulnessByVideo.values()]
+      .map((video) => {
+        const total = video.yes + video.no;
+        const yesRate = percent(video.yes, total);
+        return {
+          ...video,
+          total,
+          yesRate,
+          verdict: total === 0 ? "No votes" : yesRate >= 70 ? "Good" : yesRate >= 50 ? "Mixed" : "Needs work",
+        };
+      })
+      .sort((a, b) => b.total - a.total || b.yesRate - a.yesRate);
+
+    const videoHelpfulnessTotals = videoHelpfulnessVideos.reduce(
+      (totals, video) => ({
+        yes: totals.yes + video.yes,
+        no: totals.no + video.no,
+        total: totals.total + video.total,
+      }),
+      { yes: 0, no: 0, total: 0 },
+    );
+
     return NextResponse.json({
       generatedAt: new Date().toISOString(),
       overview: {
@@ -256,12 +324,28 @@ export async function GET(request: Request) {
           notesOpened30d: freeModeActions.filter((row) => row.action_type === "chapter_notes_viewed").length,
         },
       },
+      videoHelpfulness: {
+        yes: videoHelpfulnessTotals.yes,
+        no: videoHelpfulnessTotals.no,
+        total: videoHelpfulnessTotals.total,
+        yesRate: percent(videoHelpfulnessTotals.yes, videoHelpfulnessTotals.total),
+        verdict:
+          videoHelpfulnessTotals.total === 0
+            ? "No votes"
+            : percent(videoHelpfulnessTotals.yes, videoHelpfulnessTotals.total) >= 70
+              ? "Good"
+              : percent(videoHelpfulnessTotals.yes, videoHelpfulnessTotals.total) >= 50
+                ? "Mixed"
+                : "Needs work",
+        videos: videoHelpfulnessVideos.slice(0, 12),
+      },
       errors: {
         signups: signupsResult.error?.message || fallbackSignupsResult.error?.message || null,
         activeUsers: activeActionsResult.error?.message || activeProfilesResult.error?.message || null,
         upgrades: upgradesResult.error?.message || null,
         bibleYear: bibleYearProgressResult.error?.message || bibleYearActionsResult.error?.message || null,
         freeMode: freeModeActionsResult.error?.message || null,
+        videoHelpfulness: videoHelpfulnessResult.error?.message || null,
       },
     });
   } catch (error) {

@@ -6257,6 +6257,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           {completedTasksForDay.map((task, index) => {
             const taskCard = getBibleYearDayTaskKey(task);
             const isActiveCompletedTask = taskCard ? activeBibleYearDayCard === taskCard : false;
+            const completedTaskOpensFullArticle = taskCard === "reading";
             const taskCopy = getTaskCardCopy(task, index);
             return (
               <div
@@ -6271,10 +6272,15 @@ Before we understand redemption, we need to understand what God made humanity fo
                   type="button"
                   onClick={() => {
                     if (!taskCard) return;
+                    if (completedTaskOpensFullArticle) {
+                      setSelectedBibleYearSeriesDay(day);
+                      setActiveBibleYearDayCard("reading");
+                      return;
+                    }
                     setActiveBibleYearDayCard((current) => current === taskCard ? null : taskCard);
                   }}
                   className="group flex min-h-10 w-full items-center gap-2 px-3 py-2 text-left transition"
-                  aria-expanded={isActiveCompletedTask}
+                  aria-expanded={!completedTaskOpensFullArticle && isActiveCompletedTask}
                 >
                   <span className="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-[var(--bb-button,var(--bb-accent,#7BAFD4))] text-[11px] font-black text-[var(--bb-button-text,#ffffff)] shadow-sm" aria-hidden="true">
                     ✓
@@ -6286,7 +6292,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     {task.completedAtLabel || "Completed"}
                   </span>
                 </button>
-                {isActiveCompletedTask && taskCard ? (
+                {isActiveCompletedTask && taskCard && !completedTaskOpensFullArticle ? (
                   <div className="border-t border-[var(--bb-card-border,#b9dcf4)] px-3 pb-3 pt-3">
                     {renderBibleYearInlineTask(taskCard, day)}
                   </div>
@@ -6827,6 +6833,8 @@ Before we understand redemption, we need to understand what God made humanity fo
               durationLabel={bibleYearAudio.estimatedDuration}
               storagePath={bibleYearAudio.storagePath}
               videoSrc={bibleYearAudio.videoSrc}
+              userId={userId}
+              videoId={`bible-year-day-${day.dayNumber}`}
             />
           ) : null}
 
