@@ -11,6 +11,7 @@ import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import BibleYearLessonAudioPlayer from "./BibleYearLessonAudioPlayer";
 import BibleTopicsPanel from "./BibleTopicsPanel";
 import JourneyAnalyticsPanel from "./JourneyAnalyticsPanel";
+import VideoHelpfulPoll from "./VideoHelpfulPoll";
 import CommentSection from "./comments/CommentSection";
 import BibleStudiesLibraryPage from "../app/devotionals/page";
 import BibleStudyDetailPage from "../app/devotionals/[id]/page";
@@ -841,7 +842,7 @@ function getActiveTaskPrompt(task: TaskState, remainingTasks: number, seed: stri
 
 function getTaskEmoji(task: TaskState) {
   if (task.kind === "devotional") return "\uD83D\uDCD5";
-  if (task.kind === "reading") return "\u271D\uFE0F";
+  if (task.kind === "reading") return "\uD83D\uDCD6";
   if (task.kind === "notes") return "\uD83D\uDCDD";
   if (task.kind === "trivia") return "\uD83E\uDDE0";
   if (task.kind === "reflection") return "\u270D\uFE0F";
@@ -1705,6 +1706,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearPlanMenuOpen, setBibleYearPlanMenuOpen] = useState(false);
   const [isResettingBibleYearPlan, setIsResettingBibleYearPlan] = useState(false);
   const [bibleYearPlanMessage, setBibleYearPlanMessage] = useState<string | null>(null);
+  const [bibleYearOpenVerseBreakdownKey, setBibleYearOpenVerseBreakdownKey] = useState<string | null>(null);
   const [bibleYearSelectedTerm, setBibleYearSelectedTerm] = useState<BibleDatabaseTerm | null>(null);
   const [bibleYearTermBurstKey, setBibleYearTermBurstKey] = useState(0);
   const [bibleYearTermNotes, setBibleYearTermNotes] = useState<string | null>(null);
@@ -3138,13 +3140,37 @@ export default function DashboardJourneyExperience({
     setBibleYearPlanMessage(null);
 
     try {
+      const resetAt = new Date().toISOString();
       if (userId) {
         const { error } = await supabase
           .from("bible_year_day_progress")
-          .delete()
+          .update({
+            reading_completed: false,
+            trivia_completed: false,
+            reflection_completed: false,
+            updated_at: resetAt,
+          })
           .eq("user_id", userId);
 
         if (error) throw error;
+
+        const { error: profileResetError } = await supabase
+          .from("profile_stats")
+          .upsert(
+            {
+              user_id: userId,
+              bible_year_plan_reset_at: resetAt,
+              updated_at: resetAt,
+            },
+            { onConflict: "user_id" },
+          );
+
+        if (profileResetError && !/bible_year_plan_reset_at/i.test(profileResetError.message || "")) {
+          throw profileResetError;
+        }
+        if (profileResetError) {
+          console.warn("[BIBLE_YEAR_PROGRESS] Reset completed, but profile reset tracking column is missing:", profileResetError.message);
+        }
       }
 
       if (typeof window !== "undefined") {
@@ -3163,6 +3189,7 @@ export default function DashboardJourneyExperience({
         null;
 
       setBibleYearCompletedCardsByDay({});
+      bibleYearXpBackfillKeyRef.current = "";
       setBibleYearTriviaAnswers({});
       setBibleYearTriviaQuestionIndexByDay({});
       setBibleYearCompletedTasksExpandedDay(null);
@@ -3234,8 +3261,9 @@ export default function DashboardJourneyExperience({
     setBibleYearSelectedTerm(null);
     setBibleYearTermNotes(null);
     setBibleYearTermNotesError(null);
-    setBibleYearStudyNotesOpen(false);
-  }, [activeBibleYearDayCard, selectedBibleYearSeriesDay?.dayNumber]);
+    const activeReadingDayNumber = selectedBibleYearSeriesDay?.dayNumber ?? activeBibleYearDashboardDay?.dayNumber;
+    setBibleYearStudyNotesOpen(activeBibleYearDayCard === "reading" && activeReadingDayNumber !== undefined && activeReadingDayNumber <= 2);
+  }, [activeBibleYearDashboardDay?.dayNumber, activeBibleYearDayCard, selectedBibleYearSeriesDay?.dayNumber]);
 
   function openInvitePage() {
     const shareIndex = dashboardPageKeys.indexOf("share");
@@ -4610,6 +4638,7 @@ export default function DashboardJourneyExperience({
   function closeBibleYearReadingArticle() {
     setActiveBibleYearDayCard(null);
     setBibleYearStudyNotesOpen(false);
+    setBibleYearOpenVerseBreakdownKey(null);
     setBibleYearSelectedTerm(null);
     setBibleYearTermNotes(null);
     setBibleYearTermNotesError(null);
@@ -5984,6 +6013,21 @@ Before we understand redemption, we need to understand what God made humanity fo
       .catch((error) => console.error("[BIBLE_YEAR_PROGRESS] Could not backfill Bible in One Year XP:", error));
   }, [bibleYearCompletedCardsByDay, onDevotionalChanged, userId]);
 
+  function getBibleYearReadingTaskSubtitle(day: GenesisBibleYearDay) {
+    const subtitles: Record<number, string> = {
+      1: "Watch God bring order from a formless world.",
+      2: "See how sin fractures trust, peace, and purpose.",
+      3: "Follow Noah as faith obeys before rain falls.",
+      4: "See life restart after judgment covers the earth.",
+      5: "Watch Abraham obey when God calls him out.",
+      6: "See Lot rescued while Abram trusts God's promise.",
+      7: "Watch God promise covenant life through Abraham's family.",
+      8: "See mercy and judgment meet in Sodom's fall.",
+    };
+
+    return subtitles[day.dayNumber] || `Study ${day.reference || day.title} with focused Bible teaching.`;
+  }
+
   function buildBibleYearDayTasks(day: GenesisBibleYearDay | null): TaskState[] {
     if (!day) return [];
     const dayLabel = `Day ${day.dayNumber}`;
@@ -5992,7 +6036,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       {
         kind: "reading",
         title: `${dayLabel} Reading`,
-        subtitle: `${day.title} lesson with audio and every verse included.`,
+        subtitle: getBibleYearReadingTaskSubtitle(day),
         pointsLabel: "+25 XP",
         timeEstimateLabel: day.estimatedTime,
         href: `#bible-year-day-${day.dayNumber}-reading`,
@@ -6027,6 +6071,9 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearInlineTask(card: "reading" | "trivia" | "reflection", day: GenesisBibleYearDay) {
     if (card === "reading") {
+      if (day.dayNumber === 1 || day.dayNumber === 2) {
+        return renderStandardBibleYearReadingPage(day);
+      }
       return renderBibleYearDayModalBody(day);
     }
 
@@ -6257,7 +6304,6 @@ Before we understand redemption, we need to understand what God made humanity fo
           {completedTasksForDay.map((task, index) => {
             const taskCard = getBibleYearDayTaskKey(task);
             const isActiveCompletedTask = taskCard ? activeBibleYearDayCard === taskCard : false;
-            const completedTaskOpensFullArticle = taskCard === "reading";
             const taskCopy = getTaskCardCopy(task, index);
             return (
               <div
@@ -6272,15 +6318,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                   type="button"
                   onClick={() => {
                     if (!taskCard) return;
-                    if (completedTaskOpensFullArticle) {
-                      setSelectedBibleYearSeriesDay(day);
-                      setActiveBibleYearDayCard("reading");
-                      return;
-                    }
                     setActiveBibleYearDayCard((current) => current === taskCard ? null : taskCard);
                   }}
                   className="group flex min-h-10 w-full items-center gap-2 px-3 py-2 text-left transition"
-                  aria-expanded={!completedTaskOpensFullArticle && isActiveCompletedTask}
+                  aria-expanded={isActiveCompletedTask}
                 >
                   <span className="grid h-5 w-5 shrink-0 place-items-center rounded-md bg-[var(--bb-button,var(--bb-accent,#7BAFD4))] text-[11px] font-black text-[var(--bb-button-text,#ffffff)] shadow-sm" aria-hidden="true">
                     ✓
@@ -6292,7 +6333,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     {task.completedAtLabel || "Completed"}
                   </span>
                 </button>
-                {isActiveCompletedTask && taskCard && !completedTaskOpensFullArticle ? (
+                {isActiveCompletedTask && taskCard ? (
                   <div className="border-t border-[var(--bb-card-border,#b9dcf4)] px-3 pb-3 pt-3">
                     {renderBibleYearInlineTask(taskCard, day)}
                   </div>
@@ -6440,7 +6481,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
             <div className="mt-2 flex justify-center">
               <p className="hidden">{taskCopy.subtitle}</p>
-              {task.timeEstimateLabel ? (
+              {task.timeEstimateLabel && !(isActiveInlineTask && bibleYearTaskCard === "reading") ? (
                 isCardDisabled && bibleYearOrderLocked && activeBibleYearDashboardDay && bibleYearTaskCard ? (
                   <p className="whitespace-nowrap text-center text-[11px] font-black text-[var(--bb-text-secondary,#374151)]">
                     {getBibleYearLockedTaskTitle(activeBibleYearDashboardDay, bibleYearTaskCard)}
@@ -6500,6 +6541,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleYearDashboardStudyArea(day: GenesisBibleYearDay, tasksToRender: TaskState[]) {
     const cover = day.coverImage || getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
     const readingSummary = day.reference || day.readings.map((reading) => `${reading.book} ${reading.chapter}`).join(", ");
+    const activeTasksToRender = tasksToRender.filter((task) => !task.done);
 
     return (
       <section className="dashboard-bible-year-study-area grid gap-3 rounded-[28px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_62%,rgba(0,0,0,0.42))] p-3 shadow-[0_18px_46px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
@@ -6568,7 +6610,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
         <div className="grid gap-3">
           {dashboardAllDone ? renderBibleYearCompletedDayPanel(day) : null}
-          {renderDashboardTaskCards(tasksToRender)}
+          {renderDashboardTaskCards(activeTasksToRender)}
           {renderBibleYearCompletedTasksPanel(day)}
         </div>
       </section>
@@ -6992,8 +7034,268 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   };
 
+  function renderStandardBibleYearReadingPage(day: GenesisBibleYearDay) {
+    const lesson = getBibleYearDailyLesson(day.dayNumber) || GENESIS_DAY_ONE_CREATION_LESSON;
+    const audio = getBibleYearDayAudio(day.dayNumber) || BIBLE_YEAR_DAY_ONE_AUDIO;
+    const readingCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
+    const videoPlayerSrc = audio.videoSrc
+      ? `${audio.videoSrc}${audio.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
+      : null;
+    const verseBreakdownSections = lesson.sections;
+    const dayOneVerseBreakdownNotes: Record<string, { title: string; paragraphs: string[]; highlights: string[] }> = {
+      "Genesis 1:1-5": {
+        title: "🗣️ God Is Already There",
+        paragraphs: [
+          "Stay here for a second. Before anything exists, God is already there. He is not introduced like a character who walks onto the stage. He simply is.",
+          "The earth is formless, empty, covered in darkness, and deep waters. But unfinished does not mean abandoned. God's Spirit is already hovering over the waters. Even before the world has shape, God's presence is near.",
+          "Creation begins quietly, with a voice. God does not panic in darkness. He does not fight it. He speaks into it.",
+          "Light enters the story before the sun and moon are ever named. Genesis is showing you that light does not ultimately come from created things. Light comes from God.",
+          "Maybe you know what it feels like when life seems dark, unfinished, or hard to understand. Genesis starts here to remind you: darkness is not too much for God. Confusion is not stronger than His voice.",
+        ],
+        highlights: ["🌑 darkness is not too much for God", "🕊️ God's Spirit is already near", "💡 light comes from His voice", "⚖️ order begins with God speaking"],
+      },
+      "Genesis 1:6-13": {
+        title: "🌍 God Makes Room for Life",
+        paragraphs: [
+          "Now the world begins to take shape. Waters are separated. Sky opens. Seas gather. Dry ground appears.",
+          "This is not random motion. This is God making room for life. Before He fills the world, He prepares the world.",
+          "Then the earth starts to grow. Grass, plants, fruit trees, seeds. Life that can keep producing more life.",
+          "Most things God grows start smaller than we expect. A seed is easy to overlook, but inside it is future provision, future fruit, future generations.",
+        ],
+        highlights: ["🌊 waters are separated", "☁️ sky opens", "🌍 dry ground appears", "🌱 seeds carry future life"],
+      },
+      "Genesis 1:14-25": {
+        title: "🐦 Creation Comes Alive",
+        paragraphs: [
+          "Now the sky fills with lights. Days can be counted. Seasons can be known. Years can be remembered.",
+          "To the ancient world, the sun and moon were often treated like gods. Genesis quietly corrects that. They are not gods. They are lights in God's sky, serving the purpose He gives them.",
+          "Then the waters move. The sky comes alive. Birds lift into the air. Sea creatures fill the deep. Animals begin moving across the land.",
+          "The silence of the empty world is gone now. There is movement, sound, breath, rhythm, and life.",
+        ],
+        highlights: ["☀️ time has rhythm", "🌙 lights serve God's purpose", "🐋 waters move with life", "🐦 birds fill the sky", "🐾 animals move across the land"],
+      },
+      "Genesis 1:26-31": {
+        title: "👑 Human Life Has God-Given Worth",
+        paragraphs: [
+          "This is the moment the story has been building toward. Human beings are not accidents. You are not an accident.",
+          "Before anyone measures your success, your beauty, your strength, your usefulness, or your past, Genesis says human worth starts with God.",
+          "Male and female are both made in God's image. Both carry dignity. Both are blessed. Both are called into purpose.",
+          "Dominion does not mean abuse. It means responsibility. Humanity is called to represent God's care inside God's creation.",
+          "Before sin breaks anything, the world is blessed, ordered, alive, and full of purpose.",
+        ],
+        highlights: ["👤 you are not an accident", "💍 male and female carry dignity", "🌍 dominion means responsibility", "✨ creation is very good"],
+      },
+      "Genesis 2:1-3": {
+        title: "🕯️ Rest Is Built Into Creation",
+        paragraphs: [
+          "The story does not end with God rushing to the next thing. It ends with rest.",
+          "God rests, not because He is tired, but because the work is complete. Creation has rhythm. Work and rest. Forming and filling. Speaking and delighting.",
+          "The first thing called holy in the Bible is not a building. It is not an object. It is a day. Time with God is holy from the beginning.",
+          "If your life feels like nonstop striving, Genesis gently pushes back. You were not created to hold everything together. Rest is trust. Rest is worship.",
+        ],
+        highlights: ["✅ the work is complete", "📅 time with God is holy", "🕊️ rest is trust", "🙏 rest is worship"],
+      },
+      "Genesis 2:4-9": {
+        title: "🌬️ Dust Touched by God",
+        paragraphs: [
+          "Now the camera moves closer. Genesis 1 gave us the wide view of creation. Genesis 2 brings us near enough to see dust, breath, garden, and relationship.",
+          "God forms the man from the dust of the ground. That is humbling. We are not gods. We are creatures. We are connected to the earth.",
+          "But then God breathes into him the breath of life. Humanity is dust touched by God. Fragile, but valuable. Humble, but alive with breath from the Creator.",
+          "Then God plants a garden. Before there is a command, there is provision. Before there is a test, there is a home. Eden is beauty, safety, abundance, and peace.",
+        ],
+        highlights: ["🌍 humanity is formed from dust", "🌬️ life comes from God's breath", "🌳 Eden is prepared", "🏡 provision comes before the command"],
+      },
+      "Genesis 2:10-17": {
+        title: "🍎 The Question Is Trust",
+        paragraphs: [
+          "The garden is full. Rivers flow. Precious materials are named. The world near God is supplied and alive.",
+          "Then God gives the man work. That matters because work exists before sin. Meaningful responsibility is part of the good world.",
+          "God also gives freedom before restriction. You may freely eat from every tree, except one.",
+          "The story is not showing a stingy God. It is showing a generous God with a real boundary. The question is trust. Will humanity receive life from God, or try to define good and evil apart from Him?",
+          "That question will carry us straight into the next day. But for now, feel the goodness of this moment. God gives life, place, food, work, freedom, and a clear word.",
+        ],
+        highlights: ["💧 the garden is supplied", "🛠️ work is good before sin", "🌳 freedom comes before restriction", "⚖️ one boundary teaches trust"],
+      },
+      "Genesis 2:18-25": {
+        title: "✨ Fully Known and Not Ashamed",
+        paragraphs: [
+          "For the first time, God says something is not good. Not sin. Not rebellion. Aloneness.",
+          "The man is surrounded by living creatures, but none of them correspond to him. None can meet him face to face as a true partner.",
+          "So God causes a deep sleep to fall over the man, and He forms the woman. When the man sees her, the first human words recorded in Scripture are poetry.",
+          "This is bone of my bones and flesh of my flesh. That is wonder. Recognition. Joy.",
+          "And the chapter ends with a picture that almost feels hard to imagine now: naked and not ashamed. No hiding. No fear. No pretending. Fully known, fully safe, fully at peace.",
+          "Before shame entered the story, there was peace.",
+        ],
+        highlights: ["🤝 aloneness is not good", "🐾 animals are not enough", "💍 woman is formed for partnership", "✨ no hiding, no fear, no shame"],
+      },
+    };
+    const shareDayOne = async () => {
+      if (typeof navigator !== "undefined" && navigator.share) {
+        await navigator.share({
+          title: `Bible In One Year: ${day.title}`,
+          text: `Study ${day.reference} with Bible Buddy.`,
+          url: typeof window !== "undefined" ? window.location.href : undefined,
+        });
+      }
+    };
+
+    return (
+      <article className="mx-auto max-w-xl text-left text-[var(--bb-text-primary,#fff7ed)]">
+        <section className="relative px-1 pb-1 pt-1">
+          {videoPlayerSrc ? (
+            <div className="pt-0">
+              <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[#070503] shadow-[0_24px_58px_rgba(0,0,0,0.42),0_0_34px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)]">
+                <div className="relative aspect-video overflow-hidden bg-black">
+                  <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_48%,rgba(0,0,0,0.28)),linear-gradient(180deg,rgba(0,0,0,0.12),transparent_35%,rgba(0,0,0,0.22))]" aria-hidden="true" />
+                  <iframe
+                    src={videoPlayerSrc}
+                    title={lesson.title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full border-0"
+                  />
+                </div>
+              </div>
+              <VideoHelpfulPoll
+                userId={userId}
+                videoId={`bible-year-day-${day.dayNumber}`}
+                videoTitle={lesson.title}
+                videoUrl={audio.videoSrc || ""}
+                videoContext="bible_year"
+              />
+            </div>
+          ) : null}
+
+          <div className="mt-4 grid grid-cols-5 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent)] bg-black/18">
+            {[
+              { label: "Favorite", premium: false, icon: "heart" },
+              { label: "Download", premium: true, icon: "download" },
+              { label: "Deep Study", premium: true, icon: "search" },
+              { label: readingCardComplete ? "Completed" : "Mark Complete", premium: false, icon: "check", action: "complete" },
+              { label: "Share", premium: false, icon: "share", action: "share" },
+            ].map((item, index) => {
+              const disabled = item.premium || (item.action === "complete" && readingCardComplete);
+              const isMarkComplete = item.action === "complete";
+              return (
+                <button
+                  key={item.label}
+                  type="button"
+                  disabled={disabled}
+                  onClick={() => {
+                    if (item.action === "complete" && !readingCardComplete) markBibleYearDayCardComplete(day, "reading");
+                    if (item.action === "share") void shareDayOne();
+                  }}
+                  className={`min-h-[78px] border-r border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)] px-1.5 py-3 text-center transition last:border-r-0 ${
+                    isMarkComplete && !readingCardComplete
+                      ? "bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] shadow-[inset_0_0_22px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,transparent),0_0_22px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_20%,transparent)]"
+                      : disabled
+                        ? "cursor-default opacity-80"
+                        : "hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_10%,transparent)]"
+                  }`}
+                >
+                  <span className={`mx-auto h-7 w-7 place-items-center text-[var(--bb-accent,#f6b44b)] ${item.icon === "search" ? "hidden" : "grid"}`} aria-hidden="true">
+                    {item.icon === "heart" ? "♡" : item.icon === "download" ? "↓" : item.icon === "lock" ? "□" : item.icon === "check" ? "✓" : "↑"}
+                  </span>
+                  {item.icon === "search" ? (
+                    <span className="mx-auto grid h-7 w-7 place-items-center text-[var(--bb-accent,#f6b44b)]" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="m20 20-3.5-3.5" />
+                      </svg>
+                    </span>
+                  ) : null}
+                  <span className="mt-1 block text-[11px] font-bold text-[var(--bb-text-primary,#fff7ed)] sm:text-xs">{item.label}</span>
+                  {item.premium ? (
+                    <span className="mt-1 inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] px-2 py-0.5 text-[9px] font-black text-[var(--bb-accent,#f6b44b)]">Premium</span>
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="mt-4 px-1">
+          <button
+            type="button"
+            onClick={() => setBibleYearStudyNotesOpen((current) => !current)}
+            className="flex w-full items-center justify-between gap-4 py-2 text-left"
+            aria-expanded={bibleYearStudyNotesOpen}
+          >
+            <span className="min-w-0">
+              <span className="block text-2xl font-black text-[var(--bb-text-primary,#fff7ed)]">Verse Breakdown</span>
+            </span>
+            <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_10%,transparent)] text-[var(--bb-text-primary,#fff7ed)] transition ${bibleYearStudyNotesOpen ? "rotate-180" : ""}`} aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </span>
+          </button>
+
+          {bibleYearStudyNotesOpen ? (
+            <div className="mt-2 grid gap-2">
+              {verseBreakdownSections.map((section) => {
+                const isOpen = bibleYearOpenVerseBreakdownKey === section.verseBlock.reference;
+                const note = day.dayNumber === 1 ? dayOneVerseBreakdownNotes[section.verseBlock.reference] : undefined;
+                const paragraphs = note?.paragraphs || section.teaching.slice(0, 2);
+                const highlights = note?.highlights || [];
+                const noteIcon = note?.title.split(/\s+/)[0] || "•";
+                return (
+                  <div key={`expanded-${section.verseBlock.reference}`}>
+                    <button
+                      type="button"
+                      onClick={() => setBibleYearOpenVerseBreakdownKey((current) => current === section.verseBlock.reference ? null : section.verseBlock.reference)}
+                      className={`flex w-full items-center gap-3 rounded-2xl border px-3 py-2.5 text-left transition ${
+                        isOpen
+                          ? "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent)]"
+                          : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent)] bg-black/10 hover:border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_8%,transparent)]"
+                      }`}
+                      aria-expanded={isOpen}
+                    >
+                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent)] text-sm">{noteIcon}</span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-sm font-black text-[var(--bb-text-primary,#fff7ed)]">{section.verseBlock.reference}</span>
+                        <span className="mt-0.5 block text-xs font-semibold text-[var(--bb-text-secondary,#e7d4bd)]">{section.heading}</span>
+                      </span>
+                      <svg aria-hidden="true" viewBox="0 0 24 24" className={`h-5 w-5 shrink-0 text-[var(--bb-accent,#f6b44b)] transition ${isOpen ? "rotate-90" : ""}`} fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                    {isOpen ? (
+                      <div className="pb-4 pl-11 pr-2 pt-3">
+                        <p className="text-base font-black leading-tight text-[var(--bb-text-primary,#fff7ed)]">{note?.title || section.heading}</p>
+                        <div className="mt-3 grid gap-3">
+                          {paragraphs.map((paragraph) => (
+                            <p key={paragraph} className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">{paragraph}</p>
+                          ))}
+                        </div>
+                        {highlights.length ? (
+                          <ul className="mt-4 grid gap-2">
+                            {highlights.map((highlight) => (
+                              <li key={highlight} className="text-sm font-black leading-5 text-[var(--bb-text-primary,#fff7ed)]">
+                                {highlight}
+                              </li>
+                            ))}
+                          </ul>
+                        ) : null}
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          ) : null}
+        </section>
+      </article>
+    );
+  }
+
   function renderBibleYearReadingArticlePage(day: GenesisBibleYearDay) {
     const bibleYearLesson = getBibleYearDailyLesson(day.dayNumber);
+    if (day.dayNumber === 1 || day.dayNumber === 2) {
+      return renderStandardBibleYearReadingPage(day);
+    }
+
     return (
       <article className="bb-skin-glow-card overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
         <div className="relative bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,transparent),transparent_42%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_68%,transparent))] px-4 pb-5 pt-5 sm:px-5">
@@ -7473,7 +7775,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               renderBibleBuddy3ModeGate()
             ) : bibleYearSeriesActive ? (
               renderBibleYearSeriesPage()
-            ) : selectedBibleYearSeriesDay && activeBibleYearDayCard === "reading" ? (
+            ) : !bibleYearDashboardActive && selectedBibleYearSeriesDay && activeBibleYearDayCard === "reading" ? (
               renderBibleYearReadingArticlePage(selectedBibleYearSeriesDay)
             ) : (
               <>
