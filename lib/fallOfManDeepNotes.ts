@@ -94,6 +94,10 @@ function buildSection(chapter: number, section: FallSection) {
   return `## ${section.reference}\n\n# ${section.title}\n\n${verseCallouts(chapter, section.verses)}\n\n${section.notes.join("\n\n")}`;
 }
 
+function normalizeSectionReference(reference: string) {
+  return reference.replace(/\s+to\s+/i, "-");
+}
+
 const fallNotes: FallChapterNote[] = [
   {
     chapter: 3,
@@ -584,6 +588,38 @@ const fallNotes: FallChapterNote[] = [
       "Genesis 4 teaches that sin spreads from hidden desire into public damage when it is not confronted. But God still warns, restrains, protects, and preserves a line of hope.",
   },
 ];
+
+export const BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS = fallNotes.flatMap((chapter) =>
+  chapter.sections.map((section) => {
+    const reference = normalizeSectionReference(section.reference);
+    const icon =
+      reference.startsWith("Genesis 3")
+        ? section.title.toLowerCase().includes("fall")
+          ? "🍎"
+          : section.title.toLowerCase().includes("hiding")
+            ? "🙈"
+            : section.title.toLowerCase().includes("judgment")
+              ? "⚖️"
+              : section.title.toLowerCase().includes("exile")
+                ? "🚪"
+                : "🐍"
+        : section.title.toLowerCase().includes("offerings")
+          ? "🙏"
+          : section.title.toLowerCase().includes("murders")
+            ? "💔"
+            : section.title.toLowerCase().includes("descendants")
+              ? "🏙️"
+              : "🌱";
+
+    return {
+      reference,
+      title: section.title,
+      icon,
+      summary: section.notes.find((note) => !note.startsWith("#") && !note.startsWith("-")) || chapter.hook,
+      markdown: `## ${reference}\n\n# ${section.title}\n\n${verseCallouts(chapter.chapter, section.verses)}\n\n${section.notes.join("\n\n")}`,
+    };
+  }),
+);
 
 function buildFallNotes(chapter: FallChapterNote) {
   const chapterFlow = chapter.sections.map((section) => `- 📍 ${section.title}`).join("\n");
