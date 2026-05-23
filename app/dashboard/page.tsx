@@ -130,12 +130,23 @@ const MAX_BADGE_POPUPS_PER_SESSION = 3;
 const MYSTERY_PRIZE_REWARDS = [100, 150, 200, 250, 300, 400, 500];
 const DAILY_LOGIN_GIFT_MIN_DELAY_MS = 60 * 60 * 1000;
 const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
+const BIBLE_YEAR_LEGACY_LAUNCH_CUTOFF_MS = Date.UTC(2026, 4, 23);
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
 
 function getBibleYearLaunchHandledKey(userId: string) {
   return `bb:bible-year-launch-handled:${userId}`;
+}
+
+function isLegacyBibleYearLaunchUser(createdAt?: string | null) {
+  if (!createdAt) return false;
+  const createdMs = new Date(createdAt).getTime();
+  return Number.isFinite(createdMs) && createdMs < BIBLE_YEAR_LEGACY_LAUNCH_CUTOFF_MS;
+}
+
+function getBibleYearExpectIntroPendingKey(userId: string) {
+  return `bb:bible-year-expect-intro-pending:${userId}`;
 }
 
 function rollMysteryPrizeReward() {
@@ -1070,6 +1081,8 @@ export default function DashboardPage() {
   const [showBibleYearLaunchModal, setShowBibleYearLaunchModal] = useState(false);
   const [showBibleYearExpectModal, setShowBibleYearExpectModal] = useState(false);
   const [savingBibleYearLaunchChoice, setSavingBibleYearLaunchChoice] = useState<"start" | "dismiss" | null>(null);
+  const [bibleYearProgressChecked, setBibleYearProgressChecked] = useState(false);
+  const [hasBibleYearTaskProgress, setHasBibleYearTaskProgress] = useState(false);
   const [bibleBrowserSelectedBook, setBibleBrowserSelectedBook] = useState<string | null>(null);
   const [bibleBrowserAlphabetical, setBibleBrowserAlphabetical] = useState(false);
   const [bibleBrowserReading, setBibleBrowserReading] = useState<{ book: string; chapter: number } | null>(null);
@@ -3988,13 +4001,53 @@ export default function DashboardPage() {
     pendingDailyTaskCelebrationModal;
 
   useEffect(() => {
-    if (!userId || !profile || hasBlockingDashboardOverlay) return;
+    let cancelled = false;
+    setBibleYearProgressChecked(false);
+    setHasBibleYearTaskProgress(false);
+
+    async function loadBibleYearTaskProgressFlag() {
+      if (!userId) {
+        if (!cancelled) setBibleYearProgressChecked(true);
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("bible_year_day_progress")
+        .select("day_number, reading_completed, trivia_completed, reflection_completed")
+        .eq("user_id", userId)
+        .limit(1);
+
+      if (cancelled) return;
+      if (error) {
+        console.warn("[BIBLE_YEAR_LAUNCH] Could not check Bible Year task progress:", error.message);
+        setHasBibleYearTaskProgress(false);
+        setBibleYearProgressChecked(true);
+        return;
+      }
+
+      const hasProgress = (data || []).some((row) =>
+        Boolean(row.reading_completed || row.trivia_completed || row.reflection_completed),
+      );
+      setHasBibleYearTaskProgress(hasProgress);
+      setBibleYearProgressChecked(true);
+    }
+
+    void loadBibleYearTaskProgressFlag();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
+  useEffect(() => {
+    if (!userId || !profile || !bibleYearProgressChecked || hasBlockingDashboardOverlay) return;
     const handledKey = getBibleYearLaunchHandledKey(userId);
     const launchHandledLocally =
       bibleYearLaunchHandledRef.current === handledKey ||
       (typeof window !== "undefined" && Boolean(window.localStorage.getItem(handledKey)));
-    const launchAlreadyHandled = Boolean(profile.bible_year_launch_seen_at || profile.bible_year_started_at);
-    if (launchAlreadyHandled || launchHandledLocally || savingBibleYearLaunchChoice) {
+    const launchAlreadyHandled = Boolean(profile.bible_year_launch_seen_at || profile.bible_year_started_at || hasBibleYearTaskProgress);
+    const legacyUser = isLegacyBibleYearLaunchUser(profile.created_at);
+    if (!legacyUser || launchAlreadyHandled || launchHandledLocally || savingBibleYearLaunchChoice) {
       setShowBibleYearLaunchModal(false);
       return;
     }
@@ -4003,7 +4056,50 @@ export default function DashboardPage() {
     if (bibleYearLaunchPromptCheckedRef.current === promptKey) return;
     bibleYearLaunchPromptCheckedRef.current = promptKey;
     setShowBibleYearLaunchModal(true);
-  }, [hasBlockingDashboardOverlay, profile, savingBibleYearLaunchChoice, userId]);
+  }, [bibleYearProgressChecked, hasBibleYearTaskProgress, hasBlockingDashboardOverlay, profile, savingBibleYearLaunchChoice, userId]);
+
+  useEffect(() => {
+    if (!userId || !profile || !bibleYearProgressChecked) return;
+    if (!profile.bible_year_started_at && !hasBibleYearTaskProgress) return;
+
+    const handledKey = getBibleYearLaunchHandledKey(userId);
+    bibleYearLaunchHandledRef.current = handledKey;
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(handledKey, profile.bible_year_launch_seen_at || new Date().toISOString());
+      window.sessionStorage.removeItem("bb_bible_year_expect_intro_pending");
+      window.sessionStorage.removeItem(getBibleYearExpectIntroPendingKey(userId));
+    }
+    setShowBibleYearLaunchModal(false);
+    setShowBibleYearExpectModal(false);
+
+    if (profile.bible_year_started_at && profile.bible_year_launch_seen_at) return;
+
+    const nowIso = new Date().toISOString();
+    const startedAt = profile.bible_year_started_at || getDashboardLocalDateKey(new Date());
+    setProfile((current) =>
+      current
+        ? {
+            ...current,
+            bible_year_started_at: current.bible_year_started_at || startedAt,
+            bible_year_launch_seen_at: current.bible_year_launch_seen_at || nowIso,
+          }
+        : current,
+    );
+    void supabase
+      .from("profile_stats")
+      .upsert(
+        {
+          user_id: userId,
+          bible_year_started_at: startedAt,
+          bible_year_launch_seen_at: profile.bible_year_launch_seen_at || nowIso,
+          updated_at: nowIso,
+        },
+        { onConflict: "user_id" },
+      )
+      .then(({ error }) => {
+        if (error) console.warn("[BIBLE_YEAR_LAUNCH] Could not backfill started state:", error.message);
+      });
+  }, [bibleYearProgressChecked, hasBibleYearTaskProgress, profile, userId]);
 
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
@@ -6839,6 +6935,8 @@ export default function DashboardPage() {
     bibleYearLaunchPromptCheckedRef.current = `${userId}:bible-year-launch-handled`;
     if (typeof window !== "undefined") {
       window.localStorage.setItem(handledKey, nowIso);
+      window.sessionStorage.removeItem("bb_bible_year_expect_intro_pending");
+      window.sessionStorage.removeItem(getBibleYearExpectIntroPendingKey(userId));
     }
     setSavingBibleYearLaunchChoice(choice);
     setShowBibleYearLaunchModal(false);
@@ -6873,7 +6971,7 @@ export default function DashboardPage() {
       );
       if (choice === "start") {
         if (typeof window !== "undefined") {
-          window.sessionStorage.setItem("bb_bible_year_expect_intro_pending", "1");
+          window.sessionStorage.setItem(getBibleYearExpectIntroPendingKey(userId), nowIso);
         }
         void trackNavigationActionOnce({
           userId,
@@ -6894,7 +6992,7 @@ export default function DashboardPage() {
       console.error("[BIBLE_YEAR_LAUNCH] Could not save launch choice:", error);
       if (choice === "start") {
         if (typeof window !== "undefined") {
-          window.sessionStorage.setItem("bb_bible_year_expect_intro_pending", "1");
+          window.sessionStorage.setItem(getBibleYearExpectIntroPendingKey(userId), nowIso);
         }
         router.push("/dashboard?view=bible-year&day=1");
         window.setTimeout(() => setShowBibleYearExpectModal(true), 50);
@@ -6905,14 +7003,15 @@ export default function DashboardPage() {
   }
 
   useEffect(() => {
-    if (typeof window === "undefined" || !profile?.bible_year_started_at) return;
-    if (window.sessionStorage.getItem("bb_bible_year_expect_intro_pending") !== "1") return;
+    if (typeof window === "undefined" || !userId || !profile?.bible_year_started_at || hasBibleYearTaskProgress) return;
+    if (!window.sessionStorage.getItem(getBibleYearExpectIntroPendingKey(userId))) return;
     setShowBibleYearExpectModal(true);
-  }, [profile?.bible_year_started_at]);
+  }, [hasBibleYearTaskProgress, profile?.bible_year_started_at, userId]);
 
   function closeBibleYearExpectModal() {
     if (typeof window !== "undefined") {
       window.sessionStorage.removeItem("bb_bible_year_expect_intro_pending");
+      if (userId) window.sessionStorage.removeItem(getBibleYearExpectIntroPendingKey(userId));
     }
     setShowBibleYearExpectModal(false);
   }
@@ -8080,7 +8179,7 @@ export default function DashboardPage() {
     if (showBibleProgressPanel) return renderBibleProgressPanel();
     if (deepStudyMode === "complete") return renderDeepStudyComplete();
     if (deepStudyMode === "results") return renderDeepStudyResults();
-    if (profile?.bible_year_launch_seen_at && !profile?.bible_year_started_at && !showBibleYearLaunchModal) {
+    if (false && profile?.bible_year_launch_seen_at && !profile?.bible_year_started_at && !showBibleYearLaunchModal) {
       return (
         <>
           {renderDashboardStatsRow()}
