@@ -134,6 +134,10 @@ const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-hand
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
 
+function getBibleYearLaunchHandledKey(userId: string) {
+  return `bb:bible-year-launch-handled:${userId}`;
+}
+
 function rollMysteryPrizeReward() {
   if (typeof window !== "undefined" && window.crypto?.getRandomValues) {
     const randomValues = new Uint32Array(1);
@@ -1177,6 +1181,7 @@ export default function DashboardPage() {
   const [dashboardStatsPane, setDashboardStatsPane] = useState<0 | 1>(0);
   const dashboardStatsTouchStartXRef = useRef<number | null>(null);
   const bibleYearLaunchPromptCheckedRef = useRef("");
+  const bibleYearLaunchHandledRef = useRef("");
   const [ownerQuickStats, setOwnerQuickStats] = useState({
     signups24h: 0,
     activeUsers24h: 0,
@@ -3984,8 +3989,12 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!userId || !profile || hasBlockingDashboardOverlay) return;
+    const handledKey = getBibleYearLaunchHandledKey(userId);
+    const launchHandledLocally =
+      bibleYearLaunchHandledRef.current === handledKey ||
+      (typeof window !== "undefined" && Boolean(window.localStorage.getItem(handledKey)));
     const launchAlreadyHandled = Boolean(profile.bible_year_launch_seen_at || profile.bible_year_started_at);
-    if (launchAlreadyHandled) {
+    if (launchAlreadyHandled || launchHandledLocally || savingBibleYearLaunchChoice) {
       setShowBibleYearLaunchModal(false);
       return;
     }
@@ -3994,7 +4003,7 @@ export default function DashboardPage() {
     if (bibleYearLaunchPromptCheckedRef.current === promptKey) return;
     bibleYearLaunchPromptCheckedRef.current = promptKey;
     setShowBibleYearLaunchModal(true);
-  }, [hasBlockingDashboardOverlay, profile, userId]);
+  }, [hasBlockingDashboardOverlay, profile, savingBibleYearLaunchChoice, userId]);
 
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
@@ -5121,6 +5130,8 @@ export default function DashboardPage() {
             typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
           const localSelectedFlame =
             typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
+          const localBibleYearLaunchSeenAt =
+            typeof window !== "undefined" ? window.localStorage.getItem(getBibleYearLaunchHandledKey(userId)) : null;
           const dbSelectedFlame = normalizeFlameCosmeticId(profileData?.selected_streak_flame);
           const hasActiveSkinColumn = Boolean(profileData && "active_premium_skin" in profileData);
           const dbActiveSkin = normalizePremiumSkinId(hasActiveSkinColumn ? profileData?.active_premium_skin : null);
@@ -5184,7 +5195,7 @@ export default function DashboardPage() {
             username: profileData?.username ?? null,
             created_at: profileData?.created_at ?? null,
             bible_year_started_at: profileData?.bible_year_started_at ?? null,
-            bible_year_launch_seen_at: profileData?.bible_year_launch_seen_at ?? null,
+            bible_year_launch_seen_at: profileData?.bible_year_launch_seen_at ?? localBibleYearLaunchSeenAt ?? null,
           });
           if (shouldShowDailyLoginGift && dailyLoginGiftCheckRef.current !== dailyGiftShownKey) {
             dailyLoginGiftCheckRef.current = dailyGiftShownKey;
@@ -6821,10 +6832,25 @@ export default function DashboardPage() {
 
   async function saveBibleYearLaunchChoice(choice: "start" | "dismiss") {
     if (!userId || savingBibleYearLaunchChoice) return;
-    setSavingBibleYearLaunchChoice(choice);
-    setShowBibleYearLaunchModal(false);
     const nowIso = new Date().toISOString();
     const todayKey = getDashboardLocalDateKey(new Date());
+    const handledKey = getBibleYearLaunchHandledKey(userId);
+    bibleYearLaunchHandledRef.current = handledKey;
+    bibleYearLaunchPromptCheckedRef.current = `${userId}:bible-year-launch-handled`;
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(handledKey, nowIso);
+    }
+    setSavingBibleYearLaunchChoice(choice);
+    setShowBibleYearLaunchModal(false);
+    setProfile((current) =>
+      current
+        ? {
+            ...current,
+            bible_year_launch_seen_at: nowIso,
+            bible_year_started_at: choice === "start" ? todayKey : current.bible_year_started_at ?? null,
+          }
+        : current,
+    );
     const updates =
       choice === "start"
         ? { bible_year_launch_seen_at: nowIso, bible_year_started_at: todayKey, updated_at: nowIso }
