@@ -1,3 +1,5 @@
+import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
+
 export const BIBLE_YEAR_DAY_FOUR_DEEP_NOTES = `Genesis 8-10 shows life after the flood.
 
 The water begins to go down.
@@ -1099,3 +1101,79 @@ He restores.
 He keeps His promise.
 
 And He keeps moving the story toward Jesus.`;
+
+const DAY_FOUR_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">> = [
+  {
+    reference: "Genesis 8:1-5",
+    title: "God Remembers Noah",
+    icon: "🌊",
+    summary: "The waters begin to go down because God has not forgotten Noah inside the ship.",
+  },
+  {
+    reference: "Genesis 8:6-12",
+    title: "Noah Waits For A Sign",
+    icon: "🕊️",
+    summary: "Noah waits patiently, and the dove's olive leaf becomes a small sign that restoration is coming.",
+  },
+  {
+    reference: "Genesis 8:13-19",
+    title: "God Says Go Out",
+    icon: "🚪",
+    summary: "God brings Noah out at the right time, and rescued life steps into a washed world.",
+  },
+  {
+    reference: "Genesis 8:20-22",
+    title: "Noah Worships After Rescue",
+    icon: "🔥",
+    summary: "Noah builds an altar first, showing that rescue should lead the heart back to worship.",
+  },
+  {
+    reference: "Genesis 9:1-7",
+    title: "God Blesses Noah Again",
+    icon: "👑",
+    summary: "God repeats creation language, protects human life, and reminds us that people bear His image.",
+  },
+  {
+    reference: "Genesis 9:8-17",
+    title: "God Gives The Rainbow Covenant",
+    icon: "🌈",
+    summary: "The rainbow becomes a covenant sign that God's mercy stands over creation after judgment.",
+  },
+  {
+    reference: "Genesis 9:18-29",
+    title: "Noah Fails And Shame Returns",
+    icon: "🍇",
+    summary: "Noah's failure shows that a fresh start cannot heal the human heart by itself.",
+  },
+  {
+    reference: "Genesis 10:1-5",
+    title: "Japheth's Line Spreads",
+    icon: "🗺️",
+    summary: "The nations begin spreading, showing that life continues after the flood.",
+  },
+  {
+    reference: "Genesis 10:6-20",
+    title: "Ham's Line Builds Kingdoms",
+    icon: "🏙️",
+    summary: "Cities and kingdoms rise, but human power still needs to be read through the bigger story of sin and promise.",
+  },
+  {
+    reference: "Genesis 10:21-32",
+    title: "Shem's Line Carries The Promise",
+    icon: "🌱",
+    summary: "Shem's family line quietly prepares the road toward Abraham and the promise God will keep moving forward.",
+  },
+];
+
+function getDayFourSectionMarkdown(reference: string) {
+  const escapedReference = reference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = BIBLE_YEAR_DAY_FOUR_DEEP_NOTES.match(
+    new RegExp(`(?:^|\\n)(# [^\\n]+\\n\\n)?## ${escapedReference}[\\s\\S]*?(?=\\n# [^\\n]+\\n\\n## Genesis|\\n# Final Reflection|$)`),
+  );
+  return match?.[0].trim() || `## ${reference}`;
+}
+
+export const BIBLE_YEAR_DAY_FOUR_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = DAY_FOUR_SECTION_META.map((section) => ({
+  ...section,
+  markdown: getDayFourSectionMarkdown(section.reference),
+}));

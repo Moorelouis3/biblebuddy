@@ -10,6 +10,7 @@ type ChapterNotesMarkdownProps = {
   onScriptureReferenceClick?: (event: MouseEvent<HTMLDivElement>) => void;
   enableLargeDatabaseTerms?: boolean;
   databaseTermMode?: "full" | "light";
+  compactMobile?: boolean;
 };
 
 const leadingEmojiPattern = /^[\s]*(?:[\p{Extended_Pictographic}\p{Emoji_Presentation}]|\d\uFE0F?\u20E3)/u;
@@ -152,6 +153,7 @@ export default function ChapterNotesMarkdown({
   onScriptureReferenceClick,
   enableLargeDatabaseTerms = false,
   databaseTermMode = "full",
+  compactMobile = false,
 }: ChapterNotesMarkdownProps) {
   const [deferredTermsReady, setDeferredTermsReady] = useState(false);
   const normalizedChildren = useMemo(() => normalizeEmojiLists(children), [children]);
@@ -204,7 +206,7 @@ export default function ChapterNotesMarkdown({
   }
 
   return (
-    <div className="chapter-notes-markdown max-w-none text-gray-800" onClick={handleClick}>
+    <div className={`chapter-notes-markdown max-w-none text-gray-800 ${compactMobile ? "chapter-notes-markdown-compact-mobile" : ""}`} onClick={handleClick}>
       <style>{`
         .chapter-notes-markdown .bible-highlight {
           color: inherit !important;
@@ -215,6 +217,23 @@ export default function ChapterNotesMarkdown({
         .chapter-notes-markdown .bible-highlight:hover {
           color: var(--bb-accent, #dc2626) !important;
           text-decoration-color: var(--bb-accent, #dc2626) !important;
+        }
+        @media (max-width: 640px) {
+          .chapter-notes-markdown-compact-mobile blockquote {
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+          }
+          .chapter-notes-markdown-compact-mobile h1,
+          .chapter-notes-markdown-compact-mobile h2,
+          .chapter-notes-markdown-compact-mobile h3 {
+            letter-spacing: 0;
+          }
+          .chapter-notes-markdown-compact-mobile p,
+          .chapter-notes-markdown-compact-mobile li {
+            font-size: 0.9375rem;
+          }
         }
       `}</style>
       <ReactMarkdown

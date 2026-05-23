@@ -83,7 +83,7 @@ export default function BibleYearDeepStudySectionCards({
               <button
                 type="button"
                 onClick={() => openSection(section.reference)}
-                className={`flex w-full items-center gap-3 rounded-2xl border px-3 py-3 text-left transition ${
+                className={`flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-3 text-left transition sm:gap-3 sm:px-3 ${
                   isOpen
                     ? "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)]"
                     : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] bg-black/14 hover:border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_8%,transparent)]"
@@ -112,8 +112,8 @@ export default function BibleYearDeepStudySectionCards({
                 </svg>
               </button>
               {isOpen ? (
-                <div className="mt-3 rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] bg-black/16 px-3 py-4">
-                  <ChapterNotesMarkdown>{stripLeadingReferenceHeading(section.markdown, section.reference)}</ChapterNotesMarkdown>
+                <div className="bible-year-deep-note-open mt-2 bg-black/10 px-0 py-3 sm:mt-3 sm:rounded-[24px] sm:border sm:border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] sm:bg-black/16 sm:px-3 sm:py-4">
+                  <ChapterNotesMarkdown compactMobile>{stripLeadingReferenceHeading(section.markdown, section.reference)}</ChapterNotesMarkdown>
                 </div>
               ) : null}
             </div>

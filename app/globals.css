@@ -474,6 +474,20 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-community-feed [class*="text-g
   text-decoration-color: color-mix(in srgb, var(--bb-text-primary) 72%, transparent) !important;
 }
 
+.dashboard-bible-reader-embed .verse-text {
+  color: var(--bb-text-primary, #fff7ed);
+}
+
+.dashboard-bible-reader-embed .bible-highlight {
+  color: inherit !important;
+  opacity: 1;
+  text-decoration-color: color-mix(in srgb, currentColor 48%, transparent) !important;
+}
+
+.dashboard-bible-reader-embed .bible-highlight:hover {
+  text-decoration-color: color-mix(in srgb, currentColor 72%, transparent) !important;
+}
+
 /* Plain text mode for chapter reading: keep enriched HTML, remove all highlight styling */
 .plain-text-mode .bible-highlight,
 .plain-text-mode .bible-highlight-people,

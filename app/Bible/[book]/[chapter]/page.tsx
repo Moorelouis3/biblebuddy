@@ -2382,8 +2382,8 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
   }
 
   return (
-    <div className={isDashboardEmbed ? "bg-[var(--bb-card,#ffffff)] px-0 py-0" : "min-h-screen bg-gray-50 py-8 px-4"}>
-      <div className={isDashboardEmbed ? "mx-auto max-w-4xl px-2 py-3 sm:px-4 sm:py-4" : "max-w-4xl mx-auto"}>
+    <div className={isDashboardEmbed ? "dashboard-bible-reader-embed bg-[var(--bb-card,#ffffff)] px-0 py-0" : "min-h-screen bg-gray-50 py-8 px-4"}>
+      <div className={isDashboardEmbed ? "mx-auto max-w-4xl px-2 py-3 text-[var(--bb-text-primary,#111827)] sm:px-4 sm:py-4" : "max-w-4xl mx-auto"}>
         {/* BACK LINK */}
         {!isDashboardEmbed ? (
           <div className="mb-4 text-xs sm:text-sm text-blue-600">

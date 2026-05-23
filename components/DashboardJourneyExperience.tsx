@@ -53,8 +53,8 @@ import { GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON, GENESIS_DAY_FIVE_ABRAHAM_OB
 import { BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "../lib/bibleYearDayOneDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS } from "../lib/bibleYearDayOneDeepStudy";
-import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES } from "../lib/bibleYearDayThreeDeepNotes";
-import { BIBLE_YEAR_DAY_FOUR_DEEP_NOTES } from "../lib/bibleYearDayFourDeepNotes";
+import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES, BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS } from "../lib/bibleYearDayThreeDeepNotes";
+import { BIBLE_YEAR_DAY_FOUR_DEEP_NOTES, BIBLE_YEAR_DAY_FOUR_DEEP_STUDY_SECTIONS } from "../lib/bibleYearDayFourDeepNotes";
 import { BIBLE_YEAR_DAY_TWO_DEEP_NOTES, BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS } from "../lib/fallOfManDeepNotes";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
@@ -4041,6 +4041,22 @@ export default function DashboardJourneyExperience({
         ? `/Bible/${encodeURIComponent(dashboardBibleSelectedBook)}/${dashboardBibleSelectedChapter}?dashboardEmbed=1&hideReaderChrome=1`
         : null;
 
+    if (readerSrc && dashboardBibleSelectedBook && dashboardBibleSelectedChapter) {
+      return (
+        <section className="w-full pb-4">
+          <div className="mx-auto w-full max-w-xl">
+            <iframe
+              key={readerSrc}
+              src={readerSrc}
+              title={`${dashboardBibleSelectedBook} ${dashboardBibleSelectedChapter} Bible reader`}
+              className="block w-full border-0 bg-transparent"
+              style={{ minHeight: "calc(100dvh - 116px)", height: "calc(100dvh - 116px)" }}
+            />
+          </div>
+        </section>
+      );
+    }
+
     return (
       <section className="w-full px-1 pb-4">
         <div className="mx-auto flex max-w-xl flex-col gap-4">
@@ -7457,13 +7473,60 @@ Before we understand redemption, we need to understand what God made humanity fo
     });
   }
 
+  function renderBibleYearCompactStudyProgress(day: GenesisBibleYearDay) {
+    const dayTaskCompletedCount = getBibleYearDayCompletedCount(day);
+    const dayTaskTotalXp = BIBLE_YEAR_DAY_CARD_KEYS.reduce((total, card) => total + BIBLE_YEAR_CARD_XP[card], 0);
+    const dayTaskProgressPercent = Math.round((dayTaskCompletedCount / BIBLE_YEAR_DAY_CARD_KEYS.length) * 100);
+
+    if (isBibleYearDayComplete(day)) return null;
+
+    return (
+      <div className="border-t border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] px-3 py-3 sm:px-4">
+        <div className="flex items-center gap-3">
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_10%,transparent)] text-[var(--bb-accent,#f6b44b)] shadow-[0_0_16px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent)]">
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="7" />
+              <circle cx="12" cy="12" r="2" />
+              <path d="M12 2v3" />
+              <path d="M12 19v3" />
+              <path d="M2 12h3" />
+              <path d="M19 12h3" />
+            </svg>
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="truncate text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#f6b44b)]">Today's Study Progress</p>
+                <p className="mt-0.5 truncate text-xs font-bold text-[var(--bb-text-primary,#fff7ed)]">
+                  Complete all 3 Bible tasks to finish Day {day.dayNumber}
+                </p>
+              </div>
+              <p className="shrink-0 text-xs font-black text-[var(--bb-text-primary,#fff7ed)]">
+                {dayTaskCompletedCount} of {BIBLE_YEAR_DAY_CARD_KEYS.length}
+              </p>
+            </div>
+            <div className="mt-2 flex items-center gap-3">
+              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-black/24">
+                <div
+                  className="h-full rounded-full bg-[var(--bb-accent,#f6b44b)] shadow-[0_0_14px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_52%,transparent)] transition-all"
+                  style={{ width: `${dayTaskProgressPercent}%` }}
+                />
+              </div>
+              <div className="shrink-0 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] bg-black/14 px-2.5 py-1 text-center">
+                <p className="text-sm font-black leading-none text-[var(--bb-accent,#f6b44b)]">+{dayTaskTotalXp}</p>
+                <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#e7d4bd)]">XP</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   function renderBibleYearDashboardStudyArea(day: GenesisBibleYearDay, tasksToRender: TaskState[]) {
     const cover = day.coverImage || getDashboardStudyCover(day.readings[0]?.studyTitle || day.title);
     const readingSummary = day.reference || day.readings.map((reading) => `${reading.book} ${reading.chapter}`).join(", ");
     const activeTasksToRender = tasksToRender.filter((task) => !task.done);
-    const dayTaskCompletedCount = getBibleYearDayCompletedCount(day);
-    const dayTaskTotalXp = BIBLE_YEAR_DAY_CARD_KEYS.reduce((total, card) => total + BIBLE_YEAR_CARD_XP[card], 0);
-    const dayTaskProgressPercent = Math.round((dayTaskCompletedCount / BIBLE_YEAR_DAY_CARD_KEYS.length) * 100);
 
     return (
       <section data-bible-year-study-area className="dashboard-bible-year-study-area grid gap-3 rounded-[28px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_62%,rgba(0,0,0,0.42))] p-3 shadow-[0_18px_46px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
@@ -7544,47 +7607,6 @@ Before we understand redemption, we need to understand what God made humanity fo
 
         <div className="grid gap-3 pb-24 sm:pb-0">
           {dashboardAllDone ? renderBibleYearCompletedDayPanel(day) : null}
-          {!dashboardAllDone ? (
-          <div className="relative overflow-hidden rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_30%,transparent)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent,#f6b44b)_10%,transparent),color-mix(in_srgb,var(--bb-card,#ffffff)_66%,transparent))] px-3 py-3 shadow-[0_0_0_1px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent),0_12px_26px_rgba(0,0,0,0.16)] backdrop-blur-xl sm:px-4">
-            <div className="flex items-center gap-2.5">
-              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_10%,transparent)] text-[var(--bb-accent,#f6b44b)] shadow-[0_0_16px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)]">
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="7" />
-                  <circle cx="12" cy="12" r="2" />
-                  <path d="M12 2v3" />
-                  <path d="M12 19v3" />
-                  <path d="M2 12h3" />
-                  <path d="M19 12h3" />
-                </svg>
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#f6b44b)]">Today's Study Tasks</p>
-                    <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#e7d4bd)] sm:text-sm">
-                      Complete all 3 Bible tasks to complete Day {day.dayNumber} and keep your streak going.
-                    </p>
-                  </div>
-                  <div className="shrink-0 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] bg-black/14 px-2.5 py-1.5 text-center">
-                    <p className="text-base font-black leading-none text-[var(--bb-accent,#f6b44b)]">+{dayTaskTotalXp}</p>
-                    <p className="mt-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#e7d4bd)]">XP</p>
-                  </div>
-                </div>
-                <div className="mt-2.5 flex items-center gap-3">
-                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-black/22">
-                    <div
-                      className="h-full rounded-full bg-[var(--bb-accent,#f6b44b)] shadow-[0_0_14px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_52%,transparent)] transition-all"
-                      style={{ width: `${dayTaskProgressPercent}%` }}
-                    />
-                  </div>
-                  <p className="shrink-0 text-[11px] font-black text-[var(--bb-text-primary,#fff7ed)]">
-                    {dayTaskCompletedCount} of {BIBLE_YEAR_DAY_CARD_KEYS.length} completed
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          ) : null}
           {activeTasksToRender.length ? (
             <div className="grid gap-3">
               {renderDashboardTaskCards(activeTasksToRender)}
@@ -8090,8 +8112,55 @@ Before we understand redemption, we need to understand what God made humanity fo
         ? BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS
         : day.dayNumber === 2
           ? BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS
+          : day.dayNumber === 3
+            ? BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS
+            : day.dayNumber === 4
+              ? BIBLE_YEAR_DAY_FOUR_DEEP_STUDY_SECTIONS
           : null;
     const useSectionDeepStudy = Boolean(deepStudySections);
+    const overviewRecapByDay: Record<number, { intro: string; points: string[]; outro: string }> = {
+      1: {
+        intro: "Quick recap: Day 1 shows the world before anything is broken.",
+        points: [
+          "🌅 God speaks into darkness and brings light.",
+          "🌍 God shapes the world into a home for life.",
+          "👑 People are made in God's image with value and purpose.",
+          "🌿 Eden shows work, rest, freedom, boundaries, and relationship.",
+        ],
+        outro: "Big takeaway: before the damage, God's design was good, beautiful, and full of life.",
+      },
+      2: {
+        intro: "Quick recap: Day 2 shows what happens when trust breaks.",
+        points: [
+          "🐍 The serpent questions God's word.",
+          "🍎 Adam and Eve disobey, then shame and hiding enter the story.",
+          "🌱 God judges sin, but gives the first promise that evil will not win.",
+          "💔 Cain's anger becomes murder, yet God keeps preserving hope through Seth.",
+        ],
+        outro: "Big takeaway: sin spreads fast, but God keeps pursuing, warning, covering, and keeping hope alive.",
+      },
+      3: {
+        intro: "Quick recap: Day 3 shows a broken world getting darker, but not hopeless.",
+        points: [
+          "🧬 Genesis 5 traces the family line from Adam to Noah.",
+          "⚰️ The phrase 'then he died' keeps reminding us that sin brought death.",
+          "🚶 Enoch shows that people can still walk with God in a broken world.",
+          "🌧️ Noah obeys, the flood begins, and God provides a refuge that carries life through judgment.",
+        ],
+        outro: "Big takeaway: judgment is real, but God's rescue is real too. The waters rise, but the refuge holds.",
+      },
+      4: {
+        intro: "Quick recap: Day 4 shows life after the flood and hope after the storm.",
+        points: [
+          "🌊 God remembers Noah, and the waters begin to go down.",
+          "🕊️ The dove returns with an olive leaf, showing restoration is starting.",
+          "🔥 Noah worships first after rescue, before rebuilding anything else.",
+          "🌈 God gives the rainbow covenant, but Noah's failure shows the world still needs deeper rescue.",
+        ],
+        outro: "Big takeaway: God is faithful after the storm. He restores, keeps His promise, and keeps moving the story toward Jesus.",
+      },
+    };
+    const overviewRecap = overviewRecapByDay[day.dayNumber] || null;
     type VerseBreakdownNote = { title: string; icon: string; paragraphs: string[] };
     const dayOneVerseBreakdownNotes: Record<string, VerseBreakdownNote> = {
       "Genesis 1:1-5": {
@@ -8593,8 +8662,8 @@ Before we understand redemption, we need to understand what God made humanity fo
           ) : null}
 
           {false ? (
-            <div className="relative z-30 mt-4 overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_78%,rgba(0,0,0,0.72))] text-left text-[var(--bb-text-primary,#fff7ed)] shadow-[0_24px_70px_rgba(0,0,0,0.52)] backdrop-blur-xl [--bb-card-border:rgba(246,180,75,0.22)] [--bb-surface-soft:rgba(255,255,255,0.06)] [--bb-text-primary:#fff7ed] [--bb-text-secondary:#e7d4bd]">
-              <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_82%,rgba(0,0,0,0.82))] px-4 py-3 backdrop-blur-xl">
+            <div className="-mx-2 relative z-30 mt-4 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_78%,rgba(0,0,0,0.72))] text-left text-[var(--bb-text-primary,#fff7ed)] shadow-[0_24px_70px_rgba(0,0,0,0.52)] backdrop-blur-xl [--bb-card-border:rgba(246,180,75,0.22)] [--bb-surface-soft:rgba(255,255,255,0.06)] [--bb-text-primary:#fff7ed] [--bb-text-secondary:#e7d4bd] sm:mx-0 sm:rounded-[28px]">
+              <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_82%,rgba(0,0,0,0.82))] px-3 py-3 backdrop-blur-xl sm:px-4">
                 <div className="min-w-0">
                   <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">{deepNotesEyebrow}</p>
                   <p className="truncate text-lg font-black text-[var(--bb-text-primary,#fff7ed)]">{deepNotesTitle}</p>
@@ -8711,7 +8780,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   x
                 </button>
               </div>
-              <div className="px-4 py-5" data-bible-year-deep-notes-scroll="day-one">
+              <div className="px-2 py-3 sm:px-4 sm:py-5" data-bible-year-deep-notes-scroll={`day-${day.dayNumber}`}>
                 {deepStudySections ? (
                   <BibleYearDeepStudySectionCards
                     sections={deepStudySections || []}
@@ -8770,9 +8839,27 @@ Before we understand redemption, we need to understand what God made humanity fo
         {!sectionDeepNotesFocus ? (
         <section className="mt-4 px-1">
           {true ? (
-            <div className={`rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_20%,transparent)] bg-black/12 ${day.dayNumber === 2 ? "p-3" : "p-4"}`}>
-              <p className={`${day.dayNumber === 2 ? "text-base" : "text-xl"} font-black leading-tight text-[var(--bb-text-primary,#fff7ed)]`}>Today's Reading Overview</p>
-              <div className={`${day.dayNumber === 2 ? "mt-2 grid gap-1.5 text-xs leading-5" : "mt-3 grid gap-3 text-sm leading-6"} font-semibold text-[var(--bb-text-secondary,#e7d4bd)]`}>
+            <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_20%,transparent)] bg-black/12 p-4">
+              <p className="text-xl font-black leading-tight text-[var(--bb-text-primary,#fff7ed)]">Today's Reading Recap</p>
+              {overviewRecap ? (
+                <div className="mt-3 grid gap-3">
+                  <p className="text-sm font-bold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">{overviewRecap.intro}</p>
+                  <div className="grid gap-2">
+                    {overviewRecap.points.map((point) => (
+                      <p
+                        key={point}
+                        className="rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)] bg-black/14 px-3 py-2 text-sm font-bold leading-5 text-[var(--bb-text-primary,#fff7ed)]"
+                      >
+                        {point}
+                      </p>
+                    ))}
+                  </div>
+                  <p className="rounded-2xl bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent)] px-3 py-3 text-sm font-black leading-5 text-[var(--bb-accent,#f6b44b)]">
+                    {overviewRecap.outro}
+                  </p>
+                </div>
+              ) : (
+              <div className="mt-3 grid gap-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">
                 {day.dayNumber === 2 ? (
                   <>
                     <p>Genesis 3-4 shows the Bible story turning from beauty to heartbreak.</p>
@@ -8796,6 +8883,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </>
                 ) : null}
               </div>
+              )}
             </div>
           ) : (
             <>
@@ -8952,7 +9040,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         </section>
         ) : null}
 
-        {day.dayNumber !== 1 && hasDeepNotes && deepNotesMarkdown && bibleYearDeepNotesOpen ? (
+        {!useSectionDeepStudy && hasDeepNotes && deepNotesMarkdown && bibleYearDeepNotesOpen ? (
           <div className="absolute inset-0 z-30 overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_78%,rgba(0,0,0,0.72))] shadow-[0_24px_70px_rgba(0,0,0,0.52)] backdrop-blur-xl">
             <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_82%,rgba(0,0,0,0.82))] px-4 py-3 backdrop-blur-xl">
               <div className="min-w-0">
@@ -9896,6 +9984,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </button>
 
                   {activeBibleYearDashboardDay ? (
+                    <>
                     <div className="dashboard-inline-task border-t border-[var(--bb-card-border,#dbe7f4)] px-3 pb-3 pt-2 sm:px-4">
                       <div className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-4">
                         <div className="grid min-w-[720px] grid-cols-8 items-start gap-2">
@@ -9986,7 +10075,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                         </div>
                       </div>
 
+                      {renderBibleYearCompactStudyProgress(activeBibleYearDashboardDay)}
                     </div>
+                    </>
                   ) : null}
                 </section>
 

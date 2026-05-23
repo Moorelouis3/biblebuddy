@@ -1,14 +1,16 @@
+import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
+
 export const BIBLE_YEAR_DAY_THREE_DEEP_NOTES = `Genesis 5-7 shows what happens when sin spreads from one family into the whole world.
 
 Day 1 showed creation as good.
 
-Day 2 showed sin entering through distrust, shame, blame, and murder.
+Day 2 showed sin entering through distrust, shame, blame, murder, and broken worship.
 
 Day 3 shows the long road after Eden. People still have children. Families still grow. Work still happens. Culture still moves. But death keeps repeating, violence keeps spreading, and the earth becomes filled with corruption.
 
 This is where Noah enters the story.
 
-Noah does not live in an easy time. He lives in a generation where almost everything around him is moving away from God. But Genesis says Noah walked with God. That one sentence matters because it shows that faithfulness is still possible in a broken world.
+Noah does not live in an easy time. He lives in a generation where almost everything around him is moving away from God. But Genesis says Noah walked with God. That matters because it shows that faithfulness is still possible in a broken world.
 
 🧬 Genesis 5 traces Adam's family line.
 
@@ -20,7 +22,7 @@ Noah does not live in an easy time. He lives in a generation where almost everyt
 
 🌍 Genesis 6 shows corruption filling the earth.
 
-🩸 Violence becomes the public fruit of human sin.
+💔 Violence becomes the public fruit of human sin.
 
 🛠️ God gives Noah detailed instructions for the ship.
 
@@ -46,33 +48,67 @@ Noah does not live in an easy time. He lives in a generation where almost everyt
 
 ## 🧭 What Is Happening Here?
 
-Genesis 5 begins with a family record, but it is not boring filler.
+Genesis 5 starts with a family record, but it is teaching more than names and ages.
 
-It is showing what life looks like outside Eden. The blessing of creation is still present because people are still made in God's likeness, families are still growing, and children are still being born. But the curse is also present because every life now moves toward death.
+👤 Adam is still connected to God's image.
 
-Adam has a son in his own likeness and after his image. That does not erase the image of God. It shows that Adam's family line now carries both dignity and brokenness. Human beings are still valuable because God made them, but sin has damaged the human story.
+👶 Seth is born in Adam's likeness and image.
 
-The sentence "then he died" is the heavy note at the end of Adam's life. Adam lived a very long time, but long life is not the same as eternal life. God warned that sin would bring death, and Genesis 5 lets us feel that warning entering the family record.
+🏠 Sons and daughters keep filling the family story.
+
+⚰️ Adam's long life still ends in death.
+
+### 📜 "The Book Of The Generations Of Adam"
+
+This phrase tells us Genesis is starting a new family section.
+
+The Bible is not jumping away from creation. It is showing what happened to the people God made after sin entered the world. The story now moves through a real family line.
+
+### 👤 "God Created Man In God's Likeness"
+
+Verse 1 reaches back to Genesis 1.
+
+Even after sin, Genesis reminds us that humanity began with dignity. People are not accidents. People are not animals with no purpose. Human beings were created in God's likeness.
+
+This matters because Genesis 5 will talk a lot about death. Before the chapter says people die, it reminds us that people matter.
+
+### 👨‍👩‍👧 "Male And Female... Blessed Them"
+
+Verse 2 repeats that God made humanity male and female and blessed them.
+
+The blessing of creation has not disappeared. Families are still growing. Children are still being born. Life is still moving forward. Sin damaged the world, but it did not erase God's original blessing.
+
+### 👶 "A Son In His Own Likeness, After His Image"
+
+Verse 3 says Adam had a son in his own likeness and image.
+
+This does not mean Seth is no longer in God's image. It means Adam's family now carries both dignity and brokenness. Seth belongs to the human family created by God, but he is also born into the family line affected by Adam's sin.
+
+### ⚰️ "Then He Died"
+
+This is the sentence Genesis wants us to feel.
+
+Adam lived nine hundred thirty years. That sounds incredibly long, but the ending is still the same: then he died. Long life is not the same as eternal life. God's warning in Eden was true. Sin brought death into the human story.
 
 ## 🧠 Words To Know
 
 ### 📜 Generations
 
-**Generations** means family history or family line.
+**Generations** means family history, family line, or the story that comes from someone.
 
-Genesis uses this word to move the story forward. It tells us whose line we are following and how God's story is moving through real families.
+Genesis uses this word to show whose family line we are following.
 
 ### 👤 Likeness And Image
 
 **Likeness** and **image** point back to Genesis 1.
 
-God made humanity to reflect Him in the world. Genesis 5 repeats that truth after sin enters, which means human life still has sacred worth even in a fallen world.
+They teach that humans were made to represent God in creation.
 
 ### ⚰️ Then He Died
 
-**Then he died** is the phrase Genesis wants us to notice.
+**Then he died** is repeated because death is now part of life outside Eden.
 
-It is repeated because death has become part of human history. The chapter sounds like a family tree, but underneath it is the sound of Genesis 3 echoing through every generation.
+The phrase is simple, but heavy.
 
 ## 🗣️ Hebrew Word Study
 
@@ -80,37 +116,35 @@ It is repeated because death has become part of human history. The chapter sound
 
 **Toledot** is the Hebrew word behind "generations."
 
-It can mean descendants, family record, or the story that comes from someone. Genesis is structured around these family records because God works through history, not myth.
+It can mean descendants, family record, or the story that comes from a person.
 
 ### 👤 Tselem
 
 **Tselem** is the Hebrew word behind "image."
 
-In the ancient world, an image represented someone. Genesis says humans are God's image bearers, meaning human beings were made to represent God's rule, character, and presence in creation.
+In the ancient world, an image represented someone. Genesis says humans are God's image bearers.
 
 ## 🏺 Culture And History
 
-Ancient genealogies were important because they preserved identity.
+Ancient genealogies preserved identity.
 
-They told families where they came from, what line they belonged to, and how the story continued. Genesis uses genealogies for more than names. It shows blessing, death, promise, and hope moving through time.
+They told people where they came from, what family line they belonged to, and how the story continued. Genesis uses genealogy to teach theology. It shows life continuing, but death spreading.
 
-Modern readers often skip lists of names. Ancient readers listened carefully because names carried memory.
-
-> 🔥 **Callout:** Genesis 5 is not just counting years. It is showing that the world after Eden is still alive, but now every life is touched by death.
+> 🔥 **Callout:** Genesis 5 is not just counting years. It is showing that every human life still has value, but every human life is now touched by death.
 
 ## 🔗 Bible Connections
 
 Adam's death connects back to Genesis 3, where God said dust would return to dust.
 
-The image language connects back to Genesis 1, where humanity is made in God's image.
+The image language connects back to Genesis 1.
 
-The genealogy points forward to Luke 3, where Jesus' family line is traced back to Adam. That matters because Jesus enters the same human story marked by death, but He comes to defeat death from inside the human family.
+The family line points forward to Luke 3, where Jesus' genealogy goes back to Adam. Jesus enters the human family marked by death so He can defeat death from inside the story.
 
 ## 🙏 What This Teaches Us
 
-The Bible is honest about life.
+The Bible is honest about human life.
 
-It does not pretend people are worthless, and it does not pretend death is normal in the deepest sense. Human beings are valuable, but death is an enemy. Genesis 5 teaches both truths at the same time.
+People are valuable because God made them. Death is real because sin broke the world. Genesis 5 teaches both truths at the same time.
 
 # The Line Keeps Moving
 
@@ -130,69 +164,97 @@ It does not pretend people are worthless, and it does not pretend death is norma
 
 ## 🧭 What Is Happening Here?
 
-This section repeats the same pattern again and again.
+This section repeats the same rhythm again and again.
 
-Someone lives. Someone has children. More sons and daughters are born. Years pass. Then the person dies.
+👶 Someone becomes a father.
 
-The repetition is the teaching. Genesis wants the reader to feel the rhythm. Life continues, but death keeps interrupting it. Families grow, but every generation is still under the shadow of the fall.
+🏠 Sons and daughters are born.
 
-Seth's line matters because Genesis 4 ended with people beginning to call on the name of Yahweh. Cain's line showed violence and pride growing. Seth's line does not mean every person is perfect, but it is the family line Genesis follows toward Noah.
+⏳ Years pass.
 
-This part of the chapter can feel quiet. No battle happens. No miracle is described. But quiet does not mean unimportant. God is carrying the story forward through ordinary family history.
+⚰️ Then he died.
+
+### 👶 "Became The Father"
+
+The phrase "became the father" shows the family line continuing.
+
+This matters because Genesis 3 promised that the seed of the woman would one day crush the serpent. Genesis 5 keeps tracing the line of human life. The promise has not disappeared.
+
+### 🏠 "Sons And Daughters"
+
+Genesis only names certain people in the line, but it keeps reminding us there were sons and daughters.
+
+That means these were not empty names. These were households. There were families, daily work, meals, grief, worship, memory, and ordinary life happening between the big Bible moments.
+
+### ⏳ "All The Days"
+
+The phrase "all the days" gathers up a whole life into one sentence.
+
+Genesis is helping us feel time passing. These people lived long lives, but each life still had a boundary. Their days could be counted.
+
+### ⚰️ "Then He Died"
+
+The repeated ending is the point.
+
+Genesis wants the reader to hear death like a drumbeat. Seth died. Enosh died. Kenan died. Mahalalel died. Jared died. The curse is moving through the generations.
+
+### 🌱 Hope Still Moves
+
+Even though death repeats, life also continues.
+
+That is important. Sin brings death, but God is still preserving the human family. The line keeps moving toward Noah.
 
 ## 🧠 Words To Know
 
-### 👶 Became The Father
+### 👶 Fathered
 
-**Became the father** means the family line continues.
+**Fathered** means the family line continued through children.
 
-Genesis is not only telling us that people had children. It is showing that God's promise has not disappeared. Even after sin and death, life is still being preserved.
-
-### 🏠 Sons And Daughters
-
-**Sons and daughters** reminds us that these names represent whole households.
-
-The genealogy gives selected names, but behind those names were families, marriages, work, grief, memory, worship, and daily life.
+Genesis is tracing the family line that will lead to Noah.
 
 ### ⏳ Years
 
-The long **years** can sound strange to modern readers.
+**Years** matter because they show real time passing.
 
-The point is not only that people lived long lives. The point is that even the longest life still ends. Genesis keeps saying that death reaches everyone.
+The Bible places God's work inside history.
+
+### ⚰️ Died
+
+**Died** means the warning of Genesis 2 and 3 is now being seen in family history.
+
+Death is not natural in the deepest Bible sense. It is an enemy that entered through sin.
 
 ## 🗣️ Hebrew Word Study
 
 ### 👶 Yalad
 
-**Yalad** is the Hebrew word often behind "fathered" or "begat."
+**Yalad** is the Hebrew word often behind fathered, begat, or gave birth.
 
-It is a birth word. It reminds us that Genesis is tracing life from one generation to another. The world is damaged, but human life is still being multiplied.
+It reminds us that Genesis is tracing life from one generation to another.
 
 ### ⚰️ Mut
 
-**Mut** is the Hebrew word behind "died."
+**Mut** is the Hebrew word behind died.
 
-That word keeps returning in Genesis 5. The repetition is not accidental. It shows that God's warning in Eden was true.
+Genesis 5 repeats death because God's word in Eden was true.
 
 ## 🏺 Culture And History
 
 Family lines were one of the main ways ancient people understood identity.
 
-To know someone's family was to know their place in the story. It connected people to land, inheritance, responsibility, and memory.
-
-Genesis uses family lines to teach theology. The names show that sin did not stop human life, but death now touches every human life.
+To know someone's family was to know their place in the story. Genesis uses family lines to show that God works through real people, real homes, and real generations.
 
 ## 🔗 Bible Connections
 
-The repeated deaths in Genesis 5 prepare us for the Bible's bigger question: who can defeat death?
+Romans 5 says death came through Adam, but life comes through Christ.
 
-Romans 5 later says death came through Adam, but life comes through Christ. That means Genesis 5 is not just an old family record. It is part of the problem Jesus came to answer.
+That means Genesis 5 is part of the problem Jesus came to answer.
 
 ## 🙏 What This Teaches Us
 
 Ordinary faithfulness matters.
 
-Most of this section is not dramatic. It is family, time, birth, work, aging, and death. God still sees the quiet generations. God is still carrying His story forward when life feels repetitive.
+Most of this section is not dramatic. It is birth, family, time, aging, and death. God still sees the quiet generations.
 
 # Enoch Walked With God
 
@@ -210,389 +272,553 @@ Most of this section is not dramatic. It is family, time, birth, work, aging, an
 
 Enoch interrupts the pattern.
 
-By this point, the reader expects the same ending: then he died. But Enoch's section does not end that way. It says Enoch walked with God, and then God took him.
+🚶 Enoch walked with God.
 
-That phrase "walked with God" is beautiful. It does not mean Enoch floated above normal life. The text says he had sons and daughters. He lived in the real world. He had family responsibilities. He had daily life. But his life moved with God.
+🏠 Enoch still had sons and daughters.
 
-Enoch shows that the world is fallen, but fellowship with God is still possible. Death is real, but death is not stronger than God.
+⏳ Enoch lived three hundred sixty-five years.
+
+🙌 Enoch was not, because God took him.
+
+### 👶 "Became The Father Of Methuselah"
+
+Enoch's story begins like the others.
+
+He becomes a father. He has family responsibilities. He lives in the real world. This is important because walking with God does not mean escaping normal life. Enoch walked with God while being a husband, father, neighbor, and member of a broken world.
+
+### 🚶 "Enoch Walked With God"
+
+This is the main phrase.
+
+To walk with God means to live in close fellowship with Him. It means Enoch's life moved in God's direction. It does not mean Enoch was perfect or floating above everyone else. It means his life was marked by nearness, trust, and obedience.
+
+### 🏠 "Sons And Daughters"
+
+The text says Enoch had sons and daughters after Methuselah.
+
+That detail keeps Enoch grounded. His faith was not private fantasy. It happened in daily life. Family life, work, conversations, decisions, and responsibility became the place where he walked with God.
+
+### ⏳ "Three Hundred Sixty-Five Years"
+
+Enoch's years are shorter than many around him in Genesis 5.
+
+But the point is not that Enoch had the longest life. The point is that Enoch had a life with God. A long life without God is not better than a faithful life with God.
+
+### 🙌 "He Was Not, For God Took Him"
+
+This ending breaks the death pattern.
+
+Genesis does not say, then he died. It says God took him. Enoch becomes a sign that death is real, but death is not stronger than God. The chapter is full of graves, but Enoch's story opens a window of hope.
 
 ## 🧠 Words To Know
 
 ### 🚶 Walked
 
-**Walked** means a pattern of life.
+**Walked** means a way of life.
 
-It is not only one emotional moment. It pictures direction, closeness, trust, obedience, and daily fellowship.
+It describes daily direction, not one emotional moment.
 
-### 🤝 With God
+### 🙌 Took
 
-**With God** means Enoch's life was not lived apart from God.
+**Took** means God received Enoch to Himself.
 
-He did not simply know facts about God. He lived near God, listened to God, and moved in God's direction.
-
-### ✋ God Took Him
-
-**God took him** means Enoch's ending was different.
-
-Genesis does not explain every detail. It simply shows that Enoch belonged to God, and God had power over Enoch's life and death.
+The text is short, but it clearly shows God doing something different with Enoch.
 
 ## 🗣️ Hebrew Word Study
 
 ### 🚶 Halak
 
-**Halak** is the Hebrew word behind "walked."
+**Halak** is the Hebrew word often used for walk.
 
-It is used for literal walking, but also for the way a person lives. To walk with God is to live in step with Him.
+It can describe physical walking, but it also describes how someone lives.
 
-### ✋ Laqach
+### 🙌 Laqach
 
-**Laqach** can mean "took."
+**Laqach** means take.
 
-In Genesis 5, it shows God's action toward Enoch. Enoch is not lost. He is taken by God.
+In Genesis 5:24, God is the one who takes Enoch, showing divine action and care.
 
 ## 🏺 Culture And History
 
-In a genealogy full of death, Enoch's ending would stand out strongly.
+Ancient genealogies usually followed predictable patterns.
 
-Ancient listeners would hear the pattern break. The text is teaching hope by breaking the rhythm. The curse is real, but God is still able to keep someone close to Himself.
+Enoch's section breaks the pattern, so readers are supposed to notice. The break teaches that fellowship with God is possible even in a dying world.
+
+> 🔥 **Callout:** Enoch lived ordinary family life with extraordinary nearness to God.
 
 ## 🔗 Bible Connections
 
-Hebrews 11 mentions Enoch as a man of faith who pleased God.
+Hebrews 11 says Enoch was taken so that he would not see death and that he pleased God.
 
-Jude also remembers Enoch as someone connected with warning and judgment. That fits Genesis 5 because Enoch appears before the flood story, where judgment becomes a central theme.
+Jude also remembers Enoch as someone who spoke about judgment.
 
-Enoch also prepares us for Noah. Genesis 6 says Noah walked with God too.
+Enoch points forward to the hope that death will not have the final word.
 
 ## 🙏 What This Teaches Us
 
-You can walk with God in a dying world.
+Walking with God happens in real life.
 
-The culture around you does not have to decide your direction. Enoch lived in the same world as everyone else, but his life was marked by nearness to God.
-
-> ✨ **Big Thought:** Faith is not only what you believe in your mind. It is the direction your life keeps walking.
+You can walk with God in family responsibilities, work, waiting, grief, and ordinary days. Faith is not only for dramatic moments.
 
 # Noah Is Born Into A Tired World
 
 ## Genesis 5:25-32
 
-> 📖 **27** All the days of Methuselah were nine hundred sixty-nine years, then he died.
+> 📖 **25** Methuselah lived one hundred eighty-seven years, and became the father of Lamech.
 >
-> 📖 **28** Lamech lived one hundred eighty-two years, and became the father of a son,
+> 📖 **28** Lamech lived one hundred eighty-two years, and became the father of a son.
 >
-> 📖 **29** and he named him Noah, saying, "This same will comfort us in our work and in the toil of our hands, because of the ground which Yahweh has cursed."
+> 📖 **29** He named him Noah, saying, "This same will comfort us in our work and in the toil of our hands, caused by the ground which Yahweh has cursed."
 >
-> 📖 **32** Noah was five hundred years old, and Noah became the father of Shem, Ham, and Japheth.
+> 📖 **32** Noah was five hundred years old, then Noah became the father of Shem, Ham, and Japheth.
 
 ## 🧭 What Is Happening Here?
 
-Noah is introduced before the flood begins.
+Noah is born into a world that feels tired.
 
-His father Lamech names him with hope. The name Noah sounds connected to rest, comfort, or relief. Lamech is looking at a world full of toil and cursed ground, and he longs for comfort.
+🧓 Methuselah and Lamech continue the family line.
 
-That reaches back to Genesis 3. After Adam sinned, the ground was cursed, and work became painful. Generations later, people are still feeling the weight of that curse.
+😓 Lamech speaks about work, toil, and the cursed ground.
 
-Noah will not remove the curse completely. He is not the final Savior. But his life becomes a turning point. Through Noah, God will preserve life through judgment.
+🕊️ Noah's name is connected to comfort and rest.
 
-Genesis also names Noah's sons: Shem, Ham, and Japheth. That matters because the world after the flood will be traced through them.
+👨‍👦 Noah becomes the father of Shem, Ham, and Japheth.
+
+### 😓 "Our Work And The Toil Of Our Hands"
+
+Lamech is feeling the weight of Genesis 3.
+
+After Adam sinned, God said the ground would bring pain, thorns, sweat, and difficult labor. Lamech names that pain. Work itself is not bad, but work has become hard because the ground is cursed.
+
+### 🌾 "The Ground Which Yahweh Has Cursed"
+
+This phrase directly connects Noah's birth to Eden.
+
+Lamech knows the problem is bigger than one bad week. The world itself is under the effects of sin. The soil, work, bodies, and families are all touched by the fall.
+
+### 🕊️ "This Same Will Comfort Us"
+
+Lamech hopes Noah will bring comfort.
+
+Noah will not fully remove the curse, but his life will become a major turning point. Through Noah, God will preserve life through judgment.
+
+### 👨‍👦 "Shem, Ham, And Japheth"
+
+These three sons matter because the post-flood world will come through them.
+
+Genesis names them now because the story is preparing for the flood, the nations, and the promise line that will later move through Shem.
 
 ## 🧠 Words To Know
 
-### 🕊️ Noah
+### 🕊️ Comfort
 
-**Noah** is connected to the idea of rest or comfort.
+**Comfort** means relief, rest, or encouragement.
 
-His name carries hope in a tired world. Lamech is longing for relief from the hard life caused by the cursed ground.
+Noah's name is connected to the hope that God will bring relief to a tired world.
 
-### 🧱 Toil
+### 😓 Toil
 
-**Toil** means hard, painful labor.
+**Toil** means painful, exhausting work.
 
-This word matters because work itself was part of God's good creation, but after sin, work became frustrated, exhausting, and painful.
+It points back to the curse on the ground in Genesis 3.
 
-### 🌱 Cursed Ground
+### 🌾 Cursed Ground
 
-**Cursed ground** points back to Genesis 3.
+**Cursed ground** means creation is no longer experienced the way it was in Eden.
 
-The ground still produces food, but now it resists humanity with pain, sweat, thorns, and difficulty.
+Work is still meaningful, but it is now difficult.
 
 ## 🗣️ Hebrew Word Study
 
 ### 🕊️ Noach
 
-**Noach** is Noah's Hebrew name.
+**Noach** is Noah's name in Hebrew.
 
-It sounds like rest. Genesis often uses names to teach meaning, and Noah's name points toward the longing for relief.
+It is connected to rest. The sound of his name fits Lamech's hope for comfort.
 
 ### 😮‍💨 Nacham
 
-**Nacham** can carry the idea of comfort or consolation.
+**Nacham** can mean comfort or relent depending on context.
 
-Lamech hopes Noah will bring comfort in a world that has become heavy because of sin.
+Genesis uses wordplay around Noah's name to show that people are longing for relief.
 
 ## 🏺 Culture And History
 
-Names in Genesis often tell us what a family hopes, fears, or believes.
+Names often carried meaning in the ancient world.
 
-Noah's name is not random. It tells us the world is weary. People are living long lives, but they are not living easy lives. The curse affects work, land, family, and hope.
+Parents named children with hope, memory, grief, prayer, or expectation. Noah's name carries the longing of a tired generation.
+
+> 🔥 **Callout:** Noah's birth shows that people outside Eden are longing for rest they cannot create for themselves.
 
 ## 🔗 Bible Connections
 
-Noah gives temporary preservation, but Jesus gives the deeper rest.
+Noah's connection to rest points forward to bigger rest themes in Scripture.
 
-Jesus later says, "Come to me, all you who labor and are heavily burdened, and I will give you rest." Noah's name points to the longing. Jesus fulfills the deepest answer.
+Jesus later says, "Come to me... and I will give you rest." Noah gives temporary preservation, but Jesus gives deeper rest for the soul.
 
 ## 🙏 What This Teaches Us
 
 The Bible understands tired people.
 
-Lamech's words sound like someone who feels the weight of the world. Genesis does not mock that feeling. It shows that God is already moving toward mercy.
+Lamech's words sound like a person who knows life is heavy. God meets that tired world by preserving hope through Noah.
 
-# Corruption Fills The Earth
+# The Earth Becomes Corrupt
 
 ## Genesis 6:1-8
 
-> 📖 **5** Yahweh saw that the wickedness of man was great in the earth, and that every imagination of the thoughts of his heart was only evil continually.
+> 📖 **3** Yahweh said, "My Spirit will not strive with man forever, because he also is flesh; so his days will be one hundred twenty years."
+>
+> 📖 **5** Yahweh saw that the wickedness of man was great in the earth, and that every imagination of the thoughts of man's heart was continually only evil.
 >
 > 📖 **6** Yahweh was sorry that he had made man on the earth, and it grieved him in his heart.
 >
-> 📖 **7** Yahweh said, "I will destroy man whom I have created from the surface of the ground..."
+> 📖 **7** Yahweh said, "I will destroy man whom I have created from the surface of the ground."
 >
 > 📖 **8** But Noah found favor in Yahweh's eyes.
 
 ## 🧭 What Is Happening Here?
 
-Genesis 6 shows the world becoming deeply corrupt.
+Genesis 6 shows sin spreading deeply.
 
-There are difficult phrases in this section, including "God's sons," "men's daughters," and the Nephilim. Bible readers have understood those details in different ways. Some think the passage describes rebellious heavenly beings. Some think it describes powerful rulers. Some think it describes the line of Seth mixing with the line of Cain.
+🌍 Wickedness becomes great in the earth.
 
-But Genesis does not let us get lost in curiosity. The main point is clear: human wickedness has become great.
+🧠 Human thoughts are continually bent toward evil.
 
-The problem is not only behavior. Verse 5 says every imagination of the thoughts of the human heart was only evil continually. Sin has moved inward. It has shaped desires, thoughts, imagination, planning, and intention.
+💔 Yahweh is grieved in His heart.
 
-Then comes one of the most emotional lines in early Genesis. Yahweh is grieved in His heart. God is not cold toward evil. Violence hurts creation, and it grieves the Creator.
+⚖️ Judgment is announced.
 
-But verse 8 breaks through like light in a dark room: Noah found favor in Yahweh's eyes.
+✨ Noah finds favor in Yahweh's eyes.
+
+### 🌍 "Wickedness Of Man Was Great In The Earth"
+
+Sin is no longer only one hidden act.
+
+It has spread through human society. Genesis says wickedness was great, meaning evil had grown strong and public. The world God made good is now filled with human rebellion.
+
+### 🧠 "Every Imagination Of The Thoughts"
+
+This phrase moves from actions to the inner life.
+
+God sees more than behavior. He sees imagination, thoughts, motives, and desires. The problem is not only what people do with their hands. It is what is happening in the heart.
+
+### 🔁 "Continually Only Evil"
+
+The wording is intense.
+
+Continually means ongoing. Only evil means the direction of the heart is deeply corrupted. Genesis is showing total moral collapse.
+
+### 💔 "It Grieved Him In His Heart"
+
+God is not cold about human evil.
+
+Yahweh grieves. This shows that sin matters personally to God. Evil wounds the world God loves. Judgment comes from a holy God who deeply cares about what sin destroys.
+
+### ✨ "But Noah Found Favor"
+
+This is the turn in the story.
+
+The world is corrupt, but grace is still present. Noah finding favor does not mean Noah saved himself. Favor means grace. God is about to preserve life through Noah.
 
 ## 🧠 Words To Know
 
+### 🌍 Wickedness
+
+**Wickedness** means evil that is active, strong, and opposed to God.
+
+Genesis says it became great in the earth.
+
 ### 🧠 Imagination
 
-**Imagination** means the inner forming of thoughts and desires.
+**Imagination** points to the plans and thoughts forming inside a person.
 
-Genesis is saying sin had reached deep into the human heart. People were not only making mistakes. Their inner world was bent away from God.
-
-### 🩸 Wickedness
-
-**Wickedness** means evil that goes against God's good design.
-
-In Genesis 6, wickedness is not small. It is great in the earth.
-
-### 💔 Grieved
-
-**Grieved** means deep sorrow.
-
-This matters because God's judgment is not emotionless cruelty. God sees evil clearly and responds with holy sorrow.
+God sees the heart, not just outside behavior.
 
 ### ✨ Favor
 
-**Favor** means grace.
+**Favor** means grace or kindness shown by God.
 
-Noah finds favor before the ark is built. Grace comes before the obedience that follows.
+Noah's hope begins with God's favor.
 
 ## 🗣️ Hebrew Word Study
 
+### 💔 Ra'ah
+
+**Ra'ah** is connected to evil or wickedness.
+
+In Genesis 6, the word shows moral evil spreading through humanity.
+
 ### ✨ Chen
 
-**Chen** is the Hebrew word behind "favor."
+**Chen** is the Hebrew word often translated favor or grace.
 
-It can mean grace, favor, or acceptance. Noah's story is not first about Noah being impressive. It begins with Noah receiving favor from God.
-
-### 💔 Nacham
-
-**Nacham** can also describe grief, sorrow, or being moved deeply.
-
-In Genesis 6 it shows that God is personally grieved by what humanity has become.
+Noah found chen in Yahweh's eyes, meaning God showed him gracious favor.
 
 ## 🏺 Culture And History
 
-Ancient flood stories existed in the surrounding world, but Genesis gives the flood a moral reason.
+Ancient flood stories often blame humans for being noisy or annoying.
 
-The flood does not happen because gods are annoyed by noisy humans. Genesis says violence and corruption fill the earth. The flood is connected to justice.
+Genesis is different. The problem is moral evil. God judges because violence and corruption have filled the world.
+
+> 🔥 **Callout:** Genesis 6 teaches that God sees both public evil and hidden heart corruption.
 
 ## 🔗 Bible Connections
 
-Jesus later compares the days of Noah to a world that is spiritually unaware before judgment.
+Jesus later compares the days of Noah to a world unprepared for judgment.
 
-Peter also uses Noah's flood as a serious warning and a picture of salvation through judgment. Noah's story becomes a pattern: judgment is real, but God provides a way of rescue.
+Romans 3 also says sin is a heart-deep problem. Humanity needs more than better circumstances. Humanity needs grace.
 
 ## 🙏 What This Teaches Us
 
-God sees what corruption does.
+God is patient, but He is not passive.
 
-He sees violence. He sees hidden motives. He sees the pain sin creates. But He also sees Noah. Grace can still find a person in a dark generation.
+He sees evil. He grieves over evil. He judges evil. But He also gives grace.
 
-# Noah Walked With God
+# Noah Walks With God
 
 ## Genesis 6:9-13
 
-> 📖 **9** Noah was a righteous man, blameless among the people of his time. Noah walked with God.
+> 📖 **9** This is the history of the generations of Noah. Noah was a righteous man, blameless among the people of his time. Noah walked with God.
 >
 > 📖 **11** The earth was corrupt before God, and the earth was filled with violence.
 >
 > 📖 **12** God saw the earth, and saw that it was corrupt, for all flesh had corrupted their way on the earth.
 >
-> 📖 **13** God said to Noah, "The end of all flesh has come before me, for the earth is filled with violence through them."
+> 📖 **13** God said to Noah, "The end of all flesh has come before me, for the earth is filled with violence through them. Behold, I will destroy them with the earth."
 
 ## 🧭 What Is Happening Here?
 
-Noah is described differently from his generation.
+Genesis now focuses on Noah's character and Noah's world.
 
-The earth is corrupt, but Noah walks with God. The earth is filled with violence, but Noah is called righteous and blameless among the people of his time.
+✅ Noah is called righteous.
 
-That does not mean Noah is sinless. Later Genesis will show Noah's weakness too. But compared to his generation, Noah's life is marked by faith, integrity, and obedience.
+🧼 Noah is called blameless among his generation.
 
-The phrase "walked with God" connects Noah to Enoch. Enoch walked with God in a chapter full of death. Noah walks with God in a world full of violence.
+🚶 Noah walked with God.
 
-The problem in Genesis 6 is public and social. Sin is not only private thoughts. It has filled the earth with violence. The murder that began with Cain has spread until the whole world is unsafe.
+💔 The earth was filled with violence.
+
+⚖️ God announces judgment.
+
+### ✅ "Noah Was A Righteous Man"
+
+Righteous means Noah's life was rightly ordered before God.
+
+This does not mean Noah was sinless. The Bible later shows Noah's weakness. But compared to his generation, Noah's life was turned toward God.
+
+### 🧼 "Blameless Among The People Of His Time"
+
+Blameless means whole, sincere, or complete in devotion.
+
+Noah lived in a corrupt generation, but he was not controlled by the corruption around him. He stood out.
+
+### 🚶 "Noah Walked With God"
+
+This phrase connects Noah to Enoch.
+
+Noah's faith was not only belief in his mind. It shaped his daily walk. He lived with God in a world moving away from God.
+
+### 💔 "Filled With Violence"
+
+Violence is the visible fruit of sin.
+
+Cain killed Abel in Genesis 4. Lamech bragged about violence. Now the earth is filled with violence. Sin has grown from one family murder into a world condition.
+
+### ⚖️ "The End Of All Flesh Has Come Before Me"
+
+God tells Noah judgment is coming.
+
+This shows that the flood is not random disaster. It is divine judgment against a world corrupted by violence.
 
 ## 🧠 Words To Know
 
-### ⚖️ Righteous
+### ✅ Righteous
 
-**Righteous** means aligned with what is right before God.
+**Righteous** means living in a way that is right before God.
 
-Noah's righteousness is shown by trust and obedience. He listens when the world around him ignores God.
+Noah is not perfect, but he is faithful.
 
 ### 🧼 Blameless
 
-**Blameless** means whole, complete, or marked by integrity.
+**Blameless** means whole or sincere.
 
-It does not mean Noah never sinned. It means his life was not characterized by the corruption around him.
+It points to Noah's integrity among his generation.
 
-### 🩸 Violence
+### 💔 Violence
 
-**Violence** means more than anger.
+**Violence** means harm, cruelty, and bloodshed.
 
-It points to harm, bloodshed, oppression, and the breakdown of human life together. Genesis is showing sin becoming a society.
+Genesis says the earth was filled with it.
 
 ## 🗣️ Hebrew Word Study
 
-### ⚖️ Tsaddiq
+### ✅ Tsaddiq
 
-**Tsaddiq** is the Hebrew word behind "righteous."
+**Tsaddiq** is the Hebrew word behind righteous.
 
-It describes someone who is in the right, someone whose life is shaped by faithfulness and justice.
+It describes someone who lives rightly in relationship to God and others.
 
-### 🩸 Hamas
+### 🧼 Tamim
 
-**Hamas** is the Hebrew word often translated "violence."
+**Tamim** means blameless, whole, or complete.
 
-It means violence, wrong, cruelty, or injustice. Genesis says the earth was filled with it.
+It does not mean Noah had no sin. It means his life had integrity before God.
+
+### 💔 Hamas
+
+**Hamas** is the Hebrew word translated violence.
+
+It describes destructive wrongdoing, oppression, and harm.
 
 ## 🏺 Culture And History
 
-In ancient communities, violence threatened the survival of everyone.
+Noah's righteousness is described against the background of his generation.
 
-When violence filled the earth, it meant families, land, work, worship, and future generations were all being damaged. Genesis describes a world where human strength is being used to destroy rather than protect.
+Ancient readers would understand the pressure of belonging to a group. Noah's faithfulness means he did not simply follow the moral direction of his culture.
+
+> 🔥 **Callout:** Noah shows that one person can walk with God even when the world around them is corrupt.
 
 ## 🔗 Bible Connections
 
-Noah walking with God points forward to the Bible's call for faithful people to live differently from their generation.
+Hebrews 11 says Noah acted by faith when warned about things not yet seen.
 
-Daniel does this in Babylon. Joseph does this in Egypt. The church is called to do this in the world. Faithfulness often means walking with God when the crowd is walking somewhere else.
+Peter later calls Noah a preacher of righteousness.
+
+Jesus uses Noah's days as a warning about being spiritually asleep before judgment.
 
 ## 🙏 What This Teaches Us
 
-You do not have to be shaped by the corruption around you.
+Faithfulness can be lonely, but it is possible.
 
-Noah's world was dark, but Noah still walked with God. The Bible never says that obedience is easy. It shows that obedience is possible by grace.
+Noah did not need the whole world to agree with him in order to obey God.
 
-# God Commands The Ark
+# God Tells Noah To Build
 
 ## Genesis 6:14-22
 
 > 📖 **14** Make a ship of gopher wood. You shall make rooms in the ship, and shall seal it inside and outside with pitch.
 >
-> 📖 **15** This is how you shall make it. The length of the ship will be three hundred cubits, the breadth of it fifty cubits, and the height of it thirty cubits.
+> 📖 **15** This is how you shall make it. The length of the ship will be three hundred cubits, its width fifty cubits, and its height thirty cubits.
 >
 > 📖 **18** But I will establish my covenant with you. You shall come into the ship, you, your sons, your wife, and your sons' wives with you.
 >
-> 📖 **22** Thus Noah did. According to all that God commanded him, so he did.
+> 📖 **19** Of every living thing of all flesh, you shall bring two of every sort into the ship, to keep them alive with you.
+>
+> 📖 **22** Thus Noah did. He did all that God commanded him.
 
 ## 🧭 What Is Happening Here?
 
-God gives Noah detailed instructions.
+God gives Noah a rescue plan with details.
 
-The ark is not Noah's clever idea. It is God's commanded refuge. God tells Noah what to build, what material to use, how large it should be, how to seal it, where the door belongs, how many levels it should have, and who will enter it.
+🛠️ Noah must make a ship.
 
-Noah's faith becomes practical. Faith is not only feelings. Faith becomes wood, measurements, labor, planning, food storage, and obedience over time.
+📏 God gives measurements.
 
-The ark is massive. A cubit was roughly the length from the elbow to the fingertip. The exact measurement can vary, but the point is clear: this is not a tiny children's story boat. It is a huge vessel of preservation.
+🧴 The ship must be sealed with pitch.
 
-Then God says He will establish His covenant with Noah. Before the flood comes, God speaks covenant. Before judgment rises, God promises preservation.
+🤝 God promises covenant.
 
-Genesis 6 ends with Noah doing all that God commanded.
+🐾 Animals will be kept alive.
+
+✅ Noah does all God commanded.
+
+### 🛠️ "Make A Ship"
+
+God does not only tell Noah judgment is coming.
+
+God gives Noah a concrete act of obedience. Noah's faith will take shape in wood, rooms, measurements, pitch, labor, and time.
+
+### 🧴 "Seal It Inside And Outside With Pitch"
+
+The pitch made the ship waterproof.
+
+This detail shows that God's rescue is not vague. The ship must actually preserve life through water. God cares about the practical details of salvation.
+
+### 📏 "This Is How You Shall Make It"
+
+God gives dimensions.
+
+Noah does not invent his own rescue plan. He receives God's instructions and obeys them. The ship is God's provided refuge, built according to God's word.
+
+### 🤝 "I Will Establish My Covenant With You"
+
+Covenant is the promise at the center of the instructions.
+
+God is not only saving Noah from water. God is binding Himself to preserve Noah, his family, and the living creatures with him.
+
+### 🐾 "To Keep Them Alive With You"
+
+The ship is about preserving life.
+
+Judgment is coming, but God's purpose is not the end of creation. God preserves animals and humans so life can continue.
+
+### ✅ "Noah Did All"
+
+This is Noah's obedience.
+
+The verse does not say Noah argued, delayed, redesigned the ship, or waited until rain started. Noah did all that God commanded.
 
 ## 🧠 Words To Know
 
 ### 🛠️ Ship
 
-The WEB uses **ship** where many translations say ark.
+**Ship** is the rescue vessel God tells Noah to build.
 
-This word points to a large vessel made for preservation. It is not built for decoration. It is built to carry life through judgment.
+It becomes the place where life is preserved through judgment.
 
-### 🌲 Gopher Wood
+### 🧴 Pitch
 
-**Gopher wood** is the material God names.
+**Pitch** was a sealing material.
 
-We do not know with certainty what exact wood this was. The point is that Noah is given specific instructions, and obedience includes details.
-
-### 🧱 Pitch
-
-**Pitch** was used to seal the ship inside and outside.
-
-It helped make the vessel waterproof. Rescue required God's command and Noah's careful obedience.
+It kept water out and helped the ship survive the flood.
 
 ### 🤝 Covenant
 
-**Covenant** means a serious promise or binding relationship.
+**Covenant** is a serious promise or relationship commitment.
 
-God's covenant word appears before the flood, showing that judgment will not erase mercy.
+God promises to establish His covenant with Noah.
 
 ## 🗣️ Hebrew Word Study
 
-### 🛶 Tevah
+### 🛠️ Tevah
 
-**Tevah** is the Hebrew word behind ark or ship here.
+**Tevah** is the Hebrew word used for Noah's ship.
 
-It is also used for the basket that carries baby Moses in Exodus. In both stories, a small place of refuge carries life through waters of danger.
+The same word is used later for the basket that carries baby Moses on the water. Both are small places of rescue through water.
+
+### 🧴 Kaphar
+
+**Kaphar** is connected to covering or sealing.
+
+The pitch covers the ship so water cannot destroy what is inside.
 
 ### 🤝 Berit
 
-**Berit** is the Hebrew word for covenant.
+**Berit** means covenant.
 
-Genesis 6 is the first time this covenant word appears in the Bible. God binds Noah's future to His promise before the storm begins.
+Noah's rescue is tied to God's promise, not just Noah's skill.
 
 ## 🏺 Culture And History
 
-Ancient boats were not built casually.
+The ship was not a normal sailing vessel for travel or trade.
 
-Large construction required time, skill, planning, and endurance. Noah's obedience likely looked strange before the flood was visible. That is part of the point. Noah acts because God spoke, not because the danger already looks obvious to everyone.
+It was a floating refuge. The point was not steering to a destination. The point was preservation through judgment.
+
+> 🔥 **Callout:** Faith is not only feeling. For Noah, faith looked like obedient work before the rain came.
 
 ## 🔗 Bible Connections
 
-The ark becomes a picture of refuge through judgment.
+Noah's ship points forward to Moses' basket, where another life is preserved through water.
 
-Later, Israel passes through the Red Sea while Egypt is judged. Jonah survives in the deep by God's mercy. In the New Testament, Peter connects Noah's flood with salvation and baptism imagery.
+It also points to salvation in Christ, because God provides the refuge His people need.
 
 ## 🙏 What This Teaches Us
 
-Faith obeys before proof is visible.
+Obedience often becomes practical.
 
-Noah builds before rain falls. He prepares before the crisis arrives. He trusts God's word more than the world's normal routine.
+Noah trusted God with details, labor, waiting, and preparation.
 
-# Come Into The Ark
+# Noah Enters The Ship
 
 ## Genesis 7:1-10
 
@@ -602,644 +828,462 @@ Noah builds before rain falls. He prepares before the crisis arrives. He trusts 
 >
 > 📖 **5** Noah did everything that Yahweh commanded him.
 >
-> 📖 **10** It happened after the seven days, that the waters of the flood came on the earth.
+> 📖 **7** Noah went into the ship with his sons, his wife, and his sons' wives, because of the floodwaters.
+>
+> 📖 **10** After the seven days, the floodwaters came on the earth.
 
 ## 🧭 What Is Happening Here?
 
-God calls Noah into the ship.
+God calls Noah into the ship before the waters come.
 
-That word "come" feels personal. God is not only telling Noah to survive. He is inviting Noah into the place of rescue He provided.
+🚪 Yahweh says, "Come."
 
-Noah enters with his household. His obedience affects more than himself. His faithfulness becomes shelter for his family.
+🏠 Noah's household enters with him.
 
-The animals also enter according to God's command. Clean and unclean animals are mentioned before the law of Moses, which can surprise readers. It shows that worship categories existed in some form before Sinai. Clean animals will matter after the flood because Noah will offer sacrifice.
+⏳ There are seven days before the rain.
 
-Then Noah waits seven days before the waters come. That is a powerful detail. He is inside the ark before the flood begins. Faith often includes waiting in obedience before anything changes outside.
+🌧️ The floodwaters come.
+
+✅ Noah obeys again.
+
+### 🚪 "Come... Into The Ship"
+
+God does not merely say, "Go."
+
+He says, "Come." That word feels personal. God is calling Noah into the place of rescue. The ship is not Noah's clever escape. It is the refuge God provides.
+
+### 🏠 "All Of Your Household"
+
+Noah's family enters with him.
+
+The rescue includes Noah's sons, wife, and sons' wives. God is preserving a family line through judgment.
+
+### ✅ "I Have Seen Your Righteousness"
+
+God sees Noah's life.
+
+Noah's righteousness is visible before God even when the generation around him is corrupt. Faithfulness may feel unnoticed by people, but it is seen by God.
+
+### ⏳ "In Seven Days"
+
+There is a final waiting period.
+
+Judgment is announced, but it does not arrive instantly. The seven days create a solemn pause before the flood.
+
+### 🌧️ "Forty Days And Forty Nights"
+
+Forty becomes an important number in Scripture.
+
+Here it marks the period of rain and judgment. Later, Israel will be tested forty years, and Jesus will be tested forty days.
 
 ## 🧠 Words To Know
 
 ### 🚪 Come
 
-**Come** is God's invitation into rescue.
+**Come** is God's invitation into the place of rescue.
 
-The ark is not only a construction project. It becomes the place where Noah's household is sheltered by God's command.
+It shows God's personal care for Noah.
 
-### 🧼 Clean And Unclean
+### 🏠 Household
 
-**Clean** and **unclean** describe categories of animals.
+**Household** means Noah's family.
 
-In later Scripture, clean animals are connected to sacrifice and worship. Genesis hints at worship before the law of Moses is formally given.
+The flood story is not only about one man. It is about preserving a family through whom humanity will continue.
 
-### 🌧️ Forty Days
+### 🌧️ Floodwaters
 
-**Forty days** is a period of testing, judgment, or preparation in many Bible stories.
+**Floodwaters** are the waters of judgment.
 
-Moses, Israel, Elijah, and Jesus all have important forty-day or forty-year moments. Here the forty days mark the flood's rain.
+They destroy outside the ship, but lift and carry the ship.
 
 ## 🗣️ Hebrew Word Study
 
 ### 🚪 Bo
 
-**Bo** is the Hebrew word behind "come" or "go in."
+**Bo** means come or enter.
 
-In Genesis 7, it shows movement into the ark. God is calling Noah into the refuge before judgment falls.
+Yahweh calls Noah to enter the ship before judgment falls.
 
-### 🧼 Tahor
+### 🌧️ Mabbul
 
-**Tahor** is the Hebrew word behind "clean."
+**Mabbul** is the Hebrew word for flood in the Noah story.
 
-It often relates to purity and fitness for worship. That matters because Noah's story will not end only with survival; it will move toward sacrifice.
+It refers to this great flood judgment.
 
 ## 🏺 Culture And History
 
-Ancient people understood households as connected units.
+Households mattered deeply in the ancient world.
 
-Noah's obedience does not stay private. His family enters with him. Genesis often shows that one person's faithfulness can bless others, while one person's sin can wound others.
+Family was identity, survival, work, inheritance, and future. Saving Noah's household means preserving human future through one family.
+
+> 🔥 **Callout:** God calls Noah into rescue before the waters rise.
 
 ## 🔗 Bible Connections
 
-The ark door points forward to the Bible's larger rescue theme.
+The invitation to enter the ship connects to later rescue language.
 
-God provides a way of salvation, but people must enter by faith. Jesus later speaks of Himself as the door. The connection is not one-to-one in every detail, but the pattern is clear: rescue is found where God provides it.
+Israel enters houses marked by Passover blood. Believers are described as being in Christ. God provides a place of safety before judgment.
 
 ## 🙏 What This Teaches Us
 
-Obedience can feel quiet before it feels dramatic.
+God's warnings are mercy.
 
-Noah enters. Then he waits. The world outside may look the same for seven days, but Noah is already inside God's place of protection.
+He tells Noah what is coming and provides the refuge before the flood begins.
 
 # The Flood Begins
 
 ## Genesis 7:11-16
 
-> 📖 **11** ...all the fountains of the great deep were burst open, and the sky's windows were opened.
+> 📖 **11** In the six hundredth year of Noah's life, in the second month, on the seventeenth day of the month, on that day all the fountains of the great deep burst open, and the sky's windows were opened.
 >
-> 📖 **12** The rain was on the earth forty days and forty nights.
+> 📖 **12** It rained on the earth forty days and forty nights.
 >
-> 📖 **15** They went to Noah into the ship, by pairs of all flesh with the breath of life in them.
+> 📖 **13** In the same day Noah, Shem, Ham, and Japheth, the sons of Noah, Noah's wife, and the three wives of his sons with them, entered into the ship.
 >
-> 📖 **16** Those who went in, went in male and female of all flesh, as God commanded him; and Yahweh shut him in.
+> 📖 **15** Pairs from all flesh with the breath of life in them went into the ship to Noah.
+>
+> 📖 **16** Those who went in, went in male and female of all flesh, as God commanded him; then Yahweh shut him in.
 
 ## 🧭 What Is Happening Here?
 
-The flood begins.
+The flood begins with force from above and below.
 
-Genesis says water comes from below and above. The fountains of the deep burst open, and the windows of heaven open. This is not ordinary rain. It is creation order being overwhelmed.
+📅 Genesis gives an exact date.
 
-Day 1 showed God separating waters and making ordered space where life could flourish. Day 3 shows waters crossing boundaries in judgment because the world has become morally corrupt.
+🌊 The fountains of the deep burst open.
 
-The animals enter with Noah. Life is being preserved inside the ship while judgment begins outside.
+🌧️ The windows of the sky open.
 
-Then Genesis gives one of the most powerful lines in the story: Yahweh shut him in.
+🐾 Living creatures enter the ship.
 
-That line is tender and terrifying. Tender because God secures Noah inside the place of rescue. Terrifying because the door is now closed. The time for warning and building is over.
+🚪 Yahweh shuts Noah in.
+
+### 📅 "On That Day"
+
+Genesis gives a specific time marker.
+
+This makes the flood feel like a real event in Noah's life, not a vague idea. Judgment comes on a day God has appointed.
+
+### 🌊 "Fountains Of The Great Deep"
+
+The deep waters below burst open.
+
+This reverses the order of creation. In Genesis 1, God ordered and separated the waters. In Genesis 7, the waters break boundaries because judgment has come.
+
+### 🌧️ "The Sky's Windows Were Opened"
+
+Water comes from above too.
+
+The whole ordered world is being overwhelmed. The flood is not ordinary rain. It is creation being undone under judgment.
+
+### 🐾 "Breath Of Life"
+
+The animals that enter have the breath of life.
+
+God is preserving living creatures. Even in judgment, His purpose includes mercy toward creation.
+
+### 🚪 "Yahweh Shut Him In"
+
+This is one of the most powerful lines in the flood story.
+
+Noah built the ship, but Yahweh secures the door. Noah is not finally kept safe by his own hand. God closes him into the place of rescue.
 
 ## 🧠 Words To Know
 
-### 🌊 Fountains Of The Great Deep
+### 🌊 Deep
 
-This phrase points to waters below the earth bursting open.
+**Deep** refers to the great waters.
 
-Genesis wants the flood to feel cosmic. The waters are not a small local inconvenience in the story's presentation. They are overwhelming.
+In Genesis 7, the deep breaks open as judgment begins.
 
-### 🪟 Windows Of Heaven
+### 🌧️ Windows
 
-**Windows of heaven** pictures water pouring from above.
+**Windows** is picture language for water pouring from the sky.
 
-It is poetic language for the sky opening and rain falling in judgment.
+It helps the reader feel the flood coming from above.
 
-### 🚪 Shut Him In
+### 🚪 Shut In
 
-**Shut him in** means Yahweh Himself closes Noah inside the ship.
+**Shut in** means Yahweh closed Noah inside the refuge.
 
-Noah's safety is not finally in his own hand. God secures the refuge.
+God Himself secures the rescue.
 
 ## 🗣️ Hebrew Word Study
 
 ### 🌊 Tehom
 
-**Tehom** is the Hebrew word behind "deep."
+**Tehom** is the Hebrew word behind deep.
 
-It appeared in Genesis 1 when darkness was over the surface of the deep. Now the deep is part of the flood judgment. The waters God ordered in creation are involved in judgment.
+It also appears in Genesis 1:2, where darkness was over the deep.
 
 ### 🚪 Sagar
 
-**Sagar** means to shut or close.
+**Sagar** means shut or close.
 
-Yahweh shutting Noah in shows divine protection. God is personally involved in securing the rescue.
+In Genesis 7:16, Yahweh shuts Noah in, showing divine protection.
 
 ## 🏺 Culture And History
 
-Ancient people often feared deep waters because waters were powerful, dangerous, and uncontrollable.
+Ancient readers often feared uncontrolled waters.
 
-Genesis agrees that waters are powerful, but it does not treat them as gods. The waters answer to Yahweh.
+Genesis shows that the waters are not gods. They are under Yahweh's authority. They rise in judgment and later recede by His command.
+
+> 🔥 **Callout:** The safest place in the flood is the place God closes.
 
 ## 🔗 Bible Connections
 
-The flood's waters connect to creation language.
+The undoing of creation here prepares for the new creation language in Genesis 8.
 
-Genesis 1 shows waters separated so life can flourish. Genesis 7 shows waters overwhelming a corrupt world. Later, the Red Sea waters become both judgment for Egypt and rescue for Israel.
+The door closed by God points forward to the seriousness of judgment and the security of God's rescue.
 
 ## 🙏 What This Teaches Us
 
-The safest place is where God tells you to be.
+God's protection is stronger than the storm.
 
-Noah is not safe because the world is safe. He is safe because God has provided and secured refuge.
+The waters are terrifying, but Yahweh is the one who shuts Noah in.
 
-# The Waters Prevail
+# The Waters Rise
 
 ## Genesis 7:17-24
 
 > 📖 **17** The flood was forty days on the earth. The waters increased, and lifted up the ship, and it was lifted up above the earth.
 >
-> 📖 **18** The waters prevailed, and increased greatly on the earth; and the ship floated on the surface of the waters.
+> 📖 **18** The waters rose, and increased greatly on the earth; and the ship floated on the surface of the waters.
 >
-> 📖 **21** All flesh died that moved on the earth...
+> 📖 **19** The waters rose very high on the earth. All the high mountains that were under the whole sky were covered.
 >
-> 📖 **23** ...Noah only was left, and those who were with him in the ship.
+> 📖 **21** All flesh died that moved on the earth, including birds, livestock, animals, every creeping thing that creeps on the earth, and every man.
 >
-> 📖 **24** The waters prevailed on the earth one hundred fifty days.
+> 📖 **23** Every living thing was destroyed that was on the surface of the ground... Only Noah was left, and those who were with him in the ship.
+>
+> 📖 **24** The waters flooded the earth one hundred fifty days.
 
 ## 🧭 What Is Happening Here?
 
-The waters rise.
+Genesis 7 ends with the waters rising over everything.
 
-Genesis repeats that the waters increased and prevailed. The repetition makes the judgment feel heavy. This is not a cute boat scene. This is the undoing of a violent world.
+🌊 The waters increase.
 
-Outside the ship, the waters destroy. Inside the ship, the waters lift. That contrast matters. The same flood that judges the world carries the refuge God provided.
+🛟 The ship is lifted up.
 
-Genesis 7 is serious because sin is serious. The Bible does not treat corruption and violence as small things. God made a good world, and violence filled it. Judgment comes because evil matters.
+⛰️ The mountains are covered.
 
-But the ship remains. Noah remains. His family remains. The animals inside remain. God preserves life through judgment.
+⚰️ Life outside the ship dies.
+
+🛡️ Noah and those with him remain.
+
+### 🌊 "The Waters Increased"
+
+The repeated language makes the flood feel overwhelming.
+
+The waters increased, rose, increased greatly, and rose very high. Genesis wants us to feel the seriousness of judgment.
+
+### 🛟 "Lifted Up The Ship"
+
+The same waters that judge the world lift the ship.
+
+This is important. The flood is destruction outside the refuge, but inside the refuge the waters carry Noah. God's provided rescue changes what the waters mean for those inside.
+
+### ⛰️ "All The High Mountains... Were Covered"
+
+The flood reaches even the highest places.
+
+Mountains often feel strong, ancient, and safe. Genesis says even they are covered. No human hiding place is enough.
+
+### ⚰️ "All Flesh Died"
+
+This is the heavy truth of the passage.
+
+Genesis does not soften judgment. Sin brings death. Violence and corruption have real consequences.
+
+### 🛡️ "Only Noah Was Left"
+
+Noah is not alone because he is impressive.
+
+He is left because God provided refuge and Noah entered it by faith. Those with him in the ship are preserved.
+
+### ⏳ "One Hundred Fifty Days"
+
+The flood does not end quickly.
+
+Noah's rescue includes a long season of waiting. Being saved does not mean every uncomfortable part is instantly over.
 
 ## 🧠 Words To Know
 
-### 🌊 Prevailed
+### 🌊 Increased
 
-**Prevailed** means the waters became strong, rose, and overwhelmed.
+**Increased** shows the flood growing stronger.
 
-Genesis repeats this word to show the power and completeness of the flood.
+The repeated phrase builds the weight of the scene.
 
-### 🛶 Floated
+### 🛟 Lifted
 
-**Floated** shows the ship being carried by the waters.
+**Lifted** means the ship is carried above the waters.
 
-The ship does not stop the judgment. It carries life through judgment.
+What destroys outside becomes the thing that carries the refuge.
 
-### 🫁 Breath Of Life
+### ⚰️ All Flesh
 
-**Breath of life** points back to creation.
+**All flesh** refers to living creatures on the land.
 
-God breathed life into humanity in Genesis 2. Genesis 7 shows how serious judgment is when life made by God is destroyed because of corruption.
+Genesis is showing the wide reach of judgment.
 
 ## 🗣️ Hebrew Word Study
 
-### 💪 Gabar
+### 🌊 Mayim
 
-**Gabar** is the Hebrew word behind "prevailed."
+**Mayim** means waters.
 
-It means to be strong, mighty, or overpowering. In Genesis 7, the waters overpower the earth.
+In Genesis 7, the waters dominate the scene, but they still remain under God's rule.
 
-### 🫁 Ruach
+### 🛟 Rum
 
-**Ruach** can mean spirit, breath, or wind.
+**Rum** can mean to rise, lift, or be high.
 
-In flood language, breath reminds us that life belongs to God. The loss of breath is the loss of creaturely life.
+The ship is lifted up above the earth, showing preservation through judgment.
 
 ## 🏺 Culture And History
 
-Flood stories were known in the ancient world, but Genesis frames the flood around God's moral judgment and covenant mercy.
+Floods were terrifying in the ancient world.
 
-The story is not about random disaster. It is about a Creator responding to a creation filled with violence, while preserving a remnant through His command.
+They destroyed homes, fields, animals, boundaries, and cities. Genesis uses flood imagery to show total judgment, but also total dependence on God's rescue.
+
+> 🔥 **Callout:** Outside the ship, the waters judge. Inside the ship, the waters carry.
 
 ## 🔗 Bible Connections
 
-Peter later says God preserved Noah, a preacher of righteousness, with seven others.
+Peter connects Noah's flood to baptism, where water becomes a sign connected to judgment, rescue, and new life.
 
-That means the New Testament remembers Noah not as a cartoon figure, but as a witness of faith in a world moving toward judgment.
+The ship points forward to Christ as the true refuge. Safety is not found in being strong enough to survive judgment. Safety is found in being inside the rescue God provides.
 
 ## 🙏 What This Teaches Us
 
-Judgment and mercy can appear in the same story.
+Genesis 7 is serious, but not hopeless.
 
-Genesis 7 is heavy, but not hopeless. The waters prevail, but they do not erase God's promise. The ship still floats because God is preserving life for the next chapter.
-
-# Deeper Study Layer
-
-## Reading Genesis 5-7 As One Connected Story
-
-Genesis 5, 6, and 7 should not be read as three disconnected parts.
-
-Genesis 5 gives the family line. Genesis 6 gives the moral condition of the world. Genesis 7 gives the flood judgment beginning. Together, they show a movement from death, to corruption, to judgment, to preservation.
-
-That movement matters because the Bible is teaching us how sin grows. Sin does not stay small. In Genesis 3, sin begins with distrust in the garden. In Genesis 4, sin becomes murder between brothers. In Genesis 5, death spreads through generations. In Genesis 6, violence fills the earth. In Genesis 7, judgment comes because creation has become deeply corrupted.
-
-But the Bible is also teaching us how mercy moves.
-
-Adam and Eve are clothed. Seth is born. People call on Yahweh's name. Enoch walks with God. Noah finds favor. God gives a warning. God gives instructions. God speaks covenant. God provides a ship. God shuts Noah in.
-
-So the story is not only getting darker. Grace is still moving through the darkness.
-
-🧬 The family line shows life continuing.
-
-⚰️ The death refrain shows the curse is real.
-
-🚶 Enoch and Noah show that walking with God is still possible.
-
-🩸 Violence shows sin becoming social and public.
-
-✨ Favor shows grace before rescue.
-
-🤝 Covenant shows promise before judgment.
-
-🛶 The ship shows God providing refuge.
-
-🌊 The waters show judgment that cannot be controlled by humans.
-
-## 🧠 Big Words And Ideas To Carry Forward
-
-### ⚰️ Death
-
-Death is not treated as natural in the deepest biblical sense.
-
-Genesis 5 says "then he died" again and again because death is the result of sin entering God's good world. The Bible knows that people may live long lives, build families, work, and leave memories behind. But it also refuses to call death good.
-
-That matters because many people try to make peace with death by pretending it is simply part of life. Genesis says death is real, but it is also an enemy. Later, the Bible will say the last enemy to be destroyed is death.
-
-Genesis 5 makes us feel the need for resurrection before the Bible ever uses that word clearly.
-
-### 🚶 Walking With God
-
-Walking with God is one of the most important pictures in this reading.
-
-Enoch walked with God. Noah walked with God. This phrase is simple enough for a child to understand, but deep enough for a lifetime of discipleship.
-
-Walking means direction. It means movement. It means pace. It means nearness. It means you are not standing still, and you are not walking alone.
-
-In Genesis 3, Adam and Eve hide from God. In Genesis 5 and 6, Enoch and Noah walk with God. That contrast matters. Sin makes people hide, but grace brings people near.
-
-### 🩸 Violence
-
-Genesis 6 says the earth was filled with violence.
-
-Violence is not only one bad action. It is the breakdown of God's design for human life together. People made in God's image begin harming other people made in God's image.
-
-That is why violence matters so much in Scripture. It attacks the image of God in human beings. It uses strength to destroy instead of protect. It turns community into danger.
-
-The flood is not random anger from God. Genesis gives the reason: the earth is corrupt and filled with violence.
-
-### ✨ Favor
-
-Noah found favor in Yahweh's eyes.
-
-That line comes before Noah builds the ship. It comes before Noah gathers animals. It comes before Noah enters the ship. This is important because it keeps the story from becoming: Noah saved himself by being impressive.
-
-Noah obeys, but grace comes first.
-
-This is a pattern the Bible keeps repeating. God calls before people can boast. God rescues before people can claim credit. Obedience matters, but obedience is never separated from mercy.
-
-### 🤝 Covenant
-
-God says, "I will establish my covenant with you."
-
-This is the first time the word covenant appears in Scripture. That makes it a major moment. Before the flood comes, God speaks a promise.
-
-Covenant means God is not acting randomly. He is binding Himself to a promise. Noah's future is not secured by the strength of the ship alone. It is secured by the word of God.
-
-Later, the Bible will move through covenants with Abraham, Israel, David, and finally the new covenant in Christ. Noah is an early part of that covenant story.
-
-## 🗣️ More Hebrew Word Study
-
-### 📜 Adam
-
-**Adam** can refer to the man Adam, but it is also connected to humanity.
-
-That matters in Genesis 5 because Adam's story becomes humanity's story. What happens to Adam does not stay private. His family line lives in the world shaped by his fall.
-
-### 🌱 Adamah
-
-**Adamah** means ground or soil.
-
-Adam is formed from the ground, and after sin the ground is cursed. When Lamech names Noah, he talks about work and toil because of the ground Yahweh cursed. The Hebrew connection helps us feel the story: humanity and the ground are connected, and both are affected by sin.
-
-### 🕊️ Noach
-
-**Noach** is Noah's Hebrew name.
-
-It sounds like rest. Noah's name carries the longing of tired people. His father is not only naming a child. He is speaking hope into a cursed world.
-
-### 🩸 Hamas
-
-**Hamas** is the word translated violence.
-
-It can include violence, cruelty, injustice, or wrongdoing. Genesis says the earth was filled with it. That means the problem was not hidden in one corner. It had become widespread.
-
-### 🛶 Tevah
-
-**Tevah** is the word used for Noah's ship.
-
-This word is rare. It also appears for the basket that carries baby Moses in Exodus. That connection is beautiful. Noah is preserved through waters in a tevah. Moses is preserved through waters in a tevah. In both stories, God protects life through danger so His rescue plan can continue.
-
-### 🌊 Mabbul
-
-**Mabbul** is the Hebrew word used for the flood in Genesis.
-
-It is not the normal word for ordinary water or everyday rain. It points to the great flood judgment. The word helps us see that Genesis is describing a unique act of judgment, not just bad weather.
-
-## 🏺 Culture And History: Why Genealogies Mattered
-
-Modern readers often rush through genealogies because they feel like lists.
-
-But in the ancient world, genealogies were a way of remembering who you were. They preserved family identity, inheritance, land claims, tribal belonging, and memory. A name in a genealogy was not just data. It represented a life, a household, and a place in the story.
-
-In Genesis, genealogies also do theological work.
-
-They show that God's story moves through real time. They show that God does not abandon history after Eden. They show that the promise continues through families. They also show that death is not an idea. Death touches actual people with names.
-
-Genesis 5 is powerful because it combines dignity and grief.
-
-The people are named because they matter.
-
-The people die because the fall is real.
-
-That is why the chapter should not be read coldly. It is a memorial wall and a warning bell at the same time.
-
-## 🏺 Culture And History: Ancient Flood Stories
-
-Many ancient cultures had flood stories.
-
-That does not weaken Genesis. It helps us see that flood memory was part of the ancient world. But Genesis tells the story with a very different focus.
-
-Some ancient flood stories describe gods who are annoyed, selfish, or afraid of humans becoming too noisy or too numerous. Genesis is different. The flood comes because the earth is corrupt and filled with violence.
-
-Genesis gives the flood a moral reason.
-
-God is not annoyed by humanity's existence. God is grieved by humanity's evil.
-
-That difference matters.
-
-Genesis also gives the flood a mercy structure. God warns Noah. God gives instructions. God preserves Noah's household. God preserves animal life. God speaks covenant.
-
-So Genesis is not only saying judgment happened. Genesis is showing the character of the Judge.
-
-## 🏺 Culture And History: The Ship Was Not A Children's Toy
-
-The ark is often pictured like a small cute boat with animals smiling out the windows.
-
-Genesis does not present it that way.
-
-The ship is a massive survival structure. It has rooms, levels, a door, pitch, measurements, food storage, and a clear purpose. It is built because judgment is coming.
-
-This matters because the ark is both practical and theological.
-
-Practically, it preserves life through water.
-
-Theologically, it shows that rescue must come according to God's word. Noah does not invent the plan. Noah receives the command and obeys it.
-
-Faith here is not vague optimism.
-
-Faith looks like listening carefully, measuring carefully, building patiently, and obeying completely.
-
-## 🔗 Bible Connections: Noah And Adam
-
-Noah is connected to Adam in several ways.
-
-Adam is connected to the ground, and Noah is named in relation to the cursed ground. Adam lives in a world that begins good and falls into sin. Noah lives in a world already full of sin and becomes part of a new beginning after judgment.
-
-After the flood, Noah will receive a blessing that sounds like Genesis 1: be fruitful and multiply. That shows Noah as a kind of new Adam figure.
-
-But Noah is not the final answer.
-
-After the flood, Noah will also fail. Sin survives the flood because sin is not only around humanity. It is in the human heart.
-
-That prepares us to look for someone greater than Noah.
-
-## 🔗 Bible Connections: Noah And Moses
-
-The word for Noah's ship connects with Moses' basket.
-
-Both stories involve water. Both involve danger. Both involve a small place of protection. Both involve God preserving life for the sake of a larger rescue plan.
-
-Noah is preserved so the human family can continue.
-
-Moses is preserved so Israel can be delivered from Egypt.
-
-In both stories, water is dangerous, but God is greater than the water.
-
-This connection helps readers see that the Bible often repeats patterns. God preserves a life. God raises up a deliverer. God brings people through waters. God continues His promise.
-
-## 🔗 Bible Connections: Noah And Jesus
-
-Jesus mentions the days of Noah.
-
-He uses Noah's generation as a warning about people living normally while ignoring coming judgment. They were eating, drinking, marrying, and continuing life as usual until the flood came.
-
-That does not mean eating and marrying were evil. It means people were spiritually unaware. Life felt normal, but judgment was near.
-
-Noah's story teaches that normal life can become dangerous when people refuse to listen to God.
-
-Jesus is greater than Noah.
-
-Noah builds the ship that carries his family through judgment. Jesus becomes the Savior who carries His people through judgment by His own death and resurrection.
-
-Noah survives the flood. Jesus passes through death and rises on the other side.
-
-## 🔗 Bible Connections: The Waters
-
-Water is a major Bible theme.
-
-In Genesis 1, waters are present before the world is formed and filled. God separates waters and creates space for life.
-
-In Genesis 7, waters overwhelm the world in judgment.
-
-In Exodus, waters divide so Israel can pass through while Egypt is judged.
-
-In Joshua, the Jordan opens as Israel enters the land.
-
-In Jonah, the sea becomes the place of danger and mercy.
-
-In baptism, water becomes connected to judgment, cleansing, death, and new life.
-
-Genesis 7 is part of that larger water story.
-
-Water can symbolize chaos, danger, cleansing, judgment, and new beginning depending on the context. In Noah's story, the waters judge the corrupt world and carry the ship of preservation.
-
-## 🔥 Theological Themes
-
-### God Sees
-
-Genesis 6 says Yahweh saw the wickedness of humanity.
-
-God is not unaware. He sees public violence and hidden imagination. He sees what people do, and He sees what hearts plan.
-
-That can feel frightening if someone wants to hide evil. But it can also be comforting for people hurt by evil. God sees what violence does. God sees what corruption destroys.
-
-### God Grieves
-
-Genesis says God was grieved in His heart.
-
-This shows that God is not emotionally distant from His creation. He is holy, but not cold. He judges evil, but not because He is careless. The corruption of creation grieves Him.
-
-### God Warns
-
-God tells Noah what is coming.
-
-The warning is part of mercy. Judgment is not presented as a surprise attack. God gives Noah His word before the flood arrives.
-
-### God Provides
-
-God provides the ship.
-
-The rescue plan comes from God. Noah obeys, but God designs the refuge.
-
-### God Preserves
-
-God preserves Noah, his household, and living creatures.
-
-The flood is judgment, but it is not the end of creation. God preserves life so the story can continue.
-
-## 🧭 How To Study This Without Getting Lost
-
-Genesis 5-7 has details that can distract people.
-
-People ask about the long lifespans. They ask about the sons of God. They ask about the Nephilim. They ask about the size of the ark. They ask about the flood waters.
-
-Those questions are not wrong.
-
-But the main story should stay clear.
-
-Genesis 5 says death is spreading.
-
-Genesis 6 says corruption is filling the earth.
-
-Genesis 6 also says Noah found favor.
-
-Genesis 6 says God gave Noah instructions.
-
-Genesis 7 says Noah entered the ship.
-
-Genesis 7 says Yahweh shut him in.
-
-Genesis 7 says the waters prevailed.
-
-If someone remembers only the strange details but misses those truths, they have missed the main path of the chapter.
-
-## 🧠 Study Notes For Serious Readers
-
-The long lifespans in Genesis 5 have been understood in different ways.
-
-Some readers take them straightforwardly as unusually long lives in the early human world. Some explore whether ancient genealogical numbers may carry literary or symbolic features. Bible Buddy does not need to force every reader into a complicated debate here.
-
-What matters most in the flow of Genesis is that every lifespan, no matter how long, still ends with death.
-
-The sons of God in Genesis 6 have also been understood in different ways.
-
-Some believe they are rebellious heavenly beings. Some believe they are powerful human rulers. Some believe they are the godly line of Seth mixing with the ungodly line of Cain.
-
-Again, the main point is not curiosity. The main point is corruption.
-
-Genesis is showing a world where boundaries are violated, power is misused, and evil becomes deep and widespread.
-
-The Nephilim are mysterious too.
-
-The text calls them mighty men of old, men of renown. That phrase may sound impressive, but Genesis quickly moves to God's grief over human wickedness. Human fame does not equal righteousness.
-
-That is a major lesson.
-
-The world may celebrate mighty people, famous people, powerful people, and impressive people. Genesis asks a better question:
-
-Are they walking with God?
-
-## 🙏 Personal Application
-
-Genesis 5-7 asks deep questions.
-
-Am I aware that my life is short, even if it feels long?
-
-Am I walking with God, or only living near religious ideas?
-
-Am I being shaped by the corruption around me?
-
-Am I willing to obey God before the rain starts?
-
-Am I trusting the refuge God provides, or trying to build my own?
-
-Noah's story is not asking you to build a physical ark.
-
-It is asking whether you trust God's word enough to obey Him in a world that often ignores Him.
-
-It is asking whether your life has a different direction because you walk with God.
-
-It is asking whether you believe judgment is real and mercy is real at the same time.
-
-> ✨ **Big Thought:** Noah did not need the whole world to agree with him in order to obey God. He needed to trust the God who spoke.
-
-## 📚 What To Remember From The Deep Study
-
-⚰️ Genesis 5 makes us feel death moving through generations.
-
-🚶 Enoch and Noah show that walking with God is possible in dark times.
-
-🩸 Genesis 6 shows sin becoming violence and corruption.
-
-💔 God's grief shows that evil matters to Him.
-
-✨ Noah finding favor shows grace before obedience.
-
-🤝 Covenant shows promise before judgment.
-
-🛶 The ship shows refuge provided by God.
-
-🌊 The flood shows judgment that humans cannot control.
-
-🚪 Yahweh shutting Noah in shows divine protection.
-
-🕊️ Noah points forward, but Jesus is the greater Savior.
+God judges evil, but He preserves life. Noah's story teaches us to take sin seriously and to trust the refuge God gives.
 
 # Final Reflection
 
-Genesis 5-7 is not just about old ages, animals, rain, and a big ship.
+Genesis 5-7 is a heavy reading, but it is not only dark.
 
-It is about the world after sin.
+It tells the truth about death.
 
-People still carry God's image, but death keeps repeating. Families still grow, but the curse is still felt. Culture still develops, but violence spreads. The earth that God made good becomes corrupt.
+It tells the truth about corruption.
 
-And yet, Noah found favor.
+It tells the truth about violence.
 
-That sentence keeps hope alive.
+It tells the truth about judgment.
 
-Noah's obedience matters because he trusts God before the flood is visible. He builds when others do not understand. He enters when God calls. He waits when nothing has changed yet. He survives because God provides the refuge and shuts him in.
+But it also tells the truth about grace.
 
-🌍 Sin spreads through the world.
+God preserves a family line.
 
-⚰️ Death touches every generation.
+God shows Enoch walking with Him.
 
-🚶 Faith still walks with God.
+God gives Noah favor.
 
-✨ Grace finds Noah.
+God warns before judgment.
 
-🛠️ Obedience becomes practical.
+God gives instructions for rescue.
 
-🚪 God provides a refuge.
+God makes a covenant promise.
 
-🌧️ Judgment is real.
+God shuts Noah into the ship.
 
-🕊️ Mercy preserves life.
+And God carries life through the waters.
 
-💭 Pause and reflect:
+## Pause And Reflect
 
-Where do you need to walk with God even if the world around you is moving another direction?
+Where do you see the repeated pattern of sin and death in the world today?
 
-Where is God asking you to obey before you see proof?
+What would it look like for you to walk with God in ordinary life like Enoch?
 
-Where do you need to trust that His refuge is better than your own plan?
+Where do you need Noah-like obedience before you can see the outcome?
 
-Day 3 teaches us that God sees corruption, judges evil, and still makes a way for life to continue.
+What does the flood teach you about the seriousness of evil?
 
-The ark is not the end of the Bible's rescue story.
+What does the ship teach you about God's mercy?
 
-It is one early picture of a bigger truth:
+Day 3 reminds us that judgment is real, but God's rescue is real too.
 
-God provides salvation when judgment is real.
+The world is broken, but God is still preserving hope.
 
-And the safest place to be is wherever God has called you to come in.`;
+The waters rise, but the refuge holds.
+
+And the story keeps moving toward Jesus.`;
+
+const DAY_THREE_SECTION_META: Array<Omit<BibleYearDeepStudySection, "markdown">> = [
+  {
+    reference: "Genesis 5:1-5",
+    title: "Death Enters The Family Record",
+    icon: "⚰️",
+    summary: "Adam's line still carries God's image, but the sentence 'then he died' starts echoing through the story.",
+  },
+  {
+    reference: "Genesis 5:6-20",
+    title: "The Line Keeps Moving",
+    icon: "🧬",
+    summary: "Families grow, years pass, and death repeats, but God's promise keeps moving through the generations.",
+  },
+  {
+    reference: "Genesis 5:21-24",
+    title: "Enoch Walked With God",
+    icon: "🚶",
+    summary: "Enoch breaks the pattern by walking with God, showing that faithful closeness is still possible outside Eden.",
+  },
+  {
+    reference: "Genesis 5:25-32",
+    title: "Noah Is Born Into A Tired World",
+    icon: "🕊️",
+    summary: "Noah's birth points to comfort in a world weighed down by cursed ground, grief, and long waiting.",
+  },
+  {
+    reference: "Genesis 6:1-8",
+    title: "The Earth Becomes Corrupt",
+    icon: "🌍",
+    summary: "Human wickedness fills the earth, violence grieves God's heart, and judgment becomes unavoidable.",
+  },
+  {
+    reference: "Genesis 6:9-13",
+    title: "Noah Walks With God",
+    icon: "✨",
+    summary: "Noah stands out as righteous in a corrupt generation, not because the world is easy, but because he walks with God.",
+  },
+  {
+    reference: "Genesis 6:14-22",
+    title: "God Tells Noah To Build",
+    icon: "🛠️",
+    summary: "God gives Noah detailed instructions for the ship, turning obedience into the place of rescue.",
+  },
+  {
+    reference: "Genesis 7:1-10",
+    title: "Noah Enters The Ship",
+    icon: "🚪",
+    summary: "Noah obeys before the rain begins, and his household enters the refuge God provides.",
+  },
+  {
+    reference: "Genesis 7:11-16",
+    title: "The Flood Begins",
+    icon: "🌧️",
+    summary: "The waters open from above and below, judgment begins, and God shuts Noah safely inside.",
+  },
+  {
+    reference: "Genesis 7:17-24",
+    title: "The Waters Rise",
+    icon: "🌊",
+    summary: "The flood covers the earth, but the ship rises with the waters, carrying life through judgment.",
+  },
+];
+
+function getDayThreeSectionMarkdown(reference: string) {
+  const escapedReference = reference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = BIBLE_YEAR_DAY_THREE_DEEP_NOTES.match(
+    new RegExp(`(?:^|\\n)(# [^\\n]+\\n\\n)?## ${escapedReference}[\\s\\S]*?(?=\\n# [^\\n]+\\n\\n## Genesis|$)`),
+  );
+  return match?.[0].trim() || `## ${reference}`;
+}
+
+export const BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = DAY_THREE_SECTION_META.map((section) => ({
+  ...section,
+  markdown: getDayThreeSectionMarkdown(section.reference),
+}));
