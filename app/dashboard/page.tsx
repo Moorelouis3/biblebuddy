@@ -3984,12 +3984,16 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!userId || !profile || hasBlockingDashboardOverlay) return;
-    const promptKey = `${userId}:${profile.bible_year_launch_seen_at || "new"}`;
+    const launchAlreadyHandled = Boolean(profile.bible_year_launch_seen_at || profile.bible_year_started_at);
+    if (launchAlreadyHandled) {
+      setShowBibleYearLaunchModal(false);
+      return;
+    }
+
+    const promptKey = `${userId}:bible-year-launch-unseen`;
     if (bibleYearLaunchPromptCheckedRef.current === promptKey) return;
     bibleYearLaunchPromptCheckedRef.current = promptKey;
-    if (!profile.bible_year_launch_seen_at) {
-      setShowBibleYearLaunchModal(true);
-    }
+    setShowBibleYearLaunchModal(true);
   }, [hasBlockingDashboardOverlay, profile, userId]);
 
   useEffect(() => {
@@ -6818,6 +6822,7 @@ export default function DashboardPage() {
   async function saveBibleYearLaunchChoice(choice: "start" | "dismiss") {
     if (!userId || savingBibleYearLaunchChoice) return;
     setSavingBibleYearLaunchChoice(choice);
+    setShowBibleYearLaunchModal(false);
     const nowIso = new Date().toISOString();
     const todayKey = getDashboardLocalDateKey(new Date());
     const updates =
@@ -6840,8 +6845,6 @@ export default function DashboardPage() {
             }
           : current,
       );
-      setShowBibleYearLaunchModal(false);
-
       if (choice === "start") {
         if (typeof window !== "undefined") {
           window.sessionStorage.setItem("bb_bible_year_expect_intro_pending", "1");
@@ -6863,7 +6866,6 @@ export default function DashboardPage() {
       }
     } catch (error) {
       console.error("[BIBLE_YEAR_LAUNCH] Could not save launch choice:", error);
-      setShowBibleYearLaunchModal(false);
       if (choice === "start") {
         if (typeof window !== "undefined") {
           window.sessionStorage.setItem("bb_bible_year_expect_intro_pending", "1");
