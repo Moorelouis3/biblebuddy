@@ -8179,7 +8179,12 @@ export default function DashboardPage() {
     if (showBibleProgressPanel) return renderBibleProgressPanel();
     if (deepStudyMode === "complete") return renderDeepStudyComplete();
     if (deepStudyMode === "results") return renderDeepStudyResults();
-    if (false && profile?.bible_year_launch_seen_at && !profile?.bible_year_started_at && !showBibleYearLaunchModal) {
+    if (
+      profile?.bible_year_launch_seen_at &&
+      !profile?.bible_year_started_at &&
+      !hasBibleYearTaskProgress &&
+      !showBibleYearLaunchModal
+    ) {
       return (
         <>
           {renderDashboardStatsRow()}
