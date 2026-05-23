@@ -7080,10 +7080,10 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         </div>
 
-        <div className="grid gap-3">
+        <div className="grid gap-3 pb-24 sm:pb-0">
           {dashboardAllDone ? renderBibleYearCompletedDayPanel(day) : null}
           {activeTasksToRender.length ? (
-            <div className="hidden gap-3 sm:grid">
+            <div className="grid gap-3">
               {renderDashboardTaskCards(activeTasksToRender)}
             </div>
           ) : null}
