@@ -20,7 +20,7 @@ import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
 import { rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
-import { getBookTotalChapters, getCompletedChapters } from "../lib/readingProgress";
+import { getBookTotalChapters, getCompletedChapters, markChapterDone } from "../lib/readingProgress";
 import {
   canFreeUserUnlockChapter,
   formatFreePlanCountdown,
@@ -50,6 +50,7 @@ import {
 import { GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON, GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import { BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "../lib/bibleYearDayOneDeepNotes";
+import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES } from "../lib/bibleYearDayThreeDeepNotes";
 import { BIBLE_YEAR_DAY_TWO_DEEP_NOTES } from "../lib/fallOfManDeepNotes";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
@@ -1732,6 +1733,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearCompletedTasksExpandedDay, setBibleYearCompletedTasksExpandedDay] = useState<number | null>(null);
   const [bibleYearSeriesFilter, setBibleYearSeriesFilter] = useState<BibleYearSeriesFilter>("all");
   const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<BibleYearCompletedCardsByDay>({});
+  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(false);
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
   const [bibleYearTriviaResultsOpenByDay, setBibleYearTriviaResultsOpenByDay] = useState<Record<number, boolean>>({});
@@ -1760,6 +1762,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearRewardToast, setBibleYearRewardToast] = useState<{ dayNumber: number; text: string; nonce: number } | null>(null);
   const bibleYearXpBackfillKeyRef = useRef("");
   const bibleYearReflectionSyncKeyRef = useRef("");
+  const bibleYearJustCompletedDayRef = useRef<number | null>(null);
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
@@ -2101,15 +2104,26 @@ export default function DashboardJourneyExperience({
   }, []);
 
   const activeBibleYearDashboardDay = bibleYearDashboardActive
-    ? selectedBibleYearSeriesDay ||
-      GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-        .filter((day) => day.dayNumber <= 8)
-        .find((day) => {
-          const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
-          return !(completed.reading && completed.trivia && completed.reflection);
-        }) ||
-      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 8) ||
-      null
+    ? (() => {
+        if (!bibleYearProgressLoaded) return selectedBibleYearSeriesDay || null;
+        const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
+        const nextUnfinishedDay =
+          builtBibleYearDays.find((day) => {
+            const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
+            return !(completed.reading && completed.trivia && completed.reflection);
+          }) ||
+          builtBibleYearDays[builtBibleYearDays.length - 1] ||
+          null;
+
+        if (selectedBibleYearSeriesDay) {
+          const selectedIsComplete = isBibleYearDayComplete(selectedBibleYearSeriesDay);
+          const selectedJustCompleted = bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber;
+          const selectedIsCurrent = selectedBibleYearSeriesDay.dayNumber === nextUnfinishedDay?.dayNumber;
+          if ((!selectedIsComplete && selectedIsCurrent) || selectedJustCompleted) return selectedBibleYearSeriesDay;
+        }
+
+        return nextUnfinishedDay;
+      })()
     : null;
   const bibleYearDashboardTasks = activeBibleYearDashboardDay
     ? buildBibleYearDayTasks(activeBibleYearDashboardDay)
@@ -2217,8 +2231,8 @@ export default function DashboardJourneyExperience({
         }
       : null;
   const currentStudySummary = getDashboardStudySummary(currentDevotionalTitle, null);
-  const currentDashboardDayLabel = selectedBibleYearSeriesDay
-    ? `Day ${selectedBibleYearSeriesDay.dayNumber}`
+  const currentDashboardDayLabel = activeBibleYearDashboardDay
+    ? `Day ${activeBibleYearDashboardDay.dayNumber}`
     : `Day ${currentDevotionalTask?.devotionalDayNumber || 1}`;
   const queueTasks = dashboardTaskSource.filter((task) => !task.done || celebratingTasks[task.kind]);
   const completedTrackerTasks = dashboardTaskSource.filter((task) => task.done && !celebratingTasks[task.kind]);
@@ -3015,8 +3029,11 @@ export default function DashboardJourneyExperience({
     async function loadBibleYearProgress() {
       if (!userId) {
         setBibleYearCompletedCardsByDay({});
+        setBibleYearProgressLoaded(true);
         return;
       }
+
+      setBibleYearProgressLoaded(false);
 
       try {
         const { data, error } = await supabase
@@ -3036,10 +3053,49 @@ export default function DashboardJourneyExperience({
           };
         });
 
-        if (!cancelled) setBibleYearCompletedCardsByDay(next);
+        const actionTypes = Array.from(new Set([
+          ...Object.values(BIBLE_YEAR_CARD_ACTION_TYPE),
+          ACTION_TYPE.bible_in_one_year_day_viewed,
+        ]));
+        const { data: actionRows, error: actionError } = await supabase
+          .from("master_actions")
+          .select("action_type, action_label")
+          .eq("user_id", userId)
+          .in("action_type", actionTypes)
+          .like("action_label", "Bible in One Year Day %");
+
+        if (actionError) {
+          console.warn("[BIBLE_YEAR_PROGRESS] Could not backfill Bible in One Year progress from actions:", actionError);
+        }
+
+        const cardLabelToKey: Record<string, BibleYearDayCardKey> = {
+          Reading: "reading",
+          Trivia: "trivia",
+          Reflection: "reflection",
+        };
+
+        ((actionRows || []) as Array<{ action_label?: string | null }>).forEach((row) => {
+          const match = (row.action_label || "").match(/^Bible in One Year Day (\d+) (Reading|Trivia|Reflection):/);
+          if (!match) return;
+          const dayNumber = Number(match[1]);
+          const card = cardLabelToKey[match[2]];
+          if (!Number.isFinite(dayNumber) || !card) return;
+          next[dayNumber] = {
+            ...(next[dayNumber] || {}),
+            [card]: true,
+          };
+        });
+
+        if (!cancelled) {
+          setBibleYearCompletedCardsByDay(next);
+          setBibleYearProgressLoaded(true);
+        }
       } catch (error) {
         console.error("[BIBLE_YEAR_PROGRESS] Could not load Bible in One Year progress:", error);
-        if (!cancelled) setBibleYearCompletedCardsByDay({});
+        if (!cancelled) {
+          setBibleYearCompletedCardsByDay({});
+          setBibleYearProgressLoaded(true);
+        }
       }
     }
 
@@ -3090,6 +3146,7 @@ export default function DashboardJourneyExperience({
   }
 
   function openBibleYearDashboard() {
+    bibleYearJustCompletedDayRef.current = null;
     const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
     const nextBibleYearDay =
       builtBibleYearDays.find((day) => {
@@ -3129,6 +3186,7 @@ export default function DashboardJourneyExperience({
       return;
     }
     setBibleYearDashboardActive(true);
+    bibleYearJustCompletedDayRef.current = null;
     setBibleYearSeriesActive(false);
     setBibleYearSeriesDetailDay(null);
     setSelectedBibleYearSeriesDay(day);
@@ -3270,6 +3328,7 @@ export default function DashboardJourneyExperience({
       setBibleYearTermNotes(null);
       setBibleYearTermNotesError(null);
       setBibleYearDashboardActive(true);
+      bibleYearJustCompletedDayRef.current = null;
       setBibleYearSeriesActive(false);
       setBibleYearSeriesDetailDay(null);
       setSelectedBibleYearSeriesDay(firstBibleYearDay);
@@ -3326,6 +3385,30 @@ export default function DashboardJourneyExperience({
       setActivePage(0);
     }
   }, []);
+
+  useEffect(() => {
+    if (!bibleYearProgressLoaded || !bibleYearDashboardActive || !activeBibleYearDashboardDay) return;
+    if (selectedBibleYearSeriesDay?.dayNumber === activeBibleYearDashboardDay.dayNumber) return;
+    if (
+      selectedBibleYearSeriesDay &&
+      bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber
+    ) {
+      return;
+    }
+
+    setSelectedBibleYearSeriesDay(activeBibleYearDashboardDay);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", "bible-year");
+      url.searchParams.set("day", String(activeBibleYearDashboardDay.dayNumber));
+      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+  }, [
+    activeBibleYearDashboardDay?.dayNumber,
+    bibleYearDashboardActive,
+    bibleYearProgressLoaded,
+    selectedBibleYearSeriesDay?.dayNumber,
+  ]);
 
   useEffect(() => {
     setBibleYearSelectedTerm(null);
@@ -5745,7 +5828,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     {
       id: "creator",
       question: "Who is already present before anything is created?",
-      options: ["God", "Adam", "Moses", "The angels"],
+      options: ["God", "Adam", "Moses"],
       answer: "God",
       verse: "Genesis 1:1",
       explanation: "Genesis begins with God already there. He is not created or introduced as part of creation. He is the Creator over everything.",
@@ -5753,7 +5836,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     {
       id: "light",
       question: "What does God create first by speaking into the darkness?",
-      options: ["Light", "Animals", "The garden", "Rain"],
+      options: ["Light", "Animals", "The garden"],
       answer: "Light",
       verse: "Genesis 1:3",
       explanation: "God says, Let there be light. Creation begins by His voice, showing that darkness is not stronger than God.",
@@ -5761,7 +5844,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     {
       id: "image",
       question: "What does Genesis say human beings are made in?",
-      options: ["God's image", "The angels' image", "The stars' image", "The animals' image"],
+      options: ["God's image", "The angels' image", "The stars' image"],
       answer: "God's image",
       verse: "Genesis 1:26-27",
       explanation: "Human worth begins with God. Male and female are both made in His image, so every person carries God-given dignity.",
@@ -5769,7 +5852,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     {
       id: "rest",
       question: "What does God do on the seventh day?",
-      options: ["Rests", "Creates the sun", "Names the animals", "Plants Eden"],
+      options: ["Rests", "Creates the sun", "Names the animals"],
       answer: "Rests",
       verse: "Genesis 2:1-3",
       explanation: "God rests because creation is complete, not because He is tired. Rest is built into creation from the beginning.",
@@ -5777,7 +5860,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     {
       id: "alone",
       question: "What is the first thing God says is not good?",
-      options: ["For the man to be alone", "The garden", "The animals", "The seventh day"],
+      options: ["For the man to be alone", "The garden", "The animals"],
       answer: "For the man to be alone",
       verse: "Genesis 2:18",
       explanation: "Before sin enters the story, God says aloneness is not good. Humanity is made for relationship, partnership, and covenant love.",
@@ -6109,6 +6192,47 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (error) throw error;
   }
 
+  async function markBibleYearDayCoveredChaptersRead(day: GenesisBibleYearDay) {
+    if (!userId || !day.readings.length) return;
+
+    const coveredChapters = Array.from(
+      new Map(day.readings.map((reading) => [`${reading.book.toLowerCase()}:${reading.chapter}`, reading])).values(),
+    );
+
+    const results = await Promise.allSettled(
+      coveredChapters.map((reading) => markChapterDone(userId, reading.book, reading.chapter)),
+    );
+    const failures = results.filter((result) => result.status === "rejected");
+    if (failures.length) {
+      console.error("[BIBLE_YEAR_PROGRESS] Could not mark every covered chapter as read:", failures);
+    }
+
+    const { count, error: countError } = await supabase
+      .from("completed_chapters")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", userId);
+
+    if (countError) {
+      console.error("[BIBLE_YEAR_PROGRESS] Could not count completed chapters after Bible Year day:", countError);
+      return;
+    }
+
+    const { error: statsError } = await supabase
+      .from("profile_stats")
+      .upsert(
+        {
+          user_id: userId,
+          chapters_completed_count: count || 0,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "user_id" },
+      );
+
+    if (statsError) {
+      console.error("[BIBLE_YEAR_PROGRESS] Could not sync profile chapter count after Bible Year day:", statsError);
+    }
+  }
+
   function getBibleYearCardActionLabel(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
     const cardLabel = card.charAt(0).toUpperCase() + card.slice(1);
     return `Bible in One Year Day ${day.dayNumber} ${cardLabel}: ${day.title}`;
@@ -6181,6 +6305,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     }));
     setActiveBibleYearDayCard(null);
     if (dayWillBeFullyComplete) {
+      bibleYearJustCompletedDayRef.current = day.dayNumber;
       setSelectedBibleYearSeriesDay(day);
       if (typeof window !== "undefined") {
         const url = new URL(window.location.href);
@@ -6190,6 +6315,9 @@ Before we understand redemption, we need to understand what God made humanity fo
       }
     }
     await persistBibleYearDayProgress(day.dayNumber, cards);
+    if (dayWillBeFullyComplete) {
+      await markBibleYearDayCoveredChaptersRead(day);
+    }
     if (newlyCompletedCards.length > 0) {
       await Promise.allSettled(newlyCompletedCards.map((card) => ensureBibleYearCardActionLogged(day, card, true)));
       onDevotionalChanged();
@@ -7086,10 +7214,10 @@ Before we understand redemption, we need to understand what God made humanity fo
 
         <div className="grid gap-3 pb-24 sm:pb-0">
           {dashboardAllDone ? renderBibleYearCompletedDayPanel(day) : null}
-          <div className="relative overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_40%,transparent)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent),color-mix(in_srgb,var(--bb-card,#ffffff)_72%,transparent))] p-3 shadow-[0_0_0_1px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent),0_16px_36px_rgba(0,0,0,0.20)] backdrop-blur-xl sm:p-4">
-            <div className="flex items-center gap-3">
-              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent)] text-[var(--bb-accent,#f6b44b)] shadow-[0_0_22px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)]">
-                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <div className="relative overflow-hidden rounded-[20px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_30%,transparent)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent,#f6b44b)_10%,transparent),color-mix(in_srgb,var(--bb-card,#ffffff)_66%,transparent))] px-3 py-3 shadow-[0_0_0_1px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent),0_12px_26px_rgba(0,0,0,0.16)] backdrop-blur-xl sm:px-4">
+            <div className="flex items-center gap-2.5">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_10%,transparent)] text-[var(--bb-accent,#f6b44b)] shadow-[0_0_16px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)]">
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <circle cx="12" cy="12" r="7" />
                   <circle cx="12" cy="12" r="2" />
                   <path d="M12 2v3" />
@@ -7101,24 +7229,24 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div className="min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#f6b44b)]">Today's Bible Study Tasks</p>
-                    <p className="mt-1 text-sm font-black leading-tight text-[var(--bb-text-primary,#fff7ed)] sm:text-base">
+                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#f6b44b)]">Today's Study Tasks</p>
+                    <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#e7d4bd)] sm:text-sm">
                       Complete all 3 Bible tasks to complete Day {day.dayNumber} and keep your streak going.
                     </p>
                   </div>
-                  <div className="shrink-0 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] bg-black/18 px-3 py-2 text-center">
-                    <p className="text-lg font-black leading-none text-[var(--bb-accent,#f6b44b)]">+{dayTaskTotalXp}</p>
+                  <div className="shrink-0 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] bg-black/14 px-2.5 py-1.5 text-center">
+                    <p className="text-base font-black leading-none text-[var(--bb-accent,#f6b44b)]">+{dayTaskTotalXp}</p>
                     <p className="mt-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#e7d4bd)]">XP</p>
                   </div>
                 </div>
-                <div className="mt-3 flex items-center gap-3">
-                  <div className="h-2 flex-1 overflow-hidden rounded-full bg-black/22">
+                <div className="mt-2.5 flex items-center gap-3">
+                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-black/22">
                     <div
                       className="h-full rounded-full bg-[var(--bb-accent,#f6b44b)] shadow-[0_0_14px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_52%,transparent)] transition-all"
                       style={{ width: `${dayTaskProgressPercent}%` }}
                     />
                   </div>
-                  <p className="shrink-0 text-xs font-black text-[var(--bb-text-primary,#fff7ed)]">
+                  <p className="shrink-0 text-[11px] font-black text-[var(--bb-text-primary,#fff7ed)]">
                     {dayTaskCompletedCount} of {BIBLE_YEAR_DAY_CARD_KEYS.length} completed
                   </p>
                 </div>
@@ -7609,7 +7737,9 @@ Before we understand redemption, we need to understand what God made humanity fo
         ? BIBLE_YEAR_DAY_ONE_DEEP_NOTES
         : day.dayNumber === 2
           ? BIBLE_YEAR_DAY_TWO_DEEP_NOTES
-          : null;
+          : day.dayNumber === 3
+            ? BIBLE_YEAR_DAY_THREE_DEEP_NOTES
+            : null;
     const hasDeepNotes = Boolean(deepNotesMarkdown);
     const deepNotesEyebrow = `Day ${day.dayNumber} Deep Notes`;
     const deepNotesTitle = day.title;
@@ -7785,6 +7915,108 @@ Before we understand redemption, we need to understand what God made humanity fo
           "This showed that Abel's death was not the end of hope.",
           "God's promise was still moving forward.",
           "People began to call on the name of the Lord.",
+        ],
+      },
+    };
+    const dayThreeVerseBreakdownNotes: Record<string, VerseBreakdownNote> = {
+      "Genesis 5:1-5": {
+        title: "Death Enters the Family Record",
+        icon: "⚰️",
+        paragraphs: [
+          "Genesis 5 starts with Adam's family line.",
+          "People are still made in God's likeness, so human life still matters.",
+          "But Adam's life ends with the words, then he died.",
+          "These verses show that sin has brought death into the human story.",
+        ],
+      },
+      "Genesis 5:6-20": {
+        title: "The Family Line Keeps Going",
+        icon: "🧬",
+        paragraphs: [
+          "This part repeats names, children, years, and death.",
+          "The repetition helps us feel that every generation is touched by the fall.",
+          "Even so, families keep growing and the story keeps moving.",
+          "God is still carrying hope forward through ordinary family history.",
+        ],
+      },
+      "Genesis 5:21-24": {
+        title: "Enoch Walks With God",
+        icon: "🚶",
+        paragraphs: [
+          "Enoch is different from the pattern around him.",
+          "Instead of only saying he died, Genesis says he walked with God.",
+          "Walking with God means living close to God and moving in His direction.",
+          "Enoch shows that people can still live near God in a broken world.",
+        ],
+      },
+      "Genesis 5:25-32": {
+        title: "Noah Is Born Into a Tired World",
+        icon: "🕊️",
+        paragraphs: [
+          "Noah's name is connected to comfort and rest.",
+          "His father hoped Noah would bring relief from painful work and the cursed ground.",
+          "Noah would not remove the curse completely, but his life would become a turning point.",
+          "God would use Noah to preserve life through judgment.",
+        ],
+      },
+      "Genesis 6:1-8": {
+        title: "The Earth Becomes Corrupt",
+        icon: "🌍",
+        paragraphs: [
+          "Genesis 6 shows sin spreading across the earth.",
+          "People's hearts and choices had become deeply evil.",
+          "God was grieved by what humanity had become.",
+          "But Noah found favor in Yahweh's eyes, which means grace was still present.",
+        ],
+      },
+      "Genesis 6:9-13": {
+        title: "Noah Walks With God",
+        icon: "✨",
+        paragraphs: [
+          "Noah lived in a violent and corrupt generation.",
+          "But Noah's life moved in a different direction because he walked with God.",
+          "The Bible calls him righteous and blameless among the people of his time.",
+          "Noah shows that one person can follow God even when the world around them does not.",
+        ],
+      },
+      "Genesis 6:14-22": {
+        title: "God Tells Noah to Build",
+        icon: "🛠️",
+        paragraphs: [
+          "God gave Noah clear instructions for building the ship.",
+          "Noah's faith became practical through work, details, and obedience.",
+          "God also promised to establish His covenant with Noah.",
+          "Noah did everything God commanded before the flood was visible.",
+        ],
+      },
+      "Genesis 7:1-10": {
+        title: "Noah Enters the Ship",
+        icon: "🚪",
+        paragraphs: [
+          "God told Noah to come into the ship with his household.",
+          "The ship was God's provided place of rescue.",
+          "Noah obeyed and entered before the flood began.",
+          "Faith sometimes means obeying God while you are still waiting to see what comes next.",
+        ],
+      },
+      "Genesis 7:11-16": {
+        title: "The Flood Begins",
+        icon: "🌧️",
+        paragraphs: [
+          "The waters came from below and above.",
+          "The world God had ordered in creation was now being overwhelmed by judgment.",
+          "Noah, his family, and the animals entered the ship.",
+          "Then Yahweh shut Noah in and secured the place of rescue.",
+        ],
+      },
+      "Genesis 7:17-24": {
+        title: "The Waters Rise",
+        icon: "🌊",
+        paragraphs: [
+          "The flood waters rose and covered the earth.",
+          "Outside the ship, the waters brought judgment.",
+          "Inside the ship, the same waters lifted Noah and carried the rescue God provided.",
+          "Genesis 7 is heavy, but it also shows that God preserves life through judgment.",
         ],
       },
     };
@@ -7983,7 +8215,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                     ? dayOneVerseBreakdownNotes[section.verseBlock.reference]
                     : day.dayNumber === 2
                       ? dayTwoVerseBreakdownNotes[section.verseBlock.reference]
-                      : undefined;
+                      : day.dayNumber === 3
+                        ? dayThreeVerseBreakdownNotes[section.verseBlock.reference]
+                        : undefined;
                 const paragraphs = (note?.paragraphs || section.teaching).slice(0, 4);
                 const noteIcon = note?.icon || "•";
                 return (
@@ -9357,7 +9591,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </div>
                 </div>
               ))
-            ) : bibleYearSeriesActive ? null : !homePanelOverride && shouldShowCompletionPanel ? (
+            ) : bibleYearSeriesActive ? null : !bibleYearDashboardActive && !homePanelOverride && shouldShowCompletionPanel ? (
               <div className="completion-panel-enter relative overflow-hidden rounded-[28px] border border-[#dbe7f4] bg-white/90 px-5 pb-5 pt-7 text-center shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
                 <div className="chapter-firework-ring pointer-events-none absolute left-1/2 top-16 h-24 w-24 rounded-full border-4 border-[#7BAFD4]/45" aria-hidden="true" />
                 <div className="chapter-confetti pointer-events-none absolute left-1/2 top-16" aria-hidden="true">
@@ -9456,7 +9690,18 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </div>
                 </div>
               ) : null}
-              {selectedBibleYearSeriesDay && activeBibleYearDashboardDay ? (
+              {bibleYearDashboardActive && !bibleYearProgressLoaded ? (
+                <section className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_70%,transparent)] p-4 shadow-[0_14px_34px_rgba(0,0,0,0.16)] backdrop-blur-xl">
+                  <div className="animate-pulse">
+                    <div className="h-4 w-44 rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)]" />
+                    <div className="mt-4 grid gap-3">
+                      <div className="h-24 rounded-2xl bg-black/12" />
+                      <div className="h-24 rounded-2xl bg-black/12" />
+                      <div className="h-24 rounded-2xl bg-black/12" />
+                    </div>
+                  </div>
+                </section>
+              ) : bibleYearDashboardActive && activeBibleYearDashboardDay ? (
                 renderBibleYearDashboardStudyArea(activeBibleYearDashboardDay, displayTasks)
               ) : !bibleYearDashboardActive ? (
                 <>
