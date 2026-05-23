@@ -1733,7 +1733,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearCompletedTasksExpandedDay, setBibleYearCompletedTasksExpandedDay] = useState<number | null>(null);
   const [bibleYearSeriesFilter, setBibleYearSeriesFilter] = useState<BibleYearSeriesFilter>("all");
   const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<BibleYearCompletedCardsByDay>({});
-  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(false);
+  const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(true);
   const [bibleYearTriviaAnswers, setBibleYearTriviaAnswers] = useState<Record<string, string>>({});
   const [bibleYearTriviaQuestionIndexByDay, setBibleYearTriviaQuestionIndexByDay] = useState<Record<number, number>>({});
   const [bibleYearTriviaResultsOpenByDay, setBibleYearTriviaResultsOpenByDay] = useState<Record<number, boolean>>({});
@@ -2105,7 +2105,6 @@ export default function DashboardJourneyExperience({
 
   const activeBibleYearDashboardDay = bibleYearDashboardActive
     ? (() => {
-        if (!bibleYearProgressLoaded) return selectedBibleYearSeriesDay || null;
         const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
         const nextUnfinishedDay =
           builtBibleYearDays.find((day) => {
@@ -3032,8 +3031,6 @@ export default function DashboardJourneyExperience({
         setBibleYearProgressLoaded(true);
         return;
       }
-
-      setBibleYearProgressLoaded(false);
 
       try {
         const { data, error } = await supabase
@@ -9690,18 +9687,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </div>
                 </div>
               ) : null}
-              {bibleYearDashboardActive && !bibleYearProgressLoaded ? (
-                <section className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_70%,transparent)] p-4 shadow-[0_14px_34px_rgba(0,0,0,0.16)] backdrop-blur-xl">
-                  <div className="animate-pulse">
-                    <div className="h-4 w-44 rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)]" />
-                    <div className="mt-4 grid gap-3">
-                      <div className="h-24 rounded-2xl bg-black/12" />
-                      <div className="h-24 rounded-2xl bg-black/12" />
-                      <div className="h-24 rounded-2xl bg-black/12" />
-                    </div>
-                  </div>
-                </section>
-              ) : bibleYearDashboardActive && activeBibleYearDashboardDay ? (
+              {bibleYearDashboardActive && activeBibleYearDashboardDay ? (
                 renderBibleYearDashboardStudyArea(activeBibleYearDashboardDay, displayTasks)
               ) : !bibleYearDashboardActive ? (
                 <>
