@@ -40,6 +40,8 @@ export interface ProfileStats {
   selected_buddy_avatar?: string | null;
   selected_streak_flame?: string | null;
   active_premium_skin?: string | null;
+  bible_year_started_at?: string | null;
+  bible_year_launch_seen_at?: string | null;
 }
 
 export interface HeatMapDay {

@@ -22,6 +22,7 @@ type OverviewMetrics = {
   keywordsUnderstood: number;
   devotionalDaysCompleted: number;
   dailyBibleTasksCompleted: number;
+  bibleYearStarters: number;
   readingPlanChaptersCompleted: number;
   scrambledWordsAnswered: number;
   triviaQuestionsAnswered: number;
@@ -106,6 +107,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   keywordsUnderstood: 0,
   devotionalDaysCompleted: 0,
   dailyBibleTasksCompleted: 0,
+  bibleYearStarters: 0,
   readingPlanChaptersCompleted: 0,
   scrambledWordsAnswered: 0,
   triviaQuestionsAnswered: 0,
@@ -1062,6 +1064,17 @@ export default function AnalyticsPage() {
           .in("action_type", [...DAILY_BIBLE_TASK_ACTION_TYPES])
       );
 
+      const bibleYearStartersPromise = fromDate
+        ? supabase
+            .from("profile_stats")
+            .select("user_id", { count: "exact", head: true })
+            .not("bible_year_started_at", "is", null)
+            .gte("bible_year_started_at", fromDate.slice(0, 10))
+        : supabase
+            .from("profile_stats")
+            .select("user_id", { count: "exact", head: true })
+            .not("bible_year_started_at", "is", null);
+
       // Reading Plan chapters completed
       const readingPlanChaptersPromise = applyDateFilter(
         supabase
@@ -1132,6 +1145,7 @@ export default function AnalyticsPage() {
         keywordsResult,
         devotionalDaysResult,
         dailyBibleTasksResult,
+        bibleYearStartersResult,
         readingPlanChaptersResult,
         scrambledWordsResult,
         triviaQuestionsResult,
@@ -1166,6 +1180,7 @@ export default function AnalyticsPage() {
         keywordsPromise,
         devotionalDaysPromise,
         dailyBibleTasksPromise,
+        bibleYearStartersPromise,
         readingPlanChaptersPromise,
         scrambledWordsPromise,
         triviaQuestionsPromise,
@@ -1225,6 +1240,11 @@ export default function AnalyticsPage() {
       const devotionalDaysError = devotionalDaysResult.error;
       const dailyBibleTasksCount = dailyBibleTasksResult.count ?? 0;
       const dailyBibleTasksError = dailyBibleTasksResult.error;
+      const bibleYearStartersCount = bibleYearStartersResult.count ?? 0;
+      const bibleYearStartersError =
+        bibleYearStartersResult.error && !/bible_year_started_at|column/i.test(bibleYearStartersResult.error.message || "")
+          ? bibleYearStartersResult.error
+          : null;
       const readingPlanChaptersCount = readingPlanChaptersResult.count ?? 0;
       const readingPlanChaptersError = readingPlanChaptersResult.error;
       const scrambledWordsCount = scrambledWordsResult.count ?? 0;
@@ -1253,6 +1273,7 @@ export default function AnalyticsPage() {
         keywordsError ||
         devotionalDaysError ||
         dailyBibleTasksError ||
+        bibleYearStartersError ||
         readingPlanChaptersError ||
         scrambledWordsError ||
         triviaQuestionsError ||
@@ -1276,6 +1297,7 @@ export default function AnalyticsPage() {
           keywordsError,
           devotionalDaysError,
           dailyBibleTasksError,
+          bibleYearStartersError,
           readingPlanChaptersError,
           scrambledWordsError,
           triviaQuestionsError,
@@ -1321,6 +1343,7 @@ export default function AnalyticsPage() {
         keywordsUnderstood: keywordsCount ?? 0,
         devotionalDaysCompleted: devotionalDaysCount ?? 0,
         dailyBibleTasksCompleted: dailyBibleTasksCount ?? 0,
+        bibleYearStarters: bibleYearStartersCount ?? 0,
         readingPlanChaptersCompleted: readingPlanChaptersCount ?? 0,
         scrambledWordsAnswered: scrambledWordsCount ?? 0,
         triviaQuestionsAnswered: triviaQuestionsCount ?? 0,
@@ -2740,6 +2763,7 @@ export default function AnalyticsPage() {
       "dashboard_viewed": "Dashboard Views",
       "dashboard_card_opened": "Dashboard Card Clicks",
       "invite_buddy_opened": "Invite a Bible Buddy Clicks",
+      "bible_in_one_year_started": "Bible Year Starters",
       "bible_buddy_tv_viewed": "Bible Buddy TV Views",
       "bible_buddy_tv_title_opened": "Bible Buddy TV Title Opens",
       "bible_buddy_tv_video_started": "Bible Buddy TV Plays",
@@ -3254,6 +3278,10 @@ export default function AnalyticsPage() {
                 value={overviewMetrics.dailyBibleTasksCompleted}
                 onClick={() => setSelectedActionType(selectedActionType === "daily_bible_tasks_completed" ? null : "daily_bible_tasks_completed")}
                 isSelected={selectedActionType === "daily_bible_tasks_completed"}
+              />
+              <OverviewCard
+                label="Bible Year Starters"
+                value={overviewMetrics.bibleYearStarters}
               />
               <OverviewCard
                 label="Reading Plan Chapters Completed"

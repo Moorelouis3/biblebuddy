@@ -858,6 +858,17 @@ function getDashboardLocalDateKey(date: Date) {
   return `${year}-${month}-${day}`;
 }
 
+function getBibleYearDayFromStart(startDateKey?: string | null) {
+  if (!startDateKey) return getCurrentDayNumber();
+  const startDate = new Date(`${startDateKey}T00:00:00`);
+  if (Number.isNaN(startDate.getTime())) return getCurrentDayNumber();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  startDate.setHours(0, 0, 0, 0);
+  const diffDays = Math.floor((today.getTime() - startDate.getTime()) / 86400000);
+  return Math.max(1, Math.min(365, diffDays + 1));
+}
+
 function getDashboardDayAbbr(dateKey: string) {
   const date = new Date(`${dateKey}T00:00:00`);
   return ["S", "M", "T", "W", "T", "F", "S"][date.getDay()] || "";
@@ -1051,6 +1062,10 @@ export default function DashboardPage() {
   const [showGraceDaysInfoModal, setShowGraceDaysInfoModal] = useState(false);
   const [showBibleProgressModal, setShowBibleProgressModal] = useState(false);
   const [showBibleProgressPanel, setShowBibleProgressPanel] = useState(false);
+  const [showBibleYearProgressDetails, setShowBibleYearProgressDetails] = useState(false);
+  const [showBibleYearLaunchModal, setShowBibleYearLaunchModal] = useState(false);
+  const [showBibleYearExpectModal, setShowBibleYearExpectModal] = useState(false);
+  const [savingBibleYearLaunchChoice, setSavingBibleYearLaunchChoice] = useState<"start" | "dismiss" | null>(null);
   const [bibleBrowserSelectedBook, setBibleBrowserSelectedBook] = useState<string | null>(null);
   const [bibleBrowserAlphabetical, setBibleBrowserAlphabetical] = useState(false);
   const [bibleBrowserReading, setBibleBrowserReading] = useState<{ book: string; chapter: number } | null>(null);
@@ -1106,7 +1121,7 @@ export default function DashboardPage() {
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [levelRefreshTick, setLevelRefreshTick] = useState(0);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; selected_buddy_avatar?: string | null; active_premium_skin?: string | null; active_premium_skin_selected_at?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null; created_at?: string | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; selected_buddy_avatar?: string | null; active_premium_skin?: string | null; active_premium_skin_selected_at?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null; created_at?: string | null; bible_year_started_at?: string | null; bible_year_launch_seen_at?: string | null } | null>(null);
   const [buddySelectionWelcome, setBuddySelectionWelcome] = useState<{ buddyId: BuddyAvatarId; buddyName: string } | null>(null);
   const [showDiamondStore, setShowDiamondStore] = useState(false);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
@@ -1161,6 +1176,7 @@ export default function DashboardPage() {
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
   const [dashboardStatsPane, setDashboardStatsPane] = useState<0 | 1>(0);
   const dashboardStatsTouchStartXRef = useRef<number | null>(null);
+  const bibleYearLaunchPromptCheckedRef = useRef("");
   const [ownerQuickStats, setOwnerQuickStats] = useState({
     signups24h: 0,
     activeUsers24h: 0,
@@ -2509,6 +2525,7 @@ export default function DashboardPage() {
           </div>
 
           {includesBibleYearStats ? (
+            <section className="bb-skin-glow-tile relative mt-2 overflow-visible rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent)_42%,var(--bb-card-border))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent-soft)_84%,var(--bb-card)),var(--bb-card))] text-left shadow-[0_12px_26px_rgba(38,63,99,0.14),inset_0_1px_0_rgba(255,255,255,0.75)] transition hover:shadow-md">
             <button
               type="button"
               onClick={() => {
@@ -2516,11 +2533,10 @@ export default function DashboardPage() {
                 setShowBibleProgressPanel(false);
                 setBibleBrowserSelectedBook(null);
                 setBibleBrowserReading(null);
-                if (typeof window !== "undefined") {
-                  window.dispatchEvent(new CustomEvent("bb:dashboard-open-bible-year-progress"));
-                }
+                setShowBibleYearProgressDetails((current) => !current);
               }}
-              className="bb-skin-glow-tile mt-2 w-full rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent)_42%,var(--bb-card-border))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent-soft)_84%,var(--bb-card)),var(--bb-card))] px-4 py-3 text-left shadow-[0_12px_26px_rgba(38,63,99,0.14),inset_0_1px_0_rgba(255,255,255,0.75)] transition hover:-translate-y-0.5 hover:shadow-md"
+              className="w-full rounded-[18px] px-4 pb-5 pt-3 text-left transition hover:bg-[color-mix(in_srgb,var(--bb-accent-soft)_34%,transparent)]"
+              aria-expanded={showBibleYearProgressDetails}
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
@@ -2532,7 +2548,7 @@ export default function DashboardPage() {
                     Day {bibleYearReport.currentDay} • {bibleYearReport.statusLabel}
                   </p>
                 </div>
-                <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_36%,var(--bb-card-border))] bg-[var(--bb-card)] text-[var(--bb-accent)]" aria-hidden="true">
+                <span className={`mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent)_36%,var(--bb-card-border))] bg-[var(--bb-card)] text-[var(--bb-accent)] transition ${showBibleYearProgressDetails ? "rotate-90" : ""}`} aria-hidden="true">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.7" strokeLinecap="round" strokeLinejoin="round">
                     <path d="m9 18 6-6-6-6" />
                   </svg>
@@ -2545,6 +2561,31 @@ export default function DashboardPage() {
                 {totalCompletedChapters.toLocaleString()} read. {remainingBibleChapters.toLocaleString()} chapters left.
               </p>
             </button>
+
+            {showBibleYearProgressDetails ? (
+              <div className="border-t border-[color-mix(in_srgb,var(--bb-accent)_26%,var(--bb-card-border))] px-3 pb-5 pt-3 sm:px-4">
+                <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
+                  {[
+                    ["Day", `${bibleYearReport.currentDay}`, "Day"],
+                    ["Status", bibleYearReport.statusLabel, "Status"],
+                    ["Finish", bibleYearReport.expectedFinishDateLabel, "Finish"],
+                    ["Streak", `${bibleYearReport.currentStreak}`, "Now"],
+                    ["Best", `${bibleYearReport.allTimeStreak}`, "Best"],
+                  ].map(([label, value, eyebrow]) => (
+                    <div
+                      key={label}
+                      className="min-h-[76px] rounded-[14px] border border-[color-mix(in_srgb,var(--bb-accent)_16%,var(--bb-card-border))] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card)_88%,transparent),color-mix(in_srgb,var(--bb-surface-soft)_64%,transparent))] px-1.5 py-2 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.10)] sm:px-2"
+                    >
+                      <p className="text-[8px] font-black uppercase tracking-[0.1em] text-[var(--bb-accent)] sm:text-[9px]">{eyebrow}</p>
+                      <p className="mt-1 break-words text-[clamp(11px,2.6vw,15px)] font-black leading-tight text-[var(--bb-text-primary)]">{value}</p>
+                      <p className="mt-1 text-[8px] font-bold leading-tight text-[var(--bb-text-muted)] sm:text-[9px]">{label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+
+            </section>
           ) : null}
         </div>
       );
@@ -3932,12 +3973,24 @@ export default function DashboardPage() {
     showDailyTaskCelebrationModal ||
     showJessicaBonusModal ||
     showZorianRestorationModal ||
+    showBibleYearLaunchModal ||
+    showBibleYearExpectModal ||
     Boolean(moderatorWeeklyPayoutReveal) ||
     Boolean(selectedDashboardTask) ||
     Boolean(activeTourKey) ||
     Boolean(activeStorePromo) ||
     pendingDailyStreakSequence ||
     pendingDailyTaskCelebrationModal;
+
+  useEffect(() => {
+    if (!userId || !profile || hasBlockingDashboardOverlay) return;
+    const promptKey = `${userId}:${profile.bible_year_launch_seen_at || "new"}`;
+    if (bibleYearLaunchPromptCheckedRef.current === promptKey) return;
+    bibleYearLaunchPromptCheckedRef.current = promptKey;
+    if (!profile.bible_year_launch_seen_at) {
+      setShowBibleYearLaunchModal(true);
+    }
+  }, [hasBlockingDashboardOverlay, profile, userId]);
 
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
@@ -4984,11 +5037,19 @@ export default function DashboardPage() {
 
         let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
+          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at, bible_year_started_at, bible_year_launch_seen_at")
           .eq("user_id", userId)
           .maybeSingle();
 
-        if (error && /active_premium_skin_selected_at/i.test(error.message || "")) {
+        if (error && /bible_year_started_at|bible_year_launch_seen_at/i.test(error.message || "")) {
+          const fallback = await supabase
+            .from("profile_stats")
+            .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
+            .eq("user_id", userId)
+            .maybeSingle();
+          data = fallback.data as typeof data;
+          error = fallback.error;
+        } else if (error && /active_premium_skin_selected_at/i.test(error.message || "")) {
           const fallback = await supabase
             .from("profile_stats")
             .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
@@ -5118,6 +5179,8 @@ export default function DashboardPage() {
             display_name: profileData?.display_name ?? null,
             username: profileData?.username ?? null,
             created_at: profileData?.created_at ?? null,
+            bible_year_started_at: profileData?.bible_year_started_at ?? null,
+            bible_year_launch_seen_at: profileData?.bible_year_launch_seen_at ?? null,
           });
           if (shouldShowDailyLoginGift && dailyLoginGiftCheckRef.current !== dailyGiftShownKey) {
             dailyLoginGiftCheckRef.current = dailyGiftShownKey;
@@ -6690,7 +6753,7 @@ export default function DashboardPage() {
   const inviteText = "I've been using Bible Buddy to read and study the Bible. Come join me.";
   const bibleYearPlan = useMemo(() => generateBibleInOneYearPlan(), []);
   const bibleYearReport = useMemo(() => {
-    const currentDay = getCurrentDayNumber();
+    const currentDay = getBibleYearDayFromStart(profile?.bible_year_started_at);
     const completedByBook = new Map(
       bibleBookProgress.map((row) => [
         row.book.toLowerCase().trim(),
@@ -6723,6 +6786,12 @@ export default function DashboardPage() {
         : dayDelta < 0
           ? "Finish the next incomplete day to catch the one-year pace."
           : "You are working on the current Bible in One Year day.";
+    const remainingPlanDays = Math.max(0, bibleYearPlan.totalDays - Math.min(firstIncompleteDay, bibleYearPlan.totalDays) + 1);
+    const expectedFinishDate = new Date();
+    expectedFinishDate.setDate(expectedFinishDate.getDate() + Math.max(0, remainingPlanDays - 1));
+    const expectedFinishDateLabel = remainingPlanDays <= 0
+      ? "Complete"
+      : expectedFinishDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
     const overallPercent = Math.max(
       0,
       Math.min(100, Math.round((totalCompletedChapters / Math.max(TOTAL_BIBLE_CHAPTERS, 1)) * 100)),
@@ -6742,8 +6811,83 @@ export default function DashboardPage() {
       allTimeStreak: currentStreak,
       statusLabel,
       statusDetail,
+      expectedFinishDateLabel,
     };
-  }, [bibleBookProgress, bibleYearPlan, profile?.current_streak, totalCompletedChapters]);
+  }, [bibleBookProgress, bibleYearPlan, profile?.bible_year_started_at, profile?.current_streak, totalCompletedChapters]);
+
+  async function saveBibleYearLaunchChoice(choice: "start" | "dismiss") {
+    if (!userId || savingBibleYearLaunchChoice) return;
+    setSavingBibleYearLaunchChoice(choice);
+    const nowIso = new Date().toISOString();
+    const todayKey = getDashboardLocalDateKey(new Date());
+    const updates =
+      choice === "start"
+        ? { bible_year_launch_seen_at: nowIso, bible_year_started_at: todayKey, updated_at: nowIso }
+        : { bible_year_launch_seen_at: nowIso, updated_at: nowIso };
+
+    try {
+      const { error } = await supabase
+        .from("profile_stats")
+        .upsert({ user_id: userId, ...updates }, { onConflict: "user_id" });
+      if (error) throw error;
+
+      setProfile((current) =>
+        current
+          ? {
+              ...current,
+              bible_year_launch_seen_at: nowIso,
+              bible_year_started_at: choice === "start" ? todayKey : current.bible_year_started_at ?? null,
+            }
+          : current,
+      );
+      setShowBibleYearLaunchModal(false);
+
+      if (choice === "start") {
+        if (typeof window !== "undefined") {
+          window.sessionStorage.setItem("bb_bible_year_expect_intro_pending", "1");
+        }
+        void trackNavigationActionOnce({
+          userId,
+          username: userName,
+          actionType: ACTION_TYPE.bible_in_one_year_started,
+          actionLabel: "Bible in One Year",
+          dedupeKey: "bible-in-one-year-started",
+        }).catch((error) => {
+          console.error("[BIBLE_YEAR_LAUNCH] Could not log Bible in One Year start:", error);
+        });
+        router.push("/dashboard?view=bible-year&day=1");
+        window.setTimeout(() => {
+          window.dispatchEvent(new CustomEvent("bb:dashboard-open-bible-year-progress"));
+          setShowBibleYearExpectModal(true);
+        }, 50);
+      }
+    } catch (error) {
+      console.error("[BIBLE_YEAR_LAUNCH] Could not save launch choice:", error);
+      setShowBibleYearLaunchModal(false);
+      if (choice === "start") {
+        if (typeof window !== "undefined") {
+          window.sessionStorage.setItem("bb_bible_year_expect_intro_pending", "1");
+        }
+        router.push("/dashboard?view=bible-year&day=1");
+        window.setTimeout(() => setShowBibleYearExpectModal(true), 50);
+      }
+    } finally {
+      setSavingBibleYearLaunchChoice(null);
+    }
+  }
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !profile?.bible_year_started_at) return;
+    if (window.sessionStorage.getItem("bb_bible_year_expect_intro_pending") !== "1") return;
+    setShowBibleYearExpectModal(true);
+  }, [profile?.bible_year_started_at]);
+
+  function closeBibleYearExpectModal() {
+    if (typeof window !== "undefined") {
+      window.sessionStorage.removeItem("bb_bible_year_expect_intro_pending");
+    }
+    setShowBibleYearExpectModal(false);
+  }
 
   async function handleInviteBuddy() {
     if (userId) {
@@ -7908,6 +8052,40 @@ export default function DashboardPage() {
     if (showBibleProgressPanel) return renderBibleProgressPanel();
     if (deepStudyMode === "complete") return renderDeepStudyComplete();
     if (deepStudyMode === "results") return renderDeepStudyResults();
+    if (profile?.bible_year_launch_seen_at && !profile?.bible_year_started_at && !showBibleYearLaunchModal) {
+      return (
+        <>
+          {renderDashboardStatsRow()}
+          <section className="mt-4 overflow-hidden rounded-[30px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),transparent_40%),linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_82%,transparent))] p-5 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_22px_70px_rgba(0,0,0,0.22)]">
+            <div className="flex justify-center">
+              <LouisAvatar mood="reading" size={116} />
+            </div>
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">New Reading Plan</p>
+            <h2 className="mt-2 text-3xl font-black leading-tight">Start Bible in One Year</h2>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+              A clear structure for what to read, how to understand it, and how to stay consistent through the whole Bible in one year or less.
+            </p>
+            <div className="mt-5 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_76%,transparent)] p-4 text-left text-sm font-bold leading-6">
+              <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#f6b44b)]">What Day 1 unlocks</p>
+              <div className="mt-2 grid gap-2">
+                <p>📖 Know exactly where to start and what to read next</p>
+                <p>🎧 Audio and teaching built into the daily study</p>
+                <p>🧠 Simple breakdowns, trivia, reflection, and optional Deep Notes</p>
+                <p>⏱️ Studies built to fit about 20-25 minutes a day</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => void saveBibleYearLaunchChoice("start")}
+              disabled={Boolean(savingBibleYearLaunchChoice)}
+              className="mt-5 w-full rounded-2xl bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-5 py-4 text-base font-black text-[var(--bb-button-text,#000000)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] transition hover:brightness-105 disabled:opacity-60"
+            >
+              {savingBibleYearLaunchChoice === "start" ? "Starting Day 1..." : "Start Day 1"}
+            </button>
+          </section>
+        </>
+      );
+    }
     return undefined;
   }
 
@@ -9590,6 +9768,93 @@ export default function DashboardPage() {
       )}
 
       {renderStorePromoModal()}
+
+      <ModalShell isOpen={showBibleYearLaunchModal} onClose={() => {}} zIndex="z-[210]" backdropColor="bg-black/70">
+        <div className="relative mx-4 w-full max-w-[390px] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_38%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent),transparent_38%),linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_80%,transparent))] p-4 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(0,0,0,0.42)]">
+          <div className="flex justify-center">
+            <div className="rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)] p-1">
+              <LouisAvatar mood="reading" size={70} />
+            </div>
+          </div>
+          <div className="mt-3 inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#f6b44b)]">
+            New Reading Plan
+          </div>
+          <h2 className="bb-bible-year-launch-title mt-2 text-[28px] font-black leading-[1.05]">Bible in One Year is here</h2>
+          <p className="mt-2 text-[11px] font-black uppercase tracking-[0.13em] text-[var(--bb-accent,#f6b44b)]">
+            A clear path when you do not know where to start
+          </p>
+          <p className="mt-3 text-[13px] font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+            If you have ever wondered where to start, what to read next, or how to stay consistent, this gives you a clear path through the whole Bible in one year or less while actually understanding what you read.
+          </p>
+          <div className="mt-3 rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_76%,transparent)] p-3 text-left text-[13px] font-bold leading-5">
+            <p className="text-[10px] font-black uppercase tracking-[0.15em] text-[var(--bb-accent,#f6b44b)]">What you get</p>
+            <div className="mt-2 grid gap-1.5">
+              <p>🗺️ A simple structure for what to read each day</p>
+              <p>🎧 Audio and teaching built into every study</p>
+              <p>📖 Optional Deep Notes when you want to study deeper</p>
+              <p>⏱️ Daily studies designed for about 20-25 minutes</p>
+              <p>🧪 Help us test the new mode and make it better</p>
+            </div>
+          </div>
+          <div className="mt-4 grid gap-2">
+            <button
+              type="button"
+              onClick={() => void saveBibleYearLaunchChoice("start")}
+              disabled={Boolean(savingBibleYearLaunchChoice)}
+              className="bb-bible-year-start-pulse w-full rounded-[18px] bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-5 py-3.5 text-base font-black text-[var(--bb-button-text,#000000)] shadow-[0_0_22px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_30%,transparent)] transition hover:brightness-105 disabled:opacity-60"
+            >
+              {savingBibleYearLaunchChoice === "start" ? "Starting..." : "Start Day 1"}
+            </button>
+            <button
+              type="button"
+              onClick={() => void saveBibleYearLaunchChoice("dismiss")}
+              disabled={Boolean(savingBibleYearLaunchChoice)}
+              className="mx-auto w-[78%] rounded-[14px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_58%,transparent)] bg-black/22 px-4 py-2 text-xs font-black text-[color-mix(in_srgb,var(--bb-text-secondary,#4b5563)_78%,var(--bb-text-primary,#111827))] transition hover:bg-black/30 disabled:opacity-60"
+            >
+              No thanks
+            </button>
+          </div>
+        </div>
+      </ModalShell>
+
+      <ModalShell isOpen={showBibleYearExpectModal} onClose={() => {}} zIndex="z-[212]" backdropColor="bg-black/70">
+        <div className="mx-4 w-full max-w-[390px] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_38%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#f6b44b)_20%,transparent),transparent_38%),linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_80%,transparent))] p-4 text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(0,0,0,0.42)]">
+          <div className="flex items-center gap-3">
+            <LouisAvatar mood="reading" size={68} />
+            <div className="min-w-0">
+              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#f6b44b)]">Day 1 Game Plan</p>
+              <h2 className="mt-1 text-2xl font-black leading-tight">Here is what to expect</h2>
+            </div>
+          </div>
+          <p className="mt-3 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+            Today is simple: read the Bible through three guided tasks. Most days take about 20-25 minutes, and you can do it while working, working out, eating, or winding down in bed.
+          </p>
+          <div className="mt-4 grid gap-2">
+            <div className="rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_76%,transparent)] p-3">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#f6b44b)]">Task 1</p>
+              <p className="mt-1 text-sm font-black">Watch or listen to the daily Scripture video.</p>
+              <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">Deep Notes are optional if you want to study deeper.</p>
+            </div>
+            <div className="rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_76%,transparent)] p-3">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#f6b44b)]">Task 2</p>
+              <p className="mt-1 text-sm font-black">Play the 5-question trivia check.</p>
+              <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">It helps you remember what you just learned.</p>
+            </div>
+            <div className="rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_76%,transparent)] p-3">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#f6b44b)]">Task 3</p>
+              <p className="mt-1 text-sm font-black">Post your reflection.</p>
+              <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">Answer the reflection question in your own words to finish the day.</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={closeBibleYearExpectModal}
+            className="mt-4 w-full rounded-[18px] bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#000000)] shadow-[0_0_22px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_30%,transparent)] transition hover:brightness-105"
+          >
+            Got it, start Task 1
+          </button>
+        </div>
+      </ModalShell>
 
       <ModalShell
         isOpen={showDeepStudyUpgradeModal}

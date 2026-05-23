@@ -4373,3 +4373,33 @@ html[data-bb-skin]:not([data-bb-skin="none"]) main {
   background: transparent !important;
   background-color: transparent !important;
 }
+
+@keyframes bb-bible-year-title-shake {
+  0%, 72%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  76% { transform: translate3d(-1px, 0, 0) rotate(-0.45deg); }
+  80% { transform: translate3d(1.5px, 0, 0) rotate(0.45deg); }
+  84% { transform: translate3d(-1px, 0, 0) rotate(-0.35deg); }
+  88% { transform: translate3d(1px, 0, 0) rotate(0.3deg); }
+  92% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+.bb-bible-year-launch-title {
+  display: inline-block;
+  transform-origin: center;
+  animation: bb-bible-year-title-shake 2.6s ease-in-out infinite;
+}
+
+@keyframes bb-bible-year-start-button-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--bb-accent, #f6b44b) 28%, transparent);
+  }
+  50% {
+    transform: scale(1.035);
+    box-shadow: 0 0 34px color-mix(in srgb, var(--bb-accent, #f6b44b) 54%, transparent);
+  }
+}
+
+.bb-bible-year-start-pulse {
+  animation: bb-bible-year-start-button-pulse 1.55s ease-in-out infinite;
+}

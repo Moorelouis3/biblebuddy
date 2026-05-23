@@ -14,7 +14,7 @@ export type BreadcrumbItem = {
 
 export const APP_NAV_ITEMS: AppNavItem[] = [
   {
-    label: "Dashboard",
+    label: "Home",
     href: "/dashboard",
     activePrefixes: ["/dashboard"],
     activeClasses: "bg-sky-50 text-sky-700 font-medium cursor-not-allowed",
@@ -142,7 +142,7 @@ export function buildBreadcrumbs(pathname: string | null | undefined): Breadcrum
   if (!pathname || pathname === "/" || pathname.startsWith("/dashboard")) return [];
 
   const segments = pathname.split("/").filter(Boolean);
-  const breadcrumbs: BreadcrumbItem[] = [{ label: "Dashboard", href: "/dashboard" }];
+  const breadcrumbs: BreadcrumbItem[] = [{ label: "Home", href: "/dashboard" }];
 
   if (segments[0] === "reading") {
     if (segments.length === 1) {
