@@ -600,3 +600,651 @@ export const FALL_OF_MAN_DEEP_NOTES = fallNotes.map((chapter) =>
       ? GENESIS_FOUR_OFFICIAL_NOTES
       : buildFallNotes(chapter),
 );
+
+export const BIBLE_YEAR_DAY_TWO_DEEP_NOTES = `Genesis 3-4 is where the Bible story turns from beauty to heartbreak.
+
+Before Genesis 3, the world is good. God has created light, land, seas, plants, animals, humanity, work, rest, marriage, and Eden. There is no shame, no hiding, no murder, no exile, and no death.
+
+Then the serpent speaks.
+
+Genesis 3-4 shows what happens when trust breaks. Sin enters the garden, shame enters the human heart, blame enters relationships, pain enters the world, and violence enters the family.
+
+But this is not only a sad chapter in ancient history. This is the beginning of the human condition.
+
+🐍 The serpent questions God's word.
+
+🍎 Adam and Eve take what God commanded them not to take.
+
+🙈 Shame enters, and they hide.
+
+👉 Blame breaks honesty and relationship.
+
+⚖️ God judges sin, but He also gives a promise.
+
+🧥 God covers Adam and Eve.
+
+🚪 Eden closes, but hope stays open.
+
+😡 Cain's anger grows.
+
+🩸 Abel is murdered.
+
+🏙️ Cain's line builds culture, but violence grows too.
+
+🌱 Seth is born, and people begin calling on the name of the LORD.
+
+> 🔥 **Big idea:** Genesis 3-4 shows that sin breaks trust with God and spreads through human relationships, but God keeps pursuing, warning, covering, judging, protecting, and preserving hope.
+
+Day 1 showed design before damage. Day 2 shows what happens when human beings stop trusting God's word, reach for wisdom apart from God, and then try to survive the shame that follows.
+
+This day is not only about Adam, Eve, Cain, and Abel. It is about the pattern of sin. The pattern begins with a questioned word, moves into desire, becomes disobedience, creates shame, turns into hiding, becomes blame, and then spreads into family violence.
+
+The Bible is showing us that sin is not a small private mistake that stays in one place. Sin spreads. It moves from the garden to the home, from husband and wife to brother and brother, from hidden shame to public bloodshed, from fear to exile, and from exile to a whole culture that can build beautiful things while still celebrating violence.
+
+And yet God does not disappear.
+
+God comes looking. God asks questions. God judges evil. God covers shame. God warns Cain before murder happens. God hears Abel's blood. God protects Cain from unlimited revenge. God gives Seth. God preserves worship.
+
+That is why Genesis 3-4 is so important. It explains the wound, but it also begins the promise of healing.
+
+## The Big Movement Of Day 2
+
+🐍 The serpent questions God's word.
+
+🍎 Adam and Eve take what God commanded them not to take.
+
+🙈 Shame enters, and they hide.
+
+👉 Blame breaks honesty and relationship.
+
+⚖️ God judges sin, but He also gives a promise.
+
+🧥 God covers Adam and Eve.
+
+🚪 Eden closes, but hope stays open.
+
+😡 Cain's anger grows.
+
+🩸 Abel is murdered.
+
+🏙️ Cain's line builds culture, but violence grows too.
+
+🌱 Seth is born, and people begin calling on the name of the LORD.
+
+> 🔥 **Big idea:** Genesis 3-4 shows that sin breaks trust with God and spreads through human relationships, but God keeps pursuing, warning, covering, judging, protecting, and preserving hope.
+
+# The Lie Enters The Garden
+
+## Genesis 3:1-5
+
+> 📖 **1** Now the serpent was more subtle than any animal of the field which Yahweh God had made. He said to the woman, "Has God really said, 'You shall not eat of any tree of the garden'?"
+>
+> 📖 **2** The woman said to the serpent, "We may eat fruit from the trees of the garden,
+>
+> 📖 **3** but not the fruit of the tree which is in the middle of the garden. God has said, 'You shall not eat of it. You shall not touch it, lest you die.'"
+>
+> 📖 **4** The serpent said to the woman, "You won't really die,
+>
+> 📖 **5** for God knows that in the day you eat it, your eyes will be opened, and you will be like God, knowing good and evil."
+
+## 🐍 What Is Happening Here?
+
+The serpent does not begin by telling Eve to run away from God.
+
+He begins by making God's word sound questionable.
+
+That matters because temptation often starts before the action. It starts when God's voice becomes less trusted in the heart. The serpent takes a command that was surrounded by generosity and makes it sound like God is mainly holding something back.
+
+In Genesis 2, God told the man he could freely eat from every tree except one. The first word was abundance. The boundary was real, but it was placed inside a world full of gifts. The serpent flips the emotional weight of the command. He makes the one boundary feel bigger than all the blessings.
+
+This is one of the oldest strategies of sin: make God's goodness feel smaller and God's boundary feel cruel.
+
+## 🧠 Words To Know
+
+### Subtle
+
+**Subtle** means crafty, clever, or shrewd.
+
+The serpent is not presented as loud and obvious. He is careful. His danger is not only in open rebellion, but in twisting the way Eve hears God.
+
+### Really Said
+
+The phrase **really said** matters because the serpent is attacking trust in God's word.
+
+He wants Eve to move from confidence to suspicion. Once God's word feels uncertain, disobedience begins to feel easier.
+
+### Knowing Good And Evil
+
+**Knowing good and evil** is not only about having information.
+
+In this story, it is about claiming the right to define good and evil apart from God. Adam and Eve are tempted to step out from under God's wisdom and become their own judges of what is good.
+
+## 🗣️ Hebrew Word Study
+
+### Nachash
+
+**Nachash** is the Hebrew word often translated serpent.
+
+The serpent is connected with deception and opposition to God. Genesis does not give every detail about the serpent here, but the rest of Scripture later connects the serpent with the enemy who deceives.
+
+### Arum
+
+**Arum** is the Hebrew word behind subtle or crafty.
+
+This word is important because Genesis 2 ended by saying Adam and Eve were naked and not ashamed. In Hebrew, naked and crafty sound similar. The story moves from innocence without shame to craftiness that leads into shame.
+
+### Mot Tamut
+
+**Mot tamut** is the Hebrew phrase behind God's warning that they would surely die.
+
+The serpent directly contradicts that warning. God said death would come. The serpent says death will not come. The crisis is clear: whose word will humanity trust?
+
+## 🏺 Culture And History
+
+In many ancient cultures, serpents could represent wisdom, danger, healing, or divine power.
+
+Genesis does not treat the serpent as a god. The serpent is a creature. That matters. Evil is real, but evil is not equal to God. The serpent can deceive, but he cannot create. He can twist God's word, but he cannot overthrow God's rule.
+
+Genesis is teaching that the human problem begins when people listen to a creature's voice over the Creator's voice.
+
+## 🔥 Connection Across Scripture
+
+Jesus faces temptation in the wilderness by answering with Scripture.
+
+Adam and Eve are in a garden full of food and fall. Jesus is in the wilderness hungry and remains faithful. Adam listens to the serpent's twisted word. Jesus answers the tempter with God's written word.
+
+That connection matters because Jesus succeeds where humanity failed.
+
+# Shame Enters The Story
+
+## Genesis 3:6-7
+
+> 📖 **6** When the woman saw that the tree was good for food, and that it was a delight to the eyes, and that the tree was to be desired to make one wise, she took some of its fruit, and ate. Then she gave some to her husband with her, and he ate it, too.
+>
+> 📖 **7** Their eyes were opened, and they both knew that they were naked. They sewed fig leaves together, and made coverings for themselves.
+
+## 🍎 What Is Happening Here?
+
+Eve sees the fruit as good, delightful, and desirable.
+
+That is important because sin does not always look ugly at first. It can look helpful, beautiful, reasonable, and wise. The problem is not that the fruit looks attractive. The problem is that Adam and Eve are now evaluating God's command from a place of distrust.
+
+They take and eat.
+
+The serpent promised opened eyes, and their eyes are opened. But what they receive is not freedom. They receive shame. They become aware of their nakedness and immediately try to cover themselves.
+
+The first human-made clothing in Scripture is not fashion. It is shame management.
+
+## 🧠 Words To Know
+
+### Delight
+
+**Delight** means the fruit looked pleasing and attractive.
+
+The verse shows how desire can pull the heart. Wanting something is not always wrong, but desire becomes dangerous when it starts arguing against God's word.
+
+### Wise
+
+**Wise** here means more than being smart.
+
+The tree is desired as a way to gain wisdom apart from obedience. Genesis is showing the danger of wanting wisdom without surrender.
+
+### Coverings
+
+**Coverings** are what Adam and Eve make from fig leaves.
+
+They are trying to deal with shame by their own effort. They can cover their bodies, but they cannot heal the broken trust underneath.
+
+## 🗣️ Hebrew Word Study
+
+### Chamad
+
+**Chamad** is a Hebrew word connected to desire or delight.
+
+It can describe something precious or desirable, but it can also connect with coveting. The issue is not desire by itself. The issue is desire that reaches beyond God's boundary.
+
+### Erom
+
+**Erom** means naked.
+
+Genesis 2 said they were naked and not ashamed. Genesis 3 says they know they are naked and immediately cover themselves. The same condition now feels different because sin has changed the heart.
+
+## 🏺 Culture And History
+
+Fig leaves were large and available in the garden setting, but they were not a lasting solution.
+
+That detail matters because humans often respond to shame with quick coverings. We hide, perform, blame, distract, or pretend. Genesis shows that human coverings can hide symptoms but cannot restore relationship with God.
+
+## 🔥 Connection Across Scripture
+
+The Bible keeps returning to the language of covering.
+
+Later, priests will wear garments. Sacrifices will deal with guilt. Prophets will speak of being clothed with salvation. In the New Testament, believers are described as being clothed with Christ.
+
+Genesis 3 begins the question: who can truly cover human shame?
+
+# God Comes Looking
+
+## Genesis 3:8-13
+
+> 📖 **8** They heard Yahweh God's voice walking in the garden in the cool of the day, and the man and his wife hid themselves from Yahweh God's presence among the trees of the garden.
+>
+> 📖 **9** Yahweh God called to the man, and said to him, "Where are you?"
+>
+> 📖 **10** The man said, "I heard your voice in the garden, and I was afraid, because I was naked; so I hid myself."
+>
+> 📖 **11** God said, "Who told you that you were naked? Have you eaten from the tree that I commanded you not to eat from?"
+>
+> 📖 **12** The man said, "The woman whom you gave to be with me, she gave me fruit from the tree, and I ate it."
+>
+> 📖 **13** Yahweh God said to the woman, "What have you done?" The woman said, "The serpent deceived me, and I ate."
+
+## 👀 What Is Happening Here?
+
+God comes into the garden, and the humans hide.
+
+This is heartbreaking because the garden was designed as a place of life with God. Now the sound of God's presence creates fear. Adam does not run toward God. He hides among the trees God made.
+
+God asks, Where are you?
+
+God is not lost. Adam is. The question is mercy because it draws Adam out of hiding. God gives Adam room to speak truth, but Adam answers with fear and then blame.
+
+## 🧠 Words To Know
+
+### Presence
+
+**Presence** means nearness before God.
+
+Adam and Eve were made for God's presence, but sin turns nearness into fear. This is one of the deep wounds of sin: the God we were made for becomes the God we hide from.
+
+### Afraid
+
+**Afraid** is Adam's first recorded emotion after sin.
+
+Before this, Genesis shows goodness, blessing, work, relationship, and no shame. Now fear enters the human story.
+
+### Blame
+
+**Blame** means refusing responsibility by pushing guilt onto someone else.
+
+Adam points to Eve and even says the woman whom you gave to be with me. Eve points to the serpent. Neither one simply begins with confession.
+
+## 🗣️ Hebrew Word Study
+
+### Ayekah
+
+**Ayekah** means where are you?
+
+This is one of the most powerful questions in Genesis. It is not because God lacks information. It is because God is confronting Adam relationally. The question exposes distance.
+
+### Paniym
+
+**Paniym** is often connected to face or presence.
+
+Hiding from God's presence means hiding from His face. Sin damages face-to-face relationship. The rest of the Bible moves toward restored fellowship with God.
+
+## 🏺 Culture And History
+
+Ancient royal gardens were places of order, beauty, and presence.
+
+Eden is more than a nice outdoor scene. It is the place where God, humanity, work, life, and blessing belong together. Being driven from Eden later is not just losing pretty scenery. It is losing the sacred place of life with God.
+
+## 🔥 Connection Across Scripture
+
+God's question in Genesis 3 is the beginning of a pattern.
+
+God keeps calling people out of hiding. He calls Cain after murder. He calls Abraham from his land. He calls Moses from the burning bush. The prophets call Israel back. Jesus calls disciples to follow Him.
+
+The God of the Bible does not ignore sin, but He also does not stop speaking.
+
+# Judgment And The First Promise
+
+## Genesis 3:14-19
+
+## ⚖️ What Is Happening Here?
+
+God speaks judgment to the serpent, the woman, and the man.
+
+The consequences touch the whole human experience: conflict with evil, pain, relationships, work, the ground, and death. Sin is not treated lightly because sin has damaged God's good world.
+
+But in the middle of judgment, God gives a promise. The seed of the woman will crush the serpent's head, though His heel will be bruised.
+
+This is the first announcement that evil will be defeated.
+
+## 🧠 Words To Know
+
+### Enmity
+
+**Enmity** means hostility or deep conflict.
+
+God says there will be enmity between the serpent and the woman, and between their offspring. The Bible story will keep showing conflict between those who trust God and the powers that oppose God.
+
+### Seed
+
+**Seed** means offspring, descendant, or family line.
+
+This word becomes a major Bible thread. Genesis will keep tracing family lines because the promise is moving through history toward a coming rescuer.
+
+### Dust
+
+**Dust** reminds Adam of where he came from and where death will take him.
+
+Genesis 2 said God formed man from dust and breathed life into him. Genesis 3 says sin ends in returning to dust. Life is a gift from God, and death is the result of the fall.
+
+## 🗣️ Hebrew Word Study
+
+### Zera
+
+**Zera** is the Hebrew word for seed.
+
+It can mean one descendant or many descendants. That makes Genesis 3:15 rich. It speaks about a continuing conflict, but it also points forward to a particular victory over the serpent.
+
+### Shuph
+
+**Shuph** is the Hebrew word often translated bruise, crush, or strike.
+
+The serpent will strike the heel, but the seed will strike the head. A heel wound is real pain. A head wound is decisive victory.
+
+## 🔥 Connection To Jesus
+
+Christians have often called Genesis 3:15 the first gospel promise.
+
+That does not mean Adam and Eve understood the full story of Jesus, the cross, and the resurrection in that moment. It means God planted the first promise that evil would be defeated through the woman's seed.
+
+At the cross, Jesus is wounded. But through His death and resurrection, He defeats sin, death, and the enemy. The bruised heel and crushed head pattern begins here.
+
+# Mercy Outside Eden
+
+## Genesis 3:20-24
+
+## 🧥 What Is Happening Here?
+
+Adam names his wife Eve, connected with life.
+
+That is surprising because judgment has just been spoken. Death is now part of the human story, but Adam names her in hope. Then God makes garments of skin and clothes them.
+
+Adam and Eve made fig leaves. God gives a better covering.
+
+Then they are sent out of Eden. This is painful, but it is also mercy. If they eat from the tree of life while fallen, they would live forever in a broken condition. God blocks the way to the tree of life, but He does not end the promise of life forever.
+
+## 🧠 Words To Know
+
+### Eve
+
+**Eve** is connected to life or living.
+
+Her name matters because Genesis is saying the story is not over. Judgment is real, but life will continue.
+
+### Garments
+
+**Garments** are the clothes God makes for Adam and Eve.
+
+This is the first time God covers human shame. The text does not explain everything about sacrifice here, but it clearly shows that God's covering is better than human hiding.
+
+### Cherubim
+
+**Cherubim** are heavenly guardians.
+
+They guard the way to the tree of life. Later, cherubim imagery appears in the tabernacle and temple, reminding readers that access to God's holy presence is serious.
+
+# Sin Moves Into The Family
+
+## Genesis 4:1-7
+
+## 😡 What Is Happening Here?
+
+Genesis 4 moves from the garden to the family.
+
+Cain and Abel are born. Cain works the ground. Abel keeps sheep. Both bring offerings. Abel's offering is received, and Cain becomes angry.
+
+God warns Cain before the murder happens.
+
+That is mercy. God does not wait until Cain's anger becomes blood. He confronts the anger at the door. Sin is pictured like a crouching predator that wants to master Cain.
+
+## 🧠 Words To Know
+
+### Offering
+
+**Offering** means a gift brought before God.
+
+The issue in Genesis 4 is not explained in every detail, but the story focuses strongly on Cain's heart. Worship is not only about what is in the hands. It is also about what is happening inside the person bringing it.
+
+### Countenance
+
+**Countenance** means face or expression.
+
+Cain's fallen face shows his inner anger. Genesis is showing that sin often becomes visible before it becomes action.
+
+### Crouching
+
+**Crouching** pictures sin like danger waiting near the door.
+
+Sin is not passive. It desires to rule Cain. Cain must master it, but he does not.
+
+## 🗣️ Hebrew Word Study
+
+### Chatta'ah
+
+**Chatta'ah** is the Hebrew word often translated sin.
+
+In Genesis 4:7, sin is pictured almost like a beast waiting to attack. This is one of the Bible's earliest pictures of sin as a power that wants mastery over a person.
+
+# The First Murder
+
+## Genesis 4:8-16
+
+## 🩸 What Is Happening Here?
+
+Cain ignores God's warning and kills Abel.
+
+The first recorded human death after Eden is murder. That is meant to shock us. Sin has moved from eating forbidden fruit to spilling a brother's blood.
+
+God asks Cain, Where is Abel your brother?
+
+This echoes Genesis 3. God asked Adam, Where are you? Now God asks Cain about his brother. Cain lies and says, Am I my brother's keeper?
+
+Cain tries to avoid responsibility, but Abel's blood cries from the ground.
+
+## 🧠 Words To Know
+
+### Keeper
+
+**Keeper** means one who guards, watches, or cares.
+
+Cain's question is cold because the expected answer is yes. Human beings are responsible for one another.
+
+### Blood Cries
+
+**Blood cries** means Abel's life and injustice are not silent before God.
+
+Cain may think the murder is hidden, but God hears what the ground has received.
+
+### Mark
+
+**Mark** means God gives Cain a sign of protection.
+
+Cain is judged, but God also limits revenge. Even in judgment, God restrains violence from spreading without limit.
+
+# A Broken World Still Builds
+
+## Genesis 4:17-24
+
+## 🏙️ What Is Happening Here?
+
+Cain's family builds a city and develops livestock work, music, and tools.
+
+This is important because Genesis does not say fallen people lose all creativity. Humans are still image bearers. Even outside Eden, people can build, invent, organize, compose, and shape the world.
+
+But culture cannot cure sin.
+
+Lamech shows that clearly. He takes two wives and boasts about violence. Cain killed and tried to dodge responsibility. Lamech kills and turns it into a song.
+
+Progress in tools does not automatically mean progress in the heart.
+
+## 🧠 Words To Know
+
+### City
+
+**City** means organized human settlement.
+
+Cities can become places of protection, culture, work, and community. But Genesis also shows that human building without humble trust in God can carry pride and violence.
+
+### Lamech
+
+**Lamech** becomes a picture of sin escalating.
+
+He does not hide violence. He celebrates it. His song shows revenge becoming identity.
+
+# Hope Keeps Moving
+
+## Genesis 4:25-26
+
+## 🌱 What Is Happening Here?
+
+Genesis 4 does not end with Lamech.
+
+That matters. The chapter could have ended with violence, but it ends with another son and with worship.
+
+Seth is born. Eve says God has appointed another seed instead of Abel. That word seed reaches back to Genesis 3:15. Abel is dead. Cain is exiled. But the promise is not dead.
+
+Then people begin to call on the name of Yahweh.
+
+After shame, exile, anger, murder, city-building, and violent boasting, worship still rises.
+
+## 🔥 Why This Matters For The Whole Bible
+
+Genesis 3-4 sets up the Bible's rescue story.
+
+The rest of Scripture will keep answering the problems introduced here. How can shame be covered? How can sinners return to God's presence? How can death be defeated? How can violence be judged? How can the serpent be crushed? How can people call on the name of the Lord and be saved?
+
+The answer will not come through human effort alone.
+
+It will come through God's promise, God's covenant faithfulness, and finally through Jesus Christ.
+
+## 🔗 Bible Connections
+
+Genesis 3-4 is like a doorway into the rest of Scripture.
+
+Almost every major Bible theme begins to show up here in seed form. The words may not be fully developed yet, but the patterns are already present.
+
+🐍 The serpent points forward to the enemy who deceives and opposes God's people.
+
+🌱 The seed of the woman points forward to the promised rescuer.
+
+🧥 The garments point forward to the need for God to cover human shame.
+
+🚪 Eden's closed gate points forward to the question of how sinners can return to God's presence.
+
+🩸 Abel's blood points forward to the seriousness of innocent blood and injustice.
+
+🙏 Calling on the name of the LORD points forward to worship, prayer, and salvation.
+
+Cain and Abel also begin a pattern of conflict between two ways of life. Abel comes before God in faith. Cain becomes angry when his heart is exposed. That same conflict keeps appearing throughout Scripture: faith and pride, humility and resentment, worship and self-rule.
+
+Later, Hebrews remembers Abel as a man of faith. First John remembers Cain as a warning about hatred. Jesus speaks of Abel's righteous blood. That means Genesis 4 is not a small side story. The rest of the Bible keeps returning to it because it teaches something deep about worship, anger, violence, and the human heart.
+
+## 🏺 Culture And History
+
+Genesis 3-4 also speaks into the ancient world around Israel.
+
+Many ancient stories explained the world through battles between gods, unpredictable divine anger, or humans created mainly to serve the gods like workers. Genesis gives a different foundation.
+
+The world is not broken because God failed.
+
+The world is not violent because creation was born from divine violence.
+
+The world is broken because humans distrusted God's word and stepped outside His good boundary.
+
+That makes Genesis morally serious. Human beings are not treated like helpless pieces in a divine game. Adam, Eve, and Cain are addressed as responsible people. God asks questions. God gives commands. God warns. God judges. That means human choices matter.
+
+At the same time, Genesis is not naive about human culture. Cain's line builds a city, develops livestock life, music, and metalwork. These are real gifts. The Bible is not against creativity, cities, art, tools, or cultural development.
+
+But Genesis refuses to say that progress automatically saves the heart.
+
+🏙️ A city can be built while violence grows.
+
+🎶 Music can exist in a world that still needs mercy.
+
+🛠️ Tools can develop while pride develops too.
+
+👑 Human ability remains, but human character is wounded.
+
+That is still true today. People can build amazing things and still be deeply broken. Technology can advance while anger, pride, exploitation, and revenge continue. Genesis 4 helps us understand why better tools do not automatically create better hearts.
+
+## 🧠 Big Words And Ideas To Carry Forward
+
+### Trust
+
+Genesis 3 is about trust before it is about fruit.
+
+The serpent wants Eve to distrust God's goodness. Adam and Eve act as if God's command is not life-giving. The fall begins when God's word is no longer treated as trustworthy.
+
+### Shame
+
+Shame is more than embarrassment.
+
+In Genesis 3, shame makes Adam and Eve hide from each other and from God. Shame makes people cover, avoid, and fear being seen. The Bible's answer to shame is not pretending sin is small. God's answer is covering, mercy, truth, and restored relationship.
+
+### Exile
+
+Exile means being sent away from the place of life and presence.
+
+Adam and Eve are sent out of Eden. Cain goes out from the presence of the LORD. Later, Israel will experience exile from the land. Genesis begins the pattern: sin pushes people away from the place of blessing, but God keeps working toward restoration.
+
+### Worship
+
+Genesis 4 shows worship outside Eden.
+
+That matters because humanity is no longer in the garden, but people can still seek the LORD. Worship becomes a sign that hope is alive even east of Eden.
+
+## 🙏 What This Teaches Us
+
+Genesis 3-4 teaches us to take sin seriously without losing hope.
+
+Sin is not only a mistake. It is a power that twists desire, breaks trust, creates shame, spreads blame, grows anger, and damages other people.
+
+But God is not passive.
+
+God comes near.
+
+God speaks truth.
+
+God asks questions.
+
+God warns before Cain acts.
+
+God hears innocent blood.
+
+God covers shame.
+
+God preserves a line of hope.
+
+God keeps the rescue story moving.
+
+> ✨ **Big Thought:** The fall explains why the world is broken, but God's mercy explains why the story is not over.
+
+# Final Thought For Day 2
+
+Genesis 3-4 is painful, but it is not hopeless.
+
+It tells the truth about sin. Sin questions God, twists desire, breaks trust, creates shame, spreads blame, grows anger, destroys family, and corrupts culture.
+
+But it also tells the truth about God. God comes looking. God speaks. God judges. God promises. God covers. God warns. God hears. God protects. God preserves hope.
+
+That is the foundation for understanding the rest of the Bible.
+
+The Bible is not a story about people climbing their way back to Eden.
+
+It is the story of God making a way back to life.
+
+# Pause And Reflect
+
+Where do you see the serpent's question, Has God really said?, showing up in modern life?
+
+What is one place where shame makes people hide instead of come into the light?
+
+Why does it matter that God asked Adam where he was before announcing judgment?
+
+What does Cain teach us about anger before it becomes action?
+
+How does Seth's birth show that God's promise keeps moving even after terrible failure?`;
