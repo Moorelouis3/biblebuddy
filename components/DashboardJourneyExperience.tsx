@@ -76,6 +76,17 @@ type BibleYearProgressRow = {
   reflection_completed: boolean | null;
 };
 const BIBLE_YEAR_DAY_CARD_KEYS: BibleYearDayCardKey[] = ["reading", "trivia", "reflection"];
+
+function getStableBibleYearTriviaOptions(questionId: string, options: string[], answer: string) {
+  if (options.length <= 1) return options;
+  const hash = Array.from(questionId).reduce((total, char) => total + char.charCodeAt(0), 0);
+  let shift = hash % options.length;
+  if (options[0] === answer && shift === 0) {
+    shift = (hash % (options.length - 1)) + 1;
+  }
+  return [...options.slice(shift), ...options.slice(0, shift)];
+}
+
 const STUDY_BOOK_BY_TITLE: Record<string, string> = {
   "The Creation of the World": "Genesis",
   "The Fall of Man": "Genesis",
@@ -6481,7 +6492,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div className="mt-4">
                 <p className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">{currentQuestion.question}</p>
                 <div className="mt-3 grid gap-2">
-                  {currentQuestion.options.map((option) => {
+                  {getStableBibleYearTriviaOptions(currentQuestion.id, currentQuestion.options, currentQuestion.answer).map((option) => {
                     const isSelected = selectedAnswer === option;
                     const isCorrect = Boolean(selectedAnswer && option === currentQuestion.answer);
                     const isWrongSelection = Boolean(selectedAnswer && isSelected && option !== currentQuestion.answer);
@@ -7071,7 +7082,11 @@ Before we understand redemption, we need to understand what God made humanity fo
 
         <div className="grid gap-3">
           {dashboardAllDone ? renderBibleYearCompletedDayPanel(day) : null}
-          {renderDashboardTaskCards(activeTasksToRender)}
+          {activeTasksToRender.length ? (
+            <div className="hidden gap-3 sm:grid">
+              {renderDashboardTaskCards(activeTasksToRender)}
+            </div>
+          ) : null}
           {renderBibleYearCompletedTasksPanel(day)}
         </div>
       </section>
@@ -8933,6 +8948,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                               milestoneDay?.coverImage ||
                               getDashboardStudyCover(milestoneDay?.readings[0]?.studyTitle || milestoneDay?.title || milestone.label) ||
                               "/thefallofman.png";
+                            const milestoneDayLabel = `Day ${milestone.dayNumber}`;
 
                             return (
                               <div key={milestone.dayNumber} className="relative px-1 text-center">
@@ -8965,7 +8981,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                           ? "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] hover:border-[var(--bb-accent,#2f7fe8)]"
                                           : "border-[var(--bb-card-border,#dbe7f4)] opacity-80"
                                   }`}
-                                  aria-label={`${milestone.label} ${isComplete ? "complete" : isCurrent ? "in progress" : isUnlocked ? "unlocked" : "locked"}`}
+                                  aria-label={`${milestoneDayLabel} ${isComplete ? "complete" : isCurrent ? "in progress" : isUnlocked ? "unlocked" : "locked"}`}
                                 >
                                   <span className="relative block h-full w-full overflow-hidden rounded-[10px] bg-[var(--bb-surface-soft,#f4f8ff)]">
                                     <img
@@ -8992,7 +9008,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                     {isComplete ? "✓" : isCurrent ? "•" : "🔒"}
                                   </span>
                                 </button>
-                                <p className="mt-2 truncate text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">{milestone.label}</p>
+                                <p className="mt-2 truncate text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">{milestoneDayLabel}</p>
                                 <p className={`mt-0.5 text-[10px] font-bold leading-tight ${
                                   isComplete
                                     ? "text-emerald-500"
