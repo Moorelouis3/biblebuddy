@@ -1807,6 +1807,7 @@ export default function DashboardJourneyExperience({
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
   const [bibleYearOptionalDiscussionDay, setBibleYearOptionalDiscussionDay] = useState<number | null>(null);
+  const [bibleYearReflectionPostedByDay, setBibleYearReflectionPostedByDay] = useState<Record<number, boolean>>({});
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
   const [dashboardGreeting, setDashboardGreeting] = useState("Good evening");
 
@@ -6781,6 +6782,13 @@ Before we understand redemption, we need to understand what God made humanity fo
     return `bible-in-one-year-day-${day.dayNumber}-${day.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
   }
 
+  function markBibleYearReflectionPosted(day: GenesisBibleYearDay) {
+    setBibleYearReflectionPostedByDay((current) => ({
+      ...current,
+      [day.dayNumber]: true,
+    }));
+  }
+
   function getBibleYearDiscussionRewardLabel(day: GenesisBibleYearDay) {
     return `Bible in One Year Day ${day.dayNumber} Discussion Diamond Reward: ${day.title}`;
   }
@@ -6956,6 +6964,43 @@ Before we understand redemption, we need to understand what God made humanity fo
 
     void syncSavedBibleYearReflections();
   }, [bibleYearCompletedCardsByDay, userId]);
+
+  useEffect(() => {
+    if (!userId) return;
+    const discussionDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber === 1 || day.dayNumber === 2);
+    const slugToDayNumber = new Map(discussionDays.map((day) => [getBibleYearReflectionSlug(day), day.dayNumber]));
+    if (!slugToDayNumber.size) return;
+
+    async function syncPostedBibleYearDiscussions() {
+      try {
+        const { data, error } = await supabase
+          .from("article_comments")
+          .select("article_slug")
+          .eq("user_id", userId)
+          .eq("is_deleted", false)
+          .in("article_slug", Array.from(slugToDayNumber.keys()));
+
+        if (error) {
+          console.error("[BIBLE_YEAR_DISCUSSION] Could not check saved discussion posts:", error);
+          return;
+        }
+
+        const postedDayNumbers = Array.from(new Set((data || []).map((row) => slugToDayNumber.get(row.article_slug)).filter(Boolean))) as number[];
+        if (!postedDayNumbers.length) return;
+        setBibleYearReflectionPostedByDay((current) => {
+          const next = { ...current };
+          postedDayNumbers.forEach((dayNumber) => {
+            next[dayNumber] = true;
+          });
+          return next;
+        });
+      } catch (error) {
+        console.error("[BIBLE_YEAR_DISCUSSION] Could not sync saved discussion posts:", error);
+      }
+    }
+
+    void syncPostedBibleYearDiscussions();
+  }, [userId]);
 
   function startBibleYearCompletionAnimation(dayNumber: number, card: BibleYearDayCardKey) {
     const nonce = Date.now();
@@ -7573,10 +7618,14 @@ Before we understand redemption, we need to understand what God made humanity fo
               submitButtonText="Send"
               variant="plain"
               onPosted={() => {
+                markBibleYearReflectionPosted(day);
                 markBibleYearDayCardComplete(day, "reflection");
                 void awardBibleYearDiscussionDiamonds(day);
               }}
-              onUserHasPosted={() => markBibleYearDayCardComplete(day, "reflection")}
+              onUserHasPosted={() => {
+                markBibleYearReflectionPosted(day);
+                markBibleYearDayCardComplete(day, "reflection");
+              }}
             />
           </div>
         </div>
@@ -7613,8 +7662,10 @@ Before we understand redemption, we need to understand what God made humanity fo
             submitButtonText="Send"
             variant="plain"
             onPosted={() => {
+              markBibleYearReflectionPosted(day);
               void awardBibleYearDiscussionDiamonds(day);
             }}
+            onUserHasPosted={() => markBibleYearReflectionPosted(day)}
           />
         </div>
       </div>
@@ -7624,6 +7675,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleYearCompletedDayPanel(day: GenesisBibleYearDay) {
     const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === day.dayNumber + 1);
     const usesSimpleDailyFlow = day.dayNumber === 1 || day.dayNumber === 2;
+    const reflectionPosted = bibleYearReflectionPostedByDay[day.dayNumber] === true;
 
     return (
       <div className="completion-panel-enter rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent)] p-5 text-center shadow-[0_16px_42px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] backdrop-blur">
@@ -7649,13 +7701,19 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <button
                   type="button"
                   onClick={() => setBibleYearOptionalDiscussionDay((current) => current === day.dayNumber ? null : day.dayNumber)}
-                  className="w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+                  className={
+                    reflectionPosted
+                      ? "w-full rounded-2xl border border-emerald-300 bg-emerald-500 px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-emerald-600"
+                      : "w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+                  }
                   aria-expanded={bibleYearOptionalDiscussionDay === day.dayNumber}
                 >
-                  Join Day {day.dayNumber} Discussion
-                  <span className="ml-2 rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,var(--bb-card,#ffffff))] px-2 py-0.5 text-xs text-[var(--bb-accent,#2f7fe8)]">
-                    +{BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD} diamonds
-                  </span>
+                  {reflectionPosted ? "Reflection Posted" : `Join Day ${day.dayNumber} Discussion`}
+                  {!reflectionPosted ? (
+                    <span className="ml-2 rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,var(--bb-card,#ffffff))] px-2 py-0.5 text-xs text-[var(--bb-accent,#2f7fe8)]">
+                      +{BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD} diamonds
+                    </span>
+                  ) : null}
                 </button>
               ) : null}
             </div>
