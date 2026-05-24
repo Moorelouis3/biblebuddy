@@ -731,7 +731,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-12">
+    <div className="h-dvh min-h-screen overflow-y-auto bg-gray-50 pb-12 [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch]">
       {buddyReadyModal ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4">
           <div className="w-full max-w-md overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-white shadow-2xl">
