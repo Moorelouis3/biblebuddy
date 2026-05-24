@@ -1790,6 +1790,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearTermNotes, setBibleYearTermNotes] = useState<string | null>(null);
   const [bibleYearTermNotesError, setBibleYearTermNotesError] = useState<string | null>(null);
   const [bibleYearTermLoading, setBibleYearTermLoading] = useState(false);
+  const [bibleYearPersistentVideoDay, setBibleYearPersistentVideoDay] = useState<number | null>(null);
   const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
   const [bibleYearDeepNotesOpen, setBibleYearDeepNotesOpen] = useState(false);
   const [bibleYearDayOneDeepNotesGiftOpen, setBibleYearDayOneDeepNotesGiftOpen] = useState(false);
@@ -3415,6 +3416,7 @@ export default function DashboardJourneyExperience({
       setBibleYearTriviaQuestionIndexByDay({});
       setBibleYearCompletedTasksExpandedDay(null);
       setActiveBibleYearDayCard(null);
+      setBibleYearPersistentVideoDay(null);
       setBibleYearSeriesFilter("all");
       setBibleYearStudyNotesOpen(false);
       setBibleYearDeepNotesOpen(false);
@@ -7244,6 +7246,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             onClick={() => {
               if (videoComplete) return;
               setBibleYearDeepNotesOpen(false);
+              setBibleYearPersistentVideoDay(null);
               markBibleYearDayCardComplete(day, "reading");
             }}
             disabled={videoComplete}
@@ -8173,6 +8176,10 @@ Before we understand redemption, we need to understand what God made humanity fo
         : activeTask?.kind === task.kind &&
           (activeTask.href || "") === (task.href || "") &&
           (activeTask.chapterLabel || "") === (task.chapterLabel || "");
+      const keepBibleYearVideoMounted =
+        bibleYearTaskCard === "reading" &&
+        activeBibleYearDashboardDay?.dayNumber === bibleYearPersistentVideoDay &&
+        !task.done;
 
       const taskShellClasses = activeBibleYearDashboardDay
         ? isCardDisabled
@@ -8211,6 +8218,9 @@ Before we understand redemption, we need to understand what God made humanity fo
         onClick={() => {
           if (isCardDisabled) return;
           if (bibleYearTaskCard) {
+            if (bibleYearTaskCard === "reading" && activeBibleYearDashboardDay) {
+              setBibleYearPersistentVideoDay(activeBibleYearDashboardDay.dayNumber);
+            }
             setActiveBibleYearDayCard((current) => current === bibleYearTaskCard ? null : bibleYearTaskCard);
             return;
           }
@@ -8323,8 +8333,15 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         ) : null}
       </button>
-      {isActiveInlineTask ? (
-        <div className="px-3.5 pb-3 sm:px-4">
+      {isActiveInlineTask || keepBibleYearVideoMounted ? (
+        <div
+          className={
+            isActiveInlineTask
+              ? "px-3.5 pb-3 sm:px-4"
+              : "pointer-events-none absolute h-px w-px overflow-hidden opacity-0"
+          }
+          aria-hidden={!isActiveInlineTask}
+        >
           {bibleYearTaskCard && activeBibleYearDashboardDay ? (
             renderBibleYearInlineTask(bibleYearTaskCard, activeBibleYearDashboardDay)
           ) : (
@@ -11314,6 +11331,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                   : activeTask?.kind === task.kind &&
                     (activeTask.href || "") === (task.href || "") &&
                     (activeTask.chapterLabel || "") === (task.chapterLabel || "");
+                const keepBibleYearVideoMounted =
+                  bibleYearTaskCard === "reading" &&
+                  selectedBibleYearSeriesDay?.dayNumber === bibleYearPersistentVideoDay &&
+                  !task.done;
 
                 const taskShellClasses = task.done
                   ? "border-[#b9dcf4] bg-gradient-to-r from-[#eaf5ff] via-white to-[#e2f1fb] hover:bg-[#eaf5ff]"
@@ -11344,6 +11365,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                   onClick={() => {
                     if (isCardDisabled) return;
                     if (bibleYearTaskCard) {
+                      if (bibleYearTaskCard === "reading" && selectedBibleYearSeriesDay) {
+                        setBibleYearPersistentVideoDay(selectedBibleYearSeriesDay.dayNumber);
+                      }
                       setActiveBibleYearDayCard((current) => current === bibleYearTaskCard ? null : bibleYearTaskCard);
                       return;
                     }
@@ -11456,8 +11480,15 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </div>
                   ) : null}
                 </button>
-                {isActiveInlineTask ? (
-                  <div className="px-3.5 pb-3 sm:px-4">
+                {isActiveInlineTask || keepBibleYearVideoMounted ? (
+                  <div
+                    className={
+                      isActiveInlineTask
+                        ? "px-3.5 pb-3 sm:px-4"
+                        : "pointer-events-none absolute h-px w-px overflow-hidden opacity-0"
+                    }
+                    aria-hidden={!isActiveInlineTask}
+                  >
                     {bibleYearTaskCard && selectedBibleYearSeriesDay ? (
                       renderBibleYearInlineTask(bibleYearTaskCard, selectedBibleYearSeriesDay)
                     ) : (
