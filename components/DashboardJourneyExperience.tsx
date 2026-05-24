@@ -9797,6 +9797,17 @@ Before we understand redemption, we need to understand what God made humanity fo
           setBibleYearQuickUpgradeError(null);
         }}>
           <div className="bb-skin-glow-card relative w-full max-w-md overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_38%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_82%,transparent))] p-5 text-left text-[var(--bb-text-primary,#111827)] shadow-[0_28px_80px_rgba(0,0,0,0.45),0_0_38px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent)] backdrop-blur-xl">
+            {bibleYearQuickUpgradeLoading ? (
+              <div className="absolute inset-0 z-20 grid place-items-center bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent)] backdrop-blur-sm">
+                <div className="flex w-[min(260px,80%)] flex-col items-center rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-5 py-5 text-center shadow-[0_18px_48px_rgba(15,23,42,0.18)]">
+                  <span className="h-9 w-9 animate-spin rounded-full border-4 border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] border-t-[var(--bb-accent,#f6b44b)]" aria-hidden="true" />
+                  <span className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">Opening Stripe</span>
+                  <span className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                    Taking you to the {bibleYearQuickUpgradeLoading === "monthly" ? "$4.99 monthly" : "$50 yearly"} checkout.
+                  </span>
+                </div>
+              </div>
+            ) : null}
             <button
               type="button"
               onClick={() => {
@@ -9815,36 +9826,32 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
             <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">Choose your Pro plan</h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-              Unlock Study Notes, downloadable day study tools, videos, notes, bonus rewards, skins, and challenges. Cancel anytime.
+              Unlock Study Notes, deeper explanations, bonus rewards, skins, and challenges. Cancel anytime.
             </p>
-            <div className="mt-5 grid gap-3">
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <button
                 type="button"
                 onClick={() => startBibleYearQuickUpgrade("monthly")}
                 disabled={Boolean(bibleYearQuickUpgradeLoading)}
-                className="relative flex w-full items-center justify-between rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_30%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_84%,transparent)] px-5 py-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_48%,transparent)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                className="relative flex min-h-28 w-full flex-col justify-between rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_30%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_84%,transparent)] px-4 py-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_48%,transparent)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 <span>
                   <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Monthly</span>
                   <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Flexible access</span>
                 </span>
-                <span className="text-base font-black text-[var(--bb-accent,#f6b44b)]">
-                  {bibleYearQuickUpgradeLoading === "monthly" ? "Opening..." : "$4.99"}
-                </span>
+                <span className="mt-4 text-2xl font-black text-[var(--bb-accent,#f6b44b)]">$4.99</span>
               </button>
               <button
                 type="button"
                 onClick={() => startBibleYearQuickUpgrade("yearly")}
                 disabled={Boolean(bibleYearQuickUpgradeLoading)}
-                className="relative flex w-full items-center justify-between overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_44%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-5 py-4 text-left text-[var(--bb-button-text,#000000)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_32%,transparent)] transition hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                className="relative flex min-h-28 w-full flex-col justify-between overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_44%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-4 py-4 text-left text-[var(--bb-button-text,#000000)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_32%,transparent)] transition hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 <span>
                   <span className="block text-sm font-black">Yearly</span>
                   <span className="block text-xs font-bold opacity-80">Best value</span>
                 </span>
-                <span className="text-base font-black">
-                  {bibleYearQuickUpgradeLoading === "yearly" ? "Opening..." : "$50"}
-                </span>
+                <span className="mt-4 text-2xl font-black">$50</span>
               </button>
             </div>
             {bibleYearQuickUpgradeError ? (
