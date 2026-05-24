@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeCustomMemberBadge, resolveUserBadge } from "@/lib/userBadges";
-import { ensureCurrentWeekModeratorPayouts, getModeratorPayoutDashboard } from "@/lib/moderatorWeeklyDiamonds";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 
@@ -37,13 +36,6 @@ type AdminComment = {
   hasMyReply: boolean;
   hasModeratorReply?: boolean;
   isMine?: boolean;
-};
-
-type ProfileLite = {
-  user_id: string;
-  display_name: string | null;
-  username: string | null;
-  profile_image_url: string | null;
 };
 
 function getServerClients(request: NextRequest) {
@@ -196,26 +188,7 @@ function localDayUtcRange(timezoneOffsetMinutes = 0) {
   return { startIso: start.toISOString(), endIso: end.toISOString() };
 }
 
-function displayName(profile: Partial<ProfileLite> | null | undefined, fallback = "Bible Buddy") {
-  return profile?.display_name || profile?.username || fallback;
-}
-
-function describeAction(actionType: string, actionLabel: string | null | undefined) {
-  const label = actionLabel || "";
-  const prettyLabel = label.replace(/^chapter:/i, "").replace(/^post:/i, "").replace(/_/g, " ").trim();
-
-  if (actionType.includes("trivia")) return prettyLabel ? `finished trivia for ${prettyLabel}` : "finished a trivia round";
-  if (actionType.includes("scrambled")) return prettyLabel ? `played Scrambled for ${prettyLabel}` : "played Scrambled";
-  if (actionType.includes("chapter") && actionType.includes("completed")) return prettyLabel ? `finished ${prettyLabel}` : "finished a Bible chapter";
-  if (actionType.includes("notes")) return prettyLabel ? `reviewed notes for ${prettyLabel}` : "reviewed Bible notes";
-  if (actionType.includes("reflection")) return prettyLabel ? `posted a reflection for ${prettyLabel}` : "posted a reflection";
-  if (actionType.includes("comment")) return prettyLabel ? `commented on ${prettyLabel}` : "posted a comment";
-  if (actionType.includes("like")) return prettyLabel ? `liked ${prettyLabel}` : "liked something";
-  if (actionType.includes("login")) return "opened Bible Buddy";
-  return prettyLabel ? `${actionType.replace(/_/g, " ")}: ${prettyLabel}` : actionType.replace(/_/g, " ");
-}
-
-function buildStats(comments: AdminComment[], requesterId: string, allCommentsForReplyStats = comments, timezoneOffsetMinutes = 0) {
+function buildStats(comments: AdminComment[], requesterId: string, allCommentsForReplyStats = comments) {
   const since24h = Date.now() - 24 * 60 * 60 * 1000;
   const todayComments = comments.filter((comment) => new Date(comment.createdAt).getTime() >= since24h);
   const myRepliesToday = allCommentsForReplyStats.filter((comment) => new Date(comment.createdAt).getTime() >= since24h && comment.userId === requesterId && comment.isReply);
@@ -245,18 +218,11 @@ export async function GET(request: NextRequest) {
 
   const { admin, requester } = auth;
   const limit = Math.min(Number(request.nextUrl.searchParams.get("limit") || 30), 100);
+  const commentPage = Math.max(0, Number(request.nextUrl.searchParams.get("page") || 0));
+  const commentFrom = commentPage * limit;
+  const sourceFetchLimit = Math.min((commentPage + 1) * limit + 80, 500);
   const timezoneOffsetMinutes = Number(request.nextUrl.searchParams.get("tzOffset") || 0);
-  const buddyPage = Math.max(0, Number(request.nextUrl.searchParams.get("buddyPage") || 0));
-  const buddyLimit = Math.min(Math.max(10, Number(request.nextUrl.searchParams.get("buddyLimit") || 20)), 50);
-  const buddyFrom = buddyPage * buddyLimit;
-  const buddyTo = buddyFrom + buddyLimit - 1;
   const todayRange = localDayUtcRange(timezoneOffsetMinutes);
-  const moderatorPayouts = await ensureCurrentWeekModeratorPayouts(admin)
-    .then(() => getModeratorPayoutDashboard(admin))
-    .catch((error) => {
-      console.warn("[MODERATOR_PAYOUTS] Could not load moderator payout tracker:", error);
-      return null;
-    });
 
   const [
     articleTopRes,
@@ -269,15 +235,15 @@ export async function GET(request: NextRequest) {
     reflectionTopRes,
     reflectionReplyRes,
   ] = await Promise.all([
-    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at").eq("is_deleted", false).is("parent_id", null).order("created_at", { ascending: false }).limit(limit),
-    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at").eq("is_deleted", false).not("parent_id", "is", null).order("created_at", { ascending: false }).limit(limit * 4),
-    admin.from("feed_post_comments").select("id, post_id, user_id, parent_comment_id, content, created_at").is("parent_comment_id", null).order("created_at", { ascending: false }).limit(limit),
-    admin.from("feed_post_comments").select("id, post_id, user_id, parent_comment_id, content, created_at").not("parent_comment_id", "is", null).order("created_at", { ascending: false }).limit(limit * 4),
-    admin.from("group_posts").select("id, group_id, user_id, display_name, category, title, content, parent_post_id, created_at").not("parent_post_id", "is", null).order("created_at", { ascending: false }).limit(limit * 5),
-    admin.from("group_series_post_comments").select("id, group_id, post_id, user_id, display_name, content, parent_comment_id, created_at").is("parent_comment_id", null).order("created_at", { ascending: false }).limit(limit),
-    admin.from("group_series_post_comments").select("id, group_id, post_id, user_id, display_name, content, parent_comment_id, created_at").not("parent_comment_id", "is", null).order("created_at", { ascending: false }).limit(limit * 4),
-    admin.from("series_reflections").select("id, series_id, week_number, user_id, display_name, content, parent_reflection_id, created_at").is("parent_reflection_id", null).order("created_at", { ascending: false }).limit(limit),
-    admin.from("series_reflections").select("id, series_id, week_number, user_id, display_name, content, parent_reflection_id, created_at").not("parent_reflection_id", "is", null).order("created_at", { ascending: false }).limit(limit * 4),
+    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at").eq("is_deleted", false).is("parent_id", null).order("created_at", { ascending: false }).limit(sourceFetchLimit),
+    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at").eq("is_deleted", false).not("parent_id", "is", null).order("created_at", { ascending: false }).limit(sourceFetchLimit * 3),
+    admin.from("feed_post_comments").select("id, post_id, user_id, parent_comment_id, content, created_at").is("parent_comment_id", null).order("created_at", { ascending: false }).limit(sourceFetchLimit),
+    admin.from("feed_post_comments").select("id, post_id, user_id, parent_comment_id, content, created_at").not("parent_comment_id", "is", null).order("created_at", { ascending: false }).limit(sourceFetchLimit * 3),
+    admin.from("group_posts").select("id, group_id, user_id, display_name, category, title, content, parent_post_id, created_at").not("parent_post_id", "is", null).order("created_at", { ascending: false }).limit(sourceFetchLimit * 2),
+    admin.from("group_series_post_comments").select("id, group_id, post_id, user_id, display_name, content, parent_comment_id, created_at").is("parent_comment_id", null).order("created_at", { ascending: false }).limit(sourceFetchLimit),
+    admin.from("group_series_post_comments").select("id, group_id, post_id, user_id, display_name, content, parent_comment_id, created_at").not("parent_comment_id", "is", null).order("created_at", { ascending: false }).limit(sourceFetchLimit * 3),
+    admin.from("series_reflections").select("id, series_id, week_number, user_id, display_name, content, parent_reflection_id, created_at").is("parent_reflection_id", null).order("created_at", { ascending: false }).limit(sourceFetchLimit),
+    admin.from("series_reflections").select("id, series_id, week_number, user_id, display_name, content, parent_reflection_id, created_at").not("parent_reflection_id", "is", null).order("created_at", { ascending: false }).limit(sourceFetchLimit * 3),
   ]);
 
   const comments: AdminComment[] = [];
@@ -405,7 +371,7 @@ export async function GET(request: NextRequest) {
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
 
-  const visibleComments = enrichedWithReplies.filter((comment) => !comment.isReply).slice(0, limit);
+  const visibleComments = enrichedWithReplies.filter((comment) => !comment.isReply).slice(commentFrom, commentFrom + limit);
   const feedPostIds = [...new Set(visibleComments.filter((comment) => comment.kind === "feed_post_comment" && comment.rootId).map((comment) => comment.rootId as string))];
   const groupParentIds = [...new Set(enrichedWithReplies.filter((comment) => comment.kind === "group_feed_comment" && comment.parentId).map((comment) => comment.parentId as string))];
   const seriesPostIds = [...new Set(visibleComments.filter((comment) => comment.kind === "series_post_comment" && comment.rootId).map((comment) => comment.rootId as string))];
@@ -523,56 +489,27 @@ export async function GET(request: NextRequest) {
     };
   });
 
-  const [signupRes, actionRes, activeRes] = await Promise.all([
-    admin
-      .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, created_at")
-      .gte("created_at", todayRange.startIso)
-      .lt("created_at", todayRange.endIso)
-      .order("created_at", { ascending: false })
-      .limit(12),
-    admin
-      .from("master_actions")
-      .select("id, user_id, username, action_type, action_label, created_at")
-      .gte("created_at", todayRange.startIso)
-      .lt("created_at", todayRange.endIso)
-      .order("created_at", { ascending: false })
-      .limit(60),
-    admin
-      .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, current_level, current_streak, total_actions, last_active_at, last_active_date", { count: "exact" })
-      .order("total_actions", { ascending: false, nullsFirst: false })
-      .range(buddyFrom, buddyTo),
-  ]);
-
-  const dashboardUserIds = [
-    ...(signupRes.data || []).map((row: any) => row.user_id),
-    ...(actionRes.data || []).map((row: any) => row.user_id),
-    ...(activeRes.data || []).map((row: any) => row.user_id),
-  ].filter(Boolean);
-  const missingProfileIds = [...new Set(dashboardUserIds)].filter((id) => !profileMap.has(id));
-
-  if (missingProfileIds.length > 0) {
-    const { data: dashboardProfiles } = await admin
-      .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, current_level, member_badge, is_paid, pro_trial_expires_at")
-      .in("user_id", missingProfileIds);
-
-    (dashboardProfiles || []).forEach((profile: any) => profileMap.set(profile.user_id, profile));
-  }
-
-  const hourlyActionCounts = Array.from({ length: 24 }, (_, hour) => ({
-    hour,
-    count: 0,
-  }));
-
-  (actionRes.data || []).forEach((action: any) => {
-    const actionDate = new Date(action.created_at);
-    if (Number.isNaN(actionDate.getTime())) return;
-    const localActionDate = new Date(actionDate.getTime() - timezoneOffsetMinutes * 60000);
-    const hour = localActionDate.getUTCHours();
-    if (hourlyActionCounts[hour]) hourlyActionCounts[hour].count += 1;
+  const statsComments = normalizedForStats.map((comment) => {
+    if (comment.isReply) return comment;
+    const replies = normalizedForStats.filter((reply) => reply.isReply && reply.kind === comment.kind && reply.parentId === comment.id);
+    const hasModeratorReply = replies.some((reply) => isStaffReply(reply.userId));
+    return {
+      ...comment,
+      hasModeratorReply,
+      hasMyReply: comment.hasMyReply || hasModeratorReply,
+    };
   });
+
+  const [signupRes, totalUsersRes] = await Promise.all([
+    admin
+      .from("profile_stats")
+      .select("user_id", { count: "exact", head: true })
+      .gte("created_at", todayRange.startIso)
+      .lt("created_at", todayRange.endIso),
+    admin
+      .from("profile_stats")
+      .select("user_id", { count: "exact", head: true }),
+  ]);
 
   return NextResponse.json({
     moderator: {
@@ -581,51 +518,11 @@ export async function GET(request: NextRequest) {
       image: auth.requesterImage,
       canAutoReply: true,
     },
-    moderatorPayouts,
     comments: enrichedWithProfiles,
-    recentSignups: (signupRes.data || []).map((row: any) => ({
-      userId: row.user_id,
-      name: displayName(row, "New Buddy"),
-      image: row.profile_image_url || null,
-      profileHref: `/profile/${row.user_id}`,
-      createdAt: row.created_at,
-    })),
-    activityFeed: (actionRes.data || []).slice(0, 25).map((row: any) => {
-      const profile = row.user_id ? profileMap.get(row.user_id) : null;
-      const name = displayName(profile, row.username || "Bible Buddy");
-      return {
-        id: row.id,
-        userId: row.user_id,
-        name,
-        image: profile?.profile_image_url || null,
-        profileHref: row.user_id ? `/profile/${row.user_id}` : null,
-        actionType: row.action_type,
-        actionLabel: row.action_label,
-        text: `${name} ${describeAction(row.action_type || "", row.action_label)}.`,
-        createdAt: row.created_at,
-      };
-    }),
-    hourlyActionCounts,
-    activeBuddies: {
-      page: buddyPage,
-      pageSize: buddyLimit,
-      total: activeRes.count ?? 0,
-      rows: (activeRes.data || []).map((row: any, index: number) => ({
-        rank: buddyFrom + index + 1,
-        userId: row.user_id,
-        name: displayName(row, "Bible Buddy"),
-        image: row.profile_image_url || null,
-        profileHref: `/profile/${row.user_id}`,
-        level: row.current_level ?? 1,
-        streak: row.current_streak ?? 0,
-        totalActions: row.total_actions ?? 0,
-        lastActiveAt: row.last_active_at || row.last_active_date || null,
-      })),
-    },
     stats: {
-      ...buildStats(enrichedWithProfiles, requester.id, normalizedForStats, timezoneOffsetMinutes),
-      signups24h: signupRes.data?.length ?? 0,
-      actions24h: actionRes.data?.length ?? 0,
+      ...buildStats(statsComments, requester.id, normalizedForStats),
+      signups24h: signupRes.count ?? 0,
+      totalUsers: totalUsersRes.count ?? 0,
     },
   });
 }

@@ -2797,7 +2797,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       setIsNotifOpen(!isNotifOpen);
                       if (!isNotifOpen && userId) fetchNotifications(userId);
                     }}
-                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-[var(--bb-surface-soft,#e5e7eb)] hover:opacity-85 text-[var(--bb-text-secondary,#374151)] transition-colors"
+                    className="relative flex h-9 w-9 items-center justify-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:text-[var(--bb-accent,#2f7fe8)]"
                     aria-label="Notifications"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2805,32 +2805,35 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                         d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                     </svg>
                     {visibleUnreadNotificationCount > 0 && (
-                      <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-red-500 text-white text-[10px] font-bold">
+                      <span
+                        className="absolute -right-1.5 -top-1.5 flex h-[1.1rem] min-w-[1.1rem] items-center justify-center rounded-full border-2 border-[var(--bb-card,#ffffff)] px-1 text-[10px] font-bold leading-none shadow-sm"
+                        style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
+                      >
                         {visibleUnreadNotificationCount > 9 ? "9+" : visibleUnreadNotificationCount}
                       </span>
                     )}
                   </button>
 
                   {isNotifOpen && (
-                    <div className="bb-skin-notification-panel fixed top-16 left-4 right-4 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
-                      <div className="bb-skin-notification-header flex items-center justify-between px-4 py-3 border-b border-gray-100">
-                        <span className="font-semibold text-sm text-gray-900">Notifications</span>
+                    <div className="bb-skin-notification-panel fixed top-16 left-4 right-4 z-50 overflow-hidden rounded-xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-lg sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-2 sm:w-80">
+                      <div className="bb-skin-notification-header flex items-center justify-between border-b border-[var(--bb-card-border,#e5e7eb)] px-4 py-3">
+                        <span className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">Notifications</span>
                         {visibleUnreadNotificationCount > 0 && (
-                          <button onClick={markAllRead} className="text-xs text-blue-600 hover:text-blue-700 font-medium">
+                          <button onClick={markAllRead} className="text-xs font-medium text-[var(--bb-accent,#2563eb)] transition hover:opacity-80">
                             Mark all read
                           </button>
                         )}
                       </div>
                       {pushSupported && showPushPrompt && (
                         <div
-                          className={`bb-skin-notification-push px-4 py-3 border-b border-gray-100 bg-[#f8fbf8] transition-all duration-200 ${
+                          className={`bb-skin-notification-push border-b border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#f4f8ff)] px-4 py-3 transition-all duration-200 ${
                             pushPromptClosing ? "opacity-0 -translate-y-1" : "opacity-100 translate-y-0"
                           }`}
                         >
                           <div className="flex items-center justify-between gap-3">
                             <div className="min-w-0">
-                              <p className="text-sm font-semibold text-gray-900">Phone Push Alerts</p>
-                              <p className="text-xs text-gray-500 mt-0.5">
+                              <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">Phone Push Alerts</p>
+                              <p className="mt-0.5 text-xs text-[var(--bb-text-secondary,#6b7280)]">
                                 {pushPermission === "granted" && pushSubscribed
                                   ? "Push alerts are on for this device."
                                   : "Turn on push alerts so new Bible Buddy notifications reach this device."}
@@ -2852,12 +2855,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                             <button
                               type="button"
                               onClick={() => hidePushPrompt(true)}
-                              className="text-xs font-medium text-gray-400 transition hover:text-gray-600"
+                              className="text-xs font-medium text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-text-secondary,#6b7280)]"
                             >
                               No thanks
                             </button>
                             {pushPermission === "granted" && pushSubscribed && (
-                              <span className="text-[11px] font-medium text-[#4a9b6f]">Saved for this device</span>
+                              <span className="text-[11px] font-medium text-[var(--bb-accent,#4a9b6f)]">Saved for this device</span>
                             )}
                           </div>
                           {pushError && <p className="text-xs text-red-500 mt-2">{pushError}</p>}
@@ -2869,8 +2872,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                             <div className="rounded-full bg-[#f4f8ff] p-2 shadow-sm">
                               <LouisAvatar mood="wave" size={44} />
                             </div>
-                            <p className="mt-3 text-sm font-semibold text-gray-800">No notifications yet</p>
-                            <p className="mt-1 text-xs leading-relaxed text-gray-500">
+                            <p className="mt-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)]">No notifications yet</p>
+                            <p className="mt-1 text-xs leading-relaxed text-[var(--bb-text-secondary,#6b7280)]">
                               Louis will keep this spot warm until your next update comes in.
                             </p>
                           </div>
@@ -2895,10 +2898,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               return (
                                 <div
                                   key={notif.id}
-                                  className={`bb-skin-notification-item px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
+                                  className={`bb-skin-notification-item border-b border-[var(--bb-card-border,#e5e7eb)] px-4 py-3 ${!notif.is_read ? "bg-[var(--bb-accent-soft,#eef7f1)]" : ""}`}
                                 >
-                                  <p className="text-sm text-gray-900 font-medium">{renderNotificationCopy(notif)}</p>
-                                  <p className="text-xs text-gray-400 mt-0.5 mb-2">{timeStr}</p>
+                                  <p className="text-sm font-medium text-[var(--bb-text-primary,#111827)]">{renderNotificationCopy(notif)}</p>
+                                  <p className="mb-2 mt-0.5 text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeStr}</p>
                                   <div className="flex gap-2">
                                     <button
                                       type="button"
@@ -2913,7 +2916,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                       type="button"
                                       disabled={isLoading}
                                       onClick={() => handleBuddyRequestDecline(notif)}
-                                      className="flex-1 py-1.5 rounded-lg text-xs font-semibold text-gray-600 bg-gray-100 border border-gray-200 hover:bg-gray-200 transition disabled:opacity-60"
+                                      className="flex-1 rounded-lg border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#f3f4f6)] py-1.5 text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] disabled:opacity-60"
                                     >
                                       Not Now
                                     </button>
@@ -2927,10 +2930,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               return (
                                 <div
                                   key={notif.id}
-                                  className={`bb-skin-notification-item px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
+                                  className={`bb-skin-notification-item border-b border-[var(--bb-card-border,#e5e7eb)] px-4 py-3 ${!notif.is_read ? "bg-[var(--bb-accent-soft,#eef7f1)]" : ""}`}
                                 >
-                                  <p className="text-sm text-gray-900 font-medium">{renderNotificationCopy(notif)}</p>
-                                  <p className="text-xs text-gray-400 mt-0.5">{timeStr}</p>
+                                  <p className="text-sm font-medium text-[var(--bb-text-primary,#111827)]">{renderNotificationCopy(notif)}</p>
+                                  <p className="mt-0.5 text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeStr}</p>
                                 </div>
                               );
                             }
@@ -2941,11 +2944,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 key={notif.id}
                                 type="button"
                                 onClick={() => handleNotifClick(notif)}
-                                className={`bb-skin-notification-item w-full text-left px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors ${!notif.is_read ? "bg-blue-50" : ""}`}
+                                className={`bb-skin-notification-item w-full border-b border-[var(--bb-card-border,#e5e7eb)] px-4 py-3 text-left transition-colors hover:bg-[var(--bb-surface-soft,#f3f4f6)] ${!notif.is_read ? "bg-[var(--bb-accent-soft,#eef7f1)]" : ""}`}
                               >
-                                <p className="text-sm text-gray-900 font-medium">{renderNotificationCopy(notif)}</p>
-                                {notifSourceLabel && <p className="text-xs text-blue-600 mt-0.5">{notifSourceLabel}</p>}
-                                <p className="text-xs text-gray-400 mt-0.5">{timeStr}</p>
+                                <p className="text-sm font-medium text-[var(--bb-text-primary,#111827)]">{renderNotificationCopy(notif)}</p>
+                                {notifSourceLabel && <p className="mt-0.5 text-xs text-[var(--bb-accent,#2563eb)]">{notifSourceLabel}</p>}
+                                <p className="mt-0.5 text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeStr}</p>
                               </button>
                             );
                           })
@@ -2966,7 +2969,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       setIsMessagesOpen(opening);
                       if (opening && userId) void fetchConversationPreviews(userId);
                     }}
-                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
+                    className="relative flex h-9 w-9 items-center justify-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:text-[var(--bb-accent,#2f7fe8)]"
                     aria-label="Messages"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

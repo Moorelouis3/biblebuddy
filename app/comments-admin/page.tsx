@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
 
@@ -41,72 +40,19 @@ type CommentStats = {
   today: number;
   myRepliesToday: number;
   needsReply: number;
-  actions24h?: number;
   signups24h?: number;
+  totalUsers?: number;
   bySource: Record<string, number>;
-  bySource24h?: Record<string, number>;
 };
 
-type RecentSignup = {
-  userId: string;
-  name: string;
-  image: string | null;
-  profileHref: string;
-  createdAt: string;
-};
-
-type ActiveBuddy = {
-  rank: number;
-  userId: string;
-  name: string;
-  image: string | null;
-  profileHref: string;
-  level: number;
-  streak: number;
-  totalActions: number;
-};
-
-type ActiveBuddiesPage = {
-  page: number;
-  pageSize: number;
-  total: number;
-  rows: ActiveBuddy[];
-};
-
-type ModeratorPayoutSummary = {
-  userId: string;
-  name: string;
-  image: string | null;
-  profileHref: string;
-  currentDiamonds: number;
-  totalDiamondsEarned: number;
-  lastPaidAt: string | null;
-  lastWeekStart: string | null;
-  totalPaid: number;
-  payoutCount: number;
-};
-
-type ModeratorPayoutDashboard = {
-  amount: number;
-  weekStart: string;
-  moderators: ModeratorPayoutSummary[];
-  totalPaidAllTime: number;
-};
+type StatusFilter = "needs" | "all" | "replied";
 
 const SOURCE_FILTERS = [
-  { value: "All", label: "All Sources", short: "All", color: "bg-gray-100 text-gray-700" },
-  { value: "Group Feed", label: "Group Feed Posts", short: "Group Feed", color: "bg-emerald-50 text-emerald-700" },
-  { value: "Bible Chapters", label: "Bible Chapter Posts", short: "Bible Chapters", color: "bg-sky-50 text-sky-700" },
-  { value: "Articles", label: "Article Posts", short: "Articles", color: "bg-violet-50 text-violet-700" },
+  { value: "All", label: "All" },
+  { value: "Bible Chapters", label: "Bible" },
+  { value: "Articles", label: "Studies" },
+  { value: "Group Feed", label: "Community" },
 ];
-
-const STATUS_FILTERS = [
-  { value: "needs", label: "Needs Reply" },
-  { value: "replied", label: "Already Replied" },
-  { value: "all", label: "All Comments" },
-] as const;
-
-type StatusFilter = (typeof STATUS_FILTERS)[number]["value"];
 
 function avatarFallback(name: string) {
   return (name || "B").trim().charAt(0).toUpperCase();
@@ -139,23 +85,21 @@ function formatTime(value: string) {
   });
 }
 
-function sourceHref(comment: AdminComment) {
-  if (!comment.href) return "/dashboard";
-  return comment.href.startsWith("/") ? comment.href : `/${comment.href}`;
+function sourceTone(source: string) {
+  if (source === "Bible Chapters") return "bg-blue-50 text-blue-700 border-blue-100";
+  if (source === "Group Feed") return "bg-emerald-50 text-emerald-700 border-emerald-100";
+  return "bg-violet-50 text-violet-700 border-violet-100";
 }
 
 function sourceLabel(source: string) {
-  if (source === "Bible Chapters") return "Bible Chapter";
-  if (source === "Group Feed") return "Group Feed";
-  return "Article";
+  if (source === "Bible Chapters") return "Bible";
+  if (source === "Group Feed") return "Community";
+  return "Study";
 }
 
 export default function CommentsAdminPage() {
   const [comments, setComments] = useState<AdminComment[]>([]);
   const [stats, setStats] = useState<CommentStats | null>(null);
-  const [recentSignups, setRecentSignups] = useState<RecentSignup[]>([]);
-  const [activeBuddies, setActiveBuddies] = useState<ActiveBuddiesPage | null>(null);
-  const [moderatorPayouts, setModeratorPayouts] = useState<ModeratorPayoutDashboard | null>(null);
   const [moderatorName, setModeratorName] = useState("Moderator");
   const [moderatorImage, setModeratorImage] = useState<string | null>(null);
   const [canAutoReply, setCanAutoReply] = useState(false);
@@ -163,22 +107,20 @@ export default function CommentsAdminPage() {
   const [error, setError] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("needs");
   const [sourceFilter, setSourceFilter] = useState("All");
-  const [hideMyComments, setHideMyComments] = useState(true);
   const [search, setSearch] = useState("");
-  const [showRecentSignups, setShowRecentSignups] = useState(false);
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [replyText, setReplyText] = useState("");
   const [postingId, setPostingId] = useState<string | null>(null);
   const [draftingId, setDraftingId] = useState<string | null>(null);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
-  const [buddyPage, setBuddyPage] = useState(0);
+  const [page, setPage] = useState(0);
 
   async function getToken() {
     const { data } = await supabase.auth.getSession();
     return data.session?.access_token || "";
   }
 
-  async function loadDashboard(page = buddyPage) {
+  async function loadDashboard(nextPage = page) {
     setLoading(true);
     setError(null);
     const token = await getToken();
@@ -189,9 +131,10 @@ export default function CommentsAdminPage() {
       return;
     }
 
-    const response = await fetch(`/api/comments/admin?limit=60&tzOffset=${new Date().getTimezoneOffset()}&buddyPage=${page}&buddyLimit=20`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await fetch(
+      `/api/comments/admin?limit=40&page=${nextPage}&tzOffset=${new Date().getTimezoneOffset()}`,
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
     const payload = await response.json().catch(() => null);
 
     if (!response.ok) {
@@ -202,9 +145,6 @@ export default function CommentsAdminPage() {
 
     setComments(payload.comments || []);
     setStats(payload.stats || null);
-    setRecentSignups(payload.recentSignups || []);
-    setActiveBuddies(payload.activeBuddies || null);
-    setModeratorPayouts(payload.moderatorPayouts || null);
     setModeratorName(payload.moderator?.name || "Moderator");
     setModeratorImage(payload.moderator?.image || null);
     setCanAutoReply(Boolean(payload.moderator?.canAutoReply));
@@ -212,14 +152,13 @@ export default function CommentsAdminPage() {
   }
 
   useEffect(() => {
-    void loadDashboard(buddyPage);
-  }, [buddyPage]);
+    void loadDashboard(page);
+  }, [page]);
 
   const filteredComments = useMemo(() => {
     const needle = search.trim().toLowerCase();
     return comments.filter((comment) => {
       const isReplied = Boolean(comment.hasModeratorReply || comment.hasMyReply);
-      if (hideMyComments && comment.isMine) return false;
       if (statusFilter === "needs" && isReplied) return false;
       if (statusFilter === "replied" && !isReplied) return false;
       if (sourceFilter !== "All" && comment.source !== sourceFilter) return false;
@@ -229,39 +168,22 @@ export default function CommentsAdminPage() {
         .toLowerCase()
         .includes(needle);
     });
-  }, [comments, hideMyComments, search, sourceFilter, statusFilter]);
-
-  const sourceCounts = useMemo(() => {
-    return comments.reduce<Record<string, number>>((acc, comment) => {
-      const isReplied = Boolean(comment.hasModeratorReply || comment.hasMyReply);
-      if (hideMyComments && comment.isMine) return acc;
-      if (statusFilter === "needs" && isReplied) return acc;
-      if (statusFilter === "replied" && !isReplied) return acc;
-      acc[comment.source] = (acc[comment.source] || 0) + 1;
-      acc.All = (acc.All || 0) + 1;
-      return acc;
-    }, {});
-  }, [comments, hideMyComments, statusFilter]);
-
-  function openReply(comment: AdminComment) {
-    setReplyingTo(`${comment.kind}-${comment.id}`);
-    setReplyText("");
-    setStatusMessage(null);
-  }
+  }, [comments, search, sourceFilter, statusFilter]);
 
   async function draftAutoReply(comment: AdminComment) {
-    setReplyingTo(`${comment.kind}-${comment.id}`);
+    const key = `${comment.kind}-${comment.id}`;
+    setReplyingTo(key);
     setDraftingId(comment.id);
     setStatusMessage(null);
     try {
       const draft = await requestAutoReplyDraft({
-        originalPostTitle: cleanText(comment.contextTitle || comment.sourceLabel, 120),
+        originalPostTitle: cleanText(comment.contextTitle || comment.sourceLabel, 140),
         originalPostContent: cleanText(comment.contextContent || `${comment.source}: ${comment.sourceLabel}`, 900),
         targetCommentContent: cleanText(comment.content, 900),
         targetDisplayName: comment.userName,
       });
       setReplyText(draft);
-      setStatusMessage("Auto reply drafted. Review it before posting.");
+      setStatusMessage("Reply drafted. Review it, edit if needed, then send.");
     } catch (error) {
       setStatusMessage(error instanceof Error ? error.message : "Could not draft an auto reply.");
     } finally {
@@ -301,314 +223,230 @@ export default function CommentsAdminPage() {
           : item,
       ),
     );
+    setStats((current) =>
+      current
+        ? {
+            ...current,
+            myRepliesToday: current.myRepliesToday + 1,
+            needsReply: Math.max(0, current.needsReply - 1),
+          }
+        : current,
+    );
     setReplyingTo(null);
     setReplyText("");
-    setStatusMessage("Reply posted. That comment is marked as replied now.");
+    setStatusMessage("Reply sent. That comment is marked as replied.");
   }
 
-  const metricCards = [
-    { label: "New Bible Buddy members", value: stats?.signups24h ?? recentSignups.length, action: "signups" as const },
-    { label: "Total comments", value: stats?.today ?? 0 },
-    { label: "Comments needing reply", value: stats?.needsReply ?? 0, filter: "needs" as const },
-    { label: "Replied in 24 hours", value: stats?.myRepliesToday ?? 0, filter: "replied" as const },
-    { label: "Total user actions", value: stats?.actions24h ?? 0 },
-    { label: "Bible chapter comments", value: stats?.bySource24h?.["Bible Chapters"] ?? 0, source: "Bible Chapters" },
-    { label: "Group feed comments", value: stats?.bySource24h?.["Group Feed"] ?? 0, source: "Group Feed" },
-    { label: "Article comments", value: stats?.bySource24h?.Articles ?? 0, source: "Articles" },
+  const statCards = [
+    { label: "New Users Today", value: stats?.signups24h ?? 0 },
+    { label: "Total Users", value: stats?.totalUsers ?? 0 },
+    { label: "New Comments Today", value: stats?.today ?? 0 },
+    { label: "Comments Needing Reply", value: stats?.needsReply ?? 0, click: () => setStatusFilter("needs") },
+    { label: "Your Replies Today", value: stats?.myRepliesToday ?? 0, click: () => setStatusFilter("replied") },
   ];
 
-  const activeStart = activeBuddies ? activeBuddies.page * activeBuddies.pageSize + 1 : 0;
-  const activeEnd = activeBuddies ? activeStart + Math.max(activeBuddies.rows.length - 1, 0) : 0;
+  const repliesToday = stats?.myRepliesToday ?? 0;
 
   return (
-    <main className="min-h-screen bg-[#f6f8f3] px-4 py-6 text-gray-950 sm:px-6">
-      <div className="mx-auto max-w-6xl">
-        <section className="mb-5 rounded-3xl border border-[#d8e7f3] bg-white p-4 shadow-sm">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <main className="min-h-screen bg-[#f7faf5] px-4 py-6 text-slate-950 sm:px-6">
+      <div className="mx-auto max-w-5xl">
+        <section className="rounded-[30px] border border-emerald-100 bg-white p-5 shadow-[0_18px_45px_rgba(54,83,64,0.08)]">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
-              <span className="grid h-14 w-14 place-items-center overflow-hidden rounded-full border border-white bg-[#eaf6ff] text-xl font-black text-[#2f6685] shadow-sm">
+              <span className="grid h-14 w-14 place-items-center overflow-hidden rounded-2xl border border-emerald-100 bg-emerald-50 text-xl font-black text-emerald-700">
                 {moderatorImage ? <img src={moderatorImage} alt="" className="h-full w-full object-cover" /> : avatarFallback(moderatorName)}
               </span>
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#5b8fb8]">Bible Buddy Moderation</p>
-                <h1 className="text-2xl font-black">Moderator Dashboard</h1>
-                <p className="text-sm font-semibold text-gray-600">
-                  Welcome back, {moderatorName}. Work the comments that need replies first.
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">Community Inbox</p>
+                <h1 className="text-2xl font-black">Welcome back, {moderatorName}.</h1>
+                <p className="mt-1 max-w-2xl text-sm font-semibold leading-6 text-slate-600">
+                  Help encourage the BibleBuddy community through thoughtful replies and guidance.
                 </p>
               </div>
             </div>
             <button
               type="button"
               onClick={() => void loadDashboard()}
-              className="h-11 rounded-full bg-[#7BAFD4] px-5 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+              className="h-11 rounded-full bg-emerald-600 px-5 text-sm font-black text-white shadow-sm transition hover:bg-emerald-700"
             >
-              Refresh
+              Refresh Inbox
             </button>
           </div>
         </section>
 
-        <section className="mb-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-          {metricCards.map((card) => (
+        <section className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {statCards.map((card) => (
             <button
               key={card.label}
               type="button"
-              onClick={() => {
-                if (card.action === "signups") setShowRecentSignups((value) => !value);
-                if (card.filter) setStatusFilter(card.filter);
-                if (card.source) setSourceFilter(card.source);
-              }}
-              className="rounded-2xl border border-black/5 bg-white px-4 py-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#7BAFD4]"
+              onClick={card.click}
+              className="rounded-[22px] border border-slate-100 bg-white px-4 py-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200"
             >
-              <p className="text-xs font-bold uppercase tracking-[0.12em] text-gray-500">Last 24 hours</p>
-              <p className="mt-1 text-3xl font-black">{card.value}</p>
-              <p className="mt-1 text-sm font-black text-gray-700">{card.label}</p>
+              <p className="text-3xl font-black text-slate-950">{Number(card.value || 0).toLocaleString()}</p>
+              <p className="mt-2 text-xs font-black uppercase tracking-[0.12em] text-slate-500">{card.label}</p>
             </button>
           ))}
         </section>
 
-        <section className="mb-5 rounded-3xl border border-[#f1d99f] bg-[#fff9e8] p-4 shadow-sm">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#9a6115]">Moderator Diamonds</p>
-              <h2 className="text-xl font-black">Weekly Moderator Payout Tracker</h2>
-              <p className="text-sm font-semibold text-[#7a5b25]">
-                Each moderator with the Moderator badge gets {moderatorPayouts?.amount?.toLocaleString() || "1,000"} diamonds once per week.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-[#efcf85] bg-white/70 px-4 py-3 text-sm font-black text-[#7a4a0c]">
-              Week of {moderatorPayouts?.weekStart || "this week"} · {(moderatorPayouts?.totalPaidAllTime ?? 0).toLocaleString()} total paid
-            </div>
-          </div>
-
-          <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-            {(moderatorPayouts?.moderators || []).map((moderator) => (
-              <Link key={moderator.userId} href={moderator.profileHref} className="rounded-2xl border border-[#efcf85] bg-white p-3 shadow-sm transition hover:border-[#dca93e]">
-                <div className="flex items-center gap-3">
-                  <span className="grid h-11 w-11 flex-none place-items-center overflow-hidden rounded-full bg-[#fff0c2] text-sm font-black text-[#9a6115]">
-                    {moderator.image ? <img src={moderator.image} alt="" className="h-full w-full object-cover" /> : avatarFallback(moderator.name)}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-black">{moderator.name}</span>
-                    <span className="text-xs font-bold text-[#8a6115]">
-                      Last paid: {moderator.lastPaidAt ? formatTime(moderator.lastPaidAt) : "Not yet"}
-                    </span>
-                  </span>
-                </div>
-                <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-                  <span className="rounded-2xl bg-[#fff7df] px-2 py-2">
-                    <span className="block text-lg font-black text-[#9a6115]">{moderator.currentDiamonds.toLocaleString()}</span>
-                    <span className="text-[10px] font-black uppercase tracking-wide text-[#8a6115]">Stash</span>
-                  </span>
-                  <span className="rounded-2xl bg-[#fff7df] px-2 py-2">
-                    <span className="block text-lg font-black text-[#9a6115]">{moderator.totalPaid.toLocaleString()}</span>
-                    <span className="text-[10px] font-black uppercase tracking-wide text-[#8a6115]">Paid</span>
-                  </span>
-                  <span className="rounded-2xl bg-[#fff7df] px-2 py-2">
-                    <span className="block text-lg font-black text-[#9a6115]">{moderator.payoutCount}</span>
-                    <span className="text-[10px] font-black uppercase tracking-wide text-[#8a6115]">Weeks</span>
-                  </span>
-                </div>
-              </Link>
-            ))}
-            {!moderatorPayouts?.moderators?.length ? (
-              <p className="text-sm font-semibold text-[#7a5b25]">No moderators found yet.</p>
-            ) : null}
-          </div>
-        </section>
-
-        {showRecentSignups ? (
-          <section className="mb-5 rounded-3xl border border-black/5 bg-white p-4 shadow-sm">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6d8f57]">Recent New Bible Buddies</p>
-                <h2 className="text-xl font-black">New members in the last 24 hours</h2>
-              </div>
-              <button type="button" onClick={() => setShowRecentSignups(false)} className="rounded-full bg-gray-100 px-3 py-1 text-sm font-black">
-                Hide
-              </button>
-            </div>
-            <div className="mt-4 grid gap-2 md:grid-cols-2">
-              {recentSignups.map((signup) => (
-                <Link key={signup.userId} href={signup.profileHref} className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-[#fbfcf8] p-3">
-                  <span className="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-[#eaf6ff] text-sm font-black text-[#2f6685]">
-                    {signup.image ? <img src={signup.image} alt="" className="h-full w-full object-cover" /> : avatarFallback(signup.name)}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block truncate text-sm font-black">{signup.name}</span>
-                    <span className="text-xs font-semibold text-gray-500">{formatTime(signup.createdAt)}</span>
-                  </span>
-                </Link>
-              ))}
-              {!recentSignups.length ? <p className="text-sm font-semibold text-gray-500">No new signups found in the last 24 hours.</p> : null}
-            </div>
-          </section>
-        ) : null}
-
-        <section className="rounded-3xl border border-black/5 bg-white shadow-sm">
-          <div className="border-b border-gray-100 p-4">
+        <section className="mt-4 overflow-hidden rounded-[30px] border border-slate-100 bg-white shadow-[0_18px_45px_rgba(54,83,64,0.08)]">
+          <div className="border-b border-slate-100 p-4">
             <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6d8f57]">Main Queue</p>
-                <h2 className="text-2xl font-black">Comment Action List</h2>
-                <p className="text-sm font-semibold text-gray-500">
-                  Newest top-level comments. Reply inline and the queue clears as you go.
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">Live Comment Queue</p>
+                <h2 className="mt-1 text-2xl font-black">Comments needing encouragement</h2>
+                <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
+                  Reply from one calm inbox across Bible studies, reflections, topics, and community posts.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-                <label className="flex h-10 items-center gap-2 rounded-full border border-gray-200 bg-white px-4 text-sm font-bold text-gray-700">
-                  <input
-                    type="checkbox"
-                    checked={hideMyComments}
-                    onChange={(event) => setHideMyComments(event.target.checked)}
-                    className="h-4 w-4 rounded border-gray-300 accent-[#7BAFD4]"
-                  />
-                  Hide my comments
-                </label>
-                <input
-                  value={search}
-                  onChange={(event) => setSearch(event.target.value)}
-                  placeholder="Search comments"
-                  className="h-10 rounded-full border border-gray-200 px-4 text-sm outline-none focus:border-[#6d8f57] focus:ring-2 focus:ring-[#dbead1]"
-                />
-              </div>
+              <input
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                placeholder="Search comments"
+                className="h-11 rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold outline-none focus:border-emerald-300 focus:ring-4 focus:ring-emerald-100"
+              />
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {STATUS_FILTERS.map((filter) => (
+              {[
+                ["needs", "Needs Reply"],
+                ["all", "Newest"],
+                ["replied", "Replied"],
+              ].map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => setStatusFilter(value as StatusFilter)}
+                  className={`rounded-full px-4 py-2 text-sm font-black transition ${
+                    statusFilter === value ? "bg-emerald-600 text-white shadow-sm" : "bg-emerald-50 text-emerald-800 hover:bg-emerald-100"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+              {SOURCE_FILTERS.map((filter) => (
                 <button
                   key={filter.value}
                   type="button"
-                  onClick={() => setStatusFilter(filter.value)}
+                  onClick={() => setSourceFilter(filter.value)}
                   className={`rounded-full px-4 py-2 text-sm font-black transition ${
-                    statusFilter === filter.value ? "bg-[#7BAFD4] text-slate-950 shadow-sm" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    sourceFilter === filter.value ? "bg-[#7BAFD4] text-slate-950 shadow-sm" : "bg-slate-50 text-slate-600 hover:bg-slate-100"
                   }`}
                 >
                   {filter.label}
                 </button>
               ))}
             </div>
-
-            <div className="mt-3 flex flex-wrap gap-2">
-              {SOURCE_FILTERS.map((filter) => (
-                <button
-                  key={filter.value}
-                  type="button"
-                  onClick={() => setSourceFilter(filter.value)}
-                  className={`rounded-full px-3 py-1.5 text-xs font-black transition ${
-                    sourceFilter === filter.value ? "bg-[#6d8f57] text-white shadow-sm" : filter.color
-                  }`}
-                >
-                  {filter.label} ({sourceCounts[filter.value] || 0})
-                </button>
-              ))}
-            </div>
           </div>
 
-          {statusMessage ? <p className="mx-4 mt-4 rounded-2xl bg-[#f4faf5] p-3 text-sm font-bold text-[#557842]">{statusMessage}</p> : null}
+          {statusMessage ? (
+            <p className="mx-4 mt-4 rounded-2xl border border-emerald-100 bg-emerald-50 p-3 text-sm font-bold text-emerald-800">
+              {statusMessage}
+            </p>
+          ) : null}
 
           {loading ? (
-            <div className="p-10 text-center text-sm font-semibold text-gray-500">Loading comments...</div>
+            <div className="p-10 text-center text-sm font-semibold text-slate-500">Loading community inbox...</div>
           ) : error ? (
             <div className="p-10 text-center text-sm font-semibold text-red-600">{error}</div>
           ) : filteredComments.length === 0 ? (
-            <div className="p-10 text-center text-sm font-semibold text-gray-500">No comments found for this filter.</div>
+            <div className="p-10 text-center text-sm font-semibold text-slate-500">No comments found for this filter.</div>
           ) : (
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-slate-100">
               {filteredComments.map((comment) => {
                 const key = `${comment.kind}-${comment.id}`;
                 const isReplied = Boolean(comment.hasModeratorReply || comment.hasMyReply);
                 const replyOpen = replyingTo === key;
-                const sourceFilterMeta = SOURCE_FILTERS.find((item) => item.value === comment.source) || SOURCE_FILTERS[0];
 
                 return (
-                  <article key={key} className="bg-white p-4 transition hover:bg-[#fbfcf8]">
+                  <article key={key} className="p-4 transition hover:bg-[#fbfdf9]">
                     <div className="flex items-start gap-3">
-                      <Link
-                        href={comment.userProfileHref || "#"}
-                        className="grid h-11 w-11 flex-none place-items-center overflow-hidden rounded-full bg-[#eaf6ff] text-sm font-black text-[#2f6685]"
-                      >
+                      <span className="grid h-11 w-11 flex-none place-items-center overflow-hidden rounded-full bg-[#eaf6ff] text-sm font-black text-[#2f6685]">
                         {comment.userImage ? <img src={comment.userImage} alt="" className="h-full w-full object-cover" /> : avatarFallback(comment.userName)}
-                      </Link>
+                      </span>
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
-                          <Link href={comment.userProfileHref || "#"} className="font-black hover:text-[#4f8fb7]">
-                            {comment.userName || "Bible Buddy"}
-                          </Link>
+                          <p className="font-black">{comment.userName || "Bible Buddy"}</p>
                           <span className="rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-xs font-black text-blue-700">
                             L{comment.userLevel ?? 1}
                           </span>
                           {comment.userBadgeLabel ? (
-                            <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${comment.userBadgeClassName || "bg-gray-100 text-gray-700"}`}>
+                            <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${comment.userBadgeClassName || "bg-slate-100 text-slate-700"}`}>
                               {comment.userBadgeEmoji ? `${comment.userBadgeEmoji} ` : ""}
                               {comment.userBadgeLabel}
                             </span>
                           ) : null}
-                          <span className={`rounded-full px-2 py-0.5 text-xs font-black ${sourceFilterMeta.color}`}>
+                          <span className={`rounded-full border px-2 py-0.5 text-xs font-black ${sourceTone(comment.source)}`}>
                             {sourceLabel(comment.source)}
                           </span>
                           <span className={`rounded-full px-2 py-0.5 text-xs font-black ${isReplied ? "bg-green-50 text-green-700" : "bg-amber-50 text-amber-700"}`}>
-                            {isReplied ? "Replied" : "Not Replied"}
+                            {isReplied ? "Replied" : "Needs reply"}
                           </span>
                         </div>
 
-                        <p className="mt-1 text-xs font-semibold text-gray-500">
-                          {cleanText(comment.sourceLabel, 80)} - {formatTime(comment.createdAt)} - {comment.replyCount} {comment.replyCount === 1 ? "reply" : "replies"}
+                        <p className="mt-1 text-xs font-semibold text-slate-500">
+                          {cleanText(comment.sourceLabel, 92)} - {formatTime(comment.createdAt)}
                         </p>
-                        <p className="mt-2 whitespace-pre-wrap text-[15px] leading-7 text-gray-900">{cleanText(comment.content, 900) || "No comment text"}</p>
+                        <p className="mt-3 whitespace-pre-wrap text-[15px] font-semibold leading-7 text-slate-900">
+                          {cleanText(comment.content, 900) || "No comment text"}
+                        </p>
 
-                        {comment.contextTitle || comment.contextContent ? (
-                          <div className="mt-3 rounded-2xl border border-gray-100 bg-[#fbfcf8] px-3 py-2">
-                            <p className="text-xs font-black uppercase tracking-[0.12em] text-gray-400">Commented on</p>
-                            <p className="mt-1 line-clamp-1 text-sm font-black text-gray-800">{cleanText(comment.contextTitle || comment.sourceLabel, 120)}</p>
-                            {comment.contextContent ? <p className="mt-1 line-clamp-2 text-xs font-semibold leading-5 text-gray-500">{cleanText(comment.contextContent, 240)}</p> : null}
-                          </div>
-                        ) : null}
+                        <div className="mt-3 rounded-2xl border border-slate-100 bg-[#fbfcf8] px-3 py-2">
+                          <p className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-400">Source Location</p>
+                          <p className="mt-1 text-sm font-black text-slate-800">{cleanText(comment.contextTitle || comment.sourceLabel, 130)}</p>
+                          {comment.contextContent ? (
+                            <p className="mt-1 line-clamp-2 text-xs font-semibold leading-5 text-slate-500">
+                              {cleanText(comment.contextContent, 240)}
+                            </p>
+                          ) : null}
+                        </div>
 
-                        <div className="mt-3 flex flex-wrap gap-2 text-sm font-black">
-                          <Link
-                            href={sourceHref(comment)}
-                            target="_blank"
-                            className="rounded-full border border-gray-200 bg-white px-4 py-2 text-gray-700 hover:bg-gray-50"
-                          >
-                            Open Source
-                          </Link>
-                          <button
-                            type="button"
-                            onClick={() => openReply(comment)}
-                            className="rounded-full bg-[#eaf4fa] px-4 py-2 text-[#2f6685] hover:bg-[#d8edf8]"
-                          >
-                            Reply
-                          </button>
+                        <div className="mt-3 flex flex-wrap items-center gap-2">
                           {canAutoReply ? (
                             <button
                               type="button"
                               onClick={() => void draftAutoReply(comment)}
                               disabled={draftingId === comment.id}
-                              className="rounded-full bg-[#fff3cf] px-4 py-2 text-[#8a6115] hover:bg-[#ffe9a6] disabled:opacity-60"
+                              className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-black text-white shadow-sm transition hover:bg-emerald-700 disabled:opacity-60"
                             >
-                              {draftingId === comment.id ? "Drafting..." : "Auto Reply"}
+                              {draftingId === comment.id ? "Writing..." : "Auto Reply"}
                             </button>
                           ) : null}
+                          <button
+                            type="button"
+                            className="grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-lg font-black text-slate-500 transition hover:bg-slate-50"
+                            aria-label="More options"
+                            title="More options"
+                          >
+                            ...
+                          </button>
                         </div>
 
                         {replyOpen ? (
-                          <div className="mt-4 rounded-2xl border border-[#d8e7f3] bg-[#f7fbfd] p-3">
-                            <label className="text-sm font-black text-gray-900">Reply to {comment.userName}</label>
+                          <div className="mt-4 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-3">
+                            <label className="text-sm font-black text-slate-900">Auto reply preview</label>
                             <textarea
                               value={replyText}
                               onChange={(event) => setReplyText(event.target.value)}
                               rows={4}
-                              placeholder="Write a kind, helpful reply..."
-                              className="mt-2 w-full resize-none rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 outline-none focus:border-[#6d8f57] focus:ring-2 focus:ring-[#dbead1]"
+                              placeholder="BibleBuddy will draft a warm reply here..."
+                              className="mt-2 w-full resize-none rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-sm font-semibold leading-6 outline-none focus:border-emerald-300 focus:ring-4 focus:ring-emerald-100"
                             />
                             <div className="mt-2 flex flex-wrap gap-2">
                               <button
                                 type="button"
                                 onClick={() => void submitReply(comment)}
                                 disabled={postingId === comment.id || !replyText.trim()}
-                                className="rounded-full bg-[#6d8f57] px-5 py-2 text-sm font-black text-white shadow-sm hover:bg-[#5f804b] disabled:opacity-60"
+                                className="rounded-full bg-emerald-600 px-5 py-2 text-sm font-black text-white shadow-sm hover:bg-emerald-700 disabled:opacity-60"
                               >
-                                {postingId === comment.id ? "Posting..." : "Post Reply"}
+                                {postingId === comment.id ? "Sending..." : "Send"}
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => void draftAutoReply(comment)}
+                                disabled={draftingId === comment.id}
+                                className="rounded-full border border-emerald-200 bg-white px-5 py-2 text-sm font-black text-emerald-800 hover:bg-emerald-50 disabled:opacity-60"
+                              >
+                                Regenerate
                               </button>
                               <button
                                 type="button"
@@ -616,7 +454,7 @@ export default function CommentsAdminPage() {
                                   setReplyingTo(null);
                                   setReplyText("");
                                 }}
-                                className="rounded-full border border-gray-200 bg-white px-5 py-2 text-sm font-black text-gray-600 hover:bg-gray-50"
+                                className="rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-black text-slate-600 hover:bg-slate-50"
                               >
                                 Cancel
                               </button>
@@ -630,54 +468,39 @@ export default function CommentsAdminPage() {
               })}
             </div>
           )}
+
+          <div className="flex items-center justify-between gap-3 border-t border-slate-100 p-4">
+            <button
+              type="button"
+              onClick={() => setPage((value) => Math.max(0, value - 1))}
+              disabled={page === 0}
+              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-black text-slate-700 disabled:opacity-40"
+            >
+              Previous
+            </button>
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-400">Page {page + 1}</p>
+            <button
+              type="button"
+              onClick={() => setPage((value) => value + 1)}
+              disabled={comments.length < 40}
+              className="rounded-full bg-[#7BAFD4] px-4 py-2 text-sm font-black text-slate-950 disabled:opacity-40"
+            >
+              Next
+            </button>
+          </div>
         </section>
 
-        <section className="mt-5 rounded-3xl border border-black/5 bg-white p-4 shadow-sm">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6d8f57]">Community</p>
-              <h2 className="text-xl font-black">Most Active Bible Buddies</h2>
-              <p className="text-sm font-semibold text-gray-500">
-                {activeBuddies?.total ? `Showing ${activeStart}-${activeEnd} of ${activeBuddies.total}` : "Loaded in pages for speed"}
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => setBuddyPage((page) => Math.max(0, page - 1))}
-                disabled={buddyPage === 0}
-                className="rounded-full border border-gray-200 px-4 py-2 text-sm font-black text-gray-700 disabled:opacity-40"
-              >
-                Previous
-              </button>
-              <button
-                type="button"
-                onClick={() => setBuddyPage((page) => page + 1)}
-                disabled={!activeBuddies || activeEnd >= activeBuddies.total}
-                className="rounded-full bg-[#7BAFD4] px-4 py-2 text-sm font-black text-slate-950 disabled:opacity-40"
-              >
-                Next 20
-              </button>
-            </div>
-          </div>
-
-          <div className="mt-4 grid gap-2 md:grid-cols-2 xl:grid-cols-4">
-            {(activeBuddies?.rows || []).map((buddy) => (
-              <Link key={buddy.userId} href={buddy.profileHref} className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-[#fbfcf8] p-3 transition hover:border-[#c8d9bd]">
-                <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-[#fef3c7] text-sm font-black text-[#9a6115]">{buddy.rank}</span>
-                <span className="grid h-11 w-11 flex-none place-items-center overflow-hidden rounded-full bg-[#eaf6ff] text-sm font-black text-[#2f6685]">
-                  {buddy.image ? <img src={buddy.image} alt="" className="h-full w-full object-cover" /> : avatarFallback(buddy.name)}
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-black">{buddy.name}</span>
-                  <span className="text-xs font-bold text-gray-500">
-                    L{buddy.level} - {buddy.totalActions} actions - {buddy.streak} streak
-                  </span>
-                </span>
-              </Link>
-            ))}
-            {!activeBuddies?.rows?.length ? <p className="text-sm font-semibold text-gray-500">No active Buddies found.</p> : null}
-          </div>
+        <section className="mt-4 rounded-[30px] border border-emerald-100 bg-white p-5 shadow-sm">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">Thank You</p>
+          <h2 className="mt-1 text-xl font-black">
+            You replied to {repliesToday.toLocaleString()} {repliesToday === 1 ? "comment" : "comments"} today.
+          </h2>
+          <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
+            Thank you for helping build an encouraging BibleBuddy community. A gentle reply can help someone keep showing up to Scripture.
+          </p>
+          <p className="mt-3 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-black leading-6 text-emerald-900">
+            "Encourage one another and build one another up." - 1 Thessalonians 5:11
+          </p>
         </section>
       </div>
     </main>
