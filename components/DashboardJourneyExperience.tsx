@@ -1797,8 +1797,6 @@ export default function DashboardJourneyExperience({
   const [bibleYearQuickUpgradeLoading, setBibleYearQuickUpgradeLoading] = useState<"monthly" | "yearly" | null>(null);
   const [bibleYearQuickUpgradeError, setBibleYearQuickUpgradeError] = useState<string | null>(null);
   const [bibleYearDownloadPrompt, setBibleYearDownloadPrompt] = useState<{ dayNumber: number; title: string; videoUrl: string } | null>(null);
-  const [bibleYearDeepNotesCompletedByDay, setBibleYearDeepNotesCompletedByDay] = useState<Record<number, boolean>>({});
-  const [bibleYearDeepNotesCompletingDay, setBibleYearDeepNotesCompletingDay] = useState<number | null>(null);
   const [bibleYearCompletionAnimation, setBibleYearCompletionAnimation] = useState<{ dayNumber: number; card: BibleYearDayCardKey; nonce: number } | null>(null);
   const [bibleYearRewardToast, setBibleYearRewardToast] = useState<{ dayNumber: number; text: string; nonce: number } | null>(null);
   const bibleYearXpBackfillKeyRef = useRef("");
@@ -6942,71 +6940,6 @@ Before we understand redemption, we need to understand what God made humanity fo
     }, 1800);
   }
 
-  async function awardBibleYearDeepNotesDiamonds(amount: number) {
-    if (!userId || amount <= 0) return;
-    const { data } = await supabase
-      .from("profile_stats")
-      .select("diamonds_count")
-      .eq("user_id", userId)
-      .maybeSingle();
-    const currentDiamonds = Math.max(0, Number(data?.diamonds_count ?? profile?.diamonds_count ?? 0));
-    const nextDiamonds = currentDiamonds + amount;
-    const { error } = await supabase
-      .from("profile_stats")
-      .upsert({ user_id: userId, diamonds_count: nextDiamonds }, { onConflict: "user_id" });
-    if (error) throw error;
-    if (typeof window !== "undefined") {
-      window.dispatchEvent(new CustomEvent("bb:diamonds-awarded", { detail: { amount, diamonds: nextDiamonds } }));
-    }
-  }
-
-  async function completeBibleYearDeepNotes(day: GenesisBibleYearDay) {
-    if (!userId || bibleYearDeepNotesCompletingDay === day.dayNumber || bibleYearDeepNotesCompletedByDay[day.dayNumber]) return;
-    setBibleYearDeepNotesCompletingDay(day.dayNumber);
-    const baseLabel = `Bible in One Year Day ${day.dayNumber} Study Notes Completed`;
-    try {
-      const { data: existing, error: existingError } = await supabase
-        .from("master_actions")
-        .select("id")
-        .eq("user_id", userId)
-        .eq("action_type", ACTION_TYPE.louis_daily_task_bonus)
-        .eq("action_label", baseLabel)
-        .limit(1)
-        .maybeSingle();
-      if (existingError) throw existingError;
-      if (existing) {
-        setBibleYearDeepNotesCompletedByDay((current) => ({ ...current, [day.dayNumber]: true }));
-        return;
-      }
-
-      const username = userName || profile?.username || "Bible Buddy";
-      const { error: deepNotesBonusError } = await supabase.from("master_actions").insert([
-        {
-          user_id: userId,
-          action_type: ACTION_TYPE.louis_daily_task_bonus,
-          action_label: baseLabel,
-          username,
-        },
-        {
-          user_id: userId,
-          action_type: ACTION_TYPE.louis_daily_task_bonus,
-          action_label: `${baseLabel} Extra XP`,
-          username,
-        },
-      ]);
-      if (deepNotesBonusError) throw deepNotesBonusError;
-      await awardBibleYearDeepNotesDiamonds(100);
-      triggerPoints(100);
-      setBibleYearDeepNotesCompletedByDay((current) => ({ ...current, [day.dayNumber]: true }));
-      showBibleYearRewardToast(day.dayNumber, "+100 XP +100 diamonds");
-      onDevotionalChanged();
-    } catch (error) {
-      console.error("[BIBLE_YEAR_DEEP_NOTES] Could not complete study notes:", error);
-    } finally {
-      setBibleYearDeepNotesCompletingDay(null);
-    }
-  }
-
   async function handleContinueToNextBibleYearDay(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
     if (continuingBibleYearDay === day.dayNumber) return;
     setContinuingBibleYearDay(day.dayNumber);
@@ -7249,8 +7182,6 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleYearSummaryTask(day: GenesisBibleYearDay) {
     const summaryComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reflection === true;
     const { markdown: deepNotesMarkdown, sections: deepStudySections } = getBibleYearDayDeepNotes(day.dayNumber);
-    const deepNotesCompleted = bibleYearDeepNotesCompletedByDay[day.dayNumber] === true;
-    const deepNotesCompleting = bibleYearDeepNotesCompletingDay === day.dayNumber;
     const summaryHighlights = [
       ["✨", "God speaks into darkness and brings light."],
       ["🌍", "God shapes the world into a home filled with life and purpose."],
@@ -7350,28 +7281,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                 ) : (
                   <ChapterNotesMarkdown>{deepNotesMarkdown || ""}</ChapterNotesMarkdown>
                 )}
-                <div className="mt-6 rounded-2xl border border-emerald-300/50 bg-emerald-50 p-4">
-                  <p className="text-lg font-black leading-tight text-emerald-950">Finished the Study Notes?</p>
-                  <p className="mt-2 text-sm font-semibold leading-6 text-emerald-900">
-                    Claim your optional Study Notes study bonus. This does not replace the regular summary task.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => void completeBibleYearDeepNotes(day)}
-                    disabled={deepNotesCompleted || deepNotesCompleting}
-                    className={`mt-4 flex w-full items-center justify-center gap-3 rounded-2xl px-5 py-4 text-base font-black transition ${
-                      deepNotesCompleted
-                        ? "cursor-default bg-emerald-200 text-emerald-950"
-                        : "bg-emerald-300 text-emerald-950 hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
-                    }`}
-                  >
-                    <span aria-hidden="true">✓</span>
-                    <span>{deepNotesCompleted ? "Study Notes Completed" : deepNotesCompleting ? "Saving..." : "Mark Study Notes Complete"}</span>
-                  </button>
-                  <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-900/80">
-                    +100 XP +100 diamonds
-                  </p>
-                </div>
               </div>
             </div>
           ) : null}
@@ -7421,28 +7330,6 @@ Before we understand redemption, we need to understand what God made humanity fo
               ) : (
                 <ChapterNotesMarkdown>{deepNotesMarkdown || ""}</ChapterNotesMarkdown>
               )}
-              <div className="mt-8 rounded-[24px] border border-emerald-300/50 bg-emerald-50 p-4 shadow-[0_14px_32px_rgba(16,185,129,0.12)]">
-                <p className="text-lg font-black leading-tight text-emerald-950">Finished the Study Notes?</p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-emerald-900/82">
-                  Claim your optional Study Notes study bonus. This does not replace the regular summary task.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => void completeBibleYearDeepNotes(day)}
-                  disabled={deepNotesCompleted || deepNotesCompleting}
-                  className={`mt-4 flex w-full items-center justify-center gap-3 rounded-2xl px-5 py-4 text-base font-black shadow-[0_0_30px_rgba(16,185,129,0.32)] transition ${
-                    deepNotesCompleted
-                      ? "cursor-default bg-emerald-400 text-emerald-950"
-                      : "bg-emerald-300 text-emerald-950 hover:scale-[1.01] hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
-                  }`}
-                >
-                  <span aria-hidden="true">✓</span>
-                  <span>{deepNotesCompleted ? "Study Notes Completed" : deepNotesCompleting ? "Saving..." : "Mark Study Notes Complete"}</span>
-                </button>
-                <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-800/80">
-                  +100 XP +100 diamonds
-                </p>
-              </div>
             </div>
           </div>
         </ModalShell>
@@ -8908,8 +8795,6 @@ Before we understand redemption, we need to understand what God made humanity fo
     const hasDeepNotes = Boolean(deepNotesMarkdown);
     const deepNotesEyebrow = `Day ${day.dayNumber} Study Notes`;
     const deepNotesTitle = day.title;
-    const deepNotesCompleted = bibleYearDeepNotesCompletedByDay[day.dayNumber] === true;
-    const deepNotesCompleting = bibleYearDeepNotesCompletingDay === day.dayNumber;
     const deepStudySections =
       day.dayNumber === 1
         ? BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS
@@ -9381,8 +9266,6 @@ Before we understand redemption, we need to understand what God made humanity fo
     const sectionDeepNotesFocus = useSectionDeepStudy && hasDeepNotes && Boolean(deepNotesMarkdown) && bibleYearDeepNotesOpen;
 
     if (!useSectionDeepStudy && hasDeepNotes && deepNotesMarkdown && bibleYearDeepNotesOpen) {
-      const deepNotesCompleted = bibleYearDeepNotesCompletedByDay[day.dayNumber] === true;
-      const deepNotesCompleting = bibleYearDeepNotesCompletingDay === day.dayNumber;
       return (
         <article className="mx-auto max-w-xl overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-left text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(14,26,58,0.22)]">
           <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-3">
@@ -9401,28 +9284,6 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
           <div className="px-4 pb-24 pt-5">
             <ChapterNotesMarkdown>{deepNotesMarkdown}</ChapterNotesMarkdown>
-            <div className="mt-8 rounded-[24px] border border-emerald-300/50 bg-emerald-50 p-4 shadow-[0_14px_32px_rgba(16,185,129,0.12)]">
-              <p className="text-lg font-black leading-tight text-emerald-950">Finished the Study Notes?</p>
-              <p className="mt-2 text-sm font-semibold leading-6 text-emerald-900/82">
-                Claim your optional Study Notes study bonus. This does not replace the regular reading task.
-              </p>
-              <button
-                type="button"
-                onClick={() => void completeBibleYearDeepNotes(day)}
-                disabled={deepNotesCompleted || deepNotesCompleting}
-                className={`mt-4 flex w-full items-center justify-center gap-3 rounded-2xl px-5 py-4 text-base font-black shadow-[0_0_30px_rgba(16,185,129,0.32)] transition ${
-                  deepNotesCompleted
-                    ? "cursor-default bg-emerald-400 text-emerald-950"
-                    : "bg-emerald-300 text-emerald-950 hover:scale-[1.01] hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
-                }`}
-              >
-                <span aria-hidden="true">✓</span>
-                <span>{deepNotesCompleted ? "Study Notes Completed" : deepNotesCompleting ? "Saving..." : "Mark Study Notes Complete"}</span>
-              </button>
-              <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-800/80">
-                +100 XP +100 diamonds
-              </p>
-            </div>
           </div>
         </article>
       );
@@ -9517,28 +9378,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                 ) : (
                   <ChapterNotesMarkdown>{deepNotesMarkdown || ""}</ChapterNotesMarkdown>
                 )}
-                <div className={`${day.dayNumber === 2 ? "mt-3 rounded-2xl p-0 shadow-none" : "mt-8 rounded-[24px] border border-emerald-300/40 bg-[linear-gradient(135deg,rgba(16,185,129,0.18),rgba(0,0,0,0.22))] p-4 shadow-[0_0_32px_rgba(16,185,129,0.18)]"}`}>
-                  {day.dayNumber !== 2 ? <p className="text-lg font-black leading-tight text-emerald-100">Finished the Study Notes?</p> : null}
-                  {day.dayNumber !== 2 ? <p className="mt-2 text-sm font-semibold leading-6 text-emerald-50/82">
-                    Claim your optional Study Notes study bonus. This does not replace the regular reading task.
-                  </p> : null}
-                  <button
-                    type="button"
-                    onClick={() => void completeBibleYearDeepNotes(day)}
-                    disabled={deepNotesCompleted || deepNotesCompleting}
-                    className={`${day.dayNumber === 2 ? "mt-0 py-3 text-sm shadow-[0_0_18px_rgba(16,185,129,0.22)]" : "mt-4 py-4 text-base shadow-[0_0_30px_rgba(16,185,129,0.32)]"} flex w-full items-center justify-center gap-3 rounded-2xl px-5 font-black transition ${
-                      deepNotesCompleted
-                        ? "cursor-default bg-emerald-400 text-emerald-950"
-                        : "bg-emerald-300 text-emerald-950 hover:scale-[1.01] hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
-                    }`}
-                  >
-                    <span aria-hidden="true">✓</span>
-                    <span>{deepNotesCompleted ? "Study Notes Complete" : deepNotesCompleting ? "Saving..." : "Mark Study Notes Complete"}</span>
-                  </button>
-                  {day.dayNumber !== 2 ? <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-100/80">
-                    +100 XP +100 diamonds
-                  </p> : null}
-                </div>
               </div>
             </div>
           ) : null}
@@ -9616,50 +9455,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                     activeReference={bibleYearOpenVerseBreakdownKey}
                     onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
                     topId={`bible-year-day-${day.dayNumber}-deep-study-top`}
-                    onBottomReached={() => void completeBibleYearDeepNotes(day)}
-                    bottomReachedDisabled={deepNotesCompleted || deepNotesCompleting}
-                    footer={
-                      <button
-                        type="button"
-                        onClick={() => void completeBibleYearDeepNotes(day)}
-                        disabled={deepNotesCompleted || deepNotesCompleting}
-                        className={`flex w-full items-center gap-3 px-3 py-3 text-left transition ${
-                          deepNotesCompleted
-                            ? "cursor-default bg-emerald-100 text-emerald-950"
-                            : "text-[var(--bb-text-primary,#111827)] hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_8%,var(--bb-card,#ffffff))] disabled:cursor-wait disabled:opacity-75"
-                        }`}
-                      >
-                        <span aria-hidden="true">✓</span>
-                        <span>{deepNotesCompleted ? "Study Notes Complete" : deepNotesCompleting ? "Saving..." : "Mark Study Notes Complete"}</span>
-                        <span className="text-xs font-black opacity-80">+100 XP</span>
-                      </button>
-                    }
                   />
                 ) : (
                   <ChapterNotesMarkdown>{deepNotesMarkdown || ""}</ChapterNotesMarkdown>
                 )}
-                {!deepStudySections ? <div className="mt-8 rounded-[24px] border border-emerald-300/50 bg-emerald-50 p-4 shadow-[0_14px_32px_rgba(16,185,129,0.12)]">
-                  <p className="text-lg font-black leading-tight text-emerald-950">Finished the Study Notes?</p>
-                  <p className="mt-2 text-sm font-semibold leading-6 text-emerald-900/82">
-                    Claim your optional Study Notes study bonus. This does not replace the regular reading task.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => void completeBibleYearDeepNotes(day)}
-                    disabled={deepNotesCompleted || deepNotesCompleting}
-                    className={`mt-4 flex w-full items-center justify-center gap-3 rounded-2xl px-5 py-4 text-base font-black shadow-[0_0_30px_rgba(16,185,129,0.32)] transition ${
-                      deepNotesCompleted
-                        ? "cursor-default bg-emerald-400 text-emerald-950"
-                        : "bg-emerald-300 text-emerald-950 hover:scale-[1.01] hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
-                    }`}
-                  >
-                    <span aria-hidden="true">âœ“</span>
-                    <span>{deepNotesCompleted ? "Study Notes Completed" : deepNotesCompleting ? "Saving..." : "Mark Study Notes Complete"}</span>
-                  </button>
-                  <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-800/80">
-                    +100 XP +100 diamonds
-                  </p>
-                </div> : null}
               </div>
             </div>
           ) : null}
@@ -9839,28 +9638,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                     ) : (
                       <ChapterNotesMarkdown>{deepNotesMarkdown || ""}</ChapterNotesMarkdown>
                     )}
-                    <div className="mt-8 rounded-[24px] border border-emerald-300/40 bg-[linear-gradient(135deg,rgba(16,185,129,0.18),rgba(0,0,0,0.22))] p-4 shadow-[0_0_32px_rgba(16,185,129,0.18)]">
-                      <p className="text-lg font-black leading-tight text-emerald-100">Finished the Study Notes?</p>
-                      <p className="mt-2 text-sm font-semibold leading-6 text-emerald-50/82">
-                        Claim your optional Study Notes study bonus. This does not replace the regular reading task.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => void completeBibleYearDeepNotes(day)}
-                        disabled={deepNotesCompleted || deepNotesCompleting}
-                        className={`mt-4 flex w-full items-center justify-center gap-3 rounded-2xl px-5 py-4 text-base font-black shadow-[0_0_30px_rgba(16,185,129,0.32)] transition ${
-                          deepNotesCompleted
-                            ? "cursor-default bg-emerald-400 text-emerald-950"
-                            : "bg-emerald-300 text-emerald-950 hover:scale-[1.01] hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
-                        }`}
-                      >
-                        <span aria-hidden="true">✓</span>
-                        <span>{deepNotesCompleted ? "Study Notes Completed" : deepNotesCompleting ? "Saving..." : "Mark Study Notes Complete"}</span>
-                      </button>
-                      <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-100/80">
-                        +100 XP +100 diamonds
-                      </p>
-                    </div>
                   </div>
                 </div>
               ) : null}

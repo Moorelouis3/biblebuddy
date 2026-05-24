@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useRef } from "react";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy";
 
@@ -10,9 +10,6 @@ type BibleYearDeepStudySectionCardsProps = {
   onActiveReferenceChange: (reference: string | null) => void;
   topId?: string;
   className?: string;
-  onBottomReached?: () => void;
-  bottomReachedDisabled?: boolean;
-  footer?: ReactNode;
 };
 
 const bibleReferenceLinePattern =
@@ -74,34 +71,8 @@ export default function BibleYearDeepStudySectionCards({
   onActiveReferenceChange,
   topId,
   className = "",
-  onBottomReached,
-  bottomReachedDisabled = false,
 }: BibleYearDeepStudySectionCardsProps) {
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const bottomRef = useRef<HTMLDivElement | null>(null);
-  const bottomReachedRef = useRef(false);
-
-  useEffect(() => {
-    bottomReachedRef.current = false;
-  }, [bottomReachedDisabled]);
-
-  useEffect(() => {
-    if (!onBottomReached || bottomReachedDisabled) return;
-    const node = bottomRef.current;
-    if (!node || typeof IntersectionObserver === "undefined") return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (!entries.some((entry) => entry.isIntersecting) || bottomReachedRef.current) return;
-        bottomReachedRef.current = true;
-        onBottomReached();
-      },
-      { threshold: 1 },
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [bottomReachedDisabled, onBottomReached]);
 
   function openSection(reference: string) {
     const nextReference = activeReference === reference ? null : reference;
@@ -168,7 +139,6 @@ export default function BibleYearDeepStudySectionCards({
           );
         })}
       </div>
-      <div ref={bottomRef} className="h-px" aria-hidden="true" />
       <style jsx>{`
         @keyframes bible-year-first-deep-note-nudge {
           0%,
