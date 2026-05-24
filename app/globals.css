@@ -731,6 +731,51 @@ html {
   background-color: var(--bb-background) !important;
 }
 
+[data-bb-theme] .dashboard-shell .bb-skin-glow-card,
+[data-bb-theme] .dashboard-shell .dashboard-task-shell,
+[data-bb-theme] .dashboard-shell .dashboard-inline-task,
+[data-bb-theme] .dashboard-shell .dashboard-inline-deep-study,
+[data-bb-theme] .dashboard-shell .dashboard-bible-year-study-area > div,
+[data-bb-theme] .dashboard-shell .bb-dashboard-streak-card,
+[data-bb-theme] .dashboard-shell .completion-panel-enter,
+[data-bb-basic-skin] .dashboard-shell .bb-skin-glow-card,
+[data-bb-basic-skin] .dashboard-shell .dashboard-task-shell,
+[data-bb-basic-skin] .dashboard-shell .dashboard-inline-task,
+[data-bb-basic-skin] .dashboard-shell .dashboard-inline-deep-study,
+[data-bb-basic-skin] .dashboard-shell .dashboard-bible-year-study-area > div,
+[data-bb-basic-skin] .dashboard-shell .bb-dashboard-streak-card,
+[data-bb-basic-skin] .dashboard-shell .completion-panel-enter {
+  background: color-mix(in srgb, var(--bb-card, #ffffff) 94%, var(--bb-surface-soft, #f8fbff) 6%) !important;
+  border-color: color-mix(in srgb, var(--bb-accent, #6fa8cf) 22%, var(--bb-card-border, #e4ecf5)) !important;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+[data-bb-theme] .dashboard-shell [class*="bg-gradient-to"],
+[data-bb-theme] .dashboard-shell [class*="bg-[linear-gradient"],
+[data-bb-theme] .dashboard-shell [class*="bg-[radial-gradient"],
+[data-bb-basic-skin] .dashboard-shell [class*="bg-gradient-to"],
+[data-bb-basic-skin] .dashboard-shell [class*="bg-[linear-gradient"],
+[data-bb-basic-skin] .dashboard-shell [class*="bg-[radial-gradient"] {
+  background: color-mix(in srgb, var(--bb-card, #ffffff) 92%, var(--bb-surface-soft, #f8fbff) 8%) !important;
+}
+
+[data-bb-theme] .dashboard-shell .bb-progress-fill,
+[data-bb-theme] .dashboard-shell [class*="progress"] [class*="bg-gradient-to"],
+[data-bb-basic-skin] .dashboard-shell .bb-progress-fill,
+[data-bb-basic-skin] .dashboard-shell [class*="progress"] [class*="bg-gradient-to"] {
+  background: var(--bb-progress-fill, var(--bb-accent, #6fa8cf)) !important;
+}
+
+[data-bb-theme] .dashboard-shell button[class*="bg-gradient-to"]:not(:disabled),
+[data-bb-theme] .dashboard-shell a[class*="bg-gradient-to"],
+[data-bb-basic-skin] .dashboard-shell button[class*="bg-gradient-to"]:not(:disabled),
+[data-bb-basic-skin] .dashboard-shell a[class*="bg-gradient-to"] {
+  background: var(--bb-button, var(--bb-accent, #6fa8cf)) !important;
+  color: var(--bb-button-text, #ffffff) !important;
+}
+
 html[data-bb-skin="blue-storm"],
 html[data-bb-skin="midnight-garden"],
 html[data-bb-skin="lavender-prayer"],
