@@ -21,6 +21,7 @@ import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
+import { awardDiamonds } from "../lib/diamondWallet";
 import { trackDeepStudyInterestOnce } from "../lib/deepStudyInterestTracking";
 import { rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, markChapterDone } from "../lib/readingProgress";
@@ -79,6 +80,7 @@ const BIBLE_YEAR_CARD_ACTION_TYPE: Record<BibleYearDayCardKey, ActionType> = {
   trivia: ACTION_TYPE.bible_in_one_year_trivia_completed,
   reflection: ACTION_TYPE.bible_in_one_year_reflection_completed,
 };
+const BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD = 100;
 type BibleYearProgressRow = {
   day_number: number;
   reading_completed: boolean | null;
@@ -6779,6 +6781,60 @@ Before we understand redemption, we need to understand what God made humanity fo
     return `bible-in-one-year-day-${day.dayNumber}-${day.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
   }
 
+  function getBibleYearDiscussionRewardLabel(day: GenesisBibleYearDay) {
+    return `Bible in One Year Day ${day.dayNumber} Discussion Diamond Reward: ${day.title}`;
+  }
+
+  async function awardBibleYearDiscussionDiamonds(day: GenesisBibleYearDay) {
+    if (!userId) return;
+    const actionLabel = getBibleYearDiscussionRewardLabel(day);
+    try {
+      const { data: existingReward, error: existingRewardError } = await supabase
+        .from("master_actions")
+        .select("id")
+        .eq("user_id", userId)
+        .eq("action_type", ACTION_TYPE.feed_post_commented)
+        .eq("action_label", actionLabel)
+        .limit(1);
+
+      if (existingRewardError) {
+        console.warn("[BIBLE_YEAR_DISCUSSION_REWARD] Could not check discussion reward:", existingRewardError);
+        return;
+      }
+      if (existingReward && existingReward.length > 0) return;
+
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const meta = user?.user_metadata || {};
+      const username =
+        meta.firstName ||
+        meta.first_name ||
+        (user?.email ? user.email.split("@")[0] : null) ||
+        "User";
+
+      const { error: insertRewardError } = await supabase.from("master_actions").insert({
+        user_id: userId,
+        username,
+        action_type: ACTION_TYPE.feed_post_commented,
+        action_label: actionLabel,
+      });
+
+      if (insertRewardError) {
+        console.warn("[BIBLE_YEAR_DISCUSSION_REWARD] Could not save discussion reward:", insertRewardError);
+        return;
+      }
+
+      const awardedDiamonds = await awardDiamonds(userId, BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD);
+      if (awardedDiamonds > 0) {
+        showBibleYearRewardToast(day.dayNumber, `+${awardedDiamonds} diamonds for joining the discussion`);
+        onDevotionalChanged();
+      }
+    } catch (error) {
+      console.warn("[BIBLE_YEAR_DISCUSSION_REWARD] Could not award discussion diamonds:", error);
+    }
+  }
+
   async function ensureBibleYearCardActionLogged(day: GenesisBibleYearDay, card: BibleYearDayCardKey, showPoints = false) {
     if (!userId) return;
     const actionType = BIBLE_YEAR_CARD_ACTION_TYPE[card];
@@ -7501,6 +7557,14 @@ Before we understand redemption, we need to understand what God made humanity fo
           <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
             Keep it simple, or go deep. This is a place to respond to the Day {day.dayNumber} lesson.
           </p>
+          <div className="mt-4 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_10%,var(--bb-card,#ffffff))] px-4 py-3">
+            <p className="text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">
+              Earn {BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD} diamonds for joining the discussion.
+            </p>
+            <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+              Post your reflection once for today and the reward is yours.
+            </p>
+          </div>
           <div className="mt-4">
             <CommentSection
               articleSlug={getBibleYearReflectionSlug(day)}
@@ -7508,7 +7572,10 @@ Before we understand redemption, we need to understand what God made humanity fo
               placeholderText="Start Typing Here"
               submitButtonText="Send"
               variant="plain"
-              onPosted={() => markBibleYearDayCardComplete(day, "reflection")}
+              onPosted={() => {
+                markBibleYearDayCardComplete(day, "reflection");
+                void awardBibleYearDiscussionDiamonds(day);
+              }}
               onUserHasPosted={() => markBibleYearDayCardComplete(day, "reflection")}
             />
           </div>
@@ -7531,6 +7598,14 @@ Before we understand redemption, we need to understand what God made humanity fo
           <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Reflection Question</p>
           <p className="mt-2 text-base font-black leading-6 text-[var(--bb-text-primary,#111827)]">{reflectionPrompt}</p>
         </div>
+        <div className="mt-3 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_10%,var(--bb-card,#ffffff))] px-4 py-3">
+          <p className="text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">
+            Earn {BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD} diamonds for joining the discussion.
+          </p>
+          <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+            Post your reflection once for Day {day.dayNumber} to claim the reward.
+          </p>
+        </div>
         <div className="mt-4">
           <CommentSection
             articleSlug={getBibleYearReflectionSlug(day)}
@@ -7538,6 +7613,9 @@ Before we understand redemption, we need to understand what God made humanity fo
             placeholderText="Respond to today's reflection question"
             submitButtonText="Send"
             variant="plain"
+            onPosted={() => {
+              void awardBibleYearDiscussionDiamonds(day);
+            }}
           />
         </div>
       </div>
@@ -7576,6 +7654,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                   aria-expanded={bibleYearOptionalDiscussionDay === day.dayNumber}
                 >
                   Join Day {day.dayNumber} Discussion
+                  <span className="ml-2 rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,var(--bb-card,#ffffff))] px-2 py-0.5 text-xs text-[var(--bb-accent,#2f7fe8)]">
+                    +{BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD} diamonds
+                  </span>
                 </button>
               ) : null}
             </div>
