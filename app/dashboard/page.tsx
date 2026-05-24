@@ -54,7 +54,7 @@ import { TASK_XP, DIAMOND_REWARDS, estimateDiamondStashFromActions } from "../..
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { trackUserActivity } from "../../lib/trackUserActivity";
 import { awardDiamonds } from "../../lib/diamondWallet";
-import { APP_THEME_STORAGE_KEY, getAppTheme, normalizeAppThemeId, type AppThemeId } from "../../lib/appThemes";
+import { getAppTheme, normalizeAppThemeId, type AppThemeId } from "../../lib/appThemes";
 import {
   BOOST_STORE_ITEMS,
   BUDDY_STORE_ITEMS,
@@ -73,10 +73,7 @@ import {
   getPremiumSkinForLegacyFlame,
   getPremiumSkinForLegacyTheme,
   getPremiumSkin,
-  isIncomingPremiumSkinOlderThanCache,
   normalizePremiumSkinId,
-  readCachedPremiumSkin,
-  shouldPreferCachedPremiumSkin,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
 import {
@@ -1232,7 +1229,7 @@ export default function DashboardPage() {
   const [dashboardThemeId, setDashboardThemeId] = useState<AppThemeId>(() => (
     typeof window === "undefined"
       ? "light"
-      : normalizeAppThemeId(window.localStorage.getItem(APP_THEME_STORAGE_KEY) || window.localStorage.getItem("bb:dashboard-theme"))
+      : normalizeAppThemeId(document.documentElement.dataset.bbTheme)
   ));
   const [storeLoading, setStoreLoading] = useState(false);
   const [storeBuyingId, setStoreBuyingId] = useState<string | null>(null);
@@ -4443,18 +4440,15 @@ export default function DashboardPage() {
       setDashboardThemeId(
         normalizeAppThemeId(
           customEvent?.detail?.themeId ||
-            window.localStorage.getItem(APP_THEME_STORAGE_KEY) ||
-            window.localStorage.getItem("bb:dashboard-theme"),
+            document.documentElement.dataset.bbTheme,
         ),
       );
     }
 
     loadDashboardTheme();
     window.addEventListener("bb:app-theme-purchased", loadDashboardTheme);
-    window.addEventListener("storage", loadDashboardTheme);
     return () => {
       window.removeEventListener("bb:app-theme-purchased", loadDashboardTheme);
-      window.removeEventListener("storage", loadDashboardTheme);
     };
   }, []);
 
@@ -4463,17 +4457,11 @@ export default function DashboardPage() {
     function loadPremiumSkin(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
       const profileSkin = normalizePremiumSkinId(profile?.active_premium_skin);
-      const staleSafeProfileSkin = isIncomingPremiumSkinOlderThanCache(userId, profile?.active_premium_skin_selected_at)
-        ? readCachedPremiumSkin(userId)
-        : shouldPreferCachedPremiumSkin(userId, profileSkin)
-        ? readCachedPremiumSkin(userId)
-        : profileSkin;
       const documentSkin = normalizePremiumSkinId(document.documentElement.dataset.bbSkin);
       const skinId = normalizePremiumSkinId(
         customEvent?.detail?.skinId ||
-          (staleSafeProfileSkin !== "none" ? staleSafeProfileSkin : null) ||
+          (profileSkin !== "none" ? profileSkin : null) ||
           (documentSkin !== "none" ? documentSkin : null) ||
-          readCachedPremiumSkin(userId) ||
           "none",
       );
       setActivePremiumSkinId(skinId);
@@ -4483,10 +4471,8 @@ export default function DashboardPage() {
 
     loadPremiumSkin();
     window.addEventListener("bb:premium-skin-changed", loadPremiumSkin);
-    window.addEventListener("storage", loadPremiumSkin);
     return () => {
       window.removeEventListener("bb:premium-skin-changed", loadPremiumSkin);
-      window.removeEventListener("storage", loadPremiumSkin);
     };
   }, [profile?.active_premium_skin, userId]);
 
@@ -5114,37 +5100,21 @@ export default function DashboardPage() {
             getPremiumSkinForLegacyTheme(profileData?.app_theme) !== "none"
               ? getPremiumSkinForLegacyTheme(profileData?.app_theme)
               : getPremiumSkinForLegacyFlame(profileData?.selected_streak_flame);
-          const staleSafeDbSkin = shouldPreferCachedPremiumSkin(userId, dbActiveSkin)
-            ? readCachedPremiumSkin(userId)
-            : isIncomingPremiumSkinOlderThanCache(userId, profileData?.active_premium_skin_selected_at)
-            ? readCachedPremiumSkin(userId)
-            : dbActiveSkin;
-          const documentActiveSkin =
-            typeof document !== "undefined" ? normalizePremiumSkinId(document.documentElement.dataset.bbSkin) : "none";
           const candidateActiveSkin =
             hasActiveSkinColumn
-              ? staleSafeDbSkin
-              : documentActiveSkin !== "none"
-                ? documentActiveSkin
-                : legacyMappedSkin;
+              ? dbActiveSkin
+              : legacyMappedSkin;
           const resolvedActiveSkin = candidateActiveSkin;
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(userId, resolvedActiveSkin);
-          if (dbActiveSkin === resolvedActiveSkin) clearPendingPremiumSkinSync(userId, resolvedActiveSkin);
+          clearPendingPremiumSkinSync(userId, resolvedActiveSkin);
+          setDashboardThemeId(normalizeAppThemeId(profileData?.app_theme));
           setActivePremiumSkinId(resolvedActiveSkin);
           applyPremiumSkinToDocument(resolvedActiveSkin);
           preloadActiveSkinAssets(resolvedActiveSkin);
           const skinFlame = getPremiumSkinFlameId(resolvedActiveSkin);
           const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
           if (skinFlame) persistActiveStreakFlame(skinFlame);
-          if (resolvedActiveSkin !== "none" && dbActiveSkin !== resolvedActiveSkin) {
-            void supabase
-              .from("profile_stats")
-              .upsert(
-                { user_id: userId, active_premium_skin: resolvedActiveSkin, active_premium_skin_selected_at: profileData?.active_premium_skin_selected_at ?? new Date().toISOString(), updated_at: new Date().toISOString() },
-                { onConflict: "user_id" },
-              );
-          }
           if (skinFlame && dbSelectedFlame !== skinFlame) {
             void supabase
               .from("profile_stats")
@@ -9808,6 +9778,7 @@ export default function DashboardPage() {
           onDashboardPageChange={preserveActivePremiumSkin}
           isOwnerDashboard={isOwnerDashboard}
           bibleYearReport={bibleYearReport}
+          bibleYearProgressReady={bibleYearProgressChecked}
           onDevotionalChanged={() => {
             refreshLevelData();
             void loadDailyTaskSummary({ force: true, silent: true });
@@ -9866,6 +9837,7 @@ export default function DashboardPage() {
           onDashboardPageChange={preserveActivePremiumSkin}
           isOwnerDashboard={isOwnerDashboard}
           bibleYearReport={bibleYearReport}
+          bibleYearProgressReady={bibleYearProgressChecked}
           onDevotionalChanged={() => {
             refreshLevelData();
             void loadDailyTaskSummary({ force: true, silent: true });

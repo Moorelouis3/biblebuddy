@@ -268,6 +268,7 @@ type Props = {
   onDevotionalChanged: () => void;
   isOwnerDashboard?: boolean;
   bibleYearReport?: BibleYearReport | null;
+  bibleYearProgressReady?: boolean;
 };
 
 type BibleYearReport = {
@@ -1692,12 +1693,14 @@ export default function DashboardJourneyExperience({
   onDevotionalChanged,
   isOwnerDashboard = false,
   bibleYearReport,
+  bibleYearProgressReady = true,
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
   const previousCompletedCountRef = useRef<number | null>(null);
   const previousJourneyKeyRef = useRef<string | null>(null);
   const autoOpenedCompletedBibleYearDayRef = useRef<number | null>(null);
+  const dashboardHiddenAtRef = useRef<number | null>(null);
   const [activePage, setActivePage] = useState(0);
   const [celebratingTasks, setCelebratingTasks] = useState<Record<string, number>>({});
   const [clearedDoneTaskKinds, setClearedDoneTaskKinds] = useState<Record<string, boolean>>({});
@@ -2160,10 +2163,22 @@ export default function DashboardJourneyExperience({
     return () => window.removeEventListener("message", handleEmbeddedCommunityHeight);
   }, []);
 
-  const activeBibleYearDashboardDay = bibleYearDashboardActive
+  const bibleYearCurrentDayReady = bibleYearProgressReady && bibleYearProgressLoaded;
+  const activeBibleYearDashboardDay = bibleYearDashboardActive && bibleYearCurrentDayReady
     ? (() => {
         const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
-        const nextUnfinishedDay =
+        const reportedCurrentDayNumber = Number(bibleYearReport?.currentDay);
+        const boundedReportedDayNumber = Number.isFinite(reportedCurrentDayNumber)
+          ? Math.max(
+              builtBibleYearDays[0]?.dayNumber ?? 1,
+              Math.min(reportedCurrentDayNumber, builtBibleYearDays[builtBibleYearDays.length - 1]?.dayNumber ?? reportedCurrentDayNumber),
+            )
+          : null;
+        const reportedCurrentDay = boundedReportedDayNumber
+          ? builtBibleYearDays.find((day) => day.dayNumber === boundedReportedDayNumber) ?? null
+          : null;
+        const currentBibleYearDay =
+          reportedCurrentDay ||
           builtBibleYearDays.find((day) => {
             const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
             return !(completed.reading && completed.trivia && completed.reflection);
@@ -2171,18 +2186,7 @@ export default function DashboardJourneyExperience({
           builtBibleYearDays[builtBibleYearDays.length - 1] ||
           null;
 
-        if (selectedBibleYearSeriesDay) {
-          const selectedIsComplete = isBibleYearDayComplete(selectedBibleYearSeriesDay);
-          const selectedJustCompleted = bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber;
-          const selectedIsCurrent = selectedBibleYearSeriesDay.dayNumber === nextUnfinishedDay?.dayNumber;
-          const selectedReviewOpen = bibleYearCompletedTasksExpandedDay === selectedBibleYearSeriesDay.dayNumber;
-          if (selectedReviewOpen) return selectedBibleYearSeriesDay;
-          if (selectedJustCompleted) return selectedBibleYearSeriesDay;
-          if (isOwnerDashboard && freeUserCanOpenBibleYearDayTasks(selectedBibleYearSeriesDay)) return selectedBibleYearSeriesDay;
-          if (!selectedIsComplete && selectedIsCurrent && freeUserCanOpenBibleYearDayTasks(selectedBibleYearSeriesDay)) return selectedBibleYearSeriesDay;
-        }
-
-        return nextUnfinishedDay;
+        return currentBibleYearDay;
       })()
     : null;
   const bibleYearDashboardTasks = activeBibleYearDashboardDay
@@ -3274,6 +3278,30 @@ export default function DashboardJourneyExperience({
     }
   }
 
+  function resetBibleYearDashboardToCurrentDay() {
+    bibleYearJustCompletedDayRef.current = null;
+    autoOpenedCompletedBibleYearDayRef.current = null;
+    setBibleYearDashboardActive(true);
+    setBibleYearSeriesActive(false);
+    setBibleYearSeriesDetailDay(null);
+    setSelectedBibleYearSeriesDay(null);
+    setActiveBibleYearDayCard(null);
+    setBibleYearCompletedTasksExpandedDay(null);
+    setBibleYearPlanMenuOpen(false);
+    setFreeStudyModeActive(false);
+    setEmbeddedBibleBookSearchOpen(false);
+    setEmbeddedBibleSelectedBook(null);
+    setEmbeddedBibleStudyId(null);
+    setActivePage(0);
+
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", "bible-year");
+      url.searchParams.delete("day");
+      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+  }
+
   function openBibleYearDayOnDashboard(day: GenesisBibleYearDay, options: { markDone?: boolean; reviewCompleted?: boolean } = {}) {
     if (!freeUserCanOpenBibleYearDayTasks(day)) {
       setFreePlanGate({ kind: "bible-year-future", chapterLabel: `Day ${day.dayNumber}` });
@@ -3463,11 +3491,7 @@ export default function DashboardJourneyExperience({
     const params = new URLSearchParams(window.location.search);
     const view = params.get("view");
     if (view === "bible-year") {
-      setBibleYearDashboardActive(true);
-      setBibleYearSeriesActive(false);
-      setSelectedBibleYearSeriesDay(null);
-      setBibleYearCompletedTasksExpandedDay(null);
-      setActivePage(0);
+      resetBibleYearDashboardToCurrentDay();
     } else if (view === "bible-year-series") {
       setBibleYearDashboardActive(false);
       setBibleYearSeriesActive(true);
@@ -3481,6 +3505,37 @@ export default function DashboardJourneyExperience({
       setBibleYearSeriesDetailDay(null);
       setActivePage(0);
     }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    function handlePageShow(event: PageTransitionEvent) {
+      if (event.persisted) {
+        resetBibleYearDashboardToCurrentDay();
+      }
+    }
+
+    function handleVisibilityChange() {
+      if (document.visibilityState === "hidden") {
+        dashboardHiddenAtRef.current = Date.now();
+        return;
+      }
+      if (document.visibilityState !== "visible") return;
+
+      const hiddenAt = dashboardHiddenAtRef.current;
+      dashboardHiddenAtRef.current = null;
+      if (hiddenAt && Date.now() - hiddenAt > 5000) {
+        resetBibleYearDashboardToCurrentDay();
+      }
+    }
+
+    window.addEventListener("pageshow", handlePageShow);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      window.removeEventListener("pageshow", handlePageShow);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -6685,6 +6740,12 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8)) {
+    const reportedCurrentDayNumber = Number(bibleYearReport?.currentDay);
+    if (Number.isFinite(reportedCurrentDayNumber) && days.length > 0) {
+      const minDay = days[0]?.dayNumber ?? 1;
+      const maxDay = days[days.length - 1]?.dayNumber ?? reportedCurrentDayNumber;
+      return Math.max(minDay, Math.min(reportedCurrentDayNumber, maxDay));
+    }
     const nextDay = days.find((day) => !isBibleYearDayComplete(day)) || days[days.length - 1];
     return nextDay?.dayNumber || 1;
   }
@@ -8063,26 +8124,22 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleProgressDetailsModal() {
     const report = bibleYearReport;
     const currentStreak = report?.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
-    const completedTaskCount = Object.entries(bibleYearCompletedCardsByDay).reduce((sum, [dayNumber, completed]) => {
-      const seriesDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === Number(dayNumber));
-      const requiredCardKeys = seriesDay ? getBibleYearRequiredCardKeys(seriesDay) : BIBLE_YEAR_DAY_CARD_KEYS;
-      return sum + requiredCardKeys.filter((card) => completed?.[card] === true).length;
-    }, 0);
-    const completedTriviaCount = Object.values(bibleYearCompletedCardsByDay).filter((completed) => completed?.trivia === true).length;
-    const completedReflectionCount = Object.values(bibleYearCompletedCardsByDay).filter((completed) => completed?.reflection === true).length;
-    const completedReadingCount = Object.values(bibleYearCompletedCardsByDay).filter((completed) => completed?.reading === true).length;
     const expectedFinishDateLabel = report?.expectedFinishDateLabel ?? "Calculating";
-    const overallPercent = report?.overallPercent ?? 0;
-    const progressRows = [
-      ["Daily Streak", `${currentStreak} ${currentStreak === 1 ? "day" : "days"}`],
-      ["Level", `${levelInfo?.level ?? 1} ${levelInfo?.levelName ?? "Seeker"}`],
-      ["Total XP", `${Math.max(0, levelInfo?.totalPoints ?? 0).toLocaleString()} XP`],
-      ["Diamonds", `${Math.max(0, Number(profile?.diamonds_count ?? 0)).toLocaleString()} stash`],
-      ["Tasks Completed", completedTaskCount.toLocaleString()],
-      ["Watch / Listen", completedReadingCount.toLocaleString()],
-      ["Trivia Completed", completedTriviaCount.toLocaleString()],
-      ["Reflections Completed", completedReflectionCount.toLocaleString()],
-      ["Expected Finish Date", expectedFinishDateLabel],
+    const overallPercent = Math.max(0, Math.min(100, Math.round(report?.overallPercent ?? 0)));
+    const currentDay = Math.max(1, Math.min(365, report?.currentDay ?? getCurrentBibleYearSeriesDayNumber()));
+    const dayProgressPercent = Math.max(0, Math.min(100, Math.round((currentDay / 365) * 100)));
+    const completedDays = Math.max(0, currentDay - 1);
+    const completedChapters = Math.max(0, report?.completedChapters ?? 0);
+    const statusLabel = report?.statusLabel ?? "On track";
+    const encouragement =
+      /ahead/i.test(statusLabel)
+        ? "You're currently ahead of schedule."
+        : /behind/i.test(statusLabel)
+          ? "You're still moving forward. Keep returning one day at a time."
+          : "You're making steady progress.";
+    const lowerStats = [
+      ["Days studied", completedDays.toLocaleString()],
+      ["Chapters completed", completedChapters.toLocaleString()],
     ];
 
     return (
@@ -8093,9 +8150,9 @@ Before we understand redemption, we need to understand what God made humanity fo
         scrollable={true}
         zIndex="z-[75]"
       >
-        <div className="w-full max-w-md overflow-hidden rounded-[30px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(14,26,58,0.22)]">
+        <div className="w-full max-w-md overflow-hidden rounded-[30px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(14,26,58,0.18)]">
           <div className="flex items-center justify-between gap-4 border-b border-[var(--bb-card-border,#dbe7f4)] px-5 py-4">
-            <h2 className="text-lg font-black">Bible Buddy Progress</h2>
+            <h2 className="text-lg font-black">Bible in One Year Progress</h2>
             <button
               type="button"
               onClick={() => setShowBibleProgressDetails(false)}
@@ -8107,61 +8164,57 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
 
           <div className="grid gap-4 p-5">
-            <div className="rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
-              <div className="flex items-center gap-4">
-                <span className="grid h-14 w-14 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-sm font-black text-[var(--bb-button-text,#ffffff)]">
-                  {(profile?.display_name || profile?.username || userName || "BB").slice(0, 2).toUpperCase()}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Level {levelInfo?.level ?? 1} {levelInfo?.levelName ?? "Seeker"}</p>
-                  <div className="mt-2 h-2 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)]">
-                    <div className="h-full rounded-full bg-[var(--bb-progress-fill,var(--bb-accent,#2f7fe8))]" style={{ width: `${Math.max(0, Math.min(100, levelInfo?.progressPercent ?? 0))}%` }} />
-                  </div>
-                  <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">
-                    {Math.max(0, levelInfo?.pointsToNextLevel ?? 0).toLocaleString()} XP to next level
-                  </p>
-                </div>
-              </div>
+            <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_42%,var(--bb-card,#ffffff))] p-5 text-center">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Bible Studied</p>
+              <p className="mt-2 text-5xl font-black leading-none text-[var(--bb-text-primary,#111827)]">{overallPercent}%</p>
+              <p className="mt-1 text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">Studied</p>
+              <p className="mx-auto mt-3 max-w-[260px] text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">You are steadily moving through God's Word.</p>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+              <div className="rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4 text-center">
                 <p className="text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#6b7280)]">Daily Streak</p>
-                <p className="mt-2 text-2xl font-black">{currentStreak} {currentStreak === 1 ? "day" : "days"}</p>
+                <p className="mt-2 text-2xl font-black">{currentStreak}</p>
+                <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">{currentStreak === 1 ? "day streak" : "day streak"}</p>
               </div>
-              <div className="rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+              <div className="rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4 text-center">
                 <p className="text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#6b7280)]">Bible Studied</p>
                 <p className="mt-2 text-2xl font-black">{overallPercent}%</p>
+                <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">of the Bible studied</p>
               </div>
             </div>
 
-            <div className="rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+            <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_10%,transparent)]">
               <div className="flex items-center justify-between gap-3">
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Progress</p>
-                <p className="text-xs font-black text-[var(--bb-text-secondary,#4b5563)]">Day {report?.currentDay ?? 1} of 365</p>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible in One Year Progress</p>
+                <p className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-xs font-black text-[var(--bb-text-secondary,#4b5563)]">Day {currentDay} of 365</p>
               </div>
-              <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)]">
-                <div className="h-full rounded-full bg-[var(--bb-progress-fill,var(--bb-accent,#2f7fe8))]" style={{ width: `${overallPercent}%` }} />
+              <div className="mt-4 h-3 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)]">
+                <div className="h-full rounded-full bg-[var(--bb-progress-fill,var(--bb-accent,#2f7fe8))]" style={{ width: `${dayProgressPercent}%` }} />
               </div>
-              <p className="mt-2 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">{report?.statusLabel ?? "On track"}</p>
+              <div className="mt-4 grid gap-2">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">Pace</span>
+                  <span className="text-right text-sm font-black text-[var(--bb-text-primary,#111827)]">{statusLabel}</span>
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">Expected Finish</span>
+                  <span className="text-right text-sm font-black text-[var(--bb-text-primary,#111827)]">{expectedFinishDateLabel}</span>
+                </div>
+              </div>
+              <p className="mt-3 rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                {encouragement}
+              </p>
             </div>
 
             <div className="overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]">
-              {progressRows.map(([label, value]) => (
+              {lowerStats.map(([label, value]) => (
                 <div key={label} className="flex items-center justify-between gap-4 border-b border-[var(--bb-card-border,#dbe7f4)] px-4 py-3 last:border-b-0">
                   <span className="text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">{label}</span>
                   <span className="text-right text-sm font-black text-[var(--bb-text-primary,#111827)]">{value}</span>
                 </div>
               ))}
             </div>
-
-            <button
-              type="button"
-              onClick={onOpenLevelInfo}
-              className="rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-4 text-left text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
-            >
-              View Achievements
-            </button>
           </div>
         </div>
       </ModalShell>

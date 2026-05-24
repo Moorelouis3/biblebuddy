@@ -118,6 +118,11 @@ export default function SignupPage() {
       setError("Signup failed: no user returned.");
       return;
     }
+    if (Array.isArray(user.identities) && user.identities.length === 0) {
+      setLoading(false);
+      setError("This email may already have an account. Please log in instead, or use a different email.");
+      return;
+    }
 
     void recordSignup(user.id, user.email, username);
 

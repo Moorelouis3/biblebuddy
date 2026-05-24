@@ -9,10 +9,7 @@ import {
   applyAppThemeToDocument,
   cacheAppThemeForUser,
   clearPendingAppThemeSync,
-  isIncomingAppThemeOlderThanCache,
   normalizeAppThemeId,
-  readCachedAppTheme,
-  shouldPreferCachedAppTheme,
   type AppThemeId,
 } from "../../lib/appThemes";
 import { BUDDY_STORE_ITEMS, PREMIUM_SKIN_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
@@ -32,10 +29,7 @@ import {
   clearPendingPremiumSkinSync,
   clearLegacyPremiumSkinCache,
   getPremiumSkinForLegacyTheme,
-  isIncomingPremiumSkinOlderThanCache,
   normalizePremiumSkinId,
-  readCachedPremiumSkin,
-  shouldPreferCachedPremiumSkin,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
@@ -178,22 +172,13 @@ export default function SettingsPage() {
         setFirstName(nameParts.firstName);
         setLastName(nameParts.lastName);
         const dbTheme = normalizeAppThemeId(profile?.app_theme);
-        const hasThemeSelectedAt = Boolean(profile?.app_theme_selected_at);
-        const savedTheme = isIncomingAppThemeOlderThanCache(currentUser.id, profile?.app_theme_selected_at)
-          ? readCachedAppTheme(currentUser.id)
-          : !hasThemeSelectedAt && shouldPreferCachedAppTheme(currentUser.id, dbTheme)
-          ? readCachedAppTheme(currentUser.id)
-          : dbTheme;
+        const savedTheme = dbTheme;
         setSelectedTheme(savedTheme);
         const dbPremiumSkin: PremiumSkinId =
           profile && "active_premium_skin" in profile && profile.active_premium_skin
             ? normalizePremiumSkinId(profile.active_premium_skin)
             : "none";
-        const resolvedPremiumSkin = isIncomingPremiumSkinOlderThanCache(currentUser.id, profile?.active_premium_skin_selected_at)
-          ? readCachedPremiumSkin(currentUser.id)
-          : shouldPreferCachedPremiumSkin(currentUser.id, dbPremiumSkin)
-          ? readCachedPremiumSkin(currentUser.id)
-          : dbPremiumSkin;
+        const resolvedPremiumSkin = dbPremiumSkin;
         const premiumSkinStoreItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === resolvedPremiumSkin);
         const ownsResolvedPremiumSkin =
           resolvedPremiumSkin === "none" ||

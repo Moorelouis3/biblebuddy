@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { createClient } from "@supabase/supabase-js";
+import { normalizeCustomMemberBadge } from "@/lib/userBadges";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -26,9 +27,10 @@ function clip(text: string, max = 1200) {
 export async function POST(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const openAiKey = process.env.OPENAI_API_KEY;
 
-  if (!supabaseUrl || !anonKey || !openAiKey) {
+  if (!supabaseUrl || !anonKey || !serviceKey || !openAiKey) {
     return NextResponse.json({ error: "Server not configured." }, { status: 500 });
   }
 
@@ -55,8 +57,20 @@ export async function POST(request: NextRequest) {
   if (userError || !userData.user) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
-  if ((userData.user.email || "").toLowerCase() !== ADMIN_EMAIL) {
-    return NextResponse.json({ error: "Auto replies are only available to Louis." }, { status: 403 });
+
+  const supabaseAdmin = createClient(supabaseUrl, serviceKey, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+  const { data: profile } = await supabaseAdmin
+    .from("profile_stats")
+    .select("member_badge")
+    .eq("user_id", userData.user.id)
+    .maybeSingle();
+
+  const isAdmin = (userData.user.email || "").toLowerCase() === ADMIN_EMAIL;
+  const isModerator = normalizeCustomMemberBadge(profile?.member_badge) === "moderator";
+  if (!isAdmin && !isModerator) {
+    return NextResponse.json({ error: "Auto replies are only available to admins and moderators." }, { status: 403 });
   }
 
   const openai = new OpenAI({ apiKey: openAiKey });

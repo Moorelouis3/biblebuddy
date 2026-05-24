@@ -10,7 +10,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { hasCachedSupabaseSession } from "@/lib/authBoot";
 
-type PreviewPanel = "watch" | "study" | "trivia" | "community";
+type PreviewPanel = "watch" | "study" | "trivia";
 type StudyTab = "bible" | "notes";
 type OnboardingStep = "intro" | "question" | "loading" | "recommendation" | "account";
 
@@ -48,8 +48,8 @@ const tasks: Array<{ key: PreviewPanel; title: string; copy: string; tag: string
   },
   {
     key: "study",
-    title: "Read or Study (Optional)",
-    copy: "Bible text or Study Notes (Recommended)",
+    title: "Read the Chapter Summary",
+    copy: "Understand the key events, themes, and meaning.",
     tag: "Task 2",
   },
   {
@@ -58,34 +58,23 @@ const tasks: Array<{ key: PreviewPanel; title: string; copy: string; tag: string
     copy: "Test your understanding",
     tag: "Task 3",
   },
-  {
-    key: "community",
-    title: "Discuss with the Community",
-    copy: "Share insights and grow together",
-    tag: "Task 4",
-  },
 ];
 
 const howItWorksCards: Array<{ key: PreviewPanel; title: string; description: string }> = [
   {
     key: "watch",
-    title: "Watch 15 Minute Videos",
-    description: "Watch a short, engaging video that breaks down Scripture in a way that's easy to understand.",
+    title: "Watch 15 Minute Video",
+    description: "Watch a focused daily Scripture breakdown that helps the passage make sense.",
   },
   {
     key: "study",
-    title: "Read or Study (Optional)",
-    description: "Read the actual Bible text or our Study Notes (recommended).",
+    title: "Read the Chapter Summary",
+    description: "Understand the key events, themes, and meaning from today's chapters.",
   },
   {
     key: "trivia",
     title: "Answer Trivia Questions",
-    description: "Test your understanding with 5 quick questions.",
-  },
-  {
-    key: "community",
-    title: "Discuss with the Community",
-    description: "Share insights, ask questions, and grow together in faith.",
+    description: "Reinforce what you learned through 5 quick Bible questions.",
   },
 ];
 
@@ -346,74 +335,30 @@ async function initializeLandingUserDashboard({
   recommendationDays: number;
   profileImage: string | null;
 }) {
-  const nowIso = new Date().toISOString();
-  const todayKey = getLocalDateKey();
-  const profileImageUrl = await uploadLandingProfileImage(userId, profileImage);
-  const { data: creationStudy } = await supabase
-    .from("devotionals")
-    .select("id")
-    .eq("title", "The Creation of the World")
-    .maybeSingle();
+  const { data: sessionData } = await supabase.auth.getSession();
+  const token = sessionData.session?.access_token;
+  if (!token) {
+    throw new Error("Bible Buddy could not verify your new account session.");
+  }
 
-  const creationStudyId = typeof creationStudy?.id === "string" ? creationStudy.id : null;
-
-  const { error: profileError } = await supabase.from("profile_stats").upsert(
-    {
-      user_id: userId,
-      display_name: fullName,
-      username: fullName,
-      ...(profileImageUrl ? { profile_image_url: profileImageUrl } : {}),
-      onboarding_completed: true,
-      landing_onboarding_completed: true,
-      traffic_source: "landing_questionnaire",
-      bible_experience_level: normalizeExperienceForProfile(answers.experience),
-      onboarding_goal: normalizeGoalForProfile(answers.goal),
-      age_range: answers.ageRange,
-      onboarding_time_commitment: answers.time,
-      onboarding_difficulty: answers.difficulty,
-      bible_year_started_at: todayKey,
-      bible_year_launch_seen_at: nowIso,
-      free_devotional_id: creationStudyId,
-      louis_primary_devotional_id: creationStudyId,
-      louis_primary_devotional_day: 1,
-      updated_at: nowIso,
+  const response = await fetch("/api/landing-onboarding/setup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-    { onConflict: "user_id" },
-  );
-  if (profileError) throw profileError;
-
-  await saveLandingOnboardingResponse({
-    userId,
-    fullName,
-    email,
-    answers,
-    recommendationDays,
+    body: JSON.stringify({
+      userId,
+      fullName,
+      email,
+      answers,
+      recommendationDays,
+      profileImage,
+    }),
   });
-
-  const { error: bibleYearProgressError } = await supabase.from("bible_year_day_progress").upsert(
-    {
-      user_id: userId,
-      day_number: 1,
-      reading_completed: false,
-      trivia_completed: false,
-      reflection_completed: false,
-    },
-    { onConflict: "user_id,day_number" },
-  );
-  if (bibleYearProgressError) throw bibleYearProgressError;
-
-  if (creationStudyId) {
-    const { error: devotionalProgressError } = await supabase.from("devotional_progress").upsert(
-      {
-        user_id: userId,
-        devotional_id: creationStudyId,
-        day_number: 1,
-        is_completed: false,
-        reading_completed: false,
-      },
-      { onConflict: "user_id,devotional_id,day_number" },
-    );
-    if (devotionalProgressError) throw devotionalProgressError;
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) {
+    throw new Error(payload?.error || "Bible Buddy could not finish setting up your dashboard.");
   }
 }
 
@@ -707,6 +652,11 @@ export default function LandingPage() {
       setSubmitting(false);
       return;
     }
+    if (Array.isArray(user.identities) && user.identities.length === 0) {
+      setError("This email may already have an account. Please log in instead, or use a different email.");
+      setSubmitting(false);
+      return;
+    }
 
     if (!data.session) {
       const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
@@ -950,7 +900,7 @@ export default function LandingPage() {
         }
       `}</style>
 
-      <header className="sticky top-0 z-30 border-b border-[#e7dccb]/70 bg-[#FBF9F4]/92 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 bg-[#FBF9F4]/92 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-5 py-4 sm:px-8 lg:px-10">
           <div className="flex items-center gap-3">
             <div className="grid h-10 w-10 place-items-center rounded-2xl bg-transparent">
@@ -963,10 +913,9 @@ export default function LandingPage() {
             </div>
             <span className="text-lg font-black tracking-tight">Bible Buddy</span>
           </div>
-          <Link href="/login" className="bb-force-black hidden rounded-full border border-[#ece3d7] bg-[#FBF9F4] px-7 py-3 text-sm font-black shadow-[0_12px_30px_rgba(14,26,58,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_38px_rgba(14,26,58,0.18)] sm:inline-flex">
+          <Link href="/login" className="bb-force-black rounded-full border border-[#ece3d7] bg-[#FBF9F4] px-5 py-2.5 text-sm font-black shadow-[0_12px_30px_rgba(14,26,58,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_38px_rgba(14,26,58,0.18)] sm:px-7 sm:py-3">
             Login
           </Link>
-          <button type="button" className="grid h-10 w-10 place-items-center rounded-2xl border border-[#d8cbb8] bg-white text-xl font-black sm:hidden">=</button>
         </div>
       </header>
 
@@ -1029,10 +978,7 @@ export default function LandingPage() {
       </main>
 
       <footer className="px-5 py-8 sm:px-8" style={{ backgroundColor: "#FBF9F4" }}>
-        <div
-          className="mx-auto grid max-w-6xl gap-6 rounded-[18px] border px-5 py-6 shadow-[0_12px_28px_rgba(14,26,58,0.045)] sm:grid-cols-[1fr_auto] sm:items-center sm:px-6"
-          style={{ backgroundColor: "#fffdfa", borderColor: "#eadfcd" }}
-        >
+        <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-[1fr_auto] sm:items-center">
           <div>
             <div className="flex items-center gap-3">
               <svg className="h-6 w-6 text-[#0E1A3A]" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -1052,10 +998,7 @@ export default function LandingPage() {
             <Link href="/contact" className="transition hover:text-[#d89b43]">Contact</Link>
           </div>
         </div>
-        <div
-          className="mx-auto mt-4 flex max-w-6xl flex-wrap items-center justify-between gap-3 rounded-[18px] border px-5 py-4 text-xs font-semibold text-[#6b7280] shadow-[0_8px_22px_rgba(14,26,58,0.035)] sm:px-6"
-          style={{ backgroundColor: "#fffdfa", borderColor: "#eadfcd" }}
-        >
+        <div className="mx-auto mt-5 flex max-w-6xl flex-wrap items-center justify-between gap-3 text-xs font-semibold text-[#6b7280]">
           <span>Copyright 2026 Bible Buddy. All rights reserved.</span>
           <span>Free to start. Cancel anytime.</span>
         </div>
@@ -1236,8 +1179,8 @@ function LineIcon({ name }: { name: string }) {
 }
 
 function HowItWorksSection({ onStart }: { onStart: () => void }) {
-  const stepAccents = ["#2f57d6", "#d89b43", "#6b55d9", "#e26f22"];
-  const stepIconBackgrounds = ["#edf2ff", "#fff3d7", "#f0ecff", "#fff0e4"];
+  const stepAccents = ["#2f57d6", "#d89b43", "#35a06b"];
+  const stepIconBackgrounds = ["#edf2ff", "#fff3d7", "#e9f8ef"];
   const benefitAccents = ["#2f57d6", "#d89b43", "#6b55d9", "#356dd7"];
   const benefitBackgrounds = ["#edf2ff", "#fff3d7", "#f0ecff", "#edf4ff"];
 
@@ -1257,8 +1200,8 @@ function HowItWorksSection({ onStart }: { onStart: () => void }) {
         </p>
       </div>
 
-      <div className="relative mt-8 hidden gap-6 md:grid md:grid-cols-4">
-        <div className="pointer-events-none absolute left-[15%] right-[15%] top-8 hidden border-t border-dashed border-[#d89b43]/55 md:block" aria-hidden="true" />
+      <div className="relative mt-8 hidden gap-6 md:grid md:grid-cols-3">
+        <div className="pointer-events-none absolute left-[18%] right-[18%] top-8 hidden border-t border-dashed border-[#d89b43]/55 md:block" aria-hidden="true" />
         {howItWorksCards.map((card, index) => {
           const accent = stepAccents[index] ?? "#0E1A3A";
           const iconBackground = stepIconBackgrounds[index] ?? "#edf2ff";
@@ -1351,7 +1294,6 @@ function DemoIcon({ panel, accent = "#0E1A3A" }: { panel: PreviewPanel; accent?:
       {panel === "watch" ? <><rect x="10" y="11" width="28" height="26" rx="4" /><path d="m21 19 10 6-10 6V19Z" /></> : null}
       {panel === "study" ? <><path d="M8 14c8-3 12 1 16 4 4-3 8-7 16-4v24c-8-3-12 1-16 4-4-3-8-7-16-4V14Z" /><path d="M24 18v24" /></> : null}
       {panel === "trivia" ? <><circle cx="24" cy="24" r="16" /><path d="M20 19a4.5 4.5 0 0 1 8 3c0 4-5 4-5 8" /><path d="M24 36h.01" /></> : null}
-      {panel === "community" ? <><circle cx="17" cy="18" r="5" /><circle cx="31" cy="18" r="5" /><path d="M7 36c1.5-6 6-9 10-9s8.5 3 10 9" /><path d="M22 36c1.5-5 5-8 9-8 3.6 0 7 2.6 10 8" /></> : null}
     </svg>
   );
 }
@@ -1397,13 +1339,14 @@ function MiniPreview({ panel, compact = false, accent = "#0E1A3A" }: { panel: Pr
   if (panel === "study") {
     return (
       <div className={`${wrapperMargin} rounded-xl p-3 text-left shadow-[0_8px_18px_rgba(14,26,58,0.04)]`} style={{ backgroundColor: "#fffaf4", border: "1px solid #eadfcd" }}>
-        <div className="grid grid-cols-2 rounded-lg p-1 text-[9px] font-black" style={{ backgroundColor: "#f7f1e8", border: "1px solid #eee2d1" }}>
-          <span className="rounded-md px-1 py-1.5 text-center text-black" style={{ backgroundColor: "#fffdfa" }}>Bible Text</span>
-          <span className="rounded-md px-1 py-1.5 text-center text-black" style={{ backgroundColor: "#fff6e6", border: `1px solid ${accent}` }}>Study Notes</span>
+        <p className="text-[9px] font-black uppercase tracking-[0.14em]" style={{ color: accent }}>Chapter Summary</p>
+        <p className="mt-2 text-[12px] font-black leading-5 text-black">Genesis 1-2</p>
+        <p className="mt-2 text-[11px] font-semibold leading-5 text-black">God brings order out of darkness, creates life with purpose, and forms humanity in His image.</p>
+        <div className="mt-3 grid gap-1.5">
+          {["Creation is good", "Humanity has dignity", "Eden shows God's design"].map((line) => (
+            <span key={line} className="rounded-lg px-2 py-1.5 text-[10px] font-bold text-black" style={{ backgroundColor: "#fffdfa", border: "1px solid #eadfcd" }}>{line}</span>
+          ))}
         </div>
-        <p className="mt-3 text-[11px] font-semibold leading-5 text-black">
-          Genesis 1 reveals a God who creates with purpose, order, and goodness.
-        </p>
       </div>
     );
   }
@@ -1526,9 +1469,8 @@ function PublicDashboardDemo({
                 </span>
                 <span className="grid min-w-[52px] place-items-center rounded-2xl border border-[#e7dccb] bg-white px-2 py-2 text-xs font-black text-[#0E1A3A]">
                   {task.key === "watch" ? "15 min" : null}
-                  {task.key === "study" ? "Book" : null}
+                  {task.key === "study" ? "Summary" : null}
                   {task.key === "trivia" ? "?" : null}
-                  {task.key === "community" ? "Group" : null}
                 </span>
               </button>
             ))}
@@ -1579,9 +1521,8 @@ function DemoTaskModal({
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9a6a1f]">Demo Preview</p>
             <h3 className="mt-1 text-2xl font-black leading-tight">
               {panel === "watch" ? "Watch the 15 Minute Breakdown" : null}
-              {panel === "study" ? "Read or Study" : null}
+              {panel === "study" ? "Read the Chapter Summary" : null}
               {panel === "trivia" ? "Answer Trivia Questions" : null}
-              {panel === "community" ? "Discuss with the Community" : null}
             </h3>
           </div>
           <button type="button" onClick={onClose} className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[#eadcc2] bg-white text-xl font-black text-[#102033]">
@@ -1604,31 +1545,18 @@ function DemoTaskModal({
 
         {panel === "study" ? (
           <div>
-            <div className="grid grid-cols-2 gap-2 rounded-2xl bg-[#f6efe2] p-1">
-              <button type="button" onClick={() => setStudyTab("bible")} className={`rounded-xl px-3 py-2 text-sm font-black ${studyTab === "bible" ? "bg-white shadow-sm" : "text-[#6a7890]"}`}>
-                Bible Text
-              </button>
-              <button type="button" onClick={() => setStudyTab("notes")} className={`rounded-xl px-3 py-2 text-sm font-black ${studyTab === "notes" ? "bg-white shadow-sm" : "text-[#6a7890]"}`}>
-                Study Notes
-              </button>
+            <div className="rounded-2xl border border-[#eadcc2] bg-[#fffaf1] p-4">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9a6a1f]">Day 1 Summary</p>
+              <h4 className="mt-2 text-xl font-black text-[#102033]">Genesis 1-2</h4>
+              <p className="mt-3 text-sm font-semibold leading-6 text-[#24364a]">
+                Genesis 1-2 introduces the world before sin, pain, and brokenness entered creation. These chapters show God bringing order out of darkness, creating life with purpose, and forming humanity in His image.
+              </p>
+              <div className="mt-4 grid gap-2">
+                {["God creates with order and purpose.", "Humanity is made with value and dignity.", "Eden shows work, rest, boundaries, and relationship with God."].map((line) => (
+                  <p key={line} className="rounded-xl border border-[#eadcc2] bg-white px-3 py-2 text-sm font-bold text-[#24364a]">{line}</p>
+                ))}
+              </div>
             </div>
-            {studyTab === "bible" ? (
-              <div className="mt-4 rounded-2xl border border-[#eadcc2] bg-[#fffaf1] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9a6a1f]">Genesis 1 preview</p>
-                <p className="mt-3 text-sm font-semibold leading-6 text-[#24364a]"><span className="font-black">1</span> In the beginning, God created the heavens and the earth.</p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-[#24364a]"><span className="font-black">2</span> The earth was formless and empty. Darkness was on the surface of the deep.</p>
-              </div>
-            ) : (
-              <div className="mt-4 rounded-2xl border border-[#eadcc2] bg-[#fffaf1] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9a6a1f]">Day 1 free gift</p>
-                <p className="mt-3 text-sm font-semibold leading-6 text-[#24364a]">
-                  Genesis 1 introduces the beginning of creation and reveals a God of order, purpose, and intentional design. Before humanity ever falls into sin, Scripture first shows us the goodness of God's creation and humanity's role within it.
-                </p>
-                <button type="button" onClick={onDeepNotesGift} className="mt-4 w-full rounded-2xl border border-[#d9c49e] bg-white px-4 py-3 text-sm font-black text-[#102033]">
-                  See how Study Notes unlock after Day 1
-                </button>
-              </div>
-            )}
           </div>
         ) : null}
 
@@ -1646,19 +1574,6 @@ function DemoTaskModal({
           </div>
         ) : null}
 
-        {panel === "community" ? (
-          <div className="grid gap-3">
-            {[
-              "Genesis 1 helped me realize that God creates with purpose and order, not chaos.",
-              "I never noticed how humanity was created in God's image until this lesson explained it.",
-            ].map((comment, index) => (
-              <div key={comment} className="rounded-2xl border border-[#eadcc2] bg-[#fffaf1] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.12em] text-[#9a6a1f]">Study buddy {index + 1}</p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-[#24364a]">{comment}</p>
-              </div>
-            ))}
-          </div>
-        ) : null}
       </div>
     </div>
   );
@@ -1718,7 +1633,7 @@ function DayOnePreview({
               <div className="min-w-0 flex-1">
                 <h3 className="text-xl font-black leading-tight">Day 1</h3>
                 <p className="mt-1 text-sm font-black text-[#102033]">The Creation of the World</p>
-                <p className="mt-1 text-sm font-bold text-[#6a7890]">Finish 4 demo tasks to move forward.</p>
+                <p className="mt-1 text-sm font-bold text-[#6a7890]">Finish 3 simple steps to move forward.</p>
                 <button
                   type="button"
                   onClick={() => setPreviewPanel("watch")}
@@ -1767,14 +1682,14 @@ function DayOnePreview({
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-sm font-black text-[#102033]">Today's Study Progress</p>
-                  <p className="text-sm font-black">{completedCount} of 4</p>
+                  <p className="text-sm font-black">{completedCount} of 3</p>
                 </div>
-                <p className="mt-1 text-sm font-bold text-[#58677a]">Complete all 4 demo tasks to finish Day 1.</p>
+                <p className="mt-1 text-sm font-bold text-[#58677a]">Complete all 3 steps to finish Day 1.</p>
                 <div className="mt-2 h-2 overflow-hidden rounded-full bg-[#efe4d2]">
-                  <div className="h-full rounded-full bg-[#c59a4a]" style={{ width: `${Math.max(8, completedCount * 25)}%` }} />
+                  <div className="h-full rounded-full bg-[#c59a4a]" style={{ width: `${Math.max(8, completedCount * 33)}%` }} />
                 </div>
               </div>
-              <div className="rounded-2xl border border-[#eadcc2] bg-[#fffaf1] px-3 py-2 text-center text-sm font-black text-[#9a6a1f]">+65<br />XP</div>
+              <div className="rounded-2xl border border-[#eadcc2] bg-[#fffaf1] px-3 py-2 text-center text-sm font-black text-[#9a6a1f]">Day<br />1</div>
             </div>
           </div>
         </section>
@@ -1819,35 +1734,18 @@ function DayOnePreview({
 
         {previewPanel === "study" ? (
           <div>
-            <div className="grid grid-cols-2 gap-2 rounded-2xl bg-[#f6efe2] p-1">
-              <button type="button" onClick={() => setStudyTab("bible")} className={`rounded-xl px-3 py-2 text-sm font-black ${studyTab === "bible" ? "bg-white shadow-sm" : "text-[#6a7890]"}`}>
-                Bible Text
-              </button>
-              <button type="button" onClick={() => setStudyTab("notes")} className={`rounded-xl px-3 py-2 text-sm font-black ${studyTab === "notes" ? "bg-white shadow-sm" : "text-[#6a7890]"}`}>
-                Study Notes
-              </button>
+            <div className="rounded-2xl border border-[#eadcc2] bg-[#fffaf1] p-4">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9a6a1f]">Day 1 Summary</p>
+              <h3 className="mt-2 text-lg font-black">Genesis 1-2</h3>
+              <p className="mt-3 text-sm font-semibold leading-6 text-[#24364a]">
+                God brings order out of darkness, fills creation with life, and gives humanity value, dignity, and purpose.
+              </p>
+              <div className="mt-4 grid gap-2">
+                {["Creation reveals God's intentional design.", "Humanity is created in God's image.", "Eden shows God's original design for life with Him."].map((line) => (
+                  <p key={line} className="rounded-xl border border-[#eadcc2] bg-white px-3 py-2 text-sm font-bold text-[#24364a]">{line}</p>
+                ))}
+              </div>
             </div>
-            {studyTab === "bible" ? (
-              <div className="mt-4 rounded-2xl border border-[#eadcc2] bg-[#fffaf1] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9a6a1f]">Genesis 1 preview</p>
-                <p className="mt-3 text-sm font-semibold leading-6 text-[#24364a]">
-                  <span className="font-black">1</span> In the beginning, God created the heavens and the earth.
-                </p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-[#24364a]">
-                  <span className="font-black">2</span> The earth was formless and empty. Darkness was on the surface of the deep.
-                </p>
-              </div>
-            ) : (
-              <div className="mt-4 rounded-2xl border border-[#eadcc2] bg-[#fffaf1] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9a6a1f]">Day 1 free gift</p>
-                <p className="mt-3 text-sm font-semibold leading-6 text-[#24364a]">
-                  Genesis 1 introduces the beginning of creation and reveals a God of order, purpose, and intentional design. Before humanity ever falls into sin, Scripture first shows us the goodness of God's creation and humanity's role within it.
-                </p>
-                <button type="button" onClick={onDeepNotesGift} className="mt-4 w-full rounded-2xl border border-[#d9c49e] bg-white px-4 py-3 text-sm font-black text-[#102033]">
-                  See how Study Notes unlock after Day 1
-                </button>
-              </div>
-            )}
           </div>
         ) : null}
 
@@ -1866,22 +1764,6 @@ function DayOnePreview({
           </div>
         ) : null}
 
-        {previewPanel === "community" ? (
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9a6a1f]">Community preview</p>
-            <div className="mt-3 grid gap-3">
-              {[
-                "Genesis 1 helped me realize that God creates with purpose and order, not chaos.",
-                "I never noticed how humanity was created in God's image until this lesson explained it.",
-              ].map((comment, index) => (
-                <div key={comment} className="rounded-2xl border border-[#eadcc2] bg-[#fffaf1] p-3">
-                  <p className="text-xs font-black text-[#9a6a1f]">Study buddy {index + 1}</p>
-                  <p className="mt-1 text-sm font-semibold leading-6 text-[#24364a]">{comment}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : null}
       </div>
       </div>
     </div>
@@ -2230,9 +2112,9 @@ function OnboardingFlow(props: {
                 <p className="text-center text-xs font-black uppercase tracking-[0.12em] text-[#0E1A3A]">Your daily experience will include:</p>
                 <div className="mt-4 grid grid-cols-3 gap-2">
                   {[
-                    ["play", "Watch", "15 Minute Videos"],
-                    ["question", "Answer Trivia", "Grow Your Knowledge"],
-                    ["edit", "Answer a Reflection Question", "Apply What You Learn"],
+                    ["play", "Watch", "15 Minute Video"],
+                    ["edit", "Read Summary", "Understand Today's Chapters"],
+                    ["question", "Answer Trivia", "5 Quick Questions"],
                   ].map(([icon, title, subtitle]) => (
                     <div key={title} className="flex min-h-[118px] flex-col items-center justify-start rounded-2xl border px-2 py-3 text-center shadow-[0_8px_22px_rgba(14,26,58,0.045)]" style={{ backgroundColor: "#fffdfa", borderColor: "#eadcc2" }}>
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl shadow-[0_8px_18px_rgba(14,26,58,0.06)]" style={{ backgroundColor: "#f6f1e9" }}>
