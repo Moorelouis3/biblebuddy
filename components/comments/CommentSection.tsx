@@ -192,7 +192,7 @@ export default function CommentSection({
 
     const rows = ((data || []) as Comment[]).map((row) => ({
       ...row,
-      like_count: 0,
+      like_count: Math.max(0, Number(row.like_count || 0)),
       liked: false,
     }));
     const commentIds = rows.map((row) => row.id);
