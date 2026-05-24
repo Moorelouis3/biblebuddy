@@ -10812,27 +10812,14 @@ export default function DashboardPage() {
                   55% { filter: grayscale(0.25); transform: scale(1.1) rotate(2deg); opacity: 1; }
                   100% { filter: grayscale(0); transform: scale(1) rotate(0deg); opacity: 1; }
                 }
-                @keyframes badge-earned-shine {
-                  0% { transform: translateX(-130%) rotate(18deg); opacity: 0; }
-                  35% { opacity: 0.75; }
-                  100% { transform: translateX(150%) rotate(18deg); opacity: 0; }
-                }
-                @keyframes badge-float-spark {
-                  0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
-                  50% { transform: translateY(-8px) scale(1.16); opacity: 1; }
-                }
                 .badge-color-pop { animation: badge-color-pop 900ms cubic-bezier(0.2, 0.9, 0.25, 1.15) both; }
-                .badge-earned-shine { animation: badge-earned-shine 1150ms ease-out 280ms both; }
-                .badge-float-spark { animation: badge-float-spark 1.7s ease-in-out infinite; }
               `}</style>
               <div className="relative overflow-hidden px-6 pb-7 pt-5 text-center sm:px-8">
                 <div
-                  className="absolute inset-x-0 top-0 h-32"
-                  style={{ background: `linear-gradient(135deg, ${accent}2f, transparent)` }}
+                  className="absolute inset-x-0 top-0 h-40"
+                  style={{ background: `radial-gradient(circle at top, ${accent}24, transparent 68%)` }}
                   aria-hidden="true"
                 />
-                <div className="pointer-events-none absolute left-9 top-20 text-lg badge-float-spark" style={{ color: accent }}>✦</div>
-                <div className="pointer-events-none absolute right-11 top-28 text-base badge-float-spark" style={{ animationDelay: "0.35s", color: accent }}>✧</div>
 
                 <div className="relative flex justify-end">
                   <button
@@ -10845,41 +10832,28 @@ export default function DashboardPage() {
                   </button>
                 </div>
 
-                <div className="relative mx-auto mt-1 grid h-36 w-36 place-items-center rounded-full bg-white shadow-[0_16px_36px_rgba(38,63,99,0.16)]">
-                  <div className={`badge-color-pop relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-[28px] border-2 text-center ${tone.tile} ${tone.glow}`}>
+                <div className="relative mx-auto mt-2 grid h-36 w-36 place-items-center rounded-full bg-white shadow-[0_16px_36px_rgba(38,63,99,0.12)]">
+                  <div className={`badge-color-pop relative flex h-28 w-28 items-center justify-center rounded-[28px] border-2 text-center ${tone.tile} ${tone.glow}`}>
                     <span className="text-6xl" aria-hidden="true">{activeEarnedBadge.emoji}</span>
-                    <span className="badge-earned-shine pointer-events-none absolute inset-y-0 left-0 w-12 bg-white/70 blur-sm" />
-                    <span className="absolute -right-2 -top-2 grid h-9 w-9 place-items-center rounded-full border-2 border-white bg-[#19c463] text-sm font-black text-white shadow-md">
-                      ✓
-                    </span>
                   </div>
                 </div>
 
-                <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#5f86bd)]">
-                  Badge unlocked
+                <p className="mt-6 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#5f86bd)]">
+                  BADGE UNLOCKED
                 </p>
-                <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
-                  Congrats on {activeEarnedBadge.title}
+                <h2 className="mx-auto mt-3 max-w-sm text-2xl font-black leading-tight text-[var(--bb-text-primary,#21304f)] sm:text-3xl">
+                  Congrats, you earned the &quot;{activeEarnedBadge.title}&quot; badge
                 </h2>
-                <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
-                  {completionLine}
+                <p className="mx-auto mt-4 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
+                  You earned {activeEarnedBadge.xp} XP points through small faithful actions.
                 </p>
 
-                <div className="mt-6 grid grid-cols-3 gap-2.5">
-                  <div className="rounded-[20px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3">
-                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#5b6f92)]">Reward</p>
-                    <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#21304f)]">+{activeEarnedBadge.xp}</p>
-                    <p className="text-xs font-black text-[var(--bb-accent,#2f7fe8)]">XP</p>
-                  </div>
-                  <div className="rounded-[20px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3">
-                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#5b6f92)]">Tier</p>
-                    <p className="mt-1 truncate text-sm font-black text-[var(--bb-text-primary,#21304f)]">{activeEarnedBadge.levelLabel}</p>
-                  </div>
-                  <div className="rounded-[20px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3">
-                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#5b6f92)]">Category</p>
-                    <p className="mt-1 truncate text-sm font-black text-[var(--bb-text-primary,#21304f)]">{activeEarnedBadge.category}</p>
-                  </div>
-                </div>
+                {completionLine ? (
+                  <p className="sr-only">{completionLine}</p>
+                ) : null}
+                <p className="mx-auto mt-4 max-w-sm text-xs font-bold leading-5 text-[var(--bb-text-muted,#6b7fa3)]">
+                  Every small step brings you closer to understanding God&apos;s Word.
+                </p>
 
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   <button
@@ -10898,7 +10872,7 @@ export default function DashboardPage() {
                     onClick={() => setActiveEarnedBadge(null)}
                     className="rounded-full border border-[var(--bb-card-border,#d7e4f7)] bg-white px-6 py-3 text-sm font-black text-[var(--bb-text-primary,#21304f)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
                   >
-                    Let&apos;s go
+                    Continue
                   </button>
                 </div>
               </div>
