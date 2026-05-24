@@ -7410,7 +7410,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 x
               </button>
             </div>
-            <div className="max-h-[72dvh] overflow-y-auto px-2 py-3 sm:px-4 sm:py-5" data-bible-year-deep-notes-scroll={`day-${day.dayNumber}-summary`}>
+            <div className="bible-year-study-notes-scroll max-h-[72dvh] overflow-y-auto px-2 py-3 sm:px-4 sm:py-5" data-bible-year-deep-notes-scroll={`day-${day.dayNumber}-summary`}>
               {deepStudySections ? (
                 <BibleYearDeepStudySectionCards
                   sections={deepStudySections || []}
@@ -9506,7 +9506,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   x
                 </button>
               </div>
-              <div className="max-h-[calc(100dvh-260px)] min-h-[420px] overflow-y-auto px-4 py-5" data-bible-year-deep-notes-scroll="day-one">
+              <div className="bible-year-study-notes-scroll max-h-[calc(100dvh-260px)] min-h-[420px] overflow-y-auto px-4 py-5" data-bible-year-deep-notes-scroll="day-one">
                 {deepStudySections ? (
                   <BibleYearDeepStudySectionCards
                     sections={deepStudySections || []}
@@ -9885,7 +9885,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 ×
               </button>
             </div>
-            <div className="h-[calc(100%-68px)] overflow-y-auto px-4 py-5" data-bible-year-deep-notes-scroll="day-one">
+            <div className="bible-year-study-notes-scroll h-[calc(100%-68px)] overflow-y-auto px-4 py-5" data-bible-year-deep-notes-scroll="day-one">
               {deepStudySections ? (
                 <BibleYearDeepStudySectionCards
                   sections={deepStudySections || []}
@@ -10641,6 +10641,35 @@ Before we understand redemption, we need to understand what God made humanity fo
           box-shadow: 0 0 12px color-mix(in srgb, var(--bb-accent, #2f7fe8) 24%, transparent);
         }
         .bible-year-journey-scroll::-webkit-scrollbar-button {
+          width: 0;
+          height: 0;
+          display: none;
+        }
+        .bible-year-study-notes-scroll {
+          scrollbar-width: thin;
+          scrollbar-color:
+            color-mix(in srgb, var(--bb-accent, #2f7fe8) 64%, var(--bb-card-border, #dbe7f4))
+            color-mix(in srgb, var(--bb-card, #ffffff) 72%, var(--bb-surface-soft, #f8fbff));
+        }
+        .bible-year-study-notes-scroll::-webkit-scrollbar {
+          width: 10px;
+        }
+        .bible-year-study-notes-scroll::-webkit-scrollbar-track {
+          border-radius: 999px;
+          background: color-mix(in srgb, var(--bb-card, #ffffff) 72%, var(--bb-surface-soft, #f8fbff));
+          border-left: 1px solid color-mix(in srgb, var(--bb-card-border, #dbe7f4) 72%, transparent);
+        }
+        .bible-year-study-notes-scroll::-webkit-scrollbar-thumb {
+          border-radius: 999px;
+          background:
+            linear-gradient(180deg,
+              color-mix(in srgb, var(--bb-accent, #2f7fe8) 76%, var(--bb-card, #ffffff)),
+              color-mix(in srgb, var(--bb-accent, #2f7fe8) 48%, var(--bb-button, #2f7fe8))
+            );
+          border: 2px solid color-mix(in srgb, var(--bb-card, #ffffff) 74%, var(--bb-surface-soft, #f8fbff));
+          box-shadow: 0 0 10px color-mix(in srgb, var(--bb-accent, #2f7fe8) 20%, transparent);
+        }
+        .bible-year-study-notes-scroll::-webkit-scrollbar-button {
           width: 0;
           height: 0;
           display: none;
