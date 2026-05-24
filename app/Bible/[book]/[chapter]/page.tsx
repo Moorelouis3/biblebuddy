@@ -2260,7 +2260,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
   }
 
 
-  // Translation menu click-outside handler — must be before any early returns
+  // Translation menu click-outside handler - must be before any early returns
   useEffect(() => {
     if (!translationMenuOpen) return;
 
@@ -2276,7 +2276,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
     return () => document.removeEventListener("pointerdown", onDocPointerDown, true);
   }, [translationMenuOpen]);
 
-  // Games menu click-outside handler — must be before any early returns
+  // Games menu click-outside handler - must be before any early returns
   useEffect(() => {
     if (!gamesMenuOpen) return;
     function onDocPointerDown(e: PointerEvent) {
@@ -2437,7 +2437,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           </div>
         ) : null}
 
-        {/* LOUIS INSTRUCTION — above the control bar */}
+        {/* LOUIS INSTRUCTION - above the control bar */}
         {!hideReaderChrome ? <div className="mb-4 flex items-start gap-3">
           <LouisAvatar mood="bible" size={40} />
           <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
@@ -3132,7 +3132,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   <div style={{ animation: "bounce 1s infinite" }}>
                     <LouisAvatar mood="think" size={60} />
                   </div>
-                  <p className="text-sm text-gray-400 italic animate-pulse">Little Louis is preparing your notes…</p>
+                  <p className="text-sm text-gray-400 italic animate-pulse">Little Louis is preparing your notes...</p>
                 </div>
               ) : reviewError ? (
                 <div className="py-10 text-center">

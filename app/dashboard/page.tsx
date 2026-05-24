@@ -3760,16 +3760,57 @@ export default function DashboardPage() {
     }
   }
 
+  function getDashboardGuidedIntroTargetElement(target: string) {
+    if (typeof document === "undefined") return null;
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>(`[data-bb-dashboard-tour="${target}"]`),
+    );
+
+    return (
+      elements.find((element) => {
+        const rect = element.getBoundingClientRect();
+        const style = window.getComputedStyle(element);
+        return (
+          rect.width > 0 &&
+          rect.height > 0 &&
+          style.display !== "none" &&
+          style.visibility !== "hidden" &&
+          style.opacity !== "0"
+        );
+      }) ?? null
+    );
+  }
+
+  function updateDashboardGuidedIntroSpotlight(target: string) {
+    const element = getDashboardGuidedIntroTargetElement(target);
+    setDashboardGuidedIntroRect(element ? element.getBoundingClientRect() : null);
+  }
+
+  function scrollDashboardGuidedIntroTargetIntoView(target: string) {
+    const element = getDashboardGuidedIntroTargetElement(target);
+    if (!element) {
+      setDashboardGuidedIntroRect(null);
+      return;
+    }
+
+    element.scrollIntoView({
+      behavior: "auto",
+      block: "center",
+      inline: "nearest",
+    });
+
+    window.requestAnimationFrame(() => {
+      updateDashboardGuidedIntroSpotlight(target);
+      window.requestAnimationFrame(() => updateDashboardGuidedIntroSpotlight(target));
+    });
+  }
+
   function startDashboardGuidedIntro(replay = false) {
     setDashboardGuidedIntroReplay(replay);
     setDashboardGuidedIntroStepIndex(0);
     setDashboardGuidedIntroOpen(true);
     window.setTimeout(() => {
-      document.querySelector<HTMLElement>(`[data-bb-dashboard-tour="${DASHBOARD_GUIDED_INTRO_STEPS[0].target}"]`)?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
+      scrollDashboardGuidedIntroTargetIntoView(DASHBOARD_GUIDED_INTRO_STEPS[0].target);
     }, 60);
   }
 
@@ -3785,13 +3826,11 @@ export default function DashboardPage() {
 
   function goToDashboardGuidedIntroStep(nextIndex: number) {
     const boundedIndex = Math.max(0, Math.min(DASHBOARD_GUIDED_INTRO_STEPS.length - 1, nextIndex));
+    const nextTarget = DASHBOARD_GUIDED_INTRO_STEPS[boundedIndex].target;
+    setDashboardGuidedIntroRect(null);
     setDashboardGuidedIntroStepIndex(boundedIndex);
     window.setTimeout(() => {
-      document.querySelector<HTMLElement>(`[data-bb-dashboard-tour="${DASHBOARD_GUIDED_INTRO_STEPS[boundedIndex].target}"]`)?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
+      scrollDashboardGuidedIntroTargetIntoView(nextTarget);
     }, 30);
   }
 
@@ -3836,12 +3875,7 @@ export default function DashboardPage() {
 
     const updateSpotlight = () => {
       const step = DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStepIndex];
-      const element = document.querySelector<HTMLElement>(`[data-bb-dashboard-tour="${step.target}"]`);
-      if (!element) {
-        setDashboardGuidedIntroRect(null);
-        return;
-      }
-      setDashboardGuidedIntroRect(element.getBoundingClientRect());
+      updateDashboardGuidedIntroSpotlight(step.target);
     };
 
     updateSpotlight();

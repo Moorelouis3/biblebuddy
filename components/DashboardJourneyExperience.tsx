@@ -6662,12 +6662,12 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function getBibleYearRequiredCardKeys(day: GenesisBibleYearDay) {
-    if (day.dayNumber === 1) return ["reading", "reflection", "trivia"] as BibleYearDayCardKey[];
+    if (day.dayNumber === 1 || day.dayNumber === 2) return ["reading", "reflection", "trivia"] as BibleYearDayCardKey[];
     return BIBLE_YEAR_DAY_CARD_KEYS;
   }
 
   function getBibleYearCardDisplayLabel(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
-    if (day.dayNumber === 1) {
+    if (day.dayNumber === 1 || day.dayNumber === 2) {
       if (card === "reading") return "video";
       if (card === "reflection") return "summary";
     }
@@ -6726,10 +6726,10 @@ Before we understand redemption, we need to understand what God made humanity fo
       const labels = remaining.map((card) => getBibleYearCardDisplayLabel(day, card)).join(" + ");
       return `${labels} left`;
     }
-    if (day.dayNumber === 1 && remaining[0] === "reflection") return "Summary left";
+    if ((day.dayNumber === 1 || day.dayNumber === 2) && remaining[0] === "reflection") return "Summary left";
     if (remaining[0] === "reflection") return "Post reflection to finish";
     if (remaining[0] === "trivia") return "Trivia left";
-    if (remaining[0] === "reading") return day.dayNumber === 1 ? "Video left" : "Reading left";
+    if (remaining[0] === "reading") return day.dayNumber === 1 || day.dayNumber === 2 ? "Video left" : "Reading left";
     return `${doneCount}/${requiredCardKeys.length} tasks done`;
   }
 
@@ -7061,14 +7061,14 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (!day) return [];
     const dayLabel = `Day ${day.dayNumber}`;
     const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
-    if (day.dayNumber === 1) {
+    if (day.dayNumber === 1 || day.dayNumber === 2) {
       return [
         {
           kind: "reading",
           title: "Watch Today's Scripture Video",
           subtitle: "Watch today's guided Scripture breakdown.",
           pointsLabel: "+25 XP",
-          timeEstimateLabel: "18 min",
+          timeEstimateLabel: day.dayNumber === 1 ? "18 min" : day.estimatedTime,
           href: `#bible-year-day-${day.dayNumber}-reading`,
           done: completed.reading === true,
           completedAtLabel: completed.reading ? "Done" : null,
@@ -7265,20 +7265,29 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="space-y-6">
             <section>
               <p className="text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
-                Genesis 1-2 introduces the world before sin, pain, and brokenness entered creation.
+                {day.dayNumber === 2 ? "Genesis 3-4 shows what happens when trust in God breaks." : "Genesis 1-2 introduces the world before sin, pain, and brokenness entered creation."}
               </p>
               <p className="mt-3 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
-                These chapters show God bringing order out of darkness, creating life with purpose, and forming humanity in His image.
+                {day.dayNumber === 2 ? "These chapters explain why the world feels divided, painful, and heavy now: sin enters through distrust, then spreads into shame, blame, anger, and violence." : "These chapters show God bringing order out of darkness, creating life with purpose, and forming humanity in His image."}
               </p>
               <p className="mt-3 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
-                Before anything was damaged, Scripture first shows us what God originally intended the world to be.
+                {day.dayNumber === 2 ? "But even when the story turns dark, God keeps speaking, covering, warning, and preserving hope." : "Before anything was damaged, Scripture first shows us what God originally intended the world to be."}
               </p>
             </section>
 
             <section>
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Key Highlights</p>
               <div className="mt-3 grid gap-3">
-                {summaryHighlights.map(([emoji, text]) => (
+                {(day.dayNumber === 2
+                  ? [
+                      ["?", "The serpent questions God's word and makes distrust sound reasonable."],
+                      ["!", "Adam and Eve disobey, and shame, fear, hiding, and blame enter the story."],
+                      ["+", "God judges sin, but also gives the first promise that evil will not win forever."],
+                      ["x", "Cain's anger shows sin spreading from the garden into the family."],
+                      ["*", "Seth's birth shows hope continuing even after heartbreak and loss."],
+                    ]
+                  : summaryHighlights
+                ).map(([emoji, text]) => (
                   <div key={text} className="flex gap-3">
                     <span className="shrink-0 text-lg leading-6" aria-hidden="true">{emoji}</span>
                     <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{text}</p>
@@ -7290,10 +7299,10 @@ Before we understand redemption, we need to understand what God made humanity fo
             <section className="border-l-4 border-[var(--bb-success,#16a34a)] pl-4">
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-success,#16a34a)]">Big Takeaway</p>
               <p className="mt-3 text-sm font-black leading-7 text-[var(--bb-text-primary,#111827)]">
-                Before the damage of sin entered the story, God&apos;s design for creation was good, beautiful, ordered, and full of life.
+                {day.dayNumber === 2 ? "Sin spreads quickly when trust breaks, but God does not abandon His people." : "Before the damage of sin entered the story, God's design for creation was good, beautiful, ordered, and full of life."}
               </p>
               <p className="mt-3 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
-                This helps us understand not only where humanity came from, but what we were originally created for.
+                {day.dayNumber === 2 ? "Day 2 helps us understand why humanity needs rescue, and why the first promise of victory over evil matters so much." : "This helps us understand not only where humanity came from, but what we were originally created for."}
               </p>
             </section>
 
@@ -7447,10 +7456,10 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearInlineTask(card: "reading" | "trivia" | "reflection", day: GenesisBibleYearDay) {
     if (card === "reading") {
-      if (day.dayNumber === 1) {
+      if (day.dayNumber === 1 || day.dayNumber === 2) {
         return renderBibleYearDayOneVideoTask(day);
       }
-      if (day.dayNumber === 1 || day.dayNumber === 2 || day.dayNumber === 3 || day.dayNumber === 4 || day.dayNumber === 5 || day.dayNumber === 6) {
+      if (day.dayNumber === 3 || day.dayNumber === 4 || day.dayNumber === 5 || day.dayNumber === 6) {
         return renderStandardBibleYearReadingPage(day);
       }
       return renderBibleYearDayModalBody(day);
@@ -7613,7 +7622,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       );
     }
 
-    if (day.dayNumber === 1) {
+    if (day.dayNumber === 1 || day.dayNumber === 2) {
       return renderBibleYearSummaryTask(day);
     }
 
@@ -7666,7 +7675,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearCompletedDayPanel(day: GenesisBibleYearDay) {
     const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === day.dayNumber + 1);
-    const isDayOne = day.dayNumber === 1;
+    const usesSimpleDailyFlow = day.dayNumber === 1 || day.dayNumber === 2;
 
     return (
       <div className="completion-panel-enter rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent)] p-5 text-center shadow-[0_16px_42px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] backdrop-blur">
@@ -7679,10 +7688,10 @@ Before we understand redemption, we need to understand what God made humanity fo
           />
         </div>
         <h2 className="mt-4 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-          {isDayOne ? "Great job! You completed Day 1." : `Congrats, you finished Day ${day.dayNumber}!`}
+          {usesSimpleDailyFlow ? `Great job! You completed Day ${day.dayNumber}.` : `Congrats, you finished Day ${day.dayNumber}!`}
         </h2>
         <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-          {isDayOne ? "Choose what you'd like to do next." : `You completed the reading, trivia, and reflection for ${day.title}.`}
+          {usesSimpleDailyFlow ? "Choose what you'd like to do next." : `You completed the reading, trivia, and reflection for ${day.title}.`}
         </p>
 
         {nextDay ? (
@@ -7694,16 +7703,16 @@ Before we understand redemption, we need to understand what God made humanity fo
                 disabled={continuingBibleYearDay === day.dayNumber}
                 className="w-full rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
               >
-                {continuingBibleYearDay === day.dayNumber ? "Saving..." : isDayOne ? "Continue to Day 2" : `Continue to Day ${nextDay.dayNumber} "${nextDay.title}"`}
+                {continuingBibleYearDay === day.dayNumber ? "Saving..." : `Continue to Day ${nextDay.dayNumber}${usesSimpleDailyFlow ? "" : ` "${nextDay.title}"`}`}
               </button>
-              {isDayOne ? (
+              {usesSimpleDailyFlow ? (
                 <button
                   type="button"
                   onClick={() => setBibleYearOptionalDiscussionDay((current) => current === day.dayNumber ? null : day.dayNumber)}
                   className="w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
                   aria-expanded={bibleYearOptionalDiscussionDay === day.dayNumber}
                 >
-                  Join Day 1 Discussion
+                  Join Day {day.dayNumber} Discussion
                 </button>
               ) : null}
             </div>
@@ -7730,7 +7739,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             Back to Plan
           </button>
         )}
-        {isDayOne && bibleYearOptionalDiscussionDay === day.dayNumber ? renderBibleYearOptionalDiscussion(day) : null}
+        {usesSimpleDailyFlow && bibleYearOptionalDiscussionDay === day.dayNumber ? renderBibleYearOptionalDiscussion(day) : null}
       </div>
     );
   }
