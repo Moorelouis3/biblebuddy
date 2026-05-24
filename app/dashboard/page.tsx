@@ -12,7 +12,7 @@ import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { getBookTotalChapters, getCurrentBook, getCompletedChapters } from "../../lib/readingProgress";
-import { generateBibleInOneYearPlan, getCurrentDayNumber } from "../../lib/bibleInOneYearPlan";
+import { generateBibleInOneYearPlan } from "../../lib/bibleInOneYearPlan";
 import { getProfileStats, syncCurrentStreakToProfileStats } from "../../lib/profileStats";
 import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
 import { buildLouisRecommendationHandoff, storeLouisRouteHandoff } from "../../lib/louisRouteHandoff";
@@ -197,6 +197,13 @@ type BibleBookProgress = {
   chapters: number[];
 };
 
+type BibleYearTaskProgressRow = {
+  day_number: number | null;
+  reading_completed: boolean | null;
+  trivia_completed: boolean | null;
+  reflection_completed: boolean | null;
+};
+
 type DashboardAnimatedStats = {
   completion: number;
   grace: number;
@@ -234,6 +241,60 @@ type ModeratorWeeklyPayoutReveal = {
   weekStart: string;
   kind?: "weekly" | "skin_bonus";
 };
+
+type DashboardGuidedIntroStep = {
+  id: string;
+  target: string;
+  eyebrow: string;
+  title: string;
+  body: string;
+  detail?: string;
+};
+
+const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:replay-dashboard-guided-intro";
+const DASHBOARD_GUIDED_INTRO_SEEN_STORAGE_PREFIX = "bb:dashboard-guided-intro-seen";
+const DASHBOARD_GUIDED_INTRO_STEPS: DashboardGuidedIntroStep[] = [
+  {
+    id: "daily-streak",
+    target: "daily-streak",
+    eyebrow: "Daily Rhythm",
+    title: "Your Daily Streak",
+    body: "Your daily streak tracks how consistently you return to Scripture. BibleBuddy is built around daily progress, not perfection.",
+    detail: "Even small daily study sessions build long term understanding.",
+  },
+  {
+    id: "bible-progress",
+    target: "bible-progress",
+    eyebrow: "Bible Journey",
+    title: "Bible Progress",
+    body: "This tracks your progress through the Bible journey. As you complete studies, your total Bible completion percentage grows.",
+    detail: "You are moving through Scripture in order, one day at a time.",
+  },
+  {
+    id: "journey-map",
+    target: "journey-map",
+    eyebrow: "Guided Path",
+    title: "Journey Map",
+    body: "This is your Bible journey path. Each day unlocks as you move forward through Scripture.",
+    detail: "The path removes overwhelm by showing today, what came before, and what unlocks next.",
+  },
+  {
+    id: "study-tasks",
+    target: "study-tasks",
+    eyebrow: "Daily Flow",
+    title: "Today's Bible Study Tasks",
+    body: "Your daily rhythm is simple: watch or listen, read the summary, then complete trivia to reinforce what you learned.",
+    detail: "You do not need to complete everything perfectly. The goal is daily understanding and consistency.",
+  },
+  {
+    id: "bottom-menu",
+    target: "bottom-menu",
+    eyebrow: "Navigation",
+    title: "Bottom Menu",
+    body: "Use the bottom menu to move around BibleBuddy. Menu opens every section, Bible opens Scripture, Home returns to your dashboard, BB Chat opens your assistant, and Invite lets you share BibleBuddy.",
+    detail: "This keeps the main daily actions close without crowding the screen.",
+  },
+];
 
 type StorePurchaseCongrats = {
   item: BibleBuddyStoreItem;
@@ -873,15 +934,45 @@ function getDashboardLocalDateKey(date: Date) {
   return `${year}-${month}-${day}`;
 }
 
-function getBibleYearDayFromStart(startDateKey?: string | null) {
-  if (!startDateKey) return getCurrentDayNumber();
-  const startDate = new Date(`${startDateKey}T00:00:00`);
-  if (Number.isNaN(startDate.getTime())) return getCurrentDayNumber();
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  startDate.setHours(0, 0, 0, 0);
-  const diffDays = Math.floor((today.getTime() - startDate.getTime()) / 86400000);
-  return Math.max(1, Math.min(365, diffDays + 1));
+const BIBLE_YEAR_DAY_MS = 24 * 60 * 60 * 1000;
+
+function parseBibleYearStartDate(startedAt?: string | null) {
+  if (!startedAt) return null;
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(startedAt)
+    ? new Date(`${startedAt}T00:00:00`)
+    : new Date(startedAt);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function getBibleYearElapsedDaysFromStart(startedAt?: string | null) {
+  const startDate = parseBibleYearStartDate(startedAt);
+  if (!startDate) return 0;
+  const elapsedMs = Date.now() - startDate.getTime();
+  return Math.max(0, Math.floor(elapsedMs / BIBLE_YEAR_DAY_MS));
+}
+
+function getBibleYearDayFromStart(startedAt?: string | null, totalDays = 365) {
+  return Math.max(1, Math.min(totalDays, getBibleYearElapsedDaysFromStart(startedAt) + 1));
+}
+
+function getBibleYearClockStartDate(profile?: {
+  bible_year_launch_seen_at?: string | null;
+  bible_year_started_at?: string | null;
+  created_at?: string | null;
+} | null) {
+  if (!profile) return null;
+  if (profile.bible_year_launch_seen_at) return profile.bible_year_launch_seen_at;
+
+  const startedAt = profile.bible_year_started_at ?? null;
+  const createdAt = profile.created_at ?? null;
+  const startedDate = parseBibleYearStartDate(startedAt);
+  const createdDate = parseBibleYearStartDate(createdAt);
+
+  if (startedDate && createdDate) {
+    return startedDate.getTime() >= createdDate.getTime() ? startedAt : createdAt;
+  }
+
+  return startedAt || createdAt;
 }
 
 function getDashboardDayAbbr(dateKey: string) {
@@ -1083,6 +1174,7 @@ export default function DashboardPage() {
   const [savingBibleYearLaunchChoice, setSavingBibleYearLaunchChoice] = useState<"start" | "dismiss" | null>(null);
   const [bibleYearProgressChecked, setBibleYearProgressChecked] = useState(false);
   const [hasBibleYearTaskProgress, setHasBibleYearTaskProgress] = useState(false);
+  const [bibleYearTaskProgressRows, setBibleYearTaskProgressRows] = useState<BibleYearTaskProgressRow[]>([]);
   const [bibleBrowserSelectedBook, setBibleBrowserSelectedBook] = useState<string | null>(null);
   const [bibleBrowserAlphabetical, setBibleBrowserAlphabetical] = useState(false);
   const [bibleBrowserReading, setBibleBrowserReading] = useState<{ book: string; chapter: number } | null>(null);
@@ -1187,6 +1279,10 @@ export default function DashboardPage() {
   const [activeTourKey, setActiveTourKey] = useState<FeatureTourKey | null>(null);
   const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
+  const [dashboardGuidedIntroOpen, setDashboardGuidedIntroOpen] = useState(false);
+  const [dashboardGuidedIntroStepIndex, setDashboardGuidedIntroStepIndex] = useState(0);
+  const [dashboardGuidedIntroRect, setDashboardGuidedIntroRect] = useState<DOMRect | null>(null);
+  const [dashboardGuidedIntroReplay, setDashboardGuidedIntroReplay] = useState(false);
   const [showSwipeHintOverlay, setShowSwipeHintOverlay] = useState(false);
   const [isSavingSwipeHint, setIsSavingSwipeHint] = useState(false);
   const swipeHintTouchStartXRef = useRef<number | null>(null);
@@ -1411,14 +1507,14 @@ export default function DashboardPage() {
         eyebrow: "Diamond Stash",
         title: `${Math.max(0, Number(profile?.diamonds_count ?? 0))} diamonds saved`,
         lineOne: "Diamonds are your reward currency. You earn them by finishing real Bible study work.",
-        lineTwo: "Stack enough and you can unlock themes, flames, boosts, and future Bible Buddies.",
+        lineTwo: "Stack enough and you can unlock themes, boosts, and future Bible Buddies.",
         buttonText: "Open Store",
         action: "dismiss",
       },
     );
 
     [
-      ["discovery-store", "Your diamonds have a purpose", "Tap your diamond card to open the Bible Buddy Store.", "Themes, flames, boosts, and Bible Buddies live there as unlocks."],
+      ["discovery-store", "Your diamonds have a purpose", "Tap your diamond card to open the Bible Buddy Store.", "Themes, boosts, and Bible Buddies live there as unlocks."],
       ["discovery-bible-studies", "Bible Studies are the main path", "Bible Buddy is built around chapter studies, not random devotionals.", "Pick the next chapter and follow the five-task rhythm."],
       ["discovery-search-by-book", "Search by Bible book", "Inside Bible Studies, you can search by book and load a chapter onto your dashboard.", "It is the fast way to jump to a specific chapter."],
       ["discovery-keywords", "Tap the underlined words", "People, places, and keywords can open a quick meaning card while you read.", "That helps the Bible feel less confusing in the moment."],
@@ -1427,7 +1523,6 @@ export default function DashboardPage() {
       ["discovery-games", "Games help it stick", "Trivia and Scrambled are not filler.", "They help you remember what you just studied."],
       ["discovery-tv", "Use TV when reading feels heavy", "Bible Buddy TV gives you a different way to keep learning.", "It is good for days when you need a lighter lane."],
       ["discovery-themes", "Themes make it yours", "Unlocked themes can change the whole app feel across your account.", "Buy one in the store, then switch it from settings."],
-      ["discovery-flames", "Your streak flame can change", "Store flames let your dashboard fire match the style you unlock.", "It is a cosmetic reward for showing up."],
       ["discovery-badges", "Badges mark real wins", "Badges are earned from real actions like reading, notes, games, comments, and streaks.", "They are separate achievement celebrations."],
       ["discovery-reflection", "Reflection finishes the chapter", "The reflection question helps you turn reading into a response.", "It asks what the chapter is stirring in you."],
       ["discovery-notes", "Deep notes slow the chapter down", "Chapter notes explain context, culture, meaning, and key verses.", "Use them before trivia so the details are fresh."],
@@ -1465,7 +1560,7 @@ export default function DashboardPage() {
       ["feature-community-check", "Have you checked Community?", "The Community tab is for Bible thoughts, questions, prayer, and encouragement.", "A simple comment can help somebody keep going."],
       ["feature-share-notes", "Share what stood out", "You do not need a perfect post.", "Share one line from your study and let the community grow around Scripture."],
       ["feature-buddy-switch", "Pick the Buddy that helps you", "Your Bible Buddy can match the kind of encouragement you need.", "Change your Buddy in settings when you want a different feel."],
-      ["feature-store-customize", "Use diamonds for customization", "Diamonds are there so consistency can unlock something fun.", "Themes, flames, Buddies, and boosts make the app feel more personal."],
+      ["feature-store-customize", "Use diamonds for customization", "Diamonds are there so consistency can unlock something fun.", "Themes, Buddies, and boosts make the app feel more personal."],
       ["feature-tv-visual", "Try Bible Buddy TV", "Some days visual learning helps the Bible click.", "Use TV when you want to keep learning but need a different lane."],
       ["feature-games-retention", "Use games after reading", "Games help you remember what you studied.", "They are best after the chapter and notes."],
       ["feature-profile-progress", "Your profile shows your rhythm", "Levels, XP, badges, and streaks show the story of your consistency.", "Small daily actions become visible over time."],
@@ -1575,8 +1670,7 @@ export default function DashboardPage() {
       ["share-tab-tracker", "Check your Share tab", "Your Share tab tracks signups, XP earned, and diamonds earned.", "That is where your invite rewards live."],
       ["share-after-study", "Share after you study", "After finishing a chapter, invite someone to start their own Bible habit.", "Your consistency can become encouragement for them."],
       ["feature-settings-buddy", "Your Buddy can change", "Settings lets you choose which Bible Buddy shows across the app.", "Pick the guide that feels right for your study rhythm."],
-      ["feature-flame-style", "Your flame can match you", "Bought flame colors show up wherever your streak flame appears.", "Set your active flame in Settings after you unlock one."],
-      ["feature-store-check", "The store has more than themes", "Themes, flames, Bible Buddies, boosts, and rewards all live in the store.", "Spend diamonds when you want to customize your Bible Buddy experience."],
+      ["feature-store-check", "The store has more than themes", "Themes, Bible Buddies, boosts, and rewards all live in the store.", "Spend diamonds when you want to customize your Bible Buddy experience."],
     ].forEach(([id, title, lineOne, lineTwo]) =>
       pool.push({ id, category: "habit", eyebrow: "App Feature", title, lineOne, lineTwo, buttonText: "Got it", action: "dismiss" }),
     );
@@ -2356,6 +2450,26 @@ export default function DashboardPage() {
         return;
       }
 
+      if (typeof window !== "undefined") {
+        try {
+          const previewAccount = JSON.parse(window.localStorage.getItem("bb:landing-preview-account") || "null") as
+            | { firstName?: string; email?: string }
+            | null;
+          if (previewAccount?.email) {
+            applyDashboardUser({
+              id: "landing-preview-user",
+              email: previewAccount.email,
+              user_metadata: {
+                firstName: previewAccount.firstName || previewAccount.email.split("@")[0],
+              },
+            });
+            return;
+          }
+        } catch {
+          window.localStorage.removeItem("bb:landing-preview-account");
+        }
+      }
+
       const { data } = await supabase.auth.getUser();
       if (data?.user) {
         applyDashboardUser(data.user);
@@ -2433,11 +2547,6 @@ export default function DashboardPage() {
     const diamondsLoading = !profile;
     const levelLoading = isLoadingLevel || !levelInfo;
     const badgesLoading = badgeProgress.length === 0;
-    const streakFlameDuration = Math.max(0.85, 7 - Math.min(29, Math.max(0, streakValue)) * 0.2);
-    const streakFlameClass =
-      streakValue >= 30
-        ? "streak-flame-earned"
-        : "streak-flame-building";
     const nextLevelPercent = Math.max(0, Math.min(100, levelInfo?.progressPercent ?? 0));
     const visibleOwnerDiamondTotal = 10000;
     const currentLevel = levelLoading ? animatedDashboardStats.level : levelInfo?.level ?? 1;
@@ -2807,11 +2916,14 @@ export default function DashboardPage() {
             <div className="flex items-start justify-between gap-4">
               <div className="w-full">
                 <div className="flex items-center gap-2">
-                  <span className={streakFlameClass} style={{ animationDuration: `${streakFlameDuration}s` }} aria-hidden="true">
+                  <span aria-hidden="true">
                     <StreakFlameEmoji
                       flameId={
-                        getPremiumSkinFlameId(activePremiumSkinId) ?? profile?.selected_streak_flame
+                        activePremiumSkinId === "none" && dashboardThemeId === "light"
+                          ? "default"
+                          : getPremiumSkinFlameId(activePremiumSkinId) ?? profile?.selected_streak_flame
                       }
+                      currentStreak={streakValue}
                       size={42}
                       title={getDashboardStreakHeadline(streakValue)}
                     />
@@ -3148,7 +3260,7 @@ export default function DashboardPage() {
 
     const getStoreButtonContent = (item: BibleBuddyStoreItem, owned: boolean) => {
       if (item.comingSoon) return "Soon";
-      if (owned && !item.repeatable) return item.themeId || item.skinId || item.flameId ? "Use" : "Owned";
+      if (owned && !item.repeatable) return item.themeId || item.skinId ? "Use" : "Owned";
       return (
         <span className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
           <span>BUY</span>
@@ -3165,7 +3277,7 @@ export default function DashboardPage() {
 
     const renderStoreActionButton = (item: BibleBuddyStoreItem, owned: boolean, className = "") => {
       const canBuy = !item.comingSoon && (item.repeatable || !owned);
-      const isSelectableOwned = owned && !item.repeatable && Boolean(item.themeId || item.skinId || item.flameId);
+      const isSelectableOwned = owned && !item.repeatable && Boolean(item.themeId || item.skinId);
       return (
         <button
           type="button"
@@ -3235,139 +3347,20 @@ export default function DashboardPage() {
       const owned = item.price === 0 || ownedItemIds.has(item.id);
       const active = item.skinId && activePremiumSkinId === item.skinId;
       const skin = getPremiumSkin(item.skinId);
-      const previewTags =
-        item.skinId === "midnight-garden"
-          ? ["Moonlight", "Lanterns", "Mist"]
-          : item.skinId === "lavender-prayer"
-            ? ["Moonlight", "Candles", "Stars"]
-            : item.skinId === "ruby-village"
-              ? ["Ruby Sky", "Castle", "Embers"]
-              : item.skinId === "slow-mornings"
-                ? ["Rain", "Coffee", "Candlelight"]
-                : item.skinId === "morning-mercy"
-                  ? ["Sunrise", "Flowers", "Peace"]
-                  : item.skinId === "carolina-coastline"
-                    ? ["Lighthouse", "Waves", "Mist"]
-                    : item.skinId === "angel-wings"
-                      ? ["Wings", "Light Rays", "Peace"]
-                      : item.skinId === "winter-cabin"
-                        ? ["Snowfall", "Cabin Glow", "Moonlight"]
-                        : item.skinId === "mount-sinai"
-                          ? ["Lightning", "Smoke", "Sacred Ground"]
-                          : item.skinId === "desert-dawn"
-                            ? ["Sunrise", "Canyon", "Wilderness"]
-                            : item.skinId === "no-fuss"
-                              ? ["Focus", "Minimal", "Clean"]
-                : ["Storm", "Glow", "Mist"];
-      const skinMotionClass =
-        item.skinId === "midnight-garden"
-          ? "bb-store-skin-card--garden"
-          : item.skinId === "lavender-prayer"
-            ? "bb-store-skin-card--lavender"
-            : item.skinId === "ruby-village"
-              ? "bb-store-skin-card--ruby"
-              : item.skinId === "slow-mornings"
-                ? "bb-store-skin-card--mornings"
-                : item.skinId === "morning-mercy"
-                  ? "bb-store-skin-card--mercy"
-                  : item.skinId === "carolina-coastline"
-                    ? "bb-store-skin-card--coastline"
-                    : item.skinId === "angel-wings"
-                      ? "bb-store-skin-card--angel"
-                      : item.skinId === "winter-cabin"
-                        ? "bb-store-skin-card--winter"
-                        : item.skinId === "mount-sinai"
-                          ? "bb-store-skin-card--sinai"
-                          : item.skinId === "desert-dawn"
-                            ? "bb-store-skin-card--desert"
-                            : item.skinId === "no-fuss"
-                              ? "bb-store-skin-card--no-fuss"
-                : "bb-store-skin-card--storm";
-      const skinBadge =
-        item.skinId === "slow-mornings" || item.skinId === "morning-mercy" || item.skinId === "carolina-coastline" || item.skinId === "angel-wings" || item.skinId === "winter-cabin" || item.skinId === "mount-sinai" || item.skinId === "desert-dawn" || item.skinId === "no-fuss"
-          ? "New"
-          : item.skinId === "ruby-village"
-            ? "Popular"
-            : item.skinId === "blue-storm"
-              ? "New"
-              : item.skinId === "lavender-prayer"
-                ? "New"
-                : "Premium";
+      const previewTags = ["Color Skin", "Profile Ring", "Matching Flame"];
+      const skinBadge = item.skinId === "ruby-village" ? "Popular" : "Skin";
       const accent = skin?.palette.accent ?? item.accent;
       return (
         <article
           key={item.id}
-          className={`bb-store-skin-card ${skinMotionClass} relative min-h-[320px] overflow-hidden rounded-[22px] border text-white shadow-[0_18px_42px_rgba(8,34,66,0.30)] ${
-            active ? "ring-2" : "border-white/25"
+          className={`relative min-h-[260px] overflow-hidden rounded-[22px] border bg-[var(--bb-card)] shadow-[0_12px_30px_rgba(38,63,99,0.12)] ${
+            active ? "ring-2" : ""
           }`}
           style={{
-            backgroundImage: `linear-gradient(180deg, rgba(2,8,18,0.02) 0%, rgba(2,10,24,0.18) 42%, rgba(2,10,24,0.82) 100%), url(${item.imageSrc})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            borderColor: active ? accent : undefined,
-            boxShadow: active ? `0 0 0 1px ${accent}, 0 18px 42px rgba(8,34,66,0.3)` : undefined,
+            borderColor: active ? accent : skin?.palette.cardBorder ?? item.accent,
+            boxShadow: active ? `0 0 0 1px ${accent}, 0 18px 34px ${accent}24` : undefined,
           }}
         >
-          <span className="bb-store-skin-motion bb-store-skin-motion-a" aria-hidden="true" />
-          <span className="bb-store-skin-motion bb-store-skin-motion-b" aria-hidden="true" />
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                item.skinId === "midnight-garden"
-                  ? "radial-gradient(circle at 52% 12%, rgba(255,246,204,0.28), transparent 28%), radial-gradient(circle at 18% 36%, rgba(215,184,107,0.2), transparent 28%), linear-gradient(135deg,rgba(8,18,22,0.12),rgba(4,10,16,0.76))"
-                  : item.skinId === "lavender-prayer"
-                    ? "radial-gradient(circle at 52% 12%, rgba(245,220,255,0.34), transparent 30%), radial-gradient(circle at 18% 40%, rgba(233,190,255,0.2), transparent 28%), linear-gradient(135deg,rgba(28,18,44,0.12),rgba(14,8,27,0.76))"
-                    : item.skinId === "ruby-village"
-                      ? "radial-gradient(circle at 52% 10%, rgba(255,192,106,0.3), transparent 28%), radial-gradient(circle at 18% 34%, rgba(255,93,72,0.22), transparent 30%), linear-gradient(135deg,rgba(65,12,18,0.18),rgba(18,5,8,0.78))"
-                      : item.skinId === "slow-mornings"
-                        ? "radial-gradient(circle at 56% 14%, rgba(255,210,138,0.28), transparent 30%), radial-gradient(circle at 18% 40%, rgba(245,178,91,0.18), transparent 28%), linear-gradient(135deg,rgba(62,38,24,0.14),rgba(22,13,8,0.76))"
-                        : item.skinId === "morning-mercy"
-                          ? "radial-gradient(circle at 54% 12%, rgba(255,230,164,0.34), transparent 30%), radial-gradient(circle at 18% 38%, rgba(255,178,150,0.2), transparent 28%), linear-gradient(135deg,rgba(255,238,219,0.1),rgba(97,49,32,0.62))"
-                          : item.skinId === "carolina-coastline"
-                            ? "radial-gradient(circle at 54% 12%, rgba(220,243,255,0.3), transparent 30%), radial-gradient(circle at 18% 38%, rgba(123,175,212,0.22), transparent 28%), linear-gradient(135deg,rgba(7,24,43,0.16),rgba(4,14,27,0.76))"
-                            : item.skinId === "angel-wings"
-                              ? "radial-gradient(circle at 50% 12%, rgba(255,255,255,0.38), transparent 28%), radial-gradient(circle at 60% 24%, rgba(246,211,133,0.26), transparent 32%), linear-gradient(180deg,rgba(141,220,255,0.04),rgba(4,18,38,0.78))"
-                              : item.skinId === "winter-cabin"
-                                ? "radial-gradient(circle at 52% 12%, rgba(215,236,255,0.32), transparent 30%), radial-gradient(circle at 24% 42%, rgba(255,207,125,0.18), transparent 24%), linear-gradient(180deg,rgba(155,215,255,0.04),rgba(3,10,22,0.82))"
-                                : item.skinId === "mount-sinai"
-                                  ? "radial-gradient(circle at 52% 12%, rgba(255,211,122,0.34), transparent 28%), radial-gradient(circle at 22% 42%, rgba(234,162,58,0.2), transparent 26%), linear-gradient(180deg,rgba(234,162,58,0.05),rgba(5,5,5,0.84))"
-                                  : item.skinId === "desert-dawn"
-                                    ? "radial-gradient(circle at 52% 12%, rgba(255,211,122,0.34), transparent 30%), radial-gradient(circle at 18% 42%, rgba(232,171,72,0.2), transparent 28%), linear-gradient(180deg,rgba(232,171,72,0.04),rgba(10,6,4,0.82))"
-                                    : item.skinId === "no-fuss"
-                                      ? "radial-gradient(circle at 18% 8%, rgba(77,163,255,0.2), transparent 32%), radial-gradient(circle at 88% 18%, rgba(245,245,245,0.08), transparent 30%), linear-gradient(135deg,rgba(32,32,32,0.12),rgba(8,8,8,0.84))"
-                      : "radial-gradient(circle at 18% 12%,rgba(93,214,255,0.34),transparent 34%),linear-gradient(135deg,rgba(9,24,52,0.2),rgba(4,11,24,0.78))",
-            }}
-          />
-          <div
-            className="pointer-events-none absolute -right-10 top-4 h-28 w-28 rounded-full blur-2xl"
-            style={{
-              backgroundColor:
-                item.skinId === "midnight-garden"
-                  ? "rgba(215,184,107,0.22)"
-                  : item.skinId === "lavender-prayer"
-                    ? "rgba(207,174,255,0.24)"
-                    : item.skinId === "ruby-village"
-                      ? "rgba(255,115,95,0.26)"
-                      : item.skinId === "slow-mornings"
-                        ? "rgba(245,178,91,0.26)"
-                        : item.skinId === "morning-mercy"
-                          ? "rgba(244,179,95,0.26)"
-                          : item.skinId === "carolina-coastline"
-                            ? "rgba(123,175,212,0.26)"
-                            : item.skinId === "angel-wings"
-                              ? "rgba(246,211,133,0.28)"
-                              : item.skinId === "winter-cabin"
-                                ? "rgba(155,215,255,0.28)"
-                                : item.skinId === "mount-sinai"
-                                  ? "rgba(234,162,58,0.3)"
-                                  : item.skinId === "desert-dawn"
-                                    ? "rgba(232,171,72,0.3)"
-                                    : item.skinId === "no-fuss"
-                                      ? "rgba(108,184,255,0.2)"
-                      : "rgba(125,211,252,0.25)",
-            }}
-          />
           <span
             className="absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-white shadow-[0_8px_18px_rgba(0,0,0,0.24)]"
             style={{ backgroundColor: active ? accent : `${accent}cc` }}
@@ -3386,26 +3379,29 @@ export default function DashboardPage() {
               Owned
             </span>
           ) : null}
-          <button type="button" onClick={() => void handleStorePurchase(item)} className="relative block min-h-[250px] w-full p-4 text-left">
-            <div className="absolute bottom-4 left-4 right-4">
-              <h4 className="text-[1.7rem] font-black leading-none !text-white drop-shadow sm:text-3xl">{item.title}</h4>
-              <p className="mt-2 max-w-sm text-sm font-bold leading-5 !text-white/90">{item.subtitle}</p>
+          <button type="button" onClick={() => void handleStorePurchase(item)} className="relative block min-h-[170px] w-full p-4 text-left">
+            <div className="mt-8 grid h-20 w-20 place-items-center rounded-[24px] border text-sm font-black shadow-inner" style={{ backgroundColor: skin?.palette.accentSoft ?? `${accent}22`, borderColor: skin?.palette.cardBorder ?? accent, color: accent }}>
+              {item.emoji}
+            </div>
+            <div className="mt-5">
+              <h4 className="text-2xl font-black leading-none text-[var(--bb-text-primary)] sm:text-3xl">{item.title}</h4>
+              <p className="mt-2 max-w-sm text-sm font-bold leading-5 text-[var(--bb-text-secondary)]">{item.subtitle}</p>
             </div>
           </button>
-          <div className="relative border-t border-white/15 bg-black/34 p-4 backdrop-blur-md">
+          <div className="relative border-t border-[var(--bb-card-border)] bg-[var(--bb-surface-soft)] p-4">
             <div className="mb-3 grid grid-cols-3 gap-2 text-center">
               {previewTags.map((tag) => (
-                <span key={tag} className="rounded-2xl border border-white/15 bg-white/10 px-2 py-2 text-[10px] font-black uppercase tracking-wide !text-white/90">
+                <span key={tag} className="rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] px-2 py-2 text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-secondary)]">
                   {tag}
                 </span>
               ))}
             </div>
             <div className="flex items-center justify-between gap-3">
-              <span className="inline-flex items-center gap-2 text-lg font-black !text-white">
+              <span className="inline-flex items-center gap-2 text-lg font-black text-[var(--bb-text-primary)]">
                 <span aria-hidden="true">💎</span>
                 {item.price.toLocaleString()}
               </span>
-              {renderStoreActionButton(item, owned, "min-w-[120px] rounded-full border border-white/30 bg-white/18 px-5 py-3 !text-white shadow-[0_0_24px_rgba(255,255,255,0.12)] backdrop-blur-md hover:bg-white/26")}
+              {renderStoreActionButton(item, owned, "min-w-[120px] rounded-full px-5 py-3")}
             </div>
           </div>
         </article>
@@ -3414,258 +3410,10 @@ export default function DashboardPage() {
 
     const renderPremiumSkinsStoreSection = () => (
       <section className="mt-6">
-        <style>{`
-          @keyframes bb-store-skin-drift {
-            0% { transform: translate3d(-6%, 4%, 0) rotate(0deg); opacity: 0.45; }
-            50% { opacity: 0.85; }
-            100% { transform: translate3d(8%, -5%, 0) rotate(7deg); opacity: 0.5; }
-          }
-          @keyframes bb-store-skin-pulse {
-            0%, 100% { transform: scale(0.92); opacity: 0.34; }
-            50% { transform: scale(1.08); opacity: 0.72; }
-          }
-          @keyframes bb-store-storm-flash {
-            0%, 58%, 63%, 100% { opacity: 0; transform: translateY(-3%) scaleY(0.96); }
-            59% { opacity: 0.88; transform: translateY(0) scaleY(1); }
-            61% { opacity: 0.22; }
-            62% { opacity: 0.7; }
-          }
-          @keyframes bb-store-lantern-flicker {
-            0%, 100% { opacity: 0.36; transform: scale(0.94); }
-            48% { opacity: 0.72; transform: scale(1.08); }
-            55% { opacity: 0.46; }
-            62% { opacity: 0.82; transform: scale(1.04); }
-          }
-          @keyframes bb-store-particle-rise {
-            0% { transform: translate3d(0, 28%, 0); opacity: 0; }
-            22% { opacity: 0.58; }
-            100% { transform: translate3d(10%, -34%, 0); opacity: 0; }
-          }
-          .bb-store-skin-card {
-            background-position: center;
-            isolation: isolate;
-            transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
-          }
-          .bb-store-skin-card::before,
-          .bb-store-skin-card::after {
-            content: "";
-            pointer-events: none;
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-          }
-          .bb-store-skin-card:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.05);
-          }
-          .bb-store-skin-motion {
-            pointer-events: none;
-            position: absolute;
-            inset: auto;
-            z-index: 3;
-            border-radius: 999px;
-            filter: blur(16px);
-            mix-blend-mode: screen;
-          }
-          .bb-store-skin-motion-a {
-            left: -16%;
-            top: 10%;
-            width: 70%;
-            height: 42%;
-            animation: bb-store-skin-drift 7s ease-in-out infinite alternate;
-          }
-          .bb-store-skin-motion-b {
-            right: -14%;
-            bottom: 20%;
-            width: 52%;
-            height: 36%;
-            animation: bb-store-skin-pulse 4.8s ease-in-out infinite;
-          }
-          .bb-store-skin-card--storm .bb-store-skin-motion-a,
-          .bb-store-skin-card--storm .bb-store-skin-motion-b { background: rgba(93, 214, 255, 0.52); }
-          .bb-store-skin-card--garden .bb-store-skin-motion-a,
-          .bb-store-skin-card--garden .bb-store-skin-motion-b { background: rgba(175, 207, 122, 0.46); }
-          .bb-store-skin-card--lavender .bb-store-skin-motion-a,
-          .bb-store-skin-card--lavender .bb-store-skin-motion-b { background: rgba(207, 174, 255, 0.5); }
-          .bb-store-skin-card--ruby .bb-store-skin-motion-a,
-          .bb-store-skin-card--ruby .bb-store-skin-motion-b { background: rgba(255, 115, 95, 0.5); }
-          .bb-store-skin-card--mornings .bb-store-skin-motion-a,
-          .bb-store-skin-card--mornings .bb-store-skin-motion-b { background: rgba(245, 178, 91, 0.48); }
-          .bb-store-skin-card--mercy .bb-store-skin-motion-a,
-          .bb-store-skin-card--mercy .bb-store-skin-motion-b { background: rgba(244, 179, 95, 0.46); }
-          .bb-store-skin-card--coastline .bb-store-skin-motion-a,
-          .bb-store-skin-card--coastline .bb-store-skin-motion-b { background: rgba(123, 175, 212, 0.5); }
-          .bb-store-skin-card--angel .bb-store-skin-motion-a,
-          .bb-store-skin-card--angel .bb-store-skin-motion-b { background: rgba(141, 220, 255, 0.48); }
-          .bb-store-skin-card--desert .bb-store-skin-motion-a,
-          .bb-store-skin-card--desert .bb-store-skin-motion-b { background: rgba(232, 171, 72, 0.5); }
-          .bb-store-skin-card--no-fuss .bb-store-skin-motion-a,
-          .bb-store-skin-card--no-fuss .bb-store-skin-motion-b { background: rgba(108, 184, 255, 0.28); }
-          .bb-store-skin-card--storm::before {
-            background:
-              linear-gradient(115deg, transparent 0 44%, rgba(210, 246, 255, 0.92) 45%, rgba(93, 214, 255, 0.2) 46%, transparent 49%),
-              linear-gradient(78deg, transparent 0 58%, rgba(210, 246, 255, 0.62) 59%, transparent 61%);
-            filter: blur(0.3px);
-            animation: bb-store-storm-flash 5.2s ease-in-out infinite;
-          }
-          .bb-store-skin-card--storm::after {
-            background: linear-gradient(110deg, transparent 0%, rgba(230, 248, 255, 0.18) 44%, transparent 76%);
-            filter: blur(3px);
-            animation: bb-store-skin-drift 8s ease-in-out infinite alternate;
-          }
-          .bb-store-skin-card--garden::before,
-          .bb-store-skin-card--lavender::before {
-            background: radial-gradient(circle at 70% 18%, rgba(255, 244, 204, 0.34), transparent 17%);
-            animation: bb-store-lantern-flicker 4.6s ease-in-out infinite;
-          }
-          .bb-store-skin-card--ruby::before {
-            background:
-              radial-gradient(circle at 20% 74%, rgba(255, 192, 106, 0.24), transparent 18%),
-              radial-gradient(circle at 70% 58%, rgba(255, 115, 95, 0.18), transparent 18%);
-            animation: bb-store-particle-rise 5.8s ease-in-out infinite;
-          }
-          .bb-store-skin-card--mornings::before {
-            background:
-              radial-gradient(circle at 56% 16%, rgba(255, 210, 138, 0.26), transparent 20%),
-              repeating-linear-gradient(108deg, rgba(255, 232, 190, 0.08) 0 1px, transparent 1px 28px);
-            animation: bb-store-lantern-flicker 5.8s ease-in-out infinite;
-          }
-          .bb-store-skin-card--mornings::after {
-            background:
-              linear-gradient(115deg, transparent 0%, rgba(255, 244, 222, 0.16) 46%, transparent 76%);
-            filter: blur(3px);
-            animation: bb-store-skin-drift 9s ease-in-out infinite alternate;
-          }
-          .bb-store-skin-card--mercy::before {
-            background:
-              radial-gradient(circle at 55% 14%, rgba(255, 230, 164, 0.3), transparent 22%),
-              radial-gradient(circle at 20% 40%, rgba(255, 178, 150, 0.18), transparent 20%);
-            animation: bb-store-lantern-flicker 5.4s ease-in-out infinite;
-          }
-          .bb-store-skin-card--mercy::after {
-            background:
-              radial-gradient(circle at 18% 24%, rgba(255, 182, 170, 0.22) 0 2px, transparent 4px),
-              linear-gradient(115deg, transparent 0%, rgba(255, 248, 236, 0.18) 46%, transparent 76%);
-            background-size: 150px 190px, 100% 100%;
-            filter: blur(2px);
-            animation: bb-store-skin-drift 8.5s ease-in-out infinite alternate;
-          }
-          .bb-store-skin-card--coastline::before {
-            background:
-              radial-gradient(circle at 58% 14%, rgba(220, 243, 255, 0.28), transparent 22%),
-              linear-gradient(105deg, transparent 0%, rgba(166, 216, 244, 0.16) 48%, transparent 78%);
-            animation: bb-store-lantern-flicker 5.8s ease-in-out infinite;
-          }
-          .bb-store-skin-card--coastline::after {
-            background:
-              repeating-linear-gradient(104deg, rgba(200, 230, 247, 0.1) 0 1px, transparent 1px 34px),
-              linear-gradient(115deg, transparent 0%, rgba(166, 216, 244, 0.16) 46%, transparent 76%);
-            background-size: 220px 280px, 100% 100%;
-            filter: blur(2.5px);
-            animation: bb-store-skin-drift 9s ease-in-out infinite alternate;
-          }
-          .bb-store-skin-card--angel::before {
-            background:
-              radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.36), transparent 22%),
-              radial-gradient(circle at 58% 24%, rgba(246, 211, 133, 0.24), transparent 26%),
-              linear-gradient(102deg, transparent 0%, rgba(220, 245, 255, 0.2) 48%, transparent 76%);
-            animation: bb-store-lantern-flicker 6s ease-in-out infinite;
-          }
-          .bb-store-skin-card--angel::after {
-            background:
-              radial-gradient(circle at 24% 28%, rgba(255, 255, 255, 0.22) 0 1.5px, transparent 3px),
-              repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 38px),
-              linear-gradient(180deg, transparent 0%, rgba(3, 17, 36, 0.18) 72%, rgba(3, 17, 36, 0.42) 100%);
-            background-size: 180px 220px, 240px 300px, 100% 100%;
-            filter: blur(2px);
-            animation: bb-store-skin-drift 10s ease-in-out infinite alternate;
-          }
-          .bb-store-skin-card--winter::before {
-            background:
-              radial-gradient(circle at 50% 12%, rgba(215, 236, 255, 0.34), transparent 24%),
-              radial-gradient(circle at 44% 36%, rgba(255, 207, 125, 0.18), transparent 20%),
-              linear-gradient(102deg, transparent 0%, rgba(155, 215, 255, 0.16) 48%, transparent 76%);
-            animation: bb-store-lantern-flicker 6.4s ease-in-out infinite;
-          }
-          .bb-store-skin-card--winter::after {
-            background:
-              radial-gradient(circle at 24% 28%, rgba(245, 251, 255, 0.42) 0 1.4px, transparent 3px),
-              radial-gradient(circle at 72% 18%, rgba(215, 236, 255, 0.32) 0 1.2px, transparent 3px),
-              linear-gradient(180deg, transparent 0%, rgba(3, 10, 22, 0.18) 70%, rgba(3, 10, 22, 0.48) 100%);
-            background-size: 88px 120px, 136px 170px, 100% 100%;
-            filter: blur(1.2px);
-            animation: bb-store-skin-drift 9.4s ease-in-out infinite alternate;
-          }
-          .bb-store-skin-card--sinai::before {
-            background:
-              radial-gradient(circle at 52% 12%, rgba(255, 211, 122, 0.38), transparent 24%),
-              linear-gradient(112deg, transparent 0 44%, rgba(255, 214, 122, 0.56) 48%, rgba(234, 162, 58, 0.28) 50%, transparent 56%),
-              linear-gradient(102deg, transparent 0%, rgba(234, 162, 58, 0.18) 48%, transparent 76%);
-            animation: bb-store-lantern-flicker 5.4s ease-in-out infinite;
-          }
-          .bb-store-skin-card--sinai::after {
-            background:
-              radial-gradient(circle at 22% 72%, rgba(234, 162, 58, 0.36) 0 1.4px, transparent 3px),
-              radial-gradient(circle at 72% 34%, rgba(255, 211, 122, 0.2) 0 1.2px, transparent 3px),
-              linear-gradient(112deg, transparent 0%, rgba(255, 211, 122, 0.14) 44%, transparent 72%),
-              linear-gradient(180deg, transparent 0%, rgba(5, 5, 5, 0.24) 70%, rgba(2, 2, 2, 0.62) 100%);
-            background-size: 140px 180px, 210px 250px, 100% 100%, 100% 100%;
-            filter: blur(1.4px);
-            animation: bb-store-skin-drift 8.8s ease-in-out infinite alternate;
-          }
-          .bb-store-skin-card--desert::before {
-            background:
-              radial-gradient(circle at 52% 12%, rgba(255, 211, 122, 0.38), transparent 24%),
-              linear-gradient(106deg, transparent 0%, rgba(255, 211, 122, 0.18) 48%, transparent 78%);
-            animation: bb-store-lantern-flicker 6s ease-in-out infinite;
-          }
-          .bb-store-skin-card--desert::after {
-            background:
-              radial-gradient(circle at 20% 36%, rgba(255, 230, 180, 0.28) 0 1.3px, transparent 3px),
-              radial-gradient(circle at 78% 28%, rgba(232, 171, 72, 0.22) 0 1.2px, transparent 3px),
-              repeating-linear-gradient(104deg, rgba(255, 224, 170, 0.08) 0 1px, transparent 1px 40px),
-              linear-gradient(180deg, transparent 0%, rgba(8, 5, 4, 0.2) 68%, rgba(5, 4, 3, 0.62) 100%);
-            background-size: 160px 200px, 240px 280px, 260px 320px, 100% 100%;
-            filter: blur(1.4px);
-            animation: bb-store-skin-drift 9.2s ease-in-out infinite alternate;
-          }
-          .bb-store-skin-card--no-fuss::before {
-            background:
-              radial-gradient(circle at 18% 12%, rgba(77, 163, 255, 0.2), transparent 30%),
-              radial-gradient(circle at 88% 18%, rgba(245, 245, 245, 0.08), transparent 28%);
-            animation: bb-store-skin-drift 11s ease-in-out infinite alternate;
-          }
-          .bb-store-skin-card--no-fuss::after {
-            background:
-              linear-gradient(115deg, transparent 0%, rgba(108, 184, 255, 0.06) 46%, transparent 76%),
-              radial-gradient(circle at 84% 78%, rgba(245, 245, 245, 0.06), transparent 34%);
-            filter: blur(1.6px);
-            animation: bb-store-skin-pulse 6s ease-in-out infinite;
-          }
-        `}</style>
-        <div className="hidden overflow-hidden rounded-[28px] border border-rose-100 bg-[linear-gradient(135deg,rgba(255,231,231,0.9),rgba(255,246,246,0.72))] p-4 shadow-[0_18px_42px_rgba(153,27,27,0.08)]">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-4">
-              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-[18px] bg-[linear-gradient(135deg,#8f1022,#d93d4e)] text-3xl shadow-[0_12px_24px_rgba(153,27,27,0.22)]" aria-hidden="true">
-                ✦
-              </div>
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#a41225]">Cinematic Themes</p>
-                <h3 className="text-2xl font-black leading-tight text-[#4a1117]">Premium Skins</h3>
-                <p className="mt-1 max-w-xl text-sm font-semibold leading-6 text-[#6e3036]">
-                  Immersive Bible Buddy atmospheres with animated lighting, premium cards, and skin-wide styling.
-                </p>
-              </div>
-            </div>
-            <span className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#a41225] px-5 py-3 text-sm font-black text-white shadow-[0_12px_24px_rgba(164,18,37,0.22)]">
-              All skins 1,000 💎
-            </span>
-          </div>
-        </div>
         <div className="flex items-end justify-between gap-3">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Premium Skins</p>
-            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary)]">Choose a cinematic environment for prayer, study, and focus.</p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent)]">Color Skins</p>
+            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary)]">Choose a simple color skin with a matching profile ring and flame.</p>
           </div>
         </div>
         <div className="mt-3 grid gap-4 lg:grid-cols-2">{PREMIUM_SKIN_STORE_ITEMS.map(renderPremiumSkinCard)}</div>
@@ -3979,6 +3727,74 @@ export default function DashboardPage() {
     }
   }
 
+  function getDashboardGuidedIntroSeenStorageKey() {
+    return userId ? `${DASHBOARD_GUIDED_INTRO_SEEN_STORAGE_PREFIX}:${userId}` : null;
+  }
+
+  async function saveDashboardGuidedIntroSeen() {
+    if (!userId) return;
+    const mergedFeatureTours = {
+      ...featureTours,
+      dashboard: true,
+      dashboard_guided_intro: true,
+    };
+
+    setFeatureTours(mergedFeatureTours);
+    const localSeenKey = getDashboardGuidedIntroSeenStorageKey();
+    if (localSeenKey && typeof window !== "undefined") {
+      window.localStorage.setItem(localSeenKey, "1");
+    }
+
+    const { error: upsertError } = await supabase
+      .from("profile_stats")
+      .upsert(
+        {
+          user_id: userId,
+          feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
+        },
+        { onConflict: "user_id" },
+      );
+
+    if (upsertError) {
+      console.error("[DASHBOARD_GUIDED_INTRO] Could not save walkthrough state:", upsertError);
+    }
+  }
+
+  function startDashboardGuidedIntro(replay = false) {
+    setDashboardGuidedIntroReplay(replay);
+    setDashboardGuidedIntroStepIndex(0);
+    setDashboardGuidedIntroOpen(true);
+    window.setTimeout(() => {
+      document.querySelector<HTMLElement>(`[data-bb-dashboard-tour="${DASHBOARD_GUIDED_INTRO_STEPS[0].target}"]`)?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }, 60);
+  }
+
+  function closeDashboardGuidedIntro(options: { complete?: boolean } = {}) {
+    setDashboardGuidedIntroOpen(false);
+    setDashboardGuidedIntroRect(null);
+    setDashboardGuidedIntroStepIndex(0);
+    if (options.complete && !dashboardGuidedIntroReplay) {
+      void saveDashboardGuidedIntroSeen();
+    }
+    setDashboardGuidedIntroReplay(false);
+  }
+
+  function goToDashboardGuidedIntroStep(nextIndex: number) {
+    const boundedIndex = Math.max(0, Math.min(DASHBOARD_GUIDED_INTRO_STEPS.length - 1, nextIndex));
+    setDashboardGuidedIntroStepIndex(boundedIndex);
+    window.setTimeout(() => {
+      document.querySelector<HTMLElement>(`[data-bb-dashboard-tour="${DASHBOARD_GUIDED_INTRO_STEPS[boundedIndex].target}"]`)?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }, 30);
+  }
+
   const hasBlockingDashboardOverlay =
     showLevelInfoModal ||
     showStreakBadgeModal ||
@@ -3996,14 +3812,86 @@ export default function DashboardPage() {
     Boolean(moderatorWeeklyPayoutReveal) ||
     Boolean(selectedDashboardTask) ||
     Boolean(activeTourKey) ||
+    dashboardGuidedIntroOpen ||
     Boolean(activeStorePromo) ||
     pendingDailyStreakSequence ||
     pendingDailyTaskCelebrationModal;
 
   useEffect(() => {
+    if (!dashboardGuidedIntroOpen) return;
+
+    const preventScroll = (event: Event) => {
+      event.preventDefault();
+    };
+    const preventScrollKeys = (event: KeyboardEvent) => {
+      const scrollKeys = ["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "];
+      if (scrollKeys.includes(event.key)) {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener("wheel", preventScroll, { passive: false });
+    document.addEventListener("touchmove", preventScroll, { passive: false });
+    document.addEventListener("keydown", preventScrollKeys);
+
+    const updateSpotlight = () => {
+      const step = DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStepIndex];
+      const element = document.querySelector<HTMLElement>(`[data-bb-dashboard-tour="${step.target}"]`);
+      if (!element) {
+        setDashboardGuidedIntroRect(null);
+        return;
+      }
+      setDashboardGuidedIntroRect(element.getBoundingClientRect());
+    };
+
+    updateSpotlight();
+    const frame = window.requestAnimationFrame(updateSpotlight);
+    window.addEventListener("resize", updateSpotlight);
+    window.addEventListener("scroll", updateSpotlight, true);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", updateSpotlight);
+      window.removeEventListener("scroll", updateSpotlight, true);
+      document.removeEventListener("wheel", preventScroll);
+      document.removeEventListener("touchmove", preventScroll);
+      document.removeEventListener("keydown", preventScrollKeys);
+    };
+  }, [dashboardGuidedIntroOpen, dashboardGuidedIntroStepIndex]);
+
+  useEffect(() => {
+    if (!featureToursEnabled || !featureToursLoaded || !userId || dashboardGuidedIntroOpen) return;
+    if (hasBlockingDashboardOverlay) return;
+    if (featureTours.dashboard_guided_intro === true || featureTours.dashboard === true) return;
+    const localSeenKey = getDashboardGuidedIntroSeenStorageKey();
+    if (localSeenKey && typeof window !== "undefined" && window.localStorage.getItem(localSeenKey) === "1") return;
+    const timer = window.setTimeout(() => startDashboardGuidedIntro(false), 700);
+    return () => window.clearTimeout(timer);
+  }, [dashboardGuidedIntroOpen, featureTours.dashboard, featureTours.dashboard_guided_intro, featureToursEnabled, featureToursLoaded, hasBlockingDashboardOverlay, userId]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    function handleReplayRequest() {
+      const shouldReplay = window.localStorage.getItem(DASHBOARD_GUIDED_INTRO_STORAGE_KEY) === "1";
+      if (!shouldReplay) return;
+      window.localStorage.removeItem(DASHBOARD_GUIDED_INTRO_STORAGE_KEY);
+      window.setTimeout(() => startDashboardGuidedIntro(true), 450);
+    }
+
+    handleReplayRequest();
+    window.addEventListener("bb:replay-dashboard-guided-intro", handleReplayRequest);
+    window.addEventListener("storage", handleReplayRequest);
+    return () => {
+      window.removeEventListener("bb:replay-dashboard-guided-intro", handleReplayRequest);
+      window.removeEventListener("storage", handleReplayRequest);
+    };
+  }, []);
+
+  useEffect(() => {
     let cancelled = false;
     setBibleYearProgressChecked(false);
     setHasBibleYearTaskProgress(false);
+    setBibleYearTaskProgressRows([]);
 
     async function loadBibleYearTaskProgressFlag() {
       if (!userId) {
@@ -4015,19 +3903,22 @@ export default function DashboardPage() {
         .from("bible_year_day_progress")
         .select("day_number, reading_completed, trivia_completed, reflection_completed")
         .eq("user_id", userId)
-        .limit(1);
+        .order("day_number", { ascending: true });
 
       if (cancelled) return;
       if (error) {
         console.warn("[BIBLE_YEAR_LAUNCH] Could not check Bible Year task progress:", error.message);
         setHasBibleYearTaskProgress(false);
+        setBibleYearTaskProgressRows([]);
         setBibleYearProgressChecked(true);
         return;
       }
 
-      const hasProgress = (data || []).some((row) =>
+      const progressRows = (data || []) as BibleYearTaskProgressRow[];
+      const hasProgress = progressRows.some((row) =>
         Boolean(row.reading_completed || row.trivia_completed || row.reflection_completed),
       );
+      setBibleYearTaskProgressRows(progressRows);
       setHasBibleYearTaskProgress(hasProgress);
       setBibleYearProgressChecked(true);
     }
@@ -4599,7 +4490,7 @@ export default function DashboardPage() {
       .maybeSingle();
     if (error && /active_premium_skin_selected_at/i.test(error.message || "")) return null;
     if (error) {
-      console.warn("[STORE] Could not verify Premium Skin lock:", error.message);
+      console.warn("[STORE] Could not verify skin lock:", error.message);
       return "I could not verify your skin lock yet. Try again in a moment.";
     }
     const dbSkin = normalizePremiumSkinId(data?.active_premium_skin);
@@ -4637,7 +4528,7 @@ export default function DashboardPage() {
           { onConflict: "user_id" },
         );
       if (error && !/active_premium_skin/i.test(error.message || "")) {
-        console.warn("[STORE] Premium Skin saved locally, but profile update failed:", error.message);
+        console.warn("[STORE] Skin saved locally, but profile update failed:", error.message);
       } else {
         clearPendingPremiumSkinSync(userId, normalizedSkinId);
       }
@@ -6864,7 +6755,17 @@ export default function DashboardPage() {
   const inviteText = "I've been using Bible Buddy to read and study the Bible. Come join me.";
   const bibleYearPlan = useMemo(() => generateBibleInOneYearPlan(), []);
   const bibleYearReport = useMemo(() => {
-    const currentDay = getBibleYearDayFromStart(profile?.bible_year_started_at);
+    const bibleYearStartedAt = getBibleYearClockStartDate(profile);
+    const expectedPaceDay = getBibleYearDayFromStart(bibleYearStartedAt, bibleYearPlan.totalDays);
+    const bibleYearTaskProgressByDay = new Map(
+      bibleYearTaskProgressRows
+        .filter((row) => typeof row.day_number === "number")
+        .map((row) => [Number(row.day_number), row]),
+    );
+    const isBibleYearTaskDayComplete = (dayNumber: number) => {
+      const row = bibleYearTaskProgressByDay.get(dayNumber);
+      return Boolean(row?.reading_completed && row?.trivia_completed && row?.reflection_completed);
+    };
     const completedByBook = new Map(
       bibleBookProgress.map((row) => [
         row.book.toLowerCase().trim(),
@@ -6874,32 +6775,50 @@ export default function DashboardPage() {
     const isChapterComplete = (book: string, chapter: number) =>
       completedByBook.get(book.toLowerCase().trim())?.has(chapter) ?? false;
     const allDays = bibleYearPlan.weeks.flatMap((week) => week.days);
+    const firstIncompleteTaskDay = allDays.find((day) => !isBibleYearTaskDayComplete(day.dayNumber))?.dayNumber;
+    const firstIncompleteChapterDay = allDays.find((day) =>
+      day.chapters.some((chapter) => !isChapterComplete(chapter.book, chapter.chapter)),
+    )?.dayNumber;
+    const currentDay = Math.max(
+      1,
+      Math.min(
+        bibleYearPlan.totalDays,
+        firstIncompleteTaskDay ??
+          firstIncompleteChapterDay ??
+          bibleYearPlan.totalDays,
+      ),
+    );
     const currentDayReading = allDays.find((day) => day.dayNumber === currentDay) ?? allDays[0];
     const currentDayTotalChapters = currentDayReading?.chapters.length ?? 0;
     const currentDayCompletedChapters =
       currentDayReading?.chapters.filter((chapter) => isChapterComplete(chapter.book, chapter.chapter)).length ?? 0;
-    const currentDayPercent = currentDayTotalChapters > 0
-      ? Math.round((currentDayCompletedChapters / currentDayTotalChapters) * 100)
+    const currentDayTaskProgress = bibleYearTaskProgressByDay.get(currentDay);
+    const currentDayCompletedTasks = currentDayTaskProgress
+      ? [currentDayTaskProgress.reading_completed, currentDayTaskProgress.trivia_completed, currentDayTaskProgress.reflection_completed].filter(Boolean).length
       : 0;
-    const firstIncompleteDay = allDays.find((day) =>
-      day.chapters.some((chapter) => !isChapterComplete(chapter.book, chapter.chapter)),
-    )?.dayNumber ?? bibleYearPlan.totalDays + 1;
-    const dayDelta = firstIncompleteDay - currentDay;
+    const currentDayPercent = currentDayTaskProgress
+      ? Math.round((currentDayCompletedTasks / 3) * 100)
+      : currentDayTotalChapters > 0
+        ? Math.round((currentDayCompletedChapters / currentDayTotalChapters) * 100)
+      : 0;
+    const dayDelta = currentDay - expectedPaceDay;
+    const statusDays = Math.abs(dayDelta);
+    const statusDirection: "ahead" | "behind" | "on-track" = dayDelta > 0 ? "ahead" : dayDelta < 0 ? "behind" : "on-track";
     const statusLabel =
       dayDelta > 0
         ? `${dayDelta} ${dayDelta === 1 ? "day" : "days"} ahead`
         : dayDelta < 0
-          ? `${Math.abs(dayDelta)} ${Math.abs(dayDelta) === 1 ? "day" : "days"} behind`
+          ? `${statusDays} ${statusDays === 1 ? "day" : "days"} behind`
           : "On track";
     const statusDetail =
       dayDelta > 0
-        ? "You have already finished the chapters needed for today's pace."
+        ? "You are ahead of the one-year pace based on your start date."
         : dayDelta < 0
-          ? "Finish the next incomplete day to catch the one-year pace."
-          : "You are working on the current Bible in One Year day.";
-    const remainingPlanDays = Math.max(0, bibleYearPlan.totalDays - Math.min(firstIncompleteDay, bibleYearPlan.totalDays) + 1);
+          ? "Complete the next Bible Year day to catch the one-year pace."
+          : "You are up to date and right on track.";
+    const remainingPlanDays = Math.max(0, bibleYearPlan.totalDays - currentDay + 1);
     const expectedFinishDate = new Date();
-    expectedFinishDate.setDate(expectedFinishDate.getDate() + Math.max(0, remainingPlanDays - 1));
+    expectedFinishDate.setDate(expectedFinishDate.getDate() + Math.max(0, remainingPlanDays));
     const expectedFinishDateLabel = remainingPlanDays <= 0
       ? "Complete"
       : expectedFinishDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
@@ -6922,9 +6841,20 @@ export default function DashboardPage() {
       allTimeStreak: currentStreak,
       statusLabel,
       statusDetail,
+      statusDays,
+      statusDirection,
       expectedFinishDateLabel,
     };
-  }, [bibleBookProgress, bibleYearPlan, profile?.bible_year_started_at, profile?.current_streak, totalCompletedChapters]);
+  }, [
+    bibleBookProgress,
+    bibleYearPlan,
+    bibleYearTaskProgressRows,
+    profile?.bible_year_launch_seen_at,
+    profile?.bible_year_started_at,
+    profile?.created_at,
+    profile?.current_streak,
+    totalCompletedChapters,
+  ]);
 
   async function saveBibleYearLaunchChoice(choice: "start" | "dismiss") {
     if (!userId || savingBibleYearLaunchChoice) return;
@@ -7406,11 +7336,15 @@ export default function DashboardPage() {
 
     if (skin) {
       try {
-        const image = await loadCanvasImage(skin.backgroundImage);
-        const scale = Math.max(canvas.width / image.width, canvas.height / image.height);
-        const width = image.width * scale;
-        const height = image.height * scale;
-        ctx.drawImage(image, (canvas.width - width) / 2, (canvas.height - height) / 2, width, height);
+        if (skin.hasImageBackground !== false && skin.backgroundImage) {
+          const image = await loadCanvasImage(skin.backgroundImage);
+          const scale = Math.max(canvas.width / image.width, canvas.height / image.height);
+          const width = image.width * scale;
+          const height = image.height * scale;
+          ctx.drawImage(image, (canvas.width - width) / 2, (canvas.height - height) / 2, width, height);
+        } else {
+          throw new Error("No image background for basic skin.");
+        }
       } catch {
         const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
         gradient.addColorStop(0, theme.background);
@@ -7418,7 +7352,7 @@ export default function DashboardPage() {
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
-      ctx.fillStyle = "rgba(0,0,0,0.42)";
+      ctx.fillStyle = skin.hasImageBackground === false ? "rgba(255,255,255,0.18)" : "rgba(0,0,0,0.42)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     } else {
       const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
@@ -8202,7 +8136,7 @@ export default function DashboardPage() {
               <div className="mt-2 grid gap-2">
                 <p>📖 Know exactly where to start and what to read next</p>
                 <p>🎧 Audio and teaching built into the daily study</p>
-                <p>🧠 Simple breakdowns, trivia, reflection, and optional Deep Notes</p>
+                <p>🧠 Simple breakdowns, trivia, reflection, and optional Study Notes</p>
                 <p>⏱️ Studies built to fit about 20-25 minutes a day</p>
               </div>
             </div>
@@ -8289,7 +8223,6 @@ export default function DashboardPage() {
 
     const rewardTiles = [
       { title: "Themes", text: "Change the whole app feel.", icon: "🎨", color: "#7BAFD4" },
-      { title: "Flames", text: "Make your streak fire yours.", icon: <StreakFlameEmoji flameId="blue" size={30} />, color: "#38BDF8" },
       { title: "Buddies", text: "Unlock new study voices.", icon: "👥", color: "#DB2777" },
       { title: "Boosts", text: "Protect streaks and chase rewards.", icon: "⚡", color: "#B7791F" },
     ];
@@ -8306,13 +8239,13 @@ export default function DashboardPage() {
             >
               x
             </button>
-            <div className="mt-1 flex justify-center">
+            <div className={`mt-1 justify-center ${streakMotivationModalMode === "daily" ? "hidden" : "flex"}`}>
               <LouisAvatar mood="stareyes" size={132} />
             </div>
             <p className="mt-3 text-center text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent)]">💎 Diamond Store</p>
             <h2 className="mt-2 text-center text-3xl font-black leading-tight text-[var(--bb-text-primary)] sm:text-4xl">Spend diamonds. Build your setup.</h2>
             <p className="mx-auto mt-3 max-w-md text-center text-sm font-semibold leading-6 text-[var(--bb-text-secondary)]">
-              Your Bible study work turns into diamonds. Use them on themes, flame colors, Bible Buddies, boosts, and more rewards coming next.
+              Your Bible study work turns into diamonds. Use them on themes, Bible Buddies, boosts, and more rewards coming next.
             </p>
 
             <div className="mt-5 grid grid-cols-2 gap-3">
@@ -8337,6 +8270,96 @@ export default function DashboardPage() {
           </div>
         </div>
       </ModalShell>
+    );
+  }
+
+  function renderDashboardGuidedIntro() {
+    if (!dashboardGuidedIntroOpen) return null;
+
+    const step = DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStepIndex];
+    const totalSteps = DASHBOARD_GUIDED_INTRO_STEPS.length;
+    const isLastStep = dashboardGuidedIntroStepIndex === totalSteps - 1;
+    const isFirstStep = dashboardGuidedIntroStepIndex === 0;
+    const rect = dashboardGuidedIntroRect;
+    const padding = 10;
+    const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 390;
+    const viewportHeight = typeof window !== "undefined" ? window.innerHeight : 760;
+    const spotlightStyle = rect
+      ? {
+          top: Math.max(8, rect.top - padding),
+          left: Math.max(8, rect.left - padding),
+          width: Math.min(viewportWidth - 16, rect.width + padding * 2),
+          height: rect.height + padding * 2,
+        }
+      : {
+          top: 120,
+          left: 18,
+          width: Math.max(280, viewportWidth - 36),
+          height: 160,
+        };
+    const tooltipOnRight = rect ? rect.left + rect.width / 2 < viewportWidth / 2 : false;
+    const tooltipStyle = rect
+      ? {
+          top: Math.min(viewportHeight - 260, Math.max(20, rect.top + rect.height / 2 - 130)),
+          left: tooltipOnRight
+            ? Math.min(viewportWidth - 360, rect.right + 18)
+            : Math.max(16, rect.left - 378),
+        }
+      : {
+          top: 300,
+          left: 16,
+        };
+
+    return (
+      <div
+        className="fixed inset-0 z-[130]"
+        onWheel={(event) => event.preventDefault()}
+        onTouchMove={(event) => event.preventDefault()}
+      >
+        <div className="absolute inset-0 bg-slate-950/42 backdrop-blur-[0.1px]" />
+        <div
+          className="pointer-events-none fixed rounded-[28px] border border-white/80 bg-white/8 shadow-[0_0_0_9999px_rgba(2,6,23,0.54),0_0_0_4px_rgba(123,175,212,0.24),0_24px_70px_rgba(15,23,42,0.32)] transition-all duration-300"
+          style={spotlightStyle}
+        />
+        <div
+          className="fixed mx-4 w-[min(340px,calc(100vw-32px))] rounded-[26px] border border-white/70 bg-white p-5 text-slate-950 shadow-[0_24px_80px_rgba(15,23,42,0.34)] transition-all duration-300"
+          style={viewportWidth < 768 ? { left: 0, right: 0, bottom: 18 } : tooltipStyle}
+        >
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2f7fe8]">{step.eyebrow}</p>
+            <p className="rounded-full bg-[#eaf5ff] px-2.5 py-1 text-[10px] font-black text-[#2563eb]">
+              {dashboardGuidedIntroStepIndex + 1}/{totalSteps}
+            </p>
+          </div>
+          <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950">{step.title}</h2>
+          <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">{step.body}</p>
+          {step.detail ? <p className="mt-2 text-sm font-bold leading-6 text-slate-700">{step.detail}</p> : null}
+          <div className="mt-5 flex items-center gap-3">
+            {isFirstStep ? (
+              <button
+                type="button"
+                onClick={() => closeDashboardGuidedIntro({ complete: true })}
+                className="rounded-full px-4 py-2 text-sm font-black text-slate-500 transition hover:bg-slate-100"
+              >
+                Skip
+              </button>
+            ) : null}
+            <button
+              type="button"
+              onClick={() => {
+                if (isLastStep) {
+                  closeDashboardGuidedIntro({ complete: true });
+                  return;
+                }
+                goToDashboardGuidedIntroStep(dashboardGuidedIntroStepIndex + 1);
+              }}
+              className="ml-auto rounded-full bg-[#2f7fe8] px-5 py-2.5 text-sm font-black text-white shadow-[0_12px_24px_rgba(47,127,232,0.25)] transition hover:brightness-105"
+            >
+              {isLastStep ? "Finish" : "Next"}
+            </button>
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -9730,10 +9753,7 @@ export default function DashboardPage() {
           animation: dashboard-inline-reader-slide 260ms ease-out both;
         }
         html.bb-dashboard-stable-motion .dashboard-inline-task,
-        html.bb-dashboard-stable-motion .dashboard-inline-reader,
-        html.bb-dashboard-stable-motion .bb-store-skin-motion,
-        html.bb-dashboard-stable-motion .bb-store-skin-card::before,
-        html.bb-dashboard-stable-motion .bb-store-skin-card::after {
+        html.bb-dashboard-stable-motion .dashboard-inline-reader {
           animation: none !important;
         }
       `}</style>
@@ -9923,7 +9943,7 @@ export default function DashboardPage() {
             <div className="mt-2 grid gap-1.5">
               <p>🗺️ A simple structure for what to read each day</p>
               <p>🎧 Audio and teaching built into every study</p>
-              <p>📖 Optional Deep Notes when you want to study deeper</p>
+              <p>📖 Optional Study Notes when you want to study deeper</p>
               <p>⏱️ Daily studies designed for about 20-25 minutes</p>
               <p>🧪 Help us test the new mode and make it better</p>
             </div>
@@ -9965,7 +9985,7 @@ export default function DashboardPage() {
             <div className="rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_76%,transparent)] p-3">
               <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#f6b44b)]">Task 1</p>
               <p className="mt-1 text-sm font-black">Watch or listen to the daily Scripture video.</p>
-              <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">Deep Notes are optional if you want to study deeper.</p>
+              <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">Study Notes are optional if you want to study deeper.</p>
             </div>
             <div className="rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_76%,transparent)] p-3">
               <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#f6b44b)]">Task 2</p>
@@ -10283,7 +10303,16 @@ export default function DashboardPage() {
                 style={{ background: `linear-gradient(135deg, ${skinApplyPrompt.item.accent}30, transparent)` }}
                 aria-hidden="true"
               />
-              <div className="relative mx-auto mt-4 h-36 w-36 overflow-hidden rounded-[28px] border border-white/30 bg-cover bg-center shadow-[0_20px_46px_rgba(0,0,0,0.22)]" style={{ backgroundImage: `url(${skinApplyPrompt.item.imageSrc})` }} />
+              <div
+                className="relative mx-auto mt-4 grid h-36 w-36 place-items-center overflow-hidden rounded-[28px] border text-sm font-black shadow-[0_20px_46px_rgba(0,0,0,0.12)]"
+                style={{
+                  background: `linear-gradient(135deg, ${skinApplyPrompt.item.accent}22, ${skinApplyPrompt.item.accent}55)`,
+                  borderColor: `${skinApplyPrompt.item.accent}66`,
+                  color: skinApplyPrompt.item.accent,
+                }}
+              >
+                {skinApplyPrompt.item.emoji}
+              </div>
               <p className="relative mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2563eb)]">Set dashboard skin?</p>
               <h2 className="relative mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
                 Use {skinApplyPrompt.item.title} on your dashboard?
@@ -10526,8 +10555,16 @@ export default function DashboardPage() {
           }}
           backdropColor="bg-black/45"
         >
-        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
-          <div className="relative overflow-hidden bg-[var(--bb-card,#ffffff)] px-6 pb-7 pt-5 text-center sm:px-8">
+        <div
+          className={`mx-4 w-full overflow-hidden border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl ${
+            streakMotivationModalMode === "daily" ? "max-w-sm rounded-[18px]" : "max-w-lg rounded-[30px]"
+          }`}
+        >
+          <div
+            className={`relative overflow-hidden bg-[var(--bb-card,#ffffff)] ${
+              streakMotivationModalMode === "daily" ? "px-4 pb-4 pt-3 text-left" : "px-6 pb-7 pt-5 text-center sm:px-8"
+            }`}
+          >
             <div className="flex justify-end">
               <button
                 type="button"
@@ -10546,7 +10583,7 @@ export default function DashboardPage() {
             <div className="mt-1 flex justify-center">
               <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={138} />
             </div>
-            <div className="mt-3 flex justify-center">
+            <div className={`mt-3 justify-center ${streakMotivationModalMode === "daily" ? "hidden" : "flex"}`}>
               <p className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] ${dashboardNudgeTone.badge}`}>
                 {streakMotivationModalMode === "daily" ? "🔥 Daily Streak" : `${dashboardNudgeTone.icon} ${displayedDashboardNudge.eyebrow}`}
               </p>
@@ -10576,7 +10613,48 @@ export default function DashboardPage() {
               </>
             ) : (
               <>
-              <h2 className="mt-4 flex items-center justify-center gap-2 text-3xl font-black text-[var(--bb-text-primary,#21304f)] sm:text-4xl">
+              <div className="-mt-8 pr-9">
+                <h2 className="text-sm font-black leading-tight text-[#2f7fe8]">Why Does My Flame Flicker?</h2>
+              </div>
+              <div className="mt-5 flex justify-center">
+                <StreakFlameEmoji
+                  flameId={
+                    activePremiumSkinId === "none" && dashboardThemeId === "light"
+                      ? "default"
+                      : getPremiumSkinFlameId(activePremiumSkinId) ?? profile?.selected_streak_flame
+                  }
+                  currentStreak={profile?.current_streak ?? 0}
+                  size={86}
+                  title="Daily streak flame"
+                />
+              </div>
+              <div className="mt-4 space-y-3 text-xs font-bold leading-5 text-[var(--bb-text-primary,#21304f)]">
+                <p>Your flame represents your consistency in God&apos;s Word.</p>
+                <p>
+                  Early on, the flame flickers because habits are still being built. Some days are strong,
+                  some days are harder.
+                </p>
+                <p>
+                  But after 30 days, the flame steadies. Not because perfection was reached, but because
+                  the habit became part of your life.
+                </p>
+                <p>A steady flame represents consistency, discipline, and returning daily to Scripture.</p>
+              </div>
+              <div className="mt-5 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowStreakMotivationModal(false);
+                    setShowStreakMotivationTaskPrompt(false);
+                    setLouisCheckInContextLine(null);
+                    setLouisDashboardNudge(null);
+                  }}
+                  className="rounded-lg border border-[#b7dcf8] bg-[#d9efff] px-5 py-2 text-xs font-black text-[#2f7fe8] shadow-sm transition hover:brightness-95"
+                >
+                  Got it!
+                </button>
+              </div>
+              <h2 className="hidden">
                 <span
                   className={`leading-none ${
                     (profile?.current_streak ?? 0) >= 30
@@ -10594,8 +10672,11 @@ export default function DashboardPage() {
                 </span>
                 <span>{streakMotivation.headline}</span>
               </h2>
-            <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4f678e)]">
-              {streakMotivation.body}
+            <p className="hidden">
+              The flame represents your consistency in Scripture. Early on, it flickers because habits are still being built. Some days are strong, and some days are harder.
+            </p>
+            <p className="hidden">
+              After 30 days, the flame steadies. Not because perfection was reached, but because returning to God&apos;s Word has become part of your life.
             </p>
               {showStreakMotivationTaskPrompt && (
                 <>
@@ -11492,6 +11573,7 @@ export default function DashboardPage() {
         />
       ) : null}
 
+      {renderDashboardGuidedIntro()}
 
     </div>
     </>

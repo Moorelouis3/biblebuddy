@@ -46,7 +46,7 @@ export default function StreakFlameBadge({ currentStreak, flameId, className = "
         aria-label={`${streakLabel} badge`}
         title={streakLabel}
       >
-        <StreakFlameEmoji flameId={flameId} size={18} title={streakLabel} />
+        <StreakFlameEmoji flameId={flameId} currentStreak={currentStreak} size={18} title={streakLabel} />
       </button>
       {open ? (
         <div className="absolute left-0 top-full z-30 mt-2 w-64 rounded-2xl border border-[#e9dccb] bg-[#fffaf4] p-3 shadow-xl">

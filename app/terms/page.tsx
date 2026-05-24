@@ -13,7 +13,7 @@ export default function TermsPage() {
     <LegalPageLayout
       eyebrow="Terms"
       title="Terms of Service"
-      description="These Terms of Service govern your access to and use of Bible Buddy. By using Bible Buddy, you agree to these terms."
+      description="These Terms explain how Bible Buddy works, what you can expect from us, and what we ask from everyone using the service."
       lastUpdated="March 24, 2026"
     >
       <LegalSection title="1. Acceptance of Terms">

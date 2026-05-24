@@ -1,43 +1,78 @@
 "use client";
 
-import { FormEvent, useState, useEffect, Suspense } from "react";
+import { FormEvent, Suspense, type ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
+import LegalPageThemeReset from "@/components/LegalPageThemeReset";
+import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "@/lib/supabaseClient";
 
-// Force dynamic rendering for this page
 export const dynamic = "force-dynamic";
 
-// Logo component for reset password page (shared across all states)
 const LogoHeader = () => (
-  <header className="w-full max-w-7xl mx-auto px-4 py-4 md:py-6 flex items-center">
-    <div className="flex items-center gap-3">
-      <Image
-        src="/Newlouiswave.png"
-        alt="Bible Buddy Logo"
-        width={32}
-        height={32}
-        className="w-8 h-8"
-      />
-      <div>
-        <div className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">
-          Bible Buddy
-        </div>
-        <div className="text-[10px] md:text-xs text-gray-500 -mt-0.5">
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-600 transition-colors"
-          >
-
-          </a>
-        </div>
-      </div>
+  <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-5 py-5 sm:px-8" role="banner">
+    <div className="flex items-center gap-3 text-[#111827]">
+      <svg className="h-8 w-8 shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
+        <path d="M16 11.2v17" />
+      </svg>
+      <span className="text-lg font-black tracking-tight">Bible Buddy</span>
     </div>
-  </header>
+    <PublicHomeButton className="bb-reset-home fixed right-5 top-5 z-50 rounded-full border px-5 py-2.5 text-sm font-black shadow-[0_10px_24px_rgba(14,26,58,0.06)] transition hover:-translate-y-0.5 sm:right-8" />
+  </div>
 );
+
+const ResetShell = ({ children }: { children: ReactNode }) => (
+  <div className="bb-auth-public min-h-screen bg-[#F5F7FA] text-[#111827]">
+    <LegalPageThemeReset />
+    <style>{`
+      .bb-reset-serif { font-family: "Playfair Display", "Cormorant Garamond", "Libre Baskerville", Georgia, serif; }
+      .bb-reset-title.bb-reset-title {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+      }
+      .bb-reset-home.bb-reset-home {
+        background: #ffffff !important;
+        border-color: #E5E7EB !important;
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+      }
+    `}</style>
+    <LogoHeader />
+    <main className="flex min-h-[calc(100vh-88px)] items-center justify-center px-5 pb-12 pt-6 sm:px-8">
+      {children}
+    </main>
+  </div>
+);
+
+const ResetCard = ({ children }: { children: ReactNode }) => (
+  <div className="w-full max-w-md rounded-[30px] border border-[#E5E7EB] bg-white px-6 py-8 shadow-[0_24px_70px_rgba(17,24,39,0.10)] sm:px-7">
+    {children}
+  </div>
+);
+
+const ResetTitle = ({ title, description }: { title: string; description: string }) => (
+  <div className="mb-7 text-center">
+    <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7BAFD4]">Account help</p>
+    <h1 className="bb-reset-title bb-reset-serif mt-3 text-4xl font-black leading-tight text-black">
+      {title}
+    </h1>
+    <div className="mx-auto mt-5 flex max-w-[210px] items-center justify-center gap-3 text-[#7BAFD4]">
+      <span className="h-px flex-1 bg-[#7BAFD4]/70" />
+      <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20.8 8.6c0 5.4-8.8 10.2-8.8 10.2S3.2 14 3.2 8.6A4.6 4.6 0 0 1 12 6.7a4.6 4.6 0 0 1 8.8 1.9Z" />
+      </svg>
+      <span className="h-px flex-1 bg-[#7BAFD4]/70" />
+    </div>
+    <p className="mx-auto mt-4 max-w-sm text-sm font-semibold leading-6 text-[#667085]">
+      {description}
+    </p>
+  </div>
+);
+
+const inputClass = "w-full rounded-2xl border px-4 py-3 text-sm font-bold outline-none focus:border-[#7BAFD4]";
+const inputStyle = { backgroundColor: "#ffffff", borderColor: "#E5E7EB", color: "#111827" };
+const primaryButtonClass = "w-full rounded-2xl px-4 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(14,26,58,0.18)] transition hover:-translate-y-0.5 disabled:opacity-60";
 
 function getPasswordResetRedirectUrl() {
   if (typeof window === "undefined") return "https://www.mybiblebuddy.net/reset-password";
@@ -62,10 +97,6 @@ function ResetPasswordForm() {
   const [hasRecoverySession, setHasRecoverySession] = useState(false);
 
   useEffect(() => {
-    // Supabase recovery links can arrive as:
-    // 1. PKCE query code: /reset-password?code=...
-    // 2. Implicit hash tokens: /reset-password#access_token=...&refresh_token=...&type=recovery
-    // 3. Email template token_hash: /reset-password?token_hash=...&type=recovery
     const checkToken = async () => {
       setError(null);
       const hashParams = new URLSearchParams(window.location.hash.substring(1));
@@ -90,10 +121,7 @@ function ResetPasswordForm() {
       }
 
       if (accessToken && refreshToken && type === "recovery") {
-        const { error: sessionError } = await supabase.auth.setSession({
-          access_token: accessToken,
-          refresh_token: refreshToken,
-        });
+        const { error: sessionError } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
         if (sessionError) {
           setError("This reset link is invalid or expired. Please request a new one.");
           setIsValidToken(false);
@@ -106,10 +134,7 @@ function ResetPasswordForm() {
       }
 
       if (tokenHash && typeQuery === "recovery") {
-        const { error: verifyError } = await supabase.auth.verifyOtp({
-          token_hash: tokenHash,
-          type: "recovery",
-        });
+        const { error: verifyError } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type: "recovery" });
         if (verifyError) {
           setError("This reset link is invalid or expired. Please request a new one.");
           setIsValidToken(false);
@@ -121,14 +146,10 @@ function ResetPasswordForm() {
         return;
       }
 
-      // Some email clients can rewrite hash params into query params.
       const accessTokenQuery = searchParams.get("access_token");
       const refreshTokenQuery = searchParams.get("refresh_token");
       if (accessTokenQuery && refreshTokenQuery && typeQuery === "recovery") {
-        const { error: sessionError } = await supabase.auth.setSession({
-          access_token: accessTokenQuery,
-          refresh_token: refreshTokenQuery,
-        });
+        const { error: sessionError } = await supabase.auth.setSession({ access_token: accessTokenQuery, refresh_token: refreshTokenQuery });
         if (sessionError) {
           setError("This reset link is invalid or expired. Please request a new one.");
           setIsValidToken(false);
@@ -142,9 +163,9 @@ function ResetPasswordForm() {
 
       const { data } = await supabase.auth.getSession();
       if (data.session) {
-          setIsValidToken(true);
-          setHasRecoverySession(true);
-          return;
+        setIsValidToken(true);
+        setHasRecoverySession(true);
+        return;
       }
 
       setIsValidToken(false);
@@ -206,182 +227,122 @@ function ResetPasswordForm() {
       return;
     }
 
-    // Update password using Supabase
-    const { error: updateError } = await supabase.auth.updateUser({
-      password: password.trim(),
-    });
-
+    const { error: updateError } = await supabase.auth.updateUser({ password: password.trim() });
     setLoading(false);
 
     if (updateError) {
       setError(updateError.message || "Failed to reset password. The link may have expired.");
     } else {
       setSuccess(true);
-      // Redirect to login after 2 seconds
-      setTimeout(() => {
-        router.push("/login");
-      }, 2000);
+      setTimeout(() => router.push("/login"), 2000);
     }
   }
 
   if (isValidToken === null) {
-    // Still checking token
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <LogoHeader />
-        <div className="flex-1 flex items-center justify-center px-4">
-          <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-            <p className="text-center text-gray-600">Verifying reset link...</p>
-          </div>
-        </div>
-      </div>
+      <ResetShell>
+        <ResetCard>
+          <p className="text-center text-sm font-semibold text-[#667085]">Verifying reset link...</p>
+        </ResetCard>
+      </ResetShell>
     );
   }
 
   if (isValidToken === false) {
-    // No token yet: let the user request a reset link.
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <LogoHeader />
-        <div className="flex-1 flex items-center justify-center px-4">
-          <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-            <h1 className="text-2xl font-bold mb-2 text-center">Reset Your Password</h1>
-            <p className="text-sm text-gray-600 mb-6 text-center">
-              Enter your email and we’ll send you a link to create a new password.
-            </p>
+      <ResetShell>
+        <ResetCard>
+          <ResetTitle title="Reset Your Password" description="Enter your email and we'll send you a link to create a new password." />
 
-            <form onSubmit={handleRequestReset} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={resetEmail}
-                  onChange={(e) => setResetEmail(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="you@example.com"
-                />
-              </div>
+          <form onSubmit={handleRequestReset} className="space-y-4">
+            <div>
+              <label className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#667085]">Email</label>
+              <input
+                type="email"
+                required
+                value={resetEmail}
+                onChange={(e) => setResetEmail(e.target.value)}
+                className={inputClass}
+                style={inputStyle}
+                placeholder="you@example.com"
+              />
+            </div>
 
-              {error && (
-                <p className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
-                  {error}
-                </p>
-              )}
+            {error && <p className="rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-xs font-semibold text-red-600">{error}</p>}
+            {resetRequestSent && <p className="rounded-xl border border-[#E5E7EB] bg-[#EAF5FF] px-3 py-2 text-xs font-semibold text-[#111827]">Check your email for a password reset link.</p>}
 
-              {resetRequestSent && (
-                <p className="text-xs text-green-700 bg-green-50 border border-green-100 rounded-lg px-3 py-2">
-                  Check your email for a password reset link.
-                </p>
-              )}
+            <button type="submit" disabled={loading} className={primaryButtonClass} style={{ backgroundColor: "#7BAFD4", color: "#ffffff" }}>
+              {loading ? "Sending..." : "Send reset link"}
+            </button>
+          </form>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full rounded-full bg-blue-600 text-white text-sm font-semibold py-2.5 shadow-sm hover:bg-blue-700 disabled:opacity-60"
-              >
-                {loading ? "Sending..." : "Send reset link"}
-              </button>
-            </form>
-
-            <Link
-              href="/login"
-              className="mt-4 block text-center text-xs font-semibold text-blue-600 hover:underline"
-            >
-              Back to login
-            </Link>
-          </div>
-        </div>
-      </div>
+          <Link href="/login" className="mt-5 block text-center text-xs font-black text-[#2563EB] hover:underline">
+            Back to login
+          </Link>
+        </ResetCard>
+      </ResetShell>
     );
   }
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <LogoHeader />
-        <div className="flex-1 flex items-center justify-center px-4">
-          <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-            <h1 className="text-2xl font-bold mb-2 text-center">Password Reset Successful!</h1>
-            <p className="text-sm text-gray-600 mb-6 text-center">
-              Your password has been updated. Redirecting to login...
-            </p>
-          </div>
-        </div>
-      </div>
+      <ResetShell>
+        <ResetCard>
+          <ResetTitle title="Password Reset Successful" description="Your password has been updated. Redirecting to login..." />
+        </ResetCard>
+      </ResetShell>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      <LogoHeader />
-      <div className="flex-1 flex items-center justify-center px-4">
-        <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-          <h1 className="text-2xl font-bold mb-2 text-center">Reset Your Password</h1>
-          <p className="text-sm text-gray-600 mb-6 text-center">
-            Enter your new password below.
-          </p>
+    <ResetShell>
+      <ResetCard>
+        <ResetTitle title="Reset Your Password" description="Enter your new password below." />
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
-              New Password
-            </label>
+            <label className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#667085]">New Password</label>
             <input
               type="password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className={inputClass}
+              style={inputStyle}
               placeholder="Enter new password"
               minLength={6}
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
-              Confirm Password
-            </label>
+            <label className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#667085]">Confirm Password</label>
             <input
               type="password"
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className={inputClass}
+              style={inputStyle}
               placeholder="Confirm new password"
               minLength={6}
             />
           </div>
 
-          {error && (
-            <p className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
-              {error}
-            </p>
-          )}
+          {error && <p className="rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-xs font-semibold text-red-600">{error}</p>}
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-full bg-blue-600 text-white text-sm font-semibold py-2.5 mt-2 shadow-sm hover:bg-blue-700 disabled:opacity-60"
-          >
+          <button type="submit" disabled={loading} className={primaryButtonClass} style={{ backgroundColor: "#7BAFD4", color: "#ffffff" }}>
             {loading ? "Resetting Password..." : "Reset Password"}
           </button>
         </form>
 
-        <p className="text-xs text-gray-600 mt-4 text-center">
+        <p className="mt-5 text-center text-xs font-semibold text-[#667085]">
           Remember your password?{" "}
-          <Link
-            href="/login"
-            className="font-semibold text-blue-600 hover:underline"
-          >
+          <Link href="/login" className="font-black text-[#2563EB] hover:underline">
             Log in
           </Link>
         </p>
-        </div>
-      </div>
-    </div>
+      </ResetCard>
+    </ResetShell>
   );
 }
 
@@ -389,14 +350,11 @@ export default function ResetPasswordPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-gray-50 flex flex-col">
-          <LogoHeader />
-          <div className="flex-1 flex items-center justify-center px-4">
-            <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-              <p className="text-center text-gray-600">Loading...</p>
-            </div>
-          </div>
-        </div>
+        <ResetShell>
+          <ResetCard>
+            <p className="text-center text-sm font-semibold text-[#667085]">Loading...</p>
+          </ResetCard>
+        </ResetShell>
       }
     >
       <ResetPasswordForm />

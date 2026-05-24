@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import StreakFlameEmoji from "../../components/StreakFlameEmoji";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import {
   APP_THEME_STORAGE_KEY,
@@ -12,7 +11,7 @@ import {
   normalizeAppThemeId,
   type AppThemeId,
 } from "../../lib/appThemes";
-import { BUDDY_STORE_ITEMS, PREMIUM_SKIN_STORE_ITEMS, STREAK_FLAME_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
+import { BUDDY_STORE_ITEMS, PREMIUM_SKIN_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
 import {
   BUDDY_AVATARS,
   DEFAULT_BUDDY_AVATAR,
@@ -21,7 +20,7 @@ import {
   normalizeBuddyAvatarId,
   type BuddyAvatarId,
 } from "../../lib/buddyAvatars";
-import { ACTIVE_STREAK_FLAME_STORAGE_KEY, FLAME_COSMETICS, getPremiumSkinFlameId, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../../lib/flameCosmetics";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, getPremiumSkinFlameId, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../../lib/flameCosmetics";
 import {
   PREMIUM_SKINS,
   applyPremiumSkinToDocument,
@@ -80,6 +79,8 @@ function getPasswordResetRedirectUrl() {
   }
   return "https://www.mybiblebuddy.net/reset-password";
 }
+
+const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:replay-dashboard-guided-intro";
 
 export default function SettingsPage() {
   const router = useRouter();
@@ -345,6 +346,14 @@ export default function SettingsPage() {
     }
   }
 
+  function handleReplayDashboardIntro() {
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(DASHBOARD_GUIDED_INTRO_STORAGE_KEY, "1");
+      window.dispatchEvent(new CustomEvent("bb:replay-dashboard-guided-intro"));
+    }
+    router.push("/dashboard");
+  }
+
   async function handleApplyPromoCode() {
     if (!promoCode.trim()) {
       setPromoError("Please enter a code");
@@ -426,7 +435,7 @@ export default function SettingsPage() {
       if (error) {
         setSettingsMessage("Your skin controls the flame color, but the database save needs to retry.");
       } else {
-        setSettingsMessage("Your active Premium Skin controls this flame color.");
+        setSettingsMessage("Your active skin controls this flame color.");
       }
       return;
     }
@@ -470,7 +479,7 @@ export default function SettingsPage() {
     const storeItem = skin ? PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skin.id) : null;
     const ownsSkin = skinId === "none" || ownerHasUnlimitedDiamonds || Boolean(storeItem && storePurchases.some((purchase) => purchase.item_id === storeItem.id));
     if (!ownsSkin) {
-      setSettingsMessage("Buy this Premium Skin in the store first.");
+      setSettingsMessage("Buy this skin in the store first.");
       return;
     }
 
@@ -547,7 +556,7 @@ export default function SettingsPage() {
       if (skinError && !/active_premium_skin/i.test(skinError.message || "")) throw skinError;
       clearPendingPremiumSkinSync(user.id, skinId);
 
-      setSettingsMessage(skin ? `${skin.name} is now your default Premium Skin.` : "Premium Skin removed.");
+      setSettingsMessage(skin ? `${skin.name} is now your default skin.` : "Skin removed.");
     } catch (error: any) {
       setSelectedPremiumSkin(previousSkin);
       setSelectedPremiumSkinSelectedAt(previousSkinSelectedAt);
@@ -559,7 +568,7 @@ export default function SettingsPage() {
         window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: previousSkin } }));
         window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: previousFlame } }));
       }
-      setSettingsMessage(error.message || "Could not update Premium Skin.");
+      setSettingsMessage(error.message || "Could not update skin.");
     } finally {
       setSkinSaving(null);
     }
@@ -618,7 +627,6 @@ export default function SettingsPage() {
     const item =
       THEME_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
       PREMIUM_SKIN_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
-      STREAK_FLAME_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
       BUDDY_STORE_ITEMS.find((storeItem) => storeItem.id === itemId);
     if (!item) return;
 
@@ -639,10 +647,6 @@ export default function SettingsPage() {
 
       if (item.themeId && selectedTheme === item.themeId) {
         await handleThemeSelect("light");
-      }
-
-      if (item.flameId && selectedFlame === item.flameId) {
-        await handleFlameSelect("default");
       }
 
       if (item.skinId && selectedPremiumSkin === item.skinId) {
@@ -682,12 +686,6 @@ export default function SettingsPage() {
   const ownedStoreItemIds = storePurchases.map((purchase) => purchase.item_id);
   const availableThemes = APP_THEMES.filter((theme) => theme.id === "light" || theme.id === "dark");
   const visiblePremiumSkins = PREMIUM_SKINS;
-  const ownedFlameIds = new Set(
-    STREAK_FLAME_STORE_ITEMS
-      .filter((item) => ownedStoreItemIds.includes(item.id) && item.flameId)
-      .map((item) => item.flameId),
-  );
-  const availableFlames = FLAME_COSMETICS.filter((flame) => ownerHasUnlimitedDiamonds || flame.id === "default" || ownedFlameIds.has(flame.id));
   const ownedBuddyItemIds = new Set(
     BUDDY_STORE_ITEMS
       .filter((item) => ownedStoreItemIds.includes(item.id))
@@ -783,7 +781,7 @@ export default function SettingsPage() {
         <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
           <h2 className="text-xl font-semibold mb-2">Theme</h2>
           <p className="mb-4 text-sm text-gray-600">
-            Choose Light or Dark. Premium visual styles live in the Premium Skins section.
+            Choose Light or Dark. Color skins live in the Skins section.
           </p>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -817,11 +815,11 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Premium Skin Section */}
+        {/* Skin Section */}
         <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-2">Premium Skins</h2>
+          <h2 className="text-xl font-semibold mb-2">Skins</h2>
           <p className="mb-4 text-sm text-gray-600">
-            Set a cinematic skin as your default Bible Buddy experience. Premium Skins stay here so you can turn them on after buying them.
+            Set a simple color skin as your default Bible Buddy experience. Skins include a matching profile ring and flame color.
           </p>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -839,7 +837,7 @@ export default function SettingsPage() {
                 <div className="grid h-28 place-items-center rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-200">
                   <span className="text-3xl">BB</span>
                 </div>
-                <p className="mt-3 text-sm font-black text-gray-950">No Premium Skin</p>
+                <p className="mt-3 text-sm font-black text-gray-950">No Skin</p>
                 <p className="mt-1 text-xs font-semibold text-gray-500">
                   {skinSaving === "none" ? "Saving..." : selectedPremiumSkin === "none" ? "Active" : "Use default"}
                 </p>
@@ -873,10 +871,9 @@ export default function SettingsPage() {
                     className="w-full text-left transition hover:-translate-y-0.5 disabled:hover:translate-y-0"
                   >
                     <div
-                      className="relative h-28 overflow-hidden rounded-2xl border bg-cover bg-center shadow-[0_16px_36px_rgba(7,16,20,0.28)]"
+                      className="relative h-28 overflow-hidden rounded-2xl border shadow-[0_12px_26px_rgba(7,16,20,0.12)]"
                       style={{
-                        backgroundColor: skin.palette.background,
-                        backgroundImage: `linear-gradient(180deg, rgba(3,10,18,0.04), rgba(3,10,18,0.38)), url("${skin.backgroundImage}")`,
+                        background: `linear-gradient(135deg, ${skin.palette.background}, ${skin.palette.accentSoft})`,
                         borderColor: skin.palette.cardBorder,
                       }}
                     >
@@ -887,12 +884,12 @@ export default function SettingsPage() {
                       <div
                         className="absolute bottom-3 left-3 rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em]"
                         style={{
-                          backgroundColor: "rgba(6, 16, 20, 0.72)",
+                          backgroundColor: skin.palette.card,
                           borderColor: skin.palette.cardBorder,
-                          color: skin.palette.textPrimary,
+                          color: skin.palette.accent,
                         }}
                       >
-                        Premium Skin
+                        Color Skin
                       </div>
                     </div>
                     <p className="mt-3 text-sm font-black text-gray-950">{skin.name}</p>
@@ -914,52 +911,6 @@ export default function SettingsPage() {
                       Open Diamond Store
                     </button>
                   ) : null}
-                  {canDelete && storeItem ? (
-                    <button
-                      type="button"
-                      onClick={() => void handleDeleteStoreItem(storeItem.id)}
-                      disabled={removingItemId === storeItem.id}
-                      className="mt-3 w-full rounded-full border border-red-200 px-3 py-1.5 text-xs font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
-                    >
-                      {removingItemId === storeItem.id ? "Removing..." : "Delete"}
-                    </button>
-                  ) : null}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Flame Section */}
-        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-2">Streak Flame</h2>
-          <p className="mb-4 text-sm text-gray-600">
-            Bought flames replace the real dashboard flame, even before a 30 day streak.
-          </p>
-
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {availableFlames.map((flame) => {
-              const storeItem = STREAK_FLAME_STORE_ITEMS.find((item) => item.flameId === flame.id);
-              const canDelete = Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id));
-              return (
-                <div
-                  key={flame.id}
-                  className={`rounded-2xl border p-3 text-center transition ${
-                    selectedFlame === flame.id ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
-                  }`}
-                >
-                  <button
-                    type="button"
-                    onClick={() => void handleFlameSelect(flame.id)}
-                    disabled={flameSaving === flame.id}
-                    className="w-full text-center transition hover:-translate-y-0.5 disabled:hover:translate-y-0"
-                  >
-                    <StreakFlameEmoji flameId={flame.id} size={48} title={flame.name} />
-                    <p className="mt-3 text-sm font-black text-gray-950">{flame.name}</p>
-                    <p className="mt-1 text-xs font-semibold text-gray-500">
-                      {flameSaving === flame.id ? "Saving..." : selectedFlame === flame.id ? "Active" : "Use flame"}
-                    </p>
-                  </button>
                   {canDelete && storeItem ? (
                     <button
                       type="button"
@@ -1140,6 +1091,21 @@ export default function SettingsPage() {
               {saving ? "Saving..." : "Save Changes"}
             </button>
           </div>
+        </div>
+
+        {/* Help Section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
+          <h2 className="text-xl font-semibold mb-2">Help</h2>
+          <p className="mb-4 text-sm text-gray-600">
+            Replay the dashboard walkthrough anytime if you want a quick refresher on the daily flow.
+          </p>
+          <button
+            type="button"
+            onClick={handleReplayDashboardIntro}
+            className="rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+          >
+            Replay Dashboard Walkthrough
+          </button>
         </div>
 
         {/* Password Section */}

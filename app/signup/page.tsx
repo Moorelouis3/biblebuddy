@@ -4,6 +4,8 @@ import { FormEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import LegalPageThemeReset from "@/components/LegalPageThemeReset";
+import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "../../lib/supabaseClient";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 
@@ -11,20 +13,18 @@ export default function SignupPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [referrerUserId, setReferrerUserId] = useState("");
+  const [referrerUserId] = useState(() => {
+    if (typeof window === "undefined") return "";
+    const params = new URLSearchParams(window.location.search);
+    const referrerFromUrl = params.get("referrer") || params.get("invitedBy") || "";
+    return referrerFromUrl.trim() || localStorage.getItem("bb:pending-referrer-user-id") || "";
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const params = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
-    const referrerFromUrl = params.get("referrer") || params.get("invitedBy") || "";
-    if (referrerFromUrl) {
-      const normalizedReferrer = referrerFromUrl.trim();
-      setReferrerUserId(normalizedReferrer);
-      localStorage.setItem("bb:pending-referrer-user-id", normalizedReferrer);
-    } else {
-      const pendingReferrer = localStorage.getItem("bb:pending-referrer-user-id");
-      if (pendingReferrer) setReferrerUserId(pendingReferrer);
+    if (referrerUserId) {
+      localStorage.setItem("bb:pending-referrer-user-id", referrerUserId);
     }
 
     const checkSession = async () => {
@@ -32,7 +32,7 @@ export default function SignupPage() {
         data: { session },
       } = await supabase.auth.getSession();
       if (session) {
-        router.push("/dashboard");
+        router.push("/dashboard?view=bible-year&day=1");
       }
     };
 
@@ -42,14 +42,14 @@ export default function SignupPage() {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
-        router.push("/dashboard");
+        router.push("/dashboard?view=bible-year&day=1");
       }
     });
 
     return () => {
       subscription.unsubscribe();
     };
-  }, [router]);
+  }, [referrerUserId, router]);
 
   async function recordSignup(userId: string, userEmail: string | undefined, username: string) {
     try {
@@ -97,7 +97,7 @@ export default function SignupPage() {
       email: normalizedEmail,
       password: normalizedPassword,
       options: {
-        emailRedirectTo: typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined,
+        emailRedirectTo: typeof window !== "undefined" ? `${window.location.origin}/dashboard?view=bible-year&day=1` : undefined,
         data: {
           firstName: username,
           first_name: username,
@@ -123,7 +123,7 @@ export default function SignupPage() {
 
     if (data.session) {
       await applyReferralCodeIfPresent();
-      window.location.href = "/dashboard";
+      router.push("/dashboard?view=bible-year&day=1");
       return;
     }
 
@@ -134,7 +134,7 @@ export default function SignupPage() {
 
     if (loginData.session) {
       await applyReferralCodeIfPresent();
-      window.location.href = "/dashboard";
+      router.push("/dashboard?view=bible-year&day=1");
       return;
     }
 
@@ -167,7 +167,7 @@ export default function SignupPage() {
     setLoading(true);
     setError(null);
 
-    const redirectTo = typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined;
+    const redirectTo = typeof window !== "undefined" ? `${window.location.origin}/dashboard?view=bible-year&day=1` : undefined;
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: redirectTo ? { redirectTo } : undefined,
@@ -180,8 +180,9 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-gray-50">
-      <header className="mx-auto flex w-full max-w-7xl items-center px-4 py-4 md:py-6">
+    <div className="bb-auth-public flex min-h-screen flex-col bg-[#F5F7FA]">
+      <LegalPageThemeReset />
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-4 py-4 md:py-6">
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/Newlouiswave.png"
@@ -194,6 +195,7 @@ export default function SignupPage() {
             Bible Buddy
           </div>
         </Link>
+        <PublicHomeButton className="fixed right-5 top-5 z-50 rounded-full border border-[#E5E7EB] bg-white px-5 py-2.5 text-sm font-black text-[#111827] shadow-[0_10px_24px_rgba(17,24,39,0.06)] transition hover:-translate-y-0.5 sm:right-8" />
       </header>
 
       <div className="flex flex-1 items-center justify-center px-4">
@@ -202,7 +204,7 @@ export default function SignupPage() {
             Create your Bible Buddy account
           </h1>
           <p className="mb-6 text-center text-sm text-gray-600">
-            Start with email and password, then jump straight into onboarding.
+            Start with email and password, then jump straight into your Bible in One Year journey.
           </p>
 
           <div className="grid gap-2">
@@ -232,7 +234,7 @@ export default function SignupPage() {
                 required
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]"
                 placeholder="you@example.com"
               />
             </div>
@@ -247,7 +249,7 @@ export default function SignupPage() {
                 minLength={6}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]"
                 placeholder="Create a password"
               />
             </div>
@@ -261,7 +263,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={loading}
-              className="mt-2 w-full rounded-full bg-blue-600 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:opacity-60"
+              className="mt-2 w-full rounded-full bg-[#7BAFD4] py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#6AA0C8] disabled:opacity-60"
             >
               {loading ? "Creating account..." : "Sign up"}
             </button>
@@ -269,7 +271,7 @@ export default function SignupPage() {
 
           <p className="mt-4 text-center text-xs text-gray-600">
             Already have an account?{" "}
-            <Link href="/login" className="font-semibold text-blue-600 hover:underline">
+            <Link href="/login" className="font-semibold text-black hover:underline">
               Log in
             </Link>
           </p>

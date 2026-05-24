@@ -3,9 +3,10 @@
 
 import { FormEvent, useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
+import LegalPageThemeReset from "@/components/LegalPageThemeReset";
+import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "../../lib/supabaseClient";
 import { hasCachedSupabaseSession } from "../../lib/authBoot";
 
@@ -60,7 +61,7 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email: email.trim(),
       password: password.trim(),
     });
@@ -123,124 +124,142 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* HEADER (Top Bar) */}
-      <header className="w-full max-w-7xl mx-auto px-4 py-4 md:py-6 flex items-center">
-        {/* Left: Logo + Text */}
-        <div className="flex items-center gap-3">
-          <Image
-            src="/Newlouiswave.png"
-            alt="Bible Buddy Logo"
-            width={32}
-            height={32}
-            className="w-8 h-8"
-          />
-          <div>
-            <div className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">
-              Bible Buddy
-            </div>
-            <div className="text-[10px] md:text-xs text-gray-500 -mt-0.5">
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-600 transition-colors"
-              >
+    <div className="bb-auth-public min-h-screen bg-[#F5F7FA] text-[#111827]">
+      <LegalPageThemeReset />
+      <style>{`
+        .bb-login-serif { font-family: "Playfair Display", "Cormorant Garamond", "Libre Baskerville", Georgia, serif; }
+        .bb-login-title.bb-login-title {
+          color: #000000 !important;
+          -webkit-text-fill-color: #000000 !important;
+        }
+        .bb-login-home.bb-login-home {
+          background: #ffffff !important;
+          color: #111827 !important;
+          -webkit-text-fill-color: #111827 !important;
+          border-color: #E5E7EB !important;
+        }
+      `}</style>
 
-              </a>
-            </div>
-          </div>
-        </div>
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
+        <Link href="/" className="flex items-center gap-3 text-[#111827]">
+          <svg className="h-8 w-8 shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
+            <path d="M16 11.2v17" />
+          </svg>
+          <span className="text-lg font-black tracking-tight">Bible Buddy</span>
+        </Link>
+        <PublicHomeButton className="bb-login-home fixed right-5 top-5 z-50 rounded-full border px-5 py-2.5 text-sm font-black shadow-[0_10px_24px_rgba(14,26,58,0.06)] transition hover:-translate-y-0.5 sm:right-8" />
       </header>
 
-      <div className="flex-1 flex items-center justify-center px-4">
-        <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-          <h1 className="text-2xl font-bold mb-2 text-center">
-            Log in to Bible Buddy
-          </h1>
-          <p className="text-sm text-gray-600 mb-6 text-center">
-            Pick up where you left off in Matthew.
-          </p>
-
-          <div className="grid gap-2">
-            <button
-              type="button"
-              onClick={() => void handleOAuthSignIn("google")}
-              disabled={loading}
-              className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-bold text-gray-900 transition hover:bg-gray-50 disabled:opacity-60"
-            >
-              Continue with Google
-            </button>
-          </div>
-
-          <div className="my-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
-            <span className="h-px flex-1 bg-gray-200" />
-            or
-            <span className="h-px flex-1 bg-gray-200" />
-          </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
-              Email
-            </label>
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="you@example.com"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
-              Password
-            </label>
-            <input
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <div className="mt-2 text-right">
-              <Link
-                href={email.trim() ? `/reset-password?email=${encodeURIComponent(email.trim())}` : "/reset-password"}
-                className="text-xs font-semibold text-blue-600 hover:underline"
-              >
-                Reset password
-              </Link>
+      <main className="flex min-h-[calc(100vh-88px)] items-center justify-center px-5 pb-12 pt-6 sm:px-8">
+        <div className="w-full max-w-md rounded-[30px] border border-[#E5E7EB] bg-white px-6 py-8 shadow-[0_24px_70px_rgba(17,24,39,0.10)] sm:px-7">
+          <div className="text-center">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7BAFD4]">Welcome back</p>
+            <h1 className="bb-login-title bb-login-serif mt-3 text-4xl font-black leading-tight">
+              Log in to Bible Buddy
+            </h1>
+            <div className="mx-auto mt-5 flex max-w-[210px] items-center justify-center gap-3 text-[#7BAFD4]">
+              <span className="h-px flex-1 bg-[#7BAFD4]/70" />
+              <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.8 8.6c0 5.4-8.8 10.2-8.8 10.2S3.2 14 3.2 8.6A4.6 4.6 0 0 1 12 6.7a4.6 4.6 0 0 1 8.8 1.9Z" />
+              </svg>
+              <span className="h-px flex-1 bg-[#7BAFD4]/70" />
             </div>
-          </div>
-
-          {error && (
-            <p className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
-              {error}
+            <p className="mx-auto mt-4 max-w-sm text-sm font-semibold leading-6 text-[#667085]">
+              Pick up your Bible study journey right where you left off.
             </p>
-          )}
+          </div>
 
           <button
-            type="submit"
+            type="button"
+            onClick={() => void handleOAuthSignIn("google")}
             disabled={loading}
-            className="w-full rounded-full bg-blue-600 text-white text-sm font-semibold py-2.5 mt-2 shadow-sm hover:bg-blue-700 disabled:opacity-60"
+            className="mt-7 flex w-full items-center justify-center gap-3 rounded-2xl border px-4 py-3 text-sm font-black transition hover:bg-[#fafafa] disabled:opacity-60"
+            style={{ backgroundColor: "#ffffff", borderColor: "#E5E7EB", color: "#111827" }}
           >
-            {loading ? "Logging in..." : "Log in"}
+            <GoogleLogo />
+            <span>Continue with Google</span>
           </button>
-        </form>
 
-          <p className="text-xs text-gray-600 mt-4 text-center">
-            Need an account?{" "}
-            <Link
-              href="/signup"
-              className="font-semibold text-blue-600 hover:underline"
+          <div className="my-5 flex items-center gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#9aa4b2]">
+            <span className="h-px flex-1 bg-[#E5E7EB]" />
+            or
+            <span className="h-px flex-1 bg-[#E5E7EB]" />
+          </div>
+
+          <form onSubmit={handleSubmit} className="grid gap-3">
+            <div>
+              <label className="mb-1.5 block text-xs font-black uppercase tracking-[0.12em] text-[#667085]">
+                Email
+              </label>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-2xl border px-4 py-3 text-sm font-bold outline-none transition focus:border-[#7BAFD4]"
+                style={{ backgroundColor: "#ffffff", borderColor: "#E5E7EB", color: "#111827" }}
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-black uppercase tracking-[0.12em] text-[#667085]">
+                Password
+              </label>
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-2xl border px-4 py-3 text-sm font-bold outline-none transition focus:border-[#7BAFD4]"
+                style={{ backgroundColor: "#ffffff", borderColor: "#E5E7EB", color: "#111827" }}
+              />
+              <div className="mt-2 text-right">
+                <Link
+                  href={email.trim() ? `/reset-password?email=${encodeURIComponent(email.trim())}` : "/reset-password"}
+                  className="text-xs font-black text-[#2563EB] hover:underline"
+                >
+                  Reset password
+                </Link>
+              </div>
+            </div>
+
+            {error && (
+              <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-700">
+                {error}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="mt-2 w-full rounded-2xl px-5 py-4 text-sm font-black shadow-[0_14px_28px_rgba(14,26,58,0.18)] transition disabled:opacity-60"
+              style={{ backgroundColor: "#7BAFD4", color: "#ffffff" }}
             >
+              {loading ? "Logging in..." : "Log in"}
+            </button>
+          </form>
+
+          <p className="mt-5 text-center text-sm font-semibold text-[#667085]">
+            Need an account?{" "}
+            <Link href="/signup" className="font-black text-[#2563EB] hover:underline">
               Sign up
             </Link>
           </p>
         </div>
-      </div>
+      </main>
     </div>
+  );
+}
+
+function GoogleLogo() {
+  return (
+    <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#4285F4" d="M21.6 12.23c0-.78-.07-1.53-.2-2.23H12v4.22h5.38a4.6 4.6 0 0 1-2 3.02v2.51h3.24c1.9-1.75 2.98-4.33 2.98-7.52Z" />
+      <path fill="#34A853" d="M12 22c2.7 0 4.97-.9 6.63-2.44l-3.24-2.51c-.9.6-2.05.96-3.39.96-2.6 0-4.8-1.76-5.6-4.12H3.05v2.59A10 10 0 0 0 12 22Z" />
+      <path fill="#FBBC05" d="M6.4 13.89a6 6 0 0 1 0-3.78V7.52H3.05a10 10 0 0 0 0 8.96l3.35-2.59Z" />
+      <path fill="#EA4335" d="M12 5.99c1.47 0 2.8.5 3.84 1.5l2.88-2.88C16.97 2.98 14.7 2 12 2a10 10 0 0 0-8.95 5.52l3.35 2.59C7.2 7.75 9.4 5.99 12 5.99Z" />
+    </svg>
   );
 }

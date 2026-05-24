@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useMemo, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { ACTION_TYPE } from "@/lib/actionTypes";
+import { parseDeepStudyInterestLabel } from "@/lib/deepStudyInterestTracking";
 import { isSeriesWeekNotesActionEvent, SERIES_WEEK_NOTES_FALLBACK_PREFIX } from "@/lib/seriesWeekNotesTracking";
 
 type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
@@ -37,6 +39,25 @@ type OverviewMetrics = {
   feedReplies: number;
   buddiesAdded: number;
   groupMessagesSent: number;
+};
+
+type DeepStudyInterestEntry = {
+  id: string;
+  userId: string | null;
+  username: string;
+  source: string;
+  study: string;
+  title: string;
+  timestamp: string;
+  deviceTimestamp: string;
+};
+
+type DeepStudyInterestSummary = {
+  today: number;
+  last24h: number;
+  uniqueUsers: number;
+  topItems: Array<{ label: string; source: string; count: number }>;
+  entries: DeepStudyInterestEntry[];
 };
 
 type WeeklyReportCenterRow = {
@@ -89,6 +110,50 @@ type LouisReportLogRow = {
   isPaid: boolean;
   currentLevel: number | null;
   title: string | null;
+};
+
+type OnboardingAnswerAnalytics = {
+  answer: string;
+  count: number;
+  percent: number;
+};
+
+type OnboardingQuestionAnalytics = {
+  key: string;
+  title: string;
+  total: number;
+  answers: OnboardingAnswerAnalytics[];
+  mostCommon: OnboardingAnswerAnalytics | null;
+  leastCommon: OnboardingAnswerAnalytics | null;
+};
+
+type OnboardingAnalyticsSummary = {
+  totalResponses: number;
+  personaLine: string;
+  questions: OnboardingQuestionAnalytics[];
+  funnel?: {
+    cards: {
+      visitors: number;
+      signups: number;
+      conversionRate: number;
+    };
+    steps: Array<{
+      key: string;
+      eventName: string;
+      label: string;
+      count: number;
+      stepConversion: number;
+    }>;
+  };
+  sources?: Array<{
+    source: string;
+    signups: number;
+    percent: number;
+  }>;
+  setupRequired?: boolean;
+  eventSetupRequired?: boolean;
+  eventError?: string;
+  error?: string;
 };
 
 const INITIAL_METRICS: OverviewMetrics = {
@@ -333,6 +398,17 @@ export default function AnalyticsPage() {
   const [weeklyReportStatus, setWeeklyReportStatus] = useState<string | null>(null);
   const [louisReportLogRows, setLouisReportLogRows] = useState<LouisReportLogRow[]>([]);
   const [loadingLouisReportLog, setLoadingLouisReportLog] = useState(true);
+  const [onboardingAnalytics, setOnboardingAnalytics] = useState<OnboardingAnalyticsSummary | null>(null);
+  const [loadingOnboardingAnalytics, setLoadingOnboardingAnalytics] = useState(true);
+  const [deepStudyInterest, setDeepStudyInterest] = useState<DeepStudyInterestSummary>({
+    today: 0,
+    last24h: 0,
+    uniqueUsers: 0,
+    topItems: [],
+    entries: [],
+  });
+  const [loadingDeepStudyInterest, setLoadingDeepStudyInterest] = useState(true);
+  const [deepStudyInterestOpen, setDeepStudyInterestOpen] = useState(false);
 
   // Ambassador / Buddy Partners
   type AmbassadorReferral = { referred_user_id: string; username: string; profile_image_url: string | null; trial_started_at: string; trial_ends_at: string; reward_xp?: number; reward_diamonds?: number };
@@ -407,6 +483,8 @@ export default function AnalyticsPage() {
     loadUserRequestsInbox();
     loadWeeklyReportCenter();
     loadLouisReportLog();
+    loadOnboardingAnalytics();
+    loadDeepStudyInterest();
   }, []);
 
   useEffect(() => {
@@ -539,6 +617,23 @@ export default function AnalyticsPage() {
     setLoadingReadingPlanStats(false);
   }
 
+  async function loadOnboardingAnalytics() {
+    setLoadingOnboardingAnalytics(true);
+    try {
+      const response = await fetch("/api/admin/onboarding-analytics");
+      const data = await response.json();
+      setOnboardingAnalytics(data);
+    } catch (error) {
+      console.error("[ONBOARDING_ANALYTICS] Error loading onboarding analytics:", error);
+      setOnboardingAnalytics({
+        totalResponses: 0,
+        personaLine: "Could not load onboarding analytics.",
+        questions: [],
+      });
+    }
+    setLoadingOnboardingAnalytics(false);
+  }
+
   function getFromDate(filter: TimeFilter): string | null {
     if (filter === "all") return null;
 
@@ -580,6 +675,81 @@ export default function AnalyticsPage() {
       setVideoAnalytics(INITIAL_VIDEO_ANALYTICS);
       setVideoAnalyticsError("Failed to load video analytics.");
       setLoadingVideoAnalytics(false);
+    }
+  }
+
+  async function loadDeepStudyInterest() {
+    setLoadingDeepStudyInterest(true);
+    try {
+      const now = new Date();
+      const todayStart = new Date(now);
+      todayStart.setHours(0, 0, 0, 0);
+      const last24hStart = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+
+      const { data, error } = await supabase
+        .from("master_actions")
+        .select("id, user_id, username, action_label, created_at")
+        .eq("action_type", ACTION_TYPE.deep_study_interest_clicked)
+        .order("created_at", { ascending: false })
+        .limit(500);
+
+      if (error) {
+        console.error("[DEEP_STUDY_INTEREST_ANALYTICS] Error loading interest:", error);
+        setDeepStudyInterest({ today: 0, last24h: 0, uniqueUsers: 0, topItems: [], entries: [] });
+        setLoadingDeepStudyInterest(false);
+        return;
+      }
+
+      const rows = data || [];
+      const uniqueUsers = new Set<string>();
+      const topCounts = new Map<string, { label: string; source: string; count: number }>();
+      let today = 0;
+      let last24h = 0;
+
+      const entries = rows.map((row: any): DeepStudyInterestEntry => {
+        const parsed = parseDeepStudyInterestLabel(row.action_label);
+        const createdAt = row.created_at ? new Date(row.created_at) : null;
+        if (createdAt && createdAt >= todayStart) today += 1;
+        if (createdAt && createdAt >= last24hStart) last24h += 1;
+        if (row.user_id) uniqueUsers.add(row.user_id);
+
+        const source = parsed?.sourceLabel || parsed?.source || "Study Notes";
+        const title = parsed?.itemTitle || parsed?.contentLabel || "Unknown study";
+        const study = parsed?.contentLabel || parsed?.itemKey || title;
+        const topKey = `${source}:${title}`;
+        const existing = topCounts.get(topKey);
+        topCounts.set(topKey, {
+          label: title,
+          source,
+          count: (existing?.count || 0) + 1,
+        });
+
+        return {
+          id: row.id,
+          userId: row.user_id || null,
+          username: row.username || "Unknown User",
+          source,
+          study,
+          title,
+          timestamp: row.created_at || "",
+          deviceTimestamp: parsed?.deviceTimestamp || row.created_at || "",
+        };
+      });
+
+      setDeepStudyInterest({
+        today,
+        last24h,
+        uniqueUsers: uniqueUsers.size,
+        topItems: Array.from(topCounts.values())
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 5),
+        entries,
+      });
+    } catch (error) {
+      console.error("[DEEP_STUDY_INTEREST_ANALYTICS] Error loading interest:", error);
+      setDeepStudyInterest({ today: 0, last24h: 0, uniqueUsers: 0, topItems: [], entries: [] });
+    } finally {
+      setLoadingDeepStudyInterest(false);
     }
   }
 
@@ -3327,6 +3497,221 @@ export default function AnalyticsPage() {
       </div>
 
       {/* ── RETENTION & ENGAGEMENT ─────────────────────────────────────────── */}
+      <div className="mb-12 rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">Upgrade Intent</p>
+            <h2 className="mt-1 text-2xl font-bold text-gray-900">Study Notes Interest</h2>
+            <p className="mt-1 text-sm text-gray-500">
+              Tracks first Study Notes click per user, per content item, per day.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setDeepStudyInterestOpen((current) => !current)}
+            className="rounded-full border border-blue-200 px-4 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50"
+          >
+            {deepStudyInterestOpen ? "Hide Details" : "View Details"}
+          </button>
+        </div>
+
+        {loadingDeepStudyInterest ? (
+          <div className="mt-4 rounded-xl bg-gray-50 p-6 text-center text-sm text-gray-500">Loading Study Notes interest...</div>
+        ) : (
+          <>
+            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <OverviewCard label="Clicks Today" value={deepStudyInterest.today} />
+              <OverviewCard label="Clicks Last 24h" value={deepStudyInterest.last24h} />
+              <OverviewCard label="Unique Users" value={deepStudyInterest.uniqueUsers} />
+            </div>
+
+            <div className="mt-5 rounded-xl border border-gray-100 bg-gray-50 p-4">
+              <h3 className="text-sm font-bold text-gray-900">Most Clicked Studies/Topics</h3>
+              {deepStudyInterest.topItems.length ? (
+                <div className="mt-3 space-y-2">
+                  {deepStudyInterest.topItems.map((item) => (
+                    <div key={`${item.source}-${item.label}`} className="flex items-center justify-between gap-3 rounded-lg bg-white px-3 py-2 text-sm">
+                      <span>
+                        <span className="font-bold text-gray-900">{item.label}</span>
+                        <span className="ml-2 text-gray-500">{item.source}</span>
+                      </span>
+                      <span className="font-black text-blue-700">{item.count}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="mt-3 text-sm text-gray-500">No Study Notes clicks tracked yet.</p>
+              )}
+            </div>
+
+            {deepStudyInterestOpen ? (
+              <div className="mt-5 overflow-hidden rounded-xl border border-gray-100">
+                <div className="grid grid-cols-[1.2fr_1fr_1.3fr] bg-gray-100 px-3 py-2 text-xs font-black uppercase tracking-[0.08em] text-gray-500">
+                  <span>User</span>
+                  <span>Source</span>
+                  <span>Study / Timestamp</span>
+                </div>
+                <div className="max-h-[420px] overflow-y-auto divide-y divide-gray-100 bg-white">
+                  {deepStudyInterest.entries.length ? deepStudyInterest.entries.map((entry) => (
+                    <div key={entry.id} className="grid grid-cols-[1.2fr_1fr_1.3fr] gap-3 px-3 py-3 text-sm">
+                      <div>
+                        <p className="font-bold text-gray-900">{entry.username}</p>
+                        <p className="text-xs text-gray-500">User clicked Study Notes</p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900">{entry.source}</p>
+                        <p className="text-xs text-gray-500">Upgrade intent signal</p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900">{entry.study}</p>
+                        <p className="text-xs text-gray-500">
+                          {entry.timestamp ? new Date(entry.timestamp).toLocaleString() : "Timestamp unavailable"}
+                        </p>
+                      </div>
+                    </div>
+                  )) : (
+                    <div className="px-3 py-6 text-center text-sm text-gray-500">No entries yet.</div>
+                  )}
+                </div>
+              </div>
+            ) : null}
+          </>
+        )}
+      </div>
+
+      <div className="mb-12 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+        <div className="mb-5">
+          <h2 className="text-2xl font-bold">Landing Onboarding Analytics</h2>
+          <p className="text-sm text-gray-500">
+            Tracks landing-page visitors, funnel conversion, five onboarding questions, source attribution, and the current average Bible Buddy user.
+          </p>
+        </div>
+
+        {loadingOnboardingAnalytics ? (
+          <div className="rounded-xl border border-gray-100 bg-gray-50 p-6 text-center">
+            <p className="text-sm text-gray-500">Loading onboarding analytics...</p>
+          </div>
+        ) : onboardingAnalytics ? (
+          <>
+            {onboardingAnalytics.setupRequired ? (
+              <p className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">
+                {onboardingAnalytics.personaLine}
+              </p>
+            ) : null}
+            {onboardingAnalytics.eventSetupRequired ? (
+              <p className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">
+                Landing funnel events are not ready yet. Run the updated CREATE_LANDING_ONBOARDING_RESPONSES.sql script.
+              </p>
+            ) : null}
+
+            <div className="mb-5 grid gap-4 md:grid-cols-3">
+              <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Visitors</p>
+                <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.funnel?.cards.visitors ?? 0).toLocaleString()}</p>
+              </div>
+              <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Signups</p>
+                <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.funnel?.cards.signups ?? 0).toLocaleString()}</p>
+              </div>
+              <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Conversion Rate</p>
+                <p className="mt-2 text-3xl font-black text-gray-900">{onboardingAnalytics.funnel?.cards.conversionRate ?? 0}%</p>
+              </div>
+            </div>
+
+            <div className="mb-5 rounded-xl border border-blue-100 bg-blue-50 px-4 py-3">
+              <p className="text-xs font-bold uppercase tracking-wide text-blue-700">Average User</p>
+              <p className="mt-1 text-sm font-semibold text-gray-900">{onboardingAnalytics.personaLine}</p>
+              <p className="mt-1 text-xs text-gray-500">
+                Total completed onboarding responses: {onboardingAnalytics.totalResponses.toLocaleString()}
+              </p>
+            </div>
+
+            <div className="mb-5 grid gap-4 lg:grid-cols-[1.35fr_0.65fr]">
+              <div className="rounded-2xl border border-gray-100 p-4">
+                <h3 className="text-lg font-bold text-gray-900">Landing Funnel</h3>
+                <p className="text-xs text-gray-500">Unique sessions per step, with conversion from the previous step.</p>
+                <div className="mt-4 space-y-3">
+                  {(onboardingAnalytics.funnel?.steps || []).map((step) => (
+                    <div key={step.key}>
+                      <div className="mb-1 flex items-center justify-between gap-3 text-sm">
+                        <span className="font-semibold text-gray-800">{step.label}</span>
+                        <span className="shrink-0 text-gray-600">
+                          {step.count.toLocaleString()} - {step.stepConversion}%
+                        </span>
+                      </div>
+                      <div className="h-2 overflow-hidden rounded-full bg-gray-100">
+                        <div
+                          className="h-full rounded-full bg-gray-900"
+                          style={{ width: `${Math.max(0, Math.min(100, step.stepConversion))}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-gray-100 p-4">
+                <h3 className="text-lg font-bold text-gray-900">Signup Sources</h3>
+                <p className="text-xs text-gray-500">Source is based on UTM/referrer when available.</p>
+                <div className="mt-4 space-y-3">
+                  {(onboardingAnalytics.sources || []).length === 0 ? (
+                    <p className="rounded-xl bg-gray-50 px-3 py-3 text-sm text-gray-500">No signup source data yet.</p>
+                  ) : (
+                    onboardingAnalytics.sources?.map((source) => (
+                      <div key={source.source} className="flex items-center justify-between gap-3 rounded-xl bg-gray-50 px-3 py-2 text-sm">
+                        <span className="font-semibold text-gray-800">{source.source}</span>
+                        <span className="text-gray-600">{source.signups.toLocaleString()} - {source.percent}%</span>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              {onboardingAnalytics.questions.map((question) => (
+                <div key={question.key} className="rounded-2xl border border-gray-100 p-4">
+                  <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900">{question.title}</h3>
+                      <p className="text-xs text-gray-500">Total responses: {question.total.toLocaleString()}</p>
+                    </div>
+                    <div className="text-xs text-gray-500 sm:text-right">
+                      <p>
+                        Most common: <span className="font-bold text-gray-800">{question.mostCommon?.answer ?? "N/A"}</span>
+                      </p>
+                      <p>
+                        Least common: <span className="font-bold text-gray-800">{question.leastCommon?.answer ?? "N/A"}</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    {question.answers.map((answer) => (
+                      <div key={answer.answer}>
+                        <div className="mb-1 flex items-center justify-between gap-3 text-sm">
+                          <span className="font-semibold text-gray-800">{answer.answer}</span>
+                          <span className="shrink-0 text-gray-600">
+                            {answer.count.toLocaleString()} - {answer.percent}%
+                          </span>
+                        </div>
+                        <div className="h-2 overflow-hidden rounded-full bg-gray-100">
+                          <div
+                            className="h-full rounded-full bg-blue-600"
+                            style={{ width: `${Math.max(0, Math.min(100, answer.percent))}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : null}
+      </div>
+
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
         <div className="mb-4">
           <h2 className="text-2xl font-bold">Bible Buddy TV Analytics</h2>

@@ -1006,7 +1006,7 @@ Be accurate to Scripture.`;
                       articleSlug={chapterDiscussionSlug}
                       headingText=""
                       placeholderText="Start Typing Here"
-                      submitButtonText="Post Reflection"
+                      submitButtonText="Send"
                       variant="plain"
                     />
                   </StudySectionCard>
@@ -1123,7 +1123,7 @@ Be accurate to Scripture.`;
                     articleSlug={chapterDiscussionSlug}
                     headingText=""
                     placeholderText="Start Typing Here"
-                    submitButtonText="Post Reflection"
+                    submitButtonText="Send"
                     variant="plain"
                   />
                 </div>

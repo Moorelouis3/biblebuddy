@@ -12,7 +12,8 @@ export type FeatureTourKey =
   | "notes"
   | "chat_widget"
   | "bible_study_hub"
-  | "dashboard_swipe_hint";
+  | "dashboard_swipe_hint"
+  | "dashboard_guided_intro";
 
 export type FeatureToursState = Record<FeatureTourKey, boolean>;
 export const CURRENT_IN_APP_ONBOARDING_VERSION = 3;
@@ -37,6 +38,7 @@ export const DEFAULT_FEATURE_TOURS: FeatureToursState = {
   chat_widget: false,
   bible_study_hub: false,
   dashboard_swipe_hint: false,
+  dashboard_guided_intro: false,
 };
 
 export function buildPersistedFeatureTours(
@@ -76,5 +78,6 @@ export function normalizeFeatureTours(raw: unknown): FeatureToursState {
     chat_widget: source.chat_widget === true,
     bible_study_hub: source.bible_study_hub === true,
     dashboard_swipe_hint: source.dashboard_swipe_hint === true,
+    dashboard_guided_intro: source.dashboard_guided_intro === true,
   };
 }

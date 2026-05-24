@@ -15,9 +15,57 @@ type BibleYearDeepStudySectionCardsProps = {
   footer?: ReactNode;
 };
 
-function stripLeadingReferenceHeading(markdown: string, reference: string) {
-  const escapedReference = reference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return markdown.replace(new RegExp(`^#{1,6}\\s+${escapedReference}\\s*\\n+`), "");
+const bibleReferenceLinePattern =
+  /^\s*(?:[-*]\s*)?(?:>\s*)?(?:[\p{Extended_Pictographic}\p{Emoji_Presentation}]\s*)?(?:\*\*)?(?:[1-3]\s+)?[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+\d+:\d+(?:\s*(?:-|to)\s*\d+)?/u;
+
+function getHeadingText(line: string) {
+  return line.replace(/^#{1,6}\s+/, "").replace(/[*_`]/g, "").trim();
+}
+
+function normalizeReferenceText(value: string) {
+  return value.replace(/\s+/g, " ").replace(/\s+to\s+/gi, "-").replace(/\s*-\s*/g, "-").trim().toLowerCase();
+}
+
+function normalizeHeadingText(value: string) {
+  return value
+    .replace(/[\p{Extended_Pictographic}\p{Emoji_Presentation}]/gu, "")
+    .replace(/[^\p{L}\p{N}: -]+/gu, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function addBlankLineBetweenVerseBlocks(markdown: string) {
+  const output: string[] = [];
+
+  for (const line of markdown.split("\n")) {
+    const previousLine = output[output.length - 1] ?? "";
+    if (bibleReferenceLinePattern.test(line) && previousLine.trim() !== "") {
+      output.push("");
+    }
+    output.push(line);
+  }
+
+  return output.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+function prepareOpenSectionMarkdown(markdown: string, reference: string, title: string) {
+  const lines = markdown.replace(/\r\n/g, "\n").split("\n");
+  while (lines[0]?.trim() === "") lines.shift();
+
+  const firstHeading = lines[0];
+  if (/^#{1,6}\s+/.test(firstHeading ?? "") && normalizeReferenceText(getHeadingText(firstHeading)) === normalizeReferenceText(reference)) {
+    lines.shift();
+    while (lines[0]?.trim() === "") lines.shift();
+  }
+
+  const nextHeading = lines[0];
+  if (/^#{1,6}\s+/.test(nextHeading ?? "") && normalizeHeadingText(getHeadingText(nextHeading)) === normalizeHeadingText(title)) {
+    lines.shift();
+    while (lines[0]?.trim() === "") lines.shift();
+  }
+
+  return addBlankLineBetweenVerseBlocks(lines.join("\n"));
 }
 
 export default function BibleYearDeepStudySectionCards({
@@ -113,7 +161,7 @@ export default function BibleYearDeepStudySectionCards({
               </button>
               {isOpen ? (
                 <div className="bible-year-deep-note-open mt-2 bg-black/10 px-0 py-3 sm:mt-3 sm:rounded-[24px] sm:border sm:border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] sm:bg-black/16 sm:px-3 sm:py-4">
-                  <ChapterNotesMarkdown compactMobile>{stripLeadingReferenceHeading(section.markdown, section.reference)}</ChapterNotesMarkdown>
+                  <ChapterNotesMarkdown compactMobile>{prepareOpenSectionMarkdown(section.markdown, section.reference, section.title)}</ChapterNotesMarkdown>
                 </div>
               ) : null}
             </div>

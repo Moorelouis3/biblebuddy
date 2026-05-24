@@ -61,9 +61,6 @@ const ContactUsModal = dynamic(() => import("./ContactUsModal").then((mod) => mo
 const NewMessageAlert = dynamic(() => import("./NewMessageAlert").then((mod) => mod.NewMessageAlert), {
   ssr: false,
 });
-const OnboardingModal = dynamic(() => import("./OnboardingModal").then((mod) => mod.OnboardingModal), {
-  ssr: false,
-});
 const DailyRecommendationModal = dynamic(() => import("./DailyRecommendationModal"), {
   ssr: false,
 });
@@ -72,18 +69,70 @@ const BuddyCelebrationModal = dynamic(
   { ssr: false },
 );
 
-const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
+const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password", "/privacy", "/terms", "/contact"];
 const DAILY_RECOMMENDATIONS_ENABLED = false;
 const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
 const GRACE_DAY_STORE_ITEM_ID = "boost-extra-grace-day";
+const LANDING_QUESTIONNAIRE_STORAGE_KEY = "bb:landing-questionnaire";
+
+type LandingOnboardingAnswers = {
+  goal?: string;
+  experience?: string;
+  ageRange?: string;
+  time?: string;
+  difficulty?: string;
+};
 
 function isOwnerEmail(email: string | null | undefined) {
   return email?.toLowerCase() === "moorelouis3@gmail.com";
 }
 
+function normalizeLandingGoalForProfile(goal: string | null | undefined) {
+  if (goal === "Understand the Bible better") return "understand_bible";
+  if (goal === "Grow closer to God") return "grow_closer_to_god";
+  if (goal === "Study with other believers") return "study_with_buddies";
+  return "build_consistency";
+}
+
+function normalizeLandingExperienceForProfile(experience: string | null | undefined) {
+  if (experience === "I'm just getting started") return "brand_new";
+  if (experience === "Less than 1 year") return "beginner";
+  if (experience === "1-3 years") return "intermediate";
+  return "experienced";
+}
+
+type PendingLandingOnboarding = {
+  answers: LandingOnboardingAnswers;
+  recommendation?: { estimatedDays?: number };
+  landingAnalytics?: {
+    sessionId?: string;
+    source?: string;
+    referrer?: string | null;
+    pagePath?: string;
+  };
+};
+
+function readPendingLandingOnboarding(): PendingLandingOnboarding | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(LANDING_QUESTIONNAIRE_STORAGE_KEY) || "null");
+    if (!parsed || typeof parsed !== "object") return null;
+    const answers = "answers" in parsed ? parsed.answers : parsed;
+    if (!answers || typeof answers !== "object") return null;
+    if (!answers.goal || !answers.experience || !answers.ageRange || !answers.time || !answers.difficulty) return null;
+    return { answers, recommendation: parsed.recommendation, landingAnalytics: parsed.landingAnalytics };
+  } catch {
+    return null;
+  }
+}
+
+function getAppShellLocalDateKey(date = new Date()) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+}
+
 function getLocalSkinLockedFlame(): FlameCosmeticId | null {
   if (typeof window === "undefined") return null;
-  const skinId = normalizePremiumSkinId(document.documentElement.dataset.bbSkin);
+  const skinId = normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin);
   return getPremiumSkinFlameId(skinId);
 }
 
@@ -230,12 +279,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // Contact Us modal state
   const [showContactUsModal, setShowContactUsModal] = useState(false);
   
-  // Onboarding state
-  const [showOnboardingModal, setShowOnboardingModal] = useState(false);
-  const [onboardingStudySelectionOnly, setOnboardingStudySelectionOnly] = useState(false);
-  const [initialTrafficSource, setInitialTrafficSource] = useState<string | null>(null);
-  const [initialBibleExperienceLevel, setInitialBibleExperienceLevel] = useState<string | null>(null);
-  const [featureToursEnabled, setFeatureToursEnabled] = useState(false);
+  // Account setup state
   const [showFullNameModal, setShowFullNameModal] = useState(false);
   const [fullNameFirst, setFullNameFirst] = useState("");
   const [fullNameLast, setFullNameLast] = useState("");
@@ -294,7 +338,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const themeId = normalizeAppThemeId(customEvent.detail?.themeId);
       setAppThemeId(themeId);
       applyAppThemeToDocument(themeId);
-      applyPremiumSkinToDocument(normalizePremiumSkinId(document.documentElement.dataset.bbSkin));
+      applyPremiumSkinToDocument(normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin));
     }
     window.addEventListener("bb:app-theme-purchased", handlePurchasedTheme);
     return () => window.removeEventListener("bb:app-theme-purchased", handlePurchasedTheme);
@@ -304,7 +348,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (typeof window === "undefined") return;
     function handlePremiumSkinChanged(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
-      const currentDocumentSkin = normalizePremiumSkinId(document.documentElement.dataset.bbSkin);
+      const currentDocumentSkin = normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin);
       const freshCachedSkin = shouldPreferCachedPremiumSkin(userId, currentDocumentSkin)
         ? readCachedPremiumSkin(userId)
         : "none";
@@ -384,7 +428,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.localStorage.setItem("bb:dashboard-theme", themeId === "dark" ? "dark" : "light");
     }
     applyAppThemeToDocument(themeId);
-    applyPremiumSkinToDocument(normalizePremiumSkinId(document.documentElement.dataset.bbSkin));
+    applyPremiumSkinToDocument(normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin));
   }
 
   async function canUsePremiumSkin(currentUserId: string, email: string | null | undefined, skinId: PremiumSkinId) {
@@ -548,11 +592,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // Cache of unread conversation IDs from the service-role API (bypasses RLS)
   const _cachedUnreadConvoIds = useRef<Set<string>>(new Set());
 
-  // PWA install prompt state
-  const deferredInstallPromptRef = useRef<any>(null);
   const criticalSessionBootUserRef = useRef<string | null>(null);
   const deferredSessionBootUserRef = useRef<string | null>(null);
-  const [canInstall, setCanInstall] = useState(false);
   const [pushSupported, setPushSupported] = useState(false);
   const [pushPermission, setPushPermission] = useState<NotificationPermission | "unsupported">("unsupported");
   const [pushSubscribed, setPushSubscribed] = useState(false);
@@ -817,66 +858,157 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     try {
       const { data: profileStats, error: profileStatsError } = await supabase
         .from("profile_stats")
-        .select("onboarding_completed, traffic_source, bible_experience_level, free_devotional_id, louis_primary_devotional_id")
+        .select("onboarding_completed, traffic_source, bible_experience_level, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at")
         .eq("user_id", currentUserId)
         .maybeSingle();
 
       if (profileStatsError) {
         console.error("[ONBOARDING] Error loading onboarding status:", profileStatsError);
-        setShowOnboardingModal(true);
-        setOnboardingStudySelectionOnly(false);
-        setFeatureToursEnabled(false);
-        setInitialTrafficSource(null);
-        setInitialBibleExperienceLevel(null);
         return;
       }
+
+      const todayKey = getAppShellLocalDateKey();
+      const nowIso = new Date().toISOString();
 
       if (!profileStats) {
         const { error: upsertError } = await supabase.from("profile_stats").upsert(
           {
             user_id: currentUserId,
-            onboarding_completed: false,
-            traffic_source: null,
-            bible_experience_level: null,
+            onboarding_completed: true,
+            traffic_source: "direct_signup",
+            bible_year_started_at: todayKey,
+            bible_year_launch_seen_at: nowIso,
+            louis_primary_devotional_day: 1,
           },
           { onConflict: "user_id" }
         );
 
         if (upsertError) {
-          console.error("[ONBOARDING] Error creating profile_stats row:", upsertError);
+          console.error("[ONBOARDING] Error creating initialized profile_stats row:", upsertError);
         }
 
-        setShowOnboardingModal(true);
-        setOnboardingStudySelectionOnly(false);
-        setFeatureToursEnabled(false);
-        setInitialTrafficSource(null);
-        setInitialBibleExperienceLevel(null);
+        await supabase.from("bible_year_day_progress").upsert(
+          {
+            user_id: currentUserId,
+            day_number: 1,
+            reading_completed: false,
+            trivia_completed: false,
+            reflection_completed: false,
+          },
+          { onConflict: "user_id,day_number" },
+        );
+
         return;
       }
 
-      setInitialTrafficSource(profileStats.traffic_source ?? null);
-      setInitialBibleExperienceLevel(profileStats.bible_experience_level ?? null);
       const onboardingCompleted = profileStats.onboarding_completed === true;
-      const hasBibleStudySelected = Boolean(profileStats.free_devotional_id || profileStats.louis_primary_devotional_id);
 
-      if (onboardingCompleted && !hasBibleStudySelected) {
-        setOnboardingStudySelectionOnly(true);
-        setShowOnboardingModal(true);
-        setFeatureToursEnabled(false);
-        return;
+      if (!onboardingCompleted || !profileStats.bible_year_started_at || !profileStats.bible_year_launch_seen_at) {
+        await supabase
+          .from("profile_stats")
+          .update({
+            onboarding_completed: true,
+            bible_year_started_at: profileStats.bible_year_started_at || todayKey,
+            bible_year_launch_seen_at: profileStats.bible_year_launch_seen_at || nowIso,
+            louis_primary_devotional_day: profileStats.louis_primary_devotional_id ? 1 : profileStats.louis_primary_devotional_day ?? 1,
+          })
+          .eq("user_id", currentUserId);
+
+        await supabase.from("bible_year_day_progress").upsert(
+          {
+            user_id: currentUserId,
+            day_number: 1,
+            reading_completed: false,
+            trivia_completed: false,
+            reflection_completed: false,
+          },
+          { onConflict: "user_id,day_number" },
+        );
       }
 
-      setOnboardingStudySelectionOnly(false);
-      setShowOnboardingModal(!onboardingCompleted);
-      setFeatureToursEnabled(onboardingCompleted && hasBibleStudySelected);
     } catch (_err) {
       console.error("[ONBOARDING] Unexpected onboarding status error:", _err);
-      setShowOnboardingModal(true);
-      setOnboardingStudySelectionOnly(false);
-      setFeatureToursEnabled(false);
-      setInitialTrafficSource(null);
-      setInitialBibleExperienceLevel(null);
       return;
+    }
+  }
+
+  async function savePendingLandingOnboarding(currentUserId: string, email: string | null | undefined) {
+    const pending = readPendingLandingOnboarding();
+    if (!pending) return;
+
+    const displayName = headerProfileName && headerProfileName !== "You" ? headerProfileName : email?.split("@")[0] || "Bible Buddy";
+    const estimatedDays = Number(pending.recommendation?.estimatedDays || 365);
+
+    try {
+      await supabase.from("profile_stats").upsert(
+        {
+          user_id: currentUserId,
+          display_name: displayName,
+          username: displayName,
+          onboarding_completed: true,
+          traffic_source: "landing_questionnaire",
+          bible_experience_level: normalizeLandingExperienceForProfile(pending.answers.experience),
+          onboarding_goal: normalizeLandingGoalForProfile(pending.answers.goal),
+          age_range: pending.answers.ageRange,
+          louis_primary_devotional_day: 1,
+        },
+        { onConflict: "user_id" },
+      );
+    } catch (error) {
+      console.error("[LANDING_ONBOARDING] Profile stats save failed:", error);
+    }
+
+    try {
+      await supabase
+        .from("profile_stats")
+        .update({
+          landing_onboarding_completed: true,
+          age_range: pending.answers.ageRange,
+          onboarding_time_commitment: pending.answers.time,
+          onboarding_difficulty: pending.answers.difficulty,
+        })
+        .eq("user_id", currentUserId);
+    } catch (error) {
+      console.error("[LANDING_ONBOARDING] Extra profile fields save failed:", error);
+    }
+
+    try {
+      await supabase.from("landing_onboarding_responses").upsert(
+        {
+          user_id: currentUserId,
+          full_name: displayName,
+          email: email ?? null,
+          goal: pending.answers.goal,
+          experience: pending.answers.experience,
+          age_range: pending.answers.ageRange,
+          time_commitment: pending.answers.time,
+          difficulty: pending.answers.difficulty,
+          recommended_journey: "Bible in One Year",
+          recommended_days: estimatedDays,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "user_id" },
+      );
+      await fetch("/api/landing-analytics", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event_name: "created_account_successfully",
+          session_id: pending.landingAnalytics?.sessionId || `oauth-${currentUserId}`,
+          user_id: currentUserId,
+          source: pending.landingAnalytics?.source || "Direct / Unknown",
+          referrer: pending.landingAnalytics?.referrer || null,
+          page_path: pending.landingAnalytics?.pagePath || "/",
+          metadata: {
+            authMethod: "google",
+            recommendationDays: estimatedDays,
+            selectedTime: pending.answers.time,
+          },
+        }),
+      });
+      window.localStorage.removeItem(LANDING_QUESTIONNAIRE_STORAGE_KEY);
+    } catch (error) {
+      console.error("[LANDING_ONBOARDING] Response save failed:", error);
     }
   }
 
@@ -1143,17 +1275,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, [userId, isMessagesOpen]);
 
-  // Capture the PWA install prompt (fires on Android/Chrome before page is interactive)
-  useEffect(() => {
-    function handler(e: Event) {
-      e.preventDefault();
-      deferredInstallPromptRef.current = e;
-      setCanInstall(true);
-    }
-    window.addEventListener("beforeinstallprompt", handler);
-    return () => window.removeEventListener("beforeinstallprompt", handler);
-  }, []);
-
   useEffect(() => {
     if (typeof window === "undefined" || !("serviceWorker" in navigator)) return;
 
@@ -1235,14 +1356,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       cancelled = true;
     };
   }, [isLoggedIn, userId, pushSupported]);
-
-  async function handleInstallPrompt() {
-    if (!deferredInstallPromptRef.current) return;
-    deferredInstallPromptRef.current.prompt();
-    await deferredInstallPromptRef.current.userChoice;
-    deferredInstallPromptRef.current = null;
-    setCanInstall(false);
-  }
 
   async function refreshUnreadMessageCount(_currentUserId: string) {
     try {
@@ -1609,7 +1722,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     void loadHeaderDashboardStats(session.user.id);
   }
 
-  function runDeferredSessionBoot(currentUserId: string) {
+  function runDeferredSessionBoot(currentUserId: string, currentUserEmail?: string | null) {
     if (deferredSessionBootUserRef.current === currentUserId) {
       return;
     }
@@ -1617,7 +1730,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
     scheduleIdleWork(() => {
       void applyPendingInviteLink(currentUserId);
-      void checkOnboardingStatus(currentUserId);
+      void (async () => {
+        await savePendingLandingOnboarding(currentUserId, currentUserEmail);
+        await checkOnboardingStatus(currentUserId);
+      })();
       if (DAILY_RECOMMENDATIONS_ENABLED) {
         void checkDailyRecommendation(currentUserId);
       }
@@ -1650,8 +1766,23 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       // Set userId and username for feedback system
       if (session?.user?.id) {
         runCriticalSessionBoot(session);
-        runDeferredSessionBoot(session.user.id);
+        runDeferredSessionBoot(session.user.id, session.user.email);
       } else {
+        try {
+          const previewAccount = JSON.parse(window.localStorage.getItem("bb:landing-preview-account") || "null") as
+            | { firstName?: string; email?: string }
+            | null;
+          if (previewAccount?.email) {
+            setIsLoggedIn(true);
+            setUserEmail(previewAccount.email);
+            setUserId("landing-preview-user");
+            setUsername(previewAccount.firstName || previewAccount.email.split("@")[0] || "Preview");
+            return;
+          }
+        } catch {
+          window.localStorage.removeItem("bb:landing-preview-account");
+        }
+
         criticalSessionBootUserRef.current = null;
         deferredSessionBootUserRef.current = null;
         setUserId(null);
@@ -1659,11 +1790,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setIsEmailConfirmed(true);
         setShowEmailConfirmationGate(false);
         setResendConfirmationMessage(null);
-        setShowOnboardingModal(false);
-        setOnboardingStudySelectionOnly(false);
-        setFeatureToursEnabled(false);
-        setInitialTrafficSource(null);
-        setInitialBibleExperienceLevel(null);
         setNotifications([]);
         setHeaderCurrentLevel(1);
         setHeaderCurrentStreak(0);
@@ -1684,8 +1810,23 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         // Set userId and username for feedback system
         if (session?.user?.id) {
           runCriticalSessionBoot(session);
-          runDeferredSessionBoot(session.user.id);
+          runDeferredSessionBoot(session.user.id, session.user.email);
         } else {
+          try {
+            const previewAccount = JSON.parse(window.localStorage.getItem("bb:landing-preview-account") || "null") as
+              | { firstName?: string; email?: string }
+              | null;
+            if (previewAccount?.email) {
+              setIsLoggedIn(true);
+              setUserEmail(previewAccount.email);
+              setUserId("landing-preview-user");
+              setUsername(previewAccount.firstName || previewAccount.email.split("@")[0] || "Preview");
+              return;
+            }
+          } catch {
+            window.localStorage.removeItem("bb:landing-preview-account");
+          }
+
           criticalSessionBootUserRef.current = null;
           deferredSessionBootUserRef.current = null;
           setUserId(null);
@@ -1693,11 +1834,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setIsEmailConfirmed(true);
           setShowEmailConfirmationGate(false);
           setResendConfirmationMessage(null);
-          setShowOnboardingModal(false);
-          setOnboardingStudySelectionOnly(false);
-          setFeatureToursEnabled(false);
-          setInitialTrafficSource(null);
-          setInitialBibleExperienceLevel(null);
           setNotifications([]);
           setHeaderCurrentLevel(1);
           setHeaderCurrentStreak(0);
@@ -1819,19 +1955,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.removeEventListener("bb:grace-days-updated", readGraceEvents);
     };
   }, [userId, isLoggedIn]);
-
-  useEffect(() => {
-    if (!userId || typeof window === "undefined") return;
-    const requiredStudyKey = `bb:required-study-selection-active:${userId}`;
-    if (showOnboardingModal && onboardingStudySelectionOnly) {
-      window.localStorage.setItem(requiredStudyKey, "1");
-    } else {
-      window.localStorage.removeItem(requiredStudyKey);
-    }
-    return () => {
-      window.localStorage.removeItem(requiredStudyKey);
-    };
-  }, [userId, showOnboardingModal, onboardingStudySelectionOnly]);
 
   // Treat iframe-embedded pages the same as bare pages (no shell/nav)
   const isPublicProfilePage = Boolean(pathname?.startsWith("/profile/"));
@@ -2190,27 +2313,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, [userId, isLoggedIn, feedbackChecked, showFeedbackModal]);
 
   useEffect(() => {
-    if (!userId || !isLoggedIn || showOnboardingModal) return;
+    if (!userId || !isLoggedIn) return;
+    if (!pathname || HIDDEN_ROUTES.includes(pathname)) {
+      setShowFullNameModal(false);
+      return;
+    }
     void checkFullNameRequirement(userId);
-  }, [userId, isLoggedIn, showOnboardingModal]);
-
-  useEffect(() => {
-    if (!isLoggedIn || !userId || !showOnboardingModal) return;
-    if (!pathname) return;
-    if (pathname === "/dashboard") return;
-    if (HIDDEN_ROUTES.includes(pathname)) return;
-    router.replace("/dashboard");
-  }, [isLoggedIn, userId, showOnboardingModal, pathname, router]);
+  }, [userId, isLoggedIn, pathname]);
 
   const gracePurchaseTotals = gracePurchasePrompt ? getGracePurchaseTotals(gracePurchasePrompt) : null;
   const appShellPopupQueue: PopupQueueItem[] = [
-    ...(showOnboardingModal
-      ? [{ popup_id: "account:onboarding", type: "account_blocker" as const, priority: POPUP_QUEUE_PRIORITIES.accountBlocker + 30, user_id: userId }]
-      : []),
     ...(showEmailConfirmationGate && !isEmailConfirmed
       ? [{ popup_id: "account:email-confirmation", type: "account_blocker" as const, priority: POPUP_QUEUE_PRIORITIES.accountBlocker + 20, user_id: userId }]
       : []),
-    ...(!showOnboardingModal && showFullNameModal
+    ...(showFullNameModal && pathname && !HIDDEN_ROUTES.includes(pathname)
       ? [{ popup_id: "account:full-name", type: "account_blocker" as const, priority: POPUP_QUEUE_PRIORITIES.accountBlocker + 10, user_id: userId }]
       : []),
     ...(gracePurchasePrompt
@@ -2230,37 +2346,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       : []),
   ];
   const activeAppShellPopup = getActivePopupFromQueue(appShellPopupQueue);
+  const shellDisplayFlameId =
+    appThemeId === "light" &&
+    (typeof document === "undefined" || normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin) === "none")
+      ? "default"
+      : headerSelectedFlame;
 
   useEffect(() => {
     if (activeAppShellPopup) markPopupShown(activeAppShellPopup);
   }, [activeAppShellPopup?.popup_id]);
 
   return (
-    <FeatureRenderPriorityProvider value={{ featureToursEnabled }}>
-
-      {/* ONBOARDING MODAL */}
-      {userId && (
-        <OnboardingModal
-          isOpen={activeAppShellPopup?.popup_id === "account:onboarding"}
-          userId={userId}
-          initialTrafficSource={initialTrafficSource}
-          initialBibleExperienceLevel={initialBibleExperienceLevel}
-          studySelectionOnly={onboardingStudySelectionOnly}
-          canInstall={canInstall}
-          onInstallPrompt={handleInstallPrompt}
-          onFinished={(upgrade) => {
-            setShowOnboardingModal(false);
-            setOnboardingStudySelectionOnly(false);
-            setFeatureToursEnabled(true);
-            if (upgrade) {
-              router.push("/upgrade");
-            } else {
-              router.replace("/dashboard");
-              router.refresh();
-            }
-          }}
-        />
-      )}
+    <FeatureRenderPriorityProvider value={{ featureToursEnabled: true }}>
 
       {isLoggedIn && userId && activeAppShellPopup?.popup_id === "account:full-name" && (
         <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/45 px-4">
@@ -2359,7 +2456,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
 
       {/* FEEDBACK MODAL */}
-      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && !showEmailConfirmationGate && (
+      {isLoggedIn && userId && !showFullNameModal && !showEmailConfirmationGate && (
         <FeedbackModal
           userId={userId}
           username={username}
@@ -2424,7 +2521,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             <div className="mt-6 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
               <div className="rounded-3xl border border-white/10 bg-white/10 px-3 py-4">
                 <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-slate-800 opacity-60 grayscale">
-                  <StreakFlameEmoji flameId={headerSelectedFlame} size={52} title="Broken streak" />
+                  <StreakFlameEmoji flameId={shellDisplayFlameId} size={52} title="Broken streak" />
                 </div>
                 <p className="mt-3 text-xs font-black uppercase tracking-wide text-slate-300">Broken</p>
               </div>
@@ -2434,7 +2531,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               <div className="relative rounded-3xl border border-emerald-300/40 bg-emerald-300/10 px-3 py-4 shadow-[0_0_28px_rgba(52,211,153,0.22)]">
                 <span className="absolute inset-3 rounded-full border border-emerald-300/45 [animation:grace-restore-ring_1.7s_ease-out_infinite]" />
                 <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-white">
-                  <StreakFlameEmoji flameId={headerSelectedFlame} size={54} title="Restored streak" />
+                  <StreakFlameEmoji flameId={shellDisplayFlameId} size={54} title="Restored streak" />
                 </div>
                 <p className="mt-3 text-xs font-black uppercase tracking-wide text-emerald-200">Restored</p>
               </div>
@@ -2479,7 +2576,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           <div className="relative w-full max-w-sm overflow-hidden rounded-[28px] bg-white p-6 text-center shadow-2xl">
             <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-amber-300 via-emerald-300 to-sky-300" />
             <div className="mx-auto mt-2 flex h-28 w-28 items-center justify-center rounded-full bg-emerald-50 shadow-[0_0_34px_rgba(52,211,153,0.28)]">
-              <StreakFlameEmoji flameId={headerSelectedFlame} size={76} title="Streak restored" />
+              <StreakFlameEmoji flameId={shellDisplayFlameId} size={76} title="Streak restored" />
             </div>
             <h2 className="mt-5 text-3xl font-black text-gray-950">Streak restored!</h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-gray-600">
@@ -2573,7 +2670,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* CONTACT US MODAL */}
-      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && !showEmailConfirmationGate && (
+      {isLoggedIn && userId && !showFullNameModal && !showEmailConfirmationGate && (
         <ContactUsModal
           userId={userId}
           username={username}
@@ -2655,8 +2752,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     aria-label={`Open streak details for ${headerCurrentStreak} day streak`}
                     title={`${headerCurrentStreak} day streak`}
                   >
-                    <span className={headerCurrentStreak >= 30 ? "" : "grayscale opacity-60"} aria-hidden="true">
-                      <StreakFlameEmoji flameId={headerSelectedFlame} size={18} title={`${headerCurrentStreak} day streak`} />
+                    <span aria-hidden="true">
+                      <StreakFlameEmoji flameId={shellDisplayFlameId} currentStreak={headerCurrentStreak} size={18} title={`${headerCurrentStreak} day streak`} />
                     </span>
                     <span className="text-xs font-semibold leading-none text-gray-700">
                       {headerCurrentStreak}

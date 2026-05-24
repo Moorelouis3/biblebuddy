@@ -125,7 +125,7 @@ async function ensureCurrentUserSkinSigningBonus(auth: Awaited<ReturnType<typeof
 
   return {
     id: MODERATOR_SKIN_SIGNING_BONUS_ID,
-    weekStart: "Premium Skins",
+    weekStart: "Color Skins",
     amount: MODERATOR_SKIN_SIGNING_BONUS_AMOUNT,
     paidAt: existingAction?.created_at || new Date().toISOString(),
     seenAt: seenRow?.shown_at ?? null,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import ReactMarkdown from "react-markdown";
@@ -8,10 +8,13 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import CreditEducationModal from "@/components/CreditEducationModal";
 import BrowserTtsButton from "@/components/BrowserTtsButton";
+import BibleYearDeepStudySectionCards from "@/components/BibleYearDeepStudySectionCards";
 import { triggerPoints } from "@/components/PointsPop";
 import { TASK_XP } from "@/lib/progressionRewards";
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "@/lib/chapterNotesOffline";
 import { getGenesisOneTtsSrc } from "@/lib/genesisOneTts";
+import { getApprovedBibleYearDeepStudyMarkdownForChapter, getApprovedBibleYearDeepStudySectionsForChapter } from "@/lib/bibleYearApprovedDeepStudy";
+import { trackDeepStudyInterestOnce } from "@/lib/deepStudyInterestTracking";
 
 const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 export default function ChapterNotesPage() {
@@ -19,6 +22,10 @@ export default function ChapterNotesPage() {
   const router = useRouter();
   const book = String(params.book);
   const chapter = Number(params.chapter);
+  const bookDisplayName = book
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
 
   const [notesText, setNotesText] = useState<string>("");
   const [loadingNotes, setLoadingNotes] = useState(false);
@@ -29,12 +36,21 @@ export default function ChapterNotesPage() {
   const prevCreditsRef = useRef<number | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const loadingRef = useRef(false);
+  const approvedBibleYearDeepStudySections = useMemo(
+    () => getApprovedBibleYearDeepStudySectionsForChapter(bookDisplayName, chapter),
+    [bookDisplayName, chapter],
+  );
+  const approvedBibleYearDeepStudyMarkdown = useMemo(
+    () => getApprovedBibleYearDeepStudyMarkdownForChapter(bookDisplayName, chapter),
+    [bookDisplayName, chapter],
+  );
+  const [activeApprovedDeepStudyReference, setActiveApprovedDeepStudyReference] = useState<string | null>(
+    approvedBibleYearDeepStudySections[0]?.reference ?? null,
+  );
 
-  // Get book display name (capitalize first letter of each word)
-  const bookDisplayName = book
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" ");
+  useEffect(() => {
+    setActiveApprovedDeepStudyReference(approvedBibleYearDeepStudySections[0]?.reference ?? null);
+  }, [approvedBibleYearDeepStudySections]);
 
   function goToChapter() {
     router.push(`/Bible/${book}/${chapter}`);
@@ -184,6 +200,24 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       setNotesText("");
       setNotesError(null);
       setShowCreditBlocked(false);
+
+      if (approvedBibleYearDeepStudySections.length > 0) {
+        const { data: { user } } = await supabase.auth.getUser();
+        const userIdLocal = user?.id ?? null;
+        setUserId(userIdLocal);
+        void trackDeepStudyInterestOnce({
+          userId: userIdLocal,
+          username: user?.email || null,
+          source: "reading_plan",
+          sourceLabel: "Reading Plan",
+          itemKey: `${bookDisplayName.toLowerCase().replace(/\s+/g, "-")}-${chapterNum}`,
+          itemTitle: `${bookDisplayName} ${chapterNum}`,
+          contentLabel: `${bookDisplayName} ${chapterNum} Study Notes`,
+        });
+        setNotesText(approvedBibleYearDeepStudyMarkdown);
+        setNotesError(null);
+        return;
+      }
 
       const offlineNotes = await getOfflineChapterNotes(bookDisplayName, chapterNum);
       if (offlineNotes) {
@@ -466,32 +500,50 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               {/* Display notes if they exist - no persistence warnings shown to users */}
               {!loadingNotes && notesText && (
                 <div className="prose prose-sm md:prose-base max-w-none">
-                    <BrowserTtsButton
-                      text={notesText}
-                      label="Listen to chapter notes"
-                      audioSrc={getGenesisOneTtsSrc("notes", bookDisplayName, chapter)}
-                    />
-                    <ReactMarkdown
-                      components={{
-                        h1: ({ node, ...props }) => (
-                          <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
-                        ),
-                        p: ({ node, ...props }) => (
-                          <p className="mb-4 leading-relaxed" {...props} />
-                        ),
-                        strong: ({ node, ...props }) => (
-                          <strong className="font-bold" {...props} />
-                        ),
-                        ul: ({ node, ...props }) => (
-                          <ul className="list-disc list-inside mb-4 space-y-2" {...props} />
-                        ),
-                        li: ({ node, ...props }) => (
-                          <li className="ml-4" {...props} />
-                        ),
-                      }}
-                    >
-                      {notesText}
-                    </ReactMarkdown>
+                    {approvedBibleYearDeepStudySections.length > 0 ? (
+                      <div className="not-prose rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_78%,rgba(0,0,0,0.72))] p-4 text-left text-[var(--bb-text-primary,#fff7ed)] shadow-[0_24px_70px_rgba(0,0,0,0.28)] [--bb-card-border:rgba(246,180,75,0.22)] [--bb-surface-soft:rgba(255,255,255,0.06)] [--bb-text-primary:#fff7ed] [--bb-text-secondary:#e7d4bd]">
+                        <BrowserTtsButton
+                          text={approvedBibleYearDeepStudyMarkdown}
+                          label="Listen to chapter notes"
+                          audioSrc={getGenesisOneTtsSrc("notes", bookDisplayName, chapter)}
+                        />
+                        <BibleYearDeepStudySectionCards
+                          sections={approvedBibleYearDeepStudySections}
+                          activeReference={activeApprovedDeepStudyReference}
+                          onActiveReferenceChange={setActiveApprovedDeepStudyReference}
+                          topId="reading-plan-approved-deep-study-top"
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <BrowserTtsButton
+                          text={notesText}
+                          label="Listen to chapter notes"
+                          audioSrc={getGenesisOneTtsSrc("notes", bookDisplayName, chapter)}
+                        />
+                        <ReactMarkdown
+                          components={{
+                            h1: ({ node, ...props }) => (
+                              <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                            ),
+                            p: ({ node, ...props }) => (
+                              <p className="mb-4 leading-relaxed" {...props} />
+                            ),
+                            strong: ({ node, ...props }) => (
+                              <strong className="font-bold" {...props} />
+                            ),
+                            ul: ({ node, ...props }) => (
+                              <ul className="list-disc list-inside mb-4 space-y-2" {...props} />
+                            ),
+                            li: ({ node, ...props }) => (
+                              <li className="ml-4" {...props} />
+                            ),
+                          }}
+                        >
+                          {notesText}
+                        </ReactMarkdown>
+                      </>
+                    )}
                   </div>
               )}
 

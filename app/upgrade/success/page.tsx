@@ -15,7 +15,7 @@ export default function UpgradeSuccessPage() {
           study.
         </p>
         <a
-          href="/"
+          href="/dashboard?view=bible-year&day=1"
           className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
         >
           Go to Dashboard

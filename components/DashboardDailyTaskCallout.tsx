@@ -1135,7 +1135,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                   articleSlug={chapterSlug(devotionalDay.bible_reading_book, devotionalDay.bible_reading_chapter)}
                   headingText=""
                   placeholderText="Start Typing Here"
-                  submitButtonText="Post Reflection"
+                  submitButtonText="Send"
                   variant="plain"
                   onPosted={() => {
                     void markReflectionComplete();
@@ -1168,7 +1168,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                   articleSlug={chapterSlug(devotionalDay.bible_reading_book, devotionalDay.bible_reading_chapter)}
                   headingText=""
                   placeholderText="Start Typing Here"
-                  submitButtonText="Post Reflection"
+                  submitButtonText="Send"
                   variant="plain"
                   onPosted={() => {
                     void markReflectionComplete();

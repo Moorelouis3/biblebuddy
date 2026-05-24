@@ -190,7 +190,7 @@ export default function UpgradePage() {
         </h3>
 
         <div className="space-y-8">
-          {/* Feature 1: Unlimited Deep Study Views */}
+          {/* Feature 1: Unlimited Study Notes Views */}
           <div
             className={`transition-all duration-400 ease-out ${
               mounted
@@ -205,7 +205,7 @@ export default function UpgradePage() {
               <div className="text-3xl flex-shrink-0">🔓</div>
               <div>
                 <h4 className="text-xl font-bold mb-3">
-                  Unlimited Deep Study Views
+                  Unlimited Study Notes Views
                 </h4>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start gap-2">

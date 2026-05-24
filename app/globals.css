@@ -4417,3 +4417,409 @@ html[data-bb-skin]:not([data-bb-skin="none"]) main {
 .bb-bible-year-start-pulse {
   animation: bb-bible-year-start-button-pulse 1.55s ease-in-out infinite;
 }
+
+/* Public landing/auth/legal pages use the app's Light theme and ignore saved skins/themes. */
+.bb-public-landing,
+.bb-auth-public,
+.bb-legal-public {
+  --bb-background: #F5F7FA !important;
+  --bb-surface: #FFFFFF !important;
+  --bb-surface-soft: #F3F4F6 !important;
+  --bb-card: #FFFFFF !important;
+  --bb-card-border: #E5E7EB !important;
+  --bb-text-primary: #111827 !important;
+  --bb-text-secondary: #374151 !important;
+  --bb-text-muted: #6B7280 !important;
+  --bb-accent: #7BAFD4 !important;
+  --bb-accent-soft: #EAF5FF !important;
+  --bb-button: #7BAFD4 !important;
+  --bb-button-text: #FFFFFF !important;
+  --bb-progress-track: #E5E7EB !important;
+  --bb-progress-fill: #7BAFD4 !important;
+  background: #F5F7FA !important;
+  background-color: #F5F7FA !important;
+  background-image: none !important;
+  color: #111827 !important;
+}
+
+html:has(.bb-public-landing),
+html:has(.bb-auth-public),
+html:has(.bb-legal-public),
+html:has(.bb-public-landing) body,
+html:has(.bb-auth-public) body,
+html:has(.bb-legal-public) body,
+html.bb-legal-page-active,
+html.bb-legal-page-active body {
+  background: #F5F7FA !important;
+  background-color: #F5F7FA !important;
+  background-image: none !important;
+}
+
+html:has(.bb-public-landing) body::before,
+html:has(.bb-public-landing) body::after,
+html:has(.bb-auth-public) body::before,
+html:has(.bb-auth-public) body::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+.bb-public-landing [style*="#FBF9F4"],
+.bb-public-landing [style*="#FFFCF6"],
+.bb-public-landing [style*="#fffdfa"],
+.bb-public-landing [style*="#fffaf"],
+.bb-auth-public [style*="#FBF9F4"],
+.bb-auth-public [style*="#FFFCF6"],
+.bb-auth-public [style*="#fffdfa"],
+.bb-auth-public [style*="#fffaf"],
+.bb-legal-public [style*="#FBF9F4"],
+.bb-legal-public [style*="#FFFCF6"],
+.bb-legal-public [style*="#fffdfa"],
+.bb-legal-public [style*="#fffaf"] {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+}
+
+.bb-public-landing [style*="#ead"],
+.bb-public-landing [style*="#d9c"],
+.bb-public-landing [style*="#c59"],
+.bb-auth-public [style*="#ead"],
+.bb-auth-public [style*="#d9c"],
+.bb-auth-public [style*="#c59"],
+.bb-legal-public [style*="#ead"],
+.bb-legal-public [style*="#d9c"],
+.bb-legal-public [style*="#c59"] {
+  border-color: #E5E7EB !important;
+}
+
+.bb-public-landing .bb-hero-gold,
+.bb-public-landing .bb-accent-text,
+.bb-public-landing [style*="#d89b43"],
+.bb-public-landing [style*="#D89B43"],
+.bb-auth-public [style*="#d89b43"],
+.bb-auth-public [style*="#D89B43"],
+.bb-legal-public [style*="#d89b43"],
+.bb-legal-public [style*="#D89B43"] {
+  color: #7BAFD4 !important;
+  -webkit-text-fill-color: #7BAFD4 !important;
+}
+
+.bb-public-landing [style*="#0E1A3A"],
+.bb-auth-public [style*="#0E1A3A"],
+.bb-legal-public [style*="#0E1A3A"] {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+
+.bb-public-landing .bb-public-button,
+.bb-public-landing .bb-public-button *,
+.bb-public-landing [style*="background-color: #0E1A3A"],
+.bb-auth-public [style*="background-color: #0E1A3A"],
+.bb-legal-public [style*="background-color: #0E1A3A"] {
+  background: #7BAFD4 !important;
+  background-color: #7BAFD4 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* Public landing page must stay readable even when a user has an app skin active. */
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing h1,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing h2,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing h3,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing p,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing span,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing div,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing svg,
+.bb-public-landing,
+.bb-public-landing h1,
+.bb-public-landing h2,
+.bb-public-landing h3,
+.bb-public-landing p,
+.bb-public-landing span,
+.bb-public-landing div,
+.bb-public-landing svg {
+  color: #111827 !important;
+  opacity: 1 !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-hero-gold,
+.bb-public-landing .bb-hero-gold {
+  color: #7BAFD4 !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-force-black,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-force-black *,
+.bb-force-black,
+.bb-force-black * {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-force-black .bb-hero-gold,
+.bb-public-landing .bb-force-black .bb-hero-gold {
+  color: #7BAFD4 !important;
+  -webkit-text-fill-color: #7BAFD4 !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-public-button,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-public-button *,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-step-number,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-step-number *,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-video-preview,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-video-preview *,
+.bb-public-landing .bb-public-button,
+.bb-public-landing .bb-public-button *,
+.bb-public-landing .bb-step-number,
+.bb-public-landing .bb-step-number *,
+.bb-public-landing .bb-video-preview,
+.bb-public-landing .bb-video-preview * {
+  color: #ffffff !important;
+}
+
+/* Legal/privacy pages must match the public landing page, never an app skin. */
+html:has(.bb-legal-public),
+html:has(.bb-legal-public) body,
+html.bb-legal-page-active,
+html.bb-legal-page-active body {
+  background: #F5F7FA !important;
+  background-color: #F5F7FA !important;
+  background-image: none !important;
+  background-attachment: scroll !important;
+  background-position: initial !important;
+  background-repeat: initial !important;
+  background-size: initial !important;
+}
+
+html:has(.bb-legal-public) body::before,
+html:has(.bb-legal-public) body::after,
+html.bb-legal-page-active body::before,
+html.bb-legal-page-active body::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]):has(.bb-legal-public) main.bb-legal-public,
+html.bb-legal-page-active main.bb-legal-public,
+main.bb-legal-public {
+  background: #F5F7FA !important;
+  background-color: #F5F7FA !important;
+  background-image: none !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]):has(.bb-legal-public) .bb-legal-header,
+html.bb-legal-page-active .bb-legal-header,
+.bb-legal-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* Final lock: public pages always use the app light theme, never a selected skin/theme. */
+html:has(.bb-public-landing),
+html:has(.bb-auth-public),
+html:has(.bb-legal-public),
+html:has(.bb-public-landing) body,
+html:has(.bb-auth-public) body,
+html:has(.bb-legal-public) body,
+html.bb-legal-page-active,
+html.bb-legal-page-active body {
+  --bb-background: #F5F7FA !important;
+  --bb-surface: #FFFFFF !important;
+  --bb-surface-soft: #F3F4F6 !important;
+  --bb-card: #FFFFFF !important;
+  --bb-card-border: #E5E7EB !important;
+  --bb-text-primary: #111827 !important;
+  --bb-text-secondary: #374151 !important;
+  --bb-text-muted: #6B7280 !important;
+  --bb-accent: #7BAFD4 !important;
+  --bb-accent-soft: #EAF5FF !important;
+  --bb-button: #7BAFD4 !important;
+  --bb-button-text: #FFFFFF !important;
+  --bb-progress-track: #E5E7EB !important;
+  --bb-progress-fill: #7BAFD4 !important;
+  background: #F5F7FA !important;
+  background-color: #F5F7FA !important;
+  background-image: none !important;
+  color: #111827 !important;
+}
+
+html:has(.bb-public-landing) body::before,
+html:has(.bb-public-landing) body::after,
+html:has(.bb-auth-public) body::before,
+html:has(.bb-auth-public) body::after,
+html:has(.bb-legal-public) body::before,
+html:has(.bb-legal-public) body::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+.bb-public-landing,
+.bb-auth-public,
+.bb-legal-public {
+  background: #F5F7FA !important;
+  background-color: #F5F7FA !important;
+  background-image: none !important;
+  color: #111827 !important;
+}
+
+.bb-public-landing header,
+.bb-public-landing footer,
+.bb-auth-public header,
+.bb-auth-public footer,
+.bb-legal-public header,
+.bb-legal-public footer,
+.bb-legal-public .bb-legal-header {
+  background: #F5F7FA !important;
+  background-color: #F5F7FA !important;
+  background-image: none !important;
+}
+
+.bb-public-landing h1,
+.bb-public-landing h2,
+.bb-public-landing h3,
+.bb-auth-public h1,
+.bb-auth-public h2,
+.bb-auth-public h3,
+.bb-legal-public h1,
+.bb-legal-public h2,
+.bb-legal-public h3,
+.bb-public-landing .bb-force-black,
+.bb-public-landing .bb-force-black *,
+.bb-auth-public .bb-force-black,
+.bb-auth-public .bb-force-black *,
+.bb-legal-public .bb-force-black,
+.bb-legal-public .bb-force-black * {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  text-shadow: none !important;
+}
+
+.bb-public-landing p,
+.bb-public-landing li,
+.bb-auth-public p,
+.bb-auth-public label,
+.bb-auth-public li,
+.bb-legal-public p,
+.bb-legal-public li {
+  color: #374151 !important;
+  -webkit-text-fill-color: #374151 !important;
+}
+
+.bb-public-landing .bb-hero-gold,
+.bb-public-landing [style*="#d89b43"],
+.bb-public-landing [style*="#D89B43"],
+.bb-auth-public [style*="#d89b43"],
+.bb-auth-public [style*="#D89B43"],
+.bb-legal-public .bb-legal-eyebrow,
+.bb-legal-public .bb-legal-gold,
+.bb-legal-public [style*="#d89b43"],
+.bb-legal-public [style*="#D89B43"] {
+  color: #7BAFD4 !important;
+  -webkit-text-fill-color: #7BAFD4 !important;
+}
+
+.bb-public-landing [style*="#FBF9F4"],
+.bb-public-landing [style*="#FFFCF6"],
+.bb-public-landing [style*="#fffdfa"],
+.bb-public-landing [style*="#fffaf"],
+.bb-auth-public [style*="#FBF9F4"],
+.bb-auth-public [style*="#FFFCF6"],
+.bb-auth-public [style*="#fffdfa"],
+.bb-auth-public [style*="#fffaf"],
+.bb-legal-public [style*="#FBF9F4"],
+.bb-legal-public [style*="#FFFCF6"],
+.bb-legal-public [style*="#fffdfa"],
+.bb-legal-public [style*="#fffaf"] {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+}
+
+.bb-public-landing [style*="#ead"],
+.bb-public-landing [style*="#d9c"],
+.bb-public-landing [style*="#c59"],
+.bb-auth-public [style*="#ead"],
+.bb-auth-public [style*="#d9c"],
+.bb-auth-public [style*="#c59"],
+.bb-legal-public [style*="#ead"],
+.bb-legal-public [style*="#d9c"],
+.bb-legal-public [style*="#c59"] {
+  border-color: #E5E7EB !important;
+}
+
+.bb-public-landing .bb-public-button,
+.bb-public-landing .bb-public-button *,
+.bb-public-landing [style*="background-color: #0E1A3A"],
+.bb-auth-public [style*="background-color: #0E1A3A"],
+.bb-legal-public [style*="background-color: #0E1A3A"] {
+  background: #7BAFD4 !important;
+  background-color: #7BAFD4 !important;
+  border-color: #7BAFD4 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.bb-public-landing input,
+.bb-public-landing textarea,
+.bb-auth-public input,
+.bb-auth-public textarea,
+.bb-legal-public input,
+.bb-legal-public textarea {
+  background: #FFFFFF !important;
+  border-color: #E5E7EB !important;
+  color: #111827 !important;
+}
+
+.bb-public-landing [style*="rgb(251, 249, 244)"],
+.bb-public-landing [style*="rgb(255, 252, 246)"],
+.bb-public-landing [style*="rgb(255, 253, 250)"],
+.bb-public-landing [style*="rgb(255, 250, 241)"],
+.bb-auth-public [style*="rgb(251, 249, 244)"],
+.bb-auth-public [style*="rgb(255, 252, 246)"],
+.bb-auth-public [style*="rgb(255, 253, 250)"],
+.bb-auth-public [style*="rgb(255, 250, 241)"],
+.bb-legal-public [style*="rgb(251, 249, 244)"],
+.bb-legal-public [style*="rgb(255, 252, 246)"],
+.bb-legal-public [style*="rgb(255, 253, 250)"],
+.bb-legal-public [style*="rgb(255, 250, 241)"] {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+}
+
+.bb-public-landing [style*="rgb(234, 223, 205)"],
+.bb-public-landing [style*="rgb(234, 220, 194)"],
+.bb-public-landing [style*="rgb(217, 196, 158)"],
+.bb-auth-public [style*="rgb(234, 223, 205)"],
+.bb-auth-public [style*="rgb(234, 220, 194)"],
+.bb-auth-public [style*="rgb(217, 196, 158)"],
+.bb-legal-public [style*="rgb(234, 223, 205)"],
+.bb-legal-public [style*="rgb(234, 220, 194)"],
+.bb-legal-public [style*="rgb(217, 196, 158)"] {
+  border-color: #E5E7EB !important;
+}
+
+.bb-public-landing [style*="rgb(216, 155, 67)"],
+.bb-auth-public [style*="rgb(216, 155, 67)"],
+.bb-legal-public [style*="rgb(216, 155, 67)"] {
+  color: #7BAFD4 !important;
+  -webkit-text-fill-color: #7BAFD4 !important;
+}
+
+.bb-public-landing [style*="background-color: rgb(14, 26, 58)"],
+.bb-auth-public [style*="background-color: rgb(14, 26, 58)"],
+.bb-legal-public [style*="background-color: rgb(14, 26, 58)"] {
+  background: #7BAFD4 !important;
+  background-color: #7BAFD4 !important;
+  border-color: #7BAFD4 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}

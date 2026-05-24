@@ -1,6 +1,6 @@
 import type { PremiumSkinId } from "./premiumSkins";
 
-export type FlameCosmeticId = "default" | "orange" | "blue" | "gold" | "purple" | "red" | "green" | "black";
+export type FlameCosmeticId = "default" | "orange" | "blue" | "gold" | "purple" | "red" | "green" | "black" | "sky" | "amber" | "slate";
 
 export type FlameCosmetic = {
   id: FlameCosmeticId;
@@ -23,6 +23,9 @@ export const FLAME_COSMETICS: FlameCosmetic[] = [
   { id: "red", name: "Red Flame", light: "#FF6B6B", main: "#991B1B", dark: "#3F0508" },
   { id: "green", name: "Green Flame", light: "#DCFCE7", main: "#16A34A", dark: "#166534" },
   { id: "black", name: "Black Flame", light: "#D4D4D4", main: "#525252", dark: "#050505" },
+  { id: "sky", name: "Sky Flame", light: "#E0F2FE", main: "#38BDF8", dark: "#0369A1" },
+  { id: "amber", name: "Amber Flame", light: "#FEF3C7", main: "#F59E0B", dark: "#92400E" },
+  { id: "slate", name: "Slate Flame", light: "#E5E7EB", main: "#4B5563", dark: "#111827" },
 ];
 
 export const FLAME_COSMETIC_BY_ID = new Map(FLAME_COSMETICS.map((flame) => [flame.id, flame]));
@@ -35,11 +38,14 @@ export const PREMIUM_SKIN_FLAME_BY_ID: Partial<Record<PremiumSkinId, FlameCosmet
   "slow-mornings": "gold",
   "morning-mercy": "orange",
   "carolina-coastline": "blue",
-  "angel-wings": "blue",
+  "angel-wings": "sky",
   "winter-cabin": "blue",
-  "mount-sinai": "gold",
-  "desert-dawn": "gold",
-  "no-fuss": "blue",
+  "mount-sinai": "amber",
+  "desert-dawn": "amber",
+  "no-fuss": "slate",
+  "quiet-blue": "blue",
+  "royal-purple": "purple",
+  "fresh-green": "green",
 };
 
 export function normalizeFlameCosmeticId(value: unknown): FlameCosmeticId {
@@ -56,7 +62,7 @@ export function getPremiumSkinFlameId(skinId: PremiumSkinId | string | null | un
 
 export function getDocumentPremiumSkinFlameId(): FlameCosmeticId | null {
   if (typeof document === "undefined") return null;
-  return getPremiumSkinFlameId(document.documentElement.dataset.bbSkin);
+  return getPremiumSkinFlameId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin);
 }
 
 export function resolveActiveFlameCosmeticId(flameId?: FlameCosmeticId | string | null): FlameCosmeticId {

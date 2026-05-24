@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { BIBLE_TOPICS } from "../lib/bibleTopics";
+import { trackDeepStudyInterestOnce } from "../lib/deepStudyInterestTracking";
 import { awardDiamonds } from "../lib/diamondWallet";
 import { supabase } from "../lib/supabaseClient";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
@@ -129,6 +130,21 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
     setStudyNotesOpen(false);
   }
 
+  function toggleStudyNotesInterest() {
+    const nextOpen = !studyNotesOpen;
+    setStudyNotesOpen(nextOpen);
+    if (nextOpen && selectedTopic && selectedLesson) {
+      void trackDeepStudyInterestOnce({
+        userId,
+        source: "bible_topics",
+        sourceLabel: "Bible Topics",
+        itemKey: `${selectedTopic.slug}:${selectedLesson.slug}`,
+        itemTitle: selectedLesson.title,
+        contentLabel: `${selectedTopic.title} - ${selectedLesson.title}`,
+      });
+    }
+  }
+
   function selectTopic(topicSlug: string) {
     setSelectedTopicSlug(topicSlug);
     setOpenLessonSlug("");
@@ -248,7 +264,7 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
               <div className="overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
                 <button
                   type="button"
-                  onClick={() => setStudyNotesOpen((current) => !current)}
+                  onClick={toggleStudyNotesInterest}
                   className="flex w-full items-center justify-between gap-3 bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_90%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_74%,transparent))] px-4 py-4 text-left transition hover:brightness-[1.02]"
                   aria-expanded={studyNotesOpen}
                 >
@@ -477,7 +493,7 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
                   <div className="overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
                     <button
                       type="button"
-                      onClick={() => setStudyNotesOpen((current) => !current)}
+                      onClick={toggleStudyNotesInterest}
                       className="flex w-full items-center justify-between gap-3 bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_90%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_74%,transparent))] px-4 py-4 text-left transition hover:brightness-[1.02]"
                       aria-expanded={studyNotesOpen}
                     >

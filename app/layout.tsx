@@ -102,8 +102,6 @@ const premiumSkinFirstPaintScript = `
     var root = document.documentElement;
     var style = root.style;
     var palette = skin.palette;
-    var prefersMobile = window.matchMedia && window.matchMedia("(max-width: 767px)").matches;
-    var bg = prefersMobile ? skin.mobileBackgroundImage : skin.desktopBackgroundImage;
     var vars = {
       background: "--bb-background",
       surface: "--bb-surface",
@@ -124,7 +122,8 @@ const premiumSkinFirstPaintScript = `
       progressFill: "--bb-progress-fill"
     };
 
-    root.dataset.bbSkin = skinId;
+    root.dataset.bbSkin = "none";
+    root.dataset.bbBasicSkin = skinId;
     root.dataset.bbTheme = window.localStorage.getItem("bb:app-theme") || "light";
     if (skinFlames[skinId]) {
       var flameId = skinFlames[skinId];
@@ -138,15 +137,9 @@ const premiumSkinFirstPaintScript = `
         style.setProperty("--bb-active-flame-dark", flame.dark);
       }
     }
-    if (skin.hasImageBackground === false) {
-      style.setProperty("--bb-skin-bg-image", "none");
-      style.setProperty("--bb-skin-bg-image-mobile", "none");
-      style.setProperty("--bb-skin-bg-image-desktop", "none");
-    } else {
-      style.setProperty("--bb-skin-bg-image", 'url("' + bg + '")');
-      style.setProperty("--bb-skin-bg-image-mobile", 'url("' + skin.mobileBackgroundImage + '")');
-      style.setProperty("--bb-skin-bg-image-desktop", 'url("' + skin.desktopBackgroundImage + '")');
-    }
+    style.setProperty("--bb-skin-bg-image", "none");
+    style.setProperty("--bb-skin-bg-image-mobile", "none");
+    style.setProperty("--bb-skin-bg-image-desktop", "none");
 
     Object.keys(vars).forEach(function (key) {
       style.setProperty(vars[key], palette[key]);
@@ -165,15 +158,6 @@ const premiumSkinFirstPaintScript = `
     themeMeta.setAttribute("name", "theme-color");
     themeMeta.setAttribute("content", palette.background);
     if (!themeMeta.parentNode) document.head.appendChild(themeMeta);
-
-    if (skin.hasImageBackground !== false) {
-      var preload = document.createElement("link");
-      preload.rel = "preload";
-      preload.as = "image";
-      preload.href = bg;
-      preload.fetchPriority = "high";
-      document.head.appendChild(preload);
-    }
   } catch (error) {}
 })();
 `;
@@ -187,6 +171,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: premiumSkinFirstPaintScript }}
         />
         <script

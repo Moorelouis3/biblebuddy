@@ -1,4 +1,20 @@
-export type PremiumSkinId = "none" | "blue-storm" | "midnight-garden" | "lavender-prayer" | "ruby-village" | "slow-mornings" | "morning-mercy" | "carolina-coastline" | "angel-wings" | "winter-cabin" | "mount-sinai" | "desert-dawn" | "no-fuss";
+export type PremiumSkinId =
+  | "none"
+  | "blue-storm"
+  | "midnight-garden"
+  | "lavender-prayer"
+  | "ruby-village"
+  | "slow-mornings"
+  | "morning-mercy"
+  | "carolina-coastline"
+  | "angel-wings"
+  | "winter-cabin"
+  | "mount-sinai"
+  | "desert-dawn"
+  | "no-fuss"
+  | "quiet-blue"
+  | "royal-purple"
+  | "fresh-green";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -40,6 +56,58 @@ export const PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY = "bb:premium-skin-updated-at";
 export const PREMIUM_SKIN_PENDING_SYNC_KEY = "bb:premium-skin-pending-sync";
 export const PREMIUM_SKIN_PENDING_SYNC_MS = 90 * 1000;
 export const PREMIUM_SKIN_LOCK_MS = 24 * 60 * 60 * 1000;
+
+type BasicSkinInput = {
+  id: Exclude<PremiumSkinId, "none">;
+  name: string;
+  subtitle: string;
+  base: string;
+  soft: string;
+  background: string;
+  surface: string;
+  surfaceSoft: string;
+  cardBorder: string;
+  textPrimary: string;
+  textSecondary: string;
+  textMuted: string;
+  buttonText?: string;
+  price?: number;
+};
+
+function createBasicSkin(input: BasicSkinInput): PremiumSkin {
+  return {
+    id: input.id,
+    name: input.name,
+    label: "Skin",
+    storeSubtitle: input.subtitle,
+    backgroundImage: "",
+    originalImage: "",
+    thumbnailImage: "",
+    mobileBackgroundImage: "",
+    desktopBackgroundImage: "",
+    hasImageBackground: false,
+    price: input.price ?? 750,
+    palette: {
+      background: input.background,
+      surface: input.surface,
+      surfaceSoft: input.surfaceSoft,
+      card: "#FFFFFF",
+      cardBorder: input.cardBorder,
+      textPrimary: input.textPrimary,
+      textSecondary: input.textSecondary,
+      textMuted: input.textMuted,
+      accent: input.base,
+      accentSoft: input.soft,
+      button: input.base,
+      buttonText: input.buttonText ?? "#FFFFFF",
+      navBackground: input.surface,
+      navActive: input.base,
+      navInactive: input.textMuted,
+      progressTrack: input.cardBorder,
+      progressFill: input.base,
+    },
+  };
+}
 
 export function getPremiumSkinStorageKey(userId: string | null | undefined) {
   return userId ? `${PREMIUM_SKIN_STORAGE_KEY}:${userId}` : PREMIUM_SKIN_STORAGE_KEY;
@@ -158,390 +226,233 @@ export function formatPremiumSkinLockRemaining(ms: number) {
   return `${hours}h ${minutes}m`;
 }
 
-export const BLUE_STORM_SKIN: PremiumSkin = {
+export const BLUE_STORM_SKIN = createBasicSkin({
   id: "blue-storm",
   name: "Blue Storm",
-  label: "Premium Skin",
-  storeSubtitle: "A cinematic storm atmosphere for focused Bible study.",
-  backgroundImage: "/skins/optimized/blue-storm-desktop.webp",
-  originalImage: "/skins/Bluestormskin.png",
-  thumbnailImage: "/skins/optimized/blue-storm-thumb.webp",
-  mobileBackgroundImage: "/skins/optimized/blue-storm-mobile.webp",
-  desktopBackgroundImage: "/skins/optimized/blue-storm-desktop.webp",
-  price: 1000,
-  palette: {
-    background: "#061322",
-    surface: "rgba(8, 22, 42, 0.74)",
-    surfaceSoft: "rgba(31, 84, 132, 0.28)",
-    card: "rgba(7, 20, 38, 0.72)",
-    cardBorder: "rgba(103, 204, 255, 0.34)",
-    textPrimary: "#F5FBFF",
-    textSecondary: "#C7E8FF",
-    textMuted: "#91B9D4",
-    accent: "#5DD6FF",
-    accentSoft: "rgba(47, 154, 255, 0.22)",
-    button: "#075AA8",
-    buttonText: "#F5FBFF",
-    navBackground: "rgba(6, 18, 35, 0.86)",
-    navActive: "#67D6FF",
-    navInactive: "#9CBBD0",
-    progressTrack: "rgba(180, 225, 255, 0.2)",
-    progressFill: "#5DD6FF",
-  },
-};
+  subtitle: "A bold blue layout with a focused storm-blue accent.",
+  base: "#2563EB",
+  soft: "#DBEAFE",
+  background: "#EAF3FF",
+  surface: "#F8FBFF",
+  surfaceSoft: "#DBEAFE",
+  cardBorder: "#BFDBFE",
+  textPrimary: "#102A43",
+  textSecondary: "#334E68",
+  textMuted: "#627D98",
+});
 
-export const MIDNIGHT_GARDEN_SKIN: PremiumSkin = {
+export const MIDNIGHT_GARDEN_SKIN = createBasicSkin({
   id: "midnight-garden",
   name: "Midnight Garden",
-  label: "Premium Skin",
-  storeSubtitle: "A peaceful moonlit garden atmosphere for quiet nighttime prayer and reflection.",
-  backgroundImage: "/skins/optimized/midnight-garden-desktop.webp",
-  originalImage: "/skins/MidnightGarden.png",
-  thumbnailImage: "/skins/optimized/midnight-garden-thumb.webp",
-  mobileBackgroundImage: "/skins/optimized/midnight-garden-mobile.webp",
-  desktopBackgroundImage: "/skins/optimized/midnight-garden-desktop.webp",
-  price: 1000,
-  palette: {
-    background: "#07100F",
-    surface: "rgba(17, 35, 22, 0.8)",
-    surfaceSoft: "rgba(70, 101, 43, 0.36)",
-    card: "rgba(14, 31, 18, 0.8)",
-    cardBorder: "rgba(155, 205, 98, 0.42)",
-    textPrimary: "#FFF7DF",
-    textSecondary: "#D9DEBD",
-    textMuted: "#A8B289",
-    accent: "#AFCF7A",
-    accentSoft: "rgba(144, 190, 84, 0.26)",
-    button: "#638238",
-    buttonText: "#FFF8DE",
-    navBackground: "rgba(15, 34, 19, 0.9)",
-    navActive: "#D7B86B",
-    navInactive: "#AAB18B",
-    progressTrack: "rgba(218, 203, 148, 0.18)",
-    progressFill: "#D7B86B",
-  },
-};
+  subtitle: "A calm green layout for quiet reading and prayer.",
+  base: "#16A34A",
+  soft: "#DCFCE7",
+  background: "#ECFDF3",
+  surface: "#F7FFF9",
+  surfaceSoft: "#DCFCE7",
+  cardBorder: "#BBF7D0",
+  textPrimary: "#052E16",
+  textSecondary: "#166534",
+  textMuted: "#4D7C5B",
+});
 
-export const LAVENDER_PRAYER_SKIN: PremiumSkin = {
+export const LAVENDER_PRAYER_SKIN = createBasicSkin({
   id: "lavender-prayer",
   name: "Lavender Prayer",
-  label: "Premium Skin",
-  storeSubtitle: "A dreamy moonlit prayer atmosphere with candles, stars, and quiet nighttime reflection.",
-  backgroundImage: "/skins/optimized/lavender-prayer-desktop.webp",
-  originalImage: "/skins/LavenderPrayerSkin.png",
-  thumbnailImage: "/skins/optimized/lavender-prayer-thumb.webp",
-  mobileBackgroundImage: "/skins/optimized/lavender-prayer-mobile.webp",
-  desktopBackgroundImage: "/skins/optimized/lavender-prayer-desktop.webp",
-  price: 1000,
-  palette: {
-    background: "#130D1F",
-    surface: "rgba(28, 18, 44, 0.76)",
-    surfaceSoft: "rgba(91, 68, 126, 0.28)",
-    card: "rgba(25, 16, 42, 0.74)",
-    cardBorder: "rgba(207, 174, 255, 0.34)",
-    textPrimary: "#FFF7FF",
-    textSecondary: "#EAD8FF",
-    textMuted: "#C3A8DE",
-    accent: "#CFAEFF",
-    accentSoft: "rgba(188, 139, 255, 0.2)",
-    button: "#6F4EA2",
-    buttonText: "#FFF7FF",
-    navBackground: "rgba(18, 11, 30, 0.88)",
-    navActive: "#F0C8FF",
-    navInactive: "#C3A8DE",
-    progressTrack: "rgba(234, 216, 255, 0.18)",
-    progressFill: "#F0C8FF",
-  },
-};
+  subtitle: "A soft purple layout with a peaceful prayer accent.",
+  base: "#7C3AED",
+  soft: "#EDE9FE",
+  background: "#F3EAFF",
+  surface: "#FBF8FF",
+  surfaceSoft: "#EDE2FF",
+  cardBorder: "#D8C1FF",
+  textPrimary: "#261447",
+  textSecondary: "#4C3575",
+  textMuted: "#7C68A6",
+});
 
-export const RUBY_VILLAGE_SKIN: PremiumSkin = {
+export const RUBY_VILLAGE_SKIN = createBasicSkin({
   id: "ruby-village",
   name: "Ruby Village",
-  label: "Premium Skin",
-  storeSubtitle: "A bold ruby kingdom atmosphere for disciplined, spiritually powerful study.",
-  backgroundImage: "/skins/optimized/ruby-village-desktop.webp",
-  originalImage: "/skins/RubyVillage.png",
-  thumbnailImage: "/skins/optimized/ruby-village-thumb.webp",
-  mobileBackgroundImage: "/skins/optimized/ruby-village-mobile.webp",
-  desktopBackgroundImage: "/skins/optimized/ruby-village-desktop.webp",
-  price: 1000,
-  palette: {
-    background: "#120507",
-    surface: "rgba(55, 12, 16, 0.78)",
-    surfaceSoft: "rgba(120, 34, 30, 0.3)",
-    card: "rgba(44, 9, 13, 0.76)",
-    cardBorder: "rgba(255, 105, 84, 0.36)",
-    textPrimary: "#FFF6EF",
-    textSecondary: "#FFD2BE",
-    textMuted: "#D99A86",
-    accent: "#FF735F",
-    accentSoft: "rgba(255, 93, 72, 0.22)",
-    button: "#9C1F24",
-    buttonText: "#FFF6EF",
-    navBackground: "rgba(32, 7, 10, 0.9)",
-    navActive: "#FFC06A",
-    navInactive: "#D99A86",
-    progressTrack: "rgba(255, 210, 190, 0.16)",
-    progressFill: "#FFC06A",
-  },
-};
+  subtitle: "A strong red layout with a warm ruby accent.",
+  base: "#DC2626",
+  soft: "#FEE2E2",
+  background: "#FFF0F0",
+  surface: "#FFF8F8",
+  surfaceSoft: "#FEE2E2",
+  cardBorder: "#FECACA",
+  textPrimary: "#3B0A0A",
+  textSecondary: "#7F1D1D",
+  textMuted: "#B45353",
+});
 
-export const SLOW_MORNINGS_SKIN: PremiumSkin = {
+export const SLOW_MORNINGS_SKIN = createBasicSkin({
   id: "slow-mornings",
   name: "Slow Mornings",
-  label: "Premium Skin",
-  storeSubtitle: "A cozy rainy morning atmosphere for peaceful coffee, Scripture, and daily reflection.",
-  backgroundImage: "/skins/optimized/slow-mornings-desktop.webp",
-  originalImage: "/skins/SlowMornings.png",
-  thumbnailImage: "/skins/optimized/slow-mornings-thumb.webp",
-  mobileBackgroundImage: "/skins/optimized/slow-mornings-mobile.webp",
-  desktopBackgroundImage: "/skins/optimized/slow-mornings-desktop.webp",
-  price: 1000,
-  palette: {
-    background: "#170F0A",
-    surface: "rgba(49, 31, 21, 0.78)",
-    surfaceSoft: "rgba(148, 91, 45, 0.28)",
-    card: "rgba(39, 24, 17, 0.78)",
-    cardBorder: "rgba(245, 178, 91, 0.36)",
-    textPrimary: "#FFF4E1",
-    textSecondary: "#F5D8B0",
-    textMuted: "#C99D72",
-    accent: "#F5B25B",
-    accentSoft: "rgba(245, 178, 91, 0.22)",
-    button: "#A45F25",
-    buttonText: "#FFF4E1",
-    navBackground: "rgba(31, 19, 13, 0.9)",
-    navActive: "#FFD28A",
-    navInactive: "#D1A77C",
-    progressTrack: "rgba(245, 216, 176, 0.18)",
-    progressFill: "#FFD28A",
-  },
-};
+  subtitle: "A warm gold layout for steady daily study.",
+  base: "#B7791F",
+  soft: "#FEF3C7",
+  background: "#FFF3D6",
+  surface: "#FFFCF3",
+  surfaceSoft: "#FDECC8",
+  cardBorder: "#F1D39A",
+  textPrimary: "#33240A",
+  textSecondary: "#614A19",
+  textMuted: "#92733C",
+});
 
-export const MORNING_MERCY_SKIN: PremiumSkin = {
+export const MORNING_MERCY_SKIN = createBasicSkin({
   id: "morning-mercy",
   name: "Morning Mercy",
-  label: "Premium Skin",
-  storeSubtitle: "A hopeful sunrise devotional atmosphere with flowers, coffee, and fresh-start peace.",
-  backgroundImage: "/skins/optimized/morning-mercy-desktop.webp",
-  originalImage: "/skins/MorningMercy.png",
-  thumbnailImage: "/skins/optimized/morning-mercy-thumb.webp",
-  mobileBackgroundImage: "/skins/optimized/morning-mercy-mobile.webp",
-  desktopBackgroundImage: "/skins/optimized/morning-mercy-desktop.webp",
-  price: 1000,
-  palette: {
-    background: "#FFF3E3",
-    surface: "rgba(255, 238, 219, 0.78)",
-    surfaceSoft: "rgba(255, 203, 169, 0.34)",
-    card: "rgba(255, 244, 229, 0.78)",
-    cardBorder: "rgba(238, 151, 104, 0.36)",
-    textPrimary: "#4A271A",
-    textSecondary: "#7C4D35",
-    textMuted: "#A66D51",
-    accent: "#E99265",
-    accentSoft: "rgba(233, 146, 101, 0.24)",
-    button: "#D6754D",
-    buttonText: "#FFF8EE",
-    navBackground: "rgba(255, 238, 219, 0.9)",
-    navActive: "#C8585D",
-    navInactive: "#8D6046",
-    progressTrack: "rgba(166, 109, 81, 0.18)",
-    progressFill: "#F4B35F",
-  },
-};
+  subtitle: "A fresh orange layout with a hopeful morning accent.",
+  base: "#EA580C",
+  soft: "#FFEDD5",
+  background: "#FFF4E8",
+  surface: "#FFF9F2",
+  surfaceSoft: "#FFEDD5",
+  cardBorder: "#FED7AA",
+  textPrimary: "#3B1707",
+  textSecondary: "#9A3412",
+  textMuted: "#B85C2B",
+});
 
-export const CAROLINA_COASTLINE_SKIN: PremiumSkin = {
+export const CAROLINA_COASTLINE_SKIN = createBasicSkin({
   id: "carolina-coastline",
   name: "Carolina Coastline",
-  label: "Premium Skin",
-  storeSubtitle: "A moody lighthouse coast atmosphere for steady, peaceful nighttime study.",
-  backgroundImage: "/skins/optimized/carolina-coastline-desktop.webp",
-  originalImage: "/skins/CarolinaCoastline.png",
-  thumbnailImage: "/skins/optimized/carolina-coastline-thumb.webp",
-  mobileBackgroundImage: "/skins/optimized/carolina-coastline-mobile.webp",
-  desktopBackgroundImage: "/skins/optimized/carolina-coastline-desktop.webp",
-  price: 1000,
-  palette: {
-    background: "#04111F",
-    surface: "rgba(7, 24, 43, 0.78)",
-    surfaceSoft: "rgba(56, 129, 177, 0.26)",
-    card: "rgba(6, 21, 39, 0.76)",
-    cardBorder: "rgba(123, 175, 212, 0.42)",
-    textPrimary: "#F3FAFF",
-    textSecondary: "#C8E6F7",
-    textMuted: "#8FB3CC",
-    accent: "#7BAFD4",
-    accentSoft: "rgba(123, 175, 212, 0.24)",
-    button: "#1D6692",
-    buttonText: "#F3FAFF",
-    navBackground: "rgba(5, 18, 34, 0.9)",
-    navActive: "#A6D8F4",
-    navInactive: "#9AB8CB",
-    progressTrack: "rgba(200, 230, 247, 0.18)",
-    progressFill: "#7BAFD4",
-  },
-};
+  subtitle: "A soft coastal blue layout with a steady accent.",
+  base: "#7BAFD4",
+  soft: "#EAF5FF",
+  background: "#F0F8FF",
+  surface: "#FBFDFF",
+  surfaceSoft: "#EAF5FF",
+  cardBorder: "#C9E0F2",
+  textPrimary: "#123047",
+  textSecondary: "#34566E",
+  textMuted: "#66859B",
+});
 
-export const ANGEL_WINGS_SKIN: PremiumSkin = {
+export const ANGEL_WINGS_SKIN = createBasicSkin({
   id: "angel-wings",
   name: "Angel Wings",
-  label: "Premium Skin",
-  storeSubtitle: "A cinematic heavenly atmosphere with angel wings, divine light, and peaceful protection.",
-  backgroundImage: "/skins/optimized/angel-wings-desktop.webp",
-  originalImage: "/skins/AngelWings.png",
-  thumbnailImage: "/skins/optimized/angel-wings-thumb.webp",
-  mobileBackgroundImage: "/skins/optimized/angel-wings-mobile.webp",
-  desktopBackgroundImage: "/skins/optimized/angel-wings-desktop.webp",
-  price: 1000,
-  palette: {
-    background: "#06152A",
-    surface: "rgba(11, 40, 72, 0.76)",
-    surfaceSoft: "rgba(92, 166, 219, 0.28)",
-    card: "rgba(8, 31, 58, 0.74)",
-    cardBorder: "rgba(246, 211, 133, 0.42)",
-    textPrimary: "#F8FCFF",
-    textSecondary: "#D7ECF8",
-    textMuted: "#A9C6D8",
-    accent: "#8DDCFF",
-    accentSoft: "rgba(141, 220, 255, 0.24)",
-    button: "#1F77AD",
-    buttonText: "#F8FCFF",
-    navBackground: "rgba(5, 20, 40, 0.9)",
-    navActive: "#F6D385",
-    navInactive: "#B8D5E7",
-    progressTrack: "rgba(215, 236, 248, 0.18)",
-    progressFill: "#F6D385",
-  },
-};
+  subtitle: "A light sky layout with a gentle blue accent.",
+  base: "#38BDF8",
+  soft: "#E0F2FE",
+  background: "#F0F9FF",
+  surface: "#FFFFFF",
+  surfaceSoft: "#E0F2FE",
+  cardBorder: "#BAE6FD",
+  textPrimary: "#0C2D3D",
+  textSecondary: "#075985",
+  textMuted: "#4F8AA8",
+});
 
-export const WINTER_CABIN_SKIN: PremiumSkin = {
+export const WINTER_CABIN_SKIN = createBasicSkin({
   id: "winter-cabin",
   name: "Winter Cabin",
-  label: "Premium Skin",
-  storeSubtitle: "A quiet snowy cabin atmosphere for peaceful nighttime Bible study and reflection.",
-  backgroundImage: "/skins/WinterCabin.png",
-  originalImage: "/skins/WinterCabin.png",
-  thumbnailImage: "/skins/WinterCabin.png",
-  mobileBackgroundImage: "/skins/WinterCabin.png",
-  desktopBackgroundImage: "/skins/WinterCabin.png",
-  price: 1000,
-  palette: {
-    background: "#050E1D",
-    surface: "rgba(8, 19, 36, 0.78)",
-    surfaceSoft: "rgba(52, 89, 120, 0.28)",
-    card: "rgba(7, 18, 34, 0.76)",
-    cardBorder: "rgba(155, 215, 255, 0.36)",
-    textPrimary: "#F5FBFF",
-    textSecondary: "#D6E8F5",
-    textMuted: "#9FB9CB",
-    accent: "#9BD7FF",
-    accentSoft: "rgba(155, 215, 255, 0.22)",
-    button: "#2C6F9E",
-    buttonText: "#F5FBFF",
-    navBackground: "rgba(5, 14, 29, 0.9)",
-    navActive: "#D7ECFF",
-    navInactive: "#A9C0D1",
-    progressTrack: "rgba(214, 232, 245, 0.18)",
-    progressFill: "#9BD7FF",
-  },
-};
+  subtitle: "A crisp ice-blue layout for calm focused study.",
+  base: "#60A5FA",
+  soft: "#DBEAFE",
+  background: "#F1F7FF",
+  surface: "#FFFFFF",
+  surfaceSoft: "#EFF6FF",
+  cardBorder: "#BFDBFE",
+  textPrimary: "#0F2A4A",
+  textSecondary: "#1D4E89",
+  textMuted: "#6A88AA",
+});
 
-export const MOUNT_SINAI_SKIN: PremiumSkin = {
+export const MOUNT_SINAI_SKIN = createBasicSkin({
   id: "mount-sinai",
   name: "Mount Sinai",
-  label: "Premium Skin",
-  storeSubtitle: "A sacred storm-lit mountain atmosphere for reverent deep Bible study.",
-  backgroundImage: "/skins/MountSinai.png",
-  originalImage: "/skins/MountSinai.png",
-  thumbnailImage: "/skins/MountSinai.png",
-  mobileBackgroundImage: "/skins/MountSinai.png",
-  desktopBackgroundImage: "/skins/MountSinai.png",
-  price: 1000,
-  palette: {
-    background: "#050505",
-    surface: "rgba(20, 16, 12, 0.8)",
-    surfaceSoft: "rgba(88, 55, 26, 0.3)",
-    card: "rgba(18, 15, 12, 0.78)",
-    cardBorder: "rgba(230, 153, 55, 0.4)",
-    textPrimary: "#FFF4DE",
-    textSecondary: "#E8CDA5",
-    textMuted: "#B99263",
-    accent: "#EAA23A",
-    accentSoft: "rgba(234, 162, 58, 0.22)",
-    button: "#A85F18",
-    buttonText: "#FFF4DE",
-    navBackground: "rgba(12, 10, 8, 0.92)",
-    navActive: "#FFD37A",
-    navInactive: "#C09B6A",
-    progressTrack: "rgba(232, 205, 165, 0.18)",
-    progressFill: "#FFD37A",
-  },
-};
+  subtitle: "A grounded amber layout with a strong gold accent.",
+  base: "#D97706",
+  soft: "#FEF3C7",
+  background: "#FFF7E8",
+  surface: "#FFFCF7",
+  surfaceSoft: "#FEF3C7",
+  cardBorder: "#FCD34D",
+  textPrimary: "#3A2503",
+  textSecondary: "#7C4A03",
+  textMuted: "#A16207",
+});
 
-export const DESERT_DAWN_SKIN: PremiumSkin = {
+export const DESERT_DAWN_SKIN = createBasicSkin({
   id: "desert-dawn",
   name: "Desert Dawn",
-  label: "Premium Skin",
-  storeSubtitle: "A rugged sunrise wilderness atmosphere for disciplined, grounded Bible study.",
-  backgroundImage: "/skins/optimized/desert-dawn-desktop.webp",
-  originalImage: "/skins/DesertDawn.png",
-  thumbnailImage: "/skins/optimized/desert-dawn-thumb.webp",
-  mobileBackgroundImage: "/skins/optimized/desert-dawn-mobile.webp",
-  desktopBackgroundImage: "/skins/optimized/desert-dawn-desktop.webp",
-  price: 1000,
-  palette: {
-    background: "#0E0906",
-    surface: "rgba(42, 26, 15, 0.8)",
-    surfaceSoft: "rgba(128, 80, 35, 0.3)",
-    card: "rgba(35, 22, 13, 0.78)",
-    cardBorder: "rgba(232, 171, 72, 0.42)",
-    textPrimary: "#FFF4DE",
-    textSecondary: "#E9CFA4",
-    textMuted: "#B98A55",
-    accent: "#E8AB48",
-    accentSoft: "rgba(232, 171, 72, 0.24)",
-    button: "#9A5A1C",
-    buttonText: "#FFF4DE",
-    navBackground: "rgba(19, 12, 8, 0.92)",
-    navActive: "#FFD37A",
-    navInactive: "#C8A073",
-    progressTrack: "rgba(233, 207, 164, 0.18)",
-    progressFill: "#FFD37A",
-  },
-};
+  subtitle: "A sunlit amber layout with a simple desert accent.",
+  base: "#F59E0B",
+  soft: "#FEF3C7",
+  background: "#FFF8E7",
+  surface: "#FFFCF5",
+  surfaceSoft: "#FEF3C7",
+  cardBorder: "#FDE68A",
+  textPrimary: "#3B2502",
+  textSecondary: "#7C4A03",
+  textMuted: "#A66A12",
+});
 
-export const NO_FUSS_SKIN: PremiumSkin = {
+export const NO_FUSS_SKIN = createBasicSkin({
   id: "no-fuss",
   name: "No Fuss",
-  label: "Premium Skin",
-  storeSubtitle: "Clean focus mode with distraction-free premium minimalism.",
-  backgroundImage: "/skins/no-fuss-preview.svg",
-  originalImage: "/skins/no-fuss-preview.svg",
-  thumbnailImage: "/skins/no-fuss-preview.svg",
-  mobileBackgroundImage: "/skins/no-fuss-preview.svg",
-  desktopBackgroundImage: "/skins/no-fuss-preview.svg",
-  hasImageBackground: false,
-  price: 750,
-  palette: {
-    background: "#0D0D0D",
-    surface: "rgba(20, 20, 20, 0.78)",
-    surfaceSoft: "rgba(32, 32, 32, 0.68)",
-    card: "rgba(26, 26, 26, 0.82)",
-    cardBorder: "rgba(42, 42, 42, 0.92)",
-    textPrimary: "#F5F5F5",
-    textSecondary: "#B0B0B0",
-    textMuted: "#7A7A7A",
-    accent: "#4DA3FF",
-    accentSoft: "rgba(77, 163, 255, 0.16)",
-    button: "#1F6FB8",
-    buttonText: "#F5F5F5",
-    navBackground: "rgba(18, 18, 18, 0.88)",
-    navActive: "#6CB8FF",
-    navInactive: "#8A8A8A",
-    progressTrack: "rgba(245, 245, 245, 0.12)",
-    progressFill: "#4DA3FF",
-  },
-};
+  subtitle: "A clean neutral layout with minimal distraction.",
+  base: "#4B5563",
+  soft: "#E5E7EB",
+  background: "#F4F5F7",
+  surface: "#FAFAFA",
+  surfaceSoft: "#E5E7EB",
+  cardBorder: "#D1D5DB",
+  textPrimary: "#111827",
+  textSecondary: "#374151",
+  textMuted: "#6B7280",
+});
+
+export const QUIET_BLUE_SKIN = createBasicSkin({
+  id: "quiet-blue",
+  name: "Quiet Blue",
+  subtitle: "A simple soft-blue layout for everyday reading.",
+  base: "#3B82F6",
+  soft: "#DBEAFE",
+  background: "#EFF6FF",
+  surface: "#FFFFFF",
+  surfaceSoft: "#DBEAFE",
+  cardBorder: "#BFDBFE",
+  textPrimary: "#102A43",
+  textSecondary: "#334E68",
+  textMuted: "#627D98",
+  price: 500,
+});
+
+export const ROYAL_PURPLE_SKIN = createBasicSkin({
+  id: "royal-purple",
+  name: "Royal Purple",
+  subtitle: "A clean purple layout with a bold accent.",
+  base: "#9333EA",
+  soft: "#F3E8FF",
+  background: "#FAF5FF",
+  surface: "#FFFFFF",
+  surfaceSoft: "#F3E8FF",
+  cardBorder: "#E9D5FF",
+  textPrimary: "#2E1065",
+  textSecondary: "#581C87",
+  textMuted: "#7E57A8",
+  price: 500,
+});
+
+export const FRESH_GREEN_SKIN = createBasicSkin({
+  id: "fresh-green",
+  name: "Fresh Green",
+  subtitle: "A clean green layout for growth and consistency.",
+  base: "#22C55E",
+  soft: "#DCFCE7",
+  background: "#F0FDF4",
+  surface: "#FFFFFF",
+  surfaceSoft: "#DCFCE7",
+  cardBorder: "#BBF7D0",
+  textPrimary: "#052E16",
+  textSecondary: "#166534",
+  textMuted: "#4D7C5B",
+  price: 500,
+});
 
 export const PREMIUM_SKINS: PremiumSkin[] = [
   BLUE_STORM_SKIN,
@@ -556,6 +467,9 @@ export const PREMIUM_SKINS: PremiumSkin[] = [
   MOUNT_SINAI_SKIN,
   DESERT_DAWN_SKIN,
   NO_FUSS_SKIN,
+  QUIET_BLUE_SKIN,
+  ROYAL_PURPLE_SKIN,
+  FRESH_GREEN_SKIN,
 ];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
 
@@ -578,15 +492,20 @@ export function getPremiumSkinForLegacyTheme(value: unknown): PremiumSkinId {
     case "navy":
       return "carolina-coastline";
     case "green":
-    case "gold":
       return "midnight-garden";
+    case "gold":
+      return "slow-mornings";
     case "purple":
-    case "pink":
       return "lavender-prayer";
+    case "pink":
+      return "royal-purple";
     case "red":
-    case "orange":
-    case "black":
       return "ruby-village";
+    case "orange":
+      return "morning-mercy";
+    case "black":
+    case "gray":
+      return "no-fuss";
     case "brown":
       return "slow-mornings";
     case "cream":
@@ -604,14 +523,17 @@ export function getPremiumSkinForLegacyFlame(value: unknown): PremiumSkinId {
     case "navy":
       return "carolina-coastline";
     case "green":
-    case "gold":
       return "midnight-garden";
+    case "gold":
+      return "slow-mornings";
     case "purple":
       return "lavender-prayer";
     case "red":
-    case "orange":
-    case "black":
       return "ruby-village";
+    case "orange":
+      return "morning-mercy";
+    case "black":
+      return "no-fuss";
     default:
       return "none";
   }
@@ -625,6 +547,7 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
 
   if (!skin) {
     root.dataset.bbSkin = "none";
+    delete root.dataset.bbBasicSkin;
     root.style.removeProperty("--bb-skin-bg-image");
     root.style.removeProperty("--bb-skin-bg-image-mobile");
     root.style.removeProperty("--bb-skin-bg-image-desktop");
@@ -633,68 +556,13 @@ export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {
     return;
   }
 
-  root.dataset.bbSkin = skin.id;
-  if (skin.hasImageBackground === false) {
-    root.style.setProperty("--bb-skin-bg-image", "none");
-    root.style.setProperty("--bb-skin-bg-image-mobile", "none");
-    root.style.setProperty("--bb-skin-bg-image-desktop", "none");
-  } else {
-    root.style.setProperty("--bb-skin-bg-image", `url("${skin.originalImage}")`);
-    root.style.setProperty("--bb-skin-bg-image-mobile", `url("${skin.originalImage}")`);
-    root.style.setProperty("--bb-skin-bg-image-desktop", `url("${skin.originalImage}")`);
-  }
-  root.style.setProperty(
-    "--bb-skin-glow",
-    skin.id === "midnight-garden"
-      ? "rgba(175, 207, 122, 0.42)"
-      : skin.id === "lavender-prayer"
-        ? "rgba(207, 174, 255, 0.42)"
-        : skin.id === "ruby-village"
-          ? "rgba(255, 115, 95, 0.42)"
-          : skin.id === "slow-mornings"
-            ? "rgba(245, 178, 91, 0.42)"
-            : skin.id === "morning-mercy"
-              ? "rgba(233, 146, 101, 0.42)"
-              : skin.id === "carolina-coastline"
-                ? "rgba(123, 175, 212, 0.42)"
-                : skin.id === "angel-wings"
-                  ? "rgba(141, 220, 255, 0.44)"
-                  : skin.id === "winter-cabin"
-                    ? "rgba(155, 215, 255, 0.44)"
-                    : skin.id === "mount-sinai"
-                      ? "rgba(234, 162, 58, 0.46)"
-                      : skin.id === "desert-dawn"
-                        ? "rgba(232, 171, 72, 0.46)"
-                        : skin.id === "no-fuss"
-                          ? "rgba(108, 184, 255, 0.24)"
-          : "rgba(93, 214, 255, 0.42)",
-  );
-  root.style.setProperty(
-    "--bb-skin-warm-glow",
-    skin.id === "midnight-garden"
-      ? "rgba(215, 184, 107, 0.38)"
-      : skin.id === "lavender-prayer"
-        ? "rgba(245, 203, 255, 0.3)"
-        : skin.id === "ruby-village"
-          ? "rgba(255, 192, 106, 0.34)"
-          : skin.id === "slow-mornings"
-            ? "rgba(255, 210, 138, 0.36)"
-            : skin.id === "morning-mercy"
-              ? "rgba(244, 179, 95, 0.34)"
-              : skin.id === "carolina-coastline"
-                ? "rgba(166, 216, 244, 0.3)"
-                : skin.id === "angel-wings"
-                  ? "rgba(246, 211, 133, 0.38)"
-                  : skin.id === "winter-cabin"
-                    ? "rgba(255, 207, 125, 0.24)"
-                    : skin.id === "mount-sinai"
-                      ? "rgba(255, 211, 122, 0.34)"
-                      : skin.id === "desert-dawn"
-                        ? "rgba(255, 211, 122, 0.36)"
-                        : skin.id === "no-fuss"
-                          ? "rgba(255, 255, 255, 0.08)"
-          : "rgba(93, 214, 255, 0.2)",
-  );
+  root.dataset.bbSkin = "none";
+  root.dataset.bbBasicSkin = skin.id;
+  root.style.setProperty("--bb-skin-bg-image", "none");
+  root.style.setProperty("--bb-skin-bg-image-mobile", "none");
+  root.style.setProperty("--bb-skin-bg-image-desktop", "none");
+  root.style.setProperty("--bb-skin-glow", skin.palette.accentSoft);
+  root.style.setProperty("--bb-skin-warm-glow", skin.palette.accentSoft);
 
   const variableMap: Record<keyof PremiumSkinPalette, string> = {
     background: "--bb-background",
