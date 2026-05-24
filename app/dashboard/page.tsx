@@ -54,7 +54,7 @@ import { TASK_XP, DIAMOND_REWARDS, estimateDiamondStashFromActions } from "../..
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { trackUserActivity } from "../../lib/trackUserActivity";
 import { awardDiamonds } from "../../lib/diamondWallet";
-import { applyAppThemeToDocument, APP_THEME_STORAGE_KEY, getAppTheme, normalizeAppThemeId, type AppThemeId } from "../../lib/appThemes";
+import { APP_THEME_STORAGE_KEY, getAppTheme, normalizeAppThemeId, type AppThemeId } from "../../lib/appThemes";
 import {
   BOOST_STORE_ITEMS,
   BUDDY_STORE_ITEMS,
@@ -302,14 +302,6 @@ type StorePurchaseCongrats = {
 
 type StorePurchaseConfirm = {
   item: BibleBuddyStoreItem;
-};
-
-type SkinApplyPrompt = {
-  item: BibleBuddyStoreItem;
-};
-
-type SkinAppliedCongrats = {
-  skinName: string;
 };
 
 type StorePromoKind = "buddies" | "diamonds";
@@ -1245,8 +1237,6 @@ export default function DashboardPage() {
   const [storeMessage, setStoreMessage] = useState<string | null>(null);
   const [storePurchaseConfirm, setStorePurchaseConfirm] = useState<StorePurchaseConfirm | null>(null);
   const [storePurchaseCongrats, setStorePurchaseCongrats] = useState<StorePurchaseCongrats | null>(null);
-  const [skinApplyPrompt, setSkinApplyPrompt] = useState<SkinApplyPrompt | null>(null);
-  const [skinAppliedCongrats, setSkinAppliedCongrats] = useState<SkinAppliedCongrats | null>(null);
   const [activeStorePromo, setActiveStorePromo] = useState<StorePromoKind | null>(null);
   const [mysteryPrizeReveal, setMysteryPrizeReveal] = useState<MysteryPrizeReveal | null>(null);
   const mysteryPrizeAwardingRef = useRef(false);
@@ -3260,7 +3250,7 @@ export default function DashboardPage() {
 
     const getStoreButtonContent = (item: BibleBuddyStoreItem, owned: boolean) => {
       if (item.comingSoon) return "Soon";
-      if (owned && !item.repeatable) return item.themeId || item.skinId ? "Use" : "Owned";
+      if (owned && !item.repeatable) return "Owned";
       return (
         <span className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
           <span>BUY</span>
@@ -4488,26 +4478,6 @@ export default function DashboardPage() {
     };
   }, [profile?.active_premium_skin, userId]);
 
-  async function applyPurchasedTheme(themeId: AppThemeId) {
-    const mappedSkinId = getPremiumSkinForLegacyTheme(themeId);
-    if (mappedSkinId !== "none") {
-      const applied = await applyPurchasedPremiumSkin(mappedSkinId);
-      if (!applied) return;
-    }
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
-      window.localStorage.setItem("bb:dashboard-theme", themeId === "dark" ? "dark" : "light");
-      window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId } }));
-    }
-    if (mappedSkinId === "none") {
-      applyAppThemeToDocument(themeId);
-    }
-    if (userId) {
-      const { error } = await supabase.from("profile_stats").update({ app_theme: themeId }).eq("user_id", userId);
-      if (error) console.warn("[STORE] Theme saved locally, but profile update failed:", error.message);
-    }
-  }
-
   async function getPremiumSkinLockMessage(nextSkinId: PremiumSkinId) {
     if (!userId || isOwnerDashboard) return null;
     const currentSkin = normalizePremiumSkinId(profile?.active_premium_skin ?? activePremiumSkinId);
@@ -4574,28 +4544,6 @@ export default function DashboardPage() {
     return true;
   }
 
-  function promptToApplyPremiumSkin(item: BibleBuddyStoreItem) {
-    if (!item.skinId) return;
-    setStorePurchaseCongrats(null);
-    setSkinApplyPrompt({ item });
-  }
-
-  async function confirmApplyPremiumSkin() {
-    const item = skinApplyPrompt?.item;
-    if (!item?.skinId) return;
-    setStoreBuyingId(item.id);
-    setStoreMessage(null);
-    const applied = await applyPurchasedPremiumSkin(item.skinId);
-    setStoreBuyingId(null);
-    if (!applied) return;
-    setSkinApplyPrompt(null);
-    setShowDiamondStore(false);
-    setSkinAppliedCongrats({ skinName: item.title });
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem("bb:skin-applied-confirmation", item.title);
-    }
-  }
-
   async function applyPurchasedFlame(flameId: string) {
     const normalizedFlameId = normalizeFlameCosmeticId(flameId);
     const currentSkinId =
@@ -4656,10 +4604,13 @@ export default function DashboardPage() {
 
   async function handleUsePurchasedStoreItem(item: BibleBuddyStoreItem) {
     if (item.themeId) {
-      await applyPurchasedTheme(item.themeId);
-      setStoreMessage(`${item.title} is now active.`);
+      setStorePurchaseCongrats(null);
+      setShowDiamondStore(false);
+      router.push("/settings");
     } else if (item.skinId) {
-      promptToApplyPremiumSkin(item);
+      setStorePurchaseCongrats(null);
+      setShowDiamondStore(false);
+      router.push("/settings");
     } else if (item.flameId) {
       await applyPurchasedFlame(item.flameId);
       setStoreMessage(`${item.title} is now active.`);
@@ -4766,10 +4717,9 @@ export default function DashboardPage() {
     const alreadyOwned = storePurchases.some((purchase) => purchase.item_id === item.id);
     if (alreadyOwned && !item.repeatable) {
       if (item.themeId) {
-        await applyPurchasedTheme(item.themeId);
-        setStoreMessage(`${item.title} is now active.`);
+        setStoreMessage(`You already own ${item.title}. Set it from Settings.`);
       } else if (item.skinId) {
-        promptToApplyPremiumSkin(item);
+        setStoreMessage(`You already own ${item.title}. Set it from Settings.`);
       } else if (item.flameId) {
         await applyPurchasedFlame(item.flameId);
         setStoreMessage(`${item.title} is now active.`);
@@ -4910,11 +4860,11 @@ export default function DashboardPage() {
       setStoreMessage(`${item.title} added to your account.`);
     }
 
-    if (item.themeId) {
-      await applyPurchasedTheme(item.themeId);
-    }
     if (item.skinId) {
-      setStoreMessage(`${item.title} is unlocked. Choose Use it when you are ready to set it on your dashboard.`);
+      setStoreMessage(`${item.title} is unlocked. Set it from Settings when you are ready.`);
+    }
+    if (item.themeId) {
+      setStoreMessage(`${item.title} is unlocked. Set it from Settings when you are ready.`);
     }
     if (item.flameId) {
       await applyPurchasedFlame(item.flameId);
@@ -5008,14 +4958,6 @@ export default function DashboardPage() {
     if (cached.activePremiumSkinId) setActivePremiumSkinId(normalizePremiumSkinId(cached.activePremiumSkinId));
     if (cached.dashboardThemeId) setDashboardThemeId(normalizeAppThemeId(cached.dashboardThemeId));
   }, [dashboardStatsCacheKey]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const appliedSkinName = window.localStorage.getItem("bb:skin-applied-confirmation");
-    if (!appliedSkinName) return;
-    window.localStorage.removeItem("bb:skin-applied-confirmation");
-    setSkinAppliedCongrats({ skinName: appliedSkinName });
-  }, []);
 
   useEffect(() => {
     if (!dashboardStatsCacheKey || typeof window === "undefined") return;
@@ -10328,85 +10270,6 @@ export default function DashboardPage() {
       </ModalShell>
 
       <ModalShell
-        isOpen={Boolean(skinApplyPrompt)}
-        onClose={() => setSkinApplyPrompt(null)}
-        backdropColor="bg-black/50"
-      >
-        {skinApplyPrompt ? (
-          <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
-            <div className="relative overflow-hidden px-6 pb-7 pt-5 text-center sm:px-8">
-              <div
-                className="absolute inset-x-0 top-0 h-36"
-                style={{ background: `linear-gradient(135deg, ${skinApplyPrompt.item.accent}30, transparent)` }}
-                aria-hidden="true"
-              />
-              <div
-                className="relative mx-auto mt-4 grid h-36 w-36 place-items-center overflow-hidden rounded-[28px] border text-sm font-black shadow-[0_20px_46px_rgba(0,0,0,0.12)]"
-                style={{
-                  background: `linear-gradient(135deg, ${skinApplyPrompt.item.accent}22, ${skinApplyPrompt.item.accent}55)`,
-                  borderColor: `${skinApplyPrompt.item.accent}66`,
-                  color: skinApplyPrompt.item.accent,
-                }}
-              >
-                {skinApplyPrompt.item.emoji}
-              </div>
-              <p className="relative mt-5 text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2563eb)]">Set dashboard skin?</p>
-              <h2 className="relative mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
-                Use {skinApplyPrompt.item.title} on your dashboard?
-              </h2>
-              <p className="relative mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
-                This will save {skinApplyPrompt.item.title} as your active Bible Buddy skin and send you back to the dashboard.
-              </p>
-              <div className="relative mt-6 grid gap-3 sm:grid-cols-2">
-                <button
-                  type="button"
-                  onClick={() => setSkinApplyPrompt(null)}
-                  className="rounded-full border border-[var(--bb-card-border,#d7e4f7)] bg-white px-6 py-3 text-sm font-black text-[var(--bb-text-primary,#21304f)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
-                >
-                  No, keep shopping
-                </button>
-                <button
-                  type="button"
-                  onClick={() => void confirmApplyPremiumSkin()}
-                  disabled={storeBuyingId === skinApplyPrompt.item.id}
-                  className="rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:opacity-60"
-                >
-                  {storeBuyingId === skinApplyPrompt.item.id ? "Applying..." : "Yes, apply it"}
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : null}
-      </ModalShell>
-
-      <ModalShell
-        isOpen={Boolean(skinAppliedCongrats)}
-        onClose={() => setSkinAppliedCongrats(null)}
-        backdropColor="bg-black/45"
-      >
-        {skinAppliedCongrats ? (
-          <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
-            <div className="px-6 py-7 text-center">
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2563eb)]">Skin applied</p>
-              <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#21304f)]">
-                {skinAppliedCongrats.skinName} is live.
-              </h2>
-              <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
-                Your dashboard has been updated with your new Bible Buddy skin.
-              </p>
-              <button
-                type="button"
-                onClick={() => setSkinAppliedCongrats(null)}
-                className="mt-6 w-full rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
-              >
-                OK
-              </button>
-            </div>
-          </div>
-        ) : null}
-      </ModalShell>
-
-      <ModalShell
         isOpen={activeDashboardRewardPopup?.popup_id === "dashboard:reward:store-purchase"}
         onClose={() => setStorePurchaseCongrats(null)}
         backdropColor="bg-black/45"
@@ -10459,7 +10322,9 @@ export default function DashboardPage() {
                 {storePurchaseCongrats.item.kind === "buddy"
                   ? getBuddyPurchasePopupBody(purchasedBuddyId)
                   : storePurchaseCongrats.item.themeId || storePurchaseCongrats.item.skinId || storePurchaseCongrats.item.flameId
-                    ? `${storePurchaseCongrats.item.title} is unlocked and ready to use.`
+                    ? storePurchaseCongrats.item.themeId || storePurchaseCongrats.item.skinId
+                      ? `${storePurchaseCongrats.item.title} is unlocked. Set it from Settings.`
+                      : `${storePurchaseCongrats.item.title} is unlocked and ready to use.`
                     : `${storePurchaseCongrats.item.title} has been added to your account.`}
               </p>
 
@@ -10470,7 +10335,11 @@ export default function DashboardPage() {
                     onClick={() => void handleUsePurchasedStoreItem(storePurchaseCongrats.item)}
                     className="rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
                   >
-                    {storePurchaseCongrats.item.kind === "buddy" ? "Set as default" : "Use it"}
+                    {storePurchaseCongrats.item.themeId || storePurchaseCongrats.item.skinId
+                      ? "Open Settings"
+                      : storePurchaseCongrats.item.kind === "buddy"
+                        ? "Set as default"
+                        : "Use it"}
                   </button>
                 ) : null}
                 <button

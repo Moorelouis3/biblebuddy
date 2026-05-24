@@ -27,8 +27,7 @@ import {
   cachePremiumSkinForUser,
   clearPendingPremiumSkinSync,
   clearLegacyPremiumSkinCache,
-  formatPremiumSkinLockRemaining,
-  getPremiumSkinLockRemainingMs,
+  getPremiumSkinForLegacyTheme,
   isIncomingPremiumSkinOlderThanCache,
   normalizePremiumSkinId,
   readCachedPremiumSkin,
@@ -225,6 +224,7 @@ export default function SettingsPage() {
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(currentUser.id, safePremiumSkin);
           if (dbPremiumSkin === safePremiumSkin) clearPendingPremiumSkinSync(currentUser.id, safePremiumSkin);
+          applyAppThemeToDocument(savedTheme === "dark" ? "dark" : "light");
           applyPremiumSkinToDocument(safePremiumSkin);
           window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: resolvedSelectedBuddy } }));
         }
@@ -396,20 +396,37 @@ export default function SettingsPage() {
 
   async function handleThemeSelect(themeId: AppThemeId) {
     if (!user) return;
+    const previousTheme = selectedTheme;
     setThemeSaving(themeId);
     setSettingsMessage(null);
-    try {
-      const { error } = await supabase.from("profile_stats").update({ app_theme: themeId }).eq("user_id", user.id);
-      if (error) throw error;
-      setSelectedTheme(themeId);
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
-        window.localStorage.setItem("bb:dashboard-theme", themeId === "dark" ? "dark" : "light");
-        window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId } }));
-      }
+    setSelectedTheme(themeId);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
+      window.localStorage.setItem("bb:dashboard-theme", themeId);
       applyAppThemeToDocument(themeId);
+      applyPremiumSkinToDocument(selectedPremiumSkin);
+      window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId } }));
+    }
+    try {
+      const { error } = await supabase.from("profile_stats").upsert(
+        {
+          user_id: user.id,
+          app_theme: themeId,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "user_id" },
+      );
+      if (error) throw error;
       setSettingsMessage("Theme updated.");
     } catch (error: any) {
+      setSelectedTheme(previousTheme);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(APP_THEME_STORAGE_KEY, previousTheme);
+        window.localStorage.setItem("bb:dashboard-theme", previousTheme);
+        applyAppThemeToDocument(previousTheme);
+        applyPremiumSkinToDocument(selectedPremiumSkin);
+        window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId: previousTheme } }));
+      }
       setSettingsMessage(error.message || "Could not update theme.");
     } finally {
       setThemeSaving(null);
@@ -477,37 +494,15 @@ export default function SettingsPage() {
     if (!user) return;
     const skin = PREMIUM_SKINS.find((premiumSkin) => premiumSkin.id === skinId);
     const storeItem = skin ? PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skin.id) : null;
-    const ownsSkin = skinId === "none" || ownerHasUnlimitedDiamonds || Boolean(storeItem && storePurchases.some((purchase) => purchase.item_id === storeItem.id));
+    const legacyThemeItem = THEME_STORE_ITEMS.find((item) => item.themeId && getPremiumSkinForLegacyTheme(item.themeId) === skinId);
+    const ownsSkin =
+      skinId === "none" ||
+      ownerHasUnlimitedDiamonds ||
+      Boolean(storeItem && storePurchases.some((purchase) => purchase.item_id === storeItem.id)) ||
+      Boolean(legacyThemeItem && storePurchases.some((purchase) => purchase.item_id === legacyThemeItem.id));
     if (!ownsSkin) {
       setSettingsMessage("Buy this skin in the store first.");
       return;
-    }
-
-    if (!ownerHasUnlimitedDiamonds) {
-      let remainingMs = getPremiumSkinLockRemainingMs(selectedPremiumSkin, selectedPremiumSkinSelectedAt, skinId);
-      if (remainingMs <= 0) {
-        const { data, error } = await supabase
-          .from("profile_stats")
-          .select("active_premium_skin, active_premium_skin_selected_at")
-          .eq("user_id", user.id)
-          .maybeSingle();
-        if (error && !/active_premium_skin_selected_at/i.test(error.message || "")) {
-          setSettingsMessage("I could not verify your skin lock yet. Try again in a moment.");
-          return;
-        }
-        if (!error) {
-          remainingMs = getPremiumSkinLockRemainingMs(
-            normalizePremiumSkinId(data?.active_premium_skin),
-            data?.active_premium_skin_selected_at,
-            skinId,
-          );
-        }
-      }
-      if (remainingMs > 0) {
-        const lockedSkin = PREMIUM_SKINS.find((premiumSkin) => premiumSkin.id === selectedPremiumSkin)?.name || "your current skin";
-        setSettingsMessage(`Keep ${lockedSkin} for ${formatPremiumSkinLockRemaining(remainingMs)} before choosing another skin.`);
-        return;
-      }
     }
 
     const previousSkin = selectedPremiumSkin;
@@ -685,7 +680,23 @@ export default function SettingsPage() {
 
   const ownedStoreItemIds = storePurchases.map((purchase) => purchase.item_id);
   const availableThemes = APP_THEMES.filter((theme) => theme.id === "light" || theme.id === "dark");
-  const visiblePremiumSkins = PREMIUM_SKINS;
+  const ownsPremiumSkin = (skin: { id: PremiumSkinId }) => {
+    const storeItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skin.id);
+    const legacyThemeItem = THEME_STORE_ITEMS.find((item) => item.themeId && getPremiumSkinForLegacyTheme(item.themeId) === skin.id);
+    return (
+      ownerHasUnlimitedDiamonds ||
+      selectedPremiumSkin === skin.id ||
+      Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id)) ||
+      Boolean(legacyThemeItem && ownedStoreItemIds.includes(legacyThemeItem.id))
+    );
+  };
+  const ownedPremiumSkins = PREMIUM_SKINS.filter((skin) => {
+    return ownsPremiumSkin(skin);
+  }).sort((a, b) => {
+    if (a.id === selectedPremiumSkin) return -1;
+    if (b.id === selectedPremiumSkin) return 1;
+    return a.name.localeCompare(b.name);
+  });
   const ownedBuddyItemIds = new Set(
     BUDDY_STORE_ITEMS
       .filter((item) => ownedStoreItemIds.includes(item.id))
@@ -844,12 +855,10 @@ export default function SettingsPage() {
               </button>
             </div>
 
-            {visiblePremiumSkins.map((skin) => {
+            {ownedPremiumSkins.map((skin) => {
               const storeItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skin.id);
               const hasSkinAccess =
-                ownerHasUnlimitedDiamonds ||
-                selectedPremiumSkin === skin.id ||
-                Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id));
+                ownsPremiumSkin(skin);
               const canDelete = Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id));
               return (
                 <div
@@ -924,6 +933,11 @@ export default function SettingsPage() {
                 </div>
               );
             })}
+            {!ownedPremiumSkins.length ? (
+              <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-4 text-sm font-bold text-gray-600 sm:col-span-2">
+                Buy color skins in the Diamond Store. Once owned, they show up here to set.
+              </div>
+            ) : null}
           </div>
         </div>
 
