@@ -133,8 +133,8 @@ export default function BibleYearDeepStudySectionCards({
                 onClick={() => openSection(section.reference)}
                 className={`flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-3 text-left transition sm:gap-3 sm:px-3 ${
                   isOpen
-                    ? "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)]"
-                    : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] bg-black/14 hover:border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_8%,transparent)]"
+                    ? "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,var(--bb-card,#ffffff))]"
+                    : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] hover:border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,var(--bb-card-border,#dbe7f4))] hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_7%,var(--bb-card,#ffffff))]"
                 } ${shouldPrompt ? "bible-year-first-deep-note-prompt" : ""}`}
                 aria-expanded={isOpen}
               >
@@ -142,9 +142,9 @@ export default function BibleYearDeepStudySectionCards({
                   {section.icon}
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-black text-[var(--bb-text-primary,#fff7ed)]">{section.title}</span>
+                  <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">{section.title}</span>
                   <span className="mt-0.5 block text-xs font-bold text-[var(--bb-accent,#f6b44b)]">{section.reference}</span>
-                  <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#e7d4bd)]">{section.summary}</span>
+                  <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{section.summary}</span>
                 </span>
                 <svg
                   aria-hidden="true"
@@ -160,7 +160,7 @@ export default function BibleYearDeepStudySectionCards({
                 </svg>
               </button>
               {isOpen ? (
-                <div className="bible-year-deep-note-open mt-2 bg-black/10 px-0 py-3 sm:mt-3 sm:rounded-[24px] sm:border sm:border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,transparent)] sm:bg-black/16 sm:px-3 sm:py-4">
+                <div className="bible-year-deep-note-open mt-2 bg-[var(--bb-card,#ffffff)] px-0 py-3 text-[var(--bb-text-primary,#111827)] sm:mt-3 sm:rounded-[24px] sm:border sm:border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,var(--bb-card-border,#dbe7f4))] sm:bg-[var(--bb-card,#ffffff)] sm:px-3 sm:py-4">
                   <ChapterNotesMarkdown compactMobile>{prepareOpenSectionMarkdown(section.markdown, section.reference, section.title)}</ChapterNotesMarkdown>
                 </div>
               ) : null}

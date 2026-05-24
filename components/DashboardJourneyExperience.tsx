@@ -7395,16 +7395,16 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
 
         <ModalShell isOpen={Boolean(bibleYearDeepNotesOpen && deepNotesMarkdown)} onClose={() => setBibleYearDeepNotesOpen(false)}>
-          <div className="w-full max-w-xl overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_78%,rgba(0,0,0,0.72))] text-left text-[var(--bb-text-primary,#fff7ed)] shadow-[0_24px_70px_rgba(0,0,0,0.52)] backdrop-blur-xl [--bb-card-border:rgba(246,180,75,0.22)] [--bb-surface-soft:rgba(255,255,255,0.06)] [--bb-text-primary:#fff7ed] [--bb-text-secondary:#e7d4bd]">
-            <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_82%,rgba(0,0,0,0.82))] px-4 py-3 backdrop-blur-xl">
+          <div className="w-full max-w-xl overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-left text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(14,26,58,0.22)]">
+            <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-3">
               <div className="min-w-0">
                 <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">Day {day.dayNumber} Study Notes</p>
-                <p className="truncate text-lg font-black text-[var(--bb-text-primary,#fff7ed)]">{day.title}</p>
+                <p className="truncate text-lg font-black text-[var(--bb-text-primary,#111827)]">{day.title}</p>
               </div>
               <button
                 type="button"
                 onClick={() => setBibleYearDeepNotesOpen(false)}
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] bg-black/24 text-2xl font-black text-[var(--bb-text-primary,#fff7ed)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)]"
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] text-2xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
                 aria-label="Close study notes"
               >
                 x
@@ -7421,9 +7421,9 @@ Before we understand redemption, we need to understand what God made humanity fo
               ) : (
                 <ChapterNotesMarkdown>{deepNotesMarkdown || ""}</ChapterNotesMarkdown>
               )}
-              <div className="mt-8 rounded-[24px] border border-emerald-300/40 bg-[linear-gradient(135deg,rgba(16,185,129,0.18),rgba(0,0,0,0.22))] p-4 shadow-[0_0_32px_rgba(16,185,129,0.18)]">
-                <p className="text-lg font-black leading-tight text-emerald-100">Finished the Study Notes?</p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-emerald-50/82">
+              <div className="mt-8 rounded-[24px] border border-emerald-300/50 bg-emerald-50 p-4 shadow-[0_14px_32px_rgba(16,185,129,0.12)]">
+                <p className="text-lg font-black leading-tight text-emerald-950">Finished the Study Notes?</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-emerald-900/82">
                   Claim your optional Study Notes study bonus. This does not replace the regular summary task.
                 </p>
                 <button
@@ -7439,7 +7439,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <span aria-hidden="true">✓</span>
                   <span>{deepNotesCompleted ? "Study Notes Completed" : deepNotesCompleting ? "Saving..." : "Mark Study Notes Complete"}</span>
                 </button>
-                <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-100/80">
+                <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-800/80">
                   +100 XP +100 diamonds
                 </p>
               </div>
@@ -7653,6 +7653,8 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearOptionalDiscussion(day: GenesisBibleYearDay) {
+    const reflectionPrompt = bibleYearReflectionPromptByDay[day.dayNumber] || "What stood out to you from today's lesson?";
+
     return (
       <div className="mt-4 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-sm">
         <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Optional Discussion</p>
@@ -7660,11 +7662,15 @@ Before we understand redemption, we need to understand what God made humanity fo
         <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
           Share a thought, read what others noticed, or simply keep going privately.
         </p>
+        <div className="mt-4 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+          <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Reflection Question</p>
+          <p className="mt-2 text-base font-black leading-6 text-[var(--bb-text-primary,#111827)]">{reflectionPrompt}</p>
+        </div>
         <div className="mt-4">
           <CommentSection
             articleSlug={getBibleYearReflectionSlug(day)}
             headingText=""
-            placeholderText="Share your thoughts from today's study"
+            placeholderText="Respond to today's reflection question"
             submitButtonText="Send"
             variant="plain"
           />
@@ -9378,16 +9384,16 @@ Before we understand redemption, we need to understand what God made humanity fo
       const deepNotesCompleted = bibleYearDeepNotesCompletedByDay[day.dayNumber] === true;
       const deepNotesCompleting = bibleYearDeepNotesCompletingDay === day.dayNumber;
       return (
-        <article className="mx-auto max-w-xl overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_78%,rgba(0,0,0,0.72))] text-left text-[var(--bb-text-primary,#fff7ed)] shadow-[0_24px_70px_rgba(0,0,0,0.52)] backdrop-blur-xl [--bb-card-border:rgba(246,180,75,0.22)] [--bb-surface-soft:rgba(255,255,255,0.06)] [--bb-text-primary:#fff7ed] [--bb-text-secondary:#e7d4bd]">
-          <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_82%,rgba(0,0,0,0.82))] px-4 py-3 backdrop-blur-xl">
+        <article className="mx-auto max-w-xl overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-left text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(14,26,58,0.22)]">
+          <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-3">
             <div className="min-w-0">
               <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">{deepNotesEyebrow}</p>
-              <p className="truncate text-lg font-black text-[var(--bb-text-primary,#fff7ed)]">{deepNotesTitle}</p>
+              <p className="truncate text-lg font-black text-[var(--bb-text-primary,#111827)]">{deepNotesTitle}</p>
             </div>
             <button
               type="button"
               onClick={() => setBibleYearDeepNotesOpen(false)}
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] bg-black/35 text-2xl font-black text-[var(--bb-text-primary,#fff7ed)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)]"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] text-2xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
               aria-label="Close study notes"
             >
               ×
@@ -9395,9 +9401,9 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
           <div className="px-4 pb-24 pt-5">
             <ChapterNotesMarkdown>{deepNotesMarkdown}</ChapterNotesMarkdown>
-            <div className="mt-8 rounded-[24px] border border-emerald-300/40 bg-[linear-gradient(135deg,rgba(16,185,129,0.18),rgba(0,0,0,0.22))] p-4 shadow-[0_0_32px_rgba(16,185,129,0.18)]">
-              <p className="text-lg font-black leading-tight text-emerald-100">Finished the Study Notes?</p>
-              <p className="mt-2 text-sm font-semibold leading-6 text-emerald-50/82">
+            <div className="mt-8 rounded-[24px] border border-emerald-300/50 bg-emerald-50 p-4 shadow-[0_14px_32px_rgba(16,185,129,0.12)]">
+              <p className="text-lg font-black leading-tight text-emerald-950">Finished the Study Notes?</p>
+              <p className="mt-2 text-sm font-semibold leading-6 text-emerald-900/82">
                 Claim your optional Study Notes study bonus. This does not replace the regular reading task.
               </p>
               <button
@@ -9413,7 +9419,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <span aria-hidden="true">✓</span>
                 <span>{deepNotesCompleted ? "Study Notes Completed" : deepNotesCompleting ? "Saving..." : "Mark Study Notes Complete"}</span>
               </button>
-              <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-100/80">
+              <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-800/80">
                 +100 XP +100 diamonds
               </p>
             </div>
@@ -9588,16 +9594,16 @@ Before we understand redemption, we need to understand what God made humanity fo
           ) : null}
 
           {sectionDeepNotesFocus ? (
-            <div className="relative z-30 mt-4 overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_78%,rgba(0,0,0,0.72))] text-left text-[var(--bb-text-primary,#fff7ed)] shadow-[0_24px_70px_rgba(0,0,0,0.52)] backdrop-blur-xl [--bb-card-border:rgba(246,180,75,0.22)] [--bb-surface-soft:rgba(255,255,255,0.06)] [--bb-text-primary:#fff7ed] [--bb-text-secondary:#e7d4bd]">
-              <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_82%,rgba(0,0,0,0.82))] px-4 py-3 backdrop-blur-xl">
+            <div className="relative z-30 mt-4 overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-left text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(14,26,58,0.22)]">
+              <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-3">
                 <div className="min-w-0">
                   <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">{deepNotesEyebrow}</p>
-                  <p className="truncate text-lg font-black text-[var(--bb-text-primary,#fff7ed)]">{deepNotesTitle}</p>
+                  <p className="truncate text-lg font-black text-[var(--bb-text-primary,#111827)]">{deepNotesTitle}</p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setBibleYearDeepNotesOpen(false)}
-                  className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] bg-black/24 text-2xl font-black text-[var(--bb-text-primary,#fff7ed)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)]"
+                  className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] text-2xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
                   aria-label="Close study notes"
                 >
                   x
@@ -9619,8 +9625,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                         disabled={deepNotesCompleted || deepNotesCompleting}
                         className={`flex w-full items-center gap-3 px-3 py-3 text-left transition ${
                           deepNotesCompleted
-                            ? "cursor-default bg-emerald-400/18 text-emerald-100"
-                            : "text-[var(--bb-text-primary,#fff7ed)] hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_8%,transparent)] disabled:cursor-wait disabled:opacity-75"
+                            ? "cursor-default bg-emerald-100 text-emerald-950"
+                            : "text-[var(--bb-text-primary,#111827)] hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_8%,var(--bb-card,#ffffff))] disabled:cursor-wait disabled:opacity-75"
                         }`}
                       >
                         <span aria-hidden="true">✓</span>
@@ -9632,9 +9638,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                 ) : (
                   <ChapterNotesMarkdown>{deepNotesMarkdown || ""}</ChapterNotesMarkdown>
                 )}
-                {!deepStudySections ? <div className="mt-8 rounded-[24px] border border-emerald-300/40 bg-[linear-gradient(135deg,rgba(16,185,129,0.18),rgba(0,0,0,0.22))] p-4 shadow-[0_0_32px_rgba(16,185,129,0.18)]">
-                  <p className="text-lg font-black leading-tight text-emerald-100">Finished the Study Notes?</p>
-                  <p className="mt-2 text-sm font-semibold leading-6 text-emerald-50/82">
+                {!deepStudySections ? <div className="mt-8 rounded-[24px] border border-emerald-300/50 bg-emerald-50 p-4 shadow-[0_14px_32px_rgba(16,185,129,0.12)]">
+                  <p className="text-lg font-black leading-tight text-emerald-950">Finished the Study Notes?</p>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-emerald-900/82">
                     Claim your optional Study Notes study bonus. This does not replace the regular reading task.
                   </p>
                   <button
@@ -9650,7 +9656,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <span aria-hidden="true">âœ“</span>
                     <span>{deepNotesCompleted ? "Study Notes Completed" : deepNotesCompleting ? "Saving..." : "Mark Study Notes Complete"}</span>
                   </button>
-                  <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-100/80">
+                  <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.12em] text-emerald-800/80">
                     +100 XP +100 diamonds
                   </p>
                 </div> : null}
@@ -9864,16 +9870,16 @@ Before we understand redemption, we need to understand what God made humanity fo
         ) : null}
 
         {!useSectionDeepStudy && hasDeepNotes && deepNotesMarkdown && bibleYearDeepNotesOpen ? (
-          <div className="absolute inset-0 z-30 overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_78%,rgba(0,0,0,0.72))] shadow-[0_24px_70px_rgba(0,0,0,0.52)] backdrop-blur-xl">
-            <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#140d09)_82%,rgba(0,0,0,0.82))] px-4 py-3 backdrop-blur-xl">
+          <div className="absolute inset-0 z-30 overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] shadow-[0_24px_70px_rgba(14,26,58,0.22)]">
+            <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-3">
               <div className="min-w-0">
                 <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">{deepNotesEyebrow}</p>
-                <p className="truncate text-lg font-black text-[var(--bb-text-primary,#fff7ed)]">{deepNotesTitle}</p>
+                <p className="truncate text-lg font-black text-[var(--bb-text-primary,#111827)]">{deepNotesTitle}</p>
               </div>
               <button
                 type="button"
                 onClick={() => setBibleYearDeepNotesOpen(false)}
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,transparent)] bg-black/24 text-2xl font-black text-[var(--bb-text-primary,#fff7ed)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)]"
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] text-2xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
                 aria-label="Close study notes"
               >
                 ×
