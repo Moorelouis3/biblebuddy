@@ -8293,9 +8293,9 @@ export default function DashboardPage() {
         onWheel={(event) => event.preventDefault()}
         onTouchMove={(event) => event.preventDefault()}
       >
-        <div className="absolute inset-0 bg-slate-950/42 backdrop-blur-[0.1px]" />
+        <div className="absolute inset-0 bg-slate-950/34" />
         <div
-          className="pointer-events-none fixed rounded-[28px] border border-white/80 bg-white/8 shadow-[0_0_0_9999px_rgba(2,6,23,0.54),0_0_0_4px_rgba(123,175,212,0.24),0_24px_70px_rgba(15,23,42,0.32)] transition-all duration-300"
+          className="pointer-events-none fixed rounded-[28px] border border-white/90 bg-transparent shadow-[0_0_0_9999px_rgba(2,6,23,0.34),0_0_0_4px_rgba(123,175,212,0.22),0_18px_54px_rgba(15,23,42,0.24)] transition-all duration-300"
           style={spotlightStyle}
         />
         <div
