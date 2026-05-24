@@ -5240,8 +5240,8 @@ export default function DashboardJourneyExperience({
     ];
 
     return (
-      <ModalShell isOpen={bibleYearDeepNotesUpgradeOpen} onClose={() => setBibleYearDeepNotesUpgradeOpen(false)}>
-        <div className="relative w-full max-w-xl overflow-hidden rounded-[30px] border border-[#ead9bd] bg-[radial-gradient(circle_at_78%_10%,rgba(255,222,151,0.30),transparent_34%),linear-gradient(180deg,#fffdf8_0%,#fff9ee_55%,#fffaf4_100%)] px-5 py-6 text-center text-[#0f1b33] shadow-[0_30px_90px_rgba(15,23,42,0.34)] sm:px-7">
+      <ModalShell isOpen={bibleYearDeepNotesUpgradeOpen} onClose={() => setBibleYearDeepNotesUpgradeOpen(false)} scrollable>
+        <div className="relative max-h-[calc(100dvh-2rem)] w-full max-w-[500px] overflow-y-auto rounded-[28px] border border-[#ead9bd] bg-[radial-gradient(circle_at_78%_10%,rgba(255,222,151,0.22),transparent_30%),linear-gradient(180deg,#fffdf8_0%,#fff9ee_55%,#fffaf4_100%)] px-4 py-5 text-center text-[#0f1b33] shadow-[0_24px_70px_rgba(15,23,42,0.30)] sm:px-5 lg:max-w-[480px]">
           <button
             type="button"
             onClick={() => setBibleYearDeepNotesUpgradeOpen(false)}
@@ -5256,44 +5256,44 @@ export default function DashboardJourneyExperience({
             <span>Bible Buddy Pro</span>
           </div>
 
-          <div className="mt-6 text-left sm:text-center">
-            <h2 className="font-serif text-4xl font-black leading-[0.98] tracking-normal text-[#0b162f] sm:text-5xl">
+          <div className="mt-5 text-left sm:text-center">
+            <h2 className="font-serif text-[34px] font-black leading-[0.98] tracking-normal text-[#0b162f] sm:text-[38px]">
               Don&apos;t just read.
               <span className="block">Finally <span className="text-[#2f7fe8]">understand.</span></span>
             </h2>
             <div className="mx-auto mt-2 h-1.5 w-48 rounded-full bg-[linear-gradient(90deg,#2f7fe8,#f6b44b)] opacity-70 sm:w-60" aria-hidden="true" />
           </div>
 
-          <div className="mx-auto mt-6 max-w-md space-y-3 text-left text-base font-semibold leading-7 text-[#263855] sm:text-center">
+          <div className="mx-auto mt-4 max-w-md space-y-2 text-left text-[15px] font-semibold leading-6 text-[#263855] sm:text-center">
             <p>Bible Buddy Free helps you stay consistent.</p>
             <p>
               Bible Buddy Pro helps you <span className="font-black text-[#1f65c7]">understand Scripture more deeply</span> through guided explanations, cultural context, word studies, and verse by verse breakdowns.
             </p>
           </div>
 
-          <div className="mt-6 rounded-[24px] border border-[#ead9bd] bg-white/72 px-4 py-4 text-left shadow-[0_16px_42px_rgba(102,65,12,0.08)]">
-            <div className="grid gap-4">
+          <div className="mt-4 rounded-[22px] border border-[#ead9bd] bg-white/72 px-4 py-3 text-left shadow-[0_12px_30px_rgba(102,65,12,0.08)]">
+            <div className="grid gap-3">
               {upgradeFeatures.map((feature, index) => (
-                <div key={feature.title} className={`flex gap-4 ${index > 0 ? "border-t border-[#eadfce] pt-4" : ""}`}>
-                  <span className={`grid h-14 w-14 shrink-0 place-items-center rounded-full text-2xl ${feature.iconClass}`} aria-hidden="true">
+                <div key={feature.title} className={`flex gap-3 ${index > 0 ? "border-t border-[#eadfce] pt-3" : ""}`}>
+                  <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-full text-xl ${feature.iconClass}`} aria-hidden="true">
                     {feature.icon}
                   </span>
                   <span className="min-w-0">
-                    <span className="block text-lg font-black leading-tight text-[#0b162f]">{feature.title}</span>
-                    <span className="mt-1 block text-sm font-semibold leading-5 text-[#3b4b66]">{feature.description}</span>
+                    <span className="block text-base font-black leading-tight text-[#0b162f]">{feature.title}</span>
+                    <span className="mt-0.5 block text-[13px] font-semibold leading-5 text-[#3b4b66]">{feature.description}</span>
                   </span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="mt-5 flex gap-4 rounded-[22px] border border-[#edd8b6] bg-[#fff8e9] px-4 py-4 text-left shadow-[0_12px_30px_rgba(102,65,12,0.08)]">
+          <div className="mt-4 flex gap-3 rounded-[20px] border border-[#edd8b6] bg-[#fff8e9] px-4 py-3 text-left shadow-[0_10px_24px_rgba(102,65,12,0.08)]">
             <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#ffd8cf] text-2xl" aria-hidden="true">❤️</span>
             <div>
-              <p className="text-base font-black leading-6 text-[#0b162f]">
+              <p className="text-sm font-black leading-5 text-[#0b162f]">
                 Most people stop reading the Bible because they don&apos;t understand what they&apos;re reading.
               </p>
-              <p className="mt-2 text-base font-black leading-6 text-[#a66f00]">
+              <p className="mt-1.5 text-sm font-black leading-5 text-[#a66f00]">
                 Bible Buddy Pro was built to help change that.
               </p>
             </div>
@@ -5303,25 +5303,25 @@ export default function DashboardJourneyExperience({
             <button
               type="button"
               onClick={openBibleYearQuickUpgrade}
-              className="flex w-full items-center justify-center gap-4 rounded-[22px] bg-[linear-gradient(135deg,#4b8ff2,#2468d8)] px-5 py-4 text-left text-white shadow-[0_18px_38px_rgba(47,127,232,0.34)] transition hover:brightness-105"
+              className="flex w-full items-center justify-center gap-3 rounded-[20px] bg-[linear-gradient(135deg,#4b8ff2,#2468d8)] px-5 py-3.5 text-left text-white shadow-[0_14px_30px_rgba(47,127,232,0.28)] transition hover:brightness-105"
             >
               <span className="text-3xl" aria-hidden="true">👑</span>
               <span>
-                <span className="block text-lg font-black leading-tight">Unlock Study Notes</span>
-                <span className="mt-0.5 block text-sm font-semibold text-white/88">Start understanding Scripture more deeply</span>
+                <span className="block text-base font-black leading-tight">Unlock Study Notes</span>
+                <span className="mt-0.5 block text-xs font-semibold text-white/88">Start understanding Scripture more deeply</span>
               </span>
             </button>
             <button
               type="button"
               onClick={() => setBibleYearDeepNotesUpgradeOpen(false)}
-              className="rounded-[20px] border border-[#7aaaf3] bg-white/78 px-5 py-3 text-[#0f1b33] transition hover:bg-[#f4f8ff]"
+              className="rounded-[18px] border border-[#7aaaf3] bg-white/78 px-5 py-2.5 text-[#0f1b33] transition hover:bg-[#f4f8ff]"
             >
-              <span className="block text-base font-black leading-tight">Continue with Free Plan</span>
-              <span className="mt-0.5 block text-sm font-semibold text-[#4c5d78]">Keep studying with the free plan</span>
+              <span className="block text-sm font-black leading-tight">Continue with Free Plan</span>
+              <span className="mt-0.5 block text-xs font-semibold text-[#4c5d78]">Keep studying with the free plan</span>
             </button>
           </div>
 
-          <p className="mt-5 text-xs font-semibold leading-5 text-[#61708a]">
+          <p className="mt-4 text-xs font-semibold leading-5 text-[#61708a]">
             🔒 Cancel anytime. Upgrade in seconds. Secure and private.
           </p>
         </div>
