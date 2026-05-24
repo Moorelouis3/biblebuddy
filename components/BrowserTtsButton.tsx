@@ -11,6 +11,9 @@ type BrowserTtsButtonProps = {
   audioSrc?: string | null;
   progressKey?: string;
   onAudioProgress?: (state: { currentTime: number; duration: number; playing: boolean }) => void;
+  backgroundMusicSrcs?: string[];
+  backgroundMusicVolume?: number;
+  aiDisclosure?: boolean;
 };
 
 function chunkSpeechText(text: string) {
@@ -42,6 +45,9 @@ export default function BrowserTtsButton({
   audioSrc,
   progressKey,
   onAudioProgress,
+  backgroundMusicSrcs,
+  backgroundMusicVolume,
+  aiDisclosure = false,
 }: BrowserTtsButtonProps) {
   const [supported, setSupported] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -261,6 +267,8 @@ export default function BrowserTtsButton({
         label,
         progressKey,
         onProgress: onAudioProgress,
+        backgroundMusicSrcs,
+        backgroundMusicVolume,
       });
       return;
     }
@@ -412,6 +420,11 @@ export default function BrowserTtsButton({
           </div>
         ) : null}
         {audioHasError ? <p className="px-1 text-xs font-bold text-red-600">Audio unavailable. Try again.</p> : null}
+        {aiDisclosure && audioSrc ? (
+          <p className="px-1 text-[11px] font-bold leading-4 text-[var(--bb-text-muted,#6b7280)]">
+            AI-generated narration with optional background music.
+          </p>
+        ) : null}
       </div>
       {audioIsSpeaking && !globalAudio ? (
         <button

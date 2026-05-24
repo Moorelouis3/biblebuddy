@@ -377,6 +377,7 @@ export default function LandingPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [accountAttempted, setAccountAttempted] = useState(false);
+  const [landingMenuOpen, setLandingMenuOpen] = useState(false);
 
   const recommendationDays = useMemo(() => estimatedDaysForTime(answers.time), [answers.time]);
   const currentQuestion = questions[questionIndex];
@@ -506,6 +507,7 @@ export default function LandingPage() {
 
   function openQuestionnaire() {
     trackLandingEvent("clicked_start_journey");
+    setLandingMenuOpen(false);
     setOnboardingOpen(true);
     setOnboardingStep("intro");
     setQuestionIndex(0);
@@ -900,7 +902,7 @@ export default function LandingPage() {
         }
       `}</style>
 
-      <header className="sticky top-0 z-30 bg-[#FBF9F4]/92 backdrop-blur-xl">
+      <header className="sticky top-0 z-[100] bg-[#FBF9F4]/92 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-5 py-4 sm:px-8 lg:px-10">
           <div className="flex items-center gap-3">
             <div className="grid h-10 w-10 place-items-center rounded-2xl bg-transparent">
@@ -913,9 +915,38 @@ export default function LandingPage() {
             </div>
             <span className="text-lg font-black tracking-tight">Bible Buddy</span>
           </div>
-          <Link href="/login" className="bb-force-black rounded-full border border-[#ece3d7] bg-[#FBF9F4] px-5 py-2.5 text-sm font-black shadow-[0_12px_30px_rgba(14,26,58,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_38px_rgba(14,26,58,0.18)] sm:px-7 sm:py-3">
+          <Link href="/login" className="bb-force-black hidden rounded-full border border-[#ece3d7] bg-[#FBF9F4] px-5 py-2.5 text-sm font-black shadow-[0_12px_30px_rgba(14,26,58,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_38px_rgba(14,26,58,0.18)] sm:inline-flex sm:px-7 sm:py-3">
             Login
           </Link>
+          <div className="relative sm:hidden">
+            <button
+              type="button"
+              onClick={() => setLandingMenuOpen((open) => !open)}
+              className="bb-force-black grid h-11 w-11 place-items-center rounded-2xl border border-[#ece3d7] bg-white text-xl font-black shadow-[0_12px_30px_rgba(14,26,58,0.14)]"
+              aria-label={landingMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={landingMenuOpen}
+            >
+              {landingMenuOpen ? "×" : "☰"}
+            </button>
+            {landingMenuOpen ? (
+              <div className="absolute right-0 top-[calc(100%+10px)] z-[110] w-[230px] rounded-[22px] border border-[#ece3d7] bg-white p-3 text-left shadow-[0_22px_52px_rgba(14,26,58,0.22)]">
+                <Link
+                  href="/login"
+                  onClick={() => setLandingMenuOpen(false)}
+                  className="bb-force-black block rounded-2xl bg-[#0E1A3A] px-4 py-3 text-center text-sm font-black text-white"
+                >
+                  Login
+                </Link>
+                <button
+                  type="button"
+                  onClick={openQuestionnaire}
+                  className="bb-force-black mt-2 w-full rounded-2xl border border-[#ece3d7] bg-[#FBF9F4] px-4 py-3 text-sm font-black text-[#0E1A3A]"
+                >
+                  Start Journey
+                </button>
+              </div>
+            ) : null}
+          </div>
         </div>
       </header>
 

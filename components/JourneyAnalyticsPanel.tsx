@@ -19,10 +19,10 @@ type JourneyAnalyticsPayload = {
       completedDays: number;
       averageCurrentDay: number;
       completionRate: number;
-      taskBreakdownToday: {
-        reading: number;
+      taskBreakdownLast24h: {
+        video: number;
+        summary: number;
         trivia: number;
-        reflection: number;
       };
       dayDistribution: Array<{ day: number; users: number }>;
       topUsers: Array<{
@@ -88,6 +88,10 @@ function startOfLocalDayIso() {
   return date.toISOString();
 }
 
+function last24HoursIso() {
+  return new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+}
+
 function StatCard({
   label,
   value,
@@ -133,9 +137,11 @@ export default function JourneyAnalyticsPanel({ embedded = false }: { embedded?:
   const [error, setError] = useState<string | null>(null);
 
   const query = useMemo(() => {
+    const last24 = last24HoursIso();
     const params = new URLSearchParams({
       todayStart: startOfLocalDayIso(),
-      activeSince: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+      activeSince: last24,
+      taskWindowStart: last24,
     });
     return params.toString();
   }, []);
@@ -244,21 +250,21 @@ export default function JourneyAnalyticsPanel({ embedded = false }: { embedded?:
         <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
           <ModeCard title="Bible In One Year" subtitle="Tracks day progress, task completion, and where people are in the plan.">
             <div className="grid gap-3 sm:grid-cols-3">
-              <StatCard label="Users" value={formatNumber(bibleYear.users)} detail="Started this mode" />
-              <StatCard label="Active 7d" value={formatNumber(bibleYear.activeUsers7d)} detail="Touched the plan this week" />
-              <StatCard label="Avg Day" value={bibleYear.averageCurrentDay} detail="Average latest day reached" />
+              <StatCard label="Started Plan" value={formatNumber(bibleYear.users)} detail="Users with Bible in One Year progress" />
+              <StatCard label="Active 7d" value={formatNumber(bibleYear.activeUsers7d)} detail="Users who touched the plan this week" />
+              <StatCard label="Avg Furthest Day" value={bibleYear.averageCurrentDay} detail="Average furthest day reached per user" />
             </div>
 
             <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#2b4f74)] bg-[var(--bb-surface-soft,#0a1b2e)]/70 p-4">
               <div className="flex items-center justify-between gap-3">
-                <p className="text-sm font-black text-[var(--bb-text-primary,#f8fbff)]">Today's task movement</p>
-                <p className="text-xs font-bold text-[var(--bb-text-secondary,#b7c8dd)]">{formatNumber(bibleYear.completedTasks)} lifetime tasks complete</p>
+                <p className="text-sm font-black text-[var(--bb-text-primary,#f8fbff)]">Task movement - last 24 hours</p>
+                <p className="text-xs font-bold text-[var(--bb-text-secondary,#b7c8dd)]">{formatNumber(bibleYear.completedTasks)} total task completions</p>
               </div>
               <div className="mt-3 grid gap-2 sm:grid-cols-3">
                 {[
-                  ["Reading", bibleYear.taskBreakdownToday.reading],
-                  ["Trivia", bibleYear.taskBreakdownToday.trivia],
-                  ["Reflection", bibleYear.taskBreakdownToday.reflection],
+                  ["Video", bibleYear.taskBreakdownLast24h.video],
+                  ["Summary", bibleYear.taskBreakdownLast24h.summary],
+                  ["Trivia", bibleYear.taskBreakdownLast24h.trivia],
                 ].map(([label, value]) => (
                   <div key={label} className="rounded-xl border border-[var(--bb-card-border,#2b4f74)] bg-[var(--bb-card,#10243a)] px-3 py-3">
                     <p className="text-xs font-black text-[var(--bb-text-secondary,#b7c8dd)]">{label}</p>

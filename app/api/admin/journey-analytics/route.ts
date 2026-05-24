@@ -134,6 +134,7 @@ export async function GET(request: Request) {
   const params = new URL(request.url).searchParams;
   const todayStart = params.get("todayStart") || new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
   const activeSince = params.get("activeSince") || new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+  const taskWindowStart = params.get("taskWindowStart") || new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
   const since7d = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
   const since30d = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
 
@@ -202,14 +203,20 @@ export async function GET(request: Request) {
       }
     }
 
-    const bibleYearActionsToday = bibleYearActions.filter((row) => row.created_at && row.created_at >= todayStart);
-    const isBibleYearCardAction = (row: ActionRow, card: "Reading" | "Trivia" | "Reflection") =>
-      row.action_type === `bible_in_one_year_${card.toLowerCase()}_completed` ||
-      Boolean(row.action_label?.includes(` ${card}:`));
+    const bibleYearActionsLast24h = bibleYearActions.filter((row) => row.created_at && row.created_at >= taskWindowStart);
+    const isBibleYearCardAction = (row: ActionRow, card: "Video" | "Trivia" | "Summary") => {
+      if (card === "Video") {
+        return row.action_type === "bible_in_one_year_reading_completed" || Boolean(row.action_label?.match(/ (Video|Reading):/));
+      }
+      if (card === "Summary") {
+        return row.action_type === "bible_in_one_year_reflection_completed" || Boolean(row.action_label?.match(/ (Summary|Reflection):/));
+      }
+      return row.action_type === "bible_in_one_year_trivia_completed" || Boolean(row.action_label?.includes(" Trivia:"));
+    };
     const bibleYearTaskBreakdown = {
-      reading: bibleYearActionsToday.filter((row) => isBibleYearCardAction(row, "Reading")).length,
-      trivia: bibleYearActionsToday.filter((row) => isBibleYearCardAction(row, "Trivia")).length,
-      reflection: bibleYearActionsToday.filter((row) => isBibleYearCardAction(row, "Reflection")).length,
+      video: bibleYearActionsLast24h.filter((row) => isBibleYearCardAction(row, "Video")).length,
+      summary: bibleYearActionsLast24h.filter((row) => isBibleYearCardAction(row, "Summary")).length,
+      trivia: bibleYearActionsLast24h.filter((row) => isBibleYearCardAction(row, "Trivia")).length,
     };
 
     const freeUsers30d = uniqueCount(freeModeActions);
@@ -309,7 +316,7 @@ export async function GET(request: Request) {
           completedDays: completedBibleYearDays,
           averageCurrentDay: bibleYearUsers ? Math.round((currentDayTotal / bibleYearUsers) * 10) / 10 : 0,
           completionRate: percent(completedBibleYearDays, Math.max(progressRows.length, 1)),
-          taskBreakdownToday: bibleYearTaskBreakdown,
+          taskBreakdownLast24h: bibleYearTaskBreakdown,
           dayDistribution: [...latestDayCounts.entries()]
             .sort((a, b) => a[0] - b[0])
             .map(([day, users]) => ({ day, users })),

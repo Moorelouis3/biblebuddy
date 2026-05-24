@@ -8263,7 +8263,10 @@ export default function DashboardPage() {
           height: 160,
         };
     const tooltipOnRight = rect ? rect.left + rect.width / 2 < viewportWidth / 2 : false;
-    const tooltipMaxHeight = Math.min(330, Math.max(230, viewportHeight - 40));
+    const isMobileGuidedIntro = viewportWidth < 768;
+    const tooltipMaxHeight = isMobileGuidedIntro
+      ? Math.min(300, Math.max(220, viewportHeight - 32))
+      : Math.min(330, Math.max(230, viewportHeight - 40));
     const tooltipWidth = Math.min(340, viewportWidth - 32);
     const tooltipLeft = rect
       ? tooltipOnRight
@@ -8274,7 +8277,21 @@ export default function DashboardPage() {
       ? Math.min(viewportHeight - tooltipMaxHeight - 20, Math.max(20, rect.top + rect.height / 2 - tooltipMaxHeight / 2))
       : Math.max(20, Math.min(300, viewportHeight - tooltipMaxHeight - 20));
     const tooltipStyle = { top: tooltipTop, left: tooltipLeft };
-    const mobileTooltipBottom = rect && rect.bottom > viewportHeight - 170 ? viewportHeight - Math.max(20, rect.top - 12) : 18;
+    const mobileTooltipTop = (() => {
+      const minTop = 16;
+      const maxTop = Math.max(minTop, viewportHeight - tooltipMaxHeight - 16);
+      if (!rect) return Math.min(96, maxTop);
+
+      const roomBelow = viewportHeight - rect.bottom - 16;
+      const roomAbove = rect.top - 16;
+      if (roomBelow >= 220) {
+        return Math.max(minTop, Math.min(maxTop, rect.bottom + 12));
+      }
+      if (roomAbove >= 220) {
+        return Math.max(minTop, Math.min(maxTop, rect.top - tooltipMaxHeight - 12));
+      }
+      return Math.max(minTop, Math.min(maxTop, rect.top + rect.height / 2 - tooltipMaxHeight / 2));
+    })();
 
     return (
       <div
@@ -8289,7 +8306,7 @@ export default function DashboardPage() {
         />
         <div
           className="fixed mx-4 flex w-[min(340px,calc(100vw-32px))] flex-col rounded-[26px] border border-white/70 bg-white p-5 text-slate-950 shadow-[0_24px_80px_rgba(15,23,42,0.34)] transition-all duration-300"
-          style={viewportWidth < 768 ? { left: 0, right: 0, bottom: mobileTooltipBottom, maxHeight: tooltipMaxHeight } : { ...tooltipStyle, maxHeight: tooltipMaxHeight }}
+          style={isMobileGuidedIntro ? { left: 0, right: 0, top: mobileTooltipTop, maxHeight: tooltipMaxHeight } : { ...tooltipStyle, maxHeight: tooltipMaxHeight }}
         >
           <div className="flex items-center justify-between gap-3">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2f7fe8]">{step.eyebrow}</p>

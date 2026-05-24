@@ -13,6 +13,8 @@ type PlayTrackInput = {
   label: string;
   progressKey?: string;
   onProgress?: (state: AudioProgressState) => void;
+  backgroundMusicSrcs?: string[];
+  backgroundMusicVolume?: number;
 };
 
 type GlobalAudioContextValue = {
@@ -46,6 +48,8 @@ function getStorageKey(src: string, progressKey?: string) {
 
 export function GlobalAudioPlayerProvider({ children }: { children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const backgroundAudioRef = useRef<HTMLAudioElement | null>(null);
+  const backgroundTrackIndexRef = useRef(0);
   const progressCallbackRef = useRef<((state: AudioProgressState) => void) | null>(null);
   const lastSavedAudioSecondRef = useRef(-1);
   const lastProgressNotifyMsRef = useRef(0);
@@ -62,6 +66,33 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
   const [paused, setPaused] = useState(false);
   const [error, setError] = useState(false);
   const [playbackRate, setPlaybackRateState] = useState(1);
+
+  function stopBackgroundMusic() {
+    if (!backgroundAudioRef.current) return;
+    backgroundAudioRef.current.pause();
+    backgroundAudioRef.current.currentTime = 0;
+    backgroundAudioRef.current = null;
+  }
+
+  async function startBackgroundMusic(srcs: string[] | undefined, volume = 0.1) {
+    stopBackgroundMusic();
+    const tracks = (srcs || []).filter(Boolean);
+    if (!tracks.length) return;
+
+    const trackIndex = backgroundTrackIndexRef.current % tracks.length;
+    backgroundTrackIndexRef.current += 1;
+    const background = new Audio(tracks[trackIndex]);
+    background.loop = true;
+    background.preload = "auto";
+    background.volume = Math.max(0, Math.min(volume, 0.25));
+    backgroundAudioRef.current = background;
+
+    try {
+      await background.play();
+    } catch {
+      stopBackgroundMusic();
+    }
+  }
 
   function notify(audio: HTMLAudioElement | null, isPlaying: boolean, options: { force?: boolean } = {}) {
     if (!audio) return;
@@ -180,6 +211,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
       audioRef.current.pause();
       audioRef.current = null;
     }
+    stopBackgroundMusic();
 
     setLoading(true);
     setCurrentSrc(input.src);
@@ -230,6 +262,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
       setPaused(false);
       setCurrentTime(0);
       audioRef.current = null;
+      stopBackgroundMusic();
     };
 
     audio.onerror = () => {
@@ -239,12 +272,14 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
       setPlaying(false);
       setPaused(false);
       audioRef.current = null;
+      stopBackgroundMusic();
     };
 
     try {
       applySavedProgress(audio, key);
       await audio.play();
       if (playRequestIdRef.current !== requestId || audioRef.current !== audio) return;
+      await startBackgroundMusic(input.backgroundMusicSrcs, input.backgroundMusicVolume);
       setLoading(false);
       setPlaying(true);
       setPaused(false);
@@ -255,6 +290,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
       setPlaying(false);
       setPaused(false);
       audioRef.current = null;
+      stopBackgroundMusic();
     }
   }
 
@@ -262,6 +298,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     if (!audioRef.current) return;
     saveProgress(audioRef.current);
     audioRef.current.pause();
+    backgroundAudioRef.current?.pause();
     setPlaying(true);
     setPaused(true);
     notify(audioRef.current, false, { force: true });
@@ -274,6 +311,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
         applySavedProgress(audioRef.current, progressKeyRef.current);
       }
       await audioRef.current.play();
+      await backgroundAudioRef.current?.play().catch(() => undefined);
       setPlaying(true);
       setPaused(false);
       notify(audioRef.current, true, { force: true });
@@ -288,6 +326,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
       audioRef.current.currentTime = 0;
       audioRef.current = null;
     }
+    stopBackgroundMusic();
     clearProgress();
     setCurrentSrc(null);
     setCurrentLabel(null);
@@ -327,6 +366,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
         saveProgress(audioRef.current);
         audioRef.current.pause();
       }
+      stopBackgroundMusic();
     };
   }, []);
 

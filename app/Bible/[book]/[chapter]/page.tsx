@@ -45,6 +45,7 @@ import { DIAMOND_REWARDS, TASK_REWARD_LABELS, TASK_XP } from "../../../../lib/pr
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../../../../lib/chapterNotesOffline";
 import BrowserTtsButton from "../../../../components/BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "../../../../lib/genesisOneTts";
+import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../../../../lib/bibleReadingBackgroundMusic";
 import { getApprovedBibleYearDeepStudyMarkdownForChapter, getApprovedBibleYearDeepStudySectionsForChapter } from "../../../../lib/bibleYearApprovedDeepStudy";
 
 type Verse = {
@@ -2331,6 +2332,9 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             text={chapterSpeechText}
             label={`Listen to KJV ${bookDisplayName} ${chapter}`}
             audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
+            backgroundMusicSrcs={getBibleReadingBackgroundTracks(bookDisplayName, chapter)}
+            backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+            aiDisclosure={Boolean(getGenesisOneTtsSrc("verses", bookDisplayName, chapter))}
           />
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">
@@ -3024,6 +3028,9 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             text={chapterSpeechText}
             label={`Listen to KJV ${bookDisplayName} ${chapter}`}
             audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
+            backgroundMusicSrcs={getBibleReadingBackgroundTracks(bookDisplayName, chapter)}
+            backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+            aiDisclosure={Boolean(getGenesisOneTtsSrc("verses", bookDisplayName, chapter))}
           />
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">

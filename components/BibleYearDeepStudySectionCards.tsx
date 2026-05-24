@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
+import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy";
 
 type BibleYearDeepStudySectionCardsProps = {
@@ -46,6 +47,40 @@ function addBlankLineBetweenVerseBlocks(markdown: string) {
   return output.join("\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
+function buildFullGenesisVerseBlock(reference: string) {
+  const match = reference.match(/^Genesis\s+(\d+):(\d+)(?:\s*-\s*(\d+))?$/i);
+  if (!match) return null;
+
+  const chapter = Number(match[1]);
+  const startVerse = Number(match[2]);
+  const endVerse = Number(match[3] || match[2]);
+  if (!Number.isFinite(chapter) || !Number.isFinite(startVerse) || !Number.isFinite(endVerse)) return null;
+
+  const verses = (BIBLE_YEAR_GENESIS_WEB_VERSES[chapter] || []).filter(
+    (verse) => verse.verse >= startVerse && verse.verse <= endVerse,
+  );
+  if (!verses.length) return null;
+
+  return verses
+    .map((verse) => `> 📖 **${verse.verse}** ${verse.text}`)
+    .join("\n>\n\n");
+}
+
+function replaceOpeningVerseExcerpt(lines: string[], reference: string) {
+  const fullVerseBlock = buildFullGenesisVerseBlock(reference);
+  if (!fullVerseBlock) return lines;
+
+  let cursor = 0;
+  while (lines[cursor]?.trim() === "") cursor += 1;
+  if (!lines[cursor]?.trim().startsWith(">")) return lines;
+
+  while (cursor < lines.length && (lines[cursor]?.trim() === "" || lines[cursor]?.trim().startsWith(">"))) {
+    cursor += 1;
+  }
+
+  return [fullVerseBlock, "", ...lines.slice(cursor)];
+}
+
 function prepareOpenSectionMarkdown(markdown: string, reference: string, title: string) {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   while (lines[0]?.trim() === "") lines.shift();
@@ -62,7 +97,7 @@ function prepareOpenSectionMarkdown(markdown: string, reference: string, title: 
     while (lines[0]?.trim() === "") lines.shift();
   }
 
-  return addBlankLineBetweenVerseBlocks(lines.join("\n"));
+  return addBlankLineBetweenVerseBlocks(replaceOpeningVerseExcerpt(lines, reference).join("\n"));
 }
 
 export default function BibleYearDeepStudySectionCards({

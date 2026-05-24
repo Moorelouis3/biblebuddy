@@ -38,5 +38,5 @@ export function getGenesisOneTtsSrc(
   }
 
   if (!isGenesisOne(book, chapter)) return null;
-  return `/audio/genesis/1/${kind}-onyx-peaceful-rain-cinematic.mp3?v=peaceful-v1`;
+  return `/api/tts/genesis-one?kind=${kind}&v=openai-cache-v1`;
 }

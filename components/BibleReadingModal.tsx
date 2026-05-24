@@ -18,6 +18,7 @@ import { getTriviaChapter } from "../lib/triviaGameData";
 import { getScrambledChapter } from "../lib/scrambledGameData";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
+import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
 import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
 
 const supabase = createClient(
@@ -981,6 +982,9 @@ Be accurate to Scripture.`;
                 text={chapterSpeechText}
                 label={`Listen to KJV ${bookDisplayName} ${chapter}`}
                 audioSrc={getGenesisOneTtsSrc("verses", bookDisplayName, chapter)}
+                backgroundMusicSrcs={getBibleReadingBackgroundTracks(bookDisplayName, chapter)}
+                backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+                aiDisclosure={Boolean(getGenesisOneTtsSrc("verses", bookDisplayName, chapter))}
               />
             ) : null}
             {enrichedContent ? (

@@ -26,6 +26,7 @@ import { TASK_XP } from "../lib/progressionRewards";
 import { GENESIS_CREATION_WEB_VERSES } from "../lib/creationOfWorldDeepNotes";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "../lib/genesisOneTts";
+import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
 
 type Props = {
   task: TaskState | null;
@@ -480,6 +481,9 @@ function DashboardInlineBibleReader({
                 text={chapterSpeechText}
                 label={`Listen to ${bookDisplay} ${chapter}`}
                 audioSrc={chapterAudioSrc}
+                backgroundMusicSrcs={getBibleReadingBackgroundTracks(bookDisplay, chapter)}
+                backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+                aiDisclosure={Boolean(chapterAudioSrc)}
                 className="mb-0 mt-3"
               />
             ) : null}
