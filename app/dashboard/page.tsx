@@ -8332,17 +8332,18 @@ export default function DashboardPage() {
           height: 160,
         };
     const tooltipOnRight = rect ? rect.left + rect.width / 2 < viewportWidth / 2 : false;
-    const tooltipStyle = rect
-      ? {
-          top: Math.min(viewportHeight - 260, Math.max(20, rect.top + rect.height / 2 - 130)),
-          left: tooltipOnRight
-            ? Math.min(viewportWidth - 360, rect.right + 18)
-            : Math.max(16, rect.left - 378),
-        }
-      : {
-          top: 300,
-          left: 16,
-        };
+    const tooltipMaxHeight = Math.min(330, Math.max(230, viewportHeight - 40));
+    const tooltipWidth = Math.min(340, viewportWidth - 32);
+    const tooltipLeft = rect
+      ? tooltipOnRight
+        ? Math.min(viewportWidth - tooltipWidth - 16, rect.right + 18)
+        : Math.max(16, rect.left - tooltipWidth - 18)
+      : 16;
+    const tooltipTop = rect
+      ? Math.min(viewportHeight - tooltipMaxHeight - 20, Math.max(20, rect.top + rect.height / 2 - tooltipMaxHeight / 2))
+      : Math.max(20, Math.min(300, viewportHeight - tooltipMaxHeight - 20));
+    const tooltipStyle = { top: tooltipTop, left: tooltipLeft };
+    const mobileTooltipBottom = rect && rect.bottom > viewportHeight - 170 ? viewportHeight - Math.max(20, rect.top - 12) : 18;
 
     return (
       <div
@@ -8356,8 +8357,8 @@ export default function DashboardPage() {
           style={spotlightStyle}
         />
         <div
-          className="fixed mx-4 w-[min(340px,calc(100vw-32px))] rounded-[26px] border border-white/70 bg-white p-5 text-slate-950 shadow-[0_24px_80px_rgba(15,23,42,0.34)] transition-all duration-300"
-          style={viewportWidth < 768 ? { left: 0, right: 0, bottom: 18 } : tooltipStyle}
+          className="fixed mx-4 flex w-[min(340px,calc(100vw-32px))] flex-col rounded-[26px] border border-white/70 bg-white p-5 text-slate-950 shadow-[0_24px_80px_rgba(15,23,42,0.34)] transition-all duration-300"
+          style={viewportWidth < 768 ? { left: 0, right: 0, bottom: mobileTooltipBottom, maxHeight: tooltipMaxHeight } : { ...tooltipStyle, maxHeight: tooltipMaxHeight }}
         >
           <div className="flex items-center justify-between gap-3">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2f7fe8]">{step.eyebrow}</p>
@@ -8366,9 +8367,11 @@ export default function DashboardPage() {
             </p>
           </div>
           <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950">{step.title}</h2>
-          <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">{step.body}</p>
-          {step.detail ? <p className="mt-2 text-sm font-bold leading-6 text-slate-700">{step.detail}</p> : null}
-          <div className="mt-5 flex items-center gap-3">
+          <div className="min-h-0 overflow-y-auto pr-1">
+            <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">{step.body}</p>
+            {step.detail ? <p className="mt-2 text-sm font-bold leading-6 text-slate-700">{step.detail}</p> : null}
+          </div>
+          <div className="mt-5 flex shrink-0 items-center gap-3">
             {isFirstStep ? (
               <button
                 type="button"

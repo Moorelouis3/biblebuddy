@@ -7679,15 +7679,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
     return (
       <div className="completion-panel-enter rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent)] p-5 text-center shadow-[0_16px_42px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] backdrop-blur">
-        <div className="mx-auto flex items-center justify-center">
-          <img
-            src="/Newlouisstareyes-transparent.png"
-            alt=""
-            className="block h-[176px] w-auto select-none object-contain [background:transparent] [box-shadow:none] [filter:none]"
-            draggable={false}
-          />
-        </div>
-        <h2 className="mt-4 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+        <h2 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
           {usesSimpleDailyFlow ? `Great job! You completed Day ${day.dayNumber}.` : `Congrats, you finished Day ${day.dayNumber}!`}
         </h2>
         <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
