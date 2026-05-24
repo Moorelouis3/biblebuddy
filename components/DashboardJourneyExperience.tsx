@@ -8195,11 +8195,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             {"\uD83D\uDD12"}
           </span>
         ) : null}
-        {activeBibleYearDashboardDay && bibleYearTaskCard ? (
-          <span className="pointer-events-none absolute bottom-3 right-12 text-[11px] font-black uppercase tracking-[0.12em] text-black">
-            Task {taskIndex + 1}
-          </span>
-        ) : null}
         <div className="flex items-start gap-2.5">
           <div
             className={`relative mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-xl shadow-sm ${
@@ -8251,16 +8246,16 @@ Before we understand redemption, we need to understand what God made humanity fo
               </span>
               </div>
             </div>
-            <div className="mt-2 flex justify-center">
+            <div className={`mt-2 flex w-full items-center gap-3 ${activeBibleYearDashboardDay && bibleYearTaskCard ? "justify-between" : "justify-center"}`}>
               <p className="hidden">{taskCopy.subtitle}</p>
               {task.timeEstimateLabel && !(isActiveInlineTask && bibleYearTaskCard === "reading") ? (
                 isCardDisabled && bibleYearOrderLocked && activeBibleYearDashboardDay && bibleYearTaskCard ? (
-                  <p className="whitespace-nowrap text-center text-[11px] font-black text-[var(--bb-text-secondary,#374151)]">
+                  <p className="min-w-0 flex-1 truncate text-left text-[11px] font-black text-[var(--bb-text-secondary,#374151)]">
                     {getBibleYearLockedTaskTitle(activeBibleYearDashboardDay, bibleYearTaskCard)}
                   </p>
                 ) :
                 isActiveInlineTask && task.kind === "notes" && !task.done ? (
-                  <p className="relative h-4 w-56 text-center text-[11px] font-black text-[var(--bb-text-secondary,#374151)]">
+                  <p className="relative h-4 min-w-0 flex-1 text-left text-[11px] font-black text-[var(--bb-text-secondary,#374151)]">
                     <span className="task-estimate-primary absolute inset-0 whitespace-nowrap">
                       Takes about {task.timeEstimateLabel}
                     </span>
@@ -8269,10 +8264,15 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </span>
                   </p>
                 ) : (
-                  <p className="whitespace-nowrap text-center text-[11px] font-black text-[var(--bb-text-secondary,#374151)]">
+                  <p className="min-w-0 flex-1 whitespace-nowrap text-left text-[11px] font-black text-[var(--bb-text-secondary,#374151)]">
                     Takes about {task.timeEstimateLabel}
                   </p>
                 )
+              ) : null}
+              {activeBibleYearDashboardDay && bibleYearTaskCard ? (
+                <span className="shrink-0 text-[11px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-primary,#111827)]">
+                  Task {taskIndex + 1}
+                </span>
               ) : null}
             </div>
           </div>
@@ -11324,11 +11324,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                       {"\uD83D\uDD12"}
                     </span>
                   ) : null}
-                  {selectedBibleYearSeriesDay && bibleYearTaskCard ? (
-                    <span className="pointer-events-none absolute bottom-3 right-12 text-[11px] font-black uppercase tracking-[0.12em] text-black">
-                      Task {taskIndex + 1}
-                    </span>
-                  ) : null}
                   <div className="flex items-start gap-2.5">
                     <div
                       className={`relative mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-xl shadow-sm ${
@@ -11380,16 +11375,16 @@ Before we understand redemption, we need to understand what God made humanity fo
                         </span>
                         </div>
                       </div>
-                      <div className="mt-2 flex justify-center">
+                      <div className={`mt-2 flex w-full items-center gap-3 ${selectedBibleYearSeriesDay && bibleYearTaskCard ? "justify-between" : "justify-center"}`}>
                         <p className="hidden">{taskCopy.subtitle}</p>
                         {task.timeEstimateLabel ? (
                           isCardDisabled && bibleYearOrderLocked && selectedBibleYearSeriesDay && bibleYearTaskCard ? (
-                            <p className="whitespace-nowrap text-center text-[11px] font-black text-gray-700">
+                            <p className="min-w-0 flex-1 truncate text-left text-[11px] font-black text-gray-700">
                               {getBibleYearLockedTaskTitle(selectedBibleYearSeriesDay, bibleYearTaskCard)}
                             </p>
                           ) :
                           isActiveInlineTask && task.kind === "notes" && !task.done ? (
-                            <p className="relative h-4 w-56 text-center text-[11px] font-black text-gray-700">
+                            <p className="relative h-4 min-w-0 flex-1 text-left text-[11px] font-black text-gray-700">
                               <span className="task-estimate-primary absolute inset-0 whitespace-nowrap">
                                 Takes about {task.timeEstimateLabel}
                               </span>
@@ -11398,10 +11393,15 @@ Before we understand redemption, we need to understand what God made humanity fo
                               </span>
                             </p>
                           ) : (
-                            <p className="whitespace-nowrap text-center text-[11px] font-black text-gray-700">
+                            <p className="min-w-0 flex-1 whitespace-nowrap text-left text-[11px] font-black text-gray-700">
                               Takes about {task.timeEstimateLabel}
                             </p>
                           )
+                        ) : null}
+                        {selectedBibleYearSeriesDay && bibleYearTaskCard ? (
+                          <span className="shrink-0 text-[11px] font-black uppercase tracking-[0.12em] text-gray-950">
+                            Task {taskIndex + 1}
+                          </span>
                         ) : null}
                       </div>
                     </div>
