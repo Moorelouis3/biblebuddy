@@ -6897,6 +6897,9 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (newlyCompletedCards.length > 0) {
       startBibleYearCompletionAnimation(day.dayNumber, newlyCompletedCards[0]);
     }
+    if (dayWillBeFullyComplete) {
+      setBibleYearCompletedTasksExpandedDay(null);
+    }
     setBibleYearCompletedCardsByDay((current) => ({
       ...current,
       [day.dayNumber]: {
@@ -6967,7 +6970,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   useEffect(() => {
     if (!userId) return;
-    const discussionDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber === 1 || day.dayNumber === 2);
+    const discussionDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
     const slugToDayNumber = new Map(discussionDays.map((day) => [getBibleYearReflectionSlug(day), day.dayNumber]));
     if (!slugToDayNumber.size) return;
 
@@ -7672,6 +7675,37 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
+  function renderBibleYearReflectionReviewButton(day: GenesisBibleYearDay) {
+    const reflectionPosted = bibleYearReflectionPostedByDay[day.dayNumber] === true;
+    const discussionOpen = bibleYearOptionalDiscussionDay === day.dayNumber;
+
+    return (
+      <div className="rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-center shadow-sm">
+        <button
+          type="button"
+          onClick={() => setBibleYearOptionalDiscussionDay((current) => current === day.dayNumber ? null : day.dayNumber)}
+          className={
+            reflectionPosted
+              ? "w-full rounded-2xl border border-emerald-300 bg-emerald-500 px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-emerald-600"
+              : "w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+          }
+          aria-expanded={discussionOpen}
+        >
+          {reflectionPosted ? "Reflection Posted" : `Join Day ${day.dayNumber} Discussion`}
+          {!reflectionPosted ? (
+            <span className="ml-2 rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,var(--bb-card,#ffffff))] px-2 py-0.5 text-xs text-[var(--bb-accent,#2f7fe8)]">
+              +{BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD} diamonds
+            </span>
+          ) : null}
+        </button>
+        <p className="mt-2 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+          Click to open the reflection section.
+        </p>
+        {discussionOpen ? renderBibleYearOptionalDiscussion(day) : null}
+      </div>
+    );
+  }
+
   function renderBibleYearCompletedDayPanel(day: GenesisBibleYearDay) {
     const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === day.dayNumber + 1);
     const usesSimpleDailyFlow = day.dayNumber === 1 || day.dayNumber === 2;
@@ -7749,7 +7783,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const completedTasksForDay = buildBibleYearDayTasks(day).filter((task) => task.done);
     const requiredTasksCount = getBibleYearRequiredCardKeys(day).length;
     const dayFullyComplete = completedTasksForDay.length >= requiredTasksCount;
-    const isExpanded = !dayFullyComplete && bibleYearCompletedTasksExpandedDay === day.dayNumber;
+    const isExpanded = bibleYearCompletedTasksExpandedDay === day.dayNumber;
     const isReceivingTask = !isExpanded && bibleYearCompletionAnimation?.dayNumber === day.dayNumber;
     const rewardToast = bibleYearRewardToast?.dayNumber === day.dayNumber ? bibleYearRewardToast : null;
 
@@ -7799,7 +7833,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           type="button"
           onClick={() => {
             if (dayFullyComplete) {
-              setBibleYearCompletedTasksExpandedDay(null);
+              setBibleYearCompletedTasksExpandedDay((current) => current === day.dayNumber ? null : day.dayNumber);
               setActiveBibleYearDayCard(null);
               return;
             }
@@ -8412,7 +8446,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
 
         <div className="grid gap-3 pb-24 sm:pb-0">
-          {dashboardAllDone ? renderBibleYearCompletedDayPanel(day) : null}
+          {dashboardAllDone && bibleYearJustCompletedDayRef.current === day.dayNumber ? renderBibleYearCompletedDayPanel(day) : null}
+          {dashboardAllDone && bibleYearJustCompletedDayRef.current !== day.dayNumber ? renderBibleYearReflectionReviewButton(day) : null}
           {activeTasksToRender.length ? (
             <div className="grid gap-3">
               {renderDashboardTaskCards(activeTasksToRender)}
@@ -11243,8 +11278,11 @@ Before we understand redemption, we need to understand what God made humanity fo
                 renderBibleYearDashboardStudyArea(activeBibleYearDashboardDay, displayTasks)
               ) : !bibleYearDashboardActive ? (
                 <>
-              {selectedBibleYearSeriesDay && dashboardAllDone ? (
+              {selectedBibleYearSeriesDay && dashboardAllDone && bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber ? (
                 renderBibleYearCompletedDayPanel(selectedBibleYearSeriesDay)
+              ) : null}
+              {selectedBibleYearSeriesDay && dashboardAllDone && bibleYearJustCompletedDayRef.current !== selectedBibleYearSeriesDay.dayNumber ? (
+                renderBibleYearReflectionReviewButton(selectedBibleYearSeriesDay)
               ) : null}
               {displayTasks.map((task, index) => {
                 const originalTaskIndex = displayTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
