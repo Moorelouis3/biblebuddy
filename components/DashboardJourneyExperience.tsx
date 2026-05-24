@@ -7589,7 +7589,6 @@ Before we understand redemption, we need to understand what God made humanity fo
 
     return (
       <div className="mt-4 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-sm">
-        <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Optional Discussion</p>
         <h3 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Join Day {day.dayNumber} Discussion</h3>
         <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
           Share a thought, read what others noticed, or simply keep going privately.
