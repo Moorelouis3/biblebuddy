@@ -547,11 +547,32 @@ export default function CommentSection({
     );
 
     try {
-      const result = wasLiked
-        ? await supabase.from("article_comment_likes").delete().eq("comment_id", comment.id).eq("user_id", user.id)
-        : await supabase.from("article_comment_likes").insert({ comment_id: comment.id, user_id: user.id });
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error("Please sign in to like reflections.");
 
-      if (result.error) throw result.error;
+      const response = await fetch("/api/comments/like", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ commentId: comment.id, liked: !wasLiked }),
+      });
+      const payload = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(payload?.error || "Could not update like.");
+
+      setComments((prev) =>
+        prev.map((item) =>
+          item.id === comment.id
+            ? {
+                ...item,
+                liked: payload.liked === true,
+                like_count: Math.max(0, Number(payload.like_count ?? item.like_count ?? 0)),
+              }
+            : item,
+        ),
+      );
     } catch (err) {
       setComments((prev) =>
         prev.map((item) =>
