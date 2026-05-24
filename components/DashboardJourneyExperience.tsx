@@ -7211,11 +7211,11 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div className="mt-3 grid gap-3">
                 {(day.dayNumber === 2
                   ? [
-                      ["?", "The serpent questions God's word and makes distrust sound reasonable."],
-                      ["!", "Adam and Eve disobey, and shame, fear, hiding, and blame enter the story."],
-                      ["+", "God judges sin, but also gives the first promise that evil will not win forever."],
-                      ["x", "Cain's anger shows sin spreading from the garden into the family."],
-                      ["*", "Seth's birth shows hope continuing even after heartbreak and loss."],
+                      ["🐍", "The serpent questions God's word and makes distrust sound reasonable."],
+                      ["🍎", "Adam and Eve disobey, and shame, fear, hiding, and blame enter the story."],
+                      ["🌱", "God judges sin, but also gives the first promise that evil will not win forever."],
+                      ["💔", "Cain's anger shows sin spreading from the garden into the family."],
+                      ["✨", "Seth's birth shows hope continuing even after heartbreak and loss."],
                     ]
                   : summaryHighlights
                 ).map(([emoji, text]) => (
