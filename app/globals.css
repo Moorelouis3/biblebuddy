@@ -745,9 +745,9 @@ html {
 [data-bb-basic-skin] .dashboard-shell .dashboard-bible-year-study-area > div,
 [data-bb-basic-skin] .dashboard-shell .bb-dashboard-streak-card,
 [data-bb-basic-skin] .dashboard-shell .completion-panel-enter {
-  background: color-mix(in srgb, var(--bb-card, #ffffff) 94%, var(--bb-surface-soft, #f8fbff) 6%) !important;
-  border-color: color-mix(in srgb, var(--bb-accent, #6fa8cf) 22%, var(--bb-card-border, #e4ecf5)) !important;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08) !important;
+  background: color-mix(in srgb, var(--bb-card, #ffffff) 88%, var(--bb-surface-soft, #f8fbff) 12%) !important;
+  border-color: color-mix(in srgb, var(--bb-accent, #2f8fd0) 42%, var(--bb-card-border, #bdddf3)) !important;
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--bb-accent, #2f8fd0) 12%, rgba(15, 23, 42, 0.08)) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
@@ -758,7 +758,7 @@ html {
 [data-bb-basic-skin] .dashboard-shell [class*="bg-gradient-to"],
 [data-bb-basic-skin] .dashboard-shell [class*="bg-[linear-gradient"],
 [data-bb-basic-skin] .dashboard-shell [class*="bg-[radial-gradient"] {
-  background: color-mix(in srgb, var(--bb-card, #ffffff) 92%, var(--bb-surface-soft, #f8fbff) 8%) !important;
+  background: color-mix(in srgb, var(--bb-card, #ffffff) 82%, var(--bb-surface-soft, #f8fbff) 18%) !important;
 }
 
 [data-bb-theme] .dashboard-shell .bb-progress-fill,

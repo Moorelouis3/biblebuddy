@@ -21,15 +21,15 @@ export type BibleBuddyStoreItem = {
 };
 
 export const THEME_STORE_ITEMS: BibleBuddyStoreItem[] = [
-  { id: "theme-blue", kind: "theme", title: "Blue", subtitle: "Soft and calm.", price: 500, emoji: "Blue", accent: "#6FA8CF", themeId: "blue" },
-  { id: "theme-gold", kind: "theme", title: "Gold", subtitle: "Warm and peaceful.", price: 500, emoji: "Gold", accent: "#C69A4A", themeId: "gold" },
-  { id: "theme-purple", kind: "theme", title: "Purple", subtitle: "Gentle and focused.", price: 500, emoji: "Purple", accent: "#9A7BC7", themeId: "purple" },
-  { id: "theme-red", kind: "theme", title: "Rose", subtitle: "Warm and quiet.", price: 500, emoji: "Rose", accent: "#D9877E", themeId: "red" },
-  { id: "theme-green", kind: "theme", title: "Green", subtitle: "Fresh and growing.", price: 500, emoji: "Green", accent: "#78B88B", themeId: "green" },
-  { id: "theme-pink", kind: "theme", title: "Pink", subtitle: "Soft and bright.", price: 500, emoji: "Pink", accent: "#D783A7", themeId: "pink" },
-  { id: "theme-orange", kind: "theme", title: "Orange", subtitle: "Warm and steady.", price: 500, emoji: "Orange", accent: "#D99A68", themeId: "orange" },
-  { id: "theme-gray", kind: "theme", title: "Gray", subtitle: "Clean and steady.", price: 500, emoji: "Gray", accent: "#87909A", themeId: "gray" },
-  { id: "theme-black", kind: "theme", title: "Ink", subtitle: "Simple and focused.", price: 500, emoji: "Ink", accent: "#3F4145", themeId: "black" },
+  { id: "theme-blue", kind: "theme", title: "Blue", subtitle: "Soft and calm.", price: 500, emoji: "Blue", accent: "#2F8FD0", themeId: "blue" },
+  { id: "theme-gold", kind: "theme", title: "Gold", subtitle: "Warm and peaceful.", price: 500, emoji: "Gold", accent: "#C98715", themeId: "gold" },
+  { id: "theme-purple", kind: "theme", title: "Purple", subtitle: "Gentle and focused.", price: 500, emoji: "Purple", accent: "#8758D8", themeId: "purple" },
+  { id: "theme-red", kind: "theme", title: "Rose", subtitle: "Warm and quiet.", price: 500, emoji: "Rose", accent: "#E5544A", themeId: "red" },
+  { id: "theme-green", kind: "theme", title: "Green", subtitle: "Fresh and growing.", price: 500, emoji: "Green", accent: "#23A85D", themeId: "green" },
+  { id: "theme-pink", kind: "theme", title: "Pink", subtitle: "Soft and bright.", price: 500, emoji: "Pink", accent: "#DD3C8E", themeId: "pink" },
+  { id: "theme-orange", kind: "theme", title: "Orange", subtitle: "Warm and steady.", price: 500, emoji: "Orange", accent: "#E4742F", themeId: "orange" },
+  { id: "theme-gray", kind: "theme", title: "Gray", subtitle: "Clean and steady.", price: 500, emoji: "Gray", accent: "#6B7684", themeId: "gray" },
+  { id: "theme-black", kind: "theme", title: "Ink", subtitle: "Simple and focused.", price: 500, emoji: "Ink", accent: "#202327", themeId: "black" },
 ];
 
 const SKIN_EMOJI_BY_ID: Partial<Record<PremiumSkinId, string>> = {
