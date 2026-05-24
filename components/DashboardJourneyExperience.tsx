@@ -2171,10 +2171,10 @@ export default function DashboardJourneyExperience({
           const selectedJustCompleted = bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber;
           const selectedIsCurrent = selectedBibleYearSeriesDay.dayNumber === nextUnfinishedDay?.dayNumber;
           const selectedReviewOpen = bibleYearCompletedTasksExpandedDay === selectedBibleYearSeriesDay.dayNumber;
-          if (freeUserCanOpenBibleYearDayTasks(selectedBibleYearSeriesDay)) return selectedBibleYearSeriesDay;
           if (selectedReviewOpen) return selectedBibleYearSeriesDay;
-          if (selectedIsComplete) return selectedBibleYearSeriesDay;
-          if ((!selectedIsComplete && selectedIsCurrent) || selectedJustCompleted) return selectedBibleYearSeriesDay;
+          if (selectedJustCompleted) return selectedBibleYearSeriesDay;
+          if (isOwnerDashboard && freeUserCanOpenBibleYearDayTasks(selectedBibleYearSeriesDay)) return selectedBibleYearSeriesDay;
+          if (!selectedIsComplete && selectedIsCurrent && freeUserCanOpenBibleYearDayTasks(selectedBibleYearSeriesDay)) return selectedBibleYearSeriesDay;
         }
 
         return nextUnfinishedDay;
@@ -3105,6 +3105,7 @@ export default function DashboardJourneyExperience({
 
   useEffect(() => {
     let cancelled = false;
+    setBibleYearProgressLoaded(false);
 
     async function loadBibleYearProgress() {
       if (!userId) {
