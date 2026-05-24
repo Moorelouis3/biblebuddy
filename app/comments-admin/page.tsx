@@ -45,6 +45,21 @@ type CommentStats = {
   bySource: Record<string, number>;
 };
 
+type DeletedCommentLog = {
+  id: string;
+  commentId: string;
+  kind: CommentKind;
+  sourceLabel: string | null;
+  contextTitle: string | null;
+  content: string;
+  authorUserId: string | null;
+  authorName: string;
+  deletedBy: string | null;
+  deletedByName: string;
+  deletedAt: string;
+  deletedIds: string[];
+};
+
 type StatusFilter = "needs" | "all" | "replied";
 
 const SOURCE_FILTERS = [
@@ -99,6 +114,7 @@ function sourceLabel(source: string) {
 
 export default function CommentsAdminPage() {
   const [comments, setComments] = useState<AdminComment[]>([]);
+  const [deletedComments, setDeletedComments] = useState<DeletedCommentLog[]>([]);
   const [stats, setStats] = useState<CommentStats | null>(null);
   const [moderatorName, setModeratorName] = useState("Moderator");
   const [moderatorImage, setModeratorImage] = useState<string | null>(null);
@@ -112,8 +128,10 @@ export default function CommentsAdminPage() {
   const [replyText, setReplyText] = useState("");
   const [postingId, setPostingId] = useState<string | null>(null);
   const [draftingId, setDraftingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [page, setPage] = useState(0);
+  const [deletedOpen, setDeletedOpen] = useState(false);
 
   async function getToken() {
     const { data } = await supabase.auth.getSession();
@@ -144,6 +162,7 @@ export default function CommentsAdminPage() {
     }
 
     setComments(payload.comments || []);
+    setDeletedComments(payload.deletedComments || []);
     setStats(payload.stats || null);
     setModeratorName(payload.moderator?.name || "Moderator");
     setModeratorImage(payload.moderator?.image || null);
@@ -235,6 +254,65 @@ export default function CommentsAdminPage() {
     setReplyingTo(null);
     setReplyText("");
     setStatusMessage("Reply sent. That comment is marked as replied.");
+  }
+
+  async function deleteComment(comment: AdminComment) {
+    const confirmed = window.confirm(`Delete this comment from ${comment.userName || "this user"}?`);
+    if (!confirmed) return;
+
+    setDeletingId(comment.id);
+    setStatusMessage(null);
+    const token = await getToken();
+    const response = await fetch("/api/comments/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        kind: comment.kind,
+        commentId: comment.id,
+      }),
+    });
+    const payload = await response.json().catch(() => null);
+    setDeletingId(null);
+
+    if (!response.ok) {
+      setStatusMessage(payload?.error || "Could not delete comment.");
+      return;
+    }
+
+    const deletedIds = new Set<string>((payload?.deletedIds || []) as string[]);
+    if (deletedIds.size === 0) deletedIds.add(comment.id);
+    setComments((current) => current.filter((item) => !(item.kind === comment.kind && deletedIds.has(item.id))));
+    setStats((current) =>
+      current
+        ? {
+            ...current,
+            total: Math.max(0, current.total - deletedIds.size),
+            needsReply: Math.max(0, current.needsReply - (comment.hasModeratorReply || comment.hasMyReply ? 0 : 1)),
+          }
+        : current,
+    );
+    setDeletedComments((current) => [
+      {
+        id: `local-${comment.kind}-${comment.id}`,
+        commentId: comment.id,
+        kind: comment.kind,
+        sourceLabel: comment.sourceLabel,
+        contextTitle: comment.contextTitle,
+        content: comment.content,
+        authorUserId: comment.userId,
+        authorName: comment.userName,
+        deletedBy: null,
+        deletedByName: moderatorName,
+        deletedAt: new Date().toISOString(),
+        deletedIds: Array.from(deletedIds),
+      },
+      ...current,
+    ]);
+    setDeletedOpen(true);
+    setStatusMessage("Comment deleted and added to the deleted-comments list.");
   }
 
   const statCards = [
@@ -413,11 +491,13 @@ export default function CommentsAdminPage() {
                           ) : null}
                           <button
                             type="button"
-                            className="grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-lg font-black text-slate-500 transition hover:bg-slate-50"
-                            aria-label="More options"
-                            title="More options"
+                            onClick={() => void deleteComment(comment)}
+                            disabled={deletingId === comment.id}
+                            className="rounded-full border border-red-100 bg-white px-4 py-2 text-sm font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
+                            aria-label="Delete comment"
+                            title="Delete comment"
                           >
-                            ...
+                            {deletingId === comment.id ? "Deleting..." : "Delete"}
                           </button>
                         </div>
 
@@ -488,6 +568,55 @@ export default function CommentsAdminPage() {
               Next
             </button>
           </div>
+        </section>
+
+        <section className="mt-4 overflow-hidden rounded-[30px] border border-red-100 bg-white shadow-sm">
+          <button
+            type="button"
+            onClick={() => setDeletedOpen((current) => !current)}
+            className="flex w-full items-center justify-between gap-3 p-5 text-left transition hover:bg-red-50/40"
+          >
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-red-600">Deleted Comments</p>
+              <h2 className="mt-1 text-xl font-black">Moderator deletion log</h2>
+              <p className="mt-1 text-sm font-semibold text-slate-500">
+                Review comments removed by admins or moderators. New deletions appear here after the database migration is live.
+              </p>
+            </div>
+            <span className="rounded-full bg-red-50 px-3 py-1 text-sm font-black text-red-700">
+              {deletedComments.length.toLocaleString()}
+            </span>
+          </button>
+
+          {deletedOpen ? (
+            <div className="divide-y divide-slate-100 border-t border-slate-100">
+              {deletedComments.length === 0 ? (
+                <div className="p-6 text-sm font-semibold text-slate-500">No deleted comments logged yet.</div>
+              ) : (
+                deletedComments.map((item) => (
+                  <article key={item.id} className="p-4">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                      <div className="min-w-0">
+                        <p className="text-sm font-black text-slate-900">{item.authorName || "Bible Buddy"}</p>
+                        <p className="mt-1 text-xs font-semibold text-slate-500">
+                          Deleted by {item.deletedByName || "Moderator"} - {formatTime(item.deletedAt)}
+                        </p>
+                      </div>
+                      <span className="rounded-full bg-red-50 px-3 py-1 text-xs font-black text-red-700">
+                        {sourceLabel(item.sourceLabel?.includes("Bible") ? "Bible Chapters" : item.kind === "article_comment" ? "Articles" : "Group Feed")}
+                      </span>
+                    </div>
+                    <p className="mt-3 whitespace-pre-wrap rounded-2xl bg-slate-50 px-3 py-3 text-sm font-semibold leading-6 text-slate-800">
+                      {cleanText(item.content, 900) || "No comment text saved."}
+                    </p>
+                    <p className="mt-2 text-xs font-semibold text-slate-500">
+                      {cleanText(item.contextTitle || item.sourceLabel || item.kind, 160)}
+                    </p>
+                  </article>
+                ))
+              )}
+            </div>
+          ) : null}
         </section>
 
         <section className="mt-4 rounded-[30px] border border-emerald-100 bg-white p-5 shadow-sm">

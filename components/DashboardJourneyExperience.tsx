@@ -1697,6 +1697,7 @@ export default function DashboardJourneyExperience({
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
   const previousCompletedCountRef = useRef<number | null>(null);
   const previousJourneyKeyRef = useRef<string | null>(null);
+  const autoOpenedCompletedBibleYearDayRef = useRef<number | null>(null);
   const [activePage, setActivePage] = useState(0);
   const [celebratingTasks, setCelebratingTasks] = useState<Record<string, number>>({});
   const [clearedDoneTaskKinds, setClearedDoneTaskKinds] = useState<Record<string, boolean>>({});
@@ -3504,6 +3505,34 @@ export default function DashboardJourneyExperience({
     bibleYearDashboardActive,
     bibleYearProgressLoaded,
     selectedBibleYearSeriesDay?.dayNumber,
+  ]);
+
+  useEffect(() => {
+    if (!bibleYearProgressLoaded || !bibleYearDashboardActive || !activeBibleYearDashboardDay) return;
+
+    const activeDayNumber = activeBibleYearDashboardDay.dayNumber;
+    if (!isBibleYearDayComplete(activeBibleYearDashboardDay)) {
+      if (autoOpenedCompletedBibleYearDayRef.current === activeDayNumber) {
+        autoOpenedCompletedBibleYearDayRef.current = null;
+      }
+      return;
+    }
+
+    if (bibleYearJustCompletedDayRef.current === activeDayNumber) return;
+    if (bibleYearCompletedTasksExpandedDay === activeDayNumber) {
+      autoOpenedCompletedBibleYearDayRef.current = activeDayNumber;
+      return;
+    }
+    if (autoOpenedCompletedBibleYearDayRef.current === activeDayNumber) return;
+
+    autoOpenedCompletedBibleYearDayRef.current = activeDayNumber;
+    setBibleYearCompletedTasksExpandedDay(activeDayNumber);
+  }, [
+    activeBibleYearDashboardDay?.dayNumber,
+    bibleYearCompletedCardsByDay,
+    bibleYearCompletedTasksExpandedDay,
+    bibleYearDashboardActive,
+    bibleYearProgressLoaded,
   ]);
 
   useEffect(() => {

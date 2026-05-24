@@ -5,10 +5,14 @@ import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import {
-  APP_THEME_STORAGE_KEY,
   APP_THEMES,
   applyAppThemeToDocument,
+  cacheAppThemeForUser,
+  clearPendingAppThemeSync,
+  isIncomingAppThemeOlderThanCache,
   normalizeAppThemeId,
+  readCachedAppTheme,
+  shouldPreferCachedAppTheme,
   type AppThemeId,
 } from "../../lib/appThemes";
 import { BUDDY_STORE_ITEMS, PREMIUM_SKIN_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
@@ -47,6 +51,7 @@ type SettingsProfileRow = {
   display_name?: string | null;
   username?: string | null;
   app_theme?: string | null;
+  app_theme_selected_at?: string | null;
   selected_streak_flame?: string | null;
   selected_buddy_avatar?: string | null;
   active_premium_skin?: string | null;
@@ -101,6 +106,7 @@ export default function SettingsPage() {
   const [buddyReadyModal, setBuddyReadyModal] = useState<BuddyReadyModal | null>(null);
   const [activeBuddyIndex, setActiveBuddyIndex] = useState(0);
   const [removingItemId, setRemovingItemId] = useState<string | null>(null);
+  const [openSkinActionsId, setOpenSkinActionsId] = useState<string | null>(null);
   const buddySwipeStartRef = useRef<{ x: number; y: number } | null>(null);
   
   // Profile fields
@@ -134,12 +140,12 @@ export default function SettingsPage() {
 
         const profileRequest = await supabase
           .from("profile_stats")
-          .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at")
+          .select("display_name, username, app_theme, app_theme_selected_at, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at")
           .eq("user_id", currentUser.id)
           .maybeSingle();
 
         let profile = profileRequest.data as SettingsProfileRow | null;
-        if (profileRequest.error && /active_premium_skin_selected_at/i.test(profileRequest.error.message || "")) {
+        if (profileRequest.error && /app_theme_selected_at|active_premium_skin_selected_at/i.test(profileRequest.error.message || "")) {
           const fallbackProfile = await supabase
             .from("profile_stats")
             .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar, active_premium_skin")
@@ -171,8 +177,14 @@ export default function SettingsPage() {
         );
         setFirstName(nameParts.firstName);
         setLastName(nameParts.lastName);
-        const savedTheme = normalizeAppThemeId(profile?.app_theme);
-        setSelectedTheme(savedTheme === "dark" ? "dark" : "light");
+        const dbTheme = normalizeAppThemeId(profile?.app_theme);
+        const hasThemeSelectedAt = Boolean(profile?.app_theme_selected_at);
+        const savedTheme = isIncomingAppThemeOlderThanCache(currentUser.id, profile?.app_theme_selected_at)
+          ? readCachedAppTheme(currentUser.id)
+          : !hasThemeSelectedAt && shouldPreferCachedAppTheme(currentUser.id, dbTheme)
+          ? readCachedAppTheme(currentUser.id)
+          : dbTheme;
+        setSelectedTheme(savedTheme);
         const dbPremiumSkin: PremiumSkinId =
           profile && "active_premium_skin" in profile && profile.active_premium_skin
             ? normalizePremiumSkinId(profile.active_premium_skin)
@@ -224,7 +236,9 @@ export default function SettingsPage() {
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(currentUser.id, safePremiumSkin);
           if (dbPremiumSkin === safePremiumSkin) clearPendingPremiumSkinSync(currentUser.id, safePremiumSkin);
-          applyAppThemeToDocument(savedTheme === "dark" ? "dark" : "light");
+          cacheAppThemeForUser(currentUser.id, savedTheme);
+          if (dbTheme === savedTheme) clearPendingAppThemeSync(currentUser.id, savedTheme);
+          applyAppThemeToDocument(savedTheme);
           applyPremiumSkinToDocument(safePremiumSkin);
           window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: resolvedSelectedBuddy } }));
         }
@@ -401,28 +415,40 @@ export default function SettingsPage() {
     setSettingsMessage(null);
     setSelectedTheme(themeId);
     if (typeof window !== "undefined") {
-      window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
-      window.localStorage.setItem("bb:dashboard-theme", themeId);
+      cacheAppThemeForUser(user.id, themeId, { markSelected: true });
       applyAppThemeToDocument(themeId);
       applyPremiumSkinToDocument(selectedPremiumSkin);
       window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId } }));
     }
     try {
-      const { error } = await supabase.from("profile_stats").upsert(
+      const selectedAt = new Date().toISOString();
+      let { error } = await supabase.from("profile_stats").upsert(
         {
           user_id: user.id,
           app_theme: themeId,
-          updated_at: new Date().toISOString(),
+          app_theme_selected_at: selectedAt,
+          updated_at: selectedAt,
         },
         { onConflict: "user_id" },
       );
+      if (error && /app_theme_selected_at/i.test(error.message || "")) {
+        const fallback = await supabase.from("profile_stats").upsert(
+          {
+            user_id: user.id,
+            app_theme: themeId,
+            updated_at: selectedAt,
+          },
+          { onConflict: "user_id" },
+        );
+        error = fallback.error;
+      }
       if (error) throw error;
+      clearPendingAppThemeSync(user.id, themeId);
       setSettingsMessage("Theme updated.");
     } catch (error: any) {
       setSelectedTheme(previousTheme);
       if (typeof window !== "undefined") {
-        window.localStorage.setItem(APP_THEME_STORAGE_KEY, previousTheme);
-        window.localStorage.setItem("bb:dashboard-theme", previousTheme);
+        cacheAppThemeForUser(user.id, previousTheme);
         applyAppThemeToDocument(previousTheme);
         applyPremiumSkinToDocument(selectedPremiumSkin);
         window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId: previousTheme } }));
@@ -630,6 +656,7 @@ export default function SettingsPage() {
 
     setRemovingItemId(itemId);
     setSettingsMessage(null);
+    setOpenSkinActionsId(null);
     try {
       const { error } = await supabase
         .from("user_store_purchases")
@@ -839,19 +866,20 @@ export default function SettingsPage() {
                 selectedPremiumSkin === "none" ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
               }`}
             >
+              <div className="grid h-28 place-items-center rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-200">
+                <span className="text-3xl">BB</span>
+              </div>
+              <p className="mt-3 text-sm font-black text-gray-950">No Skin</p>
+              <p className="mt-1 text-xs font-semibold text-gray-500">
+                {selectedPremiumSkin === "none" ? "Active default" : "BibleBuddy's clean base look"}
+              </p>
               <button
                 type="button"
                 onClick={() => void handlePremiumSkinSelect("none")}
-                disabled={skinSaving === "none"}
-                className="w-full text-left transition hover:-translate-y-0.5 disabled:hover:translate-y-0"
+                disabled={selectedPremiumSkin === "none" || skinSaving === "none"}
+                className="mt-3 w-full rounded-full bg-[var(--bb-button,#2563eb)] px-3 py-2.5 text-xs font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:bg-gray-100 disabled:text-gray-500 disabled:shadow-none"
               >
-                <div className="grid h-28 place-items-center rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-200">
-                  <span className="text-3xl">BB</span>
-                </div>
-                <p className="mt-3 text-sm font-black text-gray-950">No Skin</p>
-                <p className="mt-1 text-xs font-semibold text-gray-500">
-                  {skinSaving === "none" ? "Saving..." : selectedPremiumSkin === "none" ? "Active" : "Use default"}
-                </p>
+                {skinSaving === "none" ? "Saving..." : selectedPremiumSkin === "none" ? "Set" : "Set Skin"}
               </button>
             </div>
 
@@ -867,6 +895,56 @@ export default function SettingsPage() {
                     selectedPremiumSkin === skin.id ? "border-[var(--bb-accent,#5DD6FF)] ring-2 ring-[var(--bb-accent,#5DD6FF)]/25" : "border-gray-200"
                   }`}
                 >
+                  <div
+                    className="relative h-28 overflow-hidden rounded-2xl border shadow-[0_12px_26px_rgba(7,16,20,0.12)]"
+                    style={{
+                      background: `linear-gradient(135deg, ${skin.palette.background}, ${skin.palette.accentSoft})`,
+                      borderColor: skin.palette.cardBorder,
+                    }}
+                  >
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: `radial-gradient(circle at 70% 18%, ${skin.palette.accentSoft}, transparent 34%)` }}
+                    />
+                    <div
+                      className="absolute bottom-3 left-3 rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em]"
+                      style={{
+                        backgroundColor: skin.palette.card,
+                        borderColor: skin.palette.cardBorder,
+                        color: skin.palette.accent,
+                      }}
+                    >
+                      Color Skin
+                    </div>
+                    {canDelete && storeItem ? (
+                      <div className="absolute right-2 top-2">
+                        <button
+                          type="button"
+                          onClick={() => setOpenSkinActionsId((current) => (current === skin.id ? null : skin.id))}
+                          className="grid h-9 w-9 place-items-center rounded-full border border-white/70 bg-white/90 text-lg font-black text-gray-700 shadow-sm transition hover:bg-white"
+                          aria-label={`${skin.name} options`}
+                        >
+                          ...
+                        </button>
+                        {openSkinActionsId === skin.id ? (
+                          <div className="absolute right-0 top-11 z-10 w-36 overflow-hidden rounded-2xl border border-red-100 bg-white p-1 shadow-xl">
+                            <button
+                              type="button"
+                              onClick={() => void handleDeleteStoreItem(storeItem.id)}
+                              disabled={removingItemId === storeItem.id}
+                              className="w-full rounded-xl px-3 py-2 text-left text-xs font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
+                            >
+                              {removingItemId === storeItem.id ? "Removing..." : "Delete Skin"}
+                            </button>
+                          </div>
+                        ) : null}
+                      </div>
+                    ) : null}
+                  </div>
+                  <p className="mt-3 text-sm font-black text-gray-950">{skin.name}</p>
+                  <p className="mt-1 text-xs font-semibold text-gray-500">
+                    {selectedPremiumSkin === skin.id ? "Active skin" : hasSkinAccess ? "Ready to set" : "Locked"}
+                  </p>
                   <button
                     type="button"
                     onClick={() => {
@@ -876,35 +954,14 @@ export default function SettingsPage() {
                       }
                       void handlePremiumSkinSelect(skin.id);
                     }}
-                    disabled={skinSaving === skin.id}
-                    className="w-full text-left transition hover:-translate-y-0.5 disabled:hover:translate-y-0"
+                    disabled={!hasSkinAccess || selectedPremiumSkin === skin.id || skinSaving === skin.id}
+                    className="mt-3 w-full rounded-full px-3 py-2.5 text-xs font-black shadow-sm transition hover:brightness-95 disabled:bg-gray-100 disabled:text-gray-500 disabled:shadow-none"
+                    style={{
+                      backgroundColor: hasSkinAccess && selectedPremiumSkin !== skin.id ? skin.palette.accent : undefined,
+                      color: hasSkinAccess && selectedPremiumSkin !== skin.id ? skin.palette.buttonText : undefined,
+                    }}
                   >
-                    <div
-                      className="relative h-28 overflow-hidden rounded-2xl border shadow-[0_12px_26px_rgba(7,16,20,0.12)]"
-                      style={{
-                        background: `linear-gradient(135deg, ${skin.palette.background}, ${skin.palette.accentSoft})`,
-                        borderColor: skin.palette.cardBorder,
-                      }}
-                    >
-                      <div
-                        className="absolute inset-0"
-                        style={{ background: `radial-gradient(circle at 70% 18%, ${skin.palette.accentSoft}, transparent 34%)` }}
-                      />
-                      <div
-                        className="absolute bottom-3 left-3 rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em]"
-                        style={{
-                          backgroundColor: skin.palette.card,
-                          borderColor: skin.palette.cardBorder,
-                          color: skin.palette.accent,
-                        }}
-                      >
-                        Color Skin
-                      </div>
-                    </div>
-                    <p className="mt-3 text-sm font-black text-gray-950">{skin.name}</p>
-                    <p className="mt-1 text-xs font-semibold text-gray-500">
-                      {skinSaving === skin.id ? "Saving..." : selectedPremiumSkin === skin.id ? "Active" : hasSkinAccess ? "Use skin" : "Locked"}
-                    </p>
+                    {skinSaving === skin.id ? "Saving..." : selectedPremiumSkin === skin.id ? "Set" : "Set Skin"}
                   </button>
                   {!hasSkinAccess ? (
                     <button
@@ -918,16 +975,6 @@ export default function SettingsPage() {
                       }}
                     >
                       Open Diamond Store
-                    </button>
-                  ) : null}
-                  {canDelete && storeItem ? (
-                    <button
-                      type="button"
-                      onClick={() => void handleDeleteStoreItem(storeItem.id)}
-                      disabled={removingItemId === storeItem.id}
-                      className="mt-3 w-full rounded-full border border-red-200 px-3 py-1.5 text-xs font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
-                    >
-                      {removingItemId === storeItem.id ? "Removing..." : "Delete"}
                     </button>
                   ) : null}
                 </div>

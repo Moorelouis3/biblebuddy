@@ -158,15 +158,25 @@ type LandingAnalyticsEvent =
   | "landing_page_visit"
   | "clicked_start_journey"
   | "started_onboarding"
+  | "viewed_onboarding_intro"
+  | "viewed_question_1"
+  | "viewed_question_2"
+  | "viewed_question_3_age"
+  | "viewed_question_4"
+  | "viewed_question_5"
   | "completed_question_1"
   | "completed_question_2"
   | "completed_question_3_age"
   | "completed_question_4"
   | "completed_question_5"
+  | "viewed_results_loading"
+  | "viewed_results_page"
   | "reached_results_page"
   | "clicked_yes_start_my_journey"
+  | "viewed_create_account_modal"
   | "opened_create_account_modal"
-  | "created_account_successfully";
+  | "created_account_successfully"
+  | "closed_onboarding";
 
 function getLandingSessionId() {
   if (typeof window === "undefined") return "server";
@@ -226,6 +236,14 @@ function trackLandingEvent(eventName: LandingAnalyticsEvent, metadata: Record<st
   }).catch((error) => {
     console.error("Landing analytics event failed:", error);
   });
+}
+
+function trackLandingEventOnce(eventName: LandingAnalyticsEvent, metadata: Record<string, unknown> = {}, userId?: string) {
+  if (typeof window === "undefined") return;
+  const eventKey = `bb:landing-event:${getLandingSessionId()}:${eventName}:${String(metadata.stepKey || metadata.question_id || "")}`;
+  if (window.sessionStorage.getItem(eventKey) === "1") return;
+  window.sessionStorage.setItem(eventKey, "1");
+  trackLandingEvent(eventName, metadata, userId);
 }
 
 async function saveLandingOnboardingResponse({
@@ -499,6 +517,48 @@ export default function LandingPage() {
     };
   }, [onboardingStep]);
 
+  useEffect(() => {
+    if (!onboardingOpen) return;
+
+    if (onboardingStep === "intro") {
+      trackLandingEventOnce("viewed_onboarding_intro", { stepKey: "intro" });
+      return;
+    }
+
+    if (onboardingStep === "question" && currentQuestion) {
+      const viewedQuestionEvents: LandingAnalyticsEvent[] = [
+        "viewed_question_1",
+        "viewed_question_2",
+        "viewed_question_3_age",
+        "viewed_question_4",
+        "viewed_question_5",
+      ];
+      const eventName = viewedQuestionEvents[questionIndex];
+      if (eventName) {
+        trackLandingEventOnce(eventName, {
+          stepKey: `question_${questionIndex + 1}`,
+          question_id: currentQuestion.id,
+          question_title: currentQuestion.title,
+        });
+      }
+      return;
+    }
+
+    if (onboardingStep === "loading") {
+      trackLandingEventOnce("viewed_results_loading", { stepKey: "results_loading" });
+      return;
+    }
+
+    if (onboardingStep === "recommendation") {
+      trackLandingEventOnce("viewed_results_page", { stepKey: "results_page", recommendationDays });
+      return;
+    }
+
+    if (onboardingStep === "account") {
+      trackLandingEventOnce("viewed_create_account_modal", { stepKey: "account" });
+    }
+  }, [currentQuestion, onboardingOpen, onboardingStep, questionIndex, recommendationDays]);
+
   function openQuestionnaire() {
     trackLandingEvent("clicked_start_journey");
     setOnboardingOpen(true);
@@ -506,6 +566,16 @@ export default function LandingPage() {
     setQuestionIndex(0);
     setAccountAttempted(false);
     setError(null);
+  }
+
+  function closeQuestionnaire(closedFrom: string) {
+    trackLandingEvent("closed_onboarding", {
+      closedFrom,
+      step: onboardingStep,
+      questionIndex: onboardingStep === "question" ? questionIndex + 1 : null,
+      questionId: onboardingStep === "question" ? currentQuestion?.id : null,
+    });
+    setOnboardingOpen(false);
   }
 
   function startQuestionnaire() {
@@ -994,7 +1064,7 @@ export default function LandingPage() {
       {onboardingOpen ? (
         <OnboardingFlow
           step={onboardingStep}
-          onClose={() => setOnboardingOpen(false)}
+          onClose={(closedFrom) => closeQuestionnaire(closedFrom)}
           onStart={startQuestionnaire}
           onSkip={skipToAccount}
           question={currentQuestion}
@@ -1877,7 +1947,7 @@ function OnboardingIntroIcon({ name }: { name: string }) {
 
 function OnboardingFlow(props: {
   step: OnboardingStep;
-  onClose: () => void;
+  onClose: (closedFrom: string) => void;
   onStart: () => void;
   onSkip: () => void;
   question: (typeof questions)[number] | undefined;
@@ -1986,7 +2056,7 @@ function OnboardingFlow(props: {
           {props.step !== "loading" ? (
             <button
               type="button"
-              onClick={props.onClose}
+              onClick={() => props.onClose("x_button")}
               className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full border border-[#eadcc2] bg-white text-sm font-black text-[#667085] transition hover:text-[#0E1A3A]"
               aria-label="Close onboarding"
             >
@@ -2049,7 +2119,7 @@ function OnboardingFlow(props: {
                 </button>
                 <button
                   type="button"
-                  onClick={props.onClose}
+                  onClick={() => props.onClose("intro_no_thanks")}
                   className="w-full rounded-2xl border px-5 py-4 text-sm font-black transition"
                   style={{ backgroundColor: "#f3f4f6", borderColor: "#d8d5cf", color: "#111827" }}
                 >
@@ -2180,7 +2250,7 @@ function OnboardingFlow(props: {
               <p className="mt-5 text-center text-base font-black text-[#0E1A3A]">Ready to start your journey?</p>
               <div className="mt-4 grid gap-3">
                 <button type="button" onClick={props.openAccountFromRecommendation} className="rounded-2xl px-4 py-4 text-sm font-black" style={{ backgroundColor: "#0E1A3A", color: "#ffffff" }}>Yes, start my journey</button>
-                <button type="button" onClick={props.onClose} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#f3f4f6", borderColor: "#d8d5cf", color: "#111827" }}>Not right now</button>
+                <button type="button" onClick={() => props.onClose("recommendation_not_right_now")} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#f3f4f6", borderColor: "#d8d5cf", color: "#111827" }}>Not right now</button>
               </div>
             </div>
           ) : null}

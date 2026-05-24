@@ -124,7 +124,9 @@ const ZORIAN_USER_ID = "6ffe9dd2-884b-4a6b-8096-e9418dd56232";
 const ZORIAN_RESTORATION_ACTION_LABEL = "admin_bonus_points:1000:zorian-login-restoration-may-2026";
 const ZORIAN_RESTORATION_POPUP_KEY = "bb:bonus-popup:zorian-login-restoration-1000:v1";
 const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
+const PAUSE_EXTRA_AUTOMATIC_DASHBOARD_POPUPS = true;
 const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 60 * 60 * 1000;
+const DASHBOARD_UPGRADE_NUDGE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
 const MAX_BADGE_POPUPS_PER_SESSION = 3;
 const MYSTERY_PRIZE_REWARDS = [100, 150, 200, 250, 300, 400, 500];
@@ -1347,8 +1349,14 @@ export default function DashboardPage() {
   }
 
   function getDailyPopupStep(index: number): DailyPopupStep {
-    const steps: DailyPopupStep[] = ["streak", "share_howto", "mystery", "upgrade", "invite_howto", "store_buddies", "bible_tip", "store_diamonds"];
+    const steps: DailyPopupStep[] = PAUSE_EXTRA_AUTOMATIC_DASHBOARD_POPUPS
+      ? ["streak", "mystery", "upgrade"]
+      : ["streak", "share_howto", "mystery", "upgrade", "invite_howto", "store_buddies", "bible_tip", "store_diamonds"];
     return steps[Math.abs(index) % steps.length];
+  }
+
+  function getDashboardUpgradeNudgeLastShownKey(currentUserId: string) {
+    return `bb:dashboard-upgrade-nudge:last-shown:${currentUserId}`;
   }
 
   function getDashboardLouisNudgeRotationKey(currentUserId: string, dayKey: string) {
@@ -3956,6 +3964,10 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!userId || !profile || !bibleYearProgressChecked || hasBlockingDashboardOverlay) return;
+    if (PAUSE_EXTRA_AUTOMATIC_DASHBOARD_POPUPS) {
+      setShowBibleYearLaunchModal(false);
+      return;
+    }
     const handledKey = getBibleYearLaunchHandledKey(userId);
     const launchHandledLocally =
       bibleYearLaunchHandledRef.current === handledKey ||
@@ -5655,12 +5667,14 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (typeof window === "undefined" || userId !== JESSICA_BONUS_USER_ID || !hasJessicaBonusAward) return;
+    if (PAUSE_EXTRA_AUTOMATIC_DASHBOARD_POPUPS) return;
     if (window.localStorage.getItem(JESSICA_BONUS_POPUP_KEY) === "1") return;
     setShowJessicaBonusModal(true);
   }, [hasJessicaBonusAward, userId]);
 
   useEffect(() => {
     if (typeof window === "undefined" || userId !== ZORIAN_USER_ID || !hasZorianRestorationAward) return;
+    if (PAUSE_EXTRA_AUTOMATIC_DASHBOARD_POPUPS) return;
     if (window.localStorage.getItem(ZORIAN_RESTORATION_POPUP_KEY) === "1") return;
     setShowZorianRestorationModal(true);
   }, [hasZorianRestorationAward, userId]);
@@ -5842,10 +5856,14 @@ export default function DashboardPage() {
           markDailyPopupShown();
           return true;
         }
-        setStreakMotivationModalMode("checkin");
-        setShowStreakMotivationTaskPrompt(false);
-        setLouisDashboardNudge(pickUpgradePopupNudge());
-        setShowStreakMotivationModal(true);
+        const upgradeNudgeKey = getDashboardUpgradeNudgeLastShownKey(currentUserId);
+        const upgradeNudgeLastShownAt = Number(window.localStorage.getItem(upgradeNudgeKey) || "0");
+        if (upgradeNudgeLastShownAt && Date.now() - upgradeNudgeLastShownAt < DASHBOARD_UPGRADE_NUDGE_COOLDOWN_MS) {
+          markDailyPopupShown();
+          return true;
+        }
+        setShowDeepStudyUpgradeModal(true);
+        window.localStorage.setItem(upgradeNudgeKey, String(Date.now()));
         markDailyPopupShown();
         return true;
       }
@@ -6365,7 +6383,7 @@ export default function DashboardPage() {
     ...(dailyLoginGiftReveal
       ? [{ popup_id: "dashboard:reward:daily-login-gift", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 30, user_id: userId, payload: dailyLoginGiftReveal }]
       : []),
-    ...(moderatorWeeklyPayoutReveal
+    ...(!PAUSE_EXTRA_AUTOMATIC_DASHBOARD_POPUPS && moderatorWeeklyPayoutReveal
       ? [{ popup_id: "dashboard:reward:moderator-weekly-payout", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 28, user_id: userId, payload: moderatorWeeklyPayoutReveal }]
       : []),
     ...(activeEarnedBadge
@@ -6910,6 +6928,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (typeof window === "undefined" || !userId || !profile?.bible_year_started_at || hasBibleYearTaskProgress) return;
+    if (PAUSE_EXTRA_AUTOMATIC_DASHBOARD_POPUPS) return;
     if (!window.sessionStorage.getItem(getBibleYearExpectIntroPendingKey(userId))) return;
     setShowBibleYearExpectModal(true);
   }, [hasBibleYearTaskProgress, profile?.bible_year_started_at, userId]);
@@ -9990,30 +10009,71 @@ export default function DashboardPage() {
       <ModalShell
         isOpen={showDeepStudyUpgradeModal}
         onClose={() => setShowDeepStudyUpgradeModal(false)}
-        backdropColor="bg-black/55"
+        backdropColor="bg-black/60"
       >
-        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[30px] border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] shadow-2xl">
-          <div className="px-6 py-7 text-center sm:px-8">
-            <div className="flex justify-center">
-              <LouisAvatar mood="wave" size={128} />
-            </div>
-            <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Deep Study Pro</p>
-            <h2 className="mt-2 text-3xl font-black text-[var(--bb-text-primary,#21304f)]">More Study Time Options</h2>
-            <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#58709d)]">
-              Upgrade to unlock the 5, 10, 45, and 60 minute Deep Study options.
+        <div className="relative mx-4 w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[#ead9bd] bg-[#fffdf8] px-4 py-4 text-center text-[#0f1b33] shadow-[0_20px_58px_rgba(15,23,42,0.28)]">
+          <button
+            type="button"
+            onClick={() => setShowDeepStudyUpgradeModal(false)}
+            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[#e7dccb] bg-white/90 text-lg font-black text-[#0f1b33] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[#fff4dc]"
+            aria-label="Close upgrade prompt"
+          >
+            x
+          </button>
+
+          <div className="pr-9 text-left sm:text-center">
+            <h2 className="font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[#0b162f] sm:text-[28px]">
+              Don&apos;t just read.
+              <span className="block">Finally <span className="text-[#2f7fe8]">understand.</span></span>
+            </h2>
+            <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[#8eb8ee] opacity-70 sm:w-44" aria-hidden="true" />
+          </div>
+
+          <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[#263855] sm:text-center">
+            <p>Bible Buddy Free helps you stay consistent.</p>
+            <p>
+              Bible Buddy Pro helps you <span className="font-black text-[#1f65c7]">understand Scripture more deeply</span> with Study Notes built for context, clarity, and verse by verse learning.
             </p>
+          </div>
+
+          <div className="mt-3 rounded-[18px] border border-[#ead9bd] bg-white/72 px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(102,65,12,0.07)]">
+            <div className="grid gap-2">
+              {[
+                ["Book", "Verse by verse breakdowns", "Understand difficult passages one section at a time.", "bg-[#eadcff] text-[#6d3fd1]"],
+                ["Search", "Hebrew & Greek word studies", "Discover what key words and phrases originally meant.", "bg-[#dff0d8] text-[#3b7a39]"],
+                ["Link", "Themes & Scripture connections", "See how stories, ideas, and people connect across the Bible.", "bg-[#ddecff] text-[#2f6bcf]"],
+              ].map(([icon, title, description, iconClass], index) => (
+                <div key={title} className={`flex gap-2.5 ${index > 0 ? "border-t border-[#eadfce] pt-2" : ""}`}>
+                  <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[10px] font-black ${iconClass}`} aria-hidden="true">
+                    {icon}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-black leading-tight text-[#0b162f]">{title}</span>
+                    <span className="mt-0.5 block text-[11px] font-semibold leading-4 text-[#3b4b66]">{description}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-3 grid gap-2">
             <Link
               href="/upgrade"
-              className="mt-5 inline-flex w-full justify-center rounded-full bg-[var(--bb-button,#7BAFD4)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+              onClick={() => setShowDeepStudyUpgradeModal(false)}
+              className="flex w-full items-center justify-center rounded-[17px] bg-[#2f7fe8] px-4 py-3 text-center text-white shadow-[0_12px_24px_rgba(47,127,232,0.24)] transition hover:brightness-105"
             >
-              Upgrade to Pro
+              <span>
+                <span className="block text-sm font-black leading-tight">Unlock Study Notes</span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Start understanding Scripture more deeply</span>
+              </span>
             </Link>
             <button
               type="button"
               onClick={() => setShowDeepStudyUpgradeModal(false)}
-              className="mt-2 inline-flex w-full justify-center rounded-full border border-[var(--bb-card-border,#d7e4f7)] bg-[var(--bb-card,#ffffff)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#21304f)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+              className="rounded-[15px] border border-[#7aaaf3] bg-white/78 px-4 py-2 text-[#0f1b33] transition hover:bg-[#f4f8ff]"
             >
-              Not now
+              <span className="block text-xs font-black leading-tight">Continue with Free Plan</span>
+              <span className="mt-0.5 block text-[11px] font-semibold text-[#4c5d78]">Keep studying with the free plan</span>
             </button>
           </div>
         </div>

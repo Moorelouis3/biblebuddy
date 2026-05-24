@@ -307,6 +307,9 @@ export const APP_THEMES: AppTheme[] = [
 
 export const APP_THEME_BY_ID = new Map(APP_THEMES.map((theme) => [theme.id, theme]));
 export const APP_THEME_STORAGE_KEY = "bb:app-theme";
+export const APP_THEME_STORAGE_TIMESTAMP_KEY = "bb:app-theme-updated-at";
+export const APP_THEME_PENDING_SYNC_KEY = "bb:app-theme-pending-sync";
+export const APP_THEME_PENDING_SYNC_MS = 90 * 1000;
 
 export function normalizeAppThemeId(value: unknown): AppThemeId {
   return APP_THEME_BY_ID.has(value as AppThemeId) ? (value as AppThemeId) : "light";
@@ -314,6 +317,98 @@ export function normalizeAppThemeId(value: unknown): AppThemeId {
 
 export function getAppTheme(value: unknown): AppTheme {
   return APP_THEME_BY_ID.get(normalizeAppThemeId(value)) ?? lightTheme;
+}
+
+export function getAppThemeStorageKey(userId: string | null | undefined) {
+  return userId ? `${APP_THEME_STORAGE_KEY}:${userId}` : APP_THEME_STORAGE_KEY;
+}
+
+export function getAppThemeStorageTimestampKey(userId: string | null | undefined) {
+  return userId ? `${APP_THEME_STORAGE_TIMESTAMP_KEY}:${userId}` : APP_THEME_STORAGE_TIMESTAMP_KEY;
+}
+
+export function getAppThemePendingSyncKey(userId: string | null | undefined) {
+  return userId ? `${APP_THEME_PENDING_SYNC_KEY}:${userId}` : APP_THEME_PENDING_SYNC_KEY;
+}
+
+export function readCachedAppTheme(userId: string | null | undefined): AppThemeId {
+  if (typeof window === "undefined") return "light";
+  return normalizeAppThemeId(
+    (userId ? window.localStorage.getItem(getAppThemeStorageKey(userId)) : null) ||
+      window.localStorage.getItem(APP_THEME_STORAGE_KEY) ||
+      window.localStorage.getItem("bb:dashboard-theme"),
+  );
+}
+
+export function readCachedAppThemeUpdatedAtMs(userId: string | null | undefined) {
+  if (typeof window === "undefined") return 0;
+  const raw =
+    (userId ? window.localStorage.getItem(getAppThemeStorageTimestampKey(userId)) : null) ||
+    window.localStorage.getItem(APP_THEME_STORAGE_TIMESTAMP_KEY);
+  const updatedAt = Number(raw);
+  return Number.isFinite(updatedAt) ? updatedAt : 0;
+}
+
+export function readPendingAppThemeSync(userId: string | null | undefined) {
+  if (typeof window === "undefined" || !userId) return null;
+  const raw = window.localStorage.getItem(getAppThemePendingSyncKey(userId));
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as { themeId?: unknown; startedAt?: unknown };
+    const themeId = normalizeAppThemeId(parsed.themeId);
+    const startedAt = Number(parsed.startedAt);
+    if (!Number.isFinite(startedAt)) return null;
+    if (Date.now() - startedAt > APP_THEME_PENDING_SYNC_MS) {
+      window.localStorage.removeItem(getAppThemePendingSyncKey(userId));
+      return null;
+    }
+    return { themeId, startedAt };
+  } catch {
+    window.localStorage.removeItem(getAppThemePendingSyncKey(userId));
+    return null;
+  }
+}
+
+export function shouldPreferCachedAppTheme(userId: string | null | undefined, authoritativeThemeId: AppThemeId) {
+  if (typeof window === "undefined" || !userId) return false;
+  const cachedThemeId = readCachedAppTheme(userId);
+  if (cachedThemeId === authoritativeThemeId) return false;
+  const pendingSync = readPendingAppThemeSync(userId);
+  return Boolean(pendingSync && pendingSync.themeId === cachedThemeId);
+}
+
+export function cacheAppThemeForUser(userId: string | null | undefined, themeId: AppThemeId, options: { markSelected?: boolean } = {}) {
+  if (typeof window === "undefined") return;
+  const normalizedThemeId = normalizeAppThemeId(themeId);
+  if (userId) window.localStorage.setItem(getAppThemeStorageKey(userId), normalizedThemeId);
+  window.localStorage.setItem(APP_THEME_STORAGE_KEY, normalizedThemeId);
+  window.localStorage.setItem("bb:dashboard-theme", normalizedThemeId);
+  if (options.markSelected) {
+    const updatedAt = String(Date.now());
+    if (userId) window.localStorage.setItem(getAppThemeStorageTimestampKey(userId), updatedAt);
+    window.localStorage.setItem(APP_THEME_STORAGE_TIMESTAMP_KEY, updatedAt);
+    if (userId) {
+      window.localStorage.setItem(getAppThemePendingSyncKey(userId), JSON.stringify({ themeId: normalizedThemeId, startedAt: Number(updatedAt) }));
+    }
+  }
+}
+
+export function isIncomingAppThemeOlderThanCache(userId: string | null | undefined, selectedAt: string | null | undefined) {
+  if (typeof window === "undefined" || !userId || !selectedAt) return false;
+  const pendingSync = readPendingAppThemeSync(userId);
+  if (!pendingSync) return false;
+  const incomingSelectedAtMs = Date.parse(selectedAt);
+  if (!Number.isFinite(incomingSelectedAtMs)) return false;
+  const cachedUpdatedAtMs = readCachedAppThemeUpdatedAtMs(userId);
+  return cachedUpdatedAtMs > incomingSelectedAtMs;
+}
+
+export function clearPendingAppThemeSync(userId: string | null | undefined, themeId?: AppThemeId) {
+  if (typeof window === "undefined" || !userId) return;
+  const pendingSync = readPendingAppThemeSync(userId);
+  if (!themeId || pendingSync?.themeId === themeId) {
+    window.localStorage.removeItem(getAppThemePendingSyncKey(userId));
+  }
 }
 
 export function applyAppThemeToDocument(themeId: AppThemeId) {

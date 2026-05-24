@@ -54,15 +54,36 @@ const FUNNEL_CONFIG = [
   { key: "visits", eventName: "landing_page_visit", label: "Landing page visits" },
   { key: "clickedStart", eventName: "clicked_start_journey", label: "Clicked Start Journey" },
   { key: "startedOnboarding", eventName: "started_onboarding", label: "Started onboarding" },
+  { key: "viewedIntro", eventName: "viewed_onboarding_intro", label: "Viewed onboarding intro" },
+  { key: "viewedQuestion1", eventName: "viewed_question_1", label: "Viewed Question 1" },
   { key: "question1", eventName: "completed_question_1", label: "Completed Question 1" },
+  { key: "viewedQuestion2", eventName: "viewed_question_2", label: "Viewed Question 2" },
   { key: "question2", eventName: "completed_question_2", label: "Completed Question 2" },
+  { key: "viewedQuestion3Age", eventName: "viewed_question_3_age", label: "Viewed Question 3 - Age" },
   { key: "question3Age", eventName: "completed_question_3_age", label: "Completed Question 3 - Age" },
+  { key: "viewedQuestion4", eventName: "viewed_question_4", label: "Viewed Question 4" },
   { key: "question4", eventName: "completed_question_4", label: "Completed Question 4" },
+  { key: "viewedQuestion5", eventName: "viewed_question_5", label: "Viewed Question 5" },
   { key: "question5", eventName: "completed_question_5", label: "Completed Question 5" },
+  { key: "viewedLoading", eventName: "viewed_results_loading", label: "Viewed results loading" },
+  { key: "viewedResults", eventName: "viewed_results_page", label: "Viewed results page" },
   { key: "reachedResults", eventName: "reached_results_page", label: "Reached results page" },
   { key: "clickedJourney", eventName: "clicked_yes_start_my_journey", label: "Clicked Yes, start my journey" },
+  { key: "viewedAccount", eventName: "viewed_create_account_modal", label: "Viewed Create Account modal" },
   { key: "openedAccount", eventName: "opened_create_account_modal", label: "Opened Create Account modal" },
   { key: "createdAccount", eventName: "created_account_successfully", label: "Created account" },
+] as const;
+
+const PUBLIC_ONBOARDING_STEP_CONFIG = [
+  { key: "intro", eventName: "viewed_onboarding_intro", label: "Intro opened" },
+  { key: "question1", eventName: "viewed_question_1", label: "Question 1 viewed" },
+  { key: "question2", eventName: "viewed_question_2", label: "Question 2 viewed" },
+  { key: "question3", eventName: "viewed_question_3_age", label: "Question 3 viewed" },
+  { key: "question4", eventName: "viewed_question_4", label: "Question 4 viewed" },
+  { key: "question5", eventName: "viewed_question_5", label: "Question 5 viewed" },
+  { key: "results", eventName: "viewed_results_page", label: "Results viewed" },
+  { key: "account", eventName: "viewed_create_account_modal", label: "Account modal viewed" },
+  { key: "signup", eventName: "created_account_successfully", label: "Account created" },
 ] as const;
 
 function summarize(options: readonly string[], rows: Record<string, unknown>[], field: string) {
@@ -143,6 +164,50 @@ function summarizeFunnel(rows: Record<string, unknown>[]) {
   };
 }
 
+function buildEventSessionMap(rows: Record<string, unknown>[]) {
+  const eventSessions = new Map<string, Set<string>>();
+  for (const row of rows) {
+    const eventName = typeof row.event_name === "string" ? row.event_name : "";
+    const sessionId = typeof row.session_id === "string" ? row.session_id : "";
+    if (!eventName || !sessionId) continue;
+    if (!eventSessions.has(eventName)) eventSessions.set(eventName, new Set());
+    eventSessions.get(eventName)?.add(sessionId);
+  }
+  return eventSessions;
+}
+
+function summarizePublicOnboardingFlow(rows: Record<string, unknown>[]) {
+  const eventSessions = buildEventSessionMap(rows);
+  const closedSessions = eventSessions.get("closed_onboarding") || new Set<string>();
+
+  const steps = PUBLIC_ONBOARDING_STEP_CONFIG.map((step, index) => {
+    const reached = eventSessions.get(step.eventName)?.size || 0;
+    const nextStep = PUBLIC_ONBOARDING_STEP_CONFIG[index + 1];
+    const nextReached = nextStep ? eventSessions.get(nextStep.eventName)?.size || 0 : reached;
+    const dropoffs = nextStep ? Math.max(0, reached - nextReached) : 0;
+    return {
+      key: step.key,
+      eventName: step.eventName,
+      label: step.label,
+      reached,
+      dropoffs,
+      dropoffRate: reached > 0 ? Number(((dropoffs / reached) * 100).toFixed(1)) : 0,
+      conversionToNext: reached > 0 ? Number(((nextReached / reached) * 100).toFixed(1)) : 0,
+    };
+  });
+
+  const started = eventSessions.get("started_onboarding")?.size || 0;
+  const finished = eventSessions.get("created_account_successfully")?.size || 0;
+
+  return {
+    started,
+    finished,
+    closedBeforeSignup: closedSessions.size,
+    completionRate: started > 0 ? Number(((finished / started) * 100).toFixed(1)) : 0,
+    steps,
+  };
+}
+
 function summarizeSources(rows: Record<string, unknown>[]) {
   const signupRows = rows.filter((row) => row.event_name === "created_account_successfully");
   const sessionsBySource = new Map<string, Set<string>>();
@@ -191,12 +256,14 @@ export async function GET() {
   const eventRows = eventError ? [] : ((eventData || []) as Record<string, unknown>[]);
   const funnel = summarizeFunnel(eventRows);
   const sources = summarizeSources(eventRows);
+  const publicOnboardingFlow = summarizePublicOnboardingFlow(eventRows);
 
   if (error) {
     return NextResponse.json({
       totalResponses: 0,
       personaLine: "Run CREATE_LANDING_ONBOARDING_RESPONSES.sql to enable new onboarding analytics.",
       funnel,
+      publicOnboardingFlow,
       sources,
       eventSetupRequired: Boolean(eventError),
       questions: QUESTION_CONFIG.map((question) => ({
@@ -221,6 +288,7 @@ export async function GET() {
     personaLine: buildPersonaLine(questions),
     questions,
     funnel,
+    publicOnboardingFlow,
     sources,
     setupRequired: false,
     eventSetupRequired: Boolean(eventError),

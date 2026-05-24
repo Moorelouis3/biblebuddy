@@ -145,6 +145,21 @@ type OnboardingAnalyticsSummary = {
       stepConversion: number;
     }>;
   };
+  publicOnboardingFlow?: {
+    started: number;
+    finished: number;
+    closedBeforeSignup: number;
+    completionRate: number;
+    steps: Array<{
+      key: string;
+      eventName: string;
+      label: string;
+      reached: number;
+      dropoffs: number;
+      dropoffRate: number;
+      conversionToNext: number;
+    }>;
+  };
   sources?: Array<{
     source: string;
     signups: number;
@@ -3583,7 +3598,7 @@ export default function AnalyticsPage() {
         <div className="mb-5">
           <h2 className="text-2xl font-bold">Landing Onboarding Analytics</h2>
           <p className="text-sm text-gray-500">
-            Tracks landing-page visitors, funnel conversion, five onboarding questions, source attribution, and the current average Bible Buddy user.
+            Tracks landing-page visitors, public onboarding drop-off, question averages, source attribution, and signup conversion.
           </p>
         </div>
 
@@ -3619,12 +3634,74 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
+            <div className="mb-5 grid gap-4 md:grid-cols-4">
+              <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Started Public Onboarding</p>
+                <p className="mt-2 text-2xl font-black text-gray-900">{(onboardingAnalytics.publicOnboardingFlow?.started ?? 0).toLocaleString()}</p>
+              </div>
+              <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Finished Signup</p>
+                <p className="mt-2 text-2xl font-black text-gray-900">{(onboardingAnalytics.publicOnboardingFlow?.finished ?? 0).toLocaleString()}</p>
+              </div>
+              <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Onboarding Completion</p>
+                <p className="mt-2 text-2xl font-black text-gray-900">{onboardingAnalytics.publicOnboardingFlow?.completionRate ?? 0}%</p>
+              </div>
+              <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Closed Before Signup</p>
+                <p className="mt-2 text-2xl font-black text-gray-900">{(onboardingAnalytics.publicOnboardingFlow?.closedBeforeSignup ?? 0).toLocaleString()}</p>
+              </div>
+            </div>
+
             <div className="mb-5 rounded-xl border border-blue-100 bg-blue-50 px-4 py-3">
               <p className="text-xs font-bold uppercase tracking-wide text-blue-700">Average User</p>
               <p className="mt-1 text-sm font-semibold text-gray-900">{onboardingAnalytics.personaLine}</p>
               <p className="mt-1 text-xs text-gray-500">
                 Total completed onboarding responses: {onboardingAnalytics.totalResponses.toLocaleString()}
               </p>
+            </div>
+
+            <div className="mb-5 rounded-2xl border border-gray-100 p-4">
+              <h3 className="text-lg font-bold text-gray-900">Public Onboarding Drop-Off</h3>
+              <p className="text-xs text-gray-500">Shows how many unique sessions reached each screen and how many did not make it to the next step.</p>
+              <div className="mt-4 space-y-3">
+                {(onboardingAnalytics.publicOnboardingFlow?.steps || []).map((step) => (
+                  <div key={step.key} className="rounded-xl bg-gray-50 px-3 py-3">
+                    <div className="mb-2 flex items-center justify-between gap-3 text-sm">
+                      <span className="font-semibold text-gray-800">{step.label}</span>
+                      <span className="shrink-0 text-gray-600">
+                        {step.reached.toLocaleString()} reached
+                      </span>
+                    </div>
+                    <div className="grid gap-2 text-xs font-semibold text-gray-600 sm:grid-cols-2">
+                      <span>Dropped here: {step.dropoffs.toLocaleString()} ({step.dropoffRate}%)</span>
+                      <span className="sm:text-right">Moved forward: {step.conversionToNext}%</span>
+                    </div>
+                    <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
+                      <div
+                        className="h-full rounded-full bg-emerald-500"
+                        style={{ width: `${Math.max(0, Math.min(100, step.conversionToNext))}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-5 rounded-2xl border border-gray-100 p-4">
+              <h3 className="text-lg font-bold text-gray-900">Question Averages</h3>
+              <p className="text-xs text-gray-500">Quick read on the most common answer for each public onboarding question.</p>
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                {onboardingAnalytics.questions.map((question) => (
+                  <div key={question.key} className="rounded-xl bg-gray-50 px-3 py-3">
+                    <p className="text-xs font-bold uppercase tracking-wide text-gray-500">{question.title}</p>
+                    <p className="mt-1 text-sm font-black text-gray-900">{question.mostCommon?.answer ?? "Not enough data yet"}</p>
+                    <p className="mt-1 text-xs font-semibold text-gray-500">
+                      {question.mostCommon ? `${question.mostCommon.percent}% of ${question.total.toLocaleString()} responses` : "Waiting for responses"}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="mb-5 grid gap-4 lg:grid-cols-[1.35fr_0.65fr]">

@@ -38,6 +38,21 @@ type AdminComment = {
   isMine?: boolean;
 };
 
+type DeletedCommentLog = {
+  id: string;
+  commentId: string;
+  kind: CommentKind;
+  sourceLabel: string | null;
+  contextTitle: string | null;
+  content: string;
+  authorUserId: string | null;
+  authorName: string;
+  deletedBy: string | null;
+  deletedByName: string;
+  deletedAt: string;
+  deletedIds: string[];
+};
+
 function getServerClients(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -511,6 +526,29 @@ export async function GET(request: NextRequest) {
       .select("user_id", { count: "exact", head: true }),
   ]);
 
+  const { data: deletedRows, error: deletedError } = await admin
+    .from("moderator_deleted_comments")
+    .select("id, comment_id, comment_kind, source_label, context_title, content, author_user_id, author_name, deleted_by, deleted_by_name, deleted_at, deleted_ids")
+    .order("deleted_at", { ascending: false })
+    .limit(80);
+
+  const deletedComments: DeletedCommentLog[] = deletedError
+    ? []
+    : ((deletedRows || []) as any[]).map((row) => ({
+        id: row.id,
+        commentId: row.comment_id,
+        kind: row.comment_kind,
+        sourceLabel: row.source_label ?? null,
+        contextTitle: row.context_title ?? null,
+        content: clipText(row.content, 900),
+        authorUserId: row.author_user_id ?? null,
+        authorName: row.author_name || "Bible Buddy",
+        deletedBy: row.deleted_by ?? null,
+        deletedByName: row.deleted_by_name || "Moderator",
+        deletedAt: row.deleted_at,
+        deletedIds: Array.isArray(row.deleted_ids) ? row.deleted_ids : [],
+      }));
+
   return NextResponse.json({
     moderator: {
       id: requester.id,
@@ -519,6 +557,7 @@ export async function GET(request: NextRequest) {
       canAutoReply: true,
     },
     comments: enrichedWithProfiles,
+    deletedComments,
     stats: {
       ...buildStats(statsComments, requester.id, normalizedForStats),
       signups24h: signupRes.count ?? 0,

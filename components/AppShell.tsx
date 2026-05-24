@@ -21,10 +21,14 @@ import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import {
-  APP_THEME_STORAGE_KEY,
   applyAppThemeToDocument,
+  cacheAppThemeForUser,
+  clearPendingAppThemeSync,
   getAppTheme,
+  isIncomingAppThemeOlderThanCache,
   normalizeAppThemeId,
+  readCachedAppTheme,
+  shouldPreferCachedAppTheme,
   type AppThemeId,
 } from "../lib/appThemes";
 import {
@@ -71,6 +75,8 @@ const BuddyCelebrationModal = dynamic(
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password", "/privacy", "/terms", "/contact"];
 const DAILY_RECOMMENDATIONS_ENABLED = false;
+const AUTOMATIC_FEEDBACK_POPUPS_ENABLED = false;
+const AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED = false;
 const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
 const GRACE_DAY_STORE_ITEM_ID = "boost-extra-grace-day";
 const LANDING_QUESTIONNAIRE_STORAGE_KEY = "bb:landing-questionnaire";
@@ -261,10 +267,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [isDashboardStoreOpen, setIsDashboardStoreOpen] = useState(false);
   const [appThemeId, setAppThemeId] = useState<AppThemeId>(() => {
     if (typeof window === "undefined") return "light";
-    return normalizeAppThemeId(
-      window.localStorage.getItem(APP_THEME_STORAGE_KEY) ||
-        window.localStorage.getItem("bb:dashboard-theme"),
-    );
+    return readCachedAppTheme(null);
   });
   const [selectedBuddyId, setSelectedBuddyId] = useState<BuddyAvatarId | null>(null);
   const selectedBuddy = selectedBuddyId ? getBuddyAvatar(selectedBuddyId) : null;
@@ -288,10 +291,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const resolvedTheme = normalizeAppThemeId(
-      window.localStorage.getItem(APP_THEME_STORAGE_KEY) ||
-        window.localStorage.getItem("bb:dashboard-theme"),
-    );
+    const resolvedTheme = readCachedAppTheme(userId);
     setAppThemeId(resolvedTheme);
     applyAppThemeToDocument(resolvedTheme);
     clearLegacyPremiumSkinCache();
@@ -336,13 +336,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     function handlePurchasedTheme(event: Event) {
       const customEvent = event as CustomEvent<{ themeId?: string }>;
       const themeId = normalizeAppThemeId(customEvent.detail?.themeId);
+      cacheAppThemeForUser(userId, themeId);
       setAppThemeId(themeId);
       applyAppThemeToDocument(themeId);
       applyPremiumSkinToDocument(normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin));
     }
     window.addEventListener("bb:app-theme-purchased", handlePurchasedTheme);
     return () => window.removeEventListener("bb:app-theme-purchased", handlePurchasedTheme);
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -398,19 +399,35 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           filter: `user_id=eq.${userId}`,
         },
         (payload) => {
-          const nextProfile = payload.new as { active_premium_skin?: unknown; active_premium_skin_selected_at?: string | null } | null;
+          const nextProfile = payload.new as {
+            app_theme?: unknown;
+            app_theme_selected_at?: string | null;
+            active_premium_skin?: unknown;
+            active_premium_skin_selected_at?: string | null;
+          } | null;
+          const nextTheme = normalizeAppThemeId(nextProfile?.app_theme);
+          const hasThemeSelectedAt = Boolean(nextProfile?.app_theme_selected_at);
+          const resolvedTheme = isIncomingAppThemeOlderThanCache(userId, nextProfile?.app_theme_selected_at)
+            ? readCachedAppTheme(userId)
+            : !hasThemeSelectedAt && shouldPreferCachedAppTheme(userId, nextTheme)
+            ? readCachedAppTheme(userId)
+            : nextTheme;
+          cacheAppThemeForUser(userId, resolvedTheme);
+          if (nextTheme === resolvedTheme) clearPendingAppThemeSync(userId, resolvedTheme);
+          setAppThemeId(resolvedTheme);
           const nextSkin = normalizePremiumSkinId(nextProfile?.active_premium_skin);
           if (isIncomingPremiumSkinOlderThanCache(userId, nextProfile?.active_premium_skin_selected_at)) return;
           cachePremiumSkinForUser(userId, nextSkin);
           clearPendingPremiumSkinSync(userId, nextSkin);
           if (nextSkin === "none") {
             applyPremiumSkinToDocument("none");
-            applyAppThemeToDocument(appThemeId);
+            applyAppThemeToDocument(resolvedTheme);
           } else {
-            applyAppThemeToDocument(appThemeId);
+            applyAppThemeToDocument(resolvedTheme);
             applyPremiumSkinToDocument(nextSkin);
             preloadActiveSkinAssets(nextSkin);
           }
+          window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId: resolvedTheme } }));
           window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: nextSkin } }));
         },
       )
@@ -421,11 +438,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, [appThemeId, userId]);
 
-  function applyThemeLocally(themeId: AppThemeId) {
+  function applyThemeLocally(themeId: AppThemeId, options: { markSelected?: boolean } = {}) {
     setAppThemeId(themeId);
     if (typeof window !== "undefined") {
-      window.localStorage.setItem(APP_THEME_STORAGE_KEY, themeId);
-      window.localStorage.setItem("bb:dashboard-theme", themeId === "dark" ? "dark" : "light");
+      cacheAppThemeForUser(userId, themeId, options);
     }
     applyAppThemeToDocument(themeId);
     applyPremiumSkinToDocument(normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin));
@@ -447,11 +463,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function loadSavedTheme(currentUserId: string, email?: string | null) {
     let { data, error } = await supabase
       .from("profile_stats")
-      .select("app_theme, active_premium_skin, active_premium_skin_selected_at, selected_streak_flame")
+      .select("app_theme, app_theme_selected_at, active_premium_skin, active_premium_skin_selected_at, selected_streak_flame")
       .eq("user_id", currentUserId)
       .maybeSingle();
 
-    if (error && /active_premium_skin_selected_at/i.test(error.message || "")) {
+    if (error && /app_theme_selected_at|active_premium_skin_selected_at/i.test(error.message || "")) {
       const fallback = await supabase
         .from("profile_stats")
         .select("app_theme, active_premium_skin, selected_streak_flame")
@@ -474,7 +490,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    const savedTheme = normalizeAppThemeId(data?.app_theme);
+    const dbTheme = normalizeAppThemeId(data?.app_theme);
+    const hasThemeSelectedAt = Boolean(data?.app_theme_selected_at);
+    const savedTheme = isIncomingAppThemeOlderThanCache(currentUserId, data?.app_theme_selected_at)
+      ? readCachedAppTheme(currentUserId)
+      : !hasThemeSelectedAt && shouldPreferCachedAppTheme(currentUserId, dbTheme)
+      ? readCachedAppTheme(currentUserId)
+      : dbTheme;
     const hasActiveSkinColumn = Boolean(data && "active_premium_skin" in data);
     const dbSkin = normalizePremiumSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
     const legacyMappedSkin =
@@ -499,6 +521,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
     preloadActiveSkinAssets(savedSkin);
     window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: savedSkin } }));
+    if (dbTheme === savedTheme) clearPendingAppThemeSync(currentUserId, savedTheme);
 
     if (candidateSkin !== savedSkin && dbSkin !== "none") {
       void supabase
@@ -528,20 +551,31 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function saveThemeToProfile(themeId: AppThemeId) {
     if (!userId) return;
 
-    const { error } = await supabase
+    const selectedAt = new Date().toISOString();
+    let { error } = await supabase
       .from("profile_stats")
-      .update({ app_theme: themeId })
+      .update({ app_theme: themeId, app_theme_selected_at: selectedAt, updated_at: selectedAt })
       .eq("user_id", userId);
+
+    if (error && /app_theme_selected_at/i.test(error.message || "")) {
+      const fallback = await supabase
+        .from("profile_stats")
+        .update({ app_theme: themeId, updated_at: selectedAt })
+        .eq("user_id", userId);
+      error = fallback.error;
+    }
 
     if (error) {
       console.warn("[THEME] Theme saved locally, but profile theme could not be saved.", error.message);
+      return;
     }
+    clearPendingAppThemeSync(userId, themeId);
   }
 
   function handleThemeChange(themeId: AppThemeId) {
     const theme = getAppTheme(themeId);
     if (theme.isLocked) return;
-    applyThemeLocally(theme.id);
+    applyThemeLocally(theme.id, { markSelected: true });
     void saveThemeToProfile(theme.id);
   }
 
@@ -2229,6 +2263,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // Check feedback eligibility and show modal directly (no banner)
   useEffect(() => {
     async function checkFeedbackEligibility() {
+      if (!AUTOMATIC_FEEDBACK_POPUPS_ENABLED) {
+        setFeedbackChecked(true);
+        return;
+      }
       if (!userId || feedbackChecked || showFeedbackModal) {
         return;
       }
@@ -2329,16 +2367,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     ...(showFullNameModal && pathname && !HIDDEN_ROUTES.includes(pathname)
       ? [{ popup_id: "account:full-name", type: "account_blocker" as const, priority: POPUP_QUEUE_PRIORITIES.accountBlocker + 10, user_id: userId }]
       : []),
-    ...(gracePurchasePrompt
+    ...(AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED && gracePurchasePrompt
       ? [{ popup_id: "streak:grace-day-purchase", type: "streak_rescue" as const, priority: POPUP_QUEUE_PRIORITIES.streakRescue + 30, user_id: userId, payload: gracePurchasePrompt }]
       : []),
-    ...(graceRestoreSuccess
+    ...(AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED && graceRestoreSuccess
       ? [{ popup_id: "reward:grace-day-restored", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 30, user_id: userId, payload: graceRestoreSuccess }]
       : []),
-    ...(graceReward
+    ...(AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED && graceReward
       ? [{ popup_id: "reward:grace-day-earned", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 20, user_id: userId, payload: graceReward }]
       : []),
-    ...(graceUsePrompt
+    ...(AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED && graceUsePrompt
       ? [{ popup_id: "streak:grace-day-owned", type: "streak_rescue" as const, priority: POPUP_QUEUE_PRIORITIES.streakRescue + 20, user_id: userId, payload: graceUsePrompt }]
       : []),
     ...(DAILY_RECOMMENDATIONS_ENABLED && showDailyRecommendation && dailyRecommendation
