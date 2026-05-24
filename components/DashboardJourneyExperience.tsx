@@ -7631,9 +7631,9 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearCompletedTasksPanel(day: GenesisBibleYearDay) {
     const completedTasksForDay = buildBibleYearDayTasks(day).filter((task) => task.done);
-    const isExpanded = bibleYearCompletedTasksExpandedDay === day.dayNumber;
     const requiredTasksCount = getBibleYearRequiredCardKeys(day).length;
     const dayFullyComplete = completedTasksForDay.length >= requiredTasksCount;
+    const isExpanded = !dayFullyComplete && bibleYearCompletedTasksExpandedDay === day.dayNumber;
     const isReceivingTask = !isExpanded && bibleYearCompletionAnimation?.dayNumber === day.dayNumber;
     const rewardToast = bibleYearRewardToast?.dayNumber === day.dayNumber ? bibleYearRewardToast : null;
 
@@ -7682,6 +7682,11 @@ Before we understand redemption, we need to understand what God made humanity fo
         <button
           type="button"
           onClick={() => {
+            if (dayFullyComplete) {
+              setBibleYearCompletedTasksExpandedDay(null);
+              setActiveBibleYearDayCard(null);
+              return;
+            }
             setBibleYearCompletedTasksExpandedDay((current) => current === day.dayNumber ? null : day.dayNumber);
             setActiveBibleYearDayCard(null);
           }}
