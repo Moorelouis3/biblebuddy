@@ -36,6 +36,46 @@ type UpgradeActionRow = {
   created_at?: string | null;
 };
 
+type BibleYearProgressRow = {
+  user_id?: string | null;
+  day_number?: number | null;
+  reading_completed?: boolean | null;
+  trivia_completed?: boolean | null;
+  reflection_completed?: boolean | null;
+  updated_at?: string | null;
+};
+
+type VisitorJourneyStatus =
+  | "active"
+  | "onboarding_only"
+  | "day_1_in_progress"
+  | "day_3_completed"
+  | "created_account"
+  | "upgraded"
+  | "dropped_off";
+
+type VisitorJourneyRow = {
+  id: string;
+  visitorLabel: string;
+  sessionId: string;
+  userId: string | null;
+  userLabel: string;
+  journeySelected: string;
+  onboardingCompletedAt: string | null;
+  startedDay1At: string | null;
+  completedDay3At: string | null;
+  createdAccountAt: string | null;
+  upgradedAt: string | null;
+  currentStatus: VisitorJourneyStatus;
+  currentStatusLabel: string;
+  source: string;
+  referrer: string | null;
+  lastActiveAt: string;
+  lastEventName: string;
+  dropoffStep: string;
+  accountType: "guest" | "free" | "pro";
+};
+
 type AuthUserSummary = {
   id: string;
   email: string | null;
@@ -49,6 +89,23 @@ type ProfileSummary = {
   registeredAt: string | null;
   convertedFromGuestAt: string | null;
 };
+
+async function verifyOwner(request: Request) {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const authHeader = request.headers.get("authorization") || "";
+  const token = authHeader.toLowerCase().startsWith("bearer ") ? authHeader.slice(7) : "";
+
+  if (!url || !anonKey || !token) return false;
+
+  const authClient = createClient(url, anonKey, {
+    auth: { autoRefreshToken: false, persistSession: false },
+    global: { headers: { Authorization: `Bearer ${token}` } },
+  });
+  const { data, error } = await authClient.auth.getUser(token);
+  if (error) return false;
+  return data.user?.email === "moorelouis3@gmail.com";
+}
 
 const QUESTION_CONFIG = [
   {
@@ -690,6 +747,189 @@ function buildUpgradeActivityLog(rows: UpgradeActionRow[], profileByUserId: Map<
   });
 }
 
+function getVisitorNumber(value: string) {
+  let hash = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    hash = (hash * 31 + value.charCodeAt(index)) % 1000000;
+  }
+  return String(hash || 1).padStart(6, "0");
+}
+
+function getJourneyLabelFromEvents(rows: LandingEventRow[]) {
+  for (const row of [...rows].reverse()) {
+    const metadata = row.metadata && typeof row.metadata === "object" ? row.metadata : {};
+    const route = typeof metadata.studyRoute === "string" ? metadata.studyRoute : "";
+    if (route === "bible_year") return "Bible in One Year";
+    if (route === "devotional") return "Daily Devotional";
+    const selectedDevotionalTitle = typeof metadata.selectedDevotionalTitle === "string" ? metadata.selectedDevotionalTitle : "";
+    if (selectedDevotionalTitle) return selectedDevotionalTitle;
+    const recommendation = metadata.recommendation && typeof metadata.recommendation === "object" ? metadata.recommendation as Record<string, unknown> : null;
+    const journey = typeof recommendation?.journey === "string" ? recommendation.journey : "";
+    if (journey) return journey;
+  }
+  return "Not selected";
+}
+
+function getStatusLabel(status: VisitorJourneyStatus) {
+  const labels: Record<VisitorJourneyStatus, string> = {
+    active: "Active",
+    onboarding_only: "Onboarding only",
+    day_1_in_progress: "Day 1 in progress",
+    day_3_completed: "Day 3 completed",
+    created_account: "Created account",
+    upgraded: "Upgraded",
+    dropped_off: "Dropped off",
+  };
+  return labels[status];
+}
+
+function buildVisitorJourneys(
+  rows: LandingEventRow[],
+  progressRows: BibleYearProgressRow[],
+  upgradeRows: UpgradeActionRow[],
+  profileByUserId: Map<string, string>,
+  profileSummaryByUserId: Map<string, ProfileSummary>,
+  windowKey: JourneyWindowKey,
+) {
+  const since = Date.now() - getJourneyWindowMs(windowKey);
+  const validRows = rows
+    .filter((row) => {
+      const createdAt = typeof row.created_at === "string" ? new Date(row.created_at).getTime() : 0;
+      return Number.isFinite(createdAt) && createdAt >= since;
+    })
+    .sort((a, b) => {
+      const left = typeof a.created_at === "string" ? new Date(a.created_at).getTime() : 0;
+      const right = typeof b.created_at === "string" ? new Date(b.created_at).getTime() : 0;
+      return left - right;
+    });
+
+  const progressByUser = new Map<string, BibleYearProgressRow[]>();
+  for (const row of progressRows) {
+    if (!row.user_id) continue;
+    const current = progressByUser.get(row.user_id) || [];
+    current.push(row);
+    progressByUser.set(row.user_id, current);
+  }
+
+  const upgradeByUser = new Map<string, UpgradeActionRow>();
+  for (const row of upgradeRows) {
+    if (!row.user_id) continue;
+    const current = upgradeByUser.get(row.user_id);
+    if (!current || (row.created_at || "") > (current.created_at || "")) {
+      upgradeByUser.set(row.user_id, row);
+    }
+  }
+
+  const sessions = new Map<string, LandingEventRow[]>();
+  for (const row of validRows) {
+    const sessionId = typeof row.session_id === "string" && row.session_id ? row.session_id : `no-session-${row.user_id || row.created_at || Math.random()}`;
+    if (!sessions.has(sessionId)) sessions.set(sessionId, []);
+    sessions.get(sessionId)?.push(row);
+  }
+
+  const rowsOut: VisitorJourneyRow[] = Array.from(sessions.entries()).map(([sessionId, sessionRows]) => {
+    const firstRow = sessionRows[0];
+    const lastRow = sessionRows[sessionRows.length - 1];
+    const userId = sessionRows.map((row) => row.user_id).find((id): id is string => Boolean(id)) || null;
+    const userLabel = userId ? profileByUserId.get(userId) || `User ${shortId(userId)}` : "Guest visitor";
+    const eventNames = new Set(sessionRows.map((row) => row.event_name || ""));
+    const userProgressRows = userId ? progressByUser.get(userId) || [] : [];
+    const dayOneRows = userProgressRows.filter((row) => Number(row.day_number || 0) === 1);
+    const dayThreeRows = userProgressRows.filter((row) => Number(row.day_number || 0) === 3);
+    const dayOneStartedAt = dayOneRows.map((row) => row.updated_at).filter((value): value is string => Boolean(value)).sort()[0] || null;
+    const dayThreeCompletedAt =
+      dayThreeRows
+        .filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed)
+        .map((row) => row.updated_at)
+        .filter((value): value is string => Boolean(value))
+        .sort()
+        .at(-1) || null;
+    const accountEvent = sessionRows.find((row) => isAccountEvent(row.event_name || ""));
+    const profile = userId ? profileSummaryByUserId.get(userId) : null;
+    const createdAccountAt =
+      accountEvent?.created_at ||
+      profile?.convertedFromGuestAt ||
+      profile?.registeredAt ||
+      null;
+    const upgradeAt = userId ? upgradeByUser.get(userId)?.created_at || null : null;
+    const onboardingCompletedAt = sessionRows.find((row) => row.event_name === "started_guest_journey")?.created_at || null;
+    const now = Date.now();
+    const lastActiveAt = lastRow?.created_at || firstRow?.created_at || new Date().toISOString();
+    const inactiveMs = now - new Date(lastActiveAt).getTime();
+
+    let status: VisitorJourneyStatus = "active";
+    if (upgradeAt) status = "upgraded";
+    else if (dayThreeCompletedAt) status = "day_3_completed";
+    else if (createdAccountAt) status = "created_account";
+    else if (dayOneStartedAt) status = "day_1_in_progress";
+    else if (onboardingCompletedAt) status = "active";
+    else if (eventNames.has("started_onboarding") || eventNames.has("viewed_onboarding_intro")) status = "onboarding_only";
+    if (!upgradeAt && !createdAccountAt && !dayThreeCompletedAt && inactiveMs > 30 * 60 * 1000) {
+      status = "dropped_off";
+    }
+
+    const accountType: VisitorJourneyRow["accountType"] = upgradeAt || profile?.isPaid ? "pro" : createdAccountAt ? "free" : "guest";
+    const lastInfo = lastRow ? getLandingActivityInfo(lastRow) : null;
+
+    return {
+      id: sessionId,
+      visitorLabel: `Visitor #${getVisitorNumber(sessionId || userId || lastActiveAt)}`,
+      sessionId,
+      userId,
+      userLabel,
+      journeySelected: getJourneyLabelFromEvents(sessionRows),
+      onboardingCompletedAt,
+      startedDay1At: dayOneStartedAt,
+      completedDay3At: dayThreeCompletedAt,
+      createdAccountAt,
+      upgradedAt: upgradeAt,
+      currentStatus: status,
+      currentStatusLabel: getStatusLabel(status),
+      source: typeof firstRow?.source === "string" && firstRow.source ? firstRow.source : "Direct / Unknown",
+      referrer: typeof firstRow?.referrer === "string" && firstRow.referrer ? firstRow.referrer : null,
+      lastActiveAt,
+      lastEventName: lastRow?.event_name || "",
+      dropoffStep: lastInfo?.title || "Unknown",
+      accountType,
+    };
+  }).sort((a, b) => new Date(b.lastActiveAt).getTime() - new Date(a.lastActiveAt).getTime());
+
+  const totalVisitors = rowsOut.length;
+  const finishedOnboarding = rowsOut.filter((row) => Boolean(row.onboardingCompletedAt)).length;
+  const startedDay1 = rowsOut.filter((row) => Boolean(row.startedDay1At)).length;
+  const completedDay3 = rowsOut.filter((row) => Boolean(row.completedDay3At)).length;
+  const createdFreeAccount = rowsOut.filter((row) => Boolean(row.createdAccountAt)).length;
+  const upgradedToPro = rowsOut.filter((row) => Boolean(row.upgradedAt)).length;
+
+  return {
+    rows: rowsOut.slice(0, 500),
+    metrics: {
+      totalVisitors,
+      finishedOnboarding,
+      startedDay1,
+      completedDay3,
+      createdFreeAccount,
+      upgradedToPro,
+      onboardingCompletionRate: totalVisitors > 0 ? Number(((finishedOnboarding / totalVisitors) * 100).toFixed(1)) : 0,
+      day1StartRate: totalVisitors > 0 ? Number(((startedDay1 / totalVisitors) * 100).toFixed(1)) : 0,
+      day3CompletionRate: totalVisitors > 0 ? Number(((completedDay3 / totalVisitors) * 100).toFixed(1)) : 0,
+      freeAccountRate: totalVisitors > 0 ? Number(((createdFreeAccount / totalVisitors) * 100).toFixed(1)) : 0,
+      proUpgradeRate: totalVisitors > 0 ? Number(((upgradedToPro / totalVisitors) * 100).toFixed(1)) : 0,
+    },
+    sources: Array.from(new Set(rowsOut.map((row) => row.source))).sort(),
+    journeys: Array.from(new Set(rowsOut.map((row) => row.journeySelected))).sort(),
+    statuses: ([
+      "active",
+      "onboarding_only",
+      "day_1_in_progress",
+      "day_3_completed",
+      "created_account",
+      "upgraded",
+      "dropped_off",
+    ] as VisitorJourneyStatus[]).map((key) => ({ key, label: getStatusLabel(key) })),
+  };
+}
+
 async function loadAuthUserSummaries(url: string, serviceKey: string, targetUserIds: string[]) {
   const targetSet = new Set(targetUserIds);
   const usersById = new Map<string, AuthUserSummary>();
@@ -732,6 +972,11 @@ async function loadAuthUserSummaries(url: string, serviceKey: string, targetUser
 }
 
 export async function GET(request: Request) {
+  const owner = await verifyOwner(request);
+  if (!owner) {
+    return NextResponse.json({ error: "Owner analytics only." }, { status: 403 });
+  }
+
   const journeyWindow = getJourneyWindowKey(request);
   const journeySinceIso = new Date(Date.now() - getJourneyWindowMs(journeyWindow)).toISOString();
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -799,6 +1044,14 @@ export async function GET(request: Request) {
   const authSummaryByUserId = await loadAuthUserSummaries(url, serviceKey, eventUserIds);
   const validEventRows = filterRealAccountEvents(eventRows, authSummaryByUserId, profileSummaryByUserId);
   const validLandingEventRows = validEventRows as LandingEventRow[];
+  const { data: bibleYearProgressData } = eventUserIds.length > 0
+    ? await adminSupabase
+        .from("bible_year_day_progress")
+        .select("user_id, day_number, reading_completed, trivia_completed, reflection_completed, updated_at")
+        .in("user_id", eventUserIds)
+        .limit(250000)
+    : { data: [] as BibleYearProgressRow[] };
+  const bibleYearProgressRows = (bibleYearProgressData || []) as BibleYearProgressRow[];
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(validEventRows);
@@ -809,6 +1062,14 @@ export async function GET(request: Request) {
     ...buildLandingActivityLog(validLandingEventRows, profileByUserId, journeyWindow),
     ...buildUpgradeActivityLog(upgradeRows, profileByUserId),
   ].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()).slice(0, 180);
+  const visitorJourneys = buildVisitorJourneys(
+    validLandingEventRows,
+    bibleYearProgressRows,
+    upgradeRows,
+    profileByUserId,
+    profileSummaryByUserId,
+    journeyWindow,
+  );
   const proUpgrades = new Set(upgradeRows.map((row) => row.user_id).filter(Boolean)).size;
   const customerJourney = {
     window: journeyWindow,
@@ -829,6 +1090,7 @@ export async function GET(request: Request) {
       customerJourney,
       guestAccountFunnel,
       landingActivityLog,
+      visitorJourneys,
       publicOnboardingFlow,
       sources,
       eventSetupRequired: Boolean(eventError),
@@ -858,6 +1120,7 @@ export async function GET(request: Request) {
     customerJourney,
     guestAccountFunnel,
     landingActivityLog,
+    visitorJourneys,
     publicOnboardingFlow,
     sources,
     setupRequired: false,

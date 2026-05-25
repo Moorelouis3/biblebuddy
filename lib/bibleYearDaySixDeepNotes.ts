@@ -4,29 +4,29 @@ export const BIBLE_YEAR_DAY_SIX_DEEP_NOTES = `Genesis 14-15 moves Abram into war
 
 Lot chose the well-watered land near Sodom in Genesis 13.
 
-In Genesis 14, that choice pulls him into danger when kings go to war and Sodom is defeated.
+⚔️ In Genesis 14, that choice pulls him into danger when kings go to war and Sodom is defeated.
 
-Abram hears, moves, rescues, and brings Lot back.
+🛡️ Abram hears, moves, rescues, and brings Lot back.
 
-Then Abram meets Melchizedek, receives a blessing, gives a tenth, and refuses the king of Sodom's reward.
+🍞 Then Abram meets Melchizedek, receives a blessing, gives a tenth, and refuses the king of Sodom's reward.
 
-Genesis 15 shifts from public victory to private fear.
+🌌 Genesis 15 shifts from public victory to private fear.
 
-God speaks to Abram's fear, promises descendants like the stars, and Abram believes the LORD.
+✨ God speaks to Abram's fear, promises descendants like the stars, and Abram believes the LORD.
 
-Then God confirms the promise through covenant.
+🔥 Then God confirms the promise through covenant.
 
-Big idea: Genesis 14-15 teaches that faith acts with courage, refuses corrupt shortcuts, brings honest questions to God, and rests on the promise God Himself carries.`;
+> 🔥 **Big idea:** Genesis 14-15 teaches that faith acts with courage, refuses corrupt shortcuts, brings honest questions to God, and rests on the promise God Himself carries.`;
 
 export const BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
   {
     reference: "Genesis 14:1-12",
     title: "War Reaches Lot",
-    icon: "sword",
+    icon: "⚔️",
     summary: "A conflict between kings reaches Sodom, and Lot is taken captive because of where he settled.",
     markdown: `## Genesis 14:1-12
 
-## What Is Happening Here?
+## ⚔️ What Is Happening Here?
 
 Genesis 14 opens with kings, alliances, rebellion, and war.
 
@@ -36,7 +36,7 @@ The fighting reaches Sodom, where Lot has moved. Lot chose by sight in Genesis 1
 
 When Sodom falls, Lot is taken captive with the goods of the city.
 
-## Why Lot Matters Here
+## 🧭 Why Lot Matters Here
 
 Lot is not described as leading the battle.
 
@@ -44,7 +44,7 @@ He is caught in the consequences of where he has settled.
 
 Genesis is teaching that direction matters. A choice can look good at first and still move a person toward danger.
 
-## Why This Matters
+## 🙏 Why This Matters
 
 Sin and compromise rarely stay private.
 
@@ -53,11 +53,11 @@ Lot's nearness to Sodom pulls him into Sodom's trouble. The Bible is preparing u
   {
     reference: "Genesis 14:13-16",
     title: "Abram Rescues Lot",
-    icon: "shield",
+    icon: "🛡️",
     summary: "Abram hears that Lot has been captured and moves with courage to rescue him.",
     markdown: `## Genesis 14:13-16
 
-## What Is Happening Here?
+## 🛡️ What Is Happening Here?
 
 Abram hears that his relative has been taken captive.
 
@@ -67,7 +67,7 @@ Abram gathers trained men from his household and pursues the enemy. This is fait
 
 Abram brings back Lot, the people, and the goods.
 
-## Faith In Action
+## 🚶 Faith In Action
 
 Abram's faith is not passive.
 
@@ -75,7 +75,7 @@ He worships at altars, but he also moves toward rescue when someone is in danger
 
 This matters because biblical faith is not escape from responsibility. It is trust in God that becomes obedience, courage, and love.
 
-## Why This Matters
+## 🙏 Why This Matters
 
 Grace often moves toward people who made unwise choices.
 
@@ -84,11 +84,11 @@ Lot moved toward Sodom, but Abram still moves toward Lot. That rescue gives us a
   {
     reference: "Genesis 14:17-20",
     title: "Melchizedek Blesses Abram",
-    icon: "bread",
+    icon: "🍞",
     summary: "Melchizedek appears as king and priest, blessing Abram and giving glory to God Most High.",
     markdown: `## Genesis 14:17-20
 
-## What Is Happening Here?
+## 🍞 What Is Happening Here?
 
 After the rescue, Melchizedek comes out to meet Abram.
 
@@ -100,7 +100,7 @@ Abram fought, but God delivered.
 
 Abram gives Melchizedek a tenth of everything, recognizing that the victory belongs under God's authority.
 
-## Bible Connection
+## 📖 Bible Connection
 
 Melchizedek becomes important later in Scripture.
 
@@ -108,7 +108,7 @@ Psalm 110 and Hebrews connect Melchizedek to a priestly pattern that points forw
 
 He appears briefly, but his role is powerful: king, priest, blessing, bread, wine, and God Most High.
 
-## Why This Matters
+## 🙏 Why This Matters
 
 After victory, the heart needs worship.
 
@@ -117,11 +117,11 @@ Melchizedek's blessing helps Abram remember that his strength, success, and resc
   {
     reference: "Genesis 14:21-24",
     title: "Abram Refuses Sodom's Reward",
-    icon: "no",
+    icon: "🚫",
     summary: "Abram refuses the king of Sodom's offer so no corrupt power can claim credit for his blessing.",
     markdown: `## Genesis 14:21-24
 
-## What Is Happening Here?
+## 🚫 What Is Happening Here?
 
 The king of Sodom offers Abram the goods from the battle.
 
@@ -133,7 +133,7 @@ That is a major moment of discernment. Abram has just won a battle, but victory 
 
 The question is not only whether Abram can win. The question is whether Abram will let the wrong source define his success.
 
-## Why This Matters
+## 🙏 Why This Matters
 
 Not every open door is from God.
 
@@ -144,15 +144,15 @@ Faith sometimes means saying no after a win.`,
   {
     reference: "Genesis 15:1-6",
     title: "God Speaks To Abram's Fear",
-    icon: "stars",
+    icon: "✨",
     summary: "God calls Himself Abram's shield and reward, then repeats the promise under the stars.",
     markdown: `## Genesis 15:1-6
 
-> **Genesis 15:6**
+> 📖 **Genesis 15:6**
 >
 > He believed in the LORD, who credited it to him for righteousness.
 
-## What Is Happening Here?
+## ✨ What Is Happening Here?
 
 After these things, God speaks to Abram in a vision.
 
@@ -168,7 +168,7 @@ God takes Abram outside and points him to the stars. So shall thy seed be.
 
 Abram believes the LORD, and God counts it to him for righteousness.
 
-## Why This Matters
+## 🙏 Why This Matters
 
 Faith is not pretending you have no ache.
 
@@ -179,11 +179,11 @@ Righteousness is connected to trusting God's promise, not Abram controlling the 
   {
     reference: "Genesis 15:7-11",
     title: "Abram Asks For Assurance",
-    icon: "question",
+    icon: "❓",
     summary: "Abram asks how he will know, and God answers by preparing a covenant ceremony.",
     markdown: `## Genesis 15:7-11
 
-## What Is Happening Here?
+## ❓ What Is Happening Here?
 
 God reminds Abram that He brought him out of Ur to give him the land.
 
@@ -195,13 +195,13 @@ Abram prepares the animals and drives away the birds of prey.
 
 The promise is being confirmed, but Abram still has to wait.
 
-## Important Detail
+## 🧠 Important Detail
 
 God is patient with Abram's honest question.
 
 Abram is not mocking God. He is asking for assurance while standing inside a promise that has not yet fully appeared.
 
-## Why This Matters
+## 🙏 Why This Matters
 
 Faith can ask honest questions without walking away from God.
 
@@ -210,11 +210,11 @@ The key is where the question goes. Abram brings the question to the LORD, and G
   {
     reference: "Genesis 15:12-16",
     title: "God Tells Abram The Long Road",
-    icon: "moon",
+    icon: "🌙",
     summary: "God reveals that Abram's descendants will suffer, but He will judge the oppressor and bring them out.",
     markdown: `## Genesis 15:12-16
 
-## What Is Happening Here?
+## 🌙 What Is Happening Here?
 
 As the sun goes down, a deep sleep falls on Abram, and great darkness comes over him.
 
@@ -226,13 +226,13 @@ That sounds heavy, but God also promises judgment on the oppressing nation, deli
 
 The promise is real, but the road is long.
 
-## Bible Connection
+## 📖 Bible Connection
 
 This points forward to Israel's time in Egypt and the Exodus.
 
 Genesis is already preparing us for slavery, judgment, deliverance, and return before Exodus ever begins.
 
-## Why This Matters
+## 🙏 Why This Matters
 
 God's promise does not always mean the path will be quick.
 
@@ -241,11 +241,11 @@ But the long road is still held by God's word. He knows the suffering, the timin
   {
     reference: "Genesis 15:17-21",
     title: "God Makes Covenant",
-    icon: "fire",
+    icon: "🔥",
     summary: "God passes between the pieces and binds Himself to the promise He gave Abram.",
     markdown: `## Genesis 15:17-21
 
-## What Is Happening Here?
+## 🔥 What Is Happening Here?
 
 When darkness falls, Abram sees a smoking furnace and a burning lamp pass between the pieces.
 
@@ -259,15 +259,15 @@ God does.
 
 God binds Himself to His word. The promise rests on God's faithfulness, not Abram's ability to force the future.
 
-## Words To Know
+## 🧠 Words To Know
 
-### Covenant
+### 🔥 Covenant
 
 A covenant is a serious relational promise.
 
 In Genesis 15, God confirms His promise to Abram with covenant weight.
 
-## Why This Matters
+## 🙏 Why This Matters
 
 Abram's future is not secured by Abram's control.
 
