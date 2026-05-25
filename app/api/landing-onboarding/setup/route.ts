@@ -46,6 +46,38 @@ function dataUrlToUpload(value: unknown) {
   };
 }
 
+async function getNextGuestDisplayName(admin: any) {
+  const { count, error: countError } = await admin
+    .from("profile_stats")
+    .select("user_id", { count: "exact", head: true })
+    .eq("account_type", "guest");
+
+  if (!countError && typeof count === "number") {
+    return `Bible Buddy Guest #${count + 1}`;
+  }
+
+  const { data, error } = await admin
+    .from("profile_stats")
+    .select("display_name")
+    .ilike("display_name", "Bible Buddy Guest #%")
+    .limit(10000);
+
+  if (error) {
+    console.warn("[LANDING_SETUP] Guest display name count fallback failed:", error.message);
+    return `Bible Buddy Guest #${Date.now().toString().slice(-6)}`;
+  }
+
+  const guestRows = (data || []) as Array<{ display_name?: string | null }>;
+  const maxGuestNumber = guestRows.reduce((max, row) => {
+    const displayName = typeof row.display_name === "string" ? row.display_name : "";
+    const match = displayName.match(/^Bible Buddy Guest #(\d+)$/i);
+    const guestNumber = match ? Number(match[1]) : 0;
+    return Number.isFinite(guestNumber) && guestNumber > max ? guestNumber : max;
+  }, 0);
+
+  return `Bible Buddy Guest #${maxGuestNumber + 1}`;
+}
+
 export async function POST(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -70,7 +102,7 @@ export async function POST(request: NextRequest) {
   }
 
   const body = await request.json().catch(() => null);
-  const fullName = typeof body?.fullName === "string" && body.fullName.trim() ? body.fullName.trim() : "Bible Buddy";
+  let fullName = typeof body?.fullName === "string" && body.fullName.trim() ? body.fullName.trim() : "Bible Buddy";
   const email = typeof body?.email === "string" ? body.email.trim().toLowerCase() : userData.user.email || "";
   const answers = (body?.answers && typeof body.answers === "object" ? body.answers : {}) as Answers;
   const recommendationDays = Number.isFinite(Number(body?.recommendationDays)) ? Number(body.recommendationDays) : 365;
@@ -83,6 +115,18 @@ export async function POST(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
   const isAnonymousUser = Boolean((userData.user as any).is_anonymous) || !userData.user.email;
+  if (isAnonymousUser) {
+    fullName = await getNextGuestDisplayName(admin);
+    const { error: metadataError } = await admin.auth.admin.updateUserById(userData.user.id, {
+      user_metadata: {
+        ...(userData.user.user_metadata || {}),
+        display_name: fullName,
+      },
+    });
+    if (metadataError) {
+      console.warn("[LANDING_SETUP] Guest auth metadata name update skipped:", metadataError.message);
+    }
+  }
 
   const nowIso = new Date().toISOString();
   const todayKey = getLocalDateKey();
@@ -219,5 +263,5 @@ export async function POST(request: NextRequest) {
     if (devotionalProgressError) console.warn("[LANDING_SETUP] devotional progress seed skipped:", devotionalProgressError.message);
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, displayName: fullName });
 }

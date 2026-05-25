@@ -298,6 +298,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const handledLouisDayRef = useRef<string | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
+  const [studyBuddyCount, setStudyBuddyCount] = useState(0);
 
   useEffect(() => {
     async function loadUserAndProfile() {
@@ -378,6 +379,17 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         }
 
         setDevotional(devotionalData);
+
+        try {
+          const communityResponse = await fetch(
+            `/api/devotionals/community-progress?devotionalId=${encodeURIComponent(devotionalId)}&page=0&pageSize=1`,
+          );
+          const communityPayload = await communityResponse.json().catch(() => null);
+          setStudyBuddyCount(communityPayload?.selected?.total ?? 0);
+        } catch (communityError) {
+          console.error("[BIBLE_STUDY_DETAIL] Could not load study Buddy count:", communityError);
+          setStudyBuddyCount(0);
+        }
 
         if (userId) {
           const { data: authData } = await supabase.auth.getUser();
@@ -551,6 +563,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     : "";
   const scriptureRange = getStudyScriptureRange(devotional?.title);
   const orderedDays = [...days].sort((a, b) => a.day_number - b.day_number);
+  const currentDayData = orderedDays.find((day) => day.day_number === currentDay) || orderedDays[0] || null;
+  const totalUnits = Math.max(devotional?.total_days || orderedDays.length || 1, 1);
+  const remainingUnits = Math.max(totalUnits - completedDays, 0);
 
   const isDayUnlocked = (dayNumber: number) => {
     if (userEmail === "moorelouis3@gmail.com") return true;
@@ -1306,51 +1321,104 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         </Link>
         )}
 
-        <h1 className="text-3xl font-bold mb-2">{devotional.title}</h1>
-        <p className="text-gray-600 mb-4">{scriptureRange ?? devotional.subtitle}</p>
+        <section className="overflow-hidden rounded-[30px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(180deg,var(--bb-card,#ffffff),color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_58%,var(--bb-card,#ffffff)))] p-4 shadow-[0_18px_48px_rgba(38,63,99,0.14)] sm:p-5">
+          <div className="grid gap-5 md:grid-cols-[190px_1fr] md:items-center">
+            <div className="mx-auto w-full max-w-[190px]">
+              {getCoverImage(devotional.title) ? (
+                <img
+                  src={getCoverImage(devotional.title)!}
+                  alt={`${devotional.title} cover`}
+                  className="aspect-[3/4] w-full object-contain drop-shadow-xl"
+                />
+              ) : (
+                <div className="grid aspect-[3/4] w-full place-items-center rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-5xl">
+                  📖
+                </div>
+              )}
+            </div>
 
-        {/* STUDY COVER */}
-        {getCoverImage(devotional.title) && (
-          <div className="flex justify-center my-6">
-            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
-              <img
-                src={getCoverImage(devotional.title)!}
-                alt={`${devotional.title} cover`}
-                className="rounded-lg w-[240px] h-auto object-contain"
-              />
+            <div className="min-w-0 text-center md:text-left">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Devotional Progress</p>
+              <h1 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-4xl">{devotional.title}</h1>
+              <p className="mt-2 text-sm font-bold text-[var(--bb-text-secondary,#5f6368)]">{scriptureRange ?? devotional.subtitle}</p>
+
+              <div className="mt-4 inline-flex rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
+                {studyBuddyCount > 0
+                  ? `${studyBuddyCount} ${studyBuddyCount === 1 ? "Buddy is" : "Buddies are"} studying this`
+                  : "Be the first Buddy to start this study"}
+              </div>
+
+              <div className="mt-5 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-sm">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted,#6b7280)]">Current</p>
+                    <p className="mt-1 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                      {currentDayData
+                        ? isChapterJourneyStudy
+                          ? `${currentDayData.bible_reading_book} ${currentDayData.bible_reading_chapter}`
+                          : `Day ${currentDayData.day_number}`
+                        : "Ready to begin"}
+                    </p>
+                    <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#5f6368)]">
+                      {currentDayData?.day_title || "Start your next devotional step."}
+                    </p>
+                  </div>
+                  {currentDayData ? (
+                    <button
+                      type="button"
+                      onClick={() => handleDayClick(currentDayData)}
+                      className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-2 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+                    >
+                      Continue
+                    </button>
+                  ) : null}
+                </div>
+                <div className="mt-4 h-3 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#f8fbff)]">
+                  <div
+                    className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] transition-all duration-500"
+                    style={{ width: `${Math.min(100, Math.max(0, progressPercent))}%` }}
+                  />
+                </div>
+                <div className="mt-2 flex items-center justify-between text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">
+                  <span>{Math.round(progressPercent)}% complete</span>
+                  <span>{completedDays}/{totalUnits} {isChapterJourneyStudy ? "chapters" : "sections"}</span>
+                </div>
+              </div>
             </div>
           </div>
-        )}
 
-        {/* PROGRESS */}
-        <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">
-              {isChapterJourneyStudy ? getChapterJourneyProgressLabel(devotional.title, currentDay, devotional.total_days) : `Day ${currentDay} of ${devotional.total_days}`}
-            </span>
-            <span className="text-sm text-gray-500">
-              {isChapterJourneyStudy ? `${completedDays} chapters complete` : `${completedDays} completed`}
-            </span>
+          <div className="mt-5 grid grid-cols-3 gap-3">
+            <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-4 text-center shadow-sm">
+              <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">{completedDays}</p>
+              <p className="mt-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">Complete</p>
+            </div>
+            <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-4 text-center shadow-sm">
+              <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">{currentDay}</p>
+              <p className="mt-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">Current</p>
+            </div>
+            <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-4 text-center shadow-sm">
+              <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">{remainingUnits}</p>
+              <p className="mt-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">Left</p>
+            </div>
           </div>
-          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-blue-500 rounded-full transition-all duration-300"
-              style={{ width: `${progressPercent}%` }}
-            />
-          </div>
-        </div>
+        </section>
 
-        {/* DESCRIPTION */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6">
-          <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+        <section className="mt-5 rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Study Overview</p>
+          <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)] whitespace-pre-line">
             {previewDescription}
           </p>
-        </div>
+        </section>
 
-        {/* CHAPTER LIST */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <h2 className="text-xl font-bold mb-4">{isChapterJourneyStudy ? "Chapters" : "Sections"}</h2>
-          <div className="space-y-2">
+        <section className="mt-5 rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
+          <div className="mb-4 flex items-end justify-between gap-3">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Progress Map</p>
+              <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">{isChapterJourneyStudy ? "Chapters" : "Sections"}</h2>
+            </div>
+            <p className="text-xs font-black text-[var(--bb-text-muted,#6b7280)]">{completedDays}/{totalUnits} done</p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
             {orderedDays.map((day) => {
               const dayProgress = progress.get(day.day_number);
               const taskProgress = chapterTaskProgress.get(day.day_number) || { completed: 0, total: WISDOM_TASK_TOTAL };
@@ -1413,7 +1481,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               );
             })}
           </div>
-        </div>
+        </section>
       </div>
 
       {/* LEGACY SECTION MODAL */}

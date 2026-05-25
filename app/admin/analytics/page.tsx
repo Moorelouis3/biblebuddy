@@ -7,6 +7,7 @@ import { parseDeepStudyInterestLabel, parseStudyNotesSectionOpenLabel, parseStud
 import { isSeriesWeekNotesActionEvent, SERIES_WEEK_NOTES_FALLBACK_PREFIX } from "@/lib/seriesWeekNotesTracking";
 
 type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
+type CustomerJourneyWindow = "1h" | "24h" | "7d" | "30d";
 
 type OverviewMetrics = {
   signups: number;
@@ -149,6 +150,26 @@ type OnboardingQuestionAnalytics = {
   leastCommon: OnboardingAnswerAnalytics | null;
 };
 
+type LandingActivityLogEntry = {
+  id: string;
+  category: "visits" | "guestStarts" | "accountsCreated" | "upgrades" | "onboarding" | "dropoff" | "other";
+  eventName: string;
+  title: string;
+  detail: string;
+  timestamp: string;
+  source: string;
+  pagePath: string;
+  referrer: string | null;
+  sessionId: string;
+  sessionLabel: string;
+  userId: string | null;
+  userLabel: string;
+  journeyStart?: string;
+  journeyEnd?: string;
+  timeSinceLandingLabel: string | null;
+  timeSincePreviousLabel: string | null;
+};
+
 type OnboardingAnalyticsSummary = {
   totalResponses: number;
   personaLine: string;
@@ -182,6 +203,15 @@ type OnboardingAnalyticsSummary = {
     rawVisitEvents?: number;
     rawGuestEvents?: number;
     rawSignupEvents?: number;
+  };
+  customerJourney?: {
+    window: CustomerJourneyWindow;
+    label: string;
+    visits: number;
+    guestStarts: number;
+    freeAccounts: number;
+    proUpgrades: number;
+    guestToAccountRate: number;
   };
   guestAccountFunnel?: {
     today: {
@@ -217,6 +247,7 @@ type OnboardingAnalyticsSummary = {
     signups: number;
     percent: number;
   }>;
+  landingActivityLog?: LandingActivityLogEntry[];
   setupRequired?: boolean;
   eventSetupRequired?: boolean;
   eventError?: string;
@@ -342,6 +373,8 @@ export default function AnalyticsPage() {
   const [totalUsers, setTotalUsers] = useState(0);
   const [guestUsers, setGuestUsers] = useState(0);
   const [registeredUsers, setRegisteredUsers] = useState(0);
+  const [freeAccounts, setFreeAccounts] = useState(0);
+  const [upgradedUsers, setUpgradedUsers] = useState(0);
   const [loadingTotalUsers, setLoadingTotalUsers] = useState(true);
 
   // Global overview metrics
@@ -469,6 +502,11 @@ export default function AnalyticsPage() {
   const [loadingLouisReportLog, setLoadingLouisReportLog] = useState(true);
   const [onboardingAnalytics, setOnboardingAnalytics] = useState<OnboardingAnalyticsSummary | null>(null);
   const [loadingOnboardingAnalytics, setLoadingOnboardingAnalytics] = useState(true);
+  const [customerJourneyWindow, setCustomerJourneyWindow] = useState<CustomerJourneyWindow>("24h");
+  const [landingFunnelLogOpen, setLandingFunnelLogOpen] = useState(false);
+  const [landingFunnelLogFilter, setLandingFunnelLogFilter] = useState<
+    "all" | "visits" | "guestStarts" | "accountsCreated" | "upgrades" | "guestToAccount" | "dropoff"
+  >("all");
   const [deepStudyInterest, setDeepStudyInterest] = useState<DeepStudyInterestSummary>({
     today: 0,
     last24h: 0,
@@ -564,10 +602,13 @@ export default function AnalyticsPage() {
     loadUserRequestsInbox();
     loadWeeklyReportCenter();
     loadLouisReportLog();
-    loadOnboardingAnalytics();
     loadDeepStudyInterest();
     loadStudyNotesAnalytics();
   }, []);
+
+  useEffect(() => {
+    loadOnboardingAnalytics(customerJourneyWindow);
+  }, [customerJourneyWindow]);
 
   useEffect(() => {
     loadOverviewMetrics(timeFilter);
@@ -626,6 +667,8 @@ export default function AnalyticsPage() {
         setTotalUsers(0);
         setGuestUsers(0);
         setRegisteredUsers(0);
+        setFreeAccounts(0);
+        setUpgradedUsers(0);
         setLoadingTotalUsers(false);
         return;
       }
@@ -634,12 +677,16 @@ export default function AnalyticsPage() {
       setTotalUsers(data.totalUsers || 0);
       setGuestUsers(data.guestUsers || 0);
       setRegisteredUsers(data.registeredUsers || 0);
+      setFreeAccounts(data.freeAccounts ?? Math.max(0, Number(data.registeredUsers || 0) - Number(data.upgradedUsers || 0)));
+      setUpgradedUsers(data.upgradedUsers || 0);
       setLoadingTotalUsers(false);
     } catch (err) {
       console.error("[TOTAL_USERS] Error loading total users:", err);
       setTotalUsers(0);
       setGuestUsers(0);
       setRegisteredUsers(0);
+      setFreeAccounts(0);
+      setUpgradedUsers(0);
       setLoadingTotalUsers(false);
     }
   }
@@ -705,10 +752,10 @@ export default function AnalyticsPage() {
     setLoadingReadingPlanStats(false);
   }
 
-  async function loadOnboardingAnalytics() {
+  async function loadOnboardingAnalytics(windowKey: CustomerJourneyWindow = customerJourneyWindow) {
     setLoadingOnboardingAnalytics(true);
     try {
-      const response = await fetch("/api/admin/onboarding-analytics");
+      const response = await fetch(`/api/admin/onboarding-analytics?window=${windowKey}`);
       const data = await response.json();
       setOnboardingAnalytics(data);
     } catch (error) {
@@ -3456,93 +3503,132 @@ export default function AnalyticsPage() {
     );
   }
 
+  const guestToFreeRate = guestUsers > 0 ? Number(((freeAccounts / guestUsers) * 100).toFixed(1)) : 0;
+  const freeToUpgradeRate = freeAccounts > 0 ? Number(((upgradedUsers / freeAccounts) * 100).toFixed(1)) : 0;
+  const totalUpgradeRate = totalUsers > 0 ? Number(((upgradedUsers / totalUsers) * 100).toFixed(1)) : 0;
+  const landingActivityLog = onboardingAnalytics?.landingActivityLog || [];
+  const customerJourney = onboardingAnalytics?.customerJourney;
+  const customerJourneyLabel = customerJourney?.label || "Last 24 hours";
+  const landingFunnelFilterLabels: Record<typeof landingFunnelLogFilter, string> = {
+    all: "All activity",
+    visits: "Visitors",
+    guestStarts: "Guest users",
+    accountsCreated: "Free accounts",
+    upgrades: "Pro members",
+    guestToAccount: "Guest to account",
+    dropoff: "Drop-offs",
+  };
+  const filteredLandingActivityLog = landingActivityLog.filter((entry) => {
+    if (landingFunnelLogFilter === "all") return true;
+    if (landingFunnelLogFilter === "guestToAccount") {
+      return entry.eventName === "created_free_account" || entry.eventName === "created_account_successfully";
+    }
+    return entry.category === landingFunnelLogFilter;
+  });
+
+  const openLandingFunnelLog = (filter: typeof landingFunnelLogFilter) => {
+    setLandingFunnelLogFilter(filter);
+    setLandingFunnelLogOpen(true);
+  };
+
+  const formatLandingActivityTimestamp = (timestamp: string) => {
+    const date = new Date(timestamp);
+    if (!Number.isFinite(date.getTime())) return "Unknown time";
+    return date.toLocaleString([], {
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  };
+
   return (
     <div className="max-w-3xl mx-auto p-4 pb-32">
       <h1 className="text-3xl font-bold mb-6">Analytics Dashboard</h1>
 
-      {/* ACTIVE USERS RIGHT NOW + USER FUNNEL TOTALS */}
-      <div className="mb-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-          {/* Active Users */}
-          <div>
-            {loadingActiveUsers ? (
-              <div className="py-8">
-                <p className="text-gray-500 text-sm">Loading...</p>
-              </div>
-            ) : (
-              <>
-                <div className="text-7xl font-bold text-gray-900 mb-2">
-                  {overviewMetrics.activeUsers}
-                </div>
-                <p className="text-lg text-gray-600">
-                  Active Users
-                </p>
-              </>
-            )}
-          </div>
-
-          {/* Total People Reached */}
-          <div>
-            {loadingTotalUsers ? (
-              <div className="py-8">
-                <p className="text-gray-500 text-sm">Loading...</p>
-              </div>
-            ) : (
-              <>
-                <div className="text-7xl font-bold text-gray-900 mb-2">
-                  {totalUsers}
-                </div>
-                <p className="text-lg text-gray-600">
-                  Total People Reached
-                </p>
-              </>
-            )}
-          </div>
-
-          <div>
-            {loadingTotalUsers ? (
-              <div className="py-8">
-                <p className="text-gray-500 text-sm">Loading...</p>
-              </div>
-            ) : (
-              <>
-                <div className="text-7xl font-bold text-gray-900 mb-2">
-                  {guestUsers}
-                </div>
-                <p className="text-lg text-gray-600">
-                  Current Guests
-                </p>
-              </>
-            )}
-          </div>
-
-          <div>
-            {loadingTotalUsers ? (
-              <div className="py-8">
-                <p className="text-gray-500 text-sm">Loading...</p>
-              </div>
-            ) : (
-              <>
-                <div className="text-7xl font-bold text-gray-900 mb-2">
-                  {registeredUsers}
-                </div>
-                <p className="text-lg text-gray-600">
-                  Registered Users
-                </p>
-              </>
-            )}
-          </div>
+      {/* USER FUNNEL TOTALS */}
+      <div className="mb-12 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+        <div className="mb-5">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-700">User Funnel Totals</p>
+          <h2 className="text-2xl font-bold text-gray-900">Guest → Free Account → Upgraded</h2>
+          <p className="mt-1 text-sm font-semibold text-gray-500">
+            Total users are unique people reached. Guests who become free accounts are counted once, not twice.
+          </p>
         </div>
+
+        {loadingTotalUsers ? (
+          <div className="rounded-xl bg-gray-50 p-6 text-center text-sm font-semibold text-gray-500">
+            Loading user funnel totals...
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+              <div className="rounded-2xl border border-blue-100 bg-blue-50 p-4 text-center shadow-sm">
+                <p className="text-xs font-black uppercase tracking-wide text-blue-700">Guest Users</p>
+                <p className="mt-2 text-5xl font-black text-gray-900">{guestUsers.toLocaleString()}</p>
+                <p className="mt-2 text-xs font-semibold text-gray-500">Anonymous users currently trying BibleBuddy</p>
+              </div>
+              <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4 text-center shadow-sm">
+                <p className="text-xs font-black uppercase tracking-wide text-emerald-700">Free Accounts</p>
+                <p className="mt-2 text-5xl font-black text-gray-900">{freeAccounts.toLocaleString()}</p>
+                <p className="mt-2 text-xs font-semibold text-gray-500">Registered non-Pro users protecting progress</p>
+              </div>
+              <div className="rounded-2xl border border-amber-100 bg-amber-50 p-4 text-center shadow-sm">
+                <p className="text-xs font-black uppercase tracking-wide text-amber-700">Upgraded</p>
+                <p className="mt-2 text-5xl font-black text-gray-900">{upgradedUsers.toLocaleString()}</p>
+                <p className="mt-2 text-xs font-semibold text-gray-500">Pro users who deepened their study</p>
+              </div>
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-gray-100 bg-gray-50 p-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-wide text-gray-500">Total Users</p>
+                  <p className="mt-1 text-4xl font-black text-gray-900">{totalUsers.toLocaleString()}</p>
+                  <p className="mt-1 text-xs font-semibold text-gray-500">
+                    Unique guest + registered users. Converted guests stay one user.
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 gap-2 text-sm sm:grid-cols-3 sm:text-center">
+                  <div className="rounded-xl bg-white px-3 py-3 shadow-sm">
+                    <p className="text-xs font-black uppercase tracking-wide text-gray-500">Guest → Free</p>
+                    <p className="mt-1 text-xl font-black text-gray-900">{guestToFreeRate}%</p>
+                  </div>
+                  <div className="rounded-xl bg-white px-3 py-3 shadow-sm">
+                    <p className="text-xs font-black uppercase tracking-wide text-gray-500">Free → Pro</p>
+                    <p className="mt-1 text-xl font-black text-gray-900">{freeToUpgradeRate}%</p>
+                  </div>
+                  <div className="rounded-xl bg-white px-3 py-3 shadow-sm">
+                    <p className="text-xs font-black uppercase tracking-wide text-gray-500">Total → Pro</p>
+                    <p className="mt-1 text-xl font-black text-gray-900">{totalUpgradeRate}%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {/* LANDING PAGE CONVERSION */}
       <div className="mb-12 rounded-2xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
-        <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-700">Landing Page Analytics</p>
-            <h2 className="text-2xl font-bold text-gray-900">Guest Funnel</h2>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-700">Customer Journey</p>
+            <h2 className="text-2xl font-bold text-gray-900">Visitors</h2>
           </div>
-          <p className="text-xs font-bold text-blue-700">Last 24 hours</p>
+          <label className="flex items-center gap-2 self-start rounded-full border border-blue-100 bg-white px-3 py-2 text-xs font-black text-blue-700 shadow-sm sm:self-auto">
+            <span>Window</span>
+            <select
+              value={customerJourneyWindow}
+              onChange={(event) => setCustomerJourneyWindow(event.target.value as CustomerJourneyWindow)}
+              className="bg-transparent text-gray-900 outline-none"
+            >
+              <option value="1h">Last 1 hour</option>
+              <option value="24h">Last 24 hours</option>
+              <option value="7d">Last 7 days</option>
+              <option value="30d">Last 30 days</option>
+            </select>
+          </label>
         </div>
 
         {loadingOnboardingAnalytics ? (
@@ -3550,27 +3636,138 @@ export default function AnalyticsPage() {
             Loading landing page analytics...
           </div>
         ) : (
-          <div className="grid gap-3 md:grid-cols-4">
-            <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Landing Visits</p>
-              <p className="mt-2 text-4xl font-black text-gray-900">{(onboardingAnalytics?.landingLast24h?.visits ?? 0).toLocaleString()}</p>
-              <p className="mt-1 text-xs font-semibold text-gray-500">Landing page visits in 24 hours</p>
+          <div>
+            <div className="grid gap-3 md:grid-cols-4">
+              {[
+                {
+                  filter: "visits" as const,
+                  label: "Landing Page Visits",
+                  value: customerJourney?.visits ?? onboardingAnalytics?.landingLast24h?.visits ?? 0,
+                  helper: "Landing page visits",
+                },
+                {
+                  filter: "guestStarts" as const,
+                  label: "Guest Users",
+                  value: customerJourney?.guestStarts ?? onboardingAnalytics?.landingLast24h?.guestStarts ?? 0,
+                  helper: "People who entered BibleBuddy as guests",
+                },
+                {
+                  filter: "accountsCreated" as const,
+                  label: "Free Accounts",
+                  value: customerJourney?.freeAccounts ?? onboardingAnalytics?.landingLast24h?.accountsCreated ?? onboardingAnalytics?.landingLast24h?.signups ?? 0,
+                  helper: "Guests who protected their journey",
+                },
+                {
+                  filter: "upgrades" as const,
+                  label: "Pro Members",
+                  value: customerJourney?.proUpgrades ?? 0,
+                  helper: `Users who upgraded to Pro in ${customerJourneyLabel.toLowerCase()}`,
+                },
+              ].map((card) => (
+                <button
+                  key={card.filter}
+                  type="button"
+                  onClick={() => openLandingFunnelLog(card.filter)}
+                  className={`flex min-h-[186px] flex-col rounded-2xl border bg-white p-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md ${
+                    landingFunnelLogOpen && landingFunnelLogFilter === card.filter
+                      ? "border-blue-400 ring-2 ring-blue-100"
+                      : "border-blue-100"
+                  }`}
+                >
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-500">{card.label}</p>
+                  <p className="my-auto text-5xl font-black text-gray-900">
+                    {typeof card.value === "number" ? card.value.toLocaleString() : card.value}
+                  </p>
+                  <p className="text-xs font-semibold text-gray-500">{card.helper}</p>
+                  <p className="mt-3 text-xs font-black uppercase tracking-wide text-blue-600">View log</p>
+                </button>
+              ))}
             </div>
-            <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Guest Starts</p>
-              <p className="mt-2 text-4xl font-black text-gray-900">{(onboardingAnalytics?.landingLast24h?.guestStarts ?? 0).toLocaleString()}</p>
-              <p className="mt-1 text-xs font-semibold text-gray-500">People who entered BibleBuddy as guests</p>
-            </div>
-            <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Accounts Created</p>
-              <p className="mt-2 text-4xl font-black text-gray-900">{(onboardingAnalytics?.landingLast24h?.accountsCreated ?? onboardingAnalytics?.landingLast24h?.signups ?? 0).toLocaleString()}</p>
-              <p className="mt-1 text-xs font-semibold text-gray-500">Guests who protected their journey</p>
-            </div>
-            <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Guest to Account</p>
-              <p className="mt-2 text-4xl font-black text-gray-900">{onboardingAnalytics?.landingLast24h?.guestToAccountRate ?? 0}%</p>
-              <p className="mt-1 text-xs font-semibold text-gray-500">Accounts divided by guest starts</p>
-            </div>
+
+            {landingFunnelLogOpen ? (
+              <div className="mt-4 rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
+                <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-blue-700">Master Log</p>
+                    <h3 className="text-xl font-black text-gray-900">{landingFunnelFilterLabels[landingFunnelLogFilter]}</h3>
+                    <p className="mt-1 text-sm font-semibold text-gray-500">
+                      See each person or session, where the journey started, and where it ended for {customerJourneyLabel.toLowerCase()}.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setLandingFunnelLogOpen(false)}
+                    className="self-start rounded-full border border-gray-200 px-3 py-1 text-xs font-black uppercase tracking-wide text-gray-500 hover:bg-gray-50"
+                  >
+                    Close
+                  </button>
+                </div>
+
+                <div className="mb-4 flex flex-wrap gap-2">
+                  {[
+                    { key: "all" as const, label: "All" },
+                    { key: "visits" as const, label: "Visitors" },
+                    { key: "guestStarts" as const, label: "Guest Users" },
+                    { key: "accountsCreated" as const, label: "Free Accounts" },
+                    { key: "upgrades" as const, label: "Pro Members" },
+                    { key: "guestToAccount" as const, label: "Conversions" },
+                    { key: "dropoff" as const, label: "Drop-offs" },
+                  ].map((filter) => (
+                    <button
+                      key={filter.key}
+                      type="button"
+                      onClick={() => setLandingFunnelLogFilter(filter.key)}
+                      className={`rounded-full px-3 py-1 text-xs font-black uppercase tracking-wide transition ${
+                        landingFunnelLogFilter === filter.key
+                          ? "bg-blue-600 text-white shadow-sm"
+                          : "border border-blue-100 bg-blue-50 text-blue-700 hover:bg-blue-100"
+                      }`}
+                    >
+                      {filter.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="max-h-[420px] space-y-3 overflow-y-auto pr-1">
+                  {filteredLandingActivityLog.length > 0 ? (
+                    filteredLandingActivityLog.slice(0, 80).map((entry) => (
+                      <div key={entry.id} className="rounded-xl border border-gray-100 bg-gray-50 p-3">
+                        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                          <div>
+                            <p className="text-sm font-black text-gray-900">{entry.title}</p>
+                            <p className="mt-1 text-sm font-semibold text-gray-600">{entry.detail}</p>
+                          </div>
+                          <p className="shrink-0 text-xs font-black uppercase tracking-wide text-blue-700">
+                            {formatLandingActivityTimestamp(entry.timestamp)}
+                          </p>
+                        </div>
+                        <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-bold text-gray-500">
+                          <span className="rounded-full bg-white px-2 py-1">{entry.userLabel}</span>
+                          <span className="rounded-full bg-white px-2 py-1">Started: {entry.journeyStart || entry.title}</span>
+                          <span className="rounded-full bg-white px-2 py-1">Ended: {entry.journeyEnd || entry.title}</span>
+                          <span className="rounded-full bg-white px-2 py-1">{entry.sessionLabel}</span>
+                          <span className="rounded-full bg-white px-2 py-1">Source: {entry.source}</span>
+                          <span className="rounded-full bg-white px-2 py-1">Page: {entry.pagePath}</span>
+                          {entry.timeSinceLandingLabel ? (
+                            <span className="rounded-full bg-blue-50 px-2 py-1 text-blue-700">{entry.timeSinceLandingLabel}</span>
+                          ) : null}
+                          {entry.timeSincePreviousLabel ? (
+                            <span className="rounded-full bg-blue-50 px-2 py-1 text-blue-700">{entry.timeSincePreviousLabel}</span>
+                          ) : null}
+                          {entry.referrer ? (
+                            <span className="rounded-full bg-white px-2 py-1">Referrer: {entry.referrer}</span>
+                          ) : null}
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="rounded-xl border border-dashed border-blue-200 bg-blue-50 p-5 text-center text-sm font-semibold text-gray-500">
+                      No events found for this filter in {customerJourneyLabel.toLowerCase()}.
+                    </div>
+                  )}
+                </div>
+              </div>
+            ) : null}
           </div>
         )}
 

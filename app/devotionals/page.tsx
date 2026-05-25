@@ -58,18 +58,10 @@ type StudyCommunityModal = {
 
 type StudyFilter = "all" | "done" | "started";
 
-const HIDDEN_DEVOTIONAL_TITLES = new Set<string>();
-
 const FEATURED_STUDY_ORDER = [
-  "The Creation of the World",
-  "The Fall of Man",
-  "The Flood of Noah",
-  "The Obedience of Abraham",
-  "The Promise Through Isaac",
   "The Wrestling of Jacob",
   "The Testing of Joseph",
   "The Deliverance of Moses",
-  "The Covenant at Sinai",
   "The Presence of God",
   "Holiness Before God",
   "The Wilderness Journey",
@@ -84,7 +76,9 @@ const FEATURED_STUDY_ORDER = [
   "The Tempting of Jesus",
   "The Disciples of Jesus",
   "The Transforming of Paul",
+  "Women of the Bible",
 ];
+const KEEP_DEVOTIONAL_TITLES = new Set(FEATURED_STUDY_ORDER);
 const FEATURED_STUDY_ORDER_INDEX = new Map(
   FEATURED_STUDY_ORDER.map((title, index) => [title, index]),
 );
@@ -321,11 +315,11 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     const coverImage = getCoverImage(devotional.title);
     if (coverImage) {
       return (
-        <div className="overflow-visible rounded-xl p-1">
+        <div className="overflow-visible rounded-xl">
           <img
             src={coverImage}
             alt={`${devotional.title} cover`}
-            className="aspect-[3/4] w-full max-w-[86px] object-contain drop-shadow-sm transition duration-300 sm:max-w-[104px]"
+            className="aspect-[3/4] w-full object-contain drop-shadow-sm transition duration-300 group-hover:scale-[1.02]"
             style={{
               objectPosition:
                 devotional.title === "The Testing of Joseph"
@@ -344,14 +338,14 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
           {devotional.title}
         </div>
         <div className="mt-2 text-xs md:text-sm text-gray-600">
-          {devotional.total_days} chapter Bible study
+          {devotional.total_days} part Bible study
         </div>
       </div>
     );
   };
 
   const visibleDevotionals = useMemo(() => devotionals
-    .filter((devotional) => !HIDDEN_DEVOTIONAL_TITLES.has(devotional.title))
+    .filter((devotional) => KEEP_DEVOTIONAL_TITLES.has(devotional.title))
     .sort((a, b) => {
       const aOrder = FEATURED_STUDY_ORDER_INDEX.get(a.title);
       const bOrder = FEATURED_STUDY_ORDER_INDEX.get(b.title);
@@ -789,89 +783,42 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
               : `No ${studyFilter === "done" ? "done" : "started"} Bible studies yet.`}
           </div>
         ) : (
-          <div className="bb-card rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm md:p-5">
-            <div className="grid grid-cols-1 gap-4">
+          <div>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
             {filteredDevotionals.map((devotional) => {
               const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
-              const community = communityByDevotional[devotional.id];
               const isComplete = progress.isComplete;
               const card = (
-                <div className={`bb-bible-study-card group h-full rounded-[22px] border p-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl md:p-4 ${
+                <div className={`bb-bible-study-card group flex h-full flex-col rounded-[18px] border p-2.5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl sm:p-3 ${
                   isComplete ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]" : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
                 }`}>
-                  <div className="grid grid-cols-[86px_1fr] gap-3 sm:grid-cols-[104px_1fr] md:gap-4">
-                    <div>{getDevotionalVisual(devotional)}</div>
-                    <div className="flex min-w-0 flex-col">
-                      <div>
-                        <div className="flex items-start justify-between gap-2">
-                          <div className="text-base font-black leading-tight text-[var(--bb-text-primary,#111827)] md:text-lg">
-                            {devotional.title}
-                          </div>
-                          {isComplete ? (
-                            <span className="rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)]">
-                              Done
-                            </span>
-                          ) : null}
-                        </div>
-                        <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                          {getStudyScriptureRange(devotional.title) ?? (isChapterJourney(devotional.title) ? `${devotional.total_days} chapter journey` : `${devotional.total_days} part study`)}
-                        </p>
+                  <div className="relative">
+                    {getDevotionalVisual(devotional)}
+                    {isComplete ? (
+                      <span className="absolute right-2 top-2 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] shadow-sm">
+                        Done
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="flex flex-1 flex-col px-1 pb-1 pt-3 text-center">
+                    <h3 className="text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-base md:text-lg">
+                      {devotional.title}
+                    </h3>
+                    <p className="mt-1 text-[11px] font-bold leading-tight text-[var(--bb-text-muted,#6b7280)] sm:text-xs">
+                      {getStudyScriptureRange(devotional.title) ?? `${devotional.total_days} part study`}
+                    </p>
+                    <div className="mt-auto pt-3">
+                      <div className="h-2 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#f8fbff)]">
+                        <div
+                          className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] transition-all duration-500"
+                          style={{ width: `${progress.percent}%` }}
+                        />
                       </div>
-                      <div className="mt-3">
-                        <div className="flex items-center justify-between text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">
-                          <span>{progress.label}</span>
-                          <span>{progress.percent}%</span>
-                        </div>
-                        <div className="mt-2 h-3 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#f8fbff)]">
-                          <div
-                            className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] transition-all duration-500"
-                            style={{ width: `${progress.percent}%` }}
-                          />
-                        </div>
-                        <p className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                          {isComplete ? "Completed study" : progress.percent > 0 ? "Continue study" : "Start study"}
-                        </p>
-                      </div>
+                      <p className="mt-2 text-xs font-black text-[var(--bb-text-primary,#111827)]">
+                        {isComplete ? "Completed" : progress.percent > 0 ? "Continue" : "Start"}
+                      </p>
                     </div>
                   </div>
-                  <div className="mt-3 h-2 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)]" />
-                  {community && community.total > 0 ? (
-                    <button
-                      type="button"
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        void openCommunityModal(devotional, 0);
-                      }}
-                      className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2 text-left transition hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-card,#ffffff)]"
-                    >
-                      <span className="flex min-w-0 items-center">
-                        {community.avatars.slice(0, 5).map((buddy, index) => (
-                          <span
-                            key={buddy.userId}
-                            className="-ml-2 grid h-8 w-8 place-items-center overflow-hidden rounded-full border-2 border-[var(--bb-card,#ffffff)] bg-[var(--bb-accent-soft,#eaf5ff)] text-xs font-black text-[var(--bb-accent,#2f7fe8)] first:ml-0"
-                            style={{ zIndex: 10 - index }}
-                            title={buddy.name}
-                          >
-                            {buddy.image ? (
-                              <img src={buddy.image} alt="" className="h-full w-full object-cover" />
-                            ) : (
-                              buddy.name.charAt(0).toUpperCase()
-                            )}
-                          </span>
-                        ))}
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="block truncate text-xs font-black text-[var(--bb-text-primary,#111827)]">
-                          {community.total} {community.total === 1 ? "Buddy is" : "Buddies are"} studying this
-                        </span>
-                        <span className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">Tap to see progress</span>
-                      </span>
-                    </button>
-                  ) : (
-                    <div className="mt-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                      Be the first Buddy to start this study.
-                    </div>
-                  )}
                 </div>
               );
               return (

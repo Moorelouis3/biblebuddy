@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
 export async function GET() {
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -7,6 +8,8 @@ export async function GET() {
   let totalUsers = 0;
   let guestUsers = 0;
   let registeredUsers = 0;
+  let upgradedUsers = 0;
+  const registeredCandidateIds: string[] = [];
   let page = 1;
   const perPage = 1000;
   let hasMore = true;
@@ -38,7 +41,8 @@ export async function GET() {
       if (isAnonymous) {
         guestUsers += 1;
       } else {
-        registeredUsers += 1;
+        const id = typeof user?.id === "string" ? user.id : "";
+        if (id && user?.email) registeredCandidateIds.push(id);
       }
     }
 
@@ -46,5 +50,44 @@ export async function GET() {
     page++;
   }
 
-  return NextResponse.json({ totalUsers, guestUsers, registeredUsers, totalPeopleReached: totalUsers });
+  const realRegisteredUserIds = new Set<string>();
+  const upgradedUserIds = new Set<string>();
+
+  try {
+    const admin = createClient(url, serviceKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+    });
+
+    for (let index = 0; index < registeredCandidateIds.length; index += 500) {
+      const batch = registeredCandidateIds.slice(index, index + 500);
+      const { data: profiles } = await admin
+        .from("profile_stats")
+        .select("user_id, display_name, username, is_paid")
+        .in("user_id", batch);
+
+      for (const profile of profiles || []) {
+        const userId = typeof profile.user_id === "string" ? profile.user_id : "";
+        const displayName = typeof profile.display_name === "string" ? profile.display_name.trim() : "";
+        const username = typeof profile.username === "string" ? profile.username.trim() : "";
+        if (!userId || (!displayName && !username)) continue;
+        realRegisteredUserIds.add(userId);
+        if (profile.is_paid) upgradedUserIds.add(userId);
+      }
+    }
+  } catch (error) {
+    console.warn("[TOTAL_USERS] Could not count registered profile users:", error);
+  }
+
+  registeredUsers = realRegisteredUserIds.size;
+  upgradedUsers = upgradedUserIds.size;
+  const freeAccounts = Math.max(0, registeredUsers - upgradedUsers);
+
+  return NextResponse.json({
+    totalUsers,
+    guestUsers,
+    registeredUsers,
+    freeAccounts,
+    upgradedUsers,
+    totalPeopleReached: totalUsers,
+  });
 }
