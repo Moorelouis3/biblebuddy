@@ -18,7 +18,7 @@ type GenesisVerse = {
   text: string;
 };
 
-const GENESIS_KJV_VERSES: Record<number, GenesisVerse[]> = {
+export const GENESIS_KJV_VERSES: Record<number, GenesisVerse[]> = {
   11: [
     { verse: 1, text: `And the whole earth was of one language, and of one speech.` },
     { verse: 2, text: `And it came to pass, as they journeyed from the east, that they found a plain in the land of Shinar; and they dwelt there.` },

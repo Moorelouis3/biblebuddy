@@ -1,7 +1,14 @@
 import { GENESIS_CREATION_WEB_VERSES, type GenesisVerse } from "./creationOfWorldDeepNotes";
+import { GENESIS_KJV_VERSES } from "./obedienceOfAbrahamDeepNotes";
 
 export const BIBLE_YEAR_GENESIS_WEB_VERSES: Record<number, GenesisVerse[]> = {
   ...GENESIS_CREATION_WEB_VERSES,
+  20: GENESIS_KJV_VERSES[20],
+  21: GENESIS_KJV_VERSES[21],
+  22: GENESIS_KJV_VERSES[22],
+  23: GENESIS_KJV_VERSES[23],
+  24: GENESIS_KJV_VERSES[24],
+  25: GENESIS_KJV_VERSES[25],
   5: [
     { verse: 1, text: "This is the book of the generations of Adam. In the day that God created man, he made him in God's likeness." },
     { verse: 2, text: "He created them male and female, and blessed them, and called their name Man, in the day when they were created." },

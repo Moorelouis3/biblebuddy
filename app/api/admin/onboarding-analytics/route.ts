@@ -26,10 +26,10 @@ const QUESTION_CONFIG = [
     options: ["I'm just getting started", "Less than 1 year", "1-3 years", "More than 3 years"],
   },
   {
-    key: "age",
-    title: "Age Range",
-    field: "age_range",
-    options: ["Under 18", "18-29", "30-49", "50+"],
+    key: "studyFocus",
+    title: "Study Focus",
+    field: "study_focus",
+    options: ["The whole Bible story", "A specific book of the Bible", "People in the Bible", "Wisdom for real life"],
   },
   {
     key: "time",
@@ -59,8 +59,8 @@ const FUNNEL_CONFIG = [
   { key: "question1", eventName: "completed_question_1", label: "Completed Question 1" },
   { key: "viewedQuestion2", eventName: "viewed_question_2", label: "Viewed Question 2" },
   { key: "question2", eventName: "completed_question_2", label: "Completed Question 2" },
-  { key: "viewedQuestion3Age", eventName: "viewed_question_3_age", label: "Viewed Question 3 - Age" },
-  { key: "question3Age", eventName: "completed_question_3_age", label: "Completed Question 3 - Age" },
+  { key: "viewedQuestion3Focus", eventName: "viewed_question_3_focus", label: "Viewed Question 3 - Study Focus" },
+  { key: "question3Focus", eventName: "completed_question_3_focus", label: "Completed Question 3 - Study Focus" },
   { key: "viewedQuestion4", eventName: "viewed_question_4", label: "Viewed Question 4" },
   { key: "question4", eventName: "completed_question_4", label: "Completed Question 4" },
   { key: "viewedQuestion5", eventName: "viewed_question_5", label: "Viewed Question 5" },
@@ -68,22 +68,23 @@ const FUNNEL_CONFIG = [
   { key: "viewedLoading", eventName: "viewed_results_loading", label: "Viewed results loading" },
   { key: "viewedResults", eventName: "viewed_results_page", label: "Viewed results page" },
   { key: "reachedResults", eventName: "reached_results_page", label: "Reached results page" },
-  { key: "clickedJourney", eventName: "clicked_yes_start_my_journey", label: "Clicked Yes, start my journey" },
+  { key: "guestStart", eventName: "started_guest_journey", label: "Started Guest Journey" },
   { key: "viewedAccount", eventName: "viewed_create_account_modal", label: "Viewed Create Account modal" },
   { key: "openedAccount", eventName: "opened_create_account_modal", label: "Opened Create Account modal" },
-  { key: "createdAccount", eventName: "created_account_successfully", label: "Created account" },
+  { key: "createdAccount", eventName: "created_free_account", label: "Created Free Account" },
 ] as const;
 
 const PUBLIC_ONBOARDING_STEP_CONFIG = [
   { key: "intro", eventName: "viewed_onboarding_intro", label: "Intro opened" },
   { key: "question1", eventName: "viewed_question_1", label: "Question 1 viewed" },
   { key: "question2", eventName: "viewed_question_2", label: "Question 2 viewed" },
-  { key: "question3", eventName: "viewed_question_3_age", label: "Question 3 viewed" },
+  { key: "question3", eventName: "viewed_question_3_focus", label: "Question 3 viewed" },
   { key: "question4", eventName: "viewed_question_4", label: "Question 4 viewed" },
   { key: "question5", eventName: "viewed_question_5", label: "Question 5 viewed" },
   { key: "results", eventName: "viewed_results_page", label: "Results viewed" },
+  { key: "guest", eventName: "started_guest_journey", label: "Guest journey started" },
   { key: "account", eventName: "viewed_create_account_modal", label: "Account modal viewed" },
-  { key: "signup", eventName: "created_account_successfully", label: "Account created" },
+  { key: "signup", eventName: "created_free_account", label: "Account created" },
 ] as const;
 
 function summarize(options: readonly string[], rows: Record<string, unknown>[], field: string) {
@@ -119,14 +120,14 @@ function buildPersonaLine(questions: Array<{ key: string; mostCommon: AnswerSumm
   const byKey = new Map(questions.map((question) => [question.key, question.mostCommon?.answer]));
   const goal = byKey.get("goal");
   const experience = byKey.get("experience");
-  const age = byKey.get("age");
+  const studyFocus = byKey.get("studyFocus");
   const time = byKey.get("time");
   const difficulty = byKey.get("difficulty");
-  if (!goal || !experience || !age || !time || !difficulty) {
+  if (!goal || !experience || !studyFocus || !time || !difficulty) {
     return "Not enough new onboarding data yet to describe the average Bible Buddy user.";
   }
 
-  return `The typical Bible Buddy user is ${age}, wants to ${goal.toLowerCase()}, is ${experience.toLowerCase()}, has about ${time.toLowerCase()} a day, and most often says ${difficulty.toLowerCase()}.`;
+  return `The typical Bible Buddy user wants to ${goal.toLowerCase()}, is ${experience.toLowerCase()}, wants to focus on ${studyFocus.toLowerCase()}, has about ${time.toLowerCase()} a day, and most often says ${difficulty.toLowerCase()}.`;
 }
 
 function summarizeFunnel(rows: Record<string, unknown>[]) {
@@ -152,15 +153,75 @@ function summarizeFunnel(rows: Record<string, unknown>[]) {
   });
 
   const visitors = steps[0]?.count || 0;
-  const signups = steps.find((step) => step.eventName === "created_account_successfully")?.count || 0;
+  const guestStarts = steps.find((step) => step.eventName === "started_guest_journey")?.count || 0;
+  const accountsCreated = steps.find((step) => step.eventName === "created_free_account")?.count || 0;
 
   return {
     cards: {
       visitors,
-      signups,
-      conversionRate: visitors > 0 ? Number(((signups / visitors) * 100).toFixed(1)) : 0,
+      signups: accountsCreated,
+      guestStarts,
+      accountsCreated,
+      conversionRate: visitors > 0 ? Number(((accountsCreated / visitors) * 100).toFixed(1)) : 0,
+      landingToGuestRate: visitors > 0 ? Number(((guestStarts / visitors) * 100).toFixed(1)) : 0,
+      guestToAccountRate: guestStarts > 0 ? Number(((accountsCreated / guestStarts) * 100).toFixed(1)) : 0,
     },
     steps,
+  };
+}
+
+function summarizeGuestAccountFunnel(rows: Record<string, unknown>[]) {
+  const windows = [
+    { key: "24h", label: "Last 24 Hours", ms: 24 * 60 * 60 * 1000 },
+    { key: "7d", label: "Last 7 Days", ms: 7 * 24 * 60 * 60 * 1000 },
+    { key: "30d", label: "Last 30 Days", ms: 30 * 24 * 60 * 60 * 1000 },
+  ];
+  const now = Date.now();
+
+  function countWindow(ms: number) {
+    const since = now - ms;
+    const guestSessions = new Set<string>();
+    const accountSessions = new Set<string>();
+    let guestEvents = 0;
+    let accountEvents = 0;
+
+    for (const row of rows) {
+      const createdAt = typeof row.created_at === "string" ? new Date(row.created_at).getTime() : 0;
+      if (!Number.isFinite(createdAt) || createdAt < since) continue;
+      const eventName = typeof row.event_name === "string" ? row.event_name : "";
+      const sessionId = typeof row.session_id === "string" ? row.session_id : "";
+      if (eventName === "started_guest_journey") {
+        guestEvents += 1;
+        if (sessionId) guestSessions.add(sessionId);
+      }
+      if (eventName === "created_free_account" || eventName === "created_account_successfully") {
+        accountEvents += 1;
+        if (sessionId) accountSessions.add(sessionId);
+      }
+    }
+
+    const guestStarts = guestSessions.size || guestEvents;
+    const accountsCreated = accountSessions.size || accountEvents;
+    return {
+      guestStarts,
+      accountsCreated,
+      conversionRate: guestStarts > 0 ? Number(((accountsCreated / guestStarts) * 100).toFixed(1)) : 0,
+    };
+  }
+
+  const todayKey = new Date().toISOString().slice(0, 10);
+  const todayRows = rows.filter((row) => typeof row.created_at === "string" && row.created_at.slice(0, 10) === todayKey);
+  const today = {
+    guestStarts: new Set(todayRows.filter((row) => row.event_name === "started_guest_journey").map((row) => row.session_id || row.user_id)).size,
+    accountsCreated: new Set(todayRows.filter((row) => row.event_name === "created_free_account" || row.event_name === "created_account_successfully").map((row) => row.session_id || row.user_id)).size,
+  };
+
+  return {
+    today: {
+      ...today,
+      conversionRate: today.guestStarts > 0 ? Number(((today.accountsCreated / today.guestStarts) * 100).toFixed(1)) : 0,
+    },
+    windows: windows.map((window) => ({ key: window.key, label: window.label, ...countWindow(window.ms) })),
   };
 }
 
@@ -197,7 +258,7 @@ function summarizePublicOnboardingFlow(rows: Record<string, unknown>[]) {
   });
 
   const started = eventSessions.get("started_onboarding")?.size || 0;
-  const finished = eventSessions.get("created_account_successfully")?.size || 0;
+  const finished = eventSessions.get("started_guest_journey")?.size || 0;
 
   return {
     started,
@@ -209,7 +270,7 @@ function summarizePublicOnboardingFlow(rows: Record<string, unknown>[]) {
 }
 
 function summarizeSources(rows: Record<string, unknown>[]) {
-  const signupRows = rows.filter((row) => row.event_name === "created_account_successfully");
+  const signupRows = rows.filter((row) => row.event_name === "created_free_account" || row.event_name === "created_account_successfully");
   const sessionsBySource = new Map<string, Set<string>>();
 
   for (const row of signupRows) {
@@ -237,9 +298,11 @@ function summarizeLandingLast24Hours(rows: Record<string, unknown>[]) {
     return Number.isFinite(createdAt) && createdAt >= since;
   });
   const visitSessions = new Set<string>();
-  const signupSessions = new Set<string>();
+  const guestSessions = new Set<string>();
+  const accountSessions = new Set<string>();
   let visitEvents = 0;
-  let signupEvents = 0;
+  let guestEvents = 0;
+  let accountEvents = 0;
 
   for (const row of recentRows) {
     const eventName = typeof row.event_name === "string" ? row.event_name : "";
@@ -248,21 +311,31 @@ function summarizeLandingLast24Hours(rows: Record<string, unknown>[]) {
       visitEvents += 1;
       if (sessionId) visitSessions.add(sessionId);
     }
-    if (eventName === "created_account_successfully") {
-      signupEvents += 1;
-      if (sessionId) signupSessions.add(sessionId);
+    if (eventName === "created_free_account" || eventName === "created_account_successfully") {
+      accountEvents += 1;
+      if (sessionId) accountSessions.add(sessionId);
+    }
+    if (eventName === "started_guest_journey") {
+      guestEvents += 1;
+      if (sessionId) guestSessions.add(sessionId);
     }
   }
 
   const visits = visitSessions.size || visitEvents;
-  const signups = signupSessions.size || signupEvents;
+  const guestStarts = guestSessions.size || guestEvents;
+  const accountsCreated = accountSessions.size || accountEvents;
 
   return {
     visits,
-    signups,
-    conversionRate: visits > 0 ? Number(((signups / visits) * 100).toFixed(1)) : 0,
+    signups: accountsCreated,
+    guestStarts,
+    accountsCreated,
+    conversionRate: visits > 0 ? Number(((accountsCreated / visits) * 100).toFixed(1)) : 0,
+    landingToGuestRate: visits > 0 ? Number(((guestStarts / visits) * 100).toFixed(1)) : 0,
+    guestToAccountRate: guestStarts > 0 ? Number(((accountsCreated / guestStarts) * 100).toFixed(1)) : 0,
     rawVisitEvents: visitEvents,
-    rawSignupEvents: signupEvents,
+    rawGuestEvents: guestEvents,
+    rawSignupEvents: accountEvents,
   };
 }
 
@@ -283,7 +356,7 @@ export async function GET() {
 
   const { data, error } = await adminSupabase
     .from("landing_onboarding_responses")
-    .select("goal, experience, age_range, time_commitment, difficulty, created_at");
+    .select("goal, experience, study_focus, time_commitment, difficulty, created_at");
 
   const { data: eventData, error: eventError } = await adminSupabase
     .from("landing_page_events")
@@ -294,6 +367,7 @@ export async function GET() {
   const sources = summarizeSources(eventRows);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(eventRows);
   const landingLast24h = summarizeLandingLast24Hours(eventRows);
+  const guestAccountFunnel = summarizeGuestAccountFunnel(eventRows);
 
   if (error) {
     return NextResponse.json({
@@ -301,6 +375,7 @@ export async function GET() {
       personaLine: "Run CREATE_LANDING_ONBOARDING_RESPONSES.sql to enable new onboarding analytics.",
       funnel,
       landingLast24h,
+      guestAccountFunnel,
       publicOnboardingFlow,
       sources,
       eventSetupRequired: Boolean(eventError),
@@ -327,6 +402,7 @@ export async function GET() {
     questions,
     funnel,
     landingLast24h,
+    guestAccountFunnel,
     publicOnboardingFlow,
     sources,
     setupRequired: false,

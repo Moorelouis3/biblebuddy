@@ -5,6 +5,8 @@ export async function GET() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 
   let totalUsers = 0;
+  let guestUsers = 0;
+  let registeredUsers = 0;
   let page = 1;
   const perPage = 1000;
   let hasMore = true;
@@ -29,11 +31,20 @@ export async function GET() {
 
     const json = await response.json();
 
-    totalUsers += json.users.length;
+    const users = Array.isArray(json.users) ? json.users : [];
+    totalUsers += users.length;
+    for (const user of users) {
+      const isAnonymous = Boolean(user?.is_anonymous) || (!user?.email && (!Array.isArray(user?.identities) || user.identities.length === 0));
+      if (isAnonymous) {
+        guestUsers += 1;
+      } else {
+        registeredUsers += 1;
+      }
+    }
 
-    hasMore = json.users.length === perPage;
+    hasMore = users.length === perPage;
     page++;
   }
 
-  return NextResponse.json({ totalUsers });
+  return NextResponse.json({ totalUsers, guestUsers, registeredUsers, totalPeopleReached: totalUsers });
 }

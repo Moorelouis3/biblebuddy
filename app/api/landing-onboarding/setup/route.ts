@@ -7,10 +7,12 @@ export const dynamic = "force-dynamic";
 type Answers = {
   goal?: string;
   experience?: string;
-  ageRange?: string;
+  studyFocus?: string;
   time?: string;
   difficulty?: string;
 };
+
+type StudyRoute = "bible_year" | "devotional";
 
 function normalizeExperienceForProfile(experience: string | null | undefined) {
   if (experience === "I'm just getting started") return "brand_new";
@@ -72,10 +74,15 @@ export async function POST(request: NextRequest) {
   const email = typeof body?.email === "string" ? body.email.trim().toLowerCase() : userData.user.email || "";
   const answers = (body?.answers && typeof body.answers === "object" ? body.answers : {}) as Answers;
   const recommendationDays = Number.isFinite(Number(body?.recommendationDays)) ? Number(body.recommendationDays) : 365;
+  const requestedStudyRoute: StudyRoute = body?.studyRoute === "devotional" ? "devotional" : "bible_year";
+  const requestedDevotionalId = typeof body?.selectedDevotionalId === "string" && body.selectedDevotionalId.trim()
+    ? body.selectedDevotionalId.trim()
+    : null;
 
   const admin = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
+  const isAnonymousUser = Boolean((userData.user as any).is_anonymous) || !userData.user.email;
 
   const nowIso = new Date().toISOString();
   const todayKey = getLocalDateKey();
@@ -98,34 +105,68 @@ export async function POST(request: NextRequest) {
 
   const { data: creationStudy } = await admin
     .from("devotionals")
-    .select("id")
+    .select("id, title")
     .eq("title", "The Creation of the World")
     .maybeSingle();
   const creationStudyId = typeof creationStudy?.id === "string" ? creationStudy.id : null;
+  let selectedDevotionalId = creationStudyId;
+  let selectedDevotionalTitle = "The Creation of the World";
 
-  const { error: profileError } = await admin.from("profile_stats").upsert(
-    {
+  if (requestedStudyRoute === "devotional" && requestedDevotionalId) {
+    const { data: selectedDevotional } = await admin
+      .from("devotionals")
+      .select("id, title")
+      .eq("id", requestedDevotionalId)
+      .maybeSingle();
+    if (typeof selectedDevotional?.id === "string") {
+      selectedDevotionalId = selectedDevotional.id;
+      selectedDevotionalTitle = selectedDevotional.title || "Focused Devotional Study";
+    }
+  }
+
+  const profilePayload = {
       user_id: userData.user.id,
       display_name: fullName,
       username: fullName,
       ...(profileImageUrl ? { profile_image_url: profileImageUrl } : {}),
       onboarding_completed: true,
       landing_onboarding_completed: true,
+      account_type: isAnonymousUser ? "guest" : "registered",
+      guest_started_at: isAnonymousUser ? nowIso : null,
+      registered_at: isAnonymousUser ? null : nowIso,
+      converted_from_guest_at: null,
       traffic_source: "landing_questionnaire",
       bible_experience_level: normalizeExperienceForProfile(answers.experience),
       onboarding_goal: normalizeGoalForProfile(answers.goal),
-      age_range: answers.ageRange ?? null,
+      preferred_study_mode: requestedStudyRoute,
+      onboarding_study_focus: answers.studyFocus ?? null,
       onboarding_time_commitment: answers.time ?? null,
       onboarding_difficulty: answers.difficulty ?? null,
-      bible_year_started_at: todayKey,
-      bible_year_launch_seen_at: nowIso,
-      free_devotional_id: creationStudyId,
-      louis_primary_devotional_id: creationStudyId,
+      bible_year_started_at: requestedStudyRoute === "bible_year" ? todayKey : null,
+      bible_year_launch_seen_at: requestedStudyRoute === "bible_year" ? nowIso : null,
+      free_devotional_id: selectedDevotionalId,
+      louis_primary_devotional_id: selectedDevotionalId,
       louis_primary_devotional_day: 1,
       updated_at: nowIso,
-    },
-    { onConflict: "user_id" },
-  );
+    };
+
+  let { error: profileError } = await admin.from("profile_stats").upsert(profilePayload, { onConflict: "user_id" });
+
+  if (profileError && /preferred_study_mode|account_type|guest_started_at|registered_at|converted_from_guest_at|onboarding_study_focus|onboarding_time_commitment|onboarding_difficulty|bible_year_started_at|bible_year_launch_seen_at/i.test(profileError.message || "")) {
+    const {
+      preferred_study_mode: _preferredStudyMode,
+      account_type: _accountType,
+      guest_started_at: _guestStartedAt,
+      registered_at: _registeredAt,
+      converted_from_guest_at: _convertedFromGuestAt,
+      onboarding_study_focus: _onboardingStudyFocus,
+      onboarding_time_commitment: _onboardingTimeCommitment,
+      onboarding_difficulty: _onboardingDifficulty,
+      ...fallbackProfilePayload
+    } = profilePayload;
+    const fallback = await admin.from("profile_stats").upsert(fallbackProfilePayload, { onConflict: "user_id" });
+    profileError = fallback.error;
+  }
 
   if (profileError) {
     console.error("[LANDING_SETUP] profile_stats setup failed:", profileError);
@@ -139,34 +180,36 @@ export async function POST(request: NextRequest) {
       email,
       goal: answers.goal ?? null,
       experience: answers.experience ?? null,
-      age_range: answers.ageRange ?? null,
+      study_focus: answers.studyFocus ?? null,
       time_commitment: answers.time ?? null,
       difficulty: answers.difficulty ?? null,
-      recommended_journey: "Bible in One Year",
-      recommended_days: recommendationDays,
+      recommended_journey: requestedStudyRoute === "devotional" ? selectedDevotionalTitle : "Bible in One Year",
+      recommended_days: requestedStudyRoute === "devotional" ? null : recommendationDays,
       updated_at: nowIso,
     },
     { onConflict: "user_id" },
   );
   if (responseError) console.warn("[LANDING_SETUP] onboarding response save skipped:", responseError.message);
 
-  const { error: bibleYearProgressError } = await admin.from("bible_year_day_progress").upsert(
-    {
-      user_id: userData.user.id,
-      day_number: 1,
-      reading_completed: false,
-      trivia_completed: false,
-      reflection_completed: false,
-    },
-    { onConflict: "user_id,day_number" },
-  );
-  if (bibleYearProgressError) console.warn("[LANDING_SETUP] Bible Year progress seed skipped:", bibleYearProgressError.message);
+  if (requestedStudyRoute === "bible_year") {
+    const { error: bibleYearProgressError } = await admin.from("bible_year_day_progress").upsert(
+      {
+        user_id: userData.user.id,
+        day_number: 1,
+        reading_completed: false,
+        trivia_completed: false,
+        reflection_completed: false,
+      },
+      { onConflict: "user_id,day_number" },
+    );
+    if (bibleYearProgressError) console.warn("[LANDING_SETUP] Bible Year progress seed skipped:", bibleYearProgressError.message);
+  }
 
-  if (creationStudyId) {
+  if (selectedDevotionalId) {
     const { error: devotionalProgressError } = await admin.from("devotional_progress").upsert(
       {
         user_id: userData.user.id,
-        devotional_id: creationStudyId,
+        devotional_id: selectedDevotionalId,
         day_number: 1,
         is_completed: false,
         reading_completed: false,

@@ -157,7 +157,11 @@ type OnboardingAnalyticsSummary = {
     cards: {
       visitors: number;
       signups: number;
+      guestStarts?: number;
+      accountsCreated?: number;
       conversionRate: number;
+      landingToGuestRate?: number;
+      guestToAccountRate?: number;
     };
     steps: Array<{
       key: string;
@@ -170,9 +174,28 @@ type OnboardingAnalyticsSummary = {
   landingLast24h?: {
     visits: number;
     signups: number;
+    guestStarts?: number;
+    accountsCreated?: number;
     conversionRate: number;
+    landingToGuestRate?: number;
+    guestToAccountRate?: number;
     rawVisitEvents?: number;
+    rawGuestEvents?: number;
     rawSignupEvents?: number;
+  };
+  guestAccountFunnel?: {
+    today: {
+      guestStarts: number;
+      accountsCreated: number;
+      conversionRate: number;
+    };
+    windows: Array<{
+      key: string;
+      label: string;
+      guestStarts: number;
+      accountsCreated: number;
+      conversionRate: number;
+    }>;
   };
   publicOnboardingFlow?: {
     started: number;
@@ -317,6 +340,8 @@ export default function AnalyticsPage() {
 
   // Total Users
   const [totalUsers, setTotalUsers] = useState(0);
+  const [guestUsers, setGuestUsers] = useState(0);
+  const [registeredUsers, setRegisteredUsers] = useState(0);
   const [loadingTotalUsers, setLoadingTotalUsers] = useState(true);
 
   // Global overview metrics
@@ -599,16 +624,22 @@ export default function AnalyticsPage() {
       if (!response.ok) {
         console.error("[TOTAL_USERS] Error fetching total users:", response.statusText);
         setTotalUsers(0);
+        setGuestUsers(0);
+        setRegisteredUsers(0);
         setLoadingTotalUsers(false);
         return;
       }
 
       const data = await response.json();
       setTotalUsers(data.totalUsers || 0);
+      setGuestUsers(data.guestUsers || 0);
+      setRegisteredUsers(data.registeredUsers || 0);
       setLoadingTotalUsers(false);
     } catch (err) {
       console.error("[TOTAL_USERS] Error loading total users:", err);
       setTotalUsers(0);
+      setGuestUsers(0);
+      setRegisteredUsers(0);
       setLoadingTotalUsers(false);
     }
   }
@@ -3429,9 +3460,9 @@ export default function AnalyticsPage() {
     <div className="max-w-3xl mx-auto p-4 pb-32">
       <h1 className="text-3xl font-bold mb-6">Analytics Dashboard</h1>
 
-      {/* ACTIVE USERS RIGHT NOW + TOTAL USERS */}
+      {/* ACTIVE USERS RIGHT NOW + USER FUNNEL TOTALS */}
       <div className="mb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
           {/* Active Users */}
           <div>
             {loadingActiveUsers ? (
@@ -3450,7 +3481,7 @@ export default function AnalyticsPage() {
             )}
           </div>
 
-          {/* Total Users */}
+          {/* Total People Reached */}
           <div>
             {loadingTotalUsers ? (
               <div className="py-8">
@@ -3462,7 +3493,41 @@ export default function AnalyticsPage() {
                   {totalUsers}
                 </div>
                 <p className="text-lg text-gray-600">
-                  Total users
+                  Total People Reached
+                </p>
+              </>
+            )}
+          </div>
+
+          <div>
+            {loadingTotalUsers ? (
+              <div className="py-8">
+                <p className="text-gray-500 text-sm">Loading...</p>
+              </div>
+            ) : (
+              <>
+                <div className="text-7xl font-bold text-gray-900 mb-2">
+                  {guestUsers}
+                </div>
+                <p className="text-lg text-gray-600">
+                  Current Guests
+                </p>
+              </>
+            )}
+          </div>
+
+          <div>
+            {loadingTotalUsers ? (
+              <div className="py-8">
+                <p className="text-gray-500 text-sm">Loading...</p>
+              </div>
+            ) : (
+              <>
+                <div className="text-7xl font-bold text-gray-900 mb-2">
+                  {registeredUsers}
+                </div>
+                <p className="text-lg text-gray-600">
+                  Registered Users
                 </p>
               </>
             )}
@@ -3475,7 +3540,7 @@ export default function AnalyticsPage() {
         <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-700">Landing Page Analytics</p>
-            <h2 className="text-2xl font-bold text-gray-900">Visitors vs Signups</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Guest Funnel</h2>
           </div>
           <p className="text-xs font-bold text-blue-700">Last 24 hours</p>
         </div>
@@ -3485,21 +3550,26 @@ export default function AnalyticsPage() {
             Loading landing page analytics...
           </div>
         ) : (
-          <div className="grid gap-3 md:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-4">
             <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Visitors</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Landing Visits</p>
               <p className="mt-2 text-4xl font-black text-gray-900">{(onboardingAnalytics?.landingLast24h?.visits ?? 0).toLocaleString()}</p>
               <p className="mt-1 text-xs font-semibold text-gray-500">Landing page visits in 24 hours</p>
             </div>
             <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Signups</p>
-              <p className="mt-2 text-4xl font-black text-gray-900">{(onboardingAnalytics?.landingLast24h?.signups ?? 0).toLocaleString()}</p>
-              <p className="mt-1 text-xs font-semibold text-gray-500">Accounts created from landing sessions</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Guest Starts</p>
+              <p className="mt-2 text-4xl font-black text-gray-900">{(onboardingAnalytics?.landingLast24h?.guestStarts ?? 0).toLocaleString()}</p>
+              <p className="mt-1 text-xs font-semibold text-gray-500">People who entered BibleBuddy as guests</p>
             </div>
             <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Conversion Rate</p>
-              <p className="mt-2 text-4xl font-black text-gray-900">{onboardingAnalytics?.landingLast24h?.conversionRate ?? 0}%</p>
-              <p className="mt-1 text-xs font-semibold text-gray-500">Signups divided by visitors</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Accounts Created</p>
+              <p className="mt-2 text-4xl font-black text-gray-900">{(onboardingAnalytics?.landingLast24h?.accountsCreated ?? onboardingAnalytics?.landingLast24h?.signups ?? 0).toLocaleString()}</p>
+              <p className="mt-1 text-xs font-semibold text-gray-500">Guests who protected their journey</p>
+            </div>
+            <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Guest to Account</p>
+              <p className="mt-2 text-4xl font-black text-gray-900">{onboardingAnalytics?.landingLast24h?.guestToAccountRate ?? 0}%</p>
+              <p className="mt-1 text-xs font-semibold text-gray-500">Accounts divided by guest starts</p>
             </div>
           </div>
         )}
@@ -3933,44 +4003,81 @@ export default function AnalyticsPage() {
                   <p className="text-xs font-black uppercase tracking-wide text-blue-700">Landing Page Analytics</p>
                   <h3 className="text-xl font-black text-gray-900">Last 24 Hours</h3>
                 </div>
-                <p className="text-xs font-semibold text-blue-700">Visits to signup conversion</p>
+                <p className="text-xs font-semibold text-blue-700">Guest starts and account conversions</p>
               </div>
-              <div className="grid gap-3 md:grid-cols-3">
+              <div className="grid gap-3 md:grid-cols-4">
                 <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
                   <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Landing Page Visits</p>
                   <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.landingLast24h?.visits ?? 0).toLocaleString()}</p>
                   <p className="mt-1 text-xs font-semibold text-gray-500">Unique landing sessions in 24 hours</p>
                 </div>
                 <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
-                  <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Signups</p>
-                  <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.landingLast24h?.signups ?? 0).toLocaleString()}</p>
-                  <p className="mt-1 text-xs font-semibold text-gray-500">Accounts created from landing sessions</p>
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Guest Starts</p>
+                  <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.landingLast24h?.guestStarts ?? 0).toLocaleString()}</p>
+                  <p className="mt-1 text-xs font-semibold text-gray-500">People who entered the app as guests</p>
                 </div>
                 <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
-                  <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Conversion Rate</p>
-                  <p className="mt-2 text-3xl font-black text-gray-900">{onboardingAnalytics.landingLast24h?.conversionRate ?? 0}%</p>
-                  <p className="mt-1 text-xs font-semibold text-gray-500">Signups divided by landing visits</p>
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Accounts Created</p>
+                  <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.landingLast24h?.accountsCreated ?? onboardingAnalytics.landingLast24h?.signups ?? 0).toLocaleString()}</p>
+                  <p className="mt-1 text-xs font-semibold text-gray-500">Guests who created free accounts</p>
+                </div>
+                <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Guest to Account</p>
+                  <p className="mt-2 text-3xl font-black text-gray-900">{onboardingAnalytics.landingLast24h?.guestToAccountRate ?? 0}%</p>
+                  <p className="mt-1 text-xs font-semibold text-gray-500">Accounts divided by guest starts</p>
                 </div>
               </div>
             </div>
 
-            <div className="mb-5 grid gap-4 md:grid-cols-3">
+            <div className="mb-5 grid gap-4 md:grid-cols-4">
               <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
                 <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Visitors</p>
                 <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.funnel?.cards.visitors ?? 0).toLocaleString()}</p>
                 <p className="mt-1 text-xs font-semibold text-gray-500">All-time tracked sessions</p>
               </div>
               <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Signups</p>
-                <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.funnel?.cards.signups ?? 0).toLocaleString()}</p>
-                <p className="mt-1 text-xs font-semibold text-gray-500">All-time tracked signups</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Guest Starts</p>
+                <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.funnel?.cards.guestStarts ?? 0).toLocaleString()}</p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">All-time guest journeys started</p>
               </div>
               <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Conversion Rate</p>
-                <p className="mt-2 text-3xl font-black text-gray-900">{onboardingAnalytics.funnel?.cards.conversionRate ?? 0}%</p>
-                <p className="mt-1 text-xs font-semibold text-gray-500">All-time landing conversion</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Accounts Created</p>
+                <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.funnel?.cards.accountsCreated ?? onboardingAnalytics.funnel?.cards.signups ?? 0).toLocaleString()}</p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">All-time free account conversions</p>
+              </div>
+              <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Guest to Account</p>
+                <p className="mt-2 text-3xl font-black text-gray-900">{onboardingAnalytics.funnel?.cards.guestToAccountRate ?? 0}%</p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">All-time guest conversion</p>
               </div>
             </div>
+
+            {onboardingAnalytics.guestAccountFunnel ? (
+              <div className="mb-5 rounded-2xl border border-indigo-100 bg-indigo-50 p-4">
+                <div className="mb-4">
+                  <p className="text-xs font-black uppercase tracking-wide text-indigo-700">Guest to Account Funnel</p>
+                  <h3 className="text-lg font-black text-gray-900">Conversion Windows</h3>
+                </div>
+                <div className="grid gap-3 md:grid-cols-4">
+                  <div className="rounded-2xl border border-indigo-100 bg-white p-4 shadow-sm">
+                    <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Today</p>
+                    <p className="mt-2 text-2xl font-black text-gray-900">{onboardingAnalytics.guestAccountFunnel.today.conversionRate}%</p>
+                    <p className="mt-1 text-xs font-semibold text-gray-500">
+                      {onboardingAnalytics.guestAccountFunnel.today.accountsCreated} accounts / {onboardingAnalytics.guestAccountFunnel.today.guestStarts} guests
+                    </p>
+                  </div>
+                  {onboardingAnalytics.guestAccountFunnel.windows.map((window) => (
+                    <div key={window.key} className="rounded-2xl border border-indigo-100 bg-white p-4 shadow-sm">
+                      <p className="text-xs font-bold uppercase tracking-wide text-gray-500">{window.label}</p>
+                      <p className="mt-2 text-2xl font-black text-gray-900">{window.conversionRate}%</p>
+                      <p className="mt-1 text-xs font-semibold text-gray-500">
+                        {window.accountsCreated} accounts / {window.guestStarts} guests
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
 
             <div className="mb-5 grid gap-4 md:grid-cols-4">
               <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
@@ -3978,7 +4085,7 @@ export default function AnalyticsPage() {
                 <p className="mt-2 text-2xl font-black text-gray-900">{(onboardingAnalytics.publicOnboardingFlow?.started ?? 0).toLocaleString()}</p>
               </div>
               <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
-                <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Finished Signup</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Started Guest Journey</p>
                 <p className="mt-2 text-2xl font-black text-gray-900">{(onboardingAnalytics.publicOnboardingFlow?.finished ?? 0).toLocaleString()}</p>
               </div>
               <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
@@ -3986,7 +4093,7 @@ export default function AnalyticsPage() {
                 <p className="mt-2 text-2xl font-black text-gray-900">{onboardingAnalytics.publicOnboardingFlow?.completionRate ?? 0}%</p>
               </div>
               <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
-                <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Closed Before Signup</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Closed Before Guest Start</p>
                 <p className="mt-2 text-2xl font-black text-gray-900">{(onboardingAnalytics.publicOnboardingFlow?.closedBeforeSignup ?? 0).toLocaleString()}</p>
               </div>
             </div>
@@ -4246,18 +4353,19 @@ export default function AnalyticsPage() {
             <div className="rounded-2xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
               <div className="mb-4">
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-700">Landing Page</p>
-                <h3 className="text-xl font-black text-gray-900">Visitors vs Signups</h3>
-                <p className="text-sm font-semibold text-gray-600">Last 24 hours conversion tracking.</p>
+                <h3 className="text-xl font-black text-gray-900">Guest Funnel</h3>
+                <p className="text-sm font-semibold text-gray-600">Last 24 hours guest starts and account conversions.</p>
               </div>
               {loadingOnboardingAnalytics ? (
                 <div className="rounded-xl bg-white/70 p-5 text-center text-sm font-semibold text-gray-500">Loading landing analytics...</div>
               ) : (
-                <div className="grid gap-3 sm:grid-cols-3">
-                  <OverviewCard label="Visitors" value={onboardingAnalytics?.landingLast24h?.visits ?? 0} />
-                  <OverviewCard label="Signups" value={onboardingAnalytics?.landingLast24h?.signups ?? 0} />
+                <div className="grid gap-3 sm:grid-cols-4">
+                  <OverviewCard label="Landing Visits" value={onboardingAnalytics?.landingLast24h?.visits ?? 0} />
+                  <OverviewCard label="Guest Starts" value={onboardingAnalytics?.landingLast24h?.guestStarts ?? 0} />
+                  <OverviewCard label="Accounts Created" value={onboardingAnalytics?.landingLast24h?.accountsCreated ?? onboardingAnalytics?.landingLast24h?.signups ?? 0} />
                   <div className="rounded-xl border border-gray-200 bg-white p-4 text-center shadow">
-                    <p className="text-3xl font-bold text-gray-900">{onboardingAnalytics?.landingLast24h?.conversionRate ?? 0}%</p>
-                    <p className="mt-1 text-sm text-gray-700">Conversion Rate</p>
+                    <p className="text-3xl font-bold text-gray-900">{onboardingAnalytics?.landingLast24h?.guestToAccountRate ?? 0}%</p>
+                    <p className="mt-1 text-sm text-gray-700">Guest to Account</p>
                   </div>
                 </div>
               )}
@@ -4322,12 +4430,12 @@ export default function AnalyticsPage() {
                 <>
                   <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                     <OverviewCard label="Started" value={onboardingAnalytics?.publicOnboardingFlow?.started ?? 0} />
-                    <OverviewCard label="Finished" value={onboardingAnalytics?.publicOnboardingFlow?.finished ?? 0} />
+                    <OverviewCard label="Guest Starts" value={onboardingAnalytics?.publicOnboardingFlow?.finished ?? 0} />
                     <div className="rounded-xl border border-gray-200 bg-white p-4 text-center shadow">
                       <p className="text-3xl font-bold text-gray-900">{onboardingAnalytics?.publicOnboardingFlow?.completionRate ?? 0}%</p>
                       <p className="mt-1 text-sm text-gray-700">Completion</p>
                     </div>
-                    <OverviewCard label="Closed Before Signup" value={onboardingAnalytics?.publicOnboardingFlow?.closedBeforeSignup ?? 0} />
+                    <OverviewCard label="Closed Before Guest Start" value={onboardingAnalytics?.publicOnboardingFlow?.closedBeforeSignup ?? 0} />
                   </div>
 
                   <div className="mt-4 rounded-xl bg-white p-4">

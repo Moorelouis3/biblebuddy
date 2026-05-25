@@ -90,3 +90,51 @@ export const BIBLE_YEAR_DAY_EIGHT_AUDIO: BibleYearAudioDay = {
   apiSrc: getBibleYearAudioApiSrc(8),
   estimatedDuration: "about 19 min",
 };
+
+export const BIBLE_YEAR_DAY_NINE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 9,
+  title: "Day 9 - Abraham's Test and Legacy",
+  storagePath: getBibleYearAudioStoragePath(9),
+  apiSrc: getBibleYearAudioApiSrc(9),
+  estimatedDuration: "about 16 min",
+};
+
+export const BIBLE_YEAR_DAY_TEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 10,
+  title: "Day 10 - Covenant Through Isaac",
+  storagePath: getBibleYearAudioStoragePath(10),
+  apiSrc: getBibleYearAudioApiSrc(10),
+  estimatedDuration: "about 16 min",
+};
+
+export const BIBLE_YEAR_DAY_ELEVEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 11,
+  title: "Day 11 - Jacob's Journey Begins",
+  storagePath: getBibleYearAudioStoragePath(11),
+  apiSrc: getBibleYearAudioApiSrc(11),
+  estimatedDuration: "about 16 min",
+};
+
+export const BIBLE_YEAR_DAY_TWELVE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 12,
+  title: "Day 12 - Jacob Leaves Laban",
+  storagePath: getBibleYearAudioStoragePath(12),
+  apiSrc: getBibleYearAudioApiSrc(12),
+  estimatedDuration: "about 16 min",
+};
+
+export const BIBLE_YEAR_DAY_THIRTEEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 13,
+  title: "Day 13 - Jacob Wrestles With God",
+  storagePath: getBibleYearAudioStoragePath(13),
+  apiSrc: getBibleYearAudioApiSrc(13),
+  estimatedDuration: "about 16 min",
+};
+
+export const BIBLE_YEAR_DAY_FOURTEEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 14,
+  title: "Day 14 - Jacob Returns to Bethel",
+  storagePath: getBibleYearAudioStoragePath(14),
+  apiSrc: getBibleYearAudioApiSrc(14),
+  estimatedDuration: "about 18 min",
+};

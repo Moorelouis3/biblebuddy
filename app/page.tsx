@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useMemo, useState, type CSSProperties, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
@@ -12,20 +12,28 @@ import { hasCachedSupabaseSession } from "@/lib/authBoot";
 
 type PreviewPanel = "watch" | "study" | "trivia";
 type StudyTab = "bible" | "notes";
-type OnboardingStep = "intro" | "question" | "loading" | "recommendation" | "account";
+type OnboardingStep = "intro" | "question" | "loading" | "recommendation" | "devotionalPicker" | "account";
+type StudyRoute = "bible_year" | "devotional";
 
 type Answers = {
   goal: string;
   experience: string;
-  ageRange: string;
+  studyFocus: string;
   time: string;
   difficulty: string;
+};
+
+type LandingDevotionalOption = {
+  id: string;
+  title: string;
+  description: string | null;
+  total_days: number | null;
 };
 
 const emptyAnswers: Answers = {
   goal: "",
   experience: "",
-  ageRange: "",
+  studyFocus: "",
   time: "",
   difficulty: "",
 };
@@ -97,9 +105,9 @@ const questions = [
     options: ["I'm just getting started", "Less than 1 year", "1-3 years", "More than 3 years"],
   },
   {
-    id: "ageRange" as const,
-    title: "What age range are you in?",
-    options: ["Under 18", "18-29", "30-49", "50+"],
+    id: "studyFocus" as const,
+    title: "What do you most want to understand in the Bible?",
+    options: ["The whole Bible story", "A specific book of the Bible", "People in the Bible", "Wisdom for real life"],
   },
   {
     id: "time" as const,
@@ -129,6 +137,20 @@ function estimatedDaysForTime(time: string) {
   return 365;
 }
 
+function getRecommendedStudyRoute(answers: Answers): StudyRoute {
+  const isSeasoned = answers.experience === "1-3 years" || answers.experience === "More than 3 years";
+  const wantsDepth = answers.goal === "Understand the Bible better" || answers.difficulty === "I don't understand what I read";
+  const wantsFocusedStudy =
+    answers.studyFocus === "A specific book of the Bible" ||
+    answers.studyFocus === "People in the Bible" ||
+    answers.studyFocus === "Wisdom for real life";
+  return isSeasoned && (wantsDepth || wantsFocusedStudy) && answers.studyFocus !== "The whole Bible story" ? "devotional" : "bible_year";
+}
+
+function getStudyRouteLabel(route: StudyRoute) {
+  return route === "devotional" ? "Focused Devotional Study" : "Bible in One Year";
+}
+
 function normalizeGoalForProfile(goal: string) {
   if (goal === "Understand the Bible better") return "understand_bible";
   if (goal === "Grow closer to God") return "grow_closer_to_god";
@@ -150,18 +172,19 @@ type LandingAnalyticsEvent =
   | "viewed_onboarding_intro"
   | "viewed_question_1"
   | "viewed_question_2"
-  | "viewed_question_3_age"
+  | "viewed_question_3_focus"
   | "viewed_question_4"
   | "viewed_question_5"
   | "completed_question_1"
   | "completed_question_2"
-  | "completed_question_3_age"
+  | "completed_question_3_focus"
   | "completed_question_4"
   | "completed_question_5"
   | "viewed_results_loading"
   | "viewed_results_page"
   | "reached_results_page"
   | "clicked_yes_start_my_journey"
+  | "started_guest_journey"
   | "viewed_create_account_modal"
   | "opened_create_account_modal"
   | "created_account_successfully"
@@ -241,12 +264,16 @@ async function saveLandingOnboardingResponse({
   email,
   answers,
   recommendationDays,
+  studyRoute,
+  selectedDevotionalId,
 }: {
   userId: string;
   fullName: string;
   email: string;
   answers: Answers;
   recommendationDays: number;
+  studyRoute: StudyRoute;
+  selectedDevotionalId?: string | null;
 }) {
   const responsePayload = {
     user_id: userId,
@@ -254,10 +281,10 @@ async function saveLandingOnboardingResponse({
     email,
     goal: answers.goal,
     experience: answers.experience,
-    age_range: answers.ageRange,
+    study_focus: answers.studyFocus,
     time_commitment: answers.time,
     difficulty: answers.difficulty,
-    recommended_journey: "Bible in One Year",
+    recommended_journey: getStudyRouteLabel(studyRoute),
     recommended_days: recommendationDays,
     updated_at: new Date().toISOString(),
   };
@@ -274,9 +301,11 @@ async function saveLandingOnboardingResponse({
     .from("profile_stats")
     .update({
       landing_onboarding_completed: true,
-      age_range: answers.ageRange,
+      onboarding_study_focus: answers.studyFocus,
       onboarding_time_commitment: answers.time,
       onboarding_difficulty: answers.difficulty,
+      preferred_study_mode: studyRoute,
+      ...(selectedDevotionalId ? { free_devotional_id: selectedDevotionalId, louis_primary_devotional_id: selectedDevotionalId, louis_primary_devotional_day: 1 } : {}),
     })
     .eq("user_id", userId);
 
@@ -327,6 +356,8 @@ async function initializeLandingUserDashboard({
   answers,
   recommendationDays,
   profileImage,
+  studyRoute,
+  selectedDevotionalId,
 }: {
   userId: string;
   fullName: string;
@@ -334,6 +365,8 @@ async function initializeLandingUserDashboard({
   answers: Answers;
   recommendationDays: number;
   profileImage: string | null;
+  studyRoute: StudyRoute;
+  selectedDevotionalId?: string | null;
 }) {
   const { data: sessionData } = await supabase.auth.getSession();
   const token = sessionData.session?.access_token;
@@ -354,6 +387,8 @@ async function initializeLandingUserDashboard({
       answers,
       recommendationDays,
       profileImage,
+      studyRoute,
+      selectedDevotionalId,
     }),
   });
   const payload = await response.json().catch(() => null);
@@ -364,7 +399,7 @@ async function initializeLandingUserDashboard({
 
 export default function LandingPage() {
   const router = useRouter();
-  const [isChecking, setIsChecking] = useState(() => (typeof window === "undefined" ? true : new URLSearchParams(window.location.search).get("landing") !== "1"));
+  const [isChecking, setIsChecking] = useState(false);
   const [onboardingOpen, setOnboardingOpen] = useState(false);
   const [onboardingStep, setOnboardingStep] = useState<OnboardingStep>("intro");
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -374,12 +409,19 @@ export default function LandingPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [profileImage, setProfileImage] = useState<string | null>(null);
+  const [selectedStudyRoute, setSelectedStudyRoute] = useState<StudyRoute>("bible_year");
+  const [selectedDevotionalId, setSelectedDevotionalId] = useState("");
+  const [devotionalOptions, setDevotionalOptions] = useState<LandingDevotionalOption[]>([]);
+  const [devotionalsLoading, setDevotionalsLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [accountAttempted, setAccountAttempted] = useState(false);
   const [landingMenuOpen, setLandingMenuOpen] = useState(false);
+  const guestJourneyStartingRef = useRef(false);
 
   const recommendationDays = useMemo(() => estimatedDaysForTime(answers.time), [answers.time]);
+  const recommendedStudyRoute = useMemo(() => getRecommendedStudyRoute(answers), [answers]);
+  const selectedDevotional = devotionalOptions.find((option) => option.id === selectedDevotionalId) || null;
   const currentQuestion = questions[questionIndex];
   const selectedAnswer = currentQuestion ? answers[currentQuestion.id] : "";
   const progressPercent = Math.round(((questionIndex + 1) / questions.length) * 100);
@@ -390,11 +432,13 @@ export default function LandingPage() {
 
   useEffect(() => {
     if (new URLSearchParams(window.location.search).get("landing") === "1") {
+      setIsChecking(false);
       return;
     }
 
     let settled = false;
     const hadCachedSession = hasCachedSupabaseSession();
+    if (hadCachedSession) setIsChecking(true);
     const fallbackTimer = window.setTimeout(() => {
       if (!settled) {
         if (hadCachedSession) {
@@ -435,6 +479,10 @@ export default function LandingPage() {
     } = supabase.auth.onAuthStateChange((_event, session) => {
       settled = true;
       window.clearTimeout(fallbackTimer);
+      if (guestJourneyStartingRef.current) {
+        setIsChecking(false);
+        return;
+      }
       if (session) {
         setIsChecking(false);
         router.replace("/dashboard?view=bible-year&day=1");
@@ -465,6 +513,49 @@ export default function LandingPage() {
 
   useEffect(() => {
     if (!onboardingOpen) return;
+    if (devotionalOptions.length > 0 || devotionalsLoading) return;
+
+    let cancelled = false;
+    async function loadDevotionals() {
+      setDevotionalsLoading(true);
+      const { data, error } = await supabase
+        .from("devotionals")
+        .select("id, title, description, total_days")
+        .order("title", { ascending: true })
+        .limit(100);
+
+      if (cancelled) return;
+      if (error) {
+        console.error("Landing devotional options failed:", error);
+        setDevotionalOptions([]);
+      } else {
+        const ordered = ((data || []) as LandingDevotionalOption[]).sort((a, b) => {
+          const preferred = [
+            "The Testing of Joseph",
+            "The Wisdom of Proverbs",
+            "The Disciples of Jesus",
+            "Women of the Bible",
+            "The Heart of David",
+          ];
+          const aIndex = preferred.indexOf(a.title);
+          const bIndex = preferred.indexOf(b.title);
+          if (aIndex !== -1 || bIndex !== -1) return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
+          return a.title.localeCompare(b.title);
+        });
+        setDevotionalOptions(ordered);
+        setSelectedDevotionalId((current) => current || ordered[0]?.id || "");
+      }
+      setDevotionalsLoading(false);
+    }
+
+    void loadDevotionals();
+    return () => {
+      cancelled = true;
+    };
+  }, [devotionalOptions.length, devotionalsLoading, onboardingOpen]);
+
+  useEffect(() => {
+    if (!onboardingOpen) return;
 
     if (onboardingStep === "intro") {
       trackLandingEventOnce("viewed_onboarding_intro", { stepKey: "intro" });
@@ -475,7 +566,7 @@ export default function LandingPage() {
       const viewedQuestionEvents: LandingAnalyticsEvent[] = [
         "viewed_question_1",
         "viewed_question_2",
-        "viewed_question_3_age",
+        "viewed_question_3_focus",
         "viewed_question_4",
         "viewed_question_5",
       ];
@@ -496,14 +587,19 @@ export default function LandingPage() {
     }
 
     if (onboardingStep === "recommendation") {
-      trackLandingEventOnce("viewed_results_page", { stepKey: "results_page", recommendationDays });
+      trackLandingEventOnce("viewed_results_page", { stepKey: "results_page", recommendationDays, recommendedStudyRoute });
+      return;
+    }
+
+    if (onboardingStep === "devotionalPicker") {
+      trackLandingEventOnce("viewed_results_page", { stepKey: "devotional_picker", recommendedStudyRoute: "devotional" });
       return;
     }
 
     if (onboardingStep === "account") {
       trackLandingEventOnce("viewed_create_account_modal", { stepKey: "account" });
     }
-  }, [currentQuestion, onboardingOpen, onboardingStep, questionIndex, recommendationDays]);
+  }, [currentQuestion, onboardingOpen, onboardingStep, questionIndex, recommendationDays, recommendedStudyRoute]);
 
   function openQuestionnaire() {
     trackLandingEvent("clicked_start_journey");
@@ -546,7 +642,7 @@ export default function LandingPage() {
     const eventNames: LandingAnalyticsEvent[] = [
       "completed_question_1",
       "completed_question_2",
-      "completed_question_3_age",
+      "completed_question_3_focus",
       "completed_question_4",
       "completed_question_5",
     ];
@@ -582,10 +678,120 @@ export default function LandingPage() {
     setOnboardingStep("loading");
   }
 
-  function openAccountFromRecommendation() {
-    trackLandingEvent("clicked_yes_start_my_journey", { recommendationDays, selectedTime: answers.time });
+  function openAccountFromRecommendation(routeOverride?: StudyRoute) {
+    const route = routeOverride || selectedStudyRoute || recommendedStudyRoute;
+    trackLandingEvent("clicked_yes_start_my_journey", {
+      recommendationDays,
+      selectedTime: answers.time,
+      studyRoute: route,
+      selectedDevotionalId: route === "devotional" ? selectedDevotionalId : null,
+    });
     trackLandingEvent("opened_create_account_modal");
     setOnboardingStep("account");
+  }
+
+  async function startGuestJourney(routeOverride?: StudyRoute) {
+    const route = routeOverride || selectedStudyRoute || recommendedStudyRoute;
+    const devotionalIdForSetup = route === "devotional" ? selectedDevotionalId || devotionalOptions[0]?.id || null : null;
+    const guestName = "Bible Buddy Guest";
+    setSelectedStudyRoute(route);
+    setSubmitting(true);
+    setError(null);
+    guestJourneyStartingRef.current = true;
+
+    const onboardingPayload = {
+      answers,
+      recommendation: {
+        journey: getStudyRouteLabel(route),
+        estimatedDays: recommendationDays,
+        time: answers.time,
+        studyRoute: route,
+        selectedDevotionalId: devotionalIdForSetup,
+        selectedDevotionalTitle: selectedDevotional?.title || null,
+      },
+      landingAnalytics: {
+        sessionId: getLandingSessionId(),
+        source: getLandingSource(),
+        referrer: document.referrer || null,
+        pagePath: `${window.location.pathname}${window.location.search}`,
+      },
+    };
+
+    window.localStorage.setItem("bb:landing-questionnaire", JSON.stringify(onboardingPayload));
+
+    try {
+      const { data: currentSessionData } = await supabase.auth.getSession();
+      let guestUserId = currentSessionData.session?.user?.id || null;
+      if (!guestUserId) {
+        const { data: anonymousData, error: anonymousError } = await supabase.auth.signInAnonymously({
+          options: {
+            data: {
+              display_name: guestName,
+              landing_questionnaire: onboardingPayload,
+              recommended_journey: route,
+              selected_devotional_id: devotionalIdForSetup,
+            },
+          },
+        });
+        if (anonymousError) {
+          const message = anonymousError.message || "";
+          if (/anonymous sign-?ins are disabled/i.test(message)) {
+            setError("Guest Mode needs Supabase Anonymous Sign-Ins turned on before Bible Buddy can create guest users. Turn it on in Supabase Auth, then try again.");
+            setSubmitting(false);
+            guestJourneyStartingRef.current = false;
+            return;
+          }
+          throw anonymousError;
+        }
+        guestUserId = anonymousData.user?.id || null;
+      }
+
+      if (!guestUserId) throw new Error("Bible Buddy could not start guest mode.");
+
+      await initializeLandingUserDashboard({
+        userId: guestUserId,
+        fullName: guestName,
+        email: "",
+        answers,
+        recommendationDays,
+        profileImage: null,
+        studyRoute: route,
+        selectedDevotionalId: devotionalIdForSetup,
+      });
+
+      trackLandingEvent("started_guest_journey", {
+        recommendationDays,
+        selectedTime: answers.time,
+        studyRoute: route,
+        selectedDevotionalId: devotionalIdForSetup,
+        source: getLandingSource(),
+      }, guestUserId);
+      window.localStorage.removeItem("bb:landing-questionnaire");
+      enterDashboard(route);
+    } catch (guestError) {
+      console.warn("Guest journey start failed:", guestError);
+      setError(guestError instanceof Error ? guestError.message : "Bible Buddy could not start guest mode. Please try again.");
+      setSubmitting(false);
+      guestJourneyStartingRef.current = false;
+    }
+  }
+
+  function chooseDevotionalRoute() {
+    setSelectedStudyRoute("devotional");
+    if (!selectedDevotionalId && devotionalOptions[0]?.id) {
+      setSelectedDevotionalId(devotionalOptions[0].id);
+    }
+    setOnboardingStep("devotionalPicker");
+  }
+
+  function chooseBibleYearRoute() {
+    setSelectedStudyRoute("bible_year");
+    void startGuestJourney("bible_year");
+  }
+
+  function confirmDevotionalChoice() {
+    setSelectedStudyRoute("devotional");
+    void startGuestJourney("devotional");
   }
 
   function handleProfileImage(file: File | null) {
@@ -606,6 +812,8 @@ export default function LandingPage() {
 
     const normalizedEmail = email.trim().toLowerCase();
     const cleanName = firstName.trim();
+    const studyRoute = selectedStudyRoute || recommendedStudyRoute;
+    const devotionalIdForSetup = studyRoute === "devotional" ? selectedDevotionalId || devotionalOptions[0]?.id || null : null;
     if (!cleanName) {
       setSubmitting(false);
       return;
@@ -613,9 +821,12 @@ export default function LandingPage() {
     const onboardingPayload = {
       answers,
       recommendation: {
-        journey: "Bible in One Year",
+        journey: getStudyRouteLabel(studyRoute),
         estimatedDays: recommendationDays,
         time: answers.time,
+        studyRoute,
+        selectedDevotionalId: devotionalIdForSetup,
+        selectedDevotionalTitle: selectedDevotional?.title || null,
       },
       landingAnalytics: {
         sessionId: getLandingSessionId(),
@@ -631,13 +842,17 @@ export default function LandingPage() {
       email: normalizedEmail,
       password: password.trim(),
       options: {
-        emailRedirectTo: typeof window !== "undefined" ? `${window.location.origin}/dashboard?view=bible-year&day=1` : undefined,
+        emailRedirectTo:
+          typeof window !== "undefined"
+            ? `${window.location.origin}/dashboard${studyRoute === "devotional" ? "?view=devotional" : "?view=bible-year&day=1"}`
+            : undefined,
         data: {
           firstName: cleanName,
           first_name: cleanName,
           display_name: cleanName,
           landing_questionnaire: onboardingPayload,
-          recommended_journey: "bible_in_one_year",
+          recommended_journey: studyRoute,
+          selected_devotional_id: devotionalIdForSetup,
         },
       },
     });
@@ -685,6 +900,8 @@ export default function LandingPage() {
         answers,
         recommendationDays,
         profileImage,
+        studyRoute,
+        selectedDevotionalId: devotionalIdForSetup,
       });
     } catch (initializationError) {
       console.error("Landing user initialization failed:", initializationError);
@@ -699,6 +916,8 @@ export default function LandingPage() {
         email: normalizedEmail,
         recommendationDays,
         selectedTime: answers.time,
+        studyRoute,
+        selectedDevotionalId: devotionalIdForSetup,
         source: getLandingSource(),
       },
       user.id,
@@ -737,18 +956,23 @@ export default function LandingPage() {
 
     setSubmitting(false);
     window.localStorage.removeItem("bb:landing-questionnaire");
-    enterDashboard();
+    enterDashboard(studyRoute);
   }
 
   async function handleOAuthSignIn() {
+    const studyRoute = selectedStudyRoute || recommendedStudyRoute;
+    const devotionalIdForSetup = studyRoute === "devotional" ? selectedDevotionalId || devotionalOptions[0]?.id || null : null;
     window.localStorage.setItem(
       "bb:landing-questionnaire",
       JSON.stringify({
         answers,
         recommendation: {
-          journey: "Bible in One Year",
+          journey: getStudyRouteLabel(studyRoute),
           estimatedDays: recommendationDays,
           time: answers.time,
+          studyRoute,
+          selectedDevotionalId: devotionalIdForSetup,
+          selectedDevotionalTitle: selectedDevotional?.title || null,
         },
         landingAnalytics: {
           sessionId: getLandingSessionId(),
@@ -760,7 +984,10 @@ export default function LandingPage() {
     );
     setSubmitting(true);
     setError(null);
-    const redirectTo = typeof window !== "undefined" ? `${window.location.origin}/dashboard?view=bible-year&day=1` : undefined;
+    const redirectTo =
+      typeof window !== "undefined"
+        ? `${window.location.origin}/dashboard${studyRoute === "devotional" ? "?view=devotional" : "?view=bible-year&day=1"}`
+        : undefined;
     const { error: oauthError } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: redirectTo ? { redirectTo } : undefined,
@@ -771,8 +998,8 @@ export default function LandingPage() {
     }
   }
 
-  function enterDashboard() {
-    window.location.href = "/dashboard?view=bible-year&day=1";
+  function enterDashboard(studyRoute: StudyRoute = selectedStudyRoute || recommendedStudyRoute) {
+    window.location.href = studyRoute === "devotional" ? "/dashboard?view=devotional" : "/dashboard?view=bible-year&day=1";
   }
 
   if (isChecking) return <AppLoadingScreen />;
@@ -1048,9 +1275,19 @@ export default function LandingPage() {
           chooseAnswer={chooseAnswer}
           continueQuestionnaire={continueQuestionnaire}
           openAccountFromRecommendation={openAccountFromRecommendation}
+          startGuestJourney={startGuestJourney}
+          chooseDevotionalRoute={chooseDevotionalRoute}
+          chooseBibleYearRoute={chooseBibleYearRoute}
+          confirmDevotionalChoice={confirmDevotionalChoice}
           loadingMessage={loadingMessages[loadingMessageIndex]}
           answers={answers}
           recommendationDays={recommendationDays}
+          recommendedStudyRoute={recommendedStudyRoute}
+          selectedStudyRoute={selectedStudyRoute}
+          devotionalOptions={devotionalOptions}
+          devotionalsLoading={devotionalsLoading}
+          selectedDevotionalId={selectedDevotionalId}
+          setSelectedDevotionalId={setSelectedDevotionalId}
           firstName={firstName}
           setFirstName={setFirstName}
           accountAttempted={accountAttempted}
@@ -1869,10 +2106,20 @@ function OnboardingFlow(props: {
   selectedAnswer: string;
   chooseAnswer: (value: string) => void;
   continueQuestionnaire: () => void;
-  openAccountFromRecommendation: () => void;
+  openAccountFromRecommendation: (routeOverride?: StudyRoute) => void;
+  startGuestJourney: (routeOverride?: StudyRoute) => Promise<void>;
+  chooseDevotionalRoute: () => void;
+  chooseBibleYearRoute: () => void;
+  confirmDevotionalChoice: () => void;
   loadingMessage: string;
   answers: Answers;
   recommendationDays: number;
+  recommendedStudyRoute: StudyRoute;
+  selectedStudyRoute: StudyRoute;
+  devotionalOptions: LandingDevotionalOption[];
+  devotionalsLoading: boolean;
+  selectedDevotionalId: string;
+  setSelectedDevotionalId: (value: string) => void;
   firstName: string;
   setFirstName: (value: string) => void;
   accountAttempted: boolean;
@@ -1964,6 +2211,38 @@ function OnboardingFlow(props: {
             }
             .bb-result-sparkle {
               animation: bb-result-sparkle 2.8s ease-out forwards;
+            }
+            @keyframes bb-result-firework {
+              0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.2);
+              }
+              12% {
+                opacity: 1;
+              }
+              70% {
+                opacity: 0.88;
+              }
+              100% {
+                opacity: 0;
+                transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
+              }
+            }
+            .bb-result-firework {
+              animation: bb-result-firework 980ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+            @keyframes bb-green-start-glow {
+              0%, 100% {
+                box-shadow: 0 16px 34px rgba(22, 163, 74, 0.28), 0 0 0 0 rgba(34, 197, 94, 0.28);
+              }
+              50% {
+                box-shadow: 0 18px 42px rgba(22, 163, 74, 0.42), 0 0 0 7px rgba(34, 197, 94, 0.12);
+              }
+            }
+            .bb-green-start-button {
+              background: linear-gradient(135deg, #16a34a 0%, #22c55e 54%, #0f8f3d 100%);
+              color: #ffffff !important;
+              animation: bb-green-start-glow 1.9s ease-in-out infinite;
             }
           `}</style>
           {props.step !== "loading" ? (
@@ -2124,46 +2403,134 @@ function OnboardingFlow(props: {
               <span className="bb-result-sparkle pointer-events-none absolute left-8 top-3 text-lg text-[#d89b43]" aria-hidden="true">*</span>
               <span className="bb-result-sparkle pointer-events-none absolute right-12 top-16 text-sm text-[#d89b43]" style={{ animationDelay: "0.18s" }} aria-hidden="true">*</span>
               <span className="bb-result-sparkle pointer-events-none absolute left-16 top-28 text-xs text-[#d89b43]" style={{ animationDelay: "0.34s" }} aria-hidden="true">*</span>
+              {[
+                ["18%", "15%", "-44px", "-34px", "#facc15"],
+                ["27%", "10%", "28px", "-42px", "#22c55e"],
+                ["79%", "17%", "40px", "-30px", "#60a5fa"],
+                ["69%", "9%", "-26px", "-38px", "#f472b6"],
+                ["50%", "7%", "0px", "-50px", "#d89b43"],
+                ["84%", "30%", "34px", "22px", "#22c55e"],
+                ["14%", "31%", "-34px", "24px", "#60a5fa"],
+                ["54%", "21%", "44px", "18px", "#facc15"],
+              ].map(([left, top, x, y, color], index) => (
+                <span
+                  key={`${left}-${top}-${index}`}
+                  className="bb-result-firework pointer-events-none absolute h-2 w-2 rounded-full"
+                  style={{
+                    left,
+                    top,
+                    backgroundColor: color,
+                    ["--x" as string]: x,
+                    ["--y" as string]: y,
+                    animationDelay: `${index * 52}ms`,
+                  }}
+                  aria-hidden="true"
+                />
+              ))}
 
-              <h2 className="bb-serif mx-auto max-w-sm text-center text-3xl font-black leading-tight text-[#0E1A3A]">Your Bible in One Year journey is ready.</h2>
+              <p className="text-center text-xs font-black uppercase tracking-[0.16em] text-[#d89b43]">Recommended path</p>
+              <h2 className="bb-serif mx-auto mt-3 max-w-sm text-center text-3xl font-black leading-tight text-[#0E1A3A]">
+                {props.recommendedStudyRoute === "devotional" ? "A focused devotional study fits you best." : "Your Bible in One Year journey is ready."}
+              </h2>
               <div className="mt-6 rounded-[24px] border p-5 text-center" style={{ backgroundColor: "#fffaf1", borderColor: "#eadcc2" }}>
-                <p className="text-xl font-black leading-8 text-[#0E1A3A]">
-                  If you spend {props.answers.time || "30 minutes"} a day
-                  <br />
-                  with Bible Buddy,
-                </p>
-                <p className="mt-4 text-2xl font-black leading-8 text-[#d89b43]">
-                  you could read the whole Bible
-                  <br />
-                  in about {props.recommendationDays} days.
-                </p>
+                {props.recommendedStudyRoute === "devotional" ? (
+                  <>
+                    <p className="text-xl font-black leading-8 text-[#0E1A3A]">
+                      You already have Bible study experience.
+                    </p>
+                    <p className="mt-3 text-sm font-semibold leading-6 text-[#536173]">
+                      A focused devotional lets you slow down with one story, person, or book at a time, like Proverbs, David, Joseph, the disciples, or women in the Bible.
+                    </p>
+                    <p className="mt-4 text-2xl font-black leading-8 text-[#d89b43]">
+                      Go deeper without rushing the whole story.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-xl font-black leading-8 text-[#0E1A3A]">
+                      If you spend {props.answers.time || "30 minutes"} a day
+                      <br />
+                      with Bible Buddy,
+                    </p>
+                    <p className="mt-4 text-2xl font-black leading-8 text-[#d89b43]">
+                      you could read the whole Bible
+                      <br />
+                      in about {props.recommendationDays} days.
+                    </p>
+                  </>
+                )}
               </div>
 
-              <div className="mt-6">
-                <p className="text-center text-xs font-black uppercase tracking-[0.12em] text-[#0E1A3A]">Your daily experience will include:</p>
-                <div className="mt-4 grid grid-cols-3 gap-2">
-                  {[
-                    ["play", "Watch", "15 Minute Video"],
-                    ["edit", "Read Summary", "Understand Today's Chapters"],
-                    ["question", "Answer Trivia", "5 Quick Questions"],
-                  ].map(([icon, title, subtitle]) => (
-                    <div key={title} className="flex min-h-[118px] flex-col items-center justify-start rounded-2xl border px-2 py-3 text-center shadow-[0_8px_22px_rgba(14,26,58,0.045)]" style={{ backgroundColor: "#fffdfa", borderColor: "#eadcc2" }}>
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl shadow-[0_8px_18px_rgba(14,26,58,0.06)]" style={{ backgroundColor: "#f6f1e9" }}>
-                        <ResultIcon name={icon} />
-                      </span>
-                      <span className="mt-2 min-w-0">
-                        <span className="block text-xs font-black leading-tight text-[#0E1A3A]">{title}</span>
-                        <span className="mt-1 block text-[11px] font-bold leading-tight text-[#667085]">{subtitle}</span>
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <p className="mt-5 text-center text-base font-black text-[#0E1A3A]">Ready to start your journey?</p>
+              <p className="mt-6 text-center text-base font-black text-[#0E1A3A]">
+                {props.recommendedStudyRoute === "devotional" ? "Choose how you want to begin." : "Ready to start your journey?"}
+              </p>
               <div className="mt-4 grid gap-3">
-                <button type="button" onClick={props.openAccountFromRecommendation} className="rounded-2xl px-4 py-4 text-sm font-black" style={{ backgroundColor: "#0E1A3A", color: "#ffffff" }}>Yes, start my journey</button>
+                {props.recommendedStudyRoute === "devotional" ? (
+                  <>
+                    <button type="button" onClick={props.chooseDevotionalRoute} className="rounded-2xl px-4 py-4 text-sm font-black" style={{ backgroundColor: "#0E1A3A", color: "#ffffff" }}>Pick your devotional</button>
+                    <button type="button" onClick={props.chooseBibleYearRoute} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#ffffff", borderColor: "#d8d5cf", color: "#111827" }}>Choose Bible in One Year instead</button>
+                  </>
+                ) : (
+                  <>
+                    <button type="button" onClick={() => void props.startGuestJourney("bible_year")} disabled={props.submitting} className="bb-green-start-button rounded-2xl px-4 py-4 text-sm font-black transition hover:-translate-y-0.5 disabled:opacity-60">{props.submitting ? "Starting..." : "Yes, start my journey"}</button>
+                    <button type="button" onClick={props.chooseDevotionalRoute} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#ffffff", borderColor: "#d8d5cf", color: "#111827" }}>Browse focused devotionals instead</button>
+                  </>
+                )}
                 <button type="button" onClick={() => props.onClose("recommendation_not_right_now")} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#f3f4f6", borderColor: "#d8d5cf", color: "#111827" }}>Not right now</button>
+              </div>
+            </div>
+          ) : null}
+
+          {props.step === "devotionalPicker" ? (
+            <div className="pb-1 pt-1">
+              <p className="text-center text-xs font-black uppercase tracking-[0.16em] text-[#d89b43]">Focused devotional route</p>
+              <h2 className="bb-serif mx-auto mt-3 max-w-sm text-center text-3xl font-black leading-tight text-[#0E1A3A]">Pick your devotional.</h2>
+              <p className="mx-auto mt-3 max-w-sm text-center text-sm font-semibold leading-6 text-[#667085]">
+                Choose the focused study you want on your dashboard first. You can still switch to Bible in One Year later.
+              </p>
+              <div className="mt-5 grid max-h-[360px] gap-3 overflow-y-auto pr-1">
+                {props.devotionalsLoading ? (
+                  <div className="rounded-2xl border px-4 py-5 text-center text-sm font-bold text-[#667085]" style={{ backgroundColor: "#ffffff", borderColor: "#eadcc2" }}>
+                    Loading devotionals...
+                  </div>
+                ) : props.devotionalOptions.length === 0 ? (
+                  <div className="rounded-2xl border px-4 py-5 text-center text-sm font-bold text-[#667085]" style={{ backgroundColor: "#ffffff", borderColor: "#eadcc2" }}>
+                    Devotionals are loading slowly. You can still continue with Bible in One Year.
+                  </div>
+                ) : (
+                  props.devotionalOptions.map((devotional) => (
+                    <button
+                      key={devotional.id}
+                      type="button"
+                      onClick={() => props.setSelectedDevotionalId(devotional.id)}
+                      className="rounded-2xl border px-4 py-4 text-left transition"
+                      style={{
+                        backgroundColor: props.selectedDevotionalId === devotional.id ? "#fff8ea" : "#ffffff",
+                        borderColor: props.selectedDevotionalId === devotional.id ? "#d89b43" : "#eadcc2",
+                        color: "#0E1A3A",
+                      }}
+                    >
+                      <span className="block text-sm font-black">{devotional.title}</span>
+                      <span className="mt-1 block text-xs font-semibold leading-5 text-[#667085]">
+                        {devotional.total_days ? `${devotional.total_days} day focused study` : "Focused Bible study"}
+                      </span>
+                    </button>
+                  ))
+                )}
+              </div>
+              <div className="mt-5 grid gap-3">
+                <button
+                  type="button"
+                  onClick={props.confirmDevotionalChoice}
+                  disabled={!props.selectedDevotionalId || props.submitting}
+                  className="rounded-2xl px-4 py-4 text-sm font-black disabled:opacity-50"
+                  style={{ backgroundColor: "#0E1A3A", color: "#ffffff" }}
+                >
+                  {props.submitting ? "Starting..." : "Continue with this devotional"}
+                </button>
+                <button type="button" onClick={props.chooseBibleYearRoute} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#f3f4f6", borderColor: "#d8d5cf", color: "#111827" }}>
+                  Choose Bible in One Year instead
+                </button>
               </div>
             </div>
           ) : null}

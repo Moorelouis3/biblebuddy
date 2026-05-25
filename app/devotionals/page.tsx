@@ -58,12 +58,7 @@ type StudyCommunityModal = {
 
 type StudyFilter = "all" | "done" | "started";
 
-const HIDDEN_DEVOTIONAL_TITLES = new Set([
-  "The Calling of Moses",
-  "The Tempting of Jesus",
-  "The Disciples of Jesus",
-  "Women of the Bible",
-]);
+const HIDDEN_DEVOTIONAL_TITLES = new Set<string>();
 
 const FEATURED_STUDY_ORDER = [
   "The Creation of the World",
@@ -226,7 +221,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
       userId,
       username,
       actionType: ACTION_TYPE.devotionals_viewed,
-      actionLabel: "Bible Studies",
+      actionLabel: "Devotionals",
       dedupeKey: "devotionals-viewed",
     }).catch((error) => console.error("[NAV] Failed to track devotionals view:", error));
   }, [userId, username]);
@@ -625,8 +620,8 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     return (
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 py-8">
-          <h1 className="text-3xl font-bold mb-8">Bible Studies</h1>
-          <div className="text-gray-500">Loading Bible studies...</div>
+          <h1 className="text-3xl font-bold mb-8">Devotionals</h1>
+          <div className="text-gray-500">Loading devotionals...</div>
         </div>
       </div>
     );
@@ -638,9 +633,9 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
         <div className="bb-bible-studies-hero mb-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm md:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Bible Studies</h1>
+              <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Devotionals</h1>
               <p className="mt-2 max-w-2xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
-                Pick a study, finish each chapter step by step, and watch your shelf fill up as completed.
+                Pick a focused study and move through it at your own pace.
               </p>
             </div>
           </div>

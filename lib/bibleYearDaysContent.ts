@@ -1,12 +1,18 @@
 import type { BibleYearAudioDay } from "./bibleYearAudio";
 import {
   BIBLE_YEAR_DAY_EIGHT_AUDIO,
+  BIBLE_YEAR_DAY_ELEVEN_AUDIO,
   BIBLE_YEAR_DAY_FIVE_AUDIO,
+  BIBLE_YEAR_DAY_FOURTEEN_AUDIO,
   BIBLE_YEAR_DAY_FOUR_AUDIO,
+  BIBLE_YEAR_DAY_NINE_AUDIO,
   BIBLE_YEAR_DAY_ONE_AUDIO,
   BIBLE_YEAR_DAY_SEVEN_AUDIO,
   BIBLE_YEAR_DAY_SIX_AUDIO,
+  BIBLE_YEAR_DAY_TEN_AUDIO,
   BIBLE_YEAR_DAY_THREE_AUDIO,
+  BIBLE_YEAR_DAY_THIRTEEN_AUDIO,
+  BIBLE_YEAR_DAY_TWELVE_AUDIO,
   BIBLE_YEAR_DAY_TWO_AUDIO,
 } from "./bibleYearAudio";
 import type { BibleYearDailyLesson } from "./bibleYearDailyLessons";
@@ -14,12 +20,30 @@ import {
   GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON,
   GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON,
   GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON,
+  GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON,
   GENESIS_DAY_ONE_CREATION_LESSON,
   GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON,
   GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON,
   GENESIS_DAY_THREE_NOAH_ARK_LESSON,
   GENESIS_DAY_TWO_FALL_LESSON,
 } from "./bibleYearDailyLessons";
+import {
+  BIBLE_YEAR_DAY_ELEVEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_ELEVEN_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_FOURTEEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FOURTEEN_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_TEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TEN_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_THIRTEEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTEEN_DEEP_STUDY_SECTIONS,
+  BIBLE_YEAR_DAY_TWELVE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWELVE_DEEP_STUDY_SECTIONS,
+  GENESIS_DAY_ELEVEN_JACOBS_JOURNEY_BEGINS_LESSON,
+  GENESIS_DAY_FOURTEEN_JACOB_RETURNS_TO_BETHEL_LESSON,
+  GENESIS_DAY_TEN_COVENANT_THROUGH_ISAAC_LESSON,
+  GENESIS_DAY_THIRTEEN_JACOB_WRESTLES_WITH_GOD_LESSON,
+  GENESIS_DAY_TWELVE_JACOB_LEAVES_LABAN_LESSON,
+} from "./bibleYearDaysTenToFourteen";
 import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "./bibleYearDayOneDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS, type BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES, BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS } from "./bibleYearDayThreeDeepNotes";
@@ -28,6 +52,7 @@ import { BIBLE_YEAR_DAY_FIVE_DEEP_NOTES, BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS
 import { BIBLE_YEAR_DAY_SEVEN_DEEP_NOTES, BIBLE_YEAR_DAY_SEVEN_DEEP_STUDY_SECTIONS } from "./bibleYearDaySevenDeepNotes";
 import { BIBLE_YEAR_DAY_SIX_DEEP_NOTES, BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS } from "./bibleYearDaySixDeepNotes";
 import { BIBLE_YEAR_DAY_EIGHT_DEEP_NOTES, BIBLE_YEAR_DAY_EIGHT_DEEP_STUDY_SECTIONS } from "./bibleYearDayEightDeepNotes";
+import { BIBLE_YEAR_DAY_NINE_DEEP_NOTES, BIBLE_YEAR_DAY_NINE_DEEP_STUDY_SECTIONS } from "./bibleYearDayNineDeepNotes";
 import { BIBLE_YEAR_DAY_TWO_DEEP_NOTES, BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS } from "./fallOfManDeepNotes";
 import type { GenesisBibleYearDay } from "./bibleInOneYearPlan";
 
@@ -188,6 +213,108 @@ const dayEightSummary: BibleYearSummaryContent = {
   takeawaySupport: "Day 8 helps us see that God listens, God sees what is truly happening, and God knows how to rescue while still taking evil seriously.",
 };
 
+const dayNineSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 20-25 closes Abraham's journey and begins moving the promise into the next generation.",
+    "These chapters show Abraham repeating an old fear, Isaac finally being born, Hagar and Ishmael being seen in the wilderness, and Abraham being tested on Mount Moriah.",
+    "By the end, Sarah has died, Isaac receives Rebekah, Abraham's life closes, and Jacob and Esau enter the story.",
+  ],
+  highlights: [
+    ["🛡️", "God protects Sarah and the promise even when Abraham repeats an old failure."],
+    ["👶", "Isaac is born at the appointed time, turning Sarah's laughter into joy."],
+    ["💧", "God hears Hagar and Ishmael in the wilderness and provides for them."],
+    ["⛰️", "Abraham is tested on Moriah, and the LORD provides the ram."],
+    ["🔁", "Abraham's legacy moves forward through Isaac, Rebekah, Jacob, and Esau."],
+  ],
+  takeaway: "God's covenant promise keeps moving through weakness, waiting, testing, grief, and legacy.",
+  takeawaySupport: "Day 9 helps us see that the story is not held together by perfect people, but by the faithful God who keeps His word across generations.",
+};
+
+const dayTenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 26-27 follows Isaac's household as the covenant promise continues through a family full of pressure.",
+    "Isaac faces famine, fear, conflict over wells, and God's repeated promise.",
+    "Then Jacob receives the blessing through deception, and the family fractures under favoritism and anger.",
+  ],
+  highlights: [
+    ["🌾", "Isaac faces famine, but God tells him to stay and trust the promise."],
+    ["🛡️", "Isaac repeats Abraham's fear, showing old patterns can echo into the next generation."],
+    ["💧", "The wells show conflict, patience, and God making room."],
+    ["🤲", "Jacob receives the blessing, but through deception that wounds the family."],
+    ["💔", "Esau's grief and Jacob's escape show that sin leaves real consequences."],
+  ],
+  takeaway: "God's promise moves forward, but Genesis is honest about the damage caused by fear, favoritism, and deception.",
+  takeawaySupport: "Day 10 helps us see that covenant blessing is carried by God's faithfulness, not by a perfect family system.",
+};
+
+const dayElevenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 28-29 begins Jacob's journey away from home.",
+    "Jacob leaves under pressure, but God meets him at Bethel and repeats the covenant promise.",
+    "Then Jacob reaches Haran, meets Rachel, serves Laban, and experiences deception in his own family story.",
+  ],
+  highlights: [
+    ["🛣️", "Jacob leaves home carrying both blessing and consequences."],
+    ["🪜", "God meets Jacob in a dream and promises presence, land, descendants, and return."],
+    ["🪨", "Bethel becomes a place where Jacob realizes God was near."],
+    ["❤️", "Jacob meets Rachel and agrees to serve seven years for her."],
+    ["🕯️", "Laban deceives Jacob, and Leah's pain is seen by God."],
+  ],
+  takeaway: "God can meet people on the road, even when they are carrying fear, consequences, and uncertainty.",
+  takeawaySupport: "Day 11 helps us see that God's presence is not limited to settled places. He meets Jacob in exile and keeps speaking promise.",
+};
+
+const dayTwelveSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 30-31 follows Jacob's growing family and his difficult years under Laban.",
+    "The household grows through rivalry and pain, while Jacob works under pressure and conflict.",
+    "Eventually God calls Jacob to return, and the journey back toward promise begins.",
+  ],
+  highlights: [
+    ["👨‍👩‍👧", "Jacob's household grows, but the growth happens inside rivalry and pain."],
+    ["🐑", "Jacob prospers even under Laban's pressure."],
+    ["🏠", "God tells Jacob to return to the land of his fathers."],
+    ["🏃", "Jacob leaves with his family, flocks, and unresolved tension."],
+    ["🪨", "Jacob and Laban set a boundary covenant and part ways."],
+  ],
+  takeaway: "God can grow and guide His people even when the surrounding situation is unfair, tense, and complicated.",
+  takeawaySupport: "Day 12 helps us see that returning to God's promise sometimes means leaving unhealthy patterns behind.",
+};
+
+const dayThirteenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 32-33 brings Jacob face to face with fear, prayer, wrestling, and reconciliation.",
+    "Jacob is about to meet Esau, and the old wound still feels dangerous.",
+    "Before he faces Esau, Jacob wrestles through the night and receives a new name.",
+  ],
+  highlights: [
+    ["🛡️", "Jacob prepares to meet Esau with fear, planning, and prayer."],
+    ["🙏", "Jacob honestly reminds God of His promise."],
+    ["🤼", "Jacob wrestles through the night and is wounded."],
+    ["✨", "Jacob receives the name Israel after clinging for blessing."],
+    ["🤝", "Esau's embrace becomes a surprising moment of mercy."],
+  ],
+  takeaway: "God can change a person through struggle, weakness, prayer, and mercy.",
+  takeawaySupport: "Day 13 helps us see that Jacob walks forward limping, but blessed. His weakness becomes part of his transformed story.",
+};
+
+const dayFourteenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 34-36 closes Jacob's section with painful family brokenness, renewed worship, grief, and generations.",
+    "Genesis 34 is heavy, showing violation, anger, deception, and violence.",
+    "Then God calls Jacob back to Bethel, where idols are put away and the promise is repeated.",
+  ],
+  highlights: [
+    ["⚠️", "Dinah's story shows deep family and city brokenness."],
+    ["🧭", "God calls Jacob back to Bethel after a painful chapter."],
+    ["🧺", "Jacob's household puts away foreign gods before worship."],
+    ["💔", "Rachel dies, Benjamin is born, and Isaac's life closes."],
+    ["📜", "Esau's family line is recorded, preparing later Bible history."],
+  ],
+  takeaway: "God calls His people back to worship even after grief, failure, and painful family damage.",
+  takeawaySupport: "Day 14 helps us see that renewal does not erase the pain, but it does bring the family back under God's promise.",
+};
+
 function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent {
   const pieces = day.summary
     .split(",")
@@ -275,6 +402,54 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
     studyNotesSections: BIBLE_YEAR_DAY_EIGHT_DEEP_STUDY_SECTIONS,
     summary: dayEightSummary,
     discussionPrompt: "What stands out to you about Abraham's intercession and Lot's rescue?",
+  },
+  9: {
+    lesson: GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON,
+    audio: BIBLE_YEAR_DAY_NINE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_NINE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_NINE_DEEP_STUDY_SECTIONS,
+    summary: dayNineSummary,
+    discussionPrompt: "What stands out to you about Abraham's legacy and God's faithfulness across generations?",
+  },
+  10: {
+    lesson: GENESIS_DAY_TEN_COVENANT_THROUGH_ISAAC_LESSON,
+    audio: BIBLE_YEAR_DAY_TEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TEN_DEEP_STUDY_SECTIONS,
+    summary: dayTenSummary,
+    discussionPrompt: "Where do you see fear, favoritism, or deception causing damage in Genesis 26-27?",
+  },
+  11: {
+    lesson: GENESIS_DAY_ELEVEN_JACOBS_JOURNEY_BEGINS_LESSON,
+    audio: BIBLE_YEAR_DAY_ELEVEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_ELEVEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_ELEVEN_DEEP_STUDY_SECTIONS,
+    summary: dayElevenSummary,
+    discussionPrompt: "What encourages you about God meeting Jacob on the road at Bethel?",
+  },
+  12: {
+    lesson: GENESIS_DAY_TWELVE_JACOB_LEAVES_LABAN_LESSON,
+    audio: BIBLE_YEAR_DAY_TWELVE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWELVE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWELVE_DEEP_STUDY_SECTIONS,
+    summary: dayTwelveSummary,
+    discussionPrompt: "Where do you see God guiding Jacob through pressure and conflict?",
+  },
+  13: {
+    lesson: GENESIS_DAY_THIRTEEN_JACOB_WRESTLES_WITH_GOD_LESSON,
+    audio: BIBLE_YEAR_DAY_THIRTEEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTEEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTEEN_DEEP_STUDY_SECTIONS,
+    summary: dayThirteenSummary,
+    discussionPrompt: "What stands out to you about Jacob wrestling, limping, and receiving a new name?",
+  },
+  14: {
+    lesson: GENESIS_DAY_FOURTEEN_JACOB_RETURNS_TO_BETHEL_LESSON,
+    audio: BIBLE_YEAR_DAY_FOURTEEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FOURTEEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FOURTEEN_DEEP_STUDY_SECTIONS,
+    summary: dayFourteenSummary,
+    discussionPrompt: "What does Jacob returning to Bethel teach you about coming back to worship after brokenness?",
   },
 };
 

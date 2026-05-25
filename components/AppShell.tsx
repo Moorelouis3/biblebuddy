@@ -80,7 +80,7 @@ const LANDING_QUESTIONNAIRE_STORAGE_KEY = "bb:landing-questionnaire";
 type LandingOnboardingAnswers = {
   goal?: string;
   experience?: string;
-  ageRange?: string;
+  studyFocus?: string;
   time?: string;
   difficulty?: string;
 };
@@ -105,7 +105,12 @@ function normalizeLandingExperienceForProfile(experience: string | null | undefi
 
 type PendingLandingOnboarding = {
   answers: LandingOnboardingAnswers;
-  recommendation?: { estimatedDays?: number };
+  recommendation?: {
+    estimatedDays?: number;
+    studyRoute?: "bible_year" | "devotional";
+    selectedDevotionalId?: string | null;
+    selectedDevotionalTitle?: string | null;
+  };
   landingAnalytics?: {
     sessionId?: string;
     source?: string;
@@ -121,7 +126,7 @@ function readPendingLandingOnboarding(): PendingLandingOnboarding | null {
     if (!parsed || typeof parsed !== "object") return null;
     const answers = "answers" in parsed ? parsed.answers : parsed;
     if (!answers || typeof answers !== "object") return null;
-    if (!answers.goal || !answers.experience || !answers.ageRange || !answers.time || !answers.difficulty) return null;
+    if (!answers.goal || !answers.experience || !answers.studyFocus || !answers.time || !answers.difficulty) return null;
     return { answers, recommendation: parsed.recommendation, landingAnalytics: parsed.landingAnalytics };
   } catch {
     return null;
@@ -844,11 +849,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   async function checkOnboardingStatus(currentUserId: string) {
     try {
-      const { data: profileStats, error: profileStatsError } = await supabase
+      let { data: profileStats, error: profileStatsError } = await supabase
         .from("profile_stats")
-        .select("onboarding_completed, traffic_source, bible_experience_level, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at")
+        .select("onboarding_completed, traffic_source, bible_experience_level, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at, preferred_study_mode")
         .eq("user_id", currentUserId)
         .maybeSingle();
+
+      if (profileStatsError && /preferred_study_mode/i.test(profileStatsError.message || "")) {
+        const fallback = await supabase
+          .from("profile_stats")
+          .select("onboarding_completed, traffic_source, bible_experience_level, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at")
+          .eq("user_id", currentUserId)
+          .maybeSingle();
+        profileStats = fallback.data as typeof profileStats;
+        profileStatsError = fallback.error;
+      }
 
       if (profileStatsError) {
         console.error("[ONBOARDING] Error loading onboarding status:", profileStatsError);
@@ -891,27 +906,31 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       const onboardingCompleted = profileStats.onboarding_completed === true;
 
-      if (!onboardingCompleted || !profileStats.bible_year_started_at || !profileStats.bible_year_launch_seen_at) {
+      const isDevotionalMode = profileStats.preferred_study_mode === "devotional";
+
+      if (!onboardingCompleted || (!isDevotionalMode && (!profileStats.bible_year_started_at || !profileStats.bible_year_launch_seen_at))) {
         await supabase
           .from("profile_stats")
           .update({
             onboarding_completed: true,
-            bible_year_started_at: profileStats.bible_year_started_at || todayKey,
-            bible_year_launch_seen_at: profileStats.bible_year_launch_seen_at || nowIso,
+            bible_year_started_at: isDevotionalMode ? profileStats.bible_year_started_at : profileStats.bible_year_started_at || todayKey,
+            bible_year_launch_seen_at: isDevotionalMode ? profileStats.bible_year_launch_seen_at : profileStats.bible_year_launch_seen_at || nowIso,
             louis_primary_devotional_day: profileStats.louis_primary_devotional_id ? 1 : profileStats.louis_primary_devotional_day ?? 1,
           })
           .eq("user_id", currentUserId);
 
-        await supabase.from("bible_year_day_progress").upsert(
-          {
-            user_id: currentUserId,
-            day_number: 1,
-            reading_completed: false,
-            trivia_completed: false,
-            reflection_completed: false,
-          },
-          { onConflict: "user_id,day_number" },
-        );
+        if (!isDevotionalMode) {
+          await supabase.from("bible_year_day_progress").upsert(
+            {
+              user_id: currentUserId,
+              day_number: 1,
+              reading_completed: false,
+              trivia_completed: false,
+              reflection_completed: false,
+            },
+            { onConflict: "user_id,day_number" },
+          );
+        }
       }
 
     } catch (_err) {
@@ -926,6 +945,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
     const displayName = headerProfileName && headerProfileName !== "You" ? headerProfileName : email?.split("@")[0] || "Bible Buddy";
     const estimatedDays = Number(pending.recommendation?.estimatedDays || 365);
+    const pendingStudyRoute = pending.recommendation?.studyRoute === "devotional" ? "devotional" : "bible_year";
+    const pendingDevotionalId =
+      typeof pending.recommendation?.selectedDevotionalId === "string" && pending.recommendation.selectedDevotionalId
+        ? pending.recommendation.selectedDevotionalId
+        : null;
 
     try {
       await supabase.from("profile_stats").upsert(
@@ -937,7 +961,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           traffic_source: "landing_questionnaire",
           bible_experience_level: normalizeLandingExperienceForProfile(pending.answers.experience),
           onboarding_goal: normalizeLandingGoalForProfile(pending.answers.goal),
-          age_range: pending.answers.ageRange,
+          onboarding_study_focus: pending.answers.studyFocus,
+          preferred_study_mode: pendingStudyRoute,
+          ...(pendingDevotionalId ? { free_devotional_id: pendingDevotionalId, louis_primary_devotional_id: pendingDevotionalId } : {}),
           louis_primary_devotional_day: 1,
         },
         { onConflict: "user_id" },
@@ -951,7 +977,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         .from("profile_stats")
         .update({
           landing_onboarding_completed: true,
-          age_range: pending.answers.ageRange,
+          onboarding_study_focus: pending.answers.studyFocus,
           onboarding_time_commitment: pending.answers.time,
           onboarding_difficulty: pending.answers.difficulty,
         })
@@ -968,11 +994,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           email: email ?? null,
           goal: pending.answers.goal,
           experience: pending.answers.experience,
-          age_range: pending.answers.ageRange,
+          study_focus: pending.answers.studyFocus,
           time_commitment: pending.answers.time,
           difficulty: pending.answers.difficulty,
-          recommended_journey: "Bible in One Year",
-          recommended_days: estimatedDays,
+          recommended_journey: pendingStudyRoute === "devotional" ? pending.recommendation?.selectedDevotionalTitle || "Focused Devotional Study" : "Bible in One Year",
+          recommended_days: pendingStudyRoute === "devotional" ? null : estimatedDays,
           updated_at: new Date().toISOString(),
         },
         { onConflict: "user_id" },
@@ -991,6 +1017,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             authMethod: "google",
             recommendationDays: estimatedDays,
             selectedTime: pending.answers.time,
+            studyRoute: pendingStudyRoute,
+            selectedDevotionalId: pendingDevotionalId,
           },
         }),
       });

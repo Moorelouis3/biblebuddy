@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { Fragment, useCallback, useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
@@ -11,7 +11,6 @@ import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import BibleYearDeepStudySectionCards from "./BibleYearDeepStudySectionCards";
 import BibleYearLessonAudioPlayer from "./BibleYearLessonAudioPlayer";
 import BibleTopicsPanel from "./BibleTopicsPanel";
-import JourneyAnalyticsPanel from "./JourneyAnalyticsPanel";
 import VideoHelpfulPoll from "./VideoHelpfulPoll";
 import StreakFlameEmoji from "./StreakFlameEmoji";
 import CommentSection from "./comments/CommentSection";
@@ -172,6 +171,7 @@ type ProfileShape = {
   display_name?: string | null;
   username?: string | null;
   created_at?: string | null;
+  preferred_study_mode?: string | null;
 } | null;
 
 type BuddiesDashboardTopBuddy = {
@@ -1815,6 +1815,14 @@ export default function DashboardJourneyExperience({
   const [bibleYearReflectionPostedByDay, setBibleYearReflectionPostedByDay] = useState<Record<number, boolean>>({});
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
   const [dashboardGreeting, setDashboardGreeting] = useState("Good evening");
+  const [isAnonymousGuest, setIsAnonymousGuest] = useState(false);
+  const [protectJourneyPromptOpen, setProtectJourneyPromptOpen] = useState(false);
+  const [guestAccountFormOpen, setGuestAccountFormOpen] = useState(false);
+  const [guestAccountName, setGuestAccountName] = useState("");
+  const [guestAccountEmail, setGuestAccountEmail] = useState("");
+  const [guestAccountPassword, setGuestAccountPassword] = useState("");
+  const [guestAccountLoading, setGuestAccountLoading] = useState(false);
+  const [guestAccountMessage, setGuestAccountMessage] = useState<string | null>(null);
 
   const dashboardPageKeys = ["home", "buddy", "bible", "bible_studies", "bible_topics", "group", "share", "buddies", "tv", "games", "analytics", "settings"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
@@ -1834,6 +1842,29 @@ export default function DashboardJourneyExperience({
   useEffect(() => {
     setDashboardGreeting(getDashboardGreeting());
   }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadGuestStatus() {
+      const { data } = await supabase.auth.getUser();
+      if (cancelled) return;
+      const user = data.user as any;
+      const anonymous = Boolean(user?.is_anonymous || user?.identities?.length === 0);
+      setIsAnonymousGuest(anonymous);
+      if (anonymous) {
+        setGuestAccountName(profile?.display_name && profile.display_name !== "Bible Buddy Guest" ? profile.display_name : "");
+      }
+    }
+
+    void loadGuestStatus();
+    const { data: subscription } = supabase.auth.onAuthStateChange(() => {
+      void loadGuestStatus();
+    });
+    return () => {
+      cancelled = true;
+      subscription.subscription.unsubscribe();
+    };
+  }, [profile?.display_name]);
 
   useEffect(() => {
     if (profile?.selected_buddy_avatar) {
@@ -1894,7 +1925,7 @@ export default function DashboardJourneyExperience({
   }> = [
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
     { key: "bible", label: "Bible", icon: <BibleBookIcon />, href: "#bible-reader" },
-    { key: "bible_studies", label: "Bible Studies", icon: "\uD83C\uDF05", href: "#bible-in-one-year" },
+    { key: "bible_studies", label: "Devotionals", icon: "\uD83C\uDF05", href: "/bible-studies" },
     { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
     { key: "group", label: "Community", icon: "\uD83D\uDC65", href: dashboardPageLinks.group?.href || "/study-groups", onClick: dashboardPageLinks.group?.onClick },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
@@ -2166,7 +2197,7 @@ export default function DashboardJourneyExperience({
   const bibleYearCurrentDayReady = bibleYearProgressReady && bibleYearProgressLoaded;
   const activeBibleYearDashboardDay = bibleYearDashboardActive && bibleYearCurrentDayReady
     ? (() => {
-        const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
+        const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 14);
         const reportedCurrentDayNumber = Number(bibleYearReport?.currentDay);
         const boundedReportedDayNumber = Number.isFinite(reportedCurrentDayNumber)
           ? Math.max(
@@ -2237,6 +2268,29 @@ export default function DashboardJourneyExperience({
   const remainingTasks = Math.max(dashboardTotalTasks - dashboardCompletedTasks, 0);
 
   useEffect(() => {
+    if (!userId || !isAnonymousGuest || protectJourneyPromptOpen || guestAccountFormOpen) return;
+    if (typeof window === "undefined") return;
+    const dismissedKey = `bb:protect-journey-dismissed:${userId}`;
+    if (window.localStorage.getItem(dismissedKey) === "1") return;
+
+    const dayThree = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 3);
+    const bibleYearDayThreeComplete = Boolean(dayThree && isBibleYearDayComplete(dayThree));
+    const devotionalDayThreeComplete = Boolean(currentDevotionalTask?.devotionalDayNumber === 3 && allDone);
+
+    if (bibleYearDayThreeComplete || devotionalDayThreeComplete) {
+      setProtectJourneyPromptOpen(true);
+    }
+  }, [
+    allDone,
+    bibleYearCompletedCardsByDay,
+    currentDevotionalTask?.devotionalDayNumber,
+    guestAccountFormOpen,
+    isAnonymousGuest,
+    protectJourneyPromptOpen,
+    userId,
+  ]);
+
+  useEffect(() => {
     let cancelled = false;
 
     async function loadCurrentStudyChapters() {
@@ -2295,7 +2349,7 @@ export default function DashboardJourneyExperience({
   useEffect(() => {
     if (!activeBibleYearDashboardDay || typeof window === "undefined" || !("serviceWorker" in navigator)) return;
 
-    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
+    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 14);
     const starterAudioUrls = builtBibleYearDays
       .filter((day) => day.dayNumber >= 1 && day.dayNumber <= 7)
       .map((day) => getBibleYearDayContent(day).audio?.apiSrc)
@@ -2688,6 +2742,7 @@ export default function DashboardJourneyExperience({
             free_devotional_id: selectedDevotionalId,
             louis_primary_devotional_id: selectedDevotionalId,
             louis_primary_devotional_day: nextDay,
+            preferred_study_mode: "devotional",
           },
           { onConflict: "user_id" },
         );
@@ -3324,9 +3379,138 @@ export default function DashboardJourneyExperience({
     }
   }
 
+  function openPreferredHomeDashboard() {
+    if (profile?.preferred_study_mode === "devotional") {
+      clearBibleYearViews();
+      setFreeStudyModeActive(false);
+      setEmbeddedBibleBookSearchOpen(false);
+      setEmbeddedBibleSelectedBook(null);
+      setEmbeddedBibleStudyId(null);
+      setDashboardMenuOpen(false);
+      onHomeReset?.();
+      snapToPage(0);
+      if (typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.set("view", "devotional");
+        url.searchParams.delete("day");
+        window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+      return;
+    }
+
+    openBibleYearDashboard();
+  }
+
+  function dismissProtectJourneyPrompt() {
+    if (typeof window !== "undefined" && userId) {
+      window.localStorage.setItem(`bb:protect-journey-dismissed:${userId}`, "1");
+    }
+    setProtectJourneyPromptOpen(false);
+  }
+
+  async function createAccountFromGuest(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const cleanName = guestAccountName.trim();
+    const cleanEmail = guestAccountEmail.trim().toLowerCase();
+    const cleanPassword = guestAccountPassword.trim();
+
+    if (!cleanName || !cleanEmail || cleanPassword.length < 6) {
+      setGuestAccountMessage("Enter your name, email, and a password with at least 6 characters.");
+      return;
+    }
+
+    setGuestAccountLoading(true);
+    setGuestAccountMessage(null);
+
+    try {
+      const { data, error } = await supabase.auth.updateUser({
+        email: cleanEmail,
+        password: cleanPassword,
+        data: {
+          display_name: cleanName,
+          first_name: cleanName.split(/\s+/)[0] || cleanName,
+          full_name: cleanName,
+        },
+      });
+      if (error) throw error;
+
+      if (userId) {
+        const nowIso = new Date().toISOString();
+        const profileUpdate = await supabase
+          .from("profile_stats")
+          .upsert(
+            {
+              user_id: userId,
+              display_name: cleanName,
+              username: cleanName,
+              account_type: "registered",
+              registered_at: nowIso,
+              converted_from_guest_at: isAnonymousGuest ? nowIso : null,
+              updated_at: nowIso,
+            },
+            { onConflict: "user_id" },
+          );
+        if (profileUpdate.error && /account_type|registered_at|converted_from_guest_at/i.test(profileUpdate.error.message || "")) {
+          await supabase
+            .from("profile_stats")
+            .upsert(
+              {
+                user_id: userId,
+                display_name: cleanName,
+                username: cleanName,
+                updated_at: nowIso,
+              },
+              { onConflict: "user_id" },
+            );
+        } else if (profileUpdate.error) {
+          throw profileUpdate.error;
+        }
+      }
+
+      try {
+        await fetch("/api/landing-analytics", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            event_name: "created_free_account",
+            session_id:
+              typeof window !== "undefined"
+                ? window.localStorage.getItem("bb:landing-session-id") || `account-${userId || Date.now()}`
+                : `account-${userId || Date.now()}`,
+            user_id: userId,
+            source: "In App",
+            referrer: null,
+            page_path: typeof window !== "undefined" ? `${window.location.pathname}${window.location.search}` : "/dashboard",
+            metadata: { convertedFromGuest: isAnonymousGuest },
+          }),
+        });
+      } catch (analyticsError) {
+        console.error("[GUEST_ACCOUNT] Account conversion analytics failed:", analyticsError);
+      }
+
+      setIsAnonymousGuest(false);
+      setProtectJourneyPromptOpen(false);
+      setGuestAccountFormOpen(false);
+      setGuestAccountPassword("");
+      setGuestAccountMessage(
+        data.user?.email_confirmed_at
+          ? "Your account is ready. Your Bible journey is protected."
+          : "Check your email to confirm your account. Your progress is still saved here.",
+      );
+      if (typeof window !== "undefined" && userId) {
+        window.localStorage.setItem(`bb:protect-journey-dismissed:${userId}`, "1");
+      }
+    } catch (error) {
+      console.error("[GUEST_ACCOUNT] Could not convert guest account:", error);
+      setGuestAccountMessage(error instanceof Error ? error.message : "Could not create your account. Try again in a moment.");
+    } finally {
+      setGuestAccountLoading(false);
+    }
+  }
+
   function handleDashboardNavClick(index: number) {
     if (index === 0) {
-      openBibleYearDashboard();
+      openPreferredHomeDashboard();
       return;
     }
     if (bibleYearDashboardActive || bibleYearSeriesActive) {
@@ -3345,7 +3529,7 @@ export default function DashboardJourneyExperience({
 
   function openBibleYearDashboard() {
     bibleYearJustCompletedDayRef.current = null;
-    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
+    const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 14);
     const firstIncompleteDay =
       builtBibleYearDays.find((day) => {
         const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
@@ -3616,17 +3800,24 @@ export default function DashboardJourneyExperience({
       setBibleYearSeriesActive(true);
       setBibleYearJourneyPreviewDay(null);
       const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 8);
+      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber && seriesDay.dayNumber <= 14);
       if (day) setBibleYearSeriesDetailDay(day);
       setActivePage(0);
+    } else if (view === "devotional") {
+      setBibleYearDashboardActive(false);
+      setBibleYearSeriesActive(false);
+      setBibleYearSeriesDetailDay(null);
+      setBibleYearJourneyPreviewDay(null);
+      setSelectedBibleYearSeriesDay(null);
+      setActivePage(0);
     } else {
-      setBibleYearDashboardActive(true);
+      setBibleYearDashboardActive(profile?.preferred_study_mode === "devotional" ? false : true);
       setBibleYearSeriesActive(false);
       setBibleYearSeriesDetailDay(null);
       setBibleYearJourneyPreviewDay(null);
       setActivePage(0);
     }
-  }, []);
+  }, [profile?.preferred_study_mode]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -4633,8 +4824,13 @@ export default function DashboardJourneyExperience({
   );
 
   const renderEmbeddedAnalyticsPage = () => (
-    <section className="w-full px-1">
-      <JourneyAnalyticsPanel embedded />
+    <section className="-mx-4 w-[calc(100%+2rem)] sm:-mx-5 sm:w-[calc(100%+2.5rem)]">
+      <iframe
+        src="/admin/analytics?embedded=dashboard"
+        title="Bible Buddy Analytics"
+        className="block w-full border-0 bg-[var(--bb-background,#f8fbff)]"
+        style={{ minHeight: "calc(100dvh - 130px)", height: "calc(100dvh - 130px)" }}
+      />
     </section>
   );
 
@@ -6980,6 +7176,83 @@ Before we understand redemption, we need to understand what God made humanity fo
         explanation: "Lot's wife looks back and becomes a pillar of salt, showing the danger of clinging to what God is judging.",
       },
     ],
+    9: [
+      {
+        id: "day9-abimelech",
+        question: "To which king did Abraham say Sarah was his sister in Genesis 20?",
+        options: ["Abimelech", "Pharaoh", "Melchizedek"],
+        answer: "Abimelech",
+        verse: "Genesis 20:2",
+        explanation: "Abraham repeats an old fear in Gerar, and Abimelech king of Gerar takes Sarah before God intervenes.",
+      },
+      {
+        id: "day9-isaac-born",
+        question: "Who was born to Abraham and Sarah at the appointed time?",
+        options: ["Isaac", "Jacob", "Ishmael"],
+        answer: "Isaac",
+        verse: "Genesis 21:1-3",
+        explanation: "The Lord did for Sarah as He had spoken, and Isaac was born exactly as God promised.",
+      },
+      {
+        id: "day9-hagar",
+        question: "What did God open Hagar's eyes to see in the wilderness?",
+        options: ["A well of water", "A ladder to heaven", "A burning bush"],
+        answer: "A well of water",
+        verse: "Genesis 21:19",
+        explanation: "God hears the boy, opens Hagar's eyes, and provides water in the wilderness.",
+      },
+      {
+        id: "day9-moriah",
+        question: "What did the LORD provide on Mount Moriah instead of Isaac?",
+        options: ["A ram", "A dove", "A jar of oil"],
+        answer: "A ram",
+        verse: "Genesis 22:13-14",
+        explanation: "God stops Abraham and provides a ram caught in the thicket, so Abraham names the place The LORD will provide.",
+      },
+      {
+        id: "day9-birthright",
+        question: "What did Esau sell to Jacob for bread and lentil stew?",
+        options: ["His birthright", "His tent", "His sandals"],
+        answer: "His birthright",
+        verse: "Genesis 25:29-34",
+        explanation: "Esau treats his birthright lightly and sells it to Jacob for a meal.",
+      },
+    ],
+    10: [
+      { id: "day10-famine", question: "What challenge does Isaac face in Genesis 26?", options: ["A famine", "A flood", "A prison"], answer: "A famine", verse: "Genesis 26:1-3", explanation: "Isaac faces famine, and God tells him to stay in the land and trust the promise." },
+      { id: "day10-sister", question: "What fear-based claim does Isaac make about Rebekah?", options: ["She is my sister", "She is my servant", "She is from Egypt"], answer: "She is my sister", verse: "Genesis 26:7", explanation: "Isaac repeats a fear pattern from Abraham's story." },
+      { id: "day10-wells", question: "What does Isaac keep digging in Genesis 26?", options: ["Wells", "Graves", "Pits"], answer: "Wells", verse: "Genesis 26:18-22", explanation: "The wells show conflict, patience, and God making room for Isaac." },
+      { id: "day10-blessing", question: "Who receives Isaac's blessing in Genesis 27?", options: ["Jacob", "Esau", "Laban"], answer: "Jacob", verse: "Genesis 27:27-29", explanation: "Jacob receives the blessing through deception." },
+      { id: "day10-escape", question: "Why does Jacob need to leave home after the blessing?", options: ["Esau is angry", "Famine returns", "Isaac sends him to Egypt"], answer: "Esau is angry", verse: "Genesis 27:41-45", explanation: "Esau's anger rises after the stolen blessing, and Jacob is sent away." },
+    ],
+    11: [
+      { id: "day11-leaves", question: "Why is Jacob sent away in Genesis 28?", options: ["To find a wife", "To build an ark", "To fight a king"], answer: "To find a wife", verse: "Genesis 28:1-2", explanation: "Isaac sends Jacob to find a wife from the family line." },
+      { id: "day11-dream", question: "What does Jacob see in his dream at Bethel?", options: ["A ladder reaching to heaven", "A burning bush", "A rainbow"], answer: "A ladder reaching to heaven", verse: "Genesis 28:12", explanation: "Jacob sees a ladder with angels ascending and descending." },
+      { id: "day11-promise", question: "What does God promise Jacob at Bethel?", options: ["Presence and return", "A throne in Egypt", "A boat"], answer: "Presence and return", verse: "Genesis 28:13-15", explanation: "God promises land, descendants, presence, and return." },
+      { id: "day11-rachel", question: "Who does Jacob meet at the well in Genesis 29?", options: ["Rachel", "Rebekah", "Sarah"], answer: "Rachel", verse: "Genesis 29:9-11", explanation: "Jacob meets Rachel near the well in Haran." },
+      { id: "day11-deceived", question: "Who deceives Jacob by giving him Leah first?", options: ["Laban", "Esau", "Abimelech"], answer: "Laban", verse: "Genesis 29:21-26", explanation: "Laban deceives Jacob, and Jacob experiences deception from the other side." },
+    ],
+    12: [
+      { id: "day12-family", question: "What grows in Genesis 30 through family rivalry?", options: ["Jacob's household", "Noah's ark", "Sodom"], answer: "Jacob's household", verse: "Genesis 30:1-24", explanation: "Jacob's children are born in a painful and complicated family setting." },
+      { id: "day12-flocks", question: "What increases for Jacob while he works under Laban?", options: ["His flocks", "His ships", "His city walls"], answer: "His flocks", verse: "Genesis 30:43", explanation: "God prospers Jacob even under Laban's pressure." },
+      { id: "day12-return", question: "What does God tell Jacob to do in Genesis 31?", options: ["Return to the land of his fathers", "Stay with Laban forever", "Go to Egypt"], answer: "Return to the land of his fathers", verse: "Genesis 31:3", explanation: "God calls Jacob back toward the land of promise." },
+      { id: "day12-pursues", question: "Who pursues Jacob after he leaves?", options: ["Laban", "Pharaoh", "Lot"], answer: "Laban", verse: "Genesis 31:22-23", explanation: "Laban pursues Jacob, but God warns him in a dream." },
+      { id: "day12-boundary", question: "What do Jacob and Laban set up as a witness?", options: ["A heap of stones", "A golden calf", "A tower"], answer: "A heap of stones", verse: "Genesis 31:45-52", explanation: "The stones mark a covenant boundary between Jacob and Laban." },
+    ],
+    13: [
+      { id: "day13-esau", question: "Who is Jacob afraid to meet in Genesis 32?", options: ["Esau", "Laban", "Abimelech"], answer: "Esau", verse: "Genesis 32:6-7", explanation: "Jacob hears Esau is coming with four hundred men and becomes afraid." },
+      { id: "day13-prayer", question: "What does Jacob do with his fear?", options: ["He prays", "He builds Babel", "He hides in an ark"], answer: "He prays", verse: "Genesis 32:9-12", explanation: "Jacob brings his fear and God's promise into prayer." },
+      { id: "day13-wrestles", question: "What happens to Jacob during the night?", options: ["He wrestles", "He sleeps in a boat", "He becomes king of Egypt"], answer: "He wrestles", verse: "Genesis 32:24", explanation: "Jacob wrestles through the night with a mysterious man." },
+      { id: "day13-name", question: "What new name does Jacob receive?", options: ["Israel", "Isaac", "Edom"], answer: "Israel", verse: "Genesis 32:28", explanation: "Jacob is renamed Israel after wrestling and clinging for blessing." },
+      { id: "day13-embrace", question: "How does Esau respond when he meets Jacob?", options: ["He embraces him", "He imprisons him", "He sells him"], answer: "He embraces him", verse: "Genesis 33:4", explanation: "The feared meeting becomes a surprising moment of mercy." },
+    ],
+    14: [
+      { id: "day14-dinah", question: "Whose painful story opens Genesis 34?", options: ["Dinah", "Rachel", "Leah"], answer: "Dinah", verse: "Genesis 34:1-2", explanation: "Genesis 34 opens with Dinah and a painful account of violation and violence." },
+      { id: "day14-bethel", question: "Where does God tell Jacob to return in Genesis 35?", options: ["Bethel", "Egypt", "Sodom"], answer: "Bethel", verse: "Genesis 35:1", explanation: "God calls Jacob back to Bethel to make an altar." },
+      { id: "day14-idols", question: "What does Jacob tell his household to put away?", options: ["Foreign gods", "Wells", "Birthrights"], answer: "Foreign gods", verse: "Genesis 35:2", explanation: "Jacob calls his household to put away foreign gods before worship." },
+      { id: "day14-benjamin", question: "Who is born as Rachel dies?", options: ["Benjamin", "Joseph", "Esau"], answer: "Benjamin", verse: "Genesis 35:16-18", explanation: "Rachel dies giving birth to Benjamin." },
+      { id: "day14-esau-line", question: "Whose descendants are listed in Genesis 36?", options: ["Esau's", "Noah's", "Pharaoh's"], answer: "Esau's", verse: "Genesis 36:1", explanation: "Genesis 36 records Esau's descendants and prepares later Bible history." },
+    ],
   };
 
   const bibleYearReflectionPromptByDay: Record<number, string> = {
@@ -6991,6 +7264,12 @@ Before we understand redemption, we need to understand what God made humanity fo
     6: "Where do you need courage, discernment, or renewed trust in God's promise?",
     7: "Where are you tempted to force what God has promised, and where do you need to receive the identity God gives?",
     8: "Where do you need to take God's mercy, holiness, and warnings more seriously today?",
+    9: "What part of Abraham's legacy challenges or encourages you most: waiting, testing, grief, guidance, or passing faith forward?",
+    10: "Where do you see fear, favoritism, or deception causing damage in Genesis 26-27?",
+    11: "What encourages you about God meeting Jacob on the road at Bethel?",
+    12: "Where do you see God guiding Jacob through pressure and conflict?",
+    13: "What stands out to you about Jacob wrestling, limping, and receiving a new name?",
+    14: "What does Jacob returning to Bethel teach you about coming back to worship after brokenness?",
   };
 
   function getBibleYearDayTaskKey(task: TaskState) {
@@ -7018,7 +7297,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     return card;
   }
 
-  function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8)) {
+  function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 14)) {
     const reportedCurrentDayNumber = Number(bibleYearReport?.currentDay);
     if (Number.isFinite(reportedCurrentDayNumber) && days.length > 0) {
       const minDay = days[0]?.dayNumber ?? 1;
@@ -7304,7 +7583,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   useEffect(() => {
     if (!userId) return;
-    const visibleBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
+    const visibleBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 14);
     const pendingReflectionDays = visibleBibleYearDays.filter((day) => day.dayNumber !== 1 && bibleYearCompletedCardsByDay[day.dayNumber]?.reflection !== true);
     if (!pendingReflectionDays.length) return;
 
@@ -7338,7 +7617,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   useEffect(() => {
     if (!userId) return;
-    const discussionDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
+    const discussionDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 14);
     const slugToDayNumber = new Map(discussionDays.map((day) => [getBibleYearReflectionSlug(day), day.dayNumber]));
     if (!slugToDayNumber.size) return;
 
@@ -7407,7 +7686,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   useEffect(() => {
     if (!userId) return;
     const completedEntries = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-      .filter((day) => day.dayNumber <= 8)
+      .filter((day) => day.dayNumber <= 14)
       .flatMap((day) => {
         const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
         return getBibleYearRequiredCardKeys(day)
@@ -9060,7 +9339,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   const renderBibleYearSeriesPage = () => {
-    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
+    const visibleSeriesDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 14);
     const visibleChapterCount = visibleSeriesDays.reduce((total, day) => total + day.readings.length, 0);
     const currentSeriesDayNumber = getCurrentBibleYearSeriesDayNumber(visibleSeriesDays);
     const orderedSeriesDays = [...visibleSeriesDays].sort((a, b) => {
@@ -12222,7 +12501,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <button
                 type="button"
                 data-dashboard-nav-key="bible-year"
-                onClick={openBibleYearDashboard}
+                onClick={openPreferredHomeDashboard}
                 className={`flex min-h-[82px] w-full max-w-[220px] flex-col items-center justify-center gap-1 rounded-[20px] px-4 py-3 text-center text-xs font-black transition ${
                   bibleYearDashboardActive
                     ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] text-[var(--bb-text-primary,#111827)] ring-1 ring-[var(--bb-card-border,#dbe7f4)]"
@@ -12272,10 +12551,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                       onClick={(event) => {
                         event.preventDefault();
                         setDashboardMenuOpen(false);
-                        if (item.key === "bible_studies") {
-                          openBibleYearSeriesDashboard();
-                          return;
-                        }
                         handleDashboardNavClick(itemPageIndex);
                       }}
                       className={`flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black transition ${
@@ -12379,7 +12654,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
             <button
               type="button"
-              onClick={openBibleYearDashboard}
+              onClick={openPreferredHomeDashboard}
               className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
                 homeTabActive
                   ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
@@ -12462,6 +12737,110 @@ Before we understand redemption, we need to understand what God made humanity fo
           ))}
         </div>
       </nav>
+
+      <ModalShell
+        isOpen={protectJourneyPromptOpen}
+        onClose={dismissProtectJourneyPrompt}
+        backdropColor="bg-slate-950/55"
+        zIndex="z-[140]"
+      >
+        <div className="mx-4 w-full max-w-md rounded-[30px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-6 text-center shadow-[0_28px_80px_rgba(15,23,42,0.34)]">
+          <div className="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] shadow-sm">
+            <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+              <path d="m9 12 2 2 4-5" />
+            </svg>
+          </div>
+          <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Free account</p>
+          <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Protect your Bible journey.</h2>
+          <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            You&apos;ve already started building a rhythm in God&apos;s Word. Create a free account to save your streak, sync progress across devices, and keep your journey backed up.
+          </p>
+          <div className="mt-5 grid gap-2 text-left">
+            {["Save your streak", "Use Bible Buddy on phone and desktop", "Post reflections and keep notes permanently"].map((benefit) => (
+              <div key={benefit} className="flex items-center gap-3 rounded-2xl bg-[var(--bb-surface-soft,#f4f8ff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                <span className="grid h-7 w-7 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-white" aria-hidden="true">✓</span>
+                <span>{benefit}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 grid gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                setProtectJourneyPromptOpen(false);
+                setGuestAccountFormOpen(true);
+              }}
+              className="rounded-2xl bg-[var(--bb-accent,#2f7fe8)] px-5 py-4 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)]"
+            >
+              Create Free Account
+            </button>
+            <button
+              type="button"
+              onClick={dismissProtectJourneyPrompt}
+              className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 text-sm font-black text-[var(--bb-text-secondary,#4b5563)]"
+            >
+              Maybe Later
+            </button>
+          </div>
+        </div>
+      </ModalShell>
+
+      <ModalShell
+        isOpen={guestAccountFormOpen}
+        onClose={() => setGuestAccountFormOpen(false)}
+        backdropColor="bg-slate-950/55"
+        zIndex="z-[145]"
+      >
+        <form onSubmit={createAccountFromGuest} className="mx-4 w-full max-w-md rounded-[30px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-6 text-left shadow-[0_28px_80px_rgba(15,23,42,0.34)]">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Protect progress</p>
+              <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Create your free account.</h2>
+              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                Your guest progress stays attached to this journey.
+              </p>
+            </div>
+            <button type="button" onClick={() => setGuestAccountFormOpen(false)} className="grid h-9 w-9 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-lg font-black text-[var(--bb-text-secondary,#4b5563)]" aria-label="Close account form">
+              x
+            </button>
+          </div>
+          <div className="mt-5 grid gap-3">
+            <input
+              value={guestAccountName}
+              onChange={(event) => setGuestAccountName(event.target.value)}
+              placeholder="Full name"
+              className="w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-bold text-[var(--bb-text-primary,#111827)] outline-none focus:border-[var(--bb-accent,#2f7fe8)]"
+              required
+            />
+            <input
+              value={guestAccountEmail}
+              onChange={(event) => setGuestAccountEmail(event.target.value)}
+              type="email"
+              placeholder="Email address"
+              className="w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-bold text-[var(--bb-text-primary,#111827)] outline-none focus:border-[var(--bb-accent,#2f7fe8)]"
+              required
+            />
+            <input
+              value={guestAccountPassword}
+              onChange={(event) => setGuestAccountPassword(event.target.value)}
+              type="password"
+              minLength={6}
+              placeholder="Create password"
+              className="w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-bold text-[var(--bb-text-primary,#111827)] outline-none focus:border-[var(--bb-accent,#2f7fe8)]"
+              required
+            />
+            {guestAccountMessage ? (
+              <p className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] px-4 py-3 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">
+                {guestAccountMessage}
+              </p>
+            ) : null}
+            <button type="submit" disabled={guestAccountLoading} className="rounded-2xl bg-[var(--bb-accent,#2f7fe8)] px-5 py-4 text-sm font-black text-[var(--bb-button-text,#ffffff)] disabled:opacity-60">
+              {guestAccountLoading ? "Protecting..." : "Create Free Account"}
+            </button>
+          </div>
+        </form>
+      </ModalShell>
 
       {embeddedBibleReading ? (
         <BibleReadingModal

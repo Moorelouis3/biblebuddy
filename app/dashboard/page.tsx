@@ -1267,7 +1267,7 @@ export default function DashboardPage() {
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [levelRefreshTick, setLevelRefreshTick] = useState(0);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; selected_buddy_avatar?: string | null; active_premium_skin?: string | null; active_premium_skin_selected_at?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null; created_at?: string | null; bible_year_started_at?: string | null; bible_year_launch_seen_at?: string | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; diamonds_count?: number | null; selected_streak_flame?: string | null; selected_buddy_avatar?: string | null; active_premium_skin?: string | null; active_premium_skin_selected_at?: string | null; daily_login_gift_last_visit_at?: string | null; daily_login_gift_last_shown_date?: string | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null; created_at?: string | null; bible_year_started_at?: string | null; bible_year_launch_seen_at?: string | null; preferred_study_mode?: string | null } | null>(null);
   const [buddySelectionWelcome, setBuddySelectionWelcome] = useState<{ buddyId: BuddyAvatarId; buddyName: string } | null>(null);
   const [showDiamondStore, setShowDiamondStore] = useState(false);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
@@ -5086,11 +5086,11 @@ export default function DashboardPage() {
 
         let { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at, bible_year_started_at, bible_year_launch_seen_at")
+          .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at, bible_year_started_at, bible_year_launch_seen_at, preferred_study_mode")
           .eq("user_id", userId)
           .maybeSingle();
 
-        if (error && /bible_year_started_at|bible_year_launch_seen_at/i.test(error.message || "")) {
+        if (error && /preferred_study_mode|bible_year_started_at|bible_year_launch_seen_at/i.test(error.message || "")) {
           const fallback = await supabase
             .from("profile_stats")
             .select("total_actions, current_level, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, diamonds_count, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at, app_theme, daily_login_gift_last_visit_at, daily_login_gift_last_shown_date, profile_image_url, display_name, username, created_at")
@@ -5216,6 +5216,7 @@ export default function DashboardPage() {
             created_at: profileData?.created_at ?? null,
             bible_year_started_at: profileData?.bible_year_started_at ?? null,
             bible_year_launch_seen_at: profileData?.bible_year_launch_seen_at ?? localBibleYearLaunchSeenAt ?? null,
+            preferred_study_mode: profileData?.preferred_study_mode ?? null,
           });
           if (shouldShowDailyLoginGift && dailyLoginGiftCheckRef.current !== dailyGiftShownKey) {
             dailyLoginGiftCheckRef.current = dailyGiftShownKey;

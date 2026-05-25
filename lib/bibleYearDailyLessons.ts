@@ -931,3 +931,114 @@ export const GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON: BibleYearDailyLesson = 
     "The Lord heard Abraham's intercession, remembered Abraham, and pulled Lot from the overthrow.",
   ],
 };
+
+export const GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON: BibleYearDailyLesson = {
+  dayNumber: 9,
+  title: "Abraham's Test and Legacy",
+  reference: "Genesis 20-25",
+  estimatedListenTime: "about 16 min",
+  opening: [
+    "Day 9 closes Abraham's journey and prepares the story to move into the next generation.",
+    "Genesis 20 shows Abraham repeating an old fear, but God still protects Sarah and preserves the promise.",
+    "Then Isaac is born, Hagar and Ishmael are cared for in the wilderness, Abraham is tested on Mount Moriah, Sarah dies, Isaac receives Rebekah, and the family line moves toward Jacob and Esau.",
+  ],
+  sections: [
+    {
+      heading: "Abraham Repeats an Old Fear",
+      verseBlock: { reference: "Genesis 20:1-18", chapter: 20, startVerse: 1, endVerse: 18 },
+      teaching: [
+        "Abraham goes to Gerar and again says Sarah is his sister.",
+        "This repeats the fear pattern we saw earlier in Egypt.",
+        "God warns Abimelech in a dream and protects Sarah from being taken into another man's house.",
+        "The promise is close to fulfillment, and God preserves it even while Abraham is still flawed.",
+      ],
+    },
+    {
+      heading: "Isaac Is Born",
+      verseBlock: { reference: "Genesis 21:1-7", chapter: 21, startVerse: 1, endVerse: 7 },
+      teaching: [
+        "The LORD visits Sarah as He said.",
+        "Isaac is born at the appointed time.",
+        "Sarah's laughter changes from disbelief into joy.",
+        "This birth proves that the covenant promise depends on God's faithfulness, not human strength.",
+      ],
+    },
+    {
+      heading: "God Hears Hagar and Ishmael",
+      verseBlock: { reference: "Genesis 21:8-21", chapter: 21, startVerse: 8, endVerse: 21 },
+      teaching: [
+        "Tension rises in Abraham's household, and Hagar and Ishmael are sent away.",
+        "The wilderness scene is painful, but God hears the boy's voice.",
+        "God opens Hagar's eyes to the well and promises to make Ishmael a great nation.",
+        "Isaac carries the covenant line, but Ishmael is not invisible to God.",
+      ],
+    },
+    {
+      heading: "Abraham Lives as a Sojourner",
+      verseBlock: { reference: "Genesis 21:22-34", chapter: 21, startVerse: 22, endVerse: 34 },
+      teaching: [
+        "Abraham makes a covenant with Abimelech at Beersheba.",
+        "He plants a tamarisk tree and calls on the name of the everlasting God.",
+        "The promised land is not fully possessed yet, but Abraham worships there.",
+        "Faith learns to worship while still waiting for the full inheritance.",
+      ],
+    },
+    {
+      heading: "Abraham Is Tested on Moriah",
+      verseBlock: { reference: "Genesis 22:1-19", chapter: 22, startVerse: 1, endVerse: 19 },
+      teaching: [
+        "God tests Abraham by calling him to offer Isaac.",
+        "This is the son of promise, the child through whom the covenant line is supposed to continue.",
+        "Abraham obeys, trusting that God can still provide.",
+        "At the last moment, God provides the ram, and Abraham names the place Yahweh will provide.",
+      ],
+    },
+    {
+      heading: "Sarah Dies and Abraham Buys a Burial Place",
+      verseBlock: { reference: "Genesis 23:1-20", chapter: 23, startVerse: 1, endVerse: 20 },
+      teaching: [
+        "Sarah dies in the land of Canaan.",
+        "Abraham mourns and then buys the field and cave of Machpelah.",
+        "This burial place becomes the first owned piece of the promised land in Abraham's family story.",
+        "Even in grief, the promise is still moving forward.",
+      ],
+    },
+    {
+      heading: "Isaac Receives Rebekah",
+      verseBlock: { reference: "Genesis 24:1-67", chapter: 24, startVerse: 1, endVerse: 67 },
+      teaching: [
+        "Abraham sends his servant to find a wife for Isaac from his own people.",
+        "The servant prays, Rebekah appears, and the Lord guides the whole journey.",
+        "Rebekah's willingness matters because she steps into the covenant family by faith.",
+        "Genesis shows God's guidance carrying the promise into the next generation.",
+      ],
+    },
+    {
+      heading: "Abraham's Final Years",
+      verseBlock: { reference: "Genesis 25:1-18", chapter: 25, startVerse: 1, endVerse: 18 },
+      teaching: [
+        "Abraham has more descendants, gives gifts, and sends other sons away from Isaac.",
+        "Then Abraham dies full of years.",
+        "Isaac and Ishmael bury him together.",
+        "The focus remains clear: the covenant promise continues through Isaac.",
+      ],
+    },
+    {
+      heading: "Jacob and Esau Are Born",
+      verseBlock: { reference: "Genesis 25:19-34", chapter: 25, startVerse: 19, endVerse: 34 },
+      teaching: [
+        "Genesis now turns toward Isaac's family.",
+        "Rebekah conceives twins, and the struggle begins before birth.",
+        "Jacob and Esau grow into very different men, and Esau despises his birthright.",
+        "The next generation begins with conflict, but God's purpose is still moving forward.",
+      ],
+    },
+  ],
+  closing: [
+    "Day 9 shows Abraham as both faithful and flawed.",
+    "He repeats fear, receives Isaac, sends Hagar away, obeys on Moriah, mourns Sarah, and prepares Isaac's future.",
+    "The big movement is legacy.",
+    "God keeps His promise through Abraham's weakness, Sarah's laughter, Isaac's birth, Rebekah's arrival, and the next generation.",
+    "The story is not held together by perfect people. It is held together by the faithful God who keeps covenant.",
+  ],
+};
