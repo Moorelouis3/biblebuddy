@@ -55,6 +55,7 @@ import type { BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import type { BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { getBibleYearDayContent } from "../lib/bibleYearDaysContent";
 import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy";
+import { BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME } from "../lib/bibleYearDayOneDeepStudy";
 import { cacheBibleYearOfflineTextPack } from "../lib/bibleYearOfflinePack";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
@@ -7689,6 +7690,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                     activeReference={bibleYearOpenVerseBreakdownKey}
                     onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
                     onSectionOpen={trackSummaryStudyNotesSection}
+                    intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
+                    closing={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
                     topId={`bible-year-day-${day.dayNumber}-summary-deep-study-top`}
                   />
                 ) : (
@@ -7739,6 +7742,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                   activeReference={bibleYearOpenVerseBreakdownKey}
                   onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
                   onSectionOpen={trackSummaryStudyNotesSection}
+                  intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
+                  closing={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
                   topId={`bible-year-day-${day.dayNumber}-summary-deep-study-top`}
                 />
               ) : (
@@ -10000,6 +10005,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                     activeReference={bibleYearOpenVerseBreakdownKey}
                     onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
                     onSectionOpen={trackBibleYearStudyNotesSection}
+                    intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
+                    closing={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
                     topId={`bible-year-day-${day.dayNumber}-deep-study-top`}
                   />
                 ) : (
@@ -10082,6 +10089,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                     activeReference={bibleYearOpenVerseBreakdownKey}
                     onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
                     onSectionOpen={trackBibleYearStudyNotesSection}
+                    intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
+                    closing={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
                     topId={`bible-year-day-${day.dayNumber}-deep-study-top`}
                   />
                 ) : (
@@ -10262,6 +10271,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                         activeReference={bibleYearOpenVerseBreakdownKey}
                         onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
                         onSectionOpen={trackBibleYearStudyNotesSection}
+                        intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
+                        closing={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
                         topId={`bible-year-day-${day.dayNumber}-deep-study-inline-top`}
                       />
                     ) : (
@@ -10298,6 +10309,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                   activeReference={bibleYearOpenVerseBreakdownKey}
                   onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
                   onSectionOpen={trackBibleYearStudyNotesSection}
+                  intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
+                  closing={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
                   topId={`bible-year-day-${day.dayNumber}-deep-study-top`}
                 />
               ) : (

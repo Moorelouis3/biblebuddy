@@ -10,6 +10,18 @@ type BibleYearDeepStudySectionCardsProps = {
   activeReference: string | null;
   onActiveReferenceChange: (reference: string | null) => void;
   onSectionOpen?: (section: BibleYearDeepStudySection) => void;
+  intro?: {
+    eyebrow?: string;
+    title: string;
+    paragraphs: string[];
+    callout?: string;
+  };
+  closing?: {
+    title: string;
+    paragraphs: string[];
+    prayerTitle?: string;
+    prayer?: string;
+  };
   topId?: string;
   className?: string;
 };
@@ -106,6 +118,8 @@ export default function BibleYearDeepStudySectionCards({
   activeReference,
   onActiveReferenceChange,
   onSectionOpen,
+  intro,
+  closing,
   topId,
   className = "",
 }: BibleYearDeepStudySectionCardsProps) {
@@ -126,6 +140,27 @@ export default function BibleYearDeepStudySectionCards({
   return (
     <div className={className}>
       <span id={topId} className="block h-0" aria-hidden="true" />
+
+      {intro ? (
+        <section className="mb-4 rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_7%,var(--bb-card,#ffffff))] px-4 py-4 text-[var(--bb-text-primary,#111827)]">
+          {intro.eyebrow ? (
+            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">{intro.eyebrow}</p>
+          ) : null}
+          <h3 className="mt-2 text-xl font-black leading-tight">{intro.title}</h3>
+          <div className="mt-3 space-y-3">
+            {intro.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          {intro.callout ? (
+            <p className="mt-4 border-l-4 border-[var(--bb-accent,#f6b44b)] pl-3 text-sm font-black leading-6 text-[var(--bb-text-primary,#111827)]">
+              {intro.callout}
+            </p>
+          ) : null}
+        </section>
+      ) : null}
 
       <div className="grid gap-2">
         {sections.map((section, index) => {
@@ -178,6 +213,28 @@ export default function BibleYearDeepStudySectionCards({
           );
         })}
       </div>
+
+      {closing ? (
+        <section className="mt-4 rounded-[22px] border border-[color-mix(in_srgb,var(--bb-success,#16a34a)_20%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-success,#16a34a)_7%,var(--bb-card,#ffffff))] px-4 py-4 text-[var(--bb-text-primary,#111827)]">
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-success,#16a34a)]">Closing</p>
+          <h3 className="mt-2 text-xl font-black leading-tight">{closing.title}</h3>
+          <div className="mt-3 space-y-3">
+            {closing.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          {closing.prayer ? (
+            <div className="mt-4 rounded-2xl border border-[color-mix(in_srgb,var(--bb-success,#16a34a)_18%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-3">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-success,#16a34a)]">
+                {closing.prayerTitle || "Prayer"}
+              </p>
+              <p className="mt-2 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">{closing.prayer}</p>
+            </div>
+          ) : null}
+        </section>
+      ) : null}
       <style jsx>{`
         @keyframes bible-year-first-deep-note-nudge {
           0%,
