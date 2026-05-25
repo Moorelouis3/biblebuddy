@@ -756,18 +756,14 @@ function getVisitorNumber(value: string) {
 }
 
 function getJourneyLabelFromEvents(rows: LandingEventRow[]) {
-  for (const row of [...rows].reverse()) {
-    const metadata = row.metadata && typeof row.metadata === "object" ? row.metadata : {};
-    const route = typeof metadata.studyRoute === "string" ? metadata.studyRoute : "";
-    if (route === "bible_year") return "Bible in One Year";
-    if (route === "devotional") return "Daily Devotional";
-    const selectedDevotionalTitle = typeof metadata.selectedDevotionalTitle === "string" ? metadata.selectedDevotionalTitle : "";
-    if (selectedDevotionalTitle) return selectedDevotionalTitle;
-    const recommendation = metadata.recommendation && typeof metadata.recommendation === "object" ? metadata.recommendation as Record<string, unknown> : null;
-    const journey = typeof recommendation?.journey === "string" ? recommendation.journey : "";
-    if (journey) return journey;
-  }
-  return "Not selected";
+  return "Bible in One Year";
+}
+
+function normalizeJourneySource(value: unknown) {
+  const source = typeof value === "string" ? value.trim() : "";
+  if (!source) return "Unknown";
+  if (/^(direct|direct \/ unknown|unknown|direct unknown)$/i.test(source)) return "Unknown";
+  return source;
 }
 
 function getStatusLabel(status: VisitorJourneyStatus) {
@@ -778,7 +774,7 @@ function getStatusLabel(status: VisitorJourneyStatus) {
     day_3_completed: "Day 3 completed",
     created_account: "Created account",
     upgraded: "Upgraded",
-    dropped_off: "Dropped off",
+    dropped_off: "Drop off",
   };
   return labels[status];
 }
@@ -864,7 +860,9 @@ function buildVisitorJourneys(
     else if (dayOneStartedAt) status = "day_1_in_progress";
     else if (onboardingCompletedAt) status = "active";
     else if (eventNames.has("started_onboarding") || eventNames.has("viewed_onboarding_intro")) status = "onboarding_only";
-    if (!upgradeAt && !createdAccountAt && !dayThreeCompletedAt && inactiveMs > 30 * 60 * 1000) {
+    if (!onboardingCompletedAt) {
+      status = "dropped_off";
+    } else if (!upgradeAt && !createdAccountAt && inactiveMs > 10 * 60 * 1000) {
       status = "dropped_off";
     }
 
@@ -885,7 +883,7 @@ function buildVisitorJourneys(
       upgradedAt: upgradeAt,
       currentStatus: status,
       currentStatusLabel: getStatusLabel(status),
-      source: typeof firstRow?.source === "string" && firstRow.source ? firstRow.source : "Direct / Unknown",
+      source: normalizeJourneySource(firstRow?.source),
       referrer: typeof firstRow?.referrer === "string" && firstRow.referrer ? firstRow.referrer : null,
       lastActiveAt,
       lastEventName: lastRow?.event_name || "",
@@ -917,7 +915,7 @@ function buildVisitorJourneys(
       proUpgradeRate: totalVisitors > 0 ? Number(((upgradedToPro / totalVisitors) * 100).toFixed(1)) : 0,
     },
     sources: Array.from(new Set(rowsOut.map((row) => row.source))).sort(),
-    journeys: Array.from(new Set(rowsOut.map((row) => row.journeySelected))).sort(),
+    journeys: ["Bible in One Year"],
     statuses: ([
       "active",
       "onboarding_only",

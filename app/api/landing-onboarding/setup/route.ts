@@ -106,10 +106,8 @@ export async function POST(request: NextRequest) {
   const email = typeof body?.email === "string" ? body.email.trim().toLowerCase() : userData.user.email || "";
   const answers = (body?.answers && typeof body.answers === "object" ? body.answers : {}) as Answers;
   const recommendationDays = Number.isFinite(Number(body?.recommendationDays)) ? Number(body.recommendationDays) : 365;
-  const requestedStudyRoute: StudyRoute = body?.studyRoute === "devotional" ? "devotional" : "bible_year";
-  const requestedDevotionalId = typeof body?.selectedDevotionalId === "string" && body.selectedDevotionalId.trim()
-    ? body.selectedDevotionalId.trim()
-    : null;
+  const requestedStudyRoute: StudyRoute = "bible_year";
+  const requestedDevotionalId = null;
 
   const admin = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
@@ -147,27 +145,6 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  const { data: creationStudy } = await admin
-    .from("devotionals")
-    .select("id, title")
-    .eq("title", "The Creation of the World")
-    .maybeSingle();
-  const creationStudyId = typeof creationStudy?.id === "string" ? creationStudy.id : null;
-  let selectedDevotionalId = creationStudyId;
-  let selectedDevotionalTitle = "The Creation of the World";
-
-  if (requestedStudyRoute === "devotional" && requestedDevotionalId) {
-    const { data: selectedDevotional } = await admin
-      .from("devotionals")
-      .select("id, title")
-      .eq("id", requestedDevotionalId)
-      .maybeSingle();
-    if (typeof selectedDevotional?.id === "string") {
-      selectedDevotionalId = selectedDevotional.id;
-      selectedDevotionalTitle = selectedDevotional.title || "Focused Devotional Study";
-    }
-  }
-
   const profilePayload = {
       user_id: userData.user.id,
       display_name: fullName,
@@ -182,14 +159,14 @@ export async function POST(request: NextRequest) {
       traffic_source: "landing_questionnaire",
       bible_experience_level: normalizeExperienceForProfile(answers.experience),
       onboarding_goal: normalizeGoalForProfile(answers.goal),
-      preferred_study_mode: requestedStudyRoute,
+      preferred_study_mode: "bible_year",
       onboarding_study_focus: answers.studyFocus ?? null,
       onboarding_time_commitment: answers.time ?? null,
       onboarding_difficulty: answers.difficulty ?? null,
-      bible_year_started_at: requestedStudyRoute === "bible_year" ? todayKey : null,
-      bible_year_launch_seen_at: requestedStudyRoute === "bible_year" ? nowIso : null,
-      free_devotional_id: selectedDevotionalId,
-      louis_primary_devotional_id: selectedDevotionalId,
+      bible_year_started_at: todayKey,
+      bible_year_launch_seen_at: nowIso,
+      free_devotional_id: null,
+      louis_primary_devotional_id: null,
       louis_primary_devotional_day: 1,
       updated_at: nowIso,
     };
@@ -227,41 +204,25 @@ export async function POST(request: NextRequest) {
       study_focus: answers.studyFocus ?? null,
       time_commitment: answers.time ?? null,
       difficulty: answers.difficulty ?? null,
-      recommended_journey: requestedStudyRoute === "devotional" ? selectedDevotionalTitle : "Bible in One Year",
-      recommended_days: requestedStudyRoute === "devotional" ? null : recommendationDays,
+      recommended_journey: "Bible in One Year",
+      recommended_days: recommendationDays,
       updated_at: nowIso,
     },
     { onConflict: "user_id" },
   );
   if (responseError) console.warn("[LANDING_SETUP] onboarding response save skipped:", responseError.message);
 
-  if (requestedStudyRoute === "bible_year") {
-    const { error: bibleYearProgressError } = await admin.from("bible_year_day_progress").upsert(
-      {
-        user_id: userData.user.id,
-        day_number: 1,
-        reading_completed: false,
-        trivia_completed: false,
-        reflection_completed: false,
-      },
-      { onConflict: "user_id,day_number" },
-    );
-    if (bibleYearProgressError) console.warn("[LANDING_SETUP] Bible Year progress seed skipped:", bibleYearProgressError.message);
-  }
-
-  if (selectedDevotionalId) {
-    const { error: devotionalProgressError } = await admin.from("devotional_progress").upsert(
-      {
-        user_id: userData.user.id,
-        devotional_id: selectedDevotionalId,
-        day_number: 1,
-        is_completed: false,
-        reading_completed: false,
-      },
-      { onConflict: "user_id,devotional_id,day_number" },
-    );
-    if (devotionalProgressError) console.warn("[LANDING_SETUP] devotional progress seed skipped:", devotionalProgressError.message);
-  }
+  const { error: bibleYearProgressError } = await admin.from("bible_year_day_progress").upsert(
+    {
+      user_id: userData.user.id,
+      day_number: 1,
+      reading_completed: false,
+      trivia_completed: false,
+      reflection_completed: false,
+    },
+    { onConflict: "user_id,day_number" },
+  );
+  if (bibleYearProgressError) console.warn("[LANDING_SETUP] Bible Year progress seed skipped:", bibleYearProgressError.message);
 
   return NextResponse.json({ ok: true, displayName: fullName });
 }

@@ -114,12 +114,12 @@ function formatLastActive(value: string) {
   return `${days} day${days === 1 ? "" : "s"} ago`;
 }
 
-function StepCell({ value, successLabel }: { value: string | null; successLabel?: string }) {
+function StepCell({ value, successLabel, emptyLabel = "Not started" }: { value: string | null; successLabel?: string; emptyLabel?: string }) {
   if (!value) {
     return (
       <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500">
         <span className="grid h-4 w-4 place-items-center rounded-full border border-slate-300 text-[10px]">-</span>
-        Not started
+        {emptyLabel}
       </span>
     );
   }
@@ -132,6 +132,28 @@ function StepCell({ value, successLabel }: { value: string | null; successLabel?
         </svg>
       </span>
       {successLabel || formatDateTime(value)}
+    </span>
+  );
+}
+
+function OnboardingCell({ value }: { value: string | null }) {
+  if (!value) {
+    return (
+      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-700">
+        <span className="grid h-4 w-4 place-items-center rounded-full bg-rose-100 text-[10px] ring-1 ring-rose-200">x</span>
+        Not finished
+      </span>
+    );
+  }
+
+  return (
+    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-800">
+      <span className="grid h-4 w-4 place-items-center rounded-full bg-emerald-500 text-[10px] text-white">
+        <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m3.5 8.2 2.7 2.6 6.3-6.6" />
+        </svg>
+      </span>
+      {formatDateTime(value)}
     </span>
   );
 }
@@ -205,7 +227,6 @@ export default function AnalyticsPage() {
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [sourceFilter, setSourceFilter] = useState("all");
-  const [journeyFilter, setJourneyFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState<VisitorJourneyStatus | "all">("all");
   const [accountFilter, setAccountFilter] = useState<AccountFilter>("all");
 
@@ -263,7 +284,6 @@ export default function AnalyticsPage() {
     const cleanSearch = search.trim().toLowerCase();
     return rows.filter((row) => {
       if (sourceFilter !== "all" && row.source !== sourceFilter) return false;
-      if (journeyFilter !== "all" && row.journeySelected !== journeyFilter) return false;
       if (statusFilter !== "all" && row.currentStatus !== statusFilter) return false;
       if (accountFilter !== "all" && row.accountType !== accountFilter) return false;
       if (!cleanSearch) return true;
@@ -271,17 +291,15 @@ export default function AnalyticsPage() {
         row.visitorLabel,
         row.userLabel,
         row.source,
-        row.journeySelected,
         row.currentStatusLabel,
         row.referrer || "",
       ].some((value) => value.toLowerCase().includes(cleanSearch));
     });
-  }, [accountFilter, journeyFilter, rows, search, sourceFilter, statusFilter]);
+  }, [accountFilter, rows, search, sourceFilter, statusFilter]);
 
   function exportCsv() {
     const headers = [
       "Visitor",
-      "Journey Selected",
       "Onboarding Completed",
       "Started Day 1",
       "Completed Day 3",
@@ -294,7 +312,6 @@ export default function AnalyticsPage() {
     ];
     const csvRows = filteredRows.map((row) => [
       row.visitorLabel,
-      row.journeySelected,
       row.onboardingCompletedAt || "",
       row.startedDay1At || "",
       row.completedDay3At || "",
@@ -425,7 +442,7 @@ export default function AnalyticsPage() {
 
           <section className="mt-8 rounded-xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
             <div className="border-b border-slate-200 p-4">
-              <div className="grid gap-3 xl:grid-cols-[1.4fr_0.8fr_0.8fr_0.8fr_0.7fr_auto]">
+              <div className="grid gap-3 xl:grid-cols-[1.4fr_0.8fr_0.8fr_0.7fr_auto]">
                 <label className="relative">
                   <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><Icon name="search" /></span>
                   <input
@@ -439,11 +456,6 @@ export default function AnalyticsPage() {
                 <select value={sourceFilter} onChange={(event) => setSourceFilter(event.target.value)} className="h-11 rounded-lg border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-800 outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100">
                   <option value="all">All Sources</option>
                   {(journeys?.sources || []).map((source) => <option key={source} value={source}>{source}</option>)}
-                </select>
-
-                <select value={journeyFilter} onChange={(event) => setJourneyFilter(event.target.value)} className="h-11 rounded-lg border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-800 outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100">
-                  <option value="all">All Journeys</option>
-                  {(journeys?.journeys || []).map((journey) => <option key={journey} value={journey}>{journey}</option>)}
                 </select>
 
                 <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as VisitorJourneyStatus | "all")} className="h-11 rounded-lg border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-800 outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100">
@@ -463,7 +475,6 @@ export default function AnalyticsPage() {
                   onClick={() => {
                     setSearch("");
                     setSourceFilter("all");
-                    setJourneyFilter("all");
                     setStatusFilter("all");
                     setAccountFilter("all");
                   }}
@@ -476,12 +487,11 @@ export default function AnalyticsPage() {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="min-w-[1180px] w-full border-collapse text-left">
+              <table className="min-w-[1080px] w-full border-collapse text-left">
                 <thead className="bg-slate-50 text-xs font-bold text-slate-700">
                   <tr>
                     <th className="w-10 px-4 py-4"><span className="block h-4 w-4 rounded border border-slate-300" /></th>
                     <th className="px-4 py-4">Visitor #</th>
-                    <th className="px-4 py-4">Journey Selected</th>
                     <th className="px-4 py-4">Onboarding Completed</th>
                     <th className="px-4 py-4">Started Day 1</th>
                     <th className="px-4 py-4">Completed Day 3</th>
@@ -495,7 +505,7 @@ export default function AnalyticsPage() {
                 <tbody className="divide-y divide-slate-100 text-sm">
                   {loading ? (
                     <tr>
-                      <td colSpan={11} className="px-4 py-12 text-center text-sm font-semibold text-slate-500">Loading visitor journeys...</td>
+                      <td colSpan={10} className="px-4 py-12 text-center text-sm font-semibold text-slate-500">Loading visitor journeys...</td>
                     </tr>
                   ) : filteredRows.length ? (
                     filteredRows.map((row) => (
@@ -505,12 +515,11 @@ export default function AnalyticsPage() {
                           <div className="font-bold text-slate-900">{row.visitorLabel}</div>
                           <div className="mt-0.5 text-xs font-medium text-slate-500">{row.userLabel}</div>
                         </td>
-                        <td className="px-4 py-4 align-middle font-semibold text-slate-800">{row.journeySelected}</td>
-                        <td className="px-4 py-4 align-middle"><StepCell value={row.onboardingCompletedAt} /></td>
+                        <td className="px-4 py-4 align-middle"><OnboardingCell value={row.onboardingCompletedAt} /></td>
                         <td className="px-4 py-4 align-middle"><StepCell value={row.startedDay1At} /></td>
                         <td className="px-4 py-4 align-middle"><StepCell value={row.completedDay3At} /></td>
-                        <td className="px-4 py-4 align-middle"><StepCell value={row.createdAccountAt} successLabel={formatDateTime(row.createdAccountAt)} /></td>
-                        <td className="px-4 py-4 align-middle"><StepCell value={row.upgradedAt} successLabel={row.upgradedAt ? "Upgraded" : undefined} /></td>
+                        <td className="px-4 py-4 align-middle"><StepCell value={row.createdAccountAt} emptyLabel="Not yet" successLabel={formatDateTime(row.createdAccountAt)} /></td>
+                        <td className="px-4 py-4 align-middle"><StepCell value={row.upgradedAt} emptyLabel="Not yet" successLabel={row.upgradedAt ? "Upgraded" : undefined} /></td>
                         <td className="px-4 py-4 align-middle">
                           <span className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ring-1 ${STATUS_STYLES[row.currentStatus]}`}>
                             {row.currentStatusLabel}
@@ -528,7 +537,7 @@ export default function AnalyticsPage() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={11} className="px-4 py-12 text-center text-sm font-semibold text-slate-500">No journeys match these filters.</td>
+                      <td colSpan={10} className="px-4 py-12 text-center text-sm font-semibold text-slate-500">No journeys match these filters.</td>
                     </tr>
                   )}
                 </tbody>

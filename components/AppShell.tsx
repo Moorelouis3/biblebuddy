@@ -955,11 +955,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
     const displayName = headerProfileName && headerProfileName !== "You" ? headerProfileName : email?.split("@")[0] || "Bible Buddy";
     const estimatedDays = Number(pending.recommendation?.estimatedDays || 365);
-    const pendingStudyRoute = pending.recommendation?.studyRoute === "devotional" ? "devotional" : "bible_year";
-    const pendingDevotionalId =
-      typeof pending.recommendation?.selectedDevotionalId === "string" && pending.recommendation.selectedDevotionalId
-        ? pending.recommendation.selectedDevotionalId
-        : null;
+    const pendingStudyRoute = "bible_year";
+    const pendingDevotionalId = null;
 
     try {
       await supabase.from("profile_stats").upsert(
@@ -1007,8 +1004,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           study_focus: pending.answers.studyFocus,
           time_commitment: pending.answers.time,
           difficulty: pending.answers.difficulty,
-          recommended_journey: pendingStudyRoute === "devotional" ? pending.recommendation?.selectedDevotionalTitle || "Focused Devotional Study" : "Bible in One Year",
-          recommended_days: pendingStudyRoute === "devotional" ? null : estimatedDays,
+          recommended_journey: "Bible in One Year",
+          recommended_days: estimatedDays,
           updated_at: new Date().toISOString(),
         },
         { onConflict: "user_id" },

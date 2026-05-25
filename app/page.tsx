@@ -138,17 +138,11 @@ function estimatedDaysForTime(time: string) {
 }
 
 function getRecommendedStudyRoute(answers: Answers): StudyRoute {
-  const isSeasoned = answers.experience === "1-3 years" || answers.experience === "More than 3 years";
-  const wantsDepth = answers.goal === "Understand the Bible better" || answers.difficulty === "I don't understand what I read";
-  const wantsFocusedStudy =
-    answers.studyFocus === "A specific book of the Bible" ||
-    answers.studyFocus === "People in the Bible" ||
-    answers.studyFocus === "Wisdom for real life";
-  return isSeasoned && (wantsDepth || wantsFocusedStudy) && answers.studyFocus !== "The whole Bible story" ? "devotional" : "bible_year";
+  return "bible_year";
 }
 
 function getStudyRouteLabel(route: StudyRoute) {
-  return route === "devotional" ? "Focused Devotional Study" : "Bible in One Year";
+  return "Bible in One Year";
 }
 
 function normalizeGoalForProfile(goal: string) {
@@ -679,20 +673,20 @@ export default function LandingPage() {
   }
 
   function openAccountFromRecommendation(routeOverride?: StudyRoute) {
-    const route = routeOverride || selectedStudyRoute || recommendedStudyRoute;
+    const route: StudyRoute = "bible_year";
     trackLandingEvent("clicked_yes_start_my_journey", {
       recommendationDays,
       selectedTime: answers.time,
       studyRoute: route,
-      selectedDevotionalId: route === "devotional" ? selectedDevotionalId : null,
+      selectedDevotionalId: null,
     });
     trackLandingEvent("opened_create_account_modal");
     setOnboardingStep("account");
   }
 
   async function startGuestJourney(routeOverride?: StudyRoute) {
-    const route = routeOverride || selectedStudyRoute || recommendedStudyRoute;
-    const devotionalIdForSetup = route === "devotional" ? selectedDevotionalId || devotionalOptions[0]?.id || null : null;
+    const route: StudyRoute = "bible_year";
+    const devotionalIdForSetup = null;
     const guestName = "Bible Buddy Guest";
     setSelectedStudyRoute(route);
     setSubmitting(true);
@@ -777,11 +771,7 @@ export default function LandingPage() {
   }
 
   function chooseDevotionalRoute() {
-    setSelectedStudyRoute("devotional");
-    if (!selectedDevotionalId && devotionalOptions[0]?.id) {
-      setSelectedDevotionalId(devotionalOptions[0].id);
-    }
-    setOnboardingStep("devotionalPicker");
+    chooseBibleYearRoute();
   }
 
   function chooseBibleYearRoute() {
@@ -790,8 +780,7 @@ export default function LandingPage() {
   }
 
   function confirmDevotionalChoice() {
-    setSelectedStudyRoute("devotional");
-    void startGuestJourney("devotional");
+    void startGuestJourney("bible_year");
   }
 
   function handleProfileImage(file: File | null) {
@@ -812,8 +801,8 @@ export default function LandingPage() {
 
     const normalizedEmail = email.trim().toLowerCase();
     const cleanName = firstName.trim();
-    const studyRoute = selectedStudyRoute || recommendedStudyRoute;
-    const devotionalIdForSetup = studyRoute === "devotional" ? selectedDevotionalId || devotionalOptions[0]?.id || null : null;
+    const studyRoute: StudyRoute = "bible_year";
+    const devotionalIdForSetup = null;
     if (!cleanName) {
       setSubmitting(false);
       return;
@@ -844,7 +833,7 @@ export default function LandingPage() {
       options: {
         emailRedirectTo:
           typeof window !== "undefined"
-            ? `${window.location.origin}/dashboard${studyRoute === "devotional" ? "?view=devotional" : "?view=bible-year&day=1"}`
+            ? `${window.location.origin}/dashboard?view=bible-year&day=1`
             : undefined,
         data: {
           firstName: cleanName,
@@ -960,8 +949,8 @@ export default function LandingPage() {
   }
 
   async function handleOAuthSignIn() {
-    const studyRoute = selectedStudyRoute || recommendedStudyRoute;
-    const devotionalIdForSetup = studyRoute === "devotional" ? selectedDevotionalId || devotionalOptions[0]?.id || null : null;
+    const studyRoute: StudyRoute = "bible_year";
+    const devotionalIdForSetup = null;
     window.localStorage.setItem(
       "bb:landing-questionnaire",
       JSON.stringify({
@@ -986,7 +975,7 @@ export default function LandingPage() {
     setError(null);
     const redirectTo =
       typeof window !== "undefined"
-        ? `${window.location.origin}/dashboard${studyRoute === "devotional" ? "?view=devotional" : "?view=bible-year&day=1"}`
+        ? `${window.location.origin}/dashboard?view=bible-year&day=1`
         : undefined;
     const { error: oauthError } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -999,7 +988,7 @@ export default function LandingPage() {
   }
 
   function enterDashboard(studyRoute: StudyRoute = selectedStudyRoute || recommendedStudyRoute) {
-    window.location.href = studyRoute === "devotional" ? "/dashboard?view=devotional" : "/dashboard?view=bible-year&day=1";
+    window.location.href = "/dashboard?view=bible-year&day=1";
   }
 
   if (isChecking) return <AppLoadingScreen />;
@@ -2430,52 +2419,26 @@ function OnboardingFlow(props: {
 
               <p className="text-center text-xs font-black uppercase tracking-[0.16em] text-[#d89b43]">Recommended path</p>
               <h2 className="bb-serif mx-auto mt-3 max-w-sm text-center text-3xl font-black leading-tight text-[#0E1A3A]">
-                {props.recommendedStudyRoute === "devotional" ? "A focused devotional study fits you best." : "Your Bible in One Year journey is ready."}
+                Your Bible in One Year journey is ready.
               </h2>
               <div className="mt-6 rounded-[24px] border p-5 text-center" style={{ backgroundColor: "#fffaf1", borderColor: "#eadcc2" }}>
-                {props.recommendedStudyRoute === "devotional" ? (
-                  <>
-                    <p className="text-xl font-black leading-8 text-[#0E1A3A]">
-                      You already have Bible study experience.
-                    </p>
-                    <p className="mt-3 text-sm font-semibold leading-6 text-[#536173]">
-                      A focused devotional lets you slow down with one story, person, or book at a time, like Proverbs, David, Joseph, the disciples, or women in the Bible.
-                    </p>
-                    <p className="mt-4 text-2xl font-black leading-8 text-[#d89b43]">
-                      Go deeper without rushing the whole story.
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-xl font-black leading-8 text-[#0E1A3A]">
-                      If you spend {props.answers.time || "30 minutes"} a day
-                      <br />
-                      with Bible Buddy,
-                    </p>
-                    <p className="mt-4 text-2xl font-black leading-8 text-[#d89b43]">
-                      you could read the whole Bible
-                      <br />
-                      in about {props.recommendationDays} days.
-                    </p>
-                  </>
-                )}
+                <p className="text-xl font-black leading-8 text-[#0E1A3A]">
+                  If you spend {props.answers.time || "30 minutes"} a day
+                  <br />
+                  with Bible Buddy,
+                </p>
+                <p className="mt-4 text-2xl font-black leading-8 text-[#d89b43]">
+                  you could read the whole Bible
+                  <br />
+                  in about {props.recommendationDays} days.
+                </p>
               </div>
 
               <p className="mt-6 text-center text-base font-black text-[#0E1A3A]">
-                {props.recommendedStudyRoute === "devotional" ? "Choose how you want to begin." : "Ready to start your journey?"}
+                Ready to start your journey?
               </p>
               <div className="mt-4 grid gap-3">
-                {props.recommendedStudyRoute === "devotional" ? (
-                  <>
-                    <button type="button" onClick={props.chooseDevotionalRoute} className="rounded-2xl px-4 py-4 text-sm font-black" style={{ backgroundColor: "#0E1A3A", color: "#ffffff" }}>Pick your devotional</button>
-                    <button type="button" onClick={props.chooseBibleYearRoute} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#ffffff", borderColor: "#d8d5cf", color: "#111827" }}>Choose Bible in One Year instead</button>
-                  </>
-                ) : (
-                  <>
-                    <button type="button" onClick={() => void props.startGuestJourney("bible_year")} disabled={props.submitting} className="bb-green-start-button rounded-2xl px-4 py-4 text-sm font-black transition hover:-translate-y-0.5 disabled:opacity-60">{props.submitting ? "Starting..." : "Yes, start my journey"}</button>
-                    <button type="button" onClick={props.chooseDevotionalRoute} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#ffffff", borderColor: "#d8d5cf", color: "#111827" }}>Browse focused devotionals instead</button>
-                  </>
-                )}
+                <button type="button" onClick={() => void props.startGuestJourney("bible_year")} disabled={props.submitting} className="bb-green-start-button rounded-2xl px-4 py-4 text-sm font-black transition hover:-translate-y-0.5 disabled:opacity-60">{props.submitting ? "Starting..." : "Yes, start my journey"}</button>
                 <button type="button" onClick={() => props.onClose("recommendation_not_right_now")} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#f3f4f6", borderColor: "#d8d5cf", color: "#111827" }}>Not right now</button>
               </div>
             </div>
