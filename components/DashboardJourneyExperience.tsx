@@ -22,7 +22,7 @@ import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
 import { awardDiamonds } from "../lib/diamondWallet";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
-import { rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
+import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, markChapterDone } from "../lib/readingProgress";
 import {
   canFreeUserUnlockChapter,
@@ -1775,6 +1775,7 @@ export default function DashboardJourneyExperience({
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
   const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<BibleYearDayCardKey | null>(null);
   const [bibleYearCompletedTasksExpandedDay, setBibleYearCompletedTasksExpandedDay] = useState<number | null>(null);
+  const [bibleYearCompletionModalDay, setBibleYearCompletionModalDay] = useState<GenesisBibleYearDay | null>(null);
   const [bibleYearSeriesFilter, setBibleYearSeriesFilter] = useState<BibleYearSeriesFilter>("all");
   const [bibleYearCompletedCardsByDay, setBibleYearCompletedCardsByDay] = useState<BibleYearCompletedCardsByDay>({});
   const [bibleYearProgressLoaded, setBibleYearProgressLoaded] = useState(true);
@@ -1817,10 +1818,13 @@ export default function DashboardJourneyExperience({
   const [dashboardGreeting, setDashboardGreeting] = useState("Good evening");
   const [isAnonymousGuest, setIsAnonymousGuest] = useState(false);
   const [protectJourneyPromptOpen, setProtectJourneyPromptOpen] = useState(false);
+  const [guestInfoModalOpen, setGuestInfoModalOpen] = useState(false);
   const [guestAccountFormOpen, setGuestAccountFormOpen] = useState(false);
   const [guestAccountName, setGuestAccountName] = useState("");
   const [guestAccountEmail, setGuestAccountEmail] = useState("");
   const [guestAccountPassword, setGuestAccountPassword] = useState("");
+  const [guestAccountProfileImageFile, setGuestAccountProfileImageFile] = useState<File | null>(null);
+  const [guestAccountProfileImagePreview, setGuestAccountProfileImagePreview] = useState<string | null>(null);
   const [guestAccountLoading, setGuestAccountLoading] = useState(false);
   const [guestAccountMessage, setGuestAccountMessage] = useState<string | null>(null);
 
@@ -1888,6 +1892,21 @@ export default function DashboardJourneyExperience({
 
     window.addEventListener("bb:dashboard-open-bible-year-progress", handleOpenBibleYearProgress);
     return () => window.removeEventListener("bb:dashboard-open-bible-year-progress", handleOpenBibleYearProgress);
+  }, []);
+
+  useEffect(() => {
+    function handleOpenGuestAccountForm() {
+      window.localStorage.removeItem("bb:open-guest-account-form");
+      setGuestInfoModalOpen(false);
+      setProtectJourneyPromptOpen(false);
+      setGuestAccountFormOpen(true);
+    }
+
+    if (window.localStorage.getItem("bb:open-guest-account-form") === "1") {
+      handleOpenGuestAccountForm();
+    }
+    window.addEventListener("bb:open-guest-account-form", handleOpenGuestAccountForm);
+    return () => window.removeEventListener("bb:open-guest-account-form", handleOpenGuestAccountForm);
   }, []);
 
   useEffect(() => {
@@ -2225,6 +2244,14 @@ export default function DashboardJourneyExperience({
           reportedCurrentDay ||
           builtBibleYearDays[builtBibleYearDays.length - 1] ||
           null;
+
+        if (
+          selectedBibleYearSeriesDay &&
+          bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber &&
+          isBibleYearDayComplete(selectedBibleYearSeriesDay)
+        ) {
+          return selectedBibleYearSeriesDay;
+        }
 
         if (
           selectedBibleYearSeriesDay &&
@@ -3370,6 +3397,7 @@ export default function DashboardJourneyExperience({
     setSelectedBibleYearSeriesDay(null);
     setActiveBibleYearDayCard(null);
     setBibleYearCompletedTasksExpandedDay(null);
+    setBibleYearCompletionModalDay(null);
     setBibleYearPlanMenuOpen(false);
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
@@ -3414,8 +3442,8 @@ export default function DashboardJourneyExperience({
     const cleanEmail = guestAccountEmail.trim().toLowerCase();
     const cleanPassword = guestAccountPassword.trim();
 
-    if (!cleanName || !cleanEmail || cleanPassword.length < 6) {
-      setGuestAccountMessage("Enter your name, email, and a password with at least 6 characters.");
+    if (!cleanName || !cleanEmail || cleanPassword.length < 6 || !guestAccountProfileImageFile) {
+      setGuestAccountMessage("Enter your name, email, password, and add a profile picture.");
       return;
     }
 
@@ -3423,6 +3451,18 @@ export default function DashboardJourneyExperience({
     setGuestAccountMessage(null);
 
     try {
+      let profileImageUrl: string | null = profile?.profile_image_url || null;
+      if (userId && guestAccountProfileImageFile) {
+        const ext = guestAccountProfileImageFile.name.split(".").pop() || "jpg";
+        const path = `${userId}/avatar.${ext}`;
+        const { error: uploadError } = await supabase.storage
+          .from("avatars")
+          .upload(path, guestAccountProfileImageFile, { upsert: true });
+        if (uploadError) throw uploadError;
+        const { data: urlData } = supabase.storage.from("avatars").getPublicUrl(path);
+        profileImageUrl = urlData.publicUrl;
+      }
+
       const { data, error } = await supabase.auth.updateUser({
         email: cleanEmail,
         password: cleanPassword,
@@ -3430,6 +3470,7 @@ export default function DashboardJourneyExperience({
           display_name: cleanName,
           first_name: cleanName.split(/\s+/)[0] || cleanName,
           full_name: cleanName,
+          avatar_url: profileImageUrl,
         },
       });
       if (error) throw error;
@@ -3443,6 +3484,7 @@ export default function DashboardJourneyExperience({
               user_id: userId,
               display_name: cleanName,
               username: cleanName,
+              profile_image_url: profileImageUrl,
               account_type: "registered",
               registered_at: nowIso,
               converted_from_guest_at: isAnonymousGuest ? nowIso : null,
@@ -3458,6 +3500,7 @@ export default function DashboardJourneyExperience({
                 user_id: userId,
                 display_name: cleanName,
                 username: cleanName,
+                profile_image_url: profileImageUrl,
                 updated_at: nowIso,
               },
               { onConflict: "user_id" },
@@ -3490,7 +3533,10 @@ export default function DashboardJourneyExperience({
 
       setIsAnonymousGuest(false);
       setProtectJourneyPromptOpen(false);
+      setGuestInfoModalOpen(false);
       setGuestAccountFormOpen(false);
+      setGuestAccountProfileImageFile(null);
+      setGuestAccountProfileImagePreview(null);
       setGuestAccountPassword("");
       setGuestAccountMessage(
         data.user?.email_confirmed_at
@@ -3608,6 +3654,7 @@ export default function DashboardJourneyExperience({
     }
     setBibleYearDashboardActive(true);
     bibleYearJustCompletedDayRef.current = null;
+    setBibleYearCompletionModalDay(null);
     setBibleYearSeriesActive(false);
     setBibleYearSeriesDetailDay(null);
     setBibleYearJourneyPreviewDay(null);
@@ -3855,7 +3902,8 @@ export default function DashboardJourneyExperience({
     if (selectedBibleYearSeriesDay?.dayNumber === activeBibleYearDashboardDay.dayNumber) return;
     if (
       selectedBibleYearSeriesDay &&
-      bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber
+      bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber &&
+      isBibleYearDayComplete(selectedBibleYearSeriesDay)
     ) {
       return;
     }
@@ -4007,7 +4055,7 @@ export default function DashboardJourneyExperience({
   async function switchCurrentStudyChapter(dayNumber: number) {
     if (!userId || !currentDevotionalId || switchingStudyChapter) return;
     const currentDayNumber = currentDevotionalTask?.devotionalDayNumber ?? 1;
-    if (!isPaidUser && dayNumber > currentDayNumber) return;
+    if (!isOwnerDashboard && !isPaidUser && dayNumber > currentDayNumber) return;
     const targetChapter = currentStudyChapters.find((chapter) => chapter.day_number === dayNumber);
     if (!targetChapter) return;
 
@@ -5271,7 +5319,7 @@ export default function DashboardJourneyExperience({
                   const currentDayNumber = currentDevotionalTask?.devotionalDayNumber ?? 1;
                   const isCurrent = studyChapter.day_number === currentDayNumber;
                   const isPastOrCurrent = studyChapter.day_number <= currentDayNumber;
-                  const isLocked = !isPaidUser && !isPastOrCurrent;
+                  const isLocked = !isOwnerDashboard && !isPaidUser && !isPastOrCurrent;
 
                   return (
                     <button
@@ -7299,13 +7347,15 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 14)) {
     const reportedCurrentDayNumber = Number(bibleYearReport?.currentDay);
-    if (Number.isFinite(reportedCurrentDayNumber) && days.length > 0) {
-      const minDay = days[0]?.dayNumber ?? 1;
-      const maxDay = days[days.length - 1]?.dayNumber ?? reportedCurrentDayNumber;
-      return Math.max(minDay, Math.min(reportedCurrentDayNumber, maxDay));
-    }
     const nextDay = days.find((day) => !isBibleYearDayComplete(day)) || days[days.length - 1];
-    return nextDay?.dayNumber || 1;
+    if (!days.length) return 1;
+    const minDay = days[0]?.dayNumber ?? 1;
+    const maxDay = days[days.length - 1]?.dayNumber ?? reportedCurrentDayNumber;
+    const nextIncompleteDayNumber = nextDay?.dayNumber || minDay;
+    const boundedReportedDayNumber = Number.isFinite(reportedCurrentDayNumber)
+      ? Math.max(minDay, Math.min(reportedCurrentDayNumber, maxDay))
+      : minDay;
+    return Math.max(boundedReportedDayNumber, nextIncompleteDayNumber);
   }
 
   function freeUserCanOpenBibleYearDayTasks(day: GenesisBibleYearDay) {
@@ -7419,6 +7469,41 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
   }
 
+  async function incrementProfileTotalActions() {
+    if (!userId) return;
+
+    const nowIso = new Date().toISOString();
+    const today = getBibleBuddyLocalDayKey();
+
+    const { data: currentStats, error: fetchError } = await supabase
+      .from("profile_stats")
+      .select("total_actions")
+      .eq("user_id", userId)
+      .maybeSingle();
+
+    if (fetchError && fetchError.code !== "PGRST116") {
+      console.warn("[PROFILE_STATS] Could not fetch total action count:", fetchError);
+      return;
+    }
+
+    const nextTotalActions = Number(currentStats?.total_actions || 0) + 1;
+    const updates = {
+      user_id: userId,
+      total_actions: nextTotalActions,
+      last_active_at: nowIso,
+      last_active_date: today,
+      updated_at: nowIso,
+    };
+
+    const { error: writeError } = currentStats
+      ? await supabase.from("profile_stats").update(updates).eq("user_id", userId)
+      : await supabase.from("profile_stats").upsert(updates, { onConflict: "user_id" });
+
+    if (writeError) {
+      console.warn("[PROFILE_STATS] Could not update total action count:", writeError);
+    }
+  }
+
   function getBibleYearCardActionLabel(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
     const displayLabel = getBibleYearCardDisplayLabel(day, card);
     const cardLabel = displayLabel.charAt(0).toUpperCase() + displayLabel.slice(1);
@@ -7480,6 +7565,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         return;
       }
 
+      await incrementProfileTotalActions();
+
       const awardedDiamonds = await awardDiamonds(userId, BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD);
       if (awardedDiamonds > 0) {
         showBibleYearRewardToast(day.dayNumber, `+${awardedDiamonds} diamonds for joining the discussion`);
@@ -7530,6 +7617,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       });
       if (fallbackInsertError) throw fallbackInsertError;
     }
+    await incrementProfileTotalActions();
     if (showPoints) triggerPoints(BIBLE_YEAR_CARD_XP[card]);
   }
 
@@ -7558,6 +7646,12 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (dayWillBeFullyComplete) {
       bibleYearJustCompletedDayRef.current = day.dayNumber;
       setSelectedBibleYearSeriesDay(day);
+      if (newlyCompletedCards.length > 0) {
+        setBibleYearCompletionModalDay(day);
+      }
+      setBibleYearCompletedTasksExpandedDay(null);
+      setActiveBibleYearDayCard(null);
+      setBibleYearJourneyPreviewDay(null);
       if (typeof window !== "undefined") {
         const url = new URL(window.location.href);
         url.searchParams.set("view", "bible-year");
@@ -7673,7 +7767,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (continuingBibleYearDay === day.dayNumber) return;
     setContinuingBibleYearDay(day.dayNumber);
     try {
+      setBibleYearCompletionModalDay(null);
+      bibleYearJustCompletedDayRef.current = null;
       await markBibleYearDayCardsComplete(day, getBibleYearRequiredCardKeys(day));
+      bibleYearJustCompletedDayRef.current = null;
       onDevotionalChanged();
       openBibleYearDayOnDashboard(nextDay);
     } catch (error) {
@@ -7681,6 +7778,17 @@ Before we understand redemption, we need to understand what God made humanity fo
     } finally {
       setContinuingBibleYearDay(null);
     }
+  }
+
+  function handleBibleYearCompletionModalContinue(day: GenesisBibleYearDay) {
+    const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === day.dayNumber + 1);
+    if (nextDay) {
+      void handleContinueToNextBibleYearDay(day, nextDay);
+      return;
+    }
+
+    setBibleYearCompletionModalDay(null);
+    openBibleYearSeriesDashboard();
   }
 
   useEffect(() => {
@@ -8345,6 +8453,41 @@ Before we understand redemption, we need to understand what God made humanity fo
         )}
         {usesSimpleDailyFlow && bibleYearOptionalDiscussionDay === day.dayNumber ? renderBibleYearOptionalDiscussion(day) : null}
       </div>
+    );
+  }
+
+  function renderBibleYearCompletionModal() {
+    if (!bibleYearCompletionModalDay) return null;
+
+    const day = bibleYearCompletionModalDay;
+    const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === day.dayNumber + 1);
+    const continueLabel = nextDay ? `Continue to Day ${nextDay.dayNumber}` : "Finish Plan";
+
+    return (
+      <ModalShell isOpen={true} onClose={() => setBibleYearCompletionModalDay(null)} backdropColor="bg-black/70" closeOnBackdrop={false}>
+        <div className="mx-4 w-full max-w-xl overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 shadow-2xl">
+          <div className="rounded-[22px] bg-[var(--bb-accent-soft,#eaf5ff)] px-5 py-6 text-center">
+            <div className="mx-auto mb-4 flex justify-center">
+              <LouisAvatar mood="stareyes" size={104} />
+            </div>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Bible in One Year</p>
+            <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+              You finished Day {day.dayNumber}
+            </h2>
+            <p className="mx-auto mt-3 max-w-md text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+              Reading, trivia, and summary are complete. Press Continue when you are ready to move forward.
+            </p>
+            <button
+              type="button"
+              onClick={() => handleBibleYearCompletionModalContinue(day)}
+              disabled={continuingBibleYearDay === day.dayNumber}
+              className="mt-6 w-full rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-5 py-4 text-base font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
+            >
+              {continuingBibleYearDay === day.dayNumber ? "Saving..." : continueLabel}
+            </button>
+          </div>
+        </div>
+      </ModalShell>
     );
   }
 
@@ -11439,6 +11582,21 @@ Before we understand redemption, we need to understand what God made humanity fo
                 </h1>
               </div>
             ) : null}
+            {isAnonymousGuest && !homePanelOverride && !deepStudyFocusActive ? (
+              <button
+                type="button"
+                onClick={() => setGuestInfoModalOpen(true)}
+                className="mx-auto flex w-full max-w-xl items-center justify-between gap-3 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-accent-soft,#eaf5ff)] px-4 py-3 text-left shadow-sm transition hover:brightness-95"
+              >
+                <span className="min-w-0">
+                  <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Create a Bible Buddy account for full features</span>
+                  <span className="mt-0.5 block text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">Save progress across devices and unlock community features.</span>
+                </span>
+                <span className="shrink-0 rounded-full bg-[var(--bb-button,#2f7fe8)] px-3 py-1.5 text-xs font-black text-[var(--bb-button-text,#ffffff)]">
+                  Learn more
+                </span>
+              </button>
+            ) : null}
             {!homePanelOverride && !deepStudyFocusActive && !showOfficialHomeMission ? homeHeader : null}
             {homePanelOverride ? (
               <div className="dashboard-inline-task">{homePanelOverride}</div>
@@ -11486,7 +11644,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       const currentDayNumber = currentDevotionalTask?.devotionalDayNumber ?? 1;
                       const isCurrent = studyChapter.day_number === currentDayNumber;
                       const isUnlockedForFree = studyChapter.day_number <= currentDayNumber;
-                      const isLocked = !isPaidUser && !isUnlockedForFree;
+                      const isLocked = !isOwnerDashboard && !isPaidUser && !isUnlockedForFree;
                       const isPastOrCurrent = studyChapter.day_number <= currentDayNumber;
 
                       return (
@@ -11622,7 +11780,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                           ? "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] hover:border-[var(--bb-accent,#2f7fe8)]"
                                           : "border-[var(--bb-card-border,#dbe7f4)] opacity-80"
                                   }`}
-                                  aria-label={`${milestoneDayLabel} ${isComplete ? "complete" : isCurrent ? "in progress" : isUnlocked ? "unlocked" : "locked"}`}
+                                  aria-label={`${milestoneDayLabel} ${isComplete ? "complete" : isCurrent ? "current day" : "locked"}`}
                                 >
                                   <span className="relative block h-full w-full overflow-hidden rounded-[10px] bg-[var(--bb-surface-soft,#f4f8ff)]">
                                     <img
@@ -11657,7 +11815,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                       ? "text-[var(--bb-accent,#2f7fe8)]"
                                       : "text-[var(--bb-text-muted,#6b7280)]"
                                 }`}>
-                                  {isComplete ? "Complete" : isCurrent ? "In Progress" : isUnlocked ? "Unlocked" : "Locked"}
+                                  {isComplete ? "Complete" : isCurrent ? "Current Day" : "Locked"}
                                 </p>
                               </div>
                             );
@@ -12787,6 +12945,44 @@ Before we understand redemption, we need to understand what God made humanity fo
       </ModalShell>
 
       <ModalShell
+        isOpen={guestInfoModalOpen}
+        onClose={() => setGuestInfoModalOpen(false)}
+        backdropColor="bg-slate-950/55"
+        zIndex="z-[140]"
+      >
+        <div className="mx-4 w-full max-w-md rounded-[30px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-6 text-left shadow-[0_28px_80px_rgba(15,23,42,0.34)]">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Guest journey</p>
+              <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">You are using Bible Buddy as a guest.</h2>
+            </div>
+            <button type="button" onClick={() => setGuestInfoModalOpen(false)} className="grid h-9 w-9 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-lg font-black text-[var(--bb-text-secondary,#4b5563)]" aria-label="Close guest info">
+              x
+            </button>
+          </div>
+          <p className="mt-4 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            Your progress is saved on this device right now. Create a free account to become a Bible Buddy and keep your journey safe.
+          </p>
+          <div className="mt-4 grid gap-2 rounded-2xl bg-[var(--bb-surface-soft,#f4f8ff)] p-4 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+            <p>Save progress across different devices.</p>
+            <p>Comment on reflections and join discussions.</p>
+            <p>Add your name and profile picture so other Buddies can recognize you.</p>
+            <p>Recover your journey if you log out or switch browsers.</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setGuestInfoModalOpen(false);
+              setGuestAccountFormOpen(true);
+            }}
+            className="mt-5 w-full rounded-2xl bg-[var(--bb-accent,#2f7fe8)] px-5 py-4 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)]"
+          >
+            Create Account
+          </button>
+        </div>
+      </ModalShell>
+
+      <ModalShell
         isOpen={guestAccountFormOpen}
         onClose={() => setGuestAccountFormOpen(false)}
         backdropColor="bg-slate-950/55"
@@ -12806,6 +13002,29 @@ Before we understand redemption, we need to understand what God made humanity fo
             </button>
           </div>
           <div className="mt-5 grid gap-3">
+            <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] px-4 py-3">
+              <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-full bg-[var(--bb-card,#ffffff)] text-xs font-black text-[var(--bb-text-muted,#6b7280)]">
+                {guestAccountProfileImagePreview ? (
+                  <img src={guestAccountProfileImagePreview} alt="" className="h-full w-full object-cover" />
+                ) : (
+                  "Photo"
+                )}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Add profile picture</span>
+                <span className="mt-0.5 block text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">Required for comments and community features.</span>
+              </span>
+              <input
+                type="file"
+                accept="image/*"
+                className="sr-only"
+                onChange={(event) => {
+                  const file = event.target.files?.[0] || null;
+                  setGuestAccountProfileImageFile(file);
+                  setGuestAccountProfileImagePreview(file ? URL.createObjectURL(file) : null);
+                }}
+              />
+            </label>
             <input
               value={guestAccountName}
               onChange={(event) => setGuestAccountName(event.target.value)}
@@ -12983,6 +13202,8 @@ Before we understand redemption, we need to understand what God made humanity fo
           )}
         </div>
       </ModalShell>
+
+      {renderBibleYearCompletionModal()}
 
       <ModalShell
         isOpen={studyDashboardHandoffModal !== null}

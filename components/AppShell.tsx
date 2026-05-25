@@ -257,6 +257,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [isAnonymousGuest, setIsAnonymousGuest] = useState(false);
+  const [guestLogoutWarningOpen, setGuestLogoutWarningOpen] = useState(false);
   const [isEmailConfirmed, setIsEmailConfirmed] = useState(true);
   const [showEmailConfirmationGate, setShowEmailConfirmationGate] = useState(false);
   const [resendConfirmationLoading, setResendConfirmationLoading] = useState(false);
@@ -1723,6 +1725,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   function runCriticalSessionBoot(session: Session) {
     setUserId(session.user.id);
+    setIsAnonymousGuest(Boolean((session.user as any).is_anonymous || !session.user.email || session.user.identities?.length === 0));
     const meta: any = session.user.user_metadata || {};
     const extractedUsername =
       meta.firstName ||
@@ -1776,6 +1779,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       setIsLoggedIn(!!session);
       setUserEmail(session?.user?.email ?? null);
+      setIsAnonymousGuest(Boolean(session?.user && ((session.user as any).is_anonymous || !session.user.email || session.user.identities?.length === 0)));
       setIsEmailConfirmed(true);
       setShowEmailConfirmationGate(false);
       
@@ -1802,6 +1806,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         criticalSessionBootUserRef.current = null;
         deferredSessionBootUserRef.current = null;
         setUserId(null);
+        setIsAnonymousGuest(false);
         setUsername("");
         setIsEmailConfirmed(true);
         setShowEmailConfirmationGate(false);
@@ -1820,6 +1825,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       async (_event, session) => {
         setIsLoggedIn(!!session);
         setUserEmail(session?.user?.email ?? null);
+        setIsAnonymousGuest(Boolean(session?.user && ((session.user as any).is_anonymous || !session.user.email || session.user.identities?.length === 0)));
         setIsEmailConfirmed(true);
         setShowEmailConfirmationGate(false);
         
@@ -1846,6 +1852,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           criticalSessionBootUserRef.current = null;
           deferredSessionBootUserRef.current = null;
           setUserId(null);
+          setIsAnonymousGuest(false);
           setUsername("");
           setIsEmailConfirmed(true);
           setShowEmailConfirmationGate(false);
@@ -2174,8 +2181,26 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }
 
   async function handleLogout() {
+    if (isAnonymousGuest) {
+      setGuestLogoutWarningOpen(true);
+      return;
+    }
+    await performLogout();
+  }
+
+  async function performLogout() {
+    setGuestLogoutWarningOpen(false);
     await supabase.auth.signOut();
     router.push("/login");
+  }
+
+  function openGuestAccountPromptFromLogout() {
+    setGuestLogoutWarningOpen(false);
+    window.localStorage.setItem("bb:open-guest-account-form", "1");
+    router.push("/dashboard");
+    window.setTimeout(() => {
+      window.dispatchEvent(new CustomEvent("bb:open-guest-account-form"));
+    }, 120);
   }
 
   // Close dropdowns when clicking outside
@@ -2422,6 +2447,47 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             >
               {fullNameSaving ? "Saving..." : "Save full name"}
             </button>
+          </div>
+        </div>
+      )}
+
+      {guestLogoutWarningOpen && (
+        <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/55 px-4">
+          <div className="w-full max-w-md rounded-3xl border border-[#d8e7f2] bg-white p-6 text-center shadow-2xl">
+            <button
+              type="button"
+              onClick={() => setGuestLogoutWarningOpen(false)}
+              className="ml-auto grid h-9 w-9 place-items-center rounded-full bg-gray-100 text-lg font-black text-gray-500 transition hover:bg-gray-200"
+              aria-label="Close logout warning"
+            >
+              x
+            </button>
+            <div className="mx-auto mt-1 flex h-24 w-24 items-center justify-center rounded-full bg-[#edf7ff]">
+              <LouisAvatar mood="think" size={82} />
+            </div>
+            <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f93b8]">
+              Guest account
+            </p>
+            <h2 className="mt-2 text-2xl font-black text-gray-950">Create an account before logging out?</h2>
+            <p className="mt-3 text-sm leading-6 text-gray-600">
+              You are a guest right now. If you log out, you will not be able to log back into this guest journey unless you create an account first.
+            </p>
+            <div className="mt-5 grid gap-3">
+              <button
+                type="button"
+                onClick={openGuestAccountPromptFromLogout}
+                className="w-full rounded-2xl bg-[#7BAFD4] px-5 py-3 text-sm font-black text-[#05111f] shadow-lg transition hover:bg-[#91c2df]"
+              >
+                Create Account
+              </button>
+              <button
+                type="button"
+                onClick={() => void performLogout()}
+                className="w-full rounded-2xl border border-red-200 bg-red-50 px-5 py-3 text-sm font-bold text-red-700 transition hover:bg-red-100"
+              >
+                Log Out Anyway
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -8,6 +8,7 @@ import BrowserTtsButton from "@/components/BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "@/lib/genesisOneTts";
 import ChapterNotesMarkdown from "@/components/ChapterNotesMarkdown";
 import CommentSection from "@/components/comments/CommentSection";
+import DevotionalDayCompletionModal from "@/components/DevotionalDayCompletionModal";
 import { ModalShell } from "@/components/ModalShell";
 import TriviaGamePlayer from "@/components/TriviaGamePlayer";
 import { ACTION_TYPE } from "@/lib/actionTypes";
@@ -84,6 +85,30 @@ const DEFAULT_TASK_ESTIMATES: ChapterTaskTimeEstimates = {
   trivia: { label: "3 min", detail: "Quick quiz round" },
   reflection: { label: "3 min", detail: "Reflection response" },
 };
+
+const CHAPTER_JOURNEY_STUDY_TITLES = new Set([
+  "The Wisdom of Proverbs",
+  "The Testing of Joseph",
+  "The Obedience of Abraham",
+  "The Rise of Esther",
+  "The Courage of Daniel",
+  "The Creation of the World",
+  "The Fall of Man",
+  "The Flood of Noah",
+  "The Promise Through Isaac",
+  "The Wrestling of Jacob",
+  "The Deliverance of Moses",
+  "The Covenant at Sinai",
+  "The Presence of God",
+  "Holiness Before God",
+  "The Wilderness Journey",
+  "The Rebellion in the Wilderness",
+  "The Promised Land Ahead",
+]);
+
+function isChapterJourneyStudyTitle(title: string | null | undefined) {
+  return CHAPTER_JOURNEY_STUDY_TITLES.has(title || "");
+}
 
 function countWords(value: string | null | undefined) {
   return String(value || "")
@@ -264,7 +289,10 @@ export default function ProverbsStudyDayPage() {
   const [notesLoading, setNotesLoading] = useState(false);
   const notesScrollRef = useRef<HTMLDivElement | null>(null);
   const notesContentRef = useRef<HTMLDivElement | null>(null);
+  const completionWatcherReadyRef = useRef(false);
+  const previousDayCompleteRef = useRef(false);
   const [showTrivia, setShowTrivia] = useState(false);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [finishers, setFinishers] = useState<Finisher[]>([]);
   const [breakdown, setBreakdown] = useState<Breakdown>({ intro: [], reading: [], notes: [], trivia: [], reflection: [] });
   const [showBreakdown, setShowBreakdown] = useState(false);
@@ -278,6 +306,9 @@ export default function ProverbsStudyDayPage() {
   const bookKey = day ? normalizeBookKey(day.bible_reading_book) : "";
   const triviaBook = useMemo(() => (bookKey ? getTriviaBook(bookKey) : null), [bookKey]);
   const triviaChapter = useMemo(() => (day && bookKey ? getTriviaChapter(bookKey, day.bible_reading_chapter) : null), [bookKey, day]);
+  const introDone = progress?.is_completed === true;
+  const readingDone = progress?.reading_completed === true;
+  const allDayTasksComplete = introDone && readingDone && notesDone && triviaDone && reflectionDone;
 
   function handleNotesAudioProgress(state: { currentTime: number; duration: number; playing: boolean }) {
     if (!state.playing || state.duration <= 0) return;
@@ -647,11 +678,63 @@ export default function ProverbsStudyDayPage() {
 
   useEffect(() => {
     void loadAll();
+    completionWatcherReadyRef.current = false;
+    previousDayCompleteRef.current = false;
+    setShowCompletionModal(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [devotionalId, dayNumber]);
 
+  useEffect(() => {
+    if (!devotional || isChapterJourneyStudyTitle(devotional.title)) return;
+    router.replace(`/bible-studies/${encodeURIComponent(devotionalId)}?day=${dayNumber}&from=louis-daily-task`);
+  }, [dayNumber, devotional, devotionalId, router]);
+
+  useEffect(() => {
+    if (loading) return;
+    if (!completionWatcherReadyRef.current) {
+      previousDayCompleteRef.current = allDayTasksComplete;
+      completionWatcherReadyRef.current = true;
+      return;
+    }
+
+    if (allDayTasksComplete && !previousDayCompleteRef.current) {
+      setShowCompletionModal(true);
+    }
+    previousDayCompleteRef.current = allDayTasksComplete;
+  }, [allDayTasksComplete, loading]);
+
+  function continueAfterDayComplete() {
+    setShowCompletionModal(false);
+
+    if (!devotional) {
+      router.push("/bible-studies");
+      return;
+    }
+
+    const totalDays = Math.max(1, Number(devotional.total_days || 1));
+
+    if (dayNumber < totalDays) {
+      router.push(`/bible-studies/${encodeURIComponent(devotionalId)}/day/${dayNumber + 1}`);
+      return;
+    }
+
+    router.push(`/bible-studies/${encodeURIComponent(devotionalId)}`);
+  }
+
   async function markIntroComplete() {
-    if (!userId || !devotional || !day) return;
+    if (!devotional || !day) return;
+
+    if (!userId) {
+      const now = new Date().toISOString();
+      setProgress((prev) => ({
+        is_completed: true,
+        reading_completed: prev?.reading_completed ?? false,
+        completed_at: prev?.completed_at || now,
+      }));
+      setOpenTask(null);
+      return;
+    }
+
     const now = new Date().toISOString();
     const { data: existingProgress } = await supabase
       .from("devotional_progress")
@@ -712,7 +795,10 @@ export default function ProverbsStudyDayPage() {
       setNotesLoading(false);
     }
 
-    if (!userId) return;
+    if (!userId) {
+      setNotesDone(true);
+      return;
+    }
     const label = notesActionLabel(day.bible_reading_book, day.bible_reading_chapter);
 
     try {
@@ -772,7 +858,17 @@ export default function ProverbsStudyDayPage() {
   }
 
   async function markReadingComplete() {
-    if (!userId || !day) return;
+    if (!day) return;
+
+    if (!userId) {
+      setProgress((prev) => ({
+        is_completed: prev?.is_completed ?? false,
+        reading_completed: true,
+        completed_at: prev?.completed_at ?? null,
+      }));
+      return;
+    }
+
     await supabase.from("devotional_progress").upsert(
       {
         user_id: userId,
@@ -803,8 +899,6 @@ export default function ProverbsStudyDayPage() {
     );
   }
 
-  const introDone = progress?.is_completed === true;
-  const readingDone = progress?.reading_completed === true;
   const introCompletedDate = formatCompletedDate(progress?.completed_at);
   const breakdownSections: Array<[string, Finisher[], string]> = [
     ["Task 1 Intro", breakdown.intro, "Intro completed"],
@@ -1070,6 +1164,16 @@ export default function ProverbsStudyDayPage() {
             />
           </div>
         </ModalShell>
+      ) : null}
+
+      {showCompletionModal ? (
+        <DevotionalDayCompletionModal
+          dayNumber={dayNumber}
+          devotionalTitle={devotional.title}
+          onClose={() => setShowCompletionModal(false)}
+          primaryButtonText={dayNumber < Math.max(1, Number(devotional.total_days || 1)) ? "Continue" : "Finish Study"}
+          onPrimary={continueAfterDayComplete}
+        />
       ) : null}
 
     </div>

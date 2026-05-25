@@ -758,7 +758,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     const requestedDay = Number.parseInt(searchParams.get("day") || "", 10);
     const fromLouis = searchParams.get("from");
     const shouldHandleLouisDay =
-      fromLouis === "louis-daily" || fromLouis === "louis-recommendation" || fromLouis === "louis-daily-task";
+      fromLouis === "louis-daily" ||
+      fromLouis === "louis-recommendation" ||
+      fromLouis === "louis-daily-task" ||
+      fromLouis === "louis-daily-task-reflection";
 
     if (!requestedDay || Number.isNaN(requestedDay) || !shouldHandleLouisDay) {
       return;
