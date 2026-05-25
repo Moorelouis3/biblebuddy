@@ -35,6 +35,8 @@ import {
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
 import { isAdminUser } from "../../lib/readingProgress";
 import type { BuddyAvatar } from "../../lib/buddyAvatars";
+import { getBibleYearAudioApiSrc } from "../../lib/bibleYearAudio";
+import { BIBLE_YEAR_OFFLINE_TEXT_PACK_KEY, cacheBibleYearOfflineTextPack } from "../../lib/bibleYearOfflinePack";
 
 type StorePurchaseRow = {
   item_id: string;
@@ -79,6 +81,7 @@ function getPasswordResetRedirectUrl() {
 }
 
 const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:replay-dashboard-guided-intro";
+const BIBLE_YEAR_OFFLINE_WIFI_ONLY_KEY = "bb:bible-year-offline-wifi-only";
 
 export default function SettingsPage() {
   const router = useRouter();
@@ -121,8 +124,16 @@ export default function SettingsPage() {
   const [applyingCode, setApplyingCode] = useState(false);
   const [promoSuccess, setPromoSuccess] = useState(false);
   const [promoError, setPromoError] = useState<string | null>(null);
+  const [offlineWifiOnly, setOfflineWifiOnly] = useState(true);
+  const [offlineDownloadStatus, setOfflineDownloadStatus] = useState<string | null>(null);
+  const [offlineDownloading, setOfflineDownloading] = useState<"starter" | "next7" | "full" | "clear" | null>(null);
+  const [offlineStorageLabel, setOfflineStorageLabel] = useState<string | null>(null);
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      setOfflineWifiOnly(window.localStorage.getItem(BIBLE_YEAR_OFFLINE_WIFI_ONLY_KEY) !== "0");
+    }
+
     async function loadUser() {
       try {
         const { data: { user: currentUser } } = await supabase.auth.getUser();
@@ -290,6 +301,163 @@ export default function SettingsPage() {
       setSaving(false);
     }
   }
+
+  function getConnectionLooksLikeWifi() {
+    if (typeof navigator === "undefined") return true;
+    const connection = (navigator as Navigator & { connection?: { type?: string; effectiveType?: string } }).connection;
+    const type = connection?.type?.toLowerCase();
+    const effectiveType = connection?.effectiveType?.toLowerCase();
+    if (type === "wifi" || type === "ethernet") return true;
+    if (type === "cellular") return false;
+    if (effectiveType && ["slow-2g", "2g", "3g"].includes(effectiveType)) return false;
+    return true;
+  }
+
+  function formatStorageSize(bytes: number) {
+    if (!Number.isFinite(bytes) || bytes <= 0) return "0 MB";
+    const mb = bytes / (1024 * 1024);
+    if (mb < 1024) return `${Math.round(mb)} MB`;
+    return `${(mb / 1024).toFixed(1)} GB`;
+  }
+
+  async function refreshOfflineStorageEstimate() {
+    if (typeof navigator === "undefined" || !navigator.storage?.estimate) return;
+    try {
+      const estimate = await navigator.storage.estimate();
+      if (typeof estimate.usage === "number") {
+        setOfflineStorageLabel(formatStorageSize(estimate.usage));
+      }
+    } catch {
+      setOfflineStorageLabel(null);
+    }
+  }
+
+  function setWifiOnlyPreference(nextValue: boolean) {
+    setOfflineWifiOnly(nextValue);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(BIBLE_YEAR_OFFLINE_WIFI_ONLY_KEY, nextValue ? "1" : "0");
+    }
+  }
+
+  async function requestBibleYearOfflineAudio(days: number[], mode: "starter" | "next7" | "full") {
+    if (typeof window === "undefined" || !("serviceWorker" in navigator)) {
+      setOfflineDownloadStatus("Offline downloads need the installed app or a browser with service worker support.");
+      return;
+    }
+
+    if (offlineWifiOnly && !getConnectionLooksLikeWifi()) {
+      setOfflineDownloadStatus("Wi-Fi only is on. Connect to Wi-Fi or turn it off to download audio now.");
+      return;
+    }
+
+    setOfflineDownloading(mode);
+    setOfflineDownloadStatus("Preparing offline Bible in One Year text and audio...");
+    cacheBibleYearOfflineTextPack();
+
+    try {
+      const registration = await navigator.serviceWorker.ready;
+      const target = registration.active || navigator.serviceWorker.controller;
+      if (!target) throw new Error("Offline worker is not ready yet.");
+
+      target.postMessage({
+        type: "CACHE_BIBLE_YEAR_OFFLINE",
+        urls: ["/dashboard", "/dashboard?view=bible-year"],
+        mediaUrls: days.map((day) => getBibleYearAudioApiSrc(day)),
+      });
+
+      setOfflineDownloadStatus(
+        mode === "full"
+          ? "Full audio library download started. Keep BibleBuddy open on Wi-Fi while it prepares."
+          : mode === "starter"
+            ? "Days 1-7 audio are downloading for offline mode. Text is saved automatically."
+          : "Next 7 days of audio are downloading. Text is saved automatically.",
+      );
+      window.setTimeout(() => void refreshOfflineStorageEstimate(), 2500);
+    } catch (error) {
+      setOfflineDownloadStatus(error instanceof Error ? error.message : "Could not start offline download.");
+    } finally {
+      setOfflineDownloading(null);
+    }
+  }
+
+  async function getCurrentOfflineAudioStartDay() {
+    if (!user?.id) return 1;
+    try {
+      const { data, error } = await supabase
+        .from("bible_year_day_progress")
+        .select("day_number, reading_completed, trivia_completed, reflection_completed")
+        .eq("user_id", user.id)
+        .order("day_number", { ascending: true });
+
+      if (error) throw error;
+
+      const progressRows = (data || [])
+        .filter((row) => typeof row.day_number === "number")
+        .sort((a, b) => Number(a.day_number) - Number(b.day_number));
+      const completedDays = new Set(
+        progressRows
+          .filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed)
+          .map((row) => Number(row.day_number)),
+      );
+      const touchedDays = progressRows
+        .filter((row) => row.reading_completed || row.trivia_completed || row.reflection_completed)
+        .map((row) => Number(row.day_number));
+
+      let nextDay = 1;
+      while (completedDays.has(nextDay) && nextDay < 365) nextDay += 1;
+
+      const latestTouchedDay = touchedDays.length ? Math.max(...touchedDays) : 1;
+      return Math.min(365, Math.max(nextDay, latestTouchedDay, 1));
+    } catch {
+      return 1;
+    }
+  }
+
+  async function downloadNextSevenAudio() {
+    const startDay = await getCurrentOfflineAudioStartDay();
+    const days = Array.from({ length: 7 }, (_, index) => startDay + index).filter((day) => day <= 365);
+    void requestBibleYearOfflineAudio(days, "next7");
+  }
+
+  function downloadStarterAudioPack() {
+    const days = Array.from({ length: 7 }, (_, index) => index + 1);
+    void requestBibleYearOfflineAudio(days, "starter");
+  }
+
+  function downloadFullAudioLibrary() {
+    const confirmed =
+      typeof window === "undefined" ||
+      window.confirm("Download all 365 audio files? This can use several GB of phone storage. Wi-Fi is strongly recommended.");
+    if (!confirmed) return;
+    const days = Array.from({ length: 365 }, (_, index) => index + 1);
+    void requestBibleYearOfflineAudio(days, "full");
+  }
+
+  async function clearOfflineDownloads() {
+    setOfflineDownloading("clear");
+    setOfflineDownloadStatus("Clearing offline downloads...");
+    try {
+      if (typeof window !== "undefined") {
+        window.localStorage.removeItem(BIBLE_YEAR_OFFLINE_TEXT_PACK_KEY);
+      }
+      if (typeof navigator !== "undefined" && "serviceWorker" in navigator) {
+        const registration = await navigator.serviceWorker.ready;
+        const target = registration.active || navigator.serviceWorker.controller;
+        target?.postMessage({ type: "CLEAR_BIBLE_YEAR_OFFLINE" });
+      }
+      setOfflineDownloadStatus("Offline downloads cleared.");
+      window.setTimeout(() => void refreshOfflineStorageEstimate(), 1000);
+    } catch {
+      setOfflineDownloadStatus("Offline text was cleared, but media cache cleanup may need an app refresh.");
+    } finally {
+      setOfflineDownloading(null);
+    }
+  }
+
+  useEffect(() => {
+    cacheBibleYearOfflineTextPack();
+    void refreshOfflineStorageEstimate();
+  }, []);
 
   async function handleResetPassword() {
     if (!user?.email) return;
@@ -799,6 +967,91 @@ export default function SettingsPage() {
             {settingsMessage}
           </div>
         ) : null}
+
+        {/* Offline Bible Study Section */}
+        <div className="mb-6 rounded-xl bg-white p-6 shadow-sm">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2563eb)]">
+                Offline Bible Study
+              </p>
+              <h2 className="mt-2 text-xl font-semibold text-gray-950">Downloads</h2>
+              <p className="mt-2 text-sm leading-6 text-gray-600">
+                BibleBuddy saves all Bible in One Year text automatically. Audio downloads let the next studies play without internet.
+              </p>
+            </div>
+
+            <label className="flex cursor-pointer items-center justify-between gap-3 rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-accent-soft,#eaf5ff)] px-4 py-2 text-sm font-black text-gray-800">
+              <span>Wi-Fi only</span>
+              <input
+                type="checkbox"
+                checked={offlineWifiOnly}
+                onChange={(event) => setWifiOnlyPreference(event.target.checked)}
+                className="h-5 w-5 accent-[var(--bb-accent,#2563eb)]"
+              />
+            </label>
+          </div>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => {
+                cacheBibleYearOfflineTextPack();
+                setOfflineDownloadStatus("All Bible in One Year text is saved on this device.");
+                void refreshOfflineStorageEstimate();
+              }}
+              className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-3 text-left text-sm font-black text-gray-900 shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+            >
+              Always download all text
+              <span className="mt-1 block text-xs font-semibold text-gray-500">Refresh the offline text pack now</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={downloadStarterAudioPack}
+              disabled={offlineDownloading !== null}
+              className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-accent-soft,#eaf5ff)] px-4 py-3 text-left text-sm font-black text-gray-900 transition hover:brightness-95 disabled:opacity-60"
+            >
+              {offlineDownloading === "starter" ? "Starting download..." : "Download Days 1-7 audio"}
+              <span className="mt-1 block text-xs font-semibold text-gray-600">Starter offline mode for the first week</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => void downloadNextSevenAudio()}
+              disabled={offlineDownloading !== null}
+              className="rounded-2xl bg-[var(--bb-button,#2563eb)] px-4 py-3 text-left text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:opacity-60"
+            >
+              {offlineDownloading === "next7" ? "Starting download..." : "Download next 7 days audio"}
+              <span className="mt-1 block text-xs font-semibold opacity-85">Starts from your current Bible in One Year day</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={downloadFullAudioLibrary}
+              disabled={offlineDownloading !== null}
+              className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-accent-soft,#eaf5ff)] px-4 py-3 text-left text-sm font-black text-gray-900 transition hover:brightness-95 disabled:opacity-60"
+            >
+              {offlineDownloading === "full" ? "Starting full library..." : "Download full audio library"}
+              <span className="mt-1 block text-xs font-semibold text-gray-600">Best on Wi-Fi with plenty of storage</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => void clearOfflineDownloads()}
+              disabled={offlineDownloading !== null}
+              className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-left text-sm font-black text-red-700 transition hover:bg-red-100 disabled:opacity-60"
+            >
+              {offlineDownloading === "clear" ? "Clearing..." : "Clear offline downloads"}
+              <span className="mt-1 block text-xs font-semibold text-red-500">Removes saved text and downloaded audio from this device</span>
+            </button>
+          </div>
+
+          <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-gray-50 px-4 py-3 text-xs font-bold text-gray-600">
+            {offlineDownloadStatus || "Days 1-7 plus your current day and next 3 days of audio download automatically when the dashboard opens."}
+            {offlineStorageLabel ? <span className="mt-1 block">Device storage used by BibleBuddy: {offlineStorageLabel}</span> : null}
+          </div>
+        </div>
 
         {/* Theme Section */}
         <div className="bg-white rounded-xl p-6 shadow-sm mb-6">

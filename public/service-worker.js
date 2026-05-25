@@ -48,6 +48,17 @@ self.addEventListener("message", (event) => {
       ])
     );
   }
+  if (event.data?.type === "CLEAR_BIBLE_YEAR_OFFLINE") {
+    event.waitUntil(
+      caches.keys().then((keys) =>
+        Promise.all(
+          keys
+            .filter((key) => key.startsWith("biblebuddy-media-"))
+            .map((key) => caches.delete(key)),
+        ),
+      ),
+    );
+  }
 });
 
 self.addEventListener('fetch', event => {

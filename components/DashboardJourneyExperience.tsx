@@ -2294,10 +2294,15 @@ export default function DashboardJourneyExperience({
     if (!activeBibleYearDashboardDay || typeof window === "undefined" || !("serviceWorker" in navigator)) return;
 
     const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8);
-    const mediaUrls = [0, 1, 2]
+    const starterAudioUrls = builtBibleYearDays
+      .filter((day) => day.dayNumber >= 1 && day.dayNumber <= 7)
+      .map((day) => getBibleYearDayContent(day).audio?.apiSrc)
+      .filter((url): url is string => Boolean(url));
+    const currentAudioUrls = [0, 1, 2, 3]
       .map((offset) => builtBibleYearDays.find((day) => day.dayNumber === activeBibleYearDashboardDay.dayNumber + offset))
       .map((day) => (day ? getBibleYearDayContent(day).audio?.apiSrc : null))
       .filter((url): url is string => Boolean(url));
+    const mediaUrls = Array.from(new Set([...starterAudioUrls, ...currentAudioUrls]));
     const urls = [
       "/dashboard",
       "/dashboard?view=bible-year",

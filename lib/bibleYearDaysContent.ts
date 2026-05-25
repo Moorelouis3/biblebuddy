@@ -25,6 +25,7 @@ import { BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS, type BibleYearDeepStudySection 
 import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES, BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS } from "./bibleYearDayThreeDeepNotes";
 import { BIBLE_YEAR_DAY_FOUR_DEEP_NOTES, BIBLE_YEAR_DAY_FOUR_DEEP_STUDY_SECTIONS } from "./bibleYearDayFourDeepNotes";
 import { BIBLE_YEAR_DAY_FIVE_DEEP_NOTES, BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS } from "./bibleYearDayFiveDeepNotes";
+import { BIBLE_YEAR_DAY_SEVEN_DEEP_NOTES, BIBLE_YEAR_DAY_SEVEN_DEEP_STUDY_SECTIONS } from "./bibleYearDaySevenDeepNotes";
 import { BIBLE_YEAR_DAY_SIX_DEEP_NOTES, BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS } from "./bibleYearDaySixDeepNotes";
 import { BIBLE_YEAR_DAY_TWO_DEEP_NOTES, BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS } from "./fallOfManDeepNotes";
 import type { GenesisBibleYearDay } from "./bibleInOneYearPlan";
@@ -118,6 +119,57 @@ const dayFourSummary: BibleYearSummaryContent = {
   takeawaySupport: "Day 4 helps us see that God is faithful after the storm, but humanity still needs a greater rescue than Noah could bring.",
 };
 
+const dayFiveSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 11-13 moves from the pride of Babel into the beginning of Abram's story.",
+    "At Babel, people try to build upward and make a name for themselves, but God calls Abram and promises to make his name great.",
+    "These chapters show God beginning a rescue plan through one family, even while Abram is still learning how to trust.",
+  ],
+  highlights: [
+    ["🏙️", "Babel shows humanity trying to create security and greatness apart from God."],
+    ["🧬", "Genesis traces the family line toward Abram and narrows the story toward promise."],
+    ["📣", "God calls Abram to leave what is familiar and follow Him by faith."],
+    ["🌍", "God promises land, descendants, blessing, and blessing for all families of the earth."],
+    ["⛺", "Abram obeys, builds altars, fails in fear, and keeps learning to trust God's promise."],
+  ],
+  takeaway: "God's promise is stronger than human pride, fear, and weakness.",
+  takeawaySupport: "Day 5 helps us see the difference between trying to make a name for ourselves and receiving identity, purpose, and blessing from God.",
+};
+
+const daySixSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 14-15 shows Abram moving from public courage into private fear and honest questions.",
+    "Abram rescues Lot, meets Melchizedek, refuses Sodom's reward, and then hears God speak directly to his fear.",
+    "These chapters show that faith can be brave in battle and still need reassurance in the quiet place.",
+  ],
+  highlights: [
+    ["⚔️", "War reaches Lot because of where he settled near Sodom."],
+    ["🛡️", "Abram acts with courage and rescues Lot instead of leaving him behind."],
+    ["👑", "Melchizedek blesses Abram, and Abram responds with honor and worship."],
+    ["🚫", "Abram refuses Sodom's reward because he does not want blessing tied to corruption."],
+    ["⭐", "God promises descendants like the stars, and Abram believes the LORD."],
+  ],
+  takeaway: "Faith trusts God in public action and private uncertainty.",
+  takeawaySupport: "Day 6 helps us see that Abram's confidence does not come from kings, rewards, or circumstances, but from the God who makes and keeps covenant promises.",
+};
+
+const daySevenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 16-17 walks through waiting, shortcuts, pain, mercy, and covenant promise.",
+    "Abram and Sarai try to force what God promised, and Hagar is caught in the brokenness that follows.",
+    "But God sees Hagar, renames Abram and Sarai, gives the covenant sign, and promises Isaac by name.",
+  ],
+  highlights: [
+    ["⏳", "Waiting exposes how hard it can be to trust God's timing."],
+    ["💔", "Sarai and Abram's shortcut creates pain, conflict, and consequences."],
+    ["👀", "God meets Hagar in the wilderness and shows that she is seen."],
+    ["👑", "Abram becomes Abraham, and Sarai becomes Sarah as God speaks promise over their future."],
+    ["✨", "God promises Isaac and makes clear that the covenant will continue by His power."],
+  ],
+  takeaway: "Human shortcuts cannot cancel God's covenant faithfulness.",
+  takeawaySupport: "Day 7 helps us understand that God sees the wounded, corrects the waiting, and carries His promise forward even after human failure.",
+};
+
 function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent {
   const pieces = day.summary
     .split(",")
@@ -179,6 +231,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
     audio: BIBLE_YEAR_DAY_FIVE_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_FIVE_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS,
+    summary: dayFiveSummary,
     discussionPrompt: "What stands out to you about Abram leaving what was familiar?",
   },
   6: {
@@ -186,13 +239,15 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
     audio: BIBLE_YEAR_DAY_SIX_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_SIX_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS,
+    summary: daySixSummary,
     discussionPrompt: "What stands out to you about Abram's courage and trust in Genesis 14-15?",
   },
   7: {
     lesson: GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON,
     audio: BIBLE_YEAR_DAY_SEVEN_AUDIO,
-    studyNotesMarkdown: null,
-    studyNotesSections: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SEVEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SEVEN_DEEP_STUDY_SECTIONS,
+    summary: daySevenSummary,
     discussionPrompt: "What stands out to you about waiting on God's promise?",
   },
   8: {
