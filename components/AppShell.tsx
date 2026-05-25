@@ -27,6 +27,7 @@ import {
   getAppTheme,
   normalizeAppThemeId,
   readCachedAppTheme,
+  shouldPreferCachedAppTheme,
   type AppThemeId,
 } from "../lib/appThemes";
 import {
@@ -38,6 +39,7 @@ import {
   getPremiumSkinForLegacyTheme,
   normalizePremiumSkinId,
   readCachedPremiumSkin,
+  shouldPreferCachedPremiumSkin,
   type PremiumSkinId,
 } from "../lib/premiumSkins";
 import { preloadActiveSkinAssets, preloadImage, scheduleIdleWork, syncPerformanceModeToDocument } from "../lib/appPerformance";
@@ -356,7 +358,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const skinId = normalizePremiumSkinId(
         customEvent?.detail?.skinId ||
           (currentDocumentSkin !== "none" ? currentDocumentSkin : null) ||
-          "none",
+          readCachedPremiumSkin(userId),
       );
       cachePremiumSkinForUser(userId, skinId);
       if (skinId === "none") {
@@ -401,13 +403,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             active_premium_skin?: unknown;
             active_premium_skin_selected_at?: string | null;
           } | null;
-          const resolvedTheme = normalizeAppThemeId(nextProfile?.app_theme);
+          const incomingTheme = normalizeAppThemeId(nextProfile?.app_theme);
+          const useCachedTheme = shouldPreferCachedAppTheme(userId, incomingTheme);
+          const resolvedTheme = useCachedTheme ? readCachedAppTheme(userId) : incomingTheme;
           cacheAppThemeForUser(userId, resolvedTheme);
-          clearPendingAppThemeSync(userId, resolvedTheme);
+          if (!useCachedTheme) clearPendingAppThemeSync(userId, resolvedTheme);
           setAppThemeId(resolvedTheme);
-          const nextSkin = normalizePremiumSkinId(nextProfile?.active_premium_skin);
+          const incomingSkin = normalizePremiumSkinId(nextProfile?.active_premium_skin);
+          const useCachedSkin = shouldPreferCachedPremiumSkin(userId, incomingSkin);
+          const nextSkin = useCachedSkin ? readCachedPremiumSkin(userId) : incomingSkin;
           cachePremiumSkinForUser(userId, nextSkin);
-          clearPendingPremiumSkinSync(userId, nextSkin);
+          if (!useCachedSkin) clearPendingPremiumSkinSync(userId, nextSkin);
           if (nextSkin === "none") {
             applyPremiumSkinToDocument("none");
             applyAppThemeToDocument(resolvedTheme);
@@ -479,7 +485,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    const savedTheme = normalizeAppThemeId(data?.app_theme);
+    const dbTheme = normalizeAppThemeId(data?.app_theme);
+    const savedTheme = shouldPreferCachedAppTheme(currentUserId, dbTheme) ? readCachedAppTheme(currentUserId) : dbTheme;
     const hasActiveSkinColumn = Boolean(data && "active_premium_skin" in data);
     const dbSkin = normalizePremiumSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
     const legacyMappedSkin =
@@ -487,7 +494,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         ? getPremiumSkinForLegacyTheme(data?.app_theme)
         : getPremiumSkinForLegacyFlame(data && "selected_streak_flame" in data ? data.selected_streak_flame : null);
     const candidateSkin = hasActiveSkinColumn ? dbSkin : legacyMappedSkin;
-    const savedSkin = await canUsePremiumSkin(currentUserId, email, candidateSkin) ? candidateSkin : "none";
+    const preferredSkin = shouldPreferCachedPremiumSkin(currentUserId, candidateSkin) ? readCachedPremiumSkin(currentUserId) : candidateSkin;
+    const savedSkin = await canUsePremiumSkin(currentUserId, email, preferredSkin) ? preferredSkin : "none";
     cachePremiumSkinForUser(currentUserId, savedSkin);
     if (dbSkin === savedSkin) clearPendingPremiumSkinSync(currentUserId, savedSkin);
     if (savedSkin === "none") {
@@ -499,7 +507,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
     preloadActiveSkinAssets(savedSkin);
     window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: savedSkin } }));
-    clearPendingAppThemeSync(currentUserId, savedTheme);
+    if (dbTheme === savedTheme) clearPendingAppThemeSync(currentUserId, savedTheme);
 
     if (candidateSkin !== savedSkin && dbSkin !== "none") {
       void supabase
@@ -796,14 +804,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const dbSelectedFlame = normalizeFlameCosmeticId(data?.selected_streak_flame);
       const hasActiveSkinColumn = Boolean(data && "active_premium_skin" in data);
       const dbActiveSkin = normalizePremiumSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
-      const resolvedSkin = dbActiveSkin;
+      const resolvedSkin = shouldPreferCachedPremiumSkin(currentUserId, dbActiveSkin) ? readCachedPremiumSkin(currentUserId) : dbActiveSkin;
       const skinFlame = getPremiumSkinFlameId(resolvedSkin);
       const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
       persistActiveStreakFlame(resolvedSelectedFlame);
       setHeaderSelectedFlame(resolvedSelectedFlame);
       cachePremiumSkinForUser(currentUserId, resolvedSkin);
       applyPremiumSkinToDocument(resolvedSkin);
-      clearPendingPremiumSkinSync(currentUserId, resolvedSkin);
+      if (dbActiveSkin === resolvedSkin) clearPendingPremiumSkinSync(currentUserId, resolvedSkin);
       if (skinFlame && dbSelectedFlame !== skinFlame) {
         void supabase
           .from("profile_stats")
@@ -2358,12 +2366,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, [userId, isLoggedIn, feedbackChecked, showFeedbackModal]);
 
   useEffect(() => {
-    if (!userId || !isLoggedIn) return;
-    if (!pathname || HIDDEN_ROUTES.includes(pathname)) {
-      setShowFullNameModal(false);
-      return;
-    }
-    void checkFullNameRequirement(userId);
+    setShowFullNameModal(false);
   }, [userId, isLoggedIn, pathname]);
 
   const gracePurchaseTotals = gracePurchasePrompt ? getGracePurchaseTotals(gracePurchasePrompt) : null;

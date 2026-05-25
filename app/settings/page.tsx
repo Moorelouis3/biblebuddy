@@ -10,6 +10,8 @@ import {
   cacheAppThemeForUser,
   clearPendingAppThemeSync,
   normalizeAppThemeId,
+  readCachedAppTheme,
+  shouldPreferCachedAppTheme,
   type AppThemeId,
 } from "../../lib/appThemes";
 import { BUDDY_STORE_ITEMS, PREMIUM_SKIN_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
@@ -30,6 +32,8 @@ import {
   clearLegacyPremiumSkinCache,
   getPremiumSkinForLegacyTheme,
   normalizePremiumSkinId,
+  readCachedPremiumSkin,
+  shouldPreferCachedPremiumSkin,
   type PremiumSkinId,
 } from "../../lib/premiumSkins";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
@@ -184,13 +188,13 @@ export default function SettingsPage() {
         setFirstName(nameParts.firstName);
         setLastName(nameParts.lastName);
         const dbTheme = normalizeAppThemeId(profile?.app_theme);
-        const savedTheme = dbTheme;
+        const savedTheme = shouldPreferCachedAppTheme(currentUser.id, dbTheme) ? readCachedAppTheme(currentUser.id) : dbTheme;
         setSelectedTheme(savedTheme);
         const dbPremiumSkin: PremiumSkinId =
           profile && "active_premium_skin" in profile && profile.active_premium_skin
             ? normalizePremiumSkinId(profile.active_premium_skin)
             : "none";
-        const resolvedPremiumSkin = dbPremiumSkin;
+        const resolvedPremiumSkin = shouldPreferCachedPremiumSkin(currentUser.id, dbPremiumSkin) ? readCachedPremiumSkin(currentUser.id) : dbPremiumSkin;
         const premiumSkinStoreItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === resolvedPremiumSkin);
         const ownsResolvedPremiumSkin =
           resolvedPremiumSkin === "none" ||
@@ -714,10 +718,12 @@ export default function SettingsPage() {
             updated_at: new Date().toISOString(),
           })
           .eq("user_id", user.id);
-        if (error) throw error;
+        if (error) {
+          console.warn("[SETTINGS] Could not save skin flame, continuing with skin save:", error.message);
+        }
       }
 
-      const { error: skinError } = await supabase
+      let { error: skinError } = await supabase
         .from("profile_stats")
         .upsert(
           {
@@ -728,7 +734,20 @@ export default function SettingsPage() {
           },
           { onConflict: "user_id" },
         );
-      if (skinError && !/active_premium_skin/i.test(skinError.message || "")) throw skinError;
+      if (skinError && /active_premium_skin_selected_at/i.test(skinError.message || "")) {
+        const fallback = await supabase
+          .from("profile_stats")
+          .upsert(
+            {
+              user_id: user.id,
+              active_premium_skin: skinId,
+              updated_at: new Date().toISOString(),
+            },
+            { onConflict: "user_id" },
+          );
+        skinError = fallback.error;
+      }
+      if (skinError) throw skinError;
       clearPendingPremiumSkinSync(user.id, skinId);
 
       setSettingsMessage(skin ? `${skin.name} is now your default skin.` : "Skin removed.");
