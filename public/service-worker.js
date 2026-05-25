@@ -4,7 +4,7 @@ const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 const STATIC_ASSETS = [
   "/offline.html",
   "/manifest.json",
-  "/newericon.png",
+  "/NewNewNewIconNew.png",
   "/icons/icon-192.png",
   "/icons/icon-512.png",
 ];
@@ -65,8 +65,8 @@ self.addEventListener("push", (event) => {
   const body = typeof payload.body === "string" ? payload.body : "";
   const options = {
     body,
-    icon: "/newericon.png",
-    badge: "/newericon.png",
+    icon: "/NewNewNewIconNew.png",
+    badge: "/NewNewNewIconNew.png",
     data: {
       url: payload.url || "/dashboard",
       notificationId: payload.notificationId || null,

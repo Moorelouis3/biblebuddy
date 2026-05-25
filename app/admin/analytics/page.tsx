@@ -55,8 +55,10 @@ type DeepStudyInterestEntry = {
 type DeepStudyInterestSummary = {
   today: number;
   last24h: number;
+  uniqueUsersLast24h: number;
   uniqueUsers: number;
   topItems: Array<{ label: string; source: string; count: number }>;
+  topItemsLast24h: Array<{ label: string; source: string; count: number }>;
   entries: DeepStudyInterestEntry[];
 };
 
@@ -144,6 +146,13 @@ type OnboardingAnalyticsSummary = {
       count: number;
       stepConversion: number;
     }>;
+  };
+  landingLast24h?: {
+    visits: number;
+    signups: number;
+    conversionRate: number;
+    rawVisitEvents?: number;
+    rawSignupEvents?: number;
   };
   publicOnboardingFlow?: {
     started: number;
@@ -418,8 +427,10 @@ export default function AnalyticsPage() {
   const [deepStudyInterest, setDeepStudyInterest] = useState<DeepStudyInterestSummary>({
     today: 0,
     last24h: 0,
+    uniqueUsersLast24h: 0,
     uniqueUsers: 0,
     topItems: [],
+    topItemsLast24h: [],
     entries: [],
   });
   const [loadingDeepStudyInterest, setLoadingDeepStudyInterest] = useState(true);
@@ -710,23 +721,27 @@ export default function AnalyticsPage() {
 
       if (error) {
         console.error("[DEEP_STUDY_INTEREST_ANALYTICS] Error loading interest:", error);
-        setDeepStudyInterest({ today: 0, last24h: 0, uniqueUsers: 0, topItems: [], entries: [] });
+        setDeepStudyInterest({ today: 0, last24h: 0, uniqueUsersLast24h: 0, uniqueUsers: 0, topItems: [], topItemsLast24h: [], entries: [] });
         setLoadingDeepStudyInterest(false);
         return;
       }
 
       const rows = data || [];
       const uniqueUsers = new Set<string>();
+      const uniqueUsersLast24h = new Set<string>();
       const topCounts = new Map<string, { label: string; source: string; count: number }>();
+      const topCountsLast24h = new Map<string, { label: string; source: string; count: number }>();
       let today = 0;
       let last24h = 0;
 
       const entries = rows.map((row: any): DeepStudyInterestEntry => {
         const parsed = parseDeepStudyInterestLabel(row.action_label);
         const createdAt = row.created_at ? new Date(row.created_at) : null;
+        const isLast24h = Boolean(createdAt && createdAt >= last24hStart);
         if (createdAt && createdAt >= todayStart) today += 1;
-        if (createdAt && createdAt >= last24hStart) last24h += 1;
+        if (isLast24h) last24h += 1;
         if (row.user_id) uniqueUsers.add(row.user_id);
+        if (isLast24h && row.user_id) uniqueUsersLast24h.add(row.user_id);
 
         const source = parsed?.sourceLabel || parsed?.source || "Study Notes";
         const title = parsed?.itemTitle || parsed?.contentLabel || "Unknown study";
@@ -738,6 +753,14 @@ export default function AnalyticsPage() {
           source,
           count: (existing?.count || 0) + 1,
         });
+        if (isLast24h) {
+          const existingLast24h = topCountsLast24h.get(topKey);
+          topCountsLast24h.set(topKey, {
+            label: title,
+            source,
+            count: (existingLast24h?.count || 0) + 1,
+          });
+        }
 
         return {
           id: row.id,
@@ -754,15 +777,19 @@ export default function AnalyticsPage() {
       setDeepStudyInterest({
         today,
         last24h,
+        uniqueUsersLast24h: uniqueUsersLast24h.size,
         uniqueUsers: uniqueUsers.size,
         topItems: Array.from(topCounts.values())
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 5),
+        topItemsLast24h: Array.from(topCountsLast24h.values())
           .sort((a, b) => b.count - a.count)
           .slice(0, 5),
         entries,
       });
     } catch (error) {
       console.error("[DEEP_STUDY_INTEREST_ANALYTICS] Error loading interest:", error);
-      setDeepStudyInterest({ today: 0, last24h: 0, uniqueUsers: 0, topItems: [], entries: [] });
+      setDeepStudyInterest({ today: 0, last24h: 0, uniqueUsersLast24h: 0, uniqueUsers: 0, topItems: [], topItemsLast24h: [], entries: [] });
     } finally {
       setLoadingDeepStudyInterest(false);
     }
@@ -3534,17 +3561,18 @@ export default function AnalyticsPage() {
           <div className="mt-4 rounded-xl bg-gray-50 p-6 text-center text-sm text-gray-500">Loading Study Notes interest...</div>
         ) : (
           <>
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <OverviewCard label="Clicks Today" value={deepStudyInterest.today} />
+            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-4">
+              <OverviewCard label="People Last 24h" value={deepStudyInterest.uniqueUsersLast24h} />
               <OverviewCard label="Clicks Last 24h" value={deepStudyInterest.last24h} />
-              <OverviewCard label="Unique Users" value={deepStudyInterest.uniqueUsers} />
+              <OverviewCard label="Clicks Today" value={deepStudyInterest.today} />
+              <OverviewCard label="Unique Users All Time" value={deepStudyInterest.uniqueUsers} />
             </div>
 
             <div className="mt-5 rounded-xl border border-gray-100 bg-gray-50 p-4">
-              <h3 className="text-sm font-bold text-gray-900">Most Clicked Studies/Topics</h3>
-              {deepStudyInterest.topItems.length ? (
+              <h3 className="text-sm font-bold text-gray-900">Most Clicked Study Notes - Last 24 Hours</h3>
+              {deepStudyInterest.topItemsLast24h.length ? (
                 <div className="mt-3 space-y-2">
-                  {deepStudyInterest.topItems.map((item) => (
+                  {deepStudyInterest.topItemsLast24h.map((item) => (
                     <div key={`${item.source}-${item.label}`} className="flex items-center justify-between gap-3 rounded-lg bg-white px-3 py-2 text-sm">
                       <span>
                         <span className="font-bold text-gray-900">{item.label}</span>
@@ -3555,7 +3583,7 @@ export default function AnalyticsPage() {
                   ))}
                 </div>
               ) : (
-                <p className="mt-3 text-sm text-gray-500">No Study Notes clicks tracked yet.</p>
+                <p className="mt-3 text-sm text-gray-500">No Study Notes clicks tracked in the last 24 hours.</p>
               )}
             </div>
 
@@ -3619,18 +3647,48 @@ export default function AnalyticsPage() {
               </p>
             ) : null}
 
+            <div className="mb-5 rounded-2xl border border-blue-100 bg-blue-50 p-4">
+              <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-wide text-blue-700">Landing Page Analytics</p>
+                  <h3 className="text-xl font-black text-gray-900">Last 24 Hours</h3>
+                </div>
+                <p className="text-xs font-semibold text-blue-700">Visits to signup conversion</p>
+              </div>
+              <div className="grid gap-3 md:grid-cols-3">
+                <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Landing Page Visits</p>
+                  <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.landingLast24h?.visits ?? 0).toLocaleString()}</p>
+                  <p className="mt-1 text-xs font-semibold text-gray-500">Unique landing sessions in 24 hours</p>
+                </div>
+                <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Signups</p>
+                  <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.landingLast24h?.signups ?? 0).toLocaleString()}</p>
+                  <p className="mt-1 text-xs font-semibold text-gray-500">Accounts created from landing sessions</p>
+                </div>
+                <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Conversion Rate</p>
+                  <p className="mt-2 text-3xl font-black text-gray-900">{onboardingAnalytics.landingLast24h?.conversionRate ?? 0}%</p>
+                  <p className="mt-1 text-xs font-semibold text-gray-500">Signups divided by landing visits</p>
+                </div>
+              </div>
+            </div>
+
             <div className="mb-5 grid gap-4 md:grid-cols-3">
               <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
                 <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Visitors</p>
                 <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.funnel?.cards.visitors ?? 0).toLocaleString()}</p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">All-time tracked sessions</p>
               </div>
               <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
                 <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Signups</p>
                 <p className="mt-2 text-3xl font-black text-gray-900">{(onboardingAnalytics.funnel?.cards.signups ?? 0).toLocaleString()}</p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">All-time tracked signups</p>
               </div>
               <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
                 <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Conversion Rate</p>
                 <p className="mt-2 text-3xl font-black text-gray-900">{onboardingAnalytics.funnel?.cards.conversionRate ?? 0}%</p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">All-time landing conversion</p>
               </div>
             </div>
 

@@ -36,6 +36,7 @@ import {
 import { LouisAvatar } from "../../components/LouisAvatar";
 import StreakFlameEmoji from "../../components/StreakFlameEmoji";
 import { ModalShell } from "../../components/ModalShell";
+import UpgradeRequiredModal from "../../components/UpgradeRequiredModal";
 import { triggerPoints } from "../../components/PointsPop";
 
 import AdSlot from "../../components/AdSlot";
@@ -125,7 +126,8 @@ const PAUSE_EXTRA_AUTOMATIC_DASHBOARD_POPUPS = true;
 const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 60 * 60 * 1000;
 const DASHBOARD_UPGRADE_NUDGE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 const DAILY_TASK_SUMMARY_TIMEOUT_MS = 10000;
-const MAX_BADGE_POPUPS_PER_SESSION = 3;
+const MAX_BADGE_POPUPS_PER_BATCH = 2;
+const BADGE_POPUP_BATCH_COOLDOWN_MS = 2 * 60 * 60 * 1000;
 const MYSTERY_PRIZE_REWARDS = [100, 150, 200, 250, 300, 400, 500];
 const DAILY_LOGIN_GIFT_MIN_DELAY_MS = 60 * 60 * 1000;
 const BUDDY_SELECTION_DASHBOARD_HANDOFF_KEY = "bb:buddy-selection-dashboard-handoff";
@@ -425,6 +427,14 @@ function getPendingBadgeQueueKey(userId: string) {
   return `bb:pending-badge-queue:${userId}`;
 }
 
+function getBadgePopupBatchCountKey(userId: string) {
+  return `bb:badge-popup-batch-count:${userId}`;
+}
+
+function getBadgePopupBatchLockedUntilKey(userId: string) {
+  return `bb:badge-popup-batch-locked-until:${userId}`;
+}
+
 function readPendingBadgeQueue(userId: string): BadgeProgress[] {
   if (typeof window === "undefined") return [];
   try {
@@ -438,6 +448,42 @@ function readPendingBadgeQueue(userId: string): BadgeProgress[] {
 function writePendingBadgeQueue(userId: string, badges: BadgeProgress[]) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(getPendingBadgeQueueKey(userId), JSON.stringify(badges));
+}
+
+function readBadgePopupBatchState(userId: string) {
+  if (typeof window === "undefined") return { count: 0, lockedUntil: 0 };
+  const now = Date.now();
+  const lockedUntil = Number(window.localStorage.getItem(getBadgePopupBatchLockedUntilKey(userId)) || 0);
+  if (lockedUntil > now) {
+    return {
+      count: MAX_BADGE_POPUPS_PER_BATCH,
+      lockedUntil,
+    };
+  }
+
+  if (lockedUntil > 0) {
+    window.localStorage.removeItem(getBadgePopupBatchLockedUntilKey(userId));
+    window.localStorage.removeItem(getBadgePopupBatchCountKey(userId));
+    return { count: 0, lockedUntil: 0 };
+  }
+
+  const count = Math.max(0, Number(window.localStorage.getItem(getBadgePopupBatchCountKey(userId)) || 0));
+  return { count: Number.isFinite(count) ? Math.min(count, MAX_BADGE_POPUPS_PER_BATCH) : 0, lockedUntil: 0 };
+}
+
+function writeBadgePopupBatchState(userId: string, nextCount: number) {
+  if (typeof window === "undefined") return 0;
+  const safeCount = Math.max(0, Math.min(nextCount, MAX_BADGE_POPUPS_PER_BATCH));
+  if (safeCount >= MAX_BADGE_POPUPS_PER_BATCH) {
+    const lockedUntil = Date.now() + BADGE_POPUP_BATCH_COOLDOWN_MS;
+    window.localStorage.setItem(getBadgePopupBatchCountKey(userId), String(MAX_BADGE_POPUPS_PER_BATCH));
+    window.localStorage.setItem(getBadgePopupBatchLockedUntilKey(userId), String(lockedUntil));
+    return lockedUntil;
+  }
+
+  window.localStorage.setItem(getBadgePopupBatchCountKey(userId), String(safeCount));
+  window.localStorage.removeItem(getBadgePopupBatchLockedUntilKey(userId));
+  return 0;
 }
 
 function getAwardedBadgeId(actionLabel: unknown) {
@@ -1287,7 +1333,8 @@ export default function DashboardPage() {
     upgrades24h: 0,
   });
   const [loadingOwnerQuickStats, setLoadingOwnerQuickStats] = useState(false);
-  const [badgePopupsShownThisSession, setBadgePopupsShownThisSession] = useState(0);
+  const [badgePopupBatchCount, setBadgePopupBatchCount] = useState(0);
+  const [badgePopupBatchLockedUntil, setBadgePopupBatchLockedUntil] = useState(0);
 
   const dashboardStatsCacheKey = userId ? `bb:dashboard-stats-cache:${userId}` : null;
   const storePurchasesCacheKey = userId ? `store-purchases:${userId}` : null;
@@ -4040,6 +4087,18 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!userId) {
+      setBadgePopupBatchCount(0);
+      setBadgePopupBatchLockedUntil(0);
+      return;
+    }
+
+    const batchState = readBadgePopupBatchState(userId);
+    setBadgePopupBatchCount(batchState.count);
+    setBadgePopupBatchLockedUntil(batchState.lockedUntil);
+  }, [userId]);
+
+  useEffect(() => {
+    if (!userId) {
       setSeenBadgePopupIds(new Set());
       setBadgePopupSeenLoaded(false);
       return;
@@ -4137,7 +4196,16 @@ export default function DashboardPage() {
   useEffect(() => {
     if (!badgePopupSeenLoaded) return;
     if (hasBlockingDashboardOverlay || activeEarnedBadge || earnedBadgeQueue.length === 0) return;
-    if (badgePopupsShownThisSession >= MAX_BADGE_POPUPS_PER_SESSION) return;
+    if (userId && typeof window !== "undefined") {
+      const batchState = readBadgePopupBatchState(userId);
+      if (batchState.lockedUntil > Date.now()) {
+        if (badgePopupBatchLockedUntil !== batchState.lockedUntil) setBadgePopupBatchLockedUntil(batchState.lockedUntil);
+        if (badgePopupBatchCount !== MAX_BADGE_POPUPS_PER_BATCH) setBadgePopupBatchCount(MAX_BADGE_POPUPS_PER_BATCH);
+        return;
+      }
+      if (batchState.count !== badgePopupBatchCount) setBadgePopupBatchCount(batchState.count);
+    }
+    if (badgePopupBatchCount >= MAX_BADGE_POPUPS_PER_BATCH) return;
 
     const unseenQueue = earnedBadgeQueue.filter((badge) => !seenBadgePopupIds.has(badge.id));
     if (unseenQueue.length !== earnedBadgeQueue.length) {
@@ -4152,7 +4220,14 @@ export default function DashboardPage() {
     setEarnedBadgeQueue(remainingBadges);
     setActiveEarnedBadge(nextBadge);
     setSeenBadgePopupIds((current) => new Set([...Array.from(current), nextBadge.id]));
-    setBadgePopupsShownThisSession((current) => current + 1);
+    setBadgePopupBatchCount((current) => {
+      const nextCount = Math.min(current + 1, MAX_BADGE_POPUPS_PER_BATCH);
+      if (userId) {
+        const lockedUntil = writeBadgePopupBatchState(userId, nextCount);
+        setBadgePopupBatchLockedUntil(lockedUntil);
+      }
+      return nextCount;
+    });
     setPendingDailyStreakSequence(false);
     setShowStreakMotivationModal(false);
     setShowStreakMotivationTaskPrompt(false);
@@ -4189,7 +4264,7 @@ export default function DashboardPage() {
         colors: ["#7BAFD4", "#f7c948", "#22c55e", "#ffffff"],
       });
     }, 240);
-  }, [activeEarnedBadge, badgePopupSeenLoaded, badgePopupsShownThisSession, earnedBadgeQueue, hasBlockingDashboardOverlay, pendingDailyStreakSequence, seenBadgePopupIds, userId]);
+  }, [activeEarnedBadge, badgePopupBatchCount, badgePopupBatchLockedUntil, badgePopupSeenLoaded, earnedBadgeQueue, hasBlockingDashboardOverlay, pendingDailyStreakSequence, seenBadgePopupIds, userId]);
 
   async function completeSwipeHint(options: { openExplore?: boolean } = {}) {
     if (isSavingSwipeHint) return;
@@ -9995,8 +10070,13 @@ export default function DashboardPage() {
         </div>
       </ModalShell>
 
-      <ModalShell
+      <UpgradeRequiredModal
         isOpen={showDeepStudyUpgradeModal}
+        onClose={() => setShowDeepStudyUpgradeModal(false)}
+      />
+
+      <ModalShell
+        isOpen={false && showDeepStudyUpgradeModal}
         onClose={() => setShowDeepStudyUpgradeModal(false)}
         backdropColor="bg-black/60"
       >

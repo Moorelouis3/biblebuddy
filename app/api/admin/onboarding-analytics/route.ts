@@ -230,6 +230,42 @@ function summarizeSources(rows: Record<string, unknown>[]) {
     .sort((a, b) => b.signups - a.signups);
 }
 
+function summarizeLandingLast24Hours(rows: Record<string, unknown>[]) {
+  const since = Date.now() - 24 * 60 * 60 * 1000;
+  const recentRows = rows.filter((row) => {
+    const createdAt = typeof row.created_at === "string" ? new Date(row.created_at).getTime() : 0;
+    return Number.isFinite(createdAt) && createdAt >= since;
+  });
+  const visitSessions = new Set<string>();
+  const signupSessions = new Set<string>();
+  let visitEvents = 0;
+  let signupEvents = 0;
+
+  for (const row of recentRows) {
+    const eventName = typeof row.event_name === "string" ? row.event_name : "";
+    const sessionId = typeof row.session_id === "string" ? row.session_id : "";
+    if (eventName === "landing_page_visit") {
+      visitEvents += 1;
+      if (sessionId) visitSessions.add(sessionId);
+    }
+    if (eventName === "created_account_successfully") {
+      signupEvents += 1;
+      if (sessionId) signupSessions.add(sessionId);
+    }
+  }
+
+  const visits = visitSessions.size || visitEvents;
+  const signups = signupSessions.size || signupEvents;
+
+  return {
+    visits,
+    signups,
+    conversionRate: visits > 0 ? Number(((signups / visits) * 100).toFixed(1)) : 0,
+    rawVisitEvents: visitEvents,
+    rawSignupEvents: signupEvents,
+  };
+}
+
 export async function GET() {
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -257,12 +293,14 @@ export async function GET() {
   const funnel = summarizeFunnel(eventRows);
   const sources = summarizeSources(eventRows);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(eventRows);
+  const landingLast24h = summarizeLandingLast24Hours(eventRows);
 
   if (error) {
     return NextResponse.json({
       totalResponses: 0,
       personaLine: "Run CREATE_LANDING_ONBOARDING_RESPONSES.sql to enable new onboarding analytics.",
       funnel,
+      landingLast24h,
       publicOnboardingFlow,
       sources,
       eventSetupRequired: Boolean(eventError),
@@ -288,6 +326,7 @@ export async function GET() {
     personaLine: buildPersonaLine(questions),
     questions,
     funnel,
+    landingLast24h,
     publicOnboardingFlow,
     sources,
     setupRequired: false,

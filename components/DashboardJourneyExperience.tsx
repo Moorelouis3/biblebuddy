@@ -51,15 +51,9 @@ import {
   GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
-import { GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON, GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
-import { BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO, type BibleYearAudioDay } from "../lib/bibleYearAudio";
-import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "../lib/bibleYearDayOneDeepNotes";
-import { BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS } from "../lib/bibleYearDayOneDeepStudy";
-import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES, BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS } from "../lib/bibleYearDayThreeDeepNotes";
-import { BIBLE_YEAR_DAY_FOUR_DEEP_NOTES, BIBLE_YEAR_DAY_FOUR_DEEP_STUDY_SECTIONS } from "../lib/bibleYearDayFourDeepNotes";
-import { BIBLE_YEAR_DAY_FIVE_DEEP_NOTES, BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS } from "../lib/bibleYearDayFiveDeepNotes";
-import { BIBLE_YEAR_DAY_SIX_DEEP_NOTES, BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS } from "../lib/bibleYearDaySixDeepNotes";
-import { BIBLE_YEAR_DAY_TWO_DEEP_NOTES, BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS } from "../lib/fallOfManDeepNotes";
+import type { BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
+import type { BibleYearAudioDay } from "../lib/bibleYearAudio";
+import { getBibleYearDayContent } from "../lib/bibleYearDaysContent";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
@@ -67,6 +61,7 @@ import { normalizePremiumSkinId } from "../lib/premiumSkins";
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
+const DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID = "bible-year:day-1-study-notes-gift";
 type BibleYearDayCardKey = "reading" | "trivia" | "reflection";
 type BibleYearCompletedCardsByDay = Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>;
 type BibleYearSeriesFilter = "all" | "current" | "completed";
@@ -1799,6 +1794,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
   const [bibleYearDeepNotesOpen, setBibleYearDeepNotesOpen] = useState(false);
   const [bibleYearDayOneDeepNotesGiftOpen, setBibleYearDayOneDeepNotesGiftOpen] = useState(false);
+  const [bibleYearDayOneStudyNotesGiftSeen, setBibleYearDayOneStudyNotesGiftSeen] = useState(false);
   const [bibleYearDeepNotesUpgradeOpen, setBibleYearDeepNotesUpgradeOpen] = useState(false);
   const [bibleYearDownloadUpgradeOpen, setBibleYearDownloadUpgradeOpen] = useState(false);
   const [bibleYearQuickUpgradeOpen, setBibleYearQuickUpgradeOpen] = useState(false);
@@ -2499,6 +2495,42 @@ export default function DashboardJourneyExperience({
     setBibleYearDeepNotesUpgradeOpen(false);
     setBibleYearDeepNotesOpen(true);
   }, [bibleYearDayOneDeepNotesGiftOpen, isPaidUser]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadDayOneStudyNotesGiftSeen() {
+      if (!userId || isPaidUser) {
+        setBibleYearDayOneStudyNotesGiftSeen(Boolean(isPaidUser));
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("user_popups_seen")
+        .select("has_seen")
+        .eq("user_id", userId)
+        .eq("popup_id", DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID)
+        .maybeSingle();
+
+      if (cancelled) return;
+
+      if (error) {
+        if (!/user_popups_seen|schema cache/i.test(error.message || "")) {
+          console.warn("[POPUPS] Could not load Day 1 Study Notes gift popup state:", error.message);
+        }
+        setBibleYearDayOneStudyNotesGiftSeen(false);
+        return;
+      }
+
+      setBibleYearDayOneStudyNotesGiftSeen(data?.has_seen === true);
+    }
+
+    void loadDayOneStudyNotesGiftSeen();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isPaidUser, userId]);
 
   function showFreeChapterLimit(target: FreeChapterUnlockTarget) {
     setFreePlanCountdown(formatFreePlanCountdown(getNextLocalDayStartMs() - Date.now()));
@@ -5058,27 +5090,13 @@ export default function DashboardJourneyExperience({
   }
 
   function getBibleYearDailyLesson(dayNumber: number): BibleYearDailyLesson | null {
-    if (dayNumber === 1) return GENESIS_DAY_ONE_CREATION_LESSON;
-    if (dayNumber === 2) return GENESIS_DAY_TWO_FALL_LESSON;
-    if (dayNumber === 3) return GENESIS_DAY_THREE_NOAH_ARK_LESSON;
-    if (dayNumber === 4) return GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON;
-    if (dayNumber === 5) return GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON;
-    if (dayNumber === 6) return GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON;
-    if (dayNumber === 7) return GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON;
-    if (dayNumber === 8) return GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON;
-    return null;
+    const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber);
+    return day ? getBibleYearDayContent(day).lesson : null;
   }
 
   function getBibleYearDayAudio(dayNumber: number): BibleYearAudioDay | null {
-    if (dayNumber === 1) return BIBLE_YEAR_DAY_ONE_AUDIO;
-    if (dayNumber === 2) return BIBLE_YEAR_DAY_TWO_AUDIO;
-    if (dayNumber === 3) return BIBLE_YEAR_DAY_THREE_AUDIO;
-    if (dayNumber === 4) return BIBLE_YEAR_DAY_FOUR_AUDIO;
-    if (dayNumber === 5) return BIBLE_YEAR_DAY_FIVE_AUDIO;
-    if (dayNumber === 6) return BIBLE_YEAR_DAY_SIX_AUDIO;
-    if (dayNumber === 7) return BIBLE_YEAR_DAY_SEVEN_AUDIO;
-    if (dayNumber === 8) return BIBLE_YEAR_DAY_EIGHT_AUDIO;
-    return null;
+    const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber);
+    return day ? getBibleYearDayContent(day).audio : null;
   }
 
   function getBibleYearLessonVerses(block: BibleYearDailyLesson["sections"][number]["verseBlock"]) {
@@ -5224,7 +5242,71 @@ export default function DashboardJourneyExperience({
     }
   }
 
-  function openBibleYearDeepNotes(dayNumber?: number) {
+  async function resolveBibleYearStudyNotesPaidStatus() {
+    if (isPaidUser) return true;
+    if (!userId) return false;
+
+    const { data, error } = await supabase
+      .from("profile_stats")
+      .select("is_paid")
+      .eq("user_id", userId)
+      .maybeSingle();
+
+    if (error) {
+      console.warn("[BIBLE_YEAR_STUDY_NOTES] Could not confirm paid status:", error.message);
+      return false;
+    }
+
+    return data?.is_paid === true;
+  }
+
+  async function hasSeenDayOneStudyNotesGiftPopup() {
+    if (!userId) return bibleYearDayOneStudyNotesGiftSeen;
+    if (bibleYearDayOneStudyNotesGiftSeen) return true;
+
+    const { data, error } = await supabase
+      .from("user_popups_seen")
+      .select("has_seen")
+      .eq("user_id", userId)
+      .eq("popup_id", DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID)
+      .maybeSingle();
+
+    if (error) {
+      if (!/user_popups_seen|schema cache/i.test(error.message || "")) {
+        console.warn("[POPUPS] Could not verify Day 1 Study Notes gift popup state:", error.message);
+      }
+      return bibleYearDayOneStudyNotesGiftSeen;
+    }
+
+    const hasSeen = data?.has_seen === true;
+    if (hasSeen) setBibleYearDayOneStudyNotesGiftSeen(true);
+    return hasSeen;
+  }
+
+  async function markDayOneStudyNotesGiftPopupSeen() {
+    setBibleYearDayOneStudyNotesGiftSeen(true);
+    if (!userId) return;
+
+    const now = new Date().toISOString();
+    const { error } = await supabase
+      .from("user_popups_seen")
+      .upsert(
+        {
+          user_id: userId,
+          popup_id: DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID,
+          has_seen: true,
+          seen_at: now,
+          updated_at: now,
+        },
+        { onConflict: "user_id,popup_id" },
+      );
+
+    if (error && !/user_popups_seen|schema cache/i.test(error.message || "")) {
+      console.warn("[POPUPS] Could not save Day 1 Study Notes gift popup state:", error.message);
+    }
+  }
+
+  async function openBibleYearDeepNotes(dayNumber?: number) {
     const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber) || selectedBibleYearSeriesDay || activeBibleYearDashboardDay;
     void trackDeepStudyInterestOnce({
       userId,
@@ -5236,12 +5318,23 @@ export default function DashboardJourneyExperience({
       contentLabel: day ? `Day ${day.dayNumber} - ${day.title}` : `Day ${dayNumber || "Unknown"} Study Notes`,
     });
 
-    if (isPaidUser) {
+    const hasPaidAccess = await resolveBibleYearStudyNotesPaidStatus();
+
+    if (hasPaidAccess) {
+      setBibleYearDayOneDeepNotesGiftOpen(false);
+      setBibleYearDeepNotesUpgradeOpen(false);
       setBibleYearDeepNotesOpen(true);
       return;
     }
 
     if (day?.dayNumber === 1) {
+      const hasSeenGiftPopup = await hasSeenDayOneStudyNotesGiftPopup();
+      if (hasSeenGiftPopup) {
+        setBibleYearDeepNotesOpen(true);
+        return;
+      }
+
+      void markDayOneStudyNotesGiftPopupSeen();
       setBibleYearDayOneDeepNotesGiftOpen(true);
       return;
     }
@@ -5416,6 +5509,92 @@ export default function DashboardJourneyExperience({
           <p className="mt-3 text-[11px] font-semibold leading-4 text-[#61708a]">
             🔒 Cancel anytime. Upgrade in seconds. Secure and private.
           </p>
+        </div>
+      </ModalShell>
+    );
+  }
+
+  function renderBibleYearQuickUpgradeModal() {
+    return (
+      <ModalShell isOpen={bibleYearQuickUpgradeOpen} onClose={() => {
+        if (bibleYearQuickUpgradeLoading) return;
+        setBibleYearQuickUpgradeOpen(false);
+        setBibleYearQuickUpgradeError(null);
+      }}>
+        <div className="bb-skin-glow-card relative w-full max-w-md overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_38%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_82%,transparent))] p-5 text-left text-[var(--bb-text-primary,#111827)] shadow-[0_28px_80px_rgba(0,0,0,0.45),0_0_38px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent)] backdrop-blur-xl">
+          {bibleYearQuickUpgradeLoading ? (
+            <div className="absolute inset-0 z-20 grid place-items-center bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent)] backdrop-blur-sm">
+              <div className="flex w-[min(260px,80%)] flex-col items-center rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-5 py-5 text-center shadow-[0_18px_48px_rgba(15,23,42,0.18)]">
+                <span className="h-9 w-9 animate-spin rounded-full border-4 border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] border-t-[var(--bb-accent,#f6b44b)]" aria-hidden="true" />
+                <span className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">Opening Stripe</span>
+                <span className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                  Taking you to the {bibleYearQuickUpgradeLoading === "monthly" ? "$4.99 monthly" : "$50 yearly"} checkout.
+                </span>
+              </div>
+            </div>
+          ) : null}
+          <button
+            type="button"
+            onClick={() => {
+              if (bibleYearQuickUpgradeLoading) return;
+              setBibleYearQuickUpgradeOpen(false);
+              setBibleYearQuickUpgradeError(null);
+            }}
+            className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_76%,transparent)] text-xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_62%,transparent)] disabled:cursor-not-allowed disabled:opacity-50"
+            aria-label="Close plan choices"
+            disabled={Boolean(bibleYearQuickUpgradeLoading)}
+          >
+            x
+          </button>
+          <div className="inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">
+            Bible Buddy Pro
+          </div>
+          <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">Choose your Pro plan</h2>
+          <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            Unlock Study Notes and start understanding Scripture more deeply. Cancel anytime.
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => startBibleYearQuickUpgrade("monthly")}
+              disabled={Boolean(bibleYearQuickUpgradeLoading)}
+              className="relative flex min-h-28 w-full flex-col justify-between rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_30%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_84%,transparent)] px-4 py-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_48%,transparent)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+            >
+              <span>
+                <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Monthly</span>
+                <span className="block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">Flexible access</span>
+              </span>
+              <span className="mt-4 text-2xl font-black text-[var(--bb-accent,#f6b44b)]">$4.99</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => startBibleYearQuickUpgrade("yearly")}
+              disabled={Boolean(bibleYearQuickUpgradeLoading)}
+              className="relative flex min-h-28 w-full flex-col justify-between overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_44%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-4 py-4 text-left text-[var(--bb-button-text,#000000)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_32%,transparent)] transition hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+            >
+              <span>
+                <span className="block text-sm font-black">Yearly</span>
+                <span className="block text-xs font-bold opacity-80">Best value</span>
+              </span>
+              <span className="mt-4 text-2xl font-black">$50</span>
+            </button>
+          </div>
+          {bibleYearQuickUpgradeError ? (
+            <p className="mt-3 rounded-2xl border border-red-400/35 bg-red-500/10 px-4 py-3 text-xs font-bold leading-5 text-red-200">
+              {bibleYearQuickUpgradeError}
+            </p>
+          ) : null}
+          <button
+            type="button"
+            onClick={() => {
+              setBibleYearQuickUpgradeOpen(false);
+              setBibleYearQuickUpgradeError(null);
+            }}
+            disabled={Boolean(bibleYearQuickUpgradeLoading)}
+            className="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_80%,transparent)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            Keep Studying Free
+          </button>
         </div>
       </ModalShell>
     );
@@ -6752,16 +6931,14 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function getBibleYearRequiredCardKeys(day: GenesisBibleYearDay) {
-    if (day.dayNumber === 1 || day.dayNumber === 2) return ["reading", "reflection", "trivia"] as BibleYearDayCardKey[];
-    return BIBLE_YEAR_DAY_CARD_KEYS;
+    if (!day) return BIBLE_YEAR_DAY_CARD_KEYS;
+    return ["reading", "reflection", "trivia"] as BibleYearDayCardKey[];
   }
 
   function getBibleYearCardDisplayLabel(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
-    if (day.dayNumber === 1 || day.dayNumber === 2) {
-      if (card === "reading") return "video";
-      if (card === "reflection") return "summary";
-    }
-    return card === "reading" ? "reading" : card;
+    if (card === "reading") return "video";
+    if (card === "reflection") return "summary";
+    return card;
   }
 
   function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => day.dayNumber <= 8)) {
@@ -6776,9 +6953,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function freeUserCanOpenBibleYearDayTasks(day: GenesisBibleYearDay) {
-    if (isOwnerDashboard) return true;
-    if (isBibleYearDayComplete(day)) return true;
-    return day.dayNumber === getCurrentBibleYearSeriesDayNumber();
+    return Boolean(day);
   }
 
   function isBibleYearTaskLockedForFree(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
@@ -6822,10 +6997,9 @@ Before we understand redemption, we need to understand what God made humanity fo
       const labels = remaining.map((card) => getBibleYearCardDisplayLabel(day, card)).join(" + ");
       return `${labels} left`;
     }
-    if ((day.dayNumber === 1 || day.dayNumber === 2) && remaining[0] === "reflection") return "Summary left";
-    if (remaining[0] === "reflection") return "Post reflection to finish";
+    if (remaining[0] === "reflection") return "Summary left";
     if (remaining[0] === "trivia") return "Trivia left";
-    if (remaining[0] === "reading") return day.dayNumber === 1 || day.dayNumber === 2 ? "Video left" : "Reading left";
+    if (remaining[0] === "reading") return "Video left";
     return `${doneCount}/${requiredCardKeys.length} tasks done`;
   }
 
@@ -7193,49 +7367,11 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (!day) return [];
     const dayLabel = `Day ${day.dayNumber}`;
     const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
-    if (day.dayNumber === 1 || day.dayNumber === 2) {
-      return [
-        {
-          kind: "reading",
-          title: "Watch Today's Scripture Video",
-          subtitle: "Watch today's guided Scripture breakdown.",
-          pointsLabel: "+25 XP",
-          timeEstimateLabel: day.dayNumber === 1 ? "18 min" : day.estimatedTime,
-          href: `#bible-year-day-${day.dayNumber}-reading`,
-          done: completed.reading === true,
-          completedAtLabel: completed.reading ? "Done" : null,
-          chapterLabel: dayLabel,
-        },
-        {
-          kind: "reflection",
-          title: "Read Today's Summary",
-          subtitle: "Read today's summary to better understand the story and meaning of the passage.",
-          pointsLabel: "+20 XP",
-          timeEstimateLabel: "3 min",
-          href: `#bible-year-day-${day.dayNumber}-reflection`,
-          done: completed.reflection === true,
-          completedAtLabel: completed.reflection ? "Done" : null,
-          chapterLabel: dayLabel,
-        },
-        {
-          kind: "trivia",
-          title: "Answer Today's Trivia Questions",
-          subtitle: "Test your understanding and reinforce what you learned today.",
-          pointsLabel: "+20 XP",
-          timeEstimateLabel: "3 min",
-          href: `#bible-year-day-${day.dayNumber}-trivia`,
-          done: completed.trivia === true,
-          completedAtLabel: completed.trivia ? "Done" : null,
-          chapterLabel: dayLabel,
-        },
-      ];
-    }
-
     return [
       {
         kind: "reading",
-        title: `${dayLabel} Watch / Listen`,
-        subtitle: getBibleYearReadingTaskSubtitle(day),
+        title: "Watch Today's Scripture Video",
+        subtitle: "Watch today's guided Scripture breakdown.",
         pointsLabel: "+25 XP",
         timeEstimateLabel: day.estimatedTime,
         href: `#bible-year-day-${day.dayNumber}-reading`,
@@ -7244,20 +7380,9 @@ Before we understand redemption, we need to understand what God made humanity fo
         chapterLabel: dayLabel,
       },
       {
-        kind: "trivia",
-        title: `${dayLabel} Trivia`,
-        subtitle: "Test what you learned and reinforce the truth.",
-        pointsLabel: "+20 XP",
-        timeEstimateLabel: "3 min",
-        href: `#bible-year-day-${day.dayNumber}-trivia`,
-        done: completed.trivia === true,
-        completedAtLabel: completed.trivia ? "Done" : null,
-        chapterLabel: dayLabel,
-      },
-      {
         kind: "reflection",
-        title: `${dayLabel} Reflection`,
-        subtitle: "Reflect on what God is teaching you today.",
+        title: "Read Today's Summary",
+        subtitle: "Read today's summary to better understand the story and meaning of the passage.",
         pointsLabel: "+20 XP",
         timeEstimateLabel: "3 min",
         href: `#bible-year-day-${day.dayNumber}-reflection`,
@@ -7265,46 +7390,32 @@ Before we understand redemption, we need to understand what God made humanity fo
         completedAtLabel: completed.reflection ? "Done" : null,
         chapterLabel: dayLabel,
       },
+      {
+        kind: "trivia",
+        title: "Answer Today's Trivia Questions",
+        subtitle: "Test your understanding and reinforce what you learned today.",
+        pointsLabel: "+20 XP",
+        timeEstimateLabel: "3 min",
+        href: `#bible-year-day-${day.dayNumber}-trivia`,
+        done: completed.trivia === true,
+        completedAtLabel: completed.trivia ? "Done" : null,
+        chapterLabel: dayLabel,
+      },
     ];
   }
 
   function getBibleYearDayDeepNotes(dayNumber: number) {
-    const markdown =
-      dayNumber === 1
-        ? BIBLE_YEAR_DAY_ONE_DEEP_NOTES
-        : dayNumber === 2
-          ? BIBLE_YEAR_DAY_TWO_DEEP_NOTES
-          : dayNumber === 3
-            ? BIBLE_YEAR_DAY_THREE_DEEP_NOTES
-            : dayNumber === 4
-              ? BIBLE_YEAR_DAY_FOUR_DEEP_NOTES
-              : dayNumber === 5
-                ? BIBLE_YEAR_DAY_FIVE_DEEP_NOTES
-                : dayNumber === 6
-                  ? BIBLE_YEAR_DAY_SIX_DEEP_NOTES
-                  : null;
-    const sections =
-      dayNumber === 1
-        ? BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS
-        : dayNumber === 2
-          ? BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS
-          : dayNumber === 3
-            ? BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS
-            : dayNumber === 4
-              ? BIBLE_YEAR_DAY_FOUR_DEEP_STUDY_SECTIONS
-              : dayNumber === 5
-                ? BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS
-                : dayNumber === 6
-                  ? BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS
-                  : null;
-    return { markdown, sections };
+    const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber);
+    const content = day ? getBibleYearDayContent(day) : null;
+    return { markdown: content?.studyNotesMarkdown ?? null, sections: content?.studyNotesSections ?? null };
   }
 
   function renderBibleYearDayOneVideoTask(day: GenesisBibleYearDay) {
-    const lesson = getBibleYearDailyLesson(day.dayNumber) || GENESIS_DAY_ONE_CREATION_LESSON;
-    const audio = getBibleYearDayAudio(day.dayNumber) || BIBLE_YEAR_DAY_ONE_AUDIO;
+    const content = getBibleYearDayContent(day);
+    const lesson = content.lesson;
+    const audio = content.audio;
     const videoComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
-    const videoPlayerSrc = audio.videoSrc
+    const videoPlayerSrc = audio?.videoSrc
       ? `${audio.videoSrc}${audio.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
       : null;
 
@@ -7336,7 +7447,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div className="relative aspect-video overflow-hidden bg-black">
                 <iframe
                   src={videoPlayerSrc}
-                  title={lesson.title}
+                  title={lesson?.title || day.title}
                   loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                   allowFullScreen
@@ -7344,18 +7455,31 @@ Before we understand redemption, we need to understand what God made humanity fo
                 />
               </div>
             </div>
+          ) : audio ? (
+            <div className="mt-4">
+              <BibleYearLessonAudioPlayer
+                audioSrc={audio.apiSrc}
+                title={audio.title}
+                durationLabel={audio.estimatedDuration}
+                storagePath={audio.storagePath}
+                userId={userId}
+                videoId={`bible-year-day-${day.dayNumber}`}
+              />
+            </div>
           ) : (
             <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4 text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
-              Today&apos;s video is loading. You can still mark the task complete after watching.
+              Today&apos;s audio/video lesson is being prepared. This day already uses the standard Day 1 task flow, and the media can drop into this same card when ready.
             </div>
           )}
-          <VideoHelpfulPoll
-            userId={userId}
-            videoId={`bible-year-day-${day.dayNumber}`}
-            videoTitle={lesson.title}
-            videoUrl={audio.videoSrc || ""}
-            videoContext="bible_year"
-          />
+          {audio?.videoSrc ? (
+            <VideoHelpfulPoll
+              userId={userId}
+              videoId={`bible-year-day-${day.dayNumber}`}
+              videoTitle={lesson?.title || day.title}
+              videoUrl={audio.videoSrc || ""}
+              videoContext="bible_year"
+            />
+          ) : null}
           <button
             type="button"
             onClick={() => {
@@ -7381,8 +7505,11 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearSummaryTask(day: GenesisBibleYearDay) {
     const summaryComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reflection === true;
+    const summaryContent = getBibleYearDayContent(day).summary;
     const { markdown: deepNotesMarkdown, sections: deepStudySections } = getBibleYearDayDeepNotes(day.dayNumber);
-    const summaryHighlights = [
+    const summaryHighlights = summaryContent.highlights;
+    void summaryHighlights;
+    const legacyDayOneHighlights = [
       ["✨", "God speaks into darkness and brings light."],
       ["🌍", "God shapes the world into a home filled with life and purpose."],
       ["👤", "Humanity is created in God's image with value, dignity, and meaning."],
@@ -7395,15 +7522,11 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className="px-1 pt-2">
           <div className="space-y-6">
             <section>
-              <p className="text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
-                {day.dayNumber === 2 ? "Genesis 3-4 shows what happens when trust in God breaks." : "Genesis 1-2 introduces the world before sin, pain, and brokenness entered creation."}
-              </p>
-              <p className="mt-3 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
-                {day.dayNumber === 2 ? "These chapters explain why the world feels divided, painful, and heavy now: sin enters through distrust, then spreads into shame, blame, anger, and violence." : "These chapters show God bringing order out of darkness, creating life with purpose, and forming humanity in His image."}
-              </p>
-              <p className="mt-3 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
-                {day.dayNumber === 2 ? "But even when the story turns dark, God keeps speaking, covering, warning, and preserving hope." : "Before anything was damaged, Scripture first shows us what God originally intended the world to be."}
-              </p>
+              {summaryContent.intro.map((paragraph) => (
+                <p key={paragraph} className="mt-3 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)] first:mt-0">
+                  {paragraph}
+                </p>
+              ))}
             </section>
 
             <section>
@@ -7430,17 +7553,17 @@ Before we understand redemption, we need to understand what God made humanity fo
             <section className="border-l-4 border-[var(--bb-success,#16a34a)] pl-4">
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-success,#16a34a)]">Big Takeaway</p>
               <p className="mt-3 text-sm font-black leading-7 text-[var(--bb-text-primary,#111827)]">
-                {day.dayNumber === 2 ? "Sin spreads quickly when trust breaks, but God does not abandon His people." : "Before the damage of sin entered the story, God's design for creation was good, beautiful, ordered, and full of life."}
+                {summaryContent.takeaway}
               </p>
               <p className="mt-3 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
-                {day.dayNumber === 2 ? "Day 2 helps us understand why humanity needs rescue, and why the first promise of victory over evil matters so much." : "This helps us understand not only where humanity came from, but what we were originally created for."}
+                {summaryContent.takeawaySupport}
               </p>
             </section>
 
             <div className="border-t border-[var(--bb-card-border,#dbe7f4)] pt-5">
-              <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Want to understand today&apos;s Scripture even deeper?</p>
+              <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{summaryContent.studyNotesCtaTitle || "Want to understand today's Scripture even deeper?"}</p>
               <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                Open the Study Notes for verse-by-verse explanations, themes, context, and deeper study tools.
+                {summaryContent.studyNotesCtaBody || "Open the Study Notes for verse-by-verse explanations, themes, context, and deeper study tools."}
               </p>
               {deepNotesMarkdown ? (
                 <button
@@ -7537,19 +7660,14 @@ Before we understand redemption, we need to understand what God made humanity fo
         {renderBibleYearDayOneDeepNotesGiftModal()}
 
         {renderBibleYearDeepNotesUpgradeModal()}
+        {renderBibleYearQuickUpgradeModal()}
       </div>
     );
   }
 
   function renderBibleYearInlineTask(card: "reading" | "trivia" | "reflection", day: GenesisBibleYearDay) {
     if (card === "reading") {
-      if (day.dayNumber === 1 || day.dayNumber === 2) {
-        return renderBibleYearDayOneVideoTask(day);
-      }
-      if (day.dayNumber === 3 || day.dayNumber === 4 || day.dayNumber === 5 || day.dayNumber === 6) {
-        return renderStandardBibleYearReadingPage(day);
-      }
-      return renderBibleYearDayModalBody(day);
+      return renderBibleYearDayOneVideoTask(day);
     }
 
     if (card === "trivia") {
@@ -7709,49 +7827,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       );
     }
 
-    if (day.dayNumber === 1 || day.dayNumber === 2) {
-      return renderBibleYearSummaryTask(day);
-    }
-
-    return (
-      <div className="px-4 pb-4">
-        <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Day {day.dayNumber} Reflection</p>
-          <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-            {bibleYearReflectionPromptByDay[day.dayNumber] || "What stood out to you from today's lesson?"}
-          </h2>
-          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            Keep it simple, or go deep. This is a place to respond to the Day {day.dayNumber} lesson.
-          </p>
-          <div className="mt-4 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_10%,var(--bb-card,#ffffff))] px-4 py-3">
-            <p className="text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">
-              Earn {BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD} diamonds for joining the discussion.
-            </p>
-            <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-              Post your reflection once for today and the reward is yours.
-            </p>
-          </div>
-          <div className="mt-4">
-            <CommentSection
-              articleSlug={getBibleYearReflectionSlug(day)}
-              headingText=""
-              placeholderText="Start Typing Here"
-              submitButtonText="Send"
-              variant="plain"
-              onPosted={() => {
-                markBibleYearReflectionPosted(day);
-                markBibleYearDayCardComplete(day, "reflection");
-                void awardBibleYearDiscussionDiamonds(day);
-              }}
-              onUserHasPosted={() => {
-                markBibleYearReflectionPosted(day);
-                markBibleYearDayCardComplete(day, "reflection");
-              }}
-            />
-          </div>
-        </div>
-      </div>
-    );
+    return renderBibleYearSummaryTask(day);
   }
 
   function renderBibleYearOptionalDiscussion(day: GenesisBibleYearDay) {
@@ -7826,7 +7902,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearCompletedDayPanel(day: GenesisBibleYearDay) {
     const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === day.dayNumber + 1);
-    const usesSimpleDailyFlow = day.dayNumber === 1 || day.dayNumber === 2;
+    const usesSimpleDailyFlow = true;
     const reflectionPosted = bibleYearReflectionPostedByDay[day.dayNumber] === true;
 
     return (
@@ -8757,6 +8833,43 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
+  function getBibleYearJourneyDayOverview(day: GenesisBibleYearDay) {
+    const overviewByDay: Record<number, string> = {
+      1: "Genesis 1-2 opens with God creating a good and ordered world. You see light, land, living creatures, humanity made in God's image, and Eden as the first picture of life with God. This day sets up the foundation for creation, purpose, work, rest, and relationship.",
+      2: "Genesis 3-4 shows how sin enters the story and starts damaging what God made good. Adam and Eve hide, blame, and leave Eden, and Cain's anger turns into violence against Abel. This day explains why the Bible moves from a good creation into the need for rescue and hope.",
+      3: "Genesis 5-7 follows the generations after Adam as the world becomes more corrupt and violent. Noah stands out by listening to God and building the ark before the flood begins. This day shows judgment coming, but also God preserving life through obedience and mercy.",
+      4: "Genesis 8-10 shows the flood ending and life beginning again on the earth. Noah steps into a renewed world, worships God, and receives the rainbow as a covenant sign. This day is about a fresh start, the spread of nations, and the reminder that humanity still needs God.",
+      5: "Genesis 11-13 moves from the Tower of Babel into the beginning of Abraham's story. People try to build their own name, but God calls Abram to follow His promise and become a blessing. This day starts the family line that will shape the rest of the Bible.",
+      6: "Genesis 14-15 shows Abram rescuing Lot after war breaks out near Sodom. Abram meets Melchizedek, refuses a corrupt reward, and then hears God repeat the promise under the stars. This day is about courage, trust, and God confirming where Abram's future is headed.",
+      7: "Genesis 16-17 follows the pressure of waiting when the promise still has not arrived. Hagar is mistreated but seen by God, and Abram receives a new name, a covenant sign, and the promise of Isaac. This day shows a family learning that God's timing cannot be forced.",
+      8: "Genesis 18-19 moves between promise and judgment. Abraham welcomes mysterious visitors, Sarah hears that a son is coming, and Abraham pleads for Sodom before the city is destroyed. This day shows both God's patience and the seriousness of a world that rejects Him.",
+      9: "Genesis 20-25 closes Abraham's journey with fear, promise, testing, loss, and legacy. Isaac is born, Abraham faces the test on Mount Moriah, Sarah dies, and Isaac receives a bride. This day shows the promise moving forward into the next generation.",
+      10: "Genesis 26-27 follows Isaac's family as the covenant promise continues through weakness and conflict. Wells, fear, favoritism, deception, Jacob, and Esau all collide around the blessing. This day shows that God keeps His plan moving even through a complicated family.",
+      11: "Genesis 28-29 begins Jacob's journey away from home. At Bethel, God meets him with a promise, and then Jacob enters years of labor, love, disappointment, and family complexity. This day shows Jacob starting to learn that God is with him outside familiar places.",
+      12: "Genesis 30-31 follows Jacob's household as it grows through tension, rivalry, and pressure. Conflict with Laban increases, and Jacob finally leaves with his family and possessions. This day is about growth in a messy season and the courage to move when God says it is time.",
+      13: "Genesis 32-33 brings Jacob to a moment of fear before meeting Esau again. He prays, wrestles through the night, receives a new name, and then walks into reconciliation. This day shows Jacob changed as he faces the brother he once wronged.",
+      14: "Genesis 34-36 closes this part of Jacob's story with grief, violence, renewal, and loss. The family faces painful consequences, returns to Bethel, and continues forward through change. This day shows the covenant family still being shaped in the middle of real brokenness.",
+      15: "Genesis 37-38 begins Joseph's story with dreams, jealousy, betrayal, and a pit. Joseph is sold away from his family, while Judah's story shows more family failure and hidden complexity. This day opens a new section where God is working even when everything looks wrong.",
+      16: "Genesis 39-40 follows Joseph in Egypt through temptation, false accusation, prison, and forgotten service. He remains faithful when life is unfair and keeps using the gifts God gave him. This day shows hidden preparation before anyone can see what God is doing.",
+      17: "Genesis 41-42 shows Joseph rising from prison to leadership in Egypt. Famine begins, and his brothers come looking for food without knowing they are standing before the one they betrayed. This day turns the story toward confrontation, mercy, and the beginning of family restoration.",
+      18: "Genesis 43-44 follows Joseph's brothers as they return to Egypt under pressure. Fear, testing, mercy, and Judah's change all come to the surface. This day shows the family reaching a breaking point where old wounds can finally be faced.",
+      19: "Genesis 45-46 brings the emotional reveal as Joseph tells his brothers who he is. Forgiveness, reunion, and relief reshape the family, and Jacob begins the journey down to Egypt. This day shows God preserving life through a story that once looked like loss.",
+      20: "Genesis 47-48 follows Jacob's family settling in Egypt while famine continues around them. Joseph manages provision, Jacob nears the end of his life, and blessing is passed forward. This day shows God's promise continuing even while the family lives far from the land.",
+      21: "Genesis 49-50 finishes Genesis with Jacob's final blessings, his burial, and Joseph's final words of forgiveness. The family remains in Egypt, but the promise is still alive and pointing ahead. This day closes Genesis with hope that God will keep carrying the story forward.",
+    };
+
+    if (overviewByDay[day.dayNumber]) {
+      return overviewByDay[day.dayNumber];
+    }
+
+    const summary = day.summary.trim().replace(/\s+/g, " ");
+    const cleanSummary = summary ? summary.replace(/[.?!]+$/, "") : "";
+    const chapterText = day.reference || day.readings.map((reading) => `${reading.book} ${reading.chapter}`).join(", ");
+    const lowerTitle = day.title.toLowerCase();
+
+    return `${chapterText} focuses on ${lowerTitle} as the journey continues through Scripture. ${cleanSummary ? `${cleanSummary}.` : "This day gives a simple overview of the main events, people, and movement in the passage."} It helps you understand what is happening before you open the full Bible study.`;
+  }
+
   function renderBibleYearJourneyInlinePreview(day: GenesisBibleYearDay) {
     const completedCount = getBibleYearDayCompletedCount(day);
     const totalCount = getBibleYearRequiredCardKeys(day).length;
@@ -8765,7 +8878,6 @@ Before we understand redemption, we need to understand what God made humanity fo
     const isLocked = !freeUserCanOpenBibleYearDayTasks(day);
     const isInProgress = !isComplete && isCurrent && completedCount > 0;
     const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
-    const chapterLabels = day.readings.map((reading) => `${reading.book} ${reading.chapter}`);
     const statusLabel = isComplete ? "Completed" : isLocked ? "Locked Study" : isCurrent ? (isInProgress ? "In Progress" : "Current Study") : "Past Study";
     const actionLabel = isComplete ? "Review Bible Study" : isCurrent ? "Continue Study" : "Open Bible Study";
     const encouragement = isComplete
@@ -8775,9 +8887,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         : "You're currently progressing through this study.";
 
     return (
-      <div className="px-3 pb-4 sm:px-4">
-        <div className="animate-[bb-soft-pop_220ms_ease-out] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-left shadow-[0_16px_36px_rgba(38,63,99,0.12)]">
-          <div className="relative p-5 sm:p-6">
+      <div className="animate-[bb-soft-pop_220ms_ease-out] px-6 pb-5 pt-2 text-left sm:px-8">
+          <div className="relative">
             <button
               type="button"
               onClick={() => setBibleYearJourneyPreviewDay(null)}
@@ -8805,33 +8916,12 @@ Before we understand redemption, we need to understand what God made humanity fo
                   {isComplete ? "✓" : isLocked ? "🔒" : "📖"}
                 </div>
               </div>
-              <p className="mt-4 max-w-3xl text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{day.summary}</p>
+              <p className="mt-4 max-w-3xl text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{getBibleYearJourneyDayOverview(day)}</p>
             </div>
 
             <div className="mt-5 space-y-4 border-t border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,var(--bb-card-border,#dbe7f4))] pt-4">
-              <div>
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 shrink-0 text-[var(--bb-accent,#2f7fe8)]">
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                      <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
-                    </svg>
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Chapters Covered</span>
-                    <span className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
-                      {chapterLabels.map((label) => (
-                        <span key={label} className="text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                          {label}
-                        </span>
-                      ))}
-                    </span>
-                  </span>
-                </div>
-              </div>
-
               {!isLocked ? (
-                <div className="border-t border-[var(--bb-card-border,#dbe7f4)] pt-4">
+                <div>
                   <div className="flex items-center justify-between gap-3">
                     <span>
                       <span className="block text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Your Progress</span>
@@ -8869,7 +8959,6 @@ Before we understand redemption, we need to understand what God made humanity fo
               ) : null}
             </div>
           </div>
-        </div>
       </div>
     );
   }
@@ -9228,44 +9317,20 @@ Before we understand redemption, we need to understand what God made humanity fo
   };
 
   function renderStandardBibleYearReadingPage(day: GenesisBibleYearDay) {
-    const lesson = getBibleYearDailyLesson(day.dayNumber) || GENESIS_DAY_ONE_CREATION_LESSON;
-    const audio = getBibleYearDayAudio(day.dayNumber) || BIBLE_YEAR_DAY_ONE_AUDIO;
+    const lesson = getBibleYearDailyLesson(day.dayNumber);
+    const audio = getBibleYearDayAudio(day.dayNumber);
+    if (!lesson || !audio) {
+      return renderBibleYearDayOneVideoTask(day);
+    }
     const readingCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
     const videoPlayerSrc = audio.videoSrc
       ? `${audio.videoSrc}${audio.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
       : null;
     const verseBreakdownSections = lesson.sections;
-    const deepNotesMarkdown =
-      day.dayNumber === 1
-        ? BIBLE_YEAR_DAY_ONE_DEEP_NOTES
-        : day.dayNumber === 2
-          ? BIBLE_YEAR_DAY_TWO_DEEP_NOTES
-          : day.dayNumber === 3
-            ? BIBLE_YEAR_DAY_THREE_DEEP_NOTES
-            : day.dayNumber === 4
-              ? BIBLE_YEAR_DAY_FOUR_DEEP_NOTES
-              : day.dayNumber === 5
-                ? BIBLE_YEAR_DAY_FIVE_DEEP_NOTES
-                : day.dayNumber === 6
-                  ? BIBLE_YEAR_DAY_SIX_DEEP_NOTES
-              : null;
+    const { markdown: deepNotesMarkdown, sections: deepStudySections } = getBibleYearDayDeepNotes(day.dayNumber);
     const hasDeepNotes = Boolean(deepNotesMarkdown);
     const deepNotesEyebrow = `Day ${day.dayNumber} Study Notes`;
     const deepNotesTitle = day.title;
-    const deepStudySections =
-      day.dayNumber === 1
-        ? BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS
-        : day.dayNumber === 2
-          ? BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS
-          : day.dayNumber === 3
-            ? BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS
-            : day.dayNumber === 4
-              ? BIBLE_YEAR_DAY_FOUR_DEEP_STUDY_SECTIONS
-              : day.dayNumber === 5
-                ? BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS
-                : day.dayNumber === 6
-                  ? BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS
-          : null;
     const useSectionDeepStudy = Boolean(deepStudySections);
     const overviewRecapByDay: Record<number, { intro: string; points: string[]; outro: string }> = {
       1: {
@@ -10353,7 +10418,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearReadingArticlePage(day: GenesisBibleYearDay) {
     const bibleYearLesson = getBibleYearDailyLesson(day.dayNumber);
-    if (day.dayNumber === 1 || day.dayNumber === 2 || day.dayNumber === 3 || day.dayNumber === 4 || day.dayNumber === 5 || day.dayNumber === 6) {
+    if (bibleYearLesson) {
       return renderStandardBibleYearReadingPage(day);
     }
 
@@ -11667,7 +11732,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   className="relative w-full px-3.5 py-3 text-left transition-all duration-300 sm:px-4"
                   aria-expanded={isActiveInlineTask}
                 >
-                  {isCardDisabled ? (
+                  {isCardDisabled && !(selectedBibleYearSeriesDay && bibleYearTaskCard) ? (
                     <span
                       className="absolute bottom-3 right-4 text-base opacity-70"
                       aria-label="Locked"
@@ -11751,7 +11816,16 @@ Before we understand redemption, we need to understand what God made humanity fo
                           )
                         ) : null}
                         {selectedBibleYearSeriesDay && bibleYearTaskCard ? (
-                          <span className="shrink-0 text-[11px] font-black uppercase tracking-[0.12em] text-gray-950">
+                          <span className="inline-flex shrink-0 items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-gray-950">
+                            {isCardDisabled ? (
+                              <span
+                                className="text-sm leading-none opacity-75"
+                                aria-label="Locked"
+                                title={bibleYearOrderLocked ? getBibleYearLockedTaskTitle(selectedBibleYearSeriesDay, bibleYearTaskCard) : "Complete the task above to unlock this."}
+                              >
+                                {"\uD83D\uDD12"}
+                              </span>
+                            ) : null}
                             Task {taskIndex + 1}
                           </span>
                         ) : null}

@@ -386,7 +386,26 @@ export async function GET(request: NextRequest) {
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
 
-  const visibleComments = enrichedWithReplies.filter((comment) => !comment.isReply).slice(commentFrom, commentFrom + limit);
+  const allCommentUserIds = [
+    ...new Set(enrichedWithReplies.map((comment) => comment.userId).filter(Boolean) as string[]),
+  ];
+  const { data: profileRows } = allCommentUserIds.length
+    ? await admin
+        .from("profile_stats")
+        .select("user_id, display_name, username, profile_image_url, current_level, member_badge, is_paid, pro_trial_expires_at")
+        .in("user_id", allCommentUserIds)
+    : { data: [] as any[] };
+  const profileMap = new Map((profileRows || []).map((profile: any) => [profile.user_id, profile]));
+  const isModeratorOrSelfComment = (userId: string | null | undefined) => {
+    if (!userId) return false;
+    if (userId === requester.id) return true;
+    const profile = profileMap.get(userId);
+    return normalizeCustomMemberBadge(profile?.member_badge) === "moderator";
+  };
+
+  const visibleComments = enrichedWithReplies
+    .filter((comment) => !comment.isReply && !isModeratorOrSelfComment(comment.userId))
+    .slice(commentFrom, commentFrom + limit);
   const feedPostIds = [...new Set(visibleComments.filter((comment) => comment.kind === "feed_post_comment" && comment.rootId).map((comment) => comment.rootId as string))];
   const groupParentIds = [...new Set(enrichedWithReplies.filter((comment) => comment.kind === "group_feed_comment" && comment.parentId).map((comment) => comment.parentId as string))];
   const seriesPostIds = [...new Set(visibleComments.filter((comment) => comment.kind === "series_post_comment" && comment.rootId).map((comment) => comment.rootId as string))];
@@ -453,19 +472,6 @@ export async function GET(request: NextRequest) {
     return { ...comment, isReply: Boolean(parent?.parent_post_id) };
   });
 
-  const visibleUserIds = [
-    ...new Set([
-      ...(withContext.map((comment) => comment.userId).filter(Boolean) as string[]),
-      ...(normalizedForStats.map((comment) => comment.userId).filter(Boolean) as string[]),
-    ]),
-  ];
-  const { data: profileRows } = visibleUserIds.length
-    ? await admin
-        .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, current_level, member_badge, is_paid, pro_trial_expires_at")
-        .in("user_id", visibleUserIds)
-    : { data: [] as any[] };
-  const profileMap = new Map((profileRows || []).map((profile: any) => [profile.user_id, profile]));
   const isStaffReply = (userId: string | null | undefined) => {
     if (!userId) return false;
     if (userId === requester.id) return true;
@@ -513,7 +519,7 @@ export async function GET(request: NextRequest) {
       hasModeratorReply,
       hasMyReply: comment.hasMyReply || hasModeratorReply,
     };
-  });
+  }).filter((comment) => comment.isReply || !isModeratorOrSelfComment(comment.userId));
 
   const [signupRes, totalUsersRes] = await Promise.all([
     admin

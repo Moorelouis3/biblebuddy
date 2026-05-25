@@ -933,7 +933,7 @@ export default function LandingPage() {
                 <Link
                   href="/login"
                   onClick={() => setLandingMenuOpen(false)}
-                  className="bb-force-black block rounded-2xl bg-[#0E1A3A] px-4 py-3 text-center text-sm font-black text-white"
+                  className="bb-force-black block rounded-2xl border border-[#ece3d7] bg-white px-4 py-3 text-center text-sm font-black text-[#0E1A3A] shadow-sm"
                 >
                   Login
                 </Link>

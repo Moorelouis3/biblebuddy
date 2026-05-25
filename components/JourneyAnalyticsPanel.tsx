@@ -250,20 +250,23 @@ export default function JourneyAnalyticsPanel({ embedded = false }: { embedded?:
         <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
           <ModeCard title="Bible In One Year" subtitle="Tracks day progress, task completion, and where people are in the plan.">
             <div className="grid gap-3 sm:grid-cols-3">
-              <StatCard label="Started Plan" value={formatNumber(bibleYear.users)} detail="Users with Bible in One Year progress" />
-              <StatCard label="Active 7d" value={formatNumber(bibleYear.activeUsers7d)} detail="Users who touched the plan this week" />
-              <StatCard label="Avg Furthest Day" value={bibleYear.averageCurrentDay} detail="Average furthest day reached per user" />
+              <StatCard label="Started Plan" value={formatNumber(bibleYear.users)} detail="Total users who started Bible in One Year" />
+              <StatCard label="Active This Week" value={formatNumber(bibleYear.activeUsers7d)} detail="Users active in the plan in the last 7 days" />
+              <StatCard label="Avg Furthest Day" value={bibleYear.averageCurrentDay} detail="Average highest day users have reached" />
             </div>
+            <p className="mt-3 rounded-2xl border border-[var(--bb-card-border,#2b4f74)] bg-[var(--bb-surface-soft,#0a1b2e)]/55 px-4 py-3 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#b7c8dd)]">
+              Avg Furthest Day shows the average highest day reached. Example: 1.4 means most users are still around Day 1, with some reaching Day 2 or beyond.
+            </p>
 
             <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#2b4f74)] bg-[var(--bb-surface-soft,#0a1b2e)]/70 p-4">
               <div className="flex items-center justify-between gap-3">
-                <p className="text-sm font-black text-[var(--bb-text-primary,#f8fbff)]">Task movement - last 24 hours</p>
-                <p className="text-xs font-bold text-[var(--bb-text-secondary,#b7c8dd)]">{formatNumber(bibleYear.completedTasks)} total task completions</p>
+                <p className="text-sm font-black text-[var(--bb-text-primary,#f8fbff)]">Task movement - past 24 hours</p>
+                <p className="text-xs font-bold text-[var(--bb-text-secondary,#b7c8dd)]">{formatNumber(bibleYear.completedTasks)} lifetime task completions</p>
               </div>
               <div className="mt-3 grid gap-2 sm:grid-cols-3">
                 {[
-                  ["Video", bibleYear.taskBreakdownLast24h.video],
-                  ["Summary", bibleYear.taskBreakdownLast24h.summary],
+                  ["Watch Video", bibleYear.taskBreakdownLast24h.video],
+                  ["Read Summary", bibleYear.taskBreakdownLast24h.summary],
                   ["Trivia", bibleYear.taskBreakdownLast24h.trivia],
                 ].map(([label, value]) => (
                   <div key={label} className="rounded-xl border border-[var(--bb-card-border,#2b4f74)] bg-[var(--bb-card,#10243a)] px-3 py-3">

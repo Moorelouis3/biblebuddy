@@ -4,10 +4,6 @@ import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
-import { getUsername } from "@/lib/profileStats";
-import UserBadge from "@/components/UserBadge";
-import LevelBadge from "@/components/LevelBadge";
-import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { triggerToast } from "@/components/AppToast";
 import { ModalShell } from "@/components/ModalShell";
 import TextareaMentionInput from "@/components/TextareaMentionInput";
@@ -18,6 +14,7 @@ import {
   loadGroupPostMentions,
   type MentionCatalogItem,
 } from "@/lib/groupPostMentions";
+import { buildFullName, hasRequiredFullName, splitFullName } from "@/lib/profileName";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 
@@ -130,6 +127,15 @@ export default function CommentSection({
   const [likersLoading, setLikersLoading] = useState(false);
   const [likers, setLikers] = useState<CommentLiker[]>([]);
   const [likersTitle, setLikersTitle] = useState("Likes");
+  const [completeProfileOpen, setCompleteProfileOpen] = useState(false);
+  const [profileFirstName, setProfileFirstName] = useState("");
+  const [profileLastName, setProfileLastName] = useState("");
+  const [profileImageFile, setProfileImageFile] = useState<File | null>(null);
+  const [profileImagePreview, setProfileImagePreview] = useState<string | null>(null);
+  const [profileSaving, setProfileSaving] = useState(false);
+  const [profileCompletionError, setProfileCompletionError] = useState<string | null>(null);
+
+  const currentUserCanPost = Boolean(user && hasRequiredFullName(user.name) && currentUserProfileImage);
 
   const hydrateUser = useCallback(async (userId?: string | null, email?: string | null) => {
     if (!userId) {
@@ -141,22 +147,20 @@ export default function CommentSection({
     }
 
     let displayName = "";
+    let profileImageUrl: string | null = null;
     try {
-      const profile = await getUsername(userId);
-      if (profile && typeof profile.username === "string" && profile.username.trim()) {
-        displayName = profile.username.trim();
-      } else if (email && typeof email === "string") {
-        displayName = email.split("@")[0];
-      } else {
-        displayName = "Anonymous";
-      }
+      const { data: profile } = await supabase
+        .from("profile_stats")
+        .select("display_name, username, profile_image_url, member_badge")
+        .eq("user_id", userId)
+        .maybeSingle();
+      const authProfileName = "";
+      const candidateName = profile?.display_name?.trim() || authProfileName;
+      displayName = hasRequiredFullName(candidateName) ? candidateName : "";
+      profileImageUrl = profile?.profile_image_url || null;
+      setCurrentUserBadge(profile?.member_badge ?? null);
     } catch (err) {
-      console.error("[CommentSection] Error fetching username:", err);
-      if (email && typeof email === "string") {
-        displayName = email.split("@")[0];
-      } else {
-        displayName = "Anonymous";
-      }
+      console.error("[CommentSection] Error fetching profile:", err);
     }
 
     try {
@@ -166,15 +170,19 @@ export default function CommentSection({
         .eq("user_id", userId)
         .maybeSingle();
       setCurrentUserBadge(profileRow?.member_badge ?? null);
-      setCurrentUserProfileImage(profileRow?.profile_image_url ?? null);
+      setCurrentUserProfileImage(profileRow?.profile_image_url ?? profileImageUrl);
       setCurrentUserIsAdmin((email || "").toLowerCase() === ADMIN_EMAIL);
     } catch {
-      setCurrentUserBadge(null);
-      setCurrentUserProfileImage(null);
+      setCurrentUserProfileImage(profileImageUrl);
       setCurrentUserIsAdmin((email || "").toLowerCase() === ADMIN_EMAIL);
     }
 
-    setUser({ id: userId, name: displayName });
+    const safeName = displayName || "Bible Buddy Member";
+    const nameParts = splitFullName(displayName);
+    setProfileFirstName(nameParts.firstName);
+    setProfileLastName(nameParts.lastName);
+    setProfileImagePreview(profileImageUrl);
+    setUser({ id: userId, name: safeName });
   }, []);
 
   const fetchComments = useCallback(async () => {
@@ -192,6 +200,7 @@ export default function CommentSection({
 
     const rows = ((data || []) as Comment[]).map((row) => ({
       ...row,
+      user_name: hasRequiredFullName(row.user_name) ? row.user_name : "Bible Buddy Member",
       like_count: Math.max(0, Number(row.like_count || 0)),
       liked: false,
     }));
@@ -234,12 +243,13 @@ export default function CommentSection({
     try {
       const { data: profiles } = await supabase
         .from("profile_stats")
-        .select("user_id, profile_image_url, member_badge, is_paid, current_level, current_streak, selected_streak_flame")
+        .select("user_id, display_name, profile_image_url, member_badge, is_paid, current_level, current_streak, selected_streak_flame")
         .in("user_id", userIds);
       if (!profiles || profiles.length === 0) return;
-      const profileMap: Record<string, { profile_image_url: string | null; member_badge: string | null; is_paid: boolean; current_level: number | null; current_streak: number | null; selected_streak_flame: string | null }> = {};
+      const profileMap: Record<string, { display_name: string | null; profile_image_url: string | null; member_badge: string | null; is_paid: boolean; current_level: number | null; current_streak: number | null; selected_streak_flame: string | null }> = {};
       profiles.forEach((p) => {
         profileMap[p.user_id] = {
+          display_name: hasRequiredFullName(p.display_name) ? p.display_name : null,
           profile_image_url: p.profile_image_url ?? null,
           member_badge: p.member_badge ?? null,
           is_paid: p.is_paid === true,
@@ -251,6 +261,7 @@ export default function CommentSection({
       setComments((prev) =>
         prev.map((c) => ({
           ...c,
+          user_name: profileMap[c.user_id]?.display_name ?? "Bible Buddy Member",
           profile_image_url: profileMap[c.user_id]?.profile_image_url ?? null,
           member_badge: profileMap[c.user_id]?.member_badge ?? null,
           is_paid: profileMap[c.user_id]?.is_paid ?? false,
@@ -363,6 +374,15 @@ export default function CommentSection({
   const handlePost = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || !content.trim()) return;
+    if (!currentUserCanPost) {
+      setProfileCompletionError(null);
+      const nameParts = splitFullName(hasRequiredFullName(user.name) ? user.name : "");
+      setProfileFirstName(nameParts.firstName);
+      setProfileLastName(nameParts.lastName);
+      setProfileImagePreview(currentUserProfileImage);
+      setCompleteProfileOpen(true);
+      return;
+    }
     setLoading(true);
     const trimmedContent = content.trim();
     const insertedId = uuidv4();
@@ -405,6 +425,71 @@ export default function CommentSection({
       onPosted?.();
     }
   };
+
+  async function handleCompleteProfile(e: React.FormEvent) {
+    e.preventDefault();
+    if (!user) return;
+
+    const fullName = buildFullName(profileFirstName, profileLastName);
+    if (!hasRequiredFullName(fullName)) {
+      setProfileCompletionError("Please add your first and last name.");
+      return;
+    }
+    if (!profileImageFile && !currentUserProfileImage) {
+      setProfileCompletionError("Please add a profile picture before posting.");
+      return;
+    }
+
+    setProfileSaving(true);
+    setProfileCompletionError(null);
+    try {
+      let imageUrl = currentUserProfileImage;
+      if (profileImageFile) {
+        const ext = profileImageFile.name.split(".").pop() || "jpg";
+        const path = `${user.id}/avatar.${ext}`;
+        const { error: uploadError } = await supabase.storage
+          .from("avatars")
+          .upload(path, profileImageFile, { upsert: true });
+        if (uploadError) throw uploadError;
+        const { data: urlData } = supabase.storage.from("avatars").getPublicUrl(path);
+        imageUrl = urlData.publicUrl;
+      }
+
+      const { error: saveError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: user.id,
+            display_name: fullName,
+            username: fullName,
+            profile_image_url: imageUrl,
+          },
+          { onConflict: "user_id" },
+        );
+      if (saveError) throw saveError;
+
+      await supabase.auth.updateUser({
+        data: {
+          firstName: profileFirstName.trim(),
+          first_name: profileFirstName.trim(),
+          lastName: profileLastName.trim(),
+          last_name: profileLastName.trim(),
+          display_name: fullName,
+        },
+      });
+
+      setUser({ id: user.id, name: fullName });
+      setCurrentUserProfileImage(imageUrl);
+      setProfileImageFile(null);
+      setProfileImagePreview(imageUrl);
+      setCompleteProfileOpen(false);
+      triggerToast("Profile updated. You can post your reflection now.");
+    } catch (err) {
+      setProfileCompletionError(err instanceof Error ? err.message : "Could not update your profile.");
+    } finally {
+      setProfileSaving(false);
+    }
+  }
 
   const handleDelete = async (id: string) => {
     triggerSmokeDelete();
@@ -619,15 +704,15 @@ export default function CommentSection({
 
       const { data: profiles, error: profileError } = await supabase
         .from("profile_stats")
-        .select("user_id, username, profile_image_url")
+        .select("user_id, display_name, profile_image_url")
         .in("user_id", userIds);
 
       if (profileError) throw profileError;
 
-      const profileMap = new Map<string, { username: string | null; profile_image_url: string | null }>();
-      (profiles || []).forEach((profile: { user_id: string; username: string | null; profile_image_url: string | null }) => {
+      const profileMap = new Map<string, { display_name: string | null; profile_image_url: string | null }>();
+      (profiles || []).forEach((profile: { user_id: string; display_name: string | null; profile_image_url: string | null }) => {
         profileMap.set(profile.user_id, {
-          username: profile.username,
+          display_name: hasRequiredFullName(profile.display_name) ? profile.display_name : null,
           profile_image_url: profile.profile_image_url,
         });
       });
@@ -637,8 +722,8 @@ export default function CommentSection({
           const profile = profileMap.get(userId);
           return {
             user_id: userId,
-            username: profile?.username ?? null,
-            display_name: profile?.username || "Bible Buddy",
+            username: null,
+            display_name: profile?.display_name || "Bible Buddy Member",
             profile_image_url: profile?.profile_image_url ?? null,
           };
         }),
@@ -683,9 +768,6 @@ export default function CommentSection({
                       <Link href={`/profile/${c.user_id}`} className="text-xs font-semibold text-[var(--bb-text-primary,#1f2937)] hover:underline">
                         {c.user_name}
                       </Link>
-                      <StreakFlameBadge currentStreak={c.current_streak} flameId={c.selected_streak_flame} />
-                      <LevelBadge currentLevel={c.current_level} />
-                      <UserBadge customBadge={c.member_badge} isPaid={c.is_paid === true} />
                       <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
                     </div>
                     {editingCommentId === c.id ? (
@@ -901,6 +983,72 @@ export default function CommentSection({
         </div>
         {!user && <div className="mt-4 text-center text-sm text-gray-500">Sign in to comment.</div>}
       </div>
+      <ModalShell isOpen={completeProfileOpen} onClose={() => setCompleteProfileOpen(false)} zIndex="z-[120]" backdropColor="bg-black/50">
+        <form onSubmit={handleCompleteProfile} className="mx-4 w-full max-w-md rounded-3xl bg-white p-6 text-gray-950 shadow-2xl">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Complete Profile</p>
+              <h3 className="mt-1 text-2xl font-black">Before you post</h3>
+              <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
+                Reflections show your real first and last name with a profile picture.
+              </p>
+            </div>
+            <button type="button" onClick={() => setCompleteProfileOpen(false)} className="text-2xl leading-none text-gray-500 hover:text-gray-900" aria-label="Close profile setup">
+              ×
+            </button>
+          </div>
+
+          <div className="mt-5 flex items-center gap-4">
+            <div className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-full bg-blue-50 text-2xl font-black text-blue-500">
+              {profileImagePreview ? <img src={profileImagePreview} alt="" className="h-full w-full object-cover" /> : "?"}
+            </div>
+            <label className="cursor-pointer rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-black text-blue-700">
+              Add Profile Picture
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={(event) => {
+                  const file = event.target.files?.[0] || null;
+                  setProfileImageFile(file);
+                  setProfileImagePreview(file ? URL.createObjectURL(file) : currentUserProfileImage);
+                }}
+              />
+            </label>
+          </div>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <label className="block">
+              <span className="text-xs font-black uppercase tracking-[0.12em] text-gray-500">First Name</span>
+              <input
+                value={profileFirstName}
+                onChange={(event) => setProfileFirstName(event.target.value)}
+                className="mt-2 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
+                placeholder="First name"
+              />
+            </label>
+            <label className="block">
+              <span className="text-xs font-black uppercase tracking-[0.12em] text-gray-500">Last Name</span>
+              <input
+                value={profileLastName}
+                onChange={(event) => setProfileLastName(event.target.value)}
+                className="mt-2 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
+                placeholder="Last name"
+              />
+            </label>
+          </div>
+
+          {profileCompletionError ? <p className="mt-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-600">{profileCompletionError}</p> : null}
+
+          <button
+            type="submit"
+            disabled={profileSaving}
+            className="mt-5 w-full rounded-2xl bg-[#2f7fe8] px-5 py-3.5 text-sm font-black text-white shadow-[0_12px_26px_rgba(47,127,232,0.22)] disabled:opacity-60"
+          >
+            {profileSaving ? "Saving..." : "Save and Continue"}
+          </button>
+        </form>
+      </ModalShell>
       <ModalShell isOpen={likersOpen} onClose={() => setLikersOpen(false)} zIndex="z-[110]" backdropColor="bg-black/50">
         <div className="mx-4 w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
           <div className="mb-4 flex items-center justify-between gap-3">
