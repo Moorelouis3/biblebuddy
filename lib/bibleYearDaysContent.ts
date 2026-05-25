@@ -27,6 +27,7 @@ import { BIBLE_YEAR_DAY_FOUR_DEEP_NOTES, BIBLE_YEAR_DAY_FOUR_DEEP_STUDY_SECTIONS
 import { BIBLE_YEAR_DAY_FIVE_DEEP_NOTES, BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS } from "./bibleYearDayFiveDeepNotes";
 import { BIBLE_YEAR_DAY_SEVEN_DEEP_NOTES, BIBLE_YEAR_DAY_SEVEN_DEEP_STUDY_SECTIONS } from "./bibleYearDaySevenDeepNotes";
 import { BIBLE_YEAR_DAY_SIX_DEEP_NOTES, BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS } from "./bibleYearDaySixDeepNotes";
+import { BIBLE_YEAR_DAY_EIGHT_DEEP_NOTES, BIBLE_YEAR_DAY_EIGHT_DEEP_STUDY_SECTIONS } from "./bibleYearDayEightDeepNotes";
 import { BIBLE_YEAR_DAY_TWO_DEEP_NOTES, BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS } from "./fallOfManDeepNotes";
 import type { GenesisBibleYearDay } from "./bibleInOneYearPlan";
 
@@ -170,6 +171,23 @@ const daySevenSummary: BibleYearSummaryContent = {
   takeawaySupport: "Day 7 helps us understand that God sees the wounded, corrects the waiting, and carries His promise forward even after human failure.",
 };
 
+const dayEightSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 18-19 brings promise, prayer, mercy, judgment, and rescue into one important part of Abraham's story.",
+    "Abraham welcomes the visitors, Sarah hears the promise again, and God asks the question that sits over the whole chapter: Is anything too hard for the LORD?",
+    "Then the story turns toward Sodom, where Abraham intercedes, Lot is rescued, and God's justice confronts deep corruption.",
+  ],
+  highlights: [
+    ["⛺", "Abraham welcomes the visitors, and his tent becomes the setting for a holy encounter."],
+    ["😮", "Sarah laughs at the promise, but God reminds her that nothing is too hard for the LORD."],
+    ["🙏", "Abraham intercedes for Sodom and asks whether the Judge of all the earth will do right."],
+    ["🚪", "Lot's life in Sodom reveals compromise, danger, and the cost of living close to corruption."],
+    ["🔥", "Sodom is judged, but Lot is pulled out by mercy before destruction falls."],
+  ],
+  takeaway: "God's promise is stronger than impossibility, and His mercy is present even when judgment is real.",
+  takeawaySupport: "Day 8 helps us see that God listens, God sees what is truly happening, and God knows how to rescue while still taking evil seriously.",
+};
+
 function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent {
   const pieces = day.summary
     .split(",")
@@ -253,8 +271,9 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   8: {
     lesson: GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON,
     audio: BIBLE_YEAR_DAY_EIGHT_AUDIO,
-    studyNotesMarkdown: null,
-    studyNotesSections: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_EIGHT_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_EIGHT_DEEP_STUDY_SECTIONS,
+    summary: dayEightSummary,
     discussionPrompt: "What stands out to you about Abraham's intercession and Lot's rescue?",
   },
 };

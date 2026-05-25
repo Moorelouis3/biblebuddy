@@ -379,7 +379,7 @@ export default function AnalyticsPage() {
   const [statsLogView, setStatsLogView] = useState<"list" | "graph">("list");
 
   // Main section selector (Action Log, Stats Log, Inbox)
-  const [activeSection, setActiveSection] = useState<"actions" | "stats" | "inbox" | "messages">("actions");
+  const [activeSection, setActiveSection] = useState<"growth" | "actions" | "stats" | "inbox" | "messages">("growth");
 
   // Admin Action Log
   const [actionLog, setActionLog] = useState<
@@ -3426,7 +3426,7 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
+    <div className="max-w-3xl mx-auto p-4 pb-32">
       <h1 className="text-3xl font-bold mb-6">Analytics Dashboard</h1>
 
       {/* ACTIVE USERS RIGHT NOW + TOTAL USERS */}
@@ -4211,12 +4211,14 @@ export default function AnalyticsPage() {
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold">
             {activeSection === "actions" && "Action Log (All Users)"}
+            {activeSection === "growth" && "Growth Analytics"}
             {activeSection === "stats" && "Stats Log"}
             {activeSection === "inbox" && "Inbox"}
             {activeSection === "messages" && "Message Center"}
           </h2>
-          <div className="inline-flex rounded-lg border border-gray-200 bg-white p-1 text-sm">
+          <div className="flex max-w-full gap-1 overflow-x-auto rounded-lg border border-gray-200 bg-white p-1 text-sm">
             {[
+              { key: "growth", label: "Growth" },
               { key: "actions", label: "Actions" },
               { key: "stats", label: "Stats Log" },
               { key: "inbox", label: "Inbox" },
@@ -4225,8 +4227,8 @@ export default function AnalyticsPage() {
               <button
                 key={option.key}
                 type="button"
-                onClick={() => setActiveSection(option.key as "actions" | "stats" | "inbox" | "messages")}
-                className={`px-4 py-2 rounded-md transition text-sm font-medium ${
+                onClick={() => setActiveSection(option.key as "growth" | "actions" | "stats" | "inbox" | "messages")}
+                className={`shrink-0 rounded-md px-4 py-2 text-sm font-medium transition ${
                   activeSection === option.key
                     ? "bg-blue-600 text-white shadow-sm"
                     : "text-gray-600 hover:bg-gray-100"
@@ -4237,6 +4239,116 @@ export default function AnalyticsPage() {
             ))}
           </div>
         </div>
+
+        {/* GROWTH ANALYTICS SECTION */}
+        {activeSection === "growth" && (
+          <div className="space-y-5">
+            <div className="rounded-2xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
+              <div className="mb-4">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-700">Landing Page</p>
+                <h3 className="text-xl font-black text-gray-900">Visitors vs Signups</h3>
+                <p className="text-sm font-semibold text-gray-600">Last 24 hours conversion tracking.</p>
+              </div>
+              {loadingOnboardingAnalytics ? (
+                <div className="rounded-xl bg-white/70 p-5 text-center text-sm font-semibold text-gray-500">Loading landing analytics...</div>
+              ) : (
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <OverviewCard label="Visitors" value={onboardingAnalytics?.landingLast24h?.visits ?? 0} />
+                  <OverviewCard label="Signups" value={onboardingAnalytics?.landingLast24h?.signups ?? 0} />
+                  <div className="rounded-xl border border-gray-200 bg-white p-4 text-center shadow">
+                    <p className="text-3xl font-bold text-gray-900">{onboardingAnalytics?.landingLast24h?.conversionRate ?? 0}%</p>
+                    <p className="mt-1 text-sm text-gray-700">Conversion Rate</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm">
+              <div className="mb-4">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-600">Study Notes</p>
+                <h3 className="text-xl font-black text-gray-900">Study Notes Activity</h3>
+                <p className="text-sm font-semibold text-gray-600">Tracks interest clicks, views, and verse breakdown sections opened.</p>
+              </div>
+              {loadingDeepStudyInterest || loadingStudyNotesAnalytics ? (
+                <div className="rounded-xl bg-gray-50 p-5 text-center text-sm font-semibold text-gray-500">Loading Study Notes analytics...</div>
+              ) : (
+                <>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    <OverviewCard label="Clicks Last 24h" value={deepStudyInterest.last24h} />
+                    <OverviewCard label="Views Last 24h" value={studyNotesAnalytics.viewsLast24h} />
+                    <OverviewCard label="Section Opens 24h" value={studyNotesAnalytics.sectionOpensLast24h} />
+                    <OverviewCard label="Unique Viewers 24h" value={studyNotesAnalytics.uniqueViewersLast24h} />
+                  </div>
+                  <div className="mt-4 grid gap-3 md:grid-cols-2">
+                    <div className="rounded-xl bg-emerald-50 p-4">
+                      <h4 className="text-sm font-black text-gray-900">Top Study Notes</h4>
+                      <div className="mt-3 space-y-2">
+                        {studyNotesAnalytics.topStudiesLast24h.length ? studyNotesAnalytics.topStudiesLast24h.slice(0, 4).map((item) => (
+                          <div key={`${item.source}-${item.label}`} className="flex items-center justify-between gap-3 rounded-lg bg-white px-3 py-2 text-sm">
+                            <span className="font-bold text-gray-900">{item.label}</span>
+                            <span className="font-black text-emerald-700">{item.count}</span>
+                          </div>
+                        )) : <p className="text-sm text-gray-500">No Study Notes views in the last 24 hours.</p>}
+                      </div>
+                    </div>
+                    <div className="rounded-xl bg-emerald-50 p-4">
+                      <h4 className="text-sm font-black text-gray-900">Top Verse Sections</h4>
+                      <div className="mt-3 space-y-2">
+                        {studyNotesAnalytics.topSectionsLast24h.length ? studyNotesAnalytics.topSectionsLast24h.slice(0, 4).map((item) => (
+                          <div key={`${item.study}-${item.label}`} className="flex items-center justify-between gap-3 rounded-lg bg-white px-3 py-2 text-sm">
+                            <span>
+                              <span className="block font-bold text-gray-900">{item.label}</span>
+                              <span className="text-xs text-gray-500">{item.study}</span>
+                            </span>
+                            <span className="font-black text-emerald-700">{item.count}</span>
+                          </div>
+                        )) : <p className="text-sm text-gray-500">No verse sections opened in the last 24 hours.</p>}
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div className="rounded-2xl border border-purple-100 bg-purple-50 p-5 shadow-sm">
+              <div className="mb-4">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-purple-700">Landing Onboarding</p>
+                <h3 className="text-xl font-black text-gray-900">Public Onboarding Stats</h3>
+                <p className="text-sm font-semibold text-gray-600">Shows drop-off and the averages from the onboarding questions.</p>
+              </div>
+              {loadingOnboardingAnalytics ? (
+                <div className="rounded-xl bg-white/70 p-5 text-center text-sm font-semibold text-gray-500">Loading onboarding stats...</div>
+              ) : (
+                <>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    <OverviewCard label="Started" value={onboardingAnalytics?.publicOnboardingFlow?.started ?? 0} />
+                    <OverviewCard label="Finished" value={onboardingAnalytics?.publicOnboardingFlow?.finished ?? 0} />
+                    <div className="rounded-xl border border-gray-200 bg-white p-4 text-center shadow">
+                      <p className="text-3xl font-bold text-gray-900">{onboardingAnalytics?.publicOnboardingFlow?.completionRate ?? 0}%</p>
+                      <p className="mt-1 text-sm text-gray-700">Completion</p>
+                    </div>
+                    <OverviewCard label="Closed Before Signup" value={onboardingAnalytics?.publicOnboardingFlow?.closedBeforeSignup ?? 0} />
+                  </div>
+
+                  <div className="mt-4 rounded-xl bg-white p-4">
+                    <h4 className="text-sm font-black text-gray-900">Question Averages</h4>
+                    <div className="mt-3 grid gap-3 md:grid-cols-2">
+                      {(onboardingAnalytics?.questions || []).map((question) => (
+                        <div key={question.key} className="rounded-xl bg-purple-50 px-3 py-3">
+                          <p className="text-xs font-black uppercase tracking-wide text-purple-700">{question.title}</p>
+                          <p className="mt-1 text-sm font-black text-gray-900">{question.mostCommon?.answer ?? "Not enough data yet"}</p>
+                          <p className="mt-1 text-xs font-semibold text-gray-500">
+                            {question.mostCommon ? `${question.mostCommon.percent}% of ${question.total.toLocaleString()} responses` : "Waiting for responses"}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* ACTION LOG SECTION */}
         {activeSection === "actions" && (
