@@ -11,6 +11,16 @@
   color: #ffffff !important;
 }
 
+.bb-safe-top-header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+@supports (padding-top: max(0px)) {
+  .bb-safe-top-header {
+    padding-top: max(env(safe-area-inset-top, 0px), 0px);
+  }
+}
+
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-skin-modal-backdrop {
   background:
     radial-gradient(circle at 50% 12%, color-mix(in srgb, var(--bb-accent) 18%, transparent), transparent 34%),

@@ -101,6 +101,23 @@ const dayThreeSummary: BibleYearSummaryContent = {
   takeawaySupport: "Day 3 helps us see both sides clearly: God takes evil seriously, but He also provides a way of rescue through mercy.",
 };
 
+const dayFourSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 8-10 shows what happens after the flood waters begin to go down.",
+    "Noah waits, the ark rests, the dove brings back an olive leaf, and God leads Noah's family into a new beginning.",
+    "But these chapters also show that even after judgment, the human heart still needs deeper rescue and lasting renewal.",
+  ],
+  highlights: [
+    ["🌊", "God remembers Noah and causes the waters to recede from the earth."],
+    ["🕊️", "The dove and olive leaf become a sign that life is returning after judgment."],
+    ["🔥", "Noah's first major act after leaving the ark is worship."],
+    ["🌈", "God gives the rainbow as a covenant sign that He will preserve the earth."],
+    ["🌍", "The nations spread from Noah's family, but sin is still present in the new world."],
+  ],
+  takeaway: "The flood story does not end with destruction. It moves toward remembrance, restoration, worship, covenant, and a new beginning.",
+  takeawaySupport: "Day 4 helps us see that God is faithful after the storm, but humanity still needs a greater rescue than Noah could bring.",
+};
+
 function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent {
   const pieces = day.summary
     .split(",")
@@ -154,6 +171,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
     audio: BIBLE_YEAR_DAY_FOUR_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_FOUR_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_FOUR_DEEP_STUDY_SECTIONS,
+    summary: dayFourSummary,
     discussionPrompt: "What stands out to you about life beginning again after the flood?",
   },
   5: {

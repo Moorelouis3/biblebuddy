@@ -2673,7 +2673,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* NAVBAR (hidden on landing/login/signup) */}
       {!isBarePage && !isDashboardStoreOpen && (
-        <header className="w-full bg-gray-50">
+        <header className="bb-safe-top-header w-full bg-gray-50">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <Link

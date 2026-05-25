@@ -1,5 +1,7 @@
-const CACHE_VERSION = "v12-2026-05-19-scroll-stability-fix";
+const CACHE_VERSION = "v13-2026-05-25-offline-study-cache";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
+const RUNTIME_CACHE_NAME = `biblebuddy-runtime-${CACHE_VERSION}`;
+const MEDIA_CACHE_NAME = `biblebuddy-media-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
   "/offline.html",
@@ -19,7 +21,11 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))
+      Promise.all(
+        keys
+          .filter(key => ![CACHE_NAME, RUNTIME_CACHE_NAME, MEDIA_CACHE_NAME].includes(key))
+          .map(key => caches.delete(key))
+      )
     ).then(() => self.clients.claim())
   );
 });
@@ -28,17 +34,51 @@ self.addEventListener("message", (event) => {
   if (event.data?.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
+  if (event.data?.type === "CACHE_BIBLE_YEAR_OFFLINE") {
+    const urls = Array.isArray(event.data.urls) ? event.data.urls.filter((url) => typeof url === "string") : [];
+    const mediaUrls = Array.isArray(event.data.mediaUrls) ? event.data.mediaUrls.filter((url) => typeof url === "string") : [];
+    event.waitUntil(
+      Promise.all([
+        caches.open(RUNTIME_CACHE_NAME).then((cache) =>
+          Promise.allSettled(urls.map((url) => cache.add(new Request(url, { credentials: "same-origin" })))),
+        ),
+        caches.open(MEDIA_CACHE_NAME).then((cache) =>
+          Promise.allSettled(mediaUrls.map((url) => cache.add(new Request(url, { credentials: "same-origin" })))),
+        ),
+      ])
+    );
+  }
 });
 
 self.addEventListener('fetch', event => {
   const req = event.request;
+  if (req.method !== "GET") return;
+  const url = new URL(req.url);
+  const sameOrigin = url.origin === self.location.origin;
+  const isBibleYearAudio = sameOrigin && url.pathname.startsWith("/api/tts/bible-year/day/");
+  const isMediaAsset = /\.(mp3|m4a|aac|wav|ogg|mp4|webm)$/i.test(url.pathname);
+  const isNextStatic = sameOrigin && url.pathname.startsWith("/_next/static/");
+  const isStaticAsset =
+    sameOrigin &&
+    (isNextStatic || /\.(js|css|png|jpg|jpeg|webp|svg|ico|woff2?)$/i.test(url.pathname));
+
   // Network-first for navigation (HTML). This keeps the installed mobile app
   // from getting stuck on an old dashboard shell after a deploy.
   if (req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept')?.includes('text/html'))) {
     event.respondWith(
       fetch(req)
-        .then(res => res)
+        .then(async (res) => {
+          if (sameOrigin && res && res.ok) {
+            const cache = await caches.open(RUNTIME_CACHE_NAME);
+            cache.put(req, res.clone());
+          }
+          return res;
+        })
         .catch(async () => {
+          const cachedPage = await caches.match(req);
+          if (cachedPage) return cachedPage;
+          const cachedDashboard = await caches.match('/dashboard');
+          if (cachedDashboard) return cachedDashboard;
           const offline = await caches.match('/offline.html');
           return offline || new Response("Bible Buddy is offline. Reconnect and try again.", {
             status: 503,
@@ -52,6 +92,22 @@ self.addEventListener('fetch', event => {
   if (STATIC_ASSETS.some(asset => req.url.endsWith(asset))) {
     event.respondWith(
       caches.match(req).then(res => res || fetch(req))
+    );
+    return;
+  }
+  // Cache-first for app bundles and downloaded media/audio.
+  if (isStaticAsset || isBibleYearAudio || isMediaAsset) {
+    const cacheName = isBibleYearAudio || isMediaAsset ? MEDIA_CACHE_NAME : RUNTIME_CACHE_NAME;
+    event.respondWith(
+      caches.open(cacheName).then(async (cache) => {
+        const cached = await cache.match(req);
+        if (cached) return cached;
+        const response = await fetch(req);
+        if (response && response.ok) {
+          cache.put(req, response.clone());
+        }
+        return response;
+      })
     );
     return;
   }

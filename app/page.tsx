@@ -902,7 +902,7 @@ export default function LandingPage() {
         }
       `}</style>
 
-      <header className="sticky top-0 z-[100] bg-[#FBF9F4]/92 backdrop-blur-xl">
+      <header className="bb-safe-top-header sticky top-0 z-[100] bg-[#FBF9F4]/92 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-5 py-4 sm:px-8 lg:px-10">
           <div className="flex items-center gap-3">
             <div className="grid h-10 w-10 place-items-center rounded-2xl bg-transparent">
