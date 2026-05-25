@@ -22,7 +22,7 @@ import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
 import { awardDiamonds } from "../lib/diamondWallet";
-import { trackDeepStudyInterestOnce } from "../lib/deepStudyInterestTracking";
+import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, markChapterDone } from "../lib/readingProgress";
 import {
@@ -54,6 +54,7 @@ import {
 import type { BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import type { BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { getBibleYearDayContent } from "../lib/bibleYearDaysContent";
+import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy";
 import { cacheBibleYearOfflineTextPack } from "../lib/bibleYearOfflinePack";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
@@ -5370,7 +5371,7 @@ export default function DashboardJourneyExperience({
 
   async function openBibleYearDeepNotes(dayNumber?: number) {
     const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber) || selectedBibleYearSeriesDay || activeBibleYearDashboardDay;
-    void trackDeepStudyInterestOnce({
+    const trackingPayload = {
       userId,
       username: userName,
       source: "bible_in_one_year",
@@ -5378,13 +5379,15 @@ export default function DashboardJourneyExperience({
       itemKey: `day-${dayNumber || day?.dayNumber || "unknown"}`,
       itemTitle: day?.title || `Day ${dayNumber || "Unknown"}`,
       contentLabel: day ? `Day ${day.dayNumber} - ${day.title}` : `Day ${dayNumber || "Unknown"} Study Notes`,
-    });
+    } as const;
+    void trackDeepStudyInterestOnce(trackingPayload);
 
     const hasPaidAccess = await resolveBibleYearStudyNotesPaidStatus();
 
     if (hasPaidAccess) {
       setBibleYearDayOneDeepNotesGiftOpen(false);
       setBibleYearDeepNotesUpgradeOpen(false);
+      void trackStudyNotesViewed(trackingPayload);
       setBibleYearDeepNotesOpen(true);
       return;
     }
@@ -5392,6 +5395,7 @@ export default function DashboardJourneyExperience({
     if (day?.dayNumber === 1) {
       const hasSeenGiftPopup = await hasSeenDayOneStudyNotesGiftPopup();
       if (hasSeenGiftPopup) {
+        void trackStudyNotesViewed(trackingPayload);
         setBibleYearDeepNotesOpen(true);
         return;
       }
@@ -5405,6 +5409,16 @@ export default function DashboardJourneyExperience({
   }
 
   function openBibleYearDayOneGiftDeepNotes() {
+    const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === 1);
+    void trackStudyNotesViewed({
+      userId,
+      username: userName,
+      source: "bible_in_one_year",
+      sourceLabel: "Bible in One Year",
+      itemKey: "day-1",
+      itemTitle: day?.title || "Day 1",
+      contentLabel: day ? `Day ${day.dayNumber} - ${day.title}` : "Day 1 Study Notes",
+    });
     setBibleYearDayOneDeepNotesGiftOpen(false);
     setBibleYearDeepNotesUpgradeOpen(false);
     setBibleYearDeepNotesOpen(true);
@@ -7569,6 +7583,19 @@ Before we understand redemption, we need to understand what God made humanity fo
     const summaryComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reflection === true;
     const summaryContent = getBibleYearDayContent(day).summary;
     const { markdown: deepNotesMarkdown, sections: deepStudySections } = getBibleYearDayDeepNotes(day.dayNumber);
+    const trackSummaryStudyNotesSection = (section: BibleYearDeepStudySection) => {
+      void trackStudyNotesSectionOpened({
+        userId,
+        username: userName,
+        source: "bible_in_one_year",
+        sourceLabel: "Bible in One Year",
+        itemKey: `day-${day.dayNumber}`,
+        itemTitle: day.title,
+        contentLabel: `Day ${day.dayNumber} - ${day.title}`,
+        sectionReference: section.reference,
+        sectionTitle: section.title,
+      });
+    };
     const summaryHighlights = summaryContent.highlights;
     void summaryHighlights;
     const legacyDayOneHighlights = [
@@ -7661,6 +7688,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     sections={deepStudySections || []}
                     activeReference={bibleYearOpenVerseBreakdownKey}
                     onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
+                    onSectionOpen={trackSummaryStudyNotesSection}
                     topId={`bible-year-day-${day.dayNumber}-summary-deep-study-top`}
                   />
                 ) : (
@@ -7710,6 +7738,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   sections={deepStudySections || []}
                   activeReference={bibleYearOpenVerseBreakdownKey}
                   onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
+                  onSectionOpen={trackSummaryStudyNotesSection}
                   topId={`bible-year-day-${day.dayNumber}-summary-deep-study-top`}
                 />
               ) : (
@@ -9394,6 +9423,19 @@ Before we understand redemption, we need to understand what God made humanity fo
     const deepNotesEyebrow = `Day ${day.dayNumber} Study Notes`;
     const deepNotesTitle = day.title;
     const useSectionDeepStudy = Boolean(deepStudySections);
+    const trackBibleYearStudyNotesSection = (section: BibleYearDeepStudySection) => {
+      void trackStudyNotesSectionOpened({
+        userId,
+        username: userName,
+        source: "bible_in_one_year",
+        sourceLabel: "Bible in One Year",
+        itemKey: `day-${day.dayNumber}`,
+        itemTitle: day.title,
+        contentLabel: `Day ${day.dayNumber} - ${day.title}`,
+        sectionReference: section.reference,
+        sectionTitle: section.title,
+      });
+    };
     const overviewRecapByDay: Record<number, { intro: string; points: string[]; outro: string }> = {
       1: {
         intro: "Quick recap: Day 1 shows the world before anything is broken.",
@@ -9957,6 +9999,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     sections={deepStudySections || []}
                     activeReference={bibleYearOpenVerseBreakdownKey}
                     onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
+                    onSectionOpen={trackBibleYearStudyNotesSection}
                     topId={`bible-year-day-${day.dayNumber}-deep-study-top`}
                   />
                 ) : (
@@ -10038,6 +10081,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     sections={deepStudySections || []}
                     activeReference={bibleYearOpenVerseBreakdownKey}
                     onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
+                    onSectionOpen={trackBibleYearStudyNotesSection}
                     topId={`bible-year-day-${day.dayNumber}-deep-study-top`}
                   />
                 ) : (
@@ -10217,6 +10261,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                         sections={deepStudySections || []}
                         activeReference={bibleYearOpenVerseBreakdownKey}
                         onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
+                        onSectionOpen={trackBibleYearStudyNotesSection}
                         topId={`bible-year-day-${day.dayNumber}-deep-study-inline-top`}
                       />
                     ) : (
@@ -10252,6 +10297,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   sections={deepStudySections || []}
                   activeReference={bibleYearOpenVerseBreakdownKey}
                   onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
+                  onSectionOpen={trackBibleYearStudyNotesSection}
                   topId={`bible-year-day-${day.dayNumber}-deep-study-top`}
                 />
               ) : (

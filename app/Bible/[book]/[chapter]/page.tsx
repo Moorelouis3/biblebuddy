@@ -20,7 +20,7 @@ import { consumeCreditAction } from "../../../../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../../../../lib/bibleNotes";
 import { requestLouisNotes } from "../../../../lib/requestLouisNotes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
-import { trackDeepStudyInterestOnce } from "../../../../lib/deepStudyInterestTracking";
+import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../../../../lib/deepStudyInterestTracking";
 import { triggerPoints } from "../../../../components/PointsPop";
 import { ensureBibleEntityLearned } from "../../../../lib/bibleEntityProgress";
 import { dispatchLouisMoment } from "../../../../lib/louisMoments";
@@ -1480,6 +1480,15 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       if (userId) {
         const reviewOpenedLabel = `${bookDisplayName} ${chapterNum} Review Opened`;
         void trackDeepStudyInterestOnce({
+          userId,
+          username,
+          source: approvedBibleYearDeepStudySections.length > 0 ? "bible_in_one_year" : "bible_chapter",
+          sourceLabel: approvedBibleYearDeepStudySections.length > 0 ? "Bible in One Year" : "Bible Chapter Notes",
+          itemKey: `${bookDisplayName.toLowerCase().replace(/\s+/g, "-")}-${chapterNum}`,
+          itemTitle: `${bookDisplayName} ${chapterNum}`,
+          contentLabel: `${bookDisplayName} ${chapterNum} Study Notes`,
+        });
+        void trackStudyNotesViewed({
           userId,
           username,
           source: approvedBibleYearDeepStudySections.length > 0 ? "bible_in_one_year" : "bible_chapter",
@@ -3161,12 +3170,25 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                         label="Listen to chapter notes"
                         audioSrc={getGenesisOneTtsSrc("notes", bookDisplayName, chapter)}
                       />
-                      <BibleYearDeepStudySectionCards
-                        sections={approvedBibleYearDeepStudySections}
-                        activeReference={activeApprovedDeepStudyReference}
-                        onActiveReferenceChange={setActiveApprovedDeepStudyReference}
-                        topId="bible-chapter-approved-deep-study-top"
-                      />
+                        <BibleYearDeepStudySectionCards
+                          sections={approvedBibleYearDeepStudySections}
+                          activeReference={activeApprovedDeepStudyReference}
+                          onActiveReferenceChange={setActiveApprovedDeepStudyReference}
+                          onSectionOpen={(section) => {
+                            void trackStudyNotesSectionOpened({
+                              userId,
+                              username,
+                              source: "bible_in_one_year",
+                              sourceLabel: "Bible in One Year",
+                              itemKey: `${bookDisplayName.toLowerCase().replace(/\s+/g, "-")}-${Number(chapter)}`,
+                              itemTitle: `${bookDisplayName} ${Number(chapter)}`,
+                              contentLabel: `${bookDisplayName} ${Number(chapter)} Study Notes`,
+                              sectionReference: section.reference,
+                              sectionTitle: section.title,
+                            });
+                          }}
+                          topId="bible-chapter-approved-deep-study-top"
+                        />
                     </div>
                   ) : (
                     <>

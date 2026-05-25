@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
-import { parseDeepStudyInterestLabel } from "@/lib/deepStudyInterestTracking";
+import { parseDeepStudyInterestLabel, parseStudyNotesSectionOpenLabel, parseStudyNotesViewLabel } from "@/lib/deepStudyInterestTracking";
 import { isSeriesWeekNotesActionEvent, SERIES_WEEK_NOTES_FALLBACK_PREFIX } from "@/lib/seriesWeekNotesTracking";
 
 type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
@@ -60,6 +60,26 @@ type DeepStudyInterestSummary = {
   topItems: Array<{ label: string; source: string; count: number }>;
   topItemsLast24h: Array<{ label: string; source: string; count: number }>;
   entries: DeepStudyInterestEntry[];
+};
+
+type StudyNotesAnalyticsEntry = {
+  id: string;
+  userId: string | null;
+  username: string;
+  source: string;
+  study: string;
+  sectionReference?: string;
+  sectionTitle?: string;
+  timestamp: string;
+};
+
+type StudyNotesAnalyticsSummary = {
+  viewsLast24h: number;
+  sectionOpensLast24h: number;
+  uniqueViewersLast24h: number;
+  topStudiesLast24h: Array<{ label: string; source: string; count: number }>;
+  topSectionsLast24h: Array<{ label: string; study: string; count: number }>;
+  entries: StudyNotesAnalyticsEntry[];
 };
 
 type WeeklyReportCenterRow = {
@@ -435,6 +455,16 @@ export default function AnalyticsPage() {
   });
   const [loadingDeepStudyInterest, setLoadingDeepStudyInterest] = useState(true);
   const [deepStudyInterestOpen, setDeepStudyInterestOpen] = useState(false);
+  const [studyNotesAnalytics, setStudyNotesAnalytics] = useState<StudyNotesAnalyticsSummary>({
+    viewsLast24h: 0,
+    sectionOpensLast24h: 0,
+    uniqueViewersLast24h: 0,
+    topStudiesLast24h: [],
+    topSectionsLast24h: [],
+    entries: [],
+  });
+  const [loadingStudyNotesAnalytics, setLoadingStudyNotesAnalytics] = useState(true);
+  const [studyNotesAnalyticsOpen, setStudyNotesAnalyticsOpen] = useState(false);
 
   // Ambassador / Buddy Partners
   type AmbassadorReferral = { referred_user_id: string; username: string; profile_image_url: string | null; trial_started_at: string; trial_ends_at: string; reward_xp?: number; reward_diamonds?: number };
@@ -511,6 +541,7 @@ export default function AnalyticsPage() {
     loadLouisReportLog();
     loadOnboardingAnalytics();
     loadDeepStudyInterest();
+    loadStudyNotesAnalytics();
   }, []);
 
   useEffect(() => {
@@ -792,6 +823,108 @@ export default function AnalyticsPage() {
       setDeepStudyInterest({ today: 0, last24h: 0, uniqueUsersLast24h: 0, uniqueUsers: 0, topItems: [], topItemsLast24h: [], entries: [] });
     } finally {
       setLoadingDeepStudyInterest(false);
+    }
+  }
+
+  async function loadStudyNotesAnalytics() {
+    setLoadingStudyNotesAnalytics(true);
+    try {
+      const last24hStart = new Date(Date.now() - 24 * 60 * 60 * 1000);
+      const { data, error } = await supabase
+        .from("master_actions")
+        .select("id, user_id, username, action_type, action_label, created_at")
+        .in("action_type", [ACTION_TYPE.study_notes_viewed, ACTION_TYPE.study_notes_section_opened])
+        .order("created_at", { ascending: false })
+        .limit(700);
+
+      if (error) {
+        console.error("[STUDY_NOTES_ANALYTICS] Error loading views:", error);
+        setStudyNotesAnalytics({
+          viewsLast24h: 0,
+          sectionOpensLast24h: 0,
+          uniqueViewersLast24h: 0,
+          topStudiesLast24h: [],
+          topSectionsLast24h: [],
+          entries: [],
+        });
+        setLoadingStudyNotesAnalytics(false);
+        return;
+      }
+
+      const uniqueViewersLast24h = new Set<string>();
+      const topStudies = new Map<string, { label: string; source: string; count: number }>();
+      const topSections = new Map<string, { label: string; study: string; count: number }>();
+      let viewsLast24h = 0;
+      let sectionOpensLast24h = 0;
+
+      const entries = (data || []).map((row: any): StudyNotesAnalyticsEntry => {
+        const createdAt = row.created_at ? new Date(row.created_at) : null;
+        const isLast24h = Boolean(createdAt && createdAt >= last24hStart);
+        const parsedView = row.action_type === ACTION_TYPE.study_notes_viewed ? parseStudyNotesViewLabel(row.action_label) : null;
+        const parsedSection = row.action_type === ACTION_TYPE.study_notes_section_opened ? parseStudyNotesSectionOpenLabel(row.action_label) : null;
+        const parsed = parsedSection || parsedView;
+        const source = parsed?.sourceLabel || parsed?.source || "Study Notes";
+        const study = parsed?.contentLabel || parsed?.itemTitle || parsed?.itemKey || "Unknown study";
+
+        if (isLast24h) {
+          if (row.action_type === ACTION_TYPE.study_notes_viewed) viewsLast24h += 1;
+          if (row.action_type === ACTION_TYPE.study_notes_section_opened) sectionOpensLast24h += 1;
+          if (row.user_id) uniqueViewersLast24h.add(row.user_id);
+
+          if (row.action_type === ACTION_TYPE.study_notes_viewed) {
+            const studyKey = `${source}:${study}`;
+            const existing = topStudies.get(studyKey);
+            topStudies.set(studyKey, {
+              label: study,
+              source,
+              count: (existing?.count || 0) + 1,
+            });
+          }
+
+          if (parsedSection) {
+            const sectionLabel = `${parsedSection.sectionReference}${parsedSection.sectionTitle ? ` - ${parsedSection.sectionTitle}` : ""}`;
+            const sectionKey = `${study}:${sectionLabel}`;
+            const existing = topSections.get(sectionKey);
+            topSections.set(sectionKey, {
+              label: sectionLabel,
+              study,
+              count: (existing?.count || 0) + 1,
+            });
+          }
+        }
+
+        return {
+          id: row.id,
+          userId: row.user_id || null,
+          username: row.username || "Unknown User",
+          source,
+          study,
+          sectionReference: parsedSection?.sectionReference,
+          sectionTitle: parsedSection?.sectionTitle,
+          timestamp: row.created_at || "",
+        };
+      });
+
+      setStudyNotesAnalytics({
+        viewsLast24h,
+        sectionOpensLast24h,
+        uniqueViewersLast24h: uniqueViewersLast24h.size,
+        topStudiesLast24h: Array.from(topStudies.values()).sort((a, b) => b.count - a.count).slice(0, 5),
+        topSectionsLast24h: Array.from(topSections.values()).sort((a, b) => b.count - a.count).slice(0, 8),
+        entries,
+      });
+    } catch (error) {
+      console.error("[STUDY_NOTES_ANALYTICS] Error loading views:", error);
+      setStudyNotesAnalytics({
+        viewsLast24h: 0,
+        sectionOpensLast24h: 0,
+        uniqueViewersLast24h: 0,
+        topStudiesLast24h: [],
+        topSectionsLast24h: [],
+        entries: [],
+      });
+    } finally {
+      setLoadingStudyNotesAnalytics(false);
     }
   }
 
@@ -3337,6 +3470,47 @@ export default function AnalyticsPage() {
         </div>
       </div>
 
+      {/* LANDING PAGE CONVERSION */}
+      <div className="mb-12 rounded-2xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
+        <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-700">Landing Page Analytics</p>
+            <h2 className="text-2xl font-bold text-gray-900">Visitors vs Signups</h2>
+          </div>
+          <p className="text-xs font-bold text-blue-700">Last 24 hours</p>
+        </div>
+
+        {loadingOnboardingAnalytics ? (
+          <div className="rounded-xl bg-white/70 p-6 text-center text-sm font-semibold text-gray-500">
+            Loading landing page analytics...
+          </div>
+        ) : (
+          <div className="grid gap-3 md:grid-cols-3">
+            <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Visitors</p>
+              <p className="mt-2 text-4xl font-black text-gray-900">{(onboardingAnalytics?.landingLast24h?.visits ?? 0).toLocaleString()}</p>
+              <p className="mt-1 text-xs font-semibold text-gray-500">Landing page visits in 24 hours</p>
+            </div>
+            <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Signups</p>
+              <p className="mt-2 text-4xl font-black text-gray-900">{(onboardingAnalytics?.landingLast24h?.signups ?? 0).toLocaleString()}</p>
+              <p className="mt-1 text-xs font-semibold text-gray-500">Accounts created from landing sessions</p>
+            </div>
+            <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">Conversion Rate</p>
+              <p className="mt-2 text-4xl font-black text-gray-900">{onboardingAnalytics?.landingLast24h?.conversionRate ?? 0}%</p>
+              <p className="mt-1 text-xs font-semibold text-gray-500">Signups divided by visitors</p>
+            </div>
+          </div>
+        )}
+
+        {onboardingAnalytics?.eventSetupRequired ? (
+          <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">
+            Landing event tracking needs the latest landing analytics SQL before this can show live data.
+          </p>
+        ) : null}
+      </div>
+
       {/* GLOBAL OVERVIEW METRICS */}
       <div className="mt-4 mb-12">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
@@ -3614,6 +3788,112 @@ export default function AnalyticsPage() {
                     </div>
                   )) : (
                     <div className="px-3 py-6 text-center text-sm text-gray-500">No entries yet.</div>
+                  )}
+                </div>
+              </div>
+            ) : null}
+          </>
+        )}
+      </div>
+
+      <div className="mb-12 rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-600">Study Notes Views</p>
+            <h2 className="mt-1 text-2xl font-bold text-gray-900">Study Notes Viewed</h2>
+            <p className="mt-1 text-sm text-gray-500">
+              Tracks every Study Notes view and every verse breakdown section opened.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setStudyNotesAnalyticsOpen((current) => !current)}
+            className="rounded-full border border-emerald-200 px-4 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50"
+          >
+            {studyNotesAnalyticsOpen ? "Hide Details" : "View Details"}
+          </button>
+        </div>
+
+        {loadingStudyNotesAnalytics ? (
+          <div className="mt-4 rounded-xl bg-gray-50 p-6 text-center text-sm text-gray-500">Loading Study Notes views...</div>
+        ) : (
+          <>
+            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <OverviewCard label="Views Last 24h" value={studyNotesAnalytics.viewsLast24h} />
+              <OverviewCard label="Section Opens 24h" value={studyNotesAnalytics.sectionOpensLast24h} />
+              <OverviewCard label="Unique Viewers 24h" value={studyNotesAnalytics.uniqueViewersLast24h} />
+            </div>
+
+            <div className="mt-5 grid gap-4 lg:grid-cols-2">
+              <div className="rounded-xl border border-gray-100 bg-gray-50 p-4">
+                <h3 className="text-sm font-bold text-gray-900">Most Viewed Study Notes - Last 24 Hours</h3>
+                {studyNotesAnalytics.topStudiesLast24h.length ? (
+                  <div className="mt-3 space-y-2">
+                    {studyNotesAnalytics.topStudiesLast24h.map((item) => (
+                      <div key={`${item.source}-${item.label}`} className="flex items-center justify-between gap-3 rounded-lg bg-white px-3 py-2 text-sm">
+                        <span>
+                          <span className="font-bold text-gray-900">{item.label}</span>
+                          <span className="ml-2 text-gray-500">{item.source}</span>
+                        </span>
+                        <span className="font-black text-emerald-700">{item.count}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="mt-3 text-sm text-gray-500">No Study Notes views tracked in the last 24 hours.</p>
+                )}
+              </div>
+
+              <div className="rounded-xl border border-gray-100 bg-gray-50 p-4">
+                <h3 className="text-sm font-bold text-gray-900">Most Opened Verse Sections - Last 24 Hours</h3>
+                {studyNotesAnalytics.topSectionsLast24h.length ? (
+                  <div className="mt-3 space-y-2">
+                    {studyNotesAnalytics.topSectionsLast24h.map((item) => (
+                      <div key={`${item.study}-${item.label}`} className="flex items-center justify-between gap-3 rounded-lg bg-white px-3 py-2 text-sm">
+                        <span>
+                          <span className="font-bold text-gray-900">{item.label}</span>
+                          <span className="block text-xs text-gray-500">{item.study}</span>
+                        </span>
+                        <span className="font-black text-emerald-700">{item.count}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="mt-3 text-sm text-gray-500">No verse breakdown sections opened in the last 24 hours.</p>
+                )}
+              </div>
+            </div>
+
+            {studyNotesAnalyticsOpen ? (
+              <div className="mt-5 overflow-hidden rounded-xl border border-gray-100">
+                <div className="grid grid-cols-[1fr_1fr_1.5fr] bg-gray-100 px-3 py-2 text-xs font-black uppercase tracking-[0.08em] text-gray-500">
+                  <span>User</span>
+                  <span>Source</span>
+                  <span>Study / Section</span>
+                </div>
+                <div className="max-h-[420px] overflow-y-auto divide-y divide-gray-100 bg-white">
+                  {studyNotesAnalytics.entries.length ? studyNotesAnalytics.entries.map((entry) => (
+                    <div key={entry.id} className="grid grid-cols-[1fr_1fr_1.5fr] gap-3 px-3 py-3 text-sm">
+                      <div>
+                        <p className="font-bold text-gray-900">{entry.username}</p>
+                        <p className="text-xs text-gray-500">{entry.timestamp ? new Date(entry.timestamp).toLocaleString() : "Timestamp unavailable"}</p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900">{entry.source}</p>
+                        <p className="text-xs text-gray-500">{entry.sectionReference ? "Opened section" : "Viewed notes"}</p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900">{entry.study}</p>
+                        {entry.sectionReference ? (
+                          <p className="text-xs text-gray-500">
+                            {entry.sectionReference}
+                            {entry.sectionTitle ? ` - ${entry.sectionTitle}` : ""}
+                          </p>
+                        ) : null}
+                      </div>
+                    </div>
+                  )) : (
+                    <div className="px-3 py-6 text-center text-sm text-gray-500">No Study Notes view entries yet.</div>
                   )}
                 </div>
               </div>

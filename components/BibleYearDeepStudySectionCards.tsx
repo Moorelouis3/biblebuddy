@@ -9,6 +9,7 @@ type BibleYearDeepStudySectionCardsProps = {
   sections: BibleYearDeepStudySection[];
   activeReference: string | null;
   onActiveReferenceChange: (reference: string | null) => void;
+  onSectionOpen?: (section: BibleYearDeepStudySection) => void;
   topId?: string;
   className?: string;
 };
@@ -104,15 +105,18 @@ export default function BibleYearDeepStudySectionCards({
   sections,
   activeReference,
   onActiveReferenceChange,
+  onSectionOpen,
   topId,
   className = "",
 }: BibleYearDeepStudySectionCardsProps) {
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  function openSection(reference: string) {
+  function openSection(section: BibleYearDeepStudySection) {
+    const reference = section.reference;
     const nextReference = activeReference === reference ? null : reference;
     onActiveReferenceChange(nextReference);
     if (!nextReference) return;
+    onSectionOpen?.(section);
     if (typeof window === "undefined") return;
     window.setTimeout(() => {
       cardRefs.current[nextReference]?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -136,7 +140,7 @@ export default function BibleYearDeepStudySectionCards({
             >
               <button
                 type="button"
-                onClick={() => openSection(section.reference)}
+                onClick={() => openSection(section)}
                 className={`flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-3 text-left transition sm:gap-3 sm:px-3 ${
                   isOpen
                     ? "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,var(--bb-card,#ffffff))]"

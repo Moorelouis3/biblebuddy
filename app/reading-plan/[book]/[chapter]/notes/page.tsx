@@ -14,7 +14,7 @@ import { TASK_XP } from "@/lib/progressionRewards";
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "@/lib/chapterNotesOffline";
 import { getGenesisOneTtsSrc } from "@/lib/genesisOneTts";
 import { getApprovedBibleYearDeepStudyMarkdownForChapter, getApprovedBibleYearDeepStudySectionsForChapter } from "@/lib/bibleYearApprovedDeepStudy";
-import { trackDeepStudyInterestOnce } from "@/lib/deepStudyInterestTracking";
+import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "@/lib/deepStudyInterestTracking";
 
 const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 export default function ChapterNotesPage() {
@@ -206,6 +206,15 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         const userIdLocal = user?.id ?? null;
         setUserId(userIdLocal);
         void trackDeepStudyInterestOnce({
+          userId: userIdLocal,
+          username: user?.email || null,
+          source: "reading_plan",
+          sourceLabel: "Reading Plan",
+          itemKey: `${bookDisplayName.toLowerCase().replace(/\s+/g, "-")}-${chapterNum}`,
+          itemTitle: `${bookDisplayName} ${chapterNum}`,
+          contentLabel: `${bookDisplayName} ${chapterNum} Study Notes`,
+        });
+        void trackStudyNotesViewed({
           userId: userIdLocal,
           username: user?.email || null,
           source: "reading_plan",
@@ -511,6 +520,19 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                           sections={approvedBibleYearDeepStudySections}
                           activeReference={activeApprovedDeepStudyReference}
                           onActiveReferenceChange={setActiveApprovedDeepStudyReference}
+                          onSectionOpen={(section) => {
+                            void trackStudyNotesSectionOpened({
+                              userId,
+                              username: null,
+                              source: "reading_plan",
+                              sourceLabel: "Reading Plan",
+                              itemKey: `${bookDisplayName.toLowerCase().replace(/\s+/g, "-")}-${chapter}`,
+                              itemTitle: `${bookDisplayName} ${chapter}`,
+                              contentLabel: `${bookDisplayName} ${chapter} Study Notes`,
+                              sectionReference: section.reference,
+                              sectionTitle: section.title,
+                            });
+                          }}
                           topId="reading-plan-approved-deep-study-top"
                         />
                       </div>
