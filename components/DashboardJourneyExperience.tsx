@@ -172,6 +172,7 @@ type ProfileShape = {
   display_name?: string | null;
   username?: string | null;
   created_at?: string | null;
+  bible_year_started_at?: string | null;
   preferred_study_mode?: string | null;
 } | null;
 
@@ -285,6 +286,7 @@ type BibleYearReport = {
   statusDetail: string;
   statusDays?: number;
   statusDirection?: "ahead" | "behind" | "on-track";
+  startDateLabel?: string;
   expectedFinishDateLabel?: string;
 };
 
@@ -1791,6 +1793,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearTermNotesError, setBibleYearTermNotesError] = useState<string | null>(null);
   const [bibleYearTermLoading, setBibleYearTermLoading] = useState(false);
   const [bibleYearPersistentVideoDay, setBibleYearPersistentVideoDay] = useState<number | null>(null);
+  const [bibleYearFollowAlongOpenByDay, setBibleYearFollowAlongOpenByDay] = useState<Record<number, boolean>>({});
   const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
   const [bibleYearDeepNotesOpen, setBibleYearDeepNotesOpen] = useState(false);
   const [bibleYearDayOneDeepNotesGiftOpen, setBibleYearDayOneDeepNotesGiftOpen] = useState(false);
@@ -1830,6 +1833,45 @@ export default function DashboardJourneyExperience({
     finishDate.setDate(finishDate.getDate() + Math.max(0, 365 - currentDayNumber));
     return finishDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
   })();
+  const bibleYearSchedule = (() => {
+    const rawStartDate = profile?.bible_year_started_at || profile?.created_at || null;
+    const startDate = rawStartDate ? new Date(rawStartDate) : new Date();
+    const validStartDate = Number.isNaN(startDate.getTime()) ? new Date() : startDate;
+    const startDay = new Date(validStartDate);
+    startDay.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const daysElapsed = Math.max(1, Math.floor((today.getTime() - startDay.getTime()) / 86400000) + 1);
+    const expectedDay = Math.max(1, Math.min(365, daysElapsed));
+    const completedDays = completedBibleYearDays.length;
+    const targetCompletedDays = daysElapsed === 1 && completedDays === 0 ? 0 : daysElapsed;
+    const statusDelta = completedDays - targetCompletedDays;
+    const statusDirection: "ahead" | "behind" | "on-track" = statusDelta > 0 ? "ahead" : statusDelta < 0 ? "behind" : "on-track";
+    const statusDays = Math.abs(statusDelta);
+    const statusLabel =
+      statusDirection === "ahead"
+        ? `${statusDays} ${statusDays === 1 ? "day" : "days"} ahead`
+        : statusDirection === "behind"
+          ? `${statusDays} ${statusDays === 1 ? "day" : "days"} behind`
+          : "On track";
+    const statusDetail =
+      statusDirection === "ahead"
+        ? `You started on ${validStartDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}. Based on that start date, you would be on Day ${expectedDay}, and you have completed ${completedDays} days.`
+        : statusDirection === "behind"
+          ? `You started on ${validStartDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}. Based on that start date, Day ${expectedDay} is the target pace.`
+          : `You started on ${validStartDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}. You are right on pace for today.`;
+    const finishDate = new Date(startDay);
+    finishDate.setDate(finishDate.getDate() + 364);
+    return {
+      expectedDay,
+      statusLabel,
+      statusDetail,
+      statusDays,
+      statusDirection,
+      startDateLabel: validStartDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }),
+      expectedFinishDateLabel: finishDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }),
+    };
+  })();
   const effectiveBibleYearReport: BibleYearReport = bibleYearReport ?? {
     currentDay: computedBibleYearCurrentDay?.dayNumber ?? 1,
     currentDayPercent: 0,
@@ -1841,11 +1883,12 @@ export default function DashboardJourneyExperience({
     overallPercent: computedBibleYearOverallPercent,
     currentStreak: Math.max(0, profile?.current_streak ?? 0),
     allTimeStreak: Math.max(0, profile?.current_streak ?? 0),
-    statusLabel: "On track",
-    statusDetail: "Keep finishing today's three Bible study tasks to move forward.",
-    statusDays: 0,
-    statusDirection: "on-track",
-    expectedFinishDateLabel: expectedBibleYearFinishDate,
+    statusLabel: bibleYearSchedule.statusLabel,
+    statusDetail: bibleYearSchedule.statusDetail,
+    statusDays: bibleYearSchedule.statusDays,
+    statusDirection: bibleYearSchedule.statusDirection,
+    startDateLabel: bibleYearSchedule.startDateLabel,
+    expectedFinishDateLabel: bibleYearSchedule.expectedFinishDateLabel || expectedBibleYearFinishDate,
   };
   const [bibleYearOptionalDiscussionDay, setBibleYearOptionalDiscussionDay] = useState<number | null>(null);
   const [bibleYearReflectionPostedByDay, setBibleYearReflectionPostedByDay] = useState<Record<number, boolean>>({});
@@ -7653,6 +7696,70 @@ Before we understand redemption, we need to understand what God made humanity fo
     return { markdown: content?.studyNotesMarkdown ?? null, sections: content?.studyNotesSections ?? null };
   }
 
+  function getBibleYearFollowAlongChapters(day: GenesisBibleYearDay) {
+    if (day.dayNumber !== 1) return [];
+    return day.readings
+      .map((reading) => ({
+        book: reading.book,
+        chapter: reading.chapter,
+        verses: BIBLE_YEAR_GENESIS_WEB_VERSES[reading.chapter] || [],
+      }))
+      .filter((chapter) => chapter.verses.length > 0);
+  }
+
+  function renderBibleYearFollowAlongScripture(day: GenesisBibleYearDay) {
+    const chapters = getBibleYearFollowAlongChapters(day);
+    if (!chapters.length) return null;
+
+    const isOpen = Boolean(bibleYearFollowAlongOpenByDay[day.dayNumber]);
+    return (
+      <div className="mt-3">
+        <button
+          type="button"
+          onClick={() => {
+            setBibleYearFollowAlongOpenByDay((current) => ({
+              ...current,
+              [day.dayNumber]: !current[day.dayNumber],
+            }));
+          }}
+          aria-expanded={isOpen}
+          className="flex w-full items-center justify-center gap-2 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_9%,var(--bb-card,#ffffff))] px-4 py-2.5 text-sm font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_15%,var(--bb-card,#ffffff))]"
+        >
+          <span className="grid h-5 w-5 place-items-center rounded-md border border-current" aria-hidden="true">
+            <span className="h-2.5 w-2.5 rounded-sm border border-current border-r-0" />
+          </span>
+          <span>Follow Along in Scripture</span>
+          <span className={`ml-auto text-base leading-none transition ${isOpen ? "rotate-180" : ""}`} aria-hidden="true">
+            ^
+          </span>
+        </button>
+        {isOpen ? (
+          <section className="mt-3 max-h-[420px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#111827)_78%,#020617)] p-4 text-left text-[var(--bb-text-primary,#fff7ed)] shadow-inner">
+            <div className="space-y-7">
+              {chapters.map((chapter) => (
+                <article key={`${chapter.book}-${chapter.chapter}`} className="space-y-3">
+                  <h3 className="font-serif text-2xl font-black tracking-wide text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_82%,#ffffff)]">
+                    {chapter.book} {chapter.chapter}
+                  </h3>
+                  <div className="space-y-3">
+                    {chapter.verses.map((verse) => (
+                      <p key={`${chapter.book}-${chapter.chapter}-${verse.verse}`} className="text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#dbeafe)] sm:text-[15px]">
+                        <sup className="mr-1 align-super text-[11px] font-black leading-none text-[var(--bb-accent,#2f7fe8)]">
+                          {verse.verse}
+                        </sup>
+                        {verse.text}
+                      </p>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
+      </div>
+    );
+  }
+
   function renderBibleYearDayOneVideoTask(day: GenesisBibleYearDay) {
     const content = getBibleYearDayContent(day);
     const lesson = content.lesson;
@@ -7719,6 +7826,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               Today&apos;s audio/video lesson is being prepared. This day already uses the standard Day 1 task flow, and the media can drop into this same card when ready.
             </div>
           )}
+          {renderBibleYearFollowAlongScripture(day)}
           {audio?.videoSrc ? (
             <VideoHelpfulPoll
               userId={userId}
@@ -8414,6 +8522,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const report = effectiveBibleYearReport;
     const overallPercent = report?.overallPercent ?? 0;
     const expectedFinishDateLabel = report?.expectedFinishDateLabel ?? "Calculating";
+    const startDateLabel = report?.startDateLabel ?? bibleYearSchedule.startDateLabel;
     const statusLabel = report?.statusLabel ?? "On pace";
     const statusMatch = statusLabel.match(/(\d+)\s+days?\s+(ahead|behind)/i);
     const statusDirection = report?.statusDirection ?? (statusMatch?.[2]?.toLowerCase() as "ahead" | "behind" | undefined) ?? "on-track";
@@ -8433,6 +8542,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const snapshotStats = [
       { label: "Current Day", value: `${report?.currentDay ?? day.dayNumber}`, hint: "Today" },
       { label: "Status", value: statusStat.value, hint: statusStat.hint },
+      { label: "Started", value: startDateLabel, hint: "Start date" },
       { label: "Finish", value: expectedFinishDateLabel, hint: "Expected" },
     ];
 
@@ -8468,7 +8578,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           />
         </div>
 
-        <div className="mt-4 grid grid-cols-3 gap-2">
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
           {snapshotStats.map((stat) => (
             <div
               key={stat.label}
@@ -8518,6 +8628,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const report = effectiveBibleYearReport;
     const currentStreak = report?.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
     const expectedFinishDateLabel = report?.expectedFinishDateLabel ?? "Calculating";
+    const startDateLabel = report?.startDateLabel ?? bibleYearSchedule.startDateLabel;
     const overallPercent = Math.max(0, Math.min(100, Math.round(report?.overallPercent ?? 0)));
     const currentDay = Math.max(1, Math.min(365, report?.currentDay ?? getCurrentBibleYearSeriesDayNumber()));
     const dayProgressPercent = Math.max(0, Math.min(100, Math.round((currentDay / 365) * 100)));
@@ -8609,7 +8720,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 </div>
               </div>
               <div className="text-center sm:text-left">
-                <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-3xl sm:mx-0" aria-hidden="true">ðŸŒ±</div>
+                <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-3xl sm:mx-0" aria-hidden="true">🌱</div>
                 <p className="mt-2 text-base font-black leading-6 text-[var(--bb-text-primary,#111827)]">{topMessage}</p>
                 <p className="mt-2 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">Keep going. Every day matters.</p>
               </div>
@@ -8617,13 +8728,13 @@ Before we understand redemption, we need to understand what God made humanity fo
 
             <div className="rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_28%,var(--bb-card,#ffffff))] p-3">
               <div className="flex items-center gap-3">
-                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-3xl" aria-hidden="true">ðŸ”¥</span>
+                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-3xl" aria-hidden="true">🔥</span>
                 <span className="min-w-0 flex-1">
                 <p className="text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#6b7280)]">Daily Streak</p>
                 <span className="mt-0.5 block text-3xl font-black leading-none text-[var(--bb-accent,#2f7fe8)]">{currentStreak}</span>
                 <span className="mt-0.5 block text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">{currentStreak === 1 ? "day" : "days"}</span>
                 </span>
-                <span className="grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)] text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">â–¡</span>
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)] text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">📅</span>
               </div>
             </div>
 
@@ -8636,13 +8747,14 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)]">
                 <div className="h-full rounded-full bg-[var(--bb-progress-fill,var(--bb-accent,#2f7fe8))]" style={{ width: `${dayProgressPercent}%` }} />
               </div>
+              <p className="mt-2 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{report?.statusDetail}</p>
               <div className="mt-2 flex items-center justify-between gap-3 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">
                 <span>{dayProgressPercent}% completed</span>
                 <span>{remainingDays} days remaining</span>
               </div>
               <div className="mt-3 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_32%,var(--bb-card,#ffffff))] p-3">
                 <div className="flex gap-2.5">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-card,#ffffff)] text-xl" aria-hidden="true">â˜º</span>
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-card,#ffffff)] text-xl" aria-hidden="true">🙂</span>
                   <span>
                     <span className="block text-sm font-black text-[var(--bb-accent,#2f7fe8)]">{paceMessage}</span>
                     <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">Consistency today leads to transformation tomorrow.</span>
@@ -8650,18 +8762,21 @@ Before we understand redemption, we need to understand what God made humanity fo
                 </div>
               </div>
               <div className="mt-3 border-t border-[var(--bb-card-border,#dbe7f4)] pt-3 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+                Started: <span className="font-black text-[var(--bb-accent,#2f7fe8)]">{startDateLabel}</span>
+              </div>
+              <div className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
                 Expected Finish: <span className="font-black text-[var(--bb-accent,#2f7fe8)]">{expectedFinishDateLabel}</span>
               </div>
             </div>
 
             <div className="rounded-[20px] border border-[color-mix(in_srgb,#f0b84d_26%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,#fff7e6_42%,var(--bb-card,#ffffff))] p-3">
               <div className="flex items-center gap-3">
-                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-3xl" aria-hidden="true">ðŸŒ±</span>
+                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-3xl" aria-hidden="true">🌱</span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-base font-black text-[var(--bb-text-primary,#111827)]">You're making progress!</span>
                   <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{bottomMessage}</span>
                 </span>
-                <span className="text-3xl text-[#f0b84d]" aria-hidden="true">âœ¦</span>
+                <span className="text-3xl text-[#f0b84d]" aria-hidden="true">✦</span>
               </div>
             </div>
 
@@ -10116,6 +10231,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   />
                 </div>
               </div>
+              {renderBibleYearFollowAlongScripture(day)}
               <VideoHelpfulPoll
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
