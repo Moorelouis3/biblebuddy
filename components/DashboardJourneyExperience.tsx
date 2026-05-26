@@ -9404,10 +9404,6 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div>
                 <p className="text-sm font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{encouragement}</p>
               </div>
-
-              <p className="mt-4 rounded-2xl bg-[var(--bb-accent-soft,#eaf5ff)] px-4 py-3 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
-                Day {day.dayNumber} is loaded in the study area below.
-              </p>
             </div>
           </div>
       </div>
