@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import DashboardJourneyExperience from "../../components/DashboardJourneyExperience";
-import type { TaskState } from "../../components/LouisDailyTasksModal";
+import type { ChecklistData, TaskState } from "../../components/LouisDailyTasksModal";
 import { supabase } from "../../lib/supabaseClient";
 
 type DashboardProfile = {
@@ -22,6 +22,23 @@ type DashboardProfile = {
   username?: string | null;
   created_at?: string | null;
   preferred_study_mode?: string | null;
+};
+
+const emptyChecklistData: ChecklistData = {
+  title: "Bible in One Year",
+  streakLine: "",
+  contextLine: "",
+  timeLeftLabel: "",
+  progressLabel: "Bible in One Year",
+  summaryLine: "Continue your Bible in One Year journey.",
+  bonusLine: "",
+  nextTaskTitle: null,
+  tasks: [],
+  completedCount: 0,
+  allDone: false,
+  bonusAwarded: false,
+  journeyKey: "bible-in-one-year",
+  nextJourneyTarget: null,
 };
 
 function DashboardLoadingShell({ children }: { children: ReactNode }) {
@@ -88,7 +105,7 @@ export default function DashboardPage() {
       display_name: data?.display_name ?? null,
       username: data?.username ?? null,
       created_at: data?.created_at ?? null,
-      preferred_study_mode: data?.preferred_study_mode ?? "bible_year",
+      preferred_study_mode: "bible_year",
     });
     setLoading(false);
   }, [router]);
@@ -115,7 +132,7 @@ export default function DashboardPage() {
           profile={profile}
           levelInfo={null}
           primaryRecommendation={null}
-          checklistData={null}
+          checklistData={emptyChecklistData}
           isLoadingChecklist={false}
           dailyTaskTimeLeftLabel={null}
           membershipStatus={profile?.is_paid ? "pro" : "free"}
