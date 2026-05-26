@@ -169,34 +169,27 @@ function formatLastActive(value: string) {
 function getFunnelHealth(rate: number) {
   if (rate < 10) {
     return {
-      tone: "border-rose-200 bg-rose-50 text-rose-800",
+      tone: "border-rose-300 bg-rose-100 text-rose-900",
       label: "Needs fixing",
       message: `Landing to onboarding completion is ${rate}%. Under 10% means visitors are not making it through the first funnel step.`,
     };
   }
   if (rate < 20) {
     return {
-      tone: "border-amber-200 bg-amber-50 text-amber-800",
+      tone: "border-amber-300 bg-amber-100 text-amber-950",
       label: "Normal range",
       message: `Landing to onboarding completion is ${rate}%. This is workable, but the landing page and questions can still be tightened.`,
     };
   }
-  if (rate < 30) {
+  if (rate < 40) {
     return {
-      tone: "border-emerald-200 bg-emerald-50 text-emerald-800",
+      tone: "border-emerald-300 bg-emerald-100 text-emerald-950",
       label: "Doing good",
       message: `Landing to onboarding completion is ${rate}%. The page is doing good at getting visitors through onboarding.`,
     };
   }
-  if (rate < 40) {
-    return {
-      tone: "border-green-200 bg-green-50 text-green-800",
-      label: "Strong funnel",
-      message: `Landing to onboarding completion is ${rate}%. That is strong. Now watch whether those people start Day 1.`,
-    };
-  }
   return {
-    tone: "border-teal-200 bg-teal-50 text-teal-800",
+    tone: "border-green-300 bg-green-100 text-green-950",
     label: "Excellent funnel",
     message: `Landing to onboarding completion is ${rate}%. That is excellent. Protect what is working and improve the next step.`,
   };
@@ -557,9 +550,9 @@ export default function AnalyticsPage() {
           {activeView === "overview" ? (
           <>
           <section className={`mt-8 rounded-xl border px-5 py-4 shadow-sm ${funnelHealth.tone}`}>
-            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-start sm:gap-8">
               <p className="text-lg font-black">{funnelHealth.label}</p>
-              <p className="text-sm font-bold sm:text-right">{funnelHealth.message}</p>
+              <p className="text-sm font-bold text-left">{funnelHealth.message}</p>
             </div>
           </section>
 
