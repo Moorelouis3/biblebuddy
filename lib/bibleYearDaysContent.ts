@@ -198,16 +198,16 @@ const daySevenSummary: BibleYearSummaryContent = {
 
 const dayEightSummary: BibleYearSummaryContent = {
   intro: [
-    "Genesis 18-19 brings promise, prayer, mercy, judgment, and rescue into one important part of Abraham's story.",
+    "Genesis 18-20 brings promise, prayer, mercy, judgment, rescue, and protection into one important part of Abraham's story.",
     "Abraham welcomes the visitors, Sarah hears the promise again, and God asks the question that sits over the whole chapter: Is anything too hard for the LORD?",
-    "Then the story turns toward Sodom, where Abraham intercedes, Lot is rescued, and God's justice confronts deep corruption.",
+    "Then the story turns toward Sodom and Gomorrah, where Abraham intercedes, Lot is rescued, God's justice confronts deep corruption, and God protects Sarah in Gerar.",
   ],
   highlights: [
     ["⛺", "Abraham welcomes the visitors, and his tent becomes the setting for a holy encounter."],
     ["😮", "Sarah laughs at the promise, but God reminds her that nothing is too hard for the LORD."],
     ["🙏", "Abraham intercedes for Sodom and asks whether the Judge of all the earth will do right."],
     ["🚪", "Lot's life in Sodom reveals compromise, danger, and the cost of living close to corruption."],
-    ["🔥", "Sodom is judged, but Lot is pulled out by mercy before destruction falls."],
+    ["🔥", "Sodom and Gomorrah are judged, but Lot is pulled out by mercy before destruction falls."],
   ],
   takeaway: "God's promise is stronger than impossibility, and His mercy is present even when judgment is real.",
   takeawaySupport: "Day 8 helps us see that God listens, God sees what is truly happening, and God knows how to rescue while still taking evil seriously.",
@@ -215,16 +215,16 @@ const dayEightSummary: BibleYearSummaryContent = {
 
 const dayNineSummary: BibleYearSummaryContent = {
   intro: [
-    "Genesis 20-25 closes Abraham's journey and begins moving the promise into the next generation.",
-    "These chapters show Abraham repeating an old fear, Isaac finally being born, Hagar and Ishmael being seen in the wilderness, and Abraham being tested on Mount Moriah.",
-    "By the end, Sarah has died, Isaac receives Rebekah, Abraham's life closes, and Jacob and Esau enter the story.",
+    "Genesis 21-24 closes Abraham's main journey and begins moving the promise into the next generation.",
+    "These chapters show Isaac finally being born, Hagar and Ishmael being seen in the wilderness, and Abraham being tested on Mount Moriah.",
+    "By the end, Sarah has died and Isaac receives Rebekah as the covenant family moves forward.",
   ],
   highlights: [
-    ["🛡️", "God protects Sarah and the promise even when Abraham repeats an old failure."],
     ["👶", "Isaac is born at the appointed time, turning Sarah's laughter into joy."],
     ["💧", "God hears Hagar and Ishmael in the wilderness and provides for them."],
     ["⛰️", "Abraham is tested on Moriah, and the LORD provides the ram."],
-    ["🔁", "Abraham's legacy moves forward through Isaac, Rebekah, Jacob, and Esau."],
+    ["🪦", "Sarah dies, and Abraham buys a burial place in the promised land."],
+    ["🔁", "Abraham's legacy moves forward through Isaac and Rebekah."],
   ],
   takeaway: "God's covenant promise keeps moving through weakness, waiting, testing, grief, and legacy.",
   takeawaySupport: "Day 9 helps us see that the story is not held together by perfect people, but by the faithful God who keeps His word across generations.",
@@ -232,16 +232,16 @@ const dayNineSummary: BibleYearSummaryContent = {
 
 const dayTenSummary: BibleYearSummaryContent = {
   intro: [
-    "Genesis 26-27 follows Isaac's household as the covenant promise continues through a family full of pressure.",
-    "Isaac faces famine, fear, conflict over wells, and God's repeated promise.",
+    "Genesis 25-27 follows Abraham's final years and Isaac's household as the covenant promise continues through a family full of pressure.",
+    "Jacob and Esau are born, then Isaac faces famine, fear, conflict over wells, and God's repeated promise.",
     "Then Jacob receives the blessing through deception, and the family fractures under favoritism and anger.",
   ],
   highlights: [
+    ["📜", "Abraham's final years keep the covenant line focused through Isaac."],
+    ["👶", "Jacob and Esau are born, and conflict enters the next generation early."],
     ["🌾", "Isaac faces famine, but God tells him to stay and trust the promise."],
     ["🛡️", "Isaac repeats Abraham's fear, showing old patterns can echo into the next generation."],
     ["💧", "The wells show conflict, patience, and God making room."],
-    ["🤲", "Jacob receives the blessing, but through deception that wounds the family."],
-    ["💔", "Esau's grief and Jacob's escape show that sin leaves real consequences."],
   ],
   takeaway: "God's promise moves forward, but Genesis is honest about the damage caused by fear, favoritism, and deception.",
   takeawaySupport: "Day 10 helps us see that covenant blessing is carried by God's faithfulness, not by a perfect family system.",
@@ -417,7 +417,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
     studyNotesMarkdown: BIBLE_YEAR_DAY_TEN_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_TEN_DEEP_STUDY_SECTIONS,
     summary: dayTenSummary,
-    discussionPrompt: "Where do you see fear, favoritism, or deception causing damage in Genesis 26-27?",
+    discussionPrompt: "Where do you see fear, favoritism, or deception causing damage in Genesis 25-27?",
   },
   11: {
     lesson: GENESIS_DAY_ELEVEN_JACOBS_JOURNEY_BEGINS_LESSON,

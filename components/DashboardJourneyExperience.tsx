@@ -20,7 +20,6 @@ import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
-import { awardDiamonds } from "../lib/diamondWallet";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, markChapterDone } from "../lib/readingProgress";
@@ -77,7 +76,6 @@ const BIBLE_YEAR_CARD_ACTION_TYPE: Record<BibleYearDayCardKey, ActionType> = {
   trivia: ACTION_TYPE.bible_in_one_year_trivia_completed,
   reflection: ACTION_TYPE.bible_in_one_year_reflection_completed,
 };
-const BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD = 100;
 type BibleYearProgressRow = {
   day_number: number;
   reading_completed: boolean | null;
@@ -1023,15 +1021,15 @@ const louisProgressOpeners: Record<number, string[]> = {
     "You're one step away from the final reflection.",
     "Great work. Let's close the loop.",
     "This is the final piece for today's chapter.",
-    "You have done the study work. Now let's finish with the word game.",
+    "You have done the study work. Now let's finish with reflection.",
     "One more round and the day is complete.",
     "You're close enough to see the finish.",
     "Let's land the plane with the final task.",
     "Last move. Keep the momentum for a few more minutes.",
-    "You have one task left, and this is the fun one.",
+    "You have one task left, and it keeps the chapter personal.",
     "Almost there. Let's wrap today's chapter study.",
     "The hard part is behind you. One final step remains.",
-    "You're nearly done. Let's finish with Scrambled.",
+    "You're nearly done. Let's finish with reflection.",
     "One more task, then the full daily flow is complete.",
     "This is the closing step for today's study.",
     "Finish strong with the final round.",
@@ -1555,7 +1553,7 @@ function getShortTaskName(task: TaskState | null) {
   if (task.kind === "reading") return task.chapterLabel ? `reading ${task.chapterLabel}` : "today's chapter";
   if (task.kind === "notes") return task.chapterLabel ? `${task.chapterLabel} notes` : "today's notes";
   if (task.kind === "trivia") return "trivia";
-  if (task.kind === "scrambled") return "Scrambled";
+  if (task.kind === "scrambled") return "reflection";
   if (task.kind === "reflection") return task.chapterLabel ? `the ${task.chapterLabel} reflection` : "the reflection";
   return task.title;
 }
@@ -1828,7 +1826,7 @@ export default function DashboardJourneyExperience({
   const [guestAccountLoading, setGuestAccountLoading] = useState(false);
   const [guestAccountMessage, setGuestAccountMessage] = useState<string | null>(null);
 
-  const dashboardPageKeys = ["home", "buddy", "bible", "bible_studies", "bible_topics", "group", "share", "buddies", "tv", "games", "analytics", "settings"] as const;
+  const dashboardPageKeys = ["home", "buddy", "bible", "bible_studies", "bible_topics", "share", "analytics", "settings"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
   const activePageKey = dashboardPageKeys[safeActivePage] ?? "home";
@@ -1836,9 +1834,6 @@ export default function DashboardJourneyExperience({
   const dashboardPageLinks = {
     bible_studies: exploreLinkByKey("bible_studies"),
     bible_topics: null,
-    group: exploreLinkByKey("group"),
-    tv: exploreLinkByKey("tv"),
-    games: exploreLinkByKey("games"),
     share: exploreLinkByKey("share"),
   };
   const [liveSelectedBuddyId, setLiveSelectedBuddyId] = useState<BuddyAvatarId | null>(null);
@@ -1946,7 +1941,6 @@ export default function DashboardJourneyExperience({
     { key: "bible", label: "Bible", icon: <BibleBookIcon />, href: "#bible-reader" },
     { key: "bible_studies", label: "Devotionals", icon: "\uD83C\uDF05", href: "/bible-studies" },
     { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
-    { key: "group", label: "Community", icon: "\uD83D\uDC65", href: dashboardPageLinks.group?.href || "/study-groups", onClick: dashboardPageLinks.group?.onClick },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
     ...(isOwnerDashboard ? [{ key: "analytics" as DashboardPageKey, label: "Analytics", icon: "\u25A3", href: "#analytics" }] : []),
     { key: "settings", label: "Settings", icon: "\u2699", href: "#settings" },
@@ -1968,8 +1962,6 @@ export default function DashboardJourneyExperience({
       ),
       href: "#lil-louis",
     },
-    { key: "tv", label: "TV", icon: "\u25B6", href: dashboardPageLinks.tv?.href || "/biblebuddy-tv", onClick: dashboardPageLinks.tv?.onClick },
-    { key: "games", label: "Games", icon: "\uD83C\uDFAE", href: dashboardPageLinks.games?.href || "/bible-study-games", onClick: dashboardPageLinks.games?.onClick },
   ];
   const activeDashboardNavItem = bibleYearSeriesActive
     ? { label: "Bible In One Year", icon: "📖" }
@@ -2079,86 +2071,6 @@ export default function DashboardJourneyExperience({
   }, [canFreeUserChooseNewStudy, isPaidUser, studySettingsOpenRequest]);
 
   useEffect(() => {
-    let cancelled = false;
-
-    async function loadCommunityGroup() {
-      if (embeddedCommunityGroupId) return;
-      setEmbeddedCommunityLoading(true);
-      setEmbeddedCommunityError(null);
-
-      try {
-        const { data, error } = await supabase
-          .from("study_groups")
-          .select("id")
-          .in("name", ["Bible Buddy Study Group", "Hope Nation"])
-          .limit(1)
-          .maybeSingle();
-
-        if (cancelled) return;
-        if (error || !data?.id) {
-          setEmbeddedCommunityError("Community could not be loaded right now.");
-          return;
-        }
-
-        setEmbeddedCommunityGroupId(data.id);
-      } catch {
-        if (!cancelled) setEmbeddedCommunityError("Community could not be loaded right now.");
-      } finally {
-        if (!cancelled) setEmbeddedCommunityLoading(false);
-      }
-    }
-
-    if (activePageKey === "group") {
-      void loadCommunityGroup();
-    }
-
-    return () => {
-      cancelled = true;
-    };
-  }, [activePageKey, embeddedCommunityGroupId]);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadBuddiesDashboard() {
-      setBuddiesDashboardLoading(true);
-      setBuddiesDashboardError(null);
-
-      try {
-        const { data: sessionData } = await supabase.auth.getSession();
-        const token = sessionData.session?.access_token;
-        if (!token) throw new Error("Sign in again to load Buddies.");
-
-        const response = await fetch("/api/buddies/dashboard", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const payload = await response.json();
-        if (!response.ok) throw new Error(payload?.error || "Could not load Buddies.");
-        if (!cancelled) setBuddiesDashboard(payload as BuddiesDashboardPayload);
-      } catch (error: any) {
-        if (!cancelled) setBuddiesDashboardError(error?.message || "Could not load Buddies.");
-      } finally {
-        if (!cancelled) setBuddiesDashboardLoading(false);
-      }
-    }
-
-    let refreshIntervalId: number | null = null;
-    if (activePageKey === "buddies") {
-      void loadBuddiesDashboard();
-      if (typeof window !== "undefined") {
-        refreshIntervalId = window.setInterval(() => {
-          void loadBuddiesDashboard();
-        }, 30000);
-      }
-    }
-
-    return () => {
-      cancelled = true;
-      if (refreshIntervalId !== null) window.clearInterval(refreshIntervalId);
-    };
-  }, [activePageKey]);
-
-  useEffect(() => {
     if (activePageKey === "share" && userId) {
       void fetchShareRewards({ showLoading: true });
     }
@@ -2192,26 +2104,6 @@ export default function DashboardJourneyExperience({
       void supabase.removeChannel(referralChannel);
     };
   }, [activePageKey, fetchShareRewards, userId]);
-
-  useEffect(() => {
-    function handleEmbeddedCommunityHeight(event: MessageEvent) {
-      if (event.origin !== window.location.origin) return;
-      const data = event.data as { type?: string; height?: number } | null;
-      if (!data || (data.type !== "bb-community-height" && data.type !== "bb-community-scroll-top")) return;
-
-      if (data.type === "bb-community-scroll-top") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
-      }
-
-      const nextHeight = Number(data.height);
-      if (!Number.isFinite(nextHeight)) return;
-      setEmbeddedCommunityHeight(Math.max(420, Math.ceil(nextHeight)));
-    }
-
-    window.addEventListener("message", handleEmbeddedCommunityHeight);
-    return () => window.removeEventListener("message", handleEmbeddedCommunityHeight);
-  }, []);
 
   const bibleYearCurrentDayReady = bibleYearProgressReady && bibleYearProgressLoaded;
   const activeBibleYearDashboardDay = bibleYearDashboardActive && bibleYearCurrentDayReady
@@ -3977,27 +3869,12 @@ export default function DashboardJourneyExperience({
     snapToPage(buddyIndex);
   }
 
-  function openCommunityPage(targetHref?: string | null) {
-    const groupIndex = dashboardPageKeys.indexOf("group");
-    if (groupIndex < 0) return;
-    clearBibleYearViews();
-    if (targetHref) setCommunityTargetHref(targetHref);
-    setDashboardMenuOpen(false);
-    snapToPage(groupIndex);
-  }
-
   function openSettingsPage() {
     const settingsIndex = dashboardPageKeys.indexOf("settings");
     if (settingsIndex < 0) return;
     clearBibleYearViews();
     setDashboardMenuOpen(false);
     snapToPage(settingsIndex);
-  }
-
-  function openStorePanel() {
-    clearBibleYearViews();
-    setDashboardMenuOpen(false);
-    onOpenStore?.();
   }
 
   useEffect(() => {
@@ -4015,32 +3892,20 @@ export default function DashboardJourneyExperience({
   }, []);
 
   useEffect(() => {
-    function handleShowCommunityTab(event?: Event) {
-      const targetHref =
-        (event as CustomEvent<{ targetHref?: string }> | undefined)?.detail?.targetHref ||
-        (typeof window !== "undefined" ? window.localStorage.getItem("bb:dashboard-community-target") : null);
-      if (typeof window !== "undefined") window.localStorage.removeItem("bb:dashboard-community-target");
-      openCommunityPage(targetHref);
-    }
-
     function handleShowSettingsTab() {
       if (typeof window !== "undefined") window.localStorage.removeItem("bb:dashboard-open-settings");
       openSettingsPage();
     }
 
     if (typeof window !== "undefined") {
-      if (window.localStorage.getItem("bb:dashboard-community-target")) {
-        window.setTimeout(() => handleShowCommunityTab(), 0);
-      }
+      window.localStorage.removeItem("bb:dashboard-community-target");
       if (window.localStorage.getItem("bb:dashboard-open-settings")) {
         window.setTimeout(() => handleShowSettingsTab(), 0);
       }
     }
 
-    window.addEventListener("bb:dashboard-show-community-tab", handleShowCommunityTab);
     window.addEventListener("bb:dashboard-show-settings-tab", handleShowSettingsTab);
     return () => {
-      window.removeEventListener("bb:dashboard-show-community-tab", handleShowCommunityTab);
       window.removeEventListener("bb:dashboard-show-settings-tab", handleShowSettingsTab);
     };
   }, []);
@@ -4275,12 +4140,6 @@ export default function DashboardJourneyExperience({
     switch (key) {
       case "bible_studies":
         return ["Follow guided chapter studies", "Keep moving through your Bible Study Journey", "Intro, reading, notes, trivia, and reflection"];
-      case "group":
-        return ["Join Bible Buddy conversations", "Share reflections from your study", "Encourage other Bible Buddies"];
-      case "tv":
-        return ["Watch Bible teaching and shows", "Browse sermons and topics", "Learn when you want a video study moment"];
-      case "games":
-        return ["Play Bible Trivia", "Practice with Scrambled", "Review what you learned from each chapter"];
       case "share":
         return ["Invite a friend", "Share by text or WhatsApp", "Help someone start studying too"];
       default:
@@ -5063,7 +4922,6 @@ export default function DashboardJourneyExperience({
 
   const renderEmbeddedGamesPage = () => {
     const triviaTask = visibleTasks.find((task) => task.kind === "trivia") ?? null;
-    const scrambledTask = visibleTasks.find((task) => task.kind === "scrambled") ?? null;
     const gameCards = [
       {
         key: "trivia" as const,
@@ -5078,14 +4936,14 @@ export default function DashboardJourneyExperience({
       {
         key: "scrambled" as const,
         eyebrow: "Task 5",
-        title: "Scrambled",
-        subtitle: "Unscramble Bible words so the chapter stays in your memory.",
-        stat: "5 Scripture words",
-        href: scrambledTask?.href || "/bible-study-games/scrambled",
-        button: scrambledTask ? `Play ${scrambledTask.chapterLabel || "Today's"} Scrambled` : "Browse Scrambled",
+        title: "Reflection Review",
+        subtitle: "Return to the day's reflection.",
+        stat: "Daily response",
+        href: "/dashboard",
+        button: "Open Reflection",
         icon: "🔤",
       },
-    ];
+    ].filter((game) => game.key !== "scrambled");
     const selectedGame = gameCards.find((game) => game.key === embeddedGameView) ?? null;
 
     return (
@@ -5146,9 +5004,7 @@ export default function DashboardJourneyExperience({
                   <div className="min-w-0">
                     <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{selectedGame.stat}</p>
                     <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                      {embeddedGameView === "trivia"
-                        ? "Use this after reading and notes to check your chapter understanding."
-                        : "Use this after trivia to slow down and remember key Bible words."}
+                      Use this after reading and notes to check your chapter understanding.
                     </p>
                   </div>
                 </div>
@@ -5157,7 +5013,7 @@ export default function DashboardJourneyExperience({
                     {selectedGame.button}
                   </Link>
                   <Link
-                    href={embeddedGameView === "trivia" ? "/bible-trivia/books" : "/bible-study-games/scrambled/books"}
+                    href="/bible-trivia/books"
                     className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
                   >
                     Choose A Book
@@ -5751,7 +5607,7 @@ export default function DashboardJourneyExperience({
         icon: "✨",
         iconClass: "bg-[#ffefc2] text-[#b37a00]",
         title: "Bible Buddy Pro perks",
-        description: "Earn more XP, unlock challenges, skins, diamonds, and more.",
+        description: "Unlock deeper Bible study notes, context, downloads, and study tools.",
       },
     ];
 
@@ -6439,7 +6295,7 @@ export default function DashboardJourneyExperience({
         list: ["📣 Lot warns his family", "😶 they think he is joking", "⏳ Lot lingers", "🤲 mercy takes his hand", "🏃 escape is commanded"],
       },
       "Genesis 19:23-29": {
-        heading: "🔥 Sodom Falls",
+        heading: "🔥 Sodom and Gomorrah Fall",
         teachingTitle: "⚖️ Judgment and Mercy Are Both Real",
         list: ["☀️ Lot reaches Zoar", "🔥 fire falls", "🧂 Lot's wife looks back", "🌫️ smoke rises", "🤲 God remembers Abraham"],
       },
@@ -7518,13 +7374,13 @@ Before we understand redemption, we need to understand what God made humanity fo
     }));
   }
 
-  function getBibleYearDiscussionRewardLabel(day: GenesisBibleYearDay) {
-    return `Bible in One Year Day ${day.dayNumber} Discussion Diamond Reward: ${day.title}`;
+  function getBibleYearDiscussionActionLabel(day: GenesisBibleYearDay) {
+    return `Bible in One Year Day ${day.dayNumber} Discussion: ${day.title}`;
   }
 
-  async function awardBibleYearDiscussionDiamonds(day: GenesisBibleYearDay) {
+  async function logBibleYearDiscussionParticipation(day: GenesisBibleYearDay) {
     if (!userId) return;
-    const actionLabel = getBibleYearDiscussionRewardLabel(day);
+    const actionLabel = getBibleYearDiscussionActionLabel(day);
     try {
       const { data: existingReward, error: existingRewardError } = await supabase
         .from("master_actions")
@@ -7535,7 +7391,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         .limit(1);
 
       if (existingRewardError) {
-        console.warn("[BIBLE_YEAR_DISCUSSION_REWARD] Could not check discussion reward:", existingRewardError);
+        console.warn("[BIBLE_YEAR_DISCUSSION] Could not check discussion action:", existingRewardError);
         return;
       }
       if (existingReward && existingReward.length > 0) return;
@@ -7558,32 +7414,25 @@ Before we understand redemption, we need to understand what God made humanity fo
       });
 
       if (insertRewardError) {
-        console.warn("[BIBLE_YEAR_DISCUSSION_REWARD] Could not save discussion reward:", insertRewardError);
+        console.warn("[BIBLE_YEAR_DISCUSSION] Could not save discussion action:", insertRewardError);
         return;
       }
 
       await incrementProfileTotalActions();
-
-      const awardedDiamonds = await awardDiamonds(userId, BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD);
-      if (awardedDiamonds > 0) {
-        showBibleYearRewardToast(day.dayNumber, `+${awardedDiamonds} diamonds for joining the discussion`);
-        onDevotionalChanged();
-      }
     } catch (error) {
-      console.warn("[BIBLE_YEAR_DISCUSSION_REWARD] Could not award discussion diamonds:", error);
+      console.warn("[BIBLE_YEAR_DISCUSSION] Could not log discussion action:", error);
     }
   }
 
   async function ensureBibleYearCardActionLogged(day: GenesisBibleYearDay, card: BibleYearDayCardKey, showPoints = false) {
     if (!userId) return;
     const actionType = BIBLE_YEAR_CARD_ACTION_TYPE[card];
-    const fallbackActionType = ACTION_TYPE.bible_in_one_year_day_viewed;
     const actionLabel = getBibleYearCardActionLabel(day, card);
     const { data, error } = await supabase
       .from("master_actions")
       .select("id")
       .eq("user_id", userId)
-      .in("action_type", actionType === fallbackActionType ? [actionType] : [actionType, fallbackActionType])
+      .eq("action_type", actionType)
       .eq("action_label", actionLabel)
       .limit(1);
 
@@ -7606,14 +7455,8 @@ Before we understand redemption, we need to understand what God made humanity fo
       action_label: actionLabel,
       username,
     };
-    const { error: primaryInsertError } = await supabase.from("master_actions").insert(insertPayload);
-    if (primaryInsertError) {
-      const { error: fallbackInsertError } = await supabase.from("master_actions").insert({
-        ...insertPayload,
-        action_type: fallbackActionType,
-      });
-      if (fallbackInsertError) throw fallbackInsertError;
-    }
+    const { error: insertError } = await supabase.from("master_actions").insert(insertPayload);
+    if (insertError) throw insertError;
     await incrementProfileTotalActions();
     if (showPoints) triggerPoints(BIBLE_YEAR_CARD_XP[card]);
   }
@@ -7661,7 +7504,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       await markBibleYearDayCoveredChaptersRead(day);
     }
     if (newlyCompletedCards.length > 0) {
-      await Promise.allSettled(newlyCompletedCards.map((card) => ensureBibleYearCardActionLogged(day, card, true)));
+      await Promise.all(newlyCompletedCards.map((card) => ensureBibleYearCardActionLogged(day, card, true)));
       onDevotionalChanged();
     }
   }
@@ -8324,10 +8167,10 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
         <div className="mt-3 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_10%,var(--bb-card,#ffffff))] px-4 py-3">
           <p className="text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">
-            Earn {BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD} diamonds for joining the discussion.
+            Post your reflection when you are ready.
           </p>
           <p className="mt-1 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-            Post your reflection once for Day {day.dayNumber} to claim the reward.
+            This keeps discussion tied to the daily Scripture instead of a separate community feed.
           </p>
         </div>
         <div className="mt-4">
@@ -8339,7 +8182,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             variant="plain"
             onPosted={() => {
               markBibleYearReflectionPosted(day);
-              void awardBibleYearDiscussionDiamonds(day);
+              void logBibleYearDiscussionParticipation(day);
             }}
             onUserHasPosted={() => markBibleYearReflectionPosted(day)}
           />
@@ -8365,11 +8208,6 @@ Before we understand redemption, we need to understand what God made humanity fo
           aria-expanded={discussionOpen}
         >
           {reflectionPosted ? "Reflection Posted" : `Join Day ${day.dayNumber} Discussion`}
-          {!reflectionPosted ? (
-            <span className="ml-2 rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,var(--bb-card,#ffffff))] px-2 py-0.5 text-xs text-[var(--bb-accent,#2f7fe8)]">
-              +{BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD} diamonds
-            </span>
-          ) : null}
         </button>
         <p className="mt-2 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
           Click to open the reflection section.
@@ -8416,11 +8254,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                   aria-expanded={bibleYearOptionalDiscussionDay === day.dayNumber}
                 >
                   {reflectionPosted ? "Reflection Posted" : `Join Day ${day.dayNumber} Discussion`}
-                  {!reflectionPosted ? (
-                    <span className="ml-2 rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,var(--bb-card,#ffffff))] px-2 py-0.5 text-xs text-[var(--bb-accent,#2f7fe8)]">
-                      +{BIBLE_YEAR_DISCUSSION_DIAMOND_REWARD} diamonds
-                    </span>
-                  ) : null}
                 </button>
               ) : null}
             </div>
@@ -9281,7 +9114,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         "This day shows that forcing God's promise creates pain, but God's covenant faithfulness is still steady, personal, and clear.",
       ],
       8: [
-        "Day 8 walks through Genesis 18 and 19 together: Abraham welcoming the visitors, Sarah hearing the promise, Abraham interceding, Sodom's violence, Lot's rescue, and the judgment of Sodom.",
+        "Day 8 walks through Genesis 18, 19, and 20 together: Abraham welcoming the visitors, Sarah hearing the promise, Abraham interceding, Sodom and Gomorrah, Lot's rescue, and God protecting Sarah in Gerar.",
         "This day is heavy, but important. It shows that God's promise is still alive, prayer can draw near with bold humility, and mercy must never be treated lightly.",
       ],
     };
@@ -10750,7 +10583,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <p>Get Hebrew word breakdowns and key phrase explanations</p>
               <p>See cultural, historical, and Scripture connections</p>
               <p>Download day study tools like videos and notes</p>
-              <p>Receive monthly bonuses: skins, diamonds, XP, challenges, and extra Bible Buddy perks</p>
+              <p>Receive deeper Bible study tools focused on Scripture and daily consistency</p>
             </div>
             <div className="hidden">
               <p>📚 Unlock every Bible in One Year Deep Note</p>
@@ -10833,8 +10666,8 @@ Before we understand redemption, we need to understand what God made humanity fo
               <p>Download Bible In One Year videos</p>
               <p>Download day study tools like videos and notes</p>
               <p>Unlock Study Notes with Hebrew, culture, history, and context</p>
-              <p>Earn monthly bonus diamonds, extra XP, and special challenges</p>
-              <p>Get bonus skins and extra Bible Buddy perks as they drop</p>
+              <p>Keep lessons close with downloadable study resources</p>
+              <p>Get focused tools that help you understand Scripture and stay consistent</p>
             </div>
             <div className="mt-5 grid gap-2">
               <button
@@ -10890,7 +10723,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
             <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">Choose your Pro plan</h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-              Unlock Study Notes, deeper explanations, bonus rewards, skins, and challenges. Cancel anytime.
+              Unlock Study Notes, deeper explanations, downloads, and focused study tools. Cancel anytime.
             </p>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <button
@@ -10984,7 +10817,6 @@ Before we understand redemption, we need to understand what God made humanity fo
         : "https://thebiblestudybuddy.com/signup";
     const signupCount = shareRewardsReferrals.length;
     const earnedXp = signupCount * 250;
-    const earnedDiamonds = signupCount * 250;
     const orderedShareRewardsReferrals = [...shareRewardsReferrals].sort(
       (a, b) => new Date(b.trial_started_at).getTime() - new Date(a.trial_started_at).getTime(),
     );
@@ -11014,13 +10846,13 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <div className="min-w-0 flex-1">
                   <h2 className="text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Invite Bible Buddies</h2>
                   <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
-                    Invite friends to Bible Buddy and earn XP points and diamonds.
+                    Invite friends to Bible Buddy and help them start reading Scripture consistently.
                   </p>
                   <p className="text-sm font-bold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
-                    For every person you get to sign up, you earn 250 XP points and 250 diamonds.
+                    For every person you get to sign up, you earn 250 XP points.
                   </p>
                   <span className="mt-3 inline-flex rounded-full bg-[var(--bb-accent,#2f7fe8)] px-3 py-1 text-xs font-black text-white">
-                    +250 XP +250 diamonds
+                    +250 XP
                   </span>
                 </div>
               </div>
@@ -11067,8 +10899,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">XP earned</p>
                     </div>
                     <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
-                      <p className="text-xl font-black text-[var(--bb-text-primary,#111827)]">{earnedDiamonds}</p>
-                      <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">diamonds</p>
+                      <p className="text-xl font-black text-[var(--bb-text-primary,#111827)]">{signupCount}</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">friends</p>
                     </div>
                   </div>
 
@@ -12578,31 +12410,15 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
 
         <div className={getSlideClass(5)}>
-          {shouldRenderSlide(5) ? renderEmbeddedCommunityPage() : null}
+          {shouldRenderSlide(5) ? renderEmbeddedSharePage() : null}
         </div>
 
         <div className={getSlideClass(6)}>
-          {shouldRenderSlide(6) ? renderEmbeddedSharePage() : null}
+          {shouldRenderSlide(6) && isOwnerDashboard ? renderEmbeddedAnalyticsPage() : null}
         </div>
 
         <div className={getSlideClass(7)}>
-          {shouldRenderSlide(7) ? renderEmbeddedBuddiesPage() : null}
-        </div>
-
-        <div className={getSlideClass(8)}>
-          {shouldRenderSlide(8) ? renderEmbeddedTvPage() : null}
-        </div>
-
-        <div className={getSlideClass(9)}>
-          {shouldRenderSlide(9) ? renderEmbeddedGamesPage() : null}
-        </div>
-
-        <div className={getSlideClass(10)}>
-          {shouldRenderSlide(10) && isOwnerDashboard ? renderEmbeddedAnalyticsPage() : null}
-        </div>
-
-        <div className={getSlideClass(11)}>
-          {shouldRenderSlide(11) ? renderEmbeddedSettingsPage() : null}
+          {shouldRenderSlide(7) ? renderEmbeddedSettingsPage() : null}
         </div>
 
         {false ? (
@@ -12713,8 +12529,8 @@ Before we understand redemption, we need to understand what God made humanity fo
               })}
               <button
                 type="button"
-                onClick={openStorePanel}
-                className="flex min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
+                onClick={() => setDashboardMenuOpen(false)}
+                className="hidden min-h-[72px] flex-col items-center justify-center gap-1 rounded-[18px] px-1.5 py-2 text-center text-[10px] font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f4f8ff)] hover:text-[var(--bb-text-primary,#111827)]"
               >
                 <span
                   className="grid h-10 w-10 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-xl"
@@ -13338,7 +13154,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 {getReferralDisplayName(referralRewardModal)} signed up!
               </h2>
               <p className="relative mt-3 text-sm font-bold leading-6 text-[#c7e8ff]">
-                You were credited 250 XP points and 250 diamonds for sharing Bible Buddy.
+                You were credited 250 XP points for sharing Bible Buddy.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-2 bg-[rgba(2,10,22,0.44)] px-6 py-5">
@@ -13348,7 +13164,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
               <div className="rounded-2xl border border-[rgba(93,214,255,0.2)] bg-[rgba(47,154,255,0.12)] px-3 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
                 <p className="text-2xl font-black text-[#9ee7ff]">+250</p>
-                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#91b9d4]">diamonds</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#91b9d4]">friends helped</p>
               </div>
               <button
                 type="button"
@@ -13459,13 +13275,13 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </p>
                   </div>
                   <div className="rounded-xl border border-gray-200 bg-white p-3">
-                    <p className="font-bold text-gray-950">5. 🔤 Scrambled</p>
+                    <p className="font-bold text-gray-950">5. Reflection</p>
                     <p className="mt-1 text-sm leading-6 text-gray-700">
-                      Scrambled reviews important words from the chapter in a quick, playful way.
+                      Reflection gives you a place to answer the question and share what the chapter is doing in you.
                     </p>
                   </div>
                   <div className="rounded-xl border border-gray-200 bg-white p-3">
-                    <p className="font-bold text-gray-950">6. Reflection</p>
+                    <p className="font-bold text-gray-950">Bonus Reflection</p>
                     <p className="mt-1 text-sm leading-6 text-gray-700">
                       Reflection gives you a place to answer the question and share what the chapter is doing in you.
                     </p>

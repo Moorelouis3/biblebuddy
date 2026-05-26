@@ -833,13 +833,14 @@ export const GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON: BibleYearDailyLesson = {
 
 export const GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON: BibleYearDailyLesson = {
   dayNumber: 8,
-  title: "The Judgment of Sodom",
-  reference: "Genesis 18-19",
-  estimatedListenTime: "about 19 min",
+  title: "Sodom and Gomorrah",
+  reference: "Genesis 18-20",
+  estimatedListenTime: "about 22 min",
   opening: [
-    "Day 8 brings together promise, prayer, mercy, and judgment.",
+    "Day 8 brings together promise, prayer, mercy, judgment, and God's protection of the covenant promise.",
     "Genesis 18 shows Abraham receiving visitors, Sarah hearing the promise again, and Abraham standing before the Lord in intercession.",
-    "Genesis 19 is heavy. It shows Sodom's violence, Lot's compromised position, mercy pulling him out, and judgment falling on a city that refused righteousness.",
+    "Genesis 19 is heavy. It shows Sodom and Gomorrah, Lot's compromised position, mercy pulling him out, and judgment falling on cities that refused righteousness.",
+    "Genesis 20 then shows Abraham repeating an old fear in Gerar, but God still protects Sarah and preserves the promise before Isaac is born.",
   ],
   sections: [
     {
@@ -903,7 +904,7 @@ export const GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON: BibleYearDailyLesson = 
       ],
     },
     {
-      heading: "Sodom Falls",
+      heading: "Sodom and Gomorrah Fall",
       verseBlock: { reference: "Genesis 19:23-29", chapter: 19, startVerse: 23, endVerse: 29 },
       teaching: [
         "Lot reaches Zoar, and judgment falls on Sodom and Gomorrah.",
@@ -922,27 +923,6 @@ export const GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON: BibleYearDailyLesson = 
         "Genesis does not soften the ending. It shows the long consequences of compromise and the need for God's mercy at every level.",
       ],
     },
-  ],
-  closing: [
-    "Day 8 is not an easy day, but it is an important one.",
-    "Genesis 18 reminds us that God's promise can still speak into impossible waiting, and that prayer can draw near with reverent boldness.",
-    "Genesis 19 reminds us that wickedness is serious, compromise has consequences, and judgment is not pretend.",
-    "But even here, mercy is present.",
-    "The Lord heard Abraham's intercession, remembered Abraham, and pulled Lot from the overthrow.",
-  ],
-};
-
-export const GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON: BibleYearDailyLesson = {
-  dayNumber: 9,
-  title: "Abraham's Test and Legacy",
-  reference: "Genesis 20-25",
-  estimatedListenTime: "about 16 min",
-  opening: [
-    "Day 9 closes Abraham's journey and prepares the story to move into the next generation.",
-    "Genesis 20 shows Abraham repeating an old fear, but God still protects Sarah and preserves the promise.",
-    "Then Isaac is born, Hagar and Ishmael are cared for in the wilderness, Abraham is tested on Mount Moriah, Sarah dies, Isaac receives Rebekah, and the family line moves toward Jacob and Esau.",
-  ],
-  sections: [
     {
       heading: "Abraham Repeats an Old Fear",
       verseBlock: { reference: "Genesis 20:1-18", chapter: 20, startVerse: 1, endVerse: 18 },
@@ -953,6 +933,28 @@ export const GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON: BibleYearDailyLes
         "The promise is close to fulfillment, and God preserves it even while Abraham is still flawed.",
       ],
     },
+  ],
+  closing: [
+    "Day 8 is not an easy day, but it is an important one.",
+    "Genesis 18 reminds us that God's promise can still speak into impossible waiting, and that prayer can draw near with reverent boldness.",
+    "Genesis 19 reminds us that wickedness is serious, compromise has consequences, and judgment is not pretend.",
+    "Genesis 20 reminds us that God's promise is not fragile, even when Abraham falls back into fear.",
+    "But even here, mercy is present.",
+    "The Lord heard Abraham's intercession, remembered Abraham, pulled Lot from the overthrow, and protected Sarah before Isaac's birth.",
+  ],
+};
+
+export const GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON: BibleYearDailyLesson = {
+  dayNumber: 9,
+  title: "Abraham's Test and Legacy",
+  reference: "Genesis 21-24",
+  estimatedListenTime: "about 16 min",
+  opening: [
+    "Day 9 closes Abraham's journey and prepares the story to move into the next generation.",
+    "Isaac is born, Hagar and Ishmael are cared for in the wilderness, Abraham is tested on Mount Moriah, Sarah dies, and Isaac receives Rebekah.",
+    "This keeps Day 9 focused on promise fulfilled, costly trust, grief, and God's guidance for the covenant family.",
+  ],
+  sections: [
     {
       heading: "Isaac Is Born",
       verseBlock: { reference: "Genesis 21:1-7", chapter: 21, startVerse: 1, endVerse: 7 },
@@ -1013,32 +1015,12 @@ export const GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON: BibleYearDailyLes
         "Genesis shows God's guidance carrying the promise into the next generation.",
       ],
     },
-    {
-      heading: "Abraham's Final Years",
-      verseBlock: { reference: "Genesis 25:1-18", chapter: 25, startVerse: 1, endVerse: 18 },
-      teaching: [
-        "Abraham has more descendants, gives gifts, and sends other sons away from Isaac.",
-        "Then Abraham dies full of years.",
-        "Isaac and Ishmael bury him together.",
-        "The focus remains clear: the covenant promise continues through Isaac.",
-      ],
-    },
-    {
-      heading: "Jacob and Esau Are Born",
-      verseBlock: { reference: "Genesis 25:19-34", chapter: 25, startVerse: 19, endVerse: 34 },
-      teaching: [
-        "Genesis now turns toward Isaac's family.",
-        "Rebekah conceives twins, and the struggle begins before birth.",
-        "Jacob and Esau grow into very different men, and Esau despises his birthright.",
-        "The next generation begins with conflict, but God's purpose is still moving forward.",
-      ],
-    },
   ],
   closing: [
     "Day 9 shows Abraham as both faithful and flawed.",
-    "He repeats fear, receives Isaac, sends Hagar away, obeys on Moriah, mourns Sarah, and prepares Isaac's future.",
+    "He receives Isaac, sends Hagar away, obeys on Moriah, mourns Sarah, and prepares Isaac's future.",
     "The big movement is legacy.",
-    "God keeps His promise through Abraham's weakness, Sarah's laughter, Isaac's birth, Rebekah's arrival, and the next generation.",
+    "God keeps His promise through Sarah's laughter, Isaac's birth, Abraham's costly obedience, and Rebekah's arrival.",
     "The story is not held together by perfect people. It is held together by the faithful God who keeps covenant.",
   ],
 };

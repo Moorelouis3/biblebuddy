@@ -11,9 +11,9 @@ This is the full 365-day BibleBuddy journey map. Days 1-21 preserve the current 
 | 5 | Genesis 11-13 | Obedience of Abraham |
 | 6 | Genesis 14-15 | The Rescue of Lot |
 | 7 | Genesis 16-17 | The Covenant Promise |
-| 8 | Genesis 18-19 | The Judgment of Sodom |
-| 9 | Genesis 20-25 | Abraham's Test and Legacy |
-| 10 | Genesis 26-27 | Covenant Through Isaac |
+| 8 | Genesis 18-20 | Sodom and Gomorrah |
+| 9 | Genesis 21-24 | Abraham's Test and Legacy |
+| 10 | Genesis 25-27 | Covenant Through Isaac |
 | 11 | Genesis 28-29 | Jacob Meets God at Bethel |
 | 12 | Genesis 30-31 | Jacob Leaves Laban |
 | 13 | Genesis 32-33 | Jacob Wrestles With God |

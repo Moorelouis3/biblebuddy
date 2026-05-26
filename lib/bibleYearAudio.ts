@@ -87,10 +87,10 @@ export const BIBLE_YEAR_DAY_SEVEN_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_EIGHT_AUDIO: BibleYearAudioDay = {
   dayNumber: 8,
-  title: "Day 8 - The Judgment of Sodom",
+  title: "Day 8 - Sodom and Gomorrah",
   storagePath: getBibleYearAudioStoragePath(8),
   apiSrc: getBibleYearAudioApiSrc(8),
-  estimatedDuration: "about 19 min",
+  estimatedDuration: "about 22 min",
 };
 
 export const BIBLE_YEAR_DAY_NINE_AUDIO: BibleYearAudioDay = {
@@ -106,7 +106,7 @@ export const BIBLE_YEAR_DAY_TEN_AUDIO: BibleYearAudioDay = {
   title: "Day 10 - Covenant Through Isaac",
   storagePath: getBibleYearAudioStoragePath(10),
   apiSrc: getBibleYearAudioApiSrc(10),
-  estimatedDuration: "about 16 min",
+  estimatedDuration: "about 20 min",
 };
 
 export const BIBLE_YEAR_DAY_ELEVEN_AUDIO: BibleYearAudioDay = {
