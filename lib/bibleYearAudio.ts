@@ -64,7 +64,7 @@ export const BIBLE_YEAR_DAY_FIVE_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(5),
   apiSrc: getBibleYearAudioApiSrc(5),
   estimatedDuration: "about 15 min",
-  videoSrc: "https://player.mediadelivery.net/play/618103/d191f4b4-dedd-4603-b0ea-a40909a77962",
+  videoSrc: "https://player.mediadelivery.net/play/618103/8b18e4fe-f63b-49db-a771-f5fd7e109878",
 };
 
 export const BIBLE_YEAR_DAY_SIX_AUDIO: BibleYearAudioDay = {
@@ -90,7 +90,7 @@ export const BIBLE_YEAR_DAY_EIGHT_AUDIO: BibleYearAudioDay = {
   title: "Day 8 - Sodom and Gomorrah",
   storagePath: getBibleYearAudioStoragePath(8),
   apiSrc: getBibleYearAudioApiSrc(8),
-  estimatedDuration: "about 22 min",
+  estimatedDuration: "about 20 min",
 };
 
 export const BIBLE_YEAR_DAY_NINE_AUDIO: BibleYearAudioDay = {

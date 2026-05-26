@@ -416,7 +416,12 @@ export function applyAppThemeToDocument(themeId: AppThemeId) {
   const theme = getAppTheme(themeId);
   const root = document.documentElement;
   root.dataset.bbTheme = theme.id;
-  if (root.dataset.bbSkin && root.dataset.bbSkin !== "none") return;
+  if (
+    (root.dataset.bbSkin && root.dataset.bbSkin !== "none") ||
+    (root.dataset.bbBasicSkin && root.dataset.bbBasicSkin !== "none")
+  ) {
+    return;
+  }
 
   const variableMap: Record<keyof AppThemeTokens, string> = {
     background: "--bb-background",

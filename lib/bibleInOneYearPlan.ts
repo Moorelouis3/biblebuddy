@@ -135,8 +135,9 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     dayNumber: 8,
     title: "Sodom and Gomorrah",
     reference: "Genesis 18-20",
-    estimatedTime: "about 22 min",
+    estimatedTime: "about 20 min",
     summary: "Move through Abraham welcoming the visitors, Sarah hearing the promise, Abraham interceding, Sodom and Gomorrah's judgment, Lot's rescue, and God protecting Sarah in Gerar.",
+    coverImage: "/SodomandGomorrah.png",
     readings: buildGenesisReadings("The Obedience of Abraham", 18, 20, 8),
   },
   {

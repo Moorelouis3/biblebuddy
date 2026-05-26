@@ -70,6 +70,7 @@ const outputDay = String(selectedLesson.dayNumber).padStart(3, "0");
 const OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-audio.mp3`);
 const VOICE_ONLY_OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-voices-only.mp3`);
 const NARRATOR_ONLY_OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-narrator-only.mp3`);
+const DAY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-8-exact-web-narrator-script.md");
 const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.129 : selectedLesson.dayNumber === 1 ? 0.112 : 0.088;
 
 function ensureDir(path: string) {
@@ -781,6 +782,7 @@ function buildDayOneSingleNarratorSegments(lesson: BibleYearDailyLesson) {
 
 function buildBibleYearSpeechText(lesson: BibleYearDailyLesson) {
   if (lesson.dayNumber === 1) return buildDayOneCinematicSpeechText(lesson);
+  if (lesson.dayNumber === 8 && existsSync(DAY_EIGHT_APPROVED_SCRIPT_PATH)) return buildApprovedDayEightSpeechText();
 
   const teachingByReference: Record<string, string[]> = {
     "Genesis 1:1-5": [
@@ -862,6 +864,35 @@ function buildBibleYearSpeechText(lesson: BibleYearDailyLesson) {
   }
 
   return cleanTextForTts(parts.join("\n\n"))
+    .replace(/\bVerse\s+\d+\b\.?/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function buildApprovedDayEightSpeechText() {
+  const raw = readFileSync(DAY_EIGHT_APPROVED_SCRIPT_PATH, "utf8");
+  const lines = raw.split(/\r?\n/);
+  const spokenLines: string[] = [];
+  let include = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed === "## Opening") {
+      include = true;
+      continue;
+    }
+
+    if (!include || !trimmed) continue;
+    if (/^#{1,6}\s+/.test(trimmed)) continue;
+    if (/^\*\*(Scripture|Narrator)\*\*$/i.test(trimmed)) continue;
+    if (/^\*\*(Reading|Bible text|Goal|Estimated script word count|Estimated spoken time)\s*:/i.test(trimmed)) continue;
+
+    const withoutVerseNumber = trimmed.replace(/^\d+\.\s+/, "");
+    const withoutMarkdownLabel = withoutVerseNumber.replace(/^\*\*([^*]+)\*\*:?\s*/g, "$1 ");
+    spokenLines.push(withoutMarkdownLabel);
+  }
+
+  return cleanTextForTts(spokenLines.join("\n\n"))
     .replace(/\bVerse\s+\d+\b\.?/gi, " ")
     .replace(/\s+/g, " ")
     .trim();

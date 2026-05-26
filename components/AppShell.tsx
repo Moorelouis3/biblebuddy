@@ -344,7 +344,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       cacheAppThemeForUser(userId, themeId);
       setAppThemeId(themeId);
       applyAppThemeToDocument(themeId);
-      applyPremiumSkinToDocument(normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin));
+      applyPremiumSkinToDocument(readCachedPremiumSkin(userId));
     }
     window.addEventListener("bb:app-theme-purchased", handlePurchasedTheme);
     return () => window.removeEventListener("bb:app-theme-purchased", handlePurchasedTheme);
@@ -354,10 +354,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (typeof window === "undefined") return;
     function handlePremiumSkinChanged(event?: Event) {
       const customEvent = event as CustomEvent<{ skinId?: string }> | undefined;
-      const currentDocumentSkin = normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin);
+      const explicitSkinId = customEvent?.detail?.skinId
+        ? normalizePremiumSkinId(customEvent.detail.skinId)
+        : null;
       const skinId = normalizePremiumSkinId(
-        customEvent?.detail?.skinId ||
-          (currentDocumentSkin !== "none" ? currentDocumentSkin : null) ||
+        explicitSkinId ||
           readCachedPremiumSkin(userId),
       );
       cachePremiumSkinForUser(userId, skinId);
@@ -439,7 +440,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       cacheAppThemeForUser(userId, themeId, options);
     }
     applyAppThemeToDocument(themeId);
-    applyPremiumSkinToDocument(normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin));
+    applyPremiumSkinToDocument(readCachedPremiumSkin(userId));
   }
 
   async function canUsePremiumSkin(currentUserId: string, email: string | null | undefined, skinId: PremiumSkinId) {

@@ -3756,13 +3756,7 @@ export default function DashboardJourneyExperience({
     const params = new URLSearchParams(window.location.search);
     const view = params.get("view");
     if (view === "bible-year") {
-      const dayNumber = Number(params.get("day") || 0);
-      const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
-      if (day) {
-        openBibleYearDayOnDashboard(day);
-      } else {
-        resetBibleYearDashboardToCurrentDay();
-      }
+      resetBibleYearDashboardToCurrentDay();
     } else if (view === "bible-year-series") {
       setBibleYearDashboardActive(false);
       setBibleYearSeriesActive(true);
@@ -7663,6 +7657,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const lesson = content.lesson;
     const audio = content.audio;
     const videoComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
+    const hasVideo = Boolean(audio?.videoSrc);
     const videoPlayerSrc = audio?.videoSrc
       ? `${audio.videoSrc}${audio.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
       : null;
@@ -7686,9 +7681,11 @@ Before we understand redemption, we need to understand what God made humanity fo
         `}</style>
         <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
           <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Task 1</p>
-          <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Watch Today&apos;s Scripture Video</h2>
+          <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+            {hasVideo ? "Watch Today's Scripture Video" : "Listen To Today's Scripture Audio"}
+          </h2>
           <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            Watch today&apos;s guided Scripture breakdown.
+            {hasVideo ? "Watch today's guided Scripture breakdown." : "Listen to today's guided Scripture reading and explanation."}
           </p>
           {videoPlayerSrc ? (
             <div className="mt-4 overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-black shadow-[0_18px_38px_rgba(14,26,58,0.18)]">
@@ -7743,7 +7740,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 : "border-[var(--bb-button,#2f7fe8)] bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
             }`}
           >
-            <span className="text-base font-black">{videoComplete ? "Video Complete" : "Mark Video Complete"}</span>
+            <span className="text-base font-black">{videoComplete ? "Lesson Complete" : hasVideo ? "Mark Video Complete" : "Mark Audio Complete"}</span>
             <span className="rounded-full bg-white/18 px-2.5 py-1 text-xs font-black">+25 XP</span>
           </button>
         </div>
@@ -9167,7 +9164,6 @@ Before we understand redemption, we need to understand what God made humanity fo
     const isInProgress = !isComplete && isCurrent && completedCount > 0;
     const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
     const statusLabel = isComplete ? "Completed" : isLocked ? "Locked Study" : isCurrent ? (isInProgress ? "In Progress" : "Current Study") : "Past Study";
-    const actionLabel = isComplete ? "Review Bible Study" : isCurrent ? "Continue Study" : "Open Bible Study";
     const encouragement = isComplete
       ? "You completed this study. Review it anytime to strengthen your understanding."
       : isLocked
@@ -9227,13 +9223,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <p className="text-sm font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{encouragement}</p>
               </div>
 
-              <button
-                type="button"
-                onClick={() => openBibleYearDayOnDashboard(day, { reviewCompleted: isComplete })}
-                className="mt-4 w-full rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,transparent)] transition hover:brightness-95 active:scale-[0.98] sm:w-auto sm:min-w-[210px]"
-              >
-                {actionLabel}
-              </button>
+              <p className="mt-4 rounded-2xl bg-[var(--bb-accent-soft,#eaf5ff)] px-4 py-3 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
+                Day {day.dayNumber} is loaded in the study area below.
+              </p>
             </div>
           </div>
       </div>
@@ -11522,6 +11514,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                   type="button"
                                   onClick={() => {
                                     if (!milestoneDay) return;
+                                    openBibleYearDayOnDashboard(milestoneDay, { reviewCompleted: isComplete });
                                     setBibleYearJourneyPreviewDay((current) =>
                                       current?.dayNumber === milestoneDay.dayNumber ? null : milestoneDay,
                                     );
@@ -11562,7 +11555,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                     }`}
                                     aria-hidden="true"
                                   >
-                                    {isComplete ? "âœ“" : isCurrent ? "â€¢" : "ðŸ”’"}
+                                    {isComplete ? "\u2713" : isCurrent ? "\u2022" : "\uD83D\uDD12"}
                                   </span>
                                 </button>
                                 <p className="mt-2 truncate text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">{milestoneDayLabel}</p>
@@ -12414,7 +12407,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   }`}
                   aria-hidden="true"
                 >
-                  ðŸ“–
+                  <BibleBookIcon />
                 </span>
                 <span className="leading-tight">Home</span>
               </button>
@@ -12434,7 +12427,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   }`}
                   aria-hidden="true"
                 >
-                  ðŸ“–
+                  <BibleBookIcon />
                 </span>
                 <span className="leading-tight">Journey Map</span>
               </button>
@@ -12531,7 +12524,20 @@ Before we understand redemption, we need to understand what God made humanity fo
               aria-expanded={dashboardMenuOpen}
               aria-label={dashboardMenuOpen ? "Close dashboard menu" : "Open dashboard menu"}
             >
-              <span className="text-2xl leading-none" aria-hidden="true">{dashboardMenuOpen ? "Ã—" : "â˜°"}</span>
+              <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
+                {dashboardMenuOpen ? (
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+                    <path d="M6 6l12 12" />
+                    <path d="M18 6L6 18" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+                    <path d="M4 7h16" />
+                    <path d="M4 12h16" />
+                    <path d="M4 17h16" />
+                  </svg>
+                )}
+              </span>
               <span>Menu</span>
             </button>
 
@@ -12564,7 +12570,11 @@ Before we understand redemption, we need to understand what God made humanity fo
               data-dashboard-nav-key="home-tab"
             >
               <span className={`grid h-7 w-7 place-items-center rounded-full text-lg ${homeTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
-                âŒ‚
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 10.5 12 3l9 7.5" />
+                  <path d="M5 10v10h14V10" />
+                  <path d="M9 20v-6h6v6" />
+                </svg>
               </span>
               <span>Home</span>
             </button>
