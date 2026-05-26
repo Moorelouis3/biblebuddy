@@ -1,4 +1,4 @@
-import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
+﻿import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
 import { getSeriesTotalWeeks, getSeriesWeekLesson } from "./seriesContent";
 const WEEK_IN_MS = 7 * 24 * 60 * 60 * 1000;
 
@@ -130,113 +130,113 @@ export function buildBibleStudySaturdaySnapshot(
     lesson,
     introSnippet,
     seriesTitle: snapshot.seriesTitle,
-    studyHref: `/study-groups/${snapshot.groupId}/series/week/${weekNumber}`,
+    studyHref: `/dashboard/${snapshot.groupId}/series/week/${weekNumber}`,
   };
 }
 
 const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
   {
     title: "Highlighting your Bible should help you later, not just make the page colorful",
-    description: "Most people highlight with no system and end up with a page full of color they can't explain later. In Bible Buddy, you can highlight with a purpose — marking what confused you, what stood out, and what you want to come back to.",
+    description: "Most people highlight with no system and end up with a page full of color they can't explain later. In Bible Buddy, you can highlight with a purpose â€” marking what confused you, what stood out, and what you want to come back to.",
     contentHtml: `
 <p>Most people start highlighting the Bible with no real system.</p>
 <p>They go through a chapter, mark a few verses in yellow, and then two weeks later they come back and have no idea why they highlighted that.</p>
 <p>The color is there. The reason is gone.</p>
-<h2>🖊️ Highlighting with purpose changes everything</h2>
-<p>In Bible Buddy, you can tap any verse number and highlight it right there. But the goal is not to make the page look active — it is to leave a trail for future you.</p>
-<h2>✅ Three ways to highlight intentionally</h2>
+<h2>ðŸ–Šï¸ Highlighting with purpose changes everything</h2>
+<p>In Bible Buddy, you can tap any verse number and highlight it right there. But the goal is not to make the page look active â€” it is to leave a trail for future you.</p>
+<h2>âœ… Three ways to highlight intentionally</h2>
 <ul>
-<li>🟡 <strong>Mark what confused you</strong> — so you know to come back and study it more</li>
-<li>🟢 <strong>Mark what stood out</strong> — the verse that hit different when you read it</li>
-<li>🔵 <strong>Mark what you want to revisit</strong> — for study, reflection, or sharing later</li>
+<li>ðŸŸ¡ <strong>Mark what confused you</strong> â€” so you know to come back and study it more</li>
+<li>ðŸŸ¢ <strong>Mark what stood out</strong> â€” the verse that hit different when you read it</li>
+<li>ðŸ”µ <strong>Mark what you want to revisit</strong> â€” for study, reflection, or sharing later</li>
 </ul>
-<p>When you build a simple system, your highlights become a map of your time in Scripture — not just color on a page.</p>
-<p>Open the Bible reader and try it this week. <a href="/reading"><strong>Tap here to start reading →</strong></a></p>
+<p>When you build a simple system, your highlights become a map of your time in Scripture â€” not just color on a page.</p>
+<p>Open the Bible reader and try it this week. <a href="/reading"><strong>Tap here to start reading â†’</strong></a></p>
 `.trim(),
   },
   {
     title: "Sometimes you are not confused by the Bible, you are just stuck on one wording",
-    description: "Sometimes the issue is not the verse itself — it is just the translation. In Bible Buddy, you can switch between WEB, ASV, and KJV without leaving your place so you can see the verse in different words and keep reading.",
+    description: "Sometimes the issue is not the verse itself â€” it is just the translation. In Bible Buddy, you can switch between WEB, ASV, and KJV without leaving your place so you can see the verse in different words and keep reading.",
     contentHtml: `
 <p>Sometimes you read a verse and something just feels off.</p>
-<p>You read it again. Still not clicking. You are not sure if you misunderstood the verse — or if you are just stuck on the specific words used in that translation.</p>
+<p>You read it again. Still not clicking. You are not sure if you misunderstood the verse â€” or if you are just stuck on the specific words used in that translation.</p>
 <p>That is a common moment. And it does not have to stop your reading.</p>
-<h2>📖 Switch translations without losing your place</h2>
+<h2>ðŸ“– Switch translations without losing your place</h2>
 <p>At the top of the <a href="/reading"><strong>Bible reader in Bible Buddy</strong></a>, there is a translation dropdown. Tap it and switch between WEB, ASV, and KJV right there in the same view.</p>
 <p>You do not have to open another app. You do not have to search anything. You just see the verse in different words and keep moving.</p>
-<h2>✅ When this helps most</h2>
+<h2>âœ… When this helps most</h2>
 <ul>
-<li>📌 <strong>KJV feels too formal</strong> — switch to WEB for a more modern read</li>
-<li>📌 <strong>A phrase sounds confusing</strong> — compare it in ASV to see if the wording is clearer</li>
-<li>📌 <strong>You want to study a verse deeply</strong> — read it in all three and notice what each one emphasizes</li>
+<li>ðŸ“Œ <strong>KJV feels too formal</strong> â€” switch to WEB for a more modern read</li>
+<li>ðŸ“Œ <strong>A phrase sounds confusing</strong> â€” compare it in ASV to see if the wording is clearer</li>
+<li>ðŸ“Œ <strong>You want to study a verse deeply</strong> â€” read it in all three and notice what each one emphasizes</li>
 </ul>
 <p>The goal is to keep you in the Word, not bouncing between apps trying to figure out what a sentence means.</p>
-<p><a href="/reading"><strong>Open the Bible reader and try switching translations →</strong></a></p>
+<p><a href="/reading"><strong>Open the Bible reader and try switching translations â†’</strong></a></p>
 `.trim(),
   },
   {
     title: "Chapter notes are there for the moments when you finish reading and still feel lost",
     description: "You read every verse and still feel like you are not sure what just happened. That is what chapter notes are for. Open them after you read and get a clear explanation that ties the whole chapter together before you move on.",
     contentHtml: `
-<p>You finish a chapter. You read every single verse. And then you sit there and think — I am not totally sure what just happened.</p>
+<p>You finish a chapter. You read every single verse. And then you sit there and think â€” I am not totally sure what just happened.</p>
 <p>That feeling is more common than people admit. The Bible is not always easy to follow, especially in books like Leviticus, Ezekiel, or Revelation where the context matters a lot.</p>
 <p>That is exactly what chapter notes are for.</p>
-<h2>📝 What chapter notes do</h2>
+<h2>ðŸ“ What chapter notes do</h2>
 <p>In the <a href="/reading"><strong>Bible reader</strong></a>, every chapter has a notes section that breaks down what you just read in plain language.</p>
-<p>It gives you the context, the key moment in the chapter, and how it connects to the bigger story — so you understand the flow before moving on instead of carrying confusion into the next chapter.</p>
-<h2>✅ Use chapter notes when</h2>
+<p>It gives you the context, the key moment in the chapter, and how it connects to the bigger story â€” so you understand the flow before moving on instead of carrying confusion into the next chapter.</p>
+<h2>âœ… Use chapter notes when</h2>
 <ul>
-<li>🔍 <strong>You finished the chapter but feel fuzzy on what happened</strong></li>
-<li>📖 <strong>You are reading a book you have never studied before</strong></li>
-<li>💡 <strong>You want to make sure you caught the main point before moving on</strong></li>
-<li>🗒️ <strong>You are preparing to discuss a passage with someone else</strong></li>
+<li>ðŸ” <strong>You finished the chapter but feel fuzzy on what happened</strong></li>
+<li>ðŸ“– <strong>You are reading a book you have never studied before</strong></li>
+<li>ðŸ’¡ <strong>You want to make sure you caught the main point before moving on</strong></li>
+<li>ðŸ—’ï¸ <strong>You are preparing to discuss a passage with someone else</strong></li>
 </ul>
 <p>You do not have to search anything. Just open the notes right there in the reader.</p>
-<p><a href="/reading"><strong>Open the Bible reader and check out the chapter notes →</strong></a></p>
+<p><a href="/reading"><strong>Open the Bible reader and check out the chapter notes â†’</strong></a></p>
 `.trim(),
   },
   {
     title: "What do you do if you don't understand a person, place, or word when reading the Bible?",
-    description: "I built Bible Buddy because I got tired of how many things I needed just to study the Bible. Highlighters, notebooks, Notion, Google, YouTube, two other Bible apps — all of that just because I would hit a word I didn't understand. Now you can just tap it and the explanation opens right there.",
+    description: "I built Bible Buddy because I got tired of how many things I needed just to study the Bible. Highlighters, notebooks, Notion, Google, YouTube, two other Bible apps â€” all of that just because I would hit a word I didn't understand. Now you can just tap it and the explanation opens right there.",
     contentHtml: `
 <p>I built Bible Buddy because I got tired of how many things I needed just to study the Bible.</p>
 <p>Highlighters. Notebooks. Notion. Google. YouTube. Two other Bible apps.</p>
-<p>All of that just because I would get to reading and hit a person, place, or word I didn't understand — and then I had to stop, search it up, write the definition down, and piece together what it meant before the verse even made sense.</p>
+<p>All of that just because I would get to reading and hit a person, place, or word I didn't understand â€” and then I had to stop, search it up, write the definition down, and piece together what it meant before the verse even made sense.</p>
 <p>That broke my focus every single time. So I made something better.</p>
-<h2>📖 Reading the Bible is different now</h2>
+<h2>ðŸ“– Reading the Bible is different now</h2>
 <p>Inside Bible Buddy we have a full <a href="/reading"><strong>Bible reader</strong></a> built specifically for this problem.</p>
-<p>When you come across a person, place, or keyword you don't know — you don't have to leave the page. Just tap it right there and the explanation opens instantly.</p>
-<h2>🔍 How it works</h2>
+<p>When you come across a person, place, or keyword you don't know â€” you don't have to leave the page. Just tap it right there and the explanation opens instantly.</p>
+<h2>ðŸ” How it works</h2>
 <ul>
-<li>🟠 <strong>People</strong> are highlighted in orange — tap to see who they are and why they matter</li>
-<li>🟢 <strong>Places</strong> are highlighted in green — tap to see where it is and the context behind it</li>
-<li>🔵 <strong>Keywords</strong> are highlighted in blue — tap to get a clear definition right there</li>
+<li>ðŸŸ  <strong>People</strong> are highlighted in orange â€” tap to see who they are and why they matter</li>
+<li>ðŸŸ¢ <strong>Places</strong> are highlighted in green â€” tap to see where it is and the context behind it</li>
+<li>ðŸ”µ <strong>Keywords</strong> are highlighted in blue â€” tap to get a clear definition right there</li>
 </ul>
 <p>The explanation pops up without taking you anywhere else. You stay in the text the whole time.</p>
-<h2>✅ What this does for your study</h2>
+<h2>âœ… What this does for your study</h2>
 <ul>
-<li>✔ You stay in Scripture instead of disappearing into searches</li>
-<li>✔ You understand the full verse or chapter instead of guessing</li>
-<li>✔ Your focus stays locked in from start to finish</li>
+<li>âœ” You stay in Scripture instead of disappearing into searches</li>
+<li>âœ” You understand the full verse or chapter instead of guessing</li>
+<li>âœ” Your focus stays locked in from start to finish</li>
 </ul>
-<p>This is one of the main reasons I built the app. Open the Bible and try it — <a href="/reading"><strong>tap here to open the Bible reader →</strong></a></p>
+<p>This is one of the main reasons I built the app. Open the Bible and try it â€” <a href="/reading"><strong>tap here to open the Bible reader â†’</strong></a></p>
 `.trim(),
   },
   {
     title: "Bible trivia is one of the easiest ways to keep learning without feeling overwhelmed",
-    description: "Some days you want to grow in the Word but you don't have the energy for a deep study session. Bible trivia keeps you engaged — quick questions, instant feedback, and you find out what you actually know versus what you assumed you knew.",
+    description: "Some days you want to grow in the Word but you don't have the energy for a deep study session. Bible trivia keeps you engaged â€” quick questions, instant feedback, and you find out what you actually know versus what you assumed you knew.",
     contentHtml: `
 <p>Some days you want to keep growing in the Word but you just do not have the bandwidth for a deep study session.</p>
 <p>That is real. And that is exactly where Bible trivia helps.</p>
-<h2>🧠 What trivia actually does for you</h2>
+<h2>ðŸ§  What trivia actually does for you</h2>
 <p>It is not just a game. Every question you answer is a small test of what you actually know versus what you assumed you knew.</p>
-<p>And when you get one wrong, you see the explanation right there — which is often the moment something actually sticks.</p>
-<h2>✅ Why it works on the days when deep study doesn't</h2>
+<p>And when you get one wrong, you see the explanation right there â€” which is often the moment something actually sticks.</p>
+<h2>âœ… Why it works on the days when deep study doesn't</h2>
 <ul>
-<li>⚡ <strong>Short</strong> — you can finish a round in a few minutes</li>
-<li>📖 <strong>Scripture-rooted</strong> — every question is based on actual Bible content</li>
-<li>💬 <strong>Community</strong> — your score shows up on the group board so you can see how everyone did</li>
-<li>🔁 <strong>Rotates weekly</strong> — new theme every Tuesday so it never gets stale</li>
+<li>âš¡ <strong>Short</strong> â€” you can finish a round in a few minutes</li>
+<li>ðŸ“– <strong>Scripture-rooted</strong> â€” every question is based on actual Bible content</li>
+<li>ðŸ’¬ <strong>Community</strong> â€” your score shows up on the group board so you can see how everyone did</li>
+<li>ðŸ” <strong>Rotates weekly</strong> â€” new theme every Tuesday so it never gets stale</li>
 </ul>
 <p>This Tuesday's trivia is already live in the group feed. Jump in, test yourself, and see how you do against the rest of the group.</p>
 <p>Small consistency over time is how knowledge actually builds.</p>
@@ -244,61 +244,61 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
   },
   {
     title: "The Tempting of Jesus devotional is there for the moments you feel pulled in too many directions",
-    description: "When you feel pulled in too many directions, the Tempting of Jesus devotional gives you one clear place to focus. It walks you through how Jesus responded to temptation in the wilderness — one day at a time.",
+    description: "When you feel pulled in too many directions, the Tempting of Jesus devotional gives you one clear place to focus. It walks you through how Jesus responded to temptation in the wilderness â€” one day at a time.",
     contentHtml: `
 <p>There are seasons where everything feels like it is competing for your attention.</p>
 <p>Your mind is scattered. You feel pressure from multiple directions. And in those moments, it is hard to know where to focus first.</p>
 <p>The Tempting of Jesus devotional was built for exactly that kind of season.</p>
-<h2>📖 What the devotional covers</h2>
-<p>It walks through the wilderness account — forty days, three specific temptations, and how Jesus responded to every single one.</p>
+<h2>ðŸ“– What the devotional covers</h2>
+<p>It walks through the wilderness account â€” forty days, three specific temptations, and how Jesus responded to every single one.</p>
 <p>Not with performance. Not with trying harder. But with the Word.</p>
-<h2>✅ What you will work through</h2>
+<h2>âœ… What you will work through</h2>
 <ul>
-<li>🌵 <strong>The first temptation</strong> — turning stones to bread (meeting needs outside of God's timing)</li>
-<li>⛪ <strong>The second temptation</strong> — testing God's protection (demanding proof instead of trusting)</li>
-<li>👑 <strong>The third temptation</strong> — the kingdoms of the world (choosing a shortcut over the right path)</li>
+<li>ðŸŒµ <strong>The first temptation</strong> â€” turning stones to bread (meeting needs outside of God's timing)</li>
+<li>â›ª <strong>The second temptation</strong> â€” testing God's protection (demanding proof instead of trusting)</li>
+<li>ðŸ‘‘ <strong>The third temptation</strong> â€” the kingdoms of the world (choosing a shortcut over the right path)</li>
 </ul>
-<p>Each day is a short focused study. You do not need a long block of time — just ten minutes and a willingness to sit with the text.</p>
+<p>Each day is a short focused study. You do not need a long block of time â€” just ten minutes and a willingness to sit with the text.</p>
 <p>If you have been feeling stretched or pulled in multiple directions, this is a good place to start. One day at a time.</p>
 `.trim(),
   },
   {
     title: "The Testing of Joseph devotional helps when you are trying to trust God in the waiting",
-    description: "Some seasons feel slow, unfair, or confusing. Joseph's story speaks straight into that. The Testing of Joseph devotional walks you through betrayal, the pit, the prison, and the process — so you can hold on when waiting is hard.",
+    description: "Some seasons feel slow, unfair, or confusing. Joseph's story speaks straight into that. The Testing of Joseph devotional walks you through betrayal, the pit, the prison, and the process â€” so you can hold on when waiting is hard.",
     contentHtml: `
 <p>There are seasons where things feel slow.</p>
 <p>Where you are doing the right thing, staying faithful, and it still does not feel like anything is moving.</p>
 <p>Joseph's story is one of the most honest pictures of that in all of Scripture.</p>
-<h2>📖 What makes Joseph's story different</h2>
+<h2>ðŸ“– What makes Joseph's story different</h2>
 <p>Joseph was not in the pit or the prison because he did something wrong. He was there because his path to the promise ran through places that looked like the opposite of what God said.</p>
 <p>That is the part of the story most people do not sit with long enough.</p>
-<h2>✅ What the devotional walks through</h2>
+<h2>âœ… What the devotional walks through</h2>
 <ul>
-<li>🕳️ <strong>The pit</strong> — betrayed by the people closest to him</li>
-<li>⛓️ <strong>Potiphar's house</strong> — faithful and still falsely accused</li>
-<li>🏛️ <strong>The prison</strong> — forgotten but still serving with integrity</li>
-<li>👑 <strong>The palace</strong> — positioned for something only God could arrange</li>
+<li>ðŸ•³ï¸ <strong>The pit</strong> â€” betrayed by the people closest to him</li>
+<li>â›“ï¸ <strong>Potiphar's house</strong> â€” faithful and still falsely accused</li>
+<li>ðŸ›ï¸ <strong>The prison</strong> â€” forgotten but still serving with integrity</li>
+<li>ðŸ‘‘ <strong>The palace</strong> â€” positioned for something only God could arrange</li>
 </ul>
 <p>Each phase teaches something real about trusting God when the timeline does not make sense.</p>
-<p>If you are in a waiting season right now — a slow season, an unfair season, a confusing one — this devotional will meet you there. Start at Day 1 and take it one day at a time.</p>
+<p>If you are in a waiting season right now â€” a slow season, an unfair season, a confusing one â€” this devotional will meet you there. Start at Day 1 and take it one day at a time.</p>
 `.trim(),
   },
   {
     title: "Reading plans help when you want structure but do not know what to read next",
-    description: "A lot of people want to read the Bible more consistently. The issue is not motivation — it is not knowing what to open next. A reading plan solves that. It tells you exactly where to go so you stop guessing and start moving.",
+    description: "A lot of people want to read the Bible more consistently. The issue is not motivation â€” it is not knowing what to open next. A reading plan solves that. It tells you exactly where to go so you stop guessing and start moving.",
     contentHtml: `
 <p>Here is something I hear a lot:</p>
-<p><em>"I want to read the Bible more — I just do not know what to read."</em></p>
+<p><em>"I want to read the Bible more â€” I just do not know what to read."</em></p>
 <p>That is not a motivation problem. That is a structure problem. And a reading plan fixes it completely.</p>
-<h2>📋 What a reading plan does for you</h2>
+<h2>ðŸ“‹ What a reading plan does for you</h2>
 <p>It removes the decision.</p>
 <p>Instead of opening the Bible and asking yourself where to start, you open your plan and it tells you exactly what chapter is next. That small shift is what turns inconsistent reading into a real habit.</p>
-<h2>✅ Why structure helps</h2>
+<h2>âœ… Why structure helps</h2>
 <ul>
-<li>🎯 <strong>No more guessing</strong> — you always know what to read next</li>
-<li>📅 <strong>Consistency builds over time</strong> — small daily reads add up faster than you think</li>
-<li>🗺️ <strong>You see the Bible as a story</strong> — not just isolated chapters</li>
-<li>✔ <strong>Progress feels real</strong> — checking off a day feels like momentum</li>
+<li>ðŸŽ¯ <strong>No more guessing</strong> â€” you always know what to read next</li>
+<li>ðŸ“… <strong>Consistency builds over time</strong> â€” small daily reads add up faster than you think</li>
+<li>ðŸ—ºï¸ <strong>You see the Bible as a story</strong> â€” not just isolated chapters</li>
+<li>âœ” <strong>Progress feels real</strong> â€” checking off a day feels like momentum</li>
 </ul>
 <p>If you have been jumping around the Bible without a clear path, this is the week to pick a plan and actually follow it.</p>
 <p>The reading plans in Bible Buddy are already set up and ready to go. Just pick one and start today.</p>
@@ -306,19 +306,19 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
   },
   {
     title: "Sometimes the best encouragement in the app is just seeing another Buddy's story",
-    description: "The best part of a community is realizing there are real people behind the comments. When you tap on another Buddy's profile, you see their streak, their badge, their bio, and the real person behind the name — and the app starts to feel like actual community.",
+    description: "The best part of a community is realizing there are real people behind the comments. When you tap on another Buddy's profile, you see their streak, their badge, their bio, and the real person behind the name â€” and the app starts to feel like actual community.",
     contentHtml: `
 <p>Community is not just about what people post. It is about who is posting it.</p>
 <p>When you see a comment that hits home, or someone shares something from their own walk with God, there is something powerful about knowing there is a real person behind it.</p>
-<h2>👤 What you see when you tap a profile</h2>
+<h2>ðŸ‘¤ What you see when you tap a profile</h2>
 <p>Tap on any Buddy's name or picture and their profile opens right there. You can see their reading streak, their badge, their bio, and what they have been sharing in the community.</p>
 <p>It turns a comment from a username into a person you actually know a little.</p>
-<h2>✅ Why this matters for community</h2>
+<h2>âœ… Why this matters for community</h2>
 <ul>
-<li>🤝 <strong>It makes encouragement feel real</strong> — not just likes from strangers</li>
-<li>💬 <strong>It gives you context</strong> — you understand where someone is coming from</li>
-<li>🔥 <strong>Streaks and badges show consistency</strong> — and inspire your own</li>
-<li>🙏 <strong>It makes prayer more personal</strong> — you know who you are praying for</li>
+<li>ðŸ¤ <strong>It makes encouragement feel real</strong> â€” not just likes from strangers</li>
+<li>ðŸ’¬ <strong>It gives you context</strong> â€” you understand where someone is coming from</li>
+<li>ðŸ”¥ <strong>Streaks and badges show consistency</strong> â€” and inspire your own</li>
+<li>ðŸ™ <strong>It makes prayer more personal</strong> â€” you know who you are praying for</li>
 </ul>
 <p>If you have been scrolling the feed without really looking at who is posting, take a second this week and tap on a few profiles.</p>
 <p>Real community grows when people stop feeling anonymous to each other.</p>
@@ -326,21 +326,21 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
   },
   {
     title: "Messaging is there for the moments when a public comment is not enough",
-    description: "Not every conversation belongs in the comment section. When someone shares something meaningful, encourages you, or asks for prayer — messaging lets you continue that privately. That is where community gets real.",
+    description: "Not every conversation belongs in the comment section. When someone shares something meaningful, encourages you, or asks for prayer â€” messaging lets you continue that privately. That is where community gets real.",
     contentHtml: `
 <p>Not everything should live in a public comment thread.</p>
-<p>Sometimes somebody says something in a post that you want to respond to more honestly than you would in public. Sometimes you want to follow up on a prayer request privately. Sometimes someone encourages you and you just want to say thank you — directly.</p>
+<p>Sometimes somebody says something in a post that you want to respond to more honestly than you would in public. Sometimes you want to follow up on a prayer request privately. Sometimes someone encourages you and you just want to say thank you â€” directly.</p>
 <p>That is what messaging is for.</p>
-<h2>💬 When to use messages instead of comments</h2>
+<h2>ðŸ’¬ When to use messages instead of comments</h2>
 <ul>
-<li>🙏 <strong>Someone shared a prayer request</strong> — reach out to check in privately</li>
-<li>💡 <strong>A post hit you personally</strong> — continue the conversation without performing for the feed</li>
-<li>🤝 <strong>You want to encourage someone specifically</strong> — a direct message lands differently than a comment</li>
-<li>📖 <strong>You want to study or discuss something together</strong> — start a real conversation</li>
+<li>ðŸ™ <strong>Someone shared a prayer request</strong> â€” reach out to check in privately</li>
+<li>ðŸ’¡ <strong>A post hit you personally</strong> â€” continue the conversation without performing for the feed</li>
+<li>ðŸ¤ <strong>You want to encourage someone specifically</strong> â€” a direct message lands differently than a comment</li>
+<li>ðŸ“– <strong>You want to study or discuss something together</strong> â€” start a real conversation</li>
 </ul>
-<h2>✅ How to start a message</h2>
+<h2>âœ… How to start a message</h2>
 <p>Tap on a Buddy's name or profile picture, then tap the message button. You can also open your messages directly from the menu.</p>
-<p>Every message you send is just between the two of you. No feed, no audience — just a real conversation.</p>
+<p>Every message you send is just between the two of you. No feed, no audience â€” just a real conversation.</p>
 <p>Community gets real when it gets personal. Messaging is one of the easiest ways to take it there.</p>
 `.trim(),
   },
@@ -354,10 +354,10 @@ const FRIDAY_FEATURES: RecurringSeriesTemplate[] = [
       "<p><strong>This week we are looking at Judah.</strong></p>" +
       "<p>Judah is one of those people in Scripture whose story starts messy and then becomes surprisingly important. He was one of Joseph's brothers, so he was right in the middle of the jealousy, betrayal, and pain that tore that family apart.</p>" +
       "<h2>Why Judah matters</h2>" +
-      "<ul><li>🔥 He shows how ugly sin can get when envy is left unchecked.</li><li>📖 He later steps up with real responsibility instead of empty words.</li><li>👑 His story matters even more because the line of Jesus comes through Judah.</li></ul>" +
+      "<ul><li>ðŸ”¥ He shows how ugly sin can get when envy is left unchecked.</li><li>ðŸ“– He later steps up with real responsibility instead of empty words.</li><li>ðŸ‘‘ His story matters even more because the line of Jesus comes through Judah.</li></ul>" +
       "<p>That turn in Judah's life is what makes him worth studying. He is not introduced like a hero. He is part of the problem. But later, when the family faces another crisis, Judah becomes the one willing to stand in the gap for Benjamin. That is growth. That is repentance with action.</p>" +
       "<h2>Where to read it in the Bible</h2>" +
-      "<ul><li>📍 Genesis 37:26-27</li><li>📍 Genesis 38:1-26</li><li>📍 Genesis 44:18-34</li><li>📍 Matthew 1:2-3</li></ul>" +
+      "<ul><li>ðŸ“ Genesis 37:26-27</li><li>ðŸ“ Genesis 38:1-26</li><li>ðŸ“ Genesis 44:18-34</li><li>ðŸ“ Matthew 1:2-3</li></ul>" +
       "<h2>The real takeaway</h2>" +
       "<p>Judah reminds us that God does not need a clean backstory to do something powerful with a person. Scripture does not hide his failures, but it also does not end there. God can confront what is broken, reshape a heart, and still bring redemption out of a life that looked messy.</p>" +
       "<p><strong>Drop into the comments after you read:</strong> What stands out to you most about Judah's change?</p>",
@@ -369,10 +369,10 @@ const FRIDAY_FEATURES: RecurringSeriesTemplate[] = [
       "<p><strong>This week we are looking at Gabriel.</strong></p>" +
       "<p>Gabriel is one of the clearest reminders in Scripture that when God speaks, history moves. He does not appear often, but when he does, the moment is never small.</p>" +
       "<h2>Why Gabriel matters</h2>" +
-      "<ul><li>🕊️ He shows up in moments where God is revealing something major.</li><li>📣 He announces things that change the direction of the story.</li><li>✨ He reminds us that heaven is active even when life on earth feels uncertain.</li></ul>" +
+      "<ul><li>ðŸ•Šï¸ He shows up in moments where God is revealing something major.</li><li>ðŸ“£ He announces things that change the direction of the story.</li><li>âœ¨ He reminds us that heaven is active even when life on earth feels uncertain.</li></ul>" +
       "<p>In Daniel, Gabriel helps explain visions that would have been overwhelming without God's help. In Luke, he announces the births of John the Baptist and Jesus. Those are turning-point moments. Gabriel's role reminds us that God is never scrambling. He is moving with purpose.</p>" +
       "<h2>Where to read it in the Bible</h2>" +
-      "<ul><li>📍 Daniel 8:15-17</li><li>📍 Daniel 9:21-27</li><li>📍 Luke 1:11-20</li><li>📍 Luke 1:26-38</li></ul>" +
+      "<ul><li>ðŸ“ Daniel 8:15-17</li><li>ðŸ“ Daniel 9:21-27</li><li>ðŸ“ Luke 1:11-20</li><li>ðŸ“ Luke 1:26-38</li></ul>" +
       "<h2>The real takeaway</h2>" +
       "<p>Gabriel points us back to the faithfulness of God. His presence keeps saying the same thing: what God promised is still moving forward. Even when people hesitate, struggle, or need time to understand, God is still accomplishing His word.</p>" +
       "<p><strong>Drop into the comments after you read:</strong> What part of Gabriel's role stands out to you most?</p>",
@@ -400,10 +400,10 @@ const FRIDAY_FEATURES: RecurringSeriesTemplate[] = [
       "<p><strong>This week we are looking at Barnabas.</strong></p>" +
       "<p>Barnabas is one of the clearest examples in the New Testament of what real encouragement looks like. Not shallow positivity. Real spiritual encouragement that helps people grow.</p>" +
       "<h2>Why Barnabas matters</h2>" +
-      "<ul><li>🙌 He saw God's work in people before others were fully ready to trust it.</li><li>🛡️ He stood beside Paul when many believers were still afraid of him.</li><li>🌱 He made room for growth instead of writing people off too quickly.</li></ul>" +
+      "<ul><li>ðŸ™Œ He saw God's work in people before others were fully ready to trust it.</li><li>ðŸ›¡ï¸ He stood beside Paul when many believers were still afraid of him.</li><li>ðŸŒ± He made room for growth instead of writing people off too quickly.</li></ul>" +
       "<p>That kind of person is rare. Barnabas was willing to recognize God's grace at work in people and protect that growth while it was still fragile. Later, he also gives John Mark another chance when others were ready to move on.</p>" +
       "<h2>Where to read it in the Bible</h2>" +
-      "<ul><li>📍 Acts 4:36-37</li><li>📍 Acts 9:26-27</li><li>📍 Acts 11:22-26</li><li>📍 Acts 15:36-39</li></ul>" +
+      "<ul><li>ðŸ“ Acts 4:36-37</li><li>ðŸ“ Acts 9:26-27</li><li>ðŸ“ Acts 11:22-26</li><li>ðŸ“ Acts 15:36-39</li></ul>" +
       "<h2>The real takeaway</h2>" +
       "<p>Barnabas shows us that encouragement can be a ministry, not just a personality trait. The right encourager helps people keep going, helps protect new growth, and can impact more lives than they may ever fully see.</p>" +
       "<p><strong>Drop into the comments after you read:</strong> Who has been a Barnabas in your life?</p>",
@@ -448,12 +448,12 @@ const SATURDAY_FEATURES: RecurringSeriesTemplate[] = [
 const SUNDAY_FEATURES: RecurringSeriesTemplate[] = [
   {
     title: "What can we pray for this week?",
-    description: "Sunday Prayer Request — drop whatever is on your heart this week. Be specific, be honest, or simply say please pray for me. I will be praying over every request.",
+    description: "Sunday Prayer Request â€” drop whatever is on your heart this week. Be specific, be honest, or simply say please pray for me. I will be praying over every request.",
     contentHtml:
-      "<p><strong>Prayer Request Sunday is here — this is our space to cover the week together.</strong></p>" +
+      "<p><strong>Prayer Request Sunday is here â€” this is our space to cover the week together.</strong></p>" +
       "<p>Before this week starts moving, I want to open this thread and pray over all of us.</p>" +
       "<h2>Why this thread matters</h2>" +
-      "<ul><li>🙏 A new week brings new pressure — this is where we lay it down first.</li><li>🤝 Real community carries each other, not just cheers for each other.</li><li>💬 You do not have to over-explain it — just be honest about what you need.</li></ul>" +
+      "<ul><li>ðŸ™ A new week brings new pressure â€” this is where we lay it down first.</li><li>ðŸ¤ Real community carries each other, not just cheers for each other.</li><li>ðŸ’¬ You do not have to over-explain it â€” just be honest about what you need.</li></ul>" +
       "<p><strong>A prayer for the group this week:</strong></p>" +
       "<p>Dear Heavenly Father,<br/>" +
       "Thank You for another week and for never leaving us even when life feels heavy.<br/>" +
@@ -467,12 +467,12 @@ const SUNDAY_FEATURES: RecurringSeriesTemplate[] = [
   },
   {
     title: "How can the group pray for you this week?",
-    description: "Sunday Prayer Request — if you are carrying something into this week, this is where you put it down. Drop your request below and let the group stand with you.",
+    description: "Sunday Prayer Request â€” if you are carrying something into this week, this is where you put it down. Drop your request below and let the group stand with you.",
     contentHtml:
-      "<p><strong>Sunday prayer thread is open — bring whatever you are carrying into this week.</strong></p>" +
+      "<p><strong>Sunday prayer thread is open â€” bring whatever you are carrying into this week.</strong></p>" +
       "<p>Some weeks start heavy. Some start uncertain. Some start with something you have been holding quietly and just need covered. This is that space.</p>" +
       "<h2>What this thread is for</h2>" +
-      "<ul><li>🙏 Requests for peace, direction, healing, or strength.</li><li>🛡️ Covering for situations you cannot fully explain yet.</li><li>🤝 Prayer for the people in your life who need it right now.</li></ul>" +
+      "<ul><li>ðŸ™ Requests for peace, direction, healing, or strength.</li><li>ðŸ›¡ï¸ Covering for situations you cannot fully explain yet.</li><li>ðŸ¤ Prayer for the people in your life who need it right now.</li></ul>" +
       "<p><strong>A prayer for all of us before this week begins:</strong></p>" +
       "<p>Dear Heavenly Father,<br/>" +
       "I pray over every Buddy in this group as we step into a new week.<br/>" +
@@ -481,27 +481,27 @@ const SUNDAY_FEATURES: RecurringSeriesTemplate[] = [
       "Lead us, protect us, and remind us that we do not walk this week alone.<br/>" +
       "We trust You with what is ahead.<br/>" +
       "In Jesus' name, Amen.</p>" +
-      "<p><strong>Post your prayer request in the comments.</strong> Be specific or keep it simple — either way, the group is here to stand with you.</p>",
+      "<p><strong>Post your prayer request in the comments.</strong> Be specific or keep it simple â€” either way, the group is here to stand with you.</p>",
   },
   {
     title: "What is one thing you want prayer for right now?",
-    description: "Sunday Prayer Request — just one thing. Whatever is weighing on you most right now, drop it here. The group will stand with you and I will be praying over every request.",
+    description: "Sunday Prayer Request â€” just one thing. Whatever is weighing on you most right now, drop it here. The group will stand with you and I will be praying over every request.",
     contentHtml:
       "<p><strong>Before this week gets moving, let us slow down for a moment and make room for prayer.</strong></p>" +
-      "<p>One thing. That is all I am asking. If there is one thing on your heart right now — one thing weighing on you, one thing you need God to move in — share it here.</p>" +
+      "<p>One thing. That is all I am asking. If there is one thing on your heart right now â€” one thing weighing on you, one thing you need God to move in â€” share it here.</p>" +
       "<h2>What you can bring here</h2>" +
-      "<ul><li>🙏 Something you have been carrying quietly for a while.</li><li>💔 A relationship, a situation, or a decision that needs wisdom.</li><li>⚡ Something coming up this week that you want covered.</li><li>🌿 A need for peace, healing, or a fresh start.</li></ul>" +
+      "<ul><li>ðŸ™ Something you have been carrying quietly for a while.</li><li>ðŸ’” A relationship, a situation, or a decision that needs wisdom.</li><li>âš¡ Something coming up this week that you want covered.</li><li>ðŸŒ¿ A need for peace, healing, or a fresh start.</li></ul>" +
       "<p>It can be big. It can be small. It can be detailed, or it can simply be please pray for me. This group is not here to judge anyone. It is here to stand with you.</p>" +
-      "<p><strong>Drop your request below.</strong> I will be praying over every comment that comes in, and I want to encourage you — if you see someone else's request, take a minute to pray for them too. That is how community becomes real.</p>",
+      "<p><strong>Drop your request below.</strong> I will be praying over every comment that comes in, and I want to encourage you â€” if you see someone else's request, take a minute to pray for them too. That is how community becomes real.</p>",
   },
   {
     title: "Drop your prayer request for the week",
-    description: "Sunday Prayer Request — this is the weekly prayer thread. Drop what you need covered, what you are trusting God for, or simply say please pray for me. We carry each other here.",
+    description: "Sunday Prayer Request â€” this is the weekly prayer thread. Drop what you need covered, what you are trusting God for, or simply say please pray for me. We carry each other here.",
     contentHtml:
-      "<p><strong>This is our weekly prayer thread — and it is always open.</strong></p>" +
+      "<p><strong>This is our weekly prayer thread â€” and it is always open.</strong></p>" +
       "<p>Every Sunday I open this space because I believe we should start the week covered, not just busy. If something is weighing on you, this is a good place to say it out loud.</p>" +
       "<h2>What to drop here</h2>" +
-      "<ul><li>🙏 Prayer for peace, wisdom, healing, or direction.</li><li>🛡️ Covering for hard situations you are walking through.</li><li>💬 A need you have been afraid to say out loud until now.</li><li>🤝 A request for someone you love who needs prayer too.</li></ul>" +
+      "<ul><li>ðŸ™ Prayer for peace, wisdom, healing, or direction.</li><li>ðŸ›¡ï¸ Covering for hard situations you are walking through.</li><li>ðŸ’¬ A need you have been afraid to say out loud until now.</li><li>ðŸ¤ A request for someone you love who needs prayer too.</li></ul>" +
       "<p>You do not have to over-explain it. You do not have to make it sound a certain way. Just be honest about what you need, and let this group carry it with you.</p>" +
       "<p><strong>Post your request below.</strong> I will be praying over every one, and I want to encourage you to do the same for each other. Even a short prayer for another Buddy matters more than we realize.</p>",
   },
@@ -538,7 +538,7 @@ export function buildBibleStudySaturdayPost(
   const liveStudy = buildBibleStudySaturdaySnapshot(date, snapshot);
 
   if (liveStudy) {
-    const readingLine = `${liveStudy.lesson.readingReference} · Week ${liveStudy.weekNumber} of ${liveStudy.seriesTitle}`;
+    const readingLine = `${liveStudy.lesson.readingReference} Â· Week ${liveStudy.weekNumber} of ${liveStudy.seriesTitle}`;
     const introBlocks = getPlainIntroBlocks(liveStudy.lesson.intro);
     const promoLead = getFirstSentence(introBlocks[0] || liveStudy.introSnippet);
     const promoSupport =

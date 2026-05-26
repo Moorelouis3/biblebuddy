@@ -1,4 +1,4 @@
-import { BIBLE_KEYWORDS_LIST } from "./bibleKeywordsList";
+﻿import { BIBLE_KEYWORDS_LIST } from "./bibleKeywordsList";
 import { BIBLE_PEOPLE_LIST } from "./biblePeopleList";
 import { BIBLE_PLACES_LIST } from "./biblePlacesList";
 import { bibleBuddyTvTitles } from "./bibleBuddyTvContent";
@@ -283,7 +283,7 @@ export async function loadGroupPostMentions(
       items.push({
         key: `series:${series.id}`,
         label,
-        href: `/study-groups/${groupId}/series`,
+        href: `/dashboard/${groupId}/series`,
         kind: "series",
         searchText: normalizeSearchText(`${series.title} ${label} bible series weekly study`),
       });
@@ -379,7 +379,7 @@ export function getActiveMentionQuery(editor: any) {
   };
 }
 
-// ── Textarea (plain <textarea> / <input>) mention helpers ─────────────────────
+// â”€â”€ Textarea (plain <textarea> / <input>) mention helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /** Returns the active @-query and its start index in `value`, or null. */
 export function getActiveMentionQueryFromTextarea(

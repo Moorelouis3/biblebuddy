@@ -365,7 +365,7 @@ function buildLouisPageContext(pathname: string | null | undefined, searchParams
     if (segments[0] === "reading-plans" || segments[0] === "reading-plan") return "reading_plan";
     if (segments[0] === "bible-trivia") return "trivia";
     if (segments[0] === "scrambled") return "scrambled";
-    if (segments[0] === "study-groups") return "group";
+    if (segments[0] === "dashboard") return "dashboard";
     if (segments[0] === "biblebuddy-tv") return "tv";
     if (segments[0] === "profile") return "profile";
     return "other";
@@ -515,7 +515,7 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
     { match: /\b(the )?bible( reader)?\b/, href: "/reading", reply: "Okay.\n\nI’m opening the Bible reader now." },
     { match: /\b(devotionals?|bible studies?)\b/, href: "/bible-studies", reply: "Okay.\n\nI’m taking you to the Bible Studies page now." },
     { match: /\b(reading plans?|plans?)\b/, href: "/reading-plans", reply: "Okay.\n\nI’m opening the reading plans now." },
-    { match: /\b(group|bible study group|the group)\b/, href: "/study-groups", reply: "Okay.\n\nI’m taking you to The Bible Study Group now." },
+    { match: /\b(group|bible study group|the group)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to The Bible Study Group now." },
     { match: /\b(tv|sermons?|bible buddy tv)\b/, href: "/biblebuddy-tv", reply: "Okay.\n\nI’m opening Bible Buddy TV now." },
     { match: /\b(profile)\b/, href: "/profile", reply: "Okay.\n\nI’m taking you to your profile now." },
     { match: /\b(settings?)\b/, href: "/settings", reply: "Okay.\n\nI’m opening settings now." },
@@ -1100,7 +1100,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
   if (context.lastMasterActionSummary?.continueHref) {
     const href = context.lastMasterActionSummary.continueHref;
     const isBible = href.includes("/Bible/") || href === "/reading";
-    const isGroup = href.includes("/study-groups");
+    const isGroup = href.includes("/dashboard");
     const isGame = href.includes("/bible-trivia") || href.includes("/scrambled") || href.includes("/bible-study-games");
 
     candidates.push({
@@ -1157,7 +1157,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
       summaryLines: ["Your best move today is to vote in the Bible Study Group poll."],
       whyLine: `The group is talking about ${context.currentPollQuestion}, and being part of that keeps you connected.`,
       question: "Want to go vote?",
-      href: "/study-groups",
+      href: "/dashboard",
       yesFollowUp: "Let's head into the group and get your vote in.",
     });
   }
@@ -1171,7 +1171,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
       summaryLines: [`Your best move today is to start week 1 of ${context.currentSeriesTitle}.`],
       whyLine: "The Bible Study Group is one of the best ways to stay consistent because you are not doing this alone.",
       question: "Want to jump in?",
-      href: "/study-groups",
+      href: "/dashboard",
       yesFollowUp: "Let's get you into the group series and start from week 1.",
     });
   }
@@ -1275,7 +1275,7 @@ function buildHabitNudgeFromCards(openedCards: string[]): LouisHabitNudge | null
       summary:
         "I've noticed you haven't tried the Bible Study Group yet. You do not have to study alone in here.",
       label: "Try the group",
-      href: "/study-groups",
+      href: "/dashboard",
     };
   }
 
@@ -1359,7 +1359,7 @@ function summarizeLastMasterAction(action: {
       summary: `Last time you were in ${label}.`,
       followUp: "Do you want to continue?",
       continueLabel: "Open Bible Study Series",
-      continueHref: "/study-groups",
+      continueHref: "/dashboard",
     };
   }
 
@@ -1398,7 +1398,7 @@ function summarizeLastMasterAction(action: {
       label === "The Bible"
         ? "/reading"
         : label === "Bible Study Group"
-          ? "/study-groups"
+          ? "/dashboard"
           : label === "Bible Study Tools"
             ? "/guided-studies"
             : label === "Bible Buddy TV"
@@ -1598,7 +1598,7 @@ function buildLouisJourneyRecommendation({
       recommendationLine:
         "You do not have to do this alone. Check out the Bible Study Group and see the current weekly series and daily discussion flow.",
       primaryButtonText: "Show me the group",
-      primaryButtonHref: "/study-groups",
+      primaryButtonHref: "/dashboard",
       level: 1,
       cardTitle: "Try The Bible Study Group",
       cardSubtitle: "This is the right time to add community to your rhythm.",
@@ -2601,7 +2601,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
   function formatInboxMessage(row: LouisInboxMessageRow) {
     const actionLine =
-      row.action_label && row.action_href ? `\n\n👉 ${row.action_label}: ${row.action_href}` : "";
+      row.action_label && row.action_href ? `\n\n?? ${row.action_label}: ${row.action_href}` : "";
     const titleLine = row.title ? `${row.title}\n\n` : "";
     return `${titleLine}${row.content}${actionLine}`.trim();
   }
@@ -2942,7 +2942,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
     if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
       setDailyFlowType("new_user");
       return [
-        `Hey ${name} 👋`,
+        `Hey ${name} ??`,
         "Welcome to Bible Buddy",
         "Today is your first day",
         "Let’s start your streak",
@@ -2970,7 +2970,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
     if ((daysSinceLastActive ?? 0) >= 3) {
       setDailyFlowType("fell_off");
       return [
-        `Welcome back ${name} 👋`,
+        `Welcome back ${name} ??`,
         `You have not been here in ${daysSinceLastActive} days`,
         "But that is okay",
         "Today is a new start",
@@ -2984,7 +2984,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
     setDailyFlowType("active");
     return [
-      `Good to see you ${name} 👋`,
+      `Good to see you ${name} ??`,
       getDailyStreakMotivation(currentStreak),
       ...target.summaryLines,
       target.whyLine,
@@ -3718,7 +3718,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
                 className="text-gray-500 hover:text-gray-700 text-base leading-none"
                 onPointerDown={(e) => e.stopPropagation()}
               >
-                ✕
+                ?
               </button>
             </div>
           ) : null}

@@ -1694,34 +1694,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     );
     setIsNotifOpen(false);
 
-    const buildHrefWithTargets = (baseHref: string) => {
-      const url = new URL(baseHref, "https://biblebuddy.local");
-      if (notif.post_id) url.searchParams.set("post", notif.post_id);
-      if (notif.comment_id) url.searchParams.set("comment", notif.comment_id);
-      return `${url.pathname}${url.search}${url.hash}`;
-    };
-
-    const openDashboardCommunity = () => {
-      const targetHref = buildHrefWithTargets(notif.article_slug?.startsWith("/study-groups/") ? notif.article_slug : "/study-groups");
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem("bb:dashboard-community-target", targetHref);
-        window.dispatchEvent(new CustomEvent("bb:dashboard-show-community-tab", { detail: { targetHref } }));
-      }
-      router.push("/dashboard");
-    };
-
-    // Social feed notifications deep-link to the exact post/comment.
     if (
       notif.type === "buddy_posted" ||
       notif.type === "feed_post_liked" ||
       notif.type === "feed_post_commented" ||
       notif.type === "feed_post_replied"
     ) {
-      openDashboardCommunity();
+      router.push("/dashboard");
       return;
     }
-    if (notif.article_slug?.startsWith("/study-groups/")) {
-      openDashboardCommunity();
+    if (notif.article_slug?.startsWith("/dashboard/")) {
+      router.push("/dashboard");
       return;
     }
     const hash = notif.comment_id ? `#comment-${notif.comment_id}` : "";
@@ -2971,7 +2954,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               notif.type === "feed_post_liked" ? "Community" :
                               notif.type === "feed_post_commented" ? "Community" :
                               notif.type === "feed_post_replied" ? "Community" :
-                              notif.article_slug?.startsWith("/study-groups/")
+                              notif.article_slug?.startsWith("/dashboard/")
                                 ? "Study Group"
                                 : notif.article_slug
                                   ? notif.article_slug.split("/").filter(Boolean).pop()?.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") ?? ""

@@ -102,8 +102,6 @@ export default function ScrambledGamePlayer({
   const [louieLine, setLouieLine] = useState("Tap the letters below and let's solve this word together.");
   const [recentReveal, setRecentReveal] = useState<{ index: number; letter: string; key: number } | null>(null);
   const [pointNotice, setPointNotice] = useState<string | null>(null);
-  const [shareState, setShareState] = useState<"idle" | "sharing" | "shared" | "limited" | "error">("idle");
-  const [shareMessage, setShareMessage] = useState<string | null>(null);
   const [buddyRounds, setBuddyRounds] = useState<ScrambledBuddyRound[]>([]);
   const [loadingBuddyRounds, setLoadingBuddyRounds] = useState(false);
   const [showBuddyRoundsModal, setShowBuddyRoundsModal] = useState(false);
@@ -317,56 +315,6 @@ export default function ScrambledGamePlayer({
       .join("")
       .slice(0, 2)
       .toUpperCase();
-
-  const shareScoreToGroup = async () => {
-    if (shareState === "sharing" || shareState === "shared") return;
-
-    const { data: sessionData } = await supabase.auth.getSession();
-    const accessToken = sessionData.session?.access_token;
-
-    if (!accessToken) {
-      setShareState("error");
-      setShareMessage("Please sign in again before sharing your score.");
-      return;
-    }
-
-    setShareState("sharing");
-    setShareMessage(null);
-
-    try {
-      const response = await fetch("/api/scrambled-share-score", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-          body: JSON.stringify({
-            bookSlug,
-            chapter: chapter.chapter,
-            score: scoredSolveCount,
-            total: chapter.questions.length,
-          }),
-      });
-
-      const payload = await response.json().catch(() => ({}));
-
-      if (response.status === 429 || payload?.alreadySharedToday) {
-        setShareState("limited");
-        setShareMessage("You already shared a Scrambled score today.");
-        return;
-      }
-
-      if (!response.ok) {
-        throw new Error(payload?.error || "Could not share your score right now.");
-      }
-
-      setShareState("shared");
-      setShareMessage("Your Scrambled score is now in the Bible Study Group feed.");
-    } catch (error) {
-      setShareState("error");
-      setShareMessage(error instanceof Error ? error.message : "Could not share your score right now.");
-    }
-  };
 
   const moveToNext = () => {
     if (currentQuestionIndex === chapter.questions.length - 1) {
@@ -686,19 +634,6 @@ export default function ScrambledGamePlayer({
           </div>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            <button
-              type="button"
-              onClick={() => void shareScoreToGroup()}
-              disabled={shareState === "sharing" || shareState === "shared"}
-              className="rounded-2xl border border-[#d7e2f8] bg-[#eef4ff] px-4 py-3 text-sm font-semibold text-[#35508a] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
-            >
-              {shareState === "sharing" ? (
-                <span className="flex items-center justify-center gap-2">
-                  <span className="h-4 w-4 rounded-full border-2 border-[#9fb8e8] border-t-[#35508a] animate-spin" />
-                  <span>Sharing to group...</span>
-                </span>
-              ) : shareState === "shared" ? "Score Shared" : "Share score"}
-            </button>
             <Link
               href={`/bible-trivia/${triviaRouteSlug}/${chapter.chapter}`}
               className="rounded-2xl border border-[#d7e2f8] bg-white px-4 py-3 text-sm font-semibold text-[#35508a] transition hover:bg-[#fbfdff]"
@@ -798,25 +733,6 @@ export default function ScrambledGamePlayer({
             </div>
           </div>
 
-          {shareMessage ? (
-            <p
-              className={`mt-4 text-sm ${
-                shareState === "error"
-                  ? "text-[#b15454]"
-                  : shareState === "limited"
-                    ? "text-[#9b7a30]"
-                    : "text-[#496a9b]"
-              }`}
-            >
-              {shareMessage}
-            </p>
-          ) : null}
-
-          {shareState === "sharing" ? (
-            <div className="mt-4 overflow-hidden rounded-full bg-[#dfe8f8]">
-              <div className="h-1.5 w-full animate-[share-progress_1.2s_ease-in-out_infinite] bg-[linear-gradient(90deg,#7aa8ff_0%,#8fd9be_100%)]" />
-            </div>
-          ) : null}
         </div>
       </div>
     );

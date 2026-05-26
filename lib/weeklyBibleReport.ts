@@ -1,4 +1,4 @@
-import { getDirectMessagePreview, isMissingDirectMessageActionColumnError } from "@/lib/directMessageActions";
+﻿import { getDirectMessagePreview, isMissingDirectMessageActionColumnError } from "@/lib/directMessageActions";
 import { isSeriesWeekComplete, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
@@ -602,7 +602,7 @@ function getSeriesRecommendation(
   const progressRows = (seriesProgressByUser.get(userId) ?? []).filter((row) => row.series_id === currentSeries.seriesId);
   if (!progressRows.length) {
     return {
-      action: { label: "Open Bible Study Group", href: `/study-groups/${currentSeries.groupId}/series` },
+      action: { label: "Open Bible Study Group", href: `/dashboard/${currentSeries.groupId}/series` },
       line: `Jump into ${currentSeries.title || "the current Bible study"} and start with Week 1 so you do not miss the story flow or the group conversation.`,
     };
   }
@@ -617,7 +617,7 @@ function getSeriesRecommendation(
     const complete = progress ? isSeriesWeekComplete(progress) : false;
     if (!complete) {
       return {
-        action: { label: `Continue Week ${week}`, href: `/study-groups/${currentSeries.groupId}/series` },
+        action: { label: `Continue Week ${week}`, href: `/dashboard/${currentSeries.groupId}/series` },
         line: `Your next clean step in ${currentSeries.title || "the current Bible study"} is Week ${week}. That will keep you lined up with the group.`,
       };
     }
@@ -820,7 +820,7 @@ function pickRecommendations(
       key: "community",
       priority: 74,
       line: "Say something in the study group this week. Even one comment can turn Bible Buddy from a tool into an actual community for you.",
-      action: { label: "Open Study Group", href: "/study-groups" },
+      action: { label: "Open Study Group", href: "/dashboard" },
       quickActionLabel: "Open Study Group",
     });
   }
@@ -872,34 +872,34 @@ export function buildWeeklyReportForUser(
   const groupMessages = count("group_message_sent");
 
   const statLines = [
-    chaptersRead ? `📖 You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
-    devotionalsCompleted ? `🌿 You completed ${formatCount(devotionalsCompleted, "Bible study day")}.` : null,
-    chapterReviews ? `📝 You reviewed ${formatCount(chapterReviews, "chapter review")}.` : null,
-    triviaCompleted ? `🧠 You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
-    scrambledCompleted ? `🔤 You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
+    chaptersRead ? `ðŸ“– You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
+    devotionalsCompleted ? `ðŸŒ¿ You completed ${formatCount(devotionalsCompleted, "Bible study day")}.` : null,
+    chapterReviews ? `ðŸ“ You reviewed ${formatCount(chapterReviews, "chapter review")}.` : null,
+    triviaCompleted ? `ðŸ§  You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
+    scrambledCompleted ? `ðŸ”¤ You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
     peopleLearned || placesLearned || keywordsLearned
-      ? `🔎 You explored ${toSentenceCaseList([
+      ? `ðŸ”Ž You explored ${toSentenceCaseList([
           peopleLearned ? formatCount(peopleLearned, "person") : "",
           placesLearned ? formatCount(placesLearned, "place") : "",
           keywordsLearned ? formatCount(keywordsLearned, "keyword") : "",
         ].filter(Boolean))}.`
       : null,
     notesCreated || highlights
-      ? `✍️ You made ${toSentenceCaseList([
+      ? `âœï¸ You made ${toSentenceCaseList([
           notesCreated ? formatCount(notesCreated, "note") : "",
           highlights ? formatCount(highlights, "verse highlight") : "",
         ].filter(Boolean))}.`
       : null,
     commentsPosted || repliesPosted || groupMessages
-      ? `🤝 You showed up in community with ${toSentenceCaseList([
+      ? `ðŸ¤ You showed up in community with ${toSentenceCaseList([
           commentsPosted ? formatCount(commentsPosted, "comment") : "",
           repliesPosted ? formatCount(repliesPosted, "reply") : "",
           groupMessages ? formatCount(groupMessages, "message") : "",
         ].filter(Boolean))}.`
       : null,
-    `📅 You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
-    profile?.current_streak ? `🔥 Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
-    profile?.current_level ? `⭐ You are holding Level ${profile.current_level}${profile.member_badge ? ` with the ${profile.member_badge} badge` : ""}.` : null,
+    `ðŸ“… You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
+    profile?.current_streak ? `ðŸ”¥ Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
+    profile?.current_level ? `â­ You are holding Level ${profile.current_level}${profile.member_badge ? ` with the ${profile.member_badge} badge` : ""}.` : null,
   ].filter(Boolean) as string[];
 
   const recommendations = pickRecommendations(userId, profile, actions, context);
@@ -929,13 +929,13 @@ export function buildWeeklyReportForUser(
     "",
     "Here is your personal Bible Buddy wrap-up for this week.",
     "",
-    "𝗬𝗢𝗨𝗥 𝗪𝗘𝗘𝗞",
+    "ð—¬ð—¢ð—¨ð—¥ ð—ªð—˜ð—˜ð—ž",
     ...statLines,
     "",
-    "𝗪𝗛𝗬 𝗜𝗧 𝗠𝗔𝗧𝗧𝗘𝗥𝗦",
+    "ð—ªð—›ð—¬ ð—œð—§ ð— ð—”ð—§ð—§ð—˜ð—¥ð—¦",
     encouragementLine,
     "",
-    "𝗡𝗘𝗫𝗧 𝗦𝗧𝗘𝗣𝗦",
+    "ð—¡ð—˜ð—«ð—§ ð—¦ð—§ð—˜ð—£ð—¦",
     ...nextStepLines,
     "",
     ...(quickActionLines.length ? quickActionLines : ["Quick Action: Open The Bible|/reading"]),
@@ -984,34 +984,34 @@ export function buildWeeklyLouisReportForUser(
   const groupMessages = count("group_message_sent");
 
   const statLines = [
-    chaptersRead ? `📖 You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
-    devotionalsCompleted ? `🌿 You completed ${formatCount(devotionalsCompleted, "Bible study day")}.` : null,
-    chapterReviews ? `📝 You opened ${formatCount(chapterReviews, "chapter review")}.` : null,
-    triviaCompleted ? `🧠 You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
-    scrambledCompleted ? `🔤 You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
+    chaptersRead ? `ðŸ“– You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
+    devotionalsCompleted ? `ðŸŒ¿ You completed ${formatCount(devotionalsCompleted, "Bible study day")}.` : null,
+    chapterReviews ? `ðŸ“ You opened ${formatCount(chapterReviews, "chapter review")}.` : null,
+    triviaCompleted ? `ðŸ§  You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
+    scrambledCompleted ? `ðŸ”¤ You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
     peopleLearned || placesLearned || keywordsLearned
-      ? `🔎 You explored ${toSentenceCaseList([
+      ? `ðŸ”Ž You explored ${toSentenceCaseList([
           peopleLearned ? formatCount(peopleLearned, "person") : "",
           placesLearned ? formatCount(placesLearned, "place") : "",
           keywordsLearned ? formatCount(keywordsLearned, "keyword") : "",
         ].filter(Boolean))}.`
       : null,
     notesCreated || highlights
-      ? `✍️ You made ${toSentenceCaseList([
+      ? `âœï¸ You made ${toSentenceCaseList([
           notesCreated ? formatCount(notesCreated, "note") : "",
           highlights ? formatCount(highlights, "verse highlight") : "",
         ].filter(Boolean))}.`
       : null,
     commentsPosted || repliesPosted || groupMessages
-      ? `🤝 You showed up in community with ${toSentenceCaseList([
+      ? `ðŸ¤ You showed up in community with ${toSentenceCaseList([
           commentsPosted ? formatCount(commentsPosted, "comment") : "",
           repliesPosted ? formatCount(repliesPosted, "reply") : "",
           groupMessages ? formatCount(groupMessages, "message") : "",
         ].filter(Boolean))}.`
       : null,
-    `📅 You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
-    profile?.current_streak ? `🔥 Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
-    profile?.current_level ? `⭐ You are holding Level ${profile.current_level} in Bible Buddy.` : null,
+    `ðŸ“… You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
+    profile?.current_streak ? `ðŸ”¥ Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
+    profile?.current_level ? `â­ You are holding Level ${profile.current_level} in Bible Buddy.` : null,
   ].filter(Boolean) as string[];
 
   const recommendations = pickRecommendations(userId, profile, actions, context);
@@ -1023,7 +1023,7 @@ export function buildWeeklyLouisReportForUser(
   const quickActionLines = recommendations
     .map((recommendation) =>
       recommendation.action && recommendation.quickActionLabel
-        ? `👉 ${recommendation.quickActionLabel}: ${recommendation.action.href}`
+        ? `ðŸ‘‰ ${recommendation.quickActionLabel}: ${recommendation.action.href}`
         : null,
     )
     .filter(Boolean) as string[];
@@ -1037,21 +1037,21 @@ export function buildWeeklyLouisReportForUser(
       ];
 
   return {
-    title: `Weekly Bible Report • ${formatWeekRange(weekKey)}`,
+    title: `Weekly Bible Report â€¢ ${formatWeekRange(weekKey)}`,
     message: [
-      `Hey ${firstName}, here’s your weekly Bible report.`,
+      `Hey ${firstName}, hereâ€™s your weekly Bible report.`,
       "",
-      "📊 Your week",
+      "ðŸ“Š Your week",
       ...statLines,
       "",
-      "💭 Why it matters",
+      "ðŸ’­ Why it matters",
       encouragementLine,
       "",
-      "➡️ What I think you should do next",
+      "âž¡ï¸ What I think you should do next",
       ...nextStepLines,
       "",
-      "⚡ Quick action",
-      ...(quickActionLines.length ? quickActionLines : ["👉 Open The Bible: /reading"]),
+      "âš¡ Quick action",
+      ...(quickActionLines.length ? quickActionLines : ["ðŸ‘‰ Open The Bible: /reading"]),
       "",
       "Keep showing up.",
       "Louis",

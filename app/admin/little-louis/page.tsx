@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -121,7 +121,7 @@ function prettifyLouisPath(value: string | null | undefined) {
   if (text === "/dashboard") return "the dashboard";
   if (text === "/reading" || text === "/Bible") return "the Bible reader home";
   if (text === "/devotionals") return "the devotionals page";
-  if (text === "/study-groups") return "The Bible Study Group";
+  if (text === "/dashboard") return "The Bible Study Group";
   if (text === "/bible-trivia") return "the Bible trivia page";
   if (text === "/bible-study-games/scrambled") return "the Scrambled page";
   if (text === "/bible-study-games") return "the Bible study games page";

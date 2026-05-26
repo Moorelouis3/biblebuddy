@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Daily Recommendation Logic
  *
  * The dashboard card and daily modal should feel like a smart nudge,
@@ -464,7 +464,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         { title: "Hey, you still have not set up your profile yet", subtitle: "Take a minute and finish it so Bible Buddy feels more personal, and so other people can actually recognize you." },
         { title: "Hey, your profile still needs a little love", subtitle: "Add the missing pieces so the app feels more like your space and less like a blank account." },
         { title: "Hey, finish your profile when you get a second", subtitle: "Your name, photo, and bio help the whole community side of Bible Buddy click faster." },
-        { title: "Hey, let’s get your profile looking right", subtitle: "A finished profile makes the app feel more real the second people see your name, picture, and bio." },
+        { title: "Hey, letâ€™s get your profile looking right", subtitle: "A finished profile makes the app feel more real the second people see your name, picture, and bio." },
         { title: "Hey, do not leave your profile half done", subtitle: "Clean that up now and the rest of Bible Buddy will feel way more connected to you." },
       ]));
     }
@@ -524,7 +524,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         contextLine: "You have not stepped into the Bible Study Group yet.",
         recommendationLine: "That is where the community side of Bible Buddy starts to click. You can follow the live study, read what other people are learning, and stop studying alone.",
         primaryButtonText: "Open Bible Study Group",
-        primaryButtonHref: "/study-groups",
+        primaryButtonHref: "/dashboard",
         level: 1,
         category: "group",
         cardTheme: "green",
@@ -577,7 +577,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               contextLine: `${seriesRow.title} is live in your Bible Study Group.`,
               recommendationLine: "Do not jump into the middle of it. Start with Week 1 so the story, the teaching, and the group conversation all make sense from the beginning.",
               primaryButtonText: "Start Week 1",
-              primaryButtonHref: `/study-groups/${seriesRow.group_id}/series`,
+              primaryButtonHref: `/dashboard/${seriesRow.group_id}/series`,
               level: 1,
               category: "group",
               cardTheme: "green",
@@ -595,7 +595,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               contextLine: `You are partway through ${seriesRow.title}.`,
               recommendationLine: `Your next best move is Week ${firstIncompleteWeek}. That keeps you in step with the group without skipping parts of the story.`,
               primaryButtonText: `Continue Week ${firstIncompleteWeek}`,
-              primaryButtonHref: `/study-groups/${seriesRow.group_id}/series`,
+              primaryButtonHref: `/dashboard/${seriesRow.group_id}/series`,
               level: 1,
               category: "group",
               cardTheme: "green",
@@ -615,7 +615,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         .select("id", { count: "exact", head: true })
         .eq("user_id", userId)
         .eq("is_read", false)
-        .like("article_slug", "/study-groups/%");
+        .like("article_slug", "/dashboard/%");
 
       if (unreadGroupCount && unreadGroupCount > 0) {
         candidates.push(withLouisCard(createRecommendation({
@@ -626,7 +626,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
             : `There are ${unreadGroupCount} new things happening in your Bible Study Group.`,
           recommendationLine: "The group is moving right now. Drop back in and see what people posted before you lose the thread of the conversation.",
           primaryButtonText: "Check Group Activity",
-          primaryButtonHref: `/study-groups/${memberGroupIds[0]}/chat`,
+          primaryButtonHref: `/dashboard/${memberGroupIds[0]}/chat`,
           level: 1,
           category: "group",
           cardTheme: "green",
@@ -740,7 +740,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         { title: "Hey, you should open the Bible today", subtitle: "If you are not sure what to do next, one chapter is still one of the best moves in the whole app." },
         { title: "Hey, start with one Bible chapter", subtitle: "Do not overthink it. Open the Bible and let one chapter be your win for today." },
         { title: "Hey, the Bible is still the best place to start", subtitle: "If you have not really begun reading yet, one chapter today can change the whole tone of your habit." },
-        { title: "Hey, let’s keep this simple today", subtitle: "Open the Bible, read one chapter, and let that be your next right step." },
+        { title: "Hey, letâ€™s keep this simple today", subtitle: "Open the Bible, read one chapter, and let that be your next right step." },
         { title: "Hey, if you do one thing today, read a chapter", subtitle: "That is still one of the strongest ways to start building a real Bible habit." },
       ]));
     }

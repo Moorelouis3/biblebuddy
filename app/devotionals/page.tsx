@@ -30,32 +30,6 @@ type StudyProgressSummary = {
   label: string;
 };
 
-type StudyBuddyProgress = {
-  rank: number;
-  userId: string;
-  name: string;
-  image: string | null;
-  profileHref: string;
-  level: number;
-  completedTasks: number;
-  completedChapters: number;
-  totalChapters: number;
-  percent: number;
-  label: string;
-};
-
-type StudyCommunitySummary = {
-  total: number;
-  avatars: StudyBuddyProgress[];
-};
-
-type StudyCommunityModal = {
-  devotional: Devotional;
-  page: number;
-  total: number;
-  rows: StudyBuddyProgress[];
-};
-
 type StudyFilter = "all" | "done" | "started";
 
 const FEATURED_STUDY_ORDER = [
@@ -158,9 +132,6 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [progressByDevotional, setProgressByDevotional] = useState<Record<string, StudyProgressSummary>>({});
-  const [communityByDevotional, setCommunityByDevotional] = useState<Record<string, StudyCommunitySummary>>({});
-  const [communityModal, setCommunityModal] = useState<StudyCommunityModal | null>(null);
-  const [communityLoading, setCommunityLoading] = useState(false);
 
   // Load "Don't show again" preference from localStorage
   useEffect(() => {
@@ -395,57 +366,6 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
       router.replace(`/bible-studies/${matchedStudy.id}`);
     }
   }, [router, visibleDevotionals]);
-
-  useEffect(() => {
-    if (visibleDevotionals.length === 0) {
-      setCommunityByDevotional({});
-      return;
-    }
-
-    let cancelled = false;
-
-    async function loadCommunityPreview() {
-      try {
-        const ids = visibleDevotionals.map((devotional) => devotional.id).join(",");
-        const response = await fetch(`/api/devotionals/community-progress?ids=${encodeURIComponent(ids)}`);
-        const payload = await response.json().catch(() => null);
-        if (!response.ok) throw new Error(payload?.error || "Could not load study community.");
-        if (!cancelled) setCommunityByDevotional(payload?.summaries || {});
-      } catch (error) {
-        console.error("[BIBLE_STUDIES] Error loading community progress:", error);
-        if (!cancelled) setCommunityByDevotional({});
-      }
-    }
-
-    void loadCommunityPreview();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [visibleDevotionals]);
-
-  async function openCommunityModal(devotional: Devotional, page = 0) {
-    setCommunityLoading(true);
-    try {
-      const response = await fetch(
-        `/api/devotionals/community-progress?devotionalId=${encodeURIComponent(devotional.id)}&page=${page}&pageSize=10`,
-      );
-      const payload = await response.json().catch(() => null);
-      if (!response.ok) throw new Error(payload?.error || "Could not load study Buddies.");
-      const selected = payload?.selected;
-      setCommunityModal({
-        devotional,
-        page: selected?.page ?? page,
-        total: selected?.total ?? 0,
-        rows: selected?.rows ?? [],
-      });
-    } catch (error) {
-      console.error("[BIBLE_STUDIES] Error loading community list:", error);
-      setCommunityModal({ devotional, page, total: 0, rows: [] });
-    } finally {
-      setCommunityLoading(false);
-    }
-  }
 
   useEffect(() => {
     let cancelled = false;
@@ -871,105 +791,6 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
           </div>
         )}
       </div>
-      {communityModal ? (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 py-6"
-          onClick={() => setCommunityModal(null)}
-        >
-          <div
-            className="flex max-h-[82vh] w-full max-w-xl flex-col overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="border-b border-gray-100 bg-[#f7fbfd] px-5 py-4">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#4f8fb7]">Study Buddies</p>
-                  <h2 className="mt-1 text-2xl font-black text-gray-950">{communityModal.devotional.title}</h2>
-                  <p className="mt-1 text-sm font-semibold text-gray-500">
-                    Ranked by chapters completed, then total tasks finished.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setCommunityModal(null)}
-                  className="grid h-9 w-9 place-items-center rounded-full bg-white text-lg font-black text-gray-600 shadow-sm hover:bg-gray-50"
-                  aria-label="Close study buddies"
-                >
-                  x
-                </button>
-              </div>
-            </div>
-
-            <div className="min-h-0 flex-1 overflow-y-auto p-4">
-              {communityLoading ? (
-                <div className="py-10 text-center text-sm font-bold text-gray-500">Loading Buddies...</div>
-              ) : communityModal.rows.length === 0 ? (
-                <div className="rounded-3xl border border-gray-100 bg-[#fbfcf8] p-6 text-center">
-                  <p className="text-lg font-black text-gray-900">No Buddies yet</p>
-                  <p className="mt-2 text-sm font-semibold text-gray-500">The first person to finish a task will show up here.</p>
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  {communityModal.rows.map((buddy) => (
-                    <a
-                      key={buddy.userId}
-                      href={buddy.profileHref}
-                      className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-[#fbfcf8] p-3 transition hover:border-[#7BAFD4]"
-                    >
-                      <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-[#fef3c7] text-sm font-black text-[#9a6115]">
-                        {buddy.rank}
-                      </span>
-                      <span className="grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-full bg-[#eaf6ff] text-sm font-black text-[#2f6685]">
-                        {buddy.image ? (
-                          <img src={buddy.image} alt="" className="h-full w-full object-cover" />
-                        ) : (
-                          buddy.name.charAt(0).toUpperCase()
-                        )}
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="block truncate text-base font-black text-gray-950">{buddy.name}</span>
-                        <span className="block text-xs font-bold text-gray-500">L{buddy.level} - {buddy.label}</span>
-                        <span className="mt-1 block h-2 overflow-hidden rounded-full bg-white">
-                          <span className="block h-full rounded-full bg-[#7BAFD4]" style={{ width: `${buddy.percent}%` }} />
-                        </span>
-                      </span>
-                      <span className="text-right text-xs font-black text-gray-500">
-                        {buddy.completedTasks} tasks
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="flex items-center justify-between gap-3 border-t border-gray-100 px-5 py-4">
-              <p className="text-xs font-bold text-gray-500">
-                {communityModal.total > 0
-                  ? `Showing ${communityModal.page * 10 + 1}-${Math.min((communityModal.page + 1) * 10, communityModal.total)} of ${communityModal.total}`
-                  : "No Buddies yet"}
-              </p>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => void openCommunityModal(communityModal.devotional, Math.max(0, communityModal.page - 1))}
-                  disabled={communityModal.page === 0 || communityLoading}
-                  className="rounded-full border border-gray-200 px-4 py-2 text-sm font-black text-gray-700 disabled:opacity-40"
-                >
-                  Previous
-                </button>
-                <button
-                  type="button"
-                  onClick={() => void openCommunityModal(communityModal.devotional, communityModal.page + 1)}
-                  disabled={communityLoading || (communityModal.page + 1) * 10 >= communityModal.total}
-                  className="rounded-full bg-[#7BAFD4] px-4 py-2 text-sm font-black text-slate-950 disabled:opacity-40"
-                >
-                  Next 10
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }

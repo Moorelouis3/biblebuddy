@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeCustomMemberBadge, resolveUserBadge } from "@/lib/userBadges";
 
@@ -296,7 +296,7 @@ export async function GET(request: NextRequest) {
       kind: "feed_post_comment",
       source: "Group Feed",
       sourceLabel: "Bible Buddy Feed",
-      href: `/bb-feed?post=${row.post_id}&comment=${row.id}`,
+      href: `/dashboard?post=${row.post_id}&comment=${row.id}`,
       contextTitle: "Bible Buddy Feed post",
       contextContent: "",
       userId: row.user_id,
@@ -319,7 +319,7 @@ export async function GET(request: NextRequest) {
       kind: "group_feed_comment",
       source: "Group Feed",
       sourceLabel: row.category || "Group conversation",
-      href: `/study-groups/${row.group_id}/chat?post=${row.parent_post_id}&comment=${row.id}`,
+      href: `/dashboard/${row.group_id}/chat?post=${row.parent_post_id}&comment=${row.id}`,
       contextTitle: row.category || "Group conversation",
       contextContent: "",
       userId: row.user_id,
@@ -342,7 +342,7 @@ export async function GET(request: NextRequest) {
       kind: "series_post_comment",
       source: "Group Feed",
       sourceLabel: "Series post",
-      href: `/study-groups/${row.group_id}/chat?seriesPost=${row.post_id}&comment=${row.id}`,
+      href: `/dashboard/${row.group_id}/chat?seriesPost=${row.post_id}&comment=${row.id}`,
       contextTitle: "Bible study series post",
       contextContent: "",
       userId: row.user_id,
@@ -365,7 +365,7 @@ export async function GET(request: NextRequest) {
       kind: "series_reflection",
       source: "Bible Chapters",
       sourceLabel: `Week ${row.week_number || 1} reflection`,
-      href: `/study-groups?comment=${row.id}`,
+      href: `/dashboard?comment=${row.id}`,
       contextTitle: `Bible study reflection, week ${row.week_number || 1}`,
       contextContent: "This comment was posted as a Bible study reflection.",
       userId: row.user_id,

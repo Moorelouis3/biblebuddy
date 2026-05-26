@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { DailyRecommendation } from "./dailyRecommendation";
 import { supabase } from "./supabaseClient";
@@ -65,7 +65,7 @@ async function buildGroupRecommendationMessage(
   const { data } = await supabase
     .from("notifications")
     .select("message, from_user_name, created_at")
-    .like("article_slug", "/study-groups/%")
+    .like("article_slug", "/dashboard/%")
     .order("created_at", { ascending: false })
     .limit(2);
 
@@ -119,7 +119,7 @@ export async function buildLouisRecommendationHandoff(
       `You are back in the Bible now.\n\nDo not rush it just to say you opened the page.\n\nRead the chapter, pay attention, and let the Word speak before you move on.\n\nIf anything feels unclear, ask me.`,
       `This next step puts you back in the Bible.\n\nRead carefully and stay with the chapter long enough to actually take something from it.\n\nUnderstanding grows when you stop and pay attention.\n\nI am here if you need me.`,
     ]);
-  } else if (targetPath.startsWith("/study-groups")) {
+  } else if (targetPath.startsWith("/dashboard")) {
     message = await buildGroupRecommendationMessage(recommendation, seed);
   } else if (targetPath.startsWith("/biblebuddy-tv")) {
     message = pickVariant(seed, [

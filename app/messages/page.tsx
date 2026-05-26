@@ -304,13 +304,13 @@ export default function MessagesPage() {
             <div className="rounded-3xl border border-dashed border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] p-12 text-center">
               <p className="mb-4 text-4xl">💬</p>
               <h2 className="mb-2 text-xl font-bold text-[var(--bb-text-primary,#111827)]">No messages yet</h2>
-              <p className="mb-6 text-sm text-[var(--bb-text-secondary,#6b7280)]">Add Buddies from their profile to start a conversation.</p>
+              <p className="mb-6 text-sm text-[var(--bb-text-secondary,#6b7280)]">Open a profile to start a conversation.</p>
               <Link
-                href="/study-groups"
+                href="/dashboard"
                 className="inline-block rounded-xl px-5 py-2.5 text-sm font-semibold text-[var(--bb-button-text,#ffffff)] transition"
                 style={{ backgroundColor: "var(--bb-button)" }}
               >
-                Find People
+                Back To Dashboard
               </Link>
             </div>
           ) : visibleConversations.length === 0 ? (

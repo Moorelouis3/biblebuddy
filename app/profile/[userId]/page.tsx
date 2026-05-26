@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
@@ -22,7 +22,7 @@ import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { CUSTOM_MEMBER_BADGE_OPTIONS, normalizeCustomMemberBadge } from "@/lib/userBadges";
 import { getPremiumSkin, normalizePremiumSkinId } from "@/lib/premiumSkins";
 
-// ── Avatar color helpers ────────────────────────────────────────────────────
+// â”€â”€ Avatar color helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
 function avatarColor(uid: string): string {
   let hash = 0;
@@ -30,7 +30,7 @@ function avatarColor(uid: string): string {
   return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
 }
 
-// ── Time helpers ────────────────────────────────────────────────────────────
+// â”€â”€ Time helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function formatLastActive(dateStr: string | null | undefined): string {
   if (!dateStr) return "Unknown";
   const date = new Date(dateStr);
@@ -182,7 +182,7 @@ export default function PublicProfilePage() {
   const [saving, setSaving] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  // ── Buddy state ────────────────────────────────────────────────────────────
+  // â”€â”€ Buddy state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const [buddyState, setBuddyState] = useState<BuddyState>("none");
   const [buddyRequestId, setBuddyRequestId] = useState<string | null>(null);
   const [conversationId, setConversationId] = useState<string | null>(null);
@@ -200,7 +200,7 @@ export default function PublicProfilePage() {
   const [editProfileError, setEditProfileError] = useState<string | null>(null);
   const [trialClockTick, setTrialClockTick] = useState(0);
 
-  // ── Recent posts ───────────────────────────────────────────────────────────
+  // â”€â”€ Recent posts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const [recentPosts, setRecentPosts] = useState<Array<{
     id: string;
     post_type: string;
@@ -220,7 +220,7 @@ export default function PublicProfilePage() {
   const setReferralState = (_value: "idle" | "checking" | "valid" | "invalid") => {};
   const applyReferralCode = () => {};
 
-  // ── Referral code ───────────────────────────────────────────────────────────
+  // â”€â”€ Referral code â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!profileUserId) return;
     loadProfileData();
@@ -468,8 +468,8 @@ export default function PublicProfilePage() {
     setBuddiesLoadingPage(false);
   }
 
-  // ── Referral code ──────────────────────────────────────────────────────────
-  // ── Buddy actions ──────────────────────────────────────────────────────────
+  // â”€â”€ Referral code â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // â”€â”€ Buddy actions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function handleAddBuddy() {
     if (!viewerUserId || buddyActionLoading) return;
     setBuddyActionLoading(true);
@@ -653,52 +653,52 @@ export default function PublicProfilePage() {
           const match = label.match(/^(.+?)\s+(\d+)$/);
           if (match) url = `/Bible/${encodeURIComponent(match[1])}/${match[2]}`;
         }
-        actions.push({ date: d, text: label ? `${d} — Read ${label}` : `${d} — Read a chapter`, sortKey: actionDate.getTime(), actionType: "chapter_completed", url });
+        actions.push({ date: d, text: label ? `${d} â€” Read ${label}` : `${d} â€” Read a chapter`, sortKey: actionDate.getTime(), actionType: "chapter_completed", url });
       } else if (action.action_type === "book_completed") {
-        actions.push({ date: d, text: label ? `${d} — Finished ${label}` : `${d} — Finished a book`, sortKey: actionDate.getTime(), actionType: "book_completed" });
+        actions.push({ date: d, text: label ? `${d} â€” Finished ${label}` : `${d} â€” Finished a book`, sortKey: actionDate.getTime(), actionType: "book_completed" });
       } else if (action.action_type === "person_learned") {
-        actions.push({ date: d, text: label ? `${d} — Learned about ${label}` : `${d} — Learned about a Bible person`, sortKey: actionDate.getTime(), actionType: "person_learned" });
+        actions.push({ date: d, text: label ? `${d} â€” Learned about ${label}` : `${d} â€” Learned about a Bible person`, sortKey: actionDate.getTime(), actionType: "person_learned" });
       } else if (action.action_type === "place_discovered") {
-        actions.push({ date: d, text: label ? `${d} — Discovered ${label}` : `${d} — Discovered a Bible place`, sortKey: actionDate.getTime(), actionType: "place_discovered" });
+        actions.push({ date: d, text: label ? `${d} â€” Discovered ${label}` : `${d} â€” Discovered a Bible place`, sortKey: actionDate.getTime(), actionType: "place_discovered" });
       } else if (action.action_type === "keyword_mastered") {
-        actions.push({ date: d, text: label ? `${d} — Mastered the keyword "${label}"` : `${d} — Mastered a Bible keyword`, sortKey: actionDate.getTime(), actionType: "keyword_mastered" });
+        actions.push({ date: d, text: label ? `${d} â€” Mastered the keyword "${label}"` : `${d} â€” Mastered a Bible keyword`, sortKey: actionDate.getTime(), actionType: "keyword_mastered" });
       } else if (action.action_type === "note_created") {
-        actions.push({ date: d, text: `${d} — Created a note`, sortKey: actionDate.getTime(), actionType: "note_created" });
+        actions.push({ date: d, text: `${d} â€” Created a note`, sortKey: actionDate.getTime(), actionType: "note_created" });
       } else if (action.action_type === "verse_highlighted") {
-        actions.push({ date: d, text: label ? `${d} — Highlighted ${label}` : `${d} — Highlighted a verse`, sortKey: actionDate.getTime(), actionType: "verse_highlighted" });
+        actions.push({ date: d, text: label ? `${d} â€” Highlighted ${label}` : `${d} â€” Highlighted a verse`, sortKey: actionDate.getTime(), actionType: "verse_highlighted" });
       } else if (action.action_type === "devotional_day_completed") {
-        actions.push({ date: d, text: label ? `${d} — Completed ${label}` : `${d} — Completed a devotional day`, sortKey: actionDate.getTime(), actionType: "devotional_day_completed" });
+        actions.push({ date: d, text: label ? `${d} â€” Completed ${label}` : `${d} â€” Completed a devotional day`, sortKey: actionDate.getTime(), actionType: "devotional_day_completed" });
       } else if (action.action_type === "trivia_question_answered") {
-        actions.push({ date: d, text: label ? `${d} — Answered a trivia question (${label})` : `${d} — Answered a trivia question`, sortKey: actionDate.getTime(), actionType: "trivia_question_answered" });
+        actions.push({ date: d, text: label ? `${d} â€” Answered a trivia question (${label})` : `${d} â€” Answered a trivia question`, sortKey: actionDate.getTime(), actionType: "trivia_question_answered" });
       } else if (action.action_type === "feed_post_thought") {
-        actions.push({ date: d, text: label ? `${d} — Posted a thought: "${label}"` : `${d} — Posted a thought to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_thought", url: "/bb-feed" });
+        actions.push({ date: d, text: label ? `${d} â€” Posted a thought: "${label}"` : `${d} â€” Posted a thought to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_thought", url: "/dashboard" });
       } else if (action.action_type === "feed_post_prayer") {
-        actions.push({ date: d, text: `${d} — Posted a prayer to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer", url: "/bb-feed" });
+        actions.push({ date: d, text: `${d} â€” Posted a prayer to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer", url: "/dashboard" });
       } else if (action.action_type === "feed_post_prayer_request") {
-        actions.push({ date: d, text: `${d} — Posted a prayer request to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer_request", url: "/bb-feed" });
+        actions.push({ date: d, text: `${d} â€” Posted a prayer request to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer_request", url: "/dashboard" });
       } else if (action.action_type === "feed_post_photo") {
-        actions.push({ date: d, text: `${d} — Posted a photo to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_photo", url: "/bb-feed" });
+        actions.push({ date: d, text: `${d} â€” Posted a photo to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_photo", url: "/dashboard" });
       } else if (action.action_type === "feed_post_video") {
-        actions.push({ date: d, text: `${d} — Posted a video to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_video", url: "/bb-feed" });
+        actions.push({ date: d, text: `${d} â€” Posted a video to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_video", url: "/dashboard" });
       } else if (action.action_type === "feed_post_liked") {
-        // action_label may contain post_id — try to build a link with a hash anchor
-        const postUrl = label ? `/bb-feed#post-${label}` : "/bb-feed";
-        actions.push({ date: d, text: `${d} — Liked a post`, sortKey: actionDate.getTime(), actionType: "feed_post_liked", url: postUrl });
+        // action_label may contain post_id â€” try to build a link with a hash anchor
+        const postUrl = label ? `/dashboard#post-${label}` : "/dashboard";
+        actions.push({ date: d, text: `${d} â€” Liked a post`, sortKey: actionDate.getTime(), actionType: "feed_post_liked", url: postUrl });
       } else if (action.action_type === "feed_post_commented") {
-        const postUrl = label ? `/bb-feed#post-${label}` : "/bb-feed";
-        actions.push({ date: d, text: `${d} — Commented on a post`, sortKey: actionDate.getTime(), actionType: "feed_post_commented", url: postUrl });
+        const postUrl = label ? `/dashboard#post-${label}` : "/dashboard";
+        actions.push({ date: d, text: `${d} â€” Commented on a post`, sortKey: actionDate.getTime(), actionType: "feed_post_commented", url: postUrl });
       } else if (action.action_type === "feed_post_replied") {
-        const postUrl = label ? `/bb-feed#post-${label}` : "/bb-feed";
-        actions.push({ date: d, text: `${d} — Replied to a comment`, sortKey: actionDate.getTime(), actionType: "feed_post_replied", url: postUrl });
+        const postUrl = label ? `/dashboard#post-${label}` : "/dashboard";
+        actions.push({ date: d, text: `${d} â€” Replied to a comment`, sortKey: actionDate.getTime(), actionType: "feed_post_replied", url: postUrl });
       } else if (action.action_type === "group_message_sent") {
-        actions.push({ date: d, text: label ? `${d} — Sent a message in ${label}` : `${d} — Sent a group message`, sortKey: actionDate.getTime(), actionType: "group_message_sent", url: "/study-groups" });
+        actions.push({ date: d, text: label ? `${d} â€” Sent a message in ${label}` : `${d} â€” Sent a group message`, sortKey: actionDate.getTime(), actionType: "group_message_sent", url: "/dashboard" });
       } else if (action.action_type === "buddy_added") {
-        actions.push({ date: d, text: label ? `${d} — Added ${label} as a Bible Buddy` : `${d} — Added a Bible Buddy`, sortKey: actionDate.getTime(), actionType: "buddy_added" });
+        actions.push({ date: d, text: label ? `${d} â€” Added ${label} as a Bible Buddy` : `${d} â€” Added a Bible Buddy`, sortKey: actionDate.getTime(), actionType: "buddy_added" });
       } else if (action.action_type === "series_week_started") {
-        actions.push({ date: d, text: label ? `${d} — Started ${label}` : `${d} — Started a Bible series week`, sortKey: actionDate.getTime(), actionType: "series_week_started", url: "/study-groups" });
+        actions.push({ date: d, text: label ? `${d} â€” Started ${label}` : `${d} â€” Started a Bible series week`, sortKey: actionDate.getTime(), actionType: "series_week_started", url: "/dashboard" });
       } else if (action.action_type === "user_login" && !loginDates.has(dateKey)) {
         loginDates.add(dateKey);
-        actions.push({ date: d, text: `${d} — Logged in`, sortKey: actionDate.getTime(), actionType: "user_login" });
+        actions.push({ date: d, text: `${d} â€” Logged in`, sortKey: actionDate.getTime(), actionType: "user_login" });
       }
     }
     actions.sort((a, b) => b.sortKey - a.sortKey);
@@ -828,7 +828,7 @@ export default function PublicProfilePage() {
     }
   }
 
-  // ── Loading ───────────────────────────────────────────────────────────────
+  // â”€â”€ Loading â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 pb-12">
@@ -839,18 +839,18 @@ export default function PublicProfilePage() {
     );
   }
 
-  // ── Not found ─────────────────────────────────────────────────────────────
+  // â”€â”€ Not found â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (notFound) {
     return (
       <div className="min-h-screen bg-gray-50 pb-12">
         <div className="max-w-2xl mx-auto px-4 py-8">
           <nav className="text-sm text-gray-500 mb-6">
             <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
-            <span className="mx-2">›</span>
+            <span className="mx-2">â€º</span>
             <span className="text-gray-800 font-medium">Profile</span>
           </nav>
           <div className="bg-white border border-gray-200 rounded-xl p-12 shadow-sm text-center">
-            <p className="text-4xl mb-4">🔍</p>
+            <p className="text-4xl mb-4">ðŸ”</p>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Profile not found</h1>
             <p className="text-gray-500">This user doesn't exist or their profile isn't available.</p>
             <Link href="/dashboard" className="inline-block mt-6 px-5 py-2.5 bg-gray-900 text-white rounded-xl text-sm font-medium hover:bg-gray-700 transition">
@@ -862,7 +862,7 @@ export default function PublicProfilePage() {
     );
   }
 
-  // ── Derived display values ────────────────────────────────────────────────
+  // â”€â”€ Derived display values â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const displayStats = stats
     ? {
         ...stats,
@@ -1092,13 +1092,13 @@ export default function PublicProfilePage() {
         {/* Breadcrumb */}
         <nav className="profile-skin-breadcrumb text-sm text-gray-500 mb-6">
           <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
-          <span className="mx-2">›</span>
+          <span className="mx-2">â€º</span>
           <Link href="/profile" className="hover:text-gray-700 transition">Profile</Link>
-          <span className="mx-2">›</span>
+          <span className="mx-2">â€º</span>
           <span className="text-gray-800 font-medium">{displayName}</span>
         </nav>
 
-        {/* ── PROFILE HEADER ─────────────────────────────────────────────── */}
+        {/* â”€â”€ PROFILE HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {showProTrialBanner && proTrialTimeLeft && (
           <div className="mb-6 overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-emerald-50 shadow-sm">
             <div className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
@@ -1164,7 +1164,7 @@ export default function PublicProfilePage() {
                   </div>
                 </div>
 
-                {/* Action buttons — owner: Edit Profile; visitor: buddy button */}
+                {/* Action buttons â€” owner: Edit Profile; visitor: buddy button */}
                 {isOwner ? (
                   <div className="flex flex-col items-end gap-2 flex-shrink-0">
                     <button
@@ -1178,7 +1178,7 @@ export default function PublicProfilePage() {
                         href="/ambassador"
                         className="profile-skin-button inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold bg-teal-50 border border-teal-200 text-teal-700 hover:bg-teal-100 transition"
                       >
-                        🤝 Partner Dashboard
+                        ðŸ¤ Partner Dashboard
                       </Link>
                     )}
                   </div>
@@ -1266,11 +1266,11 @@ export default function PublicProfilePage() {
               {/* Meta row */}
               <div className="profile-skin-secondary flex flex-wrap items-center gap-x-4 gap-y-1 mt-3 text-xs text-gray-500">
                 {stats?.location && (
-                  <span>📍 {stats.location}</span>
+                  <span>ðŸ“ {stats.location}</span>
                 )}
-                <span>🕐 {formatLastActive(stats?.last_active_at || stats?.last_active_date)}</span>
+                <span>ðŸ• {formatLastActive(stats?.last_active_at || stats?.last_active_date)}</span>
                 {stats?.created_at && (
-                  <span>📅 Joined {formatJoined(stats.created_at)}</span>
+                  <span>ðŸ“… Joined {formatJoined(stats.created_at)}</span>
                 )}
                 <button
                   onClick={() => {
@@ -1280,7 +1280,7 @@ export default function PublicProfilePage() {
                   }}
                   className="hover:text-gray-700 transition font-medium"
                 >
-                  🤝 {buddyCount} {buddyCount === 1 ? "Buddy" : "Buddies"}
+                  ðŸ¤ {buddyCount} {buddyCount === 1 ? "Buddy" : "Buddies"}
                 </button>
               </div>
 
@@ -1322,12 +1322,12 @@ export default function PublicProfilePage() {
           </div>
         </div>
 
-        {/* ── REFERRAL CODE (owner only, non-paid) ────────────────────────── */}
+        {/* â”€â”€ REFERRAL CODE (owner only, non-paid) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {false && (
           <div className="bg-white border border-teal-200 rounded-xl p-4 shadow-sm mb-6">
             {referralState === "valid" ? (
               <div className="flex items-center gap-3">
-                <span className="text-2xl">🎉</span>
+                <span className="text-2xl">ðŸŽ‰</span>
                 <div>
                   <p className="text-sm font-bold text-teal-700">30-day Pro trial activated!</p>
                   {referralTrialEnds && (
@@ -1364,7 +1364,7 @@ export default function PublicProfilePage() {
           </div>
         )}
 
-        {/* ── DAILY STREAK ───────────────────────────────────────────────── */}
+        {/* â”€â”€ DAILY STREAK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="profile-skin-card bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
           <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
             <div>
@@ -1479,7 +1479,7 @@ export default function PublicProfilePage() {
           )}
         </div>
 
-        {/* ── STATS ROW 1 ────────────────────────────────────────────────── */}
+        {/* â”€â”€ STATS ROW 1 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="-mx-4 mb-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
           <div className="flex snap-x gap-4 sm:grid sm:grid-cols-4">
           <div className="profile-skin-stat-card w-[72vw] shrink-0 snap-start bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm sm:w-auto">
@@ -1534,7 +1534,7 @@ export default function PublicProfilePage() {
           </div>
         ) : null}
 
-        {/* ── STATS ROW 2 ────────────────────────────────────────────────── */}
+        {/* â”€â”€ STATS ROW 2 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
           <div className="profile-skin-stat-card bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm">
             <div className="text-2xl font-bold mb-1">{displayStats.notes_created_count}</div>
@@ -1558,7 +1558,7 @@ export default function PublicProfilePage() {
           </div>
         </div>
 
-        {/* ── STUDY GROUPS ───────────────────────────────────────────────── */}
+        {/* â”€â”€ STUDY GROUPS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="profile-skin-card bg-white border border-gray-200 rounded-xl shadow-sm mb-6 p-5">
           <h2 className="text-lg font-semibold text-gray-900 mb-3">Study Groups</h2>
           {userGroups.length === 0 ? (
@@ -1566,7 +1566,7 @@ export default function PublicProfilePage() {
           ) : (
             <div className="flex flex-col gap-3">
               {userGroups.map((group) => (
-                <Link key={group.id} href={`/study-groups/${group.id}`}>
+                <Link key={group.id} href={`/dashboard/${group.id}`}>
                   <div
                     className="profile-skin-link-row flex items-center gap-3 p-3 rounded-xl hover:opacity-80 transition cursor-pointer"
                     style={profileSkin ? undefined : { backgroundColor: group.cover_color ? group.cover_color + "55" : "#f3f4f6" }}
@@ -1575,7 +1575,7 @@ export default function PublicProfilePage() {
                       className="w-10 h-10 rounded-lg flex items-center justify-center text-xl flex-shrink-0"
                       style={{ backgroundColor: profileSkin ? "color-mix(in srgb, var(--profile-skin-accent) 28%, transparent)" : group.cover_color || "#d4ecd4" }}
                     >
-                      {group.cover_emoji || "🤝"}
+                      {group.cover_emoji || "ðŸ¤"}
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-gray-900 text-sm truncate">{group.name}</p>
@@ -1591,21 +1591,21 @@ export default function PublicProfilePage() {
           )}
         </div>
 
-        {/* ── RECENT POSTS ───────────────────────────────────────────────── */}
+        {/* â”€â”€ RECENT POSTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {false && recentPosts.length > 0 && (
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 p-5">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-lg font-semibold text-gray-900">Recent Posts</h2>
-              <Link href="/bb-feed" className="text-xs text-green-600 hover:underline font-medium">View Feed →</Link>
+              <Link href="/dashboard" className="text-xs text-green-600 hover:underline font-medium">View Feed â†’</Link>
             </div>
             <div className="flex flex-col gap-2">
               {recentPosts.map((post) => {
                 const POST_TYPE_ICONS: Record<string, string> = {
-                  thought: "💭", verse: "📖", prayer: "🙏", photo: "📷", link: "🔗",
+                  thought: "ðŸ’­", verse: "ðŸ“–", prayer: "ðŸ™", photo: "ðŸ“·", link: "ðŸ”—",
                 };
-                const icon = POST_TYPE_ICONS[post.post_type] || "💬";
+                const icon = POST_TYPE_ICONS[post.post_type] || "ðŸ’¬";
                 const preview = post.verse_ref
-                  ? `${post.verse_ref} — ${post.content.slice(0, 60)}`
+                  ? `${post.verse_ref} â€” ${post.content.slice(0, 60)}`
                   : post.content.slice(0, 80);
                 const diffMs = Date.now() - new Date(post.created_at).getTime();
                 const diffDays = Math.floor(diffMs / 86400000);
@@ -1615,7 +1615,7 @@ export default function PublicProfilePage() {
                     <span className="text-base flex-shrink-0 mt-0.5">{icon}</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm text-gray-800 leading-snug truncate">
-                        {preview}{post.content.length > 80 ? "…" : ""}
+                        {preview}{post.content.length > 80 ? "â€¦" : ""}
                       </p>
                       <div className="flex items-center gap-2 mt-0.5">
                         <span className="text-[10px] text-gray-400">{timeStr}</span>
@@ -1631,7 +1631,7 @@ export default function PublicProfilePage() {
           </div>
         )}
 
-        {/* ── ACTION LOG ─────────────────────────────────────────────────── */}
+        {/* â”€â”€ ACTION LOG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="profile-skin-card bg-white border border-gray-200 rounded-xl shadow-sm">
           <div className="px-6 py-4 border-b border-gray-100">
             <h2 className="text-xl font-semibold">Action Log</h2>
@@ -1650,7 +1650,7 @@ export default function PublicProfilePage() {
                     }`}
                   >
                     <span>{action.text}</span>
-                    <span className="text-xs text-blue-500 flex-shrink-0">View →</span>
+                    <span className="text-xs text-blue-500 flex-shrink-0">View â†’</span>
                   </a>
                 ) : (
                   <div
@@ -1667,7 +1667,7 @@ export default function PublicProfilePage() {
           )}
         </div>
 
-        {/* ── EDIT PROFILE MODAL ─────────────────────────────────────────── */}
+        {/* â”€â”€ EDIT PROFILE MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {showEditModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
             <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto">
@@ -1678,7 +1678,7 @@ export default function PublicProfilePage() {
                   onClick={() => setShowEditModal(false)}
                   className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl"
                 >
-                  ×
+                  Ã—
                 </button>
               </div>
 
@@ -1785,7 +1785,7 @@ export default function PublicProfilePage() {
           </div>
         )}
 
-        {/* ── BUDDIES LIST MODAL ─────────────────────────────────────────── */}
+        {/* â”€â”€ BUDDIES LIST MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {showBuddiesModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
             <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[80vh] flex flex-col">
@@ -1800,7 +1800,7 @@ export default function PublicProfilePage() {
                   onClick={() => { setShowBuddiesModal(false); setBuddiesSearch(""); setBuddiesPage(1); }}
                   className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl"
                 >
-                  ×
+                  Ã—
                 </button>
               </div>
 
@@ -1884,10 +1884,10 @@ export default function PublicProfilePage() {
                       onClick={() => { const p = buddiesPage - 1; setBuddiesPage(p); loadBuddiesPage(p); }}
                       disabled={buddiesPage === 1 || buddiesLoadingPage}
                       className="px-2 py-1 text-sm rounded-lg text-gray-500 hover:bg-gray-100 disabled:opacity-30 transition"
-                    >‹</button>
+                    >â€¹</button>
                     {getPages().map((p, i) =>
                       p === "..." ? (
-                        <span key={`ellipsis-${i}`} className="px-1 text-gray-400 text-sm">…</span>
+                        <span key={`ellipsis-${i}`} className="px-1 text-gray-400 text-sm">â€¦</span>
                       ) : (
                         <button
                           key={p}
@@ -1902,7 +1902,7 @@ export default function PublicProfilePage() {
                       onClick={() => { const p = buddiesPage + 1; setBuddiesPage(p); loadBuddiesPage(p); }}
                       disabled={buddiesPage === totalPages || buddiesLoadingPage}
                       className="px-2 py-1 text-sm rounded-lg text-gray-500 hover:bg-gray-100 disabled:opacity-30 transition"
-                    >›</button>
+                    >â€º</button>
                   </div>
                 );
               })()}
@@ -1911,7 +1911,7 @@ export default function PublicProfilePage() {
           </div>
         )}
 
-        {/* ── REMOVE BUDDY CONFIRM ───────────────────────────────────────── */}
+        {/* â”€â”€ REMOVE BUDDY CONFIRM â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {showRemoveBuddyConfirm && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
             <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6">

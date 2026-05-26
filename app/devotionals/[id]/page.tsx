@@ -298,7 +298,6 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const handledLouisDayRef = useRef<string | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
-  const [studyBuddyCount, setStudyBuddyCount] = useState(0);
 
   useEffect(() => {
     async function loadUserAndProfile() {
@@ -379,17 +378,6 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         }
 
         setDevotional(devotionalData);
-
-        try {
-          const communityResponse = await fetch(
-            `/api/devotionals/community-progress?devotionalId=${encodeURIComponent(devotionalId)}&page=0&pageSize=1`,
-          );
-          const communityPayload = await communityResponse.json().catch(() => null);
-          setStudyBuddyCount(communityPayload?.selected?.total ?? 0);
-        } catch (communityError) {
-          console.error("[BIBLE_STUDY_DETAIL] Could not load study Buddy count:", communityError);
-          setStudyBuddyCount(0);
-        }
 
         if (userId) {
           const { data: authData } = await supabase.auth.getUser();
@@ -1341,12 +1329,6 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Devotional Progress</p>
               <h1 className="mt-1 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-4xl">{devotional.title}</h1>
               <p className="mt-2 text-sm font-bold text-[var(--bb-text-secondary,#5f6368)]">{scriptureRange ?? devotional.subtitle}</p>
-
-              <div className="mt-4 inline-flex rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
-                {studyBuddyCount > 0
-                  ? `${studyBuddyCount} ${studyBuddyCount === 1 ? "Buddy is" : "Buddies are"} studying this`
-                  : "Be the first Buddy to start this study"}
-              </div>
 
               <div className="mt-5 rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-sm">
                 <div className="flex items-center justify-between gap-3">

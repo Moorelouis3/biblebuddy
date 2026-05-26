@@ -28,13 +28,6 @@ export const APP_NAV_ITEMS: AppNavItem[] = [
     hoverClasses: "text-gray-700 hover:bg-blue-50 hover:text-blue-600 active:scale-[0.98]",
   },
   {
-    label: "Community",
-    href: "/study-groups",
-    activePrefixes: ["/study-groups"],
-    activeClasses: "bg-green-50 text-green-700 font-medium cursor-not-allowed",
-    hoverClasses: "text-gray-700 hover:bg-green-50 hover:text-green-600 active:scale-[0.98]",
-  },
-  {
     label: "Bible Study Games",
     href: "/bible-study-games",
     activePrefixes: ["/bible-study-games", "/bible-trivia"],
@@ -62,7 +55,6 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   reading: "The Bible",
   Bible: "The Bible",
   books: "Books",
-  "study-groups": "Community",
   "guided-studies": "Bible Study Tools",
   devotionals: "Bible Studies",
   "bible-studies": "Bible Studies",
@@ -85,7 +77,6 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   profile: "Profile",
   settings: "Settings",
   "change-buddy": "Change Buddy",
-  "bb-feed": "Community Feed",
   ambassador: "Buddy Rewards",
   "verse-of-the-day": "Verse of the Day",
   updates: "Updates",
@@ -122,7 +113,6 @@ function segmentLabel(segment: string, previous?: string) {
   }
   if (BREADCRUMB_LABELS[segment]) return BREADCRUMB_LABELS[segment];
   if (isOpaqueId(segment)) {
-    if (previous === "study-groups") return "Group";
     if (previous === "messages") return "Conversation";
     if (previous === "profile") return "Profile";
     return "Details";

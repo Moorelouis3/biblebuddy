@@ -34,46 +34,13 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [creditBlocked, setCreditBlocked] = useState(false);
-
-  // Kept in place so the feed feature can be re-enabled later without losing logic.
-  const [shareVerse, setShareVerse] = useState<{ number: number; text: string } | null>(null);
-  const [shareContent, setShareContent] = useState("");
-  const [shareSubmitting, setShareSubmitting] = useState(false);
-  const [shareSuccess, setShareSuccess] = useState(false);
-
-  async function handleShareSubmit() {
-    if (!user || !shareVerse || shareSubmitting) return;
-    setShareSubmitting(true);
-    const verseRef = `${book.charAt(0).toUpperCase() + book.slice(1)} ${chapter}:${shareVerse.number}`;
-    const { data, error } = await supabase
-      .from("feed_posts")
-      .insert({
-        user_id: user.id,
-        post_type: "verse",
-        content: shareContent.trim() || "",
-        verse_ref: verseRef,
-        verse_text: shareVerse.text,
-        visibility: "community",
-      })
-      .select("id")
-      .single();
-
-    if (!error && data) {
-      void supabase.rpc("log_feed_activity", {
-        p_activity_type: "verse_shared",
-        p_activity_data: { verse_ref: verseRef, post_id: data.id },
-        p_feed_post_id: data.id,
-        p_is_public: true,
-      });
-      setShareSuccess(true);
-      setTimeout(() => {
-        setShareVerse(null);
-        setShareContent("");
-        setShareSuccess(false);
-      }, 1800);
-    }
-    setShareSubmitting(false);
-  }
+  const shareVerse = null as { number: number; text: string } | null;
+  const shareContent = "";
+  const shareSubmitting = false;
+  const shareSuccess = false;
+  const setShareVerse = (_value: null) => {};
+  const setShareContent = (_value: string) => {};
+  const handleShareSubmit = () => {};
 
   useEffect(() => {
     (async () => {

@@ -1,4 +1,4 @@
-export type DirectMessageAction = {
+﻿export type DirectMessageAction = {
   label: string;
   href: string;
 };
@@ -21,7 +21,7 @@ const LEGACY_ACTION_PATTERNS: Array<{
   label: string;
 }> = [
   {
-    regex: /Open Bible Study Group:\s*(\/study-groups\/[^\s]+)/i,
+    regex: /Open Bible Study Group:\s*(\/dashboard\/[^\s]+)/i,
     label: "Open Bible Study Group",
   },
   {

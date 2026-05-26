@@ -1,4 +1,4 @@
-import type { FeatureTourKey } from "./featureTours";
+﻿import type { FeatureTourKey } from "./featureTours";
 
 export type LouisGuideId =
   | "dashboard"
@@ -68,10 +68,10 @@ export function getLouisPageGuide(pathname: string | null): LouisPageGuide | nul
   if (pathname === "/dashboard") return DASHBOARD_GUIDE;
   if (pathname === "/reading" || pathname === "/Bible") return BIBLE_BOOKS_GUIDE;
   if (
-    pathname === "/study-groups" ||
+    pathname === "/dashboard" ||
     pathname.endsWith("/chat") ||
     pathname.endsWith("/series") ||
-    pathname.includes("/study-groups/")
+    pathname.includes("/dashboard/")
   ) {
     return BIBLE_STUDY_GROUP_GUIDE;
   }
@@ -116,14 +116,14 @@ export function buildLouisGuideChatMessage(
         `hey ${name}, you just entered the Bible reader`,
         "this is where you can open all 66 books and move chapter by chapter through Scripture",
         "tap any book to start reading and track your progress as you grow your faith by actually spending time in the Word",
-        "if you ever have any questions while reading the Bible, click me and I’ll be happy to help",
+        "if you ever have any questions while reading the Bible, click me and Iâ€™ll be happy to help",
       ].join("\n\n");
     case "bible_study_hub":
       return [
         `hey ${name}, this is the Bible study group`,
         "this is where you can connect with other Bible Buddies and grow together",
         "we also run weekly Bible studies and daily faith conversations here",
-        "don’t just read alone, be part of something",
+        "donâ€™t just read alone, be part of something",
       ].join("\n\n");
     case "bible_references":
       return [
@@ -150,7 +150,7 @@ export function buildLouisGuideChatMessage(
     case "bible_buddy_tv":
       return [
         `hey ${name}, this is BibleBuddy TV`,
-        "here you’ll find sermons, Christian movies, documentaries, and Bible based content",
+        "here youâ€™ll find sermons, Christian movies, documentaries, and Bible based content",
         "everything is organized to help you grow while you watch",
         "use this when you want to learn in a different way",
       ].join("\n\n");
@@ -158,8 +158,8 @@ export function buildLouisGuideChatMessage(
       return [
         `hey ${name}, this is where you can test and grow your knowledge of the Word`,
         "play trivia or scrambled to challenge yourself",
-        "learning doesn’t always have to be serious",
-        "use this to sharpen what you’ve been reading",
+        "learning doesnâ€™t always have to be serious",
+        "use this to sharpen what youâ€™ve been reading",
       ].join("\n\n");
     default:
       return "";
