@@ -47,6 +47,7 @@ import {
 } from "../lib/buddyAvatars";
 import {
   GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
+  generateBibleInOneYearPlan,
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
 import type { BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
@@ -63,6 +64,7 @@ import { normalizePremiumSkinId } from "../lib/premiumSkins";
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
 const DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID = "bible-year:day-1-study-notes-gift";
+const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapters;
 type BibleYearDayCardKey = "reading" | "trivia" | "reflection";
 type BibleYearCompletedCardsByDay = Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>;
 type BibleYearSeriesFilter = "all" | "current" | "completed";
@@ -1805,6 +1807,45 @@ export default function DashboardJourneyExperience({
   const bibleYearJustCompletedDayRef = useRef<number | null>(null);
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
+  const completedBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => {
+    const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
+    return completed.reading && completed.trivia && completed.reflection;
+  });
+  const computedBibleYearCurrentDay =
+    GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => {
+      const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
+      return !(completed.reading && completed.trivia && completed.reflection);
+    }) ||
+    GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1] ||
+    null;
+  const completedBibleYearChapters = completedBibleYearDays.reduce((sum, day) => sum + day.readings.length, 0);
+  const computedBibleYearOverallPercent = BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS > 0
+    ? Math.min(100, Math.round((completedBibleYearChapters / BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS) * 100))
+    : 0;
+  const expectedBibleYearFinishDate = (() => {
+    const currentDayNumber = Math.max(1, computedBibleYearCurrentDay?.dayNumber ?? 1);
+    const finishDate = new Date();
+    finishDate.setHours(12, 0, 0, 0);
+    finishDate.setDate(finishDate.getDate() + Math.max(0, 365 - currentDayNumber));
+    return finishDate.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+  })();
+  const effectiveBibleYearReport: BibleYearReport = bibleYearReport ?? {
+    currentDay: computedBibleYearCurrentDay?.dayNumber ?? 1,
+    currentDayPercent: 0,
+    currentDayCompletedChapters: 0,
+    currentDayTotalChapters: computedBibleYearCurrentDay?.readings.length ?? 0,
+    completedChapters: completedBibleYearChapters,
+    totalChapters: BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS,
+    remainingChapters: Math.max(0, BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS - completedBibleYearChapters),
+    overallPercent: computedBibleYearOverallPercent,
+    currentStreak: Math.max(0, profile?.current_streak ?? 0),
+    allTimeStreak: Math.max(0, profile?.current_streak ?? 0),
+    statusLabel: "On track",
+    statusDetail: "Keep finishing today's three Bible study tasks to move forward.",
+    statusDays: 0,
+    statusDirection: "on-track",
+    expectedFinishDateLabel: expectedBibleYearFinishDate,
+  };
   const [bibleYearOptionalDiscussionDay, setBibleYearOptionalDiscussionDay] = useState<number | null>(null);
   const [bibleYearReflectionPostedByDay, setBibleYearReflectionPostedByDay] = useState<Record<number, boolean>>({});
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
@@ -2107,7 +2148,7 @@ export default function DashboardJourneyExperience({
         if (selectedBibleYearSeriesDay && builtBibleYearDays.some((day) => day.dayNumber === selectedBibleYearSeriesDay.dayNumber)) {
           return selectedBibleYearSeriesDay;
         }
-        const reportedCurrentDayNumber = Number(bibleYearReport?.currentDay);
+        const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
         const boundedReportedDayNumber = Number.isFinite(reportedCurrentDayNumber)
           ? Math.max(
               builtBibleYearDays[0]?.dayNumber ?? 1,
@@ -3455,7 +3496,7 @@ export default function DashboardJourneyExperience({
         const completed = bibleYearCompletedCardsByDay[day.dayNumber] || {};
         return !(completed.reading && completed.trivia && completed.reflection);
       }) || null;
-    const reportedCurrentDayNumber = Number(bibleYearReport?.currentDay);
+    const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
     const boundedReportedDayNumber = Number.isFinite(reportedCurrentDayNumber)
       ? Math.max(
           builtBibleYearDays[0]?.dayNumber ?? 1,
@@ -7099,7 +7140,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
-    const reportedCurrentDayNumber = Number(bibleYearReport?.currentDay);
+    const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
     const nextDay = days.find((day) => !isBibleYearDayComplete(day)) || days[days.length - 1];
     if (!days.length) return 1;
     const minDay = days[0]?.dayNumber ?? 1;
@@ -8370,7 +8411,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearHomeProgressSnapshot(day: GenesisBibleYearDay) {
-    const report = bibleYearReport;
+    const report = effectiveBibleYearReport;
     const overallPercent = report?.overallPercent ?? 0;
     const expectedFinishDateLabel = report?.expectedFinishDateLabel ?? "Calculating";
     const statusLabel = report?.statusLabel ?? "On pace";
@@ -8444,7 +8485,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderHomeSupportStatsStrip() {
-    const currentStreak = bibleYearReport?.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
+    const currentStreak = effectiveBibleYearReport.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
     const streakLabel = `${currentStreak} ${currentStreak === 1 ? "Day" : "Days"}`;
     const lightThemeUsesClassicFlame =
       typeof document !== "undefined" &&
@@ -8474,7 +8515,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleProgressDetailsModal() {
-    const report = bibleYearReport;
+    const report = effectiveBibleYearReport;
     const currentStreak = report?.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
     const expectedFinishDateLabel = report?.expectedFinishDateLabel ?? "Calculating";
     const overallPercent = Math.max(0, Math.min(100, Math.round(report?.overallPercent ?? 0)));
@@ -11433,7 +11474,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
                         {isOwnerDashboard
                           ? "Owner preview - every built day is unlocked"
-                          : `Day ${bibleYearReport?.currentDay ?? getCurrentBibleYearSeriesDayNumber()} - past days checked, today active, future days locked`}
+                          : `Day ${effectiveBibleYearReport.currentDay ?? getCurrentBibleYearSeriesDayNumber()} - past days checked, today active, future days locked`}
                       </span>
                     </span>
                     <span className="shrink-0 text-[var(--bb-accent,#2f7fe8)] transition" aria-hidden="true">
