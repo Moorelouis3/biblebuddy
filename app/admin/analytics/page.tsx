@@ -169,27 +169,27 @@ function formatLastActive(value: string) {
 function getFunnelHealth(rate: number) {
   if (rate < 10) {
     return {
-      tone: "border-rose-300 bg-rose-100 text-rose-900",
+      tone: "border [border-color:rgba(248,113,113,0.72)] [background:linear-gradient(135deg,rgba(127,29,29,0.88),rgba(248,113,113,0.24))] [box-shadow:0_0_0_1px_rgba(248,113,113,0.28),0_0_38px_rgba(248,113,113,0.42)] text-rose-50",
       label: "Needs fixing",
       message: `Landing to onboarding completion is ${rate}%. Under 10% means visitors are not making it through the first funnel step.`,
     };
   }
   if (rate < 20) {
     return {
-      tone: "border-amber-300 bg-amber-100 text-amber-950",
+      tone: "border [border-color:rgba(251,191,36,0.76)] [background:linear-gradient(135deg,rgba(120,53,15,0.88),rgba(251,191,36,0.26))] [box-shadow:0_0_0_1px_rgba(251,191,36,0.28),0_0_38px_rgba(251,191,36,0.42)] text-amber-50",
       label: "Normal range",
       message: `Landing to onboarding completion is ${rate}%. This is workable, but the landing page and questions can still be tightened.`,
     };
   }
   if (rate < 40) {
     return {
-      tone: "border-emerald-300 bg-emerald-100 text-emerald-950",
+      tone: "border [border-color:rgba(52,211,153,0.78)] [background:linear-gradient(135deg,rgba(6,78,59,0.9),rgba(52,211,153,0.28))] [box-shadow:0_0_0_1px_rgba(52,211,153,0.32),0_0_42px_rgba(52,211,153,0.5)] text-emerald-50",
       label: "Doing good",
       message: `Landing to onboarding completion is ${rate}%. The page is doing good at getting visitors through onboarding.`,
     };
   }
   return {
-    tone: "border-green-300 bg-green-100 text-green-950",
+    tone: "border [border-color:rgba(74,222,128,0.82)] [background:linear-gradient(135deg,rgba(20,83,45,0.92),rgba(74,222,128,0.32))] [box-shadow:0_0_0_1px_rgba(74,222,128,0.34),0_0_46px_rgba(74,222,128,0.54)] text-green-50",
     label: "Excellent funnel",
     message: `Landing to onboarding completion is ${rate}%. That is excellent. Protect what is working and improve the next step.`,
   };

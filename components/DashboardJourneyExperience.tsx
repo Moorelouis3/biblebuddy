@@ -12873,26 +12873,24 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="grid grid-cols-5 items-center gap-1.5">
             <button
               type="button"
-              onClick={() => setDashboardMenuOpen((open) => !open)}
+              onClick={() => {
+                setDashboardMenuOpen(false);
+                setShowBibleProgressDetails(true);
+              }}
               className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
-              aria-expanded={dashboardMenuOpen}
-              aria-label={dashboardMenuOpen ? "Close dashboard menu" : "Open dashboard menu"}
+              aria-label="Open Bible progress"
+              data-dashboard-nav-key="progress-tab"
             >
               <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
-                {dashboardMenuOpen ? (
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-                    <path d="M6 6l12 12" />
-                    <path d="M18 6L6 18" />
-                  </svg>
-                ) : (
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-                    <path d="M4 7h16" />
-                    <path d="M4 12h16" />
-                    <path d="M4 17h16" />
-                  </svg>
-                )}
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 19V5" />
+                  <path d="M4 19h16" />
+                  <path d="M8 16v-5" />
+                  <path d="M12 16V8" />
+                  <path d="M16 16v-3" />
+                </svg>
               </span>
-              <span>Menu</span>
+              <span>Progress</span>
             </button>
 
             <button

@@ -569,13 +569,19 @@ export default function SettingsPage() {
   async function handleThemeSelect(themeId: AppThemeId) {
     if (!user) return;
     const previousTheme = selectedTheme;
+    const previousSkin = selectedPremiumSkin;
+    const previousSkinSelectedAt = selectedPremiumSkinSelectedAt;
     setThemeSaving(themeId);
     setSettingsMessage(null);
     setSelectedTheme(themeId);
+    setSelectedPremiumSkin("none");
+    setSelectedPremiumSkinSelectedAt(null);
     if (typeof window !== "undefined") {
       cacheAppThemeForUser(user.id, themeId, { markSelected: true });
+      cachePremiumSkinForUser(user.id, "none", { markSelected: true });
+      applyPremiumSkinToDocument("none");
       applyAppThemeToDocument(themeId);
-      applyPremiumSkinToDocument(selectedPremiumSkin);
+      window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: "none" } }));
       window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId } }));
     }
     try {
@@ -585,11 +591,25 @@ export default function SettingsPage() {
           user_id: user.id,
           app_theme: themeId,
           app_theme_selected_at: selectedAt,
+          active_premium_skin: "none",
+          active_premium_skin_selected_at: null,
           updated_at: selectedAt,
         },
         { onConflict: "user_id" },
       );
-      if (error && /app_theme_selected_at/i.test(error.message || "")) {
+      if (error && /app_theme_selected_at|active_premium_skin_selected_at/i.test(error.message || "")) {
+        const fallback = await supabase.from("profile_stats").upsert(
+          {
+            user_id: user.id,
+            app_theme: themeId,
+            active_premium_skin: "none",
+            updated_at: selectedAt,
+          },
+          { onConflict: "user_id" },
+        );
+        error = fallback.error;
+      }
+      if (error && /active_premium_skin/i.test(error.message || "")) {
         const fallback = await supabase.from("profile_stats").upsert(
           {
             user_id: user.id,
@@ -602,13 +622,18 @@ export default function SettingsPage() {
       }
       if (error) throw error;
       clearPendingAppThemeSync(user.id, themeId);
+      clearPendingPremiumSkinSync(user.id, "none");
       setSettingsMessage("Theme updated.");
     } catch (error: any) {
       setSelectedTheme(previousTheme);
+      setSelectedPremiumSkin(previousSkin);
+      setSelectedPremiumSkinSelectedAt(previousSkinSelectedAt);
       if (typeof window !== "undefined") {
         cacheAppThemeForUser(user.id, previousTheme);
+        cachePremiumSkinForUser(user.id, previousSkin);
         applyAppThemeToDocument(previousTheme);
-        applyPremiumSkinToDocument(selectedPremiumSkin);
+        applyPremiumSkinToDocument(previousSkin);
+        window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: previousSkin } }));
         window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId: previousTheme } }));
       }
       setSettingsMessage(error.message || "Could not update theme.");
@@ -699,7 +724,12 @@ export default function SettingsPage() {
     setSelectedPremiumSkinSelectedAt(selectedAt);
     if (typeof window !== "undefined") {
       cachePremiumSkinForUser(user.id, skinId, { markSelected: true });
-      applyPremiumSkinToDocument(skinId);
+      if (skinId === "none") {
+        applyPremiumSkinToDocument("none");
+        applyAppThemeToDocument(selectedTheme);
+      } else {
+        applyPremiumSkinToDocument(skinId);
+      }
       window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId } }));
     }
 
@@ -758,7 +788,12 @@ export default function SettingsPage() {
       if (typeof window !== "undefined") {
         cachePremiumSkinForUser(user.id, previousSkin);
         persistActiveStreakFlame(previousFlame);
-        applyPremiumSkinToDocument(previousSkin);
+        if (previousSkin === "none") {
+          applyPremiumSkinToDocument("none");
+          applyAppThemeToDocument(selectedTheme);
+        } else {
+          applyPremiumSkinToDocument(previousSkin);
+        }
         window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: previousSkin } }));
         window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: previousFlame } }));
       }
