@@ -4,7 +4,7 @@ Use this prompt when asking an agent to build the next Bible in One Year day.
 
 ## Prompt
 
-You are working in the BibleBuddy repo. Build Bible in One Year Day `[DAY_NUMBER]` so it works like the existing Day 1-7 Bible in One Year days.
+You are working in the BibleBuddy repo. Build Bible in One Year Day `[DAY_NUMBER]` so it works like the latest Day 1 Bible in One Year dashboard experience.
 
 Before editing, inspect the existing implementation. Do not guess the structure. Read these files and follow the local patterns:
 
@@ -28,7 +28,18 @@ Before editing, inspect the existing implementation. Do not guess the structure.
 - `scripts/generate-bible-year-day-one-audio.ts`
 - `docs/bible-in-one-year-master-plan.md`
 
-The target day should feel like Day 1 in the app: same dashboard task flow, same completion behavior, same summary card behavior, same deep notes modal behavior, same trivia/reflection behavior, same audio/video player behavior, and same continue popup after all required tasks are complete.
+The target day should feel like Day 1 in the app: same dashboard task flow, same completion behavior, same summary card behavior, same deep notes modal behavior, same trivia/reflection behavior, same audio/video player behavior, same follow-along Scripture behavior, and same inline Continue behavior after all required tasks are complete.
+
+Current Day 1 behavior to preserve:
+
+- The dashboard loads the user's real current Bible in One Year day in the study area.
+- Clicking a Journey Map cover opens that day in the same study area, not a separate popup.
+- Task 1 shows video if `videoSrc` exists, otherwise the Bible Year audio player if audio exists.
+- Under the video/audio, the user can expand `Follow Along in Scripture`.
+- The follow-along panel stays on the same task screen, uses no iframe, does not open the full Bible reader, and shows the assigned Scripture chapters with headings and verse numbers.
+- The follow-along panel is collapsed by default, toggles open/closed, is scrollable, mobile-friendly, and its scrollbar matches the active Bible Buddy theme.
+- Day completion uses the inline completion/reflection panel, not the large blue modal popup.
+- Pressing Continue in the inline completion panel advances to the next day; on the final available day it returns to the Bible in One Year dashboard/study page.
 
 ## Inputs I Will Provide
 
@@ -308,10 +319,15 @@ Important behavior to preserve:
   - reading/video: +25 XP
   - summary/reflection: +20 XP
   - trivia: +20 XP
-- When all required tasks are complete, the completion popup appears.
-- Pressing Continue advances to the next day.
+- When all required tasks are complete, show the inline completed-day panel in the study area.
+- The inline completed-day panel should include the reflection/discussion prompt area, because the reflection question belongs with the completed day flow.
+- Do not use the old large blue completion modal popup for Bible in One Year day completion.
+- Pressing Continue in the inline completed-day panel advances to the next day.
 - On the final available day, Continue returns to the study page/dashboard.
 - Guest/local usage should still work visually even when no logged-in `userId` exists, unless database persistence is required.
+- The dashboard should default to the user's current Bible in One Year day on load; stale selected days or URL leftovers should not override the current study area.
+- If the user intentionally clicks a day cover in the Journey Map, that clicked day may load in the study area for review.
+- `profile_stats.bible_year_started_at` should be preserved for pacing. If missing, backfill it from the earliest `bible_year_day_progress.created_at` when possible.
 
 If the day task flow breaks, compare against Day 1 behavior first.
 
@@ -324,6 +340,42 @@ If a `videoSrc` is present in `lib/bibleYearAudio.ts`, the card should show the 
 If no `videoSrc` is present but audio exists in Supabase storage, the card should show `BibleYearLessonAudioPlayer`.
 
 If neither exists, the card shows the fallback "being prepared" message.
+
+### Follow Along in Scripture Panel
+
+Every built Bible in One Year day should be prepared to support the Day 1 follow-along Scripture feature.
+
+Current implementation:
+
+- `components/DashboardJourneyExperience.tsx`
+- state: `bibleYearFollowAlongOpenByDay`
+- helper: `getBibleYearFollowAlongChapters(day)`
+- renderer: `renderBibleYearFollowAlongScripture(day)`
+- CSS class for themed scrollbar: `bible-year-follow-along-scroll`
+
+Behavior:
+
+- Button text: `Follow Along in Scripture`
+- Placement: directly under the video/audio player and before `VideoHelpfulPoll`
+- Collapsed by default
+- Click button once to expand
+- Click again to collapse
+- Show chapter headings, verse numbers, and readable Bible text
+- Scroll inside the panel when the assigned reading is long
+- Do not use an iframe
+- Do not open `BibleReadingModal`
+- Do not route away to the full Bible reader
+- Keep the user on the same Task 1 screen
+- Match the active Bible Buddy theme, including the scrollbar
+- Do not sync verses to video timestamps yet
+- Do not autoscroll
+
+Data source:
+
+- Use the day's `readings` assignments from `GENESIS_BIBLE_IN_ONE_YEAR_SERIES`.
+- Pull verse text from existing Bible-year Scripture data when available, currently `BIBLE_YEAR_GENESIS_WEB_VERSES` from `lib/bibleYearGenesisVerses.ts`.
+- For future non-Genesis days, add or connect an equivalent structured Bible text source rather than hardcoding verses in the component.
+- Days 1-8 are wired as the live Genesis test range; future days should follow this same reusable shape as the Scripture data becomes available.
 
 When the user presses complete:
 
@@ -393,10 +445,12 @@ If the app has a usable local test flow, also verify:
 - Study Notes open
 - Summary task can complete
 - Trivia questions render and complete
-- all three tasks trigger the completion popup
+- all three tasks trigger the inline completed-day panel
+- inline completed-day panel includes the reflection/discussion prompt area
 - Continue opens next day
 - final-day behavior still routes back to dashboard/study page
 - no "Unlocked" label appears on locked covers
+- Day 1 style `Follow Along in Scripture` panel opens under media, uses no iframe, and stays on the same task screen when available
 
 ## Output Expected From Agent
 
@@ -408,7 +462,8 @@ When finished, report:
 - audio storage path or video URL
 - whether deep notes were added
 - whether summary/trivia/reflection were added
-- whether completion popup/Continue behavior was preserved
+- whether inline completion/reflection/Continue behavior was preserved
+- whether follow-along Scripture behavior was added or prepared
 - test command result
 
 Do not push unless I explicitly say `push`.

@@ -84,6 +84,7 @@ type BibleYearProgressRow = {
   reading_completed: boolean | null;
   trivia_completed: boolean | null;
   reflection_completed: boolean | null;
+  created_at?: string | null;
 };
 type BibleYearTriviaQuestion = {
   id: string;
@@ -94,6 +95,10 @@ type BibleYearTriviaQuestion = {
   explanation: string;
 };
 const BIBLE_YEAR_DAY_CARD_KEYS: BibleYearDayCardKey[] = ["reading", "trivia", "reflection"];
+
+function getDashboardLocalDateKey(date = new Date()) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+}
 
 function getStableBibleYearTriviaOptions(questionId: string, options: string[], answer: string) {
   if (options.length <= 1) return options;
@@ -1771,6 +1776,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearSeriesDetailDay, setBibleYearSeriesDetailDay] = useState<GenesisBibleYearDay | null>(null);
   const [bibleYearJourneyPreviewDay, setBibleYearJourneyPreviewDay] = useState<GenesisBibleYearDay | null>(null);
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
+  const [manualBibleYearStudyDayNumber, setManualBibleYearStudyDayNumber] = useState<number | null>(null);
   const [activeBibleYearDayCard, setActiveBibleYearDayCard] = useState<BibleYearDayCardKey | null>(null);
   const [bibleYearCompletedTasksExpandedDay, setBibleYearCompletedTasksExpandedDay] = useState<number | null>(null);
   const [bibleYearCompletionModalDay, setBibleYearCompletionModalDay] = useState<GenesisBibleYearDay | null>(null);
@@ -1957,6 +1963,7 @@ export default function DashboardJourneyExperience({
       setBibleYearDashboardActive(true);
       setBibleYearSeriesActive(false);
       setSelectedBibleYearSeriesDay(null);
+      setManualBibleYearStudyDayNumber(null);
       setActiveBibleYearDayCard(null);
       setShowCompletionPanel(false);
       setBibleYearPlanOverviewOpen(true);
@@ -2189,9 +2196,6 @@ export default function DashboardJourneyExperience({
   const activeBibleYearDashboardDay = bibleYearDashboardActive && bibleYearCurrentDayReady
     ? (() => {
         const builtBibleYearDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
-        if (selectedBibleYearSeriesDay && builtBibleYearDays.some((day) => day.dayNumber === selectedBibleYearSeriesDay.dayNumber)) {
-          return selectedBibleYearSeriesDay;
-        }
         const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
         const boundedReportedDayNumber = Number.isFinite(reportedCurrentDayNumber)
           ? Math.max(
@@ -2220,7 +2224,25 @@ export default function DashboardJourneyExperience({
           builtBibleYearDays[builtBibleYearDays.length - 1] ||
           null;
 
-        return currentBibleYearDay;
+        const selectedDayIsBuilt = Boolean(
+          selectedBibleYearSeriesDay &&
+          builtBibleYearDays.some((day) => day.dayNumber === selectedBibleYearSeriesDay.dayNumber),
+        );
+        const shouldKeepJustCompletedDay = Boolean(
+          selectedBibleYearSeriesDay &&
+          selectedDayIsBuilt &&
+          bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber &&
+          isBibleYearDayComplete(selectedBibleYearSeriesDay),
+        );
+        const shouldUseManualSelectedDay = Boolean(
+          selectedBibleYearSeriesDay &&
+          selectedDayIsBuilt &&
+          manualBibleYearStudyDayNumber === selectedBibleYearSeriesDay.dayNumber,
+        );
+
+        return shouldKeepJustCompletedDay || shouldUseManualSelectedDay
+          ? selectedBibleYearSeriesDay
+          : currentBibleYearDay;
       })()
     : null;
   const bibleYearDashboardTasks = activeBibleYearDashboardDay
@@ -3266,11 +3288,36 @@ export default function DashboardJourneyExperience({
       try {
         const { data, error } = await supabase
           .from("bible_year_day_progress")
-          .select("day_number, reading_completed, trivia_completed, reflection_completed")
+          .select("day_number, reading_completed, trivia_completed, reflection_completed, created_at")
           .eq("user_id", userId)
           .order("day_number", { ascending: true });
 
         if (error) throw error;
+
+        if (!profile?.bible_year_started_at) {
+          const progressRows = (data || []) as BibleYearProgressRow[];
+          const earliestProgressDate = progressRows
+            .map((row) => row.created_at ? new Date(row.created_at) : null)
+            .filter((date): date is Date => Boolean(date && !Number.isNaN(date.getTime())))
+            .sort((a, b) => a.getTime() - b.getTime())[0];
+          const startDateKey = getDashboardLocalDateKey(earliestProgressDate || new Date());
+          const nowIso = new Date().toISOString();
+          const { error: startDateError } = await supabase
+            .from("profile_stats")
+            .upsert(
+              {
+                user_id: userId,
+                bible_year_started_at: startDateKey,
+                bible_year_launch_seen_at: nowIso,
+                updated_at: nowIso,
+              },
+              { onConflict: "user_id" },
+            );
+
+          if (startDateError) {
+            console.warn("[BIBLE_YEAR_PROGRESS] Could not save Bible in One Year start date:", startDateError);
+          }
+        }
 
         const next: BibleYearCompletedCardsByDay = {};
         ((data || []) as BibleYearProgressRow[]).forEach((row) => {
@@ -3334,7 +3381,7 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [userId]);
+  }, [profile?.bible_year_started_at, userId]);
 
   function snapToPage(index: number) {
     const nextIndex = Math.max(0, Math.min(index, dashboardPageKeys.length - 1));
@@ -3354,6 +3401,7 @@ export default function DashboardJourneyExperience({
     setBibleYearSeriesDetailDay(null);
     setBibleYearJourneyPreviewDay(null);
     setSelectedBibleYearSeriesDay(null);
+    setManualBibleYearStudyDayNumber(null);
     setActiveBibleYearDayCard(null);
     setBibleYearCompletedTasksExpandedDay(null);
     setBibleYearCompletionModalDay(null);
@@ -3560,6 +3608,7 @@ export default function DashboardJourneyExperience({
     setBibleYearSeriesDetailDay(null);
     setBibleYearJourneyPreviewDay(null);
     setSelectedBibleYearSeriesDay(nextBibleYearDay);
+    setManualBibleYearStudyDayNumber(null);
     setBibleYearCompletedTasksExpandedDay(null);
     setFreeStudyModeActive(false);
     setEmbeddedBibleBookSearchOpen(false);
@@ -3589,6 +3638,7 @@ export default function DashboardJourneyExperience({
     setBibleYearSeriesDetailDay(null);
     setBibleYearJourneyPreviewDay(null);
     setSelectedBibleYearSeriesDay(null);
+    setManualBibleYearStudyDayNumber(null);
     setActiveBibleYearDayCard(null);
     setBibleYearCompletedTasksExpandedDay(null);
     setBibleYearPlanMenuOpen(false);
@@ -3618,6 +3668,7 @@ export default function DashboardJourneyExperience({
     setBibleYearSeriesDetailDay(null);
     setBibleYearJourneyPreviewDay(null);
     setSelectedBibleYearSeriesDay(day);
+    setManualBibleYearStudyDayNumber(day.dayNumber);
     setActiveBibleYearDayCard(null);
     setBibleYearCompletedTasksExpandedDay(options.reviewCompleted || isBibleYearDayComplete(day) ? day.dayNumber : null);
     if (options.markDone) {
@@ -3648,6 +3699,7 @@ export default function DashboardJourneyExperience({
     setBibleYearSeriesDetailDay(null);
     setBibleYearJourneyPreviewDay(null);
     setSelectedBibleYearSeriesDay(null);
+    setManualBibleYearStudyDayNumber(null);
     setActiveBibleYearDayCard(null);
     setBibleYearCompletedTasksExpandedDay(null);
     setFreeStudyModeActive(false);
@@ -3672,6 +3724,7 @@ export default function DashboardJourneyExperience({
     setBibleYearSeriesDetailDay(day);
     setBibleYearJourneyPreviewDay(null);
     setSelectedBibleYearSeriesDay(null);
+    setManualBibleYearStudyDayNumber(null);
     setActiveBibleYearDayCard(null);
     setBibleYearCompletedTasksExpandedDay(null);
     setDashboardMenuOpen(false);
@@ -3700,6 +3753,7 @@ export default function DashboardJourneyExperience({
 
     try {
       const resetAt = new Date().toISOString();
+      const resetStartDate = getDashboardLocalDateKey();
       if (userId) {
         const { error } = await supabase
           .from("bible_year_day_progress")
@@ -3718,6 +3772,8 @@ export default function DashboardJourneyExperience({
           .upsert(
             {
               user_id: userId,
+              bible_year_started_at: resetStartDate,
+              bible_year_launch_seen_at: resetAt,
               bible_year_plan_reset_at: resetAt,
               updated_at: resetAt,
             },
@@ -3767,6 +3823,7 @@ export default function DashboardJourneyExperience({
       setBibleYearSeriesDetailDay(null);
       setBibleYearJourneyPreviewDay(null);
       setSelectedBibleYearSeriesDay(firstBibleYearDay);
+      setManualBibleYearStudyDayNumber(null);
       setFreeStudyModeActive(false);
       setEmbeddedBibleBookSearchOpen(false);
       setEmbeddedBibleSelectedBook(null);
@@ -3815,12 +3872,15 @@ export default function DashboardJourneyExperience({
       setBibleYearSeriesDetailDay(null);
       setBibleYearJourneyPreviewDay(null);
       setSelectedBibleYearSeriesDay(null);
+      setManualBibleYearStudyDayNumber(null);
       setActivePage(0);
     } else {
       setBibleYearDashboardActive(profile?.preferred_study_mode === "devotional" ? false : true);
       setBibleYearSeriesActive(false);
       setBibleYearSeriesDetailDay(null);
       setBibleYearJourneyPreviewDay(null);
+      setSelectedBibleYearSeriesDay(null);
+      setManualBibleYearStudyDayNumber(null);
       setActivePage(0);
     }
   }, [profile?.preferred_study_mode]);
@@ -3859,6 +3919,7 @@ export default function DashboardJourneyExperience({
   useEffect(() => {
     if (!bibleYearProgressLoaded || !bibleYearDashboardActive || !activeBibleYearDashboardDay) return;
     if (selectedBibleYearSeriesDay?.dayNumber === activeBibleYearDashboardDay.dayNumber) return;
+    if (manualBibleYearStudyDayNumber && selectedBibleYearSeriesDay?.dayNumber === manualBibleYearStudyDayNumber) return;
     if (
       selectedBibleYearSeriesDay &&
       bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber &&
@@ -3878,6 +3939,7 @@ export default function DashboardJourneyExperience({
     activeBibleYearDashboardDay?.dayNumber,
     bibleYearDashboardActive,
     bibleYearProgressLoaded,
+    manualBibleYearStudyDayNumber,
     selectedBibleYearSeriesDay?.dayNumber,
   ]);
 
@@ -5215,11 +5277,13 @@ export default function DashboardJourneyExperience({
 
     if (!isPaidUser && !canFreeUserChooseNewStudy && devotional.id !== currentDevotionalId) {
       setSelectedBibleYearSeriesDay(null);
+      setManualBibleYearStudyDayNumber(null);
       setFreePlanGate({ kind: "study" });
       return;
     }
 
     setSelectedBibleYearSeriesDay(null);
+    setManualBibleYearStudyDayNumber(null);
     await loadEmbeddedBibleStudyChapter({
       devotionalId: devotional.id,
       devotionalTitle: devotional.title,
@@ -7470,7 +7534,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       bibleYearJustCompletedDayRef.current = day.dayNumber;
       setSelectedBibleYearSeriesDay(day);
       if (newlyCompletedCards.length > 0) {
-        setBibleYearCompletionModalDay(day);
+        setBibleYearOptionalDiscussionDay(day.dayNumber);
       }
       setBibleYearCompletedTasksExpandedDay(null);
       setActiveBibleYearDayCard(null);
@@ -7697,7 +7761,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function getBibleYearFollowAlongChapters(day: GenesisBibleYearDay) {
-    if (day.dayNumber !== 1) return [];
+    if (day.dayNumber < 1 || day.dayNumber > 8) return [];
     return day.readings
       .map((reading) => ({
         book: reading.book,
@@ -7734,7 +7798,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </span>
         </button>
         {isOpen ? (
-          <section className="mt-3 max-h-[420px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#111827)_78%,#020617)] p-4 text-left text-[var(--bb-text-primary,#fff7ed)] shadow-inner">
+          <section className="bible-year-follow-along-scroll mt-3 max-h-[420px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#111827)_78%,#020617)] p-4 text-left text-[var(--bb-text-primary,#fff7ed)] shadow-inner">
             <div className="space-y-7">
               {chapters.map((chapter) => (
                 <article key={`${chapter.book}-${chapter.chapter}`} className="space-y-3">
@@ -8075,7 +8139,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </p>
                 </div>
                 <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-2xl text-[var(--bb-button-text,#ffffff)] shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_48%,transparent)]" aria-hidden="true">
-                  {triviaCardComplete ? "âœ“" : "ðŸŽ¯"}
+                  {triviaCardComplete ? "✓" : "🎯"}
                 </div>
               </div>
               <div className="mt-4 grid gap-2">
@@ -11394,6 +11458,41 @@ Before we understand redemption, we need to understand what God made humanity fo
           height: 0;
           display: none;
         }
+        .bible-year-follow-along-scroll {
+          scrollbar-width: thin;
+          scrollbar-color:
+            color-mix(in srgb, var(--bb-accent, #2f7fe8) 76%, var(--bb-button, #2f7fe8))
+            color-mix(in srgb, var(--bb-card, #111827) 74%, #020617);
+        }
+        .bible-year-follow-along-scroll::-webkit-scrollbar {
+          width: 10px;
+        }
+        .bible-year-follow-along-scroll::-webkit-scrollbar-track {
+          border-radius: 999px;
+          background:
+            linear-gradient(180deg,
+              color-mix(in srgb, var(--bb-card, #111827) 82%, #020617),
+              color-mix(in srgb, var(--bb-surface-soft, #1f2937) 52%, #020617)
+            );
+          border-left: 1px solid color-mix(in srgb, var(--bb-accent, #2f7fe8) 20%, transparent);
+        }
+        .bible-year-follow-along-scroll::-webkit-scrollbar-thumb {
+          border-radius: 999px;
+          background:
+            linear-gradient(180deg,
+              color-mix(in srgb, var(--bb-accent, #2f7fe8) 86%, #ffffff),
+              color-mix(in srgb, var(--bb-button, #2f7fe8) 72%, #020617)
+            );
+          border: 2px solid color-mix(in srgb, var(--bb-card, #111827) 72%, #020617);
+          box-shadow:
+            0 0 12px color-mix(in srgb, var(--bb-accent, #2f7fe8) 34%, transparent),
+            inset 0 1px 0 rgba(255, 255, 255, 0.22);
+        }
+        .bible-year-follow-along-scroll::-webkit-scrollbar-button {
+          width: 0;
+          height: 0;
+          display: none;
+        }
         .start-here-flash { animation: start-here-flash 1s ease-in-out infinite; }
         .task-estimate-primary { animation: task-estimate-primary 2.4s ease-in-out infinite; }
         .task-estimate-secondary { animation: task-estimate-secondary 2.4s ease-in-out infinite; }
@@ -13075,8 +13174,6 @@ Before we understand redemption, we need to understand what God made humanity fo
           )}
         </div>
       </ModalShell>
-
-      {renderBibleYearCompletionModal()}
 
       <ModalShell
         isOpen={studyDashboardHandoffModal !== null}
