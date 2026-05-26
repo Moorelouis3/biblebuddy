@@ -36,6 +36,14 @@ type UpgradeActionRow = {
   created_at?: string | null;
 };
 
+type StudyNotesActionRow = {
+  user_id?: string | null;
+  username?: string | null;
+  action_type?: string | null;
+  action_label?: string | null;
+  created_at?: string | null;
+};
+
 type BibleYearProgressRow = {
   user_id?: string | null;
   day_number?: number | null;
@@ -43,6 +51,26 @@ type BibleYearProgressRow = {
   trivia_completed?: boolean | null;
   reflection_completed?: boolean | null;
   updated_at?: string | null;
+};
+
+type BibleYearDayUserRow = {
+  userId: string;
+  userLabel: string;
+  readingCompleted: boolean;
+  triviaCompleted: boolean;
+  reflectionCompleted: boolean;
+  completed: boolean;
+  updatedAt: string | null;
+};
+
+type ParsedStudyNotesLabel = {
+  source: string;
+  sourceLabel: string;
+  itemKey: string;
+  itemTitle: string;
+  contentLabel: string;
+  sectionReference: string;
+  sectionTitle: string;
 };
 
 type VisitorJourneyStatus =
@@ -519,6 +547,35 @@ function shortId(value: string) {
   return value.length > 8 ? value.slice(0, 8) : value;
 }
 
+function decodeLabelPart(value: string | null | undefined) {
+  try {
+    return decodeURIComponent(value || "");
+  } catch {
+    return value || "";
+  }
+}
+
+function parseStudyNotesLabel(label: string | null | undefined): ParsedStudyNotesLabel | null {
+  if (!label?.startsWith("study_notes_view:v1|") && !label?.startsWith("study_notes_section_open:v1|")) return null;
+
+  const data = new Map<string, string>();
+  for (const part of label.split("|").slice(1)) {
+    const separatorIndex = part.indexOf("=");
+    if (separatorIndex === -1) continue;
+    data.set(part.slice(0, separatorIndex), part.slice(separatorIndex + 1));
+  }
+
+  return {
+    source: decodeLabelPart(data.get("source")),
+    sourceLabel: decodeLabelPart(data.get("sourceLabel")),
+    itemKey: decodeLabelPart(data.get("itemKey")),
+    itemTitle: decodeLabelPart(data.get("itemTitle")),
+    contentLabel: decodeLabelPart(data.get("contentLabel")),
+    sectionReference: decodeLabelPart(data.get("sectionReference")),
+    sectionTitle: decodeLabelPart(data.get("sectionTitle")),
+  };
+}
+
 function getQuestionLabel(eventName: string) {
   if (eventName.includes("question_1")) return "Question 1";
   if (eventName.includes("question_2")) return "Question 2";
@@ -928,6 +985,124 @@ function buildVisitorJourneys(
   };
 }
 
+function buildBibleYearDayAnalytics(progressRows: BibleYearProgressRow[], profileByUserId: Map<string, string>) {
+  const rowsByDay = new Map<number, BibleYearProgressRow[]>();
+
+  for (const row of progressRows) {
+    const dayNumber = Number(row.day_number || 0);
+    if (!Number.isFinite(dayNumber) || dayNumber <= 0) continue;
+    const current = rowsByDay.get(dayNumber) || [];
+    current.push(row);
+    rowsByDay.set(dayNumber, current);
+  }
+
+  return Array.from(rowsByDay.entries())
+    .sort((a, b) => a[0] - b[0])
+    .map(([dayNumber, dayRows]) => {
+      const users: BibleYearDayUserRow[] = dayRows
+        .filter((row) => Boolean(row.user_id))
+        .map((row) => {
+          const readingCompleted = row.reading_completed === true;
+          const triviaCompleted = row.trivia_completed === true;
+          const reflectionCompleted = row.reflection_completed === true;
+          return {
+            userId: row.user_id as string,
+            userLabel: profileByUserId.get(row.user_id as string) || `User ${shortId(row.user_id as string)}`,
+            readingCompleted,
+            triviaCompleted,
+            reflectionCompleted,
+            completed: readingCompleted && triviaCompleted && reflectionCompleted,
+            updatedAt: row.updated_at || null,
+          };
+        })
+        .sort((a, b) => (b.updatedAt || "").localeCompare(a.updatedAt || ""))
+        .slice(0, 75);
+
+      const startedUsers = new Set(dayRows.map((row) => row.user_id).filter(Boolean)).size;
+      const readingCompleted = dayRows.filter((row) => row.reading_completed).length;
+      const triviaCompleted = dayRows.filter((row) => row.trivia_completed).length;
+      const reflectionCompleted = dayRows.filter((row) => row.reflection_completed).length;
+      const completedUsers = dayRows.filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed).length;
+      const lastActiveAt = dayRows
+        .map((row) => row.updated_at || "")
+        .filter(Boolean)
+        .sort()
+        .at(-1) || null;
+
+      return {
+        dayNumber,
+        startedUsers,
+        completedUsers,
+        inProgressUsers: Math.max(0, startedUsers - completedUsers),
+        readingCompleted,
+        triviaCompleted,
+        reflectionCompleted,
+        completionRate: startedUsers > 0 ? Number(((completedUsers / startedUsers) * 100).toFixed(1)) : 0,
+        lastActiveAt,
+        users,
+      };
+    });
+}
+
+function buildStudyNotesAnalytics(rows: StudyNotesActionRow[], profileByUserId: Map<string, string>) {
+  const noteCounts = new Map<string, { label: string; opens: number; users: Set<string>; lastOpenedAt: string | null }>();
+  const sourceCounts = new Map<string, number>();
+
+  const activity = rows
+    .filter((row) => row.created_at)
+    .map((row, index) => {
+      const parsed = parseStudyNotesLabel(row.action_label);
+      const rawLabel = row.action_label || "Study notes";
+      const noteTitle = parsed?.sectionTitle || parsed?.contentLabel || parsed?.itemTitle || rawLabel;
+      const noteKey = parsed?.sectionReference || parsed?.itemKey || noteTitle;
+      const source = parsed?.sourceLabel || parsed?.source || "Bible study notes";
+      const userId = row.user_id || "";
+      const userLabel = userId ? profileByUserId.get(userId) || row.username || `User ${shortId(userId)}` : row.username || "Unknown user";
+      const openedAt = row.created_at || new Date().toISOString();
+      const noteSummary = noteCounts.get(noteKey) || { label: noteTitle, opens: 0, users: new Set<string>(), lastOpenedAt: null };
+      noteSummary.opens += 1;
+      if (userId) noteSummary.users.add(userId);
+      if (!noteSummary.lastOpenedAt || openedAt > noteSummary.lastOpenedAt) noteSummary.lastOpenedAt = openedAt;
+      noteCounts.set(noteKey, noteSummary);
+      sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
+
+      return {
+        id: `${row.action_type || "study_notes"}-${openedAt}-${userId || index}`,
+        userId: userId || null,
+        userLabel,
+        eventType: row.action_type || "study_notes_viewed",
+        eventLabel: row.action_type === "study_notes_section_opened" ? "Section opened" : "Study notes opened",
+        noteTitle,
+        source,
+        reference: parsed?.sectionReference || parsed?.itemKey || "",
+        sectionTitle: parsed?.sectionTitle || "",
+        openedAt,
+      };
+    })
+    .sort((a, b) => b.openedAt.localeCompare(a.openedAt));
+
+  const topNotes = Array.from(noteCounts.entries())
+    .map(([key, value]) => ({
+      key,
+      label: value.label,
+      opens: value.opens,
+      uniqueUsers: value.users.size,
+      lastOpenedAt: value.lastOpenedAt,
+    }))
+    .sort((a, b) => b.opens - a.opens || (b.lastOpenedAt || "").localeCompare(a.lastOpenedAt || ""))
+    .slice(0, 12);
+
+  return {
+    totalOpens: activity.length,
+    uniqueUsers: new Set(activity.map((row) => row.userId).filter(Boolean)).size,
+    sectionOpens: activity.filter((row) => row.eventType === "study_notes_section_opened").length,
+    chapterNoteOpens: activity.filter((row) => row.eventType === "chapter_notes_viewed").length,
+    topSources: Array.from(sourceCounts.entries()).map(([source, opens]) => ({ source, opens })).sort((a, b) => b.opens - a.opens).slice(0, 8),
+    topNotes,
+    rows: activity.slice(0, 250),
+  };
+}
+
 async function loadAuthUserSummaries(url: string, serviceKey: string, targetUserIds: string[]) {
   const targetSet = new Set(targetUserIds);
   const usersById = new Map<string, AuthUserSummary>();
@@ -1012,9 +1187,19 @@ export async function GET(request: Request) {
     .limit(200);
   const upgradeRows = (upgradeData || []) as UpgradeActionRow[];
 
+  const { data: studyNotesActionData } = await adminSupabase
+    .from("master_actions")
+    .select("user_id, username, action_type, action_label, created_at")
+    .in("action_type", ["study_notes_viewed", "study_notes_section_opened", "chapter_notes_viewed"])
+    .gte("created_at", journeySinceIso)
+    .order("created_at", { ascending: false })
+    .limit(1000);
+  const studyNotesActionRows = (studyNotesActionData || []) as StudyNotesActionRow[];
+
   const eventUserIds = Array.from(new Set([
     ...landingEventRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...upgradeRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
+    ...studyNotesActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
   ]));
   const profileByUserId = new Map<string, string>();
   const profileSummaryByUserId = new Map<string, ProfileSummary>();
@@ -1042,14 +1227,35 @@ export async function GET(request: Request) {
   const authSummaryByUserId = await loadAuthUserSummaries(url, serviceKey, eventUserIds);
   const validEventRows = filterRealAccountEvents(eventRows, authSummaryByUserId, profileSummaryByUserId);
   const validLandingEventRows = validEventRows as LandingEventRow[];
-  const { data: bibleYearProgressData } = eventUserIds.length > 0
-    ? await adminSupabase
-        .from("bible_year_day_progress")
-        .select("user_id, day_number, reading_completed, trivia_completed, reflection_completed, updated_at")
-        .in("user_id", eventUserIds)
-        .limit(250000)
-    : { data: [] as BibleYearProgressRow[] };
-  const bibleYearProgressRows = (bibleYearProgressData || []) as BibleYearProgressRow[];
+  const { data: allBibleYearProgressData } = await adminSupabase
+    .from("bible_year_day_progress")
+    .select("user_id, day_number, reading_completed, trivia_completed, reflection_completed, updated_at")
+    .limit(250000);
+  const allBibleYearProgressRows = (allBibleYearProgressData || []) as BibleYearProgressRow[];
+  const eventUserIdSet = new Set(eventUserIds);
+  const bibleYearProgressRows = allBibleYearProgressRows.filter((row) => row.user_id && eventUserIdSet.has(row.user_id));
+
+  const progressUserIds = Array.from(new Set(allBibleYearProgressRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId))));
+  if (progressUserIds.length > 0) {
+    const missingProfileUserIds = progressUserIds.filter((userId) => !profileByUserId.has(userId));
+    if (missingProfileUserIds.length > 0) {
+      const { data: progressProfileRows } = await adminSupabase
+        .from("profile_stats")
+        .select("user_id, display_name, username")
+        .in("user_id", missingProfileUserIds.slice(0, 5000));
+
+      for (const profile of progressProfileRows || []) {
+        const userId = typeof profile.user_id === "string" ? profile.user_id : "";
+        if (!userId) continue;
+        const displayName = typeof profile.display_name === "string" ? profile.display_name.trim() : "";
+        const username = typeof profile.username === "string" ? profile.username.trim() : "";
+        profileByUserId.set(userId, displayName || username || `User ${shortId(userId)}`);
+      }
+    }
+  }
+
+  const bibleYearDays = buildBibleYearDayAnalytics(allBibleYearProgressRows, profileByUserId);
+  const studyNotes = buildStudyNotesAnalytics(studyNotesActionRows, profileByUserId);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(validEventRows);
@@ -1089,6 +1295,8 @@ export async function GET(request: Request) {
       guestAccountFunnel,
       landingActivityLog,
       visitorJourneys,
+      bibleYearDays,
+      studyNotes,
       publicOnboardingFlow,
       sources,
       eventSetupRequired: Boolean(eventError),
@@ -1119,6 +1327,8 @@ export async function GET(request: Request) {
     guestAccountFunnel,
     landingActivityLog,
     visitorJourneys,
+    bibleYearDays,
+    studyNotes,
     publicOnboardingFlow,
     sources,
     setupRequired: false,

@@ -3,9 +3,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { createContext, runInContext } from "vm";
 import { createClient } from "@supabase/supabase-js";
-import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
+import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_NINE_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
-import { GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON, GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
+import { GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON, GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import { GENESIS_ONE_TTS_VOICE } from "../lib/genesisOneTtsAudio";
 import { cleanTextForTts } from "../lib/ttsSpeechText";
 
@@ -34,7 +34,9 @@ for (const path of [".env.local", ".env"]) {
 const requestedDay = Number(process.env.BIBLE_YEAR_TTS_DAY || process.argv.find((arg) => arg.startsWith("--day="))?.split("=")[1] || "1");
 const voiceOnlyMode = process.argv.includes("--voice-only") || process.env.BIBLE_YEAR_TTS_VOICE_ONLY === "true";
 const selectedLesson =
-  requestedDay === 8
+  requestedDay === 9
+    ? GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON
+    : requestedDay === 8
     ? GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON
     : requestedDay === 7
     ? GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON
@@ -50,7 +52,9 @@ const selectedLesson =
           ? GENESIS_DAY_TWO_FALL_LESSON
           : GENESIS_DAY_ONE_CREATION_LESSON;
 const selectedAudio =
-  requestedDay === 8
+  requestedDay === 9
+    ? BIBLE_YEAR_DAY_NINE_AUDIO
+    : requestedDay === 8
     ? BIBLE_YEAR_DAY_EIGHT_AUDIO
     : requestedDay === 7
     ? BIBLE_YEAR_DAY_SEVEN_AUDIO
@@ -71,6 +75,7 @@ const OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outpu
 const VOICE_ONLY_OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-voices-only.mp3`);
 const NARRATOR_ONLY_OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-narrator-only.mp3`);
 const DAY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-8-exact-web-narrator-script.md");
+const DAY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-9-exact-web-narrator-script.md");
 const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.129 : selectedLesson.dayNumber === 1 ? 0.112 : 0.088;
 
 function ensureDir(path: string) {
@@ -782,7 +787,8 @@ function buildDayOneSingleNarratorSegments(lesson: BibleYearDailyLesson) {
 
 function buildBibleYearSpeechText(lesson: BibleYearDailyLesson) {
   if (lesson.dayNumber === 1) return buildDayOneCinematicSpeechText(lesson);
-  if (lesson.dayNumber === 8 && existsSync(DAY_EIGHT_APPROVED_SCRIPT_PATH)) return buildApprovedDayEightSpeechText();
+  const approvedScriptPath = getApprovedBibleYearScriptPath(lesson.dayNumber);
+  if (approvedScriptPath && existsSync(approvedScriptPath)) return buildApprovedBibleYearSpeechText(approvedScriptPath);
 
   const teachingByReference: Record<string, string[]> = {
     "Genesis 1:1-5": [
@@ -869,8 +875,14 @@ function buildBibleYearSpeechText(lesson: BibleYearDailyLesson) {
     .trim();
 }
 
-function buildApprovedDayEightSpeechText() {
-  const raw = readFileSync(DAY_EIGHT_APPROVED_SCRIPT_PATH, "utf8");
+function getApprovedBibleYearScriptPath(dayNumber: number) {
+  if (dayNumber === 8) return DAY_EIGHT_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 9) return DAY_NINE_APPROVED_SCRIPT_PATH;
+  return null;
+}
+
+function buildApprovedBibleYearSpeechText(scriptPath: string) {
+  const raw = readFileSync(scriptPath, "utf8");
   const lines = raw.split(/\r?\n/);
   const spokenLines: string[] = [];
   let include = false;

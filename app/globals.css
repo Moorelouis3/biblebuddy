@@ -3990,6 +3990,90 @@ html[data-bb-skin="no-fuss"] [data-louis-avatar] {
   border-color: var(--bb-card-border);
 }
 
+.bb-analytics-page {
+  background-color: var(--bb-background, #f5f7fa) !important;
+  background-image: var(--bb-skin-bg-image), linear-gradient(var(--bb-background, #f5f7fa), var(--bb-background, #f5f7fa)) !important;
+  background-size: cover, auto !important;
+  background-position: center, center !important;
+  background-attachment: fixed, scroll !important;
+  color: var(--bb-text-primary, #111827) !important;
+}
+
+.bb-analytics-page aside {
+  background-color: var(--bb-nav-background, #0d1117) !important;
+  color: var(--bb-nav-inactive, #d1d5db) !important;
+}
+
+.bb-analytics-page aside button {
+  color: var(--bb-nav-inactive, #d1d5db) !important;
+}
+
+.bb-analytics-page aside button:hover,
+.bb-analytics-page aside button[class*="bg-white/12"] {
+  background-color: var(--bb-nav-active, rgba(255,255,255,0.12)) !important;
+  color: var(--bb-button-text, #ffffff) !important;
+}
+
+.bb-analytics-page .bg-white,
+.bb-analytics-page input,
+.bb-analytics-page select,
+.bb-analytics-page table {
+  background-color: var(--bb-card, #ffffff) !important;
+  color: var(--bb-text-primary, #111827) !important;
+}
+
+.bb-analytics-page .bg-slate-50,
+.bb-analytics-page .bg-slate-100,
+.bb-analytics-page .hover\:bg-slate-50:hover {
+  background-color: var(--bb-surface-soft, #f3f4f6) !important;
+}
+
+.bb-analytics-page .border-slate-100,
+.bb-analytics-page .border-slate-200,
+.bb-analytics-page .border-slate-300,
+.bb-analytics-page input,
+.bb-analytics-page select {
+  border-color: var(--bb-card-border, #e5e7eb) !important;
+}
+
+.bb-analytics-page .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--bb-card-border, #e5e7eb) !important;
+}
+
+.bb-analytics-page .text-slate-950,
+.bb-analytics-page .text-slate-900,
+.bb-analytics-page .text-slate-800 {
+  color: var(--bb-text-primary, #111827) !important;
+}
+
+.bb-analytics-page .text-slate-700,
+.bb-analytics-page .text-slate-600 {
+  color: var(--bb-text-secondary, #374151) !important;
+}
+
+.bb-analytics-page .text-slate-500,
+.bb-analytics-page .text-slate-400 {
+  color: var(--bb-text-muted, #6b7280) !important;
+}
+
+.bb-analytics-page .text-blue-600,
+.bb-analytics-page .text-blue-700 {
+  color: var(--bb-accent, #2563eb) !important;
+}
+
+.bb-analytics-page .bg-blue-50,
+.bb-analytics-page .bg-violet-50 {
+  background-color: var(--bb-accent-soft, #eaf5ff) !important;
+}
+
+.bb-analytics-page .focus\:border-blue-400:focus {
+  border-color: var(--bb-accent, #2563eb) !important;
+}
+
+.bb-analytics-page .focus\:ring-blue-100:focus {
+  --tw-ring-color: color-mix(in srgb, var(--bb-accent, #2563eb) 22%, transparent) !important;
+}
+
 .bb-button {
   background-color: var(--bb-button);
   color: var(--bb-button-text);

@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
 
 type JourneyWindow = "1h" | "24h" | "7d" | "30d";
 type AccountFilter = "all" | "guest" | "free" | "pro";
+type AnalyticsView = "overview" | "bible-year" | "study-notes";
 
 type VisitorJourneyStatus =
   | "active"
@@ -57,16 +59,64 @@ type VisitorJourneys = {
   statuses: Array<{ key: VisitorJourneyStatus; label: string }>;
 };
 
+type BibleYearDayAnalytics = {
+  dayNumber: number;
+  startedUsers: number;
+  completedUsers: number;
+  inProgressUsers: number;
+  readingCompleted: number;
+  triviaCompleted: number;
+  reflectionCompleted: number;
+  completionRate: number;
+  lastActiveAt: string | null;
+  users: Array<{
+    userId: string;
+    userLabel: string;
+    readingCompleted: boolean;
+    triviaCompleted: boolean;
+    reflectionCompleted: boolean;
+    completed: boolean;
+    updatedAt: string | null;
+  }>;
+};
+
 type AnalyticsResponse = {
   customerJourney?: {
     window: JourneyWindow;
     label: string;
   };
   visitorJourneys?: VisitorJourneys;
+  bibleYearDays?: BibleYearDayAnalytics[];
+  studyNotes?: {
+    totalOpens: number;
+    uniqueUsers: number;
+    sectionOpens: number;
+    chapterNoteOpens: number;
+    topSources: Array<{ source: string; opens: number }>;
+    topNotes: Array<{ key: string; label: string; opens: number; uniqueUsers: number; lastOpenedAt: string | null }>;
+    rows: Array<{
+      id: string;
+      userId: string | null;
+      userLabel: string;
+      eventType: string;
+      eventLabel: string;
+      noteTitle: string;
+      source: string;
+      reference: string;
+      sectionTitle: string;
+      openedAt: string;
+    }>;
+  };
   eventSetupRequired?: boolean;
   eventError?: string;
   error?: string;
 };
+
+const ANALYTICS_NAV_ITEMS: Array<{ key: AnalyticsView; label: string; helper: string }> = [
+  { key: "overview", label: "Overview", helper: "Journey Tracker" },
+  { key: "bible-year", label: "Bible in One Year", helper: "Day breakdowns" },
+  { key: "study-notes", label: "Study Notes", helper: "Note opens" },
+];
 
 const WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
   { key: "1h", label: "Last 1 hour" },
@@ -114,6 +164,42 @@ function formatLastActive(value: string) {
   return `${days} day${days === 1 ? "" : "s"} ago`;
 }
 
+function getFunnelHealth(rate: number) {
+  if (rate < 10) {
+    return {
+      tone: "border-rose-200 bg-rose-50 text-rose-800",
+      label: "Needs fixing",
+      message: `Free account conversion is ${rate}%. Under 10% means the funnel is leaking hard. Tighten the landing page, onboarding, and create-account prompt.`,
+    };
+  }
+  if (rate < 20) {
+    return {
+      tone: "border-amber-200 bg-amber-50 text-amber-800",
+      label: "Normal range",
+      message: `Free account conversion is ${rate}%. This is workable, but there is still clear room to improve the offer and follow-through.`,
+    };
+  }
+  if (rate < 30) {
+    return {
+      tone: "border-emerald-200 bg-emerald-50 text-emerald-800",
+      label: "Doing good",
+      message: `Free account conversion is ${rate}%. The funnel is doing good. Keep testing copy, timing, and guest-to-account prompts.`,
+    };
+  }
+  if (rate < 40) {
+    return {
+      tone: "border-green-200 bg-green-50 text-green-800",
+      label: "Strong funnel",
+      message: `Free account conversion is ${rate}%. That is strong. Now focus on quality, Day 1 starts, and Pro upgrades.`,
+    };
+  }
+  return {
+    tone: "border-teal-200 bg-teal-50 text-teal-800",
+    label: "Excellent funnel",
+    message: `Free account conversion is ${rate}%. That is excellent. Protect what is working and improve the next step into Pro.`,
+  };
+}
+
 function StepCell({ value, successLabel, emptyLabel = "Not started" }: { value: string | null; successLabel?: string; emptyLabel?: string }) {
   if (!value) {
     return (
@@ -132,6 +218,21 @@ function StepCell({ value, successLabel, emptyLabel = "Not started" }: { value: 
         </svg>
       </span>
       {successLabel || formatDateTime(value)}
+    </span>
+  );
+}
+
+function MiniCheck({ done, label }: { done: boolean; label: string }) {
+  return (
+    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ring-1 ${done ? "bg-emerald-50 text-emerald-700 ring-emerald-200" : "bg-slate-100 text-slate-500 ring-slate-200"}`}>
+      <span className={`grid h-4 w-4 place-items-center rounded-full text-[10px] ${done ? "bg-emerald-500 text-white" : "bg-slate-300 text-white"}`}>
+        {done ? (
+          <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m3.5 8.2 2.7 2.6 6.3-6.6" />
+          </svg>
+        ) : "-"}
+      </span>
+      {label}
     </span>
   );
 }
@@ -229,6 +330,8 @@ export default function AnalyticsPage() {
   const [sourceFilter, setSourceFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState<VisitorJourneyStatus | "all">("all");
   const [accountFilter, setAccountFilter] = useState<AccountFilter>("all");
+  const [activeView, setActiveView] = useState<AnalyticsView>("overview");
+  const [expandedDay, setExpandedDay] = useState<number>(1);
 
   useEffect(() => {
     async function checkOwner() {
@@ -266,6 +369,10 @@ export default function AnalyticsPage() {
 
   const journeys = data?.visitorJourneys;
   const rows = journeys?.rows || [];
+  const activeNavItem = ANALYTICS_NAV_ITEMS.find((item) => item.key === activeView) || ANALYTICS_NAV_ITEMS[0];
+  const bibleYearDaysByNumber = useMemo(() => {
+    return new Map((data?.bibleYearDays || []).map((day) => [day.dayNumber, day]));
+  }, [data?.bibleYearDays]);
   const metrics = journeys?.metrics || {
     totalVisitors: 0,
     finishedOnboarding: 0,
@@ -279,6 +386,7 @@ export default function AnalyticsPage() {
     freeAccountRate: 0,
     proUpgradeRate: 0,
   };
+  const funnelHealth = getFunnelHealth(metrics.freeAccountRate);
 
   const filteredRows = useMemo(() => {
     const cleanSearch = search.trim().toLowerCase();
@@ -300,26 +408,20 @@ export default function AnalyticsPage() {
   function exportCsv() {
     const headers = [
       "Visitor",
+      "Last Active",
+      "Last Action",
       "Onboarding Completed",
-      "Started Day 1",
-      "Completed Day 3",
-      "Created Account",
-      "Upgraded To Pro",
       "Current Status",
       "Source",
-      "Last Active",
       "Dropoff Step",
     ];
     const csvRows = filteredRows.map((row) => [
       row.visitorLabel,
+      row.lastActiveAt,
+      row.dropoffStep,
       row.onboardingCompletedAt || "",
-      row.startedDay1At || "",
-      row.completedDay3At || "",
-      row.createdAccountAt || "",
-      row.upgradedAt || "",
       row.currentStatusLabel,
       row.source,
-      row.lastActiveAt,
       row.dropoffStep,
     ]);
     const csv = [headers, ...csvRows]
@@ -350,7 +452,7 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-slate-950">
+    <div className="bb-analytics-page min-h-screen bg-[#f8fafc] text-slate-950">
       <div className="flex min-h-screen">
         <aside className="hidden w-64 shrink-0 flex-col bg-[#0d1117] px-5 py-6 text-white lg:flex">
           <div className="flex items-center gap-3">
@@ -362,27 +464,20 @@ export default function AnalyticsPage() {
           </div>
 
           <nav className="mt-10 space-y-1">
-            {[
-              "Overview",
-              "User Journey",
-              "Engagement",
-              "Retention",
-              "Funnel",
-              "Conversions",
-              "Drop-offs",
-              "Accounts",
-              "Content",
-              "Settings",
-            ].map((item) => (
+            {ANALYTICS_NAV_ITEMS.map((item) => (
               <button
-                key={item}
+                key={item.key}
                 type="button"
+                onClick={() => setActiveView(item.key)}
                 className={`flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-sm font-medium transition ${
-                  item === "User Journey" ? "bg-white/12 text-white" : "text-slate-300 hover:bg-white/8 hover:text-white"
+                  activeView === item.key ? "bg-white/12 text-white" : "text-slate-300 hover:bg-white/8 hover:text-white"
                 }`}
               >
-                <span className="grid h-5 w-5 place-items-center rounded-full border border-current text-[10px]">{item.slice(0, 1)}</span>
-                {item}
+                <span className="grid h-5 w-5 place-items-center rounded-full border border-current text-[10px]">{item.label.slice(0, 1)}</span>
+                <span>
+                  <span className="block">{item.label}</span>
+                  <span className="mt-0.5 block text-[11px] font-semibold text-slate-400">{item.helper}</span>
+                </span>
               </button>
             ))}
           </nav>
@@ -394,10 +489,34 @@ export default function AnalyticsPage() {
         </aside>
 
         <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-10">
+          <div className="mb-5 rounded-xl border border-slate-200 bg-white p-3 shadow-sm lg:hidden">
+            <label className="block text-xs font-bold uppercase tracking-[0.14em] text-slate-500" htmlFor="analytics-mobile-view">
+              Analytics Menu
+            </label>
+            <select
+              id="analytics-mobile-view"
+              value={activeView}
+              onChange={(event) => setActiveView(event.target.value as AnalyticsView)}
+              className="mt-2 h-11 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm font-bold text-slate-900 outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
+            >
+              {ANALYTICS_NAV_ITEMS.map((item) => (
+                <option key={item.key} value={item.key}>{item.label}</option>
+              ))}
+            </select>
+          </div>
+
           <header className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div>
-              <h1 className="text-3xl font-bold tracking-tight text-slate-950">Journey Tracker</h1>
-              <p className="mt-2 text-sm font-medium text-slate-600">See every visitor&apos;s journey from first visit to conversion.</p>
+              <h1 className="text-3xl font-bold tracking-tight text-slate-950">
+                {activeView === "overview" ? "Bible Buddy Funnel" : activeNavItem.label}
+              </h1>
+              <p className="mt-2 text-sm font-medium text-slate-600">
+                {activeView === "overview"
+                  ? "See every visitor's path from landing page to guest, free account, and Pro."
+                  : activeView === "bible-year"
+                    ? "Open any day to see starts, task completion, users, and drop-off for that Bible study day."
+                    : "See who opened study notes, which note they opened, and when they opened it."}
+              </p>
             </div>
 
             <div className="flex flex-col gap-2 sm:flex-row">
@@ -430,6 +549,15 @@ export default function AnalyticsPage() {
               Landing event tracking needs setup: {data.eventError || "landing_page_events is not available yet."}
             </div>
           ) : null}
+
+          {activeView === "overview" ? (
+          <>
+          <section className={`mt-8 rounded-xl border px-5 py-4 shadow-sm ${funnelHealth.tone}`}>
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-lg font-black">{funnelHealth.label}</p>
+              <p className="text-sm font-bold sm:text-right">{funnelHealth.message}</p>
+            </div>
+          </section>
 
           <section className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-6">
             <MetricCard label="Total Visitors" value={metrics.totalVisitors} percent={100} icon="visitors" tone="bg-blue-50 text-blue-600" />
@@ -487,25 +615,22 @@ export default function AnalyticsPage() {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="min-w-[1080px] w-full border-collapse text-left">
+              <table className="min-w-[860px] w-full border-collapse text-left">
                 <thead className="bg-slate-50 text-xs font-bold text-slate-700">
                   <tr>
                     <th className="w-10 px-4 py-4"><span className="block h-4 w-4 rounded border border-slate-300" /></th>
                     <th className="px-4 py-4">Visitor #</th>
+                    <th className="px-4 py-4">Last Active</th>
+                    <th className="px-4 py-4">Last Action</th>
                     <th className="px-4 py-4">Onboarding Completed</th>
-                    <th className="px-4 py-4">Started Day 1</th>
-                    <th className="px-4 py-4">Completed Day 3</th>
-                    <th className="px-4 py-4">Account Created</th>
-                    <th className="px-4 py-4">Pro</th>
                     <th className="px-4 py-4">Current Status</th>
                     <th className="px-4 py-4">Source</th>
-                    <th className="px-4 py-4">Last Active</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-sm">
                   {loading ? (
                     <tr>
-                      <td colSpan={10} className="px-4 py-12 text-center text-sm font-semibold text-slate-500">Loading visitor journeys...</td>
+                      <td colSpan={7} className="px-4 py-12 text-center text-sm font-semibold text-slate-500">Loading visitor journeys...</td>
                     </tr>
                   ) : filteredRows.length ? (
                     filteredRows.map((row) => (
@@ -515,11 +640,15 @@ export default function AnalyticsPage() {
                           <div className="font-bold text-slate-900">{row.visitorLabel}</div>
                           <div className="mt-0.5 text-xs font-medium text-slate-500">{row.userLabel}</div>
                         </td>
+                        <td className="px-4 py-4 align-middle">
+                          <div className="font-bold text-slate-900">{formatLastActive(row.lastActiveAt)}</div>
+                          <div className="mt-0.5 text-xs font-medium text-slate-500">{formatDateTime(row.lastActiveAt)}</div>
+                        </td>
+                        <td className="px-4 py-4 align-middle">
+                          <div className="font-bold text-slate-900">{row.dropoffStep || "Unknown"}</div>
+                          <div className="mt-0.5 text-xs font-medium text-slate-500">{row.lastEventName || "No event name"}</div>
+                        </td>
                         <td className="px-4 py-4 align-middle"><OnboardingCell value={row.onboardingCompletedAt} /></td>
-                        <td className="px-4 py-4 align-middle"><StepCell value={row.startedDay1At} /></td>
-                        <td className="px-4 py-4 align-middle"><StepCell value={row.completedDay3At} /></td>
-                        <td className="px-4 py-4 align-middle"><StepCell value={row.createdAccountAt} emptyLabel="Not yet" successLabel={formatDateTime(row.createdAccountAt)} /></td>
-                        <td className="px-4 py-4 align-middle"><StepCell value={row.upgradedAt} emptyLabel="Not yet" successLabel={row.upgradedAt ? "Upgraded" : undefined} /></td>
                         <td className="px-4 py-4 align-middle">
                           <span className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ring-1 ${STATUS_STYLES[row.currentStatus]}`}>
                             {row.currentStatusLabel}
@@ -529,15 +658,11 @@ export default function AnalyticsPage() {
                           <div className="font-semibold text-slate-800">{row.source}</div>
                           {row.referrer ? <div className="mt-0.5 max-w-[180px] truncate text-xs text-slate-500">{row.referrer}</div> : null}
                         </td>
-                        <td className="px-4 py-4 align-middle">
-                          <div className="font-semibold text-slate-800">{formatLastActive(row.lastActiveAt)}</div>
-                          <div className="mt-0.5 text-xs text-slate-500">{row.dropoffStep}</div>
-                        </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={10} className="px-4 py-12 text-center text-sm font-semibold text-slate-500">No journeys match these filters.</td>
+                      <td colSpan={7} className="px-4 py-12 text-center text-sm font-semibold text-slate-500">No journeys match these filters.</td>
                     </tr>
                   )}
                 </tbody>
@@ -564,6 +689,224 @@ export default function AnalyticsPage() {
               <p className="mt-2 text-sm leading-6 text-slate-600">Long term, use one event table with visitor_id, session_id, user_id, event_name, properties, and indexed timestamps.</p>
             </div>
           </section>
+          </>
+          ) : activeView === "bible-year" ? (
+          <section className="mt-8 rounded-xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
+            <div className="border-b border-slate-200 p-5">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-600">Daily Study Analytics</p>
+                  <h2 className="mt-1 text-2xl font-black text-slate-950">Bible in One Year day rows</h2>
+                  <p className="mt-2 text-sm font-medium text-slate-600">Click a day to expand the task and user details for that reading.</p>
+                </div>
+                <div className="rounded-lg bg-slate-50 px-4 py-3 text-sm font-bold text-slate-700">
+                  {data?.bibleYearDays?.length || 0} days with progress
+                </div>
+              </div>
+            </div>
+
+            <div className="divide-y divide-slate-100">
+              {GENESIS_BIBLE_IN_ONE_YEAR_SERIES.map((planDay) => {
+                const day = bibleYearDaysByNumber.get(planDay.dayNumber);
+                const isExpanded = expandedDay === planDay.dayNumber;
+                const startedUsers = day?.startedUsers || 0;
+                const completedUsers = day?.completedUsers || 0;
+                const inProgressUsers = day?.inProgressUsers || 0;
+                return (
+                  <div key={planDay.dayNumber}>
+                    <button
+                      type="button"
+                      onClick={() => setExpandedDay(isExpanded ? 0 : planDay.dayNumber)}
+                      className="grid w-full gap-3 px-5 py-4 text-left transition hover:bg-slate-50 lg:grid-cols-[120px_1.4fr_120px_120px_120px_120px_40px] lg:items-center"
+                    >
+                      <div>
+                        <p className="text-sm font-black text-slate-950">Day {planDay.dayNumber}</p>
+                        <p className="text-xs font-semibold text-slate-500">{planDay.reference}</p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-slate-950">{planDay.title}</p>
+                        <p className="mt-1 line-clamp-1 text-sm text-slate-500">{planDay.summary}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Started</p>
+                        <p className="mt-1 text-lg font-black text-slate-950">{startedUsers}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Complete</p>
+                        <p className="mt-1 text-lg font-black text-emerald-700">{completedUsers}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">In Progress</p>
+                        <p className="mt-1 text-lg font-black text-blue-700">{inProgressUsers}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Rate</p>
+                        <p className="mt-1 text-lg font-black text-slate-950">{day?.completionRate || 0}%</p>
+                      </div>
+                      <div className="text-right text-xl font-black text-slate-400">{isExpanded ? "-" : "+"}</div>
+                    </button>
+
+                    {isExpanded ? (
+                      <div className="bg-slate-50 px-5 pb-5">
+                        <div className="grid gap-3 rounded-xl border border-slate-200 bg-white p-4 lg:grid-cols-4">
+                          <div>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Reading task</p>
+                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.readingCompleted || 0}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Trivia task</p>
+                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.triviaCompleted || 0}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Reflection task</p>
+                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.reflectionCompleted || 0}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Last activity</p>
+                            <p className="mt-1 text-sm font-bold text-slate-800">{day?.lastActiveAt ? formatDateTime(day.lastActiveAt) : "No activity yet"}</p>
+                          </div>
+                        </div>
+
+                        <div className="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+                          <table className="min-w-[760px] w-full text-left text-sm">
+                            <thead className="bg-white text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                              <tr>
+                                <th className="px-4 py-3">User</th>
+                                <th className="px-4 py-3">Reading</th>
+                                <th className="px-4 py-3">Trivia</th>
+                                <th className="px-4 py-3">Reflection</th>
+                                <th className="px-4 py-3">Day Status</th>
+                                <th className="px-4 py-3">Updated</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-100">
+                              {day?.users.length ? (
+                                day.users.map((user) => (
+                                  <tr key={`${planDay.dayNumber}-${user.userId}`} className="hover:bg-slate-50">
+                                    <td className="px-4 py-3 font-bold text-slate-900">{user.userLabel}</td>
+                                    <td className="px-4 py-3"><MiniCheck done={user.readingCompleted} label={user.readingCompleted ? "Done" : "Open"} /></td>
+                                    <td className="px-4 py-3"><MiniCheck done={user.triviaCompleted} label={user.triviaCompleted ? "Done" : "Open"} /></td>
+                                    <td className="px-4 py-3"><MiniCheck done={user.reflectionCompleted} label={user.reflectionCompleted ? "Done" : "Open"} /></td>
+                                    <td className="px-4 py-3">
+                                      <span className={`inline-flex rounded-full px-3 py-1 text-xs font-black ring-1 ${user.completed ? "bg-emerald-50 text-emerald-700 ring-emerald-200" : "bg-blue-50 text-blue-700 ring-blue-200"}`}>
+                                        {user.completed ? "Complete" : "In progress"}
+                                      </span>
+                                    </td>
+                                    <td className="px-4 py-3 font-semibold text-slate-600">{user.updatedAt ? formatDateTime(user.updatedAt) : "Unknown"}</td>
+                                  </tr>
+                                ))
+                              ) : (
+                                <tr>
+                                  <td colSpan={6} className="px-4 py-8 text-center font-semibold text-slate-500">No tracked progress for this day yet.</td>
+                                </tr>
+                              )}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+          ) : (
+          <section className="mt-8 space-y-6">
+            <div className="grid gap-4 md:grid-cols-4">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Total opens</p>
+                <p className="mt-2 text-3xl font-black text-slate-950">{formatNumber(data?.studyNotes?.totalOpens || 0)}</p>
+              </div>
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Unique users</p>
+                <p className="mt-2 text-3xl font-black text-slate-950">{formatNumber(data?.studyNotes?.uniqueUsers || 0)}</p>
+              </div>
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Section opens</p>
+                <p className="mt-2 text-3xl font-black text-slate-950">{formatNumber(data?.studyNotes?.sectionOpens || 0)}</p>
+              </div>
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Chapter note opens</p>
+                <p className="mt-2 text-3xl font-black text-slate-950">{formatNumber(data?.studyNotes?.chapterNoteOpens || 0)}</p>
+              </div>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <h2 className="text-lg font-black text-slate-950">Top Study Notes</h2>
+                <div className="mt-4 space-y-3">
+                  {(data?.studyNotes?.topNotes || []).length ? data?.studyNotes?.topNotes.map((note) => (
+                    <div key={note.key} className="flex items-center justify-between gap-4 rounded-lg bg-slate-50 px-3 py-3">
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-bold text-slate-900">{note.label}</p>
+                        <p className="mt-0.5 text-xs font-semibold text-slate-500">{note.uniqueUsers} users • last {note.lastOpenedAt ? formatDateTime(note.lastOpenedAt) : "unknown"}</p>
+                      </div>
+                      <p className="shrink-0 text-lg font-black text-slate-950">{note.opens}</p>
+                    </div>
+                  )) : <p className="text-sm font-semibold text-slate-500">No study note opens in this window yet.</p>}
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <h2 className="text-lg font-black text-slate-950">Top Sources</h2>
+                <div className="mt-4 space-y-3">
+                  {(data?.studyNotes?.topSources || []).length ? data?.studyNotes?.topSources.map((source) => (
+                    <div key={source.source} className="flex items-center justify-between gap-4 rounded-lg bg-slate-50 px-3 py-3">
+                      <p className="truncate text-sm font-bold text-slate-900">{source.source}</p>
+                      <p className="shrink-0 text-lg font-black text-slate-950">{source.opens}</p>
+                    </div>
+                  )) : <p className="text-sm font-semibold text-slate-500">No source data in this window yet.</p>}
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
+              <div className="border-b border-slate-200 p-5">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-600">Study Notes Activity</p>
+                <h2 className="mt-1 text-2xl font-black text-slate-950">Every note open</h2>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="min-w-[880px] w-full text-left text-sm">
+                  <thead className="bg-slate-50 text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                    <tr>
+                      <th className="px-4 py-4">User</th>
+                      <th className="px-4 py-4">Study Note</th>
+                      <th className="px-4 py-4">Source</th>
+                      <th className="px-4 py-4">Action</th>
+                      <th className="px-4 py-4">Opened</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {loading ? (
+                      <tr>
+                        <td colSpan={5} className="px-4 py-10 text-center font-semibold text-slate-500">Loading study note activity...</td>
+                      </tr>
+                    ) : data?.studyNotes?.rows.length ? (
+                      data.studyNotes.rows.map((row) => (
+                        <tr key={row.id} className="hover:bg-slate-50">
+                          <td className="px-4 py-4 font-bold text-slate-900">{row.userLabel}</td>
+                          <td className="px-4 py-4">
+                            <p className="font-bold text-slate-900">{row.noteTitle}</p>
+                            <p className="mt-0.5 text-xs font-semibold text-slate-500">{row.reference || row.sectionTitle || "Study note"}</p>
+                          </td>
+                          <td className="px-4 py-4 font-semibold text-slate-700">{row.source}</td>
+                          <td className="px-4 py-4">
+                            <span className="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700 ring-1 ring-blue-200">{row.eventLabel}</span>
+                          </td>
+                          <td className="px-4 py-4 font-semibold text-slate-700">{formatDateTime(row.openedAt)}</td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={5} className="px-4 py-10 text-center font-semibold text-slate-500">No study note opens match this time window yet.</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          )}
         </main>
       </div>
     </div>

@@ -7710,7 +7710,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 storagePath={audio.storagePath}
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
-                backgroundMusicSrcs={day.dayNumber === 8 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                backgroundMusicSrcs={day.dayNumber === 8 || day.dayNumber === 9 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
                 backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
               />
             </div>
@@ -9394,7 +9394,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 videoSrc={bibleYearAudio.videoSrc}
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
-                backgroundMusicSrcs={day.dayNumber === 8 && !bibleYearAudio.videoSrc ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                backgroundMusicSrcs={(day.dayNumber === 8 || day.dayNumber === 9) && !bibleYearAudio.videoSrc ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
                 backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
               />
               <button
