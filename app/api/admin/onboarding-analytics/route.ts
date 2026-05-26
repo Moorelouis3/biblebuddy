@@ -44,6 +44,13 @@ type StudyNotesActionRow = {
   created_at?: string | null;
 };
 
+type BibleYearTaskActionRow = {
+  user_id?: string | null;
+  action_type?: string | null;
+  action_label?: string | null;
+  created_at?: string | null;
+};
+
 type BibleYearProgressRow = {
   user_id?: string | null;
   day_number?: number | null;
@@ -77,7 +84,7 @@ type VisitorJourneyStatus =
   | "active"
   | "onboarding_only"
   | "day_1_in_progress"
-  | "day_3_completed"
+  | "day_1_completed"
   | "created_account"
   | "upgraded"
   | "dropped_off";
@@ -91,7 +98,7 @@ type VisitorJourneyRow = {
   journeySelected: string;
   onboardingCompletedAt: string | null;
   startedDay1At: string | null;
-  completedDay3At: string | null;
+  completedDay1At: string | null;
   createdAccountAt: string | null;
   upgradedAt: string | null;
   currentStatus: VisitorJourneyStatus;
@@ -100,6 +107,8 @@ type VisitorJourneyRow = {
   referrer: string | null;
   lastActiveAt: string;
   lastEventName: string;
+  timeSpentMs: number;
+  timeSpentLabel: string;
   dropoffStep: string;
   accountType: "guest" | "free" | "pro";
 };
@@ -819,8 +828,60 @@ function getJourneyLabelFromEvents(rows: LandingEventRow[]) {
 function normalizeJourneySource(value: unknown) {
   const source = typeof value === "string" ? value.trim() : "";
   if (!source) return "Unknown";
+  const lower = source.toLowerCase();
   if (/^(direct|direct \/ unknown|unknown|direct unknown)$/i.test(source)) return "Unknown";
-  return source;
+  if (lower.includes("instagram")) return "Instagram";
+  if (lower.includes("facebook") || lower.includes("fb.")) return "Facebook";
+  if (lower.includes("threads")) return "Threads";
+  if (lower.includes("youtube") || lower.includes("youtu.be")) return "YouTube";
+  if (lower.includes("google")) return "Google";
+  if (lower.includes("tiktok")) return "TikTok";
+  if (lower.includes("email")) return "Email";
+  if (lower.includes("bing")) return "Bing";
+  try {
+    const host = new URL(source).hostname.replace(/^www\./, "");
+    if (host.includes("instagram")) return "Instagram";
+    if (host.includes("facebook")) return "Facebook";
+    if (host.includes("threads")) return "Threads";
+    if (host.includes("youtube") || host.includes("youtu.be")) return "YouTube";
+    if (host.includes("google")) return "Google";
+    return host.split(".")[0]?.replace(/^\w/, (char) => char.toUpperCase()) || "Unknown";
+  } catch {
+    return source.replace(/[_-]+/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+}
+
+function formatDuration(ms: number) {
+  const seconds = Math.max(0, Math.round(ms / 1000));
+  if (seconds < 5) return "<5 sec";
+  if (seconds < 60) return `${seconds} sec`;
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  if (minutes < 60) return remainingSeconds ? `${minutes}m ${remainingSeconds}s` : `${minutes} min`;
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return remainingMinutes ? `${hours}h ${remainingMinutes}m` : `${hours} hr`;
+}
+
+function getLandingStepStatusLabel(sessionRows: LandingEventRow[], finishedOnboarding: boolean) {
+  if (finishedOnboarding) return "Finished onboarding";
+  const eventNames = sessionRows.map((row) => row.event_name || "");
+  const names = new Set(eventNames);
+  for (let index = 5; index >= 1; index -= 1) {
+    if (eventNames.some((name) => name.startsWith(`completed_question_${index}`))) return `Finished question ${index}`;
+    if (eventNames.some((name) => name.startsWith(`viewed_question_${index}`))) return `Viewed question ${index}`;
+  }
+  if (names.has("viewed_results_page") || names.has("reached_results_page")) return "Viewed results";
+  if (names.has("viewed_results_loading")) return "Reached results loading";
+  if (names.has("started_onboarding") || names.has("viewed_onboarding_intro")) return "Started onboarding";
+  if (names.has("clicked_start_journey")) return "Clicked start";
+  return "Just visited";
+}
+
+function getJourneyDisplaySource(row: LandingEventRow | undefined) {
+  const primary = normalizeJourneySource(row?.source);
+  if (primary !== "Unknown") return primary;
+  return normalizeJourneySource(row?.referrer);
 }
 
 function getStatusLabel(status: VisitorJourneyStatus) {
@@ -828,7 +889,7 @@ function getStatusLabel(status: VisitorJourneyStatus) {
     active: "Active",
     onboarding_only: "Onboarding only",
     day_1_in_progress: "Day 1 in progress",
-    day_3_completed: "Day 3 completed",
+    day_1_completed: "Day 1 completed",
     created_account: "Created account",
     upgraded: "Upgraded",
     dropped_off: "Drop off",
@@ -839,6 +900,7 @@ function getStatusLabel(status: VisitorJourneyStatus) {
 function buildVisitorJourneys(
   rows: LandingEventRow[],
   progressRows: BibleYearProgressRow[],
+  taskActionRows: BibleYearTaskActionRow[],
   upgradeRows: UpgradeActionRow[],
   profileByUserId: Map<string, string>,
   profileSummaryByUserId: Map<string, ProfileSummary>,
@@ -864,6 +926,14 @@ function buildVisitorJourneys(
     progressByUser.set(row.user_id, current);
   }
 
+  const taskActionsByUser = new Map<string, BibleYearTaskActionRow[]>();
+  for (const row of taskActionRows) {
+    if (!row.user_id) continue;
+    const current = taskActionsByUser.get(row.user_id) || [];
+    current.push(row);
+    taskActionsByUser.set(row.user_id, current);
+  }
+
   const upgradeByUser = new Map<string, UpgradeActionRow>();
   for (const row of upgradeRows) {
     if (!row.user_id) continue;
@@ -880,6 +950,18 @@ function buildVisitorJourneys(
     sessions.get(sessionId)?.push(row);
   }
 
+  const guestNumberBySession = new Map<string, number>();
+  Array.from(sessions.entries())
+    .map(([sessionId, sessionRows]) => ({
+      sessionId,
+      completedAt: sessionRows.find((row) => row.event_name === "started_guest_journey")?.created_at || null,
+    }))
+    .filter((item): item is { sessionId: string; completedAt: string } => Boolean(item.completedAt))
+    .sort((a, b) => new Date(a.completedAt).getTime() - new Date(b.completedAt).getTime())
+    .forEach((item, index) => {
+      guestNumberBySession.set(item.sessionId, index + 1);
+    });
+
   const rowsOut: VisitorJourneyRow[] = Array.from(sessions.entries()).map(([sessionId, sessionRows]) => {
     const firstRow = sessionRows[0];
     const lastRow = sessionRows[sessionRows.length - 1];
@@ -887,11 +969,16 @@ function buildVisitorJourneys(
     const userLabel = userId ? profileByUserId.get(userId) || `User ${shortId(userId)}` : "Guest visitor";
     const eventNames = new Set(sessionRows.map((row) => row.event_name || ""));
     const userProgressRows = userId ? progressByUser.get(userId) || [] : [];
+    const userTaskActionRows = userId ? taskActionsByUser.get(userId) || [] : [];
     const dayOneRows = userProgressRows.filter((row) => Number(row.day_number || 0) === 1);
-    const dayThreeRows = userProgressRows.filter((row) => Number(row.day_number || 0) === 3);
-    const dayOneStartedAt = dayOneRows.map((row) => row.updated_at).filter((value): value is string => Boolean(value)).sort()[0] || null;
-    const dayThreeCompletedAt =
-      dayThreeRows
+    const dayOneStartedAt =
+      userTaskActionRows
+        .filter((row) => row.action_label?.startsWith("Bible in One Year Day 1 Video:") || row.action_label?.startsWith("Bible in One Year Day 1 Reading:"))
+        .map((row) => row.created_at)
+        .filter((value): value is string => Boolean(value))
+        .sort()[0] || null;
+    const dayOneCompletedAt =
+      dayOneRows
         .filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed)
         .map((row) => row.updated_at)
         .filter((value): value is string => Boolean(value))
@@ -908,11 +995,13 @@ function buildVisitorJourneys(
     const onboardingCompletedAt = sessionRows.find((row) => row.event_name === "started_guest_journey")?.created_at || null;
     const now = Date.now();
     const lastActiveAt = lastRow?.created_at || firstRow?.created_at || new Date().toISOString();
+    const firstActiveAt = firstRow?.created_at || lastActiveAt;
     const inactiveMs = now - new Date(lastActiveAt).getTime();
+    const timeSpentMs = Math.max(0, new Date(lastActiveAt).getTime() - new Date(firstActiveAt).getTime());
 
     let status: VisitorJourneyStatus = "active";
     if (upgradeAt) status = "upgraded";
-    else if (dayThreeCompletedAt) status = "day_3_completed";
+    else if (dayOneCompletedAt) status = "day_1_completed";
     else if (createdAccountAt) status = "created_account";
     else if (dayOneStartedAt) status = "day_1_in_progress";
     else if (onboardingCompletedAt) status = "active";
@@ -925,25 +1014,29 @@ function buildVisitorJourneys(
 
     const accountType: VisitorJourneyRow["accountType"] = upgradeAt || profile?.isPaid ? "pro" : createdAccountAt ? "free" : "guest";
     const lastInfo = lastRow ? getLandingActivityInfo(lastRow) : null;
+    const stepStatusLabel = getLandingStepStatusLabel(sessionRows, Boolean(onboardingCompletedAt));
+    const guestNumber = guestNumberBySession.get(sessionId);
 
     return {
       id: sessionId,
-      visitorLabel: `Visitor #${getVisitorNumber(sessionId || userId || lastActiveAt)}`,
+      visitorLabel: onboardingCompletedAt && guestNumber ? `Bible Buddy Guest #${guestNumber}` : "Drop off",
       sessionId,
       userId,
       userLabel,
       journeySelected: getJourneyLabelFromEvents(sessionRows),
       onboardingCompletedAt,
       startedDay1At: dayOneStartedAt,
-      completedDay3At: dayThreeCompletedAt,
+      completedDay1At: dayOneCompletedAt,
       createdAccountAt,
       upgradedAt: upgradeAt,
       currentStatus: status,
-      currentStatusLabel: getStatusLabel(status),
-      source: normalizeJourneySource(firstRow?.source),
+      currentStatusLabel: stepStatusLabel,
+      source: getJourneyDisplaySource(firstRow),
       referrer: typeof firstRow?.referrer === "string" && firstRow.referrer ? firstRow.referrer : null,
       lastActiveAt,
       lastEventName: lastRow?.event_name || "",
+      timeSpentMs,
+      timeSpentLabel: formatDuration(timeSpentMs),
       dropoffStep: lastInfo?.title || "Unknown",
       accountType,
     };
@@ -952,22 +1045,22 @@ function buildVisitorJourneys(
   const totalVisitors = rowsOut.length;
   const finishedOnboarding = rowsOut.filter((row) => Boolean(row.onboardingCompletedAt)).length;
   const startedDay1 = rowsOut.filter((row) => Boolean(row.startedDay1At)).length;
-  const completedDay3 = rowsOut.filter((row) => Boolean(row.completedDay3At)).length;
+  const completedDay1 = rowsOut.filter((row) => Boolean(row.completedDay1At)).length;
   const createdFreeAccount = rowsOut.filter((row) => Boolean(row.createdAccountAt)).length;
   const upgradedToPro = rowsOut.filter((row) => Boolean(row.upgradedAt)).length;
 
   return {
-    rows: rowsOut.slice(0, 500),
+    rows: rowsOut.slice(0, 100),
     metrics: {
       totalVisitors,
       finishedOnboarding,
       startedDay1,
-      completedDay3,
+      completedDay1,
       createdFreeAccount,
       upgradedToPro,
       onboardingCompletionRate: totalVisitors > 0 ? Number(((finishedOnboarding / totalVisitors) * 100).toFixed(1)) : 0,
-      day1StartRate: totalVisitors > 0 ? Number(((startedDay1 / totalVisitors) * 100).toFixed(1)) : 0,
-      day3CompletionRate: totalVisitors > 0 ? Number(((completedDay3 / totalVisitors) * 100).toFixed(1)) : 0,
+      day1StartRate: finishedOnboarding > 0 ? Number(((startedDay1 / finishedOnboarding) * 100).toFixed(1)) : 0,
+      day1CompletionRate: finishedOnboarding > 0 ? Number(((completedDay1 / finishedOnboarding) * 100).toFixed(1)) : 0,
       freeAccountRate: totalVisitors > 0 ? Number(((createdFreeAccount / totalVisitors) * 100).toFixed(1)) : 0,
       proUpgradeRate: totalVisitors > 0 ? Number(((upgradedToPro / totalVisitors) * 100).toFixed(1)) : 0,
     },
@@ -977,7 +1070,7 @@ function buildVisitorJourneys(
       "active",
       "onboarding_only",
       "day_1_in_progress",
-      "day_3_completed",
+      "day_1_completed",
       "created_account",
       "upgraded",
       "dropped_off",
@@ -1196,10 +1289,21 @@ export async function GET(request: Request) {
     .limit(1000);
   const studyNotesActionRows = (studyNotesActionData || []) as StudyNotesActionRow[];
 
+  const { data: bibleYearTaskActionData } = await adminSupabase
+    .from("master_actions")
+    .select("user_id, action_type, action_label, created_at")
+    .in("action_type", ["bible_in_one_year_reading_completed"])
+    .gte("created_at", journeySinceIso)
+    .like("action_label", "Bible in One Year Day 1%")
+    .order("created_at", { ascending: true })
+    .limit(250000);
+  const bibleYearTaskActionRows = (bibleYearTaskActionData || []) as BibleYearTaskActionRow[];
+
   const eventUserIds = Array.from(new Set([
     ...landingEventRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...upgradeRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...studyNotesActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
+    ...bibleYearTaskActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
   ]));
   const profileByUserId = new Map<string, string>();
   const profileSummaryByUserId = new Map<string, ProfileSummary>();
@@ -1269,6 +1373,7 @@ export async function GET(request: Request) {
   const visitorJourneys = buildVisitorJourneys(
     validLandingEventRows,
     bibleYearProgressRows,
+    bibleYearTaskActionRows,
     upgradeRows,
     profileByUserId,
     profileSummaryByUserId,

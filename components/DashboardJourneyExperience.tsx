@@ -69,6 +69,7 @@ const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapt
 type BibleYearDayCardKey = "reading" | "trivia" | "reflection";
 type BibleYearCompletedCardsByDay = Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>;
 type BibleYearSeriesFilter = "all" | "current" | "completed";
+type BibleYearMediaMode = "audio" | "video";
 const BIBLE_YEAR_CARD_XP: Record<BibleYearDayCardKey, number> = {
   reading: 25,
   trivia: 20,
@@ -1800,6 +1801,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearTermLoading, setBibleYearTermLoading] = useState(false);
   const [bibleYearPersistentVideoDay, setBibleYearPersistentVideoDay] = useState<number | null>(null);
   const [bibleYearFollowAlongOpenByDay, setBibleYearFollowAlongOpenByDay] = useState<Record<number, boolean>>({});
+  const [bibleYearMediaModeByDay, setBibleYearMediaModeByDay] = useState<Record<number, BibleYearMediaMode>>({});
   const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
   const [bibleYearDeepNotesOpen, setBibleYearDeepNotesOpen] = useState(false);
   const [bibleYearDayOneDeepNotesGiftOpen, setBibleYearDayOneDeepNotesGiftOpen] = useState(false);
@@ -7833,6 +7835,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     const videoPlayerSrc = audio?.videoSrc
       ? `${audio.videoSrc}${audio.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
       : null;
+    const audioFirst = day.dayNumber >= 1 && day.dayNumber <= 8;
+    const mediaMode = bibleYearMediaModeByDay[day.dayNumber] || (audioFirst ? "audio" : "video");
+    const showVideo = Boolean(videoPlayerSrc && mediaMode === "video");
+    const showAudio = Boolean(audio && !showVideo);
 
     return (
       <div className="px-4 pb-4">
@@ -7854,12 +7860,12 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
           <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Task 1</p>
           <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-            {hasVideo ? "Watch Today's Scripture Video" : "Listen To Today's Scripture Audio"}
+            {showVideo ? "Watch Today's Scripture Video" : "Listen To Today's Scripture Audio"}
           </h2>
           <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            {hasVideo ? "Watch today's guided Scripture breakdown." : "Listen to today's guided Scripture reading and explanation."}
+            {showVideo ? "Watch today's guided Scripture breakdown." : "Listen to today's guided Scripture reading and explanation."}
           </p>
-          {videoPlayerSrc ? (
+          {showVideo && videoPlayerSrc ? (
             <div className="mt-4 overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-black shadow-[0_18px_38px_rgba(14,26,58,0.18)]">
               <div className="relative aspect-video overflow-hidden bg-black">
                 <iframe
@@ -7872,7 +7878,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 />
               </div>
             </div>
-          ) : audio ? (
+          ) : showAudio && audio ? (
             <div className="mt-4">
               <BibleYearLessonAudioPlayer
                 audioSrc={audio.apiSrc}
@@ -7890,8 +7896,22 @@ Before we understand redemption, we need to understand what God made humanity fo
               Today&apos;s audio/video lesson is being prepared. This day already uses the standard Day 1 task flow, and the media can drop into this same card when ready.
             </div>
           )}
+          {hasVideo ? (
+            <button
+              type="button"
+              onClick={() =>
+                setBibleYearMediaModeByDay((current) => ({
+                  ...current,
+                  [day.dayNumber]: showVideo ? "audio" : "video",
+                }))
+              }
+              className="mt-3 w-full rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_32%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3 text-sm font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+            >
+              {showVideo ? "Check out the audio version" : "Watch the video instead"}
+            </button>
+          ) : null}
           {renderBibleYearFollowAlongScripture(day)}
-          {audio?.videoSrc ? (
+          {showVideo && audio?.videoSrc ? (
             <VideoHelpfulPoll
               userId={userId}
               videoId={`bible-year-day-${day.dayNumber}`}
@@ -7915,7 +7935,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 : "border-[var(--bb-button,#2f7fe8)] bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
             }`}
           >
-            <span className="text-base font-black">{videoComplete ? "Lesson Complete" : hasVideo ? "Mark Video Complete" : "Mark Audio Complete"}</span>
+            <span className="text-base font-black">{videoComplete ? "Lesson Complete" : showVideo ? "Mark Video Complete" : "Mark Audio Complete"}</span>
             <span className="rounded-full bg-white/18 px-2.5 py-1 text-xs font-black">+25 XP</span>
           </button>
         </div>
@@ -9555,23 +9575,73 @@ Before we understand redemption, we need to understand what God made humanity fo
     const bibleYearLesson = getBibleYearDailyLesson(day.dayNumber);
     const bibleYearAudio = getBibleYearDayAudio(day.dayNumber);
     const readingCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
+    const modalAudioFirst = day.dayNumber >= 1 && day.dayNumber <= 8;
+    const modalMediaMode = bibleYearMediaModeByDay[day.dayNumber] || (modalAudioFirst ? "audio" : "video");
+    const modalVideoPlayerSrc = bibleYearAudio?.videoSrc
+      ? `${bibleYearAudio.videoSrc}${bibleYearAudio.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
+      : null;
+    const modalShowVideo = Boolean(modalVideoPlayerSrc && modalMediaMode === "video");
 
     if (bibleYearLesson) {
       return (
         <div className="space-y-3 px-4 py-4">
           {bibleYearAudio ? (
             <>
-              <BibleYearLessonAudioPlayer
-                audioSrc={bibleYearAudio.apiSrc}
-                title={bibleYearAudio.title}
-                durationLabel={bibleYearAudio.estimatedDuration}
-                storagePath={bibleYearAudio.storagePath}
-                videoSrc={bibleYearAudio.videoSrc}
-                userId={userId}
-                videoId={`bible-year-day-${day.dayNumber}`}
-                backgroundMusicSrcs={(day.dayNumber === 8 || day.dayNumber === 9) && !bibleYearAudio.videoSrc ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
-                backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
-              />
+              {modalShowVideo && modalVideoPlayerSrc ? (
+                <div>
+                  <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-black shadow-[0_18px_38px_rgba(14,26,58,0.18)]">
+                    <div className="relative aspect-video overflow-hidden bg-black">
+                      <iframe
+                        src={modalVideoPlayerSrc}
+                        title={bibleYearLesson.title}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                        allowFullScreen
+                        className="absolute inset-0 h-full w-full border-0"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setBibleYearMediaModeByDay((current) => ({
+                        ...current,
+                        [day.dayNumber]: "audio",
+                      }))
+                    }
+                    className="mt-3 w-full rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_32%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3 text-sm font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+                  >
+                    Check out the audio version
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <BibleYearLessonAudioPlayer
+                    audioSrc={bibleYearAudio.apiSrc}
+                    title={bibleYearAudio.title}
+                    durationLabel={bibleYearAudio.estimatedDuration}
+                    storagePath={bibleYearAudio.storagePath}
+                    userId={userId}
+                    videoId={`bible-year-day-${day.dayNumber}`}
+                    backgroundMusicSrcs={day.dayNumber === 8 || day.dayNumber === 9 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                    backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+                  />
+                  {bibleYearAudio.videoSrc ? (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setBibleYearMediaModeByDay((current) => ({
+                          ...current,
+                          [day.dayNumber]: "video",
+                        }))
+                      }
+                      className="w-full rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_32%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3 text-sm font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+                    >
+                      Watch the video instead
+                    </button>
+                  ) : null}
+                </>
+              )}
               <button
                 type="button"
                 onClick={() => {
@@ -9775,6 +9845,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     const videoPlayerSrc = audio.videoSrc
       ? `${audio.videoSrc}${audio.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
       : null;
+    const audioFirst = day.dayNumber >= 1 && day.dayNumber <= 8;
+    const mediaMode = bibleYearMediaModeByDay[day.dayNumber] || (audioFirst ? "audio" : "video");
+    const showVideo = Boolean(videoPlayerSrc && mediaMode === "video");
+    const showAudio = !showVideo;
     const verseBreakdownSections = lesson.sections;
     const { markdown: deepNotesMarkdown, sections: deepStudySections } = getBibleYearDayDeepNotes(day.dayNumber);
     const hasDeepNotes = Boolean(deepNotesMarkdown);
@@ -10276,7 +10350,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     return (
       <article className="relative mx-auto max-w-xl text-left text-[var(--bb-text-primary,#fff7ed)]">
         <section className="relative px-1 pb-1 pt-1">
-          {videoPlayerSrc ? (
+          {showVideo && videoPlayerSrc ? (
             <div className="pt-0">
               <div className="overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[#070503] shadow-[0_24px_58px_rgba(0,0,0,0.42),0_0_34px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)]">
                 <div className="relative aspect-video overflow-hidden bg-black">
@@ -10291,6 +10365,20 @@ Before we understand redemption, we need to understand what God made humanity fo
                   />
                 </div>
               </div>
+              {audio.videoSrc ? (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setBibleYearMediaModeByDay((current) => ({
+                      ...current,
+                      [day.dayNumber]: "audio",
+                    }))
+                  }
+                  className="mt-3 w-full rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-black/18 px-4 py-3 text-sm font-black text-[var(--bb-accent,#f6b44b)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent)]"
+                >
+                  Check out the audio version
+                </button>
+              ) : null}
               {renderBibleYearFollowAlongScripture(day)}
               <VideoHelpfulPoll
                 userId={userId}
@@ -10330,6 +10418,56 @@ Before we understand redemption, we need to understand what God made humanity fo
                       {readingCardComplete ? `Day ${day.dayNumber} reading is locked in.` : "Tap after you finish the video and lesson. +25 XP"}
                     </span>
                   </span>
+                </span>
+                <span className="rounded-full bg-black/12 px-2.5 py-1 text-xs font-black">+25 XP</span>
+              </button>
+            </div>
+          ) : null}
+
+          {showAudio ? (
+            <div className="pt-0">
+              <BibleYearLessonAudioPlayer
+                audioSrc={audio.apiSrc}
+                title={audio.title}
+                durationLabel={audio.estimatedDuration}
+                storagePath={audio.storagePath}
+                userId={userId}
+                videoId={`bible-year-day-${day.dayNumber}`}
+                backgroundMusicSrcs={day.dayNumber === 8 || day.dayNumber === 9 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+              />
+              {audio.videoSrc ? (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setBibleYearMediaModeByDay((current) => ({
+                      ...current,
+                      [day.dayNumber]: "video",
+                    }))
+                  }
+                  className="mt-3 w-full rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] bg-black/18 px-4 py-3 text-sm font-black text-[var(--bb-accent,#f6b44b)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,transparent)]"
+                >
+                  Watch the video instead
+                </button>
+              ) : null}
+              {renderBibleYearFollowAlongScripture(day)}
+              <button
+                type="button"
+                onClick={() => {
+                  if (readingCardComplete) return;
+                  setBibleYearDeepNotesOpen(false);
+                  markBibleYearDayCardComplete(day, "reading");
+                  closeBibleYearReadingArticle();
+                }}
+                disabled={readingCardComplete}
+                className={`mt-3 flex w-full items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-center shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),0_18px_38px_rgba(0,0,0,0.28)] transition ${
+                  readingCardComplete
+                    ? "cursor-default border-emerald-400/70 bg-emerald-400 text-emerald-950"
+                    : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_70%,transparent)] bg-[var(--bb-accent,#f6b44b)] text-black hover:scale-[1.01] hover:brightness-105"
+                }`}
+              >
+                <span className="block text-base font-black leading-tight">
+                  {readingCardComplete ? "Reading Completed" : "Mark Audio Complete"}
                 </span>
                 <span className="rounded-full bg-black/12 px-2.5 py-1 text-xs font-black">+25 XP</span>
               </button>

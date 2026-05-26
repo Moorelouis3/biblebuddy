@@ -12,7 +12,7 @@ type VisitorJourneyStatus =
   | "active"
   | "onboarding_only"
   | "day_1_in_progress"
-  | "day_3_completed"
+  | "day_1_completed"
   | "created_account"
   | "upgraded"
   | "dropped_off";
@@ -26,7 +26,7 @@ type VisitorJourneyRow = {
   journeySelected: string;
   onboardingCompletedAt: string | null;
   startedDay1At: string | null;
-  completedDay3At: string | null;
+  completedDay1At: string | null;
   createdAccountAt: string | null;
   upgradedAt: string | null;
   currentStatus: VisitorJourneyStatus;
@@ -35,6 +35,8 @@ type VisitorJourneyRow = {
   referrer: string | null;
   lastActiveAt: string;
   lastEventName: string;
+  timeSpentMs: number;
+  timeSpentLabel: string;
   dropoffStep: string;
   accountType: "guest" | "free" | "pro";
 };
@@ -45,12 +47,12 @@ type VisitorJourneys = {
     totalVisitors: number;
     finishedOnboarding: number;
     startedDay1: number;
-    completedDay3: number;
+    completedDay1: number;
     createdFreeAccount: number;
     upgradedToPro: number;
     onboardingCompletionRate: number;
     day1StartRate: number;
-    day3CompletionRate: number;
+    day1CompletionRate: number;
     freeAccountRate: number;
     proUpgradeRate: number;
   };
@@ -129,7 +131,7 @@ const STATUS_STYLES: Record<VisitorJourneyStatus, string> = {
   active: "bg-emerald-50 text-emerald-700 ring-emerald-200",
   onboarding_only: "bg-slate-100 text-slate-700 ring-slate-200",
   day_1_in_progress: "bg-blue-50 text-blue-700 ring-blue-200",
-  day_3_completed: "bg-violet-50 text-violet-700 ring-violet-200",
+  day_1_completed: "bg-violet-50 text-violet-700 ring-violet-200",
   created_account: "bg-amber-50 text-amber-700 ring-amber-200",
   upgraded: "bg-orange-50 text-orange-700 ring-orange-200",
   dropped_off: "bg-rose-50 text-rose-700 ring-rose-200",
@@ -169,34 +171,34 @@ function getFunnelHealth(rate: number) {
     return {
       tone: "border-rose-200 bg-rose-50 text-rose-800",
       label: "Needs fixing",
-      message: `Free account conversion is ${rate}%. Under 10% means the funnel is leaking hard. Tighten the landing page, onboarding, and create-account prompt.`,
+      message: `Landing to onboarding completion is ${rate}%. Under 10% means visitors are not making it through the first funnel step.`,
     };
   }
   if (rate < 20) {
     return {
       tone: "border-amber-200 bg-amber-50 text-amber-800",
       label: "Normal range",
-      message: `Free account conversion is ${rate}%. This is workable, but there is still clear room to improve the offer and follow-through.`,
+      message: `Landing to onboarding completion is ${rate}%. This is workable, but the landing page and questions can still be tightened.`,
     };
   }
   if (rate < 30) {
     return {
       tone: "border-emerald-200 bg-emerald-50 text-emerald-800",
       label: "Doing good",
-      message: `Free account conversion is ${rate}%. The funnel is doing good. Keep testing copy, timing, and guest-to-account prompts.`,
+      message: `Landing to onboarding completion is ${rate}%. The page is doing good at getting visitors through onboarding.`,
     };
   }
   if (rate < 40) {
     return {
       tone: "border-green-200 bg-green-50 text-green-800",
       label: "Strong funnel",
-      message: `Free account conversion is ${rate}%. That is strong. Now focus on quality, Day 1 starts, and Pro upgrades.`,
+      message: `Landing to onboarding completion is ${rate}%. That is strong. Now watch whether those people start Day 1.`,
     };
   }
   return {
     tone: "border-teal-200 bg-teal-50 text-teal-800",
     label: "Excellent funnel",
-    message: `Free account conversion is ${rate}%. That is excellent. Protect what is working and improve the next step into Pro.`,
+    message: `Landing to onboarding completion is ${rate}%. That is excellent. Protect what is working and improve the next step.`,
   };
 }
 
@@ -377,16 +379,16 @@ export default function AnalyticsPage() {
     totalVisitors: 0,
     finishedOnboarding: 0,
     startedDay1: 0,
-    completedDay3: 0,
+    completedDay1: 0,
     createdFreeAccount: 0,
     upgradedToPro: 0,
     onboardingCompletionRate: 0,
     day1StartRate: 0,
-    day3CompletionRate: 0,
+    day1CompletionRate: 0,
     freeAccountRate: 0,
     proUpgradeRate: 0,
   };
-  const funnelHealth = getFunnelHealth(metrics.freeAccountRate);
+  const funnelHealth = getFunnelHealth(metrics.onboardingCompletionRate);
 
   const filteredRows = useMemo(() => {
     const cleanSearch = search.trim().toLowerCase();
@@ -400,6 +402,8 @@ export default function AnalyticsPage() {
         row.userLabel,
         row.source,
         row.currentStatusLabel,
+        row.dropoffStep,
+        row.lastEventName,
         row.referrer || "",
       ].some((value) => value.toLowerCase().includes(cleanSearch));
     });
@@ -410,7 +414,7 @@ export default function AnalyticsPage() {
       "Visitor",
       "Last Active",
       "Last Action",
-      "Onboarding Completed",
+      "Time Spent",
       "Current Status",
       "Source",
       "Dropoff Step",
@@ -419,7 +423,7 @@ export default function AnalyticsPage() {
       row.visitorLabel,
       row.lastActiveAt,
       row.dropoffStep,
-      row.onboardingCompletedAt || "",
+      row.timeSpentLabel,
       row.currentStatusLabel,
       row.source,
       row.dropoffStep,
@@ -563,7 +567,7 @@ export default function AnalyticsPage() {
             <MetricCard label="Total Visitors" value={metrics.totalVisitors} percent={100} icon="visitors" tone="bg-blue-50 text-blue-600" />
             <MetricCard label="Finished Onboarding" value={metrics.finishedOnboarding} percent={metrics.onboardingCompletionRate} icon="check" tone="bg-emerald-50 text-emerald-600" />
             <MetricCard label="Started Day 1" value={metrics.startedDay1} percent={metrics.day1StartRate} icon="book" tone="bg-violet-50 text-violet-600" />
-            <MetricCard label="Completed Day 3" value={metrics.completedDay3} percent={metrics.day3CompletionRate} icon="flame" tone="bg-rose-50 text-rose-600" />
+            <MetricCard label="Completed Day 1" value={metrics.completedDay1} percent={metrics.day1CompletionRate} icon="flame" tone="bg-rose-50 text-rose-600" />
             <MetricCard label="Created Account" value={metrics.createdFreeAccount} percent={metrics.freeAccountRate} icon="user" tone="bg-amber-50 text-amber-600" />
             <MetricCard label="Upgraded To Pro" value={metrics.upgradedToPro} percent={metrics.proUpgradeRate} icon="pro" tone="bg-orange-50 text-orange-600" />
           </section>
@@ -576,7 +580,7 @@ export default function AnalyticsPage() {
                   <input
                     value={search}
                     onChange={(event) => setSearch(event.target.value)}
-                    placeholder="Search by visitor #, user, source, or status..."
+                    placeholder="Search by guest, drop off, source, action, or status..."
                     className="h-11 w-full rounded-lg border border-slate-200 bg-white pl-11 pr-3 text-sm font-medium text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
                   />
                 </label>
@@ -615,14 +619,14 @@ export default function AnalyticsPage() {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="min-w-[860px] w-full border-collapse text-left">
+              <table className="min-w-[920px] w-full border-collapse text-left">
                 <thead className="bg-slate-50 text-xs font-bold text-slate-700">
                   <tr>
                     <th className="w-10 px-4 py-4"><span className="block h-4 w-4 rounded border border-slate-300" /></th>
-                    <th className="px-4 py-4">Visitor #</th>
+                    <th className="px-4 py-4">Visitor Numbers</th>
                     <th className="px-4 py-4">Last Active</th>
                     <th className="px-4 py-4">Last Action</th>
-                    <th className="px-4 py-4">Onboarding Completed</th>
+                    <th className="px-4 py-4">Time Spent</th>
                     <th className="px-4 py-4">Current Status</th>
                     <th className="px-4 py-4">Source</th>
                   </tr>
@@ -638,7 +642,9 @@ export default function AnalyticsPage() {
                         <td className="px-4 py-4 align-middle"><span className="block h-4 w-4 rounded border border-slate-300" /></td>
                         <td className="px-4 py-4 align-middle">
                           <div className="font-bold text-slate-900">{row.visitorLabel}</div>
-                          <div className="mt-0.5 text-xs font-medium text-slate-500">{row.userLabel}</div>
+                          {row.userId && row.userLabel !== "Guest visitor" ? (
+                            <div className="mt-0.5 text-xs font-medium text-slate-500">{row.userLabel}</div>
+                          ) : null}
                         </td>
                         <td className="px-4 py-4 align-middle">
                           <div className="font-bold text-slate-900">{formatLastActive(row.lastActiveAt)}</div>
@@ -648,7 +654,9 @@ export default function AnalyticsPage() {
                           <div className="font-bold text-slate-900">{row.dropoffStep || "Unknown"}</div>
                           <div className="mt-0.5 text-xs font-medium text-slate-500">{row.lastEventName || "No event name"}</div>
                         </td>
-                        <td className="px-4 py-4 align-middle"><OnboardingCell value={row.onboardingCompletedAt} /></td>
+                        <td className="px-4 py-4 align-middle">
+                          <div className="font-bold text-slate-900">{row.timeSpentLabel || "Unknown"}</div>
+                        </td>
                         <td className="px-4 py-4 align-middle">
                           <span className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ring-1 ${STATUS_STYLES[row.currentStatus]}`}>
                             {row.currentStatusLabel}
@@ -656,7 +664,6 @@ export default function AnalyticsPage() {
                         </td>
                         <td className="px-4 py-4 align-middle">
                           <div className="font-semibold text-slate-800">{row.source}</div>
-                          {row.referrer ? <div className="mt-0.5 max-w-[180px] truncate text-xs text-slate-500">{row.referrer}</div> : null}
                         </td>
                       </tr>
                     ))
@@ -671,7 +678,7 @@ export default function AnalyticsPage() {
 
             <div className="flex flex-col gap-3 border-t border-slate-200 px-4 py-4 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
               <p>Showing {filteredRows.length} of {rows.length} visitors</p>
-              <p className="font-medium">Rows per page: 500 max from API</p>
+              <p className="font-medium">Rows per page: 100</p>
             </div>
           </section>
 
