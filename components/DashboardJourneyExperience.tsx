@@ -57,6 +57,7 @@ import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy"
 import { BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME } from "../lib/bibleYearDayOneDeepStudy";
 import { cacheBibleYearOfflineTextPack } from "../lib/bibleYearOfflinePack";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
+import { BIBLE_READING_BACKGROUND_TRACKS, BIBLE_READING_BACKGROUND_VOLUME } from "../lib/bibleReadingBackgroundMusic";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { normalizePremiumSkinId } from "../lib/premiumSkins";
@@ -7709,6 +7710,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                 storagePath={audio.storagePath}
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
+                backgroundMusicSrcs={day.dayNumber === 8 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
               />
             </div>
           ) : (
@@ -9391,6 +9394,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                 videoSrc={bibleYearAudio.videoSrc}
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
+                backgroundMusicSrcs={day.dayNumber === 8 && !bibleYearAudio.videoSrc ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
               />
               <button
                 type="button"

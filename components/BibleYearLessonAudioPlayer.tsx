@@ -12,6 +12,8 @@ type BibleYearLessonAudioPlayerProps = {
   userId?: string | null;
   videoId?: string;
   videoContext?: "bible_year" | "bible_topics";
+  backgroundMusicSrcs?: string[];
+  backgroundMusicVolume?: number;
 };
 
 function formatTime(totalSeconds: number) {
@@ -29,8 +31,11 @@ export default function BibleYearLessonAudioPlayer({
   userId,
   videoId,
   videoContext = "bible_year",
+  backgroundMusicSrcs,
+  backgroundMusicVolume = 0.1,
 }: BibleYearLessonAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const backgroundAudioRef = useRef<HTMLAudioElement | null>(null);
   const lastSavedSecondRef = useRef(-1);
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -73,8 +78,62 @@ export default function BibleYearLessonAudioPlayer({
         saveProgress(audio);
         audio.pause();
       }
+      stopBackgroundMusic();
     };
   }, []);
+
+  function getBackgroundMusicSrc() {
+    return backgroundMusicSrcs?.find((src) => src && src.trim().length > 0) || null;
+  }
+
+  function getOrCreateBackgroundAudio() {
+    const src = getBackgroundMusicSrc();
+    if (!src) return null;
+    if (backgroundAudioRef.current?.src.includes(src)) return backgroundAudioRef.current;
+    if (backgroundAudioRef.current) {
+      backgroundAudioRef.current.pause();
+      backgroundAudioRef.current = null;
+    }
+    const background = new Audio(src);
+    background.preload = "auto";
+    background.loop = true;
+    background.volume = Math.max(0, Math.min(1, backgroundMusicVolume));
+    backgroundAudioRef.current = background;
+    return background;
+  }
+
+  function syncBackgroundToAudio(audio: HTMLAudioElement | null) {
+    const background = backgroundAudioRef.current;
+    if (!audio || !background || !Number.isFinite(background.duration) || background.duration <= 0) return;
+    try {
+      background.currentTime = (audio.currentTime || 0) % background.duration;
+    } catch {
+      // Best effort only; the narrator should never be blocked by background sync.
+    }
+  }
+
+  async function startBackgroundMusic(audio: HTMLAudioElement | null) {
+    const background = getOrCreateBackgroundAudio();
+    if (!background) return;
+    background.volume = Math.max(0, Math.min(1, backgroundMusicVolume));
+    syncBackgroundToAudio(audio);
+    try {
+      await background.play();
+    } catch {
+      // Some browsers block secondary audio; keep the narrator playing.
+    }
+  }
+
+  function pauseBackgroundMusic() {
+    backgroundAudioRef.current?.pause();
+  }
+
+  function stopBackgroundMusic() {
+    const background = backgroundAudioRef.current;
+    if (!background) return;
+    background.pause();
+    background.currentTime = 0;
+  }
 
   function getSavedPosition() {
     if (typeof window === "undefined") return 0;
@@ -131,6 +190,7 @@ export default function BibleYearLessonAudioPlayer({
       setCurrentTime(audio.currentTime || 0);
       if (resumeAfterSeekRef.current) {
         resumeAfterSeekRef.current = false;
+        syncBackgroundToAudio(audio);
         audio.play().catch(() => {
           setError(true);
           setLoading(false);
@@ -157,11 +217,13 @@ export default function BibleYearLessonAudioPlayer({
     audio.onplaying = () => {
       setLoading(false);
       setPlaying(true);
+      void startBackgroundMusic(audio);
     };
     audio.onpause = () => {
       saveProgress(audio);
       setPlaying(false);
       setLoading(false);
+      pauseBackgroundMusic();
     };
     audio.onended = () => {
       window.localStorage.removeItem(progressKey);
@@ -169,11 +231,13 @@ export default function BibleYearLessonAudioPlayer({
       setScrubTime(0);
       setPlaying(false);
       setLoading(false);
+      stopBackgroundMusic();
     };
     audio.onerror = () => {
       setError(true);
       setPlaying(false);
       setLoading(false);
+      pauseBackgroundMusic();
     };
   }
 
@@ -194,6 +258,7 @@ export default function BibleYearLessonAudioPlayer({
     if (audioRef.current && playing) {
       saveProgress(audioRef.current);
       audioRef.current.pause();
+      pauseBackgroundMusic();
       setPlaying(false);
       return;
     }
@@ -203,6 +268,7 @@ export default function BibleYearLessonAudioPlayer({
       try {
         applySavedPosition(audioRef.current);
         await audioRef.current.play();
+        await startBackgroundMusic(audioRef.current);
       } catch {
         setError(true);
         setLoading(false);
@@ -215,6 +281,7 @@ export default function BibleYearLessonAudioPlayer({
       const audio = getOrCreateAudio();
       applySavedPosition(audio);
       await audio.play();
+      await startBackgroundMusic(audio);
     } catch {
       setError(true);
       setLoading(false);
@@ -231,7 +298,10 @@ export default function BibleYearLessonAudioPlayer({
     pendingSeekRef.current = nextTime;
     setCurrentTime(nextTime);
     setScrubTime(nextTime);
-    if (shouldResume) audio.pause();
+    if (shouldResume) {
+      audio.pause();
+      pauseBackgroundMusic();
+    }
     try {
       if ("fastSeek" in audio && typeof audio.fastSeek === "function") {
         audio.fastSeek(nextTime);
@@ -250,6 +320,7 @@ export default function BibleYearLessonAudioPlayer({
       setCurrentTime(audio.currentTime || nextTime);
       if (resumeAfterSeekRef.current) {
         resumeAfterSeekRef.current = false;
+        syncBackgroundToAudio(audio);
         audio.play().catch(() => {
           setError(true);
           setPlaying(false);
