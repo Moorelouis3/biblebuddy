@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let body: { plan?: "monthly" | "yearly" };
+  let body: { plan?: "monthly" | "yearly"; returnTo?: string };
   try {
     body = await req.json();
   } catch {
@@ -90,8 +90,14 @@ export async function POST(req: NextRequest) {
   let successUrl: string;
   let cancelUrl: string;
   try {
-    successUrl = new URL("/upgrade/success", origin).toString();
-    cancelUrl = new URL("/upgrade", origin).toString();
+    const safeReturnTo =
+      typeof body.returnTo === "string" && body.returnTo.startsWith("/") && !body.returnTo.startsWith("//")
+        ? body.returnTo
+        : "";
+    successUrl = safeReturnTo
+      ? new URL(`/upgrade/success?returnTo=${encodeURIComponent(safeReturnTo)}`, origin).toString()
+      : new URL("/upgrade/success", origin).toString();
+    cancelUrl = safeReturnTo ? new URL(safeReturnTo, origin).toString() : new URL("/upgrade", origin).toString();
   } catch {
     return NextResponse.json(
       { error: "Invalid origin URL" },

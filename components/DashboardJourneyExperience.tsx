@@ -65,6 +65,7 @@ import { normalizePremiumSkinId } from "../lib/premiumSkins";
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
 const DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID = "bible-year:day-1-study-notes-gift";
+const DAY_THREE_PRO_UPGRADE_PROMPT_ID = "bible-year:day-3-pro-upgrade";
 const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapters;
 type BibleYearDayCardKey = "reading" | "trivia" | "reflection";
 type BibleYearCompletedCardsByDay = Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>;
@@ -1809,8 +1810,12 @@ export default function DashboardJourneyExperience({
   const [bibleYearDeepNotesUpgradeOpen, setBibleYearDeepNotesUpgradeOpen] = useState(false);
   const [bibleYearDownloadUpgradeOpen, setBibleYearDownloadUpgradeOpen] = useState(false);
   const [bibleYearQuickUpgradeOpen, setBibleYearQuickUpgradeOpen] = useState(false);
+  const [bibleYearQuickUpgradeContext, setBibleYearQuickUpgradeContext] = useState<"day3" | null>(null);
   const [bibleYearQuickUpgradeLoading, setBibleYearQuickUpgradeLoading] = useState<"monthly" | "yearly" | null>(null);
   const [bibleYearQuickUpgradeError, setBibleYearQuickUpgradeError] = useState<string | null>(null);
+  const [bibleYearDayThreeProPrompt, setBibleYearDayThreeProPrompt] = useState<{ day: GenesisBibleYearDay; nextDay: GenesisBibleYearDay } | null>(null);
+  const [bibleYearDayThreeProContinueTarget, setBibleYearDayThreeProContinueTarget] = useState<{ day: GenesisBibleYearDay; nextDay: GenesisBibleYearDay } | null>(null);
+  const [bibleYearDayThreeProOpenSection, setBibleYearDayThreeProOpenSection] = useState("understand");
   const [bibleYearDownloadPrompt, setBibleYearDownloadPrompt] = useState<{ dayNumber: number; title: string; videoUrl: string } | null>(null);
   const [bibleYearCompletionAnimation, setBibleYearCompletionAnimation] = useState<{ dayNumber: number; card: BibleYearDayCardKey; nonce: number } | null>(null);
   const [bibleYearRewardToast, setBibleYearRewardToast] = useState<{ dayNumber: number; text: string; nonce: number } | null>(null);
@@ -5401,6 +5406,7 @@ export default function DashboardJourneyExperience({
     setBibleYearDeepNotesUpgradeOpen(false);
     setBibleYearDownloadUpgradeOpen(false);
     setBibleYearQuickUpgradeOpen(false);
+    setBibleYearQuickUpgradeContext(null);
     setBibleYearQuickUpgradeLoading(null);
     setBibleYearQuickUpgradeError(null);
     setBibleYearDownloadPrompt(null);
@@ -5410,24 +5416,105 @@ export default function DashboardJourneyExperience({
     setBibleYearTermNotesError(null);
   }
 
-  function openBibleYearQuickUpgrade() {
+  function openBibleYearQuickUpgrade(context: "day3" | null = null) {
     setBibleYearDeepNotesUpgradeOpen(false);
     setBibleYearDownloadUpgradeOpen(false);
     setBibleYearQuickUpgradeError(null);
+    setBibleYearQuickUpgradeContext(context);
     setBibleYearQuickUpgradeOpen(true);
+  }
+
+  function getDayThreeProPromptStorageKey() {
+    return `${DAY_THREE_PRO_UPGRADE_PROMPT_ID}:${userId || "guest"}`;
+  }
+
+  function hasSeenDayThreeProPrompt() {
+    if (typeof window === "undefined") return false;
+    return window.localStorage.getItem(getDayThreeProPromptStorageKey()) === "seen";
+  }
+
+  function rememberDayThreeProPromptSeen() {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(getDayThreeProPromptStorageKey(), "seen");
+  }
+
+  async function logDayThreeProPromptAction(actionType: ActionType, label: string) {
+    if (!userId) return;
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const meta = user?.user_metadata || {};
+      const username =
+        meta.firstName ||
+        meta.first_name ||
+        (user?.email ? user.email.split("@")[0] : null) ||
+        "User";
+      await supabase.from("master_actions").insert({
+        user_id: userId,
+        username,
+        action_type: actionType,
+        action_label: label,
+        journey_day: 3,
+        account_status: isPaidUser ? "pro" : "free_or_guest",
+        event_metadata: {
+          plan: "bible_in_one_year",
+          prompt: "day_3_pro_upgrade",
+        },
+      });
+    } catch (error) {
+      console.warn("[BIBLE_YEAR_DAY3_UPGRADE] Could not log prompt action:", error);
+    }
+  }
+
+  function openDayThreeProPrompt(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay, options?: { force?: boolean }) {
+    if (!options?.force && (isPaidUser || hasSeenDayThreeProPrompt())) return false;
+    if (!options?.force) rememberDayThreeProPromptSeen();
+    setBibleYearDayThreeProPrompt({ day, nextDay });
+    setBibleYearDayThreeProContinueTarget({ day, nextDay });
+    setBibleYearDayThreeProOpenSection("understand");
+    void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_viewed, "Bible in One Year Day 3 Pro upgrade popup viewed");
+    return true;
+  }
+
+  function continueAfterDayThreeProPrompt() {
+    const prompt = bibleYearDayThreeProPrompt || bibleYearDayThreeProContinueTarget;
+    setBibleYearDayThreeProPrompt(null);
+    setBibleYearDayThreeProContinueTarget(null);
+    setBibleYearQuickUpgradeContext(null);
+    setBibleYearQuickUpgradeOpen(false);
+    setBibleYearQuickUpgradeError(null);
+    if (!prompt) return;
+    void handleContinueToNextBibleYearDay(prompt.day, prompt.nextDay);
+  }
+
+  function closeBibleYearQuickUpgrade() {
+    if (bibleYearQuickUpgradeLoading) return;
+    if (bibleYearQuickUpgradeContext === "day3") {
+      void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_dismissed, "Bible in One Year Day 3 Pro plan choices dismissed");
+      continueAfterDayThreeProPrompt();
+      return;
+    }
+    setBibleYearQuickUpgradeOpen(false);
+    setBibleYearQuickUpgradeError(null);
+    setBibleYearQuickUpgradeContext(null);
   }
 
   async function startBibleYearQuickUpgrade(plan: "monthly" | "yearly") {
     try {
       setBibleYearQuickUpgradeLoading(plan);
       setBibleYearQuickUpgradeError(null);
+      const returnTo = bibleYearQuickUpgradeContext === "day3" ? "/dashboard?view=bible-year&day=4" : undefined;
+      if (bibleYearQuickUpgradeContext === "day3") {
+        void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_cta_clicked, `Bible in One Year Day 3 Pro ${plan} checkout clicked`);
+      }
 
       const response = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ plan }),
+        body: JSON.stringify({ plan, returnTo }),
       });
 
       const data = await response.json();
@@ -5706,7 +5793,7 @@ export default function DashboardJourneyExperience({
           <div className="mt-3 grid gap-2">
             <button
               type="button"
-              onClick={openBibleYearQuickUpgrade}
+              onClick={() => openBibleYearQuickUpgrade()}
               className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[#2f7fe8] px-4 py-3 text-left text-white shadow-[0_12px_24px_rgba(47,127,232,0.24)] transition hover:brightness-105"
             >
               <span className="text-xl" aria-hidden="true">ðŸ‘‘</span>
@@ -5735,11 +5822,7 @@ export default function DashboardJourneyExperience({
 
   function renderBibleYearQuickUpgradeModal() {
     return (
-      <ModalShell isOpen={bibleYearQuickUpgradeOpen} onClose={() => {
-        if (bibleYearQuickUpgradeLoading) return;
-        setBibleYearQuickUpgradeOpen(false);
-        setBibleYearQuickUpgradeError(null);
-      }}>
+      <ModalShell isOpen={bibleYearQuickUpgradeOpen} onClose={closeBibleYearQuickUpgrade}>
         <div className="bb-skin-glow-card relative w-full max-w-md overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_38%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_82%,transparent))] p-5 text-left text-[var(--bb-text-primary,#111827)] shadow-[0_28px_80px_rgba(0,0,0,0.45),0_0_38px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent)] backdrop-blur-xl">
           {bibleYearQuickUpgradeLoading ? (
             <div className="absolute inset-0 z-20 grid place-items-center bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent)] backdrop-blur-sm">
@@ -5754,11 +5837,7 @@ export default function DashboardJourneyExperience({
           ) : null}
           <button
             type="button"
-            onClick={() => {
-              if (bibleYearQuickUpgradeLoading) return;
-              setBibleYearQuickUpgradeOpen(false);
-              setBibleYearQuickUpgradeError(null);
-            }}
+            onClick={closeBibleYearQuickUpgrade}
             className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_76%,transparent)] text-xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_62%,transparent)] disabled:cursor-not-allowed disabled:opacity-50"
             aria-label="Close plan choices"
             disabled={Boolean(bibleYearQuickUpgradeLoading)}
@@ -5805,15 +5884,154 @@ export default function DashboardJourneyExperience({
           ) : null}
           <button
             type="button"
-            onClick={() => {
-              setBibleYearQuickUpgradeOpen(false);
-              setBibleYearQuickUpgradeError(null);
-            }}
+            onClick={closeBibleYearQuickUpgrade}
             disabled={Boolean(bibleYearQuickUpgradeLoading)}
             className="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_80%,transparent)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-60"
           >
             Keep Studying Free
           </button>
+        </div>
+      </ModalShell>
+    );
+  }
+
+  function renderBibleYearDayThreeProUpgradePrompt() {
+    const prompt = bibleYearDayThreeProPrompt;
+    if (!prompt) return null;
+
+    const sections = [
+      {
+        id: "understand",
+        title: "Understand Scripture More Deeply",
+        body: "Go beyond a quick read with clearer explanations, context, and guided notes that help the story make sense as you keep moving through Genesis and the rest of Scripture.",
+      },
+      {
+        id: "offline",
+        title: "Study Anywhere, Even Offline",
+        body: "Keep your Bible study close when life gets busy. Pro is built for a steadier rhythm so you can keep learning even when your day is not perfect.",
+      },
+      {
+        id: "devices",
+        title: "Access on All Your Devices",
+        body: "Your Bible journey stays connected across devices, so your progress, notes, and study flow are not trapped on one screen.",
+      },
+      {
+        id: "progress",
+        title: "Never Lose Your Progress",
+        body: "Protect the momentum you just built. Your daily progress, streak, and Bible in One Year journey stay tied to your BibleBuddy account.",
+      },
+      {
+        id: "tools",
+        title: "Study Notes + Tools",
+        body: "Unlock deeper study notes, stronger explanations, downloads, and focused tools that help you understand what you are reading instead of just checking off a task.",
+      },
+      {
+        id: "personal",
+        title: "Make It Your Own",
+        body: "Shape BibleBuddy around the way you study with a more complete experience that feels personal, steady, and easier to come back to.",
+      },
+    ];
+
+    function dismissDayThreePrompt(label: string) {
+      void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_dismissed, label);
+      continueAfterDayThreeProPrompt();
+    }
+
+    return (
+      <ModalShell
+        isOpen={Boolean(prompt)}
+        onClose={() => dismissDayThreePrompt("Bible in One Year Day 3 Pro upgrade popup closed")}
+        backdropColor="bg-black/65"
+        scrollable
+        zIndex="z-[95]"
+      >
+        <div className="bb-skin-glow-card relative w-full max-w-2xl overflow-hidden rounded-[30px] border border-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_42%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#4f8df7)_25%,transparent),transparent_42%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_86%,transparent))] p-5 text-left text-[var(--bb-text-primary,#111827)] shadow-[0_32px_90px_rgba(0,0,0,0.48),0_0_42px_color-mix(in_srgb,var(--bb-accent,#4f8df7)_24%,transparent)] backdrop-blur-xl sm:p-7">
+          <button
+            type="button"
+            onClick={() => dismissDayThreePrompt("Bible in One Year Day 3 Pro upgrade popup closed")}
+            className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] text-xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_62%,transparent)]"
+            aria-label="Close Pro upgrade popup"
+          >
+            x
+          </button>
+
+          <div className="inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_16%,transparent)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#4f8df7)]">
+            Bible in One Year
+          </div>
+          <h2 className="mt-4 pr-10 text-3xl font-black leading-tight sm:text-4xl">
+            Congratulations. You just finished Day 3.
+          </h2>
+          <p className="mt-3 text-base font-black leading-6 text-[var(--bb-text-primary,#111827)]">
+            The habit of reading and understanding God's Word is starting to form.
+          </p>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            This is the perfect time to protect your progress and go deeper in your Bible journey.
+          </p>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_70%,transparent)] p-4">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-secondary,#4b5563)]">Free</p>
+              <p className="mt-2 text-lg font-black">Keep moving one day at a time.</p>
+              <p className="mt-2 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                Continue the Bible in One Year journey with your current daily flow.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_42%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-card,#ffffff))] p-4 shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#4f8df7)_18%,transparent)]">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#4f8df7)]">Pro</p>
+              <p className="mt-2 text-lg font-black">Protect the habit you are building.</p>
+              <p className="mt-2 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                Unlock deeper study tools, connected progress, and a more complete BibleBuddy experience.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-5 space-y-2">
+            {sections.map((section) => {
+              const isOpen = bibleYearDayThreeProOpenSection === section.id;
+              return (
+                <div
+                  key={section.id}
+                  className="overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)]"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setBibleYearDayThreeProOpenSection(isOpen ? "" : section.id)}
+                    className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left"
+                  >
+                    <span className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{section.title}</span>
+                    <span className="text-lg font-black text-[var(--bb-accent,#4f8df7)]" aria-hidden="true">
+                      {isOpen ? "-" : "+"}
+                    </span>
+                  </button>
+                  {isOpen ? (
+                    <p className="border-t border-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_16%,var(--bb-card-border,#dbe7f4))] px-4 pb-4 pt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                      {section.body}
+                    </p>
+                  ) : null}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 grid gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                setBibleYearDayThreeProPrompt(null);
+                openBibleYearQuickUpgrade("day3");
+              }}
+              className="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--bb-button,var(--bb-accent,#4f8df7))] px-5 py-4 text-base font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_0_32px_color-mix(in_srgb,var(--bb-accent,#4f8df7)_32%,transparent)] transition hover:brightness-105"
+            >
+              Upgrade to BibleBuddy Pro
+            </button>
+            <button
+              type="button"
+              onClick={() => dismissDayThreePrompt("Bible in One Year Day 3 continued with free plan")}
+              className="inline-flex w-full items-center justify-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+            >
+              Continue with Free Plan
+            </button>
+          </div>
         </div>
       </ModalShell>
     );
@@ -7643,6 +7861,20 @@ Before we understand redemption, we need to understand what God made humanity fo
   }, [bibleYearCompletedCardsByDay, userId]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (bibleYearDayThreeProPrompt || bibleYearQuickUpgradeOpen) return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("showDay3ProPopup") !== "1") return;
+    const dayThree = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 3);
+    const dayFour = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 4);
+    if (!dayThree || !dayFour) return;
+    openDayThreeProPrompt(dayThree, dayFour, { force: true });
+    params.delete("showDay3ProPopup");
+    const nextSearch = params.toString();
+    window.history.replaceState(null, "", `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`);
+  }, [bibleYearDayThreeProPrompt, bibleYearQuickUpgradeOpen]);
+
+  useEffect(() => {
     if (!userId) return;
     const discussionDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
     const slugToDayNumber = new Map(discussionDays.map((day) => [getBibleYearReflectionSlug(day), day.dayNumber]));
@@ -7698,6 +7930,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   async function handleContinueToNextBibleYearDay(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
     if (continuingBibleYearDay === day.dayNumber) return;
+    if (day.dayNumber === 3 && !isPaidUser && openDayThreeProPrompt(day, nextDay)) return;
     setContinuingBibleYearDay(day.dayNumber);
     try {
       setBibleYearCompletionModalDay(null);
@@ -10898,7 +11131,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <div className="mt-5 grid gap-2">
               <button
                 type="button"
-                onClick={openBibleYearQuickUpgrade}
+                onClick={() => openBibleYearQuickUpgrade()}
                 className="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#000000)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] transition hover:brightness-105"
               >
                 Upgrade and Go Deeper
@@ -10976,7 +11209,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <div className="mt-5 grid gap-2">
               <button
                 type="button"
-                onClick={openBibleYearQuickUpgrade}
+                onClick={() => openBibleYearQuickUpgrade()}
                 className="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#000000)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_36%,transparent)] transition hover:brightness-105"
               >
                 Upgrade and Go Deeper
@@ -10992,11 +11225,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         </ModalShell>
 
-        <ModalShell isOpen={bibleYearQuickUpgradeOpen} onClose={() => {
-          if (bibleYearQuickUpgradeLoading) return;
-          setBibleYearQuickUpgradeOpen(false);
-          setBibleYearQuickUpgradeError(null);
-        }}>
+        <ModalShell isOpen={bibleYearQuickUpgradeOpen} onClose={closeBibleYearQuickUpgrade}>
           <div className="bb-skin-glow-card relative w-full max-w-md overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_38%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_82%,transparent))] p-5 text-left text-[var(--bb-text-primary,#111827)] shadow-[0_28px_80px_rgba(0,0,0,0.45),0_0_38px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent)] backdrop-blur-xl">
             {bibleYearQuickUpgradeLoading ? (
               <div className="absolute inset-0 z-20 grid place-items-center bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent)] backdrop-blur-sm">
@@ -11011,11 +11240,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             ) : null}
             <button
               type="button"
-              onClick={() => {
-                if (bibleYearQuickUpgradeLoading) return;
-                setBibleYearQuickUpgradeOpen(false);
-                setBibleYearQuickUpgradeError(null);
-              }}
+              onClick={closeBibleYearQuickUpgrade}
               className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_76%,transparent)] text-xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_62%,transparent)] disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="Close plan choices"
               disabled={Boolean(bibleYearQuickUpgradeLoading)}
@@ -11062,10 +11287,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             ) : null}
             <button
               type="button"
-              onClick={() => {
-                setBibleYearQuickUpgradeOpen(false);
-                setBibleYearQuickUpgradeError(null);
-              }}
+              onClick={closeBibleYearQuickUpgrade}
               disabled={Boolean(bibleYearQuickUpgradeLoading)}
               className="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_80%,transparent)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:cursor-not-allowed disabled:opacity-60"
             >
@@ -13233,6 +13455,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       ) : null}
 
       {renderBibleProgressDetailsModal()}
+      {renderBibleYearDayThreeProUpgradePrompt()}
 
       <ModalShell
         isOpen={showDevotionalSettings}

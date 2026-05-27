@@ -1,24 +1,26 @@
-export default function UpgradeSuccessPage() {
+type UpgradeSuccessPageProps = {
+  searchParams?: Promise<{ returnTo?: string }> | { returnTo?: string };
+};
+
+export default async function UpgradeSuccessPage({ searchParams }: UpgradeSuccessPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : {};
+  const rawReturnTo = typeof resolvedSearchParams.returnTo === "string" ? resolvedSearchParams.returnTo : "";
+  const returnTo = rawReturnTo.startsWith("/") && !rawReturnTo.startsWith("//") ? rawReturnTo : "/dashboard?view=bible-year&day=1";
+
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-16">
+    <div className="flex min-h-screen items-center justify-center px-4 py-16">
       <div className="w-full max-w-2xl text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">🎉 You’re Pro!</h1>
-        <p className="text-xl text-gray-600 mb-6">
-          Your upgrade was successful.
+        <h1 className="mb-4 text-4xl font-bold md:text-5xl">Welcome to BibleBuddy Pro.</h1>
+        <p className="mb-6 text-xl text-gray-600">Your journey is now fully connected.</p>
+        <p className="mb-4 text-base text-gray-600">
+          You now have full access to deeper study tools, notes, and Pro features built to help you keep growing in God&apos;s Word.
         </p>
-        <p className="text-base text-gray-600 mb-4">
-          You now have full access to all Bible Buddy features, including unlimited
-          study tools, trivia, Bible studies, reading plans, and deep Bible insights.
-        </p>
-        <p className="text-sm text-gray-500 mb-10">
-          Thank you for supporting Bible Buddy and investing in deeper Scripture
-          study.
-        </p>
+        <p className="mb-10 text-sm text-gray-500">Let&apos;s continue growing in God&apos;s Word.</p>
         <a
-          href="/dashboard?view=bible-year&day=1"
-          className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+          href={returnTo}
+          className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
         >
-          Go to Dashboard
+          Continue
         </a>
       </div>
     </div>
