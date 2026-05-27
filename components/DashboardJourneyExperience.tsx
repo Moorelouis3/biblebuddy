@@ -1976,6 +1976,7 @@ export default function DashboardJourneyExperience({
   const [dashboardGreeting, setDashboardGreeting] = useState("Good evening");
   const [isAnonymousGuest, setIsAnonymousGuest] = useState(false);
   const [dashboardGuidedIntroStep, setDashboardGuidedIntroStep] = useState<number | null>(null);
+  const [dashboardGuidedIntroTargetRect, setDashboardGuidedIntroTargetRect] = useState<DOMRect | null>(null);
   const [showDayOneStartPrompt, setShowDayOneStartPrompt] = useState(false);
   const [highlightDayOneStartTask, setHighlightDayOneStartTask] = useState(false);
   const dashboardGuidedIntroStartedRef = useRef(false);
@@ -2105,16 +2106,39 @@ export default function DashboardJourneyExperience({
     if (dashboardGuidedIntroStep === null) return;
     const step = DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStep];
     if (!step) return;
-    window.setTimeout(() => {
+    let activeElement: Element | null = null;
+    const updateTargetRect = () => {
+      const element = document.querySelector(`[data-bb-dashboard-tour="${step.target}"]`);
+      activeElement?.classList.remove("bb-dashboard-tour-active-target");
+      activeElement = element;
+      if (!element) {
+        setDashboardGuidedIntroTargetRect(null);
+        return;
+      }
+      element.classList.add("bb-dashboard-tour-active-target");
+      setDashboardGuidedIntroTargetRect(element.getBoundingClientRect());
+    };
+    const scrollTimer = window.setTimeout(() => {
       document
         .querySelector(`[data-bb-dashboard-tour="${step.target}"]`)
         ?.scrollIntoView({ behavior: "smooth", block: step.target === "bottom-menu" ? "end" : "center" });
-    }, 80);
+    }, 60);
+    const measureTimer = window.setTimeout(updateTargetRect, 520);
+    window.addEventListener("resize", updateTargetRect);
+    window.addEventListener("scroll", updateTargetRect, true);
+    return () => {
+      window.clearTimeout(scrollTimer);
+      window.clearTimeout(measureTimer);
+      window.removeEventListener("resize", updateTargetRect);
+      window.removeEventListener("scroll", updateTargetRect, true);
+      activeElement?.classList.remove("bb-dashboard-tour-active-target");
+    };
   }, [dashboardGuidedIntroStep]);
 
   async function closeDashboardGuidedIntro(outcome: "completed" | "skipped") {
     const actionType = outcome === "completed" ? ACTION_TYPE.dashboard_tour_completed : ACTION_TYPE.dashboard_tour_skipped;
     setDashboardGuidedIntroStep(null);
+    setDashboardGuidedIntroTargetRect(null);
     await markDashboardGuidedIntroSeen();
     void logDashboardGuidedIntroAction(actionType, outcome === "completed" ? "Dashboard guided intro completed" : "Dashboard guided intro skipped");
     if (outcome === "completed") {
@@ -2136,6 +2160,7 @@ export default function DashboardJourneyExperience({
     dashboardGuidedIntroStartedRef.current = true;
     setShowDayOneStartPrompt(false);
     setHighlightDayOneStartTask(false);
+    setDashboardGuidedIntroTargetRect(null);
     setDashboardGuidedIntroStep(0);
     void logDashboardGuidedIntroAction(ACTION_TYPE.dashboard_tour_started, "Dashboard guided intro manually started");
   }
@@ -11867,6 +11892,93 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
+  function renderDashboardGuidedIntroOverlay() {
+    if (dashboardGuidedIntroStep === null) return null;
+    const step = DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStep];
+    const rect = dashboardGuidedIntroTargetRect;
+    const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 390;
+    const viewportHeight = typeof window !== "undefined" ? window.innerHeight : 760;
+    const pad = 14;
+    const top = rect ? Math.max(0, rect.top - pad) : 0;
+    const left = rect ? Math.max(0, rect.left - pad) : 0;
+    const right = rect ? Math.min(viewportWidth, rect.right + pad) : viewportWidth;
+    const bottom = rect ? Math.min(viewportHeight, rect.bottom + pad) : viewportHeight;
+    const popoverWidth = Math.min(430, viewportWidth - 32);
+    const popoverLeft = rect
+      ? Math.max(16, Math.min(viewportWidth - popoverWidth - 16, left + ((right - left) - popoverWidth) / 2))
+      : 16;
+    const showBelow = rect ? bottom + 16 + 230 < viewportHeight : true;
+    const popoverTop = rect
+      ? showBelow
+        ? bottom + 16
+        : Math.max(16, top - 246)
+      : Math.max(16, viewportHeight - 330);
+
+    return (
+      <div className="fixed inset-0 z-[118] pointer-events-none">
+        {rect ? (
+          <>
+            <div className="fixed left-0 top-0 bg-black/68 backdrop-blur-[2px]" style={{ width: viewportWidth, height: top }} />
+            <div className="fixed left-0 bg-black/68 backdrop-blur-[2px]" style={{ top, width: left, height: Math.max(0, bottom - top) }} />
+            <div className="fixed bg-black/68 backdrop-blur-[2px]" style={{ top, left: right, width: Math.max(0, viewportWidth - right), height: Math.max(0, bottom - top) }} />
+            <div className="fixed bottom-0 left-0 bg-black/68 backdrop-blur-[2px]" style={{ top: bottom, width: viewportWidth, height: Math.max(0, viewportHeight - bottom) }} />
+          </>
+        ) : (
+          <div className="fixed inset-0 bg-black/68 backdrop-blur-[2px]" />
+        )}
+
+        <div
+          className="pointer-events-auto fixed overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(0,0,0,0.30)]"
+          style={{ left: popoverLeft, top: popoverTop, width: popoverWidth }}
+        >
+          <div className="border-b border-[var(--bb-card-border,#dbe7f4)] px-5 py-4">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+                Step {dashboardGuidedIntroStep + 1} of {DASHBOARD_GUIDED_INTRO_STEPS.length}
+              </p>
+              <button
+                type="button"
+                onClick={() => void closeDashboardGuidedIntro("skipped")}
+                className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] px-3 py-1.5 text-xs font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]"
+              >
+                Skip
+              </button>
+            </div>
+            <h2 className="mt-2 text-xl font-black leading-tight">{step?.title}</h2>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{step?.body}</p>
+          </div>
+          <div className="flex items-center justify-between gap-3 px-5 py-4">
+            <div className="flex gap-1.5">
+              {DASHBOARD_GUIDED_INTRO_STEPS.map((item, index) => (
+                <span
+                  key={item.target}
+                  className={`h-2 w-2 rounded-full ${
+                    index === dashboardGuidedIntroStep ? "bg-[var(--bb-accent,#2f7fe8)]" : "bg-[var(--bb-card-border,#dbe7f4)]"
+                  }`}
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                if (dashboardGuidedIntroStep >= DASHBOARD_GUIDED_INTRO_STEPS.length - 1) {
+                  void closeDashboardGuidedIntro("completed");
+                  return;
+                }
+                setDashboardGuidedIntroTargetRect(null);
+                setDashboardGuidedIntroStep((current) => (current === null ? 0 : Math.min(current + 1, DASHBOARD_GUIDED_INTRO_STEPS.length - 1)));
+              }}
+              className="rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
+            >
+              {dashboardGuidedIntroStep >= DASHBOARD_GUIDED_INTRO_STEPS.length - 1 ? "Finish" : "Next"}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4 pb-[calc(90px+env(safe-area-inset-bottom,0px))] lg:pb-4">
       <style>{`
@@ -12194,6 +12306,17 @@ Before we understand redemption, we need to understand what God made humanity fo
         @keyframes dashboard-day-one-start-highlight {
           0%, 100% { transform: translateY(0) scale(1); }
           50% { transform: translateY(-2px) scale(1.01); }
+        }
+        .bb-dashboard-tour-active-target {
+          position: relative !important;
+          z-index: 125 !important;
+          transform: scale(1.2) !important;
+          transform-origin: center center !important;
+          box-shadow:
+            0 0 0 6px color-mix(in srgb, var(--bb-accent,#2f7fe8) 28%, transparent),
+            0 24px 70px rgba(0,0,0,0.34) !important;
+          transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease !important;
+          filter: brightness(1.04);
         }
         .bible-year-deep-notes-dance {
           animation: bible-year-deep-notes-dance 1.85s ease-in-out infinite;
@@ -13451,58 +13574,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
       </div>
 
-      {dashboardGuidedIntroStep !== null ? (
-        <div className="fixed inset-0 z-[120] flex items-end justify-center bg-black/52 px-4 pb-[calc(104px+env(safe-area-inset-bottom,0px))] pt-6 backdrop-blur-[2px] sm:items-center sm:pb-6">
-          <div className="w-full max-w-md overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
-            <div className="border-b border-[var(--bb-card-border,#dbe7f4)] px-5 py-4">
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
-                  Step {dashboardGuidedIntroStep + 1} of {DASHBOARD_GUIDED_INTRO_STEPS.length}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => void closeDashboardGuidedIntro("skipped")}
-                  className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] px-3 py-1.5 text-xs font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]"
-                >
-                  Skip
-                </button>
-              </div>
-              <h2 className="mt-2 text-xl font-black leading-tight">
-                {DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStep]?.title}
-              </h2>
-              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                {DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStep]?.body}
-              </p>
-            </div>
-            <div className="flex items-center justify-between gap-3 px-5 py-4">
-              <div className="flex gap-1.5">
-                {DASHBOARD_GUIDED_INTRO_STEPS.map((step, index) => (
-                  <span
-                    key={step.target}
-                    className={`h-2 w-2 rounded-full ${
-                      index === dashboardGuidedIntroStep ? "bg-[var(--bb-accent,#2f7fe8)]" : "bg-[var(--bb-card-border,#dbe7f4)]"
-                    }`}
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
-              <button
-                type="button"
-                onClick={() => {
-                  if (dashboardGuidedIntroStep >= DASHBOARD_GUIDED_INTRO_STEPS.length - 1) {
-                    void closeDashboardGuidedIntro("completed");
-                    return;
-                  }
-                  setDashboardGuidedIntroStep((current) => (current === null ? 0 : Math.min(current + 1, DASHBOARD_GUIDED_INTRO_STEPS.length - 1)));
-                }}
-                className="rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
-              >
-                {dashboardGuidedIntroStep >= DASHBOARD_GUIDED_INTRO_STEPS.length - 1 ? "Finish" : "Next"}
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : null}
+      {renderDashboardGuidedIntroOverlay()}
 
       {showDayOneStartPrompt ? (
         <div className="fixed inset-0 z-[121] flex items-end justify-center bg-black/58 px-4 pb-[calc(104px+env(safe-area-inset-bottom,0px))] pt-6 backdrop-blur-[2px] sm:items-center sm:pb-6">
