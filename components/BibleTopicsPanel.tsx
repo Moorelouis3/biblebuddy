@@ -4,14 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { BIBLE_TOPICS } from "../lib/bibleTopics";
 import { trackDeepStudyInterestOnce } from "../lib/deepStudyInterestTracking";
-import { awardDiamonds } from "../lib/diamondWallet";
 import { supabase } from "../lib/supabaseClient";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
-import { triggerPoints } from "./PointsPop";
 import VideoHelpfulPoll from "./VideoHelpfulPoll";
-
-const TOPIC_LESSON_XP = 20;
-const TOPIC_LESSON_DIAMONDS = 10;
 
 type BibleTopicsPanelProps = {
   userId?: string | null;
@@ -179,11 +174,7 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
           if (actionError) {
             console.warn("[BIBLE_TOPICS] Could not persist topic lesson action. Check the master_actions action_type migration.", actionError);
           }
-          await awardDiamonds(userId, TOPIC_LESSON_DIAMONDS);
-          triggerPoints(TOPIC_LESSON_XP, "Bible Topics lesson");
         }
-      } else {
-        triggerPoints(TOPIC_LESSON_XP, "Bible Topics lesson");
       }
 
       setCompletedLessonIds(nextCompleted);
@@ -224,8 +215,7 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
               <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{selectedLesson.subtitle}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary,#111827)]">{selectedLesson.estimatedTime}</span>
-                <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary,#111827)]">+{TOPIC_LESSON_XP} XP</span>
-                <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary,#111827)]">+{TOPIC_LESSON_DIAMONDS} diamonds</span>
+                <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary,#111827)]">Progress saved</span>
               </div>
             </div>
 
@@ -303,7 +293,7 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
                   ? "Completed"
                   : isCompletingLesson
                     ? "Saving..."
-                    : `Mark Complete +${TOPIC_LESSON_XP} XP +${TOPIC_LESSON_DIAMONDS} diamonds`}
+                    : "Mark Complete"}
               </button>
             </div>
           </article>
@@ -402,12 +392,9 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
                         <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{selectedLesson.subtitle}</p>
                         <div className="mt-2 flex flex-wrap items-center gap-2">
                           <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary,#111827)]">
-                            +{TOPIC_LESSON_XP} XP
+                            Progress saved
                           </span>
-                          <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-[11px] font-black text-[var(--bb-text-primary,#111827)]">
-                            +{TOPIC_LESSON_DIAMONDS} diamonds
-                          </span>
-                          <span className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">Earn rewards when you finish the lesson.</span>
+                          <span className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">Mark it complete when you finish the lesson.</span>
                         </div>
                       </div>
                     </div>
@@ -532,7 +519,7 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
                       ? "Completed"
                       : isCompletingLesson
                         ? "Saving..."
-                        : `Mark Complete +${TOPIC_LESSON_XP} XP +${TOPIC_LESSON_DIAMONDS} diamonds`}
+                        : "Mark Complete"}
                   </button>
                   </>
                 ) : null}

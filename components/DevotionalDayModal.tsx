@@ -981,24 +981,7 @@ Be accurate to Scripture.`;
                     </div>
                   </StudySectionCard>
 
-                  <StudySectionCard title="Scrambled" eyebrow="Task 5">
-                    <div className="text-center">
-                      <p className="mx-auto mb-4 max-w-md text-sm leading-relaxed text-gray-600">
-                        Slow down with key words from {chapterLabel} and lock them into memory.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => setShowScrambledModal(true)}
-                        disabled={!scrambledBook || !scrambledChapter}
-                        className="rounded-xl px-6 py-3 text-sm font-bold text-slate-950 transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-                        style={{ backgroundColor: scrambledBook && scrambledChapter ? "#7BAFD4" : "#cbd5e1" }}
-                      >
-                        {scrambledBook && scrambledChapter ? "Play Scrambled" : "Scrambled Coming Soon"}
-                      </button>
-                    </div>
-                  </StudySectionCard>
-
-                  <StudySectionCard title="Reflection" eyebrow="Task 6">
+                  <StudySectionCard title="Reflection" eyebrow="Task 5">
                     <p className="mb-4 text-xl font-black leading-snug text-gray-950">
                       {day.reflection_question || `What stood out to you most in ${primaryDayLabel}?`}
                     </p>

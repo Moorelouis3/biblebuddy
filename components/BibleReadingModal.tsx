@@ -162,7 +162,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
     [normalizedGameBookKey],
   );
   const hasTrivia = Boolean(getTriviaChapter(normalizedGameBookKey, chapter));
-  const hasScrambled = Boolean(getScrambledChapter(normalizedGameBookKey, chapter));
+  const hasScrambled = false;
   const isInline = presentation === "inline";
   const chapterSpeechText = useMemo(
     () =>

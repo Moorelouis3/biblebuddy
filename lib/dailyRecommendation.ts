@@ -419,7 +419,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       a.action_type === "keyword_mastered"
     );
     const lastTriviaAction = allActions.find((a) => a.action_type === "trivia_question_answered");
-    const lastScrambledCompletion = allActions.find((a) => a.action_type === "scrambled_chapter_completed");
+    const lastScrambledCompletion = null;
     const lastBibleNoteAction = allActions.find((a) => a.action_type === "note_created" || a.action_type === "verse_highlighted");
     const daysSinceActive = lastMeaningful ? daysSince(lastMeaningful.created_at) : null;
     const loginActions = allActions.filter((a) => a.action_type === "user_login");
@@ -451,7 +451,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       candidates.push(withLouisCard(createRecommendation({
         priority: 100,
         greeting,
-        contextLine: "Your profile is still one of the fastest ways to make Bible Buddy feel like real community.",
+        contextLine: "Your profile is still one of the fastest ways to make Bible Buddy feel like your space.",
         recommendationLine: missingBits.length > 0
           ? `Add ${missingBits.join(", ")} so people can recognize you, and so the app feels more personal right away.`
           : "Finish setting up your profile so the rest of the app feels more connected to you.",
@@ -463,7 +463,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       }), [
         { title: "Hey, you still have not set up your profile yet", subtitle: "Take a minute and finish it so Bible Buddy feels more personal, and so other people can actually recognize you." },
         { title: "Hey, your profile still needs a little love", subtitle: "Add the missing pieces so the app feels more like your space and less like a blank account." },
-        { title: "Hey, finish your profile when you get a second", subtitle: "Your name, photo, and bio help the whole community side of Bible Buddy click faster." },
+        { title: "Hey, finish your profile when you get a second", subtitle: "Your name, photo, and bio help Bible Buddy feel more personal faster." },
         { title: "Hey, letâ€™s get your profile looking right", subtitle: "A finished profile makes the app feel more real the second people see your name, picture, and bio." },
         { title: "Hey, do not leave your profile half done", subtitle: "Clean that up now and the rest of Bible Buddy will feel way more connected to you." },
       ]));
@@ -517,7 +517,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       }));
     }
 
-    if (memberGroupIds.length === 0) {
+    if (false && memberGroupIds.length === 0) {
       candidates.push(withLouisCard(createRecommendation({
         priority: 96,
         greeting,
@@ -535,7 +535,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         { title: "Hey, go see what the Bible Study Group is about", subtitle: "If you want the app to feel more alive, this is the place where people are really showing up together." },
         { title: "Hey, the group side of Bible Buddy is waiting on you", subtitle: "Open the study group and see how the weekly study and community conversations come together." },
       ]));
-    } else {
+    } else if (false) {
       const { data: currentSeriesRows } = await supabase
         .from("group_series")
         .select("id, group_id, title")
@@ -543,16 +543,17 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         .eq("is_current", true)
         .limit(10);
 
-      if (currentSeriesRows && currentSeriesRows.length > 0) {
-        const seriesIds = currentSeriesRows.map((row) => row.id);
+      const seriesRows = currentSeriesRows || [];
+      if (seriesRows.length > 0) {
+        const seriesIds = seriesRows.map((row) => row.id);
         const { data: progressRows } = await supabase
           .from("series_week_progress")
           .select("series_id, week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
           .eq("user_id", userId)
           .in("series_id", seriesIds);
 
-        for (const seriesRow of currentSeriesRows) {
-          const progressMap = new Map<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }>();
+        for (const seriesRow of seriesRows) {
+          const progressMap = new Map<number, ReturnType<typeof toSeriesWeekProgressState>>();
           (progressRows || [])
             .filter((row) => row.series_id === seriesRow.id)
             .forEach((row) => {
@@ -562,7 +563,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
           let firstIncompleteWeek = 1;
           for (let week = 1; week <= 12; week++) {
             const progress = progressMap.get(week);
-            const complete = progress ? isSeriesWeekComplete(progress) : false;
+            const complete = progress === undefined ? false : isSeriesWeekComplete(progress!);
             if (!complete) {
               firstIncompleteWeek = week;
               break;
@@ -617,13 +618,14 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         .eq("is_read", false)
         .like("article_slug", "/dashboard/%");
 
-      if (unreadGroupCount && unreadGroupCount > 0) {
+      const unreadGroups = Number(unreadGroupCount || 0);
+      if (unreadGroups > 0) {
         candidates.push(withLouisCard(createRecommendation({
           priority: 88,
           greeting,
-          contextLine: unreadGroupCount === 1
+          contextLine: unreadGroups === 1
             ? "There is new activity waiting in your Bible Study Group."
-            : `There are ${unreadGroupCount} new things happening in your Bible Study Group.`,
+            : `There are ${unreadGroups} new things happening in your Bible Study Group.`,
           recommendationLine: "The group is moving right now. Drop back in and see what people posted before you lose the thread of the conversation.",
           primaryButtonText: "Check Group Activity",
           primaryButtonHref: `/dashboard/${memberGroupIds[0]}/chat`,
@@ -766,28 +768,6 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         { title: "Hey, test yourself with a trivia round", subtitle: "If it has been a while, this is a quick way to get your mind back into Scripture." },
         { title: "Hey, wake your Bible memory back up", subtitle: "One trivia round is a simple way to get back in the app and do something useful." },
       ]));
-    }
-
-    if (lastScrambledCompletion) {
-      const scrambledProgress = parseScrambledCompletionLabel(lastScrambledCompletion.action_label);
-      if (scrambledProgress) {
-        const nextScrambledChapter = getNextBibleChapter(scrambledProgress.book, scrambledProgress.chapter);
-        const nextScrambledBookSlug = getScrambledBookSlug(nextScrambledChapter.book);
-
-        if (nextScrambledBookSlug) {
-          candidates.push(createRecommendation({
-            priority: 74,
-            greeting,
-            contextLine: `You finished ${scrambledProgress.book} ${scrambledProgress.chapter} in Scrambled.`,
-            recommendationLine: `You got ${scrambledProgress.score}/${scrambledProgress.total} words right. Try ${nextScrambledChapter.book} ${nextScrambledChapter.chapter} next.`,
-            primaryButtonText: "Play Scrambled",
-            primaryButtonHref: `/bible-study-games/scrambled/${nextScrambledBookSlug}/${nextScrambledChapter.chapter}`,
-            level: 2,
-            category: "games",
-            cardTheme: "gold",
-          }));
-        }
-      }
     }
 
     const totalReferenceActions =

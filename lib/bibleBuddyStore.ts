@@ -50,11 +50,7 @@ export const BUDDY_STORE_ITEMS: BibleBuddyStoreItem[] = [
 
 export const STREAK_FLAME_STORE_ITEMS: BibleBuddyStoreItem[] = [];
 
-export const BOOST_STORE_ITEMS: BibleBuddyStoreItem[] = [
-  { id: "boost-extra-grace-day", kind: "boost", title: "Extra Grace Day", subtitle: "Add 1 grace day to protect your streak.", price: 100, emoji: "Heart", accent: "#DC2626", repeatable: true },
-  { id: "boost-double-xp-7", kind: "boost", title: "Double XP: 7 Days", subtitle: "Earn 2x XP from Bible study tasks this week.", price: 300, emoji: "Bolt", accent: "#B7791F", repeatable: true },
-  { id: "mystery-prize", kind: "mystery", title: "Mystery Prize", subtitle: "Open a surprise reward from the store.", price: 100, emoji: "Gift", accent: "#7C3AED", repeatable: true },
-];
+export const BOOST_STORE_ITEMS: BibleBuddyStoreItem[] = [];
 
 export const STORE_ITEMS = [
   ...PREMIUM_SKIN_STORE_ITEMS,

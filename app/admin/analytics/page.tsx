@@ -506,7 +506,7 @@ function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
   );
 }
 
-export default function AnalyticsPage() {
+export default function AnalyticsPage({ embedded = false }: { embedded?: boolean } = {}) {
   const [isOwner, setIsOwner] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const [windowKey, setWindowKey] = useState<JourneyWindow>("24h");
@@ -634,12 +634,12 @@ export default function AnalyticsPage() {
   }
 
   if (!authChecked) {
-    return <div className="min-h-screen bg-[var(--bb-background,#0e1218)] p-10 text-[var(--bb-text-secondary,#d1d5db)]">Checking analytics access...</div>;
+    return <div className={`${embedded ? "min-h-[420px]" : "min-h-screen"} bg-[var(--bb-background,#0e1218)] p-10 text-[var(--bb-text-secondary,#d1d5db)]`}>Checking analytics access...</div>;
   }
 
   if (!isOwner) {
     return (
-      <div className="grid min-h-screen place-items-center bg-[var(--bb-background,#0e1218)] p-6">
+      <div className={`grid ${embedded ? "min-h-[420px]" : "min-h-screen"} place-items-center bg-[var(--bb-background,#0e1218)] p-6`}>
         <div className="max-w-md rounded-2xl border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] p-6 text-center shadow-sm">
           <h1 className="text-2xl font-bold text-[var(--bb-text-primary,#f9fafb)]">Owner analytics only</h1>
           <p className="mt-2 text-sm text-[var(--bb-text-secondary,#d1d5db)]">This dashboard is only available to the Bible Buddy owner account.</p>
@@ -649,9 +649,9 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <div className="bb-analytics-page min-h-screen bg-[var(--bb-background,#0e1218)] text-[var(--bb-text-primary,#f9fafb)]">
-      <div className="flex min-h-screen">
-        <aside className="hidden w-64 shrink-0 flex-col border-r border-[var(--bb-card-border,#374151)] bg-[var(--bb-surface,#151b24)] px-5 py-6 text-[var(--bb-text-primary,#f9fafb)] lg:flex">
+    <div className={`bb-analytics-page ${embedded ? "min-h-0" : "min-h-screen"} bg-[var(--bb-background,#0e1218)] text-[var(--bb-text-primary,#f9fafb)]`}>
+      <div className={`flex ${embedded ? "min-h-0" : "min-h-screen"}`}>
+        <aside className={`${embedded ? "hidden" : "hidden lg:flex"} w-64 shrink-0 flex-col border-r border-[var(--bb-card-border,#374151)] bg-[var(--bb-surface,#151b24)] px-5 py-6 text-[var(--bb-text-primary,#f9fafb)]`}>
           <div className="flex items-center gap-3">
             <div className="grid h-12 w-12 place-items-center rounded-full border border-amber-400/50 bg-slate-900 text-sm font-black">BB</div>
             <div>
@@ -685,7 +685,7 @@ export default function AnalyticsPage() {
           </div>
         </aside>
 
-        <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-10">
+        <main className={`min-w-0 flex-1 ${embedded ? "px-1 py-1" : "px-4 py-6 sm:px-6 lg:px-10"}`}>
           <div className="mb-5 rounded-xl border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] p-3 shadow-sm lg:hidden">
             <label className="block text-xs font-bold uppercase tracking-[0.14em] text-[var(--bb-text-muted,#9ca3af)]" htmlFor="analytics-mobile-view">
               Analytics Menu

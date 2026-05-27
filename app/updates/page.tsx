@@ -24,8 +24,8 @@ const dailyFlow = [
     body: "When the passage feels confusing, the notes slow it down. People, places, themes, repeated ideas, and hard moments become easier to follow.",
   },
   {
-    title: "Review with Trivia and Scrambled",
-    body: "Games are not filler. They help you remember what you just read by turning review into something active instead of passive.",
+    title: "Review with focused questions",
+    body: "Short review questions help you remember what you just read by turning the lesson into something active instead of passive.",
   },
   {
     title: "Finish with reflection",
@@ -36,19 +36,15 @@ const dailyFlow = [
 const xpExamples = [
   "Finishing chapter steps",
   "Completing Bible study tasks",
-  "Answering games and review questions",
-  "Posting or encouraging others in Community",
+  "Answering review questions",
+  "Returning to your Bible in One Year journey",
   "Showing up consistently over time",
 ];
 
 const navItems = [
   {
     title: "Dashboard",
-    body: "Your daily starting place. This is where your current Bible Study, daily tasks, Bible Buddy, progress, rewards, and next step come together.",
-  },
-  {
-    title: "Community",
-    body: "A Bible-centered place to post, ask questions, share notes, encourage others, and grow with people who are also trying to stay consistent.",
+    body: "Your daily starting place. This is where your current Bible Study, daily tasks, Bible Buddy, progress, and next step come together.",
   },
   {
     title: "Bible TV",
@@ -56,11 +52,11 @@ const navItems = [
   },
   {
     title: "Games",
-    body: "Trivia and word games that reinforce memory, attention, and retention after you read.",
+    body: "Focused review tools that reinforce memory, attention, and retention after you read.",
   },
   {
     title: "Profile",
-    body: "Your progress home. See your level, streaks, activity, rewards, customization, and the story your consistency is building.",
+    body: "Your progress home. See your streaks, activity, profile, and the story your consistency is building.",
   },
 ];
 
@@ -76,14 +72,9 @@ const ecosystem = [
     body: "Your study is broken into clear steps so you never have to guess what counts as a good Bible study session.",
   },
   {
-    title: "XP and Levels",
+    title: "Progress",
     label: "Why keep going",
-    body: "Progress gives your consistency a visible shape. XP is not the point of Bible study, but it helps you see that showing up matters.",
-  },
-  {
-    title: "Diamonds and Store",
-    label: "What you unlock",
-    body: "Diamonds reward consistency and let you personalize the app with themes, frames, Bible Buddies, and future unlockables.",
+    body: "Progress gives your consistency a visible shape. It helps you see that showing up matters.",
   },
   {
     title: "Bible Buddies",
@@ -91,9 +82,9 @@ const ecosystem = [
     body: "Your Buddy gives the app personality, encouragement, and accountability. Different Buddies can feel like different study companions.",
   },
   {
-    title: "Community",
+    title: "Reflection",
     label: "Who grows with you",
-    body: "Study becomes stronger when people encourage each other, share what they are learning, and keep the conversation centered on Scripture.",
+    body: "Study becomes stronger when your daily reading leads to honest reflection tied to Scripture.",
   },
 ];
 
@@ -198,7 +189,7 @@ export default function UpdatesPage() {
           />
           <MiniCard
             title="A habit-building platform"
-            body="Daily tasks, streaks, check-ins, XP, and rewards are designed to help you keep showing up even when motivation is low."
+            body="Daily tasks, streaks, and check-ins are designed to help you keep showing up even when motivation is low."
           />
           <MiniCard
             title="A structured daily experience"
@@ -250,9 +241,9 @@ export default function UpdatesPage() {
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="rounded-[32px] border border-[#dbe7f4] bg-[#f8fbff] p-6">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Progress systems</p>
-            <h2 className="mt-3 text-3xl font-black leading-tight text-gray-950">XP exists to make consistency visible.</h2>
+            <h2 className="mt-3 text-3xl font-black leading-tight text-gray-950">Progress exists to make consistency visible.</h2>
             <p className="mt-4 text-sm font-semibold leading-6 text-gray-600">
-              XP is not the reason we study the Bible. Scripture is the reason. But when you are building a habit, it helps to see proof that small faithful actions are adding up.
+              Progress tracking is not the reason we study the Bible. Scripture is the reason. But when you are building a habit, it helps to see proof that small faithful actions are adding up.
             </p>
           </div>
 
@@ -260,12 +251,12 @@ export default function UpdatesPage() {
             <MiniCard title="Levels" body="Levels give long-term shape to your growth. They remind you that daily study is not wasted, even when progress feels slow." />
             <MiniCard title="Streaks" body="Streaks help you protect the habit. They are not about perfection. They are about returning daily and building rhythm." />
             <MiniCard title="Daily check-ins" body="Check-ins keep the app personal. They help BibleBuddy respond to where you are and nudge you back toward Scripture." />
-            <MiniCard title="Rewards" body="Rewards make consistency feel alive. XP, diamonds, unlocks, and celebrations give your effort a visible trail." />
+            <MiniCard title="Celebrations" body="Celebrations make consistency feel visible and give your faithful effort a clear trail." />
           </div>
         </div>
 
         <div className="mx-auto mt-8 max-w-5xl rounded-[28px] border border-gray-200 bg-white p-6 shadow-sm">
-          <p className="text-sm font-black uppercase tracking-[0.16em] text-gray-500">You can earn XP by</p>
+          <p className="text-sm font-black uppercase tracking-[0.16em] text-gray-500">Progress grows when you keep</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {xpExamples.map((item) => (
               <div key={item} className="rounded-2xl bg-[#eaf5ff] px-4 py-4 text-sm font-black leading-5 text-[#2f6685]">
@@ -278,15 +269,15 @@ export default function UpdatesPage() {
 
       <section className="px-4 py-14 sm:px-6">
         <SectionHeader
-          eyebrow="Diamonds and customization"
-          title="Rewards should make the app feel like yours."
-          body="Diamonds are BibleBuddy's customization currency. As you build consistency, you can unlock visual pieces that make your study space feel more personal."
+          eyebrow="Customization"
+          title="BibleBuddy should feel like yours."
+          body="Themes and profile settings can make the app feel personal while keeping Scripture and daily study at the center."
         />
 
         <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-3">
           <MiniCard title="Themes and frames" body="Change the look and feel of your BibleBuddy space so the app feels warm, personal, and motivating." />
           <MiniCard title="Bible Buddy customization" body="Unlock and switch Buddies so your study encouragement can match the kind of tone that helps you most." />
-          <MiniCard title="Future unlockables" body="The store can keep growing with new customization, rewards, and collectibles tied to consistent Bible study." />
+          <MiniCard title="Simple personalization" body="Keep the visual style personal without turning BibleBuddy into a store or reward economy." />
         </div>
       </section>
 
@@ -308,16 +299,16 @@ export default function UpdatesPage() {
 
       <section className="px-4 py-14 sm:px-6">
         <SectionHeader
-          eyebrow="Community, TV, and games"
-          title="Learning sticks when it becomes active."
-          body="BibleBuddy gives you more than reading. You can talk about what you learned, watch Bible content, and review through interactive games."
+            eyebrow="Bible TV and review"
+            title="Learning sticks when it becomes active."
+            body="BibleBuddy gives you more than reading. You can reflect on what you learned, watch Bible content, and review through focused questions."
         />
 
         <div className="mx-auto mt-10 grid max-w-6xl gap-4 lg:grid-cols-3">
           <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-6 shadow-sm">
-            <h3 className="text-2xl font-black text-gray-950">Community</h3>
+            <h3 className="text-2xl font-black text-gray-950">Daily reflection</h3>
             <p className="mt-3 text-sm font-semibold leading-6 text-gray-600">
-              Post notes, ask questions, share testimonies, encourage others, and build a positive Bible-centered space. Interaction can earn XP, but the deeper reward is growing together.
+              Write what stood out from the daily reading and keep discussion tied directly to Scripture.
             </p>
           </div>
           <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-6 shadow-sm">
@@ -329,7 +320,7 @@ export default function UpdatesPage() {
           <div className="rounded-[28px] border border-[#dbe7f4] bg-white p-6 shadow-sm">
             <h3 className="text-2xl font-black text-gray-950">Bible Games</h3>
             <p className="mt-3 text-sm font-semibold leading-6 text-gray-600">
-              Trivia and Scrambled help reinforce memory. They turn review into practice so the chapter does not disappear the moment you close it.
+              Trivia and review questions help reinforce memory. They turn review into practice so the chapter does not disappear the moment you close it.
             </p>
           </div>
         </div>

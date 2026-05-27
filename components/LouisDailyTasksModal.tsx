@@ -160,10 +160,10 @@ function parseCompletedScore(actionLabel: string | null | undefined) {
 function formatGamePointsLabel(done: boolean, actionLabel: string | null | undefined, total: number) {
   if (done) {
     const completedScore = parseCompletedScore(actionLabel);
-    if (completedScore) return `+${completedScore.score * 5} XP`;
+    if (completedScore) return `${completedScore.score}/${completedScore.total} complete`;
   }
 
-  return `Up to +${total * 5} XP`;
+  return `${total} questions`;
 }
 
 function countWords(value: string | null | undefined) {

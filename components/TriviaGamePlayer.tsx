@@ -403,15 +403,9 @@ export default function TriviaGamePlayer({
             {correctCount}/{questions.length}
           </p>
           <p className="mx-auto mt-4 max-w-md text-base font-bold leading-7 text-gray-950">{encouragement}</p>
-          {earnedCorrectCount > 0 ? (
-            <p className="mt-5 text-base font-black leading-7 text-gray-950">
-              You earned +{Math.round(earnedCorrectCount * (TASK_XP.triviaPerfect / Math.max(questions.length, 1)))} XP for new correct answers.
-            </p>
-          ) : (
-            <p className="mt-5 text-base font-bold leading-7 text-gray-950">
-              No new XP this run (you already earned XP for these questions before).
-            </p>
-          )}
+          <p className="mt-5 text-base font-black leading-7 text-gray-950">
+            Your trivia progress was saved.
+          </p>
           {onClose ? (
             <button
               type="button"
@@ -423,12 +417,6 @@ export default function TriviaGamePlayer({
           ) : null}
           {!onClose ? (
             <div className="mt-8 space-y-3">
-              <Link
-                href={scrambledHref}
-                className="block rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
-              >
-                Play Scrambled
-              </Link>
               <Link
                 href={`/bible-trivia/${bookSlug}`}
                 className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"

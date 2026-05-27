@@ -895,38 +895,38 @@ function getStreakCelebrationLine(currentStreak: number) {
   }
 
   if (currentStreak === 1) {
-    return "You're on day 1 right now, and that also means you just picked up 1 extra XP from your streak. Once you hit 30 days, you earn the fire and your habit really starts to feel real.";
+    return "You're on day 1 right now. Once you hit 30 days, you earn the fire and your habit really starts to feel real.";
   }
 
   if (currentStreak === 2) {
-    return "This is your second day in a row. That's how a habit starts getting real, and your streak just gave you 2 extra XP today.";
+    return "This is your second day in a row. That's how a habit starts getting real.";
   }
 
   if (currentStreak === 3) {
-    return "You're on day 3 now. That's real momentum, not just a random check-in, and your streak just added 3 extra XP.";
+    return "You're on day 3 now. That's real momentum, not just a random check-in.";
   }
 
   if (currentStreak === 4) {
-    return "Four days in a row is big. Most people talk about consistency, but this is what consistency actually looks like, and your streak just gave you 4 extra XP.";
+    return "Four days in a row is big. Most people talk about consistency, but this is what consistency actually looks like.";
   }
 
   if (currentStreak === 5) {
-    return "Five straight days is strong. You're not just visiting Bible Buddy now. You're building something, and you just picked up 5 extra XP from your streak.";
+    return "Five straight days is strong. You're not just visiting Bible Buddy now. You're building something.";
   }
 
   if (currentStreak === 6) {
-    return "Six days in a row is serious. You're close to a full week of showing up for your walk with God, and your streak just gave you 6 extra XP.";
+    return "Six days in a row is serious. You're close to a full week of showing up for your walk with God.";
   }
 
   if (currentStreak === 7) {
-    return "A full week in a row is strong. That's how Bible study starts becoming part of your real life, and today your streak gave you 7 extra XP.";
+    return "A full week in a row is strong. That's how Bible study starts becoming part of your real life.";
   }
 
   if (currentStreak < 30) {
-    return `You're on day ${currentStreak}, which means you just got ${currentStreak} extra XP from your streak today. Keep stacking days like this and the fire is coming.`;
+    return `You're on day ${currentStreak}. Keep stacking days like this and the fire is coming.`;
   }
 
-  return `You're on day ${currentStreak}, and you've already earned the fire. You also just picked up ${currentStreak} extra XP from your streak today. Now it's about protecting the habit and growing deeper.`;
+  return `You're on day ${currentStreak}, and you've already earned the fire. Now it's about protecting the habit and growing deeper.`;
 }
 
 function getDailyStreakMotivation(currentStreak: number) {
@@ -1039,7 +1039,7 @@ function getActionWindowCount(rows: LouisActionRow[], preference: LouisActionPre
 }
 
 function getStrongestAndWeakestPreferences(rows: LouisActionRow[]) {
-  const preferences: LouisActionPreference[] = ["devotional", "reading", "group", "trivia", "scrambled", "tv", "notes"];
+  const preferences: LouisActionPreference[] = ["devotional", "reading", "trivia", "tv", "notes"];
   const withCounts = preferences.map((preference) => ({
     preference,
     count14: getActionWindowCount(rows, preference, 14),
@@ -1100,8 +1100,8 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
   if (context.lastMasterActionSummary?.continueHref) {
     const href = context.lastMasterActionSummary.continueHref;
     const isBible = href.includes("/Bible/") || href === "/reading";
-    const isGroup = href.includes("/dashboard");
-    const isGame = href.includes("/bible-trivia") || href.includes("/scrambled") || href.includes("/bible-study-games");
+    const isGroup = false;
+    const isGame = href.includes("/bible-trivia");
 
     candidates.push({
       key: `resume-${href}`,
@@ -1148,7 +1148,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
     });
   }
 
-  if (context.currentPollQuestion && !context.hasAnsweredCurrentPoll) {
+  if (false && context.currentPollQuestion && !context.hasAnsweredCurrentPoll) {
     candidates.push({
       key: "group-poll",
       kind: "study",
@@ -1162,7 +1162,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
     });
   }
 
-  if (context.currentSeriesTitle && !context.hasStartedCurrentSeries) {
+  if (false && context.currentSeriesTitle && !context.hasStartedCurrentSeries) {
     candidates.push({
       key: "group-series",
       kind: "study",
@@ -1176,7 +1176,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
     });
   }
 
-  if (context.leastUsedPreference === "scrambled") {
+  if (false && context.leastUsedPreference === "scrambled") {
     candidates.push({
       key: "discover-scrambled",
       kind: "game",
@@ -1219,7 +1219,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
           : "I want you to finish your profile bio today.",
       ],
       whyLine:
-        "Let people know who they are studying with. That makes the community side of Bible Buddy feel real.",
+        "Let people know who they are studying with. That makes Bible Buddy feel more personal.",
       question: context.missingProfilePhoto ? "Want to upload one now?" : "Want to finish that now?",
       href: "/profile",
       yesFollowUp: "Let's clean up your profile and make it feel complete.",
@@ -1229,9 +1229,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
   const ranked = candidates.sort((a, b) => b.score - a.score);
   const primary = ranked.find((candidate) => !candidate.secondOnly) ?? buildFallbackTarget(context.goal, context.currentStreak);
   const expansionCategories: Array<LouisDailyActionTarget["category"]> = [
-    "group",
     "trivia",
-    "scrambled",
     "tv",
     "notes",
     "profile",
@@ -1269,23 +1267,13 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
 function buildHabitNudgeFromCards(openedCards: string[]): LouisHabitNudge | null {
   const seen = new Set(openedCards);
 
-  if (!seen.has("Bible Study Group")) {
-    return {
-      key: "group",
-      summary:
-        "I've noticed you haven't tried the Bible Study Group yet. You do not have to study alone in here.",
-      label: "Try the group",
-      href: "/dashboard",
-    };
-  }
-
   if (!seen.has("Bible Study Games")) {
     return {
       key: "trivia",
       summary:
-        "You've been showing up, but you still haven't tried Bible Study Games. That's one of the easiest ways to lock in what you're learning.",
-      label: "Try Bible Study Games",
-      href: "/bible-study-games",
+        "You've been showing up, but you still haven't tried Bible Trivia. That's one of the easiest ways to lock in what you're learning.",
+      label: "Try Bible Trivia",
+      href: "/bible-trivia",
     };
   }
 
@@ -1384,27 +1372,20 @@ function summarizeLastMasterAction(action: {
     };
   }
 
-  if (action.action_type === "scrambled_word_answered" || action.action_type === "scrambled_chapter_completed") {
-    return {
-      summary: label ? `Last time you were playing ${label}.` : "Last time you were in Scrambled.",
-      followUp: "Do you want to go back there?",
-      continueLabel: "Open Bible Study Games",
-      continueHref: "/bible-study-games",
-    };
-  }
+  if (action.action_type === "scrambled_word_answered" || action.action_type === "scrambled_chapter_completed") return null;
 
   if (action.action_type === "dashboard_card_opened" && label) {
     const href =
       label === "The Bible"
         ? "/reading"
         : label === "Bible Study Group"
-          ? "/dashboard"
+          ? null
           : label === "Bible Study Tools"
             ? "/guided-studies"
             : label === "Bible Buddy TV"
               ? "/biblebuddy-tv"
               : label === "Bible Study Games"
-                ? "/bible-study-games"
+                ? "/bible-trivia"
                 : null;
 
     return {
@@ -1541,25 +1522,6 @@ function buildLouisJourneyRecommendation({
     };
   }
 
-  if (hasTriedTrivia && !hasTriedScrambled && primaryDevotional.dayNumber >= 3) {
-    return {
-      greeting: "Let's lock it in one more way.",
-      contextLine: `You already reinforced ${primaryDevotional.title} with trivia.`,
-      recommendationLine:
-        "Now hit Scrambled and make yourself remember it from another angle. That's how this starts sticking for real.",
-      primaryButtonText: "Open Scrambled",
-      primaryButtonHref: "/bible-study-games",
-      level: 1,
-      cardTitle: "Follow Trivia With Scrambled",
-      cardSubtitle: "Use another quick game to help it stick.",
-      cardEyebrow: "Reinforcement",
-      cardTheme: "gold",
-      recommendationKey: `louis-journey-scrambled:${primaryDevotional.id}:${primaryDevotional.dayNumber}`,
-      category: "general",
-      journeyType: "scrambled_expansion",
-    };
-  }
-
   if (
     normalizeOnboardingGoal(goal) === "understand_bible_better" &&
     primaryDevotional.dayNumber >= 1 &&
@@ -1587,7 +1549,7 @@ function buildLouisJourneyRecommendation({
     ((normalizeOnboardingGoal(goal) === "study_with_buddies" && currentStreak >= 3) ||
       currentStreak >= 7 ||
       stage === "expanding_features") &&
-    !hasTriedGroup
+    false && !hasTriedGroup
   ) {
     return {
       greeting: "You've got a real base now.",

@@ -1,26 +1,24 @@
 import { ACTION_TYPE } from "./actionTypes";
 import { logActionToMasterActions } from "./actionRecorder";
-import { awardDiamonds } from "./diamondWallet";
-import { DIAMOND_REWARDS } from "./progressionRewards";
 import { supabase } from "./supabaseClient";
 
-export function buildBibleBuddyTvWatchRewardLabel(input: {
+export function buildBibleBuddyTvWatchLabel(input: {
   categoryLabel: string;
   title: string;
   episodeLabel: string;
   episodeTitle: string;
   episodeId: string;
 }) {
-  return `${input.categoryLabel} • ${input.title} • ${input.episodeLabel} • ${input.episodeTitle} • reward:${input.episodeId}`;
+  return `${input.categoryLabel} - ${input.title} - ${input.episodeLabel} - ${input.episodeTitle} - watch:${input.episodeId}`;
 }
 
-export async function awardBibleBuddyTvWatchOnce(input: {
+export async function recordBibleBuddyTvWatchOnce(input: {
   userId: string;
   username?: string | null;
   actionLabel: string;
 }) {
   const { userId, username = null, actionLabel } = input;
-  if (!userId || !actionLabel) return { awarded: false };
+  if (!userId || !actionLabel) return { recorded: false };
 
   const { data, error } = await supabase
     .from("master_actions")
@@ -32,11 +30,11 @@ export async function awardBibleBuddyTvWatchOnce(input: {
     .maybeSingle();
 
   if (error) {
-    console.warn("[TV] Could not check existing TV reward:", error);
-    return { awarded: false };
+    console.warn("[TV] Could not check existing TV watch:", error);
+    return { recorded: false };
   }
 
-  if (data?.id) return { awarded: false };
+  if (data?.id) return { recorded: false };
 
   await logActionToMasterActions(
     userId,
@@ -44,7 +42,6 @@ export async function awardBibleBuddyTvWatchOnce(input: {
     actionLabel,
     username,
   );
-  await awardDiamonds(userId, DIAMOND_REWARDS.tvVideoWatch);
 
-  return { awarded: true };
+  return { recorded: true };
 }

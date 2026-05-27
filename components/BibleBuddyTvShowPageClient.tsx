@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import BibleBuddyTvEpisodeModal from "./BibleBuddyTvEpisodeModal";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { logActionToMasterActions } from "../lib/actionRecorder";
-import { awardBibleBuddyTvWatchOnce, buildBibleBuddyTvWatchRewardLabel } from "../lib/bibleBuddyTvRewards";
+import { buildBibleBuddyTvWatchLabel, recordBibleBuddyTvWatchOnce } from "../lib/bibleBuddyTvRewards";
 import {
   bibleBuddyTvTitles,
   type BibleBuddyTvEpisode,
@@ -235,18 +235,18 @@ export default function BibleBuddyTvShowPageClient({
     const { resolvedUserId, resolvedUserName } = await ensureTrackingUser();
 
     if (resolvedUserId) {
-      const actionLabel = buildBibleBuddyTvWatchRewardLabel({
+      const actionLabel = buildBibleBuddyTvWatchLabel({
         categoryLabel,
         title: title.title,
         episodeLabel: episode.contentLabel || (isMovie ? "Movie" : `Episode ${episode.episodeNumber}`),
         episodeTitle: episode.title,
         episodeId: episode.id,
       });
-      void awardBibleBuddyTvWatchOnce({
+      void recordBibleBuddyTvWatchOnce({
         userId: resolvedUserId,
         username: resolvedUserName,
         actionLabel,
-      }).catch((error) => {
+      }).catch((error: unknown) => {
         console.error("[NAV] Failed to track Bible Buddy TV video start:", error);
       });
     }

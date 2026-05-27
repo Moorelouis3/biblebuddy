@@ -10,9 +10,6 @@
 
 import { supabase } from "./supabaseClient";
 import type { ActionType } from "./actionTypes";
-import { ACTION_TYPE } from "./actionTypes";
-import { awardDiamonds } from "./diamondWallet";
-import { DIAMOND_REWARDS, getTriviaScoreFromLabel } from "./progressionRewards";
 import { syncCurrentStreakToProfileStats } from "./profileStats";
 import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
 
@@ -101,23 +98,7 @@ export async function logActionToMasterActions(
       console.error("[ACTION] Error syncing streak after action:", streakError);
     }
 
-    const score = getTriviaScoreFromLabel(actionLabel || "");
-    const diamondsToAward =
-      actionType === ACTION_TYPE.chapter_completed
-        ? DIAMOND_REWARDS.fullChapter
-        : actionType === ACTION_TYPE.book_completed
-          ? DIAMOND_REWARDS.fullBook
-          : actionType === ACTION_TYPE.devotional_reflection_saved
-            ? DIAMOND_REWARDS.reflection
-            : actionType === ACTION_TYPE.trivia_chapter_completed && score?.perfect
-              ? DIAMOND_REWARDS.perfectTrivia
-              : actionType === ACTION_TYPE.scrambled_chapter_completed && score?.perfect
-                ? DIAMOND_REWARDS.perfectScrambled
-                : 0;
-
-    if (diamondsToAward > 0) {
-      await awardDiamonds(userId, diamondsToAward);
-    }
+    // Rewards/currency were intentionally removed. The master action log now records behavior only.
   } catch (err) {
     console.error("[ACTION] Error in logActionToMasterActions:", err);
     throw err;

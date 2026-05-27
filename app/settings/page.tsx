@@ -88,7 +88,7 @@ function getPasswordResetRedirectUrl() {
 const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:replay-dashboard-guided-intro";
 const BIBLE_YEAR_OFFLINE_WIFI_ONLY_KEY = "bb:bible-year-offline-wifi-only";
 
-export default function SettingsPage() {
+export default function SettingsPage({ embedded = false }: { embedded?: boolean } = {}) {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -898,7 +898,7 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[var(--bb-background,#0e1218)] flex items-center justify-center">
+      <div className={`${embedded ? "min-h-[420px]" : "min-h-screen"} bg-[var(--bb-background,#0e1218)] flex items-center justify-center`}>
         <p className="text-[var(--bb-text-secondary,#d1d5db)]">Loading...</p>
       </div>
     );
@@ -958,7 +958,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="h-dvh min-h-screen overflow-y-auto bg-[var(--bb-background,#0e1218)] pb-12 text-[var(--bb-text-primary,#f9fafb)] [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch]">
+    <div className={`${embedded ? "min-h-0 overflow-visible" : "h-dvh min-h-screen overflow-y-auto"} bg-[var(--bb-background,#0e1218)] pb-12 text-[var(--bb-text-primary,#f9fafb)] [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch]`}>
       {guestLogoutWarningOpen ? (
         <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/55 px-4">
           <div className="w-full max-w-md rounded-3xl border border-[#d8e7f2] bg-white p-6 text-center shadow-2xl">
@@ -1029,7 +1029,7 @@ export default function SettingsPage() {
           </div>
         </div>
       ) : null}
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className={`${embedded ? "max-w-xl px-1 py-1" : "max-w-2xl px-4 py-8"} mx-auto`}>
         <h1 className="text-3xl font-bold mb-8 text-[var(--bb-text-primary,#f9fafb)]">Settings</h1>
 
         {settingsMessage ? (
