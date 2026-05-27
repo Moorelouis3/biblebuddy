@@ -12095,6 +12095,15 @@ Before we understand redemption, we need to understand what God made humanity fo
             {bibleYearDashboardActive && activeBibleYearDashboardDay && !homePanelOverride && !shouldShowCompletionPanel ? (
               <>
                 {renderHomeSupportStatsStrip()}
+                {userId === DAY_THREE_PRO_POPUP_PREVIEW_USER_ID ? (
+                  <button
+                    type="button"
+                    onClick={previewDayThreeProPromptForOwner}
+                    className="inline-flex w-full items-center justify-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_40%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_72%,var(--bb-card,#ffffff))] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-[0_12px_26px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,transparent)] transition hover:brightness-95"
+                  >
+                    Preview Day 3 Pro Popup
+                  </button>
+                ) : null}
                 {renderBibleYearHomeProgressSnapshot(activeBibleYearDashboardDay)}
                 <section data-bb-dashboard-tour="journey-map" className="dashboard-inline-task mb-3 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_82%,transparent)] text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
                   <button
