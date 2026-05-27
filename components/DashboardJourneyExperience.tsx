@@ -5933,42 +5933,42 @@ export default function DashboardJourneyExperience({
     const sections = [
       {
         id: "understand",
-        icon: "Book",
+        icon: "📖",
         iconClass: "bg-[#eadcff] text-[#6d3fd1]",
         title: "Understand Scripture More Deeply",
         body: "Go beyond a quick read with clearer explanations, context, and guided notes that help the story make sense as you keep moving through Genesis and the rest of Scripture.",
       },
       {
         id: "offline",
-        icon: "Offline",
+        icon: "✈️",
         iconClass: "bg-[#f5e3c3] text-[#9a6517]",
         title: "Study Anywhere, Even Offline",
         body: "Keep your Bible study close when life gets busy. Pro is built for a steadier rhythm so you can keep learning even when your day is not perfect.",
       },
       {
         id: "devices",
-        icon: "Sync",
+        icon: "🔄",
         iconClass: "bg-[#ddecff] text-[#2f6bcf]",
         title: "Access on All Your Devices",
         body: "Your Bible journey stays connected across devices, so your progress, notes, and study flow are not trapped on one screen.",
       },
       {
         id: "progress",
-        icon: "Save",
+        icon: "🛡️",
         iconClass: "bg-[#dff0d8] text-[#3b7a39]",
         title: "Never Lose Your Progress",
         body: "Protect the momentum you just built. Your daily progress, streak, and Bible in One Year journey stay tied to your BibleBuddy account.",
       },
       {
         id: "tools",
-        icon: "Notes",
+        icon: "📝",
         iconClass: "bg-[#ffefc2] text-[#b37a00]",
         title: "Study Notes + Tools",
         body: "Unlock deeper study notes, stronger explanations, downloads, and focused tools that help you understand what you are reading instead of just checking off a task.",
       },
       {
         id: "personal",
-        icon: "You",
+        icon: "✨",
         iconClass: "bg-[#e6f3ff] text-[#1f65c7]",
         title: "Make It Your Own",
         body: "Shape BibleBuddy around the way you study with a more complete experience that feels personal, steady, and easier to come back to.",
@@ -6027,14 +6027,16 @@ export default function DashboardJourneyExperience({
                     className="flex w-full items-center gap-2.5 py-1.5 text-left"
                     aria-expanded={isOpen}
                   >
-                    <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[10px] font-black ${section.iconClass}`} aria-hidden="true">
+                    <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-base font-black ${section.iconClass}`} aria-hidden="true">
                       {section.icon}
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-black leading-tight text-[#0b162f]">{section.title}</span>
-                      <span className="mt-0.5 block text-[11px] font-semibold leading-4 text-[#3b4b66]">
-                        {isOpen ? section.body : "Tap to learn more."}
-                      </span>
+                      {isOpen ? (
+                        <span className="mt-1 block text-[11px] font-semibold leading-4 text-[#3b4b66]">
+                          {section.body}
+                        </span>
+                      ) : null}
                     </span>
                     <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#d9e6fb] bg-[#f4f8ff] text-sm font-black text-[#2f7fe8]" aria-hidden="true">
                       {isOpen ? "-" : "+"}
@@ -6054,7 +6056,7 @@ export default function DashboardJourneyExperience({
               }}
               className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[#2f7fe8] px-4 py-3 text-left text-white shadow-[0_12px_24px_rgba(47,127,232,0.24)] transition hover:brightness-105"
             >
-              <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18 text-[11px] font-black" aria-hidden="true">PRO</span>
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18 text-base font-black" aria-hidden="true">👑</span>
               <span>
                 <span className="block text-sm font-black leading-tight">Upgrade to BibleBuddy Pro</span>
                 <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Protect progress and unlock deeper study</span>
