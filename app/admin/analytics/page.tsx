@@ -210,6 +210,10 @@ function formatLastActive(value: string) {
   return `${days} day${days === 1 ? "" : "s"} ago`;
 }
 
+function getRate(part: number, whole: number) {
+  return whole > 0 ? Number(((part / whole) * 100).toFixed(1)) : 0;
+}
+
 function getFunnelHealth(rate: number) {
   if (rate < 10) {
     return {
@@ -580,8 +584,11 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
     freeAccountRate: 0,
     proUpgradeRate: 0,
   };
-  const funnelHealth = getFunnelHealth(metrics.onboardingCompletionRate);
   const bibleBuddyFunnelStages = data?.bibleBuddyFunnelStages || [];
+  const landingStageUsers = bibleBuddyFunnelStages.find((stage) => stage.key === "landing")?.users ?? metrics.totalVisitors;
+  const finishedOnboardingStageUsers = bibleBuddyFunnelStages.find((stage) => stage.key === "finishedOnboarding")?.users ?? metrics.finishedOnboarding;
+  const landingToFinishedOnboardingRate = getRate(finishedOnboardingStageUsers, landingStageUsers);
+  const funnelHealth = getFunnelHealth(landingToFinishedOnboardingRate);
 
   const filteredRows = useMemo(() => {
     const cleanSearch = search.trim().toLowerCase();
@@ -756,15 +763,6 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
               <p className="text-lg font-black">{funnelHealth.label}</p>
               <p className="text-sm font-bold text-left">{funnelHealth.message}</p>
             </div>
-          </section>
-
-          <section className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-6">
-            <MetricCard label="Total Visitors" value={metrics.totalVisitors} percent={100} icon="visitors" tone="bg-blue-50 text-blue-600" />
-            <MetricCard label="Finished Onboarding" value={metrics.finishedOnboarding} percent={metrics.onboardingCompletionRate} icon="check" tone="bg-emerald-50 text-emerald-600" />
-            <MetricCard label="Started Day 1" value={metrics.startedDay1} percent={metrics.day1StartRate} icon="book" tone="bg-violet-50 text-violet-600" />
-            <MetricCard label="Completed Day 1" value={metrics.completedDay1} percent={metrics.day1CompletionRate} icon="flame" tone="bg-rose-50 text-rose-600" />
-            <MetricCard label="Created Account" value={metrics.createdFreeAccount} percent={metrics.freeAccountRate} icon="user" tone="bg-amber-50 text-amber-600" />
-            <MetricCard label="Upgraded To Pro" value={metrics.upgradedToPro} percent={metrics.proUpgradeRate} icon="pro" tone="bg-orange-50 text-orange-600" />
           </section>
 
           <section className="mt-8 rounded-xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
