@@ -89,11 +89,6 @@ const DASHBOARD_GUIDED_INTRO_STEPS = [
     body: "Open the first task card to begin the day. This is the action that moves the journey forward.",
   },
   {
-    target: "study-notes",
-    title: "Go deeper when needed",
-    body: "Study notes help explain the passage after the main reading task is underway.",
-  },
-  {
     target: "bottom-menu",
     title: "Move around anytime",
     body: "The bottom menu stays fixed so Progress, Bible, Home, chat, and invite are always within reach.",
@@ -2141,13 +2136,12 @@ export default function DashboardJourneyExperience({
     setDashboardGuidedIntroTargetRect(null);
     await markDashboardGuidedIntroSeen();
     void logDashboardGuidedIntroAction(actionType, outcome === "completed" ? "Dashboard guided intro completed" : "Dashboard guided intro skipped");
-    if (outcome === "completed") {
-      setShowDayOneStartPrompt(true);
-    }
+    if (outcome === "completed") focusDayOneStartTask();
   }
 
   function focusDayOneStartTask() {
     setShowDayOneStartPrompt(false);
+    setActiveBibleYearDayCard(null);
     setHighlightDayOneStartTask(true);
     window.setTimeout(() => {
       document
@@ -2168,7 +2162,7 @@ export default function DashboardJourneyExperience({
   function startDayOneOnboardingReplay() {
     setDashboardGuidedIntroStep(null);
     setHighlightDayOneStartTask(false);
-    setShowDayOneStartPrompt(true);
+    focusDayOneStartTask();
   }
 
   useEffect(() => {
@@ -9689,6 +9683,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         } ${
           isActiveInlineTask ? "dashboard-task-shell-open" : ""
         } ${taskShellClasses}`}
+        data-bible-year-task-card={activeBibleYearDashboardDay && bibleYearTaskCard ? bibleYearTaskCard : undefined}
         data-bible-year-day-one-start-task={isDayOneStartTask ? "true" : undefined}
         style={isNewChapterDropping ? { animationDelay: `${index * 85}ms` } : undefined}
       >
@@ -11904,14 +11899,24 @@ Before we understand redemption, we need to understand what God made humanity fo
     const right = rect ? Math.min(viewportWidth, rect.right + pad) : viewportWidth;
     const bottom = rect ? Math.min(viewportHeight, rect.bottom + pad) : viewportHeight;
     const popoverWidth = Math.min(430, viewportWidth - 32);
+    const popoverHeight = 248;
+    const canPlaceRight = rect ? viewportWidth - right >= popoverWidth + 28 : false;
+    const canPlaceLeft = rect ? left >= popoverWidth + 28 : false;
+    const canPlaceBelow = rect ? viewportHeight - bottom >= popoverHeight + 28 : false;
+    const placeSide = canPlaceRight || canPlaceLeft;
     const popoverLeft = rect
-      ? Math.max(16, Math.min(viewportWidth - popoverWidth - 16, left + ((right - left) - popoverWidth) / 2))
+      ? canPlaceRight
+        ? right + 18
+        : canPlaceLeft
+          ? left - popoverWidth - 18
+          : Math.max(16, Math.min(viewportWidth - popoverWidth - 16, left + ((right - left) - popoverWidth) / 2))
       : 16;
-    const showBelow = rect ? bottom + 16 + 230 < viewportHeight : true;
     const popoverTop = rect
-      ? showBelow
-        ? bottom + 16
-        : Math.max(16, top - 246)
+      ? placeSide
+        ? Math.max(16, Math.min(viewportHeight - popoverHeight - 16, top + ((bottom - top) - popoverHeight) / 2))
+        : canPlaceBelow
+          ? bottom + 18
+          : Math.max(16, top - popoverHeight - 18)
       : Math.max(16, viewportHeight - 330);
 
     return (
@@ -12285,7 +12290,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           box-shadow:
             0 0 0 4px color-mix(in srgb, var(--bb-accent,#2f7fe8) 22%, transparent),
             0 18px 42px color-mix(in srgb, var(--bb-accent,#2f7fe8) 28%, transparent) !important;
-          animation: dashboard-day-one-start-highlight 1.15s ease-in-out infinite;
+          animation: dashboard-day-one-start-highlight 0.72s ease-in-out infinite;
           z-index: 4;
         }
         .dashboard-day-one-start-highlight::after {
@@ -12304,8 +12309,15 @@ Before we understand redemption, we need to understand what God made humanity fo
           pointer-events: none;
         }
         @keyframes dashboard-day-one-start-highlight {
-          0%, 100% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(-2px) scale(1.01); }
+          0%, 100% { transform: translateX(0) translateY(0) scale(1); }
+          10% { transform: translateX(-8px) translateY(-2px) rotate(-1.2deg) scale(1.025); }
+          20% { transform: translateX(8px) translateY(1px) rotate(1.2deg) scale(1.025); }
+          30% { transform: translateX(-7px) translateY(-1px) rotate(-1deg) scale(1.03); }
+          40% { transform: translateX(7px) translateY(1px) rotate(1deg) scale(1.03); }
+          50% { transform: translateX(-5px) translateY(-2px) rotate(-0.8deg) scale(1.025); }
+          60% { transform: translateX(5px) translateY(1px) rotate(0.8deg) scale(1.02); }
+          70% { transform: translateX(-3px) translateY(0) rotate(-0.5deg) scale(1.015); }
+          80% { transform: translateX(3px) translateY(0) rotate(0.5deg) scale(1.01); }
         }
         .bb-dashboard-tour-active-target {
           position: relative !important;
