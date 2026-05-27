@@ -386,21 +386,20 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
       <div className="overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex min-w-max items-stretch gap-2">
           {visibleStages.map((stage, index) => {
-            const isStrong = stage.conversionRate >= 70;
-            const isWarning = stage.conversionRate > 0 && stage.conversionRate < 40;
-            const tone = isStrong
-              ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-              : isWarning
-                ? "border-amber-200 bg-amber-50 text-amber-700"
-                : "border-slate-200 bg-slate-50 text-slate-700";
+            const percentTone =
+              stage.conversionRate > 10
+                ? "text-emerald-500"
+                : stage.conversionRate > 0
+                  ? "text-amber-400"
+                  : "text-slate-500";
             return (
               <div key={stage.key} className="flex items-center gap-2">
-                <div className="min-h-[104px] w-[142px] rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+                <div className="min-h-[96px] w-[142px] rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
                   <p className="min-h-9 text-xs font-black leading-4 text-slate-950">{stage.label}</p>
                   <p className="mt-2 text-2xl font-black leading-none text-slate-950">{formatNumber(stage.users)}</p>
-                  <p className={`mt-2 inline-flex rounded-full border px-2 py-1 text-[11px] font-black ${tone}`}>
-                    {index === 0 ? "100% baseline" : `${stage.conversionRate}% conversion`}
-                  </p>
+                  {index > 0 ? (
+                    <p className={`mt-2 text-sm font-black leading-none ${percentTone}`}>{stage.conversionRate}%</p>
+                  ) : null}
                 </div>
                 {index < visibleStages.length - 1 ? (
                   <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-slate-400">

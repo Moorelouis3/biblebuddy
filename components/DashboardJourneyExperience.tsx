@@ -5428,9 +5428,28 @@ export default function DashboardJourneyExperience({
     return `${DAY_THREE_PRO_UPGRADE_PROMPT_ID}:${userId || "guest"}`;
   }
 
-  function hasSeenDayThreeProPrompt() {
-    if (typeof window === "undefined") return false;
-    return window.localStorage.getItem(getDayThreeProPromptStorageKey()) === "seen";
+  async function hasSeenDayThreeProPrompt() {
+    if (!userId) {
+      if (typeof window === "undefined") return false;
+      return window.localStorage.getItem(getDayThreeProPromptStorageKey()) === "seen";
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from("master_actions")
+        .select("id")
+        .eq("user_id", userId)
+        .eq("action_type", ACTION_TYPE.upgrade_popup_viewed)
+        .eq("journey_day", 3)
+        .eq("action_label", "Bible in One Year Day 3 Pro upgrade popup viewed")
+        .limit(1);
+
+      if (error) throw error;
+      return Boolean(data?.length);
+    } catch (error) {
+      console.warn("[BIBLE_YEAR_DAY3_UPGRADE] Could not check prompt history:", error);
+      return false;
+    }
   }
 
   function rememberDayThreeProPromptSeen() {
@@ -5467,9 +5486,10 @@ export default function DashboardJourneyExperience({
     }
   }
 
-  function openDayThreeProPrompt(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay, options?: { force?: boolean }) {
-    if (!options?.force && (isPaidUser || hasSeenDayThreeProPrompt())) return false;
-    if (!options?.force) rememberDayThreeProPromptSeen();
+  async function openDayThreeProPrompt(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
+    if (isPaidUser) return false;
+    if (await hasSeenDayThreeProPrompt()) return false;
+    rememberDayThreeProPromptSeen();
     setBibleYearDayThreeProPrompt({ day, nextDay });
     setBibleYearDayThreeProContinueTarget({ day, nextDay });
     setBibleYearDayThreeProOpenSection("understand");
@@ -7861,20 +7881,6 @@ Before we understand redemption, we need to understand what God made humanity fo
   }, [bibleYearCompletedCardsByDay, userId]);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (bibleYearDayThreeProPrompt || bibleYearQuickUpgradeOpen) return;
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("showDay3ProPopup") !== "1") return;
-    const dayThree = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 3);
-    const dayFour = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 4);
-    if (!dayThree || !dayFour) return;
-    openDayThreeProPrompt(dayThree, dayFour, { force: true });
-    params.delete("showDay3ProPopup");
-    const nextSearch = params.toString();
-    window.history.replaceState(null, "", `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`);
-  }, [bibleYearDayThreeProPrompt, bibleYearQuickUpgradeOpen]);
-
-  useEffect(() => {
     if (!userId) return;
     const discussionDays = GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
     const slugToDayNumber = new Map(discussionDays.map((day) => [getBibleYearReflectionSlug(day), day.dayNumber]));
@@ -7930,7 +7936,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   async function handleContinueToNextBibleYearDay(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
     if (continuingBibleYearDay === day.dayNumber) return;
-    if (day.dayNumber === 3 && !isPaidUser && openDayThreeProPrompt(day, nextDay)) return;
+    if (day.dayNumber === 3 && !isPaidUser && await openDayThreeProPrompt(day, nextDay)) return;
     setContinuingBibleYearDay(day.dayNumber);
     try {
       setBibleYearCompletionModalDay(null);
