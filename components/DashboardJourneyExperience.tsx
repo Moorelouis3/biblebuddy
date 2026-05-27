@@ -66,6 +66,7 @@ const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
 const DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID = "bible-year:day-1-study-notes-gift";
 const DAY_THREE_PRO_UPGRADE_PROMPT_ID = "bible-year:day-3-pro-upgrade";
+const DAY_THREE_PRO_POPUP_PREVIEW_USER_ID = "669d4404-5eee-49ee-a112-2ecbd573e22a";
 const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapters;
 type BibleYearDayCardKey = "reading" | "trivia" | "reflection";
 type BibleYearCompletedCardsByDay = Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>;
@@ -5495,6 +5496,16 @@ export default function DashboardJourneyExperience({
     setBibleYearDayThreeProOpenSection("understand");
     void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_viewed, "Bible in One Year Day 3 Pro upgrade popup viewed");
     return true;
+  }
+
+  function previewDayThreeProPromptForOwner() {
+    if (userId !== DAY_THREE_PRO_POPUP_PREVIEW_USER_ID) return;
+    const dayThree = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 3);
+    const dayFour = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 4);
+    if (!dayThree || !dayFour) return;
+    setBibleYearDayThreeProPrompt({ day: dayThree, nextDay: dayFour });
+    setBibleYearDayThreeProContinueTarget({ day: dayThree, nextDay: dayFour });
+    setBibleYearDayThreeProOpenSection("understand");
   }
 
   function continueAfterDayThreeProPrompt() {
@@ -11960,6 +11971,15 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
                   {dashboardGreeting}, {getFirstDashboardName(profile?.display_name || profile?.username || userName)}
                 </h1>
+                {userId === DAY_THREE_PRO_POPUP_PREVIEW_USER_ID ? (
+                  <button
+                    type="button"
+                    onClick={previewDayThreeProPromptForOwner}
+                    className="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_36%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_72%,var(--bb-card,#ffffff))] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:brightness-95"
+                  >
+                    Preview Day 3 Pro Popup
+                  </button>
+                ) : null}
               </div>
             ) : null}
             {isAnonymousGuest && !homePanelOverride && !deepStudyFocusActive ? (
