@@ -5493,7 +5493,7 @@ export default function DashboardJourneyExperience({
     rememberDayThreeProPromptSeen();
     setBibleYearDayThreeProPrompt({ day, nextDay });
     setBibleYearDayThreeProContinueTarget({ day, nextDay });
-    setBibleYearDayThreeProOpenSection("understand");
+    setBibleYearDayThreeProOpenSection("");
     void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_viewed, "Bible in One Year Day 3 Pro upgrade popup viewed");
     return true;
   }
@@ -5505,7 +5505,7 @@ export default function DashboardJourneyExperience({
     if (!dayThree || !dayFour) return;
     setBibleYearDayThreeProPrompt({ day: dayThree, nextDay: dayFour });
     setBibleYearDayThreeProContinueTarget({ day: dayThree, nextDay: dayFour });
-    setBibleYearDayThreeProOpenSection("understand");
+    setBibleYearDayThreeProOpenSection("");
   }
 
   function continueAfterDayThreeProPrompt() {
@@ -5935,43 +5935,55 @@ export default function DashboardJourneyExperience({
         id: "understand",
         icon: "📖",
         iconClass: "bg-[#eadcff] text-[#6d3fd1]",
-        title: "Understand Scripture More Deeply",
-        body: "Go beyond a quick read with clearer explanations, context, and guided notes that help the story make sense as you keep moving through Genesis and the rest of Scripture.",
+        title: "When the Bible feels confusing",
+        pain: "You read the chapter, but the names, places, and strange moments can feel disconnected.",
+        pro: "Pro gives you guided explanations, context, and plain-language breakdowns so the story actually makes sense.",
+        result: "You stop guessing what you just read.",
       },
       {
         id: "offline",
         icon: "✈️",
         iconClass: "bg-[#f5e3c3] text-[#9a6517]",
-        title: "Study Anywhere, Even Offline",
-        body: "Keep your Bible study close when life gets busy. Pro is built for a steadier rhythm so you can keep learning even when your day is not perfect.",
+        title: "When life interrupts your routine",
+        pain: "A busy day, weak signal, or travel can break the habit before it has time to stick.",
+        pro: "Pro helps you keep your study tools available wherever your day takes you.",
+        result: "You can keep going without starting over.",
       },
       {
         id: "devices",
         icon: "🔄",
         iconClass: "bg-[#ddecff] text-[#2f6bcf]",
-        title: "Access on All Your Devices",
-        body: "Your Bible journey stays connected across devices, so your progress, notes, and study flow are not trapped on one screen.",
+        title: "When you switch devices",
+        pain: "Reading on one screen and coming back on another should not make your progress feel scattered.",
+        pro: "Pro keeps your journey, notes, and study flow connected across your devices.",
+        result: "Your Bible habit follows you.",
       },
       {
         id: "progress",
         icon: "🛡️",
         iconClass: "bg-[#dff0d8] text-[#3b7a39]",
-        title: "Never Lose Your Progress",
-        body: "Protect the momentum you just built. Your daily progress, streak, and Bible in One Year journey stay tied to your BibleBuddy account.",
+        title: "When you are afraid of losing momentum",
+        pain: "After three days, the progress starts to matter. Losing your place makes it easier to quit.",
+        pro: "Pro protects your Bible in One Year progress, streak, and study history.",
+        result: "You know exactly where to continue.",
       },
       {
         id: "tools",
         icon: "📝",
         iconClass: "bg-[#ffefc2] text-[#b37a00]",
-        title: "Study Notes + Tools",
-        body: "Unlock deeper study notes, stronger explanations, downloads, and focused tools that help you understand what you are reading instead of just checking off a task.",
+        title: "When a basic summary is not enough",
+        pain: "Some chapters need more than a quick recap. You need help seeing why the passage matters.",
+        pro: "Pro unlocks deeper Study Notes, stronger explanations, downloads, and focused study tools.",
+        result: "You learn the Bible instead of only finishing tasks.",
       },
       {
         id: "personal",
         icon: "✨",
         iconClass: "bg-[#e6f3ff] text-[#1f65c7]",
-        title: "Make It Your Own",
-        body: "Shape BibleBuddy around the way you study with a more complete experience that feels personal, steady, and easier to come back to.",
+        title: "When Bible study feels generic",
+        pain: "A one-size-fits-all plan can feel easy to ignore when it does not fit how you learn.",
+        pro: "Pro gives you a more complete BibleBuddy experience that feels personal, steady, and easier to return to.",
+        result: "Your study rhythm feels like it belongs to you.",
       },
     ];
 
@@ -6007,7 +6019,6 @@ export default function DashboardJourneyExperience({
           </div>
 
           <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[#263855] sm:text-center">
-            <p>The habit of reading and understanding God's Word is starting to form.</p>
             <p>
               This is the perfect time to <span className="font-black text-[#1f65c7]">protect your progress</span> and go deeper in your Bible journey.
             </p>
@@ -6033,8 +6044,10 @@ export default function DashboardJourneyExperience({
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-black leading-tight text-[#0b162f]">{section.title}</span>
                       {isOpen ? (
-                        <span className="mt-1 block text-[11px] font-semibold leading-4 text-[#3b4b66]">
-                          {section.body}
+                        <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[#3b4b66]">
+                          <span className="block"><span className="font-black text-[#0b162f]">Pain:</span> {section.pain}</span>
+                          <span className="block"><span className="font-black text-[#1f65c7]">Pro helps:</span> {section.pro}</span>
+                          <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>
                         </span>
                       ) : null}
                     </span>
@@ -13503,6 +13516,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
       {renderBibleProgressDetailsModal()}
       {renderBibleYearDayThreeProUpgradePrompt()}
+      {bibleYearQuickUpgradeContext === "day3" ? renderBibleYearQuickUpgradeModal() : null}
 
       <ModalShell
         isOpen={showDevotionalSettings}
