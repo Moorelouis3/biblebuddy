@@ -71,6 +71,14 @@ type FunnelStageRow = {
   retentionRate: number;
 };
 
+type DayThreeUpgradeAnalytics = {
+  views: number;
+  upgradeClicks: number;
+  continueFreeClicks: number;
+  upgradeClickRate: number;
+  continueFreeRate: number;
+};
+
 type BibleYearProgressRow = {
   user_id?: string | null;
   day_number?: number | null;
@@ -488,13 +496,15 @@ function buildBibleBuddyFunnelStages(
 
   function startedDayActors(dayNumber: number) {
     const actors = new Set<string>();
-    for (const row of progressRows) {
-      if (Number(row.day_number || 0) === dayNumber && row.user_id) actors.add(row.user_id);
-    }
     for (const row of masterRows) {
-      if (row.action_type !== "bible_year_task_started" && row.action_type !== "bible_in_one_year_day_viewed") continue;
+      if (row.action_type !== "bible_year_task_started") continue;
       const day = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
+      const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
+      const task = typeof metadata.task === "string" ? metadata.task : "";
+      const label = String(row.action_label || "").toLowerCase();
+      const isFirstTask = task === "reading" || label.includes("reading started") || label.includes("video started");
       if (day === dayNumber) {
+        if (!isFirstTask) continue;
         const actorId = getMasterActorId(row);
         if (actorId) actors.add(actorId);
       }
@@ -533,6 +543,39 @@ function buildBibleBuddyFunnelStages(
       retentionRate: index === 0 ? 100 : percent(users, firstCount),
     };
   });
+}
+
+function buildDayThreeUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): DayThreeUpgradeAnalytics {
+  const viewedActors = new Set<string>();
+  const upgradeClickActors = new Set<string>();
+  const continueFreeActors = new Set<string>();
+
+  for (const row of masterRows) {
+    const actorId = getMasterActorId(row);
+    if (!actorId) continue;
+    const actionType = row.action_type || "";
+    const actionLabel = String(row.action_label || "");
+    const day = Number(row.journey_day || parseBibleYearDayFromLabel(actionLabel) || 0);
+    const isDayThreeUpgrade = day === 3 && actionLabel.toLowerCase().includes("day 3") && actionLabel.toLowerCase().includes("pro");
+    if (!isDayThreeUpgrade) continue;
+
+    if (actionType === "upgrade_popup_viewed") viewedActors.add(actorId);
+    if (actionType === "upgrade_popup_cta_clicked") upgradeClickActors.add(actorId);
+    if (actionType === "upgrade_popup_dismissed" && actionLabel.toLowerCase().includes("continued with free plan")) {
+      continueFreeActors.add(actorId);
+    }
+  }
+
+  const views = viewedActors.size;
+  const upgradeClicks = upgradeClickActors.size;
+  const continueFreeClicks = continueFreeActors.size;
+  return {
+    views,
+    upgradeClicks,
+    continueFreeClicks,
+    upgradeClickRate: percent(upgradeClicks, views),
+    continueFreeRate: percent(continueFreeClicks, views),
+  };
 }
 
 function buildEventSessionMap(rows: Record<string, unknown>[]) {
@@ -1808,6 +1851,7 @@ export async function GET(request: Request) {
     return Number.isFinite(updatedAt) && updatedAt >= new Date(journeySinceIso).getTime();
   });
   const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows);
+  const dayThreeUpgrade = buildDayThreeUpgradeAnalytics(masterFunnelRows);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(validEventRows);
@@ -1850,6 +1894,7 @@ export async function GET(request: Request) {
       landingActivityLog,
       visitorJourneys,
       bibleBuddyFunnelStages,
+      dayThreeUpgrade,
       bibleYearDays,
       studyNotes,
       publicOnboardingFlow,
@@ -1883,6 +1928,7 @@ export async function GET(request: Request) {
     landingActivityLog,
     visitorJourneys,
     bibleBuddyFunnelStages,
+    dayThreeUpgrade,
     bibleYearDays,
     studyNotes,
     publicOnboardingFlow,

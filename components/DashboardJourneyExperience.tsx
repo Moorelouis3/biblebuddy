@@ -5661,7 +5661,7 @@ export default function DashboardJourneyExperience({
         onClose={() => setBibleYearDayOneDeepNotesGiftOpen(false)}
         backdropColor="bg-slate-950/72 backdrop-blur-md"
       >
-        <div className="relative w-full max-w-[430px] overflow-hidden rounded-[34px] border border-[#ead7ae] bg-[radial-gradient(circle_at_84%_8%,rgba(246,180,75,0.26),transparent_34%),radial-gradient(circle_at_12%_0%,rgba(255,248,224,0.95),transparent_40%),linear-gradient(145deg,#fffaf1_0%,#fffdf8_52%,#fff4d8_100%)] px-5 pb-5 pt-6 text-center text-[#0f172a] shadow-[0_32px_90px_rgba(0,0,0,0.46),0_0_42px_rgba(246,180,75,0.22)] sm:px-6">
+        <div className="bb-skin-glow-card relative w-full max-w-[430px] overflow-hidden rounded-[34px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_84%_8%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,transparent),transparent_34%),radial-gradient(circle_at_12%_0%,color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_76%,transparent),transparent_40%),linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_84%,transparent))] px-5 pb-5 pt-6 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_32px_90px_rgba(0,0,0,0.46),0_0_42px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,transparent)] sm:px-6">
           <div className="pointer-events-none absolute -right-10 -top-12 h-36 w-36 rounded-full bg-[#f6b44b]/20 blur-2xl" aria-hidden="true" />
           <div className="pointer-events-none absolute left-8 top-16 text-sm text-[#f6b44b]/70" aria-hidden="true">✦</div>
           <div className="pointer-events-none absolute right-12 top-24 text-lg text-[#d89b28]/70" aria-hidden="true">✦</div>
@@ -5749,41 +5749,41 @@ export default function DashboardJourneyExperience({
 
     return (
       <ModalShell isOpen={bibleYearDeepNotesUpgradeOpen} onClose={() => setBibleYearDeepNotesUpgradeOpen(false)}>
-        <div className="relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[#ead9bd] bg-[#fffdf8] px-4 py-4 text-center text-[#0f1b33] shadow-[0_20px_58px_rgba(15,23,42,0.28)]">
+        <div className="bb-skin-glow-card relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_84%,transparent))] px-4 py-4 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_20px_58px_rgba(15,23,42,0.28),0_0_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)]">
           <button
             type="button"
             onClick={() => setBibleYearDeepNotesUpgradeOpen(false)}
-            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[#e7dccb] bg-white/90 text-lg font-black text-[#0f1b33] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[#fff4dc]"
+            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,transparent)] text-lg font-black text-[var(--bb-text-primary,#111827)] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             aria-label="Close upgrade prompt"
           >
             x
           </button>
 
           <div className="pr-9 text-left sm:text-center">
-            <h2 className="font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[#0b162f] sm:text-[28px]">
+            <h2 className="font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[var(--bb-text-primary,#111827)] sm:text-[28px]">
               Don&apos;t just read.
-              <span className="block">Finally <span className="text-[#2f7fe8]">understand.</span></span>
+              <span className="block">Finally <span className="text-[var(--bb-accent,#2f7fe8)]">understand.</span></span>
             </h2>
-            <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[#8eb8ee] opacity-70 sm:w-44" aria-hidden="true" />
+            <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[var(--bb-accent,#2f7fe8)] opacity-70 sm:w-44" aria-hidden="true" />
           </div>
 
-          <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[#263855] sm:text-center">
+          <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] sm:text-center">
             <p>Bible Buddy Free helps you stay consistent.</p>
             <p>
-              Bible Buddy Pro helps you <span className="font-black text-[#1f65c7]">understand Scripture more deeply</span> through guided explanations, cultural context, word studies, and verse by verse breakdowns.
+              Bible Buddy Pro helps you <span className="font-black text-[var(--bb-accent,#2f7fe8)]">understand Scripture more deeply</span> through guided explanations, cultural context, word studies, and verse by verse breakdowns.
             </p>
           </div>
 
-          <div className="mt-3 rounded-[18px] border border-[#ead9bd] bg-white/72 px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(102,65,12,0.07)]">
+          <div className="mt-3 rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(15,23,42,0.08)]">
             <div className="grid gap-2">
               {upgradeFeatures.map((feature, index) => (
-                <div key={feature.title} className={`flex gap-2.5 ${index > 0 ? "border-t border-[#eadfce] pt-2" : ""}`}>
+                <div key={feature.title} className={`flex gap-2.5 ${index > 0 ? "border-t border-[var(--bb-card-border,#dbe7f4)] pt-2" : ""}`}>
                   <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-base ${feature.iconClass}`} aria-hidden="true">
                     {feature.icon}
                   </span>
                   <span className="min-w-0">
-                    <span className="block text-sm font-black leading-tight text-[#0b162f]">{feature.title}</span>
-                    <span className="mt-0.5 block text-[11px] font-semibold leading-4 text-[#3b4b66]">{feature.description}</span>
+                    <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{feature.title}</span>
+                    <span className="mt-0.5 block text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">{feature.description}</span>
                   </span>
                 </div>
               ))}
@@ -5794,7 +5794,7 @@ export default function DashboardJourneyExperience({
             <button
               type="button"
               onClick={() => openBibleYearQuickUpgrade()}
-              className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[#2f7fe8] px-4 py-3 text-left text-white shadow-[0_12px_24px_rgba(47,127,232,0.24)] transition hover:brightness-105"
+              className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-left text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
             >
               <span className="text-xl" aria-hidden="true">👑</span>
               <span>
@@ -5805,14 +5805,14 @@ export default function DashboardJourneyExperience({
             <button
               type="button"
               onClick={() => setBibleYearDeepNotesUpgradeOpen(false)}
-              className="rounded-[15px] border border-[#7aaaf3] bg-white/78 px-4 py-2 text-[#0f1b33] transition hover:bg-[#f4f8ff]"
+              className="rounded-[15px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-4 py-2 text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             >
               <span className="block text-xs font-black leading-tight">Continue with Free Plan</span>
-              <span className="mt-0.5 block text-[11px] font-semibold text-[#4c5d78]">Keep studying with the free plan</span>
+              <span className="mt-0.5 block text-[11px] font-semibold text-[var(--bb-text-secondary,#4b5563)]">Keep studying with the free plan</span>
             </button>
           </div>
 
-          <p className="mt-3 text-[11px] font-semibold leading-4 text-[#61708a]">
+          <p className="mt-3 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
             🔒 Cancel anytime. Upgrade in seconds. Secure and private.
           </p>
         </div>
@@ -5969,37 +5969,37 @@ export default function DashboardJourneyExperience({
         scrollable
         zIndex="z-[95]"
       >
-        <div className="relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[#ead9bd] bg-[#fffdf8] px-4 py-4 text-center text-[#0f1b33] shadow-[0_20px_58px_rgba(15,23,42,0.28)]">
+        <div className="bb-skin-glow-card relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_84%,transparent))] px-4 py-4 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_20px_58px_rgba(15,23,42,0.28),0_0_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)]">
           <button
             type="button"
             onClick={() => dismissDayThreePrompt("Bible in One Year Day 3 Pro upgrade popup closed")}
-            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[#e7dccb] bg-white/90 text-lg font-black text-[#0f1b33] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[#fff4dc]"
+            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,transparent)] text-lg font-black text-[var(--bb-text-primary,#111827)] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             aria-label="Close Pro upgrade popup"
           >
             x
           </button>
 
           <div className="pr-9 text-left sm:text-center">
-            <h2 className="font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[#0b162f] sm:text-[28px]">
+            <h2 className="font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[var(--bb-text-primary,#111827)] sm:text-[28px]">
               Congratulations.
               <span className="block">You finished <span className="text-[#2f7fe8]">Day 3.</span></span>
             </h2>
-            <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[#8eb8ee] opacity-70 sm:w-44" aria-hidden="true" />
+            <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[var(--bb-accent,#2f7fe8)] opacity-70 sm:w-44" aria-hidden="true" />
           </div>
 
-          <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[#263855] sm:text-center">
+          <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] sm:text-center">
             <p>
-              This is the perfect time to <span className="font-black text-[#1f65c7]">protect your progress</span> and go deeper in your Bible journey.
+              This is the perfect time to <span className="font-black text-[var(--bb-accent,#2f7fe8)]">protect your progress</span> and go deeper in your Bible journey.
             </p>
           </div>
 
-          <div className="mt-3 rounded-[18px] border border-[#ead9bd] bg-white/72 px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(102,65,12,0.07)]">
+          <div className="mt-3 rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(15,23,42,0.08)]">
             {sections.map((section) => {
               const isOpen = bibleYearDayThreeProOpenSection === section.id;
               return (
                 <div
                   key={section.id}
-                  className={section.id === sections[0].id ? "" : "border-t border-[#eadfce] pt-2"}
+                  className={section.id === sections[0].id ? "" : "border-t border-[var(--bb-card-border,#dbe7f4)] pt-2"}
                 >
                   <button
                     type="button"
@@ -6011,11 +6011,11 @@ export default function DashboardJourneyExperience({
                       {section.icon}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-black leading-tight text-[#0b162f]">{section.title}</span>
+                      <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
                       {isOpen ? (
-                        <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[#3b4b66]">
-                          <span className="block"><span className="font-black text-[#0b162f]">Pain:</span> {section.pain}</span>
-                          <span className="block"><span className="font-black text-[#1f65c7]">Pro helps:</span> {section.pro}</span>
+                        <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
+                          <span className="block"><span className="font-black text-[var(--bb-text-primary,#111827)]">Pain:</span> {section.pain}</span>
+                          <span className="block"><span className="font-black text-[var(--bb-accent,#2f7fe8)]">Pro helps:</span> {section.pro}</span>
                           <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>
                         </span>
                       ) : null}
@@ -6036,7 +6036,7 @@ export default function DashboardJourneyExperience({
                 setBibleYearDayThreeProPrompt(null);
                 openBibleYearQuickUpgrade("day3");
               }}
-              className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[#2f7fe8] px-4 py-3 text-left text-white shadow-[0_12px_24px_rgba(47,127,232,0.24)] transition hover:brightness-105"
+              className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-left text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
             >
               <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18 text-base font-black" aria-hidden="true">??</span>
               <span>
@@ -6047,14 +6047,14 @@ export default function DashboardJourneyExperience({
             <button
               type="button"
               onClick={() => dismissDayThreePrompt("Bible in One Year Day 3 continued with free plan")}
-              className="rounded-[15px] border border-[#7aaaf3] bg-white/78 px-4 py-2 text-[#0f1b33] transition hover:bg-[#f4f8ff]"
+              className="rounded-[15px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-4 py-2 text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             >
               <span className="block text-xs font-black leading-tight">Continue with Free Plan</span>
-              <span className="mt-0.5 block text-[11px] font-semibold text-[#4c5d78]">Keep moving to Day 4</span>
+              <span className="mt-0.5 block text-[11px] font-semibold text-[var(--bb-text-secondary,#4b5563)]">Keep moving to Day 4</span>
             </button>
           </div>
 
-          <p className="mt-3 text-[11px] font-semibold leading-4 text-[#61708a]">
+          <p className="mt-3 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
             Cancel anytime. Upgrade in seconds. Secure and private.
           </p>
         </div>
@@ -6112,11 +6112,11 @@ export default function DashboardJourneyExperience({
         scrollable
         zIndex="z-[95]"
       >
-        <div className="relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[#ead9bd] bg-[#fffdf8] px-4 py-4 text-center text-[#0f1b33] shadow-[0_20px_58px_rgba(15,23,42,0.28)]">
+        <div className="bb-skin-glow-card relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_84%,transparent))] px-4 py-4 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_20px_58px_rgba(15,23,42,0.28),0_0_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)]">
           <button
             type="button"
             onClick={() => setGuestProPromptOpen(false)}
-            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[#e7dccb] bg-white/90 text-lg font-black text-[#0f1b33] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[#fff4dc]"
+            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,transparent)] text-lg font-black text-[var(--bb-text-primary,#111827)] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             aria-label="Close Pro upgrade popup"
           >
             x
@@ -6124,28 +6124,28 @@ export default function DashboardJourneyExperience({
 
           <div className="pr-9 text-left sm:text-center">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Bible Buddy Pro</p>
-            <h2 className="mt-1 font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[#0b162f] sm:text-[28px]">
+            <h2 className="mt-1 font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[var(--bb-text-primary,#111827)] sm:text-[28px]">
               Go deeper with Bible Buddy Pro.
             </h2>
-            <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[#8eb8ee] opacity-70 sm:w-44" aria-hidden="true" />
+            <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[var(--bb-accent,#2f7fe8)] opacity-70 sm:w-44" aria-hidden="true" />
           </div>
 
-          <p className="mx-auto mt-3 max-w-sm text-left text-[13px] font-semibold leading-5 text-[#263855] sm:text-center">
+          <p className="mx-auto mt-3 max-w-sm text-left text-[13px] font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] sm:text-center">
             Free helps you start reading. Pro helps you understand what you are reading, protect your progress, and keep building the habit.
           </p>
 
-          <div className="mt-3 rounded-[18px] border border-[#ead9bd] bg-white/72 px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(102,65,12,0.07)]">
+          <div className="mt-3 rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(15,23,42,0.08)]">
             {sections.map((section, index) => (
-              <div key={section.id} className={index === 0 ? "" : "border-t border-[#eadfce] pt-2"}>
+              <div key={section.id} className={index === 0 ? "" : "border-t border-[var(--bb-card-border,#dbe7f4)] pt-2"}>
                 <div className="flex items-start gap-2.5 py-2">
                   <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[10px] font-black ${section.iconClass}`} aria-hidden="true">
                     {section.icon}
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block text-sm font-black leading-tight text-[#0b162f]">{section.title}</span>
-                    <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[#3b4b66]">
-                      <span className="block"><span className="font-black text-[#0b162f]">Pain:</span> {section.pain}</span>
-                      <span className="block"><span className="font-black text-[#1f65c7]">Pro helps:</span> {section.pro}</span>
+                    <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
+                    <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
+                      <span className="block"><span className="font-black text-[var(--bb-text-primary,#111827)]">Pain:</span> {section.pain}</span>
+                      <span className="block"><span className="font-black text-[var(--bb-accent,#2f7fe8)]">Pro helps:</span> {section.pro}</span>
                       <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>
                     </span>
                   </span>
@@ -6161,7 +6161,7 @@ export default function DashboardJourneyExperience({
                 setGuestProPromptOpen(false);
                 openBibleYearQuickUpgrade("guest_pro");
               }}
-              className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[#2f7fe8] px-4 py-3 text-left text-white shadow-[0_12px_24px_rgba(47,127,232,0.24)] transition hover:brightness-105"
+              className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-left text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
             >
               <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18 text-[10px] font-black" aria-hidden="true">PRO</span>
               <span>
@@ -6172,7 +6172,7 @@ export default function DashboardJourneyExperience({
             <button
               type="button"
               onClick={() => setGuestProPromptOpen(false)}
-              className="rounded-[15px] border border-[#7aaaf3] bg-white/78 px-4 py-2 text-[#0f1b33] transition hover:bg-[#f4f8ff]"
+              className="rounded-[15px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-4 py-2 text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             >
               <span className="block text-xs font-black leading-tight">Keep Studying Free</span>
             </button>
@@ -8309,7 +8309,6 @@ Before we understand redemption, we need to understand what God made humanity fo
               Today&apos;s audio/video lesson is being prepared. This day already uses the standard Day 1 task flow, and the media can drop into this same card when ready.
             </div>
           )}
-          {renderBibleYearFollowAlongScripture(day)}
           {showVideo && audio?.videoSrc ? (
             <VideoHelpfulPoll
               userId={userId}
@@ -8319,6 +8318,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               videoContext="bible_year"
             />
           ) : null}
+          {renderBibleYearFollowAlongScripture(day)}
           <button
             type="button"
             onClick={() => {
@@ -10744,7 +10744,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                   />
                 </div>
               </div>
-              {renderBibleYearFollowAlongScripture(day)}
               <VideoHelpfulPoll
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
@@ -10752,6 +10751,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 videoUrl={audio.videoSrc || ""}
                 videoContext="bible_year"
               />
+              {renderBibleYearFollowAlongScripture(day)}
               <button
                 type="button"
                 onClick={() => {
