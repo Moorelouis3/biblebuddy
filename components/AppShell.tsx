@@ -1135,13 +1135,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!userId || !isLoggedIn || !pathname || HIDDEN_ROUTES.includes(pathname)) return;
+    if (pathname !== "/dashboard") return;
 
     void trackNavigationActionOnce({
       userId,
       username,
       actionType: ACTION_TYPE.dashboard_viewed,
-      actionLabel: `page_view:${pathname}`,
-      dedupeKey: `page_view:${pathname}`,
+      actionLabel: "page_view:/dashboard",
+      dedupeKey: "page_view:/dashboard",
     }).catch((error) => {
       console.warn("[ACTIVITY] Page view tracking skipped:", error);
     });

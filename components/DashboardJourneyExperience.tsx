@@ -60,6 +60,7 @@ import { BIBLE_READING_BACKGROUND_TRACKS, BIBLE_READING_BACKGROUND_VOLUME } from
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { normalizePremiumSkinId } from "../lib/premiumSkins";
+import { buildPersistedFeatureTours, normalizeFeatureTours } from "../lib/featureTours";
 
 const EmbeddedSettingsPage = dynamic(() => import("../app/settings/page"), { ssr: false });
 const EmbeddedAnalyticsPage = dynamic(() => import("../app/admin/analytics/page"), { ssr: false });
@@ -70,6 +71,34 @@ const DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID = "bible-year:day-1-study-notes-gift";
 const DAY_THREE_PRO_UPGRADE_PROMPT_ID = "bible-year:day-3-pro-upgrade";
 const DAY_THREE_PRO_POPUP_PREVIEW_USER_ID = "669d4404-5eee-49ee-a112-2ecbd573e22a";
 const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapters;
+const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:dashboard-guided-intro-seen";
+const DASHBOARD_GUIDED_INTRO_STEPS = [
+  {
+    target: "bible-progress",
+    title: "Your Bible year progress",
+    body: "This is the big picture: percent studied, current day, pace, start date, and expected finish.",
+  },
+  {
+    target: "journey-map",
+    title: "Your journey map",
+    body: "Each day unlocks in order so the plan feels like a clear path instead of a pile of links.",
+  },
+  {
+    target: "study-tasks",
+    title: "Start here each day",
+    body: "Open the first task card to begin the day. This is the action that moves the journey forward.",
+  },
+  {
+    target: "study-notes",
+    title: "Go deeper when needed",
+    body: "Study notes help explain the passage after the main reading task is underway.",
+  },
+  {
+    target: "bottom-menu",
+    title: "Move around anytime",
+    body: "The bottom menu stays fixed so Progress, Bible, Home, chat, and invite are always within reach.",
+  },
+] as const;
 type BibleYearDayCardKey = "reading" | "trivia" | "reflection";
 type BibleYearCompletedCardsByDay = Record<number, Partial<Record<BibleYearDayCardKey, boolean>>>;
 type BibleYearSeriesFilter = "all" | "current" | "completed";
@@ -1946,6 +1975,10 @@ export default function DashboardJourneyExperience({
   const [dashboardMenuOpen, setDashboardMenuOpen] = useState(false);
   const [dashboardGreeting, setDashboardGreeting] = useState("Good evening");
   const [isAnonymousGuest, setIsAnonymousGuest] = useState(false);
+  const [dashboardGuidedIntroStep, setDashboardGuidedIntroStep] = useState<number | null>(null);
+  const [showDayOneStartPrompt, setShowDayOneStartPrompt] = useState(false);
+  const [highlightDayOneStartTask, setHighlightDayOneStartTask] = useState(false);
+  const dashboardGuidedIntroStartedRef = useRef(false);
   const [protectJourneyPromptOpen, setProtectJourneyPromptOpen] = useState(false);
   const [guestInfoModalOpen, setGuestInfoModalOpen] = useState(false);
   const [guestProPromptOpen, setGuestProPromptOpen] = useState(false);
@@ -1973,6 +2006,145 @@ export default function DashboardJourneyExperience({
   useEffect(() => {
     setDashboardGreeting(getDashboardGreeting());
   }, []);
+
+  const getDashboardGuidedIntroStorageKey = useCallback(() => {
+    return `${DASHBOARD_GUIDED_INTRO_STORAGE_KEY}:${userId || "guest"}`;
+  }, [userId]);
+
+  const logDashboardGuidedIntroAction = useCallback(async (actionType: ActionType, actionLabel: string) => {
+    if (!userId) return;
+    try {
+      await supabase.from("master_actions").insert({
+        user_id: userId,
+        username: userName || "User",
+        action_type: actionType,
+        action_label: actionLabel,
+        account_status: profile?.is_paid === true || membershipStatus === "pro" ? "pro" : "free_or_guest",
+        event_metadata: {
+          plan: "bible_in_one_year",
+          surface: "dashboard_guided_intro",
+        },
+        created_at: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.warn("[DASHBOARD_TOUR] Could not log dashboard tour action:", error);
+    }
+  }, [membershipStatus, profile?.is_paid, userId, userName]);
+
+  const markDashboardGuidedIntroSeen = useCallback(async () => {
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(getDashboardGuidedIntroStorageKey(), "1");
+    }
+    if (!userId) return;
+    try {
+      const { data } = await supabase
+        .from("profile_stats")
+        .select("feature_tours")
+        .eq("user_id", userId)
+        .maybeSingle();
+      const featureTours = normalizeFeatureTours((data as { feature_tours?: unknown } | null)?.feature_tours);
+      await supabase.from("profile_stats").upsert(
+        {
+          user_id: userId,
+          feature_tours: buildPersistedFeatureTours({
+            ...featureTours,
+            dashboard_guided_intro: true,
+          }),
+        },
+        { onConflict: "user_id" },
+      );
+    } catch (error) {
+      console.warn("[DASHBOARD_TOUR] Could not save dashboard tour state:", error);
+    }
+  }, [getDashboardGuidedIntroStorageKey, userId]);
+
+  useEffect(() => {
+    if (!userId || deepStudyFocusActive || activePageKey !== "home") return;
+    let cancelled = false;
+    const timer = window.setTimeout(async () => {
+      if (cancelled || dashboardGuidedIntroStartedRef.current) return;
+      const storageKey = getDashboardGuidedIntroStorageKey();
+      const replayRequested = window.localStorage.getItem("bb:replay-dashboard-guided-intro") === "1";
+      if (!replayRequested && window.localStorage.getItem(storageKey) === "1") return;
+
+      try {
+        const { data } = await supabase
+          .from("profile_stats")
+          .select("feature_tours")
+          .eq("user_id", userId)
+          .maybeSingle();
+        const featureTours = normalizeFeatureTours((data as { feature_tours?: unknown } | null)?.feature_tours);
+        if (!replayRequested && featureTours.dashboard_guided_intro === true) {
+          window.localStorage.setItem(storageKey, "1");
+          return;
+        }
+      } catch (error) {
+        console.warn("[DASHBOARD_TOUR] Could not load dashboard tour state:", error);
+      }
+
+      if (cancelled) return;
+      window.localStorage.removeItem("bb:replay-dashboard-guided-intro");
+      dashboardGuidedIntroStartedRef.current = true;
+      setDashboardGuidedIntroStep(0);
+      void logDashboardGuidedIntroAction(ACTION_TYPE.dashboard_tour_started, "Dashboard guided intro started");
+    }, 900);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
+  }, [
+    activePageKey,
+    deepStudyFocusActive,
+    getDashboardGuidedIntroStorageKey,
+    logDashboardGuidedIntroAction,
+    userId,
+  ]);
+
+  useEffect(() => {
+    if (dashboardGuidedIntroStep === null) return;
+    const step = DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStep];
+    if (!step) return;
+    window.setTimeout(() => {
+      document
+        .querySelector(`[data-bb-dashboard-tour="${step.target}"]`)
+        ?.scrollIntoView({ behavior: "smooth", block: step.target === "bottom-menu" ? "end" : "center" });
+    }, 80);
+  }, [dashboardGuidedIntroStep]);
+
+  async function closeDashboardGuidedIntro(outcome: "completed" | "skipped") {
+    const actionType = outcome === "completed" ? ACTION_TYPE.dashboard_tour_completed : ACTION_TYPE.dashboard_tour_skipped;
+    setDashboardGuidedIntroStep(null);
+    await markDashboardGuidedIntroSeen();
+    void logDashboardGuidedIntroAction(actionType, outcome === "completed" ? "Dashboard guided intro completed" : "Dashboard guided intro skipped");
+    if (outcome === "completed") {
+      setShowDayOneStartPrompt(true);
+    }
+  }
+
+  function focusDayOneStartTask() {
+    setShowDayOneStartPrompt(false);
+    setHighlightDayOneStartTask(true);
+    window.setTimeout(() => {
+      document
+        .querySelector('[data-bible-year-day-one-start-task="true"]')
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 80);
+  }
+
+  function startDashboardOnboardingReplay() {
+    dashboardGuidedIntroStartedRef.current = true;
+    setShowDayOneStartPrompt(false);
+    setHighlightDayOneStartTask(false);
+    setDashboardGuidedIntroStep(0);
+    void logDashboardGuidedIntroAction(ACTION_TYPE.dashboard_tour_started, "Dashboard guided intro manually started");
+  }
+
+  function startDayOneOnboardingReplay() {
+    setDashboardGuidedIntroStep(null);
+    setHighlightDayOneStartTask(false);
+    setShowDayOneStartPrompt(true);
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -9454,6 +9626,11 @@ Before we understand redemption, we need to understand what God made humanity fo
         activeBibleYearDashboardDay?.dayNumber === bibleYearPersistentVideoDay &&
         Boolean(bibleYearTaskVideoEmbedSrc) &&
         !task.done;
+      const isDayOneStartTask =
+        activeBibleYearDashboardDay?.dayNumber === 1 &&
+        bibleYearTaskCard === "reading" &&
+        !task.done &&
+        !isCardDisabled;
 
       const taskShellClasses = activeBibleYearDashboardDay
         ? isCardDisabled
@@ -9483,8 +9660,11 @@ Before we understand redemption, we need to understand what God made humanity fo
         } ${
           activeBibleYearDashboardDay && !task.done && !isCardDisabled && !isActiveInlineTask ? "bible-year-task-soft-pulse" : ""
         } ${
+          isDayOneStartTask && highlightDayOneStartTask && !isActiveInlineTask ? "dashboard-day-one-start-highlight" : ""
+        } ${
           isActiveInlineTask ? "dashboard-task-shell-open" : ""
         } ${taskShellClasses}`}
+        data-bible-year-day-one-start-task={isDayOneStartTask ? "true" : undefined}
         style={isNewChapterDropping ? { animationDelay: `${index * 85}ms` } : undefined}
       >
       <button
@@ -9492,6 +9672,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         onClick={() => {
           if (isCardDisabled) return;
           if (bibleYearTaskCard) {
+            if (isDayOneStartTask) setHighlightDayOneStartTask(false);
             if (bibleYearTaskCard === "reading" && activeBibleYearDashboardDay) {
               setBibleYearPersistentVideoDay(activeBibleYearDashboardDay.dayNumber);
             }
@@ -11663,6 +11844,29 @@ Before we understand redemption, we need to understand what God made humanity fo
       </section>
     );
   };
+
+  function renderOwnerOnboardingControls() {
+    if (userId !== DAY_THREE_PRO_POPUP_PREVIEW_USER_ID) return null;
+    return (
+      <div className="grid gap-2 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-card,#ffffff))] p-2 shadow-sm sm:grid-cols-2">
+        <button
+          type="button"
+          onClick={startDashboardOnboardingReplay}
+          className="rounded-xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-105"
+        >
+          Start Dashboard Onboarding
+        </button>
+        <button
+          type="button"
+          onClick={startDayOneOnboardingReplay}
+          className="rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_36%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+        >
+          Start Day 1 Onboarding
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4 pb-[calc(90px+env(safe-area-inset-bottom,0px))] lg:pb-4">
       <style>{`
@@ -11964,6 +12168,33 @@ Before we understand redemption, we need to understand what God made humanity fo
         .chapter-complete-fill { animation: chapter-complete-fill 900ms ease-out; }
         .next-task-pulse { animation: next-task-pulse 1.9s ease-in-out infinite; }
         .bible-year-task-soft-pulse { animation: bible-year-task-soft-pulse 2.4s ease-in-out infinite; }
+        .dashboard-day-one-start-highlight {
+          border-color: color-mix(in srgb, var(--bb-accent,#2f7fe8) 88%, #ffffff) !important;
+          box-shadow:
+            0 0 0 4px color-mix(in srgb, var(--bb-accent,#2f7fe8) 22%, transparent),
+            0 18px 42px color-mix(in srgb, var(--bb-accent,#2f7fe8) 28%, transparent) !important;
+          animation: dashboard-day-one-start-highlight 1.15s ease-in-out infinite;
+          z-index: 4;
+        }
+        .dashboard-day-one-start-highlight::after {
+          content: "Tap this to start Day 1";
+          position: absolute;
+          right: 12px;
+          top: -12px;
+          border-radius: 999px;
+          background: var(--bb-button,var(--bb-accent,#2f7fe8));
+          color: var(--bb-button-text,#ffffff);
+          padding: 6px 10px;
+          font-size: 11px;
+          font-weight: 900;
+          letter-spacing: 0;
+          box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+          pointer-events: none;
+        }
+        @keyframes dashboard-day-one-start-highlight {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-2px) scale(1.01); }
+        }
         .bible-year-deep-notes-dance {
           animation: bible-year-deep-notes-dance 1.85s ease-in-out infinite;
           transform-origin: center;
@@ -12148,15 +12379,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
                   {dashboardGreeting}, {getFirstDashboardName(profile?.display_name || profile?.username || userName)}
                 </h1>
-                {userId === DAY_THREE_PRO_POPUP_PREVIEW_USER_ID ? (
-                  <button
-                    type="button"
-                    onClick={previewDayThreeProPromptForOwner}
-                    className="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_36%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_72%,var(--bb-card,#ffffff))] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:brightness-95"
-                  >
-                    Preview Day 3 Pro Popup
-                  </button>
-                ) : null}
+                <div className="mt-3">{renderOwnerOnboardingControls()}</div>
               </div>
             ) : null}
             {isAnonymousGuest && !homePanelOverride && !deepStudyFocusActive ? (
@@ -12272,15 +12495,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             {bibleYearDashboardActive && activeBibleYearDashboardDay && !homePanelOverride && !shouldShowCompletionPanel ? (
               <>
                 {renderHomeSupportStatsStrip()}
-                {userId === DAY_THREE_PRO_POPUP_PREVIEW_USER_ID ? (
-                  <button
-                    type="button"
-                    onClick={previewDayThreeProPromptForOwner}
-                    className="inline-flex w-full items-center justify-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_40%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_72%,var(--bb-card,#ffffff))] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-[0_12px_26px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,transparent)] transition hover:brightness-95"
-                  >
-                    Preview Day 3 Pro Popup
-                  </button>
-                ) : null}
+                {renderOwnerOnboardingControls()}
                 {renderBibleYearHomeProgressSnapshot(activeBibleYearDashboardDay)}
                 <section data-bb-dashboard-tour="journey-map" className="dashboard-inline-task mb-3 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_82%,transparent)] text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
                   <button
@@ -13235,6 +13450,87 @@ Before we understand redemption, we need to understand what God made humanity fo
         ) : null}
         </div>
       </div>
+
+      {dashboardGuidedIntroStep !== null ? (
+        <div className="fixed inset-0 z-[120] flex items-end justify-center bg-black/52 px-4 pb-[calc(104px+env(safe-area-inset-bottom,0px))] pt-6 backdrop-blur-[2px] sm:items-center sm:pb-6">
+          <div className="w-full max-w-md overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
+            <div className="border-b border-[var(--bb-card-border,#dbe7f4)] px-5 py-4">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+                  Step {dashboardGuidedIntroStep + 1} of {DASHBOARD_GUIDED_INTRO_STEPS.length}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => void closeDashboardGuidedIntro("skipped")}
+                  className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] px-3 py-1.5 text-xs font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]"
+                >
+                  Skip
+                </button>
+              </div>
+              <h2 className="mt-2 text-xl font-black leading-tight">
+                {DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStep]?.title}
+              </h2>
+              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                {DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStep]?.body}
+              </p>
+            </div>
+            <div className="flex items-center justify-between gap-3 px-5 py-4">
+              <div className="flex gap-1.5">
+                {DASHBOARD_GUIDED_INTRO_STEPS.map((step, index) => (
+                  <span
+                    key={step.target}
+                    className={`h-2 w-2 rounded-full ${
+                      index === dashboardGuidedIntroStep ? "bg-[var(--bb-accent,#2f7fe8)]" : "bg-[var(--bb-card-border,#dbe7f4)]"
+                    }`}
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  if (dashboardGuidedIntroStep >= DASHBOARD_GUIDED_INTRO_STEPS.length - 1) {
+                    void closeDashboardGuidedIntro("completed");
+                    return;
+                  }
+                  setDashboardGuidedIntroStep((current) => (current === null ? 0 : Math.min(current + 1, DASHBOARD_GUIDED_INTRO_STEPS.length - 1)));
+                }}
+                className="rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
+              >
+                {dashboardGuidedIntroStep >= DASHBOARD_GUIDED_INTRO_STEPS.length - 1 ? "Finish" : "Next"}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {showDayOneStartPrompt ? (
+        <div className="fixed inset-0 z-[121] flex items-end justify-center bg-black/58 px-4 pb-[calc(104px+env(safe-area-inset-bottom,0px))] pt-6 backdrop-blur-[2px] sm:items-center sm:pb-6">
+          <div className="w-full max-w-md overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(0,0,0,0.30)]">
+            <div className="px-5 py-5 text-center">
+              <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-2xl text-[var(--bb-accent,#2f7fe8)]">
+                <BibleBookIcon />
+              </div>
+              <p className="mt-4 text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+                You are ready
+              </p>
+              <h2 className="mt-2 text-2xl font-black leading-tight">
+                Start Day 1
+              </h2>
+              <p className="mx-auto mt-2 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                Tap the first Day 1 task card to begin the Bible in One Year flow. I will highlight it for you now.
+              </p>
+              <button
+                type="button"
+                onClick={focusDayOneStartTask}
+                className="mt-5 w-full rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
+              >
+                OK, Show Me
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       {!shouldShowBibleBuddy3ModeGate && !deepStudyFocusActive ? (
       <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] px-3 pb-[env(safe-area-inset-bottom,0px)] pt-2 backdrop-blur-xl">

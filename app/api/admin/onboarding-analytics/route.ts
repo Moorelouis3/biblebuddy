@@ -53,6 +53,7 @@ type BibleYearTaskActionRow = {
 
 type MasterActionFunnelRow = {
   user_id?: string | null;
+  username?: string | null;
   session_id?: string | null;
   action_type?: string | null;
   action_label?: string | null;
@@ -753,6 +754,21 @@ function filterRealAccountEvents(rows: Record<string, unknown>[], authByUserId: 
     const eventName = typeof row.event_name === "string" ? row.event_name : "";
     return !isAccountEvent(eventName) || isValidFreeAccountEvent(row, authByUserId, profileByUserId);
   });
+}
+
+function isInternalAnalyticsProfile(profile?: ProfileSummary | null) {
+  if (!profile) return false;
+  const badge = (profile.memberBadge || "").trim().toLowerCase();
+  const name = (profile.displayName || "").trim().toLowerCase();
+  return (
+    ["admin", "owner", "staff", "teacher", "internal"].includes(badge) ||
+    name === "louis" ||
+    name === "louis moore"
+  );
+}
+
+function isInternalAnalyticsUser(userId: string | null | undefined, profileByUserId: Map<string, ProfileSummary>) {
+  return Boolean(userId && isInternalAnalyticsProfile(profileByUserId.get(userId)));
 }
 
 function summarizePublicOnboardingFlow(rows: Record<string, unknown>[]) {
@@ -1638,12 +1654,36 @@ function buildVisitorJourneys(
   };
 }
 
-function buildBibleYearDayAnalytics(progressRows: BibleYearProgressRow[], profileByUserId: Map<string, string>) {
+function buildBibleYearDayAnalytics(
+  progressRows: BibleYearProgressRow[],
+  masterRows: MasterActionFunnelRow[],
+  profileByUserId: Map<string, string>,
+) {
   const rowsByDay = new Map<number, BibleYearProgressRow[]>();
+  const startedActorsByDay = new Map<number, Set<string>>();
+
+  for (const row of masterRows) {
+    if (row.action_type !== "bible_year_task_started") continue;
+    const actionLabel = String(row.action_label || "");
+    const label = actionLabel.toLowerCase();
+    const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
+    const task = typeof metadata.task === "string" ? metadata.task.toLowerCase() : "";
+    const dayNumber = Number(row.journey_day || parseBibleYearDayFromLabel(actionLabel) || 0);
+    const isFirstTask = task === "reading" || label.includes("reading started") || label.includes("video started");
+    const actorId = getMasterActorId(row);
+    if (!dayNumber || !isFirstTask || !actorId) continue;
+
+    const actors = startedActorsByDay.get(dayNumber) || new Set<string>();
+    actors.add(actorId);
+    startedActorsByDay.set(dayNumber, actors);
+  }
 
   for (const row of progressRows) {
     const dayNumber = Number(row.day_number || 0);
     if (!Number.isFinite(dayNumber) || dayNumber <= 0) continue;
+    const startedActors = startedActorsByDay.get(dayNumber) || new Set<string>();
+    const hasCompletedTask = row.reading_completed || row.trivia_completed || row.reflection_completed;
+    if (row.user_id && !startedActors.has(row.user_id) && !hasCompletedTask) continue;
     const current = rowsByDay.get(dayNumber) || [];
     current.push(row);
     rowsByDay.set(dayNumber, current);
@@ -1671,7 +1711,7 @@ function buildBibleYearDayAnalytics(progressRows: BibleYearProgressRow[], profil
         .sort((a, b) => (b.updatedAt || "").localeCompare(a.updatedAt || ""))
         .slice(0, 75);
 
-      const startedUsers = new Set(dayRows.map((row) => row.user_id).filter(Boolean)).size;
+      const startedUsers = (startedActorsByDay.get(dayNumber) || new Set<string>()).size;
       const readingCompleted = dayRows.filter((row) => row.reading_completed).length;
       const triviaCompleted = dayRows.filter((row) => row.trivia_completed).length;
       const reflectionCompleted = dayRows.filter((row) => row.reflection_completed).length;
@@ -1897,7 +1937,7 @@ export async function GET(request: Request) {
   ];
   const { data: masterFunnelData, error: masterFunnelError } = await adminSupabase
     .from("master_actions")
-    .select("user_id, session_id, action_type, action_label, journey_day, account_status, event_metadata, created_at")
+    .select("user_id, username, session_id, action_type, action_label, journey_day, account_status, event_metadata, created_at")
     .in("action_type", masterFunnelActionTypes)
     .gte("created_at", journeySinceIso)
     .order("created_at", { ascending: false })
@@ -1905,7 +1945,7 @@ export async function GET(request: Request) {
   if (masterFunnelError) {
     const { data: fallbackMasterFunnelData } = await adminSupabase
       .from("master_actions")
-      .select("user_id, action_type, action_label, created_at")
+      .select("user_id, username, action_type, action_label, created_at")
       .in("action_type", masterFunnelActionTypes)
       .gte("created_at", journeySinceIso)
       .order("created_at", { ascending: false })
@@ -1953,11 +1993,39 @@ export async function GET(request: Request) {
   const authSummaryByUserId = await loadAuthUserSummaries(url, serviceKey, eventUserIds);
   const validEventRows = filterRealAccountEvents(eventRows, authSummaryByUserId, profileSummaryByUserId);
   const validLandingEventRows = validEventRows as LandingEventRow[];
+  const masterUserIds = Array.from(new Set(masterFunnelRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId))));
+  const missingMasterProfileUserIds = masterUserIds.filter((userId) => !profileSummaryByUserId.has(userId));
+  if (missingMasterProfileUserIds.length > 0) {
+    const { data: masterProfileRows } = await adminSupabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, is_paid, current_streak, current_level, total_actions, member_badge, pro_expires_at")
+      .in("user_id", missingMasterProfileUserIds.slice(0, 5000));
+
+    for (const profile of masterProfileRows || []) {
+      const userId = typeof profile.user_id === "string" ? profile.user_id : "";
+      if (!userId) continue;
+      const displayName = typeof profile.display_name === "string" ? profile.display_name.trim() : "";
+      const username = typeof profile.username === "string" ? profile.username.trim() : "";
+      profileSummaryByUserId.set(userId, {
+        displayName: displayName || username || `User ${shortId(userId)}`,
+        isPaid: Boolean(profile.is_paid),
+        registeredAt: null,
+        convertedFromGuestAt: null,
+        currentStreak: typeof profile.current_streak === "number" ? profile.current_streak : null,
+        currentLevel: typeof profile.current_level === "number" ? profile.current_level : null,
+        totalActions: typeof profile.total_actions === "number" ? profile.total_actions : null,
+        memberBadge: typeof profile.member_badge === "string" ? profile.member_badge : null,
+        proExpiresAt: typeof profile.pro_expires_at === "string" ? profile.pro_expires_at : null,
+      });
+    }
+  }
+  masterFunnelRows = masterFunnelRows.filter((row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId));
   const { data: allBibleYearProgressData } = await adminSupabase
     .from("bible_year_day_progress")
     .select("user_id, day_number, reading_completed, trivia_completed, reflection_completed, updated_at")
     .limit(250000);
-  const allBibleYearProgressRows = (allBibleYearProgressData || []) as BibleYearProgressRow[];
+  const allBibleYearProgressRows = ((allBibleYearProgressData || []) as BibleYearProgressRow[])
+    .filter((row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId));
   const eventUserIdSet = new Set(eventUserIds);
   const bibleYearProgressRows = allBibleYearProgressRows.filter((row) => row.user_id && eventUserIdSet.has(row.user_id));
 
@@ -1980,12 +2048,12 @@ export async function GET(request: Request) {
     }
   }
 
-  const bibleYearDays = buildBibleYearDayAnalytics(allBibleYearProgressRows, profileByUserId);
   const studyNotes = buildStudyNotesAnalytics(studyNotesActionRows, profileByUserId);
   const windowBibleYearProgressRows = allBibleYearProgressRows.filter((row) => {
     const updatedAt = typeof row.updated_at === "string" ? new Date(row.updated_at).getTime() : 0;
     return Number.isFinite(updatedAt) && updatedAt >= new Date(journeySinceIso).getTime();
   });
+  const bibleYearDays = buildBibleYearDayAnalytics(windowBibleYearProgressRows, masterFunnelRows, profileByUserId);
   const dayThreeUpgrade = buildDayThreeUpgradeAnalytics(masterFunnelRows);
   const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
   const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade);
