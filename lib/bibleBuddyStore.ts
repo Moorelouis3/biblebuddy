@@ -20,34 +20,14 @@ export type BibleBuddyStoreItem = {
   repeatable?: boolean;
 };
 
-export const THEME_STORE_ITEMS: BibleBuddyStoreItem[] = [
-  { id: "theme-blue", kind: "theme", title: "Blue", subtitle: "Soft and calm.", price: 500, emoji: "Blue", accent: "#2F8FD0", themeId: "blue" },
-  { id: "theme-gold", kind: "theme", title: "Gold", subtitle: "Warm and peaceful.", price: 500, emoji: "Gold", accent: "#C98715", themeId: "gold" },
-  { id: "theme-purple", kind: "theme", title: "Purple", subtitle: "Gentle and focused.", price: 500, emoji: "Purple", accent: "#8758D8", themeId: "purple" },
-  { id: "theme-red", kind: "theme", title: "Rose", subtitle: "Warm and quiet.", price: 500, emoji: "Rose", accent: "#E5544A", themeId: "red" },
-  { id: "theme-green", kind: "theme", title: "Green", subtitle: "Fresh and growing.", price: 500, emoji: "Green", accent: "#23A85D", themeId: "green" },
-  { id: "theme-pink", kind: "theme", title: "Pink", subtitle: "Soft and bright.", price: 500, emoji: "Pink", accent: "#DD3C8E", themeId: "pink" },
-  { id: "theme-orange", kind: "theme", title: "Orange", subtitle: "Warm and steady.", price: 500, emoji: "Orange", accent: "#E4742F", themeId: "orange" },
-  { id: "theme-gray", kind: "theme", title: "Gray", subtitle: "Clean and steady.", price: 500, emoji: "Gray", accent: "#6B7684", themeId: "gray" },
-  { id: "theme-black", kind: "theme", title: "Ink", subtitle: "Simple and focused.", price: 500, emoji: "Ink", accent: "#202327", themeId: "black" },
-];
+export const THEME_STORE_ITEMS: BibleBuddyStoreItem[] = [];
 
 const SKIN_EMOJI_BY_ID: Partial<Record<PremiumSkinId, string>> = {
-  "blue-storm": "Blue",
-  "midnight-garden": "Green",
   "lavender-prayer": "Purple",
   "ruby-village": "Red",
-  "slow-mornings": "Gold",
-  "morning-mercy": "Orange",
-  "carolina-coastline": "Coast",
-  "angel-wings": "Sky",
-  "winter-cabin": "Ice",
   "mount-sinai": "Amber",
-  "desert-dawn": "Dawn",
   "no-fuss": "Slate",
-  "quiet-blue": "Blue",
-  "royal-purple": "Purple",
-  "fresh-green": "Green",
+  "passion-fruit": "Pink",
 };
 
 export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = PREMIUM_SKINS.map((skin) => ({

@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
     .maybeSingle();
 
   if (profileError) {
-    return NextResponse.json({ error: profileError.message || "Could not load Buddy Rewards." }, { status: 500 });
+    return NextResponse.json({ error: profileError.message || "Could not load invite details." }, { status: 500 });
   }
 
   let rewardsProfile = existingProfile;
@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
       .maybeSingle();
 
     if (createError) {
-      return NextResponse.json({ error: createError.message || "Could not create Buddy Rewards profile." }, { status: 500 });
+      return NextResponse.json({ error: createError.message || "Could not create invite profile." }, { status: 500 });
     }
     rewardsProfile = createdProfile;
   }

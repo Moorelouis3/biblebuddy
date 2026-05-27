@@ -77,7 +77,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   profile: "Profile",
   settings: "Settings",
   "change-buddy": "Change Buddy",
-  ambassador: "Buddy Rewards",
+  ambassador: "Invite Bible Buddies",
   "verse-of-the-day": "Verse of the Day",
   updates: "Updates",
   upgrade: "Upgrade",

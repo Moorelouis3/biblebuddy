@@ -35,17 +35,9 @@ export const PREMIUM_SKIN_FLAME_BY_ID: Partial<Record<PremiumSkinId, FlameCosmet
   "midnight-garden": "green",
   "lavender-prayer": "purple",
   "ruby-village": "red",
-  "slow-mornings": "gold",
-  "morning-mercy": "orange",
-  "carolina-coastline": "blue",
-  "angel-wings": "sky",
-  "winter-cabin": "blue",
   "mount-sinai": "amber",
-  "desert-dawn": "amber",
   "no-fuss": "slate",
-  "quiet-blue": "blue",
-  "royal-purple": "purple",
-  "fresh-green": "green",
+  "passion-fruit": "red",
 };
 
 export function normalizeFlameCosmeticId(value: unknown): FlameCosmeticId {

@@ -4962,3 +4962,83 @@ html:has(.bb-legal-public) body::after {
   color: #FFFFFF !important;
   -webkit-text-fill-color: #FFFFFF !important;
 }
+
+.bb-analytics-page,
+.bb-analytics-page .bg-white,
+.bb-analytics-page .bg-slate-50,
+.bb-analytics-page .bg-blue-50,
+.bb-analytics-page .bg-emerald-50,
+.bb-analytics-page .bg-violet-50,
+.bb-analytics-page .bg-rose-50,
+.bb-analytics-page .bg-amber-50,
+.bb-analytics-page .bg-orange-50 {
+  background-color: var(--bb-card) !important;
+}
+
+.bb-analytics-page {
+  background-color: var(--bb-background) !important;
+  color: var(--bb-text-primary) !important;
+}
+
+.bb-analytics-page main,
+.bb-analytics-page .bg-slate-100 {
+  background-color: var(--bb-background) !important;
+}
+
+.bb-analytics-page .text-slate-950,
+.bb-analytics-page .text-slate-900,
+.bb-analytics-page .text-slate-800,
+.bb-analytics-page .text-slate-700 {
+  color: var(--bb-text-primary) !important;
+}
+
+.bb-analytics-page .text-slate-600,
+.bb-analytics-page .text-slate-500,
+.bb-analytics-page .text-slate-400 {
+  color: var(--bb-text-secondary) !important;
+}
+
+.bb-analytics-page .border-slate-200,
+.bb-analytics-page .border-slate-100,
+.bb-analytics-page .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--bb-card-border) !important;
+}
+
+.bb-analytics-page input,
+.bb-analytics-page select,
+.bb-analytics-page table,
+.bb-analytics-page thead,
+.bb-analytics-page tbody,
+.bb-analytics-page tr {
+  background-color: var(--bb-card) !important;
+  color: var(--bb-text-primary) !important;
+  border-color: var(--bb-card-border) !important;
+}
+
+.bb-analytics-page tr:hover {
+  background-color: var(--bb-surface-soft) !important;
+}
+
+.bb-safe-top-header .bg-white,
+.bb-safe-top-header .bg-gray-50,
+.bb-safe-top-header .bg-gray-100,
+.bb-safe-top-header .bg-gray-200 {
+  background-color: var(--bb-card) !important;
+}
+
+.bb-safe-top-header .text-gray-900,
+.bb-safe-top-header .text-gray-800,
+.bb-safe-top-header .text-gray-700,
+.bb-safe-top-header .text-black {
+  color: var(--bb-text-primary) !important;
+}
+
+.bb-safe-top-header .border-gray-300,
+.bb-safe-top-header .border-gray-200 {
+  border-color: var(--bb-card-border) !important;
+}
+
+.bb-safe-top-header a:hover,
+.bb-safe-top-header button:hover {
+  background-color: var(--bb-surface-soft) !important;
+}

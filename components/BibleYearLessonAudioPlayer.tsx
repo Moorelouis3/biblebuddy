@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import VideoHelpfulPoll from "./VideoHelpfulPoll";
+import { getBibleYearVideoEmbedSrc } from "../lib/bibleYearAudio";
 
 type BibleYearLessonAudioPlayerProps = {
   audioSrc: string;
@@ -59,9 +60,7 @@ export default function BibleYearLessonAudioPlayer({
   const effectiveDuration = duration > 0 ? duration : estimatedDurationSeconds;
   const displayTime = isScrubbing ? scrubTime : currentTime;
   const remainingTime = effectiveDuration > 0 ? Math.max(0, effectiveDuration - displayTime) : 0;
-  const videoPlayerSrc = videoSrc
-    ? `${videoSrc}${videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
-    : null;
+  const videoPlayerSrc = getBibleYearVideoEmbedSrc(videoSrc);
 
   useEffect(() => {
     const saveCurrentProgress = () => saveProgress(audioRef.current);
@@ -365,7 +364,7 @@ export default function BibleYearLessonAudioPlayer({
               src={videoPlayerSrc}
               title={title}
               loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
               allowFullScreen
               className="absolute inset-0 h-full w-full border-0"
             />

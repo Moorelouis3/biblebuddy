@@ -35,10 +35,10 @@ import {
   cachePremiumSkinForUser,
   clearPendingPremiumSkinSync,
   clearLegacyPremiumSkinCache,
-  getPremiumSkinForLegacyFlame,
-  getPremiumSkinForLegacyTheme,
+  DEFAULT_PREMIUM_SKIN_ID,
   normalizePremiumSkinId,
   readCachedPremiumSkin,
+  resolveUnifiedThemeSkinId,
   shouldPreferCachedPremiumSkin,
   type PremiumSkinId,
 } from "../lib/premiumSkins";
@@ -300,7 +300,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setAppThemeId(resolvedTheme);
     applyAppThemeToDocument(resolvedTheme);
     clearLegacyPremiumSkinCache();
-    applyPremiumSkinToDocument(readCachedPremiumSkin(null));
+    const cachedSkin = readCachedPremiumSkin(null);
+    applyPremiumSkinToDocument(cachedSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : cachedSkin);
     preloadImage(getBuddyAvatar(normalizeBuddyAvatarId(window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY))).profileImage, "high");
     syncPerformanceModeToDocument();
 
@@ -361,16 +362,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         explicitSkinId ||
           readCachedPremiumSkin(userId),
       );
-      cachePremiumSkinForUser(userId, skinId);
-      if (skinId === "none") {
-        applyPremiumSkinToDocument("none");
-        applyAppThemeToDocument(appThemeId);
-      } else {
-        applyAppThemeToDocument(appThemeId);
-        applyPremiumSkinToDocument(skinId);
-      }
-      preloadActiveSkinAssets(skinId);
-      const skinFlame = getPremiumSkinFlameId(skinId);
+      const resolvedSkin = skinId === "none" ? DEFAULT_PREMIUM_SKIN_ID : skinId;
+      cachePremiumSkinForUser(userId, resolvedSkin);
+      applyAppThemeToDocument("light");
+      applyPremiumSkinToDocument(resolvedSkin);
+      preloadActiveSkinAssets(resolvedSkin);
+      const skinFlame = getPremiumSkinFlameId(resolvedSkin);
       if (skinFlame) {
         const persistedSkinFlame = persistActiveStreakFlame(skinFlame);
         setHeaderSelectedFlame(persistedSkinFlame);
@@ -404,27 +401,23 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             active_premium_skin?: unknown;
             active_premium_skin_selected_at?: string | null;
           } | null;
-          const incomingTheme = normalizeAppThemeId(nextProfile?.app_theme);
+          const incomingTheme: AppThemeId = "light";
           const useCachedTheme = shouldPreferCachedAppTheme(userId, incomingTheme);
           const resolvedTheme = useCachedTheme ? readCachedAppTheme(userId) : incomingTheme;
           cacheAppThemeForUser(userId, resolvedTheme);
           if (!useCachedTheme) clearPendingAppThemeSync(userId, resolvedTheme);
           setAppThemeId(resolvedTheme);
-          const incomingSkin = normalizePremiumSkinId(nextProfile?.active_premium_skin);
+          const incomingSkin = resolveUnifiedThemeSkinId(nextProfile?.active_premium_skin, nextProfile?.app_theme);
           const useCachedSkin = shouldPreferCachedPremiumSkin(userId, incomingSkin);
           const nextSkin = useCachedSkin ? readCachedPremiumSkin(userId) : incomingSkin;
-          cachePremiumSkinForUser(userId, nextSkin);
-          if (!useCachedSkin) clearPendingPremiumSkinSync(userId, nextSkin);
-          if (nextSkin === "none") {
-            applyPremiumSkinToDocument("none");
-            applyAppThemeToDocument(resolvedTheme);
-          } else {
-            applyAppThemeToDocument(resolvedTheme);
-            applyPremiumSkinToDocument(nextSkin);
-            preloadActiveSkinAssets(nextSkin);
-          }
+          const resolvedSkin = nextSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : nextSkin;
+          cachePremiumSkinForUser(userId, resolvedSkin);
+          if (!useCachedSkin) clearPendingPremiumSkinSync(userId, resolvedSkin);
+          applyAppThemeToDocument(resolvedTheme);
+          applyPremiumSkinToDocument(resolvedSkin);
+          preloadActiveSkinAssets(resolvedSkin);
           window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId: resolvedTheme } }));
-          window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: nextSkin } }));
+          window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: resolvedSkin } }));
         },
       )
       .subscribe();
@@ -440,7 +433,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       cacheAppThemeForUser(userId, themeId, options);
     }
     applyAppThemeToDocument(themeId);
-    applyPremiumSkinToDocument(readCachedPremiumSkin(userId));
+    const cachedSkin = readCachedPremiumSkin(userId);
+    applyPremiumSkinToDocument(cachedSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : cachedSkin);
   }
 
   async function canUsePremiumSkin(currentUserId: string, email: string | null | undefined, skinId: PremiumSkinId) {
@@ -486,41 +480,32 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    const dbTheme = normalizeAppThemeId(data?.app_theme);
-    const savedTheme = shouldPreferCachedAppTheme(currentUserId, dbTheme) ? readCachedAppTheme(currentUserId) : dbTheme;
+    const dbTheme: AppThemeId = "light";
+    const savedTheme: AppThemeId = "light";
     const hasActiveSkinColumn = Boolean(data && "active_premium_skin" in data);
-    const dbSkin = normalizePremiumSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
-    const legacyMappedSkin =
-      getPremiumSkinForLegacyTheme(data?.app_theme) !== "none"
-        ? getPremiumSkinForLegacyTheme(data?.app_theme)
-        : getPremiumSkinForLegacyFlame(data && "selected_streak_flame" in data ? data.selected_streak_flame : null);
-    const candidateSkin = hasActiveSkinColumn ? dbSkin : legacyMappedSkin;
+    const dbSkin = resolveUnifiedThemeSkinId(
+      hasActiveSkinColumn ? data?.active_premium_skin : null,
+      data?.app_theme,
+      data && "selected_streak_flame" in data ? data.selected_streak_flame : null,
+    );
+    const candidateSkin = dbSkin;
     const preferredSkin = shouldPreferCachedPremiumSkin(currentUserId, candidateSkin) ? readCachedPremiumSkin(currentUserId) : candidateSkin;
-    const savedSkin = await canUsePremiumSkin(currentUserId, email, preferredSkin) ? preferredSkin : "none";
+    const savedSkin = preferredSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : preferredSkin;
     cachePremiumSkinForUser(currentUserId, savedSkin);
     if (dbSkin === savedSkin) clearPendingPremiumSkinSync(currentUserId, savedSkin);
-    if (savedSkin === "none") {
-      applyPremiumSkinToDocument("none");
-      applyThemeLocally(savedTheme);
-    } else {
-      applyThemeLocally(savedTheme);
-      applyPremiumSkinToDocument(savedSkin);
-    }
+    applyThemeLocally(savedTheme);
+    applyPremiumSkinToDocument(savedSkin);
     preloadActiveSkinAssets(savedSkin);
     window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: savedSkin } }));
     if (dbTheme === savedTheme) clearPendingAppThemeSync(currentUserId, savedTheme);
 
-    if (candidateSkin !== savedSkin && dbSkin !== "none") {
-      void supabase
-        .from("profile_stats")
-        .update({ active_premium_skin: "none", updated_at: new Date().toISOString() })
-        .eq("user_id", currentUserId);
-    } else if (savedSkin !== "none" && (normalizePremiumSkinId(data?.active_premium_skin) !== savedSkin || !data?.active_premium_skin_selected_at)) {
+    if (normalizePremiumSkinId(data?.active_premium_skin) !== savedSkin || !data?.active_premium_skin_selected_at || data?.app_theme !== "light") {
       void supabase
         .from("profile_stats")
         .upsert(
           {
             user_id: currentUserId,
+            app_theme: "light",
             active_premium_skin: savedSkin,
             active_premium_skin_selected_at: data?.active_premium_skin_selected_at ?? new Date().toISOString(),
             updated_at: new Date().toISOString(),
@@ -804,15 +789,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const localSelectedFlame = window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY);
       const dbSelectedFlame = normalizeFlameCosmeticId(data?.selected_streak_flame);
       const hasActiveSkinColumn = Boolean(data && "active_premium_skin" in data);
-      const dbActiveSkin = normalizePremiumSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
+      const dbActiveSkin = resolveUnifiedThemeSkinId(hasActiveSkinColumn ? data?.active_premium_skin : null);
       const resolvedSkin = shouldPreferCachedPremiumSkin(currentUserId, dbActiveSkin) ? readCachedPremiumSkin(currentUserId) : dbActiveSkin;
-      const skinFlame = getPremiumSkinFlameId(resolvedSkin);
+      const safeSkin = resolvedSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : resolvedSkin;
+      const skinFlame = getPremiumSkinFlameId(safeSkin);
       const resolvedSelectedFlame = skinFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
       persistActiveStreakFlame(resolvedSelectedFlame);
       setHeaderSelectedFlame(resolvedSelectedFlame);
-      cachePremiumSkinForUser(currentUserId, resolvedSkin);
-      applyPremiumSkinToDocument(resolvedSkin);
-      if (dbActiveSkin === resolvedSkin) clearPendingPremiumSkinSync(currentUserId, resolvedSkin);
+      cachePremiumSkinForUser(currentUserId, safeSkin);
+      applyPremiumSkinToDocument(safeSkin);
+      if (dbActiveSkin === safeSkin) clearPendingPremiumSkinSync(currentUserId, safeSkin);
       if (skinFlame && dbSelectedFlame !== skinFlame) {
         void supabase
           .from("profile_stats")
@@ -2751,7 +2737,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* NAVBAR (hidden on landing/login/signup) */}
       {!isBarePage && !isDashboardStoreOpen && (
-        <header className="bb-safe-top-header w-full bg-gray-50">
+        <header className="bb-safe-top-header w-full border-b border-[var(--bb-card-border,#374151)] bg-[var(--bb-background,#0e1218)]">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <Link
@@ -2760,7 +2746,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               >
                 {/* Logo removed as requested */}
                 <div>
-                  <div className="text-sm font-bold text-gray-900 tracking-tight">
+                  <div className="text-sm font-bold text-[var(--bb-text-primary,#f9fafb)] tracking-tight">
                     Bible Buddy
                   </div>
                 </div>
@@ -2775,7 +2761,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   <button
                     type="button"
                     onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
-                    className="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:border-gray-400 transition-all duration-150 active:scale-[0.98] shadow-sm"
+                    className="px-3 py-1.5 text-sm font-medium text-[var(--bb-text-primary,#f9fafb)] bg-[var(--bb-card,#19212c)] border border-[var(--bb-card-border,#374151)] rounded-md hover:bg-[var(--bb-surface-soft,#1e2733)] transition-all duration-150 active:scale-[0.98] shadow-sm"
                     aria-label="Navigation menu"
                     aria-expanded={isNavMenuOpen}
                   >
@@ -2784,7 +2770,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
                   {/* NAVIGATION DROPDOWN */}
                   {isNavMenuOpen && (
-                    <div className="absolute right-0 mt-2 w-64 max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-lg border border-gray-200 py-1.5 z-50">
+                    <div className="absolute right-0 mt-2 w-64 max-w-[calc(100vw-2rem)] bg-[var(--bb-card,#19212c)] rounded-lg shadow-lg border border-[var(--bb-card-border,#374151)] py-1.5 z-50">
                       {APP_NAV_ITEMS.map((item) => {
                         const active = isNavItemActive(pathname, item);
                         return (
@@ -2818,25 +2804,25 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     onClick={() => {
                       window.dispatchEvent(new CustomEvent("bb:dashboard-open-streak-info"));
                     }}
-                    className="relative flex h-9 items-center gap-1.5 rounded-full bg-gray-200 px-3 hover:bg-gray-300 text-gray-700 transition-colors"
+                    className="relative flex h-9 items-center gap-1.5 rounded-full bg-[var(--bb-surface-soft,#1e2733)] px-3 text-[var(--bb-text-primary,#f9fafb)] transition-colors hover:brightness-110"
                     aria-label={`Open streak details for ${headerCurrentStreak} day streak`}
                     title={`${headerCurrentStreak} day streak`}
                   >
                     <span aria-hidden="true">
                       <StreakFlameEmoji flameId={shellDisplayFlameId} currentStreak={headerCurrentStreak} size={18} title={`${headerCurrentStreak} day streak`} />
                     </span>
-                    <span className="text-xs font-semibold leading-none text-gray-700">
+                    <span className="text-xs font-semibold leading-none text-[var(--bb-text-primary,#f9fafb)]">
                       {headerCurrentStreak}
                     </span>
                   </button>
 
                   <div
-                    className="relative flex h-9 items-center gap-1.5 rounded-full bg-gray-200 px-3 text-gray-700"
+                    className="relative flex h-9 items-center gap-1.5 rounded-full bg-[var(--bb-surface-soft,#1e2733)] px-3 text-[var(--bb-text-primary,#f9fafb)]"
                     aria-label={`${headerGraceDays} Grace Days available`}
                     title={`${headerGraceDays} Grace Days available`}
                   >
                     <span className="text-base leading-none" aria-hidden="true">💎</span>
-                    <span className="text-xs font-semibold leading-none text-gray-700">
+                    <span className="text-xs font-semibold leading-none text-[var(--bb-text-primary,#f9fafb)]">
                       {Math.max(0, Math.min(5, headerGraceDays))}
                     </span>
                   </div>
@@ -2846,12 +2832,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     onClick={() => {
                       window.dispatchEvent(new CustomEvent("bb:dashboard-open-level-info"));
                     }}
-                    className="relative flex h-9 items-center gap-1.5 rounded-full bg-gray-200 px-3 text-gray-700 transition-colors hover:bg-gray-300"
+                    className="relative flex h-9 items-center gap-1.5 rounded-full bg-[var(--bb-surface-soft,#1e2733)] px-3 text-[var(--bb-text-primary,#f9fafb)] transition-colors hover:brightness-110"
                     aria-label={`Open level details for level ${headerCurrentLevel}`}
                     title={`Level ${headerCurrentLevel}`}
                   >
                     <span className="text-base leading-none" aria-hidden="true">🛡️</span>
-                    <span className="text-xs font-semibold leading-none text-gray-700">
+                    <span className="text-xs font-semibold leading-none text-[var(--bb-text-primary,#f9fafb)]">
                       {headerCurrentLevel}
                     </span>
                   </button>
@@ -3194,7 +3180,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 <button
                   type="button"
                   onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-                  className="bb-profile-glow-frame flex items-center justify-center w-9 h-9 overflow-hidden rounded-full border border-transparent bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
+                  className="bb-profile-glow-frame flex items-center justify-center w-9 h-9 overflow-hidden rounded-full border border-[var(--bb-card-border,#374151)] bg-[var(--bb-surface-soft,#1e2733)] text-[var(--bb-text-primary,#f9fafb)] transition-colors hover:brightness-110"
                   aria-label="Profile menu"
                   aria-expanded={isProfileMenuOpen}
                 >
@@ -3217,7 +3203,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
                 {/* DROPDOWN MENU */}
                 {isProfileMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
+                  <div className="absolute right-0 mt-2 w-56 bg-[var(--bb-card,#19212c)] rounded-lg shadow-lg border border-[var(--bb-card-border,#374151)] py-1 z-50">
                     {/* HOME */}
                     <Link
                       href="/dashboard"
@@ -3401,7 +3387,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* PAGE CONTENT */}
-      <main className={!isBarePage ? "pt-2 pb-2 bg-gray-50 min-h-screen" : ""}>
+      <main className={!isBarePage ? "pt-2 pb-2 bg-[var(--bb-background,#0e1218)] min-h-screen" : ""}>
         {shouldShowBreadcrumbs && (
           <div className="max-w-5xl mx-auto px-4 pt-2">
             <BibleStudyBreadcrumb items={breadcrumbItems} className="mb-2" />

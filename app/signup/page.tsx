@@ -164,7 +164,7 @@ export default function SignupPage() {
         localStorage.removeItem("bb:pending-referrer-user-id");
       }
     } catch (referralError) {
-      console.error("Buddy Rewards invite apply failed (non-blocking):", referralError);
+      console.error("Bible Buddy invite apply failed (non-blocking):", referralError);
     }
   }
 

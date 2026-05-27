@@ -3,10 +3,6 @@ import { createClient } from "@supabase/supabase-js";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { markUserAsPaidAndTrackUpgrade } from "@/lib/server/upgradeTracking";
-import { ACTION_TYPE } from "@/lib/actionTypes";
-
-const REFERRAL_REWARD_DIAMONDS = 250;
-const REFERRAL_REWARD_XP = 250;
 
 function buildReferralCode(seed: string | null | undefined) {
   const letters = (seed || "BUDDY").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 7) || "BUDDY";
@@ -92,7 +88,7 @@ export async function POST(req: NextRequest) {
   }
 
   if (ambassador.user_id === user.id) {
-    return NextResponse.json({ error: "You cannot use your own Buddy Rewards invite link." }, { status: 400 });
+    return NextResponse.json({ error: "You cannot use your own Bible Buddy invite link." }, { status: 400 });
   }
 
   // Make sure this referred user hasn't already been credited to an invite.
@@ -130,47 +126,8 @@ export async function POST(req: NextRequest) {
   });
 
   if (referralError) {
-    return NextResponse.json({ error: referralError.message || "Could not apply Buddy Rewards invite." }, { status: 400 });
+    return NextResponse.json({ error: referralError.message || "Could not apply Bible Buddy invite." }, { status: 400 });
   }
-
-  const { data: referrerProfile } = await supabase
-    .from("profile_stats")
-    .select("user_id, username, display_name, diamonds_count, total_diamonds_earned")
-    .eq("user_id", ambassador.user_id)
-    .maybeSingle();
-
-  const nextDiamonds = Math.max(0, Number(referrerProfile?.diamonds_count ?? 0)) + REFERRAL_REWARD_DIAMONDS;
-  const nextTotalEarned = Math.max(0, Number(referrerProfile?.total_diamonds_earned ?? 0)) + REFERRAL_REWARD_DIAMONDS;
-  await supabase
-    .from("profile_stats")
-    .upsert(
-      {
-        user_id: ambassador.user_id,
-        diamonds_count: nextDiamonds,
-        total_diamonds_earned: nextTotalEarned,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: "user_id" },
-    );
-
-  await supabase.from("master_actions").insert({
-    user_id: ambassador.user_id,
-    username: referrerProfile?.username || referrerProfile?.display_name || "Bible Buddy",
-    action_type: ACTION_TYPE.referral_signup_reward,
-    action_label: `Buddy Rewards invite signup (+${REFERRAL_REWARD_XP} XP, +${REFERRAL_REWARD_DIAMONDS} diamonds)`,
-    created_at: trialStartedAt.toISOString(),
-  });
-
-  await supabase.from("notifications").insert({
-    user_id: ambassador.user_id,
-    type: "referral_signup_reward",
-    from_user_id: user.id,
-    from_user_name: "Buddy Rewards",
-    article_slug: "/dashboard",
-    message: `got you a new signup. You earned ${REFERRAL_REWARD_XP} XP and ${REFERRAL_REWARD_DIAMONDS} diamonds.`,
-    is_read: false,
-    created_at: trialStartedAt.toISOString(),
-  });
 
   // Grant 30-day Pro trial and log the upgrade event if this is a new paid conversion.
   await markUserAsPaidAndTrackUpgrade({
@@ -179,13 +136,11 @@ export async function POST(req: NextRequest) {
     source: "buddy_rewards_trial",
     membershipStatus: "pro",
     proExpiresAt: trialEndsAt.toISOString(),
-    actionLabel: "Buddy Rewards 30-day Pro trial started",
+    actionLabel: "Bible Buddy invite 30-day Pro trial started",
   });
 
   return NextResponse.json({
     success: true,
     trialEndsAt: trialEndsAt.toISOString(),
-    rewardDiamonds: REFERRAL_REWARD_DIAMONDS,
-    rewardXp: REFERRAL_REWARD_XP,
   });
 }

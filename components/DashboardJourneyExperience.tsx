@@ -51,7 +51,7 @@ import {
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
 import type { BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
-import type { BibleYearAudioDay } from "../lib/bibleYearAudio";
+import { getBibleYearVideoEmbedSrc, getYouTubeVideoId, type BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { getBibleYearDayContent } from "../lib/bibleYearDaysContent";
 import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME } from "../lib/bibleYearDayOneDeepStudy";
@@ -1770,7 +1770,6 @@ export default function DashboardJourneyExperience({
   const [shareRewardsReferrals, setShareRewardsReferrals] = useState<ShareRewardsReferral[]>([]);
   const [shareRewardsLoading, setShareRewardsLoading] = useState(false);
   const [shareRewardsError, setShareRewardsError] = useState<string | null>(null);
-  const [referralRewardModal, setReferralRewardModal] = useState<ShareRewardsReferral | null>(null);
   const [embeddedGameView, setEmbeddedGameView] = useState<"trivia" | "scrambled" | null>(null);
   const [studyModeGateDismissed, setStudyModeGateDismissed] = useState(true);
   const [freeStudyModeActive, setFreeStudyModeActive] = useState(false);
@@ -2076,31 +2075,11 @@ export default function DashboardJourneyExperience({
   const allDone = checklistData?.allDone ?? false;
   const canFreeUserChooseNewStudy = !isPaidUser && allDone && !checklistData?.nextJourneyTarget;
 
-  const rememberReferralRewardSeen = useCallback((referral: ShareRewardsReferral | null) => {
-    if (!userId || !referral || typeof window === "undefined") return;
-    const key = `bb:share-reward-seen:${userId}`;
-    const seen = new Set(
-      JSON.parse(window.localStorage.getItem(key) || "[]").filter((value: unknown): value is string => typeof value === "string"),
-    );
-    seen.add(referral.referred_user_id);
-    window.localStorage.setItem(key, JSON.stringify([...seen].slice(-100)));
-  }, [userId]);
-
   const getReferralDisplayName = useCallback((referral: ShareRewardsReferral | null) => {
     return referral?.display_name || referral?.username || "Your friend";
   }, []);
 
-  const maybeShowReferralRewardModal = useCallback((referrals: ShareRewardsReferral[]) => {
-    if (!userId || typeof window === "undefined" || referralRewardModal || referrals.length === 0) return;
-    const key = `bb:share-reward-seen:${userId}`;
-    const seen = new Set(
-      JSON.parse(window.localStorage.getItem(key) || "[]").filter((value: unknown): value is string => typeof value === "string"),
-    );
-    const newestUnseen = referrals.find((referral) => !seen.has(referral.referred_user_id));
-    if (newestUnseen) setReferralRewardModal(newestUnseen);
-  }, [referralRewardModal, userId]);
-
-  const fetchShareRewards = useCallback(async (options?: { showLoading?: boolean; checkForNewReward?: boolean }) => {
+  const fetchShareRewards = useCallback(async (options?: { showLoading?: boolean }) => {
     if (!userId) return;
     if (options?.showLoading) setShareRewardsLoading(true);
     setShareRewardsError(null);
@@ -2108,26 +2087,23 @@ export default function DashboardJourneyExperience({
     try {
       const { data: sessionData } = await supabase.auth.getSession();
       const token = sessionData.session?.access_token;
-      if (!token) throw new Error("Sign in again to load Buddy Rewards.");
+      if (!token) throw new Error("Sign in again to load your invite link.");
 
       const response = await fetch("/api/ambassador/rewards", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const payload = await response.json();
-      if (!response.ok) throw new Error(payload?.error || "Could not load Buddy Rewards.");
+      if (!response.ok) throw new Error(payload?.error || "Could not load your invite link.");
 
       const nextReferrals = (payload?.referrals || []) as ShareRewardsReferral[];
       setShareRewardsProfile(payload.profile as ShareRewardsProfile);
       setShareRewardsReferrals(nextReferrals);
-      if (options?.checkForNewReward) {
-        maybeShowReferralRewardModal(nextReferrals);
-      }
     } catch (error: any) {
-      setShareRewardsError(error?.message || "Could not load Buddy Rewards.");
+      setShareRewardsError(error?.message || "Could not load your invite link.");
     } finally {
       if (options?.showLoading) setShareRewardsLoading(false);
     }
-  }, [maybeShowReferralRewardModal, userId]);
+  }, [userId]);
 
   useEffect(() => {
     document.documentElement.classList.add("bb-dashboard-stable-motion");
@@ -2169,35 +2145,6 @@ export default function DashboardJourneyExperience({
     if (activePageKey === "share" && userId) {
       void fetchShareRewards({ showLoading: true });
     }
-  }, [activePageKey, fetchShareRewards, userId]);
-
-  useEffect(() => {
-    if (!userId || activePageKey !== "share") return;
-    void fetchShareRewards({ checkForNewReward: true });
-
-    const referralChannel = supabase
-      .channel(`buddy-rewards:${userId}`)
-      .on(
-        "postgres_changes",
-        {
-          event: "INSERT",
-          schema: "public",
-          table: "ambassador_referrals",
-          filter: `ambassador_user_id=eq.${userId}`,
-        },
-        () => {
-          void fetchShareRewards({ checkForNewReward: true });
-        },
-      )
-      .subscribe();
-
-    const intervalId = window.setInterval(() => {
-      void fetchShareRewards({ checkForNewReward: true });
-    }, 30000);
-    return () => {
-      window.clearInterval(intervalId);
-      void supabase.removeChannel(referralChannel);
-    };
   }, [activePageKey, fetchShareRewards, userId]);
 
   const bibleYearCurrentDayReady = bibleYearProgressReady && bibleYearProgressLoaded;
@@ -5935,55 +5882,55 @@ export default function DashboardJourneyExperience({
         id: "understand",
         icon: "📖",
         iconClass: "bg-[#eadcff] text-[#6d3fd1]",
-        title: "When the Bible feels confusing",
-        pain: "You read the chapter, but the names, places, and strange moments can feel disconnected.",
-        pro: "Pro gives you guided explanations, context, and plain-language breakdowns so the story actually makes sense.",
-        result: "You stop guessing what you just read.",
+        title: "Get Study Notes for Each Day",
+        pain: "Questions come up while you read: Who is this person? Why did this happen? What does this mean?",
+        pro: "Pro keeps the answers inside BibleBuddy with daily Study Notes, context, and clear explanations tied to the exact day you are reading.",
+        result: "You stay focused instead of leaving the app to search for answers.",
       },
       {
         id: "offline",
         icon: "✈️",
         iconClass: "bg-[#f5e3c3] text-[#9a6517]",
-        title: "When life interrupts your routine",
-        pain: "A busy day, weak signal, or travel can break the habit before it has time to stick.",
-        pro: "Pro helps you keep your study tools available wherever your day takes you.",
-        result: "You can keep going without starting over.",
+        title: "Keep Studying When Life Gets Busy",
+        pain: "Some days you only have a small window, and losing your place makes it easier to skip the day.",
+        pro: "Pro helps keep your Bible in One Year study organized, ready, and easier to continue when your schedule is messy.",
+        result: "You can come back quickly and know exactly what to do next.",
       },
       {
         id: "devices",
         icon: "🔄",
         iconClass: "bg-[#ddecff] text-[#2f6bcf]",
-        title: "When you switch devices",
-        pain: "Reading on one screen and coming back on another should not make your progress feel scattered.",
-        pro: "Pro keeps your journey, notes, and study flow connected across your devices.",
-        result: "Your Bible habit follows you.",
+        title: "Use BibleBuddy Across Devices",
+        pain: "You may start on your phone, continue on a laptop, then come back later from somewhere else.",
+        pro: "Pro keeps your journey, notes, and progress connected so your study does not feel trapped on one screen.",
+        result: "Your Bible plan follows you wherever you open BibleBuddy.",
       },
       {
         id: "progress",
         icon: "🛡️",
         iconClass: "bg-[#dff0d8] text-[#3b7a39]",
-        title: "When you are afraid of losing momentum",
-        pain: "After three days, the progress starts to matter. Losing your place makes it easier to quit.",
-        pro: "Pro protects your Bible in One Year progress, streak, and study history.",
-        result: "You know exactly where to continue.",
+        title: "Protect Your Bible Reading Progress",
+        pain: "After a few days, your progress starts to matter. Losing your place can break the habit you are building.",
+        pro: "Pro protects your Bible in One Year progress, streak, and study history so your work stays connected.",
+        result: "You always know what day you are on and what comes next.",
       },
       {
         id: "tools",
         icon: "📝",
         iconClass: "bg-[#ffefc2] text-[#b37a00]",
-        title: "When a basic summary is not enough",
-        pain: "Some chapters need more than a quick recap. You need help seeing why the passage matters.",
-        pro: "Pro unlocks deeper Study Notes, stronger explanations, downloads, and focused study tools.",
-        result: "You learn the Bible instead of only finishing tasks.",
+        title: "Go Deeper Than the Daily Summary",
+        pain: "A short summary helps, but some passages need more explanation before they really click.",
+        pro: "Pro gives you deeper notes, stronger context, downloads, and focused tools for the chapters you are studying.",
+        result: "You understand the Bible more clearly instead of only checking off tasks.",
       },
       {
         id: "personal",
         icon: "✨",
         iconClass: "bg-[#e6f3ff] text-[#1f65c7]",
-        title: "When Bible study feels generic",
-        pain: "A one-size-fits-all plan can feel easy to ignore when it does not fit how you learn.",
-        pro: "Pro gives you a more complete BibleBuddy experience that feels personal, steady, and easier to return to.",
-        result: "Your study rhythm feels like it belongs to you.",
+        title: "Make the Journey Feel Personal",
+        pain: "Bible study is easier to stick with when the app feels built around the way you actually learn.",
+        pro: "Pro gives you a more complete BibleBuddy experience with tools that make the journey feel focused and personal.",
+        result: "BibleBuddy becomes a study rhythm you want to return to.",
       },
     ];
 
@@ -8151,11 +8098,8 @@ Before we understand redemption, we need to understand what God made humanity fo
     const audio = content.audio;
     const videoComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
     const hasVideo = Boolean(audio?.videoSrc);
-    const videoPlayerSrc = audio?.videoSrc
-      ? `${audio.videoSrc}${audio.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
-      : null;
-    const audioFirst = day.dayNumber >= 1 && day.dayNumber <= 8;
-    const mediaMode = bibleYearMediaModeByDay[day.dayNumber] || (audioFirst ? "audio" : "video");
+    const videoPlayerSrc = getBibleYearVideoEmbedSrc(audio?.videoSrc);
+    const mediaMode = bibleYearMediaModeByDay[day.dayNumber] || "video";
     const showVideo = Boolean(videoPlayerSrc && mediaMode === "video");
     const showAudio = Boolean(audio && !showVideo);
 
@@ -8191,7 +8135,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   src={videoPlayerSrc}
                   title={lesson?.title || day.title}
                   loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                   allowFullScreen
                   className="absolute inset-0 h-full w-full border-0"
                 />
@@ -9898,11 +9842,8 @@ Before we understand redemption, we need to understand what God made humanity fo
     const bibleYearLesson = getBibleYearDailyLesson(day.dayNumber);
     const bibleYearAudio = getBibleYearDayAudio(day.dayNumber);
     const readingCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
-    const modalAudioFirst = day.dayNumber >= 1 && day.dayNumber <= 8;
-    const modalMediaMode = bibleYearMediaModeByDay[day.dayNumber] || (modalAudioFirst ? "audio" : "video");
-    const modalVideoPlayerSrc = bibleYearAudio?.videoSrc
-      ? `${bibleYearAudio.videoSrc}${bibleYearAudio.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
-      : null;
+    const modalMediaMode = bibleYearMediaModeByDay[day.dayNumber] || "video";
+    const modalVideoPlayerSrc = getBibleYearVideoEmbedSrc(bibleYearAudio?.videoSrc);
     const modalShowVideo = Boolean(modalVideoPlayerSrc && modalMediaMode === "video");
 
     if (bibleYearLesson) {
@@ -9918,7 +9859,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                         src={modalVideoPlayerSrc}
                         title={bibleYearLesson.title}
                         loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                         allowFullScreen
                         className="absolute inset-0 h-full w-full border-0"
                       />
@@ -10165,11 +10106,8 @@ Before we understand redemption, we need to understand what God made humanity fo
       return renderBibleYearDayOneVideoTask(day);
     }
     const readingCardComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
-    const videoPlayerSrc = audio.videoSrc
-      ? `${audio.videoSrc}${audio.videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`
-      : null;
-    const audioFirst = day.dayNumber >= 1 && day.dayNumber <= 8;
-    const mediaMode = bibleYearMediaModeByDay[day.dayNumber] || (audioFirst ? "audio" : "video");
+    const videoPlayerSrc = getBibleYearVideoEmbedSrc(audio.videoSrc);
+    const mediaMode = bibleYearMediaModeByDay[day.dayNumber] || "video";
     const showVideo = Boolean(videoPlayerSrc && mediaMode === "video");
     const showAudio = !showVideo;
     const verseBreakdownSections = lesson.sections;
@@ -10682,7 +10620,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     src={videoPlayerSrc}
                     title={lesson.title}
                     loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                     allowFullScreen
                     className="absolute inset-0 h-full w-full border-0"
                   />
@@ -10838,7 +10776,8 @@ Before we understand redemption, we need to understand what God made humanity fo
               { label: "Download", premium: true, icon: "download", action: "download" },
               { label: "Share", premium: false, icon: "share", action: "share" },
             ].map((item, index) => {
-              const disabled = (item.action === "download" && isPaidUser && !audio.videoSrc) || (item.action === "complete" && readingCardComplete);
+              const usesYouTubeVideo = Boolean(getYouTubeVideoId(audio.videoSrc));
+              const disabled = (item.action === "download" && (usesYouTubeVideo || (isPaidUser && !audio.videoSrc))) || (item.action === "complete" && readingCardComplete);
               const isMarkComplete = item.action === "complete";
               return (
                 <button
@@ -11384,7 +11323,6 @@ Before we understand redemption, we need to understand what God made humanity fo
         ? `${window.location.origin}/signup?referrer=${encodeURIComponent(inviteUserId)}`
         : "https://thebiblestudybuddy.com/signup";
     const signupCount = shareRewardsReferrals.length;
-    const earnedXp = signupCount * 250;
     const orderedShareRewardsReferrals = [...shareRewardsReferrals].sort(
       (a, b) => new Date(b.trial_started_at).getTime() - new Date(a.trial_started_at).getTime(),
     );
@@ -11416,12 +11354,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
                     Invite friends to Bible Buddy and help them start reading Scripture consistently.
                   </p>
-                  <p className="text-sm font-bold leading-5 text-[var(--bb-text-secondary,#5f6368)]">
-                    For every person you get to sign up, you earn 250 XP points.
-                  </p>
-                  <span className="mt-3 inline-flex rounded-full bg-[var(--bb-accent,#2f7fe8)] px-3 py-1 text-xs font-black text-white">
-                    +250 XP
-                  </span>
                 </div>
               </div>
             </div>
@@ -11457,14 +11389,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
                       <p className="text-xl font-black text-[var(--bb-text-primary,#111827)]">{signupCount}</p>
                       <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">signups</p>
-                    </div>
-                    <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
-                      <p className="text-xl font-black text-[var(--bb-text-primary,#111827)]">{earnedXp}</p>
-                      <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">XP earned</p>
                     </div>
                     <div className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] p-3 text-center">
                       <p className="text-xl font-black text-[var(--bb-text-primary,#111827)]">{signupCount}</p>
@@ -13075,7 +13003,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       </div>
 
       {!shouldShowBibleBuddy3ModeGate && !deepStudyFocusActive ? (
-      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom,0px)+10px)] z-[90] mx-auto max-w-xl lg:sticky lg:bottom-2 lg:z-40">
+      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom,0px)+10px)] z-[90] mx-auto max-w-xl">
         {dashboardMenuOpen ? (
           <div className="mb-2 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 p-2.5 shadow-[0_18px_46px_rgba(15,35,60,0.22)] backdrop-blur">
             <div className="mb-2 flex justify-center">
@@ -13761,65 +13689,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             </button>
           </div>
         </div>
-      </ModalShell>
-
-      <ModalShell
-        isOpen={Boolean(referralRewardModal)}
-        onClose={() => {
-          rememberReferralRewardSeen(referralRewardModal);
-          setReferralRewardModal(null);
-        }}
-        backdropColor="bg-black/55"
-        zIndex="z-[80]"
-      >
-        {referralRewardModal ? (
-          <div className="w-full max-w-sm overflow-hidden rounded-[28px] border border-[rgba(103,204,255,0.38)] bg-[rgba(5,18,34,0.94)] text-center text-[#f5fbff] shadow-[0_24px_70px_rgba(0,0,0,0.56),0_0_46px_rgba(93,214,255,0.18)] backdrop-blur-xl">
-            <div className="relative overflow-hidden px-6 pb-6 pt-7">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(93,214,255,0.28),transparent_42%),linear-gradient(135deg,rgba(8,42,76,0.94),rgba(3,15,30,0.96)_56%,rgba(5,32,57,0.94))]" />
-              <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,221,255,0.9),transparent)]" />
-              <div className="relative mx-auto grid h-24 w-24 place-items-center overflow-hidden rounded-full border-4 border-[rgba(199,232,255,0.78)] bg-[rgba(31,84,132,0.38)] shadow-[0_0_34px_rgba(93,214,255,0.28)]">
-                {referralRewardModal.profile_image_url ? (
-                  <img
-                    src={referralRewardModal.profile_image_url}
-                    alt={getReferralDisplayName(referralRewardModal)}
-                    className="h-full w-full object-cover"
-                  />
-                ) : selectedBuddy ? (
-                  <LouisAvatar buddyId={selectedBuddy.id} mood="wave" size={96} />
-                ) : (
-                  <span className="block h-24 w-24" aria-hidden="true" />
-                )}
-              </div>
-              <p className="relative mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#5dd6ff]">Buddy Rewards</p>
-              <h2 className="relative mt-1 text-2xl font-black leading-tight text-white">
-                {getReferralDisplayName(referralRewardModal)} signed up!
-              </h2>
-              <p className="relative mt-3 text-sm font-bold leading-6 text-[#c7e8ff]">
-                You were credited 250 XP points for sharing Bible Buddy.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-2 bg-[rgba(2,10,22,0.44)] px-6 py-5">
-              <div className="rounded-2xl border border-[rgba(103,204,255,0.22)] bg-[rgba(199,232,255,0.09)] px-3 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-                <p className="text-2xl font-black text-[#5dd6ff]">+250</p>
-                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#91b9d4]">XP points</p>
-              </div>
-              <div className="rounded-2xl border border-[rgba(93,214,255,0.2)] bg-[rgba(47,154,255,0.12)] px-3 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-                <p className="text-2xl font-black text-[#9ee7ff]">+250</p>
-                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#91b9d4]">friends helped</p>
-              </div>
-              <button
-                type="button"
-                onClick={() => {
-                  rememberReferralRewardSeen(referralRewardModal);
-                  setReferralRewardModal(null);
-                }}
-                className="col-span-2 mt-2 rounded-full bg-[#075aa8] px-4 py-3 text-sm font-black text-white shadow-[0_14px_34px_rgba(7,90,168,0.36)] transition hover:bg-[#0b6fc8]"
-              >
-                Awesome
-              </button>
-            </div>
-          </div>
-        ) : null}
       </ModalShell>
 
       <ModalShell

@@ -9,6 +9,40 @@ export type BibleYearAudioDay = {
   videoSrc?: string;
 };
 
+export function getYouTubeVideoId(value: string | null | undefined) {
+  if (!value) return null;
+  try {
+    const parsed = new URL(value);
+    if (parsed.hostname.includes("youtu.be")) {
+      return parsed.pathname.split("/").filter(Boolean)[0] || null;
+    }
+    if (parsed.hostname.includes("youtube.com")) {
+      if (parsed.pathname.startsWith("/embed/")) {
+        return parsed.pathname.split("/").filter(Boolean)[1] || null;
+      }
+      return parsed.searchParams.get("v");
+    }
+  } catch {
+    const match = value.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]+)/);
+    return match?.[1] || null;
+  }
+  return null;
+}
+
+export function getBibleYearVideoEmbedSrc(videoSrc: string | null | undefined) {
+  if (!videoSrc) return null;
+  const youtubeVideoId = getYouTubeVideoId(videoSrc);
+  if (youtubeVideoId) {
+    const params = new URLSearchParams({
+      rel: "0",
+      modestbranding: "1",
+      playsinline: "1",
+    });
+    return `https://www.youtube.com/embed/${youtubeVideoId}?${params.toString()}`;
+  }
+  return `${videoSrc}${videoSrc.includes("?") ? "&" : "?"}autoplay=true&muted=false&preload=true&responsive=true`;
+}
+
 function padDay(dayNumber: number) {
   return String(dayNumber).padStart(3, "0");
 }
@@ -28,7 +62,7 @@ export const BIBLE_YEAR_DAY_ONE_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(1),
   apiSrc: getBibleYearAudioApiSrc(1),
   estimatedDuration: "about 18 min",
-  videoSrc: "https://player.mediadelivery.net/play/618103/e810870b-c3f6-4289-b74d-263113afede9",
+  videoSrc: "https://youtu.be/ZvP93hHvwuU",
 };
 
 export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {
@@ -37,7 +71,7 @@ export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(2),
   apiSrc: getBibleYearAudioApiSrc(2),
   estimatedDuration: "about 15 min",
-  videoSrc: "https://player.mediadelivery.net/play/618103/1fd36998-1fbe-43fb-a171-51eab4c04b07",
+  videoSrc: "https://youtu.be/sfEGArkD0So",
 };
 
 export const BIBLE_YEAR_DAY_THREE_AUDIO: BibleYearAudioDay = {
@@ -46,7 +80,7 @@ export const BIBLE_YEAR_DAY_THREE_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(3),
   apiSrc: getBibleYearAudioApiSrc(3),
   estimatedDuration: "about 15 min",
-  videoSrc: "https://player.mediadelivery.net/play/618103/3f4903b2-44ba-41a6-9908-3156a850b988",
+  videoSrc: "https://youtu.be/amOnjZfgJhs",
 };
 
 export const BIBLE_YEAR_DAY_FOUR_AUDIO: BibleYearAudioDay = {
@@ -55,7 +89,7 @@ export const BIBLE_YEAR_DAY_FOUR_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(4),
   apiSrc: getBibleYearAudioApiSrc(4),
   estimatedDuration: "about 16 min",
-  videoSrc: "https://player.mediadelivery.net/play/618103/bbf2431c-ff5f-4bdd-a299-0dd0bc8322b8",
+  videoSrc: "https://youtu.be/tLF7kqVs6cs",
 };
 
 export const BIBLE_YEAR_DAY_FIVE_AUDIO: BibleYearAudioDay = {
@@ -64,7 +98,7 @@ export const BIBLE_YEAR_DAY_FIVE_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(5),
   apiSrc: getBibleYearAudioApiSrc(5),
   estimatedDuration: "about 15 min",
-  videoSrc: "https://player.mediadelivery.net/play/618103/8b18e4fe-f63b-49db-a771-f5fd7e109878",
+  videoSrc: "https://youtu.be/KA_2mq-pTyw",
 };
 
 export const BIBLE_YEAR_DAY_SIX_AUDIO: BibleYearAudioDay = {
@@ -73,7 +107,7 @@ export const BIBLE_YEAR_DAY_SIX_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(6),
   apiSrc: getBibleYearAudioApiSrc(6),
   estimatedDuration: "about 16 min",
-  videoSrc: "https://player.mediadelivery.net/play/618103/03e286dc-21e2-4748-8190-e525c83c4597",
+  videoSrc: "https://youtu.be/KLyXhiLfrlE",
 };
 
 export const BIBLE_YEAR_DAY_SEVEN_AUDIO: BibleYearAudioDay = {
@@ -81,7 +115,7 @@ export const BIBLE_YEAR_DAY_SEVEN_AUDIO: BibleYearAudioDay = {
   title: "Day 7 - The Covenant Promise",
   storagePath: getBibleYearAudioStoragePath(7),
   apiSrc: getBibleYearAudioApiSrc(7),
-  videoSrc: "https://player.mediadelivery.net/play/618103/3888ca02-171e-4ce6-96b2-b58f1541f340",
+  videoSrc: "https://youtu.be/gJg3pwT8zVs",
   estimatedDuration: "about 14 min",
 };
 
@@ -91,6 +125,7 @@ export const BIBLE_YEAR_DAY_EIGHT_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(8),
   apiSrc: getBibleYearAudioApiSrc(8),
   estimatedDuration: "about 20 min",
+  videoSrc: "https://youtu.be/vMmUiWwJQAo",
 };
 
 export const BIBLE_YEAR_DAY_NINE_AUDIO: BibleYearAudioDay = {

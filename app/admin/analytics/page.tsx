@@ -3,6 +3,8 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
+import { applyAppThemeToDocument } from "@/lib/appThemes";
+import { DEFAULT_PREMIUM_SKIN_ID, applyPremiumSkinToDocument, readCachedPremiumSkin } from "@/lib/premiumSkins";
 
 type JourneyWindow = "1h" | "24h" | "7d" | "30d";
 type AccountFilter = "all" | "guest" | "free" | "pro";
@@ -444,46 +446,7 @@ function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
 
   return (
     <div className="rounded-b-2xl border-x border-b border-blue-500/60 bg-[#071426] p-4 text-slate-100 shadow-[0_18px_46px_rgba(15,23,42,0.28)]">
-      <div className="grid gap-4 xl:grid-cols-[300px_1fr]">
-        <aside className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
-          <div className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-blue-500 text-white">
-              <Icon name="visitors" />
-            </span>
-            <div>
-              <p className="text-sm font-black">Visitor Details</p>
-              <p className="text-xs font-semibold text-slate-400">{details.accountType.toUpperCase()} account</p>
-            </div>
-          </div>
-          <dl className="mt-4 space-y-2 text-sm">
-            {[
-              ["Visitor ID", details.visitorId],
-              ["Type", details.accountType],
-              ["Trial", details.trialStatus],
-              ["Badge", details.badgeStatus],
-              ["Device", details.deviceType],
-              ["Country", details.country],
-              ["Source", details.source],
-              ["First Visit", formatDateTime(details.firstVisitAt)],
-              ["Total Time", details.totalTimeLabel],
-              ["Days Active", String(details.daysActive)],
-              ["Current Study", details.currentStudy],
-              ["Current Day", latestDay ? `Day ${latestDay}` : "Not started"],
-              ["Last Complete", details.lastCompletedDay ? `Day ${details.lastCompletedDay}` : "None"],
-              ["Streak", details.streak === null ? "Unknown" : `${details.streak} day${details.streak === 1 ? "" : "s"}`],
-              ["XP", details.xp === null ? "Unknown" : formatNumber(details.xp)],
-              ["Level", details.level === null ? "Unknown" : String(details.level)],
-              ["Drop Off", details.dropoffReason],
-            ].map(([label, value]) => (
-              <div key={label} className="flex items-start justify-between gap-3">
-                <dt className="text-slate-400">{label}</dt>
-                <dd className="max-w-[170px] text-right font-bold text-slate-100">{value}</dd>
-              </div>
-            ))}
-          </dl>
-        </aside>
-
-        <section className="rounded-xl border border-white/10 bg-white/[0.035] p-4">
+      <section className="rounded-xl border border-white/10 bg-white/[0.035] p-4">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-300">User Journey Timeline</p>
@@ -538,8 +501,7 @@ function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
               <p className="mt-1 text-lg font-black text-white">{row.currentStatus === "dropped_off" ? "Re-engage" : "Keep going"}</p>
             </div>
           </div>
-        </section>
-      </div>
+      </section>
     </div>
   );
 }
@@ -558,6 +520,12 @@ export default function AnalyticsPage() {
   const [activeView, setActiveView] = useState<AnalyticsView>("overview");
   const [expandedDay, setExpandedDay] = useState<number>(1);
   const [expandedVisitorId, setExpandedVisitorId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const cachedSkin = readCachedPremiumSkin(null);
+    applyAppThemeToDocument("light");
+    applyPremiumSkinToDocument(cachedSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : cachedSkin);
+  }, []);
 
   useEffect(() => {
     async function checkOwner() {
@@ -666,24 +634,24 @@ export default function AnalyticsPage() {
   }
 
   if (!authChecked) {
-    return <div className="min-h-screen bg-slate-50 p-10 text-slate-700">Checking analytics access...</div>;
+    return <div className="min-h-screen bg-[var(--bb-background,#0e1218)] p-10 text-[var(--bb-text-secondary,#d1d5db)]">Checking analytics access...</div>;
   }
 
   if (!isOwner) {
     return (
-      <div className="grid min-h-screen place-items-center bg-slate-50 p-6">
-        <div className="max-w-md rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm">
-          <h1 className="text-2xl font-bold text-slate-950">Owner analytics only</h1>
-          <p className="mt-2 text-sm text-slate-600">This dashboard is only available to the Bible Buddy owner account.</p>
+      <div className="grid min-h-screen place-items-center bg-[var(--bb-background,#0e1218)] p-6">
+        <div className="max-w-md rounded-2xl border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] p-6 text-center shadow-sm">
+          <h1 className="text-2xl font-bold text-[var(--bb-text-primary,#f9fafb)]">Owner analytics only</h1>
+          <p className="mt-2 text-sm text-[var(--bb-text-secondary,#d1d5db)]">This dashboard is only available to the Bible Buddy owner account.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bb-analytics-page min-h-screen bg-[#f8fafc] text-slate-950">
+    <div className="bb-analytics-page min-h-screen bg-[var(--bb-background,#0e1218)] text-[var(--bb-text-primary,#f9fafb)]">
       <div className="flex min-h-screen">
-        <aside className="hidden w-64 shrink-0 flex-col bg-[#0d1117] px-5 py-6 text-white lg:flex">
+        <aside className="hidden w-64 shrink-0 flex-col border-r border-[var(--bb-card-border,#374151)] bg-[var(--bb-surface,#151b24)] px-5 py-6 text-[var(--bb-text-primary,#f9fafb)] lg:flex">
           <div className="flex items-center gap-3">
             <div className="grid h-12 w-12 place-items-center rounded-full border border-amber-400/50 bg-slate-900 text-sm font-black">BB</div>
             <div>
@@ -718,15 +686,15 @@ export default function AnalyticsPage() {
         </aside>
 
         <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-10">
-          <div className="mb-5 rounded-xl border border-slate-200 bg-white p-3 shadow-sm lg:hidden">
-            <label className="block text-xs font-bold uppercase tracking-[0.14em] text-slate-500" htmlFor="analytics-mobile-view">
+          <div className="mb-5 rounded-xl border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] p-3 shadow-sm lg:hidden">
+            <label className="block text-xs font-bold uppercase tracking-[0.14em] text-[var(--bb-text-muted,#9ca3af)]" htmlFor="analytics-mobile-view">
               Analytics Menu
             </label>
             <select
               id="analytics-mobile-view"
               value={activeView}
               onChange={(event) => setActiveView(event.target.value as AnalyticsView)}
-              className="mt-2 h-11 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm font-bold text-slate-900 outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
+              className="mt-2 h-11 w-full rounded-lg border border-[var(--bb-card-border,#374151)] bg-[var(--bb-surface,#151b24)] px-3 text-sm font-bold text-[var(--bb-text-primary,#f9fafb)] outline-none focus:border-[var(--bb-accent,#60a5fa)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#27313d)]"
             >
               {ANALYTICS_NAV_ITEMS.map((item) => (
                 <option key={item.key} value={item.key}>{item.label}</option>
@@ -736,10 +704,10 @@ export default function AnalyticsPage() {
 
           <header className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div>
-              <h1 className="text-3xl font-bold tracking-tight text-slate-950">
+              <h1 className="text-3xl font-bold tracking-tight text-[var(--bb-text-primary,#f9fafb)]">
                 {activeView === "overview" ? "Bible Buddy Funnel" : activeNavItem.label}
               </h1>
-              <p className="mt-2 text-sm font-medium text-slate-600">
+              <p className="mt-2 text-sm font-medium text-[var(--bb-text-secondary,#d1d5db)]">
                 {activeView === "overview"
                   ? "See every visitor's path from landing page to guest, free account, and Pro."
                   : activeView === "bible-year"
@@ -752,7 +720,7 @@ export default function AnalyticsPage() {
               <select
                 value={windowKey}
                 onChange={(event) => setWindowKey(event.target.value as JourneyWindow)}
-                className="h-11 rounded-lg border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 shadow-sm outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
+                className="h-11 rounded-lg border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] px-4 text-sm font-semibold text-[var(--bb-text-primary,#f9fafb)] shadow-sm outline-none transition focus:border-[var(--bb-accent,#60a5fa)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#27313d)]"
               >
                 {WINDOW_OPTIONS.map((option) => (
                   <option key={option.key} value={option.key}>{option.label}</option>
@@ -761,7 +729,7 @@ export default function AnalyticsPage() {
               <button
                 type="button"
                 onClick={exportCsv}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 shadow-sm transition hover:bg-slate-50"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] px-4 text-sm font-semibold text-[var(--bb-text-primary,#f9fafb)] shadow-sm transition hover:brightness-110"
               >
                 <Icon name="export" />
                 Export

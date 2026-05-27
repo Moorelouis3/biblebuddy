@@ -14,7 +14,8 @@ export type PremiumSkinId =
   | "no-fuss"
   | "quiet-blue"
   | "royal-purple"
-  | "fresh-green";
+  | "fresh-green"
+  | "passion-fruit";
 
 export type PremiumSkinPalette = {
   background: string;
@@ -66,6 +67,7 @@ type BasicSkinInput = {
   background: string;
   surface: string;
   surfaceSoft: string;
+  card?: string;
   cardBorder: string;
   textPrimary: string;
   textSecondary: string;
@@ -91,7 +93,7 @@ function createBasicSkin(input: BasicSkinInput): PremiumSkin {
       background: input.background,
       surface: input.surface,
       surfaceSoft: input.surfaceSoft,
-      card: "#FFFFFF",
+      card: input.card ?? input.surface,
       cardBorder: input.cardBorder,
       textPrimary: input.textPrimary,
       textSecondary: input.textSecondary,
@@ -259,31 +261,33 @@ export const MIDNIGHT_GARDEN_SKIN = createBasicSkin({
 export const LAVENDER_PRAYER_SKIN = createBasicSkin({
   id: "lavender-prayer",
   name: "Lavender Prayer",
-  subtitle: "A soft purple layout with a peaceful prayer accent.",
-  base: "#8758D8",
-  soft: "#EBDDFF",
-  background: "#F6F0FF",
-  surface: "#FFFFFF",
-  surfaceSoft: "#EBDDFF",
-  cardBorder: "#CAB1F3",
-  textPrimary: "#261447",
-  textSecondary: "#4C3575",
-  textMuted: "#7C68A6",
+  subtitle: "A deep lavender study theme for quiet focus.",
+  base: "#B78CFF",
+  soft: "#38245F",
+  background: "#130D24",
+  surface: "#1C1333",
+  surfaceSoft: "#2A1A4D",
+  card: "#22173D",
+  cardBorder: "#5F43A4",
+  textPrimary: "#FBF8FF",
+  textSecondary: "#E4D8FF",
+  textMuted: "#B8A7DF",
 });
 
 export const RUBY_VILLAGE_SKIN = createBasicSkin({
   id: "ruby-village",
   name: "Ruby Village",
-  subtitle: "A gentle ruby layout with a warm rose accent.",
-  base: "#E5544A",
-  soft: "#FFE0DD",
-  background: "#FFF1F1",
-  surface: "#FFFFFF",
-  surfaceSoft: "#FFE0DD",
-  cardBorder: "#F2AAA3",
-  textPrimary: "#3B0A0A",
-  textSecondary: "#7F1D1D",
-  textMuted: "#B45353",
+  subtitle: "A deep ruby theme with warm, steady contrast.",
+  base: "#FF5A76",
+  soft: "#4B1320",
+  background: "#1A070C",
+  surface: "#260C13",
+  surfaceSoft: "#3B111C",
+  card: "#2D0E17",
+  cardBorder: "#783244",
+  textPrimary: "#FFF8F9",
+  textSecondary: "#FFD4DC",
+  textMuted: "#E7A8B5",
 });
 
 export const SLOW_MORNINGS_SKIN = createBasicSkin({
@@ -364,16 +368,17 @@ export const WINTER_CABIN_SKIN = createBasicSkin({
 export const MOUNT_SINAI_SKIN = createBasicSkin({
   id: "mount-sinai",
   name: "Mount Sinai",
-  subtitle: "A grounded amber layout with a soft gold accent.",
-  base: "#C98715",
-  soft: "#FFE9B8",
-  background: "#FFF7E5",
-  surface: "#FFFCF7",
-  surfaceSoft: "#FFE9B8",
-  cardBorder: "#E1C06C",
-  textPrimary: "#3A2503",
-  textSecondary: "#7C4A03",
-  textMuted: "#A16207",
+  subtitle: "A deep bronze theme with a warm mountain glow.",
+  base: "#F2B35A",
+  soft: "#4E3213",
+  background: "#160D05",
+  surface: "#241609",
+  surfaceSoft: "#34210D",
+  card: "#2A1A0A",
+  cardBorder: "#75501F",
+  textPrimary: "#FFF8EB",
+  textSecondary: "#F6D9A9",
+  textMuted: "#C8A56D",
 });
 
 export const DESERT_DAWN_SKIN = createBasicSkin({
@@ -394,16 +399,33 @@ export const DESERT_DAWN_SKIN = createBasicSkin({
 export const NO_FUSS_SKIN = createBasicSkin({
   id: "no-fuss",
   name: "No Fuss",
-  subtitle: "A clean neutral layout with minimal distraction.",
-  base: "#6B7684",
-  soft: "#E8EBEF",
-  background: "#F7F7F6",
-  surface: "#FAFAFA",
-  surfaceSoft: "#E8EBEF",
-  cardBorder: "#CCD2DA",
-  textPrimary: "#111827",
-  textSecondary: "#374151",
-  textMuted: "#6B7280",
+  subtitle: "A deep neutral theme with no distractions.",
+  base: "#9CA3AF",
+  soft: "#27313D",
+  background: "#0E1218",
+  surface: "#151B24",
+  surfaceSoft: "#1E2733",
+  card: "#19212C",
+  cardBorder: "#374151",
+  textPrimary: "#F9FAFB",
+  textSecondary: "#D1D5DB",
+  textMuted: "#9CA3AF",
+});
+
+export const PASSION_FRUIT_SKIN = createBasicSkin({
+  id: "passion-fruit",
+  name: "Passion Fruit",
+  subtitle: "A deep pink theme with bright devotional energy.",
+  base: "#FF5CAC",
+  soft: "#5A1B47",
+  background: "#21091A",
+  surface: "#2D0D24",
+  surfaceSoft: "#411135",
+  card: "#36102C",
+  cardBorder: "#7B2B61",
+  textPrimary: "#FFF7FC",
+  textSecondary: "#FFD2EA",
+  textMuted: "#E4A4CA",
 });
 
 export const QUIET_BLUE_SKIN = createBasicSkin({
@@ -455,23 +477,14 @@ export const FRESH_GREEN_SKIN = createBasicSkin({
 });
 
 export const PREMIUM_SKINS: PremiumSkin[] = [
-  BLUE_STORM_SKIN,
-  MIDNIGHT_GARDEN_SKIN,
   LAVENDER_PRAYER_SKIN,
   RUBY_VILLAGE_SKIN,
-  SLOW_MORNINGS_SKIN,
-  MORNING_MERCY_SKIN,
-  CAROLINA_COASTLINE_SKIN,
-  ANGEL_WINGS_SKIN,
-  WINTER_CABIN_SKIN,
-  MOUNT_SINAI_SKIN,
-  DESERT_DAWN_SKIN,
   NO_FUSS_SKIN,
-  QUIET_BLUE_SKIN,
-  ROYAL_PURPLE_SKIN,
-  FRESH_GREEN_SKIN,
+  MOUNT_SINAI_SKIN,
+  PASSION_FRUIT_SKIN,
 ];
 export const PREMIUM_SKIN_BY_ID = new Map(PREMIUM_SKINS.map((skin) => [skin.id, skin]));
+export const DEFAULT_PREMIUM_SKIN_ID: PremiumSkinId = "no-fuss";
 
 export function normalizePremiumSkinId(value: unknown): PremiumSkinId {
   return PREMIUM_SKIN_BY_ID.has(value as Exclude<PremiumSkinId, "none">)
@@ -488,29 +501,23 @@ export function getPremiumSkin(value: unknown): PremiumSkin | null {
 export function getPremiumSkinForLegacyTheme(value: unknown): PremiumSkinId {
   switch (String(value || "").toLowerCase()) {
     case "blue":
-      return "blue-storm";
     case "navy":
-      return "carolina-coastline";
     case "green":
-      return "midnight-garden";
+    case "gray":
+    case "black":
+      return "no-fuss";
     case "gold":
-      return "slow-mornings";
+    case "brown":
+    case "cream":
+      return "mount-sinai";
     case "purple":
       return "lavender-prayer";
     case "pink":
-      return "royal-purple";
+    case "orange":
+    case "peach":
+      return "passion-fruit";
     case "red":
       return "ruby-village";
-    case "orange":
-      return "morning-mercy";
-    case "black":
-    case "gray":
-      return "no-fuss";
-    case "brown":
-      return "slow-mornings";
-    case "cream":
-    case "peach":
-      return "morning-mercy";
     default:
       return "none";
   }
@@ -519,24 +526,31 @@ export function getPremiumSkinForLegacyTheme(value: unknown): PremiumSkinId {
 export function getPremiumSkinForLegacyFlame(value: unknown): PremiumSkinId {
   switch (String(value || "").toLowerCase()) {
     case "blue":
-      return "blue-storm";
     case "navy":
-      return "carolina-coastline";
     case "green":
-      return "midnight-garden";
+    case "black":
+      return "no-fuss";
     case "gold":
-      return "slow-mornings";
+      return "mount-sinai";
     case "purple":
       return "lavender-prayer";
     case "red":
       return "ruby-village";
     case "orange":
-      return "morning-mercy";
-    case "black":
-      return "no-fuss";
+      return "passion-fruit";
     default:
       return "none";
   }
+}
+
+export function resolveUnifiedThemeSkinId(activeSkin: unknown, legacyTheme?: unknown, legacyFlame?: unknown): PremiumSkinId {
+  const directSkin = normalizePremiumSkinId(activeSkin);
+  if (directSkin !== "none") return directSkin;
+  const mappedTheme = getPremiumSkinForLegacyTheme(legacyTheme);
+  if (mappedTheme !== "none") return mappedTheme;
+  const mappedFlame = getPremiumSkinForLegacyFlame(legacyFlame);
+  if (mappedFlame !== "none") return mappedFlame;
+  return DEFAULT_PREMIUM_SKIN_ID;
 }
 
 export function applyPremiumSkinToDocument(skinId: PremiumSkinId) {

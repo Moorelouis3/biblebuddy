@@ -95,8 +95,12 @@ const premiumSkinFirstPaintScript = `
     var skins = ${JSON.stringify(premiumSkinFirstPaintPayload)};
     var skinFlames = ${JSON.stringify(premiumSkinFirstPaintFlames)};
     var flameColors = ${JSON.stringify(premiumSkinFirstPaintFlameColors)};
-    var skinId = window.localStorage.getItem("bb:premium-skin");
+    var skinId = window.localStorage.getItem("bb:premium-skin") || "no-fuss";
     var skin = skins[skinId];
+    if (!skin) {
+      skinId = "no-fuss";
+      skin = skins[skinId];
+    }
     if (!skin) return;
 
     var root = document.documentElement;

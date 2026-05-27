@@ -65,7 +65,7 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   bible_buddy_tv_video_started: 10,
   bible_topic_lesson_completed: 20,
   louis_daily_task_bonus: TASK_XP.chapterBonus,
-  referral_signup_reward: 250,
+  referral_signup_reward: 0,
   badge_earned: 0,
 };
 

@@ -5,9 +5,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 
-const REWARD_DIAMONDS = 250;
-const REWARD_XP = 250;
-
 interface Referral {
   referred_user_id: string;
   username: string | null;
@@ -39,8 +36,6 @@ export default function BuddyRewardsPage() {
   const [copied, setCopied] = useState(false);
 
   const signupCount = referrals.length;
-  const earnedDiamonds = signupCount * REWARD_DIAMONDS;
-  const earnedXp = signupCount * REWARD_XP;
   const shareLink = useMemo(() => {
     if (!profile?.user_id) return "";
     const origin = typeof window !== "undefined" ? window.location.origin : "https://thebiblestudybuddy.com";
@@ -56,13 +51,13 @@ export default function BuddyRewardsPage() {
       }
 
       const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.access_token) throw new Error("Sign in again to load Buddy Rewards.");
+      if (!session?.access_token) throw new Error("Sign in again to load your invite link.");
 
       const res = await fetch("/api/ambassador/rewards", {
         headers: { authorization: `Bearer ${session.access_token}` },
       });
       const json = await res.json();
-      if (!res.ok) throw new Error(json?.error || "Could not load Buddy Rewards.");
+      if (!res.ok) throw new Error(json?.error || "Could not load your invite link.");
 
       setProfile(json.profile);
       setReferrals(json.referrals || []);
@@ -89,21 +84,20 @@ export default function BuddyRewardsPage() {
         <nav className="mb-6 text-sm text-gray-500">
           <Link href="/dashboard" className="transition hover:text-gray-700">Dashboard</Link>
           <span className="mx-2">/</span>
-          <span className="font-medium text-gray-800">Buddy Rewards</span>
+          <span className="font-medium text-gray-800">Invite Bible Buddies</span>
         </nav>
 
         <div className="mb-6">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">Buddy Rewards</p>
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">Invite</p>
           <h1 className="mt-1 text-3xl font-black text-gray-950">Share Bible Buddy</h1>
           <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
-            Share Bible Buddy with friends and earn XP points and diamonds.
+            Share Bible Buddy with friends who want help understanding Scripture and staying consistent.
           </p>
         </div>
 
         <div className="mb-4 rounded-2xl border border-blue-200 bg-white p-5 shadow-sm">
           <div className="flex items-center justify-between gap-3">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-blue-600">Your Invite Link</p>
-            <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">+250 XP +250 diamonds</span>
           </div>
 
           <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-3">
@@ -117,18 +111,10 @@ export default function BuddyRewardsPage() {
           </div>
         </div>
 
-        <div className="mb-4 grid grid-cols-3 gap-3">
+        <div className="mb-4 grid gap-3 sm:grid-cols-3">
           <div className="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm">
             <p className="text-2xl font-black text-gray-950">{signupCount}</p>
             <p className="mt-1 text-xs font-bold text-gray-500">signups</p>
-          </div>
-          <div className="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm">
-            <p className="text-2xl font-black text-blue-700">{earnedXp}</p>
-            <p className="mt-1 text-xs font-bold text-gray-500">XP earned</p>
-          </div>
-          <div className="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm">
-            <p className="text-2xl font-black text-cyan-700">{earnedDiamonds}</p>
-            <p className="mt-1 text-xs font-bold text-gray-500">diamonds</p>
           </div>
         </div>
 
@@ -139,7 +125,7 @@ export default function BuddyRewardsPage() {
 
           {referrals.length === 0 ? (
             <div className="px-5 py-10 text-center">
-              <p className="text-sm font-semibold text-gray-400">No signups yet. Share your link to start earning.</p>
+              <p className="text-sm font-semibold text-gray-400">No signups yet. Share your link with someone who wants help reading the Bible.</p>
             </div>
           ) : (
             <div className="divide-y divide-gray-100">
@@ -158,7 +144,6 @@ export default function BuddyRewardsPage() {
                     <p className="truncate text-sm font-black text-gray-800">{displayName}</p>
                     <p className="text-xs font-semibold text-gray-400">Joined {formatDate(r.trial_started_at)}</p>
                   </div>
-                  <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">+250/+250</span>
                 </div>
                 );
               })}

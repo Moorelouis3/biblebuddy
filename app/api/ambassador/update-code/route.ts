@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     .maybeSingle();
 
   if (!existing) {
-    return NextResponse.json({ error: "Create your Buddy Rewards code first." }, { status: 400 });
+    return NextResponse.json({ error: "Create your invite code first." }, { status: 400 });
   }
 
   const { data: referrals } = await supabase

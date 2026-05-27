@@ -30,7 +30,8 @@ import {
   cachePremiumSkinForUser,
   clearPendingPremiumSkinSync,
   clearLegacyPremiumSkinCache,
-  getPremiumSkinForLegacyTheme,
+  DEFAULT_PREMIUM_SKIN_ID,
+  resolveUnifiedThemeSkinId,
   normalizePremiumSkinId,
   readCachedPremiumSkin,
   shouldPreferCachedPremiumSkin,
@@ -190,29 +191,22 @@ export default function SettingsPage() {
         const dbTheme = normalizeAppThemeId(profile?.app_theme);
         const savedTheme = shouldPreferCachedAppTheme(currentUser.id, dbTheme) ? readCachedAppTheme(currentUser.id) : dbTheme;
         setSelectedTheme(savedTheme);
-        const dbPremiumSkin: PremiumSkinId =
-          profile && "active_premium_skin" in profile && profile.active_premium_skin
-            ? normalizePremiumSkinId(profile.active_premium_skin)
-            : "none";
-        const resolvedPremiumSkin = shouldPreferCachedPremiumSkin(currentUser.id, dbPremiumSkin) ? readCachedPremiumSkin(currentUser.id) : dbPremiumSkin;
-        const premiumSkinStoreItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === resolvedPremiumSkin);
-        const ownsResolvedPremiumSkin =
-          resolvedPremiumSkin === "none" ||
-          isAdminUser(currentUser.email) ||
-          Boolean(premiumSkinStoreItem && (purchases || []).some((purchase) => purchase.item_id === premiumSkinStoreItem.id));
-        const safePremiumSkin: PremiumSkinId = ownsResolvedPremiumSkin ? resolvedPremiumSkin : "none";
-        if (!ownsResolvedPremiumSkin) {
-          void supabase
-            .from("profile_stats")
-            .update({ active_premium_skin: "none", updated_at: new Date().toISOString() })
-            .eq("user_id", currentUser.id);
-        } else if (resolvedPremiumSkin !== dbPremiumSkin) {
+        const dbPremiumSkin = resolveUnifiedThemeSkinId(
+          profile && "active_premium_skin" in profile ? profile.active_premium_skin : null,
+          profile?.app_theme,
+          profile?.selected_streak_flame,
+        );
+        const cachedPremiumSkin = readCachedPremiumSkin(currentUser.id);
+        const resolvedPremiumSkin = shouldPreferCachedPremiumSkin(currentUser.id, dbPremiumSkin) && cachedPremiumSkin !== "none" ? cachedPremiumSkin : dbPremiumSkin;
+        const safePremiumSkin: PremiumSkinId = resolvedPremiumSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : resolvedPremiumSkin;
+        if (safePremiumSkin !== normalizePremiumSkinId(profile?.active_premium_skin)) {
           void supabase
             .from("profile_stats")
             .upsert(
               {
                 user_id: currentUser.id,
-                active_premium_skin: resolvedPremiumSkin,
+                app_theme: "light",
+                active_premium_skin: safePremiumSkin,
                 active_premium_skin_selected_at: profile?.active_premium_skin_selected_at ?? new Date().toISOString(),
                 updated_at: new Date().toISOString(),
               },
@@ -220,7 +214,7 @@ export default function SettingsPage() {
             );
         }
         setSelectedPremiumSkin(safePremiumSkin);
-        setSelectedPremiumSkinSelectedAt(safePremiumSkin === "none" ? null : profile?.active_premium_skin_selected_at ?? null);
+        setSelectedPremiumSkinSelectedAt(profile?.active_premium_skin_selected_at ?? null);
         const localSelectedBuddy =
           typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
         const resolvedSelectedBuddy = normalizeBuddyAvatarId(profile?.selected_buddy_avatar || localSelectedBuddy);
@@ -237,9 +231,9 @@ export default function SettingsPage() {
           clearLegacyPremiumSkinCache();
           cachePremiumSkinForUser(currentUser.id, safePremiumSkin);
           if (dbPremiumSkin === safePremiumSkin) clearPendingPremiumSkinSync(currentUser.id, safePremiumSkin);
-          cacheAppThemeForUser(currentUser.id, savedTheme);
+          cacheAppThemeForUser(currentUser.id, "light");
           if (dbTheme === savedTheme) clearPendingAppThemeSync(currentUser.id, savedTheme);
-          applyAppThemeToDocument(savedTheme);
+          applyAppThemeToDocument("light");
           applyPremiumSkinToDocument(safePremiumSkin);
           window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: resolvedSelectedBuddy } }));
         }
@@ -702,15 +696,8 @@ export default function SettingsPage() {
   async function handlePremiumSkinSelect(skinId: PremiumSkinId) {
     if (!user) return;
     const skin = PREMIUM_SKINS.find((premiumSkin) => premiumSkin.id === skinId);
-    const storeItem = skin ? PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skin.id) : null;
-    const legacyThemeItem = THEME_STORE_ITEMS.find((item) => item.themeId && getPremiumSkinForLegacyTheme(item.themeId) === skinId);
-    const ownsSkin =
-      skinId === "none" ||
-      ownerHasUnlimitedDiamonds ||
-      Boolean(storeItem && storePurchases.some((purchase) => purchase.item_id === storeItem.id)) ||
-      Boolean(legacyThemeItem && storePurchases.some((purchase) => purchase.item_id === legacyThemeItem.id));
-    if (!ownsSkin) {
-      setSettingsMessage("Buy this skin in the store first.");
+    if (!skin) {
+      setSettingsMessage("Choose one of the BibleBuddy themes.");
       return;
     }
 
@@ -724,12 +711,9 @@ export default function SettingsPage() {
     setSelectedPremiumSkinSelectedAt(selectedAt);
     if (typeof window !== "undefined") {
       cachePremiumSkinForUser(user.id, skinId, { markSelected: true });
-      if (skinId === "none") {
-        applyPremiumSkinToDocument("none");
-        applyAppThemeToDocument(selectedTheme);
-      } else {
-        applyPremiumSkinToDocument(skinId);
-      }
+      cacheAppThemeForUser(user.id, "light");
+      applyAppThemeToDocument("light");
+      applyPremiumSkinToDocument(skinId);
       window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId } }));
     }
 
@@ -758,6 +742,7 @@ export default function SettingsPage() {
         .upsert(
           {
             user_id: user.id,
+            app_theme: "light",
             active_premium_skin: skinId,
             active_premium_skin_selected_at: selectedAt,
             updated_at: new Date().toISOString(),
@@ -770,6 +755,7 @@ export default function SettingsPage() {
           .upsert(
             {
               user_id: user.id,
+              app_theme: "light",
               active_premium_skin: skinId,
               updated_at: new Date().toISOString(),
             },
@@ -780,7 +766,7 @@ export default function SettingsPage() {
       if (skinError) throw skinError;
       clearPendingPremiumSkinSync(user.id, skinId);
 
-      setSettingsMessage(skin ? `${skin.name} is now your default skin.` : "Skin removed.");
+      setSettingsMessage(`${skin.name} is now your BibleBuddy theme.`);
     } catch (error: any) {
       setSelectedPremiumSkin(previousSkin);
       setSelectedPremiumSkinSelectedAt(previousSkinSelectedAt);
@@ -788,12 +774,8 @@ export default function SettingsPage() {
       if (typeof window !== "undefined") {
         cachePremiumSkinForUser(user.id, previousSkin);
         persistActiveStreakFlame(previousFlame);
-        if (previousSkin === "none") {
-          applyPremiumSkinToDocument("none");
-          applyAppThemeToDocument(selectedTheme);
-        } else {
-          applyPremiumSkinToDocument(previousSkin);
-        }
+        applyAppThemeToDocument("light");
+        applyPremiumSkinToDocument(previousSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : previousSkin);
         window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: previousSkin } }));
         window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: previousFlame } }));
       }
@@ -916,27 +898,17 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-600">Loading...</p>
+      <div className="min-h-screen bg-[var(--bb-background,#0e1218)] flex items-center justify-center">
+        <p className="text-[var(--bb-text-secondary,#d1d5db)]">Loading...</p>
       </div>
     );
   }
 
   const ownedStoreItemIds = storePurchases.map((purchase) => purchase.item_id);
-  const availableThemes = APP_THEMES.filter((theme) => theme.id === "light" || theme.id === "dark");
   const ownsPremiumSkin = (skin: { id: PremiumSkinId }) => {
-    const storeItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skin.id);
-    const legacyThemeItem = THEME_STORE_ITEMS.find((item) => item.themeId && getPremiumSkinForLegacyTheme(item.themeId) === skin.id);
-    return (
-      ownerHasUnlimitedDiamonds ||
-      selectedPremiumSkin === skin.id ||
-      Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id)) ||
-      Boolean(legacyThemeItem && ownedStoreItemIds.includes(legacyThemeItem.id))
-    );
+    return PREMIUM_SKINS.some((premiumSkin) => premiumSkin.id === skin.id);
   };
-  const ownedPremiumSkins = PREMIUM_SKINS.filter((skin) => {
-    return ownsPremiumSkin(skin);
-  }).sort((a, b) => {
+  const ownedPremiumSkins = PREMIUM_SKINS.slice().sort((a, b) => {
     if (a.id === selectedPremiumSkin) return -1;
     if (b.id === selectedPremiumSkin) return 1;
     return a.name.localeCompare(b.name);
@@ -986,7 +958,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="h-dvh min-h-screen overflow-y-auto bg-gray-50 pb-12 [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch]">
+    <div className="h-dvh min-h-screen overflow-y-auto bg-[var(--bb-background,#0e1218)] pb-12 text-[var(--bb-text-primary,#f9fafb)] [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch]">
       {guestLogoutWarningOpen ? (
         <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/55 px-4">
           <div className="w-full max-w-md rounded-3xl border border-[#d8e7f2] bg-white p-6 text-center shadow-2xl">
@@ -1058,7 +1030,7 @@ export default function SettingsPage() {
         </div>
       ) : null}
       <div className="max-w-2xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Settings</h1>
+        <h1 className="text-3xl font-bold mb-8 text-[var(--bb-text-primary,#f9fafb)]">Settings</h1>
 
         {settingsMessage ? (
           <div className="mb-6 rounded-xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-accent-soft,#eaf5ff)] p-4 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
@@ -1152,83 +1124,20 @@ export default function SettingsPage() {
         </div>
 
         {/* Theme Section */}
-        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-2">Theme</h2>
-          <p className="mb-4 text-sm text-gray-600">
-            Choose Light or Dark. Color skins live in the Skins section.
-          </p>
-
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {availableThemes.map((theme) => {
-              return (
-                <div
-                  key={theme.id}
-                  className={`rounded-2xl border p-3 text-left transition ${
-                    selectedTheme === theme.id ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
-                  }`}
-                >
-                  <button
-                    type="button"
-                    onClick={() => void handleThemeSelect(theme.id)}
-                    disabled={themeSaving === theme.id}
-                    className="w-full text-left transition hover:-translate-y-0.5 disabled:hover:translate-y-0"
-                  >
-                    <div className="flex gap-1">
-                      {[theme.background, theme.surfaceSoft, theme.accent, theme.progressFill].map((color) => (
-                        <span key={color} className="h-6 flex-1 rounded-full border border-black/5" style={{ backgroundColor: color }} />
-                      ))}
-                    </div>
-                    <p className="mt-3 text-sm font-black text-gray-950">{theme.name}</p>
-                    <p className="mt-1 text-xs font-semibold text-gray-500">
-                      {themeSaving === theme.id ? "Saving..." : selectedTheme === theme.id ? "Active" : "Use theme"}
-                    </p>
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Skin Section */}
-        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-2">Skins</h2>
-          <p className="mb-4 text-sm text-gray-600">
-            Set a simple color skin as your default Bible Buddy experience. Skins include a matching profile ring and flame color.
+        <div className="rounded-xl bg-[var(--bb-card,#ffffff)] p-6 text-[var(--bb-text-primary,#111827)] shadow-sm mb-6">
+          <h2 className="text-xl font-semibold mb-2">Themes</h2>
+          <p className="mb-4 text-sm text-[var(--bb-text-secondary,#4b5563)]">
+            Pick one BibleBuddy theme. It applies to the shell, dashboard, analytics, settings, reader, and study areas.
           </p>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <div
-              className={`rounded-2xl border p-3 text-left transition ${
-                selectedPremiumSkin === "none" ? "border-[var(--bb-accent,#2563eb)] ring-2 ring-[var(--bb-accent,#2563eb)]/20" : "border-gray-200"
-              }`}
-            >
-              <div className="grid h-28 place-items-center rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-200">
-                <span className="text-3xl">BB</span>
-              </div>
-              <p className="mt-3 text-sm font-black text-gray-950">No Skin</p>
-              <p className="mt-1 text-xs font-semibold text-gray-500">
-                {selectedPremiumSkin === "none" ? "Active default" : "BibleBuddy's clean base look"}
-              </p>
-              <button
-                type="button"
-                onClick={() => void handlePremiumSkinSelect("none")}
-                disabled={selectedPremiumSkin === "none" || skinSaving === "none"}
-                className="mt-3 w-full rounded-full bg-[var(--bb-button,#2563eb)] px-3 py-2.5 text-xs font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:bg-gray-100 disabled:text-gray-500 disabled:shadow-none"
-              >
-                {skinSaving === "none" ? "Saving..." : selectedPremiumSkin === "none" ? "Set" : "Set Skin"}
-              </button>
-            </div>
-
             {ownedPremiumSkins.map((skin) => {
-              const storeItem = PREMIUM_SKIN_STORE_ITEMS.find((item) => item.skinId === skin.id);
-              const hasSkinAccess =
-                ownsPremiumSkin(skin);
-              const canDelete = Boolean(storeItem && ownedStoreItemIds.includes(storeItem.id));
+              const hasSkinAccess = ownsPremiumSkin(skin);
               return (
                 <div
                   key={skin.id}
                   className={`overflow-hidden rounded-2xl border p-3 text-left transition ${
-                    selectedPremiumSkin === skin.id ? "border-[var(--bb-accent,#5DD6FF)] ring-2 ring-[var(--bb-accent,#5DD6FF)]/25" : "border-gray-200"
+                    selectedPremiumSkin === skin.id ? "border-[var(--bb-accent,#5DD6FF)] ring-2 ring-[var(--bb-accent,#5DD6FF)]/25" : "border-[var(--bb-card-border,#d1d5db)]"
                   }`}
                 >
                   <div
@@ -1252,34 +1161,10 @@ export default function SettingsPage() {
                     >
                       Color Skin
                     </div>
-                    {canDelete && storeItem ? (
-                      <div className="absolute right-2 top-2">
-                        <button
-                          type="button"
-                          onClick={() => setOpenSkinActionsId((current) => (current === skin.id ? null : skin.id))}
-                          className="grid h-9 w-9 place-items-center rounded-full border border-white/70 bg-white/90 text-lg font-black text-gray-700 shadow-sm transition hover:bg-white"
-                          aria-label={`${skin.name} options`}
-                        >
-                          ...
-                        </button>
-                        {openSkinActionsId === skin.id ? (
-                          <div className="absolute right-0 top-11 z-10 w-36 overflow-hidden rounded-2xl border border-red-100 bg-white p-1 shadow-xl">
-                            <button
-                              type="button"
-                              onClick={() => void handleDeleteStoreItem(storeItem.id)}
-                              disabled={removingItemId === storeItem.id}
-                              className="w-full rounded-xl px-3 py-2 text-left text-xs font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
-                            >
-                              {removingItemId === storeItem.id ? "Removing..." : "Delete Skin"}
-                            </button>
-                          </div>
-                        ) : null}
-                      </div>
-                    ) : null}
                   </div>
-                  <p className="mt-3 text-sm font-black text-gray-950">{skin.name}</p>
-                  <p className="mt-1 text-xs font-semibold text-gray-500">
-                    {selectedPremiumSkin === skin.id ? "Active skin" : hasSkinAccess ? "Ready to set" : "Locked"}
+                  <p className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">{skin.name}</p>
+                  <p className="mt-1 text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
+                    {selectedPremiumSkin === skin.id ? "Active theme" : "Ready to set"}
                   </p>
                   <button
                     type="button"
@@ -1291,36 +1176,17 @@ export default function SettingsPage() {
                       void handlePremiumSkinSelect(skin.id);
                     }}
                     disabled={!hasSkinAccess || selectedPremiumSkin === skin.id || skinSaving === skin.id}
-                    className="mt-3 w-full rounded-full px-3 py-2.5 text-xs font-black shadow-sm transition hover:brightness-95 disabled:bg-gray-100 disabled:text-gray-500 disabled:shadow-none"
+                    className="mt-3 w-full rounded-full px-3 py-2.5 text-xs font-black shadow-sm transition hover:brightness-95 disabled:opacity-65 disabled:shadow-none"
                     style={{
                       backgroundColor: hasSkinAccess && selectedPremiumSkin !== skin.id ? skin.palette.accent : undefined,
                       color: hasSkinAccess && selectedPremiumSkin !== skin.id ? skin.palette.buttonText : undefined,
                     }}
                   >
-                    {skinSaving === skin.id ? "Saving..." : selectedPremiumSkin === skin.id ? "Set" : "Set Skin"}
+                    {skinSaving === skin.id ? "Saving..." : selectedPremiumSkin === skin.id ? "Set" : "Set Theme"}
                   </button>
-                  {!hasSkinAccess ? (
-                    <button
-                      type="button"
-                      onClick={() => router.push("/dashboard?openStore=1")}
-                      className="mt-3 w-full rounded-full border px-3 py-2 text-xs font-black transition hover:brightness-110"
-                      style={{
-                        backgroundColor: skin.palette.background,
-                        borderColor: skin.palette.cardBorder,
-                        color: skin.palette.textPrimary,
-                      }}
-                    >
-                      Open Diamond Store
-                    </button>
-                  ) : null}
                 </div>
               );
             })}
-            {!ownedPremiumSkins.length ? (
-              <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-4 text-sm font-bold text-gray-600 sm:col-span-2">
-                Buy color skins in the Diamond Store. Once owned, they show up here to set.
-              </div>
-            ) : null}
           </div>
         </div>
 
