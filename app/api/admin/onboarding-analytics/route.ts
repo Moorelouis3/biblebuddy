@@ -838,9 +838,30 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
   }
 
   const sourceCounts = new Map<string, number>();
+  const visitorsBySource = new Map<string, Array<{
+    actorId: string;
+    visitorLabel: string;
+    referrer: string | null;
+    pagePath: string;
+    landingUrl: string;
+    firstSeenAt: string | null;
+  }>>();
   for (const row of firstVisitByActor.values()) {
     const source = typeof row.source === "string" && row.source.trim() ? row.source.trim().replace(/^Direct \/ Unknown$/i, "Direct") : "Direct";
+    const actorId = getEventActorId(row);
+    const referrer = typeof row.referrer === "string" && row.referrer.trim() ? row.referrer.trim() : null;
+    const pagePath = typeof row.page_path === "string" && row.page_path.trim() ? row.page_path.trim() : "/";
+    const landingUrl = pagePath.startsWith("http") ? pagePath : `https://thebiblestudybuddy.com${pagePath.startsWith("/") ? pagePath : `/${pagePath}`}`;
     sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
+    if (!visitorsBySource.has(source)) visitorsBySource.set(source, []);
+    visitorsBySource.get(source)?.push({
+      actorId,
+      visitorLabel: row.user_id ? `User ${shortId(row.user_id)}` : `Session ${shortId(row.session_id || actorId)}`,
+      referrer,
+      pagePath,
+      landingUrl,
+      firstSeenAt: row.created_at || null,
+    });
   }
 
   const totalVisitors = firstVisitByActor.size;
@@ -849,6 +870,9 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
       source,
       visitors,
       percent: percent(visitors, totalVisitors),
+      visitorRows: (visitorsBySource.get(source) || [])
+        .sort((a, b) => (b.firstSeenAt || "").localeCompare(a.firstSeenAt || ""))
+        .slice(0, 100),
     }))
     .sort((a, b) => b.visitors - a.visitors || a.source.localeCompare(b.source));
 

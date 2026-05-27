@@ -190,7 +190,19 @@ type AnalyticsResponse = {
   };
   trafficSources?: {
     totalVisitors: number;
-    sources: Array<{ source: string; visitors: number; percent: number }>;
+    sources: Array<{
+      source: string;
+      visitors: number;
+      percent: number;
+      visitorRows?: Array<{
+        actorId: string;
+        visitorLabel: string;
+        referrer: string | null;
+        pagePath: string;
+        landingUrl: string;
+        firstSeenAt: string | null;
+      }>;
+    }>;
   };
   eventSetupRequired?: boolean;
   eventError?: string;
@@ -232,6 +244,10 @@ const TRAFFIC_SOURCE_COLORS = [
 
 function formatNumber(value: number) {
   return value.toLocaleString();
+}
+
+function shortId(value: string) {
+  return value ? value.slice(0, 8) : "unknown";
 }
 
 function formatDateTime(value: string | null) {
@@ -599,6 +615,8 @@ function StudyNotesUpgradeCard({ stats }: { stats?: StudyNotesUpgradeAnalytics }
 function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSources"] }) {
   const sources = report?.sources || [];
   const totalVisitors = report?.totalVisitors || 0;
+  const [selectedSource, setSelectedSource] = useState<(typeof sources)[number] | null>(null);
+  const selectedRows = selectedSource?.visitorRows || [];
 
   return (
     <section className="mt-8 space-y-5">
@@ -623,7 +641,12 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
           {sources.map((source, index) => {
             const color = TRAFFIC_SOURCE_COLORS[index % TRAFFIC_SOURCE_COLORS.length];
             return (
-              <article key={source.source} className={`rounded-2xl border border-slate-200 bg-gradient-to-br ${color} bg-white p-5 shadow-sm ring-1`}>
+              <button
+                key={source.source}
+                type="button"
+                onClick={() => setSelectedSource(source)}
+                className={`rounded-2xl border border-slate-200 bg-gradient-to-br ${color} bg-white p-5 text-left shadow-sm ring-1 transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-blue-200`}
+              >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="truncate text-xl font-black text-slate-950">{source.source}</p>
@@ -636,7 +659,8 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
                 <div className="mt-5 h-3 overflow-hidden rounded-full bg-white/70 ring-1 ring-slate-200">
                   <div className="h-full rounded-full bg-current transition-all" style={{ width: `${Math.min(100, Math.max(0, source.percent))}%` }} />
                 </div>
-              </article>
+                <p className="mt-3 text-xs font-black text-slate-700">Click to see referrers</p>
+              </button>
             );
           })}
         </div>
@@ -646,6 +670,70 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
           <p className="mt-2 text-sm font-medium text-slate-600">When visitors reach the landing page, sources like Threads, Instagram, Google, YouTube, and Direct will show here.</p>
         </div>
       )}
+
+      {selectedSource ? (
+        <div className="fixed inset-0 z-[120] flex items-end justify-center bg-slate-950/70 px-4 py-6 backdrop-blur-sm sm:items-center">
+          <div className="max-h-[84vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
+            <div className="flex items-start justify-between gap-4 border-b border-slate-200 px-5 py-4">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">Traffic Source</p>
+                <h2 className="mt-1 text-2xl font-black text-slate-950">{selectedSource.source}</h2>
+                <p className="mt-1 text-sm font-semibold text-slate-600">{formatNumber(selectedSource.visitors)} landing visitors in this window</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedSource(null)}
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-black text-slate-700 transition hover:bg-slate-50"
+              >
+                Close
+              </button>
+            </div>
+            <div className="max-h-[64vh] overflow-y-auto px-5 py-4">
+              {selectedRows.length ? (
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[760px] text-left text-sm">
+                    <thead className="text-xs font-black uppercase tracking-[0.12em] text-slate-500">
+                      <tr>
+                        <th className="py-3 pr-4">Visitor</th>
+                        <th className="py-3 pr-4">Came From</th>
+                        <th className="py-3 pr-4">Landing Link</th>
+                        <th className="py-3">First Seen</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-200 font-semibold text-slate-800">
+                      {selectedRows.map((row) => (
+                        <tr key={`${row.actorId}-${row.firstSeenAt || ""}`}>
+                          <td className="py-3 pr-4 align-top">
+                            <p className="font-black text-slate-950">{row.visitorLabel}</p>
+                            <p className="mt-0.5 text-xs text-slate-500">{shortId(row.actorId)}</p>
+                          </td>
+                          <td className="max-w-[280px] py-3 pr-4 align-top">
+                            {row.referrer ? (
+                              <a href={row.referrer} target="_blank" rel="noreferrer" className="break-all text-blue-700 underline decoration-blue-300 underline-offset-2">
+                                {row.referrer}
+                              </a>
+                            ) : (
+                              <span className="text-slate-500">No referrer captured</span>
+                            )}
+                          </td>
+                          <td className="max-w-[260px] py-3 pr-4 align-top">
+                            <a href={row.landingUrl} target="_blank" rel="noreferrer" className="break-all text-slate-800 underline decoration-slate-300 underline-offset-2">
+                              {row.pagePath || row.landingUrl}
+                            </a>
+                          </td>
+                          <td className="whitespace-nowrap py-3 align-top text-slate-600">{row.firstSeenAt ? formatDateTime(row.firstSeenAt) : "Unknown"}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <p className="rounded-xl border border-dashed border-slate-300 p-8 text-center text-sm font-bold text-slate-500">No visitor rows captured for this source.</p>
+              )}
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
