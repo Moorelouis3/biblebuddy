@@ -506,15 +506,15 @@ function buildBibleBuddyFunnelStages(
     { key: "landing", label: "Landing Page", actors: mergeActors(["landing_page_visit"], ["landing_page_visited"]) },
     { key: "startedOnboarding", label: "Started Onboarding", actors: mergeActors(["clicked_start_journey", "started_onboarding"], ["landing_cta_clicked", "onboarding_intro_started"]) },
     { key: "finishedOnboarding", label: "Finished Onboarding", actors: mergeActors(["started_guest_journey", "clicked_yes_start_my_journey"], ["onboarding_journey_started"]) },
-    { key: "dashboardTour", label: "Dashboard Tour", actors: mergeActors([], ["dashboard_tour_completed"]) },
     { key: "startedDay1", label: "Started Day 1", actors: startedDayActors(1) },
     { key: "completedDay1", label: "Completed Day 1", actors: completedDayActors(1) },
     { key: "startedDay2", label: "Started Day 2", actors: startedDayActors(2) },
     { key: "completedDay2", label: "Completed Day 2", actors: completedDayActors(2) },
     { key: "startedDay3", label: "Started Day 3", actors: startedDayActors(3) },
     { key: "completedDay3", label: "Completed Day 3", actors: completedDayActors(3) },
-    { key: "upgradePopup", label: "Saw Upgrade Popup", actors: mergeActors([], ["upgrade_popup_viewed"]) },
-    { key: "upgraded", label: "Upgraded", actors: mergeActors([], ["user_upgraded"]) },
+    { key: "createdFreeAccount", label: "Created Free Account", actors: mergeActors(["created_free_account", "created_account_successfully"], ["user_signup"]) },
+    { key: "startedTrial", label: "Started Trial", actors: mergeActors([], ["trial_started"]) },
+    { key: "convertedToPro", label: "Converted To Pro", actors: mergeActors([], ["user_upgraded", "trial_converted"]) },
   ];
 
   const firstCount = stageSets[0]?.actors.size || 0;
@@ -1800,7 +1800,11 @@ export async function GET(request: Request) {
 
   const bibleYearDays = buildBibleYearDayAnalytics(allBibleYearProgressRows, profileByUserId);
   const studyNotes = buildStudyNotesAnalytics(studyNotesActionRows, profileByUserId);
-  const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, allBibleYearProgressRows);
+  const windowBibleYearProgressRows = allBibleYearProgressRows.filter((row) => {
+    const updatedAt = typeof row.updated_at === "string" ? new Date(row.updated_at).getTime() : 0;
+    return Number.isFinite(updatedAt) && updatedAt >= new Date(journeySinceIso).getTime();
+  });
+  const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(validEventRows);

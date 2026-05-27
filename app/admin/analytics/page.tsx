@@ -363,15 +363,15 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
       "Landing Page",
       "Started Onboarding",
       "Finished Onboarding",
-      "Dashboard Tour",
       "Started Day 1",
       "Completed Day 1",
       "Started Day 2",
       "Completed Day 2",
       "Started Day 3",
       "Completed Day 3",
-      "Saw Upgrade Popup",
-      "Upgraded",
+      "Created Free Account",
+      "Started Trial",
+      "Converted To Pro",
     ].map((label, index) => ({
       key: label.toLowerCase().replaceAll(" ", "-"),
       label,
@@ -382,19 +382,9 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
     }));
 
   return (
-    <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_12px_32px_rgba(15,23,42,0.07)]">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-600">BibleBuddy Journey Flow</p>
-          <h2 className="mt-1 text-2xl font-black text-slate-950">Where people move forward or drop off</h2>
-        </div>
-        <p className="max-w-xl text-sm font-semibold leading-6 text-slate-600">
-          Each stage is grouped from the master action log so you can see onboarding, first three days, and upgrade movement without reading every tiny event.
-        </p>
-      </div>
-
-      <div className="mt-6 overflow-x-auto pb-2">
-        <div className="flex min-w-[1180px] items-stretch gap-3">
+    <section className="mt-6 rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-[0_10px_28px_rgba(15,23,42,0.06)]">
+      <div className="overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex min-w-max items-stretch gap-2">
           {visibleStages.map((stage, index) => {
             const isStrong = stage.conversionRate >= 70;
             const isWarning = stage.conversionRate > 0 && stage.conversionRate < 40;
@@ -404,24 +394,17 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
                 ? "border-amber-200 bg-amber-50 text-amber-700"
                 : "border-slate-200 bg-slate-50 text-slate-700";
             return (
-              <div key={stage.key} className="flex min-w-[170px] items-center gap-3">
-                <div className="min-h-[164px] flex-1 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="grid h-7 w-7 place-items-center rounded-full bg-slate-900 text-xs font-black text-white">{index + 1}</span>
-                    <span className={`rounded-full border px-2 py-1 text-[11px] font-black ${tone}`}>
-                      {stage.conversionRate}% conv
-                    </span>
-                  </div>
-                  <p className="mt-4 min-h-10 text-sm font-black leading-5 text-slate-950">{stage.label}</p>
-                  <p className="mt-3 text-3xl font-black leading-none text-slate-950">{formatNumber(stage.users)}</p>
-                  <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] font-bold">
-                    <span className="rounded-lg bg-blue-50 px-2 py-1.5 text-blue-700">{stage.retentionRate}% retain</span>
-                    <span className="rounded-lg bg-rose-50 px-2 py-1.5 text-rose-700">{stage.dropoffRate}% drop</span>
-                  </div>
+              <div key={stage.key} className="flex items-center gap-2">
+                <div className="min-h-[104px] w-[142px] rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+                  <p className="min-h-9 text-xs font-black leading-4 text-slate-950">{stage.label}</p>
+                  <p className="mt-2 text-2xl font-black leading-none text-slate-950">{formatNumber(stage.users)}</p>
+                  <p className={`mt-2 inline-flex rounded-full border px-2 py-1 text-[11px] font-black ${tone}`}>
+                    {index === 0 ? "100% baseline" : `${stage.conversionRate}% conversion`}
+                  </p>
                 </div>
                 {index < visibleStages.length - 1 ? (
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-slate-400">
-                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-slate-400">
+                    <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14" />
                       <path d="m13 6 6 6-6 6" />
                     </svg>
