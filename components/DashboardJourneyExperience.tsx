@@ -5933,31 +5933,43 @@ export default function DashboardJourneyExperience({
     const sections = [
       {
         id: "understand",
+        icon: "Book",
+        iconClass: "bg-[#eadcff] text-[#6d3fd1]",
         title: "Understand Scripture More Deeply",
         body: "Go beyond a quick read with clearer explanations, context, and guided notes that help the story make sense as you keep moving through Genesis and the rest of Scripture.",
       },
       {
         id: "offline",
+        icon: "Offline",
+        iconClass: "bg-[#f5e3c3] text-[#9a6517]",
         title: "Study Anywhere, Even Offline",
         body: "Keep your Bible study close when life gets busy. Pro is built for a steadier rhythm so you can keep learning even when your day is not perfect.",
       },
       {
         id: "devices",
+        icon: "Sync",
+        iconClass: "bg-[#ddecff] text-[#2f6bcf]",
         title: "Access on All Your Devices",
         body: "Your Bible journey stays connected across devices, so your progress, notes, and study flow are not trapped on one screen.",
       },
       {
         id: "progress",
+        icon: "Save",
+        iconClass: "bg-[#dff0d8] text-[#3b7a39]",
         title: "Never Lose Your Progress",
         body: "Protect the momentum you just built. Your daily progress, streak, and Bible in One Year journey stay tied to your BibleBuddy account.",
       },
       {
         id: "tools",
+        icon: "Notes",
+        iconClass: "bg-[#ffefc2] text-[#b37a00]",
         title: "Study Notes + Tools",
         body: "Unlock deeper study notes, stronger explanations, downloads, and focused tools that help you understand what you are reading instead of just checking off a task.",
       },
       {
         id: "personal",
+        icon: "You",
+        iconClass: "bg-[#e6f3ff] text-[#1f65c7]",
         title: "Make It Your Own",
         body: "Shape BibleBuddy around the way you study with a more complete experience that feels personal, steady, and easier to come back to.",
       },
@@ -5972,97 +5984,95 @@ export default function DashboardJourneyExperience({
       <ModalShell
         isOpen={Boolean(prompt)}
         onClose={() => dismissDayThreePrompt("Bible in One Year Day 3 Pro upgrade popup closed")}
-        backdropColor="bg-black/65"
+        backdropColor="bg-slate-950/72 backdrop-blur-md"
         scrollable
         zIndex="z-[95]"
       >
-        <div className="bb-skin-glow-card relative w-full max-w-2xl overflow-hidden rounded-[30px] border border-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_42%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#4f8df7)_25%,transparent),transparent_42%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_86%,transparent))] p-5 text-left text-[var(--bb-text-primary,#111827)] shadow-[0_32px_90px_rgba(0,0,0,0.48),0_0_42px_color-mix(in_srgb,var(--bb-accent,#4f8df7)_24%,transparent)] backdrop-blur-xl sm:p-7">
+        <div className="relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[#ead9bd] bg-[#fffdf8] px-4 py-4 text-center text-[#0f1b33] shadow-[0_20px_58px_rgba(15,23,42,0.28)]">
           <button
             type="button"
             onClick={() => dismissDayThreePrompt("Bible in One Year Day 3 Pro upgrade popup closed")}
-            className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] text-xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_62%,transparent)]"
+            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[#e7dccb] bg-white/90 text-lg font-black text-[#0f1b33] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[#fff4dc]"
             aria-label="Close Pro upgrade popup"
           >
             x
           </button>
 
-          <div className="inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_16%,transparent)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#4f8df7)]">
-            Bible in One Year
-          </div>
-          <h2 className="mt-4 pr-10 text-3xl font-black leading-tight sm:text-4xl">
-            Congratulations. You just finished Day 3.
-          </h2>
-          <p className="mt-3 text-base font-black leading-6 text-[var(--bb-text-primary,#111827)]">
-            The habit of reading and understanding God's Word is starting to form.
-          </p>
-          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            This is the perfect time to protect your progress and go deeper in your Bible journey.
-          </p>
-
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_70%,transparent)] p-4">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-secondary,#4b5563)]">Free</p>
-              <p className="mt-2 text-lg font-black">Keep moving one day at a time.</p>
-              <p className="mt-2 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                Continue the Bible in One Year journey with your current daily flow.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_42%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-card,#ffffff))] p-4 shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#4f8df7)_18%,transparent)]">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#4f8df7)]">Pro</p>
-              <p className="mt-2 text-lg font-black">Protect the habit you are building.</p>
-              <p className="mt-2 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                Unlock deeper study tools, connected progress, and a more complete BibleBuddy experience.
-              </p>
-            </div>
+          <div className="pr-9 text-left sm:text-center">
+            <h2 className="font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[#0b162f] sm:text-[28px]">
+              Congratulations.
+              <span className="block">You finished <span className="text-[#2f7fe8]">Day 3.</span></span>
+            </h2>
+            <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[#8eb8ee] opacity-70 sm:w-44" aria-hidden="true" />
           </div>
 
-          <div className="mt-5 space-y-2">
+          <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[#263855] sm:text-center">
+            <p>The habit of reading and understanding God's Word is starting to form.</p>
+            <p>
+              This is the perfect time to <span className="font-black text-[#1f65c7]">protect your progress</span> and go deeper in your Bible journey.
+            </p>
+          </div>
+
+          <div className="mt-3 rounded-[18px] border border-[#ead9bd] bg-white/72 px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(102,65,12,0.07)]">
             {sections.map((section) => {
               const isOpen = bibleYearDayThreeProOpenSection === section.id;
               return (
                 <div
                   key={section.id}
-                  className="overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_22%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)]"
+                  className={section.id === sections[0].id ? "" : "border-t border-[#eadfce] pt-2"}
                 >
                   <button
                     type="button"
                     onClick={() => setBibleYearDayThreeProOpenSection(isOpen ? "" : section.id)}
-                    className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left"
+                    className="flex w-full items-center gap-2.5 py-1.5 text-left"
+                    aria-expanded={isOpen}
                   >
-                    <span className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{section.title}</span>
-                    <span className="text-lg font-black text-[var(--bb-accent,#4f8df7)]" aria-hidden="true">
+                    <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[10px] font-black ${section.iconClass}`} aria-hidden="true">
+                      {section.icon}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-black leading-tight text-[#0b162f]">{section.title}</span>
+                      <span className="mt-0.5 block text-[11px] font-semibold leading-4 text-[#3b4b66]">
+                        {isOpen ? section.body : "Tap to learn more."}
+                      </span>
+                    </span>
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#d9e6fb] bg-[#f4f8ff] text-sm font-black text-[#2f7fe8]" aria-hidden="true">
                       {isOpen ? "-" : "+"}
                     </span>
                   </button>
-                  {isOpen ? (
-                    <p className="border-t border-[color-mix(in_srgb,var(--bb-accent,#4f8df7)_16%,var(--bb-card-border,#dbe7f4))] px-4 pb-4 pt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                      {section.body}
-                    </p>
-                  ) : null}
                 </div>
               );
             })}
           </div>
 
-          <div className="mt-6 grid gap-3">
+          <div className="mt-3 grid gap-2">
             <button
               type="button"
               onClick={() => {
                 setBibleYearDayThreeProPrompt(null);
                 openBibleYearQuickUpgrade("day3");
               }}
-              className="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--bb-button,var(--bb-accent,#4f8df7))] px-5 py-4 text-base font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_0_32px_color-mix(in_srgb,var(--bb-accent,#4f8df7)_32%,transparent)] transition hover:brightness-105"
+              className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[#2f7fe8] px-4 py-3 text-left text-white shadow-[0_12px_24px_rgba(47,127,232,0.24)] transition hover:brightness-105"
             >
-              Upgrade to BibleBuddy Pro
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18 text-[11px] font-black" aria-hidden="true">PRO</span>
+              <span>
+                <span className="block text-sm font-black leading-tight">Upgrade to BibleBuddy Pro</span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Protect progress and unlock deeper study</span>
+              </span>
             </button>
             <button
               type="button"
               onClick={() => dismissDayThreePrompt("Bible in One Year Day 3 continued with free plan")}
-              className="inline-flex w-full items-center justify-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+              className="rounded-[15px] border border-[#7aaaf3] bg-white/78 px-4 py-2 text-[#0f1b33] transition hover:bg-[#f4f8ff]"
             >
-              Continue with Free Plan
+              <span className="block text-xs font-black leading-tight">Continue with Free Plan</span>
+              <span className="mt-0.5 block text-[11px] font-semibold text-[#4c5d78]">Keep moving to Day 4</span>
             </button>
           </div>
+
+          <p className="mt-3 text-[11px] font-semibold leading-4 text-[#61708a]">
+            Cancel anytime. Upgrade in seconds. Secure and private.
+          </p>
         </div>
       </ModalShell>
     );
