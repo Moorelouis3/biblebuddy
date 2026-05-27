@@ -1803,6 +1803,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearDayOneDeepNotesGiftOpen, setBibleYearDayOneDeepNotesGiftOpen] = useState(false);
   const [bibleYearDayOneStudyNotesGiftSeen, setBibleYearDayOneStudyNotesGiftSeen] = useState(false);
   const [bibleYearDeepNotesUpgradeOpen, setBibleYearDeepNotesUpgradeOpen] = useState(false);
+  const [bibleYearDeepNotesUpgradeDay, setBibleYearDeepNotesUpgradeDay] = useState<number | null>(null);
   const [bibleYearDownloadUpgradeOpen, setBibleYearDownloadUpgradeOpen] = useState(false);
   const [bibleYearQuickUpgradeOpen, setBibleYearQuickUpgradeOpen] = useState(false);
   const [bibleYearQuickUpgradeContext, setBibleYearQuickUpgradeContext] = useState<"day3" | "guest_pro" | null>(null);
@@ -2213,6 +2214,7 @@ export default function DashboardJourneyExperience({
     { dayNumber: 6, label: "Lot" },
     { dayNumber: 7, label: "Covenant" },
     { dayNumber: 8, label: "Sodom" },
+    { dayNumber: 9, label: "Legacy" },
   ];
   const dashboardTaskSource = bibleYearDashboardTasks || visibleTasks;
   const nextTask = dashboardTaskSource.find((task) => !task.done) ?? null;
@@ -5456,6 +5458,36 @@ export default function DashboardJourneyExperience({
     }
   }
 
+  async function logStudyNotesUpgradeAction(actionType: ActionType, dayNumber: number | null, label: string) {
+    if (!userId) return;
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const meta = user?.user_metadata || {};
+      const username =
+        meta.firstName ||
+        meta.first_name ||
+        (user?.email ? user.email.split("@")[0] : null) ||
+        "User";
+      await supabase.from("master_actions").insert({
+        user_id: userId,
+        username,
+        action_type: actionType,
+        action_label: label,
+        journey_day: dayNumber,
+        account_status: isPaidUser ? "pro" : "free_or_guest",
+        event_metadata: {
+          plan: "bible_in_one_year",
+          prompt: "study_notes_upgrade",
+          dayNumber,
+        },
+      });
+    } catch (error) {
+      console.warn("[BIBLE_YEAR_STUDY_NOTES_UPGRADE] Could not log prompt action:", error);
+    }
+  }
+
   async function openDayThreeProPrompt(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
     if (isPaidUser) return false;
     if (await hasSeenDayThreeProPrompt()) return false;
@@ -5635,7 +5667,13 @@ export default function DashboardJourneyExperience({
       return;
     }
 
+    setBibleYearDeepNotesUpgradeDay(day?.dayNumber || dayNumber || null);
     setBibleYearDeepNotesUpgradeOpen(true);
+    void logStudyNotesUpgradeAction(
+      ACTION_TYPE.upgrade_popup_viewed,
+      day?.dayNumber || dayNumber || null,
+      `Bible in One Year Day ${day?.dayNumber || dayNumber || "Unknown"} Study Notes upgrade popup viewed`,
+    );
   }
 
   function openBibleYearDayOneGiftDeepNotes() {
@@ -5748,11 +5786,30 @@ export default function DashboardJourneyExperience({
     ];
 
     return (
-      <ModalShell isOpen={bibleYearDeepNotesUpgradeOpen} onClose={() => setBibleYearDeepNotesUpgradeOpen(false)}>
+      <ModalShell
+        isOpen={bibleYearDeepNotesUpgradeOpen}
+        onClose={() => {
+          void logStudyNotesUpgradeAction(
+            ACTION_TYPE.upgrade_popup_dismissed,
+            bibleYearDeepNotesUpgradeDay,
+            `Bible in One Year Day ${bibleYearDeepNotesUpgradeDay || "Unknown"} Study Notes upgrade popup closed`,
+          );
+          setBibleYearDeepNotesUpgradeOpen(false);
+          setBibleYearDeepNotesUpgradeDay(null);
+        }}
+      >
         <div className="bb-skin-glow-card relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_84%,transparent))] px-4 py-4 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_20px_58px_rgba(15,23,42,0.28),0_0_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)]">
           <button
             type="button"
-            onClick={() => setBibleYearDeepNotesUpgradeOpen(false)}
+            onClick={() => {
+              void logStudyNotesUpgradeAction(
+                ACTION_TYPE.upgrade_popup_dismissed,
+                bibleYearDeepNotesUpgradeDay,
+                `Bible in One Year Day ${bibleYearDeepNotesUpgradeDay || "Unknown"} Study Notes upgrade popup closed`,
+              );
+              setBibleYearDeepNotesUpgradeOpen(false);
+              setBibleYearDeepNotesUpgradeDay(null);
+            }}
             className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,transparent)] text-lg font-black text-[var(--bb-text-primary,#111827)] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             aria-label="Close upgrade prompt"
           >
@@ -5793,7 +5850,14 @@ export default function DashboardJourneyExperience({
           <div className="mt-3 grid gap-2">
             <button
               type="button"
-              onClick={() => openBibleYearQuickUpgrade()}
+              onClick={() => {
+                void logStudyNotesUpgradeAction(
+                  ACTION_TYPE.upgrade_popup_cta_clicked,
+                  bibleYearDeepNotesUpgradeDay,
+                  `Bible in One Year Day ${bibleYearDeepNotesUpgradeDay || "Unknown"} Study Notes upgrade clicked`,
+                );
+                openBibleYearQuickUpgrade();
+              }}
               className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-left text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
             >
               <span className="text-xl" aria-hidden="true">👑</span>
@@ -5804,7 +5868,15 @@ export default function DashboardJourneyExperience({
             </button>
             <button
               type="button"
-              onClick={() => setBibleYearDeepNotesUpgradeOpen(false)}
+              onClick={() => {
+                void logStudyNotesUpgradeAction(
+                  ACTION_TYPE.upgrade_popup_dismissed,
+                  bibleYearDeepNotesUpgradeDay,
+                  `Bible in One Year Day ${bibleYearDeepNotesUpgradeDay || "Unknown"} Study Notes stayed free`,
+                );
+                setBibleYearDeepNotesUpgradeOpen(false);
+                setBibleYearDeepNotesUpgradeDay(null);
+              }}
               className="rounded-[15px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-4 py-2 text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             >
               <span className="block text-xs font-black leading-tight">Continue with Free Plan</span>
@@ -9743,7 +9815,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       6: "Genesis 14-15 shows Abram rescuing Lot after war breaks out near Sodom. Abram meets Melchizedek, refuses a corrupt reward, and then hears God repeat the promise under the stars. This day is about courage, trust, and God confirming where Abram's future is headed.",
       7: "Genesis 16-17 follows the pressure of waiting when the promise still has not arrived. Hagar is mistreated but seen by God, and Abram receives a new name, a covenant sign, and the promise of Isaac. This day shows a family learning that God's timing cannot be forced.",
       8: "Genesis 18-19 moves between promise and judgment. Abraham welcomes mysterious visitors, Sarah hears that a son is coming, and Abraham pleads for Sodom before the city is destroyed. This day shows both God's patience and the seriousness of a world that rejects Him.",
-      9: "Genesis 20-25 closes Abraham's journey with fear, promise, testing, loss, and legacy. Isaac is born, Abraham faces the test on Mount Moriah, Sarah dies, and Isaac receives a bride. This day shows the promise moving forward into the next generation.",
+      9: "Genesis 21-24 closes Abraham's journey with promise, testing, loss, and legacy. Isaac is born, Abraham faces the test on Mount Moriah, Sarah dies, and Isaac receives a bride. This day shows the promise moving forward into the next generation.",
       10: "Genesis 26-27 follows Isaac's family as the covenant promise continues through weakness and conflict. Wells, fear, favoritism, deception, Jacob, and Esau all collide around the blessing. This day shows that God keeps His plan moving even through a complicated family.",
       11: "Genesis 28-29 begins Jacob's journey away from home. At Bethel, God meets him with a promise, and then Jacob enters years of labor, love, disappointment, and family complexity. This day shows Jacob starting to learn that God is with him outside familiar places.",
       12: "Genesis 30-31 follows Jacob's household as it grows through tension, rivalry, and pressure. Conflict with Laban increases, and Jacob finally leaves with his family and possessions. This day is about growth in a messy season and the courage to move when God says it is time.",
@@ -12182,7 +12254,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <>
                     <div className="dashboard-inline-task border-t border-[var(--bb-card-border,#dbe7f4)] px-3 pb-3 pt-2 sm:px-4">
                       <div className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-4">
-                        <div className="grid min-w-[720px] grid-cols-8 items-start gap-2">
+                        <div className="grid min-w-[810px] grid-cols-9 items-start gap-2">
                           {bibleYearStudyPlanMilestones.map((milestone, index) => {
                             const completed = bibleYearCompletedCardsByDay[milestone.dayNumber] || {};
                             const isComplete = Boolean(completed.reading && completed.trivia && completed.reflection);

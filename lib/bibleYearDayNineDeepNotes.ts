@@ -1,12 +1,12 @@
 import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 
-export const BIBLE_YEAR_DAY_NINE_DEEP_NOTES = `Genesis 20-25 closes Abraham's journey and moves the covenant story into the next generation.
+export const BIBLE_YEAR_DAY_NINE_DEEP_NOTES = `Genesis 21-24 closes Abraham's journey and moves the covenant story into the next generation.
 
 These chapters are honest about Abraham's weakness, but they are even louder about God's faithfulness.
 
-Abraham repeats an old fear with Sarah. Isaac is born exactly as God promised. Hagar and Ishmael are seen in the wilderness. Abraham is tested on Mount Moriah. Sarah dies, Isaac receives Rebekah, Abraham dies, and Jacob and Esau enter the story.
+Isaac is born exactly as God promised. Hagar and Ishmael are seen in the wilderness. Abraham is tested on Mount Moriah. Sarah dies, and Isaac receives Rebekah as the promise moves into the next generation.
 
-Big idea: Genesis 20-25 teaches that God's promise keeps moving through fear, joy, testing, grief, guidance, death, and legacy. The covenant is not held together by perfect people. It is held together by the faithful God who keeps His word.`;
+Big idea: Genesis 21-24 teaches that God's promise keeps moving through joy, testing, grief, guidance, and legacy. The covenant is not held together by perfect people. It is held together by the faithful God who keeps His word.`;
 
 export const BIBLE_YEAR_DAY_NINE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
   {

@@ -142,7 +142,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
   },
   {
     dayNumber: 9,
-    title: "Abraham's Test and Legacy",
+    title: "Abraham's Legacy",
     reference: "Genesis 21-24",
     estimatedTime: "about 16 min",
     summary: "Close Abraham's main journey with Isaac's birth, Hagar and Ishmael, the test on Mount Moriah, Sarah's burial, and Isaac receiving Rebekah.",

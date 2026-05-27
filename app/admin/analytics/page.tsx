@@ -102,6 +102,11 @@ type FunnelStageRow = {
   conversionRate: number;
   dropoffRate: number;
   retentionRate: number;
+  upgradeViews?: number;
+  upgradeClicks?: number;
+  continueFreeClicks?: number;
+  upgradeClickRate?: number;
+  continueFreeRate?: number;
 };
 
 type DayThreeUpgradeAnalytics = {
@@ -110,6 +115,22 @@ type DayThreeUpgradeAnalytics = {
   continueFreeClicks: number;
   upgradeClickRate: number;
   continueFreeRate: number;
+};
+
+type StudyNotesUpgradeAnalytics = {
+  totalViews: number;
+  totalUpgradeClicks: number;
+  totalStayFreeClicks: number;
+  upgradeClickRate: number;
+  stayFreeRate: number;
+  days: Array<{
+    dayNumber: number;
+    views: number;
+    upgradeClicks: number;
+    stayFreeClicks: number;
+    upgradeClickRate: number;
+    stayFreeRate: number;
+  }>;
 };
 
 type BibleYearDayAnalytics = {
@@ -141,6 +162,7 @@ type AnalyticsResponse = {
   visitorJourneys?: VisitorJourneys;
   bibleBuddyFunnelStages?: FunnelStageRow[];
   dayThreeUpgrade?: DayThreeUpgradeAnalytics;
+  studyNotesUpgrade?: StudyNotesUpgradeAnalytics;
   bibleYearDays?: BibleYearDayAnalytics[];
   studyNotes?: {
     totalOpens: number;
@@ -384,6 +406,7 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
       "Completed Day 2",
       "Started Day 3",
       "Completed Day 3",
+      "Day 3 Upgrade Offer",
       "Created Free Account",
       "Started Trial",
       "Converted To Pro",
@@ -433,7 +456,15 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
               <div key={stage.key} className="flex items-center gap-2">
                 <div className="min-h-[96px] w-[142px] rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
                   <p className="min-h-9 text-xs font-black leading-4 text-slate-950">{stage.label}</p>
-                  {typeof stage.completedUsers === "number" ? (
+                  {stage.key === "day3UpgradeOffer" ? (
+                    <>
+                      <p className="mt-2 text-2xl font-black leading-none text-slate-950">{formatNumber(stage.upgradeViews || stage.users || 0)}</p>
+                      <div className="mt-2 grid grid-cols-2 gap-1 text-[11px] font-black leading-tight">
+                        <span className="text-emerald-500">{formatNumber(stage.upgradeClicks || 0)} upgrade</span>
+                        <span className="text-amber-400">{formatNumber(stage.continueFreeClicks || 0)} free</span>
+                      </div>
+                    </>
+                  ) : typeof stage.completedUsers === "number" ? (
                     <>
                       <p className="mt-2 text-2xl font-black leading-none text-slate-950">
                         {formatNumber(stage.users)} <span className="text-slate-400">/</span> {formatNumber(stage.completedUsers)}
@@ -470,34 +501,78 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
   );
 }
 
-function DayThreeUpgradeCard({ stats }: { stats?: DayThreeUpgradeAnalytics }) {
-  const views = stats?.views || 0;
-  const upgradeClicks = stats?.upgradeClicks || 0;
-  const continueFreeClicks = stats?.continueFreeClicks || 0;
+function StudyNotesUpgradeCard({ stats }: { stats?: StudyNotesUpgradeAnalytics }) {
+  const [expanded, setExpanded] = useState(false);
+  const days = stats?.days?.length ? stats.days : Array.from({ length: 7 }, (_, index) => ({
+    dayNumber: index + 1,
+    views: 0,
+    upgradeClicks: 0,
+    stayFreeClicks: 0,
+    upgradeClickRate: 0,
+    stayFreeRate: 0,
+  }));
+
   return (
-    <section className="mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_10px_28px_rgba(15,23,42,0.06)]">
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <section className="mt-4 rounded-2xl border border-slate-200 bg-white shadow-[0_10px_28px_rgba(15,23,42,0.06)]">
+      <button
+        type="button"
+        onClick={() => setExpanded((current) => !current)}
+        className="flex w-full flex-col gap-3 p-4 text-left sm:flex-row sm:items-center sm:justify-between"
+        aria-expanded={expanded}
+      >
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">After Day 3 Upgrade Offer</p>
-          <h2 className="mt-1 text-xl font-black text-slate-950">Pro popup performance</h2>
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">Study Notes Upgrade</p>
+          <h2 className="mt-1 text-lg font-black text-slate-950">Days 1-7 upgrade popup</h2>
+          <p className="mt-1 text-xs font-semibold text-slate-500">Tap to see each day&apos;s views, upgrade clicks, and stayed free clicks.</p>
         </div>
-        <div className="grid gap-2 sm:grid-cols-3 lg:min-w-[520px]">
-          <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-[0.12em] text-slate-500">Views</p>
-            <p className="mt-1 text-2xl font-black text-slate-950">{formatNumber(views)}</p>
+        <div className="grid w-full gap-2 sm:w-auto sm:min-w-[430px] sm:grid-cols-3">
+          <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
+            <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Views</p>
+            <p className="mt-1 text-2xl font-black text-slate-950">{formatNumber(stats?.totalViews || 0)}</p>
           </div>
-          <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-[0.12em] text-emerald-700">Clicked Upgrade</p>
-            <p className="mt-1 text-2xl font-black text-slate-950">{formatNumber(upgradeClicks)}</p>
-            <p className="mt-1 text-xs font-black text-emerald-700">{stats?.upgradeClickRate || 0}% of views</p>
+          <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2">
+            <p className="text-[10px] font-black uppercase tracking-[0.12em] text-emerald-700">Upgrade</p>
+            <p className="mt-1 text-2xl font-black text-slate-950">{formatNumber(stats?.totalUpgradeClicks || 0)}</p>
+            <p className="text-[11px] font-black text-emerald-700">{stats?.upgradeClickRate || 0}%</p>
           </div>
-          <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
-            <p className="text-xs font-black uppercase tracking-[0.12em] text-amber-700">Continued Free</p>
-            <p className="mt-1 text-2xl font-black text-slate-950">{formatNumber(continueFreeClicks)}</p>
-            <p className="mt-1 text-xs font-black text-amber-700">{stats?.continueFreeRate || 0}% of views</p>
+          <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2">
+            <p className="text-[10px] font-black uppercase tracking-[0.12em] text-amber-700">Stayed Free</p>
+            <p className="mt-1 text-2xl font-black text-slate-950">{formatNumber(stats?.totalStayFreeClicks || 0)}</p>
+            <p className="text-[11px] font-black text-amber-700">{stats?.stayFreeRate || 0}%</p>
           </div>
         </div>
-      </div>
+      </button>
+
+      {expanded ? (
+        <div className="border-t border-slate-200 px-4 pb-4">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[620px] text-left text-sm">
+              <thead className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">
+                <tr>
+                  <th className="py-3">Day</th>
+                  <th className="py-3">Views</th>
+                  <th className="py-3">Upgrade Clicked</th>
+                  <th className="py-3">Stayed Free</th>
+                  <th className="py-3">Upgrade Rate</th>
+                  <th className="py-3">Free Rate</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 font-bold text-slate-900">
+                {days.map((day) => (
+                  <tr key={day.dayNumber}>
+                    <td className="py-3">Day {day.dayNumber}</td>
+                    <td className="py-3">{formatNumber(day.views)}</td>
+                    <td className="py-3 text-emerald-600">{formatNumber(day.upgradeClicks)}</td>
+                    <td className="py-3 text-amber-600">{formatNumber(day.stayFreeClicks)}</td>
+                    <td className="py-3">{day.upgradeClickRate}%</td>
+                    <td className="py-3">{day.stayFreeRate}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -835,7 +910,7 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
           {activeView === "overview" ? (
           <>
           <FunnelFlowChart stages={bibleBuddyFunnelStages} />
-          <DayThreeUpgradeCard stats={data?.dayThreeUpgrade} />
+          <StudyNotesUpgradeCard stats={data?.studyNotesUpgrade} />
 
           <section className={`mt-8 rounded-xl border px-5 py-4 shadow-sm ${funnelHealth.tone}`}>
             <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-start sm:gap-8">

@@ -130,10 +130,11 @@ export const BIBLE_YEAR_DAY_EIGHT_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_NINE_AUDIO: BibleYearAudioDay = {
   dayNumber: 9,
-  title: "Day 9 - Abraham's Test and Legacy",
+  title: "Day 9 - Abraham's Legacy",
   storagePath: getBibleYearAudioStoragePath(9),
   apiSrc: getBibleYearAudioApiSrc(9),
   estimatedDuration: "about 16 min",
+  videoSrc: "https://youtu.be/XbROY7Gvkco",
 };
 
 export const BIBLE_YEAR_DAY_TEN_AUDIO: BibleYearAudioDay = {

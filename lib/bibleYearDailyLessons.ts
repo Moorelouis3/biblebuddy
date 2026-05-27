@@ -946,7 +946,7 @@ export const GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON: BibleYearDailyLesson = 
 
 export const GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON: BibleYearDailyLesson = {
   dayNumber: 9,
-  title: "Abraham's Test and Legacy",
+  title: "Abraham's Legacy",
   reference: "Genesis 21-24",
   estimatedListenTime: "about 16 min",
   opening: [

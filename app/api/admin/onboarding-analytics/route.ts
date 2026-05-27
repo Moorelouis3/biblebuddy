@@ -69,6 +69,11 @@ type FunnelStageRow = {
   conversionRate: number;
   dropoffRate: number;
   retentionRate: number;
+  upgradeViews?: number;
+  upgradeClicks?: number;
+  continueFreeClicks?: number;
+  upgradeClickRate?: number;
+  continueFreeRate?: number;
 };
 
 type DayThreeUpgradeAnalytics = {
@@ -77,6 +82,24 @@ type DayThreeUpgradeAnalytics = {
   continueFreeClicks: number;
   upgradeClickRate: number;
   continueFreeRate: number;
+};
+
+type StudyNotesUpgradeDayAnalytics = {
+  dayNumber: number;
+  views: number;
+  upgradeClicks: number;
+  stayFreeClicks: number;
+  upgradeClickRate: number;
+  stayFreeRate: number;
+};
+
+type StudyNotesUpgradeAnalytics = {
+  totalViews: number;
+  totalUpgradeClicks: number;
+  totalStayFreeClicks: number;
+  upgradeClickRate: number;
+  stayFreeRate: number;
+  days: StudyNotesUpgradeDayAnalytics[];
 };
 
 type BibleYearProgressRow = {
@@ -452,6 +475,7 @@ function buildBibleBuddyFunnelStages(
   landingRows: LandingEventRow[],
   masterRows: MasterActionFunnelRow[],
   progressRows: BibleYearProgressRow[],
+  dayThreeUpgrade: DayThreeUpgradeAnalytics,
 ) {
   const landingActorsByEvent = new Map<string, Set<string>>();
   for (const row of landingRows) {
@@ -514,7 +538,7 @@ function buildBibleBuddyFunnelStages(
 
   const stageSets = [
     { key: "landing", label: "Landing Page", actors: mergeActors(["landing_page_visit"], ["landing_page_visited"]) },
-    { key: "startedOnboarding", label: "Started Onboarding", actors: mergeActors(["clicked_start_journey", "started_onboarding"], ["landing_cta_clicked", "onboarding_intro_started"]) },
+    { key: "startedOnboarding", label: "Started Onboarding", actors: mergeActors(["started_onboarding"], ["onboarding_intro_started"]) },
     { key: "finishedOnboarding", label: "Finished Onboarding", actors: mergeActors(["started_guest_journey", "clicked_yes_start_my_journey"], ["onboarding_journey_started"]) },
     { key: "startedDay1", label: "Started Day 1", actors: startedDayActors(1) },
     { key: "completedDay1", label: "Completed Day 1", actors: completedDayActors(1) },
@@ -522,6 +546,7 @@ function buildBibleBuddyFunnelStages(
     { key: "completedDay2", label: "Completed Day 2", actors: completedDayActors(2) },
     { key: "startedDay3", label: "Started Day 3", actors: startedDayActors(3) },
     { key: "completedDay3", label: "Completed Day 3", actors: completedDayActors(3) },
+    { key: "day3UpgradeOffer", label: "Day 3 Upgrade Offer", actors: new Set<string>() },
     { key: "createdFreeAccount", label: "Created Free Account", actors: mergeActors(["created_free_account", "created_account_successfully"], ["user_signup"]) },
     { key: "startedTrial", label: "Started Trial", actors: mergeActors([], ["trial_started"]) },
     { key: "convertedToPro", label: "Converted To Pro", actors: mergeActors([], ["user_upgraded", "trial_converted"]) },
@@ -530,7 +555,7 @@ function buildBibleBuddyFunnelStages(
   const firstCount = stageSets[0]?.actors.size || 0;
   let previousDisplayedCount = firstCount;
   return stageSets.map((stage, index): FunnelStageRow => {
-    const rawUsers = stage.actors.size;
+    const rawUsers = stage.key === "day3UpgradeOffer" ? dayThreeUpgrade.views : stage.actors.size;
     const previousCount = index === 0 ? rawUsers : previousDisplayedCount;
     const users = index === 0 ? rawUsers : Math.min(rawUsers, previousDisplayedCount);
     previousDisplayedCount = users;
@@ -541,6 +566,15 @@ function buildBibleBuddyFunnelStages(
       conversionRate: index === 0 ? 100 : percent(users, previousCount),
       dropoffRate: index === 0 ? 0 : Number(Math.max(0, 100 - percent(users, previousCount)).toFixed(1)),
       retentionRate: index === 0 ? 100 : percent(users, firstCount),
+      ...(stage.key === "day3UpgradeOffer"
+        ? {
+          upgradeViews: dayThreeUpgrade.views,
+          upgradeClicks: dayThreeUpgrade.upgradeClicks,
+          continueFreeClicks: dayThreeUpgrade.continueFreeClicks,
+          upgradeClickRate: dayThreeUpgrade.upgradeClickRate,
+          continueFreeRate: dayThreeUpgrade.continueFreeRate,
+        }
+        : {}),
     };
   });
 }
@@ -575,6 +609,56 @@ function buildDayThreeUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): Day
     continueFreeClicks,
     upgradeClickRate: percent(upgradeClicks, views),
     continueFreeRate: percent(continueFreeClicks, views),
+  };
+}
+
+function buildStudyNotesUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): StudyNotesUpgradeAnalytics {
+  const dayStats = new Map<number, { views: number; upgradeClicks: number; stayFreeClicks: number }>();
+  for (let day = 1; day <= 7; day += 1) {
+    dayStats.set(day, { views: 0, upgradeClicks: 0, stayFreeClicks: 0 });
+  }
+
+  for (const row of masterRows) {
+    const actionType = row.action_type || "";
+    if (!["upgrade_popup_viewed", "upgrade_popup_cta_clicked", "upgrade_popup_dismissed"].includes(actionType)) continue;
+    const actionLabel = String(row.action_label || "");
+    const label = actionLabel.toLowerCase();
+    const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
+    const prompt = typeof metadata.prompt === "string" ? metadata.prompt.toLowerCase() : "";
+    const isStudyNotesUpgrade = prompt === "study_notes_upgrade" || label.includes("study notes");
+    if (!isStudyNotesUpgrade) continue;
+
+    const metadataDay = typeof metadata.dayNumber === "number" ? metadata.dayNumber : null;
+    const day = Number(row.journey_day || metadataDay || parseBibleYearDayFromLabel(actionLabel) || 0);
+    if (day < 1 || day > 7) continue;
+
+    const stats = dayStats.get(day) || { views: 0, upgradeClicks: 0, stayFreeClicks: 0 };
+    if (actionType === "upgrade_popup_viewed") stats.views += 1;
+    if (actionType === "upgrade_popup_cta_clicked") stats.upgradeClicks += 1;
+    if (actionType === "upgrade_popup_dismissed" && (label.includes("stayed free") || label.includes("continue") || label.includes("free plan"))) {
+      stats.stayFreeClicks += 1;
+    }
+    dayStats.set(day, stats);
+  }
+
+  const days = Array.from(dayStats.entries()).map(([dayNumber, stats]) => ({
+    dayNumber,
+    views: stats.views,
+    upgradeClicks: stats.upgradeClicks,
+    stayFreeClicks: stats.stayFreeClicks,
+    upgradeClickRate: percent(stats.upgradeClicks, stats.views),
+    stayFreeRate: percent(stats.stayFreeClicks, stats.views),
+  }));
+  const totalViews = days.reduce((total, day) => total + day.views, 0);
+  const totalUpgradeClicks = days.reduce((total, day) => total + day.upgradeClicks, 0);
+  const totalStayFreeClicks = days.reduce((total, day) => total + day.stayFreeClicks, 0);
+  return {
+    totalViews,
+    totalUpgradeClicks,
+    totalStayFreeClicks,
+    upgradeClickRate: percent(totalUpgradeClicks, totalViews),
+    stayFreeRate: percent(totalStayFreeClicks, totalViews),
+    days,
   };
 }
 
@@ -1691,8 +1775,9 @@ export async function GET(request: Request) {
   const { data: eventData, error: eventError } = await adminSupabase
     .from("landing_page_events")
     .select("event_name, session_id, user_id, source, referrer, page_path, metadata, created_at")
+    .gte("created_at", journeySinceIso)
     .order("created_at", { ascending: false })
-    .limit(1500);
+    .limit(250000);
 
   const eventRows = eventError ? [] : ((eventData || []) as Record<string, unknown>[]);
   const landingEventRows = eventRows as LandingEventRow[];
@@ -1850,8 +1935,9 @@ export async function GET(request: Request) {
     const updatedAt = typeof row.updated_at === "string" ? new Date(row.updated_at).getTime() : 0;
     return Number.isFinite(updatedAt) && updatedAt >= new Date(journeySinceIso).getTime();
   });
-  const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows);
   const dayThreeUpgrade = buildDayThreeUpgradeAnalytics(masterFunnelRows);
+  const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
+  const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(validEventRows);
@@ -1895,6 +1981,7 @@ export async function GET(request: Request) {
       visitorJourneys,
       bibleBuddyFunnelStages,
       dayThreeUpgrade,
+      studyNotesUpgrade,
       bibleYearDays,
       studyNotes,
       publicOnboardingFlow,
@@ -1929,6 +2016,7 @@ export async function GET(request: Request) {
     visitorJourneys,
     bibleBuddyFunnelStages,
     dayThreeUpgrade,
+    studyNotesUpgrade,
     bibleYearDays,
     studyNotes,
     publicOnboardingFlow,
