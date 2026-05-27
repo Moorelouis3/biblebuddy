@@ -63,7 +63,8 @@ export async function POST(req: NextRequest) {
   }
 
   const session = event.data.object as Stripe.Checkout.Session;
-  const userId = session.metadata?.user_id;
+  const metadata = session.metadata ?? {};
+  const userId = metadata.user_id;
 
   if (!userId) {
     console.error("[WEBHOOK] Missing user_id in Stripe session metadata");
@@ -79,6 +80,15 @@ export async function POST(req: NextRequest) {
     const amountTotal = typeof session.amount_total === "number"
       ? `$${(session.amount_total / 100).toFixed(2)}`
       : null;
+    const journeyDay = Number(metadata.journey_day || 0);
+    const checkoutContext = metadata.checkout_context || "";
+    const prompt = metadata.prompt || "";
+    const isDayThreeUpgrade =
+      journeyDay === 3 ||
+      checkoutContext === "day_3_upgrade_offer" ||
+      prompt === "day_3_pro_upgrade";
+    const stripeCustomerId = typeof session.customer === "string" ? session.customer : null;
+    const stripeSubscriptionId = typeof session.subscription === "string" ? session.subscription : null;
 
     await markUserAsPaidAndTrackUpgrade({
       supabase,
@@ -86,9 +96,24 @@ export async function POST(req: NextRequest) {
       source: "stripe",
       membershipStatus: "pro",
       proExpiresAt: null,
+      journeyDay: Number.isInteger(journeyDay) && journeyDay > 0 ? journeyDay : null,
+      accountStatus: "pro",
+      sessionId: session.id,
+      eventMetadata: {
+        checkoutSessionId: session.id,
+        stripeCustomerId,
+        stripeSubscriptionId,
+        amountTotal: session.amount_total,
+        currency: session.currency,
+        plan: metadata.plan || null,
+        checkoutContext: checkoutContext || null,
+        prompt: prompt || null,
+        returnTo: metadata.return_to || null,
+        source: metadata.source || "stripe",
+      },
       actionLabel: amountTotal
-        ? `Stripe checkout completed (${amountTotal})`
-        : "Stripe checkout completed",
+        ? `Stripe checkout completed${isDayThreeUpgrade ? " - Day 3 Pro upgrade" : ""} (${amountTotal})`
+        : `Stripe checkout completed${isDayThreeUpgrade ? " - Day 3 Pro upgrade" : ""}`,
     });
 
     return NextResponse.json({ received: true });

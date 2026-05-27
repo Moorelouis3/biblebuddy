@@ -34,7 +34,14 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let body: { plan?: "monthly" | "yearly"; returnTo?: string };
+  let body: {
+    plan?: "monthly" | "yearly";
+    returnTo?: string;
+    checkoutContext?: string;
+    prompt?: string;
+    journeyDay?: number;
+    source?: string;
+  };
   try {
     body = await req.json();
   } catch {
@@ -89,15 +96,36 @@ export async function POST(req: NextRequest) {
 
   let successUrl: string;
   let cancelUrl: string;
+  let checkoutMetadata: Record<string, string> = {};
   try {
     const safeReturnTo =
       typeof body.returnTo === "string" && body.returnTo.startsWith("/") && !body.returnTo.startsWith("//")
         ? body.returnTo
         : "";
+    const cleanMetadataText = (value: unknown, maxLength = 80) =>
+      typeof value === "string" ? value.trim().slice(0, maxLength) : "";
+    const checkoutContext = cleanMetadataText(body.checkoutContext);
+    const prompt = cleanMetadataText(body.prompt);
+    const source = cleanMetadataText(body.source);
+    const journeyDay =
+      typeof body.journeyDay === "number" && Number.isInteger(body.journeyDay) && body.journeyDay > 0
+        ? String(body.journeyDay)
+        : "";
+
     successUrl = safeReturnTo
       ? new URL(`/upgrade/success?returnTo=${encodeURIComponent(safeReturnTo)}`, origin).toString()
       : new URL("/upgrade/success", origin).toString();
     cancelUrl = safeReturnTo ? new URL(safeReturnTo, origin).toString() : new URL("/upgrade", origin).toString();
+
+    checkoutMetadata = {
+      user_id: "",
+      plan,
+      checkout_context: checkoutContext,
+      prompt,
+      journey_day: journeyDay,
+      source,
+      return_to: safeReturnTo,
+    };
   } catch {
     return NextResponse.json(
       { error: "Invalid origin URL" },
@@ -129,6 +157,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const metadata = {
+      ...checkoutMetadata,
+      user_id: user.id,
+    };
+
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       line_items: [
@@ -138,8 +171,9 @@ export async function POST(req: NextRequest) {
         },
       ],
       customer_email: user.email,
-      metadata: {
-        user_id: user.id,
+      metadata,
+      subscription_data: {
+        metadata,
       },
       success_url: successUrl,
       cancel_url: cancelUrl,

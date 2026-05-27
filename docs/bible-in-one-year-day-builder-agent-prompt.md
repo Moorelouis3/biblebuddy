@@ -375,7 +375,10 @@ Data source:
 - Use the day's `readings` assignments from `GENESIS_BIBLE_IN_ONE_YEAR_SERIES`.
 - Pull verse text from existing Bible-year Scripture data when available, currently `BIBLE_YEAR_GENESIS_WEB_VERSES` from `lib/bibleYearGenesisVerses.ts`.
 - For future non-Genesis days, add or connect an equivalent structured Bible text source rather than hardcoding verses in the component.
-- Days 1-8 are wired as the live Genesis test range; future days should follow this same reusable shape as the Scripture data becomes available.
+- The component is not day-number gated. Any Bible in One Year day with complete verse data for every assigned reading chapter will automatically show the button and expandable panel.
+- If even one assigned chapter is missing verse data, the panel stays hidden so users never see a partial day.
+- Days 1-9 currently have complete Genesis Scripture data wired for this feature.
+- For every new day, add every assigned reading chapter to `BIBLE_YEAR_GENESIS_WEB_VERSES` or the next equivalent structured Bible text source before shipping the day. This is part of the day framework, not an optional extra.
 
 When the user presses complete:
 
@@ -450,7 +453,7 @@ If the app has a usable local test flow, also verify:
 - Continue opens next day
 - final-day behavior still routes back to dashboard/study page
 - no "Unlocked" label appears on locked covers
-- Day 1 style `Follow Along in Scripture` panel opens under media, uses no iframe, and stays on the same task screen when available
+- `Follow Along in Scripture` opens under media, uses no iframe, stays on the same task screen, and includes every assigned reading chapter for the day
 
 ## Output Expected From Agent
 

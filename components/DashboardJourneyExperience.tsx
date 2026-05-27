@@ -147,6 +147,43 @@ function BibleBookIcon() {
   );
 }
 
+type UpgradeFeatureIconName = "book" | "calendar" | "devices" | "shield" | "notes" | "sparkles" | "crown" | "lock";
+
+function UpgradeFeatureIcon({ name }: { name: UpgradeFeatureIconName }) {
+  const common = {
+    className: "h-4 w-4",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2.2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    viewBox: "0 0 24 24",
+    "aria-hidden": true,
+  };
+  if (name === "calendar") {
+    return <svg {...common}><path d="M8 2v4" /><path d="M16 2v4" /><path d="M3 10h18" /><path d="M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" /><path d="M8 14h.01" /><path d="M12 14h.01" /><path d="M16 14h.01" /></svg>;
+  }
+  if (name === "devices") {
+    return <svg {...common}><rect x="3" y="4" width="14" height="11" rx="2" /><path d="M7 20h10" /><path d="M10 15v5" /><rect x="17" y="9" width="4" height="8" rx="1" /></svg>;
+  }
+  if (name === "shield") {
+    return <svg {...common}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-5" /></svg>;
+  }
+  if (name === "notes") {
+    return <svg {...common}><path d="M4 3h12l4 4v14H4z" /><path d="M16 3v5h5" /><path d="M8 12h8" /><path d="M8 16h6" /></svg>;
+  }
+  if (name === "sparkles") {
+    return <svg {...common}><path d="M12 3 10 8l-5 2 5 2 2 5 2-5 5-2-5-2z" /><path d="M5 16l-1 2-2 1 2 1 1 2 1-2 2-1-2-1z" /><path d="M19 2l-1 2-2 1 2 1 1 2 1-2 2-1-2-1z" /></svg>;
+  }
+  if (name === "crown") {
+    return <svg {...common}><path d="m3 8 4 4 5-8 5 8 4-4-2 11H5z" /><path d="M5 19h14" /></svg>;
+  }
+  if (name === "lock") {
+    return <svg {...common}><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>;
+  }
+  return <svg {...common}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" /><path d="M8 7h8" /><path d="M8 11h6" /></svg>;
+}
+
 const ChatLouis = dynamic(() => import("./ChatLouis").then((mod) => mod.ChatLouis), {
   ssr: false,
 });
@@ -5541,12 +5578,20 @@ export default function DashboardJourneyExperience({
         void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_cta_clicked, `Bible in One Year Day 3 Pro ${plan} checkout clicked`);
       }
 
+      const isDayThreeUpgrade = bibleYearQuickUpgradeContext === "day3";
       const response = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ plan, returnTo }),
+        body: JSON.stringify({
+          plan,
+          returnTo,
+          checkoutContext: isDayThreeUpgrade ? "day_3_upgrade_offer" : "bible_year_quick_upgrade",
+          prompt: isDayThreeUpgrade ? "day_3_pro_upgrade" : "bible_year_pro_upgrade",
+          journeyDay: isDayThreeUpgrade ? 3 : undefined,
+          source: "bible_year_dashboard",
+        }),
       });
 
       const data = await response.json();
@@ -5974,7 +6019,7 @@ export default function DashboardJourneyExperience({
     const sections = [
       {
         id: "understand",
-        icon: "??",
+        icon: "book",
         iconClass: "bg-[#eadcff] text-[#6d3fd1]",
         title: "Get Study Notes for Each Day",
         pain: "Questions come up while you read: Who is this person? Why did this happen? What does this mean?",
@@ -5983,7 +6028,7 @@ export default function DashboardJourneyExperience({
       },
       {
         id: "offline",
-        icon: "??",
+        icon: "calendar",
         iconClass: "bg-[#f5e3c3] text-[#9a6517]",
         title: "Keep Studying When Life Gets Busy",
         pain: "Some days you only have a small window, and losing your place makes it easier to skip the day.",
@@ -5992,7 +6037,7 @@ export default function DashboardJourneyExperience({
       },
       {
         id: "devices",
-        icon: "??",
+        icon: "devices",
         iconClass: "bg-[#ddecff] text-[#2f6bcf]",
         title: "Use BibleBuddy Across Devices",
         pain: "You may start on your phone, continue on a laptop, then come back later from somewhere else.",
@@ -6001,7 +6046,7 @@ export default function DashboardJourneyExperience({
       },
       {
         id: "progress",
-        icon: "???",
+        icon: "shield",
         iconClass: "bg-[#dff0d8] text-[#3b7a39]",
         title: "Protect Your Bible Reading Progress",
         pain: "After a few days, your progress starts to matter. Losing your place can break the habit you are building.",
@@ -6010,7 +6055,7 @@ export default function DashboardJourneyExperience({
       },
       {
         id: "tools",
-        icon: "??",
+        icon: "notes",
         iconClass: "bg-[#ffefc2] text-[#b37a00]",
         title: "Go Deeper Than the Daily Summary",
         pain: "A short summary helps, but some passages need more explanation before they really click.",
@@ -6019,7 +6064,7 @@ export default function DashboardJourneyExperience({
       },
       {
         id: "personal",
-        icon: "?",
+        icon: "sparkles",
         iconClass: "bg-[#e6f3ff] text-[#1f65c7]",
         title: "Make the Journey Feel Personal",
         pain: "Bible study is easier to stick with when the app feels built around the way you actually learn.",
@@ -6079,8 +6124,8 @@ export default function DashboardJourneyExperience({
                     className="flex w-full items-center gap-2.5 py-1.5 text-left"
                     aria-expanded={isOpen}
                   >
-                    <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-base font-black ${section.iconClass}`} aria-hidden="true">
-                      {section.icon}
+                    <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ${section.iconClass}`} aria-hidden="true">
+                      <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
@@ -6110,7 +6155,9 @@ export default function DashboardJourneyExperience({
               }}
               className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-left text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
             >
-              <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18 text-base font-black" aria-hidden="true">??</span>
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18" aria-hidden="true">
+                <UpgradeFeatureIcon name="crown" />
+              </span>
               <span>
                 <span className="block text-sm font-black leading-tight">Upgrade to BibleBuddy Pro</span>
                 <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Protect progress and unlock deeper study</span>
@@ -6140,7 +6187,7 @@ export default function DashboardJourneyExperience({
     const sections = [
       {
         id: "study-notes",
-        icon: "Book",
+        icon: "book",
         iconClass: "bg-[#eadcff] text-[#6d3fd1]",
         title: "Get help when the Bible feels confusing",
         pain: "Names, places, laws, timelines, and hard passages can make you feel lost.",
@@ -6149,7 +6196,7 @@ export default function DashboardJourneyExperience({
       },
       {
         id: "progress",
-        icon: "Save",
+        icon: "shield",
         iconClass: "bg-[#dff0d8] text-[#3b7a39]",
         title: "Protect the progress you are building",
         pain: "Once you start building a rhythm, losing your spot makes it easier to fall off.",
@@ -6158,7 +6205,7 @@ export default function DashboardJourneyExperience({
       },
       {
         id: "devices",
-        icon: "Sync",
+        icon: "devices",
         iconClass: "bg-[#ddecff] text-[#2f6bcf]",
         title: "Study across your devices",
         pain: "You may start on your phone, open BibleBuddy later on a laptop, and want the same journey waiting.",
@@ -6167,7 +6214,7 @@ export default function DashboardJourneyExperience({
       },
       {
         id: "deeper",
-        icon: "Notes",
+        icon: "notes",
         iconClass: "bg-[#ffefc2] text-[#b37a00]",
         title: "Go deeper without getting overwhelmed",
         pain: "A quick summary is helpful, but some chapters need more background before they make sense.",
@@ -6210,8 +6257,8 @@ export default function DashboardJourneyExperience({
             {sections.map((section, index) => (
               <div key={section.id} className={index === 0 ? "" : "border-t border-[var(--bb-card-border,#dbe7f4)] pt-2"}>
                 <div className="flex items-start gap-2.5 py-2">
-                  <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[10px] font-black ${section.iconClass}`} aria-hidden="true">
-                    {section.icon}
+                  <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ${section.iconClass}`} aria-hidden="true">
+                    <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
@@ -8248,14 +8295,11 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function getBibleYearFollowAlongChapters(day: GenesisBibleYearDay) {
-    if (day.dayNumber < 1 || day.dayNumber > 8) return [];
-    return day.readings
-      .map((reading) => ({
-        book: reading.book,
-        chapter: reading.chapter,
-        verses: BIBLE_YEAR_GENESIS_WEB_VERSES[reading.chapter] || [],
-      }))
-      .filter((chapter) => chapter.verses.length > 0);
+    return day.readings.map((reading) => ({
+      book: reading.book,
+      chapter: reading.chapter,
+      verses: BIBLE_YEAR_GENESIS_WEB_VERSES[reading.chapter] || [],
+    }));
   }
 
   function renderBibleYearFollowAlongScripture(day: GenesisBibleYearDay) {
@@ -8289,19 +8333,35 @@ Before we understand redemption, we need to understand what God made humanity fo
             <div className="space-y-7">
               {chapters.map((chapter) => (
                 <article key={`${chapter.book}-${chapter.chapter}`} className="space-y-3">
-                  <h3 className="font-serif text-2xl font-black tracking-wide text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_82%,#ffffff)]">
-                    {chapter.book} {chapter.chapter}
-                  </h3>
-                  <div className="space-y-3">
-                    {chapter.verses.map((verse) => (
-                      <p key={`${chapter.book}-${chapter.chapter}-${verse.verse}`} className="text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#dbeafe)] sm:text-[15px]">
-                        <sup className="mr-1 align-super text-[11px] font-black leading-none text-[var(--bb-accent,#2f7fe8)]">
-                          {verse.verse}
-                        </sup>
-                        {verse.text}
-                      </p>
-                    ))}
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="font-serif text-2xl font-black tracking-wide text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_82%,#ffffff)]">
+                      {chapter.book} {chapter.chapter}
+                    </h3>
+                    {!chapter.verses.length ? (
+                      <Link
+                        href={`/Bible/${chapter.book}/${chapter.chapter}`}
+                        className="shrink-0 rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1.5 text-xs font-black text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_88%,#ffffff)] transition hover:brightness-110"
+                      >
+                        Open Chapter
+                      </Link>
+                    ) : null}
                   </div>
+                  {chapter.verses.length ? (
+                    <div className="space-y-3">
+                      {chapter.verses.map((verse) => (
+                        <p key={`${chapter.book}-${chapter.chapter}-${verse.verse}`} className="text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#dbeafe)] sm:text-[15px]">
+                          <sup className="mr-1 align-super text-[11px] font-black leading-none text-[var(--bb-accent,#2f7fe8)]">
+                            {verse.verse}
+                          </sup>
+                          {verse.text}
+                        </p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#dbeafe)]">
+                      This chapter opens in the Bible reader so you can follow along with the same day flow.
+                    </p>
+                  )}
                 </article>
               ))}
             </div>
@@ -9681,7 +9741,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         </div>
 
-        <div className="grid gap-3 pb-24 sm:pb-0">
+        <div className="grid gap-3 pb-1 sm:pb-0">
           {dashboardAllDone && bibleYearJustCompletedDayRef.current === day.dayNumber ? renderBibleYearCompletedDayPanel(day) : null}
           {dashboardAllDone && bibleYearJustCompletedDayRef.current !== day.dayNumber ? renderBibleYearReflectionReviewButton(day) : null}
           {activeTasksToRender.length ? (
@@ -10133,6 +10193,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </button>
             </>
           ) : null}
+          {renderBibleYearFollowAlongScripture(day)}
 
           <div className="overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
             <button
@@ -10224,6 +10285,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
             ))}
           </div>
+          {renderBibleYearFollowAlongScripture(day)}
           <div className="mt-5 flex justify-end">
             <button
               type="button"
@@ -11602,7 +11664,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   };
   return (
-    <div className="space-y-4 pb-[112px] lg:pb-4">
+    <div className="space-y-4 pb-[calc(90px+env(safe-area-inset-bottom,0px))] lg:pb-4">
       <style>{`
         @keyframes task-complete-pop {
           0% {
@@ -13175,9 +13237,9 @@ Before we understand redemption, we need to understand what God made humanity fo
       </div>
 
       {!shouldShowBibleBuddy3ModeGate && !deepStudyFocusActive ? (
-      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom,0px)+10px)] z-[90] mx-auto max-w-xl">
+      <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] px-3 pb-[env(safe-area-inset-bottom,0px)] pt-2 backdrop-blur-xl">
         {dashboardMenuOpen ? (
-          <div className="mb-2 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 p-2.5 shadow-[0_18px_46px_rgba(15,35,60,0.22)] backdrop-blur">
+          <div className="mx-auto mb-2 max-w-xl rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 p-2.5 shadow-[0_18px_46px_rgba(15,35,60,0.22)] backdrop-blur">
             <div className="mb-2 flex justify-center">
               <button
                 type="button"
@@ -13303,7 +13365,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         ) : null}
 
-        <div className="rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 px-2 py-2 shadow-[0_12px_28px_rgba(38,63,99,0.16)] backdrop-blur">
+        <div className="mx-auto max-w-xl rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]/95 px-2 py-2 shadow-[0_12px_28px_rgba(38,63,99,0.16)] backdrop-blur">
           <div className="grid grid-cols-5 items-center gap-1.5">
             <button
               type="button"

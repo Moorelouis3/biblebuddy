@@ -84,7 +84,7 @@ export async function POST(request: Request) {
   });
 
   const sessionId = cleanText(body.session_id || body.sessionId);
-  const source = cleanText(body.source, "Direct / Unknown");
+  const source = cleanText(body.source, "Direct");
   const referrer = typeof body.referrer === "string" ? body.referrer.slice(0, 1000) : null;
   const pagePath = typeof body.page_path === "string" ? body.page_path.slice(0, 500) : "/";
   const metadata = typeof body.metadata === "object" && body.metadata !== null ? body.metadata : {};

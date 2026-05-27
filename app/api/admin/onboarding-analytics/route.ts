@@ -72,7 +72,9 @@ type FunnelStageRow = {
   upgradeViews?: number;
   upgradeClicks?: number;
   continueFreeClicks?: number;
+  successfulUpgrades?: number;
   upgradeClickRate?: number;
+  upgradeSuccessRate?: number;
   continueFreeRate?: number;
 };
 
@@ -80,7 +82,9 @@ type DayThreeUpgradeAnalytics = {
   views: number;
   upgradeClicks: number;
   continueFreeClicks: number;
+  successfulUpgrades: number;
   upgradeClickRate: number;
+  upgradeSuccessRate: number;
   continueFreeRate: number;
 };
 
@@ -571,7 +575,9 @@ function buildBibleBuddyFunnelStages(
           upgradeViews: dayThreeUpgrade.views,
           upgradeClicks: dayThreeUpgrade.upgradeClicks,
           continueFreeClicks: dayThreeUpgrade.continueFreeClicks,
+          successfulUpgrades: dayThreeUpgrade.successfulUpgrades,
           upgradeClickRate: dayThreeUpgrade.upgradeClickRate,
+          upgradeSuccessRate: dayThreeUpgrade.upgradeSuccessRate,
           continueFreeRate: dayThreeUpgrade.continueFreeRate,
         }
         : {}),
@@ -583,18 +589,27 @@ function buildDayThreeUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): Day
   const viewedActors = new Set<string>();
   const upgradeClickActors = new Set<string>();
   const continueFreeActors = new Set<string>();
+  const successfulUpgradeActors = new Set<string>();
 
   for (const row of masterRows) {
     const actorId = getMasterActorId(row);
     if (!actorId) continue;
     const actionType = row.action_type || "";
     const actionLabel = String(row.action_label || "");
+    const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
+    const checkoutContext = typeof metadata.checkoutContext === "string" ? metadata.checkoutContext.toLowerCase() : "";
+    const prompt = typeof metadata.prompt === "string" ? metadata.prompt.toLowerCase() : "";
     const day = Number(row.journey_day || parseBibleYearDayFromLabel(actionLabel) || 0);
-    const isDayThreeUpgrade = day === 3 && actionLabel.toLowerCase().includes("day 3") && actionLabel.toLowerCase().includes("pro");
+    const lowerLabel = actionLabel.toLowerCase();
+    const isDayThreeUpgrade =
+      (day === 3 && lowerLabel.includes("day 3") && lowerLabel.includes("pro")) ||
+      checkoutContext === "day_3_upgrade_offer" ||
+      prompt === "day_3_pro_upgrade";
     if (!isDayThreeUpgrade) continue;
 
     if (actionType === "upgrade_popup_viewed") viewedActors.add(actorId);
     if (actionType === "upgrade_popup_cta_clicked") upgradeClickActors.add(actorId);
+    if (actionType === "user_upgraded") successfulUpgradeActors.add(actorId);
     if (actionType === "upgrade_popup_dismissed" && actionLabel.toLowerCase().includes("continued with free plan")) {
       continueFreeActors.add(actorId);
     }
@@ -603,11 +618,14 @@ function buildDayThreeUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): Day
   const views = viewedActors.size;
   const upgradeClicks = upgradeClickActors.size;
   const continueFreeClicks = continueFreeActors.size;
+  const successfulUpgrades = successfulUpgradeActors.size;
   return {
     views,
     upgradeClicks,
     continueFreeClicks,
+    successfulUpgrades,
     upgradeClickRate: percent(upgradeClicks, views),
+    upgradeSuccessRate: percent(successfulUpgrades, Math.max(upgradeClicks, views)),
     continueFreeRate: percent(continueFreeClicks, views),
   };
 }
@@ -774,7 +792,7 @@ function summarizeSources(rows: Record<string, unknown>[]) {
   const sessionsBySource = new Map<string, Set<string>>();
 
   for (const row of signupRows) {
-    const source = typeof row.source === "string" && row.source.trim() ? row.source.trim() : "Direct / Unknown";
+    const source = typeof row.source === "string" && row.source.trim() ? row.source.trim().replace(/^Direct \/ Unknown$/i, "Direct") : "Direct";
     const sessionId = typeof row.session_id === "string" ? row.session_id : "";
     if (!sessionId) continue;
     if (!sessionsBySource.has(source)) sessionsBySource.set(source, new Set());
@@ -789,6 +807,39 @@ function summarizeSources(rows: Record<string, unknown>[]) {
       percent: total > 0 ? Number(((sessions.size / total) * 100).toFixed(1)) : 0,
     }))
     .sort((a, b) => b.signups - a.signups);
+}
+
+function summarizeTrafficSources(rows: LandingEventRow[]) {
+  const landingRows = rows
+    .filter((row) => row.event_name === "landing_page_visit" || row.event_name === "landing_page_visited")
+    .sort((a, b) => new Date(a.created_at || 0).getTime() - new Date(b.created_at || 0).getTime());
+  const firstVisitByActor = new Map<string, LandingEventRow>();
+
+  for (const row of landingRows) {
+    const actorId = getEventActorId(row);
+    if (!actorId || firstVisitByActor.has(actorId)) continue;
+    firstVisitByActor.set(actorId, row);
+  }
+
+  const sourceCounts = new Map<string, number>();
+  for (const row of firstVisitByActor.values()) {
+    const source = typeof row.source === "string" && row.source.trim() ? row.source.trim().replace(/^Direct \/ Unknown$/i, "Direct") : "Direct";
+    sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
+  }
+
+  const totalVisitors = firstVisitByActor.size;
+  const sources = Array.from(sourceCounts.entries())
+    .map(([source, visitors]) => ({
+      source,
+      visitors,
+      percent: percent(visitors, totalVisitors),
+    }))
+    .sort((a, b) => b.visitors - a.visitors || a.source.localeCompare(b.source));
+
+  return {
+    totalVisitors,
+    sources,
+  };
 }
 
 function summarizeLandingWindow(rows: Record<string, unknown>[], windowKey: JourneyWindowKey) {
@@ -1038,7 +1089,7 @@ function buildLandingActivityLog(rows: LandingEventRow[], profileByUserId: Map<s
       title: info.title,
       detail: info.detail,
       timestamp: row.created_at || new Date().toISOString(),
-      source: typeof row.source === "string" && row.source ? row.source : "Direct / Unknown",
+      source: typeof row.source === "string" && row.source ? row.source.replace(/^Direct \/ Unknown$/i, "Direct") : "Direct",
       pagePath: typeof row.page_path === "string" && row.page_path ? row.page_path : "/",
       referrer: typeof row.referrer === "string" && row.referrer ? row.referrer : null,
       sessionId,
@@ -1068,7 +1119,7 @@ function buildLandingActivityLog(rows: LandingEventRow[], profileByUserId: Map<s
       title: "Likely dropped off",
       detail: `Last seen: ${lastInfo.title}. Session lasted about ${formatSessionDuration(Math.max(0, lastAt - firstAt))}.`,
       timestamp: lastRow.created_at,
-      source: typeof lastRow.source === "string" && lastRow.source ? lastRow.source : "Direct / Unknown",
+      source: typeof lastRow.source === "string" && lastRow.source ? lastRow.source.replace(/^Direct \/ Unknown$/i, "Direct") : "Direct",
       pagePath: typeof lastRow.page_path === "string" && lastRow.page_path ? lastRow.page_path : "/",
       referrer: typeof lastRow.referrer === "string" && lastRow.referrer ? lastRow.referrer : null,
       sessionId,
@@ -1940,6 +1991,7 @@ export async function GET(request: Request) {
   const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
+  const trafficSources = summarizeTrafficSources(validLandingEventRows);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(validEventRows);
   const landingLast24h = summarizeLandingLast24Hours(validEventRows);
   const guestAccountFunnel = summarizeGuestAccountFunnel(validEventRows);
@@ -1984,6 +2036,7 @@ export async function GET(request: Request) {
       studyNotesUpgrade,
       bibleYearDays,
       studyNotes,
+      trafficSources,
       publicOnboardingFlow,
       sources,
       eventSetupRequired: Boolean(eventError),
@@ -2019,6 +2072,7 @@ export async function GET(request: Request) {
     studyNotesUpgrade,
     bibleYearDays,
     studyNotes,
+    trafficSources,
     publicOnboardingFlow,
     sources,
     setupRequired: false,

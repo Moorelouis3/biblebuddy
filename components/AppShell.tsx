@@ -983,7 +983,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           event_name: "created_account_successfully",
           session_id: pending.landingAnalytics?.sessionId || `oauth-${currentUserId}`,
           user_id: currentUserId,
-          source: pending.landingAnalytics?.source || "Direct / Unknown",
+          source: pending.landingAnalytics?.source || "Direct",
           referrer: pending.landingAnalytics?.referrer || null,
           page_path: pending.landingAnalytics?.pagePath || "/",
           metadata: {

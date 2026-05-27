@@ -205,11 +205,11 @@ function normalizeLandingSource(value: string | null) {
   if (source.includes("facebook")) return "Facebook";
   if (source.includes("tiktok")) return "TikTok";
   if (source.includes("google")) return "Google";
-  return value ? "Other" : "Direct / Unknown";
+  return value ? "Other" : "Direct";
 }
 
 function getLandingSource() {
-  if (typeof window === "undefined") return "Direct / Unknown";
+  if (typeof window === "undefined") return "Direct";
   const storageKey = "bb:landing-source";
   const stored = window.sessionStorage.getItem(storageKey);
   if (stored) return stored;

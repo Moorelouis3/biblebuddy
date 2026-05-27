@@ -8,7 +8,7 @@ import { DEFAULT_PREMIUM_SKIN_ID, applyPremiumSkinToDocument, readCachedPremiumS
 
 type JourneyWindow = "1h" | "24h" | "7d" | "30d";
 type AccountFilter = "all" | "guest" | "free" | "pro";
-type AnalyticsView = "overview" | "bible-year" | "study-notes";
+type AnalyticsView = "overview" | "bible-year" | "study-notes" | "traffic-sources";
 
 type VisitorJourneyStatus =
   | "active"
@@ -105,7 +105,9 @@ type FunnelStageRow = {
   upgradeViews?: number;
   upgradeClicks?: number;
   continueFreeClicks?: number;
+  successfulUpgrades?: number;
   upgradeClickRate?: number;
+  upgradeSuccessRate?: number;
   continueFreeRate?: number;
 };
 
@@ -113,7 +115,9 @@ type DayThreeUpgradeAnalytics = {
   views: number;
   upgradeClicks: number;
   continueFreeClicks: number;
+  successfulUpgrades: number;
   upgradeClickRate: number;
+  upgradeSuccessRate: number;
   continueFreeRate: number;
 };
 
@@ -184,6 +188,10 @@ type AnalyticsResponse = {
       openedAt: string;
     }>;
   };
+  trafficSources?: {
+    totalVisitors: number;
+    sources: Array<{ source: string; visitors: number; percent: number }>;
+  };
   eventSetupRequired?: boolean;
   eventError?: string;
   error?: string;
@@ -193,6 +201,7 @@ const ANALYTICS_NAV_ITEMS: Array<{ key: AnalyticsView; label: string; helper: st
   { key: "overview", label: "Overview", helper: "Journey Tracker" },
   { key: "bible-year", label: "Bible in One Year", helper: "Day breakdowns" },
   { key: "study-notes", label: "Study Notes", helper: "Note opens" },
+  { key: "traffic-sources", label: "Traffic Sources", helper: "Landing visitors" },
 ];
 
 const WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
@@ -211,6 +220,15 @@ const STATUS_STYLES: Record<VisitorJourneyStatus, string> = {
   upgraded: "bg-orange-50 text-orange-700 ring-orange-200",
   dropped_off: "bg-rose-50 text-rose-700 ring-rose-200",
 };
+
+const TRAFFIC_SOURCE_COLORS = [
+  "from-blue-500/18 to-cyan-400/10 text-blue-700 ring-blue-200",
+  "from-emerald-500/18 to-teal-400/10 text-emerald-700 ring-emerald-200",
+  "from-violet-500/18 to-fuchsia-400/10 text-violet-700 ring-violet-200",
+  "from-amber-500/18 to-orange-400/10 text-amber-700 ring-amber-200",
+  "from-rose-500/18 to-pink-400/10 text-rose-700 ring-rose-200",
+  "from-slate-500/14 to-slate-400/8 text-slate-700 ring-slate-200",
+];
 
 function formatNumber(value: number) {
   return value.toLocaleString();
@@ -459,8 +477,9 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
                   {stage.key === "day3UpgradeOffer" ? (
                     <>
                       <p className="mt-2 text-2xl font-black leading-none text-slate-950">{formatNumber(stage.upgradeViews || stage.users || 0)}</p>
-                      <div className="mt-2 grid grid-cols-2 gap-1 text-[11px] font-black leading-tight">
-                        <span className="text-emerald-500">{formatNumber(stage.upgradeClicks || 0)} upgrade</span>
+                      <div className="mt-2 grid grid-cols-3 gap-1 text-[10px] font-black leading-tight">
+                        <span className="text-cyan-500">{formatNumber(stage.upgradeClicks || 0)} click</span>
+                        <span className="text-emerald-500">{formatNumber(stage.successfulUpgrades || 0)} paid</span>
                         <span className="text-amber-400">{formatNumber(stage.continueFreeClicks || 0)} free</span>
                       </div>
                     </>
@@ -573,6 +592,60 @@ function StudyNotesUpgradeCard({ stats }: { stats?: StudyNotesUpgradeAnalytics }
           </div>
         </div>
       ) : null}
+    </section>
+  );
+}
+
+function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSources"] }) {
+  const sources = report?.sources || [];
+  const totalVisitors = report?.totalVisitors || 0;
+
+  return (
+    <section className="mt-8 space-y-5">
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
+        <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-600">Landing Page Traffic</p>
+        <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="text-2xl font-black text-slate-950">Traffic Sources</h2>
+            <p className="mt-1 text-sm font-medium text-slate-600">
+              Based on unique people/sessions that reached the landing page in the selected time window.
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Landing Visitors</p>
+            <p className="mt-1 text-3xl font-black text-slate-950">{formatNumber(totalVisitors)}</p>
+          </div>
+        </div>
+      </div>
+
+      {sources.length ? (
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {sources.map((source, index) => {
+            const color = TRAFFIC_SOURCE_COLORS[index % TRAFFIC_SOURCE_COLORS.length];
+            return (
+              <article key={source.source} className={`rounded-2xl border border-slate-200 bg-gradient-to-br ${color} bg-white p-5 shadow-sm ring-1`}>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="truncate text-xl font-black text-slate-950">{source.source}</p>
+                    <p className="mt-1 text-sm font-semibold text-slate-600">{formatNumber(source.visitors)} landing visitors</p>
+                  </div>
+                  <div className="rounded-full bg-white/80 px-3 py-1 text-sm font-black shadow-sm">
+                    {source.percent}%
+                  </div>
+                </div>
+                <div className="mt-5 h-3 overflow-hidden rounded-full bg-white/70 ring-1 ring-slate-200">
+                  <div className="h-full rounded-full bg-current transition-all" style={{ width: `${Math.min(100, Math.max(0, source.percent))}%` }} />
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center">
+          <p className="text-lg font-black text-slate-950">No landing page traffic yet</p>
+          <p className="mt-2 text-sm font-medium text-slate-600">When visitors reach the landing page, sources like Threads, Instagram, Google, YouTube, and Direct will show here.</p>
+        </div>
+      )}
     </section>
   );
 }
@@ -872,7 +945,9 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
                   ? "See every visitor's path from landing page to guest, free account, and Pro."
                   : activeView === "bible-year"
                     ? "Open any day to see starts, task completion, users, and drop-off for that Bible study day."
-                    : "See who opened study notes, which note they opened, and when they opened it."}
+                    : activeView === "traffic-sources"
+                      ? "See which sources are bringing people to the Bible Buddy landing page."
+                      : "See who opened study notes, which note they opened, and when they opened it."}
               </p>
             </div>
 
@@ -1183,6 +1258,8 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
               })}
             </div>
           </section>
+          ) : activeView === "traffic-sources" ? (
+            <TrafficSourcesView report={data?.trafficSources} />
           ) : (
           <section className="mt-8 space-y-6">
             <div className="grid gap-4 md:grid-cols-4">

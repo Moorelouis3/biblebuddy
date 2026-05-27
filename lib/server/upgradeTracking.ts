@@ -7,6 +7,10 @@ type TrackUpgradeParams = {
   membershipStatus?: string | null;
   proExpiresAt?: string | null;
   actionLabel?: string | null;
+  journeyDay?: number | null;
+  accountStatus?: string | null;
+  eventMetadata?: Record<string, unknown> | null;
+  sessionId?: string | null;
 };
 
 type ProfileStatsRow = {
@@ -23,6 +27,10 @@ export async function markUserAsPaidAndTrackUpgrade({
   membershipStatus,
   proExpiresAt,
   actionLabel,
+  journeyDay,
+  accountStatus,
+  eventMetadata,
+  sessionId,
 }: TrackUpgradeParams): Promise<{ upgradedNow: boolean }> {
   const { data: existingProfile, error: fetchError } = await supabase
     .from("profile_stats")
@@ -65,9 +73,13 @@ export async function markUserAsPaidAndTrackUpgrade({
 
     const { error: actionError } = await supabase.from("master_actions").insert({
       user_id: userId,
+      session_id: sessionId ?? null,
       username,
       action_type: "user_upgraded",
       action_label: actionLabel ?? source,
+      journey_day: typeof journeyDay === "number" ? journeyDay : null,
+      account_status: accountStatus ?? membershipStatus ?? "pro",
+      event_metadata: eventMetadata ?? {},
       created_at: new Date().toISOString(),
     });
 
