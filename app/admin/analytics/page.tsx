@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -39,6 +39,38 @@ type VisitorJourneyRow = {
   timeSpentLabel: string;
   dropoffStep: string;
   accountType: "guest" | "free" | "pro";
+  timeline: Array<{
+    id: string;
+    title: string;
+    eventName: string;
+    category: "landing" | "onboarding" | "dashboard" | "bible_year" | "account" | "upgrade" | "trial" | "engagement" | "dropoff";
+    status: "completed" | "active" | "warning" | "dropped";
+    timestamp: string;
+    detail: string;
+    timeSinceFirstLabel: string | null;
+    timeSincePreviousLabel: string | null;
+    dayNumber: number | null;
+    taskType: string | null;
+  }>;
+  details: {
+    visitorId: string;
+    accountType: "guest" | "free" | "pro";
+    trialStatus: string;
+    badgeStatus: string;
+    deviceType: string;
+    country: string;
+    source: string;
+    firstVisitAt: string;
+    totalTimeLabel: string;
+    daysActive: number;
+    currentStudy: string;
+    currentDay: number | null;
+    lastCompletedDay: number | null;
+    streak: number | null;
+    xp: number | null;
+    level: number | null;
+    dropoffReason: string;
+  };
 };
 
 type VisitorJourneys = {
@@ -59,6 +91,15 @@ type VisitorJourneys = {
   sources: string[];
   journeys: string[];
   statuses: Array<{ key: VisitorJourneyStatus; label: string }>;
+};
+
+type FunnelStageRow = {
+  key: string;
+  label: string;
+  users: number;
+  conversionRate: number;
+  dropoffRate: number;
+  retentionRate: number;
 };
 
 type BibleYearDayAnalytics = {
@@ -88,6 +129,7 @@ type AnalyticsResponse = {
     label: string;
   };
   visitorJourneys?: VisitorJourneys;
+  bibleBuddyFunnelStages?: FunnelStageRow[];
   bibleYearDays?: BibleYearDayAnalytics[];
   studyNotes?: {
     totalOpens: number;
@@ -314,6 +356,212 @@ function MetricCard({
   );
 }
 
+function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
+  const visibleStages = stages.length
+    ? stages
+    : [
+      "Landing Page",
+      "Started Onboarding",
+      "Finished Onboarding",
+      "Dashboard Tour",
+      "Started Day 1",
+      "Completed Day 1",
+      "Started Day 2",
+      "Completed Day 2",
+      "Started Day 3",
+      "Completed Day 3",
+      "Saw Upgrade Popup",
+      "Upgraded",
+    ].map((label, index) => ({
+      key: label.toLowerCase().replaceAll(" ", "-"),
+      label,
+      users: 0,
+      conversionRate: index === 0 ? 100 : 0,
+      dropoffRate: 0,
+      retentionRate: index === 0 ? 100 : 0,
+    }));
+
+  return (
+    <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_12px_32px_rgba(15,23,42,0.07)]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-600">BibleBuddy Journey Flow</p>
+          <h2 className="mt-1 text-2xl font-black text-slate-950">Where people move forward or drop off</h2>
+        </div>
+        <p className="max-w-xl text-sm font-semibold leading-6 text-slate-600">
+          Each stage is grouped from the master action log so you can see onboarding, first three days, and upgrade movement without reading every tiny event.
+        </p>
+      </div>
+
+      <div className="mt-6 overflow-x-auto pb-2">
+        <div className="flex min-w-[1180px] items-stretch gap-3">
+          {visibleStages.map((stage, index) => {
+            const isStrong = stage.conversionRate >= 70;
+            const isWarning = stage.conversionRate > 0 && stage.conversionRate < 40;
+            const tone = isStrong
+              ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+              : isWarning
+                ? "border-amber-200 bg-amber-50 text-amber-700"
+                : "border-slate-200 bg-slate-50 text-slate-700";
+            return (
+              <div key={stage.key} className="flex min-w-[170px] items-center gap-3">
+                <div className="min-h-[164px] flex-1 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="grid h-7 w-7 place-items-center rounded-full bg-slate-900 text-xs font-black text-white">{index + 1}</span>
+                    <span className={`rounded-full border px-2 py-1 text-[11px] font-black ${tone}`}>
+                      {stage.conversionRate}% conv
+                    </span>
+                  </div>
+                  <p className="mt-4 min-h-10 text-sm font-black leading-5 text-slate-950">{stage.label}</p>
+                  <p className="mt-3 text-3xl font-black leading-none text-slate-950">{formatNumber(stage.users)}</p>
+                  <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] font-bold">
+                    <span className="rounded-lg bg-blue-50 px-2 py-1.5 text-blue-700">{stage.retentionRate}% retain</span>
+                    <span className="rounded-lg bg-rose-50 px-2 py-1.5 text-rose-700">{stage.dropoffRate}% drop</span>
+                  </div>
+                </div>
+                {index < visibleStages.length - 1 ? (
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-slate-400">
+                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14" />
+                      <path d="m13 6 6 6-6 6" />
+                    </svg>
+                  </span>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TimelineStatusIcon({ status }: { status: VisitorJourneyRow["timeline"][number]["status"] }) {
+  const styles = {
+    completed: "bg-emerald-500 text-white shadow-[0_0_24px_rgba(16,185,129,0.36)]",
+    active: "bg-blue-500 text-white shadow-[0_0_24px_rgba(59,130,246,0.4)]",
+    warning: "bg-amber-400 text-slate-950 shadow-[0_0_24px_rgba(251,191,36,0.38)]",
+    dropped: "bg-rose-500 text-white shadow-[0_0_24px_rgba(244,63,94,0.38)]",
+  };
+  return (
+    <span className={`grid h-9 w-9 place-items-center rounded-full text-sm font-black ${styles[status]}`}>
+      {status === "completed" ? (
+        <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m3.5 8.2 2.7 2.6 6.3-6.6" />
+        </svg>
+      ) : status === "warning" ? "!" : status === "dropped" ? "x" : "•"}
+    </span>
+  );
+}
+
+function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
+  const details = row.details;
+  const timeline = row.timeline || [];
+  const completedTasks = timeline.filter((event) => event.category === "bible_year" && event.status === "completed").length;
+  const latestDay = details.currentDay || details.lastCompletedDay || 0;
+
+  return (
+    <div className="rounded-b-2xl border-x border-b border-blue-500/60 bg-[#071426] p-4 text-slate-100 shadow-[0_18px_46px_rgba(15,23,42,0.28)]">
+      <div className="grid gap-4 xl:grid-cols-[300px_1fr]">
+        <aside className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
+          <div className="flex items-center gap-2">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-blue-500 text-white">
+              <Icon name="visitors" />
+            </span>
+            <div>
+              <p className="text-sm font-black">Visitor Details</p>
+              <p className="text-xs font-semibold text-slate-400">{details.accountType.toUpperCase()} account</p>
+            </div>
+          </div>
+          <dl className="mt-4 space-y-2 text-sm">
+            {[
+              ["Visitor ID", details.visitorId],
+              ["Type", details.accountType],
+              ["Trial", details.trialStatus],
+              ["Badge", details.badgeStatus],
+              ["Device", details.deviceType],
+              ["Country", details.country],
+              ["Source", details.source],
+              ["First Visit", formatDateTime(details.firstVisitAt)],
+              ["Total Time", details.totalTimeLabel],
+              ["Days Active", String(details.daysActive)],
+              ["Current Study", details.currentStudy],
+              ["Current Day", latestDay ? `Day ${latestDay}` : "Not started"],
+              ["Last Complete", details.lastCompletedDay ? `Day ${details.lastCompletedDay}` : "None"],
+              ["Streak", details.streak === null ? "Unknown" : `${details.streak} day${details.streak === 1 ? "" : "s"}`],
+              ["XP", details.xp === null ? "Unknown" : formatNumber(details.xp)],
+              ["Level", details.level === null ? "Unknown" : String(details.level)],
+              ["Drop Off", details.dropoffReason],
+            ].map(([label, value]) => (
+              <div key={label} className="flex items-start justify-between gap-3">
+                <dt className="text-slate-400">{label}</dt>
+                <dd className="max-w-[170px] text-right font-bold text-slate-100">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </aside>
+
+        <section className="rounded-xl border border-white/10 bg-white/[0.035] p-4">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-300">User Journey Timeline</p>
+              <h3 className="mt-1 text-xl font-black text-white">Everything this visitor has done</h3>
+              <p className="mt-1 text-sm font-medium text-slate-400">Chronological funnel, task, account, trial, and upgrade behavior.</p>
+            </div>
+            <div className="rounded-lg bg-blue-500/10 px-3 py-2 text-sm font-black text-blue-200">
+              Total Journey Time: {details.totalTimeLabel}
+            </div>
+          </div>
+
+          <div className="mt-5 overflow-x-auto pb-2">
+            <div className="flex min-w-[900px] items-start">
+              {timeline.length ? timeline.map((event, index) => (
+                <div key={event.id} className="relative min-w-[150px] flex-1 px-2 text-center">
+                  {index < timeline.length - 1 ? <span className="absolute left-1/2 top-[18px] h-0.5 w-full bg-blue-400/30" /> : null}
+                  <div className="relative z-10 mx-auto w-fit">
+                    <TimelineStatusIcon status={event.status} />
+                  </div>
+                  <p className="mt-3 text-[11px] font-semibold text-slate-400">{formatDateTime(event.timestamp)}</p>
+                  <p className="mt-2 text-sm font-black leading-5 text-white">{event.title}</p>
+                  <p className="mt-1 text-[11px] font-semibold text-blue-200">{event.eventName}</p>
+                  <p className="mt-2 text-xs leading-5 text-slate-300">{event.timeSincePreviousLabel || event.timeSinceFirstLabel || event.detail}</p>
+                </div>
+              )) : (
+                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-5 text-sm font-semibold text-slate-300">
+                  No detailed events found for this visitor yet.
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-5 grid gap-3 border-t border-white/10 pt-4 sm:grid-cols-5">
+            <div className="rounded-lg bg-white/[0.04] p-3">
+              <p className="text-xs font-bold text-slate-400">Onboarding</p>
+              <p className="mt-1 text-lg font-black text-white">{row.onboardingCompletedAt ? "Complete" : "Not complete"}</p>
+            </div>
+            <div className="rounded-lg bg-white/[0.04] p-3">
+              <p className="text-xs font-bold text-slate-400">Current Day</p>
+              <p className="mt-1 text-lg font-black text-white">{latestDay ? `Day ${latestDay}` : "None"}</p>
+            </div>
+            <div className="rounded-lg bg-white/[0.04] p-3">
+              <p className="text-xs font-bold text-slate-400">Bible Tasks</p>
+              <p className="mt-1 text-lg font-black text-white">{completedTasks}</p>
+            </div>
+            <div className="rounded-lg bg-white/[0.04] p-3">
+              <p className="text-xs font-bold text-slate-400">Account</p>
+              <p className="mt-1 text-lg font-black text-white">{details.accountType}</p>
+            </div>
+            <div className="rounded-lg bg-white/[0.04] p-3">
+              <p className="text-xs font-bold text-slate-400">Next Action</p>
+              <p className="mt-1 text-lg font-black text-white">{row.currentStatus === "dropped_off" ? "Re-engage" : "Keep going"}</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
 export default function AnalyticsPage() {
   const [isOwner, setIsOwner] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
@@ -327,6 +575,7 @@ export default function AnalyticsPage() {
   const [accountFilter, setAccountFilter] = useState<AccountFilter>("all");
   const [activeView, setActiveView] = useState<AnalyticsView>("overview");
   const [expandedDay, setExpandedDay] = useState<number>(1);
+  const [expandedVisitorId, setExpandedVisitorId] = useState<string | null>(null);
 
   useEffect(() => {
     async function checkOwner() {
@@ -382,6 +631,7 @@ export default function AnalyticsPage() {
     proUpgradeRate: 0,
   };
   const funnelHealth = getFunnelHealth(metrics.onboardingCompletionRate);
+  const bibleBuddyFunnelStages = data?.bibleBuddyFunnelStages || [];
 
   const filteredRows = useMemo(() => {
     const cleanSearch = search.trim().toLowerCase();
@@ -549,6 +799,8 @@ export default function AnalyticsPage() {
 
           {activeView === "overview" ? (
           <>
+          <FunnelFlowChart stages={bibleBuddyFunnelStages} />
+
           <section className={`mt-8 rounded-xl border px-5 py-4 shadow-sm ${funnelHealth.tone}`}>
             <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-start sm:gap-8">
               <p className="text-lg font-black">{funnelHealth.label}</p>
@@ -630,9 +882,19 @@ export default function AnalyticsPage() {
                       <td colSpan={7} className="px-4 py-12 text-center text-sm font-semibold text-slate-500">Loading visitor journeys...</td>
                     </tr>
                   ) : filteredRows.length ? (
-                    filteredRows.map((row) => (
-                      <tr key={row.id} className="transition hover:bg-slate-50">
-                        <td className="px-4 py-4 align-middle"><span className="block h-4 w-4 rounded border border-slate-300" /></td>
+                    filteredRows.map((row) => {
+                      const isExpanded = expandedVisitorId === row.id;
+                      return (
+                      <Fragment key={row.id}>
+                      <tr
+                        className={`cursor-pointer transition ${isExpanded ? "bg-blue-50" : "hover:bg-slate-50"}`}
+                        onClick={() => setExpandedVisitorId((current) => current === row.id ? null : row.id)}
+                      >
+                        <td className="px-4 py-4 align-middle">
+                          <span className={`grid h-5 w-5 place-items-center rounded border text-[10px] font-black ${isExpanded ? "border-blue-500 bg-blue-500 text-white" : "border-slate-300 text-slate-400"}`}>
+                            {isExpanded ? "-" : "+"}
+                          </span>
+                        </td>
                         <td className="px-4 py-4 align-middle">
                           <div className="font-bold text-slate-900">{row.visitorLabel}</div>
                           {row.userId && row.userLabel !== "Guest visitor" ? (
@@ -659,7 +921,16 @@ export default function AnalyticsPage() {
                           <div className="font-semibold text-slate-800">{row.source}</div>
                         </td>
                       </tr>
-                    ))
+                      {isExpanded ? (
+                        <tr>
+                          <td colSpan={7} className="p-0">
+                            <UserJourneyTimeline row={row} />
+                          </td>
+                        </tr>
+                      ) : null}
+                      </Fragment>
+                      );
+                    })
                   ) : (
                     <tr>
                       <td colSpan={7} className="px-4 py-12 text-center text-sm font-semibold text-slate-500">No journeys match these filters.</td>

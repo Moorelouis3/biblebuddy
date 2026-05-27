@@ -33,7 +33,14 @@ export async function logActionToMasterActions(
   userId: string,
   actionType: ActionType,
   actionLabel?: string | null,
-  username?: string | null
+  username?: string | null,
+  details?: {
+    sessionId?: string | null;
+    journeyDay?: number | null;
+    accountStatus?: string | null;
+    deviceInfo?: Record<string, unknown> | null;
+    eventMetadata?: Record<string, unknown> | null;
+  }
 ): Promise<void> {
   try {
     // Get username if not provided
@@ -58,6 +65,11 @@ export async function logActionToMasterActions(
       action_type: string;
       username: string | null;
       action_label?: string | null;
+      session_id?: string | null;
+      journey_day?: number | null;
+      account_status?: string | null;
+      device_info?: Record<string, unknown>;
+      event_metadata?: Record<string, unknown>;
     } = {
       user_id: userId,
       action_type: actionType,
@@ -68,6 +80,11 @@ export async function logActionToMasterActions(
     if (actionLabel !== null && actionLabel !== undefined) {
       insertData.action_label = actionLabel;
     }
+    if (details?.sessionId) insertData.session_id = details.sessionId;
+    if (typeof details?.journeyDay === "number") insertData.journey_day = details.journeyDay;
+    if (details?.accountStatus) insertData.account_status = details.accountStatus;
+    if (details?.deviceInfo) insertData.device_info = details.deviceInfo;
+    if (details?.eventMetadata) insertData.event_metadata = details.eventMetadata;
 
     const { error: actionError } = await supabase
       .from("master_actions")

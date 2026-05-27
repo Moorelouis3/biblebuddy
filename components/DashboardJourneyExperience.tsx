@@ -7412,6 +7412,50 @@ Before we understand redemption, we need to understand what God made humanity fo
     return `Bible in One Year Day ${day.dayNumber} ${cardLabel}: ${day.title}`;
   }
 
+  async function logBibleYearTaskStarted(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
+    if (!userId) return;
+    const actionLabel = `Bible in One Year Day ${day.dayNumber} ${getBibleYearCardDisplayLabel(day, card)} started: ${day.title}`;
+    try {
+      const { data: existing, error: existingError } = await supabase
+        .from("master_actions")
+        .select("id")
+        .eq("user_id", userId)
+        .eq("action_type", ACTION_TYPE.bible_year_task_started)
+        .eq("action_label", actionLabel)
+        .limit(1);
+      if (existingError) throw existingError;
+      if (existing && existing.length > 0) return;
+
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const meta = user?.user_metadata || {};
+      const username =
+        meta.firstName ||
+        meta.first_name ||
+        (user?.email ? user.email.split("@")[0] : null) ||
+        "User";
+      const insertPayload = {
+        user_id: userId,
+        username,
+        action_type: ACTION_TYPE.bible_year_task_started,
+        action_label: actionLabel,
+        journey_day: day.dayNumber,
+        account_status: isPaidUser ? "pro" : "free_or_guest",
+        event_metadata: {
+          plan: "bible_in_one_year",
+          task: card,
+          dayNumber: day.dayNumber,
+          dayTitle: day.title,
+        },
+      };
+      const { error: insertError } = await supabase.from("master_actions").insert(insertPayload);
+      if (insertError) throw insertError;
+    } catch (error) {
+      console.warn("[BIBLE_YEAR_ANALYTICS] Could not log task start:", error);
+    }
+  }
+
   function getBibleYearReflectionSlug(day: GenesisBibleYearDay) {
     return `bible-in-one-year-day-${day.dayNumber}-${day.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
   }
@@ -8573,7 +8617,11 @@ Before we understand redemption, we need to understand what God made humanity fo
                   type="button"
                   onClick={() => {
                     if (!taskCard) return;
-                    setActiveBibleYearDayCard((current) => current === taskCard ? null : taskCard);
+                    setActiveBibleYearDayCard((current) => {
+                      const next = current === taskCard ? null : taskCard;
+                      if (next) void logBibleYearTaskStarted(day, taskCard);
+                      return next;
+                    });
                   }}
                   className="group flex min-h-10 w-full items-center gap-2 px-3 py-2 text-left transition"
                   aria-expanded={isActiveCompletedTask}
@@ -12386,7 +12434,11 @@ Before we understand redemption, we need to understand what God made humanity fo
                       if (bibleYearTaskCard === "reading" && selectedBibleYearSeriesDay) {
                         setBibleYearPersistentVideoDay(selectedBibleYearSeriesDay.dayNumber);
                       }
-                      setActiveBibleYearDayCard((current) => current === bibleYearTaskCard ? null : bibleYearTaskCard);
+                      setActiveBibleYearDayCard((current) => {
+                        const next = current === bibleYearTaskCard ? null : bibleYearTaskCard;
+                        if (next && selectedBibleYearSeriesDay) void logBibleYearTaskStarted(selectedBibleYearSeriesDay, bibleYearTaskCard);
+                        return next;
+                      });
                       return;
                     }
                     onTaskClick(task);

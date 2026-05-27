@@ -51,6 +51,26 @@ type BibleYearTaskActionRow = {
   created_at?: string | null;
 };
 
+type MasterActionFunnelRow = {
+  user_id?: string | null;
+  session_id?: string | null;
+  action_type?: string | null;
+  action_label?: string | null;
+  journey_day?: number | null;
+  account_status?: string | null;
+  event_metadata?: Record<string, unknown> | null;
+  created_at?: string | null;
+};
+
+type FunnelStageRow = {
+  key: string;
+  label: string;
+  users: number;
+  conversionRate: number;
+  dropoffRate: number;
+  retentionRate: number;
+};
+
 type BibleYearProgressRow = {
   user_id?: string | null;
   day_number?: number | null;
@@ -89,6 +109,40 @@ type VisitorJourneyStatus =
   | "upgraded"
   | "dropped_off";
 
+type VisitorJourneyTimelineEvent = {
+  id: string;
+  title: string;
+  eventName: string;
+  category: "landing" | "onboarding" | "dashboard" | "bible_year" | "account" | "upgrade" | "trial" | "engagement" | "dropoff";
+  status: "completed" | "active" | "warning" | "dropped";
+  timestamp: string;
+  detail: string;
+  timeSinceFirstLabel: string | null;
+  timeSincePreviousLabel: string | null;
+  dayNumber: number | null;
+  taskType: string | null;
+};
+
+type VisitorJourneyDetails = {
+  visitorId: string;
+  accountType: "guest" | "free" | "pro";
+  trialStatus: string;
+  badgeStatus: string;
+  deviceType: string;
+  country: string;
+  source: string;
+  firstVisitAt: string;
+  totalTimeLabel: string;
+  daysActive: number;
+  currentStudy: string;
+  currentDay: number | null;
+  lastCompletedDay: number | null;
+  streak: number | null;
+  xp: number | null;
+  level: number | null;
+  dropoffReason: string;
+};
+
 type VisitorJourneyRow = {
   id: string;
   visitorLabel: string;
@@ -111,6 +165,8 @@ type VisitorJourneyRow = {
   timeSpentLabel: string;
   dropoffStep: string;
   accountType: "guest" | "free" | "pro";
+  timeline: VisitorJourneyTimelineEvent[];
+  details: VisitorJourneyDetails;
 };
 
 type AuthUserSummary = {
@@ -125,6 +181,11 @@ type ProfileSummary = {
   isPaid: boolean;
   registeredAt: string | null;
   convertedFromGuestAt: string | null;
+  currentStreak: number | null;
+  currentLevel: number | null;
+  totalActions: number | null;
+  memberBadge: string | null;
+  proExpiresAt: string | null;
 };
 
 async function verifyOwner(request: Request) {
@@ -360,6 +421,115 @@ function summarizeGuestAccountFunnel(rows: Record<string, unknown>[]) {
     },
     windows: windows.map((window) => ({ key: window.key, label: window.label, ...countWindow(window.ms) })),
   };
+}
+
+function getMasterActorId(row: MasterActionFunnelRow) {
+  return row.user_id || row.session_id || "";
+}
+
+function getEventActorId(row: LandingEventRow) {
+  return row.user_id || row.session_id || "";
+}
+
+function percent(part: number, whole: number) {
+  return whole > 0 ? Number(((part / whole) * 100).toFixed(1)) : 0;
+}
+
+function parseBibleYearDayFromLabel(label: string) {
+  const match = label.match(/Day\s+(\d+)/i);
+  return match ? Number(match[1]) : null;
+}
+
+function buildBibleBuddyFunnelStages(
+  landingRows: LandingEventRow[],
+  masterRows: MasterActionFunnelRow[],
+  progressRows: BibleYearProgressRow[],
+) {
+  const landingActorsByEvent = new Map<string, Set<string>>();
+  for (const row of landingRows) {
+    const eventName = row.event_name || "";
+    const actorId = getEventActorId(row);
+    if (!eventName || !actorId) continue;
+    if (!landingActorsByEvent.has(eventName)) landingActorsByEvent.set(eventName, new Set());
+    landingActorsByEvent.get(eventName)?.add(actorId);
+  }
+
+  const masterActorsByAction = new Map<string, Set<string>>();
+  for (const row of masterRows) {
+    const actionType = row.action_type || "";
+    const actorId = getMasterActorId(row);
+    if (!actionType || !actorId) continue;
+    if (!masterActorsByAction.has(actionType)) masterActorsByAction.set(actionType, new Set());
+    masterActorsByAction.get(actionType)?.add(actorId);
+  }
+
+  function mergeActors(eventNames: string[], actionTypes: string[] = []) {
+    const merged = new Set<string>();
+    for (const eventName of eventNames) {
+      landingActorsByEvent.get(eventName)?.forEach((actor) => merged.add(actor));
+    }
+    for (const actionType of actionTypes) {
+      masterActorsByAction.get(actionType)?.forEach((actor) => merged.add(actor));
+    }
+    return merged;
+  }
+
+  function completedDayActors(dayNumber: number) {
+    const actors = new Set<string>();
+    for (const row of progressRows) {
+      if (Number(row.day_number || 0) !== dayNumber) continue;
+      if (!row.user_id) continue;
+      if (row.reading_completed && row.trivia_completed && row.reflection_completed) {
+        actors.add(row.user_id);
+      }
+    }
+    return actors;
+  }
+
+  function startedDayActors(dayNumber: number) {
+    const actors = new Set<string>();
+    for (const row of progressRows) {
+      if (Number(row.day_number || 0) === dayNumber && row.user_id) actors.add(row.user_id);
+    }
+    for (const row of masterRows) {
+      if (row.action_type !== "bible_year_task_started" && row.action_type !== "bible_in_one_year_day_viewed") continue;
+      const day = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
+      if (day === dayNumber) {
+        const actorId = getMasterActorId(row);
+        if (actorId) actors.add(actorId);
+      }
+    }
+    return actors;
+  }
+
+  const stageSets = [
+    { key: "landing", label: "Landing Page", actors: mergeActors(["landing_page_visit"], ["landing_page_visited"]) },
+    { key: "startedOnboarding", label: "Started Onboarding", actors: mergeActors(["clicked_start_journey", "started_onboarding"], ["landing_cta_clicked", "onboarding_intro_started"]) },
+    { key: "finishedOnboarding", label: "Finished Onboarding", actors: mergeActors(["started_guest_journey", "clicked_yes_start_my_journey"], ["onboarding_journey_started"]) },
+    { key: "dashboardTour", label: "Dashboard Tour", actors: mergeActors([], ["dashboard_tour_completed"]) },
+    { key: "startedDay1", label: "Started Day 1", actors: startedDayActors(1) },
+    { key: "completedDay1", label: "Completed Day 1", actors: completedDayActors(1) },
+    { key: "startedDay2", label: "Started Day 2", actors: startedDayActors(2) },
+    { key: "completedDay2", label: "Completed Day 2", actors: completedDayActors(2) },
+    { key: "startedDay3", label: "Started Day 3", actors: startedDayActors(3) },
+    { key: "completedDay3", label: "Completed Day 3", actors: completedDayActors(3) },
+    { key: "upgradePopup", label: "Saw Upgrade Popup", actors: mergeActors([], ["upgrade_popup_viewed"]) },
+    { key: "upgraded", label: "Upgraded", actors: mergeActors([], ["user_upgraded"]) },
+  ];
+
+  const firstCount = stageSets[0]?.actors.size || 0;
+  return stageSets.map((stage, index): FunnelStageRow => {
+    const previousCount = index === 0 ? stage.actors.size : stageSets[index - 1].actors.size;
+    const users = stage.actors.size;
+    return {
+      key: stage.key,
+      label: stage.label,
+      users,
+      conversionRate: index === 0 ? 100 : percent(users, previousCount),
+      dropoffRate: index === 0 ? 0 : Number(Math.max(0, 100 - percent(users, previousCount)).toFixed(1)),
+      retentionRate: index === 0 ? 100 : percent(users, firstCount),
+    };
+  });
 }
 
 function buildEventSessionMap(rows: Record<string, unknown>[]) {
@@ -863,6 +1033,12 @@ function formatDuration(ms: number) {
   return remainingMinutes ? `${hours}h ${remainingMinutes}m` : `${hours} hr`;
 }
 
+function formatTimelineDelta(ms: number) {
+  if (!Number.isFinite(ms) || ms <= 0) return null;
+  if (ms < 5000) return "a few seconds later";
+  return `${formatDuration(ms)} later`;
+}
+
 function getLandingStepStatusLabel(sessionRows: LandingEventRow[], finishedOnboarding: boolean) {
   if (finishedOnboarding) return "Finished onboarding";
   const eventNames = sessionRows.map((row) => row.event_name || "");
@@ -876,6 +1052,89 @@ function getLandingStepStatusLabel(sessionRows: LandingEventRow[], finishedOnboa
   if (names.has("started_onboarding") || names.has("viewed_onboarding_intro")) return "Started onboarding";
   if (names.has("clicked_start_journey")) return "Clicked start";
   return "Just visited";
+}
+
+function getMasterActionCategory(actionType: string): VisitorJourneyTimelineEvent["category"] {
+  if (actionType.includes("upgrade") || actionType === "user_upgraded") return "upgrade";
+  if (actionType.includes("trial")) return "trial";
+  if (actionType.includes("bible_year") || actionType.includes("bible_in_one_year")) return "bible_year";
+  if (actionType.includes("dashboard")) return "dashboard";
+  if (actionType.includes("signup") || actionType.includes("profile_creation")) return "account";
+  if (actionType.includes("onboarding") || actionType.includes("landing")) return "onboarding";
+  return "engagement";
+}
+
+function getTaskTypeFromAction(action: MasterActionFunnelRow) {
+  const metadata = action.event_metadata && typeof action.event_metadata === "object" ? action.event_metadata : {};
+  const task = typeof metadata.task === "string" ? metadata.task : "";
+  if (task) return task;
+  const label = action.action_label || "";
+  if (/video|reading/i.test(label)) return "video";
+  if (/notes|review/i.test(label)) return "notes";
+  if (/trivia/i.test(label)) return "trivia";
+  if (/scrambled/i.test(label)) return "scrambled";
+  if (/reflection|discussion/i.test(label)) return "reflection";
+  return null;
+}
+
+function getMasterActionTitle(action: MasterActionFunnelRow) {
+  const actionType = action.action_type || "";
+  const label = action.action_label || "";
+  const day = Number(action.journey_day || parseBibleYearDayFromLabel(label) || 0);
+  const task = getTaskTypeFromAction(action);
+  if (actionType === "bible_year_task_started") return task ? `Started ${task} task` : `Started Day ${day || ""} task`.trim();
+  if (actionType === "bible_in_one_year_reading_completed") return "Completed video / reading task";
+  if (actionType === "bible_in_one_year_trivia_completed") return "Completed trivia";
+  if (actionType === "bible_in_one_year_reflection_completed") return "Completed reflection";
+  if (actionType === "dashboard_tour_started") return "Started dashboard walkthrough";
+  if (actionType === "dashboard_tour_completed") return "Finished dashboard walkthrough";
+  if (actionType === "dashboard_tour_skipped") return "Skipped dashboard walkthrough";
+  if (actionType === "bible_year_day_start_popup_clicked") return "Clicked Start Day 1";
+  if (actionType === "follow_along_scripture_opened") return "Opened Follow Along in Scripture";
+  if (actionType === "free_account_popup_viewed") return "Saw free account popup";
+  if (actionType === "free_account_popup_skipped") return "Skipped free account popup";
+  if (actionType === "profile_creation_popup_completed") return "Completed profile popup";
+  if (actionType === "profile_creation_popup_skipped") return "Skipped profile popup";
+  if (actionType === "upgrade_popup_viewed") return "Saw upgrade popup";
+  if (actionType === "upgrade_popup_cta_clicked") return "Clicked upgrade button";
+  if (actionType === "upgrade_popup_dismissed") return "Dismissed upgrade popup";
+  if (actionType === "trial_popup_viewed") return "Saw trial popup";
+  if (actionType === "trial_started") return "Started trial";
+  if (actionType === "trial_canceled") return "Canceled trial";
+  if (actionType === "trial_converted") return "Converted after trial";
+  if (actionType === "user_signup") return "Created free account";
+  if (actionType === "user_upgraded") return "Converted to Pro";
+  if (actionType === "chapter_notes_viewed" || actionType === "study_notes_viewed") return "Opened study notes";
+  if (actionType === "study_notes_section_opened") return "Opened study note section";
+  if (actionType === "chapter_notes_reviewed") return "Completed notes task";
+  if (actionType === "scrambled_chapter_opened") return "Started scrambled";
+  if (actionType === "scrambled_chapter_completed") return "Completed scrambled";
+  return actionType ? actionType.replaceAll("_", " ") : "Tracked action";
+}
+
+function getMasterActionDetail(action: MasterActionFunnelRow) {
+  const label = action.action_label || "";
+  const day = Number(action.journey_day || parseBibleYearDayFromLabel(label) || 0);
+  const task = getTaskTypeFromAction(action);
+  const pieces = [
+    day ? `Day ${day}` : "",
+    task ? `Task: ${task}` : "",
+    label && !label.startsWith("BibleBuddy Funnel") ? label : "",
+  ].filter(Boolean);
+  return pieces.length ? pieces.join(" | ") : "Tracked in the master action log.";
+}
+
+function buildTimelineEvent(
+  base: Omit<VisitorJourneyTimelineEvent, "timeSinceFirstLabel" | "timeSincePreviousLabel">,
+  firstTime: number,
+  previousTime: number | null,
+): VisitorJourneyTimelineEvent {
+  const time = new Date(base.timestamp).getTime();
+  return {
+    ...base,
+    timeSinceFirstLabel: Number.isFinite(time) && Number.isFinite(firstTime) && time > firstTime ? `${formatDuration(time - firstTime)} after landing` : null,
+    timeSincePreviousLabel: previousTime && Number.isFinite(time) && time > previousTime ? formatTimelineDelta(time - previousTime) : null,
+  };
 }
 
 function getJourneyDisplaySource(row: LandingEventRow | undefined) {
@@ -901,6 +1160,7 @@ function buildVisitorJourneys(
   rows: LandingEventRow[],
   progressRows: BibleYearProgressRow[],
   taskActionRows: BibleYearTaskActionRow[],
+  masterRows: MasterActionFunnelRow[],
   upgradeRows: UpgradeActionRow[],
   profileByUserId: Map<string, string>,
   profileSummaryByUserId: Map<string, ProfileSummary>,
@@ -932,6 +1192,21 @@ function buildVisitorJourneys(
     const current = taskActionsByUser.get(row.user_id) || [];
     current.push(row);
     taskActionsByUser.set(row.user_id, current);
+  }
+
+  const masterActionsByUser = new Map<string, MasterActionFunnelRow[]>();
+  const masterActionsBySession = new Map<string, MasterActionFunnelRow[]>();
+  for (const row of masterRows) {
+    if (row.user_id) {
+      const current = masterActionsByUser.get(row.user_id) || [];
+      current.push(row);
+      masterActionsByUser.set(row.user_id, current);
+    }
+    if (row.session_id) {
+      const current = masterActionsBySession.get(row.session_id) || [];
+      current.push(row);
+      masterActionsBySession.set(row.session_id, current);
+    }
   }
 
   const upgradeByUser = new Map<string, UpgradeActionRow>();
@@ -1016,6 +1291,108 @@ function buildVisitorJourneys(
     const lastInfo = lastRow ? getLandingActivityInfo(lastRow) : null;
     const stepStatusLabel = getLandingStepStatusLabel(sessionRows, Boolean(onboardingCompletedAt));
     const guestNumber = guestNumberBySession.get(sessionId);
+    const relatedMasterRows = [
+      ...(masterActionsBySession.get(sessionId) || []),
+      ...(userId ? masterActionsByUser.get(userId) || [] : []),
+    ].filter((row, index, allRows) => {
+      const key = `${row.action_type || ""}-${row.action_label || ""}-${row.created_at || ""}`;
+      return allRows.findIndex((candidate) => `${candidate.action_type || ""}-${candidate.action_label || ""}-${candidate.created_at || ""}` === key) === index;
+    });
+    const rawTimeline = [
+      ...sessionRows.map((row, index) => {
+        const info = getLandingActivityInfo(row);
+        return {
+          id: `landing-${row.event_name || "event"}-${row.created_at || index}`,
+          title: info.title,
+          eventName: row.event_name || "",
+          category: row.event_name === "landing_page_visit" ? "landing" as const : "onboarding" as const,
+          status: info.category === "dropoff" ? "dropped" as const : "completed" as const,
+          timestamp: row.created_at || new Date().toISOString(),
+          detail: info.detail,
+          dayNumber: null,
+          taskType: null,
+        };
+      }),
+      ...relatedMasterRows
+        .filter((row) => ![
+          "landing_page_visited",
+          "landing_cta_clicked",
+          "onboarding_intro_viewed",
+          "onboarding_intro_started",
+          "onboarding_intro_skipped",
+          "onboarding_question_completed",
+          "onboarding_results_viewed",
+          "onboarding_journey_started",
+        ].includes(row.action_type || ""))
+        .map((row, index) => {
+          const actionType = row.action_type || "";
+          const dayNumber = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
+          const category = getMasterActionCategory(actionType);
+          const status: VisitorJourneyTimelineEvent["status"] =
+            actionType.includes("dismissed") || actionType.includes("skipped") ? "warning" : "completed";
+          return {
+            id: `master-${actionType}-${row.created_at || index}`,
+            title: getMasterActionTitle(row),
+            eventName: actionType,
+            category,
+            status,
+            timestamp: row.created_at || new Date().toISOString(),
+            detail: getMasterActionDetail(row),
+            dayNumber: dayNumber || null,
+            taskType: getTaskTypeFromAction(row),
+          };
+        }),
+      ...userProgressRows
+        .filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed)
+        .map((row) => ({
+          id: `progress-day-complete-${row.day_number}-${row.updated_at || row.user_id}`,
+          title: `Finished Day ${row.day_number}`,
+          eventName: "bible_year_day_completed",
+          category: "bible_year" as const,
+          status: "completed" as const,
+          timestamp: row.updated_at || new Date().toISOString(),
+          detail: "Reading, trivia, and reflection are complete.",
+          dayNumber: Number(row.day_number || 0) || null,
+          taskType: "day_complete",
+        })),
+    ].sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+    const timelineFirstTime = rawTimeline[0]?.timestamp ? new Date(rawTimeline[0].timestamp).getTime() : new Date(firstActiveAt).getTime();
+    let timelinePreviousTime: number | null = null;
+    const timeline = rawTimeline.map((event) => {
+      const built = buildTimelineEvent(event, timelineFirstTime, timelinePreviousTime);
+      const eventTime = new Date(event.timestamp).getTime();
+      if (Number.isFinite(eventTime)) timelinePreviousTime = eventTime;
+      return built;
+    });
+    const completedDayNumbers = userProgressRows
+      .filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed)
+      .map((row) => Number(row.day_number || 0))
+      .filter((day) => day > 0);
+    const startedDayNumbers = userProgressRows
+      .map((row) => Number(row.day_number || 0))
+      .filter((day) => day > 0);
+    const lastCompletedDay = completedDayNumbers.length ? Math.max(...completedDayNumbers) : null;
+    const currentDay = startedDayNumbers.length ? Math.max(...startedDayNumbers) : lastCompletedDay;
+    const trialActive = profile?.memberBadge === "pro_trial" || Boolean(profile?.proExpiresAt && new Date(profile.proExpiresAt).getTime() > Date.now());
+    const details: VisitorJourneyDetails = {
+      visitorId: onboardingCompletedAt && guestNumber ? `Bible Buddy Guest #${guestNumber}` : `Drop off ${shortId(sessionId)}`,
+      accountType,
+      trialStatus: trialActive ? "Active trial" : profile?.proExpiresAt ? "Trial expired" : "No trial",
+      badgeStatus: profile?.memberBadge || (profile?.isPaid ? "pro" : "none"),
+      deviceType: "Unknown",
+      country: "Unknown",
+      source: getJourneyDisplaySource(firstRow),
+      firstVisitAt: firstActiveAt,
+      totalTimeLabel: formatDuration(timeSpentMs),
+      daysActive: Math.max(1, Math.ceil(Math.max(0, new Date(lastActiveAt).getTime() - new Date(firstActiveAt).getTime()) / (24 * 60 * 60 * 1000))),
+      currentStudy: "Bible in One Year",
+      currentDay,
+      lastCompletedDay,
+      streak: profile?.currentStreak ?? null,
+      xp: profile?.totalActions ?? null,
+      level: profile?.currentLevel ?? null,
+      dropoffReason: status === "dropped_off" ? stepStatusLabel : "Still moving",
+    };
 
     return {
       id: sessionId,
@@ -1039,6 +1416,8 @@ function buildVisitorJourneys(
       timeSpentLabel: formatDuration(timeSpentMs),
       dropoffStep: lastInfo?.title || "Unknown",
       accountType,
+      timeline,
+      details,
     };
   }).sort((a, b) => new Date(b.lastActiveAt).getTime() - new Date(a.lastActiveAt).getTime());
 
@@ -1292,25 +1671,81 @@ export async function GET(request: Request) {
   const { data: bibleYearTaskActionData } = await adminSupabase
     .from("master_actions")
     .select("user_id, action_type, action_label, created_at")
-    .in("action_type", ["bible_in_one_year_reading_completed"])
+    .in("action_type", ["bible_in_one_year_reading_completed", "bible_year_task_started"])
     .gte("created_at", journeySinceIso)
-    .like("action_label", "Bible in One Year Day 1%")
     .order("created_at", { ascending: true })
     .limit(250000);
   const bibleYearTaskActionRows = (bibleYearTaskActionData || []) as BibleYearTaskActionRow[];
+
+  let masterFunnelRows: MasterActionFunnelRow[] = [];
+  const masterFunnelActionTypes = [
+    "landing_page_visited",
+    "landing_cta_clicked",
+    "onboarding_intro_viewed",
+    "onboarding_intro_started",
+    "onboarding_intro_skipped",
+    "onboarding_question_completed",
+    "onboarding_results_viewed",
+    "onboarding_journey_started",
+    "dashboard_tour_started",
+    "dashboard_tour_completed",
+    "dashboard_tour_skipped",
+    "bible_year_day_start_popup_viewed",
+    "bible_year_day_start_popup_clicked",
+    "bible_year_task_started",
+    "bible_year_task_completed",
+    "follow_along_scripture_opened",
+    "free_account_popup_viewed",
+    "free_account_popup_skipped",
+    "bible_in_one_year_day_viewed",
+    "bible_in_one_year_reading_completed",
+    "bible_in_one_year_trivia_completed",
+    "bible_in_one_year_reflection_completed",
+    "profile_creation_popup_completed",
+    "profile_creation_popup_skipped",
+    "upgrade_popup_viewed",
+    "upgrade_popup_cta_clicked",
+    "upgrade_popup_dismissed",
+    "trial_popup_viewed",
+    "trial_started",
+    "trial_canceled",
+    "trial_converted",
+    "user_signup",
+    "user_upgraded",
+  ];
+  const { data: masterFunnelData, error: masterFunnelError } = await adminSupabase
+    .from("master_actions")
+    .select("user_id, session_id, action_type, action_label, journey_day, account_status, event_metadata, created_at")
+    .in("action_type", masterFunnelActionTypes)
+    .gte("created_at", journeySinceIso)
+    .order("created_at", { ascending: false })
+    .limit(250000);
+  if (masterFunnelError) {
+    const { data: fallbackMasterFunnelData } = await adminSupabase
+      .from("master_actions")
+      .select("user_id, action_type, action_label, created_at")
+      .in("action_type", masterFunnelActionTypes)
+      .gte("created_at", journeySinceIso)
+      .order("created_at", { ascending: false })
+      .limit(250000);
+    masterFunnelRows = (fallbackMasterFunnelData || []) as MasterActionFunnelRow[];
+  } else {
+    masterFunnelRows = (masterFunnelData || []) as MasterActionFunnelRow[];
+  }
 
   const eventUserIds = Array.from(new Set([
     ...landingEventRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...upgradeRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...studyNotesActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...bibleYearTaskActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
+    ...masterFunnelRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
   ]));
   const profileByUserId = new Map<string, string>();
   const profileSummaryByUserId = new Map<string, ProfileSummary>();
   if (eventUserIds.length > 0) {
     const { data: profileRows } = await adminSupabase
       .from("profile_stats")
-      .select("user_id, display_name, username, is_paid, registered_at, converted_from_guest_at")
+      .select("user_id, display_name, username, is_paid, registered_at, converted_from_guest_at, current_streak, current_level, total_actions, member_badge, pro_expires_at")
       .in("user_id", eventUserIds);
 
     for (const profile of profileRows || []) {
@@ -1325,6 +1760,11 @@ export async function GET(request: Request) {
         isPaid: Boolean(profile.is_paid),
         registeredAt: typeof profile.registered_at === "string" ? profile.registered_at : null,
         convertedFromGuestAt: typeof profile.converted_from_guest_at === "string" ? profile.converted_from_guest_at : null,
+        currentStreak: typeof profile.current_streak === "number" ? profile.current_streak : null,
+        currentLevel: typeof profile.current_level === "number" ? profile.current_level : null,
+        totalActions: typeof profile.total_actions === "number" ? profile.total_actions : null,
+        memberBadge: typeof profile.member_badge === "string" ? profile.member_badge : null,
+        proExpiresAt: typeof profile.pro_expires_at === "string" ? profile.pro_expires_at : null,
       });
     }
   }
@@ -1360,6 +1800,7 @@ export async function GET(request: Request) {
 
   const bibleYearDays = buildBibleYearDayAnalytics(allBibleYearProgressRows, profileByUserId);
   const studyNotes = buildStudyNotesAnalytics(studyNotesActionRows, profileByUserId);
+  const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, allBibleYearProgressRows);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(validEventRows);
@@ -1374,6 +1815,7 @@ export async function GET(request: Request) {
     validLandingEventRows,
     bibleYearProgressRows,
     bibleYearTaskActionRows,
+    masterFunnelRows,
     upgradeRows,
     profileByUserId,
     profileSummaryByUserId,
@@ -1400,6 +1842,7 @@ export async function GET(request: Request) {
       guestAccountFunnel,
       landingActivityLog,
       visitorJourneys,
+      bibleBuddyFunnelStages,
       bibleYearDays,
       studyNotes,
       publicOnboardingFlow,
@@ -1432,6 +1875,7 @@ export async function GET(request: Request) {
     guestAccountFunnel,
     landingActivityLog,
     visitorJourneys,
+    bibleBuddyFunnelStages,
     bibleYearDays,
     studyNotes,
     publicOnboardingFlow,
