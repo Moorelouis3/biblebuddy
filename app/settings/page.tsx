@@ -768,18 +768,16 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
 
       setSettingsMessage(`${skin.name} is now your BibleBuddy theme.`);
     } catch (error: any) {
-      setSelectedPremiumSkin(previousSkin);
-      setSelectedPremiumSkinSelectedAt(previousSkinSelectedAt);
-      setSelectedFlame(previousFlame);
+      console.warn("[SETTINGS] Premium skin saved locally but could not sync yet:", error?.message || error);
+      setSelectedPremiumSkin(skinId);
+      setSelectedPremiumSkinSelectedAt(selectedAt);
       if (typeof window !== "undefined") {
-        cachePremiumSkinForUser(user.id, previousSkin);
-        persistActiveStreakFlame(previousFlame);
+        cachePremiumSkinForUser(user.id, skinId, { markSelected: true });
         applyAppThemeToDocument("light");
-        applyPremiumSkinToDocument(previousSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : previousSkin);
-        window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: previousSkin } }));
-        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: previousFlame } }));
+        applyPremiumSkinToDocument(skinId);
+        window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId } }));
       }
-      setSettingsMessage(error.message || "Could not update skin.");
+      setSettingsMessage(`${skin.name} is set on this device. If it changes back after reload, run the premium skin database migration.`);
     } finally {
       setSkinSaving(null);
     }

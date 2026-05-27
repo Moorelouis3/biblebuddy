@@ -55,7 +55,7 @@ export type PremiumSkin = {
 export const PREMIUM_SKIN_STORAGE_KEY = "bb:premium-skin";
 export const PREMIUM_SKIN_STORAGE_TIMESTAMP_KEY = "bb:premium-skin-updated-at";
 export const PREMIUM_SKIN_PENDING_SYNC_KEY = "bb:premium-skin-pending-sync";
-export const PREMIUM_SKIN_PENDING_SYNC_MS = 90 * 1000;
+export const PREMIUM_SKIN_PENDING_SYNC_MS = 7 * 24 * 60 * 60 * 1000;
 export const PREMIUM_SKIN_LOCK_MS = 24 * 60 * 60 * 1000;
 
 type BasicSkinInput = {
