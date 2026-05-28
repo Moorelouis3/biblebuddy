@@ -1084,10 +1084,10 @@ export default function LandingPage() {
               className="pointer-events-none absolute inset-0 hidden object-cover object-center sm:block"
             />
             <div className="relative z-10 max-w-[520px]">
-              <h1 className="bb-serif text-[2.15rem] font-black leading-[1.03] tracking-[-0.01em] text-[#07162f] sm:text-[clamp(2.05rem,3.5vw,3.45rem)]">
-                Finally read, understand, and <span className="italic text-[#135397]">finish</span> the Bible.
+              <h1 className="bb-serif text-center text-[2.15rem] font-black leading-[1.03] tracking-[-0.01em] text-[#07162f] sm:text-left sm:text-[clamp(2.05rem,3.5vw,3.45rem)]">
+                Finally read, understand, and <span className="italic text-[#135397]">finish</span> the <span className="text-[#135397]">Bible.</span>
               </h1>
-              <p className="mt-4 max-w-[520px] text-sm font-semibold leading-6 text-[#526075] sm:mt-7 sm:text-lg sm:leading-8">
+              <p className="mt-4 max-w-[520px] text-center text-sm font-semibold leading-6 text-[#526075] sm:mt-7 sm:text-left sm:text-lg sm:leading-8">
                 Bible Buddy is your daily guide through Scripture with cinematic audio lessons, simple daily steps, and clear explanations that help you stay consistent and finish the Bible in one year.
               </p>
               <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-7 sm:block sm:space-y-4">
@@ -1108,7 +1108,7 @@ export default function LandingPage() {
                   Start Your Bible Journey
                   <LandingLineIcon name="arrow" light />
                 </Link>
-                <p className="mt-3 flex items-center gap-2 text-xs font-semibold text-[#6d7789] sm:mt-4">
+                <p className="mt-3 flex items-center justify-center gap-2 text-xs font-semibold text-[#6d7789] sm:mt-4 sm:justify-start">
                   <LandingLineIcon name="lock" small />
                   <span>Free to get started. Cancel anytime.</span>
                 </p>

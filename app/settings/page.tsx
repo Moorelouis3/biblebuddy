@@ -5,7 +5,6 @@ import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import {
-  APP_THEMES,
   applyAppThemeToDocument,
   cacheAppThemeForUser,
   clearPendingAppThemeSync,
@@ -917,31 +916,39 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
 
         {/* Display Mode Section */}
         <div className="mb-6 rounded-xl bg-[var(--bb-card,#ffffff)] p-6 text-[var(--bb-text-primary,#111827)] shadow-sm">
-          <h2 className="mb-2 text-xl font-semibold">Display mode</h2>
-          <p className="mb-4 text-sm text-[var(--bb-text-secondary,#4b5563)]">
-            Choose the standard light or dark mode for Bible Buddy.
-          </p>
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h2 className="text-xl font-semibold">Dark mode</h2>
+              <p className="mt-1 text-sm text-[var(--bb-text-secondary,#4b5563)]">
+                Switch between standard light and dark mode.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            {APP_THEMES.map((theme) => (
-              <button
-                key={theme.id}
-                type="button"
-                onClick={() => void handleThemeSelect(theme.id)}
-                disabled={themeSaving === theme.id || selectedTheme === theme.id}
-                className={`rounded-2xl border px-4 py-4 text-left transition ${
-                  selectedTheme === theme.id
-                    ? "border-[var(--bb-accent,#2563eb)] bg-[var(--bb-accent-soft,#eaf5ff)] ring-2 ring-[var(--bb-accent,#2563eb)]/20"
-                    : "border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface,#ffffff)] hover:bg-[var(--bb-surface-soft,#eef4f8)]"
+            <button
+              type="button"
+              role="switch"
+              aria-checked={selectedTheme === "dark"}
+              onClick={() => void handleThemeSelect(selectedTheme === "dark" ? "light" : "dark")}
+              disabled={themeSaving !== null}
+              className={`relative h-8 w-14 shrink-0 rounded-full border transition ${
+                selectedTheme === "dark"
+                  ? "border-[var(--bb-accent,#5dd6ff)] bg-[var(--bb-accent,#5dd6ff)]"
+                  : "border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#eef4f8)]"
+              } disabled:cursor-wait disabled:opacity-60`}
+            >
+              <span
+                className={`absolute top-1 grid h-6 w-6 place-items-center rounded-full bg-white text-[11px] font-black shadow-sm transition ${
+                  selectedTheme === "dark" ? "left-7 text-[#06101d]" : "left-1 text-[#2f7fe8]"
                 }`}
+                aria-hidden="true"
               >
-                <span className="block text-sm font-black">{theme.name}</span>
-                <span className="mt-1 block text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-                  {themeSaving === theme.id ? "Saving..." : selectedTheme === theme.id ? "Active" : "Use mode"}
-                </span>
-              </button>
-            ))}
+                {selectedTheme === "dark" ? "D" : "L"}
+              </span>
+            </button>
           </div>
+          <p className="mt-3 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">
+            {themeSaving ? "Saving display mode..." : selectedTheme === "dark" ? "Dark mode is on." : "Light mode is on."}
+          </p>
         </div>
 
         {/* Bible Buddy Section */}

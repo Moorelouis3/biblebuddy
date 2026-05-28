@@ -117,9 +117,22 @@ const appThemeFirstPaintScript = `
     delete root.dataset.bbSkin;
     delete root.dataset.bbBasicSkin;
 
+    try {
+      Object.keys(window.localStorage).forEach(function (key) {
+        if (/skin|basic-skin|premium-skin/i.test(key)) {
+          window.localStorage.removeItem(key);
+        }
+      });
+    } catch (storageError) {}
+
     Object.keys(vars).forEach(function (key) {
       style.setProperty(vars[key], palette[key]);
     });
+    style.removeProperty("--bb-skin-bg-image");
+    style.removeProperty("--bb-skin-bg-image-mobile");
+    style.removeProperty("--bb-skin-bg-image-desktop");
+    style.removeProperty("--bb-skin-glow");
+    style.removeProperty("--bb-skin-warm-glow");
     style.setProperty("--bb-reader-bg", palette.card);
     style.setProperty("--bb-reader-surface", palette.surface);
     style.setProperty("--bb-reader-border", palette.cardBorder);

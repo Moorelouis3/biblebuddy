@@ -4787,3 +4787,77 @@ html:has(.bb-legal-public) body::after {
 .bb-safe-top-header button:hover {
   background-color: var(--bb-surface-soft) !important;
 }
+
+/* Theme reset: Bible Buddy now supports only standard light and dark mode.
+   Old premium skins can remain cached on a user's browser, so neutralize any
+   data-bb-skin styling and force the normal app palettes. */
+html[data-bb-skin],
+html[data-bb-basic-skin] {
+  --bb-skin-bg-image: none !important;
+  --bb-skin-bg-image-mobile: none !important;
+  --bb-skin-bg-image-desktop: none !important;
+  --bb-skin-glow: transparent !important;
+  --bb-skin-warm-glow: transparent !important;
+}
+
+html[data-bb-theme="dark"][data-bb-skin],
+html[data-bb-theme="dark"][data-bb-basic-skin] {
+  --bb-background: #07111F !important;
+  --bb-surface: #0D1826 !important;
+  --bb-surface-soft: #132234 !important;
+  --bb-card: #0F1C2B !important;
+  --bb-card-border: #23344A !important;
+  --bb-text-primary: #F8FAFC !important;
+  --bb-text-secondary: #CBD5E1 !important;
+  --bb-text-muted: #94A3B8 !important;
+  --bb-accent: #5DD6FF !important;
+  --bb-accent-soft: #123348 !important;
+  --bb-button: #5DD6FF !important;
+  --bb-button-text: #06101D !important;
+  --bb-nav-background: #0B1725 !important;
+  --bb-nav-active: #5DD6FF !important;
+  --bb-nav-inactive: #94A3B8 !important;
+  --bb-progress-track: #26364B !important;
+  --bb-progress-fill: #5DD6FF !important;
+}
+
+html[data-bb-theme="light"][data-bb-skin],
+html[data-bb-theme="light"][data-bb-basic-skin] {
+  --bb-background: #F7FAFC !important;
+  --bb-surface: #FFFFFF !important;
+  --bb-surface-soft: #EEF4F8 !important;
+  --bb-card: #FFFFFF !important;
+  --bb-card-border: #D8E3EC !important;
+  --bb-text-primary: #101827 !important;
+  --bb-text-secondary: #334155 !important;
+  --bb-text-muted: #64748B !important;
+  --bb-accent: #2F7FE8 !important;
+  --bb-accent-soft: #E6F1FF !important;
+  --bb-button: #2F7FE8 !important;
+  --bb-button-text: #FFFFFF !important;
+  --bb-nav-background: #FFFFFF !important;
+  --bb-nav-active: #2F7FE8 !important;
+  --bb-nav-inactive: #64748B !important;
+  --bb-progress-track: #D8E3EC !important;
+  --bb-progress-fill: #2F7FE8 !important;
+}
+
+html[data-bb-skin] body,
+html[data-bb-skin] main,
+html[data-bb-skin] header,
+html[data-bb-skin] .dashboard-shell,
+html[data-bb-basic-skin] body,
+html[data-bb-basic-skin] main,
+html[data-bb-basic-skin] header,
+html[data-bb-basic-skin] .dashboard-shell {
+  background-color: var(--bb-background) !important;
+  background-image: none !important;
+}
+
+html[data-bb-skin] body::before,
+html[data-bb-skin] body::after,
+html[data-bb-basic-skin] body::before,
+html[data-bb-basic-skin] body::after {
+  display: none !important;
+  content: none !important;
+}

@@ -4803,7 +4803,7 @@ export default function DashboardJourneyExperience({
                       onClick={() => setDashboardBibleSelectedChapter(chapterNumber)}
                       className={`aspect-square rounded-2xl border text-sm font-black transition ${
                         completed
-                          ? "border-emerald-300 bg-emerald-50 text-emerald-700"
+                          ? "border-sky-300 bg-sky-50 text-sky-700"
                           : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-[var(--bb-text-primary,#111827)] hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-card,#ffffff)]"
                       }`}
                       aria-label={`${dashboardBibleSelectedBook} chapter ${chapterNumber}${completed ? ", completed" : ""}`}
@@ -8572,6 +8572,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       ...alreadyCompleted,
       ...Object.fromEntries(cards.map((card) => [card, true])),
     };
+    const dayWasFullyComplete = getBibleYearRequiredCardKeys(day).every((card) => alreadyCompleted[card] === true);
     const dayWillBeFullyComplete = getBibleYearRequiredCardKeys(day).every((card) => nextCompletedForDay[card] === true);
     if (newlyCompletedCards.length > 0) {
       startBibleYearCompletionAnimation(day.dayNumber, newlyCompletedCards[0]);
@@ -8590,8 +8591,8 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (dayWillBeFullyComplete) {
       bibleYearJustCompletedDayRef.current = day.dayNumber;
       setSelectedBibleYearSeriesDay(day);
-      if (newlyCompletedCards.length > 0) {
-        setBibleYearOptionalDiscussionDay(day.dayNumber);
+      if (!dayWasFullyComplete && newlyCompletedCards.length > 0) {
+        setBibleYearCompletionModalDay(day);
       }
       setBibleYearCompletedTasksExpandedDay(null);
       setActiveBibleYearDayCard(null);
@@ -8989,7 +8990,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             disabled={videoComplete}
             className={`mt-4 flex w-full items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-center shadow-sm transition ${
               videoComplete
-                ? "cursor-default border-emerald-300 bg-emerald-100 text-emerald-900"
+                ? "cursor-default border-sky-300 bg-sky-100 text-sky-900"
                 : "border-[var(--bb-button,#2f7fe8)] bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
             }`}
           >
@@ -9061,8 +9062,8 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
             </section>
 
-            <section className="border-l-4 border-[var(--bb-success,#16a34a)] pl-4">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-success,#16a34a)]">Big Takeaway</p>
+            <section className="border-l-4 border-[var(--bb-success,var(--bb-accent,#7BAFD4))] pl-4">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-success,var(--bb-accent,#7BAFD4))]">Big Takeaway</p>
               <p className="mt-3 text-sm font-black leading-7 text-[var(--bb-text-primary,#111827)]">
                 {summaryContent.takeaway}
               </p>
@@ -9131,7 +9132,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             disabled={summaryComplete}
             className={`mt-4 flex w-full items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-center shadow-sm transition ${
               summaryComplete
-                ? "cursor-default border-emerald-300 bg-emerald-100 text-emerald-900"
+                ? "cursor-default border-sky-300 bg-sky-100 text-sky-900"
                 : "border-[var(--bb-button,#2f7fe8)] bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
             }`}
           >
@@ -9230,8 +9231,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </div>
                   ))
                 ) : (
-                  <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-3">
-                    <p className="text-sm font-black text-emerald-950">Perfect round. You remembered the lesson well.</p>
+                  <div className="rounded-2xl border border-sky-200 bg-sky-50 px-3 py-3">
+                    <p className="text-sm font-black text-sky-950">Perfect round. You remembered the lesson well.</p>
                   </div>
                 )}
               </div>
@@ -9275,7 +9276,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                         disabled={Boolean(selectedAnswer)}
                         className={`rounded-2xl border px-3 py-3 text-left text-sm font-bold transition ${
                           isCorrect
-                            ? "border-emerald-400 bg-emerald-100 text-emerald-950"
+                            ? "border-sky-400 bg-sky-100 text-sky-950"
                             : isWrongSelection
                               ? "border-rose-400 bg-rose-100 text-rose-950"
                             : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-secondary,#4b5563)] hover:border-[var(--bb-accent,#2f7fe8)]"
@@ -9288,7 +9289,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 </div>
                 {selectedAnswer ? (
                   <div className="mt-4 border-t border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_74%,transparent)] pt-4">
-                    <p className={`text-sm font-black ${selectedAnswerIsCorrect ? "text-emerald-700" : "text-rose-700"}`}>
+                    <p className={`text-sm font-black ${selectedAnswerIsCorrect ? "text-sky-700" : "text-rose-700"}`}>
                       {selectedAnswerIsCorrect ? "Correct" : "Not quite"}
                     </p>
                     <p className="mt-2 text-sm font-black text-[var(--bb-text-primary,#111827)]">
@@ -9386,129 +9387,43 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
-  function renderBibleYearReflectionReviewButton(day: GenesisBibleYearDay) {
-    const reflectionPosted = bibleYearReflectionPostedByDay[day.dayNumber] === true;
-    const discussionOpen = bibleYearOptionalDiscussionDay === day.dayNumber;
-
-    return (
-      <div className="rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-center shadow-sm">
-        <button
-          type="button"
-          onClick={() => setBibleYearOptionalDiscussionDay((current) => current === day.dayNumber ? null : day.dayNumber)}
-          className={
-            reflectionPosted
-              ? "w-full rounded-2xl border border-emerald-300 bg-emerald-500 px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-emerald-600"
-              : "w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
-          }
-          aria-expanded={discussionOpen}
-        >
-          {reflectionPosted ? "Reflection Posted" : `Join Day ${day.dayNumber} Discussion`}
-        </button>
-        <p className="mt-2 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-          Click to open the reflection section.
-        </p>
-        {discussionOpen ? renderBibleYearOptionalDiscussion(day) : null}
-      </div>
-    );
-  }
-
-  function renderBibleYearCompletedDayPanel(day: GenesisBibleYearDay) {
-    const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === day.dayNumber + 1);
-    const usesSimpleDailyFlow = true;
-    const reflectionPosted = bibleYearReflectionPostedByDay[day.dayNumber] === true;
-
-    return (
-      <div className="completion-panel-enter rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent)] p-5 text-center shadow-[0_16px_42px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] backdrop-blur">
-        <h2 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-          {usesSimpleDailyFlow ? `Great job! You completed Day ${day.dayNumber}.` : `Congrats, you finished Day ${day.dayNumber}!`}
-        </h2>
-        <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-          {usesSimpleDailyFlow ? "Your lesson is complete. You can keep studying here, or move to another day in the player." : `You completed the reading for ${day.title}.`}
-        </p>
-
-        {nextDay ? (
-          freeUserCanOpenBibleYearDayTasks(nextDay) ? (
-            <div className="mt-5 grid gap-3">
-              <button
-                type="button"
-                onClick={() => void handleContinueToNextBibleYearDay(day, nextDay)}
-                disabled={continuingBibleYearDay === day.dayNumber}
-                className="w-full rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
-              >
-                {continuingBibleYearDay === day.dayNumber ? "Saving..." : `Continue to Day ${nextDay.dayNumber}${usesSimpleDailyFlow ? "" : ` "${nextDay.title}"`}`}
-              </button>
-              {usesSimpleDailyFlow ? (
-                <button
-                  type="button"
-                  onClick={() => setBibleYearOptionalDiscussionDay((current) => current === day.dayNumber ? null : day.dayNumber)}
-                  className={
-                    reflectionPosted
-                      ? "w-full rounded-2xl border border-emerald-300 bg-emerald-500 px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-emerald-600"
-                      : "w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
-                  }
-                  aria-expanded={bibleYearOptionalDiscussionDay === day.dayNumber}
-                >
-                  {reflectionPosted ? "Reflection Posted" : `Join Day ${day.dayNumber} Discussion`}
-                </button>
-              ) : null}
-            </div>
-          ) : (
-            <div className="mt-5 space-y-3">
-              <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#6b7280)]">Day {nextDay.dayNumber} opens in</p>
-                <p className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#111827)]">{freePlanCountdown}</p>
-              </div>
-              <Link
-                href="/upgrade"
-                className="inline-flex w-full justify-center rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
-              >
-                Upgrade to Pro to skip ahead
-              </Link>
-            </div>
-          )
-        ) : (
-          <button
-            type="button"
-            onClick={openBibleYearSeriesDashboard}
-            className="mt-5 w-full rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
-          >
-            Back to Plan
-          </button>
-        )}
-        {usesSimpleDailyFlow && bibleYearOptionalDiscussionDay === day.dayNumber ? renderBibleYearOptionalDiscussion(day) : null}
-      </div>
-    );
-  }
-
   function renderBibleYearCompletionModal() {
     if (!bibleYearCompletionModalDay) return null;
 
     const day = bibleYearCompletionModalDay;
     const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === day.dayNumber + 1);
-    const continueLabel = nextDay ? `Continue to Day ${nextDay.dayNumber}` : "Finish Plan";
+    const chapterReference = formatBibleYearMediaReference(day);
 
     return (
       <ModalShell isOpen={true} onClose={() => setBibleYearCompletionModalDay(null)} backdropColor="bg-black/70" closeOnBackdrop={false}>
-        <div className="mx-4 w-full max-w-xl overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 shadow-2xl">
-          <div className="rounded-[22px] bg-[var(--bb-accent-soft,#eaf5ff)] px-5 py-6 text-center">
-            <div className="mx-auto mb-4 flex justify-center">
-              <LouisAvatar mood="stareyes" size={104} />
-            </div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Bible in One Year</p>
-            <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-              You finished Day {day.dayNumber}
+        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[28px] border border-[#26364a] bg-[#101a27] p-2 text-[#f8fafc] shadow-2xl">
+          <div className="rounded-[22px] bg-[linear-gradient(145deg,#132033,#0b1421)] px-5 py-6 text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#9CC9E6]">Bible in One Year</p>
+            <h2 className="mt-2 text-2xl font-black leading-tight text-white">
+              Congratulations, you finished Day {day.dayNumber}
             </h2>
-            <p className="mx-auto mt-3 max-w-md text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-              The audio lesson is complete. Press Continue when you are ready to move forward.
+            <p className="mx-auto mt-3 max-w-md text-sm font-semibold leading-6 text-[#c7d0dd]">
+              Including {chapterReference}. {nextDay ? `Are you ready to continue to Day ${nextDay.dayNumber}?` : "You finished the available journey days."}
             </p>
-            <button
-              type="button"
-              onClick={() => handleBibleYearCompletionModalContinue(day)}
-              disabled={continuingBibleYearDay === day.dayNumber}
-              className="mt-6 w-full rounded-2xl bg-[var(--bb-button,#2f7fe8)] px-5 py-4 text-base font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
-            >
-              {continuingBibleYearDay === day.dayNumber ? "Saving..." : continueLabel}
-            </button>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <button
+                type="button"
+                onClick={() => handleBibleYearCompletionModalContinue(day)}
+                disabled={continuingBibleYearDay === day.dayNumber}
+                className="rounded-[14px] bg-[#7BAFD4] px-5 py-3.5 text-sm font-black text-white shadow-[0_12px_24px_rgba(123,175,212,0.18)] transition hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+              >
+                {continuingBibleYearDay === day.dayNumber ? "Saving..." : nextDay ? "Yes, let's go" : "Back to Plan"}
+              </button>
+              {nextDay ? (
+                <button
+                  type="button"
+                  onClick={() => setBibleYearCompletionModalDay(null)}
+                  className="rounded-[14px] border border-[#26364a] bg-[#101c2b] px-5 py-3.5 text-sm font-black text-[#f8fafc] transition hover:bg-[#16263a]"
+                >
+                  No, not right now
+                </button>
+              ) : null}
+            </div>
           </div>
         </div>
       </ModalShell>
@@ -9527,7 +9442,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       <div
         className={`relative rounded-2xl border backdrop-blur ${
           dayFullyComplete
-            ? "bible-year-completed-tasks-celebrate overflow-visible border-emerald-400/70 bg-[linear-gradient(135deg,rgba(13,148,80,0.28),color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent))] shadow-[0_0_28px_rgba(16,185,129,0.28),0_18px_44px_rgba(0,0,0,0.24)]"
+            ? "bible-year-completed-tasks-celebrate overflow-visible border-sky-400/70 bg-[linear-gradient(135deg,rgba(123,175,212,0.28),color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent))] shadow-[0_0_28px_rgba(123,175,212,0.28),0_18px_44px_rgba(0,0,0,0.24)]"
             : "overflow-hidden border-[var(--bb-card-border,#b9dcf4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_82%,transparent)] shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_14%,transparent)]"
         } ${isReceivingTask ? "bible-year-completed-tasks-receive" : ""}`}
         style={dayFullyComplete && isExpanded ? { animation: "none" } : undefined}
@@ -9535,24 +9450,24 @@ Before we understand redemption, we need to understand what God made humanity fo
         {isReceivingTask ? (
           <div className="task-smoke pointer-events-none absolute left-1/2 top-1/2 z-30" aria-hidden="true">
             <span className="absolute h-8 w-8 rounded-full bg-white/55 [--smoke-x:-44px] [--smoke-y:-20px]" />
-            <span className="absolute h-7 w-7 rounded-full bg-emerald-100/50 [--smoke-x:38px] [--smoke-y:-24px]" />
+            <span className="absolute h-7 w-7 rounded-full bg-sky-100/50 [--smoke-x:38px] [--smoke-y:-24px]" />
             <span className="absolute h-6 w-6 rounded-full bg-white/45 [--smoke-x:-18px] [--smoke-y:32px]" />
-            <span className="absolute h-7 w-7 rounded-full bg-emerald-200/45 [--smoke-x:30px] [--smoke-y:30px]" />
+            <span className="absolute h-7 w-7 rounded-full bg-sky-200/45 [--smoke-x:30px] [--smoke-y:30px]" />
           </div>
         ) : null}
         {rewardToast ? (
-          <div className="bible-year-reward-pop pointer-events-none absolute -top-4 left-1/2 z-40 -translate-x-1/2 whitespace-nowrap rounded-full bg-emerald-300 px-4 py-2 text-xs font-black text-emerald-950 shadow-[0_0_28px_rgba(16,185,129,0.55)]">
+          <div className="bible-year-reward-pop pointer-events-none absolute -top-4 left-1/2 z-40 -translate-x-1/2 whitespace-nowrap rounded-full bg-sky-300 px-4 py-2 text-xs font-black text-sky-950 shadow-[0_0_28px_rgba(123,175,212,0.55)]">
             {rewardToast.text}
           </div>
         ) : null}
         {dayFullyComplete && !isExpanded ? (
           <>
             <div className="bible-year-completed-task-fireworks pointer-events-none absolute inset-0 z-0" aria-hidden="true">
-              <span className="absolute left-[8%] top-[18%] h-2 w-2 rounded-full bg-emerald-300 [--fx-x:-34px] [--fx-y:-28px] [--fx-r:120deg]" />
+              <span className="absolute left-[8%] top-[18%] h-2 w-2 rounded-full bg-sky-300 [--fx-x:-34px] [--fx-y:-28px] [--fx-r:120deg]" />
               <span className="absolute left-[16%] top-[74%] h-2 w-3 rounded-sm bg-amber-300 [--fx-x:-46px] [--fx-y:26px] [--fx-r:-160deg]" />
               <span className="absolute left-[50%] top-[-4%] h-2 w-2 rounded-full bg-lime-300 [--fx-x:4px] [--fx-y:-42px] [--fx-r:190deg]" />
               <span className="absolute right-[12%] top-[16%] h-2 w-3 rounded-sm bg-cyan-300 [--fx-x:42px] [--fx-y:-32px] [--fx-r:-120deg]" />
-              <span className="absolute right-[8%] top-[78%] h-3 w-2 rounded-sm bg-emerald-300 [--fx-x:48px] [--fx-y:28px] [--fx-r:170deg]" />
+              <span className="absolute right-[8%] top-[78%] h-3 w-2 rounded-sm bg-sky-300 [--fx-x:48px] [--fx-y:28px] [--fx-r:170deg]" />
               <span className="absolute left-[72%] top-[54%] h-2 w-2 rounded-full bg-yellow-300 [--fx-x:26px] [--fx-y:46px] [--fx-r:-210deg]" />
             </div>
             <div className="bible-year-completed-task-stars pointer-events-none absolute inset-y-0 left-0 right-0 z-20" aria-hidden="true">
@@ -9577,26 +9492,26 @@ Before we understand redemption, we need to understand what God made humanity fo
             setActiveBibleYearDayCard(null);
           }}
           className={`relative z-10 flex w-full items-center gap-3 px-4 py-3 text-left transition ${
-            dayFullyComplete ? "hover:bg-emerald-400/10" : "hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_46%,transparent)]"
+            dayFullyComplete ? "hover:bg-sky-400/10" : "hover:bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_46%,transparent)]"
           }`}
           aria-expanded={isExpanded}
         >
           <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl text-sm font-black ${
-            dayFullyComplete ? "bg-emerald-400 text-emerald-950 shadow-[0_0_18px_rgba(16,185,129,0.65)]" : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)]"
+            dayFullyComplete ? "bg-sky-400 text-sky-950 shadow-[0_0_18px_rgba(123,175,212,0.65)]" : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)]"
           }`} aria-hidden="true">
             {dayFullyComplete ? "✓" : completedTasksForDay.length}
           </span>
           <span className="min-w-0 flex-1">
-            <span className={`block truncate text-sm font-black ${dayFullyComplete ? "text-emerald-950 dark:text-emerald-100" : "text-[var(--bb-text-primary,#111827)]"}`}>
+            <span className={`block truncate text-sm font-black ${dayFullyComplete ? "text-sky-950 dark:text-sky-100" : "text-[var(--bb-text-primary,#111827)]"}`}>
               {dayFullyComplete ? `Day ${day.dayNumber} Complete` : "Completed Tasks"}
             </span>
-            <span className={`mt-0.5 block text-[11px] font-bold ${dayFullyComplete ? "text-emerald-900 dark:text-emerald-100/85" : "text-[var(--bb-text-secondary,#2f6685)]"}`}>
+            <span className={`mt-0.5 block text-[11px] font-bold ${dayFullyComplete ? "text-sky-900 dark:text-sky-100/85" : "text-[var(--bb-text-secondary,#2f6685)]"}`}>
               {dayFullyComplete ? "All tasks done" : `${completedTasksForDay.length} of ${requiredTasksCount} tasks done`}
             </span>
           </span>
           <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border transition ${
             dayFullyComplete
-              ? `border-emerald-300 text-emerald-950 ${isExpanded ? "rotate-180 bg-emerald-300" : "bg-emerald-200/80"}`
+              ? `border-sky-300 text-sky-950 ${isExpanded ? "rotate-180 bg-sky-300" : "bg-sky-200/80"}`
               : `border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)] text-[var(--bb-accent,#2f7fe8)] ${isExpanded ? "rotate-180 bg-[var(--bb-accent-soft,#eaf5ff)]" : "bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)]"}`
           }`} aria-hidden="true">
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
@@ -9605,7 +9520,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </span>
         </button>
         {isExpanded ? (
-        <div className={`relative z-10 grid gap-2 border-t px-3 pb-3 pt-3 ${dayFullyComplete ? "border-emerald-300/50" : "border-[var(--bb-card-border,#b9dcf4)]"}`}>
+        <div className={`relative z-10 grid gap-2 border-t px-3 pb-3 pt-3 ${dayFullyComplete ? "border-sky-300/50" : "border-[var(--bb-card-border,#b9dcf4)]"}`}>
           {completedTasksForDay.length === 0 ? (
             <div className="rounded-xl border border-[color-mix(in_srgb,var(--bb-card-border,#b9dcf4)_70%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_45%,transparent)] px-3 py-3">
               <p className="text-xs font-black text-[var(--bb-text-primary,#1f2937)]">0 completed yet</p>
@@ -10226,7 +10141,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </h2>
               <p className="mt-1 text-[13px] font-semibold text-[#b8c3d2]">{readingSummary}</p>
             </div>
-            <span className={`rounded-full border px-3 py-1.5 text-[12px] font-bold ${readingComplete ? "border-[#10c989]/45 bg-[#10c989]/12 text-[#20e6a0]" : "border-[#2b3c52] bg-[#121e2d] text-[#d7e2ef]"}`}>
+            <span className={`rounded-full border px-3 py-1.5 text-[12px] font-bold ${readingComplete ? "border-[#7BAFD4]/45 bg-[#7BAFD4]/12 text-[#9CC9E6]" : "border-[#2b3c52] bg-[#121e2d] text-[#d7e2ef]"}`}>
               {readingComplete ? "Complete" : "In Progress"}
             </span>
           </div>
@@ -10283,10 +10198,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                 markBibleYearDayCardComplete(day, "reading");
               }}
               disabled={readingComplete}
-              className={`rounded-[14px] px-5 py-3.5 text-[13px] font-bold shadow-[0_10px_24px_rgba(16,201,137,0.10)] transition ${
+              className={`rounded-[14px] px-5 py-3.5 text-[13px] font-bold shadow-[0_10px_24px_rgba(123,175,212,0.10)] transition ${
                 readingComplete
-                  ? "cursor-default border border-[#10c989]/50 bg-[#10c989]/18 text-[#20e6a0]"
-                  : "bg-[#10c989] text-white hover:brightness-105"
+                  ? "cursor-default border border-[#7BAFD4]/50 bg-[#7BAFD4]/18 text-[#9CC9E6]"
+                  : "bg-[#7BAFD4] text-white hover:brightness-105"
               }`}
             >
               {readingComplete ? "Lesson Complete" : "Mark as Complete"}
@@ -10313,9 +10228,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             </button>
           </div>
           {followAlongOpen ? renderBibleYearFollowAlongScripturePanel(day) : null}
-          {readingComplete && bibleYearJustCompletedDayRef.current === day.dayNumber ? (
-            <div className="mt-4">{renderBibleYearCompletedDayPanel(day)}</div>
-          ) : null}
         </article>
 
         {renderDashboardSectionIntro(
@@ -10345,7 +10257,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <p className="mt-1 text-[13px] font-medium leading-5 text-[#b8c3d2]">{item.body}</p>
                     </div>
                   </div>
-                  <span className={`justify-self-end text-xl font-black text-[#9aa7ba] transition ${expanded ? "rotate-90 text-[#20e6a0]" : ""}`} aria-hidden="true">
+                  <span className={`justify-self-end text-xl font-black text-[#9aa7ba] transition ${expanded ? "rotate-90 text-[#9CC9E6]" : ""}`} aria-hidden="true">
                     ›
                   </span>
                 </button>
@@ -10379,7 +10291,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   return (
                     <div key={milestone.dayNumber} className="relative px-1 text-center">
                       {index > 0 ? (
-                        <span className={`absolute left-[-50%] top-[45px] h-[2px] w-full ${isComplete ? "bg-emerald-400/80" : isCurrent ? "bg-[var(--bb-accent,#2f7fe8)]" : "bg-[var(--bb-card-border,#dbe7f4)]/75"}`} aria-hidden="true" />
+                        <span className={`absolute left-[-50%] top-[45px] h-[2px] w-full ${isComplete ? "bg-sky-400/80" : isCurrent ? "bg-[var(--bb-accent,#2f7fe8)]" : "bg-[var(--bb-card-border,#dbe7f4)]/75"}`} aria-hidden="true" />
                       ) : null}
                       <button
                         type="button"
@@ -10387,7 +10299,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                         disabled={!milestoneDay}
                         className={`relative z-10 mx-auto grid h-[82px] w-[62px] overflow-visible rounded-[15px] border bg-[var(--bb-card,#ffffff)] p-1 shadow-sm transition ${
                           isComplete
-                            ? "border-[#10c989] shadow-[0_0_14px_rgba(16,201,137,0.20)] ring-1 ring-[#10c989]/25"
+                            ? "border-[#7BAFD4] shadow-[0_0_14px_rgba(123,175,212,0.20)] ring-1 ring-[#7BAFD4]/25"
                             : isCurrent
                               ? "bible-year-current-cover border-[var(--bb-accent,#2f7fe8)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)] ring-2 ring-[color-mix(in_srgb,var(--bb-accent)_22%,transparent)]"
                               : isLocked
@@ -10400,12 +10312,12 @@ Before we understand redemption, we need to understand what God made humanity fo
                           <img src={milestoneCover} alt="" loading="lazy" decoding="async" className={`h-full w-full object-cover transition duration-300 ${isLocked ? "grayscale contrast-75 brightness-70 opacity-65" : "brightness-105"}`} />
                           {isLocked ? <span className="absolute inset-0 bg-black/24" aria-hidden="true" /> : null}
                         </span>
-                        <span className={`absolute -right-2 -top-2 z-20 grid h-6 w-6 place-items-center rounded-full text-[11px] font-black shadow-[0_6px_14px_rgba(0,0,0,0.22)] ${isComplete ? "bg-emerald-500 text-white" : isCurrent ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : "border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-muted,#6b7280)]"}`} aria-hidden="true">
+                        <span className={`absolute -right-2 -top-2 z-20 grid h-6 w-6 place-items-center rounded-full text-[11px] font-black shadow-[0_6px_14px_rgba(0,0,0,0.22)] ${isComplete ? "bg-sky-500 text-white" : isCurrent ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : "border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-muted,#6b7280)]"}`} aria-hidden="true">
                           {isComplete ? "✓" : isCurrent ? "•" : "🔒"}
                         </span>
                       </button>
                       <p className="mt-2 truncate text-[11px] font-bold leading-tight text-white">Day {milestone.dayNumber}</p>
-                      <p className={`mt-0.5 text-[10px] font-semibold leading-tight ${isComplete ? "text-[#20e6a0]" : isCurrent ? "text-[#20e6a0]" : "text-[#9aa7ba]"}`}>
+                      <p className={`mt-0.5 text-[10px] font-semibold leading-tight ${isComplete ? "text-[#9CC9E6]" : isCurrent ? "text-[#9CC9E6]" : "text-[#9aa7ba]"}`}>
                         {isComplete ? "Complete" : isCurrent ? "Current" : "Locked"}
                       </p>
                     </div>
@@ -10443,7 +10355,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div
           className={`dashboard-current-study-card bb-skin-glow-card hidden relative rounded-[24px] border p-3 pr-12 backdrop-blur-xl ${
             dashboardAllDone
-              ? "overflow-visible border-emerald-300 bg-[linear-gradient(135deg,rgba(5,150,105,0.58),rgba(6,78,59,0.56)),color-mix(in_srgb,var(--bb-card,#ffffff)_48%,transparent)] shadow-[0_0_0_2px_rgba(16,185,129,0.50),0_0_38px_rgba(16,185,129,0.55),0_20px_52px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(167,243,208,0.30)]"
+              ? "overflow-visible border-sky-300 bg-[linear-gradient(135deg,rgba(123,175,212,0.58),rgba(47,102,133,0.56)),color-mix(in_srgb,var(--bb-card,#ffffff)_48%,transparent)] shadow-[0_0_0_2px_rgba(123,175,212,0.50),0_0_38px_rgba(123,175,212,0.55),0_20px_52px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(210,232,247,0.30)]"
               : "border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_72%,transparent)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent)] shadow-[0_12px_30px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,transparent)]"
           }`}
         >
@@ -10494,7 +10406,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="relative z-10 flex items-center gap-3">
             <div className={`h-24 w-20 shrink-0 overflow-hidden rounded-2xl border p-1 shadow-[0_10px_24px_rgba(0,0,0,0.18)] ${
               dashboardAllDone
-                ? "border-emerald-300/70 bg-emerald-950/30 shadow-[0_0_18px_rgba(16,185,129,0.34)]"
+                ? "border-sky-300/70 bg-sky-950/30 shadow-[0_0_18px_rgba(123,175,212,0.34)]"
                 : "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)] bg-[var(--bb-surface-soft,#f8fbff)]"
             }`}>
               {cover ? (
@@ -10504,11 +10416,11 @@ Before we understand redemption, we need to understand what God made humanity fo
               )}
             </div>
             <div className="min-w-0 flex-1">
-              <p className={`text-[10px] font-black uppercase tracking-[0.16em] ${dashboardAllDone ? "text-emerald-300" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
+              <p className={`text-[10px] font-black uppercase tracking-[0.16em] ${dashboardAllDone ? "text-sky-300" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
                 Day {day.dayNumber}{dashboardAllDone ? " Complete" : ""}
               </p>
-              <h2 className={`mt-1 text-xl font-black leading-tight sm:text-2xl ${dashboardAllDone ? "text-emerald-50" : "text-[var(--bb-text-primary,#111827)]"}`}>{day.title}</h2>
-              <p className={`mt-1 text-xs font-semibold leading-5 ${dashboardAllDone ? "text-emerald-100/90" : "text-[var(--bb-text-secondary,#4b5563)]"}`}>
+              <h2 className={`mt-1 text-xl font-black leading-tight sm:text-2xl ${dashboardAllDone ? "text-sky-50" : "text-[var(--bb-text-primary,#111827)]"}`}>{day.title}</h2>
+              <p className={`mt-1 text-xs font-semibold leading-5 ${dashboardAllDone ? "text-sky-100/90" : "text-[var(--bb-text-secondary,#4b5563)]"}`}>
                 Study {readingSummary} with scripture, teaching, trivia, and reflection.
               </p>
             </div>
@@ -10516,8 +10428,6 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
 
         <div className="grid gap-3 pb-1 sm:pb-0">
-          {dashboardAllDone && bibleYearJustCompletedDayRef.current === day.dayNumber ? renderBibleYearCompletedDayPanel(day) : null}
-          {dashboardAllDone && bibleYearJustCompletedDayRef.current !== day.dayNumber ? renderBibleYearReflectionReviewButton(day) : null}
           {activeTasksToRender.length ? (
             <div className="grid gap-3">
               {renderDashboardTaskCards(activeTasksToRender)}
@@ -10850,7 +10760,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     }}
                     className={`w-full overflow-hidden rounded-[24px] border text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(0,0,0,0.16)] ${
                       isComplete
-                        ? "border-emerald-300 bg-emerald-50"
+                        ? "border-sky-300 bg-sky-50"
                         : isCurrent
                         ? "border-[var(--bb-accent,#2f7fe8)] bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_64%,var(--bb-card,#ffffff))]"
                         : isLocked
@@ -10871,7 +10781,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                           <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-accent,#2f7fe8)]">
                             Day {day.dayNumber}
                           </span>
-                          <span className={`shrink-0 text-[11px] font-black ${isComplete ? "text-emerald-600" : "text-[var(--bb-text-muted,#6b7280)]"}`}>
+                          <span className={`shrink-0 text-[11px] font-black ${isComplete ? "text-sky-600" : "text-[var(--bb-text-muted,#6b7280)]"}`}>
                             {seriesStatusLabel}
                           </span>
                         </div>
@@ -10942,14 +10852,14 @@ Before we understand redemption, we need to understand what God made humanity fo
                 disabled={readingCardComplete}
                 className={`w-full rounded-[24px] border px-4 py-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] transition ${
                   readingCardComplete
-                    ? "cursor-default border-emerald-300 bg-emerald-50 text-emerald-950"
+                    ? "cursor-default border-sky-300 bg-sky-50 text-sky-950"
                     : "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(135deg,var(--bb-accent-soft,#eaf5ff),var(--bb-card,#ffffff))] text-[var(--bb-text-primary,#111827)] hover:scale-[1.01] hover:brightness-[1.02]"
                 }`}
               >
                 <span className="contents">
                   <span className={`hidden ${
                     readingCardComplete
-                      ? "bg-emerald-400 text-emerald-950"
+                      ? "bg-sky-400 text-sky-950"
                       : "bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)]"
                   }`} aria-hidden="true">
                     ✓
@@ -11027,7 +10937,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               disabled={readingCardComplete}
               className={`w-full rounded-2xl px-4 py-3 text-sm font-black shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition ${
                 readingCardComplete
-                  ? "cursor-default border border-[color-mix(in_srgb,var(--bb-success,#16a34a)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-success,#16a34a)_20%,var(--bb-card,#ffffff))] text-[var(--bb-success,#16a34a)]"
+                  ? "cursor-default border border-[color-mix(in_srgb,var(--bb-success,var(--bb-accent,#7BAFD4))_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-success,var(--bb-accent,#7BAFD4))_20%,var(--bb-card,#ffffff))] text-[var(--bb-success,var(--bb-accent,#7BAFD4))]"
                   : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
               }`}
             >
@@ -11070,7 +10980,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               disabled={readingCardComplete}
               className={`rounded-full px-6 py-3 text-sm font-black shadow-sm transition ${
                 readingCardComplete
-                  ? "cursor-default border border-[color-mix(in_srgb,var(--bb-success,#16a34a)_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-success,#16a34a)_20%,var(--bb-card,#ffffff))] text-[var(--bb-success,#16a34a)]"
+                  ? "cursor-default border border-[color-mix(in_srgb,var(--bb-success,var(--bb-accent,#7BAFD4))_34%,transparent)] bg-[color-mix(in_srgb,var(--bb-success,var(--bb-accent,#7BAFD4))_20%,var(--bb-card,#ffffff))] text-[var(--bb-success,var(--bb-accent,#7BAFD4))]"
                   : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
               }`}
             >
@@ -11671,14 +11581,14 @@ Before we understand redemption, we need to understand what God made humanity fo
                 disabled={readingCardComplete}
                 className={`mt-3 flex w-full items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-center shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),0_18px_38px_rgba(0,0,0,0.28)] transition ${
                   readingCardComplete
-                    ? "cursor-default border-emerald-400/70 bg-emerald-400 text-emerald-950"
+                    ? "cursor-default border-sky-400/70 bg-sky-400 text-sky-950"
                     : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_70%,transparent)] bg-[var(--bb-accent,#f6b44b)] text-black hover:scale-[1.01] hover:brightness-105"
                 }`}
               >
                 <span className="contents">
                   <span className={`hidden ${
                     readingCardComplete
-                      ? "bg-emerald-400 text-emerald-950"
+                      ? "bg-sky-400 text-sky-950"
                       : "bg-[var(--bb-accent,#f6b44b)] text-black"
                   }`} aria-hidden="true">
                     ✓
@@ -11721,7 +11631,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 disabled={readingCardComplete}
                 className={`mt-3 flex w-full items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-center shadow-[0_0_30px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),0_18px_38px_rgba(0,0,0,0.28)] transition ${
                   readingCardComplete
-                    ? "cursor-default border-emerald-400/70 bg-emerald-400 text-emerald-950"
+                    ? "cursor-default border-sky-400/70 bg-sky-400 text-sky-950"
                     : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_70%,transparent)] bg-[var(--bb-accent,#f6b44b)] text-black hover:scale-[1.01] hover:brightness-105"
                 }`}
               >
@@ -13286,7 +13196,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                   <span
                                     className={`absolute left-[-50%] top-[45px] h-[2px] w-full ${
                                       isComplete
-                                        ? "bg-emerald-400/80"
+                                        ? "bg-sky-400/80"
                                         : isCurrent
                                           ? "bg-[var(--bb-accent,#2f7fe8)]"
                                         : "bg-[var(--bb-card-border,#dbe7f4)]/75"
@@ -13308,7 +13218,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                     isSelectedDetail
                                       ? "border-[var(--bb-accent,#2f7fe8)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),0_0_28px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,transparent)] ring-2 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,transparent)]"
                                       : isComplete
-                                      ? "border-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.42)] ring-2 ring-emerald-300/25"
+                                      ? "border-sky-300 shadow-[0_0_20px_rgba(123,175,212,0.42)] ring-2 ring-sky-300/25"
                                       : isCurrent
                                         ? "bible-year-current-cover border-[var(--bb-accent,#2f7fe8)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)] ring-2 ring-[color-mix(in_srgb,var(--bb-accent)_22%,transparent)]"
                                         : isUnlocked
@@ -13332,7 +13242,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                   <span
                                     className={`absolute -right-2 -top-2 z-20 grid h-6 w-6 place-items-center rounded-full text-[11px] font-black shadow-[0_6px_14px_rgba(0,0,0,0.22)] ${
                                       isComplete
-                                        ? "bg-emerald-500 text-white shadow-[0_0_0_2px_rgba(6,78,59,0.95),0_0_18px_rgba(16,185,129,0.75)]"
+                                        ? "bg-sky-500 text-white shadow-[0_0_0_2px_rgba(47,102,133,0.95),0_0_18px_rgba(123,175,212,0.75)]"
                                         : isCurrent
                                           ? "border border-[var(--bb-card,#ffffff)] bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)]"
                                           : "border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-muted,#6b7280)]"
@@ -13345,7 +13255,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                 <p className="mt-2 truncate text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">{milestoneDayLabel}</p>
                                 <p className={`mt-0.5 text-[10px] font-bold leading-tight ${
                                   isComplete
-                                    ? "text-emerald-500"
+                                    ? "text-sky-500"
                                     : isCurrent
                                       ? "text-[var(--bb-accent,#2f7fe8)]"
                                       : "text-[var(--bb-text-muted,#6b7280)]"
@@ -13743,12 +13653,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                 renderBibleYearDashboardStudyArea(activeBibleYearDashboardDay, displayTasks)
               ) : !bibleYearDashboardActive ? (
                 <>
-              {selectedBibleYearSeriesDay && dashboardAllDone && bibleYearJustCompletedDayRef.current === selectedBibleYearSeriesDay.dayNumber ? (
-                renderBibleYearCompletedDayPanel(selectedBibleYearSeriesDay)
-              ) : null}
-              {selectedBibleYearSeriesDay && dashboardAllDone && bibleYearJustCompletedDayRef.current !== selectedBibleYearSeriesDay.dayNumber ? (
-                renderBibleYearReflectionReviewButton(selectedBibleYearSeriesDay)
-              ) : null}
               {displayTasks.map((task, index) => {
                 const originalTaskIndex = displayTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
                 const bibleYearTaskCard = selectedBibleYearSeriesDay ? getBibleYearDayTaskKey(task) : null;

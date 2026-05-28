@@ -187,6 +187,15 @@ export function applyAppThemeToDocument(themeId: AppThemeId) {
   root.dataset.bbTheme = theme.id;
   delete root.dataset.bbSkin;
   delete root.dataset.bbBasicSkin;
+  if (typeof window !== "undefined") {
+    try {
+      Object.keys(window.localStorage).forEach((key) => {
+        if (/skin|basic-skin|premium-skin/i.test(key)) {
+          window.localStorage.removeItem(key);
+        }
+      });
+    } catch {}
+  }
 
   const variableMap: Record<keyof AppThemeTokens, string> = {
     background: "--bb-background",

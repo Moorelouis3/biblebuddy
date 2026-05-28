@@ -230,6 +230,36 @@ type AnalyticsResponse = {
   error?: string;
 };
 
+type StripeRecentPayment = {
+  id: string;
+  amount: string;
+  amountCents: number;
+  currency: string;
+  createdAt: string;
+  customerEmail: string;
+  customerName: string | null;
+  plan: string;
+  status: string;
+  receiptUrl: string | null;
+};
+
+type StripeRevenueSummary = {
+  currency: string;
+  mrrCents: number;
+  mrr: string;
+  activeSubscriptions: number;
+  monthlySubscriptions: number;
+  trialingSubscriptions: number;
+  totalSubscriptionsTracked: number;
+  revenue30dCents: number;
+  revenue30d: string;
+  oneTime30dCents: number;
+  oneTime30d: string;
+  recentPayments: StripeRecentPayment[];
+  updatedAt: string;
+  error?: string;
+};
+
 const ANALYTICS_NAV_ITEMS: Array<{ key: AnalyticsView; label: string; helper: string }> = [
   { key: "overview", label: "Overview", helper: "Journey Tracker" },
   { key: "bible-year", label: "Bible in One Year", helper: "Day breakdowns" },
@@ -658,6 +688,132 @@ function AudioOverviewMetricCard({
       <p className="mt-2 text-3xl font-black leading-none text-white">{formatNumber(value)}</p>
       <p className="mt-2 text-sm font-semibold leading-5 text-slate-400">{helper}</p>
     </div>
+  );
+}
+
+function StripeRevenueSection({
+  revenue,
+  loading,
+  error,
+}: {
+  revenue: StripeRevenueSummary | null;
+  loading: boolean;
+  error: string | null;
+}) {
+  const cards = revenue
+    ? [
+        {
+          label: "MRR",
+          value: revenue.mrr,
+          helper: "Live monthly recurring revenue from active Stripe subscriptions.",
+          icon: "pro" as const,
+        },
+        {
+          label: "Monthly Subs",
+          value: formatNumber(revenue.monthlySubscriptions),
+          helper: `${formatNumber(revenue.activeSubscriptions)} active paid subscriptions total.`,
+          icon: "user" as const,
+        },
+        {
+          label: "30-Day Revenue",
+          value: revenue.revenue30d,
+          helper: "Captured Stripe payments in the last 30 days.",
+          icon: "spark" as const,
+        },
+        {
+          label: "Lifetime / One-Time",
+          value: revenue.oneTime30d,
+          helper: "One-time payments captured in the last 30 days.",
+          icon: "check" as const,
+        },
+      ]
+    : [];
+
+  return (
+    <section className="rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(96,165,250,0.14),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Stripe Revenue</p>
+          <h2 className="mt-2 text-2xl font-black text-white">Money coming in</h2>
+          <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-400">
+            Live Stripe numbers for MRR, monthly subscriptions, one-time payments, and recent successful charges.
+          </p>
+        </div>
+        <div className="rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-black text-slate-300">
+          {revenue?.updatedAt ? `Updated ${formatDateTime(revenue.updatedAt)}` : "Live from Stripe"}
+        </div>
+      </div>
+
+      {loading ? (
+        <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.045] p-5 text-sm font-bold text-slate-300">
+          Loading Stripe revenue...
+        </div>
+      ) : error ? (
+        <div className="mt-5 rounded-xl border border-amber-300/35 bg-amber-400/10 p-5 text-sm font-bold leading-6 text-amber-100">
+          {error}
+        </div>
+      ) : revenue ? (
+        <>
+          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {cards.map((card) => (
+              <div key={card.label} className="rounded-xl border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_46px_rgba(0,0,0,0.2)]">
+                <div className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.06] text-cyan-200">
+                  <Icon name={card.icon} />
+                </div>
+                <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-slate-400">{card.label}</p>
+                <p className="mt-2 text-3xl font-black leading-none text-white">{card.value}</p>
+                <p className="mt-2 text-sm font-semibold leading-5 text-slate-400">{card.helper}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-xl border border-white/10 bg-slate-950/35">
+            <div className="flex flex-col gap-2 border-b border-white/10 p-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-200">Recent Payments</p>
+                <p className="mt-1 text-sm font-semibold text-slate-400">Newest successful Stripe charges.</p>
+              </div>
+              <p className="text-xs font-bold text-slate-500">
+                {formatNumber(revenue.trialingSubscriptions)} trialing subscriptions
+              </p>
+            </div>
+            <div className="divide-y divide-white/10">
+              {revenue.recentPayments.length ? revenue.recentPayments.map((payment) => (
+                <div key={payment.id} className="grid gap-3 p-4 text-sm sm:grid-cols-[1.1fr_0.8fr_0.5fr_0.6fr] sm:items-center">
+                  <div className="min-w-0">
+                    <p className="truncate font-black text-white">{payment.customerName || payment.customerEmail}</p>
+                    <p className="mt-1 truncate text-xs font-semibold text-slate-500">{payment.customerEmail}</p>
+                  </div>
+                  <div>
+                    <p className="font-black text-cyan-100">{payment.amount}</p>
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">{payment.plan}</p>
+                  </div>
+                  <p className="font-semibold text-slate-400">{formatDateTime(payment.createdAt)}</p>
+                  {payment.receiptUrl ? (
+                    <a
+                      href={payment.receiptUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex justify-start font-black text-cyan-200 underline-offset-4 hover:underline sm:justify-end"
+                    >
+                      Receipt
+                    </a>
+                  ) : (
+                    <span className="font-semibold text-slate-600 sm:text-right">No receipt</span>
+                  )}
+                </div>
+              )) : (
+                <div className="p-5 text-sm font-bold text-slate-400">No successful payments found yet.</div>
+              )}
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.045] p-5 text-sm font-bold text-slate-300">
+          Stripe revenue has not loaded yet.
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -1387,6 +1543,9 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   const [data, setData] = useState<AnalyticsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [stripeRevenue, setStripeRevenue] = useState<StripeRevenueSummary | null>(null);
+  const [stripeRevenueLoading, setStripeRevenueLoading] = useState(false);
+  const [stripeRevenueError, setStripeRevenueError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [sourceFilter, setSourceFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState<VisitorJourneyStatus | "all">("all");
@@ -1435,6 +1594,31 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
     }
     void loadAnalytics();
   }, [authChecked, isOwner, windowKey]);
+
+  useEffect(() => {
+    if (!authChecked || !isOwner) return;
+    async function loadStripeRevenue() {
+      setStripeRevenueLoading(true);
+      setStripeRevenueError(null);
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const token = sessionData.session?.access_token;
+        if (!token) throw new Error("Owner session expired. Please sign in again.");
+        const response = await fetch("/api/admin/stripe-revenue", {
+          cache: "no-store",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const json = (await response.json()) as StripeRevenueSummary;
+        if (!response.ok) throw new Error(json.error || "Could not load Stripe revenue.");
+        setStripeRevenue(json);
+      } catch (loadError) {
+        setStripeRevenueError(loadError instanceof Error ? loadError.message : "Could not load Stripe revenue.");
+      } finally {
+        setStripeRevenueLoading(false);
+      }
+    }
+    void loadStripeRevenue();
+  }, [authChecked, isOwner]);
 
   const journeys = data?.visitorJourneys;
   const rows = journeys?.rows || [];
@@ -1659,6 +1843,12 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                 />
               </div>
             </div>
+
+            <StripeRevenueSection
+              revenue={stripeRevenue}
+              loading={stripeRevenueLoading}
+              error={stripeRevenueError}
+            />
 
             <section>
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
