@@ -86,10 +86,39 @@ export function getDeepStudyInterestDailyPrefix(payload: DeepStudyInterestPayloa
   ].join("|");
 }
 
-export function parseDeepStudyInterestLabel(label: string | null | undefined): ParsedDeepStudyInterest | null {
-  if (!label?.startsWith("deep_study_interest:v1|")) return null;
+function getBibleYearDayLabel(payload: DeepStudyInterestPayload) {
+  const dayMatch = String(payload.itemKey || payload.itemTitle || payload.contentLabel || "").match(/day[-\s_]*(\d+)/i);
+  return dayMatch ? `Day ${dayMatch[1]}` : payload.itemTitle || payload.contentLabel || "Bible in One Year";
+}
 
-  const parts = label.split("|").slice(1);
+function buildReadableDeepStudyInterestLabel(payload: DeepStudyInterestPayload) {
+  if (payload.source === "bible_in_one_year") {
+    return `${getBibleYearDayLabel(payload)} Study Notes clicked`;
+  }
+  return `${payload.sourceLabel} Study Notes clicked - ${payload.itemTitle}`;
+}
+
+function buildReadableStudyNotesViewLabel(payload: StudyNotesViewPayload) {
+  if (payload.source === "bible_in_one_year") {
+    return `${getBibleYearDayLabel(payload)} Study Notes viewed`;
+  }
+  return `${payload.sourceLabel} Study Notes viewed - ${payload.itemTitle}`;
+}
+
+function buildReadableStudyNotesSectionOpenLabel(payload: StudyNotesSectionOpenPayload) {
+  const sectionLabel = payload.sectionTitle || payload.sectionReference || "Section";
+  if (payload.source === "bible_in_one_year") {
+    return `${getBibleYearDayLabel(payload)} Study Notes opened - ${sectionLabel}`;
+  }
+  return `${payload.sourceLabel} Study Notes opened - ${payload.itemTitle} - ${sectionLabel}`;
+}
+
+export function parseDeepStudyInterestLabel(label: string | null | undefined): ParsedDeepStudyInterest | null {
+  const structuredIndex = label?.indexOf("deep_study_interest:v1|") ?? -1;
+  if (!label || structuredIndex === -1) return null;
+  const structuredLabel = label.slice(structuredIndex);
+
+  const parts = structuredLabel.split("|").slice(1);
   const data = new Map<string, string>();
   for (const part of parts) {
     const separatorIndex = part.indexOf("=");
@@ -123,21 +152,25 @@ function buildStudyNotesBaseLabel(prefix: string, payload: DeepStudyInterestPayl
 }
 
 export function buildStudyNotesViewLabel(payload: StudyNotesViewPayload, now = new Date()) {
-  return buildStudyNotesBaseLabel("study_notes_view:v1", payload, now).join("|");
+  const structured = buildStudyNotesBaseLabel("study_notes_view:v1", payload, now).join("|");
+  return `${buildReadableStudyNotesViewLabel(payload)} | ${structured}`;
 }
 
 export function buildStudyNotesSectionOpenLabel(payload: StudyNotesSectionOpenPayload, now = new Date()) {
-  return [
+  const structured = [
     ...buildStudyNotesBaseLabel("study_notes_section_open:v1", payload, now),
     `sectionReference=${encodeLabelPart(payload.sectionReference)}`,
     `sectionTitle=${encodeLabelPart(payload.sectionTitle)}`,
   ].join("|");
+  return `${buildReadableStudyNotesSectionOpenLabel(payload)} | ${structured}`;
 }
 
 function parseStudyNotesBaseLabel(label: string | null | undefined, prefix: string): ParsedDeepStudyInterest | null {
-  if (!label?.startsWith(`${prefix}|`)) return null;
+  const structuredIndex = label?.indexOf(`${prefix}|`) ?? -1;
+  if (!label || structuredIndex === -1) return null;
+  const structuredLabel = label.slice(structuredIndex);
 
-  const parts = label.split("|").slice(1);
+  const parts = structuredLabel.split("|").slice(1);
   const data = new Map<string, string>();
   for (const part of parts) {
     const separatorIndex = part.indexOf("=");
@@ -163,9 +196,11 @@ export function parseStudyNotesViewLabel(label: string | null | undefined): Pars
 export function parseStudyNotesSectionOpenLabel(label: string | null | undefined): ParsedStudyNotesSectionOpen | null {
   const base = parseStudyNotesBaseLabel(label, "study_notes_section_open:v1");
   if (!base || !label) return null;
+  const structuredIndex = label.indexOf("study_notes_section_open:v1|");
+  const structuredLabel = structuredIndex >= 0 ? label.slice(structuredIndex) : label;
 
   const data = new Map<string, string>();
-  for (const part of label.split("|").slice(1)) {
+  for (const part of structuredLabel.split("|").slice(1)) {
     const separatorIndex = part.indexOf("=");
     if (separatorIndex === -1) continue;
     data.set(part.slice(0, separatorIndex), part.slice(separatorIndex + 1));
@@ -191,7 +226,7 @@ export async function trackDeepStudyInterestOnce(payload: DeepStudyInterestPaylo
       .select("id")
       .eq("user_id", payload.userId)
       .eq("action_type", ACTION_TYPE.deep_study_interest_clicked)
-      .like("action_label", `${prefix}%`)
+      .like("action_label", `%${prefix}%`)
       .limit(1);
 
     if (!existingError && existing && existing.length > 0) return;
@@ -200,7 +235,14 @@ export async function trackDeepStudyInterestOnce(payload: DeepStudyInterestPaylo
       user_id: payload.userId,
       username: payload.username || null,
       action_type: ACTION_TYPE.deep_study_interest_clicked,
-      action_label: actionLabel,
+      action_label: `${buildReadableDeepStudyInterestLabel(payload)} | ${actionLabel}`,
+      event_metadata: {
+        source: payload.source,
+        sourceLabel: payload.sourceLabel,
+        itemKey: payload.itemKey,
+        itemTitle: payload.itemTitle,
+        contentLabel: payload.contentLabel || payload.itemTitle,
+      },
       created_at: now.toISOString(),
     });
 
@@ -222,6 +264,13 @@ export async function trackStudyNotesViewed(payload: StudyNotesViewPayload, clie
       username: payload.username || null,
       action_type: ACTION_TYPE.study_notes_viewed,
       action_label: buildStudyNotesViewLabel(payload, now),
+      event_metadata: {
+        source: payload.source,
+        sourceLabel: payload.sourceLabel,
+        itemKey: payload.itemKey,
+        itemTitle: payload.itemTitle,
+        contentLabel: payload.contentLabel || payload.itemTitle,
+      },
       created_at: now.toISOString(),
     });
 
@@ -243,6 +292,15 @@ export async function trackStudyNotesSectionOpened(payload: StudyNotesSectionOpe
       username: payload.username || null,
       action_type: ACTION_TYPE.study_notes_section_opened,
       action_label: buildStudyNotesSectionOpenLabel(payload, now),
+      event_metadata: {
+        source: payload.source,
+        sourceLabel: payload.sourceLabel,
+        itemKey: payload.itemKey,
+        itemTitle: payload.itemTitle,
+        contentLabel: payload.contentLabel || payload.itemTitle,
+        sectionReference: payload.sectionReference,
+        sectionTitle: payload.sectionTitle,
+      },
       created_at: now.toISOString(),
     });
 

@@ -138,6 +138,7 @@ type ParsedStudyNotesLabel = {
 
 type VisitorJourneyStatus =
   | "active"
+  | "finished_onboarding"
   | "onboarding_only"
   | "day_1_in_progress"
   | "day_1_completed"
@@ -513,12 +514,12 @@ function buildBibleBuddyFunnelStages(
 
   function completedDayActors(dayNumber: number) {
     const actors = new Set<string>();
-    for (const row of progressRows) {
-      if (Number(row.day_number || 0) !== dayNumber) continue;
-      if (!row.user_id) continue;
-      if (row.reading_completed && row.trivia_completed && row.reflection_completed) {
-        actors.add(row.user_id);
-      }
+    for (const row of masterRows) {
+      if (row.action_type !== "bible_in_one_year_reflection_completed") continue;
+      const day = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
+      if (day !== dayNumber) continue;
+      const actorId = getMasterActorId(row);
+      if (actorId) actors.add(actorId);
     }
     return actors;
   }
@@ -526,17 +527,21 @@ function buildBibleBuddyFunnelStages(
   function startedDayActors(dayNumber: number) {
     const actors = new Set<string>();
     for (const row of masterRows) {
-      if (row.action_type !== "bible_year_task_started") continue;
       const day = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
+      if (day !== dayNumber) continue;
+      if (row.action_type === "bible_in_one_year_reading_completed") {
+        const actorId = getMasterActorId(row);
+        if (actorId) actors.add(actorId);
+        continue;
+      }
+      if (row.action_type !== "bible_year_task_started") continue;
       const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
       const task = typeof metadata.task === "string" ? metadata.task : "";
       const label = String(row.action_label || "").toLowerCase();
       const isFirstTask = task === "reading" || label.includes("reading started") || label.includes("video started");
-      if (day === dayNumber) {
-        if (!isFirstTask) continue;
-        const actorId = getMasterActorId(row);
-        if (actorId) actors.add(actorId);
-      }
+      if (!isFirstTask) continue;
+      const actorId = getMasterActorId(row);
+      if (actorId) actors.add(actorId);
     }
     return actors;
   }
@@ -611,7 +616,7 @@ function buildDayThreeUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): Day
     if (actionType === "upgrade_popup_viewed") viewedActors.add(actorId);
     if (actionType === "upgrade_popup_cta_clicked") upgradeClickActors.add(actorId);
     if (actionType === "user_upgraded") successfulUpgradeActors.add(actorId);
-    if (actionType === "upgrade_popup_dismissed" && actionLabel.toLowerCase().includes("continued with free plan")) {
+    if (actionType === "upgrade_popup_dismissed" && (lowerLabel.includes("continued with free plan") || lowerLabel.includes("skip onboarding"))) {
       continueFreeActors.add(actorId);
     }
   }
@@ -956,10 +961,14 @@ function decodeLabelPart(value: string | null | undefined) {
 }
 
 function parseStudyNotesLabel(label: string | null | undefined): ParsedStudyNotesLabel | null {
-  if (!label?.startsWith("study_notes_view:v1|") && !label?.startsWith("study_notes_section_open:v1|")) return null;
+  const viewIndex = label?.indexOf("study_notes_view:v1|") ?? -1;
+  const sectionIndex = label?.indexOf("study_notes_section_open:v1|") ?? -1;
+  const structuredIndex = viewIndex >= 0 ? viewIndex : sectionIndex;
+  if (!label || structuredIndex === -1) return null;
+  const structuredLabel = label.slice(structuredIndex);
 
   const data = new Map<string, string>();
-  for (const part of label.split("|").slice(1)) {
+  for (const part of structuredLabel.split("|").slice(1)) {
     const separatorIndex = part.indexOf("=");
     if (separatorIndex === -1) continue;
     data.set(part.slice(0, separatorIndex), part.slice(separatorIndex + 1));
@@ -1146,7 +1155,7 @@ function buildLandingActivityLog(rows: LandingEventRow[], profileByUserId: Map<s
   const completedEvents = new Set(["started_guest_journey", "created_free_account", "created_account_successfully"]);
   const dropoffEntries = Array.from(sessions.entries()).flatMap(([sessionId, sessionRows]) => {
     const lastRow = sessionRows.at(-1);
-    if (!lastRow?.created_at || completedEvents.has(lastRow.event_name || "")) return [];
+    if (!lastRow?.created_at || sessionRows.some((row) => completedEvents.has(row.event_name || ""))) return [];
     const firstAt = sessionRows[0]?.created_at ? new Date(sessionRows[0].created_at as string).getTime() : 0;
     const lastAt = new Date(lastRow.created_at).getTime();
     const lastInfo = getLandingActivityInfo(lastRow);
@@ -1275,6 +1284,14 @@ function getLandingStepStatusLabel(sessionRows: LandingEventRow[], finishedOnboa
   return "Just visited";
 }
 
+function isLandingVisitEvent(eventName: string) {
+  return eventName === "landing_page_visit" || eventName === "landing_page_visited";
+}
+
+function getLastMeaningfulLandingRow(sessionRows: LandingEventRow[]) {
+  return [...sessionRows].reverse().find((row) => !isLandingVisitEvent(row.event_name || "")) || sessionRows[0] || null;
+}
+
 function getMasterActionCategory(actionType: string): VisitorJourneyTimelineEvent["category"] {
   if (actionType.includes("upgrade") || actionType === "user_upgraded") return "upgrade";
   if (actionType.includes("trial")) return "trial";
@@ -1367,6 +1384,7 @@ function getJourneyDisplaySource(row: LandingEventRow | undefined) {
 function getStatusLabel(status: VisitorJourneyStatus) {
   const labels: Record<VisitorJourneyStatus, string> = {
     active: "Active",
+    finished_onboarding: "Finished onboarding",
     onboarding_only: "Onboarding only",
     day_1_in_progress: "Day 1 in progress",
     day_1_completed: "Day 1 completed",
@@ -1464,12 +1482,23 @@ function buildVisitorJourneys(
     const userId = sessionRows.map((row) => row.user_id).find((id): id is string => Boolean(id)) || null;
     const userLabel = userId ? profileByUserId.get(userId) || `User ${shortId(userId)}` : "Guest visitor";
     const eventNames = new Set(sessionRows.map((row) => row.event_name || ""));
+    const relatedMasterRows = [
+      ...(masterActionsBySession.get(sessionId) || []),
+      ...(userId ? masterActionsByUser.get(userId) || [] : []),
+    ].filter((row, index, allRows) => {
+      const key = `${row.action_type || ""}-${row.action_label || ""}-${row.created_at || ""}`;
+      return allRows.findIndex((candidate) => `${candidate.action_type || ""}-${candidate.action_label || ""}-${candidate.created_at || ""}` === key) === index;
+    });
     const userProgressRows = userId ? progressByUser.get(userId) || [] : [];
     const userTaskActionRows = userId ? taskActionsByUser.get(userId) || [] : [];
     const dayOneRows = userProgressRows.filter((row) => Number(row.day_number || 0) === 1);
     const dayOneStartedAt =
       userTaskActionRows
-        .filter((row) => row.action_label?.startsWith("Bible in One Year Day 1 Video:") || row.action_label?.startsWith("Bible in One Year Day 1 Reading:"))
+        .filter((row) =>
+          row.action_label?.startsWith("Bible in One Year Day 1 Video:") ||
+          row.action_label?.startsWith("Bible in One Year Day 1 Reading:") ||
+          /^Day\s+1\s+Task\s+1\s+started/i.test(row.action_label || "")
+        )
         .map((row) => row.created_at)
         .filter((value): value is string => Boolean(value))
         .sort()[0] || null;
@@ -1489,10 +1518,13 @@ function buildVisitorJourneys(
       null;
     const upgradeAt = userId ? upgradeByUser.get(userId)?.created_at || null : null;
     const onboardingCompletedAt = sessionRows.find((row) => row.event_name === "started_guest_journey")?.created_at || null;
-    const now = Date.now();
+    const dashboardCompletedRow = relatedMasterRows
+      .filter((row) => row.action_type === "dashboard_tour_completed" && row.created_at)
+      .sort((a, b) => new Date(a.created_at || "").getTime() - new Date(b.created_at || "").getTime())
+      .at(-1);
+    const dashboardCompletedAt = dashboardCompletedRow?.created_at || null;
     const lastActiveAt = lastRow?.created_at || firstRow?.created_at || new Date().toISOString();
     const firstActiveAt = firstRow?.created_at || lastActiveAt;
-    const inactiveMs = now - new Date(lastActiveAt).getTime();
     const timeSpentMs = Math.max(0, new Date(lastActiveAt).getTime() - new Date(firstActiveAt).getTime());
 
     let status: VisitorJourneyStatus = "active";
@@ -1500,27 +1532,38 @@ function buildVisitorJourneys(
     else if (dayOneCompletedAt) status = "day_1_completed";
     else if (createdAccountAt) status = "created_account";
     else if (dayOneStartedAt) status = "day_1_in_progress";
-    else if (onboardingCompletedAt) status = "active";
+    else if (dashboardCompletedAt || onboardingCompletedAt) status = "finished_onboarding";
     else if (eventNames.has("started_onboarding") || eventNames.has("viewed_onboarding_intro")) status = "onboarding_only";
-    if (!onboardingCompletedAt) {
-      status = "dropped_off";
-    } else if (!upgradeAt && !createdAccountAt && inactiveMs > 10 * 60 * 1000) {
+    if (!dashboardCompletedAt && !onboardingCompletedAt) {
       status = "dropped_off";
     }
 
     const accountType: VisitorJourneyRow["accountType"] = upgradeAt || profile?.isPaid ? "pro" : createdAccountAt ? "free" : "guest";
     const lastInfo = lastRow ? getLandingActivityInfo(lastRow) : null;
-    const stepStatusLabel = getLandingStepStatusLabel(sessionRows, Boolean(onboardingCompletedAt));
+    const lastMeaningfulLandingRow = getLastMeaningfulLandingRow(sessionRows);
+    const lastMeaningfulLandingInfo = lastMeaningfulLandingRow ? getLandingActivityInfo(lastMeaningfulLandingRow) : lastInfo;
+    const stepStatusLabel = status === "dropped_off"
+      ? getLandingStepStatusLabel(sessionRows, false)
+      : getStatusLabel(status);
+    const currentMilestoneTitle =
+      dashboardCompletedAt ? "Finished dashboard walkthrough" :
+      onboardingCompletedAt ? "Guest finished onboarding" :
+      status === "dropped_off" ? stepStatusLabel || lastMeaningfulLandingInfo?.title || "Unknown" :
+      getStatusLabel(status);
+    const currentEventName =
+      dashboardCompletedAt ? "dashboard_tour_completed" :
+      onboardingCompletedAt ? "started_guest_journey" :
+      lastMeaningfulLandingRow?.event_name || lastRow?.event_name || "";
     const guestNumber = guestNumberBySession.get(sessionId);
-    const relatedMasterRows = [
-      ...(masterActionsBySession.get(sessionId) || []),
-      ...(userId ? masterActionsByUser.get(userId) || [] : []),
-    ].filter((row, index, allRows) => {
-      const key = `${row.action_type || ""}-${row.action_label || ""}-${row.created_at || ""}`;
-      return allRows.findIndex((candidate) => `${candidate.action_type || ""}-${candidate.action_label || ""}-${candidate.created_at || ""}` === key) === index;
+    let keptLandingVisit = false;
+    const timelineLandingRows = sessionRows.filter((row) => {
+      if (!isLandingVisitEvent(row.event_name || "")) return true;
+      if (keptLandingVisit) return false;
+      keptLandingVisit = true;
+      return true;
     });
     const rawTimeline = [
-      ...sessionRows.map((row, index) => {
+      ...timelineLandingRows.map((row, index) => {
         const info = getLandingActivityInfo(row);
         return {
           id: `landing-${row.event_name || "event"}-${row.created_at || index}`,
@@ -1632,10 +1675,10 @@ function buildVisitorJourneys(
       source: getJourneyDisplaySource(firstRow),
       referrer: typeof firstRow?.referrer === "string" && firstRow.referrer ? firstRow.referrer : null,
       lastActiveAt,
-      lastEventName: lastRow?.event_name || "",
+      lastEventName: currentEventName,
       timeSpentMs,
       timeSpentLabel: formatDuration(timeSpentMs),
-      dropoffStep: lastInfo?.title || "Unknown",
+      dropoffStep: currentMilestoneTitle,
       accountType,
       timeline,
       details,
@@ -1668,6 +1711,7 @@ function buildVisitorJourneys(
     journeys: ["Bible in One Year"],
     statuses: ([
       "active",
+      "finished_onboarding",
       "onboarding_only",
       "day_1_in_progress",
       "day_1_completed",
@@ -1679,69 +1723,98 @@ function buildVisitorJourneys(
 }
 
 function buildBibleYearDayAnalytics(
-  progressRows: BibleYearProgressRow[],
+  _progressRows: BibleYearProgressRow[],
   masterRows: MasterActionFunnelRow[],
   profileByUserId: Map<string, string>,
 ) {
-  const rowsByDay = new Map<number, BibleYearProgressRow[]>();
-  const startedActorsByDay = new Map<number, Set<string>>();
+  const dayActors = new Map<number, Map<string, {
+    userId: string;
+    userLabel: string;
+    readingStarted: boolean;
+    readingCompleted: boolean;
+    triviaCompleted: boolean;
+    reflectionCompleted: boolean;
+    updatedAt: string | null;
+  }>>();
+
+  function getOrCreateDayActor(dayNumber: number, actorId: string, row: MasterActionFunnelRow) {
+    const actors = dayActors.get(dayNumber) || new Map<string, {
+      userId: string;
+      userLabel: string;
+      readingStarted: boolean;
+      readingCompleted: boolean;
+      triviaCompleted: boolean;
+      reflectionCompleted: boolean;
+      updatedAt: string | null;
+    }>();
+    const existing = actors.get(actorId);
+    if (existing) return existing;
+
+    const next = {
+      userId: actorId,
+      userLabel: profileByUserId.get(actorId) || row.username || `User ${shortId(actorId)}`,
+      readingStarted: false,
+      readingCompleted: false,
+      triviaCompleted: false,
+      reflectionCompleted: false,
+      updatedAt: null,
+    };
+    actors.set(actorId, next);
+    dayActors.set(dayNumber, actors);
+    return next;
+  }
 
   for (const row of masterRows) {
-    if (row.action_type !== "bible_year_task_started") continue;
     const actionLabel = String(row.action_label || "");
     const label = actionLabel.toLowerCase();
     const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
     const task = typeof metadata.task === "string" ? metadata.task.toLowerCase() : "";
     const dayNumber = Number(row.journey_day || parseBibleYearDayFromLabel(actionLabel) || 0);
-    const isFirstTask = task === "reading" || label.includes("reading started") || label.includes("video started");
+    if (!dayNumber) continue;
     const actorId = getMasterActorId(row);
-    if (!dayNumber || !isFirstTask || !actorId) continue;
+    if (!actorId) continue;
+    const actor = getOrCreateDayActor(dayNumber, actorId, row);
+    if (!actor.updatedAt || (row.created_at || "") > actor.updatedAt) actor.updatedAt = row.created_at || null;
 
-    const actors = startedActorsByDay.get(dayNumber) || new Set<string>();
-    actors.add(actorId);
-    startedActorsByDay.set(dayNumber, actors);
+    const taskNumber = typeof metadata.taskNumber === "number" ? metadata.taskNumber : null;
+    const isFirstTask =
+      taskNumber === 1 ||
+      /^day\s+\d+\s+task\s+1\s+started\s+-\s+scripture video/i.test(actionLabel) ||
+      label.includes("task 1 started - scripture video") ||
+      label.includes("reading started") ||
+      label.includes("video started");
+    if (row.action_type === "bible_year_task_started" && isFirstTask) actor.readingStarted = true;
+    if (row.action_type === "bible_in_one_year_reading_completed") {
+      actor.readingCompleted = true;
+    }
+    if (row.action_type === "bible_in_one_year_trivia_completed") actor.triviaCompleted = true;
+    if (row.action_type === "bible_in_one_year_reflection_completed") actor.reflectionCompleted = true;
   }
 
-  for (const row of progressRows) {
-    const dayNumber = Number(row.day_number || 0);
-    if (!Number.isFinite(dayNumber) || dayNumber <= 0) continue;
-    const startedActors = startedActorsByDay.get(dayNumber) || new Set<string>();
-    const hasCompletedTask = row.reading_completed || row.trivia_completed || row.reflection_completed;
-    if (row.user_id && !startedActors.has(row.user_id) && !hasCompletedTask) continue;
-    const current = rowsByDay.get(dayNumber) || [];
-    current.push(row);
-    rowsByDay.set(dayNumber, current);
-  }
-
-  return Array.from(rowsByDay.entries())
+  return Array.from(dayActors.entries())
     .sort((a, b) => a[0] - b[0])
-    .map(([dayNumber, dayRows]) => {
-      const users: BibleYearDayUserRow[] = dayRows
-        .filter((row) => Boolean(row.user_id))
-        .map((row) => {
-          const readingCompleted = row.reading_completed === true;
-          const triviaCompleted = row.trivia_completed === true;
-          const reflectionCompleted = row.reflection_completed === true;
-          return {
-            userId: row.user_id as string,
-            userLabel: profileByUserId.get(row.user_id as string) || `User ${shortId(row.user_id as string)}`,
-            readingCompleted,
-            triviaCompleted,
-            reflectionCompleted,
-            completed: readingCompleted && triviaCompleted && reflectionCompleted,
-            updatedAt: row.updated_at || null,
-          };
-        })
+    .map(([dayNumber, actorMap]) => {
+      const actorRows = Array.from(actorMap.values());
+      const users: BibleYearDayUserRow[] = actorRows
+        .map((row) => ({
+          userId: row.userId,
+          userLabel: row.userLabel,
+          readingCompleted: row.readingCompleted,
+          triviaCompleted: row.triviaCompleted,
+          reflectionCompleted: row.reflectionCompleted,
+          completed: row.reflectionCompleted,
+          updatedAt: row.updatedAt,
+        }))
         .sort((a, b) => (b.updatedAt || "").localeCompare(a.updatedAt || ""))
         .slice(0, 75);
 
-      const startedUsers = (startedActorsByDay.get(dayNumber) || new Set<string>()).size;
-      const readingCompleted = dayRows.filter((row) => row.reading_completed).length;
-      const triviaCompleted = dayRows.filter((row) => row.trivia_completed).length;
-      const reflectionCompleted = dayRows.filter((row) => row.reflection_completed).length;
-      const completedUsers = dayRows.filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed).length;
-      const lastActiveAt = dayRows
-        .map((row) => row.updated_at || "")
+      const startedUsers = actorRows.filter((row) => row.readingStarted).length;
+      const readingCompleted = actorRows.filter((row) => row.readingCompleted).length;
+      const triviaCompleted = actorRows.filter((row) => row.triviaCompleted).length;
+      const reflectionCompleted = actorRows.filter((row) => row.reflectionCompleted).length;
+      const completedUsers = reflectionCompleted;
+      const lastActiveAt = actorRows
+        .map((row) => row.updatedAt || "")
         .filter(Boolean)
         .sort()
         .at(-1) || null;
@@ -1754,7 +1827,7 @@ function buildBibleYearDayAnalytics(
         readingCompleted,
         triviaCompleted,
         reflectionCompleted,
-        completionRate: startedUsers > 0 ? Number(((completedUsers / startedUsers) * 100).toFixed(1)) : 0,
+        completionRate: startedUsers > 0 ? Number(Math.min(100, (completedUsers / startedUsers) * 100).toFixed(1)) : 0,
         lastActiveAt,
         users,
       };

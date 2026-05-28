@@ -5641,7 +5641,7 @@ export default function DashboardJourneyExperience({
         .eq("user_id", userId)
         .eq("action_type", ACTION_TYPE.upgrade_popup_viewed)
         .eq("journey_day", 3)
-        .eq("action_label", "Bible in One Year Day 3 Pro upgrade popup viewed")
+        .in("action_label", ["Day 3 upgrade seen", "Bible in One Year Day 3 Pro upgrade popup viewed"])
         .limit(1);
 
       if (error) throw error;
@@ -5679,6 +5679,8 @@ export default function DashboardJourneyExperience({
         event_metadata: {
           plan: "bible_in_one_year",
           prompt: "day_3_pro_upgrade",
+          dayNumber: 3,
+          label,
         },
       });
     } catch (error) {
@@ -5723,7 +5725,7 @@ export default function DashboardJourneyExperience({
     setBibleYearDayThreeProPrompt({ day, nextDay });
     setBibleYearDayThreeProContinueTarget({ day, nextDay });
     setBibleYearDayThreeProOpenSection("");
-    void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_viewed, "Bible in One Year Day 3 Pro upgrade popup viewed");
+    void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_viewed, "Day 3 upgrade seen");
     return true;
   }
 
@@ -5751,7 +5753,7 @@ export default function DashboardJourneyExperience({
   function closeBibleYearQuickUpgrade() {
     if (bibleYearQuickUpgradeLoading) return;
     if (bibleYearQuickUpgradeContext === "day3") {
-      void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_dismissed, "Bible in One Year Day 3 Pro plan choices dismissed");
+      void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_dismissed, "Day 3 upgrade plan choices closed");
       continueAfterDayThreeProPrompt();
       return;
     }
@@ -5766,7 +5768,7 @@ export default function DashboardJourneyExperience({
       setBibleYearQuickUpgradeError(null);
       const returnTo = bibleYearQuickUpgradeContext === "day3" ? "/dashboard?view=bible-year&day=4" : undefined;
       if (bibleYearQuickUpgradeContext === "day3") {
-        void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_cta_clicked, `Bible in One Year Day 3 Pro ${plan} checkout clicked`);
+        void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_cta_clicked, `Day 3 checkout ${plan} clicked`);
       }
 
       const isDayThreeUpgrade = bibleYearQuickUpgradeContext === "day3";
@@ -6272,7 +6274,7 @@ export default function DashboardJourneyExperience({
     return (
       <ModalShell
         isOpen={Boolean(prompt)}
-        onClose={() => dismissDayThreePrompt("Bible in One Year Day 3 Pro upgrade popup closed")}
+        onClose={() => dismissDayThreePrompt("Day 3 upgrade popup closed")}
         backdropColor="bg-slate-950/72 backdrop-blur-md"
         scrollable
         zIndex="z-[95]"
@@ -6280,7 +6282,7 @@ export default function DashboardJourneyExperience({
         <div className="bb-skin-glow-card relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_84%,transparent))] px-4 py-4 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_20px_58px_rgba(15,23,42,0.28),0_0_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)]">
           <button
             type="button"
-            onClick={() => dismissDayThreePrompt("Bible in One Year Day 3 Pro upgrade popup closed")}
+            onClick={() => dismissDayThreePrompt("Day 3 upgrade popup closed")}
             className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,transparent)] text-lg font-black text-[var(--bb-text-primary,#111827)] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             aria-label="Close Pro upgrade popup"
           >
@@ -6341,6 +6343,7 @@ export default function DashboardJourneyExperience({
             <button
               type="button"
               onClick={() => {
+                void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_cta_clicked, "Day 3 upgrade button clicked");
                 setBibleYearDayThreeProPrompt(null);
                 openBibleYearQuickUpgrade("day3");
               }}
@@ -6356,7 +6359,7 @@ export default function DashboardJourneyExperience({
             </button>
             <button
               type="button"
-              onClick={() => dismissDayThreePrompt("Bible in One Year Day 3 continued with free plan")}
+              onClick={() => dismissDayThreePrompt("Day 3 skip onboarding clicked")}
               className="rounded-[15px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-4 py-2 text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             >
               <span className="block text-xs font-black leading-tight">Continue with Free Plan</span>
@@ -7916,6 +7919,22 @@ Before we understand redemption, we need to understand what God made humanity fo
     return card;
   }
 
+  function getBibleYearTaskNumber(card: BibleYearDayCardKey) {
+    if (card === "reading") return 1;
+    if (card === "reflection") return 2;
+    return 3;
+  }
+
+  function getBibleYearTaskTitle(card: BibleYearDayCardKey) {
+    if (card === "reading") return "Scripture Video";
+    if (card === "reflection") return "Summary and Study Notes";
+    return "Trivia Questions";
+  }
+
+  function getBibleYearTaskActionLabel(day: GenesisBibleYearDay, card: BibleYearDayCardKey, status: "started" | "finished") {
+    return `Day ${day.dayNumber} Task ${getBibleYearTaskNumber(card)} ${status} - ${getBibleYearTaskTitle(card)}`;
+  }
+
   function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
     const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
     const nextDay = days.find((day) => !isBibleYearDayComplete(day)) || days[days.length - 1];
@@ -8085,14 +8104,12 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function getBibleYearCardActionLabel(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
-    const displayLabel = getBibleYearCardDisplayLabel(day, card);
-    const cardLabel = displayLabel.charAt(0).toUpperCase() + displayLabel.slice(1);
-    return `Bible in One Year Day ${day.dayNumber} ${cardLabel}: ${day.title}`;
+    return getBibleYearTaskActionLabel(day, card, "finished");
   }
 
   async function logBibleYearTaskStarted(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
     if (!userId) return;
-    const actionLabel = `Bible in One Year Day ${day.dayNumber} ${getBibleYearCardDisplayLabel(day, card)} started: ${day.title}`;
+    const actionLabel = getBibleYearTaskActionLabel(day, card, "started");
     try {
       const { data: existing, error: existingError } = await supabase
         .from("master_actions")
@@ -8123,6 +8140,9 @@ Before we understand redemption, we need to understand what God made humanity fo
         event_metadata: {
           plan: "bible_in_one_year",
           task: card,
+          taskNumber: getBibleYearTaskNumber(card),
+          taskTitle: getBibleYearTaskTitle(card),
+          taskStatus: "started",
           dayNumber: day.dayNumber,
           dayTitle: day.title,
         },
@@ -8195,6 +8215,40 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
   }
 
+  async function logBibleYearNextDayClicked(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
+    if (!userId) return;
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const meta = user?.user_metadata || {};
+      const username =
+        meta.firstName ||
+        meta.first_name ||
+        (user?.email ? user.email.split("@")[0] : null) ||
+        "User";
+
+      await supabase.from("master_actions").insert({
+        user_id: userId,
+        username,
+        action_type: ACTION_TYPE.bible_year_next_day_clicked,
+        action_label: `Day ${day.dayNumber} Next Day clicked - Open Day ${nextDay.dayNumber}`,
+        journey_day: day.dayNumber,
+        account_status: isPaidUser ? "pro" : "free_or_guest",
+        event_metadata: {
+          plan: "bible_in_one_year",
+          dayNumber: day.dayNumber,
+          dayTitle: day.title,
+          nextDayNumber: nextDay.dayNumber,
+          nextDayTitle: nextDay.title,
+        },
+        created_at: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.warn("[BIBLE_YEAR_ANALYTICS] Could not log next day click:", error);
+    }
+  }
+
   async function ensureBibleYearCardActionLogged(day: GenesisBibleYearDay, card: BibleYearDayCardKey, showPoints = false) {
     if (!userId) return;
     const actionType = BIBLE_YEAR_CARD_ACTION_TYPE[card];
@@ -8225,6 +8279,17 @@ Before we understand redemption, we need to understand what God made humanity fo
       action_type: actionType,
       action_label: actionLabel,
       username,
+      journey_day: day.dayNumber,
+      account_status: isPaidUser ? "pro" : "free_or_guest",
+      event_metadata: {
+        plan: "bible_in_one_year",
+        task: card,
+        taskNumber: getBibleYearTaskNumber(card),
+        taskTitle: getBibleYearTaskTitle(card),
+        taskStatus: "finished",
+        dayNumber: day.dayNumber,
+        dayTitle: day.title,
+      },
     };
     const { error: insertError } = await supabase.from("master_actions").insert(insertPayload);
     if (insertError) throw insertError;
@@ -8377,6 +8442,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   async function handleContinueToNextBibleYearDay(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
     if (continuingBibleYearDay === day.dayNumber) return;
     if (day.dayNumber === 3 && !isPaidUser && await openDayThreeProPrompt(day, nextDay)) return;
+    void logBibleYearNextDayClicked(day, nextDay);
     setContinuingBibleYearDay(day.dayNumber);
     try {
       setBibleYearCompletionModalDay(null);

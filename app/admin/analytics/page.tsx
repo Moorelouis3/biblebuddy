@@ -12,6 +12,7 @@ type AnalyticsView = "overview" | "bible-year" | "study-notes" | "traffic-source
 
 type VisitorJourneyStatus =
   | "active"
+  | "finished_onboarding"
   | "onboarding_only"
   | "day_1_in_progress"
   | "day_1_completed"
@@ -225,6 +226,7 @@ const WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
 
 const STATUS_STYLES: Record<VisitorJourneyStatus, string> = {
   active: "bg-emerald-50 text-emerald-700 ring-emerald-200",
+  finished_onboarding: "bg-emerald-50 text-emerald-700 ring-emerald-200",
   onboarding_only: "bg-slate-100 text-slate-700 ring-slate-200",
   day_1_in_progress: "bg-blue-50 text-blue-700 ring-blue-200",
   day_1_completed: "bg-violet-50 text-violet-700 ring-violet-200",
@@ -1228,7 +1230,7 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
                   <p className="mt-2 text-sm font-medium text-slate-600">Click a day to expand the task and user details for that reading.</p>
                 </div>
                 <div className="rounded-lg bg-slate-50 px-4 py-3 text-sm font-bold text-slate-700">
-                  {data?.bibleYearDays?.length || 0} days with progress
+                  {data?.bibleYearDays?.length || 0} days with activity
                 </div>
               </div>
             </div>
@@ -1256,11 +1258,11 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
                         <p className="mt-1 line-clamp-1 text-sm text-slate-500">{planDay.summary}</p>
                       </div>
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Started</p>
+                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Task 1 clicked</p>
                         <p className="mt-1 text-lg font-black text-slate-950">{startedUsers}</p>
                       </div>
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Complete</p>
+                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Finished day</p>
                         <p className="mt-1 text-lg font-black text-emerald-700">{completedUsers}</p>
                       </div>
                       <div>
@@ -1278,15 +1280,15 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
                       <div className="bg-slate-50 px-5 pb-5">
                         <div className="grid gap-3 rounded-xl border border-slate-200 bg-white p-4 lg:grid-cols-4">
                           <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Reading task</p>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Reading done</p>
                             <p className="mt-1 text-2xl font-black text-slate-950">{day?.readingCompleted || 0}</p>
                           </div>
                           <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Trivia task</p>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Trivia done</p>
                             <p className="mt-1 text-2xl font-black text-slate-950">{day?.triviaCompleted || 0}</p>
                           </div>
                           <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Reflection task</p>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Reflection done</p>
                             <p className="mt-1 text-2xl font-black text-slate-950">{day?.reflectionCompleted || 0}</p>
                           </div>
                           <div>
