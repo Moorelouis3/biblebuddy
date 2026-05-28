@@ -1035,10 +1035,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         return;
       }
 
-      const split = splitFullName(currentName);
-      setFullNameFirst(split.firstName);
-      setFullNameLast(split.lastName);
-      setShowFullNameModal(true);
+      setShowFullNameModal(false);
     } catch (error) {
       console.warn("[FULL_NAME] Check skipped due to transient issue.", error);
     }
@@ -2236,12 +2233,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, [userId, isLoggedIn, pathname]);
 
   const appShellPopupQueue: PopupQueueItem[] = [
-    ...(showEmailConfirmationGate && !isEmailConfirmed
-      ? [{ popup_id: "account:email-confirmation", type: "account_blocker" as const, priority: POPUP_QUEUE_PRIORITIES.accountBlocker + 20, user_id: userId }]
-      : []),
-    ...(showFullNameModal && pathname && !HIDDEN_ROUTES.includes(pathname)
-      ? [{ popup_id: "account:full-name", type: "account_blocker" as const, priority: POPUP_QUEUE_PRIORITIES.accountBlocker + 10, user_id: userId }]
-      : []),
     ...(AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED && graceReward
       ? [{ popup_id: "reward:grace-day-earned", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 20, user_id: userId, payload: graceReward }]
       : []),
@@ -2265,53 +2256,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <FeatureRenderPriorityProvider value={{ featureToursEnabled: true }}>
-
-      {isLoggedIn && userId && activeAppShellPopup?.popup_id === "account:full-name" && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/45 px-4">
-          <div className="w-full max-w-md rounded-3xl border border-[#d9eadf] bg-[#f8fcf9] p-6 shadow-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4a9b6f]">One-time setup</p>
-            <h2 className="mt-2 text-2xl font-bold text-gray-900">Add your first and last name</h2>
-            <p className="mt-3 text-sm leading-6 text-gray-600">
-              Add your full name so Buddies can recognize you more easily in groups, messages, and profiles.
-            </p>
-
-            <div className="mt-5 space-y-4">
-              <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">First name</label>
-                <input
-                  type="text"
-                  value={fullNameFirst}
-                  onChange={(event) => setFullNameFirst(event.target.value)}
-                  placeholder="First name"
-                  className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#4a9b6f]/30"
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">Last name</label>
-                <input
-                  type="text"
-                  value={fullNameLast}
-                  onChange={(event) => setFullNameLast(event.target.value)}
-                  placeholder="Last name"
-                  className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#4a9b6f]/30"
-                />
-              </div>
-            </div>
-
-            {fullNameError && <p className="mt-3 text-sm text-red-500">{fullNameError}</p>}
-
-            <button
-              type="button"
-              onClick={() => void handleSaveRequiredFullName()}
-              disabled={fullNameSaving}
-              className="mt-5 w-full rounded-2xl px-4 py-3 text-sm font-semibold text-white transition disabled:opacity-60"
-              style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
-            >
-              {fullNameSaving ? "Saving..." : "Save full name"}
-            </button>
-          </div>
-        </div>
-      )}
 
       {guestLogoutWarningOpen && (
         <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/55 px-4">
@@ -2353,55 +2297,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       )}
-
-      {isLoggedIn && userId && activeAppShellPopup?.popup_id === "account:email-confirmation" && (
-        <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
-          <div className="w-full max-w-md rounded-3xl border border-[#d8e7f2] bg-white p-6 text-center shadow-2xl">
-            <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-[#edf7ff]">
-              <LouisAvatar mood="think" size={82} />
-            </div>
-            <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f93b8]">
-              Confirm your email
-            </p>
-            <h2 className="mt-2 text-2xl font-black text-gray-950">One quick step before exploring</h2>
-            <p className="mt-3 text-sm leading-6 text-gray-600">
-              You can start your first Bible study on the dashboard, but you need to confirm your email before using the rest of Bible Buddy.
-            </p>
-            {userEmail ? (
-              <p className="mt-3 rounded-2xl bg-[#f5f9fc] px-4 py-3 text-sm font-bold text-gray-800">
-                We sent the confirmation link to {userEmail}.
-              </p>
-            ) : null}
-            {resendConfirmationMessage ? (
-              <p className="mt-3 rounded-2xl bg-[#eef7ff] px-4 py-3 text-sm font-semibold text-[#315f7d]">
-                {resendConfirmationMessage}
-              </p>
-            ) : null}
-            <div className="mt-5 grid gap-3">
-              <button
-                type="button"
-                onClick={() => void handleResendConfirmationEmail()}
-                disabled={resendConfirmationLoading}
-                className="w-full rounded-2xl bg-[#7BAFD4] px-5 py-3 text-sm font-black text-[#05111f] shadow-lg transition hover:bg-[#91c2df] disabled:opacity-60"
-              >
-                {resendConfirmationLoading ? "Sending..." : "Resend confirmation email"}
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setShowEmailConfirmationGate(false);
-                  setResendConfirmationMessage(null);
-                  router.replace("/dashboard");
-                }}
-                className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-3 text-sm font-bold text-gray-700 transition hover:bg-gray-50"
-              >
-                Back to dashboard
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
 
       {/* FEEDBACK MODAL */}
       {isLoggedIn && userId && !showFullNameModal && !showEmailConfirmationGate && (

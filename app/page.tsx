@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable react/no-unescaped-entities */
+
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
@@ -91,6 +93,59 @@ const benefitRows = [
   ["15-20 Minutes", "Short lessons that fit your busy life."],
   ["Track Progress", "Stay motivated with streaks and goals."],
   ["Built on Truth", "Biblically sound. Spiritually transformative."],
+];
+
+const landingProofItems = [
+  {
+    name: "Maya",
+    detail: "Bible Buddy member",
+    quote: "I listen every morning while getting ready for work. It centers my day before everything gets loud.",
+  },
+  {
+    name: "Daniel",
+    detail: "Listens before work",
+    quote: "I play two episodes a day, on the way to work and back home. I am on my second time finishing the Bible with Bible Buddy.",
+  },
+  {
+    name: "Tiana",
+    detail: "Busy mom",
+    quote: "I put it on while I clean the kitchen at night. For the first time, Bible study fits the life I actually have.",
+  },
+  {
+    name: "Marcus",
+    detail: "New to Bible study",
+    quote: "I always got confused reading alone. Now I listen first, and when I open the Bible the story finally makes sense.",
+  },
+  {
+    name: "Alyssa",
+    detail: "Daily listener",
+    quote: "I listen at the gym, then open the summary later. It fits my actual life.",
+  },
+  {
+    name: "Jordan",
+    detail: "Morning routine",
+    quote: "It feels more like a guided Bible podcast than homework. That changed everything for me.",
+  },
+  {
+    name: "Naomi",
+    detail: "Bible Buddy member",
+    quote: "I finally understand how Abraham, Isaac, Jacob, and Joseph fit into one bigger story.",
+  },
+  {
+    name: "Chris",
+    detail: "On the go",
+    quote: "I listen on walks. It gives me Scripture, explanation, and something to think about without feeling overwhelmed.",
+  },
+  {
+    name: "Elena",
+    detail: "Returning reader",
+    quote: "The lessons make me slow down and notice details I always skipped before.",
+  },
+  {
+    name: "Andre",
+    detail: "Bible in One Year",
+    quote: "For the first time, finishing the Bible feels like a daily path instead of a giant project.",
+  },
 ];
 
 const questions = [
@@ -438,7 +493,7 @@ export default function LandingPage() {
         if (hadCachedSession) {
           setIsChecking(false);
           window.setTimeout(() => {
-            if (window.location.pathname === "/") window.location.replace("/dashboard?view=bible-year&day=1");
+            if (window.location.pathname === "/") window.location.replace("/dashboard");
           }, 50);
           return;
         }
@@ -455,7 +510,7 @@ export default function LandingPage() {
         window.clearTimeout(fallbackTimer);
         if (session) {
           setIsChecking(false);
-          router.replace("/dashboard?view=bible-year&day=1");
+          router.replace("/dashboard");
           return;
         }
         setIsChecking(false);
@@ -479,7 +534,7 @@ export default function LandingPage() {
       }
       if (session) {
         setIsChecking(false);
-        router.replace("/dashboard?view=bible-year&day=1");
+        router.replace("/dashboard");
       } else {
         setIsChecking(false);
       }
@@ -598,11 +653,7 @@ export default function LandingPage() {
   function openQuestionnaire() {
     trackLandingEvent("clicked_start_journey");
     setLandingMenuOpen(false);
-    setOnboardingOpen(true);
-    setOnboardingStep("intro");
-    setQuestionIndex(0);
-    setAccountAttempted(false);
-    setError(null);
+    router.push("/signup");
   }
 
   function closeQuestionnaire(closedFrom: string) {
@@ -833,7 +884,7 @@ export default function LandingPage() {
       options: {
         emailRedirectTo:
           typeof window !== "undefined"
-            ? `${window.location.origin}/dashboard?view=bible-year&day=1`
+            ? `${window.location.origin}/dashboard`
             : undefined,
         data: {
           firstName: cleanName,
@@ -975,7 +1026,7 @@ export default function LandingPage() {
     setError(null);
     const redirectTo =
       typeof window !== "undefined"
-        ? `${window.location.origin}/dashboard?view=bible-year&day=1`
+        ? `${window.location.origin}/dashboard`
         : undefined;
     const { error: oauthError } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -988,10 +1039,369 @@ export default function LandingPage() {
   }
 
   function enterDashboard(studyRoute: StudyRoute = selectedStudyRoute || recommendedStudyRoute) {
-    window.location.href = "/dashboard?view=bible-year&day=1";
+    window.location.href = "/dashboard";
   }
 
   if (isChecking) return <AppLoadingScreen />;
+
+  return (
+    <div className="bb-public-landing min-h-screen bg-[#fffdf8] text-[#07162f]">
+      <LegalPageThemeReset />
+      <LandingThemeStyles />
+
+      <main>
+        <div className="bb-landing-shell mx-auto max-w-[1440px] overflow-hidden bg-[#fffdf8]">
+          <header className="relative z-20 flex w-full items-center justify-between gap-6 bg-[#fffdf8] px-5 py-5 sm:px-8 lg:px-10">
+            <BibleBuddyMark />
+            <nav className="hidden items-center gap-10 text-sm font-bold text-[#07162f] md:flex">
+              <Link href="/how-it-works" className="transition hover:text-[#135397]">How It Works</Link>
+              <Link href="/features" className="transition hover:text-[#135397]">Features</Link>
+              <Link href="/stories" className="transition hover:text-[#135397]">Stories</Link>
+              <Link href="/faq" className="transition hover:text-[#135397]">FAQ</Link>
+            </nav>
+            <div className="hidden items-center gap-3 sm:flex">
+              <Link href="/login" className="rounded-lg px-4 py-3 text-sm font-bold text-[#07162f] transition hover:bg-[#f4eee4]">
+                Login
+              </Link>
+              <Link href="/signup" className="bb-public-button rounded-lg bg-[#135397] px-6 py-3 text-sm font-black text-white shadow-[0_16px_32px_rgba(19,83,151,0.22)] transition hover:-translate-y-0.5">
+                Start Your Journey
+              </Link>
+            </div>
+            <div className="relative sm:hidden">
+              <button
+                type="button"
+                onClick={() => setLandingMenuOpen((open) => !open)}
+                className="grid h-10 w-10 place-items-center rounded-lg border border-[#e9dfd1] bg-white text-[#07162f] shadow-[0_12px_26px_rgba(7,22,47,0.10)]"
+                aria-label={landingMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={landingMenuOpen}
+              >
+                <span className="text-xl leading-none">{landingMenuOpen ? "x" : "="}</span>
+              </button>
+              {landingMenuOpen ? (
+                <div className="absolute right-0 top-[calc(100%+10px)] z-[110] w-[240px] rounded-lg border border-[#e9dfd1] bg-white p-3 text-left shadow-[0_22px_52px_rgba(7,22,47,0.18)]">
+                  {[
+                    ["How It Works", "/how-it-works"],
+                    ["Features", "/features"],
+                    ["Stories", "/stories"],
+                    ["FAQ", "/faq"],
+                  ].map(([label, href]) => (
+                    <Link key={label} href={href} onClick={() => setLandingMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm font-bold text-[#07162f] hover:bg-[#f8f2e8]">
+                      {label}
+                    </Link>
+                  ))}
+                  <Link href="/login" onClick={() => setLandingMenuOpen(false)} className="mt-2 block rounded-md border border-[#eadfcd] px-4 py-3 text-center text-sm font-black text-[#07162f]">
+                    Login
+                  </Link>
+                  <Link href="/signup" onClick={() => setLandingMenuOpen(false)} className="bb-public-button mt-2 block w-full rounded-md bg-[#135397] px-4 py-3 text-center text-sm font-black text-white">
+                    Start Journey
+                  </Link>
+                </div>
+              ) : null}
+            </div>
+          </header>
+
+          <section className="relative min-h-[570px] w-full overflow-hidden px-5 pb-8 pt-10 sm:px-8 lg:min-h-[640px] lg:px-10 lg:pb-0 lg:pt-16">
+            <Image
+              src="/newherobanner.png"
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 1440px) 100vw, 1440px"
+              className="pointer-events-none absolute inset-0 object-cover object-center"
+            />
+            <div className="relative z-10 max-w-[520px]">
+              <h1 className="bb-serif text-[clamp(2.05rem,3.5vw,3.45rem)] font-black leading-[1.02] tracking-[-0.01em] text-[#07162f]">
+                Finally read, understand, and <span className="italic text-[#135397]">finish</span> the Bible.
+              </h1>
+              <p className="mt-7 max-w-[520px] text-base font-semibold leading-8 text-[#526075] sm:text-lg">
+                Bible Buddy is your daily guide through Scripture with cinematic audio lessons, simple daily steps, and clear explanations that help you stay consistent and finish the Bible in one year.
+              </p>
+              <div className="mt-7 grid gap-4">
+                {[
+                  ["headphones", "Listen to engaging audio lessons"],
+                  ["book", "Understand every chapter"],
+                  ["calendar", "Stay consistent with a daily plan"],
+                  ["flag", "Finish the Bible in just one year"],
+                ].map(([icon, text]) => (
+                  <div key={text} className="flex items-center gap-3 text-sm font-bold text-[#07162f]">
+                    <LandingLineIcon name={icon} />
+                    <span>{text}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-9">
+                <Link href="/signup" className="bb-public-button bb-join-pulse inline-flex w-full items-center justify-center gap-3 rounded-lg bg-[#135397] px-8 py-4 text-base font-black text-white shadow-[0_18px_36px_rgba(19,83,151,0.2)] transition hover:-translate-y-0.5 sm:w-auto">
+                  Start Your Bible Journey
+                  <LandingLineIcon name="arrow" light />
+                </Link>
+                <p className="mt-4 flex items-center gap-2 text-xs font-semibold text-[#6d7789]">
+                  <LandingLineIcon name="lock" small />
+                  <span>Free to get started. Cancel anytime.</span>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="border-y border-[#eee4d8] bg-[#fffaf2] px-5 py-8 sm:px-8">
+            <RotatingProofStrip />
+          </section>
+
+          <section id="how-it-works" className="px-5 py-16 sm:px-8 lg:py-20">
+            <div className="mx-auto max-w-7xl">
+              <div className="mx-auto max-w-2xl text-center">
+                <h2 className="bb-serif text-4xl font-black leading-tight text-[#07162f] sm:text-5xl">Why Bible Buddy works</h2>
+                <p className="mt-4 text-sm font-semibold leading-6 text-[#526075]">
+                  We remove the overwhelm and guesswork so you can focus on what matters: spending time with God's Word.
+                </p>
+              </div>
+              <div className="mt-11 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+                {[
+                  ["headphones", "Audio-First Experience", "Listen to cinematic Scripture readings anytime, anywhere.", "#eaf2ff", "#2563eb"],
+                  ["book", "Understand What You Read", "Clear explanations help you grasp the meaning behind every chapter.", "#eaf8ed", "#3b9b65"],
+                  ["calendar", "Stay Consistent", "A simple daily plan keeps you on track without the overwhelm.", "#fff4d9", "#d99822"],
+                  ["flag", "Finish the Bible", "Go from Genesis to Revelation in just one year.", "#f0ecff", "#6555d9"],
+                ].map(([icon, title, copy, bg, accent]) => (
+                  <article key={title} className="bb-soft-card rounded-lg p-7 text-center">
+                    <div className="mx-auto grid h-20 w-20 place-items-center rounded-full" style={{ backgroundColor: bg }}>
+                      <LandingLineIcon name={icon} color={accent} large />
+                    </div>
+                    <h3 className="mt-7 text-base font-black leading-tight text-[#07162f]">{title}</h3>
+                    <p className="mx-auto mt-3 max-w-[210px] text-sm font-semibold leading-6 text-[#526075]">{copy}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="listen" className="px-5 pb-16 sm:px-8 lg:pb-20">
+            <div className="bb-dark-panel mx-auto grid max-w-7xl overflow-hidden rounded-lg px-6 py-10 text-[#07162f] sm:px-10 lg:min-h-[430px] lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:px-12">
+              <div className="bb-listen-copy relative z-20 max-w-lg">
+                <h2 className="bb-serif text-4xl font-black leading-tight sm:text-5xl">Listen anywhere. Grow everywhere.</h2>
+                <p className="mt-5 text-sm font-semibold leading-7 sm:text-base">
+                  Whether you're driving, working out, cleaning, or taking a walk, Bible Buddy fits into your life. You do not need more time. You need a better way.
+                </p>
+                <div className="mt-10 grid grid-cols-5 gap-4 text-center text-[11px] font-bold">
+                  {[
+                    ["car", "Driving"],
+                    ["dumbbell", "Working Out"],
+                    ["clean", "Cleaning"],
+                    ["coffee", "On Break"],
+                    ["walk", "Walking"],
+                  ].map(([icon, label]) => (
+                    <div key={label} className="grid gap-2">
+                      <LandingLineIcon name={icon} light />
+                      <span>{label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="hidden lg:block" aria-hidden="true" />
+            </div>
+          </section>
+
+          <section id="journey" className="px-5 pb-16 sm:px-8 lg:pb-20">
+            <div className="mx-auto max-w-7xl">
+              <div className="mx-auto max-w-4xl text-center">
+                <div className="mx-auto mb-12 max-w-2xl rounded-[28px] bg-[#fffdf8] px-4 py-8 text-center sm:px-8">
+                  <h2 className="bb-serif text-[clamp(1.8rem,3vw,2.45rem)] font-black leading-tight text-[#07162f]">
+                    Ready to start your journey?
+                  </h2>
+                  <p className="mt-2 text-base font-semibold text-[#07162f]">
+                    It only takes 15-30 minutes a day.
+                  </p>
+                  <Link href="/signup" className="bb-public-button mt-7 inline-flex w-full max-w-[520px] items-center justify-center gap-3 rounded-full bg-[#7fb6dc] px-8 py-4 text-base font-black text-white shadow-[0_22px_52px_rgba(127,182,220,0.35)] transition hover:-translate-y-0.5 sm:text-lg">
+                    <span className="text-white">*</span>
+                    Start Your Bible Journey
+                  </Link>
+                  <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-black text-[#07162f]">
+                    <span className="inline-flex items-center gap-2">
+                      <LandingLineIcon name="shield" small color="#315f94" />
+                      No credit card required
+                    </span>
+                    <span className="text-[#07162f]">•</span>
+                    <span>Cancel anytime</span>
+                  </div>
+                </div>
+                <h2 className="bb-serif text-[clamp(3.15rem,6.2vw,5.7rem)] font-black leading-[0.98] text-[#07162f]">Your guided Bible journey</h2>
+                <p className="mx-auto mt-5 max-w-2xl text-xl font-medium leading-8 text-[#334762]">
+                  A simple daily routine that fits your life.<br className="hidden sm:block" />
+                  Listen anywhere. Understand deeply. Grow forever.
+                </p>
+              </div>
+
+              <div className="relative mt-14 grid gap-10 lg:grid-cols-4 lg:gap-0">
+                {[
+                  {
+                    icon: "headphones",
+                    title: "1. Listen",
+                    subtitle: "Play today's audio Scriptures",
+                    copy: ["Every day includes a 15-30 minute cinematic audio lesson that walks you through the Bible one chapter at a time.", "Listen anywhere, anytime - while you drive, work out, clean, walk, or relax."],
+                    outcome: "You become familiar with God's Word effortlessly, every day.",
+                    bg: "#eaf2ff",
+                    accent: "#4f8df7",
+                  },
+                  {
+                    icon: "book",
+                    title: "2. Understand",
+                    subtitle: "Read the summary & key insights",
+                    copy: ["Read a short chapter summary with optional study notes that explain the key people, themes, historical context, and practical meaning.", "So Scripture goes from confusing to clear and meaningful."],
+                    outcome: "You understand what you're reading and why it matters.",
+                    bg: "#eaf8ed",
+                    accent: "#3b9b65",
+                  },
+                  {
+                    icon: "question",
+                    title: "3. Reflect",
+                    subtitle: "Answer questions & go deeper",
+                    copy: ["Answer reflection questions and Bible trivia to reinforce what you've learned and apply it to your daily life.", "Not just reading. Actually growing."],
+                    outcome: "You build spiritual habits and deepen your relationship with God.",
+                    bg: "#fff4d9",
+                    accent: "#d99822",
+                  },
+                  {
+                    icon: "chart",
+                    title: "4. Stay on Track",
+                    subtitle: "Build consistency that lasts",
+                    copy: ["Track your streak, follow your Bible progress, and continue your journey from Genesis to Revelation.", "One day at a time. You've got this."],
+                    outcome: "You stay consistent and finally finish what you started.",
+                    bg: "#f0ecff",
+                    accent: "#6555d9",
+                  },
+                ].map((step, index) => (
+                  <article key={step.title} className="bb-journey-column relative flex h-full flex-col px-3 text-left lg:px-9">
+                    {index < 3 ? (
+                      <div className="pointer-events-none absolute right-0 top-32 hidden h-[320px] w-px bg-gradient-to-b from-transparent via-[#eadfcd] to-transparent lg:block" />
+                    ) : null}
+                    <div className="relative mb-8 h-24">
+                      {index < 3 ? (
+                        <div className="absolute left-[184px] right-[-42px] top-12 z-0 hidden h-px lg:block" style={{ backgroundColor: step.accent, opacity: 0.5 }} />
+                      ) : null}
+                      <span className="absolute left-[calc(50%-72px)] top-[36px] z-20 grid h-9 w-9 place-items-center rounded-full text-sm font-black text-white shadow-[0_14px_30px_rgba(7,22,47,0.12)] lg:left-0" style={{ backgroundColor: step.accent }}>
+                        {index + 1}
+                      </span>
+                      <div className="relative z-10 mx-auto grid h-24 w-24 place-items-center rounded-full border border-white shadow-[0_20px_48px_rgba(7,22,47,0.08)] lg:mx-0 lg:ml-20" style={{ backgroundColor: step.bg }}>
+                        <LandingLineIcon name={step.icon} color={step.accent} large />
+                      </div>
+                    </div>
+                    <h3 className="bb-serif text-3xl font-black leading-tight text-[#07162f]">{step.title}</h3>
+                    <p className="mt-5 text-base font-black leading-6 text-[#07162f]">{step.subtitle}</p>
+                    <div className="mt-7 space-y-5 text-base font-medium leading-7 text-[#07162f]">
+                      {step.copy.map((line) => (
+                        <p key={line}>{line}</p>
+                      ))}
+                    </div>
+                    <div className="mt-auto pt-9">
+                    <div className="h-px w-full" style={{ backgroundColor: step.accent }} />
+                    <p className="mt-6 flex items-start gap-3 text-base font-medium leading-7 text-[#07162f]">
+                      <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full text-[11px] font-black text-white" style={{ backgroundColor: step.accent }}>✓</span>
+                      <span><span className="font-black">Outcome:</span> {step.outcome}</span>
+                    </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="px-5 pb-12 sm:px-8 lg:pb-16">
+            <div className="mx-auto max-w-7xl overflow-hidden rounded-[28px] border border-[#eadfcd] bg-[#fffaf2] shadow-[0_28px_90px_rgba(7,22,47,0.08)]">
+              <div className="relative grid min-h-[430px] lg:grid-cols-[0.56fr_0.44fr]">
+                <div className="relative z-10 px-7 py-9 sm:px-10 lg:px-12 lg:py-10">
+                  <div className="flex items-center justify-center gap-4 text-[11px] font-black uppercase tracking-[0.16em] text-[#a66a14] sm:justify-start">
+                    <span className="hidden h-px w-16 bg-[#d7a84a] sm:block" />
+                    <LandingLineIcon name="book" small color="#b7791f" />
+                    <span>Scripture was meant to be heard</span>
+                    <span className="hidden h-px w-16 bg-[#d7a84a] sm:block" />
+                  </div>
+
+                  <h2 className="bb-serif mt-5 max-w-2xl text-center text-[clamp(2rem,3.6vw,3.2rem)] font-black leading-[1.03] text-[#07162f] sm:text-left">
+                    For thousands of years, God&apos;s Word was heard before it was read.
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-center text-sm font-medium leading-7 text-[#334762] sm:text-left">
+                    People gathered to listen. Teachers read aloud. Early Christians shared Scripture together. Bible Buddy brings that ancient rhythm into modern life with guided audio lessons that help you understand, remember, and keep going.
+                  </p>
+
+                  <div className="mt-7 grid gap-5 md:grid-cols-3">
+                    {[
+                      ["headphones", "Listening helps you connect", "Hear the Bible come to life.", "#eaf2ff", "#2563eb"],
+                      ["book", "Understanding helps you remember", "We break down the verses so you truly get it.", "#eaf8ed", "#3b9b65"],
+                      ["flag", "Consistency helps you finish", "One lesson a day can take you through the Bible in one year.", "#fff4d9", "#d99822"],
+                    ].map(([icon, title, copy, bg, accent]) => (
+                      <div key={title} className="flex gap-4">
+                        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full" style={{ backgroundColor: bg }}>
+                          <LandingLineIcon name={icon} small color={accent} />
+                        </div>
+                        <div>
+                          <h3 className="text-sm font-black leading-5 text-[#07162f]">{title}</h3>
+                          <p className="mt-2 text-xs font-semibold leading-5 text-[#526075]">{copy}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-7 rounded-2xl border border-[#eadfcd] bg-[#fffdf8]/82 px-5 py-4 text-center shadow-[0_16px_38px_rgba(7,22,47,0.055)]">
+                    <p className="mx-auto max-w-2xl text-base font-black leading-7 text-[#07162f]">
+                      No matter how busy life gets, Bible Buddy brings God&apos;s Word to you, so you never fall behind.
+                    </p>
+                    <div className="mx-auto mt-3 h-0.5 w-16 bg-[#d99822]" />
+                  </div>
+                </div>
+                <div className="bb-bottom-story-image min-h-[320px] lg:min-h-full" aria-hidden="true" />
+              </div>
+
+              <div className="border-t border-[#eadfcd] bg-[#fffdf8]/90 px-7 py-7 text-center sm:px-12">
+                <div className="mx-auto max-w-3xl">
+                  <h2 className="bb-serif text-3xl font-black leading-tight text-[#07162f]">Ready to start your journey?</h2>
+                  <p className="mt-2 text-base font-semibold text-[#334762]">It only takes 15-30 minutes a day.</p>
+                  <Link href="/signup" className="bb-public-button mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#2477f2] px-9 py-4 text-base font-black text-white shadow-[0_22px_48px_rgba(36,119,242,0.26)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[420px]">
+                    <span className="text-[#ffe08a]">*</span>
+                    Start Your Bible Journey
+                  </Link>
+                  <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-semibold text-[#315f94]">
+                    <span className="inline-flex items-center gap-2"><LandingLineIcon name="shield" small color="#315f94" /> No credit card required</span>
+                    <span className="text-[#b7c3d4]">•</span>
+                    <span>Cancel anytime</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="faq" className="px-5 pb-10 sm:px-8">
+            <div className="mx-auto grid max-w-7xl gap-4 border-t border-[#eee4d8] pt-7 text-xs font-bold text-[#526075] sm:grid-cols-4">
+              {[
+                ["card", "No Credit Card Required"],
+                ["clock", "Cancel Anytime"],
+                ["shield", "Built on Truth"],
+                ["people", "Trusted by Thousands"],
+              ].map(([icon, label]) => (
+                <div key={label} className="flex items-center gap-3">
+                  <LandingLineIcon name={icon} small />
+                  <span>{label}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <footer className="border-t border-[#eee4d8] px-5 py-8 sm:px-8">
+            <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+              <BibleBuddyMark small />
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-bold text-[#07162f]">
+                <Link href="/privacy" className="transition hover:text-[#135397]">Privacy Policy</Link>
+                <Link href="/terms" className="transition hover:text-[#135397]">Terms of Service</Link>
+                <Link href="/contact" className="transition hover:text-[#135397]">Contact</Link>
+              </div>
+            </div>
+            <div className="mx-auto mt-5 flex max-w-7xl flex-wrap items-center justify-between gap-3 text-xs font-semibold text-[#6d7789]">
+              <span>Copyright 2026 Bible Buddy. All rights reserved.</span>
+              <span>Free to start. Cancel anytime.</span>
+            </div>
+          </footer>
+        </div>
+      </main>
+
+    </div>
+  );
 
   return (
     <div className="bb-public-landing min-h-screen bg-[#FBF9F4] text-black">
@@ -1153,13 +1563,13 @@ export default function LandingPage() {
                 >
                   Login
                 </Link>
-                <button
-                  type="button"
-                  onClick={openQuestionnaire}
-                  className="bb-force-black mt-2 w-full rounded-2xl border border-[#ece3d7] bg-[#FBF9F4] px-4 py-3 text-sm font-black text-[#0E1A3A]"
+                <Link
+                  href="/signup"
+                  onClick={() => setLandingMenuOpen(false)}
+                  className="bb-force-black mt-2 block w-full rounded-2xl border border-[#ece3d7] bg-[#FBF9F4] px-4 py-3 text-center text-sm font-black text-[#0E1A3A]"
                 >
                   Start Journey
-                </button>
+                </Link>
               </div>
             ) : null}
           </div>
@@ -1197,13 +1607,12 @@ export default function LandingPage() {
               ))}
             </div>
             <div className="mt-9">
-              <button
-                type="button"
-                onClick={openQuestionnaire}
-                className="bb-public-button bb-join-pulse w-full rounded-2xl bg-[#0E1A3A] px-7 py-4 text-base font-black text-white shadow-[0_16px_34px_rgba(14,26,58,0.18)] transition hover:-translate-y-0.5 hover:bg-[#172654] sm:w-auto sm:min-w-[320px]"
+              <Link
+                href="/signup"
+                className="bb-public-button bb-join-pulse inline-block w-full rounded-2xl bg-[#0E1A3A] px-7 py-4 text-base font-black text-white shadow-[0_16px_34px_rgba(14,26,58,0.18)] transition hover:-translate-y-0.5 hover:bg-[#172654] sm:w-auto sm:min-w-[320px]"
               >
                 Start Your Bible Journey Today
-              </button>
+              </Link>
               <p className="bb-force-black mt-4 flex items-center justify-center gap-2 text-sm font-semibold">
                 <svg className="h-4 w-4 shrink-0 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <rect x="5" y="10" width="14" height="10" rx="2" />
@@ -1294,6 +1703,276 @@ export default function LandingPage() {
         />
       ) : null}
     </div>
+  );
+}
+
+function LandingThemeStyles() {
+  return (
+    <style>{`
+      .bb-serif { font-family: "Playfair Display", "Cormorant Garamond", "Libre Baskerville", Georgia, serif; }
+      .bb-public-landing {
+        --bb-ink: #07162f;
+        --bb-muted: #526075;
+        --bb-cream: #fbf7ef;
+        --bb-blue: #135397;
+        --bb-gold: #e7bc67;
+      }
+      .bb-public-landing .bb-public-button,
+      .bb-public-landing .bb-public-button * {
+        color: #ffffff !important;
+      }
+      .bb-public-landing .bb-gold-button,
+      .bb-public-landing .bb-gold-button * {
+        color: #07162f !important;
+      }
+      .bb-landing-shell {
+        box-shadow: none;
+      }
+      .bb-hero-visual {
+        background:
+          radial-gradient(circle at 58% 36%, rgba(255, 226, 160, 0.78), transparent 18%),
+          linear-gradient(90deg, rgba(255, 253, 248, 0.55), rgba(255, 253, 248, 0.06)),
+          url("/landing-hero.png");
+        background-size: cover;
+        background-position: center;
+      }
+      .bb-phone-frame {
+        background: linear-gradient(145deg, #0d1727, #050912);
+        box-shadow: 0 34px 70px rgba(7, 22, 47, 0.35), inset 0 0 0 2px rgba(255,255,255,0.08);
+      }
+      .bb-dark-panel {
+        background:
+          url("/newmiddlebannerforlandingpage.png");
+        background-size: cover;
+        background-position: center;
+      }
+      .bb-listen-copy,
+      .bb-listen-copy h2,
+      .bb-listen-copy p,
+      .bb-listen-copy span,
+      .bb-listen-copy svg {
+        color: #07162f !important;
+      }
+      .bb-listen-copy p {
+        color: #526075 !important;
+      }
+      .bb-listen-copy {
+        text-shadow: none;
+      }
+      .bb-soft-card {
+        border: 1px solid rgba(9, 28, 58, 0.1);
+        background: rgba(255, 253, 248, 0.82);
+        box-shadow: 0 18px 42px rgba(7, 22, 47, 0.055);
+        backdrop-filter: blur(14px);
+      }
+      .bb-journey-card {
+        border: 1px solid rgba(9, 28, 58, 0.1);
+        background: linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(250, 244, 234, 0.9));
+        box-shadow: 0 22px 58px rgba(7, 22, 47, 0.065);
+      }
+      .bb-bottom-story-image {
+        background:
+          linear-gradient(90deg, #fffaf2 0%, rgba(255, 250, 242, 0.88) 10%, rgba(255, 250, 242, 0.32) 34%, rgba(255, 250, 242, 0) 58%),
+          url("/BottombannerLandingpage.png");
+        background-size: cover;
+        background-position: center right;
+      }
+      .bb-answer-card[data-selected="true"] {
+        border-color: #D89B43;
+        background: #fff8ea;
+        box-shadow: 0 14px 28px rgba(216, 155, 67, 0.16);
+      }
+      .bb-join-pulse {
+        animation: bb-join-pulse-shake 2.15s ease-in-out infinite;
+        transform-origin: center;
+      }
+      .bb-join-pulse:hover {
+        animation-play-state: paused;
+      }
+      @keyframes bb-join-pulse-shake {
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1); box-shadow: 0 18px 36px rgba(19, 83, 151, 0.2); }
+        11% { transform: translate3d(1px, 0, 0) scale(1.018); }
+        21% { transform: translate3d(-1px, 0, 0) scale(1.022); box-shadow: 0 24px 48px rgba(19, 83, 151, 0.28); }
+        34%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      }
+      .bb-modal-yes-shake {
+        animation: bb-modal-yes-shake 1.25s ease-in-out infinite;
+        transform-origin: center;
+      }
+      @keyframes bb-modal-yes-shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50% { transform: translateX(-5px); }
+        20%, 40%, 60% { transform: translateX(5px); }
+        70% { transform: translateX(0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bb-join-pulse,
+        .bb-modal-yes-shake {
+          animation: none;
+        }
+      }
+      @media (max-width: 640px) {
+        .bb-hero-visual {
+          background-position: center bottom;
+        }
+      }
+    `}</style>
+  );
+}
+
+function BibleBuddyMark({ small = false }: { small?: boolean }) {
+  return (
+    <div className="flex items-center gap-2.5 text-[#07162f]">
+      <svg className={small ? "h-6 w-6" : "h-7 w-7"} viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
+        <path d="M16 11.2v17" />
+      </svg>
+      <span className={small ? "text-base font-black tracking-tight" : "text-lg font-black tracking-tight"}>Bible Buddy</span>
+    </div>
+  );
+}
+
+function LandingPill({ children }: { children: string }) {
+  return (
+    <div className="inline-flex items-center gap-2 rounded-full bg-white/82 px-3 py-2 text-[11px] font-black uppercase tracking-[0.14em] text-[#07162f] shadow-[0_8px_22px_rgba(7,22,47,0.08)]">
+      <span className="text-[#e2a63a]">*</span>
+      <span>{children}</span>
+    </div>
+  );
+}
+
+function AvatarStack() {
+  const avatars = ["/Lindseyhappy.png", "/WalterHappy.png", "/Stevehappy.png", "/Newlouisstareyes.png"];
+  return (
+    <div className="flex items-center justify-center">
+      {avatars.map((src, index) => (
+        <div key={src} className="-ml-3 first:ml-0">
+          <Image src={src} alt="" width={48} height={48} className="h-12 w-12 rounded-full border-2 border-white object-cover shadow-[0_10px_22px_rgba(7,22,47,0.12)]" priority={index === 0} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function RotatingProofStrip() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeItem = landingProofItems[activeIndex] ?? landingProofItems[0];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % landingProofItems.length);
+    }, 15000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="mx-auto max-w-3xl px-2 py-2 text-center">
+      <p className="bb-serif text-[clamp(1.85rem,4vw,3.4rem)] font-black leading-[1.08] tracking-[-0.01em] text-[#2f3a4b]">
+        "{activeItem.quote}"
+      </p>
+      <p className="mt-5 text-sm font-black uppercase tracking-[0.18em] text-[#9b8560]">
+        {activeItem.name} · {activeItem.detail}
+      </p>
+    </div>
+  );
+}
+
+function PhoneMockup() {
+  return (
+    <div className="bb-phone-frame rounded-[34px] p-3">
+      <div className="overflow-hidden rounded-[26px] bg-[#071221] p-5 text-white">
+        <div className="mb-4 flex items-center justify-between text-[11px] font-bold text-white/78">
+          <span>5:31</span>
+          <span>Wi-Fi 100%</span>
+        </div>
+        <p className="text-xs font-semibold text-white/76">Good morning, Alex</p>
+        <p className="mt-5 text-xs font-bold text-white/54">Today's Lesson</p>
+        <h3 className="bb-serif mt-1 text-3xl font-black leading-tight text-white">Genesis 1-2</h3>
+        <p className="text-sm font-semibold text-white/62">The Beginning</p>
+        <div className="relative mt-5 overflow-hidden rounded-lg">
+          <Image src="/creationoftheworld.png" alt="" width={460} height={280} className="h-44 w-full object-cover" />
+          <div className="absolute inset-0 grid place-items-center bg-black/18">
+            <div className="grid h-16 w-16 place-items-center rounded-full bg-white text-[#07162f] shadow-[0_14px_36px_rgba(0,0,0,0.28)]">
+              <LandingLineIcon name="play" />
+            </div>
+          </div>
+          <span className="absolute bottom-3 right-3 text-xs font-bold text-white/78">15:42</span>
+        </div>
+        <div className="mt-6">
+          <div className="flex items-center justify-between text-xs font-bold text-white/62">
+            <span>Your Progress</span>
+            <span>8%</span>
+          </div>
+          <p className="mt-1 text-sm font-black text-white">Day 32 of 365</p>
+          <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/12">
+            <div className="h-full w-[32%] rounded-full bg-[#20c997]" />
+          </div>
+          <div className="mt-4 flex justify-between text-[11px] font-bold text-white/72">
+            {[29, 30, 31, 32, 33, 34, 35].map((day) => (
+              <span key={day} className={day === 32 ? "grid h-7 w-7 place-items-center rounded-full bg-white text-[#07162f]" : "grid h-7 w-7 place-items-center rounded-full bg-white/8"}>
+                {day}
+              </span>
+            ))}
+          </div>
+        </div>
+        <p className="bb-serif mx-auto mt-6 max-w-[210px] text-center text-sm italic leading-6 text-white/72">
+          Your word is a lamp for my feet, a light on my path.
+        </p>
+        <p className="mt-1 text-center text-xs font-semibold text-white/54">Psalm 119:105</p>
+      </div>
+    </div>
+  );
+}
+
+function LandingLineIcon({
+  name,
+  color = "currentColor",
+  small = false,
+  large = false,
+  light = false,
+}: {
+  name: string;
+  color?: string;
+  small?: boolean;
+  large?: boolean;
+  light?: boolean;
+}) {
+  const size = small ? "h-4 w-4" : large ? "h-9 w-9" : "h-6 w-6";
+  const stroke = small ? "2.1" : "1.9";
+  const common = {
+    className: `${size} shrink-0 ${light ? "text-white" : ""}`,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: color,
+    strokeWidth: stroke,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+
+  return (
+    <svg {...common}>
+      {name === "headphones" ? <><path d="M4 13a8 8 0 0 1 16 0" /><path d="M5 13h3v6H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2Z" /><path d="M19 13h-3v6h3a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2Z" /></> : null}
+      {name === "book" ? <><path d="M4 5c5-1.8 8 .2 8 2.4V20c0-2.2-3-4.2-8-2.4V5Z" /><path d="M20 5c-5-1.8-8 .2-8 2.4V20c0-2.2 3-4.2 8-2.4V5Z" /></> : null}
+      {name === "calendar" ? <><rect x="4" y="5" width="16" height="15" rx="2" /><path d="M8 3v4" /><path d="M16 3v4" /><path d="M4 10h16" /><path d="m8 15 2 2 5-5" /></> : null}
+      {name === "flag" ? <><path d="M5 21V4" /><path d="M5 5h12l-2 4 2 4H5" /></> : null}
+      {name === "arrow" ? <><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></> : null}
+      {name === "lock" ? <><rect x="5" y="10" width="14" height="10" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></> : null}
+      {name === "play" ? <><circle cx="12" cy="12" r="10" /><path d="m10 8 6 4-6 4V8Z" /></> : null}
+      {name === "question" ? <><circle cx="12" cy="12" r="10" /><path d="M9.5 9a3 3 0 0 1 5 2.2c0 2.6-3 2.5-3 4.8" /><path d="M12 19h.01" /></> : null}
+      {name === "check" ? <><circle cx="12" cy="12" r="10" /><path d="m8 12.4 2.7 2.7L16.5 9" /></> : null}
+      {name === "chart" ? <><path d="M5 19V9" /><path d="M12 19V5" /><path d="M19 19v-8" /><path d="M3 19h18" /></> : null}
+      {name === "car" ? <><path d="M5 16h14" /><path d="m6.5 16 1.6-5h7.8l1.6 5" /><circle cx="8" cy="18" r="1.5" /><circle cx="16" cy="18" r="1.5" /></> : null}
+      {name === "dumbbell" ? <><path d="M6 8v8" /><path d="M18 8v8" /><path d="M8 12h8" /><path d="M3 10v4" /><path d="M21 10v4" /></> : null}
+      {name === "clean" ? <><path d="M14 4 4 14" /><path d="m5 13 6 6" /><path d="m9 9 6 6" /><path d="M16 5l3 3" /></> : null}
+      {name === "coffee" ? <><path d="M5 8h12v7a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V8Z" /><path d="M17 10h1a3 3 0 0 1 0 6h-1" /><path d="M8 4v2" /><path d="M12 4v2" /></> : null}
+      {name === "walk" ? <><circle cx="12" cy="5" r="2" /><path d="m10 9 4 1 2 4" /><path d="m11 10-2 4-3 2" /><path d="m13 14-1 7" /><path d="m9 15 4 2 3 4" /></> : null}
+      {name === "crown" ? <><path d="m4 8 4 3 4-6 4 6 4-3-2 10H6L4 8Z" /><path d="M6 18h12" /></> : null}
+      {name === "card" ? <><rect x="3" y="6" width="18" height="12" rx="2" /><path d="M3 10h18" /><path d="M7 15h3" /></> : null}
+      {name === "shield" ? <><path d="M12 3 20 6v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6l8-3Z" /><path d="m8.5 12 2.2 2.2 4.8-5" /></> : null}
+      {name === "people" ? <><circle cx="9" cy="8" r="3" /><path d="M3.5 19a5.5 5.5 0 0 1 11 0" /><circle cx="17" cy="9" r="2.5" /><path d="M15.5 15.5A5 5 0 0 1 21 19" /></> : null}
+    </svg>
   );
 }
 

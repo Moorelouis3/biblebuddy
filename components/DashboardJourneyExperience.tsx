@@ -2061,47 +2061,10 @@ export default function DashboardJourneyExperience({
   }, [getDashboardGuidedIntroStorageKey, userId]);
 
   useEffect(() => {
-    if (!userId || deepStudyFocusActive || activePageKey !== "home") return;
-    let cancelled = false;
-    const timer = window.setTimeout(async () => {
-      if (cancelled || dashboardGuidedIntroStartedRef.current) return;
-      const storageKey = getDashboardGuidedIntroStorageKey();
-      const replayRequested = window.localStorage.getItem("bb:replay-dashboard-guided-intro") === "1";
-      if (!replayRequested && window.localStorage.getItem(storageKey) === "1") return;
-
-      try {
-        const { data } = await supabase
-          .from("profile_stats")
-          .select("feature_tours")
-          .eq("user_id", userId)
-          .maybeSingle();
-        const featureTours = normalizeFeatureTours((data as { feature_tours?: unknown } | null)?.feature_tours);
-        if (!replayRequested && featureTours.dashboard_guided_intro === true) {
-          window.localStorage.setItem(storageKey, "1");
-          return;
-        }
-      } catch (error) {
-        console.warn("[DASHBOARD_TOUR] Could not load dashboard tour state:", error);
-      }
-
-      if (cancelled) return;
-      window.localStorage.removeItem("bb:replay-dashboard-guided-intro");
-      dashboardGuidedIntroStartedRef.current = true;
-      setDashboardGuidedIntroStep(0);
-      void logDashboardGuidedIntroAction(ACTION_TYPE.dashboard_tour_started, "Dashboard guided intro started");
-    }, 900);
-
-    return () => {
-      cancelled = true;
-      window.clearTimeout(timer);
-    };
-  }, [
-    activePageKey,
-    deepStudyFocusActive,
-    getDashboardGuidedIntroStorageKey,
-    logDashboardGuidedIntroAction,
-    userId,
-  ]);
+    dashboardGuidedIntroStartedRef.current = true;
+    setDashboardGuidedIntroStep(null);
+    setDashboardGuidedIntroTargetRect(null);
+  }, []);
 
   useEffect(() => {
     if (dashboardGuidedIntroStep === null) return;

@@ -5,7 +5,7 @@ type UpgradeSuccessPageProps = {
 export default async function UpgradeSuccessPage({ searchParams }: UpgradeSuccessPageProps) {
   const resolvedSearchParams = searchParams ? await searchParams : {};
   const rawReturnTo = typeof resolvedSearchParams.returnTo === "string" ? resolvedSearchParams.returnTo : "";
-  const returnTo = rawReturnTo.startsWith("/") && !rawReturnTo.startsWith("//") ? rawReturnTo : "/dashboard?view=bible-year&day=1";
+  const returnTo = rawReturnTo.startsWith("/") && !rawReturnTo.startsWith("//") ? rawReturnTo : "/dashboard";
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4 py-16">

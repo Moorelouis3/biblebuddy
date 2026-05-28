@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v13-2026-05-25-offline-study-cache";
+const CACHE_VERSION = "v14-2026-05-28-dashboard-media-player";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 const RUNTIME_CACHE_NAME = `biblebuddy-runtime-${CACHE_VERSION}`;
 const MEDIA_CACHE_NAME = `biblebuddy-media-${CACHE_VERSION}`;
