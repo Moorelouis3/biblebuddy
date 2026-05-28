@@ -9662,18 +9662,18 @@ Before we understand redemption, we need to understand what God made humanity fo
         type="button"
         onClick={() => setShowBibleProgressDetails(true)}
         data-bb-dashboard-tour="bible-progress"
-        className="block w-full overflow-hidden rounded-[28px] border border-[#26364a] bg-[radial-gradient(circle_at_15%_0%,rgba(20,184,166,0.12),transparent_38%),linear-gradient(145deg,#101b29,#0b1420)] p-6 text-left text-[#f8fafc] shadow-[0_24px_70px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:shadow-[0_28px_80px_rgba(0,0,0,0.42)] sm:p-7"
+        className="block w-full overflow-hidden rounded-[20px] border border-[#223247] bg-[linear-gradient(145deg,#111b28,#0a121d)] p-5 text-left text-[#f8fafc] shadow-[0_18px_48px_rgba(0,0,0,0.30),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:shadow-[0_22px_58px_rgba(0,0,0,0.36)] sm:p-6"
         aria-label="Open Bible progress details"
       >
         <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="flex min-w-0 items-center gap-5 lg:border-r lg:border-[#2a3a50] lg:pr-8">
-            <span className="grid h-20 w-20 shrink-0 place-items-center rounded-[24px] border border-[#34465f] bg-[#182436] shadow-[0_14px_34px_rgba(0,0,0,0.28)]">
-              <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={58} title={`${currentStreak} day streak`} />
+          <div className="flex min-w-0 items-center gap-4 lg:border-r lg:border-[#26364b] lg:pr-7">
+            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[14px] border border-[#2c3b51] bg-[#182232] shadow-[0_10px_24px_rgba(0,0,0,0.22)]">
+              <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={46} title={`${currentStreak} day streak`} />
             </span>
             <span className="min-w-0">
-              <span className="block text-xs font-black uppercase tracking-[0.24em] text-[#a8b3c4]">Daily Streak</span>
-              <span className="mt-2 block text-3xl font-black leading-none text-white">{streakLabel} Streak</span>
-              <span className="mt-3 block text-sm font-semibold leading-6 text-[#c7d0dd]">
+              <span className="block text-[11px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Daily Streak</span>
+              <span className="mt-1.5 block text-[28px] font-bold leading-none text-white">{streakLabel} Streak</span>
+              <span className="mt-2 block text-[13px] font-medium leading-5 text-[#b8c3d2]">
                 Keep opening Scripture and building your daily rhythm.
               </span>
             </span>
@@ -9682,27 +9682,27 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="min-w-0">
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
-                <p className="text-xs font-black uppercase tracking-[0.24em] text-[#a8b3c4]">Bible Progress</p>
-                <h1 className="mt-2 text-2xl font-black leading-tight text-white sm:text-3xl">
+                <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Bible Progress</p>
+                <h1 className="mt-1.5 text-[26px] font-bold leading-tight text-white sm:text-[30px]">
                   {overallPercent}% of the Bible studied
                 </h1>
-                <p className="mt-3 text-sm font-semibold leading-6 text-[#c7d0dd]">
+                <p className="mt-2 text-[13px] font-medium leading-5 text-[#b8c3d2]">
                   You are on Day {report?.currentDay ?? day.dayNumber}. Press play to continue today&apos;s lesson.
                 </p>
               </div>
-              <span className="mt-1 grid h-12 w-12 shrink-0 place-items-center rounded-full border border-[#34465f] bg-[#152235] text-[#cbd5e1]">
+              <span className="mt-1 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#2c3b51] bg-[#141f2f] text-[#cbd5e1]">
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="m9 18 6-6-6-6" />
                 </svg>
               </span>
             </div>
-            <div className="mt-5 h-2.5 overflow-hidden rounded-full bg-[#344055]">
+            <div className="mt-4 h-2 overflow-hidden rounded-full bg-[#303b4f]">
               <div
                 className="h-full rounded-full bg-[#10c989] transition-all duration-700"
                 style={{ width: `${overallPercent}%` }}
               />
             </div>
-            <p className="mt-3 text-xs font-black uppercase tracking-[0.14em] text-[#10c989]">
+            <p className="mt-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#10c989]">
               {statusStat.value} {statusStat.hint}
             </p>
           </div>
@@ -10189,33 +10189,33 @@ Before we understand redemption, we need to understand what God made humanity fo
     ];
     return (
       <section data-bible-year-study-area data-bb-dashboard-tour="study-tasks" className="dashboard-bible-year-study-area grid gap-5">
-        <article className="overflow-hidden rounded-[28px] border border-[#26364a] bg-[radial-gradient(circle_at_18%_0%,rgba(16,201,137,0.10),transparent_36%),linear-gradient(145deg,#101b29,#0b1420)] p-5 text-[#f8fafc] shadow-[0_24px_70px_rgba(0,0,0,0.36),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl sm:p-7">
+        <article className="overflow-hidden rounded-[20px] border border-[#223247] bg-[linear-gradient(145deg,#111b28,#0a121d)] p-5 text-[#f8fafc] shadow-[0_18px_48px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-[10px] font-black uppercase tracking-[0.28em] text-[#a8b3c4]">Today&apos;s Bible Study</p>
-              <h2 className="mt-2 text-2xl font-black leading-tight text-white sm:text-3xl">
+              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#9aa7ba]">Today&apos;s Bible Study</p>
+              <h2 className="mt-1.5 text-[24px] font-bold leading-tight text-white sm:text-[28px]">
                 Day {day.dayNumber}: {day.title}
               </h2>
-              <p className="mt-1 text-sm font-bold text-[#c7d0dd]">{readingSummary}</p>
+              <p className="mt-1 text-[13px] font-semibold text-[#b8c3d2]">{readingSummary}</p>
             </div>
-            <span className={`rounded-full border px-4 py-2 text-xs font-black ${readingComplete ? "border-[#10c989]/50 bg-[#10c989]/14 text-[#20e6a0]" : "border-[#2f465f] bg-[#132238] text-[#d7e2ef]"}`}>
+            <span className={`rounded-full border px-3 py-1.5 text-[12px] font-bold ${readingComplete ? "border-[#10c989]/45 bg-[#10c989]/12 text-[#20e6a0]" : "border-[#2b3c52] bg-[#121e2d] text-[#d7e2ef]"}`}>
               {readingComplete ? "Complete" : "In Progress"}
             </span>
           </div>
 
-          <div className="mt-5 grid gap-5 xl:grid-cols-[260px_minmax(0,1fr)]">
-            <div className="aspect-[4/5] overflow-hidden rounded-[22px] border border-[#2d4057] bg-black shadow-[0_18px_42px_rgba(0,0,0,0.34)] xl:aspect-auto xl:min-h-[320px]">
+          <div className="mt-4 grid gap-5 xl:grid-cols-[230px_minmax(0,1fr)]">
+            <div className="aspect-square overflow-hidden rounded-[14px] border border-[#27384e] bg-black shadow-[0_14px_32px_rgba(0,0,0,0.30)]">
               {cover ? (
                 <img src={cover} alt="" loading="eager" decoding="async" className="h-full w-full object-cover" />
               ) : (
                 <div className="grid h-full w-full place-items-center text-5xl" aria-hidden="true">📖</div>
               )}
             </div>
-            <div className="rounded-[24px] border border-[#243449] bg-[#0d1826]/88 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur">
+            <div className="rounded-[16px] border border-[#1f2d3f] bg-[#0d1724]/76 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur">
               <div className="px-1 pb-1">
-                <p className="text-sm font-bold text-[#a8b3c4]">Guided Audio Lesson</p>
-                <h3 className="mt-1 text-xl font-black text-white">{day.title}</h3>
-                <p className="mt-1 text-sm font-semibold leading-6 text-[#c7d0dd]">
+                <p className="text-[13px] font-medium text-[#9aa7ba]">Guided Audio Lesson</p>
+                <h3 className="mt-1 text-[20px] font-bold text-white">{day.title}</h3>
+                <p className="mt-1 text-[13px] font-medium leading-5 text-[#b8c3d2]">
                   Press play and continue your Bible journey with Scripture, teaching, and guided transitions.
                 </p>
               </div>
@@ -10234,11 +10234,11 @@ Before we understand redemption, we need to understand what God made humanity fo
                   }}
                 />
               ) : (
-                <div className="mt-3 rounded-2xl border border-[#26364a] bg-[#111d2d] p-4 text-sm font-bold text-[#c7d0dd]">
+                <div className="mt-3 rounded-[14px] border border-[#26364a] bg-[#111d2d] p-4 text-sm font-bold text-[#c7d0dd]">
                   Today&apos;s audio lesson is being prepared.
                 </div>
               )}
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
+              <div className="mt-2 grid gap-2 sm:grid-cols-2">
                 <button
                   type="button"
                   onClick={() => {
@@ -10246,7 +10246,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     markBibleYearDayCardComplete(day, "reading");
                   }}
                   disabled={readingComplete}
-                  className={`rounded-2xl px-5 py-4 text-sm font-black shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition ${
+                  className={`rounded-[14px] px-5 py-3.5 text-[13px] font-bold shadow-[0_10px_24px_rgba(16,201,137,0.10)] transition ${
                     readingComplete
                       ? "cursor-default border border-[#10c989]/50 bg-[#10c989]/18 text-[#20e6a0]"
                       : "bg-[#10c989] text-white hover:brightness-105"
@@ -10257,7 +10257,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <button
                   type="button"
                   onClick={() => void shareLesson()}
-                  className="rounded-2xl border border-[#26364a] bg-[#101c2b] px-5 py-4 text-sm font-black text-[#f8fafc] transition hover:bg-[#16263a]"
+                  className="rounded-[14px] border border-[#26364a] bg-[#101c2b] px-5 py-3.5 text-[13px] font-bold text-[#f8fafc] transition hover:bg-[#16263a]"
                 >
                   {shareCopied ? "Lesson Link Copied" : "Share Lesson"}
                 </button>
@@ -10269,27 +10269,27 @@ Before we understand redemption, we need to understand what God made humanity fo
           ) : null}
         </article>
 
-        <section className="overflow-hidden rounded-[28px] border border-[#26364a] bg-[#101b29] text-[#f8fafc] shadow-[0_20px_58px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl">
+        <section className="overflow-hidden rounded-[20px] border border-[#223247] bg-[#101a27] text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl">
           {supportCards.map((item, index) => {
             const expanded = item.key === "discussion" ? bibleYearOptionalDiscussionDay === day.dayNumber : activeBibleYearDayCard === item.key;
             return (
               <div key={item.key} className={index > 0 ? "border-t border-[#243449]" : ""}>
-                <div className="grid gap-4 p-5 sm:grid-cols-[minmax(0,1fr)_300px] sm:items-center">
+                <div className="grid gap-4 p-4 sm:grid-cols-[minmax(0,1fr)_280px] sm:items-center">
                   <div className="flex min-w-0 gap-3">
-                    <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[#1b2a3e] text-3xl shadow-[0_12px_26px_rgba(0,0,0,0.22)]" aria-hidden="true">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#1a283b] text-2xl shadow-[0_10px_22px_rgba(0,0,0,0.18)]" aria-hidden="true">
                       {item.icon}
                     </span>
                     <div className="min-w-0">
-                      <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#a8b3c4]">{item.eyebrow}</p>
-                      <h3 className="mt-1 text-lg font-black leading-tight text-white">{item.title}</h3>
-                      <p className="mt-1 text-sm font-semibold leading-6 text-[#c7d0dd]">{item.body}</p>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">{item.eyebrow}</p>
+                      <h3 className="mt-1 text-[17px] font-bold leading-tight text-white">{item.title}</h3>
+                      <p className="mt-1 text-[13px] font-medium leading-5 text-[#b8c3d2]">{item.body}</p>
                     </div>
                   </div>
                   <div className="grid gap-2">
                     <button
                       type="button"
                       onClick={item.onClick}
-                      className="flex items-center justify-between rounded-2xl border border-[#26364a] bg-[#132033] px-4 py-3 text-sm font-black text-white transition hover:bg-[#192a40]"
+                      className="flex items-center justify-between rounded-[14px] border border-[#26364a] bg-[#121e2d] px-4 py-2.5 text-[13px] font-bold text-white transition hover:bg-[#18283b]"
                       aria-expanded={expanded}
                     >
                       <span>{item.button}</span>
@@ -10313,11 +10313,11 @@ Before we understand redemption, we need to understand what God made humanity fo
           })}
         </section>
 
-        <section data-bb-dashboard-tour="journey-map" className="overflow-hidden rounded-[28px] border border-[#26364a] bg-[#101b29] text-[#f8fafc] shadow-[0_20px_58px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl">
-          <button type="button" onClick={openBibleYearSeriesDashboard} className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition hover:bg-white/5">
+        <section data-bb-dashboard-tour="journey-map" className="overflow-hidden rounded-[20px] border border-[#223247] bg-[#101a27] text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl">
+          <button type="button" onClick={openBibleYearSeriesDashboard} className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-white/5">
             <span>
-              <span className="block text-[10px] font-black uppercase tracking-[0.24em] text-[#a8b3c4]">Journey Map</span>
-              <span className="mt-1 block text-lg font-black text-white">Your Bible journey timeline</span>
+              <span className="block text-[10px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Journey Map</span>
+              <span className="mt-1 block text-[17px] font-bold text-white">Your Bible journey timeline</span>
             </span>
             <span className="text-2xl text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">›</span>
           </button>
@@ -10342,7 +10342,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                         disabled={!milestoneDay}
                         className={`relative z-10 mx-auto grid h-[82px] w-[62px] overflow-visible rounded-[15px] border bg-[var(--bb-card,#ffffff)] p-1 shadow-sm transition ${
                           isComplete
-                            ? "border-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.42)] ring-2 ring-emerald-300/25"
+                            ? "border-[#10c989] shadow-[0_0_14px_rgba(16,201,137,0.20)] ring-1 ring-[#10c989]/25"
                             : isCurrent
                               ? "bible-year-current-cover border-[var(--bb-accent,#2f7fe8)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)] ring-2 ring-[color-mix(in_srgb,var(--bb-accent)_22%,transparent)]"
                               : isLocked
@@ -10359,8 +10359,8 @@ Before we understand redemption, we need to understand what God made humanity fo
                           {isComplete ? "✓" : isCurrent ? "•" : "🔒"}
                         </span>
                       </button>
-                      <p className="mt-2 truncate text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">Day {milestone.dayNumber}</p>
-                      <p className={`mt-0.5 text-[10px] font-bold leading-tight ${isComplete ? "text-emerald-500" : isCurrent ? "text-[var(--bb-accent,#2f7fe8)]" : "text-[var(--bb-text-muted,#6b7280)]"}`}>
+                      <p className="mt-2 truncate text-[11px] font-bold leading-tight text-white">Day {milestone.dayNumber}</p>
+                      <p className={`mt-0.5 text-[10px] font-semibold leading-tight ${isComplete ? "text-[#20e6a0]" : isCurrent ? "text-[#20e6a0]" : "text-[#9aa7ba]"}`}>
                         {isComplete ? "Complete" : isCurrent ? "Current" : "Locked"}
                       </p>
                     </div>

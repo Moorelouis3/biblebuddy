@@ -385,38 +385,38 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   return (
-    <section className="mb-4 overflow-hidden rounded-[22px] border border-[#243449] bg-[#101b29]/72 p-4 text-[#f8fafc] shadow-[0_14px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-md">
-      <div className="flex min-w-0 flex-col gap-4">
+    <section className="mb-3 overflow-hidden rounded-[16px] text-[#f8fafc]">
+      <div className="flex min-w-0 flex-col gap-3">
         <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={toggleAudio}
             disabled={loading}
-            className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white text-[#0b1420] shadow-[0_12px_28px_rgba(255,255,255,0.16)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#f8fafc] text-[#08111d] shadow-[0_8px_18px_rgba(255,255,255,0.10)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
             aria-label={playing ? "Pause Day 1 audio lesson" : "Play Day 1 audio lesson"}
           >
             {loading ? (
-              <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
             ) : playing ? (
-              <span className="text-base font-black leading-none" aria-hidden="true">II</span>
+              <span className="text-sm font-black leading-none" aria-hidden="true">II</span>
             ) : (
-              <span className="ml-1 h-0 w-0 border-y-[8px] border-l-[13px] border-y-transparent border-l-current" aria-hidden="true" />
+              <span className="ml-0.5 h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-current" aria-hidden="true" />
             )}
           </button>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-black text-white">{title}</p>
-            <p className="mt-0.5 text-xs font-bold text-[#a8b3c4]">
+            <p className="truncate text-[15px] font-bold text-white">{title}</p>
+            <p className="mt-0.5 text-[11px] font-semibold text-[#8e9baf]">
               {playing ? "Playing" : currentTime > 2 ? "Ready to resume" : "Audio lesson"}
               {" • "}
               {duration ? formatTime(duration) : durationLabel}
             </p>
           </div>
-          <span className="rounded-full border border-[#2d4057] bg-[#18263a] px-2.5 py-1 text-xs font-black text-[#f8fafc]">
+          <span className="rounded-full border border-[#2a394d] bg-[#121e2d] px-2.5 py-1 text-[11px] font-bold text-[#d8e0eb]">
             {playbackRate}x
           </span>
         </div>
 
-        <div className="grid gap-3">
+        <div className="grid gap-2">
             <div className="grid gap-1.5 rounded-2xl bg-transparent px-0 py-2">
               <input
                 type="range"
@@ -444,9 +444,9 @@ export default function BibleYearLessonAudioPlayer({
                 }}
                 disabled={!effectiveDuration}
                 aria-label="Audio progress"
-                className="h-2 w-full cursor-pointer accent-[#10c989] disabled:cursor-not-allowed disabled:opacity-50"
+                className="h-1.5 w-full cursor-pointer accent-[#10c989] disabled:cursor-not-allowed disabled:opacity-50"
               />
-              <div className="flex items-center justify-between gap-3 text-[11px] font-bold text-[#a8b3c4]">
+              <div className="flex items-center justify-between gap-3 text-[11px] font-semibold text-[#8e9baf]">
                 <span>{formatTime(displayTime)}</span>
                 <span>
                   {duration
@@ -458,12 +458,12 @@ export default function BibleYearLessonAudioPlayer({
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-2">
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
               <button
                 type="button"
                 onClick={() => seekBy(-15)}
                 disabled={!audioRef.current}
-                className="rounded-xl border border-[#2d4057] bg-[#152235] px-3 py-2 text-xs font-black text-[#f8fafc] transition hover:bg-[#1b2c42] disabled:opacity-50"
+                className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
               >
                 -15s
               </button>
@@ -471,7 +471,7 @@ export default function BibleYearLessonAudioPlayer({
                 type="button"
                 onClick={() => seekBy(15)}
                 disabled={!audioRef.current}
-                className="rounded-xl border border-[#2d4057] bg-[#152235] px-3 py-2 text-xs font-black text-[#f8fafc] transition hover:bg-[#1b2c42] disabled:opacity-50"
+                className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
               >
                 +15s
               </button>
@@ -480,10 +480,10 @@ export default function BibleYearLessonAudioPlayer({
                   key={rate}
                   type="button"
                   onClick={() => changePlaybackRate(rate)}
-                  className={`rounded-xl border px-3 py-2 text-xs font-black transition hover:brightness-95 ${
+                  className={`rounded-full border px-3 py-1.5 text-[11px] font-bold transition hover:brightness-95 ${
                     playbackRate === rate
                       ? "border-[#10c989] bg-[#10c989] text-white"
-                      : "border-[#2d4057] bg-[#152235] text-[#f8fafc]"
+                      : "border-[#2a394d] bg-[#121e2d] text-[#d8e0eb]"
                   }`}
                   aria-pressed={playbackRate === rate}
                 >
