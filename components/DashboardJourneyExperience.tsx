@@ -9639,24 +9639,6 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleYearHomeProgressSnapshot(day: GenesisBibleYearDay) {
     const report = effectiveBibleYearReport;
     const overallPercent = report?.overallPercent ?? 0;
-    const expectedFinishDateLabel = report?.expectedFinishDateLabel ?? "Calculating";
-    const startDateLabel = report?.startDateLabel ?? bibleYearSchedule.startDateLabel;
-    const statusLabel = report?.statusLabel ?? "On pace";
-    const statusMatch = statusLabel.match(/(\d+)\s+days?\s+(ahead|behind)/i);
-    const statusDirection = report?.statusDirection ?? (statusMatch?.[2]?.toLowerCase() as "ahead" | "behind" | undefined) ?? "on-track";
-    const statusDays = report?.statusDays ?? (statusMatch ? Number(statusMatch[1]) : 0);
-    const statusStat = statusDirection === "ahead" && statusDays > 0
-      ? {
-          value: `+${statusDays} ${statusDays === 1 ? "day" : "days"}`,
-          hint: "ahead",
-        }
-      : statusDirection === "behind" && statusDays > 0
-      ? {
-          value: `-${statusDays} ${statusDays === 1 ? "day" : "days"}`,
-          hint: "behind",
-        }
-      : { value: "On track", hint: "today" };
-
     const currentStreak = report?.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
     const streakLabel = `${currentStreak} ${currentStreak === 1 ? "Day" : "Days"}`;
     const lightThemeUsesClassicFlame =
@@ -9665,56 +9647,37 @@ Before we understand redemption, we need to understand what God made humanity fo
       normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin) === "none";
 
     return (
-      <button
-        type="button"
-        onClick={() => setShowBibleProgressDetails(true)}
+      <section
         data-bb-dashboard-tour="bible-progress"
-        className="block w-full overflow-hidden rounded-[20px] border border-[#223247] bg-[linear-gradient(145deg,#111b28,#0a121d)] p-5 text-left text-[#f8fafc] shadow-[0_18px_48px_rgba(0,0,0,0.30),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:shadow-[0_22px_58px_rgba(0,0,0,0.36)] sm:p-6"
-        aria-label="Open Bible progress details"
+        className="w-full overflow-hidden rounded-[20px] border border-[#223247] bg-[linear-gradient(145deg,#111b28,#0a121d)] p-4 text-left text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl sm:p-5"
       >
-        <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="flex min-w-0 items-center gap-4 lg:border-r lg:border-[#26364b] lg:pr-7">
-            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[14px] border border-[#2c3b51] bg-[#182232] shadow-[0_10px_24px_rgba(0,0,0,0.22)]">
-              <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={46} title={`${currentStreak} day streak`} />
+        <div className="grid gap-5 lg:grid-cols-2 lg:items-start">
+          <div className="flex min-w-0 items-start gap-4 lg:border-r lg:border-[#26364b] lg:pr-7">
+            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-[14px] border border-[#2c3b51] bg-[#182232] shadow-[0_10px_24px_rgba(0,0,0,0.20)]">
+              <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={40} title={`${currentStreak} day streak`} />
             </span>
             <span className="min-w-0">
               <span className="block text-[11px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Daily Streak</span>
-              <span className="mt-1.5 block text-[28px] font-bold leading-none text-white">{streakLabel} Streak</span>
-              <span className="mt-2 block text-[13px] font-medium leading-5 text-[#b8c3d2]">
+              <span className="mt-1 block text-[26px] font-bold leading-none text-white">{streakLabel} Streak</span>
+              <span className="mt-1.5 block text-[13px] font-medium leading-5 text-[#b8c3d2]">
                 Keep opening Scripture and building your daily rhythm.
               </span>
             </span>
           </div>
 
           <div className="min-w-0">
-            <div className="flex items-start justify-between gap-4">
-              <div className="min-w-0">
-                <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Bible Progress</p>
-                <h1 className="mt-1.5 text-[26px] font-bold leading-tight text-white sm:text-[30px]">
-                  {overallPercent}% of the Bible studied
-                </h1>
-                <p className="mt-2 text-[13px] font-medium leading-5 text-[#b8c3d2]">
-                  You are on Day {report?.currentDay ?? day.dayNumber}. Press play to continue today&apos;s lesson.
-                </p>
-              </div>
-              <span className="mt-1 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#2c3b51] bg-[#141f2f] text-[#cbd5e1]">
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </span>
+            <div className="min-w-0">
+              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Bible Progress</p>
+              <h1 className="mt-1 text-[26px] font-bold leading-tight text-white sm:text-[30px]">
+                {overallPercent}% of the Bible studied
+              </h1>
+              <p className="mt-1.5 text-[13px] font-medium leading-5 text-[#b8c3d2]">
+                You are on Day {report?.currentDay ?? day.dayNumber}. Press play to continue today&apos;s lesson.
+              </p>
             </div>
-            <div className="mt-4 h-2 overflow-hidden rounded-full bg-[#303b4f]">
-              <div
-                className="h-full rounded-full bg-[#10c989] transition-all duration-700"
-                style={{ width: `${overallPercent}%` }}
-              />
-            </div>
-            <p className="mt-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#10c989]">
-              {statusStat.value} {statusStat.hint}
-            </p>
           </div>
         </div>
-      </button>
+      </section>
     );
   }
 
