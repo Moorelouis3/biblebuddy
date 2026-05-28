@@ -230,7 +230,7 @@ const WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
 const STATUS_STYLES: Record<VisitorJourneyStatus, string> = {
   active: "bg-emerald-50 text-emerald-700 ring-emerald-200",
   finished_onboarding: "bg-emerald-50 text-emerald-700 ring-emerald-200",
-  onboarding_only: "bg-slate-100 text-slate-700 ring-slate-200",
+  onboarding_only: "bg-amber-50 text-amber-700 ring-amber-200",
   day_1_in_progress: "bg-blue-50 text-blue-700 ring-blue-200",
   day_1_completed: "bg-violet-50 text-violet-700 ring-violet-200",
   created_account: "bg-amber-50 text-amber-700 ring-amber-200",

@@ -1525,6 +1525,8 @@ function buildVisitorJourneys(
     const lastActiveAt = lastRow?.created_at || firstRow?.created_at || new Date().toISOString();
     const firstActiveAt = firstRow?.created_at || lastActiveAt;
     const timeSpentMs = Math.max(0, new Date(lastActiveAt).getTime() - new Date(firstActiveAt).getTime());
+    const landingStepStatusLabel = getLandingStepStatusLabel(sessionRows, false);
+    const hasOnboardingProgress = landingStepStatusLabel !== "Just visited";
 
     let status: VisitorJourneyStatus = "active";
     if (upgradeAt) status = "upgraded";
@@ -1532,8 +1534,8 @@ function buildVisitorJourneys(
     else if (createdAccountAt) status = "created_account";
     else if (dayOneStartedAt) status = "day_1_in_progress";
     else if (dashboardCompletedAt || onboardingCompletedAt) status = "finished_onboarding";
-    else if (eventNames.has("started_onboarding") || eventNames.has("viewed_onboarding_intro")) status = "onboarding_only";
-    if (!dashboardCompletedAt && !onboardingCompletedAt) {
+    else if (hasOnboardingProgress) status = "onboarding_only";
+    if (!dashboardCompletedAt && !onboardingCompletedAt && !hasOnboardingProgress) {
       status = "dropped_off";
     }
 
@@ -1541,8 +1543,8 @@ function buildVisitorJourneys(
     const lastInfo = lastRow ? getLandingActivityInfo(lastRow) : null;
     const lastMeaningfulLandingRow = getLastMeaningfulLandingRow(sessionRows);
     const lastMeaningfulLandingInfo = lastMeaningfulLandingRow ? getLandingActivityInfo(lastMeaningfulLandingRow) : lastInfo;
-    const stepStatusLabel = status === "dropped_off"
-      ? getLandingStepStatusLabel(sessionRows, false)
+    const stepStatusLabel = status === "dropped_off" || status === "onboarding_only"
+      ? landingStepStatusLabel
       : getStatusLabel(status);
     const currentMilestoneTitle =
       dashboardCompletedAt ? "Finished dashboard walkthrough" :
