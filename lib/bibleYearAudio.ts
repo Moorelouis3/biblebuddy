@@ -53,7 +53,7 @@ export function getBibleYearAudioStoragePath(dayNumber: number) {
 }
 
 export function getBibleYearAudioApiSrc(dayNumber: number) {
-  return `/api/tts/bible-year/day/${dayNumber}?v=day-${padDay(dayNumber)}-audio-v12`;
+  return `/api/tts/bible-year/day/${dayNumber}?v=day-${padDay(dayNumber)}-audio-v13`;
 }
 
 export const BIBLE_YEAR_DAY_ONE_AUDIO: BibleYearAudioDay = {
@@ -142,15 +142,15 @@ export const BIBLE_YEAR_DAY_TEN_AUDIO: BibleYearAudioDay = {
   title: "Day 10 - Covenant Through Isaac",
   storagePath: getBibleYearAudioStoragePath(10),
   apiSrc: getBibleYearAudioApiSrc(10),
-  estimatedDuration: "about 20 min",
+  estimatedDuration: "about 35 min",
 };
 
 export const BIBLE_YEAR_DAY_ELEVEN_AUDIO: BibleYearAudioDay = {
   dayNumber: 11,
-  title: "Day 11 - Jacob's Journey Begins",
+  title: "Day 11 - Jacob Meets God at Bethel",
   storagePath: getBibleYearAudioStoragePath(11),
   apiSrc: getBibleYearAudioApiSrc(11),
-  estimatedDuration: "about 16 min",
+  estimatedDuration: "about 35 min",
 };
 
 export const BIBLE_YEAR_DAY_TWELVE_AUDIO: BibleYearAudioDay = {
@@ -158,7 +158,7 @@ export const BIBLE_YEAR_DAY_TWELVE_AUDIO: BibleYearAudioDay = {
   title: "Day 12 - Jacob Leaves Laban",
   storagePath: getBibleYearAudioStoragePath(12),
   apiSrc: getBibleYearAudioApiSrc(12),
-  estimatedDuration: "about 16 min",
+  estimatedDuration: "about 40 min",
 };
 
 export const BIBLE_YEAR_DAY_THIRTEEN_AUDIO: BibleYearAudioDay = {

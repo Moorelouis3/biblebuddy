@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { createClient } from "@supabase/supabase-js";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
@@ -56,29 +57,36 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const cookieStore = await cookies();
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value;
-        },
-        set() {
-          // No-op for server-side auth check.
-        },
-        remove() {
-          // No-op for server-side auth check.
-        },
-      },
-    }
-  );
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+  const authHeader = req.headers.get("authorization");
+  const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  const authResult = token
+    ? await createClient(supabaseUrl, supabaseAnonKey, {
+        auth: { autoRefreshToken: false, persistSession: false },
+      }).auth.getUser(token)
+    : await (async () => {
+        const cookieStore = await cookies();
+        const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+          cookies: {
+            get(name: string) {
+              return cookieStore.get(name)?.value;
+            },
+            set() {
+              // No-op for server-side auth check.
+            },
+            remove() {
+              // No-op for server-side auth check.
+            },
+          },
+        });
+        return supabase.auth.getUser();
+      })();
 
   const {
     data: { user },
     error: authError,
-  } = await supabase.auth.getUser();
+  } = authResult;
 
   if (authError || !user || !user.email) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

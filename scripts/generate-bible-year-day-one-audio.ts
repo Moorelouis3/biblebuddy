@@ -3,11 +3,12 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { createContext, runInContext } from "vm";
 import { createClient } from "@supabase/supabase-js";
-import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_NINE_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
+import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_ELEVEN_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_NINE_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_TEN_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWELVE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON, GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import { GENESIS_ONE_TTS_VOICE } from "../lib/genesisOneTtsAudio";
 import { cleanTextForTts } from "../lib/ttsSpeechText";
+import { GENESIS_DAY_ELEVEN_JACOBS_JOURNEY_BEGINS_LESSON, GENESIS_DAY_TEN_COVENANT_THROUGH_ISAAC_LESSON, GENESIS_DAY_TWELVE_JACOB_LEAVES_LABAN_LESSON } from "../lib/bibleYearDaysTenToFourteen";
 
 const SAMPLE_RATE = 24000;
 const MAX_TTS_CHUNK_LENGTH = 3400;
@@ -33,8 +34,15 @@ for (const path of [".env.local", ".env"]) {
 
 const requestedDay = Number(process.env.BIBLE_YEAR_TTS_DAY || process.argv.find((arg) => arg.startsWith("--day="))?.split("=")[1] || "1");
 const voiceOnlyMode = process.argv.includes("--voice-only") || process.env.BIBLE_YEAR_TTS_VOICE_ONLY === "true";
+const uploadVoiceOnlyMode = process.argv.includes("--upload-voice-only") || process.env.BIBLE_YEAR_TTS_UPLOAD_VOICE_ONLY === "true";
 const selectedLesson =
-  requestedDay === 9
+  requestedDay === 12
+    ? GENESIS_DAY_TWELVE_JACOB_LEAVES_LABAN_LESSON
+    : requestedDay === 11
+    ? GENESIS_DAY_ELEVEN_JACOBS_JOURNEY_BEGINS_LESSON
+    : requestedDay === 10
+    ? GENESIS_DAY_TEN_COVENANT_THROUGH_ISAAC_LESSON
+    : requestedDay === 9
     ? GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON
     : requestedDay === 8
     ? GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON
@@ -52,7 +60,13 @@ const selectedLesson =
           ? GENESIS_DAY_TWO_FALL_LESSON
           : GENESIS_DAY_ONE_CREATION_LESSON;
 const selectedAudio =
-  requestedDay === 9
+  requestedDay === 12
+    ? BIBLE_YEAR_DAY_TWELVE_AUDIO
+    : requestedDay === 11
+    ? BIBLE_YEAR_DAY_ELEVEN_AUDIO
+    : requestedDay === 10
+    ? BIBLE_YEAR_DAY_TEN_AUDIO
+    : requestedDay === 9
     ? BIBLE_YEAR_DAY_NINE_AUDIO
     : requestedDay === 8
     ? BIBLE_YEAR_DAY_EIGHT_AUDIO
@@ -76,6 +90,9 @@ const VOICE_ONLY_OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `
 const NARRATOR_ONLY_OUTPUT_PATH = join(process.cwd(), "tmp", "bible-in-one-year", `day-${outputDay}`, `day-${outputDay}-narrator-only.mp3`);
 const DAY_EIGHT_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-8-exact-web-narrator-script.md");
 const DAY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-9-exact-web-narrator-script.md");
+const DAY_TEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-10-exact-web-narrator-script.md");
+const DAY_ELEVEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-11-exact-web-narrator-script.md");
+const DAY_TWELVE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-12-exact-web-narrator-script.md");
 const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.129 : selectedLesson.dayNumber === 1 ? 0.112 : 0.088;
 
 function ensureDir(path: string) {
@@ -878,6 +895,9 @@ function buildBibleYearSpeechText(lesson: BibleYearDailyLesson) {
 function getApprovedBibleYearScriptPath(dayNumber: number) {
   if (dayNumber === 8) return DAY_EIGHT_APPROVED_SCRIPT_PATH;
   if (dayNumber === 9) return DAY_NINE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 10) return DAY_TEN_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 11) return DAY_ELEVEN_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 12) return DAY_TWELVE_APPROVED_SCRIPT_PATH;
   return null;
 }
 
@@ -895,9 +915,10 @@ function buildApprovedBibleYearSpeechText(scriptPath: string) {
     }
 
     if (!include || !trimmed) continue;
+    if (/^##\s+Reusable Day Script Framework/i.test(trimmed)) break;
     if (/^#{1,6}\s+/.test(trimmed)) continue;
     if (/^\*\*(Scripture|Narrator)\*\*$/i.test(trimmed)) continue;
-    if (/^\*\*(Reading|Bible text|Goal|Estimated script word count|Estimated spoken time)\s*:/i.test(trimmed)) continue;
+    if (/^\*\*(Reading|Bible text|Goal|Estimated script word count|Estimated spoken time|Estimated audio runtime with light pauses\/music bed)\s*:/i.test(trimmed)) continue;
 
     const withoutVerseNumber = trimmed.replace(/^\d+\.\s+/, "");
     const withoutMarkdownLabel = withoutVerseNumber.replace(/^\*\*([^*]+)\*\*:?\s*/g, "$1 ");
@@ -927,7 +948,7 @@ function instructionsForRole(role: BibleYearAudioRole) {
 
   return selectedLesson.dayNumber === 1
     ? "Speak in a warm, cinematic, personal, emotionally grounded masculine voice. Sound like a trusted guide walking one listener through Scripture, not like a sermon, lecture, podcast, or generic audiobook. Use intimate pacing, soft dramatic pauses, and reflective emotional weight. Let Scripture readings feel reverent and spacious. Announce each Scripture range naturally, for example: Genesis 1 verses 1 through 5. Do not announce every individual verse number. Do not read markdown, headings, emojis, bullets, sound effect cues, or formatting labels. Speak directly to one person with calm hope, wonder, and presence. Do not sound robotic, theatrical, rushed, salesy, or overly polished."
-    : "Speak in a deep, warm, older male narrator voice. Sound soulful, calm, grounded, cinematic, and wise. Use the pacing of a documentary narrator mixed with a trusted Bible teacher. Keep the tone reflective, comforting, and emotionally weighty. Announce each Scripture range naturally, for example: Genesis 1 verses 1 through 5. Do not announce every individual verse number. Do not read markdown, headings, emojis, bullets, or formatting labels. Keep the transitions conversational and give natural pauses between Scripture and explanation. Do not sound robotic, theatrical, rushed, or overly polished.";
+    : "Speak in a deep, warm, older male narrator voice. Sound soulful, calm, grounded, cinematic, and wise, like an audio Bible story companion with documentary pacing. Let the Scripture readings feel reverent and spacious, then make the explanations conversational, connected, and emotionally clear. Keep the tone reflective, comforting, and weighty without sounding like a sermon. Announce each Scripture range naturally, for example: Genesis 1 verses 1 through 5. Do not announce every individual verse number. Do not read markdown, headings, emojis, bullets, sound effect cues, or formatting labels. Do not sound robotic, theatrical, rushed, salesy, or overly polished.";
 }
 
 async function generateOpenAiSpeechPcm(text: string, role: BibleYearAudioRole = "narrator") {
@@ -1035,7 +1056,7 @@ async function main() {
   writeFileSync(outputPath, mp3);
 
   console.log(`[${selectedDayLabel}] Local MP3: ${outputPath}`);
-  if (!voiceOnlyMode) {
+  if (!voiceOnlyMode || uploadVoiceOnlyMode) {
     console.log(`[${selectedDayLabel}] Uploading to ${BIBLE_YEAR_AUDIO_BUCKET}/${selectedAudio.storagePath}`);
     await uploadAudio(mp3);
   }

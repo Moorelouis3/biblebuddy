@@ -5826,10 +5826,19 @@ export default function DashboardJourneyExperience({
       }
 
       const upgradeDay = bibleYearQuickUpgradeContext === "day3" ? 3 : bibleYearQuickUpgradeContext === "day7" ? 7 : null;
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        throw new Error("Please log in to upgrade.");
+      }
+
       const response = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
         },
         body: JSON.stringify({
           plan,
@@ -8916,7 +8925,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 storagePath={audio.storagePath}
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
-                backgroundMusicSrcs={day.dayNumber === 8 || day.dayNumber === 9 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
                 backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
               />
             </div>
@@ -10623,7 +10632,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     storagePath={bibleYearAudio.storagePath}
                     userId={userId}
                     videoId={`bible-year-day-${day.dayNumber}`}
-                    backgroundMusicSrcs={day.dayNumber === 8 || day.dayNumber === 9 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                    backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
                     backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
                   />
                 </>
@@ -11403,7 +11412,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 storagePath={audio.storagePath}
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
-                backgroundMusicSrcs={day.dayNumber === 8 || day.dayNumber === 9 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
                 backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
               />
               {renderBibleYearFollowAlongScripture(day)}

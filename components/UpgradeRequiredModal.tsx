@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ModalShell } from "./ModalShell";
+import { supabase } from "../lib/supabaseClient";
 
 type UpgradeRequiredModalProps = {
   isOpen: boolean;
@@ -50,11 +51,19 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
     try {
       setLoadingPlan(plan);
       setError(null);
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        throw new Error("Please log in to upgrade.");
+      }
 
       const response = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
         },
         body: JSON.stringify({ plan }),
       });
