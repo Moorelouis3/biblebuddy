@@ -1,368 +1,473 @@
 import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 
-export const BIBLE_YEAR_DAY_FIVE_DEEP_NOTES = `Genesis 11-13 begins the story of Abram.
+export const BIBLE_YEAR_DAY_FIVE_DEEP_NOTES = `Genesis 11-13 moves from the pride of Babel into the call of Abram.
 
-Day 5 moves from Babel's pride to Abram's call.
+This is one of the biggest turns in Genesis.
 
-🏙️ At Babel, people try to build upward, make their own name, and protect themselves from being scattered.
+After the flood, humanity still carries the same old problem: people want greatness, security, and identity apart from God. Babel is not just a story about a tower. It is a picture of human beings trying to build a world where they do not have to trust the Lord.
 
-📣 Then God calls Abram, gives him a promise, and begins a rescue story that will eventually bless all families of the earth.
+Then God calls Abram.
 
-✨ This day is important because it shows the difference between grasping for a name and receiving a name from God.
+That call is not random. It is God's answer to a scattered, proud, broken world. Instead of letting rebellion have the last word, God begins a promise through one family that will eventually bless all families of the earth.
 
-Babel says, "Let us make a name."
+Babel says, "Let us make a name for ourselves."
 
-👑 God says to Abram, "I will make thy name great."
+God says to Abram, "I will make your name great."
 
-🚶 Abram's story does not begin with perfect faith. It begins with a real call, real obedience, real fear, real failure, and a promise God keeps carrying forward.
+That contrast matters. Scripture is showing two different ways to live:
 
-> 🔥 **Big idea:** Genesis 11-13 teaches that God's promise is stronger than human pride, human fear, and human weakness.`;
+- grasping for identity, or receiving identity from God
+- building security without surrender, or trusting God's promise
+- protecting yourself through fear, or walking by faith
+- choosing by sight, or letting God define what is good
+
+Abram's story does not begin with perfect faith. He obeys, worships, fears, fails, returns, separates from Lot, and hears the promise again.
+
+That is why Day 5 matters. It shows that God's promise is stronger than human pride, stronger than family weakness, stronger than famine, stronger than fear, and stronger than Abram's failure.`;
 
 export const BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[] = [
   {
     reference: "Genesis 11:1-9",
     title: "Babel Tries To Make A Name",
-    icon: "🏙️",
-    summary: "Humanity gathers, builds upward, and tries to secure a name without trusting God.",
+    icon: "city",
+    summary: "Humanity gathers, builds upward, and tries to secure identity and safety without trusting God.",
     markdown: `## Genesis 11:1-9
 
-> 📖 **Genesis 11:4**
->
-> They said, "Come, let us build ourselves a city, and a tower whose top reaches to the sky, and let us make ourselves a name..."
+## What Is Happening Here?
 
-## 🧭 What Is Happening Here?
+The people of Babel share one language, one place, and one project.
 
-The people of Babel are united, creative, organized, and ambitious.
+That unity could have been used for obedience. Instead, they use it to resist God's purpose.
 
-Those things are not automatically evil. The problem is the direction of the heart.
+They say three revealing things:
 
-🏙️ They want a city.
+- "Let us build ourselves a city."
+- "Let us build a tower with its top in the heavens."
+- "Let us make a name for ourselves."
 
-🗼 They want a tower.
+The city is about security.
 
-👑 They want a name for themselves.
+The tower is about human greatness.
 
-🧱 They want security without surrender.
+The name is about identity and reputation.
 
-⚠️ They want greatness without God.
+They also say they do not want to be scattered. That matters because God had already blessed humanity and told them to fill the earth. Babel is not innocent architecture. It is organized resistance to God's command.
 
-They want a city, a tower, and a name for themselves. They want security without surrender. They want greatness without God. They want to resist being scattered even though filling the earth was part of humanity's calling from the beginning.
+## The Heart Under The Tower
 
-God comes down and confuses their language. That is judgment, but it is also mercy. If proud humanity keeps uniting around rebellion, the damage will multiply faster.
+Babel is what happens when people want the gifts of community, creativity, and strength without surrendering those gifts to God.
 
-## 🧠 Words To Know
+The problem is not that they build.
 
-### 🏙️ Babel
+The problem is that they build for self-exaltation.
 
-Babel is connected with confusion.
+They want heaven on their own terms. They want permanence without obedience. They want a name without receiving it from God.
 
-It also points forward to Babylon, a major Bible symbol of proud human power that exalts itself against God.
+## Why God Confuses The Languages
 
-### 👑 Name
+God's judgment at Babel is also mercy.
 
-In Genesis, a name is connected to identity, reputation, and legacy.
+If proud humanity stays united around rebellion, evil spreads faster. God scatters them so their rebellion cannot keep accelerating unchecked.
 
-Babel tries to make a name. In the next chapter, God promises to make Abram's name great.
+The scattering is painful, but it restrains human pride.
 
-## 🙏 Why It Matters
+## Bible Connection
 
-Genesis 11 shows that people can build impressive things for the wrong reasons.
+Babel points forward to Babylon, which later becomes a major Bible symbol for proud human power that exalts itself against God.
 
-The question is not only, "Can we build it?"
+But Genesis 12 comes right after Genesis 11 for a reason.
 
-The deeper question is, "Are we building in trust, humility, and obedience before God?"`,
+Humanity says, "Let us make a name."
+
+God says to Abram, "I will make your name great."
+
+That is the contrast at the heart of Day 5.
+
+## Why It Matters
+
+Babel asks a question we still face:
+
+Am I trying to build a life that makes me feel safe, impressive, and in control without trusting God?
+
+The Bible is not against work, cities, plans, or ambition. It is against pride that uses good gifts to avoid surrender.`,
   },
   {
     reference: "Genesis 11:10-32",
     title: "The Story Narrows Toward Abram",
-    icon: "🧬",
-    summary: "Genesis traces Shem's line until Abram appears, and the promise story starts narrowing.",
+    icon: "line",
+    summary: "Genesis follows Shem's family line until Abram appears, and the promise story begins to narrow.",
     markdown: `## Genesis 11:10-32
 
-## 🧭 What Is Happening Here?
+## What Is Happening Here?
 
-After Babel scatters human pride, Genesis follows a family line.
+After Babel, Genesis gives another genealogy.
 
-This may feel like a list of names, but it is doing something important. The story is narrowing. We move from the nations to one family, and from one family to Abram.
+That can feel slow, but it is doing important work.
 
-🧬 The family line keeps moving.
+The story is narrowing:
 
-🏠 Terah's household comes into view.
+- from all humanity
+- to the family line of Shem
+- to Terah's household
+- to Abram and Sarai
 
-💔 Sarai is barren.
+Genesis is showing that God is still guiding history. Babel scatters the nations, but God does not abandon the nations. He begins a rescue plan through one family for the sake of all families.
 
-✨ The promise is about to begin where human strength cannot solve the problem.
+## Why Sarai's Barrenness Matters
 
-Abram appears with Sarai, and we are told Sarai is barren. That detail matters because the next chapter will promise offspring, blessing, and a great nation.
+The text tells us Sarai is barren.
 
-The promise begins in a place that looks impossible.
+That detail is not random. Genesis 12 will promise Abram descendants, a great nation, and worldwide blessing. But before the promise is even spoken, the story shows us the human impossibility.
 
-## 🧠 Words To Know
+Abram cannot produce the promise by natural strength.
 
-### 🧬 Generations
+Sarai cannot force the future open.
 
-Generations means the family line or the story that comes from a person.
+The promise will have to depend on God.
 
-Genesis uses these family records to show that God is moving history toward His promise.
+## Terah Stops Short
 
-### 💔 Barren
+Terah takes his family from Ur and heads toward Canaan, but they settle in Haran.
 
-Barren means unable to have children.
+This creates a quiet tension. The family is moving, but not yet all the way into the promised direction.
 
-This is not a small detail. It creates tension because God is about to promise Abram a future that only God can make happen.
+Then Genesis 12 begins with God calling Abram to go.
 
-## 🙏 Why It Matters
+## Why It Matters
 
-God often begins His promise where human strength runs out.
+God's promises often begin where human ability runs out.
 
-Sarai's barrenness is not the end of the story. It is the place where God's power will eventually be seen more clearly.`,
+Sarai's barrenness is not the end of the promise. It is the place where God's power will eventually become clearer.
+
+This is one reason Genesis teaches faith so patiently. Faith is not confidence that circumstances look easy. Faith is trust that God can keep His word when the situation cannot explain how.`,
   },
   {
     reference: "Genesis 12:1-3",
     title: "God Calls Abram",
-    icon: "📣",
-    summary: "God tells Abram to leave and promises land, nation, name, blessing, and worldwide impact.",
+    icon: "call",
+    summary: "God tells Abram to leave and gives promises of land, nation, name, blessing, and worldwide impact.",
     markdown: `## Genesis 12:1-3
 
-> 📖 **Genesis 12:2**
->
-> I will make of you a great nation. I will bless you and make your name great. You will be a blessing.
+## What God Commands
 
-## 🧭 What Is Happening Here?
+God tells Abram to leave:
 
-God calls Abram to leave country, relatives, and his father's house.
+- his country
+- his relatives
+- his father's house
+- the familiar world that shaped his identity
 
-That is a deep call. Abram is not only changing locations. He is leaving the familiar world that shaped his identity.
+This is not a small move. In the ancient world, family, land, inheritance, protection, and identity were deeply connected.
 
-But God does not call him into emptiness. God gives promises.
+God is asking Abram to step away from what naturally gives him security.
 
-🌍 God promises land.
+## What God Promises
 
-🧬 God promises a great nation.
+God does not call Abram into emptiness. He calls Abram into promise.
 
-✨ God promises blessing.
+God promises:
 
-👑 God promises to make Abram's name great.
+- land
+- a great nation
+- blessing
+- a great name
+- protection
+- worldwide blessing through Abram
 
-🌎 God promises that all families of the earth will be blessed through him.
+The word "bless" becomes central. Abram is not blessed so he can become self-important. He is blessed so blessing can move through him to others.
 
-## 🔗 Bible Connection
+## The Babel Contrast
 
-This promise is one of the main roads of the entire Bible.
+Babel tried to make a name.
 
-Israel's story, the covenant promises, and the coming of Jesus all connect back to God's promise to Abram.
+Abram receives a name.
 
-## 🙏 Why It Matters
+Babel tried to protect itself from scattering.
 
-Babel tried to make a name by human pride.
+Abram leaves by faith.
 
-Abram receives a name by trusting God's promise.
+Babel tried to reach heaven by human achievement.
 
-The Bible is showing two ways to live: build your life around self-made greatness, or receive your life from God's word.`,
+God comes down and speaks promise to Abram.
+
+## Bible Connection
+
+Genesis 12:1-3 is one of the main roads of the whole Bible.
+
+Israel's story grows from this promise.
+
+The covenant promises grow from this promise.
+
+The blessing of the nations through Jesus is connected to this promise.
+
+When the New Testament talks about Abraham and faith, it is reaching back into this part of Genesis.
+
+## Why It Matters
+
+God's call often asks us to release one kind of security so we can receive a deeper one.
+
+Abram does not know the whole map. He knows the God who spoke.
+
+That is the beginning of faith.`,
   },
   {
     reference: "Genesis 12:4-9",
-    title: "Abram Goes",
-    icon: "🚶",
-    summary: "Abram responds with movement, enters Canaan, builds altars, and worships along the way.",
+    title: "Abram Goes And Builds Altars",
+    icon: "altar",
+    summary: "Abram responds with movement, enters Canaan, receives the land promise, and worships along the way.",
     markdown: `## Genesis 12:4-9
 
-## 🧭 What Is Happening Here?
+## What Is Happening Here?
 
-Abram goes as the LORD told him.
+Abram goes as the Lord told him.
 
-That sentence matters because faith becomes movement. Abram does not understand everything yet, but he takes the next step God gave him.
+That sentence is simple, but it is powerful.
 
-🚶 Abram leaves.
+Faith becomes movement.
 
-⛰️ Abram enters Canaan.
+Abram does not understand everything yet. He does not have the full timeline. He has not seen the promise fulfilled. But he takes the next step God gave him.
 
-🌍 God repeats the promise of land.
+## The Land Is Occupied
 
-🔥 Abram builds altars.
+Genesis says the Canaanites were in the land.
 
-🙏 Abram worships along the way.
+That detail matters. Abram arrives in the place God promised, but the promise is not instantly easy. The land is not empty. The future will require waiting, trust, and more obedience.
 
-He enters Canaan, and God repeats the promise of land. Abram responds by building altars.
+God's promise is real, but Abram must live by faith before the promise is fully visible.
 
-The altars show worship, memory, and dependence. Abram is marking the journey with places where he meets with God.
+## Why The Altars Matter
 
-## 🧠 Words To Know
+Abram builds altars at key places.
 
-### 🔥 Altar
+An altar is a place of worship, sacrifice, remembrance, and surrender.
 
-An altar is a place of worship and sacrifice.
+Abram is not merely traveling through Canaan. He is marking the land with worship.
 
-Abram's altars show that the promise journey is not just travel. It is worship.
+The altars say:
 
-### 🌍 Canaan
+- God met me here.
+- God spoke here.
+- I belong to the Lord here.
+- This journey is about worship, not only movement.
 
-Canaan is the land God promises to Abram's offspring.
+## Why It Matters
 
-This land will become central to the story of Israel.
+Obedience needs worship to stay healthy.
 
-## 🙏 Why It Matters
+Abram's journey is not just about going somewhere. It is about learning to walk with God in the middle of uncertainty.
 
-Faith is not only what Abram feels inside.
-
-Faith takes steps, builds worship into the journey, and keeps listening for God's promise in new places.`,
+Faith takes steps, but faith also stops to worship.`,
   },
   {
     reference: "Genesis 12:10-20",
     title: "Fear Takes Abram To Egypt",
-    icon: "⚠️",
-    summary: "Famine pressures Abram, fear takes over, and God protects Sarai and the promise.",
+    icon: "warning",
+    summary: "Famine pressures Abram, fear shapes his plan, Sarai is put in danger, and God protects the promise.",
     markdown: `## Genesis 12:10-20
 
-## 🧭 What Is Happening Here?
+## What Is Happening Here?
 
-A famine comes, and Abram goes down into Egypt.
+A famine comes into the land.
 
-The pressure is real. Abram is trying to survive. But fear starts driving his choices.
+This is the first major test after Abram obeys God's call.
 
-🌾 Famine brings pressure.
+That matters. Obedience does not mean life immediately becomes easy. Abram is in the land of promise, and yet the land has famine.
 
-😨 Fear shapes Abram's plan.
+So Abram goes down to Egypt.
 
-💔 Sarai is put in danger.
+## Fear Starts Making The Decisions
 
-🛡️ God protects Sarai.
+Abram becomes afraid that the Egyptians will kill him because of Sarai's beauty.
 
-🔥 God protects the promise.
+So he tells Sarai to say she is his sister.
 
-He tells Sarai to say she is his sister because he is afraid the Egyptians will kill him. Sarai is taken into Pharaoh's house, and the promise is suddenly in danger.
+This plan protects Abram at Sarai's expense.
+
+That is important to say clearly. Abram's fear is not harmless. It puts Sarai in danger and threatens the promise God just gave.
+
+## God Protects Sarai And The Promise
+
+Sarai is taken into Pharaoh's house.
+
+The promise is now in danger because God said the blessing would move through Abram's family.
 
 God intervenes by sending plagues on Pharaoh's house, and Sarai is returned.
 
-## ⚠️ Important Truth
+God is faithful even when Abram is fearful.
 
-Abram is not presented as a flawless hero.
+## Abram Is Not A Flawless Hero
 
-He obeyed God's call, but he still struggled with fear. He received promises, but he still tried to protect himself in a harmful way.
+Genesis is honest.
 
-Genesis is honest because faith grows in real people, not perfect people.
+Abram obeyed God's call, built altars, and followed the Lord. But he also feared, manipulated, and failed.
 
-## 🙏 Why It Matters
+The Bible does not need to pretend God's people are perfect in order to show that God is faithful.
 
-God's promise is stronger than Abram's failure.
+## Why It Matters
 
-That does not excuse Abram's fear or the harm it caused. But it shows that God is faithful to protect the promise even when His people are weak.`,
+Fear can make us protect ourselves in ways that hurt other people.
+
+Abram's failure should humble us.
+
+God's protection should comfort us.
+
+The promise survives this chapter not because Abram is strong, but because God is faithful.`,
   },
   {
     reference: "Genesis 13:1-7",
     title: "Abram Returns To The Altar",
-    icon: "🔥",
-    summary: "Abram comes back from Egypt, returns to the altar, and faces new tension with Lot.",
+    icon: "return",
+    summary: "Abram comes back from Egypt, returns to worship, and faces new tension with Lot.",
     markdown: `## Genesis 13:1-7
 
-## 🧭 What Is Happening Here?
+## What Is Happening Here?
 
 Abram leaves Egypt with Sarai, Lot, and many possessions.
 
-He returns to the place where he had built an altar before, and he calls on the name of the LORD.
+Then he returns to the place where he had built an altar before.
 
-🔙 Abram returns from Egypt.
+This is a quiet recovery moment.
 
-🔥 Abram returns to the altar.
+After failure in Egypt, Abram returns to worship.
 
-🙏 Abram calls on the name of the LORD.
+## Returning Matters
 
-🐑 Abram and Lot both have large flocks.
+Abram does not disappear from the story after failure.
 
-⚡ Strife begins between their herdsmen.
+He returns to the altar and calls on the name of the Lord.
 
-This is a quiet but important recovery moment. Abram comes back to worship.
+That does not erase what happened in Egypt. But it shows that failure does not have to become a permanent hiding place.
 
-But blessing brings pressure too. Abram and Lot both have large flocks and herds, and the land cannot support them together. Strife begins between their herdsmen.
+The right response after failure is not pretending, despairing, or running farther. It is returning to God.
 
-## 🧠 Words To Know
+## Blessing Brings Pressure
 
-### 🙏 Call On The Name Of The LORD
+Abram and Lot both have large flocks and herds.
 
-This means worship, prayer, and dependence on God.
+That sounds like blessing, but it creates tension. The land cannot support them together, and strife begins between their herdsmen.
 
-Abram returns to the altar because the promise journey must stay centered on God.
+This is important because not all tests come through lack. Some tests come through increase.
 
-## 🙏 Why It Matters
+Abram had to trust God in famine.
 
-After failure, Abram does not disappear from the story.
+Now he has to trust God in abundance.
 
-He returns to worship. That matters for us too. Failure should not become a permanent hiding place. Return to God.`,
+## Why It Matters
+
+Spiritual maturity is seen in how we return after failure and how we handle pressure after blessing.
+
+Abram is still learning. But he comes back to the altar, and that is the right direction.`,
   },
   {
     reference: "Genesis 13:8-13",
     title: "Lot Chooses By Sight",
-    icon: "👀",
+    icon: "eyes",
     summary: "Abram chooses peace, Lot chooses what looks good, and his direction moves toward Sodom.",
     markdown: `## Genesis 13:8-13
 
-## 🧭 What Is Happening Here?
+## What Is Happening Here?
 
-Abram does something surprising.
+Abram gives Lot first choice.
 
-As the older leader and the one who received the promise, he could have chosen first. Instead, he lets Lot choose.
+That is surprising. Abram is older, the leader, and the one who received the promise. He could have demanded the better land.
 
-🤝 Abram chooses peace.
+Instead, Abram chooses peace.
 
-👀 Lot chooses by sight.
+## Lot's Choice
 
-🌿 The plain looks fruitful.
+Lot lifts his eyes and sees the Jordan plain.
 
-⚠️ Lot moves toward Sodom.
+It is well watered.
 
-🧭 Direction matters before consequences are obvious.
+It looks like the garden of the Lord.
 
-Lot looks at the plain of Jordan and sees that it is well watered. It looks like Eden. It looks like Egypt. It looks good.
+It looks like Egypt.
 
-But Genesis gives a warning: Lot pitches his tents toward Sodom.
+In other words, it looks fruitful, attractive, and profitable.
 
-What looks fruitful may still be spiritually dangerous.
+But Genesis gives a warning: Lot moves his tents toward Sodom.
 
-## ⚖️ Important Contrast
+The land looks good, but the direction is dangerous.
 
-Abram does not have to grasp because he is learning to trust God's promise.
+## Abram And Lot Are A Contrast
 
-Lot chooses by sight, but Abram can release control because God has already spoken.
+Lot chooses by sight.
 
-## 🙏 Why It Matters
+Abram releases control because he is learning to trust God's promise.
 
-Not every attractive option is a wise direction.
+Lot sees opportunity.
 
-Lot's choice will shape the next chapters. Genesis is teaching us to look deeper than appearance.`,
+Abram trusts inheritance.
+
+Lot moves toward a city known for wickedness.
+
+Abram remains dependent on the Lord.
+
+## Why It Matters
+
+Not every attractive option is wise.
+
+Some choices look fruitful at first but move the heart toward compromise.
+
+Genesis is teaching us to look deeper than appearance. The question is not only, "Does this look good?" The deeper question is, "Where is this leading me?"`,
   },
   {
     reference: "Genesis 13:14-18",
     title: "God Repeats The Promise",
-    icon: "✨",
+    icon: "promise",
     summary: "After Lot separates, God tells Abram to lift his eyes and receive the promise again.",
     markdown: `## Genesis 13:14-18
 
-## 🧭 What Is Happening Here?
+## What Is Happening Here?
 
-After Lot leaves, God speaks to Abram again.
+After Lot separates from Abram, God speaks again.
 
-This is tender. Abram has just released control and let Lot choose first. Now God tells Abram to lift his eyes and look in every direction.
+This timing is beautiful.
 
-👀 Abram lifts his eyes.
+Abram has just released control. He let Lot choose first. He did not grasp for the better-looking land.
 
-🌍 The land is still promised.
+Then God tells Abram to lift his eyes and look north, south, east, and west.
 
-🧬 The descendants are still promised.
+The land is still promised.
 
-✨ The future is still held by God.
+The descendants are still promised.
+
+The future is still held by God.
+
+## Lot Lifted His Eyes, Abram Lifts His Eyes
+
+Genesis uses a strong contrast.
+
+Lot lifted his eyes and chose what looked good.
+
+Abram lifts his eyes after God speaks and receives what God promises.
+
+Both men look.
+
+But one looks from self-interest, and the other learns to look through promise.
+
+## Dust Of The Earth
+
+God says Abram's offspring will be like the dust of the earth.
+
+That image points to abundance beyond counting.
+
+It is also striking because Sarai is still barren. The visible situation has not changed, but God's promise has been repeated.
+
+## Abram Builds Another Altar
 
 Abram moves his tent and builds another altar.
 
-## 🔗 Bible Connection
+Again, worship marks the promise journey.
 
-God's promise to Abram will shape the rest of Genesis and the whole story of Israel.
+He does not answer God's promise by boasting. He answers with worship.
 
-The land, offspring, blessing, and covenant all keep unfolding from here.
-
-## 🙏 Why It Matters
+## Why It Matters
 
 Abram does not lose the promise by refusing to grasp.
 
-When he lets Lot choose, God reminds him that the promise was never dependent on Abram fighting for control. It depended on God's faithful word.`,
+That is one of the deepest lessons in Day 5.
+
+When Abram lets Lot choose, God reminds him that the promise was never dependent on Abram fighting for control. It depended on God's faithful word.`,
   },
 ];

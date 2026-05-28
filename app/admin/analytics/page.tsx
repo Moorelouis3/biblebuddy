@@ -157,6 +157,12 @@ type BibleYearDayAnalytics = {
     readingCompleted: boolean;
     triviaCompleted: boolean;
     reflectionCompleted: boolean;
+    task1StartEvent: string | null;
+    task1FinishEvent: string | null;
+    task2StartEvent: string | null;
+    task2FinishEvent: string | null;
+    task3StartEvent: string | null;
+    task3FinishEvent: string | null;
     completed: boolean;
     updatedAt: string | null;
   }>;
@@ -208,6 +214,12 @@ type AnalyticsResponse = {
       }>;
     }>;
   };
+  dataHealth?: Array<{
+    key: string;
+    severity: "warning" | "info";
+    title: string;
+    detail: string;
+  }>;
   eventSetupRequired?: boolean;
   eventError?: string;
   error?: string;
@@ -343,7 +355,7 @@ function getTaskStatus(started: boolean, finished: boolean): TaskStatus {
   return "not_started";
 }
 
-function MiniTaskStatus({ status }: { status: TaskStatus }) {
+function MiniTaskStatus({ status, evidence }: { status: TaskStatus; evidence: string | null }) {
   const styles: Record<TaskStatus, string> = {
     not_started: "bg-slate-100 text-slate-500 ring-slate-200",
     started: "bg-blue-50 text-blue-700 ring-blue-200",
@@ -360,15 +372,18 @@ function MiniTaskStatus({ status }: { status: TaskStatus }) {
     finished: "Finished",
   };
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ring-1 ${styles[status]}`}>
-      <span className={`grid h-4 w-4 place-items-center rounded-full text-[10px] ${iconStyles[status]}`}>
-        {status === "finished" ? (
-          <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-            <path d="m3.5 8.2 2.7 2.6 6.3-6.6" />
-          </svg>
-        ) : status === "started" ? ">" : "-"}
+    <span className="inline-flex flex-col gap-1">
+      <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ring-1 ${styles[status]}`}>
+        <span className={`grid h-4 w-4 place-items-center rounded-full text-[10px] ${iconStyles[status]}`}>
+          {status === "finished" ? (
+            <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m3.5 8.2 2.7 2.6 6.3-6.6" />
+            </svg>
+          ) : status === "started" ? ">" : "-"}
+        </span>
+        {labels[status]}
       </span>
-      {labels[status]}
+      {evidence ? <span className="font-mono text-[10px] font-bold text-slate-500">{evidence}</span> : null}
     </span>
   );
 }
@@ -469,9 +484,15 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
       "Started Day 3",
       "Completed Day 3",
       "Day 3 Upgrade Offer",
-      "Created Free Account",
-      "Started Trial",
-      "Converted To Pro",
+      "Started Day 4",
+      "Completed Day 4",
+      "Started Day 5",
+      "Completed Day 5",
+      "Started Day 6",
+      "Completed Day 6",
+      "Started Day 7",
+      "Completed Day 7",
+      "Day 7 Upgrade Offer",
     ].map((label, index) => ({
       key: label.toLowerCase().replaceAll(" ", "-"),
       label,
@@ -518,7 +539,7 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
               <div key={stage.key} className="flex items-center gap-2">
                 <div className="min-h-[96px] w-[142px] rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
                   <p className="min-h-9 text-xs font-black leading-4 text-slate-950">{stage.label}</p>
-                  {stage.key === "day3UpgradeOffer" ? (
+                  {stage.key === "day3UpgradeOffer" || stage.key === "day7UpgradeOffer" ? (
                     <>
                       <p className="mt-2 text-2xl font-black leading-none text-slate-950">{formatNumber(stage.upgradeViews || stage.users || 0)}</p>
                       <div className="mt-2 grid grid-cols-3 gap-1 text-[10px] font-black leading-tight">
@@ -999,58 +1020,8 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
 
   return (
     <div className={`bb-analytics-page ${embedded ? "min-h-0" : "min-h-screen"} bg-[var(--bb-background,#0e1218)] text-[var(--bb-text-primary,#f9fafb)]`}>
-      <div className={`flex ${embedded ? "min-h-0" : "min-h-screen"}`}>
-        <aside className={`${embedded ? "hidden" : "hidden lg:flex"} w-64 shrink-0 flex-col border-r border-[var(--bb-card-border,#374151)] bg-[var(--bb-surface,#151b24)] px-5 py-6 text-[var(--bb-text-primary,#f9fafb)]`}>
-          <div className="flex items-center gap-3">
-            <div className="grid h-12 w-12 place-items-center rounded-full border border-amber-400/50 bg-slate-900 text-sm font-black">BB</div>
-            <div>
-              <p className="text-lg font-black leading-none">BIBLE BUDDY</p>
-              <p className="mt-1 text-xs font-semibold tracking-[0.18em] text-slate-300">ANALYTICS</p>
-            </div>
-          </div>
-
-          <nav className="mt-10 space-y-1">
-            {ANALYTICS_NAV_ITEMS.map((item) => (
-              <button
-                key={item.key}
-                type="button"
-                onClick={() => setActiveView(item.key)}
-                className={`flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-sm font-medium transition ${
-                  activeView === item.key ? "bg-white/12 text-white" : "text-slate-300 hover:bg-white/8 hover:text-white"
-                }`}
-              >
-                <span className="grid h-5 w-5 place-items-center rounded-full border border-current text-[10px]">{item.label.slice(0, 1)}</span>
-                <span>
-                  <span className="block">{item.label}</span>
-                  <span className="mt-0.5 block text-[11px] font-semibold text-slate-400">{item.helper}</span>
-                </span>
-              </button>
-            ))}
-          </nav>
-
-          <div className="mt-auto rounded-xl border border-white/10 bg-white/5 p-4">
-            <p className="text-sm font-bold">Need help?</p>
-            <p className="mt-1 text-xs leading-5 text-slate-300">Track visitor source, funnel stage, account conversion, and Pro upgrades from one table.</p>
-          </div>
-        </aside>
-
-        <main className={`min-w-0 flex-1 ${embedded ? "px-1 py-1" : "px-4 py-6 sm:px-6 lg:px-10"}`}>
-          <div className="mb-5 rounded-xl border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] p-3 shadow-sm lg:hidden">
-            <label className="block text-xs font-bold uppercase tracking-[0.14em] text-[var(--bb-text-muted,#9ca3af)]" htmlFor="analytics-mobile-view">
-              Analytics Menu
-            </label>
-            <select
-              id="analytics-mobile-view"
-              value={activeView}
-              onChange={(event) => setActiveView(event.target.value as AnalyticsView)}
-              className="mt-2 h-11 w-full rounded-lg border border-[var(--bb-card-border,#374151)] bg-[var(--bb-surface,#151b24)] px-3 text-sm font-bold text-[var(--bb-text-primary,#f9fafb)] outline-none focus:border-[var(--bb-accent,#60a5fa)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#27313d)]"
-            >
-              {ANALYTICS_NAV_ITEMS.map((item) => (
-                <option key={item.key} value={item.key}>{item.label}</option>
-              ))}
-            </select>
-          </div>
-
+      <div className={embedded ? "min-h-0" : "min-h-screen"}>
+        <main className={`min-w-0 ${embedded ? "px-1 py-1" : "px-4 py-6 sm:px-6 lg:px-10"}`}>
           <header className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <h1 className="text-3xl font-bold tracking-tight text-[var(--bb-text-primary,#f9fafb)]">
@@ -1068,6 +1039,17 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
             </div>
 
             <div className="flex flex-col gap-2 sm:flex-row">
+              <select
+                id="analytics-view"
+                value={activeView}
+                onChange={(event) => setActiveView(event.target.value as AnalyticsView)}
+                className="h-11 min-w-[190px] rounded-lg border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] px-4 text-sm font-semibold text-[var(--bb-text-primary,#f9fafb)] shadow-sm outline-none transition focus:border-[var(--bb-accent,#60a5fa)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#27313d)]"
+                aria-label="Analytics view"
+              >
+                {ANALYTICS_NAV_ITEMS.map((item) => (
+                  <option key={item.key} value={item.key}>{item.label}</option>
+                ))}
+              </select>
               <select
                 value={windowKey}
                 onChange={(event) => setWindowKey(event.target.value as JourneyWindow)}
@@ -1096,6 +1078,24 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
             <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm font-semibold text-amber-800">
               Landing event tracking needs setup: {data.eventError || "landing_page_events is not available yet."}
             </div>
+          ) : null}
+
+          {data?.dataHealth?.length ? (
+            <section className="mt-6 grid gap-3 lg:grid-cols-2">
+              {data.dataHealth.map((warning) => (
+                <div
+                  key={warning.key}
+                  className={`rounded-xl border p-4 text-sm shadow-sm ${
+                    warning.severity === "warning"
+                      ? "border-amber-300 bg-amber-50 text-amber-900"
+                      : "border-blue-200 bg-blue-50 text-blue-900"
+                  }`}
+                >
+                  <p className="font-black">{warning.title}</p>
+                  <p className="mt-1 font-semibold leading-5 opacity-80">{warning.detail}</p>
+                </div>
+              ))}
+            </section>
           ) : null}
 
           {activeView === "overview" ? (
@@ -1340,9 +1340,9 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
                                 day.users.map((user) => (
                                   <tr key={`${planDay.dayNumber}-${user.userId}`} className="hover:bg-slate-50">
                                     <td className="px-4 py-3 font-bold text-slate-900">{user.userLabel}</td>
-                                    <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.readingStarted, user.readingCompleted)} /></td>
-                                    <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.reflectionStarted, user.reflectionCompleted)} /></td>
-                                    <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.triviaStarted, user.triviaCompleted)} /></td>
+                                    <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.readingStarted, user.readingCompleted)} evidence={user.task1FinishEvent || user.task1StartEvent} /></td>
+                                    <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.reflectionStarted, user.reflectionCompleted)} evidence={user.task2FinishEvent || user.task2StartEvent} /></td>
+                                    <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.triviaStarted, user.triviaCompleted)} evidence={user.task3FinishEvent || user.task3StartEvent} /></td>
                                     <td className="px-4 py-3">
                                       <span className={`inline-flex rounded-full px-3 py-1 text-xs font-black ring-1 ${user.completed ? "bg-emerald-50 text-emerald-700 ring-emerald-200" : "bg-blue-50 text-blue-700 ring-blue-200"}`}>
                                         {user.completed ? "Complete" : "In progress"}

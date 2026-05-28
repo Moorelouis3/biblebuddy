@@ -40,6 +40,30 @@ const bibleYearChecklistData: ChecklistData = {
   nextJourneyTarget: null,
 };
 
+function waitForSessionRefresh(ms: number) {
+  return new Promise((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
+}
+
+async function getStableDashboardUser() {
+  const { data: sessionData } = await supabase.auth.getSession();
+  if (sessionData.session?.user) {
+    return sessionData.session.user;
+  }
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (user) {
+    return user;
+  }
+
+  await waitForSessionRefresh(400);
+  const { data: retrySessionData } = await supabase.auth.getSession();
+  return retrySessionData.session?.user ?? null;
+}
+
 function DashboardLoadingShell({ children }: { children: ReactNode }) {
   return (
     <main className="min-h-screen px-4 py-8 text-[#111827]">
@@ -58,17 +82,17 @@ export default function BibleYearJourneyDashboard() {
   const [userName, setUserName] = useState("Bible Buddy");
   const [profile, setProfile] = useState<DashboardProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
 
   const loadDashboardUser = useCallback(async () => {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    const user = await getStableDashboardUser();
 
     if (!user) {
       router.replace("/");
       return;
     }
 
+    setIsOwnerDashboard((user.email || "").toLowerCase() === "moorelouis3@gmail.com");
     const metadata = user.user_metadata || {};
     const fallbackName =
       metadata.firstName ||
@@ -153,7 +177,7 @@ export default function BibleYearJourneyDashboard() {
           onDevotionalChanged={() => {
             void loadDashboardUser();
           }}
-          isOwnerDashboard
+          isOwnerDashboard={isOwnerDashboard}
           bibleYearReport={null}
           bibleYearProgressReady
         />

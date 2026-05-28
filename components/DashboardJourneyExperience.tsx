@@ -1857,7 +1857,6 @@ export default function DashboardJourneyExperience({
   const [bibleYearTermNotes, setBibleYearTermNotes] = useState<string | null>(null);
   const [bibleYearTermNotesError, setBibleYearTermNotesError] = useState<string | null>(null);
   const [bibleYearTermLoading, setBibleYearTermLoading] = useState(false);
-  const [bibleYearPersistentVideoDay, setBibleYearPersistentVideoDay] = useState<number | null>(null);
   const [bibleYearFollowAlongOpenByDay, setBibleYearFollowAlongOpenByDay] = useState<Record<number, boolean>>({});
   const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
   const [bibleYearDeepNotesOpen, setBibleYearDeepNotesOpen] = useState(false);
@@ -4039,7 +4038,6 @@ export default function DashboardJourneyExperience({
       setBibleYearTriviaQuestionIndexByDay({});
       setBibleYearCompletedTasksExpandedDay(null);
       setActiveBibleYearDayCard(null);
-      setBibleYearPersistentVideoDay(null);
       setBibleYearSeriesFilter("all");
       setBibleYearStudyNotesOpen(false);
       setBibleYearDeepNotesOpen(false);
@@ -7935,6 +7933,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     return `Day ${day.dayNumber} Task ${getBibleYearTaskNumber(card)} ${status} - ${getBibleYearTaskTitle(card)}`;
   }
 
+  function getBibleYearCanonicalEventName(day: GenesisBibleYearDay, card: BibleYearDayCardKey, status: "started" | "finished") {
+    return `day_${day.dayNumber}_task_${getBibleYearTaskNumber(card)}_${status}`;
+  }
+
   function getCurrentBibleYearSeriesDayNumber(days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
     const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
     const nextDay = days.find((day) => !isBibleYearDayComplete(day)) || days[days.length - 1];
@@ -7953,10 +7955,12 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function isBibleYearDayVisuallyLocked(day: GenesisBibleYearDay) {
+    if (isOwnerDashboard) return false;
     return !isBibleYearDayComplete(day) && day.dayNumber !== getCurrentBibleYearSeriesDayNumber();
   }
 
   function isBibleYearTaskLockedForFree(day: GenesisBibleYearDay, card: BibleYearDayCardKey) {
+    if (isOwnerDashboard) return false;
     if (isBibleYearDayComplete(day)) return false;
     const requiredCardKeys = getBibleYearRequiredCardKeys(day);
     const cardIndex = requiredCardKeys.indexOf(card);
@@ -7978,6 +7982,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function getBibleYearDayAction(day: GenesisBibleYearDay) {
     const completedCount = getBibleYearDayCompletedCount(day);
+    if (isOwnerDashboard && completedCount < 3) return { label: "Open", markDone: false };
     if (completedCount <= 0) return { label: "Start", markDone: false };
     if (completedCount >= 3) return { label: "Review", markDone: true };
     return { label: "Finish", markDone: false };
@@ -7985,6 +7990,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function getBibleYearSeriesStatusLabel(day: GenesisBibleYearDay, isCurrent: boolean, isComplete: boolean, isLocked: boolean) {
     if (isComplete) return "Complete";
+    if (isOwnerDashboard) return "Open";
     if (isLocked) return "Locked";
     if (!isCurrent) return day.estimatedTime;
 
@@ -8143,6 +8149,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           taskNumber: getBibleYearTaskNumber(card),
           taskTitle: getBibleYearTaskTitle(card),
           taskStatus: "started",
+          canonicalEventName: getBibleYearCanonicalEventName(day, card, "started"),
           dayNumber: day.dayNumber,
           dayTitle: day.title,
         },
@@ -8287,6 +8294,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         taskNumber: getBibleYearTaskNumber(card),
         taskTitle: getBibleYearTaskTitle(card),
         taskStatus: "finished",
+        canonicalEventName: getBibleYearCanonicalEventName(day, card, "finished"),
         dayNumber: day.dayNumber,
         dayTitle: day.title,
       },
@@ -8441,7 +8449,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   async function handleContinueToNextBibleYearDay(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
     if (continuingBibleYearDay === day.dayNumber) return;
-    if (day.dayNumber === 3 && !isPaidUser && await openDayThreeProPrompt(day, nextDay)) return;
+    if (day.dayNumber === 3 && !isOwnerDashboard && !isPaidUser && await openDayThreeProPrompt(day, nextDay)) return;
     void logBibleYearNextDayClicked(day, nextDay);
     setContinuingBibleYearDay(day.dayNumber);
     try {
@@ -8663,23 +8671,18 @@ Before we understand redemption, we need to understand what God made humanity fo
             {showVideo ? "Watch today's guided Scripture breakdown." : "Listen to today's guided Scripture reading and explanation."}
           </p>
           {showVideo && videoPlayerSrc ? (
-            <>
-              <div className="mt-4 overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-black shadow-[0_18px_38px_rgba(14,26,58,0.18)]">
-                <div className="relative aspect-video overflow-hidden bg-black">
-                  <iframe
-                    src={videoPlayerSrc}
-                    title={lesson?.title || day.title}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-                    allowFullScreen
-                    className="absolute inset-0 h-full w-full border-0"
-                  />
-                </div>
+            <div className="mt-4 overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-black shadow-[0_18px_38px_rgba(14,26,58,0.18)]">
+              <div className="relative aspect-video overflow-hidden bg-black">
+                <iframe
+                  src={videoPlayerSrc}
+                  title={lesson?.title || day.title}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                  allowFullScreen
+                  className="absolute inset-0 h-full w-full border-0"
+                />
               </div>
-              <p className="mt-2 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">
-                YouTube will keep playing if you close this task card. Tap the card again to reopen the controls.
-              </p>
-            </>
+            </div>
           ) : showAudio && audio ? (
             <div className="mt-4">
               <BibleYearLessonAudioPlayer
@@ -8713,7 +8716,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             onClick={() => {
               if (videoComplete) return;
               setBibleYearDeepNotesOpen(false);
-              setBibleYearPersistentVideoDay(null);
               markBibleYearDayCardComplete(day, "reading");
             }}
             disabled={videoComplete}
@@ -9702,15 +9704,6 @@ Before we understand redemption, we need to understand what God made humanity fo
         : activeTask?.kind === task.kind &&
           (activeTask.href || "") === (task.href || "") &&
           (activeTask.chapterLabel || "") === (task.chapterLabel || "");
-      const bibleYearTaskVideoEmbedSrc =
-        bibleYearTaskCard === "reading" && activeBibleYearDashboardDay
-          ? getBibleYearVideoEmbedSrc(getBibleYearDayContent(activeBibleYearDashboardDay).audio?.videoSrc)
-          : null;
-      const keepBibleYearVideoMounted =
-        bibleYearTaskCard === "reading" &&
-        activeBibleYearDashboardDay?.dayNumber === bibleYearPersistentVideoDay &&
-        Boolean(bibleYearTaskVideoEmbedSrc) &&
-        !task.done;
       const isDayOneStartTask =
         activeBibleYearDashboardDay?.dayNumber === 1 &&
         bibleYearTaskCard === "reading" &&
@@ -9759,9 +9752,6 @@ Before we understand redemption, we need to understand what God made humanity fo
           if (isCardDisabled) return;
           if (bibleYearTaskCard) {
             if (isDayOneStartTask) setHighlightDayOneStartTask(false);
-            if (bibleYearTaskCard === "reading" && activeBibleYearDashboardDay) {
-              setBibleYearPersistentVideoDay(activeBibleYearDashboardDay.dayNumber);
-            }
             setActiveBibleYearDayCard((current) => current === bibleYearTaskCard ? null : bibleYearTaskCard);
             return;
           }
@@ -9860,11 +9850,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                 </span>
               ) : null}
             </div>
-            {keepBibleYearVideoMounted && !isActiveInlineTask ? (
-              <p className="mt-2 text-[11px] font-black text-[var(--bb-accent,#2f7fe8)]">
-                Video keeps playing. Tap to reopen controls.
-              </p>
-            ) : null}
           </div>
           {!isCardDisabled && !isActiveInlineTask ? (
             <span className="mt-5 shrink-0 text-xl leading-none text-[var(--bb-text-muted,#9ca3af)]" aria-hidden="true">›</span>
@@ -9879,14 +9864,9 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         ) : null}
       </button>
-      {isActiveInlineTask || keepBibleYearVideoMounted ? (
+      {isActiveInlineTask ? (
         <div
-          className={
-            isActiveInlineTask
-              ? "px-3.5 pb-3 sm:px-4"
-              : "pointer-events-none absolute h-px w-px overflow-hidden opacity-0"
-          }
-          aria-hidden={!isActiveInlineTask}
+          className="px-3.5 pb-3 sm:px-4"
         >
           {bibleYearTaskCard && activeBibleYearDashboardDay ? (
             renderBibleYearInlineTask(bibleYearTaskCard, activeBibleYearDashboardDay)
@@ -11959,13 +11939,14 @@ Before we understand redemption, we need to understand what God made humanity fo
     const rect = dashboardGuidedIntroTargetRect;
     const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 390;
     const viewportHeight = typeof window !== "undefined" ? window.innerHeight : 760;
-    const pad = 14;
+    const isCompactTourViewport = viewportWidth < 640;
+    const pad = isCompactTourViewport ? 8 : 14;
     const top = rect ? Math.max(0, rect.top - pad) : 0;
     const left = rect ? Math.max(0, rect.left - pad) : 0;
     const right = rect ? Math.min(viewportWidth, rect.right + pad) : viewportWidth;
     const bottom = rect ? Math.min(viewportHeight, rect.bottom + pad) : viewportHeight;
     const popoverWidth = Math.min(430, viewportWidth - 32);
-    const popoverHeight = 248;
+    const popoverHeight = isCompactTourViewport ? 220 : 248;
     const canPlaceRight = rect ? viewportWidth - right >= popoverWidth + 28 : false;
     const canPlaceLeft = rect ? left >= popoverWidth + 28 : false;
     const canPlaceBelow = rect ? viewportHeight - bottom >= popoverHeight + 28 : false;
@@ -12388,13 +12369,27 @@ Before we understand redemption, we need to understand what God made humanity fo
         .bb-dashboard-tour-active-target {
           position: relative !important;
           z-index: 125 !important;
-          transform: scale(1.2) !important;
+          transform: scale(1.12) !important;
           transform-origin: center center !important;
           box-shadow:
             0 0 0 6px color-mix(in srgb, var(--bb-accent,#2f7fe8) 28%, transparent),
             0 24px 70px rgba(0,0,0,0.34) !important;
           transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease !important;
           filter: brightness(1.04);
+        }
+        .bb-dashboard-tour-active-target[data-bb-dashboard-tour="bottom-menu"] {
+          transform: none !important;
+        }
+        @media (max-width: 639px) {
+          .bb-dashboard-tour-active-target {
+            transform: scale(1.025) !important;
+            box-shadow:
+              0 0 0 3px color-mix(in srgb, var(--bb-accent,#2f7fe8) 34%, transparent),
+              0 14px 38px rgba(0,0,0,0.30) !important;
+          }
+          .bb-dashboard-tour-active-target[data-bb-dashboard-tour="bottom-menu"] {
+            transform: none !important;
+          }
         }
         .bible-year-deep-notes-dance {
           animation: bible-year-deep-notes-dance 1.85s ease-in-out infinite;
@@ -13247,16 +13242,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                   : activeTask?.kind === task.kind &&
                     (activeTask.href || "") === (task.href || "") &&
                     (activeTask.chapterLabel || "") === (task.chapterLabel || "");
-                const bibleYearTaskVideoEmbedSrc =
-                  bibleYearTaskCard === "reading" && selectedBibleYearSeriesDay
-                    ? getBibleYearVideoEmbedSrc(getBibleYearDayContent(selectedBibleYearSeriesDay).audio?.videoSrc)
-                    : null;
-                const keepBibleYearVideoMounted =
-                  bibleYearTaskCard === "reading" &&
-                  selectedBibleYearSeriesDay?.dayNumber === bibleYearPersistentVideoDay &&
-                  Boolean(bibleYearTaskVideoEmbedSrc) &&
-                  !task.done;
-
                 const taskShellClasses = task.done
                   ? "border-[#b9dcf4] bg-gradient-to-r from-[#eaf5ff] via-white to-[#e2f1fb] hover:bg-[#eaf5ff]"
                   : isCardDisabled
@@ -13286,9 +13271,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                   onClick={() => {
                     if (isCardDisabled) return;
                     if (bibleYearTaskCard) {
-                      if (bibleYearTaskCard === "reading" && selectedBibleYearSeriesDay) {
-                        setBibleYearPersistentVideoDay(selectedBibleYearSeriesDay.dayNumber);
-                      }
                       setActiveBibleYearDayCard((current) => {
                         const next = current === bibleYearTaskCard ? null : bibleYearTaskCard;
                         if (next && selectedBibleYearSeriesDay) void logBibleYearTaskStarted(selectedBibleYearSeriesDay, bibleYearTaskCard);
@@ -13400,11 +13382,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                           </span>
                         ) : null}
                       </div>
-                      {keepBibleYearVideoMounted && !isActiveInlineTask ? (
-                        <p className="mt-2 text-[11px] font-black text-[var(--bb-accent,#2f7fe8)]">
-                          Video keeps playing. Tap to reopen controls.
-                        </p>
-                      ) : null}
                     </div>
                     {!isCardDisabled && !isActiveInlineTask ? (
                       <span className="mt-5 shrink-0 text-xl leading-none text-gray-400" aria-hidden="true">›</span>
@@ -13419,14 +13396,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </div>
                   ) : null}
                 </button>
-                {isActiveInlineTask || keepBibleYearVideoMounted ? (
+                {isActiveInlineTask ? (
                   <div
-                    className={
-                      isActiveInlineTask
-                        ? "px-3.5 pb-3 sm:px-4"
-                        : "pointer-events-none absolute h-px w-px overflow-hidden opacity-0"
-                    }
-                    aria-hidden={!isActiveInlineTask}
+                    className="px-3.5 pb-3 sm:px-4"
                   >
                     {bibleYearTaskCard && selectedBibleYearSeriesDay ? (
                       renderBibleYearInlineTask(bibleYearTaskCard, selectedBibleYearSeriesDay)

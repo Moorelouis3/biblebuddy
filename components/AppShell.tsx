@@ -205,6 +205,25 @@ async function applyPendingInviteLink(currentUserId: string) {
   }
 }
 
+function browserHasSupabaseAuthCookie() {
+  if (typeof document === "undefined") return false;
+  return document.cookie.split(";").some((cookie) => {
+    const name = cookie.trim().split("=")[0] || "";
+    return name.startsWith("sb-") && name.includes("auth-token");
+  });
+}
+
+async function getSessionWithRefreshGrace() {
+  const { data } = await supabase.auth.getSession();
+  if (data.session || !browserHasSupabaseAuthCookie()) {
+    return data.session;
+  }
+
+  await new Promise((resolve) => window.setTimeout(resolve, 400));
+  const { data: retryData } = await supabase.auth.getSession();
+  return retryData.session;
+}
+
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -1726,8 +1745,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const getSession = async () => {
       let session = null;
       try {
-        const { data } = await supabase.auth.getSession();
-        session = data.session;
+        session = await getSessionWithRefreshGrace();
       } catch (error) {
         console.warn("[APPSHELL] Session check failed; continuing without blocking the shell.", error);
       }
@@ -1778,16 +1796,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
     const { data: listener } = supabase.auth.onAuthStateChange(
       async (_event, session) => {
-        setIsLoggedIn(!!session);
-        setUserEmail(session?.user?.email ?? null);
-        setIsAnonymousGuest(Boolean(session?.user && ((session.user as any).is_anonymous || !session.user.email || session.user.identities?.length === 0)));
+        let activeSession = session;
+        if (!activeSession && _event !== "SIGNED_OUT" && browserHasSupabaseAuthCookie()) {
+          activeSession = await getSessionWithRefreshGrace();
+        }
+
+        setIsLoggedIn(!!activeSession);
+        setUserEmail(activeSession?.user?.email ?? null);
+        setIsAnonymousGuest(Boolean(activeSession?.user && ((activeSession.user as any).is_anonymous || !activeSession.user.email || activeSession.user.identities?.length === 0)));
         setIsEmailConfirmed(true);
         setShowEmailConfirmationGate(false);
         
         // Set userId and username for feedback system
-        if (session?.user?.id) {
-          runCriticalSessionBoot(session);
-          runDeferredSessionBoot(session.user.id, session.user.email);
+        if (activeSession?.user?.id) {
+          runCriticalSessionBoot(activeSession);
+          runDeferredSessionBoot(activeSession.user.id, activeSession.user.email);
         } else {
           try {
             const previewAccount = JSON.parse(window.localStorage.getItem("bb:landing-preview-account") || "null") as

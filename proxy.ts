@@ -2,6 +2,12 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
+function hasSupabaseAuthCookie(req: NextRequest) {
+  return req.cookies
+    .getAll()
+    .some((cookie) => cookie.name.startsWith("sb-") && cookie.name.includes("auth-token") && Boolean(cookie.value));
+}
+
 export async function proxy(req: NextRequest) {
   const url = req.nextUrl.clone();
   const pathname = req.nextUrl.pathname;
@@ -102,6 +108,10 @@ export async function proxy(req: NextRequest) {
   } = await supabase.auth.getUser();
 
   if (!user) {
+    if (hasSupabaseAuthCookie(req)) {
+      return response;
+    }
+
     url.pathname = "/";
     return NextResponse.redirect(url);
   }

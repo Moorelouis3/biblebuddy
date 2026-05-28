@@ -146,6 +146,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 21-24",
     estimatedTime: "about 16 min",
     summary: "Close Abraham's main journey with Isaac's birth, Hagar and Ishmael, the test on Mount Moriah, Sarah's burial, and Isaac receiving Rebekah.",
+    coverImage: "/AbrahamsLegacy.png",
     readings: buildGenesisReadings("The Obedience of Abraham", 21, 24, 11),
   },
   {

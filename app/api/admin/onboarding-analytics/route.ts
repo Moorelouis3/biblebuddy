@@ -125,8 +125,21 @@ type BibleYearDayUserRow = {
   readingCompleted: boolean;
   triviaCompleted: boolean;
   reflectionCompleted: boolean;
+  task1StartEvent: string | null;
+  task1FinishEvent: string | null;
+  task2StartEvent: string | null;
+  task2FinishEvent: string | null;
+  task3StartEvent: string | null;
+  task3FinishEvent: string | null;
   completed: boolean;
   updatedAt: string | null;
+};
+
+type DataHealthWarning = {
+  key: string;
+  severity: "warning" | "info";
+  title: string;
+  detail: string;
 };
 
 type ParsedStudyNotesLabel = {
@@ -480,11 +493,28 @@ function parseBibleYearDayFromLabel(label: string) {
   return match ? Number(match[1]) : null;
 }
 
+function getCanonicalBibleYearTaskEvent(dayNumber: number, taskNumber: number, status: "started" | "finished") {
+  return `day_${dayNumber}_task_${taskNumber}_${status}`;
+}
+
+function getCanonicalEventNameFromAction(row: MasterActionFunnelRow, dayNumber: number, taskNumber: number | null) {
+  const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
+  const canonical = typeof metadata.canonicalEventName === "string" ? metadata.canonicalEventName : "";
+  if (canonical) return canonical;
+  if (!dayNumber || !taskNumber) return null;
+  if (row.action_type === "bible_year_task_started") return getCanonicalBibleYearTaskEvent(dayNumber, taskNumber, "started");
+  if (row.action_type === "bible_in_one_year_reading_completed" && taskNumber === 1) return getCanonicalBibleYearTaskEvent(dayNumber, 1, "finished");
+  if (row.action_type === "bible_in_one_year_reflection_completed" && taskNumber === 2) return getCanonicalBibleYearTaskEvent(dayNumber, 2, "finished");
+  if (row.action_type === "bible_in_one_year_trivia_completed" && taskNumber === 3) return getCanonicalBibleYearTaskEvent(dayNumber, 3, "finished");
+  return null;
+}
+
 function buildBibleBuddyFunnelStages(
   landingRows: LandingEventRow[],
   masterRows: MasterActionFunnelRow[],
   progressRows: BibleYearProgressRow[],
   dayThreeUpgrade: DayThreeUpgradeAnalytics,
+  daySevenUpgrade: DayThreeUpgradeAnalytics,
 ) {
   const landingActorsByEvent = new Map<string, Set<string>>();
   for (const row of landingRows) {
@@ -556,15 +586,22 @@ function buildBibleBuddyFunnelStages(
     { key: "startedDay3", label: "Started Day 3", actors: startedDayActors(3) },
     { key: "completedDay3", label: "Completed Day 3", actors: completedDayActors(3) },
     { key: "day3UpgradeOffer", label: "Day 3 Upgrade Offer", actors: new Set<string>() },
-    { key: "createdFreeAccount", label: "Created Free Account", actors: mergeActors(["created_free_account", "created_account_successfully"], ["user_signup"]) },
-    { key: "startedTrial", label: "Started Trial", actors: mergeActors([], ["trial_started"]) },
-    { key: "convertedToPro", label: "Converted To Pro", actors: mergeActors([], ["user_upgraded", "trial_converted"]) },
+    { key: "startedDay4", label: "Started Day 4", actors: startedDayActors(4) },
+    { key: "completedDay4", label: "Completed Day 4", actors: completedDayActors(4) },
+    { key: "startedDay5", label: "Started Day 5", actors: startedDayActors(5) },
+    { key: "completedDay5", label: "Completed Day 5", actors: completedDayActors(5) },
+    { key: "startedDay6", label: "Started Day 6", actors: startedDayActors(6) },
+    { key: "completedDay6", label: "Completed Day 6", actors: completedDayActors(6) },
+    { key: "startedDay7", label: "Started Day 7", actors: startedDayActors(7) },
+    { key: "completedDay7", label: "Completed Day 7", actors: completedDayActors(7) },
+    { key: "day7UpgradeOffer", label: "Day 7 Upgrade Offer", actors: new Set<string>() },
   ];
 
   const firstCount = stageSets[0]?.actors.size || 0;
   let previousDisplayedCount = firstCount;
   return stageSets.map((stage, index): FunnelStageRow => {
-    const rawUsers = stage.key === "day3UpgradeOffer" ? dayThreeUpgrade.views : stage.actors.size;
+    const upgradeStats = stage.key === "day3UpgradeOffer" ? dayThreeUpgrade : stage.key === "day7UpgradeOffer" ? daySevenUpgrade : null;
+    const rawUsers = upgradeStats ? upgradeStats.views : stage.actors.size;
     const previousCount = index === 0 ? rawUsers : previousDisplayedCount;
     const users = index === 0 ? rawUsers : Math.min(rawUsers, previousDisplayedCount);
     previousDisplayedCount = users;
@@ -575,22 +612,22 @@ function buildBibleBuddyFunnelStages(
       conversionRate: index === 0 ? 100 : percent(users, previousCount),
       dropoffRate: index === 0 ? 0 : Number(Math.max(0, 100 - percent(users, previousCount)).toFixed(1)),
       retentionRate: index === 0 ? 100 : percent(users, firstCount),
-      ...(stage.key === "day3UpgradeOffer"
+      ...(upgradeStats
         ? {
-          upgradeViews: dayThreeUpgrade.views,
-          upgradeClicks: dayThreeUpgrade.upgradeClicks,
-          continueFreeClicks: dayThreeUpgrade.continueFreeClicks,
-          successfulUpgrades: dayThreeUpgrade.successfulUpgrades,
-          upgradeClickRate: dayThreeUpgrade.upgradeClickRate,
-          upgradeSuccessRate: dayThreeUpgrade.upgradeSuccessRate,
-          continueFreeRate: dayThreeUpgrade.continueFreeRate,
+          upgradeViews: upgradeStats.views,
+          upgradeClicks: upgradeStats.upgradeClicks,
+          continueFreeClicks: upgradeStats.continueFreeClicks,
+          successfulUpgrades: upgradeStats.successfulUpgrades,
+          upgradeClickRate: upgradeStats.upgradeClickRate,
+          upgradeSuccessRate: upgradeStats.upgradeSuccessRate,
+          continueFreeRate: upgradeStats.continueFreeRate,
         }
         : {}),
     };
   });
 }
 
-function buildDayThreeUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): DayThreeUpgradeAnalytics {
+function buildDayUpgradeAnalytics(masterRows: MasterActionFunnelRow[], dayNumber: number): DayThreeUpgradeAnalytics {
   const viewedActors = new Set<string>();
   const upgradeClickActors = new Set<string>();
   const continueFreeActors = new Set<string>();
@@ -606,11 +643,11 @@ function buildDayThreeUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): Day
     const prompt = typeof metadata.prompt === "string" ? metadata.prompt.toLowerCase() : "";
     const day = Number(row.journey_day || parseBibleYearDayFromLabel(actionLabel) || 0);
     const lowerLabel = actionLabel.toLowerCase();
-    const isDayThreeUpgrade =
-      (day === 3 && lowerLabel.includes("day 3") && lowerLabel.includes("pro")) ||
-      checkoutContext === "day_3_upgrade_offer" ||
-      prompt === "day_3_pro_upgrade";
-    if (!isDayThreeUpgrade) continue;
+    const isDayUpgrade =
+      (day === dayNumber && (lowerLabel.includes(`day ${dayNumber}`) || prompt.includes(`day_${dayNumber}`) || checkoutContext.includes(`day_${dayNumber}`))) ||
+      checkoutContext === `day_${dayNumber}_upgrade_offer` ||
+      prompt === `day_${dayNumber}_pro_upgrade`;
+    if (!isDayUpgrade) continue;
 
     if (actionType === "upgrade_popup_viewed") viewedActors.add(actorId);
     if (actionType === "upgrade_popup_cta_clicked") upgradeClickActors.add(actorId);
@@ -633,6 +670,10 @@ function buildDayThreeUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): Day
     upgradeSuccessRate: percent(successfulUpgrades, Math.max(upgradeClicks, views)),
     continueFreeRate: percent(continueFreeClicks, views),
   };
+}
+
+function buildDayThreeUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): DayThreeUpgradeAnalytics {
+  return buildDayUpgradeAnalytics(masterRows, 3);
 }
 
 function buildStudyNotesUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): StudyNotesUpgradeAnalytics {
@@ -884,6 +925,54 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
     totalVisitors,
     sources,
   };
+}
+
+function buildAnalyticsDataHealthWarnings(
+  bibleYearDays: ReturnType<typeof buildBibleYearDayAnalytics>,
+  trafficSources: ReturnType<typeof summarizeTrafficSources>,
+): DataHealthWarning[] {
+  const warnings: DataHealthWarning[] = [];
+  const missingTaskStarts = bibleYearDays.reduce((total, day) => {
+    return total + day.users.filter((user) =>
+      (user.readingCompleted && !user.readingStarted) ||
+      (user.reflectionCompleted && !user.reflectionStarted) ||
+      (user.triviaCompleted && !user.triviaStarted)
+    ).length;
+  }, 0);
+  if (missingTaskStarts > 0) {
+    warnings.push({
+      key: "bible-year-finished-without-start",
+      severity: "warning",
+      title: `${missingTaskStarts} task completions are missing a matching start event`,
+      detail: "A task was finished, but the matching day_X_task_Y_started event was not found for that same person.",
+    });
+  }
+
+  const missingDayOneStarts = bibleYearDays
+    .find((day) => day.dayNumber === 1)
+    ?.users.filter((user) => user.completed && !user.readingStarted).length || 0;
+  if (missingDayOneStarts > 0) {
+    warnings.push({
+      key: "day-1-complete-without-task-1-start",
+      severity: "warning",
+      title: `${missingDayOneStarts} Day 1 completions are missing day_1_task_1_started`,
+      detail: "Finished Day 1 is based on day_1_task_3_finished, but day_1_task_1_started was not found for those people.",
+    });
+  }
+
+  const missingSourceRows = trafficSources.sources.reduce((total, source) => {
+    return total + (source.visitorRows || []).filter((row) => !row.referrer && source.source === "Unknown").length;
+  }, 0);
+  if (missingSourceRows > 0) {
+    warnings.push({
+      key: "missing-source-referrer",
+      severity: "info",
+      title: `${missingSourceRows} landing visitors have unknown source/referrer`,
+      detail: "Add or preserve UTM/referrer values to make traffic source reporting more useful.",
+    });
+  }
+
+  return warnings;
 }
 
 function summarizeLandingWindow(rows: Record<string, unknown>[], windowKey: JourneyWindowKey) {
@@ -1547,11 +1636,19 @@ function buildVisitorJourneys(
       ? landingStepStatusLabel
       : getStatusLabel(status);
     const currentMilestoneTitle =
+      upgradeAt ? "Converted to Pro" :
+      dayOneCompletedAt ? "Finished Day 1" :
+      createdAccountAt ? "Created free account" :
+      dayOneStartedAt ? "Started Day 1" :
       dashboardCompletedAt ? "Finished dashboard walkthrough" :
       onboardingCompletedAt ? "Guest finished onboarding" :
       status === "dropped_off" ? stepStatusLabel || lastMeaningfulLandingInfo?.title || "Unknown" :
       getStatusLabel(status);
     const currentEventName =
+      upgradeAt ? "user_upgraded" :
+      dayOneCompletedAt ? "bible_year_day_completed" :
+      createdAccountAt ? "created_account_successfully" :
+      dayOneStartedAt ? "bible_year_task_started" :
       dashboardCompletedAt ? "dashboard_tour_completed" :
       onboardingCompletedAt ? "started_guest_journey" :
       lastMeaningfulLandingRow?.event_name || lastRow?.event_name || "";
@@ -1737,6 +1834,12 @@ function buildBibleYearDayAnalytics(
     readingCompleted: boolean;
     triviaCompleted: boolean;
     reflectionCompleted: boolean;
+    task1StartEvent: string | null;
+    task1FinishEvent: string | null;
+    task2StartEvent: string | null;
+    task2FinishEvent: string | null;
+    task3StartEvent: string | null;
+    task3FinishEvent: string | null;
     updatedAt: string | null;
   }>>();
 
@@ -1750,6 +1853,12 @@ function buildBibleYearDayAnalytics(
       readingCompleted: boolean;
       triviaCompleted: boolean;
       reflectionCompleted: boolean;
+      task1StartEvent: string | null;
+      task1FinishEvent: string | null;
+      task2StartEvent: string | null;
+      task2FinishEvent: string | null;
+      task3StartEvent: string | null;
+      task3FinishEvent: string | null;
       updatedAt: string | null;
     }>();
     const existing = actors.get(actorId);
@@ -1764,6 +1873,12 @@ function buildBibleYearDayAnalytics(
       readingCompleted: false,
       triviaCompleted: false,
       reflectionCompleted: false,
+      task1StartEvent: null,
+      task1FinishEvent: null,
+      task2StartEvent: null,
+      task2FinishEvent: null,
+      task3StartEvent: null,
+      task3FinishEvent: null,
       updatedAt: null,
     };
     actors.set(actorId, next);
@@ -1792,19 +1907,29 @@ function buildBibleYearDayAnalytics(
     if (row.action_type === "bible_year_task_started") {
       if (startedTaskNumber === 1 || task === "reading" || label.includes("reading started") || label.includes("video started")) {
         actor.readingStarted = true;
+        actor.task1StartEvent = getCanonicalEventNameFromAction(row, dayNumber, 1);
       }
       if (startedTaskNumber === 2 || task === "reflection" || label.includes("summary") || label.includes("study notes")) {
         actor.reflectionStarted = true;
+        actor.task2StartEvent = getCanonicalEventNameFromAction(row, dayNumber, 2);
       }
       if (startedTaskNumber === 3 || task === "trivia" || label.includes("trivia started")) {
         actor.triviaStarted = true;
+        actor.task3StartEvent = getCanonicalEventNameFromAction(row, dayNumber, 3);
       }
     }
     if (row.action_type === "bible_in_one_year_reading_completed") {
       actor.readingCompleted = true;
+      actor.task1FinishEvent = getCanonicalEventNameFromAction(row, dayNumber, 1);
     }
-    if (row.action_type === "bible_in_one_year_trivia_completed") actor.triviaCompleted = true;
-    if (row.action_type === "bible_in_one_year_reflection_completed") actor.reflectionCompleted = true;
+    if (row.action_type === "bible_in_one_year_trivia_completed") {
+      actor.triviaCompleted = true;
+      actor.task3FinishEvent = getCanonicalEventNameFromAction(row, dayNumber, 3);
+    }
+    if (row.action_type === "bible_in_one_year_reflection_completed") {
+      actor.reflectionCompleted = true;
+      actor.task2FinishEvent = getCanonicalEventNameFromAction(row, dayNumber, 2);
+    }
   }
 
   return Array.from(dayActors.entries())
@@ -1821,6 +1946,12 @@ function buildBibleYearDayAnalytics(
           readingCompleted: row.readingCompleted,
           triviaCompleted: row.triviaCompleted,
           reflectionCompleted: row.reflectionCompleted,
+          task1StartEvent: row.task1StartEvent,
+          task1FinishEvent: row.task1FinishEvent,
+          task2StartEvent: row.task2StartEvent,
+          task2FinishEvent: row.task2FinishEvent,
+          task3StartEvent: row.task3StartEvent,
+          task3FinishEvent: row.task3FinishEvent,
           completed: row.triviaCompleted,
           updatedAt: row.updatedAt,
         }))
@@ -2171,11 +2302,13 @@ export async function GET(request: Request) {
   });
   const bibleYearDays = buildBibleYearDayAnalytics(windowBibleYearProgressRows, masterFunnelRows, profileByUserId);
   const dayThreeUpgrade = buildDayThreeUpgradeAnalytics(masterFunnelRows);
+  const daySevenUpgrade = buildDayUpgradeAnalytics(masterFunnelRows, 7);
   const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
-  const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade);
+  const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade, daySevenUpgrade);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
   const trafficSources = summarizeTrafficSources(validLandingEventRows);
+  const dataHealth = buildAnalyticsDataHealthWarnings(bibleYearDays, trafficSources);
   const publicOnboardingFlow = summarizePublicOnboardingFlow(validEventRows);
   const landingLast24h = summarizeLandingLast24Hours(validEventRows);
   const guestAccountFunnel = summarizeGuestAccountFunnel(validEventRows);
@@ -2221,6 +2354,7 @@ export async function GET(request: Request) {
       bibleYearDays,
       studyNotes,
       trafficSources,
+      dataHealth,
       publicOnboardingFlow,
       sources,
       eventSetupRequired: Boolean(eventError),
@@ -2257,6 +2391,7 @@ export async function GET(request: Request) {
     bibleYearDays,
     studyNotes,
     trafficSources,
+    dataHealth,
     publicOnboardingFlow,
     sources,
     setupRequired: false,
