@@ -1881,6 +1881,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearRewardToast, setBibleYearRewardToast] = useState<{ dayNumber: number; text: string; nonce: number } | null>(null);
   const bibleYearXpBackfillKeyRef = useRef("");
   const bibleYearReflectionSyncKeyRef = useRef("");
+  const bibleYearChapterSyncKeyRef = useRef("");
   const bibleYearJustCompletedDayRef = useRef<number | null>(null);
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
   const bibleYearTermReturnScrollYRef = useRef<number | null>(null);
@@ -8306,6 +8307,32 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
   }
 
+  useEffect(() => {
+    if (!userId) return;
+
+    const completedChapterKeys = new Set(completedBibleChapterKeys);
+    const completedDaysMissingReaderProgress = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => {
+      if (!isBibleYearDayComplete(day)) return false;
+      return day.readings.some((reading) => !completedChapterKeys.has(getCompletedBibleChapterKey(reading.book, reading.chapter)));
+    });
+
+    if (!completedDaysMissingReaderProgress.length) return;
+
+    const syncKey = `${userId}:${completedDaysMissingReaderProgress.map((day) => day.dayNumber).join(",")}:${completedBibleChapterKeys.length}`;
+    if (bibleYearChapterSyncKeyRef.current === syncKey) return;
+    bibleYearChapterSyncKeyRef.current = syncKey;
+
+    async function syncCompletedBibleYearDaysToBibleReader() {
+      for (const day of completedDaysMissingReaderProgress) {
+        await markBibleYearDayCoveredChaptersRead(day);
+      }
+    }
+
+    void syncCompletedBibleYearDaysToBibleReader().catch((error) => {
+      console.error("[BIBLE_YEAR_PROGRESS] Could not sync completed Bible Year days to Bible reader:", error);
+    });
+  }, [userId, bibleYearCompletedCardsByDay, completedBibleChapterKeys]);
+
   async function incrementProfileTotalActions() {
     if (!userId) return;
 
@@ -10164,7 +10191,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
 
           <div className="mt-4 grid gap-4 sm:grid-cols-[142px_minmax(0,1fr)] lg:grid-cols-[164px_minmax(0,1fr)] xl:grid-cols-[176px_minmax(0,1fr)] xl:items-start">
-            <div className="aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border border-[#27384e] bg-black shadow-[0_12px_26px_rgba(0,0,0,0.28)]">
+            <div className="mx-auto aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border border-[#27384e] bg-black shadow-[0_12px_26px_rgba(0,0,0,0.28)] sm:mx-0">
               {cover ? (
                 <img src={cover} alt="" loading="eager" decoding="async" className="h-full w-full object-cover" />
               ) : (
@@ -10290,7 +10317,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           })}
         </section>
 
-        <section data-bb-dashboard-tour="journey-map" className="overflow-hidden rounded-[20px] border border-[#223247] bg-[#101a27] text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl">
+        <section data-bb-dashboard-tour="journey-map" className="order-first overflow-hidden rounded-[20px] border border-[#223247] bg-[#101a27] text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl">
           <button type="button" onClick={openBibleYearSeriesDashboard} className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-white/5">
             <span>
               <span className="block text-[10px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Journey Map</span>
