@@ -1936,6 +1936,20 @@ function buildBibleYearDayAnalytics(
     .sort((a, b) => a[0] - b[0])
     .map(([dayNumber, actorMap]) => {
       const actorRows = Array.from(actorMap.values());
+      actorRows.forEach((row) => {
+        if ((row.readingCompleted || row.triviaCompleted) && !row.readingStarted) {
+          row.readingStarted = true;
+          row.task1StartEvent = row.task1StartEvent || row.task1FinishEvent || `day_${dayNumber}_task_1_started_inferred`;
+        }
+        if ((row.reflectionCompleted || row.triviaCompleted) && !row.reflectionStarted) {
+          row.reflectionStarted = true;
+          row.task2StartEvent = row.task2StartEvent || row.task2FinishEvent || `day_${dayNumber}_task_2_started_inferred`;
+        }
+        if (row.triviaCompleted && !row.triviaStarted) {
+          row.triviaStarted = true;
+          row.task3StartEvent = row.task3StartEvent || row.task3FinishEvent || `day_${dayNumber}_task_3_started_inferred`;
+        }
+      });
       const users: BibleYearDayUserRow[] = actorRows
         .map((row) => ({
           userId: row.userId,
@@ -2350,6 +2364,7 @@ export async function GET(request: Request) {
       visitorJourneys,
       bibleBuddyFunnelStages,
       dayThreeUpgrade,
+      daySevenUpgrade,
       studyNotesUpgrade,
       bibleYearDays,
       studyNotes,
@@ -2387,6 +2402,7 @@ export async function GET(request: Request) {
     visitorJourneys,
     bibleBuddyFunnelStages,
     dayThreeUpgrade,
+    daySevenUpgrade,
     studyNotesUpgrade,
     bibleYearDays,
     studyNotes,

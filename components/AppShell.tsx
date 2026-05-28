@@ -1971,6 +1971,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const breadcrumbItems = buildBreadcrumbs(pathname);
   const shouldShowBreadcrumbs = isLoggedIn && !isBarePage && breadcrumbItems.length > 0;
   const showDashboardStatusButtons = false;
+  const shouldBlendHeaderIntoPage = Boolean(pathname?.startsWith("/dashboard"));
 
   function diffLocalDayKeys(fromDayKey: string, toDayKey: string) {
     const [fromYear, fromMonth, fromDay] = fromDayKey.split("-").map(Number);
@@ -2520,7 +2521,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* NAVBAR (hidden on landing/login/signup) */}
       {!isBarePage && !isDashboardStoreOpen && (
-        <header className="bb-safe-top-header w-full border-b border-[var(--bb-card-border,#374151)] bg-[var(--bb-background,#0e1218)]">
+        <header className={`bb-safe-top-header w-full bg-[var(--bb-background,#0e1218)] ${shouldBlendHeaderIntoPage ? "" : "border-b border-[var(--bb-card-border,#374151)]"}`}>
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <Link

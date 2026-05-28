@@ -83,10 +83,12 @@ export async function POST(req: NextRequest) {
     const journeyDay = Number(metadata.journey_day || 0);
     const checkoutContext = metadata.checkout_context || "";
     const prompt = metadata.prompt || "";
-    const isDayThreeUpgrade =
-      journeyDay === 3 ||
-      checkoutContext === "day_3_upgrade_offer" ||
-      prompt === "day_3_pro_upgrade";
+    const upgradeOfferDay =
+      journeyDay === 3 || checkoutContext === "day_3_upgrade_offer" || prompt === "day_3_pro_upgrade"
+        ? 3
+        : journeyDay === 7 || checkoutContext === "day_7_upgrade_offer" || prompt === "day_7_pro_upgrade"
+          ? 7
+          : null;
     const stripeCustomerId = typeof session.customer === "string" ? session.customer : null;
     const stripeSubscriptionId = typeof session.subscription === "string" ? session.subscription : null;
 
@@ -112,8 +114,8 @@ export async function POST(req: NextRequest) {
         source: metadata.source || "stripe",
       },
       actionLabel: amountTotal
-        ? `Stripe checkout completed${isDayThreeUpgrade ? " - Day 3 Pro upgrade" : ""} (${amountTotal})`
-        : `Stripe checkout completed${isDayThreeUpgrade ? " - Day 3 Pro upgrade" : ""}`,
+        ? `Stripe checkout completed${upgradeOfferDay ? ` - Day ${upgradeOfferDay} Pro upgrade` : ""} (${amountTotal})`
+        : `Stripe checkout completed${upgradeOfferDay ? ` - Day ${upgradeOfferDay} Pro upgrade` : ""}`,
     });
 
     return NextResponse.json({ received: true });

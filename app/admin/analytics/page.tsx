@@ -176,6 +176,7 @@ type AnalyticsResponse = {
   visitorJourneys?: VisitorJourneys;
   bibleBuddyFunnelStages?: FunnelStageRow[];
   dayThreeUpgrade?: DayThreeUpgradeAnalytics;
+  daySevenUpgrade?: DayThreeUpgradeAnalytics;
   studyNotesUpgrade?: StudyNotesUpgradeAnalytics;
   bibleYearDays?: BibleYearDayAnalytics[];
   studyNotes?: {

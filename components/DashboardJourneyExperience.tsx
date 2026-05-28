@@ -69,6 +69,7 @@ const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
 const DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID = "bible-year:day-1-study-notes-gift";
 const DAY_THREE_PRO_UPGRADE_PROMPT_ID = "bible-year:day-3-pro-upgrade";
+const DAY_SEVEN_PRO_UPGRADE_PROMPT_ID = "bible-year:day-7-pro-upgrade";
 const DAY_THREE_PRO_POPUP_PREVIEW_USER_ID = "669d4404-5eee-49ee-a112-2ecbd573e22a";
 const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapters;
 const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:dashboard-guided-intro-seen";
@@ -1866,12 +1867,15 @@ export default function DashboardJourneyExperience({
   const [bibleYearDeepNotesUpgradeDay, setBibleYearDeepNotesUpgradeDay] = useState<number | null>(null);
   const [bibleYearDownloadUpgradeOpen, setBibleYearDownloadUpgradeOpen] = useState(false);
   const [bibleYearQuickUpgradeOpen, setBibleYearQuickUpgradeOpen] = useState(false);
-  const [bibleYearQuickUpgradeContext, setBibleYearQuickUpgradeContext] = useState<"day3" | "guest_pro" | null>(null);
+  const [bibleYearQuickUpgradeContext, setBibleYearQuickUpgradeContext] = useState<"day3" | "day7" | "guest_pro" | null>(null);
   const [bibleYearQuickUpgradeLoading, setBibleYearQuickUpgradeLoading] = useState<"monthly" | "yearly" | null>(null);
   const [bibleYearQuickUpgradeError, setBibleYearQuickUpgradeError] = useState<string | null>(null);
   const [bibleYearDayThreeProPrompt, setBibleYearDayThreeProPrompt] = useState<{ day: GenesisBibleYearDay; nextDay: GenesisBibleYearDay } | null>(null);
   const [bibleYearDayThreeProContinueTarget, setBibleYearDayThreeProContinueTarget] = useState<{ day: GenesisBibleYearDay; nextDay: GenesisBibleYearDay } | null>(null);
-  const [bibleYearDayThreeProOpenSection, setBibleYearDayThreeProOpenSection] = useState("understand");
+  const [bibleYearDayThreeProOpenSection, setBibleYearDayThreeProOpenSection] = useState("");
+  const [bibleYearDaySevenProPrompt, setBibleYearDaySevenProPrompt] = useState<{ day: GenesisBibleYearDay; nextDay: GenesisBibleYearDay } | null>(null);
+  const [bibleYearDaySevenProContinueTarget, setBibleYearDaySevenProContinueTarget] = useState<{ day: GenesisBibleYearDay; nextDay: GenesisBibleYearDay } | null>(null);
+  const [bibleYearDaySevenProOpenSection, setBibleYearDaySevenProOpenSection] = useState("");
   const [bibleYearDownloadPrompt, setBibleYearDownloadPrompt] = useState<{ dayNumber: number; title: string; videoUrl: string } | null>(null);
   const [bibleYearCompletionAnimation, setBibleYearCompletionAnimation] = useState<{ dayNumber: number; card: BibleYearDayCardKey; nonce: number } | null>(null);
   const [bibleYearRewardToast, setBibleYearRewardToast] = useState<{ dayNumber: number; text: string; nonce: number } | null>(null);
@@ -1977,6 +1981,7 @@ export default function DashboardJourneyExperience({
   const [protectJourneyPromptOpen, setProtectJourneyPromptOpen] = useState(false);
   const [guestInfoModalOpen, setGuestInfoModalOpen] = useState(false);
   const [guestProPromptOpen, setGuestProPromptOpen] = useState(false);
+  const [guestProOpenSection, setGuestProOpenSection] = useState("");
   const [guestAccountFormOpen, setGuestAccountFormOpen] = useState(false);
   const [guestAccountName, setGuestAccountName] = useState("");
   const [guestAccountEmail, setGuestAccountEmail] = useState("");
@@ -5614,7 +5619,7 @@ export default function DashboardJourneyExperience({
     setBibleYearTermNotesError(null);
   }
 
-  function openBibleYearQuickUpgrade(context: "day3" | "guest_pro" | null = null) {
+  function openBibleYearQuickUpgrade(context: "day3" | "day7" | "guest_pro" | null = null) {
     setBibleYearDeepNotesUpgradeOpen(false);
     setBibleYearDownloadUpgradeOpen(false);
     setBibleYearQuickUpgradeError(null);
@@ -5622,14 +5627,24 @@ export default function DashboardJourneyExperience({
     setBibleYearQuickUpgradeOpen(true);
   }
 
-  function getDayThreeProPromptStorageKey() {
-    return `${DAY_THREE_PRO_UPGRADE_PROMPT_ID}:${userId || "guest"}`;
+  function getDayProPromptConfig(dayNumber: 3 | 7) {
+    return {
+      promptId: dayNumber === 3 ? DAY_THREE_PRO_UPGRADE_PROMPT_ID : DAY_SEVEN_PRO_UPGRADE_PROMPT_ID,
+      promptName: `day_${dayNumber}_pro_upgrade`,
+      checkoutContext: `day_${dayNumber}_upgrade_offer`,
+    };
   }
 
-  async function hasSeenDayThreeProPrompt() {
+  function getDayProPromptStorageKey(dayNumber: 3 | 7) {
+    return `${getDayProPromptConfig(dayNumber).promptId}:${userId || "guest"}`;
+  }
+
+  async function hasSeenDayProPrompt(dayNumber: 3 | 7) {
+    if (typeof window !== "undefined" && window.localStorage.getItem(getDayProPromptStorageKey(dayNumber)) === "seen") {
+      return true;
+    }
     if (!userId) {
-      if (typeof window === "undefined") return false;
-      return window.localStorage.getItem(getDayThreeProPromptStorageKey()) === "seen";
+      return false;
     }
 
     try {
@@ -5638,24 +5653,24 @@ export default function DashboardJourneyExperience({
         .select("id")
         .eq("user_id", userId)
         .eq("action_type", ACTION_TYPE.upgrade_popup_viewed)
-        .eq("journey_day", 3)
-        .in("action_label", ["Day 3 upgrade seen", "Bible in One Year Day 3 Pro upgrade popup viewed"])
+        .eq("journey_day", dayNumber)
+        .in("action_label", [`Day ${dayNumber} upgrade seen`, `Bible in One Year Day ${dayNumber} Pro upgrade popup viewed`])
         .limit(1);
 
       if (error) throw error;
       return Boolean(data?.length);
     } catch (error) {
-      console.warn("[BIBLE_YEAR_DAY3_UPGRADE] Could not check prompt history:", error);
+      console.warn(`[BIBLE_YEAR_DAY${dayNumber}_UPGRADE] Could not check prompt history:`, error);
       return false;
     }
   }
 
-  function rememberDayThreeProPromptSeen() {
+  function rememberDayProPromptSeen(dayNumber: 3 | 7) {
     if (typeof window === "undefined") return;
-    window.localStorage.setItem(getDayThreeProPromptStorageKey(), "seen");
+    window.localStorage.setItem(getDayProPromptStorageKey(dayNumber), "seen");
   }
 
-  async function logDayThreeProPromptAction(actionType: ActionType, label: string) {
+  async function logDayProPromptAction(dayNumber: 3 | 7, actionType: ActionType, label: string) {
     if (!userId) return;
     try {
       const {
@@ -5667,23 +5682,29 @@ export default function DashboardJourneyExperience({
         meta.first_name ||
         (user?.email ? user.email.split("@")[0] : null) ||
         "User";
+      const config = getDayProPromptConfig(dayNumber);
       await supabase.from("master_actions").insert({
         user_id: userId,
         username,
         action_type: actionType,
         action_label: label,
-        journey_day: 3,
+        journey_day: dayNumber,
         account_status: isPaidUser ? "pro" : "free_or_guest",
         event_metadata: {
           plan: "bible_in_one_year",
-          prompt: "day_3_pro_upgrade",
-          dayNumber: 3,
+          prompt: config.promptName,
+          checkoutContext: config.checkoutContext,
+          dayNumber,
           label,
         },
       });
     } catch (error) {
-      console.warn("[BIBLE_YEAR_DAY3_UPGRADE] Could not log prompt action:", error);
+      console.warn(`[BIBLE_YEAR_DAY${dayNumber}_UPGRADE] Could not log prompt action:`, error);
     }
+  }
+
+  function logDayThreeProPromptAction(actionType: ActionType, label: string) {
+    return logDayProPromptAction(3, actionType, label);
   }
 
   async function logStudyNotesUpgradeAction(actionType: ActionType, dayNumber: number | null, label: string) {
@@ -5718,12 +5739,23 @@ export default function DashboardJourneyExperience({
 
   async function openDayThreeProPrompt(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
     if (isPaidUser) return false;
-    if (await hasSeenDayThreeProPrompt()) return false;
-    rememberDayThreeProPromptSeen();
+    if (await hasSeenDayProPrompt(3)) return false;
+    rememberDayProPromptSeen(3);
     setBibleYearDayThreeProPrompt({ day, nextDay });
     setBibleYearDayThreeProContinueTarget({ day, nextDay });
     setBibleYearDayThreeProOpenSection("");
     void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_viewed, "Day 3 upgrade seen");
+    return true;
+  }
+
+  async function openDaySevenProPrompt(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
+    if (isPaidUser) return false;
+    if (await hasSeenDayProPrompt(7)) return false;
+    rememberDayProPromptSeen(7);
+    setBibleYearDaySevenProPrompt({ day, nextDay });
+    setBibleYearDaySevenProContinueTarget({ day, nextDay });
+    setBibleYearDaySevenProOpenSection("");
+    void logDayProPromptAction(7, ACTION_TYPE.upgrade_popup_viewed, "Day 7 upgrade seen");
     return true;
   }
 
@@ -5748,11 +5780,27 @@ export default function DashboardJourneyExperience({
     void handleContinueToNextBibleYearDay(prompt.day, prompt.nextDay);
   }
 
+  function continueAfterDaySevenProPrompt() {
+    const prompt = bibleYearDaySevenProPrompt || bibleYearDaySevenProContinueTarget;
+    setBibleYearDaySevenProPrompt(null);
+    setBibleYearDaySevenProContinueTarget(null);
+    setBibleYearQuickUpgradeContext(null);
+    setBibleYearQuickUpgradeOpen(false);
+    setBibleYearQuickUpgradeError(null);
+    if (!prompt) return;
+    void handleContinueToNextBibleYearDay(prompt.day, prompt.nextDay);
+  }
+
   function closeBibleYearQuickUpgrade() {
     if (bibleYearQuickUpgradeLoading) return;
     if (bibleYearQuickUpgradeContext === "day3") {
       void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_dismissed, "Day 3 upgrade plan choices closed");
       continueAfterDayThreeProPrompt();
+      return;
+    }
+    if (bibleYearQuickUpgradeContext === "day7") {
+      void logDayProPromptAction(7, ACTION_TYPE.upgrade_popup_dismissed, "Day 7 upgrade plan choices closed");
+      continueAfterDaySevenProPrompt();
       return;
     }
     setBibleYearQuickUpgradeOpen(false);
@@ -5764,12 +5812,20 @@ export default function DashboardJourneyExperience({
     try {
       setBibleYearQuickUpgradeLoading(plan);
       setBibleYearQuickUpgradeError(null);
-      const returnTo = bibleYearQuickUpgradeContext === "day3" ? "/dashboard?view=bible-year&day=4" : undefined;
+      const returnTo =
+        bibleYearQuickUpgradeContext === "day3"
+          ? "/dashboard?view=bible-year&day=4"
+          : bibleYearQuickUpgradeContext === "day7"
+            ? "/dashboard?view=bible-year&day=8"
+            : undefined;
       if (bibleYearQuickUpgradeContext === "day3") {
         void logDayThreeProPromptAction(ACTION_TYPE.upgrade_popup_cta_clicked, `Day 3 checkout ${plan} clicked`);
       }
+      if (bibleYearQuickUpgradeContext === "day7") {
+        void logDayProPromptAction(7, ACTION_TYPE.upgrade_popup_cta_clicked, `Day 7 checkout ${plan} clicked`);
+      }
 
-      const isDayThreeUpgrade = bibleYearQuickUpgradeContext === "day3";
+      const upgradeDay = bibleYearQuickUpgradeContext === "day3" ? 3 : bibleYearQuickUpgradeContext === "day7" ? 7 : null;
       const response = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: {
@@ -5778,9 +5834,9 @@ export default function DashboardJourneyExperience({
         body: JSON.stringify({
           plan,
           returnTo,
-          checkoutContext: isDayThreeUpgrade ? "day_3_upgrade_offer" : "bible_year_quick_upgrade",
-          prompt: isDayThreeUpgrade ? "day_3_pro_upgrade" : "bible_year_pro_upgrade",
-          journeyDay: isDayThreeUpgrade ? 3 : undefined,
+          checkoutContext: upgradeDay ? `day_${upgradeDay}_upgrade_offer` : "bible_year_quick_upgrade",
+          prompt: upgradeDay ? `day_${upgradeDay}_pro_upgrade` : "bible_year_pro_upgrade",
+          journeyDay: upgradeDay || undefined,
           source: "bible_year_dashboard",
         }),
       });
@@ -6373,6 +6429,155 @@ export default function DashboardJourneyExperience({
     );
   }
 
+  function renderBibleYearDaySevenProUpgradePrompt() {
+    const prompt = bibleYearDaySevenProPrompt;
+    if (!prompt) return null;
+
+    const sections = [
+      {
+        id: "habit",
+        icon: "shield",
+        iconClass: "bg-[#dff0d8] text-[#3b7a39]",
+        title: "Protect the first week you just built",
+        pain: "Getting through a full week matters. If you lose your place now, it is easy for the habit to fade.",
+        pro: "Pro keeps your Bible in One Year progress, study history, and next steps connected to your BibleBuddy account.",
+        result: "You can keep going into Week 2 without wondering where you left off.",
+      },
+      {
+        id: "deeper",
+        icon: "notes",
+        iconClass: "bg-[#ffefc2] text-[#b37a00]",
+        title: "Go deeper as Genesis gets heavier",
+        pain: "The next readings move into family conflict, covenant tension, and details that need more background.",
+        pro: "Pro gives deeper notes, historical context, key phrase explanations, and focused tools for the exact day you are studying.",
+        result: "You understand the story instead of only finishing the checklist.",
+      },
+      {
+        id: "devices",
+        icon: "devices",
+        iconClass: "bg-[#ddecff] text-[#2f6bcf]",
+        title: "Keep your study connected everywhere",
+        pain: "You may read on your phone, then later want to continue on desktop without rebuilding your place.",
+        pro: "Pro keeps your journey connected across devices so BibleBuddy feels like one study path.",
+        result: "Your plan follows you wherever you open it.",
+      },
+      {
+        id: "understand",
+        icon: "book",
+        iconClass: "bg-[#eadcff] text-[#6d3fd1]",
+        title: "Get help when the Bible gets confusing",
+        pain: "Names, places, customs, and covenant language can make the readings feel harder after the first week.",
+        pro: "Pro keeps plain-language Study Notes, context, and answers inside the day you are reading.",
+        result: "You keep moving with clarity instead of leaving the app to search.",
+      },
+    ];
+
+    function dismissDaySevenPrompt(label: string) {
+      void logDayProPromptAction(7, ACTION_TYPE.upgrade_popup_dismissed, label);
+      continueAfterDaySevenProPrompt();
+    }
+
+    return (
+      <ModalShell
+        isOpen={Boolean(prompt)}
+        onClose={() => dismissDaySevenPrompt("Day 7 upgrade popup closed")}
+        backdropColor="bg-slate-950/72 backdrop-blur-md"
+        scrollable
+        zIndex="z-[95]"
+      >
+        <div className="bb-skin-glow-card relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_84%,transparent))] px-4 py-4 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_20px_58px_rgba(15,23,42,0.28),0_0_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)]">
+          <button
+            type="button"
+            onClick={() => dismissDaySevenPrompt("Day 7 upgrade popup closed")}
+            className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,transparent)] text-lg font-black text-[var(--bb-text-primary,#111827)] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+            aria-label="Close Pro upgrade popup"
+          >
+            x
+          </button>
+
+          <div className="pr-9 text-left sm:text-center">
+            <h2 className="font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[var(--bb-text-primary,#111827)] sm:text-[28px]">
+              You finished <span className="text-[#2f7fe8]">Week 1.</span>
+              <span className="block">Keep the rhythm protected.</span>
+            </h2>
+            <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[var(--bb-accent,#2f7fe8)] opacity-70 sm:w-44" aria-hidden="true" />
+          </div>
+
+          <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] sm:text-center">
+            <p>
+              Day 8 starts the next stretch. <span className="font-black text-[var(--bb-accent,#2f7fe8)]">BibleBuddy Pro</span> helps you keep your place, understand more, and stay consistent.
+            </p>
+          </div>
+
+          <div className="mt-3 rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(15,23,42,0.08)]">
+            {sections.map((section, index) => {
+              const isOpen = bibleYearDaySevenProOpenSection === section.id;
+              return (
+                <div key={section.id} className={index === 0 ? "" : "border-t border-[var(--bb-card-border,#dbe7f4)] pt-2"}>
+                  <button
+                    type="button"
+                    onClick={() => setBibleYearDaySevenProOpenSection(isOpen ? "" : section.id)}
+                    className="flex w-full items-center gap-2.5 py-1.5 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ${section.iconClass}`} aria-hidden="true">
+                      <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
+                      {isOpen ? (
+                        <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
+                          <span className="block"><span className="font-black text-[var(--bb-text-primary,#111827)]">Pain:</span> {section.pain}</span>
+                          <span className="block"><span className="font-black text-[var(--bb-accent,#2f7fe8)]">Pro helps:</span> {section.pro}</span>
+                          <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>
+                        </span>
+                      ) : null}
+                    </span>
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#d9e6fb] bg-[#f4f8ff] text-sm font-black text-[#2f7fe8]" aria-hidden="true">
+                      {isOpen ? "-" : "+"}
+                    </span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-3 grid gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                void logDayProPromptAction(7, ACTION_TYPE.upgrade_popup_cta_clicked, "Day 7 upgrade button clicked");
+                setBibleYearDaySevenProPrompt(null);
+                openBibleYearQuickUpgrade("day7");
+              }}
+              className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-left text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
+            >
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-white/18" aria-hidden="true">
+                <UpgradeFeatureIcon name="crown" />
+              </span>
+              <span>
+                <span className="block text-sm font-black leading-tight">Upgrade to BibleBuddy Pro</span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Protect Week 2 and unlock deeper study</span>
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => dismissDaySevenPrompt("Day 7 upgrade skipped")}
+              className="rounded-[15px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-4 py-2 text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+            >
+              <span className="block text-xs font-black leading-tight">Continue with Free Plan</span>
+              <span className="mt-0.5 block text-[11px] font-semibold text-[var(--bb-text-secondary,#4b5563)]">Keep moving to Day 8</span>
+            </button>
+          </div>
+
+          <p className="mt-3 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
+            Cancel anytime. Upgrade in seconds. Secure and private.
+          </p>
+        </div>
+      </ModalShell>
+    );
+  }
+
   function renderGuestProUpgradePrompt() {
     if (!guestProPromptOpen) return null;
 
@@ -6415,10 +6620,15 @@ export default function DashboardJourneyExperience({
       },
     ];
 
+    function closeGuestProPrompt() {
+      setGuestProPromptOpen(false);
+      setGuestProOpenSection("");
+    }
+
     return (
       <ModalShell
         isOpen={guestProPromptOpen}
-        onClose={() => setGuestProPromptOpen(false)}
+        onClose={closeGuestProPrompt}
         backdropColor="bg-slate-950/72 backdrop-blur-md"
         scrollable
         zIndex="z-[95]"
@@ -6426,7 +6636,7 @@ export default function DashboardJourneyExperience({
         <div className="bb-skin-glow-card relative w-full max-w-[420px] overflow-hidden rounded-[24px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_84%,transparent))] px-4 py-4 text-center text-[var(--bb-text-primary,#111827)] shadow-[0_20px_58px_rgba(15,23,42,0.28),0_0_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)]">
           <button
             type="button"
-            onClick={() => setGuestProPromptOpen(false)}
+            onClick={closeGuestProPrompt}
             className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,transparent)] text-lg font-black text-[var(--bb-text-primary,#111827)] shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             aria-label="Close Pro upgrade popup"
           >
@@ -6446,30 +6656,43 @@ export default function DashboardJourneyExperience({
           </p>
 
           <div className="mt-3 rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-3 py-2.5 text-left shadow-[0_8px_22px_rgba(15,23,42,0.08)]">
-            {sections.map((section, index) => (
-              <div key={section.id} className={index === 0 ? "" : "border-t border-[var(--bb-card-border,#dbe7f4)] pt-2"}>
-                <div className="flex items-start gap-2.5 py-2">
-                  <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ${section.iconClass}`} aria-hidden="true">
-                    <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
-                    <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
-                      <span className="block"><span className="font-black text-[var(--bb-text-primary,#111827)]">Pain:</span> {section.pain}</span>
-                      <span className="block"><span className="font-black text-[var(--bb-accent,#2f7fe8)]">Pro helps:</span> {section.pro}</span>
-                      <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>
+            {sections.map((section, index) => {
+              const isOpen = guestProOpenSection === section.id;
+              return (
+                <div key={section.id} className={index === 0 ? "" : "border-t border-[var(--bb-card-border,#dbe7f4)] pt-2"}>
+                  <button
+                    type="button"
+                    onClick={() => setGuestProOpenSection(isOpen ? "" : section.id)}
+                    className="flex w-full items-center gap-2.5 py-1.5 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ${section.iconClass}`} aria-hidden="true">
+                      <UpgradeFeatureIcon name={section.icon as UpgradeFeatureIconName} />
                     </span>
-                  </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{section.title}</span>
+                      {isOpen ? (
+                        <span className="mt-2 block space-y-1.5 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
+                          <span className="block"><span className="font-black text-[var(--bb-text-primary,#111827)]">Pain:</span> {section.pain}</span>
+                          <span className="block"><span className="font-black text-[var(--bb-accent,#2f7fe8)]">Pro helps:</span> {section.pro}</span>
+                          <span className="block"><span className="font-black text-[#3b7a39]">Result:</span> {section.result}</span>
+                        </span>
+                      ) : null}
+                    </span>
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#d9e6fb] bg-[#f4f8ff] text-sm font-black text-[#2f7fe8]" aria-hidden="true">
+                      {isOpen ? "-" : "+"}
+                    </span>
+                  </button>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mt-3 grid gap-2">
             <button
               type="button"
               onClick={() => {
-                setGuestProPromptOpen(false);
+                closeGuestProPrompt();
                 openBibleYearQuickUpgrade("guest_pro");
               }}
               className="flex w-full items-center justify-center gap-2.5 rounded-[17px] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-3 text-left text-[var(--bb-button-text,#ffffff)] shadow-[0_12px_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)] transition hover:brightness-105"
@@ -6482,7 +6705,7 @@ export default function DashboardJourneyExperience({
             </button>
             <button
               type="button"
-              onClick={() => setGuestProPromptOpen(false)}
+              onClick={closeGuestProPrompt}
               className="rounded-[15px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-4 py-2 text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             >
               <span className="block text-xs font-black leading-tight">Keep Studying Free</span>
@@ -8450,6 +8673,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   async function handleContinueToNextBibleYearDay(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
     if (continuingBibleYearDay === day.dayNumber) return;
     if (day.dayNumber === 3 && !isOwnerDashboard && !isPaidUser && await openDayThreeProPrompt(day, nextDay)) return;
+    if (day.dayNumber === 7 && !isOwnerDashboard && !isPaidUser && await openDaySevenProPrompt(day, nextDay)) return;
     void logBibleYearNextDayClicked(day, nextDay);
     setContinuingBibleYearDay(day.dayNumber);
     try {
@@ -14101,8 +14325,9 @@ Before we understand redemption, we need to understand what God made humanity fo
 
       {renderBibleProgressDetailsModal()}
       {renderBibleYearDayThreeProUpgradePrompt()}
+      {renderBibleYearDaySevenProUpgradePrompt()}
       {renderGuestProUpgradePrompt()}
-      {bibleYearQuickUpgradeContext === "day3" || bibleYearQuickUpgradeContext === "guest_pro" ? renderBibleYearQuickUpgradeModal() : null}
+      {bibleYearQuickUpgradeContext === "day3" || bibleYearQuickUpgradeContext === "day7" || bibleYearQuickUpgradeContext === "guest_pro" ? renderBibleYearQuickUpgradeModal() : null}
 
       <ModalShell
         isOpen={showDevotionalSettings}
