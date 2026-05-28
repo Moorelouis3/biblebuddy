@@ -35,7 +35,7 @@ export const BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[
 
 > 📖 Read Genesis 11:1-9.
 
-## What Is Happening Here?
+## 🏙️ What Is Happening Here?
 
 The people of Babel share one language, one place, and one project.
 
@@ -55,7 +55,7 @@ The name is about identity and reputation.
 
 They also say they do not want to be scattered. That matters because God had already blessed humanity and told them to fill the earth. Babel is not innocent architecture. It is organized resistance to God's command.
 
-## The Heart Under The Tower
+## 🧱 The Heart Under The Tower
 
 Babel is what happens when people want the gifts of community, creativity, and strength without surrendering those gifts to God.
 
@@ -65,7 +65,7 @@ The problem is that they build for self-exaltation.
 
 They want heaven on their own terms. They want permanence without obedience. They want a name without receiving it from God.
 
-## Why God Confuses The Languages
+## 🧭 Why God Confuses The Languages
 
 God's judgment at Babel is also mercy.
 
@@ -73,7 +73,7 @@ If proud humanity stays united around rebellion, evil spreads faster. God scatte
 
 The scattering is painful, but it restrains human pride.
 
-## Bible Connection
+## 🔗 Bible Connection
 
 Babel points forward to Babylon, which later becomes a major Bible symbol for proud human power that exalts itself against God.
 
@@ -85,7 +85,7 @@ God says to Abram, "I will make your name great."
 
 That is the contrast at the heart of Day 5.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Babel asks a question we still face:
 
@@ -102,7 +102,7 @@ The Bible is not against work, cities, plans, or ambition. It is against pride t
 
 > 📖 Read Genesis 11:10-32.
 
-## What Is Happening Here?
+## 🌱 What Is Happening Here?
 
 After Babel, Genesis gives another genealogy.
 
@@ -117,7 +117,7 @@ The story is narrowing:
 
 Genesis is showing that God is still guiding history. Babel scatters the nations, but God does not abandon the nations. He begins a rescue plan through one family for the sake of all families.
 
-## Why Sarai's Barrenness Matters
+## 🧭 Why Sarai's Barrenness Matters
 
 The text tells us Sarai is barren.
 
@@ -129,7 +129,7 @@ Sarai cannot force the future open.
 
 The promise will have to depend on God.
 
-## Terah Stops Short
+## 🛑 Terah Stops Short
 
 Terah takes his family from Ur and heads toward Canaan, but they settle in Haran.
 
@@ -137,7 +137,7 @@ This creates a quiet tension. The family is moving, but not yet all the way into
 
 Then Genesis 12 begins with God calling Abram to go.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 God's promises often begin where human ability runs out.
 
@@ -154,7 +154,7 @@ This is one reason Genesis teaches faith so patiently. Faith is not confidence t
 
 > 📖 Read Genesis 12:1-3.
 
-## What God Commands
+## 📣 What God Commands
 
 God tells Abram to leave:
 
@@ -167,7 +167,7 @@ This is not a small move. In the ancient world, family, land, inheritance, prote
 
 God is asking Abram to step away from what naturally gives him security.
 
-## What God Promises
+## ✨ What God Promises
 
 God does not call Abram into emptiness. He calls Abram into promise.
 
@@ -182,7 +182,7 @@ God promises:
 
 The word "bless" becomes central. Abram is not blessed so he can become self-important. He is blessed so blessing can move through him to others.
 
-## The Babel Contrast
+## 🏙️ The Babel Contrast
 
 Babel tried to make a name.
 
@@ -196,7 +196,7 @@ Babel tried to reach heaven by human achievement.
 
 God comes down and speaks promise to Abram.
 
-## Bible Connection
+## 🔗 Bible Connection
 
 Genesis 12:1-3 is one of the main roads of the whole Bible.
 
@@ -208,7 +208,7 @@ The blessing of the nations through Jesus is connected to this promise.
 
 When the New Testament talks about Abraham and faith, it is reaching back into this part of Genesis.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 God's call often asks us to release one kind of security so we can receive a deeper one.
 
@@ -225,7 +225,7 @@ That is the beginning of faith.`,
 
 > 📖 Read Genesis 12:4-9.
 
-## What Is Happening Here?
+## 🔥 What Is Happening Here?
 
 Abram goes as the Lord told him.
 
@@ -235,7 +235,7 @@ Faith becomes movement.
 
 Abram does not understand everything yet. He does not have the full timeline. He has not seen the promise fulfilled. But he takes the next step God gave him.
 
-## The Land Is Occupied
+## 🗺️ The Land Is Occupied
 
 Genesis says the Canaanites were in the land.
 
@@ -243,7 +243,7 @@ That detail matters. Abram arrives in the place God promised, but the promise is
 
 God's promise is real, but Abram must live by faith before the promise is fully visible.
 
-## Why The Altars Matter
+## 🔥 Why The Altars Matter
 
 Abram builds altars at key places.
 
@@ -258,7 +258,7 @@ The altars say:
 - I belong to the Lord here.
 - This journey is about worship, not only movement.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Obedience needs worship to stay healthy.
 
@@ -275,7 +275,7 @@ Faith takes steps, but faith also stops to worship.`,
 
 > 📖 Read Genesis 12:10-20.
 
-## What Is Happening Here?
+## ⚠️ What Is Happening Here?
 
 A famine comes into the land.
 
@@ -285,7 +285,7 @@ That matters. Obedience does not mean life immediately becomes easy. Abram is in
 
 So Abram goes down to Egypt.
 
-## Fear Starts Making The Decisions
+## 😟 Fear Starts Making The Decisions
 
 Abram becomes afraid that the Egyptians will kill him because of Sarai's beauty.
 
@@ -295,7 +295,7 @@ This plan protects Abram at Sarai's expense.
 
 That is important to say clearly. Abram's fear is not harmless. It puts Sarai in danger and threatens the promise God just gave.
 
-## God Protects Sarai And The Promise
+## 🛡️ God Protects Sarai And The Promise
 
 Sarai is taken into Pharaoh's house.
 
@@ -305,7 +305,7 @@ God intervenes by sending plagues on Pharaoh's house, and Sarai is returned.
 
 God is faithful even when Abram is fearful.
 
-## Abram Is Not A Flawless Hero
+## 🧭 Abram Is Not A Flawless Hero
 
 Genesis is honest.
 
@@ -313,7 +313,7 @@ Abram obeyed God's call, built altars, and followed the Lord. But he also feared
 
 The Bible does not need to pretend God's people are perfect in order to show that God is faithful.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Fear can make us protect ourselves in ways that hurt other people.
 
@@ -332,7 +332,7 @@ The promise survives this chapter not because Abram is strong, but because God i
 
 > 📖 Read Genesis 13:1-7.
 
-## What Is Happening Here?
+## ↩️ What Is Happening Here?
 
 Abram leaves Egypt with Sarai, Lot, and many possessions.
 
@@ -342,7 +342,7 @@ This is a quiet recovery moment.
 
 After failure in Egypt, Abram returns to worship.
 
-## Returning Matters
+## ↩️ Returning Matters
 
 Abram does not disappear from the story after failure.
 
@@ -352,7 +352,7 @@ That does not erase what happened in Egypt. But it shows that failure does not h
 
 The right response after failure is not pretending, despairing, or running farther. It is returning to God.
 
-## Blessing Brings Pressure
+## ⚖️ Blessing Brings Pressure
 
 Abram and Lot both have large flocks and herds.
 
@@ -364,7 +364,7 @@ Abram had to trust God in famine.
 
 Now he has to trust God in abundance.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Spiritual maturity is seen in how we return after failure and how we handle pressure after blessing.
 
@@ -379,7 +379,7 @@ Abram is still learning. But he comes back to the altar, and that is the right d
 
 > 📖 Read Genesis 13:8-13.
 
-## What Is Happening Here?
+## 👀 What Is Happening Here?
 
 Abram gives Lot first choice.
 
@@ -387,7 +387,7 @@ That is surprising. Abram is older, the leader, and the one who received the pro
 
 Instead, Abram chooses peace.
 
-## Lot's Choice
+## 👀 Lot's Choice
 
 Lot lifts his eyes and sees the Jordan plain.
 
@@ -403,7 +403,7 @@ But Genesis gives a warning: Lot moves his tents toward Sodom.
 
 The land looks good, but the direction is dangerous.
 
-## Abram And Lot Are A Contrast
+## ⚖️ Abram And Lot Are A Contrast
 
 Lot chooses by sight.
 
@@ -417,7 +417,7 @@ Lot moves toward a city known for wickedness.
 
 Abram remains dependent on the Lord.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Not every attractive option is wise.
 
@@ -434,7 +434,7 @@ Genesis is teaching us to look deeper than appearance. The question is not only,
 
 > 📖 Read Genesis 13:14-18.
 
-## What Is Happening Here?
+## ✨ What Is Happening Here?
 
 After Lot separates from Abram, God speaks again.
 
@@ -450,7 +450,7 @@ The descendants are still promised.
 
 The future is still held by God.
 
-## Lot Lifted His Eyes, Abram Lifts His Eyes
+## 👀 Lot Lifted His Eyes, Abram Lifts His Eyes
 
 Genesis uses a strong contrast.
 
@@ -462,7 +462,7 @@ Both men look.
 
 But one looks from self-interest, and the other learns to look through promise.
 
-## Dust Of The Earth
+## 🌍 Dust Of The Earth
 
 God says Abram's offspring will be like the dust of the earth.
 
@@ -470,7 +470,7 @@ That image points to abundance beyond counting.
 
 It is also striking because Sarai is still barren. The visible situation has not changed, but God's promise has been repeated.
 
-## Abram Builds Another Altar
+## 🔥 Abram Builds Another Altar
 
 Abram moves his tent and builds another altar.
 
@@ -478,7 +478,7 @@ Again, worship marks the promise journey.
 
 He does not answer God's promise by boasting. He answers with worship.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Abram does not lose the promise by refusing to grasp.
 

@@ -155,6 +155,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
     reference: "Genesis 25-27",
     estimatedTime: "about 20 min",
     summary: "Study Abraham's final years, Jacob and Esau's beginning, Isaac, wells, family tension, deception, and the blessing moving through weakness.",
+    coverImage: "/ThePromiseThroughIsaac.png",
     readings: buildGenesisReadings("The Promise Through Isaac", 25, 27, 1),
   },
   {

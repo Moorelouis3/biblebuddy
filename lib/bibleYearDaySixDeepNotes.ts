@@ -36,7 +36,7 @@ export const BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[]
 
 > 📖 Read Genesis 14:1-12.
 
-## What Is Happening Here?
+## ⚔️ What Is Happening Here?
 
 Genesis 14 opens with kings, alliances, rebellion, and war.
 
@@ -50,7 +50,7 @@ That matters because Lot has moved near Sodom. In Genesis 13, Lot chose the well
 
 Lot is taken captive along with the goods of Sodom and Gomorrah.
 
-## The Consequence Of Direction
+## 🧭 The Consequence Of Direction
 
 Lot is not the main king in this battle.
 
@@ -62,13 +62,13 @@ Genesis is teaching that direction matters before consequences are obvious.
 
 Lot's choice looked fruitful at first. But moving toward Sodom placed his life, household, and future near a dangerous spiritual environment.
 
-## The Bigger Bible Pattern
+## 🔗 The Bigger Bible Pattern
 
 This will not be the last time God's people must think carefully about where they settle, what they attach themselves to, and what kind of world they are becoming comfortable inside.
 
 Scripture repeatedly warns that compromise often begins as nearness before it becomes participation.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Not every dangerous place feels dangerous at first.
 
@@ -85,7 +85,7 @@ Genesis 14 shows that the direction of a life can eventually decide the kind of 
 
 > 📖 Read Genesis 14:13-16.
 
-## What Is Happening Here?
+## 🛡️ What Is Happening Here?
 
 Someone escapes and tells Abram that Lot has been captured.
 
@@ -99,7 +99,7 @@ Instead, Abram gathers trained men from his household, pursues the enemy, attack
 
 He also brings back the people and possessions that had been taken.
 
-## Faith Becomes Courageous Action
+## ⚔️ Faith Becomes Courageous Action
 
 Abram's faith is not passive.
 
@@ -109,7 +109,7 @@ This matters because biblical faith is not an excuse for avoiding responsibility
 
 Abram's action is especially powerful because Lot's danger is connected to Lot's own choice. Abram still moves toward him.
 
-## Mercy Toward The Compromised
+## 🤲 Mercy Toward The Compromised
 
 Lot has moved toward Sodom.
 
@@ -119,7 +119,7 @@ That is mercy.
 
 Abram does not approve of Sodom by rescuing Lot. He does not ignore Lot's bad direction. But he also does not abandon him in captivity.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Faithful people often have to love people who are suffering from choices they made.
 
@@ -136,7 +136,7 @@ That combination matters. Biblical love can be honest about danger and still mov
 
 > 📖 Read Genesis 14:17-20.
 
-## What Is Happening Here?
+## 👑 What Is Happening Here?
 
 After Abram's victory, two kings come into view.
 
@@ -152,7 +152,7 @@ Abram fought, but God delivered.
 
 Abram acted courageously, but the victory belongs to the Lord.
 
-## Why Melchizedek Matters
+## 👑 Why Melchizedek Matters
 
 Melchizedek is mysterious because he appears briefly but carries huge meaning.
 
@@ -166,13 +166,13 @@ Later Scripture returns to Melchizedek. Psalm 110 speaks of a priest forever acc
 
 So this small scene has a long biblical shadow.
 
-## Abram Gives A Tenth
+## 🙌 Abram Gives A Tenth
 
 Abram gives Melchizedek a tenth of everything.
 
 This is an act of honor and recognition. Abram is acknowledging that victory, blessing, and provision belong under God's authority.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 After victory, the heart is vulnerable.
 
@@ -191,7 +191,7 @@ The right response to rescue is worship.`,
 
 > 📖 Read Genesis 14:21-24.
 
-## What Is Happening Here?
+## ✋ What Is Happening Here?
 
 After Melchizedek blesses Abram, the king of Sodom makes an offer.
 
@@ -203,7 +203,7 @@ That refusal is one of the clearest acts of discernment in Abram's early journey
 
 Abram does not want the king of Sodom to say, "I have made Abram rich."
 
-## The Temptation After Victory
+## ⚠️ The Temptation After Victory
 
 The test here is subtle.
 
@@ -219,7 +219,7 @@ But the source matters.
 
 Abram refuses to let Sodom become the explanation for his success.
 
-## Faith Rejects Corrupt Shortcuts
+## ✋ Faith Rejects Corrupt Shortcuts
 
 Abram is learning that God's promise must not be mixed with Sodom's reward.
 
@@ -229,7 +229,7 @@ This is a different kind of faith than battlefield courage. It is moral clarity.
 
 Sometimes the most faithful word after a win is "no."
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Not every open door is from God.
 
@@ -248,7 +248,7 @@ Abram refuses a gift that would confuse the story of God's provision. He wants t
 
 > 📖 Read Genesis 15:1-6.
 
-## What Is Happening Here?
+## ⭐ What Is Happening Here?
 
 After these things, the word of the Lord comes to Abram in a vision.
 
@@ -271,7 +271,7 @@ Abram refused Sodom's reward.
 
 Now God says He Himself is Abram's reward.
 
-## Abram's Honest Ache
+## 💬 Abram's Honest Ache
 
 Abram answers honestly: he still has no child.
 
@@ -281,7 +281,7 @@ Abram is not pretending. He brings the ache into conversation with God.
 
 That is faith. Faith does not mean silence about pain. Faith brings pain to the Lord instead of walking away from Him.
 
-## The Stars
+## ⭐ The Stars
 
 God takes Abram outside and tells him to look toward heaven and number the stars.
 
@@ -291,7 +291,7 @@ The visible sky becomes a sermon.
 
 Every star preaches God's promise to Abram's fear.
 
-## Counted As Righteousness
+## ✅ Counted As Righteousness
 
 Genesis 15:6 is one of the most important verses in the Bible.
 
@@ -303,7 +303,7 @@ Abram is not counted righteous because his faith is mature and flawless. His fai
 
 Abram is counted righteous because he trusts the Lord's promise.
 
-## Bible Connection
+## 🔗 Bible Connection
 
 Paul returns to this verse in Romans and Galatians to explain justification by faith.
 
@@ -311,7 +311,7 @@ James also refers to Abraham's faith to show that genuine faith becomes obedient
 
 Genesis 15:6 becomes a major foundation for understanding how people stand right before God.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 God does not shame Abram for bringing his fear and ache.
 
@@ -328,7 +328,7 @@ Faith is not faith in faith. Faith is trust in the God who speaks and keeps His 
 
 > 📖 Read Genesis 15:7-11.
 
-## What Is Happening Here?
+## ❓ What Is Happening Here?
 
 God reminds Abram that He brought him out from Ur to give him the land.
 
@@ -342,7 +342,7 @@ But faith and the desire for assurance are not enemies.
 
 Abram is not mocking God. He is bringing his need for assurance to the One who made the promise.
 
-## God Answers With Covenant
+## 🤝 God Answers With Covenant
 
 God tells Abram to bring animals.
 
@@ -352,7 +352,7 @@ Abram drives them away.
 
 The covenant scene is being prepared, but there is waiting and tension before the answer is complete.
 
-## Honest Questions
+## ❓ Honest Questions
 
 The Bible is careful here.
 
@@ -364,7 +364,7 @@ The issue is whether the question is asked in faith or unbelief.
 
 Abram brings the question to God and remains before Him.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Faith can ask honest questions.
 
@@ -379,7 +379,7 @@ But faith does not use questions as an excuse to leave God. Faith brings questio
 
 > 📖 Read Genesis 15:12-16.
 
-## What Is Happening Here?
+## 🌙 What Is Happening Here?
 
 As the sun goes down, a deep sleep falls on Abram.
 
@@ -389,7 +389,7 @@ Then God tells Abram the future.
 
 Abram's descendants will be strangers in a land that is not theirs. They will be afflicted for four hundred years. But God will judge the nation they serve, and afterward they will come out with great possessions.
 
-## The Promise Includes A Long Road
+## 🛤️ The Promise Includes A Long Road
 
 This is sobering.
 
@@ -399,7 +399,7 @@ The promise is certain, but the path includes suffering, waiting, oppression, ju
 
 God is giving Abram a long view of the story.
 
-## Bible Connection
+## 🔗 Bible Connection
 
 This points forward to Israel in Egypt and the Exodus.
 
@@ -412,13 +412,13 @@ Genesis is already preparing us for:
 
 The Exodus is not an accident. God already knows the road before His people walk it.
 
-## The Iniquity Of The Amorites
+## ⚖️ The Iniquity Of The Amorites
 
 God says the iniquity of the Amorites is not yet complete.
 
 That means God's timing includes justice and patience. The land promise will not unfold by random violence or human impatience. God is judging evil according to His own timing.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 God's promise may be certain even when the road is long.
 
@@ -435,7 +435,7 @@ God knows the suffering, the timing, the judgment, and the rescue before His peo
 
 > 📖 Read Genesis 15:17-21.
 
-## What Is Happening Here?
+## 🔥 What Is Happening Here?
 
 When the sun goes down, Abram sees a smoking fire pot and a flaming torch pass between the pieces.
 
@@ -449,7 +449,7 @@ Abram does not walk between the pieces.
 
 God does.
 
-## The Promise Rests On God
+## 🤝 The Promise Rests On God
 
 This means the covenant is not ultimately secured by Abram's power to bring the promise to pass.
 
@@ -461,13 +461,13 @@ Abram will still need to obey. Abram will still need to trust. Abram will still 
 
 But the covenant itself is carried by the Lord.
 
-## The Land Promise
+## 🗺️ The Land Promise
 
 God names the land and its boundaries.
 
 This makes the promise concrete. It is not vague inspiration. God is promising a real future to Abram's offspring.
 
-## Why It Matters
+## 🙏 Why It Matters
 
 Genesis 15 ends in darkness, fire, covenant, and assurance.
 
