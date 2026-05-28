@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 export default function UpgradePage() {
   const [mounted, setMounted] = useState(false);
   const [isLoading, setIsLoading] = useState<string | null>(null);
+  const [showLifetimeInfo, setShowLifetimeInfo] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -126,7 +127,7 @@ export default function UpgradePage() {
               </span>
             </button>
 
-            {/* Yearly Button with Best Value Banner */}
+            {/* Full access one-time button */}
             <button
               className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               onClick={(e) => {
@@ -146,16 +147,45 @@ export default function UpgradePage() {
                 }}
               >
                 <span className="text-[10px] font-bold text-white transform -rotate-45 translate-x-1 translate-y-1">
-                  BEST VALUE
+                  ONE TIME
                 </span>
               </div>
               <span className="text-lg relative z-10" style={{ color: "#2563eb" }}>
-                {isLoading === "yearly" ? "Loading..." : "$50 Yearly"}
+                {isLoading === "yearly" ? "Loading..." : "$50 Full Access"}
               </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowLifetimeInfo(true)}
+              className="w-full rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-bold text-amber-800 transition hover:bg-amber-100"
+            >
+              What is lifetime?
             </button>
           </div>
         </div>
       </div>
+
+      {showLifetimeInfo ? (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-black/55 px-4">
+          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-amber-700">What is lifetime?</p>
+            <h2 className="mt-2 text-2xl font-black text-gray-950">$50 full access for life</h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-gray-600">
+              This is a Founder Buddy price. Bible Buddy is a new Bible reading app, and we depend on the support of early users to keep growing.
+            </p>
+            <p className="mt-3 text-sm font-semibold leading-6 text-gray-600">
+              In return, we are offering one $50 payment for full access to Bible Buddy for life. No yearly renewal. You keep Pro study notes, guided tools, and Bible journey features as Bible Buddy grows.
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowLifetimeInfo(false)}
+              className="mt-5 w-full rounded-xl bg-blue-600 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-700"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      ) : null}
 
       {/* Animated Section Header */}
       <div

@@ -32,12 +32,14 @@ const studyNoteFeatures = [
 
 export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequiredModalProps) {
   const [showPlans, setShowPlans] = useState(false);
+  const [showLifetimeInfo, setShowLifetimeInfo] = useState(false);
   const [loadingPlan, setLoadingPlan] = useState<"monthly" | "yearly" | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const closeAll = () => {
     if (loadingPlan) return;
     setShowPlans(false);
+    setShowLifetimeInfo(false);
     setError(null);
     onClose();
   };
@@ -94,8 +96,29 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
                 <span className="h-9 w-9 animate-spin rounded-full border-4 border-[#dcecff] border-t-[#2f7fe8]" aria-hidden="true" />
                 <p className="mt-3 text-sm font-black">Opening Stripe</p>
                 <p className="mt-1 text-xs font-semibold text-[#52627b]">
-                  Taking you to the {loadingPlan === "monthly" ? "$4.99 monthly" : "$50 yearly"} checkout.
+                  Taking you to the {loadingPlan === "monthly" ? "$4.99 monthly" : "$50 full access"} checkout.
                 </p>
+              </div>
+            </div>
+          ) : null}
+          {showLifetimeInfo ? (
+            <div className="absolute inset-0 z-20 grid place-items-center bg-[#fffdf8]/92 px-4 backdrop-blur-sm">
+              <div className="rounded-[22px] border border-[#ead9bd] bg-white p-4 text-left shadow-[0_18px_48px_rgba(15,23,42,0.18)]">
+                <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#a66b00]">What is lifetime?</p>
+                <h3 className="mt-2 text-xl font-black leading-tight text-[#0b162f]">$50 full access for life</h3>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#52627b]">
+                  This is a Founder Buddy price. Bible Buddy is a new Bible reading app, and we depend on the support of early users to keep growing.
+                </p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#52627b]">
+                  In return, we are offering one $50 payment for full access to Bible Buddy for life. No yearly renewal. You keep Pro study notes, guided tools, and Bible journey features as Bible Buddy grows.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setShowLifetimeInfo(false)}
+                  className="mt-4 w-full rounded-2xl bg-[#0f1b33] px-4 py-3 text-sm font-black text-white transition hover:brightness-110"
+                >
+                  Got it
+                </button>
               </div>
             </div>
           ) : null}
@@ -137,12 +160,20 @@ export default function UpgradeRequiredModal({ isOpen, onClose }: UpgradeRequire
               className="flex items-center justify-between rounded-2xl border border-[#f0cf8b] bg-[#f6b44b] px-4 py-3 text-left text-[#201100] shadow-sm transition hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-wait disabled:opacity-60 disabled:hover:translate-y-0"
             >
               <span>
-                <span className="block text-sm font-black">Yearly</span>
-                <span className="block text-xs font-semibold opacity-80">Best value</span>
+                <span className="block text-sm font-black">Full Access</span>
+                <span className="block text-xs font-semibold opacity-80">Lifetime one-time payment</span>
               </span>
               <span className="text-xl font-black">$50</span>
             </button>
           </div>
+          <button
+            type="button"
+            onClick={() => setShowLifetimeInfo(true)}
+            disabled={Boolean(loadingPlan)}
+            className="mt-3 w-full rounded-2xl border border-[#ead9bd] bg-[#fff8ea] px-4 py-2.5 text-xs font-black text-[#8a5a00] transition hover:bg-[#fff1cf] disabled:cursor-wait disabled:opacity-60"
+          >
+            What is lifetime?
+          </button>
           {error ? (
             <p className="mt-3 rounded-2xl border border-red-200 bg-red-50 px-3 py-2 text-xs font-bold leading-5 text-red-700">
               {error}

@@ -359,7 +359,7 @@ function getJourneyDayLabel(dayNumber: number, title: string) {
 
 function buildJourneyPerformanceDays(days: BibleYearDayAnalytics[] | undefined): JourneyPerformanceDay[] {
   const dayMap = new Map((days || []).map((day) => [day.dayNumber, day]));
-  return GENESIS_BIBLE_IN_ONE_YEAR_SERIES.slice(0, 12).map((planDay) => {
+  return GENESIS_BIBLE_IN_ONE_YEAR_SERIES.map((planDay) => {
     const day = dayMap.get(planDay.dayNumber);
     const users = day?.users || [];
     const plays = day?.startedUsers || users.filter((user) => user.readingStarted || user.readingCompleted).length;
@@ -799,6 +799,87 @@ function JourneyDayDetailPanel({
   );
 }
 
+function AllJourneyDaysExplorer({
+  days,
+  expandedDay,
+  onToggleDay,
+}: {
+  days: JourneyPerformanceDay[];
+  expandedDay: number;
+  onToggleDay: (dayNumber: number) => void;
+}) {
+  return (
+    <section className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-[0_18px_46px_rgba(0,0,0,0.18)]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">All Bible In One Year Days</p>
+          <h2 className="mt-1 text-xl font-black text-white">Click a day to open its stats</h2>
+        </div>
+        <p className="text-sm font-semibold text-slate-400">{formatNumber(days.length)} day cards</p>
+      </div>
+
+      <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        {days.map((day) => {
+          const expanded = expandedDay === day.dayNumber;
+          return (
+            <div key={day.dayNumber} className="overflow-hidden rounded-xl border border-white/10 bg-slate-950/35">
+              <button
+                type="button"
+                onClick={() => onToggleDay(expanded ? 0 : day.dayNumber)}
+                className="w-full p-4 text-left transition hover:bg-white/[0.045]"
+                aria-expanded={expanded}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-200">Day {day.dayNumber}</p>
+                    <h3 className="mt-1 truncate text-base font-black text-white">{day.title}</h3>
+                    <p className="mt-0.5 text-xs font-semibold text-slate-400">{day.reference}</p>
+                  </div>
+                  <span className="text-xl font-black text-slate-400">{expanded ? "-" : "+"}</span>
+                </div>
+                <div className="mt-4 grid grid-cols-3 gap-2">
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Started</p>
+                    <p className="mt-1 text-xl font-black text-white">{formatNumber(day.plays)}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Finished</p>
+                    <p className="mt-1 text-xl font-black text-emerald-300">{formatNumber(day.completedUsers)}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Rate</p>
+                    <p className="mt-1 text-xl font-black text-white">{day.completionRate}%</p>
+                  </div>
+                </div>
+              </button>
+
+              {expanded ? (
+                <div className="border-t border-white/10 p-4">
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    {[
+                      ["Unique listeners", day.uniqueListeners],
+                      ["Avg listen time", day.avgListenTimeLabel],
+                      ["Notes opened", day.notesOpened],
+                      ["Trivia started", day.triviaStarted],
+                      ["Trivia completed", day.triviaCompleted],
+                      ["Reflection submitted", day.reflectionSubmitted],
+                    ].map(([label, value]) => (
+                      <div key={label} className="rounded-lg border border-white/10 bg-white/[0.045] p-3">
+                        <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">{label}</p>
+                        <p className="mt-1 font-black text-white">{typeof value === "number" ? formatNumber(value) : value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function AudioJourneyFunnel({
   landingVisitors,
   startClicks,
@@ -1131,6 +1212,174 @@ function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
   );
 }
 
+function VisitorJourneyTableSection({
+  loading,
+  journeys,
+  rows,
+  filteredRows,
+  search,
+  setSearch,
+  sourceFilter,
+  setSourceFilter,
+  statusFilter,
+  setStatusFilter,
+  accountFilter,
+  setAccountFilter,
+  expandedVisitorId,
+  setExpandedVisitorId,
+}: {
+  loading: boolean;
+  journeys: VisitorJourneys | undefined;
+  rows: VisitorJourneyRow[];
+  filteredRows: VisitorJourneyRow[];
+  search: string;
+  setSearch: (value: string) => void;
+  sourceFilter: string;
+  setSourceFilter: (value: string) => void;
+  statusFilter: VisitorJourneyStatus | "all";
+  setStatusFilter: (value: VisitorJourneyStatus | "all") => void;
+  accountFilter: AccountFilter;
+  setAccountFilter: (value: AccountFilter) => void;
+  expandedVisitorId: string | null;
+  setExpandedVisitorId: (value: string | null | ((current: string | null) => string | null)) => void;
+}) {
+  return (
+    <section className="rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_18px_46px_rgba(0,0,0,0.18)]">
+      <div className="border-b border-white/10 p-4">
+        <div className="mb-4">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">Visitor Tracker</p>
+          <h2 className="mt-1 text-xl font-black text-white">Visitor journey table</h2>
+          <p className="mt-1 text-sm font-semibold text-slate-400">The original visitor list is back, under the day cards.</p>
+        </div>
+        <div className="grid gap-3 xl:grid-cols-[1.4fr_0.8fr_0.8fr_0.7fr_auto]">
+          <label className="relative">
+            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><Icon name="search" /></span>
+            <input
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search by guest, drop off, source, action, or status..."
+              className="h-11 w-full rounded-lg border border-white/10 bg-slate-950/35 pl-11 pr-3 text-sm font-medium text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/45 focus:ring-4 focus:ring-cyan-300/10"
+            />
+          </label>
+
+          <select value={sourceFilter} onChange={(event) => setSourceFilter(event.target.value)} className="h-11 rounded-lg border border-white/10 bg-slate-950/35 px-3 text-sm font-semibold text-white outline-none focus:border-cyan-300/45 focus:ring-4 focus:ring-cyan-300/10">
+            <option value="all">All Sources</option>
+            {(journeys?.sources || []).map((source) => <option key={source} value={source}>{source}</option>)}
+          </select>
+
+          <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as VisitorJourneyStatus | "all")} className="h-11 rounded-lg border border-white/10 bg-slate-950/35 px-3 text-sm font-semibold text-white outline-none focus:border-cyan-300/45 focus:ring-4 focus:ring-cyan-300/10">
+            <option value="all">All Statuses</option>
+            {(journeys?.statuses || []).map((status) => <option key={status.key} value={status.key}>{status.label}</option>)}
+          </select>
+
+          <select value={accountFilter} onChange={(event) => setAccountFilter(event.target.value as AccountFilter)} className="h-11 rounded-lg border border-white/10 bg-slate-950/35 px-3 text-sm font-semibold text-white outline-none focus:border-cyan-300/45 focus:ring-4 focus:ring-cyan-300/10">
+            <option value="all">All Accounts</option>
+            <option value="guest">Guests</option>
+            <option value="free">Free</option>
+            <option value="pro">Pro</option>
+          </select>
+
+          <button
+            type="button"
+            onClick={() => {
+              setSearch("");
+              setSourceFilter("all");
+              setStatusFilter("all");
+              setAccountFilter("all");
+            }}
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.06] px-4 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            <Icon name="filter" />
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="min-w-[920px] w-full border-collapse text-left">
+          <thead className="border-b border-white/10 bg-slate-950/35 text-xs font-bold text-slate-400">
+            <tr>
+              <th className="w-10 px-4 py-4"><span className="block h-4 w-4 rounded border border-white/15" /></th>
+              <th className="px-4 py-4">Visitor Numbers</th>
+              <th className="px-4 py-4">Last Active</th>
+              <th className="px-4 py-4">Last Action</th>
+              <th className="px-4 py-4">Time Spent</th>
+              <th className="px-4 py-4">Current Status</th>
+              <th className="px-4 py-4">Source</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-white/10 text-sm">
+            {loading ? (
+              <tr>
+                <td colSpan={7} className="px-4 py-12 text-center text-sm font-semibold text-slate-400">Loading visitor journeys...</td>
+              </tr>
+            ) : filteredRows.length ? (
+              filteredRows.map((row) => {
+                const isExpanded = expandedVisitorId === row.id;
+                return (
+                  <Fragment key={row.id}>
+                    <tr
+                      className={`cursor-pointer transition ${isExpanded ? "bg-cyan-300/10" : "hover:bg-white/[0.04]"}`}
+                      onClick={() => setExpandedVisitorId((current) => current === row.id ? null : row.id)}
+                    >
+                      <td className="px-4 py-4 align-middle">
+                        <span className={`grid h-5 w-5 place-items-center rounded border text-[10px] font-black ${isExpanded ? "border-cyan-300 bg-cyan-300 text-slate-950" : "border-white/15 text-slate-500"}`}>
+                          {isExpanded ? "-" : "+"}
+                        </span>
+                      </td>
+                      <td className="px-4 py-4 align-middle">
+                        <div className="font-bold text-white">{row.visitorLabel}</div>
+                        {row.userId && row.userLabel !== "Guest visitor" ? (
+                          <div className="mt-0.5 text-xs font-medium text-slate-400">{row.userLabel}</div>
+                        ) : null}
+                      </td>
+                      <td className="px-4 py-4 align-middle">
+                        <div className="font-bold text-white">{formatLastActive(row.lastActiveAt)}</div>
+                        <div className="mt-0.5 text-xs font-medium text-slate-400">{formatDateTime(row.lastActiveAt)}</div>
+                      </td>
+                      <td className="px-4 py-4 align-middle">
+                        <div className="font-bold text-white">{row.dropoffStep || "Unknown"}</div>
+                        <div className="mt-0.5 text-xs font-medium text-slate-400">{row.lastEventName || "No event name"}</div>
+                      </td>
+                      <td className="px-4 py-4 align-middle">
+                        <div className="font-bold text-white">{row.timeSpentLabel || "Unknown"}</div>
+                      </td>
+                      <td className="px-4 py-4 align-middle">
+                        <span className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ring-1 ${STATUS_STYLES[row.currentStatus]}`}>
+                          {row.currentStatusLabel}
+                        </span>
+                      </td>
+                      <td className="px-4 py-4 align-middle">
+                        <div className="font-semibold text-white">{row.source}</div>
+                      </td>
+                    </tr>
+                    {isExpanded ? (
+                      <tr>
+                        <td colSpan={7} className="p-0">
+                          <UserJourneyTimeline row={row} />
+                        </td>
+                      </tr>
+                    ) : null}
+                  </Fragment>
+                );
+              })
+            ) : (
+              <tr>
+                <td colSpan={7} className="px-4 py-12 text-center text-sm font-semibold text-slate-400">No journeys match these filters.</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex flex-col gap-3 border-t border-white/10 px-4 py-4 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+        <p>Showing {filteredRows.length} of {rows.length} visitors</p>
+        <p className="font-medium">Rows per page: 100</p>
+      </div>
+    </section>
+  );
+}
+
 function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {}) {
   const [isOwner, setIsOwner] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
@@ -1146,6 +1395,8 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   const [expandedDay, setExpandedDay] = useState<number>(1);
   const [expandedVisitorId, setExpandedVisitorId] = useState<string | null>(null);
   const [selectedJourneyDay, setSelectedJourneyDay] = useState<JourneyPerformanceDay | null>(null);
+  const [showAllJourneyDays, setShowAllJourneyDays] = useState(false);
+  const [expandedJourneyPerformanceDay, setExpandedJourneyPerformanceDay] = useState(0);
 
   useEffect(() => {
     applyAppThemeToDocument("dark");
@@ -1418,12 +1669,56 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                 </div>
                 <p className="text-sm font-bold text-slate-500">Plays use Day task-start events until dedicated audio events are live.</p>
               </div>
-              <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-                {journeyPerformanceDays.map((day) => (
+              <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                {journeyPerformanceDays.slice(0, 3).map((day) => (
                   <JourneyPerformanceCard key={day.dayNumber} day={day} onOpen={setSelectedJourneyDay} />
                 ))}
+                <button
+                  type="button"
+                  onClick={() => setShowAllJourneyDays((current) => !current)}
+                  className="group rounded-xl border border-cyan-300/20 bg-cyan-300/5 p-4 text-left shadow-[0_14px_34px_rgba(0,0,0,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-300/45 hover:bg-cyan-300/10"
+                  aria-expanded={showAllJourneyDays}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-200">Bible In One Year</p>
+                      <h3 className="mt-1 text-base font-black text-white">View all days</h3>
+                      <p className="mt-1 text-xs font-semibold text-slate-400">Open every day as cards, then click a day for its stats.</p>
+                    </div>
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 bg-slate-950/50 text-slate-300">
+                      {showAllJourneyDays ? "-" : "+"}
+                    </span>
+                  </div>
+                  <p className="mt-5 text-3xl font-black text-white">{formatNumber(journeyPerformanceDays.length)}</p>
+                  <p className="mt-2 text-sm font-bold text-cyan-200">day cards available</p>
+                </button>
               </div>
             </section>
+
+            {showAllJourneyDays ? (
+              <AllJourneyDaysExplorer
+                days={journeyPerformanceDays}
+                expandedDay={expandedJourneyPerformanceDay}
+                onToggleDay={setExpandedJourneyPerformanceDay}
+              />
+            ) : null}
+
+            <VisitorJourneyTableSection
+              loading={loading}
+              journeys={journeys}
+              rows={rows}
+              filteredRows={filteredRows}
+              search={search}
+              setSearch={setSearch}
+              sourceFilter={sourceFilter}
+              setSourceFilter={setSourceFilter}
+              statusFilter={statusFilter}
+              setStatusFilter={setStatusFilter}
+              accountFilter={accountFilter}
+              setAccountFilter={setAccountFilter}
+              expandedVisitorId={expandedVisitorId}
+              setExpandedVisitorId={setExpandedVisitorId}
+            />
 
             <AudioJourneyFunnel
               landingVisitors={landingStageUsers}

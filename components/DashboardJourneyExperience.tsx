@@ -1869,6 +1869,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearQuickUpgradeContext, setBibleYearQuickUpgradeContext] = useState<"day3" | "day7" | "guest_pro" | null>(null);
   const [bibleYearQuickUpgradeLoading, setBibleYearQuickUpgradeLoading] = useState<"monthly" | "yearly" | null>(null);
   const [bibleYearQuickUpgradeError, setBibleYearQuickUpgradeError] = useState<string | null>(null);
+  const [bibleYearLifetimeInfoOpen, setBibleYearLifetimeInfoOpen] = useState(false);
   const [bibleYearDayThreeProPrompt, setBibleYearDayThreeProPrompt] = useState<{ day: GenesisBibleYearDay; nextDay: GenesisBibleYearDay } | null>(null);
   const [bibleYearDayThreeProContinueTarget, setBibleYearDayThreeProContinueTarget] = useState<{ day: GenesisBibleYearDay; nextDay: GenesisBibleYearDay } | null>(null);
   const [bibleYearDayThreeProOpenSection, setBibleYearDayThreeProOpenSection] = useState("");
@@ -5575,6 +5576,7 @@ export default function DashboardJourneyExperience({
     setBibleYearQuickUpgradeContext(null);
     setBibleYearQuickUpgradeLoading(null);
     setBibleYearQuickUpgradeError(null);
+    setBibleYearLifetimeInfoOpen(false);
     setBibleYearDownloadPrompt(null);
     setBibleYearOpenVerseBreakdownKey(null);
     setBibleYearSelectedTerm(null);
@@ -5588,6 +5590,7 @@ export default function DashboardJourneyExperience({
     setBibleYearQuickUpgradeError(null);
     setBibleYearQuickUpgradeContext(context);
     setBibleYearQuickUpgradeOpen(true);
+    setBibleYearLifetimeInfoOpen(false);
   }
 
   function getDayProPromptConfig(dayNumber: 3 | 7) {
@@ -5769,6 +5772,33 @@ export default function DashboardJourneyExperience({
     setBibleYearQuickUpgradeOpen(false);
     setBibleYearQuickUpgradeError(null);
     setBibleYearQuickUpgradeContext(null);
+    setBibleYearLifetimeInfoOpen(false);
+  }
+
+  function renderBibleYearLifetimeInfoOverlay() {
+    if (!bibleYearLifetimeInfoOpen) return null;
+
+    return (
+      <div className="absolute inset-0 z-30 grid place-items-center bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,transparent)] px-4 backdrop-blur-sm">
+        <div className="rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-[0_18px_48px_rgba(15,23,42,0.22)]">
+          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">What is lifetime?</p>
+          <h3 className="mt-2 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">$50 full access for life</h3>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            This is a Founder Buddy price. Bible Buddy is a new Bible reading app, and we depend on the support of early users to keep growing.
+          </p>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            In return, we are offering one $50 payment for full access to Bible Buddy for life. No yearly renewal. You keep Pro study notes, guided tools, and Bible journey features as Bible Buddy grows.
+          </p>
+          <button
+            type="button"
+            onClick={() => setBibleYearLifetimeInfoOpen(false)}
+            className="mt-4 w-full rounded-2xl bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-4 py-3 text-sm font-black text-[var(--bb-button-text,#000000)] transition hover:brightness-105"
+          >
+            Got it
+          </button>
+        </div>
+      </div>
+    );
   }
 
   async function startBibleYearQuickUpgrade(plan: "monthly" | "yearly") {
@@ -6149,7 +6179,7 @@ export default function DashboardJourneyExperience({
           </div>
 
           <p className="mt-3 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
-            🔒 Cancel anytime. Upgrade in seconds. Secure and private.
+            Monthly cancels anytime. Lifetime is one $50 payment. Secure and private.
           </p>
         </div>
       </ModalShell>
@@ -6166,11 +6196,12 @@ export default function DashboardJourneyExperience({
                 <span className="h-9 w-9 animate-spin rounded-full border-4 border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] border-t-[var(--bb-accent,#f6b44b)]" aria-hidden="true" />
                 <span className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">Opening Stripe</span>
                 <span className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                  Taking you to the {bibleYearQuickUpgradeLoading === "monthly" ? "$4.99 monthly" : "$50 yearly"} checkout.
+                  Taking you to the {bibleYearQuickUpgradeLoading === "monthly" ? "$4.99 monthly" : "$50 full access"} checkout.
                 </span>
               </div>
             </div>
           ) : null}
+          {renderBibleYearLifetimeInfoOverlay()}
           <button
             type="button"
             onClick={closeBibleYearQuickUpgrade}
@@ -6185,7 +6216,7 @@ export default function DashboardJourneyExperience({
           </div>
           <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">Choose your Pro plan</h2>
           <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            Unlock Study Notes and start understanding Scripture more deeply. Cancel anytime.
+            Unlock Study Notes and start understanding Scripture more deeply. Choose monthly or lifetime.
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             <button
@@ -6207,12 +6238,20 @@ export default function DashboardJourneyExperience({
               className="relative flex min-h-28 w-full flex-col justify-between overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_44%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-4 py-4 text-left text-[var(--bb-button-text,#000000)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_32%,transparent)] transition hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
             >
               <span>
-                <span className="block text-sm font-black">Yearly</span>
-                <span className="block text-xs font-bold opacity-80">Best value</span>
+                <span className="block text-sm font-black">Full Access</span>
+                <span className="block text-xs font-bold opacity-80">Lifetime one-time payment</span>
               </span>
               <span className="mt-4 text-2xl font-black">$50</span>
             </button>
           </div>
+          <button
+            type="button"
+            onClick={() => setBibleYearLifetimeInfoOpen(true)}
+            disabled={Boolean(bibleYearQuickUpgradeLoading)}
+            className="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_10%,transparent)] px-5 py-2.5 text-xs font-black text-[var(--bb-accent,#f6b44b)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            What is lifetime?
+          </button>
           {bibleYearQuickUpgradeError ? (
             <p className="mt-3 rounded-2xl border border-red-400/35 bg-red-500/10 px-4 py-3 text-xs font-bold leading-5 text-red-200">
               {bibleYearQuickUpgradeError}
@@ -6379,8 +6418,8 @@ export default function DashboardJourneyExperience({
                 <UpgradeFeatureIcon name="crown" />
               </span>
               <span>
-                <span className="block text-sm font-black leading-tight">Upgrade to BibleBuddy Pro</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Protect progress and unlock deeper study</span>
+                <span className="block text-sm font-black leading-tight">Unlock lifetime access</span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">$50 one time, or choose monthly</span>
               </span>
             </button>
             <button
@@ -6394,7 +6433,7 @@ export default function DashboardJourneyExperience({
           </div>
 
           <p className="mt-3 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
-            Cancel anytime. Upgrade in seconds. Secure and private.
+            Monthly cancels anytime. Lifetime is one $50 payment. Secure and private.
           </p>
         </div>
       </ModalShell>
@@ -6528,8 +6567,8 @@ export default function DashboardJourneyExperience({
                 <UpgradeFeatureIcon name="crown" />
               </span>
               <span>
-                <span className="block text-sm font-black leading-tight">Upgrade to BibleBuddy Pro</span>
-                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">Protect Week 2 and unlock deeper study</span>
+                <span className="block text-sm font-black leading-tight">Unlock lifetime access</span>
+                <span className="mt-0.5 block text-[11px] font-semibold text-white/88">$50 one time, or choose monthly</span>
               </span>
             </button>
             <button
@@ -6543,7 +6582,7 @@ export default function DashboardJourneyExperience({
           </div>
 
           <p className="mt-3 text-[11px] font-semibold leading-4 text-[var(--bb-text-secondary,#4b5563)]">
-            Cancel anytime. Upgrade in seconds. Secure and private.
+            Monthly cancels anytime. Lifetime is one $50 payment. Secure and private.
           </p>
         </div>
       </ModalShell>
@@ -10290,7 +10329,12 @@ Before we understand redemption, we need to understand what God made humanity fo
             const expanded = item.key === "discussion" ? bibleYearOptionalDiscussionDay === day.dayNumber : activeBibleYearDayCard === item.key;
             return (
               <div key={item.key} className={index > 0 ? "border-t border-[#243449]" : ""}>
-                <div className="grid gap-4 p-4 sm:grid-cols-[minmax(0,1fr)_280px] sm:items-center">
+                <button
+                  type="button"
+                  onClick={item.onClick}
+                  className="grid w-full gap-4 p-4 text-left transition hover:bg-white/[0.035] sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center"
+                  aria-expanded={expanded}
+                >
                   <div className="flex min-w-0 gap-3">
                     <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#1a283b] text-2xl shadow-[0_10px_22px_rgba(0,0,0,0.18)]" aria-hidden="true">
                       {item.icon}
@@ -10301,24 +10345,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <p className="mt-1 text-[13px] font-medium leading-5 text-[#b8c3d2]">{item.body}</p>
                     </div>
                   </div>
-                  <div className="grid gap-2">
-                    <button
-                      type="button"
-                      onClick={item.onClick}
-                      className="flex items-center justify-between rounded-[14px] border border-[#26364a] bg-[#121e2d] px-4 py-2.5 text-[13px] font-bold text-white transition hover:bg-[#18283b]"
-                      aria-expanded={expanded}
-                    >
-                      <span>{item.button}</span>
-                      <span aria-hidden="true">›</span>
-                    </button>
-                    <p className={`flex items-center gap-2 px-1 text-xs font-bold ${item.done ? "text-[#20e6a0]" : "text-[#a8b3c4]"}`}>
-                      <span className={`grid h-4 w-4 place-items-center rounded-full border ${item.done ? "border-[#10c989] bg-[#10c989] text-white" : "border-current"}`} aria-hidden="true">
-                        {item.done ? "✓" : ""}
-                      </span>
-                      {item.done ? "Completed" : "Optional"}
-                    </p>
-                  </div>
-                </div>
+                  <span className={`justify-self-end text-xl font-black text-[#9aa7ba] transition ${expanded ? "rotate-90 text-[#20e6a0]" : ""}`} aria-hidden="true">
+                    ›
+                  </span>
+                </button>
                 {expanded ? (
                   <div className="border-t border-[#243449] px-1 pb-4 pt-2">
                     {item.key === "discussion" ? renderBibleYearOptionalDiscussion(day) : renderBibleYearInlineTask(item.key, day)}
@@ -12181,11 +12211,12 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <span className="h-9 w-9 animate-spin rounded-full border-4 border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] border-t-[var(--bb-accent,#f6b44b)]" aria-hidden="true" />
                   <span className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">Opening Stripe</span>
                   <span className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                    Taking you to the {bibleYearQuickUpgradeLoading === "monthly" ? "$4.99 monthly" : "$50 yearly"} checkout.
+                    Taking you to the {bibleYearQuickUpgradeLoading === "monthly" ? "$4.99 monthly" : "$50 full access"} checkout.
                   </span>
                 </div>
               </div>
             ) : null}
+            {renderBibleYearLifetimeInfoOverlay()}
             <button
               type="button"
               onClick={closeBibleYearQuickUpgrade}
@@ -12200,7 +12231,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
             <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">Choose your Pro plan</h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-              Unlock Study Notes, deeper explanations, downloads, and focused study tools. Cancel anytime.
+              Unlock Study Notes, deeper explanations, downloads, and focused study tools. Choose monthly or lifetime.
             </p>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <button
@@ -12222,12 +12253,20 @@ Before we understand redemption, we need to understand what God made humanity fo
                 className="relative flex min-h-28 w-full flex-col justify-between overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_44%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-button,var(--bb-accent,#f6b44b))] px-4 py-4 text-left text-[var(--bb-button-text,#000000)] shadow-[0_0_28px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_32%,transparent)] transition hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 <span>
-                  <span className="block text-sm font-black">Yearly</span>
-                  <span className="block text-xs font-bold opacity-80">Best value</span>
+                  <span className="block text-sm font-black">Full Access</span>
+                  <span className="block text-xs font-bold opacity-80">Lifetime one-time payment</span>
                 </span>
                 <span className="mt-4 text-2xl font-black">$50</span>
               </button>
             </div>
+            <button
+              type="button"
+              onClick={() => setBibleYearLifetimeInfoOpen(true)}
+              disabled={Boolean(bibleYearQuickUpgradeLoading)}
+              className="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_10%,transparent)] px-5 py-2.5 text-xs font-black text-[var(--bb-accent,#f6b44b)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              What is lifetime?
+            </button>
             {bibleYearQuickUpgradeError ? (
               <p className="mt-3 rounded-2xl border border-red-400/35 bg-red-500/10 px-4 py-3 text-xs font-bold leading-5 text-red-200">
                 {bibleYearQuickUpgradeError}

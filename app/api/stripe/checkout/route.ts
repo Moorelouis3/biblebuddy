@@ -12,7 +12,7 @@ const stripe = process.env.STRIPE_SECRET_KEY
 
 const PRICE_IDS: Record<"monthly" | "yearly", string> = {
   monthly: "price_1SzK8nGDyj3itMVLMk98v1iD",
-  yearly: "price_1Sn7BZGDyj3itMVLHoO6eeGw",
+  yearly: "price_1TS1kMGDyj3itMVLMBLvYfK8",
 };
 
 const normalizeOrigin = (value: string) => {
@@ -127,7 +127,7 @@ export async function POST(req: NextRequest) {
 
     checkoutMetadata = {
       user_id: "",
-      plan,
+      plan: plan === "yearly" ? "lifetime" : "monthly",
       checkout_context: checkoutContext,
       prompt,
       journey_day: journeyDay,
@@ -143,6 +143,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const priceId = PRICE_IDS[plan];
+    const checkoutMode = plan === "yearly" ? "payment" : "subscription";
     const isLiveKey = !!process.env.STRIPE_SECRET_KEY?.startsWith("sk_live_");
 
     try {
@@ -171,7 +172,7 @@ export async function POST(req: NextRequest) {
     };
 
     const session = await stripe.checkout.sessions.create({
-      mode: "subscription",
+      mode: checkoutMode,
       line_items: [
         {
           price: priceId,
@@ -180,9 +181,9 @@ export async function POST(req: NextRequest) {
       ],
       customer_email: user.email || undefined,
       metadata,
-      subscription_data: {
-        metadata,
-      },
+      ...(checkoutMode === "subscription"
+        ? { subscription_data: { metadata } }
+        : { payment_intent_data: { metadata } }),
       success_url: successUrl,
       cancel_url: cancelUrl,
     });

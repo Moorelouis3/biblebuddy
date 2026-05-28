@@ -1051,7 +1051,7 @@ export default function LandingPage() {
 
       <main>
         <div className="bb-landing-shell mx-auto max-w-[1440px] overflow-hidden bg-[#fffdf8]">
-          <header className="relative z-20 flex w-full items-center justify-between gap-6 bg-[#fffdf8] px-5 py-4 sm:px-8 sm:py-5 lg:px-10">
+          <header className="relative z-20 flex w-full items-center justify-between gap-6 bg-[#fffdf8] px-5 pb-4 pt-6 sm:px-8 sm:py-5 lg:px-10">
             <BibleBuddyMark />
             <nav className="hidden items-center gap-10 text-sm font-bold text-[#07162f] md:flex">
               <Link href="/how-it-works" className="transition hover:text-[#135397]">How It Works</Link>
@@ -1067,36 +1067,10 @@ export default function LandingPage() {
                 Start Your Journey
               </Link>
             </div>
-            <div className="relative sm:hidden">
-              <button
-                type="button"
-                onClick={() => setLandingMenuOpen((open) => !open)}
-                className="grid h-10 w-10 place-items-center rounded-lg border border-[#e9dfd1] bg-white text-[#07162f] shadow-[0_12px_26px_rgba(7,22,47,0.10)]"
-                aria-label={landingMenuOpen ? "Close menu" : "Open menu"}
-                aria-expanded={landingMenuOpen}
-              >
-                <span className="text-xl leading-none">{landingMenuOpen ? "x" : "="}</span>
-              </button>
-              {landingMenuOpen ? (
-                <div className="absolute right-0 top-[calc(100%+10px)] z-[110] w-[240px] rounded-lg border border-[#e9dfd1] bg-white p-3 text-left shadow-[0_22px_52px_rgba(7,22,47,0.18)]">
-                  {[
-                    ["How It Works", "/how-it-works"],
-                    ["Features", "/features"],
-                    ["Stories", "/stories"],
-                    ["FAQ", "/faq"],
-                  ].map(([label, href]) => (
-                    <Link key={label} href={href} onClick={() => setLandingMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm font-bold text-[#07162f] hover:bg-[#f8f2e8]">
-                      {label}
-                    </Link>
-                  ))}
-                  <Link href="/login" onClick={() => setLandingMenuOpen(false)} className="mt-2 block rounded-md border border-[#eadfcd] px-4 py-3 text-center text-sm font-black text-[#07162f]">
-                    Login
-                  </Link>
-                  <Link href="/signup" onClick={() => setLandingMenuOpen(false)} className="bb-public-button mt-2 block w-full rounded-md bg-[#135397] px-4 py-3 text-center text-sm font-black text-white">
-                    Start Journey
-                  </Link>
-                </div>
-              ) : null}
+            <div className="sm:hidden">
+              <Link href="/login" className="rounded-lg border border-[#e9dfd1] bg-white px-4 py-2.5 text-sm font-black text-[#07162f] shadow-[0_12px_26px_rgba(7,22,47,0.10)] transition hover:bg-[#f8f2e8]">
+                Login
+              </Link>
             </div>
           </header>
 
