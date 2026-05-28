@@ -6359,7 +6359,7 @@ export default function DashboardJourneyExperience({
             </button>
             <button
               type="button"
-              onClick={() => dismissDayThreePrompt("Day 3 skip onboarding clicked")}
+              onClick={() => dismissDayThreePrompt("Day 3 upgrade skipped")}
               className="rounded-[15px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_38%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_78%,transparent)] px-4 py-2 text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
             >
               <span className="block text-xs font-black leading-tight">Continue with Free Plan</span>
@@ -7927,8 +7927,8 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function getBibleYearTaskTitle(card: BibleYearDayCardKey) {
     if (card === "reading") return "Scripture Video";
-    if (card === "reflection") return "Summary and Study Notes";
-    return "Trivia Questions";
+    if (card === "reflection") return "Day Summary";
+    return "Trivia";
   }
 
   function getBibleYearTaskActionLabel(day: GenesisBibleYearDay, card: BibleYearDayCardKey, status: "started" | "finished") {

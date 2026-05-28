@@ -151,6 +151,9 @@ type BibleYearDayAnalytics = {
   users: Array<{
     userId: string;
     userLabel: string;
+    readingStarted: boolean;
+    triviaStarted: boolean;
+    reflectionStarted: boolean;
     readingCompleted: boolean;
     triviaCompleted: boolean;
     reflectionCompleted: boolean;
@@ -332,17 +335,40 @@ function StepCell({ value, successLabel, emptyLabel = "Not started" }: { value: 
   );
 }
 
-function MiniCheck({ done, label }: { done: boolean; label: string }) {
+type TaskStatus = "not_started" | "started" | "finished";
+
+function getTaskStatus(started: boolean, finished: boolean): TaskStatus {
+  if (finished) return "finished";
+  if (started) return "started";
+  return "not_started";
+}
+
+function MiniTaskStatus({ status }: { status: TaskStatus }) {
+  const styles: Record<TaskStatus, string> = {
+    not_started: "bg-slate-100 text-slate-500 ring-slate-200",
+    started: "bg-blue-50 text-blue-700 ring-blue-200",
+    finished: "bg-emerald-50 text-emerald-700 ring-emerald-200",
+  };
+  const iconStyles: Record<TaskStatus, string> = {
+    not_started: "bg-slate-300 text-white",
+    started: "bg-blue-500 text-white",
+    finished: "bg-emerald-500 text-white",
+  };
+  const labels: Record<TaskStatus, string> = {
+    not_started: "Not started",
+    started: "Started",
+    finished: "Finished",
+  };
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ring-1 ${done ? "bg-emerald-50 text-emerald-700 ring-emerald-200" : "bg-slate-100 text-slate-500 ring-slate-200"}`}>
-      <span className={`grid h-4 w-4 place-items-center rounded-full text-[10px] ${done ? "bg-emerald-500 text-white" : "bg-slate-300 text-white"}`}>
-        {done ? (
+    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ring-1 ${styles[status]}`}>
+      <span className={`grid h-4 w-4 place-items-center rounded-full text-[10px] ${iconStyles[status]}`}>
+        {status === "finished" ? (
           <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
             <path d="m3.5 8.2 2.7 2.6 6.3-6.6" />
           </svg>
-        ) : "-"}
+        ) : status === "started" ? ">" : "-"}
       </span>
-      {label}
+      {labels[status]}
     </span>
   );
 }
@@ -1280,16 +1306,16 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
                       <div className="bg-slate-50 px-5 pb-5">
                         <div className="grid gap-3 rounded-xl border border-slate-200 bg-white p-4 lg:grid-cols-4">
                           <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Reading done</p>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Task 1 Video done</p>
                             <p className="mt-1 text-2xl font-black text-slate-950">{day?.readingCompleted || 0}</p>
                           </div>
                           <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Trivia done</p>
-                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.triviaCompleted || 0}</p>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Task 2 Summary done</p>
+                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.reflectionCompleted || 0}</p>
                           </div>
                           <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Reflection done</p>
-                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.reflectionCompleted || 0}</p>
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Task 3 Trivia done</p>
+                            <p className="mt-1 text-2xl font-black text-slate-950">{day?.triviaCompleted || 0}</p>
                           </div>
                           <div>
                             <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Last activity</p>
@@ -1302,9 +1328,9 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
                             <thead className="bg-white text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
                               <tr>
                                 <th className="px-4 py-3">User</th>
-                                <th className="px-4 py-3">Reading</th>
-                                <th className="px-4 py-3">Trivia</th>
-                                <th className="px-4 py-3">Reflection</th>
+                                <th className="px-4 py-3">Task 1 Scripture Video</th>
+                                <th className="px-4 py-3">Task 2 Summary</th>
+                                <th className="px-4 py-3">Task 3 Trivia</th>
                                 <th className="px-4 py-3">Day Status</th>
                                 <th className="px-4 py-3">Updated</th>
                               </tr>
@@ -1314,9 +1340,9 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
                                 day.users.map((user) => (
                                   <tr key={`${planDay.dayNumber}-${user.userId}`} className="hover:bg-slate-50">
                                     <td className="px-4 py-3 font-bold text-slate-900">{user.userLabel}</td>
-                                    <td className="px-4 py-3"><MiniCheck done={user.readingCompleted} label={user.readingCompleted ? "Done" : "Open"} /></td>
-                                    <td className="px-4 py-3"><MiniCheck done={user.triviaCompleted} label={user.triviaCompleted ? "Done" : "Open"} /></td>
-                                    <td className="px-4 py-3"><MiniCheck done={user.reflectionCompleted} label={user.reflectionCompleted ? "Done" : "Open"} /></td>
+                                    <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.readingStarted, user.readingCompleted)} /></td>
+                                    <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.reflectionStarted, user.reflectionCompleted)} /></td>
+                                    <td className="px-4 py-3"><MiniTaskStatus status={getTaskStatus(user.triviaStarted, user.triviaCompleted)} /></td>
                                     <td className="px-4 py-3">
                                       <span className={`inline-flex rounded-full px-3 py-1 text-xs font-black ring-1 ${user.completed ? "bg-emerald-50 text-emerald-700 ring-emerald-200" : "bg-blue-50 text-blue-700 ring-blue-200"}`}>
                                         {user.completed ? "Complete" : "In progress"}

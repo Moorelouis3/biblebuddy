@@ -119,6 +119,9 @@ type BibleYearProgressRow = {
 type BibleYearDayUserRow = {
   userId: string;
   userLabel: string;
+  readingStarted: boolean;
+  triviaStarted: boolean;
+  reflectionStarted: boolean;
   readingCompleted: boolean;
   triviaCompleted: boolean;
   reflectionCompleted: boolean;
@@ -515,7 +518,7 @@ function buildBibleBuddyFunnelStages(
   function completedDayActors(dayNumber: number) {
     const actors = new Set<string>();
     for (const row of masterRows) {
-      if (row.action_type !== "bible_in_one_year_reflection_completed") continue;
+      if (row.action_type !== "bible_in_one_year_trivia_completed") continue;
       const day = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
       if (day !== dayNumber) continue;
       const actorId = getMasterActorId(row);
@@ -529,16 +532,12 @@ function buildBibleBuddyFunnelStages(
     for (const row of masterRows) {
       const day = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
       if (day !== dayNumber) continue;
-      if (row.action_type === "bible_in_one_year_reading_completed") {
-        const actorId = getMasterActorId(row);
-        if (actorId) actors.add(actorId);
-        continue;
-      }
       if (row.action_type !== "bible_year_task_started") continue;
       const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
       const task = typeof metadata.task === "string" ? metadata.task : "";
+      const taskNumber = typeof metadata.taskNumber === "number" ? metadata.taskNumber : null;
       const label = String(row.action_label || "").toLowerCase();
-      const isFirstTask = task === "reading" || label.includes("reading started") || label.includes("video started");
+      const isFirstTask = taskNumber === 1 || task === "reading" || label.includes("task 1 started") || label.includes("reading started") || label.includes("video started");
       if (!isFirstTask) continue;
       const actorId = getMasterActorId(row);
       if (actorId) actors.add(actorId);
@@ -616,7 +615,7 @@ function buildDayThreeUpgradeAnalytics(masterRows: MasterActionFunnelRow[]): Day
     if (actionType === "upgrade_popup_viewed") viewedActors.add(actorId);
     if (actionType === "upgrade_popup_cta_clicked") upgradeClickActors.add(actorId);
     if (actionType === "user_upgraded") successfulUpgradeActors.add(actorId);
-    if (actionType === "upgrade_popup_dismissed" && (lowerLabel.includes("continued with free plan") || lowerLabel.includes("skip onboarding"))) {
+    if (actionType === "upgrade_popup_dismissed" && (lowerLabel.includes("continued with free plan") || lowerLabel.includes("skip onboarding") || lowerLabel.includes("upgrade skipped"))) {
       continueFreeActors.add(actorId);
     }
   }
@@ -1311,7 +1310,7 @@ function getTaskTypeFromAction(action: MasterActionFunnelRow) {
   if (/notes|review/i.test(label)) return "notes";
   if (/trivia/i.test(label)) return "trivia";
   if (/scrambled/i.test(label)) return "scrambled";
-  if (/reflection|discussion/i.test(label)) return "reflection";
+  if (/summary|reflection|discussion/i.test(label)) return "summary";
   return null;
 }
 
@@ -1323,7 +1322,7 @@ function getMasterActionTitle(action: MasterActionFunnelRow) {
   if (actionType === "bible_year_task_started") return task ? `Started ${task} task` : `Started Day ${day || ""} task`.trim();
   if (actionType === "bible_in_one_year_reading_completed") return "Completed video / reading task";
   if (actionType === "bible_in_one_year_trivia_completed") return "Completed trivia";
-  if (actionType === "bible_in_one_year_reflection_completed") return "Completed reflection";
+  if (actionType === "bible_in_one_year_reflection_completed") return "Completed day summary";
   if (actionType === "dashboard_tour_started") return "Started dashboard walkthrough";
   if (actionType === "dashboard_tour_completed") return "Finished dashboard walkthrough";
   if (actionType === "dashboard_tour_skipped") return "Skipped dashboard walkthrough";
@@ -1615,7 +1614,7 @@ function buildVisitorJourneys(
           category: "bible_year" as const,
           status: "completed" as const,
           timestamp: row.updated_at || new Date().toISOString(),
-          detail: "Reading, trivia, and reflection are complete.",
+          detail: "Video, day summary, and trivia are complete.",
           dayNumber: Number(row.day_number || 0) || null,
           taskType: "day_complete",
         })),
@@ -1731,6 +1730,8 @@ function buildBibleYearDayAnalytics(
     userId: string;
     userLabel: string;
     readingStarted: boolean;
+    triviaStarted: boolean;
+    reflectionStarted: boolean;
     readingCompleted: boolean;
     triviaCompleted: boolean;
     reflectionCompleted: boolean;
@@ -1742,6 +1743,8 @@ function buildBibleYearDayAnalytics(
       userId: string;
       userLabel: string;
       readingStarted: boolean;
+      triviaStarted: boolean;
+      reflectionStarted: boolean;
       readingCompleted: boolean;
       triviaCompleted: boolean;
       reflectionCompleted: boolean;
@@ -1754,6 +1757,8 @@ function buildBibleYearDayAnalytics(
       userId: actorId,
       userLabel: profileByUserId.get(actorId) || row.username || `User ${shortId(actorId)}`,
       readingStarted: false,
+      triviaStarted: false,
+      reflectionStarted: false,
       readingCompleted: false,
       triviaCompleted: false,
       reflectionCompleted: false,
@@ -1777,13 +1782,22 @@ function buildBibleYearDayAnalytics(
     if (!actor.updatedAt || (row.created_at || "") > actor.updatedAt) actor.updatedAt = row.created_at || null;
 
     const taskNumber = typeof metadata.taskNumber === "number" ? metadata.taskNumber : null;
-    const isFirstTask =
-      taskNumber === 1 ||
-      /^day\s+\d+\s+task\s+1\s+started\s+-\s+scripture video/i.test(actionLabel) ||
-      label.includes("task 1 started - scripture video") ||
-      label.includes("reading started") ||
-      label.includes("video started");
-    if (row.action_type === "bible_year_task_started" && isFirstTask) actor.readingStarted = true;
+    const startedTaskNumber =
+      taskNumber ||
+      (label.includes("task 1 started") ? 1 : null) ||
+      (label.includes("task 2 started") ? 2 : null) ||
+      (label.includes("task 3 started") ? 3 : null);
+    if (row.action_type === "bible_year_task_started") {
+      if (startedTaskNumber === 1 || task === "reading" || label.includes("reading started") || label.includes("video started")) {
+        actor.readingStarted = true;
+      }
+      if (startedTaskNumber === 2 || task === "reflection" || label.includes("summary") || label.includes("study notes")) {
+        actor.reflectionStarted = true;
+      }
+      if (startedTaskNumber === 3 || task === "trivia" || label.includes("trivia started")) {
+        actor.triviaStarted = true;
+      }
+    }
     if (row.action_type === "bible_in_one_year_reading_completed") {
       actor.readingCompleted = true;
     }
@@ -1799,10 +1813,13 @@ function buildBibleYearDayAnalytics(
         .map((row) => ({
           userId: row.userId,
           userLabel: row.userLabel,
+          readingStarted: row.readingStarted,
+          triviaStarted: row.triviaStarted,
+          reflectionStarted: row.reflectionStarted,
           readingCompleted: row.readingCompleted,
           triviaCompleted: row.triviaCompleted,
           reflectionCompleted: row.reflectionCompleted,
-          completed: row.reflectionCompleted,
+          completed: row.triviaCompleted,
           updatedAt: row.updatedAt,
         }))
         .sort((a, b) => (b.updatedAt || "").localeCompare(a.updatedAt || ""))
@@ -1812,7 +1829,7 @@ function buildBibleYearDayAnalytics(
       const readingCompleted = actorRows.filter((row) => row.readingCompleted).length;
       const triviaCompleted = actorRows.filter((row) => row.triviaCompleted).length;
       const reflectionCompleted = actorRows.filter((row) => row.reflectionCompleted).length;
-      const completedUsers = reflectionCompleted;
+      const completedUsers = triviaCompleted;
       const lastActiveAt = actorRows
         .map((row) => row.updatedAt || "")
         .filter(Boolean)
