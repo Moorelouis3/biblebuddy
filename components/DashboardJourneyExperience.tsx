@@ -57,6 +57,7 @@ import { BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME } from "../lib/bibleYearDayOneDeep
 import { cacheBibleYearOfflineTextPack } from "../lib/bibleYearOfflinePack";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { BIBLE_READING_BACKGROUND_TRACKS, BIBLE_READING_BACKGROUND_VOLUME } from "../lib/bibleReadingBackgroundMusic";
+import { getBibleProgressBadge } from "../lib/bibleProgressBadges";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { normalizePremiumSkinId } from "../lib/premiumSkins";
@@ -9666,6 +9667,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleYearHomeProgressSnapshot(day: GenesisBibleYearDay) {
     const report = effectiveBibleYearReport;
     const overallPercent = report?.overallPercent ?? 0;
+    const bibleProgressBadge = getBibleProgressBadge(overallPercent);
     const currentStreak = report?.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
     const streakLabel = `${currentStreak} ${currentStreak === 1 ? "Day" : "Days"}`;
     const lightThemeUsesClassicFlame =
@@ -9695,9 +9697,31 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="min-w-0">
             <div className="min-w-0">
               <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Bible Progress</p>
-              <h1 className="mt-1 text-[26px] font-bold leading-tight text-white sm:text-[30px]">
-                {overallPercent}% Bible studied
-              </h1>
+              <div className="mt-1 flex min-w-0 flex-wrap items-center gap-2.5">
+                <h1 className="text-[26px] font-bold leading-tight text-white sm:text-[30px]">
+                  {overallPercent}% Bible studied
+                </h1>
+                {bibleProgressBadge ? (
+                  <span
+                    className="inline-flex shrink-0 items-center gap-1.5 rounded-[12px] border px-2.5 py-1 text-[11px] font-bold text-white shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
+                    style={{
+                      borderColor: bibleProgressBadge.colors.ring,
+                      background: `linear-gradient(135deg, ${bibleProgressBadge.colors.from}, ${bibleProgressBadge.colors.to})`,
+                      boxShadow: `0 0 0 1px ${bibleProgressBadge.colors.ring}22, 0 10px 24px rgba(0,0,0,0.22)`,
+                    }}
+                    title={`${bibleProgressBadge.title} badge - ${bibleProgressBadge.percent}% Bible studied`}
+                  >
+                    <span
+                      className="grid h-5 min-w-5 place-items-center rounded-[7px] px-1 text-[9px] font-black leading-none"
+                      style={{ backgroundColor: `${bibleProgressBadge.colors.ring}26`, color: bibleProgressBadge.colors.ring }}
+                      aria-hidden="true"
+                    >
+                      {bibleProgressBadge.symbol}
+                    </span>
+                    <span>{bibleProgressBadge.shortTitle}</span>
+                  </span>
+                ) : null}
+              </div>
               <p className="mt-1.5 text-[13px] font-medium leading-5 text-[#b8c3d2]">
                 You are on Day {report?.currentDay ?? day.dayNumber}. Press play to continue today&apos;s lesson.
               </p>
@@ -10272,6 +10296,17 @@ Before we understand redemption, we need to understand what God made humanity fo
             <div className="mt-4">{renderBibleYearCompletedDayPanel(day)}</div>
           ) : null}
         </article>
+
+        <div className="px-1 py-1">
+          <div className="flex items-center gap-3">
+            <span className="h-px flex-1 bg-[linear-gradient(90deg,transparent,#2a3b51_35%,#2a3b51_65%,transparent)]" aria-hidden="true" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8d9aae]">Study Tools</span>
+            <span className="h-px flex-1 bg-[linear-gradient(90deg,transparent,#2a3b51_35%,#2a3b51_65%,transparent)]" aria-hidden="true" />
+          </div>
+          <p className="mt-2 text-center text-[12px] font-medium leading-5 text-[#9aa7ba]">
+            Explore today&apos;s lesson through notes, trivia, and reflection.
+          </p>
+        </div>
 
         <section className="overflow-hidden rounded-[20px] border border-[#223247] bg-[#101a27] text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl">
           {supportCards.map((item, index) => {
