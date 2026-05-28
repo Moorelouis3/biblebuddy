@@ -2,6 +2,8 @@ export const BIBLE_READING_BACKGROUND_TRACKS = [
   "/audio/background/bible-reading-1.mp3",
   "/audio/background/bible-reading-2.mp3",
   "/audio/background/bible-reading-3.mp3",
+  "/audio/background/bible-reading-4.mp3",
+  "/audio/background/bible-reading-5.mp3",
 ];
 
 export const BIBLE_READING_BACKGROUND_VOLUME = 0.1;

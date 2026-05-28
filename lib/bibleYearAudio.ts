@@ -62,7 +62,6 @@ export const BIBLE_YEAR_DAY_ONE_AUDIO: BibleYearAudioDay = {
   storagePath: getBibleYearAudioStoragePath(1),
   apiSrc: getBibleYearAudioApiSrc(1),
   estimatedDuration: "about 18 min",
-  videoSrc: "https://youtu.be/ZvP93hHvwuU",
 };
 
 export const BIBLE_YEAR_DAY_TWO_AUDIO: BibleYearAudioDay = {

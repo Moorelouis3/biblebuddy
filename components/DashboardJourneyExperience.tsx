@@ -8826,46 +8826,53 @@ Before we understand redemption, we need to understand what God made humanity fo
             ^
           </span>
         </button>
-        {isOpen ? (
-          <section className="bible-year-follow-along-scroll mt-3 max-h-[420px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#111827)_78%,#020617)] p-4 text-left text-[var(--bb-text-primary,#fff7ed)] shadow-inner">
-            <div className="space-y-7">
-              {chapters.map((chapter) => (
-                <article key={`${chapter.book}-${chapter.chapter}`} className="space-y-3">
-                  <div className="flex items-center justify-between gap-3">
-                    <h3 className="font-serif text-2xl font-black tracking-wide text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_82%,#ffffff)]">
-                      {chapter.book} {chapter.chapter}
-                    </h3>
-                    {!chapter.verses.length ? (
-                      <Link
-                        href={`/Bible/${chapter.book}/${chapter.chapter}`}
-                        className="shrink-0 rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1.5 text-xs font-black text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_88%,#ffffff)] transition hover:brightness-110"
-                      >
-                        Open Chapter
-                      </Link>
-                    ) : null}
-                  </div>
-                  {chapter.verses.length ? (
-                    <div className="space-y-3">
-                      {chapter.verses.map((verse) => (
-                        <p key={`${chapter.book}-${chapter.chapter}-${verse.verse}`} className="text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#dbeafe)] sm:text-[15px]">
-                          <sup className="mr-1 align-super text-[11px] font-black leading-none text-[var(--bb-accent,#2f7fe8)]">
-                            {verse.verse}
-                          </sup>
-                          {verse.text}
-                        </p>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#dbeafe)]">
-                      This chapter opens in the Bible reader so you can follow along with the same day flow.
-                    </p>
-                  )}
-                </article>
-              ))}
-            </div>
-          </section>
-        ) : null}
+        {isOpen ? renderBibleYearFollowAlongScripturePanel(day) : null}
       </div>
+    );
+  }
+
+  function renderBibleYearFollowAlongScripturePanel(day: GenesisBibleYearDay) {
+    const chapters = getBibleYearFollowAlongChapters(day);
+    if (!chapters.length) return null;
+
+    return (
+      <section className="bible-year-follow-along-scroll mt-3 max-h-[420px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#111827)_78%,#020617)] p-4 text-left text-[var(--bb-text-primary,#fff7ed)] shadow-inner">
+        <div className="space-y-7">
+          {chapters.map((chapter) => (
+            <article key={`${chapter.book}-${chapter.chapter}`} className="space-y-3">
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="font-serif text-2xl font-black tracking-wide text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_82%,#ffffff)]">
+                  {chapter.book} {chapter.chapter}
+                </h3>
+                {!chapter.verses.length ? (
+                  <Link
+                    href={`/Bible/${chapter.book}/${chapter.chapter}`}
+                    className="shrink-0 rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1.5 text-xs font-black text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_88%,#ffffff)] transition hover:brightness-110"
+                  >
+                    Open Chapter
+                  </Link>
+                ) : null}
+              </div>
+              {chapter.verses.length ? (
+                <div className="space-y-3">
+                  {chapter.verses.map((verse) => (
+                    <p key={`${chapter.book}-${chapter.chapter}-${verse.verse}`} className="text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#dbeafe)] sm:text-[15px]">
+                      <sup className="mr-1 align-super text-[11px] font-black leading-none text-[var(--bb-accent,#2f7fe8)]">
+                        {verse.verse}
+                      </sup>
+                      {verse.text}
+                    </p>
+                  ))}
+                </div>
+              ) : (
+                <p className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#dbeafe)]">
+                  This chapter opens in the Bible reader so you can follow along with the same day flow.
+                </p>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
     );
   }
 
@@ -8925,7 +8932,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 storagePath={audio.storagePath}
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
-                backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                backgroundMusicSrcs={day.dayNumber === 1 || (day.dayNumber >= 8 && day.dayNumber <= 12) ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
                 backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
               />
             </div>
@@ -10128,24 +10135,14 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderBibleYearDashboardStudyArea(day: GenesisBibleYearDay, tasksToRender: TaskState[]) {
     const cover = day.coverImage || getDashboardStudyCover(day.readings[0]?.studyTitle || day.title) || undefined;
-    const readingSummary = day.reference || day.readings.map((reading) => `${reading.book} ${reading.chapter}`).join(", ");
+    const readingSummary = formatBibleYearMediaReference(day);
     const content = getBibleYearDayContent(day);
     const audio = content.audio;
     const readingComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reading === true;
     const summaryComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.reflection === true;
     const triviaComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.trivia === true;
     const reflectionPosted = bibleYearReflectionPostedByDay[day.dayNumber] === true;
-    const shareLesson = async () => {
-      const shareUrl = `${window.location.origin}/dashboard?view=bible-year&day=${day.dayNumber}`;
-      const shareText = `Day ${day.dayNumber}: ${day.title} - ${readingSummary}`;
-      if (navigator.share) {
-        await navigator.share({ title: `Bible Buddy ${shareText}`, text: shareText, url: shareUrl }).catch(() => null);
-        return;
-      }
-      await navigator.clipboard?.writeText(shareUrl).catch(() => null);
-      setShareCopied(true);
-      window.setTimeout(() => setShareCopied(false), 1600);
-    };
+    const followAlongOpen = Boolean(bibleYearFollowAlongOpenByDay[day.dayNumber]);
     const supportCards: Array<{
       key: BibleYearDayCardKey | "discussion";
       eyebrow: string;
@@ -10194,7 +10191,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <div className="min-w-0">
               <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#9aa7ba]">Day {day.dayNumber} of 365</p>
               <h2 className="mt-1.5 text-[21px] font-bold leading-tight text-white sm:text-[28px]">
-                Day {day.dayNumber}: {day.title}
+                {day.title}
               </h2>
               <p className="mt-1 text-[13px] font-semibold text-[#b8c3d2]">{readingSummary}</p>
             </div>
@@ -10218,30 +10215,30 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <p className="mt-1 max-w-2xl text-[13px] font-medium leading-5 text-[#b8c3d2]">
                   Listen to the cinematic audio lesson with Scripture, storytelling, and teaching.
                 </p>
+                <div className="mt-3">
+                  {audio ? (
+                    <BibleYearLessonAudioPlayer
+                      audioSrc={audio.apiSrc}
+                      title={audio.title}
+                      durationLabel={audio.estimatedDuration}
+                      storagePath={audio.storagePath}
+                      userId={userId}
+                      videoId={`bible-year-day-${day.dayNumber}`}
+                      backgroundMusicSrcs={day.dayNumber === 1 || (day.dayNumber >= 8 && day.dayNumber <= 12) ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                      backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+                      compactMediaControls
+                      onEnded={() => {
+                        if (!readingComplete) markBibleYearDayCardComplete(day, "reading");
+                      }}
+                    />
+                  ) : (
+                    <div className="mt-3 rounded-[14px] border border-[#26364a] bg-[#111d2d] p-4 text-sm font-bold text-[#c7d0dd]">
+                      Today&apos;s audio lesson is being prepared.
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="mt-4">
-            {audio ? (
-              <BibleYearLessonAudioPlayer
-                audioSrc={audio.apiSrc}
-                title={audio.title}
-                durationLabel={audio.estimatedDuration}
-                storagePath={audio.storagePath}
-                userId={userId}
-                videoId={`bible-year-day-${day.dayNumber}`}
-                backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
-                backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
-                compactMediaControls
-                onEnded={() => {
-                  if (!readingComplete) markBibleYearDayCardComplete(day, "reading");
-                }}
-              />
-            ) : (
-              <div className="mt-3 rounded-[14px] border border-[#26364a] bg-[#111d2d] p-4 text-sm font-bold text-[#c7d0dd]">
-                Today&apos;s audio lesson is being prepared.
-              </div>
-            )}
           </div>
           <div className="mt-2 grid gap-2 sm:grid-cols-2">
             <button
@@ -10261,17 +10258,26 @@ Before we understand redemption, we need to understand what God made humanity fo
             </button>
             <button
               type="button"
-              onClick={() => void shareLesson()}
+              onClick={() => {
+                setBibleYearFollowAlongOpenByDay((current) => ({
+                  ...current,
+                  [day.dayNumber]: !current[day.dayNumber],
+                }));
+              }}
+              aria-expanded={followAlongOpen}
               className="inline-flex items-center justify-center gap-2 rounded-[14px] border border-[#26364a] bg-[#101c2b] px-5 py-3.5 text-[13px] font-bold text-[#f8fafc] transition hover:bg-[#16263a]"
             >
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" />
-                <path d="M12 16V4" />
-                <path d="m7 9 5-5 5 5" />
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
+                <path d="M8 7h8" />
+                <path d="M8 11h6" />
               </svg>
-              <span>{shareCopied ? "Lesson Link Copied" : "Share Lesson"}</span>
+              <span>Follow in Scripture</span>
+              <span className={`ml-1 text-sm leading-none transition ${followAlongOpen ? "rotate-180" : ""}`} aria-hidden="true">^</span>
             </button>
           </div>
+          {followAlongOpen ? renderBibleYearFollowAlongScripturePanel(day) : null}
           {readingComplete && bibleYearJustCompletedDayRef.current === day.dayNumber ? (
             <div className="mt-4">{renderBibleYearCompletedDayPanel(day)}</div>
           ) : null}
@@ -10889,7 +10895,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     storagePath={bibleYearAudio.storagePath}
                     userId={userId}
                     videoId={`bible-year-day-${day.dayNumber}`}
-                    backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                    backgroundMusicSrcs={day.dayNumber === 1 || (day.dayNumber >= 8 && day.dayNumber <= 12) ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
                     backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
                   />
                 </>
@@ -11669,7 +11675,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 storagePath={audio.storagePath}
                 userId={userId}
                 videoId={`bible-year-day-${day.dayNumber}`}
-                backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                backgroundMusicSrcs={day.dayNumber === 1 || (day.dayNumber >= 8 && day.dayNumber <= 12) ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
                 backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
               />
               {renderBibleYearFollowAlongScripture(day)}
@@ -12402,6 +12408,18 @@ Before we understand redemption, we need to understand what God made humanity fo
 
   function renderOwnerOnboardingControls() {
     return null;
+  }
+
+  function formatBibleYearMediaReference(day: GenesisBibleYearDay) {
+    if (!day.readings.length) return day.reference || "";
+    const firstBook = day.readings[0]?.book || "";
+    const sameBook = day.readings.every((reading) => reading.book === firstBook);
+    const chapters = day.readings.map((reading) => Number(reading.chapter)).filter((chapter) => Number.isFinite(chapter));
+
+    if (sameBook && firstBook && chapters.length === 1) return `${firstBook} ${chapters[0]}`;
+    if (sameBook && firstBook && chapters.length === 2) return `${firstBook} ${chapters[0]} & ${chapters[1]}`;
+    if (sameBook && firstBook && chapters.length > 2) return `${firstBook} ${chapters[0]} through ${chapters[chapters.length - 1]}`;
+    return day.reference || day.readings.map((reading) => `${reading.book} ${reading.chapter}`).join(", ");
   }
 
   function renderDashboardGuidedIntroOverlay() {
