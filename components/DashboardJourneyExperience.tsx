@@ -10320,8 +10320,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <section data-bb-dashboard-tour="journey-map" className="order-first overflow-hidden rounded-[20px] border border-[#223247] bg-[#101a27] text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl">
           <button type="button" onClick={openBibleYearSeriesDashboard} className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-white/5">
             <span>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Journey Map</span>
-              <span className="mt-1 block text-[17px] font-bold text-white">Your Bible journey timeline</span>
+              <span className="block text-[17px] font-bold text-white">Journey Map</span>
             </span>
             <span className="text-2xl text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">›</span>
           </button>

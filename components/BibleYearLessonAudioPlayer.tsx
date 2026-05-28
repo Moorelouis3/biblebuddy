@@ -69,6 +69,22 @@ export default function BibleYearLessonAudioPlayer({
   const speedControlId = `audio-speed-${(videoId || title).toLowerCase().replace(/[^a-z0-9_-]+/g, "-")}`;
 
   useEffect(() => {
+    const previousAudio = audioRef.current;
+    if (previousAudio) {
+      saveProgress(previousAudio);
+      previousAudio.pause();
+      previousAudio.src = "";
+      previousAudio.load();
+      audioRef.current = null;
+    }
+    stopBackgroundMusic();
+    setPlaying(false);
+    setLoading(false);
+    setCurrentTime(0);
+    setDuration(0);
+    setError(false);
+    setIsScrubbing(false);
+    setScrubTime(0);
     savedPositionAppliedRef.current = false;
     pendingSeekRef.current = 0;
     lastSavedSecondRef.current = -1;
