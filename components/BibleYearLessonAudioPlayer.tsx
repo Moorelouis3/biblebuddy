@@ -15,6 +15,7 @@ type BibleYearLessonAudioPlayerProps = {
   videoContext?: "bible_year" | "bible_topics";
   backgroundMusicSrcs?: string[];
   backgroundMusicVolume?: number;
+  onEnded?: () => void;
 };
 
 function formatTime(totalSeconds: number) {
@@ -34,6 +35,7 @@ export default function BibleYearLessonAudioPlayer({
   videoContext = "bible_year",
   backgroundMusicSrcs,
   backgroundMusicVolume = 0.1,
+  onEnded,
 }: BibleYearLessonAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const backgroundAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -231,6 +233,7 @@ export default function BibleYearLessonAudioPlayer({
       setPlaying(false);
       setLoading(false);
       stopBackgroundMusic();
+      onEnded?.();
     };
     audio.onerror = () => {
       setError(true);
@@ -461,19 +464,19 @@ export default function BibleYearLessonAudioPlayer({
             <div className="flex flex-wrap items-center justify-center gap-2">
               <button
                 type="button"
-                onClick={() => seekBy(-10)}
+                onClick={() => seekBy(-15)}
                 disabled={!audioRef.current}
                 className="rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 disabled:opacity-50"
               >
-                -10s
+                -15s
               </button>
               <button
                 type="button"
-                onClick={() => seekBy(10)}
+                onClick={() => seekBy(15)}
                 disabled={!audioRef.current}
                 className="rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 disabled:opacity-50"
               >
-                +10s
+                +15s
               </button>
               {[1, 1.25, 1.5, 2].map((rate) => (
                 <button
