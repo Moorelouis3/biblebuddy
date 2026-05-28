@@ -10203,7 +10203,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             </span>
           </div>
 
-          <div className="mt-4 grid gap-5 xl:grid-cols-[230px_minmax(0,1fr)]">
+          <div className="mt-4 grid gap-5 xl:grid-cols-[210px_minmax(0,1fr)] xl:items-stretch">
             <div className="aspect-square overflow-hidden rounded-[14px] border border-[#27384e] bg-black shadow-[0_14px_32px_rgba(0,0,0,0.30)]">
               {cover ? (
                 <img src={cover} alt="" loading="eager" decoding="async" className="h-full w-full object-cover" />
@@ -10211,34 +10211,37 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <div className="grid h-full w-full place-items-center text-5xl" aria-hidden="true">📖</div>
               )}
             </div>
-            <div className="rounded-[16px] border border-[#1f2d3f] bg-[#0d1724]/76 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur">
-              <div className="px-1 pb-1">
+            <div className="flex min-w-0 flex-col justify-between">
+              <div className="min-w-0 px-1">
                 <p className="text-[13px] font-medium text-[#9aa7ba]">Guided Audio Lesson</p>
-                <h3 className="mt-1 text-[20px] font-bold text-white">{day.title}</h3>
-                <p className="mt-1 text-[13px] font-medium leading-5 text-[#b8c3d2]">
-                  Press play and continue your Bible journey with Scripture, teaching, and guided transitions.
+                <h3 className="mt-1 text-[22px] font-bold leading-tight text-white">{day.title}</h3>
+                <p className="mt-1 max-w-2xl text-[13px] font-medium leading-5 text-[#b8c3d2]">
+                  Listen to the cinematic audio lesson with Scripture, storytelling, and teaching.
                 </p>
               </div>
-              {audio ? (
-                <BibleYearLessonAudioPlayer
-                  audioSrc={audio.apiSrc}
-                  title={audio.title}
-                  durationLabel={audio.estimatedDuration}
-                  storagePath={audio.storagePath}
-                  userId={userId}
-                  videoId={`bible-year-day-${day.dayNumber}`}
-                  backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
-                  backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
-                  onEnded={() => {
-                    if (!readingComplete) markBibleYearDayCardComplete(day, "reading");
-                  }}
-                />
-              ) : (
-                <div className="mt-3 rounded-[14px] border border-[#26364a] bg-[#111d2d] p-4 text-sm font-bold text-[#c7d0dd]">
-                  Today&apos;s audio lesson is being prepared.
-                </div>
-              )}
-              <div className="mt-2 grid gap-2 sm:grid-cols-2">
+              <div className="mt-4">
+                {audio ? (
+                  <BibleYearLessonAudioPlayer
+                    audioSrc={audio.apiSrc}
+                    title={audio.title}
+                    durationLabel={audio.estimatedDuration}
+                    storagePath={audio.storagePath}
+                    userId={userId}
+                    videoId={`bible-year-day-${day.dayNumber}`}
+                    backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                    backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+                    compactMediaControls
+                    onEnded={() => {
+                      if (!readingComplete) markBibleYearDayCardComplete(day, "reading");
+                    }}
+                  />
+                ) : (
+                  <div className="mt-3 rounded-[14px] border border-[#26364a] bg-[#111d2d] p-4 text-sm font-bold text-[#c7d0dd]">
+                    Today&apos;s audio lesson is being prepared.
+                  </div>
+                )}
+              </div>
+              <div className="mt-1 grid gap-2 sm:grid-cols-2">
                 <button
                   type="button"
                   onClick={() => {

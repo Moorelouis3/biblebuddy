@@ -16,6 +16,7 @@ type BibleYearLessonAudioPlayerProps = {
   backgroundMusicSrcs?: string[];
   backgroundMusicVolume?: number;
   onEnded?: () => void;
+  compactMediaControls?: boolean;
 };
 
 function formatTime(totalSeconds: number) {
@@ -36,6 +37,7 @@ export default function BibleYearLessonAudioPlayer({
   backgroundMusicSrcs,
   backgroundMusicVolume = 0.1,
   onEnded,
+  compactMediaControls = false,
 }: BibleYearLessonAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const backgroundAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -387,6 +389,7 @@ export default function BibleYearLessonAudioPlayer({
   return (
     <section className="mb-3 overflow-hidden rounded-[16px] text-[#f8fafc]">
       <div className="flex min-w-0 flex-col gap-3">
+        {!compactMediaControls ? (
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -415,6 +418,7 @@ export default function BibleYearLessonAudioPlayer({
             {playbackRate}x
           </span>
         </div>
+        ) : null}
 
         <div className="grid gap-2">
             <div className="grid gap-1.5 rounded-2xl bg-transparent px-0 py-2">
@@ -467,6 +471,23 @@ export default function BibleYearLessonAudioPlayer({
               >
                 -15s
               </button>
+              {compactMediaControls ? (
+                <button
+                  type="button"
+                  onClick={toggleAudio}
+                  disabled={loading}
+                  className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#f8fafc] text-[#08111d] shadow-[0_8px_18px_rgba(255,255,255,0.10)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
+                  aria-label={playing ? "Pause audio lesson" : "Play audio lesson"}
+                >
+                  {loading ? (
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
+                  ) : playing ? (
+                    <span className="text-sm font-black leading-none" aria-hidden="true">II</span>
+                  ) : (
+                    <span className="ml-0.5 h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-current" aria-hidden="true" />
+                  )}
+                </button>
+              ) : null}
               <button
                 type="button"
                 onClick={() => seekBy(15)}
