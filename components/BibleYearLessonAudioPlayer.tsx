@@ -385,17 +385,14 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   return (
-    <section
-      className="mb-6 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_80%,transparent)] p-3 shadow-[0_14px_34px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] backdrop-blur-md"
-      style={{ background: "color-mix(in srgb, var(--bb-card, #ffffff) 78%, transparent)" }}
-    >
-      <div className="flex min-w-0 flex-col gap-3">
+    <section className="mb-4 overflow-hidden rounded-[22px] border border-[#243449] bg-[#101b29]/72 p-4 text-[#f8fafc] shadow-[0_14px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-md">
+      <div className="flex min-w-0 flex-col gap-4">
         <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={toggleAudio}
             disabled={loading}
-            className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-[0_10px_22px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
+            className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white text-[#0b1420] shadow-[0_12px_28px_rgba(255,255,255,0.16)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
             aria-label={playing ? "Pause Day 1 audio lesson" : "Play Day 1 audio lesson"}
           >
             {loading ? (
@@ -407,20 +404,20 @@ export default function BibleYearLessonAudioPlayer({
             )}
           </button>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">{title}</p>
-            <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+            <p className="truncate text-sm font-black text-white">{title}</p>
+            <p className="mt-0.5 text-xs font-bold text-[#a8b3c4]">
               {playing ? "Playing" : currentTime > 2 ? "Ready to resume" : "Audio lesson"}
               {" • "}
               {duration ? formatTime(duration) : durationLabel}
             </p>
           </div>
-          <span className="rounded-full bg-[color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_72%,transparent)] px-2.5 py-1 text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
+          <span className="rounded-full border border-[#2d4057] bg-[#18263a] px-2.5 py-1 text-xs font-black text-[#f8fafc]">
             {playbackRate}x
           </span>
         </div>
 
         <div className="grid gap-3">
-            <div className="grid gap-1.5 rounded-2xl bg-[color-mix(in_srgb,var(--bb-text-primary,#111827)_8%,transparent)] px-2.5 py-2">
+            <div className="grid gap-1.5 rounded-2xl bg-transparent px-0 py-2">
               <input
                 type="range"
                 min={0}
@@ -447,9 +444,9 @@ export default function BibleYearLessonAudioPlayer({
                 }}
                 disabled={!effectiveDuration}
                 aria-label="Audio progress"
-                className="h-2 w-full cursor-pointer accent-[var(--bb-button,var(--bb-accent,#2f7fe8))] disabled:cursor-not-allowed disabled:opacity-50"
+                className="h-2 w-full cursor-pointer accent-[#10c989] disabled:cursor-not-allowed disabled:opacity-50"
               />
-              <div className="flex items-center justify-between gap-3 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+              <div className="flex items-center justify-between gap-3 text-[11px] font-bold text-[#a8b3c4]">
                 <span>{formatTime(displayTime)}</span>
                 <span>
                   {duration
@@ -466,7 +463,7 @@ export default function BibleYearLessonAudioPlayer({
                 type="button"
                 onClick={() => seekBy(-15)}
                 disabled={!audioRef.current}
-                className="rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 disabled:opacity-50"
+                className="rounded-xl border border-[#2d4057] bg-[#152235] px-3 py-2 text-xs font-black text-[#f8fafc] transition hover:bg-[#1b2c42] disabled:opacity-50"
               >
                 -15s
               </button>
@@ -474,7 +471,7 @@ export default function BibleYearLessonAudioPlayer({
                 type="button"
                 onClick={() => seekBy(15)}
                 disabled={!audioRef.current}
-                className="rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 py-2 text-xs font-black text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 disabled:opacity-50"
+                className="rounded-xl border border-[#2d4057] bg-[#152235] px-3 py-2 text-xs font-black text-[#f8fafc] transition hover:bg-[#1b2c42] disabled:opacity-50"
               >
                 +15s
               </button>
@@ -485,8 +482,8 @@ export default function BibleYearLessonAudioPlayer({
                   onClick={() => changePlaybackRate(rate)}
                   className={`rounded-xl border px-3 py-2 text-xs font-black transition hover:brightness-95 ${
                     playbackRate === rate
-                      ? "border-[var(--bb-button,var(--bb-accent,#2f7fe8))] bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)]"
-                      : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f4f6)] text-[var(--bb-text-primary,#111827)]"
+                      ? "border-[#10c989] bg-[#10c989] text-white"
+                      : "border-[#2d4057] bg-[#152235] text-[#f8fafc]"
                   }`}
                   aria-pressed={playbackRate === rate}
                 >
