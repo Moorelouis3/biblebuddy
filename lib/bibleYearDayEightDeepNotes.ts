@@ -22,7 +22,7 @@ export const BIBLE_YEAR_DAY_EIGHT_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection
     summary: "Abraham receives mysterious visitors, and an ordinary tent becomes the setting for a holy encounter.",
     markdown: `## Genesis 18:1-8
 
-> 📖 **1** The LORD appeared to him by the oaks of Mamre, as he sat in the tent door in the heat of the day.
+> 📖 Read Genesis 18:1-8.
 
 ## ⛺ What Is Happening Here?
 
@@ -49,7 +49,7 @@ Faith pays attention when God comes near, even in normal places and ordinary mom
     summary: "Sarah hears that she will have a son, laughs at the impossibility, and receives God's central question.",
     markdown: `## Genesis 18:9-15
 
-> 📖 **9** They said to him, "Where is Sarah, your wife?" He said, "There, in the tent."
+> 📖 Read Genesis 18:9-15.
 
 ## ✨ What Is Happening Here?
 
@@ -76,7 +76,7 @@ God's promise is not limited by age, delay, weakness, or what seems impossible t
     summary: "The story turns toward Sodom, and God reveals that judgment comes with full knowledge.",
     markdown: `## Genesis 18:16-21
 
-> 📖 **16** The men rose up from there, and looked toward Sodom. Abraham went with them to see them on their way.
+> 📖 Read Genesis 18:16-21.
 
 ## ⚖️ What Is Happening Here?
 
@@ -103,7 +103,7 @@ Judgment in Genesis is serious, but it is never blind or reckless.`,
     summary: "Abraham draws near and pleads for mercy while trusting that the Judge of all the earth will do right.",
     markdown: `## Genesis 18:22-33
 
-> 📖 **22** The men turned from there, and went toward Sodom, but Abraham stood yet before the LORD.
+> 📖 Read Genesis 18:22-33.
 
 ## 🙏 What Is Happening Here?
 
@@ -130,7 +130,7 @@ Close relationship with God should make us humble, bold, merciful, and serious a
     summary: "The angels enter Sodom, and the city quickly reveals the corruption God was judging.",
     markdown: `## Genesis 19:1-11
 
-> 📖 **1** The two angels came to Sodom at evening. Lot sat in the gate of Sodom.
+> 📖 Read Genesis 19:1-11.
 
 ## ⚠️ What Is Happening Here?
 
@@ -157,7 +157,7 @@ Compromise can pull people close to places they cannot control and cannot heal.`
     summary: "Lot hesitates, but the angels take him by the hand because the LORD is merciful.",
     markdown: `## Genesis 19:12-22
 
-> 📖 **12** The men said to Lot, "Do you have anybody else here? Sons-in-law, your sons, your daughters, and whomever you have in the city, bring them out of the place.
+> 📖 Read Genesis 19:12-22.
 
 ## 🤲 What Is Happening Here?
 
@@ -184,7 +184,7 @@ God's mercy often rescues us more strongly than we know how to rescue ourselves.
     summary: "Judgment falls on Sodom and Gomorrah, but Lot is rescued because God remembers Abraham.",
     markdown: `## Genesis 19:23-29
 
-> 📖 **23** The sun had risen on the earth when Lot came to Zoar.
+> 📖 Read Genesis 19:23-29.
 
 ## 🔥 What Is Happening Here?
 
@@ -211,7 +211,7 @@ God does not ignore evil, but He also knows how to rescue with mercy.`,
     summary: "Lot escapes Sodom, but the ending shows that Sodom's damage still casts a long shadow.",
     markdown: `## Genesis 19:30-38
 
-> 📖 **30** Lot went up out of Zoar, and lived in the mountain, and his two daughters with him; for he was afraid to live in Zoar.
+> 📖 Read Genesis 19:30-38.
 
 ## 💔 What Is Happening Here?
 
@@ -238,7 +238,7 @@ Lot's rescue was real, but his story warns us that compromise can leave wounds t
     summary: "Abraham repeats the Sarah-as-sister failure, but God protects Sarah and preserves the promise.",
     markdown: `## Genesis 20:1-18
 
-> 📖 **1** Abraham traveled from there toward the land of the South, and lived between Kadesh and Shur. He lived as a foreigner in Gerar.
+> 📖 Read Genesis 20:1-18.
 
 ## 🛡️ What Is Happening Here?
 

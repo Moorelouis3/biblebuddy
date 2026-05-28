@@ -29,9 +29,11 @@ export const BIBLE_YEAR_DAY_FIVE_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[
   {
     reference: "Genesis 11:1-9",
     title: "Babel Tries To Make A Name",
-    icon: "city",
+    icon: "🏙️",
     summary: "Humanity gathers, builds upward, and tries to secure identity and safety without trusting God.",
     markdown: `## Genesis 11:1-9
+
+> 📖 Read Genesis 11:1-9.
 
 ## What Is Happening Here?
 
@@ -94,9 +96,11 @@ The Bible is not against work, cities, plans, or ambition. It is against pride t
   {
     reference: "Genesis 11:10-32",
     title: "The Story Narrows Toward Abram",
-    icon: "line",
+    icon: "🌱",
     summary: "Genesis follows Shem's family line until Abram appears, and the promise story begins to narrow.",
     markdown: `## Genesis 11:10-32
+
+> 📖 Read Genesis 11:10-32.
 
 ## What Is Happening Here?
 
@@ -144,9 +148,11 @@ This is one reason Genesis teaches faith so patiently. Faith is not confidence t
   {
     reference: "Genesis 12:1-3",
     title: "God Calls Abram",
-    icon: "call",
+    icon: "📣",
     summary: "God tells Abram to leave and gives promises of land, nation, name, blessing, and worldwide impact.",
     markdown: `## Genesis 12:1-3
+
+> 📖 Read Genesis 12:1-3.
 
 ## What God Commands
 
@@ -213,9 +219,11 @@ That is the beginning of faith.`,
   {
     reference: "Genesis 12:4-9",
     title: "Abram Goes And Builds Altars",
-    icon: "altar",
+    icon: "🔥",
     summary: "Abram responds with movement, enters Canaan, receives the land promise, and worships along the way.",
     markdown: `## Genesis 12:4-9
+
+> 📖 Read Genesis 12:4-9.
 
 ## What Is Happening Here?
 
@@ -261,9 +269,11 @@ Faith takes steps, but faith also stops to worship.`,
   {
     reference: "Genesis 12:10-20",
     title: "Fear Takes Abram To Egypt",
-    icon: "warning",
+    icon: "⚠️",
     summary: "Famine pressures Abram, fear shapes his plan, Sarai is put in danger, and God protects the promise.",
     markdown: `## Genesis 12:10-20
+
+> 📖 Read Genesis 12:10-20.
 
 ## What Is Happening Here?
 
@@ -316,9 +326,11 @@ The promise survives this chapter not because Abram is strong, but because God i
   {
     reference: "Genesis 13:1-7",
     title: "Abram Returns To The Altar",
-    icon: "return",
+    icon: "↩️",
     summary: "Abram comes back from Egypt, returns to worship, and faces new tension with Lot.",
     markdown: `## Genesis 13:1-7
+
+> 📖 Read Genesis 13:1-7.
 
 ## What Is Happening Here?
 
@@ -361,9 +373,11 @@ Abram is still learning. But he comes back to the altar, and that is the right d
   {
     reference: "Genesis 13:8-13",
     title: "Lot Chooses By Sight",
-    icon: "eyes",
+    icon: "👀",
     summary: "Abram chooses peace, Lot chooses what looks good, and his direction moves toward Sodom.",
     markdown: `## Genesis 13:8-13
+
+> 📖 Read Genesis 13:8-13.
 
 ## What Is Happening Here?
 
@@ -414,9 +428,11 @@ Genesis is teaching us to look deeper than appearance. The question is not only,
   {
     reference: "Genesis 13:14-18",
     title: "God Repeats The Promise",
-    icon: "promise",
+    icon: "✨",
     summary: "After Lot separates, God tells Abram to lift his eyes and receive the promise again.",
     markdown: `## Genesis 13:14-18
+
+> 📖 Read Genesis 13:14-18.
 
 ## What Is Happening Here?
 

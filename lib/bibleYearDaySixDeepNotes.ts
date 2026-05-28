@@ -30,9 +30,11 @@ export const BIBLE_YEAR_DAY_SIX_DEEP_STUDY_SECTIONS: BibleYearDeepStudySection[]
   {
     reference: "Genesis 14:1-12",
     title: "War Reaches Lot",
-    icon: "battle",
+    icon: "⚔️",
     summary: "A regional war reaches Sodom, and Lot is taken captive because of where he has settled.",
     markdown: `## Genesis 14:1-12
+
+> 📖 Read Genesis 14:1-12.
 
 ## What Is Happening Here?
 
@@ -77,9 +79,11 @@ Genesis 14 shows that the direction of a life can eventually decide the kind of 
   {
     reference: "Genesis 14:13-16",
     title: "Abram Rescues Lot",
-    icon: "rescue",
+    icon: "🛡️",
     summary: "Abram hears that Lot has been captured and moves with courage, mercy, and responsibility.",
     markdown: `## Genesis 14:13-16
+
+> 📖 Read Genesis 14:13-16.
 
 ## What Is Happening Here?
 
@@ -126,9 +130,11 @@ That combination matters. Biblical love can be honest about danger and still mov
   {
     reference: "Genesis 14:17-20",
     title: "Melchizedek Blesses Abram",
-    icon: "priest",
+    icon: "👑",
     summary: "Melchizedek appears as king and priest, blessing Abram and giving glory to God Most High.",
     markdown: `## Genesis 14:17-20
+
+> 📖 Read Genesis 14:17-20.
 
 ## What Is Happening Here?
 
@@ -179,9 +185,11 @@ The right response to rescue is worship.`,
   {
     reference: "Genesis 14:21-24",
     title: "Abram Refuses Sodom's Reward",
-    icon: "refusal",
+    icon: "✋",
     summary: "Abram refuses the king of Sodom's offer so corrupt power cannot claim credit for his blessing.",
     markdown: `## Genesis 14:21-24
+
+> 📖 Read Genesis 14:21-24.
 
 ## What Is Happening Here?
 
@@ -234,9 +242,11 @@ Abram refuses a gift that would confuse the story of God's provision. He wants t
   {
     reference: "Genesis 15:1-6",
     title: "God Speaks To Abram's Fear",
-    icon: "stars",
+    icon: "⭐",
     summary: "God calls Himself Abram's shield and reward, then repeats the promise under the stars.",
     markdown: `## Genesis 15:1-6
+
+> 📖 Read Genesis 15:1-6.
 
 ## What Is Happening Here?
 
@@ -312,9 +322,11 @@ Faith is not faith in faith. Faith is trust in the God who speaks and keeps His 
   {
     reference: "Genesis 15:7-11",
     title: "Abram Asks For Assurance",
-    icon: "question",
+    icon: "❓",
     summary: "Abram asks how he will know, and God prepares a covenant ceremony.",
     markdown: `## Genesis 15:7-11
+
+> 📖 Read Genesis 15:7-11.
 
 ## What Is Happening Here?
 
@@ -361,9 +373,11 @@ But faith does not use questions as an excuse to leave God. Faith brings questio
   {
     reference: "Genesis 15:12-16",
     title: "God Tells Abram The Long Road",
-    icon: "night",
+    icon: "🌙",
     summary: "God reveals that Abram's descendants will suffer, but He will judge the oppressor and bring them out.",
     markdown: `## Genesis 15:12-16
+
+> 📖 Read Genesis 15:12-16.
 
 ## What Is Happening Here?
 
@@ -415,9 +429,11 @@ God knows the suffering, the timing, the judgment, and the rescue before His peo
   {
     reference: "Genesis 15:17-21",
     title: "God Makes Covenant",
-    icon: "fire",
+    icon: "🔥",
     summary: "God passes between the pieces and binds Himself to the promise He gave Abram.",
     markdown: `## Genesis 15:17-21
+
+> 📖 Read Genesis 15:17-21.
 
 ## What Is Happening Here?
 
