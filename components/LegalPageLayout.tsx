@@ -44,26 +44,21 @@ export default function LegalPageLayout({
           background: none !important;
           background-image: none !important;
         }
-        html[data-bb-skin] .bb-legal-public,
         .bb-legal-public {
           background: #F5F7FA !important;
           color: #111827 !important;
         }
-        html[data-bb-skin] .bb-legal-public .bb-legal-logo,
-        html[data-bb-skin] .bb-legal-public .bb-legal-logo *,
         .bb-legal-public .bb-legal-logo,
         .bb-legal-public .bb-legal-logo * {
           color: #111827 !important;
           -webkit-text-fill-color: #111827 !important;
         }
-        html[data-bb-skin] .bb-legal-public .bb-legal-home,
         .bb-legal-public .bb-legal-home {
           background: #ffffff !important;
           border-color: #E5E7EB !important;
           color: #111827 !important;
           -webkit-text-fill-color: #111827 !important;
         }
-        html[data-bb-skin] .bb-legal-public .bb-legal-header,
         .bb-legal-public .bb-legal-header {
           background: transparent !important;
           background-color: transparent !important;
@@ -73,48 +68,38 @@ export default function LegalPageLayout({
           backdrop-filter: none !important;
           -webkit-backdrop-filter: none !important;
         }
-        html[data-bb-skin] .bb-legal-public .bb-legal-card,
         .bb-legal-public .bb-legal-card {
           background: #FFFFFF !important;
           border-color: #E5E7EB !important;
           box-shadow: 0 24px 70px rgba(14, 26, 58, 0.10) !important;
         }
-        html[data-bb-skin] .bb-legal-public .bb-legal-hero,
         .bb-legal-public .bb-legal-hero {
           background: #FFFFFF !important;
           border-color: #E5E7EB !important;
         }
-        html[data-bb-skin] .bb-legal-public .bb-legal-eyebrow,
         .bb-legal-public .bb-legal-eyebrow,
-        html[data-bb-skin] .bb-legal-public .bb-legal-gold,
         .bb-legal-public .bb-legal-gold {
           color: #7BAFD4 !important;
           -webkit-text-fill-color: #7BAFD4 !important;
         }
-        html[data-bb-skin] .bb-legal-public h1,
         .bb-legal-public h1 {
           color: #111827 !important;
           -webkit-text-fill-color: #111827 !important;
         }
-        html[data-bb-skin] .bb-legal-public .bb-legal-description,
         .bb-legal-public .bb-legal-description,
-        html[data-bb-skin] .bb-legal-public .bb-legal-updated,
         .bb-legal-public .bb-legal-updated {
           color: #374151 !important;
           -webkit-text-fill-color: #374151 !important;
         }
-        html[data-bb-skin] .bb-legal-public .bb-legal-updated,
         .bb-legal-public .bb-legal-updated {
           background: #ffffff !important;
           border-color: #E5E7EB !important;
         }
-        html[data-bb-skin] .bb-legal-public .bb-legal-footer,
         .bb-legal-public .bb-legal-footer {
           background: #FFFFFF !important;
           border-color: #E5E7EB !important;
           color: #374151 !important;
         }
-        html[data-bb-skin] .bb-legal-public .bb-legal-footer a,
         .bb-legal-public .bb-legal-footer a {
           color: #111827 !important;
           -webkit-text-fill-color: #111827 !important;

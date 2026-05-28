@@ -4,7 +4,6 @@ import { Fragment, useEffect, useMemo, useState } from "react";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
 import { applyAppThemeToDocument } from "@/lib/appThemes";
-import { DEFAULT_PREMIUM_SKIN_ID, applyPremiumSkinToDocument, readCachedPremiumSkin } from "@/lib/premiumSkins";
 
 type JourneyWindow = "1h" | "24h" | "7d" | "30d";
 type AccountFilter = "all" | "guest" | "free" | "pro";
@@ -172,6 +171,11 @@ type AnalyticsResponse = {
   customerJourney?: {
     window: JourneyWindow;
     label: string;
+    visits?: number;
+    guestStarts?: number;
+    freeAccounts?: number;
+    proUpgrades?: number;
+    guestToAccountRate?: number;
   };
   visitorJourneys?: VisitorJourneys;
   bibleBuddyFunnelStages?: FunnelStageRow[];
@@ -297,35 +301,6 @@ function getRate(part: number, whole: number) {
   return whole > 0 ? Number(((part / whole) * 100).toFixed(1)) : 0;
 }
 
-function getFunnelHealth(rate: number) {
-  if (rate < 10) {
-    return {
-      tone: "border [border-color:rgba(248,113,113,0.72)] [background:linear-gradient(135deg,rgba(127,29,29,0.88),rgba(248,113,113,0.24))] [box-shadow:0_0_0_1px_rgba(248,113,113,0.28),0_0_38px_rgba(248,113,113,0.42)] text-rose-50",
-      label: "Needs fixing",
-      message: `Landing to onboarding completion is ${rate}%. Under 10% means visitors are not making it through the first funnel step.`,
-    };
-  }
-  if (rate < 20) {
-    return {
-      tone: "border [border-color:rgba(251,191,36,0.76)] [background:linear-gradient(135deg,rgba(120,53,15,0.88),rgba(251,191,36,0.26))] [box-shadow:0_0_0_1px_rgba(251,191,36,0.28),0_0_38px_rgba(251,191,36,0.42)] text-amber-50",
-      label: "Normal range",
-      message: `Landing to onboarding completion is ${rate}%. This is workable, but the landing page and questions can still be tightened.`,
-    };
-  }
-  if (rate < 40) {
-    return {
-      tone: "border [border-color:rgba(52,211,153,0.78)] [background:linear-gradient(135deg,rgba(6,78,59,0.9),rgba(52,211,153,0.28))] [box-shadow:0_0_0_1px_rgba(52,211,153,0.32),0_0_42px_rgba(52,211,153,0.5)] text-emerald-50",
-      label: "Doing good",
-      message: `Landing to onboarding completion is ${rate}%. The page is doing good at getting visitors through onboarding.`,
-    };
-  }
-  return {
-    tone: "border [border-color:rgba(74,222,128,0.82)] [background:linear-gradient(135deg,rgba(20,83,45,0.92),rgba(74,222,128,0.32))] [box-shadow:0_0_0_1px_rgba(74,222,128,0.34),0_0_46px_rgba(74,222,128,0.54)] text-green-50",
-    label: "Excellent funnel",
-    message: `Landing to onboarding completion is ${rate}%. That is excellent. Protect what is working and improve the next step.`,
-  };
-}
-
 function StepCell({ value, successLabel, emptyLabel = "Not started" }: { value: string | null; successLabel?: string; emptyLabel?: string }) {
   if (!value) {
     return (
@@ -354,6 +329,64 @@ function getTaskStatus(started: boolean, finished: boolean): TaskStatus {
   if (finished) return "finished";
   if (started) return "started";
   return "not_started";
+}
+
+type JourneyPerformanceDay = {
+  dayNumber: number;
+  title: string;
+  reference: string;
+  plays: number;
+  uniqueListeners: number;
+  avgListenTimeLabel: string;
+  completionRate: number;
+  completedUsers: number;
+  notesOpened: number;
+  triviaStarted: number;
+  triviaCompleted: number;
+  reflectionOpened: number;
+  reflectionSubmitted: number;
+  replays: number;
+  trend: number[];
+};
+
+function getStageUsers(stages: FunnelStageRow[], key: string) {
+  return stages.find((stage) => stage.key === key)?.users || 0;
+}
+
+function getJourneyDayLabel(dayNumber: number, title: string) {
+  return `Day ${dayNumber}: ${title}`;
+}
+
+function buildJourneyPerformanceDays(days: BibleYearDayAnalytics[] | undefined): JourneyPerformanceDay[] {
+  const dayMap = new Map((days || []).map((day) => [day.dayNumber, day]));
+  return GENESIS_BIBLE_IN_ONE_YEAR_SERIES.slice(0, 12).map((planDay) => {
+    const day = dayMap.get(planDay.dayNumber);
+    const users = day?.users || [];
+    const plays = day?.startedUsers || users.filter((user) => user.readingStarted || user.readingCompleted).length;
+    const completedUsers = day?.completedUsers || users.filter((user) => user.completed).length;
+    const notesOpened = users.filter((user) => user.reflectionStarted || user.reflectionCompleted).length;
+    const triviaStarted = users.filter((user) => user.triviaStarted || user.triviaCompleted).length;
+    const triviaCompleted = day?.triviaCompleted || users.filter((user) => user.triviaCompleted).length;
+    const reflectionSubmitted = users.filter((user) => user.reflectionCompleted).length;
+    const trendBase = Math.max(1, plays, completedUsers);
+    return {
+      dayNumber: planDay.dayNumber,
+      title: planDay.title,
+      reference: planDay.reference,
+      plays,
+      uniqueListeners: plays,
+      avgListenTimeLabel: "Tracking soon",
+      completionRate: day?.completionRate || getRate(completedUsers, plays),
+      completedUsers,
+      notesOpened,
+      triviaStarted,
+      triviaCompleted,
+      reflectionOpened: notesOpened,
+      reflectionSubmitted,
+      replays: 0,
+      trend: [0.22, 0.44, 0.31, 0.58, 0.46, 0.74, Math.min(1, (plays || completedUsers || 0) / trendBase)],
+    };
+  });
 }
 
 function MiniTaskStatus({ status, evidence }: { status: TaskStatus; evidence: string | null }) {
@@ -411,7 +444,7 @@ function OnboardingCell({ value }: { value: string | null }) {
   );
 }
 
-function Icon({ name }: { name: "visitors" | "check" | "book" | "flame" | "user" | "pro" | "search" | "filter" | "export" }) {
+function Icon({ name }: { name: "visitors" | "check" | "book" | "flame" | "user" | "pro" | "search" | "filter" | "export" | "play" | "headphones" | "spark" | "arrow" }) {
   const common = "h-5 w-5";
   if (name === "check") {
     return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /><circle cx="12" cy="12" r="9" /></svg>;
@@ -436,6 +469,18 @@ function Icon({ name }: { name: "visitors" | "check" | "book" | "flame" | "user"
   }
   if (name === "export") {
     return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12" /><path d="m7 8 5-5 5 5" /><path d="M5 15v4h14v-4" /></svg>;
+  }
+  if (name === "play") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 5v14l11-7-11-7Z" /></svg>;
+  }
+  if (name === "headphones") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 14a9 9 0 0 1 18 0" /><path d="M5 14v5a2 2 0 0 0 2 2h1v-7H5Z" /><path d="M19 14v5a2 2 0 0 1-2 2h-1v-7h3Z" /></svg>;
+  }
+  if (name === "spark") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3 1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z" /><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z" /></svg>;
+  }
+  if (name === "arrow") {
+    return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>;
   }
   return <svg viewBox="0 0 24 24" className={common} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>;
 }
@@ -581,6 +626,218 @@ function FunnelFlowChart({ stages }: { stages: FunnelStageRow[] }) {
             );
           })}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function AudioOverviewMetricCard({
+  title,
+  value,
+  change,
+  helper,
+  icon,
+}: {
+  title: string;
+  value: number;
+  change: string;
+  helper: string;
+  icon: "visitors" | "play" | "user" | "headphones";
+}) {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_46px_rgba(0,0,0,0.2)]">
+      <div className="flex items-start justify-between gap-4">
+        <div className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.06] text-cyan-200">
+          <Icon name={icon} />
+        </div>
+        <span className="rounded-full border border-emerald-300/20 bg-emerald-400/10 px-2.5 py-1 text-xs font-black text-emerald-200">
+          {change}
+        </span>
+      </div>
+      <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-slate-400">{title}</p>
+      <p className="mt-2 text-3xl font-black leading-none text-white">{formatNumber(value)}</p>
+      <p className="mt-2 text-sm font-semibold leading-5 text-slate-400">{helper}</p>
+    </div>
+  );
+}
+
+function MiniWaveform({ values }: { values: number[] }) {
+  return (
+    <div className="flex h-10 items-end gap-1">
+      {values.map((value, index) => (
+        <span
+          key={`${value}-${index}`}
+          className="w-1.5 rounded-full bg-gradient-to-t from-cyan-400/35 to-emerald-300"
+          style={{ height: `${Math.max(16, Math.min(100, value * 100))}%` }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function JourneyPerformanceCard({
+  day,
+  onOpen,
+}: {
+  day: JourneyPerformanceDay;
+  onOpen: (day: JourneyPerformanceDay) => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onOpen(day)}
+      className="group rounded-xl border border-white/10 bg-white/[0.045] p-4 text-left shadow-[0_14px_34px_rgba(0,0,0,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:bg-white/[0.065]"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-200">Day {day.dayNumber}</p>
+          <h3 className="mt-1 truncate text-base font-black text-white">{day.title}</h3>
+          <p className="mt-0.5 text-xs font-semibold text-slate-400">{day.reference}</p>
+        </div>
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 bg-slate-950/50 text-slate-300 transition group-hover:text-cyan-200">
+          <Icon name="arrow" />
+        </span>
+      </div>
+
+      <div className="mt-5 grid grid-cols-3 gap-2">
+        <div>
+          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Plays</p>
+          <p className="mt-1 text-xl font-black text-white">{formatNumber(day.plays)}</p>
+        </div>
+        <div>
+          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Avg Listen</p>
+          <p className="mt-1 text-sm font-black text-slate-200">{day.avgListenTimeLabel}</p>
+        </div>
+        <div>
+          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Complete</p>
+          <p className="mt-1 text-xl font-black text-emerald-300">{day.completionRate}%</p>
+        </div>
+      </div>
+
+      <div className="mt-5 flex items-end justify-between gap-4 border-t border-white/10 pt-4">
+        <MiniWaveform values={day.trend} />
+        <p className="text-right text-xs font-bold leading-5 text-slate-400">
+          {formatNumber(day.uniqueListeners)} listeners<br />
+          {formatNumber(day.completedUsers)} finished
+        </p>
+      </div>
+    </button>
+  );
+}
+
+function JourneyDayDetailPanel({
+  day,
+  onClose,
+}: {
+  day: JourneyPerformanceDay | null;
+  onClose: () => void;
+}) {
+  if (!day) return null;
+  const stats = [
+    { label: "Total Plays", value: formatNumber(day.plays) },
+    { label: "Unique Listeners", value: formatNumber(day.uniqueListeners) },
+    { label: "Average Listen Time", value: day.avgListenTimeLabel },
+    { label: "Completion Rate", value: `${day.completionRate}%` },
+  ];
+  const engagement = [
+    { label: "Notes Opened", value: day.notesOpened },
+    { label: "Trivia Started", value: day.triviaStarted },
+    { label: "Trivia Completed", value: day.triviaCompleted },
+    { label: "Reflection Opened", value: day.reflectionOpened },
+    { label: "Reflection Submitted", value: day.reflectionSubmitted },
+    { label: "Replays", value: day.replays },
+  ];
+  return (
+    <div className="fixed inset-0 z-[140] flex justify-end bg-slate-950/70 backdrop-blur-sm">
+      <aside className="h-full w-full max-w-lg overflow-y-auto border-l border-white/10 bg-[#0b1421] p-6 text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)]">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">Lesson Details</p>
+            <h2 className="mt-2 text-2xl font-black">{getJourneyDayLabel(day.dayNumber, day.title)}</h2>
+            <p className="mt-1 text-sm font-semibold text-slate-400">{day.reference}</p>
+          </div>
+          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-2 text-sm font-black text-slate-200 transition hover:bg-white/10">
+            Close
+          </button>
+        </div>
+
+        <div className="mt-6 grid grid-cols-2 gap-3">
+          {stats.map((stat) => (
+            <div key={stat.label} className="rounded-xl border border-white/10 bg-white/[0.045] p-4">
+              <p className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">{stat.label}</p>
+              <p className="mt-2 text-2xl font-black text-white">{stat.value}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.045] p-5">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-400">Engagement Breakdown</p>
+              <h3 className="mt-1 text-lg font-black text-white">Deeper study actions</h3>
+            </div>
+            <MiniWaveform values={day.trend} />
+          </div>
+          <div className="mt-5 space-y-3">
+            {engagement.map((item) => (
+              <div key={item.label} className="flex items-center justify-between border-b border-white/10 pb-3 last:border-0 last:pb-0">
+                <span className="text-sm font-semibold text-slate-300">{item.label}</span>
+                <span className="text-sm font-black text-white">{formatNumber(item.value)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6 rounded-xl border border-cyan-300/20 bg-cyan-300/5 p-4">
+          <p className="text-sm font-black text-cyan-100">Audio tracking note</p>
+          <p className="mt-2 text-sm leading-6 text-slate-300">
+            Plays and completions are using the Bible journey task events available now. Average listen duration, replays, and drop-off points are ready in the UI and need dedicated audio progress events to become exact.
+          </p>
+        </div>
+      </aside>
+    </div>
+  );
+}
+
+function AudioJourneyFunnel({
+  landingVisitors,
+  startClicks,
+  signups,
+  dayOnePlays,
+}: {
+  landingVisitors: number;
+  startClicks: number;
+  signups: number;
+  dayOnePlays: number;
+}) {
+  const steps = [
+    { label: "Landing Page Visitors", value: landingVisitors },
+    { label: "Start Your Journey Clicks", value: startClicks },
+    { label: "Signups Completed", value: signups },
+    { label: "Day 1 Plays", value: dayOnePlays },
+  ];
+  return (
+    <section className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-[0_18px_46px_rgba(0,0,0,0.18)]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">Journey Funnel</p>
+          <h2 className="mt-1 text-xl font-black text-white">From first visit to first listen</h2>
+        </div>
+        <p className="text-sm font-semibold text-slate-400">Simple progression, no event dump.</p>
+      </div>
+      <div className="mt-6 grid gap-3 lg:grid-cols-4">
+        {steps.map((step, index) => {
+          const previous = index === 0 ? step.value : steps[index - 1]?.value || 0;
+          const rate = index === 0 ? 100 : getRate(step.value, previous);
+          return (
+            <div key={step.label} className="relative rounded-xl border border-white/10 bg-slate-950/35 p-4">
+              {index < steps.length - 1 ? <span className="absolute -right-3 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-[#0b1421] text-slate-400 lg:grid"><Icon name="arrow" /></span> : null}
+              <p className="text-xs font-black uppercase tracking-[0.12em] text-slate-500">{step.label}</p>
+              <p className="mt-3 text-3xl font-black text-white">{formatNumber(step.value)}</p>
+              <p className="mt-2 text-sm font-black text-emerald-300">{rate}% from previous</p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
@@ -874,7 +1131,7 @@ function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
   );
 }
 
-export default function AnalyticsPage({ embedded = false }: { embedded?: boolean } = {}) {
+function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {}) {
   const [isOwner, setIsOwner] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
   const [windowKey, setWindowKey] = useState<JourneyWindow>("24h");
@@ -888,11 +1145,10 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
   const [activeView, setActiveView] = useState<AnalyticsView>("overview");
   const [expandedDay, setExpandedDay] = useState<number>(1);
   const [expandedVisitorId, setExpandedVisitorId] = useState<string | null>(null);
+  const [selectedJourneyDay, setSelectedJourneyDay] = useState<JourneyPerformanceDay | null>(null);
 
   useEffect(() => {
-    const cachedSkin = readCachedPremiumSkin(null);
-    applyAppThemeToDocument("light");
-    applyPremiumSkinToDocument(cachedSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : cachedSkin);
+    applyAppThemeToDocument("dark");
   }, []);
 
   useEffect(() => {
@@ -950,9 +1206,16 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
   };
   const bibleBuddyFunnelStages = data?.bibleBuddyFunnelStages || [];
   const landingStageUsers = bibleBuddyFunnelStages.find((stage) => stage.key === "landing")?.users ?? metrics.totalVisitors;
-  const finishedOnboardingStageUsers = bibleBuddyFunnelStages.find((stage) => stage.key === "finishedOnboarding")?.users ?? metrics.finishedOnboarding;
-  const landingToFinishedOnboardingRate = getRate(finishedOnboardingStageUsers, landingStageUsers);
-  const funnelHealth = getFunnelHealth(landingToFinishedOnboardingRate);
+  const journeyPerformanceDays = useMemo(() => buildJourneyPerformanceDays(data?.bibleYearDays), [data?.bibleYearDays]);
+  const startJourneyClicks = getStageUsers(bibleBuddyFunnelStages, "startedOnboarding") || data?.customerJourney?.guestStarts || 0;
+  const signupsCompleted = metrics.createdFreeAccount || data?.customerJourney?.freeAccounts || 0;
+  const activeListeners = new Set(
+    (data?.bibleYearDays || [])
+      .flatMap((day) => day.users)
+      .filter((user) => user.readingStarted || user.readingCompleted)
+      .map((user) => user.userId),
+  ).size;
+  const dayOnePlays = journeyPerformanceDays.find((day) => day.dayNumber === 1)?.plays || 0;
 
   const filteredRows = useMemo(() => {
     const cleanSearch = search.trim().toLowerCase();
@@ -1026,11 +1289,11 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
           <header className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <h1 className="text-3xl font-bold tracking-tight text-[var(--bb-text-primary,#f9fafb)]">
-                {activeView === "overview" ? "Bible Buddy Funnel" : activeNavItem.label}
+                {activeView === "overview" ? "Audio Journey Analytics" : activeNavItem.label}
               </h1>
               <p className="mt-2 text-sm font-medium text-[var(--bb-text-secondary,#d1d5db)]">
                 {activeView === "overview"
-                  ? "See every visitor's path from landing page to guest, free account, and Pro."
+                  ? "See discovery, signups, listening, and Bible journey progression at a glance."
                   : activeView === "bible-year"
                     ? "Open any day to see starts, task completion, users, and drop-off for that Bible study day."
                     : activeView === "traffic-sources"
@@ -1081,7 +1344,7 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
             </div>
           ) : null}
 
-          {data?.dataHealth?.length ? (
+          {activeView !== "overview" && data?.dataHealth?.length ? (
             <section className="mt-6 grid gap-3 lg:grid-cols-2">
               {data.dataHealth.map((warning) => (
                 <div
@@ -1100,6 +1363,77 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
           ) : null}
 
           {activeView === "overview" ? (
+          <section className="mt-6 space-y-8">
+            <div className="rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Overview Metrics</p>
+                  <h2 className="mt-2 text-2xl font-black text-white">How people are starting and listening</h2>
+                  <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-400">
+                    The default view is now audio-first: traffic, journey starts, signups, and active Bible lesson listeners.
+                  </p>
+                </div>
+                <div className="rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-black text-slate-300">
+                  {data?.customerJourney?.label || WINDOW_OPTIONS.find((option) => option.key === windowKey)?.label}
+                </div>
+              </div>
+              <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                <AudioOverviewMetricCard
+                  title="Landing Page Visitors"
+                  value={landingStageUsers}
+                  change="+0%"
+                  helper="Unique people who reached the landing page."
+                  icon="visitors"
+                />
+                <AudioOverviewMetricCard
+                  title="Start Your Journey Clicks"
+                  value={startJourneyClicks}
+                  change={`${getRate(startJourneyClicks, landingStageUsers)}%`}
+                  helper="People who moved from landing page into the journey."
+                  icon="play"
+                />
+                <AudioOverviewMetricCard
+                  title="Signups Completed"
+                  value={signupsCompleted}
+                  change={`${getRate(signupsCompleted, startJourneyClicks)}%`}
+                  helper="Users who created a Bible Buddy account."
+                  icon="user"
+                />
+                <AudioOverviewMetricCard
+                  title="Active Listeners Today"
+                  value={activeListeners}
+                  change={`${getRate(activeListeners, Math.max(1, signupsCompleted || startJourneyClicks))}%`}
+                  helper="Unique people with Bible journey listening activity in this window."
+                  icon="headphones"
+                />
+              </div>
+            </div>
+
+            <section>
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Journey Performance</p>
+                  <h2 className="mt-1 text-2xl font-black text-white">Audio engagement by day</h2>
+                  <p className="mt-2 text-sm font-semibold text-slate-400">Click a day to see the lesson detail panel.</p>
+                </div>
+                <p className="text-sm font-bold text-slate-500">Plays use Day task-start events until dedicated audio events are live.</p>
+              </div>
+              <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+                {journeyPerformanceDays.map((day) => (
+                  <JourneyPerformanceCard key={day.dayNumber} day={day} onOpen={setSelectedJourneyDay} />
+                ))}
+              </div>
+            </section>
+
+            <AudioJourneyFunnel
+              landingVisitors={landingStageUsers}
+              startClicks={startJourneyClicks}
+              signups={signupsCompleted}
+              dayOnePlays={dayOnePlays}
+            />
+            <JourneyDayDetailPanel day={selectedJourneyDay} onClose={() => setSelectedJourneyDay(null)} />
+          </section>
+          ) : false ? (
           <>
           <FunnelFlowChart stages={bibleBuddyFunnelStages} />
 
@@ -1470,4 +1804,8 @@ export default function AnalyticsPage({ embedded = false }: { embedded?: boolean
       </div>
     </div>
   );
+}
+
+export default function AnalyticsPage() {
+  return <AnalyticsPageContent />;
 }

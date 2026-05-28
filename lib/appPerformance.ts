@@ -1,12 +1,5 @@
 "use client";
 
-import {
-  getPremiumSkin,
-  normalizePremiumSkinId,
-  PREMIUM_SKINS,
-  type PremiumSkinId,
-} from "./premiumSkins";
-
 const CACHE_PREFIX = "bb:perf-cache:v1:";
 const ACTIVE_IMAGE_CACHE = new Set<string>();
 
@@ -68,29 +61,12 @@ export function preloadImage(src: string | null | undefined, priority: "high" | 
   image.src = src;
 }
 
-export function preloadActiveSkinAssets(skinId: PremiumSkinId | string | null | undefined) {
-  const skin = getPremiumSkin(normalizePremiumSkinId(skinId));
-  if (!skin) return;
-
-  const prefersMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
-  if (skin.hasImageBackground !== false) {
-    preloadImage(prefersMobile ? skin.mobileBackgroundImage : skin.desktopBackgroundImage, "high");
-  }
-
-  scheduleIdleWork(() => {
-    preloadImage(skin.thumbnailImage, "low");
-    if (skin.hasImageBackground !== false) {
-      preloadImage(prefersMobile ? skin.desktopBackgroundImage : skin.mobileBackgroundImage, "low");
-    }
-  }, 2200);
+export function preloadActiveSkinAssets(_skinId?: string | null) {
+  return;
 }
 
 export function preloadStoreSkinThumbnails() {
-  scheduleIdleWork(() => {
-    PREMIUM_SKINS.forEach((skin) => {
-      preloadImage(skin.thumbnailImage, "low");
-    });
-  }, 900);
+  return;
 }
 
 export function shouldReduceVisualEffects() {

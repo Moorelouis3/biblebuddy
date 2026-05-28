@@ -30,13 +30,9 @@ export default function LegalPageThemeReset() {
     const root = document.documentElement;
     const body = document.body;
 
-    const previousSkin = root.dataset.bbSkin;
     const previousTheme = root.dataset.bbTheme;
     const previousRootBackground = root.style.backgroundColor;
     const previousBodyBackground = body.style.backgroundColor;
-    const previousSkinBg = root.style.getPropertyValue("--bb-skin-bg-image");
-    const previousSkinBgMobile = root.style.getPropertyValue("--bb-skin-bg-image-mobile");
-    const previousSkinBgDesktop = root.style.getPropertyValue("--bb-skin-bg-image-desktop");
     const previousBackground = root.style.getPropertyValue("--background");
     const previousRootBackgroundImage = root.style.backgroundImage;
     const previousBodyBackgroundImage = body.style.backgroundImage;
@@ -49,11 +45,9 @@ export default function LegalPageThemeReset() {
 
     root.classList.add("bb-legal-page-active");
     body.classList.add("bb-legal-page-active");
-    root.dataset.bbSkin = "none";
+    delete root.dataset.bbSkin;
+    delete root.dataset.bbBasicSkin;
     root.dataset.bbTheme = "light";
-    root.style.setProperty("--bb-skin-bg-image", "none");
-    root.style.setProperty("--bb-skin-bg-image-mobile", "none");
-    root.style.setProperty("--bb-skin-bg-image-desktop", "none");
     root.style.setProperty("--background", PUBLIC_LIGHT_THEME.background);
     Object.entries(PUBLIC_LIGHT_THEME).forEach(([token, value]) => {
       const cssName = `--bb-${token.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)}`;
@@ -68,21 +62,12 @@ export default function LegalPageThemeReset() {
       root.classList.remove("bb-legal-page-active");
       body.classList.remove("bb-legal-page-active");
 
-      if (previousSkin) {
-        root.dataset.bbSkin = previousSkin;
-      } else {
-        delete root.dataset.bbSkin;
-      }
-
       if (previousTheme) {
         root.dataset.bbTheme = previousTheme;
       } else {
         delete root.dataset.bbTheme;
       }
 
-      root.style.setProperty("--bb-skin-bg-image", previousSkinBg);
-      root.style.setProperty("--bb-skin-bg-image-mobile", previousSkinBgMobile);
-      root.style.setProperty("--bb-skin-bg-image-desktop", previousSkinBgDesktop);
       root.style.setProperty("--background", previousBackground);
       Object.entries(previousTokens).forEach(([cssName, value]) => {
         root.style.setProperty(cssName, value);

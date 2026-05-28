@@ -1,5 +1,4 @@
 import type { AppThemeId } from "./appThemes";
-import type { PremiumSkinId } from "./premiumSkins";
 
 export type DeepStudyTaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
 
@@ -24,7 +23,7 @@ export type DeepStudySessionSummary = {
   streak: number;
   diamondsEarned: number;
   themeId: AppThemeId;
-  skinId?: PremiumSkinId;
+  skinId?: "none";
 };
 
 export type DeepStudyDailyStats = {

@@ -17,6 +17,10 @@ type BibleYearLessonAudioPlayerProps = {
   backgroundMusicVolume?: number;
   onEnded?: () => void;
   compactMediaControls?: boolean;
+  previousLessonLabel?: string;
+  nextLessonLabel?: string;
+  onPreviousLesson?: () => void;
+  onNextLesson?: () => void;
 };
 
 function formatTime(totalSeconds: number) {
@@ -38,6 +42,10 @@ export default function BibleYearLessonAudioPlayer({
   backgroundMusicVolume = 0.1,
   onEnded,
   compactMediaControls = false,
+  previousLessonLabel = "Previous day",
+  nextLessonLabel = "Next day",
+  onPreviousLesson,
+  onNextLesson,
 }: BibleYearLessonAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const backgroundAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -68,7 +76,27 @@ export default function BibleYearLessonAudioPlayer({
   const videoPlayerSrc = getBibleYearVideoEmbedSrc(videoSrc);
   const speedControlId = `audio-speed-${(videoId || title).toLowerCase().replace(/[^a-z0-9_-]+/g, "-")}`;
 
+  function saveProgress(audio: HTMLAudioElement | null) {
+    if (!audio || typeof window === "undefined") return;
+    const position = audio.currentTime || 0;
+    const audioDuration = Number.isFinite(audio.duration) ? audio.duration : 0;
+    if (position <= 2) return;
+    if (position > 2 && (!audioDuration || audioDuration - position > 4)) {
+      window.localStorage.setItem(progressKey, JSON.stringify({ position, savedAt: Date.now() }));
+      return;
+    }
+    window.localStorage.removeItem(progressKey);
+  }
+
+  function stopBackgroundMusic() {
+    const background = backgroundAudioRef.current;
+    if (!background) return;
+    background.pause();
+    background.currentTime = 0;
+  }
+
   useEffect(() => {
+    let resetTimer: number | null = null;
     const previousAudio = audioRef.current;
     if (previousAudio) {
       saveProgress(previousAudio);
@@ -78,16 +106,22 @@ export default function BibleYearLessonAudioPlayer({
       audioRef.current = null;
     }
     stopBackgroundMusic();
-    setPlaying(false);
-    setLoading(false);
-    setCurrentTime(0);
-    setDuration(0);
-    setError(false);
-    setIsScrubbing(false);
-    setScrubTime(0);
+    resetTimer = window.setTimeout(() => {
+      setPlaying(false);
+      setLoading(false);
+      setCurrentTime(0);
+      setDuration(0);
+      setError(false);
+      setIsScrubbing(false);
+      setScrubTime(0);
+    }, 0);
     savedPositionAppliedRef.current = false;
     pendingSeekRef.current = 0;
     lastSavedSecondRef.current = -1;
+
+    return () => {
+      if (resetTimer !== null) window.clearTimeout(resetTimer);
+    };
   }, [audioSrc]);
 
   useEffect(() => {
@@ -155,13 +189,6 @@ export default function BibleYearLessonAudioPlayer({
     backgroundAudioRef.current?.pause();
   }
 
-  function stopBackgroundMusic() {
-    const background = backgroundAudioRef.current;
-    if (!background) return;
-    background.pause();
-    background.currentTime = 0;
-  }
-
   function getSavedPosition() {
     if (typeof window === "undefined") return 0;
     try {
@@ -172,18 +199,6 @@ export default function BibleYearLessonAudioPlayer({
     } catch {
       return 0;
     }
-  }
-
-  function saveProgress(audio: HTMLAudioElement | null) {
-    if (!audio || typeof window === "undefined") return;
-    const position = audio.currentTime || 0;
-    const audioDuration = Number.isFinite(audio.duration) ? audio.duration : 0;
-    if (position <= 2) return;
-    if (position > 2 && (!audioDuration || audioDuration - position > 4)) {
-      window.localStorage.setItem(progressKey, JSON.stringify({ position, savedAt: Date.now() }));
-      return;
-    }
-    window.localStorage.removeItem(progressKey);
   }
 
   function applySavedPosition(audio: HTMLAudioElement) {
@@ -494,14 +509,26 @@ export default function BibleYearLessonAudioPlayer({
 
             <div className={compactMediaControls ? "grid grid-cols-[1fr_auto_1fr] items-center gap-3" : "flex flex-wrap items-center justify-between gap-3"}>
               <div className="flex items-center justify-start">
-                <button
-                  type="button"
-                  onClick={() => seekBy(-15)}
-                  disabled={!audioRef.current}
-                  className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
-                >
-                  -15s
-                </button>
+                {compactMediaControls && onPreviousLesson ? (
+                  <button
+                    type="button"
+                    onClick={onPreviousLesson}
+                    className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-2 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b]"
+                    aria-label={previousLessonLabel}
+                    title={previousLessonLabel}
+                  >
+                    <span aria-hidden="true">‹</span>
+                    <span className="ml-1 hidden sm:inline">Prev</span>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => seekBy(-15)}
+                    className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
+                  >
+                    -15s
+                  </button>
+                )}
               </div>
               {compactMediaControls ? (
                 <button
@@ -521,14 +548,26 @@ export default function BibleYearLessonAudioPlayer({
                 </button>
               ) : null}
               <div className="flex items-center justify-end gap-2">
-                <button
-                  type="button"
-                  onClick={() => seekBy(15)}
-                  disabled={!audioRef.current}
-                  className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
-                >
-                  +15s
-                </button>
+                {compactMediaControls && onNextLesson ? (
+                  <button
+                    type="button"
+                    onClick={onNextLesson}
+                    className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-2 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b]"
+                    aria-label={nextLessonLabel}
+                    title={nextLessonLabel}
+                  >
+                    <span className="hidden sm:inline">Next</span>
+                    <span className="ml-1" aria-hidden="true">›</span>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => seekBy(15)}
+                    className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
+                  >
+                    +15s
+                  </button>
+                )}
                 <label className="sr-only" htmlFor={speedControlId}>Playback speed</label>
                 <select
                   id={speedControlId}
@@ -545,6 +584,24 @@ export default function BibleYearLessonAudioPlayer({
                 </select>
               </div>
             </div>
+            {compactMediaControls && (onPreviousLesson || onNextLesson) ? (
+              <div className="flex items-center justify-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => seekBy(-15)}
+                  className="rounded-full border border-[#2a394d] bg-[#0f1926] px-3 py-1.5 text-[11px] font-bold text-[#aeb9c8] transition hover:bg-[#18283b] disabled:opacity-50"
+                >
+                  -15s
+                </button>
+                <button
+                  type="button"
+                  onClick={() => seekBy(15)}
+                  className="rounded-full border border-[#2a394d] bg-[#0f1926] px-3 py-1.5 text-[11px] font-bold text-[#aeb9c8] transition hover:bg-[#18283b] disabled:opacity-50"
+                >
+                  +15s
+                </button>
+              </div>
+            ) : null}
           </div>
         {error ? <p className="px-1 text-xs font-black text-red-500">Audio unavailable. Try again in a moment.</p> : null}
       </div>

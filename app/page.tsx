@@ -1051,7 +1051,7 @@ export default function LandingPage() {
 
       <main>
         <div className="bb-landing-shell mx-auto max-w-[1440px] overflow-hidden bg-[#fffdf8]">
-          <header className="relative z-20 flex w-full items-center justify-between gap-6 bg-[#fffdf8] px-5 py-5 sm:px-8 lg:px-10">
+          <header className="relative z-20 flex w-full items-center justify-between gap-6 bg-[#fffdf8] px-5 py-4 sm:px-8 sm:py-5 lg:px-10">
             <BibleBuddyMark />
             <nav className="hidden items-center gap-10 text-sm font-bold text-[#07162f] md:flex">
               <Link href="/how-it-works" className="transition hover:text-[#135397]">How It Works</Link>
@@ -1100,41 +1100,41 @@ export default function LandingPage() {
             </div>
           </header>
 
-          <section className="relative min-h-[570px] w-full overflow-hidden px-5 pb-8 pt-10 sm:px-8 lg:min-h-[640px] lg:px-10 lg:pb-0 lg:pt-16">
+          <section className="relative w-full overflow-hidden px-5 pb-8 pt-8 sm:min-h-[570px] sm:px-8 sm:pt-10 lg:min-h-[640px] lg:px-10 lg:pb-0 lg:pt-16">
             <Image
               src="/newherobanner.png"
               alt=""
               fill
               priority
               sizes="(max-width: 1440px) 100vw, 1440px"
-              className="pointer-events-none absolute inset-0 object-cover object-center"
+              className="pointer-events-none absolute inset-0 hidden object-cover object-center sm:block"
             />
             <div className="relative z-10 max-w-[520px]">
-              <h1 className="bb-serif text-[clamp(2.05rem,3.5vw,3.45rem)] font-black leading-[1.02] tracking-[-0.01em] text-[#07162f]">
+              <h1 className="bb-serif text-[2.15rem] font-black leading-[1.03] tracking-[-0.01em] text-[#07162f] sm:text-[clamp(2.05rem,3.5vw,3.45rem)]">
                 Finally read, understand, and <span className="italic text-[#135397]">finish</span> the Bible.
               </h1>
-              <p className="mt-7 max-w-[520px] text-base font-semibold leading-8 text-[#526075] sm:text-lg">
+              <p className="mt-4 max-w-[520px] text-sm font-semibold leading-6 text-[#526075] sm:mt-7 sm:text-lg sm:leading-8">
                 Bible Buddy is your daily guide through Scripture with cinematic audio lessons, simple daily steps, and clear explanations that help you stay consistent and finish the Bible in one year.
               </p>
-              <div className="mt-7 grid gap-4">
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-7 sm:block sm:space-y-4">
                 {[
-                  ["headphones", "Listen to engaging audio lessons"],
-                  ["book", "Understand every chapter"],
+                  ["headphones", "Audio lessons"],
+                  ["book", "Understand Scripture"],
                   ["calendar", "Stay consistent with a daily plan"],
-                  ["flag", "Finish the Bible in just one year"],
+                  ["flag", "Finish the Bible"],
                 ].map(([icon, text]) => (
-                  <div key={text} className="flex items-center gap-3 text-sm font-bold text-[#07162f]">
+                  <div key={text} className="flex items-center gap-2 text-[12px] font-bold leading-tight text-[#07162f] sm:gap-3 sm:text-sm">
                     <LandingLineIcon name={icon} />
                     <span>{text}</span>
                   </div>
                 ))}
               </div>
-              <div className="mt-9">
-                <Link href="/signup" className="bb-public-button bb-join-pulse inline-flex w-full items-center justify-center gap-3 rounded-lg bg-[#135397] px-8 py-4 text-base font-black text-white shadow-[0_18px_36px_rgba(19,83,151,0.2)] transition hover:-translate-y-0.5 sm:w-auto">
+              <div className="mt-7 sm:mt-9">
+                <Link href="/signup" className="bb-public-button bb-join-pulse inline-flex w-full items-center justify-center gap-3 rounded-lg bg-[#135397] px-6 py-3.5 text-sm font-black text-white shadow-[0_18px_36px_rgba(19,83,151,0.2)] transition hover:-translate-y-0.5 sm:w-auto sm:px-8 sm:py-4 sm:text-base">
                   Start Your Bible Journey
                   <LandingLineIcon name="arrow" light />
                 </Link>
-                <p className="mt-4 flex items-center gap-2 text-xs font-semibold text-[#6d7789]">
+                <p className="mt-3 flex items-center gap-2 text-xs font-semibold text-[#6d7789] sm:mt-4">
                   <LandingLineIcon name="lock" small />
                   <span>Free to get started. Cancel anytime.</span>
                 </p>
@@ -1142,45 +1142,47 @@ export default function LandingPage() {
             </div>
           </section>
 
-          <section className="border-y border-[#eee4d8] bg-[#fffaf2] px-5 py-8 sm:px-8">
+          <section className="border-y border-[#eee4d8] bg-[#fffaf2] px-5 py-6 sm:px-8 sm:py-8">
             <RotatingProofStrip />
           </section>
 
-          <section id="how-it-works" className="px-5 py-16 sm:px-8 lg:py-20">
+          <section id="how-it-works" className="px-5 py-10 sm:px-8 sm:py-16 lg:py-20">
             <div className="mx-auto max-w-7xl">
               <div className="mx-auto max-w-2xl text-center">
-                <h2 className="bb-serif text-4xl font-black leading-tight text-[#07162f] sm:text-5xl">Why Bible Buddy works</h2>
-                <p className="mt-4 text-sm font-semibold leading-6 text-[#526075]">
+                <h2 className="bb-serif text-[2.15rem] font-black leading-tight text-[#07162f] sm:text-5xl">Why Bible Buddy works</h2>
+                <p className="mt-3 text-sm font-semibold leading-6 text-[#526075] sm:mt-4">
                   We remove the overwhelm and guesswork so you can focus on what matters: spending time with God's Word.
                 </p>
               </div>
-              <div className="mt-11 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-7 grid gap-3 sm:mt-11 sm:gap-5 md:grid-cols-2 lg:grid-cols-4">
                 {[
                   ["headphones", "Audio-First Experience", "Listen to cinematic Scripture readings anytime, anywhere.", "#eaf2ff", "#2563eb"],
                   ["book", "Understand What You Read", "Clear explanations help you grasp the meaning behind every chapter.", "#eaf8ed", "#3b9b65"],
                   ["calendar", "Stay Consistent", "A simple daily plan keeps you on track without the overwhelm.", "#fff4d9", "#d99822"],
                   ["flag", "Finish the Bible", "Go from Genesis to Revelation in just one year.", "#f0ecff", "#6555d9"],
                 ].map(([icon, title, copy, bg, accent]) => (
-                  <article key={title} className="bb-soft-card rounded-lg p-7 text-center">
-                    <div className="mx-auto grid h-20 w-20 place-items-center rounded-full" style={{ backgroundColor: bg }}>
+                  <article key={title} className="bb-soft-card flex items-center gap-4 rounded-lg p-4 text-left sm:block sm:p-7 sm:text-center">
+                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full sm:mx-auto sm:h-20 sm:w-20" style={{ backgroundColor: bg }}>
                       <LandingLineIcon name={icon} color={accent} large />
                     </div>
-                    <h3 className="mt-7 text-base font-black leading-tight text-[#07162f]">{title}</h3>
-                    <p className="mx-auto mt-3 max-w-[210px] text-sm font-semibold leading-6 text-[#526075]">{copy}</p>
+                    <div className="min-w-0">
+                      <h3 className="text-sm font-black leading-tight text-[#07162f] sm:mt-7 sm:text-base">{title}</h3>
+                      <p className="mt-1 text-xs font-semibold leading-5 text-[#526075] sm:mx-auto sm:mt-3 sm:max-w-[210px] sm:text-sm sm:leading-6">{copy}</p>
+                    </div>
                   </article>
                 ))}
               </div>
             </div>
           </section>
 
-          <section id="listen" className="px-5 pb-16 sm:px-8 lg:pb-20">
-            <div className="bb-dark-panel mx-auto grid max-w-7xl overflow-hidden rounded-lg px-6 py-10 text-[#07162f] sm:px-10 lg:min-h-[430px] lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:px-12">
+          <section id="listen" className="px-5 pb-10 sm:px-8 sm:pb-16 lg:pb-20">
+            <div className="bb-dark-panel mx-auto grid max-w-7xl overflow-hidden rounded-lg px-5 py-7 text-[#07162f] sm:px-10 sm:py-10 lg:min-h-[430px] lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:px-12">
               <div className="bb-listen-copy relative z-20 max-w-lg">
-                <h2 className="bb-serif text-4xl font-black leading-tight sm:text-5xl">Listen anywhere. Grow everywhere.</h2>
-                <p className="mt-5 text-sm font-semibold leading-7 sm:text-base">
+                <h2 className="bb-serif text-[2rem] font-black leading-tight sm:text-5xl">Listen anywhere. Grow everywhere.</h2>
+                <p className="mt-3 text-sm font-semibold leading-6 sm:mt-5 sm:text-base sm:leading-7">
                   Whether you're driving, working out, cleaning, or taking a walk, Bible Buddy fits into your life. You do not need more time. You need a better way.
                 </p>
-                <div className="mt-10 grid grid-cols-5 gap-4 text-center text-[11px] font-bold">
+                <div className="mt-6 grid grid-cols-5 gap-2 text-center text-[10px] font-bold sm:mt-10 sm:gap-4 sm:text-[11px]">
                   {[
                     ["car", "Driving"],
                     ["dumbbell", "Working Out"],
@@ -1199,21 +1201,21 @@ export default function LandingPage() {
             </div>
           </section>
 
-          <section id="journey" className="px-5 pb-16 sm:px-8 lg:pb-20">
+          <section id="journey" className="px-5 pb-10 sm:px-8 sm:pb-16 lg:pb-20">
             <div className="mx-auto max-w-7xl">
               <div className="mx-auto max-w-4xl text-center">
-                <div className="mx-auto mb-12 max-w-2xl rounded-[28px] bg-[#fffdf8] px-4 py-8 text-center sm:px-8">
+                <div className="mx-auto mb-9 max-w-2xl rounded-[22px] bg-[#fffdf8] px-4 py-6 text-center sm:mb-12 sm:rounded-[28px] sm:px-8 sm:py-8">
                   <h2 className="bb-serif text-[clamp(1.8rem,3vw,2.45rem)] font-black leading-tight text-[#07162f]">
                     Ready to start your journey?
                   </h2>
                   <p className="mt-2 text-base font-semibold text-[#07162f]">
                     It only takes 15-30 minutes a day.
                   </p>
-                  <Link href="/signup" className="bb-public-button mt-7 inline-flex w-full max-w-[520px] items-center justify-center gap-3 rounded-full bg-[#7fb6dc] px-8 py-4 text-base font-black text-white shadow-[0_22px_52px_rgba(127,182,220,0.35)] transition hover:-translate-y-0.5 sm:text-lg">
+                  <Link href="/signup" className="bb-public-button mt-5 inline-flex w-full max-w-[520px] items-center justify-center gap-3 rounded-full bg-[#7fb6dc] px-6 py-3.5 text-sm font-black text-white shadow-[0_22px_52px_rgba(127,182,220,0.35)] transition hover:-translate-y-0.5 sm:mt-7 sm:px-8 sm:py-4 sm:text-lg">
                     <span className="text-white">*</span>
                     Start Your Bible Journey
                   </Link>
-                  <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-black text-[#07162f]">
+                  <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-black text-[#07162f] sm:mt-5 sm:text-sm">
                     <span className="inline-flex items-center gap-2">
                       <LandingLineIcon name="shield" small color="#315f94" />
                       No credit card required
@@ -1222,14 +1224,14 @@ export default function LandingPage() {
                     <span>Cancel anytime</span>
                   </div>
                 </div>
-                <h2 className="bb-serif text-[clamp(3.15rem,6.2vw,5.7rem)] font-black leading-[0.98] text-[#07162f]">Your guided Bible journey</h2>
-                <p className="mx-auto mt-5 max-w-2xl text-xl font-medium leading-8 text-[#334762]">
+                <h2 className="bb-serif text-[2.55rem] font-black leading-[0.98] text-[#07162f] sm:text-[clamp(3.15rem,6.2vw,5.7rem)]">Your guided Bible journey</h2>
+                <p className="mx-auto mt-4 max-w-2xl text-base font-medium leading-7 text-[#334762] sm:mt-5 sm:text-xl sm:leading-8">
                   A simple daily routine that fits your life.<br className="hidden sm:block" />
                   Listen anywhere. Understand deeply. Grow forever.
                 </p>
               </div>
 
-              <div className="relative mt-14 grid gap-10 lg:grid-cols-4 lg:gap-0">
+              <div className="relative mt-8 grid gap-4 sm:mt-14 lg:grid-cols-4 lg:gap-0">
                 {[
                   {
                     icon: "headphones",
@@ -1268,31 +1270,31 @@ export default function LandingPage() {
                     accent: "#6555d9",
                   },
                 ].map((step, index) => (
-                  <article key={step.title} className="bb-journey-column relative flex h-full flex-col px-3 text-left lg:px-9">
+                  <article key={step.title} className="bb-journey-column relative flex h-full flex-col rounded-[18px] border border-[#eadfcd] bg-[#fffdf8]/78 p-4 text-left shadow-[0_14px_32px_rgba(7,22,47,0.045)] lg:rounded-none lg:border-0 lg:bg-transparent lg:px-9 lg:shadow-none">
                     {index < 3 ? (
                       <div className="pointer-events-none absolute right-0 top-32 hidden h-[320px] w-px bg-gradient-to-b from-transparent via-[#eadfcd] to-transparent lg:block" />
                     ) : null}
-                    <div className="relative mb-8 h-24">
+                    <div className="relative mb-3 flex items-center gap-3 lg:mb-8 lg:block lg:h-24">
                       {index < 3 ? (
                         <div className="absolute left-[184px] right-[-42px] top-12 z-0 hidden h-px lg:block" style={{ backgroundColor: step.accent, opacity: 0.5 }} />
                       ) : null}
-                      <span className="absolute left-[calc(50%-72px)] top-[36px] z-20 grid h-9 w-9 place-items-center rounded-full text-sm font-black text-white shadow-[0_14px_30px_rgba(7,22,47,0.12)] lg:left-0" style={{ backgroundColor: step.accent }}>
+                      <span className="relative z-20 grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-black text-white shadow-[0_14px_30px_rgba(7,22,47,0.12)] lg:absolute lg:left-0 lg:top-[36px] lg:h-9 lg:w-9 lg:text-sm" style={{ backgroundColor: step.accent }}>
                         {index + 1}
                       </span>
-                      <div className="relative z-10 mx-auto grid h-24 w-24 place-items-center rounded-full border border-white shadow-[0_20px_48px_rgba(7,22,47,0.08)] lg:mx-0 lg:ml-20" style={{ backgroundColor: step.bg }}>
+                      <div className="relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white shadow-[0_20px_48px_rgba(7,22,47,0.08)] lg:mx-0 lg:ml-20 lg:h-24 lg:w-24" style={{ backgroundColor: step.bg }}>
                         <LandingLineIcon name={step.icon} color={step.accent} large />
                       </div>
                     </div>
-                    <h3 className="bb-serif text-3xl font-black leading-tight text-[#07162f]">{step.title}</h3>
-                    <p className="mt-5 text-base font-black leading-6 text-[#07162f]">{step.subtitle}</p>
-                    <div className="mt-7 space-y-5 text-base font-medium leading-7 text-[#07162f]">
+                    <h3 className="bb-serif text-2xl font-black leading-tight text-[#07162f] lg:text-3xl">{step.title}</h3>
+                    <p className="mt-2 text-sm font-black leading-5 text-[#07162f] lg:mt-5 lg:text-base lg:leading-6">{step.subtitle}</p>
+                    <div className="mt-3 space-y-3 text-sm font-medium leading-6 text-[#07162f] lg:mt-7 lg:space-y-5 lg:text-base lg:leading-7">
                       {step.copy.map((line) => (
                         <p key={line}>{line}</p>
                       ))}
                     </div>
-                    <div className="mt-auto pt-9">
+                    <div className="mt-auto pt-4 lg:pt-9">
                     <div className="h-px w-full" style={{ backgroundColor: step.accent }} />
-                    <p className="mt-6 flex items-start gap-3 text-base font-medium leading-7 text-[#07162f]">
+                    <p className="mt-3 flex items-start gap-2 text-sm font-medium leading-6 text-[#07162f] lg:mt-6 lg:gap-3 lg:text-base lg:leading-7">
                       <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full text-[11px] font-black text-white" style={{ backgroundColor: step.accent }}>✓</span>
                       <span><span className="font-black">Outcome:</span> {step.outcome}</span>
                     </p>
@@ -1812,8 +1814,13 @@ function LandingThemeStyles() {
         }
       }
       @media (max-width: 640px) {
-        .bb-hero-visual {
-          background-position: center bottom;
+        .bb-dark-panel {
+          background: #fffaf2;
+          border: 1px solid rgba(9, 28, 58, 0.1);
+          box-shadow: 0 18px 42px rgba(7, 22, 47, 0.055);
+        }
+        .bb-bottom-story-image {
+          display: none;
         }
       }
     `}</style>

@@ -9,8 +9,6 @@ import { PointsPop } from "@/components/PointsPop";
 import GlobalCreditFeedback from "@/components/GlobalCreditFeedback";
 import { GlobalAudioPlayerProvider } from "@/components/GlobalAudioPlayer";
 import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
-import { PREMIUM_SKINS } from "@/lib/premiumSkins";
-import { FLAME_COSMETIC_BY_ID, PREMIUM_SKIN_FLAME_BY_ID } from "@/lib/flameCosmetics";
 // redeploy trigger
 
 const siteUrl = new URL("https://www.mybiblebuddy.net");
@@ -74,38 +72,27 @@ export const viewport: Viewport = {
   themeColor: "#061322",
 };
 
-const premiumSkinFirstPaintPayload = Object.fromEntries(
-  PREMIUM_SKINS.map((skin) => [
-    skin.id,
-    {
-      desktopBackgroundImage: skin.desktopBackgroundImage,
-      mobileBackgroundImage: skin.mobileBackgroundImage,
-      hasImageBackground: skin.hasImageBackground !== false,
-      palette: skin.palette,
-    },
-  ]),
-);
-
-const premiumSkinFirstPaintFlames = PREMIUM_SKIN_FLAME_BY_ID;
-const premiumSkinFirstPaintFlameColors = Object.fromEntries(FLAME_COSMETIC_BY_ID.entries());
-
-const premiumSkinFirstPaintScript = `
+const appThemeFirstPaintScript = `
 (function () {
   try {
-    var skins = ${JSON.stringify(premiumSkinFirstPaintPayload)};
-    var skinFlames = ${JSON.stringify(premiumSkinFirstPaintFlames)};
-    var flameColors = ${JSON.stringify(premiumSkinFirstPaintFlameColors)};
-    var skinId = window.localStorage.getItem("bb:premium-skin") || "no-fuss";
-    var skin = skins[skinId];
-    if (!skin) {
-      skinId = "no-fuss";
-      skin = skins[skinId];
-    }
-    if (!skin) return;
-
+    var themeId = window.localStorage.getItem("bb:app-theme") === "dark" ? "dark" : "light";
+    var palettes = {
+      light: {
+        background: "#F7FAFC", surface: "#FFFFFF", surfaceSoft: "#EEF4F8", card: "#FFFFFF", cardBorder: "#D8E3EC",
+        textPrimary: "#101827", textSecondary: "#334155", textMuted: "#64748B", accent: "#2F7FE8", accentSoft: "#E6F1FF",
+        button: "#2F7FE8", buttonText: "#FFFFFF", navBackground: "#FFFFFF", navActive: "#2F7FE8", navInactive: "#64748B",
+        progressTrack: "#D8E3EC", progressFill: "#2F7FE8"
+      },
+      dark: {
+        background: "#07111F", surface: "#0D1826", surfaceSoft: "#132234", card: "#0F1C2B", cardBorder: "#23344A",
+        textPrimary: "#F8FAFC", textSecondary: "#CBD5E1", textMuted: "#94A3B8", accent: "#5DD6FF", accentSoft: "#123348",
+        button: "#5DD6FF", buttonText: "#06101D", navBackground: "#0B1725", navActive: "#5DD6FF", navInactive: "#94A3B8",
+        progressTrack: "#26364B", progressFill: "#5DD6FF"
+      }
+    };
     var root = document.documentElement;
     var style = root.style;
-    var palette = skin.palette;
+    var palette = palettes[themeId];
     var vars = {
       background: "--bb-background",
       surface: "--bb-surface",
@@ -126,24 +113,9 @@ const premiumSkinFirstPaintScript = `
       progressFill: "--bb-progress-fill"
     };
 
-    root.dataset.bbSkin = "none";
-    root.dataset.bbBasicSkin = skinId;
-    root.dataset.bbTheme = window.localStorage.getItem("bb:app-theme") || "light";
-    if (skinFlames[skinId]) {
-      var flameId = skinFlames[skinId];
-      var flame = flameColors[flameId];
-      window.localStorage.setItem("bb:active-streak-flame", flameId);
-      if (flame) {
-        window.localStorage.setItem("bb:active-streak-flame-colors", JSON.stringify(flame));
-        root.dataset.bbStreakFlame = flameId;
-        style.setProperty("--bb-active-flame-light", flame.light);
-        style.setProperty("--bb-active-flame-main", flame.main);
-        style.setProperty("--bb-active-flame-dark", flame.dark);
-      }
-    }
-    style.setProperty("--bb-skin-bg-image", "none");
-    style.setProperty("--bb-skin-bg-image-mobile", "none");
-    style.setProperty("--bb-skin-bg-image-desktop", "none");
+    root.dataset.bbTheme = themeId;
+    delete root.dataset.bbSkin;
+    delete root.dataset.bbBasicSkin;
 
     Object.keys(vars).forEach(function (key) {
       style.setProperty(vars[key], palette[key]);
@@ -176,7 +148,7 @@ export default function RootLayout({
       <head>
         <script
           suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: premiumSkinFirstPaintScript }}
+          dangerouslySetInnerHTML={{ __html: appThemeFirstPaintScript }}
         />
         <script
           async

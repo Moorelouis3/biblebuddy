@@ -1,6 +1,5 @@
 import type { AppThemeId } from "./appThemes";
 import type { FlameCosmeticId } from "./flameCosmetics";
-import { PREMIUM_SKINS, type PremiumSkinId } from "./premiumSkins";
 
 export type StoreItemKind = "theme" | "premium_skin" | "buddy" | "boost" | "mystery";
 
@@ -14,32 +13,13 @@ export type BibleBuddyStoreItem = {
   accent: string;
   imageSrc?: string;
   themeId?: AppThemeId;
-  skinId?: PremiumSkinId;
+  skinId?: string;
   flameId?: FlameCosmeticId;
   comingSoon?: boolean;
   repeatable?: boolean;
 };
 
 export const THEME_STORE_ITEMS: BibleBuddyStoreItem[] = [];
-
-const SKIN_EMOJI_BY_ID: Partial<Record<PremiumSkinId, string>> = {
-  "lavender-prayer": "Purple",
-  "ruby-village": "Red",
-  "mount-sinai": "Amber",
-  "no-fuss": "Slate",
-  "passion-fruit": "Pink",
-};
-
-export const PREMIUM_SKIN_STORE_ITEMS: BibleBuddyStoreItem[] = PREMIUM_SKINS.map((skin) => ({
-  id: `skin-${skin.id}`,
-  kind: "premium_skin",
-  title: skin.name,
-  subtitle: skin.storeSubtitle,
-  price: skin.price,
-  emoji: SKIN_EMOJI_BY_ID[skin.id] ?? "Skin",
-  accent: skin.palette.accent,
-  skinId: skin.id,
-}));
 
 export const BUDDY_STORE_ITEMS: BibleBuddyStoreItem[] = [
   { id: "buddy-lil-louis", kind: "buddy", title: "Lil Louis", subtitle: "Your first Bible Buddy.", price: 0, emoji: "Crown", accent: "#DC2626" },
@@ -53,7 +33,6 @@ export const STREAK_FLAME_STORE_ITEMS: BibleBuddyStoreItem[] = [];
 export const BOOST_STORE_ITEMS: BibleBuddyStoreItem[] = [];
 
 export const STORE_ITEMS = [
-  ...PREMIUM_SKIN_STORE_ITEMS,
   ...THEME_STORE_ITEMS,
   ...BUDDY_STORE_ITEMS,
   ...BOOST_STORE_ITEMS,

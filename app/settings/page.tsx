@@ -14,7 +14,7 @@ import {
   shouldPreferCachedAppTheme,
   type AppThemeId,
 } from "../../lib/appThemes";
-import { BUDDY_STORE_ITEMS, PREMIUM_SKIN_STORE_ITEMS, THEME_STORE_ITEMS } from "../../lib/bibleBuddyStore";
+import { BUDDY_STORE_ITEMS } from "../../lib/bibleBuddyStore";
 import {
   BUDDY_AVATARS,
   DEFAULT_BUDDY_AVATAR,
@@ -23,20 +23,7 @@ import {
   normalizeBuddyAvatarId,
   type BuddyAvatarId,
 } from "../../lib/buddyAvatars";
-import { ACTIVE_STREAK_FLAME_STORAGE_KEY, getPremiumSkinFlameId, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../../lib/flameCosmetics";
-import {
-  PREMIUM_SKINS,
-  applyPremiumSkinToDocument,
-  cachePremiumSkinForUser,
-  clearPendingPremiumSkinSync,
-  clearLegacyPremiumSkinCache,
-  DEFAULT_PREMIUM_SKIN_ID,
-  resolveUnifiedThemeSkinId,
-  normalizePremiumSkinId,
-  readCachedPremiumSkin,
-  shouldPreferCachedPremiumSkin,
-  type PremiumSkinId,
-} from "../../lib/premiumSkins";
+import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../../lib/flameCosmetics";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/profileName";
 import { isAdminUser } from "../../lib/readingProgress";
 import type { BuddyAvatar } from "../../lib/buddyAvatars";
@@ -55,8 +42,6 @@ type SettingsProfileRow = {
   app_theme_selected_at?: string | null;
   selected_streak_flame?: string | null;
   selected_buddy_avatar?: string | null;
-  active_premium_skin?: string | null;
-  active_premium_skin_selected_at?: string | null;
 };
 
 type BuddyReadyModal = {
@@ -94,21 +79,17 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [themeSaving, setThemeSaving] = useState<string | null>(null);
-  const [skinSaving, setSkinSaving] = useState<string | null>(null);
   const [flameSaving, setFlameSaving] = useState<string | null>(null);
   const [settingsMessage, setSettingsMessage] = useState<string | null>(null);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
   const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState<AppThemeId>("light");
-  const [selectedPremiumSkin, setSelectedPremiumSkin] = useState<PremiumSkinId>("none");
-  const [selectedPremiumSkinSelectedAt, setSelectedPremiumSkinSelectedAt] = useState<string | null>(null);
   const [selectedFlame, setSelectedFlame] = useState<FlameCosmeticId>("default");
   const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId>(DEFAULT_BUDDY_AVATAR);
   const [buddySaving, setBuddySaving] = useState<BuddyAvatarId | null>(null);
   const [buddyReadyModal, setBuddyReadyModal] = useState<BuddyReadyModal | null>(null);
   const [activeBuddyIndex, setActiveBuddyIndex] = useState(0);
   const [removingItemId, setRemovingItemId] = useState<string | null>(null);
-  const [openSkinActionsId, setOpenSkinActionsId] = useState<string | null>(null);
   const buddySwipeStartRef = useRef<{ x: number; y: number } | null>(null);
   
   // Profile fields
@@ -151,20 +132,19 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
 
         const profileRequest = await supabase
           .from("profile_stats")
-          .select("display_name, username, app_theme, app_theme_selected_at, selected_streak_flame, selected_buddy_avatar, active_premium_skin, active_premium_skin_selected_at")
+          .select("display_name, username, app_theme, app_theme_selected_at, selected_streak_flame, selected_buddy_avatar")
           .eq("user_id", currentUser.id)
           .maybeSingle();
 
         let profile = profileRequest.data as SettingsProfileRow | null;
-        if (profileRequest.error && /app_theme_selected_at|active_premium_skin_selected_at/i.test(profileRequest.error.message || "")) {
+        if (profileRequest.error && /app_theme_selected_at/i.test(profileRequest.error.message || "")) {
           const fallbackProfile = await supabase
             .from("profile_stats")
-            .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar, active_premium_skin")
+            .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar")
             .eq("user_id", currentUser.id)
             .maybeSingle();
           profile = fallbackProfile.data as SettingsProfileRow | null;
-          setSettingsMessage("Skin lock timing needs the newest profile_stats column before it can enforce the 24 hour lock.");
-        } else if (profileRequest.error && /selected_streak_flame|selected_buddy_avatar|active_premium_skin/i.test(profileRequest.error.message || "")) {
+        } else if (profileRequest.error && /selected_streak_flame|selected_buddy_avatar/i.test(profileRequest.error.message || "")) {
           const fallbackProfile = await supabase
             .from("profile_stats")
             .select("display_name, username, app_theme")
@@ -191,30 +171,6 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         const dbTheme = normalizeAppThemeId(profile?.app_theme);
         const savedTheme = shouldPreferCachedAppTheme(currentUser.id, dbTheme) ? readCachedAppTheme(currentUser.id) : dbTheme;
         setSelectedTheme(savedTheme);
-        const dbPremiumSkin = resolveUnifiedThemeSkinId(
-          profile && "active_premium_skin" in profile ? profile.active_premium_skin : null,
-          profile?.app_theme,
-          profile?.selected_streak_flame,
-        );
-        const cachedPremiumSkin = readCachedPremiumSkin(currentUser.id);
-        const resolvedPremiumSkin = shouldPreferCachedPremiumSkin(currentUser.id, dbPremiumSkin) && cachedPremiumSkin !== "none" ? cachedPremiumSkin : dbPremiumSkin;
-        const safePremiumSkin: PremiumSkinId = resolvedPremiumSkin === "none" ? DEFAULT_PREMIUM_SKIN_ID : resolvedPremiumSkin;
-        if (safePremiumSkin !== normalizePremiumSkinId(profile?.active_premium_skin)) {
-          void supabase
-            .from("profile_stats")
-            .upsert(
-              {
-                user_id: currentUser.id,
-                app_theme: "light",
-                active_premium_skin: safePremiumSkin,
-                active_premium_skin_selected_at: profile?.active_premium_skin_selected_at ?? new Date().toISOString(),
-                updated_at: new Date().toISOString(),
-              },
-              { onConflict: "user_id" },
-            );
-        }
-        setSelectedPremiumSkin(safePremiumSkin);
-        setSelectedPremiumSkinSelectedAt(profile?.active_premium_skin_selected_at ?? null);
         const localSelectedBuddy =
           typeof window !== "undefined" ? window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY) : null;
         const resolvedSelectedBuddy = normalizeBuddyAvatarId(profile?.selected_buddy_avatar || localSelectedBuddy);
@@ -222,19 +178,14 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         const localSelectedFlame =
           typeof window !== "undefined" ? window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY) : null;
         const dbSelectedFlame = normalizeFlameCosmeticId(profile?.selected_streak_flame);
-        const skinLockedFlame = getPremiumSkinFlameId(safePremiumSkin);
-        const resolvedSelectedFlame = skinLockedFlame ?? (dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame));
+        const resolvedSelectedFlame = dbSelectedFlame !== "default" ? dbSelectedFlame : normalizeFlameCosmeticId(localSelectedFlame);
         setSelectedFlame(resolvedSelectedFlame);
         if (typeof window !== "undefined") {
           window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, resolvedSelectedBuddy);
           persistActiveStreakFlame(resolvedSelectedFlame);
-          clearLegacyPremiumSkinCache();
-          cachePremiumSkinForUser(currentUser.id, safePremiumSkin);
-          if (dbPremiumSkin === safePremiumSkin) clearPendingPremiumSkinSync(currentUser.id, safePremiumSkin);
-          cacheAppThemeForUser(currentUser.id, "light");
+          cacheAppThemeForUser(currentUser.id, savedTheme);
           if (dbTheme === savedTheme) clearPendingAppThemeSync(currentUser.id, savedTheme);
-          applyAppThemeToDocument("light");
-          applyPremiumSkinToDocument(safePremiumSkin);
+          applyAppThemeToDocument(savedTheme);
           window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed", { detail: { buddyId: resolvedSelectedBuddy } }));
         }
           setStorePurchases((purchases || []) as StorePurchaseRow[]);
@@ -563,19 +514,12 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
   async function handleThemeSelect(themeId: AppThemeId) {
     if (!user) return;
     const previousTheme = selectedTheme;
-    const previousSkin = selectedPremiumSkin;
-    const previousSkinSelectedAt = selectedPremiumSkinSelectedAt;
     setThemeSaving(themeId);
     setSettingsMessage(null);
     setSelectedTheme(themeId);
-    setSelectedPremiumSkin("none");
-    setSelectedPremiumSkinSelectedAt(null);
     if (typeof window !== "undefined") {
       cacheAppThemeForUser(user.id, themeId, { markSelected: true });
-      cachePremiumSkinForUser(user.id, "none", { markSelected: true });
-      applyPremiumSkinToDocument("none");
       applyAppThemeToDocument(themeId);
-      window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: "none" } }));
       window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId } }));
     }
     try {
@@ -585,25 +529,11 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           user_id: user.id,
           app_theme: themeId,
           app_theme_selected_at: selectedAt,
-          active_premium_skin: "none",
-          active_premium_skin_selected_at: null,
           updated_at: selectedAt,
         },
         { onConflict: "user_id" },
       );
-      if (error && /app_theme_selected_at|active_premium_skin_selected_at/i.test(error.message || "")) {
-        const fallback = await supabase.from("profile_stats").upsert(
-          {
-            user_id: user.id,
-            app_theme: themeId,
-            active_premium_skin: "none",
-            updated_at: selectedAt,
-          },
-          { onConflict: "user_id" },
-        );
-        error = fallback.error;
-      }
-      if (error && /active_premium_skin/i.test(error.message || "")) {
+      if (error && /app_theme_selected_at/i.test(error.message || "")) {
         const fallback = await supabase.from("profile_stats").upsert(
           {
             user_id: user.id,
@@ -616,21 +546,15 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       }
       if (error) throw error;
       clearPendingAppThemeSync(user.id, themeId);
-      clearPendingPremiumSkinSync(user.id, "none");
-      setSettingsMessage("Theme updated.");
+      setSettingsMessage("Display mode updated.");
     } catch (error: any) {
       setSelectedTheme(previousTheme);
-      setSelectedPremiumSkin(previousSkin);
-      setSelectedPremiumSkinSelectedAt(previousSkinSelectedAt);
       if (typeof window !== "undefined") {
         cacheAppThemeForUser(user.id, previousTheme);
-        cachePremiumSkinForUser(user.id, previousSkin);
         applyAppThemeToDocument(previousTheme);
-        applyPremiumSkinToDocument(previousSkin);
-        window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId: previousSkin } }));
         window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId: previousTheme } }));
       }
-      setSettingsMessage(error.message || "Could not update theme.");
+      setSettingsMessage(error.message || "Could not update display mode.");
     } finally {
       setThemeSaving(null);
     }
@@ -638,27 +562,6 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
 
   async function handleFlameSelect(flameId: FlameCosmeticId) {
     if (!user) return;
-    const skinLockedFlame = getPremiumSkinFlameId(selectedPremiumSkin);
-    if (skinLockedFlame) {
-      setSelectedFlame(skinLockedFlame);
-      if (typeof window !== "undefined") {
-        persistActiveStreakFlame(skinLockedFlame);
-        window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: skinLockedFlame } }));
-      }
-      const { error } = await supabase
-        .from("profile_stats")
-        .update({
-          selected_streak_flame: skinLockedFlame,
-          updated_at: new Date().toISOString(),
-        })
-        .eq("user_id", user.id);
-      if (error) {
-        setSettingsMessage("Your skin controls the flame color, but the database save needs to retry.");
-      } else {
-        setSettingsMessage("Your active skin controls this flame color.");
-      }
-      return;
-    }
     const previousFlame = selectedFlame;
     setFlameSaving(flameId);
     setSettingsMessage(null);
@@ -690,96 +593,6 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       );
     } finally {
       setFlameSaving(null);
-    }
-  }
-
-  async function handlePremiumSkinSelect(skinId: PremiumSkinId) {
-    if (!user) return;
-    const skin = PREMIUM_SKINS.find((premiumSkin) => premiumSkin.id === skinId);
-    if (!skin) {
-      setSettingsMessage("Choose one of the BibleBuddy themes.");
-      return;
-    }
-
-    const previousSkin = selectedPremiumSkin;
-    const previousSkinSelectedAt = selectedPremiumSkinSelectedAt;
-    const previousFlame = selectedFlame;
-    const selectedAt = new Date().toISOString();
-    setSkinSaving(skinId);
-    setSettingsMessage(null);
-    setSelectedPremiumSkin(skinId);
-    setSelectedPremiumSkinSelectedAt(selectedAt);
-    if (typeof window !== "undefined") {
-      cachePremiumSkinForUser(user.id, skinId, { markSelected: true });
-      cacheAppThemeForUser(user.id, "light");
-      applyAppThemeToDocument("light");
-      applyPremiumSkinToDocument(skinId);
-      window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId } }));
-    }
-
-    try {
-      const matchingFlame = getPremiumSkinFlameId(skinId);
-      if (matchingFlame) {
-        setSelectedFlame(matchingFlame);
-        if (typeof window !== "undefined") {
-          persistActiveStreakFlame(matchingFlame);
-          window.dispatchEvent(new CustomEvent("bb:streak-flame-changed", { detail: { flameId: matchingFlame } }));
-        }
-        const { error } = await supabase
-          .from("profile_stats")
-          .update({
-            selected_streak_flame: matchingFlame,
-            updated_at: new Date().toISOString(),
-          })
-          .eq("user_id", user.id);
-        if (error) {
-          console.warn("[SETTINGS] Could not save skin flame, continuing with skin save:", error.message);
-        }
-      }
-
-      let { error: skinError } = await supabase
-        .from("profile_stats")
-        .upsert(
-          {
-            user_id: user.id,
-            app_theme: "light",
-            active_premium_skin: skinId,
-            active_premium_skin_selected_at: selectedAt,
-            updated_at: new Date().toISOString(),
-          },
-          { onConflict: "user_id" },
-        );
-      if (skinError && /active_premium_skin_selected_at/i.test(skinError.message || "")) {
-        const fallback = await supabase
-          .from("profile_stats")
-          .upsert(
-            {
-              user_id: user.id,
-              app_theme: "light",
-              active_premium_skin: skinId,
-              updated_at: new Date().toISOString(),
-            },
-            { onConflict: "user_id" },
-          );
-        skinError = fallback.error;
-      }
-      if (skinError) throw skinError;
-      clearPendingPremiumSkinSync(user.id, skinId);
-
-      setSettingsMessage(`${skin.name} is now your BibleBuddy theme.`);
-    } catch (error: any) {
-      console.warn("[SETTINGS] Premium skin saved locally but could not sync yet:", error?.message || error);
-      setSelectedPremiumSkin(skinId);
-      setSelectedPremiumSkinSelectedAt(selectedAt);
-      if (typeof window !== "undefined") {
-        cachePremiumSkinForUser(user.id, skinId, { markSelected: true });
-        applyAppThemeToDocument("light");
-        applyPremiumSkinToDocument(skinId);
-        window.dispatchEvent(new CustomEvent("bb:premium-skin-changed", { detail: { skinId } }));
-      }
-      setSettingsMessage(`${skin.name} is set on this device. If it changes back after reload, run the premium skin database migration.`);
-    } finally {
-      setSkinSaving(null);
     }
   }
 
@@ -834,8 +647,6 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
   async function handleDeleteStoreItem(itemId: string) {
     if (!user || removingItemId) return;
     const item =
-      THEME_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
-      PREMIUM_SKIN_STORE_ITEMS.find((storeItem) => storeItem.id === itemId) ||
       BUDDY_STORE_ITEMS.find((storeItem) => storeItem.id === itemId);
     if (!item) return;
 
@@ -844,7 +655,6 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
 
     setRemovingItemId(itemId);
     setSettingsMessage(null);
-    setOpenSkinActionsId(null);
     try {
       const { error } = await supabase
         .from("user_store_purchases")
@@ -854,14 +664,6 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       if (error) throw error;
 
       setStorePurchases((current) => current.filter((purchase) => purchase.item_id !== itemId));
-
-      if (item.themeId && selectedTheme === item.themeId) {
-        await handleThemeSelect("light");
-      }
-
-      if (item.skinId && selectedPremiumSkin === item.skinId) {
-        await handlePremiumSkinSelect("none");
-      }
 
       const removedBuddyId = BUDDY_AVATARS.find((buddy) => getBuddyStoreItemId(buddy.id) === itemId)?.id;
       if (removedBuddyId && selectedBuddy === removedBuddyId) {
@@ -903,14 +705,6 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
   }
 
   const ownedStoreItemIds = storePurchases.map((purchase) => purchase.item_id);
-  const ownsPremiumSkin = (skin: { id: PremiumSkinId }) => {
-    return PREMIUM_SKINS.some((premiumSkin) => premiumSkin.id === skin.id);
-  };
-  const ownedPremiumSkins = PREMIUM_SKINS.slice().sort((a, b) => {
-    if (a.id === selectedPremiumSkin) return -1;
-    if (b.id === selectedPremiumSkin) return 1;
-    return a.name.localeCompare(b.name);
-  });
   const ownedBuddyItemIds = new Set(
     BUDDY_STORE_ITEMS
       .filter((item) => ownedStoreItemIds.includes(item.id))
@@ -1121,70 +915,32 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           </div>
         </div>
 
-        {/* Theme Section */}
-        <div className="rounded-xl bg-[var(--bb-card,#ffffff)] p-6 text-[var(--bb-text-primary,#111827)] shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-2">Themes</h2>
+        {/* Display Mode Section */}
+        <div className="mb-6 rounded-xl bg-[var(--bb-card,#ffffff)] p-6 text-[var(--bb-text-primary,#111827)] shadow-sm">
+          <h2 className="mb-2 text-xl font-semibold">Display mode</h2>
           <p className="mb-4 text-sm text-[var(--bb-text-secondary,#4b5563)]">
-            Pick one BibleBuddy theme. It applies to the shell, dashboard, analytics, settings, reader, and study areas.
+            Choose the standard light or dark mode for Bible Buddy.
           </p>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {ownedPremiumSkins.map((skin) => {
-              const hasSkinAccess = ownsPremiumSkin(skin);
-              return (
-                <div
-                  key={skin.id}
-                  className={`overflow-hidden rounded-2xl border p-3 text-left transition ${
-                    selectedPremiumSkin === skin.id ? "border-[var(--bb-accent,#5DD6FF)] ring-2 ring-[var(--bb-accent,#5DD6FF)]/25" : "border-[var(--bb-card-border,#d1d5db)]"
-                  }`}
-                >
-                  <div
-                    className="relative h-28 overflow-hidden rounded-2xl border shadow-[0_12px_26px_rgba(7,16,20,0.12)]"
-                    style={{
-                      background: `linear-gradient(135deg, ${skin.palette.background}, ${skin.palette.accentSoft})`,
-                      borderColor: skin.palette.cardBorder,
-                    }}
-                  >
-                    <div
-                      className="absolute inset-0"
-                      style={{ background: `radial-gradient(circle at 70% 18%, ${skin.palette.accentSoft}, transparent 34%)` }}
-                    />
-                    <div
-                      className="absolute bottom-3 left-3 rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em]"
-                      style={{
-                        backgroundColor: skin.palette.card,
-                        borderColor: skin.palette.cardBorder,
-                        color: skin.palette.accent,
-                      }}
-                    >
-                      Color Skin
-                    </div>
-                  </div>
-                  <p className="mt-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">{skin.name}</p>
-                  <p className="mt-1 text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-                    {selectedPremiumSkin === skin.id ? "Active theme" : "Ready to set"}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (!hasSkinAccess) {
-                        setSettingsMessage(`Buy ${skin.name} in the Diamond Store first, then come back here to set it.`);
-                        return;
-                      }
-                      void handlePremiumSkinSelect(skin.id);
-                    }}
-                    disabled={!hasSkinAccess || selectedPremiumSkin === skin.id || skinSaving === skin.id}
-                    className="mt-3 w-full rounded-full px-3 py-2.5 text-xs font-black shadow-sm transition hover:brightness-95 disabled:opacity-65 disabled:shadow-none"
-                    style={{
-                      backgroundColor: hasSkinAccess && selectedPremiumSkin !== skin.id ? skin.palette.accent : undefined,
-                      color: hasSkinAccess && selectedPremiumSkin !== skin.id ? skin.palette.buttonText : undefined,
-                    }}
-                  >
-                    {skinSaving === skin.id ? "Saving..." : selectedPremiumSkin === skin.id ? "Set" : "Set Theme"}
-                  </button>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-2 gap-3">
+            {APP_THEMES.map((theme) => (
+              <button
+                key={theme.id}
+                type="button"
+                onClick={() => void handleThemeSelect(theme.id)}
+                disabled={themeSaving === theme.id || selectedTheme === theme.id}
+                className={`rounded-2xl border px-4 py-4 text-left transition ${
+                  selectedTheme === theme.id
+                    ? "border-[var(--bb-accent,#2563eb)] bg-[var(--bb-accent-soft,#eaf5ff)] ring-2 ring-[var(--bb-accent,#2563eb)]/20"
+                    : "border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface,#ffffff)] hover:bg-[var(--bb-surface-soft,#eef4f8)]"
+                }`}
+              >
+                <span className="block text-sm font-black">{theme.name}</span>
+                <span className="mt-1 block text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
+                  {themeSaving === theme.id ? "Saving..." : selectedTheme === theme.id ? "Active" : "Use mode"}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
 

@@ -57,10 +57,8 @@ import { BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME } from "../lib/bibleYearDayOneDeep
 import { cacheBibleYearOfflineTextPack } from "../lib/bibleYearOfflinePack";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { BIBLE_READING_BACKGROUND_TRACKS, BIBLE_READING_BACKGROUND_VOLUME } from "../lib/bibleReadingBackgroundMusic";
-import { getBibleProgressBadge } from "../lib/bibleProgressBadges";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
-import { normalizePremiumSkinId } from "../lib/premiumSkins";
 import { buildPersistedFeatureTours, normalizeFeatureTours } from "../lib/featureTours";
 
 const EmbeddedSettingsPage = dynamic(() => import("../app/settings/page"), { ssr: false });
@@ -4962,7 +4960,7 @@ export default function DashboardJourneyExperience({
 
   const renderEmbeddedAnalyticsPage = () => (
     <section className="w-full px-1 pb-4">
-      <EmbeddedAnalyticsPage embedded />
+      <EmbeddedAnalyticsPage />
     </section>
   );
 
@@ -9386,7 +9384,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           {usesSimpleDailyFlow ? `Great job! You completed Day ${day.dayNumber}.` : `Congrats, you finished Day ${day.dayNumber}!`}
         </h2>
         <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-          {usesSimpleDailyFlow ? "Choose what you'd like to do next." : `You completed the reading, trivia, and reflection for ${day.title}.`}
+          {usesSimpleDailyFlow ? "Your lesson is complete. You can keep studying here, or move to another day in the player." : `You completed the reading for ${day.title}.`}
         </p>
 
         {nextDay ? (
@@ -9462,7 +9460,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               You finished Day {day.dayNumber}
             </h2>
             <p className="mx-auto mt-3 max-w-md text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-              Reading, trivia, and summary are complete. Press Continue when you are ready to move forward.
+              The audio lesson is complete. Press Continue when you are ready to move forward.
             </p>
             <button
               type="button"
@@ -9630,78 +9628,72 @@ Before we understand redemption, we need to understand what God made humanity fo
   function renderBibleYearHomeProgressSnapshot(day: GenesisBibleYearDay) {
     const report = effectiveBibleYearReport;
     const overallPercent = report?.overallPercent ?? 0;
-    const bibleProgressBadge = getBibleProgressBadge(overallPercent);
     const currentStreak = report?.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
-    const streakLabel = `${currentStreak} ${currentStreak === 1 ? "Day" : "Days"}`;
-    const lightThemeUsesClassicFlame =
-      typeof document !== "undefined" &&
-      document.documentElement.dataset.bbTheme === "light" &&
-      normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin) === "none";
+    const streakLabel = `${currentStreak} Day`;
+    const lightThemeUsesClassicFlame = typeof document !== "undefined" && document.documentElement.dataset.bbTheme === "light";
 
     return (
       <section
         data-bb-dashboard-tour="bible-progress"
-        className="w-full overflow-hidden rounded-[20px] border border-[#223247] bg-[linear-gradient(145deg,#111b28,#0a121d)] p-4 text-left text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl sm:p-5"
+        className="w-full overflow-hidden rounded-[22px] border border-[#223247] bg-[radial-gradient(circle_at_18%_0%,rgba(93,214,255,0.12),transparent_34%),linear-gradient(145deg,#111b28,#08111c)] px-4 py-4 text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl sm:px-5"
       >
-        <div className="grid gap-5 lg:grid-cols-2 lg:items-start">
-          <div className="flex min-w-0 items-start gap-4 lg:border-r lg:border-[#26364b] lg:pr-7">
-            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-[14px] border border-[#2c3b51] bg-[#182232] shadow-[0_10px_24px_rgba(0,0,0,0.20)]">
-              <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={40} title={`${currentStreak} day streak`} />
+        <div className="mx-auto flex max-w-3xl flex-col gap-4">
+          <div className="flex min-w-0 items-center justify-center gap-4">
+            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-[16px] border border-[#2b3a50] bg-[linear-gradient(145deg,#1b2637,#111a28)] shadow-[0_10px_24px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.06)]">
+              <StreakFlameEmoji flameId={lightThemeUsesClassicFlame ? "default" : profile?.selected_streak_flame} currentStreak={currentStreak} size={38} title={`${currentStreak} day streak`} />
             </span>
-            <span className="min-w-0">
-              <span className="block text-[11px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Daily Streak</span>
-              <span className="mt-1 block text-[26px] font-bold leading-none text-white">{streakLabel} Streak</span>
-              <span className="mt-1.5 block text-[13px] font-medium leading-5 text-[#b8c3d2]">
-                Keep opening Scripture and building your daily rhythm.
-              </span>
+            <span className="min-w-0 text-[30px] font-black leading-none tracking-[-0.01em] text-white sm:text-[36px]">
+              {streakLabel} Streak
             </span>
           </div>
 
-          <div className="min-w-0">
-            <div className="min-w-0">
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Bible Progress</p>
-              <div className="mt-1 flex min-w-0 flex-wrap items-center gap-2.5">
-                <h1 className="text-[26px] font-bold leading-tight text-white sm:text-[30px]">
-                  {overallPercent}% Bible studied
-                </h1>
-                {bibleProgressBadge ? (
-                  <span
-                    className="inline-flex shrink-0 items-center gap-1.5 rounded-[12px] border px-2.5 py-1 text-[11px] font-bold text-white shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
-                    style={{
-                      borderColor: bibleProgressBadge.colors.ring,
-                      background: `linear-gradient(135deg, ${bibleProgressBadge.colors.from}, ${bibleProgressBadge.colors.to})`,
-                      boxShadow: `0 0 0 1px ${bibleProgressBadge.colors.ring}22, 0 10px 24px rgba(0,0,0,0.22)`,
-                    }}
-                    title={`${bibleProgressBadge.title} badge - ${bibleProgressBadge.percent}% Bible studied`}
-                  >
-                    <span
-                      className="grid h-5 min-w-5 place-items-center rounded-[7px] px-1 text-[9px] font-black leading-none"
-                      style={{ backgroundColor: `${bibleProgressBadge.colors.ring}26`, color: bibleProgressBadge.colors.ring }}
-                      aria-hidden="true"
-                    >
-                      {bibleProgressBadge.symbol}
-                    </span>
-                    <span>{bibleProgressBadge.shortTitle}</span>
-                  </span>
-                ) : null}
+          <div className="mx-auto w-full max-w-2xl">
+            <div className="flex items-center gap-3">
+              <span className="w-12 shrink-0 text-right text-[22px] font-black leading-none text-white sm:w-14 sm:text-[24px]">
+                {overallPercent}%
+              </span>
+              <div
+                className="relative h-6 min-w-0 flex-1 overflow-hidden rounded-full border border-[#33455d] bg-[#0d1724] shadow-[inset_0_1px_3px_rgba(0,0,0,0.42)]"
+                role="progressbar"
+                aria-valuenow={overallPercent}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label={`${overallPercent}% of the Bible completed`}
+              >
+                <div
+                  className="h-full rounded-full bg-[linear-gradient(90deg,#5dd6ff,#75a7ff)] shadow-[0_0_18px_rgba(93,214,255,0.36)] transition-all duration-500"
+                  style={{ width: `${Math.max(3, Math.min(100, overallPercent))}%` }}
+                />
               </div>
-              <p className="mt-1.5 text-[13px] font-medium leading-5 text-[#b8c3d2]">
-                You are on Day {report?.currentDay ?? day.dayNumber}. Press play to continue today&apos;s lesson.
-              </p>
             </div>
+            <p className="mt-3 text-center text-[13px] font-semibold leading-5 text-[#b8c3d2]/85 sm:text-sm">
+              You have finished {overallPercent}% of the Bible.
+            </p>
           </div>
         </div>
       </section>
     );
   }
 
+  function renderDashboardSectionIntro(title: string, subtitle: string, className = "") {
+    return (
+      <div className={`px-1 py-1 ${className}`}>
+        <div className="flex items-center gap-3">
+          <span className="h-px flex-1 bg-[linear-gradient(90deg,transparent,#2a3b51_35%,#2a3b51_65%,transparent)]" aria-hidden="true" />
+          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8d9aae]">{title}</span>
+          <span className="h-px flex-1 bg-[linear-gradient(90deg,transparent,#2a3b51_35%,#2a3b51_65%,transparent)]" aria-hidden="true" />
+        </div>
+        <p className="mt-2 text-center text-[12px] font-medium leading-5 text-[#9aa7ba]">
+          {subtitle}
+        </p>
+      </div>
+    );
+  }
+
   function renderHomeSupportStatsStrip() {
     const currentStreak = effectiveBibleYearReport.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
     const streakLabel = `${currentStreak} ${currentStreak === 1 ? "Day" : "Days"}`;
-    const lightThemeUsesClassicFlame =
-      typeof document !== "undefined" &&
-      document.documentElement.dataset.bbTheme === "light" &&
-      normalizePremiumSkinId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin) === "none";
+    const lightThemeUsesClassicFlame = typeof document !== "undefined" && document.documentElement.dataset.bbTheme === "light";
 
     return (
       <section data-bb-dashboard-tour="daily-streak" className="overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_78%,transparent))] p-5 shadow-[0_14px_34px_rgba(14,26,58,0.10),0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_8%,transparent)] backdrop-blur-xl">
@@ -10120,6 +10112,19 @@ Before we understand redemption, we need to understand what God made humanity fo
     const triviaComplete = bibleYearCompletedCardsByDay[day.dayNumber]?.trivia === true;
     const reflectionPosted = bibleYearReflectionPostedByDay[day.dayNumber] === true;
     const followAlongOpen = Boolean(bibleYearFollowAlongOpenByDay[day.dayNumber]);
+    const previousBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === day.dayNumber - 1) || null;
+    const nextBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === day.dayNumber + 1) || null;
+    const openAdjacentBibleYearDay = (targetDay: GenesisBibleYearDay | null) => {
+      if (!targetDay) return;
+      setBibleYearFollowAlongOpenByDay((current) => ({
+        ...current,
+        [day.dayNumber]: false,
+      }));
+      if (targetDay.dayNumber > day.dayNumber) {
+        void logBibleYearNextDayClicked(day, targetDay);
+      }
+      openBibleYearDayOnDashboard(targetDay, { reviewCompleted: isBibleYearDayComplete(targetDay) });
+    };
     const supportCards: Array<{
       key: BibleYearDayCardKey | "discussion";
       eyebrow: string;
@@ -10163,7 +10168,17 @@ Before we understand redemption, we need to understand what God made humanity fo
     ];
     return (
       <section data-bible-year-study-area data-bb-dashboard-tour="study-tasks" className="dashboard-bible-year-study-area grid gap-5">
-        <article className="overflow-hidden rounded-[20px] border border-[#223247] bg-[linear-gradient(145deg,#111b28,#0a121d)] p-5 text-[#f8fafc] shadow-[0_18px_48px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl sm:p-6">
+        {renderDashboardSectionIntro(
+          "Bible Study Plan",
+          "Follow your daily path through Scripture, one lesson at a time.",
+          "order-1"
+        )}
+        {renderDashboardSectionIntro(
+          "Scripture Player",
+          "Press play and continue today's guided Bible lesson.",
+          "order-3"
+        )}
+        <article className="order-4 overflow-hidden rounded-[20px] border border-[#223247] bg-[linear-gradient(145deg,#111b28,#0a121d)] p-5 text-[#f8fafc] shadow-[0_18px_48px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#9aa7ba]">Day {day.dayNumber} of 365</p>
@@ -10204,6 +10219,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                       backgroundMusicSrcs={day.dayNumber === 1 || (day.dayNumber >= 8 && day.dayNumber <= 12) ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
                       backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
                       compactMediaControls
+                      previousLessonLabel={previousBibleYearDay ? `Open Day ${previousBibleYearDay.dayNumber}` : "No previous day"}
+                      nextLessonLabel={nextBibleYearDay ? `Open Day ${nextBibleYearDay.dayNumber}` : "No next day"}
+                      onPreviousLesson={previousBibleYearDay ? () => openAdjacentBibleYearDay(previousBibleYearDay) : undefined}
+                      onNextLesson={nextBibleYearDay ? () => openAdjacentBibleYearDay(nextBibleYearDay) : undefined}
                       onEnded={() => {
                         if (!readingComplete) markBibleYearDayCardComplete(day, "reading");
                       }}
@@ -10260,18 +10279,13 @@ Before we understand redemption, we need to understand what God made humanity fo
           ) : null}
         </article>
 
-        <div className="px-1 py-1">
-          <div className="flex items-center gap-3">
-            <span className="h-px flex-1 bg-[linear-gradient(90deg,transparent,#2a3b51_35%,#2a3b51_65%,transparent)]" aria-hidden="true" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8d9aae]">Study Tools</span>
-            <span className="h-px flex-1 bg-[linear-gradient(90deg,transparent,#2a3b51_35%,#2a3b51_65%,transparent)]" aria-hidden="true" />
-          </div>
-          <p className="mt-2 text-center text-[12px] font-medium leading-5 text-[#9aa7ba]">
-            Explore today&apos;s lesson through notes, trivia, and reflection.
-          </p>
-        </div>
+        {renderDashboardSectionIntro(
+          "Study Tools",
+          "Explore today's lesson through notes, trivia, and reflection.",
+          "order-5"
+        )}
 
-        <section className="overflow-hidden rounded-[20px] border border-[#223247] bg-[#101a27] text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl">
+        <section className="order-6 overflow-hidden rounded-[20px] border border-[#223247] bg-[#101a27] text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl">
           {supportCards.map((item, index) => {
             const expanded = item.key === "discussion" ? bibleYearOptionalDiscussionDay === day.dayNumber : activeBibleYearDayCard === item.key;
             return (
@@ -10315,14 +10329,14 @@ Before we understand redemption, we need to understand what God made humanity fo
           })}
         </section>
 
-        <section data-bb-dashboard-tour="journey-map" className="order-first overflow-hidden rounded-[20px] border border-[#223247] bg-[#101a27] text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl">
-          <button type="button" onClick={openBibleYearSeriesDashboard} className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-white/5">
+        <section data-bb-dashboard-tour="journey-map" className="order-2 overflow-hidden rounded-[20px] border border-[#223247] bg-[#101a27] text-[#f8fafc] shadow-[0_16px_42px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl">
+          <button type="button" onClick={openBibleYearSeriesDashboard} className="hidden w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-white/5">
             <span>
               <span className="block text-[17px] font-bold text-white">Journey Map</span>
             </span>
             <span className="text-2xl text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">›</span>
           </button>
-          <div className="border-t border-[#243449] px-3 pb-4 pt-3">
+          <div className="px-3 pb-4 pt-3">
             <div className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-3">
               <div className="grid min-w-[810px] grid-cols-9 items-start gap-2">
                 {bibleYearStudyPlanMilestones.map((milestone, index) => {
@@ -13171,6 +13185,11 @@ Before we understand redemption, we need to understand what God made humanity fo
             {bibleYearDashboardActive && activeBibleYearDashboardDay && !homePanelOverride && !shouldShowCompletionPanel ? (
               <>
                 {renderOwnerOnboardingControls()}
+                {renderDashboardSectionIntro(
+                  "Bible Progress",
+                  "Track your streak and how much of Scripture you have completed.",
+                  "mb-2"
+                )}
                 {renderBibleYearHomeProgressSnapshot(activeBibleYearDashboardDay)}
                 <section data-bb-dashboard-tour-disabled="journey-map" className="dashboard-inline-task hidden mb-3 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_82%,transparent)] text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
                   <button

@@ -20,7 +20,6 @@ import { buildFullName, hasRequiredFullName, splitFullName } from "@/lib/profile
 import UserBadge from "@/components/UserBadge";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { CUSTOM_MEMBER_BADGE_OPTIONS, normalizeCustomMemberBadge } from "@/lib/userBadges";
-import { getPremiumSkin, normalizePremiumSkinId } from "@/lib/premiumSkins";
 
 // â”€â”€ Avatar color helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
@@ -894,199 +893,10 @@ export default function PublicProfilePage() {
   const color = avatarColor(profileUserId);
   const proTrialTimeLeft = getProTrialTimeLeft(stats?.pro_expires_at);
   const showProTrialBanner = Boolean(stats?.member_badge === "pro_trial" && stats?.is_paid && proTrialTimeLeft);
-  const profileSkinId = normalizePremiumSkinId(stats?.active_premium_skin);
-  const profileSkin = getPremiumSkin(profileSkinId);
-  const profileSkinStyle = profileSkin
-    ? ({
-        "--profile-skin-bg": profileSkin.hasImageBackground === false ? "none" : `url("${profileSkin.desktopBackgroundImage}")`,
-        "--profile-skin-bg-mobile": profileSkin.hasImageBackground === false ? "none" : `url("${profileSkin.mobileBackgroundImage}")`,
-        "--profile-skin-card": profileSkin.palette.card,
-        "--profile-skin-card-border": profileSkin.palette.cardBorder,
-        "--profile-skin-surface": profileSkin.palette.surface,
-        "--profile-skin-surface-soft": profileSkin.palette.surfaceSoft,
-        "--profile-skin-text": profileSkin.palette.textPrimary,
-        "--profile-skin-text-secondary": profileSkin.palette.textSecondary,
-        "--profile-skin-text-muted": profileSkin.palette.textMuted,
-        "--profile-skin-accent": profileSkin.palette.accent,
-        "--profile-skin-button": profileSkin.palette.button,
-        "--profile-skin-button-text": profileSkin.palette.buttonText,
-        "--profile-skin-background": profileSkin.palette.background,
-        "--profile-skin-glow": profileSkin.id === "ruby-village"
-          ? "rgba(255, 115, 95, 0.38)"
-          : profileSkin.id === "angel-wings"
-            ? "rgba(141, 220, 255, 0.38)"
-            : profileSkin.id === "winter-cabin"
-              ? "rgba(155, 215, 255, 0.38)"
-              : profileSkin.id === "mount-sinai"
-                ? "rgba(234, 162, 58, 0.4)"
-                : profileSkin.id === "desert-dawn"
-                  ? "rgba(232, 171, 72, 0.4)"
-                  : profileSkin.id === "no-fuss"
-                    ? "rgba(108, 184, 255, 0.22)"
-            : "rgba(255, 255, 255, 0.24)",
-      } as React.CSSProperties)
-    : undefined;
   void trialClockTick;
 
   return (
-    <div
-      className={`profile-page-shell min-h-screen pb-12 ${profileSkin ? "profile-page-shell--skinned" : "bg-gray-50"}`}
-      data-profile-skin={profileSkin?.id || "none"}
-      style={profileSkinStyle}
-    >
-      {profileSkin ? (
-        <style>{`
-          .profile-page-shell--skinned {
-            position: relative;
-            overflow-x: hidden;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            isolation: isolate;
-            background-color: var(--profile-skin-background);
-            background:
-              linear-gradient(180deg, color-mix(in srgb, var(--profile-skin-background) 6%, transparent) 0%, color-mix(in srgb, var(--profile-skin-background) 42%, transparent) 58%, color-mix(in srgb, var(--profile-skin-background) 78%, #000000) 100%),
-              var(--profile-skin-bg) center top / min(100vw, 920px) auto fixed no-repeat;
-            color: var(--profile-skin-text);
-          }
-          .profile-page-shell--skinned[data-profile-skin="lavender-prayer"] {
-            background:
-              linear-gradient(180deg, rgba(19, 13, 31, 0.04) 0%, rgba(19, 13, 31, 0.42) 56%, rgba(19, 13, 31, 0.84) 100%),
-              var(--profile-skin-bg) center top / min(100vw, 920px) auto fixed no-repeat;
-          }
-          @media (max-width: 767px) {
-            .profile-page-shell--skinned {
-              min-height: 100dvh;
-              overflow-y: auto;
-              -webkit-overflow-scrolling: touch;
-              background:
-                linear-gradient(180deg, color-mix(in srgb, var(--profile-skin-background) 4%, transparent) 0%, color-mix(in srgb, var(--profile-skin-background) 48%, transparent) 58%, color-mix(in srgb, var(--profile-skin-background) 82%, #000000) 100%),
-                var(--profile-skin-bg-mobile) center top / 100% auto scroll no-repeat;
-            }
-          }
-          .profile-page-shell--skinned::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background:
-              radial-gradient(circle at 50% 12%, var(--profile-skin-glow), transparent 34%),
-              radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--profile-skin-accent) 18%, transparent), transparent 42%),
-              linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--profile-skin-background) 24%, transparent) 48%, color-mix(in srgb, var(--profile-skin-background) 70%, #000000) 100%);
-            z-index: 0;
-          }
-          .profile-page-shell--skinned::after {
-            content: "";
-            position: fixed;
-            inset: auto 0 0;
-            height: 42vh;
-            pointer-events: none;
-            background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--profile-skin-background) 88%, #000000));
-            z-index: 0;
-          }
-          .profile-page-shell--skinned > * {
-            position: relative;
-            z-index: 1;
-          }
-          .profile-page-shell--skinned .profile-skin-container {
-            padding-top: 1.1rem;
-          }
-          .profile-page-shell--skinned .profile-skin-breadcrumb {
-            margin-bottom: 1rem;
-            border: 1px solid color-mix(in srgb, var(--profile-skin-accent) 22%, transparent);
-            border-radius: 18px;
-            background: color-mix(in srgb, var(--profile-skin-card) 72%, transparent);
-            padding: 0.75rem 1rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.22);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-          }
-          .profile-page-shell--skinned .profile-skin-card {
-            border-color: var(--profile-skin-card-border) !important;
-            background:
-              radial-gradient(circle at 16% 0%, color-mix(in srgb, var(--profile-skin-accent) 16%, transparent), transparent 38%),
-              linear-gradient(135deg, color-mix(in srgb, var(--profile-skin-card) 88%, transparent), color-mix(in srgb, var(--profile-skin-surface) 72%, transparent)) !important;
-            color: var(--profile-skin-text) !important;
-            box-shadow:
-              0 24px 72px rgba(0,0,0,0.38),
-              0 0 34px color-mix(in srgb, var(--profile-skin-accent) 13%, transparent),
-              inset 0 1px 0 rgba(255,255,255,0.14) !important;
-            backdrop-filter: blur(20px) saturate(1.08);
-            -webkit-backdrop-filter: blur(20px) saturate(1.08);
-          }
-          .profile-page-shell--skinned .profile-skin-card h1,
-          .profile-page-shell--skinned .profile-skin-card h2,
-          .profile-page-shell--skinned .profile-skin-card h3,
-          .profile-page-shell--skinned .profile-skin-card .profile-skin-primary {
-            color: var(--profile-skin-text) !important;
-          }
-          .profile-page-shell--skinned .profile-skin-card p,
-          .profile-page-shell--skinned .profile-skin-card span,
-          .profile-page-shell--skinned .profile-skin-card button,
-          .profile-page-shell--skinned .profile-skin-card .profile-skin-secondary {
-            color: var(--profile-skin-text-secondary) !important;
-          }
-          .profile-page-shell--skinned .profile-skin-muted,
-          .profile-page-shell--skinned nav,
-          .profile-page-shell--skinned nav a,
-          .profile-page-shell--skinned nav span {
-            color: var(--profile-skin-text-muted) !important;
-          }
-          .profile-page-shell--skinned .profile-skin-avatar {
-            border: 3px solid var(--profile-skin-accent);
-            box-shadow: 0 0 0 4px color-mix(in srgb, var(--profile-skin-accent) 20%, transparent), 0 0 34px color-mix(in srgb, var(--profile-skin-accent) 42%, transparent);
-          }
-          .profile-page-shell--skinned .profile-skin-button {
-            border-color: color-mix(in srgb, var(--profile-skin-accent) 42%, transparent) !important;
-            background: var(--profile-skin-button) !important;
-            color: var(--profile-skin-button-text) !important;
-            box-shadow: 0 10px 24px color-mix(in srgb, var(--profile-skin-accent) 24%, transparent);
-          }
-          .profile-page-shell--skinned .profile-skin-stat-card,
-          .profile-page-shell--skinned .profile-skin-inner {
-            border-color: color-mix(in srgb, var(--profile-skin-accent) 28%, transparent) !important;
-            background:
-              linear-gradient(135deg, color-mix(in srgb, var(--profile-skin-surface-soft) 76%, transparent), color-mix(in srgb, var(--profile-skin-card) 58%, transparent)) !important;
-            color: var(--profile-skin-text) !important;
-            box-shadow: 0 12px 34px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.10);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-          }
-          .profile-page-shell--skinned .profile-skin-stat-card div,
-          .profile-page-shell--skinned .profile-skin-inner div,
-          .profile-page-shell--skinned .profile-skin-inner p,
-          .profile-page-shell--skinned .profile-skin-inner span {
-            color: var(--profile-skin-text-secondary) !important;
-          }
-          .profile-page-shell--skinned .profile-skin-stat-card div:first-child {
-            color: var(--profile-skin-text) !important;
-          }
-          .profile-page-shell--skinned .profile-skin-admin {
-            border-color: color-mix(in srgb, var(--profile-skin-accent) 30%, transparent) !important;
-            background: color-mix(in srgb, var(--profile-skin-surface-soft) 68%, transparent) !important;
-          }
-          .profile-page-shell--skinned .profile-skin-input {
-            border-color: color-mix(in srgb, var(--profile-skin-accent) 34%, transparent) !important;
-            background: color-mix(in srgb, var(--profile-skin-background) 64%, transparent) !important;
-            color: var(--profile-skin-text) !important;
-          }
-          .profile-page-shell--skinned .profile-skin-link-row {
-            border-color: color-mix(in srgb, var(--profile-skin-accent) 22%, transparent) !important;
-            background: color-mix(in srgb, var(--profile-skin-surface-soft) 58%, transparent) !important;
-          }
-          .profile-page-shell--skinned .profile-skin-action-log-row {
-            border-color: color-mix(in srgb, var(--profile-skin-accent) 18%, transparent) !important;
-            background: color-mix(in srgb, var(--profile-skin-surface-soft) 48%, transparent) !important;
-            color: var(--profile-skin-text-secondary) !important;
-          }
-          .profile-page-shell--skinned .profile-skin-danger {
-            color: #ff9aa7 !important;
-          }
-          .profile-page-shell--skinned .profile-skin-card .profile-skin-primary,
-          .profile-page-shell--skinned .profile-skin-card h1 {
-            text-shadow: 0 2px 18px color-mix(in srgb, var(--profile-skin-accent) 18%, transparent);
-          }
-        `}</style>
-      ) : null}
+    <div className="profile-page-shell min-h-screen bg-gray-50 pb-12">
       <div className="profile-skin-container max-w-2xl mx-auto px-4 py-8">
 
         {/* Breadcrumb */}
@@ -1154,13 +964,6 @@ export default function PublicProfilePage() {
                       proExpiresAt={stats?.pro_expires_at}
                       groupRole={shouldForceTeacherBadge ? "leader" : undefined}
                     />
-                    {profileSkin ? (
-                      <span className="rounded-full border px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] profile-skin-primary"
-                        style={{ borderColor: "color-mix(in srgb, var(--profile-skin-accent) 42%, transparent)", background: "color-mix(in srgb, var(--profile-skin-surface-soft) 76%, transparent)" }}
-                      >
-                        {profileSkin.name}
-                      </span>
-                    ) : null}
                   </div>
                 </div>
 
@@ -1189,7 +992,7 @@ export default function PublicProfilePage() {
                         onClick={handleAddBuddy}
                         disabled={buddyActionLoading}
                         className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition disabled:opacity-60"
-                        style={{ backgroundColor: profileSkin ? undefined : "#4a9b6f" }}
+                        style={{ backgroundColor: "#4a9b6f" }}
                       >
                         Add Buddy
                       </button>
@@ -1214,7 +1017,7 @@ export default function PublicProfilePage() {
                           onClick={handleAcceptRequest}
                           disabled={buddyActionLoading}
                           className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition disabled:opacity-60"
-                          style={{ backgroundColor: profileSkin ? undefined : "#4a9b6f" }}
+                          style={{ backgroundColor: "#4a9b6f" }}
                         >
                           Accept
                         </button>
@@ -1233,7 +1036,7 @@ export default function PublicProfilePage() {
                           <button
                             onClick={() => router.push(`/messages/${conversationId}`)}
                             className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition"
-                            style={{ backgroundColor: profileSkin ? undefined : "#4a9b6f" }}
+                            style={{ backgroundColor: "#4a9b6f" }}
                           >
                             Message
                           </button>
@@ -1241,7 +1044,7 @@ export default function PublicProfilePage() {
                           <button
                             onClick={() => router.push("/messages")}
                             className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition"
-                            style={{ backgroundColor: profileSkin ? undefined : "#4a9b6f" }}
+                            style={{ backgroundColor: "#4a9b6f" }}
                           >
                             Message
                           </button>
@@ -1308,7 +1111,7 @@ export default function PublicProfilePage() {
                       onClick={handleSaveMemberBadge}
                       disabled={savingBadge}
                       className="profile-skin-button rounded-xl px-4 py-2 text-sm font-semibold text-white transition disabled:opacity-60"
-                      style={{ backgroundColor: profileSkin ? undefined : "#4a9b6f" }}
+                      style={{ backgroundColor: "#4a9b6f" }}
                     >
                       {savingBadge ? "Saving..." : "Save Badge"}
                     </button>
@@ -1569,11 +1372,11 @@ export default function PublicProfilePage() {
                 <Link key={group.id} href={`/dashboard/${group.id}`}>
                   <div
                     className="profile-skin-link-row flex items-center gap-3 p-3 rounded-xl hover:opacity-80 transition cursor-pointer"
-                    style={profileSkin ? undefined : { backgroundColor: group.cover_color ? group.cover_color + "55" : "#f3f4f6" }}
+                    style={{ backgroundColor: group.cover_color ? group.cover_color + "55" : "#f3f4f6" }}
                   >
                     <div
                       className="w-10 h-10 rounded-lg flex items-center justify-center text-xl flex-shrink-0"
-                      style={{ backgroundColor: profileSkin ? "color-mix(in srgb, var(--profile-skin-accent) 28%, transparent)" : group.cover_color || "#d4ecd4" }}
+                      style={{ backgroundColor: group.cover_color || "#d4ecd4" }}
                     >
                       {group.cover_emoji || "ðŸ¤"}
                     </div>

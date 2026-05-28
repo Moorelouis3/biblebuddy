@@ -1,5 +1,3 @@
-import type { PremiumSkinId } from "./premiumSkins";
-
 export type FlameCosmeticId = "default" | "orange" | "blue" | "gold" | "purple" | "red" | "green" | "black" | "sky" | "amber" | "slate";
 
 export type FlameCosmetic = {
@@ -30,16 +28,6 @@ export const FLAME_COSMETICS: FlameCosmetic[] = [
 
 export const FLAME_COSMETIC_BY_ID = new Map(FLAME_COSMETICS.map((flame) => [flame.id, flame]));
 
-export const PREMIUM_SKIN_FLAME_BY_ID: Partial<Record<PremiumSkinId, FlameCosmeticId>> = {
-  "blue-storm": "blue",
-  "midnight-garden": "green",
-  "lavender-prayer": "purple",
-  "ruby-village": "red",
-  "mount-sinai": "amber",
-  "no-fuss": "slate",
-  "passion-fruit": "red",
-};
-
 export function normalizeFlameCosmeticId(value: unknown): FlameCosmeticId {
   return FLAME_COSMETIC_BY_ID.has(value as FlameCosmeticId) ? (value as FlameCosmeticId) : DEFAULT_FLAME_COSMETIC;
 }
@@ -48,18 +36,7 @@ export function getFlameCosmetic(value: unknown): FlameCosmetic {
   return FLAME_COSMETIC_BY_ID.get(normalizeFlameCosmeticId(value)) ?? FLAME_COSMETIC_BY_ID.get(DEFAULT_FLAME_COSMETIC)!;
 }
 
-export function getPremiumSkinFlameId(skinId: PremiumSkinId | string | null | undefined): FlameCosmeticId | null {
-  return PREMIUM_SKIN_FLAME_BY_ID[skinId as PremiumSkinId] ?? null;
-}
-
-export function getDocumentPremiumSkinFlameId(): FlameCosmeticId | null {
-  if (typeof document === "undefined") return null;
-  return getPremiumSkinFlameId(document.documentElement.dataset.bbBasicSkin || document.documentElement.dataset.bbSkin);
-}
-
 export function resolveActiveFlameCosmeticId(flameId?: FlameCosmeticId | string | null): FlameCosmeticId {
-  const skinFlame = getDocumentPremiumSkinFlameId();
-  if (skinFlame && (flameId == null || flameId === "")) return skinFlame;
   return normalizeFlameCosmeticId(flameId);
 }
 
