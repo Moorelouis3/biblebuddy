@@ -10203,15 +10203,15 @@ Before we understand redemption, we need to understand what God made humanity fo
             </span>
           </div>
 
-          <div className="mt-4 grid gap-5 xl:grid-cols-[210px_minmax(0,1fr)] xl:items-stretch">
-            <div className="aspect-square overflow-hidden rounded-[14px] border border-[#27384e] bg-black shadow-[0_14px_32px_rgba(0,0,0,0.30)]">
+          <div className="mt-4 grid gap-4 sm:grid-cols-[142px_minmax(0,1fr)] lg:grid-cols-[164px_minmax(0,1fr)] xl:grid-cols-[176px_minmax(0,1fr)] xl:items-start">
+            <div className="aspect-square w-full max-w-[176px] overflow-hidden rounded-[12px] border border-[#27384e] bg-black shadow-[0_12px_26px_rgba(0,0,0,0.28)]">
               {cover ? (
                 <img src={cover} alt="" loading="eager" decoding="async" className="h-full w-full object-cover" />
               ) : (
                 <div className="grid h-full w-full place-items-center text-5xl" aria-hidden="true">📖</div>
               )}
             </div>
-            <div className="flex min-w-0 flex-col justify-between">
+            <div className="flex min-w-0 flex-col justify-start pt-0.5">
               <div className="min-w-0 px-1">
                 <p className="text-[13px] font-medium text-[#9aa7ba]">Guided Audio Lesson</p>
                 <h3 className="mt-1 text-[22px] font-bold leading-tight text-white">{day.title}</h3>
@@ -10219,53 +10219,58 @@ Before we understand redemption, we need to understand what God made humanity fo
                   Listen to the cinematic audio lesson with Scripture, storytelling, and teaching.
                 </p>
               </div>
-              <div className="mt-4">
-                {audio ? (
-                  <BibleYearLessonAudioPlayer
-                    audioSrc={audio.apiSrc}
-                    title={audio.title}
-                    durationLabel={audio.estimatedDuration}
-                    storagePath={audio.storagePath}
-                    userId={userId}
-                    videoId={`bible-year-day-${day.dayNumber}`}
-                    backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
-                    backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
-                    compactMediaControls
-                    onEnded={() => {
-                      if (!readingComplete) markBibleYearDayCardComplete(day, "reading");
-                    }}
-                  />
-                ) : (
-                  <div className="mt-3 rounded-[14px] border border-[#26364a] bg-[#111d2d] p-4 text-sm font-bold text-[#c7d0dd]">
-                    Today&apos;s audio lesson is being prepared.
-                  </div>
-                )}
-              </div>
-              <div className="mt-1 grid gap-2 sm:grid-cols-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (readingComplete) return;
-                    markBibleYearDayCardComplete(day, "reading");
-                  }}
-                  disabled={readingComplete}
-                  className={`rounded-[14px] px-5 py-3.5 text-[13px] font-bold shadow-[0_10px_24px_rgba(16,201,137,0.10)] transition ${
-                    readingComplete
-                      ? "cursor-default border border-[#10c989]/50 bg-[#10c989]/18 text-[#20e6a0]"
-                      : "bg-[#10c989] text-white hover:brightness-105"
-                  }`}
-                >
-                  {readingComplete ? "Lesson Complete" : "Mark as Complete"}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => void shareLesson()}
-                  className="rounded-[14px] border border-[#26364a] bg-[#101c2b] px-5 py-3.5 text-[13px] font-bold text-[#f8fafc] transition hover:bg-[#16263a]"
-                >
-                  {shareCopied ? "Lesson Link Copied" : "Share Lesson"}
-                </button>
-              </div>
             </div>
+          </div>
+          <div className="mt-4">
+            {audio ? (
+              <BibleYearLessonAudioPlayer
+                audioSrc={audio.apiSrc}
+                title={audio.title}
+                durationLabel={audio.estimatedDuration}
+                storagePath={audio.storagePath}
+                userId={userId}
+                videoId={`bible-year-day-${day.dayNumber}`}
+                backgroundMusicSrcs={day.dayNumber >= 8 && day.dayNumber <= 12 ? BIBLE_READING_BACKGROUND_TRACKS : undefined}
+                backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+                compactMediaControls
+                onEnded={() => {
+                  if (!readingComplete) markBibleYearDayCardComplete(day, "reading");
+                }}
+              />
+            ) : (
+              <div className="mt-3 rounded-[14px] border border-[#26364a] bg-[#111d2d] p-4 text-sm font-bold text-[#c7d0dd]">
+                Today&apos;s audio lesson is being prepared.
+              </div>
+            )}
+          </div>
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => {
+                if (readingComplete) return;
+                markBibleYearDayCardComplete(day, "reading");
+              }}
+              disabled={readingComplete}
+              className={`rounded-[14px] px-5 py-3.5 text-[13px] font-bold shadow-[0_10px_24px_rgba(16,201,137,0.10)] transition ${
+                readingComplete
+                  ? "cursor-default border border-[#10c989]/50 bg-[#10c989]/18 text-[#20e6a0]"
+                  : "bg-[#10c989] text-white hover:brightness-105"
+              }`}
+            >
+              {readingComplete ? "Lesson Complete" : "Mark as Complete"}
+            </button>
+            <button
+              type="button"
+              onClick={() => void shareLesson()}
+              className="inline-flex items-center justify-center gap-2 rounded-[14px] border border-[#26364a] bg-[#101c2b] px-5 py-3.5 text-[13px] font-bold text-[#f8fafc] transition hover:bg-[#16263a]"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" />
+                <path d="M12 16V4" />
+                <path d="m7 9 5-5 5 5" />
+              </svg>
+              <span>{shareCopied ? "Lesson Link Copied" : "Share Lesson"}</span>
+            </button>
           </div>
           {readingComplete && bibleYearJustCompletedDayRef.current === day.dayNumber ? (
             <div className="mt-4">{renderBibleYearCompletedDayPanel(day)}</div>

@@ -387,8 +387,8 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   return (
-    <section className="mb-3 overflow-hidden rounded-[16px] text-[#f8fafc]">
-      <div className="flex min-w-0 flex-col gap-3">
+    <section className="mb-2 overflow-hidden rounded-[16px] text-[#f8fafc]">
+      <div className="flex min-w-0 flex-col gap-2">
         {!compactMediaControls ? (
         <div className="flex items-center gap-3">
           <button
@@ -421,7 +421,7 @@ export default function BibleYearLessonAudioPlayer({
         ) : null}
 
         <div className="grid gap-2">
-            <div className="grid gap-1.5 rounded-2xl bg-transparent px-0 py-2">
+            <div className="grid gap-1.5 rounded-2xl bg-transparent px-0 py-1.5">
               <input
                 type="range"
                 min={0}
@@ -462,12 +462,12 @@ export default function BibleYearLessonAudioPlayer({
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-2.5">
+            <div className="flex flex-wrap items-center justify-center gap-2">
               <button
                 type="button"
                 onClick={() => seekBy(-15)}
                 disabled={!audioRef.current}
-                className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
+                className="rounded-full border border-[#2a394d] bg-[#121e2d] px-2.5 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
               >
                 -15s
               </button>
@@ -476,7 +476,7 @@ export default function BibleYearLessonAudioPlayer({
                   type="button"
                   onClick={toggleAudio}
                   disabled={loading}
-                  className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#f8fafc] text-[#08111d] shadow-[0_8px_18px_rgba(255,255,255,0.10)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
+                  className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#f8fafc] text-[#08111d] shadow-[0_8px_18px_rgba(255,255,255,0.10)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
                   aria-label={playing ? "Pause audio lesson" : "Play audio lesson"}
                 >
                   {loading ? (
@@ -492,7 +492,7 @@ export default function BibleYearLessonAudioPlayer({
                 type="button"
                 onClick={() => seekBy(15)}
                 disabled={!audioRef.current}
-                className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
+                className="rounded-full border border-[#2a394d] bg-[#121e2d] px-2.5 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
               >
                 +15s
               </button>
@@ -501,7 +501,7 @@ export default function BibleYearLessonAudioPlayer({
                   key={rate}
                   type="button"
                   onClick={() => changePlaybackRate(rate)}
-                  className={`rounded-full border px-3 py-1.5 text-[11px] font-bold transition hover:brightness-95 ${
+                  className={`rounded-full border px-2.5 py-1.5 text-[11px] font-bold transition hover:brightness-95 ${
                     playbackRate === rate
                       ? "border-[#10c989] bg-[#10c989] text-white"
                       : "border-[#2a394d] bg-[#121e2d] text-[#d8e0eb]"
