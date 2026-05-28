@@ -9669,7 +9669,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <div className="min-w-0">
               <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#9aa7ba]">Bible Progress</p>
               <h1 className="mt-1 text-[26px] font-bold leading-tight text-white sm:text-[30px]">
-                {overallPercent}% of the Bible studied
+                {overallPercent}% Bible studied
               </h1>
               <p className="mt-1.5 text-[13px] font-medium leading-5 text-[#b8c3d2]">
                 You are on Day {report?.currentDay ?? day.dayNumber}. Press play to continue today&apos;s lesson.

@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
     error: authError,
   } = authResult;
 
-  if (authError || !user || !user.email) {
+  if (authError || !user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -178,7 +178,7 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      customer_email: user.email,
+      customer_email: user.email || undefined,
       metadata,
       subscription_data: {
         metadata,

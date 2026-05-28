@@ -49,6 +49,7 @@ export default function BibleYearLessonAudioPlayer({
   const [playbackRate, setPlaybackRate] = useState(1);
   const [error, setError] = useState(false);
   const pendingSeekRef = useRef(0);
+  const savedPositionAppliedRef = useRef(false);
   const isScrubbingRef = useRef(false);
   const manualSeekInProgressRef = useRef(false);
   const resumeAfterSeekRef = useRef(false);
@@ -66,6 +67,12 @@ export default function BibleYearLessonAudioPlayer({
   const remainingTime = effectiveDuration > 0 ? Math.max(0, effectiveDuration - displayTime) : 0;
   const videoPlayerSrc = getBibleYearVideoEmbedSrc(videoSrc);
   const speedControlId = `audio-speed-${(videoId || title).toLowerCase().replace(/[^a-z0-9_-]+/g, "-")}`;
+
+  useEffect(() => {
+    savedPositionAppliedRef.current = false;
+    pendingSeekRef.current = 0;
+    lastSavedSecondRef.current = -1;
+  }, [audioSrc]);
 
   useEffect(() => {
     const saveCurrentProgress = () => saveProgress(audioRef.current);
@@ -155,6 +162,7 @@ export default function BibleYearLessonAudioPlayer({
     if (!audio || typeof window === "undefined") return;
     const position = audio.currentTime || 0;
     const audioDuration = Number.isFinite(audio.duration) ? audio.duration : 0;
+    if (position <= 2) return;
     if (position > 2 && (!audioDuration || audioDuration - position > 4)) {
       window.localStorage.setItem(progressKey, JSON.stringify({ position, savedAt: Date.now() }));
       return;
@@ -164,6 +172,7 @@ export default function BibleYearLessonAudioPlayer({
 
   function applySavedPosition(audio: HTMLAudioElement) {
     if (manualSeekInProgressRef.current) return;
+    if (savedPositionAppliedRef.current && !pendingSeekRef.current) return;
     const savedPosition = pendingSeekRef.current || getSavedPosition();
     const audioDuration = Number.isFinite(audio.duration) ? audio.duration : 0;
     if (savedPosition > 2 && (!audioDuration || savedPosition < audioDuration - 4)) {
@@ -171,11 +180,15 @@ export default function BibleYearLessonAudioPlayer({
         audio.currentTime = savedPosition;
         setCurrentTime(savedPosition);
         pendingSeekRef.current = 0;
+        savedPositionAppliedRef.current = true;
       } catch {
         pendingSeekRef.current = savedPosition;
+        savedPositionAppliedRef.current = false;
         // Mobile browsers may delay seeking until metadata/canplay fires.
       }
+      return;
     }
+    savedPositionAppliedRef.current = true;
   }
 
   function wireAudioEvents(audio: HTMLAudioElement) {
@@ -184,7 +197,7 @@ export default function BibleYearLessonAudioPlayer({
       applySavedPosition(audio);
     };
     audio.oncanplay = () => {
-      if (!manualSeekInProgressRef.current) applySavedPosition(audio);
+      if (!manualSeekInProgressRef.current && pendingSeekRef.current) applySavedPosition(audio);
       setLoading(false);
     };
     audio.onseeked = () => {
