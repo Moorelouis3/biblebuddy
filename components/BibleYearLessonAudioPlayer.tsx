@@ -65,6 +65,7 @@ export default function BibleYearLessonAudioPlayer({
   const displayTime = isScrubbing ? scrubTime : currentTime;
   const remainingTime = effectiveDuration > 0 ? Math.max(0, effectiveDuration - displayTime) : 0;
   const videoPlayerSrc = getBibleYearVideoEmbedSrc(videoSrc);
+  const speedControlId = `audio-speed-${(videoId || title).toLowerCase().replace(/[^a-z0-9_-]+/g, "-")}`;
 
   useEffect(() => {
     const saveCurrentProgress = () => saveProgress(audioRef.current);
@@ -462,15 +463,17 @@ export default function BibleYearLessonAudioPlayer({
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              <button
-                type="button"
-                onClick={() => seekBy(-15)}
-                disabled={!audioRef.current}
-                className="rounded-full border border-[#2a394d] bg-[#121e2d] px-2.5 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
-              >
-                -15s
-              </button>
+            <div className={compactMediaControls ? "grid grid-cols-[1fr_auto_1fr] items-center gap-3" : "flex flex-wrap items-center justify-between gap-3"}>
+              <div className="flex items-center justify-start">
+                <button
+                  type="button"
+                  onClick={() => seekBy(-15)}
+                  disabled={!audioRef.current}
+                  className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
+                >
+                  -15s
+                </button>
+              </div>
               {compactMediaControls ? (
                 <button
                   type="button"
@@ -488,29 +491,30 @@ export default function BibleYearLessonAudioPlayer({
                   )}
                 </button>
               ) : null}
-              <button
-                type="button"
-                onClick={() => seekBy(15)}
-                disabled={!audioRef.current}
-                className="rounded-full border border-[#2a394d] bg-[#121e2d] px-2.5 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
-              >
-                +15s
-              </button>
-              {[1, 1.25, 1.5, 2].map((rate) => (
+              <div className="flex items-center justify-end gap-2">
                 <button
-                  key={rate}
                   type="button"
-                  onClick={() => changePlaybackRate(rate)}
-                  className={`rounded-full border px-2.5 py-1.5 text-[11px] font-bold transition hover:brightness-95 ${
-                    playbackRate === rate
-                      ? "border-[#10c989] bg-[#10c989] text-white"
-                      : "border-[#2a394d] bg-[#121e2d] text-[#d8e0eb]"
-                  }`}
-                  aria-pressed={playbackRate === rate}
+                  onClick={() => seekBy(15)}
+                  disabled={!audioRef.current}
+                  className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
                 >
-                  {rate}x
+                  +15s
                 </button>
-              ))}
+                <label className="sr-only" htmlFor={speedControlId}>Playback speed</label>
+                <select
+                  id={speedControlId}
+                  value={playbackRate}
+                  onChange={(event) => changePlaybackRate(Number(event.target.value))}
+                  className="h-8 rounded-full border border-[#2a394d] bg-[#121e2d] px-3 text-[11px] font-bold text-[#d8e0eb] outline-none transition hover:bg-[#18283b] focus:border-[#10c989]"
+                  aria-label="Playback speed"
+                >
+                  {[1, 1.25, 1.5, 2].map((rate) => (
+                    <option key={rate} value={rate} className="bg-[#121e2d] text-[#f8fafc]">
+                      {rate}x
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
         {error ? <p className="px-1 text-xs font-black text-red-500">Audio unavailable. Try again in a moment.</p> : null}

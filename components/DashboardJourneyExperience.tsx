@@ -10192,8 +10192,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         <article className="overflow-hidden rounded-[20px] border border-[#223247] bg-[linear-gradient(145deg,#111b28,#0a121d)] p-5 text-[#f8fafc] shadow-[0_18px_48px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#9aa7ba]">Today&apos;s Bible Study</p>
-              <h2 className="mt-1.5 text-[24px] font-bold leading-tight text-white sm:text-[28px]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#9aa7ba]">Day {day.dayNumber} of 365</p>
+              <h2 className="mt-1.5 text-[21px] font-bold leading-tight text-white sm:text-[28px]">
                 Day {day.dayNumber}: {day.title}
               </h2>
               <p className="mt-1 text-[13px] font-semibold text-[#b8c3d2]">{readingSummary}</p>
