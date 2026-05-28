@@ -598,13 +598,13 @@ function buildBibleBuddyFunnelStages(
   ];
 
   const firstCount = stageSets[0]?.actors.size || 0;
-  let previousDisplayedCount = firstCount;
   return stageSets.map((stage, index): FunnelStageRow => {
     const upgradeStats = stage.key === "day3UpgradeOffer" ? dayThreeUpgrade : stage.key === "day7UpgradeOffer" ? daySevenUpgrade : null;
     const rawUsers = upgradeStats ? upgradeStats.views : stage.actors.size;
-    const previousCount = index === 0 ? rawUsers : previousDisplayedCount;
-    const users = index === 0 ? rawUsers : Math.min(rawUsers, previousDisplayedCount);
-    previousDisplayedCount = users;
+    const previousStage = stageSets[index - 1];
+    const previousUpgradeStats = previousStage?.key === "day3UpgradeOffer" ? dayThreeUpgrade : previousStage?.key === "day7UpgradeOffer" ? daySevenUpgrade : null;
+    const previousCount = index === 0 ? rawUsers : previousUpgradeStats ? previousUpgradeStats.views : previousStage?.actors.size || 0;
+    const users = rawUsers;
     return {
       key: stage.key,
       label: stage.label,
