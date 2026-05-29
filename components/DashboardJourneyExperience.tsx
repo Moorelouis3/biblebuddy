@@ -10,6 +10,7 @@ import DashboardDailyTaskCallout, { DatabaseTermTakeover, type BibleDatabaseTerm
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import BibleYearDeepStudySectionCards from "./BibleYearDeepStudySectionCards";
 import BibleYearLessonAudioPlayer from "./BibleYearLessonAudioPlayer";
+import { VerseHighlighter } from "./VerseHighlighter";
 import BibleTopicsPanel from "./BibleTopicsPanel";
 import VideoHelpfulPoll from "./VideoHelpfulPoll";
 import StreakFlameEmoji from "./StreakFlameEmoji";
@@ -56,6 +57,7 @@ import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy"
 import { BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME } from "../lib/bibleYearDayOneDeepStudy";
 import { cacheBibleYearOfflineTextPack } from "../lib/bibleYearOfflinePack";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
+import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { buildPersistedFeatureTours, normalizeFeatureTours } from "../lib/featureTours";
@@ -73,6 +75,26 @@ const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapt
 const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:dashboard-guided-intro-seen";
 const BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX = "bb:bible-year-dashboard-day";
 const BIBLE_YEAR_DASHBOARD_DAY_TTL_MS = 60 * 60 * 1000;
+
+function getBibleYearFollowAlongChapterKey(book: string, chapter: number) {
+  return `${book.toLowerCase().trim().replace(/\s+/g, " ")}:${chapter}`;
+}
+
+function splitEnrichedVerseHtmlByNumber(enrichedContent: string) {
+  const html = enrichedContent.replace(/<!--.*?-->/, "").trim();
+  const verseBlocks = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g));
+  const enrichedByVerse: Record<number, string> = {};
+
+  verseBlocks.forEach((block, index) => {
+    const badgeMatch = block[1].match(/<span[^>]*>(\d+)<\/span>/);
+    const verseNumber = badgeMatch ? Number.parseInt(badgeMatch[1], 10) : index + 1;
+    if (Number.isFinite(verseNumber)) {
+      enrichedByVerse[verseNumber] = `<p>${block[1]}</p>`;
+    }
+  });
+
+  return enrichedByVerse;
+}
 
 function getBibleYearDashboardDayStorageKey(userId?: string | null) {
   return `${BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX}:${userId || "guest"}`;
@@ -1906,6 +1928,7 @@ export default function DashboardJourneyExperience({
   const [bibleYearTermNotesError, setBibleYearTermNotesError] = useState<string | null>(null);
   const [bibleYearTermLoading, setBibleYearTermLoading] = useState(false);
   const [bibleYearFollowAlongOpenByDay, setBibleYearFollowAlongOpenByDay] = useState<Record<number, boolean>>({});
+  const [bibleYearFollowAlongEnrichedHtmlByChapter, setBibleYearFollowAlongEnrichedHtmlByChapter] = useState<Record<string, Record<number, string>>>({});
   const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
   const [bibleYearDeepNotesOpen, setBibleYearDeepNotesOpen] = useState(false);
   const [bibleYearDayOneDeepNotesGiftOpen, setBibleYearDayOneDeepNotesGiftOpen] = useState(false);
@@ -5553,6 +5576,65 @@ export default function DashboardJourneyExperience({
   useEffect(() => {
     let cancelled = false;
 
+    async function loadFollowAlongDatabaseOverlays() {
+      const openDayNumbers = Object.entries(bibleYearFollowAlongOpenByDay)
+        .filter(([, isOpen]) => isOpen)
+        .map(([dayNumber]) => Number(dayNumber))
+        .filter((dayNumber) => Number.isFinite(dayNumber));
+
+      const chaptersToLoad = new Map<string, { book: string; chapter: number; verses: Array<{ verse: number; text: string }> }>();
+
+      openDayNumbers.forEach((dayNumber) => {
+        const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber);
+        if (!day) return;
+
+        getBibleYearFollowAlongChapters(day).forEach((chapter) => {
+          if (!chapter.verses.length) return;
+          const key = getBibleYearFollowAlongChapterKey(chapter.book, chapter.chapter);
+          if (bibleYearFollowAlongEnrichedHtmlByChapter[key]) return;
+          chaptersToLoad.set(key, {
+            book: chapter.book,
+            chapter: chapter.chapter,
+            verses: chapter.verses.map((verse) => ({ verse: verse.verse, text: verse.text })),
+          });
+        });
+      });
+
+      if (!chaptersToLoad.size) return;
+
+      const loadedEntries = await Promise.all(
+        Array.from(chaptersToLoad.entries()).map(async ([key, chapter]) => {
+          try {
+            const enriched = await enrichBibleVerses(chapter.verses);
+            return [key, splitEnrichedVerseHtmlByNumber(enriched)] as const;
+          } catch (error) {
+            console.error("[BIBLE_YEAR_FOLLOW_ALONG] Could not load database overlays:", error);
+            return [key, {}] as const;
+          }
+        }),
+      );
+
+      if (cancelled) return;
+
+      setBibleYearFollowAlongEnrichedHtmlByChapter((current) => {
+        const next = { ...current };
+        loadedEntries.forEach(([key, value]) => {
+          next[key] = value;
+        });
+        return next;
+      });
+    }
+
+    void loadFollowAlongDatabaseOverlays();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [bibleYearFollowAlongOpenByDay, bibleYearFollowAlongEnrichedHtmlByChapter]);
+
+  useEffect(() => {
+    let cancelled = false;
+
     async function loadBibleYearTermNotes() {
       if (!bibleYearSelectedTerm) return;
       setBibleYearTermLoading(true);
@@ -8853,8 +8935,8 @@ Before we understand redemption, we need to understand what God made humanity fo
       },
       {
         kind: "reflection",
-        title: "Read Today's Summary",
-        subtitle: "Read today's summary to better understand the story and meaning of the passage.",
+        title: "Read Today's Chapter Notes",
+        subtitle: "Verse-by-verse breakdown.",
         pointsLabel: "Complete",
         timeEstimateLabel: "3 min",
         href: `#bible-year-day-${day.dayNumber}-reflection`,
@@ -8927,6 +9009,19 @@ Before we understand redemption, we need to understand what God made humanity fo
 
     return (
       <section className="bible-year-follow-along-scroll mt-3 max-h-[420px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#111827)_78%,#020617)] p-4 text-left text-[var(--bb-text-primary,#fff7ed)] shadow-inner">
+        {bibleYearSelectedTerm ? (
+          <div className="mb-5">
+            <DatabaseTermTakeover
+              selectedTerm={bibleYearSelectedTerm}
+              termBurstKey={bibleYearTermBurstKey}
+              loadingTermNotes={bibleYearTermLoading}
+              termNotes={bibleYearTermNotes}
+              termNotesError={bibleYearTermNotesError}
+              onClose={closeBibleYearTermTakeover}
+              takeoverRef={bibleYearTermTakeoverRef}
+            />
+          </div>
+        ) : null}
         <div className="space-y-7">
           {chapters.map((chapter) => (
             <article key={`${chapter.book}-${chapter.chapter}`} className="space-y-3">
@@ -8934,25 +9029,29 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <h3 className="font-serif text-2xl font-black tracking-wide text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_82%,#ffffff)]">
                   {chapter.book} {chapter.chapter}
                 </h3>
-                {!chapter.verses.length ? (
-                  <Link
-                    href={`/Bible/${chapter.book}/${chapter.chapter}`}
-                    className="shrink-0 rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1.5 text-xs font-black text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_88%,#ffffff)] transition hover:brightness-110"
-                  >
-                    Open Chapter
-                  </Link>
-                ) : null}
+                <Link
+                  href={`/Bible/${encodeURIComponent(chapter.book.toLowerCase())}/${chapter.chapter}`}
+                  className="shrink-0 rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1.5 text-xs font-black text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_88%,#ffffff)] transition hover:brightness-110"
+                >
+                  Open Reader
+                </Link>
               </div>
               {chapter.verses.length ? (
-                <div className="space-y-3">
-                  {chapter.verses.map((verse) => (
-                    <p key={`${chapter.book}-${chapter.chapter}-${verse.verse}`} className="text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#dbeafe)] sm:text-[15px]">
-                      <sup className="mr-1 align-super text-[11px] font-black leading-none text-[var(--bb-accent,#2f7fe8)]">
-                        {verse.verse}
-                      </sup>
-                      {verse.text}
-                    </p>
-                  ))}
+                <div className="space-y-3" onClick={handleBibleYearDatabaseTermClick}>
+                  <p className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-bold text-[var(--bb-text-muted,#94a3b8)]">
+                    Tap a verse number to highlight it. Tap highlighted Bible words for database notes.
+                  </p>
+                  <VerseHighlighter
+                    book={chapter.book}
+                    chapter={chapter.chapter}
+                    verses={chapter.verses.map((verse) => ({
+                      number: verse.verse,
+                      text: verse.text,
+                      enrichedHtml: bibleYearFollowAlongEnrichedHtmlByChapter[
+                        getBibleYearFollowAlongChapterKey(chapter.book, chapter.chapter)
+                      ]?.[verse.verse],
+                    }))}
+                  />
                 </div>
               ) : (
                 <p className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#dbeafe)]">
@@ -10026,8 +10125,8 @@ Before we understand redemption, we need to understand what God made humanity fo
       {
         key: "reflection",
         eyebrow: "Summary & Notes",
-        title: "Read Today's Summary",
-        body: `Read a clear breakdown of ${readingSummary} and the meaning behind the passage.`,
+        title: "Read Today's Chapter Notes",
+        body: "Verse-by-verse breakdown.",
         button: "Open Summary",
         done: summaryComplete,
         icon: "📖",
@@ -10090,7 +10189,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
             <div className="flex min-w-0 flex-col justify-start pt-0.5">
               <div className="min-w-0 px-1">
-                <p className="text-[13px] font-medium text-[var(--bb-text-muted,#6b7280)]">Guided Audio Lesson</p>
                 <h3 className="mt-1 text-[22px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">{day.title}</h3>
                 <p className="mt-1 max-w-2xl text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">
                   Listen to the cinematic audio lesson with Scripture, storytelling, and teaching.
