@@ -5,7 +5,7 @@ import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
 import { applyAppThemeToDocument } from "@/lib/appThemes";
 
-type JourneyWindow = "1h" | "24h" | "7d" | "30d";
+type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
 type AnalyticsView = "overview" | "bible-year" | "study-notes" | "traffic-sources";
 
@@ -168,6 +168,23 @@ type BibleYearDayAnalytics = {
 };
 
 type AnalyticsResponse = {
+  businessMetrics?: {
+    totalUsers: number;
+    registeredUsers: number;
+    guestUsers: number;
+    monthlySignups: number;
+    previousMonthlySignups: number;
+    monthlySignupChange: number;
+    lifetimeSignups: number;
+  };
+  audioEngagement?: {
+    totalPlays: number;
+    uniqueListeners: number;
+    totalMinutesPlayed: number;
+    averageListeningMinutes: number;
+    lessonCompletionRate: number;
+    source: "audio_events" | "day_task_events";
+  };
   customerJourney?: {
     window: JourneyWindow;
     label: string;
@@ -245,6 +262,8 @@ type StripeRecentPayment = {
 
 type StripeRevenueSummary = {
   currency: string;
+  window?: JourneyWindow;
+  label?: string;
   mrrCents: number;
   mrr: string;
   activeSubscriptions: number;
@@ -253,8 +272,12 @@ type StripeRevenueSummary = {
   totalSubscriptionsTracked: number;
   revenue30dCents: number;
   revenue30d: string;
+  revenueRangeCents?: number;
+  revenueRange?: string;
   oneTime30dCents: number;
   oneTime30d: string;
+  oneTimeRangeCents?: number;
+  oneTimeRange?: string;
   recentPayments: StripeRecentPayment[];
   updatedAt: string;
   error?: string;
@@ -268,10 +291,13 @@ const ANALYTICS_NAV_ITEMS: Array<{ key: AnalyticsView; label: string; helper: st
 ];
 
 const WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
-  { key: "1h", label: "Last 1 hour" },
+  { key: "today", label: "Today" },
+  { key: "yesterday", label: "Yesterday" },
   { key: "24h", label: "Last 24 hours" },
   { key: "7d", label: "Last 7 days" },
   { key: "30d", label: "Last 30 days" },
+  { key: "this_month", label: "This month" },
+  { key: "lifetime", label: "Lifetime" },
 ];
 
 const STATUS_STYLES: Record<VisitorJourneyStatus, string> = {
@@ -691,6 +717,105 @@ function AudioOverviewMetricCard({
   );
 }
 
+function FounderMetricCard({
+  title,
+  value,
+  helper,
+  icon,
+  accent = "text-cyan-200",
+}: {
+  title: string;
+  value: string;
+  helper: string;
+  icon: "visitors" | "play" | "user" | "headphones" | "pro" | "spark" | "check";
+  accent?: string;
+}) {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_46px_rgba(0,0,0,0.2)]">
+      <div className={`grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.06] ${accent}`}>
+        <Icon name={icon} />
+      </div>
+      <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-slate-400">{title}</p>
+      <p className="mt-2 text-3xl font-black leading-none text-white">{value}</p>
+      <p className="mt-2 text-sm font-semibold leading-5 text-slate-400">{helper}</p>
+    </div>
+  );
+}
+
+function FounderFunnelSection({
+  landingVisitors,
+  startClicks,
+  signups,
+}: {
+  landingVisitors: number;
+  startClicks: number;
+  signups: number;
+}) {
+  const startRate = getRate(startClicks, landingVisitors);
+  const signupRate = getRate(signups, startClicks);
+  const overallRate = getRate(signups, landingVisitors);
+  const steps = [
+    { label: "Landing Page Visitors", value: landingVisitors, rate: null },
+    { label: "Start Journey Clicks", value: startClicks, rate: `${startRate}% from visitors` },
+    { label: "Accounts Created", value: signups, rate: `${signupRate}% from clicks` },
+    { label: "Overall Conversion", value: `${overallRate}%`, rate: "landing page to account" },
+  ];
+
+  return (
+    <section className="rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.12),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+      <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">User Acquisition Funnel</p>
+      <h2 className="mt-2 text-2xl font-black text-white">Where people are dropping off</h2>
+      <div className="mt-6 grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-stretch">
+        {steps.map((step, index) => (
+          <Fragment key={step.label}>
+            <div className="rounded-xl border border-white/10 bg-white/[0.045] p-5">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">{step.label}</p>
+              <p className="mt-3 text-3xl font-black text-white">{typeof step.value === "number" ? formatNumber(step.value) : step.value}</p>
+              {step.rate ? <p className="mt-2 text-sm font-black text-cyan-200">{step.rate}</p> : <p className="mt-2 text-sm font-semibold text-slate-500">unique visitors</p>}
+            </div>
+            {index < steps.length - 1 ? (
+              <div className="hidden place-items-center text-slate-500 lg:grid">
+                <Icon name="arrow" />
+              </div>
+            ) : null}
+          </Fragment>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEngagement"] | undefined }) {
+  const metrics = audio || {
+    totalPlays: 0,
+    uniqueListeners: 0,
+    totalMinutesPlayed: 0,
+    averageListeningMinutes: 0,
+    lessonCompletionRate: 0,
+    source: "day_task_events" as const,
+  };
+  return (
+    <section className="rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Listening Metrics</p>
+          <h2 className="mt-2 text-2xl font-black text-white">Are people actually listening?</h2>
+        </div>
+        <p className="text-sm font-bold text-slate-500">
+          {metrics.source === "audio_events" ? "Using audio events" : "Using day-start events until audio duration tracking is live"}
+        </p>
+      </div>
+      <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+        <FounderMetricCard title="Total Plays" value={formatNumber(metrics.totalPlays)} helper="Audio lessons started." icon="play" />
+        <FounderMetricCard title="Unique Listeners" value={formatNumber(metrics.uniqueListeners)} helper="Individual users who listened." icon="headphones" />
+        <FounderMetricCard title="Minutes Played" value={formatNumber(metrics.totalMinutesPlayed)} helper="Total tracked listening minutes." icon="spark" />
+        <FounderMetricCard title="Avg Listen Time" value={`${metrics.averageListeningMinutes}m`} helper="Average minutes per session." icon="visitors" />
+        <FounderMetricCard title="Completion Rate" value={`${metrics.lessonCompletionRate}%`} helper="Lessons completed from plays." icon="check" />
+      </div>
+    </section>
+  );
+}
+
 function StripeRevenueSection({
   revenue,
   loading,
@@ -700,6 +825,7 @@ function StripeRevenueSection({
   loading: boolean;
   error: string | null;
 }) {
+  const [recentPaymentsOpen, setRecentPaymentsOpen] = useState(false);
   const cards = revenue
     ? [
         {
@@ -715,15 +841,15 @@ function StripeRevenueSection({
           icon: "user" as const,
         },
         {
-          label: "30-Day Revenue",
-          value: revenue.revenue30d,
-          helper: "Captured Stripe payments in the last 30 days.",
+          label: `${revenue.label || "Selected"} Revenue`,
+          value: revenue.revenueRange || revenue.revenue30d,
+          helper: "Captured Stripe payments for the selected date range.",
           icon: "spark" as const,
         },
         {
           label: "Lifetime / One-Time",
-          value: revenue.oneTime30d,
-          helper: "One-time payments captured in the last 30 days.",
+          value: revenue.oneTimeRange || revenue.oneTime30d,
+          helper: "One-time payments captured in the selected date range.",
           icon: "check" as const,
         },
       ]
@@ -755,18 +881,36 @@ function StripeRevenueSection({
       ) : revenue ? (
         <>
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {cards.map((card) => (
-              <div key={card.label} className="rounded-xl border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_46px_rgba(0,0,0,0.2)]">
+            {cards.map((card, index) => {
+              const isMrrCard = index === 0;
+              const CardTag = isMrrCard ? "button" : "div";
+              return (
+              <CardTag
+                key={card.label}
+                type={isMrrCard ? "button" : undefined}
+                onClick={isMrrCard ? () => setRecentPaymentsOpen((current) => !current) : undefined}
+                className={`rounded-xl border border-white/10 bg-white/[0.045] p-5 text-left shadow-[0_18px_46px_rgba(0,0,0,0.2)] ${
+                  isMrrCard ? "transition hover:border-cyan-300/40 hover:bg-white/[0.065]" : ""
+                }`}
+                aria-expanded={isMrrCard ? recentPaymentsOpen : undefined}
+              >
                 <div className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.06] text-cyan-200">
                   <Icon name={card.icon} />
                 </div>
                 <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-slate-400">{card.label}</p>
                 <p className="mt-2 text-3xl font-black leading-none text-white">{card.value}</p>
                 <p className="mt-2 text-sm font-semibold leading-5 text-slate-400">{card.helper}</p>
-              </div>
-            ))}
+                {isMrrCard ? (
+                  <p className="mt-4 text-xs font-black uppercase tracking-[0.14em] text-cyan-200">
+                    {recentPaymentsOpen ? "Hide recent payments" : "Click to show recent payments"}
+                  </p>
+                ) : null}
+              </CardTag>
+            );
+            })}
           </div>
 
+          {recentPaymentsOpen ? (
           <div className="mt-6 rounded-xl border border-white/10 bg-slate-950/35">
             <div className="flex flex-col gap-2 border-b border-white/10 p-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
@@ -807,6 +951,7 @@ function StripeRevenueSection({
               )}
             </div>
           </div>
+          ) : null}
         </>
       ) : (
         <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.045] p-5 text-sm font-bold text-slate-300">
@@ -1313,7 +1458,7 @@ function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-300">User Journey Timeline</p>
               <h3 className="mt-1 text-xl font-black text-white">Everything this visitor has done</h3>
-              <p className="mt-1 text-sm font-medium text-slate-400">Chronological funnel, task, account, trial, and upgrade behavior.</p>
+              <p className="mt-1 text-sm font-medium text-slate-400">Landing page, signup, and Bible in One Year progress.</p>
             </div>
             <div className="rounded-lg bg-blue-500/10 px-3 py-2 text-sm font-black text-blue-200">
               Total Journey Time: {details.totalTimeLabel}
@@ -1343,15 +1488,15 @@ function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
 
           <div className="mt-5 grid gap-3 border-t border-white/10 pt-4 sm:grid-cols-5">
             <div className="rounded-lg bg-white/[0.04] p-3">
-              <p className="text-xs font-bold text-slate-400">Onboarding</p>
-              <p className="mt-1 text-lg font-black text-white">{row.onboardingCompletedAt ? "Complete" : "Not complete"}</p>
+              <p className="text-xs font-bold text-slate-400">Start Journey</p>
+              <p className="mt-1 text-lg font-black text-white">{row.timeline.some((event) => event.title === "Clicked Start Journey") ? "Clicked" : "Not clicked"}</p>
             </div>
             <div className="rounded-lg bg-white/[0.04] p-3">
               <p className="text-xs font-bold text-slate-400">Current Day</p>
               <p className="mt-1 text-lg font-black text-white">{latestDay ? `Day ${latestDay}` : "None"}</p>
             </div>
             <div className="rounded-lg bg-white/[0.04] p-3">
-              <p className="text-xs font-bold text-slate-400">Bible Tasks</p>
+              <p className="text-xs font-bold text-slate-400">Days Complete</p>
               <p className="mt-1 text-lg font-black text-white">{completedTasks}</p>
             </div>
             <div className="rounded-lg bg-white/[0.04] p-3">
@@ -1539,7 +1684,7 @@ function VisitorJourneyTableSection({
 function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {}) {
   const [isOwner, setIsOwner] = useState(false);
   const [authChecked, setAuthChecked] = useState(false);
-  const [windowKey, setWindowKey] = useState<JourneyWindow>("24h");
+  const [windowKey, setWindowKey] = useState<JourneyWindow>("today");
   const [data, setData] = useState<AnalyticsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -1604,7 +1749,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
         const { data: sessionData } = await supabase.auth.getSession();
         const token = sessionData.session?.access_token;
         if (!token) throw new Error("Owner session expired. Please sign in again.");
-        const response = await fetch("/api/admin/stripe-revenue", {
+        const response = await fetch(`/api/admin/stripe-revenue?window=${windowKey}`, {
           cache: "no-store",
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -1618,7 +1763,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
       }
     }
     void loadStripeRevenue();
-  }, [authChecked, isOwner]);
+  }, [authChecked, isOwner, windowKey]);
 
   const journeys = data?.visitorJourneys;
   const rows = journeys?.rows || [];
@@ -1640,9 +1785,18 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
     proUpgradeRate: 0,
   };
   const bibleBuddyFunnelStages = data?.bibleBuddyFunnelStages || [];
+  const businessMetrics = data?.businessMetrics || {
+    totalUsers: rows.length,
+    registeredUsers: 0,
+    guestUsers: 0,
+    monthlySignups: 0,
+    previousMonthlySignups: 0,
+    monthlySignupChange: 0,
+    lifetimeSignups: 0,
+  };
   const landingStageUsers = bibleBuddyFunnelStages.find((stage) => stage.key === "landing")?.users ?? metrics.totalVisitors;
   const journeyPerformanceDays = useMemo(() => buildJourneyPerformanceDays(data?.bibleYearDays), [data?.bibleYearDays]);
-  const startJourneyClicks = getStageUsers(bibleBuddyFunnelStages, "startedOnboarding") || data?.customerJourney?.guestStarts || 0;
+  const startJourneyClicks = getStageUsers(bibleBuddyFunnelStages, "clickedStart") || getStageUsers(bibleBuddyFunnelStages, "startedOnboarding") || data?.customerJourney?.guestStarts || 0;
   const signupsCompleted = metrics.createdFreeAccount || data?.customerJourney?.freeAccounts || 0;
   const activeListeners = new Set(
     (data?.bibleYearDays || [])
@@ -1802,10 +1956,10 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
             <div className="rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
               <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
                 <div>
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Overview Metrics</p>
-                  <h2 className="mt-2 text-2xl font-black text-white">How people are starting and listening</h2>
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Founder Dashboard</p>
+                  <h2 className="mt-2 text-2xl font-black text-white">Users, signups, revenue, and momentum</h2>
                   <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-400">
-                    The default view is now audio-first: traffic, journey starts, signups, and active Bible lesson listeners.
+                    The first screen answers the business questions: how many people are here, how many are signing up, and how much money is coming in.
                   </p>
                 </div>
                 <div className="rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-black text-slate-300">
@@ -1813,36 +1967,41 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                 </div>
               </div>
               <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                <AudioOverviewMetricCard
-                  title="Landing Page Visitors"
-                  value={landingStageUsers}
-                  change="+0%"
-                  helper="Unique people who reached the landing page."
+                <FounderMetricCard
+                  title="Total Users"
+                  value={formatNumber(businessMetrics.totalUsers)}
+                  helper={`${formatNumber(businessMetrics.registeredUsers)} registered + ${formatNumber(businessMetrics.guestUsers)} guests.`}
                   icon="visitors"
                 />
-                <AudioOverviewMetricCard
-                  title="Start Your Journey Clicks"
-                  value={startJourneyClicks}
-                  change={`${getRate(startJourneyClicks, landingStageUsers)}%`}
-                  helper="People who moved from landing page into the journey."
-                  icon="play"
-                />
-                <AudioOverviewMetricCard
-                  title="Signups Completed"
-                  value={signupsCompleted}
-                  change={`${getRate(signupsCompleted, startJourneyClicks)}%`}
-                  helper="Users who created a Bible Buddy account."
+                <FounderMetricCard
+                  title="Monthly Signups"
+                  value={`+${formatNumber(businessMetrics.monthlySignups)}`}
+                  helper={`${businessMetrics.monthlySignupChange >= 0 ? "+" : ""}${formatNumber(businessMetrics.monthlySignupChange)} vs previous month.`}
                   icon="user"
                 />
-                <AudioOverviewMetricCard
-                  title="Active Listeners Today"
-                  value={activeListeners}
-                  change={`${getRate(activeListeners, Math.max(1, signupsCompleted || startJourneyClicks))}%`}
-                  helper="Unique people with Bible journey listening activity in this window."
-                  icon="headphones"
+                <FounderMetricCard
+                  title="Lifetime Signups"
+                  value={formatNumber(businessMetrics.lifetimeSignups)}
+                  helper="Real registered Supabase accounts ever created."
+                  icon="check"
+                />
+                <FounderMetricCard
+                  title="Revenue"
+                  value={stripeRevenue?.revenueRange || stripeRevenue?.revenue30d || "$0"}
+                  helper={`Cash collected ${stripeRevenue?.label?.toLowerCase() || "for selected range"}. MRR: ${stripeRevenue?.mrr || "$0"}.`}
+                  icon="pro"
+                  accent="text-amber-200"
                 />
               </div>
             </div>
+
+            <FounderFunnelSection
+              landingVisitors={landingStageUsers}
+              startClicks={startJourneyClicks}
+              signups={signupsCompleted}
+            />
+
+            <ListeningMetricsSection audio={data?.audioEngagement} />
 
             <StripeRevenueSection
               revenue={stripeRevenue}

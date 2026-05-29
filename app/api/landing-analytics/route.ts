@@ -45,8 +45,6 @@ const MASTER_ACTION_BY_EVENT: Record<string, string> = {
   reached_results_page: "onboarding_results_viewed",
   clicked_yes_start_my_journey: "onboarding_journey_started",
   started_guest_journey: "onboarding_journey_started",
-  created_free_account: "user_signup",
-  created_account_successfully: "user_signup",
   closed_onboarding: "onboarding_intro_skipped",
 };
 

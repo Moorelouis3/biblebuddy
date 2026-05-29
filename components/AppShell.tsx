@@ -733,6 +733,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           {
             user_id: currentUserId,
             onboarding_completed: true,
+            app_theme: "light",
             traffic_source: "direct_signup",
             bible_year_started_at: todayKey,
             bible_year_launch_seen_at: nowIso,
@@ -810,6 +811,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           display_name: displayName,
           username: displayName,
           onboarding_completed: true,
+          app_theme: "light",
           traffic_source: "landing_questionnaire",
           bible_experience_level: normalizeLandingExperienceForProfile(pending.answers.experience),
           onboarding_goal: normalizeLandingGoalForProfile(pending.answers.goal),
@@ -1012,6 +1014,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!userId || !isLoggedIn || !pathname || HIDDEN_ROUTES.includes(pathname)) return;
     if (pathname !== "/dashboard") return;
+    if (typeof window !== "undefined") {
+      const skipInitialDashboardViewKey = `bb:skip-initial-dashboard-view:${userId}`;
+      if (window.localStorage.getItem(skipInitialDashboardViewKey) === "1") {
+        window.localStorage.removeItem(skipInitialDashboardViewKey);
+        return;
+      }
+    }
 
     void trackNavigationActionOnce({
       userId,
@@ -1921,6 +1930,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   async function performLogout() {
     setGuestLogoutWarningOpen(false);
+    if (typeof window !== "undefined") {
+      try {
+        Object.keys(window.sessionStorage)
+          .filter((key) => key.startsWith("bb:bible-year-dashboard-day:"))
+          .forEach((key) => window.sessionStorage.removeItem(key));
+      } catch {
+        // Session storage cleanup should never block logout.
+      }
+    }
     await supabase.auth.signOut();
     router.push("/login");
   }

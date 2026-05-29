@@ -11,6 +11,7 @@ import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { hasCachedSupabaseSession } from "@/lib/authBoot";
+import { applyAppThemeToDocument, cacheAppThemeForUser } from "@/lib/appThemes";
 
 type PreviewPanel = "watch" | "study" | "trivia";
 type StudyTab = "bible" | "notes";
@@ -963,6 +964,11 @@ export default function LandingPage() {
       user.id,
     );
 
+    cacheAppThemeForUser(user.id, "light");
+    applyAppThemeToDocument("light");
+    window.localStorage.setItem(`bb:skip-initial-login:${user.id}`, "1");
+    window.localStorage.setItem(`bb:skip-initial-dashboard-view:${user.id}`, "1");
+
     try {
       await supabase.from("user_signups").insert({
         user_id: user.id,
@@ -1024,6 +1030,8 @@ export default function LandingPage() {
     );
     setSubmitting(true);
     setError(null);
+    cacheAppThemeForUser(null, "light");
+    applyAppThemeToDocument("light");
     const redirectTo =
       typeof window !== "undefined"
         ? `${window.location.origin}/dashboard`
@@ -1088,7 +1096,10 @@ export default function LandingPage() {
                 Finally read, understand, and <span className="italic text-[#135397]">finish</span> the <span className="text-[#135397]">Bible.</span>
               </h1>
               <p className="mt-4 max-w-[520px] text-center text-sm font-semibold leading-6 text-[#526075] sm:mt-7 sm:text-left sm:text-lg sm:leading-8">
-                Bible Buddy is your daily guide through Scripture with cinematic audio lessons, simple daily steps, and clear explanations that help you stay consistent and finish the Bible in one year.
+                Have you ever started reading the Bible only to quit a few days later because you didn't understand what you were reading?
+                <br className="hidden sm:block" />
+                <br className="hidden sm:block" />
+                Bible Buddy helps you stay consistent with simple daily lessons, clear explanations, and guided audio that make Scripture easier to understand and easier to finish.
               </p>
               <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-7 sm:block sm:space-y-4">
                 {[

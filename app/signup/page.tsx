@@ -127,6 +127,8 @@ export default function SignupPage() {
     }
 
     void recordSignup(user.id, user.email, username);
+    window.localStorage.setItem(`bb:skip-initial-login:${user.id}`, "1");
+    window.localStorage.setItem(`bb:skip-initial-dashboard-view:${user.id}`, "1");
 
     if (data.session) {
       await applyReferralCodeIfPresent();

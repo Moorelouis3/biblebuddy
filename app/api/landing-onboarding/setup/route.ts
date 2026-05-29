@@ -153,6 +153,7 @@ export async function POST(request: NextRequest) {
       onboarding_completed: true,
       landing_onboarding_completed: true,
       account_type: isAnonymousUser ? "guest" : "registered",
+      app_theme: "light",
       guest_started_at: isAnonymousUser ? nowIso : null,
       registered_at: isAnonymousUser ? null : nowIso,
       converted_from_guest_at: null,

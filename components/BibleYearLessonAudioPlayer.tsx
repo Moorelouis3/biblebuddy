@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import VideoHelpfulPoll from "./VideoHelpfulPoll";
 import { getBibleYearVideoEmbedSrc } from "../lib/bibleYearAudio";
+import { supabase } from "../lib/supabaseClient";
 
 type BibleYearLessonAudioPlayerProps = {
   audioSrc: string;
@@ -57,6 +58,8 @@ export default function BibleYearLessonAudioPlayer({
   const [playbackRate, setPlaybackRate] = useState(1);
   const [error, setError] = useState(false);
   const pendingSeekRef = useRef(0);
+  const playTrackedRef = useRef(false);
+  const lastTrackedProgressSecondRef = useRef(0);
   const savedPositionAppliedRef = useRef(false);
   const isScrubbingRef = useRef(false);
   const manualSeekInProgressRef = useRef(false);
@@ -75,6 +78,49 @@ export default function BibleYearLessonAudioPlayer({
   const remainingTime = effectiveDuration > 0 ? Math.max(0, effectiveDuration - displayTime) : 0;
   const videoPlayerSrc = getBibleYearVideoEmbedSrc(videoSrc);
   const speedControlId = `audio-speed-${(videoId || title).toLowerCase().replace(/[^a-z0-9_-]+/g, "-")}`;
+  const journeyDay = useMemo(() => {
+    const match = (videoId || title).match(/day[-_\s]*(\d+)/i);
+    return match ? Number(match[1]) : null;
+  }, [title, videoId]);
+
+  async function trackAudioEvent(actionType: "bible_year_audio_played" | "bible_year_audio_progress" | "bible_year_audio_completed", audio: HTMLAudioElement | null) {
+    if (!userId || videoContext !== "bible_year") return;
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const meta = user?.user_metadata || {};
+      const username =
+        meta.firstName ||
+        meta.first_name ||
+        (user?.email ? user.email.split("@")[0] : null) ||
+        "User";
+      const current = Math.floor(audio?.currentTime || 0);
+      const audioDuration = Number.isFinite(audio?.duration || 0) ? Math.floor(audio?.duration || 0) : effectiveDuration;
+      await supabase.from("master_actions").insert({
+        user_id: userId,
+        username,
+        action_type: actionType,
+        action_label: `${title} ${actionType.replace("bible_year_audio_", "audio ")}`,
+        journey_day: journeyDay,
+        account_status: user?.is_anonymous ? "guest" : "registered",
+        event_metadata: {
+          plan: "bible_in_one_year",
+          mediaType: "audio",
+          lessonTitle: title,
+          videoId: videoId || null,
+          audioSrc,
+          dayNumber: journeyDay,
+          secondsPlayed: current,
+          currentTime: current,
+          durationSeconds: audioDuration,
+          playbackRate,
+        },
+      });
+    } catch (trackError) {
+      console.warn("[BIBLE_YEAR_AUDIO_ANALYTICS] Could not track audio event:", trackError);
+    }
+  }
 
   function saveProgress(audio: HTMLAudioElement | null) {
     if (!audio || typeof window === "undefined") return;
@@ -118,6 +164,8 @@ export default function BibleYearLessonAudioPlayer({
     savedPositionAppliedRef.current = false;
     pendingSeekRef.current = 0;
     lastSavedSecondRef.current = -1;
+    playTrackedRef.current = false;
+    lastTrackedProgressSecondRef.current = 0;
 
     return () => {
       if (resetTimer !== null) window.clearTimeout(resetTimer);
@@ -254,6 +302,10 @@ export default function BibleYearLessonAudioPlayer({
         lastSavedSecondRef.current = second;
         saveProgress(audio);
       }
+      if (second >= 30 && second - lastTrackedProgressSecondRef.current >= 60) {
+        lastTrackedProgressSecondRef.current = second;
+        void trackAudioEvent("bible_year_audio_progress", audio);
+      }
     };
     audio.onstalled = () => {
       saveProgress(audio);
@@ -266,6 +318,10 @@ export default function BibleYearLessonAudioPlayer({
       setLoading(false);
       setPlaying(true);
       void startBackgroundMusic(audio);
+      if (!playTrackedRef.current) {
+        playTrackedRef.current = true;
+        void trackAudioEvent("bible_year_audio_played", audio);
+      }
     };
     audio.onpause = () => {
       saveProgress(audio);
@@ -280,6 +336,7 @@ export default function BibleYearLessonAudioPlayer({
       setPlaying(false);
       setLoading(false);
       stopBackgroundMusic();
+      void trackAudioEvent("bible_year_audio_completed", audio);
       onEnded?.();
     };
     audio.onerror = () => {
@@ -509,7 +566,21 @@ export default function BibleYearLessonAudioPlayer({
 
             {compactMediaControls ? (
               <>
-                <div className="grid grid-cols-5 items-center gap-2 sm:gap-3">
+                <div className="grid grid-cols-6 items-center gap-2 sm:gap-3">
+                  <label className="sr-only" htmlFor={speedControlId}>Playback speed</label>
+                  <select
+                    id={speedControlId}
+                    value={playbackRate}
+                    onChange={(event) => changePlaybackRate(Number(event.target.value))}
+                    className="h-full min-h-12 w-full rounded-full border border-[#2a394d] bg-[#121e2d] px-2 text-center text-[11px] font-black text-[#d8e0eb] outline-none shadow-[0_8px_18px_rgba(0,0,0,0.18)] transition hover:bg-[#18283b] focus:border-[#7BAFD4] sm:min-h-14"
+                    aria-label="Playback speed"
+                  >
+                    {[1, 1.25, 1.5, 2].map((rate) => (
+                      <option key={rate} value={rate} className="bg-[#121e2d] text-[#f8fafc]">
+                        {rate}x
+                      </option>
+                    ))}
+                  </select>
                   <button
                     type="button"
                     onClick={onPreviousLesson}
@@ -561,22 +632,6 @@ export default function BibleYearLessonAudioPlayer({
                   >
                     <span aria-hidden="true">›</span>
                   </button>
-                </div>
-                <div className="flex justify-center sm:justify-end">
-                  <label className="sr-only" htmlFor={speedControlId}>Playback speed</label>
-                  <select
-                    id={speedControlId}
-                    value={playbackRate}
-                    onChange={(event) => changePlaybackRate(Number(event.target.value))}
-                    className="h-8 rounded-full border border-[#2a394d] bg-[#121e2d] px-3 text-[11px] font-bold text-[#d8e0eb] outline-none transition hover:bg-[#18283b] focus:border-[#7BAFD4]"
-                    aria-label="Playback speed"
-                  >
-                    {[1, 1.25, 1.5, 2].map((rate) => (
-                      <option key={rate} value={rate} className="bg-[#121e2d] text-[#f8fafc]">
-                        {rate}x
-                      </option>
-                    ))}
-                  </select>
                 </div>
               </>
             ) : null}

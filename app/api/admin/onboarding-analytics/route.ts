@@ -27,7 +27,7 @@ type LandingEventRow = {
   created_at?: string | null;
 };
 
-type JourneyWindowKey = "1h" | "24h" | "7d" | "30d";
+type JourneyWindowKey = "today" | "yesterday" | "24h" | "7d" | "30d" | "this_month" | "lifetime";
 
 type UpgradeActionRow = {
   user_id?: string | null;
@@ -577,8 +577,9 @@ function buildBibleBuddyFunnelStages(
 
   const stageSets = [
     { key: "landing", label: "Landing Page", actors: mergeActors(["landing_page_visit"], ["landing_page_visited"]) },
-    { key: "startedOnboarding", label: "Started Onboarding", actors: mergeActors(["started_onboarding"], ["onboarding_intro_started"]) },
-    { key: "finishedOnboarding", label: "Finished Onboarding", actors: mergeActors(["started_guest_journey", "clicked_yes_start_my_journey"], ["onboarding_journey_started"]) },
+    { key: "clickedStart", label: "Start Your Journey Clicks", actors: mergeActors(["clicked_start_journey"], ["landing_cta_clicked"]) },
+    { key: "startedOnboarding", label: "Start Journey Clicks", actors: mergeActors(["started_onboarding"], ["onboarding_intro_started"]) },
+    { key: "finishedOnboarding", label: "Started Journey", actors: mergeActors(["started_guest_journey", "clicked_yes_start_my_journey"], ["onboarding_journey_started"]) },
     { key: "startedDay1", label: "Started Day 1", actors: startedDayActors(1) },
     { key: "completedDay1", label: "Completed Day 1", actors: completedDayActors(1) },
     { key: "startedDay2", label: "Started Day 2", actors: startedDayActors(2) },
@@ -744,21 +745,61 @@ function isAccountEvent(eventName: string) {
 
 function getJourneyWindowKey(request: Request): JourneyWindowKey {
   const raw = new URL(request.url).searchParams.get("window");
-  return raw === "1h" || raw === "7d" || raw === "30d" ? raw : "24h";
+  return raw === "today" ||
+    raw === "yesterday" ||
+    raw === "24h" ||
+    raw === "7d" ||
+    raw === "30d" ||
+    raw === "this_month" ||
+    raw === "lifetime"
+    ? raw
+    : "today";
 }
 
 function getJourneyWindowMs(windowKey: JourneyWindowKey) {
-  if (windowKey === "1h") return 60 * 60 * 1000;
   if (windowKey === "7d") return 7 * 24 * 60 * 60 * 1000;
   if (windowKey === "30d") return 30 * 24 * 60 * 60 * 1000;
+  if (windowKey === "this_month" || windowKey === "lifetime") return Date.now();
+  if (windowKey === "yesterday") return 2 * 24 * 60 * 60 * 1000;
   return 24 * 60 * 60 * 1000;
 }
 
 function getJourneyWindowLabel(windowKey: JourneyWindowKey) {
-  if (windowKey === "1h") return "Last 1 hour";
+  if (windowKey === "today") return "Today";
+  if (windowKey === "yesterday") return "Yesterday";
   if (windowKey === "7d") return "Last 7 days";
   if (windowKey === "30d") return "Last 30 days";
+  if (windowKey === "this_month") return "This month";
+  if (windowKey === "lifetime") return "Lifetime";
   return "Last 24 hours";
+}
+
+function getAnalyticsDateRange(windowKey: JourneyWindowKey) {
+  const now = new Date();
+  const todayStart = new Date(now);
+  todayStart.setHours(0, 0, 0, 0);
+
+  if (windowKey === "today") {
+    return { startIso: todayStart.toISOString(), endIso: null as string | null };
+  }
+  if (windowKey === "yesterday") {
+    const yesterdayStart = new Date(todayStart);
+    yesterdayStart.setDate(yesterdayStart.getDate() - 1);
+    return { startIso: yesterdayStart.toISOString(), endIso: todayStart.toISOString() };
+  }
+  if (windowKey === "7d") {
+    return { startIso: new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString(), endIso: null as string | null };
+  }
+  if (windowKey === "30d") {
+    return { startIso: new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString(), endIso: null as string | null };
+  }
+  if (windowKey === "this_month") {
+    return { startIso: new Date(now.getFullYear(), now.getMonth(), 1).toISOString(), endIso: null as string | null };
+  }
+  if (windowKey === "lifetime") {
+    return { startIso: "1970-01-01T00:00:00.000Z", endIso: null as string | null };
+  }
+  return { startIso: new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(), endIso: null as string | null };
 }
 
 function withinMs(leftIso: string | null | undefined, rightIso: string | null | undefined, ms: number) {
@@ -975,11 +1016,44 @@ function buildAnalyticsDataHealthWarnings(
   return warnings;
 }
 
+function summarizeAudioEngagement(masterRows: MasterActionFunnelRow[], bibleYearDays: ReturnType<typeof buildBibleYearDayAnalytics>) {
+  const audioRows = masterRows.filter((row) =>
+    row.action_type === "bible_year_audio_played" ||
+    row.action_type === "bible_year_audio_progress" ||
+    row.action_type === "bible_year_audio_completed"
+  );
+  const totalPlays = audioRows.filter((row) => row.action_type === "bible_year_audio_played").length ||
+    bibleYearDays.reduce((total, day) => total + day.startedUsers, 0);
+  const uniqueListeners = new Set(
+    (audioRows.length ? audioRows : bibleYearDays.flatMap((day) => day.users))
+      .map((row) => "userId" in row ? row.userId : getMasterActorId(row))
+      .filter(Boolean)
+  ).size;
+  const totalSecondsPlayed = audioRows.reduce((total, row) => {
+    const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
+    const seconds = Number(metadata.secondsPlayed || metadata.listenedSeconds || metadata.currentTime || 0);
+    return total + (Number.isFinite(seconds) ? seconds : 0);
+  }, 0);
+  const completedLessons = audioRows.filter((row) => row.action_type === "bible_year_audio_completed").length ||
+    bibleYearDays.reduce((total, day) => total + day.completedUsers, 0);
+
+  return {
+    totalPlays,
+    uniqueListeners,
+    totalMinutesPlayed: Math.round(totalSecondsPlayed / 60),
+    averageListeningMinutes: totalPlays > 0 && totalSecondsPlayed > 0 ? Number((totalSecondsPlayed / 60 / totalPlays).toFixed(1)) : 0,
+    lessonCompletionRate: percent(completedLessons, totalPlays),
+    source: audioRows.length ? "audio_events" : "day_task_events",
+  };
+}
+
 function summarizeLandingWindow(rows: Record<string, unknown>[], windowKey: JourneyWindowKey) {
-  const since = Date.now() - getJourneyWindowMs(windowKey);
+  const range = getAnalyticsDateRange(windowKey);
+  const since = new Date(range.startIso).getTime();
+  const before = range.endIso ? new Date(range.endIso).getTime() : null;
   const recentRows = rows.filter((row) => {
     const createdAt = typeof row.created_at === "string" ? new Date(row.created_at).getTime() : 0;
-    return Number.isFinite(createdAt) && createdAt >= since;
+    return Number.isFinite(createdAt) && createdAt >= since && (!before || createdAt < before);
   });
   const visitSessions = new Set<string>();
   const guestSessions = new Set<string>();
@@ -1100,16 +1174,16 @@ function getLandingActivityInfo(row: LandingEventRow) {
   }
   if (eventName === "clicked_start_journey") {
     return {
-      category: "onboarding" as LandingActivityCategory,
+      category: "guestStarts" as LandingActivityCategory,
       title: "Clicked Start Your Journey",
-      detail: "Visitor opened the public onboarding flow.",
+      detail: "Visitor clicked the main landing page CTA.",
     };
   }
   if (eventName === "started_onboarding") {
     return {
-      category: "onboarding" as LandingActivityCategory,
-      title: "Started onboarding",
-      detail: "Visitor began answering the onboarding questions.",
+      category: "guestStarts" as LandingActivityCategory,
+      title: "Clicked Start Your Journey",
+      detail: "Visitor moved from the landing page toward signup.",
     };
   }
   if (eventName.startsWith("viewed_question_")) {
@@ -1148,8 +1222,8 @@ function getLandingActivityInfo(row: LandingEventRow) {
   if (eventName === "started_guest_journey") {
     return {
       category: "guestStarts" as LandingActivityCategory,
-      title: "Guest finished onboarding",
-      detail: "Guest entered BibleBuddy and started their journey.",
+      title: "Clicked Start Your Journey",
+      detail: "Visitor entered BibleBuddy and started their journey.",
     };
   }
   if (eventName === "viewed_create_account_modal" || eventName === "opened_create_account_modal") {
@@ -1162,8 +1236,8 @@ function getLandingActivityInfo(row: LandingEventRow) {
   if (eventName === "created_free_account" || eventName === "created_account_successfully") {
     return {
       category: "accountsCreated" as LandingActivityCategory,
-      title: "Guest became a free user",
-      detail: "Guest protected their BibleBuddy journey by creating a free account.",
+      title: "Created account",
+      detail: "Visitor created a Bible Buddy account.",
     };
   }
   if (eventName === "closed_onboarding") {
@@ -1182,11 +1256,13 @@ function getLandingActivityInfo(row: LandingEventRow) {
 }
 
 function buildLandingActivityLog(rows: LandingEventRow[], profileByUserId: Map<string, string>, windowKey: JourneyWindowKey) {
-  const since = Date.now() - getJourneyWindowMs(windowKey);
+  const range = getAnalyticsDateRange(windowKey);
+  const since = new Date(range.startIso).getTime();
+  const before = range.endIso ? new Date(range.endIso).getTime() : null;
   const validRows = rows
     .filter((row) => {
       const createdAt = typeof row.created_at === "string" ? new Date(row.created_at).getTime() : 0;
-      return Number.isFinite(createdAt) && createdAt >= since;
+      return Number.isFinite(createdAt) && createdAt >= since && (!before || createdAt < before);
     })
     .sort((a, b) => {
       const left = typeof a.created_at === "string" ? new Date(a.created_at).getTime() : 0;
@@ -1358,17 +1434,18 @@ function formatTimelineDelta(ms: number) {
 }
 
 function getLandingStepStatusLabel(sessionRows: LandingEventRow[], finishedOnboarding: boolean) {
-  if (finishedOnboarding) return "Finished onboarding";
+  if (finishedOnboarding) return "Started journey";
   const eventNames = sessionRows.map((row) => row.event_name || "");
   const names = new Set(eventNames);
-  for (let index = 5; index >= 1; index -= 1) {
-    if (eventNames.some((name) => name.startsWith(`completed_question_${index}`))) return `Finished question ${index}`;
-    if (eventNames.some((name) => name.startsWith(`viewed_question_${index}`))) return `Viewed question ${index}`;
-  }
-  if (names.has("viewed_results_page") || names.has("reached_results_page")) return "Viewed results";
-  if (names.has("viewed_results_loading")) return "Reached results loading";
-  if (names.has("started_onboarding") || names.has("viewed_onboarding_intro")) return "Started onboarding";
-  if (names.has("clicked_start_journey")) return "Clicked start";
+  if (
+    names.has("clicked_start_journey") ||
+    names.has("started_onboarding") ||
+    names.has("viewed_onboarding_intro") ||
+    eventNames.some((name) => name.startsWith("viewed_question_") || name.startsWith("completed_question_")) ||
+    names.has("viewed_results_page") ||
+    names.has("reached_results_page") ||
+    names.has("viewed_results_loading")
+  ) return "Clicked Start Journey";
   return "Just visited";
 }
 
@@ -1472,9 +1549,9 @@ function getJourneyDisplaySource(row: LandingEventRow | undefined) {
 function getStatusLabel(status: VisitorJourneyStatus) {
   const labels: Record<VisitorJourneyStatus, string> = {
     active: "Active",
-    finished_onboarding: "Finished onboarding",
-    onboarding_only: "Onboarding only",
-    day_1_in_progress: "Day 1 in progress",
+    finished_onboarding: "Started journey",
+    onboarding_only: "Clicked Start Journey",
+    day_1_in_progress: "Started Day 1",
     day_1_completed: "Day 1 completed",
     created_account: "Created account",
     upgraded: "Upgraded",
@@ -1493,11 +1570,13 @@ function buildVisitorJourneys(
   profileSummaryByUserId: Map<string, ProfileSummary>,
   windowKey: JourneyWindowKey,
 ) {
-  const since = Date.now() - getJourneyWindowMs(windowKey);
+  const range = getAnalyticsDateRange(windowKey);
+  const since = new Date(range.startIso).getTime();
+  const before = range.endIso ? new Date(range.endIso).getTime() : null;
   const validRows = rows
     .filter((row) => {
       const createdAt = typeof row.created_at === "string" ? new Date(row.created_at).getTime() : 0;
-      return Number.isFinite(createdAt) && createdAt >= since;
+      return Number.isFinite(createdAt) && createdAt >= since && (!before || createdAt < before);
     })
     .sort((a, b) => {
       const left = typeof a.created_at === "string" ? new Date(a.created_at).getTime() : 0;
@@ -1590,13 +1669,19 @@ function buildVisitorJourneys(
         .map((row) => row.created_at)
         .filter((value): value is string => Boolean(value))
         .sort()[0] || null;
-    const dayOneCompletedAt =
-      dayOneRows
-        .filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed)
-        .map((row) => row.updated_at)
-        .filter((value): value is string => Boolean(value))
-        .sort()
-        .at(-1) || null;
+    const completedProgressRows = userProgressRows.filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed);
+    const completedDayNumbers = completedProgressRows
+      .map((row) => Number(row.day_number || 0))
+      .filter((day) => day > 0);
+    const lastCompletedDay = completedDayNumbers.length ? Math.max(...completedDayNumbers) : null;
+    const lastCompletedDayRow = lastCompletedDay ? completedProgressRows.find((row) => Number(row.day_number || 0) === lastCompletedDay) : null;
+    const dayOneCompletedAt = completedProgressRows
+      .filter((row) => Number(row.day_number || 0) === 1)
+      .map((row) => row.updated_at)
+      .filter((value): value is string => Boolean(value))
+      .sort()
+      .at(-1) || null;
+    const lastCompletedDayAt = lastCompletedDayRow?.updated_at || dayOneCompletedAt;
     const accountEvent = sessionRows.find((row) => isAccountEvent(row.event_name || ""));
     const profile = userId ? profileSummaryByUserId.get(userId) : null;
     const createdAccountAt =
@@ -1619,7 +1704,7 @@ function buildVisitorJourneys(
 
     let status: VisitorJourneyStatus = "active";
     if (upgradeAt) status = "upgraded";
-    else if (dayOneCompletedAt) status = "day_1_completed";
+    else if (lastCompletedDayAt) status = "day_1_completed";
     else if (createdAccountAt) status = "created_account";
     else if (dayOneStartedAt) status = "day_1_in_progress";
     else if (dashboardCompletedAt || onboardingCompletedAt) status = "finished_onboarding";
@@ -1637,20 +1722,18 @@ function buildVisitorJourneys(
       : getStatusLabel(status);
     const currentMilestoneTitle =
       upgradeAt ? "Converted to Pro" :
-      dayOneCompletedAt ? "Finished Day 1" :
+      lastCompletedDay ? `Day ${lastCompletedDay} completed` :
       createdAccountAt ? "Created free account" :
       dayOneStartedAt ? "Started Day 1" :
-      dashboardCompletedAt ? "Finished dashboard walkthrough" :
-      onboardingCompletedAt ? "Guest finished onboarding" :
+      dashboardCompletedAt || onboardingCompletedAt ? "Started journey" :
       status === "dropped_off" ? stepStatusLabel || lastMeaningfulLandingInfo?.title || "Unknown" :
       getStatusLabel(status);
     const currentEventName =
       upgradeAt ? "user_upgraded" :
-      dayOneCompletedAt ? "bible_year_day_completed" :
+      lastCompletedDay ? `day_${lastCompletedDay}_completed` :
       createdAccountAt ? "created_account_successfully" :
       dayOneStartedAt ? "bible_year_task_started" :
-      dashboardCompletedAt ? "dashboard_tour_completed" :
-      onboardingCompletedAt ? "started_guest_journey" :
+      dashboardCompletedAt || onboardingCompletedAt ? "started_journey" :
       lastMeaningfulLandingRow?.event_name || lastRow?.event_name || "";
     const guestNumber = guestNumberBySession.get(sessionId);
     let keptLandingVisit = false;
@@ -1661,16 +1744,29 @@ function buildVisitorJourneys(
       return true;
     });
     const rawTimeline = [
-      ...timelineLandingRows.map((row, index) => {
+      ...timelineLandingRows
+        .filter((row) => {
+          const eventName = row.event_name || "";
+          return eventName === "landing_page_visit" ||
+            eventName === "clicked_start_journey" ||
+            eventName === "started_onboarding" ||
+            eventName === "viewed_onboarding_intro" ||
+            eventName === "started_guest_journey" ||
+            isAccountEvent(eventName);
+        })
+        .map((row, index) => {
         const info = getLandingActivityInfo(row);
+        const eventName = row.event_name || "";
+        const isStartClick = eventName === "clicked_start_journey" || eventName === "started_onboarding" || eventName === "viewed_onboarding_intro" || eventName === "started_guest_journey";
+        const title = isStartClick ? "Clicked Start Journey" : isAccountEvent(eventName) ? "Created account" : info.title;
         return {
           id: `landing-${row.event_name || "event"}-${row.created_at || index}`,
-          title: info.title,
-          eventName: row.event_name || "",
-          category: row.event_name === "landing_page_visit" ? "landing" as const : "onboarding" as const,
+          title,
+          eventName: eventName === "started_guest_journey" ? "clicked_start_journey" : eventName,
+          category: row.event_name === "landing_page_visit" ? "landing" as const : isAccountEvent(eventName) ? "account" as const : "landing" as const,
           status: info.category === "dropoff" ? "dropped" as const : "completed" as const,
           timestamp: row.created_at || new Date().toISOString(),
-          detail: info.detail,
+          detail: isStartClick ? "Visitor clicked Start Your Journey." : isAccountEvent(eventName) ? "Visitor created a Bible Buddy account." : info.detail,
           dayNumber: null,
           taskType: null,
         };
@@ -1686,6 +1782,7 @@ function buildVisitorJourneys(
           "onboarding_results_viewed",
           "onboarding_journey_started",
         ].includes(row.action_type || ""))
+        .filter((row) => row.action_type === "user_signup" || row.action_type === "user_upgraded")
         .map((row, index) => {
           const actionType = row.action_type || "";
           const dayNumber = Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0);
@@ -1704,16 +1801,17 @@ function buildVisitorJourneys(
             taskType: getTaskTypeFromAction(row),
           };
         }),
-      ...userProgressRows
+      ...completedProgressRows
         .filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed)
+        .filter((row) => Number(row.day_number || 0) >= 1 && Number(row.day_number || 0) <= 7)
         .map((row) => ({
           id: `progress-day-complete-${row.day_number}-${row.updated_at || row.user_id}`,
           title: `Finished Day ${row.day_number}`,
-          eventName: "bible_year_day_completed",
+          eventName: `day_${row.day_number}_completed`,
           category: "bible_year" as const,
           status: "completed" as const,
           timestamp: row.updated_at || new Date().toISOString(),
-          detail: "Video, day summary, and trivia are complete.",
+          detail: `Day ${row.day_number} completed.`,
           dayNumber: Number(row.day_number || 0) || null,
           taskType: "day_complete",
         })),
@@ -1726,14 +1824,9 @@ function buildVisitorJourneys(
       if (Number.isFinite(eventTime)) timelinePreviousTime = eventTime;
       return built;
     });
-    const completedDayNumbers = userProgressRows
-      .filter((row) => row.reading_completed && row.trivia_completed && row.reflection_completed)
-      .map((row) => Number(row.day_number || 0))
-      .filter((day) => day > 0);
     const startedDayNumbers = userProgressRows
       .map((row) => Number(row.day_number || 0))
       .filter((day) => day > 0);
-    const lastCompletedDay = completedDayNumbers.length ? Math.max(...completedDayNumbers) : null;
     const currentDay = startedDayNumbers.length ? Math.max(...startedDayNumbers) : lastCompletedDay;
     const trialActive = profile?.memberBadge === "pro_trial" || Boolean(profile?.proExpiresAt && new Date(profile.proExpiresAt).getTime() > Date.now());
     const details: VisitorJourneyDetails = {
@@ -1769,7 +1862,7 @@ function buildVisitorJourneys(
       createdAccountAt,
       upgradedAt: upgradeAt,
       currentStatus: status,
-      currentStatusLabel: stepStatusLabel,
+      currentStatusLabel: lastCompletedDay ? `Day ${lastCompletedDay} completed` : stepStatusLabel,
       source: getJourneyDisplaySource(firstRow),
       referrer: typeof firstRow?.referrer === "string" && firstRow.referrer ? firstRow.referrer : null,
       lastActiveAt,
@@ -2098,6 +2191,43 @@ async function loadAuthUserSummaries(url: string, serviceKey: string, targetUser
   return usersById;
 }
 
+async function loadAllAuthUserSummaries(url: string, serviceKey: string) {
+  const users: AuthUserSummary[] = [];
+  let page = 1;
+  const perPage = 1000;
+  let hasMore = true;
+
+  while (hasMore) {
+    const response = await fetch(`${url}/auth/v1/admin/users?page=${page}&per_page=${perPage}`, {
+      headers: {
+        apiKey: serviceKey,
+        Authorization: `Bearer ${serviceKey}`,
+      },
+    });
+
+    if (!response.ok) break;
+    const json = await response.json();
+    const pageUsers = Array.isArray(json.users) ? json.users : [];
+
+    for (const user of pageUsers) {
+      const id = typeof user?.id === "string" ? user.id : "";
+      if (!id) continue;
+      const identities = Array.isArray(user?.identities) ? user.identities : [];
+      users.push({
+        id,
+        email: typeof user?.email === "string" && user.email ? user.email : null,
+        createdAt: typeof user?.created_at === "string" ? user.created_at : null,
+        isAnonymous: Boolean(user?.is_anonymous) || (!user?.email && identities.length === 0),
+      });
+    }
+
+    hasMore = pageUsers.length === perPage;
+    page += 1;
+  }
+
+  return users;
+}
+
 export async function GET(request: Request) {
   const owner = await verifyOwner(request);
   if (!owner) {
@@ -2105,7 +2235,7 @@ export async function GET(request: Request) {
   }
 
   const journeyWindow = getJourneyWindowKey(request);
-  const journeySinceIso = new Date(Date.now() - getJourneyWindowMs(journeyWindow)).toISOString();
+  const { startIso: journeySinceIso, endIso: journeyBeforeIso } = getAnalyticsDateRange(journeyWindow);
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 
@@ -2120,44 +2250,84 @@ export async function GET(request: Request) {
     },
   });
 
+  const allAuthUsers = await loadAllAuthUserSummaries(url, serviceKey);
+  const realRegisteredUsers = allAuthUsers.filter((user) =>
+    !user.isAnonymous &&
+    Boolean(user.email) &&
+    user.email?.toLowerCase() !== "moorelouis3@gmail.com"
+  );
+  const now = new Date();
+  const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+  const nextMonthStart = new Date(now.getFullYear(), now.getMonth() + 1, 1).getTime();
+  const previousMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1).getTime();
+  const monthlySignups = realRegisteredUsers.filter((user) => {
+    const createdAt = user.createdAt ? new Date(user.createdAt).getTime() : 0;
+    return Number.isFinite(createdAt) && createdAt >= thisMonthStart && createdAt < nextMonthStart;
+  }).length;
+  const previousMonthlySignups = realRegisteredUsers.filter((user) => {
+    const createdAt = user.createdAt ? new Date(user.createdAt).getTime() : 0;
+    return Number.isFinite(createdAt) && createdAt >= previousMonthStart && createdAt < thisMonthStart;
+  }).length;
+  const { count: guestAccountCount } = await adminSupabase
+    .from("profile_stats")
+    .select("user_id", { count: "exact", head: true })
+    .eq("account_type", "guest");
+  const businessMetrics = {
+    totalUsers: realRegisteredUsers.length + (guestAccountCount || 0),
+    registeredUsers: realRegisteredUsers.length,
+    guestUsers: guestAccountCount || 0,
+    monthlySignups,
+    previousMonthlySignups,
+    monthlySignupChange: monthlySignups - previousMonthlySignups,
+    lifetimeSignups: realRegisteredUsers.length,
+  };
+
   const { data, error } = await adminSupabase
     .from("landing_onboarding_responses")
     .select("goal, experience, study_focus, time_commitment, difficulty, created_at");
 
-  const { data: eventData, error: eventError } = await adminSupabase
+  let landingQuery = adminSupabase
     .from("landing_page_events")
     .select("event_name, session_id, user_id, source, referrer, page_path, metadata, created_at")
     .gte("created_at", journeySinceIso)
     .order("created_at", { ascending: false })
     .limit(250000);
+  if (journeyBeforeIso) landingQuery = landingQuery.lt("created_at", journeyBeforeIso);
+  const { data: eventData, error: eventError } = await landingQuery;
 
   const eventRows = eventError ? [] : ((eventData || []) as Record<string, unknown>[]);
   const landingEventRows = eventRows as LandingEventRow[];
-  const { data: upgradeData } = await adminSupabase
+  let upgradeQuery = adminSupabase
     .from("master_actions")
     .select("user_id, username, action_label, created_at")
     .eq("action_type", "user_upgraded")
     .gte("created_at", journeySinceIso)
     .order("created_at", { ascending: false })
     .limit(200);
+  if (journeyBeforeIso) upgradeQuery = upgradeQuery.lt("created_at", journeyBeforeIso);
+  const { data: upgradeData } = await upgradeQuery;
   const upgradeRows = (upgradeData || []) as UpgradeActionRow[];
 
-  const { data: studyNotesActionData } = await adminSupabase
+  let studyNotesQuery = adminSupabase
     .from("master_actions")
     .select("user_id, username, action_type, action_label, created_at")
     .in("action_type", ["study_notes_viewed", "study_notes_section_opened", "chapter_notes_viewed"])
     .gte("created_at", journeySinceIso)
     .order("created_at", { ascending: false })
     .limit(1000);
+  if (journeyBeforeIso) studyNotesQuery = studyNotesQuery.lt("created_at", journeyBeforeIso);
+  const { data: studyNotesActionData } = await studyNotesQuery;
   const studyNotesActionRows = (studyNotesActionData || []) as StudyNotesActionRow[];
 
-  const { data: bibleYearTaskActionData } = await adminSupabase
+  let bibleYearTaskQuery = adminSupabase
     .from("master_actions")
     .select("user_id, action_type, action_label, created_at")
     .in("action_type", ["bible_in_one_year_reading_completed", "bible_year_task_started"])
     .gte("created_at", journeySinceIso)
     .order("created_at", { ascending: true })
     .limit(250000);
+  if (journeyBeforeIso) bibleYearTaskQuery = bibleYearTaskQuery.lt("created_at", journeyBeforeIso);
+  const { data: bibleYearTaskActionData } = await bibleYearTaskQuery;
   const bibleYearTaskActionRows = (bibleYearTaskActionData || []) as BibleYearTaskActionRow[];
 
   let masterFunnelRows: MasterActionFunnelRow[] = [];
@@ -2175,6 +2345,9 @@ export async function GET(request: Request) {
     "dashboard_tour_skipped",
     "bible_year_day_start_popup_viewed",
     "bible_year_day_start_popup_clicked",
+    "bible_year_audio_played",
+    "bible_year_audio_progress",
+    "bible_year_audio_completed",
     "bible_year_task_started",
     "bible_year_task_completed",
     "follow_along_scripture_opened",
@@ -2196,21 +2369,25 @@ export async function GET(request: Request) {
     "user_signup",
     "user_upgraded",
   ];
-  const { data: masterFunnelData, error: masterFunnelError } = await adminSupabase
+  let masterFunnelQuery = adminSupabase
     .from("master_actions")
     .select("user_id, username, session_id, action_type, action_label, journey_day, account_status, event_metadata, created_at")
     .in("action_type", masterFunnelActionTypes)
     .gte("created_at", journeySinceIso)
     .order("created_at", { ascending: false })
     .limit(250000);
+  if (journeyBeforeIso) masterFunnelQuery = masterFunnelQuery.lt("created_at", journeyBeforeIso);
+  const { data: masterFunnelData, error: masterFunnelError } = await masterFunnelQuery;
   if (masterFunnelError) {
-    const { data: fallbackMasterFunnelData } = await adminSupabase
+    let fallbackMasterFunnelQuery = adminSupabase
       .from("master_actions")
       .select("user_id, username, action_type, action_label, created_at")
       .in("action_type", masterFunnelActionTypes)
       .gte("created_at", journeySinceIso)
       .order("created_at", { ascending: false })
       .limit(250000);
+    if (journeyBeforeIso) fallbackMasterFunnelQuery = fallbackMasterFunnelQuery.lt("created_at", journeyBeforeIso);
+    const { data: fallbackMasterFunnelData } = await fallbackMasterFunnelQuery;
     masterFunnelRows = (fallbackMasterFunnelData || []) as MasterActionFunnelRow[];
   } else {
     masterFunnelRows = (masterFunnelData || []) as MasterActionFunnelRow[];
@@ -2315,6 +2492,7 @@ export async function GET(request: Request) {
     return Number.isFinite(updatedAt) && updatedAt >= new Date(journeySinceIso).getTime();
   });
   const bibleYearDays = buildBibleYearDayAnalytics(windowBibleYearProgressRows, masterFunnelRows, profileByUserId);
+  const audioEngagement = summarizeAudioEngagement(masterFunnelRows, bibleYearDays);
   const dayThreeUpgrade = buildDayThreeUpgradeAnalytics(masterFunnelRows);
   const daySevenUpgrade = buildDayUpgradeAnalytics(masterFunnelRows, 7);
   const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
@@ -2358,6 +2536,8 @@ export async function GET(request: Request) {
       personaLine: "Run CREATE_LANDING_ONBOARDING_RESPONSES.sql to enable new onboarding analytics.",
       funnel,
       landingLast24h,
+      businessMetrics,
+      audioEngagement,
       customerJourney,
       guestAccountFunnel,
       landingActivityLog,
@@ -2396,6 +2576,8 @@ export async function GET(request: Request) {
     questions,
     funnel,
     landingLast24h,
+    businessMetrics,
+    audioEngagement,
     customerJourney,
     guestAccountFunnel,
     landingActivityLog,

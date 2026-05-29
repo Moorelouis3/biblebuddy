@@ -32,6 +32,38 @@ type ChargeWithInvoice = Stripe.Charge & {
   invoice?: string | Stripe.Invoice | null;
 };
 
+type RevenueWindowKey = "today" | "yesterday" | "24h" | "7d" | "30d" | "this_month" | "lifetime";
+
+function getRevenueWindowKey(req: NextRequest): RevenueWindowKey {
+  const raw = req.nextUrl.searchParams.get("window");
+  return raw === "today" ||
+    raw === "yesterday" ||
+    raw === "24h" ||
+    raw === "7d" ||
+    raw === "30d" ||
+    raw === "this_month" ||
+    raw === "lifetime"
+    ? raw
+    : "today";
+}
+
+function getRevenueDateRange(windowKey: RevenueWindowKey) {
+  const now = new Date();
+  const todayStart = new Date(now);
+  todayStart.setHours(0, 0, 0, 0);
+  if (windowKey === "today") return { start: Math.floor(todayStart.getTime() / 1000), end: null as number | null, label: "Today" };
+  if (windowKey === "yesterday") {
+    const yesterdayStart = new Date(todayStart);
+    yesterdayStart.setDate(yesterdayStart.getDate() - 1);
+    return { start: Math.floor(yesterdayStart.getTime() / 1000), end: Math.floor(todayStart.getTime() / 1000), label: "Yesterday" };
+  }
+  if (windowKey === "7d") return { start: Math.floor((now.getTime() - 7 * 24 * 60 * 60 * 1000) / 1000), end: null as number | null, label: "Last 7 days" };
+  if (windowKey === "30d") return { start: Math.floor((now.getTime() - 30 * 24 * 60 * 60 * 1000) / 1000), end: null as number | null, label: "Last 30 days" };
+  if (windowKey === "this_month") return { start: Math.floor(new Date(now.getFullYear(), now.getMonth(), 1).getTime() / 1000), end: null as number | null, label: "This month" };
+  if (windowKey === "lifetime") return { start: 0, end: null as number | null, label: "Lifetime" };
+  return { start: Math.floor((now.getTime() - 24 * 60 * 60 * 1000) / 1000), end: null as number | null, label: "Last 24 hours" };
+}
+
 async function requireOwner(req: NextRequest) {
   const authHeader = req.headers.get("authorization");
   const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
@@ -58,10 +90,11 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const nowSeconds = Math.floor(Date.now() / 1000);
-    const thirtyDaysAgo = nowSeconds - 30 * 24 * 60 * 60;
+    const windowKey = getRevenueWindowKey(req);
+    const revenueRange = getRevenueDateRange(windowKey);
+    const createdRange = revenueRange.end ? { gte: revenueRange.start, lt: revenueRange.end } : { gte: revenueRange.start };
 
-    const [activeSubscriptions, trialingSubscriptions, recentCharges, thirtyDayCharges] = await Promise.all([
+    const [activeSubscriptions, trialingSubscriptions, recentCharges, rangeCharges] = await Promise.all([
       stripe.subscriptions.list({
         status: "active",
         limit: 100,
@@ -78,7 +111,7 @@ export async function GET(req: NextRequest) {
       }),
       stripe.charges.list({
         limit: 100,
-        created: { gte: thirtyDaysAgo },
+        created: createdRange,
         expand: ["data.customer"],
       }),
     ]);
@@ -90,9 +123,9 @@ export async function GET(req: NextRequest) {
     );
     const mrrCents = activePaidSubscriptions.reduce((total, subscription) => total + getSubscriptionMrrCents(subscription), 0);
     const currency = activePaidSubscriptions[0]?.currency || recentCharges.data[0]?.currency || "usd";
-    const paidThirtyDayCharges = thirtyDayCharges.data.filter((charge) => charge.paid && !charge.refunded);
-    const revenue30dCents = paidThirtyDayCharges.reduce((total, charge) => total + charge.amount_captured, 0);
-    const oneTime30dCents = paidThirtyDayCharges
+    const paidRangeCharges = rangeCharges.data.filter((charge) => charge.paid && !charge.refunded);
+    const revenueRangeCents = paidRangeCharges.reduce((total, charge) => total + charge.amount_captured, 0);
+    const oneTimeRangeCents = paidRangeCharges
       .filter((charge) => {
         const chargeWithInvoice = charge as ChargeWithInvoice;
         const plan = (charge.metadata?.plan || charge.metadata?.checkout_context || "").toLowerCase();
@@ -125,16 +158,22 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({
       currency,
+      window: windowKey,
+      label: revenueRange.label,
       mrrCents,
       mrr: formatMoney(mrrCents, currency),
       activeSubscriptions: activePaidSubscriptions.length,
       monthlySubscriptions: monthlySubscriptions.length,
       trialingSubscriptions: trialingSubscriptions.data.length,
       totalSubscriptionsTracked: subscriptions.length,
-      revenue30dCents,
-      revenue30d: formatMoney(revenue30dCents, currency),
-      oneTime30dCents,
-      oneTime30d: formatMoney(oneTime30dCents, currency),
+      revenue30dCents: revenueRangeCents,
+      revenue30d: formatMoney(revenueRangeCents, currency),
+      revenueRangeCents,
+      revenueRange: formatMoney(revenueRangeCents, currency),
+      oneTime30dCents: oneTimeRangeCents,
+      oneTime30d: formatMoney(oneTimeRangeCents, currency),
+      oneTimeRangeCents,
+      oneTimeRange: formatMoney(oneTimeRangeCents, currency),
       recentPayments,
       updatedAt: new Date().toISOString(),
     });

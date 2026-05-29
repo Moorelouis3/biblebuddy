@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v14-2026-05-28-dashboard-media-player";
+const CACHE_VERSION = "v15-2026-05-29-audio-streaming-fix";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 const RUNTIME_CACHE_NAME = `biblebuddy-runtime-${CACHE_VERSION}`;
 const MEDIA_CACHE_NAME = `biblebuddy-media-${CACHE_VERSION}`;
@@ -36,7 +36,9 @@ self.addEventListener("message", (event) => {
   }
   if (event.data?.type === "CACHE_BIBLE_YEAR_OFFLINE") {
     const urls = Array.isArray(event.data.urls) ? event.data.urls.filter((url) => typeof url === "string") : [];
-    const mediaUrls = Array.isArray(event.data.mediaUrls) ? event.data.mediaUrls.filter((url) => typeof url === "string") : [];
+    const mediaUrls = Array.isArray(event.data.mediaUrls)
+      ? event.data.mediaUrls.filter((url) => typeof url === "string" && !url.startsWith("/api/tts/bible-year/day/"))
+      : [];
     event.waitUntil(
       Promise.all([
         caches.open(RUNTIME_CACHE_NAME).then((cache) =>
@@ -106,9 +108,16 @@ self.addEventListener('fetch', event => {
     );
     return;
   }
-  // Cache-first for app bundles and downloaded media/audio.
-  if (isStaticAsset || isBibleYearAudio || isMediaAsset) {
-    const cacheName = isBibleYearAudio || isMediaAsset ? MEDIA_CACHE_NAME : RUNTIME_CACHE_NAME;
+  // Bible Year audio uses short-lived signed URLs behind the API route. Do not
+  // cache the redirect response, or mobile playback can get stuck on stale media.
+  if (isBibleYearAudio) {
+    event.respondWith(fetch(req));
+    return;
+  }
+
+  // Cache-first for app bundles and stable downloaded media.
+  if (isStaticAsset || isMediaAsset) {
+    const cacheName = isMediaAsset ? MEDIA_CACHE_NAME : RUNTIME_CACHE_NAME;
     event.respondWith(
       caches.open(cacheName).then(async (cache) => {
         const cached = await cache.match(req);

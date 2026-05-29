@@ -78,6 +78,14 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     try {
       await recordActivityHeartbeat(userId);
 
+    if (typeof window !== "undefined") {
+      const skipInitialLoginKey = `bb:skip-initial-login:${userId}`;
+      if (window.localStorage.getItem(skipInitialLoginKey) === "1") {
+        window.localStorage.removeItem(skipInitialLoginKey);
+        return false;
+      }
+    }
+
     // Check if we've already logged activity for this user in this session
     const sessionKey = `activity_logged_${userId}`;
     const today = getBibleBuddyLocalDayKey();
