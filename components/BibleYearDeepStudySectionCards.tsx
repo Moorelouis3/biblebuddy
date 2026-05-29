@@ -10,6 +10,8 @@ type BibleYearDeepStudySectionCardsProps = {
   activeReference: string | null;
   onActiveReferenceChange: (reference: string | null) => void;
   onSectionOpen?: (section: BibleYearDeepStudySection) => void;
+  canOpenSections?: boolean;
+  onLockedSectionClick?: (section: BibleYearDeepStudySection) => void;
   intro?: {
     eyebrow?: string;
     title: string;
@@ -398,6 +400,8 @@ export default function BibleYearDeepStudySectionCards({
   activeReference,
   onActiveReferenceChange,
   onSectionOpen,
+  canOpenSections = true,
+  onLockedSectionClick,
   intro,
   closing,
   topId,
@@ -406,6 +410,11 @@ export default function BibleYearDeepStudySectionCards({
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   function openSection(section: BibleYearDeepStudySection) {
+    if (!canOpenSections) {
+      onLockedSectionClick?.(section);
+      return;
+    }
+
     const reference = section.reference;
     const nextReference = activeReference === reference ? null : reference;
     onActiveReferenceChange(nextReference);

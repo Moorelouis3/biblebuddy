@@ -5912,6 +5912,22 @@ export default function DashboardJourneyExperience({
     }
   }
 
+  function showBibleYearStudyNotesUpgrade(dayNumber?: number | null) {
+    const day =
+      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber) ||
+      selectedBibleYearSeriesDay ||
+      activeBibleYearDashboardDay;
+    const nextDayNumber = day?.dayNumber || dayNumber || null;
+
+    setBibleYearDeepNotesUpgradeDay(nextDayNumber);
+    setBibleYearDeepNotesUpgradeOpen(true);
+    void logStudyNotesUpgradeAction(
+      ACTION_TYPE.upgrade_popup_viewed,
+      nextDayNumber,
+      `Bible in One Year Day ${nextDayNumber || "Unknown"} Study Notes upgrade popup viewed`,
+    );
+  }
+
   async function resolveBibleYearStudyNotesPaidStatus() {
     if (isPaidUser) return true;
     if (!userId) return false;
@@ -6012,13 +6028,7 @@ export default function DashboardJourneyExperience({
       return;
     }
 
-    setBibleYearDeepNotesUpgradeDay(day?.dayNumber || dayNumber || null);
-    setBibleYearDeepNotesUpgradeOpen(true);
-    void logStudyNotesUpgradeAction(
-      ACTION_TYPE.upgrade_popup_viewed,
-      day?.dayNumber || dayNumber || null,
-      `Bible in One Year Day ${day?.dayNumber || dayNumber || "Unknown"} Study Notes upgrade popup viewed`,
-    );
+    showBibleYearStudyNotesUpgrade(day?.dayNumber || dayNumber || null);
   }
 
   function openBibleYearDayOneGiftDeepNotes() {
@@ -9052,7 +9062,6 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearSummaryTask(day: GenesisBibleYearDay) {
-    const summaryContent = getBibleYearDayContent(day).summary;
     const { markdown: deepNotesMarkdown, sections: deepStudySections } = getBibleYearDayDeepNotes(day.dayNumber);
     const trackSummaryStudyNotesSection = (section: BibleYearDeepStudySection) => {
       void trackStudyNotesSectionOpened({
@@ -9067,148 +9076,53 @@ Before we understand redemption, we need to understand what God made humanity fo
         sectionTitle: section.title,
       });
     };
-    const summaryHighlights = summaryContent.highlights;
-    void summaryHighlights;
-    const legacyDayOneHighlights = [
-      ["✨", "God speaks into darkness and brings light."],
-      ["🌍", "God shapes the world into a home filled with life and purpose."],
-      ["👤", "Humanity is created in God's image with value, dignity, and meaning."],
-      ["🌱", "Eden shows work, rest, freedom, boundaries, and relationship with God."],
-      ["📖", "Creation reveals a God who brings order, beauty, and intentional design."],
-    ];
+    const handleLockedStudyNotesSectionClick = (section: BibleYearDeepStudySection) => {
+      void trackDeepStudyInterestOnce({
+        userId,
+        username: userName,
+        source: "bible_in_one_year",
+        sourceLabel: "Bible in One Year",
+        itemKey: `day-${day.dayNumber}`,
+        itemTitle: day.title,
+        contentLabel: `Day ${day.dayNumber} - ${day.title}`,
+      });
+      showBibleYearStudyNotesUpgrade(day.dayNumber);
+      void section;
+    };
 
     return (
       <div className="px-4 pb-4">
         <div className="px-1 pt-2">
-          <div className="space-y-6">
-            <section>
-              {summaryContent.intro.map((paragraph) => (
-                <p key={paragraph} className="mt-3 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)] first:mt-0">
-                  {paragraph}
-                </p>
-              ))}
-            </section>
-
-            <section>
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Key Highlights</p>
-              <div className="mt-3 grid gap-3">
-                {(day.dayNumber === 2
-                  ? [
-                      ["🐍", "The serpent questions God's word and makes distrust sound reasonable."],
-                      ["🍎", "Adam and Eve disobey, and shame, fear, hiding, and blame enter the story."],
-                      ["🌱", "God judges sin, but also gives the first promise that evil will not win forever."],
-                      ["💔", "Cain's anger shows sin spreading from the garden into the family."],
-                      ["✨", "Seth's birth shows hope continuing even after heartbreak and loss."],
-                    ]
-                  : summaryHighlights
-                ).map(([emoji, text]) => (
-                  <div key={text} className="flex gap-3">
-                    <span className="shrink-0 text-lg leading-6" aria-hidden="true">{emoji}</span>
-                    <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{text}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="border-l-4 border-[var(--bb-success,var(--bb-accent,#7BAFD4))] pl-4">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-success,var(--bb-accent,#7BAFD4))]">Big Takeaway</p>
-              <p className="mt-3 text-sm font-black leading-7 text-[var(--bb-text-primary,#111827)]">
-                {summaryContent.takeaway}
-              </p>
-              <p className="mt-3 text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#4b5563)]">
-                {summaryContent.takeawaySupport}
-              </p>
-            </section>
-
-            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] pt-5">
-              <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{summaryContent.studyNotesCtaTitle || "Want to understand today's Scripture even deeper?"}</p>
-              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                {summaryContent.studyNotesCtaBody || "Open the Study Notes for verse-by-verse explanations, themes, context, and deeper study tools."}
-              </p>
-              {deepNotesMarkdown ? (
-                <button
-                  type="button"
-                  onClick={() => openBibleYearDeepNotes(day.dayNumber)}
-                  className="bible-year-deep-notes-dance mt-3 w-full rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(135deg,var(--bb-card,#ffffff),color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_78%,var(--bb-card,#ffffff)))] px-4 py-3 text-sm font-black text-[var(--bb-accent,#2f7fe8)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)] hover:brightness-105"
-                >
-                  Open Study Notes
-                </button>
-              ) : null}
-            </div>
-          </div>
-
-          {false && bibleYearDeepNotesOpen && deepNotesMarkdown ? (
-            <div className="mt-4 overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-[0_18px_42px_rgba(14,26,58,0.14)]">
-              <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#dbe7f4)] px-4 py-3">
-                <div className="min-w-0">
-                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Day {day.dayNumber} Study Notes</p>
-                  <p className="truncate text-lg font-black text-[var(--bb-text-primary,#111827)]">{day.title}</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setBibleYearDeepNotesOpen(false)}
-                  className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] text-lg font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
-                  aria-label="Close study notes"
-                >
-                  x
-                </button>
-              </div>
-              <div className="max-h-[58dvh] overflow-y-auto px-4 py-5">
-                {deepStudySections ? (
-                  <BibleYearDeepStudySectionCards
-                    sections={deepStudySections || []}
-                    activeReference={bibleYearOpenVerseBreakdownKey}
-                    onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
-                    onSectionOpen={trackSummaryStudyNotesSection}
-                    intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
-                    closing={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
-                    topId={`bible-year-day-${day.dayNumber}-summary-deep-study-top`}
-                  />
-                ) : (
-                  <ChapterNotesMarkdown>{deepNotesMarkdown || ""}</ChapterNotesMarkdown>
-                )}
-              </div>
-            </div>
-          ) : null}
-
-        </div>
-
-        <ModalShell isOpen={Boolean(bibleYearDeepNotesOpen && deepNotesMarkdown)} onClose={() => setBibleYearDeepNotesOpen(false)}>
-          <div className="w-full max-w-xl overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_28%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-left text-[var(--bb-text-primary,#111827)] shadow-[0_24px_70px_rgba(14,26,58,0.22)]">
-            <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-3">
-              <div className="min-w-0">
-                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">Day {day.dayNumber} Study Notes</p>
-                <p className="truncate text-lg font-black text-[var(--bb-text-primary,#111827)]">{day.title}</p>
-              </div>
+          {deepStudySections ? (
+            <BibleYearDeepStudySectionCards
+              sections={deepStudySections || []}
+              activeReference={bibleYearOpenVerseBreakdownKey}
+              onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
+              onSectionOpen={trackSummaryStudyNotesSection}
+              canOpenSections={isPaidUser || isOwnerDashboard}
+              onLockedSectionClick={handleLockedStudyNotesSectionClick}
+              intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
+              closing={day.dayNumber === 1 && (isPaidUser || isOwnerDashboard) ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
+              topId={`bible-year-day-${day.dayNumber}-summary-deep-study-top`}
+            />
+          ) : deepNotesMarkdown ? (
+            isPaidUser || isOwnerDashboard ? (
+              <ChapterNotesMarkdown>{deepNotesMarkdown}</ChapterNotesMarkdown>
+            ) : (
               <button
                 type="button"
-                onClick={() => setBibleYearDeepNotesOpen(false)}
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_26%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] text-2xl font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
-                aria-label="Close study notes"
+                onClick={() => showBibleYearStudyNotesUpgrade(day.dayNumber)}
+                className="w-full rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-4 py-4 text-left text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
               >
-                x
+                Unlock Day {day.dayNumber} Study Notes
               </button>
-            </div>
-            <div className="bible-year-study-notes-scroll max-h-[72dvh] overflow-y-auto px-2 py-3 sm:px-4 sm:py-5" data-bible-year-deep-notes-scroll={`day-${day.dayNumber}-summary`}>
-              {deepStudySections ? (
-                <BibleYearDeepStudySectionCards
-                  sections={deepStudySections || []}
-                  activeReference={bibleYearOpenVerseBreakdownKey}
-                  onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
-                  onSectionOpen={trackSummaryStudyNotesSection}
-                  intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
-                  closing={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
-                  topId={`bible-year-day-${day.dayNumber}-summary-deep-study-top`}
-                />
-              ) : (
-                <ChapterNotesMarkdown>{deepNotesMarkdown || ""}</ChapterNotesMarkdown>
-              )}
-            </div>
-          </div>
-        </ModalShell>
-
-        {renderBibleYearDayOneDeepNotesGiftModal()}
-
+            )
+          ) : (
+            <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+              Study notes are being prepared for this day.
+            </p>
+          )}
+        </div>
         {renderBibleYearDeepNotesUpgradeModal()}
         {renderBibleYearQuickUpgradeModal()}
       </div>
