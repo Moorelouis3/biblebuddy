@@ -56,12 +56,41 @@ function getEnrichedHtmlForVerse(enrichedHtml: string | undefined, fallback: str
   return html;
 }
 
+function decodeHtmlEntities(text: string) {
+  return text
+    .replace(/&#(\d+);/g, (_match, code) => String.fromCharCode(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_match, code) => String.fromCharCode(Number.parseInt(code, 16)))
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+}
+
+function getVisibleVerseText(v: { text: string; enrichedHtml?: string }, plainTextMode: boolean) {
+  if (plainTextMode || !v.enrichedHtml) return v.text;
+
+  return decodeHtmlEntities(
+    getEnrichedHtmlForVerse(v.enrichedHtml, v.text)
+      .replace(/<[^>]*>/g, "")
+      .replace(/\s+/g, " ")
+      .trim(),
+  );
+}
+
 function getTextOffset(root: HTMLElement, targetNode: Node, targetOffset: number) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   let offset = 0;
   let node = walker.nextNode();
 
   while (node) {
+    const parentElement = node.parentElement;
+    if (parentElement?.closest("[data-highlight-note-indicator='true']")) {
+      node = walker.nextNode();
+      continue;
+    }
+
     if (node === targetNode) {
       return offset + targetOffset;
     }
@@ -98,6 +127,10 @@ function groupRangesByVerse(ranges: VerseHighlightRange[]) {
     map[range.verse].push(range);
     return map;
   }, {});
+}
+
+function rangesOverlap(startA: number, endA: number, startB: number, endB: number) {
+  return startA < endB && endA > startB;
 }
 
 function HighlightActionMenu({
@@ -333,12 +366,44 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     const range = selection.getRangeAt(0);
     if (!root.contains(range.startContainer) || !root.contains(range.endContainer)) return;
 
+    const visibleVerseText = root.textContent || verseText;
     const normalized = normalizeSelectedRange(
-      verseText,
+      visibleVerseText,
       getTextOffset(root, range.startContainer, range.startOffset),
       getTextOffset(root, range.endContainer, range.endOffset),
     );
     if (!normalized.selectedText) return;
+
+    const overlappingRanges = (rangeMap[verse] || []).filter((savedRange) =>
+      rangesOverlap(normalized.startOffset, normalized.endOffset, savedRange.start_offset, savedRange.end_offset),
+    );
+    const hasWholeVerseHighlight = Boolean(highlightMap[verse]);
+
+    if (overlappingRanges.length || hasWholeVerseHighlight) {
+      selection.removeAllRanges();
+      setPicker(null);
+      setRangeColorPickerOpen(false);
+
+      if (overlappingRanges.length) {
+        const overlappingIds = new Set(overlappingRanges.map((savedRange) => savedRange.id));
+        setRangeMap((current) => ({
+          ...current,
+          [verse]: (current[verse] || []).filter((savedRange) => !overlappingIds.has(savedRange.id)),
+        }));
+        void Promise.all(overlappingRanges.map((savedRange) => deleteHighlightRange(savedRange.id)));
+      }
+
+      if (hasWholeVerseHighlight) {
+        setHighlightMap((current) => {
+          const next = { ...current };
+          delete next[verse];
+          return next;
+        });
+        void deleteHighlight(book, chapter, verse);
+      }
+
+      return;
+    }
 
     const rect = range.getBoundingClientRect();
     setPicker({
@@ -547,8 +612,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   }
 
   function renderVerseText(v: { number: number; text: string; enrichedHtml?: string }) {
+    const visibleText = getVisibleVerseText(v, plainTextMode);
     const ranges = (rangeMap[v.number] || [])
-      .filter((range) => range.start_offset >= 0 && range.end_offset <= v.text.length && range.end_offset > range.start_offset)
+      .filter((range) => range.start_offset >= 0 && range.end_offset <= visibleText.length && range.end_offset > range.start_offset)
       .sort((a, b) => a.start_offset - b.start_offset);
 
     if (!ranges.length) {
@@ -573,7 +639,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     ranges.forEach((range) => {
       const start = Math.max(cursor, range.start_offset);
       const end = Math.max(start, range.end_offset);
-      if (start > cursor) pieces.push(v.text.slice(cursor, start));
+      if (start > cursor) pieces.push(visibleText.slice(cursor, start));
       if (end > start) {
         pieces.push(
           <span
@@ -583,9 +649,13 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
             title={range.note_text ? "Click to view or edit this note" : "Click to add a note, change color, or remove this highlight"}
             onClick={(event) => handleRangeClick(range, event)}
           >
-            {v.text.slice(start, end)}
+            {visibleText.slice(start, end)}
             {range.note_text ? (
-              <sup className="ml-0.5 inline-grid h-4 min-w-4 translate-y-[-1px] place-items-center rounded-full bg-sky-500 px-1 text-[9px] font-black leading-none text-white">
+              <sup
+                data-highlight-note-indicator="true"
+                contentEditable={false}
+                className="ml-0.5 inline-grid h-4 min-w-4 translate-y-[-1px] select-none place-items-center rounded-full bg-sky-500 px-1 text-[9px] font-black leading-none text-white"
+              >
                 📝
               </sup>
             ) : null}
@@ -595,7 +665,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       cursor = Math.max(cursor, end);
     });
 
-    if (cursor < v.text.length) pieces.push(v.text.slice(cursor));
+    if (cursor < visibleText.length) pieces.push(visibleText.slice(cursor));
 
     return (
       <span
