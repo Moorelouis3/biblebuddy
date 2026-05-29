@@ -9059,7 +9059,14 @@ Before we understand redemption, we need to understand what God made humanity fo
     return (
       <section className="bible-year-follow-along-scroll dashboard-bible-reader-embed mt-3 max-h-[630px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,var(--bb-surface-soft,#f8fbff)),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_88%,var(--bb-card,#ffffff)))] p-4 text-left text-[var(--bb-text-primary,#111827)] shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_42px_rgba(15,23,42,0.08)]">
         {bibleYearSelectedTerm ? (
-          <div className="mb-5">
+          <div
+            className="fixed inset-0 z-[90] flex items-center justify-center bg-slate-950/45 px-4 py-6 backdrop-blur-sm"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${bibleYearSelectedTerm.name} Bible database note`}
+            onClick={closeBibleYearTermTakeover}
+          >
+            <div onClick={(event) => event.stopPropagation()}>
             <DatabaseTermTakeover
               selectedTerm={bibleYearSelectedTerm}
               termBurstKey={bibleYearTermBurstKey}
@@ -9067,9 +9074,9 @@ Before we understand redemption, we need to understand what God made humanity fo
               termNotes={bibleYearTermNotes}
               termNotesError={bibleYearTermNotesError}
               onClose={closeBibleYearTermTakeover}
-              takeoverRef={bibleYearTermTakeoverRef}
               displayMode="reader"
             />
+            </div>
           </div>
         ) : null}
         <div className="space-y-7">

@@ -3,7 +3,7 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "@/lib/bibleInOneYearPlan";
 import { supabase } from "@/lib/supabaseClient";
-import { applyAppThemeToDocument } from "@/lib/appThemes";
+import { applyAppThemeToDocument, readCachedAppTheme } from "@/lib/appThemes";
 
 type JourneyWindow = "today" | "yesterday" | "24h" | "7d" | "30d" | "this_month" | "lifetime";
 type AccountFilter = "all" | "guest" | "free" | "pro";
@@ -755,17 +755,17 @@ function MobileHighlightCard({
   icon: "visitors" | "play" | "user" | "headphones" | "pro" | "spark" | "check";
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-4 shadow-[0_18px_44px_rgba(0,0,0,0.22)]">
+    <div className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_14px_34px_rgba(15,23,42,0.10)]">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">{label}</p>
-          <p className="mt-2 text-2xl font-black leading-none text-white">{value}</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--bb-text-muted,#64748b)]">{label}</p>
+          <p className="mt-2 text-2xl font-black leading-none text-[var(--bb-text-primary,#101827)]">{value}</p>
         </div>
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-cyan-200/15 bg-cyan-200/10 text-cyan-100">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#d8e3ec))] bg-[var(--bb-accent-soft,#e6f1ff)] text-[var(--bb-accent,#2f7fe8)]">
           <Icon name={icon} />
         </span>
       </div>
-      <p className="mt-3 text-xs font-bold leading-5 text-slate-400">{helper}</p>
+      <p className="mt-3 text-xs font-bold leading-5 text-[var(--bb-text-secondary,#334155)] opacity-80">{helper}</p>
     </div>
   );
 }
@@ -801,17 +801,17 @@ function MobileAnalyticsHighlights({
 
   return (
     <section className="mt-5 space-y-4 md:hidden">
-      <div className="rounded-[24px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(125,211,252,0.16),transparent_38%),linear-gradient(145deg,rgba(15,23,42,0.96),rgba(2,6,23,0.98))] p-4 shadow-[0_24px_70px_rgba(0,0,0,0.3)]">
+      <div className="rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_16px_40px_rgba(15,23,42,0.10)]">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-cyan-200">Mobile Highlights</p>
-            <h2 className="mt-2 text-2xl font-black leading-tight text-white">Bible Buddy today</h2>
-            <p className="mt-1 text-xs font-bold text-slate-400">{windowLabel}</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">Analytics</p>
+            <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#101827)]">Bible Buddy today</h2>
+            <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary,#334155)] opacity-80">{windowLabel}</p>
           </div>
           <select
             value={windowKey}
             onChange={(event) => setWindowKey(event.target.value as JourneyWindow)}
-            className="h-10 max-w-[150px] rounded-xl border border-white/10 bg-slate-950/70 px-3 text-xs font-black text-white outline-none focus:border-cyan-200/60"
+            className="h-10 max-w-[150px] rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-3 text-xs font-black text-[var(--bb-text-primary,#101827)] outline-none focus:border-[var(--bb-accent,#2f7fe8)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#e6f1ff)]"
             aria-label="Analytics timeframe"
           >
             {WINDOW_OPTIONS.map((option) => (
@@ -822,7 +822,7 @@ function MobileAnalyticsHighlights({
       </div>
 
       {loading ? (
-        <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 text-sm font-bold text-slate-300">
+        <div className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 text-sm font-bold text-[var(--bb-text-secondary,#334155)]">
           Loading analytics...
         </div>
       ) : (
@@ -867,7 +867,7 @@ function MobileAnalyticsHighlights({
       )}
 
       {stripeRevenue?.mrr ? (
-        <div className="rounded-2xl border border-cyan-200/15 bg-cyan-200/8 p-4 text-sm font-black text-cyan-100">
+        <div className="rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#d8e3ec))] bg-[var(--bb-accent-soft,#e6f1ff)] p-4 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
           MRR: {stripeRevenue.mrr}
         </div>
       ) : null}
@@ -1836,12 +1836,13 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   const [expandedJourneyPerformanceDay, setExpandedJourneyPerformanceDay] = useState(0);
 
   useEffect(() => {
-    applyAppThemeToDocument("dark");
+    applyAppThemeToDocument(readCachedAppTheme(null));
   }, []);
 
   useEffect(() => {
     async function checkOwner() {
       const { data: userData } = await supabase.auth.getUser();
+      applyAppThemeToDocument(readCachedAppTheme(userData.user?.id || null));
       setIsOwner(userData.user?.email === "moorelouis3@gmail.com");
       setAuthChecked(true);
     }

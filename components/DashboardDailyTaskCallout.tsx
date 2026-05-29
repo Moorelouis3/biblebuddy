@@ -210,12 +210,20 @@ export function DatabaseTermTakeover({
   return (
     <div
       ref={takeoverRef}
-      className={`relative overflow-hidden bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] ${
+      className={`relative overflow-hidden border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_22px_70px_rgba(15,23,42,0.24)] ${
         isReaderMode
-          ? "max-h-[min(72vh,560px)] rounded-[18px] px-3 py-4 text-left"
+          ? "max-h-[min(80vh,620px)] w-full max-w-[min(92vw,680px)] rounded-[18px] px-3 py-4 text-left"
           : "min-h-[62vh] rounded-[26px] px-4 py-6 text-center"
       }`}
     >
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close word notes"
+        className="absolute right-3 top-3 z-20 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,transparent)] text-lg font-black leading-none text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f6f8fb)]"
+      >
+        x
+      </button>
       <style>{`
         @keyframes word-discovery-smoke {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); filter: blur(0); }
@@ -240,7 +248,7 @@ export function DatabaseTermTakeover({
       <div
         className={`word-discovery-card relative z-10 mx-auto flex flex-col ${
           isReaderMode
-            ? "max-h-[calc(min(72vh,560px)-2rem)] max-w-none overflow-y-auto overscroll-contain pr-1"
+            ? "max-h-[calc(min(80vh,620px)-2rem)] max-w-none overflow-y-auto overscroll-contain pr-10"
             : "min-h-[58vh] max-w-xl items-center justify-center"
         }`}
       >
