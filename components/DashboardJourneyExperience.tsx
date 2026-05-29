@@ -9053,7 +9053,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 : "border-[var(--bb-button,#2f7fe8)] bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
             }`}
           >
-            <span className="text-base font-black">{videoComplete ? "Lesson Complete" : showVideo ? "Mark Video Complete" : "Mark Audio Complete"}</span>
+            <span className="text-base font-black">{videoComplete ? "Lesson Completed" : showVideo ? "Mark Video Complete" : "Mark Audio Complete"}</span>
             <span className="rounded-full bg-white/18 px-2.5 py-1 text-xs font-black">Complete</span>
           </button>
         </div>
@@ -10136,7 +10136,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
               }`}
             >
-              {readingComplete ? "Lesson Complete" : "Mark as Complete"}
+              {readingComplete ? "Lesson Completed" : "Mark as Complete"}
             </button>
             <button
               type="button"

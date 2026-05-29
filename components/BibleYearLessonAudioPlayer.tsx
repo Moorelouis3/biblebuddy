@@ -716,7 +716,6 @@ export default function BibleYearLessonAudioPlayer({
             </div>
             ) : null}
           </div>
-        {error ? <p className="px-1 text-xs font-black text-red-500">Audio unavailable. Try again in a moment.</p> : null}
       </div>
     </section>
   );
