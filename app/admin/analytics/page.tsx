@@ -732,13 +732,13 @@ function FounderMetricCard({
   accent?: string;
 }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_46px_rgba(0,0,0,0.2)]">
-      <div className={`grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.06] ${accent}`}>
+    <div className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_14px_34px_rgba(15,23,42,0.08)]">
+      <div className={`grid h-10 w-10 place-items-center rounded-lg border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] ${accent}`}>
         <Icon name={icon} />
       </div>
-      <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-slate-400">{title}</p>
-      <p className="mt-2 text-3xl font-black leading-none text-white">{value}</p>
-      <p className="mt-2 text-sm font-semibold leading-5 text-slate-400">{helper}</p>
+      <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#64748b)]">{title}</p>
+      <p className="mt-2 text-3xl font-black leading-none text-[var(--bb-text-primary,#101827)]">{value}</p>
+      <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#334155)]">{helper}</p>
     </div>
   );
 }
@@ -895,19 +895,19 @@ function FounderFunnelSection({
   ];
 
   return (
-    <section className="rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.12),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
-      <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">User Acquisition Funnel</p>
-      <h2 className="mt-2 text-2xl font-black text-white">Where people are dropping off</h2>
+    <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
+      <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">User Acquisition Funnel</p>
+      <h2 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">Where people are dropping off</h2>
       <div className="mt-6 grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-stretch">
         {steps.map((step, index) => (
           <Fragment key={step.label}>
-            <div className="rounded-xl border border-white/10 bg-white/[0.045] p-5">
-              <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">{step.label}</p>
-              <p className="mt-3 text-3xl font-black text-white">{typeof step.value === "number" ? formatNumber(step.value) : step.value}</p>
-              {step.rate ? <p className="mt-2 text-sm font-black text-cyan-200">{step.rate}</p> : <p className="mt-2 text-sm font-semibold text-slate-500">unique visitors</p>}
+            <div className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-5">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted,#64748b)]">{step.label}</p>
+              <p className="mt-3 text-3xl font-black text-[var(--bb-text-primary,#101827)]">{typeof step.value === "number" ? formatNumber(step.value) : step.value}</p>
+              {step.rate ? <p className="mt-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">{step.rate}</p> : <p className="mt-2 text-sm font-semibold text-[var(--bb-text-muted,#64748b)]">unique visitors</p>}
             </div>
             {index < steps.length - 1 ? (
-              <div className="hidden place-items-center text-slate-500 lg:grid">
+              <div className="hidden place-items-center text-[var(--bb-text-muted,#64748b)] lg:grid">
                 <Icon name="arrow" />
               </div>
             ) : null}
@@ -928,13 +928,13 @@ function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEng
     source: "day_task_events" as const,
   };
   return (
-    <section className="rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+    <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Listening Metrics</p>
-          <h2 className="mt-2 text-2xl font-black text-white">Are people actually listening?</h2>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">Listening Metrics</p>
+          <h2 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">Are people actually listening?</h2>
         </div>
-        <p className="text-sm font-bold text-slate-500">
+        <p className="text-sm font-bold text-[var(--bb-text-muted,#64748b)]">
           {metrics.source === "audio_events" ? "Using audio events" : "Using day-start events until audio duration tracking is live"}
         </p>
       </div>
@@ -1120,37 +1120,37 @@ function JourneyPerformanceCard({
     <button
       type="button"
       onClick={() => onOpen(day)}
-      className="group rounded-xl border border-white/10 bg-white/[0.045] p-4 text-left shadow-[0_14px_34px_rgba(0,0,0,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:bg-white/[0.065]"
+      className="group rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-[0_14px_34px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-accent-soft,#e6f1ff)]"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-200">Day {day.dayNumber}</p>
-          <h3 className="mt-1 truncate text-base font-black text-white">{day.title}</h3>
-          <p className="mt-0.5 text-xs font-semibold text-slate-400">{day.reference}</p>
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Day {day.dayNumber}</p>
+          <h3 className="mt-1 truncate text-base font-black text-[var(--bb-text-primary,#101827)]">{day.title}</h3>
+          <p className="mt-0.5 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">{day.reference}</p>
         </div>
-        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 bg-slate-950/50 text-slate-300 transition group-hover:text-cyan-200">
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-text-secondary,#334155)] transition group-hover:text-[var(--bb-accent,#2f7fe8)]">
           <Icon name="arrow" />
         </span>
       </div>
 
       <div className="mt-5 grid grid-cols-3 gap-2">
         <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Plays</p>
-          <p className="mt-1 text-xl font-black text-white">{formatNumber(day.plays)}</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">Plays</p>
+          <p className="mt-1 text-xl font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(day.plays)}</p>
         </div>
         <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Avg Listen</p>
-          <p className="mt-1 text-sm font-black text-slate-200">{day.avgListenTimeLabel}</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">Avg Listen</p>
+          <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#101827)]">{day.avgListenTimeLabel}</p>
         </div>
         <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Complete</p>
-          <p className="mt-1 text-xl font-black text-emerald-300">{day.completionRate}%</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">Complete</p>
+          <p className="mt-1 text-xl font-black text-[var(--bb-accent,#2f7fe8)]">{day.completionRate}%</p>
         </div>
       </div>
 
-      <div className="mt-5 flex items-end justify-between gap-4 border-t border-white/10 pt-4">
+      <div className="mt-5 flex items-end justify-between gap-4 border-t border-[var(--bb-card-border,#d8e3ec)] pt-4">
         <MiniWaveform values={day.trend} />
-        <p className="text-right text-xs font-bold leading-5 text-slate-400">
+        <p className="text-right text-xs font-bold leading-5 text-[var(--bb-text-secondary,#334155)]">
           {formatNumber(day.uniqueListeners)} listeners<br />
           {formatNumber(day.completedUsers)} finished
         </p>
@@ -2107,16 +2107,16 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
 
           {activeView === "overview" ? (
           <section className="mt-6 hidden space-y-8 md:block">
-            <div className="rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+            <div className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
               <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
                 <div>
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Founder Dashboard</p>
-                  <h2 className="mt-2 text-2xl font-black text-white">Users, signups, revenue, and momentum</h2>
-                  <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-400">
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">Founder Dashboard</p>
+                  <h2 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">Users, signups, revenue, and momentum</h2>
+                  <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#334155)]">
                     The first screen answers the business questions: how many people are here, how many are signing up, and how much money is coming in.
                   </p>
                 </div>
-                <div className="rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-black text-slate-300">
+                <div className="rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#101827)]">
                   {data?.customerJourney?.label || WINDOW_OPTIONS.find((option) => option.key === windowKey)?.label}
                 </div>
               </div>
@@ -2166,11 +2166,11 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
             <section>
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Journey Performance</p>
-                  <h2 className="mt-1 text-2xl font-black text-white">Audio engagement by day</h2>
-                  <p className="mt-2 text-sm font-semibold text-slate-400">Click a day to see the lesson detail panel.</p>
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">Journey Performance</p>
+                  <h2 className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#101827)]">Audio engagement by day</h2>
+                  <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">Click a day to see the lesson detail panel.</p>
                 </div>
-                <p className="text-sm font-bold text-slate-500">Plays use Day task-start events until dedicated audio events are live.</p>
+                <p className="text-sm font-bold text-[var(--bb-text-muted,#64748b)]">Plays use Day task-start events until dedicated audio events are live.</p>
               </div>
               <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                 {journeyPerformanceDays.slice(0, 3).map((day) => (
@@ -2179,21 +2179,21 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                 <button
                   type="button"
                   onClick={() => setShowAllJourneyDays((current) => !current)}
-                  className="group rounded-xl border border-cyan-300/20 bg-cyan-300/5 p-4 text-left shadow-[0_14px_34px_rgba(0,0,0,0.16)] transition hover:-translate-y-0.5 hover:border-cyan-300/45 hover:bg-cyan-300/10"
+                  className="group rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-[0_14px_34px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-accent-soft,#e6f1ff)]"
                   aria-expanded={showAllJourneyDays}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-200">Bible In One Year</p>
-                      <h3 className="mt-1 text-base font-black text-white">View all days</h3>
-                      <p className="mt-1 text-xs font-semibold text-slate-400">Open every day as cards, then click a day for its stats.</p>
+                      <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible In One Year</p>
+                      <h3 className="mt-1 text-base font-black text-[var(--bb-text-primary,#101827)]">View all days</h3>
+                      <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">Open every day as cards, then click a day for its stats.</p>
                     </div>
-                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 bg-slate-950/50 text-slate-300">
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-text-secondary,#334155)]">
                       {showAllJourneyDays ? "-" : "+"}
                     </span>
                   </div>
-                  <p className="mt-5 text-3xl font-black text-white">{formatNumber(journeyPerformanceDays.length)}</p>
-                  <p className="mt-2 text-sm font-bold text-cyan-200">day cards available</p>
+                  <p className="mt-5 text-3xl font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(journeyPerformanceDays.length)}</p>
+                  <p className="mt-2 text-sm font-bold text-[var(--bb-accent,#2f7fe8)]">day cards available</p>
                 </button>
               </div>
             </section>

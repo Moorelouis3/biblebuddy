@@ -11,6 +11,8 @@ export type VerseHighlightRange = {
   end_offset: number;
   selected_text: string;
   color: string;
+  note_text: string | null;
+  note_updated_at: string | null;
 };
 
 export async function fetchHighlights(book: string, chapter: number) {
@@ -33,7 +35,7 @@ export async function fetchHighlightRanges(book: string, chapter: number) {
   const bookKey = normalizeHighlightBook(book);
   const { data, error } = await supabase
     .from("verse_highlight_ranges")
-    .select("id, verse, start_offset, end_offset, selected_text, color")
+    .select("id, verse, start_offset, end_offset, selected_text, color, note_text, note_updated_at")
     .eq("user_id", user.id)
     .eq("book", bookKey)
     .eq("chapter", chapter)
@@ -81,7 +83,7 @@ export async function upsertHighlightRange(
       },
       { onConflict: "user_id,book,chapter,verse,start_offset,end_offset" },
     )
-    .select("id, verse, start_offset, end_offset, selected_text, color")
+    .select("id, verse, start_offset, end_offset, selected_text, color, note_text, note_updated_at")
     .single();
 
   if (error) return null;
@@ -109,4 +111,24 @@ export async function deleteHighlightRange(rangeId: string) {
     .delete()
     .eq("user_id", user.id)
     .eq("id", rangeId);
+}
+
+export async function updateHighlightRangeNote(rangeId: string, noteText: string | null) {
+  const user = (await supabase.auth.getUser()).data.user;
+  if (!user) return null;
+
+  const normalizedNote = noteText?.trim() ? noteText.trim() : null;
+  const { data, error } = await supabase
+    .from("verse_highlight_ranges")
+    .update({
+      note_text: normalizedNote,
+      note_updated_at: normalizedNote ? new Date().toISOString() : null,
+    })
+    .eq("user_id", user.id)
+    .eq("id", rangeId)
+    .select("id, verse, start_offset, end_offset, selected_text, color, note_text, note_updated_at")
+    .single();
+
+  if (error) return null;
+  return data as VerseHighlightRange;
 }

@@ -7,17 +7,18 @@ type Props = {
 export default function AppLoadingScreen({ className = "" }: Props) {
   return (
     <div
-      className={`relative flex min-h-screen overflow-hidden bg-[#0757f2] ${className}`}
+      className={`relative flex min-h-screen min-h-[100svh] overflow-hidden bg-[#0757f2] ${className}`}
       aria-busy="true"
       aria-live="polite"
     >
+      <div className="absolute inset-0 bg-[#0757f2]" />
       <Image
         src="/desktoploading.png"
         alt="Bible Buddy is loading"
         fill
         priority
         sizes="100vw"
-        className="hidden object-cover object-center sm:block"
+        className="hidden object-contain object-center sm:block"
       />
       <Image
         src="/mobileloading.png"
@@ -25,11 +26,11 @@ export default function AppLoadingScreen({ className = "" }: Props) {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center sm:hidden"
+        className="object-contain object-center sm:hidden"
       />
 
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="mt-[210px] w-[190px] sm:mt-[260px] sm:w-[260px]">
+      <div className="pointer-events-none absolute inset-x-0 bottom-[15vh] flex justify-center sm:bottom-[13vh]">
+        <div className="w-[170px] sm:w-[240px]">
           <div className="h-1.5 overflow-hidden rounded-full bg-white/25 shadow-[0_0_24px_rgba(255,255,255,0.22)] sm:h-2">
             <div className="bb-loading-bar h-full rounded-full bg-white shadow-[0_0_18px_rgba(255,255,255,0.85)]" />
           </div>

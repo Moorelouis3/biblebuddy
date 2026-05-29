@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { ColorPicker } from "./ColorPicker";
 import {
   deleteHighlight,
   deleteHighlightRange,
   fetchHighlightRanges,
   fetchHighlights,
+  updateHighlightRangeNote,
   upsertHighlight,
   upsertHighlightRange,
   type VerseHighlightRange,
@@ -34,6 +36,11 @@ type ColorPickerState =
       rangeId?: string;
       selectedColor?: string;
     };
+
+type HighlightNoteEditorState = {
+  range: VerseHighlightRange;
+  noteText: string;
+};
 
 // Utility to extract the inner HTML for a verse from enriched HTML
 function getEnrichedHtmlForVerse(enrichedHtml: string | undefined, fallback: string) {
@@ -93,6 +100,175 @@ function groupRangesByVerse(ranges: VerseHighlightRange[]) {
   }, {});
 }
 
+function HighlightActionMenu({
+  anchor,
+  hasSavedRange,
+  hasNote,
+  onAddNote,
+  onChangeColor,
+  onRemove,
+  onClose,
+}: {
+  anchor: { x: number; y: number } | null;
+  hasSavedRange: boolean;
+  hasNote: boolean;
+  onAddNote: () => void;
+  onChangeColor: () => void;
+  onRemove: () => void;
+  onClose: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!anchor) return;
+    function handlePointerDown(event: MouseEvent | TouchEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        onClose();
+      }
+    }
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+    };
+  }, [anchor, onClose]);
+
+  if (!anchor || !mounted) return null;
+
+  const left = Math.min(Math.max(anchor.x - 122, 12), window.innerWidth - 244);
+  const top = Math.min(Math.max(anchor.y - 58, 12), window.innerHeight - 58);
+
+  return createPortal(
+    <div
+      ref={ref}
+      className="fixed z-[9999] flex items-center gap-1 rounded-2xl border border-slate-200 bg-white p-1.5 text-slate-950 shadow-[0_18px_50px_rgba(15,23,42,0.22)]"
+      style={{ top, left }}
+      role="menu"
+      aria-label="Highlight actions"
+    >
+      <button
+        type="button"
+        onClick={onAddNote}
+        className="rounded-xl px-3 py-2 text-xs font-black transition hover:bg-slate-100"
+      >
+        📝 {hasNote ? "Edit Note" : "Add Note"}
+      </button>
+      <button
+        type="button"
+        onClick={onChangeColor}
+        className="rounded-xl px-3 py-2 text-xs font-black transition hover:bg-slate-100"
+      >
+        🎨 Color
+      </button>
+      {hasSavedRange ? (
+        <button
+          type="button"
+          onClick={onRemove}
+          className="rounded-xl px-3 py-2 text-xs font-black text-rose-600 transition hover:bg-rose-50"
+        >
+          ✕ Remove
+        </button>
+      ) : null}
+    </div>,
+    document.body,
+  );
+}
+
+function HighlightNoteModal({
+  state,
+  onChange,
+  onSave,
+  onDelete,
+  onClose,
+  saving,
+}: {
+  state: HighlightNoteEditorState | null;
+  onChange: (value: string) => void;
+  onSave: () => void;
+  onDelete: () => void;
+  onClose: () => void;
+  saving: boolean;
+}) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!state || !mounted) return null;
+
+  return createPortal(
+    <div className="fixed inset-0 z-[10000] flex items-end justify-center bg-black/45 px-3 pb-[max(12px,env(safe-area-inset-bottom))] pt-[max(12px,env(safe-area-inset-top))] sm:items-center">
+      <div className="flex max-h-[calc(100svh-24px-env(safe-area-inset-top)-env(safe-area-inset-bottom))] w-full max-w-lg flex-col overflow-hidden rounded-[24px] border border-slate-200 bg-white text-slate-950 shadow-[0_26px_90px_rgba(15,23,42,0.35)] sm:max-h-[86vh]">
+        <div className="flex shrink-0 items-center justify-between border-b border-slate-100 px-4 py-3 sm:px-5 sm:py-4">
+          <div>
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-sky-600">Highlight Note</p>
+            <h3 className="mt-1 text-base font-black leading-tight sm:text-lg">Add a note to this highlight</h3>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="grid h-9 w-9 place-items-center rounded-full bg-slate-100 text-xl font-black text-slate-600 transition hover:bg-slate-200"
+            aria-label="Close note"
+          >
+            ×
+          </button>
+        </div>
+        <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5">
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold leading-6 text-slate-800">
+            “{state.range.selected_text}”
+          </div>
+          <label className="block">
+            <span className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">My Note</span>
+            <textarea
+              value={state.noteText}
+              onChange={(event) => onChange(event.target.value)}
+              rows={6}
+              autoFocus
+              placeholder="Write what this highlighted phrase means to you..."
+              className="mt-2 w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-semibold leading-6 text-slate-950 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100 sm:text-sm"
+            />
+          </label>
+        </div>
+        <div className="shrink-0 border-t border-slate-100 bg-white px-4 pb-[max(16px,env(safe-area-inset-bottom))] pt-3 sm:flex sm:justify-between sm:gap-2 sm:px-5 sm:py-4">
+          <button
+            type="button"
+            onClick={onDelete}
+            disabled={saving || !state.range.note_text}
+            className="mb-2 w-full rounded-2xl border border-rose-200 px-4 py-3 text-sm font-black text-rose-600 transition hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-40 sm:mb-0 sm:w-auto"
+          >
+            Delete Note
+          </button>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex-1 rounded-2xl border border-slate-200 px-5 py-3 text-sm font-black text-slate-700 transition hover:bg-slate-50 sm:flex-none"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={onSave}
+              disabled={saving}
+              className="flex-1 rounded-2xl bg-sky-500 px-5 py-3 text-sm font-black text-white shadow-[0_14px_32px_rgba(14,165,233,0.28)] transition hover:bg-sky-400 disabled:opacity-60 sm:flex-none"
+            >
+              {saving ? "Saving..." : "Save Note"}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
 
 export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   book,
@@ -104,6 +280,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [rangeMap, setRangeMap] = useState<Record<number, VerseHighlightRange[]>>({});
   const [picker, setPicker] = useState<ColorPickerState | null>(null);
+  const [rangeColorPickerOpen, setRangeColorPickerOpen] = useState(false);
+  const [noteEditor, setNoteEditor] = useState<HighlightNoteEditorState | null>(null);
+  const [noteSaving, setNoteSaving] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [creditBlocked, setCreditBlocked] = useState(false);
@@ -170,12 +349,20 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       selectedText: normalized.selectedText,
       anchor: { x: rect.left + rect.width / 2, y: rect.bottom + 8 },
     });
+    setRangeColorPickerOpen(false);
   };
 
   const handleRangeClick = (range: VerseHighlightRange, event: React.MouseEvent) => {
     if (!user) return;
     event.preventDefault();
     event.stopPropagation();
+
+    if (range.note_text) {
+      setPicker(null);
+      setRangeColorPickerOpen(false);
+      setNoteEditor({ range, noteText: range.note_text });
+      return;
+    }
 
     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
     setPicker({
@@ -188,15 +375,116 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       rangeId: range.id,
       selectedColor: range.color,
     });
+    setRangeColorPickerOpen(false);
+  };
+
+  async function saveRangeFromPicker(pickerState: Extract<ColorPickerState, { mode: "range" }>, color = pickerState.selectedColor || "yellow") {
+    if (!user) return null;
+
+    if (pickerState.rangeId) {
+      return {
+        id: pickerState.rangeId,
+        verse: pickerState.verse,
+        start_offset: pickerState.startOffset,
+        end_offset: pickerState.endOffset,
+        selected_text: pickerState.selectedText,
+        color,
+        note_text: null,
+        note_updated_at: null,
+        ...(rangeMap[pickerState.verse] || []).find((range) => range.id === pickerState.rangeId),
+      } as VerseHighlightRange;
+    }
+
+    const creditResult = await consumeCreditAction(ACTION_TYPE.verse_highlighted, { userId: user.id });
+    if (!creditResult.ok) {
+      setCreditBlocked(true);
+      return null;
+    }
+
+    const savedRange = await upsertHighlightRange(book, chapter, {
+      verse: pickerState.verse,
+      start_offset: pickerState.startOffset,
+      end_offset: pickerState.endOffset,
+      selected_text: pickerState.selectedText,
+      color,
+    });
+
+    if (savedRange) {
+      setRangeMap((current) => {
+        const existing = current[pickerState.verse] || [];
+        const withoutSameRange = existing.filter((range) => range.id !== savedRange.id);
+        return {
+          ...current,
+          [pickerState.verse]: [...withoutSameRange, savedRange].sort((a, b) => a.start_offset - b.start_offset),
+        };
+      });
+    }
+
+    return savedRange;
+  }
+
+  const handleAddNote = async () => {
+    if (!picker || picker.mode !== "range") return;
+    const savedRange = await saveRangeFromPicker(picker);
+    if (!savedRange) return;
+    setPicker(null);
+    setRangeColorPickerOpen(false);
+    setNoteEditor({ range: savedRange, noteText: savedRange.note_text || "" });
+  };
+
+  const handleRemoveRange = async () => {
+    if (!picker || picker.mode !== "range" || !picker.rangeId) return;
+    const verse = picker.verse;
+    const rangeId = picker.rangeId;
+    setPicker(null);
+    setRangeColorPickerOpen(false);
+    setRangeMap((current) => ({
+      ...current,
+      [verse]: (current[verse] || []).filter((range) => range.id !== rangeId),
+    }));
+    await deleteHighlightRange(rangeId);
+  };
+
+  const handleSaveNote = async () => {
+    if (!noteEditor) return;
+    setNoteSaving(true);
+    const savedRange = await updateHighlightRangeNote(noteEditor.range.id, noteEditor.noteText);
+    if (savedRange) {
+      setRangeMap((current) => ({
+        ...current,
+        [savedRange.verse]: (current[savedRange.verse] || [])
+          .map((range) => (range.id === savedRange.id ? savedRange : range))
+          .sort((a, b) => a.start_offset - b.start_offset),
+      }));
+      setNoteEditor(null);
+    }
+    setNoteSaving(false);
+  };
+
+  const handleDeleteNote = async () => {
+    if (!noteEditor) return;
+    setNoteSaving(true);
+    const savedRange = await updateHighlightRangeNote(noteEditor.range.id, null);
+    if (savedRange) {
+      setRangeMap((current) => ({
+        ...current,
+        [savedRange.verse]: (current[savedRange.verse] || [])
+          .map((range) => (range.id === savedRange.id ? savedRange : range))
+          .sort((a, b) => a.start_offset - b.start_offset),
+      }));
+      setNoteEditor(null);
+    }
+    setNoteSaving(false);
   };
 
   const handleColorSelect = async (color: string | null) => {
     if (!picker) return;
     const { verse } = picker;
-    setPicker(null);
     if (!user) return;
 
     if (picker.mode === "range") {
+      setPicker(null);
+      setRangeColorPickerOpen(false);
       if (picker.rangeId && color === picker.selectedColor) {
         setRangeMap((current) => ({
           ...current,
@@ -235,6 +523,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       return;
     }
 
+    setPicker(null);
     const prev = highlightMap[verse] || null;
     // --- REMOVE highlight ---
     if (color === prev) {
@@ -291,10 +580,15 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
             key={range.id}
             className="rounded-[3px] px-0.5"
             style={{ backgroundColor: getColorCode(range.color, surface) }}
-            title="Click to change or remove this highlight"
+            title={range.note_text ? "Click to view or edit this note" : "Click to add a note, change color, or remove this highlight"}
             onClick={(event) => handleRangeClick(range, event)}
           >
             {v.text.slice(start, end)}
+            {range.note_text ? (
+              <sup className="ml-0.5 inline-grid h-4 min-w-4 translate-y-[-1px] place-items-center rounded-full bg-sky-500 px-1 text-[9px] font-black leading-none text-white">
+                📝
+              </sup>
+            ) : null}
           </span>,
         );
       }
@@ -320,6 +614,12 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
 
   return (
     <div>
+      <style>{`
+        .bible-selectable-text {
+          -webkit-touch-callout: none;
+          touch-action: manipulation;
+        }
+      `}</style>
       {verses.map((v) => (
         <div
           key={v.number}
@@ -338,7 +638,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
           </button>
           {/* Render enriched HTML for this verse, fallback to plain text */}
           <span
-            className="verse-text min-w-0 flex-1 break-words text-base leading-relaxed selection:bg-sky-200 selection:text-slate-950 [&_p]:inline"
+            className="verse-text bible-selectable-text min-w-0 flex-1 break-words text-base leading-relaxed selection:bg-sky-200 selection:text-slate-950 [&_p]:inline"
           >
             {renderVerseText(v)}
           </span>
@@ -346,7 +646,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
         </div>
       ))}
       <ColorPicker
-        anchor={picker?.anchor || null}
+        anchor={picker?.mode === "verse" || rangeColorPickerOpen ? picker?.anchor || null : null}
         selectedColor={
           picker?.mode === "range"
             ? picker.selectedColor || null
@@ -355,7 +655,34 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
               : null
         }
         onSelect={handleColorSelect}
-        onClose={() => setPicker(null)}
+        onClose={() => {
+          setRangeColorPickerOpen(false);
+          setPicker(null);
+        }}
+      />
+      <HighlightActionMenu
+        anchor={picker?.mode === "range" && !rangeColorPickerOpen ? picker.anchor : null}
+        hasSavedRange={Boolean(picker?.mode === "range" && picker.rangeId)}
+        hasNote={Boolean(
+          picker?.mode === "range" &&
+            picker.rangeId &&
+            (rangeMap[picker.verse] || []).find((range) => range.id === picker.rangeId)?.note_text,
+        )}
+        onAddNote={handleAddNote}
+        onChangeColor={() => setRangeColorPickerOpen(true)}
+        onRemove={handleRemoveRange}
+        onClose={() => {
+          setRangeColorPickerOpen(false);
+          setPicker(null);
+        }}
+      />
+      <HighlightNoteModal
+        state={noteEditor}
+        saving={noteSaving}
+        onChange={(value) => setNoteEditor((current) => (current ? { ...current, noteText: value } : current))}
+        onSave={handleSaveNote}
+        onDelete={handleDeleteNote}
+        onClose={() => setNoteEditor(null)}
       />
       <CreditLimitModal
         open={creditBlocked}

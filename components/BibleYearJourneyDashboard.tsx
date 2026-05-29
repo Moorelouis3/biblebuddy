@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import AppLoadingScreen from "./AppLoadingScreen";
 import DashboardJourneyExperience from "./DashboardJourneyExperience";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import { supabase } from "../lib/supabaseClient";
@@ -45,6 +44,18 @@ function waitForSessionRefresh(ms: number) {
   return new Promise((resolve) => {
     window.setTimeout(resolve, ms);
   });
+}
+
+function DashboardLoadingShell() {
+  return (
+    <main
+      className="min-h-screen min-h-[100svh] bg-[var(--bb-background,#07111f)]"
+      aria-busy="true"
+      aria-live="polite"
+    >
+      <span className="sr-only">Loading Bible Buddy</span>
+    </main>
+  );
 }
 
 async function getStableDashboardUser() {
@@ -127,7 +138,7 @@ export default function BibleYearJourneyDashboard() {
   }, [loadDashboardUser]);
 
   if (loading) {
-    return <AppLoadingScreen />;
+    return <DashboardLoadingShell />;
   }
 
   return (
