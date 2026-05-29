@@ -73,6 +73,7 @@ const DAY_SEVEN_PRO_UPGRADE_PROMPT_ID = "bible-year:day-7-pro-upgrade";
 const DAY_THREE_PRO_POPUP_PREVIEW_USER_ID = "669d4404-5eee-49ee-a112-2ecbd573e22a";
 const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapters;
 const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:dashboard-guided-intro-seen";
+const DASHBOARD_FIRST_PLAYER_WELCOME_STORAGE_KEY = "bb:dashboard-first-player-welcome-seen";
 const BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX = "bb:bible-year-dashboard-day";
 const BIBLE_YEAR_DASHBOARD_DAY_TTL_MS = 60 * 60 * 1000;
 
@@ -98,6 +99,10 @@ function splitEnrichedVerseHtmlByNumber(enrichedContent: string) {
 
 function getBibleYearDashboardDayStorageKey(userId?: string | null) {
   return `${BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX}:${userId || "guest"}`;
+}
+
+function getDashboardFirstPlayerWelcomeStorageKey(userId?: string | null) {
+  return `${DASHBOARD_FIRST_PLAYER_WELCOME_STORAGE_KEY}:${userId || "guest"}`;
 }
 
 function getStoredBibleYearDashboardDayNumber(userId?: string | null) {
@@ -2047,6 +2052,9 @@ export default function DashboardJourneyExperience({
   const [isAnonymousGuest, setIsAnonymousGuest] = useState(false);
   const [dashboardGuidedIntroStep, setDashboardGuidedIntroStep] = useState<number | null>(null);
   const [dashboardGuidedIntroTargetRect, setDashboardGuidedIntroTargetRect] = useState<DOMRect | null>(null);
+  const [dashboardFirstWelcomeOpen, setDashboardFirstWelcomeOpen] = useState(false);
+  const [dashboardFirstPlayerSpotlightOpen, setDashboardFirstPlayerSpotlightOpen] = useState(false);
+  const [dashboardFirstPlayerRect, setDashboardFirstPlayerRect] = useState<DOMRect | null>(null);
   const [showDayOneStartPrompt, setShowDayOneStartPrompt] = useState(false);
   const [highlightDayOneStartTask, setHighlightDayOneStartTask] = useState(false);
   const dashboardGuidedIntroStartedRef = useRef(false);
@@ -2472,6 +2480,37 @@ export default function DashboardJourneyExperience({
   const bibleYearDashboardTasks = activeBibleYearDashboardDay
     ? buildBibleYearDayTasks(activeBibleYearDashboardDay)
     : null;
+
+  useEffect(() => {
+    if (!bibleYearDashboardActive || !bibleYearCurrentDayReady || !activeBibleYearDashboardDay) return;
+    if (typeof window === "undefined") return;
+    const storageKey = getDashboardFirstPlayerWelcomeStorageKey(userId);
+    if (window.localStorage.getItem(storageKey) === "1") return;
+
+    const timer = window.setTimeout(() => setDashboardFirstWelcomeOpen(true), 450);
+    return () => window.clearTimeout(timer);
+  }, [activeBibleYearDashboardDay, bibleYearCurrentDayReady, bibleYearDashboardActive, userId]);
+
+  useEffect(() => {
+    if (!dashboardFirstPlayerSpotlightOpen) return;
+    const updatePlayerRect = () => {
+      const element = document.querySelector("[data-bb-first-player-spotlight='true']");
+      setDashboardFirstPlayerRect(element ? element.getBoundingClientRect() : null);
+    };
+    const scrollTimer = window.setTimeout(() => {
+      document.querySelector("[data-bb-first-player-spotlight='true']")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 60);
+    const measureTimer = window.setTimeout(updatePlayerRect, 430);
+    window.addEventListener("resize", updatePlayerRect);
+    window.addEventListener("scroll", updatePlayerRect, true);
+    return () => {
+      window.clearTimeout(scrollTimer);
+      window.clearTimeout(measureTimer);
+      window.removeEventListener("resize", updatePlayerRect);
+      window.removeEventListener("scroll", updatePlayerRect, true);
+    };
+  }, [dashboardFirstPlayerSpotlightOpen]);
+
   const bibleYearStudyPlanMilestones = [
     { dayNumber: 1, label: "Creation" },
     { dayNumber: 2, label: "Fall of Man" },
@@ -10165,7 +10204,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           "Press play and continue today's guided Bible lesson.",
           "order-3"
         )}
-        <article className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))] p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6">
+        <article data-bb-first-player-spotlight="true" className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))] p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[var(--bb-text-muted,#6b7280)]">Day {day.dayNumber} of 365</p>
@@ -10309,6 +10348,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <span className="text-2xl text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">›</span>
           </button>
           <div className="px-3 pb-4 pt-3">
+            {renderBibleYearJourneyStatusBanner(day)}
             <div className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-3">
               <div className="grid min-w-[810px] grid-cols-9 items-start gap-2">
                 {bibleYearStudyPlanMilestones.map((milestone, index) => {
@@ -12398,6 +12438,144 @@ Before we understand redemption, we need to understand what God made humanity fo
     return day.reference || day.readings.map((reading) => `${reading.book} ${reading.chapter}`).join(", ");
   }
 
+  function getBibleYearJourneyStatusBannerText(day: GenesisBibleYearDay) {
+    const completedDays = completedBibleYearDays.length;
+    const statusDirection = effectiveBibleYearReport.statusDirection || bibleYearSchedule.statusDirection;
+    const statusDays = Math.max(0, effectiveBibleYearReport.statusDays ?? bibleYearSchedule.statusDays ?? 0);
+
+    if (completedDays > 0 && completedDays % 25 === 0) {
+      return `You have completed ${completedDays} days of your Bible journey.`;
+    }
+    if (effectiveBibleYearReport.overallPercent > 0 && effectiveBibleYearReport.overallPercent % 10 === 0) {
+      return `You have finished ${effectiveBibleYearReport.overallPercent}% of your Bible reading plan.`;
+    }
+    if (statusDirection === "ahead" && statusDays > 0) {
+      return `You are on Day ${day.dayNumber} and are ${statusDays} ${statusDays === 1 ? "day" : "days"} ahead of your reading plan!`;
+    }
+    if (statusDirection === "behind" && statusDays > 0) {
+      return `You are on Day ${day.dayNumber} and are ${statusDays} ${statusDays === 1 ? "day" : "days"} behind your reading plan.`;
+    }
+    if (completedDays > 0) {
+      return `You are on Day ${day.dayNumber} and have completed ${completedDays} ${completedDays === 1 ? "study" : "studies"}.`;
+    }
+    return `You are on Day ${day.dayNumber} and right on schedule.`;
+  }
+
+  function renderBibleYearJourneyStatusBanner(day: GenesisBibleYearDay) {
+    return (
+      <div className="mb-3 flex min-h-[54px] items-center gap-3 rounded-[16px] border border-sky-200/80 bg-sky-50 px-3.5 py-3 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_10px_24px_rgba(47,127,232,0.08)] sm:px-4">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-button,#2f7fe8)] text-white shadow-[0_8px_18px_rgba(47,127,232,0.20)]" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M8 2v4" />
+            <path d="M16 2v4" />
+            <path d="M3 10h18" />
+            <rect x="3" y="4" width="18" height="18" rx="3" />
+          </svg>
+        </span>
+        <p className="min-w-0 flex-1 text-sm font-black leading-5 sm:text-[15px]">
+          {getBibleYearJourneyStatusBannerText(day)}
+        </p>
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[var(--bb-button,#2f7fe8)] text-white shadow-[0_8px_18px_rgba(47,127,232,0.20)]" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 17l6-6 4 4 7-8" />
+            <path d="M14 7h6v6" />
+          </svg>
+        </span>
+      </div>
+    );
+  }
+
+  function markFirstDashboardWelcomeSeen() {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(getDashboardFirstPlayerWelcomeStorageKey(userId), "1");
+  }
+
+  function renderFirstDashboardWelcomeModal() {
+    const day = activeBibleYearDashboardDay;
+    return (
+      <ModalShell
+        isOpen={dashboardFirstWelcomeOpen}
+        onClose={() => {
+          markFirstDashboardWelcomeSeen();
+          setDashboardFirstWelcomeOpen(false);
+        }}
+        closeOnBackdrop={false}
+        backdropColor="bg-black/56"
+        zIndex="z-[160]"
+      >
+        <div className="w-full max-w-[430px] overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-6 text-[var(--bb-text-primary,#111827)] shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
+          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">Welcome to Bible Buddy</p>
+          <h2 className="mt-3 text-2xl font-black leading-tight">Start with Day 1 and press play.</h2>
+          <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+            Welcome to Bible Buddy. Start with Day 1 and listen to today&apos;s Scripture reading. You can listen while taking notes, washing dishes, walking, driving, or getting ready for the day. That&apos;s the beauty of Bible Buddy: Scripture can move with your real life.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              markFirstDashboardWelcomeSeen();
+              setDashboardFirstWelcomeOpen(false);
+              setDashboardFirstPlayerSpotlightOpen(true);
+            }}
+            className="mt-5 w-full rounded-[16px] bg-[var(--bb-button,#2f7fe8)] px-5 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_rgba(47,127,232,0.22)] transition hover:brightness-105"
+          >
+            OK, show me where to start
+          </button>
+          {day ? <p className="mt-3 text-center text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">Your first lesson is ready when you are.</p> : null}
+        </div>
+      </ModalShell>
+    );
+  }
+
+  function renderFirstPlayerSpotlightOverlay() {
+    if (!dashboardFirstPlayerSpotlightOpen) return null;
+    const rect = dashboardFirstPlayerRect;
+    const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 390;
+    const viewportHeight = typeof window !== "undefined" ? window.innerHeight : 760;
+    const pad = viewportWidth < 640 ? 8 : 14;
+    const top = rect ? Math.max(0, rect.top - pad) : 0;
+    const left = rect ? Math.max(0, rect.left - pad) : 0;
+    const right = rect ? Math.min(viewportWidth, rect.right + pad) : viewportWidth;
+    const bottom = rect ? Math.min(viewportHeight, rect.bottom + pad) : viewportHeight;
+    const tagWidth = Math.min(330, viewportWidth - 32);
+    const tagLeft = rect ? Math.max(16, Math.min(viewportWidth - tagWidth - 16, left + ((right - left) - tagWidth) / 2)) : 16;
+    const tagTop = rect && viewportHeight - bottom > 142 ? bottom + 14 : Math.max(16, top - 132);
+
+    return (
+      <div className="fixed inset-0 z-[159] pointer-events-none">
+        {rect ? (
+          <>
+            <div className="fixed left-0 top-0 bg-black/66 backdrop-blur-[2px]" style={{ width: viewportWidth, height: top }} />
+            <div className="fixed left-0 bg-black/66 backdrop-blur-[2px]" style={{ top, width: left, height: Math.max(0, bottom - top) }} />
+            <div className="fixed bg-black/66 backdrop-blur-[2px]" style={{ top, left: right, width: Math.max(0, viewportWidth - right), height: Math.max(0, bottom - top) }} />
+            <div className="fixed bottom-0 left-0 bg-black/66 backdrop-blur-[2px]" style={{ top: bottom, width: viewportWidth, height: Math.max(0, viewportHeight - bottom) }} />
+          </>
+        ) : (
+          <div className="fixed inset-0 bg-black/66 backdrop-blur-[2px]" />
+        )}
+        {rect ? (
+          <div
+            className="fixed rounded-[26px] border-2 border-[var(--bb-button,#2f7fe8)] shadow-[0_0_0_9999px_rgba(0,0,0,0.0),0_0_42px_rgba(47,127,232,0.52)]"
+            style={{ top, left, width: Math.max(0, right - left), height: Math.max(0, bottom - top) }}
+          />
+        ) : null}
+        <div
+          className="pointer-events-auto fixed rounded-[20px] border border-sky-200 bg-white px-4 py-3 text-slate-950 shadow-[0_20px_60px_rgba(0,0,0,0.30)]"
+          style={{ left: tagLeft, top: tagTop, width: tagWidth }}
+        >
+          <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-button,#2f7fe8)]">Start here</p>
+          <p className="mt-1 text-sm font-black leading-5">Press play here to start Day 1.</p>
+          <button
+            type="button"
+            onClick={() => setDashboardFirstPlayerSpotlightOpen(false)}
+            className="mt-3 rounded-full bg-[var(--bb-button,#2f7fe8)] px-4 py-2 text-xs font-black text-white"
+          >
+            Got it
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   function renderDashboardGuidedIntroOverlay() {
     if (dashboardGuidedIntroStep === null) return null;
     const step = DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStep];
@@ -14091,6 +14269,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
       </div>
 
+      {renderFirstDashboardWelcomeModal()}
+      {renderFirstPlayerSpotlightOverlay()}
       {renderDashboardGuidedIntroOverlay()}
 
       {showDayOneStartPrompt ? (
