@@ -194,6 +194,7 @@ export function DatabaseTermTakeover({
   termNotesError,
   onClose,
   takeoverRef,
+  displayMode = "default",
 }: {
   selectedTerm: BibleDatabaseTerm;
   termBurstKey: number;
@@ -202,9 +203,19 @@ export function DatabaseTermTakeover({
   termNotesError: string | null;
   onClose: () => void;
   takeoverRef?: RefObject<HTMLDivElement | null>;
+  displayMode?: "default" | "reader";
 }) {
+  const isReaderMode = displayMode === "reader";
+
   return (
-    <div ref={takeoverRef} className="relative min-h-[62vh] overflow-hidden rounded-[26px] bg-[var(--bb-card,#ffffff)] px-4 py-6 text-center text-[var(--bb-text-primary,#111827)]">
+    <div
+      ref={takeoverRef}
+      className={`relative overflow-hidden bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] ${
+        isReaderMode
+          ? "max-h-[min(72vh,560px)] rounded-[18px] px-3 py-4 text-left"
+          : "min-h-[62vh] rounded-[26px] px-4 py-6 text-center"
+      }`}
+    >
       <style>{`
         @keyframes word-discovery-smoke {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); filter: blur(0); }
@@ -219,22 +230,40 @@ export function DatabaseTermTakeover({
         .word-discovery-smoke span { animation: word-discovery-smoke 780ms ease-out both; }
         .word-discovery-card { animation: word-discovery-card 260ms cubic-bezier(0.16, 0.9, 0.22, 1) both; }
       `}</style>
-      <div key={termBurstKey} className="word-discovery-smoke pointer-events-none absolute left-1/2 top-24 z-0" aria-hidden="true">
+      <div key={termBurstKey} className={`word-discovery-smoke pointer-events-none absolute left-1/2 z-0 ${isReaderMode ? "top-14" : "top-24"}`} aria-hidden="true">
         <span className="absolute h-14 w-14 rounded-full bg-slate-300/45 [--smoke-x:-84px] [--smoke-y:-22px]" />
         <span className="absolute h-12 w-12 rounded-full bg-slate-200/50 [--smoke-x:72px] [--smoke-y:-32px]" />
         <span className="absolute h-10 w-10 rounded-full bg-rose-100/70 [--smoke-x:-16px] [--smoke-y:42px]" />
         <span className="absolute h-9 w-9 rounded-full bg-slate-300/35 [--smoke-x:96px] [--smoke-y:28px]" />
         <span className="absolute h-8 w-8 rounded-full bg-white/80 [--smoke-x:-104px] [--smoke-y:34px]" />
       </div>
-      <div className="word-discovery-card relative z-10 mx-auto flex min-h-[58vh] max-w-xl flex-col items-center justify-center">
-        <div className="mb-3 flex justify-center">
-          <LouisAvatar mood="think" size={104} />
+      <div
+        className={`word-discovery-card relative z-10 mx-auto flex flex-col ${
+          isReaderMode
+            ? "max-h-[calc(min(72vh,560px)-2rem)] max-w-none overflow-y-auto overscroll-contain pr-1"
+            : "min-h-[58vh] max-w-xl items-center justify-center"
+        }`}
+      >
+        <div className={`mb-3 flex ${isReaderMode ? "items-center gap-3" : "justify-center"}`}>
+          <LouisAvatar mood="think" size={isReaderMode ? 58 : 104} />
+          {isReaderMode ? (
+            <div className="min-w-0">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">
+                {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
+              </p>
+              <h3 className="mt-0.5 truncate text-2xl font-black leading-tight">{selectedTerm.name}</h3>
+            </div>
+          ) : null}
         </div>
-        <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">
-          {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
-        </p>
-        <h3 className="mt-1 text-4xl font-black leading-tight">{selectedTerm.name}</h3>
-        <div className="mt-5 w-full px-2 py-2">
+        {!isReaderMode ? (
+          <>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">
+              {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
+            </p>
+            <h3 className="mt-1 text-4xl font-black leading-tight">{selectedTerm.name}</h3>
+          </>
+        ) : null}
+        <div className={`w-full py-2 ${isReaderMode ? "mt-2 px-0" : "mt-5 px-2"}`}>
           {loadingTermNotes && !termNotes ? (
             <div className="space-y-3 py-6">
               <div className="h-3 rounded-full bg-white/80" />
@@ -245,7 +274,7 @@ export function DatabaseTermTakeover({
             <ReactMarkdown
               components={{
                 h1: ({ ...props }) => <h1 className="mb-3 mt-5 text-left text-xl font-black" {...props} />,
-                p: ({ ...props }) => <p className="mb-4 text-left text-base font-medium leading-7" {...props} />,
+                p: ({ ...props }) => <p className={`mb-4 text-left font-medium ${isReaderMode ? "text-sm leading-6" : "text-base leading-7"}`} {...props} />,
                 strong: ({ ...props }) => <strong className="font-black" {...props} />,
               }}
             >
@@ -260,7 +289,9 @@ export function DatabaseTermTakeover({
         <button
           type="button"
           onClick={onClose}
-          className="mt-5 rounded-full bg-[var(--bb-button,#2f7fe8)] px-8 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+          className={`rounded-full bg-[var(--bb-button,#2f7fe8)] text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 ${
+            isReaderMode ? "sticky bottom-0 mt-3 w-full px-5 py-2.5" : "mt-5 px-8 py-3"
+          }`}
         >
           Close
         </button>

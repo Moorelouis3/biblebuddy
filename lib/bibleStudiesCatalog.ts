@@ -15,7 +15,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     title: "The Creation of the World",
     subtitle: "Genesis 1 & 2",
     totalWeeks: 2,
-    image: "/creationoftheworld.png",
+    image: "/Day1cover.png",
     description:
       "A chapter-by-chapter Bible study through Genesis 1-2 with intro, reading, notes, trivia, and reflection centered on creation, order, Eden, humanity in God's image, purpose, rest, and relationship with God.",
   },

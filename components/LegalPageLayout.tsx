@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import LegalPageThemeReset from "./LegalPageThemeReset";
 import PublicHomeButton from "./PublicHomeButton";
@@ -108,10 +109,7 @@ export default function LegalPageLayout({
       <div className="mx-auto max-w-5xl">
         <div className="bb-legal-header mb-8 flex items-center justify-between gap-5 rounded-none px-0 py-0" role="banner">
           <Link href="/" className="bb-legal-logo flex items-center gap-3">
-            <svg className="h-8 w-8 shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
-              <path d="M16 11.2v17" />
-            </svg>
+            <Image src="/Newforreallogoicon.png" alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-lg object-cover" />
             <span className="text-lg font-black tracking-tight">Bible Buddy</span>
           </Link>
           <PublicHomeButton className="bb-legal-home fixed right-5 top-6 z-50 rounded-full border px-5 py-2.5 text-sm font-black shadow-[0_10px_24px_rgba(14,26,58,0.06)] transition hover:-translate-y-0.5 sm:right-8" />

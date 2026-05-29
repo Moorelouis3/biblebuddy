@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v15-2026-05-29-audio-streaming-fix";
+const CACHE_VERSION = "v16-2026-05-29-new-logo-icon";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 const RUNTIME_CACHE_NAME = `biblebuddy-runtime-${CACHE_VERSION}`;
 const MEDIA_CACHE_NAME = `biblebuddy-media-${CACHE_VERSION}`;
@@ -6,7 +6,7 @@ const MEDIA_CACHE_NAME = `biblebuddy-media-${CACHE_VERSION}`;
 const STATIC_ASSETS = [
   "/offline.html",
   "/manifest.json",
-  "/NewNewNewIconNew.png",
+  "/Newforreallogoicon.png",
   "/icons/icon-192.png",
   "/icons/icon-512.png",
 ];
@@ -141,8 +141,8 @@ self.addEventListener("push", (event) => {
   const body = typeof payload.body === "string" ? payload.body : "";
   const options = {
     body,
-    icon: "/NewNewNewIconNew.png",
-    badge: "/NewNewNewIconNew.png",
+    icon: "/Newforreallogoicon.png",
+    badge: "/Newforreallogoicon.png",
     data: {
       url: payload.url || "/dashboard",
       notificationId: payload.notificationId || null,

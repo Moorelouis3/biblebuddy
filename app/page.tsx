@@ -42,7 +42,7 @@ const emptyAnswers: Answers = {
 };
 
 const journeyStudies = [
-  { title: "Creation of the World", day: 1, status: "In Progress", cover: "/creationoftheworld.png", unlocked: true },
+  { title: "Creation of the World", day: 1, status: "In Progress", cover: "/Day1cover.png", unlocked: true },
   { title: "Fall of Man", day: 2, status: "Preview", cover: "/thefallofman.png", unlocked: false },
   { title: "Flood of Noah", day: 3, status: "Preview", cover: "/day3cover.png", unlocked: false },
   { title: "Obedience of Abraham", day: 5, status: "Preview", cover: "/obedienceofabrahamnewcover.png", unlocked: false },
@@ -651,8 +651,20 @@ export default function LandingPage() {
     }
   }, [currentQuestion, onboardingOpen, onboardingStep, questionIndex, recommendationDays, recommendedStudyRoute]);
 
+  function trackStartJourneyClick(clickedFrom: string) {
+    try {
+      window.localStorage.setItem("bb:landing-start-clicked", "1");
+      window.localStorage.setItem("bb:landing-start-clicked-at", new Date().toISOString());
+      window.localStorage.setItem("bb:landing-start-clicked-from", clickedFrom);
+    } catch {
+      // Funnel tracking should never block navigation.
+    }
+    trackLandingEvent("clicked_start_journey", { clickedFrom });
+    setLandingMenuOpen(false);
+  }
+
   function openQuestionnaire() {
-    trackLandingEvent("clicked_start_journey");
+    trackStartJourneyClick("legacy_start_handler");
     setLandingMenuOpen(false);
     router.push("/signup");
   }
@@ -1071,7 +1083,7 @@ export default function LandingPage() {
               <Link href="/login" className="rounded-lg px-4 py-3 text-sm font-bold text-[#07162f] transition hover:bg-[#f4eee4]">
                 Login
               </Link>
-              <Link href="/signup" className="bb-public-button rounded-lg bg-[#135397] px-6 py-3 text-sm font-black text-white shadow-[0_16px_32px_rgba(19,83,151,0.22)] transition hover:-translate-y-0.5">
+              <Link href="/signup" onClick={() => trackStartJourneyClick("header")} className="bb-public-button rounded-lg bg-[#135397] px-6 py-3 text-sm font-black text-white shadow-[0_16px_32px_rgba(19,83,151,0.22)] transition hover:-translate-y-0.5">
                 Start Your Journey
               </Link>
             </div>
@@ -1115,7 +1127,7 @@ export default function LandingPage() {
                 ))}
               </div>
               <div className="mt-7 sm:mt-9">
-                <Link href="/signup" className="bb-public-button bb-join-pulse inline-flex w-full items-center justify-center gap-3 rounded-lg bg-[#135397] px-6 py-3.5 text-sm font-black text-white shadow-[0_18px_36px_rgba(19,83,151,0.2)] transition hover:-translate-y-0.5 sm:w-auto sm:px-8 sm:py-4 sm:text-base">
+                <Link href="/signup" onClick={() => trackStartJourneyClick("hero")} className="bb-public-button bb-join-pulse inline-flex w-full items-center justify-center gap-3 rounded-lg bg-[#135397] px-6 py-3.5 text-sm font-black text-white shadow-[0_18px_36px_rgba(19,83,151,0.2)] transition hover:-translate-y-0.5 sm:w-auto sm:px-8 sm:py-4 sm:text-base">
                   Start Your Bible Journey
                   <LandingLineIcon name="arrow" light />
                 </Link>
@@ -1196,7 +1208,7 @@ export default function LandingPage() {
                   <p className="mt-2 text-base font-semibold text-[#07162f]">
                     It only takes 15-30 minutes a day.
                   </p>
-                  <Link href="/signup" className="bb-public-button mt-5 inline-flex w-full max-w-[520px] items-center justify-center gap-3 rounded-full bg-[#7fb6dc] px-6 py-3.5 text-sm font-black text-white shadow-[0_22px_52px_rgba(127,182,220,0.35)] transition hover:-translate-y-0.5 sm:mt-7 sm:px-8 sm:py-4 sm:text-lg">
+                  <Link href="/signup" onClick={() => trackStartJourneyClick("middle_cta")} className="bb-public-button mt-5 inline-flex w-full max-w-[520px] items-center justify-center gap-3 rounded-full bg-[#7fb6dc] px-6 py-3.5 text-sm font-black text-white shadow-[0_22px_52px_rgba(127,182,220,0.35)] transition hover:-translate-y-0.5 sm:mt-7 sm:px-8 sm:py-4 sm:text-lg">
                     <span className="text-white">*</span>
                     Start Your Bible Journey
                   </Link>
@@ -1340,7 +1352,7 @@ export default function LandingPage() {
                 <div className="mx-auto max-w-3xl">
                   <h2 className="bb-serif text-3xl font-black leading-tight text-[#07162f]">Ready to start your journey?</h2>
                   <p className="mt-2 text-base font-semibold text-[#334762]">It only takes 15-30 minutes a day.</p>
-                  <Link href="/signup" className="bb-public-button mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#2477f2] px-9 py-4 text-base font-black text-white shadow-[0_22px_48px_rgba(36,119,242,0.26)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[420px]">
+                  <Link href="/signup" onClick={() => trackStartJourneyClick("bottom_cta")} className="bb-public-button mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#2477f2] px-9 py-4 text-base font-black text-white shadow-[0_22px_48px_rgba(36,119,242,0.26)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[420px]">
                     <span className="text-[#ffe08a]">*</span>
                     Start Your Bible Journey
                   </Link>
@@ -1552,7 +1564,7 @@ export default function LandingPage() {
                 </Link>
                 <Link
                   href="/signup"
-                  onClick={() => setLandingMenuOpen(false)}
+                  onClick={() => trackStartJourneyClick("mobile_menu")}
                   className="bb-force-black mt-2 block w-full rounded-2xl border border-[#ece3d7] bg-[#FBF9F4] px-4 py-3 text-center text-sm font-black text-[#0E1A3A]"
                 >
                   Start Journey
@@ -1596,6 +1608,7 @@ export default function LandingPage() {
             <div className="mt-9">
               <Link
                 href="/signup"
+                onClick={() => trackStartJourneyClick("legacy_bottom_cta")}
                 className="bb-public-button bb-join-pulse inline-block w-full rounded-2xl bg-[#0E1A3A] px-7 py-4 text-base font-black text-white shadow-[0_16px_34px_rgba(14,26,58,0.18)] transition hover:-translate-y-0.5 hover:bg-[#172654] sm:w-auto sm:min-w-[320px]"
               >
                 Start Your Bible Journey Today
@@ -1815,10 +1828,13 @@ function LandingThemeStyles() {
 function BibleBuddyMark({ small = false }: { small?: boolean }) {
   return (
     <div className="flex items-center gap-2.5 text-[#07162f]">
-      <svg className={small ? "h-6 w-6" : "h-7 w-7"} viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
-        <path d="M16 11.2v17" />
-      </svg>
+      <Image
+        src="/Newforreallogoicon.png"
+        alt=""
+        width={small ? 24 : 28}
+        height={small ? 24 : 28}
+        className={`${small ? "h-6 w-6" : "h-7 w-7"} rounded-md object-cover`}
+      />
       <span className={small ? "text-base font-black tracking-tight" : "text-lg font-black tracking-tight"}>Bible Buddy</span>
     </div>
   );
@@ -1883,7 +1899,7 @@ function PhoneMockup() {
         <h3 className="bb-serif mt-1 text-3xl font-black leading-tight text-white">Genesis 1-2</h3>
         <p className="text-sm font-semibold text-white/62">The Beginning</p>
         <div className="relative mt-5 overflow-hidden rounded-lg">
-          <Image src="/creationoftheworld.png" alt="" width={460} height={280} className="h-44 w-full object-cover" />
+          <Image src="/Day1cover.png" alt="" width={460} height={280} className="h-44 w-full object-cover" />
           <div className="absolute inset-0 grid place-items-center bg-black/18">
             <div className="grid h-16 w-16 place-items-center rounded-full bg-white text-[#07162f] shadow-[0_14px_36px_rgba(0,0,0,0.28)]">
               <LandingLineIcon name="play" />
@@ -2362,7 +2378,7 @@ function PublicDashboardDemo({
               <p className="mt-1 text-right text-xs font-black text-[#4A4A4A]">0%</p>
             </div>
             <div className="hidden h-28 overflow-hidden rounded-2xl sm:block">
-              <img src="/creationoftheworld.png" alt="" className="h-full w-full object-cover" />
+              <img src="/Day1cover.png" alt="" className="h-full w-full object-cover" />
             </div>
           </div>
         </button>
@@ -2557,7 +2573,7 @@ function DayOnePreview({
           <section className="rounded-[26px] border border-[#eadcc2] bg-[#fffaf1] p-4 shadow-sm">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9a6a1f]">Current Home</p>
             <div className="mt-3 flex gap-3">
-              <img src="/creationoftheworld.png" alt="" className="h-28 w-20 rounded-2xl object-cover shadow-sm" />
+              <img src="/Day1cover.png" alt="" className="h-28 w-20 rounded-2xl object-cover shadow-sm" />
               <div className="min-w-0 flex-1">
                 <h3 className="text-xl font-black leading-tight">Day 1</h3>
                 <p className="mt-1 text-sm font-black text-[#102033]">The Creation of the World</p>

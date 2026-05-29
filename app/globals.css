@@ -246,7 +246,24 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-inline
 }
 
 .dashboard-bible-reader-embed .verse-text {
-  color: var(--bb-text-primary, #fff7ed);
+  color: var(--bb-text-primary, #111827);
+}
+
+.dashboard-bible-reader-embed .verse-line {
+  border-radius: 0.55rem !important;
+  padding: 0.18rem 0.25rem;
+}
+
+.dashboard-bible-reader-embed .verse-line > button {
+  background: color-mix(in srgb, var(--bb-accent, #7BAFD4) 14%, var(--bb-card, #ffffff)) !important;
+  border: 1px solid color-mix(in srgb, var(--bb-accent, #7BAFD4) 22%, var(--bb-card-border, #dbe7f4)) !important;
+  color: var(--bb-text-primary, #111827) !important;
+  box-shadow: none !important;
+}
+
+.dashboard-bible-reader-embed .verse-line[style*="background-color: rgb"],
+.dashboard-bible-reader-embed .verse-line[style*="background-color: #"] {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--bb-text-primary, #111827) 7%, transparent);
 }
 
 .dashboard-bible-reader-embed .bible-highlight {

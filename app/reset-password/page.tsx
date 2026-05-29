@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, Suspense, type ReactNode, useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
@@ -12,10 +13,7 @@ export const dynamic = "force-dynamic";
 const LogoHeader = () => (
   <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-5 py-5 sm:px-8" role="banner">
     <div className="flex items-center gap-3 text-[#111827]">
-      <svg className="h-8 w-8 shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
-        <path d="M16 11.2v17" />
-      </svg>
+      <Image src="/Newforreallogoicon.png" alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-lg object-cover" />
       <span className="text-lg font-black tracking-tight">Bible Buddy</span>
     </div>
     <PublicHomeButton className="bb-reset-home fixed right-5 top-5 z-50 rounded-full border px-5 py-2.5 text-sm font-black shadow-[0_10px_24px_rgba(14,26,58,0.06)] transition hover:-translate-y-0.5 sm:right-8" />

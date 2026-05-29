@@ -189,6 +189,7 @@ type AnalyticsResponse = {
     window: JourneyWindow;
     label: string;
     visits?: number;
+    startClicks?: number;
     guestStarts?: number;
     freeAccounts?: number;
     proUpgrades?: number;
@@ -739,6 +740,138 @@ function FounderMetricCard({
       <p className="mt-2 text-3xl font-black leading-none text-white">{value}</p>
       <p className="mt-2 text-sm font-semibold leading-5 text-slate-400">{helper}</p>
     </div>
+  );
+}
+
+function MobileHighlightCard({
+  label,
+  value,
+  helper,
+  icon,
+}: {
+  label: string;
+  value: string;
+  helper: string;
+  icon: "visitors" | "play" | "user" | "headphones" | "pro" | "spark" | "check";
+}) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-4 shadow-[0_18px_44px_rgba(0,0,0,0.22)]">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">{label}</p>
+          <p className="mt-2 text-2xl font-black leading-none text-white">{value}</p>
+        </div>
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-cyan-200/15 bg-cyan-200/10 text-cyan-100">
+          <Icon name={icon} />
+        </span>
+      </div>
+      <p className="mt-3 text-xs font-bold leading-5 text-slate-400">{helper}</p>
+    </div>
+  );
+}
+
+function MobileAnalyticsHighlights({
+  windowKey,
+  setWindowKey,
+  data,
+  stripeRevenue,
+  stripeRevenueLoading,
+  loading,
+  totalUsers,
+  moneyEarned,
+  upgrades,
+  landingViews,
+  signups,
+  dayPlays,
+}: {
+  windowKey: JourneyWindow;
+  setWindowKey: (value: JourneyWindow) => void;
+  data: AnalyticsResponse | null;
+  stripeRevenue: StripeRevenueSummary | null;
+  stripeRevenueLoading: boolean;
+  loading: boolean;
+  totalUsers: number;
+  moneyEarned: string;
+  upgrades: number;
+  landingViews: number;
+  signups: number;
+  dayPlays: number;
+}) {
+  const windowLabel = data?.customerJourney?.label || WINDOW_OPTIONS.find((option) => option.key === windowKey)?.label || "Selected range";
+
+  return (
+    <section className="mt-5 space-y-4 md:hidden">
+      <div className="rounded-[24px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(125,211,252,0.16),transparent_38%),linear-gradient(145deg,rgba(15,23,42,0.96),rgba(2,6,23,0.98))] p-4 shadow-[0_24px_70px_rgba(0,0,0,0.3)]">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-cyan-200">Mobile Highlights</p>
+            <h2 className="mt-2 text-2xl font-black leading-tight text-white">Bible Buddy today</h2>
+            <p className="mt-1 text-xs font-bold text-slate-400">{windowLabel}</p>
+          </div>
+          <select
+            value={windowKey}
+            onChange={(event) => setWindowKey(event.target.value as JourneyWindow)}
+            className="h-10 max-w-[150px] rounded-xl border border-white/10 bg-slate-950/70 px-3 text-xs font-black text-white outline-none focus:border-cyan-200/60"
+            aria-label="Analytics timeframe"
+          >
+            {WINDOW_OPTIONS.map((option) => (
+              <option key={option.key} value={option.key}>{option.label}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {loading ? (
+        <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 text-sm font-bold text-slate-300">
+          Loading analytics...
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 gap-3">
+          <MobileHighlightCard
+            label="Total Users"
+            value={formatNumber(totalUsers)}
+            helper="Registered plus guest users."
+            icon="visitors"
+          />
+          <MobileHighlightCard
+            label="Money Earned"
+            value={stripeRevenueLoading ? "..." : moneyEarned}
+            helper="Stripe cash for this time frame."
+            icon="pro"
+          />
+          <MobileHighlightCard
+            label="Upgrades"
+            value={formatNumber(upgrades)}
+            helper="People who upgraded to Pro."
+            icon="spark"
+          />
+          <MobileHighlightCard
+            label="Landing Views"
+            value={formatNumber(landingViews)}
+            helper="Unique landing page visitors."
+            icon="user"
+          />
+          <MobileHighlightCard
+            label="Sign Ups"
+            value={formatNumber(signups)}
+            helper="Accounts created."
+            icon="check"
+          />
+          <MobileHighlightCard
+            label="Day Plays"
+            value={formatNumber(dayPlays)}
+            helper="Daily lesson starts."
+            icon="play"
+          />
+        </div>
+      )}
+
+      {stripeRevenue?.mrr ? (
+        <div className="rounded-2xl border border-cyan-200/15 bg-cyan-200/8 p-4 text-sm font-black text-cyan-100">
+          MRR: {stripeRevenue.mrr}
+        </div>
+      ) : null}
+    </section>
   );
 }
 
@@ -1796,8 +1929,8 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
   };
   const landingStageUsers = bibleBuddyFunnelStages.find((stage) => stage.key === "landing")?.users ?? metrics.totalVisitors;
   const journeyPerformanceDays = useMemo(() => buildJourneyPerformanceDays(data?.bibleYearDays), [data?.bibleYearDays]);
-  const startJourneyClicks = getStageUsers(bibleBuddyFunnelStages, "clickedStart") || getStageUsers(bibleBuddyFunnelStages, "startedOnboarding") || data?.customerJourney?.guestStarts || 0;
-  const signupsCompleted = metrics.createdFreeAccount || data?.customerJourney?.freeAccounts || 0;
+  const startJourneyClicks = getStageUsers(bibleBuddyFunnelStages, "clickedStart") || data?.customerJourney?.startClicks || data?.customerJourney?.guestStarts || 0;
+  const signupsCompleted = getStageUsers(bibleBuddyFunnelStages, "accountsCreated") || data?.customerJourney?.freeAccounts || metrics.createdFreeAccount || 0;
   const activeListeners = new Set(
     (data?.bibleYearDays || [])
       .flatMap((day) => day.users)
@@ -1805,6 +1938,9 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
       .map((user) => user.userId),
   ).size;
   const dayOnePlays = journeyPerformanceDays.find((day) => day.dayNumber === 1)?.plays || 0;
+  const mobileMoneyEarned = stripeRevenue?.revenueRange || stripeRevenue?.revenue30d || "$0";
+  const mobileUpgrades = data?.customerJourney?.proUpgrades || metrics.upgradedToPro || 0;
+  const mobileDayPlays = data?.audioEngagement?.totalPlays || journeyPerformanceDays.reduce((total, day) => total + day.plays, 0);
 
   const filteredRows = useMemo(() => {
     const cleanSearch = search.trim().toLowerCase();
@@ -1891,7 +2027,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
               </p>
             </div>
 
-            <div className="flex flex-col gap-2 sm:flex-row">
+            <div className="hidden flex-col gap-2 md:flex md:flex-row">
               <select
                 id="analytics-view"
                 value={activeView}
@@ -1952,7 +2088,24 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
           ) : null}
 
           {activeView === "overview" ? (
-          <section className="mt-6 space-y-8">
+            <MobileAnalyticsHighlights
+              windowKey={windowKey}
+              setWindowKey={setWindowKey}
+              data={data}
+              stripeRevenue={stripeRevenue}
+              stripeRevenueLoading={stripeRevenueLoading}
+              loading={loading}
+              totalUsers={businessMetrics.totalUsers}
+              moneyEarned={mobileMoneyEarned}
+              upgrades={mobileUpgrades}
+              landingViews={landingStageUsers}
+              signups={signupsCompleted}
+              dayPlays={mobileDayPlays}
+            />
+          ) : null}
+
+          {activeView === "overview" ? (
+          <section className="mt-6 hidden space-y-8 md:block">
             <div className="rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
               <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
                 <div>

@@ -1034,6 +1034,69 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, [isLoggedIn, pathname, userId, username]);
 
   useEffect(() => {
+    if (!userId || !isLoggedIn || typeof window === "undefined") return;
+    const pendingProvider = window.localStorage.getItem("bb:pending-oauth-signup");
+    if (!pendingProvider) return;
+
+    const landingSessionId = window.localStorage.getItem("bb:landing-session-id") || "";
+    const landingSource = window.sessionStorage.getItem("bb:landing-source") || "Direct";
+    const displayName = username || "Bible Buddy User";
+
+    void (async () => {
+      try {
+        const { data: existingSignup, error: signupLookupError } = await supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", userId)
+          .eq("action_type", ACTION_TYPE.user_signup)
+          .limit(1);
+
+        if (signupLookupError) {
+          console.warn("[SIGNUP_TRACKING] Existing signup lookup skipped:", signupLookupError.message);
+        } else if (!existingSignup?.length) {
+          await supabase.from("user_signups").insert({
+            user_id: userId,
+            email: null,
+          });
+
+          await supabase.from("master_actions").insert({
+            user_id: userId,
+            username: displayName,
+            action_type: ACTION_TYPE.user_signup,
+            action_label: "Signed up for Bible Buddy",
+            created_at: new Date().toISOString(),
+          });
+        }
+
+        await fetch("/api/landing-analytics", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            event_name: "created_account_successfully",
+            session_id: landingSessionId,
+            user_id: userId,
+            source: landingSource,
+            referrer: document.referrer || null,
+            page_path: window.location.pathname,
+            metadata: {
+              provider: pendingProvider,
+              oauthSignup: true,
+              startJourneyClicked: window.localStorage.getItem("bb:landing-start-clicked") === "1",
+              startJourneyClickedAt: window.localStorage.getItem("bb:landing-start-clicked-at"),
+              startJourneyClickedFrom: window.localStorage.getItem("bb:landing-start-clicked-from"),
+            },
+          }),
+          keepalive: true,
+        });
+      } catch (error) {
+        console.warn("[SIGNUP_TRACKING] OAuth signup tracking skipped:", error);
+      } finally {
+        window.localStorage.removeItem("bb:pending-oauth-signup");
+      }
+    })();
+  }, [isLoggedIn, userId, username]);
+
+  useEffect(() => {
     if (!userId) return;
 
     const channel = supabase

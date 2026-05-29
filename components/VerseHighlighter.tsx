@@ -19,6 +19,7 @@ interface VerseHighlighterProps {
   chapter: number;
   verses: Array<{ number: number; text: string; enrichedHtml?: string }>;
   plainTextMode?: boolean;
+  surface?: "default" | "dashboard";
 }
 
 type ColorPickerState =
@@ -93,7 +94,13 @@ function groupRangesByVerse(ranges: VerseHighlightRange[]) {
 }
 
 
-export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapter, verses, plainTextMode = false }) => {
+export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
+  book,
+  chapter,
+  verses,
+  plainTextMode = false,
+  surface = "default",
+}) => {
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [rangeMap, setRangeMap] = useState<Record<number, VerseHighlightRange[]>>({});
   const [picker, setPicker] = useState<ColorPickerState | null>(null);
@@ -283,7 +290,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
           <span
             key={range.id}
             className="rounded-[3px] px-0.5"
-            style={{ backgroundColor: getColorCode(range.color) }}
+            style={{ backgroundColor: getColorCode(range.color, surface) }}
             title="Click to change or remove this highlight"
             onClick={(event) => handleRangeClick(range, event)}
           >
@@ -317,7 +324,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
         <div
           key={v.number}
           className="mb-2 flex items-baseline gap-2 group verse-line"
-          style={{ backgroundColor: highlightMap[v.number] ? getColorCode(highlightMap[v.number]) : "transparent", borderRadius: highlightMap[v.number] ? 4 : 0, transition: "background-color 0.3s" }}
+          style={{ backgroundColor: highlightMap[v.number] ? getColorCode(highlightMap[v.number], surface) : "transparent", borderRadius: highlightMap[v.number] ? 4 : 0, transition: "background-color 0.3s" }}
         >
           <button
             type="button"
@@ -410,7 +417,18 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
   );
 };
 
-function getColorCode(color: string) {
+function getColorCode(color: string, surface: "default" | "dashboard" = "default") {
+  if (surface === "dashboard") {
+    switch (color) {
+      case "yellow": return "#FFF6CF";
+      case "green": return "#DDF3E6";
+      case "blue": return "#DCEFFE";
+      case "purple": return "#ECE6FF";
+      case "orange": return "#FFE7CA";
+      default: return "transparent";
+    }
+  }
+
   switch (color) {
     case "yellow": return "#FFF9C4";
     case "green": return "#C8E6C9";

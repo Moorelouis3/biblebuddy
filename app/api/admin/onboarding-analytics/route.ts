@@ -545,6 +545,10 @@ function buildBibleBuddyFunnelStages(
     return merged;
   }
 
+  const accountCreatedActors = mergeActors(["created_free_account", "created_account_successfully"], ["user_signup"]);
+  const startJourneyActors = mergeActors(["clicked_start_journey"], ["landing_cta_clicked"]);
+  accountCreatedActors.forEach((actor) => startJourneyActors.add(actor));
+
   function completedDayActors(dayNumber: number) {
     const actors = new Set<string>();
     for (const row of masterRows) {
@@ -577,7 +581,8 @@ function buildBibleBuddyFunnelStages(
 
   const stageSets = [
     { key: "landing", label: "Landing Page", actors: mergeActors(["landing_page_visit"], ["landing_page_visited"]) },
-    { key: "clickedStart", label: "Start Your Journey Clicks", actors: mergeActors(["clicked_start_journey"], ["landing_cta_clicked"]) },
+    { key: "clickedStart", label: "Start Your Journey Clicks", actors: startJourneyActors },
+    { key: "accountsCreated", label: "Accounts Created", actors: accountCreatedActors },
     { key: "startedOnboarding", label: "Start Journey Clicks", actors: mergeActors(["started_onboarding"], ["onboarding_intro_started"]) },
     { key: "finishedOnboarding", label: "Started Journey", actors: mergeActors(["started_guest_journey", "clicked_yes_start_my_journey"], ["onboarding_journey_started"]) },
     { key: "startedDay1", label: "Started Day 1", actors: startedDayActors(1) },
@@ -1093,6 +1098,93 @@ function summarizeLandingWindow(rows: Record<string, unknown>[], windowKey: Jour
     guestToAccountRate: guestStarts > 0 ? Number(((accountsCreated / guestStarts) * 100).toFixed(1)) : 0,
     rawVisitEvents: visitEvents,
     rawGuestEvents: guestEvents,
+    rawSignupEvents: accountEvents,
+  };
+}
+
+function summarizeAcquisitionWindow(
+  landingRows: LandingEventRow[],
+  masterRows: MasterActionFunnelRow[],
+  windowKey: JourneyWindowKey,
+) {
+  const range = getAnalyticsDateRange(windowKey);
+  const since = new Date(range.startIso).getTime();
+  const before = range.endIso ? new Date(range.endIso).getTime() : null;
+  const inWindow = (createdAtValue: string | null | undefined) => {
+    const createdAt = createdAtValue ? new Date(createdAtValue).getTime() : 0;
+    return Number.isFinite(createdAt) && createdAt >= since && (!before || createdAt < before);
+  };
+
+  const visitActors = new Set<string>();
+  const startActors = new Set<string>();
+  const accountActors = new Set<string>();
+  let visitEvents = 0;
+  let startEvents = 0;
+  let accountEvents = 0;
+
+  for (const row of landingRows) {
+    if (!inWindow(row.created_at)) continue;
+    const eventName = row.event_name || "";
+    const actorId = getEventActorId(row);
+
+    if (eventName === "landing_page_visit" || eventName === "landing_page_visited") {
+      visitEvents += 1;
+      if (actorId) visitActors.add(actorId);
+    }
+
+    if (eventName === "clicked_start_journey") {
+      startEvents += 1;
+      if (actorId) startActors.add(actorId);
+    }
+
+    if (eventName === "created_free_account" || eventName === "created_account_successfully") {
+      accountEvents += 1;
+      if (actorId) {
+        accountActors.add(actorId);
+        startActors.add(actorId);
+      }
+    }
+  }
+
+  for (const row of masterRows) {
+    if (!inWindow(row.created_at)) continue;
+    const actionType = row.action_type || "";
+    const actorId = getMasterActorId(row);
+
+    if (actionType === "landing_page_visited") {
+      visitEvents += 1;
+      if (actorId) visitActors.add(actorId);
+    }
+
+    if (actionType === "landing_cta_clicked") {
+      startEvents += 1;
+      if (actorId) startActors.add(actorId);
+    }
+
+    if (actionType === "user_signup") {
+      accountEvents += 1;
+      if (actorId) {
+        accountActors.add(actorId);
+        startActors.add(actorId);
+      }
+    }
+  }
+
+  const visits = visitActors.size || visitEvents;
+  const startClicks = startActors.size || startEvents;
+  const accountsCreated = accountActors.size || accountEvents;
+
+  return {
+    visits,
+    signups: accountsCreated,
+    guestStarts: startClicks,
+    startClicks,
+    accountsCreated,
+    conversionRate: visits > 0 ? Number(((accountsCreated / visits) * 100).toFixed(1)) : 0,
+    landingToGuestRate: visits > 0 ? Number(((startClicks / visits) * 100).toFixed(1)) : 0,
+    guestToAccountRate: startClicks > 0 ? Number(((accountsCreated / startClicks) * 100).toFixed(1)) : 0,
+    rawVisitEvents: visitEvents,
+    rawGuestEvents: startEvents,
     rawSignupEvents: accountEvents,
   };
 }
@@ -2504,7 +2596,7 @@ export async function GET(request: Request) {
   const publicOnboardingFlow = summarizePublicOnboardingFlow(validEventRows);
   const landingLast24h = summarizeLandingLast24Hours(validEventRows);
   const guestAccountFunnel = summarizeGuestAccountFunnel(validEventRows);
-  const windowSummary = summarizeLandingWindow(validEventRows, journeyWindow);
+  const windowSummary = summarizeAcquisitionWindow(validLandingEventRows, masterFunnelRows, journeyWindow);
   const landingActivityLog = [
     ...buildLandingActivityLog(validLandingEventRows, profileByUserId, journeyWindow),
     ...buildUpgradeActivityLog(upgradeRows, profileByUserId),
@@ -2524,6 +2616,7 @@ export async function GET(request: Request) {
     window: journeyWindow,
     label: getJourneyWindowLabel(journeyWindow),
     visits: windowSummary.visits,
+    startClicks: windowSummary.startClicks || 0,
     guestStarts: windowSummary.guestStarts || 0,
     freeAccounts: windowSummary.accountsCreated || windowSummary.signups || 0,
     proUpgrades,

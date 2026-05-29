@@ -490,7 +490,7 @@ const STUDY_SWITCHER_ORDER_INDEX = new Map(
 );
 
 function getDashboardStudyCover(title: string | null | undefined) {
-  if (title === "The Creation of the World") return "/creationoftheworld.png";
+  if (title === "The Creation of the World") return "/Day1cover.png";
   if (title === "The Fall of Man") return "/thefallofman.png";
   if (title === "The Flood of Noah") return "/Floodofnoah.png";
   if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
@@ -3871,6 +3871,13 @@ export default function DashboardJourneyExperience({
       clearBibleYearViews();
     }
     snapToPage(index);
+  }
+
+  function openAnalyticsPage() {
+    setDashboardMenuOpen(false);
+    if (typeof window !== "undefined") {
+      window.location.href = "/admin/analytics";
+    }
   }
 
   function scrollBibleYearStudyAreaIntoView() {
@@ -9047,7 +9054,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (!chapters.length) return null;
 
     return (
-      <section className="bible-year-follow-along-scroll mt-3 max-h-[420px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-card,#111827)_78%,#020617)] p-4 text-left text-[var(--bb-text-primary,#fff7ed)] shadow-inner">
+      <section className="bible-year-follow-along-scroll dashboard-bible-reader-embed mt-3 max-h-[630px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,var(--bb-surface-soft,#f8fbff)),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_88%,var(--bb-card,#ffffff)))] p-4 text-left text-[var(--bb-text-primary,#111827)] shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_42px_rgba(15,23,42,0.08)]">
         {bibleYearSelectedTerm ? (
           <div className="mb-5">
             <DatabaseTermTakeover
@@ -9058,6 +9065,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               termNotesError={bibleYearTermNotesError}
               onClose={closeBibleYearTermTakeover}
               takeoverRef={bibleYearTermTakeoverRef}
+              displayMode="reader"
             />
           </div>
         ) : null}
@@ -9065,24 +9073,16 @@ Before we understand redemption, we need to understand what God made humanity fo
           {chapters.map((chapter) => (
             <article key={`${chapter.book}-${chapter.chapter}`} className="space-y-3">
               <div className="flex items-center justify-between gap-3">
-                <h3 className="font-serif text-2xl font-black tracking-wide text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_82%,#ffffff)]">
+                <h3 className="font-serif text-2xl font-black tracking-wide text-[var(--bb-text-primary,#111827)]">
                   {chapter.book} {chapter.chapter}
                 </h3>
-                <Link
-                  href={`/Bible/${encodeURIComponent(chapter.book.toLowerCase())}/${chapter.chapter}`}
-                  className="shrink-0 rounded-full border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1.5 text-xs font-black text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_88%,#ffffff)] transition hover:brightness-110"
-                >
-                  Open Reader
-                </Link>
               </div>
               {chapter.verses.length ? (
                 <div className="space-y-3" onClick={handleBibleYearDatabaseTermClick}>
-                  <p className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-bold text-[var(--bb-text-muted,#94a3b8)]">
-                    Tap a verse number to highlight it. Tap highlighted Bible words for database notes.
-                  </p>
                   <VerseHighlighter
                     book={chapter.book}
                     chapter={chapter.chapter}
+                    surface="dashboard"
                     verses={chapter.verses.map((verse) => ({
                       number: verse.verse,
                       text: verse.text,
@@ -10313,11 +10313,11 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <button
                   type="button"
                   onClick={item.onClick}
-                  className="grid w-full gap-4 p-4 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)] sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center"
+                  className="flex w-full items-center justify-between gap-3 px-3.5 py-3 text-left transition hover:bg-[var(--bb-surface-soft,#f4f8ff)] sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-4 sm:p-4"
                   aria-expanded={expanded}
                 >
-                  <div className="flex min-w-0 gap-3">
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-2xl shadow-[0_10px_22px_rgba(38,63,99,0.10)]" aria-hidden="true">
+                  <div className="flex min-w-0 flex-1 gap-3">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-xl shadow-[0_10px_22px_rgba(38,63,99,0.10)] sm:h-12 sm:w-12 sm:text-2xl" aria-hidden="true">
                       {item.icon}
                     </span>
                     <div className="min-w-0">
@@ -10326,7 +10326,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <p className="mt-1 text-[13px] font-medium leading-5 text-[var(--bb-text-secondary,#4b5563)]">{item.body}</p>
                     </div>
                   </div>
-                  <span className={`justify-self-end text-xl font-black text-[var(--bb-text-muted,#6b7280)] transition ${expanded ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : ""}`} aria-hidden="true">
+                  <span className={`shrink-0 self-center justify-self-end text-xl font-black text-[var(--bb-text-muted,#6b7280)] transition ${expanded ? "rotate-90 text-[var(--bb-accent,#2f7fe8)]" : ""}`} aria-hidden="true">
                     ›
                   </span>
                 </button>
@@ -13130,7 +13130,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           scrollbar-width: thin;
           scrollbar-color:
             color-mix(in srgb, var(--bb-accent, #2f7fe8) 76%, var(--bb-button, #2f7fe8))
-            color-mix(in srgb, var(--bb-card, #111827) 74%, #020617);
+            color-mix(in srgb, var(--bb-card, #ffffff) 82%, var(--bb-surface-soft, #f8fbff));
         }
         .bible-year-follow-along-scroll::-webkit-scrollbar {
           width: 10px;
@@ -13139,8 +13139,8 @@ Before we understand redemption, we need to understand what God made humanity fo
           border-radius: 999px;
           background:
             linear-gradient(180deg,
-              color-mix(in srgb, var(--bb-card, #111827) 82%, #020617),
-              color-mix(in srgb, var(--bb-surface-soft, #1f2937) 52%, #020617)
+              color-mix(in srgb, var(--bb-card, #ffffff) 88%, var(--bb-surface-soft, #f8fbff)),
+              color-mix(in srgb, var(--bb-surface-soft, #f8fbff) 88%, var(--bb-card, #ffffff))
             );
           border-left: 1px solid color-mix(in srgb, var(--bb-accent, #2f7fe8) 20%, transparent);
         }
@@ -13149,9 +13149,9 @@ Before we understand redemption, we need to understand what God made humanity fo
           background:
             linear-gradient(180deg,
               color-mix(in srgb, var(--bb-accent, #2f7fe8) 86%, #ffffff),
-              color-mix(in srgb, var(--bb-button, #2f7fe8) 72%, #020617)
+              color-mix(in srgb, var(--bb-button, #2f7fe8) 72%, var(--bb-card, #ffffff))
             );
-          border: 2px solid color-mix(in srgb, var(--bb-card, #111827) 72%, #020617);
+          border: 2px solid color-mix(in srgb, var(--bb-card, #ffffff) 72%, var(--bb-surface-soft, #f8fbff));
           box-shadow:
             0 0 12px color-mix(in srgb, var(--bb-accent, #2f7fe8) 34%, transparent),
             inset 0 1px 0 rgba(255, 255, 255, 0.22);
@@ -14434,13 +14434,10 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="grid grid-cols-5 items-center gap-1.5">
             <button
               type="button"
-              onClick={() => {
-                setDashboardMenuOpen(false);
-                setShowBibleProgressDetails(true);
-              }}
+              onClick={openAnalyticsPage}
               className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
-              aria-label="Open Bible progress"
-              data-dashboard-nav-key="progress-tab"
+              aria-label="Open analytics"
+              data-dashboard-nav-key="analytics-tab"
             >
               <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
@@ -14451,7 +14448,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M16 16v-3" />
                 </svg>
               </span>
-              <span>Progress</span>
+              <span>Analytics</span>
             </button>
 
             <button

@@ -271,7 +271,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
       return "/theriseofester.png";
     }
     if (title === "The Creation of the World") {
-      return "/creationoftheworld.png";
+      return "/Day1cover.png";
     }
     if (title === "The Fall of Man") {
       return "/thefallofman.png";

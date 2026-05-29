@@ -11,6 +11,52 @@ import { ACTION_TYPE } from "../../lib/actionTypes";
 
 const DASHBOARD_ENTRY_PATH = "/dashboard";
 
+function getSignupLandingSessionId() {
+  if (typeof window === "undefined") return "server";
+  const key = "bb:landing-session-id";
+  const existing = window.localStorage.getItem(key);
+  if (existing) return existing;
+  const next =
+    typeof window.crypto?.randomUUID === "function"
+      ? window.crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  window.localStorage.setItem(key, next);
+  return next;
+}
+
+function getSignupLandingSource() {
+  if (typeof window === "undefined") return "Direct";
+  return window.sessionStorage.getItem("bb:landing-source") || "Direct";
+}
+
+async function recordLandingSignupEvent(userId: string, username: string) {
+  if (typeof window === "undefined") return;
+  try {
+    await fetch("/api/landing-analytics", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event_name: "created_account_successfully",
+        session_id: getSignupLandingSessionId(),
+        user_id: userId,
+        source: getSignupLandingSource(),
+        referrer: document.referrer || null,
+        page_path: `${window.location.pathname}${window.location.search}`,
+        metadata: {
+          username,
+          signupPage: true,
+          startJourneyClicked: window.localStorage.getItem("bb:landing-start-clicked") === "1",
+          startJourneyClickedAt: window.localStorage.getItem("bb:landing-start-clicked-at"),
+          startJourneyClickedFrom: window.localStorage.getItem("bb:landing-start-clicked-from"),
+        },
+      }),
+      keepalive: true,
+    });
+  } catch (landingError) {
+    console.error("Landing signup tracking failed (non-blocking):", landingError);
+  }
+}
+
 export default function SignupPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -74,6 +120,8 @@ export default function SignupPage() {
     } catch (actionTrackingError) {
       console.error("Signup action tracking error (non-blocking):", actionTrackingError);
     }
+
+    await recordLandingSignupEvent(userId, username);
 
     try {
       await fetch("/api/send-welcome-dm", {
@@ -177,6 +225,9 @@ export default function SignupPage() {
     setError(null);
 
     const redirectTo = typeof window !== "undefined" ? `${window.location.origin}${DASHBOARD_ENTRY_PATH}` : undefined;
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("bb:pending-oauth-signup", provider);
+    }
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: redirectTo ? { redirectTo } : undefined,
@@ -194,11 +245,11 @@ export default function SignupPage() {
       <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-4 py-4 md:py-6">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/Newlouiswave.png"
+            src="/Newforreallogoicon.png"
             alt="Bible Buddy Logo"
             width={32}
             height={32}
-            className="h-8 w-8"
+            className="h-8 w-8 rounded-lg object-cover"
           />
           <div className="text-lg font-bold tracking-tight text-gray-900 md:text-xl">
             Bible Buddy
