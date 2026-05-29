@@ -177,7 +177,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
   },
   {
     dayNumber: 13,
-    title: "Wrestling of Jacob",
+    title: "Jacob Wrestles With God",
     reference: "Genesis 32-33",
     estimatedTime: "30-35 min",
     summary: "Study fear, prayer, wrestling with God, a changed name, and reconciliation with Esau.",

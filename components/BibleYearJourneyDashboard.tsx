@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import AppLoadingScreen from "./AppLoadingScreen";
 import DashboardJourneyExperience from "./DashboardJourneyExperience";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import { supabase } from "../lib/supabaseClient";
@@ -62,18 +63,6 @@ async function getStableDashboardUser() {
   await waitForSessionRefresh(400);
   const { data: retrySessionData } = await supabase.auth.getSession();
   return retrySessionData.session?.user ?? null;
-}
-
-function DashboardLoadingShell({ children }: { children: ReactNode }) {
-  return (
-    <main className="min-h-screen px-4 py-8 text-[#111827]">
-      <div className="mx-auto flex min-h-[60vh] max-w-2xl items-center justify-center">
-        <div className="rounded-[24px] border border-[#e5dfd2] bg-white px-6 py-5 text-center shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
-          {children}
-        </div>
-      </div>
-    </main>
-  );
 }
 
 export default function BibleYearJourneyDashboard() {
@@ -138,12 +127,7 @@ export default function BibleYearJourneyDashboard() {
   }, [loadDashboardUser]);
 
   if (loading) {
-    return (
-      <DashboardLoadingShell>
-        <p className="text-sm font-black uppercase tracking-[0.16em] text-[#2f7fe8]">Bible in One Year</p>
-        <p className="mt-2 text-lg font-black">Preparing your Journey Dashboard...</p>
-      </DashboardLoadingShell>
-    );
+    return <AppLoadingScreen />;
   }
 
   return (

@@ -157,7 +157,7 @@ export const BIBLE_YEAR_DAY_THIRTEEN_AUDIO: BibleYearAudioDay = {
   title: "Day 13 - Jacob Wrestles With God",
   storagePath: getBibleYearAudioStoragePath(13),
   apiSrc: getBibleYearAudioApiSrc(13),
-  estimatedDuration: "about 16 min",
+  estimatedDuration: "30-35 min",
 };
 
 export const BIBLE_YEAR_DAY_FOURTEEN_AUDIO: BibleYearAudioDay = {
