@@ -77,7 +77,7 @@ const DAY_10: DayBlueprint = {
   dayNumber: 10,
   title: "Covenant Through Isaac",
   reference: "Genesis 25-27",
-  listenTime: "about 20 min",
+  listenTime: "about 35 min",
   opening: [
     "Genesis 25-27 follows Abraham's final years and Isaac's household as the covenant promise continues through a very imperfect family.",
     "Abraham's life closes, Jacob and Esau are born, Isaac faces famine, repeats some of Abraham's fear, digs wells, and receives God's promise.",

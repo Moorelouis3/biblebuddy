@@ -169,7 +169,7 @@ export const GENESIS_BIBLE_IN_ONE_YEAR_SERIES: GenesisBibleYearDay[] = [
   },
   {
     dayNumber: 12,
-    title: "Wrestling of Jacob",
+    title: "Jacob Leaves Laban",
     reference: "Genesis 30-31",
     estimatedTime: "about 40 min",
     summary: "Follow household tension, growth, conflict with Laban, and Jacob learning to leave by faith.",
