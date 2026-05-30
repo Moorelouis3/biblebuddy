@@ -22,6 +22,59 @@ function normalizeBook(book: string | null | undefined) {
   return (book || "").toLowerCase().trim().replace(/\s+/g, " ");
 }
 
+type ReaderStudySectionInput = {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  summary: string;
+  what: string;
+  phrases: string[];
+  truths: string[];
+  why: string;
+};
+
+function makeGenesisStudySection(section: ReaderStudySectionInput): BibleReaderStudySection {
+  return {
+    book: "genesis",
+    chapter: section.chapter,
+    startVerse: section.startVerse,
+    endVerse: section.endVerse,
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: section.summary,
+    categories: [
+      {
+        id: "what-is-happening",
+        icon: "🧭",
+        title: "What Is Happening Here?",
+        content: [section.what],
+      },
+      {
+        id: "key-phrases",
+        icon: "💬",
+        title: "Key Phrases",
+        content: section.phrases,
+      },
+      {
+        id: "key-truths",
+        icon: "🔑",
+        title: "Key Truths",
+        content: section.truths,
+      },
+      {
+        id: "why-this-matters",
+        icon: "❤️",
+        title: "Why This Matters",
+        content: [section.why],
+      },
+    ],
+  };
+}
+
 export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
   {
     book: "genesis",
@@ -775,6 +828,1371 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
       },
     ],
   },
+  ...[
+    makeGenesisStudySection({
+      chapter: 5,
+      startVerse: 1,
+      endVerse: 5,
+      reference: "Genesis 5:1-5",
+      title: "Death Moves Through The Generations",
+      icon: "🧬",
+      summary: "Adam's family line continues, but the sentence of death now enters the family record.",
+      what: `Genesis 5 may look like a list of names, but it is teaching what life is like after Eden. People are still made in God's image, families still grow, and the blessing of life still moves forward, but death now travels through the family line too.
+🧬 The chapter reaches back to creation and reminds us that humanity still carries God-given dignity.
+👶 Adam has a son in his own likeness, showing both family resemblance and the fallen condition now passed through human history.
+⏳ Adam lives a very long life, but long life is not eternal life.
+⚰️ The section ends with the words "and he died," proving that God's warning in Eden was real.
+This is not boring family history. Genesis is slowing us down so we feel the weight of death while still noticing that God keeps the human story moving.`,
+      phrases: [
+        `🧬 Book Of The Generations
+This phrase introduces a family record. In Genesis, genealogies are not filler; they show how the story moves from one generation to the next.
+After the chaos of Genesis 3 and 4, this line tells us God has not lost track of the family. Names matter, lives matter, and history is still being carried forward.
+The Bible often uses family lines to show promise moving quietly through ordinary people.`,
+        `👤 In The Likeness Of God
+Genesis reminds us that humans were made in God's likeness before it talks about Adam's descendants. That means sin has damaged humanity, but it has not erased human worth.
+This matters for the flood story because judgment is not coming on worthless creatures. It is coming on image-bearers who have become corrupt.
+Human beings are valuable, and that makes sin more tragic, not less.`,
+        `⚰️ And He Died
+This phrase becomes the drumbeat of Genesis 5. Adam lived 930 years, but the final word over his earthly life is still death.
+The long ages can sound impressive, but Genesis is not mainly impressed by the numbers. It wants us to hear that the Eden warning came true.
+Sin promised freedom, but it brought mortality into the family record.`,
+      ],
+      truths: [
+        `🧬 Human dignity remains after the fall.
+Genesis still connects humanity to God's likeness.
+Sin changes the human condition, but it does not make people worthless.
+That is why human life should still be treated with seriousness and honor.`,
+        `⚰️ Death is now part of human history.
+Genesis 5 shows the result of Genesis 3.
+The curse is not an idea anymore; it is showing up in fathers, sons, years, and funerals.
+The Bible wants us to feel that death is an enemy, not a normal friend.`,
+        `🌱 God keeps the story moving.
+Even though death is repeated, births are repeated too.
+Children are born, names are remembered, and the line continues.
+God is preserving the story even in a dying world.`,
+      ],
+      why: `Genesis 5:1-5 matters because it teaches us to read genealogies as theology, not just lists. This family record shows dignity, damage, and death all at once.
+🧬 You are not random; human life still carries God-given worth.
+⚰️ Death is real, and the Bible does not pretend it is small.
+👶 God can carry hope through ordinary family lines.
+📖 Slow passages can teach deep truths if we pay attention.
+This section helps us understand why the rest of the Bible keeps moving toward rescue. The problem is not only bad choices; the problem is death spreading through the human family.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 5,
+      startVerse: 6,
+      endVerse: 20,
+      reference: "Genesis 5:6-20",
+      title: "The Same Sentence Keeps Falling",
+      icon: "🔔",
+      summary: "Seth's line continues, but the repeated pattern keeps showing that death has entered every generation.",
+      what: `This section repeats the rhythm of life after Eden: someone lives, fathers children, has sons and daughters, and dies. The repetition is the point, because Genesis wants the reader to feel death echoing through generations.
+📜 Names are preserved, which shows that individual lives are not forgotten.
+👶 Children are born, which shows that God's blessing of life has not stopped.
+🔔 The same pattern keeps ringing: life, family, years, death.
+🌱 Seth's line keeps moving toward Noah, the man who will become central in the flood story.
+Nothing dramatic happens on the surface, but the theology is loud. Brokenness is not always explosive; sometimes it is ordinary life lived under the shadow of death.`,
+      phrases: [
+        `📜 He Lived
+Genesis keeps telling us that these people lived real lives. They were not placeholders in a chart.
+They had homes, work, families, griefs, hopes, and memories. The Bible gives only a few details, but the repeated phrase reminds us that these were actual human lives.
+God's story moves through real people, not abstract symbols.`,
+        `👶 Sons And Daughters
+The genealogy names one son in the main line, but it also mentions sons and daughters. That detail keeps the family record from feeling too thin.
+There were many lives around the named line, even when the Bible focuses on one path.
+Genesis is tracing the promise line, but it does not mean the unnamed lives were unimportant.`,
+        `🔔 Then He Died
+The repeated ending is supposed to wear on us. Again and again, the sentence falls.
+This is how Genesis teaches the seriousness of sin without pausing to preach a sermon.
+The rhythm itself becomes the lesson: death has entered, and no human lifespan can outrun it.`,
+      ],
+      truths: [
+        `📖 Repetition is teaching.
+Genesis repeats the pattern so the reader feels the weight of it.
+The Bible often teaches by rhythm, structure, and repeated words.
+When a phrase keeps appearing, it is usually asking us to slow down.`,
+        `🌱 Hope can move quietly.
+There are no big miracles in this section.
+Still, God is preserving a line that will lead toward Noah.
+Quiet faithfulness matters even when the story feels ordinary.`,
+        `⚰️ Long life cannot solve death.
+These lifespans are enormous compared to ours.
+But each life still ends.
+Genesis is showing that humanity needs more than extra years; humanity needs rescue from death itself.`,
+      ],
+      why: `Genesis 5:6-20 matters because it helps us feel the ordinary weight of a fallen world. Life keeps going, but death keeps interrupting it.
+📜 Your life matters even when only a few details are seen.
+🔔 Repeated patterns in Scripture are invitations to pay attention.
+🌱 God can be working through quiet generations.
+⚰️ More time is not the same as eternal life.
+This section makes us ready to notice Enoch, because in the middle of the same death rhythm, one man will have a different ending.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 5,
+      startVerse: 21,
+      endVerse: 24,
+      reference: "Genesis 5:21-24",
+      title: "Enoch Walked With God",
+      icon: "🚶",
+      summary: "Enoch interrupts the death pattern by walking with God and being taken by God.",
+      what: `Enoch is the surprise in Genesis 5. By now we expect every life to end with "and he died," but Enoch's story interrupts the rhythm.
+🚶 Enoch walks with God, which points to closeness, trust, direction, and fellowship.
+✨ Instead of saying Enoch died, Genesis says God took him.
+🌑 Enoch lives in a world where death is spreading, but his life shows that fellowship with God is still possible.
+🕊️ This prepares us for Noah, because Genesis 6 will also say Noah walked with God.
+The point is not that Enoch escaped ordinary life by being strange. The point is that he lived near God in a dying world, and God gave his story a different ending.`,
+      phrases: [
+        `🚶 Walked With God
+Walking with God is relationship language. It pictures a life moving with God instead of away from Him.
+It does not mean Enoch was sinless or never struggled. It means his life was marked by nearness, trust, and direction.
+Genesis is showing that life outside Eden can still include real fellowship with God.`,
+        `✨ God Took Him
+This phrase breaks the expected pattern. Everyone else dies, but Enoch is taken by God.
+The Bible does not explain every detail, and that mystery is part of the power of the line.
+It tells us that death is not stronger than God's authority over a person's life.`,
+        `🌑 After He Fathered Methuselah
+Enoch's walk with God happens in ordinary family life. He has a son, lives years, and has sons and daughters.
+That matters because walking with God is not only for isolated religious moments.
+Faithfulness can happen in family, work, aging, and daily responsibility.`,
+      ],
+      truths: [
+        `🚶 A person can walk with God in a dying world.
+Genesis 5 is full of death, but Enoch is full of fellowship.
+The surrounding culture does not have to define a person's direction.
+Nearness to God is still possible after Eden.`,
+        `✨ God has authority over death.
+Enoch's ending shows that death does not have the final power.
+Genesis gives a small flash of hope inside a dark chapter.
+God can write an ending that breaks the expected pattern.`,
+        `🕊️ Enoch prepares us for Noah.
+Before Noah walks with God in a corrupt generation, Enoch walks with God in a death-filled genealogy.
+Genesis is connecting faithful lives across generations.
+Walking with God becomes a major theme in the Noah story.`,
+      ],
+      why: `Genesis 5:21-24 matters because it shows that faithfulness is possible even when the world feels spiritually heavy. Enoch's life is a quiet but powerful interruption.
+🚶 You can walk with God before everything around you is fixed.
+🌑 A dark generation does not have to decide your direction.
+✨ God is not trapped by the normal ending everyone expects.
+🕊️ One faithful life can prepare the way for another.
+Enoch's story is short, but it gives hope. Death is loud in Genesis 5, but God is still able to draw people near and keep them for Himself.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 5,
+      startVerse: 25,
+      endVerse: 32,
+      reference: "Genesis 5:25-32",
+      title: "Noah Is Born Into A Tired World",
+      icon: "👶",
+      summary: "Noah's birth brings hope into a world tired from the cursed ground and the spread of death.",
+      what: `Genesis 5 ends by moving toward Noah. The chapter has repeated death again and again, but now a child is named with hope.
+⏳ Methuselah lives the longest recorded life in Scripture, but even he dies.
+😮‍💨 Lamech names Noah with longing for comfort and relief.
+🌾 The curse on the ground from Genesis 3 is still being felt generations later.
+👶 Noah's birth points forward to preservation through judgment.
+Genesis is not saying Noah will remove the curse completely. It is showing that God is preparing a turning point through a child born into a tired world.`,
+      phrases: [
+        `⏳ Methuselah
+Methuselah is famous because of his long life. But Genesis still ends his story with death.
+That is an important lesson: even the longest human life is temporary.
+The Bible is not trying to make us worship longevity. It is showing that humanity needs something deeper than more years.`,
+        `😮‍💨 This Same Shall Comfort Us
+Lamech names Noah with hope for relief. The world is tired, work is painful, and the ground is cursed.
+This reaches back to Genesis 3, where sin made labor frustrating and painful.
+Noah's name carries the ache of generations who are tired of life under the curse.`,
+        `🌾 The Ground Which The Lord Has Cursed
+Genesis keeps connecting human sin to creation. The ground is not neutral background; it bears the effects of the fall.
+Lamech's words show that the curse is still part of daily life.
+The need for comfort is not sentimental. It comes from real toil in a damaged world.`,
+      ],
+      truths: [
+        `⏳ Long life is not salvation.
+Methuselah lives longer than anyone else recorded in Scripture.
+Still, he dies.
+Genesis teaches that time cannot defeat the deeper problem of death.`,
+        `😮‍💨 People long for relief from the curse.
+Lamech's words are full of exhaustion.
+Human beings were made for fruitful work, but the fall made work painful and resistant.
+Noah is born into that ache.`,
+        `👶 God prepares hope before judgment arrives.
+Noah appears before the flood begins.
+God is already preparing preservation before the waters come.
+That is mercy moving ahead of judgment.`,
+      ],
+      why: `Genesis 5:25-32 matters because it shows hope appearing inside weariness. The world is tired, the ground is cursed, and death keeps repeating, but God is preparing Noah.
+😮‍💨 God sees tired people and cursed-ground labor.
+👶 Hope can enter the story as something small at first.
+⏳ A long life is still not enough without God's mercy.
+🛟 Before judgment comes, God is already preparing preservation.
+This section helps us read Noah correctly. He is not just a boat builder; he is introduced as hope in a world that needs comfort.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 6,
+      startVerse: 1,
+      endVerse: 8,
+      reference: "Genesis 6:1-8",
+      title: "The Earth Becomes Corrupt",
+      icon: "🌑",
+      summary: "Human wickedness fills the earth, God's heart is grieved, and Noah finds favor.",
+      what: `Genesis 6 shows the spread of sin becoming global and deep. The passage includes difficult details, but the main point is clear: corruption has reached the human heart.
+🌑 Humanity multiplies, but sin multiplies with it.
+🧠 The thoughts and intentions of the heart are described as evil continually.
+💔 God is grieved, which shows He is not cold or detached from evil.
+⚖️ Judgment is announced because violence and corruption cannot be ignored forever.
+🛟 Then verse 8 breaks through: Noah finds favor in the eyes of the Lord.
+The passage is heavy, but it is not hopeless. Grace appears before the ark, before the rain, and before Noah does anything impressive in the story.`,
+      phrases: [
+        `🌑 Sons Of God And Daughters Of Men
+Bible readers have understood this phrase in different ways. Some see heavenly beings, some see powerful rulers, and some see the line of Seth mixing with the line of Cain.
+Genesis does not pause to settle every curiosity for us.
+The main point is that human life is becoming disordered, proud, and corrupt before God.`,
+        `🧠 Every Imagination Of The Thoughts Of His Heart
+Genesis goes beneath behavior into desire and imagination. The problem is not only bad actions; it is a heart turned away from God.
+This is a deep diagnosis of sin.
+The flood story is not treating evil as a few mistakes. It is showing corruption at the center of human life.`,
+        `🛟 Noah Found Grace
+This is one of the brightest lines in the flood story. Before Noah builds, before Noah enters, before Noah survives, he receives favor.
+Grace comes first.
+Noah's obedience matters, but his story begins with God's favor, not human greatness.`,
+      ],
+      truths: [
+        `🧠 Sin is deeper than behavior.
+Genesis 6 talks about thoughts, imagination, and heart.
+God sees what is forming inside people before it becomes visible outside.
+That is why the problem is so serious.`,
+        `💔 God grieves evil.
+The Lord is not indifferent to violence and corruption.
+The grief language shows that evil wounds what God made good.
+Judgment comes from a holy God who truly sees the damage.`,
+        `🛟 Grace appears before judgment falls.
+Noah finds favor before the flood begins.
+God's mercy is already present in the story.
+Even in judgment, God is preparing rescue.`,
+      ],
+      why: `Genesis 6:1-8 matters because it explains why the flood happens. God is not reacting randomly; He is responding to deep corruption that has filled the earth.
+🧠 What happens in the heart matters to God.
+💔 God is grieved by evil, not entertained by it.
+⚖️ Judgment means God takes violence seriously.
+🛟 Grace can appear in the darkest paragraph.
+This section teaches us to take sin seriously without losing sight of mercy. The same passage that shows God's grief also introduces the favor that will preserve life.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 6,
+      startVerse: 9,
+      endVerse: 13,
+      reference: "Genesis 6:9-13",
+      title: "Noah Walked With God",
+      icon: "🛡️",
+      summary: "Noah stands apart from a corrupt and violent generation because he walks with God.",
+      what: `Genesis now focuses on Noah's life in contrast to the world around him. The earth is corrupt and filled with violence, but Noah is described as righteous, blameless in his generation, and walking with God.
+🛡️ Noah is not presented as sinless, but as a man whose direction is different.
+🚶 Walking with God connects Noah to Enoch from Genesis 5.
+🩸 Violence has filled the earth, showing sin has become public and social.
+👀 God sees the corruption clearly before He announces judgment.
+This section shows that faithful living is possible in a corrupt generation. Noah's difference begins with his walk with God, not with his boat-building skills.`,
+      phrases: [
+        `🚶 Noah Walked With God
+This phrase is the center of Noah's life. Like Enoch, Noah lives near God in a world moving away from Him.
+Walking with God means trust, nearness, obedience, and direction.
+Before Noah builds anything with his hands, Genesis shows the direction of his heart.`,
+        `🛡️ Righteous And Blameless
+These words do not mean Noah never sinned. Later Genesis will show Noah's weakness too.
+The point is that Noah is marked by integrity in comparison with his generation.
+He lives differently because he walks with God differently.`,
+        `🩸 Filled With Violence
+Violence is one of the clearest reasons for the flood. Sin has moved from private distrust to public destruction.
+Genesis has traced this movement from Eden to Cain to the whole earth.
+God's judgment is connected to real harm being done in His world.`,
+      ],
+      truths: [
+        `🚶 Faith begins with walking with God.
+Noah's obedience flows from relationship.
+He is not merely a moral exception; he is a man moving with God.
+The ark will come from that walk.`,
+        `🩸 God cares about violence.
+The earth being filled with violence is not a side detail.
+God sees the suffering and disorder violence creates.
+Judgment shows that human harm matters to Him.`,
+        `🛡️ A generation does not have to define a person.
+Noah lives differently in a corrupt world.
+He shows that faithfulness can stand out even when the culture around it collapses.
+God notices that kind of life.`,
+      ],
+      why: `Genesis 6:9-13 matters because it shows what faithfulness looks like before the flood. Noah is surrounded by corruption, but his direction is not controlled by his surroundings.
+🚶 Walk with God before you try to build something for God.
+🩸 Violence and corruption are never invisible to the Lord.
+🛡️ You can live differently even when everyone around you normalizes sin.
+👀 God's seeing is both comfort and warning.
+This section helps us understand Noah's obedience. He does not build the ark because he is naturally impressive; he builds because he walks with the God who speaks.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 6,
+      startVerse: 14,
+      endVerse: 22,
+      reference: "Genesis 6:14-22",
+      title: "God Commands The Ark",
+      icon: "🛠️",
+      summary: "God gives Noah detailed instructions for the ark and promises covenant preservation.",
+      what: `God does not only announce judgment; He gives Noah a way of preservation. The ark is not Noah's clever idea. It is God's commanded refuge.
+🛠️ Noah receives practical instructions: wood, rooms, pitch, measurements, levels, a window, and a door.
+📏 Faith becomes obedience in details, not vague religious feeling.
+🛟 The ark will preserve Noah, his family, and living creatures through judgment.
+🤝 God speaks covenant before the flood arrives.
+✅ Noah does according to all that God commanded him.
+This section shows faith becoming construction. Noah obeys before rain starts, before danger is visible, and before the world understands what he is doing.`,
+      phrases: [
+        `🛠️ Make Thee An Ark
+The ark is God's rescue plan given to Noah. Noah must build, but God provides the instructions.
+That matters because biblical faith is not passive.
+Trusting God often means doing the specific thing He has commanded, even when the reason is not yet visible to everyone else.`,
+        `📏 Cubits
+A cubit was an ancient measurement roughly based on the distance from elbow to fingertip. The ark's size shows this was not a children's picture-book boat.
+It was a massive survival vessel.
+Genesis gives measurements because God's rescue is practical, physical, and detailed.`,
+        `🤝 I Will Establish My Covenant
+Before the flood comes, God speaks covenant. That means judgment is not the only word in the passage.
+God commits Himself to preservation.
+The covenant language points forward to the rainbow promise in Genesis 9.`,
+      ],
+      truths: [
+        `🛟 God provides refuge before judgment.
+The ark is commanded before the waters arrive.
+God gives Noah a place of preservation before the crisis begins.
+Mercy is built into the warning.`,
+        `📏 Obedience has details.
+Noah does not get to invent his own ark.
+God gives dimensions, materials, and instructions.
+Faith listens closely enough to obey specifically.`,
+        `✅ Faith acts before proof appears.
+Noah builds before the rain starts.
+That is faith in motion.
+He trusts God's word before circumstances make it obvious.`,
+      ],
+      why: `Genesis 6:14-22 matters because it shows what trust looks like when God's warning sounds strange to everyone else. Noah's faith becomes boards, measurements, pitch, rooms, and obedience.
+🛠️ Faith is not only what you feel; it is what you build because God spoke.
+📏 Details matter when God gives them.
+🛟 God's refuge is provided before judgment arrives.
+✅ Obedience before proof is still real faith.
+This section helps us respect Noah's obedience. He does not wait until the sky changes. He moves because God's word is enough.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 7,
+      startVerse: 1,
+      endVerse: 10,
+      reference: "Genesis 7:1-10",
+      title: "Come Into The Ark",
+      icon: "🚪",
+      summary: "God calls Noah, his family, and the animals into the ark before the flood begins.",
+      what: `Genesis 7 begins with God calling Noah into the ark. The ark has been built, the warning has been given, and now the place of refuge must be entered.
+🚪 God says "come," which makes the ark feel like an invitation into safety.
+👨‍👩‍👦 Noah's household enters with him, showing his obedience affects more than himself.
+🐾 Animals are gathered and preserved according to God's command.
+⏳ Seven days pass before the flood comes, creating a waiting space between obedience and visible judgment.
+🌧️ The rain has not fallen yet, but Noah enters because God spoke.
+This section teaches that refuge must be received. The ark is available, but Noah must step inside the place God provided.`,
+      phrases: [
+        `🚪 Come Into The Ark
+The wording feels personal. God is not only saying "go"; He is calling Noah into refuge.
+The ark is not Noah's escape plan. It is God's provided shelter.
+That makes the invitation both gracious and urgent.`,
+        `🐾 Clean And Unclean
+Clean and unclean animals appear before the law of Moses, which surprises many readers.
+This shows that some worship categories already existed in some form.
+The clean animals will matter after the flood when Noah offers sacrifice.`,
+        `⏳ Seven Days
+Noah enters the ark, and then there is a waiting period before the flood begins.
+That waiting must have felt strange: inside the ark, door closing soon, no rain yet.
+Faith often includes waiting after obedience but before fulfillment.`,
+      ],
+      truths: [
+        `🚪 God's refuge must be entered.
+The ark was built, but Noah still had to come in.
+Hearing about rescue is not the same as receiving it.
+Faith responds to God's invitation.`,
+        `👨‍👩‍👦 Obedience can shelter others.
+Noah's household comes with him.
+One person's faithfulness can bless more than one life.
+Genesis shows family preservation tied to Noah's obedience.`,
+        `⏳ Waiting is part of faith.
+Noah enters before the flood begins.
+He waits inside what God provided before the evidence appears outside.
+Trust often has a waiting room.`,
+      ],
+      why: `Genesis 7:1-10 matters because it moves from building refuge to entering refuge. Noah does not only believe the ark matters; he steps inside.
+🚪 God's invitation into safety should be taken seriously.
+⏳ Waiting after obedience does not mean obedience was wrong.
+👨‍👩‍👦 Faithfulness can affect the people around you.
+🐾 God preserves more life than Noah alone.
+This section reminds us that God's warnings are not meant to scare people for no reason. They are meant to move people into the refuge He provides.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 7,
+      startVerse: 11,
+      endVerse: 16,
+      reference: "Genesis 7:11-16",
+      title: "The Flood Begins",
+      icon: "🌧️",
+      summary: "The waters break open, Noah enters with the living creatures, and the Lord shuts him in.",
+      what: `The flood begins with water from below and above. Genesis describes the fountains of the deep breaking open and the windows of heaven opening.
+🌊 The creation boundaries that held back the waters now give way.
+🌧️ Rain falls for forty days and forty nights.
+🐾 Noah, his family, and the creatures enter the ark as God commanded.
+🚪 The Lord shuts Noah in, securing the place of refuge.
+⚖️ The time for warning has become the time of judgment.
+This is one of the most sobering moments in Genesis. The same God who patiently gave instruction now closes the door, and the flood begins.`,
+      phrases: [
+        `🌊 Fountains Of The Great Deep
+This phrase points to waters bursting from below, not only rain from above.
+Genesis wants us to feel the flood as a cosmic undoing, like the ordered world is being overwhelmed.
+The waters that God ordered in creation now become instruments of judgment.`,
+        `🌧️ Windows Of Heaven
+The rain is described as heaven opening. Water comes from above as well as below.
+This makes the flood feel total and terrifying.
+The whole created order is involved in the judgment scene.`,
+        `🚪 The Lord Shut Him In
+This line is both tender and serious. God Himself secures Noah inside the ark.
+It is tender because Noah is protected. It is serious because the door is closed.
+The time for entering has ended, and judgment has begun.`,
+      ],
+      truths: [
+        `⚖️ God's warnings are serious.
+The flood begins after long warning and preparation.
+Genesis teaches that God's patience should not be mistaken for empty talk.
+When God speaks, His word stands.`,
+        `🛟 God secures His refuge.
+The Lord shuts Noah in.
+Noah is not left to hold the door closed himself.
+The safety of the ark rests on God's action.`,
+        `🌊 Judgment can look like creation being undone.
+Genesis 1 ordered the waters for life.
+Genesis 7 shows waters overwhelming a corrupt world.
+Sin attacks creation's purpose, and judgment reveals the seriousness of that damage.`,
+      ],
+      why: `Genesis 7:11-16 matters because it shows the moment warning becomes reality. This is not a cute boat scene; it is judgment and rescue happening at the same time.
+🌧️ God's word about judgment should be taken seriously.
+🚪 There is mercy in being shut inside God's refuge.
+🌊 Sin can bring creation-level consequences.
+🐾 God remembers living creatures even in judgment.
+This section teaches holy seriousness. The door that protects Noah also marks the end of delay.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 7,
+      startVerse: 17,
+      endVerse: 24,
+      reference: "Genesis 7:17-24",
+      title: "The Waters Prevail",
+      icon: "🌊",
+      summary: "The waters rise over the earth, judge life outside the ark, and carry the ark above the flood.",
+      what: `Genesis 7 ends with the waters prevailing over the earth. The language is heavy because the flood is judgment, not background scenery.
+🌊 The waters rise and cover even the mountains.
+🛟 The same waters that judge the world lift the ark.
+⚖️ Life outside the ark dies, showing that God's judgment is real.
+🐾 Life inside the ark is preserved because God provided refuge.
+⏳ The waters prevail for 150 days, so this rescue includes a long season of waiting.
+This section is hard to read, but it matters. Genesis shows that God judges corruption seriously while also preserving life through the refuge He commanded.`,
+      phrases: [
+        `🌊 The Waters Prevailed
+The repeated idea of prevailing shows the flood's strength. The waters dominate the landscape.
+Genesis wants the reader to feel that this is not a small local inconvenience in the story.
+It is a judgment scene where the corrupt world is overwhelmed.`,
+        `🛟 The Ark Went Upon The Face Of The Waters
+The waters destroy outside the ark, but they carry the ark.
+That contrast is one of the deepest images in the flood story.
+The difference is not the water; the difference is being inside the refuge God provided.`,
+        `⚖️ All Flesh Died
+This is the hardest phrase in the chapter. Genesis does not soften the reality of judgment.
+The Bible wants us to understand that violence and corruption are not light things.
+Judgment is terrible because sin has become terrible.`,
+      ],
+      truths: [
+        `⚖️ God does not treat evil as harmless.
+The flood is a severe judgment on severe corruption.
+Genesis will not let us make sin small.
+Violence, corruption, and rebellion matter to God.`,
+        `🛟 Refuge changes the meaning of the waters.
+Outside the ark, the waters judge.
+Inside the ark, the waters lift.
+God's provided refuge is the difference between destruction and preservation.`,
+        `⏳ Rescue can include waiting.
+The waters prevail for many days.
+Noah is saved, but he is not instantly settled on dry ground.
+Being preserved by God can still involve patience.`,
+      ],
+      why: `Genesis 7:17-24 matters because it makes us take the flood seriously. This is judgment, but it is also preservation.
+⚖️ Evil is not ignored by God.
+🛟 Safety is found inside what God provides.
+⏳ Being saved does not always mean the waiting ends quickly.
+🌱 God preserves life so the story can continue.
+The flood is heavy, but it is not the end. The ark remains, and that means mercy is still floating above the judgment.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 8,
+      startVerse: 1,
+      endVerse: 5,
+      reference: "Genesis 8:1-5",
+      title: "God Remembers Noah",
+      icon: "🌬️",
+      summary: "God turns His faithful attention toward Noah, and the flood waters begin to recede.",
+      what: `Genesis 8 begins with one of the most comforting lines in the flood story: God remembered Noah. That does not mean God forgot and suddenly recalled him; it means God turns His covenant attention toward Noah and acts.
+🌬️ God sends a wind over the earth, echoing creation language and beginning a new-creation movement.
+🌊 The waters stop increasing and begin to recede.
+⛰️ The ark rests on the mountains of Ararat, but Noah is not out yet.
+🌱 Hope returns in stages: water lowers, the ark rests, and mountain tops appear.
+This section teaches patient hope. God is acting, but Noah still has to wait inside the ark while restoration unfolds little by little.`,
+      phrases: [
+        `🕊️ God Remembered Noah
+Remembering in the Bible often means God turns toward someone with faithful action. Noah has been enclosed in the ark through judgment, but he has not been abandoned.
+This phrase is the hinge between flood judgment and restoration. The waters are still there, but God's mercy is already moving.`,
+        `🌬️ A Wind Over The Earth
+The wind language echoes the Spirit hovering over the waters in Genesis 1. The flooded world is beginning to move toward order again.
+Genesis is showing a kind of new creation after judgment. God can bring a livable world back from waters of chaos.`,
+        `⛰️ The Ark Rested
+The ark resting is not the end of the story, but it is a sign that the worst has passed. Noah is still waiting, but he is no longer drifting endlessly.
+Hope sometimes arrives as a resting place before it becomes an open door.`,
+      ],
+      truths: [
+        `🕊️ God remembers His people.
+Noah is not forgotten inside the ark.
+God's remembering means faithful attention and action.
+The flood is powerful, but it does not erase God's care.`,
+        `🌱 Restoration often comes in stages.
+The waters do not disappear all at once.
+The ark rests before Noah exits.
+God's rescue can be real even while the waiting continues.`,
+        `🌬️ God can begin creation again after judgment.
+The wind over the waters feels like Genesis 1.
+God is bringing order back from watery chaos.
+The story is moving from destruction toward renewed life.`,
+      ],
+      why: `Genesis 8:1-5 matters because it speaks to the fear of being forgotten in a long season. Noah is still inside the ark, but God is already moving.
+🕊️ God's silence does not mean God's absence.
+🌊 Waters can recede even before doors open.
+⛰️ A resting place can be the first sign of mercy.
+🌱 Hope often comes back in stages, not all at once.
+This passage helps us trust God's timing. The ark has not opened yet, but the God who remembered Noah is already turning the story toward life.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 8,
+      startVerse: 6,
+      endVerse: 12,
+      reference: "Genesis 8:6-12",
+      title: "The Raven, The Dove, And The Olive Leaf",
+      icon: "🕊️",
+      summary: "Noah sends out birds, waits patiently, and receives a small sign that life is returning.",
+      what: `Noah begins looking for signs that the earth is ready again. He opens the window and sends out birds, but even when he sees progress, he does not rush ahead of God.
+🪟 Noah opens the window and sends out a raven.
+🕊️ The dove searches for a resting place but returns because the earth is not ready.
+🌿 The olive leaf becomes a small but powerful sign that life is returning.
+⏳ Noah waits seven more days more than once.
+The passage is quiet, but it is deeply human. Noah is saved, but he is still waiting, watching, testing, and learning patience in the middle of restoration.`,
+      phrases: [
+        `🪟 Noah Opened The Window
+This small action shows Noah beginning to look outward again. After months inside the ark, the window becomes a place of watching and hope.
+Faith is not pretending nothing changed. It is watching for God's timing with patience.`,
+        `🕊️ The Dove Found No Rest
+The dove's first return means the earth is not ready yet. That must have been disappointing, but Noah receives the information and waits.
+Sometimes a closed door is not rejection. Sometimes it is timing.`,
+        `🌿 An Olive Leaf
+The olive leaf is small, but it carries huge meaning. It shows that plant life is appearing again and the world is becoming habitable.
+God often gives hope in small signs before the full door opens.`,
+      ],
+      truths: [
+        `⏳ Faith knows how to wait.
+Noah does not force the door open.
+He tests, watches, and waits.
+Patience is part of obedience.`,
+        `🌿 Small signs of life matter.
+The olive leaf is not the whole restored world.
+But it is enough to show that restoration has begun.
+God can encourage faith with small evidence of coming life.`,
+        `🕊️ Rest has to come in God's timing.
+The dove cannot rest until the ground is ready.
+Noah cannot settle until God opens the way.
+Real restoration is received, not grabbed.`,
+      ],
+      why: `Genesis 8:6-12 matters because it teaches patience after survival. Noah is no longer facing rising waters, but he still has to wait for a world he can actually step into.
+🪟 It is okay to look for signs of what God is doing.
+🕊️ Not every return means failure; sometimes it means wait.
+🌿 Small hope is still real hope.
+⏳ Faith does not have to rush restoration.
+This section is for the space between rescue and full renewal. The olive leaf says life is coming, even before Noah can walk on dry ground.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 8,
+      startVerse: 13,
+      endVerse: 19,
+      reference: "Genesis 8:13-19",
+      title: "God Says Go Forth",
+      icon: "🚪",
+      summary: "Noah waits for God's word, leaves the ark, and life begins spreading again.",
+      what: `Noah sees that the ground is dry, but he still waits for God to speak. That detail matters because Noah's life has been marked by listening.
+🌍 The earth is drying, and a new world is emerging after judgment.
+🗣️ God tells Noah to go out of the ark.
+🚪 Noah leaves with his family, not as an escapee, but as someone sent by God.
+🐾 The animals go out by their families, echoing the order of creation.
+🌱 Life is meant to spread again on the earth.
+This is rescue turning into responsibility. God preserved life in the ark so life could begin again outside it.`,
+      phrases: [
+        `🌍 The Face Of The Ground Was Dry
+The phrase signals that the flooded world is becoming livable again. It also echoes creation, where dry land appeared so life could flourish.
+Genesis is showing the earth moving from judgment toward a renewed beginning.`,
+        `🗣️ God Spoke Unto Noah
+Noah does not simply leave because he thinks the timing looks good. He waits for God's word.
+That pattern has defined Noah from the start: God speaks, Noah obeys.`,
+        `🐾 After Their Kinds
+This phrase echoes Genesis 1. The animals leave in ordered family groups, showing that creation order continues after the flood.
+God preserved life so it could multiply again.`,
+      ],
+      truths: [
+        `🗣️ God's word directs the next step.
+Noah waits even after seeing dry ground.
+He does not mistake evidence for permission.
+Faith listens for God's direction.`,
+        `🚪 Rescue leads to responsibility.
+Noah is preserved so he can step into a renewed calling.
+The ark was not the final home.
+God saves life so life can move forward.`,
+        `🌱 God continues His creation purpose.
+Animals leave by kind and life spreads again.
+The flood did not cancel God's purpose for the earth.
+God is renewing what judgment did not destroy.`,
+      ],
+      why: `Genesis 8:13-19 matters because it shows that survival is not the end of the story. God brings Noah out so life can continue.
+🗣️ A dry-looking path still needs God's direction.
+🚪 There is a time to stay and a time to go.
+🐾 God cares about the continuation of life.
+🌱 Rescue becomes a new assignment.
+This passage helps us think about what comes after hard seasons. God does not only bring people through; He also sends them forward.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 8,
+      startVerse: 20,
+      endVerse: 22,
+      reference: "Genesis 8:20-22",
+      title: "Worship After Rescue",
+      icon: "🔥",
+      summary: "Noah's first recorded act after the ark is worship, and God promises creation's rhythms will continue.",
+      what: `Noah's first recorded act after leaving the ark is worship. Before he builds a house, plants a vineyard, or reorganizes life, he builds an altar.
+🔥 Noah offers burnt offerings from the clean animals.
+🙏 Rescue becomes worship, not self-congratulation.
+🌾 God promises the rhythms of seedtime and harvest will continue.
+☀️ Day and night, cold and heat, summer and winter will not cease while the earth remains.
+💔 God also acknowledges that the human heart is still sinful from youth.
+This section is honest and hopeful at the same time. The flood judged evil, but it did not erase sin from the heart, so the world needs God's mercy to continue.`,
+      phrases: [
+        `🔥 Built An Altar
+This is the first altar mentioned in the Bible. Noah responds to rescue with worship.
+That tells us the right response to mercy is not pride, but gratitude and surrender.`,
+        `🙏 A Sweet Savor
+This phrase means the offering is accepted by God. It does not mean God needs food or smoke.
+It shows that worship offered in faith is pleasing to Him.`,
+        `🌾 Seedtime And Harvest
+God promises stable rhythms for the earth. After a flood that disrupted everything, this promise matters deeply.
+It means the world will continue with dependable seasons because God chooses mercy.`,
+      ],
+      truths: [
+        `🙏 Rescue should lead to worship.
+Noah's first recorded act is not building for himself.
+He builds an altar to the Lord.
+Gratitude is the right response to preservation.`,
+        `💔 Judgment does not cure the human heart.
+God says the imagination of man's heart is evil from youth.
+The flood removed a corrupt world, but it did not remove sin from humanity.
+That prepares us to long for deeper redemption.`,
+        `🌾 God's mercy sustains ordinary life.
+Seedtime, harvest, seasons, and day-night rhythm continue.
+Ordinary stability is a gift from God.
+Every harvest is mercy continuing.`,
+      ],
+      why: `Genesis 8:20-22 matters because it shows worship and mercy after judgment. Noah steps into a washed world, but humanity still needs grace.
+🔥 Worship belongs at the beginning of a new season.
+🙏 Rescue should make us grateful, not self-important.
+💔 The heart problem still needs more than a flood.
+🌾 Ordinary seasons are a sign of God's sustaining mercy.
+This passage teaches that a fresh start is not enough by itself. We need a faithful God who continues to show mercy while He moves the story toward full redemption.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 9,
+      startVerse: 1,
+      endVerse: 7,
+      reference: "Genesis 9:1-7",
+      title: "Blessing, Blood, And Human Dignity",
+      icon: "🩸",
+      summary: "God blesses Noah, renews the creation calling, and protects human life because people bear His image.",
+      what: `Genesis 9 begins like a second start. God blesses Noah and his sons and repeats the command to be fruitful and fill the earth.
+🙌 Blessing comes before responsibility, just like in Genesis 1.
+🌍 Humanity is called to spread life across the earth again.
+🩸 Blood becomes central because blood represents life.
+👤 Human life is protected because people are made in the image of God.
+⚖️ The new world must not be ruled by the violence that filled the old one.
+This section shows that God's purpose for humanity continues after the flood. But it also shows that human life must be treated with holy seriousness.`,
+      phrases: [
+        `🙌 God Blessed Noah
+God begins the renewed world with blessing, not suspicion. Noah's family steps out of the ark under God's spoken favor.
+Responsibility in Scripture often begins with gift. God blesses first, then sends humanity forward.`,
+        `🩸 The Blood Thereof
+Blood represents life in the Bible. God teaches Noah that life is not casual or disposable.
+This prepares for later biblical themes of sacrifice, atonement, and the seriousness of taking life.`,
+        `👤 In The Image Of God
+Genesis repeats the image of God after the flood. Sin and judgment have not erased human dignity.
+Every human life still carries sacred worth because every person is connected to God's image.`,
+      ],
+      truths: [
+        `🙌 God's blessing continues after judgment.
+The flood does not cancel God's original purpose for human life.
+God blesses Noah and calls humanity to fruitfulness again.
+Mercy gives the world a renewed beginning.`,
+        `👤 Human life has sacred value.
+People bear God's image.
+That is why murder and violence are treated so seriously.
+Human dignity is rooted in God, not usefulness or status.`,
+        `🩸 Life belongs to God.
+Blood represents life, and God sets boundaries around it.
+Humans may receive provision, but they do not become owners of life in an ultimate sense.
+Life is a holy gift.`,
+      ],
+      why: `Genesis 9:1-7 matters because it shows how God wants the post-flood world to treat life. The old world was filled with violence, but the renewed world must honor human dignity.
+🙌 God's blessing gives humanity a fresh start.
+👤 Every person matters because every person bears God's image.
+🩸 Life is sacred, not disposable.
+⚖️ Violence is not normal in God's world.
+This passage helps us see why the Bible takes human life so seriously. Human dignity is not a cultural opinion; it is grounded in creation.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 9,
+      startVerse: 8,
+      endVerse: 17,
+      reference: "Genesis 9:8-17",
+      title: "The Rainbow Covenant",
+      icon: "🌈",
+      summary: "God gives the rainbow as the sign of His covenant with Noah, his descendants, and every living creature.",
+      what: `God now gives a covenant sign. The rainbow is not mainly about human promise to God; it is about God's promise to creation.
+🤝 God establishes covenant with Noah, his descendants, and every living creature.
+🌈 The bow in the clouds becomes the sign of that covenant.
+☁️ Clouds may still come, but they now carry a reminder of mercy.
+🕊️ God promises not to destroy all flesh by flood again.
+📖 The covenant is worldwide, reaching beyond one family to the living earth.
+This section is beautiful because the sign appears in the place storms appear. God puts a promise in the clouds.`,
+      phrases: [
+        `🤝 I Establish My Covenant
+The covenant begins with God's action. He is the One who establishes, speaks, and gives the sign.
+That means the rainbow covenant rests on God's faithfulness, not human ability to control the future.`,
+        `🌈 My Bow In The Cloud
+The bow may connect to the image of a warrior's bow, now set in the clouds as a sign of peace.
+The weapon image becomes a mercy sign. God is saying judgment will not continue without restraint forever.`,
+        `🐾 Every Living Creature
+The covenant includes animals too. That detail shows God's care for the whole living creation.
+The flood story is not only about humans; God preserves and promises concerning the creatures He made.`,
+      ],
+      truths: [
+        `🤝 God binds Himself by promise.
+The covenant is God's commitment.
+He gives creation a word to trust.
+The future of the earth rests on His faithfulness.`,
+        `🌈 Mercy can be remembered in storm clouds.
+The sign appears in the clouds, not in a cloudless sky.
+That means reminders of mercy can appear in the same place we fear trouble.
+God turns the storm scene into a promise scene.`,
+        `🐾 God cares for all living creatures.
+The covenant includes every living creature.
+God's mercy is wider than human survival alone.
+Creation remains under His care.`,
+      ],
+      why: `Genesis 9:8-17 matters because it gives the world a sign of God's restraint and mercy. The rainbow says the flood was not the final word over creation.
+🌈 God's promise stands even when clouds gather.
+🤝 Covenant means the future depends on God's faithfulness.
+🐾 God cares for the living world He made.
+☁️ Mercy can be remembered in places that once felt threatening.
+This passage helps us read the rainbow as more than a pretty symbol. It is a reminder that God has spoken peace over the continued life of the earth.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 9,
+      startVerse: 18,
+      endVerse: 29,
+      reference: "Genesis 9:18-29",
+      title: "Noah's Failure After The Flood",
+      icon: "🍇",
+      summary: "Noah's drunkenness and family shame show that the flood did not remove sin from the human heart.",
+      what: `Genesis does not hide Noah's weakness. After the altar, blessing, and rainbow, Noah plants a vineyard, becomes drunk, and lies uncovered in his tent.
+🍇 Noah's failure shows that rescued people still need grace.
+👀 Ham exposes shame instead of honoring his father.
+🧥 Shem and Japheth cover their father's nakedness with care.
+⚠️ The curse falls on Canaan, and this passage must not be twisted into racism or slavery.
+⚰️ Noah still dies, returning us to the death rhythm of Genesis 5.
+This section is uncomfortable, but it is important. The flood judged a corrupt world, but humanity still needs a deeper rescue than water can provide.`,
+      phrases: [
+        `🍇 He Drank Of The Wine
+Noah's drunkenness is a sad turn after such a powerful rescue story. Genesis is honest about its main characters.
+Being used by God does not mean a person no longer needs humility, boundaries, and grace.`,
+        `👀 Saw The Nakedness
+Ham's response is not described as care or protection. The scene centers on shame, exposure, and dishonor in the family.
+Genesis is showing sin reappearing inside the rescued family itself.`,
+        `🧥 Covered The Nakedness
+Shem and Japheth act differently. They refuse to stare at shame and instead cover it.
+The contrast shows two ways to respond to another person's failure: exposure or honorable covering.`,
+      ],
+      truths: [
+        `🍇 A fresh start does not remove sin by itself.
+The world has been washed, but Noah still fails.
+External judgment cannot fully cure the inner human problem.
+Genesis keeps showing our need for deeper redemption.`,
+        `👀 Shame can be handled wickedly or honorably.
+Ham exposes; Shem and Japheth cover.
+The passage contrasts dishonor with reverent care.
+How we handle another person's shame reveals something about our own heart.`,
+        `⚠️ Scripture must not be twisted.
+The curse is on Canaan, not a blanket curse on all Ham's descendants.
+This passage has been abused in history, but that abuse is not faithful reading.
+Genesis is not permission for racism or oppression.`,
+      ],
+      why: `Genesis 9:18-29 matters because it keeps us from thinking the flood solved the heart. Noah is rescued, but Noah still fails.
+🍇 Spiritual history does not make a person immune to weakness.
+👀 Exposing shame can become its own sin.
+🧥 Honor can cover what curiosity wants to stare at.
+⚠️ Hard Bible passages must be handled carefully and honestly.
+This section reminds us why Genesis keeps moving toward a greater Savior. Humanity needs more than survival; humanity needs a heart-level redemption.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 10,
+      startVerse: 1,
+      endVerse: 5,
+      reference: "Genesis 10:1-5",
+      title: "The Nations After The Flood",
+      icon: "🗺️",
+      summary: "Noah's sons begin spreading into families, lands, languages, and nations.",
+      what: `Genesis 10 is often called the Table of Nations. It can look like a list, but it is showing the world widening after the flood.
+👨‍👦 Noah's sons become the starting points for peoples after the flood.
+🗺️ Lands and coastlands are named, showing humanity spreading geographically.
+🗣️ Languages are mentioned, preparing us for Babel in Genesis 11.
+🏘️ Families become peoples, and peoples become nations.
+🌍 God sees the whole map, not just one small family story.
+This section matters because Genesis is preparing us for a worldwide promise. When God later says all families of the earth will be blessed, Genesis has already shown us those families spreading.`,
+      phrases: [
+        `🗺️ Isles Of The Gentiles
+This phrase points to distant coastlands or maritime peoples. Genesis is widening the reader's imagination beyond the ark.
+The story is moving from one rescued family toward many peoples across the earth.`,
+        `🗣️ Every One After His Tongue
+Languages are mentioned before the tower story explains the scattering. Genesis 10 gives the map, while Genesis 11 explains the rebellion behind the division.
+This is a reminder that Genesis often gives a wide view before zooming in.`,
+        `🏘️ Families In Their Nations
+Nations begin as families and clans. That makes the table feel more personal than a political map.
+Behind nations are human families known by God.`,
+      ],
+      truths: [
+        `🌍 God sees all peoples.
+Genesis names nations because they matter in God's story.
+No people group is invisible to Him.
+The Bible's vision is wider than one tribe from the beginning.`,
+        `🧭 Geography can carry theology.
+Lands, languages, and families are not random details.
+They prepare for later promises, conflicts, and missions.
+The map of Genesis becomes the stage for redemption.`,
+        `🌱 The flood did not end human fruitfulness.
+Noah's family multiplies.
+Families become nations.
+God's creation purpose continues after judgment.`,
+      ],
+      why: `Genesis 10:1-5 matters because it teaches us that the nations are part of God's story from the beginning. The Bible is not only interested in one private family.
+🗺️ God knows the map of humanity.
+🏘️ Nations begin with families, not statistics.
+🗣️ Language and culture matter in the biblical story.
+🌍 The promise to bless all families will be as wide as the world.
+This section helps us care about names and places. God is preparing a global story of blessing, even through a genealogy.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 10,
+      startVerse: 6,
+      endVerse: 20,
+      reference: "Genesis 10:6-20",
+      title: "Ham, Nimrod, And Early Kingdoms",
+      icon: "🏙️",
+      summary: "Ham's line introduces Egypt, Canaan, Nimrod, Babel, Nineveh, and early kingdom power.",
+      what: `This section traces Ham's descendants and introduces names that will matter throughout the Bible. Egypt, Canaan, Babel, Nineveh, and the Philistines all appear in seed form here.
+🏛️ Egypt and Canaan come into view, both becoming major places in Israel's future story.
+👑 Nimrod is singled out as a mighty figure connected with early kingdoms.
+🏙️ Babel appears here before Genesis 11 explains the tower.
+⚠️ Human power is rising again after the flood.
+🧭 The map is already preparing future conflict, promise, and rescue.
+Genesis is showing that culture and kingdoms develop quickly, but the human heart still needs God.`,
+      phrases: [
+        `🏛️ Mizraim And Canaan
+Mizraim is commonly associated with Egypt, and Canaan becomes the land central to Israel's story. These names are not random.
+Genesis is introducing places that will shape the rest of the Bible.`,
+        `👑 Nimrod A Mighty One
+Nimrod is described with unusual attention. He is connected to strength, hunting, kingdom beginnings, and important cities.
+The language makes readers watch carefully because power after the flood is already becoming organized.`,
+        `🏙️ Babel
+Babel appears in Genesis 10 before the tower story in Genesis 11. Genesis gives the location on the map before explaining the spiritual problem there.
+Babel will become a Bible symbol for proud human society resisting God.`,
+      ],
+      truths: [
+        `🏙️ Human culture grows after judgment.
+Cities, kingdoms, and peoples develop after the flood.
+Judgment did not erase human creativity or ambition.
+The question is whether power will serve God or exalt itself.`,
+        `⚠️ Power can become dangerous quickly.
+Nimrod and early kingdom language make the reader alert.
+Strength is not automatically evil, but it can become proud and violent.
+Genesis is preparing us for Babel's spirit.`,
+        `🧭 Genealogies prepare future stories.
+Egypt, Canaan, Babel, Nineveh, and Philistine names will matter later.
+Genesis plants seeds for the rest of Scripture.
+Paying attention here helps later stories make more sense.`,
+      ],
+      why: `Genesis 10:6-20 matters because it shows the world after the flood becoming organized, powerful, and complicated. The names here will echo through the rest of the Bible.
+🏛️ Places in genealogies become places of promise, danger, and rescue later.
+👑 Human might needs humility under God.
+🏙️ Babel's shadow appears before the tower is explained.
+🧭 Scripture often prepares us before we realize what it is doing.
+This section helps us see that the Bible is building a connected world. The map is not random; it is preparing the stage for God's promise.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 10,
+      startVerse: 21,
+      endVerse: 32,
+      reference: "Genesis 10:21-32",
+      title: "Shem And The Line Toward Promise",
+      icon: "🌱",
+      summary: "Shem's line is traced, the nations spread, and the story quietly moves toward Abram.",
+      what: `Genesis turns attention to Shem because the promise story will move through his family line toward Abram. The chapter still has a worldwide view, but one line is beginning to matter in a special way.
+🌱 Shem's descendants are named as the story narrows toward future promise.
+🧵 Eber is highlighted, and his line becomes important for the Hebrew people.
+🌍 Peleg is connected with division, preparing the reader for Babel.
+🗣️ Families, languages, lands, and nations are repeated.
+✨ Genesis 10 ends with the world spread out and ready for the Babel explanation in Genesis 11.
+This section is a bridge. It looks like a genealogy, but it is quietly moving the story toward Abram and the promise that all families of the earth will be blessed.`,
+      phrases: [
+        `🌱 Shem
+Shem matters because Abram will come through his line. Genesis is not saying God only cares about Shem's family, but it is showing where the covenant focus will narrow.
+Through one line, blessing will eventually be announced for all families.`,
+        `🧵 Eber
+Eber is highlighted in Shem's line and is often connected with the word Hebrew. That makes this detail important for the identity of Abram's descendants.
+Genesis is quietly preparing the reader for Israel's story.`,
+        `🌍 In His Days Was The Earth Divided
+Peleg's name is connected with division. This likely points toward the scattering connected with Babel.
+Genesis 10 gives the spread of nations, and Genesis 11 will explain the pride and judgment behind that spread.`,
+      ],
+      truths: [
+        `🌱 God narrows the story without forgetting the world.
+Genesis focuses on Shem's line, but the chapter still names many nations.
+God's covenant plan will move through one family for the sake of many families.
+The narrowing is for worldwide blessing.`,
+        `🧵 Small names can carry big futures.
+Eber may look like one name in a list.
+But that line will matter deeply later.
+Scripture often hides major future meaning in quiet details.`,
+        `✨ Genesis is preparing Abram.
+The world has spread, languages and lands are named, and Shem's line is highlighted.
+Everything is moving toward Genesis 12.
+God's promise is getting closer.`,
+      ],
+      why: `Genesis 10:21-32 matters because it closes the Table of Nations by pointing us toward the promise line. The world is wide, but the story is about to narrow.
+🌱 God's plan can move through one family while aiming at all families.
+🧵 Names that seem small can matter later.
+🌍 Division and scattering prepare the need for blessing.
+✨ Abram's story is almost here.
+This passage helps us see the Bible's big design. Genesis is not wandering through names; it is setting up the promise that will answer the scattered world.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 11,
+      startVerse: 1,
+      endVerse: 9,
+      reference: "Genesis 11:1-9",
+      title: "Babel Tries To Make A Name",
+      icon: "🏙️",
+      summary: "Humanity gathers, builds upward, and tries to secure identity and safety without trusting God.",
+      what: `Babel is humanity using unity, creativity, and ambition in the wrong direction. The people want a city, a tower, and a name for themselves.
+🧱 They make bricks and begin building a city.
+🗼 The tower reaches upward, showing human greatness being used for self-exaltation.
+👑 They want to make a name for themselves instead of receiving identity from God.
+🌍 They do not want to be scattered, even though God's creation blessing was to fill the earth.
+🗣️ God confuses their language and scatters them.
+This is not a story against building. It is a story against pride that uses building to avoid trusting and obeying God.`,
+      phrases: [
+        `🧱 Let Us Build
+The phrase shows human cooperation and creativity. Those are not bad gifts by themselves.
+The problem is the purpose under the project.
+Babel uses human strength to resist God's command instead of serving God's purpose.`,
+        `👑 Let Us Make Us A Name
+This is the heart of Babel. They want identity, greatness, and security on their own terms.
+Genesis 12 will answer this directly when God tells Abram, "I will make thy name great."
+Babel grasps for a name; Abram receives one by promise.`,
+        `🗣️ Confound Their Language
+God's judgment slows down human pride. The confusion of languages scatters the people and restrains united rebellion.
+It is judgment, but it is also mercy because unchecked pride would spread corruption faster.
+God breaks the project to protect the world from a worse unity.`,
+      ],
+      truths: [
+        `🏙️ Unity is not automatically holy.
+The people of Babel are united, but they are united around pride.
+Togetherness can still be rebellion if the purpose is self-exaltation.
+God cares about the heart under the project.`,
+        `👑 Identity is received better than seized.
+Babel wants to make a name.
+God will make Abram's name great by promise.
+Genesis contrasts self-made identity with God-given blessing.`,
+        `🌍 God scatters pride to preserve His purpose.
+The scattering is painful, but it moves humanity toward filling the earth.
+God's judgment stops rebellion from becoming even more entrenched.
+Mercy can sometimes look like disruption.`,
+      ],
+      why: `Genesis 11:1-9 matters because Babel is still a mirror. People still try to build lives that feel impressive, safe, and meaningful without surrendering to God.
+🧱 Building is not wrong, but building for pride is dangerous.
+👑 A name you grab can become a tower you are trapped inside.
+🌍 God's purpose is bigger than our desire to control the map.
+🗣️ Sometimes God disrupts what would destroy us.
+This passage prepares us for Abram. Human beings say, "Let us make a name," and God answers by calling one man into promise.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 11,
+      startVerse: 10,
+      endVerse: 32,
+      reference: "Genesis 11:10-32",
+      title: "The Story Narrows Toward Abram",
+      icon: "🧬",
+      summary: "After Babel, Genesis traces Shem's line to Abram and ends with an unfinished road in Haran.",
+      what: `After Babel scatters humanity, Genesis narrows the camera to Shem's family line. The genealogy may feel slow, but it is carrying the story toward Abram.
+🧬 Shem's line continues, showing God guiding history after Babel.
+👤 Abram appears, and the next major movement of Genesis comes into view.
+💔 Sarai is barren, which makes the coming promise humanly impossible.
+🛤️ Terah's family leaves Ur and heads toward Canaan.
+⏸️ The journey stops in Haran before the call of Genesis 12.
+This section shows that God's call often has a background. Abram's obedience begins in a real family, a real journey, real grief, and an unfinished road.`,
+      phrases: [
+        `🧬 The Generations Of Shem
+Genesis is tracing the line that will lead to Abram.
+After the wide map of nations, the story narrows to one family.
+That narrowing matters because God will bless many families through this one family.`,
+        `💔 Sarai Was Barren
+This detail appears before God's promise of descendants. That means the promise begins where human ability is already blocked.
+Abram and Sarai cannot manufacture the future God will promise.
+The story is setting us up to see that the promise depends on God.`,
+        `🛤️ They Went Forth To Go Into Canaan
+Terah's family starts moving toward Canaan but stops in Haran.
+That unfinished road creates tension.
+Genesis 12 will begin with God's call to keep moving by faith.`,
+      ],
+      truths: [
+        `🧬 God works through long family lines.
+Genealogies can feel slow, but they show God's patience.
+He is guiding history across generations.
+Abram's call is not random; it has a background.`,
+        `💔 God's promise often begins at impossibility.
+Sarai's barrenness is named before the promise comes.
+That detail makes clear that the future cannot rest on human strength.
+Faith will have to depend on God's word.`,
+        `⏸️ Calling can begin from unfinished places.
+The family stops in Haran.
+The road is not complete.
+God often speaks into stories that are already in motion but not yet whole.`,
+      ],
+      why: `Genesis 11:10-32 matters because it shows the road before the call. Abram's story begins with family history, barrenness, movement, delay, and an unfinished destination.
+🧬 God can be working before we know the call clearly.
+💔 Human impossibility is not the end of divine promise.
+🛤️ An unfinished road can become the place where God speaks.
+⏸️ Stopping short is not stronger than God's ability to call again.
+This passage slows us down before Genesis 12. It teaches that faith often begins in ordinary family stories that only later reveal God's bigger plan.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 12,
+      startVerse: 1,
+      endVerse: 3,
+      reference: "Genesis 12:1-3",
+      title: "God Calls Abram",
+      icon: "📣",
+      summary: "God calls Abram to leave the familiar and promises land, nation, name, blessing, and worldwide impact.",
+      what: `Genesis 12 is one of the biggest turns in the Bible. After Babel's pride and scattering, God calls Abram and speaks promise.
+📣 God tells Abram to leave country, kindred, and his father's house.
+🏠 The call touches Abram's security, identity, land, family, and future.
+✨ God promises to make Abram a great nation, bless him, and make his name great.
+🌍 The promise is not only for Abram; all families of the earth will be blessed through him.
+🧭 Abram is called before he receives the map.
+This is the beginning of the covenant family story that will shape the rest of Scripture and eventually lead to Jesus.`,
+      phrases: [
+        `📣 Get Thee Out
+God's call requires Abram to leave what is familiar.
+In the ancient world, family and land meant security, identity, and protection.
+Faith begins with trusting God's word more than the world Abram already knows.`,
+        `✨ I Will Make Thy Name Great
+This directly contrasts Babel. Babel said, "Let us make a name."
+God says to Abram, "I will make thy name great."
+Genesis is teaching the difference between grasped greatness and received blessing.`,
+        `🌍 All Families Of The Earth
+The promise is global from the beginning.
+God is not choosing Abram because He stopped caring about the nations.
+He chooses Abram as the path through which blessing will reach the nations.`,
+      ],
+      truths: [
+        `📣 Faith begins with God's word.
+Abram does not invent the mission.
+God speaks first.
+Obedience is a response to the God who calls.`,
+        `✨ God's promise answers human pride.
+Babel tried to make a name.
+God promises to give Abram a name.
+The Bible contrasts self-made identity with grace-given identity.`,
+        `🌍 Election is for blessing.
+God chooses Abram, but the goal includes all families of the earth.
+The promise is personal and worldwide.
+God's plan narrows so blessing can widen.`,
+      ],
+      why: `Genesis 12:1-3 matters because it launches the promise story. God answers a scattered world by calling Abram into blessing.
+📣 God's call may require leaving familiar security.
+✨ What Babel tried to seize, God gives by promise.
+🌍 God's blessing was never meant to stop with one person.
+🧭 Faith can begin before the whole route is clear.
+This section helps us understand the rest of the Bible. Abram's call is not a side story; it is the start of God's rescue plan moving toward all nations.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 12,
+      startVerse: 4,
+      endVerse: 9,
+      reference: "Genesis 12:4-9",
+      title: "Abram Goes",
+      icon: "🚶",
+      summary: "Abram obeys God's call, enters Canaan, receives the land promise, and builds altars.",
+      what: `Abram responds to God's call by going. The passage is simple, but the obedience is costly.
+🚶 Abram departs as the Lord had spoken to him.
+👨‍👩‍👧 Lot and the household go with him, showing obedience affects real family movement.
+⛺ Abram enters Canaan as a sojourner, not as someone who owns the land yet.
+🌍 God appears and promises the land to Abram's offspring.
+🔥 Abram builds altars and calls on the name of the Lord.
+This section shows faith taking steps. Abram does not have possession yet, but he has God's word, and worship becomes the rhythm of his journey.`,
+      phrases: [
+        `🚶 Abram Departed
+Abram's faith becomes movement.
+He does not only admire the promise; he leaves in response to it.
+Obedience begins before all the details are explained.`,
+        `🌍 Unto Thy Seed Will I Give This Land
+Abram is in the land, but he does not own it yet.
+God promises the land to his offspring while Sarai is still barren.
+The promise is bigger than what Abram can presently see.`,
+        `🔥 Built He An Altar
+Abram marks the journey with worship.
+Altars show that the land promise is not only about property; it is about relationship with God.
+Where Abram goes, worship goes with him.`,
+      ],
+      truths: [
+        `🚶 Obedience moves.
+Abram responds to God's word with action.
+Faith is not only agreement in the mind.
+It becomes steps in the real world.`,
+        `⛺ Promise can come before possession.
+Abram hears the land promise while still living as a sojourner.
+God's word comes before visible ownership.
+Faith lives between promise and fulfillment.`,
+        `🔥 Worship belongs on the journey.
+Abram builds altars as he moves.
+He does not wait until everything is settled to worship.
+Faith marks uncertain places with dependence on God.`,
+      ],
+      why: `Genesis 12:4-9 matters because it shows faith becoming movement and worship. Abram goes because God spoke.
+🚶 Obedience may start before certainty arrives.
+⛺ You can be in the promised direction before you possess the promise.
+🔥 Worship can anchor a life in transition.
+🌍 God's word is stronger than what the present moment can prove.
+This passage teaches ordinary faith. Abram walks, pitches tents, builds altars, and keeps moving under the promise of God.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 12,
+      startVerse: 10,
+      endVerse: 20,
+      reference: "Genesis 12:10-20",
+      title: "Fear Takes Abram To Egypt",
+      icon: "🌾",
+      summary: "A famine tests Abram, fear takes over, Sarai is endangered, and God protects the promise.",
+      what: `Almost immediately after Abram obeys, famine comes. That is important because obedience does not mean the road becomes easy.
+🌾 Famine pushes Abram down into Egypt.
+😟 Fear takes over, and Abram tells Sarai to say she is his sister.
+👑 Sarai is taken into Pharaoh's house, putting the promise in danger.
+🛡️ God protects Sarai and afflicts Pharaoh's house.
+🚪 Abram leaves Egypt exposed, corrected, and preserved.
+This section is honest about faith. Abram is called and blessed, but he is still capable of fear, compromise, and failure.`,
+      phrases: [
+        `🌾 There Was A Famine
+The famine comes after Abram obeys, not before.
+That teaches us not to assume difficulty means we heard God wrong.
+Faith can be tested immediately after a real step of obedience.`,
+        `😟 Say, I Pray Thee, Thou Art My Sister
+Abram's plan is driven by fear and self-protection.
+He puts Sarai at risk to protect himself.
+Genesis does not hide the weakness of the man God called.`,
+        `🛡️ The Lord Plagued Pharaoh
+God protects Sarai and the promise even when Abram fails.
+That does not excuse Abram's fear, but it magnifies God's faithfulness.
+The promise survives because God guards it.`,
+      ],
+      truths: [
+        `🌾 Obedience can still meet famine.
+Abram is in God's story, and famine still comes.
+Hard circumstances do not automatically mean disobedience.
+Faith must learn to trust God under pressure.`,
+        `😟 Fear can make faith compromise.
+Abram's fear leads him to use Sarai for self-protection.
+The Bible is honest about how fear can bend our choices.
+Chosen people still need formation.`,
+        `🛡️ God's promise is stronger than human failure.
+Abram endangers the promise, but God protects Sarai.
+God's faithfulness does not depend on Abram's perfection.
+That is mercy, not permission to sin.`,
+      ],
+      why: `Genesis 12:10-20 matters because it keeps Abram human. He obeys God, but he also fails under pressure.
+🌾 A hard season after obedience is still possible.
+😟 Fear can make us protect ourselves in harmful ways.
+🛡️ God can preserve His promise even when we make a mess.
+🚪 Correction can be part of mercy.
+This passage helps us avoid fake hero stories. Abram is not the Savior; he is a man learning to trust the faithful God who called him.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 13,
+      startVerse: 1,
+      endVerse: 7,
+      reference: "Genesis 13:1-7",
+      title: "Abram Returns To The Altar",
+      icon: "🔥",
+      summary: "Abram returns from Egypt to the place of worship, but growing abundance creates tension with Lot.",
+      what: `Abram returns from Egypt and comes back to the place where he had built an altar. That feels like a spiritual reset after fear and failure.
+🇪🇬 Abram leaves Egypt with Sarai, Lot, and great possessions.
+🔥 He returns to the altar and calls on the name of the Lord.
+🐑 Abram and Lot both have many flocks, herds, and tents.
+⚠️ The land cannot support them together, and strife begins between their herdsmen.
+🌍 Blessing creates a new kind of test.
+This section shows that faith is not only tested by lack. Sometimes faith is tested by abundance, space, conflict, and how we handle relationships.`,
+      phrases: [
+        `🔥 Unto The Place Of The Altar
+Abram returns to the place of worship after the Egypt failure.
+That is a beautiful movement back toward dependence.
+Failure does not have to be the end if it leads us back to calling on the Lord.`,
+        `🐑 Their Substance Was Great
+Abram and Lot are both wealthy in livestock and tents.
+Blessing is real, but it creates pressure in the relationship.
+Genesis is honest that abundance can bring complications.`,
+        `⚠️ There Was Strife
+The conflict begins among herdsmen, but it reveals a larger problem of space and direction.
+Strife is not always caused by obvious evil.
+Sometimes wise separation is needed when life can no longer be carried together peacefully.`,
+      ],
+      truths: [
+        `🔥 Worship can be a reset.
+Abram returns to the altar after Egypt.
+The story moves him back to dependence on God.
+Coming back to worship matters after failure.`,
+        `🐑 Blessing can create pressure.
+The flocks and herds are not bad.
+But abundance creates a practical problem.
+Faith has to handle prosperity wisely too.`,
+        `⚠️ Conflict needs discernment.
+Abram and Lot cannot keep moving the same way.
+Ignoring strife would not make it holy.
+Peace sometimes requires wise decisions about space and direction.`,
+      ],
+      why: `Genesis 13:1-7 matters because it shows Abram coming back to worship and facing a new test. Egypt tested him through fear; abundance now tests him through conflict.
+🔥 Returning to the altar is possible after failure.
+🐑 More blessing can mean more responsibility.
+⚠️ Conflict should be handled before it becomes deeper damage.
+🌍 Faith has to be practiced in practical situations.
+This passage teaches that spiritual growth is not only dramatic. Sometimes it looks like returning to worship and dealing honestly with crowded tents and strained relationships.`,
+    }),
+    makeGenesisStudySection({
+      chapter: 13,
+      startVerse: 8,
+      endVerse: 13,
+      reference: "Genesis 13:8-13",
+      title: "Lot Chooses By Sight",
+      icon: "👀",
+      summary: "Abram chooses peace, Lot chooses what looks good, and his choice moves him toward Sodom.",
+      what: `Abram responds to conflict with generosity. Instead of grabbing first, he lets Lot choose the land.
+🤝 Abram values peace between brothers.
+👀 Lot lifts up his eyes and chooses the well-watered plain.
+🌿 The land looks like Eden and Egypt, which makes it attractive.
+🏙️ Lot moves his tents toward Sodom.
+⚠️ Genesis warns that Sodom's people are wicked before the Lord.
+This section is about sight and trust. Lot chooses what looks best, but Genesis quietly shows that what looks good can still move a person toward danger.`,
+      phrases: [
+        `🤝 Let There Be No Strife
+Abram takes initiative to protect peace.
+He does not use his status to crush Lot.
+Faith can be strong enough to choose peace instead of winning every advantage.`,
+        `👀 Lot Lifted Up His Eyes
+Lot chooses by sight.
+The plain looks fertile, watered, and promising.
+But Genesis wants us to ask whether visible advantage is the same as spiritual wisdom.`,
+        `🏙️ Toward Sodom
+This phrase is the warning light in the passage.
+Lot does not appear to move fully into Sodom at first; he moves toward it.
+Danger often begins with direction before it becomes destination.`,
+      ],
+      truths: [
+        `🤝 Faith does not have to grab.
+Abram can let Lot choose first because Abram has God's promise.
+He does not need to control every outcome.
+Trust in God frees him from grasping.`,
+        `👀 What looks good may not be good.
+Lot sees fertile land.
+Genesis sees spiritual danger near Sodom.
+Discernment looks deeper than appearance.`,
+        `🏙️ Direction matters.
+Lot moves toward Sodom before later trouble develops.
+Small directional choices can shape future danger.
+Genesis teaches us to pay attention to where our desires are taking us.`,
+      ],
+      why: `Genesis 13:8-13 matters because it shows two ways to make decisions. Abram trusts enough to release control, while Lot chooses by what looks best.
+🤝 Peace can be more valuable than getting first pick.
+👀 Sight is useful, but it is not enough for wisdom.
+🏙️ Moving toward danger is still dangerous.
+🌿 A place can look like Eden and still pull the heart toward Sodom.
+This passage helps us ask better questions. Not only, "Does this look good?" but, "Where will this choice take me?"`,
+    }),
+    makeGenesisStudySection({
+      chapter: 13,
+      startVerse: 14,
+      endVerse: 18,
+      reference: "Genesis 13:14-18",
+      title: "God Repeats The Promise",
+      icon: "🌄",
+      summary: "After Lot separates, God tells Abram to look, walk, receive the promise, and build another altar.",
+      what: `After Lot chooses by sight and separates, God speaks to Abram again. Abram let Lot choose first, but he did not lose the promise.
+🌄 God tells Abram to lift up his eyes and look in every direction.
+🌍 The land is promised to Abram and his offspring.
+🌱 God promises descendants like the dust of the earth.
+🚶 Abram is told to arise and walk through the land.
+🔥 Abram moves to Hebron and builds another altar.
+This section is God's answer to Abram's open hands. Lot looked and took what seemed best. Abram looks and receives what God gives.`,
+      phrases: [
+        `🌄 Lift Up Now Thine Eyes
+Lot lifted his eyes earlier to choose for himself. Now God tells Abram to lift his eyes to receive a promise.
+The contrast is beautiful.
+One looks to take; the other looks because God is giving.`,
+        `🌱 As The Dust Of The Earth
+The promise of descendants is huge, especially because Sarai is barren.
+God uses an impossible image on purpose.
+Abram's future will be measured by God's power, not present circumstances.`,
+        `🔥 Built There An Altar
+Abram responds to promise with worship again.
+The altar shows that the land promise is still tied to relationship with God.
+Faith receives, moves, and worships.`,
+      ],
+      truths: [
+        `🌄 Letting go does not cancel God's promise.
+Abram gives Lot the first choice, but God repeats the promise afterward.
+Faith does not have to panic when it releases control.
+God's word is not threatened by generosity.`,
+        `🌱 God's promises can be bigger than visible evidence.
+Sarai is barren, but God promises descendants like dust.
+The visible situation is not the final authority.
+God's word defines the future.`,
+        `🔥 Promise should lead to worship.
+Abram builds another altar.
+He receives God's word with dependence and gratitude.
+Worship keeps the promise centered on God, not possession.`,
+      ],
+      why: `Genesis 13:14-18 matters because it shows God reaffirming promise after separation. Abram lets Lot choose, and God reminds Abram that the promise was never in Lot's hands.
+🌄 God can show you more after you release control.
+🌍 What God gives is better than what fear grabs.
+🌱 Impossible promises are still safe when God speaks them.
+🔥 Worship is the right response to repeated grace.
+This passage ends Day 5 with steadiness. Abram is still in tents, still waiting, still childless, but God's promise is still alive.`,
+    }),
+  ],
   {
     book: "genesis",
     chapter: 4,
@@ -934,6 +2352,755 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
     ],
   },
 ];
+
+type CompactReaderStudySectionInput = {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  summary: string;
+  movement: string[];
+  phrases: Array<[string, string]>;
+  truths: Array<[string, string]>;
+  application: string[];
+};
+
+function makeCompactGenesisStudySection(section: CompactReaderStudySectionInput) {
+  return makeGenesisStudySection({
+    chapter: section.chapter,
+    startVerse: section.startVerse,
+    endVerse: section.endVerse,
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: section.summary,
+    what: `${section.reference} ${section.summary}\n${section.movement.join("\n")}\nThis section is not just moving the story forward. It is teaching how God's promise keeps moving through pressure, weakness, waiting, and real people.`,
+    phrases: section.phrases.map(([heading, body]) => `${heading}\n${body}`),
+    truths: section.truths.map(([heading, body]) => `${heading}\n${body}`),
+    why: `${section.reference} matters because it helps us understand God's promise in ordinary, messy life.\n${section.application.join("\n")}\nThis keeps the reader from only asking what happened. It helps them ask what this passage reveals about God, people, faith, and the promise moving forward.`,
+  });
+}
+
+BIBLE_READER_STUDY_SECTIONS.push(
+  ...[
+    makeCompactGenesisStudySection({
+      chapter: 14,
+      startVerse: 1,
+      endVerse: 12,
+      reference: "Genesis 14:1-12",
+      title: "War Reaches Lot",
+      icon: "⚔️",
+      summary: "Kings go to war, Sodom is pulled into the conflict, and Lot is taken captive.",
+      movement: ["⚔️ A regional war breaks out among kings and alliances.", "🏙️ Sodom is caught inside the conflict.", "⛓️ Lot is captured because he has settled near danger.", "📦 Goods and people are taken as spoils of war."],
+      phrases: [["⚔️ Four Kings Against Five", "Genesis suddenly moves from tents and altars into international conflict. Abram's family story is now touching the larger political world around him."], ["🏙️ Sodom", "Lot chose the well-watered plain near Sodom in Genesis 13. Now that direction has consequences because Sodom's trouble becomes Lot's trouble."], ["⛓️ They Took Lot", "Lot is not the main villain here, but his location matters. Genesis is quietly showing that where we pitch our tents can place us near dangers we did not expect."]],
+      truths: [["🧭 Direction matters.", "Lot's earlier choice keeps shaping his story. A decision that looked good by sight has moved him closer to harm."], ["⚔️ Faith lives in a violent world.", "Abram's story is not protected from political chaos. God's promise moves through a real world with kings, war, and loss."], ["⚠️ Consequences can arrive later.", "Genesis 13 looked like a land choice. Genesis 14 shows the cost of that direction. The Bible teaches us to think past the first impression."]],
+      application: ["🧭 Ask where a choice is taking you, not only how it looks today.", "🏙️ Getting close to danger can make danger feel normal.", "⚔️ God's people still need wisdom in a broken world.", "⛓️ Mercy may be needed even after foolish direction."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 14,
+      startVerse: 13,
+      endVerse: 16,
+      reference: "Genesis 14:13-16",
+      title: "Abram Rescues Lot",
+      icon: "🛡️",
+      summary: "Abram gathers trained servants, pursues the enemy, and rescues Lot.",
+      movement: ["📣 Abram hears that his nephew has been captured.", "🛡️ He gathers trained men from his own household.", "🌙 He pursues at night with courage and strategy.", "🤝 He brings back Lot, the people, and the goods."],
+      phrases: [["📣 Abram Heard", "Abram does not pretend Lot's trouble is none of his business. Love moves toward a person in danger."], ["🛡️ Trained Servants", "Abram is a man of faith, but he is also prepared. His household has structure, resources, and people ready for action."], ["🤝 Brought Back Lot", "Lot moved toward Sodom, but Abram still moves toward Lot. This is rescue, not lecture first."]],
+      truths: [["🛡️ Faith can be courageous.", "Abram's faith is not passive. It moves into danger to rescue someone else."], ["🤝 Grace moves toward the compromised.", "Lot's choices helped place him near danger, but Abram still rescues him. Mercy does not wait for a perfect victim."], ["📣 Responsibility hears need.", "Abram responds when he hears. Sometimes love begins with refusing to ignore the news."]],
+      application: ["🛡️ Faith may call for brave action, not only private belief.", "🤝 People who chose poorly may still need rescue.", "📣 Do not ignore a need because the person had a role in the mess.", "🌙 Courage often includes wise strategy."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 14,
+      startVerse: 17,
+      endVerse: 20,
+      reference: "Genesis 14:17-20",
+      title: "Melchizedek Blesses Abram",
+      icon: "🍞",
+      summary: "Melchizedek blesses Abram and points the victory back to God Most High.",
+      movement: ["🍞 Melchizedek brings bread and wine.", "👑 He is king of Salem and priest of God Most High.", "🙌 He blesses Abram.", "🛡️ He says God delivered Abram's enemies into his hand."],
+      phrases: [["👑 King Of Salem", "Melchizedek appears suddenly as both king and priest. Salem is connected with peace and later with Jerusalem."], ["🙌 God Most High", "This title lifts Abram's victory above local politics. The God who called Abram is Lord over heaven and earth."], ["🔟 Tithes Of All", "Abram gives a tenth, recognizing that victory and possessions belong under God's authority."]],
+      truths: [["🙌 Victory belongs to God.", "Abram fought, but Melchizedek says God delivered. Faith gives God credit after success."], ["🍞 Blessing can meet us after battle.", "After conflict, Abram receives bread, wine, and blessing. God strengthens His servant after pressure."], ["👑 God's priestly witness appears outside Abram's household.", "Melchizedek reminds us that God is not limited by what Abram can see. The Most High already has witnesses in the world."]],
+      application: ["🙌 Do not let success make you forget who delivered you.", "🍞 After hard battles, receive strengthening with humility.", "🔟 Giving can be a way of confessing that God owns the victory.", "👑 God may have faithful witnesses where you did not expect them."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 14,
+      startVerse: 21,
+      endVerse: 24,
+      reference: "Genesis 14:21-24",
+      title: "Abram Refuses Sodom's Reward",
+      icon: "🚫",
+      summary: "Abram refuses Sodom's goods so no corrupt king can claim he made Abram rich.",
+      movement: ["🏙️ The king of Sodom offers Abram the goods.", "✋ Abram refuses the reward.", "🧵 He will not take even a thread or sandal strap.", "🙌 He wants God alone credited as his source."],
+      phrases: [["🏙️ King Of Sodom", "Sodom's king offers wealth after the rescue. The offer may look practical, but Abram sees the spiritual danger."], ["🧵 From A Thread Even To A Shoelatchet", "Abram's refusal is detailed and strong. He will not leave room for Sodom to claim ownership over his success."], ["🙌 Lest Thou Shouldest Say", "Abram is protecting the testimony of God's blessing. He wants no confusion about who makes him rich."]],
+      truths: [["🧭 Discernment is needed after victory.", "Temptation can come after courage. Abram wins the battle, then must refuse a polluted reward."], ["🙌 God's blessing must stay clean.", "Abram does not want success if it lets Sodom claim credit. The source of blessing matters."], ["🚫 Not every open door should be taken.", "The offer is available, but Abram refuses it. Faith sometimes says no to what would be easy to accept."]],
+      application: ["🧭 Ask what a reward will attach you to.", "🚫 Some gains are not worth the spiritual confusion they create.", "🙌 Let God be clearly seen as your source.", "🧵 Small compromises can create big claims later."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 15,
+      startVerse: 1,
+      endVerse: 6,
+      reference: "Genesis 15:1-6",
+      title: "God Speaks To Abram's Fear",
+      icon: "🌌",
+      summary: "God meets Abram's fear, repeats the promise, and Abram believes the Lord.",
+      movement: ["🛡️ God calls Himself Abram's shield and reward.", "💬 Abram honestly names the ache of having no child.", "🌌 God points him to the stars.", "✅ Abram believes, and it is counted to him for righteousness."],
+      phrases: [["🛡️ I Am Thy Shield", "God does not only give Abram protection. He says He Himself is Abram's shield, which makes God's presence the deepest security."], ["💬 What Wilt Thou Give Me", "Abram's question is honest, not fake. Faith can bring real ache into conversation with God."], ["✅ Counted It To Him For Righteousness", "This becomes one of the Bible's major faith texts. Abram is counted righteous by believing God's promise, not by controlling the outcome."]],
+      truths: [["💬 Faith can speak honestly.", "Abram believes, but he still has questions. Biblical faith is not pretending the ache is gone."], ["🌌 God's promise can be bigger than visible evidence.", "Abram sees no son, but God shows him stars. The promise rests on God's word."], ["✅ Righteousness is received by faith.", "Abram trusts the Lord, and God counts it as righteousness. This truth echoes through the rest of Scripture."]],
+      application: ["💬 Bring the real ache to God.", "🛡️ Remember that God Himself is better than any reward He gives.", "🌌 Let God's promise stretch your imagination beyond what you can count.", "✅ Faith rests on the One who speaks."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 15,
+      startVerse: 7,
+      endVerse: 11,
+      reference: "Genesis 15:7-11",
+      title: "Abram Asks For Assurance",
+      icon: "🕊️",
+      summary: "Abram asks how he will know, and God prepares a covenant ceremony.",
+      movement: ["🏜️ God reminds Abram He brought him from Ur.", "❓ Abram asks how he can know he will inherit the land.", "🐐 Animals are prepared for covenant making.", "🕊️ Abram waits and drives away birds from the pieces."],
+      phrases: [["❓ Whereby Shall I Know", "Abram's question is not treated as rebellion. God answers by giving covenant assurance."], ["🐐 Bring Me An Heifer", "The animals prepare for an ancient covenant ceremony. God is about to confirm His promise in a serious, visible way."], ["🕊️ The Birds Came Down", "Abram has to guard the pieces while he waits. Even in a covenant moment, waiting can include resistance and patience."]],
+      truths: [["❓ Honest questions can meet covenant grace.", "God does not crush Abram for asking how he will know. He gives assurance."], ["🤝 God confirms what He promises.", "The covenant ceremony shows God stooping to strengthen Abram's faith."], ["⏳ Waiting may require guarding hope.", "Abram waits and drives away birds. Faith sometimes protects what God has spoken while fulfillment is still ahead."]],
+      application: ["❓ Ask honest questions without turning away from God.", "🤝 Let God's covenant faithfulness be stronger than your uncertainty.", "🕊️ Guard hope when discouragement tries to land on it.", "⏳ Assurance does not always remove waiting."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 15,
+      startVerse: 12,
+      endVerse: 16,
+      reference: "Genesis 15:12-16",
+      title: "God Tells Abram The Long Road",
+      icon: "🌑",
+      summary: "God reveals that Abram's descendants will suffer, be delivered, and return in God's timing.",
+      movement: ["🌑 Darkness falls over Abram.", "⛓️ God reveals future affliction in another land.", "⚖️ God promises to judge the oppressor.", "🕊️ Abram is promised peace, and his descendants will return."],
+      phrases: [["🌑 Horror Of Great Darkness", "The covenant promise includes a heavy vision. God's plan is true, but it will pass through suffering."], ["⛓️ A Stranger In A Land", "This points ahead to Israel's bondage in Egypt. Genesis is already preparing the Exodus story."], ["⏳ The Iniquity Of The Amorites", "God's timing includes justice and patience. The land promise waits while God gives time before judgment is full."]],
+      truths: [["⏳ Promise does not mean instant.", "God's promise is sure, but the road will be long. Faith must learn time."], ["⚖️ God sees oppression.", "The affliction of Abram's descendants will not be ignored. God promises judgment and deliverance."], ["🕊️ God can tell hard truth with mercy.", "Abram hears about suffering, but also peace, deliverance, and return. God does not abandon the future to darkness."]],
+      application: ["⏳ Do not confuse delay with denial.", "🌑 Some promises pass through dark seasons.", "⚖️ God sees oppression even before deliverance arrives.", "🕊️ The long road can still be held by God."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 15,
+      startVerse: 17,
+      endVerse: 21,
+      reference: "Genesis 15:17-21",
+      title: "God Makes Covenant",
+      icon: "🔥",
+      summary: "God passes between the pieces and binds Himself to the promise.",
+      movement: ["🌑 Darkness falls.", "🔥 A smoking furnace and burning lamp pass between the pieces.", "🤝 The Lord makes covenant with Abram.", "🌍 The land boundaries are named."],
+      phrases: [["🔥 Smoking Furnace And Burning Lamp", "The symbols represent God's own presence passing through the covenant pieces. Abram watches while God acts."], ["🤝 Made A Covenant", "This is not a casual promise. God solemnly binds Himself to His word."], ["🌍 Unto Thy Seed Have I Given This Land", "The land promise is spoken as certain because it rests on God's covenant commitment."]],
+      truths: [["🔥 God carries the covenant.", "Abram does not pass between the pieces. God does. The promise rests on God's faithfulness."], ["🤝 Covenant gives assurance.", "God meets Abram's question with a binding promise. Faith is strengthened by God's commitment."], ["🌍 The future belongs to God's word.", "The land is not possessed yet, but it is promised. God's covenant defines the future before Abram can see it."]],
+      application: ["🔥 Rest in the God who carries what you cannot.", "🤝 Let God's commitment be stronger than your fear.", "🌍 Do not measure the promise only by present possession.", "🙌 Covenant faithfulness is the backbone of Abram's story."],
+    }),
+  ],
+);
+
+BIBLE_READER_STUDY_SECTIONS.push(
+  ...[
+    makeCompactGenesisStudySection({
+      chapter: 16,
+      startVerse: 1,
+      endVerse: 3,
+      reference: "Genesis 16:1-3",
+      title: "Sarai Tries To Force The Promise",
+      icon: "⚠️",
+      summary: "Waiting turns into control as Sarai gives Hagar to Abram.",
+      movement: ["💔 Sarai still has no child.", "👤 Hagar is brought into the promise problem.", "⏳ The delay feels unbearable.", "⚠️ The household chooses a shortcut God did not command."],
+      phrases: [["💔 Bare Him No Children", "This is not a small detail. Sarai's barrenness sits directly against the promise of descendants."], ["👤 My Maid", "Hagar is treated as a solution to someone else's ache. Genesis wants us to feel the human cost of control."], ["⚠️ Abram Hearkened", "Abram listens to Sarai's plan instead of leading the household back to God's promise. The echo of Eden is hard to miss."]],
+      truths: [["⏳ Waiting can tempt people to control.", "The promise has not arrived, so Sarai tries to force an outcome."], ["👤 Shortcuts can use people.", "Hagar becomes part of a plan that treats her like a tool, not merely a person."], ["⚠️ Practical does not always mean faithful.", "The plan may have made cultural sense, but it was not what God commanded."]],
+      application: ["⏳ Delayed promises can expose where we want control.", "👤 Never treat people like tools for your fear.", "⚠️ A practical shortcut can still wound a household.", "🙏 Waiting should drive faith toward God, not manipulation."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 16,
+      startVerse: 4,
+      endVerse: 6,
+      reference: "Genesis 16:4-6",
+      title: "Hagar Is Mistreated",
+      icon: "💔",
+      summary: "The shortcut creates contempt, blame, harsh treatment, and Hagar's flight.",
+      movement: ["👶 Hagar conceives.", "💔 Tension grows between Sarai and Hagar.", "😠 Sarai blames Abram.", "🚪 Hagar flees from harsh treatment."],
+      phrases: [["👶 When She Saw That She Had Conceived", "Pregnancy changes the household's power dynamics. What looked like a solution now exposes deeper pain."], ["😠 My Wrong Be Upon Thee", "Sarai's pain turns outward in blame. Control has not brought peace."], ["🚪 She Fled", "Hagar's flight shows how severe the situation has become. The shortcut has created a wounded person in the wilderness."]],
+      truths: [["💔 Control creates collateral damage.", "The plan does not only affect Abram and Sarai. Hagar is deeply wounded by it."], ["😠 Blame often follows manipulation.", "When human plans produce pain, people often start accusing each other."], ["🚪 God sees the one pushed out.", "Hagar leaves the household, but she does not leave God's sight."]],
+      application: ["💔 Forced solutions can create real victims.", "😠 Blame is not repentance.", "🚪 Pay attention to who gets wounded by your shortcut.", "🙏 God sees people others push aside."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 16,
+      startVerse: 7,
+      endVerse: 12,
+      reference: "Genesis 16:7-12",
+      title: "God Finds Hagar",
+      icon: "🕊️",
+      summary: "The angel of the Lord finds Hagar in the wilderness and names her son Ishmael.",
+      movement: ["🏜️ Hagar is alone in the wilderness.", "🕊️ The angel of the Lord finds her.", "❓ God asks where she came from and where she is going.", "👂 Her son is named Ishmael because the Lord hears affliction."],
+      phrases: [["🕊️ Found Her", "Hagar is not the one searching for God in the scene. God finds her first."], ["❓ Whence Camest Thou", "The question gives Hagar dignity. God lets her speak her story."], ["👂 Ishmael", "Ishmael means God hears. The child's name becomes a living reminder that Hagar's affliction reached God."]],
+      truths: [["👀 God sees the mistreated.", "Hagar is vulnerable, but not invisible. God meets her in the wilderness."], ["👂 God hears affliction.", "The name Ishmael turns Hagar's pain into testimony. Her suffering has reached heaven."], ["🕊️ God speaks future to the wounded.", "Hagar receives a word about her son's future. God does not treat her as a side character."]],
+      application: ["👀 Being overlooked by people is not the same as being unseen by God.", "👂 Your affliction is not silent before Him.", "❓ God can meet you with questions that restore dignity.", "🕊️ The wilderness can become a place of encounter."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 16,
+      startVerse: 13,
+      endVerse: 16,
+      reference: "Genesis 16:13-16",
+      title: "The God Who Sees",
+      icon: "👀",
+      summary: "Hagar names the Lord as the God who sees her, and Ishmael is born.",
+      movement: ["👀 Hagar names God as the One who sees.", "💧 The well is remembered.", "👶 Ishmael is born.", "⏳ Abram is eighty-six, and the promised Isaac has still not come."],
+      phrases: [["👀 Thou God Seest Me", "This is one of the most tender names for God in Genesis. Hagar knows God has personally seen her."], ["💧 Beer-lahai-roi", "The well name preserves the encounter. A place of flight becomes a place of testimony."], ["⏳ Abram Was Fourscore And Six", "The timestamp reminds us that time is still passing. The shortcut has produced a son, but not the covenant son God promised."]],
+      truths: [["👀 God gives dignity through being seen.", "Hagar's encounter tells mistreated people that they are visible to God."], ["💧 Places of pain can become places of testimony.", "The well remembers what God did there."], ["⏳ A shortcut does not end the waiting.", "Ishmael is born, but Isaac is still future. Control did not replace God's promise."]],
+      application: ["👀 Let God's seeing speak louder than people's misuse.", "💧 Remember the places where God met you.", "⏳ Do not mistake a shortcut outcome for the promised fulfillment.", "🕊️ God can show compassion inside a complicated story."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 17,
+      startVerse: 1,
+      endVerse: 8,
+      reference: "Genesis 17:1-8",
+      title: "Abram Becomes Abraham",
+      icon: "🪞",
+      summary: "God appears after years of waiting, gives Abram a new name, and restates the covenant.",
+      movement: ["⏳ Thirteen years pass.", "🙇 Abram falls on his face before God.", "🪞 Abram becomes Abraham.", "🌍 God promises many nations and an everlasting covenant."],
+      phrases: [["⏳ Ninety Years Old And Nine", "The age matters because the promise looks even more impossible. God speaks when human strength is fading."], ["🪞 Abraham", "Abram's new name means father of many. God names him according to promise before the visible evidence arrives."], ["🤝 Everlasting Covenant", "God's promise is not temporary mood or vague encouragement. It is covenant commitment across generations."]],
+      truths: [["🪞 God names people by promise.", "Abraham receives an identity based on God's future, not present appearance."], ["⏳ Delay does not cancel covenant.", "Thirteen years pass, but God has not forgotten what He said."], ["🌍 The promise is bigger than one household.", "Many nations are in view. God's plan keeps widening."]],
+      application: ["🪞 Let God define you by His promise, not your current evidence.", "⏳ Years of waiting do not make God unfaithful.", "🙇 Worship is the right posture before impossible promise.", "🤝 Covenant is stronger than delay."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 17,
+      startVerse: 9,
+      endVerse: 14,
+      reference: "Genesis 17:9-14",
+      title: "The Covenant Sign",
+      icon: "✂️",
+      summary: "Circumcision becomes the sign marking Abraham's household as belonging to the covenant.",
+      movement: ["🤝 God commands Abraham to keep the covenant.", "✂️ Circumcision is given as the sign.", "👶 The sign reaches future generations.", "⚠️ The covenant sign is treated seriously."],
+      phrases: [["✂️ Circumcised", "The covenant is marked in the body. God's promise is not just an idea Abraham thinks about; it marks the household."], ["👶 Eight Days Old", "The sign is generational. Children are brought under the covenant identity from the beginning."], ["⚠️ Cut Off", "The warning shows that covenant membership is serious. God's promise should not be treated casually."]],
+      truths: [["🤝 Covenant creates belonging.", "The sign marks Abraham's household as set apart under God's promise."], ["✂️ Faith has visible obedience.", "The covenant is not only believed inwardly. It is obeyed outwardly."], ["👶 God's promise thinks generationally.", "The sign reaches beyond Abraham into the future family line."]],
+      application: ["🤝 Belonging to God should shape visible life.", "✂️ Do not treat covenant signs like empty symbols.", "👶 God's work often reaches generations beyond us.", "⚠️ Holy things should be handled seriously."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 17,
+      startVerse: 15,
+      endVerse: 22,
+      reference: "Genesis 17:15-22",
+      title: "Sarah And Isaac Are Named",
+      icon: "👑",
+      summary: "God renames Sarah, promises Isaac, and clarifies that the covenant line will come through him.",
+      movement: ["👑 Sarai becomes Sarah.", "😄 Abraham laughs at the promise.", "👶 Isaac is named before birth.", "🙏 Ishmael is blessed, but covenant will go through Isaac."],
+      phrases: [["👑 Sarah", "God gives Sarai a covenant name too. She is not background to Abraham's story; she is central to the promised birth."], ["😄 Abraham Laughed", "Abraham's laughter shows the promise still feels impossible. God meets the laughter with clarity, not confusion."], ["👶 Isaac", "Isaac's name is tied to laughter. The impossible promise will carry a name that remembers how impossible it sounded."]],
+      truths: [["👑 Sarah matters to the covenant.", "God names and blesses Sarah directly. The promise will come through her."], ["🙏 God can bless without changing the covenant line.", "Ishmael is blessed, but Isaac carries the covenant. God's compassion and God's chosen promise both stand."], ["👶 God names the future before it is visible.", "Isaac is named before Sarah conceives. God's word gets there first."]],
+      application: ["👑 Do not treat Sarah as a side note; God does not.", "😄 Bring impossible feelings to God honestly.", "🙏 God's care can be wider than the main covenant line.", "👶 Trust the future God names before you see it."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 17,
+      startVerse: 23,
+      endVerse: 27,
+      reference: "Genesis 17:23-27",
+      title: "Abraham Obeys That Same Day",
+      icon: "✅",
+      summary: "Abraham responds to God's covenant command immediately and marks his household.",
+      movement: ["✅ Abraham obeys that same day.", "👦 Ishmael is included in the household sign.", "🏠 Every male in the household is circumcised.", "🤝 The promise is marked before Isaac is seen."],
+      phrases: [["✅ The Selfsame Day", "Abraham does not delay obedience once God gives the command. Faith responds promptly."], ["🏠 All The Men Of His House", "The covenant sign affects the whole household. Abraham's obedience has community impact."], ["👦 Ishmael His Son", "Ishmael is included in the sign, even though Isaac will carry the covenant line. The family story remains complex and compassionate."]],
+      truths: [["✅ Faith responds when God speaks.", "Waiting is part of faith, but so is immediate obedience when the command is clear."], ["🏠 Leadership affects a household.", "Abraham's response brings his house under the covenant sign."], ["🤝 Promise can be marked before it is visible.", "Isaac has not been born, but the covenant sign is already on the household."]],
+      application: ["✅ Do not delay clear obedience.", "🏠 Your faithfulness can shape your household.", "🤝 Mark the promise before the evidence arrives.", "👦 Remember that complicated families still sit under God's care."],
+    }),
+  ],
+);
+
+BIBLE_READER_STUDY_SECTIONS.push(
+  ...[
+    makeCompactGenesisStudySection({
+      chapter: 18,
+      startVerse: 1,
+      endVerse: 8,
+      reference: "Genesis 18:1-8",
+      title: "Abraham Welcomes The Visitors",
+      icon: "🏕️",
+      summary: "The Lord appears near Abraham's tent, and Abraham receives the visitors with generous hospitality.",
+      movement: ["🏕️ Abraham sits by the tent in the heat of the day.", "👀 Three visitors appear.", "🏃 Abraham runs to welcome them.", "🍞 A meal is prepared, and holy promise comes near ordinary hospitality."],
+      phrases: [["🏕️ The Lord Appeared", "The passage begins by telling us more than Abraham can fully see at first. This visit is more than ordinary company."], ["🏃 Ran To Meet Them", "Abraham's welcome is eager and humble. He does not treat the moment casually."], ["🍞 A Morsel Of Bread", "Abraham speaks modestly, but prepares generously. Hospitality becomes the setting where God's promise will be heard again."]],
+      truths: [["🏕️ God can meet people in ordinary spaces.", "The scene is a tent, a meal, and a hot day. God brings promise near normal life."], ["🍞 Hospitality can become holy ground.", "Abraham's welcome opens a space where divine conversation unfolds."], ["🙇 Reverence can look practical.", "Water, rest, bread, and a meal become expressions of honor."]],
+      application: ["🏕️ Do not despise ordinary places where God may meet you.", "🍞 Hospitality is more spiritual than we often think.", "🏃 Eagerness to honor others matters.", "✨ Promise can arrive in the middle of daily life."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 18,
+      startVerse: 9,
+      endVerse: 15,
+      reference: "Genesis 18:9-15",
+      title: "Sarah Hears The Promise",
+      icon: "😄",
+      summary: "Sarah hears the promise of a son, laughs within herself, and God asks whether anything is too hard for Him.",
+      movement: ["👂 Sarah listens from the tent.", "😄 She laughs because the promise sounds impossible.", "❓ God asks the central question: Is anything too hard for the Lord?", "👶 The promised son is still coming at the appointed time."],
+      phrases: [["👂 Where Is Sarah", "God brings Sarah personally into the promise conversation. She is not an accessory to Abraham's faith."], ["😄 Sarah Laughed Within Herself", "Sarah's laugh is hidden, but God sees it. The Bible is honest about the gap between promise and human feeling."], ["❓ Is Any Thing Too Hard For The Lord", "This question is the theological center of the scene. The issue is not Sarah's age; it is God's power."]],
+      truths: [["👑 Sarah is central to the promise.", "God addresses the promise through Sarah, not around her."], ["❓ God's power is the answer to impossibility.", "The passage does not deny the situation is humanly impossible. It asks whether that limits the Lord."], ["⏳ God works at the appointed time.", "The promise has timing. Delay does not mean God lost control."]],
+      application: ["❓ Put impossible situations under the question God asks.", "😄 God can handle the laugh you hide inside.", "👂 Let the promise become personal, not only something you hear for others.", "⏳ Appointed time matters to God."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 18,
+      startVerse: 16,
+      endVerse: 21,
+      reference: "Genesis 18:16-21",
+      title: "The Lord Looks Toward Sodom",
+      icon: "🌆",
+      summary: "God brings Abraham near as He reveals that the cry against Sodom and Gomorrah is great.",
+      movement: ["🌆 The visitors look toward Sodom.", "🤝 Abraham is brought into the conversation.", "📣 The cry against Sodom and Gomorrah is great.", "⚖️ God judges with knowledge, not rumor."],
+      phrases: [["🤝 Shall I Hide From Abraham", "God draws Abraham into His purposes. Covenant relationship includes knowing God's heart for righteousness and justice."], ["📣 The Cry Of Sodom", "The cry suggests suffering and grievous evil reaching God. Judgment is connected to real wrong, not divine moodiness."], ["👁️ I Will Go Down Now And See", "This language shows careful judgment. God is not careless or uninformed."]],
+      truths: [["⚖️ God judges with perfect knowledge.", "Sodom is not judged by gossip or exaggeration. God sees truly."], ["📣 Evil creates a cry before God.", "Human wickedness is not invisible. The suffering it causes reaches heaven."], ["🤝 Covenant people learn God's justice.", "Abraham is being formed to understand righteousness, justice, and mercy."]],
+      application: ["⚖️ Trust that God's judgment is never careless.", "📣 The cries of victims matter to Him.", "🤝 Knowing God should shape our concern for righteousness.", "🌆 Cities and cultures are accountable to God."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 18,
+      startVerse: 22,
+      endVerse: 33,
+      reference: "Genesis 18:22-33",
+      title: "Abraham Intercedes",
+      icon: "🙏",
+      summary: "Abraham draws near and pleads for mercy while trusting the Judge of all the earth to do right.",
+      movement: ["🙏 Abraham stands before the Lord.", "⚖️ He asks whether the Judge of all the earth will do right.", "🔢 He pleads from fifty down to ten.", "🙇 His prayer is bold but humble."],
+      phrases: [["🙏 Abraham Drew Near", "Prayer here is closeness with reverence. Abraham approaches God, but he knows he is dust and ashes."], ["⚖️ Judge Of All The Earth", "Abraham appeals to God's own justice. He does not ask God to be less holy, but to act according to perfect righteousness."], ["🔢 Peradventure Ten", "The shrinking numbers show persistent intercession. Abraham keeps asking for mercy without pretending evil is harmless."]],
+      truths: [["🙏 Intercession is bold humility.", "Abraham draws near, but he does not command God. True prayer can be both courageous and reverent."], ["⚖️ God's justice is the foundation of mercy.", "Abraham's hope rests on the Judge doing right."], ["🕊️ Mercy is worth asking for.", "Abraham keeps pleading because he knows God is righteous and merciful."]],
+      application: ["🙏 Draw near for others, not only yourself.", "⚖️ Anchor prayer in God's character.", "🙇 Boldness and humility belong together.", "🕊️ Keep asking for mercy while honoring justice."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 19,
+      startVerse: 1,
+      endVerse: 11,
+      reference: "Genesis 19:1-11",
+      title: "Sodom's Violence Is Exposed",
+      icon: "🌃",
+      summary: "The angels enter Sodom, and the city's violent wickedness is revealed at Lot's door.",
+      movement: ["🌃 Two angels arrive in Sodom.", "🚪 Lot brings them into his house.", "⚠️ The men of the city surround the house.", "👁️ The attackers are struck with blindness."],
+      phrases: [["🚪 Lot Sat In The Gate", "The gate was a place of influence. Lot is not just near Sodom anymore; he is woven into city life."], ["⚠️ Both Old And Young", "The language shows widespread corruption. The city is not being judged for one private mistake."], ["👁️ Smote The Men With Blindness", "The physical blindness matches the moral blindness already on display. The city cannot find the door because it has already lost its way."]],
+      truths: [["⚠️ Wickedness can become communal.", "Sodom's sin is public and aggressive. Genesis shows a culture united around violence."], ["🚪 Compromise can entangle a household.", "Lot is in the gate and his family is inside the city. His location has shaped his household's danger."], ["👁️ God exposes what a city is.", "The visitors reveal the truth of Sodom's condition before judgment falls."]],
+      application: ["⚠️ Do not normalize a violent culture because it feels familiar.", "🚪 Where you settle can shape your household.", "👁️ Moral blindness can be worse than physical blindness.", "🛡️ God can protect His messengers in hostile places."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 19,
+      startVerse: 12,
+      endVerse: 22,
+      reference: "Genesis 19:12-22",
+      title: "Mercy Pulls Lot Out",
+      icon: "🤲",
+      summary: "Lot lingers, but the angels take him by the hand because the Lord is merciful.",
+      movement: ["📣 Lot warns his family, but they think he is joking.", "⏳ Morning comes, and Lot lingers.", "🤲 The angels seize his hand.", "🏃 Lot is commanded to escape."],
+      phrases: [["😶 As One That Mocked", "Lot's warning has no weight with his sons-in-law. A compromised witness can sound unbelievable when urgency finally comes."], ["⏳ He Lingered", "Lot knows judgment is coming, but he hesitates. Attachment can make danger hard to leave."], ["🤲 The Lord Being Merciful", "This line explains the rescue. Lot escapes because mercy grabs him when he is slow to move."]],
+      truths: [["🤲 Mercy can be forceful.", "God's mercy does not merely suggest escape. It pulls Lot out of danger."], ["⏳ Lingering is dangerous.", "Lot's hesitation shows how attached the heart can become to a place under judgment."], ["📣 Compromise weakens witness.", "Lot's warning sounds like a joke to his own family. That is tragic."]],
+      application: ["🏃 When God says flee, do not negotiate with the danger.", "🤲 Thank God for mercy that pulls when we linger.", "📣 Live so your warnings carry weight.", "⏳ Do not confuse delay with safety."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 19,
+      startVerse: 23,
+      endVerse: 29,
+      reference: "Genesis 19:23-29",
+      title: "Sodom And Gomorrah Fall",
+      icon: "🔥",
+      summary: "Judgment falls on Sodom and Gomorrah, Lot's wife looks back, and God remembers Abraham.",
+      movement: ["☀️ Lot reaches Zoar as the sun rises.", "🔥 Fire and brimstone fall on Sodom and Gomorrah.", "🧂 Lot's wife looks back and becomes a warning.", "🤲 God remembers Abraham and sends Lot out."],
+      phrases: [["🔥 Brimstone And Fire", "The judgment is severe because the corruption is severe. Genesis does not treat wickedness lightly."], ["🧂 Looked Back", "Lot's wife becomes a warning about divided attachment. Her body leaves, but her heart looks back."], ["🤲 God Remembered Abraham", "Lot's rescue is connected to God's covenant relationship with Abraham. Intercession and mercy are both in view."]],
+      truths: [["⚖️ Judgment is real.", "Sodom's fall shows that God does not ignore grievous evil forever."], ["🧂 The heart can remain attached to what the body leaves.", "Lot's wife warns us that escape requires more than movement."], ["🤲 Mercy remembers covenant.", "God remembers Abraham and rescues Lot. Judgment does not erase mercy."]],
+      application: ["🔥 Take evil seriously because God does.", "🧂 Do not keep longing for what God is rescuing you from.", "🤲 Prayer for others matters more than we may see.", "⚖️ Mercy and judgment can appear in the same story."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 19,
+      startVerse: 30,
+      endVerse: 38,
+      reference: "Genesis 19:30-38",
+      title: "Lot's Family After Sodom",
+      icon: "💔",
+      summary: "Lot's family survives Sodom, but the damage of fear and compromise continues in the cave.",
+      movement: ["⛰️ Lot leaves Zoar and lives in a cave.", "💔 His daughters act out of fear and distorted thinking.", "🍷 Wine and deception return in a dark family scene.", "👶 Moab and Ammon begin from this broken story."],
+      phrases: [["⛰️ Dwelt In A Cave", "Lot leaves the city, but his life has shrunk into fear and isolation. Survival is not the same as wholeness."], ["🍷 Made Their Father Drink Wine", "The scene is disturbing on purpose. Genesis refuses to sanitize the effects of a damaged household."], ["👶 Moab And Ammon", "The children born here become peoples who will matter later in Israel's story. Genesis shows painful origins without hiding them."]],
+      truths: [["💔 Rescue does not erase damage instantly.", "Lot is out of Sodom, but Sodom's shadow remains over the family."], ["⚠️ Compromise can leave generational scars.", "The choices around Sodom continue to affect the next generation."], ["📖 The Bible tells hard truth.", "Genesis does not hide disturbing family damage. It teaches honestly."]],
+      application: ["💔 Do not assume leaving danger means all healing is done.", "⚠️ Compromise can wound people after the crisis passes.", "📖 Let Scripture's honesty teach sober wisdom.", "🕊️ Broken origins are not hidden from God."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 20,
+      startVerse: 1,
+      endVerse: 18,
+      reference: "Genesis 20:1-18",
+      title: "Abraham Repeats An Old Fear",
+      icon: "🔁",
+      summary: "Abraham again says Sarah is his sister, but God protects Sarah and preserves the promise.",
+      movement: ["🔁 Abraham repeats the sister lie in Gerar.", "👑 Abimelech takes Sarah.", "🌙 God warns Abimelech in a dream.", "🛡️ Sarah is protected before Isaac is born."],
+      phrases: [["🔁 She Is My Sister", "Abraham repeats an old fear pattern from Egypt. Growth is real in his life, but weakness is still present."], ["🌙 God Came In A Dream", "God intervenes with Abimelech directly. The promise is too important to leave unprotected."], ["🛡️ He Is A Prophet", "God still calls Abraham a prophet even while correcting the situation. Calling does not erase accountability."]],
+      truths: [["🔁 Old fears can return.", "Abraham has walked with God for years, but fear still resurfaces. Scripture is honest about repeated weakness."], ["🛡️ God protects the promise.", "Sarah must be protected because Isaac is coming. God's plan is not fragile."], ["🙏 Grace can include correction.", "God corrects Abimelech and Abraham's situation. Mercy does not pretend the lie was harmless."]],
+      application: ["🔁 Pay attention to old fear patterns that repeat.", "🛡️ God's promise is stronger than your weakness.", "🙏 Correction can be mercy.", "👑 God can protect others from the damage our fear might cause."],
+    }),
+  ],
+);
+
+BIBLE_READER_STUDY_SECTIONS.push(
+  ...[
+    makeCompactGenesisStudySection({
+      chapter: 21,
+      startVerse: 1,
+      endVerse: 7,
+      reference: "Genesis 21:1-7",
+      title: "Isaac Is Born",
+      icon: "👶",
+      summary: "God visits Sarah as He said, and Isaac is born at the appointed time.",
+      movement: ["👶 Sarah gives birth to Isaac.", "⏳ The child comes at the appointed time.", "😄 Sarah's laughter becomes joy.", "🤝 God's long promise proves faithful."],
+      phrases: [["📖 As He Had Said", "The wording repeats that God did exactly what He promised. Isaac's birth is not luck; it is fulfilled word."], ["⏳ Set Time", "God's promise had timing. The delay was painful, but not uncontrolled."], ["😄 God Hath Made Me To Laugh", "Sarah's earlier laughter of disbelief becomes laughter of joy. God transforms the meaning of the laugh."]],
+      truths: [["🤝 God keeps His word.", "The chapter emphasizes promise fulfilled. What God said, God did."], ["⏳ God's timing is part of faith.", "Isaac arrives at the appointed time, not the convenient time."], ["😄 God can turn disbelief into joy.", "Sarah's laughter is redeemed by fulfillment. The impossible becomes testimony."]],
+      application: ["🤝 Let fulfilled promises teach you to trust the next one.", "⏳ Delay is not proof that God forgot.", "😄 God can turn painful waiting into worshipful laughter.", "👶 Promise can arrive after human strength is gone."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 21,
+      startVerse: 8,
+      endVerse: 21,
+      reference: "Genesis 21:8-21",
+      title: "God Hears Hagar And Ishmael",
+      icon: "💧",
+      summary: "Hagar and Ishmael are sent away, but God hears the boy and opens Hagar's eyes to water.",
+      movement: ["🏠 Tension rises in Abraham's household.", "🏜️ Hagar and Ishmael are sent into the wilderness.", "👂 God hears the boy.", "💧 God opens Hagar's eyes to a well."],
+      phrases: [["👂 God Heard The Voice Of The Lad", "Ishmael's name means God hears, and now Genesis shows that name becoming reality again."], ["💧 God Opened Her Eyes", "The well is present, but Hagar needs God to help her see provision. Despair can blind people to mercy nearby."], ["🌍 A Great Nation", "Isaac carries the covenant line, but Ishmael is not abandoned. God keeps His word concerning him too."]],
+      truths: [["👂 God hears outside the covenant line.", "Ishmael is not the chosen covenant son, but God hears him."], ["💧 God provides in the wilderness.", "The wilderness is frightening, but not godless."], ["🤝 God's promises are specific.", "Isaac and Ishmael have different roles, but God is faithful to what He said about each."]],
+      application: ["👂 People outside the main storyline are still heard by God.", "💧 Ask God to open your eyes to provision.", "🏜️ Wilderness does not mean abandonment.", "🤝 Trust God to keep every promise rightly."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 21,
+      startVerse: 22,
+      endVerse: 34,
+      reference: "Genesis 21:22-34",
+      title: "Abraham Lives As A Sojourner",
+      icon: "🌳",
+      summary: "Abraham makes peace at Beersheba, plants a tree, and calls on the everlasting God.",
+      movement: ["🤝 Abraham and Abimelech make a covenant.", "🐑 Seven ewe lambs witness the well dispute.", "🌳 Abraham plants a tree.", "🙏 He calls on the name of the everlasting God."],
+      phrases: [["🤝 God Is With Thee", "Even outsiders can recognize God's hand on Abraham's life. The promise is becoming visible."], ["🐑 Seven Ewe Lambs", "The lambs serve as witness that the well belongs to Abraham. Small legal details matter in the land promise."], ["🙏 Everlasting God", "Abraham worships God as the One whose faithfulness outlasts his temporary sojourning."]],
+      truths: [["🤝 Faith can pursue peace.", "Abraham handles conflict through covenant, witness, and clarity."], ["🌍 The land promise grows through small steps.", "A well is not the whole land, but it is a real foothold in the promise story."], ["🙏 Worship continues while waiting.", "Abraham still lives as a sojourner, yet he calls on the everlasting God."]],
+      application: ["🤝 Make peace with clarity, not confusion.", "🌳 Mark God's faithfulness in places where you are still waiting.", "🙏 Worship the everlasting God while your life still feels temporary.", "🐑 Details can matter in promise stories."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 22,
+      startVerse: 1,
+      endVerse: 19,
+      reference: "Genesis 22:1-19",
+      title: "Abraham Is Tested On Moriah",
+      icon: "🐏",
+      summary: "God tests Abraham, Isaac is spared, and the Lord provides a ram.",
+      movement: ["🧪 God tests Abraham with Isaac, the son of promise.", "⛰️ Abraham goes to Moriah.", "🪵 Isaac asks about the lamb.", "🐏 God provides a ram in Isaac's place."],
+      phrases: [["🧪 God Did Tempt Abraham", "Here tempt means test. God is exposing and refining Abraham's trust, not tempting him to evil."], ["👶 Thine Only Son Isaac", "The wording presses the emotional weight. Isaac is the beloved promise son."], ["🐏 The Lord Will Provide", "Abraham's statement becomes the heartbeat of the chapter. God provides what Abraham could not."]],
+      truths: [["🧪 Faith can be tested at the place of deepest promise.", "The test touches Isaac, not something small. Trust is brought to the center."], ["🐏 God provides the substitute.", "Isaac is spared because God provides the ram. Provision stands at the center of the story."], ["🤝 The promise belongs to God.", "Abraham cannot control the covenant future. He must trust the God who gave Isaac."]],
+      application: ["🧪 Tests reveal what trust is resting on.", "🐏 Look for the God who provides, not only the thing you fear losing.", "⛰️ Obedience can be costly and confusing.", "🤝 God's promise is safest in God's hands."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 23,
+      startVerse: 1,
+      endVerse: 20,
+      reference: "Genesis 23:1-20",
+      title: "Sarah Dies And Abraham Buys A Burial Place",
+      icon: "🪦",
+      summary: "Sarah dies, Abraham mourns, and he buys the cave of Machpelah in the promised land.",
+      movement: ["🪦 Sarah dies in Canaan.", "😭 Abraham mourns and weeps.", "⚖️ He negotiates honestly for a burial place.", "🌍 Machpelah becomes the first owned family foothold in the land."],
+      phrases: [["😭 Abraham Came To Mourn", "Faith does not erase grief. Abraham believes the promise and still weeps over Sarah."], ["🌍 A Possession Of A Buryingplace", "The first owned piece of the promised land is a grave. That is sobering, but deeply meaningful."], ["⚖️ Four Hundred Shekels", "Abraham pays publicly and legally. The promise does not make him manipulative; he acts with integrity."]],
+      truths: [["😭 Faith grieves.", "Abraham mourns Sarah honestly. Trusting God does not mean pretending death does not hurt."], ["🌍 Promise can begin with a burial place.", "The land promise moves forward through a grave before full possession."], ["⚖️ Integrity matters in waiting.", "Abraham buys the field openly. Faith does not need shady shortcuts."]],
+      application: ["😭 Let grief be honest before God.", "🌍 Small footholds can matter in long promises.", "⚖️ Handle practical matters with integrity.", "🪦 Death is real, but it does not cancel God's promise."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 24,
+      startVerse: 1,
+      endVerse: 67,
+      reference: "Genesis 24:1-67",
+      title: "Isaac Receives Rebekah",
+      icon: "💍",
+      summary: "Abraham's servant prays, God guides, Rebekah responds, and Isaac receives a wife.",
+      movement: ["🧓 Abraham sends his servant to find a wife for Isaac.", "🙏 The servant prays for guidance at the well.", "💧 Rebekah appears with generous character.", "💍 Rebekah willingly goes, and Isaac is comforted."],
+      phrases: [["🙏 O Lord God Of My Master Abraham", "The servant's mission is soaked in prayer. He knows the promise needs God's guidance."], ["💧 She Gave The Camels Drink Also", "Rebekah's generosity is costly and practical. Character is revealed at the well."], ["💍 I Will Go", "Rebekah's response matters. She steps into the covenant family with willingness and courage."]],
+      truths: [["🙏 God guides through prayer and providence.", "The servant prays, watches, and worships as God directs the journey."], ["💧 Character matters in covenant movement.", "Rebekah is not chosen only for family connection. Her generosity and courage are highlighted."], ["🌱 The promise moves to the next generation.", "Genesis 24 gently carries the story from Abraham and Sarah toward Isaac and Rebekah."]],
+      application: ["🙏 Pray over decisions that shape the future.", "💧 Watch for character, not only circumstances.", "💍 Courage may sound like, 'I will go.'", "🌱 God's guidance can carry grief into comfort."],
+    }),
+  ],
+);
+
+BIBLE_READER_STUDY_SECTIONS.push(
+  ...[
+    makeCompactGenesisStudySection({
+      chapter: 25,
+      startVerse: 1,
+      endVerse: 18,
+      reference: "Genesis 25:1-18",
+      title: "Abraham's Final Years",
+      icon: "📜",
+      summary: "Abraham's life closes, other family lines are named, and the covenant focus stays on Isaac.",
+      movement: ["📜 Abraham has other sons.", "🎁 He gives gifts but separates them from Isaac.", "🪦 Abraham dies full of years.", "🌍 Ishmael's line is also recorded as God promised."],
+      phrases: [["🎁 Gave Gifts", "Abraham provides for other sons, but distinguishes them from Isaac. The covenant line remains clear."], ["🪦 Full Of Years", "Abraham's death is presented as a completed life, not a failed promise."], ["🌍 Generations Of Ishmael", "God's promise to Hagar and Ishmael is remembered. Ishmael's line becomes history, not empty words."]],
+      truths: [["🌱 The promise continues after Abraham.", "Abraham dies, but the covenant does not die with him."], ["🎁 Blessing and covenant role are not identical.", "Other sons receive gifts, but Isaac carries the covenant line."], ["🤝 God keeps promises outside the main line too.", "Ishmael's generations show God's faithfulness to Hagar's story."]],
+      application: ["🌱 Your death does not end God's work.", "🎁 Be clear about what God has assigned.", "🤝 Remember that God can keep multiple promises at once.", "🪦 A faithful life can end while the promise keeps moving."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 25,
+      startVerse: 19,
+      endVerse: 34,
+      reference: "Genesis 25:19-34",
+      title: "Jacob And Esau Are Born",
+      icon: "👶",
+      summary: "Isaac prays, Rebekah bears twins, and Esau despises his birthright.",
+      movement: ["🙏 Isaac prays for barren Rebekah.", "👶 Twins struggle before birth.", "🔁 God says the older will serve the younger.", "🍲 Esau sells his birthright for a meal."],
+      phrases: [["🙏 Isaac Intreated The Lord", "Isaac's family begins with the same kind of impossibility Abraham faced: barrenness. Prayer stands at the doorway of the next generation."], ["🔁 The Elder Shall Serve The Younger", "God's word overturns normal expectation. The promise will move by God's choice, not simply birth order."], ["🍲 Despised His Birthright", "Esau treats a holy inheritance like it is worth less than his appetite. Genesis wants us to feel the foolishness of that trade."]],
+      truths: [["🙏 The next generation still needs prayer.", "Covenant family does not remove dependence. Isaac must seek the Lord."], ["🔁 God's choice can overturn custom.", "The older serving the younger shows God's promise is not trapped by social expectation."], ["🍲 Appetite can make holy things look cheap.", "Esau's hunger becomes a window into what he values."]],
+      application: ["🙏 Pray for what you cannot produce.", "🔁 Let God's word correct cultural assumptions.", "🍲 Do not trade long-term calling for short-term relief.", "👶 Family conflict can begin early, but God is still at work."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 26,
+      startVerse: 1,
+      endVerse: 11,
+      reference: "Genesis 26:1-11",
+      title: "Isaac Faces Famine And Fear",
+      icon: "🌾",
+      summary: "Isaac faces famine, receives the promise, but repeats Abraham's fear about his wife.",
+      movement: ["🌾 Famine comes in Isaac's day.", "🗣️ God tells Isaac not to go to Egypt.", "🤝 God repeats the Abrahamic promise.", "🔁 Isaac says Rebekah is his sister out of fear."],
+      phrases: [["🌾 There Was A Famine", "Isaac faces a test similar to Abraham's. The next generation has to learn trust personally."], ["🗣️ Go Not Down Into Egypt", "God gives Isaac a specific command for this famine. Trust means staying where God says stay."], ["🔁 She Is My Sister", "Isaac repeats Abraham's fear pattern. Family weaknesses can echo if they are not healed."]],
+      truths: [["🤝 The promise is confirmed to Isaac.", "God repeats land, descendants, and blessing. Isaac is now carrying the covenant story."], ["🔁 Fear can be inherited as a pattern.", "Isaac repeats a family sin. Genesis is honest about generational weakness."], ["🌾 Famine tests trust.", "Scarcity forces the question: will Isaac obey God's word or run by instinct?"]],
+      application: ["🌾 Famine moments reveal where trust lives.", "🔁 Watch for family fear patterns repeating in you.", "🗣️ Stay where God says, even when Egypt looks safer.", "🤝 God's promise must become personal in each generation."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 26,
+      startVerse: 12,
+      endVerse: 25,
+      reference: "Genesis 26:12-25",
+      title: "Isaac Digs Wells",
+      icon: "💧",
+      summary: "Isaac prospers, faces conflict over wells, keeps moving, and worships when God makes room.",
+      movement: ["🌾 Isaac reaps a hundredfold.", "😠 The Philistines envy him.", "💧 He reopens and digs wells.", "🙏 At Beersheba, God says fear not, and Isaac builds an altar."],
+      phrases: [["🌾 Hundredfold", "Isaac's prosperity shows God's blessing in the land during famine pressure."], ["💧 Rehoboth", "The name means room or broad places. After conflict, Isaac recognizes the Lord has made room."], ["🙏 Builded An Altar", "Isaac responds to God's reassurance with worship, just like Abraham marked promise places with altars."]],
+      truths: [["💧 Faith can keep digging without constant fighting.", "Isaac faces strife but continues moving until God makes room."], ["😠 Blessing can attract envy.", "Prosperity does not remove conflict. Sometimes it provokes it."], ["🙏 God's reassurance leads to worship.", "When God says fear not, Isaac builds an altar."]],
+      application: ["💧 Keep digging faithfully when one place becomes conflict.", "😠 Do not be shocked when blessing brings envy.", "🙏 Mark God's reassurance with worship.", "🌱 Trust that God can make room without you forcing every fight."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 27,
+      startVerse: 1,
+      endVerse: 29,
+      reference: "Genesis 27:1-29",
+      title: "Jacob Receives The Blessing",
+      icon: "🤲",
+      summary: "Favoritism and deception collide as Jacob receives Isaac's blessing instead of Esau.",
+      movement: ["👴 Isaac plans to bless Esau.", "👂 Rebekah overhears and forms a plan.", "🎭 Jacob disguises himself.", "🤲 Isaac blesses Jacob."],
+      phrases: [["👴 His Eyes Were Dim", "Isaac's physical blindness matches the confusion in the household. The family is spiritually tangled too."], ["👂 Rebekah Heard", "Rebekah acts on what she hears, but through manipulation instead of open trust."], ["🎭 I Am Esau", "Jacob's lie is direct. The promise moves forward, but the method wounds the family deeply."]],
+      truths: [["🎭 Deception damages even when the promise continues.", "Jacob receives the blessing, but the way it happens fractures the household."], ["👨‍👩‍👦 Favoritism feeds manipulation.", "Isaac loves Esau, Rebekah loves Jacob, and the divided loves become divided actions."], ["🤝 God's promise is not dependent on clean family behavior.", "God's word about Jacob stands, but Genesis does not excuse the sin used in the scene."]],
+      application: ["🎭 Do not use deception to help God's promise.", "👨‍👩‍👦 Favoritism can poison a family.", "🤲 Blessing should not be handled through secrecy and manipulation.", "⚠️ God's faithfulness does not make our methods harmless."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 27,
+      startVerse: 30,
+      endVerse: 46,
+      reference: "Genesis 27:30-46",
+      title: "Esau's Grief And Jacob's Escape",
+      icon: "😭",
+      summary: "Esau grieves bitterly, anger rises, and Jacob must flee from the family fracture.",
+      movement: ["😭 Esau returns and discovers the blessing is gone.", "😨 Isaac trembles greatly.", "⚔️ Esau plans to kill Jacob.", "🏃 Rebekah sends Jacob away to Haran."],
+      phrases: [["😨 Isaac Trembled", "Isaac realizes something irreversible has happened. The blessing cannot simply be reset."], ["😭 Exceeding Bitter Cry", "Esau's grief is real, even though he despised the birthright earlier. Genesis lets us feel the pain."], ["🏃 Flee Thou To Laban", "Jacob receives blessing, but he loses home. Deception may get what it wants and still cost more than expected."]],
+      truths: [["😭 Sin leaves grief behind.", "The blessing scene ends with tears, trembling, anger, and exile."], ["🏃 Getting the blessing wrongly can still bring consequences.", "Jacob carries the promise, but he must flee. God's plan continues through painful discipline."], ["⚔️ Family wounds can become dangerous.", "Esau's grief turns toward murder. The family fracture is severe."]],
+      application: ["😭 Do not ignore the grief deception causes.", "🏃 A gained advantage can still come with painful loss.", "⚔️ Deal with family wounds before anger becomes violence.", "🤝 God's promise continues, but sin still scars the journey."],
+    }),
+  ],
+);
+
+BIBLE_READER_STUDY_SECTIONS.push(
+  ...[
+    makeCompactGenesisStudySection({
+      chapter: 28,
+      startVerse: 1,
+      endVerse: 5,
+      reference: "Genesis 28:1-5",
+      title: "Isaac Sends Jacob Away",
+      icon: "🧳",
+      summary: "Jacob leaves home with the blessing of Abraham, but also with family fracture behind him.",
+      movement: ["🧳 Isaac sends Jacob away to Paddan Aram.", "💍 Jacob is told not to marry a Canaanite woman.", "🤝 Isaac repeats the blessing of Abraham over him.", "🏠 Jacob leaves with promise, but not with peace."],
+      phrases: [["🧳 Arise, Go To Padanaram", "Jacob is not leaving for a vacation or a fresh adventure. He is leaving because the blessing scene broke the family and Esau wants him dead. The road becomes both protection and discipline."], ["💍 Take Thee A Wife From Thence", "Marriage is tied to covenant direction here. Isaac wants Jacob's household connected to the promise line, not absorbed into Canaanite life around them."], ["🤝 The Blessing Of Abraham", "This phrase makes the handoff clear. The promise God gave Abraham is now being spoken over Jacob: land, descendants, and covenant identity." ]],
+      truths: [["🧳 Blessing can come with consequences.", "Jacob carries the covenant promise, but he also carries the fallout of deception. Genesis lets both be true at the same time."], ["💍 Covenant choices shape the future.", "The wife Jacob takes will affect the next generation. Genesis treats family formation as spiritually serious."], ["🤝 God's promise keeps moving.", "Isaac's household is messy, but the Abrahamic blessing is not canceled. God's covenant is stronger than family fracture." ]],
+      application: ["🧳 Sometimes the road ahead includes both mercy and discipline.", "💍 Big life choices should be made with covenant wisdom, not impulse.", "🏠 Leaving a broken place does not mean God has left you.", "🤝 God's promise can keep moving even when your family story feels tangled."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 28,
+      startVerse: 6,
+      endVerse: 9,
+      reference: "Genesis 28:6-9",
+      title: "Esau Tries To Fix The Problem",
+      icon: "🪞",
+      summary: "Esau notices what displeases his parents, but his response shows he still does not understand the covenant clearly.",
+      movement: ["👀 Esau sees that Canaanite wives displease Isaac.", "🪞 He reacts after watching Jacob be sent away.", "💍 He marries into Ishmael's family line.", "⚠️ His response is religious-looking, but still confused."],
+      phrases: [["👀 Esau Seeing", "Esau is paying attention, but late. He notices what his parents value after years of treating his birthright lightly."], ["💍 Went Unto Ishmael", "Marrying into Ishmael's line may look like an attempt to choose Abrahamic family connection. But it does not show real repentance or a clear grasp of the covenant promise."], ["➕ Unto The Wives Which He Had", "Esau adds another wife instead of dealing with the deeper issue. Sometimes people try to fix spiritual problems by adding a religious-looking move on top of unchanged patterns." ]],
+      truths: [["🪞 Reaction is not the same as repentance.", "Esau responds to family disapproval, but Genesis does not show him humbly seeking God's promise."], ["⚠️ Religious-looking choices can still miss the point.", "A move can look closer to the family of Abraham and still not be covenant faith."], ["👀 Delayed attention has consequences.", "Esau cared about the birthright too late. Genesis keeps warning us not to treat holy things as small." ]],
+      application: ["🪞 Ask whether you are changing because you see truth or only because you feel consequences.", "💍 Do not cover old disobedience with a new religious-looking decision.", "👀 Pay attention before loss teaches the lesson harder.", "⚠️ The outside move matters less than the heart behind it."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 28,
+      startVerse: 10,
+      endVerse: 15,
+      reference: "Genesis 28:10-15",
+      title: "Jacob Dreams Of The Stairway",
+      icon: "🪜",
+      summary: "God meets Jacob in the wilderness and repeats the covenant promise personally to him.",
+      movement: ["🌙 Jacob sleeps outside with a stone for a pillow.", "🪜 He sees a stairway between earth and heaven.", "👼 Angels ascend and descend on it.", "🗣️ God promises land, offspring, blessing, presence, protection, and return."],
+      phrases: [["🪜 Ladder Set Up On The Earth", "The stairway shows heaven and earth connected by God's initiative. Jacob is not climbing up to find God; God is revealing access and presence to Jacob."], ["👼 Angels Ascending And Descending", "The messengers show that Jacob's lonely road is not empty. God's world is active even where Jacob only sees wilderness."], ["🗣️ I Am With Thee", "This is the heart of the dream. God does not only promise land and descendants; He promises His presence on the road until Jacob returns." ]],
+      truths: [["🪜 God meets people before they are polished.", "Jacob has not become a mature hero yet. God meets him while he is running from a damaged home."], ["👼 Heaven is nearer than Jacob realized.", "The wilderness looks ordinary, but God opens Jacob's eyes to spiritual reality."], ["🗣️ God's promise becomes personal.", "Jacob has heard of Abraham and Isaac's God. Now the Lord speaks the promise directly over Jacob." ]],
+      application: ["🌙 A lonely place can become a meeting place with God.", "🪜 You do not have to climb into God's attention; He comes down in mercy.", "🗣️ Hold tightly to God's presence when the road is uncertain.", "👼 There may be more happening around your life than your eyes can see."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 28,
+      startVerse: 16,
+      endVerse: 22,
+      reference: "Genesis 28:16-22",
+      title: "Jacob Names The Place Bethel",
+      icon: "🪨",
+      summary: "Jacob realizes God was present in the place he thought was only a campsite.",
+      movement: ["😮 Jacob wakes with awe and fear.", "🏠 He calls the place the house of God.", "🪨 He sets up the stone as a pillar.", "🛢️ He pours oil on it and makes a vow."],
+      phrases: [["😮 I Knew It Not", "Jacob thought he was simply stopping for the night. The line teaches readers that God can be present in places we did not recognize as holy."], ["🏠 Bethel", "Bethel means house of God. Jacob renames the place because God's presence changed the meaning of the location."], ["🛢️ Poured Oil Upon The Top Of It", "Pouring oil marks the stone as set apart. Jacob is responding physically to a spiritual encounter he does not want to forget." ]],
+      truths: [["🏠 God's presence changes ordinary ground.", "A campsite becomes Bethel because God reveals Himself there."], ["😮 Awe is a right response to God.", "Jacob does not wake casual. He realizes he has been near the Lord's presence."], ["🪨 Remembering matters.", "Jacob sets up a marker because faith needs memory. Places of encounter should not be treated like nothing happened." ]],
+      application: ["😮 Ask God to help you notice where He has been present.", "🪨 Mark the moments you do not want your soul to forget.", "🏠 An ordinary place can become holy because God met you there.", "🛢️ Let worship respond when God wakes you up spiritually."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 29,
+      startVerse: 1,
+      endVerse: 14,
+      reference: "Genesis 29:1-14",
+      title: "Jacob Meets Rachel At The Well",
+      icon: "💧",
+      summary: "Jacob arrives in Haran, finds Rachel, and is welcomed into Laban's house.",
+      movement: ["💧 Jacob reaches a well near Haran.", "🐑 Rachel arrives with Laban's sheep.", "🪨 Jacob rolls away the stone and waters the flock.", "😭 He kisses Rachel, weeps, and is welcomed by Laban."],
+      phrases: [["💧 A Well In The Field", "Wells are meeting places in Genesis. This scene echoes the earlier moment when Abraham's servant met Rebekah at a well for Isaac."], ["🪨 Rolled The Stone", "Jacob's strength and eagerness are on display. The man who left home vulnerable suddenly moves with energy when Rachel arrives."], ["😭 Jacob Wept", "The tears show the emotional weight of arrival. Jacob has been alone on the road, and now he has found family connection." ]],
+      truths: [["💧 God can guide through ordinary places.", "A well, sheep, and conversation become the setting where Jacob's next chapter begins."], ["🧭 Providence often looks normal while it happens.", "No voice from heaven speaks here, but the timing still carries the story forward."], ["🏠 Welcome can be complicated.", "Laban receives Jacob warmly, but Genesis will soon show that not every welcome is simple or safe." ]],
+      application: ["💧 Pay attention to ordinary places where God may be opening the next step.", "😭 Arrival after a hard road can release hidden emotion.", "🧭 Do not despise normal-looking guidance.", "🏠 Warm welcomes still need wisdom over time."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 29,
+      startVerse: 15,
+      endVerse: 20,
+      reference: "Genesis 29:15-20",
+      title: "Jacob Serves Seven Years For Rachel",
+      icon: "❤️",
+      summary: "Jacob loves Rachel and agrees to serve seven years for her.",
+      movement: ["💬 Laban asks Jacob to name his wages.", "❤️ Jacob asks to serve for Rachel.", "⏳ He serves seven years.", "🌅 The years seem like a few days because of his love."],
+      phrases: [["💬 What Shall Thy Wages Be", "Laban sounds fair, but readers should stay alert. His questions often serve his own advantage."], ["❤️ I Will Serve Thee Seven Years", "Jacob names a costly commitment. His love is not only emotion; it becomes years of labor."], ["🌅 But A Few Days", "Genesis gives us one of its tender lines here. Love changes how Jacob experiences the weight of time, even though seven years is still a long sacrifice." ]],
+      truths: [["❤️ Love is shown through costly patience.", "Jacob's love for Rachel takes the shape of years, not only words."], ["⏳ Waiting can be filled with purpose.", "These seven years are not empty time. Jacob is working toward a covenant future."], ["⚠️ Tender moments can still sit near danger.", "The sweetness of Jacob's love is real, but Laban's character is about to turn the scene painful." ]],
+      application: ["❤️ Real love can serve without needing everything instantly.", "⏳ A long wait can still have meaning.", "💬 Be wise when someone else controls the terms.", "🌅 Let love make sacrifice faithful, not foolish."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 29,
+      startVerse: 21,
+      endVerse: 30,
+      reference: "Genesis 29:21-30",
+      title: "Laban Deceives Jacob",
+      icon: "🎭",
+      summary: "Jacob the deceiver is deceived, and the family story bends under Laban's manipulation.",
+      movement: ["🍽️ Laban makes a feast.", "🌙 In the evening, Leah is brought to Jacob.", "😳 In the morning, Jacob sees the deception.", "🎭 Laban uses custom to justify manipulation."],
+      phrases: [["🌙 In The Evening", "The darkness matters. Jacob once used blindness and disguise to deceive Isaac, and now he is deceived in the cover of night."], ["😳 In The Morning, Behold, It Was Leah", "This is one of Genesis's sharp reversals. Jacob wakes into the pain of being tricked by family."], ["🎭 Wherefore Then Hast Thou Beguiled Me", "Jacob names the very thing he himself has done. The story is not mocking him; it is showing how deception comes back with a bitter taste." ]],
+      truths: [["🎭 Deception teaches pain from the other side.", "Jacob now feels what it is like to be manipulated by someone close."], ["⚖️ Sin can echo through consequences.", "This does not mean every hard thing is payback, but Genesis clearly links Jacob's deceptive past with this painful reversal."], ["💔 People can be used inside someone else's scheme.", "Leah and Rachel are not just plot pieces. Laban's manipulation wounds both daughters too." ]],
+      application: ["🎭 Do not excuse manipulation because it gets a desired result.", "💔 Notice who gets hurt when powerful people scheme.", "⚖️ Let painful consequences teach humility, not bitterness.", "🌙 What is done in darkness still comes into morning."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 29,
+      startVerse: 31,
+      endVerse: 35,
+      reference: "Genesis 29:31-35",
+      title: "God Sees Leah",
+      icon: "👁️",
+      summary: "Leah is unloved by Jacob, but Yahweh sees her affliction and begins building Israel through her.",
+      movement: ["👁️ Yahweh sees that Leah is unloved.", "👶 Leah bears sons while Rachel is barren.", "💔 Leah names sons out of pain and longing.", "🦁 Judah is born, and his line will become deeply important."],
+      phrases: [["👁️ When The Lord Saw", "This is the comfort of the passage. Leah may feel unseen by Jacob, but she is not unseen by Yahweh."], ["💔 Hated", "The word can mean unloved or rejected by comparison. Leah lives inside a marriage where she knows she is not the chosen love."], ["🦁 Judah", "Judah's birth is easy to pass over, but it is huge. Kings will come through Judah, and ultimately Jesus will be called the Lion of Judah." ]],
+      truths: [["👁️ God sees the overlooked.", "Leah's pain is visible to God even when her husband fails to love her rightly."], ["💔 Fruitfulness does not erase emotional pain.", "Leah has children, but her names show she still longs to be loved."], ["🦁 God can bring major purpose through an unloved person.", "Judah comes from Leah, not Rachel. Genesis keeps showing God lifting the overlooked." ]],
+      application: ["👁️ Being overlooked by people does not make you invisible to God.", "💔 Let God tell the truth about pain instead of pretending blessing fixes everything.", "🦁 Do not assume your hidden story cannot carry future purpose.", "🙏 Worship can grow even from a wounded place."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 30,
+      startVerse: 1,
+      endVerse: 13,
+      reference: "Genesis 30:1-13",
+      title: "Rachel And Leah Compete",
+      icon: "🥀",
+      summary: "Rachel and Leah's rivalry shows how painful Jacob's household has become.",
+      movement: ["🥀 Rachel envies Leah because she has no children.", "👤 Bilhah is brought into the rivalry.", "⚔️ Leah answers through Zilpah.", "👶 Children are born inside competition instead of peace."],
+      phrases: [["🥀 Rachel Envied Her Sister", "Rachel has Jacob's love, but Leah has children. Each sister has something the other longs for, and envy turns their pain against each other."], ["👤 Bilhah My Maid", "Bilhah is pulled into Rachel's pain as a solution. Genesis is showing family growth, but not pretending this system is healthy."], ["⚔️ With Great Wrestlings", "Rachel describes the family as a wrestling match. The language reveals the emotional combat happening inside the household." ]],
+      truths: [["🥀 Envy can make blessing feel invisible.", "Rachel is loved by Jacob, but envy over Leah's children consumes her."], ["👤 Broken systems often use vulnerable people.", "Bilhah and Zilpah are caught in a rivalry they did not create."], ["⚔️ Family growth is not always family health.", "More children are born, but the household is full of competition and pain." ]],
+      application: ["🥀 Do not let someone else's blessing erase what God has given you.", "👤 Watch who gets used when your pain starts making decisions.", "⚔️ Winning a rivalry is not the same as healing a heart.", "🙏 Bring envy to God before it starts shaping the house."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 30,
+      startVerse: 14,
+      endVerse: 24,
+      reference: "Genesis 30:14-24",
+      title: "God Remembers Rachel",
+      icon: "👶",
+      summary: "God listens to Leah and remembers Rachel, and Joseph is born after years of pain.",
+      movement: ["🌿 Mandrakes become part of the sister conflict.", "👂 God listens to Leah.", "🕊️ God remembers Rachel.", "👶 Joseph is born, and the Genesis story turns toward its next major figure."],
+      phrases: [["🌿 Mandrakes", "Mandrakes were associated in the ancient world with fertility and desire. The scene shows how desperate and transactional the sisters' relationship has become."], ["👂 God Hearkened Unto Leah", "Leah is still heard by God. Even inside an unhealthy household, the Lord listens to the overlooked wife."], ["🕊️ God Remembered Rachel", "Remembered does not mean God had forgotten. In the Bible, it often means God turns toward someone in faithful action." ]],
+      truths: [["🕊️ God's timing is not forgetfulness.", "Rachel waits painfully, but the text says God remembers her. Delay is not proof of abandonment."], ["👂 God hears complicated people.", "Leah and Rachel are both wounded and flawed, but God is still active toward them."], ["👶 One birth can turn the story.", "Joseph's arrival will eventually carry Genesis toward preservation, Egypt, and a much larger rescue." ]],
+      application: ["🕊️ Do not confuse waiting with being forgotten.", "👂 God can hear you even when your household story is messy.", "🌿 Be careful when desperation makes people transactional.", "👶 Small beginnings may become major turning points later."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 30,
+      startVerse: 25,
+      endVerse: 43,
+      reference: "Genesis 30:25-43",
+      title: "Jacob Prospers Under Pressure",
+      icon: "🐑",
+      summary: "Jacob works under Laban's pressure, but God still increases him.",
+      movement: ["🏠 Jacob asks to return home after Joseph is born.", "💰 Laban wants him to stay because blessing follows Jacob.", "🐑 The flock agreement becomes tense and strategic.", "📈 Jacob increases greatly under pressure."],
+      phrases: [["🏠 Send Me Away", "Joseph's birth makes Jacob think about home again. The promise is pulling him back toward the land, even while Laban wants to keep him useful."], ["💰 The Lord Hath Blessed Me For Thy Sake", "Laban recognizes blessing, but mainly because it benefits him. He sees God's hand as profit."], ["🐑 Speckled And Spotted", "The flock arrangement sounds strange to modern readers, but the point is clear: Jacob is trying to build a future under unfair control." ]],
+      truths: [["📈 God can prosper His people in unfair places.", "Laban keeps trying to control the situation, but Jacob still increases."], ["💰 Some people value blessing only when it benefits them.", "Laban wants Jacob near because Jacob is profitable, not because he loves him well."], ["🏠 Prosperity is not the same as home.", "Jacob grows wealthy, but his heart is being turned back toward the land God promised." ]],
+      application: ["📈 Do not assume unfair pressure means God cannot bless you.", "💰 Be careful around people who only value you for what comes through you.", "🏠 Success in a hard place may still not be your final place.", "🐑 Ask God for wisdom when the terms keep shifting."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 31,
+      startVerse: 1,
+      endVerse: 16,
+      reference: "Genesis 31:1-16",
+      title: "God Tells Jacob To Return",
+      icon: "🏡",
+      summary: "God calls Jacob back to the land of promise after years of pressure under Laban.",
+      movement: ["😠 Laban's sons resent Jacob's increase.", "🏡 God tells Jacob to return to his fathers' land.", "⚖️ Jacob explains Laban's unfair treatment.", "👭 Rachel and Leah agree that it is time to go."],
+      phrases: [["😠 Laban's Countenance", "Jacob can read the change in Laban's face. Sometimes a relationship shifts before anyone says the truth out loud."], ["🏡 Return Unto The Land", "God's command reconnects Jacob to the promise. Leaving Laban is not only escape; it is obedience toward covenant direction."], ["⚖️ Changed My Wages Ten Times", "Jacob names years of manipulation. The number emphasizes repeated unfairness, not a one-time misunderstanding." ]],
+      truths: [["🏡 God calls His people in the right time.", "Jacob did not leave the moment things got hard. God speaks when it is time to return."], ["⚖️ God sees unfair treatment.", "Jacob says God saw what Laban was doing. Human exploitation is not hidden from the Lord."], ["👭 Shared clarity can confirm the next step.", "Rachel and Leah recognize their father's treatment and agree with Jacob's direction." ]],
+      application: ["🏡 Move when God calls, not only when frustration peaks.", "⚖️ Trust that God sees repeated unfairness.", "😠 Pay attention when the face of a situation changes.", "👭 Wise agreement can help a family step into obedience together."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 31,
+      startVerse: 17,
+      endVerse: 21,
+      reference: "Genesis 31:17-21",
+      title: "Jacob Leaves Secretly",
+      icon: "🐪",
+      summary: "Jacob leaves with his family and possessions, while Rachel secretly takes Laban's household idols.",
+      movement: ["🐪 Jacob sets his family on camels.", "🏃 He leaves for Canaan without telling Laban.", "🗿 Rachel steals the household gods.", "🌊 Jacob crosses the river and heads toward Gilead."],
+      phrases: [["🐪 Set His Sons And His Wives Upon Camels", "The scene is practical and urgent. Jacob is moving an entire household, not simply taking a private trip."], ["🗿 Rachel Had Stolen The Images", "The household idols may have been tied to family authority, inheritance, or protection. Rachel's act shows that leaving Laban's house is spiritually messy too."], ["🏃 Stole Away Unawares", "Jacob obeys God's call to return, but he still leaves through secrecy. Genesis shows obedience mixed with fear, not a perfectly clean departure." ]],
+      truths: [["🏃 Obedience can still need cleansing from fear.", "Jacob is going the right direction, but his method still carries old patterns of secrecy."], ["🗿 Leaving a place does not mean leaving every idol behind.", "Rachel physically carries Laban's gods into the journey. The family needs more than a change of location."], ["🐪 God moves whole households.", "Jacob's call affects wives, children, possessions, and future generations." ]],
+      application: ["🏃 Ask whether you are obeying God with old fearful habits still driving you.", "🗿 Do not carry idols from the place God is calling you out of.", "🐪 Family obedience often involves practical, costly movement.", "🌊 A new direction may still need spiritual cleanup."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 31,
+      startVerse: 22,
+      endVerse: 35,
+      reference: "Genesis 31:22-35",
+      title: "Laban Pursues Jacob",
+      icon: "⚠️",
+      summary: "Laban pursues Jacob, but God warns him not to harm Jacob.",
+      movement: ["🏇 Laban chases Jacob for seven days.", "⚠️ God warns Laban in a dream.", "💬 Laban confronts Jacob with accusation.", "🗿 Rachel hides the stolen idols."],
+      phrases: [["⚠️ Take Heed", "God steps between Laban and Jacob before the confrontation. The warning limits what Laban can do."], ["💬 Wherefore Didst Thou Flee Secretly", "Laban's question sounds wounded, but readers know he has been controlling and unfair. Manipulative people can still sound offended when control is broken."], ["🗿 The Images", "The search for the idols exposes hidden trouble in Jacob's camp. Jacob does not even know Rachel has brought them." ]],
+      truths: [["⚠️ God can restrain powerful people.", "Laban catches up, but God has already warned him. Jacob's safety is not resting on Laban's kindness."], ["💬 Accusations can hide control.", "Laban frames himself as wronged, but Genesis has already shown his pattern."], ["🗿 Hidden sin can travel with the family.", "Rachel's theft creates danger Jacob does not see. Secret actions can put others at risk." ]],
+      application: ["⚠️ Trust God to set limits on people who want control.", "💬 Listen carefully when an accusation comes from someone losing power over you.", "🗿 Hidden choices can endanger the whole camp.", "🙏 Ask God to expose what needs to be dealt with before it grows."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 31,
+      startVerse: 36,
+      endVerse: 42,
+      reference: "Genesis 31:36-42",
+      title: "Jacob Confronts Laban",
+      icon: "⚖️",
+      summary: "Jacob names twenty years of hard labor, unfair treatment, and God's protection.",
+      movement: ["🔥 Jacob becomes angry and answers Laban.", "🥶 He names heat, frost, lost sleep, and hard labor.", "🔁 He says Laban changed his wages again and again.", "🛡️ He says God saw his affliction and protected him."],
+      phrases: [["🥶 Drought Consumed Me, And The Frost By Night", "Jacob's speech shows the physical cost of those years. This was not an easy success story; it was exhausting labor."], ["🔁 Changed My Wages Ten Times", "Laban's unfairness was repeated. Jacob is naming a pattern, not complaining about one inconvenience."], ["🛡️ God Hath Seen Mine Affliction", "Jacob's confidence is that God noticed what Laban tried to take. This is the same God who saw Hagar and Leah." ]],
+      truths: [["⚖️ Naming injustice can be right.", "Jacob finally speaks plainly about what happened. Honesty is not always bitterness."], ["🛡️ God sees exploited labor.", "The Lord noticed Jacob's hard years and protected him from leaving empty."], ["🔥 Anger needs truth, not revenge.", "Jacob confronts Laban with facts and God's protection, not violence." ]],
+      application: ["⚖️ Tell the truth about patterns of unfairness.", "🛡️ Let God's seeing steady you when people rewrite the story.", "🥶 Do not minimize what hard seasons cost you.", "🔥 Confrontation should aim at truth, not uncontrolled revenge."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 31,
+      startVerse: 43,
+      endVerse: 55,
+      reference: "Genesis 31:43-55",
+      title: "A Boundary Covenant",
+      icon: "🪨",
+      summary: "Jacob and Laban set up stones as a witness and part ways with a boundary between them.",
+      movement: ["🗣️ Laban still talks possessively about the family and flocks.", "🪨 Jacob sets up a pillar and stones as witness.", "🤝 They make a covenant boundary.", "🌅 Laban leaves, and Jacob keeps moving toward the promise."],
+      phrases: [["🪨 This Heap Be Witness", "The stones are not decoration. They stand as public memory that a boundary has been made."], ["👀 The Lord Watch Between Me And Thee", "People often quote this warmly, but in context it is more like a warning. Laban and Jacob do not trust each other, so they call God as witness between them."], ["🌅 Laban Departed", "The chapter ends with separation. Sometimes peace is not closeness; sometimes peace is a God-witnessed boundary." ]],
+      truths: [["🪨 Boundaries can be biblical.", "Jacob and Laban do not pretend everything is fine. They mark a line neither should cross for harm."], ["👀 God witnesses hidden motives.", "The covenant calls God to watch what people might do when others cannot see."], ["🌅 Separation can be part of moving forward.", "Jacob cannot return to the promise while remaining under Laban's control." ]],
+      application: ["🪨 Some relationships need clear boundaries, not vague hopes.", "👀 Let God's witness make you honest when no one else is watching.", "🤝 Peace does not always require renewed closeness.", "🌅 Moving forward may require leaving controlling patterns behind."],
+    }),
+  ],
+);
 
 export function getBibleReaderStudySections(book: string | null | undefined, chapter: number | null | undefined) {
   const normalizedBook = normalizeBook(book);

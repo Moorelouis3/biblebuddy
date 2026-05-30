@@ -2920,6 +2920,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       Updates
                     </Link>
 
+                    <Link
+                      href="/dashboard?view=group"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        if (typeof window !== "undefined") {
+                          window.localStorage.setItem("bb:dashboard-open-group", "1");
+                          window.dispatchEvent(new Event("bb:dashboard-show-group-tab"));
+                        }
+                      }}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Group
+                    </Link>
 
 
                     {/* ANALYTICS (ADMIN ONLY) */}
@@ -2927,17 +2940,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       <>
                         {isAdmin && (
                           <>
-                            <Link
-                              href="/admin/analytics"
-                              onClick={() => setIsProfileMenuOpen(false)}
-                              className={`block px-4 py-2 text-sm ${
-                                pathname?.startsWith("/admin/analytics")
-                                  ? "bg-sky-100 text-black font-medium"
-                                  : "text-gray-700 hover:bg-gray-100"
-                              }`}
-                            >
-                              Analytics
-                            </Link>
                             <Link
                               href="/admin/top-buddies"
                               onClick={() => setIsProfileMenuOpen(false)}

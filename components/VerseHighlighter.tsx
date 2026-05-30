@@ -51,6 +51,11 @@ type HighlightNoteEditorState = {
   noteText: string;
 };
 
+type HighlightNoteViewerState = {
+  range: VerseHighlightRange;
+  anchor: { x: number; y: number };
+};
+
 // Utility to extract the inner HTML for a verse from enriched HTML
 function getEnrichedHtmlForVerse(enrichedHtml: string | undefined, fallback: string) {
   if (!enrichedHtml) return fallback;
@@ -311,6 +316,141 @@ function HighlightNoteModal({
   );
 }
 
+function HighlightNoteViewer({
+  state,
+  onEdit,
+  onDelete,
+  onClose,
+  deleting,
+}: {
+  state: HighlightNoteViewerState | null;
+  onEdit: () => void;
+  onDelete: () => void;
+  onClose: () => void;
+  deleting: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!state) return;
+    setMenuOpen(false);
+  }, [state?.range.id]);
+
+  useEffect(() => {
+    if (!state) return;
+
+    function handlePointerDown(event: MouseEvent | TouchEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        onClose();
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") onClose();
+    }
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [state, onClose]);
+
+  if (!state || !mounted) return null;
+
+  const cardWidth = 340;
+  const desktopLeft = Math.min(Math.max(state.anchor.x - cardWidth / 2, 14), window.innerWidth - cardWidth - 14);
+  const desktopTop = Math.min(Math.max(state.anchor.y + 10, 14), window.innerHeight - 260);
+  const noteText = state.range.note_text || "";
+
+  return createPortal(
+    <>
+      <div
+        ref={ref}
+        data-highlight-note-viewer="true"
+        className="fixed bottom-0 left-0 right-0 z-[10000] rounded-t-[24px] border border-slate-200 bg-white p-4 text-slate-950 shadow-[0_-18px_52px_rgba(15,23,42,0.22)] sm:left-auto sm:right-auto sm:rounded-[20px] sm:p-4 sm:shadow-[0_20px_60px_rgba(15,23,42,0.24)]"
+        style={{
+          ["--note-card-left" as string]: `${desktopLeft}px`,
+          ["--note-card-top" as string]: `${desktopTop}px`,
+        }}
+      >
+        <style>{`
+          @media (min-width: 640px) {
+            [data-highlight-note-viewer="true"] {
+              left: var(--note-card-left);
+              top: var(--note-card-top);
+              bottom: auto;
+              right: auto;
+              width: ${cardWidth}px;
+            }
+          }
+        `}</style>
+        <div className="contents">
+          <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-slate-200 sm:hidden" aria-hidden="true" />
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-sky-600">📝 Note</p>
+              <p className="mt-2 rounded-2xl bg-amber-50 px-3 py-2 text-sm font-black leading-5 text-slate-900">
+                “{state.range.selected_text}”
+              </p>
+            </div>
+            <div className="relative shrink-0">
+              <button
+                type="button"
+                onClick={() => setMenuOpen((open) => !open)}
+                className="grid h-9 w-9 place-items-center rounded-full bg-slate-100 text-lg font-black text-slate-700 transition hover:bg-slate-200"
+                aria-label="Note options"
+                aria-expanded={menuOpen}
+              >
+                ⋯
+              </button>
+              {menuOpen ? (
+                <div className="absolute right-0 top-11 z-10 w-40 overflow-hidden rounded-2xl border border-slate-200 bg-white p-1 shadow-[0_16px_42px_rgba(15,23,42,0.18)]">
+                  <button
+                    type="button"
+                    onClick={onEdit}
+                    className="block w-full rounded-xl px-3 py-2 text-left text-sm font-black text-slate-800 transition hover:bg-slate-100"
+                  >
+                    Edit Note
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onDelete}
+                    disabled={deleting}
+                    className="block w-full rounded-xl px-3 py-2 text-left text-sm font-black text-rose-600 transition hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {deleting ? "Deleting..." : "Delete Note"}
+                  </button>
+                </div>
+              ) : null}
+            </div>
+          </div>
+          <p className="mt-3 max-h-[32svh] overflow-y-auto whitespace-pre-wrap text-[15px] font-semibold leading-7 text-slate-800 sm:max-h-64 sm:text-sm sm:leading-6">
+            {noteText}
+          </p>
+          <button
+            type="button"
+            onClick={onClose}
+            className="mt-4 w-full rounded-2xl bg-slate-100 px-4 py-3 text-sm font-black text-slate-700 transition hover:bg-slate-200 sm:hidden"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </>,
+    document.body,
+  );
+}
+
 function StudyCategoryContent({
   category,
   openItemIndex,
@@ -325,18 +465,20 @@ function StudyCategoryContent({
   const nestedMenu = category.id === "key-phrases" || category.id === "key-truths";
   const flatSection = category.id === "what-is-happening" || category.id === "why-this-matters";
   const itemRefs = useRef<Record<number, HTMLElement | null>>({});
+  const nestedItemIcons = nestedMenu ? getNestedStudyItemIcons(category) : [];
 
   return (
     <div className="mt-3 space-y-3">
       {category.content.map((item, index) => {
         const [lead, ...rest] = item.split("\n");
         const displayLead = category.id === "key-phrases" ? lead.replace(/^["“”]+|["“”]+$/g, "") : lead;
+        const cleanDisplayLead = getNestedStudyItemHeading(category.id, displayLead);
         const paragraphs = rest.filter((paragraph) => paragraph.trim());
         const hasHeading = paragraphs.length > 0;
 
         if (nestedMenu && hasHeading) {
           const itemOpen = openItemIndex === index;
-          const nestedItemIcon = getNestedStudyItemIcon(category.id, displayLead);
+          const nestedItemIcon = nestedItemIcons[index] || getNestedStudyItemIcon(category.id, cleanDisplayLead);
           return (
             <section
               key={item}
@@ -363,7 +505,7 @@ function StudyCategoryContent({
                   {nestedItemIcon}
                 </span>
                 <span className="min-w-0 flex-1 text-xs font-black leading-5 text-[var(--bb-text-primary,#111827)] sm:text-sm">
-                  {displayLead}
+                  {cleanDisplayLead}
                 </span>
                 <svg
                   aria-hidden="true"
@@ -437,6 +579,42 @@ function StudyCategoryContent({
       })}
     </div>
   );
+}
+
+function getNestedStudyItemHeading(categoryId: string, heading: string) {
+  const withoutQuotes = categoryId === "key-phrases" ? heading.replace(/^["â€œâ€]+|["â€œâ€]+$/g, "") : heading;
+  return withoutQuotes.replace(/^(?:[\p{Extended_Pictographic}\uFE0F\u200D]+\s*)+/u, "").trim();
+}
+
+function getLeadingEmoji(text: string) {
+  const match = text.trim().match(/^([\p{Extended_Pictographic}](?:\uFE0F|\u200D[\p{Extended_Pictographic}]\uFE0F?)*)/u);
+  return match?.[1] || null;
+}
+
+function getNestedStudyItemIcons(category: BibleReaderStudyNoteCategory) {
+  const usedIcons = new Set<string>();
+  return category.content.map((item, index) => {
+    const [lead] = item.split("\n");
+    const heading = getNestedStudyItemHeading(category.id, lead);
+    const leadingEmoji = getLeadingEmoji(lead);
+    const preferredIcon = leadingEmoji || getNestedStudyItemIcon(category.id, heading);
+    const icon = usedIcons.has(preferredIcon)
+      ? getFallbackNestedStudyItemIcon(category.id, index, usedIcons)
+      : preferredIcon;
+    usedIcons.add(icon);
+    return icon;
+  });
+}
+
+function getFallbackNestedStudyItemIcon(categoryId: string, index: number, usedIcons: Set<string>) {
+  const phraseIcons = ["💬", "🧩", "🔎", "📌", "🌿", "🧠", "🕯️", "🧭", "✨", "📖", "🪨", "🌊", "🔥", "🌱", "🕊️"];
+  const truthIcons = ["🔑", "💡", "🧱", "🛡️", "🌱", "⚖️", "🙌", "🕊️", "✨", "📖", "❤️", "🧭", "🔥", "🌍", "⏳"];
+  const icons = categoryId === "key-phrases" ? phraseIcons : truthIcons;
+  for (let offset = 0; offset < icons.length; offset += 1) {
+    const icon = icons[(index + offset) % icons.length];
+    if (!usedIcons.has(icon)) return icon;
+  }
+  return categoryId === "key-phrases" ? "💬" : "🔑";
 }
 
 function getNestedStudyItemIcon(categoryId: string, heading: string) {
@@ -650,6 +828,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [picker, setPicker] = useState<ColorPickerState | null>(null);
   const [rangeColorPickerOpen, setRangeColorPickerOpen] = useState(false);
   const [noteEditor, setNoteEditor] = useState<HighlightNoteEditorState | null>(null);
+  const [noteViewer, setNoteViewer] = useState<HighlightNoteViewerState | null>(null);
   const [noteSaving, setNoteSaving] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
@@ -763,9 +942,13 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     event.stopPropagation();
 
     if (range.note_text) {
+      const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
       setPicker(null);
       setRangeColorPickerOpen(false);
-      setNoteEditor({ range, noteText: range.note_text });
+      setNoteViewer({
+        range,
+        anchor: { x: rect.left + rect.width / 2, y: rect.bottom + 8 },
+      });
       return;
     }
 
@@ -878,6 +1061,28 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
           .sort((a, b) => a.start_offset - b.start_offset),
       }));
       setNoteEditor(null);
+    }
+    setNoteSaving(false);
+  };
+
+  const handleEditViewedNote = () => {
+    if (!noteViewer) return;
+    setNoteEditor({ range: noteViewer.range, noteText: noteViewer.range.note_text || "" });
+    setNoteViewer(null);
+  };
+
+  const handleDeleteViewedNote = async () => {
+    if (!noteViewer) return;
+    setNoteSaving(true);
+    const savedRange = await updateHighlightRangeNote(noteViewer.range.id, null);
+    if (savedRange) {
+      setRangeMap((current) => ({
+        ...current,
+        [savedRange.verse]: (current[savedRange.verse] || [])
+          .map((range) => (range.id === savedRange.id ? savedRange : range))
+          .sort((a, b) => a.start_offset - b.start_offset),
+      }));
+      setNoteViewer(null);
     }
     setNoteSaving(false);
   };
@@ -1032,7 +1237,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
             key={range.id}
             className="rounded-[3px] px-0.5"
             style={{ backgroundColor: getColorCode(range.color, surface) }}
-            title={range.note_text ? "Click to view or edit this note" : "Click to add a note, change color, or remove this highlight"}
+            title={range.note_text ? "Click to view this note" : "Click to add a note, change color, or remove this highlight"}
             onClick={(event) => handleRangeClick(range, event)}
           >
             {visibleText.slice(start, end)}
@@ -1211,6 +1416,15 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
           setRangeColorPickerOpen(false);
           setPicker(null);
         }}
+      />
+      <HighlightNoteViewer
+        state={noteViewer}
+        deleting={noteSaving}
+        onEdit={handleEditViewedNote}
+        onDelete={() => {
+          void handleDeleteViewedNote();
+        }}
+        onClose={() => setNoteViewer(null)}
       />
       <HighlightNoteModal
         state={noteEditor}

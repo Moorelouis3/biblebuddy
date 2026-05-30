@@ -66,7 +66,6 @@ import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from ".
 import { buildPersistedFeatureTours, normalizeFeatureTours } from "../lib/featureTours";
 
 const EmbeddedSettingsPage = dynamic(() => import("../app/settings/page"), { ssr: false });
-const EmbeddedAnalyticsPage = dynamic(() => import("../app/admin/analytics/page"), { ssr: false });
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
@@ -358,6 +357,29 @@ type BuddiesDashboardPayload = {
     friendWindowDays?: number;
     generatedAt?: string;
   };
+};
+
+type DashboardGroupSummary = {
+  id: string;
+  name: string;
+  description: string | null;
+  member_count: number | null;
+  cover_emoji: string | null;
+  cover_color: string | null;
+  current_weekly_study: string | null;
+};
+
+type DashboardGroupPost = {
+  id: string;
+  group_id: string;
+  user_id: string;
+  display_name: string | null;
+  category: string | null;
+  content: string;
+  like_count: number | null;
+  parent_post_id: string | null;
+  is_pinned: boolean | null;
+  created_at: string;
 };
 
 type ShareRewardsReferral = {
@@ -2087,7 +2109,7 @@ export default function DashboardJourneyExperience({
   const [guestAccountLoading, setGuestAccountLoading] = useState(false);
   const [guestAccountMessage, setGuestAccountMessage] = useState<string | null>(null);
 
-  const dashboardPageKeys = ["home", "buddy", "bible", "bible_studies", "bible_topics", "share", "analytics", "settings"] as const;
+  const dashboardPageKeys = ["home", "buddy", "bible", "bible_studies", "bible_topics", "share", "group", "settings"] as const;
   type DashboardPageKey = (typeof dashboardPageKeys)[number];
   const safeActivePage = Math.max(0, Math.min(activePage, dashboardPageKeys.length - 1));
   const activePageKey = dashboardPageKeys[safeActivePage] ?? "home";
@@ -2098,6 +2120,18 @@ export default function DashboardJourneyExperience({
     share: exploreLinkByKey("share"),
   };
   const [liveSelectedBuddyId, setLiveSelectedBuddyId] = useState<BuddyAvatarId | null>(null);
+  const [dashboardGroup, setDashboardGroup] = useState<DashboardGroupSummary | null>(null);
+  const [dashboardGroupPosts, setDashboardGroupPosts] = useState<DashboardGroupPost[]>([]);
+  const [dashboardGroupCommentsByPost, setDashboardGroupCommentsByPost] = useState<Record<string, DashboardGroupPost[]>>({});
+  const [dashboardGroupOpenComments, setDashboardGroupOpenComments] = useState<Record<string, boolean>>({});
+  const [dashboardGroupCommentDrafts, setDashboardGroupCommentDrafts] = useState<Record<string, string>>({});
+  const [dashboardGroupPostDraft, setDashboardGroupPostDraft] = useState("");
+  const [dashboardGroupLoading, setDashboardGroupLoading] = useState(false);
+  const [dashboardGroupPosting, setDashboardGroupPosting] = useState(false);
+  const [dashboardGroupCommentsLoading, setDashboardGroupCommentsLoading] = useState<Record<string, boolean>>({});
+  const [dashboardGroupError, setDashboardGroupError] = useState<string | null>(null);
+  const [dashboardGroupMembershipStatus, setDashboardGroupMembershipStatus] = useState<string | null>(null);
+  const [dashboardGroupLoadedOnce, setDashboardGroupLoadedOnce] = useState(false);
 
   useEffect(() => {
     setDashboardGreeting(getDashboardGreeting());
@@ -2329,7 +2363,7 @@ export default function DashboardJourneyExperience({
     { key: "bible_studies", label: "Devotionals", icon: "\uD83C\uDF05", href: "/bible-studies" },
     { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
-    ...(isOwnerDashboard ? [{ key: "analytics" as DashboardPageKey, label: "Analytics", icon: "\u25A3", href: "#analytics" }] : []),
+    { key: "group", label: "Group", icon: "\uD83D\uDC65", href: "#group" },
     { key: "settings", label: "Settings", icon: "\u2699", href: "#settings" },
   ];
   const dashboardSecondaryNavItems: Array<{
@@ -2359,6 +2393,7 @@ export default function DashboardJourneyExperience({
   const homeTabActive = bibleYearDashboardActive || (!bibleYearSeriesActive && activePageKey === "home");
   const bibleTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "bible";
   const chatTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "buddy";
+  const groupTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "group";
   const isPaidUser = profile?.is_paid === true || membershipStatus === "pro";
 
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
@@ -3893,13 +3928,6 @@ export default function DashboardJourneyExperience({
     snapToPage(index);
   }
 
-  function openAnalyticsPage() {
-    setDashboardMenuOpen(false);
-    if (typeof window !== "undefined") {
-      window.location.href = "/admin/analytics";
-    }
-  }
-
   function scrollBibleYearStudyAreaIntoView() {
     window.setTimeout(() => {
       document
@@ -4348,6 +4376,191 @@ export default function DashboardJourneyExperience({
     clearBibleYearViews();
     setDashboardMenuOpen(false);
     snapToPage(settingsIndex);
+  }
+
+  function openGroupPage() {
+    const groupIndex = dashboardPageKeys.indexOf("group");
+    if (groupIndex < 0) return;
+    clearBibleYearViews();
+    setDashboardMenuOpen(false);
+    snapToPage(groupIndex);
+  }
+
+  useEffect(() => {
+    function handleShowGroupTab() {
+      if (typeof window !== "undefined") window.localStorage.removeItem("bb:dashboard-open-group");
+      openGroupPage();
+    }
+
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("view") === "group" || window.localStorage.getItem("bb:dashboard-open-group")) {
+        window.setTimeout(() => handleShowGroupTab(), 0);
+      }
+    }
+
+    window.addEventListener("bb:dashboard-show-group-tab", handleShowGroupTab);
+    return () => window.removeEventListener("bb:dashboard-show-group-tab", handleShowGroupTab);
+  }, []);
+
+  const loadDashboardGroup = useCallback(async (force = false) => {
+    if (!userId) {
+      setDashboardGroupError("Sign in to open the group.");
+      return;
+    }
+    if (dashboardGroupLoading || (dashboardGroupLoadedOnce && !force)) return;
+
+    setDashboardGroupLoading(true);
+    setDashboardGroupError(null);
+    try {
+      const { data: membershipRows, error: membershipError } = await supabase
+        .from("group_members")
+        .select("status, group_id, study_groups(id, name, description, member_count, cover_emoji, cover_color, current_weekly_study)")
+        .eq("user_id", userId)
+        .eq("status", "approved")
+        .limit(1);
+
+      if (membershipError) throw membershipError;
+
+      const membership = (membershipRows || [])[0] as any;
+      let group = (Array.isArray(membership?.study_groups) ? membership.study_groups[0] : membership?.study_groups) as DashboardGroupSummary | null;
+      let membershipStatus = membership?.status || null;
+
+      if (!group) {
+        const { data: groups, error: groupError } = await supabase
+          .from("study_groups")
+          .select("id, name, description, member_count, cover_emoji, cover_color, current_weekly_study")
+          .eq("status", "active")
+          .order("member_count", { ascending: false })
+          .limit(1);
+
+        if (groupError) throw groupError;
+        group = ((groups || [])[0] as DashboardGroupSummary | undefined) ?? null;
+        membershipStatus = null;
+      }
+
+      setDashboardGroup(group);
+      setDashboardGroupMembershipStatus(membershipStatus);
+
+      if (!group) {
+        setDashboardGroupPosts([]);
+        setDashboardGroupLoadedOnce(true);
+        return;
+      }
+
+      const { data: posts, error: postsError } = await supabase
+        .from("group_posts")
+        .select("id, group_id, user_id, display_name, category, content, like_count, parent_post_id, is_pinned, created_at")
+        .eq("group_id", group.id)
+        .is("parent_post_id", null)
+        .order("is_pinned", { ascending: false })
+        .order("created_at", { ascending: false })
+        .limit(20);
+
+      if (postsError) throw postsError;
+      setDashboardGroupPosts((posts || []) as DashboardGroupPost[]);
+      setDashboardGroupLoadedOnce(true);
+    } catch (error: any) {
+      setDashboardGroupError(error?.message || "Could not load the group right now.");
+    } finally {
+      setDashboardGroupLoading(false);
+    }
+  }, [dashboardGroupLoadedOnce, dashboardGroupLoading, userId]);
+
+  useEffect(() => {
+    if (activePageKey === "group") {
+      void loadDashboardGroup();
+    }
+  }, [activePageKey, loadDashboardGroup]);
+
+  async function loadDashboardGroupComments(postId: string, force = false) {
+    if (!dashboardGroup?.id) return;
+    if (dashboardGroupCommentsLoading[postId]) return;
+    if (!force && dashboardGroupCommentsByPost[postId]) return;
+
+    setDashboardGroupCommentsLoading((prev) => ({ ...prev, [postId]: true }));
+    try {
+      const { data, error } = await supabase
+        .from("group_posts")
+        .select("id, group_id, user_id, display_name, category, content, like_count, parent_post_id, is_pinned, created_at")
+        .eq("group_id", dashboardGroup.id)
+        .eq("parent_post_id", postId)
+        .order("created_at", { ascending: true })
+        .limit(30);
+
+      if (error) throw error;
+      setDashboardGroupCommentsByPost((prev) => ({ ...prev, [postId]: (data || []) as DashboardGroupPost[] }));
+    } catch (error: any) {
+      setDashboardGroupError(error?.message || "Could not load comments.");
+    } finally {
+      setDashboardGroupCommentsLoading((prev) => ({ ...prev, [postId]: false }));
+    }
+  }
+
+  function toggleDashboardGroupComments(postId: string) {
+    setDashboardGroupOpenComments((prev) => {
+      const nextOpen = !prev[postId];
+      if (nextOpen) void loadDashboardGroupComments(postId);
+      return { ...prev, [postId]: nextOpen };
+    });
+  }
+
+  async function submitDashboardGroupPost() {
+    const content = dashboardGroupPostDraft.trim();
+    if (!content || !dashboardGroup || !userId || dashboardGroupPosting) return;
+    if (dashboardGroupMembershipStatus !== "approved") {
+      setDashboardGroupError("You can read the group now, but posting requires approved group access.");
+      return;
+    }
+
+    setDashboardGroupPosting(true);
+    setDashboardGroupError(null);
+    try {
+      const { error } = await supabase.from("group_posts").insert({
+        group_id: dashboardGroup.id,
+        user_id: userId,
+        display_name: profile?.display_name || "Bible Buddy",
+        category: "general",
+        content,
+      });
+      if (error) throw error;
+      setDashboardGroupPostDraft("");
+      setDashboardGroupLoadedOnce(false);
+      await loadDashboardGroup(true);
+    } catch (error: any) {
+      setDashboardGroupError(error?.message || "Could not post to the group.");
+    } finally {
+      setDashboardGroupPosting(false);
+    }
+  }
+
+  async function submitDashboardGroupComment(postId: string) {
+    const content = (dashboardGroupCommentDrafts[postId] || "").trim();
+    if (!content || !dashboardGroup || !userId || dashboardGroupPosting) return;
+    if (dashboardGroupMembershipStatus !== "approved") {
+      setDashboardGroupError("You can read the group now, but commenting requires approved group access.");
+      return;
+    }
+
+    setDashboardGroupPosting(true);
+    setDashboardGroupError(null);
+    try {
+      const { error } = await supabase.from("group_posts").insert({
+        group_id: dashboardGroup.id,
+        user_id: userId,
+        display_name: profile?.display_name || "Bible Buddy",
+        category: "general",
+        content,
+        parent_post_id: postId,
+      });
+      if (error) throw error;
+      setDashboardGroupCommentDrafts((prev) => ({ ...prev, [postId]: "" }));
+      await loadDashboardGroupComments(postId, true);
+    } catch (error: any) {
+      setDashboardGroupError(error?.message || "Could not add your comment.");
+    } finally {
+      setDashboardGroupPosting(false);
+    }
   }
 
   useEffect(() => {
@@ -5099,11 +5312,171 @@ export default function DashboardJourneyExperience({
     </section>
   );
 
-  const renderEmbeddedAnalyticsPage = () => (
-    <section className="w-full px-1 pb-4">
-      <EmbeddedAnalyticsPage />
-    </section>
-  );
+  const renderEmbeddedGroupPage = () => {
+    const formatGroupTime = (value: string) => {
+      const createdAt = new Date(value).getTime();
+      const diffSeconds = Math.max(0, Math.floor((Date.now() - createdAt) / 1000));
+      if (diffSeconds < 60) return "just now";
+      if (diffSeconds < 3600) return `${Math.floor(diffSeconds / 60)}m ago`;
+      if (diffSeconds < 86400) return `${Math.floor(diffSeconds / 3600)}h ago`;
+      return new Date(value).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+    };
+
+    const canPostInGroup = dashboardGroupMembershipStatus === "approved";
+
+    return (
+      <section className="w-full px-1 pb-4">
+        <div className="mx-auto flex max-w-2xl flex-col gap-4">
+          <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
+            <div className="flex items-start gap-4">
+              <div
+                className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl text-2xl"
+                style={{ background: dashboardGroup?.cover_color || "var(--bb-accent-soft,#eaf5ff)" }}
+                aria-hidden="true"
+              >
+                {dashboardGroup?.cover_emoji || "👥"}
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Buddy Group</p>
+                <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                  {dashboardGroup?.name || "Community Group"}
+                </h2>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                  {dashboardGroup?.description || "Read what people are sharing, jump into prayer requests, and talk through Scripture together."}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2 text-xs font-black text-[var(--bb-text-secondary,#4b5563)]">
+                  <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1">{dashboardGroup?.member_count ?? 0} members</span>
+                  {dashboardGroup?.current_weekly_study ? (
+                    <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1">{dashboardGroup.current_weekly_study}</span>
+                  ) : null}
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => void loadDashboardGroup(true)}
+                className="rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-2 text-xs font-black text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-95"
+              >
+                Refresh
+              </button>
+            </div>
+          </div>
+
+          {dashboardGroupError ? (
+            <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-bold text-rose-700">
+              {dashboardGroupError}
+            </div>
+          ) : null}
+
+          <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+            <label className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-secondary,#4b5563)]" htmlFor="dashboard-group-post">
+              Share with the group
+            </label>
+            <textarea
+              id="dashboard-group-post"
+              value={dashboardGroupPostDraft}
+              onChange={(event) => setDashboardGroupPostDraft(event.target.value)}
+              disabled={!canPostInGroup || dashboardGroupPosting}
+              rows={4}
+              maxLength={900}
+              className="mt-3 w-full resize-none rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3 text-sm font-semibold leading-6 text-[var(--bb-text-primary,#111827)] outline-none transition focus:border-[var(--bb-accent,#2f7fe8)] disabled:cursor-not-allowed disabled:opacity-60"
+              placeholder={canPostInGroup ? "Post a thought, prayer request, verse, or what God showed you today..." : "You can read the group now. Posting opens when your group access is approved."}
+            />
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <p className="text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
+                Posts load only on this tab so the rest of Bible Buddy stays fast.
+              </p>
+              <button
+                type="button"
+                onClick={() => void submitDashboardGroupPost()}
+                disabled={!canPostInGroup || dashboardGroupPosting || !dashboardGroupPostDraft.trim()}
+                className="rounded-full bg-[var(--bb-accent,#2f7fe8)] px-5 py-2.5 text-sm font-black text-white shadow-sm transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {dashboardGroupPosting ? "Posting..." : "Post"}
+              </button>
+            </div>
+          </div>
+
+          {dashboardGroupLoading && !dashboardGroupPosts.length ? (
+            <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-6 text-center text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">
+              Loading group...
+            </div>
+          ) : dashboardGroupPosts.length ? (
+            <div className="space-y-3">
+              {dashboardGroupPosts.map((post) => {
+                const commentsOpen = dashboardGroupOpenComments[post.id] === true;
+                const comments = dashboardGroupCommentsByPost[post.id] || [];
+                return (
+                  <article key={post.id} className="rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{post.display_name || "Bible Buddy"}</p>
+                        <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                          {post.is_pinned ? "Pinned • " : ""}
+                          {formatGroupTime(post.created_at)}
+                        </p>
+                      </div>
+                      <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-xs font-black text-[var(--bb-text-secondary,#4b5563)]">
+                        {post.category || "general"}
+                      </span>
+                    </div>
+                    <p className="mt-3 whitespace-pre-wrap text-sm font-semibold leading-7 text-[var(--bb-text-primary,#111827)]">{post.content}</p>
+                    <div className="mt-4 flex items-center gap-3 text-xs font-black text-[var(--bb-text-secondary,#4b5563)]">
+                      <span>{post.like_count ?? 0} likes</span>
+                      <button type="button" onClick={() => toggleDashboardGroupComments(post.id)} className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1.5 text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-95">
+                        {commentsOpen ? "Hide comments" : "Comments"}
+                      </button>
+                    </div>
+
+                    {commentsOpen ? (
+                      <div className="mt-4 border-t border-[var(--bb-card-border,#dbe7f4)] pt-4">
+                        {dashboardGroupCommentsLoading[post.id] ? (
+                          <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">Loading comments...</p>
+                        ) : comments.length ? (
+                          <div className="space-y-3">
+                            {comments.map((comment) => (
+                              <div key={comment.id} className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3">
+                                <p className="text-xs font-black text-[var(--bb-text-primary,#111827)]">{comment.display_name || "Bible Buddy"}</p>
+                                <p className="mt-1 whitespace-pre-wrap text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{comment.content}</p>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">No comments yet.</p>
+                        )}
+
+                        <div className="mt-3 flex gap-2">
+                          <input
+                            value={dashboardGroupCommentDrafts[post.id] || ""}
+                            onChange={(event) => setDashboardGroupCommentDrafts((prev) => ({ ...prev, [post.id]: event.target.value }))}
+                            disabled={!canPostInGroup || dashboardGroupPosting}
+                            maxLength={500}
+                            className="min-w-0 flex-1 rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-2 text-sm font-semibold outline-none focus:border-[var(--bb-accent,#2f7fe8)] disabled:cursor-not-allowed disabled:opacity-60"
+                            placeholder={canPostInGroup ? "Write a comment..." : "Commenting requires approved group access"}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => void submitDashboardGroupComment(post.id)}
+                            disabled={!canPostInGroup || dashboardGroupPosting || !(dashboardGroupCommentDrafts[post.id] || "").trim()}
+                            className="rounded-full bg-[var(--bb-accent,#2f7fe8)] px-4 py-2 text-xs font-black text-white transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50"
+                          >
+                            Send
+                          </button>
+                        </div>
+                      </div>
+                    ) : null}
+                  </article>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-6 text-center text-sm font-black text-[var(--bb-text-secondary,#4b5563)]">
+              No group posts yet.
+            </div>
+          )}
+        </div>
+      </section>
+    );
+  };
 
   const renderEmbeddedBuddyPage = () => (
     <section className="w-full px-1 pb-4">
@@ -14431,7 +14804,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
 
         <div className={getSlideClass(6)}>
-          {shouldRenderSlide(6) && isOwnerDashboard ? renderEmbeddedAnalyticsPage() : null}
+          {shouldRenderSlide(6) ? renderEmbeddedGroupPage() : null}
         </div>
 
         <div className={getSlideClass(7)}>
@@ -14630,21 +15003,24 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="grid grid-cols-5 items-center gap-1.5">
             <button
               type="button"
-              onClick={openAnalyticsPage}
-              className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
-              aria-label="Open analytics"
-              data-dashboard-nav-key="analytics-tab"
+              onClick={openGroupPage}
+              className={`flex h-14 flex-col items-center justify-center rounded-[18px] text-[10px] font-black transition ${
+                groupTabActive
+                  ? "bg-[var(--bb-accent-soft,rgba(47,127,232,0.14))] text-[var(--bb-accent,#2f7fe8)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
+                  : "bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
+              }`}
+              aria-label="Open Group"
+              data-dashboard-nav-key="group-tab"
             >
-              <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
+              <span className={`grid h-7 w-7 place-items-center rounded-full ${groupTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 19V5" />
-                  <path d="M4 19h16" />
-                  <path d="M8 16v-5" />
-                  <path d="M12 16V8" />
-                  <path d="M16 16v-3" />
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+                  <circle cx="9.5" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </span>
-              <span>Analytics</span>
+              <span>Group</span>
             </button>
 
             <button
