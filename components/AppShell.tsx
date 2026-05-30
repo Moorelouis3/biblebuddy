@@ -2921,14 +2921,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     </Link>
 
                     <Link
-                      href="/dashboard?view=group"
-                      onClick={() => {
-                        setIsProfileMenuOpen(false);
-                        if (typeof window !== "undefined") {
-                          window.localStorage.setItem("bb:dashboard-open-group", "1");
-                          window.dispatchEvent(new Event("bb:dashboard-show-group-tab"));
-                        }
-                      }}
+                      href="/study-groups"
+                      onClick={() => setIsProfileMenuOpen(false)}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     >
                       Group

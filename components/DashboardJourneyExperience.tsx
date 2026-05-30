@@ -2412,7 +2412,7 @@ export default function DashboardJourneyExperience({
     { key: "bible_studies", label: "Devotionals", icon: "\uD83C\uDF05", href: "/bible-studies" },
     { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
-    { key: "group", label: "Group", icon: "\uD83D\uDC65", href: "#group" },
+    { key: "group", label: "Group", icon: "\uD83D\uDC65", href: "/study-groups" },
     { key: "settings", label: "Settings", icon: "\u2699", href: "#settings" },
   ];
   const dashboardSecondaryNavItems: Array<{
@@ -4428,11 +4428,10 @@ export default function DashboardJourneyExperience({
   }
 
   function openGroupPage() {
-    const groupIndex = dashboardPageKeys.indexOf("group");
-    if (groupIndex < 0) return;
-    clearBibleYearViews();
     setDashboardMenuOpen(false);
-    snapToPage(groupIndex);
+    if (typeof window !== "undefined") {
+      window.location.href = "/study-groups";
+    }
   }
 
   useEffect(() => {
@@ -5388,7 +5387,7 @@ export default function DashboardJourneyExperience({
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Buddy Group</p>
                 <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                  {dashboardGroup?.name || "Community Group"}
+                  {dashboardGroup?.name || "Bible Buddy Group"}
                 </h2>
                 <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
                   {dashboardGroup?.description || "Read what people are sharing, jump into prayer requests, and talk through Scripture together."}
@@ -15021,6 +15020,10 @@ Before we understand redemption, we need to understand what God made humanity fo
                       data-dashboard-nav-key={item.key}
                       href={item.href}
                       onClick={(event) => {
+                        if (item.key === "group") {
+                          setDashboardMenuOpen(false);
+                          return;
+                        }
                         event.preventDefault();
                         setDashboardMenuOpen(false);
                         handleDashboardNavClick(itemPageIndex);
@@ -15200,7 +15203,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           {[
             { label: "Home", href: "/dashboard", icon: "⌂", active: true },
             { label: "Bible", href: "/reading", icon: "📖" },
-            { label: "Community", href: "/dashboard", icon: "👥" },
+            { label: "Group", href: "/study-groups", icon: "👥" },
             { label: "TV", href: "/biblebuddy-tv", icon: "▶" },
             { label: "Games", href: "/bible-study-games", icon: "🎮" },
           ].map((item) => (

@@ -628,7 +628,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
             : `There are ${unreadGroups} new things happening in your Bible Study Group.`,
           recommendationLine: "The group is moving right now. Drop back in and see what people posted before you lose the thread of the conversation.",
           primaryButtonText: "Check Group Activity",
-          primaryButtonHref: `/dashboard/${memberGroupIds[0]}/chat`,
+          primaryButtonHref: `/study-groups/${memberGroupIds[0]}/chat`,
           level: 1,
           category: "group",
           cardTheme: "green",

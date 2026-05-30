@@ -1,0 +1,8067 @@
+﻿"use client";
+
+import dynamic from "next/dynamic";
+import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
+import { triggerPostSuccess } from "@/components/PostSuccessEffect";
+import { triggerToast } from "@/components/AppToast";
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import ReactMarkdown from "react-markdown";
+import { useEffect, useMemo, useState, useRef, useCallback, type CSSProperties, type MouseEvent } from "react";
+import { createPortal } from "react-dom";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { supabase } from "../../../../lib/supabaseClient";
+import { HOME_FEED_COVER_MARKER } from "@/lib/groupFeedCarouselScheduler";
+import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
+import { logActionToMasterActions } from "@/lib/actionRecorder";
+import { getSeriesTotalWeeks, getSeriesWeekLesson } from "@/lib/seriesContent";
+import { parseWeeklyTriviaQuestions } from "@/lib/groupWeeklyTrivia";
+import { parseWeeklyPollOptions, type WeeklyGroupPollRecord } from "@/lib/groupWeeklyPoll";
+import type { WeeklyGroupQuestionRecord } from "@/lib/groupWeeklyQuestion";
+import { syncCurrentStreakToProfileStats } from "@/lib/profileStats";
+import UserBadge from "@/components/UserBadge";
+import { LouisAvatar } from "@/components/LouisAvatar";
+import StreakFlameBadge from "@/components/StreakFlameBadge";
+import LevelBadge from "@/components/LevelBadge";
+import MentionText from "@/components/MentionText";
+import BibleStudiesSeriesList from "@/components/BibleStudiesSeriesList";
+import { enrichBibleVerses } from "@/lib/bibleHighlighting";
+import { BIBLE_STUDY_SERIES_CATALOG, getBibleStudySeriesCover } from "@/lib/bibleStudiesCatalog";
+import { ACTION_TYPE } from "@/lib/actionTypes";
+import { getPremiumSkin, normalizePremiumSkinId, type PremiumSkinId } from "@/lib/premiumSkins";
+import { ensureBibleEntityLearned } from "@/lib/bibleEntityProgress";
+import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "@/lib/bibleNotes";
+import { resolveBibleReference } from "@/lib/bibleTermResolver";
+import { consumeCreditAction } from "@/lib/creditClient";
+import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
+import { isSeriesWeekNotesActionEvent, parseSeriesWeekNotesWeekNumber } from "@/lib/seriesWeekNotesTracking";
+import { hasLazySeriesNotes } from "@/lib/seriesNotes";
+import {
+  extractMentionedItemsFromText,
+  linkMentionItemsInHtml,
+  loadGroupPostMentions,
+  type MentionCatalogItem,
+} from "@/lib/groupPostMentions";
+
+const WeekLessonPage = dynamic(() => import("../series/week/[weekNum]/page"), { ssr: false });
+const GroupWeeklyPollCard = dynamic(() => import("@/components/GroupWeeklyPollCard"), { ssr: false });
+const GroupWeeklyTriviaCard = dynamic(() => import("@/components/GroupWeeklyTriviaCard"), { ssr: false });
+const GroupWeeklyQuestionCard = dynamic(() => import("@/components/GroupWeeklyQuestionCard"), { ssr: false });
+const UpgradeRequiredModal = dynamic(() => import("@/components/UpgradeRequiredModal"), { ssr: false });
+const CreditLimitModal = dynamic(() => import("@/components/CreditLimitModal"), { ssr: false });
+const PostMentionSuggestions = dynamic(() => import("@/components/PostMentionSuggestions"), { ssr: false });
+const TextareaMentionInput = dynamic(() => import("@/components/TextareaMentionInput"), { ssr: false });
+
+// â”€â”€ Interfaces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+interface StudyGroup {
+  id: string;
+  name: string;
+  leader_user_id: string | null;
+  leader_name?: string | null;
+  description?: string | null;
+  member_count?: number;
+  current_weekly_study?: string | null;
+  cover_color: string | null;
+  cover_emoji: string | null;
+}
+
+interface Post {
+  id: string;
+  user_id: string;
+  display_name: string | null;
+  title?: string | null;
+  category: string;
+  content: string;
+  like_count: number;
+  comment_count?: number;
+  is_pinned: boolean;
+  created_at: string;
+  parent_post_id?: string | null;
+  role?: string;
+  liked?: boolean;
+  profile_image_url?: string | null;
+  media_url?: string | null;
+  link_url?: string | null;
+  member_badge?: string | null;
+  is_paid?: boolean;
+  current_streak?: number | null;
+  selected_streak_flame?: string | null;
+  current_level?: number | null;
+  active_premium_skin?: PremiumSkinId | string | null;
+}
+
+interface GroupFeedComment {
+  id: string;
+  user_id: string;
+  display_name: string | null;
+  category: string;
+  content: string;
+  like_count: number;
+  created_at: string;
+  parent_post_id: string | null;
+  liked?: boolean;
+  profile_image_url?: string | null;
+  role?: string;
+  member_badge?: string | null;
+  is_paid?: boolean;
+  current_streak?: number | null;
+  selected_streak_flame?: string | null;
+  current_level?: number | null;
+  active_premium_skin?: PremiumSkinId | string | null;
+}
+
+interface Member {
+  user_id: string;
+  display_name: string;
+  role: string;
+  profile_image_url: string | null;
+  member_badge?: string | null;
+  is_paid?: boolean;
+  current_streak?: number | null;
+  selected_streak_flame?: string | null;
+  current_level?: number | null;
+  active_premium_skin?: PremiumSkinId | string | null;
+}
+
+interface TopBuddy {
+  rank: number;
+  userId: string;
+  displayName: string;
+  profileImageUrl: string | null;
+  memberBadge: string | null;
+  isPaid: boolean;
+  currentStreak?: number | null;
+  selectedStreakFlame?: string | null;
+  currentLevel?: number | null;
+  activePremiumSkin?: PremiumSkinId | string | null;
+  posts: number;
+  comments: number;
+  likes: number;
+  appXp?: number;
+  actions?: number;
+  scoreBreakdown?: {
+    bibleTasks?: number;
+    community?: number;
+    xpTieBreaker?: number;
+  };
+  score: number;
+}
+
+const TOP_BUDDIES_BOARD_VERSION = "score-v3-2026-05-15";
+
+interface TopBuddiesEngagement {
+  totalClicks: number;
+  uniqueClickers: number;
+  clickers?: Array<{
+    userId: string;
+    displayName: string;
+    username: string | null;
+    profileImageUrl: string | null;
+    memberBadge: string | null;
+    isPaid: boolean;
+    currentStreak?: number | null;
+    selectedStreakFlame?: string | null;
+    currentLevel?: number | null;
+    activePremiumSkin?: PremiumSkinId | string | null;
+    openedAt: string | null;
+  }>;
+}
+
+function getWeeklyBoardRangeLabel() {
+  return "Check out the top Bible Buddies";
+}
+
+function getFriendlyPostErrorMessage(error: unknown, fallback: string) {
+  const rawMessage =
+    error instanceof Error && error.message
+      ? error.message
+      : error && typeof error === "object" && "message" in error && typeof (error as { message?: unknown }).message === "string"
+        ? (error as { message: string }).message
+        : null;
+
+  if (rawMessage?.toLowerCase().includes("statement timeout")) {
+    return "Posting is taking longer than usual right now. Please try again in a moment.";
+  }
+
+  return rawMessage || fallback;
+}
+
+interface WeeklyGroupTriviaFeedSet {
+  id: string;
+  post_id: string;
+  group_id: string;
+  week_key: string;
+  subject_key: string;
+  subject_title: string;
+  intro: string | null;
+  questions: ReturnType<typeof parseWeeklyTriviaQuestions>;
+  created_at: string;
+}
+
+interface WeeklyGroupQuestionFeedSet extends WeeklyGroupQuestionRecord {}
+
+interface WeeklyGroupPollFeedSet extends WeeklyGroupPollRecord {
+  vote_counts: Record<string, number>;
+  total_votes: number;
+  current_user_vote: string | null;
+}
+
+interface ArticleLikeUser {
+  user_id: string;
+  display_name: string;
+  profile_image_url: string | null;
+  member_badge?: string | null;
+  is_paid?: boolean;
+  current_streak?: number | null;
+  selected_streak_flame?: string | null;
+  current_level?: number | null;
+  active_premium_skin?: PremiumSkinId | string | null;
+}
+
+interface DevotionalPreview {
+  id: string;
+  title: string;
+  description: string | null;
+}
+
+interface HubItemStats {
+  likeCount: number;
+  commentCount: number;
+  liked: boolean;
+  likers: ArticleLikeUser[];
+}
+
+interface Series {
+  id: string;
+  title: string;
+  description: string | null;
+  total_weeks: number;
+  current_week: number;
+  is_current: boolean;
+  created_at: string;
+}
+
+function buildSeriesPreviewRecord(title: string): Series {
+  return {
+    id: `preview-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    title,
+    description: null,
+    total_weeks: getSeriesTotalWeeks(title),
+    current_week: 1,
+    is_current: false,
+    created_at: new Date().toISOString(),
+  };
+}
+
+interface CurrentSeriesPreview {
+  id: string;
+  title: string;
+  description: string | null;
+  total_weeks: number;
+  current_week: number;
+}
+
+type SeriesPreviewSelection = {
+  preview: CurrentSeriesPreview | null;
+  startAt: string | null;
+};
+
+
+interface SeriesPost {
+  id: string;
+  series_id: string;
+  week_number: number;
+  title: string;
+  content: string;
+  is_published: boolean;
+  like_count: number;
+  comment_count: number;
+  created_at: string;
+  published_at: string | null;
+  liked?: boolean;
+}
+
+interface SeriesComment {
+  id: string;
+  user_id: string;
+  display_name: string;
+  content: string;
+  parent_comment_id: string | null;
+  like_count: number;
+  created_at: string;
+  liked?: boolean;
+  profile_image_url?: string | null;
+  role?: string;
+  member_badge?: string | null;
+  is_paid?: boolean;
+  current_streak?: number | null;
+  selected_streak_flame?: string | null;
+  current_level?: number | null;
+  active_premium_skin?: PremiumSkinId | string | null;
+}
+
+interface AnalyticsUser {
+  user_id: string;
+  username: string;
+  avatar_url?: string | null;
+}
+
+interface TriviaScore extends AnalyticsUser {
+  score: number;
+  total: number;
+}
+
+interface WeekAnalytics {
+  starters: number;
+  readers: AnalyticsUser[];
+  noteReaders: AnalyticsUser[];
+  triviaScores: TriviaScore[];
+  reflectors: AnalyticsUser[];
+}
+
+function isJosephSeriesTitle(title: string | null | undefined) {
+  return (title || "").trim().toLowerCase() === "the testing of joseph";
+}
+
+function getSeriesWeekDisplayLabel(seriesTitle: string | null | undefined, weekNum: number, readingReference?: string | null) {
+  if (isJosephSeriesTitle(seriesTitle)) {
+    return readingReference?.trim() || `Genesis ${36 + weekNum}`;
+  }
+  return `Week ${weekNum}`;
+}
+
+function getWeekUnlockDate(startDate: string, weekNum: number): string {
+  const d = new Date(startDate);
+  d.setDate(d.getDate() + (weekNum - 1) * 7);
+  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+}
+
+function resolveSeriesStart(schedule: { start_at?: string | null; start_date?: string | null } | null | undefined): string | null {
+  if (!schedule) return null;
+  if (schedule.start_at) return schedule.start_at;
+  if (schedule.start_date) return `${schedule.start_date}T00:00:00`;
+  return null;
+}
+
+function getNextSaturdayStartAt(nowTs: number) {
+  const now = new Date(nowTs);
+  const next = new Date(now);
+  const daysUntilSaturday = (6 - now.getDay() + 7) % 7 || 7;
+  next.setDate(now.getDate() + daysUntilSaturday);
+  next.setHours(9, 0, 0, 0);
+  return next.toISOString();
+}
+
+function normalizeSeriesTitle(title: string | null | undefined) {
+  return (title || "").trim().toLowerCase();
+}
+
+function buildCurrentSeriesPreview(series: Pick<Series, "id" | "title" | "description" | "current_week"> | null): CurrentSeriesPreview | null {
+  if (!series) return null;
+
+  return {
+    id: series.id,
+    title: series.title,
+    description: series.description,
+    total_weeks: getSeriesTotalWeeks(series.title),
+    current_week: series.current_week,
+  };
+}
+
+function getSeriesBannerMeta(title: string | null | undefined) {
+  const normalizedTitle = normalizeSeriesTitle(title);
+
+  if (normalizedTitle === "the testing of joseph") {
+    return {
+      src: "/josephbanner.png",
+      alt: "The Testing of Joseph study banner",
+      bg: "#dcefdc",
+      objectPosition: "center 30%",
+    };
+  }
+
+  if (normalizedTitle === "the temptation of jesus") {
+    return {
+      src: "/TheTemptingofjesusstudy.png",
+      alt: "The Temptation of Jesus study banner",
+      bg: "#ead4c0",
+      objectPosition: "center 42%",
+    };
+  }
+
+  return null;
+}
+
+function getSeriesPromoDescription(title: string | null | undefined, fallback?: string | null) {
+  const normalizedTitle = normalizeSeriesTitle(title);
+
+  if (normalizedTitle === "the testing of joseph") {
+    return "A 14 week Bible study through Genesis 37 to 50 on betrayal, waiting, testing, forgiveness, and how God keeps working through Joseph's whole story.";
+  }
+
+  if (normalizedTitle === "the temptation of jesus") {
+    return "A 5 week Bible study through Jesus in the wilderness, breaking down temptation, obedience, and spiritual endurance week by week.";
+  }
+
+  return fallback || "A guided Bible Buddy study through Scripture with notes, trivia, reflection, and group discussion.";
+}
+
+function selectFeaturedSeriesPreview(
+  rows: Series[],
+  scheduleMap: Map<string, string | null>,
+  nowTs: number,
+): SeriesPreviewSelection {
+  const currentSeries = rows.find((series) => series.is_current) ?? rows[0] ?? null;
+  const upcomingJoseph = rows.find((series) => {
+    if (normalizeSeriesTitle(series.title) !== "the testing of joseph") return false;
+    const startAt = scheduleMap.get(series.id);
+    return Boolean(startAt) && new Date(startAt as string).getTime() > nowTs;
+  }) ?? null;
+
+  const featuredSeries = upcomingJoseph ?? currentSeries;
+
+  return {
+    preview: buildCurrentSeriesPreview(featuredSeries),
+    startAt: featuredSeries ? (scheduleMap.get(featuredSeries.id) ?? null) : null,
+  };
+}
+
+function formatDateTimeLabel(dateStr: string): string {
+  return new Date(dateStr).toLocaleString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+function toDateTimeLocalValue(dateStr: string): string {
+  const date = new Date(dateStr);
+  const offset = date.getTimezoneOffset();
+  const local = new Date(date.getTime() - offset * 60000);
+  return local.toISOString().slice(0, 16);
+}
+
+function urlBase64ToUint8Array(base64String: string) {
+  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
+  const rawData = window.atob(base64);
+  return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
+}
+
+function getWeekLockState(
+  startDate: string | null,
+  weekNum: number,
+  isLeader: boolean,
+  previousWeekComplete: boolean
+): { unlocked: boolean; lockedMessage: string } {
+  if (isLeader) return { unlocked: true, lockedMessage: "" };
+  if (!startDate) return { unlocked: false, lockedMessage: "Start date not set yet" };
+
+  const unlockAt = new Date(startDate);
+  unlockAt.setDate(unlockAt.getDate() + (weekNum - 1) * 7);
+  if (new Date() < unlockAt) {
+    return { unlocked: false, lockedMessage: `Unlocks ${getWeekUnlockDate(startDate, weekNum)}` };
+  }
+
+  if (weekNum > 1 && !previousWeekComplete) {
+    return { unlocked: false, lockedMessage: `Finish Week ${weekNum - 1} first` };
+  }
+
+  return { unlocked: true, lockedMessage: "" };
+}
+
+function getWeekUnlockTimestamp(startDate: string, weekNum: number): number {
+  const d = new Date(startDate);
+  d.setDate(d.getDate() + (weekNum - 1) * 7);
+  return d.getTime();
+}
+
+function formatCountdown(targetTs: number, nowTs: number): string {
+  const diff = Math.max(0, targetTs - nowTs);
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (days > 0) return `${days}d ${hours}h ${minutes}m`;
+  if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
+  return `${minutes}m ${seconds}s`;
+}
+
+function normalizeHubCategoryName(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function getCurrentSeriesCardState(
+  startAt: string | null,
+  seriesTitle: string,
+  totalWeeks: number,
+  nowTs: number
+): { headline: string; detail: string; cta: string } {
+  if (!startAt) {
+    return {
+      headline: "Bible study schedule coming soon",
+      detail: "The leader has not set the first release date yet.",
+      cta: "Open Study",
+    };
+  }
+
+  const startTs = new Date(startAt).getTime();
+  if (nowTs < startTs) {
+    return {
+      headline: `Study starts in ${formatCountdown(startTs, nowTs)}`,
+      detail: formatDateTimeLabel(startAt),
+      cta: "Open Study",
+    };
+  }
+
+  const weeksSinceStart = Math.floor((nowTs - startTs) / (7 * 24 * 60 * 60 * 1000));
+  const liveWeek = Math.min(totalWeeks, weeksSinceStart + 1);
+  if (liveWeek < totalWeeks) {
+    return {
+      headline: "",
+      detail: `Click here to complete Week ${liveWeek}.`,
+      cta: "Open Week Lessons",
+    };
+  }
+
+  return {
+    headline: "",
+    detail: `Click here to complete Week ${liveWeek}.`,
+    cta: "Open Week Lessons",
+  };
+}
+
+
+// â”€â”€ Video URL parsing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+type VideoPlatform = "youtube" | "youtube_short" | "tiktok" | "instagram" | "unknown";
+function parseVideoEmbed(url: string): { platform: VideoPlatform; embedUrl: string | null; portrait: boolean } {
+  const ytWatch = url.match(/youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/);
+  if (ytWatch) return { platform: "youtube", embedUrl: `https://www.youtube.com/embed/${ytWatch[1]}?rel=0`, portrait: false };
+  const ytBe = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+  if (ytBe) return { platform: "youtube", embedUrl: `https://www.youtube.com/embed/${ytBe[1]}?rel=0`, portrait: false };
+  const ytShort = url.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/);
+  if (ytShort) return { platform: "youtube_short", embedUrl: `https://www.youtube.com/embed/${ytShort[1]}?rel=0`, portrait: true };
+  const igReel = url.match(/instagram\.com\/(?:reel|p)\/([A-Za-z0-9_-]+)/);
+  if (igReel) return { platform: "instagram", embedUrl: `https://www.instagram.com/reel/${igReel[1]}/embed/`, portrait: true };
+  const ttVideo = url.match(/tiktok\.com\/@[^/?]+\/video\/(\d+)/);
+  if (ttVideo) return { platform: "tiktok", embedUrl: `https://www.tiktok.com/embed/v2/${ttVideo[1]}`, portrait: true };
+  if (url.includes("tiktok.com")) return { platform: "tiktok", embedUrl: null, portrait: true };
+  return { platform: "unknown", embedUrl: null, portrait: false };
+}
+const VIDEO_META: Record<VideoPlatform, { icon: string; label: string }> = {
+  youtube:       { icon: "??", label: "YouTube" },
+  youtube_short: { icon: "??", label: "YouTube Shorts" },
+  tiktok:        { icon: "??", label: "TikTok" },
+  instagram:     { icon: "??", label: "Instagram Reel" },
+  unknown:       { icon: "??", label: "Video" },
+};
+
+function isUploadedVideo(url: string): boolean {
+  const lower = url.toLowerCase().split("?")[0];
+  return lower.endsWith(".mp4") || lower.endsWith(".webm") || lower.endsWith(".mov");
+}
+
+// â”€â”€ Hub types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+interface HubCategory {
+  id: string;
+  name: string;
+  emoji: string;
+  color: string;
+  display_order: number;
+}
+
+// â”€â”€ Tab config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+type TabKey = "home" | "general" | "bible_studies" | "updates" | "prayer" | "qa" | "members";
+
+const TABS: { key: TabKey; label: string }[] = [
+  { key: "home",          label: "?? Home" },
+  { key: "general",       label: "?? General" },
+  { key: "bible_studies", label: "?? Bible Studies" },
+  { key: "updates",       label: "?? Updates" },
+  { key: "prayer",        label: "?? Prayer" },
+  { key: "qa",            label: "? Q&A" },
+  { key: "members",       label: "?? Buddies" },
+];
+
+function getGroupPostCategory(activeTab: string): string {
+  return activeTab === "home" ? "general" : activeTab;
+}
+
+const HOME_FEED_CATEGORIES = [
+  "general",
+  "weekly_trivia",
+  "weekly_poll",
+  "weekly_question",
+  "update_monday",
+  "who_was_this_friday",
+  "bible_study_saturday",
+  "prayer_request_sunday",
+] as const;
+
+const MANAGED_HOME_FEED_CATEGORIES = new Set<string>([
+  "weekly_trivia",
+  "weekly_poll",
+  "weekly_question",
+  "update_monday",
+  "who_was_this_friday",
+  "bible_study_saturday",
+  "prayer_request_sunday",
+]);
+
+function isScrambledScoreShare(post: Pick<Post, "link_url" | "title">) {
+  return Boolean(parseScrambledSharePath(post.link_url) && parseScrambledShareScore(post.title));
+}
+
+function isScrambledPromoPost(post: Pick<Post, "link_url" | "title" | "content">) {
+  if ((post.link_url || "").trim().toLowerCase() !== "/bible-study-games/scrambled") return false;
+  const promoText = `${post.title || ""} ${stripHtml(post.content || "")}`.toLowerCase();
+  return promoText.includes("scrambled");
+}
+
+function parseBibleBuddyTvSharePath(linkUrl: string | null | undefined) {
+  if (!linkUrl) return null;
+
+  try {
+    const parsed = new URL(linkUrl, "https://biblebuddy.local");
+    const match = parsed.pathname.match(/^\/biblebuddy-tv\/shows\/([^/?#]+)/i);
+    if (!match) return null;
+
+    return {
+      slug: decodeURIComponent(match[1]),
+      episodeId: parsed.searchParams.get("episode"),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function isBibleBuddyTvSharePost(post: Pick<Post, "link_url" | "title">) {
+  return Boolean(parseBibleBuddyTvSharePath(post.link_url) && (post.title || "").toLowerCase().includes("??"));
+}
+
+function parseScrambledSharePath(linkUrl: string | null | undefined) {
+  if (!linkUrl) return null;
+  const match = linkUrl.match(/\/bible-study-games\/scrambled\/([^/]+)\/(\d+)/i);
+  if (!match) return null;
+
+  const bookSlug = match[1];
+  const chapter = Number(match[2]);
+  if (!bookSlug || Number.isNaN(chapter)) return null;
+
+  const bookName = bookSlug
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+
+  return {
+    bookSlug,
+    bookName,
+    chapter,
+    chapterLabel: `${bookName}:${chapter}`,
+  };
+}
+
+function parseScrambledShareScore(title: string | null | undefined) {
+  if (!title) return null;
+  const match = title.match(/unscrambled\s+(\d+)\/(\d+)/i);
+  if (!match) return null;
+
+  const score = Number(match[1]);
+  const total = Number(match[2]);
+  if (Number.isNaN(score) || Number.isNaN(total)) return null;
+
+  return { score, total };
+}
+
+function stripHtml(html: string): string {
+  return html
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;|&#160;/gi, " ")
+    .replace(/\u00a0/g, " ")
+    .trim();
+}
+
+async function generateAutoReplyDraft(
+  groupId: string,
+  originalPostTitle: string | null | undefined,
+  originalPostContent: string,
+  targetCommentContent: string,
+  targetDisplayName: string | null | undefined,
+) {
+  const { data: sessionData } = await supabase.auth.getSession();
+  const accessToken = sessionData.session?.access_token;
+
+  if (!accessToken) {
+    throw new Error("Could not verify your session.");
+  }
+
+  const response = await fetch(`/api/groups/${groupId}/auto-reply`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      originalPostTitle: originalPostTitle || "",
+      originalPostContent,
+      targetCommentContent,
+      targetDisplayName: targetDisplayName || "Buddy",
+    }),
+  });
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(payload.error || "Could not generate a reply draft.");
+  }
+
+  const reply = typeof payload.reply === "string" ? payload.reply.trim() : "";
+  if (!reply) {
+    throw new Error("Could not generate a reply draft.");
+  }
+
+  return reply;
+}
+
+function getScrambledPromoSnippet(content: string | null | undefined) {
+  const text = stripHtml(content || "").replace(/\s+/g, " ").trim();
+  if (!text) {
+    return "Try the new Bible-based word game and see how many chapter words you can unscramble.";
+  }
+
+  const match = text.match(/.+?[.!?](?:\s|$)/);
+  return (match?.[0] || text).trim();
+}
+
+function getPostPreviewText(html: string): string {
+  const previewLines = stripHtml(html)
+    .split("\n")
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .filter(Boolean)
+    .slice(0, 4);
+
+  return previewLines.join("\n");
+}
+
+function isHomeFeedCoverPost(post: Pick<Post, "media_url" | "content">): boolean {
+  return Boolean(post.media_url && post.content?.includes(HOME_FEED_COVER_MARKER));
+}
+
+function getRenderablePostContent(html: string): string {
+  return linkBibleReferencesInHtml(html.replace(HOME_FEED_COVER_MARKER, "").trim());
+}
+
+function escapeHtmlAttribute(value: string) {
+  return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+}
+
+function linkBibleReferencesInHtml(html: string) {
+  return html.replace(
+    /\b((?:[1-3]\s+)?[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(\d+):(\d+)(?:-(\d+))?\b/g,
+    (match) =>
+      `<button type="button" class="scripture-ref-link inline font-semibold text-[#8d5d38] underline underline-offset-2" data-scripture-ref="${escapeHtmlAttribute(match)}">${match}</button>`,
+  );
+}
+
+function parseBibleReference(reference: string) {
+  const match = reference.match(/^((?:[1-3]\s+)?[A-Za-z]+(?:\s+[A-Za-z]+)*)\s+(\d+):?/);
+  if (!match) return null;
+
+  const book = match[1].trim();
+  const chapter = Number(match[2]);
+  if (!book || Number.isNaN(chapter)) return null;
+
+  return { book, chapter };
+}
+
+function normalizePersonMarkdown(markdown: string) {
+  return markdown
+    .replace(/^\s*[-â€¢*]\s+/gm, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+function normalizePlaceMarkdown(markdown: string) {
+  return markdown
+    .replace(/^\s*[-â€¢*]\s+/gm, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+function normalizeKeywordMarkdown(markdown: string) {
+  return markdown
+    .replace(/^\s*[-â€¢*]\s+/gm, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+function GroupCommentSection({
+  groupId,
+  post,
+  userId,
+  displayName,
+  userProfileImage,
+  currentUserRole,
+  currentUserBadge,
+  currentUserSkin,
+  canAutoReply = false,
+  onCountChange,
+  targetCommentId,
+  mentionItems = [],
+}: {
+  groupId: string;
+  post: Post;
+  userId: string;
+  displayName: string;
+  userProfileImage: string | null;
+  currentUserRole: string | null;
+  currentUserBadge: string | null;
+  currentUserSkin?: PremiumSkinId | string | null;
+  canAutoReply?: boolean;
+  onCountChange: (delta: number) => void;
+  targetCommentId?: string | null;
+  mentionItems?: MentionCatalogItem[];
+}) {
+  const [comments, setComments] = useState<GroupFeedComment[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [newComment, setNewComment] = useState("");
+  const [replyingTo, setReplyingTo] = useState<string | null>(null);
+  const [replyText, setReplyText] = useState("");
+  const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
+  const [likeAnimatingIds, setLikeAnimatingIds] = useState<Set<string>>(new Set());
+  const [deletingCommentId, setDeletingCommentId] = useState<string | null>(null);
+  const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
+  const [editingCommentText, setEditingCommentText] = useState("");
+  const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
+  const [showCommentLikesFor, setShowCommentLikesFor] = useState<GroupFeedComment | null>(null);
+  const [commentLikers, setCommentLikers] = useState<ArticleLikeUser[]>([]);
+  const [loadingCommentLikers, setLoadingCommentLikers] = useState(false);
+  const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
+  const [autoCommentLoading, setAutoCommentLoading] = useState(false);
+  const [commentPendingDelete, setCommentPendingDelete] = useState<GroupFeedComment | null>(null);
+  const canUsePortal = typeof document !== "undefined";
+
+  async function loadComments() {
+    setLoading(true);
+    const { data: topLevelRows } = await supabase
+      .from("group_posts")
+      .select("id, user_id, display_name, category, content, like_count, created_at, parent_post_id")
+      .eq("group_id", groupId)
+      .eq("parent_post_id", post.id)
+      .order("created_at", { ascending: true });
+
+    const topLevel = topLevelRows || [];
+
+    // Fetch all descendants by walking levels until no new rows are found
+    let allRows: GroupFeedComment[] = [...topLevel] as GroupFeedComment[];
+    let parentIds = topLevel.map((row) => row.id);
+    while (parentIds.length > 0) {
+      const { data } = await supabase
+        .from("group_posts")
+        .select("id, user_id, display_name, category, content, like_count, created_at, parent_post_id")
+        .in("parent_post_id", parentIds)
+        .order("created_at", { ascending: true });
+      const newRows = (data || []) as GroupFeedComment[];
+      if (newRows.length === 0) break;
+      allRows = [...allRows, ...newRows];
+      parentIds = newRows.map((row) => row.id);
+    }
+    if (allRows.length === 0) {
+      setComments([]);
+      setLoading(false);
+      return;
+    }
+
+    const userIds = [...new Set(allRows.map((row) => row.user_id))];
+    const [{ data: profiles }, { data: likes }, { data: memberships }] = await Promise.all([
+      supabase
+        .from("profile_stats")
+        .select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin")
+        .in("user_id", userIds),
+      supabase
+        .from("group_post_likes")
+        .select("post_id, user_id")
+        .in("post_id", allRows.map((row) => row.id)),
+      supabase
+        .from("group_members")
+        .select("user_id, role")
+        .eq("group_id", groupId)
+        .in("user_id", userIds),
+    ]);
+
+    const imageMap: Record<string, string | null> = {};
+    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null; active_premium_skin: PremiumSkinId }> = {};
+    const roleMap: Record<string, string> = {};
+    (profiles || []).forEach((profile: any) => {
+      imageMap[profile.user_id] = profile.profile_image_url ?? null;
+      badgeMap[profile.user_id] = {
+        is_paid: !!profile.is_paid,
+        member_badge: profile.member_badge ?? null,
+        current_streak: profile.current_streak ?? null,
+        selected_streak_flame: profile.selected_streak_flame ?? null,
+        current_level: profile.current_level ?? null,
+        active_premium_skin: normalizePremiumSkinId(profile.active_premium_skin),
+      };
+    });
+    (memberships || []).forEach((membership) => {
+      roleMap[membership.user_id] = membership.role;
+    });
+    const likedSet = new Set(
+      (likes || [])
+        .filter((like) => like.user_id === userId)
+        .map((like) => like.post_id)
+    );
+    const likeCountMap: Record<string, number> = {};
+    (likes || []).forEach((like) => {
+      likeCountMap[like.post_id] = (likeCountMap[like.post_id] || 0) + 1;
+    });
+
+    setComments(
+      allRows.map((row) => ({
+        ...row,
+        like_count: likeCountMap[row.id] || 0,
+        liked: likedSet.has(row.id),
+        profile_image_url: imageMap[row.user_id] ?? null,
+        role: roleMap[row.user_id] || "member",
+        is_paid: badgeMap[row.user_id]?.is_paid ?? false,
+        member_badge: badgeMap[row.user_id]?.member_badge ?? null,
+        current_streak: badgeMap[row.user_id]?.current_streak ?? null,
+        selected_streak_flame: badgeMap[row.user_id]?.selected_streak_flame ?? null,
+        current_level: badgeMap[row.user_id]?.current_level ?? null,
+        active_premium_skin: badgeMap[row.user_id]?.active_premium_skin ?? "none",
+      }))
+    );
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    void loadComments();
+  }, [groupId, post.id, userId]);
+
+  useEffect(() => {
+    if (!targetCommentId || loading) return;
+    const timer = window.setTimeout(() => {
+      const target = document.getElementById(`comment-${targetCommentId}`);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 150);
+    return () => window.clearTimeout(timer);
+  }, [targetCommentId, loading, comments.length]);
+
+  async function toggleCommentLike(comment: GroupFeedComment) {
+    if (likeLoading.has(comment.id)) return;
+    setLikeLoading((prev) => new Set(prev).add(comment.id));
+    if (comment.liked) {
+      await supabase.from("group_post_likes").delete().eq("post_id", comment.id).eq("user_id", userId);
+      await supabase.from("group_posts").update({ like_count: Math.max(0, comment.like_count - 1) }).eq("id", comment.id);
+      setComments((prev) => prev.map((item) => item.id === comment.id ? { ...item, like_count: Math.max(0, item.like_count - 1), liked: false } : item));
+    } else {
+      setLikeAnimatingIds((prev) => new Set(prev).add(comment.id));
+      window.setTimeout(() => {
+        setLikeAnimatingIds((prev) => {
+          const next = new Set(prev);
+          next.delete(comment.id);
+          return next;
+        });
+      }, 420);
+      await supabase.from("group_post_likes").insert({ post_id: comment.id, user_id: userId });
+      await supabase.from("group_posts").update({ like_count: comment.like_count + 1 }).eq("id", comment.id);
+      setComments((prev) => prev.map((item) => item.id === comment.id ? { ...item, like_count: item.like_count + 1, liked: true } : item));
+    }
+    setLikeLoading((prev) => {
+      const next = new Set(prev);
+      next.delete(comment.id);
+      return next;
+    });
+  }
+
+  async function openCommentLikes(comment: GroupFeedComment) {
+    setShowCommentLikesFor(comment);
+    setLoadingCommentLikers(true);
+
+    const { data: likeRows } = await supabase
+      .from("group_post_likes")
+      .select("user_id")
+      .eq("post_id", comment.id);
+
+    const likerIds = [...new Set((likeRows || []).map((row) => row.user_id))];
+    setComments((prev) =>
+      prev.map((item) =>
+        item.id === comment.id ? { ...item, like_count: likerIds.length } : item
+      )
+    );
+
+    if (likerIds.length === 0) {
+      setCommentLikers([]);
+      setLoadingCommentLikers(false);
+      return;
+    }
+
+    const { data: profiles } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin")
+      .in("user_id", likerIds);
+
+    setCommentLikers(
+      likerIds.map((userIdValue) => {
+        const profile = (profiles || []).find((row) => row.user_id === userIdValue);
+        return {
+          user_id: userIdValue,
+          display_name: profile?.display_name || profile?.username || "Buddy",
+          profile_image_url: profile?.profile_image_url ?? null,
+          is_paid: !!profile?.is_paid,
+          member_badge: profile?.member_badge ?? null,
+          current_streak: profile?.current_streak ?? null,
+          selected_streak_flame: profile?.selected_streak_flame ?? null,
+          current_level: profile?.current_level ?? null,
+          active_premium_skin: normalizePremiumSkinId(profile?.active_premium_skin),
+        };
+      }),
+    );
+    setLoadingCommentLikers(false);
+  }
+
+  async function submitComment(content: string, parentId: string | null) {
+    if (!content.trim() || submitting) return;
+    setSubmitting(true);
+    setSubmitError(null);
+    const text = content.trim();
+    const { data: insertedComment, error } = await supabase
+      .from("group_posts")
+      .insert({
+        group_id: groupId,
+        user_id: userId,
+        display_name: displayName,
+        category: post.category,
+        content: text,
+        parent_post_id: parentId ?? post.id,
+      })
+      .select("id")
+      .single();
+
+    if (!error) {
+      const insertedId = insertedComment?.id ?? crypto.randomUUID();
+      setComments((prev) => [
+        ...prev,
+        {
+          id: insertedId,
+          user_id: userId,
+          display_name: displayName,
+          category: post.category,
+          content: text,
+          like_count: 0,
+          created_at: new Date().toISOString(),
+          parent_post_id: parentId ?? post.id,
+          liked: false,
+          profile_image_url: userProfileImage,
+          role: currentUserRole || "member",
+          is_paid: false,
+          member_badge: currentUserBadge,
+          current_streak: null,
+          current_level: null,
+          active_premium_skin: normalizePremiumSkinId(currentUserSkin),
+        },
+      ]);
+
+      const mentionedUsers = extractMentionedItemsFromText(text, mentionItems, ["user"])
+        .map((item) => {
+          const mentionedUserId = item.key.startsWith("user:") ? item.key.slice(5) : null;
+          return mentionedUserId ? { userId: mentionedUserId, label: item.label } : null;
+        })
+        .filter((item): item is { userId: string; label: string } => Boolean(item))
+        .filter((item) => item.userId !== userId);
+
+      if (mentionedUsers.length > 0) {
+        const notificationRows = mentionedUsers.map((mentionedUser) => ({
+          user_id: mentionedUser.userId,
+          type: "group_comment_mention",
+          from_user_id: userId,
+          from_user_name: displayName,
+          article_slug: `/study-groups/${groupId}/chat`,
+          post_id: post.id,
+          comment_id: insertedId,
+          message: `${displayName} mentioned you in a comment in Group.`,
+        }));
+
+        const { error: notificationError } = await supabase
+          .from("notifications")
+          .insert(notificationRows);
+
+        if (notificationError) {
+          console.error("Could not send group comment mention notifications:", notificationError);
+        }
+      }
+
+      onCountChange(1);
+      triggerToast("Comment posted!");
+      void logActionToMasterActions(userId, "group_message_sent", `group-post:${post.id}`);
+      setNewComment("");
+      setReplyText("");
+      setReplyingTo(null);
+    } else {
+      setSubmitError(error.message || "Could not post your reply.");
+    }
+    setSubmitting(false);
+  }
+
+  async function handleAutoReply(comment: GroupFeedComment) {
+    if (!canAutoReply) return;
+    if (autoReplyLoadingId) return;
+    setAutoReplyLoadingId(comment.id);
+    setSubmitError(null);
+    setReplyingTo(comment.id);
+
+    try {
+      const draft = await generateAutoReplyDraft(
+        groupId,
+        post.title,
+        post.content,
+        comment.content,
+        comment.display_name,
+      );
+      setReplyText(draft);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Could not generate a reply draft.");
+    }
+
+    setAutoReplyLoadingId(null);
+  }
+
+  async function handleAutoComment() {
+    if (!canAutoReply) return;
+    if (autoCommentLoading || post.user_id === userId) return;
+    setAutoCommentLoading(true);
+    setSubmitError(null);
+
+    try {
+      const draft = await generateAutoReplyDraft(
+        groupId,
+        post.title,
+        post.content,
+        post.content,
+        post.display_name || "Bible Buddy",
+      );
+      setNewComment(draft);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Could not generate a comment draft.");
+    }
+
+    setAutoCommentLoading(false);
+  }
+
+  function canDeleteComment(comment: GroupFeedComment) {
+    return (
+      comment.user_id === userId ||
+      currentUserBadge === "moderator" ||
+      currentUserRole === "leader" ||
+      currentUserRole === "moderator"
+    );
+  }
+
+  function canEditComment(comment: GroupFeedComment) {
+    return comment.user_id === userId;
+  }
+
+  async function handleSaveCommentEdit(comment: GroupFeedComment) {
+    const nextContent = editingCommentText.trim();
+    if (!nextContent || savingCommentId) return;
+
+    setSavingCommentId(comment.id);
+    setSubmitError(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch(`/api/groups/${groupId}/edit-post`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          postId: comment.id,
+          content: nextContent,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not save your comment.");
+      }
+
+      setComments((prev) => prev.map((item) => (
+        item.id === comment.id
+          ? { ...item, content: payload.post?.content ?? nextContent }
+          : item
+      )));
+      setEditingCommentId(null);
+      setEditingCommentText("");
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Could not save your comment.");
+    }
+
+    setSavingCommentId(null);
+  }
+
+  async function handleDeleteComment(comment: GroupFeedComment) {
+    triggerSmokeDelete();
+    if (deletingCommentId) return;
+    setDeletingCommentId(comment.id);
+    setSubmitError(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "group_feed_comment",
+          commentId: comment.id,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not delete this comment.");
+      }
+
+      const deletedIds = new Set<string>((payload.deletedIds || []) as string[]);
+      if (deletedIds.size === 0) deletedIds.add(comment.id);
+
+      setComments((prev) => prev.filter((item) => !deletedIds.has(item.id)));
+      onCountChange(-deletedIds.size);
+
+      if (replyingTo && deletedIds.has(replyingTo)) {
+        setReplyingTo(null);
+        setReplyText("");
+      }
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Could not delete this comment.");
+    }
+
+    setDeletingCommentId(null);
+  }
+
+  const topLevelComments = comments.filter((comment) => comment.parent_post_id === post.id);
+  const replies = (parentId: string) => comments.filter((comment) => comment.parent_post_id === parentId);
+
+  function renderCommentRow(comment: GroupFeedComment, depth = 0) {
+    const name = comment.display_name || "Buddy";
+    const isTargetComment = targetCommentId === comment.id;
+    // Keep replies readable like a social feed: one slim thread cue, no endless staircase.
+    const indentClass = depth > 0 ? "mt-3 border-l border-[var(--bb-card-border,#e8ddd0)] pl-2 sm:pl-3" : "mt-3";
+    return (
+      <div
+        key={comment.id}
+        id={`comment-${comment.id}`}
+        className={`flex gap-2 transition-colors duration-700 ${indentClass} ${isTargetComment ? "rounded-2xl bg-[var(--bb-accent-soft,#f8fafc)] px-2 py-1 ring-1 ring-[var(--bb-card-border,#e8ddd0)]" : ""}`}
+      >
+        <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
+          {comment.profile_image_url ? (
+            <img src={comment.profile_image_url} alt={name} className={getProfileSkinFrameClass(`${depth > 0 ? "h-6 w-6" : "h-7 w-7"} rounded-full object-cover`, comment.active_premium_skin)} style={getProfileSkinFrameStyle(comment.active_premium_skin)} />
+          ) : (
+            <div className={getProfileSkinFrameClass(`${depth > 0 ? "h-6 w-6" : "h-7 w-7"} rounded-full flex items-center justify-center text-white text-[10px] font-bold`, comment.active_premium_skin)} style={{ backgroundColor: avatarColor(comment.user_id), ...getProfileSkinFrameStyle(comment.active_premium_skin) }}>
+              {getInitial(name)}
+            </div>
+          )}
+        </Link>
+        <div className="flex-1 min-w-0">
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-[var(--bb-text-primary,#111827)] hover:underline">
+                {name}
+              </Link>
+              <StreakFlameBadge currentStreak={comment.current_streak} flameId={comment.selected_streak_flame} />
+              <LevelBadge currentLevel={comment.current_level} skinId={comment.active_premium_skin} />
+              <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} skinId={comment.active_premium_skin} />
+            </div>
+            {editingCommentId === comment.id ? (
+              <div className="mt-2 space-y-2">
+                <textarea
+                  value={editingCommentText}
+                  onChange={(e) => setEditingCommentText(e.target.value)}
+                  rows={3}
+                  className="w-full resize-none rounded-2xl border border-[var(--bb-card-border,#ead8c4)] bg-[var(--bb-surface,#fffaf4)] px-3 py-2 text-xs text-[var(--bb-text-primary,#111827)] outline-none focus:ring-2 focus:ring-[var(--bb-accent,#d6b18b)]/30"
+                />
+            <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => void handleSaveCommentEdit(comment)}
+                    disabled={savingCommentId === comment.id || !editingCommentText.trim()}
+                    className="rounded-xl px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                    style={{ backgroundColor: "var(--bb-button,#5a9a5a)", color: "var(--bb-button-text,#ffffff)" }}
+                  >
+                    {savingCommentId === comment.id ? "Saving..." : "Save"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEditingCommentId(null);
+                      setEditingCommentText("");
+                    }}
+                    className="rounded-xl border border-[var(--bb-card-border,#e5e7eb)] px-3 py-1.5 text-xs font-medium text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <MentionText
+                text={comment.content}
+                items={mentionItems}
+                className="mt-0.5 whitespace-pre-wrap text-xs leading-relaxed text-[var(--bb-text-secondary,#374151)]"
+              />
+            )}
+          </div>
+          <div className="flex items-center gap-3 mt-1">
+            <span className="text-[10px] text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(comment.created_at)}</span>
+            <button
+              onClick={() => void toggleCommentLike(comment)}
+              disabled={likeLoading.has(comment.id)}
+              className="flex items-center gap-1 text-[10px] text-[var(--bb-text-muted,#9ca3af)] transition hover:text-red-500"
+            >
+              <svg className={`w-3 h-3 ${likeAnimatingIds.has(comment.id) ? "animate-heart-pop" : ""}`} fill={comment.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              {comment.like_count}
+            </button>
+            {comment.like_count > 0 && (
+              <button
+                type="button"
+                onClick={() => void openCommentLikes(comment)}
+                className="text-[10px] text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-text-primary,#111827)]"
+              >
+                {comment.like_count === 1 ? "1 like" : `${comment.like_count} likes`}
+              </button>
+            )}
+            <button
+              onClick={() => {
+                setReplyingTo(replyingTo === comment.id ? null : comment.id);
+                setReplyText("");
+              }}
+              className="text-[10px] font-semibold text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-accent,#b7794d)]"
+            >
+              Reply
+            </button>
+            {canAutoReply && (
+              <button
+                type="button"
+                onClick={() => void handleAutoReply(comment)}
+                disabled={autoReplyLoadingId === comment.id}
+                className="text-[10px] font-semibold text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-accent,#4a9b6f)] disabled:opacity-50"
+              >
+                {autoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
+              </button>
+            )}
+            {canEditComment(comment) && editingCommentId !== comment.id && (
+              <button
+                type="button"
+                onClick={() => {
+                  setEditingCommentId(comment.id);
+                  setEditingCommentText(comment.content);
+                  setReplyingTo(null);
+                  setReplyText("");
+                }}
+                className="text-[10px] font-semibold text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-accent,#4a9b6f)]"
+              >
+                Edit
+              </button>
+            )}
+            {canDeleteComment(comment) && (
+              <button
+                type="button"
+                onClick={() => setCommentPendingDelete(comment)}
+                disabled={deletingCommentId === comment.id}
+                className="text-[10px] font-semibold text-[var(--bb-text-muted,#9ca3af)] transition hover:text-red-500 disabled:opacity-50"
+              >
+                {deletingCommentId === comment.id ? "Deleting..." : "Delete"}
+              </button>
+            )}
+          </div>
+          {replyingTo === comment.id && (
+            <div className="mt-2 flex gap-2 items-end">
+              <TextareaMentionInput
+                value={replyText}
+                onChange={setReplyText}
+                mentionItems={mentionItems}
+                onEnterSubmit={() => void submitComment(replyText, comment.id)}
+                placeholder={`Reply to ${name}...`}
+                rows={1}
+                autoFocus
+                className="w-full resize-none rounded-xl border border-[var(--bb-card-border,#eadfce)] bg-[var(--bb-surface,#ffffff)] px-3 py-2 text-xs text-[var(--bb-text-primary,#111827)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#d6b18b)]/30"
+              />
+              <button
+                onClick={() => void submitComment(replyText, comment.id)}
+                disabled={!replyText.trim() || submitting}
+                className="text-xs font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
+                style={{ backgroundColor: "var(--bb-button,#b7794d)", color: "var(--bb-button-text,#ffffff)" }}
+              >
+                Reply
+              </button>
+            </div>
+          )}
+          {replies(comment.id).map((reply) => renderCommentRow(reply, Math.min(depth + 1, 1)))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-4 border-t border-[var(--bb-card-border,#efe5d9)] pt-4">
+      {loading ? (
+        <p className="py-2 text-center text-xs text-[var(--bb-text-muted,#9ca3af)]">Loading comments...</p>
+      ) : topLevelComments.length === 0 ? (
+        <p className="py-2 text-center text-xs text-[var(--bb-text-muted,#9ca3af)]">No comments yet. Start the conversation.</p>
+      ) : (
+        <div>
+          {topLevelComments.map((comment) => (
+            renderCommentRow(comment)
+          ))}
+        </div>
+      )}
+
+      <div className="sticky bottom-0 z-10 mt-3 flex items-end gap-2 border-t border-[var(--bb-card-border)] bg-[var(--bb-card)]/95 pt-3 backdrop-blur">
+        {userProfileImage ? (
+          <img src={userProfileImage} alt={displayName} className="w-7 h-7 rounded-full object-cover flex-shrink-0" />
+        ) : (
+          <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(userId) }}>
+            {getInitial(displayName)}
+          </div>
+        )}
+        <TextareaMentionInput
+          value={newComment}
+          onChange={setNewComment}
+          mentionItems={mentionItems}
+          onEnterSubmit={() => void submitComment(newComment, null)}
+          placeholder="Add a comment..."
+          rows={1}
+          className="flex-1 resize-none rounded-xl border border-[var(--bb-card-border,#eadfce)] bg-[var(--bb-surface,#ffffff)] px-3 py-2 text-xs text-[var(--bb-text-primary,#111827)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#d6b18b)]/30"
+        />
+        {canAutoReply && post.user_id !== userId && (
+          <button
+            type="button"
+            onClick={() => void handleAutoComment()}
+            disabled={autoCommentLoading}
+            className="flex-shrink-0 rounded-xl border border-[var(--bb-card-border,#eadfce)] px-3 py-2 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)] transition hover:border-[var(--bb-accent,#4a9b6f)] hover:text-[var(--bb-accent,#4a9b6f)] disabled:opacity-50"
+          >
+            {autoCommentLoading ? "Writing..." : "Auto Comment"}
+          </button>
+        )}
+        <button
+          onClick={() => void submitComment(newComment, null)}
+          disabled={!newComment.trim() || submitting}
+          className="text-xs font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
+          style={{ backgroundColor: "var(--bb-button,#b7794d)", color: "var(--bb-button-text,#ffffff)" }}
+        >
+          Post
+        </button>
+      </div>
+      {submitError && <p className="mt-2 text-xs text-red-500">{submitError}</p>}
+      {showCommentLikesFor && canUsePortal && createPortal(
+        <div
+          className="fixed inset-0 z-[220] flex items-center justify-center overflow-y-auto bg-black/45 p-4"
+          onClick={() => setShowCommentLikesFor(null)}
+        >
+          <div
+            className="w-full max-w-sm overflow-hidden rounded-[28px] border border-[var(--bb-card-border)] bg-[var(--bb-card)] shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-[var(--bb-card-border)] px-5 py-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-[var(--bb-text-muted,#9ca3af)]">Liked By</p>
+                <h3 className="mt-1 text-base font-bold text-[var(--bb-text-primary,#111827)]">Comment Likes</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowCommentLikesFor(null)}
+                className="h-9 w-9 rounded-full border border-[var(--bb-card-border,#e5e7eb)] text-[var(--bb-text-secondary,#4b5563)] transition hover:border-[var(--bb-accent,#b7794d)] hover:text-[var(--bb-text-primary,#111827)]"
+              >
+                ×
+              </button>
+            </div>
+            <div className="max-h-[60vh] overflow-y-auto px-5 py-4">
+              {loadingCommentLikers ? (
+                <p className="py-8 text-center text-sm text-[var(--bb-text-muted,#9ca3af)]">Loading likes...</p>
+              ) : commentLikers.length === 0 ? (
+                <p className="py-8 text-center text-sm text-[var(--bb-text-muted,#9ca3af)]">No likes yet.</p>
+              ) : (
+                <div className="space-y-3">
+                  {commentLikers.map((liker) => (
+                    <Link
+                      key={liker.user_id}
+                      href={`/profile/${liker.user_id}`}
+                      className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#f1e6da)] px-3 py-2 transition hover:bg-[var(--bb-surface-soft,#fffaf4)]"
+                      onClick={() => setShowCommentLikesFor(null)}
+                    >
+                      {liker.profile_image_url ? (
+                        <img
+                          src={liker.profile_image_url}
+                          alt={liker.display_name}
+                          className={getProfileSkinFrameClass("h-10 w-10 rounded-full object-cover", liker.active_premium_skin)}
+                          style={getProfileSkinFrameStyle(liker.active_premium_skin)}
+                        />
+                      ) : (
+                        <div
+                          className={getProfileSkinFrameClass("h-10 w-10 rounded-full flex items-center justify-center text-white text-sm font-bold", liker.active_premium_skin)}
+                          style={{ backgroundColor: avatarColor(liker.user_id), ...getProfileSkinFrameStyle(liker.active_premium_skin) }}
+                        >
+                          {getInitial(liker.display_name)}
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="truncate text-sm font-semibold text-[var(--bb-text-primary,#111827)]">{liker.display_name}</span>
+                          <StreakFlameBadge currentStreak={liker.current_streak} flameId={liker.selected_streak_flame} />
+                          <LevelBadge currentLevel={liker.current_level} skinId={liker.active_premium_skin} />
+                          <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} skinId={liker.active_premium_skin} />
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>,
+        document.body,
+      )}
+      {commentPendingDelete && canUsePortal && createPortal(
+        <div
+          className="fixed inset-0 z-[230] flex items-center justify-center overflow-y-auto bg-black/50 p-4"
+          onClick={() => setCommentPendingDelete(null)}
+        >
+          <div
+            className="w-full max-w-sm rounded-3xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] p-6 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--bb-accent)]">Group</p>
+            <h3 className="mt-2 text-xl font-black text-[var(--bb-text-primary,#111827)]">Delete this comment?</h3>
+            <p className="mt-2 text-sm leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+              This will remove the comment and any replies under it. This action cannot be undone.
+            </p>
+            <div className="mt-5 flex gap-3">
+              <button
+                type="button"
+                onClick={() => setCommentPendingDelete(null)}
+                className="flex-1 rounded-2xl border border-[var(--bb-card-border)] px-4 py-3 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft)]"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  const comment = commentPendingDelete;
+                  setCommentPendingDelete(null);
+                  void handleDeleteComment(comment);
+                }}
+                disabled={deletingCommentId === commentPendingDelete.id}
+                className="flex-1 rounded-2xl bg-red-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-red-700 disabled:opacity-60"
+              >
+                {deletingCommentId === commentPendingDelete.id ? "Deleting..." : "Delete"}
+              </button>
+            </div>
+          </div>
+        </div>,
+        document.body,
+      )}
+    </div>
+  );
+}
+
+// â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+function timeAgo(dateStr: string): string {
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return "just now";
+  if (mins < 60) return `${mins}m ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs}h ago`;
+  const days = Math.floor(hrs / 24);
+  return `${days}d ago`;
+}
+
+function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+}
+
+function getInitial(name: string | null): string {
+  return (name || "?")[0].toUpperCase();
+}
+
+const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
+function avatarColor(userId: string): string {
+  let hash = 0;
+  for (let i = 0; i < userId.length; i++) hash = userId.charCodeAt(i) + ((hash << 5) - hash);
+  return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+}
+
+function getProfileSkinFrameStyle(skinId: PremiumSkinId | string | null | undefined): CSSProperties | undefined {
+  const skin = getPremiumSkin(normalizePremiumSkinId(skinId));
+  if (!skin) return undefined;
+  return {
+    borderColor: skin.palette.accent,
+    boxShadow: `0 0 0 2px ${skin.palette.accent}, 0 0 18px ${skin.palette.accentSoft}, 0 0 34px ${skin.palette.accentSoft}`,
+  };
+}
+
+function getProfileSkinFrameClass(baseClassName: string, skinId: PremiumSkinId | string | null | undefined) {
+  const hasSkin = normalizePremiumSkinId(skinId) !== "none";
+  return `${baseClassName} ${hasSkin ? "border-2" : ""}`.trim();
+}
+
+function sortPinnedPostsFirst<T extends { is_pinned: boolean; created_at: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => {
+    if (a.is_pinned !== b.is_pinned) return a.is_pinned ? -1 : 1;
+    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  });
+}
+
+// â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+export default function GroupChatPage() {
+  const params = useParams();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const groupId = params.id as string;
+  const isDashboardEmbed = searchParams.get("embedded") === "dashboard";
+
+  // Core state
+  const [group, setGroup] = useState<StudyGroup | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [userRole, setUserRole] = useState<string>("member");
+  const [displayName, setDisplayName] = useState<string>("");
+  const [userProfileImage, setUserProfileImage] = useState<string | null>(null);
+  const [userBio, setUserBio] = useState<string | null>(null);
+  const [userLocation, setUserLocation] = useState<string | null>(null);
+  const [userIsPaid, setUserIsPaid] = useState(false);
+  const [userMemberBadge, setUserMemberBadge] = useState<string | null>(null);
+  const [userCurrentStreak, setUserCurrentStreak] = useState<number | null>(null);
+  const [userSelectedStreakFlame, setUserSelectedStreakFlame] = useState<string | null>(null);
+  const [userActivePremiumSkin, setUserActivePremiumSkin] = useState<PremiumSkinId>("none");
+  const [pushSupported, setPushSupported] = useState(false);
+  const [pushPermission, setPushPermission] = useState<NotificationPermission | "unsupported">("unsupported");
+  const [pushSubscribed, setPushSubscribed] = useState(false);
+  const [pushSetupLoading, setPushSetupLoading] = useState(false);
+  const [pushSetupError, setPushSetupError] = useState<string | null>(null);
+  const [pushDismissed, setPushDismissed] = useState(false);
+  const deferredInstallPromptRef = useRef<any>(null);
+  const [canInstallToHomeScreen, setCanInstallToHomeScreen] = useState(false);
+  const [isIosDevice, setIsIosDevice] = useState(false);
+  const [isAndroidDevice, setIsAndroidDevice] = useState(false);
+  const [isStandaloneApp, setIsStandaloneApp] = useState(false);
+  const [installSetupLoading, setInstallSetupLoading] = useState(false);
+  const [installSetupError, setInstallSetupError] = useState<string | null>(null);
+  const [installCardDismissed, setInstallCardDismissed] = useState(false);
+  const [upgradeCardDismissed, setUpgradeCardDismissed] = useState(false);
+  const [hideProfileSetupCard, setHideProfileSetupCard] = useState(false);
+  const [hidePushSetupCard, setHidePushSetupCard] = useState(false);
+  const [hideInstallSetupCard, setHideInstallSetupCard] = useState(false);
+  const [hideUpgradeSetupCard, setHideUpgradeSetupCard] = useState(false);
+  const [showDevotionalUpgradeModal, setShowDevotionalUpgradeModal] = useState(false);
+  const [showPastStudyProModal, setShowPastStudyProModal] = useState(false);
+  const [devotionalPreviews, setDevotionalPreviews] = useState<Record<string, DevotionalPreview>>({});
+  const [updateFeatureIndex, setUpdateFeatureIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState<string>("home");
+  const [showGroupInfoModal, setShowGroupInfoModal] = useState(false);
+  const [selectedFeedPost, setSelectedFeedPost] = useState<Post | null>(null);
+  const [selectedScripture, setSelectedScripture] = useState<{ reference: string; book: string; chapter: number } | null>(null);
+  const [scriptureHtml, setScriptureHtml] = useState<string | null>(null);
+  const [loadingScripture, setLoadingScripture] = useState(false);
+  const [selectedPerson, setSelectedPerson] = useState<{ name: string } | null>(null);
+  const [selectedPlace, setSelectedPlace] = useState<{ name: string } | null>(null);
+  const [selectedKeyword, setSelectedKeyword] = useState<{ name: string } | null>(null);
+  const [personNotes, setPersonNotes] = useState<string | null>(null);
+  const [placeNotes, setPlaceNotes] = useState<string | null>(null);
+  const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
+  const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
+  const [viewedPeople, setViewedPeople] = useState<Set<string>>(new Set());
+  const [completedPlaces, setCompletedPlaces] = useState<Set<string>>(new Set());
+  const [viewedPlaces, setViewedPlaces] = useState<Set<string>>(new Set());
+  const [completedKeywords, setCompletedKeywords] = useState<Set<string>>(new Set());
+  const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
+  const [personCreditBlocked, setPersonCreditBlocked] = useState(false);
+  const [placeCreditBlocked, setPlaceCreditBlocked] = useState(false);
+  const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
+
+  // Chat posts
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [weeklyPollByPostId, setWeeklyPollByPostId] = useState<Record<string, WeeklyGroupPollFeedSet>>({});
+  const [weeklyTriviaByPostId, setWeeklyTriviaByPostId] = useState<Record<string, WeeklyGroupTriviaFeedSet>>({});
+  const [weeklyQuestionByPostId, setWeeklyQuestionByPostId] = useState<Record<string, WeeklyGroupQuestionFeedSet>>({});
+  const [loadingPosts, setLoadingPosts] = useState(true);
+  const [postsHasMore, setPostsHasMore] = useState(false);
+  const [postsPage, setPostsPage] = useState(0);
+  const [showPostComposerModal, setShowPostComposerModal] = useState(false);
+  const [newPostTitle, setNewPostTitle] = useState("");
+  const [newPostContent, setNewPostContent] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
+  const [likeAnimatingIds, setLikeAnimatingIds] = useState<Set<string>>(new Set());
+  const [activePostMenuId, setActivePostMenuId] = useState<string | null>(null);
+  const [editingFeedPost, setEditingFeedPost] = useState<Post | null>(null);
+  const [deletePostId, setDeletePostId] = useState<string | null>(null);
+  const [deletingPost, setDeletingPost] = useState(false);
+  const [pinningPostId, setPinningPostId] = useState<string | null>(null);
+
+  // Lightbox
+  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
+
+  // Composer media state
+  const [composerMode, setComposerMode] = useState<"text" | "photo" | "video">("text");
+  const [composerPhotoFile, setComposerPhotoFile] = useState<File | null>(null);
+  const [composerPhotoPreview, setComposerPhotoPreview] = useState<string | null>(null);
+  const [composerVideoFile, setComposerVideoFile] = useState<File | null>(null);
+  const [composerVideoPreview, setComposerVideoPreview] = useState<string | null>(null);
+  const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
+  const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
+  // Weekly cards plus three fresh posts keep first paint fast; later pages load five at a time.
+  const FEED_PAGE_SIZE = 5;
+  const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
+  const groupPhotoInputRef = useRef<HTMLInputElement>(null);
+  const groupVideoInputRef = useRef<HTMLInputElement>(null);
+  const scriptureContainerRef = useRef<HTMLDivElement>(null);
+
+  function handleScriptureClick(event: MouseEvent<HTMLDivElement>) {
+    const target = event.target as HTMLElement | null;
+    const scriptureButton = target?.closest(".scripture-ref-link") as HTMLElement | null;
+    if (!scriptureButton) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const reference = scriptureButton.dataset.scriptureRef;
+    if (!reference) return;
+
+    const parsed = parseBibleReference(reference);
+    if (!parsed) return;
+
+    setSelectedScripture({
+      reference,
+      book: parsed.book,
+      chapter: parsed.chapter,
+    });
+  }
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadScriptureSelection() {
+      if (!selectedScripture) {
+        setScriptureHtml(null);
+        return;
+      }
+
+      try {
+        setLoadingScripture(true);
+        setScriptureHtml(null);
+
+        const normalizedRef = selectedScripture.reference.replace(/\s+/g, "+");
+        const response = await fetch(`https://bible-api.com/${normalizedRef}`);
+        if (!response.ok) throw new Error("Could not load Bible verses.");
+        const payload = await response.json();
+        const verses = Array.isArray(payload?.verses) ? payload.verses : [];
+        const enriched = await enrichBibleVerses(verses);
+
+        if (!cancelled) setScriptureHtml(enriched);
+      } catch {
+        if (!cancelled) setScriptureHtml("<p>Could not load this verse right now.</p>");
+      } finally {
+        if (!cancelled) setLoadingScripture(false);
+      }
+    }
+
+    void loadScriptureSelection();
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedScripture]);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    let cancelled = false;
+
+    async function loadBiblePopupProgress() {
+      try {
+        const [peopleResult, placesResult, keywordsResult] = await Promise.all([
+          supabase.from("people_progress").select("person_name").eq("user_id", userId),
+          supabase.from("places_progress").select("place_name").eq("user_id", userId),
+          supabase.from("keywords_progress").select("keyword_name").eq("user_id", userId),
+        ]);
+
+        if (cancelled) return;
+
+        const nextCompletedPeople = new Set<string>();
+        (peopleResult.data || []).forEach((row: { person_name: string | null }) => {
+          nextCompletedPeople.add(String(row.person_name || "").toLowerCase().trim());
+        });
+        setCompletedPeople(nextCompletedPeople);
+
+        const nextCompletedPlaces = new Set<string>();
+        (placesResult.data || []).forEach((row: { place_name: string | null }) => {
+          nextCompletedPlaces.add(String(row.place_name || "").toLowerCase().trim());
+        });
+        setCompletedPlaces(nextCompletedPlaces);
+
+        const nextCompletedKeywords = new Set<string>();
+        (keywordsResult.data || []).forEach((row: { keyword_name: string | null }) => {
+          nextCompletedKeywords.add(String(row.keyword_name || "").toLowerCase().trim());
+        });
+        setCompletedKeywords(nextCompletedKeywords);
+      } catch (progressError) {
+        console.error("[GROUP_CHAT] Could not load Bible popup progress:", progressError);
+      }
+    }
+
+    void loadBiblePopupProgress();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
+  useEffect(() => {
+    if (!scriptureHtml) return undefined;
+
+    const handler = (event: Event) => {
+      const target = event.target as HTMLElement | null;
+      const highlightElement = target?.closest(".bible-highlight") as HTMLElement | null;
+      if (!highlightElement) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const type = highlightElement.dataset.type;
+      const term = highlightElement.dataset.term;
+      if (!type || !term) return;
+
+      if (type === "people") {
+        setSelectedPerson({ name: resolveBibleReference("people", term) });
+        setSelectedPlace(null);
+        setSelectedKeyword(null);
+      } else if (type === "places") {
+        setSelectedPlace({ name: resolveBibleReference("places", term) });
+        setSelectedPerson(null);
+        setSelectedKeyword(null);
+      } else if (type === "keywords") {
+        setSelectedKeyword({ name: resolveBibleReference("keywords", term) });
+        setSelectedPerson(null);
+        setSelectedPlace(null);
+      }
+    };
+
+    const attachHandler = () => {
+      const container = scriptureContainerRef.current;
+      if (container) {
+        container.addEventListener("click", handler, true);
+        return true;
+      }
+      return false;
+    };
+
+    let timeout: NodeJS.Timeout | null = null;
+    const attached = attachHandler();
+    if (!attached) {
+      timeout = setTimeout(() => {
+        attachHandler();
+      }, 100);
+    }
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+      const container = scriptureContainerRef.current;
+      if (container) {
+        container.removeEventListener("click", handler, true);
+      }
+    };
+  }, [scriptureHtml]);
+
+  useEffect(() => {
+    if (!selectedPerson) {
+      setPersonNotes(null);
+      setPersonCreditBlocked(false);
+      return;
+    }
+
+    const selectedPersonName = selectedPerson.name;
+
+    async function loadPersonNotes() {
+      setPersonNotes(null);
+      setPersonCreditBlocked(false);
+
+      try {
+        const primaryName = resolveBibleReference("people", selectedPersonName);
+        const personNameKey = primaryName.toLowerCase().trim();
+        const isCompleted = completedPeople.has(personNameKey);
+
+        if (userId) {
+          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+            userId,
+            actionLabel: selectedPersonName,
+          });
+          if (!creditResult.ok) {
+            setPersonCreditBlocked(true);
+            return;
+          }
+
+          setViewedPeople((prev) => new Set(prev).add(personNameKey));
+        }
+
+        if (userId && !isCompleted) {
+          const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId });
+          if (result.inserted) {
+            triggerPoints(1);
+            setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
+          }
+        }
+
+        setPersonNotes(await getPersonPopupNotes(primaryName));
+      } catch (personError) {
+        console.error("Error loading person notes:", personError);
+      }
+    }
+
+    void loadPersonNotes();
+  }, [selectedPerson, userId]);
+
+  useEffect(() => {
+    if (!selectedPlace) {
+      setPlaceNotes(null);
+      setPlaceCreditBlocked(false);
+      return;
+    }
+
+    const selectedPlaceName = selectedPlace.name;
+
+    async function loadPlaceNotes() {
+      setPlaceNotes(null);
+      setPlaceCreditBlocked(false);
+
+      try {
+        const normalizedPlace = selectedPlaceName.toLowerCase().trim().replace(/\s+/g, "_");
+        const isCompleted = completedPlaces.has(normalizedPlace);
+        const isViewed = viewedPlaces.has(normalizedPlace);
+
+        if (userId && !isCompleted && !isViewed) {
+          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+            userId,
+            actionLabel: selectedPlaceName,
+          });
+          if (!creditResult.ok) {
+            setPlaceCreditBlocked(true);
+            return;
+          }
+
+          setViewedPlaces((prev) => new Set(prev).add(normalizedPlace));
+        }
+
+        if (userId && !isCompleted) {
+          const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlaceName, userId });
+          if (result.inserted) {
+            triggerPoints(1);
+            setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+          }
+        }
+
+        setPlaceNotes(await getPlacePopupNotes(selectedPlaceName));
+      } catch (placeError) {
+        console.error("Error loading place notes:", placeError);
+      }
+    }
+
+    void loadPlaceNotes();
+  }, [selectedPlace, userId, completedPlaces, viewedPlaces]);
+
+  useEffect(() => {
+    if (!selectedKeyword) {
+      setKeywordNotes(null);
+      setKeywordCreditBlocked(false);
+      return;
+    }
+
+    const selectedKeywordName = selectedKeyword.name;
+
+    async function loadKeywordNotes() {
+      setKeywordNotes(null);
+      setKeywordCreditBlocked(false);
+
+      try {
+        const keywordKey = selectedKeywordName.toLowerCase().trim();
+        const isCompleted = completedKeywords.has(keywordKey);
+        const isViewed = viewedKeywords.has(keywordKey);
+
+        if (userId && !isCompleted && !isViewed) {
+          const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, {
+            userId,
+            actionLabel: selectedKeywordName,
+          });
+          if (!creditResult.ok) {
+            setKeywordCreditBlocked(true);
+            return;
+          }
+
+          setViewedKeywords((prev) => new Set(prev).add(keywordKey));
+        }
+
+        if (userId && !isCompleted) {
+          const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeywordName, userId });
+          if (result.inserted) {
+            triggerPoints(1);
+            setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
+          }
+        }
+
+        setKeywordNotes(await getKeywordPopupNotes(selectedKeywordName));
+      } catch (keywordError) {
+        console.error("Error loading keyword notes:", keywordError);
+      }
+    }
+
+    void loadKeywordNotes();
+  }, [selectedKeyword, userId, completedKeywords, viewedKeywords]);
+
+  // Hub categories (loaded from DB)
+  const [hubCategories, setHubCategories] = useState<HubCategory[]>([]);
+  const [hubView, setHubView] = useState<"articles" | "questions">("articles");
+  const [showMoreNav, setShowMoreNav] = useState(false);
+  const [moreMenuPosition, setMoreMenuPosition] = useState<{ top: number; left: number } | null>(null);
+  const [selectedHubItem, setSelectedHubItem] = useState<HubItemStatic | null>(null);
+  const [hubLikeAnimatingPaths, setHubLikeAnimatingPaths] = useState<Set<string>>(new Set());
+  const moreButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Members
+  const [members, setMembers] = useState<Member[]>([]);
+  const [loadingMembers, setLoadingMembers] = useState(false);
+  const [loadingMoreMembers, setLoadingMoreMembers] = useState(false);
+  const [membersOffset, setMembersOffset] = useState(0);
+  const [membersHasMore, setMembersHasMore] = useState(false);
+  const [membersTotal, setMembersTotal] = useState<number | null>(null);
+  const [membersSearch, setMembersSearch] = useState("");
+  const [showTopBuddiesModal, setShowTopBuddiesModal] = useState(false);
+  const [topBuddies, setTopBuddies] = useState<TopBuddy[]>([]);
+  const [topBuddiesExpanded, setTopBuddiesExpanded] = useState(false);
+  const [showTopBuddiesDetail, setShowTopBuddiesDetail] = useState(false);
+  const [topBuddiesEngagement, setTopBuddiesEngagement] = useState<TopBuddiesEngagement | null>(null);
+  const [topBuddiesClickersExpanded, setTopBuddiesClickersExpanded] = useState(false);
+  const [hasOpenedTopBuddiesCard, setHasOpenedTopBuddiesCard] = useState(false);
+  const [loadingTopBuddies, setLoadingTopBuddies] = useState(false);
+  const MEMBERS_PAGE = 20;
+
+  // Series list
+  const [seriesList, setSeriesList] = useState<Series[]>([]);
+  const [loadingSeries, setLoadingSeries] = useState(false);
+
+  // Series view
+  const [selectedSeries, setSelectedSeries] = useState<Series | null>(null);
+  const [selectedSeriesWeek, setSelectedSeriesWeek] = useState<number | null>(null);
+  const [seriesPosts, setSeriesPosts] = useState<SeriesPost[]>([]);
+  const [loadingSeriesPosts, setLoadingSeriesPosts] = useState(false);
+  const [seriesStartDate, setSeriesStartDate] = useState<string | null>(null);
+  const [seriesWeekProgress, setSeriesWeekProgress] = useState<Record<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }>>({});
+  const [seriesStartDateInput, setSeriesStartDateInput] = useState("");
+  const [savingSeriesStartDate, setSavingSeriesStartDate] = useState(false);
+  const [seriesStartSaveError, setSeriesStartSaveError] = useState<string | null>(null);
+  const [nowTs, setNowTs] = useState(() => Date.now());
+  const [currentSeriesPreview, setCurrentSeriesPreview] = useState<CurrentSeriesPreview | null>(null);
+  const [currentSeriesStartAt, setCurrentSeriesStartAt] = useState<string | null>(null);
+  const [editingSeriesStart, setEditingSeriesStart] = useState(false);
+  const [weekAnalytics, setWeekAnalytics] = useState<Map<number, WeekAnalytics>>(new Map());
+  const [loadingAnalytics, setLoadingAnalytics] = useState(false);
+  const [showAnalytics, setShowAnalytics] = useState(false);
+  const [analyticsPopupUser, setAnalyticsPopupUser] = useState<AnalyticsUser | null>(null);
+  const [analyticsLoaded, setAnalyticsLoaded] = useState(false);
+  const [showSeriesOverviewDetails, setShowSeriesOverviewDetails] = useState(true);
+  const [hubItemStats, setHubItemStats] = useState<Record<string, HubItemStats>>({});
+  const [showHubLikesFor, setShowHubLikesFor] = useState<HubItemStatic | null>(null);
+  const [showPostLikesFor, setShowPostLikesFor] = useState<Post | null>(null);
+  const [postLikers, setPostLikers] = useState<ArticleLikeUser[]>([]);
+  const [loadingPostLikers, setLoadingPostLikers] = useState(false);
+  const [deepLinkedCommentId, setDeepLinkedCommentId] = useState<string | null>(null);
+
+  const homeFeedSeriesPreview = useMemo(() => {
+    if (normalizeSeriesTitle(currentSeriesPreview?.title) === "the testing of joseph" && currentSeriesPreview) {
+      return currentSeriesPreview;
+    }
+
+    const josephSeries =
+      seriesList.find((series) => normalizeSeriesTitle(series.title) === "the testing of joseph") ?? null;
+
+    return josephSeries
+      ? buildCurrentSeriesPreview(josephSeries)
+      : buildCurrentSeriesPreview(buildSeriesPreviewRecord("The Testing of Joseph"));
+  }, [currentSeriesPreview, seriesList]);
+
+  const homeFeedSeriesStartAt = useMemo(() => {
+    if (normalizeSeriesTitle(currentSeriesPreview?.title) === "the testing of joseph" && currentSeriesStartAt) {
+      return currentSeriesStartAt;
+    }
+
+    return getNextSaturdayStartAt(nowTs);
+  }, [currentSeriesPreview, currentSeriesStartAt, nowTs]);
+
+  function getUpdateCardPushDismissKey(currentUserId: string) {
+    return `bb:update-card-push-dismissed:${currentUserId}`;
+  }
+
+  function getUpdateCardInstallDismissKey(currentUserId: string) {
+    return `bb:update-card-install-dismissed:${currentUserId}`;
+  }
+
+  function getUpdateCardUpgradeDismissKey(currentUserId: string) {
+    return `bb:update-card-upgrade-dismissed:${currentUserId}`;
+  }
+
+  function dismissUpdateCardPush() {
+    if (!userId || typeof window === "undefined") return;
+    window.localStorage.setItem(getUpdateCardPushDismissKey(userId), "1");
+    setPushDismissed(true);
+  }
+
+  function dismissUpdateCardInstall() {
+    if (!userId || typeof window === "undefined") return;
+    window.localStorage.setItem(getUpdateCardInstallDismissKey(userId), "1");
+    setInstallCardDismissed(true);
+  }
+
+  function dismissUpdateCardUpgrade() {
+    if (!userId || typeof window === "undefined") return;
+    window.localStorage.setItem(getUpdateCardUpgradeDismissKey(userId), "1");
+    setUpgradeCardDismissed(true);
+  }
+
+  async function savePushSubscription(currentUserId: string, subscription: PushSubscription) {
+    const json = subscription.toJSON();
+    const p256dh = json.keys?.p256dh;
+    const auth = json.keys?.auth;
+
+    if (!p256dh || !auth) {
+      throw new Error("Push subscription keys are missing.");
+    }
+
+    const { error } = await supabase
+      .from("push_subscriptions")
+      .upsert(
+        {
+          user_id: currentUserId,
+          endpoint: subscription.endpoint,
+          p256dh,
+          auth,
+          user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
+          updated_at: new Date().toISOString(),
+          last_seen_at: new Date().toISOString(),
+        },
+        { onConflict: "endpoint" },
+      );
+
+    if (error) {
+      throw new Error(error.message || "Could not save push subscription.");
+    }
+  }
+
+  async function ensurePushSubscription(currentUserId: string) {
+    if (typeof window === "undefined") return;
+    if (!("serviceWorker" in navigator) || !("PushManager" in window)) return;
+
+    const vapidPublicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+    if (!vapidPublicKey) {
+      throw new Error("Missing NEXT_PUBLIC_VAPID_PUBLIC_KEY.");
+    }
+
+    await navigator.serviceWorker.register("/service-worker.js");
+    const worker = await navigator.serviceWorker.ready;
+    let subscription = await worker.pushManager.getSubscription();
+
+    if (!subscription) {
+      subscription = await worker.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(vapidPublicKey),
+      });
+    }
+
+    await savePushSubscription(currentUserId, subscription);
+    setPushSubscribed(true);
+  }
+
+  async function handleEnableUpdateCardPush() {
+    if (!userId) return;
+    setPushSetupLoading(true);
+    setPushSetupError(null);
+
+    try {
+      if (typeof window === "undefined" || !("Notification" in window)) {
+        throw new Error("Push notifications are not supported on this device.");
+      }
+
+      const permission = await Notification.requestPermission();
+      setPushPermission(permission);
+
+      if (permission !== "granted") {
+        throw new Error("Notifications were not allowed.");
+      }
+
+      await ensurePushSubscription(userId);
+      dismissUpdateCardPush();
+    } catch (error: any) {
+      setPushSetupError(error?.message || "Could not enable push alerts.");
+    } finally {
+      setPushSetupLoading(false);
+    }
+  }
+
+  async function handleInstallToHomeScreen() {
+    if (typeof window === "undefined") return;
+    setInstallSetupLoading(true);
+    setInstallSetupError(null);
+
+    try {
+      const promptEvent = deferredInstallPromptRef.current;
+      if (!promptEvent) {
+        throw new Error("Open Bible Buddy in Chrome to install it from your browser menu.");
+      }
+
+      await promptEvent.prompt();
+      const choice = await promptEvent.userChoice;
+      if (choice?.outcome === "accepted") {
+        deferredInstallPromptRef.current = null;
+        setCanInstallToHomeScreen(false);
+        setIsStandaloneApp(true);
+        dismissUpdateCardInstall();
+        return;
+      }
+
+      throw new Error("Install was canceled.");
+    } catch (error: any) {
+      setInstallSetupError(error?.message || "Could not start install.");
+    } finally {
+      setInstallSetupLoading(false);
+    }
+  }
+
+  async function openDevotionalFromFeature(title: "The Tempting of Jesus" | "The Testing of Joseph", paidOnly: boolean) {
+    if (paidOnly && !userIsPaid) {
+      setShowDevotionalUpgradeModal(true);
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from("devotionals")
+        .select("id")
+        .eq("title", title)
+        .maybeSingle();
+
+      if (error) {
+        router.push("/bible-studies");
+        return;
+      }
+
+      if (data?.id) {
+        router.push(`/bible-studies/${data.id}`);
+      } else {
+        router.push("/bible-studies");
+      }
+    } catch {
+      router.push("/bible-studies");
+    }
+  }
+
+  function getDevotionalDescription(title: "The Tempting of Jesus" | "The Testing of Joseph", fallback: string) {
+    return devotionalPreviews[title]?.description?.trim() || fallback;
+  }
+
+  function getDevotionalId(title: "The Tempting of Jesus" | "The Testing of Joseph") {
+    return devotionalPreviews[title]?.id || null;
+  }
+
+  // Post view
+  const [selectedPost, setSelectedPost] = useState<SeriesPost | null>(null);
+  const [comments, setComments] = useState<SeriesComment[]>([]);
+  const [loadingComments, setLoadingComments] = useState(false);
+  const [newCommentText, setNewCommentText] = useState("");
+  const [replyingToId, setReplyingToId] = useState<string | null>(null);
+  const [replyText, setReplyText] = useState("");
+  const [submittingComment, setSubmittingComment] = useState(false);
+  const [editingSeriesCommentId, setEditingSeriesCommentId] = useState<string | null>(null);
+  const [editingSeriesCommentText, setEditingSeriesCommentText] = useState("");
+  const [savingSeriesCommentId, setSavingSeriesCommentId] = useState<string | null>(null);
+  const [postLikeLoading, setPostLikeLoading] = useState(false);
+  const [seriesPostLikeAnimating, setSeriesPostLikeAnimating] = useState(false);
+  const [commentLikeLoading, setCommentLikeLoading] = useState<Set<string>>(new Set());
+  const [seriesCommentLikeAnimatingIds, setSeriesCommentLikeAnimatingIds] = useState<Set<string>>(new Set());
+  const [seriesAutoReplyLoadingId, setSeriesAutoReplyLoadingId] = useState<string | null>(null);
+  const [seriesAutoCommentLoading, setSeriesAutoCommentLoading] = useState(false);
+  const [deletingSeriesCommentId, setDeletingSeriesCommentId] = useState<string | null>(null);
+
+  // New Series modal
+  const [showNewSeriesModal, setShowNewSeriesModal] = useState(false);
+  const [newSeriesTitle, setNewSeriesTitle] = useState("");
+  const [newSeriesDesc, setNewSeriesDesc] = useState("");
+  const [newSeriesTotalWeeks, setNewSeriesTotalWeeks] = useState<number>(4);
+  const [submittingNewSeries, setSubmittingNewSeries] = useState(false);
+
+  // New Post modal
+  const [showNewPostModal, setShowNewPostModal] = useState(false);
+  const [newSeriesPostTitle, setNewSeriesPostTitle] = useState("");
+  const [newSeriesPostContent, setNewSeriesPostContent] = useState("");
+  const [newSeriesPostPublish, setNewSeriesPostPublish] = useState(false);
+  const [submittingNewSeriesPost, setSubmittingNewSeriesPost] = useState(false);
+
+  const feedRef = useRef<HTMLDivElement>(null);
+  const communityRootRef = useRef<HTMLDivElement>(null);
+  const postEditor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        heading: {
+          levels: [1, 2, 3],
+        },
+      }),
+    ],
+    content: "",
+    immediatelyRender: false,
+    editorProps: {
+      attributes: {
+        class: "prose prose-sm max-w-none focus:outline-none min-h-[220px] px-4 py-4 text-gray-800",
+      },
+    },
+  });
+
+  function runPostEditorCommand(command: () => boolean) {
+    return (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      command();
+    };
+  }
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadMentionItems() {
+      if (!groupId) return;
+
+      try {
+        const items = await loadGroupPostMentions(supabase, groupId);
+        if (!cancelled) setMentionItems(items);
+      } catch (error) {
+        console.error("Could not load mention items:", error);
+      }
+    }
+
+    loadMentionItems();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [groupId]);
+
+  // â”€â”€ Auth + membership guard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  useEffect(() => {
+    async function checkAccessAndLoad() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        router.push("/login");
+        return;
+      }
+
+      setUserId(user.id);
+      setUserEmail(user.email ?? null);
+
+      const [{ data: profile }, streakData] = await Promise.all([
+        supabase
+          .from("profile_stats")
+          .select("display_name, username, profile_image_url, bio, location, is_paid, member_badge, current_streak, selected_streak_flame, active_premium_skin, feature_tours")
+          .eq("user_id", user.id)
+          .maybeSingle(),
+        syncCurrentStreakToProfileStats(user.id),
+      ]);
+      const resolvedCurrentStreak = streakData.currentStreak ?? profile?.current_streak ?? null;
+      setDisplayName(profile?.display_name || profile?.username || user.email?.split("@")[0] || "Buddy");
+      setUserProfileImage(profile?.profile_image_url ?? null);
+      setUserBio(profile?.bio ?? null);
+      setUserLocation(profile?.location ?? null);
+      setUserIsPaid(!!profile?.is_paid);
+      setUserMemberBadge(profile?.member_badge ?? null);
+      setUserCurrentStreak(resolvedCurrentStreak);
+      setUserSelectedStreakFlame(profile?.selected_streak_flame ?? null);
+      setUserActivePremiumSkin(normalizePremiumSkinId(profile?.active_premium_skin));
+      const { data: membership } = await supabase
+        .from("group_members")
+        .select("status, role")
+        .eq("group_id", groupId)
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      setUserRole(membership?.status === "approved" ? membership.role : "member");
+
+      const { data: groupData } = await supabase
+        .from("study_groups")
+        .select("id, name, leader_user_id, leader_name, description, member_count, current_weekly_study, cover_color, cover_emoji")
+        .eq("id", groupId)
+        .maybeSingle();
+
+      if (!groupData) { router.push("/study-groups"); return; }
+      setGroup(groupData);
+
+      // Load hub categories for this group
+      const { data: hubCats } = await supabase
+        .from("group_hub_categories")
+        .select("id, name, emoji, color, display_order")
+        .eq("group_id", groupId)
+        .order("display_order", { ascending: true });
+      setHubCategories(hubCats || []);
+
+      const { data: currentSeriesRows } = await supabase
+        .from("group_series")
+        .select("id, title, description, total_weeks, current_week, is_current, created_at")
+        .eq("group_id", groupId)
+        .order("created_at", { ascending: false });
+
+      const previewRows = (currentSeriesRows || []) as Series[];
+      const previewSeriesIds = previewRows.map((series) => series.id);
+      const { data: previewScheduleRows } = previewSeriesIds.length
+        ? await supabase
+          .from("series_schedules")
+          .select("series_id, start_date, start_at")
+          .in("series_id", previewSeriesIds)
+        : { data: [] as Array<{ series_id: string; start_date: string | null; start_at: string | null }> };
+      const previewScheduleMap = new Map(
+        (previewScheduleRows || []).map((row) => [row.series_id, resolveSeriesStart(row)]),
+      );
+      const featuredPreview = selectFeaturedSeriesPreview(previewRows, previewScheduleMap, Date.now());
+      setCurrentSeriesPreview(featuredPreview.preview);
+      setCurrentSeriesStartAt(featuredPreview.startAt);
+
+      // Handle ?tab=... and optional ?series=... deep link
+      const tabParam = searchParams.get("tab");
+      const seriesParam = searchParams.get("series");
+      if (tabParam === "bible_studies") {
+        setActiveTab("bible_studies");
+
+        if (seriesParam) {
+          const catalogMatch = BIBLE_STUDY_SERIES_CATALOG.find((item) => item.key === seriesParam) ?? null;
+          const targetTitle = catalogMatch?.title ?? seriesParam;
+          const matchedSeries =
+            previewRows.find((series) => normalizeSeriesTitle(series.title) === normalizeSeriesTitle(targetTitle)) ??
+            buildSeriesPreviewRecord(targetTitle);
+
+          setSelectedSeries(matchedSeries);
+          setSelectedSeriesWeek(null);
+        }
+      } else if (tabParam && ["home", "general", "updates", "prayer", "qa", "members"].includes(tabParam)) {
+        setActiveTab(tabParam);
+      }
+    }
+
+    checkAccessAndLoad();
+  }, [groupId, router, searchParams]);
+
+  useEffect(() => {
+    if (!userId || userCurrentStreak == null) return;
+
+    setPosts((prev) =>
+      prev.map((post) =>
+        post.user_id === userId ? { ...post, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame, active_premium_skin: userActivePremiumSkin } : post,
+      ),
+    );
+    setComments((prev) =>
+      prev.map((comment) =>
+        comment.user_id === userId ? { ...comment, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame, active_premium_skin: userActivePremiumSkin } : comment,
+      ),
+    );
+    setMembers((prev) =>
+      prev.map((member) =>
+        member.user_id === userId ? { ...member, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame, active_premium_skin: userActivePremiumSkin } : member,
+      ),
+    );
+    setPostLikers((prev) =>
+      prev.map((liker) =>
+        liker.user_id === userId ? { ...liker, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame, active_premium_skin: userActivePremiumSkin } : liker,
+      ),
+    );
+    setSelectedFeedPost((prev) =>
+      prev?.user_id === userId ? { ...prev, current_streak: userCurrentStreak, selected_streak_flame: userSelectedStreakFlame, active_premium_skin: userActivePremiumSkin } : prev,
+    );
+  }, [userActivePremiumSkin, userCurrentStreak, userId, userSelectedStreakFlame]);
+
+  useEffect(() => {
+    const supported =
+      typeof window !== "undefined" &&
+      "Notification" in window &&
+      "serviceWorker" in navigator &&
+      "PushManager" in window;
+    setPushSupported(supported);
+    setPushPermission(supported ? Notification.permission : "unsupported");
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const userAgent = navigator.userAgent || "";
+    setIsIosDevice(/iphone|ipad|ipod/i.test(userAgent));
+    setIsAndroidDevice(/android/i.test(userAgent));
+    setIsStandaloneApp(
+      window.matchMedia("(display-mode: standalone)").matches ||
+      (navigator as any).standalone === true,
+    );
+
+    function handleBeforeInstallPrompt(event: Event) {
+      event.preventDefault();
+      deferredInstallPromptRef.current = event;
+      setCanInstallToHomeScreen(true);
+    }
+
+    function handleInstalled() {
+      deferredInstallPromptRef.current = null;
+      setCanInstallToHomeScreen(false);
+      setIsStandaloneApp(true);
+    }
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    window.addEventListener("appinstalled", handleInstalled);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      window.removeEventListener("appinstalled", handleInstalled);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    setPushDismissed(window.localStorage.getItem(getUpdateCardPushDismissKey(userId)) === "1");
+  }, [userId]);
+
+  useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    setInstallCardDismissed(window.localStorage.getItem(getUpdateCardInstallDismissKey(userId)) === "1");
+  }, [userId]);
+
+  useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    setUpgradeCardDismissed(window.localStorage.getItem(getUpdateCardUpgradeDismissKey(userId)) === "1");
+  }, [userId]);
+
+  useEffect(() => {
+    if (!pushSupported || !userId) return;
+
+    let cancelled = false;
+
+    async function loadPushState() {
+      try {
+        const worker = await navigator.serviceWorker.ready;
+        const subscription = await worker.pushManager.getSubscription();
+        if (!cancelled) {
+          setPushPermission(Notification.permission);
+          setPushSubscribed(!!subscription);
+        }
+      } catch {
+        if (!cancelled) {
+          setPushSubscribed(false);
+        }
+      }
+    }
+
+    void loadPushState();
+    return () => {
+      cancelled = true;
+    };
+  }, [pushSupported, userId]);
+
+  useEffect(() => {
+    const profileComplete = !!userProfileImage && !!userBio?.trim() && !!userLocation?.trim();
+    if (!profileComplete) {
+      setHideProfileSetupCard(false);
+      return;
+    }
+    const timeout = window.setTimeout(() => setHideProfileSetupCard(true), 220);
+    return () => window.clearTimeout(timeout);
+  }, [userProfileImage, userBio, userLocation]);
+
+  useEffect(() => {
+    const pushComplete = pushSupported && (pushPermission === "granted" && pushSubscribed || pushDismissed);
+    if (!pushComplete) {
+      setHidePushSetupCard(false);
+      return;
+    }
+    const timeout = window.setTimeout(() => setHidePushSetupCard(true), 220);
+    return () => window.clearTimeout(timeout);
+  }, [pushSupported, pushPermission, pushSubscribed, pushDismissed]);
+
+  useEffect(() => {
+    const installComplete = isStandaloneApp || installCardDismissed;
+    if (!installComplete) {
+      setHideInstallSetupCard(false);
+      return;
+    }
+    const timeout = window.setTimeout(() => setHideInstallSetupCard(true), 220);
+    return () => window.clearTimeout(timeout);
+  }, [installCardDismissed, isStandaloneApp]);
+
+  useEffect(() => {
+    const upgradeComplete = userIsPaid || upgradeCardDismissed;
+    if (!upgradeComplete) {
+      setHideUpgradeSetupCard(false);
+      return;
+    }
+    const timeout = window.setTimeout(() => setHideUpgradeSetupCard(true), 220);
+    return () => window.clearTimeout(timeout);
+  }, [upgradeCardDismissed, userIsPaid]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadDevotionalPreviews() {
+      try {
+        const { data, error } = await supabase
+          .from("devotionals")
+          .select("id, title, description")
+          .in("title", ["The Tempting of Jesus", "The Testing of Joseph"]);
+
+        if (error || !data || cancelled) return;
+
+        const next: Record<string, DevotionalPreview> = {};
+        for (const item of data) {
+          next[item.title] = item as DevotionalPreview;
+        }
+        setDevotionalPreviews(next);
+      } catch {
+        // best effort only
+      }
+    }
+
+    void loadDevotionalPreviews();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!userId || activeTab !== "home") return;
+
+    const featureCount = userIsPaid ? 6 : 7;
+    const storageKey = `bb:update-card-feature-index:${userId}`;
+    const previousRaw = window.localStorage.getItem(storageKey);
+    const previousIndex = previousRaw ? Number(previousRaw) : -1;
+    const nextIndex = Number.isFinite(previousIndex) ? (previousIndex + 1 + featureCount) % featureCount : 0;
+
+    window.localStorage.setItem(storageKey, String(nextIndex));
+    setUpdateFeatureIndex(nextIndex);
+  }, [activeTab, userId, userIsPaid]);
+
+  useEffect(() => {
+    if (!group || !userId || activeTab !== "home" || typeof window === "undefined") return;
+
+    let cancelled = false;
+
+    void (async () => {
+      const now = Date.now();
+      const storageKey = `bb:group-home-view:${group.id}:${userId}`;
+      const previousLoggedAt = window.localStorage.getItem(storageKey);
+      if (previousLoggedAt) {
+        const previousTime = Number(previousLoggedAt);
+        if (Number.isFinite(previousTime) && now - previousTime < 24 * 60 * 60 * 1000) {
+          return;
+        }
+      }
+
+      const sinceIso = new Date(now - 24 * 60 * 60 * 1000).toISOString();
+      const { data: recentFeedViews, error: recentFeedViewsError } = await supabase
+        .from("master_actions")
+        .select("created_at")
+        .eq("user_id", userId)
+        .eq("action_type", "study_group_feed_viewed")
+        .eq("action_label", group.id)
+        .gte("created_at", sinceIso)
+        .limit(1);
+
+      if (cancelled) return;
+
+      if (recentFeedViewsError) {
+        console.error("[GROUP_FEED] Could not verify recent feed-open actions:", recentFeedViewsError);
+      }
+
+      if ((recentFeedViews || []).length > 0) {
+        window.localStorage.setItem(storageKey, String(now));
+        return;
+      }
+
+      window.localStorage.setItem(storageKey, String(now));
+      void logActionToMasterActions(userId, "study_group_feed_viewed", group.id, displayName || null);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [activeTab, displayName, group, userId]);
+
+  useEffect(() => {
+    if (!group || !userId || !selectedHubItem || selectedHubItem.type !== "article" || typeof window === "undefined") return;
+
+    const storageKey = `bb:group-article-open:${group.id}:${userId}:${selectedHubItem.path}`;
+    if (window.sessionStorage.getItem(storageKey) === "1") return;
+
+    window.sessionStorage.setItem(storageKey, "1");
+    void logActionToMasterActions(userId, "study_group_article_opened", `${group.id}:${selectedHubItem.path}`, displayName || null);
+  }, [displayName, group, selectedHubItem, userId]);
+
+  async function handleOpenBibleStudyCard() {
+    if (group && userId) {
+      void logActionToMasterActions(
+        userId,
+        "study_group_bible_study_card_opened",
+        group.id,
+        displayName || null,
+      );
+    }
+
+    const knownCurrentSeries =
+      seriesList.find((series) => normalizeSeriesTitle(series.title) === normalizeSeriesTitle(homeFeedSeriesPreview?.title)) ??
+      seriesList.find((series) => series.is_current) ??
+      (homeFeedSeriesPreview
+        ? {
+            ...homeFeedSeriesPreview,
+            is_current: true,
+            created_at: new Date().toISOString(),
+          }
+        : null);
+
+    if (knownCurrentSeries) {
+      setSelectedSeries(knownCurrentSeries);
+      setSelectedSeriesWeek(null);
+      setActiveTab("bible_studies");
+      return;
+    }
+
+    await loadSeries();
+    setActiveTab("bible_studies");
+  }
+
+  async function loadTopBuddies() {
+    if (!group) return;
+    const cacheKey = `top-buddies-cache:${group.id}:${TOP_BUDDIES_BOARD_VERSION}`;
+    let showedCachedBoard = false;
+
+    try {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        const payload = JSON.parse(cached);
+        setTopBuddies(payload.weeklyBuddies || payload.buddies || []);
+        setTopBuddiesEngagement(payload.engagement || null);
+        showedCachedBoard = true;
+      }
+    } catch {
+      localStorage.removeItem(cacheKey);
+    }
+
+    setLoadingTopBuddies(!showedCachedBoard);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const loadBoard = async (mode: "fast" | "refresh") => {
+        const response = await fetch(`/api/groups/${group.id}/top-buddies?mode=${mode}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        const payload = await response.json();
+        if (!response.ok) {
+          throw new Error(payload.error || "Could not load top members.");
+        }
+
+        setTopBuddies(payload.weeklyBuddies || payload.buddies || []);
+        setTopBuddiesEngagement(payload.engagement || null);
+        localStorage.setItem(
+          cacheKey,
+          JSON.stringify({
+            weeklyBuddies: payload.weeklyBuddies || payload.buddies || [],
+            allTimeBuddies: [],
+            engagement: payload.engagement || null,
+            cachedAt: Date.now(),
+          }),
+        );
+      };
+
+      await loadBoard("fast");
+      setLoadingTopBuddies(false);
+
+      void loadBoard("refresh").catch((error) => {
+        console.error("[TOP_BUDDIES] Background refresh failed:", error);
+      });
+    } catch (error) {
+      console.error("[TOP_BUDDIES] Failed to load:", error);
+      if (!showedCachedBoard) {
+        setTopBuddies([]);
+        setTopBuddiesEngagement(null);
+      }
+    } finally {
+      setLoadingTopBuddies(false);
+    }
+  }
+
+  useEffect(() => {
+    if (!group?.id) return;
+    setHasOpenedTopBuddiesCard(localStorage.getItem(`top-buddies-opened:${group.id}:${TOP_BUDDIES_BOARD_VERSION}`) === "true");
+  }, [group?.id]);
+
+  async function trackTopBuddiesClick(action: "open" | "modal") {
+    if (!userId || !group) return;
+    const actionLabel = `top_buddies_card_opened:${group.id}:${action}`;
+    setTopBuddiesEngagement((current) =>
+      current
+        ? {
+            totalClicks: current.totalClicks + 1,
+            uniqueClickers: current.uniqueClickers,
+            clickers: current.clickers,
+          }
+        : { totalClicks: 1, uniqueClickers: 1 },
+    );
+    try {
+      await logActionToMasterActions(userId, ACTION_TYPE.study_group_feed_viewed, actionLabel, displayName || null);
+    } catch (error) {
+      console.error("[TOP_BUDDIES] Could not track leaderboard click:", error);
+    }
+  }
+
+  function toggleTopBuddiesCard() {
+    setTopBuddiesExpanded((current) => {
+      const next = !current;
+      if (next) {
+        setHasOpenedTopBuddiesCard(true);
+        if (group?.id) localStorage.setItem(`top-buddies-opened:${group.id}:${TOP_BUDDIES_BOARD_VERSION}`, "true");
+        void trackTopBuddiesClick("open");
+      }
+      return next;
+    });
+  }
+
+  function openTopBuddiesDetail() {
+    setShowTopBuddiesDetail(true);
+    setTopBuddiesExpanded(true);
+    setHasOpenedTopBuddiesCard(true);
+    if (group?.id) localStorage.setItem(`top-buddies-opened:${group.id}:${TOP_BUDDIES_BOARD_VERSION}`, "true");
+    void trackTopBuddiesClick("open");
+  }
+
+  function getTopBuddyMedal(rank: number) {
+    if (rank === 1) return { label: "1", icon: "??", classes: "bg-[#fff4bd] text-[#8a5a00] border-[#f4d067]" };
+    if (rank === 2) return { label: "2", icon: "??", classes: "bg-[#eef2f7] text-[#536174] border-[#cbd5e1]" };
+    if (rank === 3) return { label: "3", icon: "??", classes: "bg-[#ffe2ca] text-[#8b4a1f] border-[#f4b27c]" };
+    return { label: String(rank), icon: null, classes: "bg-[#eef7ed] text-[#4a7c57] border-[#cfe7d2]" };
+  }
+
+  function renderTopBuddyAvatar(buddy: TopBuddy, sizeClass = "h-10 w-10") {
+    if (buddy.profileImageUrl) {
+      return <img src={buddy.profileImageUrl} alt={buddy.displayName} className={getProfileSkinFrameClass(`${sizeClass} rounded-full object-cover ring-2 ring-white shadow-sm`, buddy.activePremiumSkin)} style={getProfileSkinFrameStyle(buddy.activePremiumSkin)} />;
+    }
+
+    return (
+      <div
+        className={getProfileSkinFrameClass(`${sizeClass} flex items-center justify-center rounded-full text-sm font-bold text-white ring-2 ring-white shadow-sm`, buddy.activePremiumSkin)}
+        style={{ backgroundColor: avatarColor(buddy.userId), ...getProfileSkinFrameStyle(buddy.activePremiumSkin) }}
+      >
+        {getInitial(buddy.displayName)}
+      </div>
+    );
+  }
+
+  function renderTopBuddiesLeaderboardCard() {
+    const currentBuddies = topBuddies;
+    const topThree = currentBuddies.slice(0, 3);
+    const weekRangeLabel = getWeeklyBoardRangeLabel();
+    const boardClickers = topBuddiesEngagement?.clickers || [];
+    const clickLabel = topBuddiesEngagement
+      ? `${topBuddiesEngagement.uniqueClickers} ${topBuddiesEngagement.uniqueClickers === 1 ? "buddy" : "buddies"} opened this board`
+      : "0 clicks";
+
+    return (
+      <div className={`mb-4 overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#d8e7d7)] bg-[var(--bb-card,#ffffff)] shadow-sm ${!hasOpenedTopBuddiesCard && !topBuddiesExpanded ? "animate-pulse ring-2 ring-[var(--bb-accent,#ffd95d)]/40" : ""}`}>
+        <button
+          type="button"
+          onClick={openTopBuddiesDetail}
+          className="group relative w-full overflow-hidden bg-[var(--bb-card,#ffffff)] px-4 py-4 text-left"
+        >
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-[var(--bb-accent,#4a9b6f)] opacity-80" />
+          <div className="relative flex items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-3">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#f3d77a)] bg-[var(--bb-surface,#ffffff)] text-2xl shadow-sm transition group-hover:-rotate-3 group-hover:scale-105">
+                ??
+              </div>
+              <div className="min-w-0">
+                <h3 className="mt-1 truncate text-lg font-black text-[var(--bb-text-primary,#1f2a44)]">
+                  Top 10 Bible Buddies
+                </h3>
+                <p className="mt-0.5 animate-pulse text-xs font-black text-[var(--bb-text-secondary,#64748b)]">
+                  {weekRangeLabel}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex shrink-0 items-center gap-2">
+              <div className="hidden -space-x-2 sm:flex">
+                {topThree.map((buddy) => (
+                  <div key={buddy.userId}>
+                    {renderTopBuddyAvatar(buddy, "h-8 w-8")}
+                  </div>
+                ))}
+              </div>
+              <span className="rounded-full bg-[var(--bb-surface,#ffffff)] px-3 py-1 text-xs font-black text-[var(--bb-accent,#47677c)] ring-1 ring-[var(--bb-card-border,#d7e6ef)]">
+                Open
+              </span>
+            </div>
+          </div>
+        </button>
+      </div>
+    );
+  }
+
+  function renderTopBuddiesDetailView() {
+    const currentBuddies = topBuddies;
+    const boardClickers = topBuddiesEngagement?.clickers || [];
+    const clickLabel = topBuddiesEngagement
+      ? `${topBuddiesEngagement.uniqueClickers} ${topBuddiesEngagement.uniqueClickers === 1 ? "buddy" : "buddies"} opened this board`
+      : "0 buddies opened this board";
+
+    return (
+      <div className="animate-fade-in-up overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#d8e7d7)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+        <div className="flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e3edf3)] px-5 py-5">
+          <div className="min-w-0">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#4f8fb7)]">Weekly Board</p>
+            <h2 className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#1f2a44)]">Top 10 Bible Buddies</h2>
+            <p className="mt-1 text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">{getWeeklyBoardRangeLabel()}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setShowTopBuddiesDetail(false);
+              setTopBuddiesClickersExpanded(false);
+            }}
+            className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
+            aria-label="Close top buddies"
+          >
+            ×
+          </button>
+        </div>
+
+        <div className="bg-[var(--bb-surface-soft,#fbfdff)] px-5 py-5">
+          <div className="mb-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f0)] bg-[var(--bb-card,#ffffff)] px-4 py-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#4f8fb7)]">How weekly Top Buddies are calculated</p>
+            <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#516173)]">
+              Bible study tasks count the most: study intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Community posts and replies count too, but they are worth about half as much and have caps.
+            </p>
+          </div>
+
+          {loadingTopBuddies ? (
+            <div className="rounded-2xl border border-dashed border-[var(--bb-card-border,#cfe1ee)] bg-[var(--bb-card,#ffffff)] px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+              Loading the award board...
+            </div>
+          ) : currentBuddies.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-[var(--bb-card-border,#cfe1ee)] bg-[var(--bb-card,#ffffff)] px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+              No leaderboard points yet. First Buddy to show up gets the spotlight.
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {currentBuddies.map((buddy) => {
+                const medal = getTopBuddyMedal(buddy.rank);
+                return (
+                  <div key={`detail-week-${buddy.userId}`} className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-card,#ffffff)] px-3 py-3 shadow-sm">
+                    <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-sm font-black ${medal.classes}`}>
+                      {medal.icon || medal.label}
+                    </div>
+                    <Link href={`/profile/${buddy.userId}`} className="shrink-0">
+                      {renderTopBuddyAvatar(buddy, "h-11 w-11")}
+                    </Link>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+                        <Link href={`/profile/${buddy.userId}`} className="truncate text-sm font-black text-[var(--bb-text-primary,#1f2a44)] hover:underline">
+                          {buddy.displayName}
+                        </Link>
+                        <StreakFlameBadge currentStreak={buddy.currentStreak} flameId={buddy.selectedStreakFlame} />
+                        <LevelBadge currentLevel={buddy.currentLevel} skinId={buddy.activePremiumSkin} />
+                        <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} skinId={buddy.activePremiumSkin} />
+                      </div>
+                      <p className="mt-0.5 text-[11px] font-semibold text-[var(--bb-text-secondary,#718096)]">
+                        {buddy.actions || 0} Bible tasks · {buddy.scoreBreakdown?.community || 0} community pts
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-black text-[var(--bb-text-primary,#1f2a44)]">{buddy.score}</p>
+                      <p className="text-[11px] font-bold text-[var(--bb-text-secondary,#718096)]">buddy score</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="mt-4 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">
+            <button
+              type="button"
+              onClick={() => setTopBuddiesClickersExpanded((current) => !current)}
+              className="flex w-full items-center justify-between gap-3 text-left font-black text-[var(--bb-text-primary,#47677c)]"
+            >
+              <span>{clickLabel}</span>
+              <span>{topBuddiesClickersExpanded ? "?" : "?"}</span>
+            </button>
+            {topBuddiesClickersExpanded && (
+              <div className="mt-3 rounded-2xl border border-[var(--bb-card-border,#e1ebf2)] bg-[var(--bb-surface,#ffffff)] p-3">
+                {boardClickers.length === 0 ? (
+                  <p className="text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">No opens tracked yet.</p>
+                ) : (
+                  <div className="space-y-2">
+                    {boardClickers.map((clicker) => (
+                      <Link key={clicker.userId} href={`/profile/${clicker.userId}`} className="flex items-center gap-3 rounded-xl px-2 py-2 transition hover:bg-[var(--bb-surface-soft,#f5f9fc)]">
+                        {clicker.profileImageUrl ? (
+                          <img src={clicker.profileImageUrl} alt={clicker.displayName} className={getProfileSkinFrameClass("h-9 w-9 rounded-full object-cover ring-2 ring-[var(--bb-card,#ffffff)] shadow-sm", clicker.activePremiumSkin)} style={getProfileSkinFrameStyle(clicker.activePremiumSkin)} />
+                        ) : (
+                          <div className={getProfileSkinFrameClass("flex h-9 w-9 items-center justify-center rounded-full text-xs font-black text-white ring-2 ring-[var(--bb-card,#ffffff)] shadow-sm", clicker.activePremiumSkin)} style={{ backgroundColor: avatarColor(clicker.userId), ...getProfileSkinFrameStyle(clicker.activePremiumSkin) }}>
+                            {getInitial(clicker.displayName)}
+                          </div>
+                        )}
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-black text-[var(--bb-text-primary,#1f2a44)]">{clicker.displayName}</p>
+                          <p className="text-[11px] font-bold text-[var(--bb-text-secondary,#718096)]">
+                            {clicker.openedAt ? new Date(clicker.openedAt).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "Opened board"}
+                          </p>
+                        </div>
+                        <StreakFlameBadge currentStreak={clicker.currentStreak} flameId={clicker.selectedStreakFlame} />
+                        <LevelBadge currentLevel={clicker.currentLevel} skinId={clicker.activePremiumSkin} />
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // â”€â”€ Load content when tab or group changes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  useEffect(() => {
+    if (!group) return;
+    setSelectedHubItem(null);
+    if (activeTab === "members") {
+      loadMembers();
+    } else if (activeTab === "bible_studies") {
+      setSelectedSeries(null);
+      setSelectedSeriesWeek(null);
+      setSelectedPost(null);
+      loadSeries();
+    } else if (hubCategories.some((c) => c.id === activeTab)) {
+      // items come from static HUB_CONTENT â€” no fetch needed
+    } else {
+      setPosts([]);
+      setWeeklyPollByPostId({});
+      setWeeklyTriviaByPostId({});
+      setWeeklyQuestionByPostId({});
+      setPostsPage(0);
+      void loadPosts(0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [group, activeTab, hubCategories]);
+
+  useEffect(() => {
+    const targetPostId = searchParams.get("post");
+    const targetCommentId = searchParams.get("comment");
+    if (!group || !targetPostId) return;
+
+    if (activeTab === "members" || activeTab === "bible_studies" || hubCategories.some((c) => c.id === activeTab)) {
+      setActiveTab("home");
+      return;
+    }
+
+    setDeepLinkedCommentId(targetCommentId);
+    void openFeedPostById(targetPostId);
+    router.replace(`/study-groups/${groupId}/chat`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [group, posts, activeTab, hubCategories, searchParams]);
+
+  const loadSelectedSeriesWeekProgress = useCallback(async (seriesParam = selectedSeries) => {
+    if (!seriesParam || !userId) return;
+
+    const [progressRes, triviaRes, notesActionsRes] = await Promise.all([
+      supabase.from("series_week_progress")
+        .select("week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
+        .eq("user_id", userId).eq("series_id", seriesParam.id),
+      supabase.from("series_trivia_scores")
+        .select("week_number, score")
+        .eq("user_id", userId).eq("series_id", seriesParam.id),
+      supabase.from("master_actions")
+        .select("action_type, action_label")
+        .eq("user_id", userId)
+        .in("action_type", [ACTION_TYPE.series_week_notes_opened, ACTION_TYPE.study_group_article_opened]),
+    ]);
+
+    const map: Record<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }> = {};
+    (progressRes.data || []).forEach((p) => { map[p.week_number] = toSeriesWeekProgressState(p); });
+
+    const triviaRepairWeeks = new Set<number>();
+    const notesRepairWeeks = new Set<number>();
+    (triviaRes.data || []).forEach((row) => {
+      const existing = map[row.week_number] ?? toSeriesWeekProgressState();
+      if (!existing.trivia) {
+        triviaRepairWeeks.add(row.week_number);
+      }
+      map[row.week_number] = {
+        ...existing,
+        trivia: true,
+      };
+    });
+
+    (notesActionsRes.data || []).forEach((row) => {
+      if (!isSeriesWeekNotesActionEvent(row.action_type, row.action_label)) return;
+      const weekNumber = parseSeriesWeekNotesWeekNumber(row.action_label, seriesParam.title);
+      if (!weekNumber) return;
+      const existing = map[weekNumber] ?? toSeriesWeekProgressState();
+      if (!existing.notes) {
+        notesRepairWeeks.add(weekNumber);
+      }
+      map[weekNumber] = {
+        ...existing,
+        notes: true,
+      };
+    });
+
+    setSeriesWeekProgress(map);
+
+    const repairWeeks = new Set<number>([...triviaRepairWeeks, ...notesRepairWeeks]);
+    if (repairWeeks.size > 0) {
+      const repairRows = Array.from(repairWeeks).map((week_number) => ({
+        user_id: userId,
+        series_id: seriesParam.id,
+        week_number,
+        ...(triviaRepairWeeks.has(week_number) ? { trivia_completed: true } : {}),
+        ...(notesRepairWeeks.has(week_number) ? { notes_completed: true } : {}),
+      }));
+
+      const { error } = await supabase
+        .from("series_week_progress")
+        .upsert(repairRows, { onConflict: "user_id,series_id,week_number" });
+
+      if (error) {
+        console.error("[GROUP_SERIES] Failed to repair week completion flags", error);
+      }
+    }
+  }, [selectedSeries, userId]);
+
+  // â”€â”€ Load series posts + schedule + progress when series is selected â”€â”€â”€â”€â”€
+  useEffect(() => {
+    if (!selectedSeries) return;
+    loadSeriesPosts(selectedSeries.id);
+    // Load start date
+    supabase.from("series_schedules").select("start_date, start_at").eq("series_id", selectedSeries.id).maybeSingle()
+      .then(({ data }) => {
+        const resolvedStart = resolveSeriesStart(data);
+        setSeriesStartDate(resolvedStart);
+        setSeriesStartDateInput(resolvedStart ? toDateTimeLocalValue(resolvedStart) : "");
+        setEditingSeriesStart(!resolvedStart);
+      });
+    void loadSelectedSeriesWeekProgress(selectedSeries);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedSeries, loadSelectedSeriesWeekProgress]);
+
+  useEffect(() => {
+  }, [selectedSeries?.id, activeTab]);
+
+  useEffect(() => {
+    const hubCat = hubCategories.find((c) => c.id === activeTab);
+    if (!hubCat) return;
+    const hubCatStatic = HUB_CONTENT.find((c) => normalizeHubCategoryName(c.name) === normalizeHubCategoryName(hubCat.name));
+    const items = hubCatStatic?.items ?? [];
+    if (items.length === 0) {
+      setHubItemStats({});
+      return;
+    }
+    void loadHubItemStats(items);
+  }, [activeTab, hubCategories, userId]);
+
+  useEffect(() => {
+    const id = window.setInterval(() => setNowTs(Date.now()), 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const shouldLockBodyScroll =
+      !!showPostComposerModal ||
+      !!showTopBuddiesModal ||
+      !!showGroupInfoModal ||
+      !!deletePostId ||
+      !!lightboxUrl ||
+      !!showHubLikesFor ||
+      !!showPostLikesFor;
+
+    if (!shouldLockBodyScroll) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousTouchAction = document.body.style.touchAction;
+    document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.touchAction = previousTouchAction;
+    };
+  }, [
+    showPostComposerModal,
+    showTopBuddiesModal,
+    showGroupInfoModal,
+    deletePostId,
+    lightboxUrl,
+    showHubLikesFor,
+    showPostLikesFor,
+  ]);
+
+  useEffect(() => {
+    if (!showMoreNav) return;
+
+    function updateMoreMenuPosition() {
+      const rect = moreButtonRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      setMoreMenuPosition({
+        top: rect.bottom + 8,
+        left: Math.max(12, rect.left),
+      });
+    }
+
+    updateMoreMenuPosition();
+    window.addEventListener("resize", updateMoreMenuPosition);
+    window.addEventListener("scroll", updateMoreMenuPosition, true);
+    return () => {
+      window.removeEventListener("resize", updateMoreMenuPosition);
+      window.removeEventListener("scroll", updateMoreMenuPosition, true);
+    };
+  }, [showMoreNav]);
+
+  useEffect(() => {
+    if (!isDashboardEmbed || typeof window === "undefined") return;
+
+    let frame = 0;
+    const postHeight = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const root = communityRootRef.current;
+        const height = root ? Math.ceil(Math.max(root.getBoundingClientRect().height, root.scrollHeight)) : 0;
+        window.parent?.postMessage({ type: "bb-community-height", height: Math.max(420, height + 16) }, window.location.origin);
+      });
+    };
+
+    postHeight();
+
+    const observer = new ResizeObserver(postHeight);
+    if (communityRootRef.current) observer.observe(communityRootRef.current);
+    observer.observe(document.body);
+    const interval = window.setInterval(postHeight, 800);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.clearInterval(interval);
+    };
+  }, [
+    isDashboardEmbed,
+    activeTab,
+    selectedHubItem,
+    selectedFeedPost?.id,
+    deepLinkedCommentId,
+    posts.length,
+    hubCategories.length,
+    selectedSeries?.id,
+    selectedPost?.id,
+    members.length,
+  ]);
+
+  useEffect(() => {
+    return () => {
+      if (postEditor) postEditor.destroy();
+    };
+  }, [postEditor]);
+
+  // â”€â”€ Load comments when post is selected â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  useEffect(() => {
+    if (selectedPost) loadComments(selectedPost.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedPost]);
+
+  // â”€â”€ Chat posts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  async function hydrateFeedPosts(rows: any[]) {
+    const nextWeeklyPollByPostId: Record<string, WeeklyGroupPollFeedSet> = {};
+    const nextWeeklyTriviaByPostId: Record<string, WeeklyGroupTriviaFeedSet> = {};
+    const nextWeeklyQuestionByPostId: Record<string, WeeklyGroupQuestionFeedSet> = {};
+    const rootCommentCountMap: Record<string, number> = {};
+    rows.forEach((row) => {
+      rootCommentCountMap[row.id] = 0;
+    });
+
+    if (rows.length > 0) {
+      const { data: triviaRows } = await supabase
+        .from("weekly_group_trivia_sets")
+        .select("id, post_id, group_id, week_key, subject_key, subject_title, intro, questions, created_at")
+        .in("post_id", rows.map((row) => row.id));
+
+      (triviaRows || []).forEach((row: any) => {
+        nextWeeklyTriviaByPostId[row.post_id] = {
+          id: row.id,
+          post_id: row.post_id,
+          group_id: row.group_id,
+          week_key: row.week_key,
+          subject_key: row.subject_key,
+          subject_title: row.subject_title,
+          intro: row.intro ?? null,
+          questions: parseWeeklyTriviaQuestions(row.questions),
+          created_at: row.created_at,
+        };
+      });
+
+      const { data: questionRows } = await supabase
+        .from("weekly_group_questions")
+        .select("id, group_id, post_id, week_key, prompt_key, subject_title, prompt, intro, comment_prompt, created_at")
+        .in("post_id", rows.map((row) => row.id));
+
+      (questionRows || []).forEach((row: any) => {
+        nextWeeklyQuestionByPostId[row.post_id] = {
+          id: row.id,
+          group_id: row.group_id,
+          post_id: row.post_id,
+          week_key: row.week_key,
+          prompt_key: row.prompt_key,
+          subject_title: row.subject_title,
+          prompt: row.prompt,
+          intro: row.intro ?? null,
+          comment_prompt: row.comment_prompt ?? null,
+          created_at: row.created_at,
+        };
+      });
+
+      const { data: pollRows } = await supabase
+        .from("weekly_group_polls")
+        .select("id, group_id, post_id, week_key, poll_key, subject_title, question, intro, options, created_at")
+        .in("post_id", rows.map((row) => row.id));
+
+      const pollIds = (pollRows || []).map((row: any) => row.id);
+      const { data: pollVoteRows } = pollIds.length > 0
+        ? await supabase
+            .from("weekly_group_poll_votes")
+            .select("poll_id, user_id, option_key")
+            .in("poll_id", pollIds)
+        : { data: [] as any[] };
+
+      const voteMap: Record<string, Record<string, number>> = {};
+      const totalVoteMap: Record<string, number> = {};
+      const currentUserVoteMap: Record<string, string | null> = {};
+
+      (pollVoteRows || []).forEach((vote: any) => {
+        voteMap[vote.poll_id] ||= {};
+        voteMap[vote.poll_id][vote.option_key] = (voteMap[vote.poll_id][vote.option_key] || 0) + 1;
+        totalVoteMap[vote.poll_id] = (totalVoteMap[vote.poll_id] || 0) + 1;
+        if (userId && vote.user_id === userId) {
+          currentUserVoteMap[vote.poll_id] = vote.option_key;
+        }
+      });
+
+      (pollRows || []).forEach((row: any) => {
+        nextWeeklyPollByPostId[row.post_id] = {
+          id: row.id,
+          group_id: row.group_id,
+          post_id: row.post_id,
+          week_key: row.week_key,
+          poll_key: row.poll_key,
+          subject_title: row.subject_title,
+          question: row.question,
+          intro: row.intro ?? null,
+          options: parseWeeklyPollOptions(row.options),
+          created_at: row.created_at,
+          vote_counts: voteMap[row.id] || {},
+          total_votes: totalVoteMap[row.id] || 0,
+          current_user_vote: currentUserVoteMap[row.id] || null,
+        };
+      });
+    }
+
+    if (rows.length > 0) {
+      const rootIds = rows.map((row) => row.id);
+      const { data: topLevelComments } = await supabase
+        .from("group_posts")
+        .select("id, parent_post_id")
+        .in("parent_post_id", rootIds);
+
+      const directComments = topLevelComments || [];
+      const topLevelMap: Record<string, string> = {};
+
+      directComments.forEach((comment) => {
+        if (!comment.parent_post_id) return;
+        topLevelMap[comment.id] = comment.parent_post_id;
+        rootCommentCountMap[comment.parent_post_id] = (rootCommentCountMap[comment.parent_post_id] || 0) + 1;
+      });
+
+      if (directComments.length > 0) {
+        const { data: replyRows } = await supabase
+          .from("group_posts")
+          .select("id, parent_post_id")
+          .in("parent_post_id", directComments.map((comment) => comment.id));
+
+        (replyRows || []).forEach((reply) => {
+          const rootId = reply.parent_post_id ? topLevelMap[reply.parent_post_id] : null;
+          if (rootId) {
+            rootCommentCountMap[rootId] = (rootCommentCountMap[rootId] || 0) + 1;
+          }
+        });
+      }
+    }
+
+    const authorIds = [...new Set(rows.map((p) => p.user_id))];
+    const roleMap: Record<string, string> = {};
+    const imageMap: Record<string, string | null> = {};
+    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null; active_premium_skin: PremiumSkinId }> = {};
+
+    const likedSet = new Set<string>();
+    const likeCountMap: Record<string, number> = {};
+    rows.forEach((row) => {
+      likeCountMap[row.id] = 0;
+    });
+
+    if (rows.length > 0) {
+      const { data: likes } = await supabase
+        .from("group_post_likes").select("post_id, user_id")
+        .in("post_id", rows.map((p) => p.id));
+      (likes || []).forEach((like) => {
+        likeCountMap[like.post_id] = (likeCountMap[like.post_id] || 0) + 1;
+        if (userId && like.user_id === userId) likedSet.add(like.post_id);
+      });
+    }
+
+    if (authorIds.length > 0 && group) {
+      const [{ data: mems }, { data: pics }] = await Promise.all([
+        supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", authorIds),
+        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin").in("user_id", authorIds),
+      ]);
+      (mems || []).forEach((m) => { roleMap[m.user_id] = m.role; });
+      (pics || []).forEach((p: any) => {
+        imageMap[p.user_id] = p.profile_image_url ?? null;
+        badgeMap[p.user_id] = {
+          is_paid: !!p.is_paid,
+          member_badge: p.member_badge ?? null,
+          current_streak: p.current_streak ?? null,
+          selected_streak_flame: p.selected_streak_flame ?? null,
+          current_level: p.current_level ?? null,
+          active_premium_skin: normalizePremiumSkinId(p.active_premium_skin),
+        };
+      });
+    }
+
+    return {
+      posts: rows.map((p) => ({
+        ...p,
+        like_count: Math.max(p.like_count || 0, likeCountMap[p.id] || 0),
+        comment_count: rootCommentCountMap[p.id] || 0,
+        role: roleMap[p.user_id] || "member",
+        liked: likedSet.has(p.id),
+        profile_image_url: imageMap[p.user_id] ?? null,
+        is_paid: badgeMap[p.user_id]?.is_paid ?? false,
+        member_badge: badgeMap[p.user_id]?.member_badge ?? null,
+        current_streak: badgeMap[p.user_id]?.current_streak ?? null,
+        selected_streak_flame: badgeMap[p.user_id]?.selected_streak_flame ?? null,
+        current_level: badgeMap[p.user_id]?.current_level ?? null,
+        active_premium_skin: badgeMap[p.user_id]?.active_premium_skin ?? "none",
+      })),
+      weeklyPollByPostId: nextWeeklyPollByPostId,
+      weeklyTriviaByPostId: nextWeeklyTriviaByPostId,
+      weeklyQuestionByPostId: nextWeeklyQuestionByPostId,
+    };
+  }
+
+  async function loadPosts(page = 0) {
+    if (!group) return;
+    setLoadingPosts(true);
+    setPostsHasMore(false);
+    const postCategory = getGroupPostCategory(activeTab);
+
+    if (activeTab === "home") {
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const accessToken = sessionData.session?.access_token;
+        if (accessToken) {
+          await Promise.all([
+            fetch(`/api/groups/${group.id}/update-monday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/weekly-trivia/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/weekly-question/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/who-was-this-friday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/bible-study-saturday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/prayer-request-sunday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/weekly-poll/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+          ]);
+        }
+      } catch (error) {
+        console.error("[GROUP_WEEKLY_AUTOMATIONS] Ensure failed:", error);
+      }
+    }
+
+    const postQuery = supabase
+      .from("group_posts")
+      .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
+      .eq("group_id", group.id)
+      .is("parent_post_id", null);
+
+    const categorizedPostQuery =
+      activeTab === "home"
+        ? postQuery.in("category", [...HOME_FEED_CATEGORIES])
+        : postQuery.eq("category", postCategory);
+
+    const rangeStart = Math.max(page, 0) * FEED_PAGE_SIZE;
+    const { data: postRows, error } = await categorizedPostQuery
+      .order("is_pinned", { ascending: false })
+      .order("created_at", { ascending: false })
+      .range(rangeStart, rangeStart + FEED_PAGE_SIZE);
+
+    if (error) {
+      setLoadingPosts(false);
+      return;
+    }
+
+    const fetchedRows = postRows || [];
+    const rows = fetchedRows.slice(0, FEED_PAGE_SIZE);
+    const hydrated = await hydrateFeedPosts(rows);
+
+    setPosts(sortPinnedPostsFirst(hydrated.posts));
+    setWeeklyPollByPostId(hydrated.weeklyPollByPostId);
+    setWeeklyTriviaByPostId(hydrated.weeklyTriviaByPostId);
+    setWeeklyQuestionByPostId(hydrated.weeklyQuestionByPostId);
+    setPostsPage(Math.max(page, 0));
+    setPostsHasMore(fetchedRows.length > FEED_PAGE_SIZE);
+    setLoadingPosts(false);
+  }
+
+  async function openFeedPostById(postId: string) {
+    const existingPost = posts.find((post) => post.id === postId);
+    if (existingPost) {
+      setSelectedFeedPost(existingPost);
+      return;
+    }
+
+    if (!group) return;
+
+    const { data: postRow } = await supabase
+      .from("group_posts")
+      .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
+      .eq("group_id", group.id)
+      .eq("id", postId)
+      .is("parent_post_id", null)
+      .maybeSingle();
+
+    if (!postRow) return;
+
+    const [{ data: membership }, { data: profile }, { data: likeRows }, { count: directCommentCount }, { data: topLevelComments }] = await Promise.all([
+      supabase.from("group_members").select("role").eq("group_id", group.id).eq("user_id", postRow.user_id).maybeSingle(),
+      supabase.from("profile_stats").select("profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin").eq("user_id", postRow.user_id).maybeSingle(),
+      supabase.from("group_post_likes").select("post_id, user_id").eq("post_id", postRow.id),
+      supabase.from("group_posts").select("id", { count: "exact", head: true }).eq("parent_post_id", postRow.id),
+      supabase.from("group_posts").select("id").eq("parent_post_id", postRow.id),
+    ]);
+
+    let replyCount = 0;
+    const topLevelIds = (topLevelComments || []).map((comment) => comment.id);
+    if (topLevelIds.length > 0) {
+      const { count } = await supabase
+        .from("group_posts")
+        .select("id", { count: "exact", head: true })
+        .in("parent_post_id", topLevelIds);
+      replyCount = count ?? 0;
+    }
+
+    const liked = !!userId && (likeRows || []).some((row) => row.user_id === userId);
+    const [{ data: triviaSetRow }, { data: questionSetRow }, { data: pollSetRow }] = await Promise.all([
+      supabase
+        .from("weekly_group_trivia_sets")
+        .select("id, post_id, group_id, week_key, subject_key, subject_title, intro, questions, created_at")
+        .eq("post_id", postRow.id)
+        .maybeSingle(),
+      supabase
+        .from("weekly_group_questions")
+        .select("id, group_id, post_id, week_key, prompt_key, subject_title, prompt, intro, comment_prompt, created_at")
+        .eq("post_id", postRow.id)
+        .maybeSingle(),
+      supabase
+        .from("weekly_group_polls")
+        .select("id, group_id, post_id, week_key, poll_key, subject_title, question, intro, options, created_at")
+        .eq("post_id", postRow.id)
+        .maybeSingle(),
+    ]);
+
+    if (triviaSetRow) {
+      setWeeklyTriviaByPostId((prev) => ({
+        ...prev,
+        [postRow.id]: {
+          id: triviaSetRow.id,
+          post_id: triviaSetRow.post_id,
+          group_id: triviaSetRow.group_id,
+          week_key: triviaSetRow.week_key,
+          subject_key: triviaSetRow.subject_key,
+          subject_title: triviaSetRow.subject_title,
+          intro: triviaSetRow.intro ?? null,
+          questions: parseWeeklyTriviaQuestions((triviaSetRow as any).questions),
+          created_at: triviaSetRow.created_at,
+        },
+      }));
+    }
+
+    if (questionSetRow) {
+      setWeeklyQuestionByPostId((prev) => ({
+        ...prev,
+        [postRow.id]: {
+          id: questionSetRow.id,
+          group_id: questionSetRow.group_id,
+          post_id: questionSetRow.post_id,
+          week_key: questionSetRow.week_key,
+          prompt_key: questionSetRow.prompt_key,
+          subject_title: questionSetRow.subject_title,
+          prompt: questionSetRow.prompt,
+          intro: questionSetRow.intro ?? null,
+          comment_prompt: questionSetRow.comment_prompt ?? null,
+          created_at: questionSetRow.created_at,
+        },
+      }));
+    }
+
+    if (pollSetRow) {
+      const { data: pollVoteRows } = await supabase
+        .from("weekly_group_poll_votes")
+        .select("poll_id, user_id, option_key")
+        .eq("poll_id", pollSetRow.id);
+
+      const voteCounts: Record<string, number> = {};
+      let totalVotes = 0;
+      let currentUserVote: string | null = null;
+      (pollVoteRows || []).forEach((vote: any) => {
+        voteCounts[vote.option_key] = (voteCounts[vote.option_key] || 0) + 1;
+        totalVotes += 1;
+        if (userId && vote.user_id === userId) currentUserVote = vote.option_key;
+      });
+
+      setWeeklyPollByPostId((prev) => ({
+        ...prev,
+        [postRow.id]: {
+          id: pollSetRow.id,
+          group_id: pollSetRow.group_id,
+          post_id: pollSetRow.post_id,
+          week_key: pollSetRow.week_key,
+          poll_key: pollSetRow.poll_key,
+          subject_title: pollSetRow.subject_title,
+          question: pollSetRow.question,
+          intro: pollSetRow.intro ?? null,
+          options: parseWeeklyPollOptions((pollSetRow as any).options),
+          created_at: pollSetRow.created_at,
+          vote_counts: voteCounts,
+          total_votes: totalVotes,
+          current_user_vote: currentUserVote,
+        },
+      }));
+    }
+
+    const hydratedPost: Post = {
+      ...postRow,
+      like_count: Math.max(postRow.like_count || 0, likeRows?.length || 0),
+      comment_count: (directCommentCount ?? 0) + replyCount,
+      role: membership?.role || "member",
+      liked,
+      profile_image_url: profile?.profile_image_url ?? null,
+      is_paid: !!profile?.is_paid,
+      member_badge: profile?.member_badge ?? null,
+      current_streak: profile?.current_streak ?? null,
+      selected_streak_flame: profile?.selected_streak_flame ?? null,
+      current_level: profile?.current_level ?? null,
+      active_premium_skin: normalizePremiumSkinId(profile?.active_premium_skin),
+    };
+
+    setSelectedFeedPost(hydratedPost);
+  }
+
+  async function handleLike(post: Post) {
+    if (!userId || likeLoading.has(post.id)) return;
+    const currentPost = posts.find((p) => p.id === post.id) ?? selectedFeedPost ?? post;
+    setLikeLoading((prev) => new Set(prev).add(post.id));
+    if (currentPost.liked) {
+      await supabase.from("group_post_likes").delete().eq("post_id", post.id).eq("user_id", userId);
+      await supabase.from("group_posts").update({ like_count: Math.max(0, currentPost.like_count - 1) }).eq("id", post.id);
+      const updated = { ...currentPost, like_count: Math.max(0, currentPost.like_count - 1), liked: false };
+      setPosts((prev) => prev.map((p) => p.id === post.id ? updated : p));
+      setSelectedFeedPost((prev) => prev?.id === post.id ? updated : prev);
+      setPostLikers((prev) => prev.filter((liker) => liker.user_id !== userId));
+    } else {
+      setLikeAnimatingIds((prev) => new Set(prev).add(post.id));
+      setTimeout(() => setLikeAnimatingIds((prev) => { const s = new Set(prev); s.delete(post.id); return s; }), 420);
+      await supabase.from("group_post_likes").insert({ post_id: post.id, user_id: userId });
+      await supabase.from("group_posts").update({ like_count: currentPost.like_count + 1 }).eq("id", post.id);
+      const updated = { ...currentPost, like_count: currentPost.like_count + 1, liked: true };
+      setPosts((prev) => prev.map((p) => p.id === post.id ? updated : p));
+      setSelectedFeedPost((prev) => prev?.id === post.id ? updated : prev);
+      setPostLikers((prev) => prev.some((liker) => liker.user_id === userId) ? prev : [{
+        user_id: userId,
+        display_name: displayName,
+        profile_image_url: userProfileImage,
+        is_paid: userIsPaid,
+        member_badge: userMemberBadge,
+        current_streak: userCurrentStreak,
+        selected_streak_flame: userSelectedStreakFlame,
+        active_premium_skin: userActivePremiumSkin,
+      }, ...prev]);
+    }
+    setLikeLoading((prev) => { const s = new Set(prev); s.delete(post.id); return s; });
+  }
+
+  async function openPostLikes(post: Post) {
+    setShowPostLikesFor(post);
+    setLoadingPostLikers(true);
+
+    const { data: likeRows } = await supabase
+      .from("group_post_likes")
+      .select("user_id")
+      .eq("post_id", post.id);
+
+    const likerIds = [...new Set((likeRows || []).map((row) => row.user_id))];
+
+    setPosts((prev) =>
+      prev.map((item) =>
+        item.id === post.id ? { ...item, like_count: likerIds.length } : item
+      )
+    );
+    setSelectedFeedPost((prev) =>
+      prev?.id === post.id ? { ...prev, like_count: likerIds.length } : prev
+    );
+
+    if (likerIds.length === 0) {
+      setPostLikers([]);
+      setLoadingPostLikers(false);
+      return;
+    }
+
+    const { data: profiles } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin")
+      .in("user_id", likerIds);
+
+    setPostLikers(
+      likerIds.map((userIdValue) => {
+        const profile = (profiles || []).find((row) => row.user_id === userIdValue);
+        return {
+          user_id: userIdValue,
+          display_name: profile?.display_name || profile?.username || "Buddy",
+          profile_image_url: profile?.profile_image_url ?? null,
+          is_paid: !!profile?.is_paid,
+          member_badge: profile?.member_badge ?? null,
+          current_streak: profile?.current_streak ?? null,
+          selected_streak_flame: profile?.selected_streak_flame ?? null,
+          current_level: profile?.current_level ?? null,
+          active_premium_skin: normalizePremiumSkinId(profile?.active_premium_skin),
+        };
+      }),
+    );
+    setLoadingPostLikers(false);
+  }
+
+  function resetPostComposer() {
+    setNewPostTitle("");
+    setNewPostContent("");
+    setEditingFeedPost(null);
+    postEditor?.commands.clearContent();
+    setComposerPhotoFile(null);
+    setComposerPhotoPreview(null);
+    if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
+    setComposerVideoFile(null);
+    setComposerVideoPreview(null);
+    setComposerVideoDurationError(false);
+    setComposerMode("text");
+    setComposerUploadError(null);
+  }
+
+  function canEditFeedPost(post: Post) {
+    if (MANAGED_HOME_FEED_CATEGORIES.has(post.category)) {
+      return isLeaderOrMod;
+    }
+    return post.user_id === userId;
+  }
+
+  function startEditingFeedPost(post: Post) {
+    setActivePostMenuId(null);
+    setEditingFeedPost(post);
+    setNewPostTitle(post.title || "");
+    setNewPostContent(post.content || "");
+    postEditor?.commands.setContent(post.content || "");
+    setShowPostComposerModal(true);
+  }
+
+  async function handleSubmitPost() {
+    const editorHtml = postEditor?.getHTML() ?? "";
+    let normalizedContent = editorHtml === "<p></p>" ? "" : editorHtml;
+    const hasContent = stripHtml(normalizedContent).length > 0;
+    const hasPhoto = composerMode === "photo" && !!composerPhotoFile;
+    const hasVideo = composerMode === "video" && !!composerVideoFile && !composerVideoDurationError;
+    const hasExistingMedia = !!editingFeedPost?.media_url;
+    if (!hasContent && !hasPhoto && !hasVideo && !hasExistingMedia) return;
+    if (!userId || !group || submitting) return;
+    if (activeTab === "members" || activeTab === "bible_studies") return;
+    setSubmitting(true);
+    setComposerUploadError(null);
+
+    let mediaUrl: string | null = null;
+    let linkUrl: string | null = null;
+
+    if (normalizedContent) {
+      try {
+        const items = mentionItems.length > 0 ? mentionItems : await loadGroupPostMentions(supabase, group.id);
+        normalizedContent = linkMentionItemsInHtml(normalizedContent, items);
+      } catch (mentionError) {
+        setComposerUploadError(mentionError instanceof Error ? mentionError.message : "Could not prepare post mentions.");
+        setSubmitting(false);
+        return;
+      }
+    }
+
+    if (hasPhoto && composerPhotoFile) {
+      const ext = composerPhotoFile.name.split(".").pop() ?? "jpg";
+      const path = `${userId}/${Date.now()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from("post-media").upload(path, composerPhotoFile, { upsert: false });
+      if (upErr) {
+        setComposerUploadError("Photo upload failed. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      const { data: pub } = supabase.storage.from("post-media").getPublicUrl(path);
+      mediaUrl = pub.publicUrl;
+    }
+
+    if (hasVideo && composerVideoFile) {
+      const ext = composerVideoFile.name.split(".").pop() ?? "mp4";
+      const path = `${userId}/${Date.now()}.${ext}`;
+      const { error: uploadErr } = await supabase.storage.from("post-media").upload(path, composerVideoFile, { upsert: false });
+      if (uploadErr) {
+        setComposerUploadError("Video upload failed. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      const { data: pub } = supabase.storage.from("post-media").getPublicUrl(path);
+      mediaUrl = pub.publicUrl;
+    }
+
+    if (editingFeedPost) {
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const accessToken = sessionData.session?.access_token;
+
+        if (!accessToken) {
+          throw new Error("Could not verify your session.");
+        }
+
+        const response = await fetch(`/api/groups/${group.id}/edit-post`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({
+            postId: editingFeedPost.id,
+            title: newPostTitle.trim(),
+            content: normalizedContent,
+          }),
+        });
+
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(payload.error || "Could not save your post changes.");
+        }
+
+        const updatedPost: Post = {
+          ...editingFeedPost,
+          title: payload.post?.title ?? null,
+          content: payload.post?.content ?? normalizedContent,
+        };
+
+        setPosts((prev) => sortPinnedPostsFirst(prev.map((item) => (item.id === updatedPost.id ? updatedPost : item))));
+        setSelectedFeedPost((prev) => (prev?.id === updatedPost.id ? updatedPost : prev));
+        resetPostComposer();
+        setShowPostComposerModal(false);
+      } catch (error) {
+        setComposerUploadError(getFriendlyPostErrorMessage(error, "Could not save your post changes."));
+      }
+
+      setSubmitting(false);
+      return;
+    }
+
+    const { data: sessionData } = await supabase.auth.getSession();
+    const accessToken = sessionData.session?.access_token;
+
+    if (!accessToken) {
+      setComposerUploadError("Could not verify your session.");
+      setSubmitting(false);
+      return;
+    }
+
+    let payload: any = null;
+    try {
+      const response = await fetch(`/api/groups/${group.id}/create-post`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          title: newPostTitle.trim(),
+          category: getGroupPostCategory(activeTab),
+          content: normalizedContent,
+          mediaUrl,
+          linkUrl,
+        }),
+      });
+
+      payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Post failed to publish. Please try again.");
+      }
+    } catch (error) {
+      console.error("Group post create failed:", error);
+      setComposerUploadError(getFriendlyPostErrorMessage(error, "Post failed to publish. Please try again."));
+      setSubmitting(false);
+      return;
+    }
+
+    const newPost = payload?.post as Post | undefined;
+
+    if (newPost) {
+      setPosts((prev) => sortPinnedPostsFirst([{
+        ...newPost,
+      }, ...prev]));
+      resetPostComposer();
+      setShowPostComposerModal(false);
+      triggerPostSuccess();
+      triggerToast("Posted to the group! ??");
+      void logActionToMasterActions(userId, "group_message_sent", group?.name || "Group");
+    }
+    setSubmitting(false);
+  }
+
+  async function handleDeleteGroupPost() {
+    triggerSmokeDelete();
+    if (!deletePostId || deletingPost) return;
+    setDeletingPost(true);
+    await supabase.from("group_posts").delete().eq("id", deletePostId);
+    setPosts((prev) => prev.filter((post) => post.id !== deletePostId));
+    setSelectedFeedPost((prev) => (prev?.id === deletePostId ? null : prev));
+    setDeletePostId(null);
+    setDeletingPost(false);
+  }
+
+  async function handleTogglePin(post: Post) {
+    if (!isLeaderOrMod || pinningPostId || !group) return;
+
+    const nextPinned = !post.is_pinned;
+    setPinningPostId(post.id);
+    setActivePostMenuId(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch(`/api/groups/${group.id}/pin-post`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          postId: post.id,
+          nextPinned,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not update pin right now.");
+      }
+
+      setPosts((prev) =>
+        sortPinnedPostsFirst(
+          prev.map((item) =>
+            item.id === post.id ? { ...item, is_pinned: Boolean(payload.isPinned) } : item,
+          ),
+        ),
+      );
+      setSelectedFeedPost((prev) =>
+        prev?.id === post.id ? { ...prev, is_pinned: Boolean(payload.isPinned) } : prev,
+      );
+    } catch (error) {
+      window.alert(error instanceof Error ? error.message : "Could not update pin right now.");
+    }
+
+    setPinningPostId(null);
+  }
+
+  async function loadHubItemStats(items: HubItemStatic[]) {
+    const itemPaths = items.map((item) => item.path);
+    const nextStats: Record<string, HubItemStats> = {};
+
+    itemPaths.forEach((path) => {
+      nextStats[path] = { likeCount: 0, commentCount: 0, liked: false, likers: [] };
+    });
+
+    const { data: commentRows } = await supabase
+      .from("article_comments")
+      .select("article_slug")
+      .in("article_slug", itemPaths);
+
+    (commentRows || []).forEach((row) => {
+      if (!row.article_slug || !nextStats[row.article_slug]) return;
+      nextStats[row.article_slug].commentCount += 1;
+    });
+
+    const { data: likeRows, error: likeRowsError } = await supabase
+      .from("article_likes")
+      .select("article_slug, user_id")
+      .in("article_slug", itemPaths);
+
+    if (!likeRowsError) {
+      const likerIds = [...new Set((likeRows || []).map((row) => row.user_id))];
+      let likerMap: Record<string, ArticleLikeUser> = {};
+
+      if (likerIds.length > 0) {
+        const { data: likerProfiles } = await supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url, current_streak, selected_streak_flame, current_level, active_premium_skin")
+          .in("user_id", likerIds);
+
+        likerMap = Object.fromEntries(
+          (likerProfiles || []).map((profile) => [
+            profile.user_id,
+            {
+              user_id: profile.user_id,
+              display_name: profile.display_name || profile.username || "Buddy",
+              profile_image_url: profile.profile_image_url ?? null,
+              current_streak: profile.current_streak ?? null,
+              selected_streak_flame: profile.selected_streak_flame ?? null,
+              current_level: profile.current_level ?? null,
+              active_premium_skin: normalizePremiumSkinId(profile.active_premium_skin),
+            },
+          ]),
+        );
+      }
+
+      (likeRows || []).forEach((row) => {
+        if (!row.article_slug || !nextStats[row.article_slug]) return;
+        nextStats[row.article_slug].likeCount += 1;
+        if (userId && row.user_id === userId) nextStats[row.article_slug].liked = true;
+        const liker = likerMap[row.user_id] || { user_id: row.user_id, display_name: "Buddy", profile_image_url: null };
+        nextStats[row.article_slug].likers.push(liker);
+      });
+    }
+
+    setHubItemStats(nextStats);
+  }
+
+  async function handleHubItemLike(item: HubItemStatic) {
+    if (!userId) return;
+    const current = hubItemStats[item.path] || { likeCount: 0, commentCount: 0, liked: false, likers: [] };
+
+    if (current.liked) {
+      const { error } = await supabase
+        .from("article_likes")
+        .delete()
+        .eq("article_slug", item.path)
+        .eq("user_id", userId);
+      if (error) return;
+
+      setHubItemStats((prev) => ({
+        ...prev,
+        [item.path]: {
+          ...current,
+          liked: false,
+          likeCount: Math.max(0, current.likeCount - 1),
+          likers: current.likers.filter((liker) => liker.user_id !== userId),
+        },
+      }));
+      return;
+    }
+
+    const { error } = await supabase.from("article_likes").insert({
+      article_slug: item.path,
+      user_id: userId,
+    });
+    if (error) return;
+
+    setHubLikeAnimatingPaths((prev) => new Set(prev).add(item.path));
+    window.setTimeout(() => {
+      setHubLikeAnimatingPaths((prev) => {
+        const next = new Set(prev);
+        next.delete(item.path);
+        return next;
+      });
+    }, 420);
+
+    const newLiker: ArticleLikeUser = {
+      user_id: userId,
+      display_name: displayName,
+      profile_image_url: userProfileImage,
+      selected_streak_flame: userSelectedStreakFlame,
+      active_premium_skin: userActivePremiumSkin,
+    };
+
+    setHubItemStats((prev) => ({
+      ...prev,
+      [item.path]: {
+        ...current,
+        liked: true,
+        likeCount: current.likeCount + 1,
+        likers: current.likers.some((liker) => liker.user_id === userId) ? current.likers : [newLiker, ...current.likers],
+      },
+    }));
+  }
+
+  // â”€â”€ Members â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  async function fetchMembersPage(offset: number): Promise<{ rows: Member[]; hasMore: boolean }> {
+    if (!group) return { rows: [], hasMore: false };
+    const { data: page } = await supabase
+      .from("group_members")
+      .select("user_id, role, display_name")
+      .eq("group_id", group.id)
+      .eq("status", "approved")
+      .order("role", { ascending: true })
+      .range(offset, offset + MEMBERS_PAGE - 1);
+
+    if (!page || page.length === 0) return { rows: [], hasMore: false };
+
+    const userIds = page.map((m) => m.user_id);
+    const { data: profiles } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin")
+      .in("user_id", userIds);
+    const profileMap: Record<string, any> = {};
+    (profiles || []).forEach((p) => { profileMap[p.user_id] = p; });
+
+    const roleOrder: Record<string, number> = { leader: 0, moderator: 1, member: 2 };
+    const rows: Member[] = page.map((m) => {
+      const p = profileMap[m.user_id];
+      return {
+        user_id: m.user_id,
+        display_name: p?.display_name || p?.username || m.display_name || "Buddy",
+        role: m.role,
+        profile_image_url: p?.profile_image_url ?? null,
+        is_paid: !!p?.is_paid,
+        member_badge: p?.member_badge ?? null,
+        current_streak: p?.current_streak ?? null,
+        selected_streak_flame: p?.selected_streak_flame ?? null,
+        current_level: p?.current_level ?? null,
+        active_premium_skin: normalizePremiumSkinId(p?.active_premium_skin),
+      };
+    });
+    rows.sort((a, b) => (roleOrder[a.role] ?? 2) - (roleOrder[b.role] ?? 2));
+    return { rows, hasMore: page.length === MEMBERS_PAGE };
+  }
+
+  async function loadMembers() {
+    if (!group) return;
+    setLoadingMembers(true);
+    setMembersOffset(0);
+    const [{ rows, hasMore }, { count }] = await Promise.all([
+      fetchMembersPage(0),
+      supabase
+        .from("group_members")
+        .select("user_id", { count: "exact", head: true })
+        .eq("group_id", group.id)
+        .eq("status", "approved"),
+    ]);
+    setMembers(rows);
+    setMembersOffset(MEMBERS_PAGE);
+    setMembersHasMore(hasMore);
+    setMembersTotal(count ?? null);
+    setLoadingMembers(false);
+  }
+
+  async function loadMoreMembers() {
+    setLoadingMoreMembers(true);
+    const { rows, hasMore } = await fetchMembersPage(membersOffset);
+    setMembers((prev) => [...prev, ...rows]);
+    setMembersOffset((prev) => prev + MEMBERS_PAGE);
+    setMembersHasMore(hasMore);
+    setLoadingMoreMembers(false);
+  }
+
+  useEffect(() => {
+    if (!group || (activeTab !== "members" && activeTab !== "home")) return;
+    void loadTopBuddies();
+  }, [activeTab, group?.id]);
+
+  useEffect(() => {
+    if (!group) return;
+    if (activeTab === "members" || activeTab === "bible_studies" || hubCategories.some((c) => c.id === activeTab)) return;
+
+    const channel = supabase
+      .channel(`group-feed-refresh:${group.id}:${activeTab}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "group_posts",
+          filter: `group_id=eq.${group.id}`,
+        },
+        () => {
+          void loadPosts(postsPage);
+        },
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [group, activeTab, hubCategories, postsPage]);
+
+  // â”€â”€ Series â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  async function loadSeries() {
+    if (!group) return;
+    setLoadingSeries(true);
+    const { data } = await supabase
+      .from("group_series")
+      .select("id, title, description, total_weeks, current_week, is_current, created_at")
+      .eq("group_id", group.id)
+      .order("created_at", { ascending: false });
+    const rows = data || [];
+    setSeriesList(rows);
+    const seriesIds = rows.map((series) => series.id);
+    const { data: scheduleRows } = seriesIds.length
+      ? await supabase
+        .from("series_schedules")
+        .select("series_id, start_date, start_at")
+        .in("series_id", seriesIds)
+      : { data: [] as Array<{ series_id: string; start_date: string | null; start_at: string | null }> };
+    const scheduleMap = new Map(
+      (scheduleRows || []).map((row) => [row.series_id, resolveSeriesStart(row)]),
+    );
+    const featuredPreview = selectFeaturedSeriesPreview(rows, scheduleMap, Date.now());
+    setCurrentSeriesPreview(featuredPreview.preview);
+    setCurrentSeriesStartAt(featuredPreview.startAt);
+    setLoadingSeries(false);
+  }
+
+  async function loadSeriesAnalytics(seriesId: string, seriesTitle?: string) {
+    setLoadingAnalytics(true);
+
+    const [progressRes, triviaRes, reflectionsRes, notesActionsRes] = await Promise.all([
+      supabase
+        .from("series_week_progress")
+        .select("user_id, week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
+        .eq("series_id", seriesId),
+      supabase
+        .from("series_trivia_scores")
+        .select("user_id, week_number, score, total_questions")
+        .eq("series_id", seriesId),
+      supabase
+        .from("series_reflections")
+        .select("user_id, week_number, display_name, profile_image_url")
+        .eq("series_id", seriesId),
+      supabase
+        .from("master_actions")
+        .select("user_id, action_type, action_label")
+        .in("action_type", [ACTION_TYPE.series_week_notes_opened, ACTION_TYPE.study_group_article_opened]),
+    ]);
+
+    const progressRows = progressRes.data || [];
+    const triviaRows = triviaRes.data || [];
+    const reflectionRows = reflectionsRes.data || [];
+    const notesActionRows = notesActionsRes.data || [];
+
+    const allUserIds = [
+      ...new Set([
+        ...progressRows.map((r) => r.user_id),
+        ...triviaRows.map((r) => r.user_id),
+        ...reflectionRows.map((r) => r.user_id),
+        ...notesActionRows.map((r) => r.user_id),
+      ].filter(Boolean)),
+    ];
+
+    const profileMap = new Map<string, { username: string; avatar_url?: string | null }>();
+    if (allUserIds.length > 0) {
+      const { data: profiles } = await supabase
+        .from("profile_stats")
+        .select("user_id, username, display_name, profile_image_url")
+        .in("user_id", allUserIds);
+      (profiles || []).forEach((p) => {
+        if (p.user_id) profileMap.set(p.user_id, {
+          username: p.username ?? p.display_name ?? "Unknown",
+          avatar_url: p.profile_image_url ?? null,
+        });
+      });
+    }
+
+    function resolveUser(uid: string, displayName?: string | null, profileImage?: string | null): AnalyticsUser {
+      const prof = profileMap.get(uid);
+      return { user_id: uid, username: displayName ?? prof?.username ?? "Unknown", avatar_url: profileImage ?? prof?.avatar_url ?? null };
+    }
+
+    const analyticsMap = new Map<number, WeekAnalytics>();
+    const totalWeeks = getSeriesTotalWeeks(seriesTitle);
+    for (let wn = 1; wn <= totalWeeks; wn++) {
+      const weekProgress = progressRows.filter((r) => r.week_number === wn);
+      const noteReadersMap = new Map<string, AnalyticsUser>();
+      weekProgress
+        .filter((r) => r.notes_completed)
+        .forEach((r) => noteReadersMap.set(r.user_id, resolveUser(r.user_id)));
+      notesActionRows.forEach((row) => {
+        if (!row.user_id || !isSeriesWeekNotesActionEvent(row.action_type, row.action_label)) return;
+        const actionWeekNumber = parseSeriesWeekNotesWeekNumber(row.action_label, seriesTitle);
+        if (actionWeekNumber !== wn) return;
+        noteReadersMap.set(row.user_id, resolveUser(row.user_id));
+      });
+
+      analyticsMap.set(wn, {
+        starters: weekProgress.length,
+        readers: weekProgress.filter((r) => r.reading_completed).map((r) => resolveUser(r.user_id)),
+        noteReaders: Array.from(noteReadersMap.values()),
+        triviaScores: triviaRows.filter((r) => r.week_number === wn).map((r) => ({ ...resolveUser(r.user_id), score: r.score, total: r.total_questions })),
+        reflectors: reflectionRows.filter((r) => r.week_number === wn).map((r) => resolveUser(r.user_id, r.display_name, r.profile_image_url)),
+      });
+    }
+
+    setWeekAnalytics(analyticsMap);
+    setLoadingAnalytics(false);
+    setAnalyticsLoaded(true);
+  }
+
+  async function loadSeriesPosts(seriesId: string) {
+    if (!group) return;
+    setLoadingSeriesPosts(true);
+    const isLeader = userRole === "leader";
+    let query = supabase
+      .from("group_series_posts")
+      .select("id, series_id, week_number, title, content, is_published, like_count, comment_count, created_at, published_at")
+      .eq("series_id", seriesId)
+      .order("week_number", { ascending: true });
+    if (!isLeader) query = query.eq("is_published", true);
+    const { data: postRows } = await query;
+    const rows = postRows || [];
+    let likedSet = new Set<string>();
+    if (userId && rows.length > 0) {
+      const { data: likes } = await supabase
+        .from("group_series_post_likes").select("post_id")
+        .eq("user_id", userId).in("post_id", rows.map((p) => p.id));
+      (likes || []).forEach((l) => likedSet.add(l.post_id));
+    }
+    setSeriesPosts(rows.map((p) => ({ ...p, liked: likedSet.has(p.id) })));
+    setLoadingSeriesPosts(false);
+  }
+
+  async function loadComments(postId: string) {
+    setLoadingComments(true);
+    const { data: rows } = await supabase
+      .from("group_series_post_comments")
+      .select("id, user_id, display_name, content, parent_comment_id, like_count, created_at")
+      .eq("post_id", postId)
+      .order("created_at", { ascending: true });
+    const commentRows = rows || [];
+
+    let imageMap: Record<string, string | null> = {};
+    let roleMap: Record<string, string> = {};
+    let badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; selected_streak_flame: string | null; current_level: number | null; active_premium_skin: PremiumSkinId }> = {};
+    if (commentRows.length > 0) {
+      const commenterIds = [...new Set(commentRows.map((c) => c.user_id))];
+      const [{ data: pics }, { data: roles }] = await Promise.all([
+        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, selected_streak_flame, current_level, active_premium_skin").in("user_id", commenterIds),
+        group
+          ? supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", commenterIds)
+          : Promise.resolve({ data: [] as Array<{ user_id: string; role: string }> }),
+      ]);
+      (pics || []).forEach((p: any) => {
+        imageMap[p.user_id] = p.profile_image_url ?? null;
+        badgeMap[p.user_id] = {
+          is_paid: !!p.is_paid,
+          member_badge: p.member_badge ?? null,
+          current_streak: p.current_streak ?? null,
+          selected_streak_flame: p.selected_streak_flame ?? null,
+          current_level: p.current_level ?? null,
+          active_premium_skin: normalizePremiumSkinId(p.active_premium_skin),
+        };
+      });
+      (roles || []).forEach((row) => { roleMap[row.user_id] = row.role; });
+    }
+
+    let likedSet = new Set<string>();
+    if (userId && commentRows.length > 0) {
+      const { data: likes } = await supabase
+        .from("group_series_comment_likes").select("comment_id")
+        .eq("user_id", userId).in("comment_id", commentRows.map((c) => c.id));
+      (likes || []).forEach((l) => likedSet.add(l.comment_id));
+    }
+    setComments(commentRows.map((c) => ({
+      ...c,
+      liked: likedSet.has(c.id),
+      profile_image_url: imageMap[c.user_id] ?? null,
+      role: roleMap[c.user_id] || "member",
+      is_paid: badgeMap[c.user_id]?.is_paid ?? false,
+      member_badge: badgeMap[c.user_id]?.member_badge ?? null,
+      current_streak: badgeMap[c.user_id]?.current_streak ?? null,
+      selected_streak_flame: badgeMap[c.user_id]?.selected_streak_flame ?? null,
+      current_level: badgeMap[c.user_id]?.current_level ?? null,
+      active_premium_skin: badgeMap[c.user_id]?.active_premium_skin ?? "none",
+    })));
+    setLoadingComments(false);
+  }
+
+  async function handleSetCurrentSeries(series: Series) {
+    if (!group || !userId) return;
+    let targetSeries = series;
+
+    if (series.id.startsWith("preview-")) {
+      const normalizedTitle = normalizeSeriesTitle(series.title);
+      const existingSeries = seriesList.find((item) => normalizeSeriesTitle(item.title) === normalizedTitle) ?? null;
+
+      if (existingSeries) {
+        targetSeries = existingSeries;
+      } else {
+        const { data: createdSeries, error: createSeriesError } = await supabase
+          .from("group_series")
+          .insert({
+            group_id: group.id,
+            title: series.title,
+            description: series.description ?? null,
+            total_weeks: series.total_weeks,
+            created_by: userId,
+          })
+          .select("id, title, description, total_weeks, current_week, is_current, created_at")
+          .single();
+
+        if (createSeriesError || !createdSeries) {
+          setSeriesStartSaveError(createSeriesError?.message || "Could not create that series yet.");
+          return;
+        }
+
+        targetSeries = createdSeries as Series;
+        setSeriesList((prev) => [targetSeries, ...prev]);
+        setSelectedSeries(targetSeries);
+      }
+    }
+
+    // Set all series for this group to is_current = false
+    await supabase.from("group_series").update({ is_current: false }).eq("group_id", group.id);
+    // Set this one to true, and update current_week to 1
+    await supabase.from("group_series").update({ is_current: true }).eq("id", targetSeries.id);
+    setSeriesList((prev) => prev.map((s) => ({ ...s, is_current: s.id === targetSeries.id })));
+    setSelectedSeries((prev) => (prev ? { ...(prev.id === series.id ? targetSeries : prev), is_current: true } : prev));
+  }
+
+  async function handleSaveSeriesStartDate() {
+    if (!selectedSeries || !group || !userId || !seriesStartDateInput) return;
+    setSavingSeriesStartDate(true);
+    setSeriesStartSaveError(null);
+    const startAtIso = new Date(seriesStartDateInput).toISOString();
+    let targetSeries = selectedSeries;
+
+    if (selectedSeries.id.startsWith("preview-")) {
+      const normalizedTitle = normalizeSeriesTitle(selectedSeries.title);
+      const existingSeries = seriesList.find((item) => normalizeSeriesTitle(item.title) === normalizedTitle) ?? null;
+
+      if (existingSeries) {
+        targetSeries = existingSeries;
+      } else {
+        const { data: createdSeries, error: createSeriesError } = await supabase
+          .from("group_series")
+          .insert({
+            group_id: group.id,
+            title: selectedSeries.title,
+            description: selectedSeries.description ?? null,
+            total_weeks: selectedSeries.total_weeks,
+            created_by: userId,
+          })
+          .select("id, title, description, total_weeks, current_week, is_current, created_at")
+          .single();
+
+        if (createSeriesError || !createdSeries) {
+          setSeriesStartSaveError(createSeriesError?.message || "Could not create that series yet.");
+          setSavingSeriesStartDate(false);
+          return;
+        }
+
+        targetSeries = createdSeries as Series;
+        setSeriesList((prev) => [targetSeries, ...prev]);
+        setSelectedSeries(targetSeries);
+      }
+    }
+
+    const payload = {
+      series_id: targetSeries.id,
+      group_id: group.id,
+      start_date: seriesStartDateInput.slice(0, 10),
+      start_at: startAtIso,
+      created_by: userId,
+    };
+
+    const { data: existingSchedule } = await supabase
+      .from("series_schedules")
+      .select("id")
+      .eq("series_id", targetSeries.id)
+      .maybeSingle();
+
+    const saveResult = existingSchedule?.id
+      ? await supabase.from("series_schedules").update(payload).eq("id", existingSchedule.id)
+      : await supabase.from("series_schedules").insert(payload);
+
+    if (saveResult.error) {
+      const message = saveResult.error.message || "";
+      if (message.includes("Could not find the table 'public.series_schedules'")) {
+        setSeriesStartSaveError("Supabase is missing the series schedule tables. Run STEP_H_SERIES_TABLES.sql first, then ADD_SERIES_START_TIME_SUPPORT.sql.");
+      } else {
+        setSeriesStartSaveError(message || "Could not save the series start time.");
+      }
+      setSavingSeriesStartDate(false);
+      return;
+    }
+
+    const { error: clearCurrentError } = await supabase
+      .from("group_series")
+      .update({ is_current: false })
+      .eq("group_id", group.id);
+
+    if (clearCurrentError) {
+      setSeriesStartSaveError(clearCurrentError.message || "The start time saved, but the current series could not be updated.");
+      setSavingSeriesStartDate(false);
+      return;
+    }
+
+    const { error: setCurrentError } = await supabase
+      .from("group_series")
+      .update({ is_current: true, current_week: 1 })
+      .eq("id", targetSeries.id);
+
+    if (setCurrentError) {
+      setSeriesStartSaveError(setCurrentError.message || "The start time saved, but the current series could not be updated.");
+      setSavingSeriesStartDate(false);
+      return;
+    }
+
+    const { data: refreshedSchedule, error: refreshError } = await supabase
+      .from("series_schedules")
+      .select("start_date, start_at")
+      .eq("series_id", targetSeries.id)
+      .maybeSingle();
+
+    if (refreshError) {
+      setSeriesStartSaveError(refreshError.message || "The series start time saved, but it could not be reloaded.");
+      setSavingSeriesStartDate(false);
+      return;
+    }
+
+    const resolvedStart = resolveSeriesStart(refreshedSchedule);
+    setSeriesStartDate(resolvedStart);
+    setCurrentSeriesStartAt(resolvedStart);
+    setSeriesList((prev) => prev.map((series) => ({ ...series, is_current: series.id === targetSeries.id })));
+    setSelectedSeries((prev) => (prev ? { ...(prev.id === selectedSeries.id ? targetSeries : prev), is_current: true, current_week: 1 } : prev));
+    setCurrentSeriesPreview(buildCurrentSeriesPreview(targetSeries));
+    setSeriesStartDateInput(resolvedStart ? toDateTimeLocalValue(resolvedStart) : "");
+    setEditingSeriesStart(!resolvedStart);
+    setSavingSeriesStartDate(false);
+  }
+
+  async function handleCreateSeries() {
+    if (!newSeriesTitle.trim() || !group || !userId) return;
+    setSubmittingNewSeries(true);
+    const { data, error } = await supabase
+      .from("group_series")
+      .insert({ group_id: group.id, title: newSeriesTitle.trim(), description: newSeriesDesc.trim() || null, total_weeks: newSeriesTotalWeeks, created_by: userId })
+      .select("id, title, description, total_weeks, current_week, is_current, created_at")
+      .single();
+    if (!error && data) {
+      setSeriesList((prev) => [data, ...prev]);
+      setShowNewSeriesModal(false);
+      setNewSeriesTitle("");
+      setNewSeriesDesc("");
+      setNewSeriesTotalWeeks(4);
+    }
+    setSubmittingNewSeries(false);
+  }
+
+  async function handleCreateSeriesPost() {
+    if (!newSeriesPostTitle.trim() || !newSeriesPostContent.trim() || !selectedSeries || !group || !userId) return;
+    setSubmittingNewSeriesPost(true);
+    const nextWeek = seriesPosts.length + 1;
+    const now = new Date().toISOString();
+    const { data, error } = await supabase
+      .from("group_series_posts")
+      .insert({
+        series_id: selectedSeries.id,
+        group_id: group.id,
+        week_number: nextWeek,
+        title: newSeriesPostTitle.trim(),
+        content: newSeriesPostContent.trim(),
+        is_published: newSeriesPostPublish,
+        published_at: newSeriesPostPublish ? now : null,
+        created_by: userId,
+      })
+      .select("id, series_id, week_number, title, content, is_published, like_count, comment_count, created_at, published_at")
+      .single();
+    if (!error && data) {
+      setSeriesPosts((prev) => [...prev, { ...data, liked: false }]);
+      setShowNewPostModal(false);
+      setNewSeriesPostTitle("");
+      setNewSeriesPostContent("");
+      setNewSeriesPostPublish(false);
+    }
+    setSubmittingNewSeriesPost(false);
+  }
+
+  async function handleSeriesPostLike(post: SeriesPost) {
+    if (!userId || postLikeLoading) return;
+    setPostLikeLoading(true);
+    if (post.liked) {
+      await supabase.from("group_series_post_likes").delete().eq("post_id", post.id).eq("user_id", userId);
+      await supabase.from("group_series_posts").update({ like_count: Math.max(0, post.like_count - 1) }).eq("id", post.id);
+      const updated = { ...post, like_count: Math.max(0, post.like_count - 1), liked: false };
+      setSelectedPost(updated);
+      setSeriesPosts((prev) => prev.map((p) => p.id === post.id ? updated : p));
+    } else {
+      setSeriesPostLikeAnimating(true);
+      window.setTimeout(() => setSeriesPostLikeAnimating(false), 420);
+      await supabase.from("group_series_post_likes").insert({ post_id: post.id, user_id: userId });
+      await supabase.from("group_series_posts").update({ like_count: post.like_count + 1 }).eq("id", post.id);
+      const updated = { ...post, like_count: post.like_count + 1, liked: true };
+      setSelectedPost(updated);
+      setSeriesPosts((prev) => prev.map((p) => p.id === post.id ? updated : p));
+    }
+    setPostLikeLoading(false);
+  }
+
+  async function handleCommentLike(comment: SeriesComment) {
+    if (!userId || commentLikeLoading.has(comment.id)) return;
+    setCommentLikeLoading((prev) => new Set(prev).add(comment.id));
+    if (comment.liked) {
+      await supabase.from("group_series_comment_likes").delete().eq("comment_id", comment.id).eq("user_id", userId);
+      await supabase.from("group_series_post_comments").update({ like_count: Math.max(0, comment.like_count - 1) }).eq("id", comment.id);
+      setComments((prev) => prev.map((c) => c.id === comment.id ? { ...c, like_count: Math.max(0, c.like_count - 1), liked: false } : c));
+    } else {
+      setSeriesCommentLikeAnimatingIds((prev) => new Set(prev).add(comment.id));
+      window.setTimeout(() => {
+        setSeriesCommentLikeAnimatingIds((prev) => {
+          const next = new Set(prev);
+          next.delete(comment.id);
+          return next;
+        });
+      }, 420);
+      await supabase.from("group_series_comment_likes").insert({ comment_id: comment.id, user_id: userId });
+      await supabase.from("group_series_post_comments").update({ like_count: comment.like_count + 1 }).eq("id", comment.id);
+      setComments((prev) => prev.map((c) => c.id === comment.id ? { ...c, like_count: c.like_count + 1, liked: true } : c));
+    }
+    setCommentLikeLoading((prev) => { const s = new Set(prev); s.delete(comment.id); return s; });
+  }
+
+  async function handleAddComment(parentId: string | null = null) {
+    const text = parentId ? replyText : newCommentText;
+    if (!text.trim() || !userId || !selectedPost || !group || submittingComment) return;
+    setSubmittingComment(true);
+    const { data, error } = await supabase
+      .from("group_series_post_comments")
+      .insert({ post_id: selectedPost.id, group_id: group.id, user_id: userId, display_name: displayName, content: text.trim(), parent_comment_id: parentId })
+      .select("id, user_id, display_name, content, parent_comment_id, like_count, created_at")
+      .single();
+    if (!error && data) {
+      setComments((prev) => [...prev, {
+        ...data,
+        liked: false,
+        profile_image_url: userProfileImage,
+        role: userRole,
+        is_paid: userIsPaid,
+        member_badge: userMemberBadge,
+        current_streak: userCurrentStreak,
+        selected_streak_flame: userSelectedStreakFlame,
+        active_premium_skin: userActivePremiumSkin,
+      }]);
+      if (parentId) { setReplyText(""); setReplyingToId(null); }
+      else setNewCommentText("");
+    }
+    setSubmittingComment(false);
+  }
+
+  async function handleSeriesAutoReply(comment: SeriesComment) {
+    if (!isLouisAdmin) return;
+    if (!group || !selectedPost || seriesAutoReplyLoadingId) return;
+    setSeriesAutoReplyLoadingId(comment.id);
+    setReplyingToId(comment.id);
+
+    try {
+      const draft = await generateAutoReplyDraft(
+        group.id,
+        selectedPost.title,
+        selectedPost.content,
+        comment.content,
+        comment.display_name,
+      );
+      setReplyText(draft);
+    } catch (error) {
+      triggerToast(error instanceof Error ? error.message : "Could not generate a reply draft.");
+    }
+
+    setSeriesAutoReplyLoadingId(null);
+  }
+
+  async function handleSeriesAutoComment() {
+    if (!isLouisAdmin) return;
+    if (!group || !selectedPost || seriesAutoCommentLoading) return;
+    setSeriesAutoCommentLoading(true);
+
+    try {
+      const draft = await generateAutoReplyDraft(
+        group.id,
+        selectedPost.title,
+        selectedPost.content,
+        selectedPost.content,
+        "Group",
+      );
+      setNewCommentText(draft);
+    } catch (error) {
+      triggerToast(error instanceof Error ? error.message : "Could not generate a comment draft.");
+    }
+
+    setSeriesAutoCommentLoading(false);
+  }
+
+  function canDeleteSeriesComment(comment: SeriesComment) {
+    return (
+      comment.user_id === userId ||
+      userMemberBadge === "moderator" ||
+      userRole === "leader" ||
+      userRole === "moderator"
+    );
+  }
+
+  function canEditSeriesComment(comment: SeriesComment) {
+    return comment.user_id === userId;
+  }
+
+  async function handleSaveSeriesCommentEdit(comment: SeriesComment) {
+    const nextContent = editingSeriesCommentText.trim();
+    if (!nextContent || savingSeriesCommentId) return;
+
+    setSavingSeriesCommentId(comment.id);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/edit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "series_post_comment",
+          commentId: comment.id,
+          content: nextContent,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not save this comment.");
+      }
+
+      setComments((prev) =>
+        prev.map((item) =>
+          item.id === comment.id
+            ? { ...item, content: payload.comment?.content ?? nextContent }
+            : item
+        )
+      );
+      setEditingSeriesCommentId(null);
+      setEditingSeriesCommentText("");
+    } catch (error) {
+      console.error("Failed to edit series comment:", error);
+    }
+
+    setSavingSeriesCommentId(null);
+  }
+
+  async function handleDeleteSeriesComment(comment: SeriesComment) {
+    triggerSmokeDelete();
+    if (!userId || deletingSeriesCommentId) return;
+    setDeletingSeriesCommentId(comment.id);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "series_post_comment",
+          commentId: comment.id,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not delete this comment.");
+      }
+
+      const deletedIds = new Set<string>((payload.deletedIds || []) as string[]);
+      if (deletedIds.size === 0) deletedIds.add(comment.id);
+
+      setComments((prev) => prev.filter((item) => !deletedIds.has(item.id)));
+
+      if (typeof payload.nextCommentCount === "number") {
+        setSelectedPost((prev) => (prev ? { ...prev, comment_count: payload.nextCommentCount } : prev));
+        setSeriesPosts((prev) => prev.map((item) => (
+          selectedPost && item.id === selectedPost.id
+            ? { ...item, comment_count: payload.nextCommentCount }
+            : item
+        )));
+      }
+
+      if (replyingToId && deletedIds.has(replyingToId)) {
+        setReplyingToId(null);
+        setReplyText("");
+      }
+      if (editingSeriesCommentId && deletedIds.has(editingSeriesCommentId)) {
+        setEditingSeriesCommentId(null);
+        setEditingSeriesCommentText("");
+      }
+    } catch (error) {
+      console.error("Failed to delete series comment:", error);
+    }
+
+    setDeletingSeriesCommentId(null);
+  }
+
+  // â”€â”€ Derived â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  if (!group) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <p className="text-gray-500 text-sm">Loading...</p>
+      </div>
+    );
+  }
+
+  const coverColor = isDashboardEmbed ? "var(--bb-card)" : group.cover_color || "var(--bb-card)";
+  const activeFeedPost = selectedFeedPost ? (posts.find((post) => post.id === selectedFeedPost.id) ?? selectedFeedPost) : null;
+  const activeFeedPollSet = activeFeedPost ? weeklyPollByPostId[activeFeedPost.id] : undefined;
+  const activeFeedTriviaSet = activeFeedPost ? weeklyTriviaByPostId[activeFeedPost.id] : undefined;
+  const activeFeedQuestionSet = activeFeedPost ? weeklyQuestionByPostId[activeFeedPost.id] : undefined;
+  const activeFeedCoverPost = activeFeedPost ? isHomeFeedCoverPost(activeFeedPost) : false;
+  const activeFeedScrambledShare = activeFeedPost ? isScrambledScoreShare(activeFeedPost) : false;
+  const activeFeedScrambledPromo = activeFeedPost ? isScrambledPromoPost(activeFeedPost) : false;
+  const activeFeedBibleBuddyTvShare = activeFeedPost ? isBibleBuddyTvSharePost(activeFeedPost) : false;
+  const modalTopBuddies = topBuddies;
+  const isLeader = userRole === "leader";
+  const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
+  const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
+  const SAGE = "var(--bb-accent)";
+  const displayGroupName = group.name === "Hope Nation" || group.name === "Bible Buddy Study Group" ? "Group" : group.name;
+  const selectedSeriesAccent = selectedSeries?.title.toLowerCase().includes("tempt")
+    ? { buttonBg: "#b7794d" }
+    : { buttonBg: SAGE };
+  // â”€â”€ Render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  return (
+    <div ref={communityRootRef} className={`bb-community-page ${isDashboardEmbed ? "bb-community-embedded" : "min-h-screen"} text-[var(--bb-text-primary,#111827)]`}>
+
+      {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div className="bb-community-header relative z-20" style={isDashboardEmbed ? undefined : { backgroundColor: coverColor }}>
+        <div className="max-w-2xl mx-auto px-4 pt-4 pb-2">
+          <div className="bb-community-hero-card rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
+          {!isDashboardEmbed && (
+          <div className="flex items-center gap-1 text-xs text-[var(--bb-text-secondary,#5f6368)] font-medium mb-3 flex-wrap">
+            {!isDashboardEmbed && (
+              <>
+                <Link href="/dashboard" className="hover:text-[var(--bb-text-primary,#111827)] hover:underline transition">
+                  Dashboard
+                </Link>
+                <span>/</span>
+              </>
+            )}
+            <span className="text-[var(--bb-text-primary,#111827)]">Group</span>
+            {selectedSeries && (
+              <>
+                <span>/</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedSeries(null);
+                    setSelectedSeriesWeek(null);
+                    setSelectedPost(null);
+                  }}
+                  className="text-[var(--bb-text-primary,#111827)] hover:underline"
+                >
+                  {selectedSeries.title}
+                </button>
+              </>
+            )}
+            {selectedPost && (
+              <>
+                <span>/</span>
+                <button
+                  type="button"
+                  onClick={() => setSelectedPost(null)}
+                  className="text-[var(--bb-text-primary,#111827)] hover:underline"
+                >
+                  {selectedPost.title}
+                </button>
+              </>
+            )}
+          </div>
+          )}
+          <div className="flex items-center gap-3">
+            {!isDashboardEmbed ? (
+              <span className="bb-community-emblem grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#ffffff)] text-xl shadow-sm">{group.cover_emoji || "??"}</span>
+            ) : null}
+            <div className="flex-1 min-w-0">
+              {!isDashboardEmbed ? (
+                <div>
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">{displayGroupName}</p>
+                  <h1 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Group</h1>
+                  <p className="mt-1 max-w-xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
+                    Connect with Bible Buddies across the world.
+                  </p>
+                </div>
+              ) : null}
+              <div className="mt-2 flex items-center gap-3 flex-wrap">
+              <button
+                onClick={() => {
+                      setActiveTab("members");
+                }}
+                className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
+              >
+                See All Buddies
+              </button>
+              {isLouisAdmin && (
+                <>
+                  <Link
+                    href={`/study-groups/${group.id}/analytics`}
+                    className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
+                  >
+                    Group Analytics
+                  </Link>
+                  <Link
+                    href={`/study-groups/${group.id}/scheduler`}
+                    className="text-xs text-[var(--bb-text-secondary,#5f6368)] hover:text-[var(--bb-text-primary,#111827)] transition font-medium"
+                  >
+                    Scheduler
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        {/* Header navigation */}
+        <div className="max-w-2xl mx-auto px-4 pb-4">
+          {(() => {
+            const primaryTabs = [
+              { key: "home", label: "Home", isHub: false },
+              ...(!isDashboardEmbed ? [{ key: "bible_studies", label: "Bible Studies", isHub: false }] : []),
+              ...hubCategories.map((cat) => ({
+                key: cat.id,
+                label: `${cat.emoji} ${cat.name}`,
+                isHub: true,
+              })),
+            ];
+            const moreItems: Array<{ key: string; label: string; isHub: boolean }> = [];
+            const moreIsActive = activeTab === "prayer" || activeTab === "qa" || hubCategories.some((cat) => cat.id === activeTab);
+            return (
+              <div className="relative">
+                <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pr-1">
+                  {primaryTabs.map((tab) => {
+                    const isActive = activeTab === tab.key;
+                    return (
+                      <button
+                        key={tab.key}
+                        type="button"
+                        onClick={() => {
+                          setSelectedHubItem(null);
+                          setShowTopBuddiesDetail(false);
+                          setActiveTab(tab.key);
+                          if (tab.isHub) setHubView("articles");
+                          setShowMoreNav(false);
+                        }}
+                        className="bb-community-tab px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition"
+                        style={{
+                          backgroundColor: isActive ? "var(--bb-surface)" : "var(--bb-surface-soft)",
+                          borderColor: isActive ? "var(--bb-accent)" : "var(--bb-card-border)",
+                          color: isActive ? "var(--bb-accent)" : "var(--bb-text-primary)",
+                        }}
+                      >
+                        {tab.label}
+                      </button>
+                    );
+                  })}
+                  {moreItems.length > 0 && (
+                    <div className="flex-shrink-0">
+                      <button
+                        ref={moreButtonRef}
+                        type="button"
+                        onClick={() => {
+                          setShowMoreNav((v) => !v);
+                        }}
+                        className="bb-community-tab px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition flex items-center gap-2"
+                        style={{
+                          backgroundColor: moreIsActive || showMoreNav ? "var(--bb-surface)" : "var(--bb-surface-soft)",
+                          borderColor: moreIsActive || showMoreNav ? "var(--bb-accent)" : "var(--bb-card-border)",
+                          color: moreIsActive || showMoreNav ? "var(--bb-accent)" : "var(--bb-text-primary)",
+                        }}
+                      >
+                        <span>More</span>
+                        <svg
+                          className={`w-4 h-4 transition-transform ${showMoreNav ? "rotate-180" : ""}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+      </div>
+
+      {showMoreNav && moreMenuPosition && (
+        <>
+          <div className="fixed inset-0 z-10" onClick={() => setShowMoreNav(false)} />
+          <div
+            className="fixed z-20 w-64 max-w-[calc(100vw-2rem)] rounded-2xl border border-[var(--bb-card-border,#ead8c4)] bg-[var(--bb-card,#fffaf4)] p-2 shadow-xl"
+            style={{ top: moreMenuPosition.top, left: moreMenuPosition.left }}
+          >
+            {[
+              { key: "prayer", label: "Prayer Request", isHub: false },
+              { key: "qa", label: "Q&A", isHub: false },
+              ...hubCategories.map((cat) => ({
+                key: cat.id,
+                label: `${cat.emoji} ${cat.name}`,
+                isHub: true,
+              })),
+            ].map((item) => {
+              const isActive = activeTab === item.key;
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  onClick={() => {
+                    setSelectedHubItem(null);
+                    setShowTopBuddiesDetail(false);
+                    setActiveTab(item.key);
+                    if (item.isHub) setHubView("articles");
+                    setShowMoreNav(false);
+                  }}
+                  className="w-full px-3.5 py-2.5 rounded-xl text-sm font-medium text-left transition"
+                  style={{
+                    backgroundColor: isActive ? "var(--bb-accent-soft)" : "transparent",
+                    color: isActive ? "var(--bb-accent)" : "var(--bb-text-secondary)",
+                  }}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+        </>
+      )}
+
+
+      {/* â”€â”€ Feed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div ref={feedRef} className={`bb-community-feed ${isDashboardEmbed ? "pb-4" : "pb-32"}`}>
+
+        {/* â”€â”€ Hub article viewer â”€â”€ */}
+        {selectedHubItem && (
+          <div className="mx-auto max-w-2xl px-4 py-4">
+            <div className="bb-community-panel overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+              <div className="flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4">
+                <div className="min-w-0">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#b7794d)]">
+                    {selectedHubItem.type === "article" ? "Article" : "Question"}
+                  </p>
+                  <h2 className="mt-1 text-xl font-black leading-snug text-[var(--bb-text-primary,#111827)]">{selectedHubItem.title}</h2>
+                  <p className="mt-1 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{selectedHubItem.subtitle}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedHubItem(null)}
+                  className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
+                  aria-label="Close article"
+                >
+                  ×
+                </button>
+              </div>
+              <iframe
+                key={selectedHubItem.path}
+                src={selectedHubItem.path}
+                title={selectedHubItem.title}
+                className="block w-full border-0 bg-[var(--bb-card,#ffffff)]"
+                style={{ height: "calc(100vh - 220px)", minHeight: 620 }}
+              />
+            </div>
+          </div>
+        )}
+
+        {!selectedHubItem && <div className="bb-community-content max-w-2xl mx-auto px-4 py-4">
+
+          {activeTab === "home" && !activeFeedPost && !showTopBuddiesDetail ? (
+            <>
+              <div className="mb-4">
+                {renderUpdateCard()}
+              </div>
+            </>
+          ) : null}
+
+          {/* â”€â”€ MEMBERS TAB â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {activeTab === "members" && !selectedSeries && !selectedPost ? (
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mt-2">
+              <div className="px-5 py-4 border-b border-gray-100">
+                  <h2 className="text-base font-semibold text-gray-800">Buddies {membersTotal !== null ? `(${membersTotal})` : ""}</h2>
+              </div>
+              <div className="px-4 pt-4">
+                <div className="rounded-2xl border border-[#d8e8d7] bg-white shadow-sm overflow-hidden">
+                  <div className="px-5 py-4">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#6f8d6c]">Top Members</p>
+                        <h3 className="mt-2 text-lg font-bold text-gray-900">Buddies showing up the most</h3>
+                        <p className="mt-1 text-sm text-gray-600">Top 5 this week based on Bible tasks.</p>
+                      </div>
+                      <span className="rounded-full bg-[#edf7ed] px-3 py-1 text-xs font-semibold text-[#4a9b6f]">Top 10</span>
+                    </div>
+
+                    <div className="mt-4 space-y-3">
+                      {loadingTopBuddies ? (
+                        <p className="text-sm text-gray-500">Loading top members...</p>
+                      ) : topBuddies.length === 0 ? (
+                        <p className="text-sm text-gray-500">No top member activity yet.</p>
+                      ) : (
+                        topBuddies.slice(0, 5).map((buddy) => (
+                          <div key={buddy.userId} className="flex items-center gap-3">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f2e7dc] text-xs font-bold text-[#8d5d38]">
+                              {buddy.rank}
+                            </div>
+                            {buddy.profileImageUrl ? (
+                              <img src={buddy.profileImageUrl} alt={buddy.displayName} className={getProfileSkinFrameClass("h-10 w-10 rounded-full object-cover", buddy.activePremiumSkin)} style={getProfileSkinFrameStyle(buddy.activePremiumSkin)} />
+                            ) : (
+                              <div className={getProfileSkinFrameClass("flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white", buddy.activePremiumSkin)} style={{ backgroundColor: avatarColor(buddy.userId), ...getProfileSkinFrameStyle(buddy.activePremiumSkin) }}>
+                                {getInitial(buddy.displayName)}
+                              </div>
+                            )}
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-1.5">
+                                  <p className="truncate text-sm font-semibold text-gray-900">{buddy.displayName}</p>
+                                  <StreakFlameBadge currentStreak={buddy.currentStreak} flameId={buddy.selectedStreakFlame} />
+                                  <LevelBadge currentLevel={buddy.currentLevel} skinId={buddy.activePremiumSkin} />
+                                </div>
+                                <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} skinId={buddy.activePremiumSkin} />
+                              </div>
+                              <p className="mt-0.5 text-xs text-gray-500">{buddy.actions || 0} Bible tasks</p>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-base font-bold text-gray-900">{buddy.score}</p>
+                              <p className="text-[11px] text-gray-500">tasks week</p>
+                            </div>
+                          </div>
+                        ))
+                      )}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setShowTopBuddiesModal(true)}
+                      className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#4a9b6f]"
+                    >
+                      See full ranking
+                      <span aria-hidden="true">?</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              {/* Search */}
+              <div className="px-4 py-3 border-b border-gray-100">
+                <input
+                  type="text"
+                  value={membersSearch}
+                  onChange={(e) => setMembersSearch(e.target.value)}
+                      placeholder="Search buddies..."
+                  className="w-full px-4 py-2 bg-gray-100 rounded-xl text-sm text-gray-900 placeholder-gray-400 outline-none"
+                />
+              </div>
+              {loadingMembers ? (
+                <p className="text-sm text-gray-400 text-center py-8">Loading buddies...</p>
+              ) : members.length === 0 ? (
+                <p className="text-sm text-gray-400 text-center py-8">No buddies yet.</p>
+              ) : (() => {
+                const q = membersSearch.toLowerCase();
+                const filtered = membersSearch ? members.filter((m) => m.display_name.toLowerCase().includes(q)) : members;
+                if (filtered.length === 0) return <p className="text-sm text-gray-400 text-center py-8">No buddies found for &ldquo;{membersSearch}&rdquo;.</p>;
+                return (
+                <div>
+                  <div className="divide-y divide-gray-100">
+                    {filtered.map((member) => (
+                      <div key={member.user_id} className="flex items-center gap-3 px-5 py-3.5">
+                        {member.profile_image_url ? (
+                          <img src={member.profile_image_url} alt={member.display_name} className={getProfileSkinFrameClass("w-10 h-10 rounded-full object-cover flex-shrink-0", member.active_premium_skin)} style={getProfileSkinFrameStyle(member.active_premium_skin)} />
+                        ) : (
+                          <div className={getProfileSkinFrameClass("w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0", member.active_premium_skin)} style={{ backgroundColor: avatarColor(member.user_id), ...getProfileSkinFrameStyle(member.active_premium_skin) }}>
+                            {getInitial(member.display_name)}
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <div className="flex items-center gap-1.5">
+                              <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
+                              <StreakFlameBadge currentStreak={member.current_streak} flameId={member.selected_streak_flame} />
+                              <LevelBadge currentLevel={member.current_level} skinId={member.active_premium_skin} />
+                            </div>
+                            <UserBadge customBadge={member.member_badge} isPaid={member.is_paid} groupRole={member.role} skinId={member.active_premium_skin} />
+                          </div>
+                        </div>
+                        <Link
+                          href={`/profile/${member.user_id}`}
+                          className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition flex-shrink-0"
+                        >
+                          View Profile
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Load more â€” only show when not searching */}
+                  {!membersSearch && membersHasMore && (
+                    <div className="px-5 py-4 border-t border-gray-100">
+                      <button
+                        onClick={loadMoreMembers}
+                        disabled={loadingMoreMembers}
+                        className="w-full py-2.5 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:bg-gray-50 transition disabled:opacity-50"
+                      >
+                      {loadingMoreMembers ? "Loading..." : `Load more · ${members.length} of ${membersTotal ?? "?"} buddies`}
+                      </button>
+                    </div>
+                  )}
+                  {!membersSearch && !membersHasMore && membersTotal !== null && (
+                  <p className="text-xs text-gray-400 text-center py-3">{membersTotal} {membersTotal === 1 ? "buddy" : "buddies"} total</p>
+                  )}
+                </div>
+                );
+              })()}
+            </div>
+
+          /* â”€â”€ BIBLE STUDIES â€” POST VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+          ) : activeTab === "bible_studies" && selectedPost ? (
+            <div className="flex flex-col gap-4">
+              {/* Post card */}
+              <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                <div className="px-5 pt-5 pb-4">
+                  <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">{selectedSeries?.title}</p>
+                  <p className="text-xs text-gray-500 mb-3">Week {selectedPost.week_number} Â· {selectedPost.published_at ? formatDate(selectedPost.published_at) : formatDate(selectedPost.created_at)}</p>
+                  <h2 className="text-xl font-bold text-gray-900 mb-4 leading-snug">{selectedPost.title}</h2>
+                  <MentionText
+                    text={selectedPost.content}
+                    items={mentionItems}
+                    className="text-gray-800 text-sm leading-relaxed whitespace-pre-wrap"
+                  />
+                </div>
+                {/* Like bar */}
+                <div className="px-5 py-3 border-t border-gray-100 flex items-center gap-3">
+                  <button
+                    onClick={() => handleSeriesPostLike(selectedPost)}
+                    disabled={postLikeLoading}
+                    className="flex items-center gap-1.5 text-sm font-medium transition"
+                    style={{ color: selectedPost.liked ? "#e53e3e" : "#9ca3af" }}
+                  >
+                    <svg className={`w-5 h-5 ${seriesPostLikeAnimating ? "animate-heart-pop" : ""}`} fill={selectedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    {selectedPost.like_count}
+                  </button>
+                  <span className="text-xs text-gray-400">{selectedPost.comment_count} comment{selectedPost.comment_count !== 1 ? "s" : ""}</span>
+                </div>
+              </div>
+
+              {/* Comments */}
+              <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                <div className="px-5 py-4 border-b border-gray-100">
+                  <h3 className="text-sm font-semibold text-gray-800">Comments</h3>
+                </div>
+                {loadingComments ? (
+                  <p className="text-sm text-gray-400 text-center py-6">Loading...</p>
+                ) : (
+                  <div className="divide-y divide-gray-100">
+                    {/* Top-level comments */}
+                    {comments.filter((c) => !c.parent_comment_id).map((comment) => (
+                      <div key={comment.id} className="px-5 py-4">
+                        <div className="flex items-start gap-3">
+                          <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0">
+                            {comment.profile_image_url ? (
+                              <img src={comment.profile_image_url} alt={comment.display_name} className={getProfileSkinFrameClass("w-8 h-8 rounded-full object-cover hover:opacity-80 transition", comment.active_premium_skin)} style={getProfileSkinFrameStyle(comment.active_premium_skin)} />
+                            ) : (
+                              <div className={getProfileSkinFrameClass("w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold hover:opacity-80 transition", comment.active_premium_skin)} style={{ backgroundColor: avatarColor(comment.user_id), ...getProfileSkinFrameStyle(comment.active_premium_skin) }}>
+                                {getInitial(comment.display_name)}
+                              </div>
+                            )}
+                          </Link>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-1.5 mb-1">
+                              <Link href={`/profile/${comment.user_id}`} className="text-sm font-semibold text-gray-900 hover:underline">{comment.display_name}</Link>
+                              <StreakFlameBadge currentStreak={comment.current_streak} flameId={comment.selected_streak_flame} />
+                              <LevelBadge currentLevel={comment.current_level} skinId={comment.active_premium_skin} />
+                              <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} skinId={comment.active_premium_skin} />
+                              <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
+                            </div>
+                            {editingSeriesCommentId === comment.id ? (
+                              <div className="space-y-2">
+                                <TextareaMentionInput
+                                  value={editingSeriesCommentText}
+                                  onChange={setEditingSeriesCommentText}
+                                  mentionItems={mentionItems}
+                                  rows={3}
+                                  autoFocus
+                                  className="w-full text-sm bg-gray-100 rounded-xl px-3 py-2 outline-none text-gray-900 placeholder-gray-400 resize-none"
+                                />
+                                <div className="flex items-center gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={() => void handleSaveSeriesCommentEdit(comment)}
+                                    disabled={savingSeriesCommentId === comment.id || !editingSeriesCommentText.trim()}
+                                    className="rounded-xl px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                                    style={{ backgroundColor: SAGE }}
+                                  >
+                                    {savingSeriesCommentId === comment.id ? "Saving..." : "Save"}
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setEditingSeriesCommentId(null);
+                                      setEditingSeriesCommentText("");
+                                    }}
+                                    className="rounded-xl border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-50"
+                                  >
+                                    Cancel
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <MentionText
+                                text={comment.content}
+                                items={mentionItems}
+                                className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap"
+                              />
+                            )}
+                            <div className="flex items-center gap-4 mt-2">
+                              <button
+                                onClick={() => handleCommentLike(comment)}
+                                disabled={commentLikeLoading.has(comment.id)}
+                                className="flex items-center gap-1 text-xs transition"
+                                style={{ color: comment.liked ? "#e53e3e" : "#9ca3af" }}
+                              >
+                                <svg className={`w-3.5 h-3.5 ${seriesCommentLikeAnimatingIds.has(comment.id) ? "animate-heart-pop" : ""}`} fill={comment.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                {comment.like_count}
+                              </button>
+                              <button
+                                onClick={() => setReplyingToId(replyingToId === comment.id ? null : comment.id)}
+                                className="text-xs text-gray-400 hover:text-gray-700 transition"
+                              >
+                                Reply
+                              </button>
+                              {isLouisAdmin && (
+                                <button
+                                  type="button"
+                                  onClick={() => void handleSeriesAutoReply(comment)}
+                                  disabled={seriesAutoReplyLoadingId === comment.id}
+                                  className="text-xs text-gray-400 hover:text-[#4a9b6f] transition disabled:opacity-50"
+                                >
+                                  {seriesAutoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
+                                </button>
+                              )}
+                              {canEditSeriesComment(comment) && editingSeriesCommentId !== comment.id && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setEditingSeriesCommentId(comment.id);
+                                    setEditingSeriesCommentText(comment.content);
+                                    setReplyingToId(null);
+                                    setReplyText("");
+                                  }}
+                                  className="text-xs text-gray-400 hover:text-[#4a9b6f] transition"
+                                >
+                                  Edit
+                                </button>
+                              )}
+                              {canDeleteSeriesComment(comment) && (
+                                <button
+                                  type="button"
+                                  onClick={() => void handleDeleteSeriesComment(comment)}
+                                  disabled={deletingSeriesCommentId === comment.id}
+                                  className="text-xs text-gray-400 hover:text-red-500 transition disabled:opacity-50"
+                                >
+                                  {deletingSeriesCommentId === comment.id ? "Deleting..." : "Delete"}
+                                </button>
+                              )}
+                            </div>
+
+                            {/* Inline reply input */}
+                            {replyingToId === comment.id && (
+                              <div className="mt-3 flex gap-2">
+                                <TextareaMentionInput
+                                  value={replyText}
+                                  onChange={setReplyText}
+                                  mentionItems={mentionItems}
+                                  onEnterSubmit={() => handleAddComment(comment.id)}
+                                  placeholder={`Reply to ${comment.display_name}...`}
+                                  rows={1}
+                                  autoFocus
+                                  className="w-full text-xs bg-gray-100 rounded-xl px-3 py-2 outline-none text-gray-900 placeholder-gray-400 resize-none"
+                                />
+                                <button
+                                  onClick={() => handleAddComment(comment.id)}
+                                  disabled={!replyText.trim() || submittingComment}
+                                  className="px-3 py-1.5 rounded-xl text-white text-xs font-medium disabled:opacity-40 transition"
+                                  style={{ backgroundColor: SAGE }}
+                                >
+                                  Send
+                                </button>
+                              </div>
+                            )}
+
+                            {/* Replies */}
+                            {comments.filter((c) => c.parent_comment_id === comment.id).map((reply) => (
+                              <div key={reply.id} className="mt-3 ml-6 pl-3 border-l border-[#e8ddd0] flex items-start gap-2">
+                                <Link href={`/profile/${reply.user_id}`} className="flex-shrink-0">
+                                  {reply.profile_image_url ? (
+                                    <img src={reply.profile_image_url} alt={reply.display_name} className={getProfileSkinFrameClass("w-6 h-6 rounded-full object-cover hover:opacity-80 transition", reply.active_premium_skin)} style={getProfileSkinFrameStyle(reply.active_premium_skin)} />
+                                  ) : (
+                                    <div className={getProfileSkinFrameClass("w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold hover:opacity-80 transition", reply.active_premium_skin)} style={{ backgroundColor: avatarColor(reply.user_id), ...getProfileSkinFrameStyle(reply.active_premium_skin) }}>
+                                      {getInitial(reply.display_name)}
+                                    </div>
+                                  )}
+                                </Link>
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-1.5 mb-0.5">
+                                    <Link href={`/profile/${reply.user_id}`} className="text-xs font-semibold text-gray-900 hover:underline">{reply.display_name}</Link>
+                                    <StreakFlameBadge currentStreak={reply.current_streak} flameId={reply.selected_streak_flame} />
+                                    <LevelBadge currentLevel={reply.current_level} skinId={reply.active_premium_skin} />
+                                    <UserBadge customBadge={reply.member_badge} isPaid={reply.is_paid} groupRole={reply.role} skinId={reply.active_premium_skin} />
+                                    <span className="text-xs text-gray-400">{timeAgo(reply.created_at)}</span>
+                                  </div>
+                                  {editingSeriesCommentId === reply.id ? (
+                                    <div className="space-y-2">
+                                      <TextareaMentionInput
+                                        value={editingSeriesCommentText}
+                                        onChange={setEditingSeriesCommentText}
+                                        mentionItems={mentionItems}
+                                        rows={3}
+                                        autoFocus
+                                        className="w-full text-xs bg-gray-100 rounded-xl px-3 py-2 outline-none text-gray-900 placeholder-gray-400 resize-none"
+                                      />
+                                      <div className="flex items-center gap-2">
+                                        <button
+                                          type="button"
+                                          onClick={() => void handleSaveSeriesCommentEdit(reply)}
+                                          disabled={savingSeriesCommentId === reply.id || !editingSeriesCommentText.trim()}
+                                          className="rounded-xl px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                                          style={{ backgroundColor: SAGE }}
+                                        >
+                                          {savingSeriesCommentId === reply.id ? "Saving..." : "Save"}
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={() => {
+                                            setEditingSeriesCommentId(null);
+                                            setEditingSeriesCommentText("");
+                                          }}
+                                          className="rounded-xl border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-50"
+                                        >
+                                          Cancel
+                                        </button>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <MentionText
+                                      text={reply.content}
+                                      items={mentionItems}
+                                      className="text-xs text-gray-800 leading-relaxed whitespace-pre-wrap"
+                                    />
+                                  )}
+                                  <div className="flex items-center gap-3 mt-1">
+                                    <button
+                                      onClick={() => handleCommentLike(reply)}
+                                      disabled={commentLikeLoading.has(reply.id)}
+                                      className="flex items-center gap-1 text-xs transition"
+                                      style={{ color: reply.liked ? "#e53e3e" : "#9ca3af" }}
+                                    >
+                                      <svg className={`w-3 h-3 ${seriesCommentLikeAnimatingIds.has(reply.id) ? "animate-heart-pop" : ""}`} fill={reply.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                      </svg>
+                                      {reply.like_count}
+                                    </button>
+                                    {canEditSeriesComment(reply) && editingSeriesCommentId !== reply.id && (
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          setEditingSeriesCommentId(reply.id);
+                                          setEditingSeriesCommentText(reply.content);
+                                          setReplyingToId(null);
+                                          setReplyText("");
+                                        }}
+                                        className="text-xs text-gray-400 hover:text-[#4a9b6f] transition"
+                                      >
+                                        Edit
+                                      </button>
+                                    )}
+                                    {canDeleteSeriesComment(reply) && (
+                                      <button
+                                        type="button"
+                                        onClick={() => void handleDeleteSeriesComment(reply)}
+                                        disabled={deletingSeriesCommentId === reply.id}
+                                        className="text-xs text-gray-400 hover:text-red-500 transition disabled:opacity-50"
+                                      >
+                                        {deletingSeriesCommentId === reply.id ? "Deleting..." : "Delete"}
+                                      </button>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    {comments.filter((c) => !c.parent_comment_id).length === 0 && (
+                      <p className="text-sm text-gray-400 text-center py-6">No comments yet. Be the first!</p>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+          /* â”€â”€ BIBLE STUDIES â€” SERIES VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+          ) : activeTab === "bible_studies" && selectedSeries && selectedSeriesWeek ? (
+            <WeekLessonPage
+              embedded
+              embeddedGroupId={groupId}
+              embeddedWeekNum={selectedSeriesWeek}
+              embeddedSeriesId={selectedSeries.id}
+              embeddedSeriesTitle={selectedSeries.title}
+              embeddedSeriesIsCurrent={selectedSeries.is_current}
+              onBack={() => {
+                setSelectedSeriesWeek(null);
+                void loadSelectedSeriesWeekProgress(selectedSeries);
+              }}
+            />
+          ) : activeTab === "bible_studies" && selectedSeries ? (
+            <div className="flex flex-col gap-4">
+              {/* Series header card */}
+              <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                {(() => {
+                  const isTemptationSeries = selectedSeries.title.toLowerCase().includes("tempt");
+                  const isJosephSeries = selectedSeries.title.toLowerCase().includes("joseph");
+                  const selectedSeriesWeekCount = getSeriesTotalWeeks(selectedSeries.title);
+                  const seriesAccent = isTemptationSeries
+                    ? {
+                        softBg: "#fff4ea",
+                        softBorder: "#eac9ae",
+                        mutedText: "#9c6a46",
+                        badgeBg: "#f6dfca",
+                        badgeText: "#8d5d38",
+                        panelBg: "#fff8f2",
+                        coverBg: "linear-gradient(180deg, #f7e3d1 0%, #fff4ea 100%)",
+                        buttonBg: "#b7794d",
+                      }
+                    : {
+                        softBg: "#edf7ed",
+                        softBorder: "#d4ecd4",
+                        mutedText: "#5a855d",
+                        badgeBg: "#d4ecd4",
+                        badgeText: SAGE,
+                        panelBg: "#ffffff",
+                        coverBg: "linear-gradient(180deg, #dcefdc 0%, #edf7ed 100%)",
+                        buttonBg: SAGE,
+                      };
+                  return (
+                    <>
+                      <div
+                        className="px-4 py-4 border-b border-gray-200"
+                        style={{ background: seriesAccent.coverBg }}
+                      >
+                        <div className="rounded-2xl overflow-hidden border shadow-sm" style={{ borderColor: "rgba(255,255,255,0.65)" }}>
+                          {isTemptationSeries ? (
+                            <div className="relative h-48 sm:h-56 bg-[#f4dcc7]">
+                              <img
+                                src="/TheTemptingofjesusstudy.png"
+                                alt="The Tempting of Jesus study cover"
+                                className="w-full h-full object-cover"
+                                style={{ objectPosition: "center 42%" }}
+                              />
+                            </div>
+                          ) : isJosephSeries ? (
+                            <div className="relative h-48 sm:h-56 bg-[#dcefdc]">
+                              <img
+                                src="/testingofjoseph.png"
+                                alt="The Testing of Joseph study cover"
+                                className="w-full h-full object-cover"
+                                style={{ objectPosition: "center 40%" }}
+                              />
+                            </div>
+                          ) : (
+                            <div className="bg-white/35 px-4 py-6">
+                              <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: seriesAccent.mutedText }}>
+                                Placeholder Cover
+                              </p>
+                              <h2 className="text-2xl font-bold text-gray-900 mt-3">{selectedSeries.title}</h2>
+                              <p className="text-sm text-gray-700 mt-2 max-w-xl">
+                                A guided Bible Buddy group study through Scripture, released week by week.
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="p-4">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex-1">
+                            <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: seriesAccent.mutedText }}>
+                              {selectedSeriesWeekCount}-week group study
+                            </p>
+                            <h3 className="text-lg font-bold text-gray-900 mt-1">{selectedSeries.title}</h3>
+                          </div>
+                          {selectedSeries.is_current && (
+                            <span className="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0" style={{ backgroundColor: seriesAccent.badgeBg, color: seriesAccent.badgeText }}>
+                              Current
+                            </span>
+                          )}
+                        </div>
+
+                        {seriesStartDate && (
+                          <div className="mt-3">
+                            <p className="text-sm font-bold" style={{ color: "#d62828" }}>
+                              {new Date(seriesStartDate).getTime() > nowTs
+                                ? `Bible Study starts in ${formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}`
+                                : "Bible Study Series started"}
+                            </p>
+                            <p className="text-sm text-gray-500 mt-1">
+                              {formatDateTimeLabel(seriesStartDate)}
+                            </p>
+                          </div>
+                        )}
+
+                        <button
+                          type="button"
+                          onClick={() => setShowSeriesOverviewDetails((v) => !v)}
+                          className="mt-3 w-full flex items-center justify-between py-3 text-left transition"
+                        >
+                          <div>
+                            <h4 className="text-base font-semibold text-gray-900">?? About This Series</h4>
+                            <p className="text-xs text-gray-500 mt-0.5">What to expect, how it works, and what we will cover</p>
+                          </div>
+                          <svg
+                            className={`w-5 h-5 text-gray-600 transition-transform ${showSeriesOverviewDetails ? "" : "-rotate-90"}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+
+                        {showSeriesOverviewDetails && (
+                          <div className="pt-3 border-t" style={{ borderColor: seriesAccent.softBorder }}>
+                            <div className="space-y-3">
+                              <h5 className="text-base font-semibold text-gray-900">?? What We Are Studying</h5>
+
+                              {isTemptationSeries ? (
+                                <>
+                                  <p className="text-sm text-gray-700 leading-relaxed">
+                                    This is a 5 week Bible study series going into the story of Jesus in the wilderness. Our main passage is Luke 4:1-30, and we will break the story down slowly, week by week, so the group can study it together and really understand what is happening.
+                                  </p>
+
+                                  <div className="space-y-2.5">
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">?? What we will cover</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        We will study the temptation of Jesus directly, but we will also cover important background from Luke's Gospel like Jesus as a child, John the Baptist, and the spiritual buildup that leads into the wilderness story.
+                                      </p>
+                                    </div>
+
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">?? How this group study works</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        Each week includes guided reading, detailed notes to explain the verses, trivia questions, reflection prompts, and group discussion so we can all talk through what we are seeing in Scripture together.
+                                      </p>
+                                    </div>
+
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">??? Weekly release rhythm</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        Once the series starts, a new Bible study will release each week. The goal is for all of us to move through the same study together, reflect on the same study, and discuss what we are learning as a group.
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  <div className="space-y-1.5 pt-1">
+                                    {[
+                                      "?? Main focus: Luke 4:1-30",
+                                      "?? Includes detailed notes and verse explanation",
+                                      "?? Trivia questions and reflection prompts each week",
+                                      "?? Built for shared discussion and group study",
+                                    ].map((item) => (
+                                      <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
+                                    ))}
+                                  </div>
+                                </>
+                              ) : isJosephSeries ? (
+                                <>
+                                  <p className="text-sm text-gray-700 leading-relaxed">
+                                    This is a 14 week Bible study series through Genesis 37 to Genesis 50. We are following Joseph chapter by chapter, but we are also paying attention to the bigger family story around him, the long waiting, the repeated testing, and the way God keeps working through betrayal, prison, pressure, and forgiveness.
+                                  </p>
+
+                                  <div className="space-y-2.5">
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">?? What we will cover</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        We will cover Joseph's dreams, the pit, slavery, prison, Pharaoh's court, the famine, the brothers returning, Judah's growth, Joseph's forgiveness, and the final hope that points beyond Egypt.
+                                      </p>
+                                    </div>
+
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">?? How this group study works</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        Each week includes the chapter study, detailed notes, trivia questions, reflection prompts, and group discussion so we can slow down and really understand the story instead of rushing past it.
+                                      </p>
+                                    </div>
+
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">??? Weekly release rhythm</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        Once the series starts, one chapter unlocks each week. The goal is for the group to move together, reflect together, and watch the testing of Joseph unfold in order.
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  <div className="space-y-1.5 pt-1">
+                                    {[
+                                      "?? Main focus: Genesis 37-50",
+                                      "?? Includes detailed notes and verse explanation",
+                                      "?? Trivia questions and reflection prompts each week",
+                                      "?? Built for shared discussion and group study",
+                                    ].map((item) => (
+                                      <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
+                                    ))}
+                                  </div>
+                                </>
+                              ) : (
+                                <>
+                                  <p className="text-sm text-gray-700 leading-relaxed">
+                                    This is a guided Bible study series designed for the group to move through together week by week with reading, notes, reflection, and discussion.
+                                  </p>
+                                  <div className="space-y-1.5 pt-1">
+                                    {[
+                                      "?? Weekly Bible study",
+                                      "?? Detailed study notes",
+                                      "?? Trivia and reflection prompts",
+                                      "?? Shared group discussion",
+                                    ].map((item) => (
+                                      <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
+                                    ))}
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  );
+                })()}
+                {isLeader && !selectedSeries.is_current && (
+                  <div className="px-4 pb-4">
+                    <button
+                      onClick={() => handleSetCurrentSeries(selectedSeries)}
+                      className="px-4 py-2 rounded-xl text-white text-sm font-medium transition hover:opacity-90"
+                      style={{ backgroundColor: selectedSeriesAccent.buttonBg }}
+                    >
+                      Set as Current Series
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Week Lessons â€” inline cards when series is current */}
+              {isLeader && (
+                <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                  <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">Series Control Panel</p>
+                  <p className="text-sm text-amber-800 mb-3">
+                    {selectedSeries.is_current
+                      ? "Set the Week 1 start date and time. Every other week unlocks automatically 7 days later."
+                      : "This series is not live yet. You can still preview every week below while you build it."}
+                  </p>
+                  {selectedSeries.is_current && (!seriesStartDate || editingSeriesStart) ? (
+                    <div className="space-y-2">
+                      <div className="flex gap-2 flex-col sm:flex-row">
+                        <input
+                          type="datetime-local"
+                          value={seriesStartDateInput}
+                          onChange={(e) => setSeriesStartDateInput(e.target.value)}
+                          className="flex-1 text-sm px-3 py-2 border border-amber-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                        <button
+                          onClick={handleSaveSeriesStartDate}
+                          disabled={savingSeriesStartDate || !seriesStartDateInput}
+                          className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 disabled:opacity-50 transition"
+                        >
+                          {savingSeriesStartDate ? "Saving..." : "Save"}
+                        </button>
+                      </div>
+                      {seriesStartSaveError && (
+                        <p className="text-xs text-red-600">{seriesStartSaveError}</p>
+                      )}
+                    </div>
+                  ) : selectedSeries.is_current && seriesStartDate ? (
+                    <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
+                      <p className="text-sm font-semibold" style={{ color: "#d62828" }}>
+                        Study starts in {formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}
+                      </p>
+                      <p className="text-xs mt-1" style={{ color: "#d62828" }}>{formatDateTimeLabel(seriesStartDate)}</p>
+                      <button
+                        onClick={() => setEditingSeriesStart(true)}
+                        className="mt-3 text-xs font-semibold text-amber-700 hover:text-amber-900 transition"
+                      >
+                        Change start time
+                      </button>
+                    </div>
+                  ) : selectedSeries.is_current ? (
+                    <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
+                      <p className="text-sm text-amber-800">Set a start time to unlock the live weekly release.</p>
+                    </div>
+                  ) : null}
+                </div>
+              )}
+
+              {(selectedSeries.is_current || isLeader || (userIsPaid && !selectedSeries.id.startsWith("preview-"))) && (() => {
+                const sd = seriesStartDate;
+                const isPreviewSeries = selectedSeries.id.startsWith("preview-");
+                const hasArchivedPaidAccess = userIsPaid && !selectedSeries.is_current && !isPreviewSeries;
+                return (
+                  <div className="flex flex-col gap-3">
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-1">Week Lessons</p>
+                    {Array.from({ length: getSeriesTotalWeeks(selectedSeries.title) }, (_, i) => i + 1).map((wn) => {
+                      const lesson = getSeriesWeekLesson(wn, selectedSeries.title);
+                      const prog = seriesWeekProgress[wn] ?? toSeriesWeekProgressState();
+                      const done = countCompletedSeriesWeekSections(prog);
+                      const complete = isSeriesWeekComplete(prog);
+                      const weekLabel = getSeriesWeekDisplayLabel(selectedSeries.title, wn, lesson?.readingReference);
+                      const previousWeek = seriesWeekProgress[wn - 1] ?? toSeriesWeekProgressState();
+                      const previousWeekComplete = wn === 1 ? true : isSeriesWeekComplete(previousWeek);
+                      const lockState = getWeekLockState(sd, wn, isLeader, previousWeekComplete);
+                      const unlocked = isPreviewSeries || hasArchivedPaidAccess ? true : lockState.unlocked;
+                      return (
+                        <div
+                          key={wn}
+                          className={`border rounded-xl shadow-sm overflow-hidden transition-all ${
+                            complete ? "border-green-200 bg-white" : unlocked ? "border-gray-200 bg-white" : "border-gray-200 bg-gray-50 opacity-55"
+                          }`}
+                        >
+                          <div className={`px-4 py-3 ${complete ? "bg-green-50" : ""}`}>
+                            <div className="flex items-center justify-between gap-3">
+                              <div className="flex-1 min-w-0">
+                                <p className="text-xs text-gray-400 font-medium">{weekLabel}</p>
+                                <p className="text-sm font-semibold text-gray-900 mt-0.5">{lesson ? lesson.title : "Coming Soon"}</p>
+                              </div>
+                              {complete ? (
+                                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-green-100 text-green-700 flex-shrink-0">? Done</span>
+                              ) : unlocked && lesson ? (
+                                done > 0 ? <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 flex-shrink-0">{done}/{SERIES_WEEK_TOTAL_SECTIONS}</span>
+                                : <span className="text-xs text-gray-400 flex-shrink-0">Not started</span>
+                              ) : (
+                                <span className="text-xs text-gray-400 flex-shrink-0">??</span>
+                              )}
+                            </div>
+                            {isPreviewSeries ? (
+                              <p className="text-xs text-amber-600 mt-1">Preview mode for leaders only</p>
+                            ) : hasArchivedPaidAccess ? (
+                              <p className="text-xs text-gray-500 mt-1">Past study unlocked for paid users.</p>
+                            ) : !unlocked ? (
+                              <p className="text-xs text-gray-400 mt-1">{lockState.lockedMessage}</p>
+                            ) : null}
+                          </div>
+                          <div className="px-4 pb-3">
+                            {unlocked && lesson ? (
+                              <button
+                                type="button"
+                                onClick={() => setSelectedSeriesWeek(wn)}
+                                className="w-full py-2 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
+                                style={{ backgroundColor: "#4a9b6f" }}
+                              >
+                                {isPreviewSeries ? "Preview" : complete ? "Review" : done > 0 ? "Continue" : "Start"}
+                              </button>
+                            ) : (
+                              <button
+                                disabled
+                                className="w-full py-2 rounded-xl text-sm font-bold border border-gray-200 bg-white text-gray-400 cursor-not-allowed"
+                              >
+                                {wn === 1 && sd
+                                  ? `Starting Soon · ${formatCountdown(getWeekUnlockTimestamp(sd, 1), nowTs)}`
+                                  : `?? ${weekLabel} Locked`}
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })()}
+
+              {/* Posts list */}
+              {false && (
+                <div className="hidden">
+              false ? (
+                <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm text-center">
+                  <p className="text-gray-400 text-sm">{isLeader ? "No posts yet. Add the first week post." : "No posts published yet."}</p>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-3">
+                  {seriesPosts.map((post) => (
+                    <button
+                      key={post.id}
+                      onClick={() => setSelectedPost(post)}
+                      className="w-full bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-left hover:shadow-md transition"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs text-gray-400 mb-1">Week {post.week_number}</p>
+                          <p className="text-sm font-semibold text-gray-900 truncate">{post.title}</p>
+                          <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
+                            <span>?? {post.like_count}</span>
+                            <span>?? {post.comment_count}</span>
+                          </div>
+                        </div>
+                        <div className="flex flex-col items-end gap-2 flex-shrink-0">
+                          {isLeader && (
+                            <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${post.is_published ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
+                              {post.is_published ? "Published" : "Draft"}
+                            </span>
+                          )}
+                          <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+                </div>
+              )}
+            </div>
+
+          /* â”€â”€ BIBLE STUDIES â€” SERIES LIST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+          ) : activeTab === "bible_studies" ? (
+            <div className="flex flex-col gap-4">
+              <BibleStudiesSeriesList
+                loading={loadingSeries}
+                items={BIBLE_STUDY_SERIES_CATALOG.map((planned) => {
+                  const matchingSeries =
+                    seriesList.find((series) => normalizeSeriesTitle(series.title) === normalizeSeriesTitle(planned.title)) ??
+                    null;
+                  const isLive = normalizeSeriesTitle(currentSeriesPreview?.title) === normalizeSeriesTitle(planned.title);
+                  const liveSeries = isLive ? matchingSeries : null;
+                  const previewSeries = matchingSeries ?? (isLeader ? buildSeriesPreviewRecord(planned.title) : liveSeries);
+                  const isJosephSeries = normalizeSeriesTitle(planned.title) === "the testing of joseph";
+                  const isTemptationSeries = normalizeSeriesTitle(planned.title) === "the temptation of jesus";
+                  const isWisdomSeries = normalizeSeriesTitle(planned.title) === "the wisdom of proverbs";
+                  const isPastStudy = isTemptationSeries;
+                  const canOpenPastStudy = isPastStudy && (userIsPaid || isLeader);
+                  const canOpen = isLive || isLeader || canOpenPastStudy;
+                  const startLabel = isLive && currentSeriesStartAt ? formatDateTimeLabel(currentSeriesStartAt) : null;
+                  const startCountdown =
+                    isLive && currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs
+                      ? formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)
+                      : null;
+                  const josephStartLabel = formatDateTimeLabel(homeFeedSeriesStartAt);
+                  const josephCountdown =
+                    isJosephSeries && new Date(homeFeedSeriesStartAt).getTime() > nowTs
+                      ? formatCountdown(new Date(homeFeedSeriesStartAt).getTime(), nowTs)
+                      : null;
+
+                  let statusLabel = "Locked";
+                  let statusTone: "current" | "upcoming" | "past" | "pro" | "preview" | "locked" = "locked";
+                  let detail: string | null = null;
+                  let footerLeft: string | null = null;
+                  let footerRight: string | null = null;
+
+                  if (isPastStudy) {
+                    statusLabel = userIsPaid || isLeader ? "Past Study" : "Pro Only";
+                    statusTone = userIsPaid || isLeader ? "past" : "pro";
+                    footerLeft = canOpenPastStudy ? "Replay the finished study anytime" : "Past studies are unlocked with Pro";
+                    footerRight = canOpenPastStudy ? "Open Past Study" : "Pro Locked";
+                  } else if (isWisdomSeries) {
+                    statusLabel = "Next Bible Study";
+                    statusTone = "upcoming";
+                    footerLeft = "Coming next in the lineup";
+                    footerRight = "Coming Next";
+                  } else if (isLive) {
+                    statusLabel = "Current Study";
+                    statusTone = "current";
+
+                    if (currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() <= nowTs) {
+                      const startTs = new Date(currentSeriesStartAt).getTime();
+                      const totalWeeks = liveSeries?.total_weeks ?? 1;
+                      const weeksSinceStart = Math.floor((nowTs - startTs) / (7 * 24 * 60 * 60 * 1000));
+                      const liveWeek = Math.min(totalWeeks, weeksSinceStart + 1);
+                      detail = `${planned.title} Week ${liveWeek} Now Live. Click here to complete this week's Bible study.`;
+                    } else if (startCountdown) {
+                      detail = `Study starts in ${startCountdown}${startLabel ? ` · ${startLabel}` : ""}`;
+                    } else {
+                      detail = "Start date coming soon";
+                    }
+                  } else if (isJosephSeries && josephCountdown) {
+                    statusLabel = "Starts Saturday";
+                    statusTone = "upcoming";
+                    detail = `Week 1 starts in ${josephCountdown} · ${josephStartLabel}`;
+                  } else if (canOpen) {
+                    statusLabel = "Preview";
+                    statusTone = "preview";
+                    detail = "Preview unlocked for leaders";
+                    footerRight = "Open Study";
+                  } else {
+                    statusLabel = "Locked";
+                    statusTone = "locked";
+                    detail = "Locked until this series is released";
+                    footerRight = "Locked";
+                  }
+
+                  return {
+                    key: planned.key,
+                    title: planned.title,
+                    subtitle: planned.subtitle,
+                    coverSrc: getBibleStudySeriesCover(planned.title),
+                    statusLabel,
+                    statusTone,
+                    detail,
+                    footerLeft,
+                    footerRight,
+                    disabled: !canOpen,
+                    onClick: canOpen
+                      ? () => {
+                          if (isPastStudy && !canOpenPastStudy) {
+                            setShowPastStudyProModal(true);
+                            return;
+                          }
+                          if (previewSeries) setSelectedSeries(previewSeries);
+                        }
+                      : isPastStudy
+                        ? () => {
+                            setShowPastStudyProModal(true);
+                          }
+                        : null,
+                  };
+                })}
+              />
+            </div>
+
+          /* â”€â”€ HUB TABS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+          ) : hubCategories.some((c) => c.id === activeTab) ? (() => {
+            const hubCat = hubCategories.find((c) => c.id === activeTab)!;
+
+            // â”€â”€ Category list view (items from static config) â”€â”€
+            const hubCatStatic = HUB_CONTENT.find((c) => normalizeHubCategoryName(c.name) === normalizeHubCategoryName(hubCat.name));
+            const allItems = hubCatStatic?.items ?? [];
+            const articles = allItems.filter((i) => i.type === "article");
+            const questions = allItems.filter((i) => i.type === "question");
+            const items = hubView === "articles" ? articles : questions;
+            return (
+              <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+                <div className="flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4">
+                  <div className="min-w-0">
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#b7794d)]">Group Library</p>
+                    <h2 className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#111827)]">{hubCat.emoji} {hubCat.name}</h2>
+                    <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">Choose an article or question to open it in this area.</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedHubItem(null);
+                      setActiveTab("home");
+                    }}
+                    className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
+                    aria-label="Close section"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div className="bg-[var(--bb-surface-soft,#f8fbff)] px-5 py-5">
+                  <div className="mb-4 flex justify-center">
+                    <div className="inline-flex overflow-hidden rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-1 shadow-sm">
+                    <button
+                      className={`rounded-xl px-5 py-2 text-sm font-black transition focus:outline-none ${
+                        hubView === "articles"
+                          ? "bg-[var(--bb-accent,#b7794d)] text-[var(--bb-button-text,#ffffff)]"
+                          : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface,#ffffff)]"
+                      }`}
+                      onClick={() => setHubView("articles")}
+                      type="button"
+                    >
+                      Articles
+                    </button>
+                    <button
+                      className={`rounded-xl px-5 py-2 text-sm font-black transition focus:outline-none ${
+                        hubView === "questions"
+                          ? "bg-[var(--bb-accent,#b7794d)] text-[var(--bb-button-text,#ffffff)]"
+                          : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface,#ffffff)]"
+                      }`}
+                      onClick={() => setHubView("questions")}
+                      type="button"
+                    >
+                      Questions
+                    </button>
+                    </div>
+                  </div>
+
+                  {items.length === 0 ? (
+                    <div className="rounded-2xl border border-dashed border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-8 text-center shadow-sm">
+                      <p className="text-sm font-semibold text-[var(--bb-text-muted,#9ca3af)]">No {hubView} yet in this category.</p>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-3">
+                      {items.map((item) => (
+                        <div
+                          key={item.id}
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => setSelectedHubItem(item)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              setSelectedHubItem(item);
+                            }
+                          }}
+                          className="w-full cursor-pointer rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-sm transition hover:border-[var(--bb-accent,#b7794d)] hover:shadow-md"
+                        >
+                          <div className="min-w-0 flex-1">
+                            <p className="text-[15px] font-black leading-snug text-[var(--bb-text-primary,#111827)]">{item.title}</p>
+                            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">{item.subtitle}</p>
+                          </div>
+                          <div className="mt-3 flex items-center gap-3 border-t border-[var(--bb-card-border,#e5e7eb)] pt-3">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                void handleHubItemLike(item);
+                              }}
+                              className="flex items-center gap-1.5 text-sm transition"
+                              style={{ color: hubItemStats[item.path]?.liked ? "#e53e3e" : "var(--bb-text-muted,#9ca3af)" }}
+                            >
+                              <svg className={`h-4 w-4 ${hubLikeAnimatingPaths.has(item.path) ? "animate-heart-pop" : ""}`} fill={hubItemStats[item.path]?.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                              </svg>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setShowHubLikesFor(item);
+                              }}
+                              className="text-sm text-[var(--bb-text-secondary,#4b5563)] transition hover:text-[var(--bb-text-primary,#111827)] hover:underline"
+                            >
+                              {hubItemStats[item.path]?.likeCount || 0}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedHubItem(item);
+                              }}
+                              className="flex items-center gap-1.5 text-sm text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-accent,#b7794d)]"
+                            >
+                              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                              </svg>
+                              <span>{hubItemStats[item.path]?.commentCount || 0}</span>
+                              <span>Comments</span>
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })() : (
+
+          /* â”€â”€ OTHER TABS (chat) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+            <div className="space-y-4">
+              {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "home" && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && !activeFeedPost && !showTopBuddiesDetail && renderCreatePostCard()}
+              {renderPosts()}
+            </div>
+          )}
+
+        </div>}
+      </div>
+
+      <UpgradeRequiredModal
+        isOpen={showDevotionalUpgradeModal}
+        onClose={() => setShowDevotionalUpgradeModal(false)}
+      />
+
+      {showPastStudyProModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowPastStudyProModal(false)}
+        >
+          <div
+            className="w-full max-w-sm rounded-3xl bg-white p-6 shadow-xl modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h3 className="mt-4 text-center text-2xl font-bold text-gray-900">Past Bible Studies</h3>
+            <p className="mt-3 text-center text-sm leading-6 text-gray-600">
+              You need to upgrade to Pro to unlock access to past Bible studies like
+              {" "}
+              <span className="font-semibold text-gray-900">The Temptation of Jesus</span>.
+            </p>
+            <div className="mt-6 flex gap-3">
+              <button
+                type="button"
+                onClick={() => setShowPastStudyProModal(false)}
+                className="flex-1 rounded-2xl border border-gray-200 px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-50"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowPastStudyProModal(false);
+                  router.push("/upgrade");
+                }}
+                className="flex-1 rounded-2xl px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+                style={{ backgroundColor: "#5a9a5a" }}
+              >
+                Upgrade to Pro
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {selectedScripture ? (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 px-4" onClick={() => setSelectedScripture(null)}>
+          <div className="w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-3xl bg-white shadow-2xl" onClick={(event) => event.stopPropagation()}>
+            <div className="flex items-center justify-between border-b border-[#efe5d9] px-6 py-5">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8d5d38]">Bible Reference</p>
+                <h3 className="mt-1 text-xl font-bold text-gray-900">{selectedScripture.reference}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedScripture(null)}
+                className="flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition hover:bg-gray-100"
+              >
+                x
+              </button>
+            </div>
+
+            <div className="px-6 py-5">
+              {loadingScripture ? (
+                <p className="text-sm text-gray-500">Loading verses...</p>
+              ) : (
+                <div
+                  ref={scriptureContainerRef}
+                  className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: scriptureHtml || "<p>Could not load this verse right now.</p>" }}
+                />
+              )}
+
+              <div className="mt-6 flex justify-end">
+                <Link
+                  href={`/Bible/${encodeURIComponent(selectedScripture.book.toLowerCase())}/${selectedScripture.chapter}`}
+                  className="rounded-xl bg-[#4a9b6f] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                >
+                  Read Full Chapter
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {selectedPerson ? (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }}>
+          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-gray-200 bg-white p-6 shadow-2xl sm:p-8" onClick={(event) => event.stopPropagation()}>
+            <button type="button" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }} className="absolute right-4 top-4 text-xl text-gray-500 hover:text-gray-800">
+              x
+            </button>
+            <h2 className="mb-2 text-3xl font-bold">{selectedPerson.name}</h2>
+            {personCreditBlocked ? null : personNotes === null ? (
+              <div className="flex flex-col items-center gap-5 py-10">
+                <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-5/6 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-3/4 animate-pulse rounded-full bg-gray-100" />
+                </div>
+                <p className="text-sm italic text-gray-400 animate-pulse">{selectedPerson.name} is loading...</p>
+              </div>
+            ) : (
+              <ReactMarkdown
+                components={{
+                  h1: ({ ...props }) => <h1 className="mb-4 mt-6 text-xl font-bold text-gray-900 md:text-2xl" {...props} />,
+                  p: ({ ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
+                  strong: ({ ...props }) => <strong className="font-bold" {...props} />,
+                }}
+              >
+                {normalizePersonMarkdown(personNotes)}
+              </ReactMarkdown>
+            )}
+          </div>
+        </div>
+      ) : null}
+
+      {selectedPlace ? (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }}>
+          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-gray-200 bg-white p-6 shadow-2xl sm:p-8" onClick={(event) => event.stopPropagation()}>
+            <button type="button" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }} className="absolute right-4 top-4 text-xl text-gray-500 hover:text-gray-800">
+              x
+            </button>
+            <h2 className="mb-2 text-3xl font-bold">{selectedPlace.name}</h2>
+            {placeCreditBlocked ? null : placeNotes === null ? (
+              <div className="flex flex-col items-center gap-5 py-10">
+                <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-5/6 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-3/4 animate-pulse rounded-full bg-gray-100" />
+                </div>
+                <p className="text-sm italic text-gray-400 animate-pulse">{selectedPlace.name} is loading...</p>
+              </div>
+            ) : (
+              <ReactMarkdown
+                components={{
+                  h1: ({ ...props }) => <h1 className="mb-4 mt-6 text-xl font-bold text-gray-900 md:text-2xl" {...props} />,
+                  p: ({ ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
+                  strong: ({ ...props }) => <strong className="font-bold" {...props} />,
+                }}
+              >
+                {normalizePlaceMarkdown(placeNotes)}
+              </ReactMarkdown>
+            )}
+          </div>
+        </div>
+      ) : null}
+
+      {selectedKeyword ? (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }}>
+          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-gray-200 bg-white p-6 shadow-2xl sm:p-8" onClick={(event) => event.stopPropagation()}>
+            <button type="button" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }} className="absolute right-4 top-4 text-xl text-gray-500 hover:text-gray-800">
+              x
+            </button>
+            <h2 className="mb-2 text-3xl font-bold">{selectedKeyword.name}</h2>
+            {keywordCreditBlocked ? null : keywordNotes === null ? (
+              <div className="flex flex-col items-center gap-5 py-10">
+                <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-5/6 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-3/4 animate-pulse rounded-full bg-gray-100" />
+                </div>
+                <p className="text-sm italic text-gray-400 animate-pulse">{selectedKeyword.name} is loading...</p>
+              </div>
+            ) : (
+              <ReactMarkdown
+                components={{
+                  h1: ({ ...props }) => <h1 className="mb-4 mt-6 text-xl font-bold text-gray-900 md:text-2xl" {...props} />,
+                  p: ({ ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
+                  strong: ({ ...props }) => <strong className="font-bold" {...props} />,
+                }}
+              >
+                {normalizeKeywordMarkdown(keywordNotes)}
+              </ReactMarkdown>
+            )}
+          </div>
+        </div>
+      ) : null}
+
+      <CreditLimitModal
+        open={personCreditBlocked}
+        userId={userId}
+        zIndexClassName="z-[80]"
+        onClose={() => {
+          setPersonCreditBlocked(false);
+          setSelectedPerson(null);
+          setPersonNotes(null);
+        }}
+      />
+
+      <CreditLimitModal
+        open={placeCreditBlocked}
+        userId={userId}
+        zIndexClassName="z-[80]"
+        onClose={() => {
+          setPlaceCreditBlocked(false);
+          setSelectedPlace(null);
+          setPlaceNotes(null);
+        }}
+      />
+
+      <CreditLimitModal
+        open={keywordCreditBlocked}
+        userId={userId}
+        zIndexClassName="z-[80]"
+        onClose={() => {
+          setKeywordCreditBlocked(false);
+          setSelectedKeyword(null);
+          setKeywordNotes(null);
+        }}
+      />
+
+      {showHubLikesFor && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowHubLikesFor(null)}
+        >
+          <div
+            className="bg-white rounded-3xl shadow-xl w-full max-w-sm max-h-[80vh] overflow-y-auto modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">Liked By</p>
+                <h3 className="text-base font-bold text-gray-900 mt-1">{showHubLikesFor.title}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowHubLikesFor(null)}
+                className="w-9 h-9 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition"
+              >
+                ×
+              </button>
+            </div>
+            <div className="px-5 py-4">
+              {(hubItemStats[showHubLikesFor.path]?.likers || []).length === 0 ? (
+                <p className="text-sm text-gray-400 text-center py-6">No likes yet.</p>
+              ) : (
+                <div className="space-y-3">
+                  {(hubItemStats[showHubLikesFor.path]?.likers || []).map((liker) => (
+                    <div key={liker.user_id} className="flex items-center gap-3">
+                      <Link href={`/profile/${liker.user_id}`} className="flex items-center gap-3 min-w-0">
+                        {liker.profile_image_url ? (
+                          <img src={liker.profile_image_url} alt={liker.display_name} className={getProfileSkinFrameClass("w-10 h-10 rounded-full object-cover", liker.active_premium_skin)} style={getProfileSkinFrameStyle(liker.active_premium_skin)} />
+                        ) : (
+                          <div className={getProfileSkinFrameClass("w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold", liker.active_premium_skin)} style={{ backgroundColor: avatarColor(liker.user_id), ...getProfileSkinFrameStyle(liker.active_premium_skin) }}>
+                            {getInitial(liker.display_name)}
+                          </div>
+                        )}
+                      </Link>
+                      <div className="flex flex-wrap items-center gap-1.5 min-w-0">
+                        <Link href={`/profile/${liker.user_id}`} className="text-sm font-medium text-gray-900 hover:underline">
+                          {liker.display_name}
+                        </Link>
+                        <StreakFlameBadge currentStreak={liker.current_streak} flameId={liker.selected_streak_flame} />
+                        <LevelBadge currentLevel={liker.current_level} skinId={liker.active_premium_skin} />
+                        <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} skinId={liker.active_premium_skin} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showPostLikesFor && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowPostLikesFor(null)}
+        >
+          <div
+            className="bg-white rounded-3xl shadow-xl w-full max-w-sm max-h-[80vh] overflow-y-auto modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">Liked By</p>
+                <h3 className="text-base font-bold text-gray-900 mt-1">{showPostLikesFor.title || "Post Likes"}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowPostLikesFor(null)}
+                className="w-9 h-9 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition"
+              >
+                ×
+              </button>
+            </div>
+            <div className="px-5 py-4">
+              {loadingPostLikers ? (
+                <p className="text-sm text-gray-400 text-center py-6">Loading likes...</p>
+              ) : postLikers.length === 0 ? (
+                <p className="text-sm text-gray-400 text-center py-6">No likes yet.</p>
+              ) : (
+                <div className="space-y-3">
+                  {postLikers.map((liker) => (
+                    <div key={liker.user_id} className="flex items-center gap-3">
+                      <Link href={`/profile/${liker.user_id}`} className="flex items-center gap-3 min-w-0">
+                        {liker.profile_image_url ? (
+                          <img src={liker.profile_image_url} alt={liker.display_name} className={getProfileSkinFrameClass("w-10 h-10 rounded-full object-cover", liker.active_premium_skin)} style={getProfileSkinFrameStyle(liker.active_premium_skin)} />
+                        ) : (
+                          <div className={getProfileSkinFrameClass("w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold", liker.active_premium_skin)} style={{ backgroundColor: avatarColor(liker.user_id), ...getProfileSkinFrameStyle(liker.active_premium_skin) }}>
+                            {getInitial(liker.display_name)}
+                          </div>
+                        )}
+                      </Link>
+                      <div className="flex flex-wrap items-center gap-1.5 min-w-0">
+                        <Link href={`/profile/${liker.user_id}`} className="text-sm font-medium text-gray-900 hover:underline">
+                          {liker.display_name}
+                        </Link>
+                        <StreakFlameBadge currentStreak={liker.current_streak} flameId={liker.selected_streak_flame} />
+                        <LevelBadge currentLevel={liker.current_level} skinId={liker.active_premium_skin} />
+                        <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} skinId={liker.active_premium_skin} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Group post composer */}
+      {activeTab !== "members" && activeTab !== "bible_studies" && !hubCategories.some((c) => c.id === activeTab) && !selectedPost && (
+        <>
+          {showPostComposerModal && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in" onClick={() => setShowPostComposerModal(false)}>
+              <div className="bg-white rounded-3xl shadow-xl w-full max-w-2xl max-h-[92vh] overflow-y-auto modal-panel-in" onClick={(e) => e.stopPropagation()}>
+                <div className="flex items-center justify-between px-6 py-5 border-b border-[#efe5d9]">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Community</p>
+                    <h2 className="text-xl font-bold text-gray-900 mt-1">{editingFeedPost ? "Edit Post" : "Create a Post"}</h2>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowPostComposerModal(false);
+                      resetPostComposer();
+                    }}
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div className="px-6 py-5 space-y-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-800 mb-2">Title</label>
+                    <input
+                      type="text"
+                      value={newPostTitle}
+                      onChange={(e) => setNewPostTitle(e.target.value)}
+                      placeholder="Add a title for your post"
+                      className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-800 mb-2">Message</label>
+                    <div className="rounded-3xl border border-[#ead8c4] overflow-hidden bg-[#fffaf4]">
+                      <div className="flex flex-wrap gap-2 px-4 py-3 border-b border-[#efe5d9] bg-[#fffdf9]">
+                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleBold().run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("bold") ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>Bold</button>
+                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleItalic().run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("italic") ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>Italic</button>
+                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleHeading({ level: 1 }).run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("heading", { level: 1 }) ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>H1</button>
+                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleHeading({ level: 2 }).run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("heading", { level: 2 }) ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>H2</button>
+                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleBulletList().run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("bulletList") ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>List</button>
+                      </div>
+                      <EditorContent editor={postEditor} />
+                    </div>
+                    <PostMentionSuggestions editor={postEditor} items={mentionItems} />
+                  </div>
+
+                  <input
+                    ref={groupPhotoInputRef}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      setComposerPhotoFile(file);
+                      const reader = new FileReader();
+                      reader.onload = (ev) => setComposerPhotoPreview(ev.target?.result as string);
+                      reader.readAsDataURL(file);
+                      setComposerMode("photo");
+                    }}
+                  />
+                  <input
+                    ref={groupVideoInputRef}
+                    type="file"
+                    accept="video/mp4,video/webm,video/quicktime"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      if (file.size > 52428800) {
+                        setComposerUploadError("Video must be under 50 MB.");
+                        return;
+                      }
+                      if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
+                      setComposerVideoFile(file);
+                      setComposerVideoPreview(URL.createObjectURL(file));
+                      setComposerVideoDurationError(false);
+                      setComposerUploadError(null);
+                      setComposerMode("video");
+                    }}
+                  />
+
+                  <div className="flex flex-wrap gap-3">
+                    <button type="button" onClick={() => groupPhotoInputRef.current?.click()} className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${composerMode === "photo" ? "bg-green-100 text-green-700 border-green-200" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"}`}>Add Photo</button>
+                    <button type="button" onClick={() => groupVideoInputRef.current?.click()} className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${composerMode === "video" ? "bg-green-100 text-green-700 border-green-200" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"}`}>Add Video</button>
+                  </div>
+
+                  {composerMode === "photo" && composerPhotoPreview && (
+                    <div className="relative inline-block">
+                      <img src={composerPhotoPreview} alt="Preview" className="h-24 rounded-2xl object-cover border border-[#ead8c4]" />
+                      <button
+                        type="button"
+                        onClick={() => { setComposerPhotoFile(null); setComposerPhotoPreview(null); setComposerMode("text"); }}
+                        className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gray-700 text-white text-xs"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
+
+                  {composerMode === "video" && composerVideoPreview && (
+                    <div className="relative">
+                      <video
+                        src={composerVideoPreview}
+                        controls
+                        playsInline
+                        className="w-full rounded-2xl border border-[#ead8c4]"
+                        style={{ maxHeight: "240px" }}
+                        onLoadedMetadata={(e) => {
+                          if (e.currentTarget.duration > 90) {
+                            setComposerVideoDurationError(true);
+                            setComposerUploadError("Video must be 90 seconds or shorter.");
+                          } else {
+                            setComposerVideoDurationError(false);
+                            setComposerUploadError(null);
+                          }
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
+                          setComposerVideoFile(null);
+                          setComposerVideoPreview(null);
+                          setComposerVideoDurationError(false);
+                          setComposerUploadError(null);
+                          setComposerMode("text");
+                        }}
+                        className="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/65 text-white text-sm"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
+
+                  {composerUploadError && <p className="text-sm text-red-500">{composerUploadError}</p>}
+
+                  <div className="flex items-center justify-end gap-3 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowPostComposerModal(false);
+                        resetPostComposer();
+                      }}
+                      className="px-4 py-2 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleSubmitPost}
+                      disabled={submitting || (!stripHtml(postEditor?.getHTML() ?? "").length && !composerPhotoFile && !composerVideoFile && !editingFeedPost?.media_url)}
+                      className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white disabled:opacity-50 transition"
+                      style={{ backgroundColor: SAGE }}
+                    >
+                      {submitting ? (editingFeedPost ? "Saving..." : "Posting...") : (editingFeedPost ? "Save Changes" : "Post to Group")}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+      )}
+      {/* â”€â”€ Comment input bar (post view) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {activeTab === "bible_studies" && selectedPost && (
+        <div className="fixed bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-200 px-4 py-3">
+          <div className="max-w-2xl mx-auto flex items-end gap-3">
+            {userProfileImage ? (
+              <img src={userProfileImage} alt={displayName} className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+            ) : (
+              <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
+                {getInitial(displayName)}
+              </div>
+            )}
+            <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2.5 flex items-end gap-2">
+              <textarea
+                className="flex-1 bg-transparent text-sm text-gray-900 placeholder-gray-400 resize-none outline-none max-h-28"
+                placeholder="Add a comment..."
+                rows={1}
+                value={newCommentText}
+                onChange={(e) => setNewCommentText(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleAddComment(null); } }}
+              />
+              {isLouisAdmin && (
+                <button
+                  type="button"
+                  onClick={() => void handleSeriesAutoComment()}
+                  disabled={seriesAutoCommentLoading}
+                  className="flex-shrink-0 px-3 h-8 rounded-xl border border-gray-200 text-xs font-semibold text-gray-500 transition hover:text-[#4a9b6f] hover:border-[#cfe4d8] disabled:opacity-50 bg-white"
+                >
+                  {seriesAutoCommentLoading ? "Writing..." : "Auto Comment"}
+                </button>
+              )}
+              <button
+                onClick={() => handleAddComment(null)}
+                disabled={!newCommentText.trim() || submittingComment}
+                className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition disabled:opacity-40"
+                style={{ backgroundColor: SAGE }}
+              >
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* â”€â”€ Photo lightbox â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {lightboxUrl && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 modal-backdrop-in"
+          onClick={() => setLightboxUrl(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxUrl(null)}
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xl transition"
+          >
+            âœ•
+          </button>
+          <img
+            src={lightboxUrl}
+            alt="Full size"
+            className="max-w-full max-h-[90vh] rounded-2xl object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
+      {/* â”€â”€ New Series Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {showNewSeriesModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in">
+          <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+              <h2 className="text-base font-bold text-gray-900">New Series</h2>
+              <button onClick={() => setShowNewSeriesModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl">Ã—</button>
+            </div>
+            <div className="px-6 py-5 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Series Title</label>
+                <input
+                  type="text"
+                  value={newSeriesTitle}
+                  onChange={(e) => setNewSeriesTitle(e.target.value)}
+                  placeholder="e.g. The Temptation of Jesus"
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Description <span className="text-gray-400 font-normal">(optional)</span></label>
+                <textarea
+                  value={newSeriesDesc}
+                  onChange={(e) => setNewSeriesDesc(e.target.value)}
+                  placeholder="Brief description of the series..."
+                  rows={3}
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 resize-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Total Weeks</label>
+                <input
+                  type="number"
+                  min={1}
+                  max={52}
+                  value={newSeriesTotalWeeks}
+                  onChange={(e) => setNewSeriesTotalWeeks(Math.max(1, parseInt(e.target.value) || 1))}
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+              </div>
+              <div className="flex gap-3 pt-1">
+                <button onClick={() => setShowNewSeriesModal(false)} className="flex-1 py-2.5 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition">Cancel</button>
+                <button
+                  onClick={handleCreateSeries}
+                  disabled={!newSeriesTitle.trim() || submittingNewSeries}
+                  className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition disabled:opacity-60"
+                  style={{ backgroundColor: SAGE }}
+                >
+                  {submittingNewSeries ? "Creating..." : "Create Series"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* â”€â”€ New Post Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {showNewPostModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in">
+          <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+              <h2 className="text-base font-bold text-gray-900">Add Week Post Â· Week {seriesPosts.length + 1}</h2>
+              <button onClick={() => setShowNewPostModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl">Ã—</button>
+            </div>
+            <div className="px-6 py-5 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Post Title</label>
+                <input
+                  type="text"
+                  value={newSeriesPostTitle}
+                  onChange={(e) => setNewSeriesPostTitle(e.target.value)}
+                  placeholder={`Week ${seriesPosts.length + 1} â€” `}
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Content</label>
+                <textarea
+                  value={newSeriesPostContent}
+                  onChange={(e) => setNewSeriesPostContent(e.target.value)}
+                  placeholder="Write your study post here..."
+                  rows={8}
+                  className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 resize-none"
+                />
+              </div>
+              <div className="flex items-center gap-3">
+                <label className="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={newSeriesPostPublish}
+                    onChange={(e) => setNewSeriesPostPublish(e.target.checked)}
+                    className="sr-only peer"
+                  />
+                  <div className="w-10 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                </label>
+                <span className="text-sm text-gray-700">{newSeriesPostPublish ? "Publish now" : "Save as draft"}</span>
+              </div>
+              <div className="flex gap-3 pt-1">
+                <button onClick={() => setShowNewPostModal(false)} className="flex-1 py-2.5 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition">Cancel</button>
+                <button
+                  onClick={handleCreateSeriesPost}
+                  disabled={!newSeriesPostTitle.trim() || !newSeriesPostContent.trim() || submittingNewSeriesPost}
+                  className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition disabled:opacity-60"
+                  style={{ backgroundColor: SAGE }}
+                >
+                  {submittingNewSeriesPost ? "Saving..." : "Save Post"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showTopBuddiesModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowTopBuddiesModal(false)}
+        >
+          <div
+            className="bg-white rounded-3xl shadow-xl w-full max-w-xl max-h-[90vh] overflow-y-auto modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-6 py-5 border-b border-gray-100">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Community</p>
+                  <h2 className="text-2xl font-bold text-gray-900 mt-2">Top Buddies</h2>
+                  <p className="text-sm text-gray-500 mt-1">Top 10 this week by completed Bible work.</p>
+                  <div className="mt-3 rounded-2xl border border-gray-100 bg-gray-50 px-3 py-2 text-xs font-semibold leading-5 text-gray-600">
+                    Bible study tasks count the most: study intros, Bible chapters, notes, trivia rounds, Scrambled rounds, and reflections. Group posts and replies count too, but they are worth about half as much and have caps.
+                  </div>
+                </div>
+                <button
+                  onClick={() => setShowTopBuddiesModal(false)}
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition text-xl"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            <div className="px-5 py-4">
+              {loadingTopBuddies ? (
+                <p className="text-sm text-gray-400 text-center py-8">Loading top members...</p>
+              ) : modalTopBuddies.length === 0 ? (
+                      <p className="text-sm text-gray-500 text-center py-8">No top buddy activity yet.</p>
+              ) : (
+                <div className="space-y-3">
+                  {modalTopBuddies.map((buddy) => (
+                    <div key={buddy.userId} className="rounded-2xl border border-gray-200 bg-white px-4 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f2e7dc] text-xs font-bold text-[#8d5d38]">
+                          {buddy.rank}
+                        </div>
+                        <Link href={`/profile/${buddy.userId}`} className="flex-shrink-0">
+                          {buddy.profileImageUrl ? (
+                            <img src={buddy.profileImageUrl} alt={buddy.displayName} className={getProfileSkinFrameClass("h-11 w-11 rounded-full object-cover", buddy.activePremiumSkin)} style={getProfileSkinFrameStyle(buddy.activePremiumSkin)} />
+                          ) : (
+                            <div className={getProfileSkinFrameClass("flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white", buddy.activePremiumSkin)} style={{ backgroundColor: avatarColor(buddy.userId), ...getProfileSkinFrameStyle(buddy.activePremiumSkin) }}>
+                              {getInitial(buddy.displayName)}
+                            </div>
+                          )}
+                        </Link>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <Link href={`/profile/${buddy.userId}`} className="truncate text-sm font-semibold text-gray-900 hover:underline">
+                              {buddy.displayName}
+                            </Link>
+                            <StreakFlameBadge currentStreak={buddy.currentStreak} flameId={buddy.selectedStreakFlame} />
+                            <LevelBadge currentLevel={buddy.currentLevel} skinId={buddy.activePremiumSkin} />
+                            <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} skinId={buddy.activePremiumSkin} />
+                          </div>
+                          <p className="mt-1 text-xs text-gray-500">
+                            {buddy.actions || 0} Bible tasks · {buddy.scoreBreakdown?.community || 0} community pts
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-lg font-bold text-gray-900">{buddy.score}</p>
+                          <p className="text-xs text-gray-500">buddy score</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showGroupInfoModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowGroupInfoModal(false)}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+              <h2 className="text-base font-bold text-gray-900">{displayGroupName}</h2>
+              <button
+                onClick={() => setShowGroupInfoModal(false)}
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl"
+              >
+                Ã—
+              </button>
+            </div>
+            <div className="px-6 py-5 space-y-4">
+              <div className="rounded-xl border border-green-100 bg-green-50 px-4 py-3">
+                <p className="text-xs font-bold uppercase tracking-wide text-green-700">Official Group</p>
+                <p className="text-sm text-green-900 mt-1">This is the official Bible Buddy group for the whole app.</p>
+              </div>
+              {group.description && (
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-1">About</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">{group.description}</p>
+                </div>
+              )}
+              <div className="grid grid-cols-1 gap-3">
+                <div className="rounded-xl border border-gray-200 px-4 py-3">
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Buddies</p>
+                  <p className="text-sm text-gray-900 mt-1">{group.member_count === 1 ? "1 buddy" : `${group.member_count || 0} buddies`}</p>
+                </div>
+                <div className="rounded-xl border border-gray-200 px-4 py-3">
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Teacher</p>
+                  <p className="text-sm text-gray-900 mt-1">{group.leader_name || "Bible Buddy"}</p>
+                </div>
+                {group.current_weekly_study && (
+                  <div className="rounded-xl border border-gray-200 px-4 py-3">
+                    <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Current Study</p>
+                    <p className="text-sm text-gray-900 mt-1">{group.current_weekly_study}</p>
+                  </div>
+                )}
+              </div>
+              <div className="flex gap-3 pt-1">
+                <button
+                  onClick={() => {
+                    setShowGroupInfoModal(false);
+                    setActiveTab("members");
+                  }}
+                  className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition hover:opacity-90"
+                  style={{ backgroundColor: SAGE }}
+                >
+                  View All Buddies
+                </button>
+                <button
+                  onClick={() => setShowGroupInfoModal(false)}
+                  className="flex-1 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {deletePostId && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in" onClick={() => setDeletePostId(null)}>
+          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full modal-panel-in" onClick={(e) => e.stopPropagation()}>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Delete this post?</h3>
+            <p className="text-sm text-gray-500 mb-5">This will remove the post and its replies from the group feed.</p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setDeletePostId(null)}
+                className="px-4 py-2 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteGroupPost}
+                disabled={deletingPost}
+                className="px-4 py-2 rounded-xl text-sm font-semibold text-white bg-red-500 hover:bg-red-600 disabled:opacity-50 transition"
+              >
+                {deletingPost ? "Deleting..." : "Delete"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+
+  // â”€â”€ Chat renderPosts helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  function renderActiveFeedPostView() {
+    if (!activeFeedPost) return null;
+
+    return (
+      <div
+        className={`bb-community-active-post animate-fade-in-up overflow-hidden bg-[var(--bb-card,#ffffff)] ${
+          isDashboardEmbed
+            ? "rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] shadow-sm"
+            : "rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] shadow-sm"
+        }`}
+      >
+        <div
+          className={`flex items-start justify-between gap-4 border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4 ${
+            isDashboardEmbed ? "bg-[var(--bb-card,#ffffff)]" : ""
+          }`}
+        >
+          <div className="min-w-0">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#b7794d)]">Group Post</p>
+            <div className="mt-2 flex flex-wrap items-center gap-1.5">
+              <Link href={`/profile/${activeFeedPost.user_id}`} className="text-sm font-semibold text-[var(--bb-text-primary,#111827)] hover:underline">
+                {activeFeedPost.display_name || "Buddy"}
+              </Link>
+              <StreakFlameBadge currentStreak={activeFeedPost.current_streak} flameId={activeFeedPost.selected_streak_flame} />
+              <LevelBadge currentLevel={activeFeedPost.current_level} skinId={activeFeedPost.active_premium_skin} />
+              <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} skinId={activeFeedPost.active_premium_skin} />
+              <span className="text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(activeFeedPost.created_at)}</span>
+            </div>
+            {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
+              <h2 className="mt-2 text-xl font-black leading-snug text-[var(--bb-text-primary,#111827)]">{activeFeedPost.title}</h2>
+            )}
+          </div>
+          <div className="flex flex-shrink-0 items-center gap-2">
+            {(userId === activeFeedPost.user_id || isLeaderOrMod) && (
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setActivePostMenuId(activePostMenuId === activeFeedPost.id ? null : activeFeedPost.id);
+                  }}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)]"
+                  aria-label="Post options"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6h.01M12 12h.01M12 18h.01" />
+                  </svg>
+                </button>
+                {activePostMenuId === activeFeedPost.id && (
+                  <div className="absolute right-0 top-12 z-20 min-w-[150px] overflow-hidden rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-lg">
+                    {canEditFeedPost(activeFeedPost) && (
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          startEditingFeedPost(activeFeedPost);
+                        }}
+                        className="w-full px-4 py-3 text-left text-sm font-medium text-[var(--bb-text-secondary,#374151)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
+                      >
+                        Edit Post
+                      </button>
+                    )}
+                    {isLeaderOrMod && (
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          void handleTogglePin(activeFeedPost);
+                        }}
+                        disabled={pinningPostId === activeFeedPost.id}
+                        className="w-full px-4 py-3 text-left text-sm font-medium text-amber-700 transition hover:bg-amber-50 disabled:opacity-50"
+                      >
+                        {pinningPostId === activeFeedPost.id ? "Saving..." : activeFeedPost.is_pinned ? "Unpin Post" : "Pin to Top"}
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setActivePostMenuId(null);
+                        setDeletePostId(activeFeedPost.id);
+                      }}
+                      className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 transition hover:bg-red-50"
+                    >
+                      Delete Post
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedFeedPost(null);
+                setDeepLinkedCommentId(null);
+              }}
+              className={`inline-flex h-10 items-center justify-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#111827)] ${
+                isDashboardEmbed ? "gap-2 px-4 text-sm" : "w-10 text-xl"
+              }`}
+              aria-label={isDashboardEmbed ? "Back to community" : "Close post"}
+            >
+              {isDashboardEmbed ? (
+                <>
+                  <span aria-hidden="true">←</span>
+                  <span>Back</span>
+                </>
+              ) : (
+                "×"
+              )}
+            </button>
+          </div>
+        </div>
+
+        <div className="px-5 py-5">
+          {activeFeedScrambledShare && renderScrambledShareCard(activeFeedPost)}
+          {activeFeedScrambledPromo && renderScrambledPromoCard(activeFeedPost)}
+          {activeFeedBibleBuddyTvShare && renderBibleBuddyTvShareCard(activeFeedPost)}
+
+          {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
+            <div
+              className="prose prose-sm max-w-none leading-relaxed text-[var(--bb-text-secondary,#374151)] [&_*]:text-[var(--bb-text-secondary,#374151)] [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:text-[var(--bb-text-primary,#111827)] [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-[var(--bb-text-primary,#111827)] [&_li]:my-1.5 [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5"
+              onClick={handleScriptureClick}
+              dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
+            />
+          )}
+          {activeFeedPollSet && <GroupWeeklyPollCard pollSet={activeFeedPollSet} userId={userId} />}
+          {activeFeedTriviaSet && <GroupWeeklyTriviaCard triviaSet={activeFeedTriviaSet} userId={userId} />}
+          {activeFeedQuestionSet && (
+            <GroupWeeklyQuestionCard
+              prompt={activeFeedQuestionSet.prompt}
+              intro={activeFeedQuestionSet.intro}
+              commentPrompt={activeFeedQuestionSet.comment_prompt}
+            />
+          )}
+
+          {activeFeedPost.media_url && isUploadedVideo(activeFeedPost.media_url) && (
+            <video src={activeFeedPost.media_url} controls playsInline className="mt-4 w-full rounded-2xl bg-black" style={{ maxHeight: "520px" }} />
+          )}
+
+          {activeFeedPost.media_url && !isUploadedVideo(activeFeedPost.media_url) && (
+            <button
+              type="button"
+              onClick={() => setLightboxUrl(activeFeedPost.media_url!)}
+              className="mt-4 block w-full overflow-hidden rounded-2xl bg-[var(--bb-surface,#ffffff)] focus:outline-none"
+            >
+              <img src={activeFeedPost.media_url} alt="Post image" className="w-full rounded-2xl object-contain" style={{ maxHeight: "520px", objectPosition: "center" }} />
+            </button>
+          )}
+
+          {activeFeedCoverPost && activeFeedPost.title && (
+            <h2 className="mt-5 text-xl font-black leading-snug text-[var(--bb-text-primary,#111827)]">{activeFeedPost.title}</h2>
+          )}
+
+          {activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
+            <div
+              className="prose prose-sm mt-5 max-w-none leading-relaxed text-[var(--bb-text-secondary,#374151)] [&_*]:text-[var(--bb-text-secondary,#374151)] [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:text-[var(--bb-text-primary,#111827)] [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-[var(--bb-text-primary,#111827)] [&_li]:my-1.5 [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5"
+              onClick={handleScriptureClick}
+              dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
+            />
+          )}
+
+          <div className="mt-4 flex items-center gap-4 border-t border-[var(--bb-card-border,#e5e7eb)] pt-4">
+            <button
+              type="button"
+              onClick={() => void handleLike(activeFeedPost)}
+              disabled={likeLoading.has(activeFeedPost.id)}
+              className="flex items-center gap-1.5 text-sm transition"
+              style={{ color: activeFeedPost.liked ? "#e53e3e" : "var(--bb-text-muted,#9ca3af)" }}
+            >
+              <svg className={`h-4 w-4 ${likeAnimatingIds.has(activeFeedPost.id) ? "animate-heart-pop" : ""}`} fill={activeFeedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              <span>{activeFeedPost.like_count}</span>
+            </button>
+            <button type="button" onClick={() => void openPostLikes(activeFeedPost)} className="text-sm text-[var(--bb-text-secondary,#4b5563)] transition hover:text-[var(--bb-text-primary,#111827)]">
+              {activeFeedPost.like_count === 1 ? "1 like" : `${activeFeedPost.like_count || 0} likes`}
+            </button>
+            <div className="flex items-center gap-1.5 text-sm text-[var(--bb-text-muted,#9ca3af)]">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <span>{activeFeedPost.comment_count || 0}</span>
+              <span>Comments</span>
+            </div>
+          </div>
+
+          {userId && (
+            <div className="mt-5" id="group-feed-comments">
+              <GroupCommentSection
+                groupId={groupId}
+                post={activeFeedPost}
+                userId={userId}
+                displayName={displayName}
+                userProfileImage={userProfileImage}
+                currentUserRole={userRole}
+                currentUserBadge={userMemberBadge}
+                currentUserSkin={userActivePremiumSkin}
+                canAutoReply={isLouisAdmin}
+                targetCommentId={deepLinkedCommentId}
+                mentionItems={mentionItems}
+                onCountChange={(delta) => {
+                  setSelectedFeedPost((prev) => prev ? { ...prev, comment_count: Math.max((prev.comment_count || 0) + delta, 0) } : prev);
+                  setPosts((prev) => prev.map((item) => item.id === activeFeedPost.id ? { ...item, comment_count: Math.max((item.comment_count || 0) + delta, 0) } : item));
+                }}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  function renderCreatePostCard() {
+    return (
+      <button
+        type="button"
+        onClick={() => setShowPostComposerModal(true)}
+        className="bb-community-composer w-full bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#d4ecd4)] rounded-[26px] px-5 py-5 shadow-sm hover:shadow-md transition text-left relative overflow-hidden"
+      >
+        <div className="flex items-center gap-4">
+          {userProfileImage ? (
+            <img src={userProfileImage} alt={displayName} className="bb-skin-profile-ring h-12 w-12 rounded-full object-cover flex-shrink-0" />
+          ) : (
+            <div className="bb-skin-profile-ring h-12 w-12 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
+              {getInitial(displayName)}
+            </div>
+          )}
+          <div className="flex-1 min-w-0 pr-5">
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#4a9b6f)]">Create Post</p>
+            <p className="mt-1 text-base font-black leading-snug text-[var(--bb-text-primary,#111827)]">Share something with the group</p>
+            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#6b7280)]">Add a title, write your post, and start the conversation.</p>
+          </div>
+        </div>
+      </button>
+    );
+  }
+
+  function renderPosts() {
+    if (showTopBuddiesDetail) return renderTopBuddiesDetailView();
+    if (activeFeedPost) return renderActiveFeedPostView();
+    if (loadingPosts) return <p className="text-[var(--bb-text-muted,#9ca3af)] text-sm text-center py-8">Loading posts...</p>;
+    if (posts.length === 0) {
+      return (
+        <div className="text-center py-12">
+          <p className="text-[var(--bb-text-muted,#9ca3af)] text-sm">No posts yet.</p>
+          <p className="text-[var(--bb-text-muted,#9ca3af)] text-sm mt-1">Be the first to post something!</p>
+        </div>
+      );
+    }
+    const orderedPosts = sortPinnedPostsFirst(posts);
+    const isHomeCommunityFeed = activeTab === "home";
+    const weeklyPollPost = isHomeCommunityFeed ? orderedPosts.find((post) => weeklyPollByPostId[post.id]) : undefined;
+    const weeklyTriviaPost = isHomeCommunityFeed ? orderedPosts.find((post) => weeklyTriviaByPostId[post.id]) : undefined;
+    const feedPosts = isHomeCommunityFeed
+      ? orderedPosts.filter((post) => post.id !== weeklyPollPost?.id && post.id !== weeklyTriviaPost?.id)
+      : orderedPosts;
+    const openFeedPostInline = (post: Post) => {
+      setSelectedFeedPost(post);
+      setDeepLinkedCommentId(null);
+      if (isDashboardEmbed && typeof window !== "undefined") {
+                window.setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  window.parent?.postMessage({ type: "bb-community-scroll-top" }, window.location.origin);
+                }, 0);
+              }
+    };
+
+    return (
+      <div className="flex flex-col gap-6">
+        {isHomeCommunityFeed && (
+          <>
+            {weeklyPollPost && weeklyPollByPostId[weeklyPollPost.id] ? (
+              <section className="bb-community-feature-card rounded-[28px] border border-[var(--bb-card-border,#d4ecd4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">Weekly Poll</p>
+                    <h2 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                      This Week in the Group
+                    </h2>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => openFeedPostInline(weeklyPollPost)}
+                    className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-3 py-1.5 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:border-[var(--bb-accent)] hover:text-[var(--bb-accent)]"
+                  >
+                    Open
+                  </button>
+                </div>
+                <GroupWeeklyPollCard pollSet={weeklyPollByPostId[weeklyPollPost.id]} userId={userId} embedded />
+              </section>
+            ) : null}
+
+            {weeklyTriviaPost && weeklyTriviaByPostId[weeklyTriviaPost.id] ? (
+              <section className="bb-community-feature-card rounded-[28px] border border-[var(--bb-card-border,#d4ecd4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">Weekly Trivia</p>
+                    <h2 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                      Play the Group Challenge
+                    </h2>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => openFeedPostInline(weeklyTriviaPost)}
+                    className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-3 py-1.5 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:border-[var(--bb-accent)] hover:text-[var(--bb-accent)]"
+                  >
+                    Details
+                  </button>
+                </div>
+                <GroupWeeklyTriviaCard triviaSet={weeklyTriviaByPostId[weeklyTriviaPost.id]} userId={userId} compactBoard embedded />
+              </section>
+            ) : null}
+
+            {renderCreatePostCard()}
+
+            <div className="px-1">
+              <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">Group Posts</p>
+              <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#6b7280)]">Fresh conversations from your Bible Buddies.</p>
+            </div>
+          </>
+        )}
+
+        {feedPosts.map((post, index) => {
+          const pollSet = weeklyPollByPostId[post.id];
+          const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
+          const isCoverOnlyFeedPost = isHomeFeedCoverPost(post);
+          const isScrambledSharePost = isScrambledScoreShare(post);
+          const isScrambledPromo = isScrambledPromoPost(post);
+          const isBibleBuddyTvShare = isBibleBuddyTvSharePost(post);
+          const triviaSet = weeklyTriviaByPostId[post.id];
+          const questionSet = weeklyQuestionByPostId[post.id];
+          return (
+          <div
+            key={post.id}
+            role="button"
+            tabIndex={0}
+            onClick={() => openFeedPostInline(post)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openFeedPostInline(post);
+              }
+            }}
+            className="bb-community-post-card w-full text-left transition cursor-pointer bg-[var(--bb-card,#ffffff)] border border-[var(--bb-card-border,#e5e7eb)] rounded-[28px] p-5 shadow-sm hover:shadow-md animate-fade-in-up"
+            style={{ animationDelay: `${Math.min(index * 0.045, 0.45)}s` }}
+          >
+            <div>
+            {post.is_pinned && (
+              <div className="mb-2 flex items-center gap-1 text-xs font-medium text-amber-600">
+                <span aria-hidden="true">??</span>
+                <span>Pinned</span>
+              </div>
+            )}
+            <div className="flex items-start gap-3">
+              {post.profile_image_url ? (
+                <img src={post.profile_image_url} alt={post.display_name || ""} className={getProfileSkinFrameClass("w-9 h-9 rounded-full object-cover flex-shrink-0", post.active_premium_skin)} style={getProfileSkinFrameStyle(post.active_premium_skin)} />
+              ) : (
+                <div className={getProfileSkinFrameClass("w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0", post.active_premium_skin)} style={{ backgroundColor: avatarColor(post.user_id), ...getProfileSkinFrameStyle(post.active_premium_skin) }}>
+                  {getInitial(post.display_name)}
+                </div>
+              )}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <Link href={`/profile/${post.user_id}`} className="font-semibold text-[var(--bb-text-primary,#111827)] text-sm hover:underline">
+                    {post.display_name || "Buddy"}
+                  </Link>
+                  <StreakFlameBadge currentStreak={post.current_streak} flameId={post.selected_streak_flame} />
+                  <LevelBadge currentLevel={post.current_level} skinId={post.active_premium_skin} />
+                  <UserBadge customBadge={post.member_badge} isPaid={post.is_paid} groupRole={post.role} skinId={post.active_premium_skin} />
+                  <span className="text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(post.created_at)}</span>
+                </div>
+              </div>
+              {(userId === post.user_id || isLeaderOrMod) && (
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActivePostMenuId(activePostMenuId === post.id ? null : post.id);
+                    }}
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-[var(--bb-text-muted,#9ca3af)] hover:bg-[var(--bb-surface-soft,#f3f4f6)] hover:text-[var(--bb-text-primary,#374151)] transition"
+                    aria-label="Post options"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6h.01M12 12h.01M12 18h.01" />
+                    </svg>
+                  </button>
+                  {activePostMenuId === post.id && (
+                    <div className="absolute right-0 top-10 z-10 min-w-[140px] rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-lg overflow-hidden">
+                      {canEditFeedPost(post) && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            startEditingFeedPost(post);
+                          }}
+                          className="w-full px-4 py-3 text-left text-sm font-medium text-[var(--bb-text-secondary,#374151)] hover:bg-[var(--bb-surface-soft,#f3f4f6)] transition"
+                        >
+                          Edit Post
+                        </button>
+                      )}
+                      {isLeaderOrMod && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            void handleTogglePin(post);
+                          }}
+                          disabled={pinningPostId === post.id}
+                          className="w-full px-4 py-3 text-left text-sm font-medium text-amber-700 hover:bg-amber-50 transition disabled:opacity-50"
+                        >
+                          {pinningPostId === post.id ? "Saving..." : post.is_pinned ? "Unpin Post" : "Pin to Top"}
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActivePostMenuId(null);
+                          setDeletePostId(post.id);
+                        }}
+                        className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 hover:bg-red-50 transition"
+                      >
+                        Delete Post
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+              {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && <h3 className={`font-bold text-[var(--bb-text-primary,#111827)] leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
+              {isScrambledSharePost && renderScrambledShareCard(post, true)}
+              {isScrambledPromo && renderScrambledPromoCard(post, true)}
+              {isBibleBuddyTvShare && renderBibleBuddyTvShareCard(post, true)}
+              {!pollSet && !triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (
+                <p className={`text-sm text-[var(--bb-text-secondary,#374151)] mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
+                  {getPostPreviewText(post.content)}
+                </p>
+            )}
+            {pollSet && (
+              <div className="mt-3">
+                <GroupWeeklyPollCard pollSet={pollSet} userId={userId} compactResults onOpen={() => openFeedPostInline(post)} />
+              </div>
+            )}
+            {triviaSet && (
+              <div className="mt-3">
+                <GroupWeeklyTriviaCard triviaSet={triviaSet} userId={userId} compactBoard />
+              </div>
+            )}
+            {questionSet && (
+              <div className="mt-3">
+                <GroupWeeklyQuestionCard
+                  prompt={questionSet.prompt}
+                  intro={questionSet.intro}
+                  commentPrompt={questionSet.comment_prompt}
+                  onOpen={() => openFeedPostInline(post)}
+                />
+              </div>
+            )}
+            {post.media_url && isUploadedVideo(post.media_url) && (
+              <video
+                src={post.media_url}
+                controls
+                playsInline
+                className="mt-3 w-full rounded-xl"
+                style={{ maxHeight: "400px" }}
+                onClick={(e) => e.stopPropagation()}
+              />
+            )}
+            {post.media_url && !isUploadedVideo(post.media_url) && (
+              <div
+                className="mt-3 w-full block rounded-[22px] overflow-hidden bg-[var(--bb-surface,#ffffff)]"
+                style={{ maxHeight: hasImagePost ? "560px" : "420px" }}
+              >
+                <img
+                  src={post.media_url}
+                  alt="Post image"
+                  className="w-full object-contain"
+                  style={{ maxHeight: hasImagePost ? "560px" : "420px", objectPosition: "center" }}
+                />
+              </div>
+            )}
+              {post.link_url && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (() => {
+              const parsed = parseVideoEmbed(post.link_url);
+              if (parsed.embedUrl) {
+                if (!parsed.portrait) {
+                  return (
+                    <div className="mt-3 relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: "56.25%" }}>
+                      <iframe src={parsed.embedUrl} className="absolute inset-0 w-full h-full" allowFullScreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" />
+                    </div>
+                  );
+                }
+                return (
+                  <div className="mt-3 flex justify-center">
+                    <div className="relative rounded-2xl overflow-hidden bg-black w-full" style={{ maxWidth: "300px", height: "530px" }}>
+                      <iframe src={parsed.embedUrl} className="w-full h-full border-0" allowFullScreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" scrolling="no" />
+                    </div>
+                  </div>
+                );
+              }
+              const meta = VIDEO_META[parsed.platform];
+              return (
+                <a href={post.link_url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="mt-3 flex items-center gap-3 p-3 border border-[var(--bb-card-border,#f3f4f6)] rounded-xl hover:bg-[var(--bb-surface-soft,#f3f4f6)] transition">
+                  <span className="text-xl">{meta.icon}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold text-[var(--bb-text-secondary,#374151)]">{meta.label}</p>
+                    <p className="text-xs text-[var(--bb-text-muted,#9ca3af)] truncate">{post.link_url}</p>
+                  </div>
+                  <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                </a>
+              );
+            })()}
+            <div className="flex items-center gap-4 mt-4 pt-3 border-t border-[var(--bb-card-border,#f3f4f6)]">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  void handleLike(post);
+                }}
+                disabled={likeLoading.has(post.id)}
+                className="flex items-center gap-1.5 text-sm transition"
+                style={{ color: post.liked ? "#e53e3e" : "#9ca3af" }}
+              >
+                <svg className={`w-4 h-4 ${likeAnimatingIds.has(post.id) ? "animate-heart-pop" : ""}`} fill={post.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  void openPostLikes(post);
+                }}
+                className="text-sm text-[var(--bb-text-secondary,#6b7280)] hover:text-[var(--bb-text-primary,#374151)] transition"
+              >
+                {post.like_count === 1 ? "1 like" : `${post.like_count || 0} likes`}
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openFeedPostInline(post);
+                }}
+                className="flex items-center gap-1.5 text-sm text-[var(--bb-text-muted,#9ca3af)] hover:text-[var(--bb-accent,#b7794d)] transition"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>{post.comment_count || 0}</span>
+                <span>Comments</span>
+              </button>
+            </div>
+            </div>
+          </div>
+        )})}
+        <div className="bb-community-pagination flex flex-col gap-3 rounded-2xl border border-[var(--bb-card-border)] bg-[var(--bb-card)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-center text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] sm:text-left">
+            Page {postsPage + 1} · Weekly cards first, then group posts
+          </p>
+          <div className="flex items-center justify-center gap-2">
+            <button
+              type="button"
+              onClick={() => void loadPosts(Math.max(postsPage - 1, 0))}
+              disabled={postsPage === 0 || loadingPosts}
+              className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-4 py-2 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)] shadow-sm transition hover:bg-[var(--bb-surface-soft)] disabled:cursor-not-allowed disabled:opacity-45"
+            >
+              Previous
+            </button>
+            <button
+              type="button"
+              onClick={() => void loadPosts(postsPage + 1)}
+              disabled={!postsHasMore || loadingPosts}
+              className="rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45"
+              style={{ backgroundColor: "var(--bb-accent)" }}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  function renderScrambledShareCard(post: Post, compact = false) {
+    const sharePath = parseScrambledSharePath(post.link_url);
+    const chapterLabel = sharePath?.chapterLabel || "this chapter";
+
+    return (
+      <div className={`mt-3 overflow-hidden rounded-[24px] border border-[#d9e5fb] bg-[linear-gradient(135deg,#eef4ff_0%,#f8fbff_55%,#eef8f1_100%)] ${compact ? "p-4" : "p-5"}`}>
+        <div className="flex items-start gap-3">
+          <div className="rounded-full border border-[#d7e2f8] bg-white/80 p-1 shadow-sm">
+            <LouisAvatar mood="wave" size={compact ? 46 : 54} />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Bible Study Games</p>
+            <h3 className={`mt-1 font-bold leading-snug text-gray-900 ${compact ? "text-base" : "text-lg"}`}>
+              {post.title || `I just played Scrambled in ${chapterLabel}.`}
+            </h3>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <div className="rounded-full border border-[#d4e3bf] bg-[#eef7df] px-3 py-1 text-xs font-semibold text-[#60753d]">
+                Scrambled
+              </div>
+              <div className="rounded-full border border-[#d8e4fb] bg-white/80 px-3 py-1 text-xs font-semibold text-[#4e6795]">
+                {chapterLabel}
+              </div>
+              {post.link_url ? (
+                <Link
+                  href={post.link_url}
+                  onClick={(event) => event.stopPropagation()}
+                  className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
+                >
+                  Unscramble
+                </Link>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+      );
+    }
+
+  function renderScrambledPromoCard(post: Post, compact = false) {
+    const promoCopy = getScrambledPromoSnippet(post.content);
+
+    return (
+      <div className={`mt-3 overflow-hidden rounded-[24px] border border-[#d9eadf] bg-[linear-gradient(135deg,#f4fbf5_0%,#fbfdf8_58%,#eef6ff_100%)] ${compact ? "p-4" : "p-5"}`}>
+        <div className="flex items-start gap-3">
+          <div className="rounded-full border border-[#d8e7da] bg-white/90 p-1 shadow-sm">
+            <LouisAvatar mood="bible" size={compact ? 46 : 54} />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5f8d68]">Update</p>
+            <h3 className={`mt-1 font-bold leading-snug text-gray-900 ${compact ? "text-base" : "text-lg"}`}>
+              {post.title || "I added Scrambled to Bible Buddy."}
+            </h3>
+            <p className={`mt-2 leading-relaxed text-gray-700 ${compact ? "text-sm" : "text-[15px]"}`}>
+              {promoCopy}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <div className="rounded-full border border-[#d7e7bb] bg-[#eef8de] px-3 py-1 text-xs font-semibold text-[#61743d]">
+                Bible Study Games
+              </div>
+              <div className="rounded-full border border-[#d7e2f8] bg-white/80 px-3 py-1 text-xs font-semibold text-[#4e6795]">
+                New: Scrambled
+              </div>
+              {post.link_url ? (
+                <Link
+                  href={post.link_url}
+                  onClick={(event) => event.stopPropagation()}
+                  className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
+                >
+                  Try Scrambled
+                </Link>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+      );
+    }
+
+  function renderBibleBuddyTvShareCard(post: Post, compact = false) {
+    return (
+      <div className={`mt-3 overflow-hidden rounded-[24px] border border-[#d8e4fb] bg-[linear-gradient(135deg,#eef4ff_0%,#f9fbff_55%,#eef8ff_100%)] ${compact ? "p-4" : "p-5"}`}>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+          {post.media_url ? (
+            <div className={`relative overflow-hidden rounded-2xl border border-[#d8e4fb] bg-white/80 shadow-sm ${compact ? "h-28 w-full sm:w-40" : "h-32 w-full sm:w-48"}`}>
+              <img
+                src={post.media_url}
+                alt={post.title || "Bible Buddy TV thumbnail"}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ) : null}
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full border border-[#d8e4fb] bg-white/90 p-1 shadow-sm">
+                <LouisAvatar mood="wave" size={compact ? 42 : 50} />
+              </div>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Bible Buddy TV</p>
+                <h3 className={`mt-1 font-bold leading-snug text-gray-900 ${compact ? "text-base" : "text-lg"}`}>
+                  {post.title || "Bible Buddy TV"}
+                </h3>
+              </div>
+            </div>
+            {post.content ? (
+              <p className={`mt-3 leading-relaxed text-gray-700 ${compact ? "text-sm" : "text-[15px]"}`}>
+                {stripHtml(post.content)}
+              </p>
+            ) : null}
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <div className="rounded-full border border-[#d8e4fb] bg-white/85 px-3 py-1 text-xs font-semibold text-[#4e6795]">
+                Shared Video
+              </div>
+              {post.link_url ? (
+                <Link
+                  href={post.link_url}
+                  onClick={(event) => event.stopPropagation()}
+                  className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
+                >
+                  Watch in Bible Buddy TV
+                </Link>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  function renderUpdateCard() {
+    const missingProfilePhoto = !userProfileImage;
+    const missingBio = !userBio?.trim();
+    const missingLocation = !userLocation?.trim();
+    const profileIncomplete = missingProfilePhoto || missingBio || missingLocation;
+    const pushIncomplete = pushSupported && !(pushPermission === "granted" && pushSubscribed) && !pushDismissed;
+    const installIncomplete = !isStandaloneApp && !installCardDismissed;
+    const upgradeIncomplete = !userIsPaid && !upgradeCardDismissed;
+    const showProfileSetup = profileIncomplete && !hideProfileSetupCard;
+    const showPushSetup = pushIncomplete && !hidePushSetupCard;
+    const showInstallSetup = installIncomplete && !hideInstallSetupCard;
+    const showUpgradeSetup = upgradeIncomplete && !hideUpgradeSetupCard;
+    const showSetupHeader = showProfileSetup || showPushSetup || showInstallSetup || showUpgradeSetup;
+    const profileHref = userId ? `/profile/${userId}` : "/profile";
+    if (!showSetupHeader) {
+      return null;
+    }
+
+    return (
+      <div className="w-full rounded-2xl border border-[#d7e8d7] bg-white px-4 py-4 shadow-sm">
+        {showSetupHeader ? (
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Set Up</p>
+              <h3 className="text-lg font-bold text-gray-900 mt-1">Set up your Bible Buddy</h3>
+              <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+                A few quick things help your profile feel real and make sure you do not miss replies, likes, and important Bible Buddy updates.
+              </p>
+            </div>
+            <div className="h-11 w-11 rounded-2xl bg-[#eef8ef] flex items-center justify-center text-xl flex-shrink-0">?</div>
+          </div>
+        ) : null}
+
+        <div className={`${showSetupHeader ? "mt-4" : ""} space-y-3`}>
+          <div className={`overflow-hidden transition-all duration-300 ${showProfileSetup ? "max-h-64 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"}`}>
+          <div className={`rounded-2xl border px-4 py-3 ${profileIncomplete ? "border-[#ead8c4] bg-[#fffaf4]" : "border-[#d7e8d7] bg-[#f4fbf5]"}`}>
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-gray-900">Complete your profile</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Add your photo, bio, and location so other Buddies can know who they are studying with.
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${missingProfilePhoto ? "bg-[#f5e3d0] text-[#9a5b1f]" : "bg-[#dff0df] text-[#4f7e54]"}`}>
+                    {missingProfilePhoto ? "Photo needed" : "Photo set"}
+                  </span>
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${missingBio ? "bg-[#f5e3d0] text-[#9a5b1f]" : "bg-[#dff0df] text-[#4f7e54]"}`}>
+                    {missingBio ? "Bio needed" : "Bio set"}
+                  </span>
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${missingLocation ? "bg-[#f5e3d0] text-[#9a5b1f]" : "bg-[#dff0df] text-[#4f7e54]"}`}>
+                    {missingLocation ? "Location needed" : "Location set"}
+                  </span>
+                </div>
+              </div>
+              <Link
+                href={profileHref}
+                className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 flex-shrink-0"
+                style={{ backgroundColor: SAGE }}
+              >
+                {profileIncomplete ? "Finish Profile" : "View Profile"}
+              </Link>
+            </div>
+          </div>
+          </div>
+
+          <div className={`overflow-hidden transition-all duration-300 ${showPushSetup ? "max-h-64 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"}`}>
+          {pushIncomplete && (
+            <div className="rounded-2xl border border-[#d7e8d7] bg-[#f4fbf5] px-4 py-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-gray-900">Turn on push alerts</p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Get real-time Bible Buddy notifications when someone likes your post, replies, or sends something important.
+                  </p>
+                </div>
+                <div className="text-xl flex-shrink-0">??</div>
+              </div>
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => void handleEnableUpdateCardPush()}
+                  disabled={pushSetupLoading}
+                  className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
+                  style={{ backgroundColor: SAGE }}
+                >
+                  {pushSetupLoading ? "Saving..." : "Enable"}
+                </button>
+                <button
+                  type="button"
+                  onClick={dismissUpdateCardPush}
+                  className="rounded-xl px-4 py-2 text-sm font-medium text-gray-600 border border-gray-200 hover:bg-white transition"
+                >
+                  No thanks
+                </button>
+              </div>
+              {pushSetupError && <p className="text-xs text-red-500 mt-2">{pushSetupError}</p>}
+            </div>
+          )}
+          </div>
+
+          <div className={`overflow-hidden transition-all duration-300 ${showInstallSetup ? "max-h-[28rem] opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"}`}>
+          {installIncomplete && (
+            <div className="rounded-2xl border border-[#d7e8d7] bg-[#f4fbf5] px-4 py-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-gray-900">Did you know you can install Bible Buddy as an app?</p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Save it to your home screen so you can continue studying the Bible with one tap on the Bible Buddy icon.
+                  </p>
+                </div>
+                <div className="text-xl flex-shrink-0">??</div>
+              </div>
+
+              {isIosDevice ? (
+                <ol className="mt-3 space-y-2 text-sm text-gray-600">
+                  <li>1. Open this page in Safari.</li>
+                  <li>2. Tap the Share button at the bottom.</li>
+                  <li>3. Tap <span className="font-semibold text-gray-800">Add to Home Screen</span>.</li>
+                  <li>4. Tap <span className="font-semibold text-gray-800">Add</span> in the top right.</li>
+                </ol>
+              ) : isAndroidDevice ? (
+                <div className="mt-3 space-y-3">
+                  {canInstallToHomeScreen && (
+                    <button
+                      type="button"
+                      onClick={() => void handleInstallToHomeScreen()}
+                      disabled={installSetupLoading}
+                      className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
+                      style={{ backgroundColor: SAGE }}
+                    >
+                      {installSetupLoading ? "Opening..." : "Install Bible Buddy"}
+                    </button>
+                  )}
+                  <ol className="space-y-2 text-sm text-gray-600">
+                    <li>1. Open Bible Buddy in Chrome.</li>
+                    <li>2. Tap the 3-dot menu in the top right.</li>
+                    <li>3. Tap <span className="font-semibold text-gray-800">{canInstallToHomeScreen ? "Install app" : "Add to Home screen"}</span>.</li>
+                  </ol>
+                </div>
+              ) : (
+                <div className="mt-3 space-y-3">
+                  {canInstallToHomeScreen && (
+                    <button
+                      type="button"
+                      onClick={() => void handleInstallToHomeScreen()}
+                      disabled={installSetupLoading}
+                      className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
+                      style={{ backgroundColor: SAGE }}
+                    >
+                      {installSetupLoading ? "Opening..." : "Install Bible Buddy"}
+                    </button>
+                  )}
+                  <p className="text-sm text-gray-600">
+                    Use your browser menu to add Bible Buddy to your home screen for quicker access.
+                  </p>
+                </div>
+              )}
+
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={dismissUpdateCardInstall}
+                  className="rounded-xl px-4 py-2 text-sm font-medium text-gray-600 border border-gray-200 hover:bg-white transition"
+                >
+                  Maybe later
+                </button>
+              </div>
+              {installSetupError && <p className="text-xs text-red-500 mt-2">{installSetupError}</p>}
+            </div>
+          )}
+          </div>
+
+          <div className={`overflow-hidden transition-all duration-300 ${showUpgradeSetup ? "max-h-72 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"}`}>
+          {upgradeIncomplete && (
+            <div className="rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-gray-900">Go deeper with Bible Buddy Pro</p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Unlock unlimited study, open every Bible study, and keep going without credit limits when you are in the middle of a real breakthrough.
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Unlimited study access</span>
+                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Full Bible study library</span>
+                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">No daily credit wall</span>
+                  </div>
+                </div>
+                <div className="text-xl flex-shrink-0">??</div>
+              </div>
+              <div className="mt-3 flex items-center gap-3">
+                <Link
+                  href="/upgrade"
+                  className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                  style={{ backgroundColor: SAGE }}
+                >
+                  Upgrade to Pro
+                </Link>
+                <button
+                  type="button"
+                  onClick={dismissUpdateCardUpgrade}
+                  className="rounded-xl px-4 py-2 text-sm font-medium text-gray-600 border border-gray-200 hover:bg-white transition"
+                >
+                  Maybe later
+                </button>
+              </div>
+            </div>
+          )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+}
+import { triggerPoints } from "@/components/PointsPop";
