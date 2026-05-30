@@ -375,12 +375,61 @@ type DashboardGroupPost = {
   user_id: string;
   display_name: string | null;
   category: string | null;
-  content: string;
+  title?: string | null;
+  content: string | null;
   like_count: number | null;
   parent_post_id: string | null;
   is_pinned: boolean | null;
   created_at: string;
 };
+
+function decodeBasicHtmlEntities(value: string) {
+  return value
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+function getDashboardGroupCategoryLabel(category?: string | null) {
+  if (!category) return "General";
+  const labels: Record<string, string> = {
+    general: "General",
+    bible_studies: "Bible Study",
+    updates: "Update",
+    prayer: "Prayer",
+    qa: "Q&A",
+    weekly_poll: "Weekly Poll",
+    weekly_question: "Weekly Question",
+    weekly_trivia: "Weekly Trivia",
+    update_monday: "Weekly Update",
+  };
+  return labels[category] || category.replace(/_/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function getDashboardGroupPostParagraphs(content?: string | null) {
+  const raw = (content || "").trim();
+  if (!raw) return [];
+
+  const withBreaks = raw
+    .replace(/<\/p>\s*<p[^>]*>/gi, "\n\n")
+    .replace(/^<p[^>]*>/i, "")
+    .replace(/<\/p>$/i, "")
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/li>\s*<li[^>]*>/gi, "\n")
+    .replace(/<li[^>]*>/gi, "- ")
+    .replace(/<\/li>/gi, "")
+    .replace(/<[^>]*>/g, "")
+    .replace(/\n{3,}/g, "\n\n");
+
+  return decodeBasicHtmlEntities(withBreaks)
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+}
 
 type ShareRewardsReferral = {
   referred_user_id: string;
@@ -4450,7 +4499,7 @@ export default function DashboardJourneyExperience({
 
       const { data: posts, error: postsError } = await supabase
         .from("group_posts")
-        .select("id, group_id, user_id, display_name, category, content, like_count, parent_post_id, is_pinned, created_at")
+        .select("id, group_id, user_id, display_name, category, title, content, like_count, parent_post_id, is_pinned, created_at")
         .eq("group_id", group.id)
         .is("parent_post_id", null)
         .order("is_pinned", { ascending: false })
@@ -4482,7 +4531,7 @@ export default function DashboardJourneyExperience({
     try {
       const { data, error } = await supabase
         .from("group_posts")
-        .select("id, group_id, user_id, display_name, category, content, like_count, parent_post_id, is_pinned, created_at")
+        .select("id, group_id, user_id, display_name, category, title, content, like_count, parent_post_id, is_pinned, created_at")
         .eq("group_id", dashboardGroup.id)
         .eq("parent_post_id", postId)
         .order("created_at", { ascending: true })
@@ -5405,23 +5454,62 @@ export default function DashboardJourneyExperience({
               {dashboardGroupPosts.map((post) => {
                 const commentsOpen = dashboardGroupOpenComments[post.id] === true;
                 const comments = dashboardGroupCommentsByPost[post.id] || [];
+                const paragraphs = getDashboardGroupPostParagraphs(post.content);
+                const categoryLabel = getDashboardGroupCategoryLabel(post.category);
+                const fallbackTitle =
+                  categoryLabel === "Weekly Poll"
+                    ? "Weekly group poll"
+                    : categoryLabel === "Weekly Update"
+                      ? "Weekly group update"
+                      : null;
                 return (
-                  <article key={post.id} className="rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
+                  <article key={post.id} className="overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+                    {post.is_pinned ? (
+                      <div className="border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">
+                        Pinned
+                      </div>
+                    ) : null}
+                    <div className="p-4">
                     <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
+                      <div className="flex min-w-0 flex-1 gap-3">
+                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-sm font-black text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">
+                          {(post.display_name || "Bible Buddy").trim().charAt(0).toUpperCase() || "B"}
+                        </div>
+                        <div className="min-w-0">
                         <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{post.display_name || "Bible Buddy"}</p>
                         <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
                           {post.is_pinned ? "Pinned • " : ""}
                           {formatGroupTime(post.created_at)}
                         </p>
+                        </div>
                       </div>
                       <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1 text-xs font-black text-[var(--bb-text-secondary,#4b5563)]">
-                        {post.category || "general"}
+                        {categoryLabel}
                       </span>
                     </div>
-                    <p className="mt-3 whitespace-pre-wrap text-sm font-semibold leading-7 text-[var(--bb-text-primary,#111827)]">{post.content}</p>
-                    <div className="mt-4 flex items-center gap-3 text-xs font-black text-[var(--bb-text-secondary,#4b5563)]">
-                      <span>{post.like_count ?? 0} likes</span>
+                    {post.title || fallbackTitle ? (
+                      <h3 className="mt-4 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                        {post.title || fallbackTitle}
+                      </h3>
+                    ) : null}
+
+                    {paragraphs.length ? (
+                      <div className="mt-3 space-y-3">
+                        {paragraphs.map((paragraph, index) => (
+                          <p key={`${post.id}-paragraph-${index}`} className="whitespace-pre-wrap text-sm font-semibold leading-7 text-[var(--bb-text-secondary,#374151)]">
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="mt-4 rounded-2xl border border-dashed border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3">
+                        <p className="text-sm font-bold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                          {categoryLabel === "Weekly Poll" ? "This poll is ready for the group." : "This group post is ready for discussion."}
+                        </p>
+                      </div>
+                    )}
+                    <div className="mt-4 flex items-center gap-2 border-t border-[var(--bb-card-border,#dbe7f4)] pt-3 text-xs font-black text-[var(--bb-text-secondary,#4b5563)]">
+                      <span className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1.5">{post.like_count ?? 0} likes</span>
                       <button type="button" onClick={() => toggleDashboardGroupComments(post.id)} className="rounded-full bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-1.5 text-[var(--bb-accent,#2f7fe8)] transition hover:brightness-95">
                         {commentsOpen ? "Hide comments" : "Comments"}
                       </button>
@@ -5436,7 +5524,13 @@ export default function DashboardJourneyExperience({
                             {comments.map((comment) => (
                               <div key={comment.id} className="rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3">
                                 <p className="text-xs font-black text-[var(--bb-text-primary,#111827)]">{comment.display_name || "Bible Buddy"}</p>
-                                <p className="mt-1 whitespace-pre-wrap text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">{comment.content}</p>
+                                <div className="mt-1 space-y-2">
+                                  {(getDashboardGroupPostParagraphs(comment.content).length ? getDashboardGroupPostParagraphs(comment.content) : [""]).map((paragraph, index) => (
+                                    <p key={`${comment.id}-paragraph-${index}`} className="whitespace-pre-wrap text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                                      {paragraph}
+                                    </p>
+                                  ))}
+                                </div>
                               </div>
                             ))}
                           </div>
@@ -5464,6 +5558,7 @@ export default function DashboardJourneyExperience({
                         </div>
                       </div>
                     ) : null}
+                    </div>
                   </article>
                 );
               })}
