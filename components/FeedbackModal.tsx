@@ -67,6 +67,36 @@ export function FeedbackModal({
     },
   ];
 
+  const saveDismissal = async () => {
+    let finalUsername = username;
+    if (!finalUsername) {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const meta: any = user.user_metadata || {};
+        finalUsername =
+          meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          "User";
+      }
+    }
+
+    const { error: dismissError } = await supabase
+      .from("user_feedback")
+      .upsert({
+        user_id: userId,
+        username: finalUsername,
+        last_dismissed_at: new Date().toISOString(),
+        permanently_dismissed: false,
+      }, {
+        onConflict: "user_id",
+      });
+
+    if (dismissError) {
+      console.error("[FEEDBACK] Error saving feedback dismissal:", dismissError);
+    }
+  };
+
   const handleSubmit = async () => {
     setSubmitting(true);
     try {
@@ -125,9 +155,7 @@ export function FeedbackModal({
 
   const handleDoLater = async () => {
     try {
-      // Save dismissal timestamp (banner stays visible, just closes modal)
-      // Don't set last_dismissed_at - banner should remain visible
-      // Just close the modal
+      await saveDismissal();
       onDoLater();
       setShowSurvey(false);
       setAnswers({});
@@ -216,7 +244,16 @@ export function FeedbackModal({
   };
 
   return (
-    <ModalShell isOpen={isOpen} onClose={onClose} backdropColor="bg-black/50">
+    <ModalShell
+      isOpen={isOpen}
+      onClose={() => {
+        void saveDismissal();
+        onClose();
+        setShowSurvey(false);
+        setAnswers({});
+      }}
+      backdropColor="bg-black/50"
+    >
       <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           {!showSurvey ? (

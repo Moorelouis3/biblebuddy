@@ -6,6 +6,48 @@ Every Bible Buddy chapter note should feel like the same teacher is walking the 
 
 Use this framework for every future chapter from Genesis through Revelation.
 
+## Bible Reader Study Notes Pattern
+
+For the inline Bible Reader Study Notes system, use this four-part framework:
+
+```md
+🧭 What Is Happening Here?
+
+💬 Key Phrases
+
+🔑 Key Truths
+
+❤️ Why This Matters
+```
+
+The preferred shape for **What Is Happening Here?** and **Why This Matters** is:
+
+```md
+Short intro paragraph.
+2-3 sentences that set up the scene or life connection.
+
+🌿 Emoji teaching point.
+Clear sentence that teaches one idea.
+
+📖 Emoji teaching point.
+Clear sentence that teaches one idea.
+
+🧠 Emoji teaching point.
+Clear sentence that teaches one idea.
+
+Short outro paragraph.
+2-3 sentences that land the point and help the reader carry it forward.
+```
+
+This is the Study Notes style to keep:
+
+- intro, emoji teaching list, outro
+- conversational Bible teacher tone
+- clear enough for everyday readers
+- detailed enough to teach something new
+- no generic summaries
+- no repeated restatement of the verse
+
 ## The Goal
 
 The chapter notes should help the reader:

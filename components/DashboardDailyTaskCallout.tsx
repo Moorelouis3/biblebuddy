@@ -3,7 +3,6 @@
 import { Component, type MouseEvent, type ReactNode, type RefObject, useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
-import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import ScrambledGamePlayer from "./ScrambledGamePlayer";
 import TriviaGamePlayer from "./TriviaGamePlayer";
@@ -210,20 +209,12 @@ export function DatabaseTermTakeover({
   return (
     <div
       ref={takeoverRef}
-      className={`relative overflow-hidden border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_22px_70px_rgba(15,23,42,0.24)] ${
+      className={`relative border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_22px_70px_rgba(15,23,42,0.24)] ${
         isReaderMode
-          ? "max-h-[min(80vh,620px)] w-full max-w-[min(92vw,680px)] rounded-[18px] px-3 py-4 text-left"
-          : "min-h-[62vh] rounded-[26px] px-4 py-6 text-center"
+          ? "flex max-h-[calc(100dvh-1.5rem)] w-[min(calc(100vw-1rem),560px)] overflow-hidden rounded-[18px] text-left"
+          : "min-h-[62vh] overflow-hidden rounded-[26px] px-4 py-6 text-center"
       }`}
     >
-      <button
-        type="button"
-        onClick={onClose}
-        aria-label="Close word notes"
-        className="absolute right-3 top-3 z-20 grid h-9 w-9 place-items-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_92%,transparent)] text-lg font-black leading-none text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f6f8fb)]"
-      >
-        x
-      </button>
       <style>{`
         @keyframes word-discovery-smoke {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); filter: blur(0); }
@@ -248,21 +239,20 @@ export function DatabaseTermTakeover({
       <div
         className={`word-discovery-card relative z-10 mx-auto flex flex-col ${
           isReaderMode
-            ? "max-h-[calc(min(80vh,620px)-2rem)] max-w-none overflow-y-auto overscroll-contain pr-10"
+            ? "max-h-[calc(100dvh-1.5rem)] min-h-0 w-full max-w-none"
             : "min-h-[58vh] max-w-xl items-center justify-center"
         }`}
       >
-        <div className={`mb-3 flex ${isReaderMode ? "items-center gap-3" : "justify-center"}`}>
-          <LouisAvatar mood="think" size={isReaderMode ? 58 : 104} />
-          {isReaderMode ? (
+        {isReaderMode ? (
+          <div className="shrink-0 border-b border-[var(--bb-card-border,#e5e7eb)] px-4 pb-3 pt-4">
             <div className="min-w-0">
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">
                 {selectedTerm.type === "keywords" ? "Keyword" : selectedTerm.type === "places" ? "Place" : "Person"}
               </p>
-              <h3 className="mt-0.5 truncate text-2xl font-black leading-tight">{selectedTerm.name}</h3>
+              <h3 className="mt-0.5 break-words text-2xl font-black leading-tight">{selectedTerm.name}</h3>
             </div>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
         {!isReaderMode ? (
           <>
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">
@@ -271,7 +261,7 @@ export function DatabaseTermTakeover({
             <h3 className="mt-1 text-4xl font-black leading-tight">{selectedTerm.name}</h3>
           </>
         ) : null}
-        <div className={`w-full py-2 ${isReaderMode ? "mt-2 px-0" : "mt-5 px-2"}`}>
+        <div className={`w-full ${isReaderMode ? "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3" : "mt-5 px-2 py-2"}`}>
           {loadingTermNotes && !termNotes ? (
             <div className="space-y-3 py-6">
               <div className="h-3 rounded-full bg-white/80" />
@@ -281,8 +271,12 @@ export function DatabaseTermTakeover({
           ) : termNotes ? (
             <ReactMarkdown
               components={{
-                h1: ({ ...props }) => <h1 className="mb-3 mt-5 text-left text-xl font-black" {...props} />,
-                p: ({ ...props }) => <p className={`mb-4 text-left font-medium ${isReaderMode ? "text-sm leading-6" : "text-base leading-7"}`} {...props} />,
+                h1: ({ ...props }) => <h1 className={`${isReaderMode ? "mb-2 mt-4 text-lg leading-6" : "mb-3 mt-5 text-xl"} break-words text-left font-black`} {...props} />,
+                h2: ({ ...props }) => <h2 className="mb-2 mt-4 break-words text-left text-base font-black leading-6" {...props} />,
+                p: ({ ...props }) => <p className={`mb-3 whitespace-normal break-words text-left font-medium ${isReaderMode ? "text-sm leading-6" : "text-base leading-7"}`} {...props} />,
+                li: ({ ...props }) => <li className="mb-1 break-words text-left text-sm font-medium leading-6" {...props} />,
+                ul: ({ ...props }) => <ul className="mb-3 list-disc space-y-1 pl-5" {...props} />,
+                ol: ({ ...props }) => <ol className="mb-3 list-decimal space-y-1 pl-5" {...props} />,
                 strong: ({ ...props }) => <strong className="font-black" {...props} />,
               }}
             >
@@ -294,15 +288,17 @@ export function DatabaseTermTakeover({
             </p>
           )}
         </div>
+        <div className={isReaderMode ? "shrink-0 border-t border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-4 py-3" : ""}>
         <button
           type="button"
           onClick={onClose}
           className={`rounded-full bg-[var(--bb-button,#2f7fe8)] text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 ${
-            isReaderMode ? "sticky bottom-0 mt-3 w-full px-5 py-2.5" : "mt-5 px-8 py-3"
+            isReaderMode ? "w-full px-5 py-3" : "mt-5 px-8 py-3"
           }`}
         >
           Close
         </button>
+        </div>
       </div>
     </div>
   );

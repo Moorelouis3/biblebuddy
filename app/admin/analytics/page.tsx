@@ -702,18 +702,18 @@ function AudioOverviewMetricCard({
   icon: "visitors" | "play" | "user" | "headphones";
 }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_46px_rgba(0,0,0,0.2)]">
+    <div className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_14px_34px_rgba(15,23,42,0.08)]">
       <div className="flex items-start justify-between gap-4">
-        <div className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.06] text-cyan-200">
+        <div className="grid h-10 w-10 place-items-center rounded-lg border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#2f7fe8)]">
           <Icon name={icon} />
         </div>
         <span className="rounded-full border border-emerald-300/20 bg-emerald-400/10 px-2.5 py-1 text-xs font-black text-emerald-200">
           {change}
         </span>
       </div>
-      <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-slate-400">{title}</p>
-      <p className="mt-2 text-3xl font-black leading-none text-white">{formatNumber(value)}</p>
-      <p className="mt-2 text-sm font-semibold leading-5 text-slate-400">{helper}</p>
+      <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#64748b)]">{title}</p>
+      <p className="mt-2 text-3xl font-black leading-none text-[var(--bb-text-primary,#101827)]">{formatNumber(value)}</p>
+      <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#334155)]">{helper}</p>
     </div>
   );
 }
@@ -989,22 +989,22 @@ function StripeRevenueSection({
     : [];
 
   return (
-    <section className="rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(96,165,250,0.14),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+    <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Stripe Revenue</p>
-          <h2 className="mt-2 text-2xl font-black text-white">Money coming in</h2>
-          <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-400">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">Stripe Revenue</p>
+          <h2 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">Money coming in</h2>
+          <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#334155)]">
             Live Stripe numbers for MRR, monthly subscriptions, one-time payments, and recent successful charges.
           </p>
         </div>
-        <div className="rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-black text-slate-300">
+        <div className="rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#101827)]">
           {revenue?.updatedAt ? `Updated ${formatDateTime(revenue.updatedAt)}` : "Live from Stripe"}
         </div>
       </div>
 
       {loading ? (
-        <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.045] p-5 text-sm font-bold text-slate-300">
+        <div className="mt-5 rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-5 text-sm font-bold text-[var(--bb-text-secondary,#334155)]">
           Loading Stripe revenue...
         </div>
       ) : error ? (
@@ -1022,19 +1022,19 @@ function StripeRevenueSection({
                 key={card.label}
                 type={isMrrCard ? "button" : undefined}
                 onClick={isMrrCard ? () => setRecentPaymentsOpen((current) => !current) : undefined}
-                className={`rounded-xl border border-white/10 bg-white/[0.045] p-5 text-left shadow-[0_18px_46px_rgba(0,0,0,0.2)] ${
-                  isMrrCard ? "transition hover:border-cyan-300/40 hover:bg-white/[0.065]" : ""
-                }`}
+                 className={`rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 text-left shadow-[0_14px_34px_rgba(15,23,42,0.08)] ${
+                   isMrrCard ? "transition hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-accent-soft,#e6f1ff)]" : ""
+                 }`}
                 aria-expanded={isMrrCard ? recentPaymentsOpen : undefined}
               >
-                <div className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.06] text-cyan-200">
+                <div className="grid h-10 w-10 place-items-center rounded-lg border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] text-[var(--bb-accent,#2f7fe8)]">
                   <Icon name={card.icon} />
                 </div>
-                <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-slate-400">{card.label}</p>
-                <p className="mt-2 text-3xl font-black leading-none text-white">{card.value}</p>
-                <p className="mt-2 text-sm font-semibold leading-5 text-slate-400">{card.helper}</p>
+                <p className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#64748b)]">{card.label}</p>
+                <p className="mt-2 text-3xl font-black leading-none text-[var(--bb-text-primary,#101827)]">{card.value}</p>
+                <p className="mt-2 text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#334155)]">{card.helper}</p>
                 {isMrrCard ? (
-                  <p className="mt-4 text-xs font-black uppercase tracking-[0.14em] text-cyan-200">
+                  <p className="mt-4 text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">
                     {recentPaymentsOpen ? "Hide recent payments" : "Click to show recent payments"}
                   </p>
                 ) : null}
@@ -1044,50 +1044,50 @@ function StripeRevenueSection({
           </div>
 
           {recentPaymentsOpen ? (
-          <div className="mt-6 rounded-xl border border-white/10 bg-slate-950/35">
-            <div className="flex flex-col gap-2 border-b border-white/10 p-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="mt-6 rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)]">
+            <div className="flex flex-col gap-2 border-b border-[var(--bb-card-border,#d8e3ec)] p-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-200">Recent Payments</p>
-                <p className="mt-1 text-sm font-semibold text-slate-400">Newest successful Stripe charges.</p>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Recent Payments</p>
+                <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">Newest successful Stripe charges.</p>
               </div>
-              <p className="text-xs font-bold text-slate-500">
+              <p className="text-xs font-bold text-[var(--bb-text-muted,#64748b)]">
                 {formatNumber(revenue.trialingSubscriptions)} trialing subscriptions
               </p>
             </div>
-            <div className="divide-y divide-white/10">
+            <div className="divide-y divide-[var(--bb-card-border,#d8e3ec)]">
               {revenue.recentPayments.length ? revenue.recentPayments.map((payment) => (
                 <div key={payment.id} className="grid gap-3 p-4 text-sm sm:grid-cols-[1.1fr_0.8fr_0.5fr_0.6fr] sm:items-center">
                   <div className="min-w-0">
-                    <p className="truncate font-black text-white">{payment.customerName || payment.customerEmail}</p>
-                    <p className="mt-1 truncate text-xs font-semibold text-slate-500">{payment.customerEmail}</p>
+                    <p className="truncate font-black text-[var(--bb-text-primary,#101827)]">{payment.customerName || payment.customerEmail}</p>
+                    <p className="mt-1 truncate text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">{payment.customerEmail}</p>
                   </div>
                   <div>
-                    <p className="font-black text-cyan-100">{payment.amount}</p>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">{payment.plan}</p>
+                    <p className="font-black text-[var(--bb-accent,#2f7fe8)]">{payment.amount}</p>
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">{payment.plan}</p>
                   </div>
-                  <p className="font-semibold text-slate-400">{formatDateTime(payment.createdAt)}</p>
+                  <p className="font-semibold text-[var(--bb-text-secondary,#334155)]">{formatDateTime(payment.createdAt)}</p>
                   {payment.receiptUrl ? (
                     <a
                       href={payment.receiptUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex justify-start font-black text-cyan-200 underline-offset-4 hover:underline sm:justify-end"
+                      className="inline-flex justify-start font-black text-[var(--bb-accent,#2f7fe8)] underline-offset-4 hover:underline sm:justify-end"
                     >
                       Receipt
                     </a>
                   ) : (
-                    <span className="font-semibold text-slate-600 sm:text-right">No receipt</span>
+                    <span className="font-semibold text-[var(--bb-text-muted,#64748b)] sm:text-right">No receipt</span>
                   )}
                 </div>
               )) : (
-                <div className="p-5 text-sm font-bold text-slate-400">No successful payments found yet.</div>
+                <div className="p-5 text-sm font-bold text-[var(--bb-text-secondary,#334155)]">No successful payments found yet.</div>
               )}
             </div>
           </div>
           ) : null}
         </>
       ) : (
-        <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.045] p-5 text-sm font-bold text-slate-300">
+        <div className="mt-5 rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-5 text-sm font-bold text-[var(--bb-text-secondary,#334155)]">
           Stripe revenue has not loaded yet.
         </div>
       )}
@@ -1182,49 +1182,49 @@ function JourneyDayDetailPanel({
     { label: "Replays", value: day.replays },
   ];
   return (
-    <div className="fixed inset-0 z-[140] flex justify-end bg-slate-950/70 backdrop-blur-sm">
-      <aside className="h-full w-full max-w-lg overflow-y-auto border-l border-white/10 bg-[#0b1421] p-6 text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)]">
+    <div className="fixed inset-0 z-[140] flex justify-end bg-black/55 backdrop-blur-sm">
+      <aside className="h-full w-full max-w-lg overflow-y-auto border-l border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-6 text-[var(--bb-text-primary,#101827)] shadow-[0_28px_80px_rgba(0,0,0,0.28)]">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">Lesson Details</p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Lesson Details</p>
             <h2 className="mt-2 text-2xl font-black">{getJourneyDayLabel(day.dayNumber, day.title)}</h2>
-            <p className="mt-1 text-sm font-semibold text-slate-400">{day.reference}</p>
+            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">{day.reference}</p>
           </div>
-          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-2 text-sm font-black text-slate-200 transition hover:bg-white/10">
+          <button type="button" onClick={onClose} className="rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-3 py-2 text-sm font-black text-[var(--bb-text-secondary,#334155)] transition hover:bg-[var(--bb-accent-soft,#e6f1ff)]">
             Close
           </button>
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-3">
           {stats.map((stat) => (
-            <div key={stat.label} className="rounded-xl border border-white/10 bg-white/[0.045] p-4">
-              <p className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">{stat.label}</p>
-              <p className="mt-2 text-2xl font-black text-white">{stat.value}</p>
+            <div key={stat.label} className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-4">
+              <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted,#64748b)]">{stat.label}</p>
+              <p className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">{stat.value}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.045] p-5">
+        <div className="mt-6 rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-5">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-400">Engagement Breakdown</p>
-              <h3 className="mt-1 text-lg font-black text-white">Deeper study actions</h3>
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-text-muted,#64748b)]">Engagement Breakdown</p>
+              <h3 className="mt-1 text-lg font-black text-[var(--bb-text-primary,#101827)]">Deeper study actions</h3>
             </div>
             <MiniWaveform values={day.trend} />
           </div>
           <div className="mt-5 space-y-3">
             {engagement.map((item) => (
-              <div key={item.label} className="flex items-center justify-between border-b border-white/10 pb-3 last:border-0 last:pb-0">
-                <span className="text-sm font-semibold text-slate-300">{item.label}</span>
-                <span className="text-sm font-black text-white">{formatNumber(item.value)}</span>
+              <div key={item.label} className="flex items-center justify-between border-b border-[var(--bb-card-border,#d8e3ec)] pb-3 last:border-0 last:pb-0">
+                <span className="text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">{item.label}</span>
+                <span className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(item.value)}</span>
               </div>
             ))}
           </div>
         </div>
 
         <div className="mt-6 rounded-xl border border-cyan-300/20 bg-cyan-300/5 p-4">
-          <p className="text-sm font-black text-cyan-100">Audio tracking note</p>
-          <p className="mt-2 text-sm leading-6 text-slate-300">
+          <p className="text-sm font-black text-[var(--bb-accent,#2f7fe8)]">Audio tracking note</p>
+          <p className="mt-2 text-sm leading-6 text-[var(--bb-text-secondary,#334155)]">
             Plays and completions are using the Bible journey task events available now. Average listen duration, replays, and drop-off points are ready in the UI and need dedicated audio progress events to become exact.
           </p>
         </div>
@@ -1243,52 +1243,52 @@ function AllJourneyDaysExplorer({
   onToggleDay: (dayNumber: number) => void;
 }) {
   return (
-    <section className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-[0_18px_46px_rgba(0,0,0,0.18)]">
+    <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">All Bible In One Year Days</p>
-          <h2 className="mt-1 text-xl font-black text-white">Click a day to open its stats</h2>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">All Bible In One Year Days</p>
+          <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#101827)]">Click a day to open its stats</h2>
         </div>
-        <p className="text-sm font-semibold text-slate-400">{formatNumber(days.length)} day cards</p>
+        <p className="text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">{formatNumber(days.length)} day cards</p>
       </div>
 
       <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {days.map((day) => {
           const expanded = expandedDay === day.dayNumber;
           return (
-            <div key={day.dayNumber} className="overflow-hidden rounded-xl border border-white/10 bg-slate-950/35">
+            <div key={day.dayNumber} className="overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)]">
               <button
                 type="button"
                 onClick={() => onToggleDay(expanded ? 0 : day.dayNumber)}
-                className="w-full p-4 text-left transition hover:bg-white/[0.045]"
+                className="w-full p-4 text-left transition hover:bg-[var(--bb-accent-soft,#e6f1ff)]"
                 aria-expanded={expanded}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-200">Day {day.dayNumber}</p>
-                    <h3 className="mt-1 truncate text-base font-black text-white">{day.title}</h3>
-                    <p className="mt-0.5 text-xs font-semibold text-slate-400">{day.reference}</p>
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Day {day.dayNumber}</p>
+                    <h3 className="mt-1 truncate text-base font-black text-[var(--bb-text-primary,#101827)]">{day.title}</h3>
+                    <p className="mt-0.5 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">{day.reference}</p>
                   </div>
-                  <span className="text-xl font-black text-slate-400">{expanded ? "-" : "+"}</span>
+                  <span className="text-xl font-black text-[var(--bb-text-muted,#64748b)]">{expanded ? "-" : "+"}</span>
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-2">
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Started</p>
-                    <p className="mt-1 text-xl font-black text-white">{formatNumber(day.plays)}</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">Started</p>
+                    <p className="mt-1 text-xl font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(day.plays)}</p>
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Finished</p>
-                    <p className="mt-1 text-xl font-black text-emerald-300">{formatNumber(day.completedUsers)}</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">Finished</p>
+                    <p className="mt-1 text-xl font-black text-[var(--bb-accent,#2f7fe8)]">{formatNumber(day.completedUsers)}</p>
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">Rate</p>
-                    <p className="mt-1 text-xl font-black text-white">{day.completionRate}%</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">Rate</p>
+                    <p className="mt-1 text-xl font-black text-[var(--bb-text-primary,#101827)]">{day.completionRate}%</p>
                   </div>
                 </div>
               </button>
 
               {expanded ? (
-                <div className="border-t border-white/10 p-4">
+                <div className="border-t border-[var(--bb-card-border,#d8e3ec)] p-4">
                   <div className="grid grid-cols-2 gap-3 text-sm">
                     {[
                       ["Unique listeners", day.uniqueListeners],
@@ -1298,9 +1298,9 @@ function AllJourneyDaysExplorer({
                       ["Trivia completed", day.triviaCompleted],
                       ["Reflection submitted", day.reflectionSubmitted],
                     ].map(([label, value]) => (
-                      <div key={label} className="rounded-lg border border-white/10 bg-white/[0.045] p-3">
-                        <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">{label}</p>
-                        <p className="mt-1 font-black text-white">{typeof value === "number" ? formatNumber(value) : value}</p>
+                      <div key={label} className="rounded-lg border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-3">
+                        <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">{label}</p>
+                        <p className="mt-1 font-black text-[var(--bb-text-primary,#101827)]">{typeof value === "number" ? formatNumber(value) : value}</p>
                       </div>
                     ))}
                   </div>
@@ -1332,24 +1332,24 @@ function AudioJourneyFunnel({
     { label: "Day 1 Plays", value: dayOnePlays },
   ];
   return (
-    <section className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-[0_18px_46px_rgba(0,0,0,0.18)]">
+    <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">Journey Funnel</p>
-          <h2 className="mt-1 text-xl font-black text-white">From first visit to first listen</h2>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Journey Funnel</p>
+          <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#101827)]">From first visit to first listen</h2>
         </div>
-        <p className="text-sm font-semibold text-slate-400">Simple progression, no event dump.</p>
+        <p className="text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">Simple progression, no event dump.</p>
       </div>
       <div className="mt-6 grid gap-3 lg:grid-cols-4">
         {steps.map((step, index) => {
           const previous = index === 0 ? step.value : steps[index - 1]?.value || 0;
           const rate = index === 0 ? 100 : getRate(step.value, previous);
           return (
-            <div key={step.label} className="relative rounded-xl border border-white/10 bg-slate-950/35 p-4">
-              {index < steps.length - 1 ? <span className="absolute -right-3 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-[#0b1421] text-slate-400 lg:grid"><Icon name="arrow" /></span> : null}
-              <p className="text-xs font-black uppercase tracking-[0.12em] text-slate-500">{step.label}</p>
-              <p className="mt-3 text-3xl font-black text-white">{formatNumber(step.value)}</p>
-              <p className="mt-2 text-sm font-black text-emerald-300">{rate}% from previous</p>
+            <div key={step.label} className="relative rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-4">
+              {index < steps.length - 1 ? <span className="absolute -right-3 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-muted,#64748b)] lg:grid"><Icon name="arrow" /></span> : null}
+              <p className="text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">{step.label}</p>
+              <p className="mt-3 text-3xl font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(step.value)}</p>
+              <p className="mt-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">{rate}% from previous</p>
             </div>
           );
         })}
@@ -1585,15 +1585,15 @@ function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
   const latestDay = details.currentDay || details.lastCompletedDay || 0;
 
   return (
-    <div className="rounded-b-2xl border-x border-b border-blue-500/60 bg-[#071426] p-4 text-slate-100 shadow-[0_18px_46px_rgba(15,23,42,0.28)]">
-      <section className="rounded-xl border border-white/10 bg-white/[0.035] p-4">
+    <div className="rounded-b-2xl border-x border-b border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-surface-soft,#eef4f8)] p-4 text-[var(--bb-text-primary,#101827)] shadow-[0_18px_46px_rgba(15,23,42,0.12)]">
+      <section className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-300">User Journey Timeline</p>
-              <h3 className="mt-1 text-xl font-black text-white">Everything this visitor has done</h3>
-              <p className="mt-1 text-sm font-medium text-slate-400">Landing page, signup, and Bible in One Year progress.</p>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">User Journey Timeline</p>
+              <h3 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#101827)]">Everything this visitor has done</h3>
+              <p className="mt-1 text-sm font-medium text-[var(--bb-text-secondary,#334155)]">Landing page, signup, and Bible in One Year progress.</p>
             </div>
-            <div className="rounded-lg bg-blue-500/10 px-3 py-2 text-sm font-black text-blue-200">
+            <div className="rounded-lg bg-[var(--bb-accent-soft,#e6f1ff)] px-3 py-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
               Total Journey Time: {details.totalTimeLabel}
             </div>
           </div>
@@ -1606,39 +1606,39 @@ function UserJourneyTimeline({ row }: { row: VisitorJourneyRow }) {
                   <div className="relative z-10 mx-auto w-fit">
                     <TimelineStatusIcon status={event.status} />
                   </div>
-                  <p className="mt-3 text-[11px] font-semibold text-slate-400">{formatDateTime(event.timestamp)}</p>
-                  <p className="mt-2 text-sm font-black leading-5 text-white">{event.title}</p>
-                  <p className="mt-1 text-[11px] font-semibold text-blue-200">{event.eventName}</p>
-                  <p className="mt-2 text-xs leading-5 text-slate-300">{event.timeSincePreviousLabel || event.timeSinceFirstLabel || event.detail}</p>
+                  <p className="mt-3 text-[11px] font-semibold text-[var(--bb-text-muted,#64748b)]">{formatDateTime(event.timestamp)}</p>
+                  <p className="mt-2 text-sm font-black leading-5 text-[var(--bb-text-primary,#101827)]">{event.title}</p>
+                  <p className="mt-1 text-[11px] font-semibold text-[var(--bb-accent,#2f7fe8)]">{event.eventName}</p>
+                  <p className="mt-2 text-xs leading-5 text-[var(--bb-text-secondary,#334155)]">{event.timeSincePreviousLabel || event.timeSinceFirstLabel || event.detail}</p>
                 </div>
               )) : (
-                <div className="rounded-xl border border-white/10 bg-white/[0.04] p-5 text-sm font-semibold text-slate-300">
+                <div className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-5 text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">
                   No detailed events found for this visitor yet.
                 </div>
               )}
             </div>
           </div>
 
-          <div className="mt-5 grid gap-3 border-t border-white/10 pt-4 sm:grid-cols-5">
-            <div className="rounded-lg bg-white/[0.04] p-3">
-              <p className="text-xs font-bold text-slate-400">Start Journey</p>
-              <p className="mt-1 text-lg font-black text-white">{row.timeline.some((event) => event.title === "Clicked Start Journey") ? "Clicked" : "Not clicked"}</p>
+          <div className="mt-5 grid gap-3 border-t border-[var(--bb-card-border,#d8e3ec)] pt-4 sm:grid-cols-5">
+            <div className="rounded-lg bg-[var(--bb-surface-soft,#eef4f8)] p-3">
+              <p className="text-xs font-bold text-[var(--bb-text-muted,#64748b)]">Start Journey</p>
+              <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#101827)]">{row.timeline.some((event) => event.title === "Clicked Start Journey") ? "Clicked" : "Not clicked"}</p>
             </div>
-            <div className="rounded-lg bg-white/[0.04] p-3">
-              <p className="text-xs font-bold text-slate-400">Current Day</p>
-              <p className="mt-1 text-lg font-black text-white">{latestDay ? `Day ${latestDay}` : "None"}</p>
+            <div className="rounded-lg bg-[var(--bb-surface-soft,#eef4f8)] p-3">
+              <p className="text-xs font-bold text-[var(--bb-text-muted,#64748b)]">Current Day</p>
+              <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#101827)]">{latestDay ? `Day ${latestDay}` : "None"}</p>
             </div>
-            <div className="rounded-lg bg-white/[0.04] p-3">
-              <p className="text-xs font-bold text-slate-400">Days Complete</p>
-              <p className="mt-1 text-lg font-black text-white">{completedTasks}</p>
+            <div className="rounded-lg bg-[var(--bb-surface-soft,#eef4f8)] p-3">
+              <p className="text-xs font-bold text-[var(--bb-text-muted,#64748b)]">Days Complete</p>
+              <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#101827)]">{completedTasks}</p>
             </div>
-            <div className="rounded-lg bg-white/[0.04] p-3">
-              <p className="text-xs font-bold text-slate-400">Account</p>
-              <p className="mt-1 text-lg font-black text-white">{details.accountType}</p>
+            <div className="rounded-lg bg-[var(--bb-surface-soft,#eef4f8)] p-3">
+              <p className="text-xs font-bold text-[var(--bb-text-muted,#64748b)]">Account</p>
+              <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#101827)]">{details.accountType}</p>
             </div>
-            <div className="rounded-lg bg-white/[0.04] p-3">
-              <p className="text-xs font-bold text-slate-400">Next Action</p>
-              <p className="mt-1 text-lg font-black text-white">{row.currentStatus === "dropped_off" ? "Re-engage" : "Keep going"}</p>
+            <div className="rounded-lg bg-[var(--bb-surface-soft,#eef4f8)] p-3">
+              <p className="text-xs font-bold text-[var(--bb-text-muted,#64748b)]">Next Action</p>
+              <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#101827)]">{row.currentStatus === "dropped_off" ? "Re-engage" : "Keep going"}</p>
             </div>
           </div>
       </section>
@@ -1678,35 +1678,35 @@ function VisitorJourneyTableSection({
   setExpandedVisitorId: (value: string | null | ((current: string | null) => string | null)) => void;
 }) {
   return (
-    <section className="rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_18px_46px_rgba(0,0,0,0.18)]">
-      <div className="border-b border-white/10 p-4">
+    <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
+      <div className="border-b border-[var(--bb-card-border,#d8e3ec)] p-4">
         <div className="mb-4">
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">Visitor Tracker</p>
-          <h2 className="mt-1 text-xl font-black text-white">Visitor journey table</h2>
-          <p className="mt-1 text-sm font-semibold text-slate-400">The original visitor list is back, under the day cards.</p>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Visitor Tracker</p>
+          <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#101827)]">Visitor journey table</h2>
+          <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">The original visitor list is back, under the day cards.</p>
         </div>
         <div className="grid gap-3 xl:grid-cols-[1.4fr_0.8fr_0.8fr_0.7fr_auto]">
           <label className="relative">
-            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><Icon name="search" /></span>
+            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--bb-text-muted,#64748b)]"><Icon name="search" /></span>
             <input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Search by guest, drop off, source, action, or status..."
-              className="h-11 w-full rounded-lg border border-white/10 bg-slate-950/35 pl-11 pr-3 text-sm font-medium text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/45 focus:ring-4 focus:ring-cyan-300/10"
+              className="h-11 w-full rounded-lg border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] pl-11 pr-3 text-sm font-medium text-[var(--bb-text-primary,#101827)] outline-none transition placeholder:text-[var(--bb-text-muted,#64748b)] focus:border-[var(--bb-accent,#2f7fe8)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#e6f1ff)]"
             />
           </label>
 
-          <select value={sourceFilter} onChange={(event) => setSourceFilter(event.target.value)} className="h-11 rounded-lg border border-white/10 bg-slate-950/35 px-3 text-sm font-semibold text-white outline-none focus:border-cyan-300/45 focus:ring-4 focus:ring-cyan-300/10">
+          <select value={sourceFilter} onChange={(event) => setSourceFilter(event.target.value)} className="h-11 rounded-lg border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-3 text-sm font-semibold text-[var(--bb-text-primary,#101827)] outline-none focus:border-[var(--bb-accent,#2f7fe8)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#e6f1ff)]">
             <option value="all">All Sources</option>
             {(journeys?.sources || []).map((source) => <option key={source} value={source}>{source}</option>)}
           </select>
 
-          <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as VisitorJourneyStatus | "all")} className="h-11 rounded-lg border border-white/10 bg-slate-950/35 px-3 text-sm font-semibold text-white outline-none focus:border-cyan-300/45 focus:ring-4 focus:ring-cyan-300/10">
+          <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as VisitorJourneyStatus | "all")} className="h-11 rounded-lg border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-3 text-sm font-semibold text-[var(--bb-text-primary,#101827)] outline-none focus:border-[var(--bb-accent,#2f7fe8)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#e6f1ff)]">
             <option value="all">All Statuses</option>
             {(journeys?.statuses || []).map((status) => <option key={status.key} value={status.key}>{status.label}</option>)}
           </select>
 
-          <select value={accountFilter} onChange={(event) => setAccountFilter(event.target.value as AccountFilter)} className="h-11 rounded-lg border border-white/10 bg-slate-950/35 px-3 text-sm font-semibold text-white outline-none focus:border-cyan-300/45 focus:ring-4 focus:ring-cyan-300/10">
+          <select value={accountFilter} onChange={(event) => setAccountFilter(event.target.value as AccountFilter)} className="h-11 rounded-lg border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-3 text-sm font-semibold text-[var(--bb-text-primary,#101827)] outline-none focus:border-[var(--bb-accent,#2f7fe8)] focus:ring-4 focus:ring-[var(--bb-accent-soft,#e6f1ff)]">
             <option value="all">All Accounts</option>
             <option value="guest">Guests</option>
             <option value="free">Free</option>
@@ -1721,7 +1721,7 @@ function VisitorJourneyTableSection({
               setStatusFilter("all");
               setAccountFilter("all");
             }}
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.06] px-4 text-sm font-semibold text-white transition hover:bg-white/10"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 text-sm font-semibold text-[var(--bb-text-primary,#101827)] transition hover:bg-[var(--bb-accent-soft,#e6f1ff)]"
           >
             <Icon name="filter" />
             Reset
@@ -1731,9 +1731,9 @@ function VisitorJourneyTableSection({
 
       <div className="overflow-x-auto">
         <table className="min-w-[920px] w-full border-collapse text-left">
-          <thead className="border-b border-white/10 bg-slate-950/35 text-xs font-bold text-slate-400">
+          <thead className="border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] text-xs font-bold text-[var(--bb-text-secondary,#334155)]">
             <tr>
-              <th className="w-10 px-4 py-4"><span className="block h-4 w-4 rounded border border-white/15" /></th>
+              <th className="w-10 px-4 py-4"><span className="block h-4 w-4 rounded border border-[var(--bb-card-border,#d8e3ec)]" /></th>
               <th className="px-4 py-4">Visitor Numbers</th>
               <th className="px-4 py-4">Last Active</th>
               <th className="px-4 py-4">Last Action</th>
@@ -1742,10 +1742,10 @@ function VisitorJourneyTableSection({
               <th className="px-4 py-4">Source</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10 text-sm">
+          <tbody className="divide-y divide-[var(--bb-card-border,#d8e3ec)] text-sm">
             {loading ? (
               <tr>
-                <td colSpan={7} className="px-4 py-12 text-center text-sm font-semibold text-slate-400">Loading visitor journeys...</td>
+                <td colSpan={7} className="px-4 py-12 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">Loading visitor journeys...</td>
               </tr>
             ) : filteredRows.length ? (
               filteredRows.map((row) => {
@@ -1753,30 +1753,30 @@ function VisitorJourneyTableSection({
                 return (
                   <Fragment key={row.id}>
                     <tr
-                      className={`cursor-pointer transition ${isExpanded ? "bg-cyan-300/10" : "hover:bg-white/[0.04]"}`}
+                      className={`cursor-pointer transition ${isExpanded ? "bg-[var(--bb-accent-soft,#e6f1ff)]" : "hover:bg-[var(--bb-surface-soft,#eef4f8)]"}`}
                       onClick={() => setExpandedVisitorId((current) => current === row.id ? null : row.id)}
                     >
                       <td className="px-4 py-4 align-middle">
-                        <span className={`grid h-5 w-5 place-items-center rounded border text-[10px] font-black ${isExpanded ? "border-cyan-300 bg-cyan-300 text-slate-950" : "border-white/15 text-slate-500"}`}>
+                        <span className={`grid h-5 w-5 place-items-center rounded border text-[10px] font-black ${isExpanded ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)]" : "border-[var(--bb-card-border,#d8e3ec)] text-[var(--bb-text-muted,#64748b)]"}`}>
                           {isExpanded ? "-" : "+"}
                         </span>
                       </td>
                       <td className="px-4 py-4 align-middle">
-                        <div className="font-bold text-white">{row.visitorLabel}</div>
+                        <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.visitorLabel}</div>
                         {row.userId && row.userLabel !== "Guest visitor" ? (
-                          <div className="mt-0.5 text-xs font-medium text-slate-400">{row.userLabel}</div>
+                          <div className="mt-0.5 text-xs font-medium text-[var(--bb-text-secondary,#334155)]">{row.userLabel}</div>
                         ) : null}
                       </td>
                       <td className="px-4 py-4 align-middle">
-                        <div className="font-bold text-white">{formatLastActive(row.lastActiveAt)}</div>
-                        <div className="mt-0.5 text-xs font-medium text-slate-400">{formatDateTime(row.lastActiveAt)}</div>
+                        <div className="font-bold text-[var(--bb-text-primary,#101827)]">{formatLastActive(row.lastActiveAt)}</div>
+                        <div className="mt-0.5 text-xs font-medium text-[var(--bb-text-secondary,#334155)]">{formatDateTime(row.lastActiveAt)}</div>
                       </td>
                       <td className="px-4 py-4 align-middle">
-                        <div className="font-bold text-white">{row.dropoffStep || "Unknown"}</div>
-                        <div className="mt-0.5 text-xs font-medium text-slate-400">{row.lastEventName || "No event name"}</div>
+                        <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.dropoffStep || "Unknown"}</div>
+                        <div className="mt-0.5 text-xs font-medium text-[var(--bb-text-secondary,#334155)]">{row.lastEventName || "No event name"}</div>
                       </td>
                       <td className="px-4 py-4 align-middle">
-                        <div className="font-bold text-white">{row.timeSpentLabel || "Unknown"}</div>
+                        <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.timeSpentLabel || "Unknown"}</div>
                       </td>
                       <td className="px-4 py-4 align-middle">
                         <span className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ring-1 ${STATUS_STYLES[row.currentStatus]}`}>
@@ -1784,7 +1784,7 @@ function VisitorJourneyTableSection({
                         </span>
                       </td>
                       <td className="px-4 py-4 align-middle">
-                        <div className="font-semibold text-white">{row.source}</div>
+                        <div className="font-semibold text-[var(--bb-text-primary,#101827)]">{row.source}</div>
                       </td>
                     </tr>
                     {isExpanded ? (
@@ -1799,14 +1799,14 @@ function VisitorJourneyTableSection({
               })
             ) : (
               <tr>
-                <td colSpan={7} className="px-4 py-12 text-center text-sm font-semibold text-slate-400">No journeys match these filters.</td>
+                <td colSpan={7} className="px-4 py-12 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">No journeys match these filters.</td>
               </tr>
             )}
           </tbody>
         </table>
       </div>
 
-      <div className="flex flex-col gap-3 border-t border-white/10 px-4 py-4 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 border-t border-[var(--bb-card-border,#d8e3ec)] px-4 py-4 text-sm text-[var(--bb-text-secondary,#334155)] sm:flex-row sm:items-center sm:justify-between">
         <p>Showing {filteredRows.length} of {rows.length} visitors</p>
         <p className="font-medium">Rows per page: 100</p>
       </div>

@@ -21,6 +21,7 @@ type AllowedActionType =
   | typeof ACTION_TYPE.note_started
   | typeof ACTION_TYPE.person_viewed
   | typeof ACTION_TYPE.place_viewed
+  | typeof ACTION_TYPE.study_notes_section_opened
   | typeof ACTION_TYPE.trivia_started
   | typeof ACTION_TYPE.verse_highlighted;
 
@@ -34,6 +35,7 @@ const allowedActionTypes = new Set<AllowedActionType>([
   ACTION_TYPE.note_started,
   ACTION_TYPE.person_viewed,
   ACTION_TYPE.place_viewed,
+  ACTION_TYPE.study_notes_section_opened,
   ACTION_TYPE.trivia_started,
   ACTION_TYPE.verse_highlighted,
 ]);

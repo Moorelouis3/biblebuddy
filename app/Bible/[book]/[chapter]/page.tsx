@@ -2596,9 +2596,9 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                       className="absolute right-0 top-full mt-2 z-50 w-40 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
                     >
                       {([
+                        { value: "kjv", label: "KJV" },
                         { value: "web", label: "WEB" },
                         { value: "asv", label: "ASV" },
-                        { value: "kjv", label: "KJV" },
                       ] as const).map((option) => (
                         <button
                           key={option.value}
@@ -2794,10 +2794,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
                       {translationMenuOpen ? (
                         <div className="border-t border-gray-100">
-                          {([
+                        {([
+                            { value: "kjv", label: "KJV" },
                             { value: "web", label: "WEB" },
                             { value: "asv", label: "ASV" },
-                            { value: "kjv", label: "KJV" },
                           ] as const).map((option) => (
                             <button
                               key={option.value}
@@ -2957,9 +2957,9 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     {translationMenuOpen ? (
                       <div className="border-t border-[var(--bb-card-border,#e5e7eb)]">
                         {([
+                          { value: "kjv", label: "KJV" },
                           { value: "web", label: "WEB" },
                           { value: "asv", label: "ASV" },
-                          { value: "kjv", label: "KJV" },
                         ] as const).map((option) => (
                           <button
                             key={option.value}

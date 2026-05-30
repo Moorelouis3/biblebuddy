@@ -11,6 +11,7 @@ import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import BibleYearDeepStudySectionCards from "./BibleYearDeepStudySectionCards";
 import BibleYearLessonAudioPlayer from "./BibleYearLessonAudioPlayer";
 import { VerseHighlighter } from "./VerseHighlighter";
+import CreditLimitModal from "./CreditLimitModal";
 import BibleTopicsPanel from "./BibleTopicsPanel";
 import VideoHelpfulPoll from "./VideoHelpfulPoll";
 import StreakFlameEmoji from "./StreakFlameEmoji";
@@ -21,9 +22,11 @@ import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
+import { consumeCreditAction } from "../lib/creditClient";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, markChapterDone } from "../lib/readingProgress";
+import { getBibleReaderStudySections } from "../lib/bibleReaderStudyNotes";
 import {
   canFreeUserUnlockChapter,
   formatFreePlanCountdown,
@@ -76,9 +79,16 @@ const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:dashboard-guided-intro-seen";
 const DASHBOARD_FIRST_PLAYER_WELCOME_STORAGE_KEY = "bb:dashboard-first-player-welcome-seen";
 const BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX = "bb:bible-year-dashboard-day";
 const BIBLE_YEAR_DASHBOARD_DAY_TTL_MS = 60 * 60 * 1000;
+type BibleYearReaderTranslation = "web" | "kjv" | "asv";
+type BibleYearReaderVerse = { verse: number; text: string };
+const BIBLE_YEAR_READER_TRANSLATION_OPTIONS: Array<{ value: BibleYearReaderTranslation; label: string }> = [
+  { value: "kjv", label: "KJV" },
+  { value: "web", label: "WEB" },
+  { value: "asv", label: "ASV" },
+];
 
-function getBibleYearFollowAlongChapterKey(book: string, chapter: number) {
-  return `${book.toLowerCase().trim().replace(/\s+/g, " ")}:${chapter}`;
+function getBibleYearFollowAlongChapterKey(book: string, chapter: number, translation: BibleYearReaderTranslation = "kjv") {
+  return `${translation}:${book.toLowerCase().trim().replace(/\s+/g, " ")}:${chapter}`;
 }
 
 function splitEnrichedVerseHtmlByNumber(enrichedContent: string) {
@@ -1932,8 +1942,14 @@ export default function DashboardJourneyExperience({
   const [bibleYearTermNotes, setBibleYearTermNotes] = useState<string | null>(null);
   const [bibleYearTermNotesError, setBibleYearTermNotesError] = useState<string | null>(null);
   const [bibleYearTermLoading, setBibleYearTermLoading] = useState(false);
+  const [bibleYearDatabaseCreditBlocked, setBibleYearDatabaseCreditBlocked] = useState(false);
   const [bibleYearFollowAlongOpenByDay, setBibleYearFollowAlongOpenByDay] = useState<Record<number, boolean>>({});
   const [bibleYearFollowAlongEnrichedHtmlByChapter, setBibleYearFollowAlongEnrichedHtmlByChapter] = useState<Record<string, Record<number, string>>>({});
+  const [bibleYearReaderTranslation, setBibleYearReaderTranslation] = useState<BibleYearReaderTranslation>("kjv");
+  const [bibleYearReaderPlainText, setBibleYearReaderPlainText] = useState(false);
+  const [bibleYearReaderTranslatedVersesByChapter, setBibleYearReaderTranslatedVersesByChapter] = useState<Record<string, BibleYearReaderVerse[]>>({});
+  const [bibleYearReaderTranslationLoading, setBibleYearReaderTranslationLoading] = useState(false);
+  const [bibleYearReaderTranslationError, setBibleYearReaderTranslationError] = useState<string | null>(null);
   const [bibleYearStudyNotesOpen, setBibleYearStudyNotesOpen] = useState(false);
   const [bibleYearDeepNotesOpen, setBibleYearDeepNotesOpen] = useState(false);
   const [bibleYearDayOneDeepNotesGiftOpen, setBibleYearDayOneDeepNotesGiftOpen] = useState(false);
@@ -5607,7 +5623,19 @@ export default function DashboardJourneyExperience({
     );
   }
 
-  function handleBibleYearDatabaseTermClick(event: MouseEvent<HTMLDivElement>) {
+  async function fetchBibleYearReaderChapter(book: string, chapter: number, translation: BibleYearReaderTranslation) {
+    const apiBook = book.trim().replace(/\s+/g, "+");
+    const response = await fetch(`https://bible-api.com/${apiBook}+${chapter}?translation=${translation}`);
+    if (!response.ok) throw new Error(`Could not load ${translation.toUpperCase()} ${book} ${chapter}`);
+    const data = await response.json() as { verses?: Array<{ verse: number; text: string }> };
+    return (data.verses || [])
+      .filter((verse) => Number.isFinite(verse.verse) && typeof verse.text === "string")
+      .map((verse) => ({ verse: verse.verse, text: verse.text.trim() }));
+  }
+
+  async function handleBibleYearDatabaseTermClick(event: MouseEvent<HTMLDivElement>) {
+    if (bibleYearReaderPlainText) return;
+
     const highlightElement = (event.target as HTMLElement).closest(".bible-highlight") as HTMLElement | null;
     if (!highlightElement) return;
 
@@ -5618,10 +5646,96 @@ export default function DashboardJourneyExperience({
     const term = highlightElement.dataset.term;
     if (!type || !term) return;
 
+    if (userId) {
+      const actionType =
+        type === "people"
+          ? ACTION_TYPE.person_viewed
+          : type === "places"
+            ? ACTION_TYPE.place_viewed
+            : ACTION_TYPE.keyword_viewed;
+      const creditResult = await consumeCreditAction(actionType, {
+        userId,
+        actionLabel: resolveBibleReference(type, term),
+      });
+      if (!creditResult.ok) {
+        setBibleYearDatabaseCreditBlocked(true);
+        return;
+      }
+    }
+
     bibleYearTermReturnScrollYRef.current = window.scrollY;
     setBibleYearTermBurstKey((current) => current + 1);
     setBibleYearSelectedTerm({ type, name: resolveBibleReference(type, term) });
   }
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadBibleYearReaderTranslation() {
+      if (bibleYearReaderTranslation === "web") {
+        setBibleYearReaderTranslationLoading(false);
+        setBibleYearReaderTranslationError(null);
+        return;
+      }
+
+      const openDayNumbers = Object.entries(bibleYearFollowAlongOpenByDay)
+        .filter(([, isOpen]) => isOpen)
+        .map(([dayNumber]) => Number(dayNumber))
+        .filter((dayNumber) => Number.isFinite(dayNumber));
+
+      const chaptersToLoad = new Map<string, { book: string; chapter: number }>();
+      openDayNumbers.forEach((dayNumber) => {
+        const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber);
+        if (!day) return;
+
+        day.readings.forEach((reading) => {
+          const key = getBibleYearFollowAlongChapterKey(reading.book, reading.chapter, bibleYearReaderTranslation);
+          if (!bibleYearReaderTranslatedVersesByChapter[key]) {
+            chaptersToLoad.set(key, { book: reading.book, chapter: reading.chapter });
+          }
+        });
+      });
+
+      if (!chaptersToLoad.size) {
+        setBibleYearReaderTranslationLoading(false);
+        setBibleYearReaderTranslationError(null);
+        return;
+      }
+
+      setBibleYearReaderTranslationLoading(true);
+      setBibleYearReaderTranslationError(null);
+
+      try {
+        const loadedEntries = await Promise.all(
+          Array.from(chaptersToLoad.entries()).map(async ([key, chapter]) => [
+            key,
+            await fetchBibleYearReaderChapter(chapter.book, chapter.chapter, bibleYearReaderTranslation),
+          ] as const),
+        );
+
+        if (cancelled) return;
+
+        setBibleYearReaderTranslatedVersesByChapter((current) => {
+          const next = { ...current };
+          loadedEntries.forEach(([key, verses]) => {
+            next[key] = verses;
+          });
+          return next;
+        });
+      } catch (error) {
+        console.error("[BIBLE_YEAR_READER_TRANSLATION] Could not load translation:", error);
+        if (!cancelled) setBibleYearReaderTranslationError("Could not load that translation yet.");
+      } finally {
+        if (!cancelled) setBibleYearReaderTranslationLoading(false);
+      }
+    }
+
+    void loadBibleYearReaderTranslation();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [bibleYearFollowAlongOpenByDay, bibleYearReaderTranslation, bibleYearReaderTranslatedVersesByChapter]);
 
   useEffect(() => {
     let cancelled = false;
@@ -5640,7 +5754,7 @@ export default function DashboardJourneyExperience({
 
         getBibleYearFollowAlongChapters(day).forEach((chapter) => {
           if (!chapter.verses.length) return;
-          const key = getBibleYearFollowAlongChapterKey(chapter.book, chapter.chapter);
+          const key = getBibleYearFollowAlongChapterKey(chapter.book, chapter.chapter, bibleYearReaderTranslation);
           if (bibleYearFollowAlongEnrichedHtmlByChapter[key]) return;
           chaptersToLoad.set(key, {
             book: chapter.book,
@@ -5680,7 +5794,12 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [bibleYearFollowAlongOpenByDay, bibleYearFollowAlongEnrichedHtmlByChapter]);
+  }, [
+    bibleYearFollowAlongOpenByDay,
+    bibleYearFollowAlongEnrichedHtmlByChapter,
+    bibleYearReaderTranslation,
+    bibleYearReaderTranslatedVersesByChapter,
+  ]);
 
   useEffect(() => {
     let cancelled = false;
@@ -9018,7 +9137,12 @@ Before we understand redemption, we need to understand what God made humanity fo
     return day.readings.map((reading) => ({
       book: reading.book,
       chapter: reading.chapter,
-      verses: BIBLE_YEAR_GENESIS_WEB_VERSES[reading.chapter] || [],
+      verses:
+        bibleYearReaderTranslation === "web"
+          ? BIBLE_YEAR_GENESIS_WEB_VERSES[reading.chapter] || []
+          : bibleYearReaderTranslatedVersesByChapter[
+              getBibleYearFollowAlongChapterKey(reading.book, reading.chapter, bibleYearReaderTranslation)
+            ] || BIBLE_YEAR_GENESIS_WEB_VERSES[reading.chapter] || [],
     }));
   }
 
@@ -9032,6 +9156,9 @@ Before we understand redemption, we need to understand what God made humanity fo
         <button
           type="button"
           onClick={() => {
+            if (!bibleYearFollowAlongOpenByDay[day.dayNumber]) {
+              setBibleYearReaderPlainText(false);
+            }
             setBibleYearFollowAlongOpenByDay((current) => ({
               ...current,
               [day.dayNumber]: !current[day.dayNumber],
@@ -9061,44 +9188,86 @@ Before we understand redemption, we need to understand what God made humanity fo
       <section className="bible-year-follow-along-scroll dashboard-bible-reader-embed mt-3 max-h-[630px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,var(--bb-surface-soft,#f8fbff)),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_88%,var(--bb-card,#ffffff)))] p-4 text-left text-[var(--bb-text-primary,#111827)] shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_42px_rgba(15,23,42,0.08)]">
         {bibleYearSelectedTerm ? (
           <div
-            className="fixed inset-0 z-[90] flex items-center justify-center bg-slate-950/45 px-4 py-6 backdrop-blur-sm"
+            className="fixed inset-0 z-[90] flex items-center justify-center bg-slate-950/45 p-2 backdrop-blur-sm sm:p-6"
             role="dialog"
             aria-modal="true"
             aria-label={`${bibleYearSelectedTerm.name} Bible database note`}
             onClick={closeBibleYearTermTakeover}
           >
-            <div onClick={(event) => event.stopPropagation()}>
-            <DatabaseTermTakeover
-              selectedTerm={bibleYearSelectedTerm}
-              termBurstKey={bibleYearTermBurstKey}
-              loadingTermNotes={bibleYearTermLoading}
-              termNotes={bibleYearTermNotes}
-              termNotesError={bibleYearTermNotesError}
-              onClose={closeBibleYearTermTakeover}
-              displayMode="reader"
-            />
+            <div className="flex max-h-[calc(100dvh-1rem)] w-full justify-center" onClick={(event) => event.stopPropagation()}>
+              <DatabaseTermTakeover
+                selectedTerm={bibleYearSelectedTerm}
+                termBurstKey={bibleYearTermBurstKey}
+                loadingTermNotes={bibleYearTermLoading}
+                termNotes={bibleYearTermNotes}
+                termNotesError={bibleYearTermNotesError}
+                onClose={closeBibleYearTermTakeover}
+                displayMode="reader"
+              />
             </div>
           </div>
+        ) : null}
+        <div className="mb-4 flex flex-wrap items-center justify-end gap-2">
+          <label
+            title="Plain text hides saved highlights, Bible database highlights, and study note cards."
+            className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-2.5 py-2 text-[11px] font-black text-[var(--bb-text-secondary,#4b5563)] shadow-sm"
+          >
+            <input
+              type="checkbox"
+              checked={bibleYearReaderPlainText}
+              onChange={(event) => {
+                setBibleYearReaderPlainText(event.target.checked);
+                if (event.target.checked) closeBibleYearTermTakeover();
+              }}
+              className="h-3.5 w-3.5 accent-[var(--bb-accent,#2f7fe8)]"
+            />
+            <span>Plain text</span>
+          </label>
+          <div className="flex items-center gap-1 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] p-1 shadow-sm">
+            {BIBLE_YEAR_READER_TRANSLATION_OPTIONS.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => setBibleYearReaderTranslation(option.value)}
+                className={`rounded-lg px-2.5 py-1.5 text-[11px] font-black transition ${
+                  bibleYearReaderTranslation === option.value
+                    ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm"
+                    : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                }`}
+                aria-pressed={bibleYearReaderTranslation === option.value}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        {bibleYearReaderTranslationLoading ? (
+          <p className="mb-3 text-right text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+            Loading {bibleYearReaderTranslation.toUpperCase()}...
+          </p>
+        ) : bibleYearReaderTranslationError ? (
+          <p className="mb-3 text-right text-[11px] font-bold text-red-600">{bibleYearReaderTranslationError}</p>
         ) : null}
         <div className="space-y-7">
           {chapters.map((chapter) => (
             <article key={`${chapter.book}-${chapter.chapter}`} className="space-y-3">
-              <div className="flex items-center justify-between gap-3">
-                <h3 className="font-serif text-2xl font-black tracking-wide text-[var(--bb-text-primary,#111827)]">
-                  {chapter.book} {chapter.chapter}
-                </h3>
-              </div>
+              <h3 className="font-serif text-2xl font-black tracking-wide text-[var(--bb-text-primary,#111827)]">
+                {chapter.book} {chapter.chapter}
+              </h3>
               {chapter.verses.length ? (
-                <div className="space-y-3" onClick={handleBibleYearDatabaseTermClick}>
+                <div className="space-y-3" onClick={(event) => { void handleBibleYearDatabaseTermClick(event); }}>
                   <VerseHighlighter
                     book={chapter.book}
                     chapter={chapter.chapter}
                     surface="dashboard"
+                    plainTextMode={bibleYearReaderPlainText}
+                    studySections={getBibleReaderStudySections(chapter.book, chapter.chapter)}
+                    onStudyNotesCreditBlocked={() => showBibleYearStudyNotesUpgrade(day.dayNumber)}
                     verses={chapter.verses.map((verse) => ({
                       number: verse.verse,
                       text: verse.text,
                       enrichedHtml: bibleYearFollowAlongEnrichedHtmlByChapter[
-                        getBibleYearFollowAlongChapterKey(chapter.book, chapter.chapter)
+                        getBibleYearFollowAlongChapterKey(chapter.book, chapter.chapter, bibleYearReaderTranslation)
                       ]?.[verse.verse],
                     }))}
                   />
@@ -10202,7 +10371,16 @@ Before we understand redemption, we need to understand what God made humanity fo
         icon: "💬",
         onClick: () => setBibleYearOptionalDiscussionDay((current) => current === day.dayNumber ? null : day.dayNumber),
       },
-    ];
+    ].filter((item) => item.key !== "reflection") as Array<{
+      key: BibleYearDayCardKey | "discussion";
+      eyebrow: string;
+      title: string;
+      body: string;
+      button: string;
+      done: boolean;
+      icon: ReactNode;
+      onClick: () => void;
+    }>;
     return (
       <section data-bible-year-study-area data-bb-dashboard-tour="study-tasks" className="dashboard-bible-year-study-area grid gap-5">
         {renderDashboardSectionIntro(
@@ -10289,6 +10467,9 @@ Before we understand redemption, we need to understand what God made humanity fo
             <button
               type="button"
               onClick={() => {
+                if (!bibleYearFollowAlongOpenByDay[day.dayNumber]) {
+                  setBibleYearReaderPlainText(false);
+                }
                 setBibleYearFollowAlongOpenByDay((current) => ({
                   ...current,
                   [day.dayNumber]: !current[day.dayNumber],
@@ -12453,6 +12634,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     const completedDays = completedBibleYearDays.length;
     const statusDirection = effectiveBibleYearReport.statusDirection || bibleYearSchedule.statusDirection;
     const statusDays = Math.max(0, effectiveBibleYearReport.statusDays ?? bibleYearSchedule.statusDays ?? 0);
+    const reportedCurrentDayNumber = Number(effectiveBibleYearReport.currentDay);
+    const currentPlanDayNumber = Number.isFinite(reportedCurrentDayNumber)
+      ? Math.max(1, Math.min(365, reportedCurrentDayNumber))
+      : Math.max(1, Math.min(365, computedBibleYearCurrentDay?.dayNumber ?? day.dayNumber));
 
     if (completedDays > 0 && completedDays % 25 === 0) {
       return `You have completed ${completedDays} days of your Bible journey.`;
@@ -12461,15 +12646,15 @@ Before we understand redemption, we need to understand what God made humanity fo
       return `You have finished ${effectiveBibleYearReport.overallPercent}% of your Bible reading plan.`;
     }
     if (statusDirection === "ahead" && statusDays > 0) {
-      return `You are on Day ${day.dayNumber} and are ${statusDays} ${statusDays === 1 ? "day" : "days"} ahead of your reading plan!`;
+      return `You are on Day ${currentPlanDayNumber} and are ${statusDays} ${statusDays === 1 ? "day" : "days"} ahead of your reading plan!`;
     }
     if (statusDirection === "behind" && statusDays > 0) {
-      return `You are on Day ${day.dayNumber} and are ${statusDays} ${statusDays === 1 ? "day" : "days"} behind your reading plan.`;
+      return `You are on Day ${currentPlanDayNumber} and are ${statusDays} ${statusDays === 1 ? "day" : "days"} behind your reading plan.`;
     }
     if (completedDays > 0) {
-      return `You are on Day ${day.dayNumber} and have completed ${completedDays} ${completedDays === 1 ? "study" : "studies"}.`;
+      return `You are on Day ${currentPlanDayNumber} and have completed ${completedDays} ${completedDays === 1 ? "study" : "studies"}.`;
     }
-    return `You are on Day ${day.dayNumber} and right on schedule.`;
+    return `You are on Day ${currentPlanDayNumber} and right on schedule.`;
   }
 
   function renderBibleYearJourneyStatusBanner(day: GenesisBibleYearDay) {
@@ -14755,10 +14940,11 @@ Before we understand redemption, we need to understand what God made humanity fo
       ) : null}
 
       {renderBibleProgressDetailsModal()}
+      {renderBibleYearDeepNotesUpgradeModal()}
       {renderBibleYearDayThreeProUpgradePrompt()}
       {renderBibleYearDaySevenProUpgradePrompt()}
       {renderGuestProUpgradePrompt()}
-      {bibleYearQuickUpgradeContext === "day3" || bibleYearQuickUpgradeContext === "day7" || bibleYearQuickUpgradeContext === "guest_pro" ? renderBibleYearQuickUpgradeModal() : null}
+      {bibleYearQuickUpgradeOpen ? renderBibleYearQuickUpgradeModal() : null}
 
       <ModalShell
         isOpen={showDevotionalSettings}
@@ -15004,6 +15190,12 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         </div>
       </ModalShell>
+
+      <CreditLimitModal
+        open={bibleYearDatabaseCreditBlocked}
+        userId={userId}
+        onClose={() => setBibleYearDatabaseCreditBlocked(false)}
+      />
 
       <ModalShell
         isOpen={showJourneyHelp}

@@ -12,7 +12,10 @@ export const BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME = {
     title: "Genesis 1-2 Sets The Stage",
     paragraphs: [
       "Before there is a nation, a temple, a king, or a cross, Genesis opens with God. Not a long explanation of where God came from. Just God, already present, already powerful, already speaking.",
-      "Genesis 1 and 2 work together as one beginning. Genesis 1 gives the wide view of creation: God speaks, separates, fills, blesses, and calls the world good. Genesis 2 zooms in closer on the human story: the garden, the dust, the breath, the command, the work, the animals, and the first human relationship.",
+      "🌌 Genesis 1 gives the wide view: God speaks, separates, fills, blesses, and calls the world good.",
+      "🌿 Genesis 2 zooms in closer: the garden, the dust, the breath, the command, the work, the animals, and the first human relationship.",
+      "🪞 Creation shows identity before sin enters the story. Humans are made in God's image before they ever fail.",
+      "🕯️ The beginning shows design before damage. That matters because the rest of the Bible is about God restoring what sin breaks.",
       "As you move through these Study Notes, do not rush. Let the beginning of the Bible open slowly. Day 1 is showing us who God is and what kind of world He intended before anything was broken.",
     ],
     callout: "Read slowly. Genesis 1-2 shows the design before the damage.",
@@ -20,8 +23,12 @@ export const BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME = {
   closing: {
     title: "End Of Study Thought",
     paragraphs: [
-      "Day 1 is not only about how the world began. It is about who God is and what kind of world He intended. God creates with purpose. God brings order from chaos. God gives dignity to human beings. God blesses life. God gives meaningful work. God gives rest. God creates relationship. And before sin breaks anything, the world is very good.",
-      "That is why Genesis 1 and 2 matter so much. They show us the design before the damage. When the rest of the Bible talks about sin, redemption, covenant, Israel, Jesus, new creation, and restored relationship with God, it is reaching back to this beginning.",
+      "Day 1 is not only about how the world began. It is about who God is and what kind of world He intended before anything was broken.",
+      "💡 God brings light into darkness, which shows that darkness is never stronger than His word.",
+      "🏗️ God brings order out of chaos, which shows that He knows how to shape what feels unformed.",
+      "🪞 God gives dignity to human beings, which means identity begins with His image, not human achievement.",
+      "🌿 God gives work, rest, relationship, and blessing, which shows that everyday life was part of His good design.",
+      "That is why Genesis 1 and 2 matter so much. When the rest of the Bible talks about sin, redemption, covenant, Israel, Jesus, new creation, and restored relationship with God, it is reaching back to this beginning.",
       "We were made by God, in God's image, for life with God, in God's world, under God's good word. That is the foundation. Everything else in the story builds from here.",
     ],
     prayerTitle: "Prayer",

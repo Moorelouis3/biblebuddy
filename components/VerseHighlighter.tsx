@@ -15,6 +15,11 @@ import { ACTION_TYPE } from "../lib/actionTypes";
 import CreditLimitModal from "./CreditLimitModal";
 import { supabase } from "../lib/supabaseClient";
 import { consumeCreditAction } from "../lib/creditClient";
+import {
+  getBibleReaderStudySections,
+  type BibleReaderStudyNoteCategory,
+  type BibleReaderStudySection,
+} from "../lib/bibleReaderStudyNotes";
 
 interface VerseHighlighterProps {
   book: string;
@@ -22,6 +27,10 @@ interface VerseHighlighterProps {
   verses: Array<{ number: number; text: string; enrichedHtml?: string }>;
   plainTextMode?: boolean;
   surface?: "default" | "dashboard";
+  studySectionPlacement?: "end" | "start";
+  hideStudySections?: boolean;
+  studySections?: BibleReaderStudySection[];
+  onStudyNotesCreditBlocked?: () => void;
 }
 
 type ColorPickerState =
@@ -302,6 +311,328 @@ function HighlightNoteModal({
   );
 }
 
+function StudyCategoryContent({
+  category,
+  openItemIndex,
+  onToggleItem,
+  onItemOpened,
+}: {
+  category: BibleReaderStudyNoteCategory;
+  openItemIndex: number | null;
+  onToggleItem: (index: number) => void;
+  onItemOpened: (index: number) => void;
+}) {
+  const nestedMenu = category.id === "key-phrases" || category.id === "key-truths";
+  const flatSection = category.id === "what-is-happening" || category.id === "why-this-matters";
+  const itemRefs = useRef<Record<number, HTMLElement | null>>({});
+
+  return (
+    <div className="mt-3 space-y-3">
+      {category.content.map((item, index) => {
+        const [lead, ...rest] = item.split("\n");
+        const displayLead = category.id === "key-phrases" ? lead.replace(/^["“”]+|["“”]+$/g, "") : lead;
+        const paragraphs = rest.filter((paragraph) => paragraph.trim());
+        const hasHeading = paragraphs.length > 0;
+
+        if (nestedMenu && hasHeading) {
+          const itemOpen = openItemIndex === index;
+          const nestedItemIcon = getNestedStudyItemIcon(category.id, displayLead);
+          return (
+            <section
+              key={item}
+              ref={(node) => {
+                itemRefs.current[index] = node;
+              }}
+              className="overflow-hidden rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_5%,var(--bb-card,#ffffff))] shadow-sm"
+            >
+              <button
+                type="button"
+                onClick={() => {
+                  onToggleItem(index);
+                  if (!itemOpen) {
+                    window.setTimeout(() => {
+                      itemRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      onItemOpened(index);
+                    }, 0);
+                  }
+                }}
+                className="flex w-full items-center gap-2 px-3 py-3 text-left transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_8%,var(--bb-card,#ffffff))]"
+                aria-expanded={itemOpen}
+              >
+                <span className="grid h-6 min-w-6 place-items-center rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)] text-[11px] font-black text-[var(--bb-text-primary,#111827)]">
+                  {nestedItemIcon}
+                </span>
+                <span className="min-w-0 flex-1 text-xs font-black leading-5 text-[var(--bb-text-primary,#111827)] sm:text-sm">
+                  {displayLead}
+                </span>
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className={`h-4 w-4 shrink-0 text-[var(--bb-accent,#f6b44b)] transition ${itemOpen ? "rotate-90" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+              {itemOpen ? (
+                <div className="space-y-2 border-t border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,var(--bb-card-border,#dbe7f4))] px-4 py-3 pl-11 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] sm:text-sm sm:leading-6">
+                  {paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              ) : null}
+            </section>
+          );
+        }
+
+        if (flatSection) {
+          const flatParagraphs = item
+            .split("\n")
+            .map((paragraph) => paragraph.trim())
+            .filter(Boolean);
+
+          return (
+            <div
+              key={item}
+              className="space-y-3 px-1 text-xs font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)] sm:text-sm sm:leading-7"
+            >
+              {flatParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          );
+        }
+
+        return (
+          <section
+            key={item}
+            className="rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_5%,var(--bb-card,#ffffff))] px-3 py-3 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] shadow-sm sm:text-sm sm:leading-6"
+          >
+            {hasHeading ? (
+              <>
+                <div className="flex items-start gap-2">
+                  <span className="mt-0.5 grid h-6 min-w-6 place-items-center rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)] text-[11px] font-black text-[var(--bb-text-primary,#111827)]">
+                    {index + 1}
+                  </span>
+                  <p className="font-black leading-5 text-[var(--bb-text-primary,#111827)]">{lead}</p>
+                </div>
+                <div className="mt-2 space-y-2 pl-8">
+                  {paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="flex items-start gap-2">
+                <span className="mt-0.5 text-base">{category.list ? "•" : category.icon}</span>
+                <p>{lead}</p>
+              </div>
+            )}
+          </section>
+        );
+      })}
+    </div>
+  );
+}
+
+function getNestedStudyItemIcon(categoryId: string, heading: string) {
+  const normalizedHeading = heading.toLowerCase();
+
+  if (categoryId === "key-phrases") {
+    if (normalizedHeading.includes("beginning")) return "\u{1F305}";
+    if (normalizedHeading.includes("created")) return "\u{1F30C}";
+    if (normalizedHeading.includes("heavens") || normalizedHeading.includes("expanse")) return "\u{1F4AB}";
+    if (normalizedHeading.includes("earth") || normalizedHeading.includes("dry land")) return "\u{1F30D}";
+    if (normalizedHeading.includes("formless") || normalizedHeading.includes("void")) return "\u{1F300}";
+    if (normalizedHeading.includes("deep") || normalizedHeading.includes("waters")) return "\u{1F30A}";
+    if (normalizedHeading.includes("spirit")) return "\u{1F54A}\u{FE0F}";
+    if (normalizedHeading.includes("light")) return "\u{1F4A1}";
+    if (normalizedHeading.includes("good") || normalizedHeading.includes("very good")) return "\u{2705}";
+    if (normalizedHeading.includes("evening") || normalizedHeading.includes("morning")) return "\u{1F307}";
+    if (normalizedHeading.includes("divide") || normalizedHeading.includes("separate")) return "\u{2194}\u{FE0F}";
+    if (normalizedHeading.includes("sprout") || normalizedHeading.includes("vegetation")) return "\u{1F331}";
+    if (normalizedHeading.includes("seed")) return "\u{1F33E}";
+    if (normalizedHeading.includes("signs") || normalizedHeading.includes("seasons")) return "\u{1F4C5}";
+    if (normalizedHeading.includes("set them")) return "\u{1F4CD}";
+    if (normalizedHeading.includes("swarm")) return "\u{1F41F}";
+    if (normalizedHeading.includes("kinds")) return "\u{1F9EC}";
+    if (normalizedHeading.includes("blessed")) return "\u{1F64C}";
+    if (normalizedHeading.includes("let us make")) return "\u{1F5E3}\u{FE0F}";
+    if (normalizedHeading.includes("image") || normalizedHeading.includes("likeness")) return "\u{1FA9E}";
+    if (normalizedHeading.includes("male") || normalizedHeading.includes("female")) return "\u{1F46B}";
+    if (normalizedHeading.includes("dominion")) return "\u{1F451}";
+    if (normalizedHeading.includes("fruitful") || normalizedHeading.includes("multiply")) return "\u{1F33F}";
+  }
+
+  if (categoryId === "key-truths") {
+    if (normalizedHeading.includes("existed before")) return "\u{267E}\u{FE0F}";
+    if (normalizedHeading.includes("not random")) return "\u{1F9ED}";
+    if (normalizedHeading.includes("word")) return "\u{1F4D6}";
+    if (normalizedHeading.includes("present")) return "\u{1F64F}";
+    if (normalizedHeading.includes("order") || normalizedHeading.includes("boundaries")) return "\u{1F9F1}";
+    if (normalizedHeading.includes("character")) return "\u{1F50D}";
+    if (normalizedHeading.includes("hope") || normalizedHeading.includes("third day")) return "\u{1F305}";
+    if (normalizedHeading.includes("forms") || normalizedHeading.includes("fills")) return "\u{1F3D7}\u{FE0F}";
+    if (normalizedHeading.includes("authority")) return "\u{1F451}";
+    if (normalizedHeading.includes("future") || normalizedHeading.includes("fruitfulness")) return "\u{1F331}";
+    if (normalizedHeading.includes("physical world")) return "\u{1F30D}";
+    if (normalizedHeading.includes("servants")) return "\u{2600}\u{FE0F}";
+    if (normalizedHeading.includes("rhythm")) return "\u{23F1}\u{FE0F}";
+    if (normalizedHeading.includes("fear")) return "\u{1F30A}";
+    if (normalizedHeading.includes("abundance") || normalizedHeading.includes("variety")) return "\u{1F308}";
+    if (normalizedHeading.includes("blessing")) return "\u{1F64C}";
+    if (normalizedHeading.includes("identity")) return "\u{1FAAA}";
+    if (normalizedHeading.includes("dignity")) return "\u{1F48E}";
+    if (normalizedHeading.includes("men and women")) return "\u{1F91D}";
+    if (normalizedHeading.includes("distinct")) return "\u{2728}";
+    if (normalizedHeading.includes("stewardship")) return "\u{1F331}";
+    if (normalizedHeading.includes("work")) return "\u{1F6E0}\u{FE0F}";
+    if (normalizedHeading.includes("original design")) return "\u{1F3E1}";
+  }
+
+  return categoryId === "key-phrases" ? "\u{1F4AC}" : "\u{1F511}";
+}
+
+function InlineStudySection({
+  section,
+  isOpen,
+  openCategory,
+  openItemKey,
+  isCreditLocked,
+  onToggleSection,
+  onToggleCategory,
+  onToggleItem,
+  onLockedCategory,
+}: {
+  section: BibleReaderStudySection;
+  isOpen: boolean;
+  openCategory: string | null;
+  openItemKey: string | null;
+  isCreditLocked: boolean;
+  onToggleSection: () => void;
+  onToggleCategory: (categoryId: string) => void;
+  onToggleItem: (categoryId: string, itemIndex: number) => void;
+  onLockedCategory: () => void;
+}) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  return (
+    <div ref={sectionRef} className="my-4">
+      <button
+        type="button"
+        onClick={() => {
+          onToggleSection();
+          if (!isOpen) {
+            window.setTimeout(() => {
+              sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 0);
+          }
+        }}
+        className={`flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-3 text-left transition sm:gap-3 sm:px-3 ${
+          isOpen
+            ? "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_42%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,var(--bb-card,#ffffff))]"
+            : "border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] hover:border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,var(--bb-card-border,#dbe7f4))] hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_7%,var(--bb-card,#ffffff))]"
+        }`}
+        aria-expanded={isOpen}
+      >
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_14%,transparent)] text-lg">
+          {section.icon}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-base font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+            {section.reference} Study Notes
+          </span>
+          <span className="mt-0.5 block text-xs font-black leading-5 text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_58%,var(--bb-text-secondary,#4b5563))]">{section.title}</span>
+          <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{section.summary}</span>
+        </span>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className={`h-5 w-5 shrink-0 text-[var(--bb-accent,#f6b44b)] transition ${isOpen ? "rotate-90" : ""}`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </button>
+
+      {isOpen ? (
+        <div className="mt-2 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)]">
+          {section.categories.map((category, index) => {
+            const categoryOpen = openCategory === category.id;
+            return (
+              <div
+                key={`${section.reference}-${category.id}`}
+                ref={(node) => {
+                  categoryRefs.current[category.id] = node;
+                }}
+                className={index > 0 ? "border-t border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,var(--bb-card-border,#dbe7f4))]" : ""}
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (isCreditLocked) {
+                      onLockedCategory();
+                      return;
+                    }
+                    onToggleCategory(category.id);
+                    if (!categoryOpen) {
+                      window.setTimeout(() => {
+                        categoryRefs.current[category.id]?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }, 0);
+                    }
+                  }}
+                  className="flex w-full items-center gap-2 px-3 py-3 text-left transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_7%,var(--bb-card,#ffffff))]"
+                  aria-expanded={categoryOpen}
+                >
+                  <span className="text-base">{category.icon}</span>
+                  <span className="min-w-0 flex-1 text-xs font-black leading-5 text-[var(--bb-text-primary,#111827)] sm:text-sm">
+                    {category.title}
+                  </span>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className={`h-4 w-4 shrink-0 text-[var(--bb-accent,#f6b44b)] transition ${categoryOpen ? "rotate-90" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
+                </button>
+                {categoryOpen ? (
+                  <div className="border-t border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_12%,var(--bb-card-border,#dbe7f4))] px-3 pb-4 pt-1">
+                    <StudyCategoryContent
+                      category={category}
+                      openItemIndex={
+                        openItemKey?.startsWith(`${category.id}:`)
+                          ? Number(openItemKey.split(":")[1])
+                          : null
+                      }
+                      onToggleItem={(itemIndex) => onToggleItem(category.id, itemIndex)}
+                      onItemOpened={() => undefined}
+                    />
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 
 export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   book,
@@ -309,6 +640,10 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   verses,
   plainTextMode = false,
   surface = "default",
+  studySectionPlacement = "end",
+  hideStudySections = false,
+  studySections,
+  onStudyNotesCreditBlocked,
 }) => {
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [rangeMap, setRangeMap] = useState<Record<number, VerseHighlightRange[]>>({});
@@ -319,6 +654,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [creditBlocked, setCreditBlocked] = useState(false);
+  const [openStudyReference, setOpenStudyReference] = useState<string | null>(null);
+  const [openStudyCategories, setOpenStudyCategories] = useState<Record<string, string | null>>({});
+  const [openStudyItems, setOpenStudyItems] = useState<Record<string, string | null>>({});
+  const [studyCreditLockedSections, setStudyCreditLockedSections] = useState<Record<string, boolean>>({});
+  const [studyCreditUnlockedSections, setStudyCreditUnlockedSections] = useState<Record<string, boolean>>({});
   const shareVerse = null as { number: number; text: string } | null;
   const shareContent = "";
   const shareSubmitting = false;
@@ -611,9 +951,52 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     return <span style={{fontWeight:'bold',fontSize:'1em'}}>{num}</span>;
   }
 
+  const resolvedStudySections = studySections ?? getBibleReaderStudySections(book, chapter);
+
+  const studySectionsByVerse = resolvedStudySections.reduce<Record<number, BibleReaderStudySection[]>>(
+    (map, section) => {
+      const placementVerse = studySectionPlacement === "start" ? section.startVerse : section.endVerse;
+      if (!map[placementVerse]) map[placementVerse] = [];
+      map[placementVerse].push(section);
+      return map;
+    },
+    {},
+  );
+
+  async function handleToggleStudySection(studySection: BibleReaderStudySection) {
+    if (openStudyReference === studySection.reference) {
+      setOpenStudyReference(null);
+      setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: null }));
+      setOpenStudyItems((current) => ({ ...current, [studySection.reference]: null }));
+      return;
+    }
+
+    setOpenStudyReference(studySection.reference);
+    setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: null }));
+    setOpenStudyItems((current) => ({ ...current, [studySection.reference]: null }));
+
+    if (!user || studyCreditUnlockedSections[studySection.reference]) {
+      setStudyCreditLockedSections((current) => ({ ...current, [studySection.reference]: false }));
+      return;
+    }
+
+    const creditResult = await consumeCreditAction(ACTION_TYPE.study_notes_section_opened, {
+      userId: user.id,
+      actionLabel: `${book} ${chapter} ${studySection.reference}`,
+    });
+
+    if (!creditResult.ok) {
+      setStudyCreditLockedSections((current) => ({ ...current, [studySection.reference]: true }));
+      return;
+    }
+
+    setStudyCreditUnlockedSections((current) => ({ ...current, [studySection.reference]: true }));
+    setStudyCreditLockedSections((current) => ({ ...current, [studySection.reference]: false }));
+  }
+
   function renderVerseText(v: { number: number; text: string; enrichedHtml?: string }) {
     const visibleText = getVisibleVerseText(v, plainTextMode);
-    const ranges = (rangeMap[v.number] || [])
+    const ranges = plainTextMode ? [] : (rangeMap[v.number] || [])
       .filter((range) => range.start_offset >= 0 && range.end_offset <= visibleText.length && range.end_offset > range.start_offset)
       .sort((a, b) => a.start_offset - b.start_offset);
 
@@ -622,8 +1005,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
         <span
           className="verse-text-content"
           data-bible-verse-text={v.number}
-          onMouseUp={(event) => handlePartialSelection(v.number, v.text, event.currentTarget)}
+          onMouseUp={(event) => {
+            if (!plainTextMode) handlePartialSelection(v.number, v.text, event.currentTarget);
+          }}
           onTouchEnd={(event) => {
+            if (plainTextMode) return;
             const root = event.currentTarget;
             window.setTimeout(() => handlePartialSelection(v.number, v.text, root), 0);
           }}
@@ -671,8 +1057,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       <span
         className="verse-text-content"
         data-bible-verse-text={v.number}
-        onMouseUp={(event) => handlePartialSelection(v.number, v.text, event.currentTarget)}
+        onMouseUp={(event) => {
+          if (!plainTextMode) handlePartialSelection(v.number, v.text, event.currentTarget);
+        }}
         onTouchEnd={(event) => {
+          if (plainTextMode) return;
           const root = event.currentTarget;
           window.setTimeout(() => handlePartialSelection(v.number, v.text, root), 0);
         }}
@@ -691,29 +1080,106 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
         }
       `}</style>
       {verses.map((v) => (
-        <div
-          key={v.number}
-          className="mb-2 flex items-baseline gap-2 group verse-line"
-          style={{ backgroundColor: highlightMap[v.number] ? getColorCode(highlightMap[v.number], surface) : "transparent", borderRadius: highlightMap[v.number] ? 4 : 0, transition: "background-color 0.3s" }}
-        >
-          <button
-            type="button"
-            className="shrink-0 select-none cursor-pointer rounded-md bg-blue-100 px-2 py-0.5 text-lg font-bold shadow-sm hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            style={{ minWidth: 32 }}
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleVerseClick(v.number, e); }}
-            title={`Highlight verse ${v.number}`}
-            tabIndex={0}
+        <React.Fragment key={v.number}>
+          {plainTextMode || hideStudySections ? null : studySectionPlacement === "start" ? (studySectionsByVerse[v.number] || []).map((studySection) => (
+            <InlineStudySection
+              key={`inline-study-${studySection.reference}`}
+              section={studySection}
+              isOpen={openStudyReference === studySection.reference}
+              openCategory={openStudyCategories[studySection.reference] || null}
+              openItemKey={openStudyItems[studySection.reference] || null}
+              isCreditLocked={Boolean(studyCreditLockedSections[studySection.reference])}
+              onToggleSection={() => {
+                void handleToggleStudySection(studySection);
+              }}
+              onToggleCategory={(categoryId) => {
+                setOpenStudyCategories((current) => ({
+                  ...current,
+                  [studySection.reference]: current[studySection.reference] === categoryId ? null : categoryId,
+                }));
+                setOpenStudyItems((current) => ({ ...current, [studySection.reference]: null }));
+              }}
+              onToggleItem={(categoryId, itemIndex) => {
+                const itemKey = `${categoryId}:${itemIndex}`;
+                setOpenStudyItems((current) => ({
+                  ...current,
+                  [studySection.reference]: current[studySection.reference] === itemKey ? null : itemKey,
+                }));
+              }}
+              onLockedCategory={() => {
+                if (onStudyNotesCreditBlocked) {
+                  onStudyNotesCreditBlocked();
+                  return;
+                }
+                setCreditBlocked(true);
+              }}
+            />
+          )) : null}
+          <div
+            className="mb-2 flex items-baseline gap-2 group verse-line"
+            style={{
+              backgroundColor: !plainTextMode && highlightMap[v.number] ? getColorCode(highlightMap[v.number], surface) : "transparent",
+              borderRadius: !plainTextMode && highlightMap[v.number] ? 4 : 0,
+              transition: "background-color 0.3s",
+            }}
           >
-            {getNumberEmoji(v.number)}
-          </button>
-          {/* Render enriched HTML for this verse, fallback to plain text */}
-          <span
-            className="verse-text bible-selectable-text min-w-0 flex-1 break-words text-base leading-relaxed selection:bg-sky-200 selection:text-slate-950 [&_p]:inline"
-          >
-            {renderVerseText(v)}
-          </span>
-          {/* Share to Feed button — visible on row hover */}
-        </div>
+            <button
+              type="button"
+              className="shrink-0 select-none cursor-pointer rounded-md bg-blue-100 px-2 py-0.5 text-lg font-bold shadow-sm hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              style={{ minWidth: 32 }}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (!plainTextMode) handleVerseClick(v.number, e);
+              }}
+              title={`Highlight verse ${v.number}`}
+              tabIndex={0}
+            >
+              {getNumberEmoji(v.number)}
+            </button>
+            {/* Render enriched HTML for this verse, fallback to plain text */}
+            <span
+              className="verse-text bible-selectable-text min-w-0 flex-1 break-words text-base leading-relaxed selection:bg-sky-200 selection:text-slate-950 [&_p]:inline"
+            >
+              {renderVerseText(v)}
+            </span>
+            {/* Share to Feed button — visible on row hover */}
+          </div>
+          {plainTextMode || hideStudySections ? null : studySectionPlacement === "end" ? (studySectionsByVerse[v.number] || []).map((studySection) => (
+            <InlineStudySection
+              key={`inline-study-${studySection.reference}`}
+              section={studySection}
+              isOpen={openStudyReference === studySection.reference}
+              openCategory={openStudyCategories[studySection.reference] || null}
+              openItemKey={openStudyItems[studySection.reference] || null}
+              isCreditLocked={Boolean(studyCreditLockedSections[studySection.reference])}
+              onToggleSection={() => {
+                void handleToggleStudySection(studySection);
+              }}
+              onToggleCategory={(categoryId) => {
+                setOpenStudyCategories((current) => ({
+                  ...current,
+                  [studySection.reference]: current[studySection.reference] === categoryId ? null : categoryId,
+                }));
+                setOpenStudyItems((current) => ({ ...current, [studySection.reference]: null }));
+              }}
+              onToggleItem={(categoryId, itemIndex) => {
+                const itemKey = `${categoryId}:${itemIndex}`;
+                setOpenStudyItems((current) => ({
+                  ...current,
+                  [studySection.reference]: current[studySection.reference] === itemKey ? null : itemKey,
+                }));
+              }}
+              onLockedCategory={() => {
+                if (onStudyNotesCreditBlocked) {
+                  onStudyNotesCreditBlocked();
+                  return;
+                }
+                setCreditBlocked(true);
+              }}
+            />
+          )) : null}
+        </React.Fragment>
       ))}
       <ColorPicker
         anchor={picker?.mode === "verse" || rangeColorPickerOpen ? picker?.anchor || null : null}
