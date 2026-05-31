@@ -2611,21 +2611,31 @@ export default function DashboardJourneyExperience({
     };
   }, [dashboardFirstPlayerSpotlightOpen]);
 
-  const bibleYearStudyPlanMilestones = [
-    { dayNumber: 1, label: "Creation" },
-    { dayNumber: 2, label: "Fall of Man" },
-    { dayNumber: 3, label: "Noah" },
-    { dayNumber: 4, label: "Flood" },
-    { dayNumber: 5, label: "Abraham" },
-    { dayNumber: 6, label: "Lot" },
-    { dayNumber: 7, label: "Covenant" },
-    { dayNumber: 8, label: "Sodom" },
-    { dayNumber: 9, label: "Legacy" },
-    { dayNumber: 10, label: "Isaac" },
-    { dayNumber: 11, label: "Bethel" },
-    { dayNumber: 12, label: "Laban" },
-    { dayNumber: 13, label: "Wrestle" },
-  ];
+  const bibleYearStudyPlanMilestoneLabels: Record<number, string> = {
+    1: "Creation",
+    2: "Fall of Man",
+    3: "Noah",
+    4: "Flood",
+    5: "Abraham",
+    6: "Lot",
+    7: "Covenant",
+    8: "Sodom",
+    9: "Legacy",
+    10: "Isaac",
+    11: "Bethel",
+    12: "Laban",
+    13: "Wrestle",
+  };
+  const bibleYearStudyPlanMilestones = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
+    .filter((day) => day.dayNumber <= 13)
+    .map((day) => ({
+      dayNumber: day.dayNumber,
+      label: bibleYearStudyPlanMilestoneLabels[day.dayNumber] || day.title,
+    }));
+  const bibleYearJourneyMapGridStyle = {
+    gridTemplateColumns: `repeat(${bibleYearStudyPlanMilestones.length}, minmax(0, 1fr))`,
+    minWidth: `${bibleYearStudyPlanMilestones.length * 90}px`,
+  };
   const dashboardTaskSource = bibleYearDashboardTasks || visibleTasks;
   const nextTask = dashboardTaskSource.find((task) => !task.done) ?? null;
   const nextActionTaskIndex = dashboardTaskSource.findIndex((task) => !task.done);
@@ -11009,7 +11019,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="px-3 pb-4 pt-3">
             {renderBibleYearJourneyStatusBanner(day)}
             <div className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-3">
-              <div className="grid min-w-[1170px] grid-cols-[repeat(13,minmax(0,1fr))] items-start gap-2">
+              <div className="grid items-start gap-2" style={bibleYearJourneyMapGridStyle}>
                 {bibleYearStudyPlanMilestones.map((milestone, index) => {
                   const milestoneDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === milestone.dayNumber);
                   const completed = bibleYearCompletedCardsByDay[milestone.dayNumber] || {};
@@ -14041,7 +14051,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     <>
                     <div className="dashboard-inline-task border-t border-[var(--bb-card-border,#dbe7f4)] px-3 pb-3 pt-2 sm:px-4">
                       <div className="bible-year-journey-scroll overflow-x-auto px-1 pb-2 pt-4">
-                        <div className="grid min-w-[1170px] grid-cols-[repeat(13,minmax(0,1fr))] items-start gap-2">
+                        <div className="grid items-start gap-2" style={bibleYearJourneyMapGridStyle}>
                           {bibleYearStudyPlanMilestones.map((milestone, index) => {
                             const completed = bibleYearCompletedCardsByDay[milestone.dayNumber] || {};
                             const isComplete = Boolean(completed.reading && completed.trivia && completed.reflection);
