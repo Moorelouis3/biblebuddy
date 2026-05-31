@@ -2642,9 +2642,14 @@ export default function DashboardJourneyExperience({
     28: "Tabernacle",
     29: "Golden Calf",
     30: "Presence",
+    31: "Glory",
+    32: "Offerings",
+    33: "Guilt",
+    34: "Holiness",
+    35: "Atonement",
   };
   const bibleYearStudyPlanMilestones = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-    .filter((day) => day.dayNumber <= 30)
+    .filter((day) => day.dayNumber <= 35)
     .map((day) => ({
       dayNumber: day.dayNumber,
       label: bibleYearStudyPlanMilestoneLabels[day.dayNumber] || day.title,

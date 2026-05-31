@@ -128,6 +128,31 @@ import {
   BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS,
   EXODUS_DAY_THIRTY_GODS_PRESENCE_AND_RENEWED_OBEDIENCE_LESSON,
 } from "./bibleYearDayThirtyDeepNotes";
+import {
+  BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_STUDY_SECTIONS,
+  EXODUS_DAY_THIRTY_ONE_TABERNACLE_FINISHED_LESSON,
+} from "./bibleYearDayThirtyOneDeepNotes";
+import {
+  BIBLE_YEAR_DAY_THIRTY_TWO_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTY_TWO_DEEP_STUDY_SECTIONS,
+  LEVITICUS_DAY_THIRTY_TWO_OFFERINGS_AND_ATONEMENT_LESSON,
+} from "./bibleYearDayThirtyTwoDeepNotes";
+import {
+  BIBLE_YEAR_DAY_THIRTY_THREE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTY_THREE_DEEP_STUDY_SECTIONS,
+  LEVITICUS_DAY_THIRTY_THREE_GUILT_CONSECRATION_AND_PRIESTS_LESSON,
+} from "./bibleYearDayThirtyThreeDeepNotes";
+import {
+  BIBLE_YEAR_DAY_THIRTY_FOUR_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTY_FOUR_DEEP_STUDY_SECTIONS,
+  LEVITICUS_DAY_THIRTY_FOUR_WORSHIP_HOLINESS_AND_CLEAN_LIVING_LESSON,
+} from "./bibleYearDayThirtyFourDeepNotes";
+import {
+  BIBLE_YEAR_DAY_THIRTY_FIVE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTY_FIVE_DEEP_STUDY_SECTIONS,
+  LEVITICUS_DAY_THIRTY_FIVE_CLEANSING_AND_DAY_OF_ATONEMENT_LESSON,
+} from "./bibleYearDayThirtyFiveDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "./bibleYearDayOneDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS, type BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES, BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS } from "./bibleYearDayThreeDeepNotes";
@@ -654,6 +679,91 @@ const dayThirtySummary: BibleYearSummaryContent = {
   takeawaySupport: "Day 30 helps us see that after great failure, Israel's hope is not their record but God's merciful presence, and mercy produces renewed obedience.",
 };
 
+const dayThirtyOneSummary: BibleYearSummaryContent = {
+  intro: [
+    "Exodus 37-40 finishes the book of Exodus by showing the tabernacle completed and set up.",
+    "The ark, mercy seat, table, lampstand, incense altar, bronze altar, laver, courtyard, and priestly garments are made according to God's command.",
+    "Then the cloud covers the tent, the glory of the LORD fills the tabernacle, and God guides Israel by cloud and fire.",
+  ],
+  highlights: [
+    ["ark", "The ark and mercy seat are made for the Most Holy Place."],
+    ["altar", "The bronze altar and laver teach sacrifice and cleansing before approach."],
+    ["garments", "The priestly garments carry Israel's names before the LORD."],
+    ["obedience", "The work is completed just as the LORD commanded Moses."],
+    ["glory", "The glory of the LORD fills the tabernacle at the end of Exodus."],
+  ],
+  takeaway: "God did not only rescue Israel from Egypt; He came to dwell among them.",
+  takeawaySupport: "Day 31 helps us see Exodus move from groaning under Pharaoh to God's glory in the middle of the camp, guiding His people through the wilderness.",
+};
+
+const dayThirtyTwoSummary: BibleYearSummaryContent = {
+  intro: [
+    "Leviticus 1-4 begins right after God's glory fills the tabernacle at the end of Exodus.",
+    "The LORD speaks from the tent of meeting and teaches Israel about burnt offerings, grain offerings, peace offerings, and sin offerings.",
+    "This day shows how sinful people can approach a holy God through the way He provides.",
+  ],
+  highlights: [
+    ["burnt", "The burnt offering teaches surrender, cost, and atonement."],
+    ["grain", "The grain offering gives daily provision back to God with gratitude."],
+    ["peace", "The peace offering points to fellowship and wholeness before the LORD."],
+    ["sin", "The sin offering shows that guilt must be cleansed and forgiven."],
+    ["mercy", "Priests, leaders, communities, and ordinary people all need atonement."],
+  ],
+  takeaway: "The holy God who dwells among His people also provides the way for His people to come near.",
+  takeawaySupport: "Day 32 helps us see that Leviticus is not random ritual; it is instruction for surrender, gratitude, fellowship, cleansing, atonement, and mercy near God's presence.",
+};
+
+const dayThirtyThreeSummary: BibleYearSummaryContent = {
+  intro: [
+    "Leviticus 5-8 continues the offering instructions and then shows Aaron and his sons being consecrated as priests.",
+    "These chapters focus on confession, guilt, restitution, priestly duties, peace offerings, and ordination.",
+    "This day shows that guilt is not only a feeling; it must be confessed, repaired when possible, and brought under the atonement God provides.",
+  ],
+  highlights: [
+    ["confession", "The worshiper must confess specific sin instead of hiding behind vague regret."],
+    ["restitution", "The guilt offering teaches repair by requiring repayment plus a fifth."],
+    ["neighbor", "Wronging another person is also called a trespass against the LORD."],
+    ["altar", "The altar fire must keep burning as the priests tend holy service continually."],
+    ["priests", "Aaron and his sons are washed, clothed, anointed, and marked with blood for service."],
+  ],
+  takeaway: "God exposes guilt so it can be confessed, repaired, atoned for, and brought back under His mercy.",
+  takeawaySupport: "Day 33 helps us see that worship, justice, priesthood, and holiness all belong together in life near God's presence.",
+};
+
+const dayThirtyFourSummary: BibleYearSummaryContent = {
+  intro: [
+    "Leviticus 9-12 moves from priestly ordination into public priestly ministry.",
+    "Aaron offers sacrifices, God's glory appears, Nadab and Abihu offer unauthorized fire, and Israel begins learning clean and unclean distinctions.",
+    "This day shows that God's nearness is beautiful, but holiness must shape worship and ordinary daily life.",
+  ],
+  highlights: [
+    ["glory", "The glory of the LORD appears when Aaron begins priestly ministry."],
+    ["fire", "God's fire accepts the offering in Leviticus 9 and judges strange fire in Leviticus 10."],
+    ["priests", "Priests must distinguish holy from common and clean from unclean."],
+    ["food", "Clean and unclean food laws train Israel to live as a set-apart people."],
+    ["birth", "Purification after childbirth shows that bodies and family life also belong before God."],
+  ],
+  takeaway: "Because God lives among His people, holiness begins to touch everything.",
+  takeawaySupport: "Day 34 helps us see that worship, reverence, discernment, meals, bodies, and family life are all shaped by life near God's holy presence.",
+};
+
+const dayThirtyFiveSummary: BibleYearSummaryContent = {
+  intro: [
+    "Leviticus 13-16 explains how uncleanness is examined, contained, cleansed, and restored.",
+    "The reading moves from skin disease, garments, houses, and bodily discharges to the central Day of Atonement.",
+    "This day shows that God does not minimize sin or uncleanness, but He provides cleansing, restoration, and a way for sin to be carried away.",
+  ],
+  highlights: [
+    ["clean", "Priests carefully examine people and objects before declaring clean or unclean."],
+    ["outside", "Some uncleanness places a person outside the camp until restoration is possible."],
+    ["restore", "Leviticus 14 gives a way for the healed person to return to community and worship."],
+    ["mercy seat", "The high priest brings blood into the Most Holy Place on the Day of Atonement."],
+    ["scapegoat", "The live goat carries Israel's confessed sins away into the wilderness."],
+  ],
+  takeaway: "God exposes uncleanness so cleansing, restoration, and atonement can happen His way.",
+  takeawaySupport: "Day 35 helps us see that God's holiness names the problem honestly, and God's mercy provides a way back.",
+};
+
 function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent {
   const pieces = day.summary
     .split(",")
@@ -909,6 +1019,46 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
     studyNotesSections: BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS,
     summary: dayThirtySummary,
     discussionPrompt: "What stands out to you about Moses pleading for God's presence and Israel giving willingly again?",
+  },
+  31: {
+    lesson: EXODUS_DAY_THIRTY_ONE_TABERNACLE_FINISHED_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTY_ONE_DEEP_STUDY_SECTIONS,
+    summary: dayThirtyOneSummary,
+    discussionPrompt: "What stands out to you about God's glory filling the finished tabernacle?",
+  },
+  32: {
+    lesson: LEVITICUS_DAY_THIRTY_TWO_OFFERINGS_AND_ATONEMENT_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_TWO_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTY_TWO_DEEP_STUDY_SECTIONS,
+    summary: dayThirtyTwoSummary,
+    discussionPrompt: "What stands out to you about God providing offerings and atonement so His people can come near?",
+  },
+  33: {
+    lesson: LEVITICUS_DAY_THIRTY_THREE_GUILT_CONSECRATION_AND_PRIESTS_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_THREE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTY_THREE_DEEP_STUDY_SECTIONS,
+    summary: dayThirtyThreeSummary,
+    discussionPrompt: "What stands out to you about guilt, restitution, and priests being consecrated for holy service?",
+  },
+  34: {
+    lesson: LEVITICUS_DAY_THIRTY_FOUR_WORSHIP_HOLINESS_AND_CLEAN_LIVING_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_FOUR_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTY_FOUR_DEEP_STUDY_SECTIONS,
+    summary: dayThirtyFourSummary,
+    discussionPrompt: "What stands out to you about God's holiness shaping worship and daily life?",
+  },
+  35: {
+    lesson: LEVITICUS_DAY_THIRTY_FIVE_CLEANSING_AND_DAY_OF_ATONEMENT_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_FIVE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTY_FIVE_DEEP_STUDY_SECTIONS,
+    summary: dayThirtyFiveSummary,
+    discussionPrompt: "What stands out to you about cleansing, restoration, and the Day of Atonement?",
   },
 };
 
