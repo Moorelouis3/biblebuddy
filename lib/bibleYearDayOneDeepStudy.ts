@@ -127,7 +127,7 @@ It describes the world before God shapes it and fills it.
 
 It can mean spirit, breath, or wind. Here it shows God's Spirit active over the waters.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 God brings light into darkness before anything looks finished.
 
@@ -212,7 +212,7 @@ In this section, the waters obey God's command and take their place.
 
 Later in Genesis, seed language also points to offspring, family lines, and promise.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 God prepares before He fills.
 
@@ -289,7 +289,7 @@ The lights help mark time because God made the world with rhythm.
 
 It shows that animals are living beings made by God.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 God is not only a God of empty space. He fills what He forms.
 
@@ -368,7 +368,7 @@ In the ancient world, an image represented someone. Humans were made to represen
 
 The word reminds us humans have authority, but it is authority under God's authority.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Your value begins with God, not performance.
 
@@ -437,7 +437,7 @@ It is where the word Sabbath comes from.
 
 God sets the seventh day apart from the other days.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Rest is part of God's good world.
 
@@ -512,7 +512,7 @@ It is closely connected to the ground, called adamah.
 
 The breath of life comes from God.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 You are humble dust and God-given breath.
 
@@ -589,7 +589,7 @@ Adam's garden work is service under God.
 
 Adam is called to protect what God entrusted to him.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 God gives freedom with boundaries.
 
@@ -668,7 +668,7 @@ It is a strong word, not a weak one. It often describes help that is necessary a
 
 The woman is the partner who truly matches the man.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 God created people for relationship without shame.
 

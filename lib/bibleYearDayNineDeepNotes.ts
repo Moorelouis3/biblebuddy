@@ -34,7 +34,7 @@ Genesis repeats that God did exactly what He said. Isaac arrives at the appointe
 
 Sarah laughs again, but this laughter is different. Before, she laughed at impossibility. Now she laughs with joy.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Isaac's birth proves that the covenant promise depends on God's power.
 
@@ -61,7 +61,7 @@ Hagar and Ishmael are sent away into the wilderness. The scene is painful and em
 
 But God hears the boy. He opens Hagar's eyes to a well and repeats that Ishmael will become a great nation.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Isaac carries the covenant promise, but Ishmael is not forgotten.
 
@@ -88,7 +88,7 @@ The two men make a covenant over a well at Beersheba. Abraham plants a tamarisk 
 
 He is still not fully settled in the land, but he worships God there.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Faith often lives between promise and possession.
 
@@ -117,7 +117,7 @@ At the final moment, God stops him and provides a ram caught in the thicket.
 
 Abraham names the place, The LORD will provide.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 The test reveals whether Abraham trusts God with the promise itself.
 
@@ -144,7 +144,7 @@ Abraham mourns her, then negotiates to buy the cave of Machpelah and the field a
 
 This becomes a family burial place and the first piece of land Abraham legally owns in Canaan.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 The promise is still not fully possessed.
 
@@ -171,7 +171,7 @@ The servant prays for clear guidance. Rebekah appears at the well and shows gene
 
 She leaves her household and becomes Isaac's wife.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 The covenant promise is not only about one generation.
 

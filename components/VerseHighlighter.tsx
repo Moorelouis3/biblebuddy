@@ -462,7 +462,7 @@ function StudyCategoryContent({
   onToggleItem: (index: number) => void;
   onItemOpened: (index: number) => void;
 }) {
-  const nestedMenu = category.id === "key-phrases" || category.id === "key-truths";
+  const nestedMenu = category.id === "key-phrases";
   const flatSection = category.id === "what-is-happening" || category.id === "why-this-matters";
   const itemRefs = useRef<Record<number, HTMLElement | null>>({});
   const nestedItemIcons = nestedMenu ? getNestedStudyItemIcons(category) : [];
@@ -744,7 +744,7 @@ function InlineStudySection({
 
       {isOpen ? (
         <div className="mt-2 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)]">
-          {section.categories.map((category, index) => {
+          {section.categories.filter((category) => category.id !== "key-truths").map((category, index) => {
             const categoryOpen = openCategory === category.id;
             return (
               <div

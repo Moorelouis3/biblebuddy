@@ -60,15 +60,9 @@ function makeGenesisStudySection(section: ReaderStudySectionInput): BibleReaderS
         content: section.phrases,
       },
       {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: section.truths,
-      },
-      {
         id: "why-this-matters",
         icon: "❤️",
-        title: "Why This Matters",
+        title: "What This Means",
         content: [section.why],
       },
     ],
@@ -108,20 +102,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
           "\"Let There Be Light\"\nThese are the first recorded words God speaks in Scripture. That alone makes the phrase worth slowing down for.\nThe surprising detail is that this light appears before the sun, moon, and stars are created on Day 4. Genesis is teaching that light does not ultimately come from the sun; it comes from God.\nThat would have been powerful in the ancient world, where many people worshiped the sun and moon. Genesis quietly puts those heavenly bodies in their place. They are useful creations, but they are not gods.",
           "\"God Saw That It Was Good\"\nGood means more than pretty. It means fitting, ordered, pleasing, useful, and working the way God intends.\nThis matters because some people imagine the physical world as unimportant or less spiritual. Genesis does the opposite. God looks at material creation and approves it.\nThe Bible begins by telling us that creation is not a mistake, a prison, or an accident. It is God's good world, even though sin will later damage it.",
           "\"Evening And Morning\"\nGenesis counts the day from evening to morning: darkness first, then light. That rhythm is easy to miss because most of us describe a day from morning to night.\nIn Genesis, the movement keeps preaching a pattern. God brings light after darkness, order after chaos, and morning after night.\nThat does not mean every hard season ends instantly. But from the first page, Scripture is teaching us the direction of God's work. Darkness is real, but it does not get the final word.",
-        ],
-      },
-      {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "God is not part of creation.\nGenesis places God before everything else so we do not confuse Him with the world He made.\nHe is not the strongest piece of creation. He is the Creator of creation.\nThat means creation depends on God, but God does not depend on creation.",
-          "Creation has meaning because it has a Maker.\nIf the world begins with God, then the world is not a meaningless accident.\nThere is wisdom, intention, and authority behind existence.\nGenesis does not answer every science question a reader may have, but it gives the most important starting point: reality begins with God.",
-          "God's word does more than describe.\nWhen God speaks, creation responds.\nHis word is not commentary from the sidelines. His word carries authority to bring about what He commands.\nThat prepares us for the rest of Scripture, where God's word creates, calls, judges, promises, heals, and saves.",
-          "God is present in unfinished places.\nThe Spirit of God is present while the earth is still formless, empty, dark, and covered by waters.\nThat matters because we often assume God shows up after things are fixed.\nGenesis shows the opposite: God is present before the beauty is visible.",
-          "God brings order without panic.\nThe passage moves from darkness and deep waters toward light, naming, separation, and rhythm.\nGod is not threatened by disorder. He does not rush, struggle, or compete.\nHe calmly brings shape to what is unformed and purpose to what is empty.",
-          "The first page teaches God's character.\nGenesis 1 is not only about what God made. It is about what God is like.\nHe speaks, forms, names, separates, sees, and declares good.\nBefore the Bible tells us what humans are like, it shows us the God we are dealing with.",
-          "Hope begins with God's pattern.\nThe movement from evening to morning teaches a quiet kind of hope.\nDarkness appears first, but darkness is not final.\nGenesis begins the Bible with a God who brings light, and that pattern will echo all the way through Scripture.",
         ],
       },
       {
@@ -166,19 +146,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         ],
       },
       {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "God forms places before He fills them.\nThis is one of the most helpful patterns in Genesis 1. God does not fill chaos. He first forms spaces.\nThen He fills those spaces with life.\nThat tells us preparation matters to God.",
-          "Boundaries can be a gift from God.\nGod separates light from darkness, waters above from waters below, and waters from dry land.\nThose boundaries are not harsh. They make life possible.\nA world with no boundaries is not freedom. It is disorder.",
-          "God has authority over what feels uncontrollable.\nThe waters are gathered because God commands them.\nTo ancient readers, deep water could represent danger, chaos, and death.\nGenesis shows that even the waters have to obey God's voice.",
-          "The third day brings life from the ground.\nAfter darkness and waters, dry land appears and vegetation grows.\nThat movement is beautiful because life comes after what looked like death and chaos.\nIt quietly prepares us for the Bible's larger resurrection pattern.",
-          "God creates with future fruitfulness in mind.\nThe plants are made with seed in them.\nThat means creation is built to continue, grow, and multiply.\nGod is not only thinking about the first moment. He is building future life into what He makes.",
-          "The physical world is part of God's good design.\nSoil, water, plants, fruit, and seeds matter to God.\nGenesis does not treat the physical world as worthless or unspiritual.\nGod made a real world and called it good.",
-        ],
-      },
-      {
         id: "why-this-matters",
         icon: "❤️",
         title: "Why This Matters",
@@ -217,19 +184,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
           "\"Let The Waters Swarm\"\nThe waters that once looked like the scene of danger now become full of living creatures.\nThat is a beautiful reversal. What looked empty and threatening becomes abundant.\nGod can fill places we only knew as fear.",
           "\"According To Their Kinds\"\nThis phrase repeats again and again. Genesis is emphasizing order, distinction, and boundaries within living things.\nCreation has variety, but not confusion. God delights in many kinds of life, but each has its place.\nThe repeated phrase also prepares us for humanity, because humans will not be described merely as another animal kind. They will be made in God's image.",
           "\"God Blessed Them\"\nBefore humans are created, God blesses living creatures. That tells us something about His generosity.\nGod delights in life multiplying. He wants the waters and skies full.\nCreation is not stingy. It is overflowing because God is generous.",
-        ],
-      },
-      {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "God fills what He forms.\nDays 1-3 form spaces, and Days 4-6 fill those spaces.\nThat pattern shows wisdom and intention.\nGod is not throwing things randomly into existence. He is building a world with structure and fullness.",
-          "The sun, moon, and stars are created servants.\nAncient people often treated heavenly bodies like gods.\nGenesis does the opposite. The lights are made by God, placed by God, and assigned work by God.\nThey are powerful, but they are not ultimate.",
-          "God built rhythm into creation.\nDays, seasons, and years are part of God's ordered world.\nTime is not meaningless. It has structure.\nThe sky helps creation live with rhythm, memory, worship, farming, travel, and rest.",
-          "God can turn places of fear into places of life.\nThe waters that looked dark and threatening earlier now swarm with living creatures.\nThat is a beautiful reversal.\nGod does not only restrain what is frightening. He can fill it with life.",
-          "God delights in abundance and variety.\nBirds, sea creatures, livestock, creeping things, and wild animals all appear in their kinds.\nCreation is not flat or boring.\nGod fills the world with movement, color, sound, difference, and life.",
-          "Living creatures receive blessing from God.\nBefore humans are created, God blesses the animals of the sea and sky.\nThat shows His generosity toward life.\nGod's world is meant to be fruitful, multiplying, and full.",
         ],
       },
       {
@@ -275,20 +229,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         ],
       },
       {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "Human identity begins with God, not culture.\nGenesis tells us who we are before society, success, failure, politics, pain, or personal confusion gets to define us.\nWe begin with God as Creator.\nThat means identity is received before it is achieved.",
-          "Every person has God-given dignity.\nHumans are made in the image of God.\nThat gives value to every human life before that person can contribute, perform, or prove anything.\nThis is the foundation for the sanctity of human life.",
-          "Men and women both carry the image of God.\nGenesis specifically says male and female are created by God.\nBoth share the image. Both receive dignity. Both are part of God's good design.\nThe image of God is not limited to one sex or one social role.",
-          "Humans are distinct from animals.\nAnimals are created according to their kinds, but humanity is made in God's image.\nThat does not mean animals do not matter. It means humans have a unique calling.\nPeople are made to represent God in the world.",
-          "Dominion means stewardship under God's rule.\nDominion is not permission to be cruel, selfish, or careless.\nIt is responsibility.\nHuman beings are meant to rule creation in a way that reflects God's wisdom, care, and goodness.",
-          "Work and responsibility existed before sin.\nGod gives humans a mission before Genesis 3.\nThat means work itself is not a curse.\nFrustration and futility come later, but meaningful responsibility belongs to the good world God made.",
-          "God's original design was blessing and goodness.\nBefore shame, hiding, violence, and death, God blesses humanity and calls creation very good.\nThat matters because the rest of the Bible is not God giving up on creation.\nIt is God working to restore what sin damages.",
-        ],
-      },
-      {
         id: "why-this-matters",
         icon: "❤️",
         title: "Why This Matters",
@@ -326,18 +266,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
           "\"The Seventh Day\"\nThe seventh day is different from the first six days because no new created thing is made. Instead, the focus shifts from making to enjoying what has been made.\nThis is important because Genesis is teaching a rhythm. Human life was never meant to be endless production with no pause.\nBefore sin enters the world, before stress and survival become part of life, rest is already built into creation.",
           "\"God Blessed The Seventh Day\"\nGod blesses living creatures in Genesis 1, and now He blesses a day. That is a surprising detail because it means time itself can become a gift.\nThe seventh day is not empty time. It is blessed time, meant to remind people that life is more than work, achievement, and output.\nThis is one reason Sabbath becomes so important later in the Bible. It points back to creation and teaches people to live by trust, not constant striving.",
           "\"Made It Holy\"\nHoly means set apart for God. The seventh day is separated from ordinary days and given a special purpose.\nThis is the first time the idea of holiness appears in the Bible. Before a holy place, a holy nation, or holy objects, there is holy time.\nThat teaches something beautiful: God meets people not only in sacred buildings, but also in rhythms of life that help them remember Him.",
-        ],
-      },
-      {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "✅ God finishes what He starts.\nCreation ends with completion, not confusion.\nGod does not begin a good work and then lose control of it.\nThis becomes a pattern of hope throughout Scripture.",
-          "🛏️ Rest is part of God's good design.\nRest existed before sin, exhaustion, and frustration entered the world.\nThat means rest is not weakness or laziness.\nIt is part of how God designed life to work.",
-          "🕯️ Holy time matters to God.\nThe first thing called holy in the Bible is not a building or object, but a day.\nGod sets apart time so people can remember, worship, and receive.\nThis shows that our rhythms shape our hearts.",
-          "🙌 God invites people to enjoy His finished work.\nThe seventh day comes after God completes creation.\nThat means humanity enters a world already filled with God's provision.\nBefore people work, they receive.",
-          "🌿 Creation was made with rhythm.\nGenesis does not present life as endless motion.\nThere is work, completion, blessing, and rest.\nHealthy life needs all of those rhythms.",
         ],
       },
       {
@@ -383,19 +311,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         ],
       },
       {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "🪨 Humans are humble and honored.\nAdam is made from dust, so human life begins with humility.\nBut God breathes life into him, so human life also carries deep honor.\nGenesis holds both truths together.",
-          "🌬️ Life is a gift from God.\nThe man does not animate himself.\nGod gives breath, and dust becomes living.\nEvery human life depends on God more deeply than we usually realize.",
-          "🧱 Work existed before sin.\nThe ground needs someone to work it before the fall happens.\nThat means work is not the curse.\nThe curse later makes work painful, but work itself is part of God's good design.",
-          "🌳 God provides more than bare survival.\nThe garden includes trees that are good for food and pleasant to the sight.\nGod gives beauty along with provision.\nHe made people to receive both nourishment and delight.",
-          "🏡 God prepares a place for people.\nThe first human does not create his own world from nothing.\nGod forms him and places him in a prepared environment.\nHuman life begins inside God's care.",
-          "👀 Genesis 2 explains Genesis 1 up close.\nThe two chapters are not two competing creation stories.\nGenesis 1 gives the wide view, and Genesis 2 gives the close view.\nTogether they teach that the Creator is also personal and near.",
-        ],
-      },
-      {
         id: "why-this-matters",
         icon: "❤️",
         title: "Why This Matters",
@@ -435,19 +350,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
           "\"You May Surely Eat\"\nBefore God gives the warning, He gives wide permission. Adam is free to eat from every tree except one.\nThat order matters. God's command begins in generosity, not restriction.\nSometimes people remember the one forbidden tree and forget the whole garden of allowed trees. Genesis wants us to see both.",
           "\"The Tree Of The Knowledge Of Good And Evil\"\nThis tree represents a boundary around moral authority. The question is not whether Adam will learn facts; the question is whether he will trust God to define good and evil.\nTo eat from it is to reach for independence from God's wisdom. It is humanity saying, \"I will decide good and evil for myself.\"\nThat makes the tree a test of trust, not a trap.",
           "\"You Shall Surely Die\"\nThis warning is serious and direct. Death is introduced as the consequence of rebellion before it becomes human experience.\nGod is not being harsh by warning Adam. A loving warning tells the truth about danger.\nThe rest of the Bible will show that death is not part of the good design; it enters through sin and becomes the enemy God must overcome.",
-        ],
-      },
-      {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "💧 God's provision overflows.\nEden is pictured with water, trees, food, beauty, and valuable resources.\nGod's first environment for humanity is generous.\nHe is not stingy with life.",
-          "🛠️ Purpose comes before the fall.\nAdam has work before sin enters the world.\nThat means responsibility is not a punishment.\nPurposeful work is part of human dignity.",
-          "🚧 Freedom needs boundaries.\nAdam is given many trees and one clear limit.\nThe boundary is not there to ruin freedom.\nIt teaches Adam to live as a creature who trusts the Creator.",
-          "🍽️ God's first command is surrounded by generosity.\nGod says Adam may surely eat from every tree except one.\nThe permission is wider than the prohibition.\nThis helps us see God's heart clearly.",
-          "⚖️ God defines good and evil.\nThe tree raises the question of moral authority.\nWill humans trust God to define what is good, or will they seize that role for themselves?\nThat question still sits under every act of sin.",
-          "⚠️ Death is an enemy, not part of the original good.\nGod warns Adam about death before the fall.\nDeath is connected to disobedience, not to creation's goodness.\nThis prepares us for why redemption is needed.",
         ],
       },
       {
@@ -493,19 +395,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         ],
       },
       {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "🤝 Humans are made for relationship.\nAdam has a perfect garden and meaningful work, but God still says aloneness is not good.\nThat means relationship is not a luxury add-on.\nIt belongs to God's design for human life.",
-          "💪 Helper means strength, not inferiority.\nThe woman is called a helper, but that word often describes God's help in Scripture.\nThe point is partnership and support.\nGenesis does not present the woman as lesser.",
-          "🧍‍♀️ Woman shares the same humanity as man.\nAdam recognizes her as bone of his bones and flesh of his flesh.\nShe is not a different class of creature.\nShe is fully human and personally received as God's gift.",
-          "💍 Marriage is rooted in creation.\nGenesis explains why a man leaves father and mother and holds fast to his wife.\nMarriage is not invented later by society.\nIt is grounded in God's created order.",
-          "🧩 Difference can serve unity.\nThe man and woman are not identical, but they belong together.\nTheir difference is not a problem to erase.\nIt is part of how one-flesh union works.",
-          "🌿 Shame was not part of God's original design.\nThe chapter ends with nakedness and no shame.\nThat means hiding, fear, and self-protection are not how human relationships were meant to be.\nSin will damage this, but Genesis shows what was good first.",
-        ],
-      },
-      {
         id: "why-this-matters",
         icon: "❤️",
         title: "Why This Matters",
@@ -545,18 +434,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
           "\"Your Eyes Will Be Opened\"\nThe serpent promises a higher kind of sight. He makes disobedience sound like awakening, maturity, and hidden knowledge.\nThere is a cruel half-truth here. Their eyes will open, but not in the way they hope. They will not wake up into freedom; they will wake up into shame.\nTemptation often advertises insight while hiding the cost of that insight. It says, \"You will finally know,\" but it does not say, \"You will also lose innocence, peace, and trust.\"\nGenesis teaches that not every opened door leads to life, and not every opened eye sees truth clearly.",
           "\"Knowing Good And Evil\"\nThis phrase is about moral authority, not just learning facts. Adam and Eve already knew good by living in God's good world and hearing God's good command.\nThe temptation is to know good and evil independently, as if humans can define reality without receiving it from God. It is the desire to move from trusting God's wisdom to becoming self-appointed judges.\nThat is why this phrase still feels so modern. Every age is tempted to say, \"I will decide good and evil for myself.\"\nGenesis says that road does not make humans more alive. It cuts them off from the God who is life.",
           "\"You Will Be Like God\"\nThis is the heart of the temptation. Adam and Eve were already made in God's image, but the serpent tempts them to reach for God-likeness on their own terms.\nThe lie works because it sounds close to something true. Humans really are meant to reflect God. But image-bearing is received as a gift, not seized as a replacement for God.\nThe serpent makes rebellion sound like growth, freedom, and maturity. He presents dependence on God as childish and independence from God as wise.\nThis is why the fall is so serious: humanity tries to become like God by distrusting God, and that breaks the very relationship that made them fully alive.",
-        ],
-      },
-      {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "🐍 Temptation often starts by questioning God's word.\nThe serpent does not begin with fruit.\nHe begins with a question about what God said.\nIf trust in God's word weakens, obedience becomes easier to abandon.",
-          "🌳 Sin makes God's generosity look small.\nThe serpent focuses attention on the one forbidden tree.\nThat makes the whole garden fade into the background.\nA grateful heart sees the garden before it stares at the boundary.",
-          "🧠 The fall is about trust and authority.\nThe tree raises the question of who defines good and evil.\nWill humans receive wisdom from God, or decide for themselves?\nThat question still sits under every human sin.",
-          "⚠️ Evil often promises life while leading toward death.\nThe serpent says they will not die.\nBut God's warning is true.\nSin can sound like freedom while quietly carrying destruction.",
-          "🪞 Humans were already image-bearers.\nThe promise to be like God is twisted because Adam and Eve already bear God's image.\nThe temptation is to grasp apart from God what should be received from God.\nThat pattern repeats throughout Scripture.",
         ],
       },
       {
@@ -602,18 +479,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         ],
       },
       {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "👀 Sin can look desirable before it destroys.\nThe fruit appears good, beautiful, and wise.\nThat is part of the danger.\nTemptation often hides the end of the story.",
-          "🤐 Silence can become failure.\nAdam is with Eve, but he does not speak or guard.\nPassivity matters in Genesis 3.\nLove should protect truth, not stand quietly while lies grow.",
-          "🍎 Disobedience is shared responsibility.\nEve eats and Adam eats.\nThe chapter does not let either one become innocent.\nBoth step outside God's command.",
-          "🫣 Sin produces shame.\nThe serpent promised opened eyes and freedom.\nThe first thing they experience is exposure.\nSin never gives exactly what it advertises.",
-          "🧵 Humans try to cover what sin exposes.\nThey sew fig leaves together.\nThat is the first human attempt to manage shame without God.\nThe rest of Scripture will show that only God can truly cover sin.",
-        ],
-      },
-      {
         id: "why-this-matters",
         icon: "❤️",
         title: "Why This Matters",
@@ -651,18 +516,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
           "\"I Was Afraid\"\nFear now enters the human relationship with God. The God who gave Adam breath is now the God Adam avoids.\nThat is one of sin's deepest damages. It makes the presence of God feel threatening instead of life-giving.\nThe rest of Scripture will keep answering this fear with God's mercy and rescue.",
           "\"The Woman Whom You Gave\"\nAdam blames Eve, but his words also point back toward God. It is as if he says, \"This happened because of the woman You gave me.\"\nThat is how blame works. It avoids honest confession by shifting responsibility outward.\nThe first broken human relationship after sin includes accusation.",
           "\"The Serpent Deceived Me\"\nEve tells part of the truth: she was deceived. But the statement still shifts responsibility away from her own choice.\nGenesis does not deny deception, but it also does not remove human responsibility.\nBeing tempted explains the battle; it does not erase the disobedience.",
-        ],
-      },
-      {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "🌿 God seeks sinners before they seek Him.\nAdam and Eve hide, but God comes looking.\nThat is mercy before judgment.\nThe rescue story begins with God moving toward the guilty.",
-          "❓ God's questions invite truth.\nGod asks where Adam is and what he has done.\nHe is not confused.\nHe is drawing hidden sin into the light.",
-          "😨 Sin turns closeness into fear.\nAdam once lived openly before God.\nNow he hides from God's presence.\nSin damages our sense of safety with the One who made us.",
-          "👉 Blame is one of sin's first languages.\nAdam blames Eve and hints at blaming God.\nEve blames the serpent.\nNobody rushes to confession.",
-          "🧭 Confession is different from explanation.\nAdam and Eve explain what happened, but they do not fully own it.\nTrue repentance does not only describe events.\nIt tells the truth about personal responsibility.",
         ],
       },
       {
@@ -707,18 +560,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         ],
       },
       {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "🐍 God judges evil.\nThe serpent is not allowed to deceive without answer.\nGod names evil and curses it.\nThis matters because injustice is never invisible to God.",
-          "🌱 God promises rescue immediately.\nGenesis 3:15 gives hope before Adam and Eve leave the garden.\nThe story is broken, but it is not abandoned.\nGod speaks promise into judgment.",
-          "💔 Sin damages relationships.\nThe woman and man will experience tension where there should have been trust and partnership.\nSin does not stay private.\nIt bends the way people relate to one another.",
-          "🌾 Sin makes work painful.\nWork itself was good before the fall.\nBut now the ground resists, and labor becomes frustrating.\nThe curse touches ordinary life.",
-          "⚰️ Death enters as judgment.\nGod warned that disobedience would bring death.\nNow that warning becomes reality.\nThe rest of Scripture will move toward God's answer to death.",
-        ],
-      },
-      {
         id: "why-this-matters",
         icon: "❤️",
         title: "Why This Matters",
@@ -759,18 +600,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         ],
       },
       {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "👩 Hope continues after judgment.\nEve's name points to life.\nThe story does not end with death alone.\nGod keeps the human family moving forward.",
-          "🧥 God covers shame better than people can.\nFig leaves were Adam and Eve's covering.\nGarments of skin were God's provision.\nThis shows mercy in the middle of consequences.",
-          "🚪 Sin brings real loss.\nAdam and Eve are sent out of Eden.\nThe fall is not symbolic only; it changes human life deeply.\nAccess to the garden is lost.",
-          "🌳 Eternal life in sin would not be mercy.\nThe tree of life is guarded.\nThat prevents humanity from living forever in a broken state.\nGod's judgment is severe, but it is not cruel.",
-          "🔥 The way back must be opened by God.\nCherubim guard the garden.\nHumans cannot force their way back into Eden.\nThe rest of the Bible will show God making the way through redemption.",
-        ],
-      },
-      {
         id: "why-this-matters",
         icon: "❤️",
         title: "Why This Matters",
@@ -808,18 +637,6 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
           "\"Cain Was Very Angry\"\nCain's anger is the turning point. The issue is not only that his offering was not regarded; it is what happens inside him afterward.\nAnger becomes dangerous when it refuses correction.\nGod addresses Cain before Cain acts, which shows mercy in the warning.",
           "\"Why Has Your Face Fallen\"\nGod questions Cain the way He questioned Adam. The question invites Cain to stop and look honestly at his condition.\nA fallen face shows the inner anger has become visible.\nGod is giving Cain a chance to bring the hidden thing into the light.",
           "\"Sin Is Crouching At The Door\"\nThis is one of the strongest pictures of sin in Genesis. Sin is pictured like a predator waiting at the entrance.\nIt desires Cain, but Cain must rule over it.\nThat means sin is not passive. If it is not resisted, it seeks mastery.",
-        ],
-      },
-      {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "👨‍👩‍👦 Sin enters family life quickly.\nGenesis moves from Eden to brothers.\nThe first family outside the garden is already dealing with anger and rivalry.\nBrokenness spreads into ordinary relationships.",
-          "🎁 Worship reveals the heart.\nBoth brothers bring offerings.\nCain's response shows that the deeper issue is not only the gift, but the heart behind it.\nGod cares about worshipers, not only worship acts.",
-          "😡 Anger must be addressed early.\nGod warns Cain before the murder happens.\nThat means anger is not harmless just because it is still inside.\nUnruled anger can grow into destruction.",
-          "🚪 Sin wants mastery.\nGod describes sin as crouching and desiring Cain.\nThis makes sin personal and aggressive in its effect.\nPeople must not treat it casually.",
-          "🛑 Warning is mercy.\nGod could have let Cain run straight into judgment.\nInstead, He speaks first.\nA warning from God is an invitation to turn back.",
         ],
       },
       {
@@ -2229,18 +2046,6 @@ This passage ends Day 5 with steadiness. Abram is still in tents, still waiting,
         ],
       },
       {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "🩸 Sin can escalate quickly.\nCain moves from anger to murder.\nThe warning was real because the danger was real.\nUnmastered sin does not stay small.",
-          "❓ God confronts violence.\nGod asks Cain where Abel is.\nHe brings hidden sin into the open.\nNo act of violence is invisible to Him.",
-          "👥 People are responsible for one another.\nCain asks if he is his brother's keeper.\nGenesis lets us hear how wrong that question is.\nHuman life is not meant to be treated with indifference.",
-          "🌾 Sin affects our relationship to the ground.\nCain is cursed from the ground that received Abel's blood.\nGenesis keeps showing that human sin touches creation.\nThe world bears the weight of human violence.",
-          "🛡️ God restrains revenge.\nCain is judged, but God marks him for protection.\nGod does not let justice become endless retaliation.\nMercy limits the spread of violence.",
-        ],
-      },
-      {
         id: "why-this-matters",
         icon: "❤️",
         title: "Why This Matters",
@@ -2282,18 +2087,6 @@ This passage ends Day 5 with steadiness. Abram is still in tents, still waiting,
         ],
       },
       {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "🏙️ Culture can develop in a broken world.\nCities, livestock, music, and tools appear in Cain's line.\nHuman creativity continues after sin.\nThe image of God is damaged, but not erased.",
-          "🎵 Beauty can still exist outside Eden.\nMusic appears in a family line marked by brokenness.\nThat is a realistic picture of the world.\nBeauty and sin often exist side by side.",
-          "🛠️ Human skill is not the same as holiness.\nCain's descendants develop useful tools and crafts.\nBut progress in skill does not automatically mean progress in character.\nThe heart still needs redemption.",
-          "⚔️ Violence can become a source of pride.\nLamech boasts about killing.\nSin has moved from hiding to bragging.\nThat is a frightening development.",
-          "🧭 Civilization cannot save humanity by itself.\nCities, tools, music, and work are good gifts.\nBut none of them removes sin.\nGenesis shows the need for deeper rescue than human progress can provide.",
-        ],
-      },
-      {
         id: "why-this-matters",
         icon: "❤️",
         title: "Why This Matters",
@@ -2331,18 +2124,6 @@ This passage ends Day 5 with steadiness. Abram is still in tents, still waiting,
           "\"Seth\"\nSeth's name is connected with being appointed or granted. Eve recognizes God's hand in this birth.\nThat is beautiful because Eve is living outside Eden after enormous pain.\nYet she can still name God's provision.",
           "\"Enosh\"\nEnosh's name is connected to humanity, frailty, or mortal man. It reminds readers that human life is weak and dependent.\nThat fits the next line about calling on the Lord.\nWeak people need the strong name of God.",
           "\"Call Upon The Name Of The Lord\"\nThis phrase points to worship, prayer, dependence, and public turning toward God.\nAfter a chapter full of sin, this ending matters deeply.\nPeople are not only building cities and boasting about violence; some are calling on the Lord.",
-        ],
-      },
-      {
-        id: "key-truths",
-        icon: "🔑",
-        title: "Key Truths",
-        content: [
-          "🌱 God's promise keeps moving.\nAbel is dead and Cain is exiled, but hope does not die.\nGod appoints another offspring.\nThe promise from Genesis 3 continues.",
-          "😭 Hope does not erase grief.\nSeth is given after Abel's murder.\nThe text remembers Abel even while showing new life.\nGod's mercy meets real loss, not pretend loss.",
-          "👶 God works through ordinary births.\nGenesis often carries huge promises through simple family lines.\nA child is born, and the story moves forward.\nGod can work through quiet beginnings.",
-          "🙏 Worship rises in a broken world.\nPeople begin to call on the name of the Lord.\nThat means sin and violence do not have the only voice.\nDependence on God is still alive.",
-          "✨ Day 2 ends with hope, not only damage.\nGenesis 3-4 show sin, shame, exile, murder, and violence.\nBut the final note is not Lamech's boast.\nIt is people calling on the Lord.",
         ],
       },
       {
@@ -2492,6 +2273,115 @@ BIBLE_READER_STUDY_SECTIONS.push(
       phrases: [["🔥 Smoking Furnace And Burning Lamp", "The symbols represent God's own presence passing through the covenant pieces. Abram watches while God acts."], ["🤝 Made A Covenant", "This is not a casual promise. God solemnly binds Himself to His word."], ["🌍 Unto Thy Seed Have I Given This Land", "The land promise is spoken as certain because it rests on God's covenant commitment."]],
       truths: [["🔥 God carries the covenant.", "Abram does not pass between the pieces. God does. The promise rests on God's faithfulness."], ["🤝 Covenant gives assurance.", "God meets Abram's question with a binding promise. Faith is strengthened by God's commitment."], ["🌍 The future belongs to God's word.", "The land is not possessed yet, but it is promised. God's covenant defines the future before Abram can see it."]],
       application: ["🔥 Rest in the God who carries what you cannot.", "🤝 Let God's commitment be stronger than your fear.", "🌍 Do not measure the promise only by present possession.", "🙌 Covenant faithfulness is the backbone of Abram's story."],
+    }),
+  ],
+);
+
+BIBLE_READER_STUDY_SECTIONS.push(
+  ...[
+    makeCompactGenesisStudySection({
+      chapter: 34,
+      startVerse: 1,
+      endVerse: 7,
+      reference: "Genesis 34:1-7",
+      title: "Dinah Is Violated",
+      icon: "⚠️",
+      summary: "Dinah is harmed by Shechem, and Jacob's household is pulled into a painful crisis.",
+      movement: ["👧 Dinah goes out to see the women of the land.", "⚠️ Shechem takes and violates her.", "💬 Shechem speaks tenderly but does not erase the harm.", "😡 Jacob's sons are grieved and furious."],
+      phrases: [["👧 Dinah", "Dinah is Jacob and Leah's daughter. Genesis names her because her suffering matters, not because she is a side detail."], ["⚠️ Took Her", "The wording is forceful and painful. The Bible is showing violation, not a harmless romance."], ["💔 Wrought Folly In Israel", "This phrase means a disgraceful evil has been done among God's covenant people. It names the act morally, not casually."]],
+      truths: [["⚠️ The Bible does not ignore harm.", "Genesis includes this painful chapter because God sees what happens to vulnerable people."], ["💔 Tender words cannot undo violation.", "Shechem's later affection does not make his action righteous."], ["😡 Anger over injustice is understandable.", "Jacob's sons are furious because a real wrong has happened. The question becomes what they will do with that anger."]],
+      application: ["⚠️ Do not minimize harm because the story is uncomfortable.", "💔 Let truth name wrong clearly.", "😡 Bring anger under God's wisdom before it becomes destructive.", "👧 Remember that people wounded in the story are not footnotes."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 34,
+      startVerse: 8,
+      endVerse: 24,
+      reference: "Genesis 34:8-24",
+      title: "A Covenant Sign Is Misused",
+      icon: "🔪",
+      summary: "Jacob's sons use circumcision as a deceptive condition for alliance with Shechem's city.",
+      movement: ["🤝 Hamor asks for intermarriage and trade.", "🗣️ Shechem offers bride price and gifts.", "🔪 Jacob's sons demand circumcision.", "🏙️ The city agrees because they expect gain."],
+      phrases: [["🤝 Make Marriages With Us", "Hamor wants the crisis turned into alliance. In the ancient world, marriages could join families, land, wealth, and protection."], ["💰 Ask Me Never So Much Dowry", "Shechem offers to pay heavily, but payment cannot purchase righteousness after harm."], ["🔪 Be Circumcised", "Circumcision was the covenant sign given to Abraham's family. Jacob's sons twist a holy sign into a trap."]],
+      truths: [["🔪 Sacred things can be misused by angry hearts.", "A covenant sign becomes a weapon when separated from covenant faithfulness."], ["💰 Restitution cannot replace repentance.", "Money and gifts do not automatically heal what was done."], ["🏙️ Self-interest can blind whole communities.", "The men of Shechem agree partly because they expect Jacob's wealth to become theirs."]],
+      application: ["🔪 Do not use spiritual language as a cover for revenge.", "💰 Do not confuse payment with true repair.", "🏙️ Watch how self-interest can make people approve what they should question.", "🤝 Seek justice without corrupting what belongs to God."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 34,
+      startVerse: 25,
+      endVerse: 31,
+      reference: "Genesis 34:25-31",
+      title: "Simeon And Levi Take Revenge",
+      icon: "⚔️",
+      summary: "Simeon and Levi answer evil with deception and violence, leaving Jacob afraid of wider consequences.",
+      movement: ["⚔️ Simeon and Levi attack the weakened city.", "🏙️ The men are killed.", "💰 The brothers plunder the city.", "😨 Jacob fears retaliation.", "🗣️ The brothers answer with Dinah's dishonor."],
+      phrases: [["⚔️ Slew All The Males", "Their anger is connected to a real wrong, but the response becomes excessive and devastating."], ["💰 Spoiled The City", "The revenge expands into plunder. The brothers take wealth, livestock, women, and children."], ["😨 Ye Have Troubled Me", "Jacob sees the danger of retaliation from surrounding peoples. His concern is survival, but the moral damage is also serious."]],
+      truths: [["⚔️ Revenge can multiply evil.", "Simeon and Levi respond to wickedness, but their method spreads more violence."], ["😡 Anger needs righteousness, not just intensity.", "Being angry about a real wrong does not make every response right."], ["🧬 Family damage can shape future generations.", "This moment will be remembered later when Jacob speaks over Simeon and Levi in Genesis 49."]],
+      application: ["⚔️ Refuse revenge that becomes its own evil.", "😡 Ask God to govern anger before anger governs you.", "🧬 Remember that today's reactions can become tomorrow's family legacy.", "💔 Care about justice and holiness together."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 35,
+      startVerse: 1,
+      endVerse: 8,
+      reference: "Genesis 35:1-8",
+      title: "Jacob Returns To Bethel",
+      icon: "🏠",
+      summary: "God calls Jacob back to Bethel, and Jacob leads his household to put away idols.",
+      movement: ["🧭 God tells Jacob to go to Bethel.", "🧺 Jacob calls the household to put away strange gods.", "🌳 The idols are buried under an oak.", "🛡️ God protects Jacob's family as they travel."],
+      phrases: [["🏠 Go Up To Bethel", "Bethel is where God met Jacob when he was running from Esau. Returning there is a spiritual reset."], ["🧺 Put Away The Strange Gods", "Jacob's household has carried idols even while walking in the covenant story. Renewal requires dealing with hidden loyalties."], ["🛡️ The Terror Of God", "God protects the family from surrounding cities after the violence of Genesis 34. Jacob's safety comes from God, not from his sons' strength."]],
+      truths: [["🏠 God calls His people back to places of worship.", "After a dark chapter, God does not abandon Jacob. He redirects him."], ["🧺 Renewal involves removal.", "The household cannot simply add worship while keeping idols."], ["🛡️ God can protect even after messy failure.", "Jacob's family is vulnerable, but God restrains the surrounding cities."]],
+      application: ["🏠 Return to worship when life has become chaotic.", "🧺 Bury what competes with God.", "🛡️ Trust God's protection more than human intimidation.", "🧭 Let God redirect you after painful chapters."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 35,
+      startVerse: 9,
+      endVerse: 15,
+      reference: "Genesis 35:9-15",
+      title: "God Renews Jacob's Name",
+      icon: "✨",
+      summary: "God repeats Jacob's new name and renews the covenant promise at Bethel.",
+      movement: ["✨ God appears to Jacob again.", "🏷️ God repeats the name Israel.", "🌱 God promises fruitfulness, nations, kings, and land.", "🪨 Jacob sets up a pillar and worships."],
+      phrases: [["🏷️ Thy Name Shall Not Be Called Any More Jacob", "God repeats the name change from Genesis 32. Jacob's identity is not built on old grasping but on God's transforming word."], ["👑 Kings Shall Come Out Of Thy Loins", "The promise looks beyond Jacob's immediate family toward future royal lines."], ["🪨 A Pillar Of Stone", "Jacob marks the place where God spoke. Worship creates memory so the promise is not forgotten."]],
+      truths: [["✨ God reaffirms identity.", "Jacob needs the name Israel repeated after family chaos and grief."], ["🌱 God's promise outlives the current mess.", "Nations, kings, and land are still promised even though the family is deeply imperfect."], ["🪨 Worship helps remember what God said.", "Jacob marks Bethel because God's word needs to be carried forward."]],
+      application: ["✨ Let God repeat truth over you when life shakes you.", "🌱 Do not measure God's promise only by today's family chaos.", "🪨 Build habits that help you remember God's word.", "🏷️ Live from the name God gives, not only the pattern you came from."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 35,
+      startVerse: 16,
+      endVerse: 29,
+      reference: "Genesis 35:16-29",
+      title: "Rachel Dies And Isaac Is Buried",
+      icon: "💔",
+      summary: "Jacob gains Benjamin, loses Rachel, faces more family sin, and buries Isaac with Esau.",
+      movement: ["👶 Benjamin is born through hard labor.", "💔 Rachel dies on the way.", "⚠️ Reuben sins with Bilhah.", "👥 Jacob's sons are listed.", "⚰️ Isaac dies and is buried by Jacob and Esau."],
+      phrases: [["👶 Ben-Oni And Benjamin", "Rachel names the child son of my sorrow, but Jacob calls him son of the right hand. The two names hold grief and future together."], ["⚠️ Reuben Went And Lay With Bilhah", "This is more than sexual sin; in the ancient family world it challenges honor and authority inside Jacob's household."], ["⚰️ Esau And Jacob Buried Him", "The brothers stand together at Isaac's burial. Their relationship is not simple, but the hatred of Genesis 27 is no longer the final scene."]],
+      truths: [["💔 Promise does not remove grief.", "Bethel renewal is followed by Rachel's death. Faith and sorrow can sit close together."], ["⚠️ Sin inside the family still matters.", "Reuben's act will affect his future standing."], ["⚰️ Reconciliation can show up quietly.", "Jacob and Esau bury Isaac together after years of conflict."]],
+      application: ["💔 Do not assume grief means God has stopped working.", "⚠️ Take hidden family sin seriously.", "⚰️ Notice small signs of healing, even when the story is not perfect.", "👶 Let God hold sorrow and future together."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 36,
+      startVerse: 1,
+      endVerse: 8,
+      reference: "Genesis 36:1-8",
+      title: "Esau Moves To Seir",
+      icon: "🏔️",
+      summary: "Esau's household grows, and he separates from Jacob because the land cannot hold both households.",
+      movement: ["📜 Esau's generations are introduced.", "👨‍👩‍👧‍👦 His wives and children are named.", "🐪 His possessions are great.", "🏔️ Esau settles in Mount Seir."],
+      phrases: [["📜 Esau, Who Is Edom", "Genesis connects Esau with Edom because his descendants become the Edomites, a later people group connected to Israel's history."], ["🐪 Their Riches Were More Than That They Might Dwell Together", "The separation is practical. Both brothers have become too large to share the same space."], ["🏔️ Mount Seir", "Seir becomes Esau's settled territory. The family conflict is becoming geography."]],
+      truths: [["📜 God remembers more than the main covenant line.", "Esau is not the chosen heir, but his story is still recorded."], ["🏔️ Separation can become part of history.", "Jacob and Esau part into different territories and peoples."], ["🐪 Blessing can create new limits.", "Their growth means they can no longer live together in the same land."]],
+      application: ["📜 Do not skip genealogies; they often explain later Bible history.", "🏔️ Accept that some peaceful separations still matter.", "🐪 Recognize when growth requires new boundaries.", "🧭 Watch how family stories become larger histories."],
+    }),
+    makeCompactGenesisStudySection({
+      chapter: 36,
+      startVerse: 9,
+      endVerse: 43,
+      reference: "Genesis 36:9-43",
+      title: "Edom Becomes A People",
+      icon: "📜",
+      summary: "Esau's descendants become chiefs and kings, preparing the later story of Edom and Israel.",
+      movement: ["👥 Esau's descendants are listed.", "🏕️ Chiefs and clans develop.", "👑 Kings are named before Israel has kings.", "📍 The chapter closes with Edom's chiefs by place and family."],
+      phrases: [["🏕️ Dukes", "In the KJV, dukes means chiefs or clan leaders. This is political organization, not medieval royalty."], ["👑 Kings That Reigned In Edom", "Edom has kings before Israel does. Genesis is showing that Esau's line becomes organized and powerful."], ["📜 Father Of The Edomites", "The repeated label makes the main point clear: Esau becomes Edom, and Edom will matter later."]],
+      truths: [["📜 Genealogy is theology with names.", "Genesis is showing how family lines become peoples in God's world."], ["👑 Power outside the covenant line is still real.", "Edom develops chiefs and kings while Jacob's family remains the covenant focus."], ["🧭 The Bible prepares future conflict early.", "Later Israel-Edom tension begins with family roots in Genesis."]],
+      application: ["📜 Read names as part of the story, not as filler.", "👑 Do not assume visible power equals covenant priority.", "🧭 Let Genesis teach you the backstory before later Bible conflicts appear.", "🌍 Remember that God sees every nation, even when the main promise follows one line."],
     }),
   ],
 );
@@ -5653,6 +5543,14 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
     }
     return category;
   });
+}
+
+for (const section of BIBLE_READER_STUDY_SECTIONS) {
+  section.categories = section.categories
+    .filter((category) => category.id !== "key-truths")
+    .map((category) =>
+      category.id === "why-this-matters" ? { ...category, title: "What This Means" } : category,
+    );
 }
 
 export function getBibleReaderStudySections(book: string | null | undefined, chapter: number | null | undefined) {

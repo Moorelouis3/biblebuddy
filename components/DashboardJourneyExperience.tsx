@@ -2625,9 +2625,14 @@ export default function DashboardJourneyExperience({
     11: "Bethel",
     12: "Laban",
     13: "Wrestle",
+    14: "Reckoning",
+    15: "Joseph",
+    16: "Faithful",
+    17: "Rises",
+    18: "Judah",
   };
   const bibleYearStudyPlanMilestones = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-    .filter((day) => day.dayNumber <= 13)
+    .filter((day) => day.dayNumber <= 18)
     .map((day) => ({
       dayNumber: day.dayNumber,
       label: bibleYearStudyPlanMilestoneLabels[day.dayNumber] || day.title,
@@ -9642,7 +9647,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             }));
           }}
           aria-expanded={isOpen}
-          className="flex w-full items-center justify-center gap-2 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_9%,var(--bb-card,#ffffff))] px-4 py-2.5 text-sm font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_15%,var(--bb-card,#ffffff))]"
+          className={`flex w-full items-center justify-center gap-2 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,var(--bb-card-border,#dbe7f4))] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_9%,var(--bb-card,#ffffff))] px-4 py-2.5 text-sm font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_15%,var(--bb-card,#ffffff))] ${isOpen ? "" : "bb-follow-scripture-nudge"}`}
         >
           <span className="grid h-5 w-5 place-items-center rounded-md border border-current" aria-hidden="true">
             <span className="h-2.5 w-2.5 rounded-sm border border-current border-r-0" />
@@ -10953,7 +10958,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 }));
               }}
               aria-expanded={followAlongOpen}
-              className="inline-flex items-center justify-center gap-2 rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-3.5 text-[13px] font-bold text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f4f8ff)]"
+              className={`inline-flex items-center justify-center gap-2 rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-3.5 text-[13px] font-bold text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f4f8ff)] ${followAlongOpen ? "" : "bb-follow-scripture-nudge"}`}
             >
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />

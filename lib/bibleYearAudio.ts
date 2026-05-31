@@ -162,8 +162,40 @@ export const BIBLE_YEAR_DAY_THIRTEEN_AUDIO: BibleYearAudioDay = {
 
 export const BIBLE_YEAR_DAY_FOURTEEN_AUDIO: BibleYearAudioDay = {
   dayNumber: 14,
-  title: "Day 14 - Jacob Returns to Bethel",
+  title: "Day 14 - Jacob's Family and Esau's Line",
   storagePath: getBibleYearAudioStoragePath(14),
   apiSrc: getBibleYearAudioApiSrc(14),
-  estimatedDuration: "about 18 min",
+  estimatedDuration: "40-45 min",
+};
+
+export const BIBLE_YEAR_DAY_FIFTEEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 15,
+  title: "Day 15 - Joseph Is Betrayed",
+  storagePath: getBibleYearAudioStoragePath(15),
+  apiSrc: getBibleYearAudioApiSrc(15),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_SIXTEEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 16,
+  title: "Day 16 - Joseph in Egypt",
+  storagePath: getBibleYearAudioStoragePath(16),
+  apiSrc: getBibleYearAudioApiSrc(16),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_SEVENTEEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 17,
+  title: "Day 17 - Joseph Rises to Power",
+  storagePath: getBibleYearAudioStoragePath(17),
+  apiSrc: getBibleYearAudioApiSrc(17),
+  estimatedDuration: "40-45 min",
+};
+
+export const BIBLE_YEAR_DAY_EIGHTEEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 18,
+  title: "Day 18 - Judah Stands in the Gap",
+  storagePath: getBibleYearAudioStoragePath(18),
+  apiSrc: getBibleYearAudioApiSrc(18),
+  estimatedDuration: "35-40 min",
 };

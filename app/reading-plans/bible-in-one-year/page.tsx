@@ -671,6 +671,14 @@ export default function BibleInOneYearPage() {
                                         )}
                                       </div>
                                       <p className="text-[10px] text-gray-600 mb-1">
+                                        {day.title || `${day.chapters.length} chapter${day.chapters.length !== 1 ? "s" : ""}`}
+                                      </p>
+                                      {day.reference && (
+                                        <p className="text-[10px] text-gray-500 mb-1">
+                                          {day.reference}
+                                        </p>
+                                      )}
+                                      <p className="text-[10px] text-gray-600 mb-1">
                                         {day.chapters.length} chapter{day.chapters.length !== 1 ? "s" : ""}
                                       </p>
                                       {progress && (
@@ -708,7 +716,11 @@ export default function BibleInOneYearPage() {
             <div className="p-6 border-b border-gray-200 flex items-center justify-between">
               <div>
                 <h2 className="text-2xl font-bold">Day {selectedDay.dayNumber}</h2>
+                {selectedDay.title && (
+                  <p className="text-lg font-semibold text-gray-800 mt-1">{selectedDay.title}</p>
+                )}
                 <p className="text-sm text-gray-600 mt-1">
+                  {selectedDay.reference ? `${selectedDay.reference} · ` : ""}
                   {selectedDay.chapters.length} chapter{selectedDay.chapters.length !== 1 ? "s" : ""} to read
                 </p>
               </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -61,6 +61,7 @@ export default function SignupPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const emailInputRef = useRef<HTMLInputElement | null>(null);
   const [referrerUserId] = useState(() => {
     if (typeof window === "undefined") return "";
     const params = new URLSearchParams(window.location.search);
@@ -69,6 +70,7 @@ export default function SignupPage() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showSignupPrompt, setShowSignupPrompt] = useState(true);
 
   useEffect(() => {
     if (referrerUserId) {
@@ -239,9 +241,45 @@ export default function SignupPage() {
     }
   }
 
+  function closeSignupPrompt() {
+    setShowSignupPrompt(false);
+    window.setTimeout(() => {
+      emailInputRef.current?.focus();
+    }, 80);
+  }
+
   return (
     <div className="bb-auth-public flex min-h-screen flex-col bg-[#fffdf8] text-[#07162f]">
       <LegalPageThemeReset />
+      {showSignupPrompt ? (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-[#07162f]/45 px-4 py-6 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="signup-prompt-title">
+          <div className="w-full max-w-sm rounded-2xl border border-[#dbe8f5] bg-white p-5 text-center shadow-[0_28px_90px_rgba(7,22,47,0.22)]">
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#2477f2]">Free Bible Buddy account</p>
+            <h2 id="signup-prompt-title" className="mt-2 text-2xl font-black leading-tight text-[#07162f]">
+              Start finally understanding the Bible.
+            </h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-[#526075]">
+              Sign up for your free Bible Buddy account and get help reading Scripture in a way that feels clear, encouraging, and easy to follow.
+            </p>
+            <div className="mt-5 grid gap-2">
+              <button
+                type="button"
+                onClick={closeSignupPrompt}
+                className="rounded-xl bg-[#135397] px-5 py-3 text-sm font-black text-white shadow-[0_16px_32px_rgba(19,83,151,0.22)] transition hover:bg-[#0f4279]"
+              >
+                Start free
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowSignupPrompt(false)}
+                className="rounded-xl px-5 py-2.5 text-xs font-black text-[#526075] transition hover:bg-[#f4f8ff]"
+              >
+                Not now
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
       <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-4 py-4 md:py-6">
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -291,6 +329,7 @@ export default function SignupPage() {
                 Email
               </label>
               <input
+                ref={emailInputRef}
                 type="email"
                 required
                 value={email}

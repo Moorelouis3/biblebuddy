@@ -63,7 +63,7 @@ function buildStudySections(day: DayBlueprint): BibleYearDeepStudySection[] {
 
 ${section.teaching.join("\n\n")}
 
-## Why This Matters
+## What This Means
 
 This part of the story helps us follow how God's promise moves through real family pressure, weakness, obedience, and mercy.
 
@@ -216,7 +216,7 @@ Abraham dies "old and full." His story has included faith, fear, obedience, fail
 
 Isaac and Ishmael bury Abraham together in the cave of Machpelah, the same burial place Abraham bought after Sarah's death.
 
-## 🧭 Why This Matters
+## 🧭 What This Means
 
 The Bible lets Abraham's life end, but it does not let God's covenant end.
 
@@ -247,7 +247,7 @@ Back in Genesis 16 and 21, God heard Hagar and promised that Ishmael would becom
 
 Ishmael has twelve princes, and his descendants spread through their settlements and camps.
 
-## 🧭 Why This Matters
+## 🧭 What This Means
 
 The chosen covenant line does not mean God is careless with everyone outside that line.
 
@@ -280,7 +280,7 @@ God tells her that two nations are in her womb and that the older will serve the
 
 This word comes before Jacob or Esau has done anything. Genesis is showing that God's purpose is already moving before human strength, status, or birth order can claim control.
 
-## 🧭 Why This Matters
+## 🧭 What This Means
 
 The covenant family is already complicated before the children are even born.
 
@@ -344,7 +344,7 @@ Then God repeats the promise: land, descendants, blessing, and blessing for all 
 
 But Isaac also repeats Abraham's fear. He says Rebekah is his sister because he is afraid the men of the place will kill him for her.
 
-## 🧭 Why This Matters
+## 🧭 What This Means
 
 Generational patterns can echo.
 
@@ -406,7 +406,7 @@ This shows that God's blessing on Isaac has become visible even to outsiders.
 
 Then the chapter ends with a painful family note: Esau marries Hittite women, and they bring grief to Isaac and Rebekah.
 
-## 🧭 Why This Matters
+## 🧭 What This Means
 
 Genesis holds public blessing and private grief together.
 
@@ -470,7 +470,7 @@ Esau hates Jacob and plans to kill him after Isaac dies. Rebekah hears this and 
 
 Jacob leaves with the blessing, but he also leaves with consequences.
 
-## 🧭 Why This Matters
+## 🧭 What This Means
 
 Genesis is not celebrating deception.
 
@@ -908,13 +908,14 @@ const DAY_13: DayBlueprint = {
 
 const DAY_14: DayBlueprint = {
   dayNumber: 14,
-  title: "Jacob Returns to Bethel",
+  title: "Jacob's Family and Esau's Line",
   reference: "Genesis 34-36",
-  listenTime: "about 18 min",
+  listenTime: "40-45 min",
   opening: [
-    "Genesis 34-36 closes Jacob's section with grief, violence, renewal, loss, and family lines.",
-    "Genesis 34 is painful and shows the deep brokenness around Jacob's household.",
-    "Then God calls Jacob back to Bethel, where worship and promise are renewed before the story records loss and the line of Esau.",
+    "Genesis 34-36 closes Jacob's section with a hard mix of family damage, spiritual renewal, grief, and generational history.",
+    "This day is not light. Genesis 34 tells a painful story involving Dinah, Shechem, deception, anger, and violence. The Bible does not clean it up or pretend covenant families never face ugly chapters.",
+    "Then Genesis 35 shows God calling Jacob back to Bethel, the place where God first met him on the road years earlier. Before Jacob moves forward, the household must put away idols, purify themselves, and return to worship.",
+    "Genesis 36 then records Esau's line becoming Edom. That is not just a random family list. It explains how Jacob and Esau's family story grows into the later story of nations.",
   ],
   sections: [
     {
@@ -925,7 +926,15 @@ const DAY_14: DayBlueprint = {
       heading: "Dinah and Shechem",
       icon: "warning",
       summary: "A painful chapter shows violation, anger, deception, and violence inside Jacob's family story.",
-      teaching: ["Dinah is violated by Shechem.", "Jacob's sons respond with deception and violence.", "Genesis does not make this chapter neat; it shows how brokenness spreads through families and cities."],
+      teaching: [
+        "Dinah, Jacob and Leah's daughter, goes out to see the women of the land, and Shechem violates her.",
+        "The chapter is heavy because it shows how vulnerable people can become trapped inside the desires and decisions of powerful men.",
+        "Shechem says he loves Dinah afterward, but Genesis does not let romantic language erase what he did. Desire after harm is not the same thing as righteousness.",
+        "Hamor and Shechem try to negotiate marriage and alliance, but Jacob's sons answer deceitfully because they are furious over what happened to their sister.",
+        "They use circumcision, the covenant sign, as a weapon of deception. That is one of the darkest parts of the chapter because something sacred is twisted into a trap.",
+        "Simeon and Levi then kill the men of the city, and Jacob is afraid the surrounding peoples will retaliate.",
+        "The chapter ends unresolved. Genesis wants us to feel the damage, not rush past it.",
+      ],
     },
     {
       reference: "Genesis 35:1-15",
@@ -935,7 +944,15 @@ const DAY_14: DayBlueprint = {
       heading: "Jacob Returns to Bethel",
       icon: "house",
       summary: "God calls Jacob back to Bethel, and Jacob puts away idols and worships.",
-      teaching: ["God tells Jacob to go back to Bethel.", "Jacob calls his household to put away foreign gods.", "At Bethel, God repeats Jacob's new name and the covenant promise."],
+      teaching: [
+        "After Genesis 34, God tells Jacob to go up to Bethel and build an altar there.",
+        "Bethel is not a random place. It is where God met Jacob in Genesis 28 when Jacob was running from Esau and sleeping outside with a stone for a pillow.",
+        "Jacob tells his household to put away foreign gods, purify themselves, and change their garments.",
+        "That shows the household has carried spiritual clutter with them. They are covenant people, but they still have idols that must be buried.",
+        "Jacob hides the foreign gods under the oak near Shechem, and the terror of God falls on the surrounding cities so they do not pursue him.",
+        "At Bethel, Jacob builds the altar and God repeats his new name, Israel, along with the promise of fruitfulness, nations, kings, and land.",
+        "This is renewal after wreckage. God brings Jacob back to worship before the story moves into more loss.",
+      ],
     },
     {
       reference: "Genesis 35:16-29",
@@ -945,23 +962,40 @@ const DAY_14: DayBlueprint = {
       heading: "Loss in Jacob's Family",
       icon: "tears",
       summary: "Rachel dies, Benjamin is born, and Isaac's life comes to a close.",
-      teaching: ["Rachel dies while giving birth to Benjamin.", "The family keeps moving through grief.", "Isaac dies, and Jacob and Esau bury him."],
+      teaching: [
+        "The renewed promise at Bethel does not mean Jacob's life becomes painless.",
+        "Rachel goes into hard labor and dies giving birth to Benjamin. Jacob gains a son and loses the woman he loved in the same moment.",
+        "Rachel names the child Ben-oni, son of my sorrow, but Jacob calls him Benjamin, son of the right hand.",
+        "The two names hold the tension of the moment: grief and future, sorrow and strength.",
+        "The chapter also records Reuben's serious sin with Bilhah, showing that Jacob's household is still morally fractured.",
+        "Then Isaac dies, and Jacob and Esau bury him together.",
+        "That burial matters because the brothers who once stood in hatred now stand together at their father's grave.",
+      ],
     },
     {
       reference: "Genesis 36:1-43",
       chapter: 36,
       startVerse: 1,
       endVerse: 43,
-      heading: "The Line of Esau",
+      heading: "Esau Becomes Edom",
       icon: "scroll",
       summary: "Genesis records Esau's descendants and shows another family line developing outside Jacob.",
-      teaching: ["Genesis pauses to list Esau's family line.", "Esau becomes connected with Edom.", "This prepares later Bible history where Edom and Israel will appear again."],
+      teaching: [
+        "Genesis 36 records Esau's wives, sons, chiefs, kings, and settlements.",
+        "At first, this can feel like a long list of names, but it is doing important Bible work.",
+        "Esau is identified with Edom, and Edom will become a real people group that appears again and again in Israel's later history.",
+        "The chapter also explains why Jacob and Esau separate. Their possessions are too great for them to live together in the same land.",
+        "That separation is practical, but it is also symbolic. The two brothers become two peoples.",
+        "The covenant line continues through Jacob, but Genesis does not erase Esau. His family has land, leaders, cities, and history.",
+        "This chapter closes Jacob and Esau's shared family section so Genesis can turn next toward Joseph.",
+      ],
     },
   ],
   closing: [
-    "Day 14 is heavy, but it is important.",
-    "Jacob's family story includes violence, grief, worship, promise, and generational consequences.",
-    "God calls Jacob back to worship so the promise can keep moving through a broken but chosen family.",
+    "Day 14 is heavy, but it is important because Genesis is honest about what covenant families can carry.",
+    "There is violation, anger, deceit, violence, idols, grief, death, and generational separation.",
+    "But there is also God's call back to Bethel, the putting away of idols, the renewal of promise, and worship in the middle of a wounded family story.",
+    "Genesis 34-36 teaches that God can call His people back to worship after painful failure, and His promise can keep moving through a family that still needs deep mercy.",
   ],
 };
 

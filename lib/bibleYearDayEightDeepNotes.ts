@@ -32,7 +32,7 @@ He sees three visitors and responds with urgency, humility, and hospitality. He 
 
 This is more than good manners. Genesis shows Abraham giving attention to a holy moment before he fully understands everything that is happening.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 The promise does not arrive in a palace or temple.
 
@@ -59,7 +59,7 @@ Sarah hears that she will have a son. After years of waiting and disappointment,
 
 But God responds with a question: Is anything too hard for the LORD?
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Sarah's laugh is not hidden from God, but God's response is not meant to crush her.
 
@@ -86,7 +86,7 @@ God brings Abraham near to the conversation. Sodom and Gomorrah are not judged b
 
 The language shows that God knows what is happening and judges with truth.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 God's justice is not careless.
 
@@ -113,7 +113,7 @@ He asks a bold question: Will the Judge of all the earth do right?
 
 Abraham moves from fifty righteous people down to ten. He is reverent, but he is not distant. He comes near and asks for mercy.
 
-## 🧠 Why This Matters
+## 🧠 What This Means
 
 Prayer is not pretending evil is small.
 
@@ -140,7 +140,7 @@ That detail matters. Lot is not simply near Sodom anymore. He is connected to th
 
 When the city gathers around Lot's house, the violence of Sodom is exposed. The scene shows danger, pressure, corruption, and moral collapse.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Genesis wants us to understand why Sodom's cry was great.
 
@@ -167,7 +167,7 @@ Lot warns his sons-in-law, but they think he is joking. Morning comes, and Lot s
 
 Then the angels take him, his wife, and his daughters by the hand. Genesis says this happened because the LORD was merciful to him.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Lot is rescued, but he is not impressive here.
 
@@ -194,7 +194,7 @@ Fire and brimstone come from the LORD out of heaven. Lot's wife looks back and b
 
 Then Genesis says God remembered Abraham and sent Lot out of the overthrow.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Judgment and mercy stand side by side in this passage.
 
@@ -221,7 +221,7 @@ Lot leaves Zoar and lives in a cave with his daughters. The family that escaped 
 
 The birth of Moab and Ammon becomes part of the wider Bible story later.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Leaving a place physically does not always mean its damage has left the heart.
 
@@ -248,7 +248,7 @@ Abraham says Sarah is his sister, repeating an old fear pattern from earlier in 
 
 Abimelech takes Sarah, but God warns him in a dream and protects Sarah before any harm is done.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 This chapter matters because Isaac's birth is close.
 

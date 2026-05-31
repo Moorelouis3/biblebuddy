@@ -42,7 +42,7 @@ Abram is older. Sarai is still barren. The promise has been spoken, but the prom
 
 Sarai's plan looks practical, but practical does not always mean faithful. The question is not only "Can this work?" The deeper question is "Is this the way God asked us to walk?"
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Waiting is one of the hardest parts of faith.
 
@@ -79,7 +79,7 @@ Genesis slows down to show that God sees her. She is not a side character to God
 
 God does not only see the main covenant family. He sees the suffering person pushed to the margins of the story.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 People can make you feel invisible, but God does not lose sight of you.
 
@@ -116,7 +116,7 @@ At this point, Abraham still does not have the covenant child through Sarah. His
 
 That is how covenant works. God does not wait for Abraham to manufacture the promise and then rename him. God renames him because God's word will carry the future.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 God does not define Abraham by the delay, the failure, or the shortcut.
 
@@ -151,7 +151,7 @@ They belong to the God who called Abraham, promised descendants, promised land, 
 
 It also shows that covenant faith is meant to shape a household, not only a private thought.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 The covenant sign reminds Abraham's household that their future depends on God's promise, not human strength.
 
@@ -184,7 +184,7 @@ Abraham and Sarah cannot take credit for this promise. Their age and Sarah's bar
 
 God also cares for Ishmael. The promise through Isaac does not mean God is blind to Hagar's son. Genesis holds both truths together: God chooses the covenant line through Isaac, and God still hears and blesses Ishmael.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 God's promise does not need ideal circumstances.
 
@@ -219,7 +219,7 @@ Genesis 17 ends differently. Abraham hears God's covenant word and obeys. The sa
 
 This matters because Genesis is not telling us Abraham never fails. It is showing us that God continues to call him forward, and Abraham continues learning how to trust.
 
-## 🙏 Why This Matters
+## 🙏 What This Means
 
 Faith is not only hearing the promise. Faith answers God with obedience.
 

@@ -1,14 +1,18 @@
 import type { BibleYearAudioDay } from "./bibleYearAudio";
 import {
   BIBLE_YEAR_DAY_EIGHT_AUDIO,
+  BIBLE_YEAR_DAY_EIGHTEEN_AUDIO,
   BIBLE_YEAR_DAY_ELEVEN_AUDIO,
   BIBLE_YEAR_DAY_FIVE_AUDIO,
+  BIBLE_YEAR_DAY_FIFTEEN_AUDIO,
   BIBLE_YEAR_DAY_FOURTEEN_AUDIO,
   BIBLE_YEAR_DAY_FOUR_AUDIO,
   BIBLE_YEAR_DAY_NINE_AUDIO,
   BIBLE_YEAR_DAY_ONE_AUDIO,
   BIBLE_YEAR_DAY_SEVEN_AUDIO,
+  BIBLE_YEAR_DAY_SEVENTEEN_AUDIO,
   BIBLE_YEAR_DAY_SIX_AUDIO,
+  BIBLE_YEAR_DAY_SIXTEEN_AUDIO,
   BIBLE_YEAR_DAY_TEN_AUDIO,
   BIBLE_YEAR_DAY_THREE_AUDIO,
   BIBLE_YEAR_DAY_THIRTEEN_AUDIO,
@@ -44,6 +48,26 @@ import {
   GENESIS_DAY_THIRTEEN_JACOB_WRESTLES_WITH_GOD_LESSON,
   GENESIS_DAY_TWELVE_JACOB_LEAVES_LABAN_LESSON,
 } from "./bibleYearDaysTenToFourteen";
+import {
+  BIBLE_YEAR_DAY_FIFTEEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_FIFTEEN_DEEP_STUDY_SECTIONS,
+  GENESIS_DAY_FIFTEEN_JOSEPHS_TESTING_BEGINS_LESSON,
+} from "./bibleYearDaysFifteenToTwentyOne";
+import {
+  BIBLE_YEAR_DAY_SIXTEEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SIXTEEN_DEEP_STUDY_SECTIONS,
+  GENESIS_DAY_SIXTEEN_FAITHFUL_IN_THE_HIDDEN_PLACE_LESSON,
+} from "./bibleYearDaySixteenDeepNotes";
+import {
+  BIBLE_YEAR_DAY_SEVENTEEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_SEVENTEEN_DEEP_STUDY_SECTIONS,
+  GENESIS_DAY_SEVENTEEN_JOSEPH_RISES_AND_REMEMBERS_LESSON,
+} from "./bibleYearDaySeventeenDeepNotes";
+import {
+  BIBLE_YEAR_DAY_EIGHTEEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_EIGHTEEN_DEEP_STUDY_SECTIONS,
+  GENESIS_DAY_EIGHTEEN_JUDAH_STANDS_IN_THE_GAP_LESSON,
+} from "./bibleYearDayEighteenDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "./bibleYearDayOneDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS, type BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES, BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS } from "./bibleYearDayThreeDeepNotes";
@@ -300,7 +324,7 @@ const dayThirteenSummary: BibleYearSummaryContent = {
 
 const dayFourteenSummary: BibleYearSummaryContent = {
   intro: [
-    "Genesis 34-36 closes Jacob's section with painful family brokenness, renewed worship, grief, and generations.",
+    "Genesis 34-36 closes Jacob's section with painful family reckoning, renewed worship, grief, and generations.",
     "Genesis 34 is heavy, showing violation, anger, deception, and violence.",
     "Then God calls Jacob back to Bethel, where idols are put away and the promise is repeated.",
   ],
@@ -313,6 +337,74 @@ const dayFourteenSummary: BibleYearSummaryContent = {
   ],
   takeaway: "God calls His people back to worship even after grief, failure, and painful family damage.",
   takeawaySupport: "Day 14 helps us see that renewal does not erase the pain, but it does bring the family back under God's promise.",
+};
+
+const dayFifteenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 37-38 begins Joseph's testing inside a family already full of favoritism, jealousy, and unresolved pain.",
+    "Joseph receives dreams, but his brothers hear those dreams as a threat.",
+    "Then Genesis turns to Judah and Tamar, showing that God is also exposing and reshaping the brother who helped sell Joseph.",
+  ],
+  highlights: [
+    ["🧥", "Joseph's robe makes Jacob's favoritism visible."],
+    ["🌙", "Joseph's dreams point toward a future his family cannot understand yet."],
+    ["🕳️", "The brothers throw Joseph into a pit and sell him toward Egypt."],
+    ["🐐", "Jacob is deceived with Joseph's robe and goat blood."],
+    ["⚖️", "Judah is exposed by Tamar and finally tells the truth."],
+  ],
+  takeaway: "God's hidden plan can keep moving even through betrayal, family damage, and painful truth-telling.",
+  takeawaySupport: "Day 15 helps us see that Joseph's testing starts at home, and Judah's transformation starts with being confronted by the truth.",
+};
+
+const daySixteenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 39-40 follows Joseph into Egypt, Potiphar's house, temptation, false accusation, prison, and forgotten service.",
+    "The repeated anchor is that the Lord was with Joseph.",
+    "This day teaches that God's presence is not limited to comfortable places or quick breakthroughs.",
+  ],
+  highlights: [
+    ["ðŸ ", "Joseph serves faithfully in Potiphar's house."],
+    ["ðŸš«", "Joseph refuses repeated temptation because he sees sin before God."],
+    ["ðŸ§¥", "Joseph's garment becomes false evidence against him."],
+    ["â›“ï¸", "Joseph is placed in prison, but the Lord is still with him."],
+    ["ðŸ‡", "Joseph interprets the cupbearer and baker's dreams, then waits after being forgotten."],
+  ],
+  takeaway: "Hidden faithfulness is not wasted when God is still with the person who is waiting.",
+  takeawaySupport: "Day 16 helps us see that Joseph's prison years are not empty years. God is forming his character, sharpening his gift, and placing him near the next door.",
+};
+
+const daySeventeenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 41-42 is the turning point where Joseph moves from prison to leadership in Egypt.",
+    "Pharaoh's dreams reveal coming plenty and famine, and Joseph gives God credit before offering wise action.",
+    "Then famine brings Joseph's brothers to Egypt, where the dreams from Genesis 37 begin coming true.",
+  ],
+  highlights: [
+    ["dream", "Pharaoh's dreams trouble Egypt because no wise man can interpret them."],
+    ["key", "The cupbearer remembers Joseph after two full years."],
+    ["crown", "Joseph is lifted from prison and set over Egypt."],
+    ["grain", "Joseph stores grain so there will be bread during famine."],
+    ["bow", "Joseph's brothers bow before him without recognizing him."],
+  ],
+  takeaway: "God can turn hidden preparation into public responsibility and use pressure to bring buried truth into the light.",
+  takeawaySupport: "Day 17 helps us see that Joseph's rise is not just personal success. God is preserving life and beginning the painful road toward family truth.",
+};
+
+const dayEighteenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 43-44 brings Benjamin into Egypt and puts the brothers through the final test before Joseph reveals himself.",
+    "The question is simple but heavy: will they abandon Rachel's vulnerable son again, or have they changed?",
+    "Judah becomes the center of the chapter as he offers himself in Benjamin's place.",
+  ],
+  highlights: [
+    ["shield", "Judah becomes surety for Benjamin."],
+    ["table", "Joseph feeds his brothers and gives Benjamin special favor."],
+    ["cup", "The silver cup creates the final test."],
+    ["return", "The brothers return together instead of abandoning Benjamin."],
+    ["heart", "Judah offers himself as a servant in Benjamin's place."],
+  ],
+  takeaway: "Real repentance becomes visible when the old test returns and someone chooses differently.",
+  takeawaySupport: "Day 18 helps us see Judah change from a brother who sold Joseph into a brother willing to stand in the gap for Benjamin.",
 };
 
 function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent {
@@ -450,6 +542,38 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
     studyNotesSections: BIBLE_YEAR_DAY_FOURTEEN_DEEP_STUDY_SECTIONS,
     summary: dayFourteenSummary,
     discussionPrompt: "What does Jacob returning to Bethel teach you about coming back to worship after brokenness?",
+  },
+  15: {
+    lesson: GENESIS_DAY_FIFTEEN_JOSEPHS_TESTING_BEGINS_LESSON,
+    audio: BIBLE_YEAR_DAY_FIFTEEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_FIFTEEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_FIFTEEN_DEEP_STUDY_SECTIONS,
+    summary: dayFifteenSummary,
+    discussionPrompt: "What stands out to you about Joseph's dreams, his brothers' jealousy, or Judah being confronted by Tamar?",
+  },
+  16: {
+    lesson: GENESIS_DAY_SIXTEEN_FAITHFUL_IN_THE_HIDDEN_PLACE_LESSON,
+    audio: BIBLE_YEAR_DAY_SIXTEEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SIXTEEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SIXTEEN_DEEP_STUDY_SECTIONS,
+    summary: daySixteenSummary,
+    discussionPrompt: "Where do you see Joseph's hidden faithfulness shaping him before the breakthrough comes?",
+  },
+  17: {
+    lesson: GENESIS_DAY_SEVENTEEN_JOSEPH_RISES_AND_REMEMBERS_LESSON,
+    audio: BIBLE_YEAR_DAY_SEVENTEEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_SEVENTEEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_SEVENTEEN_DEEP_STUDY_SECTIONS,
+    summary: daySeventeenSummary,
+    discussionPrompt: "What stands out to you about Joseph's rise, his wisdom, or his brothers' guilt coming back into the light?",
+  },
+  18: {
+    lesson: GENESIS_DAY_EIGHTEEN_JUDAH_STANDS_IN_THE_GAP_LESSON,
+    audio: BIBLE_YEAR_DAY_EIGHTEEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_EIGHTEEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_EIGHTEEN_DEEP_STUDY_SECTIONS,
+    summary: dayEighteenSummary,
+    discussionPrompt: "Where do you see real change in Judah and the brothers when Benjamin is threatened?",
   },
 };
 
