@@ -8,6 +8,7 @@ import {
   BIBLE_YEAR_DAY_FOURTEEN_AUDIO,
   BIBLE_YEAR_DAY_FOUR_AUDIO,
   BIBLE_YEAR_DAY_NINE_AUDIO,
+  BIBLE_YEAR_DAY_NINETEEN_AUDIO,
   BIBLE_YEAR_DAY_ONE_AUDIO,
   BIBLE_YEAR_DAY_SEVEN_AUDIO,
   BIBLE_YEAR_DAY_SEVENTEEN_AUDIO,
@@ -16,6 +17,10 @@ import {
   BIBLE_YEAR_DAY_TEN_AUDIO,
   BIBLE_YEAR_DAY_THREE_AUDIO,
   BIBLE_YEAR_DAY_THIRTEEN_AUDIO,
+  BIBLE_YEAR_DAY_TWENTY_ONE_AUDIO,
+  BIBLE_YEAR_DAY_TWENTY_AUDIO,
+  BIBLE_YEAR_DAY_TWENTY_TWO_AUDIO,
+  BIBLE_YEAR_DAY_TWENTY_THREE_AUDIO,
   BIBLE_YEAR_DAY_TWELVE_AUDIO,
   BIBLE_YEAR_DAY_TWO_AUDIO,
 } from "./bibleYearAudio";
@@ -68,6 +73,61 @@ import {
   BIBLE_YEAR_DAY_EIGHTEEN_DEEP_STUDY_SECTIONS,
   GENESIS_DAY_EIGHTEEN_JUDAH_STANDS_IN_THE_GAP_LESSON,
 } from "./bibleYearDayEighteenDeepNotes";
+import {
+  BIBLE_YEAR_DAY_NINETEEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_NINETEEN_DEEP_STUDY_SECTIONS,
+  GENESIS_DAY_NINETEEN_JOSEPH_REVEALS_HIMSELF_LESSON,
+} from "./bibleYearDayNineteenDeepNotes";
+import {
+  BIBLE_YEAR_DAY_TWENTY_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWENTY_DEEP_STUDY_SECTIONS,
+  GENESIS_DAY_TWENTY_JACOB_BLESSES_JOSEPHS_SONS_LESSON,
+} from "./bibleYearDayTwentyDeepNotes";
+import {
+  BIBLE_YEAR_DAY_TWENTY_ONE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWENTY_ONE_DEEP_STUDY_SECTIONS,
+  GENESIS_DAY_TWENTY_ONE_GENESIS_ENDS_WITH_HOPE_LESSON,
+} from "./bibleYearDayTwentyOneDeepNotes";
+import {
+  BIBLE_YEAR_DAY_TWENTY_TWO_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWENTY_TWO_DEEP_STUDY_SECTIONS,
+  EXODUS_DAY_TWENTY_TWO_GOD_HEARS_ISRAELS_CRY_LESSON,
+} from "./bibleYearDayTwentyTwoDeepNotes";
+import {
+  BIBLE_YEAR_DAY_TWENTY_THREE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWENTY_THREE_DEEP_STUDY_SECTIONS,
+  EXODUS_DAY_TWENTY_THREE_PHARAOH_RESISTS_GODS_WORD_LESSON,
+} from "./bibleYearDayTwentyThreeDeepNotes";
+import {
+  BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_STUDY_SECTIONS,
+  EXODUS_DAY_TWENTY_FOUR_PASSOVER_AND_DELIVERANCE_LESSON,
+} from "./bibleYearDayTwentyFourDeepNotes";
+import {
+  BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_STUDY_SECTIONS,
+  EXODUS_DAY_TWENTY_SIX_WATER_BATTLE_AND_COMMANDMENTS_LESSON,
+} from "./bibleYearDayTwentySixDeepNotes";
+import {
+  BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_STUDY_SECTIONS,
+  EXODUS_DAY_TWENTY_SEVEN_COVENANT_LAW_AND_BLOOD_LESSON,
+} from "./bibleYearDayTwentySevenDeepNotes";
+import {
+  BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_STUDY_SECTIONS,
+  EXODUS_DAY_TWENTY_EIGHT_TABERNACLE_AND_PRIESTHOOD_LESSON,
+} from "./bibleYearDayTwentyEightDeepNotes";
+import {
+  BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS,
+  EXODUS_DAY_TWENTY_NINE_CONSECRATION_AND_GOLDEN_CALF_LESSON,
+} from "./bibleYearDayTwentyNineDeepNotes";
+import {
+  BIBLE_YEAR_DAY_THIRTY_DEEP_NOTES,
+  BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS,
+  EXODUS_DAY_THIRTY_GODS_PRESENCE_AND_RENEWED_OBEDIENCE_LESSON,
+} from "./bibleYearDayThirtyDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_NOTES } from "./bibleYearDayOneDeepNotes";
 import { BIBLE_YEAR_DAY_ONE_DEEP_STUDY_SECTIONS, type BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES, BIBLE_YEAR_DAY_THREE_DEEP_STUDY_SECTIONS } from "./bibleYearDayThreeDeepNotes";
@@ -407,6 +467,193 @@ const dayEighteenSummary: BibleYearSummaryContent = {
   takeawaySupport: "Day 18 helps us see Judah change from a brother who sold Joseph into a brother willing to stand in the gap for Benjamin.",
 };
 
+const dayNineteenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 45-46 is the emotional release after years of hidden grief and unanswered questions.",
+    "Joseph reveals himself, explains God's preserving purpose, and sends for Jacob.",
+    "Then Jacob begins the journey into Egypt, but God meets him on the way and promises to go with him.",
+  ],
+  highlights: [
+    ["tears", "Joseph weeps aloud and reveals his identity."],
+    ["truth", "Joseph names the evil honestly: the brothers sold him."],
+    ["providence", "Joseph also sees God's hand preserving life through the whole story."],
+    ["wagons", "Jacob sees the wagons and his spirit revives."],
+    ["presence", "God tells Jacob not to fear because He will go down with him into Egypt."],
+  ],
+  takeaway: "God can bring truth, tears, forgiveness, provision, and transition together without pretending the pain was small.",
+  takeawaySupport: "Day 19 helps us see that God's providence does not erase evil, but it does prove evil never gets the final word over His promise.",
+};
+
+const dayTwentySummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 47-48 follows Jacob's family settling in Egypt while famine continues around them.",
+    "Joseph provides for his household and manages Egypt's food crisis, but Jacob keeps looking toward the land God promised.",
+    "Then Jacob blesses Joseph's sons, adopts them into the covenant family, and shows that God's blessing does not always follow human expectations.",
+  ],
+  highlights: [
+    ["goshen", "Jacob's family receives a place to live and provision during famine."],
+    ["blessing", "Jacob blesses Pharaoh, showing that the covenant promise still rests on him even in Egypt."],
+    ["famine", "Joseph manages a severe crisis and preserves life through wise administration."],
+    ["canaan", "Jacob asks to be buried in the promised land, because Egypt is not the final home."],
+    ["crossed", "Jacob crosses his hands and sets Ephraim before Manasseh."],
+  ],
+  takeaway: "God's promise can keep moving through provision, old age, memory, blessing, and surprising grace.",
+  takeawaySupport: "Day 20 helps us see that Egypt can preserve the family for a season, but God's covenant still points them back toward the land and forward to the next generation.",
+};
+
+const dayTwentyOneSummary: BibleYearSummaryContent = {
+  intro: [
+    "Genesis 49-50 closes the book of Genesis with final words, grief, forgiveness, and hope.",
+    "Jacob speaks over his sons, naming both consequences and future promise, then dies still pointing toward Canaan.",
+    "Joseph comforts his fearful brothers, names God's providence over evil, and dies in Egypt while trusting that God will surely visit His people.",
+  ],
+  highlights: [
+    ["legacy", "Jacob's final words expose character, consequence, and future direction."],
+    ["scepter", "Judah receives the royal promise that points the Bible toward kingship."],
+    ["fruitful", "Joseph is described as fruitful even though he was attacked."],
+    ["good", "Joseph says his brothers meant evil, but God meant it for good."],
+    ["hope", "Joseph dies in Egypt but asks that his bones be carried up when God visits His people."],
+  ],
+  takeaway: "Genesis ends with death in Egypt, but not with defeat, because God's promise is still alive.",
+  takeawaySupport: "Day 21 helps us see that grief, guilt, evil, and death do not get the final word over the God who preserves, forgives, and keeps His covenant.",
+};
+
+const dayTwentyTwoSummary: BibleYearSummaryContent = {
+  intro: [
+    "Exodus 1-4 begins the next major movement of the Bible story.",
+    "Jacob's family has multiplied in Egypt, but a new Pharaoh turns their growth into fear, slavery, and a command of death.",
+    "God preserves Moses, hears Israel's cry, reveals His name, and begins moving toward deliverance.",
+  ],
+  highlights: [
+    ["growth", "Israel multiplies in Egypt just as God promised."],
+    ["bondage", "Pharaoh's fear turns into cruel oppression."],
+    ["midwives", "Shiphrah and Puah fear God and preserve life."],
+    ["bush", "God meets Moses at the burning bush and calls him."],
+    ["name", "God reveals Himself as I AM and sends Moses back to Egypt."],
+  ],
+  takeaway: "God hears His people under oppression before they can see deliverance with their eyes.",
+  takeawaySupport: "Day 22 helps us see that God's rescue often begins quietly through hidden courage, wilderness preparation, covenant memory, and the God who says, I have surely seen.",
+};
+
+const dayTwentyThreeSummary: BibleYearSummaryContent = {
+  intro: [
+    "Exodus 5-8 brings Moses and Aaron before Pharaoh with God's command: Let My people go.",
+    "Pharaoh refuses, increases Israel's suffering, and asks the question the plagues will answer: Who is the LORD?",
+    "God repeats His promise to Moses and begins dismantling Egypt's confidence through signs and early plagues.",
+  ],
+  highlights: [
+    ["burdens", "Pharaoh makes Israel's work harder after Moses obeys God."],
+    ["promise", "God answers Moses' discouragement by repeating, I am the LORD."],
+    ["staff", "Aaron's staff swallows the magicians' staffs."],
+    ["nile", "The Nile turns to blood, striking Egypt's source of life."],
+    ["goshen", "God makes a distinction between Egypt and Goshen during the swarms."],
+  ],
+  takeaway: "Pharaoh's resistance is real, but it cannot stop God from revealing His power and keeping His covenant.",
+  takeawaySupport: "Day 23 helps us see that obedience can become harder before deliverance is visible, but resistance does not mean God has lost control.",
+};
+
+const dayTwentyFourSummary: BibleYearSummaryContent = {
+  intro: [
+    "Exodus 9-12 brings the plague story to its breaking point.",
+    "God keeps making a distinction between Egypt and Israel while Pharaoh keeps seeking relief without true surrender.",
+    "The reading centers on Passover, where God gives Israel a lamb, blood on the doorposts, a meal of memory, and the night of deliverance.",
+  ],
+  highlights: [
+    ["livestock", "Egypt's livestock are struck while Israel's livestock are protected."],
+    ["hail", "God warns Egypt before the hail, and some begin to fear His word."],
+    ["darkness", "Darkness covers Egypt for three days while Israel has light."],
+    ["lamb", "Each household takes an unblemished lamb for Passover."],
+    ["blood", "The blood on the doorposts marks the houses sheltered from judgment."],
+  ],
+  takeaway: "Passover teaches that deliverance is something God provides, not something Israel achieves.",
+  takeawaySupport: "Day 24 helps us see judgment, mercy, memory, worship, and rescue coming together as God brings His people out of Egypt.",
+};
+
+const dayTwentySixSummary: BibleYearSummaryContent = {
+  intro: [
+    "Exodus 17-20 moves Israel from wilderness need to covenant formation at Sinai.",
+    "The people receive water from the rock, face Amalek in battle, learn shared leadership through Jethro, and hear God's voice in the Ten Commandments.",
+    "This day shows that the God who rescues His people also provides, defends, organizes, and teaches them how to live.",
+  ],
+  highlights: [
+    ["water", "God brings water from the rock when Israel thirsts at Rephidim."],
+    ["banner", "Israel defeats Amalek while Moses' hands are supported, and the LORD is named their banner."],
+    ["wisdom", "Jethro helps Moses share the burden of leadership."],
+    ["sinai", "God brings Israel to Sinai and calls them His treasured possession."],
+    ["command", "God speaks the Ten Commandments to shape life for His redeemed people."],
+  ],
+  takeaway: "God did not free Israel so they could belong to themselves; He freed them so they could belong to Him.",
+  takeawaySupport: "Day 26 helps us see that deliverance must become formation: trust, worship, wise leadership, holy reverence, and covenant obedience.",
+};
+
+const dayTwentySevenSummary: BibleYearSummaryContent = {
+  intro: [
+    "Exodus 21-24 continues at Sinai by showing what covenant life looks like in ordinary situations.",
+    "God gives laws about servants, violence, theft, courts, rest, worship, strangers, enemies, and the promised land.",
+    "Then the covenant is sealed with blood, and Israel's leaders see God and eat before Him.",
+  ],
+  highlights: [
+    ["justice", "God applies covenant holiness to servants, injuries, restitution, and responsibility."],
+    ["vulnerable", "Strangers, widows, orphans, and the poor receive special protection."],
+    ["truth", "Israel must not follow crowds, twist justice, or take bribes."],
+    ["feasts", "Sabbath and yearly feasts shape Israel's time around rest, memory, and worship."],
+    ["blood", "The covenant is sealed with sacrifice, blood, God's words, and Israel's response."],
+  ],
+  takeaway: "Covenant life reaches ordinary life: homes, courts, work, money, speech, worship, rest, and justice.",
+  takeawaySupport: "Day 27 helps us see that God's redeemed people must not become another Egypt; they are called to live under God's justice, mercy, holiness, and covenant blood.",
+};
+
+const dayTwentyEightSummary: BibleYearSummaryContent = {
+  intro: [
+    "Exodus 25-28 begins the tabernacle instructions after the covenant is sealed at Sinai.",
+    "God gives Moses the pattern for a sanctuary, the ark, mercy seat, table, lampstand, curtains, veil, altar, courtyard, oil, and priestly garments.",
+    "This section shows that the holy God wants to dwell among His redeemed people, but He teaches them how to approach Him rightly.",
+  ],
+  highlights: [
+    ["offering", "The tabernacle begins with willing offerings, not forced labor."],
+    ["mercy", "The ark and mercy seat become the place where God will meet with Moses."],
+    ["veil", "The veil teaches that God's presence is near but holy."],
+    ["altar", "The bronze altar shows that sacrifice comes before approach."],
+    ["priest", "Aaron carries Israel's names on his shoulders and over his heart."],
+  ],
+  takeaway: "The God who brought Israel out now wants to dwell among them.",
+  takeawaySupport: "Day 28 helps us see the tabernacle as more than religious furniture: it is presence, mercy, sacrifice, holiness, priesthood, and the architecture of redemption.",
+};
+
+const dayTwentyNineSummary: BibleYearSummaryContent = {
+  intro: [
+    "Exodus 29-32 holds one of the strongest contrasts in the book.",
+    "God gives instructions for consecrating priests, daily offerings, incense, cleansing, holy oil, Spirit-filled craftsmanship, Sabbath, and covenant tablets.",
+    "But while Moses is receiving holy instructions, Israel grows impatient and makes the golden calf.",
+  ],
+  highlights: [
+    ["priest", "Aaron and his sons are washed, clothed, anointed, and consecrated for service."],
+    ["incense", "The altar of incense, ransom money, laver, holy oil, and incense teach ordered approach to God."],
+    ["skill", "Bezalel and Oholiab are gifted by God for craftsmanship and tabernacle work."],
+    ["calf", "Israel turns gold into an idol while God is giving instructions for true worship."],
+    ["mediator", "Moses intercedes and offers himself, pointing toward the need for a greater mediator."],
+  ],
+  takeaway: "The same gold can become sanctuary material or an idol, depending on whether it is surrendered to God or shaped by fear.",
+  takeawaySupport: "Day 29 helps us see that God is holy, worship must be shaped by His word, idolatry is deadly, and sinful people need true mediation.",
+};
+
+const dayThirtySummary: BibleYearSummaryContent = {
+  intro: [
+    "Exodus 33-36 follows the aftermath of the golden calf and asks whether God's presence will still go with Israel.",
+    "Moses pleads for God's presence, asks to see God's glory, and hears the LORD proclaim His merciful and faithful name.",
+    "Then the covenant is renewed, Moses' face shines, and the people bring willing offerings as the tabernacle begins to take shape.",
+  ],
+  highlights: [
+    ["presence", "Moses refuses to move forward without God's presence."],
+    ["glory", "God reveals His glory through His goodness and His name."],
+    ["mercy", "The LORD declares Himself merciful, gracious, patient, faithful, forgiving, and just."],
+    ["willing", "The people bring freewill offerings for the tabernacle."],
+    ["enough", "The people bring more than enough for the work God commanded."],
+  ],
+  takeaway: "The promised land is not enough without the presence of God.",
+  takeawaySupport: "Day 30 helps us see that after great failure, Israel's hope is not their record but God's merciful presence, and mercy produces renewed obedience.",
+};
+
 function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent {
   const pieces = day.summary
     .split(",")
@@ -574,6 +821,94 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
     studyNotesSections: BIBLE_YEAR_DAY_EIGHTEEN_DEEP_STUDY_SECTIONS,
     summary: dayEighteenSummary,
     discussionPrompt: "Where do you see real change in Judah and the brothers when Benjamin is threatened?",
+  },
+  19: {
+    lesson: GENESIS_DAY_NINETEEN_JOSEPH_REVEALS_HIMSELF_LESSON,
+    audio: BIBLE_YEAR_DAY_NINETEEN_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_NINETEEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_NINETEEN_DEEP_STUDY_SECTIONS,
+    summary: dayNineteenSummary,
+    discussionPrompt: "What stands out to you about Joseph naming the betrayal while still seeing God's preserving hand?",
+  },
+  20: {
+    lesson: GENESIS_DAY_TWENTY_JACOB_BLESSES_JOSEPHS_SONS_LESSON,
+    audio: BIBLE_YEAR_DAY_TWENTY_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWENTY_DEEP_STUDY_SECTIONS,
+    summary: dayTwentySummary,
+    discussionPrompt: "What stands out to you about Jacob blessing the next generation while still looking toward God's promised land?",
+  },
+  21: {
+    lesson: GENESIS_DAY_TWENTY_ONE_GENESIS_ENDS_WITH_HOPE_LESSON,
+    audio: BIBLE_YEAR_DAY_TWENTY_ONE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_ONE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWENTY_ONE_DEEP_STUDY_SECTIONS,
+    summary: dayTwentyOneSummary,
+    discussionPrompt: "What stands out to you about Genesis ending with both a coffin in Egypt and hope in God's promise?",
+  },
+  22: {
+    lesson: EXODUS_DAY_TWENTY_TWO_GOD_HEARS_ISRAELS_CRY_LESSON,
+    audio: BIBLE_YEAR_DAY_TWENTY_TWO_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_TWO_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWENTY_TWO_DEEP_STUDY_SECTIONS,
+    summary: dayTwentyTwoSummary,
+    discussionPrompt: "What stands out to you about God hearing Israel before deliverance is visible?",
+  },
+  23: {
+    lesson: EXODUS_DAY_TWENTY_THREE_PHARAOH_RESISTS_GODS_WORD_LESSON,
+    audio: BIBLE_YEAR_DAY_TWENTY_THREE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_THREE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWENTY_THREE_DEEP_STUDY_SECTIONS,
+    summary: dayTwentyThreeSummary,
+    discussionPrompt: "What stands out to you about Pharaoh resisting God's word and God answering through signs?",
+  },
+  24: {
+    lesson: EXODUS_DAY_TWENTY_FOUR_PASSOVER_AND_DELIVERANCE_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_STUDY_SECTIONS,
+    summary: dayTwentyFourSummary,
+    discussionPrompt: "What stands out to you about Passover, the blood on the doorposts, and Israel finally leaving Egypt?",
+  },
+  26: {
+    lesson: EXODUS_DAY_TWENTY_SIX_WATER_BATTLE_AND_COMMANDMENTS_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_STUDY_SECTIONS,
+    summary: dayTwentySixSummary,
+    discussionPrompt: "What stands out to you about God providing water, giving victory, and speaking the Ten Commandments?",
+  },
+  27: {
+    lesson: EXODUS_DAY_TWENTY_SEVEN_COVENANT_LAW_AND_BLOOD_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_STUDY_SECTIONS,
+    summary: dayTwentySevenSummary,
+    discussionPrompt: "What stands out to you about God's covenant laws and the covenant being sealed with blood?",
+  },
+  28: {
+    lesson: EXODUS_DAY_TWENTY_EIGHT_TABERNACLE_AND_PRIESTHOOD_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_STUDY_SECTIONS,
+    summary: dayTwentyEightSummary,
+    discussionPrompt: "What stands out to you about God making a way to dwell among His people?",
+  },
+  29: {
+    lesson: EXODUS_DAY_TWENTY_NINE_CONSECRATION_AND_GOLDEN_CALF_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWENTY_NINE_DEEP_STUDY_SECTIONS,
+    summary: dayTwentyNineSummary,
+    discussionPrompt: "What stands out to you about the contrast between holy worship and the golden calf?",
+  },
+  30: {
+    lesson: EXODUS_DAY_THIRTY_GODS_PRESENCE_AND_RENEWED_OBEDIENCE_LESSON,
+    audio: null,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS,
+    summary: dayThirtySummary,
+    discussionPrompt: "What stands out to you about Moses pleading for God's presence and Israel giving willingly again?",
   },
 };
 

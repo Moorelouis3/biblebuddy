@@ -2630,9 +2630,21 @@ export default function DashboardJourneyExperience({
     16: "Faithful",
     17: "Rises",
     18: "Judah",
+    19: "Reveal",
+    20: "Blessing",
+    21: "Hope",
+    22: "Cry",
+    23: "Resists",
+    24: "Passover",
+    25: "Sea",
+    26: "Sinai",
+    27: "Covenant",
+    28: "Tabernacle",
+    29: "Golden Calf",
+    30: "Presence",
   };
   const bibleYearStudyPlanMilestones = GENESIS_BIBLE_IN_ONE_YEAR_SERIES
-    .filter((day) => day.dayNumber <= 18)
+    .filter((day) => day.dayNumber <= 30)
     .map((day) => ({
       dayNumber: day.dayNumber,
       label: bibleYearStudyPlanMilestoneLabels[day.dayNumber] || day.title,
@@ -9689,40 +9701,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
           </div>
         ) : null}
-        <div className="mb-4 flex flex-wrap items-center justify-end gap-2">
-          <label
-            title="Plain text hides saved highlights, Bible database highlights, and study note cards."
-            className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-2.5 py-2 text-[11px] font-black text-[var(--bb-text-secondary,#4b5563)] shadow-sm"
-          >
-            <input
-              type="checkbox"
-              checked={bibleYearReaderPlainText}
-              onChange={(event) => {
-                setBibleYearReaderPlainText(event.target.checked);
-                if (event.target.checked) closeBibleYearTermTakeover();
-              }}
-              className="h-3.5 w-3.5 accent-[var(--bb-accent,#2f7fe8)]"
-            />
-            <span>Plain text</span>
-          </label>
-          <div className="flex items-center gap-1 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] p-1 shadow-sm">
-            {BIBLE_YEAR_READER_TRANSLATION_OPTIONS.map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                onClick={() => setBibleYearReaderTranslation(option.value)}
-                className={`rounded-lg px-2.5 py-1.5 text-[11px] font-black transition ${
-                  bibleYearReaderTranslation === option.value
-                    ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm"
-                    : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f8fbff)]"
-                }`}
-                aria-pressed={bibleYearReaderTranslation === option.value}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-        </div>
         {bibleYearReaderTranslationLoading ? (
           <p className="mb-3 text-right text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
             Loading {bibleYearReaderTranslation.toUpperCase()}...
@@ -9731,11 +9709,49 @@ Before we understand redemption, we need to understand what God made humanity fo
           <p className="mb-3 text-right text-[11px] font-bold text-red-600">{bibleYearReaderTranslationError}</p>
         ) : null}
         <div className="space-y-7">
-          {chapters.map((chapter) => (
+          {chapters.map((chapter, chapterIndex) => (
             <article key={`${chapter.book}-${chapter.chapter}`} className="space-y-3">
-              <h3 className="font-serif text-2xl font-black tracking-wide text-[var(--bb-text-primary,#111827)]">
-                {chapter.book} {chapter.chapter}
-              </h3>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h3 className="font-serif text-2xl font-black tracking-wide text-[var(--bb-text-primary,#111827)]">
+                  {chapter.book} {chapter.chapter}
+                </h3>
+                {chapterIndex === 0 ? (
+                  <div className="flex flex-wrap items-center justify-end gap-2">
+                    <label
+                      title="Plain text hides saved highlights, Bible database highlights, and study note cards."
+                      className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_20%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] px-2.5 py-2 text-[11px] font-black text-[var(--bb-text-secondary,#4b5563)] shadow-sm"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={bibleYearReaderPlainText}
+                        onChange={(event) => {
+                          setBibleYearReaderPlainText(event.target.checked);
+                          if (event.target.checked) closeBibleYearTermTakeover();
+                        }}
+                        className="h-3.5 w-3.5 accent-[var(--bb-accent,#2f7fe8)]"
+                      />
+                      <span>Plain text</span>
+                    </label>
+                    <div className="flex items-center gap-1 rounded-xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] p-1 shadow-sm">
+                      {BIBLE_YEAR_READER_TRANSLATION_OPTIONS.map((option) => (
+                        <button
+                          key={option.value}
+                          type="button"
+                          onClick={() => setBibleYearReaderTranslation(option.value)}
+                          className={`rounded-lg px-2.5 py-1.5 text-[11px] font-black transition ${
+                            bibleYearReaderTranslation === option.value
+                              ? "bg-[var(--bb-accent,#2f7fe8)] text-white shadow-sm"
+                              : "text-[var(--bb-text-secondary,#4b5563)] hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                          }`}
+                          aria-pressed={bibleYearReaderTranslation === option.value}
+                        >
+                          {option.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
               {chapter.verses.length ? (
                 <div className="space-y-3" onClick={(event) => { void handleBibleYearDatabaseTermClick(event); }}>
                   <VerseHighlighter

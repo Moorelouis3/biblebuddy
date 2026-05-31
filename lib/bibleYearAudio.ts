@@ -199,3 +199,43 @@ export const BIBLE_YEAR_DAY_EIGHTEEN_AUDIO: BibleYearAudioDay = {
   apiSrc: getBibleYearAudioApiSrc(18),
   estimatedDuration: "35-40 min",
 };
+
+export const BIBLE_YEAR_DAY_NINETEEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 19,
+  title: "Day 19 - Joseph Reveals Himself",
+  storagePath: getBibleYearAudioStoragePath(19),
+  apiSrc: getBibleYearAudioApiSrc(19),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_TWENTY_AUDIO: BibleYearAudioDay = {
+  dayNumber: 20,
+  title: "Day 20 - Jacob Blesses Joseph's Sons",
+  storagePath: getBibleYearAudioStoragePath(20),
+  apiSrc: getBibleYearAudioApiSrc(20),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_TWENTY_ONE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 21,
+  title: "Day 21 - Genesis Ends With Hope",
+  storagePath: getBibleYearAudioStoragePath(21),
+  apiSrc: getBibleYearAudioApiSrc(21),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_TWENTY_TWO_AUDIO: BibleYearAudioDay = {
+  dayNumber: 22,
+  title: "Day 22 - God Hears Israel's Cry",
+  storagePath: getBibleYearAudioStoragePath(22),
+  apiSrc: getBibleYearAudioApiSrc(22),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_TWENTY_THREE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 23,
+  title: "Day 23 - Pharaoh Resists God's Word",
+  storagePath: getBibleYearAudioStoragePath(23),
+  apiSrc: getBibleYearAudioApiSrc(23),
+  estimatedDuration: "35-40 min",
+};
