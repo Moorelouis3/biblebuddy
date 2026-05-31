@@ -350,7 +350,7 @@ He blessed him.
 
 From this point on, whenever you see the name Israel, it is still Jacob, but with a new identity shaped by his encounter with God.
 
-## A Helpful Reading Tip
+## How Moses Uses Jacob And Israel
 
 Moses often uses both names intentionally.
 

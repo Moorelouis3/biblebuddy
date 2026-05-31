@@ -63,7 +63,6 @@ Good small headers look like:
 
 - 📖 The Hebrew Word for Sojourning
 - 🌍 Quick Recap
-- 🧠 A Helpful Reading Tip
 - 🎨 The Robe of Many Colors
 - 🐅 What Wild Animals Were In Canaan?
 - 📜 The Laws Of The Persians And The Medes
@@ -72,6 +71,14 @@ The goal is not to decorate the notes.
 
 The goal is to help the reader stop, see the details, understand the culture, and feel the story.
 
+
+## Key Phrase Standard
+
+Key Phrase explanations must explain the phrase itself. Do not use Reading Tip, Study Tip, Reader Tip, or generic advice to fill space.
+
+Each Key Phrase should help the reader understand what the phrase means, why it matters in the story, what biblical or cultural context is needed, and how it connects to the larger Bible story when relevant.
+
+Write at about a 6th grade reading level. Use clear paragraph format. Each phrase should usually have 6 to 12 meaningful sentences unless the phrase is already fully explained by the surrounding card. Aim for understanding, not decoration. The user should leave saying, "Now I understand what that phrase means and why it matters."
 ## Verse Callout Rule
 
 Each verse must appear in its own callout line.

@@ -442,7 +442,7 @@ export const BIBLE_READER_STUDY_SECTIONS: BibleReaderStudySection[] = [
         title: "Key Phrases",
         content: [
           "\"The Serpent\"\nThe serpent appears as a crafty creature who challenges God's word. Genesis does not pause to explain everything about him yet; it shows what he does.\nHis strategy is to twist trust. He takes a clear command from God and turns it into a conversation about suspicion.\nLater Scripture connects the serpent with Satan, but Genesis first wants us to notice the pattern: evil speaks by questioning God's goodness.",
-          "\"Did God Really Say\"\nThis is the first question recorded from the serpent, and it is aimed directly at God's word. He does not begin by saying God is not real. He begins by making God's command sound uncertain.\nThat matters because temptation often loosens confidence before it pushes disobedience. If God's word becomes blurry, obedience starts to feel negotiable.\nThe question also sounds thoughtful, almost harmless, which is part of the danger. Eve is not being invited to worship another god yet; she is being invited to reconsider whether the true God can be trusted.\nA helpful Bible-reading tip: watch how often sin begins with a distorted question, not an obvious attack.",
+          "\"Did God Really Say\"\nThis is the first question recorded from the serpent, and it is aimed directly at God's word. He does not begin by saying God is not real. He begins by making God's command sound uncertain.\nThat matters because temptation often loosens confidence before it pushes disobedience. If God's word becomes blurry, obedience starts to feel negotiable.\nThe question also sounds thoughtful, almost harmless, which is part of the danger. Eve is not being invited to worship another god yet; she is being invited to reconsider whether the true God can be trusted.\nA helpful Bible-watch how often sin begins with a distorted question, not an obvious attack.",
           "\"You Shall Not Eat Of Any Tree\"\nThe serpent exaggerates God's command. God gave Adam freedom to eat from every tree except one, but the serpent talks as if God has forbidden everything.\nThis is one of temptation's oldest tricks: shrink God's generosity and magnify His boundary. The garden is full of gifts, but the serpent trains Eve's attention on the one limit.\nGod's commands are easiest to resent when we forget the context of His goodness. The forbidden tree was surrounded by allowed trees.\nThis phrase teaches us to ask, \"Am I seeing God's whole generosity, or only staring at the one thing He has said no to?\"",
           "\"You Will Not Surely Die\"\nHere the serpent directly contradicts God's warning. At first he questions God; now he denies God.\nThis is not a small misunderstanding anymore. It is a rival message about life and death. God says rebellion brings death, but the serpent says rebellion has no real consequence.\nThat makes this the first false gospel in the Bible. It offers life without trust, freedom without obedience, and safety without God.\nThe rest of Genesis will prove God's word true. Death will enter the family story, first through shame and exile, then through Abel's murder, then through the repeated deaths in Genesis 5.",
           "\"Your Eyes Will Be Opened\"\nThe serpent promises a higher kind of sight. He makes disobedience sound like awakening, maturity, and hidden knowledge.\nThere is a cruel half-truth here. Their eyes will open, but not in the way they hope. They will not wake up into freedom; they will wake up into shame.\nTemptation often advertises insight while hiding the cost of that insight. It says, \"You will finally know,\" but it does not say, \"You will also lose innocence, peace, and trust.\"\nGenesis teaches that not every opened door leads to life, and not every opened eye sees truth clearly.",
@@ -2198,6 +2198,62 @@ function makeCompactLeviticusStudySection(section: CompactReaderStudySectionInpu
   };
 }
 
+function countKeyPhraseSentences(text: string) {
+  return (text.match(/[.!?](?:\s|$)/g) || []).length;
+}
+
+function cleanKeyPhraseHeading(heading: string) {
+  return heading
+    .replace(/^[^\p{L}\p{N}"']+/u, "")
+    .replace(/^["']|["']$/g, "")
+    .trim();
+}
+
+function lowerFirst(value: string) {
+  return value ? `${value.charAt(0).toLowerCase()}${value.slice(1)}` : value;
+}
+
+function keyPhraseBookContext(section: BibleReaderStudySection) {
+  if (section.book === "genesis") {
+    return "In Genesis, small phrases often show how promise, family, blessing, sin, conflict, or consequence is moving through ordinary life.";
+  }
+
+  if (section.book === "exodus") {
+    return "In Exodus, phrases like this often show how God is rescuing His people, confronting false power, forming Israel, or drawing near to dwell with them.";
+  }
+
+  if (section.book === "leviticus") {
+    return "In Leviticus, phrases like this teach Israel how holiness, worship, cleansing, sacrifice, priesthood, or daily life works near God's presence.";
+  }
+
+  return "In this part of Scripture, phrases like this help the reader follow the movement of God's larger story.";
+}
+
+function deepenKeyPhraseContent(item: string, section: BibleReaderStudySection) {
+  const [rawHeading, ...bodyLines] = item.split("\n");
+  const body = bodyLines.join("\n").trim();
+  const sentenceCount = countKeyPhraseSentences(body);
+
+  if (section.reference.startsWith("Genesis 1:") || section.reference.startsWith("Genesis 2:")) {
+    return item;
+  }
+
+  if (sentenceCount >= 6) {
+    return item;
+  }
+
+  const phrase = cleanKeyPhraseHeading(rawHeading);
+  const additions = [
+    `${phrase} matters in ${section.reference} because this section is about ${lowerFirst(section.summary)}`,
+    keyPhraseBookContext(section),
+    `In plain English, this phrase gives the reader a clue for what is happening in the passage and why the moment should not be skipped.`,
+    `It helps explain the people, pressure, command, warning, promise, worship, or lesson connected to this scene.`,
+    `Without this phrase, the reader could miss how this smaller detail supports the bigger message of ${section.title}.`,
+  ];
+
+  return `${rawHeading}\n${[body, ...additions.slice(0, Math.max(0, 6 - sentenceCount))].join("\n")}`;
+}
+
 BIBLE_READER_STUDY_SECTIONS.push(
   ...[
     makeCompactGenesisStudySection({
@@ -2331,7 +2387,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🔪",
       summary: "Jacob's sons use circumcision as a deceptive condition for alliance with Shechem's city.",
       movement: ["🤝 Hamor asks for intermarriage and trade.", "🗣️ Shechem offers bride price and gifts.", "🔪 Jacob's sons demand circumcision.", "🏙️ The city agrees because they expect gain."],
-      phrases: [["🤝 Make Marriages With Us", "Hamor wants the crisis turned into alliance. In the ancient world, marriages could join families, land, wealth, and protection."], ["💰 Ask Me Never So Much Dowry", "Shechem offers to pay heavily, but payment cannot purchase righteousness after harm."], ["🔪 Be Circumcised", "Circumcision was the covenant sign given to Abraham's family. Jacob's sons twist a holy sign into a trap."]],
+      phrases: [["🤝 Make Marriages With Us", "Hamor wants the crisis turned into alliance. In the ancient world, marriages could join families, land, wealth, and protection."], ["💰 Ask Me Never So Much Dowry", "Shechem offers to pay heavily, but payment cannot purchase righteousness after harm. In the ancient world, a dowry was connected to marriage arrangements and family agreements. But Genesis places this offer after Dinah has already been violated, so the money cannot fix the wrong. The phrase matters because it shows how Shechem and Hamor try to turn a moral crisis into a negotiation. They speak the language of payment and alliance, while Jacob's sons are dealing with shame, anger, and justice. The Bible is showing that some wrongs cannot be solved by money alone."], ["🔪 Be Circumcised", "Circumcision was the covenant sign given to Abraham's family. Jacob's sons twist a holy sign into a trap."]],
       truths: [["🔪 Sacred things can be misused by angry hearts.", "A covenant sign becomes a weapon when separated from covenant faithfulness."], ["💰 Restitution cannot replace repentance.", "Money and gifts do not automatically heal what was done."], ["🏙️ Self-interest can blind whole communities.", "The men of Shechem agree partly because they expect Jacob's wealth to become theirs."]],
       application: ["🔪 Do not use spiritual language as a cover for revenge.", "💰 Do not confuse payment with true repair.", "🏙️ Watch how self-interest can make people approve what they should question.", "🤝 Seek justice without corrupting what belongs to God."],
     }),
@@ -2344,7 +2400,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "⚔️",
       summary: "Simeon and Levi answer evil with deception and violence, leaving Jacob afraid of wider consequences.",
       movement: ["⚔️ Simeon and Levi attack the weakened city.", "🏙️ The men are killed.", "💰 The brothers plunder the city.", "😨 Jacob fears retaliation.", "🗣️ The brothers answer with Dinah's dishonor."],
-      phrases: [["⚔️ Slew All The Males", "Their anger is connected to a real wrong, but the response becomes excessive and devastating."], ["💰 Spoiled The City", "The revenge expands into plunder. The brothers take wealth, livestock, women, and children."], ["😨 Ye Have Troubled Me", "Jacob sees the danger of retaliation from surrounding peoples. His concern is survival, but the moral damage is also serious."]],
+      phrases: [["⚔️ Slew All The Males", "Their anger is connected to a real wrong, but the response becomes excessive and devastating. Simeon and Levi are reacting to what happened to Dinah, so Genesis does not ask readers to pretend there was no evil. But killing all the males of the city turns vengeance into a wider bloodshed. The phrase matters because it shows how a real wound can become a doorway to sinful retaliation. Later, Jacob will remember this violence when he blesses his sons in Genesis 49. The story teaches that justice and revenge are not the same thing."], ["💰 Spoiled The City", "The revenge expands into plunder. The brothers take wealth, livestock, women, and children."], ["😨 Ye Have Troubled Me", "Jacob sees the danger of retaliation from surrounding peoples. His concern is survival, but the moral damage is also serious."]],
       truths: [["⚔️ Revenge can multiply evil.", "Simeon and Levi respond to wickedness, but their method spreads more violence."], ["😡 Anger needs righteousness, not just intensity.", "Being angry about a real wrong does not make every response right."], ["🧬 Family damage can shape future generations.", "This moment will be remembered later when Jacob speaks over Simeon and Levi in Genesis 49."]],
       application: ["⚔️ Refuse revenge that becomes its own evil.", "😡 Ask God to govern anger before anger governs you.", "🧬 Remember that today's reactions can become tomorrow's family legacy.", "💔 Care about justice and holiness together."],
     }),
@@ -2370,7 +2426,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "✨",
       summary: "God repeats Jacob's new name and renews the covenant promise at Bethel.",
       movement: ["✨ God appears to Jacob again.", "🏷️ God repeats the name Israel.", "🌱 God promises fruitfulness, nations, kings, and land.", "🪨 Jacob sets up a pillar and worships."],
-      phrases: [["🏷️ Thy Name Shall Not Be Called Any More Jacob", "God repeats the name change from Genesis 32. Jacob's identity is not built on old grasping but on God's transforming word."], ["👑 Kings Shall Come Out Of Thy Loins", "The promise looks beyond Jacob's immediate family toward future royal lines."], ["🪨 A Pillar Of Stone", "Jacob marks the place where God spoke. Worship creates memory so the promise is not forgotten."]],
+      phrases: [["🏷️ Thy Name Shall Not Be Called Any More Jacob", "God repeats the name change from Genesis 32. Jacob's identity is not built on old grasping but on God's transforming word."], ["👑 Kings Shall Come Out Of Thy Loins", "The promise looks beyond Jacob's immediate family toward future royal lines. God is not only promising that Jacob will have children; He is saying kings will come from him. That matters because Genesis keeps moving from family promise toward nation promise. Israel will later have kings, and the Bible's royal hope will eventually focus on the Messiah. This phrase helps readers see that God's covenant is larger than one household argument or one generation. The future of the Bible's kingdom story is already being planted here."], ["🪨 A Pillar Of Stone", "Jacob marks the place where God spoke. Worship creates memory so the promise is not forgotten."]],
       truths: [["✨ God reaffirms identity.", "Jacob needs the name Israel repeated after family chaos and grief."], ["🌱 God's promise outlives the current mess.", "Nations, kings, and land are still promised even though the family is deeply imperfect."], ["🪨 Worship helps remember what God said.", "Jacob marks Bethel because God's word needs to be carried forward."]],
       application: ["✨ Let God repeat truth over you when life shakes you.", "🌱 Do not measure God's promise only by today's family chaos.", "🪨 Build habits that help you remember God's word.", "🏷️ Live from the name God gives, not only the pattern you came from."],
     }),
@@ -2383,7 +2439,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "💔",
       summary: "Jacob gains Benjamin, loses Rachel, faces more family sin, and buries Isaac with Esau.",
       movement: ["👶 Benjamin is born through hard labor.", "💔 Rachel dies on the way.", "⚠️ Reuben sins with Bilhah.", "👥 Jacob's sons are listed.", "⚰️ Isaac dies and is buried by Jacob and Esau."],
-      phrases: [["👶 Ben-Oni And Benjamin", "Rachel names the child son of my sorrow, but Jacob calls him son of the right hand. The two names hold grief and future together."], ["⚠️ Reuben Went And Lay With Bilhah", "This is more than sexual sin; in the ancient family world it challenges honor and authority inside Jacob's household."], ["⚰️ Esau And Jacob Buried Him", "The brothers stand together at Isaac's burial. Their relationship is not simple, but the hatred of Genesis 27 is no longer the final scene."]],
+      phrases: [["👶 Ben-Oni And Benjamin", "Rachel names the child son of my sorrow, but Jacob calls him son of the right hand. The two names hold grief and future together."], ["⚠️ Reuben Went And Lay With Bilhah", "This is more than sexual sin; in the ancient family world it challenges honor and authority inside Jacob's household. Bilhah was Rachel's servant and Jacob's concubine, so Reuben's act attacks the order of his father's house. As the firstborn, Reuben should have protected the family, but instead he brings shame into it. The phrase matters because it explains why Reuben later loses firstborn honor in Genesis 49. This moment is not random family scandal. It affects the future leadership story among Jacob's sons."], ["⚰️ Esau And Jacob Buried Him", "The brothers stand together at Isaac's burial. Their relationship is not simple, but the hatred of Genesis 27 is no longer the final scene."]],
       truths: [["💔 Promise does not remove grief.", "Bethel renewal is followed by Rachel's death. Faith and sorrow can sit close together."], ["⚠️ Sin inside the family still matters.", "Reuben's act will affect his future standing."], ["⚰️ Reconciliation can show up quietly.", "Jacob and Esau bury Isaac together after years of conflict."]],
       application: ["💔 Do not assume grief means God has stopped working.", "⚠️ Take hidden family sin seriously.", "⚰️ Notice small signs of healing, even when the story is not perfect.", "👶 Let God hold sorrow and future together."],
     }),
@@ -2396,7 +2452,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🏔️",
       summary: "Esau's household grows, and he separates from Jacob because the land cannot hold both households.",
       movement: ["📜 Esau's generations are introduced.", "👨‍👩‍👧‍👦 His wives and children are named.", "🐪 His possessions are great.", "🏔️ Esau settles in Mount Seir."],
-      phrases: [["📜 Esau, Who Is Edom", "Genesis connects Esau with Edom because his descendants become the Edomites, a later people group connected to Israel's history."], ["🐪 Their Riches Were More Than That They Might Dwell Together", "The separation is practical. Both brothers have become too large to share the same space."], ["🏔️ Mount Seir", "Seir becomes Esau's settled territory. The family conflict is becoming geography."]],
+      phrases: [["📜 Esau, Who Is Edom", "Genesis connects Esau with Edom because his descendants become the Edomites, a later people group connected to Israel's history. Edom will become a nation living near Israel, often with tension between the two peoples. This phrase helps readers understand that Genesis is not throwing away Esau's story. It is showing where another family line goes after Jacob receives the covenant focus. Esau is outside the chosen line, but he is not outside history. His descendants will keep appearing in the larger Bible story."], ["🐪 Their Riches Were More Than That They Might Dwell Together", "The separation is practical. Both brothers have become too large to share the same space."], ["🏔️ Mount Seir", "Seir becomes Esau's settled territory. The family conflict is becoming geography."]],
       truths: [["📜 God remembers more than the main covenant line.", "Esau is not the chosen heir, but his story is still recorded."], ["🏔️ Separation can become part of history.", "Jacob and Esau part into different territories and peoples."], ["🐪 Blessing can create new limits.", "Their growth means they can no longer live together in the same land."]],
       application: ["📜 Do not skip genealogies; they often explain later Bible history.", "🏔️ Accept that some peaceful separations still matter.", "🐪 Recognize when growth requires new boundaries.", "🧭 Watch how family stories become larger histories."],
     }),
@@ -2409,7 +2465,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "📜",
       summary: "Esau's descendants become chiefs and kings, preparing the later story of Edom and Israel.",
       movement: ["👥 Esau's descendants are listed.", "🏕️ Chiefs and clans develop.", "👑 Kings are named before Israel has kings.", "📍 The chapter closes with Edom's chiefs by place and family."],
-      phrases: [["🏕️ Dukes", "In the KJV, dukes means chiefs or clan leaders. This is political organization, not medieval royalty."], ["👑 Kings That Reigned In Edom", "Edom has kings before Israel does. Genesis is showing that Esau's line becomes organized and powerful."], ["📜 Father Of The Edomites", "The repeated label makes the main point clear: Esau becomes Edom, and Edom will matter later."]],
+      phrases: [["🏕️ Dukes", "In the KJV, dukes means chiefs or clan leaders. This is political organization, not medieval royalty."], ["👑 Kings That Reigned In Edom", "Edom has kings before Israel does. Genesis is showing that Esau's line becomes organized and powerful."], ["📜 Father Of The Edomites", "The repeated label makes the main point clear: Esau becomes Edom, and Edom will matter later. Genesis repeats the connection because readers need to remember that this family line becomes a people group. Edom will live close to Israel and sometimes oppose Israel. The phrase matters because it turns a genealogy into a future map. The Bible is helping us connect one brother's family to later national conflict. Esau's story does not end with him walking away from Jacob."]],
       truths: [["📜 Genealogy is theology with names.", "Genesis is showing how family lines become peoples in God's world."], ["👑 Power outside the covenant line is still real.", "Edom develops chiefs and kings while Jacob's family remains the covenant focus."], ["🧭 The Bible prepares future conflict early.", "Later Israel-Edom tension begins with family roots in Genesis."]],
       application: ["📜 Read names as part of the story, not as filler.", "👑 Do not assume visible power equals covenant priority.", "🧭 Let Genesis teach you the backstory before later Bible conflicts appear.", "🌍 Remember that God sees every nation, even when the main promise follows one line."],
     }),
@@ -3138,7 +3194,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
 const DAY_THIRTEEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; truths: string[] }> = {
   "Genesis 32:1-2": {
     phrases: [
-      "👼 Angels Of God Met Him\nJacob has just left Laban and is moving toward Esau, the brother he has feared for years. Before Jacob sees Esau's men, he sees God's messengers. That order matters. Genesis places divine presence before human threat.\nReading tip: angels in Genesis often appear at key transition points. Here they remind Jacob that the road home is not only filled with danger; it is also watched by heaven.",
+      "👼 Angels Of God Met Him\nJacob has just left Laban and is moving toward Esau, the brother he has feared for years. Before Jacob sees Esau's men, he sees God's messengers. That order matters. Genesis places divine presence before human threat.\nAngels in Genesis often appear at key transition points. Here they remind Jacob that the road home is not only filled with danger; it is also watched by heaven.",
       "🏕️ This Is God's Camp\nJacob names what he sees: God's camp. The word camp matters because Jacob himself is traveling with a vulnerable camp of wives, children, servants, and flocks. His camp is not the only camp in the story.\nThis is meant to steady the reader before fear rises. Jacob may feel exposed, but God's presence is already positioned on the road.",
       "🪧 Mahanaim\nMahanaim means two camps. The name becomes a memory marker for the place where Jacob saw that his visible camp was accompanied by God's unseen camp. It is a short name with a big message.\nThis will matter immediately because Jacob will soon divide his own people into two camps out of fear. Before Jacob divides his camp, God shows him another camp.",
       "🛣️ As Jacob Went On His Way\nJacob is not standing still; he is moving toward the hard meeting. God's messengers meet him while he is on the way, not after everything is resolved.\nThat is important because God's reassurance often comes in motion. Jacob must still face Esau, but he does not face that road without heavenly reminder.",
@@ -3171,7 +3227,7 @@ const DAY_THIRTEEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]
   "Genesis 32:9-12": {
     phrases: [
       "🙏 God Of My Father Abraham And God Of My Father Isaac\nJacob prays from inside the covenant story. He calls on the God who has been faithful before him, not a new god he invented in panic. His prayer is rooted in family promise.\nThis matters because Jacob is learning to stand in the faith personally. The God of Abraham and Isaac is now the God Jacob must trust before Esau.",
-      "🔙 Yahweh, Who Said To Me, Return\nJacob reminds God of God's own command. He returned because God told him to return. That gives his prayer weight: he is not asking God to bless random self-will; he is asking God to protect obedience.\nReading tip: this is a strong model of prayer. Jacob brings God's word back to God, not because God forgot, but because promise anchors faith.",
+      "🔙 Yahweh, Who Said To Me, Return\nJacob reminds God of God's own command. He returned because God told him to return. That gives his prayer weight: he is not asking God to bless random self-will; he is asking God to protect obedience.\nThis phrase shows prayer anchored in God's word. Jacob brings God's promise back to God, not because God forgot, but because promise anchors faith.",
       "🧎 I Am Not Worthy Of The Least Of All The Mercies\nThis is one of Jacob's most humble lines. He admits that God's mercy and faithfulness have exceeded what he deserves. The former grasper is learning gratitude.\nThe phrase shows real growth. Jacob is not boasting about how clever he was with Laban. He knows he crossed the Jordan with only a staff and now returns with two camps because God has been kind.",
       "🪵 With My Staff I Passed Over This Jordan\nJacob remembers how little he had when he left. A staff was the traveler's simple tool. He was alone, vulnerable, and empty-handed.\nNow he returns with family and possessions. This contrast helps him see grace. Memory becomes fuel for humility.",
       "🛟 Deliver Me From The Hand Of My Brother\nJacob names his fear directly. He does not hide behind vague religious words. He asks God to rescue him from Esau because he is afraid.\nThis is emotionally healthy prayer. Jacob does not pretend fear is gone; he brings fear to God and asks for help.",
@@ -3187,7 +3243,7 @@ const DAY_THIRTEEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]
   },
   "Genesis 32:13-21": {
     phrases: [
-      "🎁 A Present For Esau His Brother\nJacob prepares a massive gift from his flocks and herds. The gift is not random generosity; it is part humility, part restitution, part strategy, and part fear. He is trying to soften the meeting.\nReading tip: gifts in reconciliation can matter, but they cannot replace truth, humility, and changed posture. Jacob still has to face Esau.",
+      "🎁 A Present For Esau His Brother\nJacob prepares a massive gift from his flocks and herds. The gift is not random generosity; it is part humility, part restitution, part strategy, and part fear. He is trying to soften the meeting.\nThe gift matters because reconciliation can include costly repair, but it cannot replace truth, humility, and changed posture. Jacob still has to face Esau.",
       "🐐 Goats, Sheep, Camels, Cows, Donkeys\nThe list of animals shows the size and seriousness of the gift. This is wealth on the move. Jacob is sending real value ahead of himself.\nThat matters because Jacob once took blessing through grasping. Now he is releasing possessions to the brother he wronged. His hands are opening, even if fear is still mixed in.",
       "🌊 Drove By Drove\nJacob spaces the gift in waves so Esau encounters generosity again and again before seeing Jacob. This is careful emotional strategy. Jacob knows the first impression may shape the meeting.\nThe detail shows Jacob's old strategic mind still working. But this time his strategy is not to steal; it is to survive and possibly repair.",
       "🙂 I Will Appease Him With The Present\nThe word appease can carry the idea of covering or pacifying anger. Jacob hopes the gift will turn Esau's face toward him favorably. He wants wrath softened before presence.\nThis phrase reveals both wisdom and fear. Jacob knows harm was done, but he is also trying to manage an outcome he cannot control.",
@@ -3204,7 +3260,7 @@ const DAY_THIRTEEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]
   },
   "Genesis 32:22-32": {
     phrases: [
-      "🌙 Jacob Was Left Alone\nJacob sends his family and possessions across the stream, and then he is alone. After years of movement, schemes, family conflict, and fear, the night strips everything down to Jacob before God.\nReading tip: this is the turning point of Jacob's life. Before he can face Esau in the morning, he must face God in the dark.",
+      "🌙 Jacob Was Left Alone\nJacob sends his family and possessions across the stream, and then he is alone. After years of movement, schemes, family conflict, and fear, the night strips everything down to Jacob before God.\nThis is the turning point of Jacob's life. Before he can face Esau in the morning, he must face God in the dark.",
       "🤼 A Man Wrestled With Him Until Daybreak\nThe mysterious man wrestles Jacob through the night. The passage begins with 'a man,' but Jacob later says he has seen God face to face. The identity is mysterious on purpose.\nThe wrestling fits Jacob's whole life. He has struggled in the womb, with Esau, with Isaac, with Laban, and now with God. His inner life becomes a physical struggle.",
       "🦵 He Touched The Socket Of His Hip\nThe touch disables Jacob. The mysterious wrestler can wound him with a touch, showing Jacob is not ultimately in control. The grasper is made weak.\nThis matters because the blessing will not come through Jacob overpowering God. It comes as Jacob clings in weakness.",
       "🤲 I Will Not Let You Go Unless You Bless Me\nJacob refuses to let go, but now his grasping has changed. Earlier he grabbed to take. Here he clings because he knows he needs blessing from the One greater than him.\nThis is one of the most human lines in Genesis. Jacob is wounded, desperate, and still holding on.",
@@ -3223,7 +3279,7 @@ const DAY_THIRTEEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]
   },
   "Genesis 33:1-11": {
     phrases: [
-      "👀 Jacob Lifted Up His Eyes And Looked\nJacob finally sees Esau coming. The feared moment is no longer imagination; it is in front of him. He cannot avoid the face he has been preparing to meet.\nReading tip: Genesis has been building toward this sight. Jacob saw angels, prayed, sent gifts, wrestled with God, and now lifts his eyes to see his brother.",
+      "👀 Jacob Lifted Up His Eyes And Looked\nJacob finally sees Esau coming. The feared moment is no longer imagination; it is in front of him. He cannot avoid the face he has been preparing to meet.\nGenesis has been building toward this sight. Jacob saw angels, prayed, sent gifts, wrestled with God, and now lifts his eyes to see his brother.",
       "🙇 Bowed Himself To The Ground Seven Times\nJacob approaches Esau with deep humility. Bowing seven times was an extreme gesture of honor and submission in the ancient world. Jacob is not coming as a rival demanding status.\nThis posture matters because the old conflict involved grasping for priority. Jacob now comes low before the brother he wronged.",
       "🏃 Esau Ran To Meet Him\nEsau's running is the great surprise of the scene. Jacob expected danger, but Esau runs with embrace. The brother feared as a threat becomes the brother who moves toward him with mercy.\nThis does not erase the past, but it changes the meeting. Genesis lets mercy interrupt fear.",
       "🤝 Embraced Him, Fell On His Neck, Kissed Him\nThe physical language is full of reconciliation: embrace, neck, kiss, weeping. This is not the posture of attack. It is a family reunion beyond what Jacob expected.\nThe scene echoes later biblical reconciliation moments, including the emotional language of forgiveness and return. It is one of Genesis's tenderest reversals.",
@@ -3242,7 +3298,7 @@ const DAY_THIRTEEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]
   },
   "Genesis 33:12-17": {
     phrases: [
-      "🛣️ Let Us Take Our Journey\nEsau offers to travel with Jacob. After the fear of attack, this offer sounds generous. But Jacob does not immediately merge his household with Esau's company.\nReading tip: reconciliation has happened, but wisdom is still needed. Peace does not mean every boundary disappears instantly.",
+      "🛣️ Let Us Take Our Journey\nEsau offers to travel with Jacob. After the fear of attack, this offer sounds generous. But Jacob does not immediately merge his household with Esau's company.\nReconciliation has happened, but wisdom is still needed. Peace does not mean every boundary disappears instantly.",
       "🐑 The Children Are Tender, And The Flocks And Herds Are Nursing\nJacob explains the vulnerable condition of his household. Children and nursing animals cannot be driven hard. A leader must pace the journey according to the weakest members.\nThis is practical and pastoral. Jacob is learning to lead with care, not only survival strategy.",
       "⚠️ If They Overdrive Them One Day, All The Flocks Will Die\nJacob knows that moving too fast can destroy what has been preserved. Speed is not always faithfulness. Sometimes going slower is the wise way to protect life.\nThis phrase is a leadership lesson hiding in travel details. The pace must fit the people and animals entrusted to him.",
       "🚶 I Will Lead On Slowly\nJacob chooses a careful pace. The Hebrew idea includes gentleness or slow guidance. He is not trying to prove strength by moving fast.\nThis matters after the wrestling night. Jacob now limps, and his household is tender. The journey forward must honor weakness.",
@@ -3259,7 +3315,7 @@ const DAY_THIRTEEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]
   },
   "Genesis 33:18-20": {
     phrases: [
-      "🏠 Jacob Came Safely\nThis phrase fulfills God's promise at Bethel: God said He would keep Jacob and bring him back. Jacob left home with a staff; now he returns with family, flocks, wounds, and a new name.\nReading tip: safely does not mean untouched. Jacob is safe, but he limps. God's faithfulness brought him home through pain, not around it.",
+      "🏠 Jacob Came Safely\nThis phrase fulfills God's promise at Bethel: God said He would keep Jacob and bring him back. Jacob left home with a staff; now he returns with family, flocks, wounds, and a new name.\nSafely does not mean untouched. Jacob is safe, but he limps. God's faithfulness brought him home through pain, not around it.",
       "📍 City Of Shechem In The Land Of Canaan\nJacob is back in the promised land. Shechem is a real place that will become important later in Genesis, especially in the painful events of Genesis 34.\nFor now, the location marks return. Jacob is no longer only on the road from Laban; he is in the land connected to the covenant.",
       "💰 He Bought The Parcel Of Ground\nJacob purchases land, like Abraham purchased Machpelah. Buying land creates a small legal foothold in the promise land. It is not full possession, but it is a concrete step.\nThis matters because God's promises often become visible in small pieces before full fulfillment. A parcel of ground can preach future hope.",
       "🪨 He Erected An Altar\nJacob builds an altar, just as Abraham and Isaac did. Worship marks the land and acknowledges the God who brought him back. The deceiver, wrestler, and reconciled brother now worships.\nThis is one of the signs that Jacob's identity is being reshaped. His story is not only escape; it is worship.",
@@ -3277,35 +3333,35 @@ const DAY_THIRTEEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]
 
 const DAY_THIRTEEN_READER_NOTE_TEACHING_BOOSTS: Record<string, { phraseNote: string; truthNote: string }> = {
   "Genesis 32:1-2": {
-    phraseNote: "Reading tip: Mahanaim comes before the fear report. Genesis wants the reader to see God's camp before Jacob counts Esau's men.",
+    phraseNote: "Mahanaim comes before the fear report. Genesis wants the reader to see God's camp before Jacob counts Esau's men.",
     truthNote: "This section teaches unseen reassurance. God may show His presence before He removes the situation that scares us.",
   },
   "Genesis 32:3-8": {
-    phraseNote: "Reading tip: Jacob's humility is real, but his fear is real too. Genesis lets both sit together without forcing the scene to be simple.",
+    phraseNote: "Jacob's humility is real, but his fear is real too. Genesis lets both sit together without forcing the scene to be simple.",
     truthNote: "This section teaches that old wounds can still shape present fear. Jacob needs more than a plan; he needs God to reshape him.",
   },
   "Genesis 32:9-12": {
-    phraseNote: "Reading tip: Jacob's prayer has three anchors: God's identity, Jacob's humility, and God's promise. That is why this prayer is so strong.",
+    phraseNote: "Jacob's prayer has three anchors: God's identity, Jacob's humility, and God's promise. That is why this prayer is so strong.",
     truthNote: "This section teaches promise-shaped prayer. Jacob does not pray from confidence in himself; he prays from confidence in what God said.",
   },
   "Genesis 32:13-21": {
-    phraseNote: "Reading tip: watch the word face. Jacob wants to appease Esau's face, then he will see God's face, then Esau's face. The repetition ties the whole day together.",
+    phraseNote: "The word face is repeated for a reason. Jacob wants to appease Esau's face, then he will see God's face, then Esau's face. The repetition ties the whole day together.",
     truthNote: "This section teaches that repair takes more than strategy. Jacob sends gifts, but God still deals with Jacob himself in the night.",
   },
   "Genesis 32:22-32": {
-    phraseNote: "Reading tip: Jacob has to say his old name before receiving his new name. The truth about who he has been comes before the blessing of who he is becoming.",
+    phraseNote: "Jacob has to say his old name before receiving his new name. The truth about who he has been comes before the blessing of who he is becoming.",
     truthNote: "This section teaches transformation through weakness. Jacob does not win by overpowering God; he prevails by clinging while wounded.",
   },
   "Genesis 33:1-11": {
-    phraseNote: "Reading tip: Esau's embrace is the reversal Jacob never expected. The feared face becomes a place where Jacob recognizes grace.",
+    phraseNote: "Esau's embrace is the reversal Jacob never expected. The feared face becomes a place where Jacob recognizes grace.",
     truthNote: "This section teaches surprising mercy. God can prepare reconciliation in places where fear has imagined only judgment.",
   },
   "Genesis 33:12-17": {
-    phraseNote: "Reading tip: this is not anticlimax. Jacob's slow pace shows care for children, nursing animals, and fragile peace.",
+    phraseNote: "this is not anticlimax. Jacob's slow pace shows care for children, nursing animals, and fragile peace.",
     truthNote: "This section teaches careful peace. Reconciliation may be real while still needing wisdom, boundaries, and a gentle pace.",
   },
   "Genesis 33:18-20": {
-    phraseNote: "Reading tip: safely does not mean untouched. Jacob arrives in the land with a limp, a new name, and a testimony.",
+    phraseNote: "safely does not mean untouched. Jacob arrives in the land with a limp, a new name, and a testimony.",
     truthNote: "This section teaches arrival with worship. Jacob's journey ends this day not with self-congratulation, but with an altar to the God of Israel.",
   },
 };
@@ -3340,7 +3396,7 @@ const DAY_TWO_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   "Genesis 3:1-5": {
     phrases: [
       "\"The Serpent\"\nThe serpent is introduced as crafty, which means shrewd, subtle, and skilled at twisting a conversation. Genesis does not stop to explain everything about him yet; it wants us to watch what he does.\nHe does not begin by denying God exists. He begins by challenging whether God's word and goodness can be trusted.\nLater Scripture connects the serpent with Satan, but Genesis first teaches the pattern of evil: it makes distrust sound reasonable.\nThat is why this scene matters so much. The first temptation is not only about fruit; it is about whether humans will live by God's voice or by a rival voice.",
-      "\"Did God Really Say\"\nThis is the first question recorded from the serpent, and it is aimed directly at God's word. He does not start with open rebellion; he starts with uncertainty.\nThat matters because temptation often loosens confidence before it pushes disobedience. If God's word becomes blurry, obedience starts to feel negotiable.\nThe question also sounds thoughtful, almost harmless, which is part of the danger. Eve is not being invited to worship another god yet; she is being invited to reconsider whether the true God can be trusted.\nA helpful Bible-reading tip: watch how often sin begins with a distorted question, not an obvious attack.",
+      "\"Did God Really Say\"\nThis is the first question recorded from the serpent, and it is aimed directly at God's word. He does not start with open rebellion; he starts with uncertainty.\nThat matters because temptation often loosens confidence before it pushes disobedience. If God's word becomes blurry, obedience starts to feel negotiable.\nThe question also sounds thoughtful, almost harmless, which is part of the danger. Eve is not being invited to worship another god yet; she is being invited to reconsider whether the true God can be trusted.\nA helpful Bible-watch how often sin begins with a distorted question, not an obvious attack.",
       "\"You Shall Not Eat Of Any Tree\"\nThe serpent exaggerates God's command. God gave Adam freedom to eat from every tree except one, but the serpent talks as if God has forbidden everything.\nThis is one of temptation's oldest tricks: shrink God's generosity and magnify His boundary. The garden is full of gifts, but the serpent trains Eve's attention on the one limit.\nGod's commands are easiest to resent when we forget the context of His goodness. The forbidden tree was surrounded by allowed trees.\nThis phrase teaches us to ask, \"Am I seeing God's whole generosity, or only staring at the one thing He has said no to?\"",
       "\"You Will Not Surely Die\"\nHere the serpent directly contradicts God's warning. At first he questions God; now he denies God.\nThis is not a small misunderstanding anymore. It is a rival message about life and death. God says rebellion brings death, but the serpent says rebellion has no real consequence.\nThat makes this the first false gospel in the Bible. It offers life without trust, freedom without obedience, and safety without God.\nThe rest of Genesis will prove God's word true. Death enters the family story through shame, exile, Abel's murder, and the repeated deaths in Genesis 5.",
       "\"Your Eyes Will Be Opened\"\nThe serpent promises a higher kind of sight. He makes disobedience sound like awakening, maturity, and hidden knowledge.\nThere is a cruel half-truth here. Their eyes will open, but not in the way they hope. They will not wake up into freedom; they will wake up into shame.\nTemptation often advertises insight while hiding the cost of that insight. It says, \"You will finally know,\" but it does not say, \"You will also lose innocence, peace, and trust.\"\nGenesis teaches that not every opened door leads to life, and not every opened eye sees truth clearly.",
@@ -3376,7 +3432,7 @@ const DAY_TWO_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   "Genesis 3:8-13": {
     phrases: [
       "\"They Hid Themselves\"\nThis is the first hiding in Scripture. Before sin, Adam and Eve were naked and unashamed; after sin, they hide from God.\nHiding is one of shame's first instincts. It says, \"If I can stay unseen, maybe I can stay safe.\"\nBut hiding from God never heals what is broken. It only shows how broken trust has become.\nThis phrase helps explain why people still avoid prayer, truth, and honest confession when guilt is heavy.",
-      "\"Where Are You\"\nGod's question is not about geography. He knows where Adam is.\nThe question is an invitation to step out of hiding and tell the truth. God confronts sin, but He begins by calling the sinner into the open.\nThat makes this moment merciful. Judgment is coming, but God does not begin by abandoning them.\nA Bible-study tip: when God asks questions in Scripture, He is often exposing the heart, not looking for information.",
+      "\"Where Are You\"\nGod's question is not about geography. He knows where Adam is.\nThe question is an invitation to step out of hiding and tell the truth. God confronts sin, but He begins by calling the sinner into the open.\nThat makes this moment merciful. Judgment is coming, but God does not begin by abandoning them.\nA Bible-when God asks questions in Scripture, He is often exposing the heart, not looking for information.",
       "\"I Was Afraid\"\nFear now enters the human relationship with God. The God who gave Adam breath is now the God Adam avoids.\nThat is one of sin's deepest damages. It makes the presence of God feel threatening instead of life-giving.\nAdam's fear is not because God changed. It is because Adam changed.\nThe rest of Scripture keeps answering this fear by showing God making a way for guilty people to come near again.",
       "\"Who Told You\"\nGod's question presses beneath Adam's fear. Adam's shame did not come from God's original design; it came from listening to another voice.\nThis is important because shame often carries a message: you are exposed, unsafe, unwanted, ruined. God is asking Adam to trace where that message came from.\nThe question helps us see that not every voice in our head is telling the truth.\nGod brings Adam back to the real issue: did you eat from the tree I commanded you not to eat from?",
       "\"The Woman Whom You Gave\"\nAdam blames Eve, but his words also point back toward God. It is as if he says, \"This happened because of the woman You gave me.\"\nThat is how blame works. It avoids honest confession by shifting responsibility outward.\nThe first broken human relationship after sin includes accusation, not protection.\nInstead of saying, \"I sinned,\" Adam tries to spread the blame across Eve and even God.",
@@ -3526,7 +3582,7 @@ const DAY_THREE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; t
   "Genesis 5:6-20": {
     phrases: [
       "🔁 He Lived...And Became The Father\nThe repeated rhythm of living and becoming a father shows life continuing outside Eden. People are marrying, having children, working, and building families. The world is fallen, but it has not stopped.\nThat repetition is not boring by accident. It helps the reader feel the steady march of generations and the faithfulness of God preserving human life even in a cursed world.",
-      "👨‍👩‍👧 Sons And Daughters\nGenesis names the main line it wants us to follow, but it also reminds us that many other sons and daughters existed. Their names are not listed, but their lives mattered. The Bible often focuses on one covenant line without saying everyone else is meaningless.\nThis is a helpful reading tip: when Scripture narrows the camera, it is usually tracing a promise, not denying the value of everyone outside the frame.",
+      "👨‍👩‍👧 Sons And Daughters\nGenesis names the main line it wants us to follow, but it also reminds us that many other sons and daughters existed. Their names are not listed, but their lives mattered. The Bible often focuses on one covenant line without saying everyone else is meaningless.\nThis is a helpful when Scripture narrows the camera, it is usually tracing a promise, not denying the value of everyone outside the frame.",
       "📅 All The Days\nThis phrase counts the whole span of a person's life. It reminds us that God sees a life from beginning to end, not only the famous parts. Most people in this section do not get a story, speech, or dramatic scene.\nStill, their days are numbered and remembered in Scripture. That teaches us that quiet lives are not invisible to God.",
       "🧱 Mahalalel, Jared, Enoch\nThese names may feel unfamiliar, but they form a bridge from Adam to Noah. Genesis is building a historical and theological road. The flood story does not appear out of nowhere; it comes through a line of real generations.\nThe point is not that every name needs a long biography. The point is that God is carrying the story forward step by step.",
       "⚰️ Then He Died\nAgain and again, the line returns. People live, have children, and die. Genesis wants the reader to feel death as an enemy, not as a natural friend.\nThis repeated ending prepares us for Enoch, whose story suddenly breaks the pattern. You will only feel the surprise of Enoch if you first feel the weight of everyone else dying.",
@@ -3873,61 +3929,61 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
 const DAY_FOUR_READER_NOTE_TEACHING_BOOSTS: Record<string, { phraseNote: string; truthNote: string }> = {
   "Genesis 8:1-5": {
     phraseNote:
-      "Reading tip: this section is built like a slow reversal of the flood. Pay attention to movement words: remembered, wind, subsided, rested, seen. Genesis is teaching that restoration is not random; God is personally guiding the world back toward life.",
+      "this section is built like a slow reversal of the flood. Pay attention to movement words: remembered, wind, subsided, rested, seen. Genesis is teaching that restoration is not random; God is personally guiding the world back toward life.",
     truthNote:
       "This keeps the reader from treating Genesis 8 like a simple weather report. The deeper lesson is that God's mercy can be active before the full outcome is visible. Noah's world changes because God acts first.",
   },
   "Genesis 8:6-12": {
     phraseNote:
-      "Reading tip: the birds are not random details. They help Noah discern whether the world outside the ark can sustain life again. The raven, dove, and olive leaf turn the waiting season into a lesson about patience, evidence, and hope.",
+      "the birds are not random details. They help Noah discern whether the world outside the ark can sustain life again. The raven, dove, and olive leaf turn the waiting season into a lesson about patience, evidence, and hope.",
     truthNote:
       "This helps regular readers see that faith is not reckless. Noah trusts God, but he also pays attention to signs of readiness. Biblical patience can include watching, testing, waiting, and refusing to rush the next step.",
   },
   "Genesis 8:13-19": {
     phraseNote:
-      "Reading tip: Noah sees dry ground before God tells him to leave. That detail matters because sight alone is not the final authority in Noah's life. He has learned to move when God speaks, not merely when he feels ready.",
+      "Noah sees dry ground before God tells him to leave. That detail matters because sight alone is not the final authority in Noah's life. He has learned to move when God speaks, not merely when he feels ready.",
     truthNote:
       "This section teaches that rescue is not the end of discipleship. Noah still needs God's direction after surviving the flood. Being preserved by God leads into a new assignment, not independence from God.",
   },
   "Genesis 8:20-22": {
     phraseNote:
-      "Reading tip: this altar scene explains why Genesis 7 cared about clean animals. God had already provided what Noah would need for worship after rescue. The details connect backward and forward, showing that God was preparing worship before Noah ever stepped onto dry ground.",
+      "this altar scene explains why Genesis 7 cared about clean animals. God had already provided what Noah would need for worship after rescue. The details connect backward and forward, showing that God was preparing worship before Noah ever stepped onto dry ground.",
     truthNote:
       "The big theological point is that judgment alone does not fix humanity. Noah worships, God shows mercy, and God speaks honestly about the human heart. The world continues because of divine mercy, not because people have become perfect.",
   },
   "Genesis 9:1-7": {
     phraseNote:
-      "Reading tip: Genesis 9 sounds like Genesis 1 on purpose. Blessing, fruitfulness, animals, food, and image language all make this feel like a restart. But the command about blood reminds us this is not Eden restored; it is a renewed world still marked by death and violence.",
+      "Genesis 9 sounds like Genesis 1 on purpose. Blessing, fruitfulness, animals, food, and image language all make this feel like a restart. But the command about blood reminds us this is not Eden restored; it is a renewed world still marked by death and violence.",
     truthNote:
       "This section teaches a middle layer between simple and theological: human life is sacred because it reflects God, and animal life should still be treated with reverence because life belongs to God. The renewed world needs dignity, justice, and restraint.",
   },
   "Genesis 9:8-17": {
     phraseNote:
-      "Reading tip: the rainbow covenant is not only a sweet symbol. It is a public sign that God has chosen restraint after judgment. The bow appears in the clouds, which means God's promise is remembered in the very place people might fear another flood.",
+      "the rainbow covenant is not only a sweet symbol. It is a public sign that God has chosen restraint after judgment. The bow appears in the clouds, which means God's promise is remembered in the very place people might fear another flood.",
     truthNote:
       "This section teaches that covenant is stronger than human instability. God knows the human heart is still broken, yet He binds Himself to preserve the world. The rainbow is a sign of mercy standing over a world that still needs redemption.",
   },
   "Genesis 9:18-29": {
     phraseNote:
-      "Reading tip: this story intentionally feels disappointing after the rainbow. Genesis wants the reader to realize that a rescued person can still fail. Noah's vineyard scene proves the flood changed the world outside the ark, but it did not remove sin inside the human heart.",
+      "this story intentionally feels disappointing after the rainbow. Genesis wants the reader to realize that a rescued person can still fail. Noah's vineyard scene proves the flood changed the world outside the ark, but it did not remove sin inside the human heart.",
     truthNote:
       "This section keeps the reader from turning Noah into the final hero. He is faithful, but he is still fallen. The Bible honors what God did through Noah while still showing why humanity needs a greater rescue than the ark.",
   },
   "Genesis 10:1-5": {
     phraseNote:
-      "Reading tip: Genesis 10 is a table of peoples, not just a list of names. It helps ancient readers understand where nations, coastlands, languages, and families came from. The Bible is building the map for the stories that will come later.",
+      "Genesis 10 is a table of peoples, not just a list of names. It helps ancient readers understand where nations, coastlands, languages, and families came from. The Bible is building the map for the stories that will come later.",
     truthNote:
       "This section teaches that God sees the nations before Abram is even called. That matters because Genesis will soon promise blessing for all families of the earth. The global mission is already being prepared in the genealogy.",
   },
   "Genesis 10:6-20": {
     phraseNote:
-      "Reading tip: slow down when you see names like Egypt, Canaan, Babel, Nineveh, and Philistines. These are not throwaway details. They become major places and peoples in the rest of the Bible, so Genesis is planting future context early.",
+      "slow down when you see names like Egypt, Canaan, Babel, Nineveh, and Philistines. These are not throwaway details. They become major places and peoples in the rest of the Bible, so Genesis is planting future context early.",
     truthNote:
       "This section teaches that power and progress are spiritually complicated. Kingdoms, cities, and strong leaders can organize society, but they can also become centers of pride. Genesis wants us to evaluate greatness by relationship to God, not just by influence.",
   },
   "Genesis 10:21-32": {
     phraseNote:
-      "Reading tip: Shem's line is where the story begins to narrow toward Abram. After showing the wide world of nations, Genesis quietly guides us toward one family line. That narrowing is not because God forgot the nations; it is how He plans to bless them.",
+      "Shem's line is where the story begins to narrow toward Abram. After showing the wide world of nations, Genesis quietly guides us toward one family line. That narrowing is not because God forgot the nations; it is how He plans to bless them.",
     truthNote:
       "This section teaches the shape of Genesis: wide world, chosen line, blessing for the world. The Bible narrows the focus so the promise can move forward, but the end goal remains bigger than one tribe or one family.",
   },
@@ -4103,49 +4159,49 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
 const DAY_FIVE_READER_NOTE_TEACHING_BOOSTS: Record<string, { phraseNote: string; truthNote: string }> = {
   "Genesis 11:1-9": {
     phraseNote:
-      "Reading tip: Babel is meant to be read beside Abram's call. Babel says, 'Let us make a name,' while God tells Abram, 'I will make your name great.' That contrast helps the reader see the difference between grasped glory and received blessing.",
+      "Babel is meant to be read beside Abram's call. Babel says, 'Let us make a name,' while God tells Abram, 'I will make your name great.' That contrast helps the reader see the difference between grasped glory and received blessing.",
     truthNote:
       "The deeper lesson is not simply that pride is bad. Babel shows a whole society trying to secure identity, safety, and legacy without trusting God. Genesis answers that with promise, not with another human project.",
   },
   "Genesis 11:10-32": {
     phraseNote:
-      "Reading tip: this family list is the runway into Abraham's story. Watch for three details: Shem's line, Sarai's barrenness, and the unfinished journey to Canaan. Those details become the soil where God's promise is planted.",
+      "this family list is the runway into Abraham's story. Watch for three details: Shem's line, Sarai's barrenness, and the unfinished journey to Canaan. Those details become the soil where God's promise is planted.",
     truthNote:
       "This keeps the genealogy from feeling flat. Genesis is showing that God's call meets people inside family history, real limitations, and unfinished roads. Abram's story begins before Abram understands the whole story.",
   },
   "Genesis 12:1-3": {
     phraseNote:
-      "Reading tip: count how many times God says 'I will.' The center of Abram's call is not Abram's ability but God's commitment. Abram must obey, but the future rests on what God promises to do.",
+      "count how many times God says 'I will.' The center of Abram's call is not Abram's ability but God's commitment. Abram must obey, but the future rests on what God promises to do.",
     truthNote:
       "This is one of the most important promise texts in the Bible. It connects land, nation, name, blessing, and the future blessing of all families of the earth. The rest of Scripture keeps unfolding this promise.",
   },
   "Genesis 12:4-9": {
     phraseNote:
-      "Reading tip: Abram's altars are like spiritual markers in the land. He does not own Canaan yet, but he worships there because God's promise has claimed the future. Worship becomes Abram's way of living in a promise not fully possessed.",
+      "Abram's altars are like spiritual markers in the land. He does not own Canaan yet, but he worships there because God's promise has claimed the future. Worship becomes Abram's way of living in a promise not fully possessed.",
     truthNote:
       "This section teaches faith in the gap. Abram is in the land, but the Canaanites are there. God has spoken, but fulfillment is still future. Faith keeps obeying and worshiping in that in-between space.",
   },
   "Genesis 12:10-20": {
     phraseNote:
-      "Reading tip: Egypt is not just a random travel stop. This scene foreshadows Israel's later story: famine, Egypt, Pharaoh, plagues, and leaving with possessions. Genesis often lets the family founder's life preview the later life of his descendants.",
+      "Egypt is not just a random travel stop. This scene foreshadows Israel's later story: famine, Egypt, Pharaoh, plagues, and leaving with possessions. Genesis often lets the family founder's life preview the later life of his descendants.",
     truthNote:
       "This section teaches that God's promise survives human weakness. Abram's fear creates real danger, especially for Sarai, but God protects the covenant line. The promise is held by God's faithfulness, not Abram's perfect courage.",
   },
   "Genesis 13:1-7": {
     phraseNote:
-      "Reading tip: Abram faces two opposite tests back to back. Famine tested him through lack, and abundance tests him through conflict. Genesis is showing that both need faith because both can expose what the heart trusts.",
+      "Abram faces two opposite tests back to back. Famine tested him through lack, and abundance tests him through conflict. Genesis is showing that both need faith because both can expose what the heart trusts.",
     truthNote:
       "This section teaches that returning to worship matters after failure. Abram comes back to the altar before he handles the conflict with Lot. The reset with God comes before the practical decision.",
   },
   "Genesis 13:8-13": {
     phraseNote:
-      "Reading tip: Lot's choice is written with warning lights. It looks watered like Eden, but it points toward Sodom. Genesis is training the reader to look beneath appearance and ask where a choice is spiritually leading.",
+      "Lot's choice is written with warning lights. It looks watered like Eden, but it points toward Sodom. Genesis is training the reader to look beneath appearance and ask where a choice is spiritually leading.",
     truthNote:
       "This section teaches discernment. Lot does not choose something ugly; he chooses something attractive and dangerous. That is why the passage is so useful for real life: not every good-looking option is a wise direction.",
   },
   "Genesis 13:14-18": {
     phraseNote:
-      "Reading tip: Lot lifted his eyes first and chose for himself. Then God tells Abram to lift his eyes and receive by promise. The repeated phrase is a contrast between sight-led grasping and promise-led trust.",
+      "Lot lifted his eyes first and chose for himself. Then God tells Abram to lift his eyes and receive by promise. The repeated phrase is a contrast between sight-led grasping and promise-led trust.",
     truthNote:
       "This section teaches that letting go does not make God's promise smaller. Abram gives Lot first choice, and God immediately reaffirms the land and descendants. Faith can release control because God remains the giver.",
   },
@@ -4169,7 +4225,7 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
 const DAY_SIX_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; truths: string[] }> = {
   "Genesis 14:1-12": {
     phrases: [
-      "⚔️ In The Days Of Amraphel, Arioch, Chedorlaomer, And Tidal\nGenesis suddenly sounds like an ancient war report because Abram's family story is now touching international politics. These kings represent alliances, tribute, rebellion, and military power in the ancient Near East. The Bible is showing that Abram's promise does not happen in a quiet bubble.\nReading tip: do not get stuck trying to memorize every king name. Notice the world Abram lives in. It is a world of power struggles, cities, rulers, and conflict, and Lot's choice to live near Sodom pulls him into that world.",
+      "⚔️ In The Days Of Amraphel, Arioch, Chedorlaomer, And Tidal\nGenesis suddenly sounds like an ancient war report because Abram's family story is now touching international politics. These kings represent alliances, tribute, rebellion, and military power in the ancient Near East. The Bible is showing that Abram's promise does not happen in a quiet bubble.\nThe king names place Abram in a real world of power struggles, cities, rulers, and conflict. Lot's choice to live near Sodom pulls him into that world.",
       "🏙️ Sodom And Gomorrah\nSodom and Gomorrah are already known as morally dangerous from Genesis 13, but now they are also politically vulnerable. They are part of a coalition of cities that rebel against a stronger king. Lot's location places him near both spiritual danger and military danger.\nThis is important because Genesis connects choices over time. Lot moved toward Sodom because it looked good, but now Sodom's troubles become his troubles. A direction that begins by sight can eventually create consequences the person did not expect.",
       "⛓️ Twelve Years They Served\nThis phrase shows the political background. These cities had been under the power of Chedorlaomer for twelve years before rebelling in the thirteenth. Ancient kings often demanded tribute, and rebellion could lead to brutal military response.\nGenesis is helping us understand why the battle happens. This is not random violence; it is the ancient world of empires, taxes, alliances, and retaliation. Abram's family is about to be affected by forces much bigger than one household.",
       "🪨 The Valley Of Siddim Was Full Of Tar Pits\nThe tar pits are a real battlefield detail. Bitumen or tar was useful for building, but here the landscape becomes dangerous in battle. Some kings fall there as they flee.\nThis little detail makes the scene feel grounded. Genesis is not giving a vague 'bad things happened' summary. It is describing terrain, strategy, and panic. The physical place becomes part of the defeat.",
@@ -4186,7 +4242,7 @@ const DAY_SIX_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   },
   "Genesis 14:13-16": {
     phrases: [
-      "🏃 One Who Had Escaped Came And Told Abram\nNews reaches Abram because someone survives the battle and reports Lot's capture. This moment turns Abram from a distant relative into an active rescuer. He now has to decide whether Lot's crisis is his concern.\nReading tip: this is where Abram's faith becomes practical courage. He does not only build altars. He responds when family is in danger.",
+      "🏃 One Who Had Escaped Came And Told Abram\nNews reaches Abram because someone survives the battle and reports Lot's capture. This moment turns Abram from a distant relative into an active rescuer. He now has to decide whether Lot's crisis is his concern.\nThis is where Abram's faith becomes practical courage. He does not only build altars. He responds when family is in danger.",
       "🌳 Abram The Hebrew\nThis is the first time Abram is called 'the Hebrew' in Scripture. The term may connect him with Eber's line or mark him as an outsider/sojourner among the peoples of Canaan. Either way, it identifies Abram as distinct in the land.\nThat matters because Abram is not a king with a city-state army. He is a pilgrim household leader living by promise, yet he acts with courage inside a world of kings.",
       "🏠 Trained Men Born In His House\nAbram's household is larger and more organized than many readers imagine. He has trained men, servants, resources, and responsibility. His family is more like a mobile clan than a modern small household.\nThis detail helps explain how Abram can respond militarily. Faith does not mean Abram is helpless or passive. God has given him resources, and he uses them to rescue Lot.",
       "🌙 By Night\nAbram attacks by night, likely using surprise and strategy instead of brute force. He is outnumbered compared with the larger armies, so wisdom matters.\nThis is a helpful detail because courage in the Bible is not the same as recklessness. Abram acts boldly, but he also acts thoughtfully. Faith can include planning.",
@@ -4310,49 +4366,49 @@ const DAY_SIX_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
 const DAY_SIX_READER_NOTE_TEACHING_BOOSTS: Record<string, { phraseNote: string; truthNote: string }> = {
   "Genesis 14:1-12": {
     phraseNote:
-      "Reading tip: Genesis 14 is where Lot's choice in Genesis 13 becomes a real-world problem. Watch how the story moves from attractive land to dangerous location to captivity. The Bible is teaching consequences through narrative, not a lecture.",
+      "Genesis 14 is where Lot's choice in Genesis 13 becomes a real-world problem. Watch how the story moves from attractive land to dangerous location to captivity. The Bible is teaching consequences through narrative, not a lecture.",
     truthNote:
       "This section is not just ancient war trivia. It teaches that faith has to live in a world of politics, conflict, danger, and consequences. Lot's trouble sets the stage for Abram's courage.",
   },
   "Genesis 14:13-16": {
     phraseNote:
-      "Reading tip: Abram's household is larger and more organized than a modern reader may imagine. He is a sojourner, but he is also a clan leader with trained men and real responsibility. That makes his rescue both courageous and practical.",
+      "Abram's household is larger and more organized than a modern reader may imagine. He is a sojourner, but he is also a clan leader with trained men and real responsibility. That makes his rescue both courageous and practical.",
     truthNote:
       "This section teaches that faith is not passive. Abram trusts God, but he still acts with strategy, risk, and loyalty. Biblical trust can pick up responsibility when someone else is in danger.",
   },
   "Genesis 14:17-20": {
     phraseNote:
-      "Reading tip: Melchizedek matters beyond this scene. Psalm 110 and Hebrews later use him to help explain a priest-king pattern that points beyond the Levitical priesthood. Genesis introduces the mystery; later Scripture unfolds it.",
+      "Melchizedek matters beyond this scene. Psalm 110 and Hebrews later use him to help explain a priest-king pattern that points beyond the Levitical priesthood. Genesis introduces the mystery; later Scripture unfolds it.",
     truthNote:
       "This section teaches that victory must be interpreted by worship. Melchizedek names God as the deliverer, so Abram's success is not left to ego or military pride. God Most High gets the glory.",
   },
   "Genesis 14:21-24": {
     phraseNote:
-      "Reading tip: compare Sodom's offer with Melchizedek's blessing. One voice blesses Abram under God Most High; the other offers goods from a corrupt city. Abram has to discern not only what is available, but what story the gift will tell.",
+      "compare Sodom's offer with Melchizedek's blessing. One voice blesses Abram under God Most High; the other offers goods from a corrupt city. Abram has to discern not only what is available, but what story the gift will tell.",
     truthNote:
       "This section teaches clean dependence. Abram refuses a reward that would let Sodom claim credit for his blessing. Faith sometimes says no to a benefit because the source would confuse the witness.",
   },
   "Genesis 15:1-6": {
     phraseNote:
-      "Reading tip: this is one of the Bible's key faith passages. Abram's belief is not vague religious optimism; it is trust in a specific promise from Yahweh while Abram is still childless. Faith is tied to God's spoken word.",
+      "this is one of the Bible's key faith passages. Abram's belief is not vague religious optimism; it is trust in a specific promise from Yahweh while Abram is still childless. Faith is tied to God's spoken word.",
     truthNote:
       "This section teaches the foundation of righteousness by faith. Abram is counted righteous before circumcision and before the law of Moses. Later Scripture uses this moment to show that people are made right with God by trusting His promise.",
   },
   "Genesis 15:7-11": {
     phraseNote:
-      "Reading tip: the covenant ceremony may feel strange, but it was meaningful in Abram's world. God uses a serious ancient oath form to make His promise visible. The ritual is the answer to Abram's request for assurance.",
+      "the covenant ceremony may feel strange, but it was meaningful in Abram's world. God uses a serious ancient oath form to make His promise visible. The ritual is the answer to Abram's request for assurance.",
     truthNote:
       "This section teaches that God is kind to faith that needs strengthening. Abram asks how he will know, and God does not dismiss him. God gives covenant assurance in a form Abram can understand.",
   },
   "Genesis 15:12-16": {
     phraseNote:
-      "Reading tip: this passage gives a preview of Exodus before Exodus happens. Strangers in another land, affliction, judgment on the oppressor, coming out with possessions, and returning later are all planted here.",
+      "this passage gives a preview of Exodus before Exodus happens. Strangers in another land, affliction, judgment on the oppressor, coming out with possessions, and returning later are all planted here.",
     truthNote:
       "This section teaches that promise and suffering are not always opposites. God can reveal a hard road and still be faithful. The future difficulty is held inside the covenant, not outside God's control.",
   },
   "Genesis 15:17-21": {
     phraseNote:
-      "Reading tip: the most important detail is who passes between the pieces. Abram does not. God does. That visual tells the reader where the covenant's final weight rests.",
+      "the most important detail is who passes between the pieces. Abram does not. God does. That visual tells the reader where the covenant's final weight rests.",
     truthNote:
       "This section teaches covenant grace. Abram receives assurance because God binds Himself to the promise. The future rests on Yahweh's faithfulness before it rests on Abram's performance.",
   },
@@ -4529,49 +4585,49 @@ const DAY_SEVEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; t
 const DAY_SEVEN_READER_NOTE_TEACHING_BOOSTS: Record<string, { phraseNote: string; truthNote: string }> = {
   "Genesis 16:1-3": {
     phraseNote:
-      "Reading tip: Genesis 16 is not just about impatience; it is about what impatience does to people. Sarai and Abram try to solve a promise problem with a household custom, but Hagar becomes the one who carries the cost.",
+      "Genesis 16 is not just about impatience; it is about what impatience does to people. Sarai and Abram try to solve a promise problem with a household custom, but Hagar becomes the one who carries the cost.",
     truthNote:
       "This section teaches that practical does not always mean faithful. A plan can make sense culturally and still move against trust in God's promise. The Bible asks what the plan does to people and whether God commanded it.",
   },
   "Genesis 16:4-6": {
     phraseNote:
-      "Reading tip: watch the emotional chain: conception, contempt, blame, avoidance, harsh treatment, flight. Genesis shows how quickly a shortcut can become relational collapse.",
+      "watch the emotional chain: conception, contempt, blame, avoidance, harsh treatment, flight. Genesis shows how quickly a shortcut can become relational collapse.",
     truthNote:
       "This section teaches that control spreads damage. Sarai is wounded, Hagar is mistreated, and Abram avoids responsibility. Human schemes often create more pain than the waiting they tried to escape.",
   },
   "Genesis 16:7-12": {
     phraseNote:
-      "Reading tip: this is the first angel of the Lord scene, and it happens with Hagar. That placement matters. Genesis centers God's attention on the vulnerable person most people in the household failed to protect.",
+      "this is the first angel of the Lord scene, and it happens with Hagar. That placement matters. Genesis centers God's attention on the vulnerable person most people in the household failed to protect.",
     truthNote:
       "This section teaches that God hears affliction before the powerful fix anything. Hagar's encounter shows that God's compassion reaches people caught in the consequences of someone else's choices.",
   },
   "Genesis 16:13-16": {
     phraseNote:
-      "Reading tip: do not rush past Hagar naming God. This is one of the most remarkable moments in Genesis: a mistreated Egyptian servant becomes the person who confesses God as the One who sees.",
+      "do not rush past Hagar naming God. This is one of the most remarkable moments in Genesis: a mistreated Egyptian servant becomes the person who confesses God as the One who sees.",
     truthNote:
       "This section teaches that being seen by God gives dignity human systems may deny. Hagar's story becomes part of the Bible's theology, not a side note to Abraham's family drama.",
   },
   "Genesis 17:1-8": {
     phraseNote:
-      "Reading tip: Genesis 17 happens after thirteen years of silence. The long gap makes God's appearance as God Almighty more powerful. The promise has not weakened with time, even though Abraham's body has.",
+      "Genesis 17 happens after thirteen years of silence. The long gap makes God's appearance as God Almighty more powerful. The promise has not weakened with time, even though Abraham's body has.",
     truthNote:
       "This section teaches that God defines identity by covenant promise. Abram becomes Abraham before the evidence arrives. God's word names the future before the future can be seen.",
   },
   "Genesis 17:9-14": {
     phraseNote:
-      "Reading tip: circumcision is tied to offspring because the promise is tied to descendants. The sign is placed in the body right where Abraham needs to remember that life and future come from God's promise.",
+      "circumcision is tied to offspring because the promise is tied to descendants. The sign is placed in the body right where Abraham needs to remember that life and future come from God's promise.",
     truthNote:
       "This section teaches that covenant is not only believed privately; it is remembered visibly and generationally. God's promise marks a people and calls them to live as belonging to Him.",
   },
   "Genesis 17:15-22": {
     phraseNote:
-      "Reading tip: Sarah's name change is covenant clarity. After Genesis 16 tried to route the promise around her, Genesis 17 says the promised son will come through Sarah herself.",
+      "Sarah's name change is covenant clarity. After Genesis 16 tried to route the promise around her, Genesis 17 says the promised son will come through Sarah herself.",
     truthNote:
       "This section teaches that God does not need to bypass impossibility. Sarah's barrenness is not a reason to replace her in the promise; it is the place where God's power will be shown.",
   },
   "Genesis 17:23-27": {
     phraseNote:
-      "Reading tip: the timing matters. Abraham obeys the same day, before Isaac exists. The sign of the promise is placed on the household while the promise still has to be trusted.",
+      "the timing matters. Abraham obeys the same day, before Isaac exists. The sign of the promise is placed on the household while the promise still has to be trusted.",
     truthNote:
       "This section teaches that faith and obedience belong together. Abraham was counted righteous by faith in Genesis 15, and that same faith now responds with concrete obedience in Genesis 17.",
   },
@@ -4606,7 +4662,7 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
 const DAY_EIGHT_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; truths: string[] }> = {
   "Genesis 18:1-8": {
     phrases: [
-      "🌳 The Oaks Of Mamre\nMamre is a real place connected with Abraham's life in Canaan. Abraham has built altars, moved tents, and lived as a sojourner, and now the Lord meets him in the ordinary setting of his tent. The promise story keeps happening in real places, not in vague religious space.\nReading tip: Genesis often uses location as memory. Mamre becomes part of Abraham's walk with God, a place where promise, hospitality, and divine visitation meet.",
+      "🌳 The Oaks Of Mamre\nMamre is a real place connected with Abraham's life in Canaan. Abraham has built altars, moved tents, and lived as a sojourner, and now the Lord meets him in the ordinary setting of his tent. The promise story keeps happening in real places, not in vague religious space.\nGenesis often uses location as memory. Mamre becomes part of Abraham's walk with God, a place where promise, hospitality, and divine visitation meet.",
       "☀️ The Heat Of The Day\nAbraham is sitting at the tent door during the hottest part of the day, when people would naturally slow down and seek shade. The visitors arrive in a normal daily scene, not during a formal worship service.\nThat matters because God often enters ordinary rhythms. Abraham's tent becomes the setting for holy encounter, showing that divine promise can meet people in the middle of regular life.",
       "🏃 Abraham Ran To Meet Them\nAbraham's running shows urgency, honor, and hospitality. In ancient culture, welcoming travelers mattered deeply because travel could be dangerous and tiring. Abraham does not treat the visitors as interruptions.\nThe detail is striking because Abraham is an older man and a household leader. He humbles himself by running, bowing, and serving. Hospitality becomes a place where reverence is practiced.",
       "🍞 A Little Bread\nAbraham modestly offers a little bread, but then prepares a generous meal. That kind of understatement is common hospitality language: he offers simply, then gives abundantly. The meal includes bread, curds, milk, and a tender calf.\nThis shows more than politeness. Abraham's welcome is costly, attentive, and generous. The scene teaches that receiving others can become a way of honoring God.",
@@ -4641,7 +4697,7 @@ const DAY_EIGHT_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; t
   },
   "Genesis 18:16-21": {
     phrases: [
-      "👀 Looked Toward Sodom\nThe visitors turn their attention toward Sodom, and the story shifts from promise to judgment. This creates a sharp contrast: Sarah's tent receives a promise of life, while Sodom faces investigation and judgment.\nReading tip: Day 8 holds both mercy and judgment side by side. Genesis does not separate God's kindness from His justice.",
+      "👀 Looked Toward Sodom\nThe visitors turn their attention toward Sodom, and the story shifts from promise to judgment. This creates a sharp contrast: Sarah's tent receives a promise of life, while Sodom faces investigation and judgment.\nDay 8 holds both mercy and judgment side by side. Genesis does not separate God's kindness from His justice.",
       "🚶 Abraham Went With Them\nAbraham walks with the visitors as they move toward Sodom. This shows closeness and hospitality continuing beyond the meal. It also places Abraham near the conversation about judgment.\nThe detail matters because Abraham is about to intercede. He is not detached from the fate of the cities; he walks with God long enough to plead.",
       "🤔 Shall I Hide From Abraham\nGod lets Abraham into the conversation because Abraham is part of the covenant plan. This is not because God needs advice. It is because Abraham's role will include teaching justice and righteousness to his household.\nThis phrase shows relational depth. God is forming Abraham not only as a receiver of promise, but as someone who learns God's ways.",
       "🌍 All Nations Of The Earth Shall Be Blessed\nThe global promise returns in the middle of a judgment scene. Abraham's family is meant to become a blessing to the nations, not merely a private religious tribe.\nThat makes the Sodom conversation heavier. Abraham must learn how God's blessing relates to righteousness, justice, mercy, and judgment in the wider world.",
@@ -4677,7 +4733,7 @@ const DAY_EIGHT_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; t
   },
   "Genesis 19:1-11": {
     phrases: [
-      "🌆 Lot Sat In The Gate Of Sodom\nThe city gate was a place of leadership, business, and public decisions. Lot is not merely near Sodom now; he is settled into its public life. This is a long way from simply pitching tents near the city.\nReading tip: track Lot's movement. He looked toward Sodom, moved near Sodom, lived in Sodom, and now sits in the gate. Compromise often moves by stages.",
+      "🌆 Lot Sat In The Gate Of Sodom\nThe city gate was a place of leadership, business, and public decisions. Lot is not merely near Sodom now; he is settled into its public life. This is a long way from simply pitching tents near the city.\nLot's movement matters. He looked toward Sodom, moved near Sodom, lived in Sodom, and now sits in the gate. Compromise often moves by stages.",
       "👼 Two Angels Came To Sodom\nThe visitors who were with Abraham now arrive as angels in Sodom. The city is being examined, just as God said. Their arrival tests the city and reveals its character.\nThis matters because judgment is not falling without exposure. Sodom's response to the visitors will show what kind of city it has become.",
       "🏠 Turn Aside To Your Servant's House\nLot offers hospitality, which contrasts with Sodom's violence. He knows the city is dangerous enough that the visitors should not spend the night in the square.\nLot's action shows some moral concern, but it also reveals how compromised his situation is. He is trying to protect guests inside a city he chose to inhabit.",
       "🚪 The Men Of The City Surrounded The House\nThe whole scene becomes terrifying. The city gathers in violent pressure against Lot's house. Genesis is exposing public, aggressive wickedness, not a private misunderstanding.\nThis is why Sodom becomes a symbol of deep corruption. The city does not protect strangers; it threatens them. Hospitality is replaced by violence.",
@@ -4696,7 +4752,7 @@ const DAY_EIGHT_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; t
   "Genesis 19:12-22": {
     phrases: [
       "👨‍👩‍👧 Whoever You Have In The City\nThe angels tell Lot to bring out his family. Judgment is coming, but mercy gives warning first. Lot is allowed to call others out before destruction falls.\nThis is important because God is not sneaking judgment in without warning. The door of escape is opened, even if people refuse to take it seriously.",
-      "😂 He Seemed To His Sons-In-Law To Be Joking\nLot's warning sounds like a joke to the men connected to his household. That detail is tragic. Lot has lived so long in Sodom that his urgent spiritual warning carries no weight with them.\nReading tip: credibility matters. A compromised life can make true warnings sound unbelievable to the people closest to us.",
+      "😂 He Seemed To His Sons-In-Law To Be Joking\nLot's warning sounds like a joke to the men connected to his household. That detail is tragic. Lot has lived so long in Sodom that his urgent spiritual warning carries no weight with them.\nCredibility matters here. A compromised life can make true warnings sound unbelievable to the people closest to us.",
       "⏰ As Morning Dawned\nMorning brings urgency. The time for delay is over. The angels press Lot to leave before judgment falls.\nThis detail creates tension. Lot knows danger is coming, yet leaving is still hard. The city has a pull on him even when it is under judgment.",
       "⏳ But He Lingered\nThis is one of the saddest phrases in the chapter. Lot has been warned, but he hesitates. His feet move slower than the mercy being offered.\nThe phrase is painfully relatable. People can know something is dangerous and still linger because attachment, fear, comfort, and confusion hold them in place.",
       "🤝 The Men Seized Him By The Hand\nThe angels grab Lot, his wife, and his daughters and bring them out. This is forceful mercy. Lot is not rescued because he is decisive; he is rescued because the Lord is merciful.\nThat matters deeply. Sometimes mercy does not merely invite; it pulls. God saves Lot from a place he is too slow to leave.",
@@ -4731,7 +4787,7 @@ const DAY_EIGHT_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; t
   },
   "Genesis 19:30-38": {
     phrases: [
-      "⛰️ Lot Went Up Out Of Zoar\nLot begged to flee to Zoar, but then he becomes afraid and moves to the mountains. His life after Sodom is unstable. He was rescued, but he is not whole.\nReading tip: rescue from a place does not automatically heal the damage of that place. Lot's family carries confusion and fear into the cave.",
+      "⛰️ Lot Went Up Out Of Zoar\nLot begged to flee to Zoar, but then he becomes afraid and moves to the mountains. His life after Sodom is unstable. He was rescued, but he is not whole.\nRescue from a place does not automatically heal the damage of that place. Lot's family carries confusion and fear into the cave.",
       "🕳️ Lived In A Cave\nThe cave is a lonely, diminished setting compared with Abraham's tents and altars. Lot once chose the well-watered plain; now he ends up isolated in a cave.\nThis contrast is painful. The path that looked like abundance has led to fear, loss, and moral darkness. Genesis is showing the long tail of compromise.",
       "👭 The Firstborn Said To The Younger\nLot's daughters take initiative in a disturbing plan. Their words show desperation and distorted thinking. They believe there is no man to preserve the family line.\nThis may reflect trauma after judgment and isolation, but Genesis does not excuse the act. It shows how deeply damaged the family world has become.",
       "🍷 Let Us Make Our Father Drink Wine\nWine becomes the means of control, just as Noah's drunkenness led to shame in Genesis 9. Genesis is linking stories of family breakdown after major judgment scenes.\nThis detail warns that intoxication can become a doorway to vulnerability, manipulation, and sin. The daughters use their father's weakness to execute their plan.",
@@ -4748,7 +4804,7 @@ const DAY_EIGHT_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; t
   },
   "Genesis 20:1-18": {
     phrases: [
-      "🔁 Sarah Is My Sister\nAbraham repeats the same fear-driven pattern from Egypt. This is painful because he has heard promises, received covenant signs, and still falls back into an old survival strategy.\nReading tip: Genesis shows spiritual growth honestly. People can have real faith and still revisit old fears. The Bible does not hide repeated weakness.",
+      "🔁 Sarah Is My Sister\nAbraham repeats the same fear-driven pattern from Egypt. This is painful because he has heard promises, received covenant signs, and still falls back into an old survival strategy.\nGenesis shows spiritual growth honestly. People can have real faith and still revisit old fears. The Bible does not hide repeated weakness.",
       "👑 Abimelech King Of Gerar\nAbimelech is a Philistine-region ruler in Gerar. He is not part of Abraham's covenant family, yet God speaks to him in a dream. The scene complicates easy assumptions about insiders and outsiders.\nAbimelech acts with more integrity in this moment than Abraham does. Genesis lets an outsider rebuke the covenant man, which should humble the reader.",
       "💭 God Came To Abimelech In A Dream\nGod intervenes directly to protect Sarah and the promise. Isaac has not yet been born, so Sarah being taken into another household would threaten the covenant line.\nThis dream is mercy for Abimelech and protection for Sarah. God stops the situation before it becomes worse, even though Abraham created the danger.",
       "🫀 In The Integrity Of My Heart\nAbimelech defends himself by saying he acted without knowing the truth. God acknowledges that He knows Abimelech acted in integrity and that He kept him from sinning.\nThis is important because God judges with knowledge. He sees motives, ignorance, and action clearly. Abimelech is not treated as guilty in the same way Abraham would be.",
@@ -4768,39 +4824,39 @@ const DAY_EIGHT_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; t
 
 const DAY_EIGHT_READER_NOTE_TEACHING_BOOSTS: Record<string, { phraseNote: string; truthNote: string }> = {
   "Genesis 18:1-8": {
-    phraseNote: "Reading tip: Abraham's hospitality is the doorway into the promise conversation. The scene teaches that ordinary welcome, food, and attention can become holy ground when God is at work.",
+    phraseNote: "Abraham's hospitality is the doorway into the promise conversation. The scene teaches that ordinary welcome, food, and attention can become holy ground when God is at work.",
     truthNote: "This section teaches embodied faith. Abraham's trust is not only in his beliefs; it shows in humility, service, and open-handed welcome.",
   },
   "Genesis 18:9-15": {
-    phraseNote: "Reading tip: Sarah's laugh is not a throwaway reaction. Isaac's name will mean laughter, so God turns the impossible laugh into the child's identity.",
+    phraseNote: "Sarah's laugh is not a throwaway reaction. Isaac's name will mean laughter, so God turns the impossible laugh into the child's identity.",
     truthNote: "This section teaches that God's promise can meet honest doubt without being defeated by it. The question is not Sarah's strength, but whether anything is too hard for Yahweh.",
   },
   "Genesis 18:16-21": {
-    phraseNote: "Reading tip: this section explains why Abraham is invited into the Sodom conversation. He must teach righteousness and justice, so God lets him learn how divine justice works.",
+    phraseNote: "this section explains why Abraham is invited into the Sodom conversation. He must teach righteousness and justice, so God lets him learn how divine justice works.",
     truthNote: "This section teaches that covenant blessing has moral purpose. Abraham's family is chosen to become a people of righteousness and justice, not just a family with promises.",
   },
   "Genesis 18:22-33": {
-    phraseNote: "Reading tip: Abraham's intercession is not bargaining like God is reluctant to be good. It is prayer built on God's own justice and mercy.",
+    phraseNote: "Abraham's intercession is not bargaining like God is reluctant to be good. It is prayer built on God's own justice and mercy.",
     truthNote: "This section teaches reverent boldness. Abraham asks deeply because he trusts that the Judge of all the earth will do what is right.",
   },
   "Genesis 19:1-11": {
-    phraseNote: "Reading tip: Lot sitting in the gate shows how far he has moved into Sodom's life. The gate was a place of public standing, not casual visiting.",
+    phraseNote: "Lot sitting in the gate shows how far he has moved into Sodom's life. The gate was a place of public standing, not casual visiting.",
     truthNote: "This section teaches that proximity can become entanglement. Lot is distressed by Sodom, but he is also woven into the city.",
   },
   "Genesis 19:12-22": {
-    phraseNote: "Reading tip: the phrase 'he lingered' is the emotional center. Lot knows the truth, but attachment makes him slow to obey.",
+    phraseNote: "the phrase 'he lingered' is the emotional center. Lot knows the truth, but attachment makes him slow to obey.",
     truthNote: "This section teaches forceful mercy. Lot is saved because the Lord is merciful, not because Lot is spiritually sharp in the moment.",
   },
   "Genesis 19:23-29": {
-    phraseNote: "Reading tip: 'God remembered Abraham' connects Lot's rescue with intercession. Abraham's prayer did not save Sodom, but mercy still reached Lot.",
+    phraseNote: "'God remembered Abraham' connects Lot's rescue with intercession. Abraham's prayer did not save Sodom, but mercy still reached Lot.",
     truthNote: "This section teaches judgment and mercy together. The cities fall, Lot is pulled out, and Abraham's intercession is not forgotten.",
   },
   "Genesis 19:30-38": {
-    phraseNote: "Reading tip: the cave scene is meant to feel ugly and sad. Genesis is showing that Sodom's damage follows Lot's family even after they leave the city.",
+    phraseNote: "the cave scene is meant to feel ugly and sad. Genesis is showing that Sodom's damage follows Lot's family even after they leave the city.",
     truthNote: "This section teaches that rescue must be followed by healing. Lot escaped judgment, but his family still carries deep distortion.",
   },
   "Genesis 20:1-18": {
-    phraseNote: "Reading tip: this repeats the Egypt pattern right before Isaac's birth. The promise is close, and Abraham's old fear resurfaces at the worst possible time.",
+    phraseNote: "this repeats the Egypt pattern right before Isaac's birth. The promise is close, and Abraham's old fear resurfaces at the worst possible time.",
     truthNote: "This section teaches that God's faithfulness protects the promise even when the promise-bearer is still flawed. Abraham fails, but God does not.",
   },
 };
@@ -4834,7 +4890,7 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
 const DAY_NINE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; truths: string[] }> = {
   "Genesis 21:1-7": {
     phrases: [
-      "👁️ Yahweh Visited Sarah\nThis phrase means God acted for Sarah just as He promised. The focus is not on Abraham's strength or Sarah's ability, but on the Lord personally keeping His word. Sarah's body had become the place where impossibility met divine faithfulness.\nReading tip: notice that Genesis says the Lord visited Sarah, not merely Abraham. Sarah is not a side character. The promised birth happens through the woman God named and blessed.",
+      "👁️ Yahweh Visited Sarah\nThis phrase means God acted for Sarah just as He promised. The focus is not on Abraham's strength or Sarah's ability, but on the Lord personally keeping His word. Sarah's body had become the place where impossibility met divine faithfulness.\nGenesis says the Lord visited Sarah, not merely Abraham. Sarah is not a side character. The promised birth happens through the woman God named and blessed.",
       "🗣️ As He Had Said\nGenesis repeats this idea because Isaac's birth is the fulfillment of God's spoken promise. God said it, and then God did it. The repetition teaches the reader to connect promise and fulfillment.\nThis is one of the big patterns of Scripture. God's word may wait through years of silence, but it does not become weak with age. What God says remains alive until the appointed time.",
       "⏰ At The Set Time\nIsaac is born at the time God had appointed. From Sarah's view, the promise felt late. From God's view, the timing was set. That difference matters for understanding the whole Abraham story.\nThis phrase teaches that divine timing is not the same as human impatience. The promise arrives when God chooses, and the waiting becomes part of the testimony.",
       "😂 Isaac\nIsaac's name means laughter. Abraham laughed, Sarah laughed, and now the child himself carries the memory of impossible joy. The name turns earlier disbelief and amazement into celebration.\nThat is beautiful because God does not erase the laughter; He redeems it. Every time Isaac's name is spoken, it reminds the family that God made the impossible laughable in the best way.",
@@ -4852,7 +4908,7 @@ const DAY_NINE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tr
   "Genesis 21:8-21": {
     phrases: [
       "🎉 The Child Grew And Was Weaned\nWeaning was a major milestone in the ancient world because child mortality was high. Families often celebrated when a child survived infancy and moved into the next stage of life. Isaac's feast is a public celebration of promise continuing.\nThat context helps the scene make sense. This is not a small family snack; it is a joyful marker that the promised child is growing.",
-      "👀 Sarah Saw The Son Of Hagar\nSarah notices Ishmael in a way that troubles her. The passage is painful because old wounds from Genesis 16 are still alive. The shortcut has created a lasting household fracture.\nReading tip: Genesis does not let people escape the consequences of earlier control. Ishmael is loved by God, but the household tension remains real.",
+      "👀 Sarah Saw The Son Of Hagar\nSarah notices Ishmael in a way that troubles her. The passage is painful because old wounds from Genesis 16 are still alive. The shortcut has created a lasting household fracture.\nGenesis does not let people escape the consequences of earlier control. Ishmael is loved by God, but the household tension remains real.",
       "📤 Cast Out This Servant Woman And Her Son\nSarah's words are harsh, and the scene is heavy. She wants Hagar and Ishmael removed so Isaac's inheritance is not threatened. Ancient inheritance concerns were serious, but the human pain here is also serious.\nGenesis lets us feel the grief. Hagar and Ishmael are not treated as disposable by God, even when the household conflict pushes them away.",
       "💔 The Thing Was Very Grievous To Abraham\nAbraham is deeply distressed because Ishmael is his son. This matters because Ishmael is not just a problem in the narrative. He is Abraham's child, and Abraham loves him.\nThe phrase keeps the story from becoming cold theology. Covenant clarity and family pain exist together in the same scene.",
       "👂 God Heard The Voice Of The Boy\nThis repeats the meaning of Ishmael's name: God hears. In Genesis 16, God heard Hagar's affliction. Here, God hears the boy in the wilderness.\nThat is not accidental. Ishmael's name becomes true in his life again. God hears the child outside the covenant line and moves with compassion.",
@@ -4887,7 +4943,7 @@ const DAY_NINE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tr
   },
   "Genesis 22:1-19": {
     phrases: [
-      "🧪 God Tested Abraham\nA test in Scripture reveals and refines faith; it is not the same as tempting someone to evil. God is bringing Abraham's trust into the open in the most costly way imaginable. The test concerns Isaac, the child of promise.\nReading tip: Genesis 22 is meant to feel heavy. The point is not that God enjoys pain, but that Abraham's trust in God's promise is being revealed at the deepest level.",
+      "🧪 God Tested Abraham\nA test in Scripture reveals and refines faith; it is not the same as tempting someone to evil. God is bringing Abraham's trust into the open in the most costly way imaginable. The test concerns Isaac, the child of promise.\nGenesis 22 is meant to feel heavy. The point is not that God enjoys pain, but that Abraham's trust in God's promise is being revealed at the deepest level.",
       "👦 Your Son, Your Only Son Isaac, Whom You Love\nThe wording slows down and presses on Abraham's heart. Isaac is not Abraham's only biological son, but he is the only covenant son through Sarah, the son of promise. The phrase highlights love, promise, and cost.\nThis language also echoes forward for Christian readers because the beloved son offered on a mountain becomes a major biblical pattern.",
       "⛰️ The Land Of Moriah\nMoriah becomes the place of testing and provision. Later biblical tradition connects this region with Jerusalem and the temple mount. Whether readers know that or not, the location becomes a place where sacrifice and provision meet.\nThe journey to Moriah turns the promise into a question: can Abraham trust God when obedience seems to threaten the very promise God gave?",
       "🐑 God Will Provide For Himself The Lamb\nAbraham's answer to Isaac is full of faith, even if Abraham does not yet know exactly how God will provide. He trusts that God Himself will supply what is needed.\nThis phrase becomes the heart of the chapter. The story is not finally about Abraham providing for God, but God providing what Abraham cannot.",
@@ -4924,7 +4980,7 @@ const DAY_NINE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tr
   },
   "Genesis 24:1-67": {
     phrases: [
-      "👴 Abraham Was Old, Well Advanced In Age\nAbraham's life is moving toward its final stage, so the promise must pass to the next generation. Isaac needs a wife, and the covenant family must continue. This chapter is about legacy.\nReading tip: Genesis 24 is long because the transfer of the promise matters. God is not only the God of Abraham's beginning; He is guiding the future after Abraham.",
+      "👴 Abraham Was Old, Well Advanced In Age\nAbraham's life is moving toward its final stage, so the promise must pass to the next generation. Isaac needs a wife, and the covenant family must continue. This chapter is about legacy.\nGenesis 24 is long because the transfer of the promise matters. God is not only the God of Abraham's beginning; He is guiding the future after Abraham.",
       "🤲 Put Your Hand Under My Thigh\nThis oath gesture sounds strange today, but it was connected with solemn family and covenant seriousness in the ancient world. It likely relates to descendants and the continuation of the family line.\nThe gesture fits the chapter because the mission concerns Isaac's future wife and the covenant offspring. Abraham treats the task as sacred, not casual matchmaking.",
       "🚫 Do Not Take A Wife From The Daughters Of The Canaanites\nAbraham does not want Isaac absorbed into Canaanite religious and moral life. This is not about ethnic pride as much as covenant identity and worship. The family line must not be pulled away from the Lord.\nThis helps readers understand the concern. Marriage in Genesis is not merely romance; it affects worship, household direction, and covenant future.",
       "🧭 He Will Send His Angel Before You\nAbraham trusts that God will guide the servant's journey. The mission is practical, but it is also under divine direction. The servant must travel, ask, observe, and pray, but God goes before him.\nThis phrase gives the chapter its confidence. Guidance does not erase action; it goes with faithful action.",
@@ -4946,27 +5002,27 @@ const DAY_NINE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tr
 
 const DAY_NINE_READER_NOTE_TEACHING_BOOSTS: Record<string, { phraseNote: string; truthNote: string }> = {
   "Genesis 21:1-7": {
-    phraseNote: "Reading tip: count the promise-fulfillment words: visited, as He had said, as He had spoken, set time. Genesis wants the reader to feel that Isaac exists because God kept His word.",
+    phraseNote: "The promise-fulfillment words are stacked together: visited, as He had said, as He had spoken, and set time. Genesis wants the reader to feel that Isaac exists because God kept His word.",
     truthNote: "This section teaches promise fulfilled after impossible waiting. Isaac is not just a baby; he is living proof that God's word outlasts age, barrenness, laughter, and delay.",
   },
   "Genesis 21:8-21": {
-    phraseNote: "Reading tip: do not make Ishmael invisible because Isaac is the covenant son. Genesis carefully shows God hearing Ishmael and providing for Hagar, even while Isaac remains the promise line.",
+    phraseNote: "Ishmael is not invisible just because Isaac is the covenant son. Genesis carefully shows God hearing Ishmael and providing for Hagar, even while Isaac remains the promise line.",
     truthNote: "This section teaches that God's specific covenant choice does not erase His compassion for others. Isaac has a role, but Ishmael has dignity, future, and God's attention.",
   },
   "Genesis 21:22-34": {
-    phraseNote: "Reading tip: Beersheba combines ordinary life and worship: wells, oaths, disputes, trees, and calling on God. Abraham's faith is lived in land agreements as much as altar moments.",
+    phraseNote: "Beersheba combines ordinary life and worship: wells, oaths, disputes, trees, and calling on God. Abraham's faith is lived in land agreements as much as altar moments.",
     truthNote: "This section teaches patient settlement. Abraham does not possess the whole land yet, but he acts with integrity, secures a well, plants a tree, and worships the everlasting God.",
   },
   "Genesis 22:1-19": {
-    phraseNote: "Reading tip: Genesis 22 is built around tension: the son God promised is the son God asks Abraham to surrender. The chapter only makes sense if the reader feels that impossible tension.",
+    phraseNote: "Genesis 22 is built around tension: the son God promised is the son God asks Abraham to surrender. The chapter only makes sense if the reader feels that impossible tension.",
     truthNote: "This section teaches that God Himself provides. Abraham's obedience is real, but the final word is not Abraham's sacrifice. The final word is the Lord's provision.",
   },
   "Genesis 23:1-20": {
-    phraseNote: "Reading tip: land purchase details may feel slow, but they matter. The first owned piece of the promised land is tied to Sarah's burial, so grief becomes connected with promise.",
+    phraseNote: "land purchase details may feel slow, but they matter. The first owned piece of the promised land is tied to Sarah's burial, so grief becomes connected with promise.",
     truthNote: "This section teaches faith inside grief. Abraham mourns honestly and acts faithfully, buying a burial place that becomes a small foothold in the promised land.",
   },
   "Genesis 24:1-67": {
-    phraseNote: "Reading tip: this long chapter is about more than finding a wife. It shows God's guidance moving the covenant promise from Abraham to Isaac and Rebekah.",
+    phraseNote: "this long chapter is about more than finding a wife. It shows God's guidance moving the covenant promise from Abraham to Isaac and Rebekah.",
     truthNote: "This section teaches generational guidance. God leads through prayer, character, hospitality, family decisions, and Rebekah's courageous yes.",
   },
 };
@@ -5000,7 +5056,7 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
 const DAY_TEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; truths: string[] }> = {
   "Genesis 25:1-18": {
     phrases: [
-      "👵 Abraham Took Another Wife\nAfter Sarah's death, Abraham's life continues. Keturah bears him more children, which reminds us that Abraham's household becomes larger than the covenant line through Isaac. Genesis is careful to honor these descendants while keeping the promise line clear.\nReading tip: more descendants does not mean the covenant path has changed. Genesis can acknowledge Abraham's wider family while still showing that God's specific promise continues through Isaac.",
+      "👵 Abraham Took Another Wife\nAfter Sarah's death, Abraham's life continues. Keturah bears him more children, which reminds us that Abraham's household becomes larger than the covenant line through Isaac. Genesis is careful to honor these descendants while keeping the promise line clear.\nMore descendants does not mean the covenant path has changed. Genesis can acknowledge Abraham's wider family while still showing that God's specific promise continues through Isaac.",
       "🎁 Abraham Gave Gifts\nAbraham gives gifts to the sons of his concubines and sends them away from Isaac. In the ancient world, inheritance arrangements mattered deeply because they protected the main heir's future. This is Abraham acting to preserve clarity around Isaac's covenant role.\nThis detail may sound harsh, but the purpose is narrative focus. Abraham provides for the other sons while making sure the covenant inheritance is not confused.",
       "👦 Isaac His Son\nIsaac is singled out because he is the promised son through Sarah. Abraham has other children, but Isaac carries the covenant promise of land, offspring, and blessing. The story is narrowing to the next generation.\nThis matters because Genesis repeatedly distinguishes value from role. Other sons matter, but Isaac has a specific covenant calling.",
       "🌅 Abraham Breathed His Last\nAbraham dies after a long life, and Genesis describes him as old, full, and gathered to his people. The father of the promise does not live to see everything fulfilled, but he dies inside God's faithfulness.\nThat is important. Abraham's death does not mean the promise failed. God's covenant is bigger than one man's lifespan.",
@@ -5017,7 +5073,7 @@ const DAY_TEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   },
   "Genesis 25:19-34": {
     phrases: [
-      "📜 These Are The Generations Of Isaac\nThe story now shifts from Abraham to Isaac. This heading tells readers that the covenant promise is moving into the next generation. Abraham is gone, but God's story is not finished.\nReading tip: Genesis uses these headings like chapter doors. When you see 'generations,' ask whose line the promise is following now.",
+      "📜 These Are The Generations Of Isaac\nThe story now shifts from Abraham to Isaac. This heading tells readers that the covenant promise is moving into the next generation. Abraham is gone, but God's story is not finished.\nGenesis uses these headings like chapter doors. When you see 'generations,' ask whose line the promise is following now.",
       "🙏 Isaac Prayed To Yahweh For His Wife\nRebekah is barren, just like Sarah was. Isaac responds by praying, and the Lord answers. The next generation begins with the same lesson: the covenant family exists by God's gift, not natural strength.\nThis is important because barrenness keeps appearing in Genesis. God repeatedly brings promise through impossible or delayed birth so no one can mistake the covenant for human ability.",
       "🤼 The Children Struggled Together Within Her\nThe conflict between Jacob and Esau begins before birth. This is not normal sibling rivalry only; Genesis is showing that the family struggle is woven into the story from the womb.\nRebekah senses that something significant is happening and asks the Lord. That makes her more spiritually alert here than a passive observer.",
       "🌍 Two Nations Are In Your Womb\nGod tells Rebekah that the twins represent two peoples and two futures. Jacob and Esau are not just individual brothers; they become the ancestors of Israel and Edom.\nThis helps readers understand why the birth story has so much weight. Family conflict will become national conflict later in Scripture.",
@@ -5035,7 +5091,7 @@ const DAY_TEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   },
   "Genesis 26:1-11": {
     phrases: [
-      "🌾 There Was A Famine In The Land\nIsaac faces famine just as Abraham did. This creates a deliberate father-son echo. The covenant heir must learn trust under pressure, not only inherit promises on paper.\nReading tip: Genesis often repeats patterns across generations. The repetition helps us see both inherited faith and inherited weakness.",
+      "🌾 There Was A Famine In The Land\nIsaac faces famine just as Abraham did. This creates a deliberate father-son echo. The covenant heir must learn trust under pressure, not only inherit promises on paper.\nGenesis often repeats patterns across generations. The repetition helps us see both inherited faith and inherited weakness.",
       "🚫 Do Not Go Down To Egypt\nGod tells Isaac not to go to Egypt. Unlike Abraham in Genesis 12, Isaac is told to stay in the land. The promise is tied to God's presence in the place God appoints.\nThis command teaches that survival instincts must submit to God's word. The obvious practical option is not always the faithful path.",
       "🏕️ Sojourn In This Land\nIsaac is called to live as a sojourner, staying in the land without full ownership. Sojourning means temporary residence, dependence, and vulnerability. He must trust God's presence while not fully possessing the promise.\nThis is Abraham's life repeated in Isaac. The covenant family lives between promise and fulfillment.",
       "🤝 I Will Be With You And Bless You\nGod repeats the core promise: presence and blessing. Isaac does not merely inherit Abraham's story; he receives God's word personally.\nThat matters because every generation needs its own encounter with God's promise. Isaac cannot live only on Abraham's memories.",
@@ -5053,7 +5109,7 @@ const DAY_TEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   },
   "Genesis 26:12-25": {
     phrases: [
-      "🌱 Isaac Sowed In That Land\nIsaac plants during a famine season and receives a hundredfold because the Lord blesses him. This is not luck; Genesis directly connects his fruitfulness to God's blessing.\nReading tip: Isaac's obedience to stay in the land is followed by provision in that land. God's blessing meets him where God's word placed him.",
+      "🌱 Isaac Sowed In That Land\nIsaac plants during a famine season and receives a hundredfold because the Lord blesses him. This is not luck; Genesis directly connects his fruitfulness to God's blessing.\nIsaac's obedience to stay in the land is followed by provision in that land. God's blessing meets him where God's word placed him.",
       "📈 The Man Became Great\nIsaac's wealth grows until the Philistines envy him. Blessing creates visibility, and visibility creates tension. Prosperity is not presented as a problem by itself, but it attracts conflict.\nThis is realistic. God's blessing can bring provision and still make relationships more complicated.",
       "😒 The Philistines Envied Him\nEnvy drives the conflict. The Philistines see Isaac's increase and respond by stopping up wells. Envy often attacks what it cannot celebrate.\nThis phrase helps explain the well conflicts. The issue is not only water; it is resentment toward blessing.",
       "💧 Wells Of Water\nWells were life sources in the ancient world. A household with flocks, herds, servants, and fields needed water to survive. To stop up wells was to attack someone's future in the land.\nThis is why Isaac's well story matters. It is a practical conflict over survival and a spiritual picture of making room in the promise land.",
@@ -5072,7 +5128,7 @@ const DAY_TEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
   },
   "Genesis 27:1-29": {
     phrases: [
-      "👁️ Isaac Was Old, And His Eyes Were Dim\nIsaac's physical blindness becomes part of the deception scene. He cannot see clearly, and the family also lacks spiritual clarity. Favoritism, secrecy, and manipulation fill the household.\nReading tip: Genesis often lets physical details mirror deeper problems. Isaac's dim eyes set the stage for a chapter where almost everyone is acting in the dark.",
+      "👁️ Isaac Was Old, And His Eyes Were Dim\nIsaac's physical blindness becomes part of the deception scene. He cannot see clearly, and the family also lacks spiritual clarity. Favoritism, secrecy, and manipulation fill the household.\nGenesis often lets physical details mirror deeper problems. Isaac's dim eyes set the stage for a chapter where almost everyone is acting in the dark.",
       "🍖 Make Me Delicious Food\nIsaac wants Esau to hunt and prepare the food he loves before receiving the blessing. The meal is tied to favoritism because Genesis already told us Isaac loved Esau because of his game.\nThis detail matters because appetite and preference are shaping a spiritual moment. Isaac is about to bless according to his desire, even though God had already spoken about the younger son.",
       "👂 Rebekah Was Listening\nRebekah overhears Isaac's plan and acts quickly. She knows the oracle from Genesis 25, but she tries to secure the outcome through deception rather than trust. Her knowledge of the promise does not make her method faithful.\nThis is important. Being right about what God promised does not justify doing wrong to force it.",
       "🎭 Obey My Voice\nRebekah tells Jacob to obey her voice, and the phrase stands out because covenant life is supposed to be shaped by God's voice. Jacob follows his mother's scheme instead of righteousness.\nThis phrase shows family pressure. Jacob is not only a villain acting alone; he is pulled into a household web of favoritism and manipulation.",
@@ -5112,27 +5168,27 @@ const DAY_TEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; tru
 
 const DAY_TEN_READER_NOTE_TEACHING_BOOSTS: Record<string, { phraseNote: string; truthNote: string }> = {
   "Genesis 25:1-18": {
-    phraseNote: "Reading tip: Genesis honors Abraham's wider family but keeps repeating the covenant focus through Isaac. That helps readers separate human value from covenant role.",
+    phraseNote: "Genesis honors Abraham's wider family but keeps repeating the covenant focus through Isaac. That helps readers separate human value from covenant role.",
     truthNote: "This section teaches generational handoff. Abraham dies, Ishmael's line is remembered, and Isaac remains the covenant heir. God's promise continues beyond Abraham's lifetime.",
   },
   "Genesis 25:19-34": {
-    phraseNote: "Reading tip: the birthright scene is not only about soup. It is about appetite, inheritance, covenant privilege, and how immediate desire can make sacred things look cheap.",
+    phraseNote: "the birthright scene is not only about soup. It is about appetite, inheritance, covenant privilege, and how immediate desire can make sacred things look cheap.",
     truthNote: "This section teaches that God's choice and human responsibility stand together. God speaks before the twins are born, but Jacob still manipulates and Esau still despises the birthright.",
   },
   "Genesis 26:1-11": {
-    phraseNote: "Reading tip: Isaac's story intentionally echoes Abraham's. Famine, Gerar, Abimelech, wife-sister fear, and divine protection show both promise continuity and repeated weakness.",
+    phraseNote: "Isaac's story intentionally echoes Abraham's. Famine, Gerar, Abimelech, wife-sister fear, and divine protection show both promise continuity and repeated weakness.",
     truthNote: "This section teaches that every generation needs both inherited promise and personal trust. Isaac receives God's word himself, but he also has to face fear himself.",
   },
   "Genesis 26:12-25": {
-    phraseNote: "Reading tip: wells are survival, not decoration. The well conflicts show whether Isaac will fight, flee, or keep trusting God for room in the land.",
+    phraseNote: "wells are survival, not decoration. The well conflicts show whether Isaac will fight, flee, or keep trusting God for room in the land.",
     truthNote: "This section teaches peaceful endurance. Isaac's strength is not shown by winning every argument, but by continuing until God makes room and then worshiping.",
   },
   "Genesis 27:1-29": {
-    phraseNote: "Reading tip: watch the senses in this scene: sight, taste, touch, smell, and hearing. The whole deception works by manipulating Isaac's senses.",
+    phraseNote: "The senses drive this scene: sight, taste, touch, smell, and hearing. The whole deception works by manipulating Isaac's senses.",
     truthNote: "This section teaches that deception can use very ordinary things: food, clothes, family loyalty, and even religious language. The promise does not need those tools.",
   },
   "Genesis 27:30-46": {
-    phraseNote: "Reading tip: the blessing is given, but nobody is at peace. That is the Bible's way of showing that getting the outcome through sin still fractures the people involved.",
+    phraseNote: "the blessing is given, but nobody is at peace. That is the Bible's way of showing that getting the outcome through sin still fractures the people involved.",
     truthNote: "This section teaches that God's sovereignty is not permission for manipulation. God carries the covenant forward, but Jacob's deception still produces grief, hatred, and exile.",
   },
 };
@@ -5166,7 +5222,7 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
 const DAY_ELEVEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; truths: string[] }> = {
   "Genesis 28:1-5": {
     phrases: [
-      "🧓 Isaac Called Jacob And Blessed Him\nIsaac now knowingly blesses Jacob. Genesis 27 was filled with deception, but here Isaac intentionally sends Jacob away under the blessing. The family is still fractured, but the covenant direction is now clear.\nReading tip: this does not erase the sin of Genesis 27. It shows that God can keep the promise moving while the family still has to live with consequences.",
+      "🧓 Isaac Called Jacob And Blessed Him\nIsaac now knowingly blesses Jacob. Genesis 27 was filled with deception, but here Isaac intentionally sends Jacob away under the blessing. The family is still fractured, but the covenant direction is now clear.\nThis does not erase the sin of Genesis 27. It shows that God can keep the promise moving while the family still has to live with consequences.",
       "🚫 Do Not Take A Wife From The Daughters Of Canaan\nMarriage in Genesis is tied to worship, identity, and covenant future. Isaac does not want Jacob absorbed into Canaanite family life because the promise line must remain distinct. This is not a shallow dating preference; it is about the direction of the household.\nThe same concern appeared when Abraham sent for Rebekah. The covenant family is called to live in the land without becoming spiritually shaped by the land's corrupt patterns.",
       "🛣️ Go To Paddan Aram\nJacob is sent back toward the family region connected with Rebekah and Laban. The trip protects him from Esau's anger, but it also moves him toward the place where his own family story will begin. The road is both escape and providence.\nThis is important because Jacob leaves home with blessing and consequences tangled together. God will meet him on the way, but the journey begins because the family has broken badly.",
       "👨‍👩‍👧 Take A Wife From There\nJacob is instructed to marry within the extended family line. In the ancient world, marriage shaped alliances, inheritance, worship, and family future. Isaac is trying to preserve covenant continuity.\nThis phrase also prepares us for Genesis 29, where Jacob meets Rachel and Leah. The instruction sounds simple here, but the way it unfolds under Laban will become painful and complicated.",
@@ -5183,7 +5239,7 @@ const DAY_ELEVEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 28:6-9": {
     phrases: [
-      "👀 Esau Saw\nEsau notices Isaac blessing Jacob and warning him not to marry Canaanite women. This is an important phrase because Esau is reacting to what he sees, but he still does not seem to understand the deeper covenant issue. He notices the surface problem without fully grasping the heart of it.\nReading tip: Genesis often shows Esau responding late. He sees consequences after the moment has already passed.",
+      "👀 Esau Saw\nEsau notices Isaac blessing Jacob and warning him not to marry Canaanite women. This is an important phrase because Esau is reacting to what he sees, but he still does not seem to understand the deeper covenant issue. He notices the surface problem without fully grasping the heart of it.\nGenesis often shows Esau responding late. He sees consequences after the moment has already passed.",
       "😔 The Daughters Of Canaan Did Not Please Isaac\nEsau realizes his Canaanite wives grieved his parents. Marriage choices had already become part of the family pain in Genesis 26. Now Esau tries to respond, but his response feels reactive instead of spiritually discerning.\nThis detail reminds us that choices made earlier keep shaping the family. Esau cannot fix years of direction with one quick adjustment.",
       "👰 Mahalath The Daughter Of Ishmael\nEsau marries into Ishmael's line, probably trying to move closer to Abraham's family identity. Ishmael is Abraham's son, so the choice may look like an attempt to repair his standing with his parents.\nBut Genesis presents this as another added wife, not a true return to covenant wisdom. Esau is trying to solve the appearance of the problem more than the heart.",
       "➕ Besides The Wives That He Had\nThis phrase shows Esau does not undo the earlier issue; he adds another marriage on top of it. The family complication grows. His solution is more addition than repentance.\nThat is a subtle but powerful lesson. Sometimes people try to fix spiritual problems by adding religious-looking choices without addressing the deeper pattern.",
@@ -5199,7 +5255,7 @@ const DAY_ELEVEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 28:10-15": {
     phrases: [
-      "🌙 Jacob Left Beersheba\nJacob leaves the safety of home and begins the road toward Haran. He is blessed, but he is also fleeing. The man who grasped for blessing now sleeps outside, vulnerable and alone.\nReading tip: this is Jacob's wilderness moment. He is between home and future, carrying both promise and consequence.",
+      "🌙 Jacob Left Beersheba\nJacob leaves the safety of home and begins the road toward Haran. He is blessed, but he is also fleeing. The man who grasped for blessing now sleeps outside, vulnerable and alone.\nThis is Jacob's wilderness moment. He is between home and future, carrying both promise and consequence.",
       "🪨 He Took One Of The Stones\nJacob uses a stone for his head, showing how exposed and uncomfortable the journey is. This is not a royal departure. The blessed son is sleeping on the ground.\nThe stone will later become a pillar, which is beautiful. What begins as a hard pillow becomes a worship marker after God meets him.",
       "🪜 A Stairway Set Up On The Earth\nJacob dreams of a stairway or ladder connecting earth and heaven. The image shows that heaven is not cut off from earth. God is able to reach Jacob in the wilderness.\nThis matters because Jacob is not at an altar or family tent. He is on the road, and God reveals that the road is still under heaven's attention.",
       "👼 Angels Ascending And Descending\nThe angels show movement between heaven and earth. God's messengers are active, and Jacob's lonely campsite is actually a place of divine activity.\nThis is an aha moment. Jacob thought he was alone, but the unseen world is not empty. God's care is moving even where Jacob did not expect it.",
@@ -5235,7 +5291,7 @@ const DAY_ELEVEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 29:1-14": {
     phrases: [
-      "🛣️ Jacob Went On His Journey\nAfter Bethel, Jacob continues toward the east with God's promise behind him. The phrase suggests renewed movement. He is still away from home, but he is no longer traveling without a word from God.\nReading tip: Genesis places Bethel before Haran so we know Jacob enters Laban's world under God's promise, not merely under family pressure.",
+      "🛣️ Jacob Went On His Journey\nAfter Bethel, Jacob continues toward the east with God's promise behind him. The phrase suggests renewed movement. He is still away from home, but he is no longer traveling without a word from God.\nGenesis places Bethel before Haran so we know Jacob enters Laban's world under God's promise, not merely under family pressure.",
       "💧 A Well In The Field\nThe well scene echoes earlier Genesis marriage stories, especially the servant finding Rebekah for Isaac at a well. Wells are meeting places, survival places, and often turning points in family stories.\nThis creates expectation. The reader has seen God guide a marriage at a well before, so Jacob's arrival at a well feels providential.",
       "🪨 The Stone On The Well's Mouth Was Large\nThe stone protects the water and controls access. Shepherds wait until flocks gather before rolling it away. Water is shared by community timing, not individual impulse.\nJacob's later rolling of the stone shows strength and urgency, but it also marks the moment Rachel enters the story. The obstacle at the well becomes the doorway to relationship.",
       "🐑 Rachel Came With Her Father's Sheep\nRachel appears as a shepherdess, actively caring for her father's flock. She is not introduced first by beauty only, but by work and responsibility.\nThis detail matters because Genesis often shows women in active roles at wells. Rachel is part of the household economy, and her arrival changes Jacob's story.",
@@ -5253,7 +5309,7 @@ const DAY_ELEVEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 29:15-20": {
     phrases: [
-      "💼 What Shall Your Wages Be\nLaban turns Jacob's family presence into a labor arrangement. The question sounds fair, but it introduces Laban's habit of negotiating relationships for advantage. Jacob is now inside a household where work, love, and bargaining mix together.\nReading tip: pay attention to Laban's questions. They often sound reasonable while serving his interests.",
+      "💼 What Shall Your Wages Be\nLaban turns Jacob's family presence into a labor arrangement. The question sounds fair, but it introduces Laban's habit of negotiating relationships for advantage. Jacob is now inside a household where work, love, and bargaining mix together.\nLaban's questions often sound reasonable while serving his interests. This phrase introduces the pattern of bargaining that will shape Jacob's years in Haran.",
       "👩 Leah's Eyes Were Tender\nThis phrase has been translated and understood in different ways. It may describe Leah's eyes as weak, delicate, or gentle. Genesis contrasts Leah and Rachel, but it does not invite us to despise Leah.\nThe detail matters because Leah will become the overlooked woman in the household. The Bible will soon show that God sees her pain even if Jacob does not.",
       "💃 Rachel Was Beautiful In Form And Appearance\nRachel is described as physically beautiful, and Jacob loves her. The attraction is real and powerful. Genesis does not pretend beauty is meaningless.\nBut the story will also show that beauty does not protect a household from pain. Rachel will be loved and still suffer barrenness, envy, and rivalry.",
       "❤️ Jacob Loved Rachel\nThis is the emotional center of the section. Jacob's love is strong enough that he offers seven years of service. His attachment to Rachel shapes the next fourteen years of his life.\nThis phrase is tender, but it also sets up family imbalance. Jacob's love for Rachel will leave Leah wounded and create rivalry in the household.",
@@ -5270,7 +5326,7 @@ const DAY_ELEVEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 29:21-30": {
     phrases: [
-      "👰 Give Me My Wife\nJacob asks for Rachel after completing the seven years. He has fulfilled his side of the agreement and expects Laban to honor his word. The request is direct because the time of service is complete.\nReading tip: Jacob, who once took by deception, now stands in the place of someone expecting fairness from another.",
+      "👰 Give Me My Wife\nJacob asks for Rachel after completing the seven years. He has fulfilled his side of the agreement and expects Laban to honor his word. The request is direct because the time of service is complete.\nJacob, who once took by deception, now stands in the place of someone expecting fairness from another.",
       "🍽️ Laban Gathered All The Men And Made A Feast\nThe wedding feast creates a public celebration, but Laban uses the setting to hide his deception. Public joy becomes the cover for private manipulation.\nThis is painful because the feast should be a place of honor. Instead, it becomes the stage where Jacob is tricked.",
       "🌙 In The Evening He Took Leah\nThe deception happens under cover of evening. Darkness mattered in Genesis 27 when Jacob deceived blind Isaac, and now darkness becomes part of Jacob being deceived. The story is full of reversal.\nThis is not karma in a shallow sense, but narrative justice is hard to miss. Jacob is tasting the kind of deception he once practiced.",
       "😳 In The Morning, Behold, It Was Leah\nMorning reveals what darkness concealed. The word 'behold' makes the shock land. Jacob wakes to find he has been deceived.\nThis is one of the most dramatic reversals in Genesis. The deceiver discovers what it feels like to be deceived.",
@@ -5288,7 +5344,7 @@ const DAY_ELEVEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 29:31-35": {
     phrases: [
-      "👁️ Yahweh Saw That Leah Was Hated\nHated here means unloved or rejected in comparison with Rachel. Leah is not invisible to God. Jacob may prefer Rachel, but Yahweh sees Leah's pain.\nReading tip: this is the emotional center of Leah's story. The household ranks her second, but God moves toward her affliction.",
+      "👁️ Yahweh Saw That Leah Was Hated\nHated here means unloved or rejected in comparison with Rachel. Leah is not invisible to God. Jacob may prefer Rachel, but Yahweh sees Leah's pain.\nThis is the emotional center of Leah's story. The household ranks her second, but God moves toward her affliction.",
       "🤰 He Opened Her Womb\nGod gives Leah children while Rachel remains barren. This does not mean Leah's pain disappears, but it does show God honoring the unloved woman with fruitfulness.\nThe phrase connects with Genesis's repeated theme of wombs opened by God. Children in this family are not merely biology; they are bound up with divine mercy and covenant future.",
       "👶 Reuben\nReuben's name sounds connected with seeing: 'See, a son.' Leah hopes that because the Lord has seen her affliction, Jacob will now love her. The name carries both faith and longing.\nThis is heartbreaking. Leah receives a son from God, but she is still reaching for her husband's love.",
       "👂 Simeon\nSimeon's name connects with hearing. Leah says the Lord has heard that she is hated. God is not only seeing her pain; He hears it.\nThis echoes Hagar's story in a different household. God hears women in affliction, whether they are servants in the wilderness or unloved wives in the promise family.",
@@ -5307,35 +5363,35 @@ const DAY_ELEVEN_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
 
 const DAY_ELEVEN_READER_NOTE_TEACHING_BOOSTS: Record<string, { phraseNote: string; truthNote: string }> = {
   "Genesis 28:1-5": {
-    phraseNote: "Reading tip: Jacob leaves with the blessing of Abraham, but he also leaves because the family is broken. Hold both together: promise and consequence are traveling with him.",
+    phraseNote: "Jacob leaves with the blessing of Abraham, but he also leaves because the family is broken. Hold both together: promise and consequence are traveling with him.",
     truthNote: "This section teaches that God's covenant keeps moving, but sin still sends people down painful roads. Jacob is blessed, but he is not leaving in peace.",
   },
   "Genesis 28:6-9": {
-    phraseNote: "Reading tip: Esau's response is reactive. He sees what displeases his parents and tries to adjust, but Genesis does not present this as deep covenant wisdom.",
+    phraseNote: "Esau's response is reactive. He sees what displeases his parents and tries to adjust, but Genesis does not present this as deep covenant wisdom.",
     truthNote: "This section teaches that surface-level correction cannot replace true understanding. Esau changes something outward, but the deeper issue is still his relationship to the promise.",
   },
   "Genesis 28:10-15": {
-    phraseNote: "Reading tip: Jacob's dream is a grace scene. God meets him before Jacob has become mature, honest, or settled. The promise comes to him on the road.",
+    phraseNote: "Jacob's dream is a grace scene. God meets him before Jacob has become mature, honest, or settled. The promise comes to him on the road.",
     truthNote: "This section teaches presence before performance. God promises to be with Jacob and keep him while Jacob is still very much in process.",
   },
   "Genesis 28:16-22": {
-    phraseNote: "Reading tip: Bethel is the opposite of Babel. Babel was human pride trying to reach heaven; Bethel is God opening heaven to a lonely fugitive.",
+    phraseNote: "Bethel is the opposite of Babel. Babel was human pride trying to reach heaven; Bethel is God opening heaven to a lonely fugitive.",
     truthNote: "This section teaches that God's presence can transform an ordinary hard place into a holy memory. Jacob did not build his way up; God revealed Himself down.",
   },
   "Genesis 29:1-14": {
-    phraseNote: "Reading tip: the well scene should remind readers of Rebekah's story. Genesis uses repeated well scenes to show guidance, family connection, and covenant movement.",
+    phraseNote: "the well scene should remind readers of Rebekah's story. Genesis uses repeated well scenes to show guidance, family connection, and covenant movement.",
     truthNote: "This section teaches providence through ordinary meetings. A road, a well, some shepherds, and a conversation become the next step in God's promise story.",
   },
   "Genesis 29:15-20": {
-    phraseNote: "Reading tip: the beauty of Jacob's love for Rachel is real, but Genesis places it inside Laban's world of bargaining. Tender desire is about to meet manipulation.",
+    phraseNote: "the beauty of Jacob's love for Rachel is real, but Genesis places it inside Laban's world of bargaining. Tender desire is about to meet manipulation.",
     truthNote: "This section teaches that love needs truth around it. Strong affection is beautiful, but without integrity in the household, love can become tangled in pain.",
   },
   "Genesis 29:21-30": {
-    phraseNote: "Reading tip: Jacob deceived through disguise and darkness; now Laban deceives Jacob through darkness and custom. Genesis wants you to feel the mirror.",
+    phraseNote: "Jacob deceived through disguise and darkness; now Laban deceives Jacob through darkness and custom. Genesis wants you to feel the mirror.",
     truthNote: "This section teaches painful formation. God is not approving Laban's deception, but Jacob is learning what deception feels like from the other side.",
   },
   "Genesis 29:31-35": {
-    phraseNote: "Reading tip: slow down over Leah's sons' names. They are not random labels. Each name opens a window into Leah's pain, hope, and changing focus.",
+    phraseNote: "Leah's sons' names are not random labels. Each name opens a window into Leah's pain, hope, and changing focus.",
     truthNote: "This section teaches that God sees the overlooked and can bring future promise through them. Judah, the line of kings, comes from Leah's praise.",
   },
 };
@@ -5369,7 +5425,7 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
 const DAY_TWELVE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; truths: string[] }> = {
   "Genesis 30:1-13": {
     phrases: [
-      "😔 Rachel Envied Her Sister\nRachel is loved by Jacob, but Leah has children, and envy grows in the space where love does not solve barrenness. Genesis is honest: Rachel has what Leah longs for, and Leah has what Rachel longs for. Both women are hurting in different ways.\nReading tip: do not flatten this into simple jealousy. This is a household where worth, motherhood, love, and status are tangled together.",
+      "😔 Rachel Envied Her Sister\nRachel is loved by Jacob, but Leah has children, and envy grows in the space where love does not solve barrenness. Genesis is honest: Rachel has what Leah longs for, and Leah has what Rachel longs for. Both women are hurting in different ways.\nThis is more than simple jealousy. This is a household where worth, motherhood, love, and status are tangled together.",
       "💔 Give Me Children, Or Else I Die\nRachel's words reveal desperation. In the ancient world, bearing children affected honor, security, inheritance, and a woman's perceived place in the family. Rachel's pain is emotional, social, and spiritual.\nThe phrase also shows how dangerous comparison has become. Rachel is loved, but she feels as if life is impossible without the one thing Leah has.",
       "🔥 Jacob's Anger Was Kindled\nJacob reacts sharply, asking whether he is in God's place. His theology is technically true: God opens and closes the womb. But his tone does not sound tender toward Rachel's pain.\nThis is a helpful human detail. Someone can say a true thing in a way that does not heal the person suffering in front of them.",
       "👩‍🦱 Bilhah My Servant\nRachel gives Bilhah to Jacob, echoing Sarai giving Hagar to Abram. The family is repeating an old shortcut pattern. A servant woman is again pulled into someone else's pain and plan.\nThat connection matters. Genesis is showing that unhealthy family strategies can repeat across generations when they are not healed.",
@@ -5387,12 +5443,12 @@ const DAY_TWELVE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 30:14-24": {
     phrases: [
-      "🌿 Mandrakes\nMandrakes were plants associated in the ancient world with fertility and desire. Reuben finds them, and the sisters' conflict turns even this plant into a bargaining tool. The detail shows how desperate the household has become around children and love.\nReading tip: the mandrakes are not the hero of the scene. Genesis places folk fertility hopes beside the real God who opens wombs.",
+      "🌿 Mandrakes\nMandrakes were plants associated in the ancient world with fertility and desire. Reuben finds them, and the sisters' conflict turns even this plant into a bargaining tool. The detail shows how desperate the household has become around children and love.\nThe mandrakes are not the hero of the scene. Genesis places folk fertility hopes beside the real God who opens wombs.",
       "💬 Is It A Small Matter That You Have Taken Away My Husband\nLeah's words show how unloved she feels. Rachel has Jacob's affection, while Leah has sons. Each sister feels robbed by the other.\nThis is not a healthy family argument. It is the sound of years of comparison, favoritism, and emotional hunger coming out in one sharp sentence.",
       "🛏️ I Have Hired You\nLeah says she has hired Jacob with her son's mandrakes. The marriage relationship has become transactional and painful. Jacob is being moved between wives through negotiation.\nThis phrase is supposed to feel sad. Genesis is showing what happens when family life becomes competition for affection, children, and status.",
       "👂 God Listened To Leah\nGod listens to Leah and gives her another son. This is tender because Leah is still carrying pain, but God is not indifferent to her. He hears the unloved woman again.\nThe phrase also corrects superstition. The mandrakes do not control the womb; God listens and gives life.",
       "🎁 Issachar And Zebulun\nLeah names Issachar with language of reward or wages, and Zebulun with language of honor or dwelling. Her names still reveal her desire for Jacob's regard.\nThe sons are blessings, but the names show unresolved longing. Leah keeps hoping that bearing children will finally secure love.",
-      "👧 Dinah\nDinah is named briefly, but her presence matters because she will become central in Genesis 34. Genesis often introduces people quietly before their story becomes important later.\nThis is a reading tip: do not skip names just because they are brief. Dinah's name is a seed planted for a later painful chapter.",
+      "👧 Dinah\nDinah is named briefly, but her presence matters because she will become central in Genesis 34. Genesis often introduces people quietly before their story becomes important later.\nThis is a do not skip names just because they are brief. Dinah's name is a seed planted for a later painful chapter.",
       "🧠 God Remembered Rachel\nGod remembering Rachel does not mean He forgot her. In the Bible, God remembering means He turns faithful attention toward someone and acts. Rachel's long barrenness is met by divine mercy.\nThis phrase echoes earlier moments where God remembers Noah or remembers covenant promises. It marks a turning point.",
       "👶 Joseph\nJoseph's name is connected with adding or taking away. Rachel says God has taken away her reproach and asks the Lord to add another son. Joseph's birth is a major turning point because his story will later carry Genesis into Egypt.\nThe child born out of long waiting will become central to the survival of the family.",
     ],
@@ -5424,7 +5480,7 @@ const DAY_TWELVE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 31:1-16": {
     phrases: [
-      "🗣️ Jacob Heard The Words Of Laban's Sons\nLaban's sons accuse Jacob of taking what belonged to their father. The atmosphere has changed. Jacob's blessing is now being interpreted as theft.\nReading tip: when God blesses Jacob under Laban, the people benefiting from control become resentful. The conflict is moving from private tension to public accusation.",
+      "🗣️ Jacob Heard The Words Of Laban's Sons\nLaban's sons accuse Jacob of taking what belonged to their father. The atmosphere has changed. Jacob's blessing is now being interpreted as theft.\nWhen God blesses Jacob under Laban, the people benefiting from control become resentful. The conflict is moving from private tension to public accusation.",
       "😠 Laban's Face Was Not Toward Him As Before\nLaban's expression reveals that the relationship has shifted. Jacob can see that he is no longer welcome in the same way. The emotional climate has become dangerous.\nThis phrase is practical and human. Sometimes God uses changed faces, closed doors, and relational tension to show that a season is ending.",
       "🔙 Return To The Land Of Your Fathers\nGod speaks clearly: it is time to go home. This directly echoes the Bethel promise that God would bring Jacob back. The return is not merely Jacob's preference; it is God's command.\nThis matters because Jacob's departure will look messy, but the call to return is rooted in God's word.",
       "🤝 I Will Be With You\nGod repeats the promise of presence. Jacob is leaving Laban, but he is not traveling alone. The God who met him at Bethel is still with him.\nThis phrase is the anchor. Jacob faces Laban behind him and Esau ahead of him, but God's presence travels with him.",
@@ -5443,7 +5499,7 @@ const DAY_TWELVE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 31:17-21": {
     phrases: [
-      "🐫 Jacob Rose Up And Set His Sons And Wives On Camels\nJacob moves from conversation to action. His whole household is now mobile: wives, children, livestock, and possessions. This is not a small trip; it is a major family migration.\nReading tip: the promise is traveling with a messy, growing household. Jacob is no longer the lone man with a stone pillow.",
+      "🐫 Jacob Rose Up And Set His Sons And Wives On Camels\nJacob moves from conversation to action. His whole household is now mobile: wives, children, livestock, and possessions. This is not a small trip; it is a major family migration.\nThe promise is traveling with a messy, growing household. Jacob is no longer the lone man with a stone pillow.",
       "📦 All His Goods Which He Had Gathered\nJacob leaves with the wealth acquired in Paddan Aram. These goods represent years of labor under Laban and God's protection through unfairness.\nThe phrase matters because Jacob is not leaving empty. God has preserved him and increased him, even in a hard place.",
       "🏠 To Go To Isaac His Father In The Land Of Canaan\nJacob's destination is covenantal: back to his father and back to Canaan. The return is personal, family-based, and tied to the promised land.\nThis shows that the journey is not random escape. It is a move back toward the promise God spoke at Bethel.",
       "🗿 Rachel Stole The Household Gods\nThe household gods, or teraphim, may have been tied to family religion, inheritance claims, or household authority. Rachel's theft shows that leaving Laban's house is spiritually messy.\nThis is a major warning detail. Jacob is obeying God's call, but idolatry and deception are traveling in the caravan.",
@@ -5460,7 +5516,7 @@ const DAY_TWELVE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 31:22-35": {
     phrases: [
-      "🏃 Laban Pursued Him Seven Days' Journey\nLaban chases Jacob with determination. This is not a mild family check-in. It is a pursuit that could become dangerous if God does not intervene.\nReading tip: Jacob may be leaving Laban, but Laban is not ready to release control. The old household still reaches after him.",
+      "🏃 Laban Pursued Him Seven Days' Journey\nLaban chases Jacob with determination. This is not a mild family check-in. It is a pursuit that could become dangerous if God does not intervene.\nJacob may be leaving Laban, but Laban is not ready to release control. The old household still reaches after him.",
       "🌙 God Came To Laban In A Dream\nGod warns Laban before he reaches Jacob. This is protective mercy. Jacob is vulnerable, and God restrains the man who could harm him.\nThe phrase shows God's sovereignty over outsiders too. Laban may not be covenant-hearted, but God can still speak and limit him.",
       "⚠️ Do Not Speak To Jacob Either Good Or Bad\nThis warning means Laban must not manipulate, threaten, or harm Jacob. God places a boundary around Jacob before Laban arrives.\nThis is important because Jacob's safety rests not on his secrecy, but on God's protection. God controls the confrontation before it starts.",
       "🎶 Why Did You Flee Secretly\nLaban accuses Jacob of leaving without allowing celebration or goodbye. His speech sounds wounded and reasonable, but readers know Laban's history of manipulation.\nThis is what makes Laban complicated. He uses family language and emotional appeal, but his behavior has not been trustworthy.",
@@ -5478,7 +5534,7 @@ const DAY_TWELVE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 31:36-42": {
     phrases: [
-      "🔥 Jacob Was Angry And Argued With Laban\nJacob finally speaks openly after years of pressure. His anger is not random; it comes after exploitation, pursuit, accusation, and the search through his belongings.\nReading tip: this is one of Jacob's most direct speeches. The quiet worker under Laban finally names what the last twenty years cost.",
+      "🔥 Jacob Was Angry And Argued With Laban\nJacob finally speaks openly after years of pressure. His anger is not random; it comes after exploitation, pursuit, accusation, and the search through his belongings.\nThis is one of Jacob's most direct speeches. The quiet worker under Laban finally names what the last twenty years cost.",
       "🔎 What Is My Offense\nJacob asks Laban to produce evidence. Laban searched everything and found nothing. Jacob pushes the issue into public accountability.\nThis matters because accusations can control people when they are never examined. Jacob demands that Laban's claims be tested.",
       "🐑 These Twenty Years I Have Been With You\nThe phrase marks the length of Jacob's service. Twenty years is not a short conflict; it is a long season of labor, pressure, and family entanglement.\nGenesis wants us to feel the weight of time. Jacob's prosperity did not come through ease; it came through endurance under unfair conditions.",
       "☀️ By Day The Heat Consumed Me, And The Cold By Night\nJacob describes the physical cost of shepherding. Ancient shepherd work involved exposure, danger, lost sleep, and responsibility for animals in harsh conditions.\nThis detail helps modern readers. Jacob's wealth came through real labor, not easy blessing.",
@@ -5496,7 +5552,7 @@ const DAY_TWELVE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
   },
   "Genesis 31:43-55": {
     phrases: [
-      "👐 The Daughters Are My Daughters\nLaban speaks possessively about daughters, children, and flocks. Even after mistreating them, he still talks as if everything belongs to him. His words reveal his desire to control the family narrative.\nReading tip: Laban's speech sounds relational, but it is also possessive. Genesis has already shown that Rachel and Leah feel sold and consumed by him.",
+      "👐 The Daughters Are My Daughters\nLaban speaks possessively about daughters, children, and flocks. Even after mistreating them, he still talks as if everything belongs to him. His words reveal his desire to control the family narrative.\nLaban's speech sounds relational, but it is also possessive. Genesis has already shown that Rachel and Leah feel sold and consumed by him.",
       "🤝 Let Us Make A Covenant\nLaban proposes a covenant, but this is not a warm friendship covenant. It is a boundary agreement between people who do not trust each other. The covenant limits harm and marks separation.\nThis matters because not every biblical covenant scene feels intimate. Some covenants create necessary boundaries.",
       "🪨 Jacob Took A Stone And Set It Up As A Pillar\nJacob again uses a stone as a marker, like Bethel. But this stone marks a boundary, not a dream. It says: this conflict has reached a line.\nThe stone becomes witness that the relationship is changing. Jacob is no longer under Laban's control.",
       "🪨 Heap Of Witness\nThe heap of stones is a public memory marker. Both sides can point to it as evidence of the agreement. In a world without written contracts for every situation, physical markers mattered.\nThis heap says the past cannot simply be rewritten. The boundary has a witness.",
@@ -5516,35 +5572,35 @@ const DAY_TWELVE_READER_NOTE_DEPTH_UPDATES: Record<string, { phrases: string[]; 
 
 const DAY_TWELVE_READER_NOTE_TEACHING_BOOSTS: Record<string, { phraseNote: string; truthNote: string }> = {
   "Genesis 30:1-13": {
-    phraseNote: "Reading tip: the names of the children are the emotional subtitles of the chapter. They reveal rivalry, longing, wrestling, fortune, and the painful search for worth.",
+    phraseNote: "the names of the children are the emotional subtitles of the chapter. They reveal rivalry, longing, wrestling, fortune, and the painful search for worth.",
     truthNote: "This section teaches that growth is not always health. Jacob's family is increasing, but the household is full of envy, comparison, and women being used in rivalry.",
   },
   "Genesis 30:14-24": {
-    phraseNote: "Reading tip: mandrakes show human attempts to manage fertility, but the key phrases are that God listened and God remembered. Genesis points past superstition to God's mercy.",
+    phraseNote: "mandrakes show human attempts to manage fertility, but the key phrases are that God listened and God remembered. Genesis points past superstition to God's mercy.",
     truthNote: "This section teaches that God sees both sisters differently but compassionately. Leah is heard, Rachel is remembered, and Joseph's birth quietly turns Genesis toward the future.",
   },
   "Genesis 30:25-43": {
-    phraseNote: "Reading tip: the flock details can feel strange, but the story is about unfair labor, Laban's manipulation, Jacob's strategy, and God's blessing under pressure.",
+    phraseNote: "the flock details can feel strange, but the story is about unfair labor, Laban's manipulation, Jacob's strategy, and God's blessing under pressure.",
     truthNote: "This section teaches that God can prosper someone in an unfair place without approving the unfairness of that place. Laban manipulates, but God still provides.",
   },
   "Genesis 31:1-16": {
-    phraseNote: "Reading tip: the God of Bethel connects Jacob's past encounter to his present command. The God who promised return now says it is time to return.",
+    phraseNote: "the God of Bethel connects Jacob's past encounter to his present command. The God who promised return now says it is time to return.",
     truthNote: "This section teaches that God sees labor, wages, and mistreatment. The call to leave is not random; it comes after years of pressure and divine protection.",
   },
   "Genesis 31:17-21": {
-    phraseNote: "Reading tip: Jacob is obeying the return command, but he leaves with secrecy and Rachel's stolen idols. Genesis is showing right direction mixed with unresolved brokenness.",
+    phraseNote: "Jacob is obeying the return command, but he leaves with secrecy and Rachel's stolen idols. Genesis is showing right direction mixed with unresolved brokenness.",
     truthNote: "This section teaches that leaving a harmful place does not automatically remove every harmful pattern. Jacob's family still carries deception and idolatry with them.",
   },
   "Genesis 31:22-35": {
-    phraseNote: "Reading tip: Laban's gods are stolen, hidden, and searched for. Genesis quietly contrasts powerless household idols with the living God who speaks in dreams and protects Jacob.",
+    phraseNote: "Laban's gods are stolen, hidden, and searched for. Genesis quietly contrasts powerless household idols with the living God who speaks in dreams and protects Jacob.",
     truthNote: "This section teaches that God can restrain danger before it reaches us. Laban pursues, but God gets to him first.",
   },
   "Genesis 31:36-42": {
-    phraseNote: "Reading tip: Jacob's speech is a work-history testimony. Heat, frost, lost sleep, changed wages, and God's protection all show what twenty years under Laban cost.",
+    phraseNote: "Jacob's speech is a work-history testimony. Heat, frost, lost sleep, changed wages, and God's protection all show what twenty years under Laban cost.",
     truthNote: "This section teaches that God sees the grind. Long labor, unfair treatment, and hidden affliction are not invisible to Him.",
   },
   "Genesis 31:43-55": {
-    phraseNote: "Reading tip: Mizpah is not mainly romantic here. It is a watch-boundary between relatives who do not trust each other.",
+    phraseNote: "Mizpah is not mainly romantic here. It is a watch-boundary between relatives who do not trust each other.",
     truthNote: "This section teaches realistic peace. Sometimes the faithful outcome is not closeness, but a clear boundary that prevents further harm.",
   },
 };
@@ -5586,7 +5642,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "😭",
       summary: "Joseph can no longer hold back and finally tells his brothers who he is.",
       movement: ["😭 Joseph clears the room and weeps aloud.", "🗣️ He says, I am Joseph.", "😨 The brothers cannot answer because they are terrified and stunned.", "👴 Joseph's first question reaches back to Jacob: Is my father still alive?"],
-      phrases: [["😭 Could Not Refrain Himself", "Joseph has held emotion back through several scenes, but Judah's offer in Genesis 44 shows the brothers have changed. The truth now has to come into the room."], ["🗣️ I Am Joseph", "This is the sentence the whole story has been moving toward. The hidden ruler is the brother they sold."], ["😨 Troubled At His Presence", "Grace can feel terrifying at first when the person you wronged finally has power to answer back."]],
+      phrases: [["😭 Could Not Refrain Himself", "Joseph has held emotion back through several scenes, but Judah's offer in Genesis 44 shows the brothers have changed. The truth now has to come into the room."], ["🗣️ I Am Joseph", "This is the sentence the whole story has been moving toward. The hidden ruler is the brother they sold."], ["😨 Troubled At His Presence", "Grace can feel terrifying at first when the person you wronged finally has power to answer back. Joseph's brothers are not calm when he reveals himself because their guilt is now standing in front of them. They sold Joseph, lied about him, and lived for years with that secret. The phrase matters because it shows that mercy may first expose fear before it brings peace. Joseph is not attacking them, but they do not know that yet. Their troubled silence shows how heavy unresolved sin can feel when truth finally arrives."]],
       truths: [["😭 Healing does not mean emotion disappears.", "Joseph's tears show that faithfulness did not make him numb."], ["🗣️ Truth is necessary for reconciliation.", "Joseph does not keep pretending. The relationship cannot heal while his identity stays hidden."], ["😨 Guilt makes mercy hard to receive.", "The brothers are not ready to celebrate because they are face to face with what they did."]],
       application: ["😭 Do not confuse tears with weakness.", "🗣️ Real healing needs truth, not performance.", "😨 Let God's mercy meet the guilt you are afraid to face."],
     }),
@@ -5612,7 +5668,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🤲",
       summary: "Joseph sends for Jacob, offers provision in Goshen, and embraces Benjamin and his brothers.",
       movement: ["🏃 Joseph tells the brothers to hurry back to Jacob.", "🏡 He promises a place in Goshen.", "🍞 He promises to nourish the whole family through famine.", "🫂 He weeps over Benjamin and kisses all his brothers."],
-      phrases: [["🏡 Thou Shalt Dwell In Goshen", "Goshen will become a protected place where Jacob's family can live near Joseph without disappearing into Egypt."], ["🍞 There Will I Nourish Thee", "Joseph's forgiveness becomes provision. He does not offer vague words only; he offers real care."], ["🫂 After That His Brethren Talked With Him", "Conversation becomes possible after mercy has had time to quiet fear."]],
+      phrases: [["🏡 Thou Shalt Dwell In Goshen", "Goshen will become a protected place where Jacob's family can live near Joseph without disappearing into Egypt. It is a region in Egypt suitable for flocks and herds, which matters because Jacob's family are shepherds. The phrase matters because God preserves the covenant family inside a foreign empire without blending them completely into it. Goshen becomes provision during famine, but it also becomes the setting where Israel grows into a people. Later, Exodus will begin with this family still in Egypt. What starts as rescue will eventually become the place they need deliverance from."], ["🍞 There Will I Nourish Thee", "Joseph's forgiveness becomes provision. He does not offer vague words only; he offers real care."], ["🫂 After That His Brethren Talked With Him", "Conversation becomes possible after mercy has had time to quiet fear. At first, Joseph's brothers are too troubled to answer him. After Joseph weeps, embraces them, and speaks kindly, the relationship begins to open again. The phrase matters because reconciliation is not only a legal statement; it has to reach the heart. The brothers need to experience Joseph's mercy before they can speak freely. Genesis shows that restored conversation can be one sign that fear is beginning to loosen its grip."]],
       truths: [["🤲 Forgiveness becomes concrete.", "Joseph gives food, place, protection, and invitation."], ["🏡 God can provide a place inside an unfamiliar land.", "Egypt is not Canaan, but God can still preserve the family there."], ["🫂 Mercy can reopen speech.", "The brothers could not answer at first, but after Joseph's embrace, they can talk."]],
       application: ["🤲 Let forgiveness move toward practical good when wisdom allows.", "🏡 Trust God to provide in places you did not expect.", "🫂 Give scared people time to receive mercy."],
     }),
@@ -5625,7 +5681,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🛞",
       summary: "Pharaoh sends wagons and provision, and Jacob believes Joseph is alive.",
       movement: ["👑 Pharaoh welcomes Joseph's family.", "🛞 Wagons are sent to carry Jacob's household.", "🎁 Joseph gives gifts and supplies for the road.", "💓 Jacob sees the wagons, believes, and his spirit revives."],
-      phrases: [["🛞 The Wagons", "The wagons become visible proof that Joseph is alive and Egypt is ready to receive the family."], ["⚠️ See That Ye Fall Not Out By The Way", "Joseph knows the brothers may still quarrel under guilt and shock. Mercy does not remove the need for wisdom."], ["💓 The Spirit Of Jacob Revived", "Years of grief begin to lift when Jacob sees evidence that Joseph lives."]],
+      phrases: [["🛞 The Wagons", "The wagons become visible proof that Joseph is alive and Egypt is ready to receive the family. Jacob has only heard words at first, and the news sounds almost impossible. The wagons give his eyes something solid to receive. They are also a sign of Pharaoh's favor and Joseph's authority in Egypt. The phrase matters because Jacob's grief begins to lift when promise becomes visible through evidence. The wagons help move the whole family toward the next stage of God's story."], ["⚠️ See That Ye Fall Not Out By The Way", "Joseph knows the brothers may still quarrel under guilt and shock. Mercy does not remove the need for wisdom."], ["💓 The Spirit Of Jacob Revived", "Years of grief begin to lift when Jacob sees evidence that Joseph lives. Jacob had believed Joseph was dead for a long time, so this news is almost too much to receive. The phrase describes an inner revival, like hope coming back into a person who has been buried under sorrow. It matters because Genesis lets us feel the emotional weight of restoration. Joseph's survival is not only a plot twist; it heals a father's crushed heart. The covenant family is being reunited, but the reunion begins inside Jacob's spirit."]],
       truths: [["🎁 Grace can return more than was taken.", "Joseph was stripped and sold, but now he sends clothing, food, and wagons."], ["⚠️ Old family patterns still need watching.", "Joseph warns them not to fight on the way home."], ["💓 Hope can revive what grief nearly buried.", "Jacob's heart moves from disbelief to renewed life."]],
       application: ["🛞 Notice the evidence of God's mercy when your heart struggles to believe.", "⚠️ Do not let guilt turn into fighting on the road home.", "💓 Let hope breathe again when God restores what looked dead."],
     }),
@@ -5651,7 +5707,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "👨‍👩‍👧‍👦",
       summary: "Genesis names Jacob's household as the covenant family moves into Egypt.",
       movement: ["📜 Genesis lists the sons and households of Jacob.", "👨‍👩‍👧‍👦 The family enters Egypt as real people with names and stories.", "🌱 The small household is becoming the seed of a future nation.", "🔢 The number seventy frames the family as a complete covenant household."],
-      phrases: [["📜 These Are The Names", "Genealogies can feel slow, but names matter because God's promise moves through real people."], ["👨‍👩‍👧‍👦 All The Souls", "The text counts the household because the family entering Egypt will later become the nation leaving Egypt."], ["🌱 Seventy", "The number gives a sense of fullness and helps readers see the whole covenant household entering a new stage."]],
+      phrases: [["📜 These Are The Names", "Genealogies can feel slow, but names matter because God's promise moves through real people. Genesis lists the family going into Egypt so readers understand that this is not an abstract migration. These are sons, daughters, households, and future tribes. The phrase matters because the small family promised to Abraham is becoming a larger people. Later, Exodus will look back on these names as the beginning of Israel's growth in Egypt. God keeps His promise through actual families, not vague ideas."], ["👨‍👩‍👧‍👦 All The Souls", "The text counts the household because the family entering Egypt will later become the nation leaving Egypt. The word souls refers to people, not ghostlike spirits. It counts living members of Jacob's family as they move into a new land. The phrase matters because it shows the covenant family at a key turning point. They enter Egypt as a household, but they will leave generations later as a nation. Genesis is helping the reader measure the beginning before the growth happens."], ["🌱 Seventy", "The number gives a sense of fullness and helps readers see the whole covenant household entering a new stage. Seventy often feels like a complete or full number in the Bible. Here it gathers Jacob's family into one counted group as they enter Egypt. The phrase matters because it marks a major transition in the story. The family of Abraham, Isaac, and Jacob is now large enough to be counted as a whole people in seed form. The promise of many descendants is no longer just future language; it is visibly growing."]],
       truths: [["📜 God works through named people.", "The promise is not abstract. It moves through sons, daughters, households, and generations."], ["🌱 Small beginnings can carry national futures.", "The family that enters Egypt will become Israel."], ["🧭 Egypt is a stage, not the final destination.", "The family goes down, but God has already promised future return."]],
       application: ["📜 Do not skip the names too quickly; God remembers people.", "🌱 Trust that small family stories can carry large purposes.", "🧭 Remember that a season of provision may still be temporary."],
     }),
@@ -5778,7 +5834,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🦁",
       summary: "Judah receives royal language that points toward praise, rule, and future kingship.",
       movement: ["🙌 Judah's brothers will praise him.", "🦁 Judah is pictured like a lion.", "👑 The scepter will not depart from Judah.", "🍇 The imagery points to abundance and royal blessing."],
-      phrases: [["🙌 Thy Brethren Shall Praise", "Judah's name sounds like praise, and Jacob now speaks a future where Judah receives honor among his brothers."], ["🦁 Judah Is A Lion's Whelp", "The lion image communicates strength, rule, and settled authority. Later Scripture will keep connecting Judah with royal hope."], ["👑 The Sceptre Shall Not Depart", "This is one of Genesis' major promise lines. It points toward kingship through Judah, preparing for David's line and ultimately the promised Messiah."]],
+      phrases: [["🙌 Thy Brethren Shall Praise", "Judah's name sounds like praise, and Jacob now speaks a future where Judah receives honor among his brothers. This is surprising because Judah has had serious failure in his story. But he also became the brother who offered himself for Benjamin. The phrase matters because leadership begins shifting toward Judah. His brothers will praise him, bow before him, and later the royal line will come through him. Genesis is preparing the reader for David's line and, much later, the Messiah from Judah."], ["🦁 Judah Is A Lion's Whelp", "The lion image communicates strength, rule, and settled authority. Later Scripture will keep connecting Judah with royal hope."], ["👑 The Sceptre Shall Not Depart", "This is one of Genesis' major promise lines. It points toward kingship through Judah, preparing for David's line and ultimately the promised Messiah."]],
       truths: [["🦁 God can bring promise through a changed person.", "Judah failed badly, but Genesis has also shown him confessing and standing in the gap."], ["👑 Scripture is already pointing toward a king.", "The Bible's royal storyline does not begin with David; it has roots here in Genesis."], ["🙌 Grace can rewrite legacy.", "Judah's past is real, but it does not get the final word over God's purpose."]],
       application: ["🦁 Do not assume past failure ends usefulness.", "👑 Watch how the Bible's promises grow across generations.", "🙌 Let repentance become part of a new legacy."],
     }),
@@ -5804,7 +5860,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🌿",
       summary: "Jacob blesses Joseph as fruitful, attacked, strengthened by God, and abundantly blessed.",
       movement: ["🌿 Joseph is pictured as a fruitful bough by a well.", "🏹 Archers attack him and hate him.", "💪 His bow remains strong by God's help.", "✨ Jacob blesses Joseph with overflowing blessing."],
-      phrases: [["🌿 A Fruitful Bough", "Joseph's life produced fruit in a place of suffering. Fruitfulness in Genesis does not mean life was painless; it means God brought life through pressure."], ["🏹 The Archers Have Sorely Grieved Him", "This poetic image gathers Joseph's attacks: betrayal, slavery, false accusation, prison, and years of pain."], ["💪 The Mighty God Of Jacob", "Joseph's strength is traced back to God. He endured, but he was not self-made. The Shepherd and Stone of Israel sustained him."]],
+      phrases: [["🌿 A Fruitful Bough", "Joseph's life produced fruit in a place of suffering. Fruitfulness in Genesis does not mean life was painless; it means God brought life through pressure."], ["🏹 The Archers Have Sorely Grieved Him", "This poetic image gathers Joseph's attacks: betrayal, slavery, false accusation, prison, and years of pain. The archers are not literal bowmen in the story; they picture the people and pressures that wounded Joseph. The phrase matters because Jacob is interpreting Joseph's life as a battle survived by God's help. Joseph was attacked again and again, but he was not destroyed. The image helps readers feel both the suffering and the strength in Joseph's story. It also prepares the next line, where Joseph's bow remains strong because God sustained him."], ["💪 The Mighty God Of Jacob", "Joseph's strength is traced back to God. He endured, but he was not self-made. The Shepherd and Stone of Israel sustained him."]],
       truths: [["🌿 Affliction does not have to stop fruitfulness.", "Joseph was attacked, but God made him fruitful."], ["💪 Endurance comes from God's help.", "Genesis does not turn Joseph into a hero detached from grace."], ["✨ Blessing can overflow after long pressure.", "Jacob's words over Joseph are full because Joseph's story has been carried by God."]],
       application: ["🌿 Ask God for fruitfulness, not just comfort.", "🏹 Do not let attacks become your whole identity.", "💪 Name the ways God has strengthened you under pressure."],
     }),
@@ -5830,7 +5886,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "😭",
       summary: "Joseph mourns Jacob, Egypt honors him, and the family buries him in Canaan.",
       movement: ["😭 Joseph weeps over his father.", "🏺 Jacob is embalmed according to Egyptian practice.", "🚶 A large funeral procession travels to Canaan.", "🪦 Jacob is buried in Machpelah as he requested."],
-      phrases: [["😭 Joseph Fell Upon His Father's Face", "Joseph is governor of Egypt, but grief makes him simply a son. Scripture lets powerful people mourn honestly."], ["🏺 The Physicians Embalmed Israel", "This Egyptian practice shows Jacob's honored status in Egypt, but it also sets up the journey back to Canaan."], ["🚶 A Very Great Company", "The funeral is public and weighty. Egypt itself recognizes the importance of Joseph's father and joins the mourning."]],
+      phrases: [["😭 Joseph Fell Upon His Father's Face", "Joseph is governor of Egypt, but grief makes him simply a son. Scripture lets powerful people mourn honestly."], ["🏺 The Physicians Embalmed Israel", "This Egyptian practice shows Jacob's honored status in Egypt, but it also sets up the journey back to Canaan. Embalming was an Egyptian burial custom connected to preserving the body. Jacob's body is treated with honor, but his burial request points away from Egypt. The phrase matters because Jacob dies in Egypt while still claiming the promise land by faith. His body is prepared in Egypt, but it will not remain there. Even in death, Jacob's story points back to Canaan."], ["🚶 A Very Great Company", "The funeral is public and weighty. Egypt itself recognizes the importance of Joseph's father and joins the mourning."]],
       truths: [["😭 Grief is not weakness.", "Joseph's tears honor love and loss."], ["🪦 Hope does not remove mourning.", "The family believes God's promise, but they still grieve Jacob's death."], ["🏞️ Faith follows through.", "Joseph keeps his oath and carries Jacob back to Canaan."]],
       application: ["😭 Give grief room to be honest.", "🪦 Let hope and mourning sit together.", "🏞️ Keep promises that honor faith and family."],
     }),
@@ -5843,7 +5899,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🧭",
       summary: "The brothers fear revenge, but Joseph refuses God's place and comforts them with providence.",
       movement: ["😨 The brothers fear Joseph may now hate them.", "📩 They send a message asking forgiveness.", "😭 Joseph weeps when he hears their fear.", "🧭 Joseph says they meant evil, but God meant it for good."],
-      phrases: [["😨 Joseph Will Peradventure Hate Us", "Their guilt is still active. Even after Joseph's kindness, they wonder if mercy was only temporary until Jacob died."], ["⚖️ Am I In The Place Of God", "Joseph refuses revenge because revenge would require him to act like final judgment belongs to him."], ["🧭 Ye Thought Evil Against Me; But God Meant It Unto Good", "This does not call evil good. It says human evil was real, but God's saving purpose was greater and moved toward preserving life."]],
+      phrases: [["😨 Joseph Will Peradventure Hate Us", "Their guilt is still active. Even after Joseph's kindness, they wonder if mercy was only temporary until Jacob died."], ["⚖️ Am I In The Place Of God", "Joseph refuses revenge because revenge would require him to act like final judgment belongs to him. His brothers fear that he will punish them after Jacob dies. Joseph answers by placing judgment back in God's hands. The phrase matters because it shows Joseph's humility after years of power. He has authority in Egypt, but he knows he is not God. This is one of the clearest moments where Joseph chooses mercy instead of using power to settle old pain."], ["🧭 Ye Thought Evil Against Me; But God Meant It Unto Good", "This does not call evil good. It says human evil was real, but God's saving purpose was greater and moved toward preserving life."]],
       truths: [["😨 Guilt can make mercy hard to trust.", "The brothers still interpret Joseph through fear."], ["⚖️ Forgiveness gives judgment back to God.", "Joseph does not deny the wrong, but he refuses God's seat."], ["🧭 Providence is deeper than pain.", "God worked above their evil to preserve many people alive."]],
       application: ["😨 Let God's mercy challenge old fear.", "⚖️ Refuse revenge by remembering who the true Judge is.", "🧭 Ask God for faith to believe evil is real but not ultimate."],
     }),
@@ -5887,7 +5943,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🧱",
       summary: "A new Pharaoh fears Israel's growth and turns suspicion into bitter slavery.",
       movement: ["👑 A new king rises who does not know Joseph.", "😨 Pharaoh sees Israel's growth as a threat.", "🧱 Egypt sets taskmasters over Israel.", "😣 Their lives become bitter with hard bondage."],
-      phrases: [["👑 A New King Over Egypt", "This marks a political and spiritual shift. Joseph's service is forgotten, and Israel is now viewed through suspicion."], ["😨 More And Mightier Than We", "Pharaoh interprets God's blessing as danger. Control often fears what it cannot manage."], ["🧱 Made Their Lives Bitter", "The text wants readers to feel slavery as daily pain: labor, exhaustion, harshness, and loss of freedom."]],
+      phrases: [["👑 A New King Over Egypt", "This marks a political and spiritual shift. Joseph's service is forgotten, and Israel is now viewed through suspicion."], ["😨 More And Mightier Than We", "Pharaoh interprets God's blessing as danger. Control often fears what it cannot manage."], ["🧱 Made Their Lives Bitter", "The text wants readers to feel slavery as daily pain: labor, exhaustion, harshness, and loss of freedom. Bitter means their lives were made painful and heavy. Egypt is not only using Israel for work; it is crushing them through oppression. The phrase matters because Exodus begins by showing why deliverance is needed. God's rescue will not be from mild inconvenience. It will be from a system that turns human beings into tools for Pharaoh's building projects."]],
       truths: [["😨 Fear can become cruelty.", "Pharaoh's fear turns into policy, and policy becomes oppression."], ["🧱 Oppression cannot cancel God's promise.", "Egypt can afflict Israel, but it cannot erase what God is doing."], ["👑 Power without fear of God becomes dangerous.", "Pharaoh uses authority to protect control instead of protect life."]],
       application: ["😨 Watch what fear does when it becomes control.", "🧱 Remember that suffering does not mean God forgot His promise.", "👑 Measure leadership by how it treats vulnerable people."],
     }),
@@ -5978,7 +6034,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🙇",
       summary: "Moses returns to Egypt, Aaron joins him, and Israel believes that God has visited them.",
       movement: ["🚶 Moses begins the journey back to Egypt.", "⚠️ God warns that Pharaoh will resist.", "⛰️ Aaron meets Moses at the mountain of God.", "🙇 Israel believes, bows, and worships when they hear God has seen their affliction."],
-      phrases: [["🚶 Return Into Egypt", "Moses goes back to the place he fled. God's call often sends people toward old fear with new promise."], ["⚠️ Pharaoh Will Not Let The People Go", "God is honest about resistance. Deliverance is certain, but the road will include confrontation."], ["🙇 They Bowed Their Heads And Worshipped", "Before freedom is visible, Israel worships because they hear that God has visited and seen them."]],
+      phrases: [["🚶 Return Into Egypt", "Moses goes back to the place he fled. God's call often sends people toward old fear with new promise."], ["⚠️ Pharaoh Will Not Let The People Go", "God is honest about resistance. Deliverance is certain, but the road will include confrontation."], ["🙇 They Bowed Their Heads And Worshipped", "Before freedom is visible, Israel worships because they hear that God has visited and seen them. Their bodies are still in Egypt, and Pharaoh has not yet let them go. But the message that God has heard and looked on their affliction awakens hope. The phrase matters because worship begins before circumstances change. Israel bows because God's attention is already mercy. This moment shows that faith can respond to God's promise before the rescue is fully visible."]],
       truths: [["🚶 Obedience may require returning to hard places.", "Moses must face Egypt again."], ["⚠️ God's mission can include conflict.", "Pharaoh's resistance does not mean Moses misheard God."], ["🙇 Worship can begin before circumstances change.", "Israel is still enslaved, but they bow because God has heard."]],
       application: ["🚶 Let God's promise strengthen you for hard returns.", "⚠️ Do not be shocked when obedience meets resistance.", "🙇 Worship when you know God has heard, even before you see the full rescue."],
     }),
@@ -6048,7 +6104,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🐍",
       summary: "Aaron's staff becomes a serpent and swallows the magicians' staffs before Pharaoh.",
       movement: ["🗣️ Aaron speaks for Moses before Pharaoh.", "🐍 Aaron's staff becomes a serpent.", "🎭 Egypt's magicians imitate the sign.", "💪 Aaron's staff swallows their staffs."],
-      phrases: [["🐍 Cast Down Thy Rod", "The staff becomes a visible sign that Moses and Aaron are not standing there in their own authority."], ["🎭 The Magicians Of Egypt", "Egypt has religious spectacle and counterfeit power. Exodus does not pretend Pharaoh's court is empty of spiritual opposition."], ["💪 Aaron's Rod Swallowed Up Their Rods", "The point is not that Egypt can do nothing. The point is that Egypt's power is swallowed by God's power."]],
+      phrases: [["🐍 Cast Down Thy Rod", "The staff becomes a visible sign that Moses and Aaron are not standing there in their own authority. In Moses' hand, the staff had already become a sign of God's power. Before Pharaoh, it becomes part of the public confrontation between the LORD and Egypt's power. The phrase matters because God uses an ordinary object to show extraordinary authority. Moses and Aaron are not magicians trying to impress a king. They are messengers carrying the sign God gave them."], ["🎭 The Magicians Of Egypt", "Egypt has religious spectacle and counterfeit power. Exodus does not pretend Pharaoh's court is empty of spiritual opposition."], ["💪 Aaron's Rod Swallowed Up Their Rods", "The point is not that Egypt can do nothing. The point is that Egypt's power is swallowed by God's power."]],
       truths: [["🎭 Counterfeit power can imitate signs.", "Not every impressive display is God's authority."], ["💪 God's power outranks Egypt's power.", "The swallowing staff previews the larger defeat of Pharaoh."], ["🧱 A hard heart can resist clear evidence.", "Pharaoh sees the sign and still refuses."]],
       application: ["🎭 Do not be impressed by imitation more than truth.", "💪 Trust God's authority over rival powers.", "🧱 Ask God for a soft heart before evidence becomes something you resist."],
     }),
@@ -6087,7 +6143,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "☝️",
       summary: "Dust becomes lice, and Egypt's magicians admit the finger of God is at work.",
       movement: ["☝️ Aaron strikes the dust.", "🪳 Lice come on people and animals.", "🎭 The magicians cannot imitate the plague.", "🔒 Pharaoh still refuses to listen."],
-      phrases: [["🌫️ Smite The Dust", "Dust becoming a plague is creation-level imagery. The God who formed humanity from dust commands dust in judgment."], ["☝️ This Is The Finger Of God", "Egypt's magicians admit a limit. They recognize power beyond their own arts and rituals."], ["🔒 Pharaoh's Heart Was Hardened", "Even when his own experts recognize God's power, Pharaoh refuses to hear."]],
+      phrases: [["🌫️ Smite The Dust", "Dust becoming a plague is creation-level imagery. The God who formed humanity from dust commands dust in judgment."], ["☝️ This Is The Finger Of God", "Egypt's magicians admit a limit. They recognize power beyond their own arts and rituals."], ["🔒 Pharaoh's Heart Was Hardened", "Even when his own experts recognize God's power, Pharaoh refuses to hear. The hardening of Pharaoh's heart means he becomes stubborn, resistant, and closed to God's command. This phrase matters because Exodus is showing rebellion in real time. Pharaoh is not lacking evidence; he is refusing submission. His own magicians can see the finger of God, but Pharaoh still will not listen. The conflict is about authority, not information alone."]],
       truths: [["☝️ God's power has no equal.", "The magicians reach their limit quickly."], ["🌫️ Creation obeys the Creator.", "Dust itself becomes part of God's sign."], ["🔒 Recognition is not the same as repentance.", "The magicians can name God's finger, but Pharaoh still resists."]],
       application: ["☝️ Let God's power humble you before you hit a harder wall.", "🌫️ Remember creation is not outside God's command.", "🔒 Do not settle for recognizing truth without obeying it."],
     }),
@@ -6370,7 +6426,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🔥",
       summary: "Israel trembles at God's voice, and God gives instructions for humble altar worship.",
       movement: ["🌩️ The people tremble at Sinai.", "🧍 They stand far off and ask Moses to speak.", "🔥 Moses explains holy fear.", "🪨 God gives simple altar instructions."],
-      phrases: [["🌩️ All The People Saw The Thunderings", "The scene overwhelms the senses. God's voice is not presented as casual inspiration; it is holy and weighty."], ["🔥 That His Fear May Be Before Your Faces", "This fear is reverence that keeps people from sin, not panic that makes them run from God's mercy."], ["🪨 An Altar Of Earth", "God's altar instructions are simple. Israel's worship must not become a stage for human display or pagan imitation."]],
+      phrases: [["🌩️ All The People Saw The Thunderings", "The scene overwhelms the senses. God's voice is not presented as casual inspiration; it is holy and weighty."], ["🔥 That His Fear May Be Before Your Faces", "This fear is reverence that keeps people from sin, not panic that makes them run from God's mercy. Israel has seen thunder, lightning, smoke, and heard God's voice at Sinai. Moses explains that this holy fear is meant to shape obedience. The phrase matters because biblical fear of the LORD is not the same as thinking God is cruel. It means taking Him seriously enough to turn away from sin. Reverence becomes a guardrail for covenant life."], ["🪨 An Altar Of Earth", "God's altar instructions are simple. Israel's worship must not become a stage for human display or pagan imitation."]],
       truths: [["🔥 Reverence protects obedience.", "Holy fear helps people take God seriously."], ["🧍 Mediation becomes necessary.", "The people feel the weight of direct encounter with God."], ["🪨 Worship must be shaped by God's word.", "Simple obedience matters more than impressive display."]],
       application: ["🔥 Ask God for reverence that draws you toward obedience.", "🧍 Be grateful that God makes a way for people to approach Him.", "🪨 Keep worship humble and God-centered."],
     }),
@@ -6601,7 +6657,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "👑",
       summary: "Aaron and his sons are chosen for priestly service, and holy garments are made for glory and beauty.",
       movement: ["👑 Aaron and his sons are set apart as priests.", "✨ Holy garments are made for glory and beauty.", "🪨 Stones carry the names of Israel's tribes.", "💪 The priest bears the names on his shoulders."],
-      phrases: [["👑 That He May Minister Unto Me In The Priest's Office", "Priests serve God on behalf of the people. They are set apart for holy representation, not religious status."], ["✨ For Glory And For Beauty", "The garments communicate the weight and beauty of priestly service. Worship is not treated as ordinary work."], ["💪 Stones Of Memorial Unto The Children Of Israel", "The high priest carries the tribe names on his shoulders, picturing strength, representation, and burden-bearing before God."]],
+      phrases: [["👑 That He May Minister Unto Me In The Priest's Office", "Priests serve God on behalf of the people. They are set apart for holy representation, not religious status."], ["✨ For Glory And For Beauty", "The garments communicate the weight and beauty of priestly service. Worship is not treated as ordinary work."], ["💪 Stones Of Memorial Unto The Children Of Israel", "The high priest carries the tribe names on his shoulders, picturing strength, representation, and burden-bearing before God. The stones are called memorial stones because Israel is being represented before the LORD. Aaron does not enter holy service as a private individual only. He carries the people symbolically into his priestly work. The phrase matters because priesthood is about representation. The people need someone appointed to bear their names before God's presence."]],
       truths: [["👑 God's people need representation.", "The priest serves before God for the people."], ["✨ Holy service carries beauty and weight.", "The garments teach reverence."], ["💪 The people are carried before God.", "Israel's names are not forgotten."]],
       application: ["👑 Be thankful for representation before God.", "✨ Treat ministry as holy, not casual.", "💪 Remember that God knows His people by name."],
     }),
@@ -6658,7 +6714,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🩸",
       summary: "Sacrifices are offered for the priests, and blood marks their consecration.",
       movement: ["🐂 A bull is offered as a sin offering.", "🐏 Rams are offered for consecration.", "🩸 Blood marks the ear, thumb, and toe.", "🤲 Priestly portions are lifted before the LORD."],
-      phrases: [["🐂 A Sin Offering", "The priests themselves need atonement. Aaron cannot help the people approach God unless his own sin is addressed."], ["🩸 Tip Of The Right Ear", "Blood on the ear, thumb, and toe pictures the whole priestly life consecrated: hearing, working, and walking belong to God."], ["🤲 Wave Offering", "The lifted offering shows that priestly service is received from God and offered back to Him."]],
+      phrases: [["🐂 A Sin Offering", "The priests themselves need atonement. Aaron cannot help the people approach God unless his own sin is addressed."], ["🩸 Tip Of The Right Ear", "Blood on the ear, thumb, and toe pictures the whole priestly life consecrated: hearing, working, and walking belong to God. The right ear points to what the priest hears. The right thumb points to what the priest does with his hands. The right toe points to where the priest walks. The phrase matters because priestly service is not only clothing or title. The whole person is marked for holy obedience."], ["🤲 Wave Offering", "The lifted offering shows that priestly service is received from God and offered back to Him. A wave offering is presented before the LORD as part of worship. The motion signals that the portion is not treated as ordinary food or private property first. The phrase matters because it shows the priest's portion is still connected to God's altar. Even what the priest receives is received under God's authority. Holy service is both gift and responsibility."]],
       truths: [["🐂 Mediators need mercy too.", "Aaron is not sinless."], ["🩸 God claims the whole person.", "Hearing, doing, and walking are consecrated."], ["🤲 Worship gives back what God provides.", "The offering is lifted before the LORD."]],
       application: ["🐂 Remember leaders need atonement too.", "🩸 Let God claim your ears, hands, and feet.", "🤲 Offer your service back to God."],
     }),
@@ -6806,7 +6862,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🏜️",
       summary: "After the golden calf, God tells Israel to go toward the land, but warns that His presence will not go in the same way.",
       movement: ["🏜️ God says the journey toward the land will continue.", "⚠️ He warns that He will not go in their midst the same way.", "😔 The people mourn.", "💍 Israel removes their ornaments."],
-      phrases: [["🏜️ Unto A Land Flowing With Milk And Honey", "The promised land is still real, but this passage shows the land itself is not the greatest gift. Without God's presence, even blessing becomes hollow."], ["⚠️ I Will Not Go Up In The Midst Of Thee", "This is the crisis after the golden calf. God's holiness makes covenant betrayal deadly serious."], ["😔 The People Mourned", "For the first time, the weight of what they have done begins to settle on the people."]],
+      phrases: [["🏜️ Unto A Land Flowing With Milk And Honey", "The promised land is still real, but this passage shows the land itself is not the greatest gift. Without God's presence, even blessing becomes hollow."], ["⚠️ I Will Not Go Up In The Midst Of Thee", "This is the crisis after the golden calf. God's holiness makes covenant betrayal deadly serious."], ["😔 The People Mourned", "For the first time, the weight of what they have done begins to settle on the people. Israel has sinned with the golden calf, and now they hear that God's presence will not go with them in the same way. Their mourning shows that the consequence is finally reaching their hearts. The phrase matters because true grief over sin is different from frustration over punishment. The people begin to understand that losing nearness to God is the real disaster. This prepares the way for Moses' intercession."]],
       truths: [["🏜️ Gifts are not enough without God.", "The land cannot replace the LORD."], ["⚠️ Sin damages nearness.", "The golden calf disrupted covenant fellowship."], ["😔 Repentance begins with grief over sin.", "The people mourn instead of celebrating."]],
       application: ["🏜️ Do not settle for blessing without presence.", "⚠️ Take spiritual distance seriously.", "😔 Let conviction lead you toward God, not away from Him."],
     }),
@@ -6858,7 +6914,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🤝",
       summary: "God renews covenant commands and warns Israel against idolatry and compromise in the land.",
       movement: ["🤝 God renews covenant with Israel.", "🚫 He warns against covenants with idols.", "📅 Feasts and Sabbath are repeated.", "✍️ Moses remains with the LORD forty days and nights."],
-      phrases: [["🚫 Thou Shalt Worship No Other God", "This warning lands hard after the golden calf. Israel must not mix worship of the LORD with idols."], ["🔥 The LORD, Whose Name Is Jealous", "God's jealousy is covenant love that refuses to share His people with idols that destroy them."], ["📅 The Feast Of Unleavened Bread Shalt Thou Keep", "The renewed covenant returns Israel to rhythms of memory, worship, and obedience."]],
+      phrases: [["🚫 Thou Shalt Worship No Other God", "This warning lands hard after the golden calf. Israel must not mix worship of the LORD with idols."], ["🔥 The LORD, Whose Name Is Jealous", "God's jealousy is covenant love that refuses to share His people with idols that destroy them. In human relationships, jealousy can be selfish and sinful. But God's jealousy is holy because He alone is worthy of worship and He knows idols enslave people. The phrase matters because Israel has just worshiped the golden calf. God is not being petty; He is protecting the covenant relationship. His people cannot belong to Him and give their hearts to false gods at the same time."], ["📅 The Feast Of Unleavened Bread Shalt Thou Keep", "The renewed covenant returns Israel to rhythms of memory, worship, and obedience. The Feast of Unleavened Bread remembers the Exodus rescue, when Israel left Egypt in haste. After the golden calf, this command reminds the people who saved them and who they belong to. The phrase matters because worship calendars teach memory. Israel must not move forward by forgetting mercy. Their yearly feasts keep God's rescue in front of each generation."]],
       truths: [["🤝 Mercy renews covenant obedience.", "God's forgiveness leads Israel back to His commands."], ["🚫 Idolatry must not be tolerated.", "The calf showed how dangerous compromise is."], ["📅 Worship rhythms protect memory.", "Feasts and Sabbath keep Israel grounded."]],
       application: ["🤝 Let mercy lead you back to obedience.", "🚫 Tear down compromises that pull your heart from God.", "📅 Keep rhythms that remind you who rescued you."],
     }),
@@ -6871,7 +6927,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🌟",
       summary: "Moses comes down from the mountain with a shining face after speaking with the LORD.",
       movement: ["📜 Moses comes down with the tablets.", "🌟 His face shines from speaking with God.", "😨 The people are afraid to come near.", "🧣 Moses covers his face with a veil."],
-      phrases: [["🌟 The Skin Of His Face Shone", "Time with God leaves a visible mark on Moses. The glory is reflected, not self-produced."], ["🗣️ While He Talked With Him", "The shining is connected to communion with God. Moses is changed by being with the LORD."], ["🧣 Moses Put The Vail On His Face", "The veil shows the weight of reflected glory and prepares later biblical reflection on covenant and glory."]],
+      phrases: [["🌟 The Skin Of His Face Shone", "Time with God leaves a visible mark on Moses. The glory is reflected, not self-produced."], ["🗣️ While He Talked With Him", "The shining is connected to communion with God. Moses is changed by being with the LORD."], ["🧣 Moses Put The Vail On His Face", "The veil shows the weight of reflected glory and prepares later biblical reflection on covenant and glory. Moses' face shines because he has been speaking with the LORD. The people are afraid, so Moses covers his face after speaking God's word to them. The phrase matters because God's glory changes the person who draws near to Him. Later, Paul will reflect on this veil when explaining old covenant and new covenant glory. Exodus is showing that even reflected glory is too weighty to treat casually."]],
       truths: [["🌟 God's presence changes people.", "Moses reflects what he has encountered."], ["🗣️ Communion shapes witness.", "Moses speaks God's commands after meeting with God."], ["🧣 Glory is weighty.", "The people cannot treat it casually."]],
       application: ["🌟 Spend time where God's character can shape you.", "🗣️ Let speaking for God come after being with God.", "🧣 Do not make holy things light."],
     }),
@@ -6923,7 +6979,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🏕️",
       summary: "The skilled workers begin making the curtains, coverings, frames, veil, and entrance for the tabernacle.",
       movement: ["🧵 Curtains and cherubim are made.", "🛡️ Coverings are crafted.", "🪵 Frames and bars are built.", "🚪 The veil and entrance are made."],
-      phrases: [["🧵 Made Curtains Of Fine Twined Linen", "The instructions are now becoming reality. Israel is no longer inventing worship; they are obeying the pattern God gave."], ["🪽 Cherubims Of Cunning Work", "The Eden-like imagery returns in the tabernacle fabric, reminding Israel that God's presence is holy and guarded."], ["🚪 The Vail", "The veil marks holy separation. God is dwelling among them, but access remains ordered by His holiness."]],
+      phrases: [["🧵 Made Curtains Of Fine Twined Linen", "The instructions are now becoming reality. Israel is no longer inventing worship; they are obeying the pattern God gave."], ["🪽 Cherubims Of Cunning Work", "The Eden-like imagery returns in the tabernacle fabric, reminding Israel that God's presence is holy and guarded. Cherubim first appeared after Eden, guarding the way to the tree of life. Now cherubim are woven into the tabernacle curtains near God's dwelling place. The phrase matters because the tabernacle is not just a tent; it is a holy meeting place shaped with Eden memories. Israel is being taught that access to God's presence is precious and protected. The imagery points backward to Eden and forward to restored fellowship."], ["🚪 The Vail", "The veil marks holy separation. God is dwelling among them, but access remains ordered by His holiness."]],
       truths: [["🏕️ Obedience makes the pattern visible.", "What God commanded is now being built."], ["🪽 God's dwelling is holy space.", "Cherubim imagery teaches reverence."], ["🚪 Nearness still has order.", "The veil remains part of worship."]],
       application: ["🏕️ Let obedience become visible, not only intended.", "🪽 Keep reverence in the center of worship.", "🚪 Come near through God's provided way."],
     }),
@@ -7115,7 +7171,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "👑",
       summary: "God gives instructions for a sin offering when the anointed priest sins and brings guilt on the people.",
       movement: ["👑 The anointed priest sins unintentionally.", "🐂 A bull is brought as a sin offering.", "🩸 Blood is brought into holy space.", "🔥 The sacrifice deals with guilt before God."],
-      phrases: [["👑 If The Priest That Is Anointed Do Sin", "Priests are not sinless. The person who represents others before God also needs atonement."], ["🩸 Sprinkle Of The Blood Seven Times", "The blood is brought near the veil, showing that priestly sin affects worship and holy space."], ["🔥 The Sin Offering", "This offering deals with guilt and pollution from sin. God provides a way for sin to be addressed instead of ignored."]],
+      phrases: [["👑 If The Priest That Is Anointed Do Sin", "Priests are not sinless. The person who represents others before God also needs atonement."], ["🩸 Sprinkle Of The Blood Seven Times", "The blood is brought near the veil, showing that priestly sin affects worship and holy space. The veil separates the holy place from the Most Holy Place, so blood near the veil signals a serious matter. The priest represents the people, which means his sin is not merely private. The phrase matters because leaders who serve near holy things can bring damage into worship. Leviticus teaches that sin must be cleansed where it pollutes. God provides atonement, but He does not pretend priestly sin is harmless."], ["🔥 The Sin Offering", "This offering deals with guilt and pollution from sin. God provides a way for sin to be addressed instead of ignored."]],
       truths: [["👑 Spiritual leaders need atonement.", "Role does not remove guilt."], ["🩸 Sin affects worship.", "The blood is applied in holy space."], ["🔥 God provides cleansing for guilt.", "Sin is serious, but mercy is provided."]],
       application: ["👑 Do not assume leaders are above repentance.", "🩸 Take seriously how sin affects others.", "🔥 Bring guilt to the atonement God provides."],
     }),
@@ -7128,7 +7184,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "👥",
       summary: "God gives instructions for atonement when the whole community sins unintentionally.",
       movement: ["👥 The whole congregation sins unintentionally.", "👴 The elders lay hands on the bull.", "🩸 Blood is applied before the LORD.", "🤲 Atonement is made for the people."],
-      phrases: [["👥 The Whole Congregation", "A community can become guilty together. Leviticus does not treat sin as only individual and private."], ["👴 The Elders Of The Congregation", "The elders represent the people in the act of identification. Leadership participates in bringing the community's guilt before God."], ["🤲 It Shall Be Forgiven Them", "The promise of forgiveness is given even for corporate guilt when atonement is made God's way."]],
+      phrases: [["👥 The Whole Congregation", "A community can become guilty together. Leviticus does not treat sin as only individual and private."], ["👴 The Elders Of The Congregation", "The elders represent the people in the act of identification. Leadership participates in bringing the community's guilt before God."], ["🤲 It Shall Be Forgiven Them", "The promise of forgiveness is given even for corporate guilt when atonement is made God's way. The whole congregation can sin together, even unintentionally. That means communities can need mercy, not only individuals. The phrase matters because God provides atonement for His people as a people. The elders lay hands on the offering, and the priest applies the blood. Forgiveness is possible, but it comes through the way God commands."]],
       truths: [["👥 Communities can need repentance.", "Sin can be shared, normalized, or communal."], ["👴 Leaders help name communal guilt.", "The elders identify with the offering."], ["🤲 God provides forgiveness for His people.", "Atonement opens the way for mercy."]],
       application: ["👥 Notice where group sin needs confession.", "👴 Do not hide behind the crowd.", "🤲 Trust God's mercy for communal failure too."],
     }),
@@ -7141,7 +7197,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "⚖️",
       summary: "God gives instructions for a ruler who sins unintentionally and needs forgiveness.",
       movement: ["⚖️ A ruler sins unintentionally.", "🐐 A male goat is brought.", "✋ The ruler lays a hand on its head.", "🤲 The priest makes atonement and forgiveness is given."],
-      phrases: [["⚖️ When A Ruler Hath Sinned", "Leadership does not place anyone above God's holiness. Rulers are accountable when they sin."], ["📣 It Come To His Knowledge", "The moment sin becomes known, the leader must respond. Awareness should lead to confession, not image management."], ["🤲 It Shall Be Forgiven Him", "God provides a path back for leaders too, but it comes through atonement, not denial."]],
+      phrases: [["⚖️ When A Ruler Hath Sinned", "Leadership does not place anyone above God's holiness. Rulers are accountable when they sin."], ["📣 It Come To His Knowledge", "The moment sin becomes known, the leader must respond. Awareness should lead to confession, not image management."], ["🤲 It Shall Be Forgiven Him", "God provides a path back for leaders too, but it comes through atonement, not denial. A ruler who sins must not hide behind authority or reputation. When the sin becomes known, the leader brings the offering and receives atonement. The phrase matters because leadership increases responsibility, but it does not remove the need for mercy. God does not say leaders are beyond forgiveness. He also does not let them pretend sin does not matter."]],
       truths: [["⚖️ Leaders are accountable to God.", "Authority does not erase guilt."], ["📣 Conviction should lead to response.", "Known sin must be brought into the light."], ["🤲 God offers forgiveness through atonement.", "Failure does not have to be hidden."]],
       application: ["⚖️ Hold leadership with humility.", "📣 Respond quickly when sin becomes clear.", "🤲 Seek forgiveness God's way, not through cover-up."],
     }),
@@ -7455,7 +7511,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🩸",
       summary: "After Nadab and Abihu's death, God gives instructions for Aaron entering the Most Holy Place.",
       movement: ["⚠️ The chapter remembers Nadab and Abihu.", "🚪 Aaron cannot enter whenever he wants.", "🐂 A bull is brought for Aaron.", "🐐 Two goats are chosen for the people."],
-      phrases: [["⚠️ After The Death Of The Two Sons Of Aaron", "The chapter begins with a warning memory. The Most Holy Place cannot be entered casually after what happened to Nadab and Abihu."], ["🚪 Come Not At All Times", "Aaron may enter, but not whenever he wants. Access to God's holy presence is a gift controlled by God's command."], ["🐐 Two Kids Of The Goats", "The two goats show two sides of atonement: sacrifice before the LORD and sin carried away from the people."]],
+      phrases: [["⚠️ After The Death Of The Two Sons Of Aaron", "The chapter begins with a warning memory. The Most Holy Place cannot be entered casually after what happened to Nadab and Abihu."], ["🚪 Come Not At All Times", "Aaron may enter, but not whenever he wants. Access to God's holy presence is a gift controlled by God's command."], ["🐐 Two Kids Of The Goats", "The two goats show two sides of atonement: sacrifice before the LORD and sin carried away from the people. One goat is offered as a sin offering, and the other becomes the live goat sent into the wilderness. Together they picture cleansing and removal. The phrase matters because Israel needs more than a vague feeling of forgiveness. Sin must be dealt with before God and carried away from the camp. This becomes one of the clearest Old Testament pictures of atonement."]],
       truths: [["🚪 Access must come God's way.", "Aaron cannot enter casually."], ["🐂 The high priest needs atonement.", "He brings a bull for himself."], ["🐐 God provides for the people.", "The goats are chosen for Israel's cleansing."]],
       application: ["🚪 Do not treat access to God as casual.", "🐂 Remember that spiritual leaders need mercy too.", "🐐 Look for both forgiveness and removal of sin."],
     }),
@@ -7481,7 +7537,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
       icon: "🕯️",
       summary: "God establishes the Day of Atonement as a yearly day of humility, rest, and cleansing.",
       movement: ["🕯️ The day becomes a yearly statute.", "🙇 The people humble themselves.", "🛑 No work is done.", "🧼 Atonement is made for priests, sanctuary, altar, and people."],
-      phrases: [["🙇 Afflict Your Souls", "This means the people humble themselves before God. The Day of Atonement is not entertainment; it is solemn repentance and dependence."], ["🛑 Ye Shall Do No Work", "Israel rests because cleansing is received from God, not produced by human effort. The day is about God's provision."], ["🧼 Once A Year", "The yearly rhythm reminds Israel that life near God's presence requires deep, repeated cleansing under the old covenant."]],
+      phrases: [["🙇 Afflict Your Souls", "This means the people humble themselves before God. The Day of Atonement is not entertainment; it is solemn repentance and dependence."], ["🛑 Ye Shall Do No Work", "Israel rests because cleansing is received from God, not produced by human effort. The day is about God's provision."], ["🧼 Once A Year", "The yearly rhythm reminds Israel that life near God's presence requires deep, repeated cleansing under the old covenant. The Day of Atonement is not a random ceremony; it is built into Israel's calendar. Every year, priests, people, altar, and sanctuary are brought under God's cleansing provision. The phrase matters because sin and uncleanness keep affecting the community. Israel cannot cleanse itself by effort. God provides a repeated day of mercy until the fuller atonement later revealed in Christ."]],
       truths: [["🙇 Atonement calls for humility.", "The people lower themselves before God."], ["🛑 Cleansing is received, not earned.", "No work is done."], ["🧼 God's mercy sustains the community.", "Atonement is made for all Israel."]],
       application: ["🙇 Practice humble repentance instead of self-defense.", "🛑 Stop trying to cleanse yourself by effort.", "🧼 Remember that God's mercy holds His people near."],
     }),
@@ -7492,7 +7548,11 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
   section.categories = section.categories
     .filter((category) => category.id !== "key-truths")
     .map((category) =>
-      category.id === "why-this-matters" ? { ...category, title: "What This Means" } : category,
+      category.id === "why-this-matters"
+        ? { ...category, title: "What This Means" }
+        : category.id === "key-phrases"
+          ? { ...category, content: category.content.map((item) => deepenKeyPhraseContent(item, section)) }
+          : category,
     );
 }
 
