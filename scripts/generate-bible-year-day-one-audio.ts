@@ -3,12 +3,12 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { createContext, runInContext } from "vm";
 import { createClient } from "@supabase/supabase-js";
-import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_ELEVEN_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_NINE_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_TEN_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWELVE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
+import { BIBLE_YEAR_AUDIO_BUCKET, BIBLE_YEAR_DAY_EIGHT_AUDIO, BIBLE_YEAR_DAY_ELEVEN_AUDIO, BIBLE_YEAR_DAY_FIVE_AUDIO, BIBLE_YEAR_DAY_FOUR_AUDIO, BIBLE_YEAR_DAY_NINE_AUDIO, BIBLE_YEAR_DAY_ONE_AUDIO, BIBLE_YEAR_DAY_SEVEN_AUDIO, BIBLE_YEAR_DAY_SIX_AUDIO, BIBLE_YEAR_DAY_TEN_AUDIO, BIBLE_YEAR_DAY_THIRTEEN_AUDIO, BIBLE_YEAR_DAY_THREE_AUDIO, BIBLE_YEAR_DAY_TWELVE_AUDIO, BIBLE_YEAR_DAY_TWO_AUDIO } from "../lib/bibleYearAudio";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { GENESIS_DAY_EIGHT_JUDGMENT_OF_SODOM_LESSON, GENESIS_DAY_FIVE_ABRAHAM_OBEDIENCE_LESSON, GENESIS_DAY_FOUR_NOAH_FLOOD_LESSON, GENESIS_DAY_NINE_ABRAHAMS_TEST_AND_LEGACY_LESSON, GENESIS_DAY_ONE_CREATION_LESSON, GENESIS_DAY_SEVEN_COVENANT_PROMISE_LESSON, GENESIS_DAY_SIX_RESCUE_OF_LOT_LESSON, GENESIS_DAY_THREE_NOAH_ARK_LESSON, GENESIS_DAY_TWO_FALL_LESSON, type BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
 import { GENESIS_ONE_TTS_VOICE } from "../lib/genesisOneTtsAudio";
 import { cleanTextForTts } from "../lib/ttsSpeechText";
-import { GENESIS_DAY_ELEVEN_JACOBS_JOURNEY_BEGINS_LESSON, GENESIS_DAY_TEN_COVENANT_THROUGH_ISAAC_LESSON, GENESIS_DAY_TWELVE_JACOB_LEAVES_LABAN_LESSON } from "../lib/bibleYearDaysTenToFourteen";
+import { GENESIS_DAY_ELEVEN_JACOBS_JOURNEY_BEGINS_LESSON, GENESIS_DAY_TEN_COVENANT_THROUGH_ISAAC_LESSON, GENESIS_DAY_THIRTEEN_JACOB_WRESTLES_WITH_GOD_LESSON, GENESIS_DAY_TWELVE_JACOB_LEAVES_LABAN_LESSON } from "../lib/bibleYearDaysTenToFourteen";
 
 const SAMPLE_RATE = 24000;
 const MAX_TTS_CHUNK_LENGTH = 3400;
@@ -36,7 +36,9 @@ const requestedDay = Number(process.env.BIBLE_YEAR_TTS_DAY || process.argv.find(
 const voiceOnlyMode = process.argv.includes("--voice-only") || process.env.BIBLE_YEAR_TTS_VOICE_ONLY === "true";
 const uploadVoiceOnlyMode = process.argv.includes("--upload-voice-only") || process.env.BIBLE_YEAR_TTS_UPLOAD_VOICE_ONLY === "true";
 const selectedLesson =
-  requestedDay === 12
+  requestedDay === 13
+    ? GENESIS_DAY_THIRTEEN_JACOB_WRESTLES_WITH_GOD_LESSON
+    : requestedDay === 12
     ? GENESIS_DAY_TWELVE_JACOB_LEAVES_LABAN_LESSON
     : requestedDay === 11
     ? GENESIS_DAY_ELEVEN_JACOBS_JOURNEY_BEGINS_LESSON
@@ -60,7 +62,9 @@ const selectedLesson =
           ? GENESIS_DAY_TWO_FALL_LESSON
           : GENESIS_DAY_ONE_CREATION_LESSON;
 const selectedAudio =
-  requestedDay === 12
+  requestedDay === 13
+    ? BIBLE_YEAR_DAY_THIRTEEN_AUDIO
+    : requestedDay === 12
     ? BIBLE_YEAR_DAY_TWELVE_AUDIO
     : requestedDay === 11
     ? BIBLE_YEAR_DAY_ELEVEN_AUDIO
@@ -93,6 +97,7 @@ const DAY_NINE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-
 const DAY_TEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-10-exact-web-narrator-script.md");
 const DAY_ELEVEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-11-exact-web-narrator-script.md");
 const DAY_TWELVE_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-12-exact-web-narrator-script.md");
+const DAY_THIRTEEN_APPROVED_SCRIPT_PATH = join(process.cwd(), "docs", "bible-in-one-year-day-13-exact-web-narrator-script.md");
 const AMBIENCE_GAIN = selectedLesson.dayNumber === 2 ? 0.129 : selectedLesson.dayNumber === 1 ? 0.112 : 0.088;
 
 function ensureDir(path: string) {
@@ -898,6 +903,7 @@ function getApprovedBibleYearScriptPath(dayNumber: number) {
   if (dayNumber === 10) return DAY_TEN_APPROVED_SCRIPT_PATH;
   if (dayNumber === 11) return DAY_ELEVEN_APPROVED_SCRIPT_PATH;
   if (dayNumber === 12) return DAY_TWELVE_APPROVED_SCRIPT_PATH;
+  if (dayNumber === 13) return DAY_THIRTEEN_APPROVED_SCRIPT_PATH;
   return null;
 }
 
