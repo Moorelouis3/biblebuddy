@@ -177,6 +177,21 @@ type AnalyticsResponse = {
     monthlySignupChange: number;
     lifetimeSignups: number;
   };
+  registeredUsers?: {
+    total: number;
+    withEmail: number;
+    withoutEmail: number;
+    guestAccounts: number;
+    rows: Array<{
+      id: string;
+      displayName: string;
+      email: string | null;
+      accountType: "Email" | "No email" | "Guest";
+      provider: string;
+      createdAt: string | null;
+      lastSignInAt: string | null;
+    }>;
+  };
   audioEngagement?: {
     totalPlays: number;
     uniqueListeners: number;
@@ -184,6 +199,17 @@ type AnalyticsResponse = {
     averageListeningMinutes: number;
     lessonCompletionRate: number;
     source: "audio_events" | "day_task_events";
+    playDetails?: Array<{
+      id: string;
+      userId: string | null;
+      userLabel: string;
+      title: string;
+      dayNumber: number | null;
+      eventType: string;
+      listenedSeconds: number;
+      listenedLabel: string;
+      playedAt: string | null;
+    }>;
   };
   customerJourney?: {
     window: JourneyWindow;
@@ -352,6 +378,10 @@ function formatLastActive(value: string) {
   if (hours < 24) return `${hours} hr ago`;
   const days = Math.round(hours / 24);
   return `${days} day${days === 1 ? "" : "s"} ago`;
+}
+
+function formatEventTitle(value: string) {
+  return value.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
 }
 
 function getRate(part: number, whole: number) {
@@ -919,6 +949,7 @@ function FounderFunnelSection({
 }
 
 function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEngagement"] | undefined }) {
+  const [showPlayDetails, setShowPlayDetails] = useState(false);
   const metrics = audio || {
     totalPlays: 0,
     uniqueListeners: 0,
@@ -926,7 +957,9 @@ function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEng
     averageListeningMinutes: 0,
     lessonCompletionRate: 0,
     source: "day_task_events" as const,
+    playDetails: [],
   };
+  const playDetails = metrics.playDetails || [];
   return (
     <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -939,13 +972,128 @@ function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEng
         </p>
       </div>
       <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-        <FounderMetricCard title="Total Plays" value={formatNumber(metrics.totalPlays)} helper="Audio lessons started." icon="play" />
+        <button type="button" onClick={() => setShowPlayDetails((current) => !current)} className="text-left" aria-expanded={showPlayDetails}>
+          <FounderMetricCard title="Total Plays" value={formatNumber(metrics.totalPlays)} helper={`${showPlayDetails ? "Hide" : "Show"} who listened, what they played, and how long.`} icon="play" />
+        </button>
         <FounderMetricCard title="Unique Listeners" value={formatNumber(metrics.uniqueListeners)} helper="Individual users who listened." icon="headphones" />
         <FounderMetricCard title="Minutes Played" value={formatNumber(metrics.totalMinutesPlayed)} helper="Total tracked listening minutes." icon="spark" />
         <FounderMetricCard title="Avg Listen Time" value={`${metrics.averageListeningMinutes}m`} helper="Average minutes per session." icon="visitors" />
         <FounderMetricCard title="Completion Rate" value={`${metrics.lessonCompletionRate}%`} helper="Lessons completed from plays." icon="check" />
       </div>
+      {showPlayDetails ? (
+        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+          <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+            <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Total Plays Detail</p>
+            <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(playDetails.length)} rows shown</p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="min-w-[820px] w-full border-collapse text-left text-sm">
+              <thead className="bg-[var(--bb-surface-soft,#eef4f8)] text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">
+                <tr>
+                  <th className="px-4 py-3">Who</th>
+                  <th className="px-4 py-3">Listened / Watched</th>
+                  <th className="px-4 py-3">How Long</th>
+                  <th className="px-4 py-3">Event</th>
+                  <th className="px-4 py-3">When</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[var(--bb-card-border,#d8e3ec)]">
+                {playDetails.length ? playDetails.map((row) => (
+                  <tr key={row.id} className="bg-[var(--bb-card,#ffffff)]">
+                    <td className="px-4 py-3 font-bold text-[var(--bb-text-primary,#101827)]">{row.userLabel || "Unknown"}</td>
+                    <td className="px-4 py-3">
+                      <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.title}</div>
+                      {row.dayNumber ? <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">Day {row.dayNumber}</div> : null}
+                    </td>
+                    <td className="px-4 py-3 font-black text-[var(--bb-accent,#2f7fe8)]">{row.listenedLabel}</td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{formatEventTitle(row.eventType)}</td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{formatDateTime(row.playedAt)}</td>
+                  </tr>
+                )) : (
+                  <tr>
+                    <td colSpan={5} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No play detail rows found yet.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
     </section>
+  );
+}
+
+function RegisteredUsersDetailSection({ users }: { users: AnalyticsResponse["registeredUsers"] | undefined }) {
+  const [open, setOpen] = useState(false);
+  const rows = users?.rows || [];
+
+  return (
+    <div className="mt-5 rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)]">
+      <button
+        type="button"
+        onClick={() => setOpen((current) => !current)}
+        className="flex w-full flex-col gap-3 px-4 py-4 text-left sm:flex-row sm:items-center sm:justify-between"
+        aria-expanded={open}
+      >
+        <div>
+          <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Total Users Detail</p>
+          <p className="mt-1 text-xs font-bold text-[var(--bb-text-secondary,#334155)]">
+            Includes email accounts, no-email accounts, guest accounts, and every registered auth user.
+          </p>
+        </div>
+        <span className="inline-flex items-center gap-2 rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-3 py-1.5 text-xs font-black text-[var(--bb-text-primary,#101827)]">
+          {open ? "Hide table" : "Show table"}
+          <span>{open ? "-" : "+"}</span>
+        </span>
+      </button>
+      {open ? (
+        <div className="border-t border-[var(--bb-card-border,#d8e3ec)]">
+          <div className="grid gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-4 text-sm sm:grid-cols-4">
+            <div><span className="font-black">{formatNumber(users?.total || 0)}</span> total</div>
+            <div><span className="font-black">{formatNumber(users?.withEmail || 0)}</span> with email</div>
+            <div><span className="font-black">{formatNumber(users?.withoutEmail || 0)}</span> without email</div>
+            <div><span className="font-black">{formatNumber(users?.guestAccounts || 0)}</span> guest accounts</div>
+          </div>
+          <div className="max-h-[520px] overflow-auto">
+            <table className="min-w-[920px] w-full border-collapse text-left text-sm">
+              <thead className="sticky top-0 bg-[var(--bb-surface-soft,#eef4f8)] text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">
+                <tr>
+                  <th className="px-4 py-3">User</th>
+                  <th className="px-4 py-3">Email</th>
+                  <th className="px-4 py-3">Account</th>
+                  <th className="px-4 py-3">Provider</th>
+                  <th className="px-4 py-3">Created</th>
+                  <th className="px-4 py-3">Last Sign In</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[var(--bb-card-border,#d8e3ec)]">
+                {rows.length ? rows.map((row) => (
+                  <tr key={row.id}>
+                    <td className="px-4 py-3">
+                      <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.displayName}</div>
+                      <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">{shortId(row.id)}</div>
+                    </td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{row.email || "No email"}</td>
+                    <td className="px-4 py-3">
+                      <span className="rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-2.5 py-1 text-xs font-black text-[var(--bb-text-primary,#101827)]">
+                        {row.accountType}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{row.provider || "Unknown"}</td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{formatDateTime(row.createdAt)}</td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{formatDateTime(row.lastSignInAt)}</td>
+                  </tr>
+                )) : (
+                  <tr>
+                    <td colSpan={6} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No registered users loaded.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
+    </div>
   );
 }
 
@@ -2124,7 +2272,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                 <FounderMetricCard
                   title="Total Users"
                   value={formatNumber(businessMetrics.totalUsers)}
-                  helper={`${formatNumber(businessMetrics.registeredUsers)} registered + ${formatNumber(businessMetrics.guestUsers)} guests.`}
+                  helper={`${formatNumber(data?.registeredUsers?.withEmail || businessMetrics.registeredUsers)} with email + ${formatNumber(data?.registeredUsers?.withoutEmail || 0)} without email. ${formatNumber(data?.registeredUsers?.guestAccounts || businessMetrics.guestUsers)} guests.`}
                   icon="visitors"
                 />
                 <FounderMetricCard
@@ -2147,6 +2295,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                   accent="text-amber-200"
                 />
               </div>
+              <RegisteredUsersDetailSection users={data?.registeredUsers} />
             </div>
 
             <FounderFunnelSection

@@ -28,6 +28,13 @@ export const APP_NAV_ITEMS: AppNavItem[] = [
     hoverClasses: "text-gray-700 hover:bg-blue-50 hover:text-blue-600 active:scale-[0.98]",
   },
   {
+    label: "Notes",
+    href: "/notes",
+    activePrefixes: ["/notes"],
+    activeClasses: "bg-indigo-50 text-indigo-700 font-medium cursor-not-allowed",
+    hoverClasses: "text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 active:scale-[0.98]",
+  },
+  {
     label: "Bible Trivia",
     href: "/bible-trivia",
     activePrefixes: ["/bible-trivia"],

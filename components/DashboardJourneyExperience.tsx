@@ -90,6 +90,17 @@ function getBibleYearFollowAlongChapterKey(book: string, chapter: number, transl
   return `${translation}:${book.toLowerCase().trim().replace(/\s+/g, " ")}:${chapter}`;
 }
 
+function getBibleYearLocalChapterVerses(book: string, chapter: number): BibleYearReaderVerse[] {
+  const normalizedBook = book.toLowerCase().trim().replace(/\s+/g, " ");
+  if (normalizedBook !== "genesis") return [];
+  return BIBLE_YEAR_GENESIS_WEB_VERSES[chapter] || [];
+}
+
+function getBibleYearBookFromReference(reference: string) {
+  const match = reference.match(/^(.+?)\s+\d+:/);
+  return match?.[1]?.trim() || "Genesis";
+}
+
 function splitEnrichedVerseHtmlByNumber(enrichedContent: string) {
   const html = enrichedContent.replace(/<!--.*?-->/, "").trim();
   const verseBlocks = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g));
@@ -6117,7 +6128,8 @@ export default function DashboardJourneyExperience({
   }
 
   function getBibleYearLessonVerses(block: BibleYearDailyLesson["sections"][number]["verseBlock"]) {
-    return (BIBLE_YEAR_GENESIS_WEB_VERSES[block.chapter] || []).filter(
+    const book = getBibleYearBookFromReference(block.reference);
+    return getBibleYearLocalChapterVerses(book, block.chapter).filter(
       (verse) => verse.verse >= block.startVerse && verse.verse <= block.endVerse,
     );
   }
@@ -6171,12 +6183,6 @@ export default function DashboardJourneyExperience({
     let cancelled = false;
 
     async function loadBibleYearReaderTranslation() {
-      if (bibleYearReaderTranslation === "web") {
-        setBibleYearReaderTranslationLoading(false);
-        setBibleYearReaderTranslationError(null);
-        return;
-      }
-
       const openDayNumbers = Object.entries(bibleYearFollowAlongOpenByDay)
         .filter(([, isOpen]) => isOpen)
         .map(([dayNumber]) => Number(dayNumber))
@@ -6189,6 +6195,9 @@ export default function DashboardJourneyExperience({
 
         day.readings.forEach((reading) => {
           const key = getBibleYearFollowAlongChapterKey(reading.book, reading.chapter, bibleYearReaderTranslation);
+          if (bibleYearReaderTranslation === "web" && getBibleYearLocalChapterVerses(reading.book, reading.chapter).length) {
+            return;
+          }
           if (!bibleYearReaderTranslatedVersesByChapter[key]) {
             chaptersToLoad.set(key, { book: reading.book, chapter: reading.chapter });
           }
@@ -7561,8 +7570,9 @@ export default function DashboardJourneyExperience({
   }
 
   function formatBibleYearSpokenReference(block: BibleYearDailyLesson["sections"][number]["verseBlock"]) {
-    if (block.startVerse === block.endVerse) return `Genesis ${block.chapter} verse ${block.startVerse}.`;
-    return `Genesis ${block.chapter} verses ${block.startVerse} through ${block.endVerse}.`;
+    const book = getBibleYearBookFromReference(block.reference);
+    if (block.startVerse === block.endVerse) return `${book} ${block.chapter} verse ${block.startVerse}.`;
+    return `${book} ${block.chapter} verses ${block.startVerse} through ${block.endVerse}.`;
   }
 
   function getDayOneSpokenVerseLines(chapter: number, verseNumber: number) {
@@ -9638,10 +9648,14 @@ Before we understand redemption, we need to understand what God made humanity fo
       chapter: reading.chapter,
       verses:
         bibleYearReaderTranslation === "web"
-          ? BIBLE_YEAR_GENESIS_WEB_VERSES[reading.chapter] || []
+          ? getBibleYearLocalChapterVerses(reading.book, reading.chapter).length
+            ? getBibleYearLocalChapterVerses(reading.book, reading.chapter)
+            : bibleYearReaderTranslatedVersesByChapter[
+                getBibleYearFollowAlongChapterKey(reading.book, reading.chapter, bibleYearReaderTranslation)
+              ] || []
           : bibleYearReaderTranslatedVersesByChapter[
               getBibleYearFollowAlongChapterKey(reading.book, reading.chapter, bibleYearReaderTranslation)
-            ] || BIBLE_YEAR_GENESIS_WEB_VERSES[reading.chapter] || [],
+            ] || getBibleYearLocalChapterVerses(reading.book, reading.chapter),
     }));
   }
 

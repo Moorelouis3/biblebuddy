@@ -226,7 +226,9 @@ type AuthUserSummary = {
   id: string;
   email: string | null;
   createdAt: string | null;
+  lastSignInAt: string | null;
   isAnonymous: boolean;
+  providers: string[];
 };
 
 type ProfileSummary = {
@@ -239,6 +241,24 @@ type ProfileSummary = {
   totalActions: number | null;
   memberBadge: string | null;
   proExpiresAt: string | null;
+};
+
+type RegisteredUserAnalyticsRow = {
+  id: string;
+  displayName: string;
+  email: string | null;
+  accountType: "Email" | "No email" | "Guest";
+  provider: string;
+  createdAt: string | null;
+  lastSignInAt: string | null;
+};
+
+type RegisteredUserAnalytics = {
+  total: number;
+  withEmail: number;
+  withoutEmail: number;
+  guestAccounts: number;
+  rows: RegisteredUserAnalyticsRow[];
 };
 
 async function verifyOwner(request: Request) {
@@ -1021,7 +1041,11 @@ function buildAnalyticsDataHealthWarnings(
   return warnings;
 }
 
-function summarizeAudioEngagement(masterRows: MasterActionFunnelRow[], bibleYearDays: ReturnType<typeof buildBibleYearDayAnalytics>) {
+function summarizeAudioEngagement(
+  masterRows: MasterActionFunnelRow[],
+  bibleYearDays: ReturnType<typeof buildBibleYearDayAnalytics>,
+  profileByUserId: Map<string, string>,
+) {
   const audioRows = masterRows.filter((row) =>
     row.action_type === "bible_year_audio_played" ||
     row.action_type === "bible_year_audio_progress" ||
@@ -1034,13 +1058,69 @@ function summarizeAudioEngagement(masterRows: MasterActionFunnelRow[], bibleYear
       .map((row) => "userId" in row ? row.userId : getMasterActorId(row))
       .filter(Boolean)
   ).size;
-  const totalSecondsPlayed = audioRows.reduce((total, row) => {
-    const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
-    const seconds = Number(metadata.secondsPlayed || metadata.listenedSeconds || metadata.currentTime || 0);
-    return total + (Number.isFinite(seconds) ? seconds : 0);
-  }, 0);
+  const totalSecondsPlayed = audioRows.reduce((total, row) => total + getAudioSeconds(row), 0);
   const completedLessons = audioRows.filter((row) => row.action_type === "bible_year_audio_completed").length ||
     bibleYearDays.reduce((total, day) => total + day.completedUsers, 0);
+  const playDetails = audioRows.length
+    ? Array.from(
+        audioRows.reduce((map, row) => {
+          const actorId = getMasterActorId(row);
+          const dayNumber = typeof row.journey_day === "number" ? row.journey_day : parseBibleYearDayFromLabel(row.action_label || "");
+          const key = `${actorId || "unknown"}:${row.session_id || "no-session"}:${dayNumber || "no-day"}:${row.action_label || "audio"}`;
+          const current = map.get(key);
+          const seconds = getAudioSeconds(row);
+          const createdAt = row.created_at || null;
+          if (!current) {
+            map.set(key, {
+              id: key,
+              userId: row.user_id || null,
+              userLabel: row.user_id ? profileByUserId.get(row.user_id) || row.username || `User ${shortId(row.user_id)}` : row.username || "Guest listener",
+              title: row.action_label || (dayNumber ? `Day ${dayNumber} audio` : "Bible year audio"),
+              dayNumber,
+              eventType: row.action_type || "audio",
+              listenedSeconds: seconds,
+              listenedLabel: seconds > 0 ? formatDuration(seconds * 1000) : "Not tracked",
+              playedAt: createdAt,
+            });
+          } else {
+            current.listenedSeconds = Math.max(current.listenedSeconds, seconds);
+            current.listenedLabel = current.listenedSeconds > 0 ? formatDuration(current.listenedSeconds * 1000) : "Not tracked";
+            if (createdAt && (!current.playedAt || createdAt > current.playedAt)) current.playedAt = createdAt;
+            if (row.action_type === "bible_year_audio_completed") current.eventType = row.action_type;
+          }
+          return map;
+        }, new Map<string, {
+          id: string;
+          userId: string | null;
+          userLabel: string;
+          title: string;
+          dayNumber: number | null;
+          eventType: string;
+          listenedSeconds: number;
+          listenedLabel: string;
+          playedAt: string | null;
+        }>())
+      ).map(([, detail]) => detail)
+        .sort((a, b) => (b.playedAt || "").localeCompare(a.playedAt || ""))
+        .slice(0, 500)
+    : bibleYearDays
+        .flatMap((day) =>
+          day.users
+            .filter((user) => user.readingStarted || user.readingCompleted)
+            .map((user) => ({
+              id: `${user.userId}:day-${day.dayNumber}`,
+              userId: user.userId,
+              userLabel: user.userLabel,
+              title: `Day ${day.dayNumber} audio lesson`,
+              dayNumber: day.dayNumber,
+              eventType: user.readingCompleted ? "day_task_finished" : "day_task_started",
+              listenedSeconds: 0,
+              listenedLabel: "Needs audio tracking",
+              playedAt: user.updatedAt,
+            }))
+        )
+        .sort((a, b) => (b.playedAt || "").localeCompare(a.playedAt || ""))
+        .slice(0, 500);
 
   return {
     totalPlays,
@@ -1049,6 +1129,7 @@ function summarizeAudioEngagement(masterRows: MasterActionFunnelRow[], bibleYear
     averageListeningMinutes: totalPlays > 0 && totalSecondsPlayed > 0 ? Number((totalSecondsPlayed / 60 / totalPlays).toFixed(1)) : 0,
     lessonCompletionRate: percent(completedLessons, totalPlays),
     source: audioRows.length ? "audio_events" : "day_task_events",
+    playDetails,
   };
 }
 
@@ -1517,6 +1598,22 @@ function formatDuration(ms: number) {
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
   return remainingMinutes ? `${hours}h ${remainingMinutes}m` : `${hours} hr`;
+}
+
+function getAudioSeconds(row: MasterActionFunnelRow) {
+  const metadata = row.event_metadata && typeof row.event_metadata === "object" ? row.event_metadata : {};
+  const rawSeconds =
+    metadata.secondsPlayed ??
+    metadata.listenedSeconds ??
+    metadata.currentTime ??
+    metadata.current_time ??
+    metadata.positionSeconds ??
+    metadata.position ??
+    metadata.durationSeconds ??
+    metadata.duration_seconds ??
+    0;
+  const seconds = Number(rawSeconds);
+  return Number.isFinite(seconds) && seconds > 0 ? seconds : 0;
 }
 
 function formatTimelineDelta(ms: number) {
@@ -2271,7 +2368,11 @@ async function loadAuthUserSummaries(url: string, serviceKey: string, targetUser
         id,
         email: typeof user?.email === "string" && user.email ? user.email : null,
         createdAt: typeof user?.created_at === "string" ? user.created_at : null,
+        lastSignInAt: typeof user?.last_sign_in_at === "string" ? user.last_sign_in_at : null,
         isAnonymous: Boolean(user?.is_anonymous) || (!user?.email && identities.length === 0),
+        providers: identities
+          .map((identity: { provider?: unknown }) => typeof identity?.provider === "string" ? identity.provider : "")
+          .filter(Boolean),
       });
     }
 
@@ -2305,11 +2406,18 @@ async function loadAllAuthUserSummaries(url: string, serviceKey: string) {
       const id = typeof user?.id === "string" ? user.id : "";
       if (!id) continue;
       const identities = Array.isArray(user?.identities) ? user.identities : [];
+      const appProvider = typeof user?.app_metadata?.provider === "string" ? user.app_metadata.provider : "";
+      const providers = Array.from(new Set([
+        appProvider,
+        ...identities.map((identity: { provider?: unknown }) => typeof identity?.provider === "string" ? identity.provider : ""),
+      ].filter(Boolean)));
       users.push({
         id,
         email: typeof user?.email === "string" && user.email ? user.email : null,
         createdAt: typeof user?.created_at === "string" ? user.created_at : null,
+        lastSignInAt: typeof user?.last_sign_in_at === "string" ? user.last_sign_in_at : null,
         isAnonymous: Boolean(user?.is_anonymous) || (!user?.email && identities.length === 0),
+        providers,
       });
     }
 
@@ -2318,6 +2426,58 @@ async function loadAllAuthUserSummaries(url: string, serviceKey: string) {
   }
 
   return users;
+}
+
+async function buildRegisteredUserAnalytics(
+  adminSupabase: ReturnType<typeof createClient<any>>,
+  authUsers: AuthUserSummary[],
+): Promise<RegisteredUserAnalytics> {
+  const profilesByUserId = new Map<string, { displayName: string; accountType: string | null }>();
+  const userIds = authUsers.map((user) => user.id).filter(Boolean);
+
+  for (let index = 0; index < userIds.length; index += 500) {
+    const batch = userIds.slice(index, index + 500);
+    const { data: profiles } = await adminSupabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, account_type")
+      .in("user_id", batch);
+
+    for (const profile of (profiles || []) as Array<{ user_id?: unknown; display_name?: unknown; username?: unknown; account_type?: unknown }>) {
+      const userId = typeof profile.user_id === "string" ? profile.user_id : "";
+      if (!userId) continue;
+      const displayName = typeof profile.display_name === "string" ? profile.display_name.trim() : "";
+      const username = typeof profile.username === "string" ? profile.username.trim() : "";
+      profilesByUserId.set(userId, {
+        displayName: displayName || username || `User ${shortId(userId)}`,
+        accountType: typeof profile.account_type === "string" ? profile.account_type : null,
+      });
+    }
+  }
+
+  const rows = authUsers
+    .map((user) => {
+      const profile = profilesByUserId.get(user.id);
+      const accountType: RegisteredUserAnalyticsRow["accountType"] =
+        profile?.accountType === "guest" || user.isAnonymous ? "Guest" : user.email ? "Email" : "No email";
+      return {
+        id: user.id,
+        displayName: profile?.displayName || (user.email ? user.email.split("@")[0] : `User ${shortId(user.id)}`),
+        email: user.email,
+        accountType,
+        provider: user.providers.length ? user.providers.join(", ") : accountType,
+        createdAt: user.createdAt,
+        lastSignInAt: user.lastSignInAt,
+      };
+    })
+    .sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
+
+  return {
+    total: authUsers.length,
+    withEmail: rows.filter((row) => Boolean(row.email)).length,
+    withoutEmail: rows.filter((row) => !row.email).length,
+    guestAccounts: rows.filter((row) => row.accountType === "Guest").length,
+    rows,
+  };
 }
 
 export async function GET(request: Request) {
@@ -2343,35 +2503,27 @@ export async function GET(request: Request) {
   });
 
   const allAuthUsers = await loadAllAuthUserSummaries(url, serviceKey);
-  const realRegisteredUsers = allAuthUsers.filter((user) =>
-    !user.isAnonymous &&
-    Boolean(user.email) &&
-    user.email?.toLowerCase() !== "moorelouis3@gmail.com"
-  );
+  const registeredUserAnalytics = await buildRegisteredUserAnalytics(adminSupabase, allAuthUsers);
   const now = new Date();
   const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
   const nextMonthStart = new Date(now.getFullYear(), now.getMonth() + 1, 1).getTime();
   const previousMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1).getTime();
-  const monthlySignups = realRegisteredUsers.filter((user) => {
+  const monthlySignups = allAuthUsers.filter((user) => {
     const createdAt = user.createdAt ? new Date(user.createdAt).getTime() : 0;
     return Number.isFinite(createdAt) && createdAt >= thisMonthStart && createdAt < nextMonthStart;
   }).length;
-  const previousMonthlySignups = realRegisteredUsers.filter((user) => {
+  const previousMonthlySignups = allAuthUsers.filter((user) => {
     const createdAt = user.createdAt ? new Date(user.createdAt).getTime() : 0;
     return Number.isFinite(createdAt) && createdAt >= previousMonthStart && createdAt < thisMonthStart;
   }).length;
-  const { count: guestAccountCount } = await adminSupabase
-    .from("profile_stats")
-    .select("user_id", { count: "exact", head: true })
-    .eq("account_type", "guest");
   const businessMetrics = {
-    totalUsers: realRegisteredUsers.length + (guestAccountCount || 0),
-    registeredUsers: realRegisteredUsers.length,
-    guestUsers: guestAccountCount || 0,
+    totalUsers: registeredUserAnalytics.total,
+    registeredUsers: registeredUserAnalytics.withEmail,
+    guestUsers: registeredUserAnalytics.guestAccounts,
     monthlySignups,
     previousMonthlySignups,
     monthlySignupChange: monthlySignups - previousMonthlySignups,
-    lifetimeSignups: realRegisteredUsers.length,
+    lifetimeSignups: registeredUserAnalytics.total,
   };
 
   const { data, error } = await adminSupabase
@@ -2584,7 +2736,7 @@ export async function GET(request: Request) {
     return Number.isFinite(updatedAt) && updatedAt >= new Date(journeySinceIso).getTime();
   });
   const bibleYearDays = buildBibleYearDayAnalytics(windowBibleYearProgressRows, masterFunnelRows, profileByUserId);
-  const audioEngagement = summarizeAudioEngagement(masterFunnelRows, bibleYearDays);
+  const audioEngagement = summarizeAudioEngagement(masterFunnelRows, bibleYearDays, profileByUserId);
   const dayThreeUpgrade = buildDayThreeUpgradeAnalytics(masterFunnelRows);
   const daySevenUpgrade = buildDayUpgradeAnalytics(masterFunnelRows, 7);
   const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
@@ -2630,6 +2782,7 @@ export async function GET(request: Request) {
       funnel,
       landingLast24h,
       businessMetrics,
+      registeredUsers: registeredUserAnalytics,
       audioEngagement,
       customerJourney,
       guestAccountFunnel,
@@ -2670,6 +2823,7 @@ export async function GET(request: Request) {
     funnel,
     landingLast24h,
     businessMetrics,
+    registeredUsers: registeredUserAnalytics,
     audioEngagement,
     customerJourney,
     guestAccountFunnel,
