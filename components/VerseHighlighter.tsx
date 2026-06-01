@@ -14,7 +14,7 @@ import {
 import { ACTION_TYPE } from "../lib/actionTypes";
 import CreditLimitModal from "./CreditLimitModal";
 import { supabase } from "../lib/supabaseClient";
-import { consumeCreditAction } from "../lib/creditClient";
+import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
 import {
   getBibleReaderStudySections,
   type BibleReaderStudyNoteCategory,
@@ -675,6 +675,28 @@ function getNestedStudyItemIcon(categoryId: string, heading: string) {
   return categoryId === "key-phrases" ? "\u{1F4AC}" : "\u{1F511}";
 }
 
+function slugStudyAnalyticsValue(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function getStudySectionAnalyticsSlug(reference: string) {
+  const match = reference.match(/^\s*([1-3]?\s?[A-Za-z]+)\s+(\d+):(\d+)(?:-(\d+))?/);
+  if (!match) return slugStudyAnalyticsValue(reference);
+  const bookSlug = slugStudyAnalyticsValue(match[1]);
+  const chapter = match[2];
+  const startVerse = match[3];
+  const endVerse = match[4] || startVerse;
+  return `${bookSlug}${chapter}-${startVerse}-${endVerse}`;
+}
+
+function getStudyPhraseTitle(categoryId: string, item: string) {
+  const [lead] = item.split("\n");
+  return getNestedStudyItemHeading(categoryId, lead);
+}
+
 function InlineStudySection({
   section,
   isOpen,
@@ -1173,6 +1195,55 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     {},
   );
 
+  function getInitialOpenStudyCategory(studySection: BibleReaderStudySection) {
+    const visibleCategories = studySection.categories.filter(
+      (category) => category.id !== "key-truths" && category.content.some((item) => item.trim().length > 0),
+    );
+    return visibleCategories.length === 1 ? visibleCategories[0].id : null;
+  }
+
+  async function trackStudyPhraseOpened(studySection: BibleReaderStudySection, categoryId: string, itemIndex: number) {
+    if (!user || categoryId !== "key-phrases") return;
+
+    const category = studySection.categories.find((item) => item.id === categoryId);
+    const phraseText = category?.content[itemIndex];
+    if (!phraseText) return;
+
+    const phraseTitle = getStudyPhraseTitle(categoryId, phraseText);
+    const phraseSlug = slugStudyAnalyticsValue(phraseTitle);
+    const sectionSlug = getStudySectionAnalyticsSlug(studySection.reference);
+    const metadata = (user.user_metadata || {}) as Record<string, unknown>;
+    const username =
+      (typeof metadata.display_name === "string" && metadata.display_name.trim()) ||
+      (typeof metadata.username === "string" && metadata.username.trim()) ||
+      (typeof metadata.full_name === "string" && metadata.full_name.trim()) ||
+      (typeof user.email === "string" ? user.email : null);
+
+    const { error } = await supabase.from("master_actions").insert({
+      user_id: user.id,
+      username,
+      action_type: ACTION_TYPE.study_notes_viewed,
+      action_label: `opened ${sectionSlug}${phraseSlug ? ` ${phraseSlug}` : ""} opened`,
+      event_metadata: {
+        kind: "reader_phrase_opened",
+        source: "bible_reader",
+        sourceLabel: "Bible Reader",
+        book,
+        chapter,
+        sectionReference: studySection.reference,
+        sectionTitle: studySection.title,
+        phraseTitle,
+        phraseKey: phraseSlug,
+        phraseIndex: itemIndex + 1,
+      },
+      created_at: new Date().toISOString(),
+    });
+
+    if (error) {
+      console.warn("[STUDY_NOTES_ANALYTICS] Could not track phrase open:", error);
+    }
+  }
+
   async function handleToggleStudySection(studySection: BibleReaderStudySection) {
     if (openStudyReference === studySection.reference) {
       setOpenStudyReference(null);
@@ -1181,27 +1252,38 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       return;
     }
 
+    const initialOpenCategory = getInitialOpenStudyCategory(studySection);
     setOpenStudyReference(studySection.reference);
     setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: null }));
     setOpenStudyItems((current) => ({ ...current, [studySection.reference]: null }));
 
     if (!user || studyCreditUnlockedSections[studySection.reference]) {
       setStudyCreditLockedSections((current) => ({ ...current, [studySection.reference]: false }));
+      setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: initialOpenCategory }));
       return;
     }
 
     const creditResult = await consumeCreditAction(ACTION_TYPE.study_notes_section_opened, {
       userId: user.id,
-      actionLabel: `${book} ${chapter} ${studySection.reference}`,
+      actionLabel: `opened ${getStudySectionAnalyticsSlug(studySection.reference)} notes opened`,
     });
 
     if (!creditResult.ok) {
+      if (isCreditActionCanceled(creditResult)) {
+        setOpenStudyReference(null);
+        setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: null }));
+        setOpenStudyItems((current) => ({ ...current, [studySection.reference]: null }));
+        return;
+      }
       setStudyCreditLockedSections((current) => ({ ...current, [studySection.reference]: true }));
+      setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: null }));
+      setOpenStudyItems((current) => ({ ...current, [studySection.reference]: null }));
       return;
     }
 
     setStudyCreditUnlockedSections((current) => ({ ...current, [studySection.reference]: true }));
     setStudyCreditLockedSections((current) => ({ ...current, [studySection.reference]: false }));
+    setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: initialOpenCategory }));
   }
 
   function renderVerseText(v: { number: number; text: string; enrichedHtml?: string }) {
@@ -1311,10 +1393,14 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
               }}
               onToggleItem={(categoryId, itemIndex) => {
                 const itemKey = `${categoryId}:${itemIndex}`;
+                const isOpening = openStudyItems[studySection.reference] !== itemKey;
                 setOpenStudyItems((current) => ({
                   ...current,
                   [studySection.reference]: current[studySection.reference] === itemKey ? null : itemKey,
                 }));
+                if (isOpening) {
+                  void trackStudyPhraseOpened(studySection, categoryId, itemIndex);
+                }
               }}
               onLockedCategory={() => {
                 if (onStudyNotesCreditBlocked) {
@@ -1375,10 +1461,14 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
               }}
               onToggleItem={(categoryId, itemIndex) => {
                 const itemKey = `${categoryId}:${itemIndex}`;
+                const isOpening = openStudyItems[studySection.reference] !== itemKey;
                 setOpenStudyItems((current) => ({
                   ...current,
                   [studySection.reference]: current[studySection.reference] === itemKey ? null : itemKey,
                 }));
+                if (isOpening) {
+                  void trackStudyPhraseOpened(studySection, categoryId, itemIndex);
+                }
               }}
               onLockedCategory={() => {
                 if (onStudyNotesCreditBlocked) {

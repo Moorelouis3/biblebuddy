@@ -13,6 +13,7 @@ export interface ConsumeCreditResult {
   ok: boolean;
   reason?: "no_credits" | "missing_profile" | "config" | "error";
   dailyCredits?: number;
+  isPaid?: boolean;
 }
 
 function getSupabaseAdmin() {
@@ -161,4 +162,42 @@ export async function consumeCredit(
   }
 
   return { ok: true, dailyCredits };
+}
+
+export async function previewCredit(userId: string): Promise<ConsumeCreditResult> {
+  const supabaseAdmin = getSupabaseAdmin();
+  if (!supabaseAdmin) {
+    console.error("[PREVIEW_CREDIT] Supabase service role key or URL not configured");
+    return { ok: false, reason: "config" };
+  }
+
+  const { data: profileStats, error: fetchError } = await supabaseAdmin
+    .from("profile_stats")
+    .select("is_paid, daily_credits, last_credit_reset")
+    .eq("user_id", userId)
+    .maybeSingle<ProfileStatsRow>();
+
+  if (fetchError) {
+    console.error("[PREVIEW_CREDIT] Error fetching profile_stats:", fetchError);
+    return { ok: false, reason: "error" };
+  }
+
+  if (!profileStats) {
+    console.error("[PREVIEW_CREDIT] No profile_stats row for user:", userId);
+    return { ok: false, reason: "missing_profile" };
+  }
+
+  if (profileStats.is_paid) {
+    return { ok: true, isPaid: true };
+  }
+
+  const today = new Date().toISOString().slice(0, 10);
+  const lastReset = toDateString(profileStats.last_credit_reset);
+  let dailyCredits = profileStats.daily_credits ?? 0;
+
+  if (!lastReset || lastReset < today) {
+    dailyCredits = 5;
+  }
+
+  return { ok: true, dailyCredits, isPaid: false };
 }

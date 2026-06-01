@@ -22,6 +22,7 @@ type BibleYearLessonAudioPlayerProps = {
   nextLessonLabel?: string;
   onPreviousLesson?: () => void;
   onNextLesson?: () => void;
+  controlsLocked?: boolean;
 };
 
 function formatTime(totalSeconds: number) {
@@ -47,6 +48,7 @@ export default function BibleYearLessonAudioPlayer({
   nextLessonLabel = "Next day",
   onPreviousLesson,
   onNextLesson,
+  controlsLocked = false,
 }: BibleYearLessonAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const backgroundAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -358,7 +360,7 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   async function toggleAudio() {
-    if (loading) return;
+    if (controlsLocked || loading) return;
     setError(false);
 
     if (audioRef.current && playing) {
@@ -395,6 +397,7 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   function commitSeek(seconds: number) {
+    if (controlsLocked) return;
     const audio = getOrCreateAudio();
     const cap = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : effectiveDuration || seconds;
     const nextTime = Math.max(0, Math.min(seconds, cap));
@@ -436,6 +439,7 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   function seekBy(seconds: number) {
+    if (controlsLocked) return;
     const audio = audioRef.current;
     if (!audio) return;
     const cap = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : effectiveDuration || Number.MAX_SAFE_INTEGER;
@@ -443,12 +447,14 @@ export default function BibleYearLessonAudioPlayer({
   }
 
   function finishScrubbing(value = scrubTime) {
+    if (controlsLocked) return;
     isScrubbingRef.current = false;
     setIsScrubbing(false);
     commitSeek(value);
   }
 
   function changePlaybackRate(rate: number) {
+    if (controlsLocked) return;
     const safeRate = [1, 1.25, 1.5, 2].includes(rate) ? rate : 1;
     setPlaybackRate(safeRate);
     if (audioRef.current) {
@@ -490,13 +496,16 @@ export default function BibleYearLessonAudioPlayer({
 
   return (
     <section className="mb-2 overflow-hidden rounded-[16px] text-[#f8fafc]">
-      <div className="flex min-w-0 flex-col gap-2">
+      <div
+        className={`flex min-w-0 flex-col gap-2 ${controlsLocked ? "pointer-events-none select-none opacity-85" : ""}`}
+        aria-disabled={controlsLocked}
+      >
         {!compactMediaControls ? (
         <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={toggleAudio}
-            disabled={loading}
+            disabled={controlsLocked || loading}
             className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#f8fafc] text-[#08111d] shadow-[0_8px_18px_rgba(255,255,255,0.10)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
             aria-label={playing ? "Pause Day 1 audio lesson" : "Play Day 1 audio lesson"}
           >
@@ -548,7 +557,7 @@ export default function BibleYearLessonAudioPlayer({
                 onBlur={(event) => {
                   if (isScrubbing) finishScrubbing(Number(event.currentTarget.value));
                 }}
-                disabled={!effectiveDuration}
+                disabled={controlsLocked || !effectiveDuration}
                 aria-label="Audio progress"
                 className="h-1.5 w-full cursor-pointer accent-[#7BAFD4] disabled:cursor-not-allowed disabled:opacity-50"
               />
@@ -572,6 +581,7 @@ export default function BibleYearLessonAudioPlayer({
                     id={speedControlId}
                     value={playbackRate}
                     onChange={(event) => changePlaybackRate(Number(event.target.value))}
+                    disabled={controlsLocked}
                     className="h-10 w-[52px] shrink-0 rounded-xl border border-[#2a394d] bg-[#121e2d] px-1.5 text-center text-[11px] font-black text-[#d8e0eb] outline-none shadow-[0_6px_14px_rgba(0,0,0,0.14)] transition hover:bg-[#18283b] focus:border-[#7BAFD4] sm:h-11 sm:w-[58px]"
                     aria-label="Playback speed"
                   >
@@ -584,7 +594,7 @@ export default function BibleYearLessonAudioPlayer({
                   <button
                     type="button"
                     onClick={onPreviousLesson}
-                    disabled={!onPreviousLesson}
+                    disabled={controlsLocked || !onPreviousLesson}
                     className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[#2a394d] bg-[#121e2d] text-base font-black text-[#d8e0eb] shadow-[0_6px_14px_rgba(0,0,0,0.14)] transition hover:bg-[#18283b] disabled:cursor-not-allowed disabled:opacity-35 sm:h-11 sm:w-11"
                     aria-label={previousLessonLabel}
                     title={previousLessonLabel}
@@ -594,6 +604,7 @@ export default function BibleYearLessonAudioPlayer({
                   <button
                     type="button"
                     onClick={() => seekBy(-15)}
+                    disabled={controlsLocked}
                     className="grid h-10 w-11 shrink-0 place-items-center rounded-xl border border-[#2a394d] bg-[#121e2d] text-[11px] font-black text-[#d8e0eb] shadow-[0_6px_14px_rgba(0,0,0,0.14)] transition hover:bg-[#18283b] disabled:opacity-50 sm:h-11 sm:w-12"
                     aria-label="Rewind 15 seconds"
                   >
@@ -602,7 +613,7 @@ export default function BibleYearLessonAudioPlayer({
                   <button
                     type="button"
                     onClick={toggleAudio}
-                    disabled={loading}
+                    disabled={controlsLocked || loading}
                     className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#f8fafc] text-[#08111d] shadow-[0_8px_20px_rgba(255,255,255,0.12)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70 sm:h-12 sm:w-12"
                     aria-label={playing ? "Pause audio lesson" : "Play audio lesson"}
                   >
@@ -617,6 +628,7 @@ export default function BibleYearLessonAudioPlayer({
                   <button
                     type="button"
                     onClick={() => seekBy(15)}
+                    disabled={controlsLocked}
                     className="grid h-10 w-11 shrink-0 place-items-center rounded-xl border border-[#2a394d] bg-[#121e2d] text-[11px] font-black text-[#d8e0eb] shadow-[0_6px_14px_rgba(0,0,0,0.14)] transition hover:bg-[#18283b] disabled:opacity-50 sm:h-11 sm:w-12"
                     aria-label="Skip forward 15 seconds"
                   >
@@ -625,7 +637,7 @@ export default function BibleYearLessonAudioPlayer({
                   <button
                     type="button"
                     onClick={onNextLesson}
-                    disabled={!onNextLesson}
+                    disabled={controlsLocked || !onNextLesson}
                     className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[#2a394d] bg-[#121e2d] text-base font-black text-[#d8e0eb] shadow-[0_6px_14px_rgba(0,0,0,0.14)] transition hover:bg-[#18283b] disabled:cursor-not-allowed disabled:opacity-35 sm:h-11 sm:w-11"
                     aria-label={nextLessonLabel}
                     title={nextLessonLabel}
@@ -654,6 +666,7 @@ export default function BibleYearLessonAudioPlayer({
                   <button
                     type="button"
                     onClick={() => seekBy(-15)}
+                    disabled={controlsLocked}
                     className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
                   >
                     -15s
@@ -664,7 +677,7 @@ export default function BibleYearLessonAudioPlayer({
                 <button
                   type="button"
                   onClick={toggleAudio}
-                  disabled={loading}
+                  disabled={controlsLocked || loading}
                   className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#f8fafc] text-[#08111d] shadow-[0_8px_18px_rgba(255,255,255,0.10)] transition hover:brightness-95 disabled:cursor-wait disabled:opacity-70"
                   aria-label={playing ? "Pause audio lesson" : "Play audio lesson"}
                 >
@@ -682,6 +695,7 @@ export default function BibleYearLessonAudioPlayer({
                   <button
                     type="button"
                     onClick={onNextLesson}
+                    disabled={controlsLocked}
                     className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-2 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b]"
                     aria-label={nextLessonLabel}
                     title={nextLessonLabel}
@@ -693,6 +707,7 @@ export default function BibleYearLessonAudioPlayer({
                   <button
                     type="button"
                     onClick={() => seekBy(15)}
+                    disabled={controlsLocked}
                     className="rounded-full border border-[#2a394d] bg-[#121e2d] px-3 py-1.5 text-[11px] font-bold text-[#d8e0eb] transition hover:bg-[#18283b] disabled:opacity-50"
                   >
                     +15s
@@ -703,6 +718,7 @@ export default function BibleYearLessonAudioPlayer({
                   id={speedControlId}
                   value={playbackRate}
                   onChange={(event) => changePlaybackRate(Number(event.target.value))}
+                  disabled={controlsLocked}
                   className="h-8 rounded-full border border-[#2a394d] bg-[#121e2d] px-3 text-[11px] font-bold text-[#d8e0eb] outline-none transition hover:bg-[#18283b] focus:border-[#7BAFD4]"
                   aria-label="Playback speed"
                 >

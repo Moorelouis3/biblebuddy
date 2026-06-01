@@ -22,7 +22,7 @@ import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
-import { consumeCreditAction } from "../lib/creditClient";
+import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, markChapterDone } from "../lib/readingProgress";
@@ -70,6 +70,7 @@ const EmbeddedSettingsPage = dynamic(() => import("../app/settings/page"), { ssr
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
 const DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID = "bible-year:day-1-study-notes-gift";
+const DASHBOARD_AUDIO_PLAYER_TUTORIAL_POPUP_ID = "dashboard:audio-player-tutorial";
 const DAY_THREE_PRO_UPGRADE_PROMPT_ID = "bible-year:day-3-pro-upgrade";
 const DAY_SEVEN_PRO_UPGRADE_PROMPT_ID = "bible-year:day-7-pro-upgrade";
 const DAY_THREE_PRO_POPUP_PREVIEW_USER_ID = "669d4404-5eee-49ee-a112-2ecbd573e22a";
@@ -2153,6 +2154,7 @@ export default function DashboardJourneyExperience({
   const [dashboardFirstWelcomeOpen, setDashboardFirstWelcomeOpen] = useState(false);
   const [dashboardFirstPlayerSpotlightOpen, setDashboardFirstPlayerSpotlightOpen] = useState(false);
   const [dashboardFirstPlayerRect, setDashboardFirstPlayerRect] = useState<DOMRect | null>(null);
+  const [dashboardAudioTutorialSeen, setDashboardAudioTutorialSeen] = useState(false);
   const [showDayOneStartPrompt, setShowDayOneStartPrompt] = useState(false);
   const [highlightDayOneStartTask, setHighlightDayOneStartTask] = useState(false);
   const dashboardGuidedIntroStartedRef = useRef(false);
@@ -2593,13 +2595,57 @@ export default function DashboardJourneyExperience({
     : null;
 
   useEffect(() => {
-    if (!bibleYearDashboardActive || !bibleYearCurrentDayReady || !activeBibleYearDashboardDay) return;
-    if (typeof window === "undefined") return;
-    const storageKey = getDashboardFirstPlayerWelcomeStorageKey(userId);
-    if (window.localStorage.getItem(storageKey) === "1") return;
+    let cancelled = false;
+    let timer: number | null = null;
 
-    const timer = window.setTimeout(() => setDashboardFirstWelcomeOpen(true), 450);
-    return () => window.clearTimeout(timer);
+    async function loadDashboardAudioTutorialState() {
+      setDashboardFirstWelcomeOpen(false);
+      setDashboardFirstPlayerSpotlightOpen(false);
+
+      if (!bibleYearDashboardActive || !bibleYearCurrentDayReady || !activeBibleYearDashboardDay || !userId) {
+        return;
+      }
+
+      const legacyStorageKey = getDashboardFirstPlayerWelcomeStorageKey(userId);
+      const legacySeen = typeof window !== "undefined" && window.localStorage.getItem(legacyStorageKey) === "1";
+
+      const { data, error } = await supabase
+        .from("user_popups_seen")
+        .select("has_seen")
+        .eq("user_id", userId)
+        .eq("popup_id", DASHBOARD_AUDIO_PLAYER_TUTORIAL_POPUP_ID)
+        .maybeSingle();
+
+      if (cancelled) return;
+
+      if (error) {
+        if (!/user_popups_seen|schema cache/i.test(error.message || "")) {
+          console.warn("[POPUPS] Could not load dashboard audio tutorial state:", error.message);
+        }
+        setDashboardAudioTutorialSeen(true);
+        return;
+      }
+
+      if (data?.has_seen === true || legacySeen) {
+        setDashboardAudioTutorialSeen(true);
+        if (legacySeen && data?.has_seen !== true) {
+          void markFirstDashboardWelcomeSeen();
+        }
+        return;
+      }
+
+      setDashboardAudioTutorialSeen(false);
+      timer = window.setTimeout(() => {
+        if (!cancelled) setDashboardFirstPlayerSpotlightOpen(true);
+      }, 450);
+    }
+
+    void loadDashboardAudioTutorialState();
+
+    return () => {
+      cancelled = true;
+      if (timer !== null) window.clearTimeout(timer);
+    };
   }, [activeBibleYearDashboardDay, bibleYearCurrentDayReady, bibleYearDashboardActive, userId]);
 
   useEffect(() => {
@@ -6169,6 +6215,7 @@ export default function DashboardJourneyExperience({
         actionLabel: resolveBibleReference(type, term),
       });
       if (!creditResult.ok) {
+        if (isCreditActionCanceled(creditResult)) return;
         setBibleYearDatabaseCreditBlocked(true);
         return;
       }
@@ -10949,6 +10996,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       userId={userId}
                       videoId={`bible-year-day-${day.dayNumber}`}
                       compactMediaControls
+                      controlsLocked={dashboardFirstPlayerSpotlightOpen || dashboardFirstWelcomeOpen}
                       previousLessonLabel={previousBibleYearDay ? `Open Day ${previousBibleYearDay.dayNumber}` : "No previous day"}
                       nextLessonLabel={nextBibleYearDay ? `Open Day ${nextBibleYearDay.dayNumber}` : "No next day"}
                       onPreviousLesson={previousBibleYearDay ? () => openAdjacentBibleYearDay(previousBibleYearDay) : undefined}
@@ -13199,9 +13247,27 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
-  function markFirstDashboardWelcomeSeen() {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem(getDashboardFirstPlayerWelcomeStorageKey(userId), "1");
+  async function markFirstDashboardWelcomeSeen() {
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(getDashboardFirstPlayerWelcomeStorageKey(userId), "1");
+    }
+    if (!userId) return;
+
+    const now = new Date().toISOString();
+    const { error } = await supabase.from("user_popups_seen").upsert(
+      {
+        user_id: userId,
+        popup_id: DASHBOARD_AUDIO_PLAYER_TUTORIAL_POPUP_ID,
+        has_seen: true,
+        seen_at: now,
+        updated_at: now,
+      },
+      { onConflict: "user_id,popup_id" },
+    );
+
+    if (error && !/user_popups_seen|schema cache/i.test(error.message || "")) {
+      console.warn("[POPUPS] Could not save dashboard audio tutorial state:", error.message);
+    }
   }
 
   function renderFirstDashboardWelcomeModal() {
@@ -13210,7 +13276,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       <ModalShell
         isOpen={dashboardFirstWelcomeOpen}
         onClose={() => {
-          markFirstDashboardWelcomeSeen();
+          void markFirstDashboardWelcomeSeen();
           setDashboardFirstWelcomeOpen(false);
         }}
         closeOnBackdrop={false}
@@ -13226,7 +13292,6 @@ Before we understand redemption, we need to understand what God made humanity fo
           <button
             type="button"
             onClick={() => {
-              markFirstDashboardWelcomeSeen();
               setDashboardFirstWelcomeOpen(false);
               setDashboardFirstPlayerSpotlightOpen(true);
             }}
@@ -13241,7 +13306,7 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderFirstPlayerSpotlightOverlay() {
-    if (!dashboardFirstPlayerSpotlightOpen) return null;
+    if (!dashboardFirstPlayerSpotlightOpen || dashboardAudioTutorialSeen) return null;
     const rect = dashboardFirstPlayerRect;
     const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 390;
     const viewportHeight = typeof window !== "undefined" ? window.innerHeight : 760;
@@ -13255,7 +13320,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const tagTop = rect && viewportHeight - bottom > 142 ? bottom + 14 : Math.max(16, top - 132);
 
     return (
-      <div className="fixed inset-0 z-[159] pointer-events-none">
+      <div className="fixed inset-0 z-[159] pointer-events-auto">
         {rect ? (
           <>
             <div className="fixed left-0 top-0 bg-black/66 backdrop-blur-[2px]" style={{ width: viewportWidth, height: top }} />
@@ -13280,10 +13345,14 @@ Before we understand redemption, we need to understand what God made humanity fo
           <p className="mt-1 text-sm font-black leading-5">Press play here to start Day 1.</p>
           <button
             type="button"
-            onClick={() => setDashboardFirstPlayerSpotlightOpen(false)}
+            onClick={async () => {
+              await markFirstDashboardWelcomeSeen();
+              setDashboardAudioTutorialSeen(true);
+              setDashboardFirstPlayerSpotlightOpen(false);
+            }}
             className="mt-3 rounded-full bg-[var(--bb-button,#2f7fe8)] px-4 py-2 text-xs font-black text-white"
           >
-            Got it
+            OK
           </button>
         </div>
       </div>

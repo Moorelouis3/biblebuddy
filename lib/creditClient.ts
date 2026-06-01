@@ -6,6 +6,7 @@ export type CreditClientResult = {
   ok: boolean;
   reason?: string;
   dailyCredits?: number;
+  isPaid?: boolean;
 };
 
 type CreditFeedbackEvent =
@@ -24,6 +25,10 @@ function dispatchCreditFeedback(detail: CreditFeedbackEvent) {
 
 export function emitCreditFeedback(detail: CreditFeedbackEvent) {
   dispatchCreditFeedback(detail);
+}
+
+export function isCreditActionCanceled(result: CreditClientResult) {
+  return result.reason === "canceled";
 }
 
 async function resolveUserId(fallbackUserId?: string | null): Promise<string> {
@@ -72,11 +77,63 @@ function maybeShowCreditFeedback(userId: string, dailyCredits: number) {
   }
 }
 
+const LOW_CREDIT_CONFIRM_ACTIONS = new Set([
+  "keyword_viewed",
+  "person_viewed",
+  "place_viewed",
+  "study_notes_section_opened",
+]);
+
+function getLowCreditConfirmCopy(actionType: string, dailyCredits: number) {
+  const itemLabel = actionType === "study_notes_section_opened" ? "this study note" : "this database card";
+  const creditWord = dailyCredits === 1 ? "credit" : "credits";
+  return `You have ${dailyCredits} free ${creditWord} left today. Opening ${itemLabel} will use 1 credit. Do you want to continue?`;
+}
+
+async function previewCreditAction(actionType: string): Promise<CreditClientResult> {
+  const response = await fetch("/api/consume-credit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ actionType, preview: true }),
+  });
+
+  const result = (await response.json().catch(() => ({}))) as CreditClientResult;
+  if (!response.ok) {
+    return { ok: false, reason: result.reason ?? "error" };
+  }
+  return result;
+}
+
+async function confirmLowCreditSpend(actionType: string) {
+  if (typeof window === "undefined" || !LOW_CREDIT_CONFIRM_ACTIONS.has(actionType)) {
+    return true;
+  }
+
+  const preview = await previewCreditAction(actionType);
+  if (!preview.ok || preview.isPaid) {
+    return true;
+  }
+
+  const dailyCredits = typeof preview.dailyCredits === "number" ? preview.dailyCredits : null;
+  if (dailyCredits === null || dailyCredits > 2 || dailyCredits <= 0) {
+    return true;
+  }
+
+  return window.confirm(getLowCreditConfirmCopy(actionType, dailyCredits));
+}
+
 export async function consumeCreditAction(
   actionType: string,
   options?: { userId?: string | null; actionLabel?: string | null }
 ): Promise<CreditClientResult> {
   try {
+    const confirmed = await confirmLowCreditSpend(actionType);
+    if (!confirmed) {
+      return { ok: false, reason: "canceled" };
+    }
+
     const response = await fetch("/api/consume-credit", {
       method: "POST",
       headers: {

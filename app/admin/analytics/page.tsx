@@ -229,11 +229,14 @@ type AnalyticsResponse = {
   bibleYearDays?: BibleYearDayAnalytics[];
   studyNotes?: {
     totalOpens: number;
+    totalInteractions: number;
     uniqueUsers: number;
     sectionOpens: number;
     chapterNoteOpens: number;
+    phraseOpens: number;
     topSources: Array<{ source: string; opens: number }>;
     topNotes: Array<{ key: string; label: string; opens: number; uniqueUsers: number; lastOpenedAt: string | null }>;
+    topPhrases: Array<{ key: string; label: string; sectionLabel: string; opens: number; uniqueUsers: number; lastOpenedAt: string | null }>;
     rows: Array<{
       id: string;
       userId: string | null;
@@ -241,6 +244,7 @@ type AnalyticsResponse = {
       eventType: string;
       eventLabel: string;
       noteTitle: string;
+      phraseTitle: string;
       source: string;
       reference: string;
       sectionTitle: string;
@@ -1249,6 +1253,99 @@ function RegisteredUsersDetailSection({ users }: { users: AnalyticsResponse["reg
         </div>
       ) : null}
     </div>
+  );
+}
+
+function StudyNotesMetricsSection({ studyNotes }: { studyNotes: AnalyticsResponse["studyNotes"] | undefined }) {
+  const [showTopNotes, setShowTopNotes] = useState(false);
+  const [showTopPhrases, setShowTopPhrases] = useState(false);
+  const metrics = studyNotes || {
+    totalOpens: 0,
+    totalInteractions: 0,
+    uniqueUsers: 0,
+    sectionOpens: 0,
+    chapterNoteOpens: 0,
+    phraseOpens: 0,
+    topSources: [],
+    topNotes: [],
+    topPhrases: [],
+    rows: [],
+  };
+
+  return (
+    <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">Study Notes Metrics</p>
+          <h2 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">What notes are people opening?</h2>
+        </div>
+        <p className="text-sm font-bold text-[var(--bb-text-muted,#64748b)]">
+          Section opens cost credits. Phrase opens track interest inside the note.
+        </p>
+      </div>
+
+      <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+        <button type="button" onClick={() => setShowTopNotes((current) => !current)} className="text-left" aria-expanded={showTopNotes}>
+          <FounderMetricCard title="Notes Opened" value={formatNumber(metrics.totalOpens)} helper={`${showTopNotes ? "Hide" : "Show"} top 20 opened note sections.`} icon="spark" />
+        </button>
+        <button type="button" onClick={() => setShowTopPhrases((current) => !current)} className="text-left" aria-expanded={showTopPhrases}>
+          <FounderMetricCard title="Phrase Opens" value={formatNumber(metrics.phraseOpens)} helper={`${showTopPhrases ? "Hide" : "Show"} top 20 clicked key phrases.`} icon="spark" />
+        </button>
+        <FounderMetricCard title="Unique Readers" value={formatNumber(metrics.uniqueUsers)} helper="Users who opened notes or phrases." icon="visitors" />
+        <FounderMetricCard title="Section Opens" value={formatNumber(metrics.sectionOpens)} helper="Credit-spending Bible reader note opens." icon="check" />
+        <FounderMetricCard title="All Interactions" value={formatNumber(metrics.totalInteractions)} helper="Notes plus phrase clicks." icon="play" />
+      </div>
+
+      {showTopNotes ? (
+        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+          <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+            <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Top 20 Notes Opened</p>
+            <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(metrics.topNotes.length)} rows</p>
+          </div>
+          <div className="divide-y divide-[var(--bb-card-border,#d8e3ec)]">
+            {metrics.topNotes.length ? metrics.topNotes.map((note, index) => (
+              <div key={note.key} className="grid gap-2 bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm sm:grid-cols-[44px_1fr_auto] sm:items-center">
+                <p className="font-black text-[var(--bb-accent,#2f7fe8)]">#{index + 1}</p>
+                <div className="min-w-0">
+                  <p className="font-black text-[var(--bb-text-primary,#101827)]">{note.label}</p>
+                  <p className="mt-0.5 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">
+                    {formatNumber(note.uniqueUsers)} users • last {note.lastOpenedAt ? formatDateTime(note.lastOpenedAt) : "unknown"}
+                  </p>
+                </div>
+                <p className="text-lg font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(note.opens)}</p>
+              </div>
+            )) : (
+              <p className="px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">No note opens yet.</p>
+            )}
+          </div>
+        </div>
+      ) : null}
+
+      {showTopPhrases ? (
+        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+          <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+            <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Top 20 Key Phrases Opened</p>
+            <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(metrics.topPhrases.length)} rows</p>
+          </div>
+          <div className="divide-y divide-[var(--bb-card-border,#d8e3ec)]">
+            {metrics.topPhrases.length ? metrics.topPhrases.map((phrase, index) => (
+              <div key={phrase.key} className="grid gap-2 bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm sm:grid-cols-[44px_1fr_auto] sm:items-center">
+                <p className="font-black text-[var(--bb-accent,#2f7fe8)]">#{index + 1}</p>
+                <div className="min-w-0">
+                  <p className="font-black text-[var(--bb-text-primary,#101827)]">{phrase.label}</p>
+                  <p className="mt-0.5 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">
+                    {phrase.sectionLabel} • {formatNumber(phrase.uniqueUsers)} users • last {phrase.lastOpenedAt ? formatDateTime(phrase.lastOpenedAt) : "unknown"}
+                  </p>
+                </div>
+                <p className="text-lg font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(phrase.opens)}</p>
+              </div>
+            )) : (
+              <p className="px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">No phrase opens yet.</p>
+            )}
+          </div>
+        </div>
+      ) : null}
+    </section>
   );
 }
 
@@ -2409,6 +2506,19 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
           ) : null}
 
           {activeView === "overview" ? (
+            <section className="mt-5 space-y-5 md:hidden">
+              <FounderFunnelSection
+                landingVisitors={landingStageUsers}
+                startClicks={startJourneyClicks}
+                signups={signupsCompleted}
+                rows={rows}
+              />
+              <ListeningMetricsSection audio={data?.audioEngagement} />
+              <StudyNotesMetricsSection studyNotes={data?.studyNotes} />
+            </section>
+          ) : null}
+
+          {activeView === "overview" ? (
           <section className="mt-6 hidden space-y-8 md:block">
             <div className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
               <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
@@ -2461,6 +2571,8 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
             />
 
             <ListeningMetricsSection audio={data?.audioEngagement} />
+
+            <StudyNotesMetricsSection studyNotes={data?.studyNotes} />
 
             <StripeRevenueSection
               revenue={stripeRevenue}
@@ -2808,7 +2920,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
             <TrafficSourcesView report={data?.trafficSources} />
           ) : (
           <section className="mt-8 space-y-6">
-            <div className="grid gap-4 md:grid-cols-4">
+            <div className="grid gap-4 md:grid-cols-5">
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Total opens</p>
                 <p className="mt-2 text-3xl font-black text-slate-950">{formatNumber(data?.studyNotes?.totalOpens || 0)}</p>
@@ -2825,9 +2937,15 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Chapter note opens</p>
                 <p className="mt-2 text-3xl font-black text-slate-950">{formatNumber(data?.studyNotes?.chapterNoteOpens || 0)}</p>
               </div>
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Phrase opens</p>
+                <p className="mt-2 text-3xl font-black text-slate-950">{formatNumber(data?.studyNotes?.phraseOpens || 0)}</p>
+              </div>
             </div>
 
-            <div className="grid gap-4 lg:grid-cols-2">
+            <StudyNotesMetricsSection studyNotes={data?.studyNotes} />
+
+            <div className="grid gap-4 lg:grid-cols-3">
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <h2 className="text-lg font-black text-slate-950">Top Study Notes</h2>
                 <div className="mt-4 space-y-3">
@@ -2840,6 +2958,21 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                       <p className="shrink-0 text-lg font-black text-slate-950">{note.opens}</p>
                     </div>
                   )) : <p className="text-sm font-semibold text-slate-500">No study note opens in this window yet.</p>}
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <h2 className="text-lg font-black text-slate-950">Top Key Phrases</h2>
+                <div className="mt-4 space-y-3">
+                  {(data?.studyNotes?.topPhrases || []).length ? data?.studyNotes?.topPhrases.map((phrase) => (
+                    <div key={phrase.key} className="flex items-center justify-between gap-4 rounded-lg bg-slate-50 px-3 py-3">
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-bold text-slate-900">{phrase.label}</p>
+                        <p className="mt-0.5 truncate text-xs font-semibold text-slate-500">{phrase.sectionLabel}</p>
+                      </div>
+                      <p className="shrink-0 text-lg font-black text-slate-950">{phrase.opens}</p>
+                    </div>
+                  )) : <p className="text-sm font-semibold text-slate-500">No key phrase opens in this window yet.</p>}
                 </div>
               </div>
 
@@ -2882,8 +3015,9 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                         <tr key={row.id} className="hover:bg-slate-50">
                           <td className="px-4 py-4 font-bold text-slate-900">{row.userLabel}</td>
                           <td className="px-4 py-4">
-                            <p className="font-bold text-slate-900">{row.noteTitle}</p>
+                            <p className="font-bold text-slate-900">{row.phraseTitle || row.noteTitle}</p>
                             <p className="mt-0.5 text-xs font-semibold text-slate-500">{row.reference || row.sectionTitle || "Study note"}</p>
+                            {row.phraseTitle ? <p className="mt-0.5 text-xs font-semibold text-slate-500">Inside: {row.noteTitle}</p> : null}
                           </td>
                           <td className="px-4 py-4 font-semibold text-slate-700">{row.source}</td>
                           <td className="px-4 py-4">

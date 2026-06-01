@@ -8,7 +8,7 @@ import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { ensureBibleEntityLearned } from "../lib/bibleEntityProgress";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
-import { consumeCreditAction } from "../lib/creditClient";
+import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
@@ -498,6 +498,10 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
             actionLabel: primaryName,
           });
           if (!creditResult.ok) {
+            if (isCreditActionCanceled(creditResult)) {
+              setSelectedPerson(null);
+              return;
+            }
             setPersonCreditBlocked(true);
             return;
           }
@@ -647,27 +651,29 @@ FINAL RULES:
         if (!selectedPlace) return;
         const normalizedPlace = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
 
-        setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
         if (userId) {
-          void (async () => {
-            const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
-              userId,
-              actionLabel: selectedPlace!.name,
-            });
-            if (!creditResult.ok) {
-              setPlaceCreditBlocked(true);
+          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+            userId,
+            actionLabel: selectedPlace!.name,
+          });
+          if (!creditResult.ok) {
+            if (isCreditActionCanceled(creditResult)) {
+              setSelectedPlace(null);
               return;
             }
+            setPlaceCreditBlocked(true);
+            return;
+          }
 
-            if (!completedPlaces.has(normalizedPlace)) {
-              const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
-              if (result.inserted) {
-                triggerPoints(1);
-                setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
-              }
+          if (!completedPlaces.has(normalizedPlace)) {
+            const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
+            if (result.inserted) {
+              triggerPoints(1);
+              setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
             }
-          })();
+          }
         }
+        setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
         return;
 
         const existingNotes = await findPlaceNotes(normalizedPlace);
@@ -783,6 +789,10 @@ Be accurate to Scripture.`;
                 actionLabel: selectedKeyword!.name,
               });
               if (!creditResult.ok) {
+                if (isCreditActionCanceled(creditResult)) {
+                  setSelectedKeyword(null);
+                  return;
+                }
                 setKeywordCreditBlocked(true);
                 return;
               }

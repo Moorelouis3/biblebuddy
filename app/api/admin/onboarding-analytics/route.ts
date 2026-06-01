@@ -41,6 +41,7 @@ type StudyNotesActionRow = {
   username?: string | null;
   action_type?: string | null;
   action_label?: string | null;
+  event_metadata?: Record<string, unknown> | null;
   created_at?: string | null;
 };
 
@@ -1320,6 +1321,39 @@ function parseStudyNotesLabel(label: string | null | undefined): ParsedStudyNote
   };
 }
 
+function getMetadataText(metadata: Record<string, unknown> | null | undefined, key: string) {
+  const value = metadata?.[key];
+  return typeof value === "string" ? value : "";
+}
+
+function isReaderPhraseOpen(row: StudyNotesActionRow) {
+  return getMetadataText(row.event_metadata, "kind") === "reader_phrase_opened";
+}
+
+function titleFromSlug(value: string) {
+  const bibleReferenceMatch = value.match(/^([a-z]+)(\d+)-(\d+)-(\d+)$/i);
+  if (bibleReferenceMatch) {
+    const book = bibleReferenceMatch[1].charAt(0).toUpperCase() + bibleReferenceMatch[1].slice(1);
+    return `${book} ${bibleReferenceMatch[2]}:${bibleReferenceMatch[3]}-${bibleReferenceMatch[4]}`;
+  }
+
+  return value
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function parseReaderStudyNotesLabel(label: string | null | undefined) {
+  const rawLabel = label || "";
+  const sectionMatch = rawLabel.match(/opened\s+([a-z0-9-]+)\s+notes opened/i);
+  const phraseMatch = rawLabel.match(/opened\s+([a-z0-9-]+)\s+([a-z0-9-]+)\s+opened/i);
+  return {
+    sectionKey: sectionMatch?.[1] || phraseMatch?.[1] || "",
+    phraseKey: phraseMatch?.[2] || "",
+  };
+}
+
 function getQuestionLabel(eventName: string) {
   if (eventName.includes("question_1")) return "Question 1";
   if (eventName.includes("question_2")) return "Question 2";
@@ -2282,24 +2316,55 @@ function buildBibleYearDayAnalytics(
 
 function buildStudyNotesAnalytics(rows: StudyNotesActionRow[], profileByUserId: Map<string, string>) {
   const noteCounts = new Map<string, { label: string; opens: number; users: Set<string>; lastOpenedAt: string | null }>();
+  const phraseCounts = new Map<string, { label: string; sectionLabel: string; opens: number; users: Set<string>; lastOpenedAt: string | null }>();
   const sourceCounts = new Map<string, number>();
 
   const activity = rows
     .filter((row) => row.created_at)
     .map((row, index) => {
       const parsed = parseStudyNotesLabel(row.action_label);
+      const metadata = row.event_metadata || {};
+      const readerLabel = parseReaderStudyNotesLabel(row.action_label);
+      const phraseOpen = isReaderPhraseOpen(row);
       const rawLabel = row.action_label || "Study notes";
-      const noteTitle = parsed?.sectionTitle || parsed?.contentLabel || parsed?.itemTitle || rawLabel;
-      const noteKey = parsed?.sectionReference || parsed?.itemKey || noteTitle;
-      const source = parsed?.sourceLabel || parsed?.source || "Bible study notes";
+      const metadataSectionTitle = getMetadataText(metadata, "sectionTitle");
+      const metadataSectionReference = getMetadataText(metadata, "sectionReference");
+      const metadataPhraseTitle = getMetadataText(metadata, "phraseTitle");
+      const metadataPhraseKey = getMetadataText(metadata, "phraseKey");
+      const noteTitle =
+        metadataSectionTitle ||
+        parsed?.sectionTitle ||
+        parsed?.contentLabel ||
+        parsed?.itemTitle ||
+        (readerLabel.sectionKey ? titleFromSlug(readerLabel.sectionKey) : rawLabel);
+      const noteKey = metadataSectionReference || parsed?.sectionReference || parsed?.itemKey || readerLabel.sectionKey || noteTitle;
+      const phraseTitle = metadataPhraseTitle || (readerLabel.phraseKey ? titleFromSlug(readerLabel.phraseKey) : "");
+      const phraseKey = metadataPhraseKey || readerLabel.phraseKey || "";
+      const source = getMetadataText(metadata, "sourceLabel") || parsed?.sourceLabel || parsed?.source || "Bible study notes";
       const userId = row.user_id || "";
       const userLabel = userId ? profileByUserId.get(userId) || row.username || `User ${shortId(userId)}` : row.username || "Unknown user";
       const openedAt = row.created_at || new Date().toISOString();
-      const noteSummary = noteCounts.get(noteKey) || { label: noteTitle, opens: 0, users: new Set<string>(), lastOpenedAt: null };
-      noteSummary.opens += 1;
-      if (userId) noteSummary.users.add(userId);
-      if (!noteSummary.lastOpenedAt || openedAt > noteSummary.lastOpenedAt) noteSummary.lastOpenedAt = openedAt;
-      noteCounts.set(noteKey, noteSummary);
+
+      if (phraseOpen && phraseTitle) {
+        const phraseSummary = phraseCounts.get(`${noteKey}:${phraseKey || phraseTitle}`) || {
+          label: phraseTitle,
+          sectionLabel: noteTitle,
+          opens: 0,
+          users: new Set<string>(),
+          lastOpenedAt: null,
+        };
+        phraseSummary.opens += 1;
+        if (userId) phraseSummary.users.add(userId);
+        if (!phraseSummary.lastOpenedAt || openedAt > phraseSummary.lastOpenedAt) phraseSummary.lastOpenedAt = openedAt;
+        phraseCounts.set(`${noteKey}:${phraseKey || phraseTitle}`, phraseSummary);
+      } else {
+        const noteSummary = noteCounts.get(noteKey) || { label: noteTitle, opens: 0, users: new Set<string>(), lastOpenedAt: null };
+        noteSummary.opens += 1;
+        if (userId) noteSummary.users.add(userId);
+        if (!noteSummary.lastOpenedAt || openedAt > noteSummary.lastOpenedAt) noteSummary.lastOpenedAt = openedAt;
+        noteCounts.set(noteKey, noteSummary);
+      }
+
       sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
 
       return {
@@ -2307,16 +2372,19 @@ function buildStudyNotesAnalytics(rows: StudyNotesActionRow[], profileByUserId: 
         userId: userId || null,
         userLabel,
         eventType: row.action_type || "study_notes_viewed",
-        eventLabel: row.action_type === "study_notes_section_opened" ? "Section opened" : "Study notes opened",
+        eventLabel: phraseOpen ? "Phrase opened" : row.action_type === "study_notes_section_opened" ? "Section opened" : "Study notes opened",
         noteTitle,
+        phraseTitle: phraseOpen ? phraseTitle : "",
         source,
-        reference: parsed?.sectionReference || parsed?.itemKey || "",
-        sectionTitle: parsed?.sectionTitle || "",
+        reference: metadataSectionReference || parsed?.sectionReference || parsed?.itemKey || readerLabel.sectionKey || "",
+        sectionTitle: metadataSectionTitle || parsed?.sectionTitle || "",
         openedAt,
       };
     })
     .sort((a, b) => b.openedAt.localeCompare(a.openedAt));
 
+  const noteOpenRows = activity.filter((row) => row.eventLabel !== "Phrase opened");
+  const phraseOpenRows = activity.filter((row) => row.eventLabel === "Phrase opened");
   const topNotes = Array.from(noteCounts.entries())
     .map(([key, value]) => ({
       key,
@@ -2326,15 +2394,30 @@ function buildStudyNotesAnalytics(rows: StudyNotesActionRow[], profileByUserId: 
       lastOpenedAt: value.lastOpenedAt,
     }))
     .sort((a, b) => b.opens - a.opens || (b.lastOpenedAt || "").localeCompare(a.lastOpenedAt || ""))
-    .slice(0, 12);
+    .slice(0, 20);
+
+  const topPhrases = Array.from(phraseCounts.entries())
+    .map(([key, value]) => ({
+      key,
+      label: value.label,
+      sectionLabel: value.sectionLabel,
+      opens: value.opens,
+      uniqueUsers: value.users.size,
+      lastOpenedAt: value.lastOpenedAt,
+    }))
+    .sort((a, b) => b.opens - a.opens || (b.lastOpenedAt || "").localeCompare(a.lastOpenedAt || ""))
+    .slice(0, 20);
 
   return {
-    totalOpens: activity.length,
+    totalOpens: noteOpenRows.length,
+    totalInteractions: activity.length,
     uniqueUsers: new Set(activity.map((row) => row.userId).filter(Boolean)).size,
-    sectionOpens: activity.filter((row) => row.eventType === "study_notes_section_opened").length,
-    chapterNoteOpens: activity.filter((row) => row.eventType === "chapter_notes_viewed").length,
+    sectionOpens: noteOpenRows.filter((row) => row.eventType === "study_notes_section_opened").length,
+    chapterNoteOpens: noteOpenRows.filter((row) => row.eventType === "chapter_notes_viewed").length,
+    phraseOpens: phraseOpenRows.length,
     topSources: Array.from(sourceCounts.entries()).map(([source, opens]) => ({ source, opens })).sort((a, b) => b.opens - a.opens).slice(0, 8),
     topNotes,
+    topPhrases,
     rows: activity.slice(0, 250),
   };
 }
@@ -2554,7 +2637,7 @@ export async function GET(request: Request) {
 
   let studyNotesQuery = adminSupabase
     .from("master_actions")
-    .select("user_id, username, action_type, action_label, created_at")
+    .select("user_id, username, action_type, action_label, event_metadata, created_at")
     .in("action_type", ["study_notes_viewed", "study_notes_section_opened", "chapter_notes_viewed"])
     .gte("created_at", journeySinceIso)
     .order("created_at", { ascending: false })

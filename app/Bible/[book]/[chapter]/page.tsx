@@ -16,7 +16,7 @@ import { BIBLE_HIGHLIGHTING_VERSION_MARKER, enrichBibleVerses } from "../../../.
 import { logStudyView } from "../../../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../../../lib/actionTypes";
 import { resolveBibleReference } from "../../../../lib/bibleTermResolver";
-import { consumeCreditAction } from "../../../../lib/creditClient";
+import { consumeCreditAction, isCreditActionCanceled } from "../../../../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../../../../lib/bibleNotes";
 import { requestLouisNotes } from "../../../../lib/requestLouisNotes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
@@ -441,35 +441,37 @@ export default function BibleChapterPage() {
         const personName = selectedPerson.name;
         const personNameKey = personName.toLowerCase().trim();
 
-        const notesText = await getPersonPopupNotes(personName);
-        setPersonNotes(notesText);
-
         if (userId) {
-          void (async () => {
-            const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
-              userId,
-              actionLabel: personName,
-            });
-            if (!creditResult.ok) {
-              setPersonCreditBlocked(true);
+          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+            userId,
+            actionLabel: personName,
+          });
+          if (!creditResult.ok) {
+            if (isCreditActionCanceled(creditResult)) {
+              setSelectedPerson(null);
               return;
             }
+            setPersonCreditBlocked(true);
+            return;
+          }
 
-            setViewedPeople((prev) => {
-              const next = new Set(prev);
-              next.add(personNameKey);
-              return next;
-            });
+          setViewedPeople((prev) => {
+            const next = new Set(prev);
+            next.add(personNameKey);
+            return next;
+          });
 
-            if (!completedPeople.has(personNameKey)) {
-              const result = await ensureBibleEntityLearned({ kind: "people", name: personName, userId });
-              if (result.inserted) {
-                triggerPoints(1);
-                setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
-              }
+          if (!completedPeople.has(personNameKey)) {
+            const result = await ensureBibleEntityLearned({ kind: "people", name: personName, userId });
+            if (result.inserted) {
+              triggerPoints(1);
+              setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
             }
-          })();
+          }
         }
+
+        const notesText = await getPersonPopupNotes(personName);
+        setPersonNotes(notesText);
       } catch (err: any) {
         console.error("Error loading person notes:", err);
       } finally {
@@ -497,27 +499,29 @@ export default function BibleChapterPage() {
         if (!selectedPlace) return;
         const normalizedPlace = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
 
-        setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
         if (userId) {
-          void (async () => {
-            const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
-              userId,
-              actionLabel: selectedPlace!.name,
-            });
-            if (!creditResult.ok) {
-              setPlaceCreditBlocked(true);
+          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+            userId,
+            actionLabel: selectedPlace!.name,
+          });
+          if (!creditResult.ok) {
+            if (isCreditActionCanceled(creditResult)) {
+              setSelectedPlace(null);
               return;
             }
+            setPlaceCreditBlocked(true);
+            return;
+          }
 
-            if (!completedPlaces.has(normalizedPlace)) {
-              const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
-              if (result.inserted) {
-                triggerPoints(1);
-                setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
-              }
+          if (!completedPlaces.has(normalizedPlace)) {
+            const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
+            if (result.inserted) {
+              triggerPoints(1);
+              setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
             }
-          })();
+          }
         }
+        setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
         return;
 
         const existingNotes = await findPlaceNotes(normalizedPlace);
@@ -637,6 +641,10 @@ RULES:
                 actionLabel: selectedKeyword!.name,
               });
               if (!creditResult.ok) {
+                if (isCreditActionCanceled(creditResult)) {
+                  setSelectedKeyword(null);
+                  return;
+                }
                 setKeywordCreditBlocked(true);
                 return;
               }

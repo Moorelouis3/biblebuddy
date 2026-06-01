@@ -2,12 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
-import { consumeCredit } from "@/lib/consumeCredit";
+import { consumeCredit, previewCredit } from "@/lib/consumeCredit";
 import { ACTION_TYPE, isActionType } from "@/lib/actionTypes";
 
 type ConsumeCreditRequest = {
   actionType?: string;
   actionLabel?: string;
+  preview?: boolean;
 };
 
 
@@ -118,6 +119,11 @@ export async function POST(req: NextRequest) {
         })
         .eq("user_id", user.id);
     }
+  }
+
+  if (body.preview === true) {
+    const preview = await previewCredit(user.id);
+    return NextResponse.json(preview, { status: preview.ok ? 200 : 500 });
   }
 
   const result = await consumeCredit(user.id, actionType, actionLabel);
