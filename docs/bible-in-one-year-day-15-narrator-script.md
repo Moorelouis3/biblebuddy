@@ -697,14 +697,3 @@ But Day 15 has already prepared us to see the pattern:
 Joseph's road looks like it is going down.
 
 But God is carrying him toward a purpose no one can see yet.
-
-## Reusable Day Script Framework
-
-1. Carry the emotional tension from the previous day into the new day.
-2. Name the chapters and the main movements.
-3. Give three listening themes.
-4. Read the Scripture in natural sections.
-5. Explain family context, cultural details, repeated patterns, and emotional pressure after each section.
-6. Treat painful passages with moral clarity and care.
-7. Keep the tone conversational and understandable.
-8. Close by naming the big lesson and pointing toward tomorrow.

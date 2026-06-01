@@ -211,7 +211,7 @@ export function DatabaseTermTakeover({
       ref={takeoverRef}
       className={`relative border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_22px_70px_rgba(15,23,42,0.24)] ${
         isReaderMode
-          ? "flex max-h-[calc(100dvh-1.5rem)] w-[min(calc(100vw-1rem),560px)] overflow-hidden rounded-[18px] text-left"
+          ? "flex max-h-[min(44dvh,360px)] w-full overflow-hidden rounded-[20px] text-left"
           : "min-h-[62vh] overflow-hidden rounded-[26px] px-4 py-6 text-center"
       }`}
     >
@@ -239,7 +239,7 @@ export function DatabaseTermTakeover({
       <div
         className={`word-discovery-card relative z-10 mx-auto flex flex-col ${
           isReaderMode
-            ? "max-h-[calc(100dvh-1.5rem)] min-h-0 w-full max-w-none"
+            ? "max-h-[min(44dvh,360px)] min-h-0 w-full max-w-none"
             : "min-h-[58vh] max-w-xl items-center justify-center"
         }`}
       >

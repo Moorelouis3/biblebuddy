@@ -6,7 +6,7 @@ const MEDIA_CACHE_NAME = `biblebuddy-media-${CACHE_VERSION}`;
 const STATIC_ASSETS = [
   "/offline.html",
   "/manifest.json",
-  "/Newforreallogoicon.png",
+  "/TherealiconforBB.png",
   "/icons/icon-192.png",
   "/icons/icon-512.png",
 ];
@@ -141,8 +141,8 @@ self.addEventListener("push", (event) => {
   const body = typeof payload.body === "string" ? payload.body : "";
   const options = {
     body,
-    icon: "/Newforreallogoicon.png",
-    badge: "/Newforreallogoicon.png",
+    icon: "/TherealiconforBB.png",
+    badge: "/TherealiconforBB.png",
     data: {
       url: payload.url || "/dashboard",
       notificationId: payload.notificationId || null,

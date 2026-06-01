@@ -109,7 +109,7 @@ export default function LegalPageLayout({
       <div className="mx-auto max-w-5xl">
         <div className="bb-legal-header mb-8 flex items-center justify-between gap-5 rounded-none px-0 py-0" role="banner">
           <Link href="/" className="bb-legal-logo flex items-center gap-3">
-            <Image src="/Newforreallogoicon.png" alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-lg object-cover" />
+            <Image src="/TherealiconforBB.png" alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-lg object-cover" />
             <span className="text-lg font-black tracking-tight">Bible Buddy</span>
           </Link>
           <PublicHomeButton className="bb-legal-home fixed right-5 top-6 z-50 rounded-full border px-5 py-2.5 text-sm font-black shadow-[0_10px_24px_rgba(14,26,58,0.06)] transition hover:-translate-y-0.5 sm:right-8" />

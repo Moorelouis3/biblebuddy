@@ -4,7 +4,7 @@
 
 **Reading:** Genesis 34-36  
 **Bible text:** Genesis 34-36  
-**Goal:** Read the Scripture in natural sections, then explain the story with honesty, care, and plain language. This day is heavy, so the narrator should be calm, compassionate, and clear. Do not rush Genesis 34. Do not turn Genesis 36 into "just a list." Help the listener understand why these chapters matter before Genesis turns toward Joseph.
+**Goal:** Move through the Scripture in natural sections, then explain the story with honesty, care, and plain language. This day is heavy, so the narrator should be calm, compassionate, and clear. Do not rush Genesis 34. Do not turn Genesis 36 into "just a list." Help the listener understand why these chapters matter before Genesis turns toward Joseph.
 
 ## Estimated Length
 
@@ -78,7 +78,7 @@ Let's begin with Genesis chapter 34, verses 1 through 7.
 
 **Scripture**
 
-Read Genesis 34:1-7.
+Genesis 34:1-7.
 
 **Narrator**
 
@@ -130,7 +130,7 @@ And now the story moves into negotiation.
 
 **Scripture**
 
-Read Genesis 34:8-24.
+Genesis 34:8-24.
 
 **Narrator**
 
@@ -198,7 +198,7 @@ Now comes the violence.
 
 **Scripture**
 
-Read Genesis 34:25-31.
+Genesis 34:25-31.
 
 **Narrator**
 
@@ -256,7 +256,7 @@ And right after this painful chapter, God speaks.
 
 **Scripture**
 
-Read Genesis 35:1-8.
+Genesis 35:1-8.
 
 **Narrator**
 
@@ -314,7 +314,7 @@ Now God appears to Jacob again.
 
 **Scripture**
 
-Read Genesis 35:9-15.
+Genesis 35:9-15.
 
 **Narrator**
 
@@ -370,7 +370,7 @@ The next section brings grief.
 
 **Scripture**
 
-Read Genesis 35:16-29.
+Genesis 35:16-29.
 
 **Narrator**
 
@@ -444,7 +444,7 @@ Now Genesis turns to Esau's line.
 
 **Scripture**
 
-Read Genesis 36:1-8.
+Genesis 36:1-8.
 
 **Narrator**
 
@@ -490,7 +490,7 @@ Now the chapter widens into chiefs and kings.
 
 **Scripture**
 
-Read Genesis 36:9-43.
+Genesis 36:9-43.
 
 **Narrator**
 
@@ -637,14 +637,3 @@ That is the soil where Joseph's story begins.
 But God is still at work.
 
 The same God who met Jacob at Bethel, renamed him Israel, and carried the promise forward through a wounded family is about to work through Joseph in ways no one in the family can see yet.
-
-## Reusable Day Script Framework
-
-1. Carry the emotional tension from the previous day into the current day.
-2. Name the chapters and the main movements.
-3. Give three listening themes.
-4. Read Scripture in natural sections.
-5. After each section, explain what happened, define important terms, and show why it matters.
-6. Treat painful passages with care and clarity.
-7. Do not flatten genealogies; explain why they prepare later Bible history.
-8. Close by connecting the day to the next movement of the story.

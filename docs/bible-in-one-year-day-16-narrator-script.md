@@ -599,12 +599,3 @@ He is also with them while they wait behind the door.
 Day 17 will show what happens when Pharaoh dreams and the forgotten Joseph is finally remembered.
 
 But Day 16 teaches us to trust God before the breakthrough comes.
-
-## Reusable Day Script Framework
-
-- Open with where the story left off.
-- Read the passage in natural sections.
-- Teach the scene in simple language.
-- Explain phrases that unlock the meaning.
-- Connect the passage to real life without turning it into generic motivation.
-- End with the main truth the listener should carry into the next day.

@@ -9701,13 +9701,14 @@ Before we understand redemption, we need to understand what God made humanity fo
       <section className="bible-year-follow-along-scroll dashboard-bible-reader-embed mt-3 max-h-[630px] overflow-y-auto rounded-[18px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,var(--bb-surface-soft,#f8fbff)),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_88%,var(--bb-card,#ffffff)))] p-4 text-left text-[var(--bb-text-primary,#111827)] shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_42px_rgba(15,23,42,0.08)]">
         {bibleYearSelectedTerm ? (
           <div
-            className="fixed inset-0 z-[90] flex items-center justify-center bg-slate-950/45 p-2 backdrop-blur-sm sm:p-6"
+            className="fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+5.75rem)] z-[90] flex justify-center px-3 sm:px-6"
             role="dialog"
-            aria-modal="true"
             aria-label={`${bibleYearSelectedTerm.name} Bible database note`}
-            onClick={closeBibleYearTermTakeover}
           >
-            <div className="flex max-h-[calc(100dvh-1rem)] w-full justify-center" onClick={(event) => event.stopPropagation()}>
+            <div
+              className="w-full max-w-[min(720px,calc(100vw-1.5rem))] rounded-[22px] shadow-[0_24px_60px_rgba(15,23,42,0.22)]"
+              onClick={(event) => event.stopPropagation()}
+            >
               <DatabaseTermTakeover
                 selectedTerm={bibleYearSelectedTerm}
                 termBurstKey={bibleYearTermBurstKey}

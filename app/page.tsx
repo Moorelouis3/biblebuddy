@@ -1829,7 +1829,7 @@ function BibleBuddyMark({ small = false }: { small?: boolean }) {
   return (
     <div className="flex items-center gap-2.5 text-[#07162f]">
       <Image
-        src="/Newforreallogoicon.png"
+        src="/TherealiconforBB.png"
         alt=""
         width={small ? 24 : 28}
         height={small ? 24 : 28}

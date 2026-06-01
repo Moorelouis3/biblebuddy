@@ -787,12 +787,3 @@ Joseph rises.
 The brothers bow.
 
 And the hidden wound begins to open.
-
-## Reusable Day Script Framework
-
-- Open with where the story left off.
-- Read the passage in natural sections.
-- Teach the scene in simple language.
-- Explain phrases that unlock the meaning.
-- Connect the passage to real life without turning it into generic motivation.
-- End with the main truth the listener should carry into the next day.

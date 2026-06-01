@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     canonical: siteUrl.toString(),
   },
   icons: {
-    icon: "/Newforreallogoicon.png",
-    apple: "/Newforreallogoicon.png",
-    shortcut: "/Newforreallogoicon.png",
+    icon: "/TherealiconforBB.png",
+    apple: "/TherealiconforBB.png",
+    shortcut: "/TherealiconforBB.png",
   },
   manifest: "/manifest.json",
   appleWebApp: {

@@ -2272,7 +2272,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                 <FounderMetricCard
                   title="Total Users"
                   value={formatNumber(businessMetrics.totalUsers)}
-                  helper={`${formatNumber(data?.registeredUsers?.withEmail || businessMetrics.registeredUsers)} with email + ${formatNumber(data?.registeredUsers?.withoutEmail || 0)} without email. ${formatNumber(data?.registeredUsers?.guestAccounts || businessMetrics.guestUsers)} guests.`}
+                  helper="All registered Bible Buddy accounts."
                   icon="visitors"
                 />
                 <FounderMetricCard
@@ -2282,10 +2282,10 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                   icon="user"
                 />
                 <FounderMetricCard
-                  title="Lifetime Signups"
-                  value={formatNumber(businessMetrics.lifetimeSignups)}
-                  helper="Real registered Supabase accounts ever created."
-                  icon="check"
+                  title="Audio Plays"
+                  value={formatNumber(data?.audioEngagement?.totalPlays || 0)}
+                  helper="How many Bible Buddy audio lessons were played."
+                  icon="play"
                 />
                 <FounderMetricCard
                   title="Revenue"
