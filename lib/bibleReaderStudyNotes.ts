@@ -2198,61 +2198,218 @@ function makeCompactLeviticusStudySection(section: CompactReaderStudySectionInpu
   };
 }
 
-function countKeyPhraseSentences(text: string) {
-  return (text.match(/[.!?](?:\s|$)/g) || []).length;
-}
-
-function cleanKeyPhraseHeading(heading: string) {
-  return heading
-    .replace(/^[^\p{L}\p{N}"']+/u, "")
-    .replace(/^["']|["']$/g, "")
-    .trim();
-}
-
-function lowerFirst(value: string) {
-  return value ? `${value.charAt(0).toLowerCase()}${value.slice(1)}` : value;
-}
-
-function keyPhraseBookContext(section: BibleReaderStudySection) {
-  if (section.book === "genesis") {
-    return "In Genesis, small phrases often show how promise, family, blessing, sin, conflict, or consequence is moving through ordinary life.";
-  }
-
-  if (section.book === "exodus") {
-    return "In Exodus, phrases like this often show how God is rescuing His people, confronting false power, forming Israel, or drawing near to dwell with them.";
-  }
-
-  if (section.book === "leviticus") {
-    return "In Leviticus, phrases like this teach Israel how holiness, worship, cleansing, sacrifice, priesthood, or daily life works near God's presence.";
-  }
-
-  return "In this part of Scripture, phrases like this help the reader follow the movement of God's larger story.";
-}
-
-function deepenKeyPhraseContent(item: string, section: BibleReaderStudySection) {
-  const [rawHeading, ...bodyLines] = item.split("\n");
-  const body = bodyLines.join("\n").trim();
-  const sentenceCount = countKeyPhraseSentences(body);
-
-  if (section.reference.startsWith("Genesis 1:") || section.reference.startsWith("Genesis 2:")) {
-    return item;
-  }
-
-  if (sentenceCount >= 6) {
-    return item;
-  }
-
-  const phrase = cleanKeyPhraseHeading(rawHeading);
-  const additions = [
-    `${phrase} matters in ${section.reference} because this section is about ${lowerFirst(section.summary)}`,
-    keyPhraseBookContext(section),
-    `In plain English, this phrase gives the reader a clue for what is happening in the passage and why the moment should not be skipped.`,
-    `It helps explain the people, pressure, command, warning, promise, worship, or lesson connected to this scene.`,
-    `Without this phrase, the reader could miss how this smaller detail supports the bigger message of ${section.title}.`,
-  ];
-
-  return `${rawHeading}\n${[body, ...additions.slice(0, Math.max(0, 6 - sentenceCount))].join("\n")}`;
-}
+BIBLE_READER_STUDY_SECTIONS.push(
+  ...[
+    makeCompactExodusStudySection({
+      chapter: 13,
+      startVerse: 1,
+      endVerse: 10,
+      reference: "Exodus 13:1-10",
+      title: "Redeemed People Remember",
+      icon: "🧠",
+      summary: "God tells Israel to consecrate the firstborn and remember the day He brought them out of Egypt.",
+      movement: ["🧠 God commands Israel to remember the day of rescue.", "👶 The firstborn are set apart to the LORD.", "🍞 Unleavened bread becomes a yearly reminder.", "👨‍👩‍👧 Parents must explain the rescue to their children."],
+      phrases: [["Sanctify Unto Me All The Firstborn", "To sanctify means to set apart as belonging to God. Israel's firstborn were spared on Passover night, so God now claims the firstborn as a living reminder of mercy. This phrase teaches that rescue creates belonging, not just escape."], ["Remember This Day", "God knows freed people can forget what bondage felt like and who rescued them. Remembering is not nostalgia; it is worship that keeps the rescue clear in the heart. Israel's calendar will now teach them their identity."], ["By Strength Of Hand", "This phrase points to God's power in the Exodus. Israel did not negotiate itself free, outgrow Egypt, or win a slave revolt. The LORD brought them out by His own mighty hand."]],
+      truths: [["Redemption creates belonging.", "The firstborn are set apart because God rescued them."], ["Memory protects worship.", "Israel must remember rescue so they do not forget the Rescuer."], ["God's power frees His people.", "Egypt's grip was broken by the LORD's hand."]],
+      application: ["Let God's rescue shape your identity.", "Build rhythms that help you remember what God has done.", "Tell the next generation why freedom matters."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 13,
+      startVerse: 11,
+      endVerse: 16,
+      reference: "Exodus 13:11-16",
+      title: "The Firstborn Belong To The Lord",
+      icon: "👶",
+      summary: "Israel is taught to redeem the firstborn and explain Passover deliverance to future children.",
+      movement: ["👶 Firstborn sons and animals are connected to God's rescue.", "🐑 Clean animals are offered to the LORD.", "❓ Children will ask what the practice means.", "🩸 Parents must answer with the story of Passover."],
+      phrases: [["Thou Shalt Redeem", "To redeem means to buy back or rescue through a price. The firstborn son is not sacrificed; he is redeemed because God values life and provided rescue. This language prepares readers for the Bible's bigger theme of God saving His people at cost."], ["When Thy Son Asketh Thee", "God expects children to ask questions about worship. The rituals are not empty actions; they are teaching tools. Parents are supposed to connect the practice to the story of God's deliverance."], ["For A Sign Upon Thine Hand", "The rescue is meant to shape what Israel does and how Israel thinks. Hand and forehead language points to actions and memory. God's deliverance should be visible in everyday life, not hidden in one yearly meal."]],
+      truths: [["God teaches through practices.", "Israel's worship trains memory."], ["Children need the story explained.", "The next generation must know why God's people live differently."], ["Rescue should shape daily life.", "Deliverance belongs on the hand and forehead, not only in the past."]],
+      application: ["Explain faith in plain language to the people coming behind you.", "Let worship practices point back to God's rescue.", "Live like someone who belongs to the God who redeemed you."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 13,
+      startVerse: 17,
+      endVerse: 22,
+      reference: "Exodus 13:17-22",
+      title: "God Leads The Long Way",
+      icon: "☁️",
+      summary: "God leads Israel away from the shortest route and guides them by cloud and fire.",
+      movement: ["🧭 God does not lead Israel by the nearest road.", "🦴 Moses carries Joseph's bones out of Egypt.", "☁️ The LORD leads by cloud in the day.", "🔥 The LORD leads by fire at night."],
+      phrases: [["God Led Them Not Through The Way Of The Land Of The Philistines", "The shortest route was not the wisest route. Israel was newly freed and not ready for immediate war, so God leads them with patient wisdom. A longer road can still be God's mercy."], ["Moses Took The Bones Of Joseph", "Joseph had asked for this in Genesis 50 because he believed God would surely visit His people. Carrying his bones out of Egypt connects Exodus back to Genesis. The promise Joseph trusted is now moving forward."], ["A Pillar Of Cloud By Day", "God gives visible guidance for a people who have never lived free before. The cloud and fire show that Israel is not wandering alone. The LORD is personally leading them through unknown territory."]],
+      truths: [["God's route may be merciful even when it is longer.", "The nearest road is not always the best road."], ["God keeps old promises.", "Joseph's bones leave Egypt because God's word came true."], ["God guides newly freed people.", "Israel needs direction after deliverance."]],
+      application: ["Do not assume a longer road means God is absent.", "Trust that promises can outlive the people who first believed them.", "Follow God's guidance one step at a time."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 14,
+      startVerse: 1,
+      endVerse: 9,
+      reference: "Exodus 14:1-9",
+      title: "Pharaoh Pursues Israel",
+      icon: "🐎",
+      summary: "God leads Israel near the sea, Pharaoh changes his mind, and Egypt pursues with chariots.",
+      movement: ["🌊 Israel camps near the sea.", "👑 Pharaoh regrets releasing the people.", "🐎 Egypt pursues with horses and chariots.", "⚖️ God says He will get glory over Pharaoh."],
+      phrases: [["They Are Entangled In The Land", "From Pharaoh's point of view, Israel looks trapped. The sea, wilderness, and Egyptian army make escape seem impossible. But the place that looks like a trap will become the stage for God's deliverance."], ["Six Hundred Chosen Chariots", "Chariots were elite military power in the ancient world. Egypt is bringing its strongest visible strength against a newly freed slave people. The contrast makes God's rescue even clearer."], ["I Will Be Honoured Upon Pharaoh", "God is not reacting in panic to Pharaoh's pursuit. He has already said Pharaoh's resistance will reveal the LORD's glory. Egypt's last chase becomes the setting where everyone sees who truly rules."]],
+      truths: [["God can use trapped places to reveal His power.", "Israel's dead end is not the end."], ["Human power can look overwhelming.", "Egypt comes with the strongest weapons it has."], ["God is not surprised by pursuit.", "Pharaoh's chase fits inside God's larger purpose."]],
+      application: ["Do not measure God's power by how trapped you feel.", "Remember that visible strength is not ultimate strength.", "Trust God when the setup looks impossible."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 14,
+      startVerse: 10,
+      endVerse: 14,
+      reference: "Exodus 14:10-14",
+      title: "Fear At The Sea",
+      icon: "😨",
+      summary: "Israel panics when they see Egypt coming, but Moses tells them to stand still and see the LORD's salvation.",
+      movement: ["😨 Israel sees Pharaoh's army and becomes afraid.", "🗣️ The people accuse Moses of bringing them out to die.", "🛡️ Moses tells them to fear not.", "👀 They are told to stand still and see the salvation of the LORD."],
+      phrases: [["They Were Sore Afraid", "Israel's fear is understandable because the army is real. The Bible does not pretend danger is imaginary. But fear becomes dangerous when it rewrites God's rescue as a mistake."], ["Because There Were No Graves In Egypt", "The people speak with bitter sarcasm. Egypt was famous for tombs and death, and Israel now thinks Moses brought them out only to die. Fear often makes slavery look safer than faith."], ["Stand Still, And See The Salvation Of The LORD", "Moses is not telling them to be passive forever. In this moment, they cannot save themselves, so they must watch God act. Salvation begins with the LORD doing what Israel cannot do."]],
+      truths: [["Fear can distort memory.", "Israel forgets deliverance when danger gets close."], ["God's salvation is bigger than human ability.", "Israel cannot defeat Egypt at the sea."], ["Faith sometimes starts by standing still.", "There are moments when God's people must stop striving and watch Him work."]],
+      application: ["Name real fear without letting it rewrite God's character.", "Do not run back to bondage because freedom feels scary.", "Let God be Savior where you cannot save yourself."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 14,
+      startVerse: 15,
+      endVerse: 22,
+      reference: "Exodus 14:15-22",
+      title: "The Sea Opens",
+      icon: "🌊",
+      summary: "God tells Israel to move forward, places His presence between them and Egypt, and opens the sea.",
+      movement: ["🚶 God tells Israel to go forward.", "☁️ The cloud moves between Israel and Egypt.", "🌬️ A strong east wind divides the sea.", "🌊 Israel walks through on dry ground."],
+      phrases: [["Speak Unto The Children Of Israel, That They Go Forward", "After telling them to stand still, God now tells them to move. Faith is not always the same posture; sometimes it waits, and sometimes it walks. Israel must step into the path God opens."], ["The Pillar Of The Cloud Went From Before Their Face", "God's presence moves from leading in front to guarding behind. The LORD knows exactly where His people need protection. Guidance and defense both come from Him."], ["The Waters Were A Wall Unto Them", "The sea becomes a pathway instead of a grave. Waters that looked like death now stand aside while Israel passes through. This is creation language too: God brings order, separation, and dry ground where there was only water."]],
+      truths: [["Faith follows God's timing.", "Israel stands still, then moves forward when God commands."], ["God's presence protects from behind.", "The cloud stands between Israel and Egypt."], ["God makes a way through what looked impossible.", "The sea becomes dry ground."]],
+      application: ["Wait when God says wait and move when God says move.", "Trust God to guard places you cannot guard.", "Walk through the path God opens, even if it was not there yesterday."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 14,
+      startVerse: 23,
+      endVerse: 31,
+      reference: "Exodus 14:23-31",
+      title: "Egypt Falls In The Sea",
+      icon: "⚖️",
+      summary: "Egypt follows Israel into the sea, but the LORD throws the army into confusion and saves His people.",
+      movement: ["🐎 Egypt follows into the sea.", "⚙️ Chariot wheels come off and the army panics.", "🌊 The waters return over Pharaoh's forces.", "🙏 Israel fears the LORD and believes Him."],
+      phrases: [["The LORD Fought For Them", "Israel does not defeat Egypt by military skill. The LORD Himself acts as warrior for His people. This phrase becomes one of the great truths of the Exodus story."], ["Let Us Flee From The Face Of Israel", "Egypt finally recognizes that the LORD is fighting for Israel. The army that charged in confidence now wants to escape. The oppressor's courage collapses when God's power is revealed."], ["Israel Saw That Great Work", "The rescue becomes visible and unforgettable. Israel sees the bodies of Egypt's army and understands that the threat is truly broken. This sight leads them to fear the LORD and believe His servant Moses."]],
+      truths: [["God fights for His people.", "The Exodus is the LORD's victory."], ["Pride can collapse suddenly.", "Egypt's army realizes too late who they are fighting."], ["Deliverance creates reverent faith.", "Israel sees, fears, and believes."]],
+      application: ["Let God's victory define the story more than the enemy's power.", "Take warning from pride that keeps charging after God has spoken.", "Remember the works of God that strengthened your faith."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 15,
+      startVerse: 1,
+      endVerse: 10,
+      reference: "Exodus 15:1-10",
+      title: "Israel Sings The Victory",
+      icon: "🎶",
+      summary: "Moses and Israel sing to the LORD because He has thrown horse and rider into the sea.",
+      movement: ["🎶 Israel sings after the sea crossing.", "💪 The LORD is praised as strength and salvation.", "🐎 Horse and rider are thrown into the sea.", "🌬️ God's breath overwhelms the enemy."],
+      phrases: [["I Will Sing Unto The LORD", "The first major song in the Bible rises from deliverance. Israel does not only escape; they worship. Song becomes a way to remember what God has done."], ["The LORD Is My Strength And Song", "God is not only the One who gives strength; He becomes the song itself. The rescued people now have a new center for praise. Their worship is built on salvation, not self-confidence."], ["Horse And His Rider Hath He Thrown Into The Sea", "This line celebrates the collapse of Egypt's military pride. The chariots that terrified Israel are gone. What looked unbeatable has been thrown down by the LORD."]],
+      truths: [["Rescue should become worship.", "Israel sings because God saved them."], ["God Himself is the strength of His people.", "Their song is centered on the LORD."], ["No power is too strong for God to overthrow.", "Egypt's chariots disappear in the sea."]],
+      application: ["Turn remembered rescue into worship.", "Let God be your song, not only your helper.", "Do not treat terrifying power as if it is stronger than the LORD."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 15,
+      startVerse: 11,
+      endVerse: 18,
+      reference: "Exodus 15:11-18",
+      title: "Who Is Like The Lord?",
+      icon: "👑",
+      summary: "The song praises God's holiness, power, steadfast love, and future reign over His people.",
+      movement: ["👑 Israel asks who is like the LORD.", "🛡️ God leads the people He redeemed.", "🌍 Nations will hear and tremble.", "🏕️ God will bring His people to His holy dwelling."],
+      phrases: [["Who Is Like Unto Thee, O LORD", "This question is worship, not confusion. Egypt's gods could not save Egypt, and Pharaoh could not stop the LORD. Israel is learning that the LORD is incomparable."], ["Glorious In Holiness", "God's holiness means He is set apart, pure, and unlike every false power. His glory is not only strength; it is holy strength. The God who saves is also the God to be revered."], ["Thou Shalt Bring Them In", "The song looks beyond the sea toward the promised dwelling. God did not rescue Israel just to leave them wandering forever. Deliverance has a destination: life with God in the place He promises."]],
+      truths: [["The LORD is incomparable.", "No rival stands beside Him."], ["God's power is holy power.", "His victory reveals His character."], ["Deliverance has a destination.", "God brings His people toward His dwelling."]],
+      application: ["Let worship remind you who God is above every rival.", "Hold God's holiness and kindness together.", "Remember that rescue is meant to bring you nearer to God."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 15,
+      startVerse: 19,
+      endVerse: 21,
+      reference: "Exodus 15:19-21",
+      title: "Miriam Leads The Women In Praise",
+      icon: "🥁",
+      summary: "Miriam leads the women with timbrels and dancing as Israel repeats the song of victory.",
+      movement: ["🌊 Pharaoh's horses are swallowed by the sea.", "🥁 Miriam takes a timbrel in her hand.", "💃 The women follow with music and dancing.", "🎶 They answer with the victory song."],
+      phrases: [["Miriam The Prophetess", "Miriam is named as a prophetess, showing her recognized role among God's people. She is not a background detail in the Exodus story. Her leadership helps the community respond to God's victory in worship."], ["Timbrels And With Dances", "The praise is physical, musical, and communal. Israel's bodies had known slavery, and now those same bodies move in celebration. Deliverance changes the sound of the people."], ["Sing Ye To The LORD", "Miriam calls the women to join the song, not just watch the song. The victory belongs to the whole community. Worship spreads as the rescued people repeat what God has done."]],
+      truths: [["God's victory creates community praise.", "The song is shared."], ["Women are visible in Israel's worship.", "Miriam leads the response."], ["Freedom changes the sound of God's people.", "Slaves become singers."]],
+      application: ["Join worship as a participant, not only an observer.", "Honor the people God uses to lead others in praise.", "Let deliverance change what comes out of your mouth."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 15,
+      startVerse: 22,
+      endVerse: 27,
+      reference: "Exodus 15:22-27",
+      title: "Bitter Water And The God Who Heals",
+      icon: "💧",
+      summary: "Israel enters the wilderness, finds bitter water, complains, and learns that the LORD can heal what is bitter.",
+      movement: ["🏜️ Israel goes three days into the wilderness.", "💧 The water at Marah is bitter.", "🌳 God shows Moses a tree that makes the water sweet.", "🌴 Israel reaches Elim with springs and palm trees."],
+      phrases: [["They Could Not Drink Of The Waters Of Marah", "The first wilderness crisis after the song is bitter water. This shows how quickly celebration can be followed by need. The question is whether Israel will trust the God who just saved them."], ["The LORD Shewed Him A Tree", "God provides a simple means of healing the water. The tree itself is not magic; the LORD shows Moses what to do. The scene teaches that God can make bitter places livable."], ["I Am The LORD That Healeth Thee", "God reveals Himself as healer in the wilderness. Healing here includes more than bodies; it includes the life of a rescued people learning to trust and obey. The LORD who defeated Egypt can also care for thirst, bitterness, and weakness."]],
+      truths: [["Need can come right after worship.", "Israel moves from song to thirst."], ["God can heal bitter places.", "Marah does not stay bitter when God acts."], ["The LORD reveals His care in the wilderness.", "He is not only Deliverer from Egypt but Healer on the journey."]],
+      application: ["Do not panic when need follows a spiritual high.", "Ask God to show you how He can heal bitter places.", "Trust God's care in the wilderness, not only at the sea."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 16,
+      startVerse: 1,
+      endVerse: 3,
+      reference: "Exodus 16:1-3",
+      title: "Hunger In The Wilderness",
+      icon: "🍽️",
+      summary: "Israel enters the wilderness of Sin and complains that hunger has made Egypt look better.",
+      movement: ["🏜️ Israel reaches the wilderness of Sin.", "😣 The congregation murmurs against Moses and Aaron.", "🍲 Egypt begins to look better in their memory.", "🍽️ Hunger becomes the next test of trust."],
+      phrases: [["The Wilderness Of Sin", "This is a real wilderness location, not a statement that the place itself is sinful. Israel is now away from Egypt's food systems and must learn dependence on God. The wilderness exposes what freedom requires."], ["The Whole Congregation Murmured", "The complaint spreads through the community. Hunger is real, but the people aim their fear at Moses and Aaron. Exodus shows how pressure can turn a rescued community into a complaining community."], ["When We Did Eat Bread To The Full", "Israel remembers Egypt selectively. They remember food but forget slavery's cruelty. Fear and hunger can make bondage look better than it really was."]],
+      truths: [["Freedom requires new dependence.", "Israel can no longer live from Egypt's supply."], ["Pressure can spread complaint.", "The whole congregation murmurs."], ["Fear can edit memory.", "Egypt sounds better when hunger speaks."]],
+      application: ["Be honest about need without romanticizing old bondage.", "Watch how complaint spreads when fear goes unchecked.", "Let wilderness hunger teach dependence, not nostalgia for Egypt."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 16,
+      startVerse: 4,
+      endVerse: 12,
+      reference: "Exodus 16:4-12",
+      title: "Bread From Heaven",
+      icon: "🍞",
+      summary: "God promises bread from heaven and uses daily provision to test whether Israel will walk in His instruction.",
+      movement: ["🍞 God promises bread from heaven.", "📏 Israel must gather a daily portion.", "🌅 Evening and morning will reveal God's provision.", "👂 God says He has heard their murmurings."],
+      phrases: [["I Will Rain Bread From Heaven", "God's answer to hunger is provision from above. Israel cannot produce this bread, buy it, or store it like Egypt's grain. The gift will teach them that life comes from the LORD."], ["A Certain Rate Every Day", "God gives daily provision with daily limits. This trains trust because Israel cannot stockpile independence. Every morning becomes a lesson in receiving enough for that day."], ["That I May Prove Them", "The test is not whether God knows their hearts; it is whether Israel will learn to live by His word. Manna is food, but it is also training. God is shaping a slave people into a trusting covenant people."]],
+      truths: [["God provides from above.", "The bread comes by God's gift."], ["Daily bread trains daily trust.", "Israel must gather enough for today."], ["Provision can also be formation.", "God feeds them while teaching obedience."]],
+      application: ["Receive today's provision without demanding tomorrow's control.", "Let God train trust through daily needs.", "See provision as more than survival; see it as discipleship."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 16,
+      startVerse: 13,
+      endVerse: 21,
+      reference: "Exodus 16:13-21",
+      title: "What Is It?",
+      icon: "❓",
+      summary: "Quail and manna appear, and Israel learns to gather only what each person needs.",
+      movement: ["🐦 Quail cover the camp in the evening.", "🌫️ Manna appears with the dew in the morning.", "❓ Israel asks, What is it?", "📏 Each person gathers according to need."],
+      phrases: [["It Is Manna", "Manna is connected to the question, What is it? Israel receives a food they did not recognize because God's provision does not always look familiar. They have to learn the gift while receiving it."], ["Gather Of It Every Man According To His Eating", "God's provision is measured by need, not greed. Some gather more and some less, but each has enough. The wilderness becomes a classroom for trust and community care."], ["He That Gathered Much Had Nothing Over", "This line shows God's provision leveling the community. No one has excess and no one lacks. The miracle is not only that food appears, but that God's way provides enough for all."]],
+      truths: [["God's provision may be unfamiliar.", "Israel has to ask what the manna is."], ["Enough matters in God's economy.", "Each person gathers according to need."], ["God can provide without creating lack.", "No one is left short."]],
+      application: ["Do not reject provision because it looks unfamiliar.", "Practice enough instead of always chasing excess.", "Notice how God's gifts can teach care for the whole community."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 16,
+      startVerse: 22,
+      endVerse: 30,
+      reference: "Exodus 16:22-30",
+      title: "Manna And Sabbath Rest",
+      icon: "🛑",
+      summary: "God gives a double portion before the Sabbath and teaches Israel to rest under His provision.",
+      movement: ["📦 Israel gathers twice as much on the sixth day.", "🛑 Moses explains the Sabbath rest.", "🍞 The extra manna does not spoil.", "🚫 Some still go out looking on the seventh day."],
+      phrases: [["To Morrow Is The Rest Of The Holy Sabbath", "Sabbath appears here before Sinai's Ten Commandments are given. God is already teaching Israel that rest belongs to life with Him. They are no longer slaves whose worth is measured by endless production."], ["Bake That Which Ye Will Bake To Day", "Israel must prepare before the Sabbath because rest requires trust and order. God gives enough ahead of time so they do not have to scramble on the day of rest. The command turns daily bread into a lesson about rhythm."], ["How Long Refuse Ye To Keep My Commandments", "Some people still go out looking for manna on the Sabbath. Their action shows how hard it is to trust rest after slavery. God treats rest as obedience, not laziness."]],
+      truths: [["God gives rest to freed people.", "Sabbath pushes against slave habits."], ["Rest requires trust.", "Israel must believe the sixth-day provision will be enough."], ["Rest is obedience.", "Going out on the seventh day reveals unbelief."]],
+      application: ["Receive rest as part of freedom with God.", "Prepare in ways that help you trust God's rhythm.", "Do not let old slave habits make rest feel wrong."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 16,
+      startVerse: 31,
+      endVerse: 36,
+      reference: "Exodus 16:31-36",
+      title: "A Jar Of Manna To Remember",
+      icon: "🏺",
+      summary: "Israel names the manna, saves a jar before the LORD, and remembers forty years of wilderness provision.",
+      movement: ["🍯 Manna is described as white like coriander seed and sweet like wafers with honey.", "🏺 A portion is kept as a memorial.", "📜 Future generations must see the bread God gave.", "⏳ Israel eats manna for forty years."],
+      phrases: [["Wafers Made With Honey", "The description helps readers imagine the manna's taste and texture. God's wilderness provision is not presented as punishment food. Even in the desert, the LORD gives something sweet."], ["To Be Kept For Your Generations", "The jar of manna becomes a physical memory. Future Israelites who did not stand in the wilderness still need to know how God fed His people. God gives them a reminder they can see."], ["Forty Years", "Manna is not a one-day miracle. God sustains Israel through an entire wilderness generation. The phrase teaches steady faithfulness, not just dramatic rescue."]],
+      truths: [["God's provision can be sweet in hard places.", "The manna is wilderness food, but it is gift."], ["God gives His people visible reminders.", "The jar teaches future generations."], ["God is faithful for the long journey.", "Forty years of manna shows steady care."]],
+      application: ["Remember the sweetness God has given in hard seasons.", "Keep testimonies that help future generations believe.", "Trust God's faithfulness beyond one emergency."],
+    }),
+  ],
+);
 
 BIBLE_READER_STUDY_SECTIONS.push(
   ...[
@@ -5908,6 +6065,304 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
   });
 }
 
+const JOSEPH_READER_SECTIONS: Array<{
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  summary: string;
+  phrases: Array<[string, string]>;
+}> = [
+  {
+    chapter: 37,
+    startVerse: 1,
+    endVerse: 4,
+    reference: "Genesis 37:1-4",
+    title: "Joseph, The Robe, And The Hatred",
+    summary: "Joseph's story begins inside a family shaped by favoritism, tension, and visible preference.",
+    phrases: [["Israel Loved Joseph More", "Israel is Jacob's covenant name, and here it shows up in a painful family scene. Jacob loves Joseph more visibly than the others because Joseph is Rachel's son, born after years of waiting. The phrase matters because the story does not begin with Egypt; it begins with favoritism at home."], ["A Coat Of Many Colours", "The robe marks Joseph out from his brothers. It is not regular work clothing for the field; it signals favor, status, and possibly future leadership. Every time the brothers see it, they see Jacob's preference."], ["Could Not Speak Peaceably", "The hatred has moved beyond private annoyance. The brothers cannot even speak ordinary peace to Joseph. Genesis is showing that the pit starts forming in the heart before Joseph ever reaches an actual pit."]],
+  },
+  {
+    chapter: 37,
+    startVerse: 5,
+    endVerse: 11,
+    reference: "Genesis 37:5-11",
+    title: "Joseph's Dreams Increase The Tension",
+    summary: "Joseph's dreams point toward a future his family cannot receive yet.",
+    phrases: [["Joseph Dreamed A Dream", "Dreams become one of the main ways God moves Joseph's story. Joseph does not yet understand the full meaning, but the dreams point to a future reversal. The same brothers who hate him will one day bow before him."], ["Shalt Thou Indeed Reign Over Us", "The brothers understand the dreams as a claim of rule. Their question is angry, but it also tells the reader what the dreams mean. Joseph's future will involve authority over the very family rejecting him."], ["His Father Observed The Saying", "Jacob rebukes Joseph, but he does not completely dismiss the dream. He keeps the matter in mind, almost like Mary later treasures things in her heart. The phrase shows that Jacob senses there may be more here than childish pride."]],
+  },
+  {
+    chapter: 37,
+    startVerse: 12,
+    endVerse: 17,
+    reference: "Genesis 37:12-17",
+    title: "Joseph Walks Into Danger",
+    summary: "Jacob sends Joseph to check on his brothers, and Joseph keeps searching until he finds them.",
+    phrases: [["Go, I Pray Thee", "Jacob sends Joseph to check on his brothers and the flock. On the surface, this is a normal family errand. But the reader already knows the brothers hate Joseph, so the command carries danger."], ["Shechem", "Shechem is not an empty place name. Genesis 34 connected Shechem with Dinah's abuse and Simeon and Levi's violence. Joseph is being sent toward a place already loaded with family pain."], ["They Are Departed Hence", "Joseph does not turn back when he cannot find them. He keeps searching until he reaches Dothan. His obedience keeps moving him closer to the brothers who are already dangerous to him."]],
+  },
+  {
+    chapter: 37,
+    startVerse: 18,
+    endVerse: 28,
+    reference: "Genesis 37:18-28",
+    title: "The Pit And The Sale",
+    summary: "The brothers strip Joseph, throw him into a pit, and sell him toward Egypt.",
+    phrases: [["Behold, This Dreamer Cometh", "The brothers reduce Joseph to the thing they hate most about him: his dreams. They do not call him brother here. Their words show contempt and prepare the reader for how far hatred can go."], ["They Cast Him Into A Pit", "The pit is empty of water, which means Joseph is trapped but not immediately drowned. It becomes a place of helplessness and silence. The brothers put him where he cannot control his future."], ["Sold Joseph To The Ishmeelites", "The brothers turn family hatred into profit. Joseph is not only rejected; he is treated like merchandise. This sale sends him toward Egypt, the place where God will later preserve the same family that betrayed him."]],
+  },
+  {
+    chapter: 37,
+    startVerse: 29,
+    endVerse: 36,
+    reference: "Genesis 37:29-36",
+    title: "Jacob Is Deceived",
+    summary: "The brothers use Joseph's robe and goat blood to deceive Jacob, while Joseph is taken into Egypt.",
+    phrases: [["Joseph's Coat", "The robe that once displayed favoritism now becomes false evidence. The brothers use the symbol of Jacob's love to crush Jacob's heart. Genesis turns the robe into a painful witness against the family."], ["A Kid Of The Goats", "The goat detail echoes Jacob's own deception of Isaac in Genesis 27, where goats and garments were used to mislead a father. Now Jacob is deceived through a goat and a garment. The family sin has come back with bitter force."], ["Joseph Was Brought Down To Egypt", "Jacob thinks Joseph is dead, but the reader knows Joseph is alive in Egypt. That gap matters. The family is buried in grief, but God is already moving the story toward preservation."]],
+  },
+  {
+    chapter: 38,
+    startVerse: 1,
+    endVerse: 11,
+    reference: "Genesis 38:1-11",
+    title: "Judah's House Begins To Break",
+    summary: "Judah separates from his brothers, and Tamar is left waiting after deep family failure.",
+    phrases: [["Judah Went Down", "Judah separates from his brothers after Joseph is sold. The phrase is both geographic and moral; Judah's story is moving downward. Genesis pauses Joseph's story to show what is happening inside the brother who suggested selling him."], ["Wicked In The Sight Of The LORD", "Er's evil is not explained in detail, but God's judgment is clear. The phrase reminds us that hidden household sin is still seen by God. Judah's family line is in danger because of real wickedness."], ["Remain A Widow", "Judah sends Tamar away with a promise that Shelah will be given later. But the story shows Judah is delaying and withholding justice. Tamar is left vulnerable in a system where family protection matters deeply."]],
+  },
+  {
+    chapter: 38,
+    startVerse: 12,
+    endVerse: 23,
+    reference: "Genesis 38:12-23",
+    title: "Tamar Acts After Judah Fails",
+    summary: "Tamar uses Judah's own pledge as evidence after he withholds justice from her.",
+    phrases: [["Shelah Was Grown", "This phrase exposes Judah's failure. The son is old enough, but Tamar has still not been given the protection Judah promised. Her action comes after waiting inside injustice."], ["Thy Signet, And Thy Bracelets, And Thy Staff", "These are personal identifiers, like carrying someone's seal, cord, and staff. Tamar asks for evidence that can prove who the father is. The hidden truth will not stay hidden because Judah leaves his identity in her hands."], ["Lest We Be Shamed", "Judah worries about public embarrassment, but he has not shown the same concern for Tamar's justice. The phrase exposes how easily people fear shame more than righteousness. Genesis is setting Judah up to face the truth."]],
+  },
+  {
+    chapter: 38,
+    startVerse: 24,
+    endVerse: 30,
+    reference: "Genesis 38:24-30",
+    title: "Judah Tells The Truth",
+    summary: "Tamar reveals the evidence, Judah admits his failure, and Perez is born into the family line.",
+    phrases: [["Bring Her Forth", "Judah is quick to judge Tamar when he thinks the sin is only hers. His command is severe and public. The scene shows the danger of condemning others while hiding your own guilt."], ["Discern, I Pray Thee", "Tamar's words echo the Joseph story, where the brothers asked Jacob to identify Joseph's robe. Now Judah is asked to identify his own items. Genesis uses recognition scenes to bring hidden sin into the light."], ["She Hath Been More Righteous Than I", "Judah finally tells the truth. He does not call Tamar sinless, but he admits that he failed her more deeply. This confession becomes a turning point in Judah's character before he later offers himself for Benjamin."]],
+  },
+  {
+    chapter: 39,
+    startVerse: 1,
+    endVerse: 6,
+    reference: "Genesis 39:1-6",
+    title: "The Lord Is With Joseph",
+    summary: "Joseph enters Egypt as a slave, but the Lord is with him and gives him favor in Potiphar's house.",
+    phrases: [["The LORD Was With Joseph", "This is the main sentence of Joseph's hidden years. Joseph has been sold, displaced, and enslaved, but he has not been abandoned by God. The phrase teaches that God's presence can be real even when circumstances look like loss."], ["A Prosperous Man", "Joseph prospers as a slave, which sounds strange until we see that the blessing comes from the Lord. Prosperity here does not mean comfort or freedom. It means God's hand is making Joseph faithful and fruitful in a hard place."], ["Overseer Over His House", "Potiphar trusts Joseph with responsibility because Joseph's character becomes visible. This prepares Joseph for later leadership in prison and Egypt. God is training him through responsibility before public promotion."]],
+  },
+  {
+    chapter: 39,
+    startVerse: 7,
+    endVerse: 10,
+    reference: "Genesis 39:7-10",
+    title: "Joseph Refuses Potiphar's Wife",
+    summary: "Joseph refuses temptation because he sees sin as betrayal against both people and God.",
+    phrases: [["Lie With Me", "The temptation is direct, repeated, and personal. Joseph is not facing a vague idea of sin; he is being pressured by someone with power in the house. The phrase shows how temptation can become persistent."], ["How Then Can I Do This Great Wickedness", "Joseph names the act as wickedness instead of dressing it up as opportunity. He sees that sin would betray Potiphar's trust and dishonor God. His language helps the reader see moral clarity under pressure."], ["He Hearkened Not Unto Her", "Joseph refuses again and again. Faithfulness here is not one dramatic speech only; it is repeated resistance. The phrase shows daily obedience when temptation keeps returning."]],
+  },
+  {
+    chapter: 39,
+    startVerse: 11,
+    endVerse: 18,
+    reference: "Genesis 39:11-18",
+    title: "Joseph Is Falsely Accused",
+    summary: "Joseph flees temptation, but his garment is used against him and he is falsely accused.",
+    phrases: [["He Fled", "Joseph does not stay to negotiate with temptation. He runs. That matters because wisdom sometimes means leaving the room, not proving how strong you are."], ["His Garment", "Joseph's garment becomes false evidence, just like his robe was used to deceive Jacob in Genesis 37. Clothing keeps appearing in Joseph's story as a symbol of identity, accusation, and reversal."], ["The Hebrew Servant", "Potiphar's wife describes Joseph by ethnicity and status to make him look threatening and low. Her accusation uses social power against him. Genesis shows that doing right does not always protect a person from being lied about."]],
+  },
+  {
+    chapter: 39,
+    startVerse: 19,
+    endVerse: 23,
+    reference: "Genesis 39:19-23",
+    title: "The Lord Is With Joseph In Prison",
+    summary: "Joseph is thrown into prison, but the Lord remains with him and gives him favor again.",
+    phrases: [["Into The Prison", "Joseph goes from slavery to prison even though he acted with integrity. The phrase is painful because righteousness does not bring an instant reward here. Genesis is showing faithfulness in the hidden place."], ["The LORD Was With Joseph", "The same sentence from Potiphar's house follows Joseph into prison. God's presence is not limited to places that look successful. The Lord is with Joseph in the place that seems like another setback."], ["Committed To Joseph's Hand", "The keeper of the prison trusts Joseph with responsibility. This repeats the pattern from Potiphar's house. Joseph is being prepared for leadership through faithful service in low places."]],
+  },
+  {
+    chapter: 40,
+    startVerse: 1,
+    endVerse: 8,
+    reference: "Genesis 40:1-8",
+    title: "Dreams In Prison",
+    summary: "Two officials dream in prison, and Joseph points interpretation back to God.",
+    phrases: [["The Butler And The Baker", "These men are royal officials, not random prisoners. Their connection to Pharaoh means Joseph is now near the court, even though he is still in prison. God is placing future access inside present confinement."], ["They Were Sad", "Joseph notices the faces of other prisoners. His own suffering has not made him blind to someone else's distress. This small detail shows Joseph's character in prison."], ["Do Not Interpretations Belong To God", "Joseph refuses to treat dreams as magic or personal talent. He points interpretation to God. This prepares the reader for Genesis 41, where Joseph will say the same kind of thing before Pharaoh."]],
+  },
+  {
+    chapter: 40,
+    startVerse: 9,
+    endVerse: 15,
+    reference: "Genesis 40:9-15",
+    title: "The Cupbearer's Dream",
+    summary: "Joseph interprets the cupbearer's dream and asks to be remembered when he is restored.",
+    phrases: [["Three Branches", "The three branches in the dream represent three days. Joseph interprets the symbols clearly and confidently because God gives understanding. The dream points to restoration coming soon."], ["Lift Up Thine Head", "For the cupbearer, this phrase means Pharaoh will restore him to his position. The same phrase will sound darker for the baker. Genesis uses the same wording to show two different outcomes."], ["Think On Me", "Joseph asks the cupbearer to remember him. This is not manipulation; Joseph has been kidnapped and imprisoned unjustly. The request shows that faithful people can still ask for help."]],
+  },
+  {
+    chapter: 40,
+    startVerse: 16,
+    endVerse: 19,
+    reference: "Genesis 40:16-19",
+    title: "The Baker's Dream",
+    summary: "Joseph interprets the baker's dream honestly, even though the meaning is painful.",
+    phrases: [["Three Baskets", "The three baskets also represent three days. The similarity to the cupbearer's dream builds expectation, but the meaning is different. Not every dream with similar numbers brings the same outcome."], ["The Birds Did Eat Them", "The birds eating from the basket points toward judgment and death. The image is disturbing because the baker's future is disturbing. Joseph does not soften the interpretation to make it easier to hear."], ["Pharaoh Shall Lift Up Thy Head From Off Thee", "This repeats the phrase from the cupbearer's dream with a terrible twist. One man is restored; the other is judged. Joseph tells the truth even when the message is hard."]],
+  },
+  {
+    chapter: 40,
+    startVerse: 20,
+    endVerse: 23,
+    reference: "Genesis 40:20-23",
+    title: "Joseph Is Forgotten",
+    summary: "The dreams come true, but the restored cupbearer forgets Joseph.",
+    phrases: [["Pharaoh's Birthday", "The feast becomes the setting where both interpretations come true. Public celebration for Pharaoh becomes judgment for one servant and restoration for another. Joseph's God-given interpretations are confirmed."], ["Restored The Chief Butler", "The cupbearer is returned to his place just as Joseph said. This proves the interpretation was true. It also puts someone near Pharaoh who knows Joseph's gift."], ["Yet Did Not The Chief Butler Remember Joseph", "This is one of the hardest lines in Joseph's waiting. Joseph helped him, but he is forgotten. The delay is painful, but Genesis will later show that God has not forgotten Joseph."]],
+  },
+  {
+    chapter: 41,
+    startVerse: 1,
+    endVerse: 8,
+    reference: "Genesis 41:1-8",
+    title: "Pharaoh's Troubled Dreams",
+    summary: "After two full years, Pharaoh dreams of famine, and Egypt's wisdom cannot explain what God is revealing.",
+    phrases: [["Two Full Years", "Joseph's waiting was not short. Two more years pass after the cupbearer is restored. The phrase helps us feel that God's timing can include long silence."], ["By The River", "The river is likely the Nile, the life source of Egypt's crops and power. A dream where disaster rises near the river would feel deeply unsettling. Egypt's place of life becomes the place where warning appears."], ["His Spirit Was Troubled", "Pharaoh is powerful, but he is not at peace. The dream shakes him because human power cannot control what God is revealing. This prepares the way for Joseph's God-given wisdom."]],
+  },
+  {
+    chapter: 41,
+    startVerse: 9,
+    endVerse: 16,
+    reference: "Genesis 41:9-16",
+    title: "Joseph Is Remembered",
+    summary: "The cupbearer finally remembers Joseph, and Joseph gives God the credit before Pharaoh.",
+    phrases: [["I Do Remember My Faults", "The cupbearer finally remembers Joseph after Pharaoh is troubled. His memory is late, but God still uses it at the right time. Delay has not stopped the story."], ["Brought Him Hastily Out Of The Dungeon", "Joseph's life changes suddenly after years of waiting. He is shaved, changed, and brought before Pharaoh. Hidden preparation meets public summons in one day."], ["It Is Not In Me", "Joseph refuses to take credit for what belongs to God. He stands before Pharaoh with confidence, but his confidence is not self-promotion. He knows God gives the answer."]],
+  },
+  {
+    chapter: 41,
+    startVerse: 17,
+    endVerse: 32,
+    reference: "Genesis 41:17-32",
+    title: "God Shows What He Is About To Do",
+    summary: "Joseph explains that Pharaoh's dreams announce seven years of plenty followed by seven years of severe famine.",
+    phrases: [["The Dream Is One", "Pharaoh has two dreams, but Joseph says they carry one message. God repeats the warning to confirm it. The doubled dream means the matter is established and coming soon."], ["Seven Years Of Great Plenty", "The good cows and full ears point to abundance before crisis. The years of plenty are not the final story; they are preparation time. Joseph will teach Egypt to treat abundance as stewardship."], ["God Hath Shewed Pharaoh", "Joseph keeps saying God is the one revealing the future. This is not fortune-telling or Egyptian magic. God shows what is coming so people can respond with wisdom."]],
+  },
+  {
+    chapter: 41,
+    startVerse: 33,
+    endVerse: 45,
+    reference: "Genesis 41:33-45",
+    title: "Joseph Is Lifted Over Egypt",
+    summary: "Joseph moves from interpretation to wise action, and Pharaoh sets him over Egypt.",
+    phrases: [["Discreet And Wise", "Joseph says Egypt needs more than information; it needs wise leadership. Knowing what a dream means is not enough if no one acts faithfully. Biblical wisdom turns revelation into responsible action."], ["The Spirit Of God", "Pharaoh recognizes something divine in Joseph's wisdom. An Egyptian ruler sees what Potiphar and the prison keeper had already seen in different ways: God is with Joseph. This is public testimony in a foreign court."], ["Arrayed Him In Vestures Of Fine Linen", "Joseph is clothed with honor after years of garments being used against him. His robe was taken, his garment was used in a false accusation, and now Pharaoh clothes him with authority. The reversal is powerful."]],
+  },
+  {
+    chapter: 41,
+    startVerse: 46,
+    endVerse: 57,
+    reference: "Genesis 41:46-57",
+    title: "Bread In The Famine",
+    summary: "Joseph stores grain during plenty, names his sons from his pain, and opens the storehouses when famine comes.",
+    phrases: [["Thirty Years Old", "Joseph was seventeen when sold, so about thirteen years have passed. The number helps readers feel the long road from pit to palace. God's preparation took time."], ["Manasseh And Ephraim", "Joseph names his sons from his story. Manasseh speaks of God helping him move through painful memory, and Ephraim speaks of fruitfulness in affliction. Joseph interprets his life through God's mercy."], ["All Countries Came Into Egypt", "The famine reaches beyond Egypt, which means Joseph's position will affect many nations. This also sets up his brothers coming to Egypt. God has placed Joseph where preservation can happen."]],
+  },
+  {
+    chapter: 42,
+    startVerse: 1,
+    endVerse: 9,
+    reference: "Genesis 42:1-9",
+    title: "The Brothers Bow",
+    summary: "Famine brings Joseph's brothers to Egypt, and the dreams from Genesis 37 begin coming true.",
+    phrases: [["Go Down Thither", "Jacob sends his sons to Egypt for grain because famine has reached Canaan. The covenant family now needs provision from the place Joseph was sent. God is bringing the old wound and present need together."], ["Bowed Down Themselves Before Him", "This is Joseph's dream coming true. The brothers do not recognize him, but their bodies are doing what the dream said years earlier. God's word has outlived their attempt to kill it."], ["Joseph Remembered The Dreams", "Joseph sees the meaning of the moment. Remembering the dreams does not mean he becomes petty; it means he recognizes God's hand. The past and present are coming together."]],
+  },
+  {
+    chapter: 42,
+    startVerse: 10,
+    endVerse: 24,
+    reference: "Genesis 42:10-24",
+    title: "The Test Begins",
+    summary: "Joseph tests his brothers, and their guilt over what they did to him finally comes out loud.",
+    phrases: [["Ye Are Spies", "Joseph's accusation creates pressure to test the brothers. He already knows who they are, but he needs to know what kind of men they have become. The test begins by unsettling their control."], ["We Are Verily Guilty", "For the first time, the brothers speak their guilt out loud. They remember Joseph's distress and admit they did not listen. Buried sin is coming to the surface."], ["Joseph Turned Himself About And Wept", "Joseph's testing is not cold revenge. He weeps because the scene is painful and personal. Genesis lets us see both his restraint and his emotion."]],
+  },
+  {
+    chapter: 42,
+    startVerse: 25,
+    endVerse: 38,
+    reference: "Genesis 42:25-38",
+    title: "Fear Returns To Jacob's House",
+    summary: "Joseph sends grain and restored money, but the brothers return home afraid with Simeon left behind.",
+    phrases: [["Their Money In Their Sacks", "Joseph gives the money back with the grain, but guilt makes the brothers afraid of mercy. They do not know how to receive a gift because their consciences are troubled. Surprise feels like judgment to them."], ["What Is This That God Hath Done Unto Us", "The brothers interpret the moment through fear. They sense God is involved, but they do not yet understand mercy or testing. Their old sin has made them spiritually anxious."], ["All These Things Are Against Me", "Jacob reads the situation as total loss. Joseph is gone, Simeon is gone, and Benjamin is threatened. The reader knows more than Jacob knows: God is moving toward restoration."]],
+  },
+  {
+    chapter: 43,
+    startVerse: 1,
+    endVerse: 14,
+    reference: "Genesis 43:1-14",
+    title: "Judah Offers Himself For Benjamin",
+    summary: "The famine forces Jacob's family back toward Egypt, and Judah takes responsibility for Benjamin.",
+    phrases: [["The Famine Was Sore", "The pressure gets worse until the family must face what they tried to avoid. Hunger forces the issue of Benjamin back into the open. God uses need to move the family toward truth."], ["I Will Be Surety For Him", "Judah offers himself as the guarantee for Benjamin. This is a major change from the brother who helped sell Joseph. Judah is beginning to act like someone willing to bear cost for another."], ["God Almighty Give You Mercy", "Jacob finally releases Benjamin with a prayer for mercy. He cannot control Egypt, Joseph, or the famine. The phrase shows surrender under pressure."]],
+  },
+  {
+    chapter: 43,
+    startVerse: 15,
+    endVerse: 25,
+    reference: "Genesis 43:15-25",
+    title: "The Brothers Return To Joseph's House",
+    summary: "The brothers return with Benjamin and fear what Joseph's invitation might mean.",
+    phrases: [["Brought The Men Into Joseph's House", "The invitation should be honor, but the brothers feel fear. Guilt makes welcome feel like a trap. Their past still shapes how they interpret kindness."], ["Peace Be To You, Fear Not", "Joseph's steward tells them not to fear and says their God has given treasure in their sacks. The words are gentle, but the brothers are still learning how to receive mercy. Peace is being spoken into a frightened family."], ["They Made Ready The Present", "The brothers prepare gifts because they do not know where they stand. The present echoes Jacob's earlier attempt to appease Esau. Fear often reaches for gifts when it cannot yet trust grace."]],
+  },
+  {
+    chapter: 43,
+    startVerse: 26,
+    endVerse: 34,
+    reference: "Genesis 43:26-34",
+    title: "Joseph Sees Benjamin",
+    summary: "Joseph sees Benjamin, weeps privately, and tests the brothers at a meal.",
+    phrases: [["They Bowed Themselves", "The bowing happens again, deepening the fulfillment of Joseph's dreams. The brothers still do not know who he is. God is moving the dream forward without their understanding."], ["God Be Gracious Unto Thee", "Joseph blesses Benjamin with words of grace. Benjamin is his full brother, Rachel's other son, and the sight of him overwhelms Joseph. The phrase shows tenderness breaking through the disguise."], ["Benjamin's Mess Was Five Times So Much", "Joseph gives Benjamin a much larger portion to test the brothers' jealousy. Years earlier, special treatment of Joseph fed hatred. Now Joseph watches whether they will resent Benjamin too."]],
+  },
+  {
+    chapter: 44,
+    startVerse: 1,
+    endVerse: 13,
+    reference: "Genesis 44:1-13",
+    title: "The Silver Cup Test",
+    summary: "Joseph plants the cup in Benjamin's sack, and the brothers face losing Rachel's other son.",
+    phrases: [["My Cup", "The cup becomes the object used to create the final test. Joseph is not interested in the cup itself as much as what the situation will reveal. Will the brothers abandon Benjamin the way they abandoned Joseph?"], ["Benjamin's Sack", "The cup is found with Benjamin, the son Jacob fears losing most. The test presses the exact wound in the family. The brothers now face a choice between self-protection and sacrificial loyalty."], ["They Rent Their Clothes", "Tearing clothes shows grief and shock. This time the brothers do not walk away from Rachel's son. They return to the city together, showing they are not the same men who left Joseph in the pit."]],
+  },
+  {
+    chapter: 44,
+    startVerse: 14,
+    endVerse: 17,
+    reference: "Genesis 44:14-17",
+    title: "The Brothers Fall Before Joseph",
+    summary: "The brothers return to Joseph's house, and Joseph presses the test further.",
+    phrases: [["Fell Before Him On The Ground", "The brothers bow again, but now the moment is full of fear and guilt. They are not just buying grain; they are under judgment. Joseph's dreams keep echoing through these scenes."], ["God Hath Found Out The Iniquity", "Judah speaks more truth than he realizes. The cup accusation is staged, but the brothers really do carry old guilt. Their hidden sin is being exposed through pressure."], ["The Man In Whose Hand The Cup Is Found", "Joseph says only Benjamin must remain, giving the brothers a way to save themselves. This is the heart of the test. Will they leave Benjamin behind, or will someone stand in his place?"]],
+  },
+  {
+    chapter: 44,
+    startVerse: 18,
+    endVerse: 34,
+    reference: "Genesis 44:18-34",
+    title: "Judah Stands In The Gap",
+    summary: "Judah pleads for Benjamin and offers himself in Benjamin's place.",
+    phrases: [["Judah Came Near", "Judah steps forward when Benjamin is threatened. This is the same Judah who once helped sell Joseph, but now he approaches to plead for his brother. The phrase marks a major transformation."], ["His Life Is Bound Up In The Lad's Life", "Judah understands Jacob's heart. Losing Benjamin would crush his father. The phrase shows that Judah is finally seeing the cost of grief instead of using it."], ["Let Thy Servant Abide Instead Of The Lad", "Judah offers himself as a substitute for Benjamin. This is the turning point Joseph has been testing for. The brother who once sold one son of Rachel now offers himself to save the other."]],
+  },
+];
+
+BIBLE_READER_STUDY_SECTIONS.push(
+  ...JOSEPH_READER_SECTIONS.map((section) =>
+    makeCompactGenesisStudySection({
+      ...section,
+      icon: "📖",
+      movement: [
+        section.summary,
+        "The Joseph story is moving through family pain, hidden providence, testing, truth, and restoration.",
+        "This section helps the reader slow down and see what God is exposing or preserving in the scene.",
+      ],
+      phrases: section.phrases,
+      truths: [["God is working through the real story.", "Genesis does not hide family sin, fear, delay, or pressure. It shows God moving the promise through honest human situations."]],
+      application: ["Watch what this section reveals about God, people, guilt, wisdom, or restoration.", "Pay attention to repeated details, because Genesis often uses them to show change over time.", "Remember that God's providence can be active even before anyone understands the full story."],
+    }),
+  ),
+);
+
 BIBLE_READER_STUDY_SECTIONS.push(
   ...[
     makeCompactGenesisStudySection({
@@ -7238,14 +7693,27 @@ BIBLE_READER_STUDY_SECTIONS.push(
       chapter: 35,
       startVerse: 30,
       endVerse: 35,
-      reference: "Exodus 35:30-36:7",
-      title: "More Than Enough",
+      reference: "Exodus 35:30-35",
+      title: "Bezalel And Oholiab Are Called",
       icon: "🧰",
-      summary: "Bezalel, Oholiab, and the craftsmen begin the work, and the people's generosity becomes more than enough.",
-      movement: ["🧰 Bezalel and Oholiab are named for the work.", "🎨 God fills craftsmen with wisdom and skill.", "🌅 The people keep bringing offerings morning after morning.", "🙌 Moses tells them to stop because there is more than enough."],
-      phrases: [["🎨 Filled Him With The Spirit Of God", "God's Spirit equips craftsmanship, design, teaching, and practical work. Beauty and skill can be holy service."], ["🌅 They Brought Yet Unto Him Free Offerings Every Morning", "Generosity becomes steady. The people keep bringing because their hearts are engaged."], ["🙌 Much More Than Enough", "This phrase is stunning after the golden calf. The same community that failed badly now overflows in willing obedience."]],
-      truths: [["🎨 God gifts people for practical worship.", "Craftsmanship can be Spirit-filled."], ["🌅 Willing obedience can become abundant.", "The gifts keep coming."], ["🙌 Mercy can produce overflow.", "Failure is not the end of the story."]],
-      application: ["🎨 Use your skill for God.", "🌅 Practice steady generosity.", "🙌 Believe renewed obedience can grow after failure."],
+      summary: "God names Bezalel and Oholiab and fills them with wisdom, skill, and the ability to teach others.",
+      movement: ["🧰 Bezalel and Oholiab are named for the work.", "🎨 God fills craftsmen with wisdom and skill.", "🛠️ Their practical ability becomes holy service.", "👥 They are also equipped to teach others."],
+      phrases: [["🎨 Filled Him With The Spirit Of God", "God's Spirit equips craftsmanship, design, teaching, and practical work. This is important because people often think spiritual work only means speaking, praying, or leading in public. Exodus shows that beauty, skill, planning, and careful making can also be Spirit-filled service."], ["🛠️ To Devise Curious Works", "This means Bezalel is given skill to design and create detailed work. The tabernacle is not thrown together quickly; it is crafted with thought and excellence. God's dwelling place among the people is built with careful obedience and real artistry."], ["👥 That He May Teach", "Bezalel and Oholiab are not only gifted to do the work themselves. They are also gifted to train others. God spreads wisdom through teachers so the whole community can participate in the work."]],
+      truths: [["🎨 God gifts people for practical worship.", "Craftsmanship can be Spirit-filled."], ["🛠️ Excellence can honor God.", "Holy work is careful, thoughtful, and obedient."], ["👥 Skill should be shared.", "Teaching others multiplies the work."]],
+      application: ["🎨 Use your skill for God.", "🛠️ Bring care and excellence to what God gives you to build.", "👥 Share what God has taught you with others."],
+    }),
+    makeCompactExodusStudySection({
+      chapter: 36,
+      startVerse: 1,
+      endVerse: 7,
+      reference: "Exodus 36:1-7",
+      title: "More Than Enough",
+      icon: "🙌",
+      summary: "The craftsmen begin the tabernacle work, and the people bring so much that Moses tells them to stop.",
+      movement: ["The craftsmen begin doing the work God commanded.", "The people keep bringing freewill offerings morning after morning.", "The workers report that there is more than enough.", "Moses commands the people to stop bringing materials."],
+      phrases: [["Every Wise Hearted Man", "The work is done by people whose hearts and hands have been shaped for the task. Wisdom here is not only knowing facts; it is skillful obedience. Exodus treats practical ability as a gift from God when it is used for His purposes."], ["They Brought Yet Unto Him Free Offerings Every Morning", "Generosity becomes steady. The people keep bringing because their hearts are engaged in the work. This is the opposite of Pharaoh's forced labor; God's dwelling is built by willing hearts."], ["Much More Than Enough", "This phrase is stunning after the golden calf. The same community that failed badly now overflows in willing obedience. Mercy has not made them careless; it has stirred them to give more than the work requires."]],
+      truths: [["God's work uses wise hands.", "Skill and obedience belong together."], ["Willing obedience can become abundant.", "The gifts keep coming."], ["Mercy can produce overflow.", "Failure is not the end of the story."]],
+      application: ["Offer your practical abilities to God.", "Practice steady generosity.", "Believe renewed obedience can grow after failure."],
     }),
     makeCompactExodusStudySection({
       chapter: 36,
@@ -7830,7 +8298,7 @@ for (const section of BIBLE_READER_STUDY_SECTIONS) {
       category.id === "why-this-matters"
         ? { ...category, title: "What This Means" }
         : category.id === "key-phrases"
-          ? { ...category, content: category.content.map((item) => deepenKeyPhraseContent(item, section)) }
+          ? { ...category, content: category.content }
           : category,
     );
 }

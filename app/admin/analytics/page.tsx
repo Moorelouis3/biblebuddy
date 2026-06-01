@@ -384,6 +384,14 @@ function formatEventTitle(value: string) {
   return value.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
 }
 
+function formatListenDuration(seconds: number) {
+  if (!seconds || seconds < 1) return "Not tracked";
+  if (seconds < 60) return `${Math.round(seconds)} sec`;
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.round(seconds % 60);
+  return remainingSeconds ? `${minutes}m ${remainingSeconds}s` : `${minutes}m`;
+}
+
 function getRate(part: number, whole: number) {
   return whole > 0 ? Number(((part / whole) * 100).toFixed(1)) : 0;
 }
@@ -909,20 +917,44 @@ function FounderFunnelSection({
   landingVisitors,
   startClicks,
   signups,
+  rows,
 }: {
   landingVisitors: number;
   startClicks: number;
   signups: number;
+  rows: VisitorJourneyRow[];
 }) {
+  const [openDetail, setOpenDetail] = useState<"clickedStart" | "accountsCreated" | null>(null);
   const startRate = getRate(startClicks, landingVisitors);
   const signupRate = getRate(signups, startClicks);
   const overallRate = getRate(signups, landingVisitors);
   const steps = [
-    { label: "Landing Page Visitors", value: landingVisitors, rate: null },
-    { label: "Start Journey Clicks", value: startClicks, rate: `${startRate}% from visitors` },
-    { label: "Accounts Created", value: signups, rate: `${signupRate}% from clicks` },
-    { label: "Overall Conversion", value: `${overallRate}%`, rate: "landing page to account" },
+    { key: "landing", label: "Landing Page Visitors", value: landingVisitors, rate: null, clickable: false },
+    { key: "clickedStart", label: "Start Journey Clicks", value: startClicks, rate: `${startRate}% from visitors`, clickable: true },
+    { key: "accountsCreated", label: "Accounts Created", value: signups, rate: `${signupRate}% from clicks`, clickable: true },
+    { key: "overall", label: "Overall Conversion", value: `${overallRate}%`, rate: "landing page to account", clickable: false },
   ];
+  const startRows = rows
+    .map((row) => ({
+      row,
+      event: row.timeline.find((event) =>
+        event.eventName === "clicked_start_journey" ||
+        event.eventName === "started_guest_journey" ||
+        event.eventName === "started_onboarding" ||
+        event.title === "Clicked Start Journey"
+      ),
+    }))
+    .filter((item) => item.event)
+    .sort((a, b) => (b.event?.timestamp || "").localeCompare(a.event?.timestamp || ""));
+  const accountRows = rows
+    .map((row) => ({
+      row,
+      event: row.timeline.find((event) => event.category === "account" || event.eventName === "created_free_account" || event.eventName === "created_account_successfully"),
+    }))
+    .filter((item) => item.row.createdAccountAt || item.event)
+    .sort((a, b) => ((b.event?.timestamp || b.row.createdAccountAt || "")).localeCompare(a.event?.timestamp || a.row.createdAccountAt || ""));
+  const detailRows = openDetail === "clickedStart" ? startRows : openDetail === "accountsCreated" ? accountRows : [];
+  const detailTitle = openDetail === "clickedStart" ? "Start Journey Clicks Detail" : "Accounts Created Detail";
 
   return (
     <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
@@ -931,11 +963,25 @@ function FounderFunnelSection({
       <div className="mt-6 grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-stretch">
         {steps.map((step, index) => (
           <Fragment key={step.label}>
-            <div className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-5">
+            <button
+              type="button"
+              disabled={!step.clickable}
+              onClick={() => {
+                if (!step.clickable) return;
+                setOpenDetail((current) => current === step.key ? null : step.key as "clickedStart" | "accountsCreated");
+              }}
+              className={`rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] p-5 text-left ${step.clickable ? "cursor-pointer transition hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-accent-soft,#e6f1ff)]" : "cursor-default"}`}
+              aria-expanded={step.clickable ? openDetail === step.key : undefined}
+            >
               <p className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-text-muted,#64748b)]">{step.label}</p>
               <p className="mt-3 text-3xl font-black text-[var(--bb-text-primary,#101827)]">{typeof step.value === "number" ? formatNumber(step.value) : step.value}</p>
               {step.rate ? <p className="mt-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">{step.rate}</p> : <p className="mt-2 text-sm font-semibold text-[var(--bb-text-muted,#64748b)]">unique visitors</p>}
-            </div>
+              {step.clickable ? (
+                <p className="mt-3 text-xs font-black text-[var(--bb-text-secondary,#334155)]">
+                  {openDetail === step.key ? "Hide table" : "Show people"}
+                </p>
+              ) : null}
+            </button>
             {index < steps.length - 1 ? (
               <div className="hidden place-items-center text-[var(--bb-text-muted,#64748b)] lg:grid">
                 <Icon name="arrow" />
@@ -944,12 +990,65 @@ function FounderFunnelSection({
           </Fragment>
         ))}
       </div>
+      {openDetail ? (
+        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+          <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+            <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{detailTitle}</p>
+            <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(detailRows.length)} rows shown</p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="min-w-[920px] w-full border-collapse text-left text-sm">
+              <thead className="bg-[var(--bb-surface-soft,#eef4f8)] text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">
+                <tr>
+                  <th className="px-4 py-3">Who</th>
+                  <th className="px-4 py-3">Account</th>
+                  <th className="px-4 py-3">Source</th>
+                  <th className="px-4 py-3">Action</th>
+                  <th className="px-4 py-3">When</th>
+                  <th className="px-4 py-3">Current Status</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[var(--bb-card-border,#d8e3ec)]">
+                {detailRows.length ? detailRows.map(({ row, event }) => (
+                  <tr key={`${openDetail}-${row.id}-${event?.id || row.createdAccountAt || row.lastActiveAt}`} className="bg-[var(--bb-card,#ffffff)]">
+                    <td className="px-4 py-3">
+                      <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.userLabel || row.visitorLabel || "Unknown"}</div>
+                      <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">{row.userId ? shortId(row.userId) : row.sessionId ? shortId(row.sessionId) : row.visitorLabel}</div>
+                    </td>
+                    <td className="px-4 py-3">
+                      <span className="rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-2.5 py-1 text-xs font-black text-[var(--bb-text-primary,#101827)]">
+                        {row.accountType}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{row.source || "Unknown"}</td>
+                    <td className="px-4 py-3">
+                      <div className="font-bold text-[var(--bb-text-primary,#101827)]">{event?.title || (openDetail === "accountsCreated" ? "Created account" : "Clicked Start Journey")}</div>
+                      <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">{event?.eventName || row.lastEventName}</div>
+                    </td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{formatDateTime(event?.timestamp || (openDetail === "accountsCreated" ? row.createdAccountAt : row.startedDay1At) || row.lastActiveAt)}</td>
+                    <td className="px-4 py-3">
+                      <span className={`rounded-full px-2.5 py-1 text-xs font-black ring-1 ${STATUS_STYLES[row.currentStatus]}`}>
+                        {row.currentStatusLabel}
+                      </span>
+                    </td>
+                  </tr>
+                )) : (
+                  <tr>
+                    <td colSpan={6} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No detail rows found for this metric yet.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
 
 function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEngagement"] | undefined }) {
   const [showPlayDetails, setShowPlayDetails] = useState(false);
+  const [showUniqueListeners, setShowUniqueListeners] = useState(false);
   const metrics = audio || {
     totalPlays: 0,
     uniqueListeners: 0,
@@ -960,6 +1059,21 @@ function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEng
     playDetails: [],
   };
   const playDetails = metrics.playDetails || [];
+  const uniqueListenerRows = Array.from(
+    playDetails.reduce((map, row) => {
+      const key = row.userId || row.userLabel || row.id;
+      const current = map.get(key);
+      if (!current) {
+        map.set(key, { ...row, playCount: 1 });
+      } else {
+        current.playCount += 1;
+        current.listenedSeconds = Math.max(current.listenedSeconds, row.listenedSeconds);
+        current.listenedLabel = current.listenedSeconds > 0 ? formatListenDuration(current.listenedSeconds) : current.listenedLabel;
+        if ((row.playedAt || "") > (current.playedAt || "")) current.playedAt = row.playedAt;
+      }
+      return map;
+    }, new Map<string, (typeof playDetails)[number] & { playCount: number }>()),
+  ).map(([, row]) => row);
   return (
     <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -975,7 +1089,9 @@ function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEng
         <button type="button" onClick={() => setShowPlayDetails((current) => !current)} className="text-left" aria-expanded={showPlayDetails}>
           <FounderMetricCard title="Total Plays" value={formatNumber(metrics.totalPlays)} helper={`${showPlayDetails ? "Hide" : "Show"} who listened, what they played, and how long.`} icon="play" />
         </button>
-        <FounderMetricCard title="Unique Listeners" value={formatNumber(metrics.uniqueListeners)} helper="Individual users who listened." icon="headphones" />
+        <button type="button" onClick={() => setShowUniqueListeners((current) => !current)} className="text-left" aria-expanded={showUniqueListeners}>
+          <FounderMetricCard title="Unique Listeners" value={formatNumber(metrics.uniqueListeners)} helper={`${showUniqueListeners ? "Hide" : "Show"} individual users who listened.`} icon="headphones" />
+        </button>
         <FounderMetricCard title="Minutes Played" value={formatNumber(metrics.totalMinutesPlayed)} helper="Total tracked listening minutes." icon="spark" />
         <FounderMetricCard title="Avg Listen Time" value={`${metrics.averageListeningMinutes}m`} helper="Average minutes per session." icon="visitors" />
         <FounderMetricCard title="Completion Rate" value={`${metrics.lessonCompletionRate}%`} helper="Lessons completed from plays." icon="check" />
@@ -1012,6 +1128,45 @@ function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEng
                 )) : (
                   <tr>
                     <td colSpan={5} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No play detail rows found yet.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
+      {showUniqueListeners ? (
+        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+          <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+            <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Unique Listeners Detail</p>
+            <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(uniqueListenerRows.length)} rows shown</p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="min-w-[760px] w-full border-collapse text-left text-sm">
+              <thead className="bg-[var(--bb-surface-soft,#eef4f8)] text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">
+                <tr>
+                  <th className="px-4 py-3">Who</th>
+                  <th className="px-4 py-3">Latest Lesson</th>
+                  <th className="px-4 py-3">Plays</th>
+                  <th className="px-4 py-3">Longest Listen</th>
+                  <th className="px-4 py-3">Last Listened</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[var(--bb-card-border,#d8e3ec)]">
+                {uniqueListenerRows.length ? uniqueListenerRows.map((row) => (
+                  <tr key={`listener-${row.userId || row.userLabel || row.id}`} className="bg-[var(--bb-card,#ffffff)]">
+                    <td className="px-4 py-3 font-bold text-[var(--bb-text-primary,#101827)]">{row.userLabel || "Unknown"}</td>
+                    <td className="px-4 py-3">
+                      <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.title}</div>
+                      {row.dayNumber ? <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">Day {row.dayNumber}</div> : null}
+                    </td>
+                    <td className="px-4 py-3 font-black text-[var(--bb-accent,#2f7fe8)]">{formatNumber(row.playCount)}</td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{row.listenedLabel}</td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{formatDateTime(row.playedAt)}</td>
+                  </tr>
+                )) : (
+                  <tr>
+                    <td colSpan={5} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No unique listener rows found yet.</td>
                   </tr>
                 )}
               </tbody>
@@ -2302,6 +2457,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
               landingVisitors={landingStageUsers}
               startClicks={startJourneyClicks}
               signups={signupsCompleted}
+              rows={rows}
             />
 
             <ListeningMetricsSection audio={data?.audioEngagement} />

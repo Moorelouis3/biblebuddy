@@ -164,6 +164,7 @@ import { BIBLE_YEAR_DAY_EIGHT_DEEP_NOTES, BIBLE_YEAR_DAY_EIGHT_DEEP_STUDY_SECTIO
 import { BIBLE_YEAR_DAY_NINE_DEEP_NOTES, BIBLE_YEAR_DAY_NINE_DEEP_STUDY_SECTIONS } from "./bibleYearDayNineDeepNotes";
 import { BIBLE_YEAR_DAY_TWO_DEEP_NOTES, BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS } from "./fallOfManDeepNotes";
 import type { GenesisBibleYearDay } from "./bibleInOneYearPlan";
+import { getBibleReaderStudySections } from "./bibleReaderStudyNotes";
 
 export type BibleYearSummaryContent = {
   intro: string[];
@@ -787,6 +788,41 @@ function buildFallbackSummary(day: GenesisBibleYearDay): BibleYearSummaryContent
   };
 }
 
+function buildMarkdownFromReaderSection(section: ReturnType<typeof getBibleReaderStudySections>[number]) {
+  const body = section.categories
+    .map((category) => {
+      const content = category.content
+        .map((item) => {
+          const [firstLine, ...rest] = item.split("\n");
+          return rest.length ? `### ${firstLine}\n\n${rest.join("\n")}` : item;
+        })
+        .join("\n\n");
+
+      return `## ${category.icon} ${category.title}\n\n${content}`;
+    })
+    .join("\n\n");
+
+  return `## ${section.reference}
+
+${body}`;
+}
+
+function getReaderAlignedStudySections(day: GenesisBibleYearDay, fallback: BibleYearDeepStudySection[] | null | undefined) {
+  if (day.dayNumber < 1 || day.dayNumber > 35) return fallback ?? null;
+
+  const readerSections = day.readings.flatMap((reading) =>
+    getBibleReaderStudySections(reading.book, reading.chapter).map((section) => ({
+      reference: section.reference,
+      title: section.title,
+      icon: section.icon,
+      summary: section.summary,
+      markdown: buildMarkdownFromReaderSection(section),
+    })),
+  );
+
+  return readerSections.length ? readerSections : fallback ?? null;
+}
+
 export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayContent, "summary"> & { summary?: BibleYearSummaryContent }>> = {
   1: {
     lesson: GENESIS_DAY_ONE_CREATION_LESSON,
@@ -1068,7 +1104,7 @@ export function getBibleYearDayContent(day: GenesisBibleYearDay): BibleYearDayCo
     lesson: content?.lesson ?? null,
     audio: content?.audio ?? null,
     studyNotesMarkdown: content?.studyNotesMarkdown ?? null,
-    studyNotesSections: content?.studyNotesSections ?? null,
+    studyNotesSections: getReaderAlignedStudySections(day, content?.studyNotesSections),
     summary: content?.summary ?? buildFallbackSummary(day),
     discussionPrompt: content?.discussionPrompt ?? `What stood out to you from ${day.title}?`,
   };
