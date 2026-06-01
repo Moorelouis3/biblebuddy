@@ -698,6 +698,9 @@ function InlineStudySection({
 }) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const visibleCategories = section.categories.filter(
+    (category) => category.id !== "key-truths" && category.content.some((item) => item.trim().length > 0),
+  );
 
   return (
     <div ref={sectionRef} className="my-4">
@@ -726,7 +729,9 @@ function InlineStudySection({
             {section.reference} Study Notes
           </span>
           <span className="mt-0.5 block text-xs font-black leading-5 text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_58%,var(--bb-text-secondary,#4b5563))]">{section.title}</span>
-          <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{section.summary}</span>
+          {section.summary ? (
+            <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{section.summary}</span>
+          ) : null}
         </span>
         <svg
           aria-hidden="true"
@@ -744,7 +749,7 @@ function InlineStudySection({
 
       {isOpen ? (
         <div className="mt-2 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)]">
-          {section.categories.filter((category) => category.id !== "key-truths").map((category, index) => {
+          {visibleCategories.map((category, index) => {
             const categoryOpen = openCategory === category.id;
             return (
               <div

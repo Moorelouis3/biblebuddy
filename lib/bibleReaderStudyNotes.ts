@@ -3800,6 +3800,1261 @@ function enforceStudySectionVerseLimit(maxVerses = 10) {
   BIBLE_READER_STUDY_SECTIONS.splice(0, BIBLE_READER_STUDY_SECTIONS.length, ...expandedSections);
 }
 
+function makePersonalGenesisOneSection(section: {
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+}): BibleReaderStudySection {
+  return {
+    book: "genesis",
+    chapter: 1,
+    startVerse: section.startVerse,
+    endVerse: section.endVerse,
+    reference: section.reference,
+    title: section.title,
+    icon: section.icon,
+    summary: "",
+    categories: [
+      {
+        id: "key-phrases",
+        icon: "💬",
+        title: "Key Phrases",
+        content: section.phrases.map(([heading, body]) => `${heading}\n${body.trim()}`),
+      },
+    ],
+  };
+}
+
+function applyPersonalGenesisOneStudySections() {
+  const personalGenesisOneSections: BibleReaderStudySection[] = [
+    makePersonalGenesisOneSection({
+      startVerse: 1,
+      endVerse: 2,
+      reference: "Genesis 1:1-2",
+      title: "The Creation",
+      icon: "🌎",
+      phrases: [
+        [
+          "🌅 In The Beginning",
+          `These words do not mean God began here.
+
+They mean creation began here.
+
+🌌 Before the heavens
+🌍 Before the earth
+💡 Before light
+📅 Before the first day
+
+God was already there.
+
+So Genesis does not start by explaining where God came from.
+
+It starts by showing us that everything else came from Him.
+
+The beginning is not the beginning of God.
+
+It is the beginning of what God made.`,
+        ],
+        [
+          "🌎 Created The Heaven And The Earth",
+          `This phrase tells us that God is the Creator.
+
+Everything we see came from Him.
+
+🌌 The heavens above
+🌍 The earth below
+
+God created both.
+
+This is a summary of creation.
+
+Before Moses explains the details, he first tells us what happened:
+
+God created the heavens and the earth.
+
+The rest of the chapter then begins to show us how that creation unfolded step by step.
+
+💡 Light and darkness
+☁️ Sky and waters
+🌱 Land and plants
+☀️ Sun, moon, and stars
+🐟 Fish and birds
+🦁 Animals and mankind
+
+Each day reveals another part of the world God created.`,
+        ],
+        [
+          "🌀 Without Form And Void",
+          `In verse 1, God created the earth.
+
+But it was not yet shaped for life.
+
+🌱 No plants
+🌳 No trees
+🐟 No fish
+🦁 No animals
+👤 No people
+
+The earth was unfinished.
+
+This is the earth before God begins His work of shaping and filling it.
+
+Verse 1 tells us that God created the earth.
+
+Verse 2 shows us what the earth looked like before God brought order, life, and purpose to it.`,
+        ],
+        [
+          "🌑 Darkness Was Upon The Face Of The Deep",
+          `The earth was covered in darkness.
+
+💡 No light
+☀️ No sun
+🌙 No moon
+⭐ No stars
+
+Only darkness.
+
+The deep refers to the great waters covering the earth.
+
+🌊 Water above
+🌊 Water below
+🌊 Water everywhere
+
+The world existed.
+
+But it was still unformed and unfilled.
+
+God's work of creation was about to begin.`,
+        ],
+        [
+          "🕊️ The Spirit Of God Moved",
+          `Before God speaks, His Spirit is already there.
+
+The word moved carries the idea of hovering.
+
+Like a bird over its nest.
+
+🕊️ Watching
+🕊️ Preparing
+🕊️ Protecting
+🕊️ Ready to act
+
+God is not distant from His creation.
+
+He is present in it.
+
+Before the first day begins, before the first command is spoken, the Spirit of God is already moving over the waters.`,
+        ],
+      ],
+    }),
+    makePersonalGenesisOneSection({
+      startVerse: 3,
+      endVerse: 5,
+      reference: "Genesis 1:3-5",
+      title: "The First Day",
+      icon: "💡",
+      phrases: [
+        [
+          "💡 Let There Be Light",
+          `The first thing God creates is light.
+
+Notice something important:
+
+☀️ The sun has not been created yet
+🌙 The moon has not been created yet
+⭐ The stars have not been created yet
+
+Those will not appear until Day 4.
+
+This shows that God is not dependent on the sun to create light.
+
+The light comes because God commands it.
+
+When Moses wrote Genesis, many nations worshiped the sun, moon, and stars as gods.
+
+🇪🇬 Egypt worshiped the sun god Ra.
+⭐ Other nations looked to the stars for guidance and power.
+
+Genesis begins by showing that these things are not gods.
+
+They are part of God's creation.
+
+Before the sun existed, God said, "Let there be light."`,
+        ],
+        [
+          "✨ And There Was Light",
+          `God did not struggle to create light.
+
+He did not need tools.
+
+He did not need help.
+
+He simply spoke.
+
+🗣️ God said it
+✨ It happened
+
+This is the first time we see God's creative power through His word.
+
+What God speaks becomes reality.`,
+        ],
+        [
+          "✅ God Saw That It Was Good",
+          `God looks at what He has made and declares it good.
+
+This does not mean it was merely acceptable.
+
+It means it was exactly as He intended it to be.
+
+✅ Complete
+✅ Right
+✅ Good
+
+God did not need to improve it.
+
+He did not need to fix it.
+
+He did not need to add anything to it.
+
+Light was accomplishing exactly what God created it to do.
+
+Because God's work is perfect, He could look at it and say, "It is good."`,
+        ],
+        [
+          "⚖️ Divided The Light From The Darkness",
+          `God separates light from darkness.
+
+This creates order within creation.
+
+🌞 Light has its place
+🌑 Darkness has its place
+
+Before this, the earth was covered in darkness.
+
+Now God establishes a pattern that will continue throughout creation.
+
+Order is replacing chaos.
+
+God is not just creating things.
+
+He is giving them purpose and boundaries.
+
+Everything in creation will have its place.`,
+        ],
+        [
+          "🌞 Called The Light Day",
+          `After separating the light, God gives it a name.
+
+📛 Day
+
+In Scripture, naming something often shows authority over it.
+
+God names what He creates because it belongs to Him.`,
+        ],
+        [
+          "🌙 Called The Darkness Night",
+          `God also names the darkness.
+
+📛 Night
+
+Light and darkness now have their own place within creation.
+
+The cycle of time is beginning to take shape.`,
+        ],
+        [
+          "🌇 Evening And Morning: The First Day",
+          `This marks the completion of Day One.
+
+🌆 Evening
+🌅 Morning
+📅 First Day
+
+The rhythm of creation has begun.
+
+God is bringing structure, order, and purpose to the world He created.
+
+Day and night now have their place.
+
+Work and rest now have their place.
+
+Time itself is beginning to take shape.
+
+Before God fills the earth with life, He first creates the order that life will live within.`,
+        ],
+      ],
+    }),
+    makePersonalGenesisOneSection({
+      startVerse: 6,
+      endVerse: 8,
+      reference: "Genesis 1:6-8",
+      title: "The Second Day",
+      icon: "☁️",
+      phrases: [
+        [
+          "☁️ Let There Be A Firmament",
+          `The word firmament means an expanse or a space.
+
+Think of it as the sky stretching above the earth.
+
+Before this, the world was covered in water.
+
+God now creates a space between the waters.
+
+🌊 Waters above
+☁️ Firmament, or sky
+🌊 Waters below
+
+For the first time, the earth begins to look more like the world we know.`,
+        ],
+        [
+          "🌊 In The Midst Of The Waters",
+          `The phrase in the midst simply means in the middle.
+
+God places the firmament between two bodies of water.
+
+🌊 Waters above
+☁️ Sky in the middle
+🌊 Waters below
+
+The sky becomes the space that separates them.
+
+God is creating order and boundaries within creation.`,
+        ],
+        [
+          "🌊 Divide The Waters From The Waters",
+          `God separates the waters.
+
+Before this, everything was together.
+
+Now everything has its place.
+
+🌊 Waters above
+☁️ Sky
+🌊 Waters below
+
+Many people understand the waters above to refer to the moisture, clouds, and rain in the sky.
+
+The waters below refer to the oceans, seas, rivers, and waters on the earth.
+
+The important point is that God is separating and organizing His creation.`,
+        ],
+        [
+          "🌌 Called The Firmament Heaven",
+          `In Genesis 1:1, the heavens and the earth refers to all creation.
+
+Here, God is using the word heaven to name the sky above the earth.
+
+☁️ The sky above
+🐦 Where birds will fly
+☁️ Where clouds will gather
+🌧️ Where rain will come from
+
+God gives this expanse a name.
+
+Just as He named Day and Night, He now names the sky.`,
+        ],
+        [
+          "🌇 Evening And Morning: The Second Day",
+          `This marks the completion of Day Two.
+
+🌆 Evening
+🌅 Morning
+📅 Second Day
+
+God has now created the sky and separated the waters.
+
+The world is becoming more organized.
+
+Each day prepares creation for what comes next.`,
+        ],
+      ],
+    }),
+    makePersonalGenesisOneSection({
+      startVerse: 9,
+      endVerse: 13,
+      reference: "Genesis 1:9-13",
+      title: "The Third Day",
+      icon: "🌱",
+      phrases: [
+        [
+          "🌊 Let The Waters Be Gathered Together",
+          `Until now, the earth was covered by water.
+
+God gathers the waters into one place.
+
+🌊 Oceans
+🌊 Seas
+🌊 Lakes
+🌊 Rivers
+
+For the first time, dry land begins to appear.
+
+God is creating order within creation.
+
+Everything is beginning to have its place.`,
+        ],
+        [
+          "🏔️ Let The Dry Land Appear",
+          `As the waters gather together, dry land appears.
+
+🏔️ Mountains
+🌍 Continents
+🏞️ Valleys
+🏜️ Plains
+
+The earth is becoming a place where life can exist.
+
+God is preparing a home before He fills it with living things.`,
+        ],
+        [
+          "🌍 Called The Dry Land Earth",
+          `God names the dry land.
+
+📛 Earth
+
+Just as God named Day, Night, and Heaven, He now names the earth.
+
+In Scripture, naming often shows authority.
+
+God names what belongs to Him.`,
+        ],
+        [
+          "🌊 Called The Gathering Of Waters Seas",
+          `The waters also receive a name.
+
+📛 Seas
+
+🌊 Oceans
+🌊 Bodies of water
+
+Creation is becoming more organized.
+
+Everything now has a place and a purpose.`,
+        ],
+        [
+          "🌱 Let The Earth Bring Forth Grass",
+          `For the first time, life appears on the earth.
+
+🌱 Grass
+🌿 Plants
+🍃 Vegetation
+
+The earth is no longer empty.
+
+Life begins to grow.`,
+        ],
+        [
+          "🌾 Yielding Seed",
+          `God does not just create plants.
+
+He creates plants that can reproduce.
+
+🌾 Wheat produces wheat
+🌱 Seeds produce more plants
+🌿 Life continues through seed
+
+The future harvest is already inside the seed.
+
+God creates life with the ability to continue and multiply.`,
+        ],
+        [
+          "🌳 Fruit Trees Bearing Fruit",
+          `God's provision appears before mankind is even created.
+
+🍎 Apples
+🍊 Fruit
+🍇 Vine fruits
+🌳 Trees
+
+Before there are people to eat, God prepares food.
+
+Before there is a need, God provides.
+
+This is another reminder that God is preparing the world for the life that is still to come.`,
+        ],
+        [
+          "✅ God Saw That It Was Good",
+          `God looks at His work and calls it good.
+
+✅ Complete
+✅ Ordered
+✅ Purposeful
+
+The land is prepared.
+
+The vegetation is growing.
+
+Everything is functioning according to God's design.`,
+        ],
+        [
+          "🌇 Evening And Morning: The Third Day",
+          `This marks the completion of Day Three.
+
+🌆 Evening
+🌅 Morning
+📅 Third Day
+
+The waters have been gathered.
+
+The land has appeared.
+
+Plants and trees now cover the earth.
+
+God is preparing the environment before He fills it with life.
+
+The foundation has been laid for everything that will follow.`,
+        ],
+      ],
+    }),
+    makePersonalGenesisOneSection({
+      startVerse: 14,
+      endVerse: 19,
+      reference: "Genesis 1:14-19",
+      title: "The Fourth Day",
+      icon: "☀️",
+      phrases: [
+        [
+          "💡 Let There Be Lights In The Firmament",
+          `On Day 1, God created light.
+
+Now on Day 4, He creates the lights that will carry that light.
+
+☀️ Sun
+🌙 Moon
+⭐ Stars
+
+God is bringing more order and purpose to creation.
+
+These lights are not random.
+
+They have a specific job to do.`,
+        ],
+        [
+          "🌞 To Divide The Day From The Night",
+          `God gives the lights a purpose.
+
+🌞 Day
+🌙 Night
+
+Light and darkness were already separated on Day 1.
+
+Now God creates the rulers that will govern that pattern.
+
+Day 4 matches Day 1.
+
+God fills what He previously formed.`,
+        ],
+        [
+          "📅 For Signs, Seasons, Days, And Years",
+          `The lights do more than shine.
+
+They help humanity measure time.
+
+🌅 Days
+📆 Months
+🍂 Seasons
+📅 Years
+
+Farmers know when to plant.
+
+Families know when to harvest.
+
+People know when a year begins and ends.
+
+Life on earth depends on these rhythms.
+
+🌱 Crops grow in seasons
+🌳 Trees bear fruit in seasons
+🌧️ Rain comes in seasons
+👨‍👩‍👧‍👦 People organize life around seasons
+
+God is creating the system that life will depend upon.
+
+What seems ordinary to us was designed by God.`,
+        ],
+        [
+          "☀️ The Greater Light",
+          `The greater light is the sun.
+
+God created it to rule the day.
+
+☀️ Provide light
+🌱 Help plants grow
+🌡️ Warm the earth
+🌍 Support life
+
+Without the sun, life on earth could not survive.
+
+The sun is powerful.
+
+But Genesis reminds us: the sun is not a god.
+
+It is part of God's creation.`,
+        ],
+        [
+          "🌙 The Lesser Light",
+          `The lesser light is the moon.
+
+God created it to rule the night.
+
+🌙 Light for the night
+🌊 Influence tides
+📅 Help mark time
+
+The moon has a purpose just like the sun.
+
+Different role.
+
+Different responsibility.
+
+Same Creator.`,
+        ],
+        [
+          "⭐ He Made The Stars Also",
+          `Moses almost mentions this casually.
+
+⭐ He made the stars also.
+
+Yet the stars fill the universe.
+
+There are more stars than humans can count.
+
+Many ancient nations worshiped the stars.
+
+Others looked to them for guidance and power.
+
+Genesis gives them only a few words.
+
+God made them too.
+
+The stars are not gods.
+
+They are part of God's creation.`,
+        ],
+        [
+          "🌌 God Set Them In The Firmament",
+          `God did not just create the sun, moon, and stars.
+
+He placed them where they belonged.
+
+☀️ Sun in its place
+🌙 Moon in its place
+⭐ Stars in their place
+
+Everything has a purpose.
+
+Everything has an assignment.
+
+Everything has an order.
+
+Creation is not random.
+
+It is designed.`,
+        ],
+        [
+          "👑 To Rule Over The Day And Over The Night",
+          `The sun and moon do not rule as kings.
+
+They rule by serving the purpose God gave them.
+
+☀️ Rule the day
+🌙 Rule the night
+⚖️ Separate light from darkness
+
+God creates them.
+
+God places them.
+
+God gives them their assignment.
+
+Even the greatest lights in creation operate under God's authority.`,
+        ],
+        [
+          "✅ God Saw That It Was Good",
+          `Once again, God looks at His work and calls it good.
+
+✅ Complete
+✅ Ordered
+✅ Purposeful
+
+The lights were doing exactly what God created them to do.
+
+Nothing needed to be added.
+
+Nothing needed to be fixed.
+
+God's design was good.`,
+        ],
+        [
+          "🌇 Evening And Morning: The Fourth Day",
+          `This marks the completion of Day Four.
+
+🌆 Evening
+🌅 Morning
+📅 Fourth Day
+
+The heavens now have rulers.
+
+Time now has markers.
+
+The earth now has lights.
+
+God continues preparing creation for the life that is still to come.`,
+        ],
+      ],
+    }),
+    makePersonalGenesisOneSection({
+      startVerse: 20,
+      endVerse: 23,
+      reference: "Genesis 1:20-23",
+      title: "The Fifth Day",
+      icon: "🐟",
+      phrases: [
+        [
+          "🌊 Let The Waters Bring Forth Abundantly",
+          `God fills the waters He created on Day 2.
+
+🐟 Fish
+🐠 Small sea creatures
+🦈 Large fish
+🦀 Creatures that move through the waters
+
+The seas are no longer empty.
+
+God fills what He previously formed.`,
+        ],
+        [
+          "🐦 Let Fowl Fly Above The Earth",
+          `The sky is no longer empty either.
+
+🦅 Eagles
+🕊️ Doves
+🐦 Birds of every kind
+🦇 Winged creatures
+
+God fills the heavens He created on Day 2.
+
+The sky now has life moving through it.`,
+        ],
+        [
+          "🐋 God Created Great Whales",
+          `Moses could have simply said sea creatures.
+
+But he specifically mentions the great whales.
+
+🐋 Great whales
+🌊 Massive creatures of the deep
+🐟 Creatures larger than man
+
+Many people fear what lives beneath the surface.
+
+The larger the creature, the greater the fear.
+
+Yet Genesis reminds us that God made them too.
+
+Even the largest creatures in creation answer to their Creator.
+
+Nothing in the sea exists outside God's authority.`,
+        ],
+        [
+          "🌱 After Their Kind",
+          `Life is multiplying according to God's design.
+
+🐟 Fish produce fish
+🐦 Birds produce birds
+🐋 Whales produce whales
+
+Creation is not random.
+
+Everything follows the order God established.
+
+Each creature reproduces according to its kind.
+
+God creates life with structure and purpose.`,
+        ],
+        [
+          "🙌 And God Blessed Them",
+          `This is the first blessing spoken in creation.
+
+Notice something interesting.
+
+🌳 God did not bless the trees
+🌱 God did not bless the grass
+🌾 God did not bless the plants
+
+But He blesses the living creatures.
+
+Why?
+
+Because living creatures will multiply.
+
+They will spread.
+
+They will fill the earth.
+
+God is blessing life itself.`,
+        ],
+        [
+          "📈 Be Fruitful And Multiply",
+          `God does not create life to remain small.
+
+📈 Grow
+📈 Multiply
+📈 Fill the seas
+📈 Fill the earth
+
+The fish are to fill the waters.
+
+The birds are to fill the sky.
+
+Life is meant to increase.
+
+This is God's design from the very beginning.`,
+        ],
+        [
+          "🌇 Evening And Morning: The Fifth Day",
+          `This marks the completion of Day Five.
+
+🌆 Evening
+🌅 Morning
+📅 Fifth Day
+
+The waters are now filled with life.
+
+The skies are now filled with life.
+
+What God formed on Day 2 has now been filled on Day 5.
+
+The world is becoming more alive with each passing day.`,
+        ],
+      ],
+    }),
+    makePersonalGenesisOneSection({
+      startVerse: 24,
+      endVerse: 25,
+      reference: "Genesis 1:24-25",
+      title: "The Sixth Day",
+      icon: "🦁",
+      phrases: [
+        [
+          "🦁 Let The Earth Bring Forth Living Creatures",
+          `Now God fills the dry land.
+
+The land that appeared on Day 3 is no longer empty.
+
+🦁 Animals
+🐄 Livestock
+🦌 Creatures that move along the ground
+🐘 Beasts of the earth
+
+God is still following the same pattern.
+
+He forms a place first.
+
+Then He fills it with life.`,
+        ],
+        [
+          "🐄 Livestock",
+          `Livestock refers to animals that would later live close to people.
+
+🐄 Cattle
+🐐 Goats
+🐑 Sheep
+
+The word matters because Genesis is preparing us for human life on the earth.
+
+Before people are created, God is already making a world where people can live, work, eat, and care for animals.
+
+Creation is not random scenery.
+
+It is a prepared home.`,
+        ],
+        [
+          "🦌 Creatures That Move Along The Ground",
+          `This phrase points to smaller creatures that move close to the ground.
+
+Some translations call them creeping things.
+
+That can include reptiles, insects, and other low-moving creatures.
+
+These may seem small compared to the sun, seas, or great animals.
+
+But Genesis includes them because God made them too.
+
+Nothing is too small to belong inside God's creation.`,
+        ],
+        [
+          "🐘 Beasts Of The Earth",
+          `Beasts of the earth refers to the larger wild animals.
+
+🐘 Strong animals
+🦁 Wild animals
+🦌 Animals living across the land
+
+These creatures are powerful, but they are still created by God.
+
+Genesis does not treat them as gods or monsters outside His control.
+
+They belong to the ordered world God is making.`,
+        ],
+        [
+          "✅ God Saw That It Was Good",
+          `God looks at the land animals and calls them good.
+
+✅ Ordered
+✅ Living
+✅ Fitting His design
+
+The land is now filled with life.
+
+The animals have their place.
+
+Everything is ready for the next moment.
+
+Now the story is about to slow down, because mankind is about to be created.`,
+        ],
+      ],
+    }),
+    makePersonalGenesisOneSection({
+      startVerse: 26,
+      endVerse: 28,
+      reference: "Genesis 1:26-28",
+      title: "The Creation Of Man",
+      icon: "👤",
+      phrases: [
+        [
+          "👤 Let Us Make Man",
+          `This is the first time in Genesis that God speaks this way.
+
+Until now He has said:
+
+🗣️ Let there be light.
+🗣️ Let there be a firmament.
+🗣️ Let the earth bring forth.
+
+Now He says:
+
+👤 Let Us make man.
+
+Many Christians see this as an early glimpse of the Trinity.
+
+👑 God the Father
+🕊️ God the Spirit
+✝️ God the Son
+
+Humanity is introduced differently than the rest of creation.
+
+Mankind is not an accident.
+
+Mankind is intentional.`,
+        ],
+        [
+          "🪞 In Our Image",
+          `Nothing else in creation is described this way.
+
+Not the fish.
+
+Not the birds.
+
+Not the animals.
+
+Only mankind.
+
+Being made in God's image does not mean we look like God.
+
+It means we reflect Him.
+
+🧠 We can think
+❤️ We can love
+⚖️ We can choose
+🎨 We can create
+
+We are different from the rest of creation because God made us to reflect His character in a unique way.`,
+        ],
+        [
+          "🤝 After Our Likeness",
+          `Image and likeness are closely connected.
+
+God creates mankind to represent Him on the earth.
+
+We are not God.
+
+But we are created to reflect Him.
+
+This is why people have value.
+
+Not because of money.
+
+Not because of power.
+
+Not because of status.
+
+But because every person bears the image of God.
+
+👶 Child
+👵 Elderly
+👨 Rich
+👩 Poor
+
+Every human life matters.`,
+        ],
+        [
+          "👑 Have Dominion",
+          `Dominion does not mean abuse.
+
+It means stewardship.
+
+God gives mankind responsibility over creation.
+
+🐟 Fish
+🐦 Birds
+🦁 Animals
+🌍 Earth
+
+Humanity is called to care for what God created.
+
+We are not owners.
+
+God is the owner.
+
+We are managers of what belongs to Him.`,
+        ],
+        [
+          "👨 Male And Female",
+          `God creates humanity as male and female.
+
+Both are created in God's image.
+
+Both have value.
+
+Both have purpose.
+
+Both are part of God's design.
+
+Genesis begins with equality of worth.
+
+Neither is presented as an accident.
+
+Neither is presented as less important.
+
+Both are created by God.`,
+        ],
+        [
+          "🙌 God Blessed Them",
+          `This is the first blessing spoken over mankind.
+
+God does not create humanity and leave them alone.
+
+He blesses them.
+
+🙏 Favor
+🙏 Purpose
+🙏 Provision
+🙏 Responsibility
+
+Humanity begins with God's blessing.`,
+        ],
+        [
+          "📈 Be Fruitful And Multiply",
+          `God's plan was never for humanity to remain small.
+
+📈 Grow
+📈 Multiply
+📈 Fill the earth
+
+Life is meant to spread.
+
+Families are meant to grow.
+
+Humanity is meant to fill the world God created.
+
+This command is both a blessing and a responsibility.`,
+        ],
+        [
+          "🌍 Fill The Earth",
+          `The earth was created to be inhabited.
+
+God prepared the world.
+
+Now He sends mankind into it.
+
+🌍 Explore it
+🌍 Live in it
+🌍 Build in it
+🌍 Care for it
+
+Humanity is part of God's plan for creation.`,
+        ],
+        [
+          "🏔️ Subdue It",
+          `To subdue means to bring under wise management.
+
+This is not a command to destroy creation.
+
+It is a command to cultivate it.
+
+🌱 Plant
+🏠 Build
+🐄 Care for animals
+🌍 Develop the earth
+
+God creates the world.
+
+Then He invites mankind to participate in caring for it.`,
+        ],
+      ],
+    }),
+    makePersonalGenesisOneSection({
+      startVerse: 29,
+      endVerse: 31,
+      reference: "Genesis 1:29-31",
+      title: "The Giving Of Food",
+      icon: "🍎",
+      phrases: [
+        [
+          "🌱 Every Seed Bearing Plant",
+          `God provides food before mankind ever asks for it.
+
+Before Adam works.
+
+Before Eve gathers.
+
+Before anyone is hungry.
+
+God already provides.
+
+🌾 Grain
+🌱 Herbs
+🌿 Seed bearing plants
+
+Everything needed for life was already growing in the world God created.
+
+God does not create mankind and then leave them to figure it out.
+
+He provides for them.`,
+        ],
+        [
+          "🌳 Every Tree Bearing Fruit",
+          `God's provision is abundant.
+
+🍎 Fruit trees
+🍇 Vine fruits
+🍊 Trees bearing food
+
+The earth is not empty.
+
+It is filled with provision.
+
+The same God who creates life also provides what that life needs to survive.`,
+        ],
+        [
+          "🐾 Food For Every Living Creature",
+          `God's care extends beyond mankind.
+
+🦁 Animals
+🐦 Birds
+🐟 Fish
+🐄 Livestock
+
+Every living creature receives provision from God.
+
+Creation is not surviving by accident.
+
+God is sustaining what He created.
+
+The Creator cares for all life.`,
+        ],
+        [
+          "👀 God Saw Everything That He Had Made",
+          `Earlier in Genesis, God looked at individual parts of creation and called them good.
+
+Now He steps back and looks at everything.
+
+🌌 The heavens
+🌍 The earth
+☀️ The lights
+🐟 The fish
+🐦 The birds
+🦁 The animals
+👤 Mankind
+
+For the first time, God views creation as a complete whole.
+
+Everything is exactly where it should be.
+
+Everything has purpose.
+
+Everything has order.`,
+        ],
+        [
+          "✅ It Was Very Good",
+          `Notice the difference.
+
+Earlier God said:
+
+✅ It was good.
+
+Now He says:
+
+✅ It was very good.
+
+Creation is complete.
+
+Nothing is missing.
+
+Nothing needs to be added.
+
+Nothing needs to be fixed.
+
+The world is functioning exactly as God intended.
+
+The Creator looks at His finished work and declares it very good.`,
+        ],
+        [
+          "🌇 Evening And Morning: The Sixth Day",
+          `This marks the completion of Day Six.
+
+🌆 Evening
+🌅 Morning
+📅 Sixth Day
+
+God has created the animals.
+
+🦁 Land animals
+🐄 Livestock
+🐜 Creeping things
+
+God has created mankind.
+
+👨 Male
+👩 Female
+
+God has blessed them.
+
+God has given them responsibility.
+
+God has provided food.
+
+The world is now filled, ordered, and prepared for life.
+
+Creation is complete.
+
+Tomorrow, God will rest.`,
+        ],
+      ],
+    }),
+  ];
+
+  const withoutGenesisOne = BIBLE_READER_STUDY_SECTIONS.filter(
+    (section) => !(section.book === "genesis" && section.chapter === 1),
+  );
+
+  BIBLE_READER_STUDY_SECTIONS.splice(0, BIBLE_READER_STUDY_SECTIONS.length, ...personalGenesisOneSections, ...withoutGenesisOne);
+}
+
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
   const update = DAY_THIRTEEN_READER_NOTE_DEPTH_UPDATES[section.reference];
   if (!update) continue;
@@ -8289,6 +9544,7 @@ BIBLE_READER_STUDY_SECTIONS.push(
   ],
 );
 
+applyPersonalGenesisOneStudySections();
 enforceStudySectionVerseLimit();
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
