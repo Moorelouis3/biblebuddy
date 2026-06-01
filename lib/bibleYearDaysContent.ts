@@ -17,10 +17,16 @@ import {
   BIBLE_YEAR_DAY_TEN_AUDIO,
   BIBLE_YEAR_DAY_THREE_AUDIO,
   BIBLE_YEAR_DAY_THIRTEEN_AUDIO,
+  BIBLE_YEAR_DAY_THIRTY_AUDIO,
   BIBLE_YEAR_DAY_TWENTY_ONE_AUDIO,
   BIBLE_YEAR_DAY_TWENTY_AUDIO,
+  BIBLE_YEAR_DAY_TWENTY_FIVE_AUDIO,
+  BIBLE_YEAR_DAY_TWENTY_FOUR_AUDIO,
   BIBLE_YEAR_DAY_TWENTY_TWO_AUDIO,
   BIBLE_YEAR_DAY_TWENTY_THREE_AUDIO,
+  BIBLE_YEAR_DAY_TWENTY_SIX_AUDIO,
+  BIBLE_YEAR_DAY_TWENTY_SEVEN_AUDIO,
+  BIBLE_YEAR_DAY_TWENTY_EIGHT_AUDIO,
   BIBLE_YEAR_DAY_TWELVE_AUDIO,
   BIBLE_YEAR_DAY_TWO_AUDIO,
 } from "./bibleYearAudio";
@@ -103,6 +109,11 @@ import {
   BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_STUDY_SECTIONS,
   EXODUS_DAY_TWENTY_FOUR_PASSOVER_AND_DELIVERANCE_LESSON,
 } from "./bibleYearDayTwentyFourDeepNotes";
+import {
+  BIBLE_YEAR_DAY_TWENTY_FIVE_DEEP_NOTES,
+  BIBLE_YEAR_DAY_TWENTY_FIVE_DEEP_STUDY_SECTIONS,
+  EXODUS_DAY_TWENTY_FIVE_THROUGH_THE_SEA_LESSON,
+} from "./bibleYearDayTwentyFiveDeepNotes";
 import {
   BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_NOTES,
   BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_STUDY_SECTIONS,
@@ -595,6 +606,23 @@ const dayTwentyFourSummary: BibleYearSummaryContent = {
   takeawaySupport: "Day 24 helps us see judgment, mercy, memory, worship, and rescue coming together as God brings His people out of Egypt.",
 };
 
+const dayTwentyFiveSummary: BibleYearSummaryContent = {
+  intro: [
+    "Exodus 13-16 follows Israel after Passover and into the first lessons of freedom.",
+    "God teaches them to remember redemption, follows them with cloud and fire, opens the sea, receives their song, heals bitter water, and gives manna in the wilderness.",
+    "This day shows that God does not only bring His people out of bondage; He patiently forms them into people who can trust Him.",
+  ],
+  highlights: [
+    ["firstborn", "The firstborn are set apart as a reminder that God spared Israel on Passover night."],
+    ["cloud", "The LORD leads Israel by cloud in the day and fire at night."],
+    ["sea", "God opens the sea, Israel passes through, and Egypt's army falls."],
+    ["song", "Moses, Israel, and Miriam praise the LORD for His victory."],
+    ["manna", "God gives daily bread from heaven and teaches Sabbath rest."],
+  ],
+  takeaway: "Freedom is not only leaving Egypt; freedom is learning to follow, trust, worship, depend, and rest under God's care.",
+  takeawaySupport: "Day 25 helps us see that the LORD who saves His people also leads them through the wilderness one step and one day at a time.",
+};
+
 const dayTwentySixSummary: BibleYearSummaryContent = {
   intro: [
     "Exodus 17-20 moves Israel from wilderness need to covenant formation at Sinai.",
@@ -1010,15 +1038,23 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
   24: {
     lesson: EXODUS_DAY_TWENTY_FOUR_PASSOVER_AND_DELIVERANCE_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_TWENTY_FOUR_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_TWENTY_FOUR_DEEP_STUDY_SECTIONS,
     summary: dayTwentyFourSummary,
     discussionPrompt: "What stands out to you about Passover, the blood on the doorposts, and Israel finally leaving Egypt?",
   },
+  25: {
+    lesson: EXODUS_DAY_TWENTY_FIVE_THROUGH_THE_SEA_LESSON,
+    audio: BIBLE_YEAR_DAY_TWENTY_FIVE_AUDIO,
+    studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_FIVE_DEEP_NOTES,
+    studyNotesSections: BIBLE_YEAR_DAY_TWENTY_FIVE_DEEP_STUDY_SECTIONS,
+    summary: dayTwentyFiveSummary,
+    discussionPrompt: "What stands out to you about God leading Israel through the sea and teaching them daily trust in the wilderness?",
+  },
   26: {
     lesson: EXODUS_DAY_TWENTY_SIX_WATER_BATTLE_AND_COMMANDMENTS_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_TWENTY_SIX_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_TWENTY_SIX_DEEP_STUDY_SECTIONS,
     summary: dayTwentySixSummary,
@@ -1026,7 +1062,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
   27: {
     lesson: EXODUS_DAY_TWENTY_SEVEN_COVENANT_LAW_AND_BLOOD_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_TWENTY_SEVEN_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_TWENTY_SEVEN_DEEP_STUDY_SECTIONS,
     summary: dayTwentySevenSummary,
@@ -1034,7 +1070,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
   28: {
     lesson: EXODUS_DAY_TWENTY_EIGHT_TABERNACLE_AND_PRIESTHOOD_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_TWENTY_EIGHT_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_TWENTY_EIGHT_DEEP_STUDY_SECTIONS,
     summary: dayTwentyEightSummary,
@@ -1050,7 +1086,7 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
   30: {
     lesson: EXODUS_DAY_THIRTY_GODS_PRESENCE_AND_RENEWED_OBEDIENCE_LESSON,
-    audio: null,
+    audio: BIBLE_YEAR_DAY_THIRTY_AUDIO,
     studyNotesMarkdown: BIBLE_YEAR_DAY_THIRTY_DEEP_NOTES,
     studyNotesSections: BIBLE_YEAR_DAY_THIRTY_DEEP_STUDY_SECTIONS,
     summary: dayThirtySummary,

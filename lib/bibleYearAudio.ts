@@ -239,3 +239,51 @@ export const BIBLE_YEAR_DAY_TWENTY_THREE_AUDIO: BibleYearAudioDay = {
   apiSrc: getBibleYearAudioApiSrc(23),
   estimatedDuration: "35-40 min",
 };
+
+export const BIBLE_YEAR_DAY_TWENTY_FOUR_AUDIO: BibleYearAudioDay = {
+  dayNumber: 24,
+  title: "Day 24 - Passover and Deliverance",
+  storagePath: getBibleYearAudioStoragePath(24),
+  apiSrc: getBibleYearAudioApiSrc(24),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_TWENTY_FIVE_AUDIO: BibleYearAudioDay = {
+  dayNumber: 25,
+  title: "Day 25 - Through the Sea and Into the Wilderness",
+  storagePath: getBibleYearAudioStoragePath(25),
+  apiSrc: getBibleYearAudioApiSrc(25),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_TWENTY_SIX_AUDIO: BibleYearAudioDay = {
+  dayNumber: 26,
+  title: "Day 26 - Water, Battle, and the Ten Commandments",
+  storagePath: getBibleYearAudioStoragePath(26),
+  apiSrc: getBibleYearAudioApiSrc(26),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_TWENTY_SEVEN_AUDIO: BibleYearAudioDay = {
+  dayNumber: 27,
+  title: "Day 27 - Covenant Law and Covenant Blood",
+  storagePath: getBibleYearAudioStoragePath(27),
+  apiSrc: getBibleYearAudioApiSrc(27),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_TWENTY_EIGHT_AUDIO: BibleYearAudioDay = {
+  dayNumber: 28,
+  title: "Day 28 - The Tabernacle and Priesthood Begin",
+  storagePath: getBibleYearAudioStoragePath(28),
+  apiSrc: getBibleYearAudioApiSrc(28),
+  estimatedDuration: "35-40 min",
+};
+
+export const BIBLE_YEAR_DAY_THIRTY_AUDIO: BibleYearAudioDay = {
+  dayNumber: 30,
+  title: "Day 30 - God's Presence and Renewed Obedience",
+  storagePath: getBibleYearAudioStoragePath(30),
+  apiSrc: getBibleYearAudioApiSrc(30),
+  estimatedDuration: "35-40 min",
+};
