@@ -64,6 +64,29 @@ type MasterActionFunnelRow = {
   created_at?: string | null;
 };
 
+type ActiveUserActionRow = {
+  id: string;
+  actionType: string;
+  title: string;
+  detail: string;
+  category: VisitorJourneyTimelineEvent["category"];
+  dayNumber: number | null;
+  taskType: string | null;
+  createdAt: string;
+};
+
+type ActiveUserLast24HoursRow = {
+  actorId: string;
+  userId: string | null;
+  sessionId: string | null;
+  userLabel: string;
+  totalActions: number;
+  lastAction: string;
+  lastActionDetail: string;
+  lastActionAt: string;
+  actions: ActiveUserActionRow[];
+};
+
 type FunnelStageRow = {
   key: string;
   label: string;
@@ -1750,6 +1773,71 @@ function getMasterActionDetail(action: MasterActionFunnelRow) {
   return pieces.length ? pieces.join(" | ") : "Tracked in the master action log.";
 }
 
+function buildActiveUsersLast24Hours(masterRows: MasterActionFunnelRow[], profileByUserId: Map<string, string>) {
+  const rowsByActor = new Map<string, {
+    userId: string | null;
+    sessionId: string | null;
+    userLabel: string;
+    actions: ActiveUserActionRow[];
+  }>();
+
+  for (const row of masterRows) {
+    const createdAt = row.created_at || "";
+    if (!createdAt) continue;
+
+    const userId = row.user_id || null;
+    const sessionId = row.session_id || null;
+    const actorId = userId || sessionId || `${row.username || "unknown"}-${createdAt}`;
+    const userLabel = userId
+      ? profileByUserId.get(userId) || row.username || `User ${shortId(userId)}`
+      : row.username || (sessionId ? `Guest ${shortId(sessionId)}` : "Unknown visitor");
+
+    const current = rowsByActor.get(actorId) || {
+      userId,
+      sessionId,
+      userLabel,
+      actions: [],
+    };
+
+    current.actions.push({
+      id: `${row.action_type || "action"}-${createdAt}-${current.actions.length}`,
+      actionType: row.action_type || "tracked_action",
+      title: getMasterActionTitle(row),
+      detail: getMasterActionDetail(row),
+      category: getMasterActionCategory(row.action_type || ""),
+      dayNumber: Number(row.journey_day || parseBibleYearDayFromLabel(row.action_label || "") || 0) || null,
+      taskType: getTaskTypeFromAction(row),
+      createdAt,
+    });
+    rowsByActor.set(actorId, current);
+  }
+
+  const rows = Array.from(rowsByActor.entries())
+    .map(([actorId, value]) => {
+      const actions = value.actions.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+      const lastAction = actions[0];
+      return {
+        actorId,
+        userId: value.userId,
+        sessionId: value.sessionId,
+        userLabel: value.userLabel,
+        totalActions: actions.length,
+        lastAction: lastAction?.title || "No action",
+        lastActionDetail: lastAction?.detail || "",
+        lastActionAt: lastAction?.createdAt || "",
+        actions: actions.slice(0, 100),
+      };
+    })
+    .sort((a, b) => b.lastActionAt.localeCompare(a.lastActionAt))
+    .slice(0, 250);
+
+  return {
+    totalUsers: rows.length,
+    totalActions: rows.reduce((sum, row) => sum + row.totalActions, 0),
+    rows,
+  };
+}
+
 function buildTimelineEvent(
   base: Omit<VisitorJourneyTimelineEvent, "timeSinceFirstLabel" | "timeSincePreviousLabel">,
   firstTime: number,
@@ -2720,12 +2808,25 @@ export async function GET(request: Request) {
     masterFunnelRows = (masterFunnelData || []) as MasterActionFunnelRow[];
   }
 
+  const activeSinceIso = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+  let activeUsersLast24Rows: MasterActionFunnelRow[] = [];
+  const { data: activeUsersLast24Data, error: activeUsersLast24Error } = await adminSupabase
+    .from("master_actions")
+    .select("user_id, username, session_id, action_type, action_label, journey_day, account_status, event_metadata, created_at")
+    .gte("created_at", activeSinceIso)
+    .order("created_at", { ascending: false })
+    .limit(10000);
+  if (!activeUsersLast24Error) {
+    activeUsersLast24Rows = (activeUsersLast24Data || []) as MasterActionFunnelRow[];
+  }
+
   const eventUserIds = Array.from(new Set([
     ...landingEventRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...upgradeRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...studyNotesActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...bibleYearTaskActionRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
     ...masterFunnelRows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
+    ...activeUsersLast24Rows.map((row) => row.user_id).filter((userId): userId is string => Boolean(userId)),
   ]));
   const profileByUserId = new Map<string, string>();
   const profileSummaryByUserId = new Map<string, ProfileSummary>();
@@ -2785,6 +2886,7 @@ export async function GET(request: Request) {
     }
   }
   masterFunnelRows = masterFunnelRows.filter((row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId));
+  activeUsersLast24Rows = activeUsersLast24Rows.filter((row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId));
   const { data: allBibleYearProgressData } = await adminSupabase
     .from("bible_year_day_progress")
     .select("user_id, day_number, reading_completed, trivia_completed, reflection_completed, updated_at")
@@ -2823,6 +2925,7 @@ export async function GET(request: Request) {
   const dayThreeUpgrade = buildDayThreeUpgradeAnalytics(masterFunnelRows);
   const daySevenUpgrade = buildDayUpgradeAnalytics(masterFunnelRows, 7);
   const studyNotesUpgrade = buildStudyNotesUpgradeAnalytics(masterFunnelRows);
+  const activeUsersLast24Hours = buildActiveUsersLast24Hours(activeUsersLast24Rows, profileByUserId);
   const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade, daySevenUpgrade);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
@@ -2877,6 +2980,7 @@ export async function GET(request: Request) {
       studyNotesUpgrade,
       bibleYearDays,
       studyNotes,
+      activeUsersLast24Hours,
       trafficSources,
       dataHealth,
       publicOnboardingFlow,
@@ -2918,6 +3022,7 @@ export async function GET(request: Request) {
     studyNotesUpgrade,
     bibleYearDays,
     studyNotes,
+    activeUsersLast24Hours,
     trafficSources,
     dataHealth,
     publicOnboardingFlow,

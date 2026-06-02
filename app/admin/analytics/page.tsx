@@ -95,6 +95,31 @@ type VisitorJourneys = {
   statuses: Array<{ key: VisitorJourneyStatus; label: string }>;
 };
 
+type ActiveUsersLast24Hours = {
+  totalUsers: number;
+  totalActions: number;
+  rows: Array<{
+    actorId: string;
+    userId: string | null;
+    sessionId: string | null;
+    userLabel: string;
+    totalActions: number;
+    lastAction: string;
+    lastActionDetail: string;
+    lastActionAt: string;
+    actions: Array<{
+      id: string;
+      actionType: string;
+      title: string;
+      detail: string;
+      category: VisitorJourneyRow["timeline"][number]["category"];
+      dayNumber: number | null;
+      taskType: string | null;
+      createdAt: string;
+    }>;
+  }>;
+};
+
 type FunnelStageRow = {
   key: string;
   label: string;
@@ -222,6 +247,7 @@ type AnalyticsResponse = {
     guestToAccountRate?: number;
   };
   visitorJourneys?: VisitorJourneys;
+  activeUsersLast24Hours?: ActiveUsersLast24Hours;
   bibleBuddyFunnelStages?: FunnelStageRow[];
   dayThreeUpgrade?: DayThreeUpgradeAnalytics;
   daySevenUpgrade?: DayThreeUpgradeAnalytics;
@@ -986,6 +1012,29 @@ function FounderFunnelSection({
                 </p>
               ) : null}
             </button>
+            {step.clickable && openDetail === step.key ? (
+              <div className="overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] lg:hidden">
+                <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+                  <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{detailTitle}</p>
+                  <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(detailRows.length)} rows</p>
+                </div>
+                <div className="max-h-[420px] overflow-y-auto">
+                  {detailRows.length ? detailRows.map(({ row, event }) => (
+                    <div key={`mobile-${openDetail}-${row.id}-${event?.id || row.createdAccountAt || row.lastActiveAt}`} className="border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 last:border-b-0">
+                      <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{row.userLabel || row.visitorLabel || "Unknown"}</p>
+                      <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">{event?.title || (openDetail === "accountsCreated" ? "Created account" : "Clicked Start Journey")}</p>
+                      <div className="mt-2 flex flex-wrap gap-2 text-xs font-bold text-[var(--bb-text-muted,#64748b)]">
+                        <span>{row.accountType}</span>
+                        <span>{row.source || "Unknown"}</span>
+                        <span>{formatDateTime(event?.timestamp || (openDetail === "accountsCreated" ? row.createdAccountAt : row.startedDay1At) || row.lastActiveAt)}</span>
+                      </div>
+                    </div>
+                  )) : (
+                    <p className="px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">No detail rows found for this metric yet.</p>
+                  )}
+                </div>
+              </div>
+            ) : null}
             {index < steps.length - 1 ? (
               <div className="hidden place-items-center text-[var(--bb-text-muted,#64748b)] lg:grid">
                 <Icon name="arrow" />
@@ -995,7 +1044,7 @@ function FounderFunnelSection({
         ))}
       </div>
       {openDetail ? (
-        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+        <div className="mt-5 hidden overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] lg:block">
           <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
             <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{detailTitle}</p>
             <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(detailRows.length)} rows shown</p>
@@ -1093,15 +1142,61 @@ function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEng
         <button type="button" onClick={() => setShowPlayDetails((current) => !current)} className="text-left" aria-expanded={showPlayDetails}>
           <FounderMetricCard title="Total Plays" value={formatNumber(metrics.totalPlays)} helper={`${showPlayDetails ? "Hide" : "Show"} who listened, what they played, and how long.`} icon="play" />
         </button>
+        {showPlayDetails ? (
+          <div className="overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] md:hidden">
+            <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+              <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Total Plays Detail</p>
+              <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(playDetails.length)} rows</p>
+            </div>
+            <div className="max-h-[420px] overflow-y-auto">
+              {playDetails.length ? playDetails.map((row) => (
+                <div key={`mobile-play-${row.id}`} className="border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 last:border-b-0">
+                  <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{row.userLabel || "Unknown"}</p>
+                  <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">{row.title}</p>
+                  <div className="mt-2 flex flex-wrap gap-2 text-xs font-bold text-[var(--bb-text-muted,#64748b)]">
+                    {row.dayNumber ? <span>Day {row.dayNumber}</span> : null}
+                    <span>{row.listenedLabel}</span>
+                    <span>{formatDateTime(row.playedAt)}</span>
+                  </div>
+                </div>
+              )) : (
+                <p className="px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">No play detail rows found yet.</p>
+              )}
+            </div>
+          </div>
+        ) : null}
         <button type="button" onClick={() => setShowUniqueListeners((current) => !current)} className="text-left" aria-expanded={showUniqueListeners}>
           <FounderMetricCard title="Unique Listeners" value={formatNumber(metrics.uniqueListeners)} helper={`${showUniqueListeners ? "Hide" : "Show"} individual users who listened.`} icon="headphones" />
         </button>
+        {showUniqueListeners ? (
+          <div className="overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] md:hidden">
+            <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+              <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Unique Listeners Detail</p>
+              <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(uniqueListenerRows.length)} rows</p>
+            </div>
+            <div className="max-h-[420px] overflow-y-auto">
+              {uniqueListenerRows.length ? uniqueListenerRows.map((row) => (
+                <div key={`mobile-listener-${row.userId || row.userLabel || row.id}`} className="border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 last:border-b-0">
+                  <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{row.userLabel || "Unknown"}</p>
+                  <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">{row.title}</p>
+                  <div className="mt-2 flex flex-wrap gap-2 text-xs font-bold text-[var(--bb-text-muted,#64748b)]">
+                    <span>{formatNumber(row.playCount)} plays</span>
+                    <span>{row.listenedLabel}</span>
+                    <span>{formatDateTime(row.playedAt)}</span>
+                  </div>
+                </div>
+              )) : (
+                <p className="px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">No unique listener rows found yet.</p>
+              )}
+            </div>
+          </div>
+        ) : null}
         <FounderMetricCard title="Minutes Played" value={formatNumber(metrics.totalMinutesPlayed)} helper="Total tracked listening minutes." icon="spark" />
         <FounderMetricCard title="Avg Listen Time" value={`${metrics.averageListeningMinutes}m`} helper="Average minutes per session." icon="visitors" />
         <FounderMetricCard title="Completion Rate" value={`${metrics.lessonCompletionRate}%`} helper="Lessons completed from plays." icon="check" />
       </div>
       {showPlayDetails ? (
-        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+        <div className="mt-5 hidden overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] md:block">
           <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
             <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Total Plays Detail</p>
             <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(playDetails.length)} rows shown</p>
@@ -1140,7 +1235,7 @@ function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEng
         </div>
       ) : null}
       {showUniqueListeners ? (
-        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+        <div className="mt-5 hidden overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] md:block">
           <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
             <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Unique Listeners Detail</p>
             <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(uniqueListenerRows.length)} rows shown</p>
@@ -1288,16 +1383,58 @@ function StudyNotesMetricsSection({ studyNotes }: { studyNotes: AnalyticsRespons
         <button type="button" onClick={() => setShowTopNotes((current) => !current)} className="text-left" aria-expanded={showTopNotes}>
           <FounderMetricCard title="Notes Opened" value={formatNumber(metrics.totalOpens)} helper={`${showTopNotes ? "Hide" : "Show"} top 20 opened note sections.`} icon="spark" />
         </button>
+        {showTopNotes ? (
+          <div className="overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] md:hidden">
+            <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+              <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Top 20 Notes Opened</p>
+              <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(metrics.topNotes.length)} rows</p>
+            </div>
+            <div className="max-h-[420px] overflow-y-auto">
+              {metrics.topNotes.length ? metrics.topNotes.map((note, index) => (
+                <div key={`mobile-note-${note.key}`} className="border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 last:border-b-0">
+                  <p className="text-xs font-black text-[var(--bb-accent,#2f7fe8)]">#{index + 1}</p>
+                  <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#101827)]">{note.label}</p>
+                  <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">
+                    {formatNumber(note.opens)} opens • {formatNumber(note.uniqueUsers)} users • last {note.lastOpenedAt ? formatDateTime(note.lastOpenedAt) : "unknown"}
+                  </p>
+                </div>
+              )) : (
+                <p className="px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">No note opens yet.</p>
+              )}
+            </div>
+          </div>
+        ) : null}
         <button type="button" onClick={() => setShowTopPhrases((current) => !current)} className="text-left" aria-expanded={showTopPhrases}>
           <FounderMetricCard title="Phrase Opens" value={formatNumber(metrics.phraseOpens)} helper={`${showTopPhrases ? "Hide" : "Show"} top 20 clicked key phrases.`} icon="spark" />
         </button>
+        {showTopPhrases ? (
+          <div className="overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] md:hidden">
+            <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+              <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Top 20 Key Phrases Opened</p>
+              <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(metrics.topPhrases.length)} rows</p>
+            </div>
+            <div className="max-h-[420px] overflow-y-auto">
+              {metrics.topPhrases.length ? metrics.topPhrases.map((phrase, index) => (
+                <div key={`mobile-phrase-${phrase.key}`} className="border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 last:border-b-0">
+                  <p className="text-xs font-black text-[var(--bb-accent,#2f7fe8)]">#{index + 1}</p>
+                  <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#101827)]">{phrase.label}</p>
+                  <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">
+                    {phrase.sectionLabel} • {formatNumber(phrase.opens)} opens • {formatNumber(phrase.uniqueUsers)} users
+                  </p>
+                </div>
+              )) : (
+                <p className="px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">No phrase opens yet.</p>
+              )}
+            </div>
+          </div>
+        ) : null}
         <FounderMetricCard title="Unique Readers" value={formatNumber(metrics.uniqueUsers)} helper="Users who opened notes or phrases." icon="visitors" />
         <FounderMetricCard title="Section Opens" value={formatNumber(metrics.sectionOpens)} helper="Credit-spending Bible reader note opens." icon="check" />
         <FounderMetricCard title="All Interactions" value={formatNumber(metrics.totalInteractions)} helper="Notes plus phrase clicks." icon="play" />
       </div>
 
       {showTopNotes ? (
-        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+        <div className="mt-5 hidden overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] md:block">
           <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
             <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Top 20 Notes Opened</p>
             <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(metrics.topNotes.length)} rows</p>
@@ -1322,7 +1459,7 @@ function StudyNotesMetricsSection({ studyNotes }: { studyNotes: AnalyticsRespons
       ) : null}
 
       {showTopPhrases ? (
-        <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+        <div className="mt-5 hidden overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] md:block">
           <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
             <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Top 20 Key Phrases Opened</p>
             <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(metrics.topPhrases.length)} rows</p>
@@ -1345,6 +1482,92 @@ function StudyNotesMetricsSection({ studyNotes }: { studyNotes: AnalyticsRespons
           </div>
         </div>
       ) : null}
+    </section>
+  );
+}
+
+function ActiveUsersLast24HoursSection({ report }: { report: ActiveUsersLast24Hours | undefined }) {
+  const [expandedActorId, setExpandedActorId] = useState<string | null>(null);
+  const rows = report?.rows || [];
+
+  return (
+    <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">Active Users</p>
+          <h2 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">What users did in the last 24 hours</h2>
+        </div>
+        <div className="rounded-full border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#101827)]">
+          {formatNumber(report?.totalUsers || 0)} users • {formatNumber(report?.totalActions || 0)} actions
+        </div>
+      </div>
+
+      <div className="mt-5 overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)]">
+        <div className="hidden grid-cols-[1.2fr_1.5fr_0.6fr_0.8fr] gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3 text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)] md:grid">
+          <span>User</span>
+          <span>Last action</span>
+          <span>Total</span>
+          <span>When</span>
+        </div>
+
+        <div className="divide-y divide-[var(--bb-card-border,#d8e3ec)]">
+          {rows.length ? rows.map((row) => {
+            const isOpen = expandedActorId === row.actorId;
+            return (
+              <div key={row.actorId} className="bg-[var(--bb-card,#ffffff)]">
+                <button
+                  type="button"
+                  onClick={() => setExpandedActorId((current) => current === row.actorId ? null : row.actorId)}
+                  className="grid w-full gap-3 px-4 py-4 text-left transition hover:bg-[var(--bb-surface-soft,#eef4f8)] md:grid-cols-[1.2fr_1.5fr_0.6fr_0.8fr] md:items-center"
+                  aria-expanded={isOpen}
+                >
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-black text-[var(--bb-text-primary,#101827)]">{row.userLabel}</p>
+                    <p className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">
+                      {row.userId ? `User ${shortId(row.userId)}` : row.sessionId ? `Guest ${shortId(row.sessionId)}` : shortId(row.actorId)}
+                    </p>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-black text-[var(--bb-text-primary,#101827)]">{row.lastAction}</p>
+                    <p className="mt-0.5 truncate text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">{row.lastActionDetail || "Tracked action"}</p>
+                  </div>
+                  <p className="text-sm font-black text-[var(--bb-accent,#2f7fe8)]">{formatNumber(row.totalActions)}</p>
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-sm font-bold text-[var(--bb-text-secondary,#334155)]">{formatLastActive(row.lastActionAt)}</p>
+                    <span className={`grid h-8 w-8 place-items-center rounded-full bg-[var(--bb-accent-soft,#e6f1ff)] text-[var(--bb-accent,#2f7fe8)] transition ${isOpen ? "rotate-90" : ""}`}>
+                      <Icon name="arrow" />
+                    </span>
+                  </div>
+                </button>
+
+                {isOpen ? (
+                  <div className="border-t border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-4">
+                    <div className="space-y-3">
+                      {row.actions.map((action) => (
+                        <div key={action.id} className="rounded-xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3">
+                          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                            <div className="min-w-0">
+                              <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">{action.title}</p>
+                              <p className="mt-1 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#334155)]">{action.detail}</p>
+                              <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">{formatEventTitle(action.actionType)}</p>
+                            </div>
+                            <div className="shrink-0 text-left sm:text-right">
+                              <p className="text-xs font-black text-[var(--bb-accent,#2f7fe8)]">{formatDateTime(action.createdAt)}</p>
+                              {action.dayNumber ? <p className="mt-1 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">Day {action.dayNumber}</p> : null}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            );
+          }) : (
+            <p className="px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">No user actions tracked in the last 24 hours yet.</p>
+          )}
+        </div>
+      </div>
     </section>
   );
 }
@@ -2515,6 +2738,7 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
               />
               <ListeningMetricsSection audio={data?.audioEngagement} />
               <StudyNotesMetricsSection studyNotes={data?.studyNotes} />
+              <ActiveUsersLast24HoursSection report={data?.activeUsersLast24Hours} />
             </section>
           ) : null}
 
@@ -2573,6 +2797,8 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
             <ListeningMetricsSection audio={data?.audioEngagement} />
 
             <StudyNotesMetricsSection studyNotes={data?.studyNotes} />
+
+            <ActiveUsersLast24HoursSection report={data?.activeUsersLast24Hours} />
 
             <StripeRevenueSection
               revenue={stripeRevenue}
