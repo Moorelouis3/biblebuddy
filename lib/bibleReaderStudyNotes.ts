@@ -1,3 +1,4 @@
+import { GENESIS_11_20_PERSONAL_SECTIONS } from "./genesisElevenToTwentyPersonalNotes";
 import { GENESIS_21_30_PERSONAL_SECTIONS } from "./genesisTwentyOneToThirtyPersonalNotes";
 import { GENESIS_31_40_PERSONAL_SECTIONS } from "./genesisThirtyOneToFortyPersonalNotes";
 import { GENESIS_41_50_PERSONAL_SECTIONS } from "./genesisFortyOneToFiftyPersonalNotes";
@@ -14582,6 +14583,19 @@ function applyPersonalGenesisTwentyOneThroughThirtyStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+function applyPersonalGenesisElevenThroughTwentyStudySections() {
+  const sections = GENESIS_11_20_PERSONAL_SECTIONS.map(makePersonalGenesisPhraseSection);
+
+  for (let index = BIBLE_READER_STUDY_SECTIONS.length - 1; index >= 0; index -= 1) {
+    const section = BIBLE_READER_STUDY_SECTIONS[index];
+    if (section.book === "genesis" && section.chapter >= 11 && section.chapter <= 20) {
+      BIBLE_READER_STUDY_SECTIONS.splice(index, 1);
+    }
+  }
+
+  BIBLE_READER_STUDY_SECTIONS.push(...sections);
+}
+
 function applyPersonalGenesisThirtyOneThroughFortyStudySections() {
   const sections = GENESIS_31_40_PERSONAL_SECTIONS.map(makePersonalGenesisPhraseSection);
 
@@ -14612,6 +14626,7 @@ applyPersonalGenesisOneStudySections();
 applyPersonalGenesisTwoStudySections();
 applyPersonalGenesisThreeStudySections();
 applyPersonalGenesisFourThroughTenStudySections();
+applyPersonalGenesisElevenThroughTwentyStudySections();
 applyPersonalGenesisTwentyOneThroughThirtyStudySections();
 applyPersonalGenesisThirtyOneThroughFortyStudySections();
 applyPersonalGenesisFortyOneThroughFiftyStudySections();

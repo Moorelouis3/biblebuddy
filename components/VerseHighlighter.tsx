@@ -748,7 +748,7 @@ function InlineStudySection({
         </span>
         <span className="min-w-0 flex-1">
           <span className="block text-base font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-            {section.reference} Study Notes
+            {section.reference}
           </span>
           <span className="mt-0.5 block text-xs font-black leading-5 text-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_58%,var(--bb-text-secondary,#4b5563))]">{section.title}</span>
           {section.summary ? (
