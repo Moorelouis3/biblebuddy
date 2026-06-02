@@ -192,6 +192,101 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-inline
 
 @import "tailwindcss";
 
+:root,
+html[data-bb-theme="light"] {
+  --bb-logo-blue: #0056FD;
+}
+
+html[data-bb-theme="light"] .bg-blue-500,
+html[data-bb-theme="light"] .bg-blue-600,
+html[data-bb-theme="light"] .bg-blue-700,
+html[data-bb-theme="light"] .hover\:bg-blue-500:hover,
+html[data-bb-theme="light"] .hover\:bg-blue-600:hover,
+html[data-bb-theme="light"] .hover\:bg-blue-700:hover {
+  background-color: var(--bb-logo-blue) !important;
+}
+
+html[data-bb-theme="light"] .text-blue-500,
+html[data-bb-theme="light"] .text-blue-600,
+html[data-bb-theme="light"] .text-blue-700,
+html[data-bb-theme="light"] .hover\:text-blue-500:hover,
+html[data-bb-theme="light"] .hover\:text-blue-600:hover,
+html[data-bb-theme="light"] .hover\:text-blue-700:hover {
+  color: var(--bb-logo-blue) !important;
+}
+
+html[data-bb-theme="light"] .border-blue-200,
+html[data-bb-theme="light"] .border-blue-300,
+html[data-bb-theme="light"] .border-blue-400,
+html[data-bb-theme="light"] .border-blue-500,
+html[data-bb-theme="light"] .focus\:border-blue-500:focus {
+  border-color: color-mix(in srgb, var(--bb-logo-blue) 34%, white) !important;
+}
+
+html[data-bb-theme="light"] .ring-blue-200 {
+  --tw-ring-color: color-mix(in srgb, var(--bb-logo-blue) 22%, white) !important;
+}
+
+html[data-bb-theme="light"] .ring-blue-500,
+html[data-bb-theme="light"] .focus\:ring-blue-500:focus {
+  --tw-ring-color: var(--bb-logo-blue) !important;
+}
+
+html[data-bb-theme="light"] .bg-blue-50,
+html[data-bb-theme="light"] .bg-blue-100,
+html[data-bb-theme="light"] .hover\:bg-blue-50:hover,
+html[data-bb-theme="light"] .hover\:bg-blue-100:hover {
+  background-color: color-mix(in srgb, var(--bb-logo-blue) 9%, white) !important;
+}
+
+html[data-bb-theme="light"] .decoration-blue-300 {
+  text-decoration-color: color-mix(in srgb, var(--bb-logo-blue) 34%, white) !important;
+}
+
+html[data-bb-theme="light"] .from-blue-500\/18 {
+  --tw-gradient-from: color-mix(in srgb, var(--bb-logo-blue) 18%, transparent) var(--tw-gradient-from-position) !important;
+}
+
+html[data-bb-theme="light"] .from-blue-500,
+html[data-bb-theme="light"] .from-blue-600 {
+  --tw-gradient-from: var(--bb-logo-blue) var(--tw-gradient-from-position) !important;
+}
+
+html[data-bb-theme="light"] [class*="text-[#2f7fe8"],
+html[data-bb-theme="light"] [class*="text-[#2563eb"],
+html[data-bb-theme="light"] [class*="text-[#3b82f6"],
+html[data-bb-theme="light"] [class*="text-[#1d4ed8"] {
+  color: var(--bb-logo-blue) !important;
+}
+
+html[data-bb-theme="light"] [class*="bg-[#2f7fe8"],
+html[data-bb-theme="light"] [class*="bg-[#2563eb"],
+html[data-bb-theme="light"] [class*="bg-[#3b82f6"],
+html[data-bb-theme="light"] [class*="bg-[#1d4ed8"],
+html[data-bb-theme="light"] [class*="hover:bg-[#256fd1"]:hover {
+  background: var(--bb-logo-blue) !important;
+  background-color: var(--bb-logo-blue) !important;
+}
+
+html[data-bb-theme="light"] [class*="border-[#2f7fe8"],
+html[data-bb-theme="light"] [class*="border-[#2563eb"],
+html[data-bb-theme="light"] [class*="border-t-[#2f7fe8"],
+html[data-bb-theme="light"] [class*="border-t-[#2563eb"] {
+  border-color: var(--bb-logo-blue) !important;
+}
+
+html[data-bb-theme="light"] [style*="#2f7fe8"],
+html[data-bb-theme="light"] [style*="#2563eb"],
+html[data-bb-theme="light"] [style*="#3b82f6"],
+html[data-bb-theme="light"] [style*="#1d4ed8"] {
+  color: var(--bb-logo-blue) !important;
+  border-color: var(--bb-logo-blue) !important;
+}
+
+html[data-bb-theme="light"] .accent-blue-600 {
+  accent-color: var(--bb-logo-blue) !important;
+}
+
 /* Bible highlight styles */
 .bible-highlight {
   cursor: pointer;
@@ -300,15 +395,15 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .dashboard-shell .dashboard-inline
   --bb-text-primary: #111827;
   --bb-text-secondary: #374151;
   --bb-text-muted: #6b7280;
-  --bb-accent: #7bafd4;
-  --bb-accent-soft: #eaf5ff;
-  --bb-button: #7bafd4;
+  --bb-accent: #0056FD;
+  --bb-accent-soft: #EAF2FF;
+  --bb-button: #0056FD;
   --bb-button-text: #ffffff;
   --bb-nav-background: #ffffff;
-  --bb-nav-active: #2563eb;
+  --bb-nav-active: #0056FD;
   --bb-nav-inactive: #6b7280;
   --bb-progress-track: #e5e7eb;
-  --bb-progress-fill: #7bafd4;
+  --bb-progress-fill: #0056FD;
   --bb-reader-bg: #f8fbff;
   --bb-reader-surface: #ffffff;
   --bb-reader-border: #bfdbfe;
@@ -4870,15 +4965,15 @@ html[data-bb-theme="light"][data-bb-basic-skin] {
   --bb-text-primary: #101827 !important;
   --bb-text-secondary: #334155 !important;
   --bb-text-muted: #64748B !important;
-  --bb-accent: #2F7FE8 !important;
-  --bb-accent-soft: #E6F1FF !important;
-  --bb-button: #2F7FE8 !important;
+  --bb-accent: #0056FD !important;
+  --bb-accent-soft: #EAF2FF !important;
+  --bb-button: #0056FD !important;
   --bb-button-text: #FFFFFF !important;
   --bb-nav-background: #FFFFFF !important;
-  --bb-nav-active: #2F7FE8 !important;
+  --bb-nav-active: #0056FD !important;
   --bb-nav-inactive: #64748B !important;
   --bb-progress-track: #D8E3EC !important;
-  --bb-progress-fill: #2F7FE8 !important;
+  --bb-progress-fill: #0056FD !important;
 }
 
 html[data-bb-skin] body,

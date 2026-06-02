@@ -4523,6 +4523,13 @@ export default function DashboardJourneyExperience({
     }
   }
 
+  function openAnalyticsPage() {
+    setDashboardMenuOpen(false);
+    if (typeof window !== "undefined") {
+      window.location.href = "/admin/analytics";
+    }
+  }
+
   useEffect(() => {
     function handleShowGroupTab() {
       if (typeof window !== "undefined") window.localStorage.removeItem("bb:dashboard-open-group");
@@ -15299,20 +15306,41 @@ Before we understand redemption, we need to understand what God made humanity fo
               <span>BB Chat</span>
             </button>
 
-            <button
-              type="button"
-              onClick={openInvitePage}
-              className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
-              aria-label="Invite friends to Bible Buddy"
-            >
-              <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
-                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
-                  <path d="M21 3 10.6 13.4" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="m21 3-6.7 18-3.7-7.6L3 9.7 21 3Z" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              <span>Invite</span>
-            </button>
+            {isOwnerDashboard ? (
+              <button
+                type="button"
+                onClick={openAnalyticsPage}
+                className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
+                aria-label="Open Analytics"
+                data-dashboard-nav-key="analytics-tab"
+              >
+                <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
+                    <path d="M4 19V5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                    <path d="M9 19v-6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                    <path d="M14 19V9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                    <path d="M19 19V3" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                    <path d="M3 19h18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                  </svg>
+                </span>
+                <span>Analytics</span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={openInvitePage}
+                className="flex h-14 flex-col items-center justify-center rounded-[18px] bg-[var(--bb-surface-soft,#f4f8ff)] text-[10px] font-black text-[var(--bb-text-primary,#111827)] shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
+                aria-label="Invite friends to Bible Buddy"
+              >
+                <span className="grid h-7 w-7 place-items-center" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
+                    <path d="M21 3 10.6 13.4" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="m21 3-6.7 18-3.7-7.6L3 9.7 21 3Z" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+                <span>Invite</span>
+              </button>
+            )}
           </div>
         </div>
       </nav>

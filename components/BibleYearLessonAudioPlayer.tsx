@@ -733,6 +733,16 @@ export default function BibleYearLessonAudioPlayer({
             ) : null}
           </div>
       </div>
+      {!controlsLocked ? (
+        <VideoHelpfulPoll
+          userId={userId}
+          videoId={`audio:${videoId || audioSrc || title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
+          videoTitle={title}
+          videoUrl={audioSrc}
+          videoContext={videoContext}
+          mediaType="audio"
+        />
+      ) : null}
     </section>
   );
 }

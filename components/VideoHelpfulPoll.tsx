@@ -9,6 +9,7 @@ type VideoHelpfulPollProps = {
   videoTitle: string;
   videoUrl: string;
   videoContext: "bible_year" | "bible_topics";
+  mediaType?: "video" | "audio";
 };
 
 export default function VideoHelpfulPoll({
@@ -17,12 +18,14 @@ export default function VideoHelpfulPoll({
   videoTitle,
   videoUrl,
   videoContext,
+  mediaType = "video",
 }: VideoHelpfulPollProps) {
   const [vote, setVote] = useState<boolean | null>(null);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [dismissState, setDismissState] = useState<"visible" | "puffing" | "hidden">("visible");
-  const storageKey = userId && videoId ? `bb:video-helpful-vote:${userId}:${videoId}` : null;
+  const storageKey = userId && videoId ? `bb:${mediaType}-helpful-vote:${userId}:${videoId}` : null;
+  const mediaLabel = mediaType === "audio" ? "audio" : "video";
 
   useEffect(() => {
     const hasLocalVote = Boolean(storageKey && typeof window !== "undefined" && window.localStorage.getItem(storageKey));
@@ -85,7 +88,7 @@ export default function VideoHelpfulPoll({
       setMessage("Could not save that vote yet.");
     } else {
       if (storageKey && typeof window !== "undefined") window.localStorage.setItem(storageKey, nextVote ? "yes" : "no");
-      setMessage("Thanks. That helps us improve videos.");
+      setMessage(`Thanks. That helps us improve ${mediaLabel}.`);
       window.setTimeout(() => setDismissState("puffing"), 620);
       window.setTimeout(() => setDismissState("hidden"), 1280);
     }
@@ -97,7 +100,11 @@ export default function VideoHelpfulPoll({
 
   return (
     <div
-      className={`video-helpful-poll relative mt-3 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_78%,transparent)] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_62%,transparent)] px-3 py-3 ${
+      className={`video-helpful-poll relative mt-3 overflow-hidden rounded-2xl border px-3 py-3 ${
+        mediaType === "audio"
+          ? "border-white/10 bg-white/[0.055]"
+          : "border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_78%,transparent)] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_62%,transparent)]"
+      } ${
         dismissState === "puffing" ? "video-helpful-poll-puff" : ""
       }`}
     >
@@ -134,7 +141,9 @@ export default function VideoHelpfulPoll({
         </div>
       ) : null}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Was this video helpful?</p>
+        <p className={`text-sm font-black ${mediaType === "audio" ? "text-white" : "text-[var(--bb-text-primary,#111827)]"}`}>
+          Was this {mediaLabel} helpful?
+        </p>
         <div className="grid grid-cols-2 gap-2 sm:w-40">
           {[
             { label: "Yes", value: true },
@@ -150,7 +159,9 @@ export default function VideoHelpfulPoll({
                 className={`rounded-xl border px-3 py-2 text-xs font-black transition disabled:cursor-wait disabled:opacity-70 ${
                   active
                     ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] shadow-sm"
-                    : "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:border-[var(--bb-accent,#2f7fe8)]"
+                    : mediaType === "audio"
+                      ? "border-white/10 bg-[#121e2d] text-[#f8fafc] hover:border-[#7BAFD4]"
+                      : "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:border-[var(--bb-accent,#2f7fe8)]"
                 }`}
               >
                 {option.label}
@@ -160,7 +171,7 @@ export default function VideoHelpfulPoll({
         </div>
       </div>
       {message ? (
-        <p className="mt-2 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">{message}</p>
+        <p className={`mt-2 text-xs font-bold ${mediaType === "audio" ? "text-[#aab6c8]" : "text-[var(--bb-text-secondary,#4b5563)]"}`}>{message}</p>
       ) : null}
     </div>
   );

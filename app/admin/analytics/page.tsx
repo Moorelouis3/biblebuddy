@@ -192,6 +192,33 @@ type BibleYearDayAnalytics = {
   }>;
 };
 
+type HelpfulnessSummary = {
+  yes: number;
+  no: number;
+  total: number;
+  yesRate: number;
+  noRate: number;
+  verdict: string;
+};
+
+type AudioHelpfulnessAnalytics = {
+  window: HelpfulnessSummary;
+  lifetime: HelpfulnessSummary;
+  topAudio: Array<{
+    audioId: string;
+    title: string;
+    context: string;
+    url: string;
+    yes: number;
+    no: number;
+    total: number;
+    yesRate: number;
+    noRate: number;
+    verdict: string;
+    latestVoteAt: string | null;
+  }>;
+};
+
 type AnalyticsResponse = {
   businessMetrics?: {
     totalUsers: number;
@@ -236,6 +263,7 @@ type AnalyticsResponse = {
       playedAt: string | null;
     }>;
   };
+  audioHelpfulness?: AudioHelpfulnessAnalytics;
   customerJourney?: {
     window: JourneyWindow;
     label: string;
@@ -1266,6 +1294,110 @@ function ListeningMetricsSection({ audio }: { audio: AnalyticsResponse["audioEng
                 )) : (
                   <tr>
                     <td colSpan={5} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No unique listener rows found yet.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+function AudioHelpfulnessSection({
+  audioHelpfulness,
+  windowLabel,
+}: {
+  audioHelpfulness: AnalyticsResponse["audioHelpfulness"] | undefined;
+  windowLabel: string;
+}) {
+  const [showTopAudio, setShowTopAudio] = useState(false);
+  const metrics = audioHelpfulness || {
+    window: { yes: 0, no: 0, total: 0, yesRate: 0, noRate: 0, verdict: "No votes yet" },
+    lifetime: { yes: 0, no: 0, total: 0, yesRate: 0, noRate: 0, verdict: "No votes yet" },
+    topAudio: [],
+  };
+  const topAudio = metrics.topAudio || [];
+
+  return (
+    <section className="rounded-2xl border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">Audio Helpfulness</p>
+          <h2 className="mt-2 text-2xl font-black text-[var(--bb-text-primary,#101827)]">Was the audio helpful?</h2>
+        </div>
+        <p className="text-sm font-bold text-[var(--bb-text-muted,#64748b)]">
+          {windowLabel} plus lifetime yes/no totals.
+        </p>
+      </div>
+
+      <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+        <button type="button" onClick={() => setShowTopAudio((current) => !current)} className="text-left" aria-expanded={showTopAudio}>
+          <FounderMetricCard title="Audio Votes" value={formatNumber(metrics.window.total)} helper={`${showTopAudio ? "Hide" : "Show"} top voted audio lessons for this time frame.`} icon="headphones" />
+        </button>
+        {showTopAudio ? (
+          <div className="overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] md:hidden">
+            <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+              <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Top Audio Votes</p>
+              <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(topAudio.length)} rows</p>
+            </div>
+            <div className="max-h-[420px] overflow-y-auto">
+              {topAudio.length ? topAudio.map((row, index) => (
+                <div key={`mobile-audio-helpful-${row.audioId}`} className="border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] px-4 py-3 last:border-b-0">
+                  <p className="text-xs font-black text-[var(--bb-accent,#2f7fe8)]">#{index + 1}</p>
+                  <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#101827)]">{row.title}</p>
+                  <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">
+                    {formatNumber(row.yes)} yes / {formatNumber(row.no)} no / {row.yesRate}% helpful
+                  </p>
+                  <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted,#64748b)]">{row.verdict} - last {formatDateTime(row.latestVoteAt)}</p>
+                </div>
+              )) : (
+                <p className="px-4 py-8 text-center text-sm font-semibold text-[var(--bb-text-secondary,#334155)]">No audio helpfulness votes in this time frame yet.</p>
+              )}
+            </div>
+          </div>
+        ) : null}
+        <FounderMetricCard title="Yes Votes" value={formatNumber(metrics.window.yes)} helper={`${metrics.window.yesRate}% helpful in this time frame.`} icon="check" accent="text-emerald-200" />
+        <FounderMetricCard title="No Votes" value={formatNumber(metrics.window.no)} helper={`${metrics.window.noRate}% not helpful in this time frame.`} icon="spark" accent="text-rose-200" />
+        <FounderMetricCard title="Helpful %" value={`${metrics.window.yesRate}%`} helper={metrics.window.verdict} icon="pro" accent="text-amber-200" />
+        <FounderMetricCard title="Lifetime" value={`${metrics.lifetime.yesRate}%`} helper={`${formatNumber(metrics.lifetime.yes)} yes / ${formatNumber(metrics.lifetime.no)} no from ${formatNumber(metrics.lifetime.total)} total votes.`} icon="play" />
+      </div>
+
+      {showTopAudio ? (
+        <div className="mt-5 hidden overflow-hidden rounded-xl border border-[var(--bb-card-border,#d8e3ec)] md:block">
+          <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-surface-soft,#eef4f8)] px-4 py-3">
+            <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Top 20 Audio Helpfulness Votes</p>
+            <p className="text-xs font-bold text-[var(--bb-text-secondary,#334155)]">{formatNumber(topAudio.length)} rows shown</p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="min-w-[820px] w-full border-collapse text-left text-sm">
+              <thead className="bg-[var(--bb-surface-soft,#eef4f8)] text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-muted,#64748b)]">
+                <tr>
+                  <th className="px-4 py-3">Audio</th>
+                  <th className="px-4 py-3">Yes</th>
+                  <th className="px-4 py-3">No</th>
+                  <th className="px-4 py-3">Helpful %</th>
+                  <th className="px-4 py-3">Status</th>
+                  <th className="px-4 py-3">Latest Vote</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[var(--bb-card-border,#d8e3ec)]">
+                {topAudio.length ? topAudio.map((row) => (
+                  <tr key={`audio-helpful-${row.audioId}`} className="bg-[var(--bb-card,#ffffff)]">
+                    <td className="px-4 py-3">
+                      <div className="font-bold text-[var(--bb-text-primary,#101827)]">{row.title}</div>
+                      <div className="mt-0.5 text-xs font-semibold text-[var(--bb-text-secondary,#334155)]">{row.context}</div>
+                    </td>
+                    <td className="px-4 py-3 font-black text-emerald-700">{formatNumber(row.yes)}</td>
+                    <td className="px-4 py-3 font-black text-rose-700">{formatNumber(row.no)}</td>
+                    <td className="px-4 py-3 font-black text-[var(--bb-accent,#2f7fe8)]">{row.yesRate}%</td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{row.verdict}</td>
+                    <td className="px-4 py-3 font-semibold text-[var(--bb-text-secondary,#334155)]">{formatDateTime(row.latestVoteAt)}</td>
+                  </tr>
+                )) : (
+                  <tr>
+                    <td colSpan={6} className="px-4 py-8 text-center font-semibold text-[var(--bb-text-secondary,#334155)]">No audio helpfulness votes in this time frame yet.</td>
                   </tr>
                 )}
               </tbody>
@@ -2737,6 +2869,10 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
                 rows={rows}
               />
               <ListeningMetricsSection audio={data?.audioEngagement} />
+              <AudioHelpfulnessSection
+                audioHelpfulness={data?.audioHelpfulness}
+                windowLabel={data?.customerJourney?.label || WINDOW_OPTIONS.find((option) => option.key === windowKey)?.label || "Selected range"}
+              />
               <StudyNotesMetricsSection studyNotes={data?.studyNotes} />
               <ActiveUsersLast24HoursSection report={data?.activeUsersLast24Hours} />
             </section>
@@ -2795,6 +2931,11 @@ function AnalyticsPageContent({ embedded = false }: { embedded?: boolean } = {})
             />
 
             <ListeningMetricsSection audio={data?.audioEngagement} />
+
+            <AudioHelpfulnessSection
+              audioHelpfulness={data?.audioHelpfulness}
+              windowLabel={data?.customerJourney?.label || WINDOW_OPTIONS.find((option) => option.key === windowKey)?.label || "Selected range"}
+            />
 
             <StudyNotesMetricsSection studyNotes={data?.studyNotes} />
 

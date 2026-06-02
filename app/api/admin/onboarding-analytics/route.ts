@@ -45,6 +45,15 @@ type StudyNotesActionRow = {
   created_at?: string | null;
 };
 
+type HelpfulnessVoteRow = {
+  video_id?: string | null;
+  video_title?: string | null;
+  video_url?: string | null;
+  video_context?: string | null;
+  helpful?: boolean | null;
+  updated_at?: string | null;
+};
+
 type BibleYearTaskActionRow = {
   user_id?: string | null;
   action_type?: string | null;
@@ -1154,6 +1163,73 @@ function summarizeAudioEngagement(
     lessonCompletionRate: percent(completedLessons, totalPlays),
     source: audioRows.length ? "audio_events" : "day_task_events",
     playDetails,
+  };
+}
+
+function buildHelpfulnessSummary(rows: HelpfulnessVoteRow[]) {
+  const yes = rows.filter((row) => row.helpful === true).length;
+  const no = rows.filter((row) => row.helpful === false).length;
+  const total = yes + no;
+  const yesRate = percent(yes, total);
+  const noRate = percent(no, total);
+  return {
+    yes,
+    no,
+    total,
+    yesRate,
+    noRate,
+    verdict: total === 0 ? "No votes yet" : yesRate >= 80 ? "Very helpful" : yesRate >= 60 ? "Helpful" : yesRate >= 40 ? "Mixed" : "Needs work",
+  };
+}
+
+function buildAudioHelpfulnessAnalytics(windowRows: HelpfulnessVoteRow[], lifetimeRows: HelpfulnessVoteRow[]) {
+  const topAudio = Array.from(
+    windowRows.reduce((map, row) => {
+      const audioId = (row.video_id || "audio:unknown").replace(/^audio:/, "");
+      const current = map.get(audioId) || {
+        audioId,
+        title: row.video_title || titleFromSlug(audioId) || "Audio lesson",
+        context: row.video_context || "bible_year",
+        url: row.video_url || "",
+        yes: 0,
+        no: 0,
+        total: 0,
+        yesRate: 0,
+        noRate: 0,
+        verdict: "No votes yet",
+        latestVoteAt: null as string | null,
+      };
+      if (row.helpful === true) current.yes += 1;
+      if (row.helpful === false) current.no += 1;
+      current.total = current.yes + current.no;
+      current.yesRate = percent(current.yes, current.total);
+      current.noRate = percent(current.no, current.total);
+      current.verdict = current.total === 0 ? "No votes yet" : current.yesRate >= 80 ? "Very helpful" : current.yesRate >= 60 ? "Helpful" : current.yesRate >= 40 ? "Mixed" : "Needs work";
+      if (row.updated_at && (!current.latestVoteAt || row.updated_at > current.latestVoteAt)) current.latestVoteAt = row.updated_at;
+      map.set(audioId, current);
+      return map;
+    }, new Map<string, {
+      audioId: string;
+      title: string;
+      context: string;
+      url: string;
+      yes: number;
+      no: number;
+      total: number;
+      yesRate: number;
+      noRate: number;
+      verdict: string;
+      latestVoteAt: string | null;
+    }>()),
+  )
+    .map(([, row]) => row)
+    .sort((a, b) => b.total - a.total || b.yesRate - a.yesRate || (b.latestVoteAt || "").localeCompare(a.latestVoteAt || ""))
+    .slice(0, 20);
+
+  return {
+    window: buildHelpfulnessSummary(windowRows),
+    lifetime: buildHelpfulnessSummary(lifetimeRows),
+    topAudio,
   };
 }
 
@@ -2734,6 +2810,24 @@ export async function GET(request: Request) {
   const { data: studyNotesActionData } = await studyNotesQuery;
   const studyNotesActionRows = (studyNotesActionData || []) as StudyNotesActionRow[];
 
+  let audioHelpfulnessQuery = adminSupabase
+    .from("video_helpfulness_votes")
+    .select("video_id, video_title, video_url, video_context, helpful, updated_at")
+    .like("video_id", "audio:%")
+    .gte("updated_at", journeySinceIso)
+    .order("updated_at", { ascending: false })
+    .limit(250000);
+  if (journeyBeforeIso) audioHelpfulnessQuery = audioHelpfulnessQuery.lt("updated_at", journeyBeforeIso);
+  const { data: audioHelpfulnessVoteData, error: audioHelpfulnessError } = await audioHelpfulnessQuery;
+  const audioHelpfulnessRows = audioHelpfulnessError ? [] : ((audioHelpfulnessVoteData || []) as HelpfulnessVoteRow[]);
+  const { data: audioHelpfulnessLifetimeData, error: audioHelpfulnessLifetimeError } = await adminSupabase
+    .from("video_helpfulness_votes")
+    .select("video_id, video_title, video_url, video_context, helpful, updated_at")
+    .like("video_id", "audio:%")
+    .order("updated_at", { ascending: false })
+    .limit(250000);
+  const audioHelpfulnessLifetimeRows = audioHelpfulnessLifetimeError ? [] : ((audioHelpfulnessLifetimeData || []) as HelpfulnessVoteRow[]);
+
   let bibleYearTaskQuery = adminSupabase
     .from("master_actions")
     .select("user_id, action_type, action_label, created_at")
@@ -2916,6 +3010,7 @@ export async function GET(request: Request) {
   }
 
   const studyNotes = buildStudyNotesAnalytics(studyNotesActionRows, profileByUserId);
+  const audioHelpfulness = buildAudioHelpfulnessAnalytics(audioHelpfulnessRows, audioHelpfulnessLifetimeRows);
   const windowBibleYearProgressRows = allBibleYearProgressRows.filter((row) => {
     const updatedAt = typeof row.updated_at === "string" ? new Date(row.updated_at).getTime() : 0;
     return Number.isFinite(updatedAt) && updatedAt >= new Date(journeySinceIso).getTime();
@@ -2970,6 +3065,7 @@ export async function GET(request: Request) {
       businessMetrics,
       registeredUsers: registeredUserAnalytics,
       audioEngagement,
+      audioHelpfulness,
       customerJourney,
       guestAccountFunnel,
       landingActivityLog,
@@ -3012,6 +3108,7 @@ export async function GET(request: Request) {
     businessMetrics,
     registeredUsers: registeredUserAnalytics,
     audioEngagement,
+    audioHelpfulness,
     customerJourney,
     guestAccountFunnel,
     landingActivityLog,

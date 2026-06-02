@@ -12,7 +12,7 @@ import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
 // redeploy trigger
 
 const siteUrl = new URL("https://www.mybiblebuddy.net");
-const socialPreviewImage = new URL("/NewNewNewBanner.png", siteUrl).toString();
+const socialPreviewImage = new URL("/therealnewpreviewbanner.png", siteUrl).toString();
 const socialTitle = "Bible Buddy, making Bible study easier...";
 const socialDescription = "Bible Buddy, making Bible study easier...";
 const socialImageAlt = "Bible Buddy, making Bible study easier...";
@@ -79,9 +79,9 @@ const appThemeFirstPaintScript = `
     var palettes = {
       light: {
         background: "#F7FAFC", surface: "#FFFFFF", surfaceSoft: "#EEF4F8", card: "#FFFFFF", cardBorder: "#D8E3EC",
-        textPrimary: "#101827", textSecondary: "#334155", textMuted: "#64748B", accent: "#2F7FE8", accentSoft: "#E6F1FF",
-        button: "#2F7FE8", buttonText: "#FFFFFF", navBackground: "#FFFFFF", navActive: "#2F7FE8", navInactive: "#64748B",
-        progressTrack: "#D8E3EC", progressFill: "#2F7FE8"
+        textPrimary: "#101827", textSecondary: "#334155", textMuted: "#64748B", accent: "#0056FD", accentSoft: "#EAF2FF",
+        button: "#0056FD", buttonText: "#FFFFFF", navBackground: "#FFFFFF", navActive: "#0056FD", navInactive: "#64748B",
+        progressTrack: "#D8E3EC", progressFill: "#0056FD"
       },
       dark: {
         background: "#07111F", surface: "#0D1826", surfaceSoft: "#132234", card: "#0F1C2B", cardBorder: "#23344A",
