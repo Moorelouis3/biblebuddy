@@ -29,11 +29,14 @@ export default function VideoHelpfulPoll({
 
   useEffect(() => {
     const hasLocalVote = Boolean(storageKey && typeof window !== "undefined" && window.localStorage.getItem(storageKey));
-    setDismissState(hasLocalVote ? "hidden" : "visible");
-    setMessage(null);
+    const resetTimer = window.setTimeout(() => {
+      setDismissState(hasLocalVote ? "hidden" : "visible");
+      setMessage(null);
+      if (!userId || !videoId) setVote(null);
+    }, 0);
+
     if (!userId || !videoId) {
-      setVote(null);
-      return;
+      return () => window.clearTimeout(resetTimer);
     }
 
     let cancelled = false;
@@ -57,8 +60,9 @@ export default function VideoHelpfulPoll({
     void loadVote();
     return () => {
       cancelled = true;
+      window.clearTimeout(resetTimer);
     };
-  }, [userId, videoId]);
+  }, [storageKey, userId, videoId]);
 
   async function submitVote(nextVote: boolean) {
     if (!userId || saving) {
@@ -102,7 +106,7 @@ export default function VideoHelpfulPoll({
     <div
       className={`video-helpful-poll relative mt-3 overflow-hidden rounded-2xl border px-3 py-3 ${
         mediaType === "audio"
-          ? "border-white/10 bg-white/[0.055]"
+          ? "border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_78%,transparent)] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_62%,transparent)]"
           : "border-[color-mix(in_srgb,var(--bb-card-border,#dbe7f4)_78%,transparent)] bg-[color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_62%,transparent)]"
       } ${
         dismissState === "puffing" ? "video-helpful-poll-puff" : ""
@@ -141,7 +145,7 @@ export default function VideoHelpfulPoll({
         </div>
       ) : null}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className={`text-sm font-black ${mediaType === "audio" ? "text-white" : "text-[var(--bb-text-primary,#111827)]"}`}>
+        <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">
           Was this {mediaLabel} helpful?
         </p>
         <div className="grid grid-cols-2 gap-2 sm:w-40">
@@ -160,7 +164,7 @@ export default function VideoHelpfulPoll({
                   active
                     ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] shadow-sm"
                     : mediaType === "audio"
-                      ? "border-white/10 bg-[#121e2d] text-[#f8fafc] hover:border-[#7BAFD4]"
+                      ? "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:border-[var(--bb-accent,#2f7fe8)]"
                       : "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:border-[var(--bb-accent,#2f7fe8)]"
                 }`}
               >
@@ -171,7 +175,7 @@ export default function VideoHelpfulPoll({
         </div>
       </div>
       {message ? (
-        <p className={`mt-2 text-xs font-bold ${mediaType === "audio" ? "text-[#aab6c8]" : "text-[var(--bb-text-secondary,#4b5563)]"}`}>{message}</p>
+        <p className="mt-2 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">{message}</p>
       ) : null}
     </div>
   );
