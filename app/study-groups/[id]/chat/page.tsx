@@ -7257,9 +7257,9 @@ export default function GroupChatPage() {
           {activeFeedScrambledPromo && renderScrambledPromoCard(activeFeedPost)}
           {activeFeedBibleBuddyTvShare && renderBibleBuddyTvShareCard(activeFeedPost)}
 
-          {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
+          {!activeFeedCoverPost && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
             <div
-              className="prose prose-sm max-w-none leading-relaxed text-[var(--bb-text-secondary,#374151)] [&_*]:text-[var(--bb-text-secondary,#374151)] [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:text-[var(--bb-text-primary,#111827)] [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-[var(--bb-text-primary,#111827)] [&_li]:my-1.5 [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5"
+              className={`prose prose-sm max-w-none leading-relaxed text-[var(--bb-text-secondary,#374151)] [&_*]:text-[var(--bb-text-secondary,#374151)] [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:text-[var(--bb-text-primary,#111827)] [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-[var(--bb-text-primary,#111827)] [&_li]:my-1.5 [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5 ${activeFeedPollSet ? "mb-4" : ""}`}
               onClick={handleScriptureClick}
               dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
             />
@@ -7573,7 +7573,7 @@ export default function GroupChatPage() {
               {isScrambledSharePost && renderScrambledShareCard(post, true)}
               {isScrambledPromo && renderScrambledPromoCard(post, true)}
               {isBibleBuddyTvShare && renderBibleBuddyTvShareCard(post, true)}
-              {!pollSet && !triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (
+              {!triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (
                 <p className={`text-sm text-[var(--bb-text-secondary,#374151)] mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
                   {getPostPreviewText(post.content)}
                 </p>
