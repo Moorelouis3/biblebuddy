@@ -7390,10 +7390,9 @@ export default function GroupChatPage() {
     }
     const orderedPosts = sortPinnedPostsFirst(posts);
     const isHomeCommunityFeed = activeTab === "home";
-    const weeklyPollPost = isHomeCommunityFeed ? orderedPosts.find((post) => weeklyPollByPostId[post.id]) : undefined;
     const weeklyTriviaPost = isHomeCommunityFeed ? orderedPosts.find((post) => weeklyTriviaByPostId[post.id]) : undefined;
     const feedPosts = isHomeCommunityFeed
-      ? orderedPosts.filter((post) => post.id !== weeklyPollPost?.id && post.id !== weeklyTriviaPost?.id)
+      ? orderedPosts.filter((post) => post.id !== weeklyTriviaPost?.id)
       : orderedPosts;
     const openFeedPostInline = (post: Post) => {
       setSelectedFeedPost(post);
@@ -7410,27 +7409,6 @@ export default function GroupChatPage() {
       <div className="flex flex-col gap-6">
         {isHomeCommunityFeed && (
           <>
-            {weeklyPollPost && weeklyPollByPostId[weeklyPollPost.id] ? (
-              <section className="bb-community-feature-card rounded-[28px] border border-[var(--bb-card-border,#d4ecd4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
-                <div className="mb-4 flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">Weekly Poll</p>
-                    <h2 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                      This Week in the Group
-                    </h2>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => openFeedPostInline(weeklyPollPost)}
-                    className="rounded-full border border-[var(--bb-card-border)] bg-[var(--bb-surface)] px-3 py-1.5 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:border-[var(--bb-accent)] hover:text-[var(--bb-accent)]"
-                  >
-                    Open
-                  </button>
-                </div>
-                <GroupWeeklyPollCard pollSet={weeklyPollByPostId[weeklyPollPost.id]} userId={userId} embedded />
-              </section>
-            ) : null}
-
             {weeklyTriviaPost && weeklyTriviaByPostId[weeklyTriviaPost.id] ? (
               <section className="bb-community-feature-card rounded-[28px] border border-[var(--bb-card-border,#d4ecd4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm">
                 <div className="mb-4 flex items-start justify-between gap-4">
