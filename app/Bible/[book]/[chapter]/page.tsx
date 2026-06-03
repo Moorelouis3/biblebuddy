@@ -2008,7 +2008,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
   // Determine back link:
   // - If opened from a reading plan or devotional, send users back there.
   // - Otherwise, send them to the normal book overview page.
-  const backLink = sourceContext.backLink || `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
+  const backLink = sourceContext.backLink || "/Bible";
   const backText = sourceContext.backText || `? Back to ${bookDisplayName} overview`;
 
   const chapterDiscussionSlug = `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
@@ -3662,7 +3662,7 @@ function CongratsModalWithConfetti({
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 
-  const backLink = `/reading/books/${book.toLowerCase()}`;
+  const backLink = "/Bible";
 
   const [showLevelUpModal, setShowLevelUpModal] = useState(false);
   const [showModal, setShowModal] = useState(true);

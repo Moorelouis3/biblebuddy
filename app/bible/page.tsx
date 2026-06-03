@@ -82,9 +82,7 @@ const BOOKS_PER_PAGE = 12;
 
 export default function BiblePage() {
   const [bookPage, setBookPage] = useState(0);
-  const [userId, setUserId] = useState<string | null>(null);
   const [bookStates, setBookStates] = useState<Record<string, { complete: boolean }>>({});
-  const [loading, setLoading] = useState(false); // No loading delay for static book list
 
   // book pagination
   const startIndex = bookPage * BOOKS_PER_PAGE;
@@ -97,8 +95,6 @@ export default function BiblePage() {
     async function loadData() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
-
-      setUserId(user.id);
 
       try {
         // Get completion states for all books (no loading delay)
@@ -128,14 +124,14 @@ export default function BiblePage() {
             <LouisAvatar />
           </div>
           <div className="bg-gray-100 border border-gray-200 rounded-2xl px-4 py-3 text-sm leading-relaxed text-gray-800 flex-1">
-            <p>These are all the books of the Bible. Pick one and let's start reading.</p>
+            <p>These are all the books of the Bible. Pick one and let&apos;s start reading.</p>
           </div>
         </div>
 
         {/* HELPER LINKS */}
         <div className="mb-4 text-sm text-gray-600">
-          <Link href="/reading" className="text-blue-600 hover:underline">
-            Don't know where to start? Try the Reading Plan →
+          <Link href="/reading-plans" className="text-blue-600 hover:underline">
+            Don&apos;t know where to start? Try the Reading Plan →
           </Link>
         </div>
 
@@ -150,9 +146,8 @@ export default function BiblePage() {
                     const baseClasses =
                       "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
 
-                    // All books are unlocked - no locking behavior
-                    // Add open=true query param to indicate Open Bible mode
-                    const href = `/reading/books/${encodeURIComponent(book.toLowerCase())}?open=true`;
+                    // All books are unlocked and open directly in the full Bible reader.
+                    const href = `/Bible/${encodeURIComponent(book.toLowerCase())}/1`;
 
                     // Determine styling: complete = blue, default = white
                     let cardClasses = "bg-white border-blue-200";

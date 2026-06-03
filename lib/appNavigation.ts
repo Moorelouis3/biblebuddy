@@ -22,7 +22,7 @@ export const APP_NAV_ITEMS: AppNavItem[] = [
   },
   {
     label: "The Bible",
-    href: "/reading",
+    href: "/Bible",
     activePrefixes: ["/reading", "/Bible", "/bible-study-notes", "/reading-plan"],
     activeClasses: "bg-blue-50 text-blue-700 font-medium cursor-not-allowed",
     hoverClasses: "text-gray-700 hover:bg-blue-50 hover:text-blue-600 active:scale-[0.98]",
@@ -148,9 +148,9 @@ export function buildBreadcrumbs(pathname: string | null | undefined): Breadcrum
 
     if (segments[1] === "books") {
       const bookSegment = segments[2];
-      const bookHref = bookSegment ? `/reading/books/${bookSegment}` : undefined;
+      const bookHref = bookSegment ? `/Bible/${bookSegment}/1` : undefined;
 
-      breadcrumbs.push({ label: "The Bible", href: "/reading" });
+      breadcrumbs.push({ label: "The Bible", href: "/Bible" });
 
       if (bookSegment) {
         breadcrumbs.push({
@@ -172,11 +172,11 @@ export function buildBreadcrumbs(pathname: string | null | undefined): Breadcrum
   }
 
   if (segments[0] === "Bible") {
-    breadcrumbs.push({ label: "The Bible", href: "/reading" });
+    breadcrumbs.push({ label: "The Bible", href: "/Bible" });
 
     const bookSegment = segments[1];
     if (bookSegment) {
-      const bookHref = `/reading/books/${bookSegment}`;
+      const bookHref = `/Bible/${bookSegment}/1`;
       breadcrumbs.push({
         label: segmentLabel(bookSegment, "Bible"),
         href: segments.length > 2 ? bookHref : undefined,

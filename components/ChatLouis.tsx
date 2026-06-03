@@ -512,7 +512,7 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
 
   const simpleRoutes: Array<{ match: RegExp; href: string; reply: string }> = [
     { match: /\b(dashboard|home)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to the dashboard now." },
-    { match: /\b(the )?bible( reader)?\b/, href: "/reading", reply: "Okay.\n\nI’m opening the Bible reader now." },
+    { match: /\b(the )?bible( reader)?\b/, href: "/Bible", reply: "Okay.\n\nI’m opening the Bible reader now." },
     { match: /\b(devotionals?|bible studies?)\b/, href: "/bible-studies", reply: "Okay.\n\nI’m taking you to the Bible Studies page now." },
     { match: /\b(reading plans?|plans?)\b/, href: "/reading-plans", reply: "Okay.\n\nI’m opening the reading plans now." },
     { match: /\b(group|bible study group|the group)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to The Bible Study Group now." },
@@ -1099,7 +1099,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
 
   if (context.lastMasterActionSummary?.continueHref) {
     const href = context.lastMasterActionSummary.continueHref;
-    const isBible = href.includes("/Bible/") || href === "/reading";
+    const isBible = href.includes("/Bible/") || href === "/Bible" || href === "/reading";
     const isGroup = false;
     const isGame = href.includes("/bible-trivia");
 
@@ -1377,7 +1377,7 @@ function summarizeLastMasterAction(action: {
   if (action.action_type === "dashboard_card_opened" && label) {
     const href =
       label === "The Bible"
-        ? "/reading"
+        ? "/Bible"
         : label === "Bible Study Group"
           ? null
           : label === "Bible Study Tools"
@@ -1533,7 +1533,7 @@ function buildLouisJourneyRecommendation({
       recommendationLine:
         "Spend a little time in the Bible reader or study side of the app today. Read the chapter behind what you just learned and let the notes and context help it click.",
       primaryButtonText: "Open the Bible",
-      primaryButtonHref: "/reading",
+      primaryButtonHref: "/Bible",
       level: 1,
       cardTitle: "Read The Chapter Behind It",
       cardSubtitle: "Use the Bible reader and notes to deepen understanding.",

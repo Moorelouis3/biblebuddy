@@ -143,7 +143,7 @@ function buildStaticMentions() {
     add({
       key: `book:${book}`,
       label: book,
-      href: `/reading/books/${encodeURIComponent(book.toLowerCase())}?open=true`,
+      href: `/Bible/${encodeURIComponent(book.toLowerCase())}/1`,
       kind: "book",
     });
 

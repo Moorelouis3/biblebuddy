@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
@@ -1929,6 +1930,7 @@ export default function DashboardJourneyExperience({
   bibleYearReport,
   bibleYearProgressReady = true,
 }: Props) {
+  const router = useRouter();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
   const previousCompletedCountRef = useRef<number | null>(null);
@@ -2421,7 +2423,7 @@ export default function DashboardJourneyExperience({
     onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   }> = [
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
-    { key: "bible", label: "Bible", icon: <BibleBookIcon />, href: "#bible-reader" },
+    { key: "bible", label: "Bible", icon: <BibleBookIcon />, href: "/Bible" },
     { key: "bible_studies", label: "Devotionals", icon: "\uD83C\uDF05", href: "/bible-studies" },
     { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
@@ -4493,11 +4495,8 @@ export default function DashboardJourneyExperience({
   }
 
   function openBibleReaderPage() {
-    const bibleIndex = dashboardPageKeys.indexOf("bible");
-    if (bibleIndex < 0) return;
-    clearBibleYearViews();
     setDashboardMenuOpen(false);
-    snapToPage(bibleIndex);
+    router.push("/Bible");
   }
 
   function openBuddyChatPage() {
@@ -15147,7 +15146,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       data-dashboard-nav-key={item.key}
                       href={item.href}
                       onClick={(event) => {
-                        if (item.key === "group") {
+                        if (item.key === "group" || item.key === "bible") {
                           setDashboardMenuOpen(false);
                           return;
                         }
@@ -15350,7 +15349,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className="mx-auto grid max-w-md grid-cols-5 items-end gap-1 text-center">
           {[
             { label: "Home", href: "/dashboard", icon: "⌂", active: true },
-            { label: "Bible", href: "/reading", icon: "📖" },
+            { label: "Bible", href: "/Bible", icon: "📖" },
             { label: "Group", href: "/study-groups", icon: "👥" },
             { label: "TV", href: "/biblebuddy-tv", icon: "▶" },
             { label: "Games", href: "/bible-study-games", icon: "🎮" },
