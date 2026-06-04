@@ -9594,11 +9594,36 @@ Genesis 1 showed God forming the world and filling it with life.
 
 Now Genesis 2 tells us nothing is missing from what God set out to make.
 
+The phrase "and all the host of them" means everything God placed inside creation was finished too.
+
+Host does not only mean the heavens and earth as empty spaces.
+
+It means the full company of what fills them.
+
+🌌 The sun, moon, and stars fill the heavens
+🐦 Birds fill the sky
+🐟 Fish fill the seas
+🌱 Plants fill the land
+🐾 Animals fill the earth
+👤 Humanity stands in God's image
+
+That connects directly back to Genesis 1.
+
+God first formed environments, then He filled those environments with life.
+
+The heavens were filled with heavenly bodies.
+
+The seas were filled with fish.
+
+The sky was filled with birds.
+
+The land was filled with animals and mankind.
+
 The world is not half-built.
 
 It is not abandoned.
 
-It is complete and ready for life.
+It is complete, full, ordered, and ready for life.
 
 🌌 The heavens are finished
 🌍 The earth is finished
@@ -9606,6 +9631,8 @@ It is complete and ready for life.
 👤 Mankind has been created
 
 This phrase matters because it shows that God finishes what He starts.
+
+Nothing is missing, unfinished, or left incomplete.
 
 Creation rests on the completed work of God, not on human effort.`,
         ],
@@ -9738,6 +9765,32 @@ Genesis 2 slows down and zooms in.
 This phrase helps us understand that Genesis 2 is not a second, competing creation story.
 
 It is a closer look at mankind, Eden, work, command, and relationship.`,
+        ],
+        [
+          "🌌 Of The Heavens And Of The Earth",
+          `This phrase helps us understand what Genesis 2 is doing.
+
+Genesis 2 is not starting a second creation story that disagrees with Genesis 1.
+
+Genesis 1 gives the big picture view of creation.
+
+Genesis 2 zooms in on the human part of that same creation story.
+
+It focuses on mankind, the Garden of Eden, work, command, and relationship with God.
+
+"These are the generations of the heavens and of the earth" means this is the account of what came from the heavens and the earth after God created them.
+
+Generations does not mean the heavens and earth had children.
+
+It is a Hebrew way of introducing the history, development, or story that follows.
+
+Genesis uses this kind of phrase again and again to open a new section.
+
+Later we read, "These are the generations of Noah," "These are the generations of Shem," and "These are the generations of Isaac."
+
+Each time, Genesis is telling us the focus is narrowing to the next important part of the story.
+
+Here, Genesis 2:4 connects the completed creation account with the detailed story of human life in the garden.`,
         ],
         [
           "🌱 No Plant Of The Field",
@@ -9932,93 +9985,118 @@ He is formed by God, filled with life by God, and placed in God's world for God'
     }),
     makePersonalGenesisTwoSection({
       startVerse: 8,
-      endVerse: 14,
-      reference: "Genesis 2:8-14",
+      endVerse: 9,
+      reference: "Genesis 2:8-9",
       title: "The Garden Of Eden",
       icon: "🌳",
       phrases: [
         [
           "🌳 The Lord God Planted A Garden",
-          `God does not just make a man and leave him in an empty world.
+          `God does not just form Adam and leave him standing in an empty world.
 
-He plants a garden.
+God prepares a place for him.
 
-That detail shows care, preparation, and generosity.
+The garden is intentional.
 
-The first human home is not bare survival.
+It is not random land Adam happens to find.
 
-It is a place God prepared.
+It is planted by the Lord God as a place of provision, beauty, purpose, and relationship.
 
-🌳 Beauty
-🍎 Food
-💧 Water
-🛠️ Purpose
+🌳 God prepares the place
+🍎 God provides food
+👀 God gives beauty
+🛠️ God gives Adam meaningful responsibility
 
-This phrase matters because God is shown as both Creator and provider.
+This matters because the first picture of human life is not survival in a harsh wilderness.
 
-He makes the man, then prepares a place for him to live, work, and enjoy.`,
+It is life in a place God prepared.
+
+Adam begins his life surrounded by God's care before he ever does anything to earn it.`,
         ],
         [
           "📍 Eastward In Eden",
-          `Eden is presented as a real place in the story.
+          `This phrase helps us picture the location more carefully.
 
-The word Eden is often connected with delight or pleasure.
+Genesis does not simply say Eden was the garden.
 
-The garden is located in Eden, which means Eden is the larger region and the garden is the special place God plants there.
+It says God planted a garden eastward in Eden.
 
-That helps readers picture it better.
+That means Eden appears to be the larger region, and the garden is a specific place inside that region.
 
-🌎 Eden is the region
-🌳 The garden is inside Eden
-👤 The man is placed there by God
+🌍 Eden is the larger area
+🌳 The garden is planted within Eden
+👤 Adam is placed in that prepared garden
 
-This is not just scenery.
+This matters because the Bible is not treating Eden like a vague idea floating in the air.
 
-The place matters because the rest of Genesis will be shaped by being inside, outside, near, or away from God's prepared place.`,
+The text speaks about place, direction, rivers, and land.
+
+Genesis wants the reader to feel that the garden belongs to the real world God made, even if we cannot map it perfectly today.`,
         ],
         [
-          "👀 Pleasant To The Sight",
-          `The trees were not only useful.
+          "👤 There He Put The Man Whom He Had Formed",
+          `Adam does not choose the garden for himself.
 
-They were beautiful.
+God puts him there.
 
-God could have made a world that only worked.
+That means Adam's location is part of Adam's calling.
 
-But He made a world that could be enjoyed.
+The same God who formed the man also places the man where he is meant to live, work, and obey.
 
-This detail teaches us that beauty matters to God.
+👤 God forms Adam
+📍 God places Adam
+🛠️ God gives Adam purpose
+🌳 God surrounds Adam with provision
 
-👀 Pleasant to see
-🍎 Good to eat
-🌳 Planted with care
+This phrase matters because mankind's purpose begins with receiving from God.
 
-God's provision is not cold or mechanical.
+Adam is not self-made, self-placed, or self-directed.
 
-He gives mankind a place filled with delight.
-
-Creation is not just functional.
-
-It is generous.`,
+He is formed by God and placed in God's prepared world for God's purpose.`,
         ],
         [
-          "🍎 Good For Food",
-          `The garden is beautiful, but it is also practical.
+          "🌱 Out Of The Ground Made The Lord God To Grow Every Tree",
+          `God causes the trees to grow from the ground.
 
-The trees provide food.
+That connects the garden back to the same earth Adam was formed from.
 
-Before Adam asks, God has already provided.
+The ground is not empty or useless.
 
-Before hunger appears, provision is already growing.
+Under God's command, it becomes fruitful, beautiful, and life-giving.
 
-🍎 Food is ready
-🌳 Trees are present
-🙏 God provides first
+🌱 Trees grow from the ground
+🍎 Food comes from God's provision
+🌳 The garden is full of life
+🙌 God provides before Adam asks
 
-This phrase matters because it shows the order of God's generosity.
+This shows God's intentional design.
 
-God gives before He commands.
+The garden is not barely enough.
 
-Adam will receive a boundary later, but that boundary sits inside a garden full of provision.`,
+It is abundant.
+
+God gives Adam a world that can feed him, delight him, and give him meaningful work.`,
+        ],
+        [
+          "👀 Pleasant To The Sight And Good For Food",
+          `This phrase is easy to read past, but it tells us something beautiful about God.
+
+The trees were useful, but they were also beautiful.
+
+God could have made food that kept people alive but brought no delight.
+
+Instead, He made trees that were good to eat and pleasant to look at.
+
+👀 Beauty matters
+🍎 Provision matters
+🌳 Creation is generous
+🙌 God cares about more than survival
+
+This means God's goodness is not cold or mechanical.
+
+He provides for need, but He also gives delight.
+
+The first home God prepares for humanity is both practical and beautiful.`,
         ],
         [
           "🌲 The Tree Of Life",
@@ -10026,19 +10104,41 @@ Adam will receive a boundary later, but that boundary sits inside a garden full 
 
 It appears here at the beginning of Scripture and returns at the end in Revelation.
 
-That means the Bible starts and ends with life connected to God's presence.
+That tells us the whole Bible is moving from life with God, to life lost through sin, to life restored by God.
 
-The tree represents life given and sustained by God.
+The tree represents life that comes from God and is sustained by God.
 
-🌲 Life in Eden
-🚪 Lost access after sin
-✨ Life restored in Revelation
+🌲 Life in the garden
+🚪 Access blocked after sin
+✝️ Redemption opens the way back to life
+✨ The tree appears again in Revelation
 
-This tree reminds us that eternal life is not something humans grab for themselves.
+This tree reminds us that eternal life is not something humans create or grab for themselves.
 
-Life comes from God.
+Life belongs to God.
 
-To be cut off from God's life is the great tragedy of the fall.`,
+To be cut off from God's life is the great tragedy of the fall, and to be restored to life is the hope of the whole Bible.`,
+        ],
+        [
+          "📍 In The Midst Of The Garden",
+          `The special trees are placed in the middle of the garden.
+
+That detail matters because the center of the garden becomes the center of Adam's trust.
+
+The tree of life and the tree of the knowledge of good and evil are not hidden away in some forgotten corner.
+
+They stand where Adam will know they are there.
+
+📍 The trees are central
+🌲 Life is near
+⚖️ The test is clear
+👤 Adam must live before God with trust
+
+This shows that the garden is not only a place of food and beauty.
+
+It is also a place of relationship and obedience.
+
+Adam's life with God includes gift, presence, responsibility, and a clear boundary.`,
         ],
         [
           "⚖️ The Tree Of The Knowledge Of Good And Evil",
@@ -10048,37 +10148,167 @@ The issue is not whether Adam and Eve will learn basic facts.
 
 The issue is whether they will trust God to define good and evil.
 
-God places a boundary around this tree.
-
-That boundary teaches Adam that he is not the final authority.
+God places a boundary around this tree because Adam is not the final authority over moral truth.
 
 ⚖️ God defines good
 ⚖️ God defines evil
-🙏 Humanity must trust Him
+🚧 The boundary teaches trust
+👤 Humanity must live under God's wisdom
 
-This phrase matters because the temptation in Genesis 3 will focus on this exact question.
+This tree gives Adam a real choice.
 
-Will people receive wisdom from God, or try to take God's place?`,
+Love and obedience are meaningful because Adam is not forced like a machine.
+
+In Genesis 3, the serpent will aim directly at this tree because the real temptation is to take God's place and decide good and evil apart from Him.`,
         ],
+      ],
+    }),
+    makePersonalGenesisTwoSection({
+      startVerse: 10,
+      endVerse: 14,
+      reference: "Genesis 2:10-14",
+      title: "The River Of Eden",
+      icon: "🌊",
+      phrases: [
         [
           "🌊 A River Went Out Of Eden",
-          `A river flows out of Eden to water the garden.
+          `A river flows out of Eden and waters the garden.
 
-Water is a picture of life and provision all through the Bible.
+Moses includes this detail because Eden is pictured as a place of life and provision.
 
-Here, life-giving water flows from the place God prepared.
+Water is one of the clearest signs of life in the ancient world.
 
-The river does not stay still.
+Without water, land becomes dry, hungry, and difficult to live in.
 
-It moves outward and divides into other rivers.
+🌊 Water flows from Eden
+🌳 The garden is watered
+🌍 Life moves outward
+🙌 God provides what creation needs
 
-🌊 Water flows
-🌳 The garden is sustained
-🌍 Life spreads outward
+The river makes Eden feel like a center of blessing.
 
-This detail makes Eden feel like a center of blessing.
+Life does not only sit inside the garden.
 
-The place God plants becomes a place where life flows out.`,
+It flows outward from the place God prepared.
+
+That helps readers see Eden as a place where God's abundance begins to spread into the world.`,
+        ],
+        [
+          "➗ It Was Parted And Became Four Heads",
+          `The river from Eden divides into four heads.
+
+That means one source river becomes four separate river systems.
+
+Moses is showing that the life-giving water from Eden spreads in different directions.
+
+The garden is not described like a closed-off pond.
+
+It is a place where provision flows outward.
+
+➗ One river divides
+🌊 Four river branches form
+🌍 Different lands are reached
+🙌 Eden's abundance spreads beyond one spot
+
+This also connects Eden to the real world the original readers knew.
+
+The rivers and lands make the story feel grounded in geography.
+
+Moses is not simply saying, "There was a nice garden somewhere."
+
+He is giving details that connect Eden to land, water, resources, and history.`,
+        ],
+        [
+          "🌊 River One: Pishon",
+          `Pishon is the first river named from Eden's divided waters.
+
+Genesis says it flows around the whole land of Havilah.
+
+We cannot identify Pishon with certainty today, but Moses gives enough detail to show that this river was connected with a land known for valuable resources.
+
+Havilah is mentioned because the land had gold, bdellium, and onyx stone.
+
+The text even says the gold was good, which means it was high quality and worth noticing.
+
+💰 Good gold shows value
+🌿 Bdellium was likely an aromatic resin or precious material
+💎 Onyx stone was a valuable stone used later in priestly settings
+🌍 Havilah shows Eden's world was rich and supplied
+
+These details are not random decoration.
+
+They show that God's creation was full of beauty, usefulness, and abundance.
+
+Later, gold and precious stones appear in the tabernacle, priestly garments, temple imagery, and even the New Jerusalem.
+
+So Genesis is already showing that the physical world is not worthless.
+
+God filled His world with good resources that could be received, used, and later brought into worship.`,
+        ],
+        [
+          "🌊 River Two: Gihon",
+          `Gihon is the second river named.
+
+Genesis says it flows around the whole land of Cush.
+
+Cush is often associated with the region south of Egypt, sometimes connected with Ethiopia or Nubia in biblical geography.
+
+That does not mean every detail is easy to map today, but the point is clear: Moses is connecting Eden's rivers with lands his readers could recognize as real places.
+
+🌊 Gihon is connected to Cush
+🌍 Cush points toward a known region
+📍 The garden story is tied to geography
+🙌 Eden's provision reaches beyond one local place
+
+This matters because the Bible does not treat Eden as merely symbolic.
+
+The river list makes readers think about land, nations, distance, and the spread of life.
+
+Even before nations appear later in Genesis, the story is already showing a world that will be filled with peoples and places.`,
+        ],
+        [
+          "🌊 River Three: Hiddekel",
+          `Hiddekel is commonly identified with the Tigris River.
+
+Genesis says it goes toward the east of Assyria.
+
+Assyria becomes very important later in the Bible, especially as a powerful empire connected to judgment, war, exile, and the prophets.
+
+But here, before all of that later history, Assyria is simply part of the geography of God's created world.
+
+🌊 Hiddekel points to the Tigris
+📍 Assyria gives the reader a location marker
+🌍 Eden's rivers are connected to known lands
+📖 Later Bible history will make this region important
+
+This helps the original audience connect the early chapters of Genesis to the world they knew.
+
+The garden story is not floating outside history.
+
+Moses is showing that the beginnings of humanity are connected to real lands and river systems that later generations would recognize.`,
+        ],
+        [
+          "🌊 River Four: Euphrates",
+          `The Euphrates is the fourth river, and it is the easiest one for many readers to recognize.
+
+The Euphrates becomes one of the major rivers of the biblical world.
+
+It is connected to Mesopotamia, the region where many important events in Genesis and the Old Testament world take place.
+
+Later, the Euphrates is also connected with boundaries, empires, exile, and the movement of nations.
+
+🌊 The Euphrates is a major ancient river
+🌍 It anchors the story in a known region
+📖 It appears again throughout biblical history
+🙌 Its mention shows Eden's geography reaching into the wider world
+
+Moses mentions it because the original readers would know this river mattered.
+
+By naming it, Genesis connects the garden narrative to the world of later Bible history.
+
+The point is not only, "Here are four rivers."
+
+The point is that Eden is pictured as a real, life-giving place whose waters connect creation, geography, provision, and the larger story Scripture will keep telling.`,
         ],
       ],
     }),
