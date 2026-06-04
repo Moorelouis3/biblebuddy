@@ -207,6 +207,48 @@ const BOOK_CHAPTER_TOPICS: Record<string, string[]> = {
     "Jacob blesses his sons and points ahead to Judah's royal future.",
     "Jacob and Joseph die in faith, and Genesis ends with hope still waiting for fulfillment.",
   ],
+  exodus: [
+    "Israel grows in Egypt, Pharaoh enslaves them, and God begins hearing their cry.",
+    "Moses is born, rescued from the Nile, and later flees Egypt after defending a Hebrew slave.",
+    "God meets Moses at the burning bush and reveals that He has come down to deliver His people.",
+    "Moses resists God's call, but God gives signs, sends Aaron, and brings Moses back toward Egypt.",
+    "Moses confronts Pharaoh, but Pharaoh increases Israel's burden instead of letting them go.",
+    "God repeats His covenant promise and prepares Moses to speak again in His name.",
+    "Aaron's staff becomes a serpent, and the first plague turns the Nile to blood.",
+    "Frogs, gnats, and flies strike Egypt, showing that Pharaoh is not in control.",
+    "Livestock die, boils break out, hail falls, and God begins separating Egypt from Israel.",
+    "Locusts and darkness cover Egypt, but Pharaoh still hardens his heart.",
+    "God announces the final plague, and Egypt is warned that the firstborn will die.",
+    "The Passover is given, the firstborn die, and Israel finally leaves Egypt.",
+    "God claims the firstborn, leads Israel by cloud and fire, and brings them toward the sea.",
+    "Pharaoh pursues Israel, God parts the sea, and Egypt's army is overthrown.",
+    "Israel sings after deliverance, then quickly learns that freedom still requires trust.",
+    "God provides manna and quail in the wilderness, teaching Israel daily dependence.",
+    "God brings water from the rock, Israel battles Amalek, and Moses learns dependence in leadership.",
+    "Jethro visits Moses and teaches him to share the weight of judging the people.",
+    "Israel arrives at Sinai, and God prepares the people to meet Him at the mountain.",
+    "God speaks the Ten Commandments and shows Israel what covenant life with Him requires.",
+    "God gives laws about servants, violence, responsibility, and justice in everyday life.",
+    "God gives laws about property, worship, mercy, and how Israel should treat the vulnerable.",
+    "God commands justice, Sabbath rhythms, feasts, and warns Israel not to follow other gods.",
+    "Israel confirms the covenant with blood, and Moses goes up the mountain into God's glory.",
+    "God commands Israel to bring offerings for the tabernacle, the place where He will dwell among them.",
+    "God gives instructions for the tabernacle curtains, coverings, frames, veil, and altar.",
+    "God describes the bronze altar, the courtyard, and the oil for the lampstand.",
+    "Aaron and his sons are set apart with holy garments for priestly service.",
+    "God gives instructions for consecrating the priests and meeting Israel at the tabernacle.",
+    "God describes the altar of incense, ransom money, washing basin, anointing oil, and holy incense.",
+    "God calls Bezalel and Oholiab by name, gives Sabbath instructions, and gives Moses the stone tablets.",
+    "Israel worships the golden calf, and Moses intercedes after the people break covenant.",
+    "God tells Israel to leave Sinai, and Moses pleads for God's presence to go with them.",
+    "God renews the covenant, reveals His mercy and justice, and gives Moses new tablets.",
+    "Moses gathers offerings, and willing hearts bring materials for the tabernacle.",
+    "Skilled workers begin making the tabernacle curtains, frames, veil, and entrance screen.",
+    "Bezalel makes the ark, table, lampstand, altar of incense, anointing oil, and incense.",
+    "The altar, basin, courtyard, and material records show careful worship and accountability.",
+    "The priestly garments are made, and Moses inspects the completed tabernacle work.",
+    "The tabernacle is set up, God's glory fills it, and Exodus ends with God dwelling among His people.",
+  ],
 };
 
 export default function BookPage() {
@@ -369,19 +411,36 @@ export default function BookPage() {
                         Chapter Roadmap
                       </p>
                       <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                        {BOOK_CHAPTER_TOPICS[bookKey].map((topic, index) => (
-                          <div
+                        {BOOK_CHAPTER_TOPICS[bookKey].map((topic, index) => {
+                          const chapter = index + 1;
+                          return (
+                          <Link
                             key={`${bookKey}-topic-${index + 1}`}
-                            className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-3"
+                            href={`/Bible/${encodeURIComponent(bookKey)}/${chapter}`}
+                            onClick={() => {
+                              if (!userId) return;
+
+                              void trackNavigationActionOnce({
+                                userId,
+                                username,
+                                actionType: ACTION_TYPE.bible_chapter_opened,
+                                actionLabel: `${bookDisplayName} ${chapter}`,
+                                dedupeKey: `bible-chapter-opened:${bookKey}:${chapter}`,
+                              }).catch((error) => {
+                                console.error("[NAV] Failed to track Bible roadmap chapter click:", error);
+                              });
+                            }}
+                            className="block rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 transition hover:border-blue-200 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-200"
                           >
                             <p className="text-xs font-black text-blue-600">
-                              {bookDisplayName} {index + 1}
+                              {bookDisplayName} {chapter}
                             </p>
                             <p className="mt-1 text-sm leading-6 text-gray-800">
                               {topic}
                             </p>
-                          </div>
-                        ))}
+                          </Link>
+                        );
+                        })}
                       </div>
                     </div>
                   ) : null}
