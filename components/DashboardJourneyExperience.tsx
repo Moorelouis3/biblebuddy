@@ -2423,7 +2423,7 @@ export default function DashboardJourneyExperience({
     onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   }> = [
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
-    { key: "bible", label: "Bible", icon: <BibleBookIcon />, href: "/Bible" },
+    { key: "bible", label: "Bible", icon: <BibleBookIcon />, href: "/reading" },
     { key: "bible_studies", label: "Devotionals", icon: "\uD83C\uDF05", href: "/bible-studies" },
     { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
@@ -4496,7 +4496,7 @@ export default function DashboardJourneyExperience({
 
   function openBibleReaderPage() {
     setDashboardMenuOpen(false);
-    router.push("/Bible");
+    router.push("/reading");
   }
 
   function openBuddyChatPage() {
@@ -15349,7 +15349,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className="mx-auto grid max-w-md grid-cols-5 items-end gap-1 text-center">
           {[
             { label: "Home", href: "/dashboard", icon: "⌂", active: true },
-            { label: "Bible", href: "/Bible", icon: "📖" },
+            { label: "Bible", href: "/reading", icon: "📖" },
             { label: "Group", href: "/study-groups", icon: "👥" },
             { label: "TV", href: "/biblebuddy-tv", icon: "▶" },
             { label: "Games", href: "/bible-study-games", icon: "🎮" },
