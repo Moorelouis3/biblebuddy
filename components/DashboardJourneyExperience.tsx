@@ -70,13 +70,11 @@ const EmbeddedSettingsPage = dynamic(() => import("../app/settings/page"), { ssr
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
 const DAY_ONE_STUDY_NOTES_GIFT_POPUP_ID = "bible-year:day-1-study-notes-gift";
-const DASHBOARD_AUDIO_PLAYER_TUTORIAL_POPUP_ID = "dashboard:audio-player-tutorial";
 const DAY_THREE_PRO_UPGRADE_PROMPT_ID = "bible-year:day-3-pro-upgrade";
 const DAY_SEVEN_PRO_UPGRADE_PROMPT_ID = "bible-year:day-7-pro-upgrade";
 const DAY_THREE_PRO_POPUP_PREVIEW_USER_ID = "669d4404-5eee-49ee-a112-2ecbd573e22a";
 const BIBLE_IN_ONE_YEAR_TOTAL_CHAPTERS = generateBibleInOneYearPlan().totalChapters;
 const DASHBOARD_GUIDED_INTRO_STORAGE_KEY = "bb:dashboard-guided-intro-seen";
-const DASHBOARD_FIRST_PLAYER_WELCOME_STORAGE_KEY = "bb:dashboard-first-player-welcome-seen";
 const BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX = "bb:bible-year-dashboard-day";
 const BIBLE_YEAR_DASHBOARD_DAY_TTL_MS = 60 * 60 * 1000;
 type BibleYearReaderTranslation = "web" | "kjv" | "asv";
@@ -120,10 +118,6 @@ function splitEnrichedVerseHtmlByNumber(enrichedContent: string) {
 
 function getBibleYearDashboardDayStorageKey(userId?: string | null) {
   return `${BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX}:${userId || "guest"}`;
-}
-
-function getDashboardFirstPlayerWelcomeStorageKey(userId?: string | null) {
-  return `${DASHBOARD_FIRST_PLAYER_WELCOME_STORAGE_KEY}:${userId || "guest"}`;
 }
 
 function getStoredBibleYearDashboardDayNumber(userId?: string | null) {
@@ -2152,10 +2146,6 @@ export default function DashboardJourneyExperience({
   const [isAnonymousGuest, setIsAnonymousGuest] = useState(false);
   const [dashboardGuidedIntroStep, setDashboardGuidedIntroStep] = useState<number | null>(null);
   const [dashboardGuidedIntroTargetRect, setDashboardGuidedIntroTargetRect] = useState<DOMRect | null>(null);
-  const [dashboardFirstWelcomeOpen, setDashboardFirstWelcomeOpen] = useState(false);
-  const [dashboardFirstPlayerSpotlightOpen, setDashboardFirstPlayerSpotlightOpen] = useState(false);
-  const [dashboardFirstPlayerRect, setDashboardFirstPlayerRect] = useState<DOMRect | null>(null);
-  const [dashboardAudioTutorialSeen, setDashboardAudioTutorialSeen] = useState(false);
   const [showDayOneStartPrompt, setShowDayOneStartPrompt] = useState(false);
   const [highlightDayOneStartTask, setHighlightDayOneStartTask] = useState(false);
   const dashboardGuidedIntroStartedRef = useRef(false);
@@ -2594,80 +2584,6 @@ export default function DashboardJourneyExperience({
   const bibleYearDashboardTasks = activeBibleYearDashboardDay
     ? buildBibleYearDayTasks(activeBibleYearDashboardDay)
     : null;
-
-  useEffect(() => {
-    let cancelled = false;
-    let timer: number | null = null;
-
-    async function loadDashboardAudioTutorialState() {
-      setDashboardFirstWelcomeOpen(false);
-      setDashboardFirstPlayerSpotlightOpen(false);
-
-      if (!bibleYearDashboardActive || !bibleYearCurrentDayReady || !activeBibleYearDashboardDay || !userId) {
-        return;
-      }
-
-      const legacyStorageKey = getDashboardFirstPlayerWelcomeStorageKey(userId);
-      const legacySeen = typeof window !== "undefined" && window.localStorage.getItem(legacyStorageKey) === "1";
-
-      const { data, error } = await supabase
-        .from("user_popups_seen")
-        .select("has_seen")
-        .eq("user_id", userId)
-        .eq("popup_id", DASHBOARD_AUDIO_PLAYER_TUTORIAL_POPUP_ID)
-        .maybeSingle();
-
-      if (cancelled) return;
-
-      if (error) {
-        if (!/user_popups_seen|schema cache/i.test(error.message || "")) {
-          console.warn("[POPUPS] Could not load dashboard audio tutorial state:", error.message);
-        }
-        setDashboardAudioTutorialSeen(true);
-        return;
-      }
-
-      if (data?.has_seen === true || legacySeen) {
-        setDashboardAudioTutorialSeen(true);
-        if (legacySeen && data?.has_seen !== true) {
-          void markFirstDashboardWelcomeSeen();
-        }
-        return;
-      }
-
-      setDashboardAudioTutorialSeen(false);
-      timer = window.setTimeout(() => {
-        if (!cancelled) setDashboardFirstPlayerSpotlightOpen(true);
-      }, 450);
-    }
-
-    void loadDashboardAudioTutorialState();
-
-    return () => {
-      cancelled = true;
-      if (timer !== null) window.clearTimeout(timer);
-    };
-  }, [activeBibleYearDashboardDay, bibleYearCurrentDayReady, bibleYearDashboardActive, userId]);
-
-  useEffect(() => {
-    if (!dashboardFirstPlayerSpotlightOpen) return;
-    const updatePlayerRect = () => {
-      const element = document.querySelector("[data-bb-first-player-spotlight='true']");
-      setDashboardFirstPlayerRect(element ? element.getBoundingClientRect() : null);
-    };
-    const scrollTimer = window.setTimeout(() => {
-      document.querySelector("[data-bb-first-player-spotlight='true']")?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 60);
-    const measureTimer = window.setTimeout(updatePlayerRect, 430);
-    window.addEventListener("resize", updatePlayerRect);
-    window.addEventListener("scroll", updatePlayerRect, true);
-    return () => {
-      window.clearTimeout(scrollTimer);
-      window.clearTimeout(measureTimer);
-      window.removeEventListener("resize", updatePlayerRect);
-      window.removeEventListener("scroll", updatePlayerRect, true);
-    };
-  }, [dashboardFirstPlayerSpotlightOpen]);
 
   const bibleYearStudyPlanMilestoneLabels: Record<number, string> = {
     1: "Creation",
@@ -10962,7 +10878,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           "Press play and continue today's guided Bible lesson.",
           "order-3"
         )}
-        <article data-bb-first-player-spotlight="true" className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))] p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6">
+        <article className="order-4 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--bb-card,#ffffff)_94%,var(--bb-surface-soft,#f8fbff)),var(--bb-surface-soft,#f8fbff))] p-5 text-[var(--bb-text-primary,#111827)] shadow-[0_18px_48px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[var(--bb-text-muted,#6b7280)]">Day {day.dayNumber} of 365</p>
@@ -11000,7 +10916,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                       userId={userId}
                       videoId={`bible-year-day-${day.dayNumber}`}
                       compactMediaControls
-                      controlsLocked={dashboardFirstPlayerSpotlightOpen || dashboardFirstWelcomeOpen}
                       previousLessonLabel={previousBibleYearDay ? `Open Day ${previousBibleYearDay.dayNumber}` : "No previous day"}
                       nextLessonLabel={nextBibleYearDay ? `Open Day ${nextBibleYearDay.dayNumber}` : "No next day"}
                       onPreviousLesson={previousBibleYearDay ? () => openAdjacentBibleYearDay(previousBibleYearDay) : undefined}
@@ -13251,118 +13166,6 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
-  async function markFirstDashboardWelcomeSeen() {
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(getDashboardFirstPlayerWelcomeStorageKey(userId), "1");
-    }
-    if (!userId) return;
-
-    const now = new Date().toISOString();
-    const { error } = await supabase.from("user_popups_seen").upsert(
-      {
-        user_id: userId,
-        popup_id: DASHBOARD_AUDIO_PLAYER_TUTORIAL_POPUP_ID,
-        has_seen: true,
-        seen_at: now,
-        updated_at: now,
-      },
-      { onConflict: "user_id,popup_id" },
-    );
-
-    if (error && !/user_popups_seen|schema cache/i.test(error.message || "")) {
-      console.warn("[POPUPS] Could not save dashboard audio tutorial state:", error.message);
-    }
-  }
-
-  function renderFirstDashboardWelcomeModal() {
-    const day = activeBibleYearDashboardDay;
-    return (
-      <ModalShell
-        isOpen={dashboardFirstWelcomeOpen}
-        onClose={() => {
-          void markFirstDashboardWelcomeSeen();
-          setDashboardFirstWelcomeOpen(false);
-        }}
-        closeOnBackdrop={false}
-        backdropColor="bg-black/56"
-        zIndex="z-[160]"
-      >
-        <div className="w-full max-w-[430px] overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-6 text-[var(--bb-text-primary,#111827)] shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
-          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[var(--bb-accent,#2f7fe8)]">Welcome to Bible Buddy</p>
-          <h2 className="mt-3 text-2xl font-black leading-tight">Start with Day 1 and press play.</h2>
-          <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            Welcome to Bible Buddy. Start with Day 1 and listen to today&apos;s Scripture reading. You can listen while taking notes, washing dishes, walking, driving, or getting ready for the day. That&apos;s the beauty of Bible Buddy: Scripture can move with your real life.
-          </p>
-          <button
-            type="button"
-            onClick={() => {
-              setDashboardFirstWelcomeOpen(false);
-              setDashboardFirstPlayerSpotlightOpen(true);
-            }}
-            className="mt-5 w-full rounded-[16px] bg-[var(--bb-button,#2f7fe8)] px-5 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-[0_14px_30px_rgba(47,127,232,0.22)] transition hover:brightness-105"
-          >
-            OK, show me where to start
-          </button>
-          {day ? <p className="mt-3 text-center text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">Your first lesson is ready when you are.</p> : null}
-        </div>
-      </ModalShell>
-    );
-  }
-
-  function renderFirstPlayerSpotlightOverlay() {
-    if (!dashboardFirstPlayerSpotlightOpen || dashboardAudioTutorialSeen) return null;
-    const rect = dashboardFirstPlayerRect;
-    const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 390;
-    const viewportHeight = typeof window !== "undefined" ? window.innerHeight : 760;
-    const pad = viewportWidth < 640 ? 8 : 14;
-    const top = rect ? Math.max(0, rect.top - pad) : 0;
-    const left = rect ? Math.max(0, rect.left - pad) : 0;
-    const right = rect ? Math.min(viewportWidth, rect.right + pad) : viewportWidth;
-    const bottom = rect ? Math.min(viewportHeight, rect.bottom + pad) : viewportHeight;
-    const tagWidth = Math.min(330, viewportWidth - 32);
-    const tagLeft = rect ? Math.max(16, Math.min(viewportWidth - tagWidth - 16, left + ((right - left) - tagWidth) / 2)) : 16;
-    const tagTop = rect && viewportHeight - bottom > 142 ? bottom + 14 : Math.max(16, top - 132);
-
-    return (
-      <div className="fixed inset-0 z-[159] pointer-events-auto">
-        {rect ? (
-          <>
-            <div className="fixed left-0 top-0 bg-black/66 backdrop-blur-[2px]" style={{ width: viewportWidth, height: top }} />
-            <div className="fixed left-0 bg-black/66 backdrop-blur-[2px]" style={{ top, width: left, height: Math.max(0, bottom - top) }} />
-            <div className="fixed bg-black/66 backdrop-blur-[2px]" style={{ top, left: right, width: Math.max(0, viewportWidth - right), height: Math.max(0, bottom - top) }} />
-            <div className="fixed bottom-0 left-0 bg-black/66 backdrop-blur-[2px]" style={{ top: bottom, width: viewportWidth, height: Math.max(0, viewportHeight - bottom) }} />
-          </>
-        ) : (
-          <div className="fixed inset-0 bg-black/66 backdrop-blur-[2px]" />
-        )}
-        {rect ? (
-          <div
-            className="fixed rounded-[26px] border-2 border-[var(--bb-button,#2f7fe8)] shadow-[0_0_0_9999px_rgba(0,0,0,0.0),0_0_42px_rgba(47,127,232,0.52)]"
-            style={{ top, left, width: Math.max(0, right - left), height: Math.max(0, bottom - top) }}
-          />
-        ) : null}
-        <div
-          className="pointer-events-auto fixed rounded-[20px] border border-sky-200 bg-white px-4 py-3 text-slate-950 shadow-[0_20px_60px_rgba(0,0,0,0.30)]"
-          style={{ left: tagLeft, top: tagTop, width: tagWidth }}
-        >
-          <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-button,#2f7fe8)]">Start here</p>
-          <p className="mt-1 text-sm font-black leading-5">Press play here to start Day 1.</p>
-          <button
-            type="button"
-            onClick={async () => {
-              await markFirstDashboardWelcomeSeen();
-              setDashboardAudioTutorialSeen(true);
-              setDashboardFirstPlayerSpotlightOpen(false);
-            }}
-            className="mt-3 rounded-full bg-[var(--bb-button,#2f7fe8)] px-4 py-2 text-xs font-black text-white"
-          >
-            OK
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   function renderDashboardGuidedIntroOverlay() {
     if (dashboardGuidedIntroStep === null) return null;
     const step = DASHBOARD_GUIDED_INTRO_STEPS[dashboardGuidedIntroStep];
@@ -15056,8 +14859,6 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
       </div>
 
-      {renderFirstDashboardWelcomeModal()}
-      {renderFirstPlayerSpotlightOverlay()}
       {renderDashboardGuidedIntroOverlay()}
 
       {showDayOneStartPrompt ? (

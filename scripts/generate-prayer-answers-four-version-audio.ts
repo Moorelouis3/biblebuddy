@@ -12,6 +12,9 @@ const PAUSE_SECONDS = 30;
 
 const INPUT_PATH = join(process.cwd(), "docs", "7-signs-god-answering-prayers-four-version-recording-script.md");
 const OUTPUT_PATH = join(process.cwd(), "tmp", "prayer-answers", "7-signs-god-answering-prayers-four-versions-narration.mp3");
+const VERSION_ONE_OUTPUT_PATH = join(process.cwd(), "tmp", "prayer-answers", "7-signs-god-answering-your-prayers-narrator-clean.mp3");
+const CLEANED_SCRIPT_PATH = join(process.cwd(), "tmp", "prayer-answers", "7-signs-god-answering-prayers-four-versions-narrator-clean.txt");
+const VERSION_ONE_CLEANED_SCRIPT_PATH = join(process.cwd(), "tmp", "prayer-answers", "7-signs-god-answering-your-prayers-narrator-clean.txt");
 
 for (const path of [".env.local", ".env"]) {
   if (existsSync(path)) config({ path, override: false, quiet: true });
@@ -112,32 +115,86 @@ function chunkSpeechInput(text: string) {
   return chunks;
 }
 
+function numberWord(value: string) {
+  const words: Record<string, string> = {
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "6": "six",
+    "7": "seven",
+  };
+  return words[value] || value;
+}
+
+function normalizeHeading(line: string) {
+  return line.replace(/^#{1,6}\s*/, "").trim();
+}
+
+function isDocumentOnlyLine(line: string) {
+  const heading = normalizeHeading(line);
+  if (!heading) return true;
+  if (heading === "---") return true;
+  if (/^Long Form Audio/i.test(heading)) return true;
+  if (/^Bible Study with Louis Style/i.test(heading)) return true;
+  if (/^Four Version MP3/i.test(heading)) return true;
+  if (/^Recording order:/i.test(heading)) return true;
+  if (/^\d+\.\s/.test(heading)) return true;
+  if (/^Pause silently/i.test(heading)) return true;
+  if (/^30 SECOND PAUSE/i.test(heading)) return true;
+  if (/^VERSION\s+\d+/i.test(heading)) return true;
+  if (/^INTRO$/i.test(heading)) return true;
+  if (/^OUTRO$/i.test(heading)) return true;
+  if (/^(?:5|7)\s+(?:Signs|Ways)\s+God\s+(?:Is\s+)?Answer/i.test(heading)) return true;
+  return false;
+}
+
+function findNextSpeechHeading(lines: string[], startIndex: number) {
+  for (let i = startIndex; i < lines.length; i += 1) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    if (!/^#{1,6}\s+/.test(line)) return null;
+    const heading = normalizeHeading(line);
+    if (isDocumentOnlyLine(heading)) continue;
+    return { heading, index: i };
+  }
+  return null;
+}
+
 function sectionToSpeechText(section: string) {
-  return cleanTextForTts(
-    section
-      .split(/\r?\n/)
-      .map((line) => line.trim())
-      .filter((line) => {
-        if (!line) return false;
-        if (line === "---") return false;
-        if (/^Long Form Audio/i.test(line)) return false;
-        if (/^Bible Study with Louis Style/i.test(line)) return false;
-        if (/^Four Version MP3/i.test(line)) return false;
-        if (/^Recording order:/i.test(line)) return false;
-        if (/^\d+\.\s/.test(line)) return false;
-        if (/^Pause silently/i.test(line)) return false;
-        if (/^## 30 SECOND PAUSE/i.test(line)) return false;
-        return true;
-      })
-      .join(". "),
-  )
-    .replace(/\bVERSION\s+(\d)\b/gi, "Version $1.")
-    .replace(/\bINTRO\b/g, "Intro.")
-    .replace(/\bOUTRO\b/g, "Outro.")
-    .replace(/\bSIGN\s+(\d)\b/g, "Sign $1.")
-    .replace(/\bWAY\s+(\d)\b/g, "Way $1.")
-    .replace(/\s+/g, " ")
-    .trim();
+  const lines = section.replace(/\r\n/g, "\n").split("\n");
+  const spokenLines: string[] = [];
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i].trim();
+    if (!line || line === "---") continue;
+
+    const heading = normalizeHeading(line);
+    const signOrWayMatch = heading.match(/^(SIGN|WAY)\s+(\d+)$/i);
+    if (signOrWayMatch) {
+      const nextHeading = findNextSpeechHeading(lines, i + 1);
+      const label = signOrWayMatch[1].toLowerCase() === "sign" ? "Sign" : "Way";
+      if (nextHeading) {
+        spokenLines.push(`${label} number ${numberWord(signOrWayMatch[2])}: ${nextHeading.heading}.`);
+        i = nextHeading.index;
+      } else {
+        spokenLines.push(`${label} number ${numberWord(signOrWayMatch[2])}.`);
+      }
+      continue;
+    }
+
+    if (isDocumentOnlyLine(line)) continue;
+
+    if (/^#{1,6}\s+/.test(line)) {
+      spokenLines.push(`${heading}.`);
+      continue;
+    }
+
+    spokenLines.push(line);
+  }
+
+  return cleanTextForTts(spokenLines.join("\n\n")).replace(/\s+/g, " ").trim();
 }
 
 function buildSpeechSections() {
@@ -158,6 +215,9 @@ function buildSpeechSections() {
   if (sections.length !== 4) {
     throw new Error(`Expected 4 script versions, found ${sections.length}.`);
   }
+
+  ensureDir(CLEANED_SCRIPT_PATH);
+  writeFileSync(CLEANED_SCRIPT_PATH, sections.map((section) => section.text).join("\n\n[30 second pause]\n\n"));
 
   return sections;
 }
@@ -191,7 +251,14 @@ async function generateOpenAiSpeechPcm(text: string) {
 }
 
 async function main() {
-  const sections = buildSpeechSections();
+  const allSections = buildSpeechSections();
+  const renderVersionOneOnly = process.env.PRAYER_ANSWERS_VERSION === "1";
+  const sections = renderVersionOneOnly ? allSections.slice(0, 1) : allSections;
+  const outputPath = renderVersionOneOnly ? VERSION_ONE_OUTPUT_PATH : OUTPUT_PATH;
+  if (renderVersionOneOnly) {
+    ensureDir(VERSION_ONE_CLEANED_SCRIPT_PATH);
+    writeFileSync(VERSION_ONE_CLEANED_SCRIPT_PATH, sections[0].text);
+  }
   const renderedSections: Float32Array[] = [];
 
   console.log(`[PRAYER_ANSWERS_TTS] Sections: ${sections.length}`);
@@ -213,10 +280,10 @@ async function main() {
   }
 
   const mp3 = encodeMp3(concatSamples(renderedSections));
-  ensureDir(OUTPUT_PATH);
-  writeFileSync(OUTPUT_PATH, mp3);
+  ensureDir(outputPath);
+  writeFileSync(outputPath, mp3);
 
-  console.log(`[PRAYER_ANSWERS_TTS] MP3 saved: ${OUTPUT_PATH}`);
+  console.log(`[PRAYER_ANSWERS_TTS] MP3 saved: ${outputPath}`);
   console.log("[PRAYER_ANSWERS_TTS] Done");
 }
 
