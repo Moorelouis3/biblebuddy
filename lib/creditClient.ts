@@ -90,7 +90,7 @@ function getLowCreditConfirmCopy(actionType: string, dailyCredits: number) {
   return `You have ${dailyCredits} free ${creditWord} left today. Opening ${itemLabel} will use 1 credit. Do you want to continue?`;
 }
 
-async function previewCreditAction(actionType: string): Promise<CreditClientResult> {
+export async function previewCreditAction(actionType: string): Promise<CreditClientResult> {
   const response = await fetch("/api/consume-credit", {
     method: "POST",
     headers: {

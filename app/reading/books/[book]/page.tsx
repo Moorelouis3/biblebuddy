@@ -3,10 +3,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { ACTION_TYPE } from "../../../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
-import { getBookCurrentStep, isChapterCompleted, getCompletedChapters, getBookTotalChapters } from "../../../../lib/readingProgress";
+import { getBookCurrentStep, getCompletedChapters, getBookTotalChapters } from "../../../../lib/readingProgress";
 import { supabase } from "../../../../lib/supabaseClient";
 
 const CHAPTERS_PER_PAGE = 12;
@@ -155,6 +154,61 @@ const BOOK_INTROS: Record<string, string> = {
   revelation: "Revelation was written by the apostle John while he was exiled on the island of Patmos, and it is the most symbolic and visionary book in the Bible. Jesus appears to John in blazing glory and gives him messages for seven churches, then pulls back the curtain on what is happening in heaven and what is coming to earth. It is a book about the ultimate victory of Jesus over Satan, sin, death, and evil — and the creation of a brand-new heaven and earth. It is meant to be read as hope, not fear.",
 };
 
+const BOOK_CHAPTER_TOPICS: Record<string, string[]> = {
+  genesis: [
+    "Creation begins, and God fills the world with order, life, and purpose.",
+    "God places Adam in Eden, gives him work, and creates Eve.",
+    "Sin enters the world, and God promises that evil will not win forever.",
+    "Cain kills Abel, and life outside Eden begins to spread with pain and worship.",
+    "Adam's family line shows life continuing, but death touches every generation.",
+    "Human evil grows, but Noah finds grace in the eyes of the Lord.",
+    "The flood begins, and Noah's family is preserved inside the ark.",
+    "The waters go down, Noah leaves the ark, and worship rises after judgment.",
+    "God makes a covenant with Noah and gives the rainbow as a sign.",
+    "Noah's descendants spread into nations after the flood.",
+    "Babel shows humanity trying to make its own name, and God scatters the nations.",
+    "God calls Abram and begins the promise that will shape the rest of Scripture.",
+    "Abram and Lot separate, and God repeats the promise of land and descendants.",
+    "Abram rescues Lot and meets Melchizedek, while refusing Sodom's reward.",
+    "God makes a covenant with Abram and promises descendants as numerous as the stars.",
+    "Sarai and Abram try to force the promise through Hagar, and God sees Hagar's pain.",
+    "God gives circumcision as the covenant sign and changes Abram and Sarai's names.",
+    "The Lord visits Abraham, promises Isaac, and Abraham pleads for Sodom.",
+    "Sodom is judged, Lot is rescued, and the cost of compromise becomes clear.",
+    "Abraham repeats old fear with Abimelech, but God protects Sarah and the promise.",
+    "Isaac is born, Ishmael is sent away, and God provides for Hagar in the wilderness.",
+    "God tests Abraham, provides the ram, and shows that He Himself will provide.",
+    "Sarah dies, and Abraham buys a burial place in the promised land.",
+    "Abraham's servant finds Rebekah, and God guides the promise family forward.",
+    "Abraham dies, Ishmael's line is listed, and Isaac's sons begin the next conflict.",
+    "Isaac repeats Abraham's fear, yet God blesses him in the land.",
+    "Jacob deceives Isaac and takes the blessing meant for Esau.",
+    "Jacob leaves home, sees the ladder at Bethel, and hears God's promise.",
+    "Jacob reaches Haran, marries Leah and Rachel, and God sees Leah's pain.",
+    "Jacob's family grows through rivalry, longing, and God's hidden work.",
+    "Jacob leaves Laban, and Rachel and Leah recognize their father's injustice.",
+    "Jacob prepares to meet Esau and wrestles with God through the night.",
+    "Jacob and Esau meet again, and mercy interrupts years of fear.",
+    "Dinah is harmed, and Simeon and Levi answer evil with violent revenge.",
+    "Jacob returns to Bethel, Rachel dies, and the family enters a new season of grief.",
+    "Esau's family line becomes Edom, showing another branch of the story moving forward.",
+    "Joseph is favored, hated, sold, and carried toward Egypt.",
+    "Judah is exposed through Tamar, and God keeps working through a broken family line.",
+    "Joseph resists temptation in Egypt and suffers for doing what is right.",
+    "Joseph interprets dreams in prison, but he is forgotten by the cupbearer.",
+    "Joseph interprets Pharaoh's dreams and rises from prison to power.",
+    "Joseph's brothers come to Egypt for grain, not knowing they are standing before him.",
+    "The brothers return with Benjamin, and Joseph's hidden mercy keeps testing them.",
+    "Judah offers himself for Benjamin, showing a major change in his heart.",
+    "Joseph reveals himself and shows that God was working through what others meant for evil.",
+    "Jacob travels to Egypt, and the family is preserved during famine.",
+    "Joseph manages the famine, and Jacob's family settles in Goshen.",
+    "Jacob blesses Ephraim and Manasseh, placing the younger ahead of the older.",
+    "Jacob blesses his sons and points ahead to Judah's royal future.",
+    "Jacob and Joseph die in faith, and Genesis ends with hope still waiting for fulfillment.",
+  ],
+};
+
 export default function BookPage() {
   const params = useParams();
   const bookParam = decodeURIComponent(String(params.book));
@@ -177,8 +231,7 @@ export default function BookPage() {
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // collapsed or open Louis bubble
-  const [summaryCollapsed, setSummaryCollapsed] = useState(false);
+  const [bookIntroOpen, setBookIntroOpen] = useState(false);
 
   // Get user ID and email
   useEffect(() => {
@@ -270,23 +323,70 @@ export default function BookPage() {
 
         {/* MAIN CARD */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 relative overflow-hidden">
-          {/* LOUIS SUMMARY BUBBLE */}
-          <div className="mt-1 mb-4 flex items-start gap-3">
-            <LouisAvatar mood="bible" size={48} />
-            <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800 w-full">
-              {/* speech bubble tail */}
-              <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
+          {/* BOOK INTRO CARD */}
+          <div className="mt-1 mb-5 overflow-hidden rounded-xl border border-blue-100 bg-blue-50/40 shadow-sm">
+            <button
+              type="button"
+              onClick={() => setBookIntroOpen((open) => !open)}
+              className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left"
+              aria-expanded={bookIntroOpen}
+            >
+              <div className="min-w-0">
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-blue-600">
+                  Book Intro
+                </p>
+                <h2 className="mt-1 text-lg font-black text-gray-950">
+                  Understanding {bookDisplayName}
+                </h2>
+                <p className="mt-1 text-sm leading-6 text-gray-700">
+                  {BOOK_DESCRIPTIONS[bookKey] || `A simple overview before you read ${bookDisplayName}.`}
+                </p>
+              </div>
+              <span
+                className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border border-blue-200 bg-white text-lg font-black text-blue-600 transition ${
+                  bookIntroOpen ? "rotate-180" : ""
+                }`}
+                aria-hidden="true"
+              >
+                v
+              </span>
+            </button>
 
-              {/* content */}
-              {summaryCollapsed ? (
-                <p className="text-sm">{bookDisplayName} overview</p>
-              ) : (
-                <div className="space-y-3">
-                  <p>
+            <div
+              className={`grid transition-all duration-300 ease-out ${
+                bookIntroOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="border-t border-blue-100 bg-white px-4 py-4">
+                  <p className="text-sm leading-7 text-gray-800">
                     {BOOK_INTROS[bookKey] || `Let's walk through ${bookDisplayName} together, one chapter at a time.`}
                   </p>
+
+                  {BOOK_CHAPTER_TOPICS[bookKey]?.length ? (
+                    <div className="mt-4">
+                      <p className="text-xs font-black uppercase tracking-[0.16em] text-gray-500">
+                        Chapter Roadmap
+                      </p>
+                      <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                        {BOOK_CHAPTER_TOPICS[bookKey].map((topic, index) => (
+                          <div
+                            key={`${bookKey}-topic-${index + 1}`}
+                            className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-3"
+                          >
+                            <p className="text-xs font-black text-blue-600">
+                              {bookDisplayName} {index + 1}
+                            </p>
+                            <p className="mt-1 text-sm leading-6 text-gray-800">
+                              {topic}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
-              )}
+              </div>
             </div>
           </div>
 

@@ -27,7 +27,6 @@ import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, markChapterDone } from "../lib/readingProgress";
-import { getBibleReaderStudySections } from "../lib/bibleReaderStudyNotes";
 import {
   canFreeUserUnlockChapter,
   formatFreePlanCountdown,
@@ -9832,7 +9831,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                     chapter={chapter.chapter}
                     surface="dashboard"
                     plainTextMode={bibleYearReaderPlainText}
-                    studySections={getBibleReaderStudySections(chapter.book, chapter.chapter)}
                     onStudyNotesCreditBlocked={() => showBibleYearStudyNotesUpgrade(day.dayNumber)}
                     verses={chapter.verses.map((verse) => ({
                       number: verse.verse,

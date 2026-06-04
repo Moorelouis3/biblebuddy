@@ -14,11 +14,10 @@ import {
 import { ACTION_TYPE } from "../lib/actionTypes";
 import CreditLimitModal from "./CreditLimitModal";
 import { supabase } from "../lib/supabaseClient";
-import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
-import {
-  getBibleReaderStudySections,
-  type BibleReaderStudyNoteCategory,
-  type BibleReaderStudySection,
+import { consumeCreditAction, isCreditActionCanceled, previewCreditAction, type CreditClientResult } from "../lib/creditClient";
+import type {
+  BibleReaderStudyNoteCategory,
+  BibleReaderStudySection,
 } from "../lib/bibleReaderStudyNotes";
 
 interface VerseHighlighterProps {
@@ -723,6 +722,10 @@ function InlineStudySection({
   const visibleCategories = section.categories.filter(
     (category) => category.id !== "key-truths" && category.content.some((item) => item.trim().length > 0),
   );
+  const directPhraseCategory =
+    visibleCategories.length === 1 && visibleCategories[0].id === "key-phrases"
+      ? visibleCategories[0]
+      : null;
 
   return (
     <div ref={sectionRef} className="my-4">
@@ -771,7 +774,26 @@ function InlineStudySection({
 
       {isOpen ? (
         <div className="mt-2 overflow-hidden rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-card,#ffffff)]">
-          {visibleCategories.map((category, index) => {
+          {directPhraseCategory ? (
+            <div className="px-3 pb-4 pt-1">
+              <StudyCategoryContent
+                category={directPhraseCategory}
+                openItemIndex={
+                  openItemKey?.startsWith(`${directPhraseCategory.id}:`)
+                    ? Number(openItemKey.split(":")[1])
+                    : null
+                }
+                onToggleItem={(itemIndex) => {
+                  if (isCreditLocked) {
+                    onLockedCategory();
+                    return;
+                  }
+                  onToggleItem(directPhraseCategory.id, itemIndex);
+                }}
+                onItemOpened={() => undefined}
+              />
+            </div>
+          ) : visibleCategories.map((category, index) => {
             const categoryOpen = openCategory === category.id;
             return (
               <div
@@ -865,6 +887,8 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [openStudyItems, setOpenStudyItems] = useState<Record<string, string | null>>({});
   const [studyCreditLockedSections, setStudyCreditLockedSections] = useState<Record<string, boolean>>({});
   const [studyCreditUnlockedSections, setStudyCreditUnlockedSections] = useState<Record<string, boolean>>({});
+  const [backgroundStudySections, setBackgroundStudySections] = useState<BibleReaderStudySection[]>([]);
+  const [studyNotesCreditPreview, setStudyNotesCreditPreview] = useState<CreditClientResult | null>(null);
   const shareVerse = null as { number: number; text: string } | null;
   const shareContent = "";
   const shareSubmitting = false;
@@ -896,6 +920,64 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       })
       .finally(() => setLoading(false));
   }, [user, book, chapter]);
+
+  useEffect(() => {
+    if (!user || plainTextMode || hideStudySections) {
+      setStudyNotesCreditPreview(null);
+      return;
+    }
+
+    let canceled = false;
+    const timeoutId = setTimeout(() => {
+      void previewCreditAction(ACTION_TYPE.study_notes_section_opened).then((result) => {
+        if (!canceled) setStudyNotesCreditPreview(result);
+      });
+    }, 0);
+
+    return () => {
+      canceled = true;
+      clearTimeout(timeoutId);
+    };
+  }, [hideStudySections, plainTextMode, user]);
+
+  useEffect(() => {
+    if (studySections || plainTextMode || hideStudySections) {
+      setBackgroundStudySections([]);
+      return;
+    }
+
+    let canceled = false;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    let idleId: number | null = null;
+
+    const loadStudySections = async () => {
+      try {
+        const module = await import("../lib/bibleReaderStudyNotes");
+        if (!canceled) {
+          setBackgroundStudySections(module.getBibleReaderStudySections(book, chapter));
+        }
+      } catch (error) {
+        console.warn("[BIBLE_READER_NOTES] Could not preload study sections:", error);
+        if (!canceled) setBackgroundStudySections([]);
+      }
+    };
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      idleId = window.requestIdleCallback(() => {
+        void loadStudySections();
+      }, { timeout: 900 });
+    } else {
+      timeoutId = setTimeout(() => {
+        void loadStudySections();
+      }, 0);
+    }
+
+    return () => {
+      canceled = true;
+      if (timeoutId !== null) clearTimeout(timeoutId);
+      if (idleId !== null && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
+    };
+  }, [book, chapter, hideStudySections, plainTextMode, studySections]);
 
   const handleVerseClick = (verse: number, e: React.MouseEvent) => {
     console.log('[VerseHighlighter] handleVerseClick fired', { verse, user });
@@ -1183,7 +1265,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     return <span style={{fontWeight:'bold',fontSize:'1em'}}>{num}</span>;
   }
 
-  const resolvedStudySections = studySections ?? getBibleReaderStudySections(book, chapter);
+  const resolvedStudySections = studySections ?? backgroundStudySections;
 
   const studySectionsByVerse = resolvedStudySections.reduce<Record<number, BibleReaderStudySection[]>>(
     (map, section) => {
@@ -1263,6 +1345,23 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       return;
     }
 
+    const canOpenOptimistically =
+      studyNotesCreditPreview?.ok === true &&
+      (studyNotesCreditPreview.isPaid === true ||
+        (typeof studyNotesCreditPreview.dailyCredits === "number" && studyNotesCreditPreview.dailyCredits > 2));
+
+    if (studyNotesCreditPreview?.ok === true && studyNotesCreditPreview.isPaid !== true && studyNotesCreditPreview.dailyCredits === 0) {
+      setStudyCreditLockedSections((current) => ({ ...current, [studySection.reference]: true }));
+      setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: null }));
+      setOpenStudyItems((current) => ({ ...current, [studySection.reference]: null }));
+      return;
+    }
+
+    if (canOpenOptimistically) {
+      setStudyCreditLockedSections((current) => ({ ...current, [studySection.reference]: false }));
+      setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: initialOpenCategory }));
+    }
+
     const creditResult = await consumeCreditAction(ACTION_TYPE.study_notes_section_opened, {
       userId: user.id,
       actionLabel: `opened ${getStudySectionAnalyticsSlug(studySection.reference)} notes opened`,
@@ -1282,6 +1381,16 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     }
 
     setStudyCreditUnlockedSections((current) => ({ ...current, [studySection.reference]: true }));
+    if (typeof creditResult.dailyCredits === "number") {
+      setStudyNotesCreditPreview((current) => ({
+        ...(current || { ok: true }),
+        ok: true,
+        dailyCredits: creditResult.dailyCredits,
+        isPaid: false,
+      }));
+    } else if (studyNotesCreditPreview?.isPaid === true) {
+      setStudyNotesCreditPreview((current) => ({ ...(current || { ok: true }), ok: true, isPaid: true }));
+    }
     setStudyCreditLockedSections((current) => ({ ...current, [studySection.reference]: false }));
     setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: initialOpenCategory }));
   }
