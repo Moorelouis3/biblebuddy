@@ -915,6 +915,16 @@ function isInternalAnalyticsUser(userId: string | null | undefined, profileByUse
   return Boolean(userId && isInternalAnalyticsProfile(profileByUserId.get(userId)));
 }
 
+function isOwnerAuthUser(userId: string | null | undefined, authByUserId: Map<string, AuthUserSummary>) {
+  if (!userId) return false;
+  return (authByUserId.get(userId)?.email || "").trim().toLowerCase() === "moorelouis3@gmail.com";
+}
+
+function isActiveUsersLast24NoiseAction(actionType: string | null | undefined) {
+  const normalized = (actionType || "").trim().toLowerCase();
+  return normalized === "landing_page_visit" || normalized === "landing_page_visited";
+}
+
 function summarizePublicOnboardingFlow(rows: Record<string, unknown>[]) {
   const eventSessions = buildEventSessionMap(rows);
   const closedSessions = eventSessions.get("closed_onboarding") || new Set<string>();
@@ -2979,8 +2989,15 @@ export async function GET(request: Request) {
       });
     }
   }
-  masterFunnelRows = masterFunnelRows.filter((row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId));
-  activeUsersLast24Rows = activeUsersLast24Rows.filter((row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId));
+  masterFunnelRows = masterFunnelRows.filter(
+    (row) => !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId) && !isOwnerAuthUser(row.user_id, authSummaryByUserId),
+  );
+  activeUsersLast24Rows = activeUsersLast24Rows.filter(
+    (row) =>
+      !isActiveUsersLast24NoiseAction(row.action_type) &&
+      !isInternalAnalyticsUser(row.user_id, profileSummaryByUserId) &&
+      !isOwnerAuthUser(row.user_id, authSummaryByUserId),
+  );
   const { data: allBibleYearProgressData } = await adminSupabase
     .from("bible_year_day_progress")
     .select("user_id, day_number, reading_completed, trivia_completed, reflection_completed, updated_at")

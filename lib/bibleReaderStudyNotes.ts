@@ -9935,31 +9935,6 @@ God is not distant from the first man.
 He comes near enough to give breath.`,
         ],
         [
-          "❤️ The Breath Of Life",
-          `The breath of life is what turns formed dust into living humanity.
-
-The body matters, but the body does not explain everything.
-
-Human life is more than material pieces put together.
-
-It is life given by God.
-
-This phrase helps us hold two truths together.
-
-🌍 We are physical
-❤️ We are alive by God's gift
-🙏 We are dependent
-👑 We have dignity
-
-The Bible does not treat the body as worthless.
-
-God formed the body.
-
-But the body needs the breath God gives.
-
-Life begins as a gift before it becomes anything we do.`,
-        ],
-        [
           "👤 Man Became A Living Soul",
           `This means the man became a living being.
 
@@ -12370,91 +12345,105 @@ There is also a line turning toward God.`,
       phrases: [
         [
           "📖 The Book Of The Generations",
-          `Genesis now opens a family record.
+          `Genesis 5 begins with a family record.
 
-This may look like a list, but genealogies are not filler.
+That can feel boring at first, but in Genesis these lists are doing real work.
 
-They show where the story is moving.
+They show which family line the reader should follow.
 
-They help readers follow the line of promise.
+Genesis 4 showed Cain's line building cities, music, tools, and violence.
+
+Now Genesis 5 turns back to Adam through Seth.
+
+That tells us the story of hope is not going to move through Cain's rebellion.
+
+It will move through the family line God keeps preserving.
 
 📖 A family record begins
-🌱 The line continues
-👀 Readers are told who to watch
-
-This phrase matters because Genesis is tracing hope through generations.
-
-After Cain's line, the camera now follows Adam's line through Seth.`,
+🌱 The promise line continues
+👀 Readers are told who to watch`,
         ],
         [
           "🪞 In The Likeness Of God",
-          `Genesis repeats image-of-God language after the fall.
+          `Genesis repeats image-of-God language after Adam and Eve sinned.
 
-That matters deeply.
+That is important because some readers may wonder if the fall erased human value.
 
-Sin damaged humanity, but it did not erase human dignity.
+It did not.
 
-People are still made to reflect God.
+Sin damaged humanity, but people are still made to reflect God in a special way.
+
+This means human life still has dignity after Eden.
+
+People are not valuable because they are strong, useful, rich, beautiful, or successful.
+
+They are valuable because God made mankind in His image.
 
 🪞 God's image remains
-💔 The image is damaged
-👤 Human value remains real
-
-This phrase matters because fallen people are not worthless.
-
-Genesis can be honest about sin while still protecting human dignity.`,
+💔 The image is damaged by sin
+👤 Human value remains real`,
         ],
         [
           "👨‍👩‍👧 Male And Female",
-          `Genesis reminds us that male and female were created by God.
+          `This phrase reaches back to Genesis 1.
 
-This reaches back to Genesis 1.
+God created mankind as male and female before sin entered the world.
 
-The fall has happened, but God's original design has not been erased.
+Genesis repeats that truth here so the reader remembers God's original design.
 
-Both man and woman share human dignity.
+Both man and woman are connected to the image of God.
+
+Both have value.
+
+Both matter in the human story.
+
+The fall brought pain into relationships, but it did not erase the goodness of what God made.
 
 👨 Male
 👩 Female
-🪞 Both connected to God's image
-
-This phrase matters because Genesis keeps the creation foundation in view.
-
-Brokenness is real, but it is not the first word spoken over humanity.`,
+🪞 Both created by God`,
         ],
         [
-          "👶 Begat A Son In His Own Likeness",
-          `Adam has a son in his own likeness.
+          "👶 In His Own Likeness, After His Image",
+          `Adam has a son who carries a family resemblance.
 
-That means the family resemblance continues.
+But this phrase is deeper than physical looks.
 
-But now Adam's line carries both dignity and damage.
+Seth is born after the fall, so Adam's children inherit life in a broken world.
 
-The image of God remains, but life is now lived outside Eden under the shadow of death.
+They still carry human dignity as image-bearers of God.
+
+But they also live under the effects of Adam's sin.
+
+That is why Genesis 5 holds two truths together.
+
+Life continues by God's mercy, but death now follows every generation.
 
 👶 Family continues
 🪞 Likeness continues
-💔 Fallenness continues
-
-This phrase matters because Genesis 5 shows blessing and brokenness moving through generations together.`,
+💔 Brokenness continues`,
         ],
         [
           "⚰️ And He Died",
-          `This line becomes the drumbeat of Genesis 5.
+          `This is the repeated line Genesis wants the reader to feel.
 
-People live many years, have children, and then die.
+The lifespans in Genesis 5 are very long.
 
-The long lifespans sound impressive.
+At first, those ages may sound impressive.
 
-But the ending keeps repeating.
+But the chapter keeps ending each life the same way.
+
+He died.
+
+That repeated ending proves that God's warning in Eden was true.
+
+Sin brought death into the human story.
+
+Long life is still not the same as victory over death.
 
 ⚰️ And he died
 ⚰️ And he died
-⚰️ And he died
-
-This phrase matters because God's warning in Eden was true.
-
-Humanity can live long, build families, and keep going for generations, but death has entered the story.`,
+⚰️ And he died`,
         ],
       ],
     }),
@@ -12467,238 +12456,188 @@ Humanity can live long, build families, and keep going for generations, but deat
       icon: "👨‍👩‍👧‍👦",
       phrases: [
         [
-          "👶 Lived And Begat",
-          `This repeated pattern shows life continuing outside Eden.
+          "👶 Seth Lived And Begat Enos",
+          `This phrase shows the family line moving forward through Seth.
 
-People are born.
+Seth was the son given after Abel was murdered.
 
-They grow.
+Now Seth has a son named Enos, and the line continues.
 
-They have children.
+That matters because Genesis is tracing the family through which hope will keep moving.
 
-Families continue.
+The story does not stop with Adam.
 
-That is still part of God's blessing from Genesis 1.
+It moves into the next generation.
+
+Sin has entered the world, but God is still preserving life.
 
 👶 Birth
 🏠 Family
-🌱 Generations
+🌱 The line continues`,
+        ],
+        [
+          "📛 Enos",
+          `Enos is the named son in this part of the genealogy.
 
-This phrase matters because sin did not stop life from continuing.
+His name is connected with mankind, weakness, or mortal humanity.
 
-But each birth happens in a world where death is also now present.`,
+That fits the feeling of Genesis 5.
+
+The chapter keeps showing human life as real, valuable, and also fragile.
+
+People live, have children, and build families.
+
+But they are not permanent.
+
+The name Enos helps the reader feel that humanity is now living with weakness outside Eden.`,
         ],
         [
           "👨‍👩‍👧 Sons And Daughters",
-          `Genesis names the main line it wants us to follow, but it also mentions sons and daughters.
+          `Genesis names the main line it wants us to follow.
 
-Those unnamed people mattered too.
+But it also says these men had sons and daughters.
 
-The Bible is tracing a promise line, not saying everyone else is meaningless.
+That reminds us there were many more people alive than the few names listed.
 
-That is helpful for reading genealogies.
+The Bible is not saying the unnamed people did not matter.
+
+It is tracing the line needed for the story.
+
+This is how biblical genealogies often work.
+
+They narrow the camera without denying the value of everyone outside the camera.
 
 👨‍👩‍👧 Many lives
 📜 One traced line
-🌱 A promise moving through history
-
-This phrase matters because God sees more than the names listed in detail.
-
-The camera narrows, but human value does not disappear.`,
+🌱 The promise moving through history`,
         ],
         [
           "📅 All The Days",
-          `This phrase counts the whole span of a person's life.
+          `This phrase gathers up a whole life in only a few words.
 
-Most people in this section do not get a long story.
+Most people in Genesis 5 do not get a long story.
 
-They do not get speeches or dramatic scenes.
+We do not hear their prayers, conversations, homes, work, or daily struggles.
 
-But their days are still remembered.
+But Scripture still counts their days.
+
+That is worth noticing.
+
+Not every life God uses looks dramatic to us.
+
+Some people carry the story forward through ordinary faithfulness, family, work, and endurance.
 
 📅 Birth to death
 👤 Quiet lives
-📖 Remembered in Scripture
-
-This phrase matters because not every faithful or important life looks dramatic.
-
-Some people carry the story forward through ordinary generations.`,
+📖 Remembered in Scripture`,
         ],
         [
-          "🔁 The Repeated Pattern",
-          `Genesis 5 repeats the same rhythm on purpose.
+          "🔁 Lived, Begat, Died",
+          `Genesis 5 is written with a repeated rhythm on purpose.
 
-The repetition makes the reader feel the world after Eden.
+The repetition is not lazy writing.
 
-Life continues, but death keeps arriving.
+It is teaching through pattern.
 
-That is the tension.
+Each generation sounds similar because life after Eden has a painful rhythm.
+
+People live.
+
+People have children.
+
+People die.
+
+That rhythm makes the reader feel both God's mercy and the heaviness of death.
 
 🔁 He lived
 👶 He had children
-⚰️ He died
-
-This phrase matters because the chapter is teaching through rhythm.
-
-The reader is supposed to feel both God's ongoing mercy and the heaviness of death.`,
-        ],
-        [
-          "⚰️ Then He Died",
-          `This repeated ending prepares us for the surprise of Enoch.
-
-If every life ended differently, Enoch would not stand out.
-
-But Genesis trains our ears with the same line again and again.
-
-Then he died.
-
-Then he died.
-
-Then he died.
-
-⚰️ Death is the pattern
-👀 Enoch will interrupt it
-🙏 Hope will peek through
-
-This phrase matters because Genesis wants us to feel death as an enemy that only God can overcome.`,
+⚰️ He died`,
         ],
       ],
     }),
     makePersonalGenesisPhraseSection({
       chapter: 5,
       startVerse: 16,
-      endVerse: 17,
-      reference: "Genesis 5:16-17",
-      title: "Mahalaleel's Days Are Counted",
-      icon: "📅",
-      phrases: [
-        [
-          "📅 Mahalaleel Lived After He Begat Jared",
-          `Genesis continues counting the generations carefully.
-
-Mahalaleel's life does not get a dramatic scene, but his days still matter.
-
-He receives life, has a son, and the family line continues.
-
-That is how much of Genesis 5 works.
-
-📅 Ordinary years
-👶 A son is born
-🌱 The line keeps moving
-
-This phrase matters because God often carries His story through quiet lives.
-
-Not every person in the promise line gets a famous moment.`,
-        ],
-        [
-          "👨‍👩‍👧 Sons And Daughters",
-          `Mahalaleel has sons and daughters beyond the named line.
-
-Genesis follows Jared because that is the line the story needs us to watch.
-
-But the wider family still exists.
-
-👨‍👩‍👧 Other children
-📜 One traced line
-🌍 A growing human family
-
-This phrase matters because biblical genealogies are selective.
-
-They trace the story without pretending unnamed people do not matter.`,
-        ],
-        [
-          "📆 All The Days Of Mahalaleel",
-          `The phrase all the days gathers up a whole life.
-
-Birth, work, family, years, aging, and death are all included in that simple line.
-
-Most of his life is not described.
-
-But it is still counted.
-
-📆 A whole lifespan
-👤 A real person
-📖 Remembered in Scripture
-
-This phrase matters because God sees complete lives, not only public highlights.`,
-        ],
-        [
-          "⚰️ And He Died",
-          `The repeated ending appears again.
-
-Mahalaleel lives many years, but death still comes.
-
-That is the steady ache of Genesis 5.
-
-Long life does not undo Eden's warning.
-
-⚰️ Death remains
-💔 The fall is still felt
-🙏 Humanity still needs rescue
-
-This phrase matters because Genesis is building a longing for more than long life.
-
-It is making us long for life beyond death.`,
-        ],
-      ],
-    }),
-    makePersonalGenesisPhraseSection({
-      chapter: 5,
-      startVerse: 18,
       endVerse: 20,
-      reference: "Genesis 5:18-20",
+      reference: "Genesis 5:16-20",
       title: "Enoch Enters The Family Line",
       icon: "🌱",
       phrases: [
         [
+          "📅 Mahalaleel Lived After He Begat Jared",
+          `This phrase continues the careful counting of the family line.
+
+Mahalaleel does not receive a dramatic story.
+
+He does not give a speech or fight a battle.
+
+But his place in the line still matters.
+
+He receives life, fathers Jared, and the story keeps moving.
+
+That is how much of God's work often looks in real life.
+
+Quiet generations still carry forward what God is doing.
+
+📅 Ordinary years
+👶 A son is born
+🌱 The line keeps moving`,
+        ],
+        [
           "🌱 Jared Lived And Begat Enoch",
-          `This line introduces Enoch before his special story begins.
+          `This line introduces Enoch before his special ending is explained.
 
-At first, Enoch appears inside the normal genealogy pattern.
+At first, Enoch appears like everyone else in Genesis 5.
 
-He is born into a family line like everyone else.
+He is simply another son in another generation.
 
-That makes what happens next stand out even more.
+That ordinary introduction makes the next verses even stronger.
+
+Genesis is about to tell us that Enoch walked with God and was taken by God.
+
+But before that, he enters the story inside a normal family line.
+
+A deep life with God can begin in ordinary places.
 
 🌱 Ordinary birth
 👨‍👩‍👧 Family line
-🚶 A different kind of life coming
-
-This phrase matters because some of the most important lives in Scripture begin quietly.
-
-Enoch enters the story as another son, but Genesis will soon show that his walk with God was not ordinary.`,
+🚶 A different kind of life coming`,
         ],
         [
-          "📅 Eight Hundred Years",
+          "🧭 Enoch",
+          `Enoch is one of the most important names in Genesis 5.
+
+He breaks the normal pattern of the chapter.
+
+Most people in the genealogy are remembered mainly by birth, children, years, and death.
+
+Enoch is remembered by his walk with God.
+
+That tells us what Genesis wants us to notice.
+
+The most important thing about Enoch is not his age, work, wealth, or reputation.
+
+It is his relationship with God.`,
+        ],
+        [
+          "⏳ Eight Hundred Years",
           `Jared lives a very long life after Enoch is born.
 
-The long years remind us that Genesis 5 is moving through a very different early world.
+The long years remind us that Genesis 5 is describing an early world that feels very different from ours.
 
 But even the long lifespans do not remove the pattern of death.
 
-📅 Long life
+A person can live many years and still need God.
+
+Genesis is not impressed with long life as the final answer.
+
+It keeps showing that humanity needs more than extra time.
+
+Humanity needs rescue from death itself.
+
+⏳ Long life
 👶 More children
-⚰️ Still mortal
-
-This phrase matters because Genesis is not impressed with long life as the final answer.
-
-The chapter keeps showing that humanity needs more than many years.`,
-        ],
-        [
-          "👨‍👩‍👧 Sons And Daughters",
-          `Jared has other sons and daughters besides Enoch.
-
-Genesis does not name all of them because it is tracing one line.
-
-But they were real lives in the wider family.
-
-👨‍👩‍👧 Many children
-📜 One traced line
-🌍 A growing human family
-
-This phrase matters because genealogies narrow the camera without saying everyone outside the camera is worthless.
-
-God's story follows a line, but God sees every life.`,
+⚰️ Still mortal`,
         ],
         [
           "⚰️ And He Died",
@@ -12708,13 +12647,15 @@ After all the years, all the children, and all the family growth, death still co
 
 That repeated ending keeps the chapter honest.
 
+It also prepares the reader for Enoch.
+
+When Enoch's ending breaks the pattern, we feel it because Genesis has made us hear the pattern first.
+
+The chapter is teaching us to long for life that death cannot end.
+
 ⚰️ Long life ends
 💔 Eden's warning remains true
-🙏 Hope must come from God
-
-This phrase matters because it prepares the reader for Enoch.
-
-When Enoch's ending breaks the pattern, we feel it because Genesis has made us hear the pattern first.`,
+🙏 Hope must come from God`,
         ],
       ],
     }),
@@ -12730,19 +12671,21 @@ When Enoch's ending breaks the pattern, we feel it because Genesis has made us h
           "🚶 Enoch Walked With God",
           `This is one of the most beautiful phrases in Genesis.
 
-Walking with God means fellowship, trust, direction, and daily nearness.
+Walking with God means Enoch lived in fellowship with God.
 
-It is not one religious moment.
+It suggests trust, obedience, nearness, and direction.
 
-It is a pattern of life.
+This is not describing one religious moment.
+
+It is describing the shape of his life.
+
+Enoch walked with God in a world where death was still everywhere.
+
+The garden is closed, but walking with God is not.
 
 🚶 Step by step
 🙏 Near to God
-🧭 Life directed by God
-
-This phrase matters because Genesis shows close fellowship with God is still possible outside Eden.
-
-The garden is closed, but walking with God is not.`,
+🧭 Life directed by God`,
         ],
         [
           "👶 After He Begat Methuselah",
@@ -12754,13 +12697,15 @@ Enoch did not walk with God by escaping normal life.
 
 He walked with God as a father, inside family responsibility.
 
+That means holiness is not only for quiet places.
+
+People can walk with God while raising children, working, and carrying normal responsibilities.
+
+Genesis places deep faith inside everyday life.
+
 👶 Parenting
 🏠 Daily life
-🚶 Walking with God
-
-This phrase matters because holiness is not only for quiet places.
-
-People can walk with God while raising children, working, and living ordinary life.`,
+🚶 Walking with God`,
         ],
         [
           "✨ Three Hundred Years",
@@ -12774,13 +12719,13 @@ A walk is not a sprint.
 
 It is step after step.
 
+Genesis honors a life that keeps walking with God over time.
+
+That kind of faith may not look dramatic every day, but it is deeply powerful.
+
 ✨ Long obedience
 🚶 Daily direction
-⏳ Faithfulness over time
-
-This phrase matters because deep faith is often built slowly.
-
-Genesis honors a life that keeps walking.`,
+⏳ Faithfulness over time`,
         ],
         [
           "🕊️ He Was Not",
@@ -12794,11 +12739,13 @@ The text becomes short and mysterious.
 
 He was not.
 
+Genesis does not explain every detail.
+
+It simply shows that God can interrupt death's normal pattern.
+
 🕊️ The pattern breaks
 ⚰️ Death does not get the normal line
-👀 Readers are meant to notice
-
-This phrase matters because it shows death is powerful, but not ultimate over God.`,
+👀 Readers are meant to notice`,
         ],
         [
           "🙌 God Took Him",
@@ -12810,13 +12757,17 @@ God acts.
 
 That is the hope of the passage.
 
+Genesis 5 is full of graves, but this line opens a window of hope.
+
+Death is powerful, but it is not greater than God.
+
+The answer to death is not human achievement.
+
+The answer is God's power and mercy.
+
 🙌 God takes
 ⚰️ Death is interrupted
-🌱 Hope appears in a chapter of graves
-
-This phrase matters because the answer to death is not human achievement.
-
-The answer is God's power and mercy.`,
+🌱 Hope appears in a chapter of graves`,
         ],
       ],
     }),
@@ -12838,19 +12789,19 @@ He died.
 
 Long life is not the same as victory over death.
 
+Methuselah's age shows how long a person can live, but it also shows the limit of human life.
+
+Even the longest life in the genealogy cannot escape death.
+
+Genesis wants us to want more than many years.
+
 ⏳ Many years
 👴 Long life
-⚰️ Still death
-
-This phrase matters because Genesis does not let age become salvation.
-
-Humanity needs more than extra years.
-
-Humanity needs rescue from death itself.`,
+⚰️ Still death`,
         ],
         [
-          "😮‍💨 Comfort Us Concerning Our Work",
-          `Lamech names Noah with hope.
+          "😮‍💨 This Same Shall Comfort Us",
+          `Lamech names Noah with hope in his heart.
 
 He is weary from life on cursed ground.
 
@@ -12860,17 +12811,37 @@ The world is heavy.
 
 Lamech longs for comfort.
 
+He looks at his son and hopes God may bring relief through him.
+
+Before Noah ever builds an ark, his name is already tied to rest, comfort, and hope.
+
 😮‍💨 Tired hands
 🌍 Cursed ground
-🕊️ Hope for relief
+🕊️ Hope for relief`,
+        ],
+        [
+          "🛠️ Our Work And Toil Of Our Hands",
+          `This phrase describes the hard labor of life outside Eden.
 
-This phrase matters because Genesis lets us hear the ache of life outside Eden.
+Work itself was not created by sin.
 
-People are still living, but they are longing for rest.`,
+Adam had work before the fall.
+
+But after sin, work became painful, frustrating, and exhausting.
+
+Lamech feels that burden.
+
+He is not only talking about having a busy week.
+
+He is describing generations of people trying to live from ground that now fights back.
+
+🛠️ Work remains
+😓 Toil increases
+🌱 People long for rest`,
         ],
         [
           "🌍 The Ground Which The Lord Hath Cursed",
-          `This reaches back to Genesis 3.
+          `This phrase reaches back to Genesis 3.
 
 Adam's sin affected the ground.
 
@@ -12878,13 +12849,15 @@ Generations later, Lamech still feels that burden.
 
 Sin has long-term effects.
 
+It does not stay locked inside one moment.
+
+It spreads into work, family, land, and history.
+
+Genesis 5 helps us feel how the curse still weighs on ordinary life.
+
 🌍 Cursed ground
 🛠️ Painful work
-😓 Human weariness
-
-This phrase matters because Genesis shows that sin does not stay in one moment.
-
-It spreads into work, family, land, and history.`,
+😓 Human weariness`,
         ],
         [
           "🕊️ Noah",
@@ -12894,13 +12867,17 @@ Before Noah builds an ark, his name already carries hope.
 
 His father looks at the pain of the world and hopes this child will bring relief.
 
+That does not mean Lamech understands everything Noah will do.
+
+But Genesis is preparing the reader.
+
+Noah will become the man through whom God preserves life during judgment.
+
+His name tells us to watch him carefully.
+
 🕊️ Rest
 😮‍💨 Comfort
-🌱 Hope in a weary world
-
-This phrase matters because Noah enters the story as more than a boat builder.
-
-He represents longing for relief from the curse.`,
+🌱 Hope in a weary world`,
         ],
         [
           "👦 Shem, Ham, And Japheth",
@@ -12910,14 +12887,18 @@ Through them, the nations of the earth will spread.
 
 Genesis is preparing the reader for the next major movement of the story.
 
+These names are not random family details.
+
+They become the starting point for the post-flood world.
+
+Genesis 10 will trace the nations through these sons.
+
+The family story is about to become a world story.
+
 👦 Shem
 👦 Ham
 👦 Japheth
-🌍 Families after the flood
-
-This phrase matters because God's story moves through families and generations.
-
-The names that seem simple now will shape Genesis 10 and beyond.`,
+🌍 Families after the flood`,
         ],
       ],
     }),
@@ -12988,6 +12969,22 @@ This phrase matters because human greatness does not equal righteousness.
 The Bible looks deeper than status.`,
         ],
         [
+          "🧬 Nephilim",
+          `Nephilim is one of the words readers often stop and wonder about.
+
+The Bible does not give us every detail we might want.
+
+Some understand the Nephilim as giants, warriors, or unusually powerful people connected with the violence of that age.
+
+The important point is that Genesis is describing a world that feels dangerous, proud, and out of order.
+
+Human strength has become part of the problem instead of a gift used under God.
+
+So this phrase should not pull us away into guessing games.
+
+It should help us feel why the world is moving toward judgment.`,
+        ],
+        [
           "🧠 Every Imagination Of The Thoughts",
           `This is one of the strongest descriptions of human sin in Genesis.
 
@@ -13041,6 +13038,82 @@ He enters because God is merciful.
 This phrase matters because the flood story begins with mercy before the ark is ever built.
 
 Noah's obedience matters, but grace comes first.`,
+        ],
+        [
+          "👀 Saw The Daughters Of Men That They Were Fair",
+          `This phrase shows desire leading the story in a dangerous direction.
+
+The issue is not that beauty is bad.
+
+The issue is that people are choosing by sight without wisdom, covenant concern, or obedience to God.
+
+Genesis has already shown this pattern before.
+
+Eve saw the fruit was pleasant, and now this generation sees what it wants and takes.
+
+The phrase helps readers notice a repeated Bible warning: what looks desirable can still pull the heart away from God.
+
+👀 Sight
+❤️ Desire
+⚠️ Wisdom ignored`,
+        ],
+        [
+          "💍 They Took Them Wives Of All Which They Chose",
+          `This phrase shows human desire becoming self-rule.
+
+They take whoever they choose, which sounds like freedom at first.
+
+But in Genesis, choice without God often becomes disorder.
+
+Marriage is not treated as a casual private decision here.
+
+It affects families, worship, future generations, and the direction of the world.
+
+The phrase shows a society where people are using power and desire without listening to God.
+
+That is one reason the chapter feels so heavy.
+
+💍 Marriage
+👑 Self-rule
+💔 A world losing restraint`,
+        ],
+        [
+          "📅 His Days Shall Be An Hundred And Twenty Years",
+          `This phrase is often understood as a countdown before the flood.
+
+God is setting a limit on how long this corrupt world will continue before judgment comes.
+
+That means the flood does not arrive without warning.
+
+God is patient, but His patience is not the same as approval.
+
+The number shows mercy and boundary at the same time.
+
+There is still time before judgment, but that time will not last forever.
+
+⏳ Patience
+⚠️ Warning
+⚖️ Judgment approaching`,
+        ],
+        [
+          "🏛️ Men Of Renown",
+          `Renown means reputation, fame, or name recognition.
+
+These people were known and celebrated in their world.
+
+But Genesis puts that fame beside deep corruption.
+
+That teaches something important.
+
+A culture can admire people God is grieved by.
+
+Power, reputation, and popularity do not prove that a person is righteous.
+
+Genesis wants the reader to measure people by God's view, not by public applause.
+
+🏛️ Fame
+💪 Power
+⚠️ Not the same as godliness`,
         ],
       ],
     }),
@@ -13152,6 +13225,44 @@ This phrase matters because God's judgment is based on truth.
 
 Nothing is hidden from Him, and no victim is invisible to Him.`,
         ],
+        [
+          "🛣️ All Flesh Had Corrupted His Way",
+          `This phrase means corruption had spread into the way people lived.
+
+It was not only private thoughts hidden inside the heart.
+
+It had become a path, a lifestyle, and a pattern of society.
+
+Genesis uses way language because people are always moving in a direction.
+
+Noah walks with God, but the world has corrupted its way.
+
+That contrast is important.
+
+The question is not only what people believe, but what road their life is actually following.
+
+🛣️ Direction
+💔 Corrupt pattern
+🚶 Noah walks differently`,
+        ],
+        [
+          "⚖️ The End Of All Flesh Is Come Before Me",
+          `God says the end has come before Him.
+
+That means judgment is not based on panic, rumor, or human exaggeration.
+
+The case has come before the Judge of all the earth.
+
+God has seen the violence, corruption, and ruin clearly.
+
+This phrase helps readers understand the flood as moral judgment, not random disaster.
+
+The world has filled itself with destruction, and now God announces that destruction will be answered.
+
+⚖️ God judges
+👀 God sees
+🌊 Judgment is coming`,
+        ],
       ],
     }),
     makePersonalGenesisPhraseSection({
@@ -13199,6 +13310,22 @@ Faith becomes practical.
 This phrase matters because trusting God is not vague.
 
 It often becomes real obedience with tools, time, labor, and cost.`,
+        ],
+        [
+          "📏 Cubits",
+          `A cubit was an ancient measurement based roughly on the distance from a person's elbow to the tip of the middle finger.
+
+That means the ark's measurements are not random details.
+
+God gives Noah a real building plan with real dimensions.
+
+The ark is massive, ordered, and designed for preservation.
+
+This helps readers see that faith in Genesis 6 is not vague emotion.
+
+Noah's trust has to become measured obedience.
+
+He has to build what God says, the way God says, before the flood ever begins.`,
         ],
         [
           "🏠 Rooms In The Ark",
@@ -13270,6 +13397,62 @@ This phrase matters because faith becomes visible through obedience.
 
 Noah trusts God's word before the rain begins.`,
         ],
+        [
+          "🪟 A Window Shalt Thou Make",
+          `The window is a small detail, but it matters.
+
+The ark is a place of safety, but it is not a sealed coffin.
+
+God designs it with an opening for light, air, and later signs of the world outside.
+
+Noah will eventually use that opening as he waits for dry ground.
+
+This reminds us that God's refuge is not only about surviving judgment.
+
+It is also about being carried toward a future beyond it.
+
+🪟 Light
+🌬️ Breath
+🌱 Hope beyond the flood`,
+        ],
+        [
+          "🚪 The Door Of The Ark",
+          `The door matters because the ark is not just an object to admire.
+
+It is a refuge to enter.
+
+Noah and his household must go through the door to be saved from the waters.
+
+Later, Genesis will say the Lord shut him in.
+
+That makes the door a powerful part of the story.
+
+There is a real division between outside and inside, judgment and refuge, danger and safety.
+
+🚪 Entry
+🛶 Refuge
+🔒 God secures the rescue`,
+        ],
+        [
+          "🍞 Take Thou Unto Thee Of All Food",
+          `God tells Noah to gather food for his family and the animals.
+
+This shows how practical obedience is.
+
+Noah cannot only build the ark and ignore daily provision.
+
+He has to think about feeding life through a long season inside the ark.
+
+God's rescue includes ordinary needs like food, storage, and preparation.
+
+That helps readers see that faith is not careless.
+
+Faith listens to God and prepares for what obedience will require.
+
+🍞 Provision
+🛠️ Preparation
+🐾 Life sustained`,
+        ],
       ],
     }),
     makePersonalGenesisPhraseSection({
@@ -13333,6 +13516,22 @@ This phrase matters because God is preserving more than survival.
 He is preserving worship.`,
         ],
         [
+          "🌱 To Keep Seed Alive",
+          `This phrase explains why the animals enter the ark.
+
+God is not only saving Noah's household.
+
+He is preserving the future of living creatures on the earth.
+
+The word seed points to continuation, future life, and the ability for creation to keep multiplying after the flood.
+
+Judgment is coming, but God is not giving up on the world He made.
+
+Inside the ark, God is carrying the future through the waters.
+
+That makes the ark a place of both rescue and new beginning.`,
+        ],
+        [
           "⏳ Yet Seven Days",
           `God gives a final seven-day window before the flood begins.
 
@@ -13369,6 +13568,24 @@ He follows God's command.
 This phrase matters because biblical faith is steady.
 
 Noah keeps obeying even before the visible outcome arrives.`,
+        ],
+        [
+          "🌧️ I Will Cause It To Rain",
+          `God says He will cause the rain to come.
+
+The flood is not presented as nature acting on its own apart from God.
+
+Creation belongs to the Creator.
+
+The waters that were separated and ordered in Genesis 1 can be released in judgment here.
+
+This phrase helps readers connect creation and flood.
+
+The same God who rules the waters in the beginning still rules the waters now.
+
+🌧️ Rain comes
+🌊 Waters rise
+👑 God rules creation`,
         ],
       ],
     }),
@@ -13479,6 +13696,42 @@ Noah's security rests on God's action.
 This phrase matters because obedience and divine protection stand together.
 
 Noah enters by faith, and God secures him inside.`,
+        ],
+        [
+          "📅 The Selfsame Day",
+          `This phrase means everything happened on that very day.
+
+Genesis is slowing down to mark the exact moment when warning becomes reality.
+
+Noah, his family, and the animals enter the ark, and the flood begins according to God's word.
+
+The phrase gives the story a feeling of certainty.
+
+God had warned, Noah had prepared, and now the day arrives.
+
+It reminds readers that God's patience may feel long, but His word is never empty.
+
+📅 A real day
+⚠️ Warning fulfilled
+🛶 Refuge entered`,
+        ],
+        [
+          "🐾 After His Kind",
+          `This phrase reaches back to Genesis 1.
+
+God created living creatures according to their kinds, and now He preserves them according to their kinds.
+
+The flood is judgment, but it is not the cancellation of creation.
+
+God is carrying the created order through the waters.
+
+Fish, birds, animals, and creeping things are still part of the world God intends to continue.
+
+This phrase shows God's care for ordered life even in judgment.
+
+🐾 Kinds preserved
+🌍 Creation continues
+🛶 Life carried through`,
         ],
       ],
     }),
@@ -13596,6 +13849,44 @@ This phrase matters because being preserved by God does not always mean the situ
 
 Sometimes rescue includes waiting.`,
         ],
+        [
+          "🌊 Fifteen Cubits Upward",
+          `This measurement shows how completely the waters covered the high places.
+
+Genesis is making clear that the flood was not a small inconvenience in the story.
+
+The waters rose above the mountains, and no ordinary place of safety remained.
+
+That matters because hills and mountains often feel like places of escape.
+
+Here, even the highest places cannot save anyone.
+
+Only the ark God provided carries life through judgment.
+
+🌊 Waters rise
+⛰️ High places covered
+🛶 Only God's refuge remains`,
+        ],
+        [
+          "🫁 The Breath Of Life",
+          `This phrase reaches back to the creation of life.
+
+In Genesis 2, God breathed life into the man.
+
+Here, creatures with the breath of life die in the flood.
+
+That connection makes the scene heavy.
+
+The life God gave is now being lost because the world has become filled with corruption and violence.
+
+Genesis wants readers to feel that sin is not small.
+
+It damages the world God filled with breath and life.
+
+🫁 Breath
+🌍 Living creatures
+💔 Sin brings death`,
+        ],
       ],
     }),
     makePersonalGenesisPhraseSection({
@@ -13691,6 +13982,44 @@ The covered world is coming back into view.
 This phrase matters because Genesis shows hope returning step by step.
 
 First God remembers, then wind moves, then waters recede, then land appears.`,
+        ],
+        [
+          "🚫 The Fountains Also Of The Deep Were Stopped",
+          `This phrase shows the flood being restrained from below.
+
+Genesis 7 described the fountains of the deep breaking open when judgment began.
+
+Now those same waters are stopped.
+
+That matters because the flood is not out of control.
+
+God rules over the beginning of judgment and the ending of judgment.
+
+The waters obey His limits.
+
+The world is still covered, but the forces that brought destruction are being held back.
+
+🚫 Waters stopped
+👑 God rules the deep
+🌱 Restoration begins`,
+        ],
+        [
+          "📅 In The Seventh Month, On The Seventeenth Day",
+          `Genesis gives a specific date for when the ark rests.
+
+That detail helps readers feel that Noah's waiting happened in real time.
+
+The flood story is not written like a vague legend floating outside history.
+
+It has days, months, stages, and waiting.
+
+Noah does not simply jump from rain to dry land.
+
+He lives through a long process of preservation, patience, and gradual restoration.
+
+📅 A marked day
+🛶 The ark rests
+⏳ Waiting still continues`,
         ],
       ],
     }),
@@ -13804,6 +14133,44 @@ This phrase matters because God is not only saving Noah from the flood.
 
 He is preparing a renewed place for life to continue.`,
         ],
+        [
+          "🕊️ No Rest For The Sole Of Her Foot",
+          `This phrase explains why the dove returns.
+
+The bird needs a place to land, rest, and live.
+
+Even though the worst of the flood is passing, the world is not ready yet.
+
+That detail matters because survival is not the same as full restoration.
+
+Noah has to wait until the earth can truly support life again.
+
+The phrase makes the waiting feel practical and real.
+
+🕊️ Dove returns
+🌊 Waters remain
+⏳ Restoration is not finished`,
+        ],
+        [
+          "🌍 The Earth Was Dried",
+          `This phrase marks the end of the long waiting process.
+
+The earth that was covered by floodwaters is now becoming a place where life can begin again.
+
+It echoes Genesis 1, where dry land appeared from the waters.
+
+That connection helps readers see Genesis 8 as a kind of new creation moment.
+
+God is making space for life after judgment.
+
+The dry earth is not just scenery.
+
+It is the stage for a renewed beginning.
+
+🌍 Dry earth
+🌱 New beginning
+🛶 Ready to leave the ark`,
+        ],
       ],
     }),
     makePersonalGenesisPhraseSection({
@@ -13899,6 +14266,22 @@ This phrase matters because God receives Noah's worship after the flood.
 Relationship with God continues in the renewed world.`,
         ],
         [
+          "🙏 I Will Not Again Curse The Ground Any More",
+          `This promise does not mean sin has disappeared.
+
+God says plainly that the imagination of man's heart is still evil from youth.
+
+That is why this promise is mercy, not a reward for human improvement.
+
+The flood judged the old world, but it did not cure the human heart.
+
+Still, God commits Himself to preserving the order of the world.
+
+He will not keep destroying the ground every time humanity deserves judgment.
+
+This is a promise of patient mercy over a still-broken world.`,
+        ],
+        [
           "🌱 Seedtime And Harvest",
           `God promises the regular rhythms of life will continue.
 
@@ -13914,6 +14297,44 @@ It is the mercy that lets the world keep going.
 🌙 Night
 
 This phrase matters because every ordinary sunrise belongs to a world God is faithfully upholding.`,
+        ],
+        [
+          "🧠 The Imagination Of Man's Heart Is Evil From His Youth",
+          `This phrase is painfully honest.
+
+After the flood, God does not say humanity is now fixed.
+
+The heart problem remains.
+
+That means the flood judged evil, but it did not remove sin from human nature.
+
+This is one of the most important lessons in the Noah story.
+
+Humanity needs more than a cleaned world.
+
+Humanity needs a changed heart.
+
+🧠 Heart problem
+💔 Sin remains
+🙏 Mercy still given`,
+        ],
+        [
+          "☀️ While The Earth Remaineth",
+          `This phrase introduces God's promise about the continuing rhythms of the world.
+
+Seedtime, harvest, cold, heat, summer, winter, day, and night will continue.
+
+That does not mean life will always be easy.
+
+It means God will uphold the basic order that makes life possible.
+
+Every season becomes a quiet witness to God's patience.
+
+The world continues because God is faithful, not because humanity has become sinless.
+
+☀️ Day and night
+🌾 Seedtime and harvest
+🤝 God's preserving mercy`,
         ],
       ],
     }),
@@ -14024,6 +14445,22 @@ Human life belongs to God.
 This phrase matters because human value is not based on strength, age, race, wealth, or usefulness.
 
 It is based on God's mark on humanity.`,
+        ],
+        [
+          "⚖️ Whoso Sheddeth Man's Blood",
+          `This phrase explains why murder is treated with such seriousness after the flood.
+
+The old world was filled with violence, and God is now setting a boundary around human life.
+
+To shed human blood is not only to harm another person.
+
+It is to attack someone who bears God's image.
+
+That is why the command is connected directly to human dignity.
+
+God is teaching the renewed world that life must not be treated as cheap.
+
+Justice matters because people belong to God.`,
         ],
       ],
     }),
@@ -14229,6 +14666,42 @@ This phrase matters because biblical honor is not denial.
 
 It is care that refuses to turn shame into entertainment.`,
         ],
+        [
+          "🌍 Of Them Was The Whole Earth Overspread",
+          `This phrase points forward to the spread of humanity after the flood.
+
+Noah's sons are not only background characters in a family story.
+
+Through them, the earth will be populated again.
+
+Genesis is preparing the reader for the Table of Nations in chapter 10.
+
+That means even this painful family scene has a wider future behind it.
+
+The people in the tent will become connected to nations, lands, and long histories.
+
+🌍 Earth repopulated
+👦 Noah's sons
+📜 Genesis 10 coming`,
+        ],
+        [
+          "🗣️ Told His Two Brethren Without",
+          `Ham does not cover his father's shame.
+
+He goes outside and tells his brothers.
+
+The issue is not only seeing; it is what he does with what he sees.
+
+He turns Noah's shame into something exposed instead of protected.
+
+That is why Shem and Japheth's response is so different.
+
+They refuse to treat their father's weakness as something to stare at or spread.
+
+🗣️ Shame repeated
+🫣 Dishonor
+🧥 Covering needed`,
+        ],
       ],
     }),
     makePersonalGenesisPhraseSection({
@@ -14339,6 +14812,44 @@ This phrase matters because Noah can survive judgment, but he cannot defeat deat
 
 The Bible keeps us longing for someone greater.`,
         ],
+        [
+          "🏠 A Servant Of Servants Shall He Be",
+          `This phrase describes humiliation and subjection for Canaan.
+
+It is tied to the future story of Canaan's line, not to a permission slip for hatred or abuse.
+
+The Bible never gives readers the right to use this passage to degrade whole races of people.
+
+Historically, this text has been twisted in terrible ways, so it must be read carefully.
+
+Genesis is pointing toward future conflict involving Canaan, the land, and Israel's story.
+
+It is not teaching that some people have less human dignity.
+
+🏠 Canaan named
+⚠️ Future conflict
+🚫 Not a racist curse`,
+        ],
+        [
+          "📅 All The Days Of Noah Were Nine Hundred And Fifty Years",
+          `Genesis closes Noah's life with a counted lifespan.
+
+Noah lived through a world before the flood and a world after the flood.
+
+He saw judgment, rescue, worship, covenant, failure, and family consequences.
+
+But even Noah's long and important life ends.
+
+That connects him back to Genesis 5.
+
+Noah is used by God, but he is not the final answer to death or sin.
+
+The story must keep moving.
+
+📅 Long life
+🛶 Great rescue
+⚰️ Still not the final Savior`,
+        ],
       ],
     }),
     makePersonalGenesisPhraseSection({
@@ -14433,6 +14944,26 @@ This phrase matters because the Bible cares about peoples, not only individuals.
 
 God's later promise to bless all families of the earth grows out of this world of nations.`,
         ],
+        [
+          "🌊 After The Flood",
+          `This phrase reminds us that Genesis 10 is describing the world after judgment.
+
+The flood changed the world, but it did not end the human story.
+
+Families are growing again.
+
+Nations are forming again.
+
+Life is spreading again.
+
+That matters because God's purpose for creation continues even after severe judgment.
+
+Genesis is showing a new beginning, but not a perfect world.
+
+🌊 Judgment has passed
+👨‍👩‍👧 Families continue
+🌍 Nations begin spreading`,
+        ],
       ],
     }),
     makePersonalGenesisPhraseSection({
@@ -14523,6 +15054,42 @@ This phrase matters because Genesis 10 plants names that will become huge later.
 
 The Bible builds a long memory.`,
         ],
+        [
+          "🏛️ Erech, Accad, And Calneh",
+          `These city names show early human society organizing into centers of power.
+
+Genesis is not only listing families.
+
+It is showing kingdoms, cities, and cultures beginning to take shape after the flood.
+
+That matters because cities in Genesis can become places of human pride as well as human development.
+
+Babel will become the clearest example in the next chapter.
+
+The names here prepare readers for the rise of organized human power.
+
+🏛️ Cities
+👑 Kingdoms
+⚠️ Power that must answer to God`,
+        ],
+        [
+          "🧱 Resen Between Nineveh And Calah",
+          `This phrase gives geographical detail about an early city connected to Assyria's world.
+
+Modern readers may skip it because the names feel unfamiliar.
+
+But ancient readers would understand that Genesis is mapping real peoples and regions.
+
+Assyria later becomes one of the major powers in the Old Testament.
+
+So these names are not random.
+
+They are early markers of places that will matter deeply in Israel's future story.
+
+🧱 City building
+📍 Real geography
+📖 Later Bible importance`,
+        ],
       ],
     }),
     makePersonalGenesisPhraseSection({
@@ -14611,6 +15178,42 @@ This phrase matters because biblical promises unfold in real places.
 
 The story of Abraham and Israel will grow inside this geography.`,
         ],
+        [
+          "🔥 Sodom, Gomorrah, Admah, And Zeboim",
+          `These city names are loaded with future meaning.
+
+Sodom and Gomorrah will become famous in Genesis 18 and 19 because of their wickedness and judgment.
+
+But they are introduced here first as part of Canaan's region.
+
+That helps readers see that Genesis is setting up future stories before they arrive.
+
+The map of nations is also a map of coming moral conflict.
+
+Places are not just locations; they become settings where human sin and God's justice are revealed.
+
+🔥 Future judgment
+📍 Canaanite geography
+⚠️ Names to remember`,
+        ],
+        [
+          "🗺️ As Thou Goest Unto Sodom",
+          `This phrase describes movement through the land by recognizable locations.
+
+It may sound like a travel note, but it helps anchor the story in real geography.
+
+Genesis is showing the borders and regions that later become important to Abraham's family.
+
+When Abraham enters the land, the reader already has some sense that this is not empty space.
+
+It is inhabited, organized, and spiritually complicated.
+
+That makes the future promise of land more meaningful and more tense.
+
+🗺️ Travel markers
+📍 Real land
+🌱 Promise story coming`,
+        ],
       ],
     }),
     makePersonalGenesisPhraseSection({
@@ -14652,6 +15255,22 @@ But the line is being marked.
 This phrase matters because Genesis often points ahead before the reader fully sees why it matters.`,
         ],
         [
+          "🌱 Arphaxad",
+          `Arphaxad is easy to skip because Genesis 10 gives his name quickly.
+
+But this name matters because Genesis will soon trace the line from Shem through Arphaxad toward Abram.
+
+That means this is not just one more ancient name in a long list.
+
+It is part of the family line that will carry the covenant story forward.
+
+Genesis 10 shows many nations spreading across the earth.
+
+But inside that wide world, God is already preserving the line He will use to bless the nations.
+
+Arphaxad helps connect Noah's family to the coming story of Abraham.`,
+        ],
+        [
           "🌍 The Brother Of Japheth The Elder",
           `Genesis keeps connecting the brothers even while tracing separate lines.
 
@@ -14684,6 +15303,24 @@ Genesis 11 explains the event.
 This phrase matters because it helps readers connect Genesis 10 and 11.
 
 The nations are spread, and Babel will show why.`,
+        ],
+        [
+          "👶 Shelah Begat Eber",
+          `This phrase keeps moving the line closer to Abram.
+
+Eber becomes important because many readers connect his name with the word Hebrew.
+
+Genesis is not ready to introduce Abram yet, but it is quietly building the bridge.
+
+The chapter shows many nations, but this family line receives special attention.
+
+That is because the promise story will soon narrow through this line.
+
+God's plan for all nations will move through one chosen family.
+
+👶 Generations
+📜 Hebrew connection
+🌱 Abram is getting closer`,
         ],
       ],
     }),
@@ -14785,6 +15422,24 @@ The world after the flood has spread outward.
 This phrase matters because Genesis is preparing for Abram.
 
 God will soon call one man, but His purpose will reach all the families of the earth.`,
+        ],
+        [
+          "🔀 By These Were The Nations Divided In The Earth",
+          `This closing phrase summarizes the whole chapter.
+
+Humanity has spread into families, languages, lands, and nations.
+
+Genesis 10 gives the result, and Genesis 11 will explain the Babel event behind the scattering.
+
+That helps readers understand why the order feels unusual.
+
+The Bible sometimes gives the map first, then zooms in on the event that explains it.
+
+The nations are divided, but they still come from one human family under one Creator.
+
+🔀 Division
+🌍 Nations
+📖 Babel explanation coming`,
         ],
       ],
     }),
