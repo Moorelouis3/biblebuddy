@@ -10,6 +10,11 @@ export type PersonalGenesisPhraseSectionInput = {
 
 const note = (lines: string[]) => lines.join("\n\n");
 
+type PersonalTextureRule = {
+  matches: string[];
+  lines: string[];
+};
+
 type PersonalSectionSplit = {
   startVerse: number;
   endVerse: number;
@@ -117,6 +122,156 @@ function expandSplitSections(sections: PersonalGenesisPhraseSectionInput[]) {
       phrases: split.phraseIndexes.map((index) => section.phrases[index]).filter(Boolean),
     }));
   });
+}
+
+const GENESIS_41_50_TEXTURE_RULES: PersonalTextureRule[] = [
+  {
+    matches: ["two full years", "pharaoh", "dream was doubled", "spirit of god", "ring"],
+    lines: [
+      "Joseph's rise is sudden, but it is not random:",
+      "⏳ Two more years waiting.",
+      "🌙 Pharaoh dreams.",
+      "🙋 The butler remembers.",
+      "🙌 Joseph gives God the credit.",
+      "💍 Authority is placed in his hand.",
+      "God has been preparing Joseph before Egypt ever knew it needed him.",
+    ],
+  },
+  {
+    matches: ["manasseh", "ephraim", "all countries"],
+    lines: [
+      "Joseph's new life carries memory and mercy together:",
+      "👶 Manasseh names relief from old grief.",
+      "🌱 Ephraim names fruitfulness in affliction.",
+      "🌾 Grain fills Egypt.",
+      "🌍 Nations come for bread.",
+      "The pain is not erased, but God makes Joseph fruitful inside the land where he suffered.",
+    ],
+  },
+  {
+    matches: ["bowed down", "ye are spies", "we are verily guilty", "money is restored", "benjamin"],
+    lines: [
+      "The brothers are being brought back through the wound they made:",
+      "🙇 They bow without knowing Joseph.",
+      "🕵️ They are tested.",
+      "💔 Old guilt starts speaking.",
+      "💰 Returned money scares them.",
+      "👦 Benjamin becomes the pressure point.",
+      "God is not only saving their bodies from famine. He is exposing their hearts.",
+    ],
+  },
+  {
+    matches: ["judah said", "surety", "god almighty", "joseph made haste"],
+    lines: [
+      "Genesis lets you see change starting in the family:",
+      "🧍 Judah steps forward.",
+      "🤝 He offers himself as surety.",
+      "🙏 Jacob releases Benjamin with prayer.",
+      "😭 Joseph feels the emotion rising.",
+      "The story is moving from denial toward truth, but it takes pressure to bring it out.",
+    ],
+  },
+  {
+    matches: ["cup", "rent their clothes", "judah came near", "instead of the lad"],
+    lines: [
+      "Judah's plea is one of the great reversals in Genesis:",
+      "🥣 The cup exposes Benjamin.",
+      "👕 The brothers tear their clothes.",
+      "🗣️ Judah speaks honestly.",
+      "👦 Benjamin is protected.",
+      "🧍 Judah offers himself instead.",
+      "The man who once helped sell a brother is now willing to become a substitute for one.",
+    ],
+  },
+  {
+    matches: ["i am joseph", "god did send me", "not you", "goshen", "my son joseph"],
+    lines: [
+      "The reveal is full of tears and theology:",
+      "😭 Joseph can no longer hold back.",
+      "😨 The brothers are afraid.",
+      "🙌 Joseph names God's purpose.",
+      "🤗 Reconciliation begins.",
+      "🚚 The family is invited to Egypt.",
+      "Forgiveness here does not deny evil. It sees God's saving hand above it.",
+    ],
+  },
+  {
+    matches: ["beersheba", "fear not to go down", "seventy souls", "judah before him"],
+    lines: [
+      "Jacob's move to Egypt is guided by promise:",
+      "🛕 Sacrifice at Beersheba.",
+      "🌙 God speaks in visions.",
+      "⬇️ Do not fear going down.",
+      "👨‍👩‍👧‍👦 The seventy go as a family seed.",
+      "📍 Judah leads the way to Goshen.",
+      "Egypt is not the final home, but God goes with them into the next chapter of the story.",
+    ],
+  },
+  {
+    matches: ["pharaoh", "pilgrimage", "goshen", "there was no bread", "fifth part"],
+    lines: [
+      "Genesis 47 holds blessing and pressure together:",
+      "🏞️ Israel receives Goshen.",
+      "🙌 Jacob blesses Pharaoh.",
+      "🧓 Jacob calls his years a pilgrimage.",
+      "🍞 Egypt runs out of bread.",
+      "📜 Joseph reorganizes the land for survival.",
+      "The promise family is preserved, but the famine world is still costly and severe.",
+    ],
+  },
+  {
+    matches: ["crossing his hands", "ephraim", "manasseh", "angel which redeemed me"],
+    lines: [
+      "Jacob's crossed hands fit the whole Genesis pattern:",
+      "🙌 The blessing is deliberate.",
+      "🔁 The younger is placed before the older.",
+      "🧒 Joseph tries to correct it.",
+      "📣 Jacob insists.",
+      "God's blessing keeps moving by promise, not by normal human ordering.",
+    ],
+  },
+  {
+    matches: ["shiloh", "judah", "fruitful bough", "archers", "gathered up his feet"],
+    lines: [
+      "Jacob's final words look backward and forward:",
+      "🦁 Judah receives royal hope.",
+      "🌿 Joseph is pictured as fruitful.",
+      "🏹 Old wounds are remembered.",
+      "💪 God-given strength is named.",
+      "⚰️ Jacob dies trusting the family promise.",
+      "The blessings turn twelve sons into the beginnings of Israel's tribes.",
+    ],
+  },
+  {
+    matches: ["evil against me", "god meant it", "surely visit you", "my bones"],
+    lines: [
+      "Genesis closes with grief, forgiveness, and hope:",
+      "💔 Jacob is mourned.",
+      "🤲 Joseph refuses revenge.",
+      "🌱 God turns evil toward preservation.",
+      "📣 Joseph says God will surely visit.",
+      "⚰️ His bones wait for the Exodus.",
+      "The book ends in Egypt, but its faith is facing Canaan.",
+    ],
+  },
+];
+
+function addGenesisFortyOneToFiftyTexture(title: string, content: string) {
+  const lower = title.toLowerCase();
+  const rule = GENESIS_41_50_TEXTURE_RULES.find((item) => item.matches.some((match) => lower.includes(match)));
+
+  if (!rule) {
+    return content;
+  }
+
+  return `${content}\n\n${note(rule.lines)}`;
+}
+
+function addGenesisFortyOneToFiftySectionTexture(sections: PersonalGenesisPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [title, addGenesisFortyOneToFiftyTexture(title, content)] as [string, string]),
+  }));
 }
 
 const RAW_GENESIS_41_50_PERSONAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
@@ -487,4 +642,6 @@ const RAW_GENESIS_41_50_PERSONAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
   },
 ];
 
-export const GENESIS_41_50_PERSONAL_SECTIONS = expandSplitSections(RAW_GENESIS_41_50_PERSONAL_SECTIONS);
+export const GENESIS_41_50_PERSONAL_SECTIONS = addGenesisFortyOneToFiftySectionTexture(
+  expandSplitSections(RAW_GENESIS_41_50_PERSONAL_SECTIONS),
+);

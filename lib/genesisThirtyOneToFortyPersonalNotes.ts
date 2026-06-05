@@ -10,6 +10,11 @@ export type PersonalGenesisPhraseSectionInput = {
 
 const note = (lines: string[]) => lines.join("\n\n");
 
+type PersonalTextureRule = {
+  matches: string[];
+  lines: string[];
+};
+
 type PersonalSectionSplit = {
   startVerse: number;
   endVerse: number;
@@ -101,6 +106,152 @@ function expandSplitSections(sections: PersonalGenesisPhraseSectionInput[]) {
       phrases: split.phraseIndexes.map((index) => section.phrases[index]).filter(Boolean),
     }));
   });
+}
+
+const GENESIS_31_40_TEXTURE_RULES: PersonalTextureRule[] = [
+  {
+    matches: ["laban's sons", "laban's countenance", "god of bethel", "stole away"],
+    lines: [
+      "Feel the pressure building around Jacob:",
+      "👂 Accusations in the household.",
+      "😠 Laban's face changing.",
+      "📍 God reminding Jacob of Bethel.",
+      "🏃 A secret departure.",
+      "The leaving is messy, but God is still moving Jacob back toward the promise.",
+    ],
+  },
+  {
+    matches: ["mizpah", "heap", "pillar", "god judge"],
+    lines: [
+      "The covenant with Laban is not warm and cozy:",
+      "🪨 Stones mark the boundary.",
+      "👀 God is called as witness.",
+      "🚧 The men agree not to cross for harm.",
+      "🤝 Peace is made, but trust is thin.",
+      "Genesis lets reconciliation be honest when a relationship still needs distance.",
+    ],
+  },
+  {
+    matches: ["deliver me", "two bands", "face of esau", "appease"],
+    lines: [
+      "Jacob's fear is doing several things at once:",
+      "🙏 He prays.",
+      "📦 He plans.",
+      "🎁 He sends gifts.",
+      "😰 He imagines Esau's anger.",
+      "Faith is not shown here as numb courage. Jacob is scared, and he brings that fear into God's promise.",
+    ],
+  },
+  {
+    matches: ["wrestled", "let me go", "israel", "peniel"],
+    lines: [
+      "The night at Jabbok changes Jacob:",
+      "🌙 Alone in the dark.",
+      "🤼 Wrestling until daybreak.",
+      "🦴 A wounded thigh.",
+      "🪪 A new name.",
+      "🌅 A new limp in the morning.",
+      "Jacob leaves blessed, but he does not leave untouched.",
+    ],
+  },
+  {
+    matches: ["bowed himself", "ran to meet", "face of god", "succoth"],
+    lines: [
+      "The reunion with Esau carries real relief:",
+      "🙇 Jacob comes low.",
+      "🏃 Esau runs forward.",
+      "😭 The brothers weep.",
+      "🎁 The gift is received.",
+      "The story does not erase the past, but it shows mercy can meet people after years of fear.",
+    ],
+  },
+  {
+    matches: ["dinah", "shechem", "simeon and levi", "troubled me"],
+    lines: [
+      "Genesis 34 is heavy and should be read carefully:",
+      "💔 Dinah is violated.",
+      "🗣️ Men negotiate around her.",
+      "⚔️ Simeon and Levi answer with violence.",
+      "🏚️ A whole city is devastated.",
+      "The chapter is not asking us to admire the chaos. It is showing how sin spreads damage through families and communities.",
+    ],
+  },
+  {
+    matches: ["bethel", "strange gods", "elbethel", "benoni", "benjamin"],
+    lines: [
+      "Genesis 35 feels like return and loss braided together:",
+      "🧹 Idols are buried.",
+      "📍 Bethel is revisited.",
+      "📣 God repeats the name Israel.",
+      "😭 Rachel dies.",
+      "👶 Benjamin is born.",
+      "The promise continues, but not without grief along the road.",
+    ],
+  },
+  {
+    matches: ["esau is edom", "dukes", "chiefs", "kings"],
+    lines: [
+      "Do not let the genealogy blur past you:",
+      "🏔️ Esau has a land.",
+      "👨‍👩‍👦 His family grows.",
+      "👑 Chiefs and kings arise.",
+      "🧭 Edom becomes a real neighbor in Israel's story.",
+      "Genesis is tracking more than Jacob's line; it is showing how related nations take shape around the promise family.",
+    ],
+  },
+  {
+    matches: ["coat", "dream", "pit", "sold", "many colours"],
+    lines: [
+      "Joseph's fall happens through family sin, not random tragedy:",
+      "🎽 A coat marks favoritism.",
+      "💤 Dreams stir hatred.",
+      "🕳️ A pit hides violence.",
+      "💰 Silver changes hands.",
+      "💔 Jacob is deceived by his own sons.",
+      "The chosen family is still deeply broken, and God will work without pretending it is clean.",
+    ],
+  },
+  {
+    matches: ["tamar", "pledge", "more righteous", "judah"],
+    lines: [
+      "Judah's chapter exposes what everyone would rather hide:",
+      "🚶 Judah separates from his brothers.",
+      "⏳ Tamar is left waiting.",
+      "🧾 A pledge becomes evidence.",
+      "⚖️ Judah is forced to confess.",
+      "Genesis is not sanitizing the family line. It is showing truth breaking through hypocrisy.",
+    ],
+  },
+  {
+    matches: ["lord was with joseph", "potiphar", "sin against god", "prison", "butler"],
+    lines: [
+      "Joseph's integrity is tested in places he did not choose:",
+      "🏠 Faithful in Potiphar's house.",
+      "🚪 Running from temptation.",
+      "⛓️ Falsely imprisoned.",
+      "🧠 Interpreting dreams.",
+      "😔 Forgotten by the butler.",
+      "The Lord being with Joseph does not mean the path is easy. It means Joseph is not abandoned on it.",
+    ],
+  },
+];
+
+function addGenesisThirtyOneToFortyTexture(title: string, content: string) {
+  const lower = title.toLowerCase();
+  const rule = GENESIS_31_40_TEXTURE_RULES.find((item) => item.matches.some((match) => lower.includes(match)));
+
+  if (!rule) {
+    return content;
+  }
+
+  return `${content}\n\n${note(rule.lines)}`;
+}
+
+function addGenesisThirtyOneToFortySectionTexture(sections: PersonalGenesisPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [title, addGenesisThirtyOneToFortyTexture(title, content)] as [string, string]),
+  }));
 }
 
 const RAW_GENESIS_31_40_PERSONAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
@@ -1503,4 +1654,6 @@ const RAW_GENESIS_31_40_PERSONAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
   },
 ];
 
-export const GENESIS_31_40_PERSONAL_SECTIONS = expandSplitSections(RAW_GENESIS_31_40_PERSONAL_SECTIONS);
+export const GENESIS_31_40_PERSONAL_SECTIONS = addGenesisThirtyOneToFortySectionTexture(
+  expandSplitSections(RAW_GENESIS_31_40_PERSONAL_SECTIONS),
+);

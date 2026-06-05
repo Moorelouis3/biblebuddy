@@ -15519,6 +15519,737 @@ function applyPersonalGenesisFortyOneThroughFiftyStudySections() {
   BIBLE_READER_STUDY_SECTIONS.push(...sections);
 }
 
+type ExodusTextureRule = {
+  matches: string[];
+  lines: string[];
+};
+
+const EXODUS_CHAPTER_TEXTURE_RULES: Record<number, string[]> = {
+  1: [
+    "Hold this phrase inside Exodus 1's pressure:",
+    "📈 Promise is multiplying.",
+    "👑 Pharaoh feels threatened.",
+    "🧱 Oppression becomes policy.",
+    "🕊️ Faithfulness shows up through courageous women.",
+    "The chapter teaches that God's people can grow under pressure, but evil power often answers blessing with control.",
+  ],
+  2: [
+    "Read this phrase inside the hidden beginning of deliverance:",
+    "👶 Moses is preserved under a death sentence.",
+    "🌊 Water meant for death becomes part of rescue.",
+    "🏜️ Midian becomes a place of preparation.",
+    "👂 God hears before deliverance is visible.",
+    "Exodus 2 is quiet, but heaven is not quiet. God is already moving.",
+  ],
+  3: [
+    "This phrase belongs to the burning-bush turning point:",
+    "🔥 Holy presence enters ordinary wilderness.",
+    "👂 God has heard suffering.",
+    "📜 God remembers covenant promises.",
+    "✨ God's name anchors the mission.",
+    "Moses is being sent, but the rescue begins with who God is.",
+  ],
+  4: [
+    "Let this phrase sit inside Moses' reluctant obedience:",
+    "❓ Moses raises honest fears.",
+    "🐍 God gives signs.",
+    "🗣️ Weak speech is brought under God's authority.",
+    "🤝 Aaron is provided as help.",
+    "God does not pretend Moses feels ready. He gives enough grace for the next obedient step.",
+  ],
+  5: [
+    "This phrase lives in the chapter where obedience gets harder first:",
+    "📣 God's word confronts Pharaoh.",
+    "👑 Pharaoh refuses to know the LORD.",
+    "🧱 Labor becomes impossible.",
+    "😣 Israel feels crushed.",
+    "🙏 Moses brings confusion to God.",
+    "Exodus 5 teaches that resistance is not proof that God failed.",
+  ],
+  6: [
+    "This phrase belongs to God's repeated promise:",
+    "📜 I am the LORD.",
+    "👂 I have heard.",
+    "💪 I will bring out.",
+    "🤲 I will redeem.",
+    "🏠 I will take you to Me.",
+    "The people are too anguished to hear it fully, but God's promise is still solid.",
+  ],
+  7: [
+    "Read this phrase as the public confrontation begins:",
+    "🐍 The staff becomes a sign.",
+    "🎭 Egypt imitates what it can.",
+    "💪 God's power swallows the counterfeit.",
+    "🌊 The Nile is struck.",
+    "🔒 Pharaoh hardens himself.",
+    "The question 'Who is the LORD?' starts receiving an answer.",
+  ],
+  8: [
+    "This phrase belongs to the pressure of the plagues:",
+    "🐸 Egypt is overwhelmed.",
+    "☝️ The magicians hit their limit.",
+    "🪰 Daily life is invaded.",
+    "🛡️ God distinguishes His people.",
+    "🔒 Pharaoh keeps bargaining without surrender.",
+    "Exodus 8 shows that evidence can be clear while the heart stays closed.",
+  ],
+  9: [
+    "This phrase sits inside judgment with warning:",
+    "🐄 Egypt's livestock falls.",
+    "🩹 Bodies carry the plague.",
+    "⛈️ Hail comes after mercy gives warning.",
+    "🏠 Some Egyptians fear the word and act.",
+    "😔 Pharaoh confesses without true surrender.",
+    "The chapter asks whether a person wants God or only relief.",
+  ],
+  10: [
+    "This phrase belongs to the last pressure before Passover:",
+    "👪 God wants the signs told to children.",
+    "🦗 Locusts devour what remains.",
+    "🌑 Darkness can be felt.",
+    "🏠 Israel has light.",
+    "🐑 Moses refuses worship with strings attached.",
+    "Exodus 10 teaches that Pharaoh's compromises are still bondage.",
+  ],
+  11: [
+    "Read this phrase under the weight of the final warning:",
+    "🌙 Judgment has an appointed time.",
+    "👑 Pharaoh's house is not untouchable.",
+    "🛡️ God makes a distinction.",
+    "📣 The warning comes before the blow.",
+    "The final plague is not random disaster. It is holy judgment after repeated refusal.",
+  ],
+  12: [
+    "This phrase belongs to Passover, the center of deliverance:",
+    "📅 Redemption resets time.",
+    "🐑 A lamb is chosen.",
+    "🩸 Blood marks shelter.",
+    "🍞 The meal teaches memory.",
+    "🚪 Rescue is received under God's appointed sign.",
+    "Exodus 12 teaches that freedom begins with God's provided covering.",
+  ],
+  13: [
+    "This phrase belongs to redeemed memory:",
+    "👶 The firstborn are set apart.",
+    "🍞 Unleavened bread keeps the rescue visible.",
+    "🦴 Joseph's bones connect Exodus to Genesis.",
+    "☁️ God leads by cloud and fire.",
+    "Freedom must be remembered, taught, and followed.",
+  ],
+  14: [
+    "This phrase belongs to the sea-crossing miracle:",
+    "🐎 Egypt pursues.",
+    "😨 Israel panics.",
+    "👀 God says to stand still.",
+    "🌊 The sea opens.",
+    "🛡️ The LORD fights for His people.",
+    "The dead end becomes the stage where salvation is seen.",
+  ],
+  15: [
+    "This phrase belongs to song and wilderness testing:",
+    "🎶 Rescue becomes worship.",
+    "👑 The LORD is incomparable.",
+    "🥁 Miriam leads praise.",
+    "💧 Bitter water tests trust.",
+    "🌳 God heals Marah.",
+    "The God who wins at the sea also cares for the road after the song.",
+  ],
+  16: [
+    "This phrase belongs to manna training:",
+    "🍽️ Hunger exposes memory.",
+    "🍞 Bread comes from heaven.",
+    "📏 Enough is measured daily.",
+    "🛑 Sabbath teaches rest.",
+    "🏺 An omer becomes a witness.",
+    "God feeds Israel while reshaping slave habits into daily trust.",
+  ],
+  17: [
+    "This phrase belongs to dependence in need and battle:",
+    "💧 Thirst presses hard.",
+    "🪨 Water comes from the rock.",
+    "❓ Israel questions God's presence.",
+    "⚔️ Amalek attacks.",
+    "🙌 Moses needs support.",
+    "The chapter shows that provision and victory both depend on the LORD.",
+  ],
+  18: [
+    "This phrase belongs to testimony and wise leadership:",
+    "👂 Jethro hears.",
+    "🗣️ Moses tells the rescue story.",
+    "🙌 An outsider blesses the LORD.",
+    "😓 Moses reaches human limits.",
+    "🧑‍⚖️ Shared leadership protects the people.",
+    "Exodus 18 says God's care includes structure, counsel, and help.",
+  ],
+  19: [
+    "This phrase belongs to Sinai's holy arrival:",
+    "🦅 God carried Israel from Egypt.",
+    "💎 Israel is called treasured possession.",
+    "👑 They are called a kingdom of priests.",
+    "⚡ The mountain trembles.",
+    "🚧 Boundaries guard holy approach.",
+    "Rescue is becoming covenant nearness.",
+  ],
+  20: [
+    "This phrase belongs to freed life under God's word:",
+    "🏠 God rescued Israel from bondage.",
+    "🙌 Worship belongs to Him alone.",
+    "🛑 His name and day are holy.",
+    "🤝 Neighbor love becomes concrete.",
+    "🧠 Desire itself comes under God's command.",
+    "The commandments are not Egypt's chains. They are God's order for a rescued people.",
+  ],
+  21: [
+    "This phrase belongs to covenant justice in ordinary life:",
+    "📜 Case laws apply God's will to real situations.",
+    "🧍 Servants are not to be treated like Pharaoh treated Israel.",
+    "🩹 Injury and negligence matter.",
+    "⚖️ Justice must be proportionate.",
+    "God's law pushes redemption into work, bodies, households, and responsibility.",
+  ],
+  22: [
+    "This phrase belongs to restitution and protection:",
+    "🧾 Wrongdoing must be repaired.",
+    "🔥 Damage to a neighbor matters.",
+    "🤲 Entrusted things require faithfulness.",
+    "🛡️ Widows, orphans, strangers, and the poor are protected.",
+    "The God who heard Israel's cry now commands Israel to hear vulnerable people.",
+  ],
+  23: [
+    "This phrase belongs to justice, rest, and promise:",
+    "🗣️ Truth must not be bent.",
+    "⚖️ Courts must not follow crowds or bribes.",
+    "🌾 Land and workers receive rest.",
+    "🎉 Feasts train memory.",
+    "🧭 God promises to lead them forward.",
+    "Covenant life reaches public truth, calendar rhythm, and the road ahead.",
+  ],
+  24: [
+    "This phrase belongs to covenant being sealed:",
+    "📖 The words are read.",
+    "🩸 Blood marks the covenant.",
+    "🙋 The people answer.",
+    "🍽️ Elders eat before God.",
+    "☁️ Moses goes up into glory.",
+    "The relationship is spoken, accepted, sealed, and brought near.",
+  ],
+  25: [
+    "This phrase belongs to God's desire to dwell among His people:",
+    "🤲 Offerings come from willing hearts.",
+    "🏕️ A sanctuary is commanded.",
+    "📦 The ark holds covenant testimony.",
+    "🩸 The mercy seat points to atonement.",
+    "🕯️ Holy furniture teaches ordered nearness.",
+    "The details are worship architecture, not filler.",
+  ],
+  26: [
+    "This phrase belongs to the tabernacle's holy structure:",
+    "🧵 Curtains form sacred space.",
+    "🪵 Frames give ordered stability.",
+    "🚪 Veils mark access and boundary.",
+    "📦 The ark belongs behind the veil.",
+    "God is near, but His nearness is not casual.",
+  ],
+  27: [
+    "This phrase belongs to altar, court, and light:",
+    "🔥 The altar stands outside.",
+    "🏕️ The court creates approach.",
+    "🕯️ Oil keeps the lamp burning.",
+    "👥 Priests tend holy service.",
+    "The path toward God's dwelling includes sacrifice, boundary, and light.",
+  ],
+  28: [
+    "This phrase belongs to priestly representation:",
+    "👕 Garments are made for glory and beauty.",
+    "💎 Israel's names are carried on stones.",
+    "❤️ The breastplate rests over the heart.",
+    "✨ Holiness to the LORD marks the priest.",
+    "The priest bears the people before God, not just himself.",
+  ],
+  29: [
+    "This phrase belongs to consecration:",
+    "💧 Priests are washed.",
+    "🩸 Blood marks them for service.",
+    "🔥 Offerings rise daily.",
+    "⏳ Seven days complete the ordination.",
+    "Holy service begins with cleansing, sacrifice, and God's command.",
+  ],
+  30: [
+    "This phrase belongs to holy maintenance of worship:",
+    "🌫️ Incense rises before God.",
+    "🪙 Atonement money teaches life belongs to Him.",
+    "💧 The laver provides washing.",
+    "🫒 Oil and incense are set apart.",
+    "Daily nearness to God requires holy rhythms and holy boundaries.",
+  ],
+  31: [
+    "This phrase belongs to Spirit-filled craftsmanship and Sabbath:",
+    "🎨 Skill comes from God.",
+    "🛠️ Artisans build holy space.",
+    "🛑 Sabbath still matters.",
+    "🪨 Tablets carry God's testimony.",
+    "The God who gives work also commands rest.",
+  ],
+  32: [
+    "This phrase belongs to the golden calf disaster:",
+    "⏳ Delay exposes distrust.",
+    "🐂 Gold becomes an idol.",
+    "🎉 Worship language is twisted.",
+    "💔 Covenant is shattered.",
+    "🙏 Moses intercedes.",
+    "False worship can sound religious while it rebels against God.",
+  ],
+  33: [
+    "This phrase belongs to the crisis of presence:",
+    "🏜️ The land is not enough without God.",
+    "⛺ Moses meets with God outside the camp.",
+    "🙏 He pleads for presence.",
+    "✨ He asks for glory.",
+    "🪨 God reveals and protects.",
+    "The greatest gift in Exodus is not escape or land. It is God with His people.",
+  ],
+  34: [
+    "This phrase belongs to covenant mercy after failure:",
+    "📜 New tablets are cut.",
+    "📣 God's name is proclaimed.",
+    "🤲 Mercy and justice stand together.",
+    "🚫 Idolatry is warned against again.",
+    "🌟 Moses' face shines.",
+    "The covenant continues because the LORD is merciful and faithful.",
+  ],
+  35: [
+    "This phrase belongs to willing obedience after idolatry:",
+    "🛑 Sabbath is repeated.",
+    "🤲 Willing hearts bring materials.",
+    "🧠 Wise hearts offer skill.",
+    "🧵 The tabernacle work begins.",
+    "The same people who failed with gold now bring gifts for God's dwelling.",
+  ],
+  36: [
+    "This phrase belongs to careful construction:",
+    "📦 The people bring more than enough.",
+    "🧵 Curtains are made.",
+    "🪵 Frames are built.",
+    "🚪 Veils and coverings take shape.",
+    "Obedience becomes visible through repeated, careful work.",
+  ],
+  37: [
+    "This phrase belongs to holy furniture being made:",
+    "📦 The ark is made.",
+    "🩸 The mercy seat is formed.",
+    "🍞 The table is prepared.",
+    "🕯️ The lampstand is crafted.",
+    "🌫️ The incense altar is built.",
+    "The furniture teaches that God's presence is approached through covenant, mercy, provision, light, and prayer.",
+  ],
+  38: [
+    "This phrase belongs to altar, court, and accountability:",
+    "🔥 The altar is made.",
+    "💧 The laver is prepared.",
+    "🏕️ The court is built.",
+    "🧾 Materials are counted.",
+    "Faithful worship includes both craftsmanship and honest stewardship.",
+  ],
+  39: [
+    "This phrase belongs to priestly garments and finished work:",
+    "👕 Garments are made carefully.",
+    "💎 Names are carried before God.",
+    "✨ Holiness marks the priest.",
+    "✅ Moses inspects the work.",
+    "🙌 Blessing follows faithful obedience.",
+    "This is the opposite of the golden calf: worship shaped by God's command.",
+  ],
+  40: [
+    "This phrase belongs to the climax of Exodus:",
+    "📅 The tabernacle is set up.",
+    "🫒 It is anointed.",
+    "💧 Priests are washed.",
+    "✅ Moses finishes the work.",
+    "☁️ Glory fills the tabernacle.",
+    "Exodus ends with the God who rescued Israel dwelling among them and guiding the journey.",
+  ],
+};
+
+const EXODUS_TEXTURE_RULES: ExodusTextureRule[] = [
+  {
+    matches: ["these are the names", "fruitful", "joseph died"],
+    lines: [
+      "Exodus starts by carrying Genesis forward:",
+      "📜 Names are remembered.",
+      "⚰️ Joseph's generation passes.",
+      "🌱 The family multiplies.",
+      "🧬 The promise keeps breathing in Egypt.",
+      "The book opens quietly because God often grows deliverance before anyone can see it.",
+    ],
+  },
+  {
+    matches: ["new king", "more and mightier", "made their lives bitter", "shiphrah", "puah", "cast into the river"],
+    lines: [
+      "Watch the pressure tighten in chapter 1:",
+      "👑 Political memory disappears.",
+      "😨 Fear turns into policy.",
+      "🧱 Work becomes a weapon.",
+      "🕊️ Midwives choose God over Pharaoh.",
+      "🌊 The river becomes a place of death.",
+      "Exodus is showing why rescue is not optional. Israel needs deliverance from a whole system of oppression.",
+    ],
+  },
+  {
+    matches: ["ark of bulrushes", "compassion", "drew him out", "looked on their burdens", "god heard their groaning"],
+    lines: [
+      "Moses' beginning is full of holy irony:",
+      "👶 A threatened baby lives.",
+      "🧺 A basket becomes shelter.",
+      "👸 Pharaoh's house protects Pharaoh's enemy.",
+      "🏜️ Moses is hidden in Midian.",
+      "👂 God hears the groaning in Egypt.",
+      "Before Moses knows his calling, God already knows His people's pain.",
+    ],
+  },
+  {
+    matches: ["burned with fire", "holy ground", "i am come down", "i am that i am", "god of abraham"],
+    lines: [
+      "The call of Moses rests on who God is:",
+      "🔥 Holy presence appears in ordinary wilderness.",
+      "👣 Moses must come with reverence.",
+      "👂 God has heard Israel.",
+      "✨ I AM sends him.",
+      "📜 The God of the fathers keeps His covenant.",
+      "The mission is not built on Moses' confidence. It is built on God's name and compassion.",
+    ],
+  },
+  {
+    matches: ["they will not believe", "made man's mouth", "aaron thy brother", "return into egypt", "bowed their heads"],
+    lines: [
+      "Moses' weakness is not edited out:",
+      "❓ He fears rejection.",
+      "🗣️ He feels weak in speech.",
+      "🤝 Aaron is given as help.",
+      "🚶 Moses returns to Egypt.",
+      "🙇 Israel worships before freedom is visible.",
+      "God answers fear with signs, presence, and help, but He still calls Moses to obey.",
+    ],
+  },
+  {
+    matches: ["thus saith the lord", "who is the lord", "no more give the people straw", "officers", "wherefore"],
+    lines: [
+      "Exodus 5 is the painful middle:",
+      "📣 God's word confronts Pharaoh.",
+      "👑 Pharaoh refuses the LORD's authority.",
+      "🧱 Labor gets harder.",
+      "😣 Israel blames the messengers.",
+      "🙏 Moses laments to God.",
+      "Obedience has not failed. Pharaoh's cruelty is being exposed before God breaks it.",
+    ],
+  },
+  {
+    matches: ["i am the lord", "heard the groaning", "anguish of spirit", "bring you out", "levi"],
+    lines: [
+      "God answers crushed faith with repeated promise:",
+      "📜 I am the LORD.",
+      "👂 I have heard.",
+      "💪 I will bring out.",
+      "🤲 I will redeem.",
+      "🏠 I will take you to Me.",
+      "Israel may be too broken to absorb hope yet, but God's promise is not weakened by their exhaustion.",
+    ],
+  },
+  {
+    matches: ["cast down thy rod", "magicians", "swallowed up", "river", "blood"],
+    lines: [
+      "The confrontation begins in Pharaoh's own world:",
+      "🐍 The staff becomes a sign.",
+      "🎭 Egypt imitates what it can.",
+      "💪 God's sign swallows the counterfeit.",
+      "🌊 The Nile is struck.",
+      "🩸 Water becomes blood.",
+      "The plagues are not random tricks. They answer Pharaoh's question: Who is the LORD?",
+    ],
+  },
+  {
+    matches: ["frogs", "finger of god", "hardened", "flies", "division"],
+    lines: [
+      "The early plagues press the difference deeper:",
+      "🐸 Egypt is overwhelmed.",
+      "☝️ Magicians admit God's finger.",
+      "🔒 Pharaoh refuses anyway.",
+      "🪰 Judgment invades daily life.",
+      "🛡️ God distinguishes His people.",
+      "Evidence can be clear while the heart still refuses surrender.",
+    ],
+  },
+  {
+    matches: ["cattle", "ashes", "boil", "hail", "feared the word", "i have sinned this time"],
+    lines: [
+      "Exodus 9 shows judgment with mercy still speaking:",
+      "🐄 Livestock falls.",
+      "🔥 Ashes from the furnace become a sign.",
+      "🩹 Bodies feel the plague.",
+      "⛈️ Hail comes after warning.",
+      "🏠 Some Egyptians respond and shelter.",
+      "😔 Pharaoh regrets pain without surrendering control.",
+      "The chapter teaches the difference between fearing God's word and merely wanting consequences to stop.",
+    ],
+  },
+  {
+    matches: ["tell in the ears", "locusts", "darkness", "light", "flocks and herds"],
+    lines: [
+      "The last plagues before Passover strip Egypt bare:",
+      "👪 The signs must be told to children.",
+      "🦗 Locusts eat what remains.",
+      "🌑 Darkness can be felt.",
+      "🏠 Israel has light.",
+      "🐑 Moses refuses partial worship.",
+      "Pharaoh keeps trying to bargain, but worship belongs on God's terms.",
+    ],
+  },
+  {
+    matches: ["about midnight", "firstborn", "put a difference", "beginning of months", "lamb without blemish", "when i see the blood"],
+    lines: [
+      "Passover is the center of Exodus deliverance:",
+      "🌙 Judgment comes at God's appointed time.",
+      "👑 Egypt's firstborn are not beyond God's justice.",
+      "🐑 A lamb is chosen.",
+      "🩸 Blood marks shelter.",
+      "📅 Redemption resets Israel's calendar.",
+      "The night teaches that rescue comes through God's provided covering, not through Israel's strength.",
+    ],
+  },
+  {
+    matches: ["unleavened", "mixed multitude", "night to be much observed", "ordinance of the passover", "firstborn", "joseph"],
+    lines: [
+      "After rescue, God gives memory a shape:",
+      "🍞 Unleavened bread remembers haste.",
+      "👥 A mixed multitude leaves too.",
+      "🌙 The night must be observed.",
+      "🍽️ Passover becomes ordered worship.",
+      "🦴 Joseph's bones leave Egypt.",
+      "Freedom is not meant to become forgetfulness. God trains His people to remember.",
+    ],
+  },
+  {
+    matches: ["god led them not", "pillar of cloud", "entangled", "stand still", "go forward", "waters were a wall", "lord fought"],
+    lines: [
+      "The sea crossing moves from fear to faith:",
+      "☁️ God leads the long way.",
+      "🐎 Egypt pursues.",
+      "😨 Israel panics.",
+      "👀 Stand still and see.",
+      "🌊 Walk forward through opened water.",
+      "🛡️ The LORD fights for His people.",
+      "The place that looked like a trap becomes the place where God displays salvation.",
+    ],
+  },
+  {
+    matches: ["i will sing", "who is like", "miriam", "marah", "healeth thee"],
+    lines: [
+      "Exodus 15 moves from song to thirst:",
+      "🎶 Rescued people sing.",
+      "👑 The LORD is incomparable.",
+      "🥁 Miriam leads praise.",
+      "💧 Bitter water tests trust.",
+      "🌳 God makes Marah livable.",
+      "The God who wins at the sea also cares for the bitterness after the song.",
+    ],
+  },
+  {
+    matches: ["wilderness of sin", "bread from heaven", "manna", "sabbath", "omer"],
+    lines: [
+      "Manna trains freed people day by day:",
+      "🍽️ Hunger exposes memory.",
+      "🍞 Bread comes from heaven.",
+      "📏 Each gathers enough.",
+      "🛑 Sabbath teaches rest.",
+      "🏺 An omer is kept as witness.",
+      "God is not only feeding Israel. He is forming them out of slave habits into trust.",
+    ],
+  },
+  {
+    matches: ["no water", "smite the rock", "is the lord among us", "amalek", "hands were heavy", "banner"],
+    lines: [
+      "Exodus 17 teaches dependence under pressure:",
+      "💧 Thirst feels urgent.",
+      "🪨 Water comes from the rock.",
+      "❓ Israel questions God's presence.",
+      "⚔️ Amalek attacks.",
+      "🙌 Moses' hands need support.",
+      "🏳️ The LORD is named as banner.",
+      "Need and battle both reveal whether Israel will live by God's presence.",
+    ],
+  },
+  {
+    matches: ["jethro", "told his father", "greater than all gods", "not good", "able men"],
+    lines: [
+      "Exodus 18 is leadership mercy:",
+      "👂 Jethro hears God's works.",
+      "🗣️ Moses tells the whole story.",
+      "🙌 Worship reaches an outsider.",
+      "😓 Moses is overloaded.",
+      "🧑‍⚖️ Wise helpers are appointed.",
+      "God cares not only about miracles, but also about sustainable leadership for His people.",
+    ],
+  },
+  {
+    matches: ["eagles' wings", "peculiar treasure", "kingdom of priests", "thunders", "bounds"],
+    lines: [
+      "Sinai is rescue turning into covenant:",
+      "🦅 God carried them from Egypt.",
+      "💎 Israel is called treasured possession.",
+      "👑 They are to be a kingdom of priests.",
+      "⚡ The mountain trembles.",
+      "🚧 Boundaries protect holy approach.",
+      "The God who came down to deliver now comes down to dwell and command.",
+    ],
+  },
+  {
+    matches: ["no other gods", "graven image", "sabbath day", "honour thy father", "thou shalt not", "covet"],
+    lines: [
+      "The Ten Commandments shape freed life:",
+      "🙌 Worship belongs to the LORD alone.",
+      "🛑 God's name and day are holy.",
+      "🏠 Family honor matters.",
+      "🩸 Life is protected.",
+      "🤝 Neighbor love is made concrete.",
+      "Freedom is not lawlessness. God teaches rescued people how to live near Him and one another.",
+    ],
+  },
+  {
+    matches: ["judgments", "servant", "eye for eye", "ox", "restitution", "widow", "stranger"],
+    lines: [
+      "The covenant laws bring holiness into daily harm:",
+      "⚖️ Justice is ordered.",
+      "🧍 Servants are protected from being treated as objects.",
+      "🩹 Injury has consequences.",
+      "🐂 Property damage matters.",
+      "🫶 Vulnerable people are defended.",
+      "These chapters teach that life with God must change how people handle power, money, bodies, and neighbors.",
+    ],
+  },
+  {
+    matches: ["sabbath year", "three times", "angel", "book of the covenant", "blood of the covenant", "seventy elders"],
+    lines: [
+      "Exodus 23-24 seals covenant life:",
+      "🌾 Land and labor get rest.",
+      "🎉 Feasts train worshipful memory.",
+      "🧭 God's angel leads the way.",
+      "📖 The covenant is read aloud.",
+      "🩸 Blood marks the people.",
+      "🍽️ Elders eat before God.",
+      "Israel's relationship with God is spoken, written, sealed, and shared.",
+    ],
+  },
+  {
+    matches: ["sanctuary", "ark", "mercy seat", "candlestick", "curtains", "altar"],
+    lines: [
+      "The tabernacle instructions are not random furniture notes:",
+      "🏕️ God wants to dwell among His people.",
+      "📦 The ark centers His covenant testimony.",
+      "🩸 The mercy seat speaks of atonement.",
+      "🕯️ Light burns in holy space.",
+      "🧵 Curtains and frames create ordered nearness.",
+      "Every detail says access to God is gift, structure, and holiness together.",
+    ],
+  },
+  {
+    matches: ["ephod", "breastplate", "stones", "urim", "thummim", "holiness to the lord"],
+    lines: [
+      "The priestly garments carry Israel before God:",
+      "👕 Beauty and glory mark holy service.",
+      "💎 Names are carried on stones.",
+      "❤️ The breastplate rests over the heart.",
+      "✨ Holy to the LORD is placed on the priest.",
+      "The priest does not serve as a private spiritual hero. He bears the people before God.",
+    ],
+  },
+  {
+    matches: ["consecrate", "ram", "blood", "daily", "incense", "atonement money", "laver", "anointing oil"],
+    lines: [
+      "Exodus 29-30 shows holy service being prepared:",
+      "💧 Priests are washed.",
+      "🩸 Blood marks them for service.",
+      "🔥 Daily offerings keep worship alive.",
+      "🌫️ Incense rises before God.",
+      "🪙 Atonement money teaches life belongs to the LORD.",
+      "🫒 Oil and incense are holy, not common perfume.",
+      "Nearness to God is beautiful, but it is never casual.",
+    ],
+  },
+  {
+    matches: ["bezaleel", "spirit of god", "sabbath", "tables of stone"],
+    lines: [
+      "Exodus 31 holds craftsmanship and rest together:",
+      "🎨 Skill is filled by God's Spirit.",
+      "🛠️ Artisans build holy space.",
+      "🛑 Sabbath remains a covenant sign.",
+      "🪨 Stone tablets carry God's testimony.",
+      "The same God who commands work also commands rest. Both belong to covenant faithfulness.",
+    ],
+  },
+  {
+    matches: ["golden calf", "up, make us gods", "aaron", "thy people have corrupted", "blot me", "plagued the people"],
+    lines: [
+      "The golden calf is a devastating collapse:",
+      "⏳ Waiting turns into panic.",
+      "🐂 Gold becomes an idol.",
+      "🎉 Worship language is twisted.",
+      "💔 Covenant is broken at the mountain.",
+      "🙏 Moses intercedes.",
+      "The chapter shows how quickly people can replace God's unseen presence with something visible and controllable.",
+    ],
+  },
+  {
+    matches: ["my presence", "shew me thy glory", "cleft of the rock", "merciful and gracious", "shone"],
+    lines: [
+      "Exodus 33-34 is mercy after disaster:",
+      "⛺ Moses meets with God outside the camp.",
+      "🙏 He refuses to move without God's presence.",
+      "✨ He asks to see God's glory.",
+      "🪨 God hides him in the rock.",
+      "📣 The LORD proclaims mercy and justice.",
+      "🌟 Moses' face shines because nearness to God changes him.",
+    ],
+  },
+  {
+    matches: ["willing heart", "wise hearted", "more than enough", "made the ark", "finished the work", "glory of the lord filled"],
+    lines: [
+      "The final tabernacle chapters answer the golden calf with obedience:",
+      "🤲 Willing hearts bring materials.",
+      "🧠 Wise hearts build skillfully.",
+      "📦 The holy furniture is made.",
+      "👕 Priestly garments are finished.",
+      "✅ Moses inspects the work.",
+      "☁️ Glory fills the tabernacle.",
+      "Exodus ends with God dwelling among a rescued people, guiding them by His presence.",
+    ],
+  },
+];
+
+function addExodusTextureToPhrase(content: string, chapter: number) {
+  const lower = content.split("\n")[0]?.toLowerCase() || "";
+  const rule = EXODUS_TEXTURE_RULES.find((item) => item.matches.some((match) => lower.includes(match)));
+  const fallbackLines = EXODUS_CHAPTER_TEXTURE_RULES[chapter];
+
+  if (!rule || content.includes("Exodus starts by carrying Genesis forward:")) {
+    return fallbackLines ? `${content.trim()}\n\n${fallbackLines.join("\n\n")}` : content;
+  }
+
+  return `${content.trim()}\n\n${rule.lines.join("\n\n")}`;
+}
+
+function applyPersonalExodusTextureStudySections() {
+  for (const section of BIBLE_READER_STUDY_SECTIONS) {
+    if (section.book !== "exodus" || section.chapter < 1 || section.chapter > 40) {
+      continue;
+    }
+
+    section.categories = section.categories.map((category) =>
+      category.id === "key-phrases"
+        ? { ...category, content: category.content.map((content) => addExodusTextureToPhrase(content, section.chapter)) }
+        : category,
+    );
+  }
+}
+
 applyPersonalGenesisOneStudySections();
 applyPersonalGenesisTwoStudySections();
 applyPersonalGenesisThreeStudySections();
@@ -15527,6 +16258,7 @@ applyPersonalGenesisElevenThroughTwentyStudySections();
 applyPersonalGenesisTwentyOneThroughThirtyStudySections();
 applyPersonalGenesisThirtyOneThroughFortyStudySections();
 applyPersonalGenesisFortyOneThroughFiftyStudySections();
+applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit();
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {

@@ -10,6 +10,11 @@ export type PersonalGenesisPhraseSectionInput = {
 
 const note = (lines: string[]) => lines.join("\n\n");
 
+type PersonalTextureRule = {
+  matches: string[];
+  lines: string[];
+};
+
 type PersonalSectionSplit = {
   startVerse: number;
   endVerse: number;
@@ -561,6 +566,141 @@ function expandSplitSections(sections: PersonalGenesisPhraseSectionInput[]) {
       ],
     }));
   });
+}
+
+const GENESIS_21_30_TEXTURE_RULES: PersonalTextureRule[] = [
+  {
+    matches: ["as he had said", "set time", "made me to laugh"],
+    lines: [
+      "Let the birth scene land with its full joy:",
+      "⏳ Long wait.",
+      "👵 Impossible body.",
+      "👶 Promised son.",
+      "😂 Laughter turned from doubt into worship.",
+      "Isaac is not just a baby in the story. He is proof that God's word can outlive every human limit.",
+    ],
+  },
+  {
+    matches: ["son of hagar", "bondwoman", "god heard", "opened her eyes"],
+    lines: [
+      "Watch how God treats the pushed-out people:",
+      "🚪 Sent away.",
+      "🏜️ Out of water.",
+      "😭 Crying in the wilderness.",
+      "💧 Shown a well.",
+      "The household fails Hagar and Ishmael, but God does not abandon them in the empty place.",
+    ],
+  },
+  {
+    matches: ["only son", "moriah", "god will provide", "ram", "jehovahjireh"],
+    lines: [
+      "This chapter moves with holy tension:",
+      "❤️ Isaac is loved.",
+      "⛰️ Moriah is costly.",
+      "🪵 The wood is carried.",
+      "🐏 The substitute is provided.",
+      "Genesis is teaching sacrifice and mercy in the same breath.",
+    ],
+  },
+  {
+    matches: ["buryingplace", "machpelah", "ephron", "field"],
+    lines: [
+      "The legal details matter more than they first look:",
+      "💔 Sarah dies.",
+      "🧾 Abraham negotiates publicly.",
+      "⚖️ The silver is weighed.",
+      "📍 The field becomes sure.",
+      "The promise family owns only a burial place, but even that grave says Canaan is still the land of promise.",
+    ],
+  },
+  {
+    matches: ["hand under", "well", "rebekah", "i will go", "veil"],
+    lines: [
+      "Follow the providence in ordinary steps:",
+      "🤝 A servant is sent.",
+      "🙏 A prayer is made.",
+      "💧 A woman draws water.",
+      "🎁 A family answers.",
+      "🚶 Rebekah chooses to go.",
+      "God guides the covenant family through faithful action, not through flashy noise.",
+    ],
+  },
+  {
+    matches: ["two nations", "elder shall serve", "birthright", "red pottage"],
+    lines: [
+      "The twins carry a family conflict before they can even speak:",
+      "🤰 Struggle in the womb.",
+      "🌍 Two nations.",
+      "🔁 The older-younger order reversed.",
+      "🍲 A birthright treated like a snack.",
+      "Genesis is showing that appetite, promise, and character are already colliding.",
+    ],
+  },
+  {
+    matches: ["gerar", "my sister", "rehoboth", "beersheba", "grieved"],
+    lines: [
+      "Isaac's chapter has a pattern worth seeing:",
+      "🌾 Famine tests him.",
+      "😨 Fear exposes him.",
+      "💧 Wells are contested.",
+      "🕊️ Room is finally made.",
+      "🪨 An altar anchors the promise.",
+      "The son of promise still has to learn trust in ordinary pressure.",
+    ],
+  },
+  {
+    matches: ["venison", "voice", "hands", "bitter cry", "flee"],
+    lines: [
+      "The blessing scene is painfully layered:",
+      "👁️ Isaac cannot see.",
+      "🍲 Rebekah schemes.",
+      "🐐 Jacob disguises himself.",
+      "😭 Esau breaks when he learns the truth.",
+      "🏃 The family fractures and Jacob has to run.",
+      "Genesis does not hide the damage caused when people try to force blessing through deceit.",
+    ],
+  },
+  {
+    matches: ["ladder", "bethel", "god is in this place", "pillar", "tithe"],
+    lines: [
+      "Jacob's lonely night becomes holy ground:",
+      "🪨 A stone for a pillow.",
+      "🪜 A ladder between heaven and earth.",
+      "📣 God repeats the promise.",
+      "📍 Bethel gets its name.",
+      "Jacob is not chasing God here. God meets him while he is running.",
+    ],
+  },
+  {
+    matches: ["seven years", "leah", "rachel", "mandrakes", "joseph", "increased exceedingly"],
+    lines: [
+      "The household keeps getting more complicated:",
+      "💍 Love and deception.",
+      "💔 Leah seen and unloved.",
+      "😣 Rachel envying.",
+      "👶 Sons being named out of pain and hope.",
+      "📈 Jacob prospering under pressure.",
+      "God is building Israel's family through real people, not polished statues.",
+    ],
+  },
+];
+
+function addGenesisTwentyOneToThirtyTexture(title: string, content: string) {
+  const lower = title.toLowerCase();
+  const rule = GENESIS_21_30_TEXTURE_RULES.find((item) => item.matches.some((match) => lower.includes(match)));
+
+  if (!rule) {
+    return content;
+  }
+
+  return `${content}\n\n${note(rule.lines)}`;
+}
+
+function addGenesisTwentyOneToThirtySectionTexture(sections: PersonalGenesisPhraseSectionInput[]) {
+  return sections.map((section) => ({
+    ...section,
+    phrases: section.phrases.map(([title, content]) => [title, addGenesisTwentyOneToThirtyTexture(title, content)] as [string, string]),
+  }));
 }
 
 const RAW_GENESIS_21_30_PERSONAL_SECTIONS: PersonalGenesisPhraseSectionInput[] = [
@@ -2019,4 +2159,6 @@ const RAW_GENESIS_21_30_PERSONAL_SECTIONS: PersonalGenesisPhraseSectionInput[] =
   },
 ];
 
-export const GENESIS_21_30_PERSONAL_SECTIONS = expandSplitSections(RAW_GENESIS_21_30_PERSONAL_SECTIONS);
+export const GENESIS_21_30_PERSONAL_SECTIONS = addGenesisTwentyOneToThirtySectionTexture(
+  expandSplitSections(RAW_GENESIS_21_30_PERSONAL_SECTIONS),
+);
